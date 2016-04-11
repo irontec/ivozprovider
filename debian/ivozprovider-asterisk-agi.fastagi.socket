@@ -1,6 +1,5 @@
 [Socket]
 ListenStream=127.0.0.1:4573
-Accept=yes
 
 [Install]
 WantedBy=sockets.target

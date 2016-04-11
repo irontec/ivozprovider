@@ -2,6 +2,7 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper,
+    dh-systemd,
     nodejs,
     npm,
     ruby-compass,
@@ -15,11 +16,24 @@ Build-Depends: debhelper,
 Standards-Version: 3.9.6
 Maintainer: Irontec Package Team <packages@irontec.com>
 
+Package: ivozprovider
+Architecture: all
+Section: admin
+Priority: optional
+Depends: ivozprovider-profile-as,
+    ivozprovider-profile-data,
+    ivozprovider-profile-proxy,
+    ivozprovider-profile-portal,
+    ivozprovider-kamailio-users,
+    ivozprovider-kamailio-trunks
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Virtual standalone package
+ .
+
 Package: ivozprovider-profile-common
 Architecture: all
 Section: admin
 Priority: optional
-Conflicts: ivozprovider-puppet-agent
 Pre-Depends: po-debconf, ntp, vim, ntpdate, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, systemd-cron
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Common configuration files
@@ -124,7 +138,7 @@ Section: admin
 Priority: optional
 Depends: libmyodbc, unixodbc
 Homepage: http://www.irontec.com
-Description: OASIS - Asterisk - Configuration files
+Description: IVOZ Provider - Asterisk - Configuration files
  This package includes all config files found in /etc
  that will require asterisk to run properly.
  .

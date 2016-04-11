@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## Check if database connection is setup
+grep asterisk /etc/odbc.ini &>/dev/null
+[ $? -ne 0 ] && cat /etc/odbc.oasis.ini >> /etc/odbc.ini
+
+## This package contains dialplan data, reload
+/usr/sbin/asterisk -rx 'dialplan reload'
+
+:

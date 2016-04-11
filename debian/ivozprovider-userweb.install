@@ -1,2 +1,2 @@
-index.html /opt/irontec/ivozprovider/web/application/views/scripts/portal/
-dist/* /opt/irontec/ivozprovider/web/public
+userweb/index.html /opt/irontec/ivozprovider/portals/application/views/scripts/portal/
+userweb/dist/* /opt/irontec/ivozprovider/portals/public

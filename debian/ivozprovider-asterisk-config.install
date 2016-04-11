@@ -1,0 +1,2 @@
+asterisk/config/* /etc/asterisk/
+asterisk/odbc/*   /etc/
