@@ -40,14 +40,14 @@ class PeeringContracts extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'PeeringContractsIbfk1' => array(
-            'columns' => 'brandId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
-            'refColumns' => 'id'
-        ),
         'PeeringContractsIbfk2' => array(
             'columns' => 'transformationRulesetGroupsTrunksId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\TransformationRulesetGroupsTrunks',
+            'refColumns' => 'id'
+        ),
+        'PeeringContractsIbfk1' => array(
+            'columns' => 'brandId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
             'refColumns' => 'id'
         )
     );

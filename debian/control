@@ -1,0 +1,181 @@
+Source: ivozprovider
+Section: php
+Priority: optional
+Build-Depends: debhelper,
+    nodejs,
+    npm,
+    ruby-compass,
+    git,
+    openssh-client,
+    curl,
+    python,
+    php5,
+    nodejs,
+    ruby-compass
+Standards-Version: 3.9.6
+Maintainer: Irontec Package Team <packages@irontec.com>
+
+Package: ivozprovider-profile-common
+Architecture: all
+Section: admin
+Priority: optional
+Conflicts: ivozprovider-puppet-agent
+Pre-Depends: po-debconf, ntp, vim, ntpdate, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, systemd-cron
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Common configuration files
+ Files includes in this package are common to all IVOZ Provider systems
+ .
+ This package is used to:
+  - System wide configuration files
+  - NTP Daemon configuration
+  - Enviroment configuration requets (testing, production, ..)
+ .
+
+Package: ivozprovider-profile-as
+Architecture: all
+Section: admin
+Priority: optional
+Depends: ivozprovider-profile-common,
+    ivozprovider-asterisk-agi,
+    ivozprovider-asterisk-config,
+    ivozprovider-asterisk,
+    sngrep,
+    ghostscript,
+    libtiff-tools
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Profile for Application Servers
+ .
+
+Package: ivozprovider-profile-data
+Architecture: all
+Section: admin
+Priority: optional
+Pre-Depends: ivozprovider-profile-common,
+    mysql-server,
+    libstring-crc32-perl
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Data System Profile
+ .
+
+Package: ivozprovider-profile-portal
+Architecture: all
+Section: admin
+Priority: optional
+Depends: ivozprovider-profile-common,
+    klear,
+    apache2,
+    php5,
+    php5-igbinary,
+    php5-mysql,
+    php5-imagick,
+    php5-curl,
+    ivozprovider-app-user-webapp,
+    ivozprovider-app-portals
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Portal System Profile
+ .
+
+Package: ivozprovider-profile-proxy
+Architecture: all
+Section: admin
+Priority: optional
+Depends: ivozprovider-profile-common, sngrep, mysql-client, netcat-openbsd, ssl-cert
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Profile files for a Proxy Systems
+ .
+
+Package: ivozprovider-kamailio-users
+Architecture: all
+Section: admin
+Depends: kamailio,
+    kamailio-json-modules,
+    kamailio-mysql-modules,
+    kamailio-tls-modules,
+    kamailio-xml-modules,
+    ngcp-rtpengine-daemon,
+    ngcp-rtpengine-iptables,
+    ngcp-rtpengine-kernel-dkms
+Priority: optional
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Kamailio - Configuration files for Users kamailio
+  This package include all requires files to configure kamailio properly
+  for a users proxy.
+ .
+
+Package: ivozprovider-kamailio-trunks
+Architecture: all
+Section: admin
+Priority: optional
+Depends: kamailio,
+    kamailio-json-modules,
+    kamailio-mysql-modules,
+    kamailio-tls-modules,
+    kamailio-xml-modules,
+    kamailio-websocket-modules
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Kamailio - Configuration files for Trunks proxy kamailio
+  This package include all requires files to configure kamailio properly
+  for a trunks proxy.
+ .
+
+Package: ivozprovider-asterisk-config
+Architecture: all
+Section: admin
+Priority: optional
+Depends: libmyodbc, unixodbc
+Homepage: http://www.irontec.com
+Description: OASIS - Asterisk - Configuration files
+ This package includes all config files found in /etc
+ that will require asterisk to run properly.
+ .
+ This files include driver and modules configurations and
+ diaplan context files.
+ .
+
+Package: ivozprovider-asterisk-agi
+Architecture: all
+Section: php
+Priority: optional
+Depends: zendframework, ivozprovider-data-library
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Asterik Gateway Interface Zend Application
+ .
+
+Package: ivozprovider-scheme
+Architecture: all
+Section: database
+Priority: optional
+Depends: phing
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Database Scheme
+ .
+
+Package: ivozprovider-portals
+Architecture: all
+Section: php
+Priority: optional
+Depends: klear, ivozprovider-data-library
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Portals - Zendframework application
+ Portals using klear and zendframework 1
+ .
+
+Package: ivozprovider-userweb
+Architecture: all
+Section: php
+Priority: optional
+Depends: klear
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - User Webapp - Zendframework application
+ User webapp using klear and zendframework 1
+ .
+
+Package: ivozprovider-data-library
+Architecture: all
+Section: php
+Priority: optional
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Mappers and Models for Zend applications
+ .
+
+

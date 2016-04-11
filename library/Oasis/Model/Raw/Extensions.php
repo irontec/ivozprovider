@@ -82,6 +82,13 @@ class Extensions extends ModelAbstract
 
 
     /**
+     * Parent relation Extensions_ibfk_4
+     *
+     * @var \Oasis\Model\Raw\HuntGroups
+     */
+    protected $_HuntGroup;
+
+    /**
      * Parent relation Extensions_ibfk_1
      *
      * @var \Oasis\Model\Raw\Companies
@@ -101,13 +108,6 @@ class Extensions extends ModelAbstract
      * @var \Oasis\Model\Raw\IVRCustom
      */
     protected $_IVRCustom;
-
-    /**
-     * Parent relation Extensions_ibfk_4
-     *
-     * @var \Oasis\Model\Raw\HuntGroups
-     */
-    protected $_HuntGroup;
 
 
     /**
@@ -216,6 +216,10 @@ class Extensions extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'ExtensionsIbfk4'=> array(
+                    'property' => 'HuntGroup',
+                    'table_name' => 'HuntGroups',
+                ),
             'ExtensionsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -227,10 +231,6 @@ class Extensions extends ModelAbstract
             'ExtensionsIbfk3'=> array(
                     'property' => 'IVRCustom',
                     'table_name' => 'IVRCustom',
-                ),
-            'ExtensionsIbfk4'=> array(
-                    'property' => 'HuntGroup',
-                    'table_name' => 'HuntGroups',
                 ),
         ));
 
@@ -528,6 +528,57 @@ class Extensions extends ModelAbstract
     }
 
     /**
+     * Sets parent relation HuntGroup
+     *
+     * @param \Oasis\Model\Raw\HuntGroups $data
+     * @return \Oasis\Model\Raw\Extensions
+     */
+    public function setHuntGroup(\Oasis\Model\Raw\HuntGroups $data)
+    {
+        $this->_HuntGroup = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setHuntGroupId($primaryKey);
+        }
+
+        $this->_setLoaded('ExtensionsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent HuntGroup
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\HuntGroups
+     */
+    public function getHuntGroup($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExtensionsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_HuntGroup = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_HuntGroup;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \Oasis\Model\Raw\Companies $data
@@ -678,57 +729,6 @@ class Extensions extends ModelAbstract
         }
 
         return $this->_IVRCustom;
-    }
-
-    /**
-     * Sets parent relation HuntGroup
-     *
-     * @param \Oasis\Model\Raw\HuntGroups $data
-     * @return \Oasis\Model\Raw\Extensions
-     */
-    public function setHuntGroup(\Oasis\Model\Raw\HuntGroups $data)
-    {
-        $this->_HuntGroup = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setHuntGroupId($primaryKey);
-        }
-
-        $this->_setLoaded('ExtensionsIbfk4');
-        return $this;
-    }
-
-    /**
-     * Gets parent HuntGroup
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\HuntGroups
-     */
-    public function getHuntGroup($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ExtensionsIbfk4';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_HuntGroup = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_HuntGroup;
     }
 
     /**

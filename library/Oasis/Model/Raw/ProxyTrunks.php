@@ -26,11 +26,6 @@ class ProxyTrunks extends ModelAbstract
         'yes',
         'no',
     );
-    protected $_directMediaMethodAcceptedValues = array(
-        'update',
-        'invite',
-        'reinvite',
-    );
     protected $_sendPaiAcceptedValues = array(
         'yes',
         'no',
@@ -50,6 +45,11 @@ class ProxyTrunks extends ModelAbstract
     protected $_supportPathAcceptedValues = array(
         'yes',
         'no',
+    );
+    protected $_directMediaMethodAcceptedValues = array(
+        'update',
+        'invite',
+        'reinvite',
     );
 
     /**
@@ -122,14 +122,6 @@ class ProxyTrunks extends ModelAbstract
      * @var string
      */
     protected $_directMedia;
-
-    /**
-     * [enum:update|invite|reinvite]
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_directMediaMethod;
 
     /**
      * Database var type varchar
@@ -238,6 +230,14 @@ class ProxyTrunks extends ModelAbstract
     protected $_subscribecontext;
 
     /**
+     * [enum:update|invite|reinvite]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_directMediaMethod;
+
+    /**
      * Database var type varchar
      *
      * @var string
@@ -257,7 +257,6 @@ class ProxyTrunks extends ModelAbstract
         'disallow'=>'disallow',
         'allow'=>'allow',
         'direct_media'=>'directMedia',
-        'direct_media_method'=>'directMediaMethod',
         'mailboxes_aors'=>'mailboxesAors',
         'outbound_proxy'=>'outboundProxy',
         'send_pai'=>'sendPai',
@@ -273,6 +272,7 @@ class ProxyTrunks extends ModelAbstract
         'support_path'=>'supportPath',
         'password'=>'password',
         'subscribecontext'=>'subscribecontext',
+        'direct_media_method'=>'directMediaMethod',
         'ip'=>'ip',
     );
 
@@ -283,8 +283,8 @@ class ProxyTrunks extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'id'=> array('uuid:php'),
-            'direct_media_method'=> array('enum:update|invite|reinvite'),
             'password'=> array('password'),
+            'direct_media_method'=> array('enum:update|invite|reinvite'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -670,43 +670,6 @@ class ProxyTrunks extends ModelAbstract
     public function getDirectMedia()
     {
         return $this->_directMedia;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \Oasis\Model\Raw\ProxyTrunks
-     */
-    public function setDirectMediaMethod($data)
-    {
-
-        if ($this->_directMediaMethod != $data) {
-            $this->_logChange('directMediaMethod');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_directMediaMethod = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
-            }
-            $this->_directMediaMethod = (string) $data;
-
-        } else {
-            $this->_directMediaMethod = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column direct_media_method
-     *
-     * @return string
-     */
-    public function getDirectMediaMethod()
-    {
-        return $this->_directMediaMethod;
     }
 
     /**
@@ -1232,6 +1195,43 @@ class ProxyTrunks extends ModelAbstract
     public function getSubscribecontext()
     {
         return $this->_subscribecontext;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \Oasis\Model\Raw\ProxyTrunks
+     */
+    public function setDirectMediaMethod($data)
+    {
+
+        if ($this->_directMediaMethod != $data) {
+            $this->_logChange('directMediaMethod');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_directMediaMethod = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+            }
+            $this->_directMediaMethod = (string) $data;
+
+        } else {
+            $this->_directMediaMethod = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column direct_media_method
+     *
+     * @return string
+     */
+    public function getDirectMediaMethod()
+    {
+        return $this->_directMediaMethod;
     }
 
     /**

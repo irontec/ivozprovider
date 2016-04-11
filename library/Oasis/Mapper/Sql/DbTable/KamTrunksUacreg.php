@@ -40,14 +40,14 @@ class KamTrunksUacreg extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'KamTrunksUacregIbfk1' => array(
-            'columns' => 'brandId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
-            'refColumns' => 'id'
-        ),
         'KamTrunksUacregIbfk2' => array(
             'columns' => 'peeringContractId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\PeeringContracts',
+            'refColumns' => 'id'
+        ),
+        'KamTrunksUacregIbfk1' => array(
+            'columns' => 'brandId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
             'refColumns' => 'id'
         )
     );

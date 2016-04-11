@@ -40,6 +40,11 @@ class Users extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
+        'UsersIbfk12' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
         'UsersIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Companies',
@@ -53,11 +58,6 @@ class Users extends TableAbstract
         'UsersIbfk11' => array(
             'columns' => 'bossAssistantId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk12' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Countries',
             'refColumns' => 'id'
         ),
         'UsersIbfk3' => array(

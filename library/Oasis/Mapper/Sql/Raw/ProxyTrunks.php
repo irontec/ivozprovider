@@ -58,7 +58,6 @@ class ProxyTrunks extends MapperAbstract
                 'disallow' => $model->getDisallow(),
                 'allow' => $model->getAllow(),
                 'direct_media' => $model->getDirectMedia(),
-                'direct_media_method' => $model->getDirectMediaMethod(),
                 'mailboxes_aors' => $model->getMailboxesAors(),
                 'outbound_proxy' => $model->getOutboundProxy(),
                 'send_pai' => $model->getSendPai(),
@@ -74,6 +73,7 @@ class ProxyTrunks extends MapperAbstract
                 'support_path' => $model->getSupportPath(),
                 'password' => $model->getPassword(),
                 'subscribecontext' => $model->getSubscribecontext(),
+                'direct_media_method' => $model->getDirectMediaMethod(),
                 'ip' => $model->getIp(),
             );
         } else {
@@ -565,7 +565,6 @@ class ProxyTrunks extends MapperAbstract
                   ->setDisallow($data['disallow'])
                   ->setAllow($data['allow'])
                   ->setDirectMedia($data['direct_media'])
-                  ->setDirectMediaMethod($data['direct_media_method'])
                   ->setMailboxesAors($data['mailboxes_aors'])
                   ->setOutboundProxy($data['outbound_proxy'])
                   ->setSendPai($data['send_pai'])
@@ -581,6 +580,7 @@ class ProxyTrunks extends MapperAbstract
                   ->setSupportPath($data['support_path'])
                   ->setPassword($data['password'])
                   ->setSubscribecontext($data['subscribecontext'])
+                  ->setDirectMediaMethod($data['direct_media_method'])
                   ->setIp($data['ip']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
@@ -593,7 +593,6 @@ class ProxyTrunks extends MapperAbstract
                   ->setDisallow($data->{'disallow'})
                   ->setAllow($data->{'allow'})
                   ->setDirectMedia($data->{'direct_media'})
-                  ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setMailboxesAors($data->{'mailboxes_aors'})
                   ->setOutboundProxy($data->{'outbound_proxy'})
                   ->setSendPai($data->{'send_pai'})
@@ -609,6 +608,7 @@ class ProxyTrunks extends MapperAbstract
                   ->setSupportPath($data->{'support_path'})
                   ->setPassword($data->{'password'})
                   ->setSubscribecontext($data->{'subscribecontext'})
+                  ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setIp($data->{'ip'});
 
         } else if ($data instanceof \Oasis\Model\Raw\ProxyTrunks) {
@@ -622,7 +622,6 @@ class ProxyTrunks extends MapperAbstract
                   ->setDisallow($data->getDisallow())
                   ->setAllow($data->getAllow())
                   ->setDirectMedia($data->getDirectMedia())
-                  ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setMailboxesAors($data->getMailboxesAors())
                   ->setOutboundProxy($data->getOutboundProxy())
                   ->setSendPai($data->getSendPai())
@@ -638,6 +637,7 @@ class ProxyTrunks extends MapperAbstract
                   ->setSupportPath($data->getSupportPath())
                   ->setPassword($data->getPassword())
                   ->setSubscribecontext($data->getSubscribecontext())
+                  ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setIp($data->getIp());
 
         }

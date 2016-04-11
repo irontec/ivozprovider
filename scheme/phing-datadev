@@ -1,2 +1,2 @@
 #!/bin/bash
-phing -f build_dev.xml $1 -De=development -Dk=/opt/klear -Da=../app-portals/application
+phing -f build_dev.xml $1 -De=development -Dk=/opt/irontec/klear -Da=../portals/application

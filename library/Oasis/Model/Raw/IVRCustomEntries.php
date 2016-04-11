@@ -88,6 +88,13 @@ class IVRCustomEntries extends ModelAbstract
 
 
     /**
+     * Parent relation IVRCustomEntries_ibfk_4
+     *
+     * @var \Oasis\Model\Raw\Users
+     */
+    protected $_TargetVoiceMailUser;
+
+    /**
      * Parent relation IVRCustomEntries_ibfk_1
      *
      * @var \Oasis\Model\Raw\IVRCustom
@@ -107,13 +114,6 @@ class IVRCustomEntries extends ModelAbstract
      * @var \Oasis\Model\Raw\Extensions
      */
     protected $_TargetExtension;
-
-    /**
-     * Parent relation IVRCustomEntries_ibfk_4
-     *
-     * @var \Oasis\Model\Raw\Users
-     */
-    protected $_TargetVoiceMailUser;
 
 
     protected $_columnsList = array(
@@ -143,6 +143,10 @@ class IVRCustomEntries extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'IVRCustomEntriesIbfk4'=> array(
+                    'property' => 'TargetVoiceMailUser',
+                    'table_name' => 'Users',
+                ),
             'IVRCustomEntriesIbfk1'=> array(
                     'property' => 'IVRCustom',
                     'table_name' => 'IVRCustom',
@@ -154,10 +158,6 @@ class IVRCustomEntries extends ModelAbstract
             'IVRCustomEntriesIbfk3'=> array(
                     'property' => 'TargetExtension',
                     'table_name' => 'Extensions',
-                ),
-            'IVRCustomEntriesIbfk4'=> array(
-                    'property' => 'TargetVoiceMailUser',
-                    'table_name' => 'Users',
                 ),
         ));
 
@@ -446,6 +446,57 @@ class IVRCustomEntries extends ModelAbstract
     }
 
     /**
+     * Sets parent relation TargetVoiceMailUser
+     *
+     * @param \Oasis\Model\Raw\Users $data
+     * @return \Oasis\Model\Raw\IVRCustomEntries
+     */
+    public function setTargetVoiceMailUser(\Oasis\Model\Raw\Users $data)
+    {
+        $this->_TargetVoiceMailUser = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTargetVoiceMailUserId($primaryKey);
+        }
+
+        $this->_setLoaded('IVRCustomEntriesIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent TargetVoiceMailUser
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Users
+     */
+    public function getTargetVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'IVRCustomEntriesIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_TargetVoiceMailUser = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_TargetVoiceMailUser;
+    }
+
+    /**
      * Sets parent relation IVRCustom
      *
      * @param \Oasis\Model\Raw\IVRCustom $data
@@ -596,57 +647,6 @@ class IVRCustomEntries extends ModelAbstract
         }
 
         return $this->_TargetExtension;
-    }
-
-    /**
-     * Sets parent relation TargetVoiceMailUser
-     *
-     * @param \Oasis\Model\Raw\Users $data
-     * @return \Oasis\Model\Raw\IVRCustomEntries
-     */
-    public function setTargetVoiceMailUser(\Oasis\Model\Raw\Users $data)
-    {
-        $this->_TargetVoiceMailUser = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setTargetVoiceMailUserId($primaryKey);
-        }
-
-        $this->_setLoaded('IVRCustomEntriesIbfk4');
-        return $this;
-    }
-
-    /**
-     * Gets parent TargetVoiceMailUser
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Users
-     */
-    public function getTargetVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'IVRCustomEntriesIbfk4';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_TargetVoiceMailUser = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_TargetVoiceMailUser;
     }
 
     /**

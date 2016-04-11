@@ -40,6 +40,11 @@ class PeeringContractsRelLcrRules extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
+        'PeeringContractsRelLcrRulesIbfk3' => array(
+            'columns' => 'brandId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
         'PeeringContractsRelLcrRulesIbfk1' => array(
             'columns' => 'lcrRuleId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\LcrRules',
@@ -48,11 +53,6 @@ class PeeringContractsRelLcrRules extends TableAbstract
         'PeeringContractsRelLcrRulesIbfk2' => array(
             'columns' => 'peeringContractId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\PeeringContracts',
-            'refColumns' => 'id'
-        ),
-        'PeeringContractsRelLcrRulesIbfk3' => array(
-            'columns' => 'brandId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
             'refColumns' => 'id'
         )
     );

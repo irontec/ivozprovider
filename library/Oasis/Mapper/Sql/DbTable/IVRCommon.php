@@ -40,6 +40,11 @@ class IVRCommon extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
+        'IVRCommonIbfk9' => array(
+            'columns' => 'errorVoiceMailUserId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
+        ),
         'IVRCommonIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Companies',
@@ -77,11 +82,6 @@ class IVRCommon extends TableAbstract
         ),
         'IVRCommonIbfk8' => array(
             'columns' => 'timeoutVoiceMailUserId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
-        'IVRCommonIbfk9' => array(
-            'columns' => 'errorVoiceMailUserId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Users',
             'refColumns' => 'id'
         )

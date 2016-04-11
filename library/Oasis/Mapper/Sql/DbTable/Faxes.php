@@ -40,14 +40,14 @@ class Faxes extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'FaxesIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
         'FaxesIbfk2' => array(
             'columns' => 'outgoingDDI',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\DDIs',
+            'refColumns' => 'id'
+        ),
+        'FaxesIbfk1' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         )
     );

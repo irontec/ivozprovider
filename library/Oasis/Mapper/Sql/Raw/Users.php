@@ -559,20 +559,6 @@ class Users extends MapperAbstract
                     }
                 }
 
-                if ($model->getIVRCommonByTimeoutVoiceMailUser(null, null, true) !== null) {
-                    $iVRCommon = $model->getIVRCommonByTimeoutVoiceMailUser();
-
-                    if (!is_array($iVRCommon)) {
-
-                        $iVRCommon = array($iVRCommon);
-                    }
-
-                    foreach ($iVRCommon as $value) {
-                        $value->setTimeoutVoiceMailUserId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getIVRCommonByErrorVoiceMailUser(null, null, true) !== null) {
                     $iVRCommon = $model->getIVRCommonByErrorVoiceMailUser();
 
@@ -587,15 +573,15 @@ class Users extends MapperAbstract
                     }
                 }
 
-                if ($model->getIVRCustomByTimeoutVoiceMailUser(null, null, true) !== null) {
-                    $iVRCustom = $model->getIVRCustomByTimeoutVoiceMailUser();
+                if ($model->getIVRCommonByTimeoutVoiceMailUser(null, null, true) !== null) {
+                    $iVRCommon = $model->getIVRCommonByTimeoutVoiceMailUser();
 
-                    if (!is_array($iVRCustom)) {
+                    if (!is_array($iVRCommon)) {
 
-                        $iVRCustom = array($iVRCustom);
+                        $iVRCommon = array($iVRCommon);
                     }
 
-                    foreach ($iVRCustom as $value) {
+                    foreach ($iVRCommon as $value) {
                         $value->setTimeoutVoiceMailUserId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
@@ -611,6 +597,20 @@ class Users extends MapperAbstract
 
                     foreach ($iVRCustom as $value) {
                         $value->setErrorVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getIVRCustomByTimeoutVoiceMailUser(null, null, true) !== null) {
+                    $iVRCustom = $model->getIVRCustomByTimeoutVoiceMailUser();
+
+                    if (!is_array($iVRCustom)) {
+
+                        $iVRCustom = array($iVRCustom);
+                    }
+
+                    foreach ($iVRCustom as $value) {
+                        $value->setTimeoutVoiceMailUserId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }

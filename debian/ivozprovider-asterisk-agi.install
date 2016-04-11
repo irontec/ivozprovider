@@ -1,0 +1,3 @@
+asterisk/agi/application    /opt/irontec/ivozprovider/agi/
+asterisk/agi/extra          /opt/irontec/ivozprovider/agi/
+asterisk/agi/library        /opt/irontec/ivozprovider/agi/

@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
-<project name="oasis" basedir="." default="init">
+<project name="ivozprovider" basedir="." default="init">
 	<!-- CONFIGURABLE VALUES -->
 	<!-- command line switch >> -Dk=/remoteKlear -->
-	<property name="klear.base" refid="k" fallback="/opt/klear-development" />
+	<property name="klear.base" refid="k" fallback="/opt/irontec/klear" />
 	<!-- command line switch >> -Da=../web/application -->
-	<property name="application.path" refid="a" fallback="../www/portals" />
+	<property name="application.path" refid="a" fallback="/opt/irontec/ivozprovider/portals" />
 	<!-- command line switch >> -De=development -->
 	<property name="application.env" refid="e" fallback="localdev" />
 	<!-- END OF CONFIGURABLE VALUES -->

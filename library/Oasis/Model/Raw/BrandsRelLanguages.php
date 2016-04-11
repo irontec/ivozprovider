@@ -47,18 +47,18 @@ class BrandsRelLanguages extends ModelAbstract
 
 
     /**
-     * Parent relation BrandsRelLanguages_ibfk_2
-     *
-     * @var \Oasis\Model\Raw\Languages
-     */
-    protected $_Language;
-
-    /**
      * Parent relation BrandsRelLanguages_ibfk_3
      *
      * @var \Oasis\Model\Raw\Brands
      */
     protected $_Brand;
+
+    /**
+     * Parent relation BrandsRelLanguages_ibfk_2
+     *
+     * @var \Oasis\Model\Raw\Languages
+     */
+    protected $_Language;
 
 
     protected $_columnsList = array(
@@ -82,13 +82,13 @@ class BrandsRelLanguages extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'BrandsRelLanguagesIbfk2'=> array(
-                    'property' => 'Language',
-                    'table_name' => 'Languages',
-                ),
             'BrandsRelLanguagesIbfk3'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'BrandsRelLanguagesIbfk2'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
                 ),
         ));
 
@@ -225,57 +225,6 @@ class BrandsRelLanguages extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Language
-     *
-     * @param \Oasis\Model\Raw\Languages $data
-     * @return \Oasis\Model\Raw\BrandsRelLanguages
-     */
-    public function setLanguage(\Oasis\Model\Raw\Languages $data)
-    {
-        $this->_Language = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLanguageId($primaryKey);
-        }
-
-        $this->_setLoaded('BrandsRelLanguagesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent Language
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Languages
-     */
-    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'BrandsRelLanguagesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Language = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Language;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \Oasis\Model\Raw\Brands $data
@@ -324,6 +273,57 @@ class BrandsRelLanguages extends ModelAbstract
         }
 
         return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \Oasis\Model\Raw\Languages $data
+     * @return \Oasis\Model\Raw\BrandsRelLanguages
+     */
+    public function setLanguage(\Oasis\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('BrandsRelLanguagesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'BrandsRelLanguagesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**

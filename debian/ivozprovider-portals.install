@@ -1,0 +1,4 @@
+web/portals/application     /opt/irontec/ivozprovider/web/
+web/portals/docs            /opt/irontec/ivozprovider/web/
+web/portals/public          /opt/irontec/ivozprovider/web/
+web/portals/tests           /opt/irontec/ivozprovider/web/

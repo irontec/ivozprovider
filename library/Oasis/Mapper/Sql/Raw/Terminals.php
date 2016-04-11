@@ -58,7 +58,6 @@ class Terminals extends MapperAbstract
                 'disallow' => $model->getDisallow(),
                 'allow' => $model->getAllow(),
                 'direct_media' => $model->getDirectMedia(),
-                'direct_media_method' => $model->getDirectMediaMethod(),
                 'mailboxes_aors' => $model->getMailboxesAors(),
                 'outbound_proxy' => $model->getOutboundProxy(),
                 'send_pai' => $model->getSendPai(),
@@ -77,6 +76,7 @@ class Terminals extends MapperAbstract
                 'companyId' => $model->getCompanyId(),
                 'mac' => $model->getMac(),
                 'lastProvisionDate' => $model->getLastProvisionDate(),
+                'direct_media_method' => $model->getDirectMediaMethod(),
             );
         } else {
             $result = array();
@@ -584,7 +584,6 @@ class Terminals extends MapperAbstract
                   ->setDisallow($data['disallow'])
                   ->setAllow($data['allow'])
                   ->setDirectMedia($data['direct_media'])
-                  ->setDirectMediaMethod($data['direct_media_method'])
                   ->setMailboxesAors($data['mailboxes_aors'])
                   ->setOutboundProxy($data['outbound_proxy'])
                   ->setSendPai($data['send_pai'])
@@ -602,7 +601,8 @@ class Terminals extends MapperAbstract
                   ->setSubscribecontext($data['subscribecontext'])
                   ->setCompanyId($data['companyId'])
                   ->setMac($data['mac'])
-                  ->setLastProvisionDate($data['lastProvisionDate']);
+                  ->setLastProvisionDate($data['lastProvisionDate'])
+                  ->setDirectMediaMethod($data['direct_media_method']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setTerminalModelId($data->{'TerminalModelId'})
@@ -614,7 +614,6 @@ class Terminals extends MapperAbstract
                   ->setDisallow($data->{'disallow'})
                   ->setAllow($data->{'allow'})
                   ->setDirectMedia($data->{'direct_media'})
-                  ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setMailboxesAors($data->{'mailboxes_aors'})
                   ->setOutboundProxy($data->{'outbound_proxy'})
                   ->setSendPai($data->{'send_pai'})
@@ -632,7 +631,8 @@ class Terminals extends MapperAbstract
                   ->setSubscribecontext($data->{'subscribecontext'})
                   ->setCompanyId($data->{'companyId'})
                   ->setMac($data->{'mac'})
-                  ->setLastProvisionDate($data->{'lastProvisionDate'});
+                  ->setLastProvisionDate($data->{'lastProvisionDate'})
+                  ->setDirectMediaMethod($data->{'direct_media_method'});
 
         } else if ($data instanceof \Oasis\Model\Raw\Terminals) {
             $entry->setId($data->getId())
@@ -645,7 +645,6 @@ class Terminals extends MapperAbstract
                   ->setDisallow($data->getDisallow())
                   ->setAllow($data->getAllow())
                   ->setDirectMedia($data->getDirectMedia())
-                  ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setMailboxesAors($data->getMailboxesAors())
                   ->setOutboundProxy($data->getOutboundProxy())
                   ->setSendPai($data->getSendPai())
@@ -663,7 +662,8 @@ class Terminals extends MapperAbstract
                   ->setSubscribecontext($data->getSubscribecontext())
                   ->setCompanyId($data->getCompanyId())
                   ->setMac($data->getMac())
-                  ->setLastProvisionDate($data->getLastProvisionDate());
+                  ->setLastProvisionDate($data->getLastProvisionDate())
+                  ->setDirectMediaMethod($data->getDirectMediaMethod());
 
         }
 

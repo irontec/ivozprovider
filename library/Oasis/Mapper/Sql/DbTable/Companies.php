@@ -40,6 +40,11 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
+        'CompaniesIbfk9' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
         'CompaniesIbfk2' => array(
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Timezones',
@@ -63,11 +68,6 @@ class Companies extends TableAbstract
         'CompaniesIbfk8' => array(
             'columns' => 'invoiceLanguageId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
-        'CompaniesIbfk9' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Countries',
             'refColumns' => 'id'
         )
     );

@@ -1,0 +1,159 @@
+production: 
+  class: \Oasis\Model\ProxyTrunks
+  fields: 
+    TerminalModelId: 
+      title: _('Terminal model id')
+      type: text
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 100
+    sorcery_id: 
+      title: _('Sorcery id')
+      type: text
+      required: true
+      maxLength: 40
+    aors: 
+      title: _('Aor')
+      type: text
+      maxLength: 200
+    auth: 
+      title: _('Auth')
+      type: text
+      maxLength: 40
+    context: 
+      title: _('Context')
+      type: text
+      maxLength: 40
+    disallow: 
+      title: _('Disallow')
+      type: text
+      defaultValue: all
+      maxLength: 200
+    allow: 
+      title: _('Allow')
+      type: text
+      defaultValue: alaw
+      maxLength: 200
+    direct_media: 
+      title: _('Direct media')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    mailboxes_aors: 
+      title: _('Mailboxes aor')
+      type: text
+      maxLength: 100
+    outbound_proxy: 
+      title: _('Outbound proxy')
+      type: text
+      maxLength: 40
+    send_pai: 
+      title: _('Send pai')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    send_rpid: 
+      title: _('Send rpid')
+      type: select
+      defaultValue: no
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    contact: 
+      title: _('Contact')
+      type: text
+      maxLength: 40
+    default_expiration: 
+      title: _('Default expiration')
+      type: number
+      source: 
+        control: Spinner
+    max_contacts: 
+      title: _('Max contact')
+      type: number
+      source: 
+        control: Spinner
+    minimum_expiration: 
+      title: _('Minimum expiration')
+      type: number
+      source: 
+        control: Spinner
+    remove_existing: 
+      title: _('Remove existing')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    qualify_frequency: 
+      title: _('Qualify frequency')
+      type: number
+      source: 
+        control: Spinner
+    authenticate_qualify: 
+      title: _('Authenticate qualify')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    maximum_expiration: 
+      title: _('Maximum expiration')
+      type: number
+      source: 
+        control: Spinner
+    support_path: 
+      title: _('Support path')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    password: 
+      title: ngettext('Password', 'Passwords', 1)
+      type: password
+      defaultValue: 
+      adapter: Blowfish
+    subscribecontext: 
+      title: _('Subscribecontext')
+      type: text
+      defaultValue: default
+      maxLength: 40
+    direct_media_method: 
+      title: _('Direct media method')
+      type: select
+      defaultValue: update
+      source: 
+        data: inline
+        values: 
+          'update': _('update')
+          'invite': _('invite')
+          'reinvite': _('reinvite')
+    ip: 
+      title: _('Ip')
+      type: text
+      required: true
+      maxLength: 100
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

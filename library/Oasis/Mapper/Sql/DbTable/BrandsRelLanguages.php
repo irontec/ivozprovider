@@ -40,14 +40,14 @@ class BrandsRelLanguages extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'BrandsRelLanguagesIbfk2' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
         'BrandsRelLanguagesIbfk3' => array(
             'columns' => 'brandId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'BrandsRelLanguagesIbfk2' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         )
     );

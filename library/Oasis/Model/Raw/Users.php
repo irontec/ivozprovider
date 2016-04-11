@@ -195,6 +195,13 @@ class Users extends ModelAbstract
 
 
     /**
+     * Parent relation Users_ibfk_12
+     *
+     * @var \Oasis\Model\Raw\Countries
+     */
+    protected $_Country;
+
+    /**
      * Parent relation Users_ibfk_1
      *
      * @var \Oasis\Model\Raw\Companies
@@ -214,13 +221,6 @@ class Users extends ModelAbstract
      * @var \Oasis\Model\Raw\Users
      */
     protected $_BossAssistant;
-
-    /**
-     * Parent relation Users_ibfk_12
-     *
-     * @var \Oasis\Model\Raw\Countries
-     */
-    protected $_Country;
 
     /**
      * Parent relation Users_ibfk_3
@@ -308,14 +308,6 @@ class Users extends ModelAbstract
     protected $_HuntGroupsRelUsers;
 
     /**
-     * Dependent relation IVRCommon_ibfk_8
-     * Type: One-to-Many relationship
-     *
-     * @var \Oasis\Model\Raw\IVRCommon[]
-     */
-    protected $_IVRCommonByTimeoutVoiceMailUser;
-
-    /**
      * Dependent relation IVRCommon_ibfk_9
      * Type: One-to-Many relationship
      *
@@ -324,12 +316,12 @@ class Users extends ModelAbstract
     protected $_IVRCommonByErrorVoiceMailUser;
 
     /**
-     * Dependent relation IVRCustom_ibfk_8
+     * Dependent relation IVRCommon_ibfk_8
      * Type: One-to-Many relationship
      *
-     * @var \Oasis\Model\Raw\IVRCustom[]
+     * @var \Oasis\Model\Raw\IVRCommon[]
      */
-    protected $_IVRCustomByTimeoutVoiceMailUser;
+    protected $_IVRCommonByTimeoutVoiceMailUser;
 
     /**
      * Dependent relation IVRCustom_ibfk_9
@@ -338,6 +330,14 @@ class Users extends ModelAbstract
      * @var \Oasis\Model\Raw\IVRCustom[]
      */
     protected $_IVRCustomByErrorVoiceMailUser;
+
+    /**
+     * Dependent relation IVRCustom_ibfk_8
+     * Type: One-to-Many relationship
+     *
+     * @var \Oasis\Model\Raw\IVRCustom[]
+     */
+    protected $_IVRCustomByTimeoutVoiceMailUser;
 
     /**
      * Dependent relation IVRCustomEntries_ibfk_4
@@ -406,6 +406,10 @@ class Users extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'UsersIbfk12'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
+                ),
             'UsersIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -417,10 +421,6 @@ class Users extends ModelAbstract
             'UsersIbfk11'=> array(
                     'property' => 'BossAssistant',
                     'table_name' => 'Users',
-                ),
-            'UsersIbfk12'=> array(
-                    'property' => 'Country',
-                    'table_name' => 'Countries',
                 ),
             'UsersIbfk3'=> array(
                     'property' => 'Terminal',
@@ -469,20 +469,20 @@ class Users extends ModelAbstract
                     'property' => 'HuntGroupsRelUsers',
                     'table_name' => 'HuntGroupsRelUsers',
                 ),
-            'IVRCommonIbfk8' => array(
-                    'property' => 'IVRCommonByTimeoutVoiceMailUser',
-                    'table_name' => 'IVRCommon',
-                ),
             'IVRCommonIbfk9' => array(
                     'property' => 'IVRCommonByErrorVoiceMailUser',
                     'table_name' => 'IVRCommon',
                 ),
-            'IVRCustomIbfk8' => array(
-                    'property' => 'IVRCustomByTimeoutVoiceMailUser',
-                    'table_name' => 'IVRCustom',
+            'IVRCommonIbfk8' => array(
+                    'property' => 'IVRCommonByTimeoutVoiceMailUser',
+                    'table_name' => 'IVRCommon',
                 ),
             'IVRCustomIbfk9' => array(
                     'property' => 'IVRCustomByErrorVoiceMailUser',
+                    'table_name' => 'IVRCustom',
+                ),
+            'IVRCustomIbfk8' => array(
+                    'property' => 'IVRCustomByTimeoutVoiceMailUser',
                     'table_name' => 'IVRCustom',
                 ),
             'IVRCustomEntriesIbfk4' => array(
@@ -511,10 +511,10 @@ class Users extends ModelAbstract
             'DDIs_ibfk_3',
             'ExternalCallFilters_ibfk_7',
             'ExternalCallFilters_ibfk_8',
-            'IVRCommon_ibfk_8',
             'IVRCommon_ibfk_9',
-            'IVRCustom_ibfk_8',
+            'IVRCommon_ibfk_8',
             'IVRCustom_ibfk_9',
+            'IVRCustom_ibfk_8',
             'IVRCustomEntries_ibfk_4',
             'Users_ibfk_11'
         ));
@@ -1340,6 +1340,57 @@ class Users extends ModelAbstract
     }
 
     /**
+     * Sets parent relation Country
+     *
+     * @param \Oasis\Model\Raw\Countries $data
+     * @return \Oasis\Model\Raw\Users
+     */
+    public function setCountry(\Oasis\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \Oasis\Model\Raw\Companies $data
@@ -1490,57 +1541,6 @@ class Users extends ModelAbstract
         }
 
         return $this->_BossAssistant;
-    }
-
-    /**
-     * Sets parent relation Country
-     *
-     * @param \Oasis\Model\Raw\Countries $data
-     * @return \Oasis\Model\Raw\Users
-     */
-    public function setCountry(\Oasis\Model\Raw\Countries $data)
-    {
-        $this->_Country = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCountryId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk12');
-        return $this;
-    }
-
-    /**
-     * Gets parent Country
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Countries
-     */
-    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk12';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Country = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Country;
     }
 
     /**
@@ -2378,96 +2378,6 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations IVRCommon_ibfk_8
-     *
-     * @param array $data An array of \Oasis\Model\Raw\IVRCommon
-     * @return \Oasis\Model\Raw\Users
-     */
-    public function setIVRCommonByTimeoutVoiceMailUser(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_IVRCommonByTimeoutVoiceMailUser === null) {
-
-                $this->getIVRCommonByTimeoutVoiceMailUser();
-            }
-
-            $oldRelations = $this->_IVRCommonByTimeoutVoiceMailUser;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_IVRCommonByTimeoutVoiceMailUser = array();
-
-        foreach ($data as $object) {
-            $this->addIVRCommonByTimeoutVoiceMailUser($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations IVRCommon_ibfk_8
-     *
-     * @param \Oasis\Model\Raw\IVRCommon $data
-     * @return \Oasis\Model\Raw\Users
-     */
-    public function addIVRCommonByTimeoutVoiceMailUser(\Oasis\Model\Raw\IVRCommon $data)
-    {
-        $this->_IVRCommonByTimeoutVoiceMailUser[] = $data;
-        $this->_setLoaded('IVRCommonIbfk8');
-        return $this;
-    }
-
-    /**
-     * Gets dependent IVRCommon_ibfk_8
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \Oasis\Model\Raw\IVRCommon
-     */
-    public function getIVRCommonByTimeoutVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'IVRCommonIbfk8';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_IVRCommonByTimeoutVoiceMailUser = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_IVRCommonByTimeoutVoiceMailUser;
-    }
-
-    /**
      * Sets dependent relations IVRCommon_ibfk_9
      *
      * @param array $data An array of \Oasis\Model\Raw\IVRCommon
@@ -2558,21 +2468,21 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations IVRCustom_ibfk_8
+     * Sets dependent relations IVRCommon_ibfk_8
      *
-     * @param array $data An array of \Oasis\Model\Raw\IVRCustom
+     * @param array $data An array of \Oasis\Model\Raw\IVRCommon
      * @return \Oasis\Model\Raw\Users
      */
-    public function setIVRCustomByTimeoutVoiceMailUser(array $data, $deleteOrphans = false)
+    public function setIVRCommonByTimeoutVoiceMailUser(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_IVRCustomByTimeoutVoiceMailUser === null) {
+            if ($this->_IVRCommonByTimeoutVoiceMailUser === null) {
 
-                $this->getIVRCustomByTimeoutVoiceMailUser();
+                $this->getIVRCommonByTimeoutVoiceMailUser();
             }
 
-            $oldRelations = $this->_IVRCustomByTimeoutVoiceMailUser;
+            $oldRelations = $this->_IVRCommonByTimeoutVoiceMailUser;
 
             if (is_array($oldRelations)) {
 
@@ -2596,39 +2506,39 @@ class Users extends ModelAbstract
             }
         }
 
-        $this->_IVRCustomByTimeoutVoiceMailUser = array();
+        $this->_IVRCommonByTimeoutVoiceMailUser = array();
 
         foreach ($data as $object) {
-            $this->addIVRCustomByTimeoutVoiceMailUser($object);
+            $this->addIVRCommonByTimeoutVoiceMailUser($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations IVRCustom_ibfk_8
+     * Sets dependent relations IVRCommon_ibfk_8
      *
-     * @param \Oasis\Model\Raw\IVRCustom $data
+     * @param \Oasis\Model\Raw\IVRCommon $data
      * @return \Oasis\Model\Raw\Users
      */
-    public function addIVRCustomByTimeoutVoiceMailUser(\Oasis\Model\Raw\IVRCustom $data)
+    public function addIVRCommonByTimeoutVoiceMailUser(\Oasis\Model\Raw\IVRCommon $data)
     {
-        $this->_IVRCustomByTimeoutVoiceMailUser[] = $data;
-        $this->_setLoaded('IVRCustomIbfk8');
+        $this->_IVRCommonByTimeoutVoiceMailUser[] = $data;
+        $this->_setLoaded('IVRCommonIbfk8');
         return $this;
     }
 
     /**
-     * Gets dependent IVRCustom_ibfk_8
+     * Gets dependent IVRCommon_ibfk_8
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \Oasis\Model\Raw\IVRCustom
+     * @return array The array of \Oasis\Model\Raw\IVRCommon
      */
-    public function getIVRCustomByTimeoutVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    public function getIVRCommonByTimeoutVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'IVRCustomIbfk8';
+        $fkName = 'IVRCommonIbfk8';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -2640,11 +2550,11 @@ class Users extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_IVRCustomByTimeoutVoiceMailUser = $related;
+            $this->_IVRCommonByTimeoutVoiceMailUser = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_IVRCustomByTimeoutVoiceMailUser;
+        return $this->_IVRCommonByTimeoutVoiceMailUser;
     }
 
     /**
@@ -2735,6 +2645,96 @@ class Users extends ModelAbstract
         }
 
         return $this->_IVRCustomByErrorVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations IVRCustom_ibfk_8
+     *
+     * @param array $data An array of \Oasis\Model\Raw\IVRCustom
+     * @return \Oasis\Model\Raw\Users
+     */
+    public function setIVRCustomByTimeoutVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_IVRCustomByTimeoutVoiceMailUser === null) {
+
+                $this->getIVRCustomByTimeoutVoiceMailUser();
+            }
+
+            $oldRelations = $this->_IVRCustomByTimeoutVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_IVRCustomByTimeoutVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addIVRCustomByTimeoutVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations IVRCustom_ibfk_8
+     *
+     * @param \Oasis\Model\Raw\IVRCustom $data
+     * @return \Oasis\Model\Raw\Users
+     */
+    public function addIVRCustomByTimeoutVoiceMailUser(\Oasis\Model\Raw\IVRCustom $data)
+    {
+        $this->_IVRCustomByTimeoutVoiceMailUser[] = $data;
+        $this->_setLoaded('IVRCustomIbfk8');
+        return $this;
+    }
+
+    /**
+     * Gets dependent IVRCustom_ibfk_8
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \Oasis\Model\Raw\IVRCustom
+     */
+    public function getIVRCustomByTimeoutVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'IVRCustomIbfk8';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_IVRCustomByTimeoutVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_IVRCustomByTimeoutVoiceMailUser;
     }
 
     /**

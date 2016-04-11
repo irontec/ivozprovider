@@ -40,14 +40,14 @@ class BrandOperators extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'BrandOperatorsIbfk2' => array(
-            'columns' => 'timezoneId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Timezones',
-            'refColumns' => 'id'
-        ),
         'BrandOperatorsIbfk3' => array(
             'columns' => 'brandId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'BrandOperatorsIbfk2' => array(
+            'columns' => 'timezoneId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
         )
     );

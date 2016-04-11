@@ -116,18 +116,18 @@ class KamTrunksUacreg extends ModelAbstract
 
 
     /**
-     * Parent relation kam_trunks_uacreg_ibfk_1
-     *
-     * @var \Oasis\Model\Raw\Brands
-     */
-    protected $_Brand;
-
-    /**
      * Parent relation kam_trunks_uacreg_ibfk_2
      *
      * @var \Oasis\Model\Raw\PeeringContracts
      */
     protected $_PeeringContract;
+
+    /**
+     * Parent relation kam_trunks_uacreg_ibfk_1
+     *
+     * @var \Oasis\Model\Raw\Brands
+     */
+    protected $_Brand;
 
 
     protected $_columnsList = array(
@@ -160,13 +160,13 @@ class KamTrunksUacreg extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'KamTrunksUacregIbfk1'=> array(
-                    'property' => 'Brand',
-                    'table_name' => 'Brands',
-                ),
             'KamTrunksUacregIbfk2'=> array(
                     'property' => 'PeeringContract',
                     'table_name' => 'PeeringContracts',
+                ),
+            'KamTrunksUacregIbfk1'=> array(
+                    'property' => 'Brand',
+                    'table_name' => 'Brands',
                 ),
         ));
 
@@ -661,57 +661,6 @@ class KamTrunksUacreg extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Brand
-     *
-     * @param \Oasis\Model\Raw\Brands $data
-     * @return \Oasis\Model\Raw\KamTrunksUacreg
-     */
-    public function setBrand(\Oasis\Model\Raw\Brands $data)
-    {
-        $this->_Brand = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setBrandId($primaryKey);
-        }
-
-        $this->_setLoaded('KamTrunksUacregIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets parent Brand
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Brands
-     */
-    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'KamTrunksUacregIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Brand = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Brand;
-    }
-
-    /**
      * Sets parent relation PeeringContract
      *
      * @param \Oasis\Model\Raw\PeeringContracts $data
@@ -760,6 +709,57 @@ class KamTrunksUacreg extends ModelAbstract
         }
 
         return $this->_PeeringContract;
+    }
+
+    /**
+     * Sets parent relation Brand
+     *
+     * @param \Oasis\Model\Raw\Brands $data
+     * @return \Oasis\Model\Raw\KamTrunksUacreg
+     */
+    public function setBrand(\Oasis\Model\Raw\Brands $data)
+    {
+        $this->_Brand = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setBrandId($primaryKey);
+        }
+
+        $this->_setLoaded('KamTrunksUacregIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent Brand
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Brands
+     */
+    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamTrunksUacregIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Brand = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Brand;
     }
 
     /**

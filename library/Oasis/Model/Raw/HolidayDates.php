@@ -61,18 +61,18 @@ class HolidayDates extends ModelAbstract
 
 
     /**
-     * Parent relation HolidayDates_ibfk_1
-     *
-     * @var \Oasis\Model\Raw\Calendars
-     */
-    protected $_Calendar;
-
-    /**
      * Parent relation HolidayDates_ibfk_2
      *
      * @var \Oasis\Model\Raw\Locutions
      */
     protected $_Locution;
+
+    /**
+     * Parent relation HolidayDates_ibfk_1
+     *
+     * @var \Oasis\Model\Raw\Calendars
+     */
+    protected $_Calendar;
 
 
     protected $_columnsList = array(
@@ -98,13 +98,13 @@ class HolidayDates extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'HolidayDatesIbfk1'=> array(
-                    'property' => 'Calendar',
-                    'table_name' => 'Calendars',
-                ),
             'HolidayDatesIbfk2'=> array(
                     'property' => 'Locution',
                     'table_name' => 'Locutions',
+                ),
+            'HolidayDatesIbfk1'=> array(
+                    'property' => 'Calendar',
+                    'table_name' => 'Calendars',
                 ),
         ));
 
@@ -322,57 +322,6 @@ class HolidayDates extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Calendar
-     *
-     * @param \Oasis\Model\Raw\Calendars $data
-     * @return \Oasis\Model\Raw\HolidayDates
-     */
-    public function setCalendar(\Oasis\Model\Raw\Calendars $data)
-    {
-        $this->_Calendar = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCalendarId($primaryKey);
-        }
-
-        $this->_setLoaded('HolidayDatesIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets parent Calendar
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Calendars
-     */
-    public function getCalendar($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'HolidayDatesIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Calendar = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Calendar;
-    }
-
-    /**
      * Sets parent relation Locution
      *
      * @param \Oasis\Model\Raw\Locutions $data
@@ -421,6 +370,57 @@ class HolidayDates extends ModelAbstract
         }
 
         return $this->_Locution;
+    }
+
+    /**
+     * Sets parent relation Calendar
+     *
+     * @param \Oasis\Model\Raw\Calendars $data
+     * @return \Oasis\Model\Raw\HolidayDates
+     */
+    public function setCalendar(\Oasis\Model\Raw\Calendars $data)
+    {
+        $this->_Calendar = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCalendarId($primaryKey);
+        }
+
+        $this->_setLoaded('HolidayDatesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent Calendar
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Calendars
+     */
+    public function getCalendar($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HolidayDatesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Calendar = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Calendar;
     }
 
     /**

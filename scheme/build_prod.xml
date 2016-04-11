@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="oasis" basedir="." default="build">
+<project name="ivozprovider" basedir="." default="build">
 
     <!-- Sets the DSTAMP, TSTAMP and TODAY properties -->
     <tstamp/>

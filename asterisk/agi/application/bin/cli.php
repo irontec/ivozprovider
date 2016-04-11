@@ -12,7 +12,7 @@ define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
-'/opt/oasis/library',
+'/opt/irontec/ivozprovider/library',
 realpath(APPLICATION_PATH . '/../library'),
 get_include_path(),
 )));

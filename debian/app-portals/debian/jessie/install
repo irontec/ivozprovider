@@ -1,5 +1,0 @@
-application /opt/oasis/app-portals/
-docs /opt/oasis/app-portals/
-public /opt/oasis/app-portals/
-storage /opt/oasis/app-portals/
-tests /opt/oasis/app-portals/

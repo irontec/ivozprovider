@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Add bashrc.d include on first install
+if [ -z "$2" ]; then
+    echo >> ~/.bashrc
+    echo '# Include extra resources files' >> ~/.bashrc
+    echo '[ -d ~/.bashrc.d ] && for RC_FILE in ~/.bashrc.d/*; do . $RC_FILE; done' >> ~/.bashrc
+    echo >> ~/.bashrc
+fi
+
+# Change storage perms
+chmod 777 -R /opt/irontec/ivozprovider/storage
+
+:

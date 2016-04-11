@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+build_userweb:
+	# Build with npm
+	cd web/userweb ; npm install bower grunt-cli karma grunt-karma
+	cd web/userweb ; npm install 
+	cd web/userweb ; node_modules/bower/bin/bower install --allow-root
+	cd web/userweb ; node_modules/grunt-cli/bin/grunt build 
+	cd web/userweb ; rm -f dist/.htaccess
+	cd web/userweb ; mv dist/index.html ./
+
+build_library:
+	# Build with composer
+	cd library ; git config --global http.sslVerify false
+	cd library ; curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
+	cd library ; ./composer --no-interaction install
+
+override_dh_auto_build: build_userweb build_library
+
+%:
+	dh $@

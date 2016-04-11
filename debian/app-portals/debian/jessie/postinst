@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# Change cache dir perms
-chmod 777 /opt/oasis/app-portals/application/cache
-
-:

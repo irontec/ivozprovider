@@ -40,14 +40,14 @@ class HolidayDates extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'HolidayDatesIbfk1' => array(
-            'columns' => 'calendarId',
-            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Calendars',
-            'refColumns' => 'id'
-        ),
         'HolidayDatesIbfk2' => array(
             'columns' => 'locutionId',
             'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Locutions',
+            'refColumns' => 'id'
+        ),
+        'HolidayDatesIbfk1' => array(
+            'columns' => 'calendarId',
+            'refTableClass' => 'Oasis\\Mapper\\Sql\\DbTable\\Calendars',
             'refColumns' => 'id'
         )
     );

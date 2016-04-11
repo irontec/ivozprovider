@@ -68,18 +68,18 @@ class Faxes extends ModelAbstract
 
 
     /**
-     * Parent relation Faxes_ibfk_1
-     *
-     * @var \Oasis\Model\Raw\Companies
-     */
-    protected $_Company;
-
-    /**
      * Parent relation Faxes_ibfk_2
      *
      * @var \Oasis\Model\Raw\DDIs
      */
     protected $_DDIs;
+
+    /**
+     * Parent relation Faxes_ibfk_1
+     *
+     * @var \Oasis\Model\Raw\Companies
+     */
+    protected $_Company;
 
 
     /**
@@ -122,13 +122,13 @@ class Faxes extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'FaxesIbfk1'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
-                ),
             'FaxesIbfk2'=> array(
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
+                ),
+            'FaxesIbfk1'=> array(
+                    'property' => 'Company',
+                    'table_name' => 'Companies',
                 ),
         ));
 
@@ -371,57 +371,6 @@ class Faxes extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Company
-     *
-     * @param \Oasis\Model\Raw\Companies $data
-     * @return \Oasis\Model\Raw\Faxes
-     */
-    public function setCompany(\Oasis\Model\Raw\Companies $data)
-    {
-        $this->_Company = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
-        }
-
-        $this->_setLoaded('FaxesIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets parent Company
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Companies
-     */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'FaxesIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Company;
-    }
-
-    /**
      * Sets parent relation OutgoingDDI
      *
      * @param \Oasis\Model\Raw\DDIs $data
@@ -470,6 +419,57 @@ class Faxes extends ModelAbstract
         }
 
         return $this->_DDIs;
+    }
+
+    /**
+     * Sets parent relation Company
+     *
+     * @param \Oasis\Model\Raw\Companies $data
+     * @return \Oasis\Model\Raw\Faxes
+     */
+    public function setCompany(\Oasis\Model\Raw\Companies $data)
+    {
+        $this->_Company = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCompanyId($primaryKey);
+        }
+
+        $this->_setLoaded('FaxesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent Company
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Companies
+     */
+    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FaxesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Company = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Company;
     }
 
     /**

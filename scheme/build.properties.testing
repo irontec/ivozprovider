@@ -5,7 +5,7 @@ build.dir=./
 db.host=localhost
 db.user=root
 db.pass=farsa
-db.name=oasis
+db.name=ivozprovider
 
 # paths to programs
 progs.mysql=/usr/bin/mysql

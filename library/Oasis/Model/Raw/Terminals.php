@@ -26,11 +26,6 @@ class Terminals extends ModelAbstract
         'yes',
         'no',
     );
-    protected $_directMediaMethodAcceptedValues = array(
-        'update',
-        'invite',
-        'reinvite',
-    );
     protected $_sendPaiAcceptedValues = array(
         'yes',
         'no',
@@ -50,6 +45,11 @@ class Terminals extends ModelAbstract
     protected $_supportPathAcceptedValues = array(
         'yes',
         'no',
+    );
+    protected $_directMediaMethodAcceptedValues = array(
+        'update',
+        'invite',
+        'reinvite',
     );
 
     /**
@@ -122,14 +122,6 @@ class Terminals extends ModelAbstract
      * @var string
      */
     protected $_directMedia;
-
-    /**
-     * [enum:update|invite|reinvite]
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_directMediaMethod;
 
     /**
      * Database var type varchar
@@ -258,6 +250,14 @@ class Terminals extends ModelAbstract
      */
     protected $_lastProvisionDate;
 
+    /**
+     * [enum:update|invite|reinvite]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_directMediaMethod;
+
 
     /**
      * Parent relation Terminals_CompanyId_ibfk_2
@@ -293,7 +293,6 @@ class Terminals extends ModelAbstract
         'disallow'=>'disallow',
         'allow'=>'allow',
         'direct_media'=>'directMedia',
-        'direct_media_method'=>'directMediaMethod',
         'mailboxes_aors'=>'mailboxesAors',
         'outbound_proxy'=>'outboundProxy',
         'send_pai'=>'sendPai',
@@ -312,6 +311,7 @@ class Terminals extends ModelAbstract
         'companyId'=>'companyId',
         'mac'=>'mac',
         'lastProvisionDate'=>'lastProvisionDate',
+        'direct_media_method'=>'directMediaMethod',
     );
 
     /**
@@ -321,8 +321,8 @@ class Terminals extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'id'=> array('uuid:php'),
-            'direct_media_method'=> array('enum:update|invite|reinvite'),
             'password'=> array('password'),
+            'direct_media_method'=> array('enum:update|invite|reinvite'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -723,43 +723,6 @@ class Terminals extends ModelAbstract
     public function getDirectMedia()
     {
         return $this->_directMedia;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \Oasis\Model\Raw\Terminals
-     */
-    public function setDirectMediaMethod($data)
-    {
-
-        if ($this->_directMediaMethod != $data) {
-            $this->_logChange('directMediaMethod');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_directMediaMethod = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
-            }
-            $this->_directMediaMethod = (string) $data;
-
-        } else {
-            $this->_directMediaMethod = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column direct_media_method
-     *
-     * @return string
-     */
-    public function getDirectMediaMethod()
-    {
-        return $this->_directMediaMethod;
     }
 
     /**
@@ -1404,6 +1367,43 @@ class Terminals extends ModelAbstract
         }
 
         return $this->_lastProvisionDate->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \Oasis\Model\Raw\Terminals
+     */
+    public function setDirectMediaMethod($data)
+    {
+
+        if ($this->_directMediaMethod != $data) {
+            $this->_logChange('directMediaMethod');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_directMediaMethod = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+            }
+            $this->_directMediaMethod = (string) $data;
+
+        } else {
+            $this->_directMediaMethod = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column direct_media_method
+     *
+     * @return string
+     */
+    public function getDirectMediaMethod()
+    {
+        return $this->_directMediaMethod;
     }
 
     /**

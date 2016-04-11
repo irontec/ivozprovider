@@ -164,6 +164,13 @@ class IVRCommon extends ModelAbstract
 
 
     /**
+     * Parent relation IVRCommon_ibfk_9
+     *
+     * @var \Oasis\Model\Raw\Users
+     */
+    protected $_ErrorVoiceMailUser;
+
+    /**
      * Parent relation IVRCommon_ibfk_1
      *
      * @var \Oasis\Model\Raw\Companies
@@ -218,13 +225,6 @@ class IVRCommon extends ModelAbstract
      * @var \Oasis\Model\Raw\Users
      */
     protected $_TimeoutVoiceMailUser;
-
-    /**
-     * Parent relation IVRCommon_ibfk_9
-     *
-     * @var \Oasis\Model\Raw\Users
-     */
-    protected $_ErrorVoiceMailUser;
 
 
     /**
@@ -281,6 +281,10 @@ class IVRCommon extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'IVRCommonIbfk9'=> array(
+                    'property' => 'ErrorVoiceMailUser',
+                    'table_name' => 'Users',
+                ),
             'IVRCommonIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -311,10 +315,6 @@ class IVRCommon extends ModelAbstract
                 ),
             'IVRCommonIbfk8'=> array(
                     'property' => 'TimeoutVoiceMailUser',
-                    'table_name' => 'Users',
-                ),
-            'IVRCommonIbfk9'=> array(
-                    'property' => 'ErrorVoiceMailUser',
                     'table_name' => 'Users',
                 ),
         ));
@@ -919,6 +919,57 @@ class IVRCommon extends ModelAbstract
     }
 
     /**
+     * Sets parent relation ErrorVoiceMailUser
+     *
+     * @param \Oasis\Model\Raw\Users $data
+     * @return \Oasis\Model\Raw\IVRCommon
+     */
+    public function setErrorVoiceMailUser(\Oasis\Model\Raw\Users $data)
+    {
+        $this->_ErrorVoiceMailUser = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setErrorVoiceMailUserId($primaryKey);
+        }
+
+        $this->_setLoaded('IVRCommonIbfk9');
+        return $this;
+    }
+
+    /**
+     * Gets parent ErrorVoiceMailUser
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Users
+     */
+    public function getErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'IVRCommonIbfk9';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ErrorVoiceMailUser = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ErrorVoiceMailUser;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \Oasis\Model\Raw\Companies $data
@@ -1324,57 +1375,6 @@ class IVRCommon extends ModelAbstract
         }
 
         return $this->_TimeoutVoiceMailUser;
-    }
-
-    /**
-     * Sets parent relation ErrorVoiceMailUser
-     *
-     * @param \Oasis\Model\Raw\Users $data
-     * @return \Oasis\Model\Raw\IVRCommon
-     */
-    public function setErrorVoiceMailUser(\Oasis\Model\Raw\Users $data)
-    {
-        $this->_ErrorVoiceMailUser = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setErrorVoiceMailUserId($primaryKey);
-        }
-
-        $this->_setLoaded('IVRCommonIbfk9');
-        return $this;
-    }
-
-    /**
-     * Gets parent ErrorVoiceMailUser
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Users
-     */
-    public function getErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'IVRCommonIbfk9';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_ErrorVoiceMailUser = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_ErrorVoiceMailUser;
     }
 
     /**

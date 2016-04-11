@@ -90,18 +90,18 @@ class BrandOperators extends ModelAbstract
 
 
     /**
-     * Parent relation BrandOperators_ibfk_2
-     *
-     * @var \Oasis\Model\Raw\Timezones
-     */
-    protected $_Timezone;
-
-    /**
      * Parent relation BrandOperators_ibfk_3
      *
      * @var \Oasis\Model\Raw\Brands
      */
     protected $_Brand;
+
+    /**
+     * Parent relation BrandOperators_ibfk_2
+     *
+     * @var \Oasis\Model\Raw\Timezones
+     */
+    protected $_Timezone;
 
 
     protected $_columnsList = array(
@@ -132,13 +132,13 @@ class BrandOperators extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'BrandOperatorsIbfk2'=> array(
-                    'property' => 'Timezone',
-                    'table_name' => 'Timezones',
-                ),
             'BrandOperatorsIbfk3'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'BrandOperatorsIbfk2'=> array(
+                    'property' => 'Timezone',
+                    'table_name' => 'Timezones',
                 ),
         ));
 
@@ -500,57 +500,6 @@ class BrandOperators extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Timezone
-     *
-     * @param \Oasis\Model\Raw\Timezones $data
-     * @return \Oasis\Model\Raw\BrandOperators
-     */
-    public function setTimezone(\Oasis\Model\Raw\Timezones $data)
-    {
-        $this->_Timezone = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setTimezoneId($primaryKey);
-        }
-
-        $this->_setLoaded('BrandOperatorsIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent Timezone
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \Oasis\Model\Raw\Timezones
-     */
-    public function getTimezone($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'BrandOperatorsIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Timezone = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Timezone;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \Oasis\Model\Raw\Brands $data
@@ -599,6 +548,57 @@ class BrandOperators extends ModelAbstract
         }
 
         return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation Timezone
+     *
+     * @param \Oasis\Model\Raw\Timezones $data
+     * @return \Oasis\Model\Raw\BrandOperators
+     */
+    public function setTimezone(\Oasis\Model\Raw\Timezones $data)
+    {
+        $this->_Timezone = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTimezoneId($primaryKey);
+        }
+
+        $this->_setLoaded('BrandOperatorsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Timezone
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \Oasis\Model\Raw\Timezones
+     */
+    public function getTimezone($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'BrandOperatorsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Timezone = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Timezone;
     }
 
     /**
