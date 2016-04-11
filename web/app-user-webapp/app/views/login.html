@@ -1,0 +1,54 @@
+<div class="row">
+
+    <form 
+        class="form-login form form-horizontal" 
+        name="form" 
+        ng-submit="login()" 
+        role="form"
+        >
+        
+        <div class="form-group text-center">
+            <img ng-src="{{logo}}" alt="{{brandName}}" />
+            <h3>{{brandName}}</h3>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <div ng-show="error" class="alert alert-danger text-center">
+                    <strong>{{'Error login' | translate}}</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="username" class="col-sm-4 control-label">{{'Username' | translate}}</label>
+            <div class="col-sm-5">
+               <div class="input-group">
+               <div class="input-group-addon"><i class="fa fa-user"></i></div>
+               <input type="text" name="username" id="username" class="form-control empty" ng-model="username" placeholder="{{'Username' | translate}}" required />
+               </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            
+            <label for="username" class="col-sm-4 control-label">{{'Password' | translate}}</label>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                    <input type="password" name="password" id="password" class="form-control empty" ng-model="password" placeholder="{{'Password' | translate}}" required />
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="form-actions text-center">
+        
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-info">
+                <i class="fa fa-arrow-circle-o-right"></i> {{'Login' | translate}}
+            </button>
+        </div>
+        
+    </form>
+
+</div>

@@ -1,0 +1,23 @@
+Source: oasis-kamailio-trunks-config
+Section: php
+Priority: optional
+Build-Depends: debhelper
+Standards-Version: 3.9.6
+Maintainer: Irontec OASIS Team <oasis@irontec.com>
+
+Package: oasis-kamailio-trunks-config
+Architecture: all
+Section: admin
+Priority: optional
+Depends: kamailio,
+    kamailio-json-modules,
+    kamailio-mysql-modules,
+    kamailio-tls-modules,
+    kamailio-xml-modules,
+    kamailio-websocket-modules
+Homepage: http://www.irontec.com
+Description: OASIS - Kamailio - Configuration files for Trunks proxy kamailio
+  This package include all requires files to configure kamailio properly
+  for a trunks proxy.
+ .
+

@@ -1,0 +1,6 @@
+[Unit]
+Description=CDRparser
+
+[Service]
+Type=oneshot
+ExecStart=/opt/oasis/cdr-parser/CDRparser.pl

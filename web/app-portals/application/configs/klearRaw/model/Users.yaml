@@ -1,0 +1,232 @@
+production: 
+  class: \Oasis\Model\Users
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 100
+    lastname: 
+      title: _('Lastname')
+      type: text
+      required: true
+      maxLength: 100
+    email: 
+      title: ngettext('Email', 'Emails', 1)
+      type: text
+      required: true
+      maxLength: 100
+    pass: 
+      title: _('Pass')
+      type: password
+      required: true
+      adapter: Blowfish
+    timezoneId: 
+      title: _('Timezone id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Timezones
+          fieldName: 
+            fields: 
+              - tz
+            template: '%tz%'
+          order: tz
+        'null': _("Unasigned")
+    terminalId: 
+      title: _('Terminal id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Terminals
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    extensionId: 
+      title: _('Extension id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+    outgoingDDIId: 
+      title: _('Outgoing d d i id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\DDIs
+          fieldName: 
+            fields: 
+              - DDI
+            template: '%DDI%'
+          order: DDI
+        'null': _("Unasigned")
+    callACLId: 
+      title: _('Call a c l id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\CallACL
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    doNotDisturb: 
+      title: _('Do not disturb')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    isBoss: 
+      title: _('Is boss')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    bossAssistantId: 
+      title: _('Boss assistant id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    exceptionBoosAssistantRegExp: 
+      title: _('Exception boos assistant reg exp')
+      type: text
+      maxLength: 255
+    username: 
+      title: _('Username')
+      type: text
+      required: true
+      maxLength: 50
+    active: 
+      title: _('Active')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    maxCalls: 
+      title: _('Max call')
+      type: number
+      defaultValue: 2
+      source: 
+        control: Spinner
+    callWaiting: 
+      title: _('Call waiting')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    attachVoicemailSound: 
+      title: _('Attach voicemail sound')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    voicemailEnabled: 
+      title: _('Voicemail enabled')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    tokenKey: 
+      title: _('Token key')
+      type: text
+      maxLength: 125
+    isCompanyAdmin: 
+      title: _('Is company admin')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    countryId: 
+      title: _('Country id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - code
+            template: '%code%'
+          order: code
+        'null': _("Unasigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

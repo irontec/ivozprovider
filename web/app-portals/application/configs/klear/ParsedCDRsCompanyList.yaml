@@ -1,0 +1,31 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include ParsedCDRsList.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: parsedCDRsCompanyList_screen
+  screens: &parsedCDRsCompany_screenLink
+    <<: *parsedCDRs_screenLink
+    parsedCDRsCompanyList_screen: &parsedCDRsCompanyList_screenLink
+      <<: *parsedCDRsList_screenLink
+      class: ui-silk-application-view-list  
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          <<: *parsedCDRsBlacklist_Link
+          brandId: true             
+      options:
+  dialogs: 
+    <<: *parsedCDRs_dialogsLink
+            
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

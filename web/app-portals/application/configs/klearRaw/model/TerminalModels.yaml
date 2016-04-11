@@ -1,0 +1,54 @@
+production: 
+  class: \Oasis\Model\TerminalModels
+  fields: 
+    iden: 
+      title: ngettext('Iden', 'Idens', 1)
+      type: text
+      required: true
+      maxLength: 100
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue: 
+      maxLength: 100
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+      maxLength: 500
+    TerminalManufacturerId: 
+      title: _('Terminal manufacturer id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\TerminalManufacturers
+          fieldName: 
+            fields: 
+              - iden
+            template: '%iden%'
+          order: iden
+    genericTemplate: 
+      title: _('Generic template')
+      type: textarea
+    specificTemplate: 
+      title: _('Specific template')
+      type: textarea
+    genericUrlPattern: 
+      title: _('Generic url pattern')
+      type: text
+      maxLength: 225
+    specificUrlPattern: 
+      title: _('Specific url pattern')
+      type: text
+      maxLength: 225
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

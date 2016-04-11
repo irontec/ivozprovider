@@ -1,0 +1,230 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: parsedCDRsList_screen
+  screens: &parsedCDRs_screenLink
+    parsedCDRsList_screen: &parsedCDRsList_screenLink 
+      controller: list
+      csv: true
+      pagination: 
+        items: 25
+      <<: *ParsedCDRs
+      class: ui-silk-application-view-list   
+      title: _("List of %s %2s", ngettext('Parsed CDR', 'Parsed CDRs', 0), "[format| (%parent%)]")
+      order:
+        field:
+          - calldate desc
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            parsedCDRsEdit_screen: true
+          dialogs:
+            testTarificateCall_dialog: false
+            getMeteringInfo_dialog: true
+          default: parsedCDRsEdit_screen
+        order:
+          calldate: true
+          src: true
+          src_dialed: true
+          src_duration: true
+          dst: true
+          dst_duration: true
+          callSrcSumary: true
+          callDstSumary: true
+          callTypeSumary: true
+          type: true
+          brandId: true
+          companyId: true
+          metered: true
+          meteringSumary: true
+          
+        blacklist: &parsedCDRsBlacklist_Link
+          aleg: true
+          bleg: true
+          dst_src_cid: true
+          fw_desc: true
+          ext_forwarder: true
+          oasis_forwarder: true
+          forward_to: true
+          pricingPlanDetails: true
+
+          callSrcSumary: true
+          callDstSumary: true
+#          callTypeSumary: true
+          meteringSumary: true
+
+          meteringDate: true
+          pricingPlanId: true
+          targetPatternId: true
+#          price: true
+#          dst_duration: true
+          desc: true
+#          src: true
+##          calldate: true
+          type: true
+#          src_dialed: true
+#          src_duration: true
+#          dst: true
+      options: 
+        title: _("Options")
+        dialogs:
+          tarificateCall_dialog: true
+#        screens: 
+#          parsedCDRsNew_screen: true
+#    parsedCDRsNew_screen: &parsedCDRsNew_screenLink 
+#      <<: *ParsedCDRs
+#      controller: new
+#      class: ui-silk-add
+#      label: true
+#      multiInstance: true
+#      title: _("Add %s", ngettext('Parsed c d r', 'Parsed c d rs', 1))
+#      shortcutOption: N
+      preconfiguredFilters:
+        metered:
+          title: _("Metered")
+          description: _("Metered")
+          field: metered
+          value: "1"
+        notMetered:
+          title: _("Not Metered")
+          description: _("Not Metered")
+          field: metered
+          value: "0"
+        useruser: 
+          title: _("USER-USER")
+          description: _("LLAMADA INTERNA")
+          field: callTypeSumary
+          value: "USER-USER"
+        userpbx: 
+          title: _("USER-PBX")
+          description: _("LLAMADA DE USUARIO QUE MUERE EN AS")
+          field: callTypeSumary
+          value: "USER-PBX"
+        userpstn: 
+          title: _("USER-PSTN")
+          description: _("LLAMADA SALIENTE EXTERNA PURA")
+          field: callTypeSumary
+          value: "USER-PSTN"
+        userDESVpstn: 
+          title: _("USER->PSTN")
+          description: _("LLAMADA SALIENTE EXTERNA POR DESVIO DE USUARIO")
+          field: callTypeSumary
+          value: "USER->PSTN"
+        pstnuser: 
+          title: _("PSTN-USER")
+          description: _("LLAMADA EXTERNA ENTRANTE QUE ACABA EN UN USUARIO")
+          field: callTypeSumary
+          value: "PSTN-USER"
+        pstnpbx: 
+          title: _("PSTN-PBX")
+          description: _("LLAMADA ENTRANTE EXTERNA QUE MUERE EN AS")
+          field: callTypeSumary
+          value: "PSTN-PBX"
+        pstnDESVpstn: 
+          title: _("PSTN->PSTN")
+          description: _("LLAMADA EXTERNA ENTRANTE QUE ACABA DESVIANDOSE A UN NÚMERO DE LA PSTN")
+          field: callTypeSumary
+          value: "PSTN->PSTN"
+    parsedCDRsEdit_screen: &parsedCDRsEdit_screenLink 
+      <<: *ParsedCDRs
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      title: _("View %s %2s", ngettext('Parsed CDR', 'Parsed CDRs', 1), "[format| (%item%)]")
+      fields:
+        order:
+          brandId: true
+      fixedPositions:
+        group0:
+          label: _("Company info")
+          colsPerRow: 3
+          fields:
+            brandId: 1
+            companyId: 1        
+        group1:
+          label: _("Call info")
+          colsPerRow: 2
+          fields:
+            calldate: 1
+            type: 1
+            desc: 1
+        group2:
+          label: _("Src")
+          colsPerRow: 3
+          fields:
+            src: 1
+            src_dialed: 1
+            src_duration: 1
+        group3:
+          label: _("Dst")
+          colsPerRow: 3
+          fields:
+            dst: 1
+            dst_src_cid: 1
+            dst_duration: 1
+        group4:
+          label: _("Fw")
+          colsPerRow: 2
+          fields:
+            fw_desc: 1
+            ext_forwarder: 1
+            Oasis_forwarder: 1
+            forward_to: 1
+        group5:
+          label: _("Legs")
+          colsPerRow: 2
+          fields:
+            aleg: 1
+            bleg: 1
+        group6:
+          label: _("Metering")
+          colsPerRow: 6
+          fields:
+            metered: 2
+            meteringDate: 2
+            price: 2
+            pricingPlanId: 2
+            targetPatternId: 2
+            invoiceId: 2
+            pricingPlanDetails: 6
+  dialogs:  &parsedCDRs_dialogsLink
+    tarificateCall_dialog: 
+      <<: *ParsedCDRs
+      module: default
+      title: _("Tarificate %s", ngettext('call', 'calls', 1))
+      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
+      controller: klear-custom-tarificator
+      action: tarificate-call
+      class:  ui-silk-coins-add
+      multiItem: true
+      alwaysEnabled: true
+    testTarificateCall_dialog: 
+      <<: *ParsedCDRs
+      module: default
+      title: _("Tarificate %s", ngettext('call', 'calls', 1))
+      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
+      controller: klear-custom-tarificator
+      action: test-tarificate-call
+      class:  ui-silk-coins
+    getMeteringInfo_dialog: 
+      <<: *ParsedCDRs
+      module: default
+      title: _("Tarificate %s", ngettext('call', 'calls', 1))
+      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
+      controller: klear-custom-tarificator
+      action: tarification-info
+      class:  ui-silk-information
+    
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

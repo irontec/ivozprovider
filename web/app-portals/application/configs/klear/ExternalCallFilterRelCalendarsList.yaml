@@ -1,0 +1,61 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: externalCallFilterRelCalendarsList_screen
+  screens: 
+    externalCallFilterRelCalendarsList_screen: &externalCallFilterRelCalendarsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *ExternalCallFilterRelCalendars
+      title: _("List of %s %2s", ngettext('External call filter rel calendar', 'External call filter rel calendars', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            externalCallFilterRelCalendarsEdit_screen: true
+          dialogs: 
+            externalCallFilterRelCalendarsDel_dialog: true
+          default: externalCallFilterRelCalendarsEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          externalCallFilterRelCalendarsNew_screen: true
+        dialogs: 
+          externalCallFilterRelCalendarsDel_dialog: true
+    externalCallFilterRelCalendarsNew_screen: &externalCallFilterRelCalendarsNew_screenLink 
+      <<: *ExternalCallFilterRelCalendars
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('External call filter rel calendar', 'External call filter rel calendars', 1))
+      shortcutOption: N
+    externalCallFilterRelCalendarsEdit_screen: &externalCallFilterRelCalendarsEdit_screenLink 
+      <<: *ExternalCallFilterRelCalendars
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('External call filter rel calendar', 'External call filter rel calendars', 1), "[format| (%item%)]")
+  dialogs: 
+    externalCallFilterRelCalendarsDel_dialog: &externalCallFilterRelCalendarsDel_dialogLink 
+      <<: *ExternalCallFilterRelCalendars
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('External call filter rel calendar', 'External call filter rel calendars', 1))
+      description: _("Do you want to delete this %s?", ngettext('External call filter rel calendar', 'External call filter rel calendars', 1))
+      message: _("%s successfully deleted.", ngettext('External call filter rel calendar', 'External call filter rel calendars', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

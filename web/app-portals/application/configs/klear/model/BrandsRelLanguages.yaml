@@ -1,0 +1,38 @@
+production: 
+  class: \Oasis\Model\BrandsRelLanguages
+  fields: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    languageId: 
+      title: _('Language id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Languages
+          fieldName: 
+            fields: 
+              - iden
+            template: '%iden%'
+          order: iden
+testing: 
+  _extends: production
+staging: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

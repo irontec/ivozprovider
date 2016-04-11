@@ -1,0 +1,156 @@
+production: 
+  class: \Oasis\Model\HuntGroups
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue: 
+      default: true
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    strategy: 
+      title: _('Strategy')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'ringAll':
+            title: _('ringAll')
+            visualFilter:
+              hide: ['nextUserPosition']
+              show: ['ringAllTimeout']
+          'linear':
+            title: _('linear')
+            visualFilter:
+              hide: ['ringAllTimeout']
+              show: ['nextUserPosition']
+          'roundRobin': 
+            title: _('roundRobin')
+            visualFilter:
+              hide: ['ringAllTimeout']
+              show: ['nextUserPosition']
+          'random': 
+            title: _('random')
+            visualFilter:
+              hide: ['ringAllTimeout']
+              show: ['nextUserPosition']
+    ringAllTimeout: 
+      title: _('Ring all timeout')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    callTypeFilter: 
+      title: _('Call type filter')
+      type: select
+      source: 
+        data: inline
+        values:
+          '__null__': 
+            title: _('unasigned')
+            visualFilter:
+              hide: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
+          'internal': 
+            title: _('internal')
+            visualFilter:
+              show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
+          'external':
+            title:  _('external')
+            visualFilter:
+              show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
+          'both': 
+            title: _('both')
+            visualFilter:
+              show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
+        'null': _("Unasigned")          
+    targetType: 
+      title: _('Target type')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'number': 
+            title: _('number')
+            visualFilter:
+              show: ['numberValue']
+              hide: ['extensionId', 'voiceMailUserId']
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ['extensionId']
+              hide: ['numberValue', 'voiceMailUserId']          
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ['voiceMailUserId']
+              hide: ['extensionId', 'numberValue']          
+    numberValue: 
+      title: _('Number value')
+      type: text
+      maxLength: 25
+      required: true
+    extensionId: 
+      title: _('Extension id')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order: number
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    voiceMailUserId: 
+      title: _('User id')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Users
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    nextUserPosition: 
+      title: _('Next user position')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

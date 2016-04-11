@@ -1,0 +1,66 @@
+production:
+  class: \Oasis\Model\CallACL
+  fields:
+    companyId:
+      title: _('Company')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    name:
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      default: true
+    defaultPolicy:
+      title: _('Default policy')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'allow': _('allow')
+          'deny': _('deny')
+    CallACLRelPatterns:
+      title: _('Call ACL Patterns')
+      searchable: false
+      type: ghost
+      source:
+        predefined: list
+      data: mapper
+      config:
+        mapperName: \Oasis\Mapper\Sql\CallACLRelPatterns
+        filterField: id
+        showAsTable: true
+        fieldName:
+          fields:
+            id:
+              title: _("Patterns")
+              mapperName: \Oasis\Mapper\Sql\CallACLPatterns
+              field:
+                - name
+              pattern: "%name%"
+        options:
+          dialogs:
+            callACLPatternsDel_dialog: true
+          screens:
+            callACLPatternsEdit_screen: true
+          default: 
+      options:
+        screens:
+          callACLPatternsNew_screen: true          
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

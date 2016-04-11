@@ -1,0 +1,33 @@
+production: 
+  class: \Oasis\Model\GenericCallACLPatterns
+  fields: 
+    brandId: 
+      title: _('Brand')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+    regExp: 
+      title: _('Reg exp')
+      type: text
+      required: true
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

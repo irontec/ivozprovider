@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Get actual environment
+. /etc/environment
+
+# Fist time, run phing on scheme dir
+if [ -z "$2" ]; then
+    pushd /opt/oasis/scheme 
+    /usr/bin/phing -f build_prod.xml init -De=$APPLICATION_ENV
+    popd
+fi
+
+# Always migrate database
+pushd /opt/oasis/scheme &>/dev/null
+/usr/bin/phing -f build_prod.xml migrate -De=$APPLICATION_ENV
+RET=$?
+popd &>/dev/null
+
+exit $RET

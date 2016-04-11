@@ -1,0 +1,3 @@
+Dpkg::Options {
+   "--force-confnew";
+}

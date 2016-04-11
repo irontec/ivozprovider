@@ -1,0 +1,220 @@
+production:
+  main:
+    dynamicConfigClass: Oasis\Klear\Dynamic\Builder
+#    log:
+#      writerName: syslog
+#      writerParams:
+#        application: app-god-portal
+#        facility: 8 #LOG_USER = 8
+    sitename: "OASIS MAIN KLEAR"
+    sitesubname: "Main website" 
+    logo: images/irontec.png
+    year: 2015
+    lang: es
+    langs:
+      es:
+        title: Español
+        language: es
+        locale: es_ES
+      en:
+        title: English
+        language: en
+        locale: en_US
+    jqueryUI:
+      theme: redmond
+    raw:
+      css:
+        - "css/klear.css"
+      javascript:
+        - "default/js/customMenu.js"
+    actionHelpers:
+    auth:
+      adapter: Oasis\Klear\Auth\Adapter
+      userMapper: Oasis\Klear\Auth\MainOperators\Mapper
+      title: _("Access denied")
+      description: _("Insert your username")
+      session:
+        name: MainOperator
+        disableChangeName: false        
+    timezone: Europe/Madrid
+
+  menu:
+    General:
+      title:  _("Main management")
+      description: _("Main management")
+      showOnlyIf: ${auth.canSeeMain}
+      submenus:
+        BrandsList:
+          title: ngettext('Brand', 'Brands', 0)
+          class: ui-silk-world
+          description: _("List of %s", ngettext('Brand', 'Brands', 0))
+        ApplicationServersList:
+          title: ngettext('Application server', 'Application servers', 0)
+          class: ui-silk-asterisk-yellow
+          description: _("List of %s", ngettext('Application server', 'Application servers', 0))  
+        ProxyUsersList:
+          title: ngettext('Proxy user', 'Proxy users', 0)
+          class: ui-silk-server
+          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))              
+        ProxyTrunksList:
+          title: ngettext('Proxy trunk', 'Proxy trunks', 0)
+          class: ui-silk-server
+          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))              
+        TerminalManufacturersList:
+          title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
+          class: ui-silk-telephone-link
+          description: _("List of %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0))        
+        MainOperatorsList:
+          title: ngettext('Main operator', 'Main operators', 0)
+          class: ui-silk-tux
+          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))            
+        LanguagesList:
+          title: ngettext('Language', 'Languages', 0)
+          class: ui-silk-flag-blue
+          description: _("List of %s", ngettext('Language', 'Languages', 0))
+    Brands:
+      title: _("Brand Configuration")
+      meta: "[mine:${auth.isBrandOperator}|brand:${auth.brandId}|name:${auth.brandName}]"
+      description: _("Brands")
+      showOnlyIf: ${auth.canSeeBrand}
+      submenus:
+        CompaniesList:
+          title: ngettext('Company', 'Companies', 0)
+          class: ui-silk-building
+          description: _("List of %s", ngettext('Company', 'Companies', 0))
+        PeeringContractsList:
+          title: ngettext('Peering contract', 'Peering contracts', 0)
+          class: ui-silk-connect
+          description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
+        LcrRulesList:
+          title: ngettext('Lcr rule', 'Lcr rules', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Lcr rule', 'Lcr rules', 0))
+        PeeringContractsRelLcrRulesList:
+          title: ngettext('Peering contracts rel lcr rule', 'Peering contracts rel lcr rules', 0)
+          class: ui-silk-arrow-divide
+          description: _("List of %s", ngettext('Peering contracts rel lcr rule', 'Peering contracts rel lcr rules', 0))
+        GenericMusicOnHoldList:
+          title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
+          class: ui-silk-music
+          description: _("List of %s", ngettext('Generic music on hold', 'Generic musics on hold', 0))
+        GenericServicesList:
+          title: ngettext('Generic service', 'Generic services', 0)
+          class: ui-silk-page-white-wrench
+          description: _("List of %s", ngettext('Generic service', 'Generic services', 0))                   
+        GenericCallACLPatternsList:
+          title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
+          class: ui-silk-lock-go
+          description: _("List of %s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0))
+        PricingPlansList:
+          title: ngettext('Pricing plan', 'Pricing plans', 0)
+          class:  ui-silk-money
+          description: _("List of %s", ngettext('Pricing Plan', 'Pricing Plans', 0))
+        TargetPatternsList:
+          title: ngettext('Target pattern', 'Target patterns', 0)
+          class:  ui-silk-page-find
+          description: _("List of %s", ngettext('Pricing Plan', 'Pricing Plans', 0))
+        InvoiceTemplatesList:
+          title: _('Invoice templates')
+          class: ui-silk-report-key
+          description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
+        InvoicesList:
+          title: _('Invoices')
+          class: ui-silk-report
+          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))          
+    Admin:
+      title: _("Company Configuration")
+      meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|name:${auth.companyName}]"
+      showOnlyIf: ${auth.canSeeCompany}
+      description: _("Admin")
+      submenus:
+        UsersList:
+          title: ngettext('User', 'Users', 0)
+          class: ui-silk-user
+          description: _("List of %s", ngettext('User', 'Users', 0))
+        TerminalsList:
+          title: ngettext('Terminal', 'Terminals', 0)
+          class: ui-silk-telephone
+          description: _("List of %s", ngettext('Terminal', 'Terminals', 0))
+        ExtensionsList:
+          title: ngettext('Extension', 'Extensions', 0)
+          class: ui-silk-book-open
+          description: _("List of %s", ngettext('Extension', 'Extensions', 0))          
+        DDIsList:
+          title: ngettext('DDI', 'DDIs', 0)
+          class: ui-silk-lightning-go
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))      
+        ExternalCallFiltersList:
+          title: ngettext('External call filter', 'External call filters', 0)
+          class: ui-silk-arrow-branch
+          description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+        CalendarsList:
+          title: ngettext('Calendar', 'Calendars', 0)
+          class: ui-silk-calendar
+          description: _("List of %s", ngettext('Calendar', 'Calendars', 0))
+        SchedulesList:
+          title: ngettext('Schedule', 'Schedule', 0)
+          class: ui-silk-clock
+          description: _("List of %s", ngettext('Schedule', 'Schedule', 0))          
+        CallACLList:
+          title: ngettext('Call ACL', 'Call ACLs', 0)
+          class: ui-silk-lock
+          description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
+        CallACLPatternsList:
+          title: ngettext('Call ACL pattern', 'Call ACL patterns', 0)
+          class: ui-silk-lock-go
+          description: _("List of %s", ngettext('Call ACL pattern', 'Call ACL patterns', 0))               
+        HuntGroupsList:
+          title: ngettext('Hunt group', 'Hunt groups', 0)
+          class: ui-silk-group-go
+          description: _("List of %s", ngettext('Hunt group', 'Hunt groups', 0))
+        IVRCommonList:
+          title: _('IVR common')
+          class: ui-silk-chart-organisation
+          description: _("List of %s", ngettext('IVR common', 'IVR common', 0))
+        IVRCustomList:
+          title: _('IVR custom')
+          class: ui-silk-chart-organisation
+          description: _("List of %s", ngettext('IVR custom', 'IVR custom', 0))
+        LocutionsList:
+          title: ngettext('Locution', 'Locutions', 0)
+          class: ui-silk-sound
+          description: _("List of %s", ngettext('Locution', 'Locutions', 0))
+        MusicOnHoldList:
+          title: ngettext('Music on hold', 'Musics on hold', 0)
+          class: ui-silk-music
+          description: _("List of %s", _('Music on hold'))
+        FaxesList:
+          title: ngettext('Fax', 'Faxes', 0)
+          class: ui-silk-printer
+          description: _("List of %s", ngettext('Faxes', 'Faxes', 0))
+        PickUpGroupsList:
+          title: ngettext('Pick up group', 'Pick up groups', 0)
+          class: ui-silk-group-link
+          description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
+        ServicesList: 
+          title: ngettext('Service', 'Services', 0)
+          class: ui-silk-page-white-wrench
+          description: _("List of %s", ngettext('Service', 'Services', 0))
+        ParsedCDRsCompanyList:
+          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
+  footerMenu:
+    footer:
+      title: ''
+      submenus:
+        Dashboard:
+          default: true
+          title: _("Panel de control")
+          class: ui-silk-bricks
+          description: _("Vista general de la plataforma")
+
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

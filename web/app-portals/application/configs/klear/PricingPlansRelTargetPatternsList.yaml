@@ -1,0 +1,143 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: pricingPlansRelTargetPatternsList_screen
+  screens: &pricingPlansRelTargetPatterns_screensLink 
+    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *PricingPlansRelTargetPatterns
+      class: ui-silk-money-euro
+      title: _("List of %s %2s", ngettext('price', 'prices', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields: &pricingPlansRelTargetPatterns_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            pricingPlansRelTargetPatternsEdit_screen: true
+          dialogs: 
+            pricingPlansRelTargetPatternsDel_dialog: true
+          default: pricingPlansRelTargetPatternsEdit_screen
+        order:
+          pricingPlanId: true
+          targetPatternId: true
+      order:
+        field:
+          - metric asc
+      options: 
+        title: _("Options")
+        screens: 
+          pricingPlansRelTargetPatternsNew_screen: true
+        dialogs: 
+          pricingPlansRelTargetPatternsDel_dialog: true
+          importPricingPlansRelPatterns_dialog: true
+      csv:
+        active: true
+        filename: "Prices"
+        headers: true
+        enclosure: '"'
+        separator: ";"
+        nameklear: false
+        rawValues: true
+        ignoreBlackList: true
+        newLine: "\r\n"
+        encoding: "utf-8"
+        executionSeconds: ""
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("<p><b>Metric:</b> In case that two patterns were matched pattern with lower metric will be applied.</p>")
+        label: _("Help")
+    pricingPlansRelTargetPatternsNew_screen: &pricingPlansRelTargetPatternsNew_screenLink 
+      <<: *PricingPlansRelTargetPatterns
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Price', 'Prices', 1), "[format| (%parent%)]")  
+      forcedValues:
+        <<: *forcedBrand
+      shortcutOption: N
+      fixedPositions: &pricingPlansRelTargetPatternsFixedPos_Link
+        group0:
+          colsPerRow: 3
+          fields:
+            targetPatternId: 2
+            metric: 1
+        group1:
+          colsPerRow: 3
+          fields:
+            connectionCharge: 1
+            periodTime: 1
+            perPeriodCharge: 1
+      fields: 
+        order: &pricingPlansRelTargetPatternsOrder_Link
+          pricingPlanId: true
+          targetPatternId: true
+        blacklist:
+          metric: true
+    pricingPlansRelTargetPatternsEdit_screen: &pricingPlansRelTargetPatternsEdit_screenLink 
+      <<: *PricingPlansRelTargetPatterns
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Price', 'Prices', 1), "[format| (%item%)]")  
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions:
+        <<: *pricingPlansRelTargetPatternsFixedPos_Link
+      fields: 
+        order:
+          <<: *pricingPlansRelTargetPatternsOrder_Link
+        
+  dialogs: &pricingPlansRelTargetPatterns_dialogsLink 
+    pricingPlansRelTargetPatternsDel_dialog: &pricingPlansRelTargetPatternsDel_dialogLink
+      <<: *PricingPlansRelTargetPatterns
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Price', 'Prices', 1))
+      description: _("Do you want to delete this %s?", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 1))
+      message: _("%s successfully deleted.", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 1))
+      multiItem: 1
+      labelOnList: 1
+      
+    importPricingPlansRelPatterns_dialog:
+      <<: *PricingPlansRelTargetPatterns
+      module: default
+      title: _("Import %s", ngettext('price', 'prices', 0))
+      label: false
+      labelOnEdit: true   
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importPricingPlansRelPatternsFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        brandId: ${auth.brandId}
+      
+  commands: &pricingPlansRelTargetPatterns_commandsLink
+    importPricingPlansRelPatternsFreeUpload_command:
+      <<: *PricingPlansRelTargetPatterns
+      controller: File
+      action: free-upload
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Enable and start asterisk
+/bin/systemctl enable asterisk
+/bin/systemctl start asterisk
+
+:

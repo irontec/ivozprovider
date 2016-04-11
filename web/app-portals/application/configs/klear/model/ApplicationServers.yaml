@@ -1,0 +1,43 @@
+production: 
+  class: \Oasis\Model\ApplicationServers
+  fields: 
+    # brandId: 
+      # title: _('Brand id')
+      # type: select
+      # required: true
+      # source: 
+        # data: mapper
+        # config: 
+          # mapperName: \Oasis\Mapper\Sql\Brands
+          # fieldName: 
+            # fields: 
+              # - name
+            # template: '%name%'
+          # order: name
+      # default: true
+    name: 
+      title: _('name')
+      type: text
+      required: true      
+    ip: 
+      title: _('Ip')
+      type: text
+      required: true
+    transport: 
+      title: _('Transport')
+      type: text
+      defaultValue: udp
+    from_pattern: 
+      title: _('From pattern')
+      type: text
+    tag: 
+      title: _('Tag')
+      type: text
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

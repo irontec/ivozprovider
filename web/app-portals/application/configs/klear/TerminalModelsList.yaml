@@ -1,0 +1,129 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include TerminalsList.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: terminalModelsList_screen
+  screens: &terminalModels_screensLink
+    terminalModelsList_screen: &terminalModelsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *TerminalModels
+      class: ui-silk-telephone-key
+      title: _("List of %s %2s", ngettext('Terminal model', 'Terminal models', 0), "[format| (%parent%)]")
+      fields: 
+        options: 
+          title: _("Options")
+          screens: 
+            terminalModelsEdit_screen: true
+          dialogs: 
+            terminalModelsDel_dialog: true
+          default: terminalModelsEdit_screen
+        order: &terminalModels_orderLink
+          TerminalManufacturerId: true
+          iden: true
+          name: true
+          description: true
+        blacklist:
+          genericTemplate: true
+          specificTemplate: true
+      options: 
+        title: _("Options")
+        screens: 
+          terminalModelsNew_screen: true
+        dialogs: 
+          terminalModelsDel_dialog: true
+    terminalModelsNew_screen: &terminalModelsNew_screenLink 
+      <<: *TerminalModels
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Terminal model', 'Terminal models', 1))
+      shortcutOption: N
+      fields:
+        order:
+          <<: *terminalModels_orderLink
+          genericUrlPattern: true
+          genericTemplate: true
+          specificUrlPattern: true
+          specificTemplate: true
+    terminalModelsEdit_screen: &terminalModelsEdit_screenLink 
+      <<: *TerminalModels
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Terminal model', 'Terminal models', 1), "[format| (%item%)]")
+      fields:
+        order:
+          <<: *terminalModels_orderLink
+          genericUrlPattern: true
+          genericTemplate: true
+          specificUrlPattern: true
+          specificTemplate: true
+
+  dialogs: &terminalModels_dialogsLink
+    terminalModelsDel_dialog: &terminalModelsDel_dialogLink 
+      <<: *TerminalModels
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Terminal model', 'Terminal models', 1))
+      description: _("Do you want to delete this %s?", ngettext('Terminal model', 'Terminal models', 1))
+      message: _("%s successfully deleted.", ngettext('Terminal model', 'Terminal models', 1))
+      multiItem: 1
+      labelOnList: 1
+    
+    uploadFile_dialog: &uploadFile_dialogLink 
+      title: _("Cargar desde un fichero")
+      module: default
+      controller: klear-custom-upload-file
+      labelOnEdit: true
+      action: upload-file
+      class: ui-silk-arrow-up
+    downloadFile_dialog: &downloadFile_dialogLink 
+      title: _("Descargar fichero")
+      module: default
+      controller: klear-custom-download-file
+      labelOnEdit: true
+      action: download-file
+      class: ui-silk-arrow-down
+    genericBackup_dialog: &genericBackup_dialog
+      title: _("Restaurar último backup")
+      module: default
+      controller: klear-custom-restore-backup
+      labelOnEdit: true
+      action: restore-generic-backup
+      class: ui-silk-arrow-undo
+    specificBackup_dialog: &specificcBackup_dialog
+      title: _("Restaurar último backup")
+      module: default
+      controller: klear-custom-restore-backup
+      labelOnEdit: true
+      action: restore-specific-backup
+      class: ui-silk-arrow-undo
+    runGenericCode_dialog: &runGenericCode_dialog
+      title: _("Ejecutar el código")
+      module: default
+      controller: klear-custom-run-code
+      labelOnEdit: true
+      action: run-generic-code
+      class: ui-silk-control-play-blue
+    runSpecificCode_dialog: 
+      title: _("Ejecutar el código")
+      module: default
+      controller: klear-custom-run-code
+      labelOnEdit: true
+      action: run-specific-code
+      class: ui-silk-control-play-blue
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

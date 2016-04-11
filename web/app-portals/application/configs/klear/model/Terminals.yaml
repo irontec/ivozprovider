@@ -1,0 +1,582 @@
+production: 
+  class: \Oasis\Model\Terminals
+  fields: 
+    TerminalModelId: 
+      title: _('Terminal model id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\TerminalModels
+          fieldName: 
+            fields: 
+              - iden
+            template: '%iden%'
+          order: iden
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      default: true
+    sorcery_id: 
+      title: _('Sorcery id')
+      type: text
+      required: true
+    transport: 
+      title: _('Transport')
+      type: text
+      defaultValue: transport-udp
+    aors: 
+      title: _('Aor')
+      type: text
+    auth: 
+      title: _('Auth')
+      type: text
+    context: 
+      title: _('Context')
+      type: text
+      defaultValue: 'outgoing'
+    disallow: 
+      title: 'Disallow'
+      type: text
+      defaultValue: all
+    allow: 
+      title: 'Allow'
+      type: text
+      defaultValue: alaw
+    direct_media: 
+      title: _('Direct media')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values: 
+          'yes':
+            title:  _('yes')
+            visualFilter:
+              show: ["direct_media_method"]
+          'no':
+            title:  _('no')
+            visualFilter:
+              hide: ["direct_media_method"]
+    direct_media_method: 
+      title: _('Direct media method')
+      type: select
+      defaultValue: update
+      source: 
+        data: inline
+        values: 
+          'invite': 'invite'
+          'update': 'update'
+    disable_direct_media_on_nat: 
+      title: _('Disable direct media on nat')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    dtmf_mode: 
+      title: _('Dtmf mode')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'rfc4733': _('rfc4733')
+          'inband': _('inband')
+          'info': _('info')
+    external_media_address: 
+      title: _('External media address')
+      type: text
+    force_rport: 
+      title: _('Force rport')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    ice_support: 
+      title: _('Ice support')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    identify_by: 
+      title: _('Identify by')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'username': _('username')
+    mailboxes: 
+      title: _('Mailbox')
+      type: text
+    moh_suggest: 
+      title: _('Moh suggest')
+      type: text
+    outbound_auth: 
+      title: _('Outbound auth')
+      type: text
+    outbound_proxy: 
+      title: _('Outbound proxy')
+      type: text
+    rewrite_contact: 
+      title: _('Rewrite contact')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    rtp_ipv6: 
+      title: _('Rtp ipv6')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    rtp_symmetric: 
+      title: _('Rtp symmetric')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    send_diversion: 
+      title: _('Send diversion')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    send_pai: 
+      title: _('Send pai')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    send_rpid: 
+      title: _('Send rpid')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    timers_min_se: 
+      title: _('Timers min se')
+      type: number
+      source: 
+        control: Spinner
+    timers: 
+      title: _('Timer')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'forced': _('forced')
+          'no': _('no')
+          'required': _('required')
+          'yes': _('yes')
+    timers_sess_expires: 
+      title: _('Timers sess expire')
+      type: number
+      source: 
+        control: Spinner
+    callerid: 
+      title: _('Callerid')
+      type: text
+    callerid_privacy: 
+      title: _('Callerid privacy')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'allowed_not_screened': _('allowed_not_screened')
+          'allowed_passed_screened': _('allowed_passed_screened')
+          'allowed_failed_screened': _('allowed_failed_screened')
+          'allowed': _('allowed')
+          'prohib_not_screened': _('prohib_not_screened')
+          'prohib_passed_screened': _('prohib_passed_screened')
+          'prohib_failed_screened': _('prohib_failed_screened')
+          'prohib': _('prohib')
+          'unavailable': _('unavailable')
+    callerid_tag: 
+      title: _('Callerid tag')
+      type: text
+    100rel: 
+      title: _('100rel')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'no': _('no')
+          'required': _('required')
+          'yes': _('yes')
+    aggregate_mwi: 
+      title: _('Aggregate mwi')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    trust_id_inbound: 
+      title: _('Trust id inbound')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    trust_id_outbound: 
+      title: _('Trust id outbound')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    use_ptime: 
+      title: _('Use ptime')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    use_avpf: 
+      title: _('Use avpf')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    media_encryption: 
+      title: _('Media encryption')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'no': _('no')
+          'sdes': _('sdes')
+          'dtls': _('dtls')
+    inband_progress: 
+      title: _('Inband progress')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    call_group: 
+      title: _('Call group')
+      type: text
+    pickup_group: 
+      title: _('Pickup group')
+      type: text
+    named_call_group: 
+      title: _('Named call group')
+      type: text
+    named_pickup_group: 
+      title: _('Named pickup group')
+      type: text
+    device_state_busy_at: 
+      title: _('Device state busy at')
+      type: number
+      source: 
+        control: Spinner
+    fax_detect: 
+      title: _('Fax detect')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    t38_udptl: 
+      title: _('T38 udptl')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    t38_udptl_ec: 
+      title: _('T38 udptl ec')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'none': _('none')
+          'fec': _('fec')
+          'redundancy': _('redundancy')
+    t38_udptl_maxdatagram: 
+      title: _('T38 udptl maxdatagram')
+      type: number
+      source: 
+        control: Spinner
+    t38_udptl_nat: 
+      title: _('T38 udptl nat')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    t38_udptl_ipv6: 
+      title: _('T38 udptl ipv6')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    tone_zone: 
+      title: _('Tone zone')
+      type: text
+    language: 
+      title: _('Language')
+      type: text
+    one_touch_recording: 
+      title: _('One touch recording')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    record_on_feature: 
+      title: _('Record on feature')
+      type: text
+    record_off_feature: 
+      title: _('Record off feature')
+      type: text
+    rtp_engine: 
+      title: _('Rtp engine')
+      type: text
+    allow_transfer: 
+      title: _('Allow transfer')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    allow_subscribe: 
+      title: _('Allow subscribe')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    sdp_owner: 
+      title: _('Sdp owner')
+      type: text
+    sdp_session: 
+      title: _('Sdp session')
+      type: text
+    tos_audio: 
+      title: _('Tos audio')
+      type: text
+    tos_video: 
+      title: _('Tos video')
+      type: text
+    sub_min_expiry: 
+      title: _('Sub min expiry')
+      type: number
+      source: 
+        control: Spinner
+    from_domain: 
+      title: _('From domain')
+      type: text
+    from_user: 
+      title: _('From user')
+      type: text
+    mwi_from_user: 
+      title: _('Mwi from user')
+      type: text
+    dtls_verify: 
+      title: _('Dtls verify')
+      type: text
+    dtls_rekey: 
+      title: _('Dtls rekey')
+      type: text
+    dtls_cert_file: 
+      title: _('Dtls cert file')
+      type: text
+    dtls_private_key: 
+      title: _('Dtls private key')
+      type: text
+    dtls_cipher: 
+      title: _('Dtls cipher')
+      type: text
+    dtls_ca_file: 
+      title: _('Dtls ca file')
+      type: text
+    dtls_ca_path: 
+      title: _('Dtls ca path')
+      type: text
+    dtls_setup: 
+      title: _('Dtls setup')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'active': _('active')
+          'passive': _('passive')
+          'actpass': _('actpass')
+    srtp_tag_32: 
+      title: _('Srtp tag32')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    media_address: 
+      title: _('Media address')
+      type: text
+    redirect_method: 
+      title: _('Redirect method')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'user': _('user')
+          'uri_core': _('uri_core')
+          'uri_pjsip': _('uri_pjsip')
+    set_var: 
+      title: _('Set var')
+      type: textarea
+    cos_audio: 
+      title: _('Cos audio')
+      type: number
+      source: 
+        control: Spinner
+    cos_video: 
+      title: _('Cos video')
+      type: number
+      source: 
+        control: Spinner
+    message_context: 
+      title: _('Message context')
+      type: text
+    force_avp: 
+      title: _('Force avp')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    media_use_received_transport: 
+      title: _('Media use received transport')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    accountcode: 
+      title: _('Accountcode')
+      type: text
+    contact: 
+      title: _('Contact')
+      type: text
+    default_expiration: 
+      title: _('Default expiration')
+      type: number
+      source: 
+        control: Spinner
+    max_contacts: 
+      title: _('Max contact')
+      type: number
+      defaultValue: 5
+      source: 
+        control: Spinner
+    minimum_expiration: 
+      title: _('Minimum expiration')
+      type: number
+      source: 
+        control: Spinner
+    remove_existing: 
+      title: _('Remove existing')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    qualify_frequency: 
+      title: _('Qualify frequency')
+      type: number
+      source: 
+        control: Spinner
+    authenticate_qualify: 
+      title: _('Authenticate qualify')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    maximum_expiration: 
+      title: _('Maximum expiration')
+      type: number
+      source: 
+        control: Spinner
+    support_path: 
+      title: _('Support path')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    password: 
+      title: ngettext('Password', 'Passwords', 1)
+      type: password
+      defaultValue: 
+      adapter: PlainText
+    mailboxes_aors: 
+      title: _('Mailboxes aor')
+      type: text
+      maxLength: 100
+    subscribecontext: 
+      title: _('Subscribecontext')
+      type: text
+      defaultValue: default
+      maxLength: 40
+    companyId: 
+      title: _('Company')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

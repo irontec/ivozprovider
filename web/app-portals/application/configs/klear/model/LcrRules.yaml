@@ -1,0 +1,83 @@
+production: 
+  class: \Oasis\Model\LcrRules
+  fields: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    prefix: 
+      title: _('Prefix')
+      type: text
+    from_uri: 
+      title: _('From uri')
+      type: text
+    request_uri: 
+      title: _('Pattern')
+      required: true
+      type: text
+      pattern: "^:.*@$"
+      maxLength: 64
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Caracter de inicio ':' en lugar de '^', caracter de fin '@' en lugar de '$'")
+        label: _("¿Necesitas ayuda?")
+    stopper: 
+      title: _('Stopper')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    enabled: 
+      title: _('Enabled')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    tag: 
+      title: _('Tag')
+      type: text
+      required: true
+      pattern: "^[a-zA-Z0-9_]+$"
+      maxLength: 50
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Introduzca una etiqueta sin espacios")
+        label: _("¿Necesitas ayuda?")
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      required: true
+      type: text
+      defaultValue: 
+      maxLength: 500
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

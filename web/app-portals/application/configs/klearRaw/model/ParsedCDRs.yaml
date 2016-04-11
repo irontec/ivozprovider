@@ -1,0 +1,168 @@
+production: 
+  class: \Oasis\Model\ParsedCDRs
+  fields: 
+    calldate: 
+      title: _('Calldate')
+      type: picker
+      defaultValue: 0000-00-00 00:00:00
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+      default: true
+    src: 
+      title: _('Src')
+      type: text
+      maxLength: 128
+    src_dialed: 
+      title: _('Src dialed')
+      type: text
+      maxLength: 128
+    src_duration: 
+      title: _('Src duration')
+      type: number
+      source: 
+        control: Spinner
+    dst: 
+      title: _('Dst')
+      type: text
+      maxLength: 128
+    dst_src_cid: 
+      title: _('Dst src cid')
+      type: text
+      maxLength: 128
+    dst_duration: 
+      title: _('Dst duration')
+      type: number
+      source: 
+        control: Spinner
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: text
+      maxLength: 256
+    desc: 
+      title: _('Desc')
+      type: text
+      maxLength: 256
+    fw_desc: 
+      title: _('Fw desc')
+      type: text
+      maxLength: 256
+    ext_forwarder: 
+      title: _('Ext forwarder')
+      type: text
+      maxLength: 32
+    oasis_forwarder: 
+      title: _('Oasis forwarder')
+      type: text
+      maxLength: 32
+    forward_to: 
+      title: _('Forward to')
+      type: text
+      maxLength: 32
+    companyId: 
+      title: _('Company id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    brandId: 
+      title: _('Brand id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    aleg: 
+      title: _('Aleg')
+      type: text
+      maxLength: 128
+    bleg: 
+      title: _('Bleg')
+      type: text
+      maxLength: 128
+    metered: 
+      title: _('Metered')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    meteringDate: 
+      title: _('Metering date')
+      type: picker
+      defaultValue: 0000-00-00 00:00:00
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    pricingPlanId: 
+      title: _('Pricing plan id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\PricingPlans
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name_${lang}
+        'null': _("Unasigned")
+    targetPatternId: 
+      title: _('Target pattern id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\TargetPatterns
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name_${lang}
+        'null': _("Unasigned")
+    price: 
+      title: ngettext('Price', 'Prices', 1)
+      type: text
+    pricingPlanDetails: 
+      title: _('Pricing plan detail')
+      type: textarea
+    invoiceId: 
+      title: _('Invoice id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Invoices
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

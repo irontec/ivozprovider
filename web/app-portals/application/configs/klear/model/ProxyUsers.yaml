@@ -1,0 +1,20 @@
+production: 
+  class: \Oasis\Model\ProxyUsers
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 100
+      default: true
+    ip: 
+      title: _('Ip')
+      type: text
+      maxLength: 100
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

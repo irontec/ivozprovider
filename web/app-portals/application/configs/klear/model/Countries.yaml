@@ -1,0 +1,19 @@
+production: 
+  class: \Oasis\Model\Countries
+  fields: 
+    code: 
+      title: _('Code')
+      type: text
+      defaultValue: 
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

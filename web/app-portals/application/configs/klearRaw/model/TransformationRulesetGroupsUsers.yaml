@@ -1,0 +1,55 @@
+production: 
+  class: \Oasis\Model\TransformationRulesetGroupsUsers
+  fields: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 100
+    caller_in: 
+      title: _('Caller in')
+      type: number
+      source: 
+        control: Spinner
+    callee_in: 
+      title: _('Callee in')
+      type: number
+      source: 
+        control: Spinner
+    caller_out: 
+      title: _('Caller out')
+      type: number
+      source: 
+        control: Spinner
+    callee_out: 
+      title: _('Callee out')
+      type: number
+      source: 
+        control: Spinner
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+      maxLength: 500
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

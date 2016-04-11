@@ -1,0 +1,58 @@
+production: 
+  class: \Oasis\Model\MainOperators
+  fields: 
+    username: 
+      title: _('Username')
+      type: text
+      required: true
+      default: true
+    pass: 
+      title: _('Pass')
+      type: password
+      required: true
+      adapter: Blowfish
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+    lastname: 
+      title: _('Lastname')
+      type: text
+      required: true
+    email: 
+      title: ngettext('Email', 'Emails', 1)
+      type: text
+      defaultValue: 
+    active: 
+      title: _('Active')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    timezoneId: 
+      title: _('Timezone')
+      type: select
+      defaultValue: 145
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Timezones
+          fieldName: 
+            fields: 
+              - tz
+            template: '%tz%'
+          order: tz
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

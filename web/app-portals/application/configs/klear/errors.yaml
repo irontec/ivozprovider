@@ -1,0 +1,27 @@
+production: 
+  klearCommon:
+    30000: _("There is an inconditional call forward with that call type. You can't add call forwards")
+    30001: _("There are already call forwards with that call type. You can't add inconditional call forward")
+    30002: _("There is already a busy call forward with that call type.")
+    30003: _("There is already a noAnswer call forward with that call type.")
+    30004: _("There is already a userNotRegistered call forward with that call type.")
+    30100: _("Error reloading modules. Please reload modules manually.")
+    30200: _("There is a call forward with that call type. You can't add this call forward")
+    40000: _("'Valid From' must be earlier than 'Valid to'")
+    40001: _("You can't create a pricing plan that starts in de past")
+    50001: _("There are unmetered calls. Invoice data has been saved but Invoice has NOT been created.")
+    50002: _("There are unbilled calls before in date. Invoice data has been saved but Invoice has NOT been created.")
+    50003: _("There are invoices in the same range of date. Invoice data has been saved but Invoice has NOT been created.")
+    50004: _("There are unbilled calls after out date. Invoice data has been saved but Invoice has NOT been created.")
+    50005: _("'Out date' must be equal or greater than 'In date'. Invoice data has been saved but Invoice has NOT been created.")
+    50006: _("Cannot invoice calls from today in the future. Invoice data has been saved but Invoice has NOT been created.")
+    60000: _("Brand is not setted")
+  adminErrors: 
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

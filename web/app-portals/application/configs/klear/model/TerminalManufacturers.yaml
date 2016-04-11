@@ -1,0 +1,24 @@
+production: 
+  class: \Oasis\Model\TerminalManufacturers
+  fields: 
+    iden: 
+      title: ngettext('Iden', 'Idens', 1)
+      type: text
+      required: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue: 
+      default: true
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

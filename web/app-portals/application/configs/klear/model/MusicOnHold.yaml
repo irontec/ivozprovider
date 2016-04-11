@@ -1,0 +1,106 @@
+production: 
+  class: \Oasis\Model\MusicOnHold
+  fields: 
+    companyId: 
+      title: _('Company')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    originalFile: 
+      title: ngettext('Uploaded file', 'Uploaded files', 1)
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: musicOnHold_FileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: musicOnHold_FileUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: musicOnHold_FileDownload_command
+          preview: 
+            target: musicOnHold_FilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: musicOnHold_FilePreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+    encodedFile: 
+      title: ngettext('File for play', 'Files for play', 1)
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: musicOnHold_FileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: musicOnHold_FileDownload_command
+          preview: 
+            target: musicOnHold_FilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      default: true
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

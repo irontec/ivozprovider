@@ -1,0 +1,152 @@
+production: 
+  class: \Oasis\Model\Invoices
+  fields: 
+    number: 
+      title: _('Number')
+      type: text
+      required: true
+      maxLength: 300
+      default: true
+    inDate: 
+      title: _('In date')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+          dateFormate: 'dd-mm-yy'
+#          timeFormat: '00:00:00'
+    outDate: 
+      title: _('Out date')
+      type: picker
+      required: true
+      source: 
+        control: date
+        settings: 
+          disabled: 'false'
+          dateFormate: 'dd-mm-yy'
+#          timeFormat: '23:59:59'
+    total: 
+      title: _('Total')
+      type: text
+      sufix: "€"
+    taxRate: 
+      title: _('Tax rate')
+      type: text
+      required: true
+      sufix: "%"
+    totalWithTax: 
+      title: _('Total with tax')
+      type: text
+      sufix: "€"
+#    languageId: 
+#      title: _('Language')
+#      type: select
+#      required: true
+#      source: 
+#        data: mapper
+#        config: 
+#          mapperName: \Oasis\Mapper\Sql\Languages
+#          filterClass: Oasis_Klear_Filter_BrandLanguages
+#          fieldName: 
+#            fields: 
+#              - name
+#            template: '%name%'
+#          order: iden
+#        'null': _("Unasigned")
+    status: 
+      title: _('Statu')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'waiting': _('waiting')
+          'processing': _('processing')
+          'created': _('created')
+          'error': _('error')
+    pdfFile: 
+      title: _('Pdf file')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: invoicesPdfFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          preview: 
+            target: invoicesPdfFilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: invoicesPdfFilePreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+    companyId: 
+      title: _('Company')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          filterClass: Oasis_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    brandId: 
+      title: _('Brand')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    invoiceTemplateId: 
+      title: _('Template')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\InvoiceTemplates
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

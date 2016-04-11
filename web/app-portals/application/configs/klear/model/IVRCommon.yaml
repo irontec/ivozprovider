@@ -1,0 +1,222 @@
+production: 
+  class: \Oasis\Model\IVRCommon
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+    blackListRegExp: 
+      title: _('Black list reg exp')
+      type: text
+    welcomeLocutionId: 
+      title: _('Welcome locution id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileBaseName
+            template: '%fileBaseName%'
+          order: fileBaseName
+    noAnswerLocutionId: 
+      title: _('No answer locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileBaseName
+            template: '%fileBaseName%'
+          order: fileBaseName
+        'null': _("Unasigned")
+    errorLocutionId: 
+      title: _('Error locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileBaseName
+            template: '%fileBaseName%'
+          order: fileBaseName
+        'null': _("Unasigned")
+    successLocutionId: 
+      title: _('Success locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileBaseName
+            template: '%fileBaseName%'
+          order: fileBaseName
+        'null': _("Unasigned")
+    timeout: 
+      title: _('Timeout')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    noAnswerTimeout: 
+      title: _('No answer timeout')
+      type: number
+      defaultValue: 10
+      source: 
+        control: Spinner
+    timeoutTargetType: 
+      title: _('Timeout target type')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'null':
+            title: _('Unasigned')
+            visualFilter:
+              hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
+          'number':
+            title: _('number')
+            visualFilter:
+              show: ["timeoutNumberValue"]
+              hide: ["timeoutExtensionId", "timeoutVoiceMailUserId" ]
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ["timeoutExtensionId"]
+              hide: ["timeoutNumberValue", "timeoutVoiceMailUserId" ]
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ["timeoutVoiceMailUserId"]
+              hide: ["timeoutExtensionId", "timeoutNumberValue"]
+    timeoutNumberValue: 
+      title: _('Timeout number value')
+      type: text
+      required: true
+    timeoutExtensionId: 
+      title: _('Timeout extension id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+    timeoutVoiceMailUserId: 
+      title: _('Timeout voice mail user id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    errorTargetType: 
+      title: _('Error target type')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'null':
+            title: _('Unasigned')
+            visualFilter:
+              hide: ["errorNumberValue", "errorExtensionId", "errorVoiceMailUserId" ]
+          'number':
+            title: _('number')
+            visualFilter:
+              show: ["errorNumberValue"]
+              hide: ["errorExtensionId", "errorVoiceMailUserId" ]
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ["errorExtensionId"]
+              hide: ["errorNumberValue", "errorVoiceMailUserId" ]
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ["errorVoiceMailUserId"]
+              hide: ["errorExtensionId", "errorNumberValue"]
+    errorNumberValue: 
+      title: _('Error number value')
+      type: text
+      required: true
+    errorExtensionId: 
+      title: _('Error extension id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+    errorVoiceMailUserId: 
+      title: _('Error voice mail user id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    timeoutTarget:
+      title: _('Timeout target')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_IVRCommonTarget
+        method: getTimeoutData
+    errorTarget:
+      title: _('Error target')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_IVRCommonTarget
+        method: getErrorData
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

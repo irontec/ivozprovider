@@ -1,0 +1,34 @@
+#!/usr/bin/perl
+
+use v5.10;
+use strict;
+use Term::ANSIColor qw(:constants);
+no warnings;
+
+# Enable hot-piping
+$|=1;
+
+my $hostname=`hostname`;
+chomp $hostname;
+
+while (<>) {
+    # Avoid hostname from logged message
+    s#$hostname ##;
+
+    # Avoid binary(pid) from logged message
+    s#^(.*)\s+\S+kamailio\[\d+\]:\s+(.*)#[$1] $2#;
+
+    # When printing $mb, kamailio logs this characters instead of \n
+    s!#015!!g;
+    s!#012!\n!g;
+
+    # Print each message with its colour
+    given ($_) {
+        when (/ ALERT:| BUG: | CRITICAL: | ERROR:/) { print RED $_; }
+        when (/ WARNING:/) { print YELLOW $_; }
+        when (/ NOTICE:/) { print MAGENTA $_; }
+        when (/ INFO:/) { print GREEN $_; }
+        when (/ DEBUG:/) { print CYAN $_; }
+        default { print WHITE $_; }
+    }
+}

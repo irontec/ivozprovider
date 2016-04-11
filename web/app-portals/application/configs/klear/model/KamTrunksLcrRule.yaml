@@ -1,0 +1,46 @@
+production: 
+  class: \Oasis\Model\KamTrunksLcrRule
+  fields: 
+    lcrId: 
+      title: _('Lcr id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    prefix: 
+      title: _('Prefix')
+      type: text
+    fromUri: 
+      title: _('From uri')
+      type: text
+    requestUri: 
+      title: _('Request uri')
+      type: text
+    stopper: 
+      title: _('Stopper')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    enabled: 
+      title: _('Enabled')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

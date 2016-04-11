@@ -1,0 +1,38 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include CompanyAdminsRelAdminPortalSectionsList.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: companyAdminsList_screen
+  screens: &companyAdmins_screensLink
+    companyAdminsList_screen: &companyAdminsList_screenLink
+      controller: list
+      pagination: 
+        items: 25
+      <<: *CompanyAdmins
+      class: ui-silk-user-gray
+      title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
+      fields: 
+        blacklist:
+          pass: true
+          CompanyAdminsRelAdminPortalSections: true
+        order: &CompanyAdmins_orderLink
+          companyId: true
+          name: true
+          lastname: true
+          email: true
+          username: true
+          pass: true
+          timezoneId: true
+          active: true
+    
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

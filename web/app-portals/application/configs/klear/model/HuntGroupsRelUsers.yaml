@@ -1,0 +1,53 @@
+production: 
+  class: \Oasis\Model\HuntGroupsRelUsers
+  fields: 
+    huntGroupId: 
+      title: _('Hunt group id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\HuntGroups
+          filterClass: Oasis_Klear_Filter_Company
+          fieldName:
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    userId: 
+      title: _('User id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          filterClass: Oasis_Klear_Filter_Company
+          fieldName: 
+            fields: 
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name          
+    timeoutTime: 
+      title: _('Timeout time')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    priority: 
+      title: _('Priority')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

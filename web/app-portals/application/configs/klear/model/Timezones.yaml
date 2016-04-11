@@ -1,0 +1,37 @@
+production: 
+  class: \Oasis\Model\Timezones
+  fields: 
+    countryId: 
+      title: _('Country id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - code
+            template: '%code%'
+          order: code
+        'null': _("Unasigned")
+      default: true
+    tz: 
+      title: _('Tz')
+      type: text
+      required: true
+    comment: 
+      title: _('Comment')
+      type: text
+      defaultValue: 
+    timeZoneLabel: 
+      title: _('Time zone label')
+      type: text
+      defaultValue: 
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -1,0 +1,13 @@
+# This dir must contain the local application
+build.dir=./
+
+# Credentials for the database migrations
+db.host=localhost
+db.user=root
+db.pass=farsa
+db.name=oasis
+
+# paths to programs
+progs.mysql=/usr/bin/mysql
+
+application.env=testing

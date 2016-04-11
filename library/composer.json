@@ -1,0 +1,13 @@
+{
+    "name": "oasis",
+    "description": "Oasis",
+    "require": {
+        "psliwa/php-pdf": "~1.2"
+    },
+    "authors": [
+        {
+            "name": "Luis García",
+            "email": "lfgarcia@irontec.com"
+        }
+    ]
+}

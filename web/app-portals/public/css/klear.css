@@ -1,0 +1,48 @@
+#sidebar div {
+    max-height: 300px;
+/*     overflow: hidden; */
+}
+/* #sidebar div:hover { */
+/*     overflow: auto; */
+/* } */
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
+.orange {
+    color: orange;
+}
+.blue {
+    color: blue;
+}
+.yellow {
+    color: yellow;
+}
+
+
+
+.changeMenuStatus {
+    float:right;
+    margin-right: 1em;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.forbidden {
+    cursor: not-allowed;
+}
+.asterisc {
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: x-large;	
+}
+
+.entitySelectDiv {
+	display: inline-block;
+}
+
+.clipDialog {
+    overflow: visible;
+}

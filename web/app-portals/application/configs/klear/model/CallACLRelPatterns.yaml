@@ -1,0 +1,53 @@
+production:
+  class: \Oasis\Model\CallACLRelPatterns
+  fields:
+    CallACLId:
+      title: _('Call ACL')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\CallACL
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    CallACLPatternId:
+      title: _('Call ACL pattern')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\CallACLPatterns
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    priority:
+      title: _('Priority')
+      type: number
+      required: true
+      source:
+        control: Spinner
+    policy:
+      title: _('Policy')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'allow': _('allow')
+          'deny': _('deny')
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

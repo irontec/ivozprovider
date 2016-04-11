@@ -1,0 +1,43 @@
+invoiceTemplateHelp:
+  - &invoiceTemplateHelp
+    info:
+      type: box
+      position: left
+      icon: help
+      label: _("Templates help")
+      text:
+        "<p>Templates are create using PHPPdf library. You can get info in <a href='https://github.com/psliwa/PHPPdf' target='_blank'> here </a></p>
+        <p>Template receives an array of data and you can use this data using the notation '{{firstLevelKey.secondLevelKey.thirdLevelKey}}'</p>
+        <p> You can iterate over array using<br />
+        {{#firstLevelKey.secondLevelKey id,value}}<br />
+            {{value.type}}<br />
+        {{/firstLevelKey.secondLevelKey}}</p>
+        <p>You can acces all data from following models</p>
+        <ul style='margin-left: 30px'>
+          <li>Invoices: Using key 'invoice'</li>
+          <li>Companies: Using key 'company'</li>
+          <li>Brands: Using key 'brands'</li>
+        </ul>
+        <p>You can access to following calculated data using key 'callData' whith following subkeys:</p>
+          <ul style='margin-left: 30px'>
+            <li>callSumary: Sumary data of invoiced calls grouped by type. Keys of callSumary are call types
+              <ul style='margin-left: 30px'>
+                <li>$callSumary[$callType]['numberOfCalls']</li>
+                <li>$callSumary[$callType]['totalCallsDuration']</li>
+                <li>$callSumary[$callType]['totalCallsDurationFormatted']</li>
+                <li>$callSumary[$callType]['totalPrice']</li>
+              </ul>
+            </li>
+            <li>callSumaryTotals: Totals of callSumary.
+                <ul style='margin-left: 30px'>
+                <li>$callSumaryTotals['numberOfCalls']</li>
+                <li>$callSumaryTotals['totalCallsDuration']</li>
+                <li>$callSumaryTotals['totalCallsDurationFormatted']</li>
+                <li>$callSumaryTotals['totalPrice']</li>
+                </ul>
+            </li>
+            <li>callsPerType: list of all calls grouped by type. Keys of callsPerType are call types
+              <ul style='margin-left: 30px'><li>$callsPerType[$callType][] = $callModel;</li></ul>
+            </li>
+            </ul>
+        "

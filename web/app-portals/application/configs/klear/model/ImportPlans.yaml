@@ -1,0 +1,43 @@
+production: 
+  class: \Oasis\Model\ImportPlans
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 55
+      default: true
+    importFileId: 
+      title: _('Import file id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\ImportFiles
+          fieldName: 
+            fields: 
+              - fileMimeType
+            template: '%fileMimeType%'
+          order: fileMimeType
+    importedOn: 
+      title: _('Imported on')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    brandId: 
+      title: _('Brand id')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

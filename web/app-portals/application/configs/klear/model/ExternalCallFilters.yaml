@@ -1,0 +1,235 @@
+production:
+  class: \Oasis\Model\ExternalCallFilters
+  fields:
+    companyId:
+      title: _('Company')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    name:
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      default: true
+    welcomeLocutionId:
+      title: _('Welcome locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    holidayLocutionId:
+      title: _('Holiday locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    outOfScheduleLocutionId:
+      title: _('Out of schedule locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    holidayTargetType:
+      title: _('Holiday target type')
+      type: select
+      source:
+        data: inline
+        values:
+          '__null__':
+            title: _('Unasigned')
+            visualFilter:
+              hide: ['holidayNumberValue', 'holidayExtensionId', 'holidayVoiceMailUserId']
+          'number':
+            title: _('number')
+            visualFilter:
+              show: ['holidayNumberValue']
+              hide: ['holidayExtensionId', 'holidayVoiceMailUserId']
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ['holidayExtensionId']
+              hide: ['holidayNumberValue', 'holidayVoiceMailUserId']
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ['holidayVoiceMailUserId']
+              hide: ['holidayNumberValue', 'holidayExtensionId']
+    holidayNumberValue:
+      title: _('Holiday number')
+      type: text
+      required: true
+    holidayExtensionId:
+      title: _('Holiday extension')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order: number
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    holidayVoiceMailUserId:
+      title: _('Holiday voice mail user')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Users
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unasigned")
+    outOfScheduleTargetType:
+      title: _('Out of schedule target type')
+      type: select
+      source:
+        data: inline
+        values:
+          '__null__':
+            title: _('Unasigned')
+            visualFilter:
+              hide: ['outOfScheduleNumberValue', 'outOfScheduleExtensionId', 'outOfScheduleVoiceMailUserId']
+          'number':
+            title: _('number')
+            visualFilter:
+              show: ['outOfScheduleNumberValue']
+              hide: ['outOfScheduleExtensionId', 'outOfScheduleVoiceMailUserId']
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ['outOfScheduleExtensionId']
+              hide: ['outOfScheduleNumberValue', 'outOfScheduleVoiceMailUserId']
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ['outOfScheduleVoiceMailUserId']
+              hide: ['outOfScheduleNumberValue', 'outOfScheduleExtensionId']
+    outOfScheduleNumberValue:
+      title: _('Out of schedule number')
+      type: text
+      required: true
+    outOfScheduleExtensionId:
+      title: _('Out of schedule extension')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order: number
+          extraDataAttributes:
+            iden: companyId
+        'null': _("Unasigned")
+    outOfScheduleVoiceMailUserId:
+      title: _('Out of schedule voice mail user')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \Oasis\Mapper\Sql\Users
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unasigned")
+    ExternalCallFilterRelSchedules:
+      title: _('Schedules')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Oasis\Mapper\Sql\ExternalCallFilterRelSchedules
+          relatedMapperName: \Oasis\Mapper\Sql\Schedules
+          relatedFieldName: name
+          relationProperty: Schedule
+          filterClass: Oasis_Klear_Filter_Company
+    ExternalCallFilterRelCalendars:
+      title: _('Caledars')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \Oasis\Mapper\Sql\ExternalCallFilterRelCalendars
+          relatedMapperName: \Oasis\Mapper\Sql\Calendars
+          relatedFieldName: name
+          relationProperty: Calendar
+          filterClass: Oasis_Klear_Filter_Company
+    holidayTarget:
+      title: _('Holiday target')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_ExternalCallFiltersTarget
+        method: getHolidayData
+    outOfScheduleTarget:
+      title: _('Out of schedule target')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_ExternalCallFiltersTarget
+        method: getOutOfScheduleData
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

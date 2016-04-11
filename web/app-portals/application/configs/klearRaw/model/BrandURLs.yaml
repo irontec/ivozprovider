@@ -1,0 +1,102 @@
+production: 
+  class: \Oasis\Model\BrandURLs
+  fields: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    url: 
+      title: ngettext('Url', 'Urls', 1)
+      type: text
+      required: true
+      maxLength: 255
+    klearTheme: 
+      title: _('Klear theme')
+      type: text
+      defaultValue: 
+      maxLength: 200
+    urlType: 
+      title: _('Url type')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'god': _('god')
+          'brand': _('brand')
+          'admin': _('admin')
+          'user': _('user')
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue: 
+      maxLength: 200
+    logo: 
+      title: _('Logo')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: brandURLsLogoDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: brandURLsLogoUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: brandURLsLogoPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: brandURLsLogoPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+    userTheme: 
+      title: _('User theme')
+      type: text
+      defaultValue: 
+      maxLength: 200
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

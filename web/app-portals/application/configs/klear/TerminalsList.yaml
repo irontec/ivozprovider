@@ -1,0 +1,105 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include UsersList.yaml
+
+
+production:
+  terminalBlacklist: &terminalBlacklist
+    sorcery_id: true
+    aors: true
+    auth: true
+    outbound_proxy: true
+    send_pai: true
+    send_rpid: true
+    contact: true
+    default_expiration: true
+    max_contacts: true
+    minimum_expiration: true
+    remove_existing: true
+    qualify_frequency: true
+    authenticate_qualify: true
+    maximum_expiration: true
+    support_path: true
+    mailboxes_aors: true
+    subscribecontext: true
+
+  main: 
+    module: klearMatrix
+    defaultScreen: terminalsList_screen
+  screens: &terminals_screensLink
+    terminalsList_screen: &terminalsList_screenLink
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Terminals
+      class: ui-silk-telephone
+      title: _("List of %s %2s", ngettext('Terminal', 'Terminals', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist: 
+          <<: *terminalBlacklist
+          password: true
+        options: 
+          title: _("Options")
+          screens: 
+            terminalsEdit_screen: true
+          dialogs: 
+            terminalsDel_dialog: true
+          default: terminalsEdit_screen
+        order:
+          name: true
+          TerminalModelId: true
+      options: 
+        title: _("Options")
+        screens: 
+          terminalsNew_screen: true
+        dialogs: 
+          terminalsDel_dialog: true
+    terminalsNew_screen: &terminalsNew_screenLink 
+      <<: *Terminals
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Terminal', 'Terminals', 1))
+      forcedValues:
+        <<: *forcedCompany
+      shortcutOption: N
+      fields:
+        blacklist: 
+          <<: *terminalBlacklist
+          lastProvisionDate: true
+    terminalsEdit_screen: &terminalsEdit_screenLink 
+      <<: *Terminals
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Terminal', 'Terminals', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        readOnly: 
+          lastProvisionDate: true
+        blacklist: 
+          <<: *terminalBlacklist
+  dialogs: &terminals_dialogsLink
+    terminalsDel_dialog: &terminalsDel_dialogLink 
+      <<: *Terminals
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Terminal', 'Terminals', 1))
+      description: _("Do you want to delete this %s?", ngettext('Terminal', 'Terminals', 1))
+      message: _("%s successfully deleted.", ngettext('Terminal', 'Terminals', 1))
+      multiItem: 1
+      labelOnList: 1
+
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

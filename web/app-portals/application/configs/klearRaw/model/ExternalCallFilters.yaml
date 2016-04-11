@@ -1,0 +1,147 @@
+production: 
+  class: \Oasis\Model\ExternalCallFilters
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 50
+    welcomeLocutionId: 
+      title: _('Welcome locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileMimeType
+            template: '%fileMimeType%'
+          order: fileMimeType
+        'null': _("Unasigned")
+    holidayLocutionId: 
+      title: _('Holiday locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileMimeType
+            template: '%fileMimeType%'
+          order: fileMimeType
+        'null': _("Unasigned")
+    outOfScheduleLocutionId: 
+      title: _('Out of schedule locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - fileMimeType
+            template: '%fileMimeType%'
+          order: fileMimeType
+        'null': _("Unasigned")
+    holidayTargetType: 
+      title: _('Holiday target type')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'number': _('number')
+          'extension': _('extension')
+          'voicemail': _('voicemail')
+    holidayNumberValue: 
+      title: _('Holiday number value')
+      type: text
+      maxLength: 25
+    holidayExtensionId: 
+      title: _('Holiday extension id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+    holidayVoiceMailUserId: 
+      title: _('Holiday voice mail user id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    outOfScheduleTargetType: 
+      title: _('Out of schedule target type')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'number': _('number')
+          'extension': _('extension')
+          'voicemail': _('voicemail')
+    outOfScheduleNumberValue: 
+      title: _('Out of schedule number value')
+      type: text
+      maxLength: 25
+    outOfScheduleExtensionId: 
+      title: _('Out of schedule extension id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+    outOfScheduleVoiceMailUserId: 
+      title: _('Out of schedule voice mail user id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

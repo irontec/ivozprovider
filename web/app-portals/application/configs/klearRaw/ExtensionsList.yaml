@@ -1,0 +1,187 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include CallForwardSettingsList.yaml
+#include ExternalCallFiltersList.yaml
+#include HuntGroupCallForwardSettingsList.yaml
+#include IVRCommonList.yaml
+#include IVRCustomList.yaml
+#include IVRCustomEntriesList.yaml
+#include UsersList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: extensionsList_screen
+  screens: &extensions_screensLink 
+    extensionsList_screen: &extensionsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Extensions
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Extension', 'Extensions', 0), "[format| (%parent%)]")
+      fields: &extensions_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            extensionsEdit_screen: true
+            callForwardSettingsList_screen: true
+            externalCallFiltersList_screen: true
+            huntGroupCallForwardSettingsList_screen: true
+            iVRCommonList_screen: true
+            iVRCustomList_screen: true
+            iVRCustomEntriesList_screen: true
+            usersList_screen: true
+          dialogs: 
+            extensionsDel_dialog: true
+          default: extensionsEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          extensionsNew_screen: true
+        dialogs: 
+          extensionsDel_dialog: true
+    extensionsNew_screen: &extensionsNew_screenLink 
+      <<: *Extensions
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Extension', 'Extensions', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          extensionsEdit_screen: true
+    extensionsEdit_screen: &extensionsEdit_screenLink 
+      <<: *Extensions
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Extension', 'Extensions', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Extension', 'Extensions', 1), "[format| (%item%)]")
+    #callForwardSettings: 
+    <<: *callForwardSettings_screensLink
+    callForwardSettingsList_screen: 
+      <<: *callForwardSettingsList_screenLink
+      filterField: extensionId
+      parentOptionCustomizer: 
+        - recordCount
+    callForwardSettingsNew_screen: 
+      <<: *callForwardSettingsNew_screenLink
+      filterField: extensionId
+    callForwardSettingsEdit_screen: 
+      <<: *callForwardSettingsEdit_screenLink
+      filterField: extensionId
+
+    #externalCallFilters: 
+    externalCallFiltersList_screen: 
+      <<: *externalCallFiltersList_screenLink
+      filterField: outOfScheduleExtensionId
+      parentOptionCustomizer: 
+        - recordCount
+    externalCallFiltersNew_screen: 
+      <<: *externalCallFiltersNew_screenLink
+      filterField: outOfScheduleExtensionId
+    externalCallFiltersEdit_screen: 
+      <<: *externalCallFiltersEdit_screenLink
+      filterField: outOfScheduleExtensionId
+
+    #huntGroupCallForwardSettings: 
+    huntGroupCallForwardSettingsList_screen: 
+      <<: *huntGroupCallForwardSettingsList_screenLink
+      filterField: callExtensionId
+      parentOptionCustomizer: 
+        - recordCount
+    huntGroupCallForwardSettingsNew_screen: 
+      <<: *huntGroupCallForwardSettingsNew_screenLink
+      filterField: callExtensionId
+    huntGroupCallForwardSettingsEdit_screen: 
+      <<: *huntGroupCallForwardSettingsEdit_screenLink
+      filterField: callExtensionId
+
+    #iVRCommon: 
+    iVRCommonList_screen: 
+      <<: *iVRCommonList_screenLink
+      filterField: errorExtensionId
+      parentOptionCustomizer: 
+        - recordCount
+    iVRCommonNew_screen: 
+      <<: *iVRCommonNew_screenLink
+      filterField: errorExtensionId
+    iVRCommonEdit_screen: 
+      <<: *iVRCommonEdit_screenLink
+      filterField: errorExtensionId
+
+    #iVRCustom: 
+    iVRCustomList_screen: 
+      <<: *iVRCustomList_screenLink
+      filterField: errorExtensionId
+      parentOptionCustomizer: 
+        - recordCount
+    iVRCustomNew_screen: 
+      <<: *iVRCustomNew_screenLink
+      filterField: errorExtensionId
+    iVRCustomEdit_screen: 
+      <<: *iVRCustomEdit_screenLink
+      filterField: errorExtensionId
+
+    #iVRCustomEntries: 
+    iVRCustomEntriesList_screen: 
+      <<: *iVRCustomEntriesList_screenLink
+      filterField: targetExtensionId
+      parentOptionCustomizer: 
+        - recordCount
+    iVRCustomEntriesNew_screen: 
+      <<: *iVRCustomEntriesNew_screenLink
+      filterField: targetExtensionId
+    iVRCustomEntriesEdit_screen: 
+      <<: *iVRCustomEntriesEdit_screenLink
+      filterField: targetExtensionId
+
+    #users: 
+    usersList_screen: 
+      <<: *usersList_screenLink
+      filterField: extensionId
+      parentOptionCustomizer: 
+        - recordCount
+    usersNew_screen: 
+      <<: *usersNew_screenLink
+      filterField: extensionId
+    usersEdit_screen: 
+      <<: *usersEdit_screenLink
+      filterField: extensionId
+
+  dialogs: &extensions_dialogsLink 
+    extensionsDel_dialog: &extensionsDel_dialogLink 
+      <<: *Extensions
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Extension', 'Extensions', 1))
+      description: _("Do you want to delete this %s?", ngettext('Extension', 'Extensions', 1))
+      message: _("%s successfully deleted.", ngettext('Extension', 'Extensions', 1))
+      multiItem: 1
+      labelOnList: 1
+  # callForwardSettings dialogs: 
+    <<: *callForwardSettings_dialogsLink
+  # externalCallFilters dialogs: 
+    <<: *externalCallFilters_dialogsLink
+  # huntGroupCallForwardSettings dialogs: 
+    <<: *huntGroupCallForwardSettings_dialogsLink
+  # iVRCommon dialogs: 
+    <<: *iVRCommon_dialogsLink
+  # iVRCustom dialogs: 
+    <<: *iVRCustom_dialogsLink
+  # iVRCustomEntries dialogs: 
+    <<: *iVRCustomEntries_dialogsLink
+  # users dialogs: 
+    <<: *users_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

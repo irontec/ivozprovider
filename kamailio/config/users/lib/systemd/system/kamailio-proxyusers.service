@@ -1,0 +1,15 @@
+[Unit]
+Description=Kamailio - the Open Source SIP Server
+After=network.target
+Requires=rtpengine.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/kamailio_proxyusers.pid
+EnvironmentFile=/etc/default/kamailio_proxyusers
+ExecStart=/usr/sbin/kamailio -P /var/run/kamailio_proxyusers.pid -f /etc/kamailio/proxyusers/kamailio.cfg -u root -g root -m ${SH_MEM} -M ${PRIV_MEM}
+ExecStopPost=/bin/rm -f /var/run/kamailio_proxyusers.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

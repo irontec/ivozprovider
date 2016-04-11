@@ -1,0 +1,302 @@
+production: 
+  class: \Oasis\Model\Users
+  fields: 
+    companyId: 
+      title: _('Company')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+    lastname: 
+      title: _('Lastname')
+      type: text
+      required: true
+    email: 
+      title: ngettext('Email', 'Emails', 1)
+      type: text
+      required: true
+    username: 
+      title: _('Username')
+      type: text
+      required: true
+      default: true
+    pass: 
+      title: ngettext('Password', 'Passwords', 1)
+      type: password
+      required: true
+      adapter: PlainText
+    active: 
+      title: _('Active')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    timezoneId: 
+      title: _('Timezone')
+      type: select
+      defaultValue: 145
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Timezones
+          fieldName: 
+            fields: 
+              - tz
+            template: '%tz%'
+          order: tz
+    terminalId: 
+      title: _('Terminal')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Terminals
+          filterClass: Oasis_Klear_Filter_Terminals
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    extensionId: 
+      title: _('Extension')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Extensions
+          filterClass: Oasis_Klear_Filter_Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unasigned")
+    outgoingDDIId: 
+      title: _('Outgoing DDI')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\DDIs
+          filterClass: Oasis_Klear_Filter_Company
+          fieldName: 
+            fields: 
+              - DDI
+            template: '%DDI%'
+          order: DDI
+        'null': _("Unasigned")
+    callACLId: 
+      title: _('Call ACL')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\CallACL
+          filterClass: Oasis_Klear_Filter_Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    doNotDisturb: 
+      title: _('Do not disturb')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    isBoss: 
+      title: _('Is boss')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: ["bossAssistantId", "exceptionBoosAssistantRegExp"]
+          '1': 
+            title: _("Yes")
+            visualFilter:
+              show: ["bossAssistantId", "exceptionBoosAssistantRegExp"]
+              hide: []
+    bossAssistantId: 
+      title: _('Boss assistant')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          filterClass: Oasis_Klear_Filter_Bossassistant
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    isCompanyAdmin:
+      title: _('Is company admin')
+      type: select
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    exceptionBoosAssistantRegExp: 
+      title: _('Exception boos assistant reg exp')
+      type: text
+      maxLength: 255
+    username: 
+      title: _('Username')
+      type: text
+      required: true
+      maxLength: 50
+    active: 
+      title: _('Active')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    maxCalls: 
+      title: _('Max call')
+      type: number
+      defaultValue: 2
+      source: 
+        control: Spinner
+    callWaiting: 
+      title: _('Call waiting')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    attachVoicemailSound: 
+      title: _('Attach voicemail sound')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+
+    voicemailEnabled: 
+      title: _('Voicemail enabled')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+
+    PickUpRelUsers:
+      title: _('Pick Up Groups')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          extraDataAttributes:
+            companyId: companyId 
+          relationMapper: \Oasis\Mapper\Sql\PickUpRelUsers
+          relatedMapperName: \Oasis\Mapper\Sql\PickUpGroups
+          relatedFieldName: name
+          relationProperty: PickUpGroup
+          filterClass: Oasis_Klear_Filter_Company
+
+    countryId: 
+      title: _('Country code')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - name
+              - calling_code
+            template: '%name% (%calling_code%)'
+          order: code
+        'null': _("Company's default")
+    HuntGroupsRelUsers:
+      title: _('Hunt groups joinned')
+      searchable: false
+      type: ghost
+      source:
+        predefined: list
+      data: mapper
+      config:
+        mapperName: \Oasis\Mapper\Sql\HuntGroupsRelUsers
+        filterField: userId
+        showAsTable: true
+        fieldName:
+          fields:
+            huntGroupId:
+              title: _("Hunt group")
+              mapperName: \Oasis\Mapper\Sql\HuntGroups
+              field:
+                - name
+              pattern: "%name%"
+            timeoutTime:
+              title: _("Time out time")
+            priority:
+              title: _("Priority")
+        options:
+          dialogs:
+            huntGroupsRelUsersDel_dialog: true
+          screens:
+            huntGroupsRelUsersEdit_screen: true
+          default: 
+      options:
+        screens:
+          huntGroupsRelUsersNew_screen: true
+          
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

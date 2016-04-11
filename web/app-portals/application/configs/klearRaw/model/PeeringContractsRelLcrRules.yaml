@@ -1,0 +1,63 @@
+production: 
+  class: \Oasis\Model\PeeringContractsRelLcrRules
+  fields: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    lcrRuleId: 
+      title: _('Lcr rule id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\LcrRules
+          fieldName: 
+            fields: 
+              - prefix
+            template: '%prefix%'
+          order: prefix
+    peeringContractId: 
+      title: _('Peering contract id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\PeeringContracts
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+    priority: 
+      title: _('Priority')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    weight: 
+      title: _('Weight')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

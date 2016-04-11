@@ -1,0 +1,80 @@
+configuration:
+  - &maxUploadSize
+    size_limit: 15M
+
+actions:
+  - &editAction
+    controller: edit
+    class: ui-silk-pencil
+    label: false
+    
+  - &delAction
+    class: ui-silk-bin
+    controller: delete
+    labelOption: false
+    
+  - &newAction
+    multiInstance: true
+    class: ui-silk-add
+    label: true
+    controller: new
+    
+  - &downloadAction
+    controller: file
+    action: download
+    
+  - &forceDownloadAction
+    controller: file
+    action: forcedw
+    
+  - &uploadAction
+    controller: file
+    action: upload
+    
+  - &audioPlayer
+    type: command
+    title: Subir un archivo
+    class: jmedia
+    onNull: hide
+
+  - &downloadCommand
+    type: command
+    external: true
+    icon: ui-silk-bullet-disk
+    title: _('Download file')
+    text: |
+      Descargar fichero:
+      Nombre del fichero: %name%
+      Tamaño del fichero: (%human_size%)
+      Mime-type: %mimetype%
+    onNull: hide
+
+  - &uploadCommand
+    type: command
+    title: Subir un archivo
+    class: qq-uploader
+    onNull: show
+    
+  - &previewCommandAction
+    controller: file
+    action: preview
+    
+  - &previewCommand
+    type: command
+    class: filePreview
+    external: true
+    props:
+      width: 200
+      height: 200
+      crop: true
+    onNull: hide
+  - &previewlistCommand
+    type: command
+    class: filePreview
+    listController: true
+    external: true
+    props:
+      width: 30
+      height: 30
+      crop: true
+    onNull: hide

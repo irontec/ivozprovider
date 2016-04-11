@@ -1,0 +1,38 @@
+production: 
+  class: \Oasis\Model\ExternalCallFilterRelSchedules
+  fields: 
+    filterId: 
+      title: _('Filter id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\ExternalCallFilters
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    scheduleId: 
+      title: _('Schedule id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Schedules
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

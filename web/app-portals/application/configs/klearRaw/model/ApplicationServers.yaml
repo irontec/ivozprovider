@@ -1,0 +1,33 @@
+production: 
+  class: \Oasis\Model\ApplicationServers
+  fields: 
+    ip: 
+      title: _('Ip')
+      type: text
+      required: true
+      default: true
+    transport: 
+      title: _('Transport')
+      type: text
+      defaultValue: udp
+      maxLength: 4
+    from_pattern: 
+      title: _('From pattern')
+      type: text
+      maxLength: 64
+    tag: 
+      title: _('Tag')
+      type: text
+      maxLength: 64
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 64
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

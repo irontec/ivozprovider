@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Enable and start mysql
+/bin/systemctl enable mysql
+/bin/systemctl start mysql
+
+# Enable and start cdr-parser
+/bin/systemctl daemon-reload
+/bin/systemctl start CDRparser.timer
+/bin/systemctl enable CDRparser.timer
+
+:
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<project name="oasis" basedir="." default="init">
+	<!-- CONFIGURABLE VALUES -->
+	<!-- command line switch >> -Dk=/remoteKlear -->
+	<property name="klear.base" refid="k" fallback="/opt/klear-development" />
+	<!-- command line switch >> -Da=../web/application -->
+	<property name="application.path" refid="a" fallback="../www/portals" />
+	<!-- command line switch >> -De=development -->
+	<property name="application.env" refid="e" fallback="localdev" />
+	<!-- END OF CONFIGURABLE VALUES -->
+	<!-- Sets the DSTAMP, TSTAMP and TODAY properties -->
+	<tstamp />
+	<property name="build.dir" value="./" />
+	<exec command="which mysql" outputProperty="progs.mysql" />
+	<property name="modelGenerator.path" value="${klear.base}/generator" />
+	<includepath classpath="${klear.base}/library/Iron/Phing/" />
+	<taskdef name="configParser" classname="ConfigurationParser" />
+	<configParser targetProperty="resources.db.params.dbname" outputProperty="db.name" iniFile="${env.PWD}/${application.path}/configs/application.ini" stage="${application.env}" />
+	<configParser targetProperty="resources.db.params.username" outputProperty="db.user" iniFile="${env.PWD}/${application.path}/configs/application.ini" stage="${application.env}" />
+	<configParser targetProperty="resources.db.params.password" outputProperty="db.pass" iniFile="${env.PWD}/${application.path}/configs/application.ini" stage="${application.env}" />
+	<configParser targetProperty="resources.db.params.host" outputProperty="db.host" iniFile="${env.PWD}/${application.path}/configs/application.ini" stage="${application.env}" />
+	<!-- create initial changelog table -->
+	<target name="init">
+		<exec command="${progs.mysql} -h${db.host} -u${db.user} -p${db.pass} ${db.name} &lt; predeploy.sql" dir="${build.dir}" checkreturn="true" />
+	</target>
+	<!-- create our migration task -->
+	<target name="first-pass-migrate" description="Database Migrations">
+		<!-- load the dbdeploy task -->
+		<taskdef name="dbdeploy" classname="phing.tasks.ext.dbdeploy.DbDeployTask" />
+		<!-- these two filenames will contain the generated SQL to do the deploy and roll it back-->
+		<property name="build.dbdeploy.deployfile" value="deploy/scripts/deploy-${DSTAMP}${TSTAMP}.sql" />
+		<property name="build.dbdeploy.undofile" value="deploy/scripts/undo-${DSTAMP}${TSTAMP}.sql" />
+		<!-- generate the deployment scripts -->
+		<dbdeploy url="mysql:host=${db.host};dbname=${db.name}" userid="${db.user}" password="${db.pass}" dir="${build.dir}/deltas" outputfile="${build.dir}/${build.dbdeploy.deployfile}" undooutputfile="${build.dir}/${build.dbdeploy.undofile}" />
+		<!-- execute the SQL - Use mysql command line to avoid trouble with large files or many statements and PDO -->
+		<exec passthru="true" command="${progs.mysql} -h${db.host} -u${db.user} -p${db.pass} ${db.name} &lt; ${build.dbdeploy.deployfile}" dir="${build.dir}" checkreturn="true" />
+	</target>
+	<target name="second-pass-migrate" description="Database Migrations">
+		<!-- load the dbdeploy task -->
+		<taskdef name="dbdeploy" classname="phing.tasks.ext.dbdeploy.DbDeployTask" />
+		<!-- these two filenames will contain the generated SQL to do the deploy and roll it back-->
+		<property name="build.dbdeploy.deployfile" value="deploy/scripts/deploy-${DSTAMP}${TSTAMP}.sql" />
+		<property name="build.dbdeploy.undofile" value="deploy/scripts/undo-${DSTAMP}${TSTAMP}.sql" />
+		<!-- generate the deployment scripts -->
+		<dbdeploy url="mysql:host=${db.host};dbname=${db.name}" userid="${db.user}" password="${db.pass}" dir="${build.dir}/deltas" outputfile="${build.dir}/${build.dbdeploy.deployfile}" undooutputfile="${build.dir}/${build.dbdeploy.undofile}" />
+		<!-- execute the SQL - Use mysql command line to avoid trouble with large files or many statements and PDO -->
+		<exec command="${progs.mysql} -h${db.host} -u${db.user} -p${db.pass} ${db.name} &lt; ${build.dbdeploy.deployfile}" dir="${build.dir}" checkreturn="true" />
+	</target>
+	<target name="generate-db">
+		<exec command="/usr/bin/php klear-db-generator.php -a ${env.PWD}/${application.path} -e ${application.env}" dir="${modelGenerator.path}" />
+	</target>
+	<target name="generate-db-delta">
+		<exec command="/usr/bin/php klear-db-generator.php -a ${env.PWD}/${application.path} -d ${env.PWD}/${build.dir}/deltas -e ${application.env}" dir="${modelGenerator.path}" />
+	</target>
+	<target name="generate-models">
+		<exec command="/usr/bin/php klear-models-mappers-generator.php -a ${env.PWD}/${application.path} -e ${application.env}" dir="${modelGenerator.path}" />
+	</target>
+	<target name="generate-yaml">
+		<exec command="/usr/bin/php klear-yaml-generator.php -a ${env.PWD}/${application.path} -e ${application.env}" dir="${modelGenerator.path}" />
+	</target>
+	<target name="run-generators" depends="generate-models,generate-yaml">
+	</target>
+	<target name="migrate" depends="first-pass-migrate">
+	</target>
+	<target name="db-change-migrate" depends="first-pass-migrate, generate-db-delta, second-pass-migrate">
+	</target>
+	<target name="db-change" description="Database Migration and Model - Yaml generator" depends="db-change-migrate, run-generators">
+	</target>
+</project>

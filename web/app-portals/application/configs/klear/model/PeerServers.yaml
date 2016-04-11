@@ -1,0 +1,154 @@
+production: 
+  class: \Oasis\Model\PeerServers
+  fields: 
+    peeringContractId: 
+      title: _('Peering contract')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\PeeringContracts
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+      default: true
+    ip: 
+      title: _('Ip')
+      type: text
+      required: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue: 
+      required: true
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    hostname: 
+      title: _('Hostname')
+      type: text
+    port: 
+      title: _('Port')
+      type: number
+      defaultValue: 5060
+      source: 
+        control: Spinner
+    params: 
+      title: _('Param')
+      type: text
+    uri_scheme: 
+      title: _('Uri scheme')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values: 
+          '1':
+            title: _("sip")
+          '2':
+            title: _("sips")
+    transport: 
+      title: _('Transport')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values: 
+          '1':
+            title: _("udp")
+          '2':
+            title: _("tcp")
+          '3':
+            title: _("tls")
+    strip: 
+      title: _('Strip')
+      type: number
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Strip N digits from the beginning of the callee")
+        label: _("Need help?")
+      source: 
+        control: Spinner
+    prefix: 
+      title: _('Prefix')
+      type: text
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Prepend this field to callee (after stripping)")
+        label: _("Need help?")
+    tag: 
+      title: _('Credentials')
+      type: text
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enter Username[:Password]")
+        label: _("Need help?")
+    flags: 
+      title: _('Flag')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    defunct: 
+      title: _('Defunct')
+      type: number
+      source: 
+        control: Spinner
+    sendPAI: 
+      title: _('Send PAI')
+      type: checkbox
+#      required: true
+#      source: 
+#        data: inline
+#        values: 
+#          'yes': _('yes')
+#          'no': _('no')
+    sendRPID: 
+      title: _('Send RPID')
+      type: checkbox
+#      required: true
+#      source: 
+#        data: inline
+#        values: 
+#          'yes': _('yes')
+#          'no': _('no')
+    useAuthUserAsFromUser: 
+      title: _('Use auth user as from user')
+      type: checkbox
+#      required: true
+#      source: 
+#        data: inline
+#        values: 
+#          'yes': _('yes')
+#          'no': _('no')
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

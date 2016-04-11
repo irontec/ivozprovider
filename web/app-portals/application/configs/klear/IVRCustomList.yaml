@@ -1,0 +1,145 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include IVRCustomEntriesList.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: iVRCustomList_screen
+  screens: 
+    iVRCustomList_screen: &iVRCustomList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *IVRCustom
+      title: _("List of %s %2s", ngettext('I v r custom', 'I v r custom(s)', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        order:
+          name: true
+          timeout: true
+          noAnswerTimeout: true
+          timeoutTargetType: true
+          timeoutTarget: true
+          errorTargetType: true
+          errorTarget: true
+        blacklist:
+          welcomeLocutionId: true
+          noAnswerLocutionId: true
+          errorLocutionId: true
+          successLocutionId: true        
+          timeoutNumberValue: true
+          timeoutExtensionId: true
+          timeoutVoiceMailUserId: true
+          errorNumberValue: true
+          errorExtensionId: true
+          errorVoiceMailUserId: true
+        options: 
+          title: _("Options")
+          screens: 
+            iVRCustomEdit_screen: true
+            iVRCustomEntriesList_screen: true
+          dialogs: 
+            iVRCustomDel_dialog: true
+          default: iVRCustomEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          iVRCustomNew_screen: true
+        dialogs: 
+          iVRCustomDel_dialog: true
+    iVRCustomNew_screen: &iVRCustomNew_screenLink 
+      <<: *IVRCustom
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('I v r custom', 'I v r custom(s)', 1))
+      shortcutOption: N
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          noAnswerTarget: true
+          errorTarget: true
+          timeoutTarget : true
+      fixedPositions: &IVRCustomFixedPositions_link
+        group0:
+          label: _("Basic configuration")
+          colsPerRow: 2
+          fields:
+            name: 1
+            timeout: 1
+            welcomeLocutionId: 1
+            successLocutionId: 1
+        group1:
+          label: _("No answer configuration")
+          colsPerRow: 3
+          fields:
+            noAnswerLocutionId: 2
+            noAnswerTimeout: 1
+            timeoutTargetType: 1
+            timeoutNumberValue: 1
+            timeoutExtensionId: 1
+            noAnswerUserId: 1
+            timeoutVoiceMailUserId: 1
+        group2:
+          label: _("Error configuration")
+          colsPerRow: 6
+          fields:
+            ErrorLocutionId: 5
+            errorTargetType: 2
+            errorNumberValue: 2
+            errorExtensionId: 2
+            errorUserId: 2
+            errorVoiceMailUserId: 2
+    iVRCustomEdit_screen: &iVRCustomEdit_screenLink 
+      <<: *IVRCustom
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('I v r custom', 'I v r custom(s)', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          noAnswerTarget: true
+          errorTarget: true
+          timeoutTarget: true
+      fixedPositions: 
+        <<: *IVRCustomFixedPositions_link
+    #IVRCustomEntries
+    <<: *iVRCustomEntries_screensLink
+    iVRCustomEntriesList_screen:
+      <<: *iVRCustomEntriesList_screenLink
+      filterField: IVRCustomId
+      parentOptionCustomizer:
+        - recordCount
+    iVRCustomEntriesNew_screen:
+      <<: *iVRCustomEntriesNew_screenLink
+      filterField: IVRCustomId
+    iVRCustomEntriesEdit_screen:
+      <<: *iVRCustomEntriesEdit_screenLink
+      filterField: IVRCustomId
+  dialogs: 
+    iVRCustomDel_dialog: &iVRCustomDel_dialogLink 
+      <<: *IVRCustom
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('I v r custom', 'I v r custom(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('I v r custom', 'I v r custom(s)', 1))
+      message: _("%s successfully deleted.", ngettext('I v r custom', 'I v r custom(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+    #IVRCustomEntries
+    <<: *iVRCustomEntries_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

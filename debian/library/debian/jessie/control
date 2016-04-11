@@ -1,0 +1,15 @@
+Source: oasis-data-library
+Section: php
+Priority: optional
+Build-Depends: debhelper, git, openssh-client, curl, python, php5
+Standards-Version: 3.9.6
+Maintainer: Irontec OASIS Team <oasis@irontec.com>
+
+Package: oasis-data-library
+Architecture: all
+Section: php
+Priority: optional
+Homepage: http://www.irontec.com
+Description: OASIS - Mappers and Models for Zend applications
+ .
+

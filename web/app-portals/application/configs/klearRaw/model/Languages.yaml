@@ -1,0 +1,22 @@
+production: 
+  class: \Oasis\Model\Languages
+  fields: 
+    iden: 
+      title: ngettext('Iden', 'Idens', 1)
+      type: text
+      required: true
+      maxLength: 100
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue: 
+      maxLength: 100
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -1,0 +1,225 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include CompanyAdminsList.yaml
+#include PricingPlansRelCompaniesList.yaml
+#include InvoicesList.yaml
+#include TransformationRulesetGroupsUsersList.yaml
+
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: companiesList_screen
+  screens: &companies_screensLink
+    companiesList_screen: &companiesList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Companies
+      class: ui-silk-building
+      title: _("List of %s %2s", ngettext('Company', 'Companies', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            companyAdminsList_screen: true
+            pricingPlansRelCompaniesList_screen: true
+            companiesEdit_screen: true
+          dialogs:
+            companiesDel_dialog: true
+            emulateCompany_dialog: true
+          default: companiesEdit_screen
+        blacklist:
+          transformationRulesetGroupsId: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          country: true
+          registryData: true
+          invoiceLanguageId: true
+          externalMaxCalls: true
+          defaultTimezoneId: true
+          applicationServerId: true
+        order:
+          name: true
+          nif: true
+          outbound_prefix: true
+          countryId: true
+      options:
+        title: _("Options")
+        screens:
+          companiesNew_screen: true
+        dialogs:
+          companiesDel_dialog: true
+          importCompanies_dialog: true
+      csv:
+        active: true
+        filename: "Companies"
+        headers: true
+        enclosure: '"'
+        separator: ";"
+        nameklear: false
+        rawValues: true
+        ignoreBlackList: true
+        newLine: "\r\n"
+        encoding: "utf-8"
+        executionSeconds: ""
+
+    companiesNew_screen: &companiesNew_screenLink
+      <<: *Companies
+      controller: new
+      fields:
+        blacklist:
+          musicOnHoldId: true
+          transformationRulesetGroupsId: true
+          applicationServerId: true
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Company', 'Companies', 1))
+      shortcutOption: N
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions: &companiesFixedPositions_Link
+        group0:
+          colsPerRow: 2
+          fields:
+            name: 1
+            nif: 1
+            defaultTimezoneId: 1
+        group1:
+          colsPerRow: 4
+          label: _("Server data")
+          fields:
+            outbound_prefix: 1
+            transformationRulesetGroupsId: 3
+            applicationServerId: 2
+            externalMaxCalls: 1
+            countryId: 1
+        group4:
+          colsPerRow: 2
+          label: _("Invoice data")
+          fields:
+            invoiceLanguageId: 1
+            postalAddress: 2
+            postalCode: 1
+            town: 1
+            province: 1
+            country: 1
+            registryData: 2
+    companiesEdit_screen: &companiesEdit_screenLink
+      <<: *Companies
+      controller: edit
+      fields:
+        blacklist:
+          musicOnHoldId: true
+          transformationRulesetGroupsId: true
+          applicationServerId: true
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Company', 'Companies', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions:
+        <<: *companiesFixedPositions_Link
+          
+    # Company Adminstrators
+    <<: *companyAdmins_screensLink
+    companyAdminsList_screen:
+      <<: *companyAdminsList_screenLink
+      filterField: companyId
+      forcedValues:
+      parentOptionCustomizer:
+        - recordCount
+
+    #pricingPlansRelCompanies: 
+    <<: *pricingPlansRelCompanies_screensLink
+    pricingPlansRelCompaniesList_screen: 
+      <<: *pricingPlansRelCompaniesList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    pricingPlansRelCompaniesNew_screen: 
+      <<: *pricingPlansRelCompaniesNew_screenLink
+      filterField: companyId
+    pricingPlansRelCompaniesEdit_screen: 
+      <<: *pricingPlansRelCompaniesEdit_screenLink
+      filterField: companyId
+
+    # transformationRulesetGroupsUsers
+    <<: *transformationRulesetGroupsUsers_screensLink
+    transformationRulesetGroupsUsersList_screen:
+      <<: *transformationRulesetGroupsUsersList_screenLink
+      class: ui-silk-add
+      title: _("List of %s", ngettext('Transformation ruleset groups user', 'Transformation ruleset groups users', 0), "[format]")
+    transformationRulesetGroupsUsersNew_screen:
+      <<: *transformationRulesetGroupsUsersNew_screenLink
+    transformationRulesetGroupsUsersEdit_screen:
+      <<: *transformationRulesetGroupsUsersEdit_screenLink
+
+  dialogs: &companies_dialogsLink
+    companiesDel_dialog: &companiesDel_dialogLink
+      <<: *Companies
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Company', 'Companies', 1))
+      description: _("Do you want to delete this %s?", ngettext('Company', 'Companies', 1))
+      message: _("%s successfully deleted.", ngettext('Company', 'Companies', 1))
+      multiItem: 1
+      labelOnList: 1
+
+    emulateCompany_dialog:
+      title: _("Emulate Company %s", "[format| (%item%)]")
+      module: default
+      controller: klear-custom-extra-auth
+      action: emulate
+      class: ui-silk-building-add
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+      parentOptionCustomizer:
+        - Oasis_Klear_Options_OptionsCustomizer
+        
+    importCompanies_dialog:
+      <<: *Companies
+      module: default
+      title: _("Import %s", ngettext('File', 'Files', 1))
+      label: false
+      labelOnEdit: true   
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importCompaniesFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        brandId: ${auth.brandId}
+      
+    # pricingPlansRelCompanies dialogs:
+    <<: *pricingPlansRelCompanies_dialogsLink
+    # TransformationRulesetGroupsTrunks
+    <<: *transformationRulesetGroupsUsers_dialogsLink
+    
+  commands:
+    importCompaniesFreeUpload_command:
+      <<: *Companies
+      controller: File
+      action: free-upload
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -1,0 +1,98 @@
+production: 
+  class: \Oasis\Model\TerminalModels
+  fields: 
+    iden: 
+      title: ngettext('Iden', 'Idens', 1)
+      type: text
+      required: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      defaultValue:
+      default: true
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+    TerminalManufacturerId: 
+      title: _('Terminal manufacturer')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\TerminalManufacturers
+          fieldName: 
+            fields: 
+              - iden
+              - name
+            template: '%name%'
+          order: iden
+    genericUrlPattern: 
+      title: _('Patrón de la url genérica')
+      type: text
+      prefix: 'http://{SERVER_URL}/provision'
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Url exacta a la que se accede.")
+    genericTemplate: 
+      title: _('Plantilla genérica')
+      type: textarea
+      source:
+        control: Codemirror
+        settings:
+          mode: php
+          lineNumbers: true
+          matchBrackets: true
+      options: 
+        title: _("Options")
+        dialogs: 
+          uploadFile_dialog: true
+          downloadFile_dialog: true
+          genericBackup_dialog: true
+          runGenericCode_dialog: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _('Usar <strong>$this->terminalModel</strong> para acceder a los datos del modelo. En caso de error, para saber la línea exacta en la que se encuentra hay que restarle 70 a la línea devuelta en el mensaje.')
+    specificUrlPattern: 
+      title: _('Patrón de la url específica')
+      type: text
+      prefix: 'http://{SERVER_URL}/provision'
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("La parte variable de la url se pone entre llaves, por ejemplo /t26p/{mac}.cfg")
+    specificTemplate: 
+      title: _('Plantilla específica')
+      type: textarea
+      source:
+        control: Codemirror
+        settings: 
+          mode: php
+          lineNumbers: true
+          matchBrackets: true
+      options: 
+        title: _("Options")
+        dialogs: 
+          uploadFile_dialog: true
+          downloadFile_dialog: true
+          specificBackup_dialog: true
+          runSpecificCode_dialog: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _('Usar <strong>$this->terminalModel</strong> para acceder a los datos del modelo, <strong>$this->terminal</strong> para los datos del terminal, <strong>$this->user</strong> para el usuario y <strong>$this->company</strong> para la empresa. En caso e error, para saber la línea exacta en la que se encuentra hay que restarle 70 a la línea devuelta en el mensaje.')
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

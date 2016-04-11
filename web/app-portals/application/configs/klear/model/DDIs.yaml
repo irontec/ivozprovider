@@ -1,0 +1,157 @@
+production: 
+  class: \Oasis\Model\DDIs
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    DDI: 
+      title: _('DDI')
+      type: text
+      required: true
+      default: true
+    externalCallFilterId: 
+      title: _('External call filter id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\ExternalCallFilters
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    routeType: 
+      title: _('Route type')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'user':
+            title: _('user')
+            visualFilter:
+              show: ["userId"]
+              hide: ["IVRCommonId", "IVRCustomId", "huntGroupId", "faxId" ]
+          'IVRCommon':
+            title: _('IVRCommon')
+            visualFilter:
+              show: ["IVRCommonId"]
+              hide: ["userId", "IVRCustomId", "huntGroupId", "faxId" ]
+          'IVRCustom':
+            title: _('IVRCustom')
+            visualFilter:
+              show: ["IVRCustomId"]
+              hide: ["IVRCommonId", "userId", "huntGroupId", "faxId" ]
+          'huntGroup':
+            title: _('huntGroup')
+            visualFilter:
+              show: ["huntGroupId"]
+              hide: ["IVRCommonId", "IVRCustomId", "userId", "faxId" ]
+          'fax':
+            title: _('fax')
+            visualFilter:
+              show: ["faxId"]
+              hide: ["IVRCommonId", "IVRCustomId", "huntGroupId", "userId" ]
+    userId: 
+      title: _('User id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Users
+          filterClass: Oasis_Klear_Filter_Company
+          fieldName: 
+            fields: 
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unasigned")
+    IVRCommonId: 
+      title: _('I v r common id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\IVRCommon
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    IVRCustomId: 
+      title: _('I v r custom id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\IVRCustom
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    huntGroupId: 
+      title: _('Hunt group id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\HuntGroups
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    faxId: 
+      title: _('Fax id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Faxes
+          filterClass: Oasis_Klear_Filter_Company          
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_DDITarget
+        method: getData
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

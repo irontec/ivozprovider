@@ -1,0 +1,69 @@
+production: 
+  class: \Oasis\Model\KamTrunksDialplan
+  fields: 
+    dpid: 
+      title: _('Dpid')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+      default: true
+    pr: 
+      title: _('Pr')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    match_op: 
+      title: _('Match op')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    match_exp: 
+      title: _('Match exp')
+      type: text
+      required: true
+      maxLength: 64
+    match_len: 
+      title: _('Match len')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    subst_exp: 
+      title: _('Subst exp')
+      type: text
+      required: true
+      maxLength: 64
+    repl_exp: 
+      title: _('Repl exp')
+      type: text
+      required: true
+      maxLength: 64
+    attrs: 
+      title: _('Attr')
+      type: text
+      required: true
+      maxLength: 64
+    transformationRulesetGroupsTrunksId: 
+      title: _('Transformation ruleset groups trunks id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\TransformationRulesetGroupsTrunks
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -1,0 +1,37 @@
+production: 
+  class: \Oasis\Model\InvoiceTemplates
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 55
+      default: true
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      maxLength: 300
+    template: 
+      title: ngettext('Template', 'Templates', 1)
+      type: textarea
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

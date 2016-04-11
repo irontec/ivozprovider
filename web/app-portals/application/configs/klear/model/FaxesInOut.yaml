@@ -1,0 +1,106 @@
+production: 
+  class: \Oasis\Model\FaxesInOut
+  fields: 
+    calldate: 
+      title: _('Calldate')
+      type: picker
+      defaultValue: 0000-00-00 00:00:00
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    faxId: 
+      title: _('Fax id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Faxes
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    src: 
+      title: _('Src')
+      type: text
+      maxLength: 128
+    dst: 
+      title: _('Dst')
+      type: text
+      maxLength: 128
+      trim: both
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: select
+      defaultValue: Out
+      source: 
+        data: inline
+        values: 
+          'In': _('In')
+          'Out': _('Out')
+    pages: 
+      title: _('Page')
+      type: text
+      maxLength: 64
+    status: 
+      title: _('Statu')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'error': _('error')
+          'pending': _('pending')
+          'completed': _('completed')
+          'inprogress': _('inprogress')
+    file: 
+      title: ngettext('File', 'Files', 1)
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: faxesInOutFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: faxesInOutFileUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: faxesInOutFilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: faxesInOutFilePreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

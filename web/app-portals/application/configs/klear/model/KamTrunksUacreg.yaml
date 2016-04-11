@@ -1,0 +1,113 @@
+production: 
+  class: \Oasis\Model\KamTrunksUacreg
+  fields: 
+    l_uuid: 
+      title: _('DDI')
+      type: text
+      defaultValue: 
+      default: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Si es una cuenta multiDID, introducir uno de ellos (se envía en el Contact).")
+        label: _("¿Necesitas ayuda?")
+      required: true
+    l_username: 
+      title: _('L username')
+      type: text
+      defaultValue: 
+    l_domain: 
+      title: _('L domain')
+      type: text
+      defaultValue: 
+    r_username: 
+      title: _('Username')
+      type: text
+      defaultValue: 
+      required: true
+    r_domain: 
+      title: _('Domain')
+      type: text
+      defaultValue: 
+      required: true
+    realm: 
+      title: _('Realm')
+      type: text
+      defaultValue: 
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Dejar vacío para utilizar el propuesto")
+        label: _("¿Necesitas ayuda?")
+    auth_username: 
+      title: _('Auth username')
+      type: text
+      defaultValue: 
+      required: false
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Solo en caso de ser distinto del Nombre de Usuario")
+        label: _("¿Necesitas ayuda?")
+    auth_password: 
+      title: _('Password')
+      type: password
+      defaultValue: 
+      adapter: PlainText
+      required: true
+    auth_proxy: 
+      title: _('Registrar Server URI')
+      type: text
+      defaultValue:
+      pattern: "^sip:.*$|^sips:.*$"
+      required: false
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Tiene que empezar por sip o sips seguido de dos puntos")
+        label: _("¿Necesitas ayuda?")
+    expires: 
+      title: _('Expire')
+      type: number
+      defaultValue: 3600
+      source: 
+        control: Spinner
+      required: true
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    peeringContractId: 
+      title: _('Peering contract id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\PeeringContracts
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

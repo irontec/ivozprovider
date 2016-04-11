@@ -1,0 +1,113 @@
+production: 
+  class: \Oasis\Model\Extensions
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    number: 
+      title: _('Number')
+      type: text
+      required: true
+      default: true
+    routeType: 
+      title: _('Route type')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'user':
+            title: _('user')
+            visualFilter:
+              show: ["userId"]
+              hide: ["IVRCommonId", "IVRCustomId", "huntGroupId"]
+          'IVRCommon':
+            title: _('IVRCommon')
+            visualFilter:
+              show: ["IVRCommonId"]
+              hide: ["userId", "IVRCustomId", "huntGroupId"]
+          'IVRCustom':
+            title: _('IVRCustom')
+            visualFilter:
+              show: ["IVRCustomId"]
+              hide: ["IVRCommonId", "userId", "huntGroupId"]
+          'huntGroup':
+            title: _('huntGroup')
+            visualFilter:
+              show: ["huntGroupId"]
+              hide: ["IVRCommonId", "IVRCustomId", "userId"]
+    IVRCommonId: 
+      title: _('I v r common id')
+      type: select
+      required: true      
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\IVRCommon
+          filterClass: Oasis_Klear_Filter_Company           
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    IVRCustomId: 
+      title: _('I v r custom id')
+      type: select
+      required: true      
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\IVRCustom
+          filterClass: Oasis_Klear_Filter_Company           
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    huntGroupId: 
+      title: _('Hunt group id')
+      type: select
+      required: true      
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\HuntGroups
+          filterClass: Oasis_Klear_Filter_Company           
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_DDITarget
+        method: getData
+    userId:
+      title: _('User')
+      type: ghost
+      source:
+        class: Oasis_Klear_Ghost_ExtensionsTarget
+        method: getUser
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

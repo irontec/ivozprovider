@@ -1,0 +1,24 @@
+Source: oasis-kamailio-users-config
+Section: php
+Priority: optional
+Build-Depends: debhelper
+Standards-Version: 3.9.6
+Maintainer: Irontec OASIS Team <oasis@irontec.com>
+
+Package: oasis-kamailio-users-config
+Architecture: all
+Section: admin
+Depends: kamailio,
+    kamailio-json-modules,
+    kamailio-mysql-modules,
+    kamailio-tls-modules,
+    kamailio-xml-modules,
+    ngcp-rtpengine-daemon,
+    ngcp-rtpengine-iptables,
+    ngcp-rtpengine-kernel-dkms
+Priority: optional
+Homepage: http://www.irontec.com
+Description: OASIS - Kamailio - Configuration files for Users kamailio
+  This package include all requires files to configure kamailio properly
+  for a users proxy.
+ .

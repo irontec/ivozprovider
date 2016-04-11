@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+
+override_dh_auto_build:
+	# Install Composer
+	git config --global http.sslVerify false
+	curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
+	# Compose it!
+	./composer --no-interaction install
+
+%:
+	dh $@

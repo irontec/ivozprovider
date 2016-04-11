@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Add bashrc.d include on first install
+if [ -z "$2" ]; then
+    echo >> ~/.bashrc
+    echo '# Include extra resources files' >> ~/.bashrc
+    echo '[ -d ~/.bashrc.d ] && for RC_FILE in ~/.bashrc.d/*; do . $RC_FILE; done' >> ~/.bashrc
+    echo >> ~/.bashrc
+fi
+
+# Enable apache sites and modules
+[ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
+[ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
+[ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
+[ ! -L /etc/apache2/mods-enabled/mpm_prefork.load ] && /usr/sbin/a2enmod mpm_prefork
+[   -L /etc/apache2/mods-enabled/mpm_event.load ] && /usr/sbin/a2dismod mpm_event
+[   -L /etc/apache2/sites-enabled/000-default.conf ] && /usr/sbin/a2dissite 000-default
+[ ! -L /etc/apache2/sites-enabled/020-oasis-portals.conf ] && /usr/sbin/a2ensite 020-oasis-portals.conf
+[ ! -L /etc/apache2/sites-enabled/030-oasis-provisioning.conf ] && /usr/sbin/a2ensite 030-oasis-provisioning.conf
+
+# Enable services
+/bin/systemctl enable apache2
+/bin/systemctl reload apache2
+
+:

@@ -1,0 +1,78 @@
+production: 
+  class: \Oasis\Model\PricingPlansRelCompanies
+  fields: 
+    pricingPlanId: 
+      title: _('Pricing plan')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\PricingPlans
+          filterClass: Oasis_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    companyId: 
+      title: _('Company')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    validFrom: 
+      title: _('Valid from')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    validTo: 
+      title: _('Valid to')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    metric: 
+      title: _('Metric')
+      type: number
+      defaultValue: 10
+      source: 
+        control: Spinner
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("In case that two pricing plans were matched plan with lower metric will be applied.")
+        label: _("¿Necesitas ayuda?")
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \Oasis\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

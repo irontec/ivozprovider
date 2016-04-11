@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## This package contains systemd unit files
+/bin/systemctl daemon-reload
+/bin/systemctl enable kamailio-proxytrunks
+
+:

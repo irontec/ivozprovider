@@ -1,0 +1,11 @@
+#!/bin/bash
+case "$1" in
+        remove)
+                ### This function will be used to restore files that are owned by another packages
+                ### We'll move original files to their original names
+                for file in `dpkg-divert --list $DPKG_MAINTSCRIPT_PACKAGE | cut -d" " -f3`; do
+                        dpkg-divert --package $DPKG_MAINTSCRIPT_PACKAGE --remove --rename $file
+                done
+        ;;
+esac
+

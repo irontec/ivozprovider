@@ -1,0 +1,9 @@
+[Unit]
+Description=Run CDRparser every 5 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=3min
+
+[Install]
+WantedBy=timers.target

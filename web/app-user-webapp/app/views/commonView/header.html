@@ -1,0 +1,42 @@
+<script type="text/javascript">
+$(document).ready(function(){setTimeout(function(){$('[data-toggle="tooltip"]').tooltip();},1000);});
+</script>
+<div class="row" id="menu-header">
+    <div class="col-sm-12">
+    
+        <div class="col-sm-1">
+            <img alt="{{brandName}}" ng-src="{{logo}}" />
+        </div>
+        
+        <div class="col-sm-3">
+            <p class="text-muted header-title" translate="welcome" translate-values="{name: nombre}" style="margin-bottom: 0;"></p>
+            <p class="text-muted" translate="welcomeBrand" translate-values="{name: brandName}"></p>
+        </div>
+        
+        <div class="col-sm-8 text-right">
+            
+            <div class="col-sm-10">
+                <ul style="list-style: none;">
+                    <li>
+                        <p class="text-muted" style="margin-bottom: 0;">{{'statusTerminal' | translate}}
+                            <i class="fa fa-check-circle" style="color: green;" ng-show="statusTerminal" data-toggle="tooltip" data-placement="bottom" title="{{'terminalOk' | translate}}"></i>
+                            <i class="fa fa-exclamation-circle" style="color: red;" ng-show="!statusTerminal" data-toggle="tooltip" data-placement="bottom" title="{{'terminalFail' | translate}}"></i>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="text-muted" style="margin-bottom: 0;">{{userAgent}}</p>
+                    </li>
+                    <li>
+                        <p class="text-muted" style="margin-bottom: 0;">{{ipRegistered}}</p>
+                    </li>
+                </ul>
+            </div>
+        
+            <div class="col-sm-2" style="margin-top: 22px;">
+                <a href="#/login" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="{{'Logout' | translate}}"><i class="fa fa-sign-out"></i></a>
+            </div>
+        
+        </div>
+    
+    </div>
+</div>

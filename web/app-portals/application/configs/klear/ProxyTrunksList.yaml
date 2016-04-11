@@ -1,0 +1,95 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  proxyTrunksBlacklist: &proxyTrunksBlacklist
+    sorcery_id: true
+    aors: true
+    auth: true
+    outbound_proxy: true
+    send_pai: true
+    send_rpid: true
+    default_expiration: true
+    max_contacts: true
+    minimum_expiration: true
+    remove_existing: true
+    qualify_frequency: true
+    authenticate_qualify: true
+    maximum_expiration: true
+    support_path: true
+    TerminalModelId: true
+    password: true
+    subscribecontext: true
+    mailboxes_aors: true
+    allow: true
+    disallow: true
+    direct_media: true
+    direct_media_method: true
+    context: true
+    contact: true
+  
+  main: 
+    module: klearMatrix
+    defaultScreen: proxyTrunksList_screen
+  screens: 
+    proxyTrunksList_screen: &proxyTrunksList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *ProxyTrunks
+      title: _("List of %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 0), "[format| (%parent%)]")
+      fields: 
+        blacklist: 
+          <<: *proxyTrunksBlacklist
+        options: 
+          title: _("Options")
+          screens: 
+            proxyTrunksEdit_screen: true
+          dialogs: 
+            proxyTrunksDel_dialog: true
+          default: proxyTrunksEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          proxyTrunksNew_screen: true
+        dialogs: 
+          proxyTrunksDel_dialog: true
+    proxyTrunksNew_screen: &proxyTrunksNew_screenLink 
+      <<: *ProxyTrunks
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Proxy trunk', 'Proxy trunks', 1))
+      shortcutOption: N
+      fields:
+        blacklist: 
+          <<: *proxyTrunksBlacklist
+    proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink 
+      <<: *ProxyTrunks
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
+      fields:
+        blacklist: 
+          <<: *proxyTrunksBlacklist
+  dialogs: 
+    proxyTrunksDel_dialog: &proxyTrunksDel_dialogLink 
+      <<: *ProxyTrunks
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Proxy trunk', 'Proxy trunks', 1))
+      description: _("Do you want to delete this %s?", ngettext('Proxy trunk', 'Proxy trunks', 1))
+      message: _("%s successfully deleted.", ngettext('Proxy trunk', 'Proxy trunks', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

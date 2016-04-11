@@ -1,0 +1,89 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: dDIsList_screen
+  screens: &dDIs_screenLink
+    dDIsList_screen: &dDIsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *DDIs
+      title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
+      class: ui-silk-lightning-go
+      forcedValues:
+        <<: *forcedCompany
+      order:
+        field:
+          - routeType desc
+          - DDI asc
+      fields:
+        order:
+          DDI: true
+          externalCallFilterId: true
+          routeType: true
+          target: true
+        options: 
+          title: _("Options")
+          screens: 
+            dDIsEdit_screen: true
+          dialogs: 
+            dDIsDel_dialog: true
+          default: dDIsEdit_screen
+        blacklist:
+          userId: true
+          faxId: true
+          IVRCommonId: true
+          IVRCustomId: true
+          huntGroupId: true
+      options: 
+        title: _("Options")
+        screens: 
+          dDIsNew_screen: true
+        dialogs: 
+          dDIsDel_dialog: true
+    dDIsNew_screen: &dDIsNew_screenLink 
+      <<: *DDIs
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      forcedValues:
+        <<: *forcedCompany
+      title: _("Add %s", ngettext('DDI', 'DDIs', 1))
+      shortcutOption: N
+      fields:
+        blacklist:
+          target: true
+    dDIsEdit_screen: &dDIsEdit_screenLink 
+      <<: *DDIs
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      forcedValues:
+        <<: *forcedCompany
+      title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          target: true
+  dialogs: &dDIs_dialogsLink
+    dDIsDel_dialog: &dDIsDel_dialogLink 
+      <<: *DDIs
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('DDI', 'DDIs', 1))
+      description: _("Do you want to delete this %s?", ngettext('DDI', 'DDIs', 1))
+      message: _("%s successfully deleted.", ngettext('DDI', 'DDIs', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production
