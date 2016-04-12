@@ -20,10 +20,19 @@ override_dh_auto_build: build_userweb build_library
 # Install systemd unit files
 override_dh_systemd_enable:
 	dh_systemd_enable --name=fastagi@
+	dh_systemd_enable --name=fastagi --no-enable fastagi.socket
+	dh_systemd_enable --name=kamailio@
 	dh_systemd_enable
 
 override_dh_systemd_start:
 	dh_systemd_start --restart-after-upgrade --name=fastagi@
+	dh_systemd_start --restart-after-upgrade --name=kamailio@
+	dh_systemd_start
+
+# Install /etc/default configuration
+override_dh_installinit:
+	dh_installinit --name=kamailio_proxyusers --noscripts --no-restart-on-upgrade --no-start
+	dh_installinit --name=kamailio_proxytrunks --noscripts --no-restart-on-upgrade --no-start
 
 %:
 	dh $@ --with systemd

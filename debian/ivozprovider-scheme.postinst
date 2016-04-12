@@ -3,6 +3,14 @@
 # Get actual environment
 . /etc/environment
 
+# Use debian maint password
+MYSQL_PASSWORD=`awk '/password = / { print $3; exit}' /etc/mysql/debian.cnf`
+MYSQL_USER=debian-sys-maint
+
+# Replace settings in properties
+sed -i "s/db.user=.*/db.user=$MYSQL_USER/"     /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
+sed -i "s/db.pass=.*/db.pass=$MYSQL_PASSWORD/" /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
+
 # Fist time, run phing on scheme dir
 if [ -z "$2" ]; then
     pushd /opt/irontec/ivozprovider/scheme 

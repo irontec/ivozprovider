@@ -2,5 +2,5 @@ asterisk/agi/application/bin/*          /var/lib/asterisk/agi-bin/
 asterisk/agi/application/configs        /opt/irontec/ivozprovider/agi/application/
 asterisk/agi/application/controllers    /opt/irontec/ivozprovider/agi/application/
 asterisk/agi/application/Bootstrap.php  /opt/irontec/ivozprovider/agi/application/
-asterisk/agi/extra                      /opt/irontec/ivozprovider/agi/
 asterisk/agi/library                    /opt/irontec/ivozprovider/agi/
+debian/systemd/fastagi.socket           /lib/systemd/system

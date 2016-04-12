@@ -1,0 +1,15 @@
+[Unit]
+Description=Kamailio - the Open Source SIP Server
+After=network.target
+Requires=rtpengine.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/kamailio_%i.pid
+EnvironmentFile=/etc/default/kamailio_%i
+ExecStart=/usr/sbin/kamailio -P /var/run/kamailio_%i.pid -f /etc/kamailio/%i/kamailio.cfg -u root -g root -m ${SH_MEM} -M ${PRIV_MEM} -l udp:${IP_ADDRESS}:5060 -l tcp:${IP_ADDRESS}:5060 -l tcp:${IP_ADDRESS}:5061 -l tcp:${IP_ADDRESS}:10080 -A XMLRPC_ALLOWED_IP='"${XMLRPC_ALLOWED_IP}"' -A RTP_TIMEOUT_ALLOWED_IP='"${RTP_TIMEOUT_ALLOWED_IP}"'
+ExecStopPost=/bin/rm -f /var/run/kamailio_%i.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

@@ -76,15 +76,15 @@ Architecture: all
 Section: admin
 Priority: optional
 Depends: ivozprovider-profile-common,
-    klear,
     apache2,
     php5,
     php5-igbinary,
     php5-mysql,
     php5-imagick,
     php5-curl,
-    ivozprovider-app-user-webapp,
-    ivozprovider-app-portals
+    php5-yaml,
+    ivozprovider-portals,
+    ivozprovider-userweb
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portal System Profile
  .
@@ -106,6 +106,7 @@ Depends: kamailio,
     kamailio-mysql-modules,
     kamailio-tls-modules,
     kamailio-xml-modules,
+    kamailio-websocket-modules,
     ngcp-rtpengine-daemon,
     ngcp-rtpengine-iptables,
     ngcp-rtpengine-kernel-dkms
@@ -125,7 +126,10 @@ Depends: kamailio,
     kamailio-mysql-modules,
     kamailio-tls-modules,
     kamailio-xml-modules,
-    kamailio-websocket-modules
+    kamailio-websocket-modules,
+    ngcp-rtpengine-daemon,
+    ngcp-rtpengine-iptables,
+    ngcp-rtpengine-kernel-dkms
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Kamailio - Configuration files for Trunks proxy kamailio
   This package include all requires files to configure kamailio properly
@@ -159,7 +163,7 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Depends: phing
+Depends: phing, php5-mysql
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
@@ -178,7 +182,7 @@ Package: ivozprovider-userweb
 Architecture: all
 Section: php
 Priority: optional
-Depends: klear
+Depends: ivozprovider-portals
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - User Webapp - Zendframework application
  User webapp using klear and zendframework 1
