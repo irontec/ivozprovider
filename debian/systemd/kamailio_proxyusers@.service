@@ -5,9 +5,11 @@ Requires=rtpengine.service
 
 [Service]
 Type=forking
+User=root
+Group=root
 PIDFile=/var/run/kamailio_proxyusers.pid
 EnvironmentFile=/etc/default/kamailio_proxyusers
-ExecStart=/usr/sbin/kamailio -P /var/run/kamailio_proxyusers.pid -f /etc/kamailio/proxyusers/kamailio.cfg -u root -g root -m ${SH_MEM} -M ${PRIV_MEM} -A IP=%i
+ExecStart=/usr/sbin/kamailio -A IP=%i -f /etc/kamailio/proxyusers/kamailio.cfg -m ${SH_MEM} -M ${PRIV_MEM} -P /var/run/kamailio_proxyusers.pid
 ExecStopPost=/bin/rm -f /var/run/kamailio_proxyusers.pid
 Restart=on-abort
 
