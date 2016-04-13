@@ -1,16 +1,1 @@
-# Copy this file to /etc/default/kamailio with suitable values
-
-# Specify the shared memory size in MB
-SH_MEM=64
-
-# Specify the private memory size in MB
-PRIV_MEM=256
-
-# Kamailio listening IP address
-IP_ADDRESS=EDIT
-
-# XML allowed IP
-XMLRPC_ALLOWED_IP=EDIT
-
-# RTPTIMEOUT allowed IP
-RTP_TIMEOUT_ALLOWED_IP=EDIT
+systemd/kamailio_proxyusers.default
