@@ -1,5 +1,5 @@
 production:
-  class: \Oasis\Model\CallACL
+  class: \IvozProvider\Model\CallACL
   fields:
     companyId:
       title: _('Company')
@@ -8,7 +8,7 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName:
             fields:
               - name
@@ -36,14 +36,14 @@ production:
         predefined: list
       data: mapper
       config:
-        mapperName: \Oasis\Mapper\Sql\CallACLRelPatterns
+        mapperName: \IvozProvider\Mapper\Sql\CallACLRelPatterns
         filterField: id
         showAsTable: true
         fieldName:
           fields:
             id:
               title: _("Patterns")
-              mapperName: \Oasis\Mapper\Sql\CallACLPatterns
+              mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
               field:
                 - name
               pattern: "%name%"

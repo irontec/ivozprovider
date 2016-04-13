@@ -46,7 +46,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 $this->_confirmDialog($errors);
             } else {
                 $companyId = $this->getParam("parentId");
-                $call = new \Oasis\Model\ParsedCDRs();
+                $call = new \IvozProvider\Model\ParsedCDRs();
                 $call
                     ->setDst($this->getParam("number"))
                     ->setDstDuration($this->getParam("duration"))
@@ -77,7 +77,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
 
         if ($this->getParam("tarificate")) {
-            $tarificatorJob = new \Oasis\Gearmand\Jobs\Tarificator();
+            $tarificatorJob = new \IvozProvider\Gearmand\Jobs\Tarificator();
             $tarificatorJob->setPks($pks);
             $tarificatorJob->send();
             $message = "<p>Tarificator Job started</p>";
@@ -101,7 +101,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         $pk = $this->getRequest()->getParam("pk");
 
-        $callsMapper = new \Oasis\Mapper\Sql\ParsedCDRs();
+        $callsMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
         $this->_helper->log("[Tarificator] Tarificating call with id = ".$pk);
         $call = $callsMapper->find($pk);
         $call->tarificate();
@@ -116,7 +116,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     public function tarificationInfoAction ()
     {
         $pk = $this->getRequest()->getParam("pk");
-        $callsMapper = new \Oasis\Mapper\Sql\ParsedCDRs();
+        $callsMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
         $call = $callsMapper->find($pk);
         $message = $this->_getTarificationInfo($call);
         $message .= "<br />";
@@ -145,7 +145,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $dst = $this->getParam("number");
         $duration = $this->getParam("duration");
 
-        $plansMapper = new \Oasis\Mapper\Sql\PricingPlans();
+        $plansMapper = new \IvozProvider\Mapper\Sql\PricingPlans();
         $plans = $plansMapper->findByField("brandId", $this->_brandId);
 
         $table = array();
@@ -273,7 +273,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
     }
 
-    protected function _getTarificationInfo(\Oasis\Model\ParsedCDRs $call, $errorMessage = "No tarification info found")
+    protected function _getTarificationInfo(\IvozProvider\Model\ParsedCDRs $call, $errorMessage = "No tarification info found")
     {
         $jsonData = $call->getPricingPlanDetails();
         if (is_null($jsonData)) {

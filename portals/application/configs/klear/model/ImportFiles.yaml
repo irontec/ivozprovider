@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ImportFiles
+  class: \IvozProvider\Model\ImportFiles
   fields: 
     file: 
       title: ngettext('File', 'Files', 1)
@@ -97,7 +97,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

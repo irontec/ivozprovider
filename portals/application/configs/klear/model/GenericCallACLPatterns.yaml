@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\GenericCallACLPatterns
+  class: \IvozProvider\Model\GenericCallACLPatterns
   fields: 
     brandId: 
       title: _('Brand')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

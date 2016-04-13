@@ -1,7 +1,7 @@
 #include ../conf.d/invoiceTemplateHelp.yaml
 
 production: 
-  class: \Oasis\Model\InvoiceTemplates
+  class: \IvozProvider\Model\InvoiceTemplates
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -36,7 +36,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

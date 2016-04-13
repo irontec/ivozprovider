@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PricingPlansRelTargetPatterns
+  class: \IvozProvider\Model\PricingPlansRelTargetPatterns
   fields:  
     id: 
       title: ngettext('Id', 'Ids', 1)
@@ -43,7 +43,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\PricingPlans
+          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
           fieldName: 
             fields: 
               - name
@@ -56,8 +56,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TargetPatterns
-          filterClass: Oasis_Klear_Filter_Brand
+          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name

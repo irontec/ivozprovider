@@ -1,6 +1,6 @@
 production:
   main:
-    dynamicConfigClass: Oasis\Klear\Dynamic\Builder
+    dynamicConfigClass: IvozProvider\Klear\Dynamic\Builder
 #    log:
 #      writerName: syslog
 #      writerParams:
@@ -29,8 +29,8 @@ production:
         - "default/js/customMenu.js"
     actionHelpers:
     auth:
-      adapter: Oasis\Klear\Auth\Adapter
-      userMapper: Oasis\Klear\Auth\MainOperators\Mapper
+      adapter: IvozProvider\Klear\Auth\Adapter
+      userMapper: IvozProvider\Klear\Auth\MainOperators\Mapper
       title: _("Access denied")
       description: _("Insert your username")
       session:

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PricingPlansRelCompanies
+  class: \IvozProvider\Model\PricingPlansRelCompanies
   fields: 
     pricingPlanId: 
       title: _('Pricing plan')
@@ -8,8 +8,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\PricingPlans
-          filterClass: Oasis_Klear_Filter_Brand
+          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -23,7 +23,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -62,7 +62,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

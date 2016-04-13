@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Invoices
+  class: \IvozProvider\Model\Invoices
   fields: 
     number: 
       title: _('Number')
@@ -47,8 +47,8 @@ production:
 #      source: 
 #        data: mapper
 #        config: 
-#          mapperName: \Oasis\Mapper\Sql\Languages
-#          filterClass: Oasis_Klear_Filter_BrandLanguages
+#          mapperName: \IvozProvider\Mapper\Sql\Languages
+#          filterClass: IvozProvider_Klear_Filter_BrandLanguages
 #          fieldName: 
 #            fields: 
 #              - name
@@ -107,8 +107,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
-          filterClass: Oasis_Klear_Filter_Brand
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -121,7 +121,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -135,7 +135,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\InvoiceTemplates
+          mapperName: \IvozProvider\Mapper\Sql\InvoiceTemplates
           fieldName: 
             fields: 
               - name

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ApplicationServers
+  class: \IvozProvider\Model\ApplicationServers
   fields: 
     ip: 
       title: _('Ip')

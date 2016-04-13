@@ -80,7 +80,7 @@ production:
     pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsListEdit_screenLink 
       <<: *pricingPlansRelTargetPatternsList_screenLink
       title: _("List of %s", ngettext('price', 'prices', 0))
-      filterClass: Oasis_Klear_Filter_CompanyPricingPlansPrices
+      filterClass: IvozProvider_Klear_Filter_CompanyPricingPlansPrices
       parentOptionCustomizer: 
         - recordCount
       fields:

@@ -2,7 +2,7 @@
 
 namespace Agi\Action;
 
-use Oasis\Mapper\Sql as Mapper;
+use IvozProvider\Mapper\Sql as Mapper;
 
 class ExternalCallAction extends RouterAction
 {

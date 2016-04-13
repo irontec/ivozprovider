@@ -1,7 +1,7 @@
 <?php
 
 
-use Oasis\Mapper\Sql\MusicOnHold;
+use IvozProvider\Mapper\Sql\MusicOnHold;
 
 class InvoicerWorker extends Iron_Gearman_Worker
 {
@@ -33,7 +33,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
         $job = igbinary_unserialize($serializedJob->workload());
         $pk = $job->getPk();
         $this->_logger->log("[INVOICER] ID = ".$pk, \Zend_Log::INFO);
-        $invoicesMapper = new \Oasis\Mapper\Sql\Invoices();
+        $invoicesMapper = new \IvozProvider\Mapper\Sql\Invoices();
 
         $unsetInvoiceIdQuery = "UPDATE parsedCDRs set invoiceId = null WHERE invoiceId = '".$pk."'";
         $dbAdapter = $invoicesMapper->getDbTable()->getAdapter();
@@ -43,7 +43,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
         $invoice->setStatus("processing")->save();
         $this->_logger->log("[INVOICER] Status = processing", \Zend_Log::INFO);
         try {
-            $invoiceGenerator = new \Oasis\Gearmand\Invoices\Generator($pk, $this->_logger);
+            $invoiceGenerator = new \IvozProvider\Gearmand\Invoices\Generator($pk, $this->_logger);
             $content = $invoiceGenerator->getInvoicePDFContents();
             $tempPath = APPLICATION_PATH."/../storage/invoice";
             if (!file_exists($tempPath)) {

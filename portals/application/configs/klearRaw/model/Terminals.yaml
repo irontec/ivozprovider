@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Terminals
+  class: \IvozProvider\Model\Terminals
   fields: 
     TerminalModelId: 
       title: _('Terminal model id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TerminalModels
+          mapperName: \IvozProvider\Mapper\Sql\TerminalModels
           fieldName: 
             fields: 
               - iden
@@ -151,7 +151,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name

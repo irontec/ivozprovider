@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Calendars
+  class: \IvozProvider\Model\Calendars
   fields: 
     companyId: 
       title: _('Company')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -25,11 +25,11 @@ production:
       source:
         data: mapper
         config:
-          relationMapper: \Oasis\Mapper\Sql\ExternalCallFilterRelCalendars
-          relatedMapperName: \Oasis\Mapper\Sql\ExternalCallFilters
+          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelCalendars
+          relatedMapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
           relatedFieldName: name
           relationProperty: Filter
-          filterClass: Oasis_Klear_Filter_ExternalCallFiltersMultiselect
+          filterClass: IvozProvider_Klear_Filter_ExternalCallFiltersMultiselect
 staging: 
   _extends: production
 testing: 

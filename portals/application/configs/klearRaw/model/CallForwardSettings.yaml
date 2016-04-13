@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\CallForwardSettings
+  class: \IvozProvider\Model\CallForwardSettings
   fields: 
     userId: 
       title: _('User id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name
@@ -56,7 +56,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
           fieldName: 
             fields: 
               - number
@@ -69,7 +69,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name

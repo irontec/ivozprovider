@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\MainOperators
+  class: \IvozProvider\Model\MainOperators
   fields: 
     username: 
       title: _('Username')
@@ -35,7 +35,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz

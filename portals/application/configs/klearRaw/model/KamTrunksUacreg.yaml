@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\KamTrunksUacreg
+  class: \IvozProvider\Model\KamTrunksUacreg
   fields: 
     l_uuid: 
       title: _('L uuid')
@@ -60,7 +60,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -73,7 +73,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\PeeringContracts
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           fieldName: 
             fields: 
               - description

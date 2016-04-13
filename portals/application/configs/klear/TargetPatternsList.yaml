@@ -99,7 +99,7 @@ production:
       <<: *PricingPlans
       class: ui-silk-money
       title: _("List of %s %2s", ngettext('Pricing plan', 'Pricing plans', 0), "[format| (%parent%)]")
-      filterClass: Oasis_Klear_Filter_TargetPatternPricingPlans  
+      filterClass: IvozProvider_Klear_Filter_TargetPatternPricingPlans  
       forcedValues:
         <<: *forcedBrand
       parentOptionCustomizer: 

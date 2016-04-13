@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ProxyTrunks
+  class: \IvozProvider\Model\ProxyTrunks
   fields: 
     TerminalModelId: 
       title: _('Terminal model id')

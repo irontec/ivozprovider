@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\BrandsRelLanguages
+  class: \IvozProvider\Model\BrandsRelLanguages
   fields: 
     brandId: 
       title: _('Brand id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -22,7 +22,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Languages
+          mapperName: \IvozProvider\Mapper\Sql\Languages
           fieldName: 
             fields: 
               - iden

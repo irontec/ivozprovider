@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ImportPrices
+  class: \IvozProvider\Model\ImportPrices
   fields: 
     pricingPlanId: 
       title: _('Pricing plan id')
@@ -33,7 +33,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\ImportFiles
+          mapperName: \IvozProvider\Mapper\Sql\ImportFiles
           fieldName: 
             fields: 
               - fileMimeType

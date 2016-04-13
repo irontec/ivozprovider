@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\HuntGroups
+  class: \IvozProvider\Model\HuntGroups
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -19,7 +19,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Extensions
+  class: \IvozProvider\Model\Extensions
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -37,7 +37,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCommon
+          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
           fieldName: 
             fields: 
               - name
@@ -50,7 +50,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCustom
+          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
           fieldName: 
             fields: 
               - name
@@ -63,7 +63,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\HuntGroups
+          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           fieldName: 
             fields: 
               - name

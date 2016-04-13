@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\HuntGroupCallForwardSettings
+  class: \IvozProvider\Model\HuntGroupCallForwardSettings
   fields: 
     huntGroupId: 
       title: _('Hunt group id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\HuntGroups
+          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           fieldName: 
             fields: 
               - name
@@ -59,7 +59,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
           fieldName: 
             fields: 
               - number
@@ -73,7 +73,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name

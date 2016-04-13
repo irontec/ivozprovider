@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Users
+  class: \IvozProvider\Model\Users
   fields: 
     companyId: 
       title: _('Company')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -56,7 +56,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz
@@ -68,8 +68,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Terminals
-          filterClass: Oasis_Klear_Filter_Terminals
+          mapperName: \IvozProvider\Mapper\Sql\Terminals
+          filterClass: IvozProvider_Klear_Filter_Terminals
           fieldName: 
             fields: 
               - name
@@ -82,8 +82,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
-          filterClass: Oasis_Klear_Filter_Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Extensions
           fieldName: 
             fields: 
               - number
@@ -96,8 +96,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\DDIs
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - DDI
@@ -110,8 +110,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\CallACL
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\CallACL
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -152,8 +152,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Bossassistant
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Bossassistant
           fieldName: 
             fields: 
               - name
@@ -239,11 +239,11 @@ production:
         config:
           extraDataAttributes:
             companyId: companyId 
-          relationMapper: \Oasis\Mapper\Sql\PickUpRelUsers
-          relatedMapperName: \Oasis\Mapper\Sql\PickUpGroups
+          relationMapper: \IvozProvider\Mapper\Sql\PickUpRelUsers
+          relatedMapperName: \IvozProvider\Mapper\Sql\PickUpGroups
           relatedFieldName: name
           relationProperty: PickUpGroup
-          filterClass: Oasis_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
 
     countryId: 
       title: _('Country code')
@@ -251,7 +251,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Countries
+          mapperName: \IvozProvider\Mapper\Sql\Countries
           fieldName: 
             fields: 
               - name
@@ -267,14 +267,14 @@ production:
         predefined: list
       data: mapper
       config:
-        mapperName: \Oasis\Mapper\Sql\HuntGroupsRelUsers
+        mapperName: \IvozProvider\Mapper\Sql\HuntGroupsRelUsers
         filterField: userId
         showAsTable: true
         fieldName:
           fields:
             huntGroupId:
               title: _("Hunt group")
-              mapperName: \Oasis\Mapper\Sql\HuntGroups
+              mapperName: \IvozProvider\Mapper\Sql\HuntGroups
               field:
                 - name
               pattern: "%name%"

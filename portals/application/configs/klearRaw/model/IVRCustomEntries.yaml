@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\IVRCustomEntries
+  class: \IvozProvider\Model\IVRCustomEntries
   fields: 
     IVRCustomId: 
       title: _('I v r custom id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCustom
+          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
           fieldName: 
             fields: 
               - name
@@ -27,7 +27,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
               - fileMimeType
@@ -54,7 +54,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
           fieldName: 
             fields: 
               - number
@@ -67,7 +67,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name

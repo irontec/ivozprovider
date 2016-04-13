@@ -1,7 +1,7 @@
 <?php
 
 
-use Oasis\Mapper\Sql\MusicOnHold;
+use IvozProvider\Mapper\Sql\MusicOnHold;
 class MultimediaWorker extends Iron_Gearman_Worker
 {
     protected $_timeout = 10000; // 1000 = 1 second
@@ -34,7 +34,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
         $id = $job->getId();
         $this->_modelName = $job->getModelName();
 
-        $mapperRoute = "\\Oasis\\Mapper\\Sql\\".$this->_modelName;
+        $mapperRoute = "\\IvozProvider\\Mapper\\Sql\\".$this->_modelName;
         $mapper = new $mapperRoute();
 
         $model = $mapper->find($id);
@@ -60,7 +60,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
             $model->setStatus("ready")
                   ->save();
             
-            $astMusicOnHoldMapper = new \Oasis\Mapper\Sql\AstMusiconhold();
+            $astMusicOnHoldMapper = new \IvozProvider\Mapper\Sql\AstMusiconhold();
             $astMusicOnHold = $astMusicOnHoldMapper->findOneByField("name", $model->getOwner());// $model->getOwner() en el MusicOnHold es el companyId y en el GenericMusicOnHold el brandId
             
             if (is_null($astMusicOnHold)) {
@@ -97,7 +97,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
         $filePath = $fso->getFilePath();
         $folderPath = dirname($filePath);
         
-        $astMusicOnHold = new \Oasis\Model\AstMusiconhold();
+        $astMusicOnHold = new \IvozProvider\Model\AstMusiconhold();
         $astMusicOnHold->setName($model->getOwner()) 
         ->setMode("files")
         ->setDirectory($folderPath)

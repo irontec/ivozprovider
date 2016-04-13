@@ -5,7 +5,7 @@ class Provision_IndexController extends Zend_Controller_Action
 
     protected $_allowedVariables = array(
             'mac'=>array(
-                    'mapperName' => 'Oasis\Mapper\Sql\Terminals',
+                    'mapperName' => 'IvozProvider\Mapper\Sql\Terminals',
                     'field'=>'mac',
                     'viewName'=>'terminal'
             )
@@ -39,7 +39,7 @@ class Provision_IndexController extends Zend_Controller_Action
             
             $path = $this->_getFilePath();
             
-            $terminalMapper = new \Oasis\Mapper\Sql\TerminalModels();
+            $terminalMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
             $terminalModel = $this->_searchGenericPattern($terminalMapper, $terminalUrl);
             
             if ( $terminalModel == null ) {
@@ -48,13 +48,13 @@ class Provision_IndexController extends Zend_Controller_Action
                     $terminalModel = $data['terminalModel'];
                     $urlVariables = $data['urlVariables'];
                     
-                    $userMapper = new \Oasis\Mapper\Sql\Users();
+                    $userMapper = new \IvozProvider\Mapper\Sql\Users();
                     
                     foreach( $this->_allowedVariables as $key=>$variable){
                         $mapper = new $variable['mapperName']();
                         $model = $mapper->findOneByField($variable['field'], $urlVariables[$key]);
                         if($model){
-                            if($model instanceof Oasis\Model\Terminals){
+                            if($model instanceof IvozProvider\Model\Terminals){
                                 $userModel = $userMapper->findOneByField('terminalId', $model->getId() );
                                 $this->view->user = $userModel;
                                 
@@ -108,7 +108,7 @@ class Provision_IndexController extends Zend_Controller_Action
         $this->render($template, 'page', true);
     }
     
-    protected function _searchGenericPattern(\Oasis\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
+    protected function _searchGenericPattern(\IvozProvider\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
         $terminalModel = $terminalMapper->findOneByField('genericUrlPattern', $terminalUrl );
         
         if ( $terminalModel == null ) {
@@ -117,7 +117,7 @@ class Provision_IndexController extends Zend_Controller_Action
         return $terminalModel;
     }
     
-    protected function _searchSpecificPattern(\Oasis\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
+    protected function _searchSpecificPattern(\IvozProvider\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
         $urlVariables = array();
         $terminalModels = $terminalMapper->fetchAll();
         foreach($terminalModels as $terminalModel){

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Languages
+  class: \IvozProvider\Model\Languages
   fields: 
     iden: 
       title: ngettext('Iden', 'Idens', 1)

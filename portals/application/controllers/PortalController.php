@@ -1,7 +1,7 @@
 <?php
 
-use Oasis\Model as Models;
-use Oasis\Mapper\Sql as Mappers;
+use IvozProvider\Model as Models;
+use IvozProvider\Mapper\Sql as Mappers;
 
 class PortalController extends Zend_Controller_Action
 {

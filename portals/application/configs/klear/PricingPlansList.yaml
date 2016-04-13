@@ -84,7 +84,7 @@ production:
       <<: *pricingPlansRelTargetPatternsList_screenLink
       filterField: pricingPlanId
       parentOptionCustomizer: 
-#        - Oasis_Klear_Options_OptionsCustomizer
+#        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
     pricingPlansRelTargetPatternsNew_screen: 
       <<: *pricingPlansRelTargetPatternsNew_screenLink
@@ -101,7 +101,7 @@ production:
       <<: *TargetPatterns
       class: ui-silk-page-find
       title: _("List of %s %2s", ngettext('Target pattern', 'Target patterns', 0), "[format| (%parent%)]")  
-      filterClass: Oasis_Klear_Filter_PricingPlanTargetPatterns
+      filterClass: IvozProvider_Klear_Filter_PricingPlanTargetPatterns
       forcedValues:
         <<: *forcedBrand
       parentOptionCustomizer: 

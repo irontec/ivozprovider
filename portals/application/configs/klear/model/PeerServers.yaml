@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PeerServers
+  class: \IvozProvider\Model\PeerServers
   fields: 
     peeringContractId: 
       title: _('Peering contract')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\PeeringContracts
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           fieldName: 
             fields: 
               - description
@@ -35,7 +35,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

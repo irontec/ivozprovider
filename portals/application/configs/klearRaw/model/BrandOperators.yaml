@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\BrandOperators
+  class: \IvozProvider\Model\BrandOperators
   fields: 
     brandId: 
       title: _('Brand id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -48,7 +48,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz

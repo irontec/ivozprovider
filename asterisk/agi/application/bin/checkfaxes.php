@@ -1,6 +1,6 @@
 <?php
-    use Oasis\Mapper\Sql as Mapper;
-    use Oasis\Model as Model;
+    use IvozProvider\Mapper\Sql as Mapper;
+    use IvozProvider\Model as Model;
 
 
     if (isset($_SERVER['REMOTE_ADDR'])) {

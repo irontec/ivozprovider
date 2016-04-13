@@ -51,7 +51,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                 )
         )
         ->build();
-        $templateMapper = new \Oasis\Mapper\Sql\InvoiceTemplates();
+        $templateMapper = new \IvozProvider\Mapper\Sql\InvoiceTemplates();
         $templateModel = $templateMapper->find($this->_pk);
         $template = $templateModel->getTemplate();
 

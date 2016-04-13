@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\LcrRuleTarget
+  class: \IvozProvider\Model\LcrRuleTarget
   fields: 
     brandId: 
       title: _('Brand id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -22,7 +22,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\LcrRules
+          mapperName: \IvozProvider\Mapper\Sql\LcrRules
           fieldName: 
             fields: 
               - prefix

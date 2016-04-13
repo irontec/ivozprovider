@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ExternalCallFilters
+  class: \IvozProvider\Model\ExternalCallFilters
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -26,7 +26,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
               - fileMimeType
@@ -39,7 +39,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
               - fileMimeType
@@ -52,7 +52,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
               - fileMimeType
@@ -78,7 +78,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
           fieldName: 
             fields: 
               - number
@@ -91,7 +91,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name
@@ -117,7 +117,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
           fieldName: 
             fields: 
               - number
@@ -130,7 +130,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name

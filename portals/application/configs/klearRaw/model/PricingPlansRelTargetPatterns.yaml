@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PricingPlansRelTargetPatterns
+  class: \IvozProvider\Model\PricingPlansRelTargetPatterns
   fields: 
     connectionCharge: 
       title: _('Connection charge')
@@ -29,7 +29,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\PricingPlans
+          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
           fieldName: 
             fields: 
               - name
@@ -42,7 +42,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TargetPatterns
+          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
           fieldName: 
             fields: 
               - name
@@ -55,7 +55,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

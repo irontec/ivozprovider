@@ -1,7 +1,7 @@
 <?php
 
 
-use Oasis\Mapper\Sql\MusicOnHold;
+use IvozProvider\Mapper\Sql\MusicOnHold;
 class AmiWorker extends Iron_Gearman_Worker
 {
     protected $_timeout = 10000; // 1000 = 1 second
@@ -93,7 +93,7 @@ class AmiWorker extends Iron_Gearman_Worker
                 "Variable" => "FAX_ID=".$id.",FAXFILE=".$fileTIF
         );
 
-        $applicationSerersMapper = new \Oasis\Mapper\Sql\ApplicationServers();
+        $applicationSerersMapper = new \IvozProvider\Mapper\Sql\ApplicationServers();
         $applicationServer = $applicationSerersMapper->findOneByField("name", "asfax");
         $ip = $applicationServer->getIp();
 

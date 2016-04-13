@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PickUpGroups
+  class: \IvozProvider\Model\PickUpGroups
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -13,7 +13,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -27,11 +27,11 @@ production:
         config:
           extraDataAttributes:
             pickUpGroupId: id
-          relationMapper: \Oasis\Mapper\Sql\PickUpRelUsers
-          relatedMapperName: \Oasis\Mapper\Sql\Users
+          relationMapper: \IvozProvider\Mapper\Sql\PickUpRelUsers
+          relatedMapperName: \IvozProvider\Mapper\Sql\Users
           relatedFieldName: name
           relationProperty: User
-          filterClass: Oasis_Klear_Filter_Users
+          filterClass: IvozProvider_Klear_Filter_Users
 staging: 
   _extends: production
 testing: 

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\TerminalManufacturers
+  class: \IvozProvider\Model\TerminalManufacturers
   fields: 
     iden: 
       title: ngettext('Iden', 'Idens', 1)

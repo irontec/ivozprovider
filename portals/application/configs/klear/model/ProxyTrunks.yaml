@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ProxyTrunks
+  class: \IvozProvider\Model\ProxyTrunks
   fields: 
     TerminalModelId: 
       title: _('Terminal model')
@@ -9,7 +9,7 @@ production:
         data: mapper
         'null': _("Sin asignar")
         config: 
-          mapperName: \Oasis\Mapper\Sql\TerminalModels
+          mapperName: \IvozProvider\Mapper\Sql\TerminalModels
           fieldName: 
             fields: 
               - iden

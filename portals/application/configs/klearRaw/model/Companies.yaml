@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Companies
+  class: \IvozProvider\Model\Companies
   fields: 
     brandId: 
       title: _('Brand id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -32,7 +32,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz
@@ -44,7 +44,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\ApplicationServers
+          mapperName: \IvozProvider\Mapper\Sql\ApplicationServers
           fieldName: 
             fields: 
               - transport
@@ -57,7 +57,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TransformationRulesetGroupsUsers
+          mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsUsers
           fieldName: 
             fields: 
               - name
@@ -101,7 +101,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Languages
+          mapperName: \IvozProvider\Mapper\Sql\Languages
           fieldName: 
             fields: 
               - iden
@@ -118,7 +118,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Countries
+          mapperName: \IvozProvider\Mapper\Sql\Countries
           fieldName: 
             fields: 
               - code

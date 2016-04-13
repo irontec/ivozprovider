@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Brands
+  class: \IvozProvider\Model\Brands
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -28,7 +28,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz
@@ -40,8 +40,8 @@ production:
       source:
         data: mapper
         config:
-          relationMapper: \Oasis\Mapper\Sql\BrandsRelLanguages
-          relatedMapperName: \Oasis\Mapper\Sql\Languages
+          relationMapper: \IvozProvider\Mapper\Sql\BrandsRelLanguages
+          relatedMapperName: \IvozProvider\Mapper\Sql\Languages
           relatedFieldName: name
           relationProperty: Language
     logo: 

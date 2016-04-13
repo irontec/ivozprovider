@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Brands
+  class: \IvozProvider\Model\Brands
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -29,7 +29,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Users
+  class: \IvozProvider\Model\Users
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -41,7 +41,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz
@@ -54,7 +54,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Terminals
+          mapperName: \IvozProvider\Mapper\Sql\Terminals
           fieldName: 
             fields: 
               - name
@@ -67,7 +67,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
           fieldName: 
             fields: 
               - number
@@ -80,7 +80,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\DDIs
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
           fieldName: 
             fields: 
               - DDI
@@ -93,7 +93,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\CallACL
+          mapperName: \IvozProvider\Mapper\Sql\CallACL
           fieldName: 
             fields: 
               - name
@@ -128,7 +128,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name
@@ -215,7 +215,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Countries
+          mapperName: \IvozProvider\Mapper\Sql\Countries
           fieldName: 
             fields: 
               - code

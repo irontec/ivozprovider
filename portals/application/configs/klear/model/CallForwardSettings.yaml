@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\CallForwardSettings
+  class: \IvozProvider\Model\CallForwardSettings
   fields: 
     userId: 
       title: _('User id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name
@@ -81,8 +81,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
-          filterClass: Oasis_Klear_Filter_Extensions
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Extensions
           fieldName: 
             fields: 
               - number
@@ -96,8 +96,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Users
           fieldName: 
             fields: 
               - name
@@ -117,7 +117,7 @@ production:
       title: _('Target type value')
       type: ghost
       source:
-        class: Oasis_Klear_Ghost_CallForwardTargetTypeValue
+        class: IvozProvider_Klear_Ghost_CallForwardTargetTypeValue
         method: getValue
         
 staging: 

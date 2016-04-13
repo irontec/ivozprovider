@@ -89,7 +89,7 @@ production:
       <<: *kamUsersDialplanList_screenLink
       title: _("Kam Users Dialplan Callee In")
 #      filterField: transformationRulesetGroupsUsersId
-      filterClass: Oasis_Klear_Filter_KamDialplanCalleeIn
+      filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeIn
       parentOptionCustomizer:
         - recordCount
       fields:
@@ -108,7 +108,7 @@ production:
       <<: *kamUsersDialplanList_screenLink
       title: _("Kam Users Dialplan Caller Out")
 #      filterField: transformationRulesetGroupsUsersId
-      filterClass: Oasis_Klear_Filter_KamDialplanCallerOut
+      filterClass: IvozProvider_Klear_Filter_KamDialplanCallerOut
       parentOptionCustomizer:
         - recordCount
       fields:
@@ -127,7 +127,7 @@ production:
       <<: *kamUsersDialplanList_screenLink
       title: _("Kam Users Dialplan Callee Out")
 #      filterField: transformationRulesetGroupsUsersId
-      filterClass: Oasis_Klear_Filter_KamDialplanCalleeOut
+      filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeOut
       parentOptionCustomizer:
         - recordCount
       fields:

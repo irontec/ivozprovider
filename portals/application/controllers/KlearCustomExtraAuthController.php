@@ -7,8 +7,8 @@
  *     - Modificación de objeto de autenticación (sustitución de empresa).
  */
 
-use Oasis\Mapper\Sql\Companies;
-use Oasis\Mapper\Sql\Brands;
+use IvozProvider\Mapper\Sql\Companies;
+use IvozProvider\Mapper\Sql\Brands;
 
 
 class KlearCustomExtraAuthController extends Zend_Controller_Action
@@ -216,11 +216,11 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         switch ($file) {
             case "BrandsList":
                 $type = "brand";
-                $mapper = new \Oasis\Mapper\Sql\Brands();
+                $mapper = new \IvozProvider\Mapper\Sql\Brands();
                 break;
             case "CompaniesList":
                 $type = "company";
-                $mapper = new \Oasis\Mapper\Sql\Companies();
+                $mapper = new \IvozProvider\Mapper\Sql\Companies();
                 break;
             default:
                 $this->_noPermission();

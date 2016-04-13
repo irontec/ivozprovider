@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\CallACLRelPatterns
+  class: \IvozProvider\Model\CallACLRelPatterns
   fields: 
     CallACLId: 
       title: _('Call a c l id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\CallACL
+          mapperName: \IvozProvider\Mapper\Sql\CallACL
           fieldName: 
             fields: 
               - name
@@ -22,7 +22,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\CallACLPatterns
+          mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
           fieldName: 
             fields: 
               - name

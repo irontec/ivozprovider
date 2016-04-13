@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\TargetPatterns
+  class: \IvozProvider\Model\TargetPatterns
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -24,7 +24,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

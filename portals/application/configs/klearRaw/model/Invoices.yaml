@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Invoices
+  class: \IvozProvider\Model\Invoices
   fields: 
     number: 
       title: _('Number')
@@ -47,7 +47,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -60,7 +60,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -118,7 +118,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\InvoiceTemplates
+          mapperName: \IvozProvider\Mapper\Sql\InvoiceTemplates
           fieldName: 
             fields: 
               - name

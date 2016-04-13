@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\KamTrunksDialplan
+  class: \IvozProvider\Model\KamTrunksDialplan
   fields: 
     dpid: 
       title: _('Dpid')
@@ -53,7 +53,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TransformationRulesetGroupsTrunks
+          mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks
           fieldName: 
             fields: 
               - name

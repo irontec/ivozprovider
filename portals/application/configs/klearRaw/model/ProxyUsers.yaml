@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ProxyUsers
+  class: \IvozProvider\Model\ProxyUsers
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)

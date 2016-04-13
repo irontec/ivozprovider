@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Timezones
+  class: \IvozProvider\Model\Timezones
   fields: 
     countryId: 
       title: _('Country id')
@@ -7,7 +7,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Countries
+          mapperName: \IvozProvider\Mapper\Sql\Countries
           fieldName: 
             fields: 
               - code

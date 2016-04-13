@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PeeringContractsRelLcrRules
+  class: \IvozProvider\Model\PeeringContractsRelLcrRules
   fields: 
     brandId: 
       title: _('Brand id')
@@ -13,7 +13,7 @@ production:
         data: mapper
         'null': _('Unasigned')
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           extraDataAttributes:
             identifier: id
           fieldName: 
@@ -30,7 +30,7 @@ production:
         data: mapper
         'null': _('Unasigned')
         config: 
-          mapperName: \Oasis\Mapper\Sql\LcrRules
+          mapperName: \IvozProvider\Mapper\Sql\LcrRules
           extraDataAttributes:
             iden: brandId
           fieldName: 
@@ -46,7 +46,7 @@ production:
         data: mapper
         'null': _('Unasigned')
         config: 
-          mapperName: \Oasis\Mapper\Sql\PeeringContracts
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           extraDataAttributes:
             iden: brandId
           fieldName: 

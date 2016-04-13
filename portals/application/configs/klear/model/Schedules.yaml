@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Schedules
+  class: \IvozProvider\Model\Schedules
   fields: 
     companyId: 
       title: _('Company id')
@@ -11,7 +11,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -72,8 +72,8 @@ production:
       source:
         data: mapper
         config:
-          relationMapper: \Oasis\Mapper\Sql\ExternalCallFilterRelSchedules
-          relatedMapperName: \Oasis\Mapper\Sql\ExternalCallFilters
+          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelSchedules
+          relatedMapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
           relatedFieldName: name
           relationProperty: Filter
           extraDataAttributes:

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\CallACLPatterns
+  class: \IvozProvider\Model\CallACLPatterns
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name

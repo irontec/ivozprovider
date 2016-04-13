@@ -1,7 +1,7 @@
 <?php
 require_once ("BaseController.php");
-use Oasis\Mapper\Sql as Mapper;
-use Oasis\Model as Model;
+use IvozProvider\Mapper\Sql as Mapper;
+use IvozProvider\Model as Model;
 
 /**
  * @brief Faxes controller

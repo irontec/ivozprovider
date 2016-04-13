@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\FaxesInOut
+  class: \IvozProvider\Model\FaxesInOut
   fields: 
     calldate: 
       title: _('Calldate')
@@ -16,7 +16,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Faxes
+          mapperName: \IvozProvider\Mapper\Sql\Faxes
           fieldName: 
             fields: 
               - name

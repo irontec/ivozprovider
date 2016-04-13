@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\DDIs
+  class: \IvozProvider\Model\DDIs
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -25,8 +25,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\ExternalCallFilters
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
               - name
@@ -72,8 +72,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -88,8 +88,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCommon
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
               - name
@@ -103,8 +103,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCustom
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
               - name
@@ -118,8 +118,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\HuntGroups
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
               - name
@@ -133,8 +133,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Faxes
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Faxes
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
               - name
@@ -145,7 +145,7 @@ production:
       title: _('Target')
       type: ghost
       source:
-        class: Oasis_Klear_Ghost_DDITarget
+        class: IvozProvider_Klear_Ghost_DDITarget
         method: getData
 staging: 
   _extends: production

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\KamDispatcher
+  class: \IvozProvider\Model\KamDispatcher
   fields: 
     setid: 
       title: _('Setid')

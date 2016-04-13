@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ImportPatterns
+  class: \IvozProvider\Model\ImportPatterns
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -25,7 +25,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\ImportFiles
+          mapperName: \IvozProvider\Mapper\Sql\ImportFiles
           fieldName: 
             fields: 
               - fileMimeType

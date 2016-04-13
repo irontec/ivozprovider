@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\CompanyAdmins
+  class: \IvozProvider\Model\CompanyAdmins
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -41,8 +41,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
-          filterClass: Oasis_Klear_Filter_Brand
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -56,7 +56,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz

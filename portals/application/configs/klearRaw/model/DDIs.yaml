@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\DDIs
+  class: \IvozProvider\Model\DDIs
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -26,7 +26,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\ExternalCallFilters
+          mapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
           fieldName: 
             fields: 
               - name
@@ -51,7 +51,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name
@@ -64,7 +64,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCommon
+          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
           fieldName: 
             fields: 
               - name
@@ -77,7 +77,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\IVRCustom
+          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
           fieldName: 
             fields: 
               - name
@@ -90,7 +90,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\HuntGroups
+          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           fieldName: 
             fields: 
               - name
@@ -103,7 +103,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Faxes
+          mapperName: \IvozProvider\Mapper\Sql\Faxes
           fieldName: 
             fields: 
               - name

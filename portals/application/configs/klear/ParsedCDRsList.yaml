@@ -173,7 +173,7 @@ production:
           fields:
             fw_desc: 1
             ext_forwarder: 1
-            Oasis_forwarder: 1
+            IvozProvider_forwarder: 1
             forward_to: 1
         group5:
           label: _("Legs")

@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\IVRCustom
+  class: \IvozProvider\Model\IVRCustom
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -26,8 +26,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -39,8 +39,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -53,8 +53,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -67,8 +67,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -123,8 +123,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - number
@@ -138,8 +138,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -183,8 +183,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Extensions
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - number
@@ -198,8 +198,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -211,13 +211,13 @@ production:
       title: _('Timeout target')
       type: ghost
       source:
-        class: Oasis_Klear_Ghost_IVRCustomTarget
+        class: IvozProvider_Klear_Ghost_IVRCustomTarget
         method: getTimeoutData
     errorTarget:
       title: _('Error target')
       type: ghost
       source:
-        class: Oasis_Klear_Ghost_IVRCustomTarget
+        class: IvozProvider_Klear_Ghost_IVRCustomTarget
         method: getErrorData
 staging: 
   _extends: production

@@ -1,7 +1,7 @@
 <?php
 
 
-use Oasis\Mapper\Sql\MusicOnHold;
+use IvozProvider\Mapper\Sql\MusicOnHold;
 class XmlrpcWorker extends Iron_Gearman_Worker
 {
     protected $_timeout = 10000; // 1000 = 1 second

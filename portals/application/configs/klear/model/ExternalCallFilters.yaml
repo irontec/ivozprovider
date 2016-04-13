@@ -1,5 +1,5 @@
 production:
-  class: \Oasis\Model\ExternalCallFilters
+  class: \IvozProvider\Model\ExternalCallFilters
   fields:
     companyId:
       title: _('Company')
@@ -8,7 +8,7 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName:
             fields:
               - name
@@ -25,8 +25,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - name
@@ -41,8 +41,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - name
@@ -57,8 +57,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Locutions
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - name
@@ -103,8 +103,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Extensions
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - number
@@ -120,8 +120,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - name
@@ -165,8 +165,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Extensions
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - number
@@ -182,8 +182,8 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName:
             fields:
               - name
@@ -197,33 +197,33 @@ production:
       source:
         data: mapper
         config:
-          relationMapper: \Oasis\Mapper\Sql\ExternalCallFilterRelSchedules
-          relatedMapperName: \Oasis\Mapper\Sql\Schedules
+          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelSchedules
+          relatedMapperName: \IvozProvider\Mapper\Sql\Schedules
           relatedFieldName: name
           relationProperty: Schedule
-          filterClass: Oasis_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
     ExternalCallFilterRelCalendars:
       title: _('Caledars')
       type: multiselect
       source:
         data: mapper
         config:
-          relationMapper: \Oasis\Mapper\Sql\ExternalCallFilterRelCalendars
-          relatedMapperName: \Oasis\Mapper\Sql\Calendars
+          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelCalendars
+          relatedMapperName: \IvozProvider\Mapper\Sql\Calendars
           relatedFieldName: name
           relationProperty: Calendar
-          filterClass: Oasis_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
     holidayTarget:
       title: _('Holiday target')
       type: ghost
       source:
-        class: Oasis_Klear_Ghost_ExternalCallFiltersTarget
+        class: IvozProvider_Klear_Ghost_ExternalCallFiltersTarget
         method: getHolidayData
     outOfScheduleTarget:
       title: _('Out of schedule target')
       type: ghost
       source:
-        class: Oasis_Klear_Ghost_ExternalCallFiltersTarget
+        class: IvozProvider_Klear_Ghost_ExternalCallFiltersTarget
         method: getOutOfScheduleData
 staging:
   _extends: production

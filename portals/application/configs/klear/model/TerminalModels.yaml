@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\TerminalModels
+  class: \IvozProvider\Model\TerminalModels
   fields: 
     iden: 
       title: ngettext('Iden', 'Idens', 1)
@@ -21,7 +21,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TerminalManufacturers
+          mapperName: \IvozProvider\Mapper\Sql\TerminalManufacturers
           fieldName: 
             fields: 
               - iden

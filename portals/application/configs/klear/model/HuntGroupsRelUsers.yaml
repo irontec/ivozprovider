@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\HuntGroupsRelUsers
+  class: \IvozProvider\Model\HuntGroupsRelUsers
   fields: 
     huntGroupId: 
       title: _('Hunt group id')
@@ -8,8 +8,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\HuntGroups
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields: 
               - name
@@ -23,8 +23,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Users
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name

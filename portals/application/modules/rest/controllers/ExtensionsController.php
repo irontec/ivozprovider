@@ -3,8 +3,8 @@
  * Extensions
  */
 
-use Oasis\Model as Models;
-use Oasis\Mapper\Sql as Mappers;
+use IvozProvider\Model as Models;
+use IvozProvider\Mapper\Sql as Mappers;
 
 class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
 {

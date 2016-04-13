@@ -1,6 +1,6 @@
 <?php
 require_once("BaseController.php");
-use Oasis\Mapper\Sql as Mapper;
+use IvozProvider\Mapper\Sql as Mapper;
 use Agi\Action\DDIAction;
 use Agi\Action\ExtensionAction;
 use Agi\Action\ExternalCallAction;

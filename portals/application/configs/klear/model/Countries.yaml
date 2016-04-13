@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Countries
+  class: \IvozProvider\Model\Countries
   fields: 
     code: 
       title: _('Code')

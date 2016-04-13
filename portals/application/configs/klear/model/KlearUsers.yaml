@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\KlearUsers
+  class: \IvozProvider\Model\KlearUsers
   fields: 
     login: 
       title: _('Login')
@@ -40,7 +40,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Countries
+          mapperName: \IvozProvider\Mapper\Sql\Countries
           fieldName: 
             fields: 
               - code
@@ -54,7 +54,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz

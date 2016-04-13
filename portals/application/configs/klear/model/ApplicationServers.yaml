@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\ApplicationServers
+  class: \IvozProvider\Model\ApplicationServers
   fields: 
     # brandId: 
       # title: _('Brand id')
@@ -8,7 +8,7 @@ production:
       # source: 
         # data: mapper
         # config: 
-          # mapperName: \Oasis\Mapper\Sql\Brands
+          # mapperName: \IvozProvider\Mapper\Sql\Brands
           # fieldName: 
             # fields: 
               # - name

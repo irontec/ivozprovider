@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PickUpGroups
+  class: \IvozProvider\Model\PickUpGroups
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -14,7 +14,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name

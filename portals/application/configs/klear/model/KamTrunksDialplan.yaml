@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\KamTrunksDialplan
+  class: \IvozProvider\Model\KamTrunksDialplan
   fields: 
     dpid: 
       title: _('Dpid')

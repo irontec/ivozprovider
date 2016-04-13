@@ -58,7 +58,7 @@ production:
 #      <<: *huntGroupsEdit_screenLink
 #      class: ui-silk-group-go
 #      calculatedPk:
-#        class: Oasis_Klear_Calculated_Primarykeys
+#        class: IvozProvider_Klear_Calculated_Primarykeys
 #        method: huntGroupPk
     
   dialogs: &huntGroupsRelUsers_dialogsLink

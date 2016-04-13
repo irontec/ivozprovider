@@ -1,7 +1,7 @@
 <?php
 
 
-use Oasis\Mapper\Sql\MusicOnHold;
+use IvozProvider\Mapper\Sql\MusicOnHold;
 
 class TarificatorWorker extends Iron_Gearman_Worker
 {
@@ -36,7 +36,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
             $pks = $job->getPks();
         }
 
-        $callMapper = new \Oasis\Mapper\Sql\ParsedCDRs();
+        $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
 
         $tarificableTypes = $callMapper->getTarificableTypes();
         $message = "Mettering calls of types: ".implode(" ", $tarificableTypes);

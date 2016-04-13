@@ -151,7 +151,7 @@ class Agi_Wrapper
 	    // FIXME Allow PhraseID instead of Filepath?
 	    //return $this->_fastagi->exec("Playback", $file);
 	    
-	    if ($file instanceof \Oasis\Model\Raw\Locutions) {
+	    if ($file instanceof \IvozProvider\Model\Raw\Locutions) {
 	        $file = $file->getLocutionPath();
 	    }
 	    

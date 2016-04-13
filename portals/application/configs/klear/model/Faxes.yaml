@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Faxes
+  class: \IvozProvider\Model\Faxes
   fields: 
     companyId: 
       title: _('Company id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
@@ -47,8 +47,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\DDIs
-          filterClass: Oasis_Klear_Filter_Company          
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
               - DDI

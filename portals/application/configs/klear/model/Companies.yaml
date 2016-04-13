@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\Companies
+  class: \IvozProvider\Model\Companies
   fields: 
     id: 
       title: ngettext('Id', 'Ids', 1)
@@ -11,7 +11,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -34,7 +34,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Timezones
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
           fieldName: 
             fields: 
               - tz
@@ -46,8 +46,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\MusicOnHold
-          filterClass: Oasis_Klear_Filter_Company
+          mapperName: \IvozProvider\Mapper\Sql\MusicOnHold
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -62,7 +62,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\ApplicationServers
+          mapperName: \IvozProvider\Mapper\Sql\ApplicationServers
           fieldName: 
             fields: 
               - name
@@ -75,8 +75,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TransformationRulesetGroupsUsers
-          filterClass: Oasis_Klear_Filter_Brand
+          mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsUsers
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -124,8 +124,8 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Languages
-          filterClass: Oasis_Klear_Filter_BrandLanguages
+          mapperName: \IvozProvider\Mapper\Sql\Languages
+          filterClass: IvozProvider_Klear_Filter_BrandLanguages
           fieldName: 
             fields: 
               - name
@@ -144,7 +144,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Countries
+          mapperName: \IvozProvider\Mapper\Sql\Countries
           fieldName: 
             fields: 
               - name

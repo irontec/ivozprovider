@@ -2378,897 +2378,897 @@ msgstr ""
 msgid "Call sumary by type"
 msgstr "Mime type"
 
-#: library/Oasis/Model/Raw/ImportPatterns.php:207
-#: library/Oasis/Model/Raw/ImportPatterns.php:243
-#: library/Oasis/Model/Raw/ImportPatterns.php:311
-#: library/Oasis/Model/Raw/ImportPatterns.php:412
-#: library/Oasis/Model/Raw/Schedules.php:247
-#: library/Oasis/Model/Raw/Schedules.php:278
-#: library/Oasis/Model/Raw/Schedules.php:337
-#: library/Oasis/Model/Raw/Schedules.php:406
-#: library/Oasis/Model/Raw/AstMeetme.php:225
-#: library/Oasis/Model/Raw/AstMeetme.php:597
-#: library/Oasis/Model/Raw/ExternalCallFilters.php:380
-#: library/Oasis/Model/Raw/ExternalCallFilters.php:411
-#: library/Oasis/Model/Raw/ExternalCallFilters.php:528
-#: library/Oasis/Model/Raw/ExternalCallFilters.php:653
-#: library/Oasis/Model/Raw/CompaniesRelPricingPlans.php:190
-#: library/Oasis/Model/Raw/CompaniesRelPricingPlans.php:226
-#: library/Oasis/Model/Raw/IVRCommon.php:410
-#: library/Oasis/Model/Raw/IVRCommon.php:441
-#: library/Oasis/Model/Raw/IVRCommon.php:509
-#: library/Oasis/Model/Raw/IVRCommon.php:621
-#: library/Oasis/Model/Raw/IVRCommon.php:689
-#: library/Oasis/Model/Raw/IVRCommon.php:814
-#: library/Oasis/Model/Raw/CallACLPatterns.php:180
-#: library/Oasis/Model/Raw/CallACLPatterns.php:211
-#: library/Oasis/Model/Raw/CallACLPatterns.php:247
-#: library/Oasis/Model/Raw/Faxes.php:223 library/Oasis/Model/Raw/Faxes.php:254
-#: library/Oasis/Model/Raw/KlearUsers.php:217
-#: library/Oasis/Model/Raw/KlearUsers.php:253
-#: library/Oasis/Model/Raw/KlearUsers.php:289
-#: library/Oasis/Model/Raw/PricingPlans.php:216
-#: library/Oasis/Model/Raw/PricingPlans.php:349
-#: library/Oasis/Model/Raw/Terminals.php:1182
-#: library/Oasis/Model/Raw/Terminals.php:1245
-#: library/Oasis/Model/Raw/Terminals.php:4568
-#: library/Oasis/Model/Raw/PeerServers.php:331
-#: library/Oasis/Model/Raw/PeerServers.php:362
-#: library/Oasis/Model/Raw/PeerServers.php:393
-#: library/Oasis/Model/Raw/PeerServers.php:461
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:324
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:358
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:392
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:426
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:460
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:494
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:528
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:562
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:596
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:690
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:724
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:758
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:792
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:826
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:860
-#: library/Oasis/Model/Raw/KamTrunksDialog.php:1014
-#: library/Oasis/Model/Raw/KamUsersDomainAttrs.php:178
-#: library/Oasis/Model/Raw/KamUsersDomainAttrs.php:212
-#: library/Oasis/Model/Raw/KamUsersDomainAttrs.php:246
-#: library/Oasis/Model/Raw/KamUsersDomainAttrs.php:280
-#: library/Oasis/Model/Raw/TerminalManufacturers.php:171
-#: library/Oasis/Model/Raw/PricingPlansRelTargetPatterns.php:226
-#: library/Oasis/Model/Raw/PricingPlansRelTargetPatterns.php:262
-#: library/Oasis/Model/Raw/PricingPlansRelTargetPatterns.php:298
-#: library/Oasis/Model/Raw/PricingPlansRelTargetPatterns.php:366
-#: library/Oasis/Model/Raw/PricingPlansRelTargetPatterns.php:402
-#: library/Oasis/Model/Raw/PricingPlansRelTargetPatterns.php:438
-#: library/Oasis/Model/Raw/BrandOperators.php:222
-#: library/Oasis/Model/Raw/BrandOperators.php:258
-#: library/Oasis/Model/Raw/BrandOperators.php:294
-#: library/Oasis/Model/Raw/BrandOperators.php:394
-#: library/Oasis/Model/Raw/BrandOperators.php:430
-#: library/Oasis/Model/Raw/BrandOperators.php:466
-#: library/Oasis/Model/Raw/GenericServices.php:176
-#: library/Oasis/Model/Raw/GenericServices.php:212
-#: library/Oasis/Model/Raw/GenericServices.php:248
-#: library/Oasis/Model/Raw/GenericServices.php:284
-#: library/Oasis/Model/Raw/PeeringContracts.php:216
-#: library/Oasis/Model/Raw/LcrRules.php:241
-#: library/Oasis/Model/Raw/LcrRules.php:437
-#: library/Oasis/Model/Raw/MusicOnHold.php:375
-#: library/Oasis/Model/Raw/MusicOnHold.php:406
-#: library/Oasis/Model/Raw/KamTrunksUacreg.php:565
-#: library/Oasis/Model/Raw/KamUsersAcc.php:450
-#: library/Oasis/Model/Raw/CallForwardSettings.php:253
-#: library/Oasis/Model/Raw/CallForwardSettings.php:284
-#: library/Oasis/Model/Raw/CallForwardSettings.php:323
-#: library/Oasis/Model/Raw/CallForwardSettings.php:362
-#: library/Oasis/Model/Raw/TransformationRulesetGroupsUsers.php:228
-#: library/Oasis/Model/Raw/TransformationRulesetGroupsUsers.php:264
-#: library/Oasis/Model/Raw/KamTrunksDialogVars.php:169
-#: library/Oasis/Model/Raw/KamTrunksDialogVars.php:203
-#: library/Oasis/Model/Raw/KamTrunksDialogVars.php:237
-#: library/Oasis/Model/Raw/KamTrunksDialogVars.php:271
-#: library/Oasis/Model/Raw/FaxesInOut.php:371
-#: library/Oasis/Model/Raw/ApplicationServers.php:186
-#: library/Oasis/Model/Raw/GenericMusicOnHold.php:360
-#: library/Oasis/Model/Raw/GenericMusicOnHold.php:623
-#: library/Oasis/Model/Raw/PeerServesRelNumericTransformRules.php:202
-#: library/Oasis/Model/Raw/PeerServesRelNumericTransformRules.php:238
-#: library/Oasis/Model/Raw/PeerServesRelNumericTransformRules.php:269
-#: library/Oasis/Model/Raw/PeerServesRelNumericTransformRules.php:308
-#: library/Oasis/Model/Raw/KamUsersDialog.php:324
-#: library/Oasis/Model/Raw/KamUsersDialog.php:358
-#: library/Oasis/Model/Raw/KamUsersDialog.php:392
-#: library/Oasis/Model/Raw/KamUsersDialog.php:426
-#: library/Oasis/Model/Raw/KamUsersDialog.php:460
-#: library/Oasis/Model/Raw/KamUsersDialog.php:494
-#: library/Oasis/Model/Raw/KamUsersDialog.php:528
-#: library/Oasis/Model/Raw/KamUsersDialog.php:562
-#: library/Oasis/Model/Raw/KamUsersDialog.php:596
-#: library/Oasis/Model/Raw/KamUsersDialog.php:690
-#: library/Oasis/Model/Raw/KamUsersDialog.php:724
-#: library/Oasis/Model/Raw/KamUsersDialog.php:758
-#: library/Oasis/Model/Raw/KamUsersDialog.php:792
-#: library/Oasis/Model/Raw/KamUsersDialog.php:826
-#: library/Oasis/Model/Raw/KamUsersDialog.php:860
-#: library/Oasis/Model/Raw/KamUsersDialog.php:1014
-#: library/Oasis/Model/Raw/Languages.php:201
-#: library/Oasis/Model/Raw/TerminalModels.php:222
-#: library/Oasis/Model/Raw/TerminalModels.php:322
-#: library/Oasis/Model/Raw/KamUsersAddress.php:210
-#: library/Oasis/Model/Raw/HuntGroups.php:319
-#: library/Oasis/Model/Raw/HuntGroups.php:350
-#: library/Oasis/Model/Raw/HuntGroups.php:389
-#: library/Oasis/Model/Raw/HolidayDates.php:187
-#: library/Oasis/Model/Raw/HolidayDates.php:218
-#: library/Oasis/Model/Raw/HolidayDates.php:277
-#: library/Oasis/Model/Raw/BrandURLs.php:294
-#: library/Oasis/Model/Raw/BrandURLs.php:330
-#: library/Oasis/Model/Raw/BrandURLs.php:398
-#: library/Oasis/Model/Raw/AdminPortalSections.php:155
-#: library/Oasis/Model/Raw/Brands.php:582
-#: library/Oasis/Model/Raw/Brands.php:618
-#: library/Oasis/Model/Raw/Brands.php:686
-#: library/Oasis/Model/Raw/Brands.php:722
-#: library/Oasis/Model/Raw/AstQueueMembers.php:335
-#: library/Oasis/Model/Raw/CallACL.php:198
-#: library/Oasis/Model/Raw/CallACL.php:229
-#: library/Oasis/Model/Raw/CallACL.php:265
-#: library/Oasis/Model/Raw/Users.php:572 library/Oasis/Model/Raw/Users.php:603
-#: library/Oasis/Model/Raw/Users.php:639 library/Oasis/Model/Raw/Users.php:675
-#: library/Oasis/Model/Raw/Users.php:711
-#: library/Oasis/Model/Raw/Users.php:1010
-#: library/Oasis/Model/Raw/CallACLRelPatterns.php:193
-#: library/Oasis/Model/Raw/CallACLRelPatterns.php:224
-#: library/Oasis/Model/Raw/CallACLRelPatterns.php:255
-#: library/Oasis/Model/Raw/CallACLRelPatterns.php:291
-#: library/Oasis/Model/Raw/PickUpRelUsers.php:171
-#: library/Oasis/Model/Raw/PickUpRelUsers.php:202
-#: library/Oasis/Model/Raw/IVRCustomEntries.php:240
-#: library/Oasis/Model/Raw/IVRCustomEntries.php:271
-#: library/Oasis/Model/Raw/IVRCustomEntries.php:307
-#: library/Oasis/Model/Raw/IVRCustomEntries.php:338
-#: library/Oasis/Model/Raw/PeeringContractsRelLcrRules.php:222
-#: library/Oasis/Model/Raw/PeeringContractsRelLcrRules.php:258
-#: library/Oasis/Model/Raw/PeeringContractsRelLcrRules.php:294
-#: library/Oasis/Model/Raw/PeeringContractsRelLcrRules.php:325
-#: library/Oasis/Model/Raw/Extensions.php:356
-#: library/Oasis/Model/Raw/Extensions.php:387
-#: library/Oasis/Model/Raw/Extensions.php:423
-#: library/Oasis/Model/Raw/KamUsersTrusted.php:169
-#: library/Oasis/Model/Raw/KamUsersTrusted.php:203
-#: library/Oasis/Model/Raw/AstExtensions.php:267
-#: library/Oasis/Model/Raw/AstExtensions.php:301
-#: library/Oasis/Model/Raw/KamUsersDomain.php:162
-#: library/Oasis/Model/Raw/HuntGroupCallForwardSettings.php:228
-#: library/Oasis/Model/Raw/HuntGroupCallForwardSettings.php:294
-#: library/Oasis/Model/Raw/KamUsersDialogVars.php:169
-#: library/Oasis/Model/Raw/KamUsersDialogVars.php:203
-#: library/Oasis/Model/Raw/KamUsersDialogVars.php:237
-#: library/Oasis/Model/Raw/KamUsersDialogVars.php:271
-#: library/Oasis/Model/Raw/NumericTransformRules.php:206
-#: library/Oasis/Model/Raw/KamAddress.php:230
-#: library/Oasis/Model/Raw/KamTrunksLcrGw.php:242
-#: library/Oasis/Model/Raw/LcrRuleTarget.php:229
-#: library/Oasis/Model/Raw/LcrRuleTarget.php:265
-#: library/Oasis/Model/Raw/LcrRuleTarget.php:301
-#: library/Oasis/Model/Raw/LcrRuleTarget.php:337
-#: library/Oasis/Model/Raw/LcrRuleTarget.php:405
-#: library/Oasis/Model/Raw/Timezones.php:327
-#: library/Oasis/Model/Raw/ExternalCallFilterRelSchedules.php:171
-#: library/Oasis/Model/Raw/ExternalCallFilterRelSchedules.php:202
-#: library/Oasis/Model/Raw/GenericCallACLPatterns.php:168
-#: library/Oasis/Model/Raw/GenericCallACLPatterns.php:204
-#: library/Oasis/Model/Raw/GenericCallACLPatterns.php:240
-#: library/Oasis/Model/Raw/Locutions.php:423
-#: library/Oasis/Model/Raw/Locutions.php:550
-#: library/Oasis/Model/Raw/Companies.php:510
-#: library/Oasis/Model/Raw/Companies.php:546
-#: library/Oasis/Model/Raw/Companies.php:582
-#: library/Oasis/Model/Raw/Companies.php:618
-#: library/Oasis/Model/Raw/KamUsersMissedCalls.php:450
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:219
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:255
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:291
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:327
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:363
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:399
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:435
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:471
-#: library/Oasis/Model/Raw/KamTrunksDialplan.php:507
-#: library/Oasis/Model/Raw/KamTrunksLcrRule.php:198
-#: library/Oasis/Model/Raw/CompanyAdmins.php:231
-#: library/Oasis/Model/Raw/CompanyAdmins.php:294
-#: library/Oasis/Model/Raw/CompanyAdmins.php:330
-#: library/Oasis/Model/Raw/CompanyAdmins.php:366
-#: library/Oasis/Model/Raw/CompanyAdmins.php:402
-#: library/Oasis/Model/Raw/CompanyAdmins.php:438
-#: library/Oasis/Model/Raw/Calendars.php:184
-#: library/Oasis/Model/Raw/Calendars.php:215
-#: library/Oasis/Model/Raw/ImportPrices.php:222
-#: library/Oasis/Model/Raw/ImportPrices.php:258
-#: library/Oasis/Model/Raw/ImportPrices.php:294
-#: library/Oasis/Model/Raw/ImportPrices.php:330
-#: library/Oasis/Model/Raw/ImportPrices.php:366
-#: library/Oasis/Model/Raw/ImportPrices.php:402
-#: library/Oasis/Model/Raw/ImportPrices.php:503
-#: library/Oasis/Model/Raw/ExternalCallFilterRelCalendars.php:171
-#: library/Oasis/Model/Raw/ExternalCallFilterRelCalendars.php:202
-#: library/Oasis/Model/Raw/Services.php:176
-#: library/Oasis/Model/Raw/Services.php:207
-#: library/Oasis/Model/Raw/Services.php:243
-#: library/Oasis/Model/Raw/Services.php:279
-#: library/Oasis/Model/Raw/ImportPlans.php:190
-#: library/Oasis/Model/Raw/ImportPlans.php:226
-#: library/Oasis/Model/Raw/ImportPlans.php:327
-#: library/Oasis/Model/Raw/AstMusiconhold.php:175
-#: library/Oasis/Model/Raw/AstSippeers.php:983
-#: library/Oasis/Model/Raw/CompanyAdminsRelAdminPortalSections.php:188
-#: library/Oasis/Model/Raw/CompanyAdminsRelAdminPortalSections.php:219
-#: library/Oasis/Model/Raw/CompanyAdminsRelAdminPortalSections.php:250
-#: library/Oasis/Model/Raw/PricingPlansRelCompanies.php:218
-#: library/Oasis/Model/Raw/PricingPlansRelCompanies.php:254
-#: library/Oasis/Model/Raw/PricingPlansRelCompanies.php:447
-#: library/Oasis/Model/Raw/DDIs.php:315 library/Oasis/Model/Raw/DDIs.php:346
-#: library/Oasis/Model/Raw/DDIs.php:409
-#: library/Oasis/Model/Raw/HuntGroupsRelUsers.php:187
-#: library/Oasis/Model/Raw/HuntGroupsRelUsers.php:218
-#: library/Oasis/Model/Raw/HuntGroupsRelUsers.php:249
-#: library/Oasis/Model/Raw/HuntGroupsRelUsers.php:285
-#: library/Oasis/Model/Raw/KamTrunksMissedCalls.php:450
-#: library/Oasis/Model/Raw/KamTrunksDomain.php:162
-#: library/Oasis/Model/Raw/MainOperators.php:203
-#: library/Oasis/Model/Raw/MainOperators.php:239
-#: library/Oasis/Model/Raw/MainOperators.php:339
-#: library/Oasis/Model/Raw/MainOperators.php:375
-#: library/Oasis/Model/Raw/MainOperators.php:411
-#: library/Oasis/Model/Raw/AstVoicemail.php:440
-#: library/Oasis/Model/Raw/AstVoicemail.php:476
-#: library/Oasis/Model/Raw/AstVoicemail.php:512
-#: library/Oasis/Model/Raw/ImportFiles.php:419
-#: library/Oasis/Model/Raw/ImportFiles.php:649
-#: library/Oasis/Model/Raw/BrandsRelLanguages.php:171
-#: library/Oasis/Model/Raw/BrandsRelLanguages.php:207
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:219
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:255
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:291
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:327
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:363
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:399
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:435
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:471
-#: library/Oasis/Model/Raw/KamUsersDialplan.php:507
-#: library/Oasis/Model/Raw/KamTrunksAddress.php:232
-#: library/Oasis/Model/Raw/TransformationRulesetGroupsTrunks.php:228
-#: library/Oasis/Model/Raw/TransformationRulesetGroupsTrunks.php:264
-#: library/Oasis/Model/Raw/KamTrunksLcrRuleTarget.php:189
-#: library/Oasis/Model/Raw/KamTrunksLcrRuleTarget.php:223
-#: library/Oasis/Model/Raw/KamTrunksLcrRuleTarget.php:257
-#: library/Oasis/Model/Raw/KamTrunksLcrRuleTarget.php:291
-#: library/Oasis/Model/Raw/AstIaxfriends.php:541
-#: library/Oasis/Model/Raw/KamTrunksTrusted.php:169
-#: library/Oasis/Model/Raw/KamTrunksTrusted.php:203
-#: library/Oasis/Model/Raw/XMLRPCLogs.php:193
-#: library/Oasis/Model/Raw/XMLRPCLogs.php:229
-#: library/Oasis/Model/Raw/XMLRPCLogs.php:265
-#: library/Oasis/Model/Raw/XMLRPCLogs.php:301
-#: library/Oasis/Model/Raw/KamTrunksDomainAttrs.php:178
-#: library/Oasis/Model/Raw/KamTrunksDomainAttrs.php:212
-#: library/Oasis/Model/Raw/KamTrunksDomainAttrs.php:246
-#: library/Oasis/Model/Raw/KamTrunksDomainAttrs.php:280
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1183
-#: library/Oasis/Model/Raw/Invoices.php:359
-#: library/Oasis/Model/Raw/Invoices.php:683
-#: library/Oasis/Model/Raw/Invoices.php:714
-#: library/Oasis/Model/Raw/TargetPatterns.php:206
-#: library/Oasis/Model/Raw/TargetPatterns.php:274
-#: library/Oasis/Model/Raw/TargetPatterns.php:310
-#: library/Oasis/Model/Raw/KamTrunksAcc.php:450
-#: library/Oasis/Model/Raw/PickUpGroups.php:172
-#: library/Oasis/Model/Raw/PickUpGroups.php:208
-#: library/Oasis/Model/Raw/IVRCustom.php:414
-#: library/Oasis/Model/Raw/IVRCustom.php:445
-#: library/Oasis/Model/Raw/IVRCustom.php:481
-#: library/Oasis/Model/Raw/IVRCustom.php:593
-#: library/Oasis/Model/Raw/IVRCustom.php:661
-#: library/Oasis/Model/Raw/IVRCustom.php:786
+#: library/IvozProvider/Model/Raw/ImportPatterns.php:207
+#: library/IvozProvider/Model/Raw/ImportPatterns.php:243
+#: library/IvozProvider/Model/Raw/ImportPatterns.php:311
+#: library/IvozProvider/Model/Raw/ImportPatterns.php:412
+#: library/IvozProvider/Model/Raw/Schedules.php:247
+#: library/IvozProvider/Model/Raw/Schedules.php:278
+#: library/IvozProvider/Model/Raw/Schedules.php:337
+#: library/IvozProvider/Model/Raw/Schedules.php:406
+#: library/IvozProvider/Model/Raw/AstMeetme.php:225
+#: library/IvozProvider/Model/Raw/AstMeetme.php:597
+#: library/IvozProvider/Model/Raw/ExternalCallFilters.php:380
+#: library/IvozProvider/Model/Raw/ExternalCallFilters.php:411
+#: library/IvozProvider/Model/Raw/ExternalCallFilters.php:528
+#: library/IvozProvider/Model/Raw/ExternalCallFilters.php:653
+#: library/IvozProvider/Model/Raw/CompaniesRelPricingPlans.php:190
+#: library/IvozProvider/Model/Raw/CompaniesRelPricingPlans.php:226
+#: library/IvozProvider/Model/Raw/IVRCommon.php:410
+#: library/IvozProvider/Model/Raw/IVRCommon.php:441
+#: library/IvozProvider/Model/Raw/IVRCommon.php:509
+#: library/IvozProvider/Model/Raw/IVRCommon.php:621
+#: library/IvozProvider/Model/Raw/IVRCommon.php:689
+#: library/IvozProvider/Model/Raw/IVRCommon.php:814
+#: library/IvozProvider/Model/Raw/CallACLPatterns.php:180
+#: library/IvozProvider/Model/Raw/CallACLPatterns.php:211
+#: library/IvozProvider/Model/Raw/CallACLPatterns.php:247
+#: library/IvozProvider/Model/Raw/Faxes.php:223 library/IvozProvider/Model/Raw/Faxes.php:254
+#: library/IvozProvider/Model/Raw/KlearUsers.php:217
+#: library/IvozProvider/Model/Raw/KlearUsers.php:253
+#: library/IvozProvider/Model/Raw/KlearUsers.php:289
+#: library/IvozProvider/Model/Raw/PricingPlans.php:216
+#: library/IvozProvider/Model/Raw/PricingPlans.php:349
+#: library/IvozProvider/Model/Raw/Terminals.php:1182
+#: library/IvozProvider/Model/Raw/Terminals.php:1245
+#: library/IvozProvider/Model/Raw/Terminals.php:4568
+#: library/IvozProvider/Model/Raw/PeerServers.php:331
+#: library/IvozProvider/Model/Raw/PeerServers.php:362
+#: library/IvozProvider/Model/Raw/PeerServers.php:393
+#: library/IvozProvider/Model/Raw/PeerServers.php:461
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:324
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:358
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:392
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:426
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:460
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:494
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:528
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:562
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:596
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:690
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:724
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:758
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:792
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:826
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:860
+#: library/IvozProvider/Model/Raw/KamTrunksDialog.php:1014
+#: library/IvozProvider/Model/Raw/KamUsersDomainAttrs.php:178
+#: library/IvozProvider/Model/Raw/KamUsersDomainAttrs.php:212
+#: library/IvozProvider/Model/Raw/KamUsersDomainAttrs.php:246
+#: library/IvozProvider/Model/Raw/KamUsersDomainAttrs.php:280
+#: library/IvozProvider/Model/Raw/TerminalManufacturers.php:171
+#: library/IvozProvider/Model/Raw/PricingPlansRelTargetPatterns.php:226
+#: library/IvozProvider/Model/Raw/PricingPlansRelTargetPatterns.php:262
+#: library/IvozProvider/Model/Raw/PricingPlansRelTargetPatterns.php:298
+#: library/IvozProvider/Model/Raw/PricingPlansRelTargetPatterns.php:366
+#: library/IvozProvider/Model/Raw/PricingPlansRelTargetPatterns.php:402
+#: library/IvozProvider/Model/Raw/PricingPlansRelTargetPatterns.php:438
+#: library/IvozProvider/Model/Raw/BrandOperators.php:222
+#: library/IvozProvider/Model/Raw/BrandOperators.php:258
+#: library/IvozProvider/Model/Raw/BrandOperators.php:294
+#: library/IvozProvider/Model/Raw/BrandOperators.php:394
+#: library/IvozProvider/Model/Raw/BrandOperators.php:430
+#: library/IvozProvider/Model/Raw/BrandOperators.php:466
+#: library/IvozProvider/Model/Raw/GenericServices.php:176
+#: library/IvozProvider/Model/Raw/GenericServices.php:212
+#: library/IvozProvider/Model/Raw/GenericServices.php:248
+#: library/IvozProvider/Model/Raw/GenericServices.php:284
+#: library/IvozProvider/Model/Raw/PeeringContracts.php:216
+#: library/IvozProvider/Model/Raw/LcrRules.php:241
+#: library/IvozProvider/Model/Raw/LcrRules.php:437
+#: library/IvozProvider/Model/Raw/MusicOnHold.php:375
+#: library/IvozProvider/Model/Raw/MusicOnHold.php:406
+#: library/IvozProvider/Model/Raw/KamTrunksUacreg.php:565
+#: library/IvozProvider/Model/Raw/KamUsersAcc.php:450
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:253
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:284
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:323
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:362
+#: library/IvozProvider/Model/Raw/TransformationRulesetGroupsUsers.php:228
+#: library/IvozProvider/Model/Raw/TransformationRulesetGroupsUsers.php:264
+#: library/IvozProvider/Model/Raw/KamTrunksDialogVars.php:169
+#: library/IvozProvider/Model/Raw/KamTrunksDialogVars.php:203
+#: library/IvozProvider/Model/Raw/KamTrunksDialogVars.php:237
+#: library/IvozProvider/Model/Raw/KamTrunksDialogVars.php:271
+#: library/IvozProvider/Model/Raw/FaxesInOut.php:371
+#: library/IvozProvider/Model/Raw/ApplicationServers.php:186
+#: library/IvozProvider/Model/Raw/GenericMusicOnHold.php:360
+#: library/IvozProvider/Model/Raw/GenericMusicOnHold.php:623
+#: library/IvozProvider/Model/Raw/PeerServesRelNumericTransformRules.php:202
+#: library/IvozProvider/Model/Raw/PeerServesRelNumericTransformRules.php:238
+#: library/IvozProvider/Model/Raw/PeerServesRelNumericTransformRules.php:269
+#: library/IvozProvider/Model/Raw/PeerServesRelNumericTransformRules.php:308
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:324
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:358
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:392
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:426
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:460
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:494
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:528
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:562
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:596
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:690
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:724
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:758
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:792
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:826
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:860
+#: library/IvozProvider/Model/Raw/KamUsersDialog.php:1014
+#: library/IvozProvider/Model/Raw/Languages.php:201
+#: library/IvozProvider/Model/Raw/TerminalModels.php:222
+#: library/IvozProvider/Model/Raw/TerminalModels.php:322
+#: library/IvozProvider/Model/Raw/KamUsersAddress.php:210
+#: library/IvozProvider/Model/Raw/HuntGroups.php:319
+#: library/IvozProvider/Model/Raw/HuntGroups.php:350
+#: library/IvozProvider/Model/Raw/HuntGroups.php:389
+#: library/IvozProvider/Model/Raw/HolidayDates.php:187
+#: library/IvozProvider/Model/Raw/HolidayDates.php:218
+#: library/IvozProvider/Model/Raw/HolidayDates.php:277
+#: library/IvozProvider/Model/Raw/BrandURLs.php:294
+#: library/IvozProvider/Model/Raw/BrandURLs.php:330
+#: library/IvozProvider/Model/Raw/BrandURLs.php:398
+#: library/IvozProvider/Model/Raw/AdminPortalSections.php:155
+#: library/IvozProvider/Model/Raw/Brands.php:582
+#: library/IvozProvider/Model/Raw/Brands.php:618
+#: library/IvozProvider/Model/Raw/Brands.php:686
+#: library/IvozProvider/Model/Raw/Brands.php:722
+#: library/IvozProvider/Model/Raw/AstQueueMembers.php:335
+#: library/IvozProvider/Model/Raw/CallACL.php:198
+#: library/IvozProvider/Model/Raw/CallACL.php:229
+#: library/IvozProvider/Model/Raw/CallACL.php:265
+#: library/IvozProvider/Model/Raw/Users.php:572 library/IvozProvider/Model/Raw/Users.php:603
+#: library/IvozProvider/Model/Raw/Users.php:639 library/IvozProvider/Model/Raw/Users.php:675
+#: library/IvozProvider/Model/Raw/Users.php:711
+#: library/IvozProvider/Model/Raw/Users.php:1010
+#: library/IvozProvider/Model/Raw/CallACLRelPatterns.php:193
+#: library/IvozProvider/Model/Raw/CallACLRelPatterns.php:224
+#: library/IvozProvider/Model/Raw/CallACLRelPatterns.php:255
+#: library/IvozProvider/Model/Raw/CallACLRelPatterns.php:291
+#: library/IvozProvider/Model/Raw/PickUpRelUsers.php:171
+#: library/IvozProvider/Model/Raw/PickUpRelUsers.php:202
+#: library/IvozProvider/Model/Raw/IVRCustomEntries.php:240
+#: library/IvozProvider/Model/Raw/IVRCustomEntries.php:271
+#: library/IvozProvider/Model/Raw/IVRCustomEntries.php:307
+#: library/IvozProvider/Model/Raw/IVRCustomEntries.php:338
+#: library/IvozProvider/Model/Raw/PeeringContractsRelLcrRules.php:222
+#: library/IvozProvider/Model/Raw/PeeringContractsRelLcrRules.php:258
+#: library/IvozProvider/Model/Raw/PeeringContractsRelLcrRules.php:294
+#: library/IvozProvider/Model/Raw/PeeringContractsRelLcrRules.php:325
+#: library/IvozProvider/Model/Raw/Extensions.php:356
+#: library/IvozProvider/Model/Raw/Extensions.php:387
+#: library/IvozProvider/Model/Raw/Extensions.php:423
+#: library/IvozProvider/Model/Raw/KamUsersTrusted.php:169
+#: library/IvozProvider/Model/Raw/KamUsersTrusted.php:203
+#: library/IvozProvider/Model/Raw/AstExtensions.php:267
+#: library/IvozProvider/Model/Raw/AstExtensions.php:301
+#: library/IvozProvider/Model/Raw/KamUsersDomain.php:162
+#: library/IvozProvider/Model/Raw/HuntGroupCallForwardSettings.php:228
+#: library/IvozProvider/Model/Raw/HuntGroupCallForwardSettings.php:294
+#: library/IvozProvider/Model/Raw/KamUsersDialogVars.php:169
+#: library/IvozProvider/Model/Raw/KamUsersDialogVars.php:203
+#: library/IvozProvider/Model/Raw/KamUsersDialogVars.php:237
+#: library/IvozProvider/Model/Raw/KamUsersDialogVars.php:271
+#: library/IvozProvider/Model/Raw/NumericTransformRules.php:206
+#: library/IvozProvider/Model/Raw/KamAddress.php:230
+#: library/IvozProvider/Model/Raw/KamTrunksLcrGw.php:242
+#: library/IvozProvider/Model/Raw/LcrRuleTarget.php:229
+#: library/IvozProvider/Model/Raw/LcrRuleTarget.php:265
+#: library/IvozProvider/Model/Raw/LcrRuleTarget.php:301
+#: library/IvozProvider/Model/Raw/LcrRuleTarget.php:337
+#: library/IvozProvider/Model/Raw/LcrRuleTarget.php:405
+#: library/IvozProvider/Model/Raw/Timezones.php:327
+#: library/IvozProvider/Model/Raw/ExternalCallFilterRelSchedules.php:171
+#: library/IvozProvider/Model/Raw/ExternalCallFilterRelSchedules.php:202
+#: library/IvozProvider/Model/Raw/GenericCallACLPatterns.php:168
+#: library/IvozProvider/Model/Raw/GenericCallACLPatterns.php:204
+#: library/IvozProvider/Model/Raw/GenericCallACLPatterns.php:240
+#: library/IvozProvider/Model/Raw/Locutions.php:423
+#: library/IvozProvider/Model/Raw/Locutions.php:550
+#: library/IvozProvider/Model/Raw/Companies.php:510
+#: library/IvozProvider/Model/Raw/Companies.php:546
+#: library/IvozProvider/Model/Raw/Companies.php:582
+#: library/IvozProvider/Model/Raw/Companies.php:618
+#: library/IvozProvider/Model/Raw/KamUsersMissedCalls.php:450
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:219
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:255
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:291
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:327
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:363
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:399
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:435
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:471
+#: library/IvozProvider/Model/Raw/KamTrunksDialplan.php:507
+#: library/IvozProvider/Model/Raw/KamTrunksLcrRule.php:198
+#: library/IvozProvider/Model/Raw/CompanyAdmins.php:231
+#: library/IvozProvider/Model/Raw/CompanyAdmins.php:294
+#: library/IvozProvider/Model/Raw/CompanyAdmins.php:330
+#: library/IvozProvider/Model/Raw/CompanyAdmins.php:366
+#: library/IvozProvider/Model/Raw/CompanyAdmins.php:402
+#: library/IvozProvider/Model/Raw/CompanyAdmins.php:438
+#: library/IvozProvider/Model/Raw/Calendars.php:184
+#: library/IvozProvider/Model/Raw/Calendars.php:215
+#: library/IvozProvider/Model/Raw/ImportPrices.php:222
+#: library/IvozProvider/Model/Raw/ImportPrices.php:258
+#: library/IvozProvider/Model/Raw/ImportPrices.php:294
+#: library/IvozProvider/Model/Raw/ImportPrices.php:330
+#: library/IvozProvider/Model/Raw/ImportPrices.php:366
+#: library/IvozProvider/Model/Raw/ImportPrices.php:402
+#: library/IvozProvider/Model/Raw/ImportPrices.php:503
+#: library/IvozProvider/Model/Raw/ExternalCallFilterRelCalendars.php:171
+#: library/IvozProvider/Model/Raw/ExternalCallFilterRelCalendars.php:202
+#: library/IvozProvider/Model/Raw/Services.php:176
+#: library/IvozProvider/Model/Raw/Services.php:207
+#: library/IvozProvider/Model/Raw/Services.php:243
+#: library/IvozProvider/Model/Raw/Services.php:279
+#: library/IvozProvider/Model/Raw/ImportPlans.php:190
+#: library/IvozProvider/Model/Raw/ImportPlans.php:226
+#: library/IvozProvider/Model/Raw/ImportPlans.php:327
+#: library/IvozProvider/Model/Raw/AstMusiconhold.php:175
+#: library/IvozProvider/Model/Raw/AstSippeers.php:983
+#: library/IvozProvider/Model/Raw/CompanyAdminsRelAdminPortalSections.php:188
+#: library/IvozProvider/Model/Raw/CompanyAdminsRelAdminPortalSections.php:219
+#: library/IvozProvider/Model/Raw/CompanyAdminsRelAdminPortalSections.php:250
+#: library/IvozProvider/Model/Raw/PricingPlansRelCompanies.php:218
+#: library/IvozProvider/Model/Raw/PricingPlansRelCompanies.php:254
+#: library/IvozProvider/Model/Raw/PricingPlansRelCompanies.php:447
+#: library/IvozProvider/Model/Raw/DDIs.php:315 library/IvozProvider/Model/Raw/DDIs.php:346
+#: library/IvozProvider/Model/Raw/DDIs.php:409
+#: library/IvozProvider/Model/Raw/HuntGroupsRelUsers.php:187
+#: library/IvozProvider/Model/Raw/HuntGroupsRelUsers.php:218
+#: library/IvozProvider/Model/Raw/HuntGroupsRelUsers.php:249
+#: library/IvozProvider/Model/Raw/HuntGroupsRelUsers.php:285
+#: library/IvozProvider/Model/Raw/KamTrunksMissedCalls.php:450
+#: library/IvozProvider/Model/Raw/KamTrunksDomain.php:162
+#: library/IvozProvider/Model/Raw/MainOperators.php:203
+#: library/IvozProvider/Model/Raw/MainOperators.php:239
+#: library/IvozProvider/Model/Raw/MainOperators.php:339
+#: library/IvozProvider/Model/Raw/MainOperators.php:375
+#: library/IvozProvider/Model/Raw/MainOperators.php:411
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:440
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:476
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:512
+#: library/IvozProvider/Model/Raw/ImportFiles.php:419
+#: library/IvozProvider/Model/Raw/ImportFiles.php:649
+#: library/IvozProvider/Model/Raw/BrandsRelLanguages.php:171
+#: library/IvozProvider/Model/Raw/BrandsRelLanguages.php:207
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:219
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:255
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:291
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:327
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:363
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:399
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:435
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:471
+#: library/IvozProvider/Model/Raw/KamUsersDialplan.php:507
+#: library/IvozProvider/Model/Raw/KamTrunksAddress.php:232
+#: library/IvozProvider/Model/Raw/TransformationRulesetGroupsTrunks.php:228
+#: library/IvozProvider/Model/Raw/TransformationRulesetGroupsTrunks.php:264
+#: library/IvozProvider/Model/Raw/KamTrunksLcrRuleTarget.php:189
+#: library/IvozProvider/Model/Raw/KamTrunksLcrRuleTarget.php:223
+#: library/IvozProvider/Model/Raw/KamTrunksLcrRuleTarget.php:257
+#: library/IvozProvider/Model/Raw/KamTrunksLcrRuleTarget.php:291
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:541
+#: library/IvozProvider/Model/Raw/KamTrunksTrusted.php:169
+#: library/IvozProvider/Model/Raw/KamTrunksTrusted.php:203
+#: library/IvozProvider/Model/Raw/XMLRPCLogs.php:193
+#: library/IvozProvider/Model/Raw/XMLRPCLogs.php:229
+#: library/IvozProvider/Model/Raw/XMLRPCLogs.php:265
+#: library/IvozProvider/Model/Raw/XMLRPCLogs.php:301
+#: library/IvozProvider/Model/Raw/KamTrunksDomainAttrs.php:178
+#: library/IvozProvider/Model/Raw/KamTrunksDomainAttrs.php:212
+#: library/IvozProvider/Model/Raw/KamTrunksDomainAttrs.php:246
+#: library/IvozProvider/Model/Raw/KamTrunksDomainAttrs.php:280
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1183
+#: library/IvozProvider/Model/Raw/Invoices.php:359
+#: library/IvozProvider/Model/Raw/Invoices.php:683
+#: library/IvozProvider/Model/Raw/Invoices.php:714
+#: library/IvozProvider/Model/Raw/TargetPatterns.php:206
+#: library/IvozProvider/Model/Raw/TargetPatterns.php:274
+#: library/IvozProvider/Model/Raw/TargetPatterns.php:310
+#: library/IvozProvider/Model/Raw/KamTrunksAcc.php:450
+#: library/IvozProvider/Model/Raw/PickUpGroups.php:172
+#: library/IvozProvider/Model/Raw/PickUpGroups.php:208
+#: library/IvozProvider/Model/Raw/IVRCustom.php:414
+#: library/IvozProvider/Model/Raw/IVRCustom.php:445
+#: library/IvozProvider/Model/Raw/IVRCustom.php:481
+#: library/IvozProvider/Model/Raw/IVRCustom.php:593
+#: library/IvozProvider/Model/Raw/IVRCustom.php:661
+#: library/IvozProvider/Model/Raw/IVRCustom.php:786
 msgid "Required values cannot be null"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsRegistrations.php:245
+#: library/IvozProvider/Model/Raw/AstPsRegistrations.php:245
 msgid "Invalid value for authRejectionPermanent"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsRegistrations.php:578
-#: library/Oasis/Model/Raw/Terminals.php:4476
-#: library/Oasis/Model/Raw/AstPsAors.php:547
-#: library/Oasis/Model/Raw/ProxyTrunks.php:4414
+#: library/IvozProvider/Model/Raw/AstPsRegistrations.php:578
+#: library/IvozProvider/Model/Raw/Terminals.php:4476
+#: library/IvozProvider/Model/Raw/AstPsAors.php:547
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:4414
 msgid "Invalid value for supportPath"
 msgstr ""
 
-#: library/Oasis/Model/Raw/ExternalCallFilters.php:539
+#: library/IvozProvider/Model/Raw/ExternalCallFilters.php:539
 msgid "Invalid value for holidayTargetType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/ExternalCallFilters.php:664
+#: library/IvozProvider/Model/Raw/ExternalCallFilters.php:664
 msgid "Invalid value for outOfScheduleTargetType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/IVRCommon.php:700
-#: library/Oasis/Model/Raw/IVRCustom.php:672
+#: library/IvozProvider/Model/Raw/IVRCommon.php:700
+#: library/IvozProvider/Model/Raw/IVRCustom.php:672
 msgid "Invalid value for timeoutTargetType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/IVRCommon.php:825
-#: library/Oasis/Model/Raw/IVRCustom.php:797
+#: library/IvozProvider/Model/Raw/IVRCommon.php:825
+#: library/IvozProvider/Model/Raw/IVRCustom.php:797
 msgid "Invalid value for errorTargetType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1480
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1170
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1418
+#: library/IvozProvider/Model/Raw/Terminals.php:1480
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1170
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1418
 msgid "Invalid value for directMedia"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1645
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1331
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1583
+#: library/IvozProvider/Model/Raw/Terminals.php:1645
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1331
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1583
 msgid "Invalid value for directMediaGlareMitigation"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1680
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1364
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1618
+#: library/IvozProvider/Model/Raw/Terminals.php:1680
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1364
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1618
 msgid "Invalid value for disableDirectMediaOnNat"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1715
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1397
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1653
+#: library/IvozProvider/Model/Raw/Terminals.php:1715
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1397
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1653
 msgid "Invalid value for dtmfMode"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1782
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1460
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1720
+#: library/IvozProvider/Model/Raw/Terminals.php:1782
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1460
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1720
 msgid "Invalid value for forceRport"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1817
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1493
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1755
+#: library/IvozProvider/Model/Raw/Terminals.php:1817
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1493
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1755
 msgid "Invalid value for iceSupport"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:1852
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1526
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1790
+#: library/IvozProvider/Model/Raw/Terminals.php:1852
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1526
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1790
 msgid "Invalid value for identifyBy"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2047
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1679
-#: library/Oasis/Model/Raw/ProxyTrunks.php:1985
+#: library/IvozProvider/Model/Raw/Terminals.php:2047
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1679
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:1985
 msgid "Invalid value for rewriteContact"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2082
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1712
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2020
+#: library/IvozProvider/Model/Raw/Terminals.php:2082
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1712
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2020
 msgid "Invalid value for rtpIpv6"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2117
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1745
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2055
+#: library/IvozProvider/Model/Raw/Terminals.php:2117
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1745
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2055
 msgid "Invalid value for rtpSymmetric"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2152
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1778
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2090
+#: library/IvozProvider/Model/Raw/Terminals.php:2152
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1778
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2090
 msgid "Invalid value for sendDiversion"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2187
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1811
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2125
+#: library/IvozProvider/Model/Raw/Terminals.php:2187
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1811
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2125
 msgid "Invalid value for sendPai"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2222
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1844
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2160
+#: library/IvozProvider/Model/Raw/Terminals.php:2222
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1844
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2160
 msgid "Invalid value for sendRpid"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2289
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:1907
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2227
+#: library/IvozProvider/Model/Raw/Terminals.php:2289
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:1907
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2227
 msgid "Invalid value for timers"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2388
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2000
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2326
+#: library/IvozProvider/Model/Raw/Terminals.php:2388
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2000
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2326
 msgid "Invalid value for calleridPrivacy"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2455
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2063
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2393
+#: library/IvozProvider/Model/Raw/Terminals.php:2455
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2063
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2393
 msgid "Invalid value for 100rel"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2490
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2096
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2428
+#: library/IvozProvider/Model/Raw/Terminals.php:2490
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2096
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2428
 msgid "Invalid value for aggregateMwi"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2525
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2129
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2463
+#: library/IvozProvider/Model/Raw/Terminals.php:2525
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2129
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2463
 msgid "Invalid value for trustIdInbound"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2560
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2162
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2498
+#: library/IvozProvider/Model/Raw/Terminals.php:2560
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2162
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2498
 msgid "Invalid value for trustIdOutbound"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2595
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2195
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2533
+#: library/IvozProvider/Model/Raw/Terminals.php:2595
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2195
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2533
 msgid "Invalid value for usePtime"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2630
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2228
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2568
+#: library/IvozProvider/Model/Raw/Terminals.php:2630
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2228
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2568
 msgid "Invalid value for useAvpf"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2665
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2261
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2603
+#: library/IvozProvider/Model/Raw/Terminals.php:2665
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2261
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2603
 msgid "Invalid value for mediaEncryption"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2700
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2294
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2638
+#: library/IvozProvider/Model/Raw/Terminals.php:2700
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2294
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2638
 msgid "Invalid value for inbandProgress"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2895
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2477
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2833
+#: library/IvozProvider/Model/Raw/Terminals.php:2895
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2477
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2833
 msgid "Invalid value for faxDetect"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2930
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2510
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2868
+#: library/IvozProvider/Model/Raw/Terminals.php:2930
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2510
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2868
 msgid "Invalid value for t38Udptl"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:2965
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2543
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2903
+#: library/IvozProvider/Model/Raw/Terminals.php:2965
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2543
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2903
 msgid "Invalid value for t38UdptlEc"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3032
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2606
-#: library/Oasis/Model/Raw/ProxyTrunks.php:2970
+#: library/IvozProvider/Model/Raw/Terminals.php:3032
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2606
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:2970
 msgid "Invalid value for t38UdptlNat"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3067
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2639
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3005
+#: library/IvozProvider/Model/Raw/Terminals.php:3067
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2639
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3005
 msgid "Invalid value for t38UdptlIpv6"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3166
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2732
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3104
+#: library/IvozProvider/Model/Raw/Terminals.php:3166
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2732
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3104
 msgid "Invalid value for oneTouchRecording"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3297
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2855
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3235
+#: library/IvozProvider/Model/Raw/Terminals.php:3297
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2855
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3235
 msgid "Invalid value for allowTransfer"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3332
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:2888
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3270
+#: library/IvozProvider/Model/Raw/Terminals.php:3332
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:2888
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3270
 msgid "Invalid value for allowSubscribe"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3847
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:3371
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3785
+#: library/IvozProvider/Model/Raw/Terminals.php:3847
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:3371
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3785
 msgid "Invalid value for dtlsSetup"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3882
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:3404
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3820
+#: library/IvozProvider/Model/Raw/Terminals.php:3882
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:3404
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3820
 msgid "Invalid value for srtpTag32"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:3949
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:3467
-#: library/Oasis/Model/Raw/ProxyTrunks.php:3887
+#: library/IvozProvider/Model/Raw/Terminals.php:3949
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:3467
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:3887
 msgid "Invalid value for redirectMethod"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:4112
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:3620
-#: library/Oasis/Model/Raw/ProxyTrunks.php:4050
+#: library/IvozProvider/Model/Raw/Terminals.php:4112
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:3620
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:4050
 msgid "Invalid value for forceAvp"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:4147
-#: library/Oasis/Model/Raw/AstPsEndpoints.php:3653
-#: library/Oasis/Model/Raw/ProxyTrunks.php:4085
+#: library/IvozProvider/Model/Raw/Terminals.php:4147
+#: library/IvozProvider/Model/Raw/AstPsEndpoints.php:3653
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:4085
 msgid "Invalid value for mediaUseReceivedTransport"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:4342
-#: library/Oasis/Model/Raw/AstPsAors.php:391
-#: library/Oasis/Model/Raw/ProxyTrunks.php:4280
+#: library/IvozProvider/Model/Raw/Terminals.php:4342
+#: library/IvozProvider/Model/Raw/AstPsAors.php:391
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:4280
 msgid "Invalid value for removeExisting"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Terminals.php:4409
-#: library/Oasis/Model/Raw/AstPsAors.php:454
-#: library/Oasis/Model/Raw/ProxyTrunks.php:4347
+#: library/IvozProvider/Model/Raw/Terminals.php:4409
+#: library/IvozProvider/Model/Raw/AstPsAors.php:454
+#: library/IvozProvider/Model/Raw/ProxyTrunks.php:4347
 msgid "Invalid value for authenticateQualify"
 msgstr ""
 
-#: library/Oasis/Model/Raw/MusicOnHold.php:641
-#: library/Oasis/Model/Raw/FaxesInOut.php:540
-#: library/Oasis/Model/Raw/GenericMusicOnHold.php:595
-#: library/Oasis/Model/Raw/Invoices.php:655
+#: library/IvozProvider/Model/Raw/MusicOnHold.php:641
+#: library/IvozProvider/Model/Raw/FaxesInOut.php:540
+#: library/IvozProvider/Model/Raw/GenericMusicOnHold.php:595
+#: library/IvozProvider/Model/Raw/Invoices.php:655
 msgid "Invalid value for status"
 msgstr ""
 
-#: library/Oasis/Model/Raw/CallForwardSettings.php:295
-#: library/Oasis/Model/Raw/HuntGroupCallForwardSettings.php:266
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:295
+#: library/IvozProvider/Model/Raw/HuntGroupCallForwardSettings.php:266
 msgid "Invalid value for callTypeFilter"
 msgstr ""
 
-#: library/Oasis/Model/Raw/CallForwardSettings.php:334
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:334
 msgid "Invalid value for callForwardType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/CallForwardSettings.php:373
-#: library/Oasis/Model/Raw/IVRCustomEntries.php:349
+#: library/IvozProvider/Model/Raw/CallForwardSettings.php:373
+#: library/IvozProvider/Model/Raw/IVRCustomEntries.php:349
 msgid "Invalid value for targetType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/FaxesInOut.php:473
-#: library/Oasis/Model/Raw/PeerServesRelNumericTransformRules.php:280
-#: library/Oasis/Model/Raw/AstSippeers.php:1291
-#: library/Oasis/Model/Raw/AstIaxfriends.php:579
+#: library/IvozProvider/Model/Raw/FaxesInOut.php:473
+#: library/IvozProvider/Model/Raw/PeerServesRelNumericTransformRules.php:280
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1291
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:579
 msgid "Invalid value for type"
 msgstr ""
 
-#: library/Oasis/Model/Raw/PeerServesRelNumericTransformRules.php:319
+#: library/IvozProvider/Model/Raw/PeerServesRelNumericTransformRules.php:319
 msgid "Invalid value for applyTo"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsSystems.php:261
+#: library/IvozProvider/Model/Raw/AstPsSystems.php:261
 msgid "Invalid value for compactHeaders"
 msgstr ""
 
-#: library/Oasis/Model/Raw/HuntGroups.php:361
-#: library/Oasis/Model/Raw/AstQueues.php:2019
+#: library/IvozProvider/Model/Raw/HuntGroups.php:361
+#: library/IvozProvider/Model/Raw/AstQueues.php:2019
 msgid "Invalid value for strategy"
 msgstr ""
 
-#: library/Oasis/Model/Raw/BrandURLs.php:409
+#: library/IvozProvider/Model/Raw/BrandURLs.php:409
 msgid "Invalid value for urlType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsTransports.php:590
+#: library/IvozProvider/Model/Raw/AstPsTransports.php:590
 msgid "Invalid value for method"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsTransports.php:713
+#: library/IvozProvider/Model/Raw/AstPsTransports.php:713
 msgid "Invalid value for protocol"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsTransports.php:746
+#: library/IvozProvider/Model/Raw/AstPsTransports.php:746
 msgid "Invalid value for requireClientCert"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsTransports.php:779
+#: library/IvozProvider/Model/Raw/AstPsTransports.php:779
 msgid "Invalid value for verifyClient"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsTransports.php:812
+#: library/IvozProvider/Model/Raw/AstPsTransports.php:812
 msgid "Invalid value for verifyServer"
 msgstr ""
 
-#: library/Oasis/Model/Raw/CallACL.php:276
+#: library/IvozProvider/Model/Raw/CallACL.php:276
 msgid "Invalid value for defaultPolicy"
 msgstr ""
 
-#: library/Oasis/Model/Raw/CallACLRelPatterns.php:302
+#: library/IvozProvider/Model/Raw/CallACLRelPatterns.php:302
 msgid "Invalid value for policy"
 msgstr ""
 
-#: library/Oasis/Model/Raw/Extensions.php:434
-#: library/Oasis/Model/Raw/DDIs.php:420
+#: library/IvozProvider/Model/Raw/Extensions.php:434
+#: library/IvozProvider/Model/Raw/DDIs.php:420
 msgid "Invalid value for routeType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/HuntGroupCallForwardSettings.php:305
+#: library/IvozProvider/Model/Raw/HuntGroupCallForwardSettings.php:305
 msgid "Invalid value for callTargetType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:756
+#: library/IvozProvider/Model/Raw/AstQueues.php:756
 msgid "Invalid value for ringinuse"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:789
+#: library/IvozProvider/Model/Raw/AstQueues.php:789
 msgid "Invalid value for setinterfacevar"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:822
+#: library/IvozProvider/Model/Raw/AstQueues.php:822
 msgid "Invalid value for setqueuevar"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:855
+#: library/IvozProvider/Model/Raw/AstQueues.php:855
 msgid "Invalid value for setqueueentryvar"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1368
+#: library/IvozProvider/Model/Raw/AstQueues.php:1368
 msgid "Invalid value for announceToFirstUser"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1611
+#: library/IvozProvider/Model/Raw/AstQueues.php:1611
 msgid "Invalid value for relativePeriodicAnnounce"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1644
+#: library/IvozProvider/Model/Raw/AstQueues.php:1644
 msgid "Invalid value for randomPeriodicAnnounce"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1767
+#: library/IvozProvider/Model/Raw/AstQueues.php:1767
 msgid "Invalid value for autofill"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1830
+#: library/IvozProvider/Model/Raw/AstQueues.php:1830
 msgid "Invalid value for autopause"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1893
+#: library/IvozProvider/Model/Raw/AstQueues.php:1893
 msgid "Invalid value for autopausebusy"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:1926
+#: library/IvozProvider/Model/Raw/AstQueues.php:1926
 msgid "Invalid value for autopauseunavail"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:2112
+#: library/IvozProvider/Model/Raw/AstQueues.php:2112
 msgid "Invalid value for reportholdtime"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueues.php:2205
+#: library/IvozProvider/Model/Raw/AstQueues.php:2205
 msgid "Invalid value for timeoutrestart"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstMusiconhold.php:218
+#: library/IvozProvider/Model/Raw/AstMusiconhold.php:218
 msgid "Invalid value for mode"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:1504
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1504
 msgid "Invalid value for transport"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:1537
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1537
 msgid "Invalid value for dtmfmode"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:1844
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1844
 msgid "Invalid value for trustrpid"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:1877
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1877
 msgid "Invalid value for progressinband"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:1910
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1910
 msgid "Invalid value for promiscredir"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:1943
+#: library/IvozProvider/Model/Raw/AstSippeers.php:1943
 msgid "Invalid value for useclientcode"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2096
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2096
 msgid "Invalid value for callcounter"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2159
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2159
 msgid "Invalid value for allowoverlap"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2192
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2192
 msgid "Invalid value for allowsubscribe"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2225
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2225
 msgid "Invalid value for videosupport"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2288
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2288
 msgid "Invalid value for rfc2833compensate"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2351
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2351
 msgid "Invalid value for sessionTimers"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2444
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2444
 msgid "Invalid value for sessionRefresher"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2717
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2717
 msgid "Invalid value for sendrpid"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2900
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2900
 msgid "Invalid value for constantssrc"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:2993
+#: library/IvozProvider/Model/Raw/AstSippeers.php:2993
 msgid "Invalid value for usereqphone"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3026
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3026
 msgid "Invalid value for textsupport"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3059
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3059
 msgid "Invalid value for faxdetect"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3092
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3092
 msgid "Invalid value for buggymwi"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3245
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3245
 msgid "Invalid value for callingpres"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3368
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3368
 msgid "Invalid value for hasastVoicemail"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3401
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3401
 msgid "Invalid value for subscribemwi"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3464
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3464
 msgid "Invalid value for autoframing"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3557
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3557
 msgid "Invalid value for g726nonstandard"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3590
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3590
 msgid "Invalid value for ignoresdpversion"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3623
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3623
 msgid "Invalid value for allowtransfer"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3656
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3656
 msgid "Invalid value for dynamic"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstSippeers.php:3719
+#: library/IvozProvider/Model/Raw/AstSippeers.php:3719
 msgid "Invalid value for supportpath"
 msgstr ""
 
-#: library/Oasis/Model/Raw/CompanyAdminsRelAdminPortalSections.php:261
+#: library/IvozProvider/Model/Raw/CompanyAdminsRelAdminPortalSections.php:261
 msgid "Invalid value for accessPrivileges"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:683
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:683
 msgid "Invalid value for attach"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:846
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:846
 msgid "Invalid value for deleteastVoicemail"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:881
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:881
 msgid "Invalid value for saycid"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:916
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:916
 msgid "Invalid value for sendastVoicemail"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:951
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:951
 msgid "Invalid value for review"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:986
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:986
 msgid "Invalid value for tempgreetwarn"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:1021
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:1021
 msgid "Invalid value for operator"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:1056
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:1056
 msgid "Invalid value for envelope"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:1123
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:1123
 msgid "Invalid value for forcename"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstVoicemail.php:1158
+#: library/IvozProvider/Model/Raw/AstVoicemail.php:1158
 msgid "Invalid value for forcegreetings"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1272
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1272
 msgid "Invalid value for sendani"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1335
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1335
 msgid "Invalid value for trunk"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1428
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1428
 msgid "Invalid value for requirecalltoken"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1461
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1461
 msgid "Invalid value for encryption"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1494
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1494
 msgid "Invalid value for transfer"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1527
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1527
 msgid "Invalid value for jitterbuffer"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1560
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1560
 msgid "Invalid value for forcejitterbuffer"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1713
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1713
 msgid "Invalid value for qualifysmoothing"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstIaxfriends.php:1836
+#: library/IvozProvider/Model/Raw/AstIaxfriends.php:1836
 msgid "Invalid value for adsi"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstPsAuths.php:193
+#: library/IvozProvider/Model/Raw/AstPsAuths.php:193
 msgid "Invalid value for authType"
 msgstr ""
 
-#: library/Oasis/Model/Raw/AstQueueLog.php:440
+#: library/IvozProvider/Model/Raw/AstQueueLog.php:440
 msgid "Invalid value for parsed"
 msgstr ""
 

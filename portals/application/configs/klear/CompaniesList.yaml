@@ -184,7 +184,7 @@ production:
       labelOnEntityPostSave: false
       multiItem: false
       parentOptionCustomizer:
-        - Oasis_Klear_Options_OptionsCustomizer
+        - IvozProvider_Klear_Options_OptionsCustomizer
         
     importCompanies_dialog:
       <<: *Companies

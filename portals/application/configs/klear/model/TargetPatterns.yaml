@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\TargetPatterns
+  class: \IvozProvider\Model\TargetPatterns
   fields: 
     id: 
       title: ngettext('Id', 'Ids', 1)
@@ -26,7 +26,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name

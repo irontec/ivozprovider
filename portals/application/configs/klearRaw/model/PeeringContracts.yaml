@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\PeeringContracts
+  class: \IvozProvider\Model\PeeringContracts
   fields: 
     brandId: 
       title: _('Brand id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Brands
+          mapperName: \IvozProvider\Mapper\Sql\Brands
           fieldName: 
             fields: 
               - name
@@ -31,7 +31,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\TransformationRulesetGroupsTrunks
+          mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks
           fieldName: 
             fields: 
               - name

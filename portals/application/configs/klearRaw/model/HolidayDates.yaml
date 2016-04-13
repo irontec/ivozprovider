@@ -1,5 +1,5 @@
 production: 
-  class: \Oasis\Model\HolidayDates
+  class: \IvozProvider\Model\HolidayDates
   fields: 
     calendarId: 
       title: _('Calendar id')
@@ -8,7 +8,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Calendars
+          mapperName: \IvozProvider\Mapper\Sql\Calendars
           fieldName: 
             fields: 
               - name
@@ -34,7 +34,7 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \Oasis\Mapper\Sql\Locutions
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
               - fileMimeType

@@ -32,12 +32,12 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $inputMac = '<br/> Mac:<input type="text" name="mac" />';
         if ($this->getParam("exec")) {
             if($this->getParam("mac")){
-                $terminalMapper = new Oasis\Mapper\Sql\Terminals();
+                $terminalMapper = new IvozProvider\Mapper\Sql\Terminals();
                 $terminalModel = $terminalMapper->findOneByField('mac', $this->getParam("mac"));
                 if($terminalModel){
                     $this->view->terminal = $terminalModel;
                     
-                    $userMapper = new \Oasis\Mapper\Sql\Users();
+                    $userMapper = new \IvozProvider\Mapper\Sql\Users();
                     $userModel = $userMapper->findOneByField('terminalId', $terminalModel->getId() );
                     $this->view->user = $userModel;
                     
@@ -65,7 +65,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         if( $id )
         {
             
-            $terminalModelsMapper = new \Oasis\Mapper\Sql\TerminalModels();
+            $terminalModelsMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
             $terminalModelsModel = $terminalModelsMapper->find($id);
             
             if (($this->getParam("exec"))&&!$error) {

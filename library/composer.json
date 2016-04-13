@@ -1,6 +1,6 @@
 {
-    "name": "oasis",
-    "description": "Oasis",
+    "name": "ivozprovider",
+    "description": "IvozProvider",
     "require": {
         "psliwa/php-pdf": "~1.2"
     },

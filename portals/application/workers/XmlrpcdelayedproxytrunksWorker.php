@@ -1,7 +1,7 @@
 <?php
 
 
-use Oasis\Mapper\Sql\MusicOnHold;
+use IvozProvider\Mapper\Sql\MusicOnHold;
 class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
 {
     protected $_timeout = 10000; // 1000 = 1 second
@@ -61,7 +61,7 @@ class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
                 try {
                     $client->call($method);
                     $message = "[OK] Module ".$method." of ".$serverName." reloaded successfully.";
-                    $xmlrpcLogsMapper = new \Oasis\Mapper\Sql\XMLRPCLogs();
+                    $xmlrpcLogsMapper = new \IvozProvider\Mapper\Sql\XMLRPCLogs();
                     $jobLog = $xmlrpcLogsMapper->find($jobObject->getId());
                     $jobLog->setFinishDate(new \Zend_Date())->save();
                     $this->_logger->log($message, Zend_Log::INFO);
@@ -82,7 +82,7 @@ class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
 
     protected function _canBeSent($proxyServer, $job)
     {
-        $xmlrpcLogsMapper = new \Oasis\Mapper\Sql\XMLRPCLogs();
+        $xmlrpcLogsMapper = new \IvozProvider\Mapper\Sql\XMLRPCLogs();
 
         $jobLog = $xmlrpcLogsMapper->find($job->getId());
         $jobLog->setExecDate(new \Zend_Date())->save();
