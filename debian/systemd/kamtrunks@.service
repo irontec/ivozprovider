@@ -1,0 +1,17 @@
+[Unit]
+Description=Kamailio - the Open Source SIP Server
+After=network.target
+Requires=rtpengine.service
+
+[Service]
+Type=forking
+User=root
+Group=root
+PIDFile=/var/run/kamtrunks-%i.pid
+EnvironmentFile=/etc/default/kamtrunks
+ExecStart=/usr/sbin/kamailio -A IP=%i -f /etc/kamailio/proxytrunks/kamailio.cfg -m ${SH_MEM} -M ${PRIV_MEM} -P /var/run/kamtrunks-%i.pid
+ExecStopPost=/bin/rm -f /var/run/kamtrunks-%i.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
