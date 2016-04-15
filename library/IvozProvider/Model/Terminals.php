@@ -29,18 +29,6 @@ class Terminals extends Raw\Terminals
     }
 
     /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setName($data)
-    {
-        $this->setSorceryId($data);
-        $this->setAors($data);
-        return parent::setName($data);
-    }
-
-    /**
      * Gets dependent Users_ibfk_3
      *
      * @param string or array $where
@@ -50,5 +38,25 @@ class Terminals extends Raw\Terminals
     {
         $users = $this->getUsers($where);
         return array_shift($users);
+    }
+
+    /**
+     * Get Enpoint for this Terminal
+     * @return object of \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function getEndpoint()
+    {
+        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
+        return $endpointMapper->findOneByField("id", $this->getId());
+    }
+
+    /**
+     * Get Aor for this Terminal
+     * @return object of \IvozProvider\Model\Raw\AstPsAors
+     */
+    public function getAor()
+    {
+        $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
+        return $aorMapper->findOneByField("id", $this->getId());
     }
 }

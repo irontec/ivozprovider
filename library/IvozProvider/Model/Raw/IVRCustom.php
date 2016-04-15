@@ -157,13 +157,6 @@ class IVRCustom extends ModelAbstract
 
 
     /**
-     * Parent relation IVRCustom_ibfk_9
-     *
-     * @var \IvozProvider\Model\Raw\Users
-     */
-    protected $_ErrorVoiceMailUser;
-
-    /**
      * Parent relation IVRCustom_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -218,6 +211,13 @@ class IVRCustom extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Users
      */
     protected $_TimeoutVoiceMailUser;
+
+    /**
+     * Parent relation IVRCustom_ibfk_9
+     *
+     * @var \IvozProvider\Model\Raw\Users
+     */
+    protected $_ErrorVoiceMailUser;
 
 
     /**
@@ -281,10 +281,6 @@ class IVRCustom extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'IVRCustomIbfk9'=> array(
-                    'property' => 'ErrorVoiceMailUser',
-                    'table_name' => 'Users',
-                ),
             'IVRCustomIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -315,6 +311,10 @@ class IVRCustom extends ModelAbstract
                 ),
             'IVRCustomIbfk8'=> array(
                     'property' => 'TimeoutVoiceMailUser',
+                    'table_name' => 'Users',
+                ),
+            'IVRCustomIbfk9'=> array(
+                    'property' => 'ErrorVoiceMailUser',
                     'table_name' => 'Users',
                 ),
         ));
@@ -889,57 +889,6 @@ class IVRCustom extends ModelAbstract
     }
 
     /**
-     * Sets parent relation ErrorVoiceMailUser
-     *
-     * @param \IvozProvider\Model\Raw\Users $data
-     * @return \IvozProvider\Model\Raw\IVRCustom
-     */
-    public function setErrorVoiceMailUser(\IvozProvider\Model\Raw\Users $data)
-    {
-        $this->_ErrorVoiceMailUser = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setErrorVoiceMailUserId($primaryKey);
-        }
-
-        $this->_setLoaded('IVRCustomIbfk9');
-        return $this;
-    }
-
-    /**
-     * Gets parent ErrorVoiceMailUser
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function getErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'IVRCustomIbfk9';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_ErrorVoiceMailUser = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_ErrorVoiceMailUser;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -1345,6 +1294,57 @@ class IVRCustom extends ModelAbstract
         }
 
         return $this->_TimeoutVoiceMailUser;
+    }
+
+    /**
+     * Sets parent relation ErrorVoiceMailUser
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\IVRCustom
+     */
+    public function setErrorVoiceMailUser(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_ErrorVoiceMailUser = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setErrorVoiceMailUserId($primaryKey);
+        }
+
+        $this->_setLoaded('IVRCustomIbfk9');
+        return $this;
+    }
+
+    /**
+     * Gets parent ErrorVoiceMailUser
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function getErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'IVRCustomIbfk9';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ErrorVoiceMailUser = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ErrorVoiceMailUser;
     }
 
     /**

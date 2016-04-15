@@ -51,32 +51,12 @@ class Terminals extends MapperAbstract
                 'id' => $model->getId(),
                 'TerminalModelId' => $model->getTerminalModelId(),
                 'name' => $model->getName(),
-                'sorcery_id' => $model->getSorceryId(),
-                'aors' => $model->getAors(),
-                'auth' => $model->getAuth(),
-                'context' => $model->getContext(),
-                'disallow' => $model->getDisallow(),
                 'allow' => $model->getAllow(),
                 'direct_media' => $model->getDirectMedia(),
-                'mailboxes_aors' => $model->getMailboxesAors(),
-                'outbound_proxy' => $model->getOutboundProxy(),
-                'send_pai' => $model->getSendPai(),
-                'send_rpid' => $model->getSendRpid(),
-                'contact' => $model->getContact(),
-                'default_expiration' => $model->getDefaultExpiration(),
-                'max_contacts' => $model->getMaxContacts(),
-                'minimum_expiration' => $model->getMinimumExpiration(),
-                'remove_existing' => $model->getRemoveExisting(),
-                'qualify_frequency' => $model->getQualifyFrequency(),
-                'authenticate_qualify' => $model->getAuthenticateQualify(),
-                'maximum_expiration' => $model->getMaximumExpiration(),
-                'support_path' => $model->getSupportPath(),
                 'password' => $model->getPassword(),
-                'subscribecontext' => $model->getSubscribecontext(),
                 'companyId' => $model->getCompanyId(),
                 'mac' => $model->getMac(),
                 'lastProvisionDate' => $model->getLastProvisionDate(),
-                'direct_media_method' => $model->getDirectMediaMethod(),
             );
         } else {
             $result = array();
@@ -577,93 +557,33 @@ class Terminals extends MapperAbstract
             $entry->setId($data['id'])
                   ->setTerminalModelId($data['TerminalModelId'])
                   ->setName($data['name'])
-                  ->setSorceryId($data['sorcery_id'])
-                  ->setAors($data['aors'])
-                  ->setAuth($data['auth'])
-                  ->setContext($data['context'])
-                  ->setDisallow($data['disallow'])
                   ->setAllow($data['allow'])
                   ->setDirectMedia($data['direct_media'])
-                  ->setMailboxesAors($data['mailboxes_aors'])
-                  ->setOutboundProxy($data['outbound_proxy'])
-                  ->setSendPai($data['send_pai'])
-                  ->setSendRpid($data['send_rpid'])
-                  ->setContact($data['contact'])
-                  ->setDefaultExpiration($data['default_expiration'])
-                  ->setMaxContacts($data['max_contacts'])
-                  ->setMinimumExpiration($data['minimum_expiration'])
-                  ->setRemoveExisting($data['remove_existing'])
-                  ->setQualifyFrequency($data['qualify_frequency'])
-                  ->setAuthenticateQualify($data['authenticate_qualify'])
-                  ->setMaximumExpiration($data['maximum_expiration'])
-                  ->setSupportPath($data['support_path'])
                   ->setPassword($data['password'])
-                  ->setSubscribecontext($data['subscribecontext'])
                   ->setCompanyId($data['companyId'])
                   ->setMac($data['mac'])
-                  ->setLastProvisionDate($data['lastProvisionDate'])
-                  ->setDirectMediaMethod($data['direct_media_method']);
+                  ->setLastProvisionDate($data['lastProvisionDate']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setTerminalModelId($data->{'TerminalModelId'})
                   ->setName($data->{'name'})
-                  ->setSorceryId($data->{'sorcery_id'})
-                  ->setAors($data->{'aors'})
-                  ->setAuth($data->{'auth'})
-                  ->setContext($data->{'context'})
-                  ->setDisallow($data->{'disallow'})
                   ->setAllow($data->{'allow'})
                   ->setDirectMedia($data->{'direct_media'})
-                  ->setMailboxesAors($data->{'mailboxes_aors'})
-                  ->setOutboundProxy($data->{'outbound_proxy'})
-                  ->setSendPai($data->{'send_pai'})
-                  ->setSendRpid($data->{'send_rpid'})
-                  ->setContact($data->{'contact'})
-                  ->setDefaultExpiration($data->{'default_expiration'})
-                  ->setMaxContacts($data->{'max_contacts'})
-                  ->setMinimumExpiration($data->{'minimum_expiration'})
-                  ->setRemoveExisting($data->{'remove_existing'})
-                  ->setQualifyFrequency($data->{'qualify_frequency'})
-                  ->setAuthenticateQualify($data->{'authenticate_qualify'})
-                  ->setMaximumExpiration($data->{'maximum_expiration'})
-                  ->setSupportPath($data->{'support_path'})
                   ->setPassword($data->{'password'})
-                  ->setSubscribecontext($data->{'subscribecontext'})
                   ->setCompanyId($data->{'companyId'})
                   ->setMac($data->{'mac'})
-                  ->setLastProvisionDate($data->{'lastProvisionDate'})
-                  ->setDirectMediaMethod($data->{'direct_media_method'});
+                  ->setLastProvisionDate($data->{'lastProvisionDate'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Terminals) {
             $entry->setId($data->getId())
                   ->setTerminalModelId($data->getTerminalModelId())
                   ->setName($data->getName())
-                  ->setSorceryId($data->getSorceryId())
-                  ->setAors($data->getAors())
-                  ->setAuth($data->getAuth())
-                  ->setContext($data->getContext())
-                  ->setDisallow($data->getDisallow())
                   ->setAllow($data->getAllow())
                   ->setDirectMedia($data->getDirectMedia())
-                  ->setMailboxesAors($data->getMailboxesAors())
-                  ->setOutboundProxy($data->getOutboundProxy())
-                  ->setSendPai($data->getSendPai())
-                  ->setSendRpid($data->getSendRpid())
-                  ->setContact($data->getContact())
-                  ->setDefaultExpiration($data->getDefaultExpiration())
-                  ->setMaxContacts($data->getMaxContacts())
-                  ->setMinimumExpiration($data->getMinimumExpiration())
-                  ->setRemoveExisting($data->getRemoveExisting())
-                  ->setQualifyFrequency($data->getQualifyFrequency())
-                  ->setAuthenticateQualify($data->getAuthenticateQualify())
-                  ->setMaximumExpiration($data->getMaximumExpiration())
-                  ->setSupportPath($data->getSupportPath())
                   ->setPassword($data->getPassword())
-                  ->setSubscribecontext($data->getSubscribecontext())
                   ->setCompanyId($data->getCompanyId())
                   ->setMac($data->getMac())
-                  ->setLastProvisionDate($data->getLastProvisionDate())
-                  ->setDirectMediaMethod($data->getDirectMediaMethod());
+                  ->setLastProvisionDate($data->getLastProvisionDate());
 
         }
 

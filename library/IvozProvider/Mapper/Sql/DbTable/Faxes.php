@@ -40,14 +40,14 @@ class Faxes extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'FaxesIbfk2' => array(
-            'columns' => 'outgoingDDI',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
-            'refColumns' => 'id'
-        ),
         'FaxesIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'FaxesIbfk2' => array(
+            'columns' => 'outgoingDDI',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
             'refColumns' => 'id'
         )
     );

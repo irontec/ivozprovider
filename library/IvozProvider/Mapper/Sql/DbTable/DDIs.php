@@ -40,11 +40,6 @@ class DDIs extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'DDIsIbfk7' => array(
-            'columns' => 'faxId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
-            'refColumns' => 'id'
-        ),
         'DDIsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -73,6 +68,11 @@ class DDIs extends TableAbstract
         'DDIsIbfk6' => array(
             'columns' => 'huntGroupId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroups',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk7' => array(
+            'columns' => 'faxId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
             'refColumns' => 'id'
         )
     );

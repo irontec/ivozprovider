@@ -11,14 +11,14 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\AstPsEndpointIdIps
+ * Data Mapper implementation for IvozProvider\Model\AstPsContacts
  *
  * @package Mapper
  * @subpackage Sql
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
-class AstPsEndpointIdIps extends Raw\AstPsEndpointIdIps
+class AstPsContacts extends Raw\AstPsContacts
 {
 
 }

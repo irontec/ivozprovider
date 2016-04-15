@@ -116,18 +116,18 @@ class KamTrunksUacreg extends ModelAbstract
 
 
     /**
-     * Parent relation kam_trunks_uacreg_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\PeeringContracts
-     */
-    protected $_PeeringContract;
-
-    /**
      * Parent relation kam_trunks_uacreg_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
+
+    /**
+     * Parent relation kam_trunks_uacreg_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\PeeringContracts
+     */
+    protected $_PeeringContract;
 
 
     protected $_columnsList = array(
@@ -160,13 +160,13 @@ class KamTrunksUacreg extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'KamTrunksUacregIbfk2'=> array(
-                    'property' => 'PeeringContract',
-                    'table_name' => 'PeeringContracts',
-                ),
             'KamTrunksUacregIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'KamTrunksUacregIbfk2'=> array(
+                    'property' => 'PeeringContract',
+                    'table_name' => 'PeeringContracts',
                 ),
         ));
 
@@ -661,57 +661,6 @@ class KamTrunksUacreg extends ModelAbstract
     }
 
     /**
-     * Sets parent relation PeeringContract
-     *
-     * @param \IvozProvider\Model\Raw\PeeringContracts $data
-     * @return \IvozProvider\Model\Raw\KamTrunksUacreg
-     */
-    public function setPeeringContract(\IvozProvider\Model\Raw\PeeringContracts $data)
-    {
-        $this->_PeeringContract = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setPeeringContractId($primaryKey);
-        }
-
-        $this->_setLoaded('KamTrunksUacregIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent PeeringContract
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\PeeringContracts
-     */
-    public function getPeeringContract($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'KamTrunksUacregIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_PeeringContract = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_PeeringContract;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -760,6 +709,57 @@ class KamTrunksUacreg extends ModelAbstract
         }
 
         return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation PeeringContract
+     *
+     * @param \IvozProvider\Model\Raw\PeeringContracts $data
+     * @return \IvozProvider\Model\Raw\KamTrunksUacreg
+     */
+    public function setPeeringContract(\IvozProvider\Model\Raw\PeeringContracts $data)
+    {
+        $this->_PeeringContract = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setPeeringContractId($primaryKey);
+        }
+
+        $this->_setLoaded('KamTrunksUacregIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent PeeringContract
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function getPeeringContract($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamTrunksUacregIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_PeeringContract = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_PeeringContract;
     }
 
     /**

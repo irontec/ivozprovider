@@ -1,0 +1,105 @@
+production: 
+  class: \IvozProvider\Model\AstPsEndpoints
+  fields: 
+    sorcery_id: 
+      title: _('Sorcery id')
+      type: text
+      required: true
+      maxLength: 40
+      default: true
+    transport: 
+      title: _('Transport')
+      type: text
+      maxLength: 40
+    aors: 
+      title: _('Aor')
+      type: text
+      maxLength: 200
+    auth: 
+      title: _('Auth')
+      type: text
+      maxLength: 40
+    context: 
+      title: _('Context')
+      type: text
+      defaultValue: outgoing
+      maxLength: 40
+    disallow: 
+      title: _('Disallow')
+      type: text
+      defaultValue: all
+      maxLength: 200
+    allow: 
+      title: _('Allow')
+      type: text
+      defaultValue: all
+      maxLength: 200
+    direct_media: 
+      title: _('Direct media')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    direct_media_method: 
+      title: _('Direct media method')
+      type: select
+      defaultValue: update
+      source: 
+        data: inline
+        values: 
+          'invite': _('invite')
+          'reinvite': _('reinvite')
+          'update': _('update')
+    dtmf_mode: 
+      title: _('Dtmf mode')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'rfc4733': _('rfc4733')
+          'inband': _('inband')
+          'info': _('info')
+    mailboxes: 
+      title: _('Mailbox')
+      type: text
+      maxLength: 100
+    send_diversion: 
+      title: _('Send diversion')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    send_pai: 
+      title: _('Send pai')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    send_rpid: 
+      title: _('Send rpid')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    subscribecontext: 
+      title: _('Subscribecontext')
+      type: text
+      defaultValue: default
+      maxLength: 40
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

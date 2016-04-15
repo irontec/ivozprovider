@@ -61,18 +61,18 @@ class PeeringContracts extends ModelAbstract
 
 
     /**
-     * Parent relation PeeringContracts_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
-     */
-    protected $_TransformationRulesetGroupsTrunks;
-
-    /**
      * Parent relation PeeringContracts_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
+
+    /**
+     * Parent relation PeeringContracts_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    protected $_TransformationRulesetGroupsTrunks;
 
 
     /**
@@ -122,13 +122,13 @@ class PeeringContracts extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'PeeringContractsIbfk2'=> array(
-                    'property' => 'TransformationRulesetGroupsTrunks',
-                    'table_name' => 'TransformationRulesetGroupsTrunks',
-                ),
             'PeeringContractsIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'PeeringContractsIbfk2'=> array(
+                    'property' => 'TransformationRulesetGroupsTrunks',
+                    'table_name' => 'TransformationRulesetGroupsTrunks',
                 ),
         ));
 
@@ -347,57 +347,6 @@ class PeeringContracts extends ModelAbstract
     }
 
     /**
-     * Sets parent relation TransformationRulesetGroupsTrunks
-     *
-     * @param \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks $data
-     * @return \IvozProvider\Model\Raw\PeeringContracts
-     */
-    public function setTransformationRulesetGroupsTrunks(\IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks $data)
-    {
-        $this->_TransformationRulesetGroupsTrunks = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setTransformationRulesetGroupsTrunksId($primaryKey);
-        }
-
-        $this->_setLoaded('PeeringContractsIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent TransformationRulesetGroupsTrunks
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
-     */
-    public function getTransformationRulesetGroupsTrunks($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_TransformationRulesetGroupsTrunks = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_TransformationRulesetGroupsTrunks;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -446,6 +395,57 @@ class PeeringContracts extends ModelAbstract
         }
 
         return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation TransformationRulesetGroupsTrunks
+     *
+     * @param \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks $data
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function setTransformationRulesetGroupsTrunks(\IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks $data)
+    {
+        $this->_TransformationRulesetGroupsTrunks = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTransformationRulesetGroupsTrunksId($primaryKey);
+        }
+
+        $this->_setLoaded('PeeringContractsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent TransformationRulesetGroupsTrunks
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function getTransformationRulesetGroupsTrunks($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'PeeringContractsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_TransformationRulesetGroupsTrunks = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_TransformationRulesetGroupsTrunks;
     }
 
     /**

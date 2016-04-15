@@ -40,14 +40,14 @@ class KamTrunksUacreg extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'KamTrunksUacregIbfk2' => array(
-            'columns' => 'peeringContractId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
-            'refColumns' => 'id'
-        ),
         'KamTrunksUacregIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'KamTrunksUacregIbfk2' => array(
+            'columns' => 'peeringContractId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
             'refColumns' => 'id'
         )
     );

@@ -90,18 +90,18 @@ class BrandOperators extends ModelAbstract
 
 
     /**
-     * Parent relation BrandOperators_ibfk_3
-     *
-     * @var \IvozProvider\Model\Raw\Brands
-     */
-    protected $_Brand;
-
-    /**
      * Parent relation BrandOperators_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\Timezones
      */
     protected $_Timezone;
+
+    /**
+     * Parent relation BrandOperators_ibfk_3
+     *
+     * @var \IvozProvider\Model\Raw\Brands
+     */
+    protected $_Brand;
 
 
     protected $_columnsList = array(
@@ -132,13 +132,13 @@ class BrandOperators extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'BrandOperatorsIbfk3'=> array(
-                    'property' => 'Brand',
-                    'table_name' => 'Brands',
-                ),
             'BrandOperatorsIbfk2'=> array(
                     'property' => 'Timezone',
                     'table_name' => 'Timezones',
+                ),
+            'BrandOperatorsIbfk3'=> array(
+                    'property' => 'Brand',
+                    'table_name' => 'Brands',
                 ),
         ));
 
@@ -500,57 +500,6 @@ class BrandOperators extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Brand
-     *
-     * @param \IvozProvider\Model\Raw\Brands $data
-     * @return \IvozProvider\Model\Raw\BrandOperators
-     */
-    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
-    {
-        $this->_Brand = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setBrandId($primaryKey);
-        }
-
-        $this->_setLoaded('BrandOperatorsIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets parent Brand
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'BrandOperatorsIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Brand = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Brand;
-    }
-
-    /**
      * Sets parent relation Timezone
      *
      * @param \IvozProvider\Model\Raw\Timezones $data
@@ -599,6 +548,57 @@ class BrandOperators extends ModelAbstract
         }
 
         return $this->_Timezone;
+    }
+
+    /**
+     * Sets parent relation Brand
+     *
+     * @param \IvozProvider\Model\Raw\Brands $data
+     * @return \IvozProvider\Model\Raw\BrandOperators
+     */
+    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
+    {
+        $this->_Brand = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setBrandId($primaryKey);
+        }
+
+        $this->_setLoaded('BrandOperatorsIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets parent Brand
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'BrandOperatorsIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Brand = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Brand;
     }
 
     /**

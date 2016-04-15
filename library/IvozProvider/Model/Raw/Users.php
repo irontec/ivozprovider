@@ -195,13 +195,6 @@ class Users extends ModelAbstract
 
 
     /**
-     * Parent relation Users_ibfk_12
-     *
-     * @var \IvozProvider\Model\Raw\Countries
-     */
-    protected $_Country;
-
-    /**
      * Parent relation Users_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -221,6 +214,13 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Users
      */
     protected $_BossAssistant;
+
+    /**
+     * Parent relation Users_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Country;
 
     /**
      * Parent relation Users_ibfk_3
@@ -308,14 +308,6 @@ class Users extends ModelAbstract
     protected $_HuntGroupsRelUsers;
 
     /**
-     * Dependent relation IVRCommon_ibfk_9
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\IVRCommon[]
-     */
-    protected $_IVRCommonByErrorVoiceMailUser;
-
-    /**
      * Dependent relation IVRCommon_ibfk_8
      * Type: One-to-Many relationship
      *
@@ -324,12 +316,12 @@ class Users extends ModelAbstract
     protected $_IVRCommonByTimeoutVoiceMailUser;
 
     /**
-     * Dependent relation IVRCustom_ibfk_9
+     * Dependent relation IVRCommon_ibfk_9
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\IVRCustom[]
+     * @var \IvozProvider\Model\Raw\IVRCommon[]
      */
-    protected $_IVRCustomByErrorVoiceMailUser;
+    protected $_IVRCommonByErrorVoiceMailUser;
 
     /**
      * Dependent relation IVRCustom_ibfk_8
@@ -338,6 +330,14 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\IVRCustom[]
      */
     protected $_IVRCustomByTimeoutVoiceMailUser;
+
+    /**
+     * Dependent relation IVRCustom_ibfk_9
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\IVRCustom[]
+     */
+    protected $_IVRCustomByErrorVoiceMailUser;
 
     /**
      * Dependent relation IVRCustomEntries_ibfk_4
@@ -406,10 +406,6 @@ class Users extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'UsersIbfk12'=> array(
-                    'property' => 'Country',
-                    'table_name' => 'Countries',
-                ),
             'UsersIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -421,6 +417,10 @@ class Users extends ModelAbstract
             'UsersIbfk11'=> array(
                     'property' => 'BossAssistant',
                     'table_name' => 'Users',
+                ),
+            'UsersIbfk12'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
                 ),
             'UsersIbfk3'=> array(
                     'property' => 'Terminal',
@@ -469,20 +469,20 @@ class Users extends ModelAbstract
                     'property' => 'HuntGroupsRelUsers',
                     'table_name' => 'HuntGroupsRelUsers',
                 ),
-            'IVRCommonIbfk9' => array(
-                    'property' => 'IVRCommonByErrorVoiceMailUser',
-                    'table_name' => 'IVRCommon',
-                ),
             'IVRCommonIbfk8' => array(
                     'property' => 'IVRCommonByTimeoutVoiceMailUser',
                     'table_name' => 'IVRCommon',
                 ),
-            'IVRCustomIbfk9' => array(
-                    'property' => 'IVRCustomByErrorVoiceMailUser',
-                    'table_name' => 'IVRCustom',
+            'IVRCommonIbfk9' => array(
+                    'property' => 'IVRCommonByErrorVoiceMailUser',
+                    'table_name' => 'IVRCommon',
                 ),
             'IVRCustomIbfk8' => array(
                     'property' => 'IVRCustomByTimeoutVoiceMailUser',
+                    'table_name' => 'IVRCustom',
+                ),
+            'IVRCustomIbfk9' => array(
+                    'property' => 'IVRCustomByErrorVoiceMailUser',
                     'table_name' => 'IVRCustom',
                 ),
             'IVRCustomEntriesIbfk4' => array(
@@ -511,10 +511,10 @@ class Users extends ModelAbstract
             'DDIs_ibfk_3',
             'ExternalCallFilters_ibfk_7',
             'ExternalCallFilters_ibfk_8',
-            'IVRCommon_ibfk_9',
             'IVRCommon_ibfk_8',
-            'IVRCustom_ibfk_9',
+            'IVRCommon_ibfk_9',
             'IVRCustom_ibfk_8',
+            'IVRCustom_ibfk_9',
             'IVRCustomEntries_ibfk_4',
             'Users_ibfk_11'
         ));
@@ -1340,57 +1340,6 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Country
-     *
-     * @param \IvozProvider\Model\Raw\Countries $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
-    {
-        $this->_Country = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCountryId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk12');
-        return $this;
-    }
-
-    /**
-     * Gets parent Country
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Countries
-     */
-    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk12';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Country = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Country;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -1541,6 +1490,57 @@ class Users extends ModelAbstract
         }
 
         return $this->_BossAssistant;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
     }
 
     /**
@@ -2378,96 +2378,6 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations IVRCommon_ibfk_9
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\IVRCommon
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setIVRCommonByErrorVoiceMailUser(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_IVRCommonByErrorVoiceMailUser === null) {
-
-                $this->getIVRCommonByErrorVoiceMailUser();
-            }
-
-            $oldRelations = $this->_IVRCommonByErrorVoiceMailUser;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_IVRCommonByErrorVoiceMailUser = array();
-
-        foreach ($data as $object) {
-            $this->addIVRCommonByErrorVoiceMailUser($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations IVRCommon_ibfk_9
-     *
-     * @param \IvozProvider\Model\Raw\IVRCommon $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function addIVRCommonByErrorVoiceMailUser(\IvozProvider\Model\Raw\IVRCommon $data)
-    {
-        $this->_IVRCommonByErrorVoiceMailUser[] = $data;
-        $this->_setLoaded('IVRCommonIbfk9');
-        return $this;
-    }
-
-    /**
-     * Gets dependent IVRCommon_ibfk_9
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\IVRCommon
-     */
-    public function getIVRCommonByErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'IVRCommonIbfk9';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_IVRCommonByErrorVoiceMailUser = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_IVRCommonByErrorVoiceMailUser;
-    }
-
-    /**
      * Sets dependent relations IVRCommon_ibfk_8
      *
      * @param array $data An array of \IvozProvider\Model\Raw\IVRCommon
@@ -2558,21 +2468,21 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations IVRCustom_ibfk_9
+     * Sets dependent relations IVRCommon_ibfk_9
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\IVRCustom
+     * @param array $data An array of \IvozProvider\Model\Raw\IVRCommon
      * @return \IvozProvider\Model\Raw\Users
      */
-    public function setIVRCustomByErrorVoiceMailUser(array $data, $deleteOrphans = false)
+    public function setIVRCommonByErrorVoiceMailUser(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_IVRCustomByErrorVoiceMailUser === null) {
+            if ($this->_IVRCommonByErrorVoiceMailUser === null) {
 
-                $this->getIVRCustomByErrorVoiceMailUser();
+                $this->getIVRCommonByErrorVoiceMailUser();
             }
 
-            $oldRelations = $this->_IVRCustomByErrorVoiceMailUser;
+            $oldRelations = $this->_IVRCommonByErrorVoiceMailUser;
 
             if (is_array($oldRelations)) {
 
@@ -2596,39 +2506,39 @@ class Users extends ModelAbstract
             }
         }
 
-        $this->_IVRCustomByErrorVoiceMailUser = array();
+        $this->_IVRCommonByErrorVoiceMailUser = array();
 
         foreach ($data as $object) {
-            $this->addIVRCustomByErrorVoiceMailUser($object);
+            $this->addIVRCommonByErrorVoiceMailUser($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations IVRCustom_ibfk_9
+     * Sets dependent relations IVRCommon_ibfk_9
      *
-     * @param \IvozProvider\Model\Raw\IVRCustom $data
+     * @param \IvozProvider\Model\Raw\IVRCommon $data
      * @return \IvozProvider\Model\Raw\Users
      */
-    public function addIVRCustomByErrorVoiceMailUser(\IvozProvider\Model\Raw\IVRCustom $data)
+    public function addIVRCommonByErrorVoiceMailUser(\IvozProvider\Model\Raw\IVRCommon $data)
     {
-        $this->_IVRCustomByErrorVoiceMailUser[] = $data;
-        $this->_setLoaded('IVRCustomIbfk9');
+        $this->_IVRCommonByErrorVoiceMailUser[] = $data;
+        $this->_setLoaded('IVRCommonIbfk9');
         return $this;
     }
 
     /**
-     * Gets dependent IVRCustom_ibfk_9
+     * Gets dependent IVRCommon_ibfk_9
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\IVRCustom
+     * @return array The array of \IvozProvider\Model\Raw\IVRCommon
      */
-    public function getIVRCustomByErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    public function getIVRCommonByErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'IVRCustomIbfk9';
+        $fkName = 'IVRCommonIbfk9';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -2640,11 +2550,11 @@ class Users extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_IVRCustomByErrorVoiceMailUser = $related;
+            $this->_IVRCommonByErrorVoiceMailUser = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_IVRCustomByErrorVoiceMailUser;
+        return $this->_IVRCommonByErrorVoiceMailUser;
     }
 
     /**
@@ -2735,6 +2645,96 @@ class Users extends ModelAbstract
         }
 
         return $this->_IVRCustomByTimeoutVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations IVRCustom_ibfk_9
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\IVRCustom
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setIVRCustomByErrorVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_IVRCustomByErrorVoiceMailUser === null) {
+
+                $this->getIVRCustomByErrorVoiceMailUser();
+            }
+
+            $oldRelations = $this->_IVRCustomByErrorVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_IVRCustomByErrorVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addIVRCustomByErrorVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations IVRCustom_ibfk_9
+     *
+     * @param \IvozProvider\Model\Raw\IVRCustom $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addIVRCustomByErrorVoiceMailUser(\IvozProvider\Model\Raw\IVRCustom $data)
+    {
+        $this->_IVRCustomByErrorVoiceMailUser[] = $data;
+        $this->_setLoaded('IVRCustomIbfk9');
+        return $this;
+    }
+
+    /**
+     * Gets dependent IVRCustom_ibfk_9
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\IVRCustom
+     */
+    public function getIVRCustomByErrorVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'IVRCustomIbfk9';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_IVRCustomByErrorVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_IVRCustomByErrorVoiceMailUser;
     }
 
     /**

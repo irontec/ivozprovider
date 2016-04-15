@@ -61,18 +61,18 @@ class HolidayDates extends ModelAbstract
 
 
     /**
-     * Parent relation HolidayDates_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\Locutions
-     */
-    protected $_Locution;
-
-    /**
      * Parent relation HolidayDates_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Calendars
      */
     protected $_Calendar;
+
+    /**
+     * Parent relation HolidayDates_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Locutions
+     */
+    protected $_Locution;
 
 
     protected $_columnsList = array(
@@ -98,13 +98,13 @@ class HolidayDates extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'HolidayDatesIbfk2'=> array(
-                    'property' => 'Locution',
-                    'table_name' => 'Locutions',
-                ),
             'HolidayDatesIbfk1'=> array(
                     'property' => 'Calendar',
                     'table_name' => 'Calendars',
+                ),
+            'HolidayDatesIbfk2'=> array(
+                    'property' => 'Locution',
+                    'table_name' => 'Locutions',
                 ),
         ));
 
@@ -322,57 +322,6 @@ class HolidayDates extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Locution
-     *
-     * @param \IvozProvider\Model\Raw\Locutions $data
-     * @return \IvozProvider\Model\Raw\HolidayDates
-     */
-    public function setLocution(\IvozProvider\Model\Raw\Locutions $data)
-    {
-        $this->_Locution = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLocutionId($primaryKey);
-        }
-
-        $this->_setLoaded('HolidayDatesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent Locution
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Locutions
-     */
-    public function getLocution($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'HolidayDatesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Locution = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Locution;
-    }
-
-    /**
      * Sets parent relation Calendar
      *
      * @param \IvozProvider\Model\Raw\Calendars $data
@@ -421,6 +370,57 @@ class HolidayDates extends ModelAbstract
         }
 
         return $this->_Calendar;
+    }
+
+    /**
+     * Sets parent relation Locution
+     *
+     * @param \IvozProvider\Model\Raw\Locutions $data
+     * @return \IvozProvider\Model\Raw\HolidayDates
+     */
+    public function setLocution(\IvozProvider\Model\Raw\Locutions $data)
+    {
+        $this->_Locution = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLocutionId($primaryKey);
+        }
+
+        $this->_setLoaded('HolidayDatesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Locution
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function getLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HolidayDatesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Locution = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Locution;
     }
 
     /**

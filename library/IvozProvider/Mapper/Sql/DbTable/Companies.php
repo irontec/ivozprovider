@@ -40,11 +40,6 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'CompaniesIbfk9' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
-            'refColumns' => 'id'
-        ),
         'CompaniesIbfk2' => array(
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
@@ -68,6 +63,11 @@ class Companies extends TableAbstract
         'CompaniesIbfk8' => array(
             'columns' => 'invoiceLanguageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
+        ),
+        'CompaniesIbfk9' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
             'refColumns' => 'id'
         )
     );

@@ -1,0 +1,55 @@
+production: 
+  class: \IvozProvider\Model\AstMusiconhold
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 80
+      default: true
+    mode: 
+      title: _('Mode')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'custom': _('custom')
+          'files': _('files')
+          'mp3nb': _('mp3nb')
+          'quietmp3nb': _('quietmp3nb')
+          'quietmp3': _('quietmp3')
+    directory: 
+      title: _('Directory')
+      type: text
+      maxLength: 255
+    application: 
+      title: _('Application')
+      type: text
+      maxLength: 255
+    digit: 
+      title: _('Digit')
+      type: text
+      maxLength: 1
+    sort: 
+      title: _('Sort')
+      type: text
+      maxLength: 10
+    format: 
+      title: _('Format')
+      type: text
+      maxLength: 10
+    stamp: 
+      title: _('Stamp')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

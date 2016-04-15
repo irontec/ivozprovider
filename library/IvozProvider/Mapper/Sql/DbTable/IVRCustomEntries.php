@@ -40,11 +40,6 @@ class IVRCustomEntries extends TableAbstract
 
     protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'IVRCustomEntriesIbfk4' => array(
-            'columns' => 'targetVoiceMailUserId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
         'IVRCustomEntriesIbfk1' => array(
             'columns' => 'IVRCustomId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
@@ -58,6 +53,11 @@ class IVRCustomEntries extends TableAbstract
         'IVRCustomEntriesIbfk3' => array(
             'columns' => 'targetExtensionId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
+            'refColumns' => 'id'
+        ),
+        'IVRCustomEntriesIbfk4' => array(
+            'columns' => 'targetVoiceMailUserId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
             'refColumns' => 'id'
         )
     );

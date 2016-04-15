@@ -27,18 +27,4 @@ class ProxyTrunks extends Raw\ProxyTrunks
     public function init()
     {
     }
-
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setName($data)
-    {
-        $this->setSorceryId($data);
-        $this->setAors($data);
-
-        return parent::setName($data);
-    }
 }

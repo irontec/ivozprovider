@@ -80,9 +80,12 @@ class Users extends Raw\Users
         $terminal = $model->getTerminal();
         if ($terminal) {
             $aors = $model->getId() . '@' . $model->getCompanyId();
-            $terminal->setMailboxesAors($aors)->save();
-            $terminalPk = $terminal->getPrimaryKey();
-            $this->_logger->log("Updated mailboxes_aors ('".$aors."') in terminal with id = '".$terminalPk."'", \Zend_Log::INFO);
+            $endpoint = $terminal->getEndpoint();
+            if ($endpoint) {
+                $endpoint->setMailboxes($aors)->save();
+                $terminalPk = $terminal->getPrimaryKey();
+                $this->_logger->log("Updated mailboxes_aors ('".$aors."') in terminal with id = '".$terminalPk."'", \Zend_Log::INFO);
+            }
         }
 
         return $response;

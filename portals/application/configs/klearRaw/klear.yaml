@@ -251,6 +251,30 @@ production:
           title: ngettext('User', 'Users', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('User', 'Users', 0))
+        AstMusiconholdList: 
+          title: ngettext('Ast musiconhold', 'Ast musiconhold', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ast musiconhold', 'Ast musiconhold', 0))
+        AstPsAorsList: 
+          title: ngettext('Ast ps aor', 'Ast ps aors', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ast ps aor', 'Ast ps aors', 0))
+        AstPsContactsList: 
+          title: ngettext('Ast ps contact', 'Ast ps contacts', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ast ps contact', 'Ast ps contacts', 0))
+        AstPsEndpointsList: 
+          title: ngettext('Ast ps endpoint', 'Ast ps endpoints', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 0))
+        AstPsIdentifyList: 
+          title: ngettext('Ast ps identify', 'Ast ps identify', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ast ps identify', 'Ast ps identify', 0))
+        AstVoicemailList: 
+          title: ngettext('Ast voicemail', 'Ast voicemail', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Ast voicemail', 'Ast voicemail', 0))
         KamDispatcherList: 
           title: ngettext('Kam dispatcher', 'Kam dispatcher', 0)
           class: ui-silk-text-list-bullets

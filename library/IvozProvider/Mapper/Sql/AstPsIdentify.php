@@ -11,14 +11,14 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\AstPsTransports
+ * Data Mapper implementation for IvozProvider\Model\AstPsIdentify
  *
  * @package Mapper
  * @subpackage Sql
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
-class AstPsTransports extends Raw\AstPsTransports
+class AstPsIdentify extends Raw\AstPsIdentify
 {
 
 }

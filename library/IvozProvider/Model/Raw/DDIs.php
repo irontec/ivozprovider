@@ -104,13 +104,6 @@ class DDIs extends ModelAbstract
 
 
     /**
-     * Parent relation DDIs_ibfk_7
-     *
-     * @var \IvozProvider\Model\Raw\Faxes
-     */
-    protected $_Fax;
-
-    /**
      * Parent relation DDIs_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -151,6 +144,13 @@ class DDIs extends ModelAbstract
      * @var \IvozProvider\Model\Raw\HuntGroups
      */
     protected $_HuntGroup;
+
+    /**
+     * Parent relation DDIs_ibfk_7
+     *
+     * @var \IvozProvider\Model\Raw\Faxes
+     */
+    protected $_Fax;
 
 
     /**
@@ -198,10 +198,6 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'DDIsIbfk7'=> array(
-                    'property' => 'Fax',
-                    'table_name' => 'Faxes',
-                ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -225,6 +221,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk6'=> array(
                     'property' => 'HuntGroup',
                     'table_name' => 'HuntGroups',
+                ),
+            'DDIsIbfk7'=> array(
+                    'property' => 'Fax',
+                    'table_name' => 'Faxes',
                 ),
         ));
 
@@ -565,57 +565,6 @@ class DDIs extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Fax
-     *
-     * @param \IvozProvider\Model\Raw\Faxes $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setFax(\IvozProvider\Model\Raw\Faxes $data)
-    {
-        $this->_Fax = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setFaxId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk7');
-        return $this;
-    }
-
-    /**
-     * Gets parent Fax
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Faxes
-     */
-    public function getFax($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk7';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Fax = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Fax;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -919,6 +868,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_HuntGroup;
+    }
+
+    /**
+     * Sets parent relation Fax
+     *
+     * @param \IvozProvider\Model\Raw\Faxes $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setFax(\IvozProvider\Model\Raw\Faxes $data)
+    {
+        $this->_Fax = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setFaxId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk7');
+        return $this;
+    }
+
+    /**
+     * Gets parent Fax
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Faxes
+     */
+    public function getFax($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk7';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Fax = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Fax;
     }
 
     /**

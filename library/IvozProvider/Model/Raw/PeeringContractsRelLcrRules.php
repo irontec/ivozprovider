@@ -68,13 +68,6 @@ class PeeringContractsRelLcrRules extends ModelAbstract
 
 
     /**
-     * Parent relation PeeringContractsRelLcrRules_ibfk_3
-     *
-     * @var \IvozProvider\Model\Raw\Brands
-     */
-    protected $_Brand;
-
-    /**
      * Parent relation PeeringContractsRelLcrRules_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\LcrRules
@@ -87,6 +80,13 @@ class PeeringContractsRelLcrRules extends ModelAbstract
      * @var \IvozProvider\Model\Raw\PeeringContracts
      */
     protected $_PeeringContract;
+
+    /**
+     * Parent relation PeeringContractsRelLcrRules_ibfk_3
+     *
+     * @var \IvozProvider\Model\Raw\Brands
+     */
+    protected $_Brand;
 
 
     /**
@@ -121,10 +121,6 @@ class PeeringContractsRelLcrRules extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'PeeringContractsRelLcrRulesIbfk3'=> array(
-                    'property' => 'Brand',
-                    'table_name' => 'Brands',
-                ),
             'PeeringContractsRelLcrRulesIbfk1'=> array(
                     'property' => 'LcrRule',
                     'table_name' => 'LcrRules',
@@ -132,6 +128,10 @@ class PeeringContractsRelLcrRules extends ModelAbstract
             'PeeringContractsRelLcrRulesIbfk2'=> array(
                     'property' => 'PeeringContract',
                     'table_name' => 'PeeringContracts',
+                ),
+            'PeeringContractsRelLcrRulesIbfk3'=> array(
+                    'property' => 'Brand',
+                    'table_name' => 'Brands',
                 ),
         ));
 
@@ -381,57 +381,6 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Brand
-     *
-     * @param \IvozProvider\Model\Raw\Brands $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
-    {
-        $this->_Brand = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setBrandId($primaryKey);
-        }
-
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets parent Brand
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Brand = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Brand;
-    }
-
-    /**
      * Sets parent relation LcrRule
      *
      * @param \IvozProvider\Model\Raw\LcrRules $data
@@ -531,6 +480,57 @@ class PeeringContractsRelLcrRules extends ModelAbstract
         }
 
         return $this->_PeeringContract;
+    }
+
+    /**
+     * Sets parent relation Brand
+     *
+     * @param \IvozProvider\Model\Raw\Brands $data
+     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     */
+    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
+    {
+        $this->_Brand = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setBrandId($primaryKey);
+        }
+
+        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets parent Brand
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'PeeringContractsRelLcrRulesIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Brand = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Brand;
     }
 
     /**

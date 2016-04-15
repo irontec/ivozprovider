@@ -138,13 +138,6 @@ class Companies extends ModelAbstract
 
 
     /**
-     * Parent relation Companies_ibfk_9
-     *
-     * @var \IvozProvider\Model\Raw\Countries
-     */
-    protected $_Countries;
-
-    /**
      * Parent relation Companies_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\Timezones
@@ -178,6 +171,13 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Languages
      */
     protected $_InvoiceLanguage;
+
+    /**
+     * Parent relation Companies_ibfk_9
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Countries;
 
 
     /**
@@ -374,10 +374,6 @@ class Companies extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'CompaniesIbfk9'=> array(
-                    'property' => 'Countries',
-                    'table_name' => 'Countries',
-                ),
             'CompaniesIbfk2'=> array(
                     'property' => 'DefaultTimezone',
                     'table_name' => 'Timezones',
@@ -397,6 +393,10 @@ class Companies extends ModelAbstract
             'CompaniesIbfk8'=> array(
                     'property' => 'InvoiceLanguage',
                     'table_name' => 'Languages',
+                ),
+            'CompaniesIbfk9'=> array(
+                    'property' => 'Countries',
+                    'table_name' => 'Countries',
                 ),
         ));
 
@@ -1066,57 +1066,6 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Country
-     *
-     * @param \IvozProvider\Model\Raw\Countries $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setCountries(\IvozProvider\Model\Raw\Countries $data)
-    {
-        $this->_Countries = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCountryId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk9');
-        return $this;
-    }
-
-    /**
-     * Gets parent Country
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Countries
-     */
-    public function getCountries($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk9';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Countries = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Countries;
-    }
-
-    /**
      * Sets parent relation DefaultTimezone
      *
      * @param \IvozProvider\Model\Raw\Timezones $data
@@ -1369,6 +1318,57 @@ class Companies extends ModelAbstract
         }
 
         return $this->_InvoiceLanguage;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setCountries(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Countries = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk9');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountries($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk9';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Countries = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Countries;
     }
 
     /**
