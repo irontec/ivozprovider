@@ -41,7 +41,7 @@ class Rest_AuthController extends Iron_Controller_Rest_BaseController
         if (!empty($terminal)) {
 
             $dbAdapter = Zend_Db_Table::getDefaultAdapter();
-            $sourceId = $terminal->getSorceryId();
+            $sourceId = $terminal->getName();
 
             $query = "SELECT user_agent, uri FROM ast_ps_contacts";
             $query .= " WHERE sorcery_id LIKE '" . $sourceId . "^%'";
