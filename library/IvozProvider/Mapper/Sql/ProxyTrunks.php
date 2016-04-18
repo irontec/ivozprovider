@@ -61,7 +61,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
                 ->setSorceryId($model->getName())
                 ->setMaxContacts(1)
                 ->setContact("sip:" . $model->getIp())
-                ->setQualifyFrequency(10)
+                ->setQualifyFrequency(30)
                 ->setRemoveExisting('yes')
                 ->save($forceInsert);
                 
