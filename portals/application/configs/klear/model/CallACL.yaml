@@ -37,25 +37,29 @@ production:
       data: mapper
       config:
         mapperName: \IvozProvider\Mapper\Sql\CallACLRelPatterns
-        filterField: id
+        filterField: CallACLId
         showAsTable: true
         fieldName:
           fields:
-            id:
-              title: _("Patterns")
+            CallACLPatternId:
+              title: _("Name")
               mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
               field:
                 - name
               pattern: "%name%"
+            priority:
+              title: _("Priority")
+            policy:
+              title: _("Policy")
         options:
           dialogs:
-            callACLPatternsDel_dialog: true
+            callACLRelPatternsDel_dialog: true
           screens:
-            callACLPatternsEdit_screen: true
+            callACLRelPatternsEdit_screen: true
           default: 
       options:
         screens:
-          callACLPatternsNew_screen: true          
+          callACLRelPatternsNew_screen: true
 staging:
   _extends: production
 testing:
