@@ -160,16 +160,6 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    isCompanyAdmin:
-      title: _('Is company admin')
-      type: select
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-          '1':
-            title: _("Yes")
     exceptionBoosAssistantRegExp: 
       title: _('Exception boos assistant reg exp')
       type: text

@@ -198,17 +198,6 @@ production:
       title: _('Token key')
       type: text
       maxLength: 125
-    isCompanyAdmin: 
-      title: _('Is company admin')
-      type: select
-      defaultValue: 0
-      source: 
-        data: inline
-        values: 
-          '0': 
-            title: _("No")
-          '1': 
-            title: _("Yes")
     countryId: 
       title: _('Country id')
       type: select

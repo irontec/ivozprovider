@@ -205,6 +205,14 @@ class Companies extends ModelAbstract
     protected $_CallACLPatterns;
 
     /**
+     * Dependent relation CompanyAdmins_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\CompanyAdmins[]
+     */
+    protected $_CompanyAdmins;
+
+    /**
      * Dependent relation DDIs_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -412,6 +420,10 @@ class Companies extends ModelAbstract
             'CallACLPatternsIbfk1' => array(
                     'property' => 'CallACLPatterns',
                     'table_name' => 'CallACLPatterns',
+                ),
+            'CompanyAdminsIbfk1' => array(
+                    'property' => 'CompanyAdmins',
+                    'table_name' => 'CompanyAdmins',
                 ),
             'DDIsIbfk1' => array(
                     'property' => 'DDIs',
@@ -1639,6 +1651,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_CallACLPatterns;
+    }
+
+    /**
+     * Sets dependent relations CompanyAdmins_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\CompanyAdmins
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setCompanyAdmins(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_CompanyAdmins === null) {
+
+                $this->getCompanyAdmins();
+            }
+
+            $oldRelations = $this->_CompanyAdmins;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_CompanyAdmins = array();
+
+        foreach ($data as $object) {
+            $this->addCompanyAdmins($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations CompanyAdmins_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\CompanyAdmins $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addCompanyAdmins(\IvozProvider\Model\Raw\CompanyAdmins $data)
+    {
+        $this->_CompanyAdmins[] = $data;
+        $this->_setLoaded('CompanyAdminsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent CompanyAdmins_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CompanyAdmins
+     */
+    public function getCompanyAdmins($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompanyAdminsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_CompanyAdmins = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_CompanyAdmins;
     }
 
     /**

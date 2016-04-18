@@ -79,6 +79,10 @@ production:
           title: ngettext('Company', 'Companies', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Company', 'Companies', 0))
+        CompanyAdminsList: 
+          title: ngettext('Company admin', 'Company admins', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Company admin', 'Company admins', 0))
         CountriesList: 
           title: ngettext('Country', 'Countries', 0)
           class: ui-silk-text-list-bullets

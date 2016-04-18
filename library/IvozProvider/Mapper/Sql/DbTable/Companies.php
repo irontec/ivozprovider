@@ -75,6 +75,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Calendars',
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallACLPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',

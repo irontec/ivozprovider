@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\Timezones
+ * Data Mapper implementation for IvozProvider\Model\CompanyAdmins
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class Timezones extends MapperAbstract
+class CompanyAdmins extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\Timezones';
+    protected $_modelName = 'IvozProvider\\Model\\CompanyAdmins';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class Timezones extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\Timezones $model
+     * @param IvozProvider\Model\Raw\CompanyAdmins $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\Timezones) {
+        if (!$model instanceof \IvozProvider\Model\Raw\CompanyAdmins) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Timezones object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\CompanyAdmins object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\Timezones object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\CompanyAdmins object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,11 +49,14 @@ class Timezones extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'countryId' => $model->getCountryId(),
-                'tz' => $model->getTz(),
-                'comment' => $model->getComment(),
-                'timeZoneLabel_en' => $model->getTimeZoneLabelEn(),
-                'timeZoneLabel_es' => $model->getTimeZoneLabelEs(),
+                'companyId' => $model->getCompanyId(),
+                'username' => $model->getUsername(),
+                'pass' => $model->getPass(),
+                'email' => $model->getEmail(),
+                'active' => $model->getActive(),
+                'timezoneId' => $model->getTimezoneId(),
+                'name' => $model->getName(),
+                'lastname' => $model->getLastname(),
             );
         } else {
             $result = array();
@@ -92,12 +95,12 @@ class Timezones extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Timezones
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Timezones');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins');
         }
 
         return $this->_dbTable;
@@ -106,17 +109,17 @@ class Timezones extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\Timezones $model The model to delete
+     * @param IvozProvider\Model\Raw\CompanyAdmins $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\Timezones) {
+        if (!$model instanceof \IvozProvider\Model\Raw\CompanyAdmins) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Timezones object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\CompanyAdmins object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\Timezones object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\CompanyAdmins object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -166,7 +169,7 @@ class Timezones extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Timezones', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -214,7 +217,7 @@ class Timezones extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Timezones', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -292,7 +295,7 @@ class Timezones extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\Timezones $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\CompanyAdmins $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -300,17 +303,17 @@ class Timezones extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\Timezones $model
+     * @param \IvozProvider\Model\Raw\CompanyAdmins $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\Timezones $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\CompanyAdmins $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\Timezones $model,
+    protected function _save(\IvozProvider\Model\Raw\CompanyAdmins $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -379,6 +382,7 @@ class Timezones extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
+                    $data['id'] = new \Zend_Db_Expr("uuid()");
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -438,93 +442,6 @@ class Timezones extends MapperAbstract
                 }
             }
 
-
-            if ($recursive) {
-                if ($model->getBrandOperators(null, null, true) !== null) {
-                    $brandOperators = $model->getBrandOperators();
-
-                    if (!is_array($brandOperators)) {
-
-                        $brandOperators = array($brandOperators);
-                    }
-
-                    foreach ($brandOperators as $value) {
-                        $value->setTimezoneId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getBrands(null, null, true) !== null) {
-                    $brands = $model->getBrands();
-
-                    if (!is_array($brands)) {
-
-                        $brands = array($brands);
-                    }
-
-                    foreach ($brands as $value) {
-                        $value->setDefaultTimezoneId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getCompanies(null, null, true) !== null) {
-                    $companies = $model->getCompanies();
-
-                    if (!is_array($companies)) {
-
-                        $companies = array($companies);
-                    }
-
-                    foreach ($companies as $value) {
-                        $value->setDefaultTimezoneId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getCompanyAdmins(null, null, true) !== null) {
-                    $companyAdmins = $model->getCompanyAdmins();
-
-                    if (!is_array($companyAdmins)) {
-
-                        $companyAdmins = array($companyAdmins);
-                    }
-
-                    foreach ($companyAdmins as $value) {
-                        $value->setTimezoneId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getMainOperators(null, null, true) !== null) {
-                    $mainOperators = $model->getMainOperators();
-
-                    if (!is_array($mainOperators)) {
-
-                        $mainOperators = array($mainOperators);
-                    }
-
-                    foreach ($mainOperators as $value) {
-                        $value->setTimezoneId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getUsers(null, null, true) !== null) {
-                    $users = $model->getUsers();
-
-                    if (!is_array($users)) {
-
-                        $users = array($users);
-                    }
-
-                    foreach ($users as $value) {
-                        $value->setTimezoneId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-            }
 
             if ($success === true) {
 
@@ -605,13 +522,13 @@ class Timezones extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\Timezones|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\Timezones The model with the data provided
+     * @param IvozProvider\Model\Raw\CompanyAdmins|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\CompanyAdmins The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\Timezones();
+            $entry = new \IvozProvider\Model\CompanyAdmins();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -619,26 +536,35 @@ class Timezones extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setCountryId($data['countryId'])
-                  ->setTz($data['tz'])
-                  ->setComment($data['comment'])
-                  ->setTimeZoneLabelEn($data['timeZoneLabel_en'])
-                  ->setTimeZoneLabelEs($data['timeZoneLabel_es']);
+                  ->setCompanyId($data['companyId'])
+                  ->setUsername($data['username'])
+                  ->setPass($data['pass'])
+                  ->setEmail($data['email'])
+                  ->setActive($data['active'])
+                  ->setTimezoneId($data['timezoneId'])
+                  ->setName($data['name'])
+                  ->setLastname($data['lastname']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setCountryId($data->{'countryId'})
-                  ->setTz($data->{'tz'})
-                  ->setComment($data->{'comment'})
-                  ->setTimeZoneLabelEn($data->{'timeZoneLabel_en'})
-                  ->setTimeZoneLabelEs($data->{'timeZoneLabel_es'});
+                  ->setCompanyId($data->{'companyId'})
+                  ->setUsername($data->{'username'})
+                  ->setPass($data->{'pass'})
+                  ->setEmail($data->{'email'})
+                  ->setActive($data->{'active'})
+                  ->setTimezoneId($data->{'timezoneId'})
+                  ->setName($data->{'name'})
+                  ->setLastname($data->{'lastname'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\Timezones) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\CompanyAdmins) {
             $entry->setId($data->getId())
-                  ->setCountryId($data->getCountryId())
-                  ->setTz($data->getTz())
-                  ->setComment($data->getComment())
-                  ->setTimeZoneLabelEn($data->getTimeZoneLabelEn())
-                  ->setTimeZoneLabelEs($data->getTimeZoneLabelEs());
+                  ->setCompanyId($data->getCompanyId())
+                  ->setUsername($data->getUsername())
+                  ->setPass($data->getPass())
+                  ->setEmail($data->getEmail())
+                  ->setActive($data->getActive())
+                  ->setTimezoneId($data->getTimezoneId())
+                  ->setName($data->getName())
+                  ->setLastname($data->getLastname());
 
         }
 

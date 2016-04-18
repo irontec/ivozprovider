@@ -3,6 +3,7 @@
 #include CalendarsList.yaml
 #include CallACLList.yaml
 #include CallACLPatternsList.yaml
+#include CompanyAdminsList.yaml
 #include DDIsList.yaml
 #include ExtensionsList.yaml
 #include ExternalCallFiltersList.yaml
@@ -42,6 +43,7 @@ production:
             calendarsList_screen: true
             callACLList_screen: true
             callACLPatternsList_screen: true
+            companyAdminsList_screen: true
             dDIsList_screen: true
             extensionsList_screen: true
             externalCallFiltersList_screen: true
@@ -124,6 +126,19 @@ production:
       filterField: companyId
     callACLPatternsEdit_screen: 
       <<: *callACLPatternsEdit_screenLink
+      filterField: companyId
+
+    #companyAdmins: 
+    companyAdminsList_screen: 
+      <<: *companyAdminsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    companyAdminsNew_screen: 
+      <<: *companyAdminsNew_screenLink
+      filterField: companyId
+    companyAdminsEdit_screen: 
+      <<: *companyAdminsEdit_screenLink
       filterField: companyId
 
     #dDIs: 
@@ -364,6 +379,8 @@ production:
     <<: *callACL_dialogsLink
   # callACLPatterns dialogs: 
     <<: *callACLPatterns_dialogsLink
+  # companyAdmins dialogs: 
+    <<: *companyAdmins_dialogsLink
   # dDIs dialogs: 
     <<: *dDIs_dialogsLink
   # extensions dialogs: 

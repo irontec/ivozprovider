@@ -3,6 +3,7 @@
 #include BrandOperatorsList.yaml
 #include BrandsList.yaml
 #include CompaniesList.yaml
+#include CompanyAdminsList.yaml
 #include MainOperatorsList.yaml
 #include UsersList.yaml
 
@@ -27,6 +28,7 @@ production:
             brandOperatorsList_screen: true
             brandsList_screen: true
             companiesList_screen: true
+            companyAdminsList_screen: true
             mainOperatorsList_screen: true
             usersList_screen: true
           dialogs: 
@@ -96,6 +98,19 @@ production:
       <<: *companiesEdit_screenLink
       filterField: defaultTimezoneId
 
+    #companyAdmins: 
+    companyAdminsList_screen: 
+      <<: *companyAdminsList_screenLink
+      filterField: timezoneId
+      parentOptionCustomizer: 
+        - recordCount
+    companyAdminsNew_screen: 
+      <<: *companyAdminsNew_screenLink
+      filterField: timezoneId
+    companyAdminsEdit_screen: 
+      <<: *companyAdminsEdit_screenLink
+      filterField: timezoneId
+
     #mainOperators: 
     mainOperatorsList_screen: 
       <<: *mainOperatorsList_screenLink
@@ -139,6 +154,8 @@ production:
     <<: *brands_dialogsLink
   # companies dialogs: 
     <<: *companies_dialogsLink
+  # companyAdmins dialogs: 
+    <<: *companyAdmins_dialogsLink
   # mainOperators dialogs: 
     <<: *mainOperators_dialogsLink
   # users dialogs: 

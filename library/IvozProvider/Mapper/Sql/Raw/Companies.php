@@ -495,6 +495,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getCompanyAdmins(null, null, true) !== null) {
+                    $companyAdmins = $model->getCompanyAdmins();
+
+                    if (!is_array($companyAdmins)) {
+
+                        $companyAdmins = array($companyAdmins);
+                    }
+
+                    foreach ($companyAdmins as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 

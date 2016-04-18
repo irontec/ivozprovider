@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for Timezones
+ * Table definition for CompanyAdmins
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -19,86 +19,84 @@
  */
 
 namespace IvozProvider\Mapper\Sql\DbTable;
-class Timezones extends TableAbstract
+class CompanyAdmins extends TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'Timezones';
+    protected $_name = 'CompanyAdmins';
 
     /**
      * $_id - this is the primary key name
      *
-     * @var int
+     * @var binary
      */
     protected $_id = 'id';
 
-    protected $_rowClass = 'IvozProvider\\Model\\Timezones';
-    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\Timezones';
+    protected $_rowClass = 'IvozProvider\\Model\\CompanyAdmins';
+    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\CompanyAdmins';
 
-    protected $_sequence = true; // int
+    protected $_sequence = true; // binary
     protected $_referenceMap = array(
-        'TimezonesIbfk2' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+        'CompanyAdminsIbfk1' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'CompanyAdminsIbfk2' => array(
+            'columns' => 'timezoneId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
         )
     );
-    protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\BrandOperators',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\MainOperators',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
-    );
+    
     protected $_metadata = array (
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
+	    'TABLE_NAME' => 'CompanyAdmins',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'binary(36)',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => true,
+	    'IDENTITY' => false,
 	  ),
-	  'countryId' => 
+	  'companyId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
-	    'COLUMN_NAME' => 'countryId',
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'binary(36)',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
+	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'tz' => 
+	  'username' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
-	    'COLUMN_NAME' => 'tz',
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'username',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '255',
+	    'LENGTH' => '50',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -106,16 +104,16 @@ class Timezones extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'comment' => 
+	  'pass' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
-	    'COLUMN_NAME' => 'comment',
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'pass',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => '',
-	    'NULLABLE' => true,
-	    'LENGTH' => '150',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '80',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -123,16 +121,16 @@ class Timezones extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'timeZoneLabel' => 
+	  'email' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
-	    'COLUMN_NAME' => 'timeZoneLabel',
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'email',
 	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => '',
 	    'NULLABLE' => false,
-	    'LENGTH' => '20',
+	    'LENGTH' => '100',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -140,16 +138,16 @@ class Timezones extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'timeZoneLabel_en' => 
+	  'active' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
-	    'COLUMN_NAME' => 'timeZoneLabel_en',
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'active',
 	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => '',
-	    'NULLABLE' => false,
-	    'LENGTH' => '20',
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '1',
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -157,16 +155,50 @@ class Timezones extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'timeZoneLabel_es' => 
+	  'timezoneId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Timezones',
-	    'COLUMN_NAME' => 'timeZoneLabel_es',
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'timezoneId',
 	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => '',
+	    'DATA_TYPE' => 'mediumint',
+	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '20',
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'name' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'name',
+	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '100',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'lastname' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'CompanyAdmins',
+	    'COLUMN_NAME' => 'lastname',
+	    'COLUMN_POSITION' => 9,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '100',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

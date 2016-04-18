@@ -107,6 +107,14 @@ class Timezones extends ModelAbstract
     protected $_Companies;
 
     /**
+     * Dependent relation CompanyAdmins_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\CompanyAdmins[]
+     */
+    protected $_CompanyAdmins;
+
+    /**
      * Dependent relation MainOperators_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -167,6 +175,10 @@ class Timezones extends ModelAbstract
                     'property' => 'Companies',
                     'table_name' => 'Companies',
                 ),
+            'CompanyAdminsIbfk2' => array(
+                    'property' => 'CompanyAdmins',
+                    'table_name' => 'CompanyAdmins',
+                ),
             'MainOperatorsIbfk1' => array(
                     'property' => 'MainOperators',
                     'table_name' => 'MainOperators',
@@ -181,6 +193,7 @@ class Timezones extends ModelAbstract
             'BrandOperators_ibfk_2',
             'Brands_ibfk_1',
             'Companies_ibfk_2',
+            'CompanyAdmins_ibfk_2',
             'MainOperators_ibfk_1'
         ));
 
@@ -789,6 +802,96 @@ class Timezones extends ModelAbstract
         }
 
         return $this->_Companies;
+    }
+
+    /**
+     * Sets dependent relations CompanyAdmins_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\CompanyAdmins
+     * @return \IvozProvider\Model\Raw\Timezones
+     */
+    public function setCompanyAdmins(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_CompanyAdmins === null) {
+
+                $this->getCompanyAdmins();
+            }
+
+            $oldRelations = $this->_CompanyAdmins;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_CompanyAdmins = array();
+
+        foreach ($data as $object) {
+            $this->addCompanyAdmins($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations CompanyAdmins_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\CompanyAdmins $data
+     * @return \IvozProvider\Model\Raw\Timezones
+     */
+    public function addCompanyAdmins(\IvozProvider\Model\Raw\CompanyAdmins $data)
+    {
+        $this->_CompanyAdmins[] = $data;
+        $this->_setLoaded('CompanyAdminsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent CompanyAdmins_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CompanyAdmins
+     */
+    public function getCompanyAdmins($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompanyAdminsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_CompanyAdmins = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_CompanyAdmins;
     }
 
     /**

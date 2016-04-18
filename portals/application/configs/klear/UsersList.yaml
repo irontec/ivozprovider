@@ -65,10 +65,7 @@ production:
           attachVoicemailSound: true
           voicemailEnabled: true
           tokenKey: true
-          isCompanyAdmin: true
           countryId: true
-        whitelist:
-          isCompanyAdmin: ${auth.canSeeBrand}
       options: 
         title: _("Options")
         screens: 
@@ -94,9 +91,6 @@ production:
           attachVoicemailSound: true
           voicemailEnabled: true
           tokenKey: true
-          isCompanyAdmin: true
-        whitelist:
-          isCompanyAdmin: ${auth.canSeeBrand}
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -121,7 +115,6 @@ production:
             isBoss: 1
             bossAssistantId: 1
             exceptionBoosAssistantRegExp: 2
-            isCompanyAdmin: 1
         group3:
           colsPerRow: 6
           fields:
@@ -146,9 +139,6 @@ production:
           tokenKey: true
           attachVoicemailSound: true
           voicemailEnabled: true
-          isCompanyAdmin: true
-        whitelist:
-          isCompanyAdmin: ${auth.canSeeBrand}
         order:
           <<: *Users_orderLink
       fixedPositions:

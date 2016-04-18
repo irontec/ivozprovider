@@ -126,14 +126,18 @@ production:
       fixedPositions:
         <<: *companiesFixedPositions_Link
           
-    # Company Adminstrators
-    <<: *companyAdmins_screensLink
-    companyAdminsList_screen:
+    #companyAdmins: 
+    companyAdminsList_screen: 
       <<: *companyAdminsList_screenLink
       filterField: companyId
-      forcedValues:
-      parentOptionCustomizer:
+      parentOptionCustomizer: 
         - recordCount
+    companyAdminsNew_screen: 
+      <<: *companyAdminsNew_screenLink
+      filterField: companyId
+    companyAdminsEdit_screen: 
+      <<: *companyAdminsEdit_screenLink
+      filterField: companyId
 
     #pricingPlansRelCompanies: 
     <<: *pricingPlansRelCompanies_screensLink
@@ -209,6 +213,8 @@ production:
     <<: *pricingPlansRelCompanies_dialogsLink
     # TransformationRulesetGroupsTrunks
     <<: *transformationRulesetGroupsUsers_dialogsLink
+    # companyAdmins dialogs: 
+    <<: *companyAdmins_dialogsLink    
     
   commands:
     importCompaniesFreeUpload_command:

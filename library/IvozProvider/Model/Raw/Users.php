@@ -180,13 +180,6 @@ class Users extends ModelAbstract
     protected $_tokenKey;
 
     /**
-     * Database var type tinyint
-     *
-     * @var int
-     */
-    protected $_isCompanyAdmin;
-
-    /**
      * Database var type mediumint
      *
      * @var int
@@ -386,7 +379,6 @@ class Users extends ModelAbstract
         'attachVoicemailSound'=>'attachVoicemailSound',
         'voicemailEnabled'=>'voicemailEnabled',
         'tokenKey'=>'tokenKey',
-        'isCompanyAdmin'=>'isCompanyAdmin',
         'countryId'=>'countryId',
     );
 
@@ -527,7 +519,6 @@ class Users extends ModelAbstract
             'callWaiting' => '0',
             'attachVoicemailSound' => '1',
             'voicemailEnabled' => '1',
-            'isCompanyAdmin' => '0',
         );
 
         $this->_initFileObjects();
@@ -1269,40 +1260,6 @@ class Users extends ModelAbstract
     public function getTokenKey()
     {
         return $this->_tokenKey;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setIsCompanyAdmin($data)
-    {
-
-        if ($this->_isCompanyAdmin != $data) {
-            $this->_logChange('isCompanyAdmin');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_isCompanyAdmin = $data;
-
-        } else if (!is_null($data)) {
-            $this->_isCompanyAdmin = (int) $data;
-
-        } else {
-            $this->_isCompanyAdmin = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column isCompanyAdmin
-     *
-     * @return int
-     */
-    public function getIsCompanyAdmin()
-    {
-        return $this->_isCompanyAdmin;
     }
 
     /**

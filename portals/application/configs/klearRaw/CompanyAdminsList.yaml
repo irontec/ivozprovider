@@ -12,7 +12,7 @@ production:
       pagination: 
         items: 25
       <<: *CompanyAdmins
-      class: ui-silk-user-gray
+      class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
       fields: &companyAdmins_fieldsLink 
         options: 
