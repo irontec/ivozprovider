@@ -66,18 +66,6 @@ production:
       title: _('Sunday')
       type: checkbox
       defaultValue: 0
-    ExternalCallFilterRelSchedules:
-      title: _('External call filter')
-      type: multiselect
-      source:
-        data: mapper
-        config:
-          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelSchedules
-          relatedMapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
-          relatedFieldName: name
-          relationProperty: Filter
-          extraDataAttributes:
-            iden: companyId
 staging: 
   _extends: production
 testing: 

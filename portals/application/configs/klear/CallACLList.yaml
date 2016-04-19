@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include CallACLRelPatternsList.yaml
+#include CallACLPatternsList.yaml
 
 production:
   main:
@@ -21,11 +21,10 @@ production:
           title: _("Options")
           screens:
             callACLEdit_screen: true
+            callACLPatternsList_screen: true
           dialogs:
             callACLDel_dialog: true
           default: callACLEdit_screen
-        blacklist:
-          CallACLRelPatterns: true
       options:
         title: _("Options")
         screens:
@@ -42,9 +41,6 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedCompany
-      fields:
-        blacklist:
-          CallACLRelPatterns: true
     callACLEdit_screen: &callACLEdit_screenLink
       <<: *CallACL
       controller: edit
@@ -53,39 +49,23 @@ production:
       forcedValues: 
         <<: *forcedCompany
       title: _("Edit %s %2s", ngettext('Call ACL', 'Call ACLs', 1), "[format| (%item%)]")
-      fields:
-        order:
-          name: true
-          defaultPolicy: true
-          CallACLRelPatterns: true
-      fixedPositions:
-        group0:
-          label: _("ACL data")
-          colsPerRow: 3
-          fields:
-            name: 2
-            defaultPolicy: 1
-        group1:
-          label: _("Patterns")
-          colsPerRow: 3
-          fields:
-            CallACLRelPatterns: 3
-    # CallACLRelPatterns
-    <<: *callACLRelPatterns_screensLink
-    callACLRelPatternsList_screen:
-      <<: *callACLRelPatternsList_screenLink
-      title: _("List of %s %2s", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel rel pattern', 0), "[format| (%parent%)]")
+
+    #CallACLPatterns
+    <<: *callACLPatterns_screensLink
+    callACLPatternsList_screen:
+      <<: *callACLPatternsList_screenLink
+      title: _("List of %s %2s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0), "[format| (%parent%)]")
       filterField: CallACLId
       parentOptionCustomizer:
         - recordCount
-    callACLRelPatternsNew_screen:
-      <<: *callACLRelPatternsNew_screenLink
-      title: _("Add pattern to %2s", "[format| %parent%]")
+    callACLPatternsNew_screen:
+      <<: *callACLPatternsNew_screenLink
       filterField: CallACLId
-    callACLRelPatternsEdit_screen:
-      <<: *callACLRelPatternsEdit_screenLink
-      filterField: CallACLId
-      title: _("Edit pattern of %s", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel rel pattern', 1))
+    callACLPatternsEdit_screen:
+      <<: *callACLPatternsEdit_screenLink
+      fields:
+        readOnly:
+          CallACLId: true
 
   dialogs: &callACL_dialogsLink
     callACLDel_dialog: &callACLDel_dialogLink
@@ -99,13 +79,8 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    # CallACLRelPatterns
-    <<: *callACLRelPatterns_dialogsLink
-    callACLRelPatternsDel_dialog:
-      <<: *callACLRelPatternsDel_dialogLink
-      title: _("Delete %s", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel patterns', 1))
-      description: _("Do you want to delete this %s?", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel rel patterns', 1))
-      message: _("%s successfully deleted.", ngettext('Call ACL Rel pattern', 'Call ACL Rel patterns', 1))
+    #CallACLPatterns
+    <<: *callACLPatterns_dialogsLink
 
 staging:
   _extends: production

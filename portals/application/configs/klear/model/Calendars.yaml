@@ -19,17 +19,6 @@ production:
       type: text
       required: true
       default: true
-    ExternalCallFilterRelCalendars:
-      title: _('External call filters')
-      type: multiselect
-      source:
-        data: mapper
-        config:
-          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelCalendars
-          relatedMapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
-          relatedFieldName: name
-          relationProperty: Filter
-          filterClass: IvozProvider_Klear_Filter_ExternalCallFiltersMultiselect
 staging: 
   _extends: production
 testing: 

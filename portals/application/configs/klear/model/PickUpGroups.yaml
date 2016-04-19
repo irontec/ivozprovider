@@ -29,9 +29,10 @@ production:
             pickUpGroupId: id
           relationMapper: \IvozProvider\Mapper\Sql\PickUpRelUsers
           relatedMapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Users
           relatedFieldName: name
           relationProperty: User
-          filterClass: IvozProvider_Klear_Filter_Users
+
 staging: 
   _extends: production
 testing: 

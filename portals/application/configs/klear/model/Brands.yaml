@@ -50,7 +50,8 @@ production:
       source: 
         data: fso
         size_limit: 20M
-        options: 
+        options:
+          hiddenName: true
           download: 
             external: true
             type: command
