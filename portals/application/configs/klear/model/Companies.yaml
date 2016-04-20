@@ -69,23 +69,6 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    transformationRulesetGroupsId: 
-      title: _('Transformation ruleset groups')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsUsers
-          filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unasigned")
-      options:
-        screens:
-          transformationRulesetGroupsUsersList_screen: true
     externalMaxCalls: 
       title: _('External max call')
       type: number

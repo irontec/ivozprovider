@@ -3,7 +3,6 @@
 #include CompanyAdminsList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include InvoicesList.yaml
-#include TransformationRulesetGroupsUsersList.yaml
 #include OutgoingRoutingList.yaml
 
 
@@ -155,17 +154,6 @@ production:
       <<: *pricingPlansRelCompaniesEdit_screenLink
       filterField: companyId
 
-    # transformationRulesetGroupsUsers
-    <<: *transformationRulesetGroupsUsers_screensLink
-    transformationRulesetGroupsUsersList_screen:
-      <<: *transformationRulesetGroupsUsersList_screenLink
-      class: ui-silk-add
-      title: _("List of %s", ngettext('Transformation ruleset groups user', 'Transformation ruleset groups users', 0), "[format]")
-    transformationRulesetGroupsUsersNew_screen:
-      <<: *transformationRulesetGroupsUsersNew_screenLink
-    transformationRulesetGroupsUsersEdit_screen:
-      <<: *transformationRulesetGroupsUsersEdit_screenLink
-
     # outgoingRouting
     <<: *outgoingRouting_screensLink
     outgoingRoutingList_screen: 
@@ -227,8 +215,6 @@ production:
       
     # pricingPlansRelCompanies dialogs:
     <<: *pricingPlansRelCompanies_dialogsLink
-    # TransformationRulesetGroupsTrunks
-    <<: *transformationRulesetGroupsUsers_dialogsLink
     # companyAdmins dialogs: 
     <<: *companyAdmins_dialogsLink    
     # outgoingRouting dialogs: 
