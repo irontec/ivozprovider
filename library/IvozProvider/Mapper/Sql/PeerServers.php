@@ -48,38 +48,38 @@ class PeerServers extends Raw\PeerServers
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-//        try {
-//            $this->_sendXmlRcp();
-//        } catch (\Exception $e) {
-//            $message = $e->getMessage()."<p>Peer srever may have been saved.</p>";
-//            throw new \Exception($message);
-//        }
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Peer srever may have been saved.</p>";
+            throw new \Exception($message);
+        }
 
         return $pk;
     }
 
-//    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
-//    {
-//        $response = parent::delete($model);
-//        try {
-//            $this->_sendXmlRcp();
-//        } catch (\Exception $e) {
-//            $message = $e->getMessage()."<p>Peer srever may have been deleted.</p>";
-//            throw new \Exception($message);
-//        }
-//        return $response;
-//    }
+    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
+    {
+        $response = parent::delete($model);
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Peer srever may have been deleted.</p>";
+            throw new \Exception($message);
+        }
+        return $response;
+    }
 
-//    protected function _sendXmlRcp()
-//    {
-//        $proxyServers = array(
-//                'proxytrunks' => array(
-//                        "permissions.addressReload",
-//                        "lcr.reload"
-//                        )
-//        );
-//        $xmlrpcJob = new Xmlrpc();
-//        $xmlrpcJob->setProxyServers($proxyServers);
-//        $xmlrpcJob->send();
-//    }
+    protected function _sendXmlRcp()
+    {
+        $proxyServers = array(
+                'proxytrunks' => array(
+                        "permissions.addressReload",
+                        "lcr.reload"
+                        )
+        );
+        $xmlrpcJob = new Xmlrpc();
+        $xmlrpcJob->setProxyServers($proxyServers);
+        $xmlrpcJob->send();
+    }
 }

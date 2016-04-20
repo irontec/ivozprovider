@@ -47,22 +47,33 @@ class XmlrpcWorker extends Iron_Gearman_Worker
         $errorMessages = array();
         $n = 1;
         foreach ($proxyServers as $serverName => $methods) {
-            $client = new \Zend_XmlRpc_Client($this->_xmlRpcServers[$serverName]);
-            if (!is_array($methods)) {
-                $methods = array($methods);
+
+            if ($serverName == 'proxyusers') {
+                $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyUsers();
+            } else { // proxytrunks
+                $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyTrunks();
             }
-            foreach ($methods as $method) {
-                $date = new Zend_Date();
-                $now = $date->toString("YYYY/MM/dd - HH:MM:ss");
-                try {
-                    $client->call($method);
-                    $message = "[OK] Module ".$method." of ".$serverName." reloaded successfully.";
-                    $this->_logger->log($message, Zend_Log::INFO);
-                } catch (\Exception $e) {
-                    $message = "[ERROR] Error executing ".$method." in ".$serverName.". ".
-                        "Error was:\n\t".$e->getMessage();
-                    $errorMessages[] = $message;
-                    $this->_logger->log($message, Zend_Log::ERR);
+
+            foreach ($proxyMapper->fetchList() as $proxy) {
+                $client = new \Zend_XmlRpc_Client( 'http://' . $proxy->getIp() . ':8000/RPC2' );
+
+                if (!is_array($methods)) {
+                    $methods = array($methods);
+                }
+
+                foreach ($methods as $method) {
+                    $date = new Zend_Date();
+                    $now = $date->toString("YYYY/MM/dd - HH:MM:ss");
+                    try {
+                        $client->call($method);
+                        $message = "[OK] Module ".$method." of ".$serverName." reloaded successfully.";
+                        $this->_logger->log($message, Zend_Log::INFO);
+                    } catch (\Exception $e) {
+                        $message = "[ERROR] Error executing ".$method." in ".$serverName.". ".
+                            "Error was:\n\t".$e->getMessage();
+                        $errorMessages[] = $message;
+                        $this->_logger->log($message, Zend_Log::ERR);
+                    }
                 }
             }
         }
