@@ -311,14 +311,6 @@ class Brands extends ModelAbstract
     protected $_TransformationRulesetGroupsTrunks;
 
     /**
-     * Dependent relation TransformationRulesetGroupsUsers_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers[]
-     */
-    protected $_TransformationRulesetGroupsUsers;
-
-    /**
      * Dependent relation kam_trunks_uacreg_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -449,10 +441,6 @@ class Brands extends ModelAbstract
             'TransformationRulesetGroupsTrunksIbfk1' => array(
                     'property' => 'TransformationRulesetGroupsTrunks',
                     'table_name' => 'TransformationRulesetGroupsTrunks',
-                ),
-            'TransformationRulesetGroupsUsersIbfk1' => array(
-                    'property' => 'TransformationRulesetGroupsUsers',
-                    'table_name' => 'TransformationRulesetGroupsUsers',
                 ),
             'KamTrunksUacregIbfk1' => array(
                     'property' => 'KamTrunksUacreg',
@@ -3063,96 +3051,6 @@ class Brands extends ModelAbstract
         }
 
         return $this->_TransformationRulesetGroupsTrunks;
-    }
-
-    /**
-     * Sets dependent relations TransformationRulesetGroupsUsers_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function setTransformationRulesetGroupsUsers(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_TransformationRulesetGroupsUsers === null) {
-
-                $this->getTransformationRulesetGroupsUsers();
-            }
-
-            $oldRelations = $this->_TransformationRulesetGroupsUsers;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_TransformationRulesetGroupsUsers = array();
-
-        foreach ($data as $object) {
-            $this->addTransformationRulesetGroupsUsers($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations TransformationRulesetGroupsUsers_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers $data
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function addTransformationRulesetGroupsUsers(\IvozProvider\Model\Raw\TransformationRulesetGroupsUsers $data)
-    {
-        $this->_TransformationRulesetGroupsUsers[] = $data;
-        $this->_setLoaded('TransformationRulesetGroupsUsersIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent TransformationRulesetGroupsUsers_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
-     */
-    public function getTransformationRulesetGroupsUsers($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'TransformationRulesetGroupsUsersIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_TransformationRulesetGroupsUsers = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_TransformationRulesetGroupsUsers;
     }
 
     /**

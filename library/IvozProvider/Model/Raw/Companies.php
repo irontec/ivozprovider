@@ -70,13 +70,6 @@ class Companies extends ModelAbstract
      *
      * @var int
      */
-    protected $_transformationRulesetGroupsId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
     protected $_externalMaxCalls;
 
     /**
@@ -156,13 +149,6 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\ApplicationServers
      */
     protected $_ApplicationServer;
-
-    /**
-     * Parent relation Companies_ibfk_7
-     *
-     * @var \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
-     */
-    protected $_TransformationRulesetGroups;
 
     /**
      * Parent relation Companies_ibfk_8
@@ -370,7 +356,6 @@ class Companies extends ModelAbstract
         'nif'=>'nif',
         'defaultTimezoneId'=>'defaultTimezoneId',
         'applicationServerId'=>'applicationServerId',
-        'transformationRulesetGroupsId'=>'transformationRulesetGroupsId',
         'externalMaxCalls'=>'externalMaxCalls',
         'postalAddress'=>'postalAddress',
         'postalCode'=>'postalCode',
@@ -407,10 +392,6 @@ class Companies extends ModelAbstract
             'CompaniesIbfk5'=> array(
                     'property' => 'ApplicationServer',
                     'table_name' => 'ApplicationServers',
-                ),
-            'CompaniesIbfk7'=> array(
-                    'property' => 'TransformationRulesetGroups',
-                    'table_name' => 'TransformationRulesetGroupsUsers',
                 ),
             'CompaniesIbfk8'=> array(
                     'property' => 'InvoiceLanguage',
@@ -774,40 +755,6 @@ class Companies extends ModelAbstract
     public function getApplicationServerId()
     {
         return $this->_applicationServerId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setTransformationRulesetGroupsId($data)
-    {
-
-        if ($this->_transformationRulesetGroupsId != $data) {
-            $this->_logChange('transformationRulesetGroupsId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_transformationRulesetGroupsId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_transformationRulesetGroupsId = (int) $data;
-
-        } else {
-            $this->_transformationRulesetGroupsId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column transformationRulesetGroupsId
-     *
-     * @return int
-     */
-    public function getTransformationRulesetGroupsId()
-    {
-        return $this->_transformationRulesetGroupsId;
     }
 
     /**
@@ -1282,57 +1229,6 @@ class Companies extends ModelAbstract
         }
 
         return $this->_ApplicationServer;
-    }
-
-    /**
-     * Sets parent relation TransformationRulesetGroups
-     *
-     * @param \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setTransformationRulesetGroups(\IvozProvider\Model\Raw\TransformationRulesetGroupsUsers $data)
-    {
-        $this->_TransformationRulesetGroups = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setTransformationRulesetGroupsId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk7');
-        return $this;
-    }
-
-    /**
-     * Gets parent TransformationRulesetGroups
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
-     */
-    public function getTransformationRulesetGroups($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk7';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_TransformationRulesetGroups = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_TransformationRulesetGroups;
     }
 
     /**

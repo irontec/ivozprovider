@@ -59,7 +59,6 @@ mappers:
   - &Terminals {mapper: \IvozProvider\Mapper\Sql\Terminals, modelFile: Terminals}
   - &Timezones {mapper: \IvozProvider\Mapper\Sql\Timezones, modelFile: Timezones}
   - &TransformationRulesetGroupsTrunks {mapper: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks, modelFile: TransformationRulesetGroupsTrunks}
-  - &TransformationRulesetGroupsUsers {mapper: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsUsers, modelFile: TransformationRulesetGroupsUsers}
   - &Users {mapper: \IvozProvider\Mapper\Sql\Users, modelFile: Users}
   - &XMLRPCLogs {mapper: \IvozProvider\Mapper\Sql\XMLRPCLogs, modelFile: XMLRPCLogs}
   - &AstMusiconhold {mapper: \IvozProvider\Mapper\Sql\AstMusiconhold, modelFile: AstMusiconhold}

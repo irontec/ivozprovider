@@ -271,10 +271,6 @@ production:
           title: ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0))
-        TransformationRulesetGroupsUsersList: 
-          title: ngettext('Transformation ruleset groups user', 'Transformation ruleset groups users', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Transformation ruleset groups user', 'Transformation ruleset groups users', 0))
         UsersList: 
           title: ngettext('User', 'Users', 0)
           class: ui-silk-text-list-bullets

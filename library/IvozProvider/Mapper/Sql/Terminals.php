@@ -51,7 +51,8 @@ class Terminals extends Raw\Terminals
                 ->setAors($model->getName())
                 ->setDirectmedia($model->getDirectmedia())
                 ->setAllow($model->getAllow())
-                ->setSubscribecontext($model->getCompanyId())
+                ->setContext('outgoing')
+                ->setSubscribecontext('company' . $model->getCompanyId())
                 ->save($forceInsert);
 
             // Replicate Terminal into ast_ps_aors

@@ -743,20 +743,6 @@ class Brands extends MapperAbstract
                     }
                 }
 
-                if ($model->getTransformationRulesetGroupsUsers(null, null, true) !== null) {
-                    $transformationRulesetGroupsUsers = $model->getTransformationRulesetGroupsUsers();
-
-                    if (!is_array($transformationRulesetGroupsUsers)) {
-
-                        $transformationRulesetGroupsUsers = array($transformationRulesetGroupsUsers);
-                    }
-
-                    foreach ($transformationRulesetGroupsUsers as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getKamTrunksUacreg(null, null, true) !== null) {
                     $kamTrunksUacreg = $model->getKamTrunksUacreg();
 

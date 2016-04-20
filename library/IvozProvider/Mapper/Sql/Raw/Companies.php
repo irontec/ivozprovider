@@ -54,7 +54,6 @@ class Companies extends MapperAbstract
                 'nif' => $model->getNif(),
                 'defaultTimezoneId' => $model->getDefaultTimezoneId(),
                 'applicationServerId' => $model->getApplicationServerId(),
-                'transformationRulesetGroupsId' => $model->getTransformationRulesetGroupsId(),
                 'externalMaxCalls' => $model->getExternalMaxCalls(),
                 'postalAddress' => $model->getPostalAddress(),
                 'postalCode' => $model->getPostalCode(),
@@ -872,7 +871,6 @@ class Companies extends MapperAbstract
                   ->setNif($data['nif'])
                   ->setDefaultTimezoneId($data['defaultTimezoneId'])
                   ->setApplicationServerId($data['applicationServerId'])
-                  ->setTransformationRulesetGroupsId($data['transformationRulesetGroupsId'])
                   ->setExternalMaxCalls($data['externalMaxCalls'])
                   ->setPostalAddress($data['postalAddress'])
                   ->setPostalCode($data['postalCode'])
@@ -889,7 +887,6 @@ class Companies extends MapperAbstract
                   ->setNif($data->{'nif'})
                   ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
                   ->setApplicationServerId($data->{'applicationServerId'})
-                  ->setTransformationRulesetGroupsId($data->{'transformationRulesetGroupsId'})
                   ->setExternalMaxCalls($data->{'externalMaxCalls'})
                   ->setPostalAddress($data->{'postalAddress'})
                   ->setPostalCode($data->{'postalCode'})
@@ -907,7 +904,6 @@ class Companies extends MapperAbstract
                   ->setNif($data->getNif())
                   ->setDefaultTimezoneId($data->getDefaultTimezoneId())
                   ->setApplicationServerId($data->getApplicationServerId())
-                  ->setTransformationRulesetGroupsId($data->getTransformationRulesetGroupsId())
                   ->setExternalMaxCalls($data->getExternalMaxCalls())
                   ->setPostalAddress($data->getPostalAddress())
                   ->setPostalCode($data->getPostalCode())
