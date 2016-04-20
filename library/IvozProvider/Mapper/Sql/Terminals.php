@@ -77,20 +77,6 @@ class Terminals extends Raw\Terminals
     {
         $response = parent::delete($model);
 
-        // Delete its endpoint
-        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-        $endpoint = $endpointMapper->findOneByField("terminalId", $model->getId());
-        if ($endpoint) {
-            $endpointMapper->delete($endpoint);
-        }
-
-        // Delete its aor
-        $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
-        $aor = $aorMapper->findOneByField("terminalId", $model->getId());
-        if ($aor) {
-            $aorMapper->delete($aor);
-        }
-        
         // Delete its contacts
         $contactMapper = new \IvozProvider\Mapper\Sql\AstPsContacts();
         $contacts = $contactMapper->fetchList("sorcery_id LIKE '" . $model->getName() . "^3B%'");

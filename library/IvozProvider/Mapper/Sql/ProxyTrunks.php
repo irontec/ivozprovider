@@ -85,34 +85,4 @@ class ProxyTrunks extends Raw\ProxyTrunks
         }
         return $response;
     }
-
-    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
-    {
-        $response = parent::delete($model);
-    
-        // Delete its endpoint
-        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-        $endpoint = $endpointMapper->findOneByField("proxyTrunkId", $model->getId());
-        if ($endpoint) {
-            $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-            $endpointMapper->delete($endpoint);
-        }
-        
-        // Delete its aor
-        $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
-        $aor = $aorMapper->findOneByField("proxyTrunkId", $model->getId());
-        if ($aor) {
-            $aorMapper->delete($aor);
-        }
-        
-        // Delete its identify
-        $identifyMapper = new \IvozProvider\Mapper\Sql\AstPsIdentify();
-        $identify = $identifyMapper->findOneByField("proxyTrunkId", $model->getId());
-        if ($identify) {
-            $identifyMapper = new \IvozProvider\Mapper\Sql\AstPsIdentify();
-            $identifyMapper->delete($identify);
-        }
-    
-        return $response;
-    }
 }
