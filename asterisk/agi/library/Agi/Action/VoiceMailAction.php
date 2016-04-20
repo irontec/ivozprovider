@@ -21,11 +21,8 @@ class VoiceMailAction extends RouterAction
             return;
         }
 
-        // Get VoiceMail company
-        $company = $voicemail->getCompany();
-
         // Run the voicemail
-        $this->agi->voicemail($voicemail->getId(), $company->getId());
+        $this->agi->voicemail($voicemail->getVoiceMail());
     }
 
 }

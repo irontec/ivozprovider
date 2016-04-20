@@ -39,24 +39,4 @@ class Terminals extends Raw\Terminals
         $users = $this->getUsers($where);
         return array_shift($users);
     }
-
-    /**
-     * Get Enpoint for this Terminal
-     * @return object of \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function getEndpoint()
-    {
-        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-        return $endpointMapper->findOneByField("id", $this->getId());
-    }
-
-    /**
-     * Get Aor for this Terminal
-     * @return object of \IvozProvider\Model\Raw\AstPsAors
-     */
-    public function getAor()
-    {
-        $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
-        return $aorMapper->findOneByField("id", $this->getId());
-    }
 }

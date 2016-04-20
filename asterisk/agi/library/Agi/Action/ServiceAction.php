@@ -42,9 +42,7 @@ class ServiceAction extends RouterAction
         $user = $this->_user;
         
         // Checkvoicemail for this user
-        $userId = $user->getId();
-        $companyId = $user->getCompany()->getId();
-        $this->agi->checkVoicemail($userId, $companyId);
+        $this->agi->checkVoicemail($user->getVoiceMail());
     }
     
     protected function _processDirectPickUp()

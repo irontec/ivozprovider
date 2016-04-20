@@ -54,6 +54,30 @@ class Users extends Raw\Users
     }
 
     /**
+     * @return string with the voicemail
+     */
+    public function getVoiceMail()
+    {
+        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
+    }
+
+    /**
+     * @return string with the voicemail user
+     */
+    public function getVoiceMailUser()
+    {
+        return 'user' . $this->getId();
+    }
+
+    /**
+     * @return string with the voicemail context
+     */
+    public function getVoiceMailContext()
+    {
+        return 'company' . $this->getCompany()->getId();
+    }
+
+    /**
      * @return string
      */
     public function getOutgoingDDINumber($valueIfEmpty = "anonimo")

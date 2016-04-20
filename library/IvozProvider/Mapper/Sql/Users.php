@@ -45,7 +45,6 @@ class Users extends Raw\Users
         $isBoss = $model->getIsBoss() == 1;
         $hasChangedIsBoss = $model->hasChange('isBoss');
         $hasChangedTerminal = $model->hasChange('terminalId');
-        $voicemailHasChanged = $model->hasChange('voicemailEnabled');
         $haschangedExtension = $model->hasChange("extensionId");
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
@@ -57,66 +56,24 @@ class Users extends Raw\Users
             }
         }
 
+        // Reset previous terminal voicemail
         if (!$isNew && $hasChangedTerminal) {
             $prevSavedUser = $this->find($model->getPrimaryKey());
-            $prevSavedUserTerminal = $prevSavedUser->getTerminal();
-            if ($prevSavedUserTerminal) {
-                $this->_unsetMailboxAors($prevSavedUserTerminal);
-            }
+            $this->setEndpointVoiceMail($prevSavedUser, null);
         }
 
         $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-        if ($response && $isNew) {
-            $this->_setAstVoicemail($model);
-        }
+        // Update Asterisk Voicemail
+        $this->saveVoiceMail($model);
 
-        $applicationServer = $model->getCompany()->getApplicationServer();
-        if ($response && ($haschangedExtension || $hasChangedTerminal)) {
-        //if ($response && $haschangedExtension) {
-            $this->_reloadDialplan($applicationServer);
-        }
-
-        $terminal = $model->getTerminal();
-        if ($terminal) {
-            $aors = $model->getId() . '@' . $model->getCompanyId();
-            $endpoint = $terminal->getEndpoint();
-            if ($endpoint) {
-                $endpoint->setMailboxes($aors)->save();
-                $terminalPk = $terminal->getPrimaryKey();
-                $this->_logger->log("Updated mailboxes_aors ('".$aors."') in terminal with id = '".$terminalPk."'", \Zend_Log::INFO);
-            }
+        // Reload Hints
+        if ($haschangedExtension || $hasChangedTerminal) {
+            $this->_reloadDialplan();
         }
 
         return $response;
 
-    }
-
-    protected function _setAstVoicemail(\IvozProvider\Model\Raw\Users $model)
-    {
-         $astVoicemailMapper = new \IvozProvider\Mapper\Sql\AstVoicemail;
-
-         $where = "context = '". $model->getCompanyId() .
-                  "' AND mailbox='". $model->getPrimaryKey() ."'";
-
-         $astVoicemail = $astVoicemailMapper->fetchOne($where);
-
-         if (!$astVoicemail) {
-             $astVoicemail = new \IvozProvider\Model\AstVoicemail;
-         }
-
-         $result = $astVoicemail->setContext($model->getCompanyId())
-                             ->setMailbox($model->getPrimaryKey())
-                             ->setPassword($model->getPass())
-                             ->setFullname($model->getName() . " " . $model->getLastname())
-                             ->setEmail($model->getEmail())
-                             ->setTz($model->getTimezone()->getTz())
-                             ->save();
-
-         $pk = $astVoicemail->getPrimaryKey();
-         $this->_logger->log("AstVoiscemail with id = '".$pk."' setted", \Zend_Log::INFO);
-
-         return $result;
     }
 
     /**
@@ -130,61 +87,84 @@ class Users extends Raw\Users
     {
 
         $extension = $model->getExtension();
-        $applicationServer = $model->getCompany()->getApplicationServer();
-
         $response = parent::delete($model);
 
-        if (!$response) {
-            return $response;
-        }
+        // Delete User voicemail
+        $this->deleteVoiceMail();
 
         if (!is_null($extension)) {
-            $this->_reloadDialplan($applicationServer);
-        }
-
-        $astVoicemailMapper = new \IvozProvider\Mapper\Sql\AstVoicemail;
-        $where = "context = '". $model->getCompanyId() .
-                  "' AND mailbox='". $model->getPrimaryKey() ."'";
-        $astVoicemails = $astVoicemailMapper->fetchList($where);
-        $nAstVoiceMails = count($astVoicemails);
-        if ($nAstVoiceMails > 0) {
-            $this->_logger->log("Deletting ".$nAstVoiceMails." ast voicemails", \Zend_log::INFO);
-        } else {
-            $this->_logger->log("No ast voicemails to delete", \Zend_log::INFO);
-        }
-        foreach ($astVoicemails as $astVoicemail) {
-            $pk = $astVoicemail->getPrimaryKey();
-            $astVoicemail->delete();
-            $this->_logger->log("ast voicemail with id = '".$pk."' deleted.", \Zend_log::INFO);
-        }
-
-        if (!is_null($model->getTerminal())) {
-            $this->_unsetMailboxAors($model->getTerminal());
+            $this->_reloadDialplan();
         }
 
         return $response;
     }
 
-    protected function _unsetMailboxAors(\IvozProvider\Model\Terminals $terminal) {
-        $terminal->setMailboxesAors('')->save();
-        $terminalPK = $terminal->getPrimaryKey();
-        $logMessage = "Unsetted mailboxes_aors in old terminal with id = '".$terminalPK."'";
-        $this->_logger->log($logMessage, \Zend_Log::INFO);
+    protected function saveVoiceMail($model)
+    {
+        // Update Asterisk Voicemail
+        $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
+        $vm = $vmMapper->findOneByField("mailbox", $model->getVoiceMailUser());
+
+        // If not found create a new one
+        $forceInsert = false;
+        if (is_null($vm)) {
+            $forceInsert = true;
+            $vm = new \IvozProvider\Model\AstVoicemail();
+        }
+
+        // Update/Insert endpoint data
+        $vm->setContext($model->getVoiceMailContext())
+            ->setMailbox($model->getVoiceMailUser())
+            ->setPassword($model->getPass())
+            ->setFullname($model->getName() . " " . $model->getLastname())
+            ->setEmail($model->getEmail())
+            ->setTz($model->getTimezone()->getTz())
+            ->save();
+
+        // Update user endpoint if user want VoiceMail notifications
+        if ($model->getVoicemailEnabled()) {
+            $this->setEndpointVoiceMail($model, $model->getVoiceMail());
+        } else {
+            $this->setEndpointVoiceMail($model, null);
+        }
+    }
+
+    protected function deleteVoiceMail($model)
+    {
+        // Delete User voicemail
+        $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
+        $vm = $vmMapper->findOneByField("mailbox", $model->getVoiceMailUser());
+        if ($vm) {
+            $vmMapper->delete($vm);
+        }
+
+        // Update user endpoint
+        $this->setEndpointVoiceMail($model, null);
+    }
+
+    protected function setEndpointVoiceMail($model, $voiceMail)
+    {
+        // Update Asterisk Endpoint data
+        $terminal = $model->getTerminal();
+        if ($terminal) {
+            // Replicate Terminal into ast_ps_endpoint
+            $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
+            $endpoint = $endpointMapper->findOneByField("terminalId", $terminal->getId());
+            if ($endpoint) {
+                $endpoint->setMailboxes($voiceMail)->save();
+            }
+        }
     }
 
     protected function _salt()
     {
-        $ret = substr(md5(mt_rand(), false), 0, 8);
-
-        return $ret;
+        return substr(md5(mt_rand(), false), 0, 8);
     }
 
-    protected function _reloadDialplan($applicationServer)
+    protected function _reloadDialplan()
     {
-            $reloadDialplanJob = new \IvozProvider\Gearmand\Jobs\ReloadDialplan();
-            $reloadDialplanJob
-            ->setApplicationServer($applicationServer)
-            ->send();
+        $reloadDialplanJob = new \IvozProvider\Gearmand\Jobs\ReloadDialplan();
+        $reloadDialplanJob->send();
     }
 
 }

@@ -47,28 +47,30 @@ class AmiWorker extends Iron_Gearman_Worker
         $this->_logger->log("[GEARMAND][DIALPLAN] Reloading dialplan...", \Zend_Log::INFO);
         $job = igbinary_unserialize($serializedJob->workload());
 
-        $applicationServer = $job->getApplicationServer();
-        if (is_null($applicationServer)) {
-            $message = "[GEARMAND][DIALPLAN] Can't reload Dialplan. No application server setted for this company.";
-            $this->_logger->log($message, \Zend_Log::ERR);
-            return;
-        }
-        $ip = $applicationServer->getIp();
-        $headers = array(
-            "Action" => "Command",
-            "Command" => "Dialplan Reload"
-        );
-        $ami = new \Ami_Connector($ip, $this->_amiPort, $this->_amiUserName, $this->_amiPassword);
-        $ami->setLogger($this->_logger)
-            ->setHeaders($headers);
-        $response = $ami->send();
-        if ($response === false) {
-            $this->_logger->log("[GEARMAND][DIALPLAN] Error reloading dialplan.", \Zend_Log::ERR);
-        } else {
-            $message = "[GEARMAND][DIALPLAN] Dialplan reload response was '".$response["rawResponse"]."'";
-            $this->_logger->log($message, \Zend_Log::INFO);
-        }
+        $asMapper = new \IvozProvider\Mapper\Sql\ApplicationServers();
+        $servers = $asMapper->fetchList();
 
+        foreach ($servers as $server) {
+            $this->_logger->log("[GEARMAND][DIALPLAN] Reloading ". $server->getName()  ." dialplan...", \Zend_Log::INFO);
+            $ip = $server->getIp();
+            $headers = array(
+                "Action" => "Command",
+                "Command" => "Dialplan Reload"
+            );
+            $ami = new \Ami_Connector($ip, $this->_amiPort, $this->_amiUserName, $this->_amiPassword);
+
+            $ami->setLogger($this->_logger)
+                ->setHeaders($headers);
+
+            $response = $ami->send();
+
+            if ($response === false) {
+                $this->_logger->log("[GEARMAND][DIALPLAN] Error reloading dialplan for as ". $server->getName(), \Zend_Log::ERR);
+            } else {
+                $message = "[GEARMAND][DIALPLAN] Dialplan reload response was '".$response["rawResponse"]."'";
+                $this->_logger->log($message, \Zend_Log::INFO);
+            }
+        }
     }
 
     public function sendFax(\GearmanJob $serializedJob)

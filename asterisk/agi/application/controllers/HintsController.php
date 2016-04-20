@@ -41,7 +41,7 @@ class HintsController extends BaseController
                 }
                 
                 // Format context name
-                echo "[" . $company->getId() . "]\n";
+                echo "[company" . $company->getId() . "]\n";
                 // Add context hint extensions
                 foreach ($response as $exten => $interface) {
                     echo "exten => " . $exten . ",hint," . $interface . "\n";

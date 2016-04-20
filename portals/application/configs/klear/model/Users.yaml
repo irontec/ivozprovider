@@ -208,7 +208,6 @@ production:
             title: _("No")
           '1': 
             title: _("Yes")
-
     voicemailEnabled: 
       title: _('Voicemail enabled')
       type: select
@@ -218,9 +217,14 @@ production:
         values: 
           '0': 
             title: _("No")
+            visualFilter:
+              show: []
+              hide: ["attachVoicemailSound"]
           '1': 
             title: _("Yes")
-
+            visualFilter:
+              show: ["attachVoicemailSound"]
+              hide: []
     PickUpRelUsers:
       title: _('Pick Up Groups')
       type: multiselect
@@ -234,7 +238,6 @@ production:
           relatedFieldName: name
           relationProperty: PickUpGroup
           filterClass: IvozProvider_Klear_Filter_Company
-
     countryId: 
       title: _('Country code')
       type: select

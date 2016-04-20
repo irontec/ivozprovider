@@ -232,14 +232,14 @@ class Agi_Wrapper
 	    return $this->_fastagi->exec("Dial", "$interfaces,$timeout,$dialopts");
 	}
 	
-	public function voicemail($mailbox, $company)
+	public function voicemail($mailbox)
 	{
-	    return $this->_fastagi->exec('VoiceMail', "$mailbox@$company,s");
+	    return $this->_fastagi->exec('VoiceMail', "$mailbox,s");
 	}
 	
-	public function checkVoicemail($mailbox, $company)
+	public function checkVoicemail($mailbox)
 	{
-	    return $this->_fastagi->exec('VoiceMailMain', "$mailbox@$company,s");
+	    return $this->_fastagi->exec('VoiceMailMain', "$mailbox,s");
 	}
 	
 	public function setCallType($value)
