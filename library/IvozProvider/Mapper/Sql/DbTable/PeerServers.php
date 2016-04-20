@@ -53,7 +53,7 @@ class PeerServers extends TableAbstract
     );
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamAddress'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -79,13 +79,13 @@ class PeerServers extends TableAbstract
 	    'TABLE_NAME' => 'PeerServers',
 	    'COLUMN_NAME' => 'peeringContractId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

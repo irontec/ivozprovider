@@ -381,9 +381,6 @@ class TransformationRulesetGroupsUsers extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -455,20 +452,6 @@ class TransformationRulesetGroupsUsers extends MapperAbstract
 
                     foreach ($companies as $value) {
                         $value->setTransformationRulesetGroupsId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getKamUsersDialplan(null, null, true) !== null) {
-                    $kamUsersDialplan = $model->getKamUsersDialplan();
-
-                    if (!is_array($kamUsersDialplan)) {
-
-                        $kamUsersDialplan = array($kamUsersDialplan);
-                    }
-
-                    foreach ($kamUsersDialplan as $value) {
-                        $value->setTransformationRulesetGroupsUsersId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }

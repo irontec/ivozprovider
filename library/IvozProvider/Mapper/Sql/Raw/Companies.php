@@ -389,9 +389,6 @@ class Companies extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -677,6 +674,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getParsedCDRs(null, null, true) !== null) {
+                    $parsedCDRs = $model->getParsedCDRs();
+
+                    if (!is_array($parsedCDRs)) {
+
+                        $parsedCDRs = array($parsedCDRs);
+                    }
+
+                    foreach ($parsedCDRs as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getPickUpGroups(null, null, true) !== null) {
                     $pickUpGroups = $model->getPickUpGroups();
 
@@ -756,20 +767,6 @@ class Companies extends MapperAbstract
                     }
 
                     foreach ($users as $value) {
-                        $value->setCompanyId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getParsedCDRs(null, null, true) !== null) {
-                    $parsedCDRs = $model->getParsedCDRs();
-
-                    if (!is_array($parsedCDRs)) {
-
-                        $parsedCDRs = array($parsedCDRs);
-                    }
-
-                    foreach ($parsedCDRs as $value) {
                         $value->setCompanyId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

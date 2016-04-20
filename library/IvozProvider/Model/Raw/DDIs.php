@@ -31,17 +31,16 @@ class DDIs extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -53,9 +52,9 @@ class DDIs extends ModelAbstract
     protected $_DDI;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_externalCallFilterId;
 
@@ -68,37 +67,37 @@ class DDIs extends ModelAbstract
     protected $_routeType;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_userId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_IVRCommonId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_IVRCustomId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_huntGroupId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_faxId;
 
@@ -188,7 +187,6 @@ class DDIs extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax'),
         ));
 
@@ -278,7 +276,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setId($data)
@@ -288,14 +286,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -304,7 +310,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setCompanyId($data)
@@ -317,14 +323,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -370,7 +384,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setExternalCallFilterId($data)
@@ -380,14 +394,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('externalCallFilterId');
         }
 
-        $this->_externalCallFilterId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_externalCallFilterId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_externalCallFilterId = (int) $data;
+
+        } else {
+            $this->_externalCallFilterId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column externalCallFilterId
      *
-     * @return binary
+     * @return int
      */
     public function getExternalCallFilterId()
     {
@@ -436,7 +458,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setUserId($data)
@@ -446,14 +468,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('userId');
         }
 
-        $this->_userId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_userId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_userId = (int) $data;
+
+        } else {
+            $this->_userId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column userId
      *
-     * @return binary
+     * @return int
      */
     public function getUserId()
     {
@@ -462,7 +492,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setIVRCommonId($data)
@@ -472,14 +502,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('IVRCommonId');
         }
 
-        $this->_IVRCommonId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_IVRCommonId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_IVRCommonId = (int) $data;
+
+        } else {
+            $this->_IVRCommonId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column IVRCommonId
      *
-     * @return binary
+     * @return int
      */
     public function getIVRCommonId()
     {
@@ -488,7 +526,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setIVRCustomId($data)
@@ -498,14 +536,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('IVRCustomId');
         }
 
-        $this->_IVRCustomId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_IVRCustomId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_IVRCustomId = (int) $data;
+
+        } else {
+            $this->_IVRCustomId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column IVRCustomId
      *
-     * @return binary
+     * @return int
      */
     public function getIVRCustomId()
     {
@@ -514,7 +560,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setHuntGroupId($data)
@@ -524,14 +570,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('huntGroupId');
         }
 
-        $this->_huntGroupId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_huntGroupId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_huntGroupId = (int) $data;
+
+        } else {
+            $this->_huntGroupId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column huntGroupId
      *
-     * @return binary
+     * @return int
      */
     public function getHuntGroupId()
     {
@@ -540,7 +594,7 @@ class DDIs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
     public function setFaxId($data)
@@ -550,14 +604,22 @@ class DDIs extends ModelAbstract
             $this->_logChange('faxId');
         }
 
-        $this->_faxId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_faxId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_faxId = (int) $data;
+
+        } else {
+            $this->_faxId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column faxId
      *
-     * @return binary
+     * @return int
      */
     public function getFaxId()
     {

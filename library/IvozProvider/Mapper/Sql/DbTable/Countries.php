@@ -52,7 +52,7 @@ class Countries extends TableAbstract
 	    'TABLE_NAME' => 'Countries',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,

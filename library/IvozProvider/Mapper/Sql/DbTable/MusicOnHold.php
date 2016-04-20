@@ -31,14 +31,14 @@ class MusicOnHold extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\MusicOnHold';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\MusicOnHold';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'MusicOnHoldIbfk1' => array(
             'columns' => 'companyId',
@@ -54,16 +54,16 @@ class MusicOnHold extends TableAbstract
 	    'TABLE_NAME' => 'MusicOnHold',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'companyId' => 
 	  array (
@@ -71,13 +71,13 @@ class MusicOnHold extends TableAbstract
 	    'TABLE_NAME' => 'MusicOnHold',
 	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

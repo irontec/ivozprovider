@@ -191,6 +191,10 @@ production:
           title: ngettext('Outgoing routing', 'Outgoing routing', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Outgoing routing', 'Outgoing routing', 0))
+        ParsedCDRsList: 
+          title: ngettext('Parsed c d r', 'Parsed c d rs', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Parsed c d r', 'Parsed c d rs', 0))
         PeerServersList: 
           title: ngettext('Peer server', 'Peer servers', 0)
           class: ui-silk-text-list-bullets
@@ -219,6 +223,14 @@ production:
           title: ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 0))
+        ProxyTrunksList: 
+          title: ngettext('Proxy trunk', 'Proxy trunks', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))
+        ProxyUsersList: 
+          title: ngettext('Proxy user', 'Proxy users', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))
         SchedulesList: 
           title: ngettext('Schedule', 'Schedules', 0)
           class: ui-silk-text-list-bullets
@@ -303,22 +315,6 @@ production:
           title: ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0))
-        KamUsersDialplanList: 
-          title: ngettext('Kam users dialplan', 'Kam users dialplan', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam users dialplan', 'Kam users dialplan', 0))
-        ParsedCDRsList: 
-          title: ngettext('Parsed c d r', 'Parsed c d rs', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Parsed c d r', 'Parsed c d rs', 0))
-        ProxyTrunksList: 
-          title: ngettext('Proxy trunk', 'Proxy trunks', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))
-        ProxyUsersList: 
-          title: ngettext('Proxy user', 'Proxy users', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))
 staging: 
   _extends: production
 testing: 

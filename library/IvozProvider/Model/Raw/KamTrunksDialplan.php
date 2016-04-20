@@ -87,9 +87,9 @@ class KamTrunksDialplan extends ModelAbstract
     protected $_attrs;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_transformationRulesetGroupsTrunksId;
 
@@ -507,7 +507,7 @@ class KamTrunksDialplan extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\KamTrunksDialplan
      */
     public function setTransformationRulesetGroupsTrunksId($data)
@@ -520,14 +520,22 @@ class KamTrunksDialplan extends ModelAbstract
             $this->_logChange('transformationRulesetGroupsTrunksId');
         }
 
-        $this->_transformationRulesetGroupsTrunksId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_transformationRulesetGroupsTrunksId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_transformationRulesetGroupsTrunksId = (int) $data;
+
+        } else {
+            $this->_transformationRulesetGroupsTrunksId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column transformationRulesetGroupsTrunksId
      *
-     * @return binary
+     * @return int
      */
     public function getTransformationRulesetGroupsTrunksId()
     {

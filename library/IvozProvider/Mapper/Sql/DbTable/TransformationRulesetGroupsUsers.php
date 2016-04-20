@@ -31,14 +31,14 @@ class TransformationRulesetGroupsUsers extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\TransformationRulesetGroupsUsers';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\TransformationRulesetGroupsUsers';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'TransformationRulesetGroupsUsersIbfk1' => array(
             'columns' => 'brandId',
@@ -47,8 +47,7 @@ class TransformationRulesetGroupsUsers extends TableAbstract
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersDialplan'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -57,16 +56,16 @@ class TransformationRulesetGroupsUsers extends TableAbstract
 	    'TABLE_NAME' => 'TransformationRulesetGroupsUsers',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'brandId' => 
 	  array (

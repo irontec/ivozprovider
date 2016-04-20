@@ -40,17 +40,16 @@ class CallForwardSettings extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_userId;
 
@@ -86,16 +85,16 @@ class CallForwardSettings extends ModelAbstract
     protected $_numberValue;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_extensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_voiceMailUserId;
 
@@ -147,7 +146,6 @@ class CallForwardSettings extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'callTypeFilter'=> array('enum:internal|external|both'),
             'callForwardType'=> array('enum:inconditional|noAnswer|busy|userNotRegistered'),
             'targetType'=> array('enum:number|extension|voicemail'),
@@ -216,7 +214,7 @@ class CallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallForwardSettings
      */
     public function setId($data)
@@ -226,14 +224,22 @@ class CallForwardSettings extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -242,7 +248,7 @@ class CallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallForwardSettings
      */
     public function setUserId($data)
@@ -255,14 +261,22 @@ class CallForwardSettings extends ModelAbstract
             $this->_logChange('userId');
         }
 
-        $this->_userId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_userId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_userId = (int) $data;
+
+        } else {
+            $this->_userId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column userId
      *
-     * @return binary
+     * @return int
      */
     public function getUserId()
     {
@@ -425,7 +439,7 @@ class CallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallForwardSettings
      */
     public function setExtensionId($data)
@@ -435,14 +449,22 @@ class CallForwardSettings extends ModelAbstract
             $this->_logChange('extensionId');
         }
 
-        $this->_extensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_extensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_extensionId = (int) $data;
+
+        } else {
+            $this->_extensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column extensionId
      *
-     * @return binary
+     * @return int
      */
     public function getExtensionId()
     {
@@ -451,7 +473,7 @@ class CallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallForwardSettings
      */
     public function setVoiceMailUserId($data)
@@ -461,14 +483,22 @@ class CallForwardSettings extends ModelAbstract
             $this->_logChange('voiceMailUserId');
         }
 
-        $this->_voiceMailUserId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_voiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_voiceMailUserId = (int) $data;
+
+        } else {
+            $this->_voiceMailUserId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column voiceMailUserId
      *
-     * @return binary
+     * @return int
      */
     public function getVoiceMailUserId()
     {

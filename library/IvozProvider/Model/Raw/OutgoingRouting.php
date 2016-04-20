@@ -29,7 +29,7 @@ class OutgoingRouting extends ModelAbstract
     );
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -43,14 +43,14 @@ class OutgoingRouting extends ModelAbstract
     protected $_type;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
     protected $_targetPatternId;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -64,9 +64,9 @@ class OutgoingRouting extends ModelAbstract
     protected $_regexp;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_peeringContractId;
 
@@ -85,9 +85,9 @@ class OutgoingRouting extends ModelAbstract
     protected $_weight;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -428,7 +428,7 @@ class OutgoingRouting extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\OutgoingRouting
      */
     public function setPeeringContractId($data)
@@ -441,14 +441,22 @@ class OutgoingRouting extends ModelAbstract
             $this->_logChange('peeringContractId');
         }
 
-        $this->_peeringContractId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peeringContractId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peeringContractId = (int) $data;
+
+        } else {
+            $this->_peeringContractId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column peeringContractId
      *
-     * @return binary
+     * @return int
      */
     public function getPeeringContractId()
     {
@@ -528,7 +536,7 @@ class OutgoingRouting extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\OutgoingRouting
      */
     public function setCompanyId($data)
@@ -541,14 +549,22 @@ class OutgoingRouting extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {

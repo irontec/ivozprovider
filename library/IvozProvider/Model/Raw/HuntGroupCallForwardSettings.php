@@ -34,17 +34,16 @@ class HuntGroupCallForwardSettings extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_huntGroupId;
 
@@ -72,16 +71,16 @@ class HuntGroupCallForwardSettings extends ModelAbstract
     protected $_callNumberValue;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_callExtensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_callVoiceMailUserId;
 
@@ -124,7 +123,6 @@ class HuntGroupCallForwardSettings extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'callTypeFilter'=> array('enum:internal|external|both'),
             'callTargetType'=> array('enum:number|extension|voicemail'),
         ));
@@ -191,7 +189,7 @@ class HuntGroupCallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
      */
     public function setId($data)
@@ -201,14 +199,22 @@ class HuntGroupCallForwardSettings extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -217,7 +223,7 @@ class HuntGroupCallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
      */
     public function setHuntGroupId($data)
@@ -230,14 +236,22 @@ class HuntGroupCallForwardSettings extends ModelAbstract
             $this->_logChange('huntGroupId');
         }
 
-        $this->_huntGroupId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_huntGroupId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_huntGroupId = (int) $data;
+
+        } else {
+            $this->_huntGroupId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column huntGroupId
      *
-     * @return binary
+     * @return int
      */
     public function getHuntGroupId()
     {
@@ -357,7 +371,7 @@ class HuntGroupCallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
      */
     public function setCallExtensionId($data)
@@ -367,14 +381,22 @@ class HuntGroupCallForwardSettings extends ModelAbstract
             $this->_logChange('callExtensionId');
         }
 
-        $this->_callExtensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_callExtensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_callExtensionId = (int) $data;
+
+        } else {
+            $this->_callExtensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column callExtensionId
      *
-     * @return binary
+     * @return int
      */
     public function getCallExtensionId()
     {
@@ -383,7 +405,7 @@ class HuntGroupCallForwardSettings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
      */
     public function setCallVoiceMailUserId($data)
@@ -393,14 +415,22 @@ class HuntGroupCallForwardSettings extends ModelAbstract
             $this->_logChange('callVoiceMailUserId');
         }
 
-        $this->_callVoiceMailUserId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_callVoiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_callVoiceMailUserId = (int) $data;
+
+        } else {
+            $this->_callVoiceMailUserId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column callVoiceMailUserId
      *
-     * @return binary
+     * @return int
      */
     public function getCallVoiceMailUserId()
     {

@@ -31,14 +31,14 @@ class CallACLRelPatterns extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\CallACLRelPatterns';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\CallACLRelPatterns';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'CallACLRelPatternsIbfk1' => array(
             'columns' => 'CallACLId',
@@ -59,16 +59,16 @@ class CallACLRelPatterns extends TableAbstract
 	    'TABLE_NAME' => 'CallACLRelPatterns',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'CallACLId' => 
 	  array (
@@ -76,13 +76,13 @@ class CallACLRelPatterns extends TableAbstract
 	    'TABLE_NAME' => 'CallACLRelPatterns',
 	    'COLUMN_NAME' => 'CallACLId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -93,13 +93,13 @@ class CallACLRelPatterns extends TableAbstract
 	    'TABLE_NAME' => 'CallACLRelPatterns',
 	    'COLUMN_NAME' => 'CallACLPatternId',
 	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

@@ -31,14 +31,14 @@ class Companies extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\Companies';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\Companies';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'CompaniesIbfk2' => array(
             'columns' => 'defaultTimezoneId',
@@ -88,13 +88,13 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Locutions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\MusicOnHold',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelCompanies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Schedules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Services',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -103,16 +103,16 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'brandId' => 
 	  array (
@@ -171,7 +171,7 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'defaultTimezoneId',
 	    'COLUMN_POSITION' => 5,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
@@ -188,13 +188,13 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'applicationServerId',
 	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -205,13 +205,13 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'transformationRulesetGroupsId',
 	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -324,13 +324,13 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'invoiceLanguageId',
 	    'COLUMN_POSITION' => 14,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -358,7 +358,7 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'countryId',
 	    'COLUMN_POSITION' => 16,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,

@@ -31,14 +31,14 @@ class TerminalManufacturers extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\TerminalManufacturers';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\TerminalManufacturers';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\TerminalModels'
@@ -50,16 +50,16 @@ class TerminalManufacturers extends TableAbstract
 	    'TABLE_NAME' => 'TerminalManufacturers',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'iden' => 
 	  array (

@@ -24,10 +24,9 @@ class TerminalModels extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -53,9 +52,9 @@ class TerminalModels extends ModelAbstract
     protected $_description;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_TerminalManufacturerId;
 
@@ -122,7 +121,6 @@ class TerminalModels extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -185,7 +183,7 @@ class TerminalModels extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\TerminalModels
      */
     public function setId($data)
@@ -195,14 +193,22 @@ class TerminalModels extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -316,7 +322,7 @@ class TerminalModels extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\TerminalModels
      */
     public function setTerminalManufacturerId($data)
@@ -329,14 +335,22 @@ class TerminalModels extends ModelAbstract
             $this->_logChange('TerminalManufacturerId');
         }
 
-        $this->_TerminalManufacturerId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_TerminalManufacturerId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_TerminalManufacturerId = (int) $data;
+
+        } else {
+            $this->_TerminalManufacturerId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column TerminalManufacturerId
      *
-     * @return binary
+     * @return int
      */
     public function getTerminalManufacturerId()
     {

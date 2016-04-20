@@ -25,9 +25,9 @@ class KamDispatcher extends ModelAbstract
 
     /**
      * [uuid]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -74,9 +74,9 @@ class KamDispatcher extends ModelAbstract
     protected $_description;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_applicationServerId;
 
@@ -169,7 +169,7 @@ class KamDispatcher extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\KamDispatcher
      */
     public function setId($data)
@@ -179,14 +179,22 @@ class KamDispatcher extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -399,7 +407,7 @@ class KamDispatcher extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\KamDispatcher
      */
     public function setApplicationServerId($data)
@@ -412,14 +420,22 @@ class KamDispatcher extends ModelAbstract
             $this->_logChange('applicationServerId');
         }
 
-        $this->_applicationServerId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_applicationServerId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_applicationServerId = (int) $data;
+
+        } else {
+            $this->_applicationServerId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column applicationServerId
      *
-     * @return binary
+     * @return int
      */
     public function getApplicationServerId()
     {

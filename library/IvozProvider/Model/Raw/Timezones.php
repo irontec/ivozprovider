@@ -24,14 +24,14 @@ class Timezones extends ModelAbstract
 
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
     protected $_id;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */

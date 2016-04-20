@@ -5,7 +5,7 @@ production:
       title: _('Number')
       type: text
       required: true
-      maxLength: 300
+      maxLength: 30
       default: true
     inDate: 
       title: _('In date')

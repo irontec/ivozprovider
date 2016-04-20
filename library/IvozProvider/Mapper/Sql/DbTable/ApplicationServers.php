@@ -31,14 +31,14 @@ class ApplicationServers extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\ApplicationServers';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\ApplicationServers';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -51,16 +51,16 @@ class ApplicationServers extends TableAbstract
 	    'TABLE_NAME' => 'ApplicationServers',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'ip' => 
 	  array (
@@ -79,63 +79,12 @@ class ApplicationServers extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'transport' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ApplicationServers',
-	    'COLUMN_NAME' => 'transport',
-	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => 'udp',
-	    'NULLABLE' => false,
-	    'LENGTH' => '4',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'from_pattern' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ApplicationServers',
-	    'COLUMN_NAME' => 'from_pattern',
-	    'COLUMN_POSITION' => 4,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => '64',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'tag' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ApplicationServers',
-	    'COLUMN_NAME' => 'tag',
-	    'COLUMN_POSITION' => 5,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => '64',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
 	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ApplicationServers',
 	    'COLUMN_NAME' => 'name',
-	    'COLUMN_POSITION' => 6,
+	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

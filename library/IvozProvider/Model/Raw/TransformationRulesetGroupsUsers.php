@@ -24,10 +24,9 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -97,14 +96,6 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
      */
     protected $_Companies;
 
-    /**
-     * Dependent relation kam_users_dialplan_ibfk_2
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\KamUsersDialplan[]
-     */
-    protected $_KamUsersDialplan;
-
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
@@ -122,7 +113,6 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -141,10 +131,6 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
             'CompaniesIbfk7' => array(
                     'property' => 'Companies',
                     'table_name' => 'Companies',
-                ),
-            'KamUsersDialplanIbfk2' => array(
-                    'property' => 'KamUsersDialplan',
-                    'table_name' => 'kam_users_dialplan',
                 ),
         ));
 
@@ -191,7 +177,7 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
      */
     public function setId($data)
@@ -201,14 +187,22 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -598,96 +592,6 @@ class TransformationRulesetGroupsUsers extends ModelAbstract
         }
 
         return $this->_Companies;
-    }
-
-    /**
-     * Sets dependent relations kam_users_dialplan_ibfk_2
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\KamUsersDialplan
-     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
-     */
-    public function setKamUsersDialplan(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_KamUsersDialplan === null) {
-
-                $this->getKamUsersDialplan();
-            }
-
-            $oldRelations = $this->_KamUsersDialplan;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_KamUsersDialplan = array();
-
-        foreach ($data as $object) {
-            $this->addKamUsersDialplan($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations kam_users_dialplan_ibfk_2
-     *
-     * @param \IvozProvider\Model\Raw\KamUsersDialplan $data
-     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsUsers
-     */
-    public function addKamUsersDialplan(\IvozProvider\Model\Raw\KamUsersDialplan $data)
-    {
-        $this->_KamUsersDialplan[] = $data;
-        $this->_setLoaded('KamUsersDialplanIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets dependent kam_users_dialplan_ibfk_2
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\KamUsersDialplan
-     */
-    public function getKamUsersDialplan($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'KamUsersDialplanIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_KamUsersDialplan = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_KamUsersDialplan;
     }
 
     /**

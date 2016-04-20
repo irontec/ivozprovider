@@ -31,9 +31,9 @@ class PeerServers extends ModelAbstract
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_peeringContractId;
 
@@ -181,12 +181,12 @@ class PeerServers extends ModelAbstract
     protected $_LcrRuleTarget;
 
     /**
-     * Dependent relation kam_address_ibfk_1
+     * Dependent relation kam_users_address_ibfk_1
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\KamAddress[]
+     * @var \IvozProvider\Model\Raw\KamUsersAddress[]
      */
-    protected $_KamAddress;
+    protected $_KamUsersAddress;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -239,9 +239,9 @@ class PeerServers extends ModelAbstract
                     'property' => 'LcrRuleTarget',
                     'table_name' => 'LcrRuleTarget',
                 ),
-            'KamAddressIbfk1' => array(
-                    'property' => 'KamAddress',
-                    'table_name' => 'kam_address',
+            'KamUsersAddressIbfk1' => array(
+                    'property' => 'KamUsersAddress',
+                    'table_name' => 'kam_users_address',
                 ),
         ));
 
@@ -323,7 +323,7 @@ class PeerServers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\PeerServers
      */
     public function setPeeringContractId($data)
@@ -336,14 +336,22 @@ class PeerServers extends ModelAbstract
             $this->_logChange('peeringContractId');
         }
 
-        $this->_peeringContractId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peeringContractId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peeringContractId = (int) $data;
+
+        } else {
+            $this->_peeringContractId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column peeringContractId
      *
-     * @return binary
+     * @return int
      */
     public function getPeeringContractId()
     {
@@ -1122,21 +1130,21 @@ class PeerServers extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations kam_address_ibfk_1
+     * Sets dependent relations kam_users_address_ibfk_1
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\KamAddress
+     * @param array $data An array of \IvozProvider\Model\Raw\KamUsersAddress
      * @return \IvozProvider\Model\Raw\PeerServers
      */
-    public function setKamAddress(array $data, $deleteOrphans = false)
+    public function setKamUsersAddress(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_KamAddress === null) {
+            if ($this->_KamUsersAddress === null) {
 
-                $this->getKamAddress();
+                $this->getKamUsersAddress();
             }
 
-            $oldRelations = $this->_KamAddress;
+            $oldRelations = $this->_KamUsersAddress;
 
             if (is_array($oldRelations)) {
 
@@ -1160,39 +1168,39 @@ class PeerServers extends ModelAbstract
             }
         }
 
-        $this->_KamAddress = array();
+        $this->_KamUsersAddress = array();
 
         foreach ($data as $object) {
-            $this->addKamAddress($object);
+            $this->addKamUsersAddress($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations kam_address_ibfk_1
+     * Sets dependent relations kam_users_address_ibfk_1
      *
-     * @param \IvozProvider\Model\Raw\KamAddress $data
+     * @param \IvozProvider\Model\Raw\KamUsersAddress $data
      * @return \IvozProvider\Model\Raw\PeerServers
      */
-    public function addKamAddress(\IvozProvider\Model\Raw\KamAddress $data)
+    public function addKamUsersAddress(\IvozProvider\Model\Raw\KamUsersAddress $data)
     {
-        $this->_KamAddress[] = $data;
-        $this->_setLoaded('KamAddressIbfk1');
+        $this->_KamUsersAddress[] = $data;
+        $this->_setLoaded('KamUsersAddressIbfk1');
         return $this;
     }
 
     /**
-     * Gets dependent kam_address_ibfk_1
+     * Gets dependent kam_users_address_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\KamAddress
+     * @return array The array of \IvozProvider\Model\Raw\KamUsersAddress
      */
-    public function getKamAddress($where = null, $orderBy = null, $avoidLoading = false)
+    public function getKamUsersAddress($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'KamAddressIbfk1';
+        $fkName = 'KamUsersAddressIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -1204,11 +1212,11 @@ class PeerServers extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_KamAddress = $related;
+            $this->_KamUsersAddress = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_KamAddress;
+        return $this->_KamUsersAddress;
     }
 
     /**

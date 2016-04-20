@@ -31,14 +31,14 @@ class IVRCustomEntries extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\IVRCustomEntries';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\IVRCustomEntries';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'IVRCustomEntriesIbfk1' => array(
             'columns' => 'IVRCustomId',
@@ -69,16 +69,16 @@ class IVRCustomEntries extends TableAbstract
 	    'TABLE_NAME' => 'IVRCustomEntries',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'IVRCustomId' => 
 	  array (
@@ -86,13 +86,13 @@ class IVRCustomEntries extends TableAbstract
 	    'TABLE_NAME' => 'IVRCustomEntries',
 	    'COLUMN_NAME' => 'IVRCustomId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -120,13 +120,13 @@ class IVRCustomEntries extends TableAbstract
 	    'TABLE_NAME' => 'IVRCustomEntries',
 	    'COLUMN_NAME' => 'welcomeLocutionId',
 	    'COLUMN_POSITION' => 4,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -171,13 +171,13 @@ class IVRCustomEntries extends TableAbstract
 	    'TABLE_NAME' => 'IVRCustomEntries',
 	    'COLUMN_NAME' => 'targetExtensionId',
 	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -188,13 +188,13 @@ class IVRCustomEntries extends TableAbstract
 	    'TABLE_NAME' => 'IVRCustomEntries',
 	    'COLUMN_NAME' => 'targetVoiceMailUserId',
 	    'COLUMN_POSITION' => 8,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

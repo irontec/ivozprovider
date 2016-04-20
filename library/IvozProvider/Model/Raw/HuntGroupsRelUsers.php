@@ -24,24 +24,23 @@ class HuntGroupsRelUsers extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_huntGroupId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_userId;
 
@@ -89,7 +88,6 @@ class HuntGroupsRelUsers extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -150,7 +148,7 @@ class HuntGroupsRelUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupsRelUsers
      */
     public function setId($data)
@@ -160,14 +158,22 @@ class HuntGroupsRelUsers extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -176,7 +182,7 @@ class HuntGroupsRelUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupsRelUsers
      */
     public function setHuntGroupId($data)
@@ -189,14 +195,22 @@ class HuntGroupsRelUsers extends ModelAbstract
             $this->_logChange('huntGroupId');
         }
 
-        $this->_huntGroupId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_huntGroupId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_huntGroupId = (int) $data;
+
+        } else {
+            $this->_huntGroupId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column huntGroupId
      *
-     * @return binary
+     * @return int
      */
     public function getHuntGroupId()
     {
@@ -205,7 +219,7 @@ class HuntGroupsRelUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HuntGroupsRelUsers
      */
     public function setUserId($data)
@@ -218,14 +232,22 @@ class HuntGroupsRelUsers extends ModelAbstract
             $this->_logChange('userId');
         }
 
-        $this->_userId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_userId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_userId = (int) $data;
+
+        } else {
+            $this->_userId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column userId
      *
-     * @return binary
+     * @return int
      */
     public function getUserId()
     {

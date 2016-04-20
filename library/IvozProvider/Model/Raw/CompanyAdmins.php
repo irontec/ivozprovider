@@ -25,16 +25,16 @@ class CompanyAdmins extends ModelAbstract
 
     /**
      * [uuid]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -68,7 +68,7 @@ class CompanyAdmins extends ModelAbstract
     protected $_active;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -185,7 +185,7 @@ class CompanyAdmins extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CompanyAdmins
      */
     public function setId($data)
@@ -195,14 +195,22 @@ class CompanyAdmins extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -211,7 +219,7 @@ class CompanyAdmins extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CompanyAdmins
      */
     public function setCompanyId($data)
@@ -224,14 +232,22 @@ class CompanyAdmins extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {

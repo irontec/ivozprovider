@@ -31,6 +31,13 @@ class AstMusiconhold extends ModelAbstract
     );
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_id;
+
+    /**
      * Database var type varchar
      *
      * @var string
@@ -86,16 +93,10 @@ class AstMusiconhold extends ModelAbstract
      */
     protected $_stamp;
 
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_id;
-
 
 
     protected $_columnsList = array(
+        'id'=>'id',
         'name'=>'name',
         'mode'=>'mode',
         'directory'=>'directory',
@@ -104,7 +105,6 @@ class AstMusiconhold extends ModelAbstract
         'sort'=>'sort',
         'format'=>'format',
         'stamp'=>'stamp',
-        'id'=>'id',
     );
 
     /**
@@ -162,6 +162,40 @@ class AstMusiconhold extends ModelAbstract
     /**************************************************************************
     *********************************** /FSO ***********************************
     ***************************************************************************/
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstMusiconhold
+     */
+    public function setId($data)
+    {
+
+        if ($this->_id != $data) {
+            $this->_logChange('id');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
 
     /**
      * Sets column Stored in ISO 8601 format.     *
@@ -461,40 +495,6 @@ class AstMusiconhold extends ModelAbstract
         }
 
         return $this->_stamp->format('Y-m-d H:i:s');
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\AstMusiconhold
-     */
-    public function setId($data)
-    {
-
-        if ($this->_id != $data) {
-            $this->_logChange('id');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_id = $data;
-
-        } else if (!is_null($data)) {
-            $this->_id = (int) $data;
-
-        } else {
-            $this->_id = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->_id;
     }
 
     /**

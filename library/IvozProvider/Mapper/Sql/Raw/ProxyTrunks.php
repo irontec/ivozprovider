@@ -376,9 +376,6 @@ class ProxyTrunks extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -438,6 +435,51 @@ class ProxyTrunks extends MapperAbstract
                 }
             }
 
+
+            if ($recursive) {
+                if ($model->getAstPsAors(null, null, true) !== null) {
+                    $astPsAors = $model->getAstPsAors();
+
+                    if (!is_array($astPsAors)) {
+
+                        $astPsAors = array($astPsAors);
+                    }
+
+                    foreach ($astPsAors as $value) {
+                        $value->setProxyTrunkId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getAstPsEndpoints(null, null, true) !== null) {
+                    $astPsEndpoints = $model->getAstPsEndpoints();
+
+                    if (!is_array($astPsEndpoints)) {
+
+                        $astPsEndpoints = array($astPsEndpoints);
+                    }
+
+                    foreach ($astPsEndpoints as $value) {
+                        $value->setProxyTrunkId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getAstPsIdentify(null, null, true) !== null) {
+                    $astPsIdentify = $model->getAstPsIdentify();
+
+                    if (!is_array($astPsIdentify)) {
+
+                        $astPsIdentify = array($astPsIdentify);
+                    }
+
+                    foreach ($astPsIdentify as $value) {
+                        $value->setProxyTrunkId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+            }
 
             if ($success === true) {
 

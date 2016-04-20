@@ -48,6 +48,7 @@ class AstMusiconhold extends MapperAbstract
 
         if (empty($fields)) {
             $result = array(
+                'id' => $model->getId(),
                 'name' => $model->getName(),
                 'mode' => $model->getMode(),
                 'directory' => $model->getDirectory(),
@@ -56,7 +57,6 @@ class AstMusiconhold extends MapperAbstract
                 'sort' => $model->getSort(),
                 'format' => $model->getFormat(),
                 'stamp' => $model->getStamp(),
-                'id' => $model->getId(),
             );
         } else {
             $result = array();
@@ -534,36 +534,36 @@ class AstMusiconhold extends MapperAbstract
         $entry->stopChangeLog();
 
         if (is_array($data)) {
-            $entry->setName($data['name'])
+            $entry->setId($data['id'])
+                  ->setName($data['name'])
                   ->setMode($data['mode'])
                   ->setDirectory($data['directory'])
                   ->setApplication($data['application'])
                   ->setDigit($data['digit'])
                   ->setSort($data['sort'])
                   ->setFormat($data['format'])
-                  ->setStamp($data['stamp'])
-                  ->setId($data['id']);
+                  ->setStamp($data['stamp']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
-            $entry->setName($data->{'name'})
+            $entry->setId($data->{'id'})
+                  ->setName($data->{'name'})
                   ->setMode($data->{'mode'})
                   ->setDirectory($data->{'directory'})
                   ->setApplication($data->{'application'})
                   ->setDigit($data->{'digit'})
                   ->setSort($data->{'sort'})
                   ->setFormat($data->{'format'})
-                  ->setStamp($data->{'stamp'})
-                  ->setId($data->{'id'});
+                  ->setStamp($data->{'stamp'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstMusiconhold) {
-            $entry->setName($data->getName())
+            $entry->setId($data->getId())
+                  ->setName($data->getName())
                   ->setMode($data->getMode())
                   ->setDirectory($data->getDirectory())
                   ->setApplication($data->getApplication())
                   ->setDigit($data->getDigit())
                   ->setSort($data->getSort())
                   ->setFormat($data->getFormat())
-                  ->setStamp($data->getStamp())
-                  ->setId($data->getId());
+                  ->setStamp($data->getStamp());
 
         }
 

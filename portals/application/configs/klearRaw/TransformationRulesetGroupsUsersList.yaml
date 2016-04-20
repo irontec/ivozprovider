@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include CompaniesList.yaml
-#include KamUsersDialplanList.yaml
 
 
 production: 
@@ -22,7 +21,6 @@ production:
           screens: 
             transformationRulesetGroupsUsersEdit_screen: true
             companiesList_screen: true
-            kamUsersDialplanList_screen: true
           dialogs: 
             transformationRulesetGroupsUsersDel_dialog: true
           default: transformationRulesetGroupsUsersEdit_screen
@@ -64,19 +62,6 @@ production:
       <<: *companiesEdit_screenLink
       filterField: transformationRulesetGroupsId
 
-    #kamUsersDialplan: 
-    kamUsersDialplanList_screen: 
-      <<: *kamUsersDialplanList_screenLink
-      filterField: transformationRulesetGroupsUsersId
-      parentOptionCustomizer: 
-        - recordCount
-    kamUsersDialplanNew_screen: 
-      <<: *kamUsersDialplanNew_screenLink
-      filterField: transformationRulesetGroupsUsersId
-    kamUsersDialplanEdit_screen: 
-      <<: *kamUsersDialplanEdit_screenLink
-      filterField: transformationRulesetGroupsUsersId
-
   dialogs: &transformationRulesetGroupsUsers_dialogsLink 
     transformationRulesetGroupsUsersDel_dialog: &transformationRulesetGroupsUsersDel_dialogLink 
       <<: *TransformationRulesetGroupsUsers
@@ -90,8 +75,6 @@ production:
       labelOnList: 1
   # companies dialogs: 
     <<: *companies_dialogsLink
-  # kamUsersDialplan dialogs: 
-    <<: *kamUsersDialplan_dialogsLink
 staging: 
   _extends: production
 testing: 

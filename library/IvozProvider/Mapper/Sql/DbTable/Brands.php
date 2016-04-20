@@ -59,6 +59,7 @@ class Brands extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget',
         'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlans',
@@ -68,8 +69,7 @@ class Brands extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\TargetPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\TransformationRulesetGroupsTrunks',
         'IvozProvider\\Mapper\\Sql\\DbTable\\TransformationRulesetGroupsUsers',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksUacreg',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksUacreg'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -163,7 +163,7 @@ class Brands extends TableAbstract
 	    'TABLE_NAME' => 'Brands',
 	    'COLUMN_NAME' => 'defaultTimezoneId',
 	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,

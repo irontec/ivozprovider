@@ -30,17 +30,16 @@ class Extensions extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -60,23 +59,23 @@ class Extensions extends ModelAbstract
     protected $_routeType;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_IVRCommonId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_IVRCustomId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_huntGroupId;
 
@@ -206,7 +205,6 @@ class Extensions extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup'),
         ));
 
@@ -319,7 +317,7 @@ class Extensions extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Extensions
      */
     public function setId($data)
@@ -329,14 +327,22 @@ class Extensions extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -345,7 +351,7 @@ class Extensions extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Extensions
      */
     public function setCompanyId($data)
@@ -358,14 +364,22 @@ class Extensions extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -451,7 +465,7 @@ class Extensions extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Extensions
      */
     public function setIVRCommonId($data)
@@ -461,14 +475,22 @@ class Extensions extends ModelAbstract
             $this->_logChange('IVRCommonId');
         }
 
-        $this->_IVRCommonId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_IVRCommonId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_IVRCommonId = (int) $data;
+
+        } else {
+            $this->_IVRCommonId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column IVRCommonId
      *
-     * @return binary
+     * @return int
      */
     public function getIVRCommonId()
     {
@@ -477,7 +499,7 @@ class Extensions extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Extensions
      */
     public function setIVRCustomId($data)
@@ -487,14 +509,22 @@ class Extensions extends ModelAbstract
             $this->_logChange('IVRCustomId');
         }
 
-        $this->_IVRCustomId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_IVRCustomId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_IVRCustomId = (int) $data;
+
+        } else {
+            $this->_IVRCustomId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column IVRCustomId
      *
-     * @return binary
+     * @return int
      */
     public function getIVRCustomId()
     {
@@ -503,7 +533,7 @@ class Extensions extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Extensions
      */
     public function setHuntGroupId($data)
@@ -513,14 +543,22 @@ class Extensions extends ModelAbstract
             $this->_logChange('huntGroupId');
         }
 
-        $this->_huntGroupId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_huntGroupId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_huntGroupId = (int) $data;
+
+        } else {
+            $this->_huntGroupId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column huntGroupId
      *
-     * @return binary
+     * @return int
      */
     public function getHuntGroupId()
     {

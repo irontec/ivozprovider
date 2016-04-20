@@ -50,9 +50,6 @@ class ApplicationServers extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'ip' => $model->getIp(),
-                'transport' => $model->getTransport(),
-                'from_pattern' => $model->getFromPattern(),
-                'tag' => $model->getTag(),
                 'name' => $model->getName(),
             );
         } else {
@@ -379,9 +376,6 @@ class ApplicationServers extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -567,24 +561,15 @@ class ApplicationServers extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setIp($data['ip'])
-                  ->setTransport($data['transport'])
-                  ->setFromPattern($data['from_pattern'])
-                  ->setTag($data['tag'])
                   ->setName($data['name']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setIp($data->{'ip'})
-                  ->setTransport($data->{'transport'})
-                  ->setFromPattern($data->{'from_pattern'})
-                  ->setTag($data->{'tag'})
                   ->setName($data->{'name'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ApplicationServers) {
             $entry->setId($data->getId())
                   ->setIp($data->getIp())
-                  ->setTransport($data->getTransport())
-                  ->setFromPattern($data->getFromPattern())
-                  ->setTag($data->getTag())
                   ->setName($data->getName());
 
         }

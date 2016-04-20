@@ -31,14 +31,14 @@ class BrandsRelLanguages extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\BrandsRelLanguages';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\BrandsRelLanguages';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'BrandsRelLanguagesIbfk2' => array(
             'columns' => 'languageId',
@@ -59,16 +59,16 @@ class BrandsRelLanguages extends TableAbstract
 	    'TABLE_NAME' => 'BrandsRelLanguages',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'brandId' => 
 	  array (
@@ -93,13 +93,13 @@ class BrandsRelLanguages extends TableAbstract
 	    'TABLE_NAME' => 'BrandsRelLanguages',
 	    'COLUMN_NAME' => 'languageId',
 	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

@@ -31,14 +31,14 @@ class CompanyAdmins extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\CompanyAdmins';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\CompanyAdmins';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'CompanyAdminsIbfk1' => array(
             'columns' => 'companyId',
@@ -59,13 +59,13 @@ class CompanyAdmins extends TableAbstract
 	    'TABLE_NAME' => 'CompanyAdmins',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => false,
@@ -76,13 +76,13 @@ class CompanyAdmins extends TableAbstract
 	    'TABLE_NAME' => 'CompanyAdmins',
 	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -161,7 +161,7 @@ class CompanyAdmins extends TableAbstract
 	    'TABLE_NAME' => 'CompanyAdmins',
 	    'COLUMN_NAME' => 'timezoneId',
 	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,

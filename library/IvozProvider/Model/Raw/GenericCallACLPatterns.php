@@ -24,10 +24,9 @@ class GenericCallACLPatterns extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -74,7 +73,6 @@ class GenericCallACLPatterns extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -131,7 +129,7 @@ class GenericCallACLPatterns extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\GenericCallACLPatterns
      */
     public function setId($data)
@@ -141,14 +139,22 @@ class GenericCallACLPatterns extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {

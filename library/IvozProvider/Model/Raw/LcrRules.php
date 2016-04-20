@@ -87,14 +87,14 @@ class LcrRules extends ModelAbstract
     protected $_description;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
     protected $_targetPatternId;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */

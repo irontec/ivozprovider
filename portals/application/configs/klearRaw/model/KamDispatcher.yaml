@@ -45,9 +45,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\ApplicationServers
           fieldName: 
             fields: 
-              - transport
-            template: '%transport%'
-          order: transport
+              - name
+            template: '%name%'
+          order: name
 staging: 
   _extends: production
 testing: 

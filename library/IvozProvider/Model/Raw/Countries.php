@@ -24,7 +24,7 @@ class Countries extends ModelAbstract
 
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */

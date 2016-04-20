@@ -31,14 +31,14 @@ class HuntGroupCallForwardSettings extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\HuntGroupCallForwardSettings';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\HuntGroupCallForwardSettings';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'HuntGroupCallForwardSettingsIbfk1' => array(
             'columns' => 'huntGroupId',
@@ -64,16 +64,16 @@ class HuntGroupCallForwardSettings extends TableAbstract
 	    'TABLE_NAME' => 'HuntGroupCallForwardSettings',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'huntGroupId' => 
 	  array (
@@ -81,13 +81,13 @@ class HuntGroupCallForwardSettings extends TableAbstract
 	    'TABLE_NAME' => 'HuntGroupCallForwardSettings',
 	    'COLUMN_NAME' => 'huntGroupId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -149,13 +149,13 @@ class HuntGroupCallForwardSettings extends TableAbstract
 	    'TABLE_NAME' => 'HuntGroupCallForwardSettings',
 	    'COLUMN_NAME' => 'callExtensionId',
 	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -166,13 +166,13 @@ class HuntGroupCallForwardSettings extends TableAbstract
 	    'TABLE_NAME' => 'HuntGroupCallForwardSettings',
 	    'COLUMN_NAME' => 'callVoiceMailUserId',
 	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

@@ -31,14 +31,14 @@ class GenericMusicOnHold extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\GenericMusicOnHold';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\GenericMusicOnHold';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'FGenericMusicOnHoldIbfk1' => array(
             'columns' => 'brandId',
@@ -54,16 +54,16 @@ class GenericMusicOnHold extends TableAbstract
 	    'TABLE_NAME' => 'GenericMusicOnHold',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'name' => 
 	  array (

@@ -24,7 +24,7 @@ class TargetPatterns extends ModelAbstract
 
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -114,6 +114,14 @@ class TargetPatterns extends ModelAbstract
     protected $_OutgoingRouting;
 
     /**
+     * Dependent relation parsedCDRs_ibfk_4
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ParsedCDRs[]
+     */
+    protected $_ParsedCDRs;
+
+    /**
      * Dependent relation PricingPlansRelTargetPatterns_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -128,14 +136,6 @@ class TargetPatterns extends ModelAbstract
      * @var \IvozProvider\Model\Raw\TargetGroupsRelPatterns[]
      */
     protected $_TargetGroupsRelPatterns;
-
-    /**
-     * Dependent relation parsedCDRs_ibfk_4
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\ParsedCDRs[]
-     */
-    protected $_ParsedCDRs;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -182,6 +182,10 @@ class TargetPatterns extends ModelAbstract
                     'property' => 'OutgoingRouting',
                     'table_name' => 'OutgoingRouting',
                 ),
+            'ParsedCDRsIbfk4' => array(
+                    'property' => 'ParsedCDRs',
+                    'table_name' => 'ParsedCDRs',
+                ),
             'PricingPlansRelTargetPatternsIbfk2' => array(
                     'property' => 'PricingPlansRelTargetPatterns',
                     'table_name' => 'PricingPlansRelTargetPatterns',
@@ -189,10 +193,6 @@ class TargetPatterns extends ModelAbstract
             'TargetGroupsRelPatternsIbfk1' => array(
                     'property' => 'TargetGroupsRelPatterns',
                     'table_name' => 'TargetGroupsRelPatterns',
-                ),
-            'ParsedCDRsIbfk4' => array(
-                    'property' => 'ParsedCDRs',
-                    'table_name' => 'parsedCDRs',
                 ),
         ));
 
@@ -203,6 +203,9 @@ class TargetPatterns extends ModelAbstract
             'TargetGroupsRelPatterns_ibfk_1'
         ));
 
+        $this->setOnDeleteSetNullRelationships(array(
+            'parsedCDRs_ibfk_4'
+        ));
 
 
         $this->_defaultValues = array(
@@ -813,6 +816,96 @@ class TargetPatterns extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations parsedCDRs_ibfk_4
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
+     * @return \IvozProvider\Model\Raw\TargetPatterns
+     */
+    public function setParsedCDRs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ParsedCDRs === null) {
+
+                $this->getParsedCDRs();
+            }
+
+            $oldRelations = $this->_ParsedCDRs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ParsedCDRs = array();
+
+        foreach ($data as $object) {
+            $this->addParsedCDRs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations parsedCDRs_ibfk_4
+     *
+     * @param \IvozProvider\Model\Raw\ParsedCDRs $data
+     * @return \IvozProvider\Model\Raw\TargetPatterns
+     */
+    public function addParsedCDRs(\IvozProvider\Model\Raw\ParsedCDRs $data)
+    {
+        $this->_ParsedCDRs[] = $data;
+        $this->_setLoaded('ParsedCDRsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets dependent parsedCDRs_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function getParsedCDRs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ParsedCDRsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ParsedCDRs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ParsedCDRs;
+    }
+
+    /**
      * Sets dependent relations PricingPlansRelTargetPatterns_ibfk_2
      *
      * @param array $data An array of \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns
@@ -990,96 +1083,6 @@ class TargetPatterns extends ModelAbstract
         }
 
         return $this->_TargetGroupsRelPatterns;
-    }
-
-    /**
-     * Sets dependent relations parsedCDRs_ibfk_4
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
-     * @return \IvozProvider\Model\Raw\TargetPatterns
-     */
-    public function setParsedCDRs(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_ParsedCDRs === null) {
-
-                $this->getParsedCDRs();
-            }
-
-            $oldRelations = $this->_ParsedCDRs;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_ParsedCDRs = array();
-
-        foreach ($data as $object) {
-            $this->addParsedCDRs($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations parsedCDRs_ibfk_4
-     *
-     * @param \IvozProvider\Model\Raw\ParsedCDRs $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
-     */
-    public function addParsedCDRs(\IvozProvider\Model\Raw\ParsedCDRs $data)
-    {
-        $this->_ParsedCDRs[] = $data;
-        $this->_setLoaded('ParsedCDRsIbfk4');
-        return $this;
-    }
-
-    /**
-     * Gets dependent parsedCDRs_ibfk_4
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function getParsedCDRs($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ParsedCDRsIbfk4';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_ParsedCDRs = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_ParsedCDRs;
     }
 
     /**

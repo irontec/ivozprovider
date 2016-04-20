@@ -34,17 +34,16 @@ class IVRCustom extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -56,30 +55,30 @@ class IVRCustom extends ModelAbstract
     protected $_name;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_welcomeLocutionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_noAnswerLocutionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_errorLocutionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_successLocutionId;
 
@@ -113,16 +112,16 @@ class IVRCustom extends ModelAbstract
     protected $_timeoutNumberValue;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_timeoutExtensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_timeoutVoiceMailUserId;
 
@@ -142,16 +141,16 @@ class IVRCustom extends ModelAbstract
     protected $_errorNumberValue;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_errorExtensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_errorVoiceMailUserId;
 
@@ -270,7 +269,6 @@ class IVRCustom extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'timeoutTargetType'=> array('enum:number|extension|voicemail'),
             'errorTargetType'=> array('enum:number|extension|voicemail'),
         ));
@@ -377,7 +375,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setId($data)
@@ -387,14 +385,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -403,7 +409,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setCompanyId($data)
@@ -416,14 +422,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -469,7 +483,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setWelcomeLocutionId($data)
@@ -479,14 +493,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('welcomeLocutionId');
         }
 
-        $this->_welcomeLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_welcomeLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_welcomeLocutionId = (int) $data;
+
+        } else {
+            $this->_welcomeLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column welcomeLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getWelcomeLocutionId()
     {
@@ -495,7 +517,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setNoAnswerLocutionId($data)
@@ -505,14 +527,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('noAnswerLocutionId');
         }
 
-        $this->_noAnswerLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_noAnswerLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_noAnswerLocutionId = (int) $data;
+
+        } else {
+            $this->_noAnswerLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column noAnswerLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getNoAnswerLocutionId()
     {
@@ -521,7 +551,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setErrorLocutionId($data)
@@ -531,14 +561,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('errorLocutionId');
         }
 
-        $this->_errorLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_errorLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_errorLocutionId = (int) $data;
+
+        } else {
+            $this->_errorLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column errorLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getErrorLocutionId()
     {
@@ -547,7 +585,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setSuccessLocutionId($data)
@@ -557,14 +595,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('successLocutionId');
         }
 
-        $this->_successLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_successLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_successLocutionId = (int) $data;
+
+        } else {
+            $this->_successLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column successLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getSuccessLocutionId()
     {
@@ -715,7 +761,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setTimeoutExtensionId($data)
@@ -725,14 +771,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('timeoutExtensionId');
         }
 
-        $this->_timeoutExtensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_timeoutExtensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_timeoutExtensionId = (int) $data;
+
+        } else {
+            $this->_timeoutExtensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column timeoutExtensionId
      *
-     * @return binary
+     * @return int
      */
     public function getTimeoutExtensionId()
     {
@@ -741,7 +795,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setTimeoutVoiceMailUserId($data)
@@ -751,14 +805,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('timeoutVoiceMailUserId');
         }
 
-        $this->_timeoutVoiceMailUserId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_timeoutVoiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_timeoutVoiceMailUserId = (int) $data;
+
+        } else {
+            $this->_timeoutVoiceMailUserId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column timeoutVoiceMailUserId
      *
-     * @return binary
+     * @return int
      */
     public function getTimeoutVoiceMailUserId()
     {
@@ -838,7 +900,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setErrorExtensionId($data)
@@ -848,14 +910,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('errorExtensionId');
         }
 
-        $this->_errorExtensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_errorExtensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_errorExtensionId = (int) $data;
+
+        } else {
+            $this->_errorExtensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column errorExtensionId
      *
-     * @return binary
+     * @return int
      */
     public function getErrorExtensionId()
     {
@@ -864,7 +934,7 @@ class IVRCustom extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\IVRCustom
      */
     public function setErrorVoiceMailUserId($data)
@@ -874,14 +944,22 @@ class IVRCustom extends ModelAbstract
             $this->_logChange('errorVoiceMailUserId');
         }
 
-        $this->_errorVoiceMailUserId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_errorVoiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_errorVoiceMailUserId = (int) $data;
+
+        } else {
+            $this->_errorVoiceMailUserId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column errorVoiceMailUserId
      *
-     * @return binary
+     * @return int
      */
     public function getErrorVoiceMailUserId()
     {

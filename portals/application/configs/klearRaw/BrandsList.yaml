@@ -12,6 +12,7 @@
 #include LcrRuleTargetList.yaml
 #include LcrRulesList.yaml
 #include OutgoingRoutingList.yaml
+#include ParsedCDRsList.yaml
 #include PeerServersList.yaml
 #include PeeringContractsList.yaml
 #include PricingPlansList.yaml
@@ -22,7 +23,6 @@
 #include TransformationRulesetGroupsTrunksList.yaml
 #include TransformationRulesetGroupsUsersList.yaml
 #include KamTrunksUacregList.yaml
-#include ParsedCDRsList.yaml
 
 
 production: 
@@ -54,6 +54,7 @@ production:
             lcrRuleTargetList_screen: true
             lcrRulesList_screen: true
             outgoingRoutingList_screen: true
+            parsedCDRsList_screen: true
             peerServersList_screen: true
             peeringContractsList_screen: true
             pricingPlansList_screen: true
@@ -64,7 +65,6 @@ production:
             transformationRulesetGroupsTrunksList_screen: true
             transformationRulesetGroupsUsersList_screen: true
             kamTrunksUacregList_screen: true
-            parsedCDRsList_screen: true
           dialogs: 
             brandsDel_dialog: true
           default: brandsEdit_screen
@@ -249,6 +249,19 @@ production:
       <<: *outgoingRoutingEdit_screenLink
       filterField: brandId
 
+    #parsedCDRs: 
+    parsedCDRsList_screen: 
+      <<: *parsedCDRsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    parsedCDRsNew_screen: 
+      <<: *parsedCDRsNew_screenLink
+      filterField: brandId
+    parsedCDRsEdit_screen: 
+      <<: *parsedCDRsEdit_screenLink
+      filterField: brandId
+
     #peerServers: 
     peerServersList_screen: 
       <<: *peerServersList_screenLink
@@ -379,19 +392,6 @@ production:
       <<: *kamTrunksUacregEdit_screenLink
       filterField: brandId
 
-    #parsedCDRs: 
-    parsedCDRsList_screen: 
-      <<: *parsedCDRsList_screenLink
-      filterField: brandId
-      parentOptionCustomizer: 
-        - recordCount
-    parsedCDRsNew_screen: 
-      <<: *parsedCDRsNew_screenLink
-      filterField: brandId
-    parsedCDRsEdit_screen: 
-      <<: *parsedCDRsEdit_screenLink
-      filterField: brandId
-
   dialogs: &brands_dialogsLink 
     brandsDel_dialog: &brandsDel_dialogLink 
       <<: *Brands
@@ -427,6 +427,8 @@ production:
     <<: *lcrRules_dialogsLink
   # outgoingRouting dialogs: 
     <<: *outgoingRouting_dialogsLink
+  # parsedCDRs dialogs: 
+    <<: *parsedCDRs_dialogsLink
   # peerServers dialogs: 
     <<: *peerServers_dialogsLink
   # peeringContracts dialogs: 
@@ -447,8 +449,6 @@ production:
     <<: *transformationRulesetGroupsUsers_dialogsLink
   # kamTrunksUacreg dialogs: 
     <<: *kamTrunksUacreg_dialogsLink
-  # parsedCDRs dialogs: 
-    <<: *parsedCDRs_dialogsLink
   commands: &brands_commandsLink 
     brandsLogoDownload_command: &brandsLogoDownload_commandLink 
       <<: *Brands

@@ -467,15 +467,15 @@ class PeerServers extends MapperAbstract
                     }
                 }
 
-                if ($model->getKamAddress(null, null, true) !== null) {
-                    $kamAddress = $model->getKamAddress();
+                if ($model->getKamUsersAddress(null, null, true) !== null) {
+                    $kamUsersAddress = $model->getKamUsersAddress();
 
-                    if (!is_array($kamAddress)) {
+                    if (!is_array($kamUsersAddress)) {
 
-                        $kamAddress = array($kamAddress);
+                        $kamUsersAddress = array($kamUsersAddress);
                     }
 
-                    foreach ($kamAddress as $value) {
+                    foreach ($kamUsersAddress as $value) {
                         $value->setPeerServerId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

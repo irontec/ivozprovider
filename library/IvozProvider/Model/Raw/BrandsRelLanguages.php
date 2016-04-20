@@ -24,10 +24,9 @@ class BrandsRelLanguages extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -39,9 +38,9 @@ class BrandsRelLanguages extends ModelAbstract
     protected $_brandId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_languageId;
 
@@ -73,7 +72,6 @@ class BrandsRelLanguages extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -134,7 +132,7 @@ class BrandsRelLanguages extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\BrandsRelLanguages
      */
     public function setId($data)
@@ -144,14 +142,22 @@ class BrandsRelLanguages extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -197,7 +203,7 @@ class BrandsRelLanguages extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\BrandsRelLanguages
      */
     public function setLanguageId($data)
@@ -210,14 +216,22 @@ class BrandsRelLanguages extends ModelAbstract
             $this->_logChange('languageId');
         }
 
-        $this->_languageId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_languageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_languageId = (int) $data;
+
+        } else {
+            $this->_languageId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column languageId
      *
-     * @return binary
+     * @return int
      */
     public function getLanguageId()
     {

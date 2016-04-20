@@ -48,8 +48,9 @@ class AstPsEndpoints extends MapperAbstract
 
         if (empty($fields)) {
             $result = array(
-                'id' => $model->getId(),
                 'sorcery_id' => $model->getSorceryId(),
+                'terminalId' => $model->getTerminalId(),
+                'proxyTrunkId' => $model->getProxyTrunkId(),
                 'transport' => $model->getTransport(),
                 'aors' => $model->getAors(),
                 'auth' => $model->getAuth(),
@@ -250,7 +251,7 @@ class AstPsEndpoints extends MapperAbstract
                 }//end foreach ($deleteSetNull as $fk)
             } //end if
 
-            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('id') . ' = ?', $model->getId());
+            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('sorcery_id') . ' = ?', $model->getSorceryId());
             $result = $dbTable->delete($where);
 
             if ($this->_cache) {
@@ -359,7 +360,7 @@ class AstPsEndpoints extends MapperAbstract
 
         $data = $model->sanitize()->toArray();
 
-        $primaryKey = $model->getId();
+        $primaryKey = $model->getSorceryId();
         $success = true;
 
         if ($useTransaction) {
@@ -383,20 +384,17 @@ class AstPsEndpoints extends MapperAbstract
         }
 
         if (!$forceInsert) {
-            unset($data['id']);
+            unset($data['sorcery_id']);
         }
 
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
                 if ($primaryKey) {
-                    $model->setId($primaryKey);
+                    $model->setSorceryId($primaryKey);
                 } else {
                     throw new \Exception("Insert sentence did not return a valid primary key", 9000);
                 }
@@ -435,7 +433,7 @@ class AstPsEndpoints extends MapperAbstract
                      ->update(
                          $data,
                          array(
-                             $this->getDbTable()->getAdapter()->quoteIdentifier('id') . ' = ?' => $primaryKey
+                             $this->getDbTable()->getAdapter()->quoteIdentifier('sorcery_id') . ' = ?' => $primaryKey
                          )
                      );
             }
@@ -544,8 +542,9 @@ class AstPsEndpoints extends MapperAbstract
         $entry->stopChangeLog();
 
         if (is_array($data)) {
-            $entry->setId($data['id'])
-                  ->setSorceryId($data['sorcery_id'])
+            $entry->setSorceryId($data['sorcery_id'])
+                  ->setTerminalId($data['terminalId'])
+                  ->setProxyTrunkId($data['proxyTrunkId'])
                   ->setTransport($data['transport'])
                   ->setAors($data['aors'])
                   ->setAuth($data['auth'])
@@ -561,8 +560,9 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendRpid($data['send_rpid'])
                   ->setSubscribecontext($data['subscribecontext']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
-            $entry->setId($data->{'id'})
-                  ->setSorceryId($data->{'sorcery_id'})
+            $entry->setSorceryId($data->{'sorcery_id'})
+                  ->setTerminalId($data->{'terminalId'})
+                  ->setProxyTrunkId($data->{'proxyTrunkId'})
                   ->setTransport($data->{'transport'})
                   ->setAors($data->{'aors'})
                   ->setAuth($data->{'auth'})
@@ -579,8 +579,9 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSubscribecontext($data->{'subscribecontext'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
-            $entry->setId($data->getId())
-                  ->setSorceryId($data->getSorceryId())
+            $entry->setSorceryId($data->getSorceryId())
+                  ->setTerminalId($data->getTerminalId())
+                  ->setProxyTrunkId($data->getProxyTrunkId())
                   ->setTransport($data->getTransport())
                   ->setAors($data->getAors())
                   ->setAuth($data->getAuth())

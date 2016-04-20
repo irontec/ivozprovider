@@ -31,40 +31,34 @@ class AstPsAors extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var string
      */
-    protected $_id = 'id';
+    protected $_id = 'sorcery_id';
 
     protected $_rowClass = 'IvozProvider\\Model\\AstPsAors';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\AstPsAors';
 
-    protected $_sequence = true; // binary
-    
+    protected $_sequence = true; // string
+    protected $_referenceMap = array(
+        'AstPsAorsIbfk1' => array(
+            'columns' => 'terminalId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
+            'refColumns' => 'id'
+        ),
+        'AstPsAorsIbfk2' => array(
+            'columns' => 'proxyTrunkId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ProxyTrunks',
+            'refColumns' => 'id'
+        )
+    );
     
     protected $_metadata = array (
-	  'id' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ast_ps_aors',
-	    'COLUMN_NAME' => 'id',
-	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => true,
-	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
-	  ),
 	  'sorcery_id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'sorcery_id',
-	    'COLUMN_POSITION' => 2,
+	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
@@ -72,6 +66,40 @@ class AstPsAors extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => true,
+	    'PRIMARY_POSITION' => 1,
+	    'IDENTITY' => false,
+	  ),
+	  'terminalId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_ps_aors',
+	    'COLUMN_NAME' => 'terminalId',
+	    'COLUMN_POSITION' => 2,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'proxyTrunkId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_ps_aors',
+	    'COLUMN_NAME' => 'proxyTrunkId',
+	    'COLUMN_POSITION' => 3,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -81,7 +109,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'default_expiration',
-	    'COLUMN_POSITION' => 3,
+	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -98,7 +126,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'max_contacts',
-	    'COLUMN_POSITION' => 4,
+	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -115,7 +143,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'minimum_expiration',
-	    'COLUMN_POSITION' => 5,
+	    'COLUMN_POSITION' => 6,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -132,7 +160,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'remove_existing',
-	    'COLUMN_POSITION' => 6,
+	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -149,7 +177,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'authenticate_qualify',
-	    'COLUMN_POSITION' => 7,
+	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -166,7 +194,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'maximum_expiration',
-	    'COLUMN_POSITION' => 8,
+	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -183,7 +211,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'support_path',
-	    'COLUMN_POSITION' => 9,
+	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -200,7 +228,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'contact',
-	    'COLUMN_POSITION' => 10,
+	    'COLUMN_POSITION' => 11,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -217,7 +245,7 @@ class AstPsAors extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_aors',
 	    'COLUMN_NAME' => 'qualify_frequency',
-	    'COLUMN_POSITION' => 11,
+	    'COLUMN_POSITION' => 12,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

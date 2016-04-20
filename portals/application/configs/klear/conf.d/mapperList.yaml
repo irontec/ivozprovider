@@ -39,6 +39,7 @@ mappers:
   - &MainOperators {mapper: \IvozProvider\Mapper\Sql\MainOperators, modelFile: MainOperators}
   - &MusicOnHold {mapper: \IvozProvider\Mapper\Sql\MusicOnHold, modelFile: MusicOnHold}
   - &OutgoingRouting {mapper: \IvozProvider\Mapper\Sql\OutgoingRouting, modelFile: OutgoingRouting}
+  - &ParsedCDRs {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRs}
   - &PeerServers {mapper: \IvozProvider\Mapper\Sql\PeerServers, modelFile: PeerServers}
   - &PeeringContracts {mapper: \IvozProvider\Mapper\Sql\PeeringContracts, modelFile: PeeringContracts}
   - &PickUpGroups {mapper: \IvozProvider\Mapper\Sql\PickUpGroups, modelFile: PickUpGroups}
@@ -46,6 +47,8 @@ mappers:
   - &PricingPlans {mapper: \IvozProvider\Mapper\Sql\PricingPlans, modelFile: PricingPlans}
   - &PricingPlansRelCompanies {mapper: \IvozProvider\Mapper\Sql\PricingPlansRelCompanies, modelFile: PricingPlansRelCompanies}
   - &PricingPlansRelTargetPatterns {mapper: \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns, modelFile: PricingPlansRelTargetPatterns}
+  - &ProxyTrunks {mapper: \IvozProvider\Mapper\Sql\ProxyTrunks, modelFile: ProxyTrunks}
+  - &ProxyUsers {mapper: \IvozProvider\Mapper\Sql\ProxyUsers, modelFile: ProxyUsers}
   - &Schedules {mapper: \IvozProvider\Mapper\Sql\Schedules, modelFile: Schedules}
   - &Services {mapper: \IvozProvider\Mapper\Sql\Services, modelFile: Services}
   - &TargetGroups {mapper: \IvozProvider\Mapper\Sql\TargetGroups, modelFile: TargetGroups}
@@ -67,12 +70,9 @@ mappers:
   - &AstPsTransports {mapper: \IvozProvider\Mapper\Sql\AstPsTransports, modelFile: AstPsTransports}
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
-  - &KamAddress {mapper: \IvozProvider\Mapper\Sql\KamAddress, modelFile: KamAddress}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}
   - &KamTrunksAcc {mapper: \IvozProvider\Mapper\Sql\KamTrunksAcc, modelFile: KamTrunksAcc}
   - &KamTrunksAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksAccCdrs, modelFile: KamTrunksAccCdrs}
-  - &KamTrunksDialog {mapper: \IvozProvider\Mapper\Sql\KamTrunksDialog, modelFile: KamTrunksDialog}
-  - &KamTrunksDialogVars {mapper: \IvozProvider\Mapper\Sql\KamTrunksDialogVars, modelFile: KamTrunksDialogVars}
   - &KamTrunksDialplan {mapper: \IvozProvider\Mapper\Sql\KamTrunksDialplan, modelFile: KamTrunksDialplan}
   - &KamTrunksDomain {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomain, modelFile: KamTrunksDomain}
   - &KamTrunksDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomainAttrs, modelFile: KamTrunksDomainAttrs}
@@ -83,9 +83,7 @@ mappers:
   - &KamTrunksUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamTrunksUsrPreferences, modelFile: KamTrunksUsrPreferences}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
   - &KamUsersAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamUsersAccCdrs, modelFile: KamUsersAccCdrs}
-  - &KamUsersDialog {mapper: \IvozProvider\Mapper\Sql\KamUsersDialog, modelFile: KamUsersDialog}
-  - &KamUsersDialogVars {mapper: \IvozProvider\Mapper\Sql\KamUsersDialogVars, modelFile: KamUsersDialogVars}
-  - &KamUsersDialplan {mapper: \IvozProvider\Mapper\Sql\KamUsersDialplan, modelFile: KamUsersDialplan}
+  - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}
   - &KamUsersHtable {mapper: \IvozProvider\Mapper\Sql\KamUsersHtable, modelFile: KamUsersHtable}
@@ -93,7 +91,4 @@ mappers:
   - &KamUsersLocationAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs, modelFile: KamUsersLocationAttrs}
   - &KamUsersMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamUsersMissedCalls, modelFile: KamUsersMissedCalls}
   - &KamUsersUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamUsersUsrPreferences, modelFile: KamUsersUsrPreferences}
-  - &ParsedCDRs {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRs}
-  - &ProxyTrunks {mapper: \IvozProvider\Mapper\Sql\ProxyTrunks, modelFile: ProxyTrunks}
-  - &ProxyUsers {mapper: \IvozProvider\Mapper\Sql\ProxyUsers, modelFile: ProxyUsers}
   - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}

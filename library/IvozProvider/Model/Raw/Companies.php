@@ -24,10 +24,9 @@ class Companies extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -53,23 +52,23 @@ class Companies extends ModelAbstract
     protected $_nif;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
     protected $_defaultTimezoneId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_applicationServerId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_transformationRulesetGroupsId;
 
@@ -116,9 +115,9 @@ class Companies extends ModelAbstract
     protected $_country;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_invoiceLanguageId;
 
@@ -130,7 +129,7 @@ class Companies extends ModelAbstract
     protected $_outboundPrefix;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -309,6 +308,14 @@ class Companies extends ModelAbstract
     protected $_OutgoingRouting;
 
     /**
+     * Dependent relation parsedCDRs_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ParsedCDRs[]
+     */
+    protected $_ParsedCDRs;
+
+    /**
      * Dependent relation PickUpGroups_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -356,14 +363,6 @@ class Companies extends ModelAbstract
      */
     protected $_Users;
 
-    /**
-     * Dependent relation parsedCDRs_ibfk_2
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\ParsedCDRs[]
-     */
-    protected $_ParsedCDRs;
-
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
@@ -389,7 +388,6 @@ class Companies extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -489,6 +487,10 @@ class Companies extends ModelAbstract
                     'property' => 'OutgoingRouting',
                     'table_name' => 'OutgoingRouting',
                 ),
+            'ParsedCDRsIbfk2' => array(
+                    'property' => 'ParsedCDRs',
+                    'table_name' => 'ParsedCDRs',
+                ),
             'PickUpGroupsIbfk1' => array(
                     'property' => 'PickUpGroups',
                     'table_name' => 'PickUpGroups',
@@ -512,10 +514,6 @@ class Companies extends ModelAbstract
             'UsersIbfk1' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
-                ),
-            'ParsedCDRsIbfk2' => array(
-                    'property' => 'ParsedCDRs',
-                    'table_name' => 'parsedCDRs',
                 ),
         ));
 
@@ -564,7 +562,7 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Companies
      */
     public function setId($data)
@@ -574,14 +572,22 @@ class Companies extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -738,7 +744,7 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Companies
      */
     public function setApplicationServerId($data)
@@ -748,14 +754,22 @@ class Companies extends ModelAbstract
             $this->_logChange('applicationServerId');
         }
 
-        $this->_applicationServerId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_applicationServerId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_applicationServerId = (int) $data;
+
+        } else {
+            $this->_applicationServerId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column applicationServerId
      *
-     * @return binary
+     * @return int
      */
     public function getApplicationServerId()
     {
@@ -764,7 +778,7 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Companies
      */
     public function setTransformationRulesetGroupsId($data)
@@ -774,14 +788,22 @@ class Companies extends ModelAbstract
             $this->_logChange('transformationRulesetGroupsId');
         }
 
-        $this->_transformationRulesetGroupsId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_transformationRulesetGroupsId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_transformationRulesetGroupsId = (int) $data;
+
+        } else {
+            $this->_transformationRulesetGroupsId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column transformationRulesetGroupsId
      *
-     * @return binary
+     * @return int
      */
     public function getTransformationRulesetGroupsId()
     {
@@ -1009,7 +1031,7 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Companies
      */
     public function setInvoiceLanguageId($data)
@@ -1019,14 +1041,22 @@ class Companies extends ModelAbstract
             $this->_logChange('invoiceLanguageId');
         }
 
-        $this->_invoiceLanguageId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_invoiceLanguageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_invoiceLanguageId = (int) $data;
+
+        } else {
+            $this->_invoiceLanguageId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column invoiceLanguageId
      *
-     * @return binary
+     * @return int
      */
     public function getInvoiceLanguageId()
     {
@@ -2848,6 +2878,96 @@ class Companies extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations parsedCDRs_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setParsedCDRs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ParsedCDRs === null) {
+
+                $this->getParsedCDRs();
+            }
+
+            $oldRelations = $this->_ParsedCDRs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ParsedCDRs = array();
+
+        foreach ($data as $object) {
+            $this->addParsedCDRs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations parsedCDRs_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\ParsedCDRs $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addParsedCDRs(\IvozProvider\Model\Raw\ParsedCDRs $data)
+    {
+        $this->_ParsedCDRs[] = $data;
+        $this->_setLoaded('ParsedCDRsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent parsedCDRs_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function getParsedCDRs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ParsedCDRsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ParsedCDRs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ParsedCDRs;
+    }
+
+    /**
      * Sets dependent relations PickUpGroups_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\PickUpGroups
@@ -3385,96 +3505,6 @@ class Companies extends ModelAbstract
         }
 
         return $this->_Users;
-    }
-
-    /**
-     * Sets dependent relations parsedCDRs_ibfk_2
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setParsedCDRs(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_ParsedCDRs === null) {
-
-                $this->getParsedCDRs();
-            }
-
-            $oldRelations = $this->_ParsedCDRs;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_ParsedCDRs = array();
-
-        foreach ($data as $object) {
-            $this->addParsedCDRs($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations parsedCDRs_ibfk_2
-     *
-     * @param \IvozProvider\Model\Raw\ParsedCDRs $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function addParsedCDRs(\IvozProvider\Model\Raw\ParsedCDRs $data)
-    {
-        $this->_ParsedCDRs[] = $data;
-        $this->_setLoaded('ParsedCDRsIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets dependent parsedCDRs_ibfk_2
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function getParsedCDRs($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ParsedCDRsIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_ParsedCDRs = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_ParsedCDRs;
     }
 
     /**

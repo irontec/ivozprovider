@@ -24,24 +24,23 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_filterId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_scheduleId;
 
@@ -73,7 +72,6 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -134,7 +132,7 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilterRelSchedules
      */
     public function setId($data)
@@ -144,14 +142,22 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -160,7 +166,7 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilterRelSchedules
      */
     public function setFilterId($data)
@@ -173,14 +179,22 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
             $this->_logChange('filterId');
         }
 
-        $this->_filterId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_filterId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_filterId = (int) $data;
+
+        } else {
+            $this->_filterId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column filterId
      *
-     * @return binary
+     * @return int
      */
     public function getFilterId()
     {
@@ -189,7 +203,7 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilterRelSchedules
      */
     public function setScheduleId($data)
@@ -202,14 +216,22 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
             $this->_logChange('scheduleId');
         }
 
-        $this->_scheduleId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_scheduleId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_scheduleId = (int) $data;
+
+        } else {
+            $this->_scheduleId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column scheduleId
      *
-     * @return binary
+     * @return int
      */
     public function getScheduleId()
     {

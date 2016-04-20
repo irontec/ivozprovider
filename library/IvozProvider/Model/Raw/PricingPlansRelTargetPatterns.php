@@ -24,7 +24,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
 
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -59,14 +59,14 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
     protected $_metric;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
     protected $_pricingPlanId;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */

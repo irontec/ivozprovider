@@ -31,14 +31,14 @@ class PeeringContracts extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\PeeringContracts';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\PeeringContracts';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'PeeringContractsIbfk1' => array(
             'columns' => 'brandId',
@@ -63,16 +63,16 @@ class PeeringContracts extends TableAbstract
 	    'TABLE_NAME' => 'PeeringContracts',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'brandId' => 
 	  array (
@@ -131,13 +131,13 @@ class PeeringContracts extends TableAbstract
 	    'TABLE_NAME' => 'PeeringContracts',
 	    'COLUMN_NAME' => 'transformationRulesetGroupsTrunksId',
 	    'COLUMN_POSITION' => 5,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

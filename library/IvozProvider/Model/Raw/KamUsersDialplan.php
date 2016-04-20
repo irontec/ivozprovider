@@ -87,9 +87,9 @@ class KamUsersDialplan extends ModelAbstract
     protected $_attrs;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_transformationRulesetGroupsUsersId;
 
@@ -507,7 +507,7 @@ class KamUsersDialplan extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\KamUsersDialplan
      */
     public function setTransformationRulesetGroupsUsersId($data)
@@ -520,14 +520,22 @@ class KamUsersDialplan extends ModelAbstract
             $this->_logChange('transformationRulesetGroupsUsersId');
         }
 
-        $this->_transformationRulesetGroupsUsersId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_transformationRulesetGroupsUsersId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_transformationRulesetGroupsUsersId = (int) $data;
+
+        } else {
+            $this->_transformationRulesetGroupsUsersId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column transformationRulesetGroupsUsersId
      *
-     * @return binary
+     * @return int
      */
     public function getTransformationRulesetGroupsUsersId()
     {

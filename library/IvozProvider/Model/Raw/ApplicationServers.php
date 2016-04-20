@@ -24,10 +24,9 @@ class ApplicationServers extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -37,27 +36,6 @@ class ApplicationServers extends ModelAbstract
      * @var binary
      */
     protected $_ip;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_transport;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_fromPattern;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_tag;
 
     /**
      * Database var type varchar
@@ -87,9 +65,6 @@ class ApplicationServers extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'ip'=>'ip',
-        'transport'=>'transport',
-        'from_pattern'=>'fromPattern',
-        'tag'=>'tag',
         'name'=>'name',
     );
 
@@ -99,7 +74,6 @@ class ApplicationServers extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -125,7 +99,6 @@ class ApplicationServers extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'transport' => 'udp',
         );
 
         $this->_initFileObjects();
@@ -161,7 +134,7 @@ class ApplicationServers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ApplicationServers
      */
     public function setId($data)
@@ -171,14 +144,22 @@ class ApplicationServers extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -212,108 +193,6 @@ class ApplicationServers extends ModelAbstract
     public function getIp()
     {
         return $this->_ip;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ApplicationServers
-     */
-    public function setTransport($data)
-    {
-
-        if ($this->_transport != $data) {
-            $this->_logChange('transport');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_transport = $data;
-
-        } else if (!is_null($data)) {
-            $this->_transport = (string) $data;
-
-        } else {
-            $this->_transport = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column transport
-     *
-     * @return string
-     */
-    public function getTransport()
-    {
-        return $this->_transport;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ApplicationServers
-     */
-    public function setFromPattern($data)
-    {
-
-        if ($this->_fromPattern != $data) {
-            $this->_logChange('fromPattern');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_fromPattern = $data;
-
-        } else if (!is_null($data)) {
-            $this->_fromPattern = (string) $data;
-
-        } else {
-            $this->_fromPattern = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column from_pattern
-     *
-     * @return string
-     */
-    public function getFromPattern()
-    {
-        return $this->_fromPattern;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ApplicationServers
-     */
-    public function setTag($data)
-    {
-
-        if ($this->_tag != $data) {
-            $this->_logChange('tag');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_tag = $data;
-
-        } else if (!is_null($data)) {
-            $this->_tag = (string) $data;
-
-        } else {
-            $this->_tag = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column tag
-     *
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->_tag;
     }
 
     /**

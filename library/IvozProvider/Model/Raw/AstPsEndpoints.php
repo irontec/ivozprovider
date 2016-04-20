@@ -50,19 +50,25 @@ class AstPsEndpoints extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
-     *
-     * @var binary
-     */
-    protected $_id;
-
-    /**
      * Database var type varchar
      *
      * @var string
      */
     protected $_sorceryId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_terminalId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_proxyTrunkId;
 
     /**
      * Database var type varchar
@@ -164,10 +170,25 @@ class AstPsEndpoints extends ModelAbstract
     protected $_subscribecontext;
 
 
+    /**
+     * Parent relation ast_ps_endpoints_ibfk_1
+     *
+     * @var \IvozProvider\Model\Raw\Terminals
+     */
+    protected $_Terminal;
+
+    /**
+     * Parent relation ast_ps_endpoints_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    protected $_ProxyTrunk;
+
 
     protected $_columnsList = array(
-        'id'=>'id',
         'sorcery_id'=>'sorceryId',
+        'terminalId'=>'terminalId',
+        'proxyTrunkId'=>'proxyTrunkId',
         'transport'=>'transport',
         'aors'=>'aors',
         'auth'=>'auth',
@@ -190,7 +211,6 @@ class AstPsEndpoints extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'direct_media_method'=> array('enum:update|invite|reinvite'),
         ));
 
@@ -200,6 +220,14 @@ class AstPsEndpoints extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'AstPsEndpointsIbfk1'=> array(
+                    'property' => 'Terminal',
+                    'table_name' => 'Terminals',
+                ),
+            'AstPsEndpointsIbfk2'=> array(
+                    'property' => 'ProxyTrunk',
+                    'table_name' => 'ProxyTrunks',
+                ),
         ));
 
         $this->setDependentList(array(
@@ -248,41 +276,12 @@ class AstPsEndpoints extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setId($data)
-    {
-
-        if ($this->_id != $data) {
-            $this->_logChange('id');
-        }
-
-        $this->_id = $data;
-        return $this;
-    }
-
-    /**
-     * Gets column id
-     *
-     * @return binary
-     */
-    public function getId()
-    {
-        return $this->_id;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param string $data
      * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
     public function setSorceryId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_sorceryId != $data) {
             $this->_logChange('sorceryId');
         }
@@ -307,6 +306,74 @@ class AstPsEndpoints extends ModelAbstract
     public function getSorceryId()
     {
         return $this->_sorceryId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setTerminalId($data)
+    {
+
+        if ($this->_terminalId != $data) {
+            $this->_logChange('terminalId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_terminalId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_terminalId = (int) $data;
+
+        } else {
+            $this->_terminalId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column terminalId
+     *
+     * @return int
+     */
+    public function getTerminalId()
+    {
+        return $this->_terminalId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setProxyTrunkId($data)
+    {
+
+        if ($this->_proxyTrunkId != $data) {
+            $this->_logChange('proxyTrunkId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_proxyTrunkId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_proxyTrunkId = (int) $data;
+
+        } else {
+            $this->_proxyTrunkId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column proxyTrunkId
+     *
+     * @return int
+     */
+    public function getProxyTrunkId()
+    {
+        return $this->_proxyTrunkId;
     }
 
     /**
@@ -816,6 +883,108 @@ class AstPsEndpoints extends ModelAbstract
     }
 
     /**
+     * Sets parent relation Terminal
+     *
+     * @param \IvozProvider\Model\Raw\Terminals $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setTerminal(\IvozProvider\Model\Raw\Terminals $data)
+    {
+        $this->_Terminal = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTerminalId($primaryKey);
+        }
+
+        $this->_setLoaded('AstPsEndpointsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent Terminal
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function getTerminal($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsEndpointsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Terminal = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Terminal;
+    }
+
+    /**
+     * Sets parent relation ProxyTrunk
+     *
+     * @param \IvozProvider\Model\Raw\ProxyTrunks $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setProxyTrunk(\IvozProvider\Model\Raw\ProxyTrunks $data)
+    {
+        $this->_ProxyTrunk = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setProxyTrunkId($primaryKey);
+        }
+
+        $this->_setLoaded('AstPsEndpointsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent ProxyTrunk
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function getProxyTrunk($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsEndpointsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ProxyTrunk = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ProxyTrunk;
+    }
+
+    /**
      * Returns the mapper class for this model
      *
      * @return IvozProvider\Mapper\Sql\AstPsEndpoints
@@ -872,14 +1041,14 @@ class AstPsEndpoints extends ModelAbstract
      */
     public function deleteRowByPrimaryKey()
     {
-        if ($this->getId() === null) {
-            $this->_logger->log('The value for Id cannot be null in deleteRowByPrimaryKey for ' . get_class($this), \Zend_Log::ERR);
+        if ($this->getSorceryId() === null) {
+            $this->_logger->log('The value for SorceryId cannot be null in deleteRowByPrimaryKey for ' . get_class($this), \Zend_Log::ERR);
             throw new \Exception('Primary Key does not contain a value');
         }
 
         return $this->getMapper()->getDbTable()->delete(
-            'id = ' .
-             $this->getMapper()->getDbTable()->getAdapter()->quote($this->getId())
+            'sorcery_id = ' .
+             $this->getMapper()->getDbTable()->getAdapter()->quote($this->getSorceryId())
         );
     }
 

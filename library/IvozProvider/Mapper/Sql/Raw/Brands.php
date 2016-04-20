@@ -617,6 +617,20 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getParsedCDRs(null, null, true) !== null) {
+                    $parsedCDRs = $model->getParsedCDRs();
+
+                    if (!is_array($parsedCDRs)) {
+
+                        $parsedCDRs = array($parsedCDRs);
+                    }
+
+                    foreach ($parsedCDRs as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getPeerServers(null, null, true) !== null) {
                     $peerServers = $model->getPeerServers();
 
@@ -752,20 +766,6 @@ class Brands extends MapperAbstract
                     }
 
                     foreach ($kamTrunksUacreg as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getParsedCDRs(null, null, true) !== null) {
-                    $parsedCDRs = $model->getParsedCDRs();
-
-                    if (!is_array($parsedCDRs)) {
-
-                        $parsedCDRs = array($parsedCDRs);
-                    }
-
-                    foreach ($parsedCDRs as $value) {
                         $value->setBrandId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

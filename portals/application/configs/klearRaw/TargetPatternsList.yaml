@@ -2,9 +2,9 @@
 #include conf.d/actions.yaml
 #include LcrRulesList.yaml
 #include OutgoingRoutingList.yaml
+#include ParsedCDRsList.yaml
 #include PricingPlansRelTargetPatternsList.yaml
 #include TargetGroupsRelPatternsList.yaml
-#include ParsedCDRsList.yaml
 
 
 production: 
@@ -26,9 +26,9 @@ production:
             targetPatternsEdit_screen: true
             lcrRulesList_screen: true
             outgoingRoutingList_screen: true
+            parsedCDRsList_screen: true
             pricingPlansRelTargetPatternsList_screen: true
             targetGroupsRelPatternsList_screen: true
-            parsedCDRsList_screen: true
           dialogs: 
             targetPatternsDel_dialog: true
           default: targetPatternsEdit_screen
@@ -83,6 +83,19 @@ production:
       <<: *outgoingRoutingEdit_screenLink
       filterField: targetPatternId
 
+    #parsedCDRs: 
+    parsedCDRsList_screen: 
+      <<: *parsedCDRsList_screenLink
+      filterField: targetPatternId
+      parentOptionCustomizer: 
+        - recordCount
+    parsedCDRsNew_screen: 
+      <<: *parsedCDRsNew_screenLink
+      filterField: targetPatternId
+    parsedCDRsEdit_screen: 
+      <<: *parsedCDRsEdit_screenLink
+      filterField: targetPatternId
+
     #pricingPlansRelTargetPatterns: 
     pricingPlansRelTargetPatternsList_screen: 
       <<: *pricingPlansRelTargetPatternsList_screenLink
@@ -109,19 +122,6 @@ production:
       <<: *targetGroupsRelPatternsEdit_screenLink
       filterField: targetPatternId
 
-    #parsedCDRs: 
-    parsedCDRsList_screen: 
-      <<: *parsedCDRsList_screenLink
-      filterField: targetPatternId
-      parentOptionCustomizer: 
-        - recordCount
-    parsedCDRsNew_screen: 
-      <<: *parsedCDRsNew_screenLink
-      filterField: targetPatternId
-    parsedCDRsEdit_screen: 
-      <<: *parsedCDRsEdit_screenLink
-      filterField: targetPatternId
-
   dialogs: &targetPatterns_dialogsLink 
     targetPatternsDel_dialog: &targetPatternsDel_dialogLink 
       <<: *TargetPatterns
@@ -137,12 +137,12 @@ production:
     <<: *lcrRules_dialogsLink
   # outgoingRouting dialogs: 
     <<: *outgoingRouting_dialogsLink
+  # parsedCDRs dialogs: 
+    <<: *parsedCDRs_dialogsLink
   # pricingPlansRelTargetPatterns dialogs: 
     <<: *pricingPlansRelTargetPatterns_dialogsLink
   # targetGroupsRelPatterns dialogs: 
     <<: *targetGroupsRelPatterns_dialogsLink
-  # parsedCDRs dialogs: 
-    <<: *parsedCDRs_dialogsLink
 staging: 
   _extends: production
 testing: 

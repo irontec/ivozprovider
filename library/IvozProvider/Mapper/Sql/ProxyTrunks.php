@@ -29,7 +29,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
         if ($response) {
             // Replicate Terminal into ast_ps_endpoint
             $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-            $endpoint = $endpointMapper->findOneByField("id", $response);
+            $endpoint = $endpointMapper->findOneByField("proxyTrunkId", $response);
 
             // If not found create a new one
             $forceInsert = false;
@@ -39,7 +39,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
             }
             
             // Update/Insert endpoint data
-            $endpoint->setId($response)
+            $endpoint->setProxyTrunkId($response)
                 ->setSorceryId($model->getName())
                 ->setAors($model->getName())
                 ->setContext("incoming")
@@ -49,7 +49,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
             
             // Replicate Terminal into ast_ps_aors
             $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
-            $aor = $aorMapper->findOneByField("id", $response);
+            $aor = $aorMapper->findOneByField("proxyTrunkId", $response);
             
             // If not found create a new one
             $forceInsert = false;
@@ -57,7 +57,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
                 $forceInsert = true;
                 $aor = new \IvozProvider\Model\AstPsAors();
             }
-            $aor->setId($response)
+            $aor->setProxyTrunkId($response)
                 ->setSorceryId($model->getName())
                 ->setMaxContacts(1)
                 ->setContact("sip:" . $model->getIp())
@@ -67,7 +67,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
                 
             // Replicate Terminal into ast_ps_endpoint
             $identifyMapper = new \IvozProvider\Mapper\Sql\AstPsIdentify();
-            $identify = $identifyMapper->findOneByField("id", $response);
+            $identify = $identifyMapper->findOneByField("proxyTrunkId", $response);
             
             // If not found create a new one
             $forceInsert = false;
@@ -77,7 +77,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
             }
             
             // Update/Insert endpoint data
-            $identify->setId($response)
+            $identify->setProxyTrunkId($response)
                 ->setSorceryId($model->getName())
                 ->setEndpoint($model->getName())
                 ->setMatch($model->getIp())
@@ -92,7 +92,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
     
         // Delete its endpoint
         $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-        $endpoint = $endpointMapper->findOneByField("id", $model->getId());
+        $endpoint = $endpointMapper->findOneByField("proxyTrunkId", $model->getId());
         if ($endpoint) {
             $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
             $endpointMapper->delete($endpoint);
@@ -100,14 +100,14 @@ class ProxyTrunks extends Raw\ProxyTrunks
         
         // Delete its aor
         $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
-        $aor = $aorMapper->findOneByField("id", $model->getId());
+        $aor = $aorMapper->findOneByField("proxyTrunkId", $model->getId());
         if ($aor) {
             $aorMapper->delete($aor);
         }
         
         // Delete its identify
         $identifyMapper = new \IvozProvider\Mapper\Sql\AstPsIdentify();
-        $identify = $identifyMapper->findOneByField("id", $model->getId());
+        $identify = $identifyMapper->findOneByField("proxyTrunkId", $model->getId());
         if ($identify) {
             $identifyMapper = new \IvozProvider\Mapper\Sql\AstPsIdentify();
             $identifyMapper->delete($identify);

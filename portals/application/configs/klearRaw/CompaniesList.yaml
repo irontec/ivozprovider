@@ -16,13 +16,13 @@
 #include LocutionsList.yaml
 #include MusicOnHoldList.yaml
 #include OutgoingRoutingList.yaml
+#include ParsedCDRsList.yaml
 #include PickUpGroupsList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include SchedulesList.yaml
 #include ServicesList.yaml
 #include TerminalsList.yaml
 #include UsersList.yaml
-#include ParsedCDRsList.yaml
 
 
 production: 
@@ -58,13 +58,13 @@ production:
             locutionsList_screen: true
             musicOnHoldList_screen: true
             outgoingRoutingList_screen: true
+            parsedCDRsList_screen: true
             pickUpGroupsList_screen: true
             pricingPlansRelCompaniesList_screen: true
             schedulesList_screen: true
             servicesList_screen: true
             terminalsList_screen: true
             usersList_screen: true
-            parsedCDRsList_screen: true
           dialogs: 
             companiesDel_dialog: true
           default: companiesEdit_screen
@@ -301,6 +301,19 @@ production:
       <<: *outgoingRoutingEdit_screenLink
       filterField: companyId
 
+    #parsedCDRs: 
+    parsedCDRsList_screen: 
+      <<: *parsedCDRsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    parsedCDRsNew_screen: 
+      <<: *parsedCDRsNew_screenLink
+      filterField: companyId
+    parsedCDRsEdit_screen: 
+      <<: *parsedCDRsEdit_screenLink
+      filterField: companyId
+
     #pickUpGroups: 
     pickUpGroupsList_screen: 
       <<: *pickUpGroupsList_screenLink
@@ -379,19 +392,6 @@ production:
       <<: *usersEdit_screenLink
       filterField: companyId
 
-    #parsedCDRs: 
-    parsedCDRsList_screen: 
-      <<: *parsedCDRsList_screenLink
-      filterField: companyId
-      parentOptionCustomizer: 
-        - recordCount
-    parsedCDRsNew_screen: 
-      <<: *parsedCDRsNew_screenLink
-      filterField: companyId
-    parsedCDRsEdit_screen: 
-      <<: *parsedCDRsEdit_screenLink
-      filterField: companyId
-
   dialogs: &companies_dialogsLink 
     companiesDel_dialog: &companiesDel_dialogLink 
       <<: *Companies
@@ -435,6 +435,8 @@ production:
     <<: *musicOnHold_dialogsLink
   # outgoingRouting dialogs: 
     <<: *outgoingRouting_dialogsLink
+  # parsedCDRs dialogs: 
+    <<: *parsedCDRs_dialogsLink
   # pickUpGroups dialogs: 
     <<: *pickUpGroups_dialogsLink
   # pricingPlansRelCompanies dialogs: 
@@ -447,8 +449,6 @@ production:
     <<: *terminals_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
-  # parsedCDRs dialogs: 
-    <<: *parsedCDRs_dialogsLink
 staging: 
   _extends: production
 testing: 

@@ -24,17 +24,16 @@ class Faxes extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -60,9 +59,9 @@ class Faxes extends ModelAbstract
     protected $_sendByEmail;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_outgoingDDI;
 
@@ -113,7 +112,6 @@ class Faxes extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -186,7 +184,7 @@ class Faxes extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Faxes
      */
     public function setId($data)
@@ -196,14 +194,22 @@ class Faxes extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -212,7 +218,7 @@ class Faxes extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Faxes
      */
     public function setCompanyId($data)
@@ -225,14 +231,22 @@ class Faxes extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -346,7 +360,7 @@ class Faxes extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Faxes
      */
     public function setOutgoingDDI($data)
@@ -356,14 +370,22 @@ class Faxes extends ModelAbstract
             $this->_logChange('outgoingDDI');
         }
 
-        $this->_outgoingDDI = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingDDI = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingDDI = (int) $data;
+
+        } else {
+            $this->_outgoingDDI = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column outgoingDDI
      *
-     * @return binary
+     * @return int
      */
     public function getOutgoingDDI()
     {

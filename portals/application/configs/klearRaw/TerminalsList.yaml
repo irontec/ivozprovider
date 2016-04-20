@@ -1,6 +1,8 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include UsersList.yaml
+#include AstPsAorsList.yaml
+#include AstPsEndpointsList.yaml
 
 
 production: 
@@ -21,6 +23,8 @@ production:
           screens: 
             terminalsEdit_screen: true
             usersList_screen: true
+            astPsAorsList_screen: true
+            astPsEndpointsList_screen: true
           dialogs: 
             terminalsDel_dialog: true
           default: terminalsEdit_screen
@@ -62,6 +66,32 @@ production:
       <<: *usersEdit_screenLink
       filterField: terminalId
 
+    #astPsAors: 
+    astPsAorsList_screen: 
+      <<: *astPsAorsList_screenLink
+      filterField: terminalId
+      parentOptionCustomizer: 
+        - recordCount
+    astPsAorsNew_screen: 
+      <<: *astPsAorsNew_screenLink
+      filterField: terminalId
+    astPsAorsEdit_screen: 
+      <<: *astPsAorsEdit_screenLink
+      filterField: terminalId
+
+    #astPsEndpoints: 
+    astPsEndpointsList_screen: 
+      <<: *astPsEndpointsList_screenLink
+      filterField: terminalId
+      parentOptionCustomizer: 
+        - recordCount
+    astPsEndpointsNew_screen: 
+      <<: *astPsEndpointsNew_screenLink
+      filterField: terminalId
+    astPsEndpointsEdit_screen: 
+      <<: *astPsEndpointsEdit_screenLink
+      filterField: terminalId
+
   dialogs: &terminals_dialogsLink 
     terminalsDel_dialog: &terminalsDel_dialogLink 
       <<: *Terminals
@@ -75,6 +105,10 @@ production:
       labelOnList: 1
   # users dialogs: 
     <<: *users_dialogsLink
+  # astPsAors dialogs: 
+    <<: *astPsAors_dialogsLink
+  # astPsEndpoints dialogs: 
+    <<: *astPsEndpoints_dialogsLink
 staging: 
   _extends: production
 testing: 

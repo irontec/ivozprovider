@@ -91,9 +91,9 @@ class Invoices extends ModelAbstract
     protected $_status;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -127,9 +127,9 @@ class Invoices extends ModelAbstract
     protected $_pdfFileBaseName;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_invoiceTemplateId;
 
@@ -214,7 +214,7 @@ class Invoices extends ModelAbstract
         $this->setDependentList(array(
             'ParsedCDRsIbfk5' => array(
                     'property' => 'ParsedCDRs',
-                    'table_name' => 'parsedCDRs',
+                    'table_name' => 'ParsedCDRs',
                 ),
         ));
 
@@ -662,7 +662,7 @@ class Invoices extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Invoices
      */
     public function setCompanyId($data)
@@ -675,14 +675,22 @@ class Invoices extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -830,7 +838,7 @@ class Invoices extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Invoices
      */
     public function setInvoiceTemplateId($data)
@@ -840,14 +848,22 @@ class Invoices extends ModelAbstract
             $this->_logChange('invoiceTemplateId');
         }
 
-        $this->_invoiceTemplateId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_invoiceTemplateId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_invoiceTemplateId = (int) $data;
+
+        } else {
+            $this->_invoiceTemplateId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column invoiceTemplateId
      *
-     * @return binary
+     * @return int
      */
     public function getInvoiceTemplateId()
     {

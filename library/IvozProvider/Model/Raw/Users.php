@@ -24,17 +24,16 @@ class Users extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -68,37 +67,37 @@ class Users extends ModelAbstract
     protected $_pass;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
     protected $_timezoneId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_terminalId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_extensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_outgoingDDIId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_callACLId;
 
@@ -117,9 +116,9 @@ class Users extends ModelAbstract
     protected $_isBoss;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_bossAssistantId;
 
@@ -180,7 +179,7 @@ class Users extends ModelAbstract
     protected $_tokenKey;
 
     /**
-     * Database var type mediumint
+     * Database var type int
      *
      * @var int
      */
@@ -388,7 +387,6 @@ class Users extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'pass'=> array('password'),
         ));
 
@@ -554,7 +552,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setId($data)
@@ -564,14 +562,22 @@ class Users extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -580,7 +586,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setCompanyId($data)
@@ -593,14 +599,22 @@ class Users extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -791,7 +805,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setTerminalId($data)
@@ -801,14 +815,22 @@ class Users extends ModelAbstract
             $this->_logChange('terminalId');
         }
 
-        $this->_terminalId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_terminalId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_terminalId = (int) $data;
+
+        } else {
+            $this->_terminalId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column terminalId
      *
-     * @return binary
+     * @return int
      */
     public function getTerminalId()
     {
@@ -817,7 +839,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setExtensionId($data)
@@ -827,14 +849,22 @@ class Users extends ModelAbstract
             $this->_logChange('extensionId');
         }
 
-        $this->_extensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_extensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_extensionId = (int) $data;
+
+        } else {
+            $this->_extensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column extensionId
      *
-     * @return binary
+     * @return int
      */
     public function getExtensionId()
     {
@@ -843,7 +873,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setOutgoingDDIId($data)
@@ -853,14 +883,22 @@ class Users extends ModelAbstract
             $this->_logChange('outgoingDDIId');
         }
 
-        $this->_outgoingDDIId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingDDIId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingDDIId = (int) $data;
+
+        } else {
+            $this->_outgoingDDIId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column outgoingDDIId
      *
-     * @return binary
+     * @return int
      */
     public function getOutgoingDDIId()
     {
@@ -869,7 +907,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setCallACLId($data)
@@ -879,14 +917,22 @@ class Users extends ModelAbstract
             $this->_logChange('callACLId');
         }
 
-        $this->_callACLId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_callACLId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_callACLId = (int) $data;
+
+        } else {
+            $this->_callACLId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column callACLId
      *
-     * @return binary
+     * @return int
      */
     public function getCallACLId()
     {
@@ -963,7 +1009,7 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
     public function setBossAssistantId($data)
@@ -973,14 +1019,22 @@ class Users extends ModelAbstract
             $this->_logChange('bossAssistantId');
         }
 
-        $this->_bossAssistantId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_bossAssistantId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_bossAssistantId = (int) $data;
+
+        } else {
+            $this->_bossAssistantId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column bossAssistantId
      *
-     * @return binary
+     * @return int
      */
     public function getBossAssistantId()
     {

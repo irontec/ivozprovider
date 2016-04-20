@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for parsedCDRs
+ * Table definition for ParsedCDRs
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -26,7 +26,7 @@ class ParsedCDRs extends TableAbstract
      *
      * @var string
      */
-    protected $_name = 'parsedCDRs';
+    protected $_name = 'ParsedCDRs';
 
     /**
      * $_id - this is the primary key name
@@ -71,7 +71,7 @@ class ParsedCDRs extends TableAbstract
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -88,7 +88,7 @@ class ParsedCDRs extends TableAbstract
 	  'calldate' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'calldate',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'timestamp',
@@ -105,7 +105,7 @@ class ParsedCDRs extends TableAbstract
 	  'src' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'src',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
@@ -122,7 +122,7 @@ class ParsedCDRs extends TableAbstract
 	  'src_dialed' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'src_dialed',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
@@ -139,7 +139,7 @@ class ParsedCDRs extends TableAbstract
 	  'src_duration' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'src_duration',
 	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'int',
@@ -156,7 +156,7 @@ class ParsedCDRs extends TableAbstract
 	  'dst' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'dst',
 	    'COLUMN_POSITION' => 6,
 	    'DATA_TYPE' => 'varchar',
@@ -173,7 +173,7 @@ class ParsedCDRs extends TableAbstract
 	  'dst_src_cid' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'dst_src_cid',
 	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'varchar',
@@ -190,7 +190,7 @@ class ParsedCDRs extends TableAbstract
 	  'dst_duration' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'dst_duration',
 	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'int',
@@ -207,7 +207,7 @@ class ParsedCDRs extends TableAbstract
 	  'type' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'type',
 	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'varchar',
@@ -224,7 +224,7 @@ class ParsedCDRs extends TableAbstract
 	  'desc' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'desc',
 	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'varchar',
@@ -241,7 +241,7 @@ class ParsedCDRs extends TableAbstract
 	  'fw_desc' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'fw_desc',
 	    'COLUMN_POSITION' => 11,
 	    'DATA_TYPE' => 'varchar',
@@ -258,7 +258,7 @@ class ParsedCDRs extends TableAbstract
 	  'ext_forwarder' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'ext_forwarder',
 	    'COLUMN_POSITION' => 12,
 	    'DATA_TYPE' => 'varchar',
@@ -275,7 +275,7 @@ class ParsedCDRs extends TableAbstract
 	  'oasis_forwarder' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'oasis_forwarder',
 	    'COLUMN_POSITION' => 13,
 	    'DATA_TYPE' => 'varchar',
@@ -292,7 +292,7 @@ class ParsedCDRs extends TableAbstract
 	  'forward_to' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'forward_to',
 	    'COLUMN_POSITION' => 14,
 	    'DATA_TYPE' => 'varchar',
@@ -309,16 +309,16 @@ class ParsedCDRs extends TableAbstract
 	  'companyId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 15,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -326,7 +326,7 @@ class ParsedCDRs extends TableAbstract
 	  'brandId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'brandId',
 	    'COLUMN_POSITION' => 16,
 	    'DATA_TYPE' => 'int',
@@ -343,7 +343,7 @@ class ParsedCDRs extends TableAbstract
 	  'aleg' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'aleg',
 	    'COLUMN_POSITION' => 17,
 	    'DATA_TYPE' => 'varchar',
@@ -360,7 +360,7 @@ class ParsedCDRs extends TableAbstract
 	  'bleg' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'bleg',
 	    'COLUMN_POSITION' => 18,
 	    'DATA_TYPE' => 'varchar',
@@ -377,7 +377,7 @@ class ParsedCDRs extends TableAbstract
 	  'metered' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'metered',
 	    'COLUMN_POSITION' => 19,
 	    'DATA_TYPE' => 'tinyint',
@@ -394,7 +394,7 @@ class ParsedCDRs extends TableAbstract
 	  'meteringDate' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'meteringDate',
 	    'COLUMN_POSITION' => 20,
 	    'DATA_TYPE' => 'datetime',
@@ -411,10 +411,10 @@ class ParsedCDRs extends TableAbstract
 	  'pricingPlanId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'pricingPlanId',
 	    'COLUMN_POSITION' => 21,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
@@ -428,10 +428,10 @@ class ParsedCDRs extends TableAbstract
 	  'targetPatternId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'targetPatternId',
 	    'COLUMN_POSITION' => 22,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
@@ -445,7 +445,7 @@ class ParsedCDRs extends TableAbstract
 	  'price' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'price',
 	    'COLUMN_POSITION' => 23,
 	    'DATA_TYPE' => 'decimal',
@@ -462,7 +462,7 @@ class ParsedCDRs extends TableAbstract
 	  'pricingPlanDetails' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'pricingPlanDetails',
 	    'COLUMN_POSITION' => 24,
 	    'DATA_TYPE' => 'text',
@@ -479,7 +479,7 @@ class ParsedCDRs extends TableAbstract
 	  'invoiceId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'parsedCDRs',
+	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'invoiceId',
 	    'COLUMN_POSITION' => 25,
 	    'DATA_TYPE' => 'int',

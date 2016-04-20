@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for proxyUsers
+ * Table definition for ProxyUsers
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -26,7 +26,7 @@ class ProxyUsers extends TableAbstract
      *
      * @var string
      */
-    protected $_name = 'proxyUsers';
+    protected $_name = 'ProxyUsers';
 
     /**
      * $_id - this is the primary key name
@@ -45,7 +45,7 @@ class ProxyUsers extends TableAbstract
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'proxyUsers',
+	    'TABLE_NAME' => 'ProxyUsers',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -62,7 +62,7 @@ class ProxyUsers extends TableAbstract
 	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'proxyUsers',
+	    'TABLE_NAME' => 'ProxyUsers',
 	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'varchar',
@@ -79,7 +79,7 @@ class ProxyUsers extends TableAbstract
 	  'ip' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'proxyUsers',
+	    'TABLE_NAME' => 'ProxyUsers',
 	    'COLUMN_NAME' => 'ip',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',

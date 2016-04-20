@@ -108,9 +108,9 @@ class KamTrunksUacreg extends ModelAbstract
     protected $_brandId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_peeringContractId;
 
@@ -633,7 +633,7 @@ class KamTrunksUacreg extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\KamTrunksUacreg
      */
     public function setPeeringContractId($data)
@@ -646,14 +646,22 @@ class KamTrunksUacreg extends ModelAbstract
             $this->_logChange('peeringContractId');
         }
 
-        $this->_peeringContractId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peeringContractId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peeringContractId = (int) $data;
+
+        } else {
+            $this->_peeringContractId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column peeringContractId
      *
-     * @return binary
+     * @return int
      */
     public function getPeeringContractId()
     {

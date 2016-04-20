@@ -34,17 +34,16 @@ class ExternalCallFilters extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -56,23 +55,23 @@ class ExternalCallFilters extends ModelAbstract
     protected $_name;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_welcomeLocutionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_holidayLocutionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_outOfScheduleLocutionId;
 
@@ -92,16 +91,16 @@ class ExternalCallFilters extends ModelAbstract
     protected $_holidayNumberValue;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_holidayExtensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_holidayVoiceMailUserId;
 
@@ -121,16 +120,16 @@ class ExternalCallFilters extends ModelAbstract
     protected $_outOfScheduleNumberValue;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_outOfScheduleExtensionId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_outOfScheduleVoiceMailUserId;
 
@@ -239,7 +238,6 @@ class ExternalCallFilters extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'holidayTargetType'=> array('enum:number|extension|voicemail'),
             'outOfScheduleTargetType'=> array('enum:number|extension|voicemail'),
         ));
@@ -345,7 +343,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setId($data)
@@ -355,14 +353,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -371,7 +377,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setCompanyId($data)
@@ -384,14 +390,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -437,7 +451,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setWelcomeLocutionId($data)
@@ -447,14 +461,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('welcomeLocutionId');
         }
 
-        $this->_welcomeLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_welcomeLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_welcomeLocutionId = (int) $data;
+
+        } else {
+            $this->_welcomeLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column welcomeLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getWelcomeLocutionId()
     {
@@ -463,7 +485,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setHolidayLocutionId($data)
@@ -473,14 +495,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('holidayLocutionId');
         }
 
-        $this->_holidayLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_holidayLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_holidayLocutionId = (int) $data;
+
+        } else {
+            $this->_holidayLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column holidayLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getHolidayLocutionId()
     {
@@ -489,7 +519,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setOutOfScheduleLocutionId($data)
@@ -499,14 +529,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('outOfScheduleLocutionId');
         }
 
-        $this->_outOfScheduleLocutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outOfScheduleLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outOfScheduleLocutionId = (int) $data;
+
+        } else {
+            $this->_outOfScheduleLocutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column outOfScheduleLocutionId
      *
-     * @return binary
+     * @return int
      */
     public function getOutOfScheduleLocutionId()
     {
@@ -586,7 +624,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setHolidayExtensionId($data)
@@ -596,14 +634,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('holidayExtensionId');
         }
 
-        $this->_holidayExtensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_holidayExtensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_holidayExtensionId = (int) $data;
+
+        } else {
+            $this->_holidayExtensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column holidayExtensionId
      *
-     * @return binary
+     * @return int
      */
     public function getHolidayExtensionId()
     {
@@ -612,7 +658,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setHolidayVoiceMailUserId($data)
@@ -622,14 +668,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('holidayVoiceMailUserId');
         }
 
-        $this->_holidayVoiceMailUserId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_holidayVoiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_holidayVoiceMailUserId = (int) $data;
+
+        } else {
+            $this->_holidayVoiceMailUserId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column holidayVoiceMailUserId
      *
-     * @return binary
+     * @return int
      */
     public function getHolidayVoiceMailUserId()
     {
@@ -709,7 +763,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setOutOfScheduleExtensionId($data)
@@ -719,14 +773,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('outOfScheduleExtensionId');
         }
 
-        $this->_outOfScheduleExtensionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outOfScheduleExtensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outOfScheduleExtensionId = (int) $data;
+
+        } else {
+            $this->_outOfScheduleExtensionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column outOfScheduleExtensionId
      *
-     * @return binary
+     * @return int
      */
     public function getOutOfScheduleExtensionId()
     {
@@ -735,7 +797,7 @@ class ExternalCallFilters extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ExternalCallFilters
      */
     public function setOutOfScheduleVoiceMailUserId($data)
@@ -745,14 +807,22 @@ class ExternalCallFilters extends ModelAbstract
             $this->_logChange('outOfScheduleVoiceMailUserId');
         }
 
-        $this->_outOfScheduleVoiceMailUserId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outOfScheduleVoiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outOfScheduleVoiceMailUserId = (int) $data;
+
+        } else {
+            $this->_outOfScheduleVoiceMailUserId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column outOfScheduleVoiceMailUserId
      *
-     * @return binary
+     * @return int
      */
     public function getOutOfScheduleVoiceMailUserId()
     {

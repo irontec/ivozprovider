@@ -24,24 +24,23 @@ class PickUpRelUsers extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_pickUpGroupId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_userId;
 
@@ -73,7 +72,6 @@ class PickUpRelUsers extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -134,7 +132,7 @@ class PickUpRelUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\PickUpRelUsers
      */
     public function setId($data)
@@ -144,14 +142,22 @@ class PickUpRelUsers extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -160,7 +166,7 @@ class PickUpRelUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\PickUpRelUsers
      */
     public function setPickUpGroupId($data)
@@ -173,14 +179,22 @@ class PickUpRelUsers extends ModelAbstract
             $this->_logChange('pickUpGroupId');
         }
 
-        $this->_pickUpGroupId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_pickUpGroupId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_pickUpGroupId = (int) $data;
+
+        } else {
+            $this->_pickUpGroupId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column pickUpGroupId
      *
-     * @return binary
+     * @return int
      */
     public function getPickUpGroupId()
     {
@@ -189,7 +203,7 @@ class PickUpRelUsers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\PickUpRelUsers
      */
     public function setUserId($data)
@@ -202,14 +216,22 @@ class PickUpRelUsers extends ModelAbstract
             $this->_logChange('userId');
         }
 
-        $this->_userId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_userId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_userId = (int) $data;
+
+        } else {
+            $this->_userId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column userId
      *
-     * @return binary
+     * @return int
      */
     public function getUserId()
     {

@@ -28,17 +28,16 @@ class Terminals extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_TerminalModelId;
 
@@ -72,9 +71,9 @@ class Terminals extends ModelAbstract
     protected $_password;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_companyId;
 
@@ -116,6 +115,22 @@ class Terminals extends ModelAbstract
      */
     protected $_Users;
 
+    /**
+     * Dependent relation ast_ps_aors_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsAors[]
+     */
+    protected $_AstPsAors;
+
+    /**
+     * Dependent relation ast_ps_endpoints_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsEndpoints[]
+     */
+    protected $_AstPsEndpoints;
+
     protected $_columnsList = array(
         'id'=>'id',
         'TerminalModelId'=>'TerminalModelId',
@@ -134,7 +149,6 @@ class Terminals extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'password'=> array('password'),
         ));
 
@@ -158,6 +172,14 @@ class Terminals extends ModelAbstract
             'UsersIbfk3' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
+                ),
+            'AstPsAorsIbfk1' => array(
+                    'property' => 'AstPsAors',
+                    'table_name' => 'ast_ps_aors',
+                ),
+            'AstPsEndpointsIbfk1' => array(
+                    'property' => 'AstPsEndpoints',
+                    'table_name' => 'ast_ps_endpoints',
                 ),
         ));
 
@@ -203,7 +225,7 @@ class Terminals extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Terminals
      */
     public function setId($data)
@@ -213,14 +235,22 @@ class Terminals extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -229,7 +259,7 @@ class Terminals extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Terminals
      */
     public function setTerminalModelId($data)
@@ -242,14 +272,22 @@ class Terminals extends ModelAbstract
             $this->_logChange('TerminalModelId');
         }
 
-        $this->_TerminalModelId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_TerminalModelId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_TerminalModelId = (int) $data;
+
+        } else {
+            $this->_TerminalModelId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column TerminalModelId
      *
-     * @return binary
+     * @return int
      */
     public function getTerminalModelId()
     {
@@ -397,7 +435,7 @@ class Terminals extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Terminals
      */
     public function setCompanyId($data)
@@ -410,14 +448,22 @@ class Terminals extends ModelAbstract
             $this->_logChange('companyId');
         }
 
-        $this->_companyId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column companyId
      *
-     * @return binary
+     * @return int
      */
     public function getCompanyId()
     {
@@ -704,6 +750,186 @@ class Terminals extends ModelAbstract
         }
 
         return $this->_Users;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_aors_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstPsAors
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setAstPsAors(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstPsAors === null) {
+
+                $this->getAstPsAors();
+            }
+
+            $oldRelations = $this->_AstPsAors;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstPsAors = array();
+
+        foreach ($data as $object) {
+            $this->addAstPsAors($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_aors_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\AstPsAors $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function addAstPsAors(\IvozProvider\Model\Raw\AstPsAors $data)
+    {
+        $this->_AstPsAors[] = $data;
+        $this->_setLoaded('AstPsAorsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_aors_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstPsAors
+     */
+    public function getAstPsAors($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsAorsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsAors = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsAors;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_endpoints_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstPsEndpoints
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setAstPsEndpoints(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstPsEndpoints === null) {
+
+                $this->getAstPsEndpoints();
+            }
+
+            $oldRelations = $this->_AstPsEndpoints;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstPsEndpoints = array();
+
+        foreach ($data as $object) {
+            $this->addAstPsEndpoints($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_endpoints_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\AstPsEndpoints $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function addAstPsEndpoints(\IvozProvider\Model\Raw\AstPsEndpoints $data)
+    {
+        $this->_AstPsEndpoints[] = $data;
+        $this->_setLoaded('AstPsEndpointsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_endpoints_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function getAstPsEndpoints($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsEndpointsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsEndpoints = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsEndpoints;
     }
 
     /**

@@ -24,10 +24,9 @@ class ProxyTrunks extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -47,6 +46,30 @@ class ProxyTrunks extends ModelAbstract
 
 
 
+    /**
+     * Dependent relation ast_ps_aors_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsAors[]
+     */
+    protected $_AstPsAors;
+
+    /**
+     * Dependent relation ast_ps_endpoints_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsEndpoints[]
+     */
+    protected $_AstPsEndpoints;
+
+    /**
+     * Dependent relation ast_ps_identify_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsIdentify[]
+     */
+    protected $_AstPsIdentify;
+
     protected $_columnsList = array(
         'id'=>'id',
         'name'=>'name',
@@ -59,7 +82,6 @@ class ProxyTrunks extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -71,6 +93,18 @@ class ProxyTrunks extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'AstPsAorsIbfk2' => array(
+                    'property' => 'AstPsAors',
+                    'table_name' => 'ast_ps_aors',
+                ),
+            'AstPsEndpointsIbfk2' => array(
+                    'property' => 'AstPsEndpoints',
+                    'table_name' => 'ast_ps_endpoints',
+                ),
+            'AstPsIdentifyIbfk1' => array(
+                    'property' => 'AstPsIdentify',
+                    'table_name' => 'ast_ps_identify',
+                ),
         ));
 
 
@@ -112,7 +146,7 @@ class ProxyTrunks extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ProxyTrunks
      */
     public function setId($data)
@@ -122,14 +156,22 @@ class ProxyTrunks extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -205,6 +247,276 @@ class ProxyTrunks extends ModelAbstract
     public function getIp()
     {
         return $this->_ip;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_aors_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstPsAors
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setAstPsAors(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstPsAors === null) {
+
+                $this->getAstPsAors();
+            }
+
+            $oldRelations = $this->_AstPsAors;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstPsAors = array();
+
+        foreach ($data as $object) {
+            $this->addAstPsAors($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_aors_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\AstPsAors $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function addAstPsAors(\IvozProvider\Model\Raw\AstPsAors $data)
+    {
+        $this->_AstPsAors[] = $data;
+        $this->_setLoaded('AstPsAorsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_aors_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstPsAors
+     */
+    public function getAstPsAors($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsAorsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsAors = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsAors;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_endpoints_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstPsEndpoints
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setAstPsEndpoints(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstPsEndpoints === null) {
+
+                $this->getAstPsEndpoints();
+            }
+
+            $oldRelations = $this->_AstPsEndpoints;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstPsEndpoints = array();
+
+        foreach ($data as $object) {
+            $this->addAstPsEndpoints($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_endpoints_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\AstPsEndpoints $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function addAstPsEndpoints(\IvozProvider\Model\Raw\AstPsEndpoints $data)
+    {
+        $this->_AstPsEndpoints[] = $data;
+        $this->_setLoaded('AstPsEndpointsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_endpoints_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function getAstPsEndpoints($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsEndpointsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsEndpoints = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsEndpoints;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_identify_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstPsIdentify
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setAstPsIdentify(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstPsIdentify === null) {
+
+                $this->getAstPsIdentify();
+            }
+
+            $oldRelations = $this->_AstPsIdentify;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstPsIdentify = array();
+
+        foreach ($data as $object) {
+            $this->addAstPsIdentify($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_ps_identify_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\AstPsIdentify $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function addAstPsIdentify(\IvozProvider\Model\Raw\AstPsIdentify $data)
+    {
+        $this->_AstPsIdentify[] = $data;
+        $this->_setLoaded('AstPsIdentifyIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_identify_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstPsIdentify
+     */
+    public function getAstPsIdentify($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsIdentifyIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsIdentify = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsIdentify;
     }
 
     /**

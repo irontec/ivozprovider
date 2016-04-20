@@ -31,14 +31,14 @@ class ExternalCallFilterRelCalendars extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\ExternalCallFilterRelCalendars';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\ExternalCallFilterRelCalendars';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'ExternalCallFilterRelCalendarsIbfk1' => array(
             'columns' => 'filterId',
@@ -59,16 +59,16 @@ class ExternalCallFilterRelCalendars extends TableAbstract
 	    'TABLE_NAME' => 'ExternalCallFilterRelCalendars',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'filterId' => 
 	  array (
@@ -76,13 +76,13 @@ class ExternalCallFilterRelCalendars extends TableAbstract
 	    'TABLE_NAME' => 'ExternalCallFilterRelCalendars',
 	    'COLUMN_NAME' => 'filterId',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -93,13 +93,13 @@ class ExternalCallFilterRelCalendars extends TableAbstract
 	    'TABLE_NAME' => 'ExternalCallFilterRelCalendars',
 	    'COLUMN_NAME' => 'calendarId',
 	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

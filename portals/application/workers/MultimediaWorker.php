@@ -52,7 +52,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
             
             $this->_createFolder($encodedFilePath);
             
-            $cmd = 'avconv -i ' . str_replace(" ", "\ ", $originalFile) . ' -b:a 64k -ar 8000 -ac 1 ' . $encodedFile;
+            $cmd = 'avconv -i ' . str_replace(" ", "\ ", "'$originalFile'") . ' -b:a 64k -ar 8000 -ac 1 ' . "'$encodedFile'";
             $this->_logger->log($this->_modelName . "-  " . $cmd, Zend_Log::INFO);
             exec($cmd);
             

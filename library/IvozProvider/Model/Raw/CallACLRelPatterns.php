@@ -28,24 +28,23 @@ class CallACLRelPatterns extends ModelAbstract
     );
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_CallACLId;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_CallACLPatternId;
 
@@ -94,7 +93,6 @@ class CallACLRelPatterns extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
             'policy'=> array('enum:allow|deny'),
         ));
 
@@ -156,7 +154,7 @@ class CallACLRelPatterns extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallACLRelPatterns
      */
     public function setId($data)
@@ -166,14 +164,22 @@ class CallACLRelPatterns extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -182,7 +188,7 @@ class CallACLRelPatterns extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallACLRelPatterns
      */
     public function setCallACLId($data)
@@ -195,14 +201,22 @@ class CallACLRelPatterns extends ModelAbstract
             $this->_logChange('CallACLId');
         }
 
-        $this->_CallACLId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_CallACLId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_CallACLId = (int) $data;
+
+        } else {
+            $this->_CallACLId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column CallACLId
      *
-     * @return binary
+     * @return int
      */
     public function getCallACLId()
     {
@@ -211,7 +225,7 @@ class CallACLRelPatterns extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\CallACLRelPatterns
      */
     public function setCallACLPatternId($data)
@@ -224,14 +238,22 @@ class CallACLRelPatterns extends ModelAbstract
             $this->_logChange('CallACLPatternId');
         }
 
-        $this->_CallACLPatternId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_CallACLPatternId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_CallACLPatternId = (int) $data;
+
+        } else {
+            $this->_CallACLPatternId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column CallACLPatternId
      *
-     * @return binary
+     * @return int
      */
     public function getCallACLPatternId()
     {

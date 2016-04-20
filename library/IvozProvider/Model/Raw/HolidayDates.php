@@ -24,17 +24,16 @@ class HolidayDates extends ModelAbstract
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_calendarId;
 
@@ -53,9 +52,9 @@ class HolidayDates extends ModelAbstract
     protected $_eventDate;
 
     /**
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_locutionId;
 
@@ -89,7 +88,6 @@ class HolidayDates extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -150,7 +148,7 @@ class HolidayDates extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HolidayDates
      */
     public function setId($data)
@@ -160,14 +158,22 @@ class HolidayDates extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -176,7 +182,7 @@ class HolidayDates extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HolidayDates
      */
     public function setCalendarId($data)
@@ -189,14 +195,22 @@ class HolidayDates extends ModelAbstract
             $this->_logChange('calendarId');
         }
 
-        $this->_calendarId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_calendarId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_calendarId = (int) $data;
+
+        } else {
+            $this->_calendarId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column calendarId
      *
-     * @return binary
+     * @return int
      */
     public function getCalendarId()
     {
@@ -297,7 +311,7 @@ class HolidayDates extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\HolidayDates
      */
     public function setLocutionId($data)
@@ -307,14 +321,22 @@ class HolidayDates extends ModelAbstract
             $this->_logChange('locutionId');
         }
 
-        $this->_locutionId = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_locutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_locutionId = (int) $data;
+
+        } else {
+            $this->_locutionId = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column locutionId
      *
-     * @return binary
+     * @return int
      */
     public function getLocutionId()
     {

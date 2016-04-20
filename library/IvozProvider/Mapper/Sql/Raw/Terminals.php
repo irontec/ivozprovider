@@ -382,9 +382,6 @@ class Terminals extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -455,6 +452,34 @@ class Terminals extends MapperAbstract
                     }
 
                     foreach ($users as $value) {
+                        $value->setTerminalId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getAstPsAors(null, null, true) !== null) {
+                    $astPsAors = $model->getAstPsAors();
+
+                    if (!is_array($astPsAors)) {
+
+                        $astPsAors = array($astPsAors);
+                    }
+
+                    foreach ($astPsAors as $value) {
+                        $value->setTerminalId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getAstPsEndpoints(null, null, true) !== null) {
+                    $astPsEndpoints = $model->getAstPsEndpoints();
+
+                    if (!is_array($astPsEndpoints)) {
+
+                        $astPsEndpoints = array($astPsEndpoints);
+                    }
+
+                    foreach ($astPsEndpoints as $value) {
                         $value->setTerminalId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

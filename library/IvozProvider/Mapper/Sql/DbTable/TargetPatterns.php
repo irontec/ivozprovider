@@ -49,9 +49,9 @@ class TargetPatterns extends TableAbstract
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelTargetPatterns',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroupsRelPatterns',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroupsRelPatterns'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -60,7 +60,7 @@ class TargetPatterns extends TableAbstract
 	    'TABLE_NAME' => 'TargetPatterns',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'mediumint',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,

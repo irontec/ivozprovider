@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: oasis
+-- Host: localhost    Database: ivozprovider
 -- ------------------------------------------------------
 -- Server version	5.5.47-0+deb8u1
 
@@ -23,11 +23,8 @@ DROP TABLE IF EXISTS `ApplicationServers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ApplicationServers` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ip` varbinary(16) NOT NULL,
-  `transport` varchar(4) NOT NULL DEFAULT 'udp',
-  `from_pattern` varchar(64) DEFAULT NULL,
-  `tag` varchar(64) DEFAULT NULL,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
@@ -51,21 +48,21 @@ DROP TABLE IF EXISTS `BrandOperators`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BrandOperators` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `username` varchar(50) NOT NULL,
   `pass` varchar(80) NOT NULL COMMENT '[password]',
   `email` varchar(100) NOT NULL DEFAULT '',
   `active` tinyint(1) DEFAULT '1',
-  `timezoneId` mediumint(8) unsigned NOT NULL,
+  `timezoneId` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `MainOperatorsUniqueBrandUsername` (`brandId`,`username`),
   KEY `brandId` (`brandId`),
   KEY `timezoneId` (`timezoneId`),
-  CONSTRAINT `BrandOperators_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `BrandOperators_ibfk_2` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE
+  CONSTRAINT `BrandOperators_ibfk_2` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `BrandOperators_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,7 +83,7 @@ DROP TABLE IF EXISTS `BrandURLs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BrandURLs` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `url` varchar(255) NOT NULL,
   `klearTheme` varchar(200) DEFAULT '',
@@ -100,7 +97,7 @@ CREATE TABLE `BrandURLs` (
   UNIQUE KEY `url` (`url`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `BrandURLs_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +106,7 @@ CREATE TABLE `BrandURLs` (
 
 LOCK TABLES `BrandURLs` WRITE;
 /*!40000 ALTER TABLE `BrandURLs` DISABLE KEYS */;
-INSERT INTO `BrandURLs` VALUES (3,1,'http://example.com','blitzer','god','Oasis SuperUser portal',NULL,NULL,NULL,'default');
+INSERT INTO `BrandURLs` VALUES (1,1,'http://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
 /*!40000 ALTER TABLE `BrandURLs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +123,7 @@ CREATE TABLE `Brands` (
   `nif` varchar(25) NOT NULL,
   `extensionBlackListRegExp` varchar(255) DEFAULT '',
   `domain` varchar(255) NOT NULL,
-  `defaultTimezoneId` mediumint(8) unsigned NOT NULL,
+  `defaultTimezoneId` int(10) unsigned NOT NULL,
   `logoFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
   `logoMimeType` varchar(80) DEFAULT NULL,
   `logoBaseName` varchar(255) DEFAULT NULL,
@@ -141,7 +138,7 @@ CREATE TABLE `Brands` (
   UNIQUE KEY `domain` (`domain`),
   KEY `defaultTimezoneId` (`defaultTimezoneId`),
   CONSTRAINT `Brands_ibfk_1` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +147,7 @@ CREATE TABLE `Brands` (
 
 LOCK TABLES `Brands` WRITE;
 /*!40000 ALTER TABLE `Brands` DISABLE KEYS */;
-INSERT INTO `Brands` VALUES (1,'Demo Brand','0123456789ABCDEF','','demobrand.ivozprovider.com',190,NULL,NULL,NULL,'Isle of Man, heaven of heterosexual women','40901','Man Town','Man Province','Isle of Man','More required inputs');
+INSERT INTO `Brands` VALUES (1,'DemoBrand','1234567890','','example.com',1,NULL,NULL,NULL,'','','','','','');
 /*!40000 ALTER TABLE `Brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,14 +159,14 @@ DROP TABLE IF EXISTS `BrandsRelLanguages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BrandsRelLanguages` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
-  `languageId` binary(36) NOT NULL,
+  `languageId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `brandId` (`brandId`),
   KEY `languageId` (`languageId`),
-  CONSTRAINT `BrandsRelLanguages_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `BrandsRelLanguages_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE CASCADE
+  CONSTRAINT `BrandsRelLanguages_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `BrandsRelLanguages_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,7 +176,6 @@ CREATE TABLE `BrandsRelLanguages` (
 
 LOCK TABLES `BrandsRelLanguages` WRITE;
 /*!40000 ALTER TABLE `BrandsRelLanguages` DISABLE KEYS */;
-INSERT INTO `BrandsRelLanguages` VALUES ('570390a4-07f8-49c9-9918-3c2b0a0a00c0',1,'57038fb4-068c-424d-aadf-3c270a0a00c0'),('570390a4-7b10-453d-ba34-3c2b0a0a00c0',1,'57038fc5-d2d0-402d-af60-3c2a0a0a00c0');
 /*!40000 ALTER TABLE `BrandsRelLanguages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,8 +217,8 @@ DROP TABLE IF EXISTS `Calendars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Calendars` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `companyId` (`companyId`),
@@ -247,8 +243,8 @@ DROP TABLE IF EXISTS `CallACL`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CallACL` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `defaultPolicy` varchar(10) NOT NULL COMMENT '[enum:allow|deny]',
   PRIMARY KEY (`id`),
@@ -275,8 +271,8 @@ DROP TABLE IF EXISTS `CallACLPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CallACLPatterns` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `regExp` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -302,9 +298,9 @@ DROP TABLE IF EXISTS `CallACLRelPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CallACLRelPatterns` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `CallACLId` binary(36) NOT NULL,
-  `CallACLPatternId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `CallACLId` int(10) unsigned NOT NULL,
+  `CallACLPatternId` int(10) unsigned NOT NULL,
   `priority` smallint(6) NOT NULL,
   `policy` varchar(25) NOT NULL COMMENT '[enum:allow|deny]',
   PRIMARY KEY (`id`),
@@ -333,14 +329,14 @@ DROP TABLE IF EXISTS `CallForwardSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CallForwardSettings` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `userId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
   `callTypeFilter` varchar(25) NOT NULL COMMENT '[enum:internal|external|both]',
   `callForwardType` varchar(25) NOT NULL COMMENT '[enum:inconditional|noAnswer|busy|userNotRegistered]',
   `targetType` varchar(25) NOT NULL COMMENT '[enum:number|extension|voicemail]',
   `numberValue` varchar(25) DEFAULT NULL,
-  `extensionId` binary(36) DEFAULT NULL,
-  `voiceMailUserId` binary(36) DEFAULT NULL,
+  `extensionId` int(10) unsigned DEFAULT NULL,
+  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
   `noAnswerTimeout` smallint(4) NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
@@ -369,22 +365,22 @@ DROP TABLE IF EXISTS `Companies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Companies` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `name` varchar(80) NOT NULL,
   `nif` varchar(25) NOT NULL,
-  `defaultTimezoneId` mediumint(8) unsigned NOT NULL,
-  `applicationServerId` binary(36) DEFAULT NULL,
-  `transformationRulesetGroupsId` binary(36) DEFAULT NULL,
+  `defaultTimezoneId` int(10) unsigned NOT NULL,
+  `applicationServerId` int(10) unsigned DEFAULT NULL,
+  `transformationRulesetGroupsId` int(10) unsigned DEFAULT NULL,
   `externalMaxCalls` int(10) unsigned NOT NULL DEFAULT '0',
   `postalAddress` varchar(255) NOT NULL,
   `postalCode` varchar(10) NOT NULL,
   `town` varchar(255) NOT NULL,
   `province` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
-  `invoiceLanguageId` binary(36) DEFAULT NULL,
+  `invoiceLanguageId` int(10) unsigned DEFAULT NULL,
   `outbound_prefix` varchar(255) DEFAULT NULL,
-  `countryId` mediumint(8) unsigned DEFAULT NULL,
+  `countryId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `brandId` (`brandId`),
   KEY `defaultTimezoneId` (`defaultTimezoneId`),
@@ -392,12 +388,12 @@ CREATE TABLE `Companies` (
   KEY `Companies_ibfk_7` (`transformationRulesetGroupsId`),
   KEY `invoiceLanguageId` (`invoiceLanguageId`),
   KEY `countryId` (`countryId`),
-  CONSTRAINT `Companies_ibfk_9` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_2` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Companies_ibfk_4` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Companies_ibfk_5` FOREIGN KEY (`applicationServerId`) REFERENCES `ApplicationServers` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_7` FOREIGN KEY (`transformationRulesetGroupsId`) REFERENCES `TransformationRulesetGroupsUsers` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `Companies_ibfk_8` FOREIGN KEY (`invoiceLanguageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL
+  CONSTRAINT `Companies_ibfk_8` FOREIGN KEY (`invoiceLanguageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Companies_ibfk_9` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -411,25 +407,38 @@ LOCK TABLES `Companies` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `CompanyAdmins`
+-- Table structure for table `CompanyAdmins`
 --
 
 DROP TABLE IF EXISTS `CompanyAdmins`;
-/*!50001 DROP VIEW IF EXISTS `CompanyAdmins`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `CompanyAdmins` (
-  `id` tinyint NOT NULL,
-  `companyId` tinyint NOT NULL,
-  `timezoneId` tinyint NOT NULL,
-  `username` tinyint NOT NULL,
-  `pass` tinyint NOT NULL,
-  `name` tinyint NOT NULL,
-  `lastname` tinyint NOT NULL,
-  `email` tinyint NOT NULL,
-  `active` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CompanyAdmins` (
+  `id` int(10) unsigned NOT NULL COMMENT '[uuid]',
+  `companyId` int(10) unsigned NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `pass` varchar(80) NOT NULL COMMENT '[password]',
+  `email` varchar(100) NOT NULL DEFAULT '',
+  `active` tinyint(1) DEFAULT '1',
+  `timezoneId` int(10) unsigned NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `companyId` (`companyId`),
+  KEY `timezoneId` (`timezoneId`),
+  CONSTRAINT `CompanyAdmins_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `CompanyAdmins_ibfk_2` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CompanyAdmins`
+--
+
+LOCK TABLES `CompanyAdmins` WRITE;
+/*!40000 ALTER TABLE `CompanyAdmins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CompanyAdmins` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `Countries`
@@ -439,7 +448,7 @@ DROP TABLE IF EXISTS `Countries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Countries` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(100) NOT NULL DEFAULT '',
   `name` varchar(100) DEFAULT NULL COMMENT '[ml]',
   `name_en` varchar(100) DEFAULT NULL,
@@ -447,7 +456,7 @@ CREATE TABLE `Countries` (
   `calling_code` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `languageCode` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -456,7 +465,7 @@ CREATE TABLE `Countries` (
 
 LOCK TABLES `Countries` WRITE;
 /*!40000 ALTER TABLE `Countries` DISABLE KEYS */;
-INSERT INTO `Countries` VALUES (1,'AF',NULL,'Afghanistan','Afghanistan',93),(2,'AL',NULL,'Albania','Albania',355),(3,'DE',NULL,'Germany','Germany',49),(4,'AD',NULL,'Andorra','Andorra',376),(5,'AO',NULL,'Angola','Angola',244),(6,'AI',NULL,'Anguilla','Anguilla',1264),(7,'AQ',NULL,'Antarctica','Antarctica',672),(8,'AG',NULL,'Antigua and Barbuda','Antigua and Barbuda',1268),(9,'SA',NULL,'Saudi Arabia','Saudi Arabia',966),(10,'DZ',NULL,'Algeria','Algeria',213),(11,'AR',NULL,'Argentina','Argentina',54),(12,'AM',NULL,'Armenia','Armenia',374),(13,'AW',NULL,'Aruba','Aruba',297),(14,'AU',NULL,'Australia','Australia',61),(15,'AT',NULL,'Austria','Austria',43),(16,'AZ',NULL,'Azerbaijan','Azerbaijan',994),(17,'BS',NULL,'Bahamas','Bahamas',1242),(18,'BH',NULL,'Bahrain','Bahrain',973),(19,'BD',NULL,'Bangladesh','Bangladesh',880),(20,'BB',NULL,'Barbados','Barbados',1246),(21,'BE',NULL,'Belgium','Belgium',32),(22,'BZ',NULL,'Belize','Belize',501),(23,'BJ',NULL,'Benin','Benin',229),(24,'BM',NULL,'Bermuda','Bermuda',1441),(25,'BY',NULL,'Belarus','Belarus',375),(26,'BO',NULL,'Bolivia','Bolivia',591),(27,'BA',NULL,'Bosnia and Herzegovina','Bosnia and Herzegovina',387),(28,'BW',NULL,'Botswana','Botswana',267),(29,'BR',NULL,'Brazil','Brazil',55),(30,'BN',NULL,'Brunei Darussalam','Brunei Darussalam',673),(31,'BG',NULL,'Bulgaria','Bulgaria',359),(32,'BF',NULL,'Burkina Faso','Burkina Faso',226),(33,'BI',NULL,'Burundi','Burundi',257),(34,'BT',NULL,'Bhutan','Bhutan',975),(35,'CV',NULL,'Cape Verde','Cape Verde',238),(36,'KH',NULL,'Cambodia','Cambodia',855),(37,'CM',NULL,'Cameroon','Cameroon',237),(38,'CA',NULL,'Canada','Canada',1),(39,'TD',NULL,'Chad','Chad',235),(40,'CL',NULL,'Chile','Chile',56),(41,'CN',NULL,'China','China',86),(42,'CY',NULL,'Cyprus','Cyprus',357),(43,'VA',NULL,'Holy See (Vatican City State)','Holy See (Vatican City State)',379),(44,'CO',NULL,'Colombia','Colombia',57),(45,'KM',NULL,'Comoros','Comoros',269),(46,'CG',NULL,'Congo','Congo',242),(47,'KP',NULL,'Korea, Democratic Peoples Republic of','Korea, Democratic Peoples Republic of',850),(48,'KR',NULL,'Korea, Republic of','Korea, Republic of',82),(49,'CI',NULL,'Ivory Coast','Ivory Coast',225),(50,'CR',NULL,'Costa Rica','Costa Rica',506),(51,'HR',NULL,'Croatia','Croatia',385),(52,'CU',NULL,'Cuba','Cuba',53),(53,'DK',NULL,'Denmark','Denmark',45),(54,'DM',NULL,'Dominica','Dominica',1767),(55,'EC',NULL,'Ecuador','Ecuador',593),(56,'EG',NULL,'Egypt','Egypt',20),(57,'SV',NULL,'El Salvador','El Salvador',503),(58,'AE',NULL,'United Arab Emirates','United Arab Emirates',971),(59,'ER',NULL,'Eritrea','Eritrea',291),(60,'SK',NULL,'Slovakia','Slovakia',421),(61,'SI',NULL,'Slovenia','Slovenia',386),(62,'ES',NULL,'Spain','Spain',34),(63,'US',NULL,'United States','United States',1),(64,'EE',NULL,'Estonia','Estonia',372),(65,'ET',NULL,'Ethiopia','Ethiopia',251),(66,'PH',NULL,'Philippines','Philippines',63),(67,'FI',NULL,'Finland','Finland',358),(68,'FJ',NULL,'Fiji','Fiji',679),(69,'FR',NULL,'France','France',33),(70,'GA',NULL,'Gabon','Gabon',241),(71,'GM',NULL,'Gambia','Gambia',220),(72,'GE',NULL,'Georgia','Georgia',995),(73,'GH',NULL,'Ghana','Ghana',233),(74,'GI',NULL,'Gibraltar','Gibraltar',350),(75,'GD',NULL,'Grenada','Grenada',1473),(76,'GR',NULL,'Greece','Greece',30),(77,'GL',NULL,'Greenland','Greenland',299),(78,'GP',NULL,'Guadeloupe','Guadeloupe',590),(79,'GU',NULL,'Guam','Guam',1671),(80,'GT',NULL,'Guatemala','Guatemala',502),(81,'GF',NULL,'French Guiana','French Guiana',594),(82,'GG',NULL,'Guernsey','Guernsey',44),(83,'GN',NULL,'Guinea','Guinea',224),(84,'GQ',NULL,'Equatorial Guinea','Equatorial Guinea',240),(85,'GW',NULL,'GuineaBissau','GuineaBissau',245),(86,'GY',NULL,'Guyana','Guyana',592),(87,'HT',NULL,'Haiti','Haiti',509),(88,'HN',NULL,'Honduras','Honduras',504),(89,'HU',NULL,'Hungary','Hungary',36),(90,'IN',NULL,'India','India',91),(91,'ID',NULL,'Indonesia','Indonesia',62),(92,'IR',NULL,'Iran, Islamic Republic of','Iran, Islamic Republic of',98),(93,'IQ',NULL,'Iraq','Iraq',964),(94,'IE',NULL,'Ireland','Ireland',353),(95,'BV',NULL,'Bouvet Island','Bouvet Island',47),(96,'CX',NULL,'Christmas Island','Christmas Island',61),(97,'IM',NULL,'Isle of Man','Isle of Man',44),(98,'NU',NULL,'Niue','Niue',683),(99,'NF',NULL,'Norfolk Island','Norfolk Island',672),(100,'IS',NULL,'Iceland','Iceland',354),(101,'AX',NULL,'Aland Islands','Aland Islands',358),(102,'KY',NULL,'Cayman Islands','Cayman Islands',1345),(103,'CC',NULL,'Cocos (Keeling) Islands','Cocos (Keeling) Islands',61),(104,'CK',NULL,'Cook Islands','Cook Islands',682),(105,'FO',NULL,'Faroe Islands','Faroe Islands',298),(106,'GS',NULL,'South Georgia and the South Sandwich Islands','South Georgia and the South Sandwich Islands',500),(107,'HM',NULL,'Heard Island and McDonald Mcdonald Islands','Heard Island and McDonald Mcdonald Islands',672),(108,'FK',NULL,'Falkland Islands (Malvinas)','Falkland Islands (Malvinas)',500),(109,'MP',NULL,'Northern Mariana Islands','Northern Mariana Islands',1670),(110,'MH',NULL,'Marshall Islands','Marshall Islands',692),(111,'UM',NULL,'United States Minor Outlying Islands','United States Minor Outlying Islands',1),(112,'PN',NULL,'Pitcairn','Pitcairn',870),(113,'SB',NULL,'Solomon Islands','Solomon Islands',677),(114,'TC',NULL,'Turks and Caicos Islands','Turks and Caicos Islands',1649),(115,'VG',NULL,'British Virgin Islands','British Virgin Islands',1284),(116,'VI',NULL,'US Virgin Islands','US Virgin Islands',1340),(117,'IL',NULL,'Israel','Israel',972),(118,'IT',NULL,'Italy','Italy',39),(119,'JM',NULL,'Jamaica','Jamaica',1876),(120,'JP',NULL,'Japan','Japan',81),(121,'JE',NULL,'Jersey','Jersey',44),(122,'JO',NULL,'Jordan','Jordan',962),(123,'KZ',NULL,'Kazakhstan','Kazakhstan',7),(124,'KE',NULL,'Kenya','Kenya',254),(125,'KG',NULL,'Kyrgyzstan','Kyrgyzstan',996),(126,'KI',NULL,'Kiribati','Kiribati',686),(127,'KW',NULL,'Kuwait','Kuwait',965),(128,'LA',NULL,'Lao Peoples Democratic Republic','Lao Peoples Democratic Republic',856),(129,'LS',NULL,'Lesotho','Lesotho',266),(130,'LV',NULL,'Latvia','Latvia',371),(131,'LB',NULL,'Lebanon','Lebanon',961),(132,'LR',NULL,'Liberia','Liberia',231),(133,'LY',NULL,'Libya','Libya',218),(134,'LI',NULL,'Liechtenstein','Liechtenstein',423),(135,'LT',NULL,'Lithuania','Lithuania',370),(136,'LU',NULL,'Luxembourg','Luxembourg',352),(137,'MK',NULL,'Macedonia, the Former Yugoslav Republic of','Macedonia, the Former Yugoslav Republic of',389),(138,'MG',NULL,'Madagascar','Madagascar',261),(139,'MY',NULL,'Malaysia','Malaysia',60),(140,'MW',NULL,'Malawi','Malawi',265),(141,'MV',NULL,'Maldives','Maldives',960),(142,'ML',NULL,'Mali','Mali',223),(143,'MT',NULL,'Malta','Malta',356),(144,'MA',NULL,'Morocco','Morocco',212),(145,'MQ',NULL,'Martinique','Martinique',596),(146,'MU',NULL,'Mauritius','Mauritius',230),(147,'MR',NULL,'Mauritania','Mauritania',222),(148,'YT',NULL,'Mayotte','Mayotte',262),(149,'MX',NULL,'Mexico','Mexico',52),(150,'FM',NULL,'Micronesia, Federated States of','Micronesia, Federated States of',691),(151,'MD',NULL,'Moldova, Republic of','Moldova, Republic of',373),(152,'MC',NULL,'Monaco','Monaco',377),(153,'MN',NULL,'Mongolia','Mongolia',976),(154,'ME',NULL,'Montenegro','Montenegro',382),(155,'MS',NULL,'Montserrat','Montserrat',1664),(156,'MZ',NULL,'Mozambique','Mozambique',258),(157,'MM',NULL,'Myanmar','Myanmar',95),(158,'NA',NULL,'Namibia','Namibia',264),(159,'NR',NULL,'Nauru','Nauru',674),(160,'NP',NULL,'Nepal','Nepal',977),(161,'NI',NULL,'Nicaragua','Nicaragua',505),(162,'NE',NULL,'Niger','Niger',227),(163,'NG',NULL,'Nigeria','Nigeria',234),(164,'NO',NULL,'Norway','Norway',47),(165,'NC',NULL,'New Caledonia','New Caledonia',687),(166,'NZ',NULL,'New Zealand','New Zealand',64),(167,'OM',NULL,'Oman','Oman',968),(168,'NL',NULL,'Netherlands','Netherlands',31),(169,'PK',NULL,'Pakistan','Pakistan',92),(170,'PW',NULL,'Palau','Palau',680),(171,'PA',NULL,'Panama','Panama',507),(172,'PG',NULL,'Papua New Guinea','Papua New Guinea',675),(173,'PY',NULL,'Paraguay','Paraguay',595),(174,'PE',NULL,'Peru','Peru',51),(175,'PF',NULL,'French Polynesia','French Polynesia',689),(176,'PL',NULL,'Poland','Poland',48),(177,'PT',NULL,'Portugal','Portugal',351),(178,'PR',NULL,'Puerto Rico','Puerto Rico',1),(179,'QA',NULL,'Qatar','Qatar',974),(180,'HK',NULL,'Hong Kong','Hong Kong',852),(181,'MO',NULL,'Macao','Macao',853),(182,'GB',NULL,'United Kingdom','United Kingdom',44),(183,'CF',NULL,'Central African Republic','Central African Republic',236),(184,'CZ',NULL,'Czech Republic','Czech Republic',420),(185,'CD',NULL,'Democratic Republic of the Congo','Democratic Republic of the Congo',243),(186,'DO',NULL,'Dominican Republic','Dominican Republic',1809),(187,'RE',NULL,'Reunion','Reunion',262),(188,'RW',NULL,'Rwanda','Rwanda',250),(189,'RO',NULL,'Romania','Romania',40),(190,'RU',NULL,'Russian Federation','Russian Federation',7),(191,'EH',NULL,'Western Sahara','Western Sahara',212),(192,'WS',NULL,'Samoa','Samoa',685),(193,'AS',NULL,'American Samoa','American Samoa',1684),(194,'BL',NULL,'Saint Barthalemy','Saint Barthalemy',590),(195,'KN',NULL,'Saint Kitts and Nevis','Saint Kitts and Nevis',1869),(196,'SM',NULL,'San Marino','San Marino',378),(197,'MF',NULL,'Saint Martin (French part)','Saint Martin (French part)',590),(198,'PM',NULL,'Saint Pierre and Miquelon','Saint Pierre and Miquelon',508),(199,'VC',NULL,'Saint Vincent and the Grenadines','Saint Vincent and the Grenadines',1784),(200,'SH',NULL,'Saint Helena','Saint Helena',290),(201,'LC',NULL,'Saint Lucia','Saint Lucia',1758),(202,'ST',NULL,'Sao Tome and Principe','Sao Tome and Principe',239),(203,'SN',NULL,'Senegal','Senegal',221),(204,'RS',NULL,'Serbia','Serbia',381),(205,'SC',NULL,'Seychelles','Seychelles',248),(206,'SL',NULL,'Sierra Leone','Sierra Leone',232),(207,'SG',NULL,'Singapore','Singapore',65),(208,'SY',NULL,'Syrian Arab Republic','Syrian Arab Republic',963),(209,'SO',NULL,'Somalia','Somalia',252),(210,'LK',NULL,'Sri Lanka','Sri Lanka',94),(211,'SZ',NULL,'Swaziland','Swaziland',268),(212,'ZA',NULL,'South Africa','South Africa',27),(213,'SD',NULL,'Sudan','Sudan',249),(214,'SE',NULL,'Sweden','Sweden',46),(215,'CH',NULL,'Switzerland','Switzerland',41),(216,'SR',NULL,'Suriname','Suriname',597),(217,'SJ',NULL,'Svalbard and Jan Mayen','Svalbard and Jan Mayen',47),(218,'TH',NULL,'Thailand','Thailand',66),(219,'TW',NULL,'Taiwan, Province of China','Taiwan, Province of China',886),(220,'TZ',NULL,'United Republic of Tanzania','United Republic of Tanzania',255),(221,'TJ',NULL,'Tajikistan','Tajikistan',992),(222,'IO',NULL,'British Indian Ocean Territory','British Indian Ocean Territory',246),(223,'TF',NULL,'French Southern Territories','French Southern Territories',262),(224,'PS',NULL,'Palestine, State of','Palestine, State of',970),(225,'TL',NULL,'TimorLeste','TimorLeste',670),(226,'TG',NULL,'Togo','Togo',228),(227,'TK',NULL,'Tokelau','Tokelau',690),(228,'TO',NULL,'Tonga','Tonga',676),(229,'TT',NULL,'Trinidad and Tobago','Trinidad and Tobago',1868),(230,'TN',NULL,'Tunisia','Tunisia',216),(231,'TM',NULL,'Turkmenistan','Turkmenistan',993),(232,'TR',NULL,'Turkey','Turkey',90),(233,'TV',NULL,'Tuvalu','Tuvalu',688),(234,'UA',NULL,'Ukraine','Ukraine',380),(235,'UG',NULL,'Uganda','Uganda',256),(236,'UY',NULL,'Uruguay','Uruguay',598),(237,'UZ',NULL,'Uzbekistan','Uzbekistan',998),(238,'VU',NULL,'Vanuatu','Vanuatu',678),(239,'VE',NULL,'Venezuela','Venezuela',58),(240,'VN',NULL,'Viet Nam','Viet Nam',84),(241,'WF',NULL,'Wallis and Futuna','Wallis and Futuna',681),(242,'YE',NULL,'Yemen','Yemen',967),(243,'DJ',NULL,'Djibouti','Djibouti',253),(244,'ZM',NULL,'Zambia','Zambia',260),(245,'ZW',NULL,'Zimbabwe','Zimbabwe',263),(246,'BQ',NULL,'Bonaire','Bonaire',599),(247,'CW',NULL,'CuraÃ§ao','CuraÃ§ao',599),(248,'SX',NULL,'Sint Maarten (Dutch part)','Sint Maarten (Dutch part)',1721),(249,'SS',NULL,'South Sudan','South Sudan',211),(311,'DO-II',NULL,'Dominican Republic','Dominican Republic',1829),(312,'DO-III',NULL,'Dominican Republic','Dominican Republic',1849);
+INSERT INTO `Countries` VALUES (1,'AD',NULL,'Andorra','Andorra',376),(2,'AE',NULL,'United Arab Emirates','United Arab Emirates',971),(3,'AF',NULL,'Afghanistan','Afghanistan',93),(4,'AG',NULL,'Antigua and Barbuda','Antigua and Barbuda',1268),(5,'AI',NULL,'Anguilla','Anguilla',1264),(6,'AL',NULL,'Albania','Albania',355),(7,'AM',NULL,'Armenia','Armenia',374),(8,'AO',NULL,'Angola','Angola',244),(9,'AQ',NULL,'Antarctica','Antarctica',672),(10,'AR',NULL,'Argentina','Argentina',54),(11,'AS',NULL,'American Samoa','American Samoa',1684),(12,'AT',NULL,'Austria','Austria',43),(13,'AU',NULL,'Australia','Australia',61),(14,'AW',NULL,'Aruba','Aruba',297),(15,'AX',NULL,'Aland Islands','Aland Islands',358),(16,'AZ',NULL,'Azerbaijan','Azerbaijan',994),(17,'BA',NULL,'Bosnia and Herzegovina','Bosnia and Herzegovina',387),(18,'BB',NULL,'Barbados','Barbados',1246),(19,'BD',NULL,'Bangladesh','Bangladesh',880),(20,'BE',NULL,'Belgium','Belgium',32),(21,'BF',NULL,'Burkina Faso','Burkina Faso',226),(22,'BG',NULL,'Bulgaria','Bulgaria',359),(23,'BH',NULL,'Bahrain','Bahrain',973),(24,'BI',NULL,'Burundi','Burundi',257),(25,'BJ',NULL,'Benin','Benin',229),(26,'BL',NULL,'Saint Barthalemy','Saint Barthalemy',590),(27,'BM',NULL,'Bermuda','Bermuda',1441),(28,'BN',NULL,'Brunei Darussalam','Brunei Darussalam',673),(29,'BO',NULL,'Bolivia','Bolivia',591),(30,'BQ',NULL,'Bonaire','Bonaire',599),(31,'BR',NULL,'Brazil','Brazil',55),(32,'BS',NULL,'Bahamas','Bahamas',1242),(33,'BT',NULL,'Bhutan','Bhutan',975),(34,'BV',NULL,'Bouvet Island','Bouvet Island',47),(35,'BW',NULL,'Botswana','Botswana',267),(36,'BY',NULL,'Belarus','Belarus',375),(37,'BZ',NULL,'Belize','Belize',501),(38,'CA',NULL,'Canada','Canada',1),(39,'CC',NULL,'Cocos (Keeling) Islands','Cocos (Keeling) Islands',61),(40,'CD',NULL,'Democratic Republic of the Congo','Democratic Republic of the Congo',243),(41,'CF',NULL,'Central African Republic','Central African Republic',236),(42,'CG',NULL,'Congo','Congo',242),(43,'CH',NULL,'Switzerland','Switzerland',41),(44,'CI',NULL,'Ivory Coast','Ivory Coast',225),(45,'CK',NULL,'Cook Islands','Cook Islands',682),(46,'CL',NULL,'Chile','Chile',56),(47,'CM',NULL,'Cameroon','Cameroon',237),(48,'CN',NULL,'China','China',86),(49,'CO',NULL,'Colombia','Colombia',57),(50,'CR',NULL,'Costa Rica','Costa Rica',506),(51,'CU',NULL,'Cuba','Cuba',53),(52,'CV',NULL,'Cape Verde','Cape Verde',238),(53,'CW',NULL,'CuraÃ§ao','CuraÃ§ao',599),(54,'CX',NULL,'Christmas Island','Christmas Island',61),(55,'CY',NULL,'Cyprus','Cyprus',357),(56,'CZ',NULL,'Czech Republic','Czech Republic',420),(57,'DE',NULL,'Germany','Germany',49),(58,'DJ',NULL,'Djibouti','Djibouti',253),(59,'DK',NULL,'Denmark','Denmark',45),(60,'DM',NULL,'Dominica','Dominica',1767),(61,'DO',NULL,'Dominican Republic','Dominican Republic',1809),(62,'DO-II',NULL,'Dominican Republic','Dominican Republic',1829),(63,'DO-III',NULL,'Dominican Republic','Dominican Republic',1849),(64,'DZ',NULL,'Algeria','Algeria',213),(65,'EC',NULL,'Ecuador','Ecuador',593),(66,'EE',NULL,'Estonia','Estonia',372),(67,'EG',NULL,'Egypt','Egypt',20),(68,'EH',NULL,'Western Sahara','Western Sahara',212),(69,'ER',NULL,'Eritrea','Eritrea',291),(70,'ES',NULL,'Spain','Spain',34),(71,'ET',NULL,'Ethiopia','Ethiopia',251),(72,'FI',NULL,'Finland','Finland',358),(73,'FJ',NULL,'Fiji','Fiji',679),(74,'FK',NULL,'Falkland Islands (Malvinas)','Falkland Islands (Malvinas)',500),(75,'FM',NULL,'Micronesia, Federated States of','Micronesia, Federated States of',691),(76,'FO',NULL,'Faroe Islands','Faroe Islands',298),(77,'FR',NULL,'France','France',33),(78,'GA',NULL,'Gabon','Gabon',241),(79,'GB',NULL,'United Kingdom','United Kingdom',44),(80,'GD',NULL,'Grenada','Grenada',1473),(81,'GE',NULL,'Georgia','Georgia',995),(82,'GF',NULL,'French Guiana','French Guiana',594),(83,'GG',NULL,'Guernsey','Guernsey',44),(84,'GH',NULL,'Ghana','Ghana',233),(85,'GI',NULL,'Gibraltar','Gibraltar',350),(86,'GL',NULL,'Greenland','Greenland',299),(87,'GM',NULL,'Gambia','Gambia',220),(88,'GN',NULL,'Guinea','Guinea',224),(89,'GP',NULL,'Guadeloupe','Guadeloupe',590),(90,'GQ',NULL,'Equatorial Guinea','Equatorial Guinea',240),(91,'GR',NULL,'Greece','Greece',30),(92,'GS',NULL,'South Georgia and the South Sandwich Islands','South Georgia and the South Sandwich Islands',500),(93,'GT',NULL,'Guatemala','Guatemala',502),(94,'GU',NULL,'Guam','Guam',1671),(95,'GW',NULL,'GuineaBissau','GuineaBissau',245),(96,'GY',NULL,'Guyana','Guyana',592),(97,'HK',NULL,'Hong Kong','Hong Kong',852),(98,'HM',NULL,'Heard Island and McDonald Mcdonald Islands','Heard Island and McDonald Mcdonald Islands',672),(99,'HN',NULL,'Honduras','Honduras',504),(100,'HR',NULL,'Croatia','Croatia',385),(101,'HT',NULL,'Haiti','Haiti',509),(102,'HU',NULL,'Hungary','Hungary',36),(103,'ID',NULL,'Indonesia','Indonesia',62),(104,'IE',NULL,'Ireland','Ireland',353),(105,'IL',NULL,'Israel','Israel',972),(106,'IM',NULL,'Isle of Man','Isle of Man',44),(107,'IN',NULL,'India','India',91),(108,'IO',NULL,'British Indian Ocean Territory','British Indian Ocean Territory',246),(109,'IQ',NULL,'Iraq','Iraq',964),(110,'IR',NULL,'Iran, Islamic Republic of','Iran, Islamic Republic of',98),(111,'IS',NULL,'Iceland','Iceland',354),(112,'IT',NULL,'Italy','Italy',39),(113,'JE',NULL,'Jersey','Jersey',44),(114,'JM',NULL,'Jamaica','Jamaica',1876),(115,'JO',NULL,'Jordan','Jordan',962),(116,'JP',NULL,'Japan','Japan',81),(117,'KE',NULL,'Kenya','Kenya',254),(118,'KG',NULL,'Kyrgyzstan','Kyrgyzstan',996),(119,'KH',NULL,'Cambodia','Cambodia',855),(120,'KI',NULL,'Kiribati','Kiribati',686),(121,'KM',NULL,'Comoros','Comoros',269),(122,'KN',NULL,'Saint Kitts and Nevis','Saint Kitts and Nevis',1869),(123,'KP',NULL,'Korea, Democratic Peoples Republic of','Korea, Democratic Peoples Republic of',850),(124,'KR',NULL,'Korea, Republic of','Korea, Republic of',82),(125,'KW',NULL,'Kuwait','Kuwait',965),(126,'KY',NULL,'Cayman Islands','Cayman Islands',1345),(127,'KZ',NULL,'Kazakhstan','Kazakhstan',7),(128,'LA',NULL,'Lao Peoples Democratic Republic','Lao Peoples Democratic Republic',856),(129,'LB',NULL,'Lebanon','Lebanon',961),(130,'LC',NULL,'Saint Lucia','Saint Lucia',1758),(131,'LI',NULL,'Liechtenstein','Liechtenstein',423),(132,'LK',NULL,'Sri Lanka','Sri Lanka',94),(133,'LR',NULL,'Liberia','Liberia',231),(134,'LS',NULL,'Lesotho','Lesotho',266),(135,'LT',NULL,'Lithuania','Lithuania',370),(136,'LU',NULL,'Luxembourg','Luxembourg',352),(137,'LV',NULL,'Latvia','Latvia',371),(138,'LY',NULL,'Libya','Libya',218),(139,'MA',NULL,'Morocco','Morocco',212),(140,'MC',NULL,'Monaco','Monaco',377),(141,'MD',NULL,'Moldova, Republic of','Moldova, Republic of',373),(142,'ME',NULL,'Montenegro','Montenegro',382),(143,'MF',NULL,'Saint Martin (French part)','Saint Martin (French part)',590),(144,'MG',NULL,'Madagascar','Madagascar',261),(145,'MH',NULL,'Marshall Islands','Marshall Islands',692),(146,'MK',NULL,'Macedonia, the Former Yugoslav Republic of','Macedonia, the Former Yugoslav Republic of',389),(147,'ML',NULL,'Mali','Mali',223),(148,'MM',NULL,'Myanmar','Myanmar',95),(149,'MN',NULL,'Mongolia','Mongolia',976),(150,'MO',NULL,'Macao','Macao',853),(151,'MP',NULL,'Northern Mariana Islands','Northern Mariana Islands',1670),(152,'MQ',NULL,'Martinique','Martinique',596),(153,'MR',NULL,'Mauritania','Mauritania',222),(154,'MS',NULL,'Montserrat','Montserrat',1664),(155,'MT',NULL,'Malta','Malta',356),(156,'MU',NULL,'Mauritius','Mauritius',230),(157,'MV',NULL,'Maldives','Maldives',960),(158,'MW',NULL,'Malawi','Malawi',265),(159,'MX',NULL,'Mexico','Mexico',52),(160,'MY',NULL,'Malaysia','Malaysia',60),(161,'MZ',NULL,'Mozambique','Mozambique',258),(162,'NA',NULL,'Namibia','Namibia',264),(163,'NC',NULL,'New Caledonia','New Caledonia',687),(164,'NE',NULL,'Niger','Niger',227),(165,'NF',NULL,'Norfolk Island','Norfolk Island',672),(166,'NG',NULL,'Nigeria','Nigeria',234),(167,'NI',NULL,'Nicaragua','Nicaragua',505),(168,'NL',NULL,'Netherlands','Netherlands',31),(169,'NO',NULL,'Norway','Norway',47),(170,'NP',NULL,'Nepal','Nepal',977),(171,'NR',NULL,'Nauru','Nauru',674),(172,'NU',NULL,'Niue','Niue',683),(173,'NZ',NULL,'New Zealand','New Zealand',64),(174,'OM',NULL,'Oman','Oman',968),(175,'PA',NULL,'Panama','Panama',507),(176,'PE',NULL,'Peru','Peru',51),(177,'PF',NULL,'French Polynesia','French Polynesia',689),(178,'PG',NULL,'Papua New Guinea','Papua New Guinea',675),(179,'PH',NULL,'Philippines','Philippines',63),(180,'PK',NULL,'Pakistan','Pakistan',92),(181,'PL',NULL,'Poland','Poland',48),(182,'PM',NULL,'Saint Pierre and Miquelon','Saint Pierre and Miquelon',508),(183,'PN',NULL,'Pitcairn','Pitcairn',870),(184,'PR',NULL,'Puerto Rico','Puerto Rico',1),(185,'PS',NULL,'Palestine, State of','Palestine, State of',970),(186,'PT',NULL,'Portugal','Portugal',351),(187,'PW',NULL,'Palau','Palau',680),(188,'PY',NULL,'Paraguay','Paraguay',595),(189,'QA',NULL,'Qatar','Qatar',974),(190,'RE',NULL,'Reunion','Reunion',262),(191,'RO',NULL,'Romania','Romania',40),(192,'RS',NULL,'Serbia','Serbia',381),(193,'RU',NULL,'Russian Federation','Russian Federation',7),(194,'RW',NULL,'Rwanda','Rwanda',250),(195,'SA',NULL,'Saudi Arabia','Saudi Arabia',966),(196,'SB',NULL,'Solomon Islands','Solomon Islands',677),(197,'SC',NULL,'Seychelles','Seychelles',248),(198,'SD',NULL,'Sudan','Sudan',249),(199,'SE',NULL,'Sweden','Sweden',46),(200,'SG',NULL,'Singapore','Singapore',65),(201,'SH',NULL,'Saint Helena','Saint Helena',290),(202,'SI',NULL,'Slovenia','Slovenia',386),(203,'SJ',NULL,'Svalbard and Jan Mayen','Svalbard and Jan Mayen',47),(204,'SK',NULL,'Slovakia','Slovakia',421),(205,'SL',NULL,'Sierra Leone','Sierra Leone',232),(206,'SM',NULL,'San Marino','San Marino',378),(207,'SN',NULL,'Senegal','Senegal',221),(208,'SO',NULL,'Somalia','Somalia',252),(209,'SR',NULL,'Suriname','Suriname',597),(210,'SS',NULL,'South Sudan','South Sudan',211),(211,'ST',NULL,'Sao Tome and Principe','Sao Tome and Principe',239),(212,'SV',NULL,'El Salvador','El Salvador',503),(213,'SX',NULL,'Sint Maarten (Dutch part)','Sint Maarten (Dutch part)',1721),(214,'SY',NULL,'Syrian Arab Republic','Syrian Arab Republic',963),(215,'SZ',NULL,'Swaziland','Swaziland',268),(216,'TC',NULL,'Turks and Caicos Islands','Turks and Caicos Islands',1649),(217,'TD',NULL,'Chad','Chad',235),(218,'TF',NULL,'French Southern Territories','French Southern Territories',262),(219,'TG',NULL,'Togo','Togo',228),(220,'TH',NULL,'Thailand','Thailand',66),(221,'TJ',NULL,'Tajikistan','Tajikistan',992),(222,'TK',NULL,'Tokelau','Tokelau',690),(223,'TL',NULL,'TimorLeste','TimorLeste',670),(224,'TM',NULL,'Turkmenistan','Turkmenistan',993),(225,'TN',NULL,'Tunisia','Tunisia',216),(226,'TO',NULL,'Tonga','Tonga',676),(227,'TR',NULL,'Turkey','Turkey',90),(228,'TT',NULL,'Trinidad and Tobago','Trinidad and Tobago',1868),(229,'TV',NULL,'Tuvalu','Tuvalu',688),(230,'TW',NULL,'Taiwan, Province of China','Taiwan, Province of China',886),(231,'TZ',NULL,'United Republic of Tanzania','United Republic of Tanzania',255),(232,'UA',NULL,'Ukraine','Ukraine',380),(233,'UG',NULL,'Uganda','Uganda',256),(234,'UM',NULL,'United States Minor Outlying Islands','United States Minor Outlying Islands',1),(235,'US',NULL,'United States','United States',1),(236,'UY',NULL,'Uruguay','Uruguay',598),(237,'UZ',NULL,'Uzbekistan','Uzbekistan',998),(238,'VA',NULL,'Holy See (Vatican City State)','Holy See (Vatican City State)',379),(239,'VC',NULL,'Saint Vincent and the Grenadines','Saint Vincent and the Grenadines',1784),(240,'VE',NULL,'Venezuela','Venezuela',58),(241,'VG',NULL,'British Virgin Islands','British Virgin Islands',1284),(242,'VI',NULL,'US Virgin Islands','US Virgin Islands',1340),(243,'VN',NULL,'Viet Nam','Viet Nam',84),(244,'VU',NULL,'Vanuatu','Vanuatu',678),(245,'WF',NULL,'Wallis and Futuna','Wallis and Futuna',681),(246,'WS',NULL,'Samoa','Samoa',685),(247,'YE',NULL,'Yemen','Yemen',967),(248,'YT',NULL,'Mayotte','Mayotte',262),(249,'ZA',NULL,'South Africa','South Africa',27),(250,'ZM',NULL,'Zambia','Zambia',260),(251,'ZW',NULL,'Zimbabwe','Zimbabwe',263);
 /*!40000 ALTER TABLE `Countries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,16 +477,16 @@ DROP TABLE IF EXISTS `DDIs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `DDIs` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `DDI` varchar(25) NOT NULL,
-  `externalCallFilterId` binary(36) DEFAULT NULL,
+  `externalCallFilterId` int(10) unsigned DEFAULT NULL,
   `routeType` varchar(25) NOT NULL COMMENT '[enum:user|IVRCommon|IVRCustom|huntGroup|fax]',
-  `userId` binary(36) DEFAULT NULL,
-  `IVRCommonId` binary(36) DEFAULT NULL,
-  `IVRCustomId` binary(36) DEFAULT NULL,
-  `huntGroupId` binary(36) DEFAULT NULL,
-  `faxId` binary(36) DEFAULT NULL,
+  `userId` int(10) unsigned DEFAULT NULL,
+  `IVRCommonId` int(10) unsigned DEFAULT NULL,
+  `IVRCustomId` int(10) unsigned DEFAULT NULL,
+  `huntGroupId` int(10) unsigned DEFAULT NULL,
+  `faxId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `DDI` (`DDI`),
   KEY `companyId` (`companyId`),
@@ -487,13 +496,13 @@ CREATE TABLE `DDIs` (
   KEY `IVRCustomId` (`IVRCustomId`),
   KEY `huntGroupId` (`huntGroupId`),
   KEY `faxId` (`faxId`),
-  CONSTRAINT `DDIs_ibfk_7` FOREIGN KEY (`faxId`) REFERENCES `Faxes` (`id`) ON DELETE SET NULL,
   CONSTRAINT `DDIs_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `DDIs_ibfk_2` FOREIGN KEY (`externalCallFilterId`) REFERENCES `ExternalCallFilters` (`id`) ON DELETE SET NULL,
   CONSTRAINT `DDIs_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `DDIs_ibfk_4` FOREIGN KEY (`IVRCommonId`) REFERENCES `IVRCommon` (`id`) ON DELETE SET NULL,
   CONSTRAINT `DDIs_ibfk_5` FOREIGN KEY (`IVRCustomId`) REFERENCES `IVRCustom` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `DDIs_ibfk_6` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE SET NULL
+  CONSTRAINT `DDIs_ibfk_6` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `DDIs_ibfk_7` FOREIGN KEY (`faxId`) REFERENCES `Faxes` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -514,23 +523,23 @@ DROP TABLE IF EXISTS `Extensions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Extensions` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `number` varchar(10) NOT NULL,
   `routeType` varchar(25) NOT NULL COMMENT '[enum:user|IVRCommon|IVRCustom|huntGroup]',
-  `IVRCommonId` binary(36) DEFAULT NULL,
-  `IVRCustomId` binary(36) DEFAULT NULL,
-  `huntGroupId` binary(36) DEFAULT NULL,
+  `IVRCommonId` int(10) unsigned DEFAULT NULL,
+  `IVRCustomId` int(10) unsigned DEFAULT NULL,
+  `huntGroupId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyId_2` (`companyId`,`number`),
   KEY `companyId` (`companyId`),
   KEY `IVRCommonId` (`IVRCommonId`),
   KEY `IVRCustomId` (`IVRCustomId`),
   KEY `huntGroupId` (`huntGroupId`),
-  CONSTRAINT `Extensions_ibfk_4` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Extensions_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Extensions_ibfk_2` FOREIGN KEY (`IVRCommonId`) REFERENCES `IVRCommon` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `Extensions_ibfk_3` FOREIGN KEY (`IVRCustomId`) REFERENCES `IVRCustom` (`id`) ON DELETE SET NULL
+  CONSTRAINT `Extensions_ibfk_3` FOREIGN KEY (`IVRCustomId`) REFERENCES `IVRCustom` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Extensions_ibfk_4` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -551,9 +560,9 @@ DROP TABLE IF EXISTS `ExternalCallFilterRelCalendars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExternalCallFilterRelCalendars` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `filterId` binary(36) NOT NULL,
-  `calendarId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `filterId` int(10) unsigned NOT NULL,
+  `calendarId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `filterId` (`filterId`),
   KEY `calendarId` (`calendarId`),
@@ -579,9 +588,9 @@ DROP TABLE IF EXISTS `ExternalCallFilterRelSchedules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExternalCallFilterRelSchedules` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `filterId` binary(36) NOT NULL,
-  `scheduleId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `filterId` int(10) unsigned NOT NULL,
+  `scheduleId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `filterId` (`filterId`),
   KEY `scheduleId` (`scheduleId`),
@@ -607,20 +616,20 @@ DROP TABLE IF EXISTS `ExternalCallFilters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExternalCallFilters` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `welcomeLocutionId` binary(36) DEFAULT NULL,
-  `holidayLocutionId` binary(36) DEFAULT NULL,
-  `outOfScheduleLocutionId` binary(36) DEFAULT NULL,
+  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
+  `holidayLocutionId` int(10) unsigned DEFAULT NULL,
+  `outOfScheduleLocutionId` int(10) unsigned DEFAULT NULL,
   `holidayTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `holidayNumberValue` varchar(25) DEFAULT NULL,
-  `holidayExtensionId` binary(36) DEFAULT NULL,
-  `holidayVoiceMailUserId` binary(36) DEFAULT NULL,
+  `holidayExtensionId` int(10) unsigned DEFAULT NULL,
+  `holidayVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   `outOfScheduleTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `outOfScheduleNumberValue` varchar(25) DEFAULT NULL,
-  `outOfScheduleExtensionId` binary(36) DEFAULT NULL,
-  `outOfScheduleVoiceMailUserId` binary(36) DEFAULT NULL,
+  `outOfScheduleExtensionId` int(10) unsigned DEFAULT NULL,
+  `outOfScheduleVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `companyId` (`companyId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
@@ -658,18 +667,18 @@ DROP TABLE IF EXISTS `Faxes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Faxes` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `sendByEmail` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `outgoingDDI` binary(36) DEFAULT NULL,
+  `outgoingDDI` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `FaxesUniqueCompanyfaxname` (`companyId`,`name`),
   KEY `companyId` (`companyId`),
   KEY `outgoingDDI` (`outgoingDDI`),
-  CONSTRAINT `Faxes_ibfk_2` FOREIGN KEY (`outgoingDDI`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `Faxes_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
+  CONSTRAINT `Faxes_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `Faxes_ibfk_2` FOREIGN KEY (`outgoingDDI`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -690,9 +699,9 @@ DROP TABLE IF EXISTS `FaxesInOut`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FaxesInOut` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `calldate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Hora de recepcion del fax',
-  `faxId` binary(36) NOT NULL,
+  `faxId` int(10) unsigned NOT NULL,
   `src` varchar(128) DEFAULT NULL,
   `dst` varchar(128) DEFAULT NULL,
   `type` varchar(20) DEFAULT 'Out' COMMENT '[enum:In|Out]',
@@ -724,7 +733,7 @@ DROP TABLE IF EXISTS `GenericCallACLPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GenericCallACLPatterns` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `regExp` varchar(255) NOT NULL,
@@ -751,7 +760,7 @@ DROP TABLE IF EXISTS `GenericMusicOnHold`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GenericMusicOnHold` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
   `originalFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `originalFileMimeType` varchar(80) DEFAULT NULL,
@@ -785,7 +794,7 @@ DROP TABLE IF EXISTS `GenericServices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GenericServices` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -813,16 +822,16 @@ DROP TABLE IF EXISTS `HolidayDates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `HolidayDates` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `calendarId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `calendarId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `eventDate` date NOT NULL,
-  `locutionId` binary(36) DEFAULT NULL,
+  `locutionId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `calendarId` (`calendarId`),
   KEY `locutionId` (`locutionId`),
-  CONSTRAINT `HolidayDates_ibfk_2` FOREIGN KEY (`locutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `HolidayDates_ibfk_1` FOREIGN KEY (`calendarId`) REFERENCES `Calendars` (`id`) ON DELETE CASCADE
+  CONSTRAINT `HolidayDates_ibfk_1` FOREIGN KEY (`calendarId`) REFERENCES `Calendars` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `HolidayDates_ibfk_2` FOREIGN KEY (`locutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -843,13 +852,13 @@ DROP TABLE IF EXISTS `HuntGroupCallForwardSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `HuntGroupCallForwardSettings` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `huntGroupId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `huntGroupId` int(10) unsigned NOT NULL,
   `callTypeFilter` varchar(25) DEFAULT NULL COMMENT '[enum:internal|external|both]',
   `callTargetType` varchar(25) NOT NULL COMMENT '[enum:number|extension|voicemail]',
   `callNumberValue` varchar(25) DEFAULT NULL,
-  `callExtensionId` binary(36) DEFAULT NULL,
-  `callVoiceMailUserId` binary(36) DEFAULT NULL,
+  `callExtensionId` int(10) unsigned DEFAULT NULL,
+  `callVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `huntGroupId` (`huntGroupId`),
   KEY `callExtensionId` (`callExtensionId`),
@@ -877,10 +886,10 @@ DROP TABLE IF EXISTS `HuntGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `HuntGroups` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(500) NOT NULL DEFAULT '',
-  `companyId` binary(36) NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
   `strategy` varchar(25) NOT NULL COMMENT '[enum:ringAll|linear|roundRobin|random]',
   `ringAllTimeout` smallint(6) NOT NULL,
   `nextUserPosition` smallint(4) unsigned DEFAULT '0',
@@ -907,9 +916,9 @@ DROP TABLE IF EXISTS `HuntGroupsRelUsers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `HuntGroupsRelUsers` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `huntGroupId` binary(36) NOT NULL,
-  `userId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `huntGroupId` int(10) unsigned NOT NULL,
+  `userId` int(10) unsigned NOT NULL,
   `timeoutTime` smallint(6) NOT NULL,
   `priority` smallint(6) NOT NULL,
   PRIMARY KEY (`id`),
@@ -937,24 +946,24 @@ DROP TABLE IF EXISTS `IVRCommon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `IVRCommon` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `blackListRegExp` varchar(255) DEFAULT NULL,
-  `welcomeLocutionId` binary(36) DEFAULT NULL,
-  `noAnswerLocutionId` binary(36) DEFAULT NULL,
-  `errorLocutionId` binary(36) DEFAULT NULL,
-  `successLocutionId` binary(36) DEFAULT NULL,
+  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
+  `noAnswerLocutionId` int(10) unsigned DEFAULT NULL,
+  `errorLocutionId` int(10) unsigned DEFAULT NULL,
+  `successLocutionId` int(10) unsigned DEFAULT NULL,
   `timeout` smallint(5) unsigned NOT NULL,
   `noAnswerTimeout` mediumint(9) DEFAULT '10',
   `timeoutTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `timeoutNumberValue` varchar(25) DEFAULT NULL,
-  `timeoutExtensionId` binary(36) DEFAULT NULL,
-  `timeoutVoiceMailUserId` binary(36) DEFAULT NULL,
+  `timeoutExtensionId` int(10) unsigned DEFAULT NULL,
+  `timeoutVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   `errorTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `errorNumberValue` varchar(25) DEFAULT NULL,
-  `errorExtensionId` binary(36) DEFAULT NULL,
-  `errorVoiceMailUserId` binary(36) DEFAULT NULL,
+  `errorExtensionId` int(10) unsigned DEFAULT NULL,
+  `errorVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `companyId` (`companyId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
@@ -965,7 +974,6 @@ CREATE TABLE `IVRCommon` (
   KEY `errorExtensionId` (`errorExtensionId`),
   KEY `noAnswerVoiceMailUserId` (`timeoutVoiceMailUserId`),
   KEY `errorVoiceMailUserId` (`errorVoiceMailUserId`),
-  CONSTRAINT `IVRCommon_ibfk_9` FOREIGN KEY (`errorVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCommon_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `IVRCommon_ibfk_2` FOREIGN KEY (`welcomeLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCommon_ibfk_3` FOREIGN KEY (`noAnswerLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
@@ -973,7 +981,8 @@ CREATE TABLE `IVRCommon` (
   CONSTRAINT `IVRCommon_ibfk_5` FOREIGN KEY (`successLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCommon_ibfk_6` FOREIGN KEY (`timeoutExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCommon_ibfk_7` FOREIGN KEY (`errorExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `IVRCommon_ibfk_8` FOREIGN KEY (`timeoutVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
+  CONSTRAINT `IVRCommon_ibfk_8` FOREIGN KEY (`timeoutVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `IVRCommon_ibfk_9` FOREIGN KEY (`errorVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -994,23 +1003,23 @@ DROP TABLE IF EXISTS `IVRCustom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `IVRCustom` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `welcomeLocutionId` binary(36) DEFAULT NULL,
-  `noAnswerLocutionId` binary(36) DEFAULT NULL,
-  `errorLocutionId` binary(36) DEFAULT NULL,
-  `successLocutionId` binary(36) DEFAULT NULL,
+  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
+  `noAnswerLocutionId` int(10) unsigned DEFAULT NULL,
+  `errorLocutionId` int(10) unsigned DEFAULT NULL,
+  `successLocutionId` int(10) unsigned DEFAULT NULL,
   `timeout` smallint(5) unsigned NOT NULL,
   `noAnswerTimeout` mediumint(9) DEFAULT '10',
   `timeoutTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `timeoutNumberValue` varchar(25) DEFAULT NULL,
-  `timeoutExtensionId` binary(36) DEFAULT NULL,
-  `timeoutVoiceMailUserId` binary(36) DEFAULT NULL,
+  `timeoutExtensionId` int(10) unsigned DEFAULT NULL,
+  `timeoutVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   `errorTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `errorNumberValue` varchar(25) DEFAULT NULL,
-  `errorExtensionId` binary(36) DEFAULT NULL,
-  `errorVoiceMailUserId` binary(36) DEFAULT NULL,
+  `errorExtensionId` int(10) unsigned DEFAULT NULL,
+  `errorVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `companyId` (`companyId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
@@ -1021,7 +1030,6 @@ CREATE TABLE `IVRCustom` (
   KEY `errorExtensionId` (`errorExtensionId`),
   KEY `noAnswerVoiceMailUserId` (`timeoutVoiceMailUserId`),
   KEY `errorVoiceMailUserId` (`errorVoiceMailUserId`),
-  CONSTRAINT `IVRCustom_ibfk_9` FOREIGN KEY (`errorVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCustom_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `IVRCustom_ibfk_2` FOREIGN KEY (`welcomeLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCustom_ibfk_3` FOREIGN KEY (`noAnswerLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
@@ -1029,7 +1037,8 @@ CREATE TABLE `IVRCustom` (
   CONSTRAINT `IVRCustom_ibfk_5` FOREIGN KEY (`successLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCustom_ibfk_6` FOREIGN KEY (`timeoutExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCustom_ibfk_7` FOREIGN KEY (`errorExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `IVRCustom_ibfk_8` FOREIGN KEY (`timeoutVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
+  CONSTRAINT `IVRCustom_ibfk_8` FOREIGN KEY (`timeoutVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `IVRCustom_ibfk_9` FOREIGN KEY (`errorVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1050,24 +1059,24 @@ DROP TABLE IF EXISTS `IVRCustomEntries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `IVRCustomEntries` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `IVRCustomId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `IVRCustomId` int(10) unsigned NOT NULL,
   `entry` smallint(2) unsigned NOT NULL,
-  `welcomeLocutionId` binary(36) DEFAULT NULL,
+  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
   `targetType` varchar(25) NOT NULL COMMENT '[enum:number|extension|voicemail]',
   `targetNumberValue` varchar(25) DEFAULT NULL,
-  `targetExtensionId` binary(36) DEFAULT NULL,
-  `targetVoiceMailUserId` binary(36) DEFAULT NULL,
+  `targetExtensionId` int(10) unsigned DEFAULT NULL,
+  `targetVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UniqueIVRCutomIdAndEntry` (`IVRCustomId`,`entry`),
   KEY `IVRCustomId` (`IVRCustomId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
   KEY `targetExtensionId` (`targetExtensionId`),
   KEY `targetVoiceMailUserId` (`targetVoiceMailUserId`),
-  CONSTRAINT `IVRCustomEntries_ibfk_4` FOREIGN KEY (`targetVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `IVRCustomEntries_ibfk_1` FOREIGN KEY (`IVRCustomId`) REFERENCES `IVRCustom` (`id`) ON DELETE CASCADE,
   CONSTRAINT `IVRCustomEntries_ibfk_2` FOREIGN KEY (`welcomeLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `IVRCustomEntries_ibfk_3` FOREIGN KEY (`targetExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL
+  CONSTRAINT `IVRCustomEntries_ibfk_3` FOREIGN KEY (`targetExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `IVRCustomEntries_ibfk_4` FOREIGN KEY (`targetVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1088,7 +1097,7 @@ DROP TABLE IF EXISTS `InvoiceTemplates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `InvoiceTemplates` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL,
   `description` varchar(300) DEFAULT NULL,
   `template` text,
@@ -1118,19 +1127,19 @@ DROP TABLE IF EXISTS `Invoices`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Invoices` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `number` varchar(300) NOT NULL,
+  `number` varchar(30) NOT NULL,
   `inDate` datetime DEFAULT NULL,
   `outDate` datetime DEFAULT NULL,
   `total` decimal(10,3) DEFAULT NULL,
   `taxRate` decimal(10,3) DEFAULT NULL,
   `totalWithTax` decimal(10,3) DEFAULT NULL,
   `status` varchar(25) DEFAULT NULL COMMENT '[enum:waiting|processing|created|error]',
-  `companyId` binary(36) NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
   `brandId` int(10) unsigned NOT NULL,
   `pdfFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
   `pdfFileMimeType` varchar(80) DEFAULT NULL,
   `pdfFileBaseName` varchar(255) DEFAULT NULL,
-  `invoiceTemplateId` binary(36) DEFAULT NULL,
+  `invoiceTemplateId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `numberLanguage` (`number`),
   KEY `brandId` (`brandId`),
@@ -1139,7 +1148,7 @@ CREATE TABLE `Invoices` (
   CONSTRAINT `Invoices_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Invoices_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Invoices_ibfk_4` FOREIGN KEY (`invoiceTemplateId`) REFERENCES `InvoiceTemplates` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1159,7 +1168,7 @@ DROP TABLE IF EXISTS `Languages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Languages` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '' COMMENT '[ml]',
   `name_en` varchar(100) NOT NULL DEFAULT '',
@@ -1175,7 +1184,7 @@ CREATE TABLE `Languages` (
 
 LOCK TABLES `Languages` WRITE;
 /*!40000 ALTER TABLE `Languages` DISABLE KEYS */;
-INSERT INTO `Languages` VALUES ('57038fb4-068c-424d-aadf-3c270a0a00c0','es_ES','','Spanish','EspaÃ±ol'),('57038fc5-d2d0-402d-af60-3c2a0a0a00c0','en_EN','','English','InglÃ©s');
+INSERT INTO `Languages` VALUES (1,'es_ES','','Spanish','EspaÃ±ol'),(2,'en_EN','','English','InglÃ©s');
 /*!40000 ALTER TABLE `Languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1189,21 +1198,25 @@ DROP TABLE IF EXISTS `LcrRuleTarget`;
 CREATE TABLE `LcrRuleTarget` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
+  `outgoingRoutingId` int(10) unsigned NOT NULL,
   `rule_id` int(10) unsigned NOT NULL,
   `gw_id` int(10) unsigned NOT NULL,
   `priority` tinyint(3) unsigned NOT NULL,
   `weight` int(10) unsigned NOT NULL DEFAULT '1',
-  `peeringContractsRelLcrRulesId` binary(36) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rule_id_gw_id_idx` (`rule_id`,`gw_id`),
   KEY `brandId` (`brandId`),
+  KEY `companyId` (`companyId`),
+  KEY `outgoingRoutingId` (`outgoingRoutingId`),
+  KEY `rule_id` (`rule_id`),
   KEY `gw_id` (`gw_id`),
-  KEY `peeringContractsRelLcrRulesId` (`peeringContractsRelLcrRulesId`),
-  CONSTRAINT `LcrRuleTarget_ibfk_5` FOREIGN KEY (`peeringContractsRelLcrRulesId`) REFERENCES `PeeringContractsRelLcrRules` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrRuleTarget_ibfk_2` FOREIGN KEY (`rule_id`) REFERENCES `LcrRules` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrRuleTarget_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrRuleTarget_ibfk_4` FOREIGN KEY (`gw_id`) REFERENCES `PeerServers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  CONSTRAINT `LcrRuleTarget_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `LcrRuleTarget_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `LcrRuleTarget_ibfk_3` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `LcrRuleTarget_ibfk_4` FOREIGN KEY (`rule_id`) REFERENCES `LcrRules` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `LcrRuleTarget_ibfk_5` FOREIGN KEY (`gw_id`) REFERENCES `PeerServers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1230,13 +1243,18 @@ CREATE TABLE `LcrRules` (
   `request_uri` varchar(64) DEFAULT NULL,
   `stopper` int(10) unsigned NOT NULL DEFAULT '0',
   `enabled` int(10) unsigned NOT NULL DEFAULT '1',
-  `tag` varchar(50) NOT NULL,
+  `tag` varchar(55) NOT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
+  `targetPatternId` int(10) unsigned DEFAULT NULL,
+  `outgoingRoutingId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `lcr_id_prefix_tagIdx` (`brandId`,`tag`),
   UNIQUE KEY `brandId` (`brandId`,`prefix`,`from_uri`,`request_uri`),
-  CONSTRAINT `LcrRules_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
+  KEY `targetPatternId` (`targetPatternId`),
+  KEY `outgoingRoutingId` (`outgoingRoutingId`),
+  CONSTRAINT `LcrRules_ibfk_3` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `LcrRules_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `LcrRules_ibfk_2` FOREIGN KEY (`targetPatternId`) REFERENCES `TargetPatterns` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1256,8 +1274,8 @@ DROP TABLE IF EXISTS `Locutions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Locutions` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `fileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `fileMimeType` varchar(80) DEFAULT NULL,
   `fileBaseName` varchar(255) DEFAULT NULL,
@@ -1285,12 +1303,12 @@ DROP TABLE IF EXISTS `MainOperators`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `MainOperators` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `pass` varchar(80) NOT NULL COMMENT '[password]',
   `email` varchar(100) NOT NULL DEFAULT '',
   `active` tinyint(1) DEFAULT '1',
-  `timezoneId` mediumint(8) unsigned NOT NULL,
+  `timezoneId` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
@@ -1306,7 +1324,7 @@ CREATE TABLE `MainOperators` (
 
 LOCK TABLES `MainOperators` WRITE;
 /*!40000 ALTER TABLE `MainOperators` DISABLE KEYS */;
-INSERT INTO `MainOperators` VALUES ('54f079e8-8534-46c9-ae01-1b76ac110003','admin','$2a$08$ToDhikHKFDznPJVrbPGpeONfmbr3Y9dIrvnyNgN8S7QZ918SeCF0W','admin@example.com',1,145,'admin','oasis');
+INSERT INTO `MainOperators` VALUES (1,'admin','$2a$08$ToDhikHKFDznPJVrbPGpeONfmbr3Y9dIrvnyNgN8S7QZ918SeCF0W','admin@example.com',1,145,'admin','ivozprovider');
 /*!40000 ALTER TABLE `MainOperators` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1318,8 +1336,8 @@ DROP TABLE IF EXISTS `MusicOnHold`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `MusicOnHold` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `originalFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `originalFileMimeType` varchar(80) DEFAULT NULL,
@@ -1344,6 +1362,103 @@ LOCK TABLES `MusicOnHold` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `OutgoingRouting`
+--
+
+DROP TABLE IF EXISTS `OutgoingRouting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OutgoingRouting` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` enum('pattern','group','regexp') DEFAULT 'group',
+  `targetPatternId` int(10) unsigned DEFAULT NULL,
+  `targetGroupId` int(10) unsigned DEFAULT NULL,
+  `regexp` varchar(1024) DEFAULT NULL,
+  `peeringContractId` int(10) unsigned NOT NULL,
+  `priority` tinyint(3) unsigned NOT NULL,
+  `weight` int(10) unsigned NOT NULL DEFAULT '1',
+  `companyId` int(10) unsigned NOT NULL,
+  `brandId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `companyId` (`companyId`),
+  KEY `brandId` (`brandId`),
+  KEY `targetPatternId` (`targetPatternId`),
+  KEY `targetGroupId` (`targetGroupId`),
+  KEY `peeringContractId` (`peeringContractId`),
+  CONSTRAINT `OutgoingRouting_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `OutgoingRouting_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `OutgoingRouting_ibfk_3` FOREIGN KEY (`targetPatternId`) REFERENCES `TargetPatterns` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `OutgoingRouting_ibfk_4` FOREIGN KEY (`targetGroupId`) REFERENCES `TargetGroups` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `OutgoingRouting_ibfk_5` FOREIGN KEY (`peeringContractId`) REFERENCES `PeeringContracts` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OutgoingRouting`
+--
+
+LOCK TABLES `OutgoingRouting` WRITE;
+/*!40000 ALTER TABLE `OutgoingRouting` DISABLE KEYS */;
+/*!40000 ALTER TABLE `OutgoingRouting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ParsedCDRs`
+--
+
+DROP TABLE IF EXISTS `ParsedCDRs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ParsedCDRs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `calldate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Llamada establecida pata 1',
+  `src` varchar(128) DEFAULT NULL COMMENT 'Real Caller',
+  `src_dialed` varchar(128) DEFAULT NULL COMMENT 'Dialed Number',
+  `src_duration` int(10) unsigned DEFAULT NULL COMMENT 'Duracion llamada pata 1',
+  `dst` varchar(128) DEFAULT NULL COMMENT 'Final Callee, numero llamado en pata 2',
+  `dst_src_cid` varchar(128) DEFAULT NULL COMMENT 'Numero mostrado como origen en pata 2',
+  `dst_duration` int(10) unsigned DEFAULT NULL COMMENT 'Duracion llamada pata 2',
+  `type` varchar(256) DEFAULT NULL COMMENT 'Mucha miga, needs work',
+  `desc` varchar(256) DEFAULT NULL,
+  `fw_desc` varchar(256) DEFAULT NULL,
+  `ext_forwarder` varchar(32) DEFAULT NULL,
+  `oasis_forwarder` varchar(32) DEFAULT NULL,
+  `forward_to` varchar(32) DEFAULT NULL,
+  `companyId` int(10) unsigned DEFAULT NULL,
+  `brandId` int(10) unsigned DEFAULT NULL,
+  `aleg` varchar(128) DEFAULT NULL COMMENT 'callid pata 1',
+  `bleg` varchar(128) DEFAULT NULL COMMENT 'callid pata 2',
+  `metered` tinyint(1) DEFAULT '0',
+  `meteringDate` datetime DEFAULT '0000-00-00 00:00:00',
+  `pricingPlanId` int(10) unsigned DEFAULT NULL,
+  `targetPatternId` int(10) unsigned DEFAULT NULL,
+  `price` decimal(10,3) DEFAULT NULL,
+  `pricingPlanDetails` text,
+  `invoiceId` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `brandId` (`brandId`),
+  KEY `companyId` (`companyId`),
+  KEY `pricingPlanId` (`pricingPlanId`),
+  KEY `targetPatternId` (`targetPatternId`),
+  KEY `invoiceId` (`invoiceId`),
+  CONSTRAINT `parsedCDRs_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `parsedCDRs_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `parsedCDRs_ibfk_3` FOREIGN KEY (`pricingPlanId`) REFERENCES `PricingPlans` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `parsedCDRs_ibfk_4` FOREIGN KEY (`targetPatternId`) REFERENCES `TargetPatterns` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `parsedCDRs_ibfk_5` FOREIGN KEY (`invoiceId`) REFERENCES `Invoices` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ParsedCDRs`
+--
+
+LOCK TABLES `ParsedCDRs` WRITE;
+/*!40000 ALTER TABLE `ParsedCDRs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ParsedCDRs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `PeerServers`
 --
 
@@ -1352,7 +1467,7 @@ DROP TABLE IF EXISTS `PeerServers`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PeerServers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `peeringContractId` binary(36) NOT NULL,
+  `peeringContractId` int(10) unsigned NOT NULL,
   `ip` varbinary(16) NOT NULL,
   `name` varchar(200) NOT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
@@ -1396,16 +1511,16 @@ DROP TABLE IF EXISTS `PeeringContracts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PeeringContracts` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
   `name` varchar(200) NOT NULL DEFAULT '',
-  `transformationRulesetGroupsTrunksId` binary(36) DEFAULT NULL,
+  `transformationRulesetGroupsTrunksId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `brandId` (`brandId`),
   KEY `PeeringContracts_ibfk_2` (`transformationRulesetGroupsTrunksId`),
-  CONSTRAINT `PeeringContracts_ibfk_2` FOREIGN KEY (`transformationRulesetGroupsTrunksId`) REFERENCES `TransformationRulesetGroupsTrunks` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `PeeringContracts_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
+  CONSTRAINT `PeeringContracts_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `PeeringContracts_ibfk_2` FOREIGN KEY (`transformationRulesetGroupsTrunksId`) REFERENCES `TransformationRulesetGroupsTrunks` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1419,39 +1534,6 @@ LOCK TABLES `PeeringContracts` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `PeeringContractsRelLcrRules`
---
-
-DROP TABLE IF EXISTS `PeeringContractsRelLcrRules`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `PeeringContractsRelLcrRules` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `brandId` int(10) unsigned NOT NULL,
-  `lcrRuleId` int(10) unsigned NOT NULL,
-  `peeringContractId` binary(36) NOT NULL,
-  `priority` tinyint(3) unsigned NOT NULL,
-  `weight` int(10) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `lcrRuleId` (`lcrRuleId`,`peeringContractId`),
-  KEY `PeeringContractsRelLcrRules_ibfk_2` (`peeringContractId`),
-  KEY `brandId` (`brandId`),
-  CONSTRAINT `PeeringContractsRelLcrRules_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `PeeringContractsRelLcrRules_ibfk_1` FOREIGN KEY (`lcrRuleId`) REFERENCES `LcrRules` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `PeeringContractsRelLcrRules_ibfk_2` FOREIGN KEY (`peeringContractId`) REFERENCES `PeeringContracts` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `PeeringContractsRelLcrRules`
---
-
-LOCK TABLES `PeeringContractsRelLcrRules` WRITE;
-/*!40000 ALTER TABLE `PeeringContractsRelLcrRules` DISABLE KEYS */;
-/*!40000 ALTER TABLE `PeeringContractsRelLcrRules` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `PickUpGroups`
 --
 
@@ -1459,9 +1541,9 @@ DROP TABLE IF EXISTS `PickUpGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PickUpGroups` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `companyId` binary(36) NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `PickUpGroups_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
@@ -1485,9 +1567,9 @@ DROP TABLE IF EXISTS `PickUpRelUsers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PickUpRelUsers` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `pickUpGroupId` binary(36) NOT NULL,
-  `userId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pickUpGroupId` int(10) unsigned NOT NULL,
+  `userId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `pickUpGroupId` (`pickUpGroupId`),
   KEY `userId` (`userId`),
@@ -1513,7 +1595,7 @@ DROP TABLE IF EXISTS `PricingPlans`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PricingPlans` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL COMMENT '[ml]',
   `name_en` varchar(55) NOT NULL,
   `name_es` varchar(55) NOT NULL,
@@ -1545,12 +1627,12 @@ DROP TABLE IF EXISTS `PricingPlansRelCompanies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PricingPlansRelCompanies` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `pricingPlanId` mediumint(8) unsigned NOT NULL,
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pricingPlanId` int(10) unsigned NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
   `validFrom` datetime DEFAULT NULL,
   `validTo` datetime DEFAULT NULL,
-  `metric` mediumint(8) NOT NULL DEFAULT '10',
+  `metric` int(10) NOT NULL DEFAULT '10',
   `brandId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pricingPlanIdCompanyId` (`pricingPlanId`,`companyId`),
@@ -1579,13 +1661,13 @@ DROP TABLE IF EXISTS `PricingPlansRelTargetPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PricingPlansRelTargetPatterns` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `connectionCharge` decimal(10,3) NOT NULL,
   `periodTime` mediumint(8) NOT NULL,
   `perPeriodCharge` decimal(10,3) NOT NULL,
   `metric` mediumint(8) NOT NULL DEFAULT '10',
-  `pricingPlanId` mediumint(8) unsigned NOT NULL,
-  `targetPatternId` mediumint(8) unsigned NOT NULL,
+  `pricingPlanId` int(10) unsigned NOT NULL,
+  `targetPatternId` int(10) unsigned NOT NULL,
   `brandId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pricingPlanId` (`pricingPlanId`,`targetPatternId`),
@@ -1608,6 +1690,56 @@ LOCK TABLES `PricingPlansRelTargetPatterns` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ProxyTrunks`
+--
+
+DROP TABLE IF EXISTS `ProxyTrunks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProxyTrunks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `ip` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ip` (`ip`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ProxyTrunks`
+--
+
+LOCK TABLES `ProxyTrunks` WRITE;
+/*!40000 ALTER TABLE `ProxyTrunks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProxyTrunks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ProxyUsers`
+--
+
+DROP TABLE IF EXISTS `ProxyUsers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProxyUsers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `ip` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ip` (`ip`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ProxyUsers`
+--
+
+LOCK TABLES `ProxyUsers` WRITE;
+/*!40000 ALTER TABLE `ProxyUsers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProxyUsers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Schedules`
 --
 
@@ -1615,8 +1747,8 @@ DROP TABLE IF EXISTS `Schedules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Schedules` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `timeIn` time NOT NULL,
   `timeout` time NOT NULL,
@@ -1650,8 +1782,8 @@ DROP TABLE IF EXISTS `Services`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Services` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   `code` varchar(3) NOT NULL,
@@ -1671,6 +1803,63 @@ LOCK TABLES `Services` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `TargetGroups`
+--
+
+DROP TABLE IF EXISTS `TargetGroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TargetGroups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(55) NOT NULL,
+  `description` varchar(55) DEFAULT NULL,
+  `brandId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`,`brandId`),
+  KEY `brandId` (`brandId`),
+  CONSTRAINT `TargetGroups_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TargetGroups`
+--
+
+LOCK TABLES `TargetGroups` WRITE;
+/*!40000 ALTER TABLE `TargetGroups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TargetGroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TargetGroupsRelPatterns`
+--
+
+DROP TABLE IF EXISTS `TargetGroupsRelPatterns`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TargetGroupsRelPatterns` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `targetPatternId` int(10) unsigned NOT NULL,
+  `targetGroupId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rel` (`targetPatternId`,`targetGroupId`),
+  KEY `targetPatternId` (`targetPatternId`),
+  KEY `targetGroupId` (`targetGroupId`),
+  CONSTRAINT `TargetGroupsRelPatterns_ibfk_1` FOREIGN KEY (`targetPatternId`) REFERENCES `TargetPatterns` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `TargetGroupsRelPatterns_ibfk_2` FOREIGN KEY (`targetGroupId`) REFERENCES `TargetGroups` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TargetGroupsRelPatterns`
+--
+
+LOCK TABLES `TargetGroupsRelPatterns` WRITE;
+/*!40000 ALTER TABLE `TargetGroupsRelPatterns` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TargetGroupsRelPatterns` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `TargetPatterns`
 --
 
@@ -1678,7 +1867,7 @@ DROP TABLE IF EXISTS `TargetPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TargetPatterns` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL COMMENT '[ml]',
   `name_en` varchar(55) NOT NULL,
   `name_es` varchar(55) NOT NULL,
@@ -1711,7 +1900,7 @@ DROP TABLE IF EXISTS `TerminalManufacturers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TerminalManufacturers` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(500) NOT NULL DEFAULT '',
@@ -1737,11 +1926,11 @@ DROP TABLE IF EXISTS `TerminalModels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TerminalModels` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(500) NOT NULL DEFAULT '',
-  `TerminalManufacturerId` binary(36) NOT NULL,
+  `TerminalManufacturerId` int(10) unsigned NOT NULL,
   `genericTemplate` text,
   `specificTemplate` text,
   `genericUrlPattern` varchar(225) DEFAULT NULL,
@@ -1770,37 +1959,17 @@ DROP TABLE IF EXISTS `Terminals`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Terminals` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `TerminalModelId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `TerminalModelId` int(10) unsigned NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `sorcery_id` varchar(40) NOT NULL,
-  `aors` varchar(200) DEFAULT NULL,
-  `auth` varchar(40) DEFAULT NULL,
-  `context` varchar(40) DEFAULT NULL,
-  `disallow` varchar(200) NOT NULL DEFAULT 'all',
   `allow` varchar(200) NOT NULL DEFAULT 'alaw',
   `direct_media` enum('yes','no') NOT NULL DEFAULT 'yes',
-  `mailboxes_aors` varchar(100) DEFAULT NULL,
-  `outbound_proxy` varchar(40) DEFAULT NULL,
-  `send_pai` enum('yes','no') DEFAULT NULL,
-  `send_rpid` enum('yes','no') DEFAULT NULL,
-  `contact` varchar(40) DEFAULT NULL,
-  `default_expiration` int(11) DEFAULT NULL,
-  `max_contacts` int(11) NOT NULL DEFAULT '5',
-  `minimum_expiration` int(11) DEFAULT NULL,
-  `remove_existing` enum('yes','no') DEFAULT NULL,
-  `qualify_frequency` int(11) DEFAULT NULL,
-  `authenticate_qualify` enum('yes','no') DEFAULT NULL,
-  `maximum_expiration` int(11) DEFAULT NULL,
-  `support_path` enum('yes','no') NOT NULL DEFAULT 'yes',
   `password` varchar(25) NOT NULL DEFAULT '' COMMENT '[password]',
-  `subscribecontext` varchar(40) NOT NULL DEFAULT 'default',
-  `companyId` binary(36) NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
   `mac` varchar(12) DEFAULT NULL,
   `lastProvisionDate` timestamp NULL DEFAULT NULL,
-  `direct_media_method` varchar(64) DEFAULT 'update' COMMENT '[enum:update|invite|reinvite]',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`sorcery_id`),
+  UNIQUE KEY `name` (`name`),
   KEY `TerminalModelId` (`TerminalModelId`),
   KEY `Terminals_CompanyId_ibfk_2` (`companyId`),
   CONSTRAINT `Terminals_CompanyId_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
@@ -1825,8 +1994,8 @@ DROP TABLE IF EXISTS `Timezones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Timezones` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `countryId` mediumint(8) unsigned DEFAULT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `countryId` int(10) unsigned DEFAULT NULL,
   `tz` varchar(255) NOT NULL,
   `comment` varchar(150) DEFAULT '',
   `timeZoneLabel` varchar(20) NOT NULL DEFAULT '' COMMENT '[ml]',
@@ -1835,7 +2004,7 @@ CREATE TABLE `Timezones` (
   PRIMARY KEY (`id`),
   KEY `countryId` (`countryId`),
   CONSTRAINT `Timezones_ibfk_2` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=417 DEFAULT CHARSET=utf8 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1856,7 +2025,7 @@ DROP TABLE IF EXISTS `TransformationRulesetGroupsTrunks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TransformationRulesetGroupsTrunks` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
   `caller_in` int(11) DEFAULT NULL,
@@ -1868,7 +2037,7 @@ CREATE TABLE `TransformationRulesetGroupsTrunks` (
   UNIQUE KEY `name_idx` (`name`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `TransformationRulesetGroupsTrunks_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1888,7 +2057,7 @@ DROP TABLE IF EXISTS `TransformationRulesetGroupsUsers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TransformationRulesetGroupsUsers` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `brandId` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
   `caller_in` int(11) DEFAULT NULL,
@@ -1900,7 +2069,7 @@ CREATE TABLE `TransformationRulesetGroupsUsers` (
   UNIQUE KEY `name_idx` (`name`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `TransformationRulesetGroupsUsers_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1920,20 +2089,20 @@ DROP TABLE IF EXISTS `Users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Users` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `companyId` binary(36) NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `pass` varchar(80) NOT NULL COMMENT '[password]',
-  `timezoneId` mediumint(8) unsigned DEFAULT NULL,
-  `terminalId` binary(36) DEFAULT NULL,
-  `extensionId` binary(36) DEFAULT NULL,
-  `outgoingDDIId` binary(36) DEFAULT NULL,
-  `callACLId` binary(36) DEFAULT NULL,
+  `timezoneId` int(10) unsigned DEFAULT NULL,
+  `terminalId` int(10) unsigned DEFAULT NULL,
+  `extensionId` int(10) unsigned DEFAULT NULL,
+  `outgoingDDIId` int(10) unsigned DEFAULT NULL,
+  `callACLId` int(10) unsigned DEFAULT NULL,
   `doNotDisturb` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `isBoss` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `bossAssistantId` binary(36) DEFAULT NULL,
+  `bossAssistantId` int(10) unsigned DEFAULT NULL,
   `exceptionBoosAssistantRegExp` varchar(255) DEFAULT NULL,
   `username` varchar(50) NOT NULL,
   `active` tinyint(1) DEFAULT '1',
@@ -1942,8 +2111,7 @@ CREATE TABLE `Users` (
   `attachVoicemailSound` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `voicemailEnabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `tokenKey` varchar(125) DEFAULT NULL,
-  `isCompanyAdmin` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `countryId` mediumint(8) unsigned DEFAULT NULL,
+  `countryId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UsersUniqueCompanyUsername` (`companyId`,`username`),
   UNIQUE KEY `uniqueTerminalId` (`terminalId`),
@@ -1956,10 +2124,10 @@ CREATE TABLE `Users` (
   KEY `callACLId` (`callACLId`),
   KEY `bossAssistantId` (`bossAssistantId`),
   KEY `countryId` (`countryId`),
-  CONSTRAINT `Users_ibfk_12` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Users_ibfk_10` FOREIGN KEY (`callACLId`) REFERENCES `CallACL` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_11` FOREIGN KEY (`bossAssistantId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Users_ibfk_12` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_3` FOREIGN KEY (`terminalId`) REFERENCES `Terminals` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_7` FOREIGN KEY (`extensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_8` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
@@ -2013,6 +2181,7 @@ DROP TABLE IF EXISTS `ast_musiconhold`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ast_musiconhold` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
   `mode` enum('custom','files','mp3nb','quietmp3nb','quietmp3') DEFAULT NULL,
   `directory` varchar(255) DEFAULT NULL,
@@ -2021,10 +2190,9 @@ CREATE TABLE `ast_musiconhold` (
   `sort` varchar(10) DEFAULT NULL,
   `format` varchar(10) DEFAULT NULL,
   `stamp` datetime DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2037,28 +2205,42 @@ LOCK TABLES `ast_musiconhold` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `ast_ps_aors`
+-- Table structure for table `ast_ps_aors`
 --
 
 DROP TABLE IF EXISTS `ast_ps_aors`;
-/*!50001 DROP VIEW IF EXISTS `ast_ps_aors`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `ast_ps_aors` (
-  `sorcery_id` tinyint NOT NULL,
-  `contact` tinyint NOT NULL,
-  `default_expiration` tinyint NOT NULL,
-  `mailboxes` tinyint NOT NULL,
-  `max_contacts` tinyint NOT NULL,
-  `minimum_expiration` tinyint NOT NULL,
-  `remove_existing` tinyint NOT NULL,
-  `qualify_frequency` tinyint NOT NULL,
-  `authenticate_qualify` tinyint NOT NULL,
-  `maximum_expiration` tinyint NOT NULL,
-  `outbound_proxy` tinyint NOT NULL,
-  `support_path` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ast_ps_aors` (
+  `sorcery_id` varchar(40) NOT NULL,
+  `terminalId` int(10) unsigned DEFAULT NULL,
+  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
+  `default_expiration` int(11) DEFAULT NULL,
+  `max_contacts` int(11) DEFAULT NULL,
+  `minimum_expiration` int(11) DEFAULT NULL,
+  `remove_existing` enum('yes','no') DEFAULT NULL,
+  `authenticate_qualify` enum('yes','no') DEFAULT NULL,
+  `maximum_expiration` int(11) DEFAULT NULL,
+  `support_path` enum('yes','no') DEFAULT NULL,
+  `contact` varchar(40) DEFAULT NULL,
+  `qualify_frequency` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sorcery_id`),
+  UNIQUE KEY `sorcery_id` (`sorcery_id`),
+  KEY `terminalId` (`terminalId`),
+  KEY `proxyTrunkId` (`proxyTrunkId`),
+  CONSTRAINT `ast_ps_aors_ibfk_1` FOREIGN KEY (`terminalId`) REFERENCES `Terminals` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `ast_ps_aors_ibfk_2` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ast_ps_aors`
+--
+
+LOCK TABLES `ast_ps_aors` WRITE;
+/*!40000 ALTER TABLE `ast_ps_aors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ast_ps_aors` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ast_ps_contacts`
@@ -2068,16 +2250,17 @@ DROP TABLE IF EXISTS `ast_ps_contacts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ast_ps_contacts` (
-  `sorcery_id` varchar(255) NOT NULL,
+  `sorcery_id` varchar(40) NOT NULL,
   `uri` varchar(255) DEFAULT NULL,
   `expiration_time` varchar(40) DEFAULT NULL,
   `qualify_frequency` int(11) DEFAULT NULL,
+  `qualify_timeout` int(11) DEFAULT NULL,
   `outbound_proxy` varchar(40) DEFAULT NULL,
   `path` text,
   `user_agent` varchar(255) DEFAULT NULL,
-  UNIQUE KEY `id` (`sorcery_id`),
+  UNIQUE KEY `sorcery_id` (`sorcery_id`),
   KEY `ast_ps_contacts_id` (`sorcery_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2090,56 +2273,118 @@ LOCK TABLES `ast_ps_contacts` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `ast_ps_endpoints`
+-- Table structure for table `ast_ps_endpoints`
 --
 
 DROP TABLE IF EXISTS `ast_ps_endpoints`;
-/*!50001 DROP VIEW IF EXISTS `ast_ps_endpoints`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `ast_ps_endpoints` (
-  `sorcery_id` tinyint NOT NULL,
-  `name` tinyint NOT NULL,
-  `aors` tinyint NOT NULL,
-  `auth` tinyint NOT NULL,
-  `context` tinyint NOT NULL,
-  `disallow` tinyint NOT NULL,
-  `allow` tinyint NOT NULL,
-  `direct_media` tinyint NOT NULL,
-  `direct_media_method` tinyint NOT NULL,
-  `mailboxes_aors` tinyint NOT NULL,
-  `outbound_proxy` tinyint NOT NULL,
-  `send_pai` tinyint NOT NULL,
-  `send_rpid` tinyint NOT NULL,
-  `contact` tinyint NOT NULL,
-  `default_expiration` tinyint NOT NULL,
-  `max_contacts` tinyint NOT NULL,
-  `minimum_expiration` tinyint NOT NULL,
-  `remove_existing` tinyint NOT NULL,
-  `qualify_frequency` tinyint NOT NULL,
-  `authenticate_qualify` tinyint NOT NULL,
-  `maximum_expiration` tinyint NOT NULL,
-  `support_path` tinyint NOT NULL,
-  `password` tinyint NOT NULL,
-  `subscribecontext` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ast_ps_endpoints` (
+  `sorcery_id` varchar(40) NOT NULL,
+  `terminalId` int(10) unsigned DEFAULT NULL,
+  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
+  `transport` varchar(40) DEFAULT NULL,
+  `aors` varchar(200) DEFAULT NULL,
+  `auth` varchar(40) DEFAULT NULL,
+  `context` varchar(40) NOT NULL DEFAULT 'outgoing',
+  `disallow` varchar(200) NOT NULL DEFAULT 'all',
+  `allow` varchar(200) NOT NULL DEFAULT 'all',
+  `direct_media` enum('yes','no') DEFAULT 'yes',
+  `direct_media_method` enum('invite','reinvite','update') DEFAULT 'update' COMMENT '[enum:update|invite|reinvite]',
+  `dtmf_mode` enum('rfc4733','inband','info') DEFAULT NULL,
+  `mailboxes` varchar(100) DEFAULT NULL,
+  `send_diversion` enum('yes','no') DEFAULT NULL,
+  `send_pai` enum('yes','no') DEFAULT NULL,
+  `send_rpid` enum('yes','no') DEFAULT NULL,
+  `subscribecontext` varchar(40) NOT NULL DEFAULT 'default',
+  PRIMARY KEY (`sorcery_id`),
+  UNIQUE KEY `sorcery_id` (`sorcery_id`),
+  KEY `terminalId` (`terminalId`),
+  KEY `proxyTrunkId` (`proxyTrunkId`),
+  CONSTRAINT `ast_ps_endpoints_ibfk_1` FOREIGN KEY (`terminalId`) REFERENCES `Terminals` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `ast_ps_endpoints_ibfk_2` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Temporary table structure for view `ast_ps_identify`
+-- Dumping data for table `ast_ps_endpoints`
+--
+
+LOCK TABLES `ast_ps_endpoints` WRITE;
+/*!40000 ALTER TABLE `ast_ps_endpoints` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ast_ps_endpoints` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ast_ps_identify`
 --
 
 DROP TABLE IF EXISTS `ast_ps_identify`;
-/*!50001 DROP VIEW IF EXISTS `ast_ps_identify`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `ast_ps_identify` (
-  `sorcery_id` tinyint NOT NULL,
-  `endpoint` tinyint NOT NULL,
-  `match` tinyint NOT NULL,
-  `type` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ast_ps_identify` (
+  `sorcery_id` varchar(40) NOT NULL,
+  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
+  `endpoint` varchar(40) DEFAULT NULL,
+  `match` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`sorcery_id`),
+  UNIQUE KEY `sorcery_id` (`sorcery_id`),
+  KEY `proxyTrunkId` (`proxyTrunkId`),
+  CONSTRAINT `ast_ps_identify_ibfk_1` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ast_ps_identify`
+--
+
+LOCK TABLES `ast_ps_identify` WRITE;
+/*!40000 ALTER TABLE `ast_ps_identify` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ast_ps_identify` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ast_ps_transports`
+--
+
+DROP TABLE IF EXISTS `ast_ps_transports`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ast_ps_transports` (
+  `sorcery_id` varchar(40) NOT NULL,
+  `async_operations` int(11) DEFAULT NULL,
+  `bind` varchar(40) DEFAULT NULL,
+  `ca_list_file` varchar(200) DEFAULT NULL,
+  `cert_file` varchar(200) DEFAULT NULL,
+  `cipher` varchar(200) DEFAULT NULL,
+  `domain` varchar(40) DEFAULT NULL,
+  `external_media_address` varchar(40) DEFAULT NULL,
+  `external_signaling_address` varchar(40) DEFAULT NULL,
+  `external_signaling_port` int(11) DEFAULT NULL,
+  `method` enum('default','unspecified','tlsv1','sslv2','sslv3','sslv23') DEFAULT NULL,
+  `local_net` varchar(40) DEFAULT NULL,
+  `password` varchar(40) DEFAULT NULL,
+  `priv_key_file` varchar(200) DEFAULT NULL,
+  `protocol` enum('udp','tcp','tls','ws','wss') DEFAULT NULL,
+  `require_client_cert` enum('yes','no') DEFAULT NULL,
+  `verify_client` enum('yes','no') DEFAULT NULL,
+  `verify_server` enum('yes','no') DEFAULT NULL,
+  `tos` varchar(10) DEFAULT NULL,
+  `cos` int(11) DEFAULT NULL,
+  UNIQUE KEY `sorcery_id` (`sorcery_id`),
+  KEY `ast_ps_transports_id` (`sorcery_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ast_ps_transports`
+--
+
+LOCK TABLES `ast_ps_transports` WRITE;
+/*!40000 ALTER TABLE `ast_ps_transports` DISABLE KEYS */;
+INSERT INTO `ast_ps_transports` VALUES ('transport-udp',NULL,'0.0.0.0:6060',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `ast_ps_transports` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ast_voicemail`
@@ -2188,7 +2433,7 @@ CREATE TABLE `ast_voicemail` (
   KEY `ast_voicemail_context` (`context`),
   KEY `ast_voicemail_mailbox_context` (`mailbox`,`context`),
   KEY `ast_voicemail_imapuser` (`imapuser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2201,13 +2446,13 @@ LOCK TABLES `ast_voicemail` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `kam_address`
+-- Table structure for table `kam_users_address`
 --
 
-DROP TABLE IF EXISTS `kam_address`;
+DROP TABLE IF EXISTS `kam_users_address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kam_address` (
+CREATE TABLE `kam_users_address` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `grp` int(11) unsigned NOT NULL DEFAULT '1',
   `ip_addr` varchar(50) NOT NULL,
@@ -2217,17 +2462,17 @@ CREATE TABLE `kam_address` (
   `peerServerId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `peerServerId` (`peerServerId`),
-  CONSTRAINT `kam_address_ibfk_1` FOREIGN KEY (`peerServerId`) REFERENCES `PeerServers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+  CONSTRAINT `kam_users_address_ibfk_1` FOREIGN KEY (`peerServerId`) REFERENCES `PeerServers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `kam_address`
+-- Dumping data for table `kam_users_address`
 --
 
-LOCK TABLES `kam_address` WRITE;
-/*!40000 ALTER TABLE `kam_address` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kam_address` ENABLE KEYS */;
+LOCK TABLES `kam_users_address` WRITE;
+/*!40000 ALTER TABLE `kam_users_address` DISABLE KEYS */;
+/*!40000 ALTER TABLE `kam_users_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2238,14 +2483,14 @@ DROP TABLE IF EXISTS `kam_dispatcher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kam_dispatcher` (
-  `id` binary(36) NOT NULL COMMENT '[uuid]',
+  `id` int(10) unsigned NOT NULL COMMENT '[uuid]',
   `setid` int(11) NOT NULL DEFAULT '0',
   `destination` varchar(192) NOT NULL DEFAULT '',
   `flags` int(11) NOT NULL DEFAULT '0',
   `priority` int(11) NOT NULL DEFAULT '0',
   `attrs` varchar(128) NOT NULL DEFAULT '',
   `description` varchar(64) NOT NULL DEFAULT '',
-  `applicationServerId` binary(36) NOT NULL,
+  `applicationServerId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `applicationServerId` (`applicationServerId`),
   CONSTRAINT `kam_dispatcher_ibfk_1` FOREIGN KEY (`applicationServerId`) REFERENCES `ApplicationServers` (`id`) ON DELETE CASCADE
@@ -2286,7 +2531,7 @@ CREATE TABLE `kam_trunks_acc` (
   `utctime` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `callid_idx` (`callid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3188 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2325,7 +2570,7 @@ CREATE TABLE `kam_trunks_acc_cdrs` (
   `diversion` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `start_time_idx` (`start_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=1892 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2335,79 +2580,6 @@ CREATE TABLE `kam_trunks_acc_cdrs` (
 LOCK TABLES `kam_trunks_acc_cdrs` WRITE;
 /*!40000 ALTER TABLE `kam_trunks_acc_cdrs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `kam_trunks_acc_cdrs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `kam_trunks_dialog`
---
-
-DROP TABLE IF EXISTS `kam_trunks_dialog`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kam_trunks_dialog` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `hash_entry` int(10) unsigned NOT NULL,
-  `hash_id` int(10) unsigned NOT NULL,
-  `callid` varchar(255) NOT NULL,
-  `from_uri` varchar(128) NOT NULL,
-  `from_tag` varchar(64) NOT NULL,
-  `to_uri` varchar(128) NOT NULL,
-  `to_tag` varchar(64) NOT NULL,
-  `caller_cseq` varchar(20) NOT NULL,
-  `callee_cseq` varchar(20) NOT NULL,
-  `caller_route_set` varchar(512) DEFAULT NULL,
-  `callee_route_set` varchar(512) DEFAULT NULL,
-  `caller_contact` varchar(128) NOT NULL,
-  `callee_contact` varchar(128) NOT NULL,
-  `caller_sock` varchar(64) NOT NULL,
-  `callee_sock` varchar(64) NOT NULL,
-  `state` int(10) unsigned NOT NULL,
-  `start_time` int(10) unsigned NOT NULL,
-  `timeout` int(10) unsigned NOT NULL DEFAULT '0',
-  `sflags` int(10) unsigned NOT NULL DEFAULT '0',
-  `iflags` int(10) unsigned NOT NULL DEFAULT '0',
-  `toroute_name` varchar(32) DEFAULT NULL,
-  `req_uri` varchar(128) NOT NULL,
-  `xdata` varchar(512) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `hash_idx` (`hash_entry`,`hash_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kam_trunks_dialog`
---
-
-LOCK TABLES `kam_trunks_dialog` WRITE;
-/*!40000 ALTER TABLE `kam_trunks_dialog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kam_trunks_dialog` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `kam_trunks_dialog_vars`
---
-
-DROP TABLE IF EXISTS `kam_trunks_dialog_vars`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kam_trunks_dialog_vars` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `hash_entry` int(10) unsigned NOT NULL,
-  `hash_id` int(10) unsigned NOT NULL,
-  `dialog_key` varchar(128) NOT NULL,
-  `dialog_value` varchar(512) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `hash_idx` (`hash_entry`,`hash_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kam_trunks_dialog_vars`
---
-
-LOCK TABLES `kam_trunks_dialog_vars` WRITE;
-/*!40000 ALTER TABLE `kam_trunks_dialog_vars` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kam_trunks_dialog_vars` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2427,11 +2599,11 @@ CREATE TABLE `kam_trunks_dialplan` (
   `subst_exp` varchar(64) NOT NULL,
   `repl_exp` varchar(64) NOT NULL,
   `attrs` varchar(64) NOT NULL,
-  `transformationRulesetGroupsTrunksId` binary(36) NOT NULL,
+  `transformationRulesetGroupsTrunksId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `kam_trunks_dialplan_ibfk_2` (`transformationRulesetGroupsTrunksId`),
   CONSTRAINT `kam_trunks_dialplan_ibfk_2` FOREIGN KEY (`transformationRulesetGroupsTrunksId`) REFERENCES `TransformationRulesetGroupsTrunks` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2473,7 +2645,7 @@ CREATE TABLE `kam_trunks_domain_attrs` (
   `last_modified` datetime NOT NULL DEFAULT '1900-01-01 00:00:01',
   PRIMARY KEY (`id`),
   UNIQUE KEY `domain_attrs_idx` (`did`,`name`,`value`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2500,7 +2672,7 @@ CREATE TABLE `kam_trunks_htable` (
   `key_value` varchar(128) NOT NULL DEFAULT '',
   `expires` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2547,7 +2719,7 @@ CREATE TABLE `kam_trunks_location` (
   UNIQUE KEY `ruid_idx` (`ruid`),
   KEY `account_contact_idx` (`username`,`domain`,`contact`),
   KEY `expires_idx` (`expires`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2584,7 +2756,7 @@ CREATE TABLE `kam_trunks_missed_calls` (
   `utctime` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `callid_idx` (`callid`)
-) ENGINE=InnoDB AUTO_INCREMENT=519 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2616,14 +2788,14 @@ CREATE TABLE `kam_trunks_uacreg` (
   `auth_proxy` varchar(64) NOT NULL DEFAULT '',
   `expires` int(11) NOT NULL DEFAULT '0',
   `brandId` int(10) unsigned NOT NULL,
-  `peeringContractId` binary(36) NOT NULL,
+  `peeringContractId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `l_uuid_idx` (`l_uuid`),
   KEY `brandId` (`brandId`),
   KEY `peeringContractId` (`peeringContractId`),
-  CONSTRAINT `kam_trunks_uacreg_ibfk_2` FOREIGN KEY (`peeringContractId`) REFERENCES `PeeringContracts` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `kam_trunks_uacreg_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
+  CONSTRAINT `kam_trunks_uacreg_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `kam_trunks_uacreg_ibfk_2` FOREIGN KEY (`peeringContractId`) REFERENCES `PeeringContracts` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2654,7 +2826,7 @@ CREATE TABLE `kam_trunks_usr_preferences` (
   PRIMARY KEY (`id`),
   KEY `ua_idx` (`uuid`,`attribute`),
   KEY `uda_idx` (`username`,`domain`,`attribute`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2691,7 +2863,7 @@ CREATE TABLE `kam_users_acc` (
   `utctime` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `callid_idx` (`callid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3188 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2730,7 +2902,7 @@ CREATE TABLE `kam_users_acc_cdrs` (
   `diversion` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `start_time_idx` (`start_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=1892 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2740,112 +2912,6 @@ CREATE TABLE `kam_users_acc_cdrs` (
 LOCK TABLES `kam_users_acc_cdrs` WRITE;
 /*!40000 ALTER TABLE `kam_users_acc_cdrs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `kam_users_acc_cdrs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `kam_users_dialog`
---
-
-DROP TABLE IF EXISTS `kam_users_dialog`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kam_users_dialog` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `hash_entry` int(10) unsigned NOT NULL,
-  `hash_id` int(10) unsigned NOT NULL,
-  `callid` varchar(255) NOT NULL,
-  `from_uri` varchar(128) NOT NULL,
-  `from_tag` varchar(64) NOT NULL,
-  `to_uri` varchar(128) NOT NULL,
-  `to_tag` varchar(64) NOT NULL,
-  `caller_cseq` varchar(20) NOT NULL,
-  `callee_cseq` varchar(20) NOT NULL,
-  `caller_route_set` varchar(512) DEFAULT NULL,
-  `callee_route_set` varchar(512) DEFAULT NULL,
-  `caller_contact` varchar(128) NOT NULL,
-  `callee_contact` varchar(128) NOT NULL,
-  `caller_sock` varchar(64) NOT NULL,
-  `callee_sock` varchar(64) NOT NULL,
-  `state` int(10) unsigned NOT NULL,
-  `start_time` int(10) unsigned NOT NULL,
-  `timeout` int(10) unsigned NOT NULL DEFAULT '0',
-  `sflags` int(10) unsigned NOT NULL DEFAULT '0',
-  `iflags` int(10) unsigned NOT NULL DEFAULT '0',
-  `toroute_name` varchar(32) DEFAULT NULL,
-  `req_uri` varchar(128) NOT NULL,
-  `xdata` varchar(512) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `hash_idx` (`hash_entry`,`hash_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kam_users_dialog`
---
-
-LOCK TABLES `kam_users_dialog` WRITE;
-/*!40000 ALTER TABLE `kam_users_dialog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kam_users_dialog` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `kam_users_dialog_vars`
---
-
-DROP TABLE IF EXISTS `kam_users_dialog_vars`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kam_users_dialog_vars` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `hash_entry` int(10) unsigned NOT NULL,
-  `hash_id` int(10) unsigned NOT NULL,
-  `dialog_key` varchar(128) NOT NULL,
-  `dialog_value` varchar(512) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `hash_idx` (`hash_entry`,`hash_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kam_users_dialog_vars`
---
-
-LOCK TABLES `kam_users_dialog_vars` WRITE;
-/*!40000 ALTER TABLE `kam_users_dialog_vars` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kam_users_dialog_vars` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `kam_users_dialplan`
---
-
-DROP TABLE IF EXISTS `kam_users_dialplan`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kam_users_dialplan` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `dpid` int(11) NOT NULL,
-  `pr` int(11) NOT NULL,
-  `match_op` int(11) NOT NULL,
-  `match_exp` varchar(64) NOT NULL,
-  `match_len` int(11) NOT NULL,
-  `subst_exp` varchar(64) NOT NULL,
-  `repl_exp` varchar(64) NOT NULL,
-  `attrs` varchar(64) NOT NULL,
-  `transformationRulesetGroupsUsersId` binary(36) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kam_users_dialplan_ibfk_2` (`transformationRulesetGroupsUsersId`),
-  CONSTRAINT `kam_users_dialplan_ibfk_2` FOREIGN KEY (`transformationRulesetGroupsUsersId`) REFERENCES `TransformationRulesetGroupsUsers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[entity]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kam_users_dialplan`
---
-
-LOCK TABLES `kam_users_dialplan` WRITE;
-/*!40000 ALTER TABLE `kam_users_dialplan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `kam_users_dialplan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2878,7 +2944,7 @@ CREATE TABLE `kam_users_domain_attrs` (
   `last_modified` datetime NOT NULL DEFAULT '1900-01-01 00:00:01',
   PRIMARY KEY (`id`),
   UNIQUE KEY `domain_attrs_idx` (`did`,`name`,`value`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2905,7 +2971,7 @@ CREATE TABLE `kam_users_htable` (
   `key_value` varchar(128) NOT NULL DEFAULT '',
   `expires` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2952,7 +3018,7 @@ CREATE TABLE `kam_users_location` (
   UNIQUE KEY `ruid_idx` (`ruid`),
   KEY `account_contact_idx` (`username`,`domain`,`contact`),
   KEY `expires_idx` (`expires`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2983,7 +3049,7 @@ CREATE TABLE `kam_users_location_attrs` (
   PRIMARY KEY (`id`),
   KEY `account_record_idx` (`username`,`domain`,`ruid`),
   KEY `last_modified_idx` (`last_modified`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3020,7 +3086,7 @@ CREATE TABLE `kam_users_missed_calls` (
   `utctime` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `callid_idx` (`callid`)
-) ENGINE=InnoDB AUTO_INCREMENT=519 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3051,7 +3117,7 @@ CREATE TABLE `kam_users_usr_preferences` (
   PRIMARY KEY (`id`),
   KEY `ua_idx` (`uuid`,`attribute`),
   KEY `uda_idx` (`username`,`domain`,`attribute`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3061,110 +3127,6 @@ CREATE TABLE `kam_users_usr_preferences` (
 LOCK TABLES `kam_users_usr_preferences` WRITE;
 /*!40000 ALTER TABLE `kam_users_usr_preferences` DISABLE KEYS */;
 /*!40000 ALTER TABLE `kam_users_usr_preferences` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `parsedCDRs`
---
-
-DROP TABLE IF EXISTS `parsedCDRs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `parsedCDRs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `calldate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Llamada establecida pata 1',
-  `src` varchar(128) DEFAULT NULL COMMENT 'Real Caller',
-  `src_dialed` varchar(128) DEFAULT NULL COMMENT 'Dialed Number',
-  `src_duration` int(10) unsigned DEFAULT NULL COMMENT 'Duracion llamada pata 1',
-  `dst` varchar(128) DEFAULT NULL COMMENT 'Final Callee, numero llamado en pata 2',
-  `dst_src_cid` varchar(128) DEFAULT NULL COMMENT 'Numero mostrado como origen en pata 2',
-  `dst_duration` int(10) unsigned DEFAULT NULL COMMENT 'Duracion llamada pata 2',
-  `type` varchar(256) DEFAULT NULL COMMENT 'Mucha miga, needs work',
-  `desc` varchar(256) DEFAULT NULL,
-  `fw_desc` varchar(256) DEFAULT NULL,
-  `ext_forwarder` varchar(32) DEFAULT NULL,
-  `oasis_forwarder` varchar(32) DEFAULT NULL,
-  `forward_to` varchar(32) DEFAULT NULL,
-  `companyId` binary(36) DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `aleg` varchar(128) DEFAULT NULL COMMENT 'callid pata 1',
-  `bleg` varchar(128) DEFAULT NULL COMMENT 'callid pata 2',
-  `metered` tinyint(1) DEFAULT '0',
-  `meteringDate` datetime DEFAULT '0000-00-00 00:00:00',
-  `pricingPlanId` mediumint(8) unsigned DEFAULT NULL,
-  `targetPatternId` mediumint(8) unsigned DEFAULT NULL,
-  `price` decimal(10,3) DEFAULT NULL,
-  `pricingPlanDetails` text,
-  `invoiceId` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `brandId` (`brandId`),
-  KEY `companyId` (`companyId`),
-  KEY `pricingPlanId` (`pricingPlanId`),
-  KEY `targetPatternId` (`targetPatternId`),
-  KEY `invoiceId` (`invoiceId`),
-  CONSTRAINT `parsedCDRs_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `parsedCDRs_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `parsedCDRs_ibfk_3` FOREIGN KEY (`pricingPlanId`) REFERENCES `PricingPlans` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `parsedCDRs_ibfk_4` FOREIGN KEY (`targetPatternId`) REFERENCES `TargetPatterns` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `parsedCDRs_ibfk_5` FOREIGN KEY (`invoiceId`) REFERENCES `Invoices` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2388 DEFAULT CHARSET=latin1 COMMENT='[entity]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `parsedCDRs`
---
-
-LOCK TABLES `parsedCDRs` WRITE;
-/*!40000 ALTER TABLE `parsedCDRs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `parsedCDRs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `proxyTrunks`
---
-
-DROP TABLE IF EXISTS `proxyTrunks`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `proxyTrunks` (
-  `id` binary(36) NOT NULL COMMENT '[uuid:php]',
-  `TerminalModelId` binary(36) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `sorcery_id` varchar(40) NOT NULL,
-  `aors` varchar(200) DEFAULT NULL,
-  `auth` varchar(40) DEFAULT NULL,
-  `context` varchar(40) DEFAULT NULL,
-  `disallow` varchar(200) NOT NULL DEFAULT 'all',
-  `allow` varchar(200) NOT NULL DEFAULT 'alaw',
-  `direct_media` enum('yes','no') NOT NULL DEFAULT 'yes',
-  `mailboxes_aors` varchar(100) DEFAULT NULL,
-  `outbound_proxy` varchar(40) DEFAULT NULL,
-  `send_pai` enum('yes','no') NOT NULL DEFAULT 'yes',
-  `send_rpid` enum('yes','no') NOT NULL DEFAULT 'no',
-  `contact` varchar(40) DEFAULT NULL,
-  `default_expiration` int(11) DEFAULT NULL,
-  `max_contacts` int(11) DEFAULT NULL,
-  `minimum_expiration` int(11) DEFAULT NULL,
-  `remove_existing` enum('yes','no') DEFAULT NULL,
-  `qualify_frequency` int(11) DEFAULT NULL,
-  `authenticate_qualify` enum('yes','no') DEFAULT NULL,
-  `maximum_expiration` int(11) DEFAULT NULL,
-  `support_path` enum('yes','no') DEFAULT NULL,
-  `password` varchar(25) NOT NULL DEFAULT '' COMMENT '[password]',
-  `subscribecontext` varchar(40) NOT NULL DEFAULT 'default',
-  `direct_media_method` varchar(64) DEFAULT 'update' COMMENT '[enum:update|invite|reinvite]',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`sorcery_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `proxyTrunks`
---
-
-LOCK TABLES `proxyTrunks` WRITE;
-/*!40000 ALTER TABLE `proxyTrunks` DISABLE KEYS */;
-/*!40000 ALTER TABLE `proxyTrunks` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -3178,7 +3140,7 @@ CREATE TABLE `version` (
   `table_name` varchar(32) NOT NULL,
   `table_version` int(10) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY `table_name_idx` (`table_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3187,7 +3149,7 @@ CREATE TABLE `version` (
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('ApplicationServers',5),('kam_address',6),('kam_dispatcher',4),('kam_trunks_acc',5),('kam_trunks_acc_cdrs',2),('kam_trunks_dialog',7),('kam_trunks_dialog_vars',1),('kam_trunks_dialplan',2),('kam_trunks_domain',2),('kam_trunks_domain_attrs',1),('kam_trunks_htable',2),('kam_trunks_missed_calls',4),('kam_trunks_uacreg',1),('kam_trunks_usr_preferences',2),('kam_users_acc',5),('kam_users_acc_cdrs',2),('kam_users_dialog',7),('kam_users_dialog_vars',1),('kam_users_dialplan',2),('kam_users_domain',2),('kam_users_domain_attrs',1),('kam_users_htable',2),('kam_users_location',8),('kam_users_location_attrs',1),('kam_users_missed_calls',4),('kam_users_subscriber',6),('kam_users_usr_preferences',2),('LcrRules',2),('LcrRuleTarget',1),('PeerServers',3);
+INSERT INTO `version` VALUES ('kam_dispatcher',4),('kam_trunks_acc',5),('kam_trunks_acc_cdrs',2),('kam_trunks_dialplan',2),('kam_trunks_domain',2),('kam_trunks_domain_attrs',1),('kam_trunks_htable',2),('kam_trunks_missed_calls',4),('kam_trunks_uacreg',1),('kam_trunks_usr_preferences',2),('kam_users_acc',5),('kam_users_acc_cdrs',2),('kam_users_domain',2),('kam_users_domain_attrs',1),('kam_users_htable',2),('kam_users_location',8),('kam_users_location_attrs',1),('kam_users_missed_calls',4),('kam_users_usr_preferences',2),('LcrRules',2),('LcrRuleTarget',1),('PeerServers',3);
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3205,83 +3167,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `CDRs` AS select 'proxyusers' AS `proxy`,`kam_users_acc_cdrs`.`id` AS `id`,`kam_users_acc_cdrs`.`calldate` AS `calldate`,`kam_users_acc_cdrs`.`start_time` AS `start_time`,`kam_users_acc_cdrs`.`end_time` AS `end_time`,`kam_users_acc_cdrs`.`duration` AS `duration`,`kam_users_acc_cdrs`.`caller` AS `caller`,`kam_users_acc_cdrs`.`callee` AS `callee`,`kam_users_acc_cdrs`.`type` AS `type`,`kam_users_acc_cdrs`.`subtype` AS `subtype`,`kam_users_acc_cdrs`.`companyId` AS `companyId`,`kam_users_acc_cdrs`.`companyName` AS `companyName`,`kam_users_acc_cdrs`.`asIden` AS `asIden`,`kam_users_acc_cdrs`.`asAddress` AS `asAddress`,`kam_users_acc_cdrs`.`callid` AS `callid`,`kam_users_acc_cdrs`.`xcallid` AS `xcallid`,`kam_users_acc_cdrs`.`parsed` AS `parsed`,`kam_users_acc_cdrs`.`diversion` AS `diversion` from `kam_users_acc_cdrs` union select 'proxytrunks' AS `proxy`,`kam_trunks_acc_cdrs`.`id` AS `id`,`kam_trunks_acc_cdrs`.`calldate` AS `calldate`,`kam_trunks_acc_cdrs`.`start_time` AS `start_time`,`kam_trunks_acc_cdrs`.`end_time` AS `end_time`,`kam_trunks_acc_cdrs`.`duration` AS `duration`,`kam_trunks_acc_cdrs`.`caller` AS `caller`,`kam_trunks_acc_cdrs`.`callee` AS `callee`,`kam_trunks_acc_cdrs`.`type` AS `type`,`kam_trunks_acc_cdrs`.`subtype` AS `subtype`,`kam_trunks_acc_cdrs`.`companyId` AS `companyId`,`kam_trunks_acc_cdrs`.`companyName` AS `companyName`,`kam_trunks_acc_cdrs`.`asIden` AS `asIden`,`kam_trunks_acc_cdrs`.`asAddress` AS `asAddress`,`kam_trunks_acc_cdrs`.`callid` AS `callid`,`kam_trunks_acc_cdrs`.`xcallid` AS `xcallid`,`kam_trunks_acc_cdrs`.`parsed` AS `parsed`,`kam_trunks_acc_cdrs`.`diversion` AS `diversion` from `kam_trunks_acc_cdrs` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `CompanyAdmins`
---
-
-/*!50001 DROP TABLE IF EXISTS `CompanyAdmins`*/;
-/*!50001 DROP VIEW IF EXISTS `CompanyAdmins`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `CompanyAdmins` AS select `Users`.`id` AS `id`,`Users`.`companyId` AS `companyId`,`Users`.`timezoneId` AS `timezoneId`,`Users`.`username` AS `username`,`Users`.`pass` AS `pass`,`Users`.`name` AS `name`,`Users`.`lastname` AS `lastname`,`Users`.`email` AS `email`,`Users`.`active` AS `active` from `Users` where (`Users`.`isCompanyAdmin` = '1') */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `ast_ps_aors`
---
-
-/*!50001 DROP TABLE IF EXISTS `ast_ps_aors`*/;
-/*!50001 DROP VIEW IF EXISTS `ast_ps_aors`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `ast_ps_aors` AS select `ast_ps_endpoints`.`sorcery_id` AS `sorcery_id`,`ast_ps_endpoints`.`contact` AS `contact`,`ast_ps_endpoints`.`default_expiration` AS `default_expiration`,`ast_ps_endpoints`.`mailboxes_aors` AS `mailboxes`,`ast_ps_endpoints`.`max_contacts` AS `max_contacts`,`ast_ps_endpoints`.`minimum_expiration` AS `minimum_expiration`,`ast_ps_endpoints`.`remove_existing` AS `remove_existing`,`ast_ps_endpoints`.`qualify_frequency` AS `qualify_frequency`,`ast_ps_endpoints`.`authenticate_qualify` AS `authenticate_qualify`,`ast_ps_endpoints`.`maximum_expiration` AS `maximum_expiration`,`ast_ps_endpoints`.`outbound_proxy` AS `outbound_proxy`,`ast_ps_endpoints`.`support_path` AS `support_path` from `ast_ps_endpoints` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `ast_ps_endpoints`
---
-
-/*!50001 DROP TABLE IF EXISTS `ast_ps_endpoints`*/;
-/*!50001 DROP VIEW IF EXISTS `ast_ps_endpoints`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `ast_ps_endpoints` AS select `Terminals`.`sorcery_id` AS `sorcery_id`,`Terminals`.`name` AS `name`,`Terminals`.`aors` AS `aors`,`Terminals`.`auth` AS `auth`,`Terminals`.`context` AS `context`,`Terminals`.`disallow` AS `disallow`,`Terminals`.`allow` AS `allow`,`Terminals`.`direct_media` AS `direct_media`,`Terminals`.`direct_media_method` AS `direct_media_method`,`Terminals`.`mailboxes_aors` AS `mailboxes_aors`,`Terminals`.`outbound_proxy` AS `outbound_proxy`,`Terminals`.`send_pai` AS `send_pai`,`Terminals`.`send_rpid` AS `send_rpid`,`Terminals`.`contact` AS `contact`,`Terminals`.`default_expiration` AS `default_expiration`,`Terminals`.`max_contacts` AS `max_contacts`,`Terminals`.`minimum_expiration` AS `minimum_expiration`,`Terminals`.`remove_existing` AS `remove_existing`,`Terminals`.`qualify_frequency` AS `qualify_frequency`,`Terminals`.`authenticate_qualify` AS `authenticate_qualify`,`Terminals`.`maximum_expiration` AS `maximum_expiration`,`Terminals`.`support_path` AS `support_path`,`Terminals`.`password` AS `password`,`Terminals`.`subscribecontext` AS `subscribecontext` from `Terminals` union select `proxyTrunks`.`sorcery_id` AS `sorcery_id`,`proxyTrunks`.`name` AS `name`,`proxyTrunks`.`aors` AS `aors`,`proxyTrunks`.`auth` AS `auth`,`proxyTrunks`.`context` AS `context`,`proxyTrunks`.`disallow` AS `disallow`,`proxyTrunks`.`allow` AS `allow`,`proxyTrunks`.`direct_media` AS `direct_media`,`proxyTrunks`.`direct_media_method` AS `direct_media_method`,`proxyTrunks`.`mailboxes_aors` AS `mailboxes_aors`,`proxyTrunks`.`outbound_proxy` AS `outbound_proxy`,`proxyTrunks`.`send_pai` AS `send_pai`,`proxyTrunks`.`send_rpid` AS `send_rpid`,`proxyTrunks`.`contact` AS `contact`,`proxyTrunks`.`default_expiration` AS `default_expiration`,`proxyTrunks`.`max_contacts` AS `max_contacts`,`proxyTrunks`.`minimum_expiration` AS `minimum_expiration`,`proxyTrunks`.`remove_existing` AS `remove_existing`,`proxyTrunks`.`qualify_frequency` AS `qualify_frequency`,`proxyTrunks`.`authenticate_qualify` AS `authenticate_qualify`,`proxyTrunks`.`maximum_expiration` AS `maximum_expiration`,`proxyTrunks`.`support_path` AS `support_path`,`proxyTrunks`.`password` AS `password`,`proxyTrunks`.`subscribecontext` AS `subscribecontext` from `proxyTrunks` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `ast_ps_identify`
---
-
-/*!50001 DROP TABLE IF EXISTS `ast_ps_identify`*/;
-/*!50001 DROP VIEW IF EXISTS `ast_ps_identify`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `ast_ps_identify` AS (select `proxyTrunks`.`sorcery_id` AS `sorcery_id`,`proxyTrunks`.`name` AS `endpoint`,substr(`proxyTrunks`.`contact`,5) AS `match`,'identify' AS `type` from `proxyTrunks`) */;
+/*!50001 VIEW `CDRs` AS select 'roxyusers' AS `proxy`,`kam_users_acc_cdrs`.`id` AS `id`,`kam_users_acc_cdrs`.`calldate` AS `calldate`,`kam_users_acc_cdrs`.`start_time` AS `start_time`,`kam_users_acc_cdrs`.`end_time` AS `end_time`,`kam_users_acc_cdrs`.`duration` AS `duration`,`kam_users_acc_cdrs`.`caller` AS `caller`,`kam_users_acc_cdrs`.`callee` AS `callee`,`kam_users_acc_cdrs`.`type` AS `type`,`kam_users_acc_cdrs`.`subtype` AS `subtype`,`kam_users_acc_cdrs`.`companyId` AS `companyId`,`kam_users_acc_cdrs`.`companyName` AS `companyName`,`kam_users_acc_cdrs`.`asIden` AS `asIden`,`kam_users_acc_cdrs`.`asAddress` AS `asAddress`,`kam_users_acc_cdrs`.`callid` AS `callid`,`kam_users_acc_cdrs`.`xcallid` AS `xcallid`,`kam_users_acc_cdrs`.`parsed` AS `parsed`,`kam_users_acc_cdrs`.`diversion` AS `diversion` from `kam_users_acc_cdrs` union select 'proxytrunks' AS `proxy`,`kam_trunks_acc_cdrs`.`id` AS `id`,`kam_trunks_acc_cdrs`.`calldate` AS `calldate`,`kam_trunks_acc_cdrs`.`start_time` AS `start_time`,`kam_trunks_acc_cdrs`.`end_time` AS `end_time`,`kam_trunks_acc_cdrs`.`duration` AS `duration`,`kam_trunks_acc_cdrs`.`caller` AS `caller`,`kam_trunks_acc_cdrs`.`callee` AS `callee`,`kam_trunks_acc_cdrs`.`type` AS `type`,`kam_trunks_acc_cdrs`.`subtype` AS `subtype`,`kam_trunks_acc_cdrs`.`companyId` AS `companyId`,`kam_trunks_acc_cdrs`.`companyName` AS `companyName`,`kam_trunks_acc_cdrs`.`asIden` AS `asIden`,`kam_trunks_acc_cdrs`.`asAddress` AS `asAddress`,`kam_trunks_acc_cdrs`.`callid` AS `callid`,`kam_trunks_acc_cdrs`.`xcallid` AS `xcallid`,`kam_trunks_acc_cdrs`.`parsed` AS `parsed`,`kam_trunks_acc_cdrs`.`diversion` AS `diversion` from `kam_trunks_acc_cdrs` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -3333,4 +3219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-06 15:31:30
+-- Dump completed on 2016-04-20 16:11:16
