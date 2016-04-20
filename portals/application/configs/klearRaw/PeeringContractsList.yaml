@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include OutgoingRoutingList.yaml
 #include PeerServersList.yaml
-#include PeeringContractsRelLcrRulesList.yaml
 #include KamTrunksUacregList.yaml
 
 
@@ -22,8 +22,8 @@ production:
           title: _("Options")
           screens: 
             peeringContractsEdit_screen: true
+            outgoingRoutingList_screen: true
             peerServersList_screen: true
-            peeringContractsRelLcrRulesList_screen: true
             kamTrunksUacregList_screen: true
           dialogs: 
             peeringContractsDel_dialog: true
@@ -52,8 +52,21 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Peering contract', 'Peering contracts', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Peering contract', 'Peering contracts', 1), "[format| (%item%)]")
+    #outgoingRouting: 
+    <<: *outgoingRouting_screensLink
+    outgoingRoutingList_screen: 
+      <<: *outgoingRoutingList_screenLink
+      filterField: peeringContractId
+      parentOptionCustomizer: 
+        - recordCount
+    outgoingRoutingNew_screen: 
+      <<: *outgoingRoutingNew_screenLink
+      filterField: peeringContractId
+    outgoingRoutingEdit_screen: 
+      <<: *outgoingRoutingEdit_screenLink
+      filterField: peeringContractId
+
     #peerServers: 
-    <<: *peerServers_screensLink
     peerServersList_screen: 
       <<: *peerServersList_screenLink
       filterField: peeringContractId
@@ -64,19 +77,6 @@ production:
       filterField: peeringContractId
     peerServersEdit_screen: 
       <<: *peerServersEdit_screenLink
-      filterField: peeringContractId
-
-    #peeringContractsRelLcrRules: 
-    peeringContractsRelLcrRulesList_screen: 
-      <<: *peeringContractsRelLcrRulesList_screenLink
-      filterField: peeringContractId
-      parentOptionCustomizer: 
-        - recordCount
-    peeringContractsRelLcrRulesNew_screen: 
-      <<: *peeringContractsRelLcrRulesNew_screenLink
-      filterField: peeringContractId
-    peeringContractsRelLcrRulesEdit_screen: 
-      <<: *peeringContractsRelLcrRulesEdit_screenLink
       filterField: peeringContractId
 
     #kamTrunksUacreg: 
@@ -103,10 +103,10 @@ production:
       message: _("%s successfully deleted.", ngettext('Peering contract', 'Peering contracts', 1))
       multiItem: 1
       labelOnList: 1
+  # outgoingRouting dialogs: 
+    <<: *outgoingRouting_dialogsLink
   # peerServers dialogs: 
     <<: *peerServers_dialogsLink
-  # peeringContractsRelLcrRules dialogs: 
-    <<: *peeringContractsRelLcrRules_dialogsLink
   # kamTrunksUacreg dialogs: 
     <<: *kamTrunksUacreg_dialogsLink
 staging: 

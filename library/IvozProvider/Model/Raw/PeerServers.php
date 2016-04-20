@@ -173,7 +173,7 @@ class PeerServers extends ModelAbstract
 
 
     /**
-     * Dependent relation LcrRuleTarget_ibfk_4
+     * Dependent relation LcrRuleTarget_ibfk_5
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
@@ -235,7 +235,7 @@ class PeerServers extends ModelAbstract
         ));
 
         $this->setDependentList(array(
-            'LcrRuleTargetIbfk4' => array(
+            'LcrRuleTargetIbfk5' => array(
                     'property' => 'LcrRuleTarget',
                     'table_name' => 'LcrRuleTarget',
                 ),
@@ -245,6 +245,9 @@ class PeerServers extends ModelAbstract
                 ),
         ));
 
+        $this->setOnDeleteCascadeRelationships(array(
+            'LcrRuleTarget_ibfk_5'
+        ));
 
 
 
@@ -1029,7 +1032,7 @@ class PeerServers extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_4
+     * Sets dependent relations LcrRuleTarget_ibfk_5
      *
      * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
      * @return \IvozProvider\Model\Raw\PeerServers
@@ -1077,7 +1080,7 @@ class PeerServers extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_4
+     * Sets dependent relations LcrRuleTarget_ibfk_5
      *
      * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
      * @return \IvozProvider\Model\Raw\PeerServers
@@ -1085,12 +1088,12 @@ class PeerServers extends ModelAbstract
     public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
     {
         $this->_LcrRuleTarget[] = $data;
-        $this->_setLoaded('LcrRuleTargetIbfk4');
+        $this->_setLoaded('LcrRuleTargetIbfk5');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTarget_ibfk_4
+     * Gets dependent LcrRuleTarget_ibfk_5
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -1099,7 +1102,7 @@ class PeerServers extends ModelAbstract
      */
     public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk4';
+        $fkName = 'LcrRuleTargetIbfk5';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

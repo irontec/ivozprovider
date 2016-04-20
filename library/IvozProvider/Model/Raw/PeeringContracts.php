@@ -76,20 +76,20 @@ class PeeringContracts extends ModelAbstract
 
 
     /**
+     * Dependent relation OutgoingRouting_ibfk_5
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingRouting[]
+     */
+    protected $_OutgoingRouting;
+
+    /**
      * Dependent relation PeerServers_ibfk_1
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\PeerServers[]
      */
     protected $_PeerServers;
-
-    /**
-     * Dependent relation PeeringContractsRelLcrRules_ibfk_2
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\PeeringContractsRelLcrRules[]
-     */
-    protected $_PeeringContractsRelLcrRules;
 
     /**
      * Dependent relation kam_trunks_uacreg_ibfk_2
@@ -133,13 +133,13 @@ class PeeringContracts extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'OutgoingRoutingIbfk5' => array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
+                ),
             'PeerServersIbfk1' => array(
                     'property' => 'PeerServers',
                     'table_name' => 'PeerServers',
-                ),
-            'PeeringContractsRelLcrRulesIbfk2' => array(
-                    'property' => 'PeeringContractsRelLcrRules',
-                    'table_name' => 'PeeringContractsRelLcrRules',
                 ),
             'KamTrunksUacregIbfk2' => array(
                     'property' => 'KamTrunksUacreg',
@@ -148,6 +148,7 @@ class PeeringContracts extends ModelAbstract
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
+            'OutgoingRouting_ibfk_5',
             'PeerServers_ibfk_1'
         ));
 
@@ -449,6 +450,96 @@ class PeeringContracts extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations OutgoingRouting_ibfk_5
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingRouting
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function setOutgoingRouting(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_OutgoingRouting === null) {
+
+                $this->getOutgoingRouting();
+            }
+
+            $oldRelations = $this->_OutgoingRouting;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_OutgoingRouting = array();
+
+        foreach ($data as $object) {
+            $this->addOutgoingRouting($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations OutgoingRouting_ibfk_5
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function addOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting[] = $data;
+        $this->_setLoaded('OutgoingRoutingIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets dependent OutgoingRouting_ibfk_5
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingRoutingIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_OutgoingRouting;
+    }
+
+    /**
      * Sets dependent relations PeerServers_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\PeerServers
@@ -536,96 +627,6 @@ class PeeringContracts extends ModelAbstract
         }
 
         return $this->_PeerServers;
-    }
-
-    /**
-     * Sets dependent relations PeeringContractsRelLcrRules_ibfk_2
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     * @return \IvozProvider\Model\Raw\PeeringContracts
-     */
-    public function setPeeringContractsRelLcrRules(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_PeeringContractsRelLcrRules === null) {
-
-                $this->getPeeringContractsRelLcrRules();
-            }
-
-            $oldRelations = $this->_PeeringContractsRelLcrRules;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_PeeringContractsRelLcrRules = array();
-
-        foreach ($data as $object) {
-            $this->addPeeringContractsRelLcrRules($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations PeeringContractsRelLcrRules_ibfk_2
-     *
-     * @param \IvozProvider\Model\Raw\PeeringContractsRelLcrRules $data
-     * @return \IvozProvider\Model\Raw\PeeringContracts
-     */
-    public function addPeeringContractsRelLcrRules(\IvozProvider\Model\Raw\PeeringContractsRelLcrRules $data)
-    {
-        $this->_PeeringContractsRelLcrRules[] = $data;
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets dependent PeeringContractsRelLcrRules_ibfk_2
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function getPeeringContractsRelLcrRules($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_PeeringContractsRelLcrRules = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_PeeringContractsRelLcrRules;
     }
 
     /**

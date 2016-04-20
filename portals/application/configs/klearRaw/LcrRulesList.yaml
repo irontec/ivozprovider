@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include PeeringContractsRelLcrRulesList.yaml
+#include LcrRuleTargetList.yaml
 
 
 production: 
@@ -20,7 +20,7 @@ production:
           title: _("Options")
           screens: 
             lcrRulesEdit_screen: true
-            peeringContractsRelLcrRulesList_screen: true
+            lcrRuleTargetList_screen: true
           dialogs: 
             lcrRulesDel_dialog: true
           default: lcrRulesEdit_screen
@@ -48,19 +48,19 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Lcr rule', 'Lcr rules', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Lcr rule', 'Lcr rules', 1), "[format| (%item%)]")
-    #peeringContractsRelLcrRules: 
-    <<: *peeringContractsRelLcrRules_screensLink
-    peeringContractsRelLcrRulesList_screen: 
-      <<: *peeringContractsRelLcrRulesList_screenLink
-      filterField: lcrRuleId
+    #lcrRuleTarget: 
+    <<: *lcrRuleTarget_screensLink
+    lcrRuleTargetList_screen: 
+      <<: *lcrRuleTargetList_screenLink
+      filterField: rule_id
       parentOptionCustomizer: 
         - recordCount
-    peeringContractsRelLcrRulesNew_screen: 
-      <<: *peeringContractsRelLcrRulesNew_screenLink
-      filterField: lcrRuleId
-    peeringContractsRelLcrRulesEdit_screen: 
-      <<: *peeringContractsRelLcrRulesEdit_screenLink
-      filterField: lcrRuleId
+    lcrRuleTargetNew_screen: 
+      <<: *lcrRuleTargetNew_screenLink
+      filterField: rule_id
+    lcrRuleTargetEdit_screen: 
+      <<: *lcrRuleTargetEdit_screenLink
+      filterField: rule_id
 
   dialogs: &lcrRules_dialogsLink 
     lcrRulesDel_dialog: &lcrRulesDel_dialogLink 
@@ -73,8 +73,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Lcr rule', 'Lcr rules', 1))
       multiItem: 1
       labelOnList: 1
-  # peeringContractsRelLcrRules dialogs: 
-    <<: *peeringContractsRelLcrRules_dialogsLink
+  # lcrRuleTarget dialogs: 
+    <<: *lcrRuleTarget_dialogsLink
 staging: 
   _extends: production
 testing: 

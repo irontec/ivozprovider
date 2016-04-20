@@ -215,7 +215,7 @@ class Brands extends ModelAbstract
     protected $_Invoices;
 
     /**
-     * Dependent relation LcrRuleTarget_ibfk_3
+     * Dependent relation LcrRuleTarget_ibfk_1
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
@@ -229,6 +229,14 @@ class Brands extends ModelAbstract
      * @var \IvozProvider\Model\Raw\LcrRules[]
      */
     protected $_LcrRules;
+
+    /**
+     * Dependent relation OutgoingRouting_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingRouting[]
+     */
+    protected $_OutgoingRouting;
 
     /**
      * Dependent relation PeerServers_ibfk_2
@@ -245,14 +253,6 @@ class Brands extends ModelAbstract
      * @var \IvozProvider\Model\Raw\PeeringContracts[]
      */
     protected $_PeeringContracts;
-
-    /**
-     * Dependent relation PeeringContractsRelLcrRules_ibfk_3
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\PeeringContractsRelLcrRules[]
-     */
-    protected $_PeeringContractsRelLcrRules;
 
     /**
      * Dependent relation PricingPlans_ibfk_1
@@ -277,6 +277,14 @@ class Brands extends ModelAbstract
      * @var \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns[]
      */
     protected $_PricingPlansRelTargetPatterns;
+
+    /**
+     * Dependent relation TargetGroups_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\TargetGroups[]
+     */
+    protected $_TargetGroups;
 
     /**
      * Dependent relation TargetPatterns_ibfk_1
@@ -394,13 +402,17 @@ class Brands extends ModelAbstract
                     'property' => 'Invoices',
                     'table_name' => 'Invoices',
                 ),
-            'LcrRuleTargetIbfk3' => array(
+            'LcrRuleTargetIbfk1' => array(
                     'property' => 'LcrRuleTarget',
                     'table_name' => 'LcrRuleTarget',
                 ),
             'LcrRulesIbfk1' => array(
                     'property' => 'LcrRules',
                     'table_name' => 'LcrRules',
+                ),
+            'OutgoingRoutingIbfk1' => array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
                 ),
             'PeerServersIbfk2' => array(
                     'property' => 'PeerServers',
@@ -409,10 +421,6 @@ class Brands extends ModelAbstract
             'PeeringContractsIbfk1' => array(
                     'property' => 'PeeringContracts',
                     'table_name' => 'PeeringContracts',
-                ),
-            'PeeringContractsRelLcrRulesIbfk3' => array(
-                    'property' => 'PeeringContractsRelLcrRules',
-                    'table_name' => 'PeeringContractsRelLcrRules',
                 ),
             'PricingPlansIbfk1' => array(
                     'property' => 'PricingPlans',
@@ -425,6 +433,10 @@ class Brands extends ModelAbstract
             'PricingPlansRelTargetPatternsIbfk3' => array(
                     'property' => 'PricingPlansRelTargetPatterns',
                     'table_name' => 'PricingPlansRelTargetPatterns',
+                ),
+            'TargetGroupsIbfk1' => array(
+                    'property' => 'TargetGroups',
+                    'table_name' => 'TargetGroups',
                 ),
             'TargetPatternsIbfk1' => array(
                     'property' => 'TargetPatterns',
@@ -1974,7 +1986,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_3
+     * Sets dependent relations LcrRuleTarget_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
      * @return \IvozProvider\Model\Raw\Brands
@@ -2022,7 +2034,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_3
+     * Sets dependent relations LcrRuleTarget_ibfk_1
      *
      * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
      * @return \IvozProvider\Model\Raw\Brands
@@ -2030,12 +2042,12 @@ class Brands extends ModelAbstract
     public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
     {
         $this->_LcrRuleTarget[] = $data;
-        $this->_setLoaded('LcrRuleTargetIbfk3');
+        $this->_setLoaded('LcrRuleTargetIbfk1');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTarget_ibfk_3
+     * Gets dependent LcrRuleTarget_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -2044,7 +2056,7 @@ class Brands extends ModelAbstract
      */
     public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk3';
+        $fkName = 'LcrRuleTargetIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -2151,6 +2163,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_LcrRules;
+    }
+
+    /**
+     * Sets dependent relations OutgoingRouting_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingRouting
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setOutgoingRouting(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_OutgoingRouting === null) {
+
+                $this->getOutgoingRouting();
+            }
+
+            $oldRelations = $this->_OutgoingRouting;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_OutgoingRouting = array();
+
+        foreach ($data as $object) {
+            $this->addOutgoingRouting($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations OutgoingRouting_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting[] = $data;
+        $this->_setLoaded('OutgoingRoutingIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent OutgoingRouting_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingRoutingIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_OutgoingRouting;
     }
 
     /**
@@ -2331,96 +2433,6 @@ class Brands extends ModelAbstract
         }
 
         return $this->_PeeringContracts;
-    }
-
-    /**
-     * Sets dependent relations PeeringContractsRelLcrRules_ibfk_3
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function setPeeringContractsRelLcrRules(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_PeeringContractsRelLcrRules === null) {
-
-                $this->getPeeringContractsRelLcrRules();
-            }
-
-            $oldRelations = $this->_PeeringContractsRelLcrRules;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_PeeringContractsRelLcrRules = array();
-
-        foreach ($data as $object) {
-            $this->addPeeringContractsRelLcrRules($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations PeeringContractsRelLcrRules_ibfk_3
-     *
-     * @param \IvozProvider\Model\Raw\PeeringContractsRelLcrRules $data
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function addPeeringContractsRelLcrRules(\IvozProvider\Model\Raw\PeeringContractsRelLcrRules $data)
-    {
-        $this->_PeeringContractsRelLcrRules[] = $data;
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets dependent PeeringContractsRelLcrRules_ibfk_3
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function getPeeringContractsRelLcrRules($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_PeeringContractsRelLcrRules = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_PeeringContractsRelLcrRules;
     }
 
     /**
@@ -2691,6 +2703,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_PricingPlansRelTargetPatterns;
+    }
+
+    /**
+     * Sets dependent relations TargetGroups_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\TargetGroups
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setTargetGroups(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_TargetGroups === null) {
+
+                $this->getTargetGroups();
+            }
+
+            $oldRelations = $this->_TargetGroups;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_TargetGroups = array();
+
+        foreach ($data as $object) {
+            $this->addTargetGroups($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations TargetGroups_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\TargetGroups $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addTargetGroups(\IvozProvider\Model\Raw\TargetGroups $data)
+    {
+        $this->_TargetGroups[] = $data;
+        $this->_setLoaded('TargetGroupsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent TargetGroups_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\TargetGroups
+     */
+    public function getTargetGroups($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'TargetGroupsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_TargetGroups = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_TargetGroups;
     }
 
     /**

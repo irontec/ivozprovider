@@ -621,6 +621,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getLcrRuleTarget(null, null, true) !== null) {
+                    $lcrRuleTarget = $model->getLcrRuleTarget();
+
+                    if (!is_array($lcrRuleTarget)) {
+
+                        $lcrRuleTarget = array($lcrRuleTarget);
+                    }
+
+                    foreach ($lcrRuleTarget as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getLocutions(null, null, true) !== null) {
                     $locutions = $model->getLocutions();
 
@@ -644,6 +658,20 @@ class Companies extends MapperAbstract
                     }
 
                     foreach ($musicOnHold as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getOutgoingRouting(null, null, true) !== null) {
+                    $outgoingRouting = $model->getOutgoingRouting();
+
+                    if (!is_array($outgoingRouting)) {
+
+                        $outgoingRouting = array($outgoingRouting);
+                    }
+
+                    foreach ($outgoingRouting as $value) {
                         $value->setCompanyId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

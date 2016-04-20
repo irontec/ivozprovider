@@ -4,6 +4,7 @@
 #include PricingPlansRelCompaniesList.yaml
 #include InvoicesList.yaml
 #include TransformationRulesetGroupsUsersList.yaml
+#include OutgoingRoutingList.yaml
 
 
 production:
@@ -26,6 +27,7 @@ production:
           screens:
             companyAdminsList_screen: true
             pricingPlansRelCompaniesList_screen: true
+            outgoingRoutingList_screen: true
             companiesEdit_screen: true
           dialogs:
             companiesDel_dialog: true
@@ -164,6 +166,20 @@ production:
     transformationRulesetGroupsUsersEdit_screen:
       <<: *transformationRulesetGroupsUsersEdit_screenLink
 
+    # outgoingRouting
+    <<: *outgoingRouting_screensLink
+    outgoingRoutingList_screen: 
+      <<: *outgoingRoutingList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    outgoingRoutingNew_screen: 
+      <<: *outgoingRoutingNew_screenLink
+      filterField: companyId
+    outgoingRoutingEdit_screen: 
+      <<: *outgoingRoutingEdit_screenLink
+      filterField: companyId
+
   dialogs: &companies_dialogsLink
     companiesDel_dialog: &companiesDel_dialogLink
       <<: *Companies
@@ -215,6 +231,8 @@ production:
     <<: *transformationRulesetGroupsUsers_dialogsLink
     # companyAdmins dialogs: 
     <<: *companyAdmins_dialogsLink    
+    # outgoingRouting dialogs: 
+    <<: *outgoingRouting_dialogsLink    
     
   commands:
     importCompaniesFreeUpload_command:

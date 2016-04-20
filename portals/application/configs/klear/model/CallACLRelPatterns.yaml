@@ -23,7 +23,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName:
             fields:
               - name

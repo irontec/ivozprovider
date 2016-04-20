@@ -9,13 +9,15 @@
 #include GenericServicesList.yaml
 #include InvoiceTemplatesList.yaml
 #include InvoicesList.yaml
+#include LcrRuleTargetList.yaml
 #include LcrRulesList.yaml
+#include OutgoingRoutingList.yaml
 #include PeerServersList.yaml
 #include PeeringContractsList.yaml
-#include PeeringContractsRelLcrRulesList.yaml
 #include PricingPlansList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include PricingPlansRelTargetPatternsList.yaml
+#include TargetGroupsList.yaml
 #include TargetPatternsList.yaml
 #include TransformationRulesetGroupsTrunksList.yaml
 #include TransformationRulesetGroupsUsersList.yaml
@@ -49,13 +51,15 @@ production:
             genericServicesList_screen: true
             invoiceTemplatesList_screen: true
             invoicesList_screen: true
+            lcrRuleTargetList_screen: true
             lcrRulesList_screen: true
+            outgoingRoutingList_screen: true
             peerServersList_screen: true
             peeringContractsList_screen: true
-            peeringContractsRelLcrRulesList_screen: true
             pricingPlansList_screen: true
             pricingPlansRelCompaniesList_screen: true
             pricingPlansRelTargetPatternsList_screen: true
+            targetGroupsList_screen: true
             targetPatternsList_screen: true
             transformationRulesetGroupsTrunksList_screen: true
             transformationRulesetGroupsUsersList_screen: true
@@ -206,6 +210,19 @@ production:
       <<: *invoicesEdit_screenLink
       filterField: brandId
 
+    #lcrRuleTarget: 
+    lcrRuleTargetList_screen: 
+      <<: *lcrRuleTargetList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    lcrRuleTargetNew_screen: 
+      <<: *lcrRuleTargetNew_screenLink
+      filterField: brandId
+    lcrRuleTargetEdit_screen: 
+      <<: *lcrRuleTargetEdit_screenLink
+      filterField: brandId
+
     #lcrRules: 
     lcrRulesList_screen: 
       <<: *lcrRulesList_screenLink
@@ -217,6 +234,19 @@ production:
       filterField: brandId
     lcrRulesEdit_screen: 
       <<: *lcrRulesEdit_screenLink
+      filterField: brandId
+
+    #outgoingRouting: 
+    outgoingRoutingList_screen: 
+      <<: *outgoingRoutingList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    outgoingRoutingNew_screen: 
+      <<: *outgoingRoutingNew_screenLink
+      filterField: brandId
+    outgoingRoutingEdit_screen: 
+      <<: *outgoingRoutingEdit_screenLink
       filterField: brandId
 
     #peerServers: 
@@ -243,19 +273,6 @@ production:
       filterField: brandId
     peeringContractsEdit_screen: 
       <<: *peeringContractsEdit_screenLink
-      filterField: brandId
-
-    #peeringContractsRelLcrRules: 
-    peeringContractsRelLcrRulesList_screen: 
-      <<: *peeringContractsRelLcrRulesList_screenLink
-      filterField: brandId
-      parentOptionCustomizer: 
-        - recordCount
-    peeringContractsRelLcrRulesNew_screen: 
-      <<: *peeringContractsRelLcrRulesNew_screenLink
-      filterField: brandId
-    peeringContractsRelLcrRulesEdit_screen: 
-      <<: *peeringContractsRelLcrRulesEdit_screenLink
       filterField: brandId
 
     #pricingPlans: 
@@ -295,6 +312,19 @@ production:
       filterField: brandId
     pricingPlansRelTargetPatternsEdit_screen: 
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
+      filterField: brandId
+
+    #targetGroups: 
+    targetGroupsList_screen: 
+      <<: *targetGroupsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    targetGroupsNew_screen: 
+      <<: *targetGroupsNew_screenLink
+      filterField: brandId
+    targetGroupsEdit_screen: 
+      <<: *targetGroupsEdit_screenLink
       filterField: brandId
 
     #targetPatterns: 
@@ -391,20 +421,24 @@ production:
     <<: *invoiceTemplates_dialogsLink
   # invoices dialogs: 
     <<: *invoices_dialogsLink
+  # lcrRuleTarget dialogs: 
+    <<: *lcrRuleTarget_dialogsLink
   # lcrRules dialogs: 
     <<: *lcrRules_dialogsLink
+  # outgoingRouting dialogs: 
+    <<: *outgoingRouting_dialogsLink
   # peerServers dialogs: 
     <<: *peerServers_dialogsLink
   # peeringContracts dialogs: 
     <<: *peeringContracts_dialogsLink
-  # peeringContractsRelLcrRules dialogs: 
-    <<: *peeringContractsRelLcrRules_dialogsLink
   # pricingPlans dialogs: 
     <<: *pricingPlans_dialogsLink
   # pricingPlansRelCompanies dialogs: 
     <<: *pricingPlansRelCompanies_dialogsLink
   # pricingPlansRelTargetPatterns dialogs: 
     <<: *pricingPlansRelTargetPatterns_dialogsLink
+  # targetGroups dialogs: 
+    <<: *targetGroups_dialogsLink
   # targetPatterns dialogs: 
     <<: *targetPatterns_dialogsLink
   # transformationRulesetGroupsTrunks dialogs: 

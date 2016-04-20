@@ -86,6 +86,27 @@ class LcrRules extends ModelAbstract
      */
     protected $_description;
 
+    /**
+     * Database var type mediumint
+     *
+     * @var int
+     */
+    protected $_targetPatternId;
+
+    /**
+     * Database var type mediumint
+     *
+     * @var int
+     */
+    protected $_outgoingRoutingId;
+
+
+    /**
+     * Parent relation LcrRules_ibfk_3
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    protected $_OutgoingRouting;
 
     /**
      * Parent relation LcrRules_ibfk_1
@@ -94,22 +115,21 @@ class LcrRules extends ModelAbstract
      */
     protected $_Brand;
 
+    /**
+     * Parent relation LcrRules_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\TargetPatterns
+     */
+    protected $_TargetPattern;
+
 
     /**
-     * Dependent relation LcrRuleTarget_ibfk_2
+     * Dependent relation LcrRuleTarget_ibfk_4
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
      */
     protected $_LcrRuleTarget;
-
-    /**
-     * Dependent relation PeeringContractsRelLcrRules_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\PeeringContractsRelLcrRules[]
-     */
-    protected $_PeeringContractsRelLcrRules;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -121,6 +141,8 @@ class LcrRules extends ModelAbstract
         'enabled'=>'enabled',
         'tag'=>'tag',
         'description'=>'description',
+        'targetPatternId'=>'targetPatternId',
+        'outgoingRoutingId'=>'outgoingRoutingId',
     );
 
     /**
@@ -137,23 +159,30 @@ class LcrRules extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'LcrRulesIbfk3'=> array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
+                ),
             'LcrRulesIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
                 ),
+            'LcrRulesIbfk2'=> array(
+                    'property' => 'TargetPattern',
+                    'table_name' => 'TargetPatterns',
+                ),
         ));
 
         $this->setDependentList(array(
-            'LcrRuleTargetIbfk2' => array(
+            'LcrRuleTargetIbfk4' => array(
                     'property' => 'LcrRuleTarget',
                     'table_name' => 'LcrRuleTarget',
                 ),
-            'PeeringContractsRelLcrRulesIbfk1' => array(
-                    'property' => 'PeeringContractsRelLcrRules',
-                    'table_name' => 'PeeringContractsRelLcrRules',
-                ),
         ));
 
+        $this->setOnDeleteCascadeRelationships(array(
+            'LcrRuleTarget_ibfk_4'
+        ));
 
 
 
@@ -507,6 +536,125 @@ class LcrRules extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setTargetPatternId($data)
+    {
+
+        if ($this->_targetPatternId != $data) {
+            $this->_logChange('targetPatternId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_targetPatternId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_targetPatternId = (int) $data;
+
+        } else {
+            $this->_targetPatternId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column targetPatternId
+     *
+     * @return int
+     */
+    public function getTargetPatternId()
+    {
+        return $this->_targetPatternId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setOutgoingRoutingId($data)
+    {
+
+        if ($this->_outgoingRoutingId != $data) {
+            $this->_logChange('outgoingRoutingId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingRoutingId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingRoutingId = (int) $data;
+
+        } else {
+            $this->_outgoingRoutingId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingRoutingId
+     *
+     * @return int
+     */
+    public function getOutgoingRoutingId()
+    {
+        return $this->_outgoingRoutingId;
+    }
+
+    /**
+     * Sets parent relation OutgoingRouting
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingRoutingId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRulesIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingRouting
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingRouting;
+    }
+
+    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -558,7 +706,58 @@ class LcrRules extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_2
+     * Sets parent relation TargetPattern
+     *
+     * @param \IvozProvider\Model\Raw\TargetPatterns $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setTargetPattern(\IvozProvider\Model\Raw\TargetPatterns $data)
+    {
+        $this->_TargetPattern = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTargetPatternId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRulesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent TargetPattern
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\TargetPatterns
+     */
+    public function getTargetPattern($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_TargetPattern = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_TargetPattern;
+    }
+
+    /**
+     * Sets dependent relations LcrRuleTarget_ibfk_4
      *
      * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
      * @return \IvozProvider\Model\Raw\LcrRules
@@ -606,7 +805,7 @@ class LcrRules extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_2
+     * Sets dependent relations LcrRuleTarget_ibfk_4
      *
      * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
      * @return \IvozProvider\Model\Raw\LcrRules
@@ -614,12 +813,12 @@ class LcrRules extends ModelAbstract
     public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
     {
         $this->_LcrRuleTarget[] = $data;
-        $this->_setLoaded('LcrRuleTargetIbfk2');
+        $this->_setLoaded('LcrRuleTargetIbfk4');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTarget_ibfk_2
+     * Gets dependent LcrRuleTarget_ibfk_4
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -628,7 +827,7 @@ class LcrRules extends ModelAbstract
      */
     public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk2';
+        $fkName = 'LcrRuleTargetIbfk4';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -645,96 +844,6 @@ class LcrRules extends ModelAbstract
         }
 
         return $this->_LcrRuleTarget;
-    }
-
-    /**
-     * Sets dependent relations PeeringContractsRelLcrRules_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setPeeringContractsRelLcrRules(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_PeeringContractsRelLcrRules === null) {
-
-                $this->getPeeringContractsRelLcrRules();
-            }
-
-            $oldRelations = $this->_PeeringContractsRelLcrRules;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_PeeringContractsRelLcrRules = array();
-
-        foreach ($data as $object) {
-            $this->addPeeringContractsRelLcrRules($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations PeeringContractsRelLcrRules_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\PeeringContractsRelLcrRules $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function addPeeringContractsRelLcrRules(\IvozProvider\Model\Raw\PeeringContractsRelLcrRules $data)
-    {
-        $this->_PeeringContractsRelLcrRules[] = $data;
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent PeeringContractsRelLcrRules_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function getPeeringContractsRelLcrRules($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_PeeringContractsRelLcrRules = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_PeeringContractsRelLcrRules;
     }
 
     /**

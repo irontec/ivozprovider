@@ -27,10 +27,6 @@ production:
           request_uri: true
           enabled: true
           description: true
-        blacklist:
-          prefix: true
-          from_uri: true
-          stopper: true
       options: 
         title: _("Options")
         screens: 
@@ -54,10 +50,6 @@ production:
           stopper: true
           enabled: true
           description: true
-        blacklist:
-          prefix: true
-          from_uri: true
-          stopper: true
     lcrRulesEdit_screen: &lcrRulesEdit_screenLink 
       <<: *LcrRules
       controller: edit
@@ -70,10 +62,6 @@ production:
           stopper: true
           enabled: true
           description: true
-        blacklist:
-          prefix: true
-          from_uri: true
-          stopper: true
       forcedValues:
         <<: *forcedBrand
       title: _("Edit %s %2s", ngettext('Lcr rule', 'Lcr rules', 1), "[format| (%item%)]")

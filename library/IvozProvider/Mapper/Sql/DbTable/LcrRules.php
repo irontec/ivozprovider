@@ -40,15 +40,24 @@ class LcrRules extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'LcrRulesIbfk3' => array(
+            'columns' => 'outgoingRoutingId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
+            'refColumns' => 'id'
+        ),
         'LcrRulesIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
             'refColumns' => 'id'
+        ),
+        'LcrRulesIbfk2' => array(
+            'columns' => 'targetPatternId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\TargetPatterns',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContractsRelLcrRules'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -179,7 +188,7 @@ class LcrRules extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '50',
+	    'LENGTH' => '55',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -200,6 +209,40 @@ class LcrRules extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'targetPatternId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrRules',
+	    'COLUMN_NAME' => 'targetPatternId',
+	    'COLUMN_POSITION' => 10,
+	    'DATA_TYPE' => 'mediumint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'outgoingRoutingId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrRules',
+	    'COLUMN_NAME' => 'outgoingRoutingId',
+	    'COLUMN_POSITION' => 11,
+	    'DATA_TYPE' => 'mediumint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

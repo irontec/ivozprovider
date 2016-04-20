@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include LcrRuleTargetList.yaml
 
 
 production: 
@@ -19,6 +20,7 @@ production:
           title: _("Options")
           screens: 
             peerServersEdit_screen: true
+            lcrRuleTargetList_screen: true
           dialogs: 
             peerServersDel_dialog: true
           default: peerServersEdit_screen
@@ -46,6 +48,20 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Peer server', 'Peer servers', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Peer server', 'Peer servers', 1), "[format| (%item%)]")
+    #lcrRuleTarget: 
+    <<: *lcrRuleTarget_screensLink
+    lcrRuleTargetList_screen: 
+      <<: *lcrRuleTargetList_screenLink
+      filterField: gw_id
+      parentOptionCustomizer: 
+        - recordCount
+    lcrRuleTargetNew_screen: 
+      <<: *lcrRuleTargetNew_screenLink
+      filterField: gw_id
+    lcrRuleTargetEdit_screen: 
+      <<: *lcrRuleTargetEdit_screenLink
+      filterField: gw_id
+
   dialogs: &peerServers_dialogsLink 
     peerServersDel_dialog: &peerServersDel_dialogLink 
       <<: *PeerServers
@@ -57,6 +73,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Peer server', 'Peer servers', 1))
       multiItem: 1
       labelOnList: 1
+  # lcrRuleTarget dialogs: 
+    <<: *lcrRuleTarget_dialogsLink
 staging: 
   _extends: production
 testing: 

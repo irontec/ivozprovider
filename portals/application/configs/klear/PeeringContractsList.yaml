@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include PeerServersList.yaml
-#include PeeringContractsRelLcrRulesList.yaml
 #include TransformationRulesetGroupsTrunksList.yaml
 #include KamTrunksUacregList.yaml
 
@@ -26,7 +25,6 @@ production:
             peeringContractsEdit_screen: true
             peerServersList_screen: true
             kamTrunksUacregList_screen: true
-            peeringContractsRelLcrRulesList_screen: true
           dialogs: 
             peeringContractsDel_dialog: true
           default: peeringContractsEdit_screen
@@ -96,20 +94,6 @@ production:
       <<: *kamTrunksUacregEdit_screenLink
       filterField: peeringContractId
 
-    # PeeringContractsRelLcrRules
-    <<: *peeringContractsRelLcrRules_screenLink
-    peeringContractsRelLcrRulesList_screen:
-      <<: *peeringContractsRelLcrRulesList_screenLink
-      filterField: peeringContractId
-      parentOptionCustomizer:
-        - recordCount
-    peeringContractsRelLcrRulesNew_screen:
-      <<: *peeringContractsRelLcrRulesNew_screenLink
-      filterField: peeringContractId
-    peeringContractsRelLcrRulessEdit_screen:
-      <<: *peeringContractsRelLcrRulesEdit_screenLink
-      filterField: peeringContractId
-
     # TransformationRulesetGroupsTrunks
     <<: *transformationRulesetGroupsTrunks_screensLink
     transformationRulesetGroupsTrunksList_screen:
@@ -135,8 +119,6 @@ production:
       
     #PeerServers
     <<: *peerServers_dialogsLink
-    # PeeringContractsRelLcrRules
-    <<: *peeringContractsRelLcrRules_dialogsLink
     # TransformationRulesetGroupsTrunks
     <<: *transformationRulesetGroupsTrunks_dialogsLink
     # kamTrunksUacreg dialogs: 

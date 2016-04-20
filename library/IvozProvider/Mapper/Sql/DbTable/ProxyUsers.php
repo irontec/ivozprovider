@@ -31,14 +31,14 @@ class ProxyUsers extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var binary
+     * @var int
      */
     protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\ProxyUsers';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\ProxyUsers';
 
-    protected $_sequence = true; // binary
+    protected $_sequence = true; // int
     
     
     protected $_metadata = array (
@@ -48,16 +48,16 @@ class ProxyUsers extends TableAbstract
 	    'TABLE_NAME' => 'proxyUsers',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
-	    'DATA_TYPE' => 'binary(36)',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'name' => 
 	  array (

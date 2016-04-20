@@ -43,12 +43,38 @@ production:
       title: _('Tag')
       type: text
       required: true
-      maxLength: 50
+      maxLength: 55
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
       defaultValue: 
       maxLength: 500
+    targetPatternId: 
+      title: _('Target pattern id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name_${lang}
+        'null': _("Unasigned")
+    outgoingRoutingId: 
+      title: _('Outgoing routing id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
+          fieldName: 
+            fields: 
+              - regexp
+            template: '%regexp%'
+          order: regexp
+        'null': _("Unasigned")
 staging: 
   _extends: production
 testing: 

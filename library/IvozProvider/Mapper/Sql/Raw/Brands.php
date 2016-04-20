@@ -603,6 +603,20 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getOutgoingRouting(null, null, true) !== null) {
+                    $outgoingRouting = $model->getOutgoingRouting();
+
+                    if (!is_array($outgoingRouting)) {
+
+                        $outgoingRouting = array($outgoingRouting);
+                    }
+
+                    foreach ($outgoingRouting as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getPeerServers(null, null, true) !== null) {
                     $peerServers = $model->getPeerServers();
 
@@ -626,20 +640,6 @@ class Brands extends MapperAbstract
                     }
 
                     foreach ($peeringContracts as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPeeringContractsRelLcrRules(null, null, true) !== null) {
-                    $peeringContractsRelLcrRules = $model->getPeeringContractsRelLcrRules();
-
-                    if (!is_array($peeringContractsRelLcrRules)) {
-
-                        $peeringContractsRelLcrRules = array($peeringContractsRelLcrRules);
-                    }
-
-                    foreach ($peeringContractsRelLcrRules as $value) {
                         $value->setBrandId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
@@ -682,6 +682,20 @@ class Brands extends MapperAbstract
                     }
 
                     foreach ($pricingPlansRelTargetPatterns as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getTargetGroups(null, null, true) !== null) {
+                    $targetGroups = $model->getTargetGroups();
+
+                    if (!is_array($targetGroups)) {
+
+                        $targetGroups = array($targetGroups);
+                    }
+
+                    foreach ($targetGroups as $value) {
                         $value->setBrandId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

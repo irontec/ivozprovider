@@ -12,8 +12,10 @@
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
 #include InvoicesList.yaml
+#include LcrRuleTargetList.yaml
 #include LocutionsList.yaml
 #include MusicOnHoldList.yaml
+#include OutgoingRoutingList.yaml
 #include PickUpGroupsList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include SchedulesList.yaml
@@ -52,8 +54,10 @@ production:
             iVRCommonList_screen: true
             iVRCustomList_screen: true
             invoicesList_screen: true
+            lcrRuleTargetList_screen: true
             locutionsList_screen: true
             musicOnHoldList_screen: true
+            outgoingRoutingList_screen: true
             pickUpGroupsList_screen: true
             pricingPlansRelCompaniesList_screen: true
             schedulesList_screen: true
@@ -245,6 +249,19 @@ production:
       <<: *invoicesEdit_screenLink
       filterField: companyId
 
+    #lcrRuleTarget: 
+    lcrRuleTargetList_screen: 
+      <<: *lcrRuleTargetList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    lcrRuleTargetNew_screen: 
+      <<: *lcrRuleTargetNew_screenLink
+      filterField: companyId
+    lcrRuleTargetEdit_screen: 
+      <<: *lcrRuleTargetEdit_screenLink
+      filterField: companyId
+
     #locutions: 
     locutionsList_screen: 
       <<: *locutionsList_screenLink
@@ -269,6 +286,19 @@ production:
       filterField: companyId
     musicOnHoldEdit_screen: 
       <<: *musicOnHoldEdit_screenLink
+      filterField: companyId
+
+    #outgoingRouting: 
+    outgoingRoutingList_screen: 
+      <<: *outgoingRoutingList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    outgoingRoutingNew_screen: 
+      <<: *outgoingRoutingNew_screenLink
+      filterField: companyId
+    outgoingRoutingEdit_screen: 
+      <<: *outgoingRoutingEdit_screenLink
       filterField: companyId
 
     #pickUpGroups: 
@@ -397,10 +427,14 @@ production:
     <<: *iVRCustom_dialogsLink
   # invoices dialogs: 
     <<: *invoices_dialogsLink
+  # lcrRuleTarget dialogs: 
+    <<: *lcrRuleTarget_dialogsLink
   # locutions dialogs: 
     <<: *locutions_dialogsLink
   # musicOnHold dialogs: 
     <<: *musicOnHold_dialogsLink
+  # outgoingRouting dialogs: 
+    <<: *outgoingRouting_dialogsLink
   # pickUpGroups dialogs: 
     <<: *pickUpGroups_dialogsLink
   # pricingPlansRelCompanies dialogs: 

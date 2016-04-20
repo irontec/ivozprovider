@@ -52,8 +52,8 @@ class PeeringContracts extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContractsRelLcrRules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksUacreg'
     );
     protected $_metadata = array (

@@ -1,6 +1,9 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include LcrRulesList.yaml
+#include OutgoingRoutingList.yaml
 #include PricingPlansRelTargetPatternsList.yaml
+#include TargetGroupsRelPatternsList.yaml
 #include ParsedCDRsList.yaml
 
 
@@ -21,7 +24,10 @@ production:
           title: _("Options")
           screens: 
             targetPatternsEdit_screen: true
+            lcrRulesList_screen: true
+            outgoingRoutingList_screen: true
             pricingPlansRelTargetPatternsList_screen: true
+            targetGroupsRelPatternsList_screen: true
             parsedCDRsList_screen: true
           dialogs: 
             targetPatternsDel_dialog: true
@@ -50,8 +56,34 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Target pattern', 'Target patterns', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Target pattern', 'Target patterns', 1), "[format| (%item%)]")
+    #lcrRules: 
+    <<: *lcrRules_screensLink
+    lcrRulesList_screen: 
+      <<: *lcrRulesList_screenLink
+      filterField: targetPatternId
+      parentOptionCustomizer: 
+        - recordCount
+    lcrRulesNew_screen: 
+      <<: *lcrRulesNew_screenLink
+      filterField: targetPatternId
+    lcrRulesEdit_screen: 
+      <<: *lcrRulesEdit_screenLink
+      filterField: targetPatternId
+
+    #outgoingRouting: 
+    outgoingRoutingList_screen: 
+      <<: *outgoingRoutingList_screenLink
+      filterField: targetPatternId
+      parentOptionCustomizer: 
+        - recordCount
+    outgoingRoutingNew_screen: 
+      <<: *outgoingRoutingNew_screenLink
+      filterField: targetPatternId
+    outgoingRoutingEdit_screen: 
+      <<: *outgoingRoutingEdit_screenLink
+      filterField: targetPatternId
+
     #pricingPlansRelTargetPatterns: 
-    <<: *pricingPlansRelTargetPatterns_screensLink
     pricingPlansRelTargetPatternsList_screen: 
       <<: *pricingPlansRelTargetPatternsList_screenLink
       filterField: targetPatternId
@@ -62,6 +94,19 @@ production:
       filterField: targetPatternId
     pricingPlansRelTargetPatternsEdit_screen: 
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
+      filterField: targetPatternId
+
+    #targetGroupsRelPatterns: 
+    targetGroupsRelPatternsList_screen: 
+      <<: *targetGroupsRelPatternsList_screenLink
+      filterField: targetPatternId
+      parentOptionCustomizer: 
+        - recordCount
+    targetGroupsRelPatternsNew_screen: 
+      <<: *targetGroupsRelPatternsNew_screenLink
+      filterField: targetPatternId
+    targetGroupsRelPatternsEdit_screen: 
+      <<: *targetGroupsRelPatternsEdit_screenLink
       filterField: targetPatternId
 
     #parsedCDRs: 
@@ -88,8 +133,14 @@ production:
       message: _("%s successfully deleted.", ngettext('Target pattern', 'Target patterns', 1))
       multiItem: 1
       labelOnList: 1
+  # lcrRules dialogs: 
+    <<: *lcrRules_dialogsLink
+  # outgoingRouting dialogs: 
+    <<: *outgoingRouting_dialogsLink
   # pricingPlansRelTargetPatterns dialogs: 
     <<: *pricingPlansRelTargetPatterns_dialogsLink
+  # targetGroupsRelPatterns dialogs: 
+    <<: *targetGroupsRelPatterns_dialogsLink
   # parsedCDRs dialogs: 
     <<: *parsedCDRs_dialogsLink
 staging: 

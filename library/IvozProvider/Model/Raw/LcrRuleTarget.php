@@ -19,15 +19,14 @@
  */
 
 namespace IvozProvider\Model\Raw;
-class PeeringContractsRelLcrRules extends ModelAbstract
+class LcrRuleTarget extends ModelAbstract
 {
 
 
     /**
-     * [uuid:php]
-     * Database var type binary(36)
+     * Database var type int
      *
-     * @var binary
+     * @var int
      */
     protected $_id;
 
@@ -39,18 +38,32 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     protected $_brandId;
 
     /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_lcrRuleId;
-
-    /**
      * Database var type binary(36)
      *
      * @var binary
      */
-    protected $_peeringContractId;
+    protected $_companyId;
+
+    /**
+     * Database var type mediumint
+     *
+     * @var int
+     */
+    protected $_outgoingRoutingId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_ruleId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_gwId;
 
     /**
      * Database var type tinyint
@@ -68,40 +81,48 @@ class PeeringContractsRelLcrRules extends ModelAbstract
 
 
     /**
-     * Parent relation PeeringContractsRelLcrRules_ibfk_1
-     *
-     * @var \IvozProvider\Model\Raw\LcrRules
-     */
-    protected $_LcrRule;
-
-    /**
-     * Parent relation PeeringContractsRelLcrRules_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\PeeringContracts
-     */
-    protected $_PeeringContract;
-
-    /**
-     * Parent relation PeeringContractsRelLcrRules_ibfk_3
+     * Parent relation LcrRuleTarget_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
 
+    /**
+     * Parent relation LcrRuleTarget_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Companies
+     */
+    protected $_Company;
 
     /**
-     * Dependent relation LcrRuleTarget_ibfk_5
-     * Type: One-to-Many relationship
+     * Parent relation LcrRuleTarget_ibfk_3
      *
-     * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
+     * @var \IvozProvider\Model\Raw\OutgoingRouting
      */
-    protected $_LcrRuleTarget;
+    protected $_OutgoingRouting;
+
+    /**
+     * Parent relation LcrRuleTarget_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\LcrRules
+     */
+    protected $_Rule;
+
+    /**
+     * Parent relation LcrRuleTarget_ibfk_5
+     *
+     * @var \IvozProvider\Model\Raw\PeerServers
+     */
+    protected $_Gw;
+
 
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
-        'lcrRuleId'=>'lcrRuleId',
-        'peeringContractId'=>'peeringContractId',
+        'companyId'=>'companyId',
+        'outgoingRoutingId'=>'outgoingRoutingId',
+        'rule_id'=>'ruleId',
+        'gw_id'=>'gwId',
         'priority'=>'priority',
         'weight'=>'weight',
     );
@@ -112,7 +133,6 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid:php'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -121,25 +141,29 @@ class PeeringContractsRelLcrRules extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'PeeringContractsRelLcrRulesIbfk1'=> array(
-                    'property' => 'LcrRule',
-                    'table_name' => 'LcrRules',
-                ),
-            'PeeringContractsRelLcrRulesIbfk2'=> array(
-                    'property' => 'PeeringContract',
-                    'table_name' => 'PeeringContracts',
-                ),
-            'PeeringContractsRelLcrRulesIbfk3'=> array(
+            'LcrRuleTargetIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'LcrRuleTargetIbfk2'=> array(
+                    'property' => 'Company',
+                    'table_name' => 'Companies',
+                ),
+            'LcrRuleTargetIbfk3'=> array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
+                ),
+            'LcrRuleTargetIbfk4'=> array(
+                    'property' => 'Rule',
+                    'table_name' => 'LcrRules',
+                ),
+            'LcrRuleTargetIbfk5'=> array(
+                    'property' => 'Gw',
+                    'table_name' => 'PeerServers',
                 ),
         ));
 
         $this->setDependentList(array(
-            'LcrRuleTargetIbfk5' => array(
-                    'property' => 'LcrRuleTarget',
-                    'table_name' => 'LcrRuleTarget',
-                ),
         ));
 
 
@@ -182,8 +206,8 @@ class PeeringContractsRelLcrRules extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
     public function setId($data)
     {
@@ -192,14 +216,22 @@ class PeeringContractsRelLcrRules extends ModelAbstract
             $this->_logChange('id');
         }
 
-        $this->_id = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column id
      *
-     * @return binary
+     * @return int
      */
     public function getId()
     {
@@ -209,7 +241,7 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
     public function setBrandId($data)
     {
@@ -245,74 +277,148 @@ class PeeringContractsRelLcrRules extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function setLcrRuleId($data)
-    {
-
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_lcrRuleId != $data) {
-            $this->_logChange('lcrRuleId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_lcrRuleId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_lcrRuleId = (int) $data;
-
-        } else {
-            $this->_lcrRuleId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column lcrRuleId
-     *
-     * @return int
-     */
-    public function getLcrRuleId()
-    {
-        return $this->_lcrRuleId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param binary $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
-    public function setPeeringContractId($data)
+    public function setCompanyId($data)
     {
 
         if (is_null($data)) {
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
-        if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId');
+        if ($this->_companyId != $data) {
+            $this->_logChange('companyId');
         }
 
-        $this->_peeringContractId = $data;
+        $this->_companyId = $data;
         return $this;
     }
 
     /**
-     * Gets column peeringContractId
+     * Gets column companyId
      *
      * @return binary
      */
-    public function getPeeringContractId()
+    public function getCompanyId()
     {
-        return $this->_peeringContractId;
+        return $this->_companyId;
     }
 
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function setOutgoingRoutingId($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_outgoingRoutingId != $data) {
+            $this->_logChange('outgoingRoutingId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingRoutingId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingRoutingId = (int) $data;
+
+        } else {
+            $this->_outgoingRoutingId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingRoutingId
+     *
+     * @return int
+     */
+    public function getOutgoingRoutingId()
+    {
+        return $this->_outgoingRoutingId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function setRuleId($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_ruleId != $data) {
+            $this->_logChange('ruleId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_ruleId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_ruleId = (int) $data;
+
+        } else {
+            $this->_ruleId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column rule_id
+     *
+     * @return int
+     */
+    public function getRuleId()
+    {
+        return $this->_ruleId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function setGwId($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_gwId != $data) {
+            $this->_logChange('gwId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_gwId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_gwId = (int) $data;
+
+        } else {
+            $this->_gwId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column gw_id
+     *
+     * @return int
+     */
+    public function getGwId()
+    {
+        return $this->_gwId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
     public function setPriority($data)
     {
@@ -349,7 +455,7 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
     public function setWeight($data)
     {
@@ -381,112 +487,10 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     }
 
     /**
-     * Sets parent relation LcrRule
-     *
-     * @param \IvozProvider\Model\Raw\LcrRules $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function setLcrRule(\IvozProvider\Model\Raw\LcrRules $data)
-    {
-        $this->_LcrRule = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLcrRuleId($primaryKey);
-        }
-
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets parent LcrRule
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function getLcrRule($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_LcrRule = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_LcrRule;
-    }
-
-    /**
-     * Sets parent relation PeeringContract
-     *
-     * @param \IvozProvider\Model\Raw\PeeringContracts $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
-     */
-    public function setPeeringContract(\IvozProvider\Model\Raw\PeeringContracts $data)
-    {
-        $this->_PeeringContract = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setPeeringContractId($primaryKey);
-        }
-
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent PeeringContract
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\PeeringContracts
-     */
-    public function getPeeringContract($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_PeeringContract = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_PeeringContract;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
     public function setBrand(\IvozProvider\Model\Raw\Brands $data)
     {
@@ -501,7 +505,7 @@ class PeeringContractsRelLcrRules extends ModelAbstract
             $this->setBrandId($primaryKey);
         }
 
-        $this->_setLoaded('PeeringContractsRelLcrRulesIbfk3');
+        $this->_setLoaded('LcrRuleTargetIbfk1');
         return $this;
     }
 
@@ -512,7 +516,7 @@ class PeeringContractsRelLcrRules extends ModelAbstract
      */
     public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'PeeringContractsRelLcrRulesIbfk3';
+        $fkName = 'LcrRuleTargetIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -534,75 +538,187 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_5
+     * Sets parent relation Company
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
      */
-    public function setLcrRuleTarget(array $data, $deleteOrphans = false)
+    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
     {
-        if ($deleteOrphans === true) {
+        $this->_Company = $data;
 
-            if ($this->_LcrRuleTarget === null) {
-
-                $this->getLcrRuleTarget();
-            }
-
-            $oldRelations = $this->_LcrRuleTarget;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
         }
 
-        $this->_LcrRuleTarget = array();
-
-        foreach ($data as $object) {
-            $this->addLcrRuleTarget($object);
+        if (!is_null($primaryKey)) {
+            $this->setCompanyId($primaryKey);
         }
 
+        $this->_setLoaded('LcrRuleTargetIbfk2');
         return $this;
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_5
-     *
-     * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
-     * @return \IvozProvider\Model\Raw\PeeringContractsRelLcrRules
+     * Gets parent Company
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Companies
      */
-    public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
+    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $this->_LcrRuleTarget[] = $data;
+        $fkName = 'LcrRuleTargetIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Company = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Company;
+    }
+
+    /**
+     * Sets parent relation OutgoingRouting
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingRoutingId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRuleTargetIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingRouting
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRuleTargetIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingRouting;
+    }
+
+    /**
+     * Sets parent relation Rule
+     *
+     * @param \IvozProvider\Model\Raw\LcrRules $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function setRule(\IvozProvider\Model\Raw\LcrRules $data)
+    {
+        $this->_Rule = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRuleId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRuleTargetIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent Rule
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function getRule($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRuleTargetIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Rule = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Rule;
+    }
+
+    /**
+     * Sets parent relation Gw
+     *
+     * @param \IvozProvider\Model\Raw\PeerServers $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function setGw(\IvozProvider\Model\Raw\PeerServers $data)
+    {
+        $this->_Gw = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setGwId($primaryKey);
+        }
+
         $this->_setLoaded('LcrRuleTargetIbfk5');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTarget_ibfk_5
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\LcrRuleTarget
+     * Gets parent Gw
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\PeerServers
      */
-    public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
+    public function getGw($where = null, $orderBy = null, $avoidLoading = false)
     {
         $fkName = 'LcrRuleTargetIbfk5';
 
@@ -615,18 +731,20 @@ class PeeringContractsRelLcrRules extends ModelAbstract
         $notLoadedYet = !($this->_isLoaded($fkName));
 
         if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_LcrRuleTarget = $related;
-            $this->_setLoaded($fkName);
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Gw = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
         }
 
-        return $this->_LcrRuleTarget;
+        return $this->_Gw;
     }
 
     /**
      * Returns the mapper class for this model
      *
-     * @return IvozProvider\Mapper\Sql\PeeringContractsRelLcrRules
+     * @return IvozProvider\Mapper\Sql\LcrRuleTarget
      */
     public function getMapper()
     {
@@ -634,9 +752,9 @@ class PeeringContractsRelLcrRules extends ModelAbstract
 
             \Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(true);
 
-            if (class_exists('\IvozProvider\Mapper\Sql\PeeringContractsRelLcrRules')) {
+            if (class_exists('\IvozProvider\Mapper\Sql\LcrRuleTarget')) {
 
-                $this->setMapper(new \IvozProvider\Mapper\Sql\PeeringContractsRelLcrRules);
+                $this->setMapper(new \IvozProvider\Mapper\Sql\LcrRuleTarget);
 
             } else {
 
@@ -652,15 +770,15 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     /**
      * Returns the validator class for this model
      *
-     * @return null | \IvozProvider\Model\Validator\PeeringContractsRelLcrRules
+     * @return null | \IvozProvider\Model\Validator\LcrRuleTarget
      */
     public function getValidator()
     {
         if ($this->_validator === null) {
 
-            if (class_exists('\IvozProvider\\Validator\PeeringContractsRelLcrRules')) {
+            if (class_exists('\IvozProvider\\Validator\LcrRuleTarget')) {
 
-                $this->setValidator(new \IvozProvider\Validator\PeeringContractsRelLcrRules);
+                $this->setValidator(new \IvozProvider\Validator\LcrRuleTarget);
             }
         }
 
@@ -675,7 +793,7 @@ class PeeringContractsRelLcrRules extends ModelAbstract
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-     * @see \Mapper\Sql\PeeringContractsRelLcrRules::delete
+     * @see \Mapper\Sql\LcrRuleTarget::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()

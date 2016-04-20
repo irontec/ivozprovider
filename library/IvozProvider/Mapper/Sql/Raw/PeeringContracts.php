@@ -442,6 +442,20 @@ class PeeringContracts extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getOutgoingRouting(null, null, true) !== null) {
+                    $outgoingRouting = $model->getOutgoingRouting();
+
+                    if (!is_array($outgoingRouting)) {
+
+                        $outgoingRouting = array($outgoingRouting);
+                    }
+
+                    foreach ($outgoingRouting as $value) {
+                        $value->setPeeringContractId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getPeerServers(null, null, true) !== null) {
                     $peerServers = $model->getPeerServers();
 
@@ -451,20 +465,6 @@ class PeeringContracts extends MapperAbstract
                     }
 
                     foreach ($peerServers as $value) {
-                        $value->setPeeringContractId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPeeringContractsRelLcrRules(null, null, true) !== null) {
-                    $peeringContractsRelLcrRules = $model->getPeeringContractsRelLcrRules();
-
-                    if (!is_array($peeringContractsRelLcrRules)) {
-
-                        $peeringContractsRelLcrRules = array($peeringContractsRelLcrRules);
-                    }
-
-                    foreach ($peeringContractsRelLcrRules as $value) {
                         $value->setPeeringContractId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

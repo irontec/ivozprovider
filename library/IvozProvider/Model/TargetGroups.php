@@ -19,7 +19,7 @@
  */
  
 namespace IvozProvider\Model;
-class PeeringContractsRelLcrRules extends Raw\PeeringContractsRelLcrRules
+class TargetGroups extends Raw\TargetGroups
 {
     /**
      * This method is called just after parent's constructor

@@ -1,0 +1,107 @@
+production: 
+  class: \IvozProvider\Model\OutgoingRouting
+  fields: 
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: select
+      defaultValue: group
+      source: 
+        data: inline
+        values: 
+          'pattern':
+            title: _('pattern')
+            visualFilter:
+              show: ["targetPatternId"]
+              hide: ["targetGroupId", "regexp"]
+          'group':
+            title: _('group')
+            visualFilter:
+              show: ["targetGroupId" ]
+              hide: ["targetPatternId", "regexp"]
+          'regexp':
+            title: _('regexp')
+            visualFilter:
+              show: ["regexp" ]
+              hide: ["targetGroupId", "targetPatternId"]
+      default: true
+    targetPatternId: 
+      title: _('Target Pattern')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    targetGroupId: 
+      title: _('Target group')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\TargetGroups
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    peeringContractId: 
+      title: _('Peering contract')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+    priority: 
+      title: _('Priority')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    weight: 
+      title: _('Weight')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+    companyId: 
+      title: _('Company')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    target:
+      title: _('Destino')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRouteType
+        method: getData
+
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

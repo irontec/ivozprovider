@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\PeeringContractsRelLcrRules
+ * Data Mapper implementation for IvozProvider\Model\TargetGroups
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class PeeringContractsRelLcrRules extends MapperAbstract
+class TargetGroups extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\PeeringContractsRelLcrRules';
+    protected $_modelName = 'IvozProvider\\Model\\TargetGroups';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class PeeringContractsRelLcrRules extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\PeeringContractsRelLcrRules $model
+     * @param IvozProvider\Model\Raw\TargetGroups $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\PeeringContractsRelLcrRules) {
+        if (!$model instanceof \IvozProvider\Model\Raw\TargetGroups) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\PeeringContractsRelLcrRules object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\TargetGroups object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\PeeringContractsRelLcrRules object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\TargetGroups object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,11 +49,9 @@ class PeeringContractsRelLcrRules extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
+                'name' => $model->getName(),
+                'description' => $model->getDescription(),
                 'brandId' => $model->getBrandId(),
-                'lcrRuleId' => $model->getLcrRuleId(),
-                'peeringContractId' => $model->getPeeringContractId(),
-                'priority' => $model->getPriority(),
-                'weight' => $model->getWeight(),
             );
         } else {
             $result = array();
@@ -92,12 +90,12 @@ class PeeringContractsRelLcrRules extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContractsRelLcrRules
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroups
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContractsRelLcrRules');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroups');
         }
 
         return $this->_dbTable;
@@ -106,17 +104,17 @@ class PeeringContractsRelLcrRules extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\PeeringContractsRelLcrRules $model The model to delete
+     * @param IvozProvider\Model\Raw\TargetGroups $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\PeeringContractsRelLcrRules) {
+        if (!$model instanceof \IvozProvider\Model\Raw\TargetGroups) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\PeeringContractsRelLcrRules object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\TargetGroups object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\PeeringContractsRelLcrRules object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\TargetGroups object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -166,7 +164,7 @@ class PeeringContractsRelLcrRules extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContractsRelLcrRules', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroups', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -214,7 +212,7 @@ class PeeringContractsRelLcrRules extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContractsRelLcrRules', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroups', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -292,7 +290,7 @@ class PeeringContractsRelLcrRules extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\PeeringContractsRelLcrRules $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\TargetGroups $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -300,17 +298,17 @@ class PeeringContractsRelLcrRules extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\PeeringContractsRelLcrRules $model
+     * @param \IvozProvider\Model\Raw\TargetGroups $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\PeeringContractsRelLcrRules $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\TargetGroups $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\PeeringContractsRelLcrRules $model,
+    protected function _save(\IvozProvider\Model\Raw\TargetGroups $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -379,9 +377,6 @@ class PeeringContractsRelLcrRules extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $uuid = new \Iron\Utils\UUID();
-                    $model->setId($uuid->generate());
-                    $data['id'] = $model->getId();
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
@@ -443,16 +438,30 @@ class PeeringContractsRelLcrRules extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getLcrRuleTarget(null, null, true) !== null) {
-                    $lcrRuleTarget = $model->getLcrRuleTarget();
+                if ($model->getOutgoingRouting(null, null, true) !== null) {
+                    $outgoingRouting = $model->getOutgoingRouting();
 
-                    if (!is_array($lcrRuleTarget)) {
+                    if (!is_array($outgoingRouting)) {
 
-                        $lcrRuleTarget = array($lcrRuleTarget);
+                        $outgoingRouting = array($outgoingRouting);
                     }
 
-                    foreach ($lcrRuleTarget as $value) {
-                        $value->setPeeringContractsRelLcrRulesId($primaryKey)
+                    foreach ($outgoingRouting as $value) {
+                        $value->setTargetGroupId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getTargetGroupsRelPatterns(null, null, true) !== null) {
+                    $targetGroupsRelPatterns = $model->getTargetGroupsRelPatterns();
+
+                    if (!is_array($targetGroupsRelPatterns)) {
+
+                        $targetGroupsRelPatterns = array($targetGroupsRelPatterns);
+                    }
+
+                    foreach ($targetGroupsRelPatterns as $value) {
+                        $value->setTargetGroupId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -538,13 +547,13 @@ class PeeringContractsRelLcrRules extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\PeeringContractsRelLcrRules|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\PeeringContractsRelLcrRules The model with the data provided
+     * @param IvozProvider\Model\Raw\TargetGroups|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\TargetGroups The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\PeeringContractsRelLcrRules();
+            $entry = new \IvozProvider\Model\TargetGroups();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -552,26 +561,20 @@ class PeeringContractsRelLcrRules extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setBrandId($data['brandId'])
-                  ->setLcrRuleId($data['lcrRuleId'])
-                  ->setPeeringContractId($data['peeringContractId'])
-                  ->setPriority($data['priority'])
-                  ->setWeight($data['weight']);
+                  ->setName($data['name'])
+                  ->setDescription($data['description'])
+                  ->setBrandId($data['brandId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setBrandId($data->{'brandId'})
-                  ->setLcrRuleId($data->{'lcrRuleId'})
-                  ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setPriority($data->{'priority'})
-                  ->setWeight($data->{'weight'});
+                  ->setName($data->{'name'})
+                  ->setDescription($data->{'description'})
+                  ->setBrandId($data->{'brandId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\PeeringContractsRelLcrRules) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\TargetGroups) {
             $entry->setId($data->getId())
-                  ->setBrandId($data->getBrandId())
-                  ->setLcrRuleId($data->getLcrRuleId())
-                  ->setPeeringContractId($data->getPeeringContractId())
-                  ->setPriority($data->getPriority())
-                  ->setWeight($data->getWeight());
+                  ->setName($data->getName())
+                  ->setDescription($data->getDescription())
+                  ->setBrandId($data->getBrandId());
 
         }
 

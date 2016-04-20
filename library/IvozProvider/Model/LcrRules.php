@@ -27,4 +27,26 @@ class LcrRules extends Raw\LcrRules
     public function init()
     {
     }
+
+    public function setCondition($regexp)
+    {
+        if (is_numeric($regexp)) {
+            $this->setPrefix($regexp);
+            $this->setRequestUri(null);
+        } else {
+            $ruri_regexp = $regexp;
+
+            if(substr($ruri_regexp, 0, 1) == '^') {
+                $ruri_regexp = ':' . substr($ruri_regexp,1);
+            }
+
+            if(substr($ruri_regexp, -1) == '$') {
+                $ruri_regexp = substr($ruri_regexp, 0, -1) . '@';
+            }
+
+            $this->setRequestUri($ruri_regexp);
+            $this->setPrefix(null);
+        }
+        return $this;
+    }
 }

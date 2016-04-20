@@ -38,9 +38,9 @@ mappers:
   - &Locutions {mapper: \IvozProvider\Mapper\Sql\Locutions, modelFile: Locutions}
   - &MainOperators {mapper: \IvozProvider\Mapper\Sql\MainOperators, modelFile: MainOperators}
   - &MusicOnHold {mapper: \IvozProvider\Mapper\Sql\MusicOnHold, modelFile: MusicOnHold}
+  - &OutgoingRouting {mapper: \IvozProvider\Mapper\Sql\OutgoingRouting, modelFile: OutgoingRouting}
   - &PeerServers {mapper: \IvozProvider\Mapper\Sql\PeerServers, modelFile: PeerServers}
   - &PeeringContracts {mapper: \IvozProvider\Mapper\Sql\PeeringContracts, modelFile: PeeringContracts}
-  - &PeeringContractsRelLcrRules {mapper: \IvozProvider\Mapper\Sql\PeeringContractsRelLcrRules, modelFile: PeeringContractsRelLcrRules}
   - &PickUpGroups {mapper: \IvozProvider\Mapper\Sql\PickUpGroups, modelFile: PickUpGroups}
   - &PickUpRelUsers {mapper: \IvozProvider\Mapper\Sql\PickUpRelUsers, modelFile: PickUpRelUsers}
   - &PricingPlans {mapper: \IvozProvider\Mapper\Sql\PricingPlans, modelFile: PricingPlans}
@@ -48,6 +48,8 @@ mappers:
   - &PricingPlansRelTargetPatterns {mapper: \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns, modelFile: PricingPlansRelTargetPatterns}
   - &Schedules {mapper: \IvozProvider\Mapper\Sql\Schedules, modelFile: Schedules}
   - &Services {mapper: \IvozProvider\Mapper\Sql\Services, modelFile: Services}
+  - &TargetGroups {mapper: \IvozProvider\Mapper\Sql\TargetGroups, modelFile: TargetGroups}
+  - &TargetGroupsRelPatterns {mapper: \IvozProvider\Mapper\Sql\TargetGroupsRelPatterns, modelFile: TargetGroupsRelPatterns}
   - &TargetPatterns {mapper: \IvozProvider\Mapper\Sql\TargetPatterns, modelFile: TargetPatterns}
   - &TerminalManufacturers {mapper: \IvozProvider\Mapper\Sql\TerminalManufacturers, modelFile: TerminalManufacturers}
   - &TerminalModels {mapper: \IvozProvider\Mapper\Sql\TerminalModels, modelFile: TerminalModels}

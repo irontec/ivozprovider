@@ -20,5 +20,27 @@
 namespace IvozProvider\Mapper\Sql;
 class TargetPatterns extends Raw\TargetPatterns
 {
+    protected function _save(\IvozProvider\Model\Raw\TargetPatterns $model,
+        $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
+    )
+    {
+        $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
+
+        
+        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
+        $lcrRule = $lcrRulesMapper->findOneByField("targetPatternId", $pk);
+
+        if (is_null($lcrRule)) {
+            $lcrRule = new \IvozProvider\Model\LcrRules();
+        }
+        $lcrRule->setBrandId($model->getBrandId())
+              ->setTag($model->getName())
+              ->setDescription($model->getDescription())
+              ->setTargetPatternId($pk)
+              ->setCondition($model->getRegExp())
+              ->save();
+
+        return $pk;
+    }
 
 }

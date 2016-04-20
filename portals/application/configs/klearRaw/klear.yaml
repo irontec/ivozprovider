@@ -167,6 +167,10 @@ production:
           title: ngettext('Language', 'Languages', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Language', 'Languages', 0))
+        LcrRuleTargetList: 
+          title: ngettext('Lcr rule target', 'Lcr rule target', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Lcr rule target', 'Lcr rule target', 0))
         LcrRulesList: 
           title: ngettext('Lcr rule', 'Lcr rules', 0)
           class: ui-silk-text-list-bullets
@@ -183,6 +187,10 @@ production:
           title: ngettext('Music on hold', 'Music on hold', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Music on hold', 'Music on hold', 0))
+        OutgoingRoutingList: 
+          title: ngettext('Outgoing routing', 'Outgoing routing', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Outgoing routing', 'Outgoing routing', 0))
         PeerServersList: 
           title: ngettext('Peer server', 'Peer servers', 0)
           class: ui-silk-text-list-bullets
@@ -191,10 +199,6 @@ production:
           title: ngettext('Peering contract', 'Peering contracts', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
-        PeeringContractsRelLcrRulesList: 
-          title: ngettext('Peering contracts rel lcr rule', 'Peering contracts rel lcr rules', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Peering contracts rel lcr rule', 'Peering contracts rel lcr rules', 0))
         PickUpGroupsList: 
           title: ngettext('Pick up group', 'Pick up groups', 0)
           class: ui-silk-text-list-bullets
@@ -223,6 +227,14 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Service', 'Services', 0))
+        TargetGroupsList: 
+          title: ngettext('Target group', 'Target groups', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Target group', 'Target groups', 0))
+        TargetGroupsRelPatternsList: 
+          title: ngettext('Target groups rel pattern', 'Target groups rel patterns', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Target groups rel pattern', 'Target groups rel patterns', 0))
         TargetPatternsList: 
           title: ngettext('Target pattern', 'Target patterns', 0)
           class: ui-silk-text-list-bullets

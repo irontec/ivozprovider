@@ -441,6 +441,34 @@ class TargetPatterns extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getLcrRules(null, null, true) !== null) {
+                    $lcrRules = $model->getLcrRules();
+
+                    if (!is_array($lcrRules)) {
+
+                        $lcrRules = array($lcrRules);
+                    }
+
+                    foreach ($lcrRules as $value) {
+                        $value->setTargetPatternId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getOutgoingRouting(null, null, true) !== null) {
+                    $outgoingRouting = $model->getOutgoingRouting();
+
+                    if (!is_array($outgoingRouting)) {
+
+                        $outgoingRouting = array($outgoingRouting);
+                    }
+
+                    foreach ($outgoingRouting as $value) {
+                        $value->setTargetPatternId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getPricingPlansRelTargetPatterns(null, null, true) !== null) {
                     $pricingPlansRelTargetPatterns = $model->getPricingPlansRelTargetPatterns();
 
@@ -450,6 +478,20 @@ class TargetPatterns extends MapperAbstract
                     }
 
                     foreach ($pricingPlansRelTargetPatterns as $value) {
+                        $value->setTargetPatternId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getTargetGroupsRelPatterns(null, null, true) !== null) {
+                    $targetGroupsRelPatterns = $model->getTargetGroupsRelPatterns();
+
+                    if (!is_array($targetGroupsRelPatterns)) {
+
+                        $targetGroupsRelPatterns = array($targetGroupsRelPatterns);
+                    }
+
+                    foreach ($targetGroupsRelPatterns as $value) {
                         $value->setTargetPatternId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

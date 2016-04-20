@@ -30,7 +30,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - name
@@ -43,7 +43,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - name
@@ -57,7 +57,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - name
@@ -71,7 +71,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - name
@@ -127,7 +127,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - number
@@ -142,7 +142,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - name
@@ -187,7 +187,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - number
@@ -202,7 +202,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company           
           fieldName: 
             fields: 
               - name

@@ -86,14 +86,6 @@ production:
           title: ngettext('Peering contract', 'Peering contracts', 0)
           class: ui-silk-connect
           description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
-        LcrRulesList:
-          title: ngettext('Lcr rule', 'Lcr rules', 0)
-          class: ui-silk-application-view-list
-          description: _("List of %s", ngettext('Lcr rule', 'Lcr rules', 0))
-        PeeringContractsRelLcrRulesList:
-          title: ngettext('Peering contracts rel lcr rule', 'Peering contracts rel lcr rules', 0)
-          class: ui-silk-arrow-divide
-          description: _("List of %s", ngettext('Peering contracts rel lcr rule', 'Peering contracts rel lcr rules', 0))
         GenericMusicOnHoldList:
           title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
           class: ui-silk-music
@@ -106,13 +98,21 @@ production:
           title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
           class: ui-silk-lock-go
           description: _("List of %s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0))
+        TargetPatternsList:
+          title: ngettext('Destination pattern', 'Destination patterns', 0)
+          class: ui-silk-script-go
+          description: _("List of %s", ngettext('Destination pattern', 'Destination patterns', 0))
+        TargetGroupsList: 
+          title: ngettext('Destination group', 'Destination groups', 0)
+          class: ui-silk-script-link
+          description: _("List of %s", ngettext('Destination group', 'Destination groups', 0))          
+        OutgoingRoutingList: 
+          title: ngettext('Outgoing Routing', 'Outgoing Routing', 0)
+          class: ui-silk-arrow-divide
+          description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routing', 0))          
         PricingPlansList:
           title: ngettext('Pricing plan', 'Pricing plans', 0)
           class:  ui-silk-money
-          description: _("List of %s", ngettext('Pricing Plan', 'Pricing Plans', 0))
-        TargetPatternsList:
-          title: ngettext('Target pattern', 'Target patterns', 0)
-          class:  ui-silk-page-find
           description: _("List of %s", ngettext('Pricing Plan', 'Pricing Plans', 0))
         InvoiceTemplatesList:
           title: _('Invoice templates')

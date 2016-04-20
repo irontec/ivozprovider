@@ -277,6 +277,14 @@ class Companies extends ModelAbstract
     protected $_Invoices;
 
     /**
+     * Dependent relation LcrRuleTarget_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
+     */
+    protected $_LcrRuleTarget;
+
+    /**
      * Dependent relation Locutions_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -291,6 +299,14 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\MusicOnHold[]
      */
     protected $_MusicOnHold;
+
+    /**
+     * Dependent relation OutgoingRouting_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingRouting[]
+     */
+    protected $_OutgoingRouting;
 
     /**
      * Dependent relation PickUpGroups_ibfk_1
@@ -457,6 +473,10 @@ class Companies extends ModelAbstract
                     'property' => 'Invoices',
                     'table_name' => 'Invoices',
                 ),
+            'LcrRuleTargetIbfk2' => array(
+                    'property' => 'LcrRuleTarget',
+                    'table_name' => 'LcrRuleTarget',
+                ),
             'LocutionsIbfk1' => array(
                     'property' => 'Locutions',
                     'table_name' => 'Locutions',
@@ -464,6 +484,10 @@ class Companies extends ModelAbstract
             'MusicOnHoldIbfk1' => array(
                     'property' => 'MusicOnHold',
                     'table_name' => 'MusicOnHold',
+                ),
+            'OutgoingRoutingIbfk2' => array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
                 ),
             'PickUpGroupsIbfk1' => array(
                     'property' => 'PickUpGroups',
@@ -2464,6 +2488,96 @@ class Companies extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations LcrRuleTarget_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setLcrRuleTarget(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_LcrRuleTarget === null) {
+
+                $this->getLcrRuleTarget();
+            }
+
+            $oldRelations = $this->_LcrRuleTarget;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_LcrRuleTarget = array();
+
+        foreach ($data as $object) {
+            $this->addLcrRuleTarget($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations LcrRuleTarget_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
+    {
+        $this->_LcrRuleTarget[] = $data;
+        $this->_setLoaded('LcrRuleTargetIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent LcrRuleTarget_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\LcrRuleTarget
+     */
+    public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRuleTargetIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_LcrRuleTarget = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_LcrRuleTarget;
+    }
+
+    /**
      * Sets dependent relations Locutions_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Locutions
@@ -2641,6 +2755,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_MusicOnHold;
+    }
+
+    /**
+     * Sets dependent relations OutgoingRouting_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingRouting
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOutgoingRouting(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_OutgoingRouting === null) {
+
+                $this->getOutgoingRouting();
+            }
+
+            $oldRelations = $this->_OutgoingRouting;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_OutgoingRouting = array();
+
+        foreach ($data as $object) {
+            $this->addOutgoingRouting($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations OutgoingRouting_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting[] = $data;
+        $this->_setLoaded('OutgoingRoutingIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent OutgoingRouting_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingRoutingIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_OutgoingRouting;
     }
 
     /**
