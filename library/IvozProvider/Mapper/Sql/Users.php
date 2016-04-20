@@ -119,6 +119,7 @@ class Users extends Raw\Users
             ->setFullname($model->getName() . " " . $model->getLastname())
             ->setEmail($model->getEmail())
             ->setTz($model->getTimezone()->getTz())
+            ->setAttach($model->getAttachVoicemailSound()?"yes":"no")
             ->save();
 
         // Update user endpoint if user want VoiceMail notifications
