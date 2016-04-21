@@ -63,7 +63,16 @@ class ExternalCallAction extends RouterAction
 
         // Get outbound Proxytrunk and dialOptions
         $proxyTrunks = new Mapper\ProxyTrunks();
-        $proxyTrunk = $proxyTrunks->fetchOne();
+        $proxyTrunksList = $proxyTrunks->fetchList();
+
+        // Randomize ProxyTrunk Selection
+        shuffle($proxyTrunksList);
+        // Select the first available Trunk
+        foreach ($proxyTrunksList as $proxyTrunk) {
+            if ($this->agi->getDeviceState($proxyTrunk->getName()) != "UNAVAILABLE") {
+                break;
+            }
+        }
 
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@' . $proxyTrunk->getName());
