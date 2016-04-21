@@ -51,7 +51,7 @@ class PeerServers extends Raw\PeerServers
         try {
             $this->_sendXmlRcp();
         } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Peer srever may have been saved.</p>";
+            $message = $e->getMessage()."<p>Peerserver may have been saved.</p>";
             throw new \Exception($message);
         }
 
@@ -64,7 +64,7 @@ class PeerServers extends Raw\PeerServers
         try {
             $this->_sendXmlRcp();
         } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Peer srever may have been deleted.</p>";
+            $message = $e->getMessage()."<p>Peerserver may have been deleted.</p>";
             throw new \Exception($message);
         }
         return $response;

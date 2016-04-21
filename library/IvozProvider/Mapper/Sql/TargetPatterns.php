@@ -18,6 +18,8 @@
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
+use IvozProvider\Gearmand\Jobs\Xmlrpc;
+
 class TargetPatterns extends Raw\TargetPatterns
 {
     protected function _save(\IvozProvider\Model\Raw\TargetPatterns $model,
@@ -40,7 +42,36 @@ class TargetPatterns extends Raw\TargetPatterns
               ->setCondition($model->getRegExp())
               ->save();
 
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Target pattern may have been saved.</p>";
+            throw new \Exception($message);
+        }
+
         return $pk;
+    }
+
+    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
+    {
+        $response = parent::delete($model);
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Target pattern may have been deleted.</p>";
+            throw new \Exception($message);
+        }
+        return $response;
+    }
+
+    protected function _sendXmlRcp()
+    {
+        $proxyServers = array(
+                'proxytrunks' => "lcr.reload",
+        );
+        $xmlrpcJob = new Xmlrpc();
+        $xmlrpcJob->setProxyServers($proxyServers);
+        $xmlrpcJob->send();
     }
 
 }
