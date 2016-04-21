@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include LcrRuleTargetList.yaml
+#include KamUsersAddressList.yaml
 
 
 production: 
@@ -21,6 +22,7 @@ production:
           screens: 
             peerServersEdit_screen: true
             lcrRuleTargetList_screen: true
+            kamUsersAddressList_screen: true
           dialogs: 
             peerServersDel_dialog: true
           default: peerServersEdit_screen
@@ -62,6 +64,19 @@ production:
       <<: *lcrRuleTargetEdit_screenLink
       filterField: gw_id
 
+    #kamUsersAddress: 
+    kamUsersAddressList_screen: 
+      <<: *kamUsersAddressList_screenLink
+      filterField: peerServerId
+      parentOptionCustomizer: 
+        - recordCount
+    kamUsersAddressNew_screen: 
+      <<: *kamUsersAddressNew_screenLink
+      filterField: peerServerId
+    kamUsersAddressEdit_screen: 
+      <<: *kamUsersAddressEdit_screenLink
+      filterField: peerServerId
+
   dialogs: &peerServers_dialogsLink 
     peerServersDel_dialog: &peerServersDel_dialogLink 
       <<: *PeerServers
@@ -75,6 +90,8 @@ production:
       labelOnList: 1
   # lcrRuleTarget dialogs: 
     <<: *lcrRuleTarget_dialogsLink
+  # kamUsersAddress dialogs: 
+    <<: *kamUsersAddress_dialogsLink
 staging: 
   _extends: production
 testing: 
