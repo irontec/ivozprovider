@@ -437,20 +437,6 @@ class ProxyTrunks extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getAstPsAors(null, null, true) !== null) {
-                    $astPsAors = $model->getAstPsAors();
-
-                    if (!is_array($astPsAors)) {
-
-                        $astPsAors = array($astPsAors);
-                    }
-
-                    foreach ($astPsAors as $value) {
-                        $value->setProxyTrunkId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getAstPsEndpoints(null, null, true) !== null) {
                     $astPsEndpoints = $model->getAstPsEndpoints();
 
@@ -460,20 +446,6 @@ class ProxyTrunks extends MapperAbstract
                     }
 
                     foreach ($astPsEndpoints as $value) {
-                        $value->setProxyTrunkId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getAstPsIdentify(null, null, true) !== null) {
-                    $astPsIdentify = $model->getAstPsIdentify();
-
-                    if (!is_array($astPsIdentify)) {
-
-                        $astPsIdentify = array($astPsIdentify);
-                    }
-
-                    foreach ($astPsIdentify as $value) {
                         $value->setProxyTrunkId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

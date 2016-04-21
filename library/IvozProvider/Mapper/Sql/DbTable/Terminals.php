@@ -53,7 +53,6 @@ class Terminals extends TableAbstract
     );
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsAors',
         'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints'
     );
     protected $_metadata = array (

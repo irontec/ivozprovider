@@ -1,8 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include AstPsAorsList.yaml
 #include AstPsEndpointsList.yaml
-#include AstPsIdentifyList.yaml
 
 
 production: 
@@ -22,9 +20,7 @@ production:
           title: _("Options")
           screens: 
             proxyTrunksEdit_screen: true
-            astPsAorsList_screen: true
             astPsEndpointsList_screen: true
-            astPsIdentifyList_screen: true
           dialogs: 
             proxyTrunksDel_dialog: true
           default: proxyTrunksEdit_screen
@@ -52,21 +48,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
-    #astPsAors: 
-    <<: *astPsAors_screensLink
-    astPsAorsList_screen: 
-      <<: *astPsAorsList_screenLink
-      filterField: proxyTrunkId
-      parentOptionCustomizer: 
-        - recordCount
-    astPsAorsNew_screen: 
-      <<: *astPsAorsNew_screenLink
-      filterField: proxyTrunkId
-    astPsAorsEdit_screen: 
-      <<: *astPsAorsEdit_screenLink
-      filterField: proxyTrunkId
-
     #astPsEndpoints: 
+    <<: *astPsEndpoints_screensLink
     astPsEndpointsList_screen: 
       <<: *astPsEndpointsList_screenLink
       filterField: proxyTrunkId
@@ -77,19 +60,6 @@ production:
       filterField: proxyTrunkId
     astPsEndpointsEdit_screen: 
       <<: *astPsEndpointsEdit_screenLink
-      filterField: proxyTrunkId
-
-    #astPsIdentify: 
-    astPsIdentifyList_screen: 
-      <<: *astPsIdentifyList_screenLink
-      filterField: proxyTrunkId
-      parentOptionCustomizer: 
-        - recordCount
-    astPsIdentifyNew_screen: 
-      <<: *astPsIdentifyNew_screenLink
-      filterField: proxyTrunkId
-    astPsIdentifyEdit_screen: 
-      <<: *astPsIdentifyEdit_screenLink
       filterField: proxyTrunkId
 
   dialogs: &proxyTrunks_dialogsLink 
@@ -103,12 +73,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Proxy trunk', 'Proxy trunks', 1))
       multiItem: 1
       labelOnList: 1
-  # astPsAors dialogs: 
-    <<: *astPsAors_dialogsLink
   # astPsEndpoints dialogs: 
     <<: *astPsEndpoints_dialogsLink
-  # astPsIdentify dialogs: 
-    <<: *astPsIdentify_dialogsLink
 staging: 
   _extends: production
 testing: 

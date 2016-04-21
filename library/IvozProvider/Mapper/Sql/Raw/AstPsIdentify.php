@@ -48,8 +48,8 @@ class AstPsIdentify extends MapperAbstract
 
         if (empty($fields)) {
             $result = array(
+                'id' => $model->getId(),
                 'sorcery_id' => $model->getSorceryId(),
-                'proxyTrunkId' => $model->getProxyTrunkId(),
                 'endpoint' => $model->getEndpoint(),
                 'match' => $model->getMatch(),
             );
@@ -238,7 +238,7 @@ class AstPsIdentify extends MapperAbstract
                 }//end foreach ($deleteSetNull as $fk)
             } //end if
 
-            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('sorcery_id') . ' = ?', $model->getSorceryId());
+            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('id') . ' = ?', $model->getId());
             $result = $dbTable->delete($where);
 
             if ($this->_cache) {
@@ -347,7 +347,7 @@ class AstPsIdentify extends MapperAbstract
 
         $data = $model->sanitize()->toArray();
 
-        $primaryKey = $model->getSorceryId();
+        $primaryKey = $model->getId();
         $success = true;
 
         if ($useTransaction) {
@@ -370,18 +370,14 @@ class AstPsIdentify extends MapperAbstract
             $transactionTag = 't_' . rand(1, 999) . str_replace(array('.', ' '), '', microtime());
         }
 
-        if (!$forceInsert) {
-            unset($data['sorcery_id']);
-        }
+        $exists = $this->find($primaryKey);
 
         try {
-            if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
-                if (is_null($primaryKey) || empty($primaryKey)) {
-                }
+            if (is_null($exists)) {
                 $primaryKey = $this->getDbTable()->insert($data);
 
                 if ($primaryKey) {
-                    $model->setSorceryId($primaryKey);
+                    $model->setId($primaryKey);
                 } else {
                     throw new \Exception("Insert sentence did not return a valid primary key", 9000);
                 }
@@ -420,7 +416,7 @@ class AstPsIdentify extends MapperAbstract
                      ->update(
                          $data,
                          array(
-                             $this->getDbTable()->getAdapter()->quoteIdentifier('sorcery_id') . ' = ?' => $primaryKey
+                             $this->getDbTable()->getAdapter()->quoteIdentifier('id') . ' = ?' => $primaryKey
                          )
                      );
             }
@@ -529,19 +525,19 @@ class AstPsIdentify extends MapperAbstract
         $entry->stopChangeLog();
 
         if (is_array($data)) {
-            $entry->setSorceryId($data['sorcery_id'])
-                  ->setProxyTrunkId($data['proxyTrunkId'])
+            $entry->setId($data['id'])
+                  ->setSorceryId($data['sorcery_id'])
                   ->setEndpoint($data['endpoint'])
                   ->setMatch($data['match']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
-            $entry->setSorceryId($data->{'sorcery_id'})
-                  ->setProxyTrunkId($data->{'proxyTrunkId'})
+            $entry->setId($data->{'id'})
+                  ->setSorceryId($data->{'sorcery_id'})
                   ->setEndpoint($data->{'endpoint'})
                   ->setMatch($data->{'match'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsIdentify) {
-            $entry->setSorceryId($data->getSorceryId())
-                  ->setProxyTrunkId($data->getProxyTrunkId())
+            $entry->setId($data->getId())
+                  ->setSorceryId($data->getSorceryId())
                   ->setEndpoint($data->getEndpoint())
                   ->setMatch($data->getMatch());
 

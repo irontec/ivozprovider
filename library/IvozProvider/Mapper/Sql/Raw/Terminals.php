@@ -457,20 +457,6 @@ class Terminals extends MapperAbstract
                     }
                 }
 
-                if ($model->getAstPsAors(null, null, true) !== null) {
-                    $astPsAors = $model->getAstPsAors();
-
-                    if (!is_array($astPsAors)) {
-
-                        $astPsAors = array($astPsAors);
-                    }
-
-                    foreach ($astPsAors as $value) {
-                        $value->setTerminalId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getAstPsEndpoints(null, null, true) !== null) {
                     $astPsEndpoints = $model->getAstPsEndpoints();
 

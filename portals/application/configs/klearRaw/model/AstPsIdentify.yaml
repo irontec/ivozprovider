@@ -1,19 +1,11 @@
 production: 
   class: \IvozProvider\Model\AstPsIdentify
   fields: 
-    proxyTrunkId: 
-      title: _('Proxy trunk id')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\ProxyTrunks
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unasigned")
+    sorcery_id: 
+      title: _('Sorcery id')
+      type: text
+      required: true
+      maxLength: 40
       default: true
     endpoint: 
       title: _('Endpoint')

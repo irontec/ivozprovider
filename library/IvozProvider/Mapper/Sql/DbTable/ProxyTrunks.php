@@ -41,9 +41,7 @@ class ProxyTrunks extends TableAbstract
     protected $_sequence = true; // int
     
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsAors',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsIdentify'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints'
     );
     protected $_metadata = array (
 	  'id' => 

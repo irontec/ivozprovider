@@ -57,7 +57,7 @@ class Terminals extends Raw\Terminals
 
             // Replicate Terminal into ast_ps_aors
             $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
-            $aor = $aorMapper->findOneByField("terminalId", $response);
+            $aor = $aorMapper->findOneByField("id", $endpoint->getId());
 
             // If not found create a new one
             $forceInsert = false;
@@ -65,7 +65,7 @@ class Terminals extends Raw\Terminals
                 $forceInsert = true;
                 $aor = new \IvozProvider\Model\AstPsAors();
             }
-            $aor->setTerminalId($response)
+            $aor->setId($endpoint->getId())
                 ->setSorceryId($model->getName())
                 ->setMaxContacts(1)
                 ->setRemoveExisting('yes')

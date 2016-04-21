@@ -1,6 +1,12 @@
 production: 
   class: \IvozProvider\Model\AstPsEndpoints
   fields: 
+    sorcery_id: 
+      title: _('Sorcery id')
+      type: text
+      required: true
+      maxLength: 40
+      default: true
     terminalId: 
       title: _('Terminal id')
       type: select
@@ -14,7 +20,6 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-      default: true
     proxyTrunkId: 
       title: _('Proxy trunk id')
       type: select

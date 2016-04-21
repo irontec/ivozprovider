@@ -116,14 +116,6 @@ class Terminals extends ModelAbstract
     protected $_Users;
 
     /**
-     * Dependent relation ast_ps_aors_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\AstPsAors[]
-     */
-    protected $_AstPsAors;
-
-    /**
      * Dependent relation ast_ps_endpoints_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -172,10 +164,6 @@ class Terminals extends ModelAbstract
             'UsersIbfk3' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
-                ),
-            'AstPsAorsIbfk1' => array(
-                    'property' => 'AstPsAors',
-                    'table_name' => 'ast_ps_aors',
                 ),
             'AstPsEndpointsIbfk1' => array(
                     'property' => 'AstPsEndpoints',
@@ -750,96 +738,6 @@ class Terminals extends ModelAbstract
         }
 
         return $this->_Users;
-    }
-
-    /**
-     * Sets dependent relations ast_ps_aors_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\AstPsAors
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setAstPsAors(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_AstPsAors === null) {
-
-                $this->getAstPsAors();
-            }
-
-            $oldRelations = $this->_AstPsAors;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_AstPsAors = array();
-
-        foreach ($data as $object) {
-            $this->addAstPsAors($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations ast_ps_aors_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\AstPsAors $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function addAstPsAors(\IvozProvider\Model\Raw\AstPsAors $data)
-    {
-        $this->_AstPsAors[] = $data;
-        $this->_setLoaded('AstPsAorsIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent ast_ps_aors_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\AstPsAors
-     */
-    public function getAstPsAors($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'AstPsAorsIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_AstPsAors = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_AstPsAors;
     }
 
     /**

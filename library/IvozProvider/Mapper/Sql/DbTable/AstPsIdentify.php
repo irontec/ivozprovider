@@ -31,29 +31,46 @@ class AstPsIdentify extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var string
+     * @var int
      */
-    protected $_id = 'sorcery_id';
+    protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\AstPsIdentify';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\AstPsIdentify';
 
-    protected $_sequence = true; // string
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'AstPsIdentifyIbfk1' => array(
-            'columns' => 'proxyTrunkId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ProxyTrunks',
+            'columns' => 'id',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints',
             'refColumns' => 'id'
         )
     );
     
     protected $_metadata = array (
+	  'id' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_ps_identify',
+	    'COLUMN_NAME' => 'id',
+	    'COLUMN_POSITION' => 1,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => true,
+	    'PRIMARY_POSITION' => 1,
+	    'IDENTITY' => false,
+	  ),
 	  'sorcery_id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_identify',
 	    'COLUMN_NAME' => 'sorcery_id',
-	    'COLUMN_POSITION' => 1,
+	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
@@ -61,23 +78,6 @@ class AstPsIdentify extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
-	    'PRIMARY' => true,
-	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
-	  ),
-	  'proxyTrunkId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ast_ps_identify',
-	    'COLUMN_NAME' => 'proxyTrunkId',
-	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

@@ -50,6 +50,13 @@ class AstPsEndpoints extends ModelAbstract
     );
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_id;
+
+    /**
      * Database var type varchar
      *
      * @var string
@@ -185,7 +192,24 @@ class AstPsEndpoints extends ModelAbstract
     protected $_ProxyTrunk;
 
 
+    /**
+     * Dependent relation ast_ps_aors_ibfk_1
+     * Type: One-to-One relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsAors
+     */
+    protected $_AstPsAors;
+
+    /**
+     * Dependent relation ast_ps_identify_ibfk_1
+     * Type: One-to-One relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstPsIdentify
+     */
+    protected $_AstPsIdentify;
+
     protected $_columnsList = array(
+        'id'=>'id',
         'sorcery_id'=>'sorceryId',
         'terminalId'=>'terminalId',
         'proxyTrunkId'=>'proxyTrunkId',
@@ -231,8 +255,19 @@ class AstPsEndpoints extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'AstPsAorsIbfk1' => array(
+                    'property' => 'AstPsAors',
+                    'table_name' => 'ast_ps_aors',
+                ),
+            'AstPsIdentifyIbfk1' => array(
+                    'property' => 'AstPsIdentify',
+                    'table_name' => 'ast_ps_identify',
+                ),
         ));
 
+        $this->setOnDeleteCascadeRelationships(array(
+            'ast_ps_aors_ibfk_1'
+        ));
 
 
 
@@ -276,12 +311,49 @@ class AstPsEndpoints extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setId($data)
+    {
+
+        if ($this->_id != $data) {
+            $this->_logChange('id');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
      * @param string $data
      * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
     public function setSorceryId($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_sorceryId != $data) {
             $this->_logChange('sorceryId');
         }
@@ -619,51 +691,39 @@ class AstPsEndpoints extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string|Zend_Date|DateTime $date
+     * @param string $data
      * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
     public function setDirectMediaMethod($data)
     {
-        if ($data === 'CURRENT_TIMESTAMP') {
-            $data = \Zend_Date::now()->setTimezone('UTC');
-        }
-
-        if ($data instanceof \Zend_Date) {
-
-            $data = new \DateTime($data->toString('yyyy-MM-dd HH:mm:ss'), new \DateTimeZone($data->getTimezone()));
-
-        } elseif (!is_null($data) && !$data instanceof \DateTime) {
-
-            $data = new \DateTime($data, new \DateTimeZone('UTC'));
-        }
 
         if ($this->_directMediaMethod != $data) {
             $this->_logChange('directMediaMethod');
         }
 
-        $this->_directMediaMethod = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_directMediaMethod = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+            }
+            $this->_directMediaMethod = (string) $data;
+
+        } else {
+            $this->_directMediaMethod = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column direct_media_method
      *
-     * @param boolean $returnZendDate
-     * @return Zend_Date|null|string Zend_Date representation of this datetime if enabled, or ISO 8601 string if not
+     * @return string
      */
-    public function getDirectMediaMethod($returnZendDate = false)
+    public function getDirectMediaMethod()
     {
-        if (is_null($this->_directMediaMethod)) {
-            return null;
-        }
-
-        if ($returnZendDate) {
-            $zendDate = new \Zend_Date($this->_directMediaMethod->getTimestamp(), \Zend_Date::TIMESTAMP);
-            $zendDate->setTimezone('UTC');
-            return $zendDate;
-        }
-
-        return $this->_directMediaMethod->format('Y-m-d H:i:s');
+        return $this->_directMediaMethod;
     }
 
     /**
@@ -985,6 +1045,90 @@ class AstPsEndpoints extends ModelAbstract
     }
 
     /**
+     * Sets dependent relation ast_ps_aors_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\AstPsAors $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setAstPsAors(\IvozProvider\Model\Raw\AstPsAors $data)
+    {
+        $this->_AstPsAors = $data;
+        $this->_setLoaded('AstPsAorsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_aors_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return \IvozProvider\Model\Raw\AstPsAors
+     */
+    public function getAstPsAors($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsAorsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsAors = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsAors;
+    }
+
+    /**
+     * Sets dependent relation ast_ps_identify_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\AstPsIdentify $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setAstPsIdentify(\IvozProvider\Model\Raw\AstPsIdentify $data)
+    {
+        $this->_AstPsIdentify = $data;
+        $this->_setLoaded('AstPsIdentifyIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_ps_identify_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return \IvozProvider\Model\Raw\AstPsIdentify
+     */
+    public function getAstPsIdentify($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsIdentifyIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstPsIdentify = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstPsIdentify;
+    }
+
+    /**
      * Returns the mapper class for this model
      *
      * @return IvozProvider\Mapper\Sql\AstPsEndpoints
@@ -1041,14 +1185,14 @@ class AstPsEndpoints extends ModelAbstract
      */
     public function deleteRowByPrimaryKey()
     {
-        if ($this->getSorceryId() === null) {
-            $this->_logger->log('The value for SorceryId cannot be null in deleteRowByPrimaryKey for ' . get_class($this), \Zend_Log::ERR);
+        if ($this->getId() === null) {
+            $this->_logger->log('The value for Id cannot be null in deleteRowByPrimaryKey for ' . get_class($this), \Zend_Log::ERR);
             throw new \Exception('Primary Key does not contain a value');
         }
 
         return $this->getMapper()->getDbTable()->delete(
-            'sorcery_id = ' .
-             $this->getMapper()->getDbTable()->getAdapter()->quote($this->getSorceryId())
+            'id = ' .
+             $this->getMapper()->getDbTable()->getAdapter()->quote($this->getId())
         );
     }
 

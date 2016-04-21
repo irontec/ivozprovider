@@ -48,6 +48,7 @@ class AstPsEndpoints extends MapperAbstract
 
         if (empty($fields)) {
             $result = array(
+                'id' => $model->getId(),
                 'sorcery_id' => $model->getSorceryId(),
                 'terminalId' => $model->getTerminalId(),
                 'proxyTrunkId' => $model->getProxyTrunkId(),
@@ -251,7 +252,7 @@ class AstPsEndpoints extends MapperAbstract
                 }//end foreach ($deleteSetNull as $fk)
             } //end if
 
-            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('sorcery_id') . ' = ?', $model->getSorceryId());
+            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('id') . ' = ?', $model->getId());
             $result = $dbTable->delete($where);
 
             if ($this->_cache) {
@@ -360,7 +361,7 @@ class AstPsEndpoints extends MapperAbstract
 
         $data = $model->sanitize()->toArray();
 
-        $primaryKey = $model->getSorceryId();
+        $primaryKey = $model->getId();
         $success = true;
 
         if ($useTransaction) {
@@ -384,7 +385,7 @@ class AstPsEndpoints extends MapperAbstract
         }
 
         if (!$forceInsert) {
-            unset($data['sorcery_id']);
+            unset($data['id']);
         }
 
         try {
@@ -394,7 +395,7 @@ class AstPsEndpoints extends MapperAbstract
                 $primaryKey = $this->getDbTable()->insert($data);
 
                 if ($primaryKey) {
-                    $model->setSorceryId($primaryKey);
+                    $model->setId($primaryKey);
                 } else {
                     throw new \Exception("Insert sentence did not return a valid primary key", 9000);
                 }
@@ -433,7 +434,7 @@ class AstPsEndpoints extends MapperAbstract
                      ->update(
                          $data,
                          array(
-                             $this->getDbTable()->getAdapter()->quoteIdentifier('sorcery_id') . ' = ?' => $primaryKey
+                             $this->getDbTable()->getAdapter()->quoteIdentifier('id') . ' = ?' => $primaryKey
                          )
                      );
             }
@@ -449,6 +450,21 @@ class AstPsEndpoints extends MapperAbstract
                 }
             }
 
+
+            if ($recursive) {
+                if ($model->getAstPsAors(null, null, true) !== null) {
+                    $model->getAstPsAors()
+                          ->setId($primaryKey)
+                          ->saveRecursive(false, $transactionTag);
+                }
+
+                if ($model->getAstPsIdentify(null, null, true) !== null) {
+                    $model->getAstPsIdentify()
+                          ->setId($primaryKey)
+                          ->saveRecursive(false, $transactionTag);
+                }
+
+            }
 
             if ($success === true) {
 
@@ -542,7 +558,8 @@ class AstPsEndpoints extends MapperAbstract
         $entry->stopChangeLog();
 
         if (is_array($data)) {
-            $entry->setSorceryId($data['sorcery_id'])
+            $entry->setId($data['id'])
+                  ->setSorceryId($data['sorcery_id'])
                   ->setTerminalId($data['terminalId'])
                   ->setProxyTrunkId($data['proxyTrunkId'])
                   ->setTransport($data['transport'])
@@ -560,7 +577,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendRpid($data['send_rpid'])
                   ->setSubscribecontext($data['subscribecontext']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
-            $entry->setSorceryId($data->{'sorcery_id'})
+            $entry->setId($data->{'id'})
+                  ->setSorceryId($data->{'sorcery_id'})
                   ->setTerminalId($data->{'terminalId'})
                   ->setProxyTrunkId($data->{'proxyTrunkId'})
                   ->setTransport($data->{'transport'})
@@ -579,7 +597,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSubscribecontext($data->{'subscribecontext'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
-            $entry->setSorceryId($data->getSorceryId())
+            $entry->setId($data->getId())
+                  ->setSorceryId($data->getSorceryId())
                   ->setTerminalId($data->getTerminalId())
                   ->setProxyTrunkId($data->getProxyTrunkId())
                   ->setTransport($data->getTransport())
