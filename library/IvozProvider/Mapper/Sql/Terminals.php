@@ -49,8 +49,11 @@ class Terminals extends Raw\Terminals
             $endpoint->setTerminalId($response)
                 ->setSorceryId($model->getName())
                 ->setAors($model->getName())
-                ->setDirectmedia($model->getDirectmedia())
+                ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())
+                ->setDirectmedia($model->getDirectmedia())
+                ->setDirectmediaMethod($model->getDirectmediaMethod())
+                ->setDtmfMode($model->getDtmfMode())
                 ->setContext('outgoing')
                 ->setSubscribecontext('company' . $model->getCompanyId())
                 ->save($forceInsert);

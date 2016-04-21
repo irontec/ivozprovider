@@ -275,6 +275,7 @@ class AstPsEndpoints extends ModelAbstract
             'context' => 'outgoing',
             'disallow' => 'all',
             'allow' => 'all',
+            'dtmfMode' => 'rfc4733',
             'subscribecontext' => 'default',
         );
 

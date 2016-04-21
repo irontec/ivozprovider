@@ -19,6 +19,11 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       maxLength: 100
+    disallow: 
+      title: _('Disallow')
+      type: text
+      defaultValue: all
+      maxLength: 200
     allow: 
       title: _('Allow')
       type: text
@@ -33,6 +38,26 @@ production:
         values: 
           'yes': _('yes')
           'no': _('no')
+    direct_media_method: 
+      title: _('Direct media method')
+      type: select
+      defaultValue: update
+      source: 
+        data: inline
+        values: 
+          'invite': _('invite')
+          'reinvite': _('reinvite')
+          'update': _('update')
+    dtmf_mode: 
+      title: _('Dtmf mode')
+      type: select
+      defaultValue: rfc4733
+      source: 
+        data: inline
+        values: 
+          'rfc4733': _('rfc4733')
+          'inband': _('inband')
+          'info': _('info')
     password: 
       title: ngettext('Password', 'Passwords', 1)
       type: password

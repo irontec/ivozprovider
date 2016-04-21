@@ -82,6 +82,7 @@ production:
     dtmf_mode: 
       title: _('Dtmf mode')
       type: select
+      defaultValue: rfc4733
       source: 
         data: inline
         values: 

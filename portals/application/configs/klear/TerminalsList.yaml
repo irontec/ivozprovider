@@ -4,25 +4,6 @@
 
 
 production:
-  terminalBlacklist: &terminalBlacklist
-    sorcery_id: true
-    aors: true
-    auth: true
-    outbound_proxy: true
-    send_pai: true
-    send_rpid: true
-    contact: true
-    default_expiration: true
-    max_contacts: true
-    minimum_expiration: true
-    remove_existing: true
-    qualify_frequency: true
-    authenticate_qualify: true
-    maximum_expiration: true
-    support_path: true
-    mailboxes_aors: true
-    subscribecontext: true
-
   main: 
     module: klearMatrix
     defaultScreen: terminalsList_screen
@@ -38,8 +19,10 @@ production:
         <<: *forcedCompany
       fields:
         blacklist: 
-          <<: *terminalBlacklist
           password: true
+          mac: true
+          dtmf_mode: true
+          lastProvisionDate: true
         options: 
           title: _("Options")
           screens: 
@@ -48,8 +31,16 @@ production:
             terminalsDel_dialog: true
           default: terminalsEdit_screen
         order:
-          name: true
           TerminalModelId: true
+          name: true
+          password: true
+          disallow: true
+          allow: true
+          direct_media: true
+          direct_media_method: true
+          dtmf_mode: true
+          mac: true
+          lastProvisionDate: true
       options: 
         title: _("Options")
         screens: 
@@ -68,8 +59,30 @@ production:
       shortcutOption: N
       fields:
         blacklist: 
-          <<: *terminalBlacklist
           lastProvisionDate: true
+      fixedPositions: &TerminalsFixedPositions_link
+        group0:
+          label: _("Login Info")
+          colsPerRow: 3
+          fields:
+            TerminalModelId: 1
+            name: 1
+            password: 1
+        group1:
+          label: _("Connection Info")     
+          colsPerRow: 6
+          fields:
+            disallow: 3
+            allow: 3
+            dtmf_mode: 2
+            direct_media: 2
+            direct_media_method: 2
+        group2:
+          label: _("Provisioning Info")
+          colsPerRow: 3
+          fields:
+            mac: 1
+            lastProvisionDate: 1
     terminalsEdit_screen: &terminalsEdit_screenLink 
       <<: *Terminals
       controller: edit
@@ -81,8 +94,8 @@ production:
       fields:
         readOnly: 
           lastProvisionDate: true
-        blacklist: 
-          <<: *terminalBlacklist
+      fixedPositions:
+        <<: *TerminalsFixedPositions_link
   dialogs: &terminals_dialogsLink
     terminalsDel_dialog: &terminalsDel_dialogLink 
       <<: *Terminals

@@ -51,6 +51,10 @@ class ProxyTrunks extends MapperAbstract
                 'id' => $model->getId(),
                 'name' => $model->getName(),
                 'ip' => $model->getIp(),
+                'disallow' => $model->getDisallow(),
+                'allow' => $model->getAllow(),
+                'direct_media' => $model->getDirectMedia(),
+                'direct_media_method' => $model->getDirectMediaMethod(),
             );
         } else {
             $result = array();
@@ -547,16 +551,28 @@ class ProxyTrunks extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setName($data['name'])
-                  ->setIp($data['ip']);
+                  ->setIp($data['ip'])
+                  ->setDisallow($data['disallow'])
+                  ->setAllow($data['allow'])
+                  ->setDirectMedia($data['direct_media'])
+                  ->setDirectMediaMethod($data['direct_media_method']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
-                  ->setIp($data->{'ip'});
+                  ->setIp($data->{'ip'})
+                  ->setDisallow($data->{'disallow'})
+                  ->setAllow($data->{'allow'})
+                  ->setDirectMedia($data->{'direct_media'})
+                  ->setDirectMediaMethod($data->{'direct_media_method'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ProxyTrunks) {
             $entry->setId($data->getId())
                   ->setName($data->getName())
-                  ->setIp($data->getIp());
+                  ->setIp($data->getIp())
+                  ->setDisallow($data->getDisallow())
+                  ->setAllow($data->getAllow())
+                  ->setDirectMedia($data->getDirectMedia())
+                  ->setDirectMediaMethod($data->getDirectMediaMethod());
 
         }
 

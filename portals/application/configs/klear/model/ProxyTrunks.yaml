@@ -11,6 +11,55 @@ production:
       type: text
       required: true
       maxLength: 100
+    disallow: 
+      title: _('Disallowed codecs')
+      type: text
+      defaultValue: all
+      maxLength: 100
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Comma separated codec names")
+        label: _("Need help?")       
+    allow: 
+      title: _('Allowed codecs')
+      type: text
+      defaultValue: alaw
+      maxLength: 100
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Comma separated codec names")
+        label: _("Need help?")       
+    direct_media: 
+      title: _('Direct media')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values:
+          'yes': 
+            title: _("Yes")
+            visualFilter:
+              show: ["direct_media_method"]
+              hide: []
+          'no':
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: ["direct_media_method"]
+    direct_media_method: 
+      title: _('Direct media method')
+      type: select
+      defaultValue: invite
+      source: 
+        data: inline
+        values: 
+          'invite': 'invite'
+          'reinvite': 'reinvite'
+          'update': 'update'
 staging: 
   _extends: production
 testing: 

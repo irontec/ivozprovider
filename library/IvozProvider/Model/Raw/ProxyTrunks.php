@@ -22,6 +22,15 @@ namespace IvozProvider\Model\Raw;
 class ProxyTrunks extends ModelAbstract
 {
 
+    protected $_directMediaAcceptedValues = array(
+        'yes',
+        'no',
+    );
+    protected $_directMediaMethodAcceptedValues = array(
+        'invite',
+        'reinvite',
+        'update',
+    );
 
     /**
      * Database var type int
@@ -44,6 +53,35 @@ class ProxyTrunks extends ModelAbstract
      */
     protected $_ip;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_disallow;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_allow;
+
+    /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_directMedia;
+
+    /**
+     * [enum:update|invite|reinvite]
+     * Database var type enum('invite','reinvite','update')
+     *
+     * @var string
+     */
+    protected $_directMediaMethod;
+
 
 
     /**
@@ -58,6 +96,10 @@ class ProxyTrunks extends ModelAbstract
         'id'=>'id',
         'name'=>'name',
         'ip'=>'ip',
+        'disallow'=>'disallow',
+        'allow'=>'allow',
+        'direct_media'=>'directMedia',
+        'direct_media_method'=>'directMediaMethod',
     );
 
     /**
@@ -66,6 +108,7 @@ class ProxyTrunks extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'direct_media_method'=> array('enum:update|invite|reinvite'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -87,6 +130,10 @@ class ProxyTrunks extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'disallow' => 'all',
+            'allow' => 'all',
+            'directMedia' => 'yes',
+            'directMediaMethod' => 'update',
         );
 
         $this->_initFileObjects();
@@ -223,6 +270,148 @@ class ProxyTrunks extends ModelAbstract
     public function getIp()
     {
         return $this->_ip;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setDisallow($data)
+    {
+
+        if ($this->_disallow != $data) {
+            $this->_logChange('disallow');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_disallow = $data;
+
+        } else if (!is_null($data)) {
+            $this->_disallow = (string) $data;
+
+        } else {
+            $this->_disallow = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column disallow
+     *
+     * @return string
+     */
+    public function getDisallow()
+    {
+        return $this->_disallow;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setAllow($data)
+    {
+
+        if ($this->_allow != $data) {
+            $this->_logChange('allow');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_allow = $data;
+
+        } else if (!is_null($data)) {
+            $this->_allow = (string) $data;
+
+        } else {
+            $this->_allow = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column allow
+     *
+     * @return string
+     */
+    public function getAllow()
+    {
+        return $this->_allow;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setDirectMedia($data)
+    {
+
+        if ($this->_directMedia != $data) {
+            $this->_logChange('directMedia');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_directMedia = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directMediaAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for directMedia'));
+            }
+            $this->_directMedia = (string) $data;
+
+        } else {
+            $this->_directMedia = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column direct_media
+     *
+     * @return string
+     */
+    public function getDirectMedia()
+    {
+        return $this->_directMedia;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ProxyTrunks
+     */
+    public function setDirectMediaMethod($data)
+    {
+
+        if ($this->_directMediaMethod != $data) {
+            $this->_logChange('directMediaMethod');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_directMediaMethod = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+            }
+            $this->_directMediaMethod = (string) $data;
+
+        } else {
+            $this->_directMediaMethod = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column direct_media_method
+     *
+     * @return string
+     */
+    public function getDirectMediaMethod()
+    {
+        return $this->_directMediaMethod;
     }
 
     /**

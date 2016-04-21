@@ -2,32 +2,6 @@
 #include conf.d/actions.yaml
 
 production: 
-  proxyTrunksBlacklist: &proxyTrunksBlacklist
-    sorcery_id: true
-    aors: true
-    auth: true
-    outbound_proxy: true
-    send_pai: true
-    send_rpid: true
-    default_expiration: true
-    max_contacts: true
-    minimum_expiration: true
-    remove_existing: true
-    qualify_frequency: true
-    authenticate_qualify: true
-    maximum_expiration: true
-    support_path: true
-    TerminalModelId: true
-    password: true
-    subscribecontext: true
-    mailboxes_aors: true
-    allow: true
-    disallow: true
-    direct_media: true
-    direct_media_method: true
-    context: true
-    contact: true
-  
   main: 
     module: klearMatrix
     defaultScreen: proxyTrunksList_screen
@@ -39,8 +13,6 @@ production:
       <<: *ProxyTrunks
       title: _("List of %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 0), "[format| (%parent%)]")
       fields: 
-        blacklist: 
-          <<: *proxyTrunksBlacklist
         options: 
           title: _("Options")
           screens: 
@@ -62,18 +34,29 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Proxy trunk', 'Proxy trunks', 1))
       shortcutOption: N
-      fields:
-        blacklist: 
-          <<: *proxyTrunksBlacklist
+      fixedPositions: &ProxyTrunksFixedPositions_link
+        group0:
+          label: _("Basic Info")
+          colsPerRow: 3
+          fields:
+            name: 1
+            ip: 1
+        group1:
+          label: _("Connection Info")     
+          colsPerRow: 5
+          fields:
+            disallow: 2
+            allow: 2
+            direct_media: 2
+            direct_media_method: 2
     proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink 
       <<: *ProxyTrunks
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
-      fields:
-        blacklist: 
-          <<: *proxyTrunksBlacklist
+      fixedPositions:
+        <<: *ProxyTrunksFixedPositions_link
   dialogs: 
     proxyTrunksDel_dialog: &proxyTrunksDel_dialogLink 
       <<: *ProxyTrunks

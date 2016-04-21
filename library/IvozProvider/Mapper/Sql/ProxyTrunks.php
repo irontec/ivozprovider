@@ -32,9 +32,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
             $endpoint = $endpointMapper->findOneByField("proxyTrunkId", $response);
 
             // If not found create a new one
-            $forceInsert = false;
             if (is_null($endpoint)) {
-                $forceInsert = true;
                 $endpoint = new \IvozProvider\Model\AstPsEndpoints();
             }
             
@@ -43,9 +41,11 @@ class ProxyTrunks extends Raw\ProxyTrunks
                 ->setSorceryId($model->getName())
                 ->setAors($model->getName())
                 ->setContext("incoming")
-                ->setDirectMedia("yes")
-                //->setDirectMediaMethod("invite")
-                ->save($forceInsert);
+                ->setDisallow($model->getDisallow())
+                ->setAllow($model->getAllow())
+                ->setDirectMedia($model->getDirectMedia())
+                ->setDirectMediaMethod($model->getDirectMediaMethod())
+                ->save();
             
             // Replicate Terminal into ast_ps_aors
             $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();

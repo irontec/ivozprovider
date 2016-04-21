@@ -26,6 +26,16 @@ class Terminals extends ModelAbstract
         'yes',
         'no',
     );
+    protected $_directMediaMethodAcceptedValues = array(
+        'invite',
+        'reinvite',
+        'update',
+    );
+    protected $_dtmfModeAcceptedValues = array(
+        'rfc4733',
+        'inband',
+        'info',
+    );
 
     /**
      * Database var type int
@@ -53,6 +63,13 @@ class Terminals extends ModelAbstract
      *
      * @var string
      */
+    protected $_disallow;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_allow;
 
     /**
@@ -61,6 +78,21 @@ class Terminals extends ModelAbstract
      * @var string
      */
     protected $_directMedia;
+
+    /**
+     * [enum:update|invite|reinvite]
+     * Database var type enum('invite','reinvite','update')
+     *
+     * @var string
+     */
+    protected $_directMediaMethod;
+
+    /**
+     * Database var type enum('rfc4733','inband','info')
+     *
+     * @var string
+     */
+    protected $_dtmfMode;
 
     /**
      * [password]
@@ -127,8 +159,11 @@ class Terminals extends ModelAbstract
         'id'=>'id',
         'TerminalModelId'=>'TerminalModelId',
         'name'=>'name',
+        'disallow'=>'disallow',
         'allow'=>'allow',
         'direct_media'=>'directMedia',
+        'direct_media_method'=>'directMediaMethod',
+        'dtmf_mode'=>'dtmfMode',
         'password'=>'password',
         'companyId'=>'companyId',
         'mac'=>'mac',
@@ -141,6 +176,7 @@ class Terminals extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'direct_media_method'=> array('enum:update|invite|reinvite'),
             'password'=> array('password'),
         ));
 
@@ -175,8 +211,11 @@ class Terminals extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'disallow' => 'all',
             'allow' => 'alaw',
             'directMedia' => 'yes',
+            'directMediaMethod' => 'update',
+            'dtmfMode' => 'rfc4733',
             'password' => '',
         );
 
@@ -321,6 +360,40 @@ class Terminals extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Terminals
      */
+    public function setDisallow($data)
+    {
+
+        if ($this->_disallow != $data) {
+            $this->_logChange('disallow');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_disallow = $data;
+
+        } else if (!is_null($data)) {
+            $this->_disallow = (string) $data;
+
+        } else {
+            $this->_disallow = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column disallow
+     *
+     * @return string
+     */
+    public function getDisallow()
+    {
+        return $this->_disallow;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
     public function setAllow($data)
     {
 
@@ -385,6 +458,80 @@ class Terminals extends ModelAbstract
     public function getDirectMedia()
     {
         return $this->_directMedia;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setDirectMediaMethod($data)
+    {
+
+        if ($this->_directMediaMethod != $data) {
+            $this->_logChange('directMediaMethod');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_directMediaMethod = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+            }
+            $this->_directMediaMethod = (string) $data;
+
+        } else {
+            $this->_directMediaMethod = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column direct_media_method
+     *
+     * @return string
+     */
+    public function getDirectMediaMethod()
+    {
+        return $this->_directMediaMethod;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setDtmfMode($data)
+    {
+
+        if ($this->_dtmfMode != $data) {
+            $this->_logChange('dtmfMode');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_dtmfMode = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_dtmfModeAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for dtmfMode'));
+            }
+            $this->_dtmfMode = (string) $data;
+
+        } else {
+            $this->_dtmfMode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column dtmf_mode
+     *
+     * @return string
+     */
+    public function getDtmfMode()
+    {
+        return $this->_dtmfMode;
     }
 
     /**
