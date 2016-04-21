@@ -67,8 +67,6 @@ class ApplicationServers extends Raw\ApplicationServers
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxytrunks' => "permissions.trustedReload",
-                'proxyusers' => "permissions.trustedReload",
                 'proxytrunks' => "dispatcher.reload",
                 'proxyusers' => "dispatcher.reload",
         );

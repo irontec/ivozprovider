@@ -74,8 +74,7 @@ class PeerServers extends Raw\PeerServers
     {
         $proxyServers = array(
                 'proxytrunks' => array(
-                        "permissions.addressReload",
-                        "lcr.reload"
+                        "lcr.reload",
                         )
         );
         $xmlrpcJob = new Xmlrpc();

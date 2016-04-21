@@ -48,7 +48,7 @@ class PeeringContracts extends Raw\PeeringContracts
         try {
             $this->_sendXmlRcp();
         } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Peer srever may have been deleted.</p>";
+            $message = $e->getMessage()."<p>Peerserver may have been deleted.</p>";
             throw new \Exception($message);
         }
         return $response;
@@ -58,7 +58,6 @@ class PeeringContracts extends Raw\PeeringContracts
     {
         $proxyServers = array(
                 'proxytrunks' => array(
-                        "permissions.addressReload",
                         "lcr.reload"
                         )
         );
