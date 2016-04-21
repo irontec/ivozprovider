@@ -25,7 +25,6 @@ class OutgoingRouting extends ModelAbstract
     protected $_typeAcceptedValues = array(
         'pattern',
         'group',
-        'regexp',
     );
 
     /**
@@ -36,7 +35,7 @@ class OutgoingRouting extends ModelAbstract
     protected $_id;
 
     /**
-     * Database var type enum('pattern','group','regexp')
+     * Database var type enum('pattern','group')
      *
      * @var string
      */
@@ -55,13 +54,6 @@ class OutgoingRouting extends ModelAbstract
      * @var int
      */
     protected $_targetGroupId;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_regexp;
 
     /**
      * Database var type int
@@ -156,7 +148,6 @@ class OutgoingRouting extends ModelAbstract
         'type'=>'type',
         'targetPatternId'=>'targetPatternId',
         'targetGroupId'=>'targetGroupId',
-        'regexp'=>'regexp',
         'peeringContractId'=>'peeringContractId',
         'priority'=>'priority',
         'weight'=>'weight',
@@ -390,40 +381,6 @@ class OutgoingRouting extends ModelAbstract
     public function getTargetGroupId()
     {
         return $this->_targetGroupId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function setRegexp($data)
-    {
-
-        if ($this->_regexp != $data) {
-            $this->_logChange('regexp');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_regexp = $data;
-
-        } else if (!is_null($data)) {
-            $this->_regexp = (string) $data;
-
-        } else {
-            $this->_regexp = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column regexp
-     *
-     * @return string
-     */
-    public function getRegexp()
-    {
-        return $this->_regexp;
     }
 
     /**

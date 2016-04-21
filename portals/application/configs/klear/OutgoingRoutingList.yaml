@@ -21,14 +21,12 @@ production:
           target: true
           targetPatternId: true
           targetGroupId: true
-          regexp: true
           peeringContractId: true
           priority: true
           weight: true
         blacklist:
           targetPatternId: true
           targetGroupId: true
-          regexp: true
         options: 
           title: _("Options")
           screens: 
@@ -66,7 +64,6 @@ production:
             type: 5
             targetPatternId: 5
             targetGroupId: 5
-            regexp: 5
         group2:
           colsPerRow: 12
           label: _("Outgoing route")

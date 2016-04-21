@@ -9,23 +9,18 @@ production:
         data: inline
         values: 
           'pattern':
-            title: _('pattern')
+            title: _('Pattern')
             visualFilter:
               show: ["targetPatternId"]
-              hide: ["targetGroupId", "regexp"]
+              hide: ["targetGroupId"]
           'group':
-            title: _('group')
+            title: _('Group')
             visualFilter:
               show: ["targetGroupId" ]
-              hide: ["targetPatternId", "regexp"]
-          'regexp':
-            title: _('regexp')
-            visualFilter:
-              show: ["regexp" ]
-              hide: ["targetGroupId", "targetPatternId"]
+              hide: ["targetPatternId"]
       default: true
     targetPatternId: 
-      title: _('Target Pattern')
+      title: _('Select destination pattern')
       type: select
       source: 
         data: mapper
@@ -38,7 +33,7 @@ production:
             template: '%name%'
           order: name
     targetGroupId: 
-      title: _('Target group')
+      title: _('Select destination group')
       type: select
       source: 
         data: mapper

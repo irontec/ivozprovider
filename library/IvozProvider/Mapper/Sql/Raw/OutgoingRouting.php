@@ -52,7 +52,6 @@ class OutgoingRouting extends MapperAbstract
                 'type' => $model->getType(),
                 'targetPatternId' => $model->getTargetPatternId(),
                 'targetGroupId' => $model->getTargetGroupId(),
-                'regexp' => $model->getRegexp(),
                 'peeringContractId' => $model->getPeeringContractId(),
                 'priority' => $model->getPriority(),
                 'weight' => $model->getWeight(),
@@ -570,7 +569,6 @@ class OutgoingRouting extends MapperAbstract
                   ->setType($data['type'])
                   ->setTargetPatternId($data['targetPatternId'])
                   ->setTargetGroupId($data['targetGroupId'])
-                  ->setRegexp($data['regexp'])
                   ->setPeeringContractId($data['peeringContractId'])
                   ->setPriority($data['priority'])
                   ->setWeight($data['weight'])
@@ -581,7 +579,6 @@ class OutgoingRouting extends MapperAbstract
                   ->setType($data->{'type'})
                   ->setTargetPatternId($data->{'targetPatternId'})
                   ->setTargetGroupId($data->{'targetGroupId'})
-                  ->setRegexp($data->{'regexp'})
                   ->setPeeringContractId($data->{'peeringContractId'})
                   ->setPriority($data->{'priority'})
                   ->setWeight($data->{'weight'})
@@ -593,7 +590,6 @@ class OutgoingRouting extends MapperAbstract
                   ->setType($data->getType())
                   ->setTargetPatternId($data->getTargetPatternId())
                   ->setTargetGroupId($data->getTargetGroupId())
-                  ->setRegexp($data->getRegexp())
                   ->setPeeringContractId($data->getPeeringContractId())
                   ->setPriority($data->getPriority())
                   ->setWeight($data->getWeight())

@@ -71,9 +71,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
           fieldName: 
             fields: 
-              - regexp
-            template: '%regexp%'
-          order: regexp
+              - id
+            template: '%id%'
+          order: id
         'null': _("Unasigned")
 staging: 
   _extends: production

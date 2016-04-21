@@ -10,7 +10,6 @@ production:
         values: 
           'pattern': _('pattern')
           'group': _('group')
-          'regexp': _('regexp')
       default: true
     targetPatternId: 
       title: _('Target pattern id')
@@ -38,10 +37,6 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    regexp: 
-      title: _('Regexp')
-      type: text
-      maxLength: 1024
     peeringContractId: 
       title: _('Peering contract id')
       type: select

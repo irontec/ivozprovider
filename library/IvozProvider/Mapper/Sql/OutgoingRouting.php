@@ -54,22 +54,6 @@ class OutgoingRouting extends Raw\OutgoingRouting
                 foreach ($relPatterns as $relPattern) {
                     $LcrRules = array_merge($LcrRules, $relPattern->getTargetPattern()->getLcrRules());
                 }
-            } elseif ($model->getType() == 'regexp') {
-                $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
-
-                $lcrRule = $lcrRulesMapper->findOneByField("outgoingRoutingId", $pk);
-        
-                if (is_null($lcrRule)) {
-                    $lcrRule = new \IvozProvider\Model\LcrRules();
-                }
-                $lcrRule->setBrandId($model->getBrandId())
-                        ->setTag('custom')
-                        ->setDescription('custom regexp')
-                        ->setOutgoingRoutingId($pk)
-                        ->setCondition($model->getRegExp())
-                        ->save();
-
-                array_push($LcrRules, $lcrRule);
             } elseif ($model->getType() == 'pattern') {
                 $LcrRules = array_merge($LcrRules, $model->getTargetPattern()->getLcrRules());
             } else {

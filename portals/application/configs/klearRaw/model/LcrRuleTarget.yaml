@@ -38,9 +38,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
           fieldName: 
             fields: 
-              - regexp
-            template: '%regexp%'
-          order: regexp
+              - id
+            template: '%id%'
+          order: id
     rule_id: 
       title: _('Rule id')
       type: select

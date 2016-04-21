@@ -12,9 +12,7 @@ class IvozProvider_Klear_Ghost_OutgoingRouteType extends KlearMatrix_Model_Field
     {
         $outgoingRouteType = $model->getType();
 
-        if ($outgoingRouteType == 'regexp') {
-            return $model->getRegexp();
-        } elseif ($outgoingRouteType == 'group') {
+        if ($outgoingRouteType == 'group') {
             return $model->getTargetGroup()->getName();
         } elseif ($outgoingRouteType == 'pattern') {
             return $model->getTargetPattern()->getName();
