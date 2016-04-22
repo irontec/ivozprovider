@@ -56,7 +56,7 @@
 ###    UPDATE kam_{users,trunks}_acc_cdrs SET parsed='error' WHERE callid='$CURRENT_CALLID';
 ###    
 ###     
-###     FORMATO TABLA FINAL: parsedCDR    
+###     FORMATO TABLA FINAL: ParsedCDR    
 ###     
 ###     calldate (es el calldate de la pata A, el de la pata B podria obtenerse con las duraciones)
 ###     src (Real Caller)
@@ -93,11 +93,11 @@ use POSIX;
 #########################################
 
 # MySQL connection data
-my $db = 'oasis';
+my $db = 'ivozprovider';
 my $host = '127.0.0.1';
 my $port = 3306;
-my $user = 'root';
-my $pass = 'farsa';
+my $user = 'kamailio';
+my $pass = 'ironsecret';
 my $dsn = "DBI:mysql:database=$db;host=$host;port=$port";
 
 # Gearmand connection data
@@ -259,12 +259,12 @@ sub insertStat {
     my $fields = join ',', map {"`$_`"} @STATFIELDS;
     my $values = join ',', map {"'$stat{$_}'"} @STATFIELDS;
 
-    my $insertStat = "INSERT INTO parsedCDRs ($fields) VALUES ($values)";
+    my $insertStat = "INSERT INTO ParsedCDRs ($fields) VALUES ($values)";
 
     # Print values
     say "[$stat{aleg}] $_ => $stat{$_}" for @STATFIELDS;
 
-    # Insert new row to parsedCDRs
+    # Insert new row to ParsedCDRs
     my $sth = $dbh->prepare($insertStat)
                     or die "Couldn't prepare statement: $insertStat";
     $sth->execute() 
