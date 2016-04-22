@@ -29,6 +29,6 @@ class MusicOnHold extends Raw\MusicOnHold
     }
     
     public function getOwner(){
-        return $this->_companyId;
+        return 'company' . $this->_companyId;
     }
 }

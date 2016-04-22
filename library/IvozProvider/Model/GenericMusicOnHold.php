@@ -29,6 +29,6 @@ class GenericMusicOnHold extends Raw\GenericMusicOnHold
     }
     
     public function getOwner(){
-        return 'brand' . $this->getBrand()->getId();
+        return 'brand' . $this->_brandId;
     }
 }

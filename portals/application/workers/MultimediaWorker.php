@@ -48,7 +48,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
             
             $path = $this->_getFilePath();
             $encodedFilePath = $path . DIRECTORY_SEPARATOR . 'tmp';
-            $encodedFile = $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.mp3';
+            $encodedFile = $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.wav';
             
             $this->_createFolder($encodedFilePath);
             
@@ -56,7 +56,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
             $this->_logger->log($this->_modelName . "-  " . $cmd, Zend_Log::INFO);
             exec($cmd);
             
-            $model->putEncodedFile($encodedFile, $filename .'.mp3');
+            $model->putEncodedFile($encodedFile, $filename .'.wav');
             $model->setStatus("ready")
                   ->save();
             
@@ -101,7 +101,7 @@ class MultimediaWorker extends Iron_Gearman_Worker
         $astMusicOnHold->setName($model->getOwner()) 
         ->setMode("files")
         ->setDirectory($folderPath)
-        ->setFormat("mp3")
+        ->setFormat("alaw")
         ->setStamp('CURRENT_TIMESTAMP') // pequeño truco de los modelos
         ->save();
     }
