@@ -6,8 +6,8 @@
 
 # Enable and start cdr-parser
 /bin/systemctl daemon-reload
-/bin/systemctl start CDRparser.timer
-/bin/systemctl enable CDRparser.timer
+/bin/systemctl start cdrparser.timer
+/bin/systemctl enable cdrparser.timer
 
 :
 

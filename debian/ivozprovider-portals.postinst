@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # Change cache dir perms
-chmod 777 /opt/irontec/ivozprovider/app-portals/application/cache
+chmod 777 /opt/irontec/ivozprovider/portals/application/cache
 
 :

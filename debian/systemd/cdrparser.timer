@@ -1,5 +1,5 @@
 [Unit]
-Description=Run CDRparser every 5 minutes
+Description=Run CDRparser timer
 
 [Timer]
 OnBootSec=5min

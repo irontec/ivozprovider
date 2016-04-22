@@ -1,6 +1,0 @@
-[Unit]
-Description=CDRparser
-
-[Service]
-Type=oneshot
-ExecStart=/opt/irontec/ivozprovider/cdr-parser/CDRparser.pl

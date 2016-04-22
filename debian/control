@@ -66,7 +66,8 @@ Section: admin
 Priority: optional
 Pre-Depends: ivozprovider-profile-common,
     mysql-server,
-    libstring-crc32-perl
+    libstring-crc32-perl,
+    libgearman-client-perl
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Data System Profile
  .
@@ -84,7 +85,9 @@ Depends: ivozprovider-profile-common,
     php5-curl,
     php5-yaml,
     ivozprovider-portals,
-    ivozprovider-userweb
+    ivozprovider-userweb,
+    gearman-job-server,
+    supervisor
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portal System Profile
  .
