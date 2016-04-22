@@ -35,7 +35,6 @@ class ApplicationServers extends Raw\ApplicationServers
                 $kamDispatcher = new \IvozProvider\Model\KamDispatcher();
                 $kamDispatcher->setapplicationServerId($response);
             }
-            $kamDispatcher->setDestination();
             $kamDispatcher->setSetid('1')
                           ->setDestination('sip:' . $model->getIp() . ":6060")
                           ->setDescription($model->getName())
