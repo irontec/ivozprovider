@@ -28,25 +28,24 @@ class TargetPatterns extends Raw\TargetPatterns
     {
         $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
 
-        
+        // If any LcrRule uses this Pattern, update accordingly
         $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
-        $lcrRule = $lcrRulesMapper->findOneByField("targetPatternId", $pk);
+        $lcrRules = $lcrRulesMapper->findByField("targetPatternId", $pk);
 
-        if (is_null($lcrRule)) {
-            $lcrRule = new \IvozProvider\Model\LcrRules();
-        }
-        $lcrRule->setBrandId($model->getBrandId())
-              ->setTag($model->getName())
-              ->setDescription($model->getDescription())
-              ->setTargetPatternId($pk)
-              ->setCondition($model->getRegExp())
-              ->save();
+        if (!empty($lcrRules)) {
+            foreach ($lcrRules as $lcrRule) {
+                $lcrRule->setTag($model->getName())
+                        ->setDescription($model->getDescription())
+                        ->setCondition($model->getRegExp())
+                        ->save();
+            }
 
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Target pattern may have been saved.</p>";
-            throw new \Exception($message);
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>Target pattern may have been saved.</p>";
+                throw new \Exception($message);
+            }
         }
 
         return $pk;
@@ -54,13 +53,21 @@ class TargetPatterns extends Raw\TargetPatterns
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
+        // If any LcrRule uses this Pattern, lcr.reload
+        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
+        $lcrRules = $lcrRulesMapper->findByField("targetPatternId", $model->getPrimaryKey());
+
         $response = parent::delete($model);
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Target pattern may have been deleted.</p>";
-            throw new \Exception($message);
+
+        if (!empty($lcrRules)) {
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>Target pattern may have been deleted.</p>";
+                throw new \Exception($message);
+            }
         }
+
         return $response;
     }
 

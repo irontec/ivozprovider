@@ -262,12 +262,28 @@ class Companies extends ModelAbstract
     protected $_Invoices;
 
     /**
-     * Dependent relation LcrRuleTarget_ibfk_2
+     * Dependent relation LcrGateways_ibfk_1
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
+     * @var \IvozProvider\Model\Raw\LcrGateways[]
      */
-    protected $_LcrRuleTarget;
+    protected $_LcrGateways;
+
+    /**
+     * Dependent relation LcrRuleTargets_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\LcrRuleTargets[]
+     */
+    protected $_LcrRuleTargets;
+
+    /**
+     * Dependent relation LcrRules_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\LcrRules[]
+     */
+    protected $_LcrRules;
 
     /**
      * Dependent relation Locutions_ibfk_1
@@ -452,9 +468,17 @@ class Companies extends ModelAbstract
                     'property' => 'Invoices',
                     'table_name' => 'Invoices',
                 ),
-            'LcrRuleTargetIbfk2' => array(
-                    'property' => 'LcrRuleTarget',
-                    'table_name' => 'LcrRuleTarget',
+            'LcrGatewaysIbfk1' => array(
+                    'property' => 'LcrGateways',
+                    'table_name' => 'LcrGateways',
+                ),
+            'LcrRuleTargetsIbfk1' => array(
+                    'property' => 'LcrRuleTargets',
+                    'table_name' => 'LcrRuleTargets',
+                ),
+            'LcrRulesIbfk1' => array(
+                    'property' => 'LcrRules',
+                    'table_name' => 'LcrRules',
                 ),
             'LocutionsIbfk1' => array(
                     'property' => 'Locutions',
@@ -2414,21 +2438,21 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_2
+     * Sets dependent relations LcrGateways_ibfk_1
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrGateways
      * @return \IvozProvider\Model\Raw\Companies
      */
-    public function setLcrRuleTarget(array $data, $deleteOrphans = false)
+    public function setLcrGateways(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_LcrRuleTarget === null) {
+            if ($this->_LcrGateways === null) {
 
-                $this->getLcrRuleTarget();
+                $this->getLcrGateways();
             }
 
-            $oldRelations = $this->_LcrRuleTarget;
+            $oldRelations = $this->_LcrGateways;
 
             if (is_array($oldRelations)) {
 
@@ -2452,39 +2476,39 @@ class Companies extends ModelAbstract
             }
         }
 
-        $this->_LcrRuleTarget = array();
+        $this->_LcrGateways = array();
 
         foreach ($data as $object) {
-            $this->addLcrRuleTarget($object);
+            $this->addLcrGateways($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_2
+     * Sets dependent relations LcrGateways_ibfk_1
      *
-     * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
+     * @param \IvozProvider\Model\Raw\LcrGateways $data
      * @return \IvozProvider\Model\Raw\Companies
      */
-    public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
+    public function addLcrGateways(\IvozProvider\Model\Raw\LcrGateways $data)
     {
-        $this->_LcrRuleTarget[] = $data;
-        $this->_setLoaded('LcrRuleTargetIbfk2');
+        $this->_LcrGateways[] = $data;
+        $this->_setLoaded('LcrGatewaysIbfk1');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTarget_ibfk_2
+     * Gets dependent LcrGateways_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return array The array of \IvozProvider\Model\Raw\LcrGateways
      */
-    public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
+    public function getLcrGateways($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk2';
+        $fkName = 'LcrGatewaysIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -2496,11 +2520,191 @@ class Companies extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_LcrRuleTarget = $related;
+            $this->_LcrGateways = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_LcrRuleTarget;
+        return $this->_LcrGateways;
+    }
+
+    /**
+     * Sets dependent relations LcrRuleTargets_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTargets
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setLcrRuleTargets(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_LcrRuleTargets === null) {
+
+                $this->getLcrRuleTargets();
+            }
+
+            $oldRelations = $this->_LcrRuleTargets;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_LcrRuleTargets = array();
+
+        foreach ($data as $object) {
+            $this->addLcrRuleTargets($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations LcrRuleTargets_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\LcrRuleTargets $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addLcrRuleTargets(\IvozProvider\Model\Raw\LcrRuleTargets $data)
+    {
+        $this->_LcrRuleTargets[] = $data;
+        $this->_setLoaded('LcrRuleTargetsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent LcrRuleTargets_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\LcrRuleTargets
+     */
+    public function getLcrRuleTargets($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRuleTargetsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_LcrRuleTargets = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_LcrRuleTargets;
+    }
+
+    /**
+     * Sets dependent relations LcrRules_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setLcrRules(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_LcrRules === null) {
+
+                $this->getLcrRules();
+            }
+
+            $oldRelations = $this->_LcrRules;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_LcrRules = array();
+
+        foreach ($data as $object) {
+            $this->addLcrRules($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations LcrRules_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\LcrRules $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addLcrRules(\IvozProvider\Model\Raw\LcrRules $data)
+    {
+        $this->_LcrRules[] = $data;
+        $this->_setLoaded('LcrRulesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent LcrRules_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\LcrRules
+     */
+    public function getLcrRules($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_LcrRules = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_LcrRules;
     }
 
     /**

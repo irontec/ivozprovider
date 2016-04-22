@@ -22,7 +22,6 @@ production:
           title: _("Options")
           screens: 
             targetGroupsEdit_screen: true
-            targetGroupsRelPatternsList_screen: true
           dialogs: 
             targetGroupsDel_dialog: true
           default: targetGroupsEdit_screen
@@ -56,19 +55,6 @@ production:
         <<: *forcedBrand
 
 
-    #targetGroupsRelPatterns: 
-    targetGroupsRelPatternsList_screen: 
-      <<: *targetGroupsRelPatternsList_screenLink
-      filterField: targetGroupId
-      parentOptionCustomizer: 
-        - recordCount
-    targetGroupsRelPatternsNew_screen: 
-      <<: *targetGroupsRelPatternsNew_screenLink
-      filterField: targetGroupId
-    targetGroupsRelPatternsEdit_screen: 
-      <<: *targetGroupsRelPatternsEdit_screenLink
-      filterField: targetGroupId
-
   dialogs: &targetGroups_dialogsLink 
     targetGroupsDel_dialog: &targetGroupsDel_dialogLink 
       <<: *TargetGroups
@@ -81,8 +67,6 @@ production:
       multiItem: 1
       labelOnList: 1
 
-  # targetGroupsRelPatterns dialogs: 
-    <<: *targetGroupsRelPatterns_dialogsLink
 staging: 
   _extends: production
 testing: 

@@ -38,9 +38,9 @@ class PeerServers extends ModelAbstract
     protected $_peeringContractId;
 
     /**
-     * Database var type varbinary(16)
+     * Database var type varchar
      *
-     * @var binary
+     * @var string
      */
     protected $_ip;
 
@@ -173,20 +173,12 @@ class PeerServers extends ModelAbstract
 
 
     /**
-     * Dependent relation LcrRuleTarget_ibfk_5
+     * Dependent relation LcrGateways_ibfk_2
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\LcrRuleTarget[]
+     * @var \IvozProvider\Model\Raw\LcrGateways[]
      */
-    protected $_LcrRuleTarget;
-
-    /**
-     * Dependent relation kam_users_address_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\KamUsersAddress[]
-     */
-    protected $_KamUsersAddress;
+    protected $_LcrGateways;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -235,18 +227,14 @@ class PeerServers extends ModelAbstract
         ));
 
         $this->setDependentList(array(
-            'LcrRuleTargetIbfk5' => array(
-                    'property' => 'LcrRuleTarget',
-                    'table_name' => 'LcrRuleTarget',
-                ),
-            'KamUsersAddressIbfk1' => array(
-                    'property' => 'KamUsersAddress',
-                    'table_name' => 'kam_users_address',
+            'LcrGatewaysIbfk2' => array(
+                    'property' => 'LcrGateways',
+                    'table_name' => 'LcrGateways',
                 ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
-            'LcrRuleTarget_ibfk_5'
+            'LcrGateways_ibfk_2'
         ));
 
 
@@ -360,7 +348,7 @@ class PeerServers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param string $data
      * @return \IvozProvider\Model\Raw\PeerServers
      */
     public function setIp($data)
@@ -373,14 +361,22 @@ class PeerServers extends ModelAbstract
             $this->_logChange('ip');
         }
 
-        $this->_ip = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_ip = $data;
+
+        } else if (!is_null($data)) {
+            $this->_ip = (string) $data;
+
+        } else {
+            $this->_ip = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column ip
      *
-     * @return binary
+     * @return string
      */
     public function getIp()
     {
@@ -1040,21 +1036,21 @@ class PeerServers extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_5
+     * Sets dependent relations LcrGateways_ibfk_2
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTarget
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrGateways
      * @return \IvozProvider\Model\Raw\PeerServers
      */
-    public function setLcrRuleTarget(array $data, $deleteOrphans = false)
+    public function setLcrGateways(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_LcrRuleTarget === null) {
+            if ($this->_LcrGateways === null) {
 
-                $this->getLcrRuleTarget();
+                $this->getLcrGateways();
             }
 
-            $oldRelations = $this->_LcrRuleTarget;
+            $oldRelations = $this->_LcrGateways;
 
             if (is_array($oldRelations)) {
 
@@ -1078,39 +1074,39 @@ class PeerServers extends ModelAbstract
             }
         }
 
-        $this->_LcrRuleTarget = array();
+        $this->_LcrGateways = array();
 
         foreach ($data as $object) {
-            $this->addLcrRuleTarget($object);
+            $this->addLcrGateways($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations LcrRuleTarget_ibfk_5
+     * Sets dependent relations LcrGateways_ibfk_2
      *
-     * @param \IvozProvider\Model\Raw\LcrRuleTarget $data
+     * @param \IvozProvider\Model\Raw\LcrGateways $data
      * @return \IvozProvider\Model\Raw\PeerServers
      */
-    public function addLcrRuleTarget(\IvozProvider\Model\Raw\LcrRuleTarget $data)
+    public function addLcrGateways(\IvozProvider\Model\Raw\LcrGateways $data)
     {
-        $this->_LcrRuleTarget[] = $data;
-        $this->_setLoaded('LcrRuleTargetIbfk5');
+        $this->_LcrGateways[] = $data;
+        $this->_setLoaded('LcrGatewaysIbfk2');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTarget_ibfk_5
+     * Gets dependent LcrGateways_ibfk_2
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return array The array of \IvozProvider\Model\Raw\LcrGateways
      */
-    public function getLcrRuleTarget($where = null, $orderBy = null, $avoidLoading = false)
+    public function getLcrGateways($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk5';
+        $fkName = 'LcrGatewaysIbfk2';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -1122,101 +1118,11 @@ class PeerServers extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_LcrRuleTarget = $related;
+            $this->_LcrGateways = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_LcrRuleTarget;
-    }
-
-    /**
-     * Sets dependent relations kam_users_address_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\KamUsersAddress
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setKamUsersAddress(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_KamUsersAddress === null) {
-
-                $this->getKamUsersAddress();
-            }
-
-            $oldRelations = $this->_KamUsersAddress;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_KamUsersAddress = array();
-
-        foreach ($data as $object) {
-            $this->addKamUsersAddress($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations kam_users_address_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\KamUsersAddress $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function addKamUsersAddress(\IvozProvider\Model\Raw\KamUsersAddress $data)
-    {
-        $this->_KamUsersAddress[] = $data;
-        $this->_setLoaded('KamUsersAddressIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent kam_users_address_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\KamUsersAddress
-     */
-    public function getKamUsersAddress($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'KamUsersAddressIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_KamUsersAddress = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_KamUsersAddress;
+        return $this->_LcrGateways;
     }
 
     /**

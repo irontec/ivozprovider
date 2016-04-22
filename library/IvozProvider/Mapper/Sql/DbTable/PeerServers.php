@@ -52,8 +52,7 @@ class PeerServers extends TableAbstract
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrGateways'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -96,10 +95,10 @@ class PeerServers extends TableAbstract
 	    'TABLE_NAME' => 'PeerServers',
 	    'COLUMN_NAME' => 'ip',
 	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'varbinary(16)',
+	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '50',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

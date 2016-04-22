@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include LcrRuleTargetList.yaml
-#include KamUsersAddressList.yaml
+#include LcrGatewaysList.yaml
 
 
 production: 
@@ -21,8 +20,7 @@ production:
           title: _("Options")
           screens: 
             peerServersEdit_screen: true
-            lcrRuleTargetList_screen: true
-            kamUsersAddressList_screen: true
+            lcrGatewaysList_screen: true
           dialogs: 
             peerServersDel_dialog: true
           default: peerServersEdit_screen
@@ -50,31 +48,18 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Peer server', 'Peer servers', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Peer server', 'Peer servers', 1), "[format| (%item%)]")
-    #lcrRuleTarget: 
-    <<: *lcrRuleTarget_screensLink
-    lcrRuleTargetList_screen: 
-      <<: *lcrRuleTargetList_screenLink
-      filterField: gw_id
-      parentOptionCustomizer: 
-        - recordCount
-    lcrRuleTargetNew_screen: 
-      <<: *lcrRuleTargetNew_screenLink
-      filterField: gw_id
-    lcrRuleTargetEdit_screen: 
-      <<: *lcrRuleTargetEdit_screenLink
-      filterField: gw_id
-
-    #kamUsersAddress: 
-    kamUsersAddressList_screen: 
-      <<: *kamUsersAddressList_screenLink
+    #lcrGateways: 
+    <<: *lcrGateways_screensLink
+    lcrGatewaysList_screen: 
+      <<: *lcrGatewaysList_screenLink
       filterField: peerServerId
       parentOptionCustomizer: 
         - recordCount
-    kamUsersAddressNew_screen: 
-      <<: *kamUsersAddressNew_screenLink
+    lcrGatewaysNew_screen: 
+      <<: *lcrGatewaysNew_screenLink
       filterField: peerServerId
-    kamUsersAddressEdit_screen: 
-      <<: *kamUsersAddressEdit_screenLink
+    lcrGatewaysEdit_screen: 
+      <<: *lcrGatewaysEdit_screenLink
       filterField: peerServerId
 
   dialogs: &peerServers_dialogsLink 
@@ -88,10 +73,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Peer server', 'Peer servers', 1))
       multiItem: 1
       labelOnList: 1
-  # lcrRuleTarget dialogs: 
-    <<: *lcrRuleTarget_dialogsLink
-  # kamUsersAddress dialogs: 
-    <<: *kamUsersAddress_dialogsLink
+  # lcrGateways dialogs: 
+    <<: *lcrGateways_dialogsLink
 staging: 
   _extends: production
 testing: 

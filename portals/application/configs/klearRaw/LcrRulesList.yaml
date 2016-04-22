@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include LcrRuleTargetList.yaml
+#include LcrRuleTargetsList.yaml
 
 
 production: 
@@ -20,7 +20,7 @@ production:
           title: _("Options")
           screens: 
             lcrRulesEdit_screen: true
-            lcrRuleTargetList_screen: true
+            lcrRuleTargetsList_screen: true
           dialogs: 
             lcrRulesDel_dialog: true
           default: lcrRulesEdit_screen
@@ -48,18 +48,18 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Lcr rule', 'Lcr rules', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Lcr rule', 'Lcr rules', 1), "[format| (%item%)]")
-    #lcrRuleTarget: 
-    <<: *lcrRuleTarget_screensLink
-    lcrRuleTargetList_screen: 
-      <<: *lcrRuleTargetList_screenLink
+    #lcrRuleTargets: 
+    <<: *lcrRuleTargets_screensLink
+    lcrRuleTargetsList_screen: 
+      <<: *lcrRuleTargetsList_screenLink
       filterField: rule_id
       parentOptionCustomizer: 
         - recordCount
-    lcrRuleTargetNew_screen: 
-      <<: *lcrRuleTargetNew_screenLink
+    lcrRuleTargetsNew_screen: 
+      <<: *lcrRuleTargetsNew_screenLink
       filterField: rule_id
-    lcrRuleTargetEdit_screen: 
-      <<: *lcrRuleTargetEdit_screenLink
+    lcrRuleTargetsEdit_screen: 
+      <<: *lcrRuleTargetsEdit_screenLink
       filterField: rule_id
 
   dialogs: &lcrRules_dialogsLink 
@@ -73,8 +73,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Lcr rule', 'Lcr rules', 1))
       multiItem: 1
       labelOnList: 1
-  # lcrRuleTarget dialogs: 
-    <<: *lcrRuleTarget_dialogsLink
+  # lcrRuleTargets dialogs: 
+    <<: *lcrRuleTargets_dialogsLink
 staging: 
   _extends: production
 testing: 

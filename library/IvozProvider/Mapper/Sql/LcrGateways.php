@@ -11,14 +11,14 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\LcrRuleTarget
+ * Data Mapper implementation for IvozProvider\Model\LcrGateways
  *
  * @package Mapper
  * @subpackage Sql
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
-class LcrRuleTarget extends Raw\LcrRuleTarget
+class LcrGateways extends Raw\LcrGateways
 {
 
 }

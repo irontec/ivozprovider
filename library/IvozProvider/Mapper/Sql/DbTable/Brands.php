@@ -56,8 +56,6 @@ class Brands extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\GenericServices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\InvoiceTemplates',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Invoices',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',

@@ -65,12 +65,17 @@ production:
       required: true
       source: 
         control: Spinner
+        min: 1
+        max: 254
     weight: 
       title: _('Weight')
       type: number
+      required: true
       defaultValue: 1
       source: 
         control: Spinner
+        min: 1
+        max: 254
     companyId: 
       title: _('Company')
       type: select

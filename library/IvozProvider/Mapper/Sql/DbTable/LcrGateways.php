@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for LcrRules
+ * Table definition for LcrGateways
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -19,14 +19,14 @@
  */
 
 namespace IvozProvider\Mapper\Sql\DbTable;
-class LcrRules extends TableAbstract
+class LcrGateways extends TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'LcrRules';
+    protected $_name = 'LcrGateways';
 
     /**
      * $_id - this is the primary key name
@@ -35,22 +35,22 @@ class LcrRules extends TableAbstract
      */
     protected $_id = 'id';
 
-    protected $_rowClass = 'IvozProvider\\Model\\LcrRules';
-    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\LcrRules';
+    protected $_rowClass = 'IvozProvider\\Model\\LcrGateways';
+    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\LcrGateways';
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'LcrRulesIbfk1' => array(
+        'LcrGatewaysIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         ),
-        'LcrRulesIbfk2' => array(
-            'columns' => 'targetPatternId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\TargetPatterns',
+        'LcrGatewaysIbfk2' => array(
+            'columns' => 'peerServerId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',
             'refColumns' => 'id'
         ),
-        'LcrRulesIbfk3' => array(
+        'LcrGatewaysIbfk3' => array(
             'columns' => 'outgoingRoutingId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
             'refColumns' => 'id'
@@ -63,7 +63,7 @@ class LcrRules extends TableAbstract
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
+	    'TABLE_NAME' => 'LcrGateways',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -80,7 +80,7 @@ class LcrRules extends TableAbstract
 	  'companyId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
+	    'TABLE_NAME' => 'LcrGateways',
 	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
@@ -94,16 +94,16 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'prefix' => 
+	  'gw_name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'prefix',
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'gw_name',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => '100',
+	    'NULLABLE' => false,
+	    'LENGTH' => '200',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -111,12 +111,29 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'from_uri' => 
+	  'ip' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'from_uri',
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'ip',
 	    'COLUMN_POSITION' => 4,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '50',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'hostname' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'hostname',
+	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -128,16 +145,33 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'request_uri' => 
+	  'port' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'request_uri',
-	    'COLUMN_POSITION' => 5,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'port',
+	    'COLUMN_POSITION' => 6,
+	    'DATA_TYPE' => 'smallint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'params' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'params',
+	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '100',
+	    'LENGTH' => '64',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -145,12 +179,97 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'stopper' => 
+	  'uri_scheme' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'stopper',
-	    'COLUMN_POSITION' => 6,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'uri_scheme',
+	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'transport' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'transport',
+	    'COLUMN_POSITION' => 9,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'strip' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'strip',
+	    'COLUMN_POSITION' => 10,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'prefix' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'prefix',
+	    'COLUMN_POSITION' => 11,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '16',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'tag' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'tag',
+	    'COLUMN_POSITION' => 12,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '64',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'flags' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'flags',
+	    'COLUMN_POSITION' => 13,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => '0',
 	    'NULLABLE' => false,
@@ -162,15 +281,15 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'enabled' => 
+	  'defunct' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'enabled',
-	    'COLUMN_POSITION' => 7,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'defunct',
+	    'COLUMN_POSITION' => 14,
 	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => '1',
-	    'NULLABLE' => false,
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
@@ -179,49 +298,15 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'tag' => 
+	  'peerServerId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'tag',
-	    'COLUMN_POSITION' => 8,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
-	    'LENGTH' => '55',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'description' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'description',
-	    'COLUMN_POSITION' => 9,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => '',
-	    'NULLABLE' => false,
-	    'LENGTH' => '500',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'targetPatternId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'targetPatternId',
-	    'COLUMN_POSITION' => 10,
+	    'TABLE_NAME' => 'LcrGateways',
+	    'COLUMN_NAME' => 'peerServerId',
+	    'COLUMN_POSITION' => 15,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
+	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
@@ -233,12 +318,12 @@ class LcrRules extends TableAbstract
 	  'outgoingRoutingId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
+	    'TABLE_NAME' => 'LcrGateways',
 	    'COLUMN_NAME' => 'outgoingRoutingId',
-	    'COLUMN_POSITION' => 11,
+	    'COLUMN_POSITION' => 16,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
+	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

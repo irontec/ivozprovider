@@ -453,29 +453,15 @@ class PeerServers extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getLcrRuleTarget(null, null, true) !== null) {
-                    $lcrRuleTarget = $model->getLcrRuleTarget();
+                if ($model->getLcrGateways(null, null, true) !== null) {
+                    $lcrGateways = $model->getLcrGateways();
 
-                    if (!is_array($lcrRuleTarget)) {
+                    if (!is_array($lcrGateways)) {
 
-                        $lcrRuleTarget = array($lcrRuleTarget);
+                        $lcrGateways = array($lcrGateways);
                     }
 
-                    foreach ($lcrRuleTarget as $value) {
-                        $value->setGwId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getKamUsersAddress(null, null, true) !== null) {
-                    $kamUsersAddress = $model->getKamUsersAddress();
-
-                    if (!is_array($kamUsersAddress)) {
-
-                        $kamUsersAddress = array($kamUsersAddress);
-                    }
-
-                    foreach ($kamUsersAddress as $value) {
+                    foreach ($lcrGateways as $value) {
                         $value->setPeerServerId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

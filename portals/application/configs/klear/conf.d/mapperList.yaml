@@ -33,7 +33,8 @@ mappers:
   - &InvoiceTemplates {mapper: \IvozProvider\Mapper\Sql\InvoiceTemplates, modelFile: InvoiceTemplates}
   - &Invoices {mapper: \IvozProvider\Mapper\Sql\Invoices, modelFile: Invoices}
   - &Languages {mapper: \IvozProvider\Mapper\Sql\Languages, modelFile: Languages}
-  - &LcrRuleTarget {mapper: \IvozProvider\Mapper\Sql\LcrRuleTarget, modelFile: LcrRuleTarget}
+  - &LcrGateways {mapper: \IvozProvider\Mapper\Sql\LcrGateways, modelFile: LcrGateways}
+  - &LcrRuleTargets {mapper: \IvozProvider\Mapper\Sql\LcrRuleTargets, modelFile: LcrRuleTargets}
   - &LcrRules {mapper: \IvozProvider\Mapper\Sql\LcrRules, modelFile: LcrRules}
   - &Locutions {mapper: \IvozProvider\Mapper\Sql\Locutions, modelFile: Locutions}
   - &MainOperators {mapper: \IvozProvider\Mapper\Sql\MainOperators, modelFile: MainOperators}
@@ -82,7 +83,6 @@ mappers:
   - &KamTrunksUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamTrunksUsrPreferences, modelFile: KamTrunksUsrPreferences}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
   - &KamUsersAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamUsersAccCdrs, modelFile: KamUsersAccCdrs}
-  - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}
   - &KamUsersHtable {mapper: \IvozProvider\Mapper\Sql\KamUsersHtable, modelFile: KamUsersHtable}

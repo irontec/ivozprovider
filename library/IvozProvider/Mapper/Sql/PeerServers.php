@@ -48,11 +48,12 @@ class PeerServers extends Raw\PeerServers
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Peerserver may have been saved.</p>";
-            throw new \Exception($message);
+        // Si el peerContract de este peerServer se utiliza en algun OutgoingRouting, update LCR
+        $outgoingRoutings = $model->getPeeringContract()->getOutgoingRouting();
+        $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
+
+        foreach ($outgoingRoutings as $outgoingRouting) {
+            $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
         }
 
         return $pk;
@@ -60,13 +61,21 @@ class PeerServers extends Raw\PeerServers
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
+        // If any LcrGateway uses this PeerServer, lcr.reload
+        $lcrGatewaysMapper = new \IvozProvider\Mapper\Sql\LcrGateways();
+        $lcrGateways = $lcrGatewaysMapper->findByField("peerServerId", $model->getPrimaryKey());
+
         $response = parent::delete($model);
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Peerserver may have been deleted.</p>";
-            throw new \Exception($message);
+
+        if (!empty($lcrGateways)) {
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>Peerserver may have been deleted.</p>";
+                throw new \Exception($message);
+            }
         }
+
         return $response;
     }
 

@@ -19,7 +19,6 @@
  */
 namespace IvozProvider\Mapper\Sql;
 
-use IvozProvider\Gearmand\Jobs\Xmlrpc;
 class LcrRules extends Raw\LcrRules
 {
 }

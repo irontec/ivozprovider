@@ -167,10 +167,14 @@ production:
           title: ngettext('Language', 'Languages', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Language', 'Languages', 0))
-        LcrRuleTargetList: 
-          title: ngettext('Lcr rule target', 'Lcr rule target', 0)
+        LcrGatewaysList: 
+          title: ngettext('Lcr gateway', 'Lcr gateways', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Lcr rule target', 'Lcr rule target', 0))
+          description: _("List of %s", ngettext('Lcr gateway', 'Lcr gateways', 0))
+        LcrRuleTargetsList: 
+          title: ngettext('Lcr rule target', 'Lcr rule targets', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Lcr rule target', 'Lcr rule targets', 0))
         LcrRulesList: 
           title: ngettext('Lcr rule', 'Lcr rules', 0)
           class: ui-silk-text-list-bullets
@@ -311,10 +315,6 @@ production:
           title: ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0))
-        KamUsersAddressList: 
-          title: ngettext('Kam users address', 'Kam users address', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam users address', 'Kam users address', 0))
 staging: 
   _extends: production
 testing: 

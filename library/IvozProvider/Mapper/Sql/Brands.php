@@ -61,8 +61,8 @@ class Brands extends Raw\Brands
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxytrunks' => "domain.reload",
-                'proxyusers' => "domain.reload"
+                'proxytrunks' => array("lcr.reload", "domain.reload"),
+                'proxyusers' => "domain.reload",
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);

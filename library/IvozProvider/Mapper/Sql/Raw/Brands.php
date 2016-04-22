@@ -575,34 +575,6 @@ class Brands extends MapperAbstract
                     }
                 }
 
-                if ($model->getLcrRuleTarget(null, null, true) !== null) {
-                    $lcrRuleTarget = $model->getLcrRuleTarget();
-
-                    if (!is_array($lcrRuleTarget)) {
-
-                        $lcrRuleTarget = array($lcrRuleTarget);
-                    }
-
-                    foreach ($lcrRuleTarget as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getLcrRules(null, null, true) !== null) {
-                    $lcrRules = $model->getLcrRules();
-
-                    if (!is_array($lcrRules)) {
-
-                        $lcrRules = array($lcrRules);
-                    }
-
-                    foreach ($lcrRules as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getOutgoingRouting(null, null, true) !== null) {
                     $outgoingRouting = $model->getOutgoingRouting();
 

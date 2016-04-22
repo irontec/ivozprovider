@@ -19,7 +19,7 @@
  */
  
 namespace IvozProvider\Model;
-class KamUsersAddress extends Raw\KamUsersAddress
+class LcrGateways extends Raw\LcrGateways
 {
     /**
      * This method is called just after parent's constructor

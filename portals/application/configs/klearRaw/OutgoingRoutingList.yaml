@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include LcrRuleTargetList.yaml
+#include LcrGatewaysList.yaml
+#include LcrRuleTargetsList.yaml
 #include LcrRulesList.yaml
 
 
@@ -21,7 +22,8 @@ production:
           title: _("Options")
           screens: 
             outgoingRoutingEdit_screen: true
-            lcrRuleTargetList_screen: true
+            lcrGatewaysList_screen: true
+            lcrRuleTargetsList_screen: true
             lcrRulesList_screen: true
           dialogs: 
             outgoingRoutingDel_dialog: true
@@ -50,18 +52,31 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1), "[format| (%item%)]")
-    #lcrRuleTarget: 
-    <<: *lcrRuleTarget_screensLink
-    lcrRuleTargetList_screen: 
-      <<: *lcrRuleTargetList_screenLink
+    #lcrGateways: 
+    <<: *lcrGateways_screensLink
+    lcrGatewaysList_screen: 
+      <<: *lcrGatewaysList_screenLink
       filterField: outgoingRoutingId
       parentOptionCustomizer: 
         - recordCount
-    lcrRuleTargetNew_screen: 
-      <<: *lcrRuleTargetNew_screenLink
+    lcrGatewaysNew_screen: 
+      <<: *lcrGatewaysNew_screenLink
       filterField: outgoingRoutingId
-    lcrRuleTargetEdit_screen: 
-      <<: *lcrRuleTargetEdit_screenLink
+    lcrGatewaysEdit_screen: 
+      <<: *lcrGatewaysEdit_screenLink
+      filterField: outgoingRoutingId
+
+    #lcrRuleTargets: 
+    lcrRuleTargetsList_screen: 
+      <<: *lcrRuleTargetsList_screenLink
+      filterField: outgoingRoutingId
+      parentOptionCustomizer: 
+        - recordCount
+    lcrRuleTargetsNew_screen: 
+      <<: *lcrRuleTargetsNew_screenLink
+      filterField: outgoingRoutingId
+    lcrRuleTargetsEdit_screen: 
+      <<: *lcrRuleTargetsEdit_screenLink
       filterField: outgoingRoutingId
 
     #lcrRules: 
@@ -88,8 +103,10 @@ production:
       message: _("%s successfully deleted.", ngettext('Outgoing routing', 'Outgoing routing(s)', 1))
       multiItem: 1
       labelOnList: 1
-  # lcrRuleTarget dialogs: 
-    <<: *lcrRuleTarget_dialogsLink
+  # lcrGateways dialogs: 
+    <<: *lcrGateways_dialogsLink
+  # lcrRuleTargets dialogs: 
+    <<: *lcrRuleTargets_dialogsLink
   # lcrRules dialogs: 
     <<: *lcrRules_dialogsLink
 staging: 

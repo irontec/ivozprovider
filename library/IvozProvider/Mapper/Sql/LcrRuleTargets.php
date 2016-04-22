@@ -11,14 +11,14 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\KamUsersAddress
+ * Data Mapper implementation for IvozProvider\Model\LcrRuleTargets
  *
  * @package Mapper
  * @subpackage Sql
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
-class KamUsersAddress extends Raw\KamUsersAddress
+class LcrRuleTargets extends Raw\LcrRuleTargets
 {
 
 }

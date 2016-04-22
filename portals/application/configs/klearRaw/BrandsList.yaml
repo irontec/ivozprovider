@@ -9,8 +9,6 @@
 #include GenericServicesList.yaml
 #include InvoiceTemplatesList.yaml
 #include InvoicesList.yaml
-#include LcrRuleTargetList.yaml
-#include LcrRulesList.yaml
 #include OutgoingRoutingList.yaml
 #include ParsedCDRsList.yaml
 #include PeerServersList.yaml
@@ -50,8 +48,6 @@ production:
             genericServicesList_screen: true
             invoiceTemplatesList_screen: true
             invoicesList_screen: true
-            lcrRuleTargetList_screen: true
-            lcrRulesList_screen: true
             outgoingRoutingList_screen: true
             parsedCDRsList_screen: true
             peerServersList_screen: true
@@ -206,32 +202,6 @@ production:
       filterField: brandId
     invoicesEdit_screen: 
       <<: *invoicesEdit_screenLink
-      filterField: brandId
-
-    #lcrRuleTarget: 
-    lcrRuleTargetList_screen: 
-      <<: *lcrRuleTargetList_screenLink
-      filterField: brandId
-      parentOptionCustomizer: 
-        - recordCount
-    lcrRuleTargetNew_screen: 
-      <<: *lcrRuleTargetNew_screenLink
-      filterField: brandId
-    lcrRuleTargetEdit_screen: 
-      <<: *lcrRuleTargetEdit_screenLink
-      filterField: brandId
-
-    #lcrRules: 
-    lcrRulesList_screen: 
-      <<: *lcrRulesList_screenLink
-      filterField: brandId
-      parentOptionCustomizer: 
-        - recordCount
-    lcrRulesNew_screen: 
-      <<: *lcrRulesNew_screenLink
-      filterField: brandId
-    lcrRulesEdit_screen: 
-      <<: *lcrRulesEdit_screenLink
       filterField: brandId
 
     #outgoingRouting: 
@@ -406,10 +376,6 @@ production:
     <<: *invoiceTemplates_dialogsLink
   # invoices dialogs: 
     <<: *invoices_dialogsLink
-  # lcrRuleTarget dialogs: 
-    <<: *lcrRuleTarget_dialogsLink
-  # lcrRules dialogs: 
-    <<: *lcrRules_dialogsLink
   # outgoingRouting dialogs: 
     <<: *outgoingRouting_dialogsLink
   # parsedCDRs dialogs: 

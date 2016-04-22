@@ -19,7 +19,7 @@
  */
  
 namespace IvozProvider\Model;
-class LcrRuleTarget extends Raw\LcrRuleTarget
+class LcrRuleTargets extends Raw\LcrRuleTargets
 {
     /**
      * This method is called just after parent's constructor

@@ -19,7 +19,7 @@
  */
 
 namespace IvozProvider\Model\Raw;
-class LcrRules extends ModelAbstract
+class LcrGateways extends ModelAbstract
 {
 
 
@@ -42,35 +42,63 @@ class LcrRules extends ModelAbstract
      *
      * @var string
      */
+    protected $_gwName;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_ip;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_hostname;
+
+    /**
+     * Database var type smallint
+     *
+     * @var int
+     */
+    protected $_port;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_params;
+
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_uriScheme;
+
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_transport;
+
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_strip;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_prefix;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_fromUri;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_requestUri;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_stopper;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_enabled;
 
     /**
      * Database var type varchar
@@ -80,18 +108,25 @@ class LcrRules extends ModelAbstract
     protected $_tag;
 
     /**
-     * Database var type varchar
+     * Database var type int
      *
-     * @var string
+     * @var int
      */
-    protected $_description;
+    protected $_flags;
 
     /**
      * Database var type int
      *
      * @var int
      */
-    protected $_targetPatternId;
+    protected $_defunct;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_peerServerId;
 
     /**
      * Database var type int
@@ -102,21 +137,21 @@ class LcrRules extends ModelAbstract
 
 
     /**
-     * Parent relation LcrRules_ibfk_1
+     * Parent relation LcrGateways_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
 
     /**
-     * Parent relation LcrRules_ibfk_2
+     * Parent relation LcrGateways_ibfk_2
      *
-     * @var \IvozProvider\Model\Raw\TargetPatterns
+     * @var \IvozProvider\Model\Raw\PeerServers
      */
-    protected $_TargetPattern;
+    protected $_PeerServer;
 
     /**
-     * Parent relation LcrRules_ibfk_3
+     * Parent relation LcrGateways_ibfk_3
      *
      * @var \IvozProvider\Model\Raw\OutgoingRouting
      */
@@ -124,7 +159,7 @@ class LcrRules extends ModelAbstract
 
 
     /**
-     * Dependent relation LcrRuleTargets_ibfk_2
+     * Dependent relation LcrRuleTargets_ibfk_3
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\LcrRuleTargets[]
@@ -134,14 +169,19 @@ class LcrRules extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'companyId'=>'companyId',
+        'gw_name'=>'gwName',
+        'ip'=>'ip',
+        'hostname'=>'hostname',
+        'port'=>'port',
+        'params'=>'params',
+        'uri_scheme'=>'uriScheme',
+        'transport'=>'transport',
+        'strip'=>'strip',
         'prefix'=>'prefix',
-        'from_uri'=>'fromUri',
-        'request_uri'=>'requestUri',
-        'stopper'=>'stopper',
-        'enabled'=>'enabled',
         'tag'=>'tag',
-        'description'=>'description',
-        'targetPatternId'=>'targetPatternId',
+        'flags'=>'flags',
+        'defunct'=>'defunct',
+        'peerServerId'=>'peerServerId',
         'outgoingRoutingId'=>'outgoingRoutingId',
     );
 
@@ -159,37 +199,32 @@ class LcrRules extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'LcrRulesIbfk1'=> array(
+            'LcrGatewaysIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
                 ),
-            'LcrRulesIbfk2'=> array(
-                    'property' => 'TargetPattern',
-                    'table_name' => 'TargetPatterns',
+            'LcrGatewaysIbfk2'=> array(
+                    'property' => 'PeerServer',
+                    'table_name' => 'PeerServers',
                 ),
-            'LcrRulesIbfk3'=> array(
+            'LcrGatewaysIbfk3'=> array(
                     'property' => 'OutgoingRouting',
                     'table_name' => 'OutgoingRouting',
                 ),
         ));
 
         $this->setDependentList(array(
-            'LcrRuleTargetsIbfk2' => array(
+            'LcrRuleTargetsIbfk3' => array(
                     'property' => 'LcrRuleTargets',
                     'table_name' => 'LcrRuleTargets',
                 ),
         ));
 
-        $this->setOnDeleteCascadeRelationships(array(
-            'LcrRuleTargets_ibfk_2'
-        ));
 
 
 
         $this->_defaultValues = array(
-            'stopper' => '0',
-            'enabled' => '1',
-            'description' => '',
+            'flags' => '0',
         );
 
         $this->_initFileObjects();
@@ -226,7 +261,7 @@ class LcrRules extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setId($data)
     {
@@ -260,7 +295,7 @@ class LcrRules extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setCompanyId($data)
     {
@@ -297,7 +332,285 @@ class LcrRules extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setGwName($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_gwName != $data) {
+            $this->_logChange('gwName');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_gwName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_gwName = (string) $data;
+
+        } else {
+            $this->_gwName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column gw_name
+     *
+     * @return string
+     */
+    public function getGwName()
+    {
+        return $this->_gwName;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setIp($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_ip != $data) {
+            $this->_logChange('ip');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_ip = $data;
+
+        } else if (!is_null($data)) {
+            $this->_ip = (string) $data;
+
+        } else {
+            $this->_ip = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column ip
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->_ip;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setHostname($data)
+    {
+
+        if ($this->_hostname != $data) {
+            $this->_logChange('hostname');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_hostname = $data;
+
+        } else if (!is_null($data)) {
+            $this->_hostname = (string) $data;
+
+        } else {
+            $this->_hostname = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column hostname
+     *
+     * @return string
+     */
+    public function getHostname()
+    {
+        return $this->_hostname;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setPort($data)
+    {
+
+        if ($this->_port != $data) {
+            $this->_logChange('port');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_port = $data;
+
+        } else if (!is_null($data)) {
+            $this->_port = (int) $data;
+
+        } else {
+            $this->_port = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column port
+     *
+     * @return int
+     */
+    public function getPort()
+    {
+        return $this->_port;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setParams($data)
+    {
+
+        if ($this->_params != $data) {
+            $this->_logChange('params');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_params = $data;
+
+        } else if (!is_null($data)) {
+            $this->_params = (string) $data;
+
+        } else {
+            $this->_params = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column params
+     *
+     * @return string
+     */
+    public function getParams()
+    {
+        return $this->_params;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setUriScheme($data)
+    {
+
+        if ($this->_uriScheme != $data) {
+            $this->_logChange('uriScheme');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_uriScheme = $data;
+
+        } else if (!is_null($data)) {
+            $this->_uriScheme = (int) $data;
+
+        } else {
+            $this->_uriScheme = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column uri_scheme
+     *
+     * @return int
+     */
+    public function getUriScheme()
+    {
+        return $this->_uriScheme;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setTransport($data)
+    {
+
+        if ($this->_transport != $data) {
+            $this->_logChange('transport');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_transport = $data;
+
+        } else if (!is_null($data)) {
+            $this->_transport = (int) $data;
+
+        } else {
+            $this->_transport = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column transport
+     *
+     * @return int
+     */
+    public function getTransport()
+    {
+        return $this->_transport;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setStrip($data)
+    {
+
+        if ($this->_strip != $data) {
+            $this->_logChange('strip');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_strip = $data;
+
+        } else if (!is_null($data)) {
+            $this->_strip = (int) $data;
+
+        } else {
+            $this->_strip = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column strip
+     *
+     * @return int
+     */
+    public function getStrip()
+    {
+        return $this->_strip;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setPrefix($data)
     {
@@ -331,150 +644,11 @@ class LcrRules extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setFromUri($data)
-    {
-
-        if ($this->_fromUri != $data) {
-            $this->_logChange('fromUri');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_fromUri = $data;
-
-        } else if (!is_null($data)) {
-            $this->_fromUri = (string) $data;
-
-        } else {
-            $this->_fromUri = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column from_uri
-     *
-     * @return string
-     */
-    public function getFromUri()
-    {
-        return $this->_fromUri;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setRequestUri($data)
-    {
-
-        if ($this->_requestUri != $data) {
-            $this->_logChange('requestUri');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_requestUri = $data;
-
-        } else if (!is_null($data)) {
-            $this->_requestUri = (string) $data;
-
-        } else {
-            $this->_requestUri = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column request_uri
-     *
-     * @return string
-     */
-    public function getRequestUri()
-    {
-        return $this->_requestUri;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setStopper($data)
-    {
-
-        if ($this->_stopper != $data) {
-            $this->_logChange('stopper');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_stopper = $data;
-
-        } else if (!is_null($data)) {
-            $this->_stopper = (int) $data;
-
-        } else {
-            $this->_stopper = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column stopper
-     *
-     * @return int
-     */
-    public function getStopper()
-    {
-        return $this->_stopper;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setEnabled($data)
-    {
-
-        if ($this->_enabled != $data) {
-            $this->_logChange('enabled');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_enabled = $data;
-
-        } else if (!is_null($data)) {
-            $this->_enabled = (int) $data;
-
-        } else {
-            $this->_enabled = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column enabled
-     *
-     * @return int
-     */
-    public function getEnabled()
-    {
-        return $this->_enabled;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setTag($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_tag != $data) {
             $this->_logChange('tag');
         }
@@ -503,80 +677,120 @@ class LcrRules extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setDescription($data)
-    {
-
-        if ($this->_description != $data) {
-            $this->_logChange('description');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_description = $data;
-
-        } else if (!is_null($data)) {
-            $this->_description = (string) $data;
-
-        } else {
-            $this->_description = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->_description;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
-    public function setTargetPatternId($data)
+    public function setFlags($data)
     {
 
-        if ($this->_targetPatternId != $data) {
-            $this->_logChange('targetPatternId');
+        if ($this->_flags != $data) {
+            $this->_logChange('flags');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_targetPatternId = $data;
+            $this->_flags = $data;
 
         } else if (!is_null($data)) {
-            $this->_targetPatternId = (int) $data;
+            $this->_flags = (int) $data;
 
         } else {
-            $this->_targetPatternId = $data;
+            $this->_flags = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column targetPatternId
+     * Gets column flags
      *
      * @return int
      */
-    public function getTargetPatternId()
+    public function getFlags()
     {
-        return $this->_targetPatternId;
+        return $this->_flags;
     }
 
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setDefunct($data)
+    {
+
+        if ($this->_defunct != $data) {
+            $this->_logChange('defunct');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_defunct = $data;
+
+        } else if (!is_null($data)) {
+            $this->_defunct = (int) $data;
+
+        } else {
+            $this->_defunct = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column defunct
+     *
+     * @return int
+     */
+    public function getDefunct()
+    {
+        return $this->_defunct;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
+     */
+    public function setPeerServerId($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_peerServerId != $data) {
+            $this->_logChange('peerServerId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peerServerId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peerServerId = (int) $data;
+
+        } else {
+            $this->_peerServerId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column peerServerId
+     *
+     * @return int
+     */
+    public function getPeerServerId()
+    {
+        return $this->_peerServerId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setOutgoingRoutingId($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_outgoingRoutingId != $data) {
             $this->_logChange('outgoingRoutingId');
         }
@@ -607,7 +821,7 @@ class LcrRules extends ModelAbstract
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setCompany(\IvozProvider\Model\Raw\Companies $data)
     {
@@ -622,7 +836,7 @@ class LcrRules extends ModelAbstract
             $this->setCompanyId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRulesIbfk1');
+        $this->_setLoaded('LcrGatewaysIbfk1');
         return $this;
     }
 
@@ -633,7 +847,7 @@ class LcrRules extends ModelAbstract
      */
     public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRulesIbfk1';
+        $fkName = 'LcrGatewaysIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -655,14 +869,14 @@ class LcrRules extends ModelAbstract
     }
 
     /**
-     * Sets parent relation TargetPattern
+     * Sets parent relation PeerServer
      *
-     * @param \IvozProvider\Model\Raw\TargetPatterns $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @param \IvozProvider\Model\Raw\PeerServers $data
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
-    public function setTargetPattern(\IvozProvider\Model\Raw\TargetPatterns $data)
+    public function setPeerServer(\IvozProvider\Model\Raw\PeerServers $data)
     {
-        $this->_TargetPattern = $data;
+        $this->_PeerServer = $data;
 
         $primaryKey = $data->getPrimaryKey();
         if (is_array($primaryKey)) {
@@ -670,21 +884,21 @@ class LcrRules extends ModelAbstract
         }
 
         if (!is_null($primaryKey)) {
-            $this->setTargetPatternId($primaryKey);
+            $this->setPeerServerId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRulesIbfk2');
+        $this->_setLoaded('LcrGatewaysIbfk2');
         return $this;
     }
 
     /**
-     * Gets parent TargetPattern
+     * Gets parent PeerServer
      * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\PeerServers
      */
-    public function getTargetPattern($where = null, $orderBy = null, $avoidLoading = false)
+    public function getPeerServer($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRulesIbfk2';
+        $fkName = 'LcrGatewaysIbfk2';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -696,20 +910,20 @@ class LcrRules extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_TargetPattern = array_shift($related);
+            $this->_PeerServer = array_shift($related);
             if ($usingDefaultArguments) {
                 $this->_setLoaded($fkName);
             }
         }
 
-        return $this->_TargetPattern;
+        return $this->_PeerServer;
     }
 
     /**
      * Sets parent relation OutgoingRouting
      *
      * @param \IvozProvider\Model\Raw\OutgoingRouting $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
     {
@@ -724,7 +938,7 @@ class LcrRules extends ModelAbstract
             $this->setOutgoingRoutingId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRulesIbfk3');
+        $this->_setLoaded('LcrGatewaysIbfk3');
         return $this;
     }
 
@@ -735,7 +949,7 @@ class LcrRules extends ModelAbstract
      */
     public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRulesIbfk3';
+        $fkName = 'LcrGatewaysIbfk3';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -757,10 +971,10 @@ class LcrRules extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTargets_ibfk_2
+     * Sets dependent relations LcrRuleTargets_ibfk_3
      *
      * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTargets
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function setLcrRuleTargets(array $data, $deleteOrphans = false)
     {
@@ -805,20 +1019,20 @@ class LcrRules extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRuleTargets_ibfk_2
+     * Sets dependent relations LcrRuleTargets_ibfk_3
      *
      * @param \IvozProvider\Model\Raw\LcrRuleTargets $data
-     * @return \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function addLcrRuleTargets(\IvozProvider\Model\Raw\LcrRuleTargets $data)
     {
         $this->_LcrRuleTargets[] = $data;
-        $this->_setLoaded('LcrRuleTargetsIbfk2');
+        $this->_setLoaded('LcrRuleTargetsIbfk3');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRuleTargets_ibfk_2
+     * Gets dependent LcrRuleTargets_ibfk_3
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -827,7 +1041,7 @@ class LcrRules extends ModelAbstract
      */
     public function getLcrRuleTargets($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetsIbfk2';
+        $fkName = 'LcrRuleTargetsIbfk3';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -849,7 +1063,7 @@ class LcrRules extends ModelAbstract
     /**
      * Returns the mapper class for this model
      *
-     * @return IvozProvider\Mapper\Sql\LcrRules
+     * @return IvozProvider\Mapper\Sql\LcrGateways
      */
     public function getMapper()
     {
@@ -857,9 +1071,9 @@ class LcrRules extends ModelAbstract
 
             \Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(true);
 
-            if (class_exists('\IvozProvider\Mapper\Sql\LcrRules')) {
+            if (class_exists('\IvozProvider\Mapper\Sql\LcrGateways')) {
 
-                $this->setMapper(new \IvozProvider\Mapper\Sql\LcrRules);
+                $this->setMapper(new \IvozProvider\Mapper\Sql\LcrGateways);
 
             } else {
 
@@ -875,15 +1089,15 @@ class LcrRules extends ModelAbstract
     /**
      * Returns the validator class for this model
      *
-     * @return null | \IvozProvider\Model\Validator\LcrRules
+     * @return null | \IvozProvider\Model\Validator\LcrGateways
      */
     public function getValidator()
     {
         if ($this->_validator === null) {
 
-            if (class_exists('\IvozProvider\\Validator\LcrRules')) {
+            if (class_exists('\IvozProvider\\Validator\LcrGateways')) {
 
-                $this->setValidator(new \IvozProvider\Validator\LcrRules);
+                $this->setValidator(new \IvozProvider\Validator\LcrGateways);
             }
         }
 
@@ -898,7 +1112,7 @@ class LcrRules extends ModelAbstract
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-     * @see \Mapper\Sql\LcrRules::delete
+     * @see \Mapper\Sql\LcrGateways::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()

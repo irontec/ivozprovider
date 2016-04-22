@@ -49,7 +49,7 @@ class LcrRules extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'brandId' => $model->getBrandId(),
+                'companyId' => $model->getCompanyId(),
                 'prefix' => $model->getPrefix(),
                 'from_uri' => $model->getFromUri(),
                 'request_uri' => $model->getRequestUri(),
@@ -445,15 +445,15 @@ class LcrRules extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getLcrRuleTarget(null, null, true) !== null) {
-                    $lcrRuleTarget = $model->getLcrRuleTarget();
+                if ($model->getLcrRuleTargets(null, null, true) !== null) {
+                    $lcrRuleTargets = $model->getLcrRuleTargets();
 
-                    if (!is_array($lcrRuleTarget)) {
+                    if (!is_array($lcrRuleTargets)) {
 
-                        $lcrRuleTarget = array($lcrRuleTarget);
+                        $lcrRuleTargets = array($lcrRuleTargets);
                     }
 
-                    foreach ($lcrRuleTarget as $value) {
+                    foreach ($lcrRuleTargets as $value) {
                         $value->setRuleId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
@@ -554,7 +554,7 @@ class LcrRules extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setBrandId($data['brandId'])
+                  ->setCompanyId($data['companyId'])
                   ->setPrefix($data['prefix'])
                   ->setFromUri($data['from_uri'])
                   ->setRequestUri($data['request_uri'])
@@ -566,7 +566,7 @@ class LcrRules extends MapperAbstract
                   ->setOutgoingRoutingId($data['outgoingRoutingId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setBrandId($data->{'brandId'})
+                  ->setCompanyId($data->{'companyId'})
                   ->setPrefix($data->{'prefix'})
                   ->setFromUri($data->{'from_uri'})
                   ->setRequestUri($data->{'request_uri'})
@@ -579,7 +579,7 @@ class LcrRules extends MapperAbstract
 
         } else if ($data instanceof \IvozProvider\Model\Raw\LcrRules) {
             $entry->setId($data->getId())
-                  ->setBrandId($data->getBrandId())
+                  ->setCompanyId($data->getCompanyId())
                   ->setPrefix($data->getPrefix())
                   ->setFromUri($data->getFromUri())
                   ->setRequestUri($data->getRequestUri())

@@ -19,7 +19,7 @@
  */
 
 namespace IvozProvider\Model\Raw;
-class LcrRuleTarget extends ModelAbstract
+class LcrRuleTargets extends ModelAbstract
 {
 
 
@@ -35,21 +35,7 @@ class LcrRuleTarget extends ModelAbstract
      *
      * @var int
      */
-    protected $_brandId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
     protected $_companyId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_outgoingRoutingId;
 
     /**
      * Database var type int
@@ -79,52 +65,51 @@ class LcrRuleTarget extends ModelAbstract
      */
     protected $_weight;
 
-
     /**
-     * Parent relation LcrRuleTarget_ibfk_1
+     * Database var type int
      *
-     * @var \IvozProvider\Model\Raw\Brands
+     * @var int
      */
-    protected $_Brand;
+    protected $_outgoingRoutingId;
+
 
     /**
-     * Parent relation LcrRuleTarget_ibfk_2
+     * Parent relation LcrRuleTargets_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
 
     /**
-     * Parent relation LcrRuleTarget_ibfk_3
-     *
-     * @var \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    protected $_OutgoingRouting;
-
-    /**
-     * Parent relation LcrRuleTarget_ibfk_4
+     * Parent relation LcrRuleTargets_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\LcrRules
      */
     protected $_Rule;
 
     /**
-     * Parent relation LcrRuleTarget_ibfk_5
+     * Parent relation LcrRuleTargets_ibfk_3
      *
-     * @var \IvozProvider\Model\Raw\PeerServers
+     * @var \IvozProvider\Model\Raw\LcrGateways
      */
     protected $_Gw;
+
+    /**
+     * Parent relation LcrRuleTargets_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    protected $_OutgoingRouting;
 
 
     protected $_columnsList = array(
         'id'=>'id',
-        'brandId'=>'brandId',
         'companyId'=>'companyId',
-        'outgoingRoutingId'=>'outgoingRoutingId',
         'rule_id'=>'ruleId',
         'gw_id'=>'gwId',
         'priority'=>'priority',
         'weight'=>'weight',
+        'outgoingRoutingId'=>'outgoingRoutingId',
     );
 
     /**
@@ -141,25 +126,21 @@ class LcrRuleTarget extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'LcrRuleTargetIbfk1'=> array(
-                    'property' => 'Brand',
-                    'table_name' => 'Brands',
-                ),
-            'LcrRuleTargetIbfk2'=> array(
+            'LcrRuleTargetsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
                 ),
-            'LcrRuleTargetIbfk3'=> array(
-                    'property' => 'OutgoingRouting',
-                    'table_name' => 'OutgoingRouting',
-                ),
-            'LcrRuleTargetIbfk4'=> array(
+            'LcrRuleTargetsIbfk2'=> array(
                     'property' => 'Rule',
                     'table_name' => 'LcrRules',
                 ),
-            'LcrRuleTargetIbfk5'=> array(
+            'LcrRuleTargetsIbfk3'=> array(
                     'property' => 'Gw',
-                    'table_name' => 'PeerServers',
+                    'table_name' => 'LcrGateways',
+                ),
+            'LcrRuleTargetsIbfk4'=> array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
                 ),
         ));
 
@@ -207,7 +188,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setId($data)
     {
@@ -241,44 +222,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
-     */
-    public function setBrandId($data)
-    {
-
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_brandId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_brandId = (int) $data;
-
-        } else {
-            $this->_brandId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column brandId
-     *
-     * @return int
-     */
-    public function getBrandId()
-    {
-        return $this->_brandId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setCompanyId($data)
     {
@@ -315,44 +259,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
-     */
-    public function setOutgoingRoutingId($data)
-    {
-
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_outgoingRoutingId != $data) {
-            $this->_logChange('outgoingRoutingId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_outgoingRoutingId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_outgoingRoutingId = (int) $data;
-
-        } else {
-            $this->_outgoingRoutingId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column outgoingRoutingId
-     *
-     * @return int
-     */
-    public function getOutgoingRoutingId()
-    {
-        return $this->_outgoingRoutingId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setRuleId($data)
     {
@@ -389,7 +296,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setGwId($data)
     {
@@ -426,7 +333,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setPriority($data)
     {
@@ -463,7 +370,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setWeight($data)
     {
@@ -495,61 +402,47 @@ class LcrRuleTarget extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Brand
-     *
-     * @param \IvozProvider\Model\Raw\Brands $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
-    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
+    public function setOutgoingRoutingId($data)
     {
-        $this->_Brand = $data;
 
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_outgoingRoutingId != $data) {
+            $this->_logChange('outgoingRoutingId');
         }
 
-        if (!is_null($primaryKey)) {
-            $this->setBrandId($primaryKey);
-        }
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingRoutingId = $data;
 
-        $this->_setLoaded('LcrRuleTargetIbfk1');
+        } else if (!is_null($data)) {
+            $this->_outgoingRoutingId = (int) $data;
+
+        } else {
+            $this->_outgoingRoutingId = $data;
+        }
         return $this;
     }
 
     /**
-     * Gets parent Brand
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Brands
+     * Gets column outgoingRoutingId
+     *
+     * @return int
      */
-    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
+    public function getOutgoingRoutingId()
     {
-        $fkName = 'LcrRuleTargetIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Brand = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Brand;
+        return $this->_outgoingRoutingId;
     }
 
     /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setCompany(\IvozProvider\Model\Raw\Companies $data)
     {
@@ -564,7 +457,7 @@ class LcrRuleTarget extends ModelAbstract
             $this->setCompanyId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRuleTargetIbfk2');
+        $this->_setLoaded('LcrRuleTargetsIbfk1');
         return $this;
     }
 
@@ -575,7 +468,7 @@ class LcrRuleTarget extends ModelAbstract
      */
     public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk2';
+        $fkName = 'LcrRuleTargetsIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -597,61 +490,10 @@ class LcrRuleTarget extends ModelAbstract
     }
 
     /**
-     * Sets parent relation OutgoingRouting
-     *
-     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
-     */
-    public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
-    {
-        $this->_OutgoingRouting = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setOutgoingRoutingId($primaryKey);
-        }
-
-        $this->_setLoaded('LcrRuleTargetIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets parent OutgoingRouting
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'LcrRuleTargetIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_OutgoingRouting = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_OutgoingRouting;
-    }
-
-    /**
      * Sets parent relation Rule
      *
      * @param \IvozProvider\Model\Raw\LcrRules $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
     public function setRule(\IvozProvider\Model\Raw\LcrRules $data)
     {
@@ -666,7 +508,7 @@ class LcrRuleTarget extends ModelAbstract
             $this->setRuleId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRuleTargetIbfk4');
+        $this->_setLoaded('LcrRuleTargetsIbfk2');
         return $this;
     }
 
@@ -677,7 +519,7 @@ class LcrRuleTarget extends ModelAbstract
      */
     public function getRule($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk4';
+        $fkName = 'LcrRuleTargetsIbfk2';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -701,10 +543,10 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Sets parent relation Gw
      *
-     * @param \IvozProvider\Model\Raw\PeerServers $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTarget
+     * @param \IvozProvider\Model\Raw\LcrGateways $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
-    public function setGw(\IvozProvider\Model\Raw\PeerServers $data)
+    public function setGw(\IvozProvider\Model\Raw\LcrGateways $data)
     {
         $this->_Gw = $data;
 
@@ -717,18 +559,18 @@ class LcrRuleTarget extends ModelAbstract
             $this->setGwId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRuleTargetIbfk5');
+        $this->_setLoaded('LcrRuleTargetsIbfk3');
         return $this;
     }
 
     /**
      * Gets parent Gw
      * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\PeerServers
+     * @return \IvozProvider\Model\Raw\LcrGateways
      */
     public function getGw($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRuleTargetIbfk5';
+        $fkName = 'LcrRuleTargetsIbfk3';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -750,9 +592,60 @@ class LcrRuleTarget extends ModelAbstract
     }
 
     /**
+     * Sets parent relation OutgoingRouting
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\LcrRuleTargets
+     */
+    public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingRoutingId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRuleTargetsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingRouting
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRuleTargetsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingRouting;
+    }
+
+    /**
      * Returns the mapper class for this model
      *
-     * @return IvozProvider\Mapper\Sql\LcrRuleTarget
+     * @return IvozProvider\Mapper\Sql\LcrRuleTargets
      */
     public function getMapper()
     {
@@ -760,9 +653,9 @@ class LcrRuleTarget extends ModelAbstract
 
             \Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(true);
 
-            if (class_exists('\IvozProvider\Mapper\Sql\LcrRuleTarget')) {
+            if (class_exists('\IvozProvider\Mapper\Sql\LcrRuleTargets')) {
 
-                $this->setMapper(new \IvozProvider\Mapper\Sql\LcrRuleTarget);
+                $this->setMapper(new \IvozProvider\Mapper\Sql\LcrRuleTargets);
 
             } else {
 
@@ -778,15 +671,15 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Returns the validator class for this model
      *
-     * @return null | \IvozProvider\Model\Validator\LcrRuleTarget
+     * @return null | \IvozProvider\Model\Validator\LcrRuleTargets
      */
     public function getValidator()
     {
         if ($this->_validator === null) {
 
-            if (class_exists('\IvozProvider\\Validator\LcrRuleTarget')) {
+            if (class_exists('\IvozProvider\\Validator\LcrRuleTargets')) {
 
-                $this->setValidator(new \IvozProvider\Validator\LcrRuleTarget);
+                $this->setValidator(new \IvozProvider\Validator\LcrRuleTargets);
             }
         }
 
@@ -801,7 +694,7 @@ class LcrRuleTarget extends ModelAbstract
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-     * @see \Mapper\Sql\LcrRuleTarget::delete
+     * @see \Mapper\Sql\LcrRuleTargets::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()

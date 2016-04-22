@@ -443,15 +443,29 @@ class OutgoingRouting extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getLcrRuleTarget(null, null, true) !== null) {
-                    $lcrRuleTarget = $model->getLcrRuleTarget();
+                if ($model->getLcrGateways(null, null, true) !== null) {
+                    $lcrGateways = $model->getLcrGateways();
 
-                    if (!is_array($lcrRuleTarget)) {
+                    if (!is_array($lcrGateways)) {
 
-                        $lcrRuleTarget = array($lcrRuleTarget);
+                        $lcrGateways = array($lcrGateways);
                     }
 
-                    foreach ($lcrRuleTarget as $value) {
+                    foreach ($lcrGateways as $value) {
+                        $value->setOutgoingRoutingId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getLcrRuleTargets(null, null, true) !== null) {
+                    $lcrRuleTargets = $model->getLcrRuleTargets();
+
+                    if (!is_array($lcrRuleTargets)) {
+
+                        $lcrRuleTargets = array($lcrRuleTargets);
+                    }
+
+                    foreach ($lcrRuleTargets as $value) {
                         $value->setOutgoingRoutingId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

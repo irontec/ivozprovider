@@ -18,6 +18,8 @@
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
+use IvozProvider\Gearmand\Jobs\Xmlrpc;
+
 class Companies extends Raw\Companies
 {
     protected $_model;
@@ -78,4 +80,25 @@ class Companies extends Raw\Companies
         }
     }
 
+    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
+    {
+        $response = parent::delete($model);
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Company may have been deleted.</p>";
+            throw new \Exception($message);
+        }
+        return $response;
+    }
+
+    protected function _sendXmlRcp()
+    {
+        $proxyServers = array(
+                'proxytrunks' => "lcr.reload",
+        );
+        $xmlrpcJob = new Xmlrpc();
+        $xmlrpcJob->setProxyServers($proxyServers);
+        $xmlrpcJob->send();
+    }
 }

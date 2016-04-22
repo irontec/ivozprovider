@@ -44,13 +44,21 @@ class PeeringContracts extends Raw\PeeringContracts
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
+        // If any OutgoingRouting uses this PeeringContract, lcr.reload
+        $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
+        $outgoingRoutings = $outgoingRoutingMapper->findByField("peeringContractId", $model->getPrimaryKey());
+
         $response = parent::delete($model);
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Peerserver may have been deleted.</p>";
-            throw new \Exception($message);
+
+        if (!empty($outgoingRoutings)) {
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>PeeringContract may have been deleted.</p>";
+                throw new \Exception($message);
+            }
         }
+
         return $response;
     }
 

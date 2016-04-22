@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\KamUsersAddress
+ * Data Mapper implementation for IvozProvider\Model\LcrGateways
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class KamUsersAddress extends MapperAbstract
+class LcrGateways extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\KamUsersAddress';
+    protected $_modelName = 'IvozProvider\\Model\\LcrGateways';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class KamUsersAddress extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\KamUsersAddress $model
+     * @param IvozProvider\Model\Raw\LcrGateways $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\KamUsersAddress) {
+        if (!$model instanceof \IvozProvider\Model\Raw\LcrGateways) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\KamUsersAddress object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\LcrGateways object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\KamUsersAddress object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\LcrGateways object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,12 +49,21 @@ class KamUsersAddress extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'grp' => $model->getGrp(),
-                'ip_addr' => $model->getIpAddr(),
-                'mask' => $model->getMask(),
+                'companyId' => $model->getCompanyId(),
+                'gw_name' => $model->getGwName(),
+                'ip' => $model->getIp(),
+                'hostname' => $model->getHostname(),
                 'port' => $model->getPort(),
+                'params' => $model->getParams(),
+                'uri_scheme' => $model->getUriScheme(),
+                'transport' => $model->getTransport(),
+                'strip' => $model->getStrip(),
+                'prefix' => $model->getPrefix(),
                 'tag' => $model->getTag(),
+                'flags' => $model->getFlags(),
+                'defunct' => $model->getDefunct(),
                 'peerServerId' => $model->getPeerServerId(),
+                'outgoingRoutingId' => $model->getOutgoingRoutingId(),
             );
         } else {
             $result = array();
@@ -93,12 +102,12 @@ class KamUsersAddress extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\LcrGateways
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\LcrGateways');
         }
 
         return $this->_dbTable;
@@ -107,17 +116,17 @@ class KamUsersAddress extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\KamUsersAddress $model The model to delete
+     * @param IvozProvider\Model\Raw\LcrGateways $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\KamUsersAddress) {
+        if (!$model instanceof \IvozProvider\Model\Raw\LcrGateways) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\KamUsersAddress object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\LcrGateways object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\KamUsersAddress object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\LcrGateways object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -167,7 +176,7 @@ class KamUsersAddress extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrGateways', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -215,7 +224,7 @@ class KamUsersAddress extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrGateways', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -293,7 +302,7 @@ class KamUsersAddress extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\KamUsersAddress $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\LcrGateways $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -301,17 +310,17 @@ class KamUsersAddress extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\KamUsersAddress $model
+     * @param \IvozProvider\Model\Raw\LcrGateways $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\KamUsersAddress $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\LcrGateways $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\KamUsersAddress $model,
+    protected function _save(\IvozProvider\Model\Raw\LcrGateways $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -440,6 +449,23 @@ class KamUsersAddress extends MapperAbstract
             }
 
 
+            if ($recursive) {
+                if ($model->getLcrRuleTargets(null, null, true) !== null) {
+                    $lcrRuleTargets = $model->getLcrRuleTargets();
+
+                    if (!is_array($lcrRuleTargets)) {
+
+                        $lcrRuleTargets = array($lcrRuleTargets);
+                    }
+
+                    foreach ($lcrRuleTargets as $value) {
+                        $value->setGwId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+            }
+
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -519,13 +545,13 @@ class KamUsersAddress extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\KamUsersAddress|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\KamUsersAddress The model with the data provided
+     * @param IvozProvider\Model\Raw\LcrGateways|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\LcrGateways The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\KamUsersAddress();
+            $entry = new \IvozProvider\Model\LcrGateways();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -533,29 +559,56 @@ class KamUsersAddress extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setGrp($data['grp'])
-                  ->setIpAddr($data['ip_addr'])
-                  ->setMask($data['mask'])
+                  ->setCompanyId($data['companyId'])
+                  ->setGwName($data['gw_name'])
+                  ->setIp($data['ip'])
+                  ->setHostname($data['hostname'])
                   ->setPort($data['port'])
+                  ->setParams($data['params'])
+                  ->setUriScheme($data['uri_scheme'])
+                  ->setTransport($data['transport'])
+                  ->setStrip($data['strip'])
+                  ->setPrefix($data['prefix'])
                   ->setTag($data['tag'])
-                  ->setPeerServerId($data['peerServerId']);
+                  ->setFlags($data['flags'])
+                  ->setDefunct($data['defunct'])
+                  ->setPeerServerId($data['peerServerId'])
+                  ->setOutgoingRoutingId($data['outgoingRoutingId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setGrp($data->{'grp'})
-                  ->setIpAddr($data->{'ip_addr'})
-                  ->setMask($data->{'mask'})
+                  ->setCompanyId($data->{'companyId'})
+                  ->setGwName($data->{'gw_name'})
+                  ->setIp($data->{'ip'})
+                  ->setHostname($data->{'hostname'})
                   ->setPort($data->{'port'})
+                  ->setParams($data->{'params'})
+                  ->setUriScheme($data->{'uri_scheme'})
+                  ->setTransport($data->{'transport'})
+                  ->setStrip($data->{'strip'})
+                  ->setPrefix($data->{'prefix'})
                   ->setTag($data->{'tag'})
-                  ->setPeerServerId($data->{'peerServerId'});
+                  ->setFlags($data->{'flags'})
+                  ->setDefunct($data->{'defunct'})
+                  ->setPeerServerId($data->{'peerServerId'})
+                  ->setOutgoingRoutingId($data->{'outgoingRoutingId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\KamUsersAddress) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\LcrGateways) {
             $entry->setId($data->getId())
-                  ->setGrp($data->getGrp())
-                  ->setIpAddr($data->getIpAddr())
-                  ->setMask($data->getMask())
+                  ->setCompanyId($data->getCompanyId())
+                  ->setGwName($data->getGwName())
+                  ->setIp($data->getIp())
+                  ->setHostname($data->getHostname())
                   ->setPort($data->getPort())
+                  ->setParams($data->getParams())
+                  ->setUriScheme($data->getUriScheme())
+                  ->setTransport($data->getTransport())
+                  ->setStrip($data->getStrip())
+                  ->setPrefix($data->getPrefix())
                   ->setTag($data->getTag())
-                  ->setPeerServerId($data->getPeerServerId());
+                  ->setFlags($data->getFlags())
+                  ->setDefunct($data->getDefunct())
+                  ->setPeerServerId($data->getPeerServerId())
+                  ->setOutgoingRoutingId($data->getOutgoingRoutingId());
 
         }
 

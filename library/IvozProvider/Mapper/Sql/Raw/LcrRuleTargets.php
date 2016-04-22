@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\LcrRuleTarget
+ * Data Mapper implementation for IvozProvider\Model\LcrRuleTargets
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class LcrRuleTarget extends MapperAbstract
+class LcrRuleTargets extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\LcrRuleTarget';
+    protected $_modelName = 'IvozProvider\\Model\\LcrRuleTargets';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class LcrRuleTarget extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\LcrRuleTarget $model
+     * @param IvozProvider\Model\Raw\LcrRuleTargets $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\LcrRuleTarget) {
+        if (!$model instanceof \IvozProvider\Model\Raw\LcrRuleTargets) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\LcrRuleTarget object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\LcrRuleTargets object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\LcrRuleTarget object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\LcrRuleTargets object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,13 +49,12 @@ class LcrRuleTarget extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'brandId' => $model->getBrandId(),
                 'companyId' => $model->getCompanyId(),
-                'outgoingRoutingId' => $model->getOutgoingRoutingId(),
                 'rule_id' => $model->getRuleId(),
                 'gw_id' => $model->getGwId(),
                 'priority' => $model->getPriority(),
                 'weight' => $model->getWeight(),
+                'outgoingRoutingId' => $model->getOutgoingRoutingId(),
             );
         } else {
             $result = array();
@@ -94,12 +93,12 @@ class LcrRuleTarget extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets');
         }
 
         return $this->_dbTable;
@@ -108,17 +107,17 @@ class LcrRuleTarget extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\LcrRuleTarget $model The model to delete
+     * @param IvozProvider\Model\Raw\LcrRuleTargets $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\LcrRuleTarget) {
+        if (!$model instanceof \IvozProvider\Model\Raw\LcrRuleTargets) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\LcrRuleTarget object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\LcrRuleTargets object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\LcrRuleTarget object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\LcrRuleTargets object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -168,7 +167,7 @@ class LcrRuleTarget extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -216,7 +215,7 @@ class LcrRuleTarget extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTarget', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -294,7 +293,7 @@ class LcrRuleTarget extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\LcrRuleTarget $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\LcrRuleTargets $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -302,17 +301,17 @@ class LcrRuleTarget extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\LcrRuleTarget $model
+     * @param \IvozProvider\Model\Raw\LcrRuleTargets $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\LcrRuleTarget $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\LcrRuleTargets $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\LcrRuleTarget $model,
+    protected function _save(\IvozProvider\Model\Raw\LcrRuleTargets $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -520,13 +519,13 @@ class LcrRuleTarget extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\LcrRuleTarget|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\LcrRuleTarget The model with the data provided
+     * @param IvozProvider\Model\Raw\LcrRuleTargets|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\LcrRuleTargets The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\LcrRuleTarget();
+            $entry = new \IvozProvider\Model\LcrRuleTargets();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -534,32 +533,29 @@ class LcrRuleTarget extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setBrandId($data['brandId'])
                   ->setCompanyId($data['companyId'])
-                  ->setOutgoingRoutingId($data['outgoingRoutingId'])
                   ->setRuleId($data['rule_id'])
                   ->setGwId($data['gw_id'])
                   ->setPriority($data['priority'])
-                  ->setWeight($data['weight']);
+                  ->setWeight($data['weight'])
+                  ->setOutgoingRoutingId($data['outgoingRoutingId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setBrandId($data->{'brandId'})
                   ->setCompanyId($data->{'companyId'})
-                  ->setOutgoingRoutingId($data->{'outgoingRoutingId'})
                   ->setRuleId($data->{'rule_id'})
                   ->setGwId($data->{'gw_id'})
                   ->setPriority($data->{'priority'})
-                  ->setWeight($data->{'weight'});
+                  ->setWeight($data->{'weight'})
+                  ->setOutgoingRoutingId($data->{'outgoingRoutingId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\LcrRuleTarget) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\LcrRuleTargets) {
             $entry->setId($data->getId())
-                  ->setBrandId($data->getBrandId())
                   ->setCompanyId($data->getCompanyId())
-                  ->setOutgoingRoutingId($data->getOutgoingRoutingId())
                   ->setRuleId($data->getRuleId())
                   ->setGwId($data->getGwId())
                   ->setPriority($data->getPriority())
-                  ->setWeight($data->getWeight());
+                  ->setWeight($data->getWeight())
+                  ->setOutgoingRoutingId($data->getOutgoingRoutingId());
 
         }
 
