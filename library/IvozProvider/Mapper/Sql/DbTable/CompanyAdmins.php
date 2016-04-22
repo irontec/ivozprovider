@@ -68,7 +68,7 @@ class CompanyAdmins extends TableAbstract
 	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'companyId' => 
 	  array (

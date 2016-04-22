@@ -56,9 +56,9 @@ production:
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
-              - description
-            template: '%description%'
-          order: description
+              - name
+            template: '%name%'
+          order: name
     priority: 
       title: _('Priority')
       type: number

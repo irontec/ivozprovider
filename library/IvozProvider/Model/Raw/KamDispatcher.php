@@ -24,7 +24,6 @@ class KamDispatcher extends ModelAbstract
 
 
     /**
-     * [uuid]
      * Database var type int
      *
      * @var int
@@ -106,7 +105,6 @@ class KamDispatcher extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'id'=> array('uuid'),
         ));
 
         $this->setMultiLangColumnsList(array(

@@ -59,6 +59,8 @@ production:
       fields:
         blacklist: 
           <<: *applicationServersBlacklist
+        order: 
+          <<: *applicationServersOrder
   dialogs: &applicationServers_dialogsLink
     applicationServersDel_dialog: &applicationServersDel_dialogLink 
       <<: *ApplicationServers

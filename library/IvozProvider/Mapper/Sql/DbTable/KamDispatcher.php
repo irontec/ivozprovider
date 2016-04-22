@@ -63,7 +63,7 @@ class KamDispatcher extends TableAbstract
 	    'UNSIGNED' => true,
 	    'PRIMARY' => true,
 	    'PRIMARY_POSITION' => 1,
-	    'IDENTITY' => false,
+	    'IDENTITY' => true,
 	  ),
 	  'setid' => 
 	  array (

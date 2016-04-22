@@ -382,7 +382,6 @@ class CompanyAdmins extends MapperAbstract
         try {
             if (is_null($primaryKey) || empty($primaryKey) || $forceInsert) {
                 if (is_null($primaryKey) || empty($primaryKey)) {
-                    $data['id'] = new \Zend_Db_Expr("uuid()");
                 }
                 $primaryKey = $this->getDbTable()->insert($data);
 
