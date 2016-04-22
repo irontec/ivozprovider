@@ -279,6 +279,10 @@ production:
           title: ngettext('User', 'Users', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('User', 'Users', 0))
+        XMLRPCLogsList: 
+          title: ngettext('X m l r p c log', 'X m l r p c logs', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('X m l r p c log', 'X m l r p c logs', 0))
         AstMusiconholdList: 
           title: ngettext('Ast musiconhold', 'Ast musiconhold', 0)
           class: ui-silk-text-list-bullets

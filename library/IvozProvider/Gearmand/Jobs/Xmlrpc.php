@@ -20,5 +20,4 @@ class Xmlrpc extends AbstractJob {
     {
         return $this->_proxyServers;
     }
-
 }

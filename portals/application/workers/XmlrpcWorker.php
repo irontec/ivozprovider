@@ -54,7 +54,8 @@ class XmlrpcWorker extends Iron_Gearman_Worker
                 $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyTrunks();
             }
 
-            foreach ($proxyMapper->fetchList() as $proxy) {
+            $proxies = $proxyMapper->fetchList();
+            foreach ($proxies as $proxy) {
                 $client = new \Zend_XmlRpc_Client( 'http://' . $proxy->getIp() . ':8000/RPC2' );
 
                 if (!is_array($methods)) {

@@ -35,7 +35,7 @@ class KamTrunksUacreg extends Raw\KamTrunksUacreg
         }
         $response =  parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
         try {
-            $this->_sendXmlRcp($model);
+            $this->_sendXmlRcp();
         } catch (\Exception $e) {
             $message = $e->getMessage()."<p>Sip registy may have been saved.</p>";
             throw new \Exception($message);
@@ -56,7 +56,7 @@ class KamTrunksUacreg extends Raw\KamTrunksUacreg
         return $response;
     }
 
-    protected function _sendXmlRcp($model)
+    protected function _sendXmlRcp()
     {
         $proxyServers = array(
                 'proxytrunks' => "uac.reg_reload"

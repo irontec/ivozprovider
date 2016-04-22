@@ -4,6 +4,7 @@
 use IvozProvider\Mapper\Sql\MusicOnHold;
 class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
 {
+    protected $_waitTime = 155;  // seconds
     protected $_timeout = 10000; // 1000 = 1 second
     protected $_mapper;
     protected $_frontend;
@@ -47,29 +48,39 @@ class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
         $errorMessages = array();
         $n = 1;
         foreach ($proxyServers as $serverName => $methods) {
-            $client = new \Zend_XmlRpc_Client($this->_xmlRpcServers[$serverName]);
-            if (!$this->_canBeSent($serverName, $jobObject)) {
-                return;
+
+            if ($serverName == 'proxyusers') {
+                $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyUsers();
+            } else { // proxytrunks
+                $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyTrunks();
             }
-            if (!is_array($methods)) {
-                $methods = array($methods);
-            }
-            foreach ($methods as $method) {
-                $date = new Zend_Date();
-                $now = $date->toString("YYYY/MM/dd - HH:MM:ss");
-                $lastSentFile = "/var/log/gearmand/xmlrpcdelayed.".$serverName.".last";
-                try {
-                    $client->call($method);
-                    $message = "[OK] Module ".$method." of ".$serverName." reloaded successfully.";
-                    $xmlrpcLogsMapper = new \IvozProvider\Mapper\Sql\XMLRPCLogs();
-                    $jobLog = $xmlrpcLogsMapper->find($jobObject->getId());
-                    $jobLog->setFinishDate(new \Zend_Date())->save();
-                    $this->_logger->log($message, Zend_Log::INFO);
-                } catch (\Exception $e) {
-                    $message = "[ERROR] Error executing ".$method." in ".$serverName.". ".
-                        "Error was:\n\t".$e->getMessage();
-                    $errorMessages[] = $message;
-                    $this->_logger->log($message, Zend_Log::ERR);
+
+            $proxies = $proxyMapper->fetchList();
+            foreach ($proxies as $proxy) {
+                $client = new \Zend_XmlRpc_Client( 'http://' . $proxy->getIp() . ':8000/RPC2' );
+                if (!$this->_canBeSent($serverName, $jobObject)) {
+                    return;
+                }
+                if (!is_array($methods)) {
+                    $methods = array($methods);
+                }
+                foreach ($methods as $method) {
+                    $date = new Zend_Date();
+                    $now = $date->toString("YYYY/MM/dd - HH:MM:ss");
+                    $lastSentFile = "/var/log/gearmand/xmlrpcdelayed.".$serverName.".last";
+                    try {
+                        $client->call($method);
+                        $message = "[OK] Module ".$method." of ".$serverName." reloaded successfully.";
+                        $xmlrpcLogsMapper = new \IvozProvider\Mapper\Sql\XMLRPCLogs();
+                        $jobLog = $xmlrpcLogsMapper->find($jobObject->getId());
+                        $jobLog->setFinishDate(new \Zend_Date())->save();
+                        $this->_logger->log($message, Zend_Log::INFO);
+                    } catch (\Exception $e) {
+                        $message = "[ERROR] Error executing ".$method." in ".$serverName.". ".
+                            "Error was:\n\t".$e->getMessage();
+                        $errorMessages[] = $message;
+                        $this->_logger->log($message, Zend_Log::ERR);
+                    }
                 }
             }
         }
@@ -120,12 +131,12 @@ class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
 
         $elapsedSeconds = $jobExec - $lastSent;
 
-        if ($elapsedSeconds >= 155) {
+        if ($elapsedSeconds >= $_waitTime) {
             return true;
         }
 
-        $diference = 155 - $elapsedSeconds;
-        $infoMessage = "\n[INFO] Waitting ".$diference." seconds to send.";
+        $diference = $_waitTime - $elapsedSeconds;
+        $infoMessage = "[INFO] Waitting ".$diference." seconds to send.";
         $this->_logger->log($infoMessage, Zend_Log::INFO);
         sleep($diference);
         return true;
