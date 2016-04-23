@@ -25,6 +25,12 @@ production:
           order: name
     transformationRulesetGroupsTrunksId: 
       title: _('Transformation ruleset groups trunks')
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Callee transformation needs calls to be placed to brand's proxytrunk's domain to work")
+        label: _("Need help?")
       type: select
       source: 
         data: mapper

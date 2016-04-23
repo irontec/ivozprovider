@@ -98,7 +98,7 @@ production:
     <<: *transformationRulesetGroupsTrunks_screensLink
     transformationRulesetGroupsTrunksList_screen:
       <<: *transformationRulesetGroupsTrunksList_screenLink
-      class: ui-silk-add
+      class: ui-silk-pencil
       title: _("List of %s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0), "[format]")
     transformationRulesetGroupsTrunksNew_screen:
       <<: *transformationRulesetGroupsTrunksNew_screenLink
