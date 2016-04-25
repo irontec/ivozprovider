@@ -1184,7 +1184,7 @@ CREATE TABLE `Languages` (
 
 LOCK TABLES `Languages` WRITE;
 /*!40000 ALTER TABLE `Languages` DISABLE KEYS */;
-INSERT INTO `Languages` VALUES (1,'es_ES','','Spanish','EspaÃ±ol'),(2,'en_EN','','English','InglÃ©s');
+INSERT INTO `Languages` VALUES (1,'es','','Spanish','EspaÃ±ol'),(2,'en','','English','InglÃ©s');
 /*!40000 ALTER TABLE `Languages` ENABLE KEYS */;
 UNLOCK TABLES;
 

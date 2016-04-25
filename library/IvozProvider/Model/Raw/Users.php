@@ -185,13 +185,20 @@ class Users extends ModelAbstract
      */
     protected $_countryId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_languageId;
+
 
     /**
-     * Parent relation Users_ibfk_1
+     * Parent relation Users_ibfk_15
      *
-     * @var \IvozProvider\Model\Raw\Companies
+     * @var \IvozProvider\Model\Raw\Languages
      */
-    protected $_Company;
+    protected $_Language;
 
     /**
      * Parent relation Users_ibfk_10
@@ -213,6 +220,13 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Countries
      */
     protected $_Country;
+
+    /**
+     * Parent relation Users_ibfk_14
+     *
+     * @var \IvozProvider\Model\Raw\Companies
+     */
+    protected $_Company;
 
     /**
      * Parent relation Users_ibfk_3
@@ -379,6 +393,7 @@ class Users extends ModelAbstract
         'voicemailEnabled'=>'voicemailEnabled',
         'tokenKey'=>'tokenKey',
         'countryId'=>'countryId',
+        'languageId'=>'languageId',
     );
 
     /**
@@ -396,9 +411,9 @@ class Users extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'UsersIbfk1'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
+            'UsersIbfk15'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
                 ),
             'UsersIbfk10'=> array(
                     'property' => 'CallACL',
@@ -411,6 +426,10 @@ class Users extends ModelAbstract
             'UsersIbfk12'=> array(
                     'property' => 'Country',
                     'table_name' => 'Countries',
+                ),
+            'UsersIbfk14'=> array(
+                    'property' => 'Company',
+                    'table_name' => 'Companies',
                 ),
             'UsersIbfk3'=> array(
                     'property' => 'Terminal',
@@ -1351,14 +1370,48 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Company
-     *
-     * @param \IvozProvider\Model\Raw\Companies $data
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
-    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
+    public function setLanguageId($data)
     {
-        $this->_Company = $data;
+
+        if ($this->_languageId != $data) {
+            $this->_logChange('languageId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_languageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_languageId = (int) $data;
+
+        } else {
+            $this->_languageId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column languageId
+     *
+     * @return int
+     */
+    public function getLanguageId()
+    {
+        return $this->_languageId;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
 
         $primaryKey = $data->getPrimaryKey();
         if (is_array($primaryKey)) {
@@ -1366,21 +1419,21 @@ class Users extends ModelAbstract
         }
 
         if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
+            $this->setLanguageId($primaryKey);
         }
 
-        $this->_setLoaded('UsersIbfk1');
+        $this->_setLoaded('UsersIbfk15');
         return $this;
     }
 
     /**
-     * Gets parent Company
+     * Gets parent Language
      * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
+     * @return \IvozProvider\Model\Raw\Languages
      */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'UsersIbfk1';
+        $fkName = 'UsersIbfk15';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -1392,13 +1445,13 @@ class Users extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
+            $this->_Language = array_shift($related);
             if ($usingDefaultArguments) {
                 $this->_setLoaded($fkName);
             }
         }
 
-        return $this->_Company;
+        return $this->_Language;
     }
 
     /**
@@ -1552,6 +1605,57 @@ class Users extends ModelAbstract
         }
 
         return $this->_Country;
+    }
+
+    /**
+     * Sets parent relation Company
+     *
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
+    {
+        $this->_Company = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCompanyId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk14');
+        return $this;
+    }
+
+    /**
+     * Gets parent Company
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk14';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Company = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Company;
     }
 
     /**

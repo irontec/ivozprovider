@@ -40,6 +40,11 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'CompaniesIbfk10' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
+        ),
         'CompaniesIbfk2' => array(
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
@@ -53,11 +58,6 @@ class Companies extends TableAbstract
         'CompaniesIbfk5' => array(
             'columns' => 'applicationServerId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ApplicationServers',
-            'refColumns' => 'id'
-        ),
-        'CompaniesIbfk8' => array(
-            'columns' => 'invoiceLanguageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         ),
         'CompaniesIbfk9' => array(
@@ -298,29 +298,12 @@ class Companies extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'invoiceLanguageId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Companies',
-	    'COLUMN_NAME' => 'invoiceLanguageId',
-	    'COLUMN_POSITION' => 13,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
 	  'outbound_prefix' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'outbound_prefix',
-	    'COLUMN_POSITION' => 14,
+	    'COLUMN_POSITION' => 13,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -337,6 +320,23 @@ class Companies extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'countryId',
+	    'COLUMN_POSITION' => 14,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'languageId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'languageId',
 	    'COLUMN_POSITION' => 15,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,

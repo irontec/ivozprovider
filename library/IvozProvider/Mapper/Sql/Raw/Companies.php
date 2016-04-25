@@ -60,9 +60,9 @@ class Companies extends MapperAbstract
                 'town' => $model->getTown(),
                 'province' => $model->getProvince(),
                 'country' => $model->getCountry(),
-                'invoiceLanguageId' => $model->getInvoiceLanguageId(),
                 'outbound_prefix' => $model->getOutboundPrefix(),
                 'countryId' => $model->getCountryId(),
+                'languageId' => $model->getLanguageId(),
             );
         } else {
             $result = array();
@@ -905,9 +905,9 @@ class Companies extends MapperAbstract
                   ->setTown($data['town'])
                   ->setProvince($data['province'])
                   ->setCountry($data['country'])
-                  ->setInvoiceLanguageId($data['invoiceLanguageId'])
                   ->setOutboundPrefix($data['outbound_prefix'])
-                  ->setCountryId($data['countryId']);
+                  ->setCountryId($data['countryId'])
+                  ->setLanguageId($data['languageId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -921,9 +921,9 @@ class Companies extends MapperAbstract
                   ->setTown($data->{'town'})
                   ->setProvince($data->{'province'})
                   ->setCountry($data->{'country'})
-                  ->setInvoiceLanguageId($data->{'invoiceLanguageId'})
                   ->setOutboundPrefix($data->{'outbound_prefix'})
-                  ->setCountryId($data->{'countryId'});
+                  ->setCountryId($data->{'countryId'})
+                  ->setLanguageId($data->{'languageId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -938,9 +938,9 @@ class Companies extends MapperAbstract
                   ->setTown($data->getTown())
                   ->setProvince($data->getProvince())
                   ->setCountry($data->getCountry())
-                  ->setInvoiceLanguageId($data->getInvoiceLanguageId())
                   ->setOutboundPrefix($data->getOutboundPrefix())
-                  ->setCountryId($data->getCountryId());
+                  ->setCountryId($data->getCountryId())
+                  ->setLanguageId($data->getLanguageId());
 
         }
 

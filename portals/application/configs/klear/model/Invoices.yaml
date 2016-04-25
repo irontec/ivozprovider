@@ -48,7 +48,6 @@ production:
 #        data: mapper
 #        config: 
 #          mapperName: \IvozProvider\Mapper\Sql\Languages
-#          filterClass: IvozProvider_Klear_Filter_BrandLanguages
 #          fieldName: 
 #            fields: 
 #              - name

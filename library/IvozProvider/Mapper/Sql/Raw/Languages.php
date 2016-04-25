@@ -438,15 +438,15 @@ class Languages extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getBrandsRelLanguages(null, null, true) !== null) {
-                    $brandsRelLanguages = $model->getBrandsRelLanguages();
+                if ($model->getBrands(null, null, true) !== null) {
+                    $brands = $model->getBrands();
 
-                    if (!is_array($brandsRelLanguages)) {
+                    if (!is_array($brands)) {
 
-                        $brandsRelLanguages = array($brandsRelLanguages);
+                        $brands = array($brands);
                     }
 
-                    foreach ($brandsRelLanguages as $value) {
+                    foreach ($brands as $value) {
                         $value->setLanguageId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
@@ -461,7 +461,21 @@ class Languages extends MapperAbstract
                     }
 
                     foreach ($companies as $value) {
-                        $value->setInvoiceLanguageId($primaryKey)
+                        $value->setLanguageId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getUsers(null, null, true) !== null) {
+                    $users = $model->getUsers();
+
+                    if (!is_array($users)) {
+
+                        $users = array($users);
+                    }
+
+                    foreach ($users as $value) {
+                        $value->setLanguageId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }

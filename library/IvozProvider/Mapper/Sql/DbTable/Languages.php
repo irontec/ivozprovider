@@ -41,8 +41,9 @@ class Languages extends TableAbstract
     protected $_sequence = true; // int
     
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\BrandsRelLanguages',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
 	  'id' => 

@@ -40,7 +40,6 @@ production:
           province: true
           country: true
           registryData: true
-          invoiceLanguageId: true
           externalMaxCalls: true
           defaultTimezoneId: true
           applicationServerId: true
@@ -91,6 +90,7 @@ production:
             name: 1
             nif: 1
             defaultTimezoneId: 1
+            languageId: 1
         group1:
           colsPerRow: 4
           label: _("Server data")

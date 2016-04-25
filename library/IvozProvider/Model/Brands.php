@@ -49,4 +49,13 @@ class Brands extends Raw\Brands
         }
         return $activePricingPlansIds;
     }
+    
+    public function getLanguageCode()
+    {
+        $language = $this->getLanguage();
+        if (!$language) {
+            return "en";
+        }
+        return $language->getIden();
+    }
 }

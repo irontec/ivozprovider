@@ -108,13 +108,6 @@ class Companies extends ModelAbstract
     protected $_country;
 
     /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_invoiceLanguageId;
-
-    /**
      * Database var type varchar
      *
      * @var string
@@ -128,6 +121,20 @@ class Companies extends ModelAbstract
      */
     protected $_countryId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_languageId;
+
+
+    /**
+     * Parent relation Companies_ibfk_10
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
     /**
      * Parent relation Companies_ibfk_2
@@ -149,13 +156,6 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\ApplicationServers
      */
     protected $_ApplicationServer;
-
-    /**
-     * Parent relation Companies_ibfk_8
-     *
-     * @var \IvozProvider\Model\Raw\Languages
-     */
-    protected $_InvoiceLanguage;
 
     /**
      * Parent relation Companies_ibfk_9
@@ -358,7 +358,7 @@ class Companies extends ModelAbstract
     protected $_Terminals;
 
     /**
-     * Dependent relation Users_ibfk_1
+     * Dependent relation Users_ibfk_14
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\Users[]
@@ -378,9 +378,9 @@ class Companies extends ModelAbstract
         'town'=>'town',
         'province'=>'province',
         'country'=>'country',
-        'invoiceLanguageId'=>'invoiceLanguageId',
         'outbound_prefix'=>'outboundPrefix',
         'countryId'=>'countryId',
+        'languageId'=>'languageId',
     );
 
     /**
@@ -397,6 +397,10 @@ class Companies extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'CompaniesIbfk10'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
+                ),
             'CompaniesIbfk2'=> array(
                     'property' => 'DefaultTimezone',
                     'table_name' => 'Timezones',
@@ -408,10 +412,6 @@ class Companies extends ModelAbstract
             'CompaniesIbfk5'=> array(
                     'property' => 'ApplicationServer',
                     'table_name' => 'ApplicationServers',
-                ),
-            'CompaniesIbfk8'=> array(
-                    'property' => 'InvoiceLanguage',
-                    'table_name' => 'Languages',
                 ),
             'CompaniesIbfk9'=> array(
                     'property' => 'Countries',
@@ -516,7 +516,7 @@ class Companies extends ModelAbstract
                     'property' => 'Terminals',
                     'table_name' => 'Terminals',
                 ),
-            'UsersIbfk1' => array(
+            'UsersIbfk14' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
                 ),
@@ -1002,40 +1002,6 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setInvoiceLanguageId($data)
-    {
-
-        if ($this->_invoiceLanguageId != $data) {
-            $this->_logChange('invoiceLanguageId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_invoiceLanguageId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_invoiceLanguageId = (int) $data;
-
-        } else {
-            $this->_invoiceLanguageId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column invoiceLanguageId
-     *
-     * @return int
-     */
-    public function getInvoiceLanguageId()
-    {
-        return $this->_invoiceLanguageId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param string $data
      * @return \IvozProvider\Model\Raw\Companies
      */
@@ -1100,6 +1066,91 @@ class Companies extends ModelAbstract
     public function getCountryId()
     {
         return $this->_countryId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setLanguageId($data)
+    {
+
+        if ($this->_languageId != $data) {
+            $this->_logChange('languageId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_languageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_languageId = (int) $data;
+
+        } else {
+            $this->_languageId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column languageId
+     *
+     * @return int
+     */
+    public function getLanguageId()
+    {
+        return $this->_languageId;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk10');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk10';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**
@@ -1253,57 +1304,6 @@ class Companies extends ModelAbstract
         }
 
         return $this->_ApplicationServer;
-    }
-
-    /**
-     * Sets parent relation InvoiceLanguage
-     *
-     * @param \IvozProvider\Model\Raw\Languages $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setInvoiceLanguage(\IvozProvider\Model\Raw\Languages $data)
-    {
-        $this->_InvoiceLanguage = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setInvoiceLanguageId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk8');
-        return $this;
-    }
-
-    /**
-     * Gets parent InvoiceLanguage
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Languages
-     */
-    public function getInvoiceLanguage($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk8';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_InvoiceLanguage = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_InvoiceLanguage;
     }
 
     /**
@@ -3518,7 +3518,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Users_ibfk_1
+     * Sets dependent relations Users_ibfk_14
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Users
      * @return \IvozProvider\Model\Raw\Companies
@@ -3566,7 +3566,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Users_ibfk_1
+     * Sets dependent relations Users_ibfk_14
      *
      * @param \IvozProvider\Model\Raw\Users $data
      * @return \IvozProvider\Model\Raw\Companies
@@ -3574,12 +3574,12 @@ class Companies extends ModelAbstract
     public function addUsers(\IvozProvider\Model\Raw\Users $data)
     {
         $this->_Users[] = $data;
-        $this->_setLoaded('UsersIbfk1');
+        $this->_setLoaded('UsersIbfk14');
         return $this;
     }
 
     /**
-     * Gets dependent Users_ibfk_1
+     * Gets dependent Users_ibfk_14
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -3588,7 +3588,7 @@ class Companies extends ModelAbstract
      */
     public function getUsers($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'UsersIbfk1';
+        $fkName = 'UsersIbfk14';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

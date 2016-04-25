@@ -1,0 +1,9 @@
+Greetings ${VM_NAME}!
+
+    You have a new voicemail from ${VM_CIDNAME} (${VM_CIDNUM}) waiting!
+    
+    Day: ${VM_DATE}
+    Duration: ${VM_DUR}
+
+Best Regards,
+IvozProvider Mailbox System

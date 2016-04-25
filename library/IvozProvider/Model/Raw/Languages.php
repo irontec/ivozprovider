@@ -62,20 +62,28 @@ class Languages extends ModelAbstract
 
 
     /**
-     * Dependent relation BrandsRelLanguages_ibfk_2
+     * Dependent relation Brands_ibfk_2
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\BrandsRelLanguages[]
+     * @var \IvozProvider\Model\Raw\Brands[]
      */
-    protected $_BrandsRelLanguages;
+    protected $_Brands;
 
     /**
-     * Dependent relation Companies_ibfk_8
+     * Dependent relation Companies_ibfk_10
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\Companies[]
      */
     protected $_Companies;
+
+    /**
+     * Dependent relation Users_ibfk_15
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Users[]
+     */
+    protected $_Users;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -104,22 +112,24 @@ class Languages extends ModelAbstract
         ));
 
         $this->setDependentList(array(
-            'BrandsRelLanguagesIbfk2' => array(
-                    'property' => 'BrandsRelLanguages',
-                    'table_name' => 'BrandsRelLanguages',
+            'BrandsIbfk2' => array(
+                    'property' => 'Brands',
+                    'table_name' => 'Brands',
                 ),
-            'CompaniesIbfk8' => array(
+            'CompaniesIbfk10' => array(
                     'property' => 'Companies',
                     'table_name' => 'Companies',
                 ),
+            'UsersIbfk15' => array(
+                    'property' => 'Users',
+                    'table_name' => 'Users',
+                ),
         ));
 
-        $this->setOnDeleteCascadeRelationships(array(
-            'BrandsRelLanguages_ibfk_2'
-        ));
 
         $this->setOnDeleteSetNullRelationships(array(
-            'Companies_ibfk_8'
+            'Brands_ibfk_2',
+            'Companies_ibfk_10'
         ));
 
 
@@ -340,21 +350,21 @@ class Languages extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations BrandsRelLanguages_ibfk_2
+     * Sets dependent relations Brands_ibfk_2
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\BrandsRelLanguages
+     * @param array $data An array of \IvozProvider\Model\Raw\Brands
      * @return \IvozProvider\Model\Raw\Languages
      */
-    public function setBrandsRelLanguages(array $data, $deleteOrphans = false)
+    public function setBrands(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_BrandsRelLanguages === null) {
+            if ($this->_Brands === null) {
 
-                $this->getBrandsRelLanguages();
+                $this->getBrands();
             }
 
-            $oldRelations = $this->_BrandsRelLanguages;
+            $oldRelations = $this->_Brands;
 
             if (is_array($oldRelations)) {
 
@@ -378,39 +388,39 @@ class Languages extends ModelAbstract
             }
         }
 
-        $this->_BrandsRelLanguages = array();
+        $this->_Brands = array();
 
         foreach ($data as $object) {
-            $this->addBrandsRelLanguages($object);
+            $this->addBrands($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations BrandsRelLanguages_ibfk_2
+     * Sets dependent relations Brands_ibfk_2
      *
-     * @param \IvozProvider\Model\Raw\BrandsRelLanguages $data
+     * @param \IvozProvider\Model\Raw\Brands $data
      * @return \IvozProvider\Model\Raw\Languages
      */
-    public function addBrandsRelLanguages(\IvozProvider\Model\Raw\BrandsRelLanguages $data)
+    public function addBrands(\IvozProvider\Model\Raw\Brands $data)
     {
-        $this->_BrandsRelLanguages[] = $data;
-        $this->_setLoaded('BrandsRelLanguagesIbfk2');
+        $this->_Brands[] = $data;
+        $this->_setLoaded('BrandsIbfk2');
         return $this;
     }
 
     /**
-     * Gets dependent BrandsRelLanguages_ibfk_2
+     * Gets dependent Brands_ibfk_2
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\BrandsRelLanguages
+     * @return array The array of \IvozProvider\Model\Raw\Brands
      */
-    public function getBrandsRelLanguages($where = null, $orderBy = null, $avoidLoading = false)
+    public function getBrands($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'BrandsRelLanguagesIbfk2';
+        $fkName = 'BrandsIbfk2';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -422,15 +432,15 @@ class Languages extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_BrandsRelLanguages = $related;
+            $this->_Brands = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_BrandsRelLanguages;
+        return $this->_Brands;
     }
 
     /**
-     * Sets dependent relations Companies_ibfk_8
+     * Sets dependent relations Companies_ibfk_10
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Companies
      * @return \IvozProvider\Model\Raw\Languages
@@ -478,7 +488,7 @@ class Languages extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Companies_ibfk_8
+     * Sets dependent relations Companies_ibfk_10
      *
      * @param \IvozProvider\Model\Raw\Companies $data
      * @return \IvozProvider\Model\Raw\Languages
@@ -486,12 +496,12 @@ class Languages extends ModelAbstract
     public function addCompanies(\IvozProvider\Model\Raw\Companies $data)
     {
         $this->_Companies[] = $data;
-        $this->_setLoaded('CompaniesIbfk8');
+        $this->_setLoaded('CompaniesIbfk10');
         return $this;
     }
 
     /**
-     * Gets dependent Companies_ibfk_8
+     * Gets dependent Companies_ibfk_10
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -500,7 +510,7 @@ class Languages extends ModelAbstract
      */
     public function getCompanies($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'CompaniesIbfk8';
+        $fkName = 'CompaniesIbfk10';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -517,6 +527,96 @@ class Languages extends ModelAbstract
         }
 
         return $this->_Companies;
+    }
+
+    /**
+     * Sets dependent relations Users_ibfk_15
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Users
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function setUsers(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Users === null) {
+
+                $this->getUsers();
+            }
+
+            $oldRelations = $this->_Users;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Users = array();
+
+        foreach ($data as $object) {
+            $this->addUsers($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Users_ibfk_15
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function addUsers(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_Users[] = $data;
+        $this->_setLoaded('UsersIbfk15');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Users_ibfk_15
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Users
+     */
+    public function getUsers($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk15';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Users = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Users;
     }
 
     /**

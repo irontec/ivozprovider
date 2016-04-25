@@ -110,9 +110,8 @@ production:
         group2:
           colsPerRow: 3
           fields:
-            companyId: 1
-            isBos: 1
             timezoneId: 1
+            languageId: 1
             isBoss: 1
             bossAssistantId: 1
             exceptionBoosAssistantRegExp: 2

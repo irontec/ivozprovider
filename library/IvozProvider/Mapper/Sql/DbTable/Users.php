@@ -40,9 +40,9 @@ class Users extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'UsersIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+        'UsersIbfk15' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         ),
         'UsersIbfk10' => array(
@@ -58,6 +58,11 @@ class Users extends TableAbstract
         'UsersIbfk12' => array(
             'columns' => 'countryId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk14' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         ),
         'UsersIbfk3' => array(
@@ -478,6 +483,23 @@ class Users extends TableAbstract
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'countryId',
 	    'COLUMN_POSITION' => 23,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'languageId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Users',
+	    'COLUMN_NAME' => 'languageId',
+	    'COLUMN_POSITION' => 24,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

@@ -60,7 +60,6 @@ production:
           domain: true
           logo: true
           defaultTimezoneId: true
-          BrandsRelLanguages: true
           extensionBlackListRegExp: true
       fixedPositions: &brandsFixedPositions_Link
         group0:
@@ -74,7 +73,7 @@ production:
           colsPerRow: 2
           fields:
             defaultTimezoneId: 1
-            BrandsRelLanguages: 1
+            languageId: 1
         group3:
           colsPerRow: 1
           fields:

@@ -83,4 +83,13 @@ class Companies extends Raw\Companies
         return $companyPricingPlans;
     }
 
+    public function getLanguageCode()
+    {
+        $language = $this->getLanguage();
+        if (!$language) {
+            return $this->getBrand()->getLanguageCode();
+        }
+        return $language->getIden();
+    }
+    
 }

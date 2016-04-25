@@ -3,7 +3,6 @@ mappers:
   - &BrandOperators {mapper: \IvozProvider\Mapper\Sql\BrandOperators, modelFile: BrandOperators}
   - &BrandURLs {mapper: \IvozProvider\Mapper\Sql\BrandURLs, modelFile: BrandURLs}
   - &Brands {mapper: \IvozProvider\Mapper\Sql\Brands, modelFile: Brands}
-  - &BrandsRelLanguages {mapper: \IvozProvider\Mapper\Sql\BrandsRelLanguages, modelFile: BrandsRelLanguages}
   - &CDRs {mapper: \IvozProvider\Mapper\Sql\CDRs, modelFile: CDRs}
   - &Calendars {mapper: \IvozProvider\Mapper\Sql\Calendars, modelFile: Calendars}
   - &CallACL {mapper: \IvozProvider\Mapper\Sql\CallACL, modelFile: CallACL}

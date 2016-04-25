@@ -40,6 +40,11 @@ class Brands extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'BrandsIbfk2' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
+        ),
         'BrandsIbfk1' => array(
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
@@ -49,7 +54,6 @@ class Brands extends TableAbstract
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\BrandOperators',
         'IvozProvider\\Mapper\\Sql\\DbTable\\BrandURLs',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\BrandsRelLanguages',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\GenericCallACLPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\GenericMusicOnHold',
@@ -320,6 +324,23 @@ class Brands extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'languageId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Brands',
+	    'COLUMN_NAME' => 'languageId',
+	    'COLUMN_POSITION' => 16,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

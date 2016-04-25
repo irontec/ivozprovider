@@ -201,4 +201,13 @@ class Users extends Raw\Users
         // Looks like a complete user
         return true;
     }
+    
+    public function getLanguageCode()
+    {
+        $language = $this->getLanguage();
+        if (!$language) {
+            return $this->getCompany()->getLanguageCode(); 
+        }
+        return $language->getIden();
+    }
 }

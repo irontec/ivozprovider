@@ -133,6 +133,20 @@ class Brands extends ModelAbstract
      */
     protected $_registryData;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_languageId;
+
+
+    /**
+     * Parent relation Brands_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
     /**
      * Parent relation Brands_ibfk_1
@@ -157,14 +171,6 @@ class Brands extends ModelAbstract
      * @var \IvozProvider\Model\Raw\BrandURLs[]
      */
     protected $_BrandURLs;
-
-    /**
-     * Dependent relation BrandsRelLanguages_ibfk_3
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\BrandsRelLanguages[]
-     */
-    protected $_BrandsRelLanguages;
 
     /**
      * Dependent relation Companies_ibfk_4
@@ -318,6 +324,7 @@ class Brands extends ModelAbstract
         'province'=>'province',
         'country'=>'country',
         'registryData'=>'registryData',
+        'languageId'=>'languageId',
     );
 
     /**
@@ -335,6 +342,10 @@ class Brands extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'BrandsIbfk2'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
+                ),
             'BrandsIbfk1'=> array(
                     'property' => 'DefaultTimezone',
                     'table_name' => 'Timezones',
@@ -349,10 +360,6 @@ class Brands extends ModelAbstract
             'BrandURLsIbfk1' => array(
                     'property' => 'BrandURLs',
                     'table_name' => 'BrandURLs',
-                ),
-            'BrandsRelLanguagesIbfk3' => array(
-                    'property' => 'BrandsRelLanguages',
-                    'table_name' => 'BrandsRelLanguages',
                 ),
             'CompaniesIbfk4' => array(
                     'property' => 'Companies',
@@ -1089,6 +1096,91 @@ class Brands extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setLanguageId($data)
+    {
+
+        if ($this->_languageId != $data) {
+            $this->_logChange('languageId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_languageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_languageId = (int) $data;
+
+        } else {
+            $this->_languageId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column languageId
+     *
+     * @return int
+     */
+    public function getLanguageId()
+    {
+        return $this->_languageId;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('BrandsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'BrandsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
+    }
+
+    /**
      * Sets parent relation DefaultTimezone
      *
      * @param \IvozProvider\Model\Raw\Timezones $data
@@ -1317,96 +1409,6 @@ class Brands extends ModelAbstract
         }
 
         return $this->_BrandURLs;
-    }
-
-    /**
-     * Sets dependent relations BrandsRelLanguages_ibfk_3
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\BrandsRelLanguages
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function setBrandsRelLanguages(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_BrandsRelLanguages === null) {
-
-                $this->getBrandsRelLanguages();
-            }
-
-            $oldRelations = $this->_BrandsRelLanguages;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_BrandsRelLanguages = array();
-
-        foreach ($data as $object) {
-            $this->addBrandsRelLanguages($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations BrandsRelLanguages_ibfk_3
-     *
-     * @param \IvozProvider\Model\Raw\BrandsRelLanguages $data
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function addBrandsRelLanguages(\IvozProvider\Model\Raw\BrandsRelLanguages $data)
-    {
-        $this->_BrandsRelLanguages[] = $data;
-        $this->_setLoaded('BrandsRelLanguagesIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets dependent BrandsRelLanguages_ibfk_3
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\BrandsRelLanguages
-     */
-    public function getBrandsRelLanguages($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'BrandsRelLanguagesIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_BrandsRelLanguages = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_BrandsRelLanguages;
     }
 
     /**
