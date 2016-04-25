@@ -43,8 +43,11 @@ class PeerServers extends Raw\PeerServers
             $model->setBrandId($brand->getId());
         }
         
-        $flag = $model->getSendPAI() + ($model->getSendRPID()*2) + ($model->getUseAuthUserAsFromUser()*4);
-        $model->setFlags($flag);
+        if ($model->auth_needed == 'no') {
+            $model->setAuthUser(null);
+            $model->setAuthPassword(null);
+            $model->setUseAuthUserAsFromUser('0');
+        }
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 

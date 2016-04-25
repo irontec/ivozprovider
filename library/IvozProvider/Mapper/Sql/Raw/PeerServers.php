@@ -61,12 +61,12 @@ class PeerServers extends MapperAbstract
                 'transport' => $model->getTransport(),
                 'strip' => $model->getStrip(),
                 'prefix' => $model->getPrefix(),
-                'tag' => $model->getTag(),
-                'flags' => $model->getFlags(),
-                'defunct' => $model->getDefunct(),
                 'sendPAI' => $model->getSendPAI(),
                 'sendRPID' => $model->getSendRPID(),
                 'useAuthUserAsFromUser' => $model->getUseAuthUserAsFromUser(),
+                'auth_needed' => $model->getAuthNeeded(),
+                'auth_user' => $model->getAuthUser(),
+                'auth_password' => $model->getAuthPassword(),
             );
         } else {
             $result = array();
@@ -574,12 +574,12 @@ class PeerServers extends MapperAbstract
                   ->setTransport($data['transport'])
                   ->setStrip($data['strip'])
                   ->setPrefix($data['prefix'])
-                  ->setTag($data['tag'])
-                  ->setFlags($data['flags'])
-                  ->setDefunct($data['defunct'])
                   ->setSendPAI($data['sendPAI'])
                   ->setSendRPID($data['sendRPID'])
-                  ->setUseAuthUserAsFromUser($data['useAuthUserAsFromUser']);
+                  ->setUseAuthUserAsFromUser($data['useAuthUserAsFromUser'])
+                  ->setAuthNeeded($data['auth_needed'])
+                  ->setAuthUser($data['auth_user'])
+                  ->setAuthPassword($data['auth_password']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setPeeringContractId($data->{'peeringContractId'})
@@ -594,12 +594,12 @@ class PeerServers extends MapperAbstract
                   ->setTransport($data->{'transport'})
                   ->setStrip($data->{'strip'})
                   ->setPrefix($data->{'prefix'})
-                  ->setTag($data->{'tag'})
-                  ->setFlags($data->{'flags'})
-                  ->setDefunct($data->{'defunct'})
                   ->setSendPAI($data->{'sendPAI'})
                   ->setSendRPID($data->{'sendRPID'})
-                  ->setUseAuthUserAsFromUser($data->{'useAuthUserAsFromUser'});
+                  ->setUseAuthUserAsFromUser($data->{'useAuthUserAsFromUser'})
+                  ->setAuthNeeded($data->{'auth_needed'})
+                  ->setAuthUser($data->{'auth_user'})
+                  ->setAuthPassword($data->{'auth_password'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\PeerServers) {
             $entry->setId($data->getId())
@@ -615,12 +615,12 @@ class PeerServers extends MapperAbstract
                   ->setTransport($data->getTransport())
                   ->setStrip($data->getStrip())
                   ->setPrefix($data->getPrefix())
-                  ->setTag($data->getTag())
-                  ->setFlags($data->getFlags())
-                  ->setDefunct($data->getDefunct())
                   ->setSendPAI($data->getSendPAI())
                   ->setSendRPID($data->getSendRPID())
-                  ->setUseAuthUserAsFromUser($data->getUseAuthUserAsFromUser());
+                  ->setUseAuthUserAsFromUser($data->getUseAuthUserAsFromUser())
+                  ->setAuthNeeded($data->getAuthNeeded())
+                  ->setAuthUser($data->getAuthUser())
+                  ->setAuthPassword($data->getAuthPassword());
 
         }
 

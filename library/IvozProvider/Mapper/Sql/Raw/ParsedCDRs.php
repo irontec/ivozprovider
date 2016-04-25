@@ -66,6 +66,7 @@ class ParsedCDRs extends MapperAbstract
                 'brandId' => $model->getBrandId(),
                 'aleg' => $model->getAleg(),
                 'bleg' => $model->getBleg(),
+                'billCallID' => $model->getBillCallID(),
                 'metered' => $model->getMetered(),
                 'meteringDate' => $model->getMeteringDate(),
                 'pricingPlanId' => $model->getPricingPlanId(),
@@ -568,6 +569,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setBrandId($data['brandId'])
                   ->setAleg($data['aleg'])
                   ->setBleg($data['bleg'])
+                  ->setBillCallID($data['billCallID'])
                   ->setMetered($data['metered'])
                   ->setMeteringDate($data['meteringDate'])
                   ->setPricingPlanId($data['pricingPlanId'])
@@ -594,6 +596,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setBrandId($data->{'brandId'})
                   ->setAleg($data->{'aleg'})
                   ->setBleg($data->{'bleg'})
+                  ->setBillCallID($data->{'billCallID'})
                   ->setMetered($data->{'metered'})
                   ->setMeteringDate($data->{'meteringDate'})
                   ->setPricingPlanId($data->{'pricingPlanId'})
@@ -621,6 +624,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setBrandId($data->getBrandId())
                   ->setAleg($data->getAleg())
                   ->setBleg($data->getBleg())
+                  ->setBillCallID($data->getBillCallID())
                   ->setMetered($data->getMetered())
                   ->setMeteringDate($data->getMeteringDate())
                   ->setPricingPlanId($data->getPricingPlanId())

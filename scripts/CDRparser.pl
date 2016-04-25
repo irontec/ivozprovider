@@ -109,7 +109,7 @@ my $dbh = DBI->connect($dsn, $user, $pass)
                 or die "Couldn't connect to database: " . DBI->errstr;
 
 # My needed variables
-my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID/;
+my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
 my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
 my %execution = ('ok' => 0, 'error' => 0);
 
@@ -145,6 +145,7 @@ sub setBlegInfo {
  
         # Set aditional fields for future reference (not used in INSERT)
         $stat{proxyB} = $$bleg{proxy};
+        $stat{peeringContractId} = $$bleg{peeringContractId} if $$bleg{peeringContractId};
     } else {
         say "[$callid] Has NO bleg";
         $stat{proxyB} = 'none';
@@ -271,7 +272,13 @@ sub setParsedValue {
 sub insertStat {
     # Prepare INSERT query
     my $fields = join ',', map {"`$_`"} @STATFIELDS;
-    my $values = join ',', map {"'$stat{$_}'"} @STATFIELDS;
+    my $values = join ',', map {
+        if ($stat{$_}) {
+            "'$stat{$_}'";
+        } else {
+            "NULL";
+        }
+    } @STATFIELDS;
 
     my $insertStat = "INSERT INTO ParsedCDRs ($fields) VALUES ($values)";
 
@@ -327,6 +334,7 @@ while (my $call = $sth->fetchrow_hashref) {
     $stat{proxy} = $$call{proxy};
     $stat{callid} = $$call{callid};
     $stat{subtypeA} = $$call{subtype};
+    $stat{peeringContractId} = $$call{peeringContractId} if $$call{peeringContractId};
 
     my $originator = ($stat{proxy} eq 'proxyusers') ? 'user' : 'external caller';
     say "[$stat{callid}] Parse call originated by $originator";

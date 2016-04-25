@@ -85,7 +85,6 @@ class OutgoingRouting extends Raw\OutgoingRouting
                        ->setPrefix($peerServer->getPrefix())
                        ->setTag($peerServer->getTag())
                        ->setFlags($peerServer->getFlags())
-                       ->setDefunct($peerServer->getDefunct())
                        ->setPeerServerId($peerServer->getId())
                        ->setOutgoingRoutingId($outgoingRouting->getPrimaryKey())
                        ->save();

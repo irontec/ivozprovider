@@ -27,4 +27,19 @@ class PeerServers extends Raw\PeerServers
     public function init()
     {
     }
+
+    public function getFlags()
+    {
+        return $this->getSendPAI() + ($this->getSendRPID()*2) + ($this->getUseAuthUserAsFromUser()*4);
+    }
+
+    public function getTag()
+    {
+        $peeringContractId = $this->getPeeringContractId();
+        $authUser = ($this->getAuthNeeded() == 'yes')? $this->getAuthUser() : 'none';
+        $authPassword = ($this->getAuthNeeded() == 'yes')? $this->getAuthPassword() : 'none';
+
+        return "$peeringContractId:$authUser:$authPassword";
+    }
+
 }

@@ -22,6 +22,10 @@ namespace IvozProvider\Model\Raw;
 class PeerServers extends ModelAbstract
 {
 
+    protected $_authNeededAcceptedValues = array(
+        'yes',
+        'no',
+    );
 
     /**
      * Database var type int
@@ -115,27 +119,6 @@ class PeerServers extends ModelAbstract
     protected $_prefix;
 
     /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_tag;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_flags;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_defunct;
-
-    /**
      * Database var type tinyint
      *
      * @var int
@@ -155,6 +138,27 @@ class PeerServers extends ModelAbstract
      * @var int
      */
     protected $_useAuthUserAsFromUser;
+
+    /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_authNeeded;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_authUser;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_authPassword;
 
 
     /**
@@ -194,12 +198,12 @@ class PeerServers extends ModelAbstract
         'transport'=>'transport',
         'strip'=>'strip',
         'prefix'=>'prefix',
-        'tag'=>'tag',
-        'flags'=>'flags',
-        'defunct'=>'defunct',
         'sendPAI'=>'sendPAI',
         'sendRPID'=>'sendRPID',
         'useAuthUserAsFromUser'=>'useAuthUserAsFromUser',
+        'auth_needed'=>'authNeeded',
+        'auth_user'=>'authUser',
+        'auth_password'=>'authPassword',
     );
 
     /**
@@ -241,7 +245,7 @@ class PeerServers extends ModelAbstract
 
         $this->_defaultValues = array(
             'description' => '',
-            'flags' => '0',
+            'authNeeded' => 'no',
         );
 
         $this->_initFileObjects();
@@ -731,108 +735,6 @@ class PeerServers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setTag($data)
-    {
-
-        if ($this->_tag != $data) {
-            $this->_logChange('tag');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_tag = $data;
-
-        } else if (!is_null($data)) {
-            $this->_tag = (string) $data;
-
-        } else {
-            $this->_tag = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column tag
-     *
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->_tag;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setFlags($data)
-    {
-
-        if ($this->_flags != $data) {
-            $this->_logChange('flags');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_flags = $data;
-
-        } else if (!is_null($data)) {
-            $this->_flags = (int) $data;
-
-        } else {
-            $this->_flags = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column flags
-     *
-     * @return int
-     */
-    public function getFlags()
-    {
-        return $this->_flags;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setDefunct($data)
-    {
-
-        if ($this->_defunct != $data) {
-            $this->_logChange('defunct');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_defunct = $data;
-
-        } else if (!is_null($data)) {
-            $this->_defunct = (int) $data;
-
-        } else {
-            $this->_defunct = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column defunct
-     *
-     * @return int
-     */
-    public function getDefunct()
-    {
-        return $this->_defunct;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param int $data
      * @return \IvozProvider\Model\Raw\PeerServers
      */
@@ -931,6 +833,111 @@ class PeerServers extends ModelAbstract
     public function getUseAuthUserAsFromUser()
     {
         return $this->_useAuthUserAsFromUser;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setAuthNeeded($data)
+    {
+
+        if ($this->_authNeeded != $data) {
+            $this->_logChange('authNeeded');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_authNeeded = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_authNeededAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for authNeeded'));
+            }
+            $this->_authNeeded = (string) $data;
+
+        } else {
+            $this->_authNeeded = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column auth_needed
+     *
+     * @return string
+     */
+    public function getAuthNeeded()
+    {
+        return $this->_authNeeded;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setAuthUser($data)
+    {
+
+        if ($this->_authUser != $data) {
+            $this->_logChange('authUser');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_authUser = $data;
+
+        } else if (!is_null($data)) {
+            $this->_authUser = (string) $data;
+
+        } else {
+            $this->_authUser = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column auth_user
+     *
+     * @return string
+     */
+    public function getAuthUser()
+    {
+        return $this->_authUser;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setAuthPassword($data)
+    {
+
+        if ($this->_authPassword != $data) {
+            $this->_logChange('authPassword');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_authPassword = $data;
+
+        } else if (!is_null($data)) {
+            $this->_authPassword = (string) $data;
+
+        } else {
+            $this->_authPassword = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column auth_password
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->_authPassword;
     }
 
     /**

@@ -13,6 +13,8 @@ production:
         items: 25
       <<: *PeerServers
       class: ui-silk-server
+      forcedValues:
+        <<: *forcedBrand
       title: _("List of %s %2s", ngettext('Peer server', 'Peer servers', 0), "[format| (%parent%)]")
       fields: 
         options: 
@@ -23,19 +25,26 @@ production:
             peerServersDel_dialog: true
           default: peerServersEdit_screen
         blacklist:
-          brandId: true
-          numericTransformRules: true
-          defunct: true
-          hostname: true
-          flags: true
-        order: &peerServersOrder_Link
-          peeringContractId: true
-          name: true
-          description: true
           domain: true
           params: true
+          transport: true
+          uri_scheme: true
+          auth_needed: true
+          auth_user: true
+          auth_password: true
+          useAuthUserAsFromUser: true
+          sendPAI: true
+          sendRPID: true
+          strip: true
+          prefix: true
+          hostname: true
+        order:
+          name: true
           ip: true
-          numericTransformRules: true
+          port: true
+          domain: true
+          params: true
+          description: true
       options: 
         title: _("Options")
         screens: 
@@ -44,6 +53,8 @@ production:
           peerServersDel_dialog: true
     peerServersNew_screen: &peerServersNew_screenLink 
       <<: *PeerServers
+      forcedValues:
+        <<: *forcedBrand
       controller: new
       class: ui-silk-add
       label: true
@@ -51,44 +62,53 @@ production:
       title: _("Add %s", ngettext('Peer server', 'Peer servers', 1))
       shortcutOption: N
       fields:
-        order:
-          <<: *peerServersOrder_Link
-        blacklist: &peerServersBlacklist_Link 
-          brandId: true
-          lcr_id: true
-          defunct: true
+        order: &peerServersOrder_Link
+          name: true
+          auth_needed: true
+          sendPAI: true
           params: true
-          hostname: true
-          flags: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
+          label: _("Basic Settings")
+          colsPerRow: 12
+          fields:
+            name: 6
+            description: 6
+            ip: 6
+            port: 6
+            uri_scheme: 6
+            transport: 6
+        group1:
+          label: _("Authentication Settings")
+          colsPerRow: 12
+          fields:
+            auth_needed: 4
+            auth_user: 4
+            auth_password: 4
+            useAuthUserAsFromUser: 12
+        group2:
+          label: _("Source number header")
           colsPerRow: 2
           fields:
-            name: 1
-            description: 1
-            ip: 1
-            port: 1
-            uri_scheme: true
-            transport: true
-        group1:
-          colsPerRow: 3
-          fields:
-            strip: 1
-            prefix: 1 
-            tag: 1
             sendPAI: 1
             sendRPID: 1
-            useAuthUserAsFromUser: 1
-            
+        group3:
+          label: _("R-URI customization")
+          colsPerRow: 12
+          fields:
+            strip: 6
+            prefix: 4 
+            hostname: 6
+            params: 6
     peerServersEdit_screen: &peerServersEdit_screenLink
       <<: *PeerServers
+      forcedValues:
+        <<: *forcedBrand
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Peer server', 'Peer servers', 1), "[format| (%item%)]")
       fields:
-        blacklist:
-          <<: *peerServersBlacklist_Link
         order:
           <<: *peerServersOrder_Link
       fixedPositions:

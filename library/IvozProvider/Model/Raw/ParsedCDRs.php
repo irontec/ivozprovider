@@ -160,6 +160,14 @@ class ParsedCDRs extends ModelAbstract
     protected $_bleg;
 
     /**
+     * callid pata facturable
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_billCallID;
+
+    /**
      * Database var type tinyint
      *
      * @var int
@@ -264,6 +272,7 @@ class ParsedCDRs extends ModelAbstract
         'brandId'=>'brandId',
         'aleg'=>'aleg',
         'bleg'=>'bleg',
+        'billCallID'=>'billCallID',
         'metered'=>'metered',
         'meteringDate'=>'meteringDate',
         'pricingPlanId'=>'pricingPlanId',
@@ -289,6 +298,7 @@ class ParsedCDRs extends ModelAbstract
             'type'=> array(''),
             'aleg'=> array(''),
             'bleg'=> array(''),
+            'billCallID'=> array(''),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -992,6 +1002,40 @@ class ParsedCDRs extends ModelAbstract
     public function getBleg()
     {
         return $this->_bleg;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setBillCallID($data)
+    {
+
+        if ($this->_billCallID != $data) {
+            $this->_logChange('billCallID');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_billCallID = $data;
+
+        } else if (!is_null($data)) {
+            $this->_billCallID = (string) $data;
+
+        } else {
+            $this->_billCallID = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column billCallID
+     *
+     * @return string
+     */
+    public function getBillCallID()
+    {
+        return $this->_billCallID;
     }
 
     /**
