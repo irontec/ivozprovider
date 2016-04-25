@@ -109,7 +109,7 @@ my $dbh = DBI->connect($dsn, $user, $pass)
                 or die "Couldn't connect to database: " . DBI->errstr;
 
 # My needed variables
-my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg/;
+my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID/;
 my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
 my %execution = ('ok' => 0, 'error' => 0);
 
@@ -334,6 +334,7 @@ while (my $call = $sth->fetchrow_hashref) {
     setBlegInfo or setParsedValue 'error' and next;
     parseForward or setParsedValue 'error' and next;
     setCallType;
+    $stat{billCallID} = $stat{bleg} if $stat{type} =~ /PSTN$/; # Only billable calls will have this field
     insertStat;
     setParsedValue 'yes';
 
