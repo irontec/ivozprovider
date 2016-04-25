@@ -154,32 +154,29 @@ sub setBlegInfo {
 }
 
 sub setCallType {
-    # Tipos posibles:
-    #    USER-USER: Llama un usuario y acaba hablando con otro usuario
-    #    USER-PBX: Llama un usuario y la llamada muere en el AS
-    #    USER-PSTN: Llama un usuario a un numero de la PSTN
-    #    USER->PSTN: Llama un usuario a otro usuario y acaba hablando con un numero de la PSTN (desvio)
-    #    PSTN-USER: Llamada externa entrante que acaba en un usuario
-    #    PSTN-PBX: Llamada externa entrante que acaba en el AS
-    #    PSTN->PSTN: Llamada externa entrante que acaba desviandose a un numero de la PSTN (desvio)
+    # Significado: param1 (delimiter) param2
+    # param1:
+    #    * donde nace la llamada
+    #    * Valores posibles: USER, PSTN
+    # delimiter:
+    #    * Indica si la llamada ha tenido desvios o no (por parte de Oasis)
+    #    * Valores posibles: '-' (sin desvios) / '->' (con desvios)
+    # param2:
+    #    * donde acaba la llamada
+    #    * Valores posibles: USER, PSTN, PBX
 
     given($stat{proxy} . '-' . $stat{proxyB}) {
         when (/proxyusers-proxyusers/) {
             $stat{type} = 'USER-USER';
-            $stat{desc} = 'LLAMADA INTERNA';
+            $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN USUARIO';
         }
         when (/proxyusers-proxytrunks/) {
-            if ($stat{subtypeA} eq 'interna') {
-                $stat{type} = 'USER->PSTN';
-                $stat{desc} = 'LLAMADA SALIENTE EXTERNA POR DESVIO DE USUARIO';
-            } else {
-                $stat{type} = 'USER-PSTN';
-                $stat{desc} = 'LLAMADA SALIENTE EXTERNA PURA';
-            }
+            $stat{type} = 'USER-PSTN';
+            $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN PSTN';
         }
         when (/proxyusers-none/) {
             $stat{type} = 'USER-PBX';
-            $stat{desc} = 'LLAMADA DE USUARIO QUE MUERE EN AS';
+            $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN AS';
         }
         when (/proxytrunks-proxyusers/) {
             $stat{type} = 'PSTN-USER';
@@ -187,14 +184,19 @@ sub setCallType {
         }
         when (/proxytrunks-proxytrunks/) {
             $stat{type} = 'PSTN->PSTN';
-            my $fw_type = ($stat{diversionB} eq $stat{src_dialed}) ? '(DESVIO DID)' : 'DESVIO USUARIO';
-            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA DESVIADA A NUMERO EXTERNO ' . $fw_type;
+            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
         }
         when (/proxytrunks-none/) {
             $stat{type} = 'PSTN-PBX';           
-            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE MUERE EN AS';           
+            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS';
         }
     }
+
+    if ($stat{oasis_forwarder}) {
+        $stat{type} =~ s/-/->/;
+        $stat{desc} .= ' (DESVIADA)';
+    }
+
     say "[$stat{callid}] Tipo: $stat{type}";
     say "[$stat{callid}] Desc: $stat{desc}";
 }
@@ -330,8 +332,8 @@ while (my $call = $sth->fetchrow_hashref) {
     say "[$stat{callid}] Parse call originated by $originator";
 
     setBlegInfo or setParsedValue 'error' and next;
-    setCallType;
     parseForward or setParsedValue 'error' and next;
+    setCallType;
     insertStat;
     setParsedValue 'yes';
 
