@@ -110,7 +110,7 @@ my $dbh = DBI->connect($dsn, $user, $pass)
 
 # My needed variables
 my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg/;
-my %stat; # Has containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
+my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
 my %execution = ('ok' => 0, 'error' => 0);
 
 #########################################
@@ -216,15 +216,27 @@ sub parseForward {
     }
 
     if ($stat{diversionB}) {
+        if ($stat{diversionB} eq $stat{diversionA}) {
+            say "[$stat{callid}] bleg has the same diversion as aleg, skip parsing (AS has just resend it)";
+            return 1;
+        }
         $stat{oasis_forwarder} = $stat{diversionB};
         if ($stat{proxyB} eq 'proxyusers') {
             say "[$stat{callid}] Desvio: desvio de Oasis a usuario"; 
             $stat{forward_to} = 'user';
-            $stat{fw_desc} = "Desvio de Oasis a usuario";
+            if ($stat{fw_desc}) { # Evitar que se pise, si existe (doble forward), append
+                $stat{fw_desc} .= " - Desvio de Oasis a usuario";
+            } else {
+                $stat{fw_desc} = "Desvio de Oasis a usuario";
+            }
         } else {
             say "[$stat{callid}] Desvio: desvio de Oasis a PSTN"; 
             $stat{forward_to} = 'pstn';
-            $stat{fw_desc} = 'Desvio de Oasis a PSTN';
+            if ($stat{fw_desc}) { # Evitar que se pise, si existe (doble forward), append
+                $stat{fw_desc} .= " - Desvio de Oasis a PSTN";
+            } else {
+                $stat{fw_desc} = 'Desvio de Oasis a PSTN';
+            }
         }
     }
 
