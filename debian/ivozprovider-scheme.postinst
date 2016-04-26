@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get actual environment
-. /etc/environment
+export $(systemctl show-environment)
 
 # Use debian maint password
 MYSQL_PASSWORD=`awk '/password = / { print $3; exit}' /etc/mysql/debian.cnf`

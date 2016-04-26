@@ -1,6 +1,5 @@
 [Service]
 Type=simple
-EnvironmentFile=/etc/environment
 ExecStart=/var/lib/asterisk/agi-bin/lib/phpagi/phpagi-fastagi.php
 User=root
 Group=root
