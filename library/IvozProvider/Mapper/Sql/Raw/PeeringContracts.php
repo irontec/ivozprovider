@@ -453,6 +453,20 @@ class PeeringContracts extends MapperAbstract
                     }
                 }
 
+                if ($model->getParsedCDRs(null, null, true) !== null) {
+                    $parsedCDRs = $model->getParsedCDRs();
+
+                    if (!is_array($parsedCDRs)) {
+
+                        $parsedCDRs = array($parsedCDRs);
+                    }
+
+                    foreach ($parsedCDRs as $value) {
+                        $value->setPeeringContractId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getPeerServers(null, null, true) !== null) {
                     $peerServers = $model->getPeerServers();
 

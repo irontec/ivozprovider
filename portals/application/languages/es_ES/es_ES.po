@@ -3816,8 +3816,8 @@ msgstr[1] "Tiempos"
 #: www/portals/application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:170
 msgid "Transformation ruleset groups trunk"
 msgid_plural "Transformation ruleset groups trunks"
-msgstr[0] "Regla de transf. salientes"
-msgstr[1] "Reglas de transf. salientes"
+msgstr[0] "Regla de transf. entrantes"
+msgstr[1] "Reglas de transf. entrantes"
 
 #: www/portals/application/configs/klearRaw/klear.yaml:262
 #: www/portals/application/configs/klearRaw/klear.yaml:264

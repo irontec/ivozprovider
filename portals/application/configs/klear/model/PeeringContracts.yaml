@@ -28,8 +28,8 @@ production:
       info:
         type: box
         position: left
-        icon: help
-        text: _("Callee transformation needs calls to be placed to brand's proxytrunk's domain to work")
+        icon: error
+        text: "Read Inbound Transformation section help carefully"
         label: _("Need help?")
       type: select
       source: 

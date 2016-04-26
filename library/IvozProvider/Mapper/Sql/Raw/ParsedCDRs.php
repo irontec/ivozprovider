@@ -74,6 +74,7 @@ class ParsedCDRs extends MapperAbstract
                 'price' => $model->getPrice(),
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
+                'peeringContractId' => $model->getPeeringContractId(),
             );
         } else {
             $result = array();
@@ -576,7 +577,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setTargetPatternId($data['targetPatternId'])
                   ->setPrice($data['price'])
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
-                  ->setInvoiceId($data['invoiceId']);
+                  ->setInvoiceId($data['invoiceId'])
+                  ->setPeeringContractId($data['peeringContractId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCalldate($data->{'calldate'})
@@ -603,7 +605,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setTargetPatternId($data->{'targetPatternId'})
                   ->setPrice($data->{'price'})
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
-                  ->setInvoiceId($data->{'invoiceId'});
+                  ->setInvoiceId($data->{'invoiceId'})
+                  ->setPeeringContractId($data->{'peeringContractId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ParsedCDRs) {
             $entry->setId($data->getId())
@@ -631,7 +634,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setTargetPatternId($data->getTargetPatternId())
                   ->setPrice($data->getPrice())
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
-                  ->setInvoiceId($data->getInvoiceId());
+                  ->setInvoiceId($data->getInvoiceId())
+                  ->setPeeringContractId($data->getPeeringContractId());
 
         }
 

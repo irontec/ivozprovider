@@ -86,6 +86,10 @@ production:
           title: ngettext('Peering contract', 'Peering contracts', 0)
           class: ui-silk-connect
           description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
+        TransformationRulesetGroupsTrunksList:
+          title: ngettext('Inbound transformation', 'Inbound transformations', 0)
+          class: ui-silk-application-side-expand
+          description: _("List of %s", ngettext('Inbound transformation', 'Inbound transformations', 0))
         GenericMusicOnHoldList:
           title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
           class: ui-silk-music

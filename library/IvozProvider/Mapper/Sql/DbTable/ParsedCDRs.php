@@ -64,6 +64,11 @@ class ParsedCDRs extends TableAbstract
             'columns' => 'invoiceId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Invoices',
             'refColumns' => 'id'
+        ),
+        'ParsedCDRsIbfk6' => array(
+            'columns' => 'peeringContractId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
+            'refColumns' => 'id'
         )
     );
     
@@ -499,6 +504,23 @@ class ParsedCDRs extends TableAbstract
 	    'TABLE_NAME' => 'ParsedCDRs',
 	    'COLUMN_NAME' => 'invoiceId',
 	    'COLUMN_POSITION' => 26,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'peeringContractId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ParsedCDRs',
+	    'COLUMN_NAME' => 'peeringContractId',
+	    'COLUMN_POSITION' => 27,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

@@ -216,6 +216,13 @@ class ParsedCDRs extends ModelAbstract
      */
     protected $_invoiceId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_peeringContractId;
+
 
     /**
      * Parent relation parsedCDRs_ibfk_1
@@ -252,6 +259,13 @@ class ParsedCDRs extends ModelAbstract
      */
     protected $_Invoice;
 
+    /**
+     * Parent relation parsedCDRs_ibfk_6
+     *
+     * @var \IvozProvider\Model\Raw\PeeringContracts
+     */
+    protected $_PeeringContract;
+
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -280,6 +294,7 @@ class ParsedCDRs extends ModelAbstract
         'price'=>'price',
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
+        'peeringContractId'=>'peeringContractId',
     );
 
     /**
@@ -326,6 +341,10 @@ class ParsedCDRs extends ModelAbstract
             'ParsedCDRsIbfk5'=> array(
                     'property' => 'Invoice',
                     'table_name' => 'Invoices',
+                ),
+            'ParsedCDRsIbfk6'=> array(
+                    'property' => 'PeeringContract',
+                    'table_name' => 'PeeringContracts',
                 ),
         ));
 
@@ -1299,6 +1318,40 @@ class ParsedCDRs extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setPeeringContractId($data)
+    {
+
+        if ($this->_peeringContractId != $data) {
+            $this->_logChange('peeringContractId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peeringContractId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peeringContractId = (int) $data;
+
+        } else {
+            $this->_peeringContractId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column peeringContractId
+     *
+     * @return int
+     */
+    public function getPeeringContractId()
+    {
+        return $this->_peeringContractId;
+    }
+
+    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -1551,6 +1604,57 @@ class ParsedCDRs extends ModelAbstract
         }
 
         return $this->_Invoice;
+    }
+
+    /**
+     * Sets parent relation PeeringContract
+     *
+     * @param \IvozProvider\Model\Raw\PeeringContracts $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setPeeringContract(\IvozProvider\Model\Raw\PeeringContracts $data)
+    {
+        $this->_PeeringContract = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setPeeringContractId($primaryKey);
+        }
+
+        $this->_setLoaded('ParsedCDRsIbfk6');
+        return $this;
+    }
+
+    /**
+     * Gets parent PeeringContract
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function getPeeringContract($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ParsedCDRsIbfk6';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_PeeringContract = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_PeeringContract;
     }
 
     /**

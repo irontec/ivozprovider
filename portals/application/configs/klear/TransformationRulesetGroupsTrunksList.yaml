@@ -24,8 +24,8 @@ production:
           title: _("Options")
           screens: 
             transformationRulesetGroupsTrunksEdit_screen: true
-            kamTrunksDialplan_caller_inList_screen: true
             kamTrunksDialplan_callee_inList_screen: true
+            kamTrunksDialplan_caller_inList_screen: true
             kamTrunksDialplan_caller_outList_screen: false
             kamTrunksDialplan_callee_outList_screen: false
             peerServersList_screen: false
@@ -47,6 +47,12 @@ production:
           transformationRulesetGroupsTrunksNew_screen: true
         dialogs: 
           transformationRulesetGroupsTrunksDel_dialog: true
+      info: &transformationRulesetGroupsTrunks_helpLink
+        type: tooltip
+        position: left
+        icon: error
+        label:
+          "Inbound transformation group is assigned to PeeringContract, but apply in IP address basis. They will apply to all calls coming from source address matching that Peering Contract's PeerServers."
     transformationRulesetGroupsTrunksNew_screen: &transformationRulesetGroupsTrunksNew_screenLink 
       <<: *TransformationRulesetGroupsTrunks
       controller: new
@@ -68,6 +74,8 @@ production:
           fields:
             name: 1
             description: 1
+      info:
+        <<: *transformationRulesetGroupsTrunks_helpLink
     transformationRulesetGroupsTrunksEdit_screen: &transformationRulesetGroupsTrunksEdit_screenLink 
       <<: *TransformationRulesetGroupsTrunks
       controller: edit
@@ -83,6 +91,8 @@ production:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions:
         <<: *transformationRulesetGroupsTrunksFixedPositions_Link
+      info:
+        <<: *transformationRulesetGroupsTrunks_helpLink
     #peerServers: 
     <<: *peerServers_screensLink
     peerServersList_screen: 
@@ -102,7 +112,7 @@ production:
     
     kamTrunksDialplan_caller_inList_screen:
       <<: *kamTrunksDialplanList_screenLink
-      title: _("Kam Trunks Dialplan Caller In")
+      title: _("Caller transformations")
       filterClass: IvozProvider_Klear_Filter_KamDialplanCallerIn
       parentOptionCustomizer:
         - recordCount
@@ -114,10 +124,9 @@ production:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_caller_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
-      
     kamTrunksDialplan_callee_inList_screen:
       <<: *kamTrunksDialplanList_screenLink
-      title: _("Kam Trunks Dialplan Callee In")
+      title: _("Callee transformations")
       filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeIn
       parentOptionCustomizer:
         - recordCount
@@ -127,6 +136,11 @@ production:
           kamTrunksDialplan_callee_inNew_screen: true
         dialogs: 
           kamTrunksDialplanDel_dialog: true
+      info:
+        type: tooltip
+        position: left
+        icon: error
+        label: _("Callee transformation needs calls to be placed to brand's proxytrunk's domain to work")
     kamTrunksDialplan_callee_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
       
