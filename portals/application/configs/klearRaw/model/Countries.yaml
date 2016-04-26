@@ -1,0 +1,26 @@
+production: 
+  class: \IvozProvider\Model\Countries
+  fields: 
+    code: 
+      title: _('Code')
+      type: text
+      defaultValue: 
+      maxLength: 100
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 100
+    calling_code: 
+      title: _('Calling code')
+      type: number
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

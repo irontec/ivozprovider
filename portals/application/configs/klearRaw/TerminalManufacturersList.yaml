@@ -1,0 +1,85 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include TerminalModelsList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: terminalManufacturersList_screen
+  screens: &terminalManufacturers_screensLink 
+    terminalManufacturersList_screen: &terminalManufacturersList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *TerminalManufacturers
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0), "[format| (%parent%)]")
+      fields: &terminalManufacturers_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            terminalManufacturersEdit_screen: true
+            terminalModelsList_screen: true
+          dialogs: 
+            terminalManufacturersDel_dialog: true
+          default: terminalManufacturersEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          terminalManufacturersNew_screen: true
+        dialogs: 
+          terminalManufacturersDel_dialog: true
+    terminalManufacturersNew_screen: &terminalManufacturersNew_screenLink 
+      <<: *TerminalManufacturers
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          terminalManufacturersEdit_screen: true
+    terminalManufacturersEdit_screen: &terminalManufacturersEdit_screenLink 
+      <<: *TerminalManufacturers
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1), "[format| (%item%)]")
+    #terminalModels: 
+    <<: *terminalModels_screensLink
+    terminalModelsList_screen: 
+      <<: *terminalModelsList_screenLink
+      filterField: TerminalManufacturerId
+      parentOptionCustomizer: 
+        - recordCount
+    terminalModelsNew_screen: 
+      <<: *terminalModelsNew_screenLink
+      filterField: TerminalManufacturerId
+    terminalModelsEdit_screen: 
+      <<: *terminalModelsEdit_screenLink
+      filterField: TerminalManufacturerId
+
+  dialogs: &terminalManufacturers_dialogsLink 
+    terminalManufacturersDel_dialog: &terminalManufacturersDel_dialogLink 
+      <<: *TerminalManufacturers
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1))
+      description: _("Do you want to delete this %s?", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1))
+      message: _("%s successfully deleted.", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1))
+      multiItem: 1
+      labelOnList: 1
+  # terminalModels dialogs: 
+    <<: *terminalModels_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -1,0 +1,102 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include AstPsAorsList.yaml
+#include AstPsIdentifyList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: astPsEndpointsList_screen
+  screens: &astPsEndpoints_screensLink 
+    astPsEndpointsList_screen: &astPsEndpointsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *AstPsEndpoints
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 0), "[format| (%parent%)]")
+      fields: &astPsEndpoints_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            astPsEndpointsEdit_screen: true
+            astPsAorsList_screen: true
+            astPsIdentifyList_screen: true
+          dialogs: 
+            astPsEndpointsDel_dialog: true
+          default: astPsEndpointsEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          astPsEndpointsNew_screen: true
+        dialogs: 
+          astPsEndpointsDel_dialog: true
+    astPsEndpointsNew_screen: &astPsEndpointsNew_screenLink 
+      <<: *AstPsEndpoints
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          astPsEndpointsEdit_screen: true
+    astPsEndpointsEdit_screen: &astPsEndpointsEdit_screenLink 
+      <<: *AstPsEndpoints
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1), "[format| (%item%)]")
+    #astPsAors: 
+    <<: *astPsAors_screensLink
+    astPsAorsList_screen: 
+      <<: *astPsAorsList_screenLink
+      filterField: id
+      parentOptionCustomizer: 
+        - recordCount
+    astPsAorsNew_screen: 
+      <<: *astPsAorsNew_screenLink
+      filterField: id
+    astPsAorsEdit_screen: 
+      <<: *astPsAorsEdit_screenLink
+      filterField: id
+
+    #astPsIdentify: 
+    astPsIdentifyList_screen: 
+      <<: *astPsIdentifyList_screenLink
+      filterField: id
+      parentOptionCustomizer: 
+        - recordCount
+    astPsIdentifyNew_screen: 
+      <<: *astPsIdentifyNew_screenLink
+      filterField: id
+    astPsIdentifyEdit_screen: 
+      <<: *astPsIdentifyEdit_screenLink
+      filterField: id
+
+  dialogs: &astPsEndpoints_dialogsLink 
+    astPsEndpointsDel_dialog: &astPsEndpointsDel_dialogLink 
+      <<: *AstPsEndpoints
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1))
+      description: _("Do you want to delete this %s?", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1))
+      message: _("%s successfully deleted.", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1))
+      multiItem: 1
+      labelOnList: 1
+  # astPsAors dialogs: 
+    <<: *astPsAors_dialogsLink
+  # astPsIdentify dialogs: 
+    <<: *astPsIdentify_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

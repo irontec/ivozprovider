@@ -1,0 +1,85 @@
+production: 
+  class: \IvozProvider\Model\LcrRules
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    prefix: 
+      title: _('Prefix')
+      type: text
+      maxLength: 100
+    from_uri: 
+      title: _('From uri')
+      type: text
+      maxLength: 64
+    request_uri: 
+      title: _('Request uri')
+      type: text
+      maxLength: 100
+    stopper: 
+      title: _('Stopper')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    enabled: 
+      title: _('Enabled')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+    tag: 
+      title: _('Tag')
+      type: text
+      required: true
+      maxLength: 55
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+      maxLength: 500
+    targetPatternId: 
+      title: _('Target pattern id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name_${lang}
+        'null': _("Unasigned")
+    outgoingRoutingId: 
+      title: _('Outgoing routing id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
+          fieldName: 
+            fields: 
+              - id
+            template: '%id%'
+          order: id
+        'null': _("Unasigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

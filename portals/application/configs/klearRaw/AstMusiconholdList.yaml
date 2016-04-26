@@ -1,0 +1,67 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: astMusiconholdList_screen
+  screens: &astMusiconhold_screensLink 
+    astMusiconholdList_screen: &astMusiconholdList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *AstMusiconhold
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 0), "[format| (%parent%)]")
+      fields: &astMusiconhold_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            astMusiconholdEdit_screen: true
+          dialogs: 
+            astMusiconholdDel_dialog: true
+          default: astMusiconholdEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          astMusiconholdNew_screen: true
+        dialogs: 
+          astMusiconholdDel_dialog: true
+    astMusiconholdNew_screen: &astMusiconholdNew_screenLink 
+      <<: *AstMusiconhold
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          astMusiconholdEdit_screen: true
+    astMusiconholdEdit_screen: &astMusiconholdEdit_screenLink 
+      <<: *AstMusiconhold
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1), "[format| (%item%)]")
+  dialogs: &astMusiconhold_dialogsLink 
+    astMusiconholdDel_dialog: &astMusiconholdDel_dialogLink 
+      <<: *AstMusiconhold
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

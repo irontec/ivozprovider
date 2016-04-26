@@ -1,0 +1,50 @@
+production: 
+  class: \IvozProvider\Model\ProxyTrunks
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 100
+      default: true
+    ip: 
+      title: _('Ip')
+      type: text
+      required: true
+      maxLength: 100
+    disallow: 
+      title: _('Disallow')
+      type: text
+      defaultValue: all
+      maxLength: 200
+    allow: 
+      title: _('Allow')
+      type: text
+      defaultValue: all
+      maxLength: 200
+    direct_media: 
+      title: _('Direct media')
+      type: select
+      defaultValue: yes
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    direct_media_method: 
+      title: _('Direct media method')
+      type: select
+      defaultValue: update
+      source: 
+        data: inline
+        values: 
+          'invite': _('invite')
+          'reinvite': _('reinvite')
+          'update': _('update')
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

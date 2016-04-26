@@ -1,0 +1,119 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include BrandsList.yaml
+#include CompaniesList.yaml
+#include UsersList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: languagesList_screen
+  screens: &languages_screensLink 
+    languagesList_screen: &languagesList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Languages
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Language', 'Languages', 0), "[format| (%parent%)]")
+      fields: &languages_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            languagesEdit_screen: true
+            brandsList_screen: true
+            companiesList_screen: true
+            usersList_screen: true
+          dialogs: 
+            languagesDel_dialog: true
+          default: languagesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          languagesNew_screen: true
+        dialogs: 
+          languagesDel_dialog: true
+    languagesNew_screen: &languagesNew_screenLink 
+      <<: *Languages
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Language', 'Languages', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          languagesEdit_screen: true
+    languagesEdit_screen: &languagesEdit_screenLink 
+      <<: *Languages
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Language', 'Languages', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Language', 'Languages', 1), "[format| (%item%)]")
+    #brands: 
+    <<: *brands_screensLink
+    brandsList_screen: 
+      <<: *brandsList_screenLink
+      filterField: languageId
+      parentOptionCustomizer: 
+        - recordCount
+    brandsNew_screen: 
+      <<: *brandsNew_screenLink
+      filterField: languageId
+    brandsEdit_screen: 
+      <<: *brandsEdit_screenLink
+      filterField: languageId
+
+    #companies: 
+    companiesList_screen: 
+      <<: *companiesList_screenLink
+      filterField: languageId
+      parentOptionCustomizer: 
+        - recordCount
+    companiesNew_screen: 
+      <<: *companiesNew_screenLink
+      filterField: languageId
+    companiesEdit_screen: 
+      <<: *companiesEdit_screenLink
+      filterField: languageId
+
+    #users: 
+    usersList_screen: 
+      <<: *usersList_screenLink
+      filterField: languageId
+      parentOptionCustomizer: 
+        - recordCount
+    usersNew_screen: 
+      <<: *usersNew_screenLink
+      filterField: languageId
+    usersEdit_screen: 
+      <<: *usersEdit_screenLink
+      filterField: languageId
+
+  dialogs: &languages_dialogsLink 
+    languagesDel_dialog: &languagesDel_dialogLink 
+      <<: *Languages
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Language', 'Languages', 1))
+      description: _("Do you want to delete this %s?", ngettext('Language', 'Languages', 1))
+      message: _("%s successfully deleted.", ngettext('Language', 'Languages', 1))
+      multiItem: 1
+      labelOnList: 1
+  # brands dialogs: 
+    <<: *brands_dialogsLink
+  # companies dialogs: 
+    <<: *companies_dialogsLink
+  # users dialogs: 
+    <<: *users_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

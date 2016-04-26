@@ -1,0 +1,125 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include ParsedCDRsList.yaml
+#include PricingPlansRelCompaniesList.yaml
+#include PricingPlansRelTargetPatternsList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: pricingPlansList_screen
+  screens: &pricingPlans_screensLink 
+    pricingPlansList_screen: &pricingPlansList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *PricingPlans
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Pricing plan', 'Pricing plans', 0), "[format| (%parent%)]")
+      fields: &pricingPlans_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            pricingPlansEdit_screen: true
+            parsedCDRsList_screen: true
+            pricingPlansRelCompaniesList_screen: true
+            pricingPlansRelTargetPatternsList_screen: true
+          dialogs: 
+            pricingPlansDel_dialog: true
+          default: pricingPlansEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          pricingPlansNew_screen: true
+        dialogs: 
+          pricingPlansDel_dialog: true
+    pricingPlansNew_screen: &pricingPlansNew_screenLink 
+      <<: *PricingPlans
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          pricingPlansEdit_screen: true
+      fields: 
+        blacklist: 
+          createdOn: true
+    pricingPlansEdit_screen: &pricingPlansEdit_screenLink 
+      <<: *PricingPlans
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          createdOn: true
+    #parsedCDRs: 
+    <<: *parsedCDRs_screensLink
+    parsedCDRsList_screen: 
+      <<: *parsedCDRsList_screenLink
+      filterField: pricingPlanId
+      parentOptionCustomizer: 
+        - recordCount
+    parsedCDRsNew_screen: 
+      <<: *parsedCDRsNew_screenLink
+      filterField: pricingPlanId
+    parsedCDRsEdit_screen: 
+      <<: *parsedCDRsEdit_screenLink
+      filterField: pricingPlanId
+
+    #pricingPlansRelCompanies: 
+    pricingPlansRelCompaniesList_screen: 
+      <<: *pricingPlansRelCompaniesList_screenLink
+      filterField: pricingPlanId
+      parentOptionCustomizer: 
+        - recordCount
+    pricingPlansRelCompaniesNew_screen: 
+      <<: *pricingPlansRelCompaniesNew_screenLink
+      filterField: pricingPlanId
+    pricingPlansRelCompaniesEdit_screen: 
+      <<: *pricingPlansRelCompaniesEdit_screenLink
+      filterField: pricingPlanId
+
+    #pricingPlansRelTargetPatterns: 
+    pricingPlansRelTargetPatternsList_screen: 
+      <<: *pricingPlansRelTargetPatternsList_screenLink
+      filterField: pricingPlanId
+      parentOptionCustomizer: 
+        - recordCount
+    pricingPlansRelTargetPatternsNew_screen: 
+      <<: *pricingPlansRelTargetPatternsNew_screenLink
+      filterField: pricingPlanId
+    pricingPlansRelTargetPatternsEdit_screen: 
+      <<: *pricingPlansRelTargetPatternsEdit_screenLink
+      filterField: pricingPlanId
+
+  dialogs: &pricingPlans_dialogsLink 
+    pricingPlansDel_dialog: &pricingPlansDel_dialogLink 
+      <<: *PricingPlans
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Pricing plan', 'Pricing plans', 1))
+      description: _("Do you want to delete this %s?", ngettext('Pricing plan', 'Pricing plans', 1))
+      message: _("%s successfully deleted.", ngettext('Pricing plan', 'Pricing plans', 1))
+      multiItem: 1
+      labelOnList: 1
+  # parsedCDRs dialogs: 
+    <<: *parsedCDRs_dialogsLink
+  # pricingPlansRelCompanies dialogs: 
+    <<: *pricingPlansRelCompanies_dialogsLink
+  # pricingPlansRelTargetPatterns dialogs: 
+    <<: *pricingPlansRelTargetPatterns_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

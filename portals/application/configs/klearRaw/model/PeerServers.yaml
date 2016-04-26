@@ -1,0 +1,135 @@
+production: 
+  class: \IvozProvider\Model\PeerServers
+  fields: 
+    peeringContractId: 
+      title: _('Peering contract id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+      default: true
+    ip: 
+      title: _('Ip')
+      type: text
+      required: true
+      maxLength: 50
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 200
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+      maxLength: 500
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    hostname: 
+      title: _('Hostname')
+      type: text
+      maxLength: 64
+    port: 
+      title: _('Port')
+      type: number
+      source: 
+        control: Spinner
+    params: 
+      title: _('Param')
+      type: text
+      maxLength: 64
+    uri_scheme: 
+      title: _('Uri scheme')
+      type: number
+      source: 
+        control: Spinner
+    transport: 
+      title: _('Transport')
+      type: number
+      source: 
+        control: Spinner
+    strip: 
+      title: _('Strip')
+      type: number
+      source: 
+        control: Spinner
+    prefix: 
+      title: _('Prefix')
+      type: text
+      maxLength: 16
+    sendPAI: 
+      title: _('Send p a i')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    sendRPID: 
+      title: _('Send r p i d')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    useAuthUserAsFromUser: 
+      title: _('Use auth user as from user')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    auth_needed: 
+      title: _('Auth needed')
+      type: select
+      defaultValue: no
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    auth_user: 
+      title: _('Auth user')
+      type: text
+      maxLength: 64
+    auth_password: 
+      title: _('Auth password')
+      type: password
+      adapter: Blowfish
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

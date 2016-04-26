@@ -1,0 +1,41 @@
+production: 
+  class: \IvozProvider\Model\AstPsContacts
+  fields: 
+    uri: 
+      title: _('Uri')
+      type: text
+      maxLength: 255
+      default: true
+    expiration_time: 
+      title: _('Expiration time')
+      type: text
+      maxLength: 40
+    qualify_frequency: 
+      title: _('Qualify frequency')
+      type: number
+      source: 
+        control: Spinner
+    qualify_timeout: 
+      title: _('Qualify timeout')
+      type: number
+      source: 
+        control: Spinner
+    outbound_proxy: 
+      title: _('Outbound proxy')
+      type: text
+      maxLength: 40
+    path: 
+      title: ngettext('Path', 'Paths', 1)
+      type: textarea
+    user_agent: 
+      title: _('User agent')
+      type: text
+      maxLength: 255
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

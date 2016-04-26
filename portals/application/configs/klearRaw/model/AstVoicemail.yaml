@@ -1,0 +1,204 @@
+production: 
+  class: \IvozProvider\Model\AstVoicemail
+  fields: 
+    context: 
+      title: _('Context')
+      type: text
+      required: true
+      maxLength: 80
+      default: true
+    mailbox: 
+      title: _('Mailbox')
+      type: text
+      required: true
+      maxLength: 80
+    password: 
+      title: ngettext('Password', 'Passwords', 1)
+      type: password
+      required: true
+      adapter: Blowfish
+    fullname: 
+      title: _('Fullname')
+      type: text
+      maxLength: 80
+    alias: 
+      title: _('Alia')
+      type: text
+      maxLength: 80
+    email: 
+      title: ngettext('Email', 'Emails', 1)
+      type: text
+      maxLength: 80
+    pager: 
+      title: _('Pager')
+      type: text
+      maxLength: 80
+    attach: 
+      title: _('Attach')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    attachfmt: 
+      title: _('Attachfmt')
+      type: text
+      maxLength: 10
+    serveremail: 
+      title: _('Serveremail')
+      type: text
+      maxLength: 80
+    language: 
+      title: _('Language')
+      type: text
+      maxLength: 20
+    tz: 
+      title: _('Tz')
+      type: text
+      maxLength: 30
+    deleteast_voicemail: 
+      title: _('Deleteast voicemail')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    saycid: 
+      title: _('Saycid')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    sendast_voicemail: 
+      title: _('Sendast voicemail')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    review: 
+      title: _('Review')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    tempgreetwarn: 
+      title: _('Tempgreetwarn')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    operator: 
+      title: _('Operator')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    envelope: 
+      title: _('Envelope')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    sayduration: 
+      title: _('Sayduration')
+      type: number
+      source: 
+        control: Spinner
+    forcename: 
+      title: _('Forcename')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    forcegreetings: 
+      title: _('Forcegreeting')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    callback: 
+      title: _('Callback')
+      type: text
+      maxLength: 80
+    dialout: 
+      title: _('Dialout')
+      type: text
+      maxLength: 80
+    exitcontext: 
+      title: _('Exitcontext')
+      type: text
+      maxLength: 80
+    maxmsg: 
+      title: _('Maxmsg')
+      type: number
+      source: 
+        control: Spinner
+    volgain: 
+      title: _('Volgain')
+      type: text
+    imapuser: 
+      title: _('Imapuser')
+      type: text
+      maxLength: 80
+    imappassword: 
+      title: _('Imappassword')
+      type: password
+      adapter: Blowfish
+    imapserver: 
+      title: _('Imapserver')
+      type: text
+      maxLength: 80
+    imapport: 
+      title: _('Imapport')
+      type: text
+      maxLength: 8
+    imapflags: 
+      title: _('Imapflag')
+      type: text
+      maxLength: 80
+    stamp: 
+      title: _('Stamp')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    userId: 
+      title: _('User id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production
