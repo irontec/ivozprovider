@@ -40,14 +40,14 @@ class Brands extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'BrandsIbfk2' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
         'BrandsIbfk1' => array(
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
+            'refColumns' => 'id'
+        ),
+        'BrandsIbfk2' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         )
     );

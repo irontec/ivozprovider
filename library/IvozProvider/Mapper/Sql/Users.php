@@ -108,18 +108,28 @@ class Users extends Raw\Users
         // If not found create a new one
         $forceInsert = false;
         if (is_null($vm)) {
-            $forceInsert = true;
             $vm = new \IvozProvider\Model\AstVoicemail();
         }
 
+        if ($model->getVoicemailSendMail()) {
+            $vm->setEmail($model->getEmail());
+        } else {
+            $vm->setEmail(null);
+        }
+
+        if ($model->getVoicemailAttachSound()) {
+            $vm->setAttach('yes');
+        } else {
+            $vm->setAttach('no');
+        }
+
         // Update/Insert endpoint data
-        $vm->setContext($model->getVoiceMailContext())
+        $vm->setUserId($model->getId())
+            ->setContext($model->getVoiceMailContext())
             ->setMailbox($model->getVoiceMailUser())
             ->setPassword($model->getPass())
             ->setFullname($model->getName() . " " . $model->getLastname())
-            ->setEmail($model->getEmail())
             ->setTz($model->getTimezone()->getTz())
-            ->setAttach($model->getAttachVoicemailSound()?"yes":"no")
             ->save();
 
         // Update user endpoint if user want VoiceMail notifications

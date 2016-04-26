@@ -21,8 +21,10 @@ class VoiceMailAction extends RouterAction
             return;
         }
 
-        // Run the voicemail
-        $this->agi->voicemail($voicemail->getVoiceMail());
+        if ($voicemail->getVoicemailEnabled()) {
+            // Run the voicemail
+            $this->agi->voicemail($voicemail->getVoiceMail());
+        }
     }
 
 }

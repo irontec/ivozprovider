@@ -162,14 +162,21 @@ class Users extends ModelAbstract
      *
      * @var int
      */
-    protected $_attachVoicemailSound;
+    protected $_voicemailEnabled;
 
     /**
      * Database var type tinyint
      *
      * @var int
      */
-    protected $_voicemailEnabled;
+    protected $_voicemailSendMail;
+
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_voicemailAttachSound;
 
     /**
      * Database var type varchar
@@ -192,13 +199,6 @@ class Users extends ModelAbstract
      */
     protected $_languageId;
 
-
-    /**
-     * Parent relation Users_ibfk_15
-     *
-     * @var \IvozProvider\Model\Raw\Languages
-     */
-    protected $_Language;
 
     /**
      * Parent relation Users_ibfk_10
@@ -227,6 +227,13 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
+
+    /**
+     * Parent relation Users_ibfk_15
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
     /**
      * Parent relation Users_ibfk_3
@@ -369,6 +376,14 @@ class Users extends ModelAbstract
      */
     protected $_Users;
 
+    /**
+     * Dependent relation ast_voicemail_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstVoicemail[]
+     */
+    protected $_AstVoicemail;
+
     protected $_columnsList = array(
         'id'=>'id',
         'companyId'=>'companyId',
@@ -389,8 +404,9 @@ class Users extends ModelAbstract
         'active'=>'active',
         'maxCalls'=>'maxCalls',
         'callWaiting'=>'callWaiting',
-        'attachVoicemailSound'=>'attachVoicemailSound',
         'voicemailEnabled'=>'voicemailEnabled',
+        'voicemailSendMail'=>'voicemailSendMail',
+        'voicemailAttachSound'=>'voicemailAttachSound',
         'tokenKey'=>'tokenKey',
         'countryId'=>'countryId',
         'languageId'=>'languageId',
@@ -411,10 +427,6 @@ class Users extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'UsersIbfk15'=> array(
-                    'property' => 'Language',
-                    'table_name' => 'Languages',
-                ),
             'UsersIbfk10'=> array(
                     'property' => 'CallACL',
                     'table_name' => 'CallACL',
@@ -430,6 +442,10 @@ class Users extends ModelAbstract
             'UsersIbfk14'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
+                ),
+            'UsersIbfk15'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
                 ),
             'UsersIbfk3'=> array(
                     'property' => 'Terminal',
@@ -506,6 +522,10 @@ class Users extends ModelAbstract
                     'property' => 'Users',
                     'table_name' => 'Users',
                 ),
+            'AstVoicemailIbfk1' => array(
+                    'property' => 'AstVoicemail',
+                    'table_name' => 'ast_voicemail',
+                ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
@@ -534,8 +554,9 @@ class Users extends ModelAbstract
             'isBoss' => '0',
             'maxCalls' => '2',
             'callWaiting' => '0',
-            'attachVoicemailSound' => '1',
             'voicemailEnabled' => '1',
+            'voicemailSendMail' => '1',
+            'voicemailAttachSound' => '1',
         );
 
         $this->_initFileObjects();
@@ -1238,40 +1259,6 @@ class Users extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
-    public function setAttachVoicemailSound($data)
-    {
-
-        if ($this->_attachVoicemailSound != $data) {
-            $this->_logChange('attachVoicemailSound');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_attachVoicemailSound = $data;
-
-        } else if (!is_null($data)) {
-            $this->_attachVoicemailSound = (int) $data;
-
-        } else {
-            $this->_attachVoicemailSound = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column attachVoicemailSound
-     *
-     * @return int
-     */
-    public function getAttachVoicemailSound()
-    {
-        return $this->_attachVoicemailSound;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
     public function setVoicemailEnabled($data)
     {
 
@@ -1299,6 +1286,74 @@ class Users extends ModelAbstract
     public function getVoicemailEnabled()
     {
         return $this->_voicemailEnabled;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setVoicemailSendMail($data)
+    {
+
+        if ($this->_voicemailSendMail != $data) {
+            $this->_logChange('voicemailSendMail');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_voicemailSendMail = $data;
+
+        } else if (!is_null($data)) {
+            $this->_voicemailSendMail = (int) $data;
+
+        } else {
+            $this->_voicemailSendMail = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column voicemailSendMail
+     *
+     * @return int
+     */
+    public function getVoicemailSendMail()
+    {
+        return $this->_voicemailSendMail;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setVoicemailAttachSound($data)
+    {
+
+        if ($this->_voicemailAttachSound != $data) {
+            $this->_logChange('voicemailAttachSound');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_voicemailAttachSound = $data;
+
+        } else if (!is_null($data)) {
+            $this->_voicemailAttachSound = (int) $data;
+
+        } else {
+            $this->_voicemailAttachSound = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column voicemailAttachSound
+     *
+     * @return int
+     */
+    public function getVoicemailAttachSound()
+    {
+        return $this->_voicemailAttachSound;
     }
 
     /**
@@ -1401,57 +1456,6 @@ class Users extends ModelAbstract
     public function getLanguageId()
     {
         return $this->_languageId;
-    }
-
-    /**
-     * Sets parent relation Language
-     *
-     * @param \IvozProvider\Model\Raw\Languages $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
-    {
-        $this->_Language = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLanguageId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk15');
-        return $this;
-    }
-
-    /**
-     * Gets parent Language
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Languages
-     */
-    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk15';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Language = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Language;
     }
 
     /**
@@ -1656,6 +1660,57 @@ class Users extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk15');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk15';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**
@@ -3120,6 +3175,96 @@ class Users extends ModelAbstract
         }
 
         return $this->_Users;
+    }
+
+    /**
+     * Sets dependent relations ast_voicemail_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstVoicemail
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setAstVoicemail(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstVoicemail === null) {
+
+                $this->getAstVoicemail();
+            }
+
+            $oldRelations = $this->_AstVoicemail;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstVoicemail = array();
+
+        foreach ($data as $object) {
+            $this->addAstVoicemail($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_voicemail_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\AstVoicemail $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addAstVoicemail(\IvozProvider\Model\Raw\AstVoicemail $data)
+    {
+        $this->_AstVoicemail[] = $data;
+        $this->_setLoaded('AstVoicemailIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_voicemail_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstVoicemail
+     */
+    public function getAstVoicemail($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstVoicemailIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstVoicemail = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstVoicemail;
     }
 
     /**

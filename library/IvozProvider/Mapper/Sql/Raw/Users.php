@@ -67,8 +67,9 @@ class Users extends MapperAbstract
                 'active' => $model->getActive(),
                 'maxCalls' => $model->getMaxCalls(),
                 'callWaiting' => $model->getCallWaiting(),
-                'attachVoicemailSound' => $model->getAttachVoicemailSound(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
+                'voicemailSendMail' => $model->getVoicemailSendMail(),
+                'voicemailAttachSound' => $model->getVoicemailAttachSound(),
                 'tokenKey' => $model->getTokenKey(),
                 'countryId' => $model->getCountryId(),
                 'languageId' => $model->getLanguageId(),
@@ -654,6 +655,20 @@ class Users extends MapperAbstract
                     }
                 }
 
+                if ($model->getAstVoicemail(null, null, true) !== null) {
+                    $astVoicemail = $model->getAstVoicemail();
+
+                    if (!is_array($astVoicemail)) {
+
+                        $astVoicemail = array($astVoicemail);
+                    }
+
+                    foreach ($astVoicemail as $value) {
+                        $value->setUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {
@@ -767,8 +782,9 @@ class Users extends MapperAbstract
                   ->setActive($data['active'])
                   ->setMaxCalls($data['maxCalls'])
                   ->setCallWaiting($data['callWaiting'])
-                  ->setAttachVoicemailSound($data['attachVoicemailSound'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
+                  ->setVoicemailSendMail($data['voicemailSendMail'])
+                  ->setVoicemailAttachSound($data['voicemailAttachSound'])
                   ->setTokenKey($data['tokenKey'])
                   ->setCountryId($data['countryId'])
                   ->setLanguageId($data['languageId']);
@@ -792,8 +808,9 @@ class Users extends MapperAbstract
                   ->setActive($data->{'active'})
                   ->setMaxCalls($data->{'maxCalls'})
                   ->setCallWaiting($data->{'callWaiting'})
-                  ->setAttachVoicemailSound($data->{'attachVoicemailSound'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
+                  ->setVoicemailSendMail($data->{'voicemailSendMail'})
+                  ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
                   ->setTokenKey($data->{'tokenKey'})
                   ->setCountryId($data->{'countryId'})
                   ->setLanguageId($data->{'languageId'});
@@ -818,8 +835,9 @@ class Users extends MapperAbstract
                   ->setActive($data->getActive())
                   ->setMaxCalls($data->getMaxCalls())
                   ->setCallWaiting($data->getCallWaiting())
-                  ->setAttachVoicemailSound($data->getAttachVoicemailSound())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
+                  ->setVoicemailSendMail($data->getVoicemailSendMail())
+                  ->setVoicemailAttachSound($data->getVoicemailAttachSound())
                   ->setTokenKey($data->getTokenKey())
                   ->setCountryId($data->getCountryId())
                   ->setLanguageId($data->getLanguageId());

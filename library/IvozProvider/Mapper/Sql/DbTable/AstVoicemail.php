@@ -39,7 +39,13 @@ class AstVoicemail extends TableAbstract
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\AstVoicemail';
 
     protected $_sequence = true; // int
-    
+    protected $_referenceMap = array(
+        'AstVoicemailIbfk1' => array(
+            'columns' => 'userId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
+        )
+    );
     
     protected $_metadata = array (
 	  'uniqueid' => 
@@ -616,6 +622,23 @@ class AstVoicemail extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'userId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_voicemail',
+	    'COLUMN_NAME' => 'userId',
+	    'COLUMN_POSITION' => 35,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

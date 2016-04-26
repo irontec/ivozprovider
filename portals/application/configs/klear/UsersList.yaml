@@ -127,10 +127,11 @@ production:
             PickUpRelUsers: 4
         group4:
           label: _("Voicemail")
-          colsPerRow: 2
+          colsPerRow: 3
           fields:
             voicemailEnabled: 1
-            attachVoicemailSound: 1
+            voicemailSendMail: 1
+            voicemailAttachSound: 1
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
       controller: edit

@@ -197,17 +197,6 @@ production:
             title: _("No")
           '1': 
             title: _("Yes")
-    attachVoicemailSound: 
-      title: _('Attach voicemail sound')
-      type: select
-      defaultValue: 1
-      source: 
-        data: inline
-        values: 
-          '0': 
-            title: _("No")
-          '1': 
-            title: _("Yes")
     voicemailEnabled: 
       title: _('Voicemail enabled')
       type: select
@@ -218,13 +207,41 @@ production:
           '0': 
             title: _("No")
             visualFilter:
+              hide: ["voicemailSendMail", "voicemailAttachSound"]
               show: []
-              hide: ["attachVoicemailSound"]
           '1': 
             title: _("Yes")
             visualFilter:
-              show: ["attachVoicemailSound"]
+              show: ["voicemailSendMail", "voicemailAttachSound"]
               hide: []
+    voicemailSendMail: 
+      title: _('Voicemail send mail')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+            visualFilter:
+              hide: ["voicemailAttachSound"]
+              show: []
+          '1': 
+            title: _("Yes")
+            visualFilter:
+              show: ["voicemailAttachSound"]
+              hide: []
+    voicemailAttachSound: 
+      title: _('Voicemail attach sound')
+      type: select
+      defaultValue: 1
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
     PickUpRelUsers:
       title: _('Pick Up Groups')
       type: multiselect

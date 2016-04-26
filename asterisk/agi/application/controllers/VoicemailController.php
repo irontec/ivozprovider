@@ -38,6 +38,7 @@ class VoicemailController extends Zend_Controller_Action
             // Get Voicemail model 
             $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail;
             $vm = $vmMapper->findOneByField("mailbox", $vmdata[self::VM_MAILBOX]);
+            $user = $vm->getUser();
             
             $substitution = array(
                 '${VM_CATEGORY}'    => $vmdata[self::VM_CATEGORY],
@@ -49,10 +50,9 @@ class VoicemailController extends Zend_Controller_Action
                 '${VM_CIDNAME}'     => $vmdata[self::VM_CIDNAME],
                 '${VM_CIDNUM}'      => $vmdata[self::VM_CIDNUM],
                 '${VM_DATE}'        => $vmdata[self::VM_DATE],
-                
             );
             
-            $templateDir = APPLICATION_PATH . "/../templates/voicemail/" . $vm->getLanguage() . "/";
+            $templateDir = APPLICATION_PATH . "/../templates/voicemail/" . $user->getLanguageCode() . "/";
             
             $body = file_get_contents($templateDir . "body");
             $subject = file_get_contents($templateDir . "subject");
@@ -70,11 +70,12 @@ class VoicemailController extends Zend_Controller_Action
             
             if ($message->countParts() == 2 )
             {
-                $att = new Zend_Mime_Part($message->getPart(2)->getContent());
-                $att->type = "audio/x-wav";
-                $att->disposition = Zend_Mime::DISPOSITION_ATTACHMENT;
-                $att->encoding = Zend_Mime::ENCODING_BASE64;
-                $att->filename = sprintf("msg%04d.wav", $vmdata[self::VM_MSGNUM]);
+                $wav = base64_decode($message->getPart(2)->getContent());
+                $att = new Zend_Mime_Part($wav);
+                $att->type          = "audio/x-wav";
+                $att->disposition   = Zend_Mime::DISPOSITION_ATTACHMENT;
+                $att->encoding      = Zend_Mime::ENCODING_BASE64;
+                $att->filename      = sprintf("msg%04d.wav", $vmdata[self::VM_MSGNUM]);
                 $mail->addAttachment($att);
             }
             

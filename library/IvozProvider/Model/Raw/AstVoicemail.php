@@ -301,6 +301,20 @@ class AstVoicemail extends ModelAbstract
      */
     protected $_stamp;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_userId;
+
+
+    /**
+     * Parent relation ast_voicemail_ibfk_1
+     *
+     * @var \IvozProvider\Model\Raw\Users
+     */
+    protected $_User;
 
 
     protected $_columnsList = array(
@@ -338,6 +352,7 @@ class AstVoicemail extends ModelAbstract
         'imapport'=>'imapport',
         'imapflags'=>'imapflags',
         'stamp'=>'stamp',
+        'userId'=>'userId',
     );
 
     /**
@@ -354,6 +369,10 @@ class AstVoicemail extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'AstVoicemailIbfk1'=> array(
+                    'property' => 'User',
+                    'table_name' => 'Users',
+                ),
         ));
 
         $this->setDependentList(array(
@@ -1611,6 +1630,91 @@ class AstVoicemail extends ModelAbstract
         }
 
         return $this->_stamp->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstVoicemail
+     */
+    public function setUserId($data)
+    {
+
+        if ($this->_userId != $data) {
+            $this->_logChange('userId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_userId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_userId = (int) $data;
+
+        } else {
+            $this->_userId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column userId
+     *
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->_userId;
+    }
+
+    /**
+     * Sets parent relation User
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\AstVoicemail
+     */
+    public function setUser(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_User = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setUserId($primaryKey);
+        }
+
+        $this->_setLoaded('AstVoicemailIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent User
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function getUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstVoicemailIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_User = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_User;
     }
 
     /**

@@ -40,11 +40,6 @@ class Users extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'UsersIbfk15' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
         'UsersIbfk10' => array(
             'columns' => 'callACLId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
@@ -63,6 +58,11 @@ class Users extends TableAbstract
         'UsersIbfk14' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk15' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         ),
         'UsersIbfk3' => array(
@@ -100,7 +100,8 @@ class Users extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustomEntries',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpRelUsers',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\AstVoicemail'
     );
     protected $_metadata = array (
 	  'id' => 
@@ -426,11 +427,11 @@ class Users extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'attachVoicemailSound' => 
+	  'voicemailEnabled' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
-	    'COLUMN_NAME' => 'attachVoicemailSound',
+	    'COLUMN_NAME' => 'voicemailEnabled',
 	    'COLUMN_POSITION' => 20,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '1',
@@ -443,12 +444,29 @@ class Users extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'voicemailEnabled' => 
+	  'voicemailSendMail' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
-	    'COLUMN_NAME' => 'voicemailEnabled',
+	    'COLUMN_NAME' => 'voicemailSendMail',
 	    'COLUMN_POSITION' => 21,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '1',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'voicemailAttachSound' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Users',
+	    'COLUMN_NAME' => 'voicemailAttachSound',
+	    'COLUMN_POSITION' => 22,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '1',
 	    'NULLABLE' => false,
@@ -465,7 +483,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'tokenKey',
-	    'COLUMN_POSITION' => 22,
+	    'COLUMN_POSITION' => 23,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -482,7 +500,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'countryId',
-	    'COLUMN_POSITION' => 23,
+	    'COLUMN_POSITION' => 24,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -499,7 +517,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'languageId',
-	    'COLUMN_POSITION' => 24,
+	    'COLUMN_POSITION' => 25,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
