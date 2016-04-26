@@ -119,6 +119,9 @@ class CallsController extends BaseController
         $this->_setMusicClass($company);
         $this->agi->setVariable("__COMPANYID", $company->getId());
 
+        // Set user language
+        $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
+
         // Check User's permission to does this call
         $exten = $this->agi->getExtension();
 

@@ -234,7 +234,7 @@ class Agi_Wrapper
 	
 	public function voicemail($mailbox)
 	{
-	    return $this->_fastagi->exec('VoiceMail', "$mailbox,s");
+	    return $this->_fastagi->exec('VoiceMail', "$mailbox,u");
 	}
 	
 	public function checkVoicemail($mailbox)
