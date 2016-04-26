@@ -505,6 +505,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getCompanyServices(null, null, true) !== null) {
+                    $companyServices = $model->getCompanyServices();
+
+                    if (!is_array($companyServices)) {
+
+                        $companyServices = array($companyServices);
+                    }
+
+                    foreach ($companyServices as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 
@@ -752,20 +766,6 @@ class Companies extends MapperAbstract
                     }
 
                     foreach ($schedules as $value) {
-                        $value->setCompanyId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getServices(null, null, true) !== null) {
-                    $services = $model->getServices();
-
-                    if (!is_array($services)) {
-
-                        $services = array($services);
-                    }
-
-                    foreach ($services as $value) {
                         $value->setCompanyId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

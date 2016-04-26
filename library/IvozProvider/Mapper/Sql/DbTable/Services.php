@@ -39,14 +39,11 @@ class Services extends TableAbstract
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\Services';
 
     protected $_sequence = true; // int
-    protected $_referenceMap = array(
-        'ServicesIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        )
-    );
     
+    protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyServices'
+    );
     protected $_metadata = array (
 	  'id' => 
 	  array (
@@ -65,19 +62,19 @@ class Services extends TableAbstract
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => true,
 	  ),
-	  'companyId' => 
+	  'iden' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Services',
-	    'COLUMN_NAME' => 'companyId',
+	    'COLUMN_NAME' => 'iden',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
 	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '50',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -89,7 +86,41 @@ class Services extends TableAbstract
 	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '',
+	    'NULLABLE' => false,
+	    'LENGTH' => '50',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'name_en' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Services',
+	    'COLUMN_NAME' => 'name_en',
+	    'COLUMN_POSITION' => 4,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
+	    'NULLABLE' => false,
+	    'LENGTH' => '50',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'name_es' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Services',
+	    'COLUMN_NAME' => 'name_es',
+	    'COLUMN_POSITION' => 5,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
 	    'NULLABLE' => false,
 	    'LENGTH' => '50',
 	    'SCALE' => NULL,
@@ -104,9 +135,9 @@ class Services extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Services',
 	    'COLUMN_NAME' => 'description',
-	    'COLUMN_POSITION' => 4,
+	    'COLUMN_POSITION' => 6,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '',
 	    'NULLABLE' => false,
 	    'LENGTH' => '255',
 	    'SCALE' => NULL,
@@ -116,16 +147,33 @@ class Services extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'code' => 
+	  'description_en' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Services',
-	    'COLUMN_NAME' => 'code',
-	    'COLUMN_POSITION' => 5,
+	    'COLUMN_NAME' => 'description_en',
+	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '',
 	    'NULLABLE' => false,
-	    'LENGTH' => '3',
+	    'LENGTH' => '255',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'description_es' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Services',
+	    'COLUMN_NAME' => 'description_es',
+	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
+	    'NULLABLE' => false,
+	    'LENGTH' => '255',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

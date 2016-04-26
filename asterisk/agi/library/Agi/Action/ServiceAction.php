@@ -23,7 +23,7 @@ class ServiceAction extends RouterAction
         $service = $this->_service;
         
         // Process this service
-        switch ($service->getName()) {
+        switch ($service->getService()->getIden()) {
             case 'Voicemail':
                 $this->_processVoiceMail();
                 break;

@@ -52,7 +52,12 @@ class Companies extends Raw\Companies
     public function getService($exten)
     {
         $code = substr($exten, 1, 3);
-        $services = $this->getServices("code='".$code."'");
+        $services = $this->getCompanyServices("code='".$code."'");
+        
+        if (count($services) == 0) {
+            $services = $this->getBrand()->getBrandServices("code='".$code."'");
+        }
+        
         return array_shift($services);
     }
 

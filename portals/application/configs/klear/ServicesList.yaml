@@ -1,5 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include BrandServicesList.yaml
+#include CompanyServicesList.yaml
 
 
 production: 
@@ -12,16 +14,22 @@ production:
       pagination: 
         items: 25
       <<: *Services
-      class: ui-silk-page-white-wrench
+      class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Service', 'Services', 0), "[format| (%parent%)]")
-      forcedValues:
-        <<: *forcedCompany
       fields: &services_fieldsLink 
         options: 
           title: _("Options")
           screens: 
             servicesEdit_screen: true
+          dialogs: 
+            servicesDel_dialog: true
           default: servicesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          servicesNew_screen: true
+        dialogs: 
+          servicesDel_dialog: true
     servicesNew_screen: &servicesNew_screenLink 
       <<: *Services
       controller: new
@@ -30,28 +38,17 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Service', 'Services', 1), "[format| (%parent%)]")
       shortcutOption: N
-      forcedValues:
-        <<: *forcedCompany
-      fixedPositions: &genericServicesFixedPositions_Link
-        group0:
-          colsPerRow: 2
-          fields:
-            name: 1
-            code: 1
-            description: 2
+      postActionOptions: 
+        screens: 
+          servicesEdit_screen: true
     servicesEdit_screen: &servicesEdit_screenLink 
       <<: *Services
       controller: edit
       class: ui-silk-pencil
       label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Service', 'Services', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Service', 'Services', 1), "[format| (%item%)]")
-      forcedValues:
-        <<: *forcedCompany
-      fixedPositions:
-        <<: *genericServicesFixedPositions_Link
-      fields:
-        readOnly:
-          name: true
+
   dialogs: &services_dialogsLink 
     servicesDel_dialog: &servicesDel_dialogLink 
       <<: *Services

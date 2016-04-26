@@ -63,11 +63,15 @@ production:
         TerminalManufacturersList:
           title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
           class: ui-silk-telephone-link
-          description: _("List of %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0))        
+          description: _("List of %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0))
         MainOperatorsList:
           title: ngettext('Main operator', 'Main operators', 0)
           class: ui-silk-tux
-          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))            
+          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))       
+        ServicesList: 
+          title: ngettext('Service', 'Services', 0)
+          class: ui-silk-page-white-wrench
+          description: _("List of %s", ngettext('Service', 'Services', 0))
         LanguagesList:
           title: ngettext('Language', 'Languages', 0)
           class: ui-silk-flag-blue
@@ -94,10 +98,10 @@ production:
           title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
           class: ui-silk-music
           description: _("List of %s", ngettext('Generic music on hold', 'Generic musics on hold', 0))
-        GenericServicesList:
-          title: ngettext('Generic service', 'Generic services', 0)
+        BrandServicesList: 
+          title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
-          description: _("List of %s", ngettext('Generic service', 'Generic services', 0))                   
+          description: _("List of %s", ngettext('Service', 'Services', 0))
         GenericCallACLPatternsList:
           title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
           class: ui-silk-lock-go
@@ -196,7 +200,7 @@ production:
           title: ngettext('Pick up group', 'Pick up groups', 0)
           class: ui-silk-group-link
           description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
-        ServicesList: 
+        CompanyServicesList: 
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))

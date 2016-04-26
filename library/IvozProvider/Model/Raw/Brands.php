@@ -165,6 +165,14 @@ class Brands extends ModelAbstract
     protected $_BrandOperators;
 
     /**
+     * Dependent relation BrandServices_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\BrandServices[]
+     */
+    protected $_BrandServices;
+
+    /**
      * Dependent relation BrandURLs_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -195,14 +203,6 @@ class Brands extends ModelAbstract
      * @var \IvozProvider\Model\Raw\GenericMusicOnHold[]
      */
     protected $_GenericMusicOnHold;
-
-    /**
-     * Dependent relation GenericServices_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\GenericServices[]
-     */
-    protected $_GenericServices;
 
     /**
      * Dependent relation InvoiceTemplates_ibfk_1
@@ -357,6 +357,10 @@ class Brands extends ModelAbstract
                     'property' => 'BrandOperators',
                     'table_name' => 'BrandOperators',
                 ),
+            'BrandServicesIbfk1' => array(
+                    'property' => 'BrandServices',
+                    'table_name' => 'BrandServices',
+                ),
             'BrandURLsIbfk1' => array(
                     'property' => 'BrandURLs',
                     'table_name' => 'BrandURLs',
@@ -372,10 +376,6 @@ class Brands extends ModelAbstract
             'FGenericMusicOnHoldIbfk1' => array(
                     'property' => 'GenericMusicOnHold',
                     'table_name' => 'GenericMusicOnHold',
-                ),
-            'GenericServicesIbfk1' => array(
-                    'property' => 'GenericServices',
-                    'table_name' => 'GenericServices',
                 ),
             'InvoiceTemplatesIbfk1' => array(
                     'property' => 'InvoiceTemplates',
@@ -433,6 +433,7 @@ class Brands extends ModelAbstract
 
         $this->setOnDeleteCascadeRelationships(array(
             'BrandOperators_ibfk_3',
+            'BrandServices_ibfk_1',
             'BrandURLs_ibfk_1'
         ));
 
@@ -1322,6 +1323,96 @@ class Brands extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations BrandServices_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\BrandServices
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setBrandServices(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_BrandServices === null) {
+
+                $this->getBrandServices();
+            }
+
+            $oldRelations = $this->_BrandServices;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_BrandServices = array();
+
+        foreach ($data as $object) {
+            $this->addBrandServices($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations BrandServices_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\BrandServices $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addBrandServices(\IvozProvider\Model\Raw\BrandServices $data)
+    {
+        $this->_BrandServices[] = $data;
+        $this->_setLoaded('BrandServicesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent BrandServices_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\BrandServices
+     */
+    public function getBrandServices($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'BrandServicesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_BrandServices = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_BrandServices;
+    }
+
+    /**
      * Sets dependent relations BrandURLs_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\BrandURLs
@@ -1679,96 +1770,6 @@ class Brands extends ModelAbstract
         }
 
         return $this->_GenericMusicOnHold;
-    }
-
-    /**
-     * Sets dependent relations GenericServices_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\GenericServices
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function setGenericServices(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_GenericServices === null) {
-
-                $this->getGenericServices();
-            }
-
-            $oldRelations = $this->_GenericServices;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_GenericServices = array();
-
-        foreach ($data as $object) {
-            $this->addGenericServices($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations GenericServices_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\GenericServices $data
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function addGenericServices(\IvozProvider\Model\Raw\GenericServices $data)
-    {
-        $this->_GenericServices[] = $data;
-        $this->_setLoaded('GenericServicesIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent GenericServices_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\GenericServices
-     */
-    public function getGenericServices($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'GenericServicesIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_GenericServices = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_GenericServices;
     }
 
     /**

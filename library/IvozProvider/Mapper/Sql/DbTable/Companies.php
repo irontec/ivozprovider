@@ -71,6 +71,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallACLPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyServices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
@@ -89,7 +90,6 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelCompanies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Schedules',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Services',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );

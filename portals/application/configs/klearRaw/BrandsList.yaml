@@ -1,11 +1,11 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include BrandOperatorsList.yaml
+#include BrandServicesList.yaml
 #include BrandURLsList.yaml
 #include CompaniesList.yaml
 #include GenericCallACLPatternsList.yaml
 #include GenericMusicOnHoldList.yaml
-#include GenericServicesList.yaml
 #include InvoiceTemplatesList.yaml
 #include InvoicesList.yaml
 #include OutgoingRoutingList.yaml
@@ -39,11 +39,11 @@ production:
           screens: 
             brandsEdit_screen: true
             brandOperatorsList_screen: true
+            brandServicesList_screen: true
             brandURLsList_screen: true
             companiesList_screen: true
             genericCallACLPatternsList_screen: true
             genericMusicOnHoldList_screen: true
-            genericServicesList_screen: true
             invoiceTemplatesList_screen: true
             invoicesList_screen: true
             outgoingRoutingList_screen: true
@@ -98,6 +98,19 @@ production:
       <<: *brandOperatorsEdit_screenLink
       filterField: brandId
 
+    #brandServices: 
+    brandServicesList_screen: 
+      <<: *brandServicesList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    brandServicesNew_screen: 
+      <<: *brandServicesNew_screenLink
+      filterField: brandId
+    brandServicesEdit_screen: 
+      <<: *brandServicesEdit_screenLink
+      filterField: brandId
+
     #brandURLs: 
     brandURLsList_screen: 
       <<: *brandURLsList_screenLink
@@ -148,19 +161,6 @@ production:
       filterField: brandId
     genericMusicOnHoldEdit_screen: 
       <<: *genericMusicOnHoldEdit_screenLink
-      filterField: brandId
-
-    #genericServices: 
-    genericServicesList_screen: 
-      <<: *genericServicesList_screenLink
-      filterField: brandId
-      parentOptionCustomizer: 
-        - recordCount
-    genericServicesNew_screen: 
-      <<: *genericServicesNew_screenLink
-      filterField: brandId
-    genericServicesEdit_screen: 
-      <<: *genericServicesEdit_screenLink
       filterField: brandId
 
     #invoiceTemplates: 
@@ -345,6 +345,8 @@ production:
       labelOnList: 1
   # brandOperators dialogs: 
     <<: *brandOperators_dialogsLink
+  # brandServices dialogs: 
+    <<: *brandServices_dialogsLink
   # brandURLs dialogs: 
     <<: *brandURLs_dialogsLink
   # companies dialogs: 
@@ -353,8 +355,6 @@ production:
     <<: *genericCallACLPatterns_dialogsLink
   # genericMusicOnHold dialogs: 
     <<: *genericMusicOnHold_dialogsLink
-  # genericServices dialogs: 
-    <<: *genericServices_dialogsLink
   # invoiceTemplates dialogs: 
     <<: *invoiceTemplates_dialogsLink
   # invoices dialogs: 

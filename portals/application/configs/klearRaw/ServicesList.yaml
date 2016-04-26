@@ -1,5 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include BrandServicesList.yaml
+#include CompanyServicesList.yaml
 
 
 production: 
@@ -19,6 +21,8 @@ production:
           title: _("Options")
           screens: 
             servicesEdit_screen: true
+            brandServicesList_screen: true
+            companyServicesList_screen: true
           dialogs: 
             servicesDel_dialog: true
           default: servicesEdit_screen
@@ -46,6 +50,33 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Service', 'Services', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Service', 'Services', 1), "[format| (%item%)]")
+    #brandServices: 
+    <<: *brandServices_screensLink
+    brandServicesList_screen: 
+      <<: *brandServicesList_screenLink
+      filterField: serviceId
+      parentOptionCustomizer: 
+        - recordCount
+    brandServicesNew_screen: 
+      <<: *brandServicesNew_screenLink
+      filterField: serviceId
+    brandServicesEdit_screen: 
+      <<: *brandServicesEdit_screenLink
+      filterField: serviceId
+
+    #companyServices: 
+    companyServicesList_screen: 
+      <<: *companyServicesList_screenLink
+      filterField: serviceId
+      parentOptionCustomizer: 
+        - recordCount
+    companyServicesNew_screen: 
+      <<: *companyServicesNew_screenLink
+      filterField: serviceId
+    companyServicesEdit_screen: 
+      <<: *companyServicesEdit_screenLink
+      filterField: serviceId
+
   dialogs: &services_dialogsLink 
     servicesDel_dialog: &servicesDel_dialogLink 
       <<: *Services
@@ -57,6 +88,10 @@ production:
       message: _("%s successfully deleted.", ngettext('Service', 'Services', 1))
       multiItem: 1
       labelOnList: 1
+  # brandServices dialogs: 
+    <<: *brandServices_dialogsLink
+  # companyServices dialogs: 
+    <<: *companyServices_dialogsLink
 staging: 
   _extends: production
 testing: 

@@ -464,6 +464,20 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getBrandServices(null, null, true) !== null) {
+                    $brandServices = $model->getBrandServices();
+
+                    if (!is_array($brandServices)) {
+
+                        $brandServices = array($brandServices);
+                    }
+
+                    foreach ($brandServices as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getBrandURLs(null, null, true) !== null) {
                     $brandURLs = $model->getBrandURLs();
 
@@ -515,20 +529,6 @@ class Brands extends MapperAbstract
                     }
 
                     foreach ($genericMusicOnHold as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getGenericServices(null, null, true) !== null) {
-                    $genericServices = $model->getGenericServices();
-
-                    if (!is_array($genericServices)) {
-
-                        $genericServices = array($genericServices);
-                    }
-
-                    foreach ($genericServices as $value) {
                         $value->setBrandId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

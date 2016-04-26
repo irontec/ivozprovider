@@ -198,6 +198,14 @@ class Companies extends ModelAbstract
     protected $_CompanyAdmins;
 
     /**
+     * Dependent relation CompanyServices_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\CompanyServices[]
+     */
+    protected $_CompanyServices;
+
+    /**
      * Dependent relation DDIs_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -342,14 +350,6 @@ class Companies extends ModelAbstract
     protected $_Schedules;
 
     /**
-     * Dependent relation Services_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\Services[]
-     */
-    protected $_Services;
-
-    /**
      * Dependent relation Terminals_CompanyId_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -436,6 +436,10 @@ class Companies extends ModelAbstract
                     'property' => 'CompanyAdmins',
                     'table_name' => 'CompanyAdmins',
                 ),
+            'CompanyServicesIbfk1' => array(
+                    'property' => 'CompanyServices',
+                    'table_name' => 'CompanyServices',
+                ),
             'DDIsIbfk1' => array(
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
@@ -507,10 +511,6 @@ class Companies extends ModelAbstract
             'SchedulesIbfk1' => array(
                     'property' => 'Schedules',
                     'table_name' => 'Schedules',
-                ),
-            'ServicesIbfk1' => array(
-                    'property' => 'Services',
-                    'table_name' => 'Services',
                 ),
             'TerminalsCompanyIdIbfk2' => array(
                     'property' => 'Terminals',
@@ -1715,6 +1715,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_CompanyAdmins;
+    }
+
+    /**
+     * Sets dependent relations CompanyServices_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\CompanyServices
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setCompanyServices(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_CompanyServices === null) {
+
+                $this->getCompanyServices();
+            }
+
+            $oldRelations = $this->_CompanyServices;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_CompanyServices = array();
+
+        foreach ($data as $object) {
+            $this->addCompanyServices($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations CompanyServices_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\CompanyServices $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addCompanyServices(\IvozProvider\Model\Raw\CompanyServices $data)
+    {
+        $this->_CompanyServices[] = $data;
+        $this->_setLoaded('CompanyServicesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent CompanyServices_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CompanyServices
+     */
+    public function getCompanyServices($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompanyServicesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_CompanyServices = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_CompanyServices;
     }
 
     /**
@@ -3335,96 +3425,6 @@ class Companies extends ModelAbstract
         }
 
         return $this->_Schedules;
-    }
-
-    /**
-     * Sets dependent relations Services_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\Services
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setServices(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_Services === null) {
-
-                $this->getServices();
-            }
-
-            $oldRelations = $this->_Services;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_Services = array();
-
-        foreach ($data as $object) {
-            $this->addServices($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations Services_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\Services $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function addServices(\IvozProvider\Model\Raw\Services $data)
-    {
-        $this->_Services[] = $data;
-        $this->_setLoaded('ServicesIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent Services_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\Services
-     */
-    public function getServices($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ServicesIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_Services = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_Services;
     }
 
     /**

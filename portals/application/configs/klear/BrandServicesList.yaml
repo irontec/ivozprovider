@@ -1,0 +1,73 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: brandServicesList_screen
+  screens: &brandServices_screensLink 
+    brandServicesList_screen: &brandServicesList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *BrandServices
+      forcedValues:
+        <<: *forcedBrand
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Brand service', 'Brand services', 0), "[format| (%parent%)]")
+      fields: &brandServices_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            brandServicesEdit_screen: true
+          dialogs: 
+            brandServicesDel_dialog: true
+          default: brandServicesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          brandServicesNew_screen: true
+        dialogs: 
+          brandServicesDel_dialog: true
+    brandServicesNew_screen: &brandServicesNew_screenLink 
+      <<: *BrandServices
+      forcedValues:
+        <<: *forcedBrand
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Brand service', 'Brand services', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          brandServicesEdit_screen: true
+    brandServicesEdit_screen: &brandServicesEdit_screenLink 
+      <<: *BrandServices
+      forcedValues:
+        <<: *forcedBrand
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Brand service', 'Brand services', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Brand service', 'Brand services', 1), "[format| (%item%)]")
+  dialogs: &brandServices_dialogsLink 
+    brandServicesDel_dialog: &brandServicesDel_dialogLink 
+      <<: *BrandServices
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Brand service', 'Brand services', 1))
+      description: _("Do you want to delete this %s?", ngettext('Brand service', 'Brand services', 1))
+      message: _("%s successfully deleted.", ngettext('Brand service', 'Brand services', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -19,7 +19,7 @@
  */
  
 namespace IvozProvider\Model;
-class GenericServices extends Raw\GenericServices
+class CompanyServices extends Raw\CompanyServices
 {
     /**
      * This method is called just after parent's constructor

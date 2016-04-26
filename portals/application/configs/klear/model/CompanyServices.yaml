@@ -1,0 +1,46 @@
+production: 
+  class: \IvozProvider\Model\CompanyServices
+  fields: 
+    serviceId: 
+      title: _('Service id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Services
+          filterClass: IvozProvider_Klear_Filter_BrandServices
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+    code: 
+      title: _('Code')
+      type: text
+      required: true
+      maxLength: 6
+      prefix: '<span class="asterisc">*</span>'
+      pattern: '[0-9*]+'      
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

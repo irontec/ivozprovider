@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\GenericServices
+ * Data Mapper implementation for IvozProvider\Model\BrandServices
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class GenericServices extends MapperAbstract
+class BrandServices extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\GenericServices';
+    protected $_modelName = 'IvozProvider\\Model\\BrandServices';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class GenericServices extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\GenericServices $model
+     * @param IvozProvider\Model\Raw\BrandServices $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\GenericServices) {
+        if (!$model instanceof \IvozProvider\Model\Raw\BrandServices) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\GenericServices object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\BrandServices object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\GenericServices object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\BrandServices object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,9 +49,8 @@ class GenericServices extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
+                'serviceId' => $model->getServiceId(),
                 'brandId' => $model->getBrandId(),
-                'name' => $model->getName(),
-                'description' => $model->getDescription(),
                 'code' => $model->getCode(),
             );
         } else {
@@ -91,12 +90,12 @@ class GenericServices extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\GenericServices
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\GenericServices');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices');
         }
 
         return $this->_dbTable;
@@ -105,17 +104,17 @@ class GenericServices extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\GenericServices $model The model to delete
+     * @param IvozProvider\Model\Raw\BrandServices $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\GenericServices) {
+        if (!$model instanceof \IvozProvider\Model\Raw\BrandServices) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\GenericServices object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\BrandServices object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\GenericServices object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\BrandServices object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -165,7 +164,7 @@ class GenericServices extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\GenericServices', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -213,7 +212,7 @@ class GenericServices extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\GenericServices', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -291,7 +290,7 @@ class GenericServices extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\GenericServices $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\BrandServices $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -299,17 +298,17 @@ class GenericServices extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\GenericServices $model
+     * @param \IvozProvider\Model\Raw\BrandServices $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\GenericServices $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\BrandServices $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\GenericServices $model,
+    protected function _save(\IvozProvider\Model\Raw\BrandServices $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -517,13 +516,13 @@ class GenericServices extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\GenericServices|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\GenericServices The model with the data provided
+     * @param IvozProvider\Model\Raw\BrandServices|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\BrandServices The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\GenericServices();
+            $entry = new \IvozProvider\Model\BrandServices();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -531,22 +530,19 @@ class GenericServices extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
+                  ->setServiceId($data['serviceId'])
                   ->setBrandId($data['brandId'])
-                  ->setName($data['name'])
-                  ->setDescription($data['description'])
                   ->setCode($data['code']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
+                  ->setServiceId($data->{'serviceId'})
                   ->setBrandId($data->{'brandId'})
-                  ->setName($data->{'name'})
-                  ->setDescription($data->{'description'})
                   ->setCode($data->{'code'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\GenericServices) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\BrandServices) {
             $entry->setId($data->getId())
+                  ->setServiceId($data->getServiceId())
                   ->setBrandId($data->getBrandId())
-                  ->setName($data->getName())
-                  ->setDescription($data->getDescription())
                   ->setCode($data->getCode());
 
         }

@@ -53,11 +53,11 @@ class Brands extends TableAbstract
     );
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\BrandOperators',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\BrandURLs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\GenericCallACLPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\GenericMusicOnHold',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\GenericServices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\InvoiceTemplates',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Invoices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',

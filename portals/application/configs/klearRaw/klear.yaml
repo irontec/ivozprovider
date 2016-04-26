@@ -43,6 +43,10 @@ production:
           title: ngettext('Brand operator', 'Brand operators', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Brand operator', 'Brand operators', 0))
+        BrandServicesList: 
+          title: ngettext('Brand service', 'Brand services', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Brand service', 'Brand services', 0))
         BrandURLsList: 
           title: ngettext('Brand u r l', 'Brand u r ls', 0)
           class: ui-silk-text-list-bullets
@@ -79,6 +83,10 @@ production:
           title: ngettext('Company admin', 'Company admins', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Company admin', 'Company admins', 0))
+        CompanyServicesList: 
+          title: ngettext('Company service', 'Company services', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Company service', 'Company services', 0))
         CountriesList: 
           title: ngettext('Country', 'Countries', 0)
           class: ui-silk-text-list-bullets
@@ -119,10 +127,6 @@ production:
           title: ngettext('Generic music on hold', 'Generic music on hold', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Generic music on hold', 'Generic music on hold', 0))
-        GenericServicesList: 
-          title: ngettext('Generic service', 'Generic services', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Generic service', 'Generic services', 0))
         HolidayDatesList: 
           title: ngettext('Holiday date', 'Holiday dates', 0)
           class: ui-silk-text-list-bullets

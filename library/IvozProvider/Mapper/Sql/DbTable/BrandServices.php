@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for GenericServices
+ * Table definition for BrandServices
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -19,14 +19,14 @@
  */
 
 namespace IvozProvider\Mapper\Sql\DbTable;
-class GenericServices extends TableAbstract
+class BrandServices extends TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'GenericServices';
+    protected $_name = 'BrandServices';
 
     /**
      * $_id - this is the primary key name
@@ -35,14 +35,19 @@ class GenericServices extends TableAbstract
      */
     protected $_id = 'id';
 
-    protected $_rowClass = 'IvozProvider\\Model\\GenericServices';
-    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\GenericServices';
+    protected $_rowClass = 'IvozProvider\\Model\\BrandServices';
+    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\BrandServices';
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'GenericServicesIbfk1' => array(
+        'BrandServicesIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'BrandServicesIbfk2' => array(
+            'columns' => 'serviceId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Services',
             'refColumns' => 'id'
         )
     );
@@ -51,7 +56,7 @@ class GenericServices extends TableAbstract
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'GenericServices',
+	    'TABLE_NAME' => 'BrandServices',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -65,11 +70,11 @@ class GenericServices extends TableAbstract
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => true,
 	  ),
-	  'brandId' => 
+	  'serviceId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'GenericServices',
-	    'COLUMN_NAME' => 'brandId',
+	    'TABLE_NAME' => 'BrandServices',
+	    'COLUMN_NAME' => 'serviceId',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
@@ -82,36 +87,19 @@ class GenericServices extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'name' => 
+	  'brandId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'GenericServices',
-	    'COLUMN_NAME' => 'name',
+	    'TABLE_NAME' => 'BrandServices',
+	    'COLUMN_NAME' => 'brandId',
 	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'varchar',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '50',
+	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'description' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'GenericServices',
-	    'COLUMN_NAME' => 'description',
-	    'COLUMN_POSITION' => 4,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
-	    'LENGTH' => '255',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -119,9 +107,9 @@ class GenericServices extends TableAbstract
 	  'code' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'GenericServices',
+	    'TABLE_NAME' => 'BrandServices',
 	    'COLUMN_NAME' => 'code',
-	    'COLUMN_POSITION' => 5,
+	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,

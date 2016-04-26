@@ -32,7 +32,6 @@ class Companies extends Raw\Companies
         $this->_recursive = $recursive;
         if (is_null($model->getPrimaryKey())) {
             $this->_propagateCallACLPatterns();
-            $this->_propagateServices();
         }
 
         return parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
@@ -56,26 +55,6 @@ class Companies extends Raw\Companies
         }
         if (!empty($callACLPatterns)) {
             $this->_model->setCallACLPatterns($callACLPatterns);
-            $this->_recursive = true;
-        }
-    }
-
-    protected function _propagateServices()
-    {
-        $brand = $this->_model->getBrand();
-        $genericServices = $brand->getGenericServices();
-        $services = array();
-        foreach ($genericServices as $genericService) {
-            $service = new \IvozProvider\Model\Services();
-            $service
-            ->setCompany($this->_model)
-            ->setName($genericService->getName())
-            ->setDescription($genericService->getDescription())
-            ->setCode($genericService->getCode());
-            $services[] = $service;
-        }
-        if (!empty($services)) {
-            $this->_model->setServices($services);
             $this->_recursive = true;
         }
     }

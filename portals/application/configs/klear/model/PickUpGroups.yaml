@@ -30,9 +30,13 @@ production:
           relationMapper: \IvozProvider\Mapper\Sql\PickUpRelUsers
           relatedMapperName: \IvozProvider\Mapper\Sql\Users
           filterClass: IvozProvider_Klear_Filter_Users
-          relatedFieldName: name
           relationProperty: User
-
+          relatedFieldName: 
+            fields: 
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name          
 staging: 
   _extends: production
 testing: 

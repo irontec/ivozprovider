@@ -31,13 +31,14 @@ class Services extends ModelAbstract
     protected $_id;
 
     /**
-     * Database var type int
+     * Database var type varchar
      *
-     * @var int
+     * @var string
      */
-    protected $_companyId;
+    protected $_iden;
 
     /**
+     * [ml]
      * Database var type varchar
      *
      * @var string
@@ -49,6 +50,21 @@ class Services extends ModelAbstract
      *
      * @var string
      */
+    protected $_nameEn;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_nameEs;
+
+    /**
+     * [ml]
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_description;
 
     /**
@@ -56,23 +72,42 @@ class Services extends ModelAbstract
      *
      * @var string
      */
-    protected $_code;
+    protected $_descriptionEn;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_descriptionEs;
+
 
 
     /**
-     * Parent relation Services_ibfk_1
+     * Dependent relation BrandServices_ibfk_2
+     * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\Companies
+     * @var \IvozProvider\Model\Raw\BrandServices[]
      */
-    protected $_Company;
+    protected $_BrandServices;
 
+    /**
+     * Dependent relation CompanyServices_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\CompanyServices[]
+     */
+    protected $_CompanyServices;
 
     protected $_columnsList = array(
         'id'=>'id',
-        'companyId'=>'companyId',
+        'iden'=>'iden',
         'name'=>'name',
+        'name_en'=>'nameEn',
+        'name_es'=>'nameEs',
         'description'=>'description',
-        'code'=>'code',
+        'description_en'=>'descriptionEn',
+        'description_es'=>'descriptionEs',
     );
 
     /**
@@ -81,27 +116,46 @@ class Services extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'name'=> array('ml'),
+            'description'=> array('ml'),
         ));
 
         $this->setMultiLangColumnsList(array(
+            'name'=>'Name',
+            'description'=>'Description',
         ));
 
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'ServicesIbfk1'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
-                ),
         ));
 
         $this->setDependentList(array(
+            'BrandServicesIbfk2' => array(
+                    'property' => 'BrandServices',
+                    'table_name' => 'BrandServices',
+                ),
+            'CompanyServicesIbfk2' => array(
+                    'property' => 'CompanyServices',
+                    'table_name' => 'CompanyServices',
+                ),
         ));
 
+        $this->setOnDeleteCascadeRelationships(array(
+            'BrandServices_ibfk_2',
+            'CompanyServices_ibfk_2'
+        ));
 
 
 
         $this->_defaultValues = array(
+            'iden' => '',
+            'name' => '',
+            'nameEn' => '',
+            'nameEs' => '',
+            'description' => '',
+            'descriptionEn' => '',
+            'descriptionEs' => '',
         );
 
         $this->_initFileObjects();
@@ -171,39 +225,36 @@ class Services extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
+     * @param string $data
      * @return \IvozProvider\Model\Raw\Services
      */
-    public function setCompanyId($data)
+    public function setIden($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+        if ($this->_iden != $data) {
+            $this->_logChange('iden');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_companyId = $data;
+            $this->_iden = $data;
 
         } else if (!is_null($data)) {
-            $this->_companyId = (int) $data;
+            $this->_iden = (string) $data;
 
         } else {
-            $this->_companyId = $data;
+            $this->_iden = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column companyId
+     * Gets column iden
      *
-     * @return int
+     * @return string
      */
-    public function getCompanyId()
+    public function getIden()
     {
-        return $this->_companyId;
+        return $this->_iden;
     }
 
     /**
@@ -211,25 +262,19 @@ class Services extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Services
      */
-    public function setName($data)
+    public function setName($data, $language = '')
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_name != $data) {
-            $this->_logChange('name');
-        }
+        $language = $this->_getCurrentLanguage($language);
 
-        if ($data instanceof \Zend_Db_Expr) {
+        $methodName = "setName". ucfirst(str_replace('_', '', $language));
+        if (!method_exists($this, $methodName)) {
+
+            // new \Exception('Unavailable language');
             $this->_name = $data;
-
-        } else if (!is_null($data)) {
-            $this->_name = (string) $data;
-
-        } else {
-            $this->_name = $data;
+            return $this;
         }
+        $this->$methodName($data);
         return $this;
     }
 
@@ -238,9 +283,18 @@ class Services extends ModelAbstract
      *
      * @return string
      */
-    public function getName()
+    public function getName($language = '')
     {
-        return $this->_name;
+        $language = $this->_getCurrentLanguage($language);
+
+        $methodName = "getName". ucfirst(str_replace('_', '', $language));
+        if (!method_exists($this, $methodName)) {
+
+            // new \Exception('Unavailable language');
+            return $this->_name;
+        }
+
+        return $this->$methodName();
     }
 
     /**
@@ -248,25 +302,87 @@ class Services extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Services
      */
-    public function setDescription($data)
+    public function setNameEn($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_description != $data) {
-            $this->_logChange('description');
+        if ($this->_nameEn != $data) {
+            $this->_logChange('nameEn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_description = $data;
+            $this->_nameEn = $data;
 
         } else if (!is_null($data)) {
-            $this->_description = (string) $data;
+            $this->_nameEn = (string) $data;
 
         } else {
-            $this->_description = $data;
+            $this->_nameEn = $data;
         }
+        return $this;
+    }
+
+    /**
+     * Gets column name_en
+     *
+     * @return string
+     */
+    public function getNameEn()
+    {
+        return $this->_nameEn;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function setNameEs($data)
+    {
+
+        if ($this->_nameEs != $data) {
+            $this->_logChange('nameEs');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_nameEs = $data;
+
+        } else if (!is_null($data)) {
+            $this->_nameEs = (string) $data;
+
+        } else {
+            $this->_nameEs = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column name_es
+     *
+     * @return string
+     */
+    public function getNameEs()
+    {
+        return $this->_nameEs;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function setDescription($data, $language = '')
+    {
+
+        $language = $this->_getCurrentLanguage($language);
+
+        $methodName = "setDescription". ucfirst(str_replace('_', '', $language));
+        if (!method_exists($this, $methodName)) {
+
+            // new \Exception('Unavailable language');
+            $this->_description = $data;
+            return $this;
+        }
+        $this->$methodName($data);
         return $this;
     }
 
@@ -275,9 +391,18 @@ class Services extends ModelAbstract
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription($language = '')
     {
-        return $this->_description;
+        $language = $this->_getCurrentLanguage($language);
+
+        $methodName = "getDescription". ucfirst(str_replace('_', '', $language));
+        if (!method_exists($this, $methodName)) {
+
+            // new \Exception('Unavailable language');
+            return $this->_description;
+        }
+
+        return $this->$methodName();
     }
 
     /**
@@ -285,69 +410,141 @@ class Services extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Services
      */
-    public function setCode($data)
+    public function setDescriptionEn($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_code != $data) {
-            $this->_logChange('code');
+        if ($this->_descriptionEn != $data) {
+            $this->_logChange('descriptionEn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_code = $data;
+            $this->_descriptionEn = $data;
 
         } else if (!is_null($data)) {
-            $this->_code = (string) $data;
+            $this->_descriptionEn = (string) $data;
 
         } else {
-            $this->_code = $data;
+            $this->_descriptionEn = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column code
+     * Gets column description_en
      *
      * @return string
      */
-    public function getCode()
+    public function getDescriptionEn()
     {
-        return $this->_code;
+        return $this->_descriptionEn;
     }
 
     /**
-     * Sets parent relation Company
-     *
-     * @param \IvozProvider\Model\Raw\Companies $data
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
      * @return \IvozProvider\Model\Raw\Services
      */
-    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
+    public function setDescriptionEs($data)
     {
-        $this->_Company = $data;
 
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
+        if ($this->_descriptionEs != $data) {
+            $this->_logChange('descriptionEs');
         }
 
-        if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
-        }
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_descriptionEs = $data;
 
-        $this->_setLoaded('ServicesIbfk1');
+        } else if (!is_null($data)) {
+            $this->_descriptionEs = (string) $data;
+
+        } else {
+            $this->_descriptionEs = $data;
+        }
         return $this;
     }
 
     /**
-     * Gets parent Company
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
+     * Gets column description_es
+     *
+     * @return string
      */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    public function getDescriptionEs()
     {
-        $fkName = 'ServicesIbfk1';
+        return $this->_descriptionEs;
+    }
+
+    /**
+     * Sets dependent relations BrandServices_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\BrandServices
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function setBrandServices(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_BrandServices === null) {
+
+                $this->getBrandServices();
+            }
+
+            $oldRelations = $this->_BrandServices;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_BrandServices = array();
+
+        foreach ($data as $object) {
+            $this->addBrandServices($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations BrandServices_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\BrandServices $data
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function addBrandServices(\IvozProvider\Model\Raw\BrandServices $data)
+    {
+        $this->_BrandServices[] = $data;
+        $this->_setLoaded('BrandServicesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent BrandServices_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\BrandServices
+     */
+    public function getBrandServices($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'BrandServicesIbfk2';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -358,14 +555,102 @@ class Services extends ModelAbstract
         $notLoadedYet = !($this->_isLoaded($fkName));
 
         if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_BrandServices = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_BrandServices;
+    }
+
+    /**
+     * Sets dependent relations CompanyServices_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\CompanyServices
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function setCompanyServices(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_CompanyServices === null) {
+
+                $this->getCompanyServices();
+            }
+
+            $oldRelations = $this->_CompanyServices;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
             }
         }
 
-        return $this->_Company;
+        $this->_CompanyServices = array();
+
+        foreach ($data as $object) {
+            $this->addCompanyServices($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations CompanyServices_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\CompanyServices $data
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function addCompanyServices(\IvozProvider\Model\Raw\CompanyServices $data)
+    {
+        $this->_CompanyServices[] = $data;
+        $this->_setLoaded('CompanyServicesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent CompanyServices_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CompanyServices
+     */
+    public function getCompanyServices($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompanyServicesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_CompanyServices = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_CompanyServices;
     }
 
     /**
