@@ -24,6 +24,8 @@ production:
           auth_username: true
           auth_password: true
           auth_proxy: true
+          flags: true
+          reg_delay: true
         order:
           l_uuid: true
           r_username: true
