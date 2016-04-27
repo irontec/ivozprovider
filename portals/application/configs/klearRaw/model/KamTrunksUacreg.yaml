@@ -53,6 +53,18 @@ production:
       defaultValue: 0
       source: 
         control: Spinner
+    flags: 
+      title: _('Flag')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    reg_delay: 
+      title: _('Reg delay')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
     brandId: 
       title: _('Brand id')
       type: select

@@ -59,6 +59,8 @@ class KamTrunksUacreg extends MapperAbstract
                 'auth_password' => $model->getAuthPassword(),
                 'auth_proxy' => $model->getAuthProxy(),
                 'expires' => $model->getExpires(),
+                'flags' => $model->getFlags(),
+                'reg_delay' => $model->getRegDelay(),
                 'brandId' => $model->getBrandId(),
                 'peeringContractId' => $model->getPeeringContractId(),
             );
@@ -549,6 +551,8 @@ class KamTrunksUacreg extends MapperAbstract
                   ->setAuthPassword($data['auth_password'])
                   ->setAuthProxy($data['auth_proxy'])
                   ->setExpires($data['expires'])
+                  ->setFlags($data['flags'])
+                  ->setRegDelay($data['reg_delay'])
                   ->setBrandId($data['brandId'])
                   ->setPeeringContractId($data['peeringContractId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
@@ -563,6 +567,8 @@ class KamTrunksUacreg extends MapperAbstract
                   ->setAuthPassword($data->{'auth_password'})
                   ->setAuthProxy($data->{'auth_proxy'})
                   ->setExpires($data->{'expires'})
+                  ->setFlags($data->{'flags'})
+                  ->setRegDelay($data->{'reg_delay'})
                   ->setBrandId($data->{'brandId'})
                   ->setPeeringContractId($data->{'peeringContractId'});
 
@@ -578,6 +584,8 @@ class KamTrunksUacreg extends MapperAbstract
                   ->setAuthPassword($data->getAuthPassword())
                   ->setAuthProxy($data->getAuthProxy())
                   ->setExpires($data->getExpires())
+                  ->setFlags($data->getFlags())
+                  ->setRegDelay($data->getRegDelay())
                   ->setBrandId($data->getBrandId())
                   ->setPeeringContractId($data->getPeeringContractId());
 

@@ -105,6 +105,20 @@ class KamTrunksUacreg extends ModelAbstract
      *
      * @var int
      */
+    protected $_flags;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_regDelay;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
     protected $_brandId;
 
     /**
@@ -142,6 +156,8 @@ class KamTrunksUacreg extends ModelAbstract
         'auth_password'=>'authPassword',
         'auth_proxy'=>'authProxy',
         'expires'=>'expires',
+        'flags'=>'flags',
+        'reg_delay'=>'regDelay',
         'brandId'=>'brandId',
         'peeringContractId'=>'peeringContractId',
     );
@@ -187,6 +203,8 @@ class KamTrunksUacreg extends ModelAbstract
             'authPassword' => '',
             'authProxy' => '',
             'expires' => '0',
+            'flags' => '0',
+            'regDelay' => '0',
         );
 
         $this->_initFileObjects();
@@ -592,6 +610,74 @@ class KamTrunksUacreg extends ModelAbstract
     public function getExpires()
     {
         return $this->_expires;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\KamTrunksUacreg
+     */
+    public function setFlags($data)
+    {
+
+        if ($this->_flags != $data) {
+            $this->_logChange('flags');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_flags = $data;
+
+        } else if (!is_null($data)) {
+            $this->_flags = (int) $data;
+
+        } else {
+            $this->_flags = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column flags
+     *
+     * @return int
+     */
+    public function getFlags()
+    {
+        return $this->_flags;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\KamTrunksUacreg
+     */
+    public function setRegDelay($data)
+    {
+
+        if ($this->_regDelay != $data) {
+            $this->_logChange('regDelay');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_regDelay = $data;
+
+        } else if (!is_null($data)) {
+            $this->_regDelay = (int) $data;
+
+        } else {
+            $this->_regDelay = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column reg_delay
+     *
+     * @return int
+     */
+    public function getRegDelay()
+    {
+        return $this->_regDelay;
     }
 
     /**

@@ -51,10 +51,7 @@ class Domains extends TableAbstract
             'refColumns' => 'id'
         )
     );
-    protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksDomain',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersDomain'
-    );
+    
     protected $_metadata = array (
 	  'id' => 
 	  array (

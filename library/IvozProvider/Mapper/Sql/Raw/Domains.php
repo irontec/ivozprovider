@@ -440,37 +440,6 @@ class Domains extends MapperAbstract
             }
 
 
-            if ($recursive) {
-                if ($model->getKamTrunksDomain(null, null, true) !== null) {
-                    $kamTrunksDomain = $model->getKamTrunksDomain();
-
-                    if (!is_array($kamTrunksDomain)) {
-
-                        $kamTrunksDomain = array($kamTrunksDomain);
-                    }
-
-                    foreach ($kamTrunksDomain as $value) {
-                        $value->setDomainId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getKamUsersDomain(null, null, true) !== null) {
-                    $kamUsersDomain = $model->getKamUsersDomain();
-
-                    if (!is_array($kamUsersDomain)) {
-
-                        $kamUsersDomain = array($kamUsersDomain);
-                    }
-
-                    foreach ($kamUsersDomain as $value) {
-                        $value->setDomainId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-            }
-
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
