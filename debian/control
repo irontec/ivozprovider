@@ -84,10 +84,12 @@ Depends: ivozprovider-profile-common,
     php5-imagick,
     php5-curl,
     php5-yaml,
+    php5-gearman,
     ivozprovider-portals,
     ivozprovider-userweb,
     gearman-job-server,
-    supervisor
+    supervisor,
+    libav-tools
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portal System Profile
  .
