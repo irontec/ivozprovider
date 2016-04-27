@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\Brands
+ * Data Mapper implementation for IvozProvider\Model\Domains
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class Brands extends MapperAbstract
+class Domains extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\Brands';
+    protected $_modelName = 'IvozProvider\\Model\\Domains';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class Brands extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\Brands $model
+     * @param IvozProvider\Model\Raw\Domains $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\Brands) {
+        if (!$model instanceof \IvozProvider\Model\Raw\Domains) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Brands object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Domains object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\Brands object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\Domains object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,22 +49,12 @@ class Brands extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'name' => $model->getName(),
-                'nif' => $model->getNif(),
-                'extensionBlackListRegExp' => $model->getExtensionBlackListRegExp(),
-                'domain_trunks' => $model->getDomainTrunks(),
-                'domain_users' => $model->getDomainUsers(),
-                'defaultTimezoneId' => $model->getDefaultTimezoneId(),
-                'logoFileSize' => $model->getLogoFileSize(),
-                'logoMimeType' => $model->getLogoMimeType(),
-                'logoBaseName' => $model->getLogoBaseName(),
-                'postalAddress' => $model->getPostalAddress(),
-                'postalCode' => $model->getPostalCode(),
-                'town' => $model->getTown(),
-                'province' => $model->getProvince(),
-                'country' => $model->getCountry(),
-                'registryData' => $model->getRegistryData(),
-                'languageId' => $model->getLanguageId(),
+                'domain' => $model->getDomain(),
+                'scope' => $model->getScope(),
+                'pointsTo' => $model->getPointsTo(),
+                'brandId' => $model->getBrandId(),
+                'companyId' => $model->getCompanyId(),
+                'description' => $model->getDescription(),
             );
         } else {
             $result = array();
@@ -103,12 +93,12 @@ class Brands extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Brands
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Domains
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Brands');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Domains');
         }
 
         return $this->_dbTable;
@@ -117,17 +107,17 @@ class Brands extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\Brands $model The model to delete
+     * @param IvozProvider\Model\Raw\Domains $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\Brands) {
+        if (!$model instanceof \IvozProvider\Model\Raw\Domains) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Brands object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Domains object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\Brands object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\Domains object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -177,7 +167,7 @@ class Brands extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Brands', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Domains', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -225,7 +215,7 @@ class Brands extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Brands', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Domains', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -303,7 +293,7 @@ class Brands extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\Brands $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\Domains $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -311,17 +301,17 @@ class Brands extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\Brands $model
+     * @param \IvozProvider\Model\Raw\Domains $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\Brands $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\Domains $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\Brands $model,
+    protected function _save(\IvozProvider\Model\Raw\Domains $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -451,282 +441,30 @@ class Brands extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getBrandOperators(null, null, true) !== null) {
-                    $brandOperators = $model->getBrandOperators();
+                if ($model->getKamTrunksDomain(null, null, true) !== null) {
+                    $kamTrunksDomain = $model->getKamTrunksDomain();
 
-                    if (!is_array($brandOperators)) {
+                    if (!is_array($kamTrunksDomain)) {
 
-                        $brandOperators = array($brandOperators);
+                        $kamTrunksDomain = array($kamTrunksDomain);
                     }
 
-                    foreach ($brandOperators as $value) {
-                        $value->setBrandId($primaryKey)
+                    foreach ($kamTrunksDomain as $value) {
+                        $value->setDomainId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
 
-                if ($model->getBrandServices(null, null, true) !== null) {
-                    $brandServices = $model->getBrandServices();
+                if ($model->getKamUsersDomain(null, null, true) !== null) {
+                    $kamUsersDomain = $model->getKamUsersDomain();
 
-                    if (!is_array($brandServices)) {
+                    if (!is_array($kamUsersDomain)) {
 
-                        $brandServices = array($brandServices);
+                        $kamUsersDomain = array($kamUsersDomain);
                     }
 
-                    foreach ($brandServices as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getBrandURLs(null, null, true) !== null) {
-                    $brandURLs = $model->getBrandURLs();
-
-                    if (!is_array($brandURLs)) {
-
-                        $brandURLs = array($brandURLs);
-                    }
-
-                    foreach ($brandURLs as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getCompanies(null, null, true) !== null) {
-                    $companies = $model->getCompanies();
-
-                    if (!is_array($companies)) {
-
-                        $companies = array($companies);
-                    }
-
-                    foreach ($companies as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getDomains(null, null, true) !== null) {
-                    $domains = $model->getDomains();
-
-                    if (!is_array($domains)) {
-
-                        $domains = array($domains);
-                    }
-
-                    foreach ($domains as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getGenericCallACLPatterns(null, null, true) !== null) {
-                    $genericCallACLPatterns = $model->getGenericCallACLPatterns();
-
-                    if (!is_array($genericCallACLPatterns)) {
-
-                        $genericCallACLPatterns = array($genericCallACLPatterns);
-                    }
-
-                    foreach ($genericCallACLPatterns as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getGenericMusicOnHold(null, null, true) !== null) {
-                    $genericMusicOnHold = $model->getGenericMusicOnHold();
-
-                    if (!is_array($genericMusicOnHold)) {
-
-                        $genericMusicOnHold = array($genericMusicOnHold);
-                    }
-
-                    foreach ($genericMusicOnHold as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getInvoiceTemplates(null, null, true) !== null) {
-                    $invoiceTemplates = $model->getInvoiceTemplates();
-
-                    if (!is_array($invoiceTemplates)) {
-
-                        $invoiceTemplates = array($invoiceTemplates);
-                    }
-
-                    foreach ($invoiceTemplates as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getInvoices(null, null, true) !== null) {
-                    $invoices = $model->getInvoices();
-
-                    if (!is_array($invoices)) {
-
-                        $invoices = array($invoices);
-                    }
-
-                    foreach ($invoices as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getOutgoingRouting(null, null, true) !== null) {
-                    $outgoingRouting = $model->getOutgoingRouting();
-
-                    if (!is_array($outgoingRouting)) {
-
-                        $outgoingRouting = array($outgoingRouting);
-                    }
-
-                    foreach ($outgoingRouting as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getParsedCDRs(null, null, true) !== null) {
-                    $parsedCDRs = $model->getParsedCDRs();
-
-                    if (!is_array($parsedCDRs)) {
-
-                        $parsedCDRs = array($parsedCDRs);
-                    }
-
-                    foreach ($parsedCDRs as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPeerServers(null, null, true) !== null) {
-                    $peerServers = $model->getPeerServers();
-
-                    if (!is_array($peerServers)) {
-
-                        $peerServers = array($peerServers);
-                    }
-
-                    foreach ($peerServers as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPeeringContracts(null, null, true) !== null) {
-                    $peeringContracts = $model->getPeeringContracts();
-
-                    if (!is_array($peeringContracts)) {
-
-                        $peeringContracts = array($peeringContracts);
-                    }
-
-                    foreach ($peeringContracts as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPricingPlans(null, null, true) !== null) {
-                    $pricingPlans = $model->getPricingPlans();
-
-                    if (!is_array($pricingPlans)) {
-
-                        $pricingPlans = array($pricingPlans);
-                    }
-
-                    foreach ($pricingPlans as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPricingPlansRelCompanies(null, null, true) !== null) {
-                    $pricingPlansRelCompanies = $model->getPricingPlansRelCompanies();
-
-                    if (!is_array($pricingPlansRelCompanies)) {
-
-                        $pricingPlansRelCompanies = array($pricingPlansRelCompanies);
-                    }
-
-                    foreach ($pricingPlansRelCompanies as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getPricingPlansRelTargetPatterns(null, null, true) !== null) {
-                    $pricingPlansRelTargetPatterns = $model->getPricingPlansRelTargetPatterns();
-
-                    if (!is_array($pricingPlansRelTargetPatterns)) {
-
-                        $pricingPlansRelTargetPatterns = array($pricingPlansRelTargetPatterns);
-                    }
-
-                    foreach ($pricingPlansRelTargetPatterns as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getTargetGroups(null, null, true) !== null) {
-                    $targetGroups = $model->getTargetGroups();
-
-                    if (!is_array($targetGroups)) {
-
-                        $targetGroups = array($targetGroups);
-                    }
-
-                    foreach ($targetGroups as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getTargetPatterns(null, null, true) !== null) {
-                    $targetPatterns = $model->getTargetPatterns();
-
-                    if (!is_array($targetPatterns)) {
-
-                        $targetPatterns = array($targetPatterns);
-                    }
-
-                    foreach ($targetPatterns as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getTransformationRulesetGroupsTrunks(null, null, true) !== null) {
-                    $transformationRulesetGroupsTrunks = $model->getTransformationRulesetGroupsTrunks();
-
-                    if (!is_array($transformationRulesetGroupsTrunks)) {
-
-                        $transformationRulesetGroupsTrunks = array($transformationRulesetGroupsTrunks);
-                    }
-
-                    foreach ($transformationRulesetGroupsTrunks as $value) {
-                        $value->setBrandId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getKamTrunksUacreg(null, null, true) !== null) {
-                    $kamTrunksUacreg = $model->getKamTrunksUacreg();
-
-                    if (!is_array($kamTrunksUacreg)) {
-
-                        $kamTrunksUacreg = array($kamTrunksUacreg);
-                    }
-
-                    foreach ($kamTrunksUacreg as $value) {
-                        $value->setBrandId($primaryKey)
+                    foreach ($kamUsersDomain as $value) {
+                        $value->setDomainId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -812,13 +550,13 @@ class Brands extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\Brands|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\Brands The model with the data provided
+     * @param IvozProvider\Model\Raw\Domains|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\Domains The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\Brands();
+            $entry = new \IvozProvider\Model\Domains();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -826,59 +564,29 @@ class Brands extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setName($data['name'])
-                  ->setNif($data['nif'])
-                  ->setExtensionBlackListRegExp($data['extensionBlackListRegExp'])
-                  ->setDomainTrunks($data['domain_trunks'])
-                  ->setDomainUsers($data['domain_users'])
-                  ->setDefaultTimezoneId($data['defaultTimezoneId'])
-                  ->setLogoFileSize($data['logoFileSize'])
-                  ->setLogoMimeType($data['logoMimeType'])
-                  ->setLogoBaseName($data['logoBaseName'])
-                  ->setPostalAddress($data['postalAddress'])
-                  ->setPostalCode($data['postalCode'])
-                  ->setTown($data['town'])
-                  ->setProvince($data['province'])
-                  ->setCountry($data['country'])
-                  ->setRegistryData($data['registryData'])
-                  ->setLanguageId($data['languageId']);
+                  ->setDomain($data['domain'])
+                  ->setScope($data['scope'])
+                  ->setPointsTo($data['pointsTo'])
+                  ->setBrandId($data['brandId'])
+                  ->setCompanyId($data['companyId'])
+                  ->setDescription($data['description']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setName($data->{'name'})
-                  ->setNif($data->{'nif'})
-                  ->setExtensionBlackListRegExp($data->{'extensionBlackListRegExp'})
-                  ->setDomainTrunks($data->{'domain_trunks'})
-                  ->setDomainUsers($data->{'domain_users'})
-                  ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
-                  ->setLogoFileSize($data->{'logoFileSize'})
-                  ->setLogoMimeType($data->{'logoMimeType'})
-                  ->setLogoBaseName($data->{'logoBaseName'})
-                  ->setPostalAddress($data->{'postalAddress'})
-                  ->setPostalCode($data->{'postalCode'})
-                  ->setTown($data->{'town'})
-                  ->setProvince($data->{'province'})
-                  ->setCountry($data->{'country'})
-                  ->setRegistryData($data->{'registryData'})
-                  ->setLanguageId($data->{'languageId'});
+                  ->setDomain($data->{'domain'})
+                  ->setScope($data->{'scope'})
+                  ->setPointsTo($data->{'pointsTo'})
+                  ->setBrandId($data->{'brandId'})
+                  ->setCompanyId($data->{'companyId'})
+                  ->setDescription($data->{'description'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\Brands) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\Domains) {
             $entry->setId($data->getId())
-                  ->setName($data->getName())
-                  ->setNif($data->getNif())
-                  ->setExtensionBlackListRegExp($data->getExtensionBlackListRegExp())
-                  ->setDomainTrunks($data->getDomainTrunks())
-                  ->setDomainUsers($data->getDomainUsers())
-                  ->setDefaultTimezoneId($data->getDefaultTimezoneId())
-                  ->setLogoFileSize($data->getLogoFileSize())
-                  ->setLogoMimeType($data->getLogoMimeType())
-                  ->setLogoBaseName($data->getLogoBaseName())
-                  ->setPostalAddress($data->getPostalAddress())
-                  ->setPostalCode($data->getPostalCode())
-                  ->setTown($data->getTown())
-                  ->setProvince($data->getProvince())
-                  ->setCountry($data->getCountry())
-                  ->setRegistryData($data->getRegistryData())
-                  ->setLanguageId($data->getLanguageId());
+                  ->setDomain($data->getDomain())
+                  ->setScope($data->getScope())
+                  ->setPointsTo($data->getPointsTo())
+                  ->setBrandId($data->getBrandId())
+                  ->setCompanyId($data->getCompanyId())
+                  ->setDescription($data->getDescription());
 
         }
 

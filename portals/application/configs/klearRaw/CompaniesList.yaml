@@ -6,6 +6,7 @@
 #include CompanyAdminsList.yaml
 #include CompanyServicesList.yaml
 #include DDIsList.yaml
+#include DomainsList.yaml
 #include ExtensionsList.yaml
 #include ExternalCallFiltersList.yaml
 #include FaxesList.yaml
@@ -50,6 +51,7 @@ production:
             companyAdminsList_screen: true
             companyServicesList_screen: true
             dDIsList_screen: true
+            domainsList_screen: true
             extensionsList_screen: true
             externalCallFiltersList_screen: true
             faxesList_screen: true
@@ -173,6 +175,19 @@ production:
       filterField: companyId
     dDIsEdit_screen: 
       <<: *dDIsEdit_screenLink
+      filterField: companyId
+
+    #domains: 
+    domainsList_screen: 
+      <<: *domainsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    domainsNew_screen: 
+      <<: *domainsNew_screenLink
+      filterField: companyId
+    domainsEdit_screen: 
+      <<: *domainsEdit_screenLink
       filterField: companyId
 
     #extensions: 
@@ -445,6 +460,8 @@ production:
     <<: *companyServices_dialogsLink
   # dDIs dialogs: 
     <<: *dDIs_dialogsLink
+  # domains dialogs: 
+    <<: *domains_dialogsLink
   # extensions dialogs: 
     <<: *extensions_dialogsLink
   # externalCallFilters dialogs: 

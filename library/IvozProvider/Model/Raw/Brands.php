@@ -60,7 +60,14 @@ class Brands extends ModelAbstract
      *
      * @var string
      */
-    protected $_domain;
+    protected $_domainTrunks;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_domainUsers;
 
     /**
      * Database var type int
@@ -189,6 +196,14 @@ class Brands extends ModelAbstract
     protected $_Companies;
 
     /**
+     * Dependent relation Domains_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Domains[]
+     */
+    protected $_Domains;
+
+    /**
      * Dependent relation GenericCallACLPatterns_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -313,7 +328,8 @@ class Brands extends ModelAbstract
         'name'=>'name',
         'nif'=>'nif',
         'extensionBlackListRegExp'=>'extensionBlackListRegExp',
-        'domain'=>'domain',
+        'domain_trunks'=>'domainTrunks',
+        'domain_users'=>'domainUsers',
         'defaultTimezoneId'=>'defaultTimezoneId',
         'logoFileSize'=>'logoFileSize',
         'logoMimeType'=>'logoMimeType',
@@ -368,6 +384,10 @@ class Brands extends ModelAbstract
             'CompaniesIbfk4' => array(
                     'property' => 'Companies',
                     'table_name' => 'Companies',
+                ),
+            'DomainsIbfk2' => array(
+                    'property' => 'Domains',
+                    'table_name' => 'Domains',
                 ),
             'GenericCallACLPatternsIbfk1' => array(
                     'property' => 'GenericCallACLPatterns',
@@ -703,36 +723,67 @@ class Brands extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Brands
      */
-    public function setDomain($data)
+    public function setDomainTrunks($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_domain != $data) {
-            $this->_logChange('domain');
+        if ($this->_domainTrunks != $data) {
+            $this->_logChange('domainTrunks');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_domain = $data;
+            $this->_domainTrunks = $data;
 
         } else if (!is_null($data)) {
-            $this->_domain = (string) $data;
+            $this->_domainTrunks = (string) $data;
 
         } else {
-            $this->_domain = $data;
+            $this->_domainTrunks = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column domain
+     * Gets column domain_trunks
      *
      * @return string
      */
-    public function getDomain()
+    public function getDomainTrunks()
     {
-        return $this->_domain;
+        return $this->_domainTrunks;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setDomainUsers($data)
+    {
+
+        if ($this->_domainUsers != $data) {
+            $this->_logChange('domainUsers');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_domainUsers = $data;
+
+        } else if (!is_null($data)) {
+            $this->_domainUsers = (string) $data;
+
+        } else {
+            $this->_domainUsers = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column domain_users
+     *
+     * @return string
+     */
+    public function getDomainUsers()
+    {
+        return $this->_domainUsers;
     }
 
     /**
@@ -1590,6 +1641,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_Companies;
+    }
+
+    /**
+     * Sets dependent relations Domains_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Domains
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setDomains(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Domains === null) {
+
+                $this->getDomains();
+            }
+
+            $oldRelations = $this->_Domains;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Domains = array();
+
+        foreach ($data as $object) {
+            $this->addDomains($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Domains_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\Domains $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addDomains(\IvozProvider\Model\Raw\Domains $data)
+    {
+        $this->_Domains[] = $data;
+        $this->_setLoaded('DomainsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Domains_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Domains
+     */
+    public function getDomains($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DomainsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Domains = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Domains;
     }
 
     /**

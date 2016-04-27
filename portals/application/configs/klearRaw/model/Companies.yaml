@@ -20,6 +20,10 @@ production:
       type: text
       required: true
       maxLength: 80
+    domain_users: 
+      title: _('Domain user')
+      type: text
+      maxLength: 255
     nif: 
       title: _('Nif')
       type: text

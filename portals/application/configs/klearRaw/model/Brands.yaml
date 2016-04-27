@@ -17,10 +17,13 @@ production:
       type: text
       defaultValue: 
       maxLength: 255
-    domain: 
-      title: _('Domain')
+    domain_trunks: 
+      title: _('Domain trunk')
       type: text
-      required: true
+      maxLength: 255
+    domain_users: 
+      title: _('Domain user')
+      type: text
       maxLength: 255
     defaultTimezoneId: 
       title: _('Default timezone id')

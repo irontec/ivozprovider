@@ -15,11 +15,14 @@ production:
       title: _('Extension black list reg exp')
       type: text
       defaultValue: 
-    domain: 
-      title: _('Domain')
+    domain_users:
+      title: _('Users domain')
       type: text
-      required: true
-      #sufix: ".oasis.com"
+      maxLength: 255
+    domain_trunks:
+      title: _('Trunks domain')
+      type: text
+      maxLength: 255
     defaultTimezoneId: 
       title: _('Default timezone')
       type: select

@@ -4,6 +4,7 @@
 #include BrandServicesList.yaml
 #include BrandURLsList.yaml
 #include CompaniesList.yaml
+#include DomainsList.yaml
 #include GenericCallACLPatternsList.yaml
 #include GenericMusicOnHoldList.yaml
 #include InvoiceTemplatesList.yaml
@@ -42,6 +43,7 @@ production:
             brandServicesList_screen: true
             brandURLsList_screen: true
             companiesList_screen: true
+            domainsList_screen: true
             genericCallACLPatternsList_screen: true
             genericMusicOnHoldList_screen: true
             invoiceTemplatesList_screen: true
@@ -135,6 +137,19 @@ production:
       filterField: brandId
     companiesEdit_screen: 
       <<: *companiesEdit_screenLink
+      filterField: brandId
+
+    #domains: 
+    domainsList_screen: 
+      <<: *domainsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    domainsNew_screen: 
+      <<: *domainsNew_screenLink
+      filterField: brandId
+    domainsEdit_screen: 
+      <<: *domainsEdit_screenLink
       filterField: brandId
 
     #genericCallACLPatterns: 
@@ -351,6 +366,8 @@ production:
     <<: *brandURLs_dialogsLink
   # companies dialogs: 
     <<: *companies_dialogsLink
+  # domains dialogs: 
+    <<: *domains_dialogsLink
   # genericCallACLPatterns dialogs: 
     <<: *genericCallACLPatterns_dialogsLink
   # genericMusicOnHold dialogs: 

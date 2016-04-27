@@ -15,6 +15,7 @@ mappers:
   - &CompanyServices {mapper: \IvozProvider\Mapper\Sql\CompanyServices, modelFile: CompanyServices}
   - &Countries {mapper: \IvozProvider\Mapper\Sql\Countries, modelFile: Countries}
   - &DDIs {mapper: \IvozProvider\Mapper\Sql\DDIs, modelFile: DDIs}
+  - &Domains {mapper: \IvozProvider\Mapper\Sql\Domains, modelFile: Domains}
   - &Extensions {mapper: \IvozProvider\Mapper\Sql\Extensions, modelFile: Extensions}
   - &ExternalCallFilterRelCalendars {mapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelCalendars, modelFile: ExternalCallFilterRelCalendars}
   - &ExternalCallFilterRelSchedules {mapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelSchedules, modelFile: ExternalCallFilterRelSchedules}

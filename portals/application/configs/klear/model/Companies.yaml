@@ -22,6 +22,10 @@ production:
       type: text
       required: true
       default: true
+    domain_users: 
+      title: _('Domain')
+      type: text
+      maxLength: 255
     nif: 
       title: _('Nif')
       type: text

@@ -95,6 +95,10 @@ production:
           title: ngettext('D d i', 'D d is', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('D d i', 'D d is', 0))
+        DomainsList: 
+          title: ngettext('Domain', 'Domains', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Domain', 'Domains', 0))
         ExtensionsList: 
           title: ngettext('Extension', 'Extensions', 0)
           class: ui-silk-text-list-bullets
@@ -315,10 +319,18 @@ production:
           title: ngettext('Kam trunks dialplan', 'Kam trunks dialplan', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kam trunks dialplan', 'Kam trunks dialplan', 0))
+        KamTrunksDomainList: 
+          title: ngettext('Kam trunks domain', 'Kam trunks domain', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kam trunks domain', 'Kam trunks domain', 0))
         KamTrunksUacregList: 
           title: ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0))
+        KamUsersDomainList: 
+          title: ngettext('Kam users domain', 'Kam users domain', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kam users domain', 'Kam users domain', 0))
 staging: 
   _extends: production
 testing: 

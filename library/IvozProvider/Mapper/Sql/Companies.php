@@ -34,7 +34,44 @@ class Companies extends Raw\Companies
             $this->_propagateCallACLPatterns();
         }
 
-        return parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
+        $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
+
+        $this->_updateDomains($model);
+
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Company may have been saved.</p>";
+            throw new \Exception($message);
+        }
+
+        return $pk;
+    }
+
+    protected function _updateDomains($model)
+    {
+        $pk = $model->getPrimaryKey();
+        $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
+
+        $domains = $domainMapper->fetchList("companyId=$pk AND PointsTo='proxyusers'");
+        if (empty($domains)) {
+            $domain = new \IvozProvider\Model\Domains();
+        } else {
+            $domain = $domains[0];
+        }
+
+        $name = trim($model->getDomainUsers());
+        if (!$name) {
+            $domain->delete();
+            return;
+        }
+
+        $domain->setDomain($name)
+               ->setScope('company')
+               ->setPointsTo('proxyusers')
+               ->setCompanyId($pk)
+               ->setDescription($model->getName() . " proxyusers domain")
+               ->save();
     }
 
     protected function _propagateCallACLPatterns()
@@ -74,7 +111,8 @@ class Companies extends Raw\Companies
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxytrunks' => "lcr.reload",
+                'proxytrunks' => array("lcr.reload", "domain.reload"),
+                'proxyusers' => "domain.reload",
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);

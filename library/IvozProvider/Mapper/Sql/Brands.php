@@ -27,23 +27,48 @@ class Brands extends Raw\Brands
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-//         $this->_testLogs();
+        $this->_updateDomains($model);
 
-
-        $isNewBrand = is_null($model->getPrimaryKey());
-        $domainHasChanged = $model->hasChange("domain");
-
-        $response =  parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
-        if ($isNewBrand || $domainHasChanged) {
-            try {
-                $this->_sendXmlRcp();
-            } catch (\Exception $e) {
-                $message = $e->getMessage()."<p>Brand may have been saved.</p>";
-                throw new \Exception($message);
-            }
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>Brand may have been saved.</p>";
+            throw new \Exception($message);
         }
-        return $response;
+
+        return $pk;
+    }
+
+    protected function _updateDomains($model)
+    {
+        $pk = $model->getPrimaryKey();
+        $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
+    
+        $proxies = array('proxyusers', 'proxytrunks');
+        foreach ($proxies as $proxy) {
+            $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='$proxy'");
+            if (empty($domains)) {
+                $domain = new \IvozProvider\Model\Domains();
+            } else {
+                $domain = $domains[0];
+            }
+    
+            $name = ($proxy == 'proxyusers') ? $model->getDomainUsers() : $model->getDomainTrunks();
+            $name = trim($name);
+            if (!$name) {
+                $domain->delete();
+                continue;
+            }
+
+            $domain->setDomain($name)
+                   ->setScope('brand')
+                   ->setPointsTo($proxy)
+                   ->setBrandId($pk)
+                   ->setDescription($model->getName() . " $proxy domain")
+                   ->save();
+        }
     }
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)

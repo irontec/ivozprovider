@@ -48,6 +48,10 @@ production:
           title: ngettext('Brand', 'Brands', 0)
           class: ui-silk-world
           description: _("List of %s", ngettext('Brand', 'Brands', 0))
+        DomainsList:
+          title: ngettext('Domain', 'Domains', 0)
+          class: ui-silk-link
+          description: _("List of %s", ngettext('Domain', 'Domains', 0))
         ApplicationServersList:
           title: ngettext('Application server', 'Application servers', 0)
           class: ui-silk-asterisk-yellow

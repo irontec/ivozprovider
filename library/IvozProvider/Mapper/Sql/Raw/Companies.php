@@ -51,6 +51,7 @@ class Companies extends MapperAbstract
                 'id' => $model->getId(),
                 'brandId' => $model->getBrandId(),
                 'name' => $model->getName(),
+                'domain_users' => $model->getDomainUsers(),
                 'nif' => $model->getNif(),
                 'defaultTimezoneId' => $model->getDefaultTimezoneId(),
                 'applicationServerId' => $model->getApplicationServerId(),
@@ -533,6 +534,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getDomains(null, null, true) !== null) {
+                    $domains = $model->getDomains();
+
+                    if (!is_array($domains)) {
+
+                        $domains = array($domains);
+                    }
+
+                    foreach ($domains as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getExtensions(null, null, true) !== null) {
                     $extensions = $model->getExtensions();
 
@@ -896,6 +911,7 @@ class Companies extends MapperAbstract
             $entry->setId($data['id'])
                   ->setBrandId($data['brandId'])
                   ->setName($data['name'])
+                  ->setDomainUsers($data['domain_users'])
                   ->setNif($data['nif'])
                   ->setDefaultTimezoneId($data['defaultTimezoneId'])
                   ->setApplicationServerId($data['applicationServerId'])
@@ -912,6 +928,7 @@ class Companies extends MapperAbstract
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
                   ->setName($data->{'name'})
+                  ->setDomainUsers($data->{'domain_users'})
                   ->setNif($data->{'nif'})
                   ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
                   ->setApplicationServerId($data->{'applicationServerId'})
@@ -929,6 +946,7 @@ class Companies extends MapperAbstract
             $entry->setId($data->getId())
                   ->setBrandId($data->getBrandId())
                   ->setName($data->getName())
+                  ->setDomainUsers($data->getDomainUsers())
                   ->setNif($data->getNif())
                   ->setDefaultTimezoneId($data->getDefaultTimezoneId())
                   ->setApplicationServerId($data->getApplicationServerId())

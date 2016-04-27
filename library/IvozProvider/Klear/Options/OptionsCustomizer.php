@@ -66,6 +66,13 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 $show = $this->_pricingPlanHasStarted();
 //                 $show = false;
                 break;
+            case "domainsEdit_screen":
+            case "domainsDel_dialog":
+                $show = $this->_isGlobalDomain();
+                break;
+            case "domainsView_screen":
+                $show = !$this->_isGlobalDomain();
+                break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog");
                 break;
@@ -82,6 +89,14 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             return $response;
         }
 
+    }
+
+    protected function _isGlobalDomain() {
+        if ($this->_parentModel->getScope() != 'global') {
+            return false;
+        }
+
+        return true;
     }
 
     protected function _checkEmulation($type)

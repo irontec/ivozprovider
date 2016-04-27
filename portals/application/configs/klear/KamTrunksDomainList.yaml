@@ -1,0 +1,67 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kamTrunksDomainList_screen
+  screens: &kamTrunksDomain_screensLink 
+    kamTrunksDomainList_screen: &kamTrunksDomainList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *KamTrunksDomain
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 0), "[format| (%parent%)]")
+      fields: &kamTrunksDomain_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            kamTrunksDomainEdit_screen: true
+          dialogs: 
+            kamTrunksDomainDel_dialog: true
+          default: kamTrunksDomainEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          kamTrunksDomainNew_screen: true
+        dialogs: 
+          kamTrunksDomainDel_dialog: true
+    kamTrunksDomainNew_screen: &kamTrunksDomainNew_screenLink 
+      <<: *KamTrunksDomain
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          kamTrunksDomainEdit_screen: true
+    kamTrunksDomainEdit_screen: &kamTrunksDomainEdit_screenLink 
+      <<: *KamTrunksDomain
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 1), "[format| (%item%)]")
+  dialogs: &kamTrunksDomain_dialogsLink 
+    kamTrunksDomainDel_dialog: &kamTrunksDomainDel_dialogLink 
+      <<: *KamTrunksDomain
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 1))
+      message: _("%s successfully deleted.", ngettext('Kam trunks domain', 'Kam trunks domain(s)', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

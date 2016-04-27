@@ -49,6 +49,13 @@ class Companies extends ModelAbstract
      *
      * @var string
      */
+    protected $_domainUsers;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_nif;
 
     /**
@@ -214,6 +221,14 @@ class Companies extends ModelAbstract
     protected $_DDIs;
 
     /**
+     * Dependent relation Domains_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Domains[]
+     */
+    protected $_Domains;
+
+    /**
      * Dependent relation Extensions_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -369,6 +384,7 @@ class Companies extends ModelAbstract
         'id'=>'id',
         'brandId'=>'brandId',
         'name'=>'name',
+        'domain_users'=>'domainUsers',
         'nif'=>'nif',
         'defaultTimezoneId'=>'defaultTimezoneId',
         'applicationServerId'=>'applicationServerId',
@@ -443,6 +459,10 @@ class Companies extends ModelAbstract
             'DDIsIbfk1' => array(
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
+                ),
+            'DomainsIbfk1' => array(
+                    'property' => 'Domains',
+                    'table_name' => 'Domains',
                 ),
             'ExtensionsIbfk1' => array(
                     'property' => 'Extensions',
@@ -671,6 +691,40 @@ class Companies extends ModelAbstract
     public function getName()
     {
         return $this->_name;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDomainUsers($data)
+    {
+
+        if ($this->_domainUsers != $data) {
+            $this->_logChange('domainUsers');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_domainUsers = $data;
+
+        } else if (!is_null($data)) {
+            $this->_domainUsers = (string) $data;
+
+        } else {
+            $this->_domainUsers = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column domain_users
+     *
+     * @return string
+     */
+    public function getDomainUsers()
+    {
+        return $this->_domainUsers;
     }
 
     /**
@@ -1895,6 +1949,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_DDIs;
+    }
+
+    /**
+     * Sets dependent relations Domains_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Domains
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDomains(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Domains === null) {
+
+                $this->getDomains();
+            }
+
+            $oldRelations = $this->_Domains;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Domains = array();
+
+        foreach ($data as $object) {
+            $this->addDomains($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Domains_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\Domains $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addDomains(\IvozProvider\Model\Raw\Domains $data)
+    {
+        $this->_Domains[] = $data;
+        $this->_setLoaded('DomainsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Domains_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Domains
+     */
+    public function getDomains($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DomainsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Domains = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Domains;
     }
 
     /**
