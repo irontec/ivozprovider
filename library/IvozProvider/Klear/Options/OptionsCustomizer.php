@@ -68,10 +68,10 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 break;
             case "domainsEdit_screen":
             case "domainsDel_dialog":
-                $show = $this->_isGlobalDomain();
+                $show = $this->_isEditable();
                 break;
             case "domainsView_screen":
-                $show = !$this->_isGlobalDomain();
+                $show = !$this->_isEditable();
                 break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog");
@@ -91,12 +91,15 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
 
     }
 
-    protected function _isGlobalDomain() {
-        if ($this->_parentModel->getScope() != 'global') {
-            return false;
-        }
+    protected function _isEditable() {
+        $scope  = $this->_parentModel->getScope();
+        $domain = $this->_parentModel->getDomain();
 
-        return true;
+        $isEditable = ( $scope == 'global' &&
+                        $domain != 'proxyusers.ivozprovider.local' &&
+                        $domain != 'proxytrunks.ivozprovider.local');
+
+        return $isEditable;
     }
 
     protected function _checkEmulation($type)
