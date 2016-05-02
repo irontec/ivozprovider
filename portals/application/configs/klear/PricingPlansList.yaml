@@ -153,11 +153,11 @@ production:
       labelOnList: true
       labelOnOption: true
       labelOnEntityPostSave: true
-      controller: import-file
+      controller: import-custom-file
       action: import
       class:  ui-silk-page-gear
       freeUploadCommand: importPlansFreeUpload_command
-      delimiter: ";"
+      delimiter: ","
       enclosure: '"'
       escape: "\\"
       forcedValues:
