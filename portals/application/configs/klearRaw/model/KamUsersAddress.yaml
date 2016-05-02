@@ -16,16 +16,10 @@ production:
           order: name
       default: true
     source_address: 
-      title: _('Authorized source')
+      title: _('Source address')
       type: text
       required: true
       maxLength: 100
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("CIDR notation (e.g. 10.0.0.0/8) or specific IP address (e.g. 8.8.8.8)")
-        label: _("¿Necesitas ayuda?")
     ip_addr: 
       title: _('Ip addr')
       type: text

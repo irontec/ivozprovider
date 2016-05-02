@@ -4,6 +4,7 @@
 #include PricingPlansRelCompaniesList.yaml
 #include InvoicesList.yaml
 #include OutgoingRoutingList.yaml
+#include KamUsersAddressList.yaml
 
 
 production:
@@ -24,10 +25,11 @@ production:
         options:
           title: _("Options")
           screens:
+            companiesEdit_screen: true
+            kamUsersAddressList_screen: true
             companyAdminsList_screen: true
             pricingPlansRelCompaniesList_screen: true
             outgoingRoutingList_screen: true
-            companiesEdit_screen: true
           dialogs:
             companiesDel_dialog: true
             emulateCompany_dialog: true
@@ -169,6 +171,19 @@ production:
       <<: *outgoingRoutingEdit_screenLink
       filterField: companyId
 
+    #kamUsersAddress:
+    kamUsersAddressList_screen:
+      <<: *kamUsersAddressList_screenLink
+      filterField: companyId
+      parentOptionCustomizer:
+        - recordCount
+    kamUsersAddressNew_screen:
+      <<: *kamUsersAddressNew_screenLink
+      filterField: companyId
+    kamUsersAddressEdit_screen:
+      <<: *kamUsersAddressEdit_screenLink
+      filterField: companyId
+
   dialogs: &companies_dialogsLink
     companiesDel_dialog: &companiesDel_dialogLink
       <<: *Companies
@@ -220,6 +235,8 @@ production:
     <<: *companyAdmins_dialogsLink    
     # outgoingRouting dialogs: 
     <<: *outgoingRouting_dialogsLink    
+    # kamUsersAddress dialogs: 
+    <<: *kamUsersAddress_dialogsLink
     
   commands:
     importCompaniesFreeUpload_command:

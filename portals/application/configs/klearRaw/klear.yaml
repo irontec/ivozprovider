@@ -323,6 +323,10 @@ production:
           title: ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0))
+        KamUsersAddressList: 
+          title: ngettext('Kam users address', 'Kam users address', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kam users address', 'Kam users address', 0))
 staging: 
   _extends: production
 testing: 

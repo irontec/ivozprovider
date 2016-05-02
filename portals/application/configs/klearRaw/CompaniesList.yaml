@@ -26,6 +26,7 @@
 #include SchedulesList.yaml
 #include TerminalsList.yaml
 #include UsersList.yaml
+#include KamUsersAddressList.yaml
 
 
 production: 
@@ -71,6 +72,7 @@ production:
             schedulesList_screen: true
             terminalsList_screen: true
             usersList_screen: true
+            kamUsersAddressList_screen: true
           dialogs: 
             companiesDel_dialog: true
           default: companiesEdit_screen
@@ -437,6 +439,19 @@ production:
       <<: *usersEdit_screenLink
       filterField: companyId
 
+    #kamUsersAddress: 
+    kamUsersAddressList_screen: 
+      <<: *kamUsersAddressList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    kamUsersAddressNew_screen: 
+      <<: *kamUsersAddressNew_screenLink
+      filterField: companyId
+    kamUsersAddressEdit_screen: 
+      <<: *kamUsersAddressEdit_screenLink
+      filterField: companyId
+
   dialogs: &companies_dialogsLink 
     companiesDel_dialog: &companiesDel_dialogLink 
       <<: *Companies
@@ -500,6 +515,8 @@ production:
     <<: *terminals_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
+  # kamUsersAddress dialogs: 
+    <<: *kamUsersAddress_dialogsLink
 staging: 
   _extends: production
 testing: 

@@ -112,7 +112,7 @@ class Companies extends Raw\Companies
     {
         $proxyServers = array(
                 'proxytrunks' => array("lcr.reload", "domain.reload"),
-                'proxyusers' => "domain.reload",
+                'proxyusers'  => array("domain.reload", "permissions.addressReload"),
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);

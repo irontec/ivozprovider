@@ -84,11 +84,13 @@ mappers:
   - &KamTrunksUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamTrunksUsrPreferences, modelFile: KamTrunksUsrPreferences}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
   - &KamUsersAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamUsersAccCdrs, modelFile: KamUsersAccCdrs}
+  - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}
   - &KamUsersHtable {mapper: \IvozProvider\Mapper\Sql\KamUsersHtable, modelFile: KamUsersHtable}
   - &KamUsersLocation {mapper: \IvozProvider\Mapper\Sql\KamUsersLocation, modelFile: KamUsersLocation}
   - &KamUsersLocationAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs, modelFile: KamUsersLocationAttrs}
   - &KamUsersMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamUsersMissedCalls, modelFile: KamUsersMissedCalls}
+  - &KamUsersTrusted {mapper: \IvozProvider\Mapper\Sql\KamUsersTrusted, modelFile: KamUsersTrusted}
   - &KamUsersUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamUsersUsrPreferences, modelFile: KamUsersUsrPreferences}
   - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}

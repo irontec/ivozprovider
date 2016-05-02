@@ -814,6 +814,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getKamUsersAddress(null, null, true) !== null) {
+                    $kamUsersAddress = $model->getKamUsersAddress();
+
+                    if (!is_array($kamUsersAddress)) {
+
+                        $kamUsersAddress = array($kamUsersAddress);
+                    }
+
+                    foreach ($kamUsersAddress as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {

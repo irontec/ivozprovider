@@ -380,6 +380,14 @@ class Companies extends ModelAbstract
      */
     protected $_Users;
 
+    /**
+     * Dependent relation kam_users_address_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\KamUsersAddress[]
+     */
+    protected $_KamUsersAddress;
+
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
@@ -539,6 +547,10 @@ class Companies extends ModelAbstract
             'UsersIbfk14' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
+                ),
+            'KamUsersAddressIbfk1' => array(
+                    'property' => 'KamUsersAddress',
+                    'table_name' => 'kam_users_address',
                 ),
         ));
 
@@ -3749,6 +3761,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_Users;
+    }
+
+    /**
+     * Sets dependent relations kam_users_address_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\KamUsersAddress
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setKamUsersAddress(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_KamUsersAddress === null) {
+
+                $this->getKamUsersAddress();
+            }
+
+            $oldRelations = $this->_KamUsersAddress;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_KamUsersAddress = array();
+
+        foreach ($data as $object) {
+            $this->addKamUsersAddress($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations kam_users_address_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\KamUsersAddress $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addKamUsersAddress(\IvozProvider\Model\Raw\KamUsersAddress $data)
+    {
+        $this->_KamUsersAddress[] = $data;
+        $this->_setLoaded('KamUsersAddressIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent kam_users_address_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\KamUsersAddress
+     */
+    public function getKamUsersAddress($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamUsersAddressIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_KamUsersAddress = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_KamUsersAddress;
     }
 
     /**
