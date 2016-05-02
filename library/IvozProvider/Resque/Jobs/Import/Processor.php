@@ -13,6 +13,16 @@ class Processor
     protected $_delimiter = ";";
     protected $_enclosure;
     protected $_scape;
+    protected $_pricingPlanId;
+    /**
+     * @var \IvozProvider\Mapper\Sql\TargetPatterns
+     */
+    protected $_targetPatternMapper;
+    /**
+     * @var \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns
+     */
+    protected $_pricingPlansRelTargetPatternMapper;
+
 
     public function setUp()
     {
@@ -31,6 +41,9 @@ class Processor
         $logMessage = "Starting Import Processor Job.";
         $this->_log($logMessage);
 
+        $this->_targetPatternMapper = new \IvozProvider\Mapper\Sql\TargetPatterns();
+        $this->_pricingPlansRelTargetPatternMapper = new \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns();
+
     }
 
     public function perform()
@@ -39,6 +52,7 @@ class Processor
         $this->_delimiter = $this->args["delimiter"];
         $this->_enclosure = $this->args["enclosure"];
         $this->_scape = $this->args["scape"];
+        $this->_pricingPlanId = $this->args["parentId"];
 
 //        var_dump($this->args); die();
 
@@ -128,13 +142,11 @@ class Processor
 
                 $lineFields = str_getcsv($buffer, $this->args["delimiter"], $this->args["enclosure"], $this->args["scape"]);
 
-                if ($this->args["ingoreFirst"] && $firstLine) {
+                if (isset($this->args["ingoreFirst"]) && $this->args["ingoreFirst"] && $firstLine) {
                     $firstLine = false;
                     $this->_log("Ignoring first line");
                     continue;
                 }
-
-                $this->_log("Creating model 'modeloACrear'");
 
                 $data = array();
                 foreach ($fieldsPossitions as $fieldName => $fieldPosition) {
@@ -161,15 +173,65 @@ class Processor
 
                 $this->_log(print_r($data, true));
 
-                ////////*********//////
+                $this->_saveRow($data);
 
             }
 
         }
 
-        $this->_log("Saveing data...");
-
         return array("error" => false, "message" => "Data saved successfully.");
+    }
+
+    protected function _saveRow($data)
+    {
+        $targetPatternModel = $this->_targetPatternMapper->findOneByField("regExp", $data["regularExpresion"]);
+        if (is_null($targetPatternModel)) {
+            $targetPatternModel = new \IvozProvider\Model\TargetPatterns();
+            $targetPatternModel
+                ->setBrandId($data["brandId"])
+                ->setName($data["targetPatternName"])
+                ->setNameEn($data["targetPatternName"])
+                ->setNameEs($data["targetPatternName"])
+                ->setDescription($data["targetPatternDescription"])
+                ->setDescriptionEn($data["targetPatternDescription"])
+                ->setDescriptionEs($data["targetPatternDescription"])
+                ->setRegExp($data["regularExpresion"])
+                ->save()
+                ;
+            $this->_log("New target pattern created with regex '".$data["regularExpresion"]."'");
+        } else {
+            $this->_log("Using target pattern with regex '".$data["regularExpresion"]."'");
+        }
+
+        $pricingPlanRelTargetPatternsConditions = array(
+            "pricingPlanId" => $this->_pricingPlanId,
+            "targetPatternId" => $targetPatternModel->getPrimaryKey(),
+            "brandId" => $data["brandId"]
+        );
+
+        $pricingPlanRelTargetPatternsModel = $this->_pricingPlansRelTargetPatternMapper
+            ->findOneByField(array_keys($pricingPlanRelTargetPatternsConditions), $pricingPlanRelTargetPatternsConditions);
+
+        if (is_null($pricingPlanRelTargetPatternsModel)) {
+            $pricingPlanRelTargetPatternsModel = new \IvozProvider\Model\PricingPlansRelTargetPatterns();
+            $pricingPlanRelTargetPatternsModel
+                ->setPricingPlanId($this->_pricingPlanId)
+                ->setTargetPatternId($targetPatternModel->getPrimaryKey())
+                ->setBrandId($data["brandId"])
+            ;
+
+            $this->_log("New price created");
+        } else {
+            $this->_log("Price updated");
+        }
+
+        $pricingPlanRelTargetPatternsModel
+            ->setPerPeriodCharge($data["perPeriodCharge"])
+            ->setConnectionCharge($data["connectionCharge"])
+            ->setPeriodTime($data["periodTime"])
+            ->setMetric(10)
+            ->save()
+            ;
     }
 }
     

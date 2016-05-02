@@ -32,7 +32,7 @@ production:
           targetPatternsNew_screen: true
         dialogs: 
           targetPatternsDel_dialog: true
-          importPatterns_dialog: true
+          importPatterns_dialog: false
       csv:
         active: true
         filename: "TargetPatterns"

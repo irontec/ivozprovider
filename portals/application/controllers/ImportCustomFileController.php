@@ -20,35 +20,35 @@ class ImportCustomFileController extends Zend_Controller_Action
     protected $_forcedValues;
 
     protected $_availableFields = array(
-        "country" => array(
-            "title" => "Country",
+        "targetPatternName" => array(
+            "title" => "Target Pattern Name",
             "required" => true,
-            "help" => "Country name",
+            "help" => "Target Pattern Name",
         ),
-        "network" => array(
-            "title" => "Network",
+        "targetPatternDescription" => array(
+            "title" => "Target Pattern Description",
             "required" => true,
             "help" => "",
         ),
-        "prefix" => array(
-            "title" => "Prefix",
+        "regularExpresion" => array(
+            "title" => "Regular Expresion",
             "required" => true,
-            "help" => "",
+            "help" => "Regular Expresion",
         ),
-        "rate" => array(
-            "title" => "Rate (€)",
+        "perPeriodCharge" => array(
+            "title" => "Per period charge",
             "required" => true,
-            "help" => "",
+            "help" => "Per period charge",
         ),
-        "initialInterval" => array(
-            "title" => "Initial Interval",
+        "connectionCharge" => array(
+            "title" => "Connection charge",
             "required" => true,
-            "help" => "",
+            "help" => "Connection charge",
         ),
-        "nextInterval" => array(
-            "title" => "Next Interval",
+        "periodTime" => array(
+            "title" => "Period time",
             "required" => true,
-            "help" => "",
+            "help" => "Period time",
         ),
     );
 
@@ -315,7 +315,7 @@ class ImportCustomFileController extends Zend_Controller_Action
         if (!is_null($update) && $update == "on") {
             $checked = 'checked="checked"';
         }
-        $form .= '<label><input type="checkbox" name="update" '.$checked.'/> ' . $this->_helper->translate("Update values.").'</label>';
+//        $form .= '<label><input type="checkbox" name="update" '.$checked.'/> ' . $this->_helper->translate("Update values.").'</label>';
         $form .= '';
 
         return $form;

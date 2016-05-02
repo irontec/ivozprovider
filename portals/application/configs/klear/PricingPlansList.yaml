@@ -33,7 +33,7 @@ production:
         dialogs: 
           pricingPlansDel_dialog: true
           findPlan_dialog: true
-          importPlans_dialog: true
+          importPlans_dialog: false
       csv:
         active: true
         filename: "PricingPlans"
