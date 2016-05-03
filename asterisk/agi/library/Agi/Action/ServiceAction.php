@@ -49,9 +49,10 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $user = $this->_user;
+        $service = $this->_service;
         $company = $user->getCompany();
         
-        $exten = substr($this->agi->getExtension(), 4);
+        $exten = substr($this->agi->getExtension(), strlen($service->getCode()) + 1);
         $extension = $company->getExtension($exten);
         if (empty($extension)) {
             $this->agi->error("Extension %s not found for company %s.", $exten, $company->getId());

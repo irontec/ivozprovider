@@ -51,14 +51,29 @@ class Companies extends Raw\Companies
 
     public function getService($exten)
     {
-        $code = substr($exten, 1, 3);
-        $services = $this->getCompanyServices("code='".$code."'");
-        
-        if (count($services) == 0) {
-            $services = $this->getBrand()->getBrandServices("code='".$code."'");
+        $services = array();
+
+        // Add Brand Service Codes
+        $brandServices = $this->getBrand()->getBrandServices();
+        foreach ($brandServices as $brandService) {
+            $services[$brandService->getServiceId()] = $brandService;
         }
-        
-        return array_shift($services);
+
+        // Override Brand services with company codes
+        $companyServices = $this->getCompanyServices();
+        foreach ($companyServices as $companyService) {
+            $services[$companyService->getServiceId()] = $companyService;
+        }
+
+        // Look for the Service Code in the extension
+        foreach ($services as $service) {
+            if (strpos($exten, $service->getCode()) === 1) {
+                return $service;
+            }
+        }
+
+        // Extension doesn't match any service
+        return null;
     }
 
     public function getTerminal($name)
