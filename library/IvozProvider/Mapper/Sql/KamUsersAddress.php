@@ -30,7 +30,7 @@ class KamUsersAddress extends Raw\KamUsersAddress
 
         // Validate IP
         if (!filter_var($ip, FILTER_VALIDATE_IP, array(FILTER_FLAG_IPV4))) {
-            throw new \Exception("Invalid IP address, discarding value.");
+            throw new \Exception("Invalid IP address, discarding value.", 70000);
         }
 
         // Validate mask
@@ -38,7 +38,7 @@ class KamUsersAddress extends Raw\KamUsersAddress
             $mask = 32;
         } else {
             if (!is_numeric($mask) or $mask < 0 or $mask > 32) {
-                throw new \Exception("Wrong mask, discarding value.");
+                throw new \Exception("Wrong mask, discarding value.", 70001);
             }
         }
 

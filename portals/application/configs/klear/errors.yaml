@@ -16,6 +16,8 @@ production:
     50005: _("'Out date' must be equal or greater than 'In date'. Invoice data has been saved but Invoice has NOT been created.")
     50006: _("Cannot invoice calls from today in the future. Invoice data has been saved but Invoice has NOT been created.")
     60000: _("Brand is not setted")
+    70000: _("Invalid IP address, discarding value.")
+    70001: _("Wrong mask, discarding value.")
   adminErrors: 
 staging: 
   _extends: production
