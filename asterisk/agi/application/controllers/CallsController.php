@@ -142,9 +142,38 @@ class CallsController extends BaseController
             $this->agi->error("User %s is not allowed to place this call.", $user->getId());
             return;
         }
-    
+
+        // Check if this extension starts with '*' code
+        if (strpos($exten, '*') === 0) {
+            if (($service = $company->getService($exten))) {
+                $this->agi->verbose("Number %s belongs to a company service.", $exten);
+
+                // Update who is calling
+                if (isset($transfererURI) && !empty($transfererURI)) {
+                    // Nothing to do here?
+                } else if (isset($forwader) && !empty($forwader)) {
+                    $this->agi->setRedirecting('from-name,i', $user->getFullName());
+                    $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
+                } else {
+                    $this->agi->setCallerIdName($user->getFullName());
+                    $this->agi->setCallerIdNum($user->getExtensionNumber());
+                }
+
+                // Handle service code
+                $serviceAction = new ServiceAction($this);
+                $serviceAction
+                    ->setUser($user)
+                    ->setService($service)
+                    ->process();
+
+            } else {
+                // Decline this call if not matching service is found
+                $this->agi->verbose("Invalid Service code %s for comany %d", $exten, $company->getId());
+                $this->agi->hangup();
+            }
+
         // Check if this is an extension call
-        if (($dstExtension = $company->getExtension($exten))) {
+        } elseif (($dstExtension = $company->getExtension($exten))) {
             $this->agi->verbose("Number %s belongs to a company extension.", $exten);
 
             // Update who is calling
@@ -164,27 +193,7 @@ class CallsController extends BaseController
                 ->setExtension($dstExtension)
                 ->process();
             
-        } elseif (($service = $company->getService($exten))) {
-            $this->agi->verbose("Number %s belongs to a company service.", $exten);
-
-            // Update who is calling
-            if (isset($transfererURI) && !empty($transfererURI)) {
-                // Nothing to do here?
-            } else if (isset($forwader) && !empty($forwader)) {
-                $this->agi->setRedirecting('from-name,i', $user->getFullName());
-                $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
-            } else {
-                $this->agi->setCallerIdName($user->getFullName());
-                $this->agi->setCallerIdNum($user->getExtensionNumber());
-            }
-
-            // Handle service code
-            $serviceAction = new ServiceAction($this);
-            $serviceAction
-                ->setUser($user)
-                ->setService($service)
-                ->process();
-            
+        // This number don't belong to IvozProvider
         } else {
             $this->agi->verbose("Number %s is handled as external DDI.", $exten);
 

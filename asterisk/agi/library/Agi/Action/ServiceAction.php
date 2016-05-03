@@ -97,6 +97,9 @@ class ServiceAction extends RouterAction
         
         if ($result == "SUCCESS") {
             $this->agi->verbose("Successful pickup %s", $capturedTerminal);
+        } else {
+            // Target not found here
+            $this->agi->hangup(3);
         }
      
     }
@@ -135,6 +138,9 @@ class ServiceAction extends RouterAction
                 }
             }
         }
+
+        // Target not found in current application server
+        $this->agi->hangup(3);
     }
     
 }

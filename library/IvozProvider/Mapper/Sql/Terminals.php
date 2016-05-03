@@ -71,6 +71,7 @@ class Terminals extends Raw\Terminals
             $aor->setId($endpoint->getId())
                 ->setSorceryId($model->getName())
                 ->setMaxContacts(1)
+                ->setQualifyFrequency(0)
                 ->setRemoveExisting('yes')
                 ->save($forceInsert);
         }
