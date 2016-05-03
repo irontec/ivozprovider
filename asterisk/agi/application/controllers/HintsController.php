@@ -23,30 +23,10 @@ class HintsController extends BaseController
             $companiesMapper = new Mapper\Companies();
             $companiesData = $companiesMapper->fetchList();
             foreach ($companiesData as $company) {
-                // Inicializamos el array para cada empresa
-                $response = array();
-                $users = $company->getUsers();
-                foreach ($users as $user) {
-                    //Recogemos los usuarios de la empresa
-                    $shortNumber = NULL;
-                    $terminal = $user->getTerminal();
-                    if (empty($terminal)) {
-                        continue;
-                    }
-                    $extension = $user->getExtension();
-                    if (empty($extension)) {
-                        continue;
-                    }
-                    $response[$extension->getNumber()] = "PJSIP/" . $terminal->getName();
-                }
-                
                 // Format context name
                 echo "[company" . $company->getId() . "]\n";
-                // Add context hint extensions
-                foreach ($response as $exten => $interface) {
-                    echo "exten => " . $exten . ",hint," . $interface . "\n";
-                }
-                echo "\n";
+                echo 'exten => _X.,hint,${RT_HINT(${EXTEN},${CONTEXT})}';
+                echo "\n\n";
             }
         } catch (Exception $e) {
             echo $e->getMessage();
