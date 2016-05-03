@@ -24,6 +24,21 @@ class Processor
     protected $_pricingPlansRelTargetPatternMapper;
 
 
+    protected $_summary = array(
+        "totalRows" => 0,
+        "errorRows" => 0,
+        "newPatterns" => 0,
+        "updatedPatterns" => 0,
+        "newPrices" => 0,
+        "updatedPrices" => array(
+            "total" => 0,
+            "increased" => 0,
+            "decreased" => 0,
+            "mantained" => 0
+        )
+    );
+
+
     public function setUp()
     {
         $front = \Zend_Controller_Front::getInstance();
@@ -65,6 +80,9 @@ class Processor
     {
         $logMessage = "Import Processor Job finished.";
         $this->_log($logMessage);
+        $this->_logSummary();
+
+
     }
 
 
@@ -184,6 +202,8 @@ class Processor
 
     protected function _saveRow($data)
     {
+
+        $this->_summary["totalRows"] ++;
         $targetPatternModel = $this->_targetPatternMapper->findOneByField("regExp", $data["regularExpresion"]);
         if (is_null($targetPatternModel)) {
             $targetPatternModel = new \IvozProvider\Model\TargetPatterns();
@@ -195,11 +215,18 @@ class Processor
                 ->setDescription($data["targetPatternDescription"])
                 ->setDescriptionEn($data["targetPatternDescription"])
                 ->setDescriptionEs($data["targetPatternDescription"])
-                ->setRegExp($data["regularExpresion"])
-                ->save()
-                ;
+                ->setRegExp($data["regularExpresion"]);
+            try {
+                $targetPatternModel->save();
+            } catch (\Exception $e) {
+                $this->_summary["errorRows"] ++;
+                return;
+            }
+
+            $this->_summary["newPatterns"] ++;
             $this->_log("New target pattern created with regex '".$data["regularExpresion"]."'");
         } else {
+            $this->_summary["updatedPatterns"] ++;
             $this->_log("Using target pattern with regex '".$data["regularExpresion"]."'");
         }
 
@@ -212,16 +239,18 @@ class Processor
         $pricingPlanRelTargetPatternsModel = $this->_pricingPlansRelTargetPatternMapper
             ->findOneByField(array_keys($pricingPlanRelTargetPatternsConditions), $pricingPlanRelTargetPatternsConditions);
 
+        $isNewPrice = false;
         if (is_null($pricingPlanRelTargetPatternsModel)) {
+            $isNewPrice = true;
             $pricingPlanRelTargetPatternsModel = new \IvozProvider\Model\PricingPlansRelTargetPatterns();
             $pricingPlanRelTargetPatternsModel
                 ->setPricingPlanId($this->_pricingPlanId)
                 ->setTargetPatternId($targetPatternModel->getPrimaryKey())
                 ->setBrandId($data["brandId"])
             ;
-
             $this->_log("New price created");
         } else {
+
             $this->_log("Price updated");
         }
 
@@ -229,9 +258,49 @@ class Processor
             ->setPerPeriodCharge($data["perPeriodCharge"])
             ->setConnectionCharge($data["connectionCharge"])
             ->setPeriodTime($data["periodTime"])
-            ->setMetric(10)
-            ->save()
-            ;
+//            ->setMetric(10)
+        ;
+
+        try {
+            $pricingPlanRelTargetPatternsModel->save();
+
+            if ($isNewPrice) {
+                $this->_summary["newPrices"] ++;
+            } else {
+                $this->_summary["updatedPrices"]["total"] ++;
+            }
+
+        } catch (\Exception $e) {
+            $this->_summary["errorRows"] ++;
+            return;
+        }
+    }
+
+    protected function _logSummary()
+    {
+        $prefix = "[SUMMARY] ";
+
+        $logMessage = $prefix. "Import summary: ";
+        $this->_log($logMessage);
+
+        $logMessage = $prefix. "Total Rows Processed: ". $this->_summary["totalRows"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "Rows With Errors: ". $this->_summary["errorRows"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "New Patterns: ". $this->_summary["newPatterns"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "Updated Patterns: ". $this->_summary["updatedPatterns"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "New Prices: ". $this->_summary["newPrices"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "Updated Prices: ". $this->_summary["updatedPrices"]["total"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "    Increased Prices: ". $this->_summary["updatedPrices"]["increased"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "    Decreased Prices: ". $this->_summary["updatedPrices"]["decreased"];
+        $this->_log($logMessage);
+        $logMessage = $prefix. "    Mantainded Prices: ". $this->_summary["updatedPrices"]["mantained"];
+        $this->_log($logMessage);
     }
 }
     
