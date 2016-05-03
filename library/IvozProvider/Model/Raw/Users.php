@@ -552,6 +552,7 @@ class Users extends ModelAbstract
         $this->_defaultValues = array(
             'doNotDisturb' => '0',
             'isBoss' => '0',
+            'active' => '1',
             'maxCalls' => '2',
             'callWaiting' => '0',
             'voicemailEnabled' => '1',

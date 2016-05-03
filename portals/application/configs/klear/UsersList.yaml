@@ -73,6 +73,7 @@ production:
           usersNew_screen: true
         dialogs: 
           usersDel_dialog: true
+          importUsers_dialog: true
     usersNew_screen: &usersNew_screenLink 
       <<: *Users
       controller: new
@@ -196,6 +197,26 @@ production:
       message: _("%s successfully deleted.", ngettext('User', 'Users', 1))
       multiItem: 1
       labelOnList: 1
+
+    importUsers_dialog:
+      <<: *Users
+      module: default
+      title: _("Import %s", ngettext('File', 'Files', 1))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importUsersFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        companyId: ${auth.companyId}
+
       
     #HuntGroupsRelUsers
     <<: *huntGroupsRelUsers_dialogsLink
@@ -208,6 +229,11 @@ production:
     #callForwardSettings
     <<: *callForwardSettings_dialogsLink
 
+  commands:
+    importUsersFreeUpload_command:
+      <<: *Users
+      controller: File
+      action: free-upload
 staging: 
   _extends: production
 testing: 

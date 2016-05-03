@@ -132,7 +132,7 @@ class Extensions extends TableAbstract
 	    'COLUMN_NAME' => 'routeType',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => 'user',
 	    'NULLABLE' => false,
 	    'LENGTH' => '25',
 	    'SCALE' => NULL,

@@ -282,6 +282,7 @@ class Extensions extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'routeType' => 'user',
         );
 
         $this->_initFileObjects();
@@ -431,9 +432,6 @@ class Extensions extends ModelAbstract
     public function setRouteType($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_routeType != $data) {
             $this->_logChange('routeType');
         }

@@ -19,11 +19,13 @@ production:
       type: text
       maxLength: 100
       default: true
+      trim: both
     disallow: 
       title: _('Disallowed codecs')
       type: text
       defaultValue: all
       maxLength: 100
+      trim: both
       info:
         type: box
         position: left
@@ -35,6 +37,7 @@ production:
       type: text
       defaultValue: alaw
       maxLength: 100
+      trim: both
       info:
         type: box
         position: left
@@ -83,6 +86,7 @@ production:
       type: password
       defaultValue: 
       adapter: PlainText
+      trim: both
     companyId: 
       title: _('Company id')
       type: select
@@ -99,6 +103,7 @@ production:
     mac: 
       title: _('Mac')
       type: text
+      trim: both
       maxLength: 12
     lastProvisionDate: 
       title: _('Last provision date')

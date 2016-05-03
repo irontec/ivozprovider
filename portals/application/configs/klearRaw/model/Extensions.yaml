@@ -23,7 +23,7 @@ production:
     routeType: 
       title: _('Route type')
       type: select
-      required: true
+      defaultValue: user
       source: 
         data: inline
         values: 

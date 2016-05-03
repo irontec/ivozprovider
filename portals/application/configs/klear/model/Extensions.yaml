@@ -22,7 +22,6 @@ production:
     routeType: 
       title: _('Route type')
       type: select
-      required: true
       source: 
         data: inline
         values: 
@@ -49,7 +48,6 @@ production:
     IVRCommonId: 
       title: _('I v r common id')
       type: select
-      required: true      
       source: 
         data: mapper
         config: 
@@ -64,7 +62,6 @@ production:
     IVRCustomId: 
       title: _('I v r custom id')
       type: select
-      required: true      
       source: 
         data: mapper
         config: 
@@ -79,7 +76,6 @@ production:
     huntGroupId: 
       title: _('Hunt group id')
       type: select
-      required: true      
       source: 
         data: mapper
         config: 
