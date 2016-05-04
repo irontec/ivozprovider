@@ -362,6 +362,23 @@ class AstPsEndpoints extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  '100rel' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_ps_endpoints',
+	    'COLUMN_NAME' => '100rel',
+	    'COLUMN_POSITION' => 19,
+	    'DATA_TYPE' => 'enum(\'no\',\'required\',\'yes\')',
+	    'DEFAULT' => 'no',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

@@ -48,6 +48,11 @@ class AstPsEndpoints extends ModelAbstract
         'yes',
         'no',
     );
+    protected $_100relAcceptedValues = array(
+        'no',
+        'required',
+        'yes',
+    );
 
     /**
      * Database var type int
@@ -176,6 +181,13 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_subscribecontext;
 
+    /**
+     * Database var type enum('no','required','yes')
+     *
+     * @var string
+     */
+    protected $_100rel;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -227,6 +239,7 @@ class AstPsEndpoints extends ModelAbstract
         'send_pai'=>'sendPai',
         'send_rpid'=>'sendRpid',
         'subscribecontext'=>'subscribecontext',
+        '100rel'=>'100rel',
     );
 
     /**
@@ -277,6 +290,7 @@ class AstPsEndpoints extends ModelAbstract
             'allow' => 'all',
             'dtmfMode' => 'rfc4733',
             'subscribecontext' => 'default',
+            '100rel' => 'no',
         );
 
         $this->_initFileObjects();
@@ -941,6 +955,43 @@ class AstPsEndpoints extends ModelAbstract
     public function getSubscribecontext()
     {
         return $this->_subscribecontext;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function set100rel($data)
+    {
+
+        if ($this->_100rel != $data) {
+            $this->_logChange('100rel');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_100rel = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_100relAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for 100rel'));
+            }
+            $this->_100rel = (string) $data;
+
+        } else {
+            $this->_100rel = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column 100rel
+     *
+     * @return string
+     */
+    public function get100rel()
+    {
+        return $this->_100rel;
     }
 
     /**

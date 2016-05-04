@@ -122,6 +122,16 @@ production:
       type: text
       defaultValue: default
       maxLength: 40
+    100rel: 
+      title: _('100rel')
+      type: select
+      defaultValue: no
+      source: 
+        data: inline
+        values: 
+          'no': _('no')
+          'required': _('required')
+          'yes': _('yes')
 staging: 
   _extends: production
 testing: 

@@ -48,7 +48,7 @@ class ParsedCDRs extends Raw\ParsedCDRs
 
         $planToApply = $companyPricingPlanToApply->getPricingPlan();
         $this->_log("[tarificate] PlanToApply: ".$planToApply->getPrimaryKey(), \Zend_Log::INFO);
-
+return;
         $matchedPrices = $planToApply->getMatchedPrices($dst);
         if (is_null($matchedPrices)) {
             $this->_log("[tarificate] No matched Price found ", \Zend_Log::INFO);
