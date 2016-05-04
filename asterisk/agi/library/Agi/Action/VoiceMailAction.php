@@ -24,6 +24,9 @@ class VoiceMailAction extends RouterAction
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail
             $this->agi->voicemail($voicemail->getVoiceMail());
+        } else {
+            $this->agi->verbose("User %s has voicemail disabled.", $voicemail->getFullName());
+            $this->agi->busy();
         }
     }
 
