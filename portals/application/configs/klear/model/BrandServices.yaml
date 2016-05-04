@@ -9,6 +9,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Services
+          filterClass: IvozProvider_Klear_Filter_BrandServices
           fieldName: 
             fields: 
               - name
