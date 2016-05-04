@@ -70,25 +70,11 @@ class Terminals extends Raw\Terminals
             }
             $aor->setId($endpoint->getId())
                 ->setSorceryId($model->getName())
+                ->setContact("sip:". $model->getName() . "@proxyusers.ivozprovider.local")
                 ->setMaxContacts(1)
                 ->setQualifyFrequency(0)
                 ->setRemoveExisting('yes')
                 ->save($forceInsert);
         }
-    }
-
-    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
-    {
-        $response = parent::delete($model);
-
-        // Delete its contacts
-        $contactMapper = new \IvozProvider\Mapper\Sql\AstPsContacts();
-        $contacts = $contactMapper->fetchList("sorcery_id LIKE '" . $model->getName() . "^3B%'");
-        
-        foreach ($contacts as $contact) {
-            $contactMapper->delete($contact);
-        }
-        
-        return $response;
     }
 }

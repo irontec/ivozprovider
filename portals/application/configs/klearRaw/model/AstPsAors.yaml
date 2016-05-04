@@ -54,7 +54,7 @@ production:
     contact: 
       title: _('Contact')
       type: text
-      maxLength: 40
+      maxLength: 200
     qualify_frequency: 
       title: _('Qualify frequency')
       type: number

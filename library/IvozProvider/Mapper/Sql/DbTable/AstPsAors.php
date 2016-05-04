@@ -210,7 +210,7 @@ class AstPsAors extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '40',
+	    'LENGTH' => '200',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

@@ -66,7 +66,6 @@ mappers:
   - &AstHints {mapper: \IvozProvider\Mapper\Sql\AstHints, modelFile: AstHints}
   - &AstMusiconhold {mapper: \IvozProvider\Mapper\Sql\AstMusiconhold, modelFile: AstMusiconhold}
   - &AstPsAors {mapper: \IvozProvider\Mapper\Sql\AstPsAors, modelFile: AstPsAors}
-  - &AstPsContacts {mapper: \IvozProvider\Mapper\Sql\AstPsContacts, modelFile: AstPsContacts}
   - &AstPsEndpoints {mapper: \IvozProvider\Mapper\Sql\AstPsEndpoints, modelFile: AstPsEndpoints}
   - &AstPsIdentify {mapper: \IvozProvider\Mapper\Sql\AstPsIdentify, modelFile: AstPsIdentify}
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
