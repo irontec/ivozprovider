@@ -84,9 +84,8 @@ production:
     password: 
       title: ngettext('Password', 'Passwords', 1)
       type: password
-      defaultValue: 
+      required: true
       adapter: PlainText
-      trim: both
     companyId: 
       title: _('Company id')
       type: select
