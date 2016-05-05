@@ -111,10 +111,7 @@ Depends: kamailio,
     kamailio-mysql-modules,
     kamailio-tls-modules,
     kamailio-xml-modules,
-    kamailio-websocket-modules,
-    ngcp-rtpengine-daemon,
-    ngcp-rtpengine-iptables,
-    ngcp-rtpengine-kernel-dkms
+    kamailio-websocket-modules
 Priority: optional
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Kamailio - Configuration files for Users kamailio
@@ -131,10 +128,7 @@ Depends: kamailio,
     kamailio-mysql-modules,
     kamailio-tls-modules,
     kamailio-xml-modules,
-    kamailio-websocket-modules,
-    ngcp-rtpengine-daemon,
-    ngcp-rtpengine-iptables,
-    ngcp-rtpengine-kernel-dkms
+    kamailio-websocket-modules
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Kamailio - Configuration files for Trunks proxy kamailio
   This package include all requires files to configure kamailio properly
