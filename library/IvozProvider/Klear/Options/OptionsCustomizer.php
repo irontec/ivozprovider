@@ -96,8 +96,8 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
         $domain = $this->_parentModel->getDomain();
 
         $isEditable = ( $scope == 'global' &&
-                        $domain != 'proxyusers.ivozprovider.local' &&
-                        $domain != 'proxytrunks.ivozprovider.local');
+                        $domain != 'users.ivozprovider.local' &&
+                        $domain != 'trunks.ivozprovider.local');
 
         return $isEditable;
     }

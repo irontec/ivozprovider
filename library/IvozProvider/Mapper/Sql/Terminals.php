@@ -70,7 +70,7 @@ class Terminals extends Raw\Terminals
             }
             $aor->setId($endpoint->getId())
                 ->setSorceryId($model->getName())
-                ->setContact("sip:". $model->getName() . "@proxyusers.ivozprovider.local")
+                ->setContact("sip:". $model->getName() . "@users.ivozprovider.local")
                 ->setMaxContacts(1)
                 ->setQualifyFrequency(0)
                 ->setRemoveExisting('yes')
