@@ -125,7 +125,7 @@ production:
     countryId: 
       title: _('Country code')
       type: select
-      defaultValue: 62
+      defaultValue: 70
       required: true
       source: 
         data: mapper
