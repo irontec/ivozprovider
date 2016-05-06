@@ -56,33 +56,34 @@ class UserCallAction extends RouterAction
   	    $user = $this->_user;
 
   	    // Check if user is valid to be called
-  	    if (! $user->getActive()) {
-  	        $this->agi->error("User %s (%s) is not active.", $user->getFullName(), $user->getId());
-  	        $this->_dialStatus = "INVALIDARGS";
-  	        $this->processDialStatus();
-  	        return;
-  	    }
+        if (! $user->getActive()) {
+            $this->agi->error("User %s [%d] is not active.", $user->getFullName(), $user->getId());
+            $this->_dialStatus = "INVALIDARGS";
+            $this->processDialStatus();
+            return;
+        }
   	    
   	    // Check if user has extension configured
   	    $extension = $this->_user->getExtension();
   	    if (empty($extension)) {
-  	        $this->agi->error("User %s (%s) has no extension.", $user->getFullName(), $user->getId());
-  	        $this->_dialStatus = "INVALIDARGS";
-  	        $this->processDialStatus();  	        
-  	        return;
+            $this->agi->error("User %s [%d] has no extension.", $user->getFullName(), $user->getId());
+            $this->_dialStatus = "INVALIDARGS";
+            $this->processDialStatus();
+            return;
   	    }
   	    
   	    // Check if user has terminal configured
   	    $terminal = $this->_user->getTerminal();
   	    if (empty($terminal)) {
-  	        $this->agi->error("User %s (%s) has no terminal.", $user->getFullName(), $user->getId());
-  	        $this->_dialStatus = "CHANUNAVAIL";
-  	        $this->processDialStatus();  	        
-  	        return;
+            $this->agi->error("User %s [%d] has no terminal.", $user->getFullName(), $user->getId());
+            $this->_dialStatus = "CHANUNAVAIL";
+            $this->processDialStatus();
+            return;
   	    }
   	    
         // Some verbose dolan pls
-        $this->agi->verbose("Preparing call to %s (%s)", $user->getFullName(), $terminal->getName());
+        $this->agi->verbose("Preparing call to user %s [%d] (%s [%d])", 
+                        $user->getFullName(), $user->getId(), $terminal->getName(), $terminal->getId());
 
         // Check if user has call forwading enabled
         if ($this->_allowForwading) {
@@ -166,10 +167,7 @@ class UserCallAction extends RouterAction
         }
 
         // Update Called name
-        if ($this->agi->getCallType() == "internal") {
-            $this->agi->setConnectedLine('name,i', $user->getFullName());
-            $this->agi->setConnectedLine('num', $user->getExtensionNumber());
-        } else {
+        if ($this->agi->getCallType() == "external") {
             // FIXME WHY THIS DOESN'T UPDATE EXTERNAL PAI ???
             $this->agi->setConnectedLine('name,i', $user->getFullName());
             $this->agi->setConnectedLine('num', $user->getOutgoingDDINumber());

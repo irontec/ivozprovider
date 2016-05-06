@@ -83,7 +83,7 @@ class CallsController extends BaseController
         } else if ($forwader = $this->agi->getRedirecting('from-num')) {
             $callerid = $forwader;
         } else {
-            $callerid = $this->agi->getCallerID();
+            $callerid = $this->agi->getPeer();
         }
 
         if (! $callerid) {
@@ -94,7 +94,7 @@ class CallsController extends BaseController
         // Get caller peer
         $terminalMapper = new Mapper\Terminals();
         $terminal = $terminalMapper->findOneByField("name", $callerid);
-    
+
         if (empty($terminal)) {
             $this->agi->error("Terminal %s not found.", $callerid);
             return;
@@ -116,11 +116,7 @@ class CallsController extends BaseController
     
         // Set Company/Brand/Generic Music class
         $company = $user->getCompany();
-        $this->_setMusicClass($company);
         $this->agi->setVariable("__COMPANYID", $company->getId());
-
-        // Set user language
-        $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
 
         // Check User's permission to does this call
         $exten = $this->agi->getExtension();
@@ -134,12 +130,16 @@ class CallsController extends BaseController
             $this->agi->setVariable("__CALL_ID", $callid);
         }
 
+        // Set user language
+        $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
+        $this->_setMusicClass($company);
+
         // Some output
-        $this->agi->verbose("Processing ougoing call from %s (%s) to %s",
+        $this->agi->verbose("Processing ougoing call from %s [%s] to number %s",
                         $user->getFullName(), $user->getId(), $exten);
 
         if (! $user->hasSrcUserPerm($exten)) {
-            $this->agi->error("User %s is not allowed to place this call.", $user->getId());
+            $this->agi->error("User %d is not allowed to place this call.", $user->getId());
             return;
         }
 
@@ -147,17 +147,6 @@ class CallsController extends BaseController
         if (strpos($exten, '*') === 0) {
             if (($service = $company->getService($exten))) {
                 $this->agi->verbose("Number %s belongs to a company service.", $exten);
-
-                // Update who is calling
-                if (isset($transfererURI) && !empty($transfererURI)) {
-                    // Nothing to do here?
-                } else if (isset($forwader) && !empty($forwader)) {
-                    $this->agi->setRedirecting('from-name,i', $user->getFullName());
-                    $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
-                } else {
-                    $this->agi->setCallerIdName($user->getFullName());
-                    $this->agi->setCallerIdNum($user->getExtensionNumber());
-                }
 
                 // Handle service code
                 $serviceAction = new ServiceAction($this);
@@ -174,18 +163,7 @@ class CallsController extends BaseController
 
         // Check if this is an extension call
         } elseif (($dstExtension = $company->getExtension($exten))) {
-            $this->agi->verbose("Number %s belongs to a company extension.", $exten);
-
-            // Update who is calling
-            if (isset($transfererURI) && !empty($transfererURI)) {
-                // Nothing to do here?
-            } else if (isset($forwader) && !empty($forwader)) {
-                $this->agi->setRedirecting('from-name,i', $user->getFullName());
-                $this->agi->setRedirecting('from-num,i', $user->getExtensionNumber());
-            } else {
-                $this->agi->setCallerIdName($user->getFullName());
-                $this->agi->setCallerIdNum($user->getExtensionNumber());
-            }
+            $this->agi->verbose("Number %s belongs to a company extension [%d].", $exten, $dstExtension->getId());
 
             // Handle extension
             $extensionAction = new ExtensionAction($this);
@@ -203,9 +181,6 @@ class CallsController extends BaseController
             } else if (isset($forwader) && !empty($forwader)) {
                 $this->agi->setRedirecting('from-name,i', $user->getFullName());
                 $this->agi->setRedirecting('from-num,i', $user->getOutgoingDDINumber());
-            } else {
-                $this->agi->setCallerIdName($user->getFullName());
-                $this->agi->setCallerIdNum($user->getOutgoingDDINumber());
             }
 
             // Otherwise, handle this call as external
@@ -251,7 +226,7 @@ class CallsController extends BaseController
      */
     public function userstatusAction ()
     {
-        // Process Dialed user dialstatus
+        // FIXME Process Dialed user dialstatus FIXME
         $iface = $this->agi->getVariable("DIAL_DST");
         $iface = preg_replace('/^\w+\//', '', $iface);
         $terminalMapper = new Mapper\Terminals();

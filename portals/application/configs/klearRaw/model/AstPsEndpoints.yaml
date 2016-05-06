@@ -45,6 +45,10 @@ production:
       title: _('Auth')
       type: text
       maxLength: 40
+    callerid: 
+      title: _('Callerid')
+      type: text
+      maxLength: 100
     context: 
       title: _('Context')
       type: text

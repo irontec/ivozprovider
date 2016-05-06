@@ -24,6 +24,8 @@ class Users extends Raw\Users
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        
+        // Nice pass for nice users
         $pass = $model->hasChange('pass');
         if ($pass) {
             $passPlain = $model->getPass();
@@ -56,57 +58,25 @@ class Users extends Raw\Users
             }
         }
 
-        // Reset previous terminal voicemail
-        if (!$isNew && $hasChangedTerminal) {
-            $prevSavedUser = $this->find($model->getPrimaryKey());
-            $this->setEndpointVoiceMail($prevSavedUser, null);
+        // This user is being updated
+        $original = $this->find($model->getPrimaryKey());
+        if ($original) {
+            // Update previous terminal
+            if ($endpoint = $original->getEndpoint()) {
+                $endpoint
+                    ->setCallerid(null)
+                    ->setMailboxes(null)
+                    ->save();
+            }
         }
 
         $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
         // Update Asterisk Voicemail
-        $this->saveVoiceMail($model);
-
-        // Reload Hints
-        if ($haschangedExtension || $hasChangedTerminal) {
-            $this->_reloadDialplan();
-        }
-
-        return $response;
-
-    }
-
-    /**
-     * Deletes the current model
-     *
-     * @param IvozProvider\Model\Raw\Users $model The model to delete
-     * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
-     * @return int
-     */
-    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
-    {
-
-        $extension = $model->getExtension();
-        $response = parent::delete($model);
-
-        // Delete User voicemail
-        $this->deleteVoiceMail();
-
-        if (!is_null($extension)) {
-            $this->_reloadDialplan();
-        }
-
-        return $response;
-    }
-
-    protected function saveVoiceMail($model)
-    {
-        // Update Asterisk Voicemail
         $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
         $vm = $vmMapper->findOneByField("mailbox", $model->getVoiceMailUser());
 
         // If not found create a new one
-        $forceInsert = false;
         if (is_null($vm)) {
             $vm = new \IvozProvider\Model\AstVoicemail();
         }
@@ -132,39 +102,58 @@ class Users extends Raw\Users
             ->setTz($model->getTimezone()->getTz())
             ->save();
 
-        // Update user endpoint if user want VoiceMail notifications
-        if ($model->getVoicemailEnabled()) {
-            $this->setEndpointVoiceMail($model, $model->getVoiceMail());
-        } else {
-            $this->setEndpointVoiceMail($model, null);
+        // Update the endpoint
+        $endpoint = $model->getEndpoint();
+        if ($endpoint) {
+            $endpoint
+            ->setCallerid($model->getFullName() . " <" . $model->getExtensionNumber() . ">")
+            ->setMailboxes($model->getVoiceMail())
+            ->save();
         }
+
+        // Reload Hints
+        if ($haschangedExtension || $hasChangedTerminal) {
+            $this->_reloadDialplan();
+        }
+
+        return $response;
+
     }
 
-    protected function deleteVoiceMail($model)
+    /**
+     * Deletes the current model
+     *
+     * @param IvozProvider\Model\Raw\Users $model The model to delete
+     * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
+     * @return int
+     */
+    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
+
+        $extension = $model->getExtension();
+
         // Delete User voicemail
         $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
         $vm = $vmMapper->findOneByField("mailbox", $model->getVoiceMailUser());
         if ($vm) {
-            $vmMapper->delete($vm);
+            $vm->delete();
+        }
+        
+        // Update the endpoint
+        $endpoint = $model->getEndpoint();
+        if ($endpoint) {
+            $endpoint
+                ->setCallerid(null)
+                ->setMailboxes(null)
+                ->save();
         }
 
-        // Update user endpoint
-        $this->setEndpointVoiceMail($model, null);
-    }
-
-    protected function setEndpointVoiceMail($model, $voiceMail)
-    {
-        // Update Asterisk Endpoint data
-        $terminal = $model->getTerminal();
-        if ($terminal) {
-            // Replicate Terminal into ast_ps_endpoint
-            $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-            $endpoint = $endpointMapper->findOneByField("terminalId", $terminal->getId());
-            if ($endpoint) {
-                $endpoint->setMailboxes($voiceMail)->save();
-            }
+        $response = parent::delete($model);
+        
+        if (!is_null($extension)) {
+            $this->_reloadDialplan();
         }
+        return $response;
     }
 
     protected function _salt()

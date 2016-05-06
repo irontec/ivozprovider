@@ -55,6 +55,7 @@ class AstPsEndpoints extends MapperAbstract
                 'transport' => $model->getTransport(),
                 'aors' => $model->getAors(),
                 'auth' => $model->getAuth(),
+                'callerid' => $model->getCallerid(),
                 'context' => $model->getContext(),
                 'disallow' => $model->getDisallow(),
                 'allow' => $model->getAllow(),
@@ -566,6 +567,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setTransport($data['transport'])
                   ->setAors($data['aors'])
                   ->setAuth($data['auth'])
+                  ->setCallerid($data['callerid'])
                   ->setContext($data['context'])
                   ->setDisallow($data['disallow'])
                   ->setAllow($data['allow'])
@@ -586,6 +588,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setTransport($data->{'transport'})
                   ->setAors($data->{'aors'})
                   ->setAuth($data->{'auth'})
+                  ->setCallerid($data->{'callerid'})
                   ->setContext($data->{'context'})
                   ->setDisallow($data->{'disallow'})
                   ->setAllow($data->{'allow'})
@@ -607,6 +610,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setTransport($data->getTransport())
                   ->setAors($data->getAors())
                   ->setAuth($data->getAuth())
+                  ->setCallerid($data->getCallerid())
                   ->setContext($data->getContext())
                   ->setDisallow($data->getDisallow())
                   ->setAllow($data->getAllow())

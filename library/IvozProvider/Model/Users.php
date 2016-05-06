@@ -52,6 +52,23 @@ class Users extends Raw\Users
         return $terminal->getName();
 
     }
+    
+    /**
+     * return associated endpoint with the user
+     * 
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints 
+     */
+    public function getEndpoint()
+    {
+        $terminal = $this->getTerminal();
+        if (!$terminal) return null;
+        
+        // $terminal->getAstPsEndpoints(); SIMPLY NOT WORKING :\
+        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
+        $endpoint = $endpointMapper->findOneByField("terminalId", $terminal->getId());
+        return $endpoint;
+    }
+    
 
     /**
      * @return string with the voicemail

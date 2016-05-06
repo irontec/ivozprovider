@@ -108,6 +108,13 @@ class AstPsEndpoints extends ModelAbstract
      *
      * @var string
      */
+    protected $_callerid;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_context;
 
     /**
@@ -228,6 +235,7 @@ class AstPsEndpoints extends ModelAbstract
         'transport'=>'transport',
         'aors'=>'aors',
         'auth'=>'auth',
+        'callerid'=>'callerid',
         'context'=>'context',
         'disallow'=>'disallow',
         'allow'=>'allow',
@@ -563,6 +571,40 @@ class AstPsEndpoints extends ModelAbstract
     public function getAuth()
     {
         return $this->_auth;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setCallerid($data)
+    {
+
+        if ($this->_callerid != $data) {
+            $this->_logChange('callerid');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_callerid = $data;
+
+        } else if (!is_null($data)) {
+            $this->_callerid = (string) $data;
+
+        } else {
+            $this->_callerid = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column callerid
+     *
+     * @return string
+     */
+    public function getCallerid()
+    {
+        return $this->_callerid;
     }
 
     /**
