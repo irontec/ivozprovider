@@ -25,6 +25,7 @@ production:
     raw:
       css:
         - "css/klear.css"
+        - "default/css/customMenu.css"
       javascript:
         - "default/js/customMenu.js"
     actionHelpers:
