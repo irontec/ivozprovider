@@ -1,7 +1,6 @@
 [Unit]
 Description=Kamailio - the Open Source SIP Server
 After=network.target
-Requires=rtpengine.service
 
 [Service]
 Type=forking
