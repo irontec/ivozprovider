@@ -17,15 +17,7 @@ production:
           title: _("Options")
           screens: 
             proxyTrunksEdit_screen: true
-          dialogs: 
-            proxyTrunksDel_dialog: true
           default: proxyTrunksEdit_screen
-      options: 
-        title: _("Options")
-        screens: 
-          proxyTrunksNew_screen: true
-        dialogs: 
-          proxyTrunksDel_dialog: true
     proxyTrunksNew_screen: &proxyTrunksNew_screenLink 
       <<: *ProxyTrunks
       controller: new
@@ -57,17 +49,6 @@ production:
       title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
       fixedPositions:
         <<: *ProxyTrunksFixedPositions_link
-  dialogs: 
-    proxyTrunksDel_dialog: &proxyTrunksDel_dialogLink 
-      <<: *ProxyTrunks
-      controller: delete
-      class: ui-silk-bin
-      labelOption: false
-      title: _("Delete %s", ngettext('Proxy trunk', 'Proxy trunks', 1))
-      description: _("Do you want to delete this %s?", ngettext('Proxy trunk', 'Proxy trunks', 1))
-      message: _("%s successfully deleted.", ngettext('Proxy trunk', 'Proxy trunks', 1))
-      multiItem: 1
-      labelOnList: 1
 staging: 
   _extends: production
 testing: 
