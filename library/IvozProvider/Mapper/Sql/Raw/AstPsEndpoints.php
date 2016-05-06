@@ -52,9 +52,7 @@ class AstPsEndpoints extends MapperAbstract
                 'sorcery_id' => $model->getSorceryId(),
                 'terminalId' => $model->getTerminalId(),
                 'proxyTrunkId' => $model->getProxyTrunkId(),
-                'transport' => $model->getTransport(),
                 'aors' => $model->getAors(),
-                'auth' => $model->getAuth(),
                 'callerid' => $model->getCallerid(),
                 'context' => $model->getContext(),
                 'disallow' => $model->getDisallow(),
@@ -564,9 +562,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSorceryId($data['sorcery_id'])
                   ->setTerminalId($data['terminalId'])
                   ->setProxyTrunkId($data['proxyTrunkId'])
-                  ->setTransport($data['transport'])
                   ->setAors($data['aors'])
-                  ->setAuth($data['auth'])
                   ->setCallerid($data['callerid'])
                   ->setContext($data['context'])
                   ->setDisallow($data['disallow'])
@@ -585,9 +581,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSorceryId($data->{'sorcery_id'})
                   ->setTerminalId($data->{'terminalId'})
                   ->setProxyTrunkId($data->{'proxyTrunkId'})
-                  ->setTransport($data->{'transport'})
                   ->setAors($data->{'aors'})
-                  ->setAuth($data->{'auth'})
                   ->setCallerid($data->{'callerid'})
                   ->setContext($data->{'context'})
                   ->setDisallow($data->{'disallow'})
@@ -607,9 +601,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSorceryId($data->getSorceryId())
                   ->setTerminalId($data->getTerminalId())
                   ->setProxyTrunkId($data->getProxyTrunkId())
-                  ->setTransport($data->getTransport())
                   ->setAors($data->getAors())
-                  ->setAuth($data->getAuth())
                   ->setCallerid($data->getCallerid())
                   ->setContext($data->getContext())
                   ->setDisallow($data->getDisallow())

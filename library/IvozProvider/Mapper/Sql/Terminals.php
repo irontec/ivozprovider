@@ -44,6 +44,9 @@ class Terminals extends Raw\Terminals
             if (is_null($endpoint)) {
                 $forceInsert = true;
                 $endpoint = new \IvozProvider\Model\AstPsEndpoints();
+                $endpoint->setContext("outgoing")
+                    ->setSendDiversion("yes")
+                    ->setSendPai("yes");
             }
             // Update/Insert endpoint data
             $endpoint->setTerminalId($response)
@@ -54,7 +57,6 @@ class Terminals extends Raw\Terminals
                 ->setDirectmedia($model->getDirectmedia())
                 ->setDirectmediaMethod($model->getDirectmediaMethod())
                 ->setDtmfMode($model->getDtmfMode())
-                ->setContext('outgoing')
                 ->setSubscribecontext('company' . $model->getCompanyId())
                 ->save($forceInsert);
 

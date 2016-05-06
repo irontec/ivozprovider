@@ -33,18 +33,10 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    transport: 
-      title: _('Transport')
-      type: text
-      maxLength: 40
     aors: 
       title: _('Aor')
       type: text
       maxLength: 200
-    auth: 
-      title: _('Auth')
-      type: text
-      maxLength: 40
     callerid: 
       title: _('Callerid')
       type: text

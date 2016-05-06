@@ -87,21 +87,7 @@ class AstPsEndpoints extends ModelAbstract
      *
      * @var string
      */
-    protected $_transport;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
     protected $_aors;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_auth;
 
     /**
      * Database var type varchar
@@ -232,9 +218,7 @@ class AstPsEndpoints extends ModelAbstract
         'sorcery_id'=>'sorceryId',
         'terminalId'=>'terminalId',
         'proxyTrunkId'=>'proxyTrunkId',
-        'transport'=>'transport',
         'aors'=>'aors',
-        'auth'=>'auth',
         'callerid'=>'callerid',
         'context'=>'context',
         'disallow'=>'disallow',
@@ -476,40 +460,6 @@ class AstPsEndpoints extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
-    public function setTransport($data)
-    {
-
-        if ($this->_transport != $data) {
-            $this->_logChange('transport');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_transport = $data;
-
-        } else if (!is_null($data)) {
-            $this->_transport = (string) $data;
-
-        } else {
-            $this->_transport = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column transport
-     *
-     * @return string
-     */
-    public function getTransport()
-    {
-        return $this->_transport;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
     public function setAors($data)
     {
 
@@ -537,40 +487,6 @@ class AstPsEndpoints extends ModelAbstract
     public function getAors()
     {
         return $this->_aors;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setAuth($data)
-    {
-
-        if ($this->_auth != $data) {
-            $this->_logChange('auth');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_auth = $data;
-
-        } else if (!is_null($data)) {
-            $this->_auth = (string) $data;
-
-        } else {
-            $this->_auth = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column auth
-     *
-     * @return string
-     */
-    public function getAuth()
-    {
-        return $this->_auth;
     }
 
     /**
