@@ -356,13 +356,13 @@ class ImportCustomFileController extends Zend_Controller_Action
     protected function _enqueImport()
     {
 
-        $redisConfig = $this->_bootstrap->getOption("redis");
-        $redisServer = $redisConfig["backend"];
+       // $redisConfig = $this->_bootstrap->getOption("redis");
+       // $redisServer = $redisConfig["backend"];
 
-        \Resque::setBackend($redisServer);
+       // \Resque::setBackend($redisServer);
 
-        $queue = "pricesImporter";
-        $class = "\\IvozProvider\\Resque\\Jobs\\Import\\Processor";
+       // $queue = "pricesImporter";
+       // $class = "\\IvozProvider\\Resque\\Jobs\\Import\\Processor";
 
         $jobData = $this->getRequest()->getParams();
         $jobData["delimiter"] = $this->_delimiter;
@@ -370,13 +370,17 @@ class ImportCustomFileController extends Zend_Controller_Action
         $jobData["scape"] = $this->_scape;
         $jobData["forcedValues"] = $this->_forcedValues;
 
-        $jobToken = \Resque::enqueue($queue, $class, $jobData);
-        $mess = $this->_helper->translate("Import process enqueued with job token '%s'");
-        $message = sprintf($mess, $jobToken);
+       // $jobToken = \Resque::enqueue($queue, $class, $jobData);
+
+        $importJob = new \IvozProvider\Gearmand\Jobs\Pricesimporter();
+        $importJob->setParams($jobData)->send();
+
+        $mess = $this->_helper->translate("Import process enqueued");
+        //$message = sprintf($mess, $jobToken);
 
         $data = array (
             'title' => $this->_helper->translate("Parse file and import"),
-            'message' => $message,
+            'message' => $mess,
             'buttons' => array(
                 $this->_helper->translate('Close') => array(
                     'recall' => false,

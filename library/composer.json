@@ -2,8 +2,7 @@
     "name": "ivozprovider",
     "description": "IvozProvider",
     "require": {
-        "psliwa/php-pdf": "~1.2",
-        "chrisboulton/php-resque": "^1.2"
+        "psliwa/php-pdf": "~1.2"
     },
     "authors": [
         {

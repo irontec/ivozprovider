@@ -1,10 +1,11 @@
 <?php
-namespace IvozProvider\Resque\Jobs\Import;
 
-class Processor
+
+
+class PricesimporterWorker extends Iron_Gearman_Worker
 {
-
-    protected $_logger;
+    protected $_timeout = 10000; // 1000 = 1 second
+    protected $_dbAdapter;
 
     /**
      * @var \Bootstrap
@@ -23,35 +24,84 @@ class Processor
      */
     protected $_pricingPlansRelTargetPatternMapper;
 
+    protected $_summary = array();
 
-    protected $_summary = array(
-        "totalRows" => 0,
-        "errorRows" => 0,
-        "newPatterns" => 0,
-        "updatedPatterns" => 0,
-        "newPrices" => 0,
-        "updatedPrices" => array(
-            "total" => 0,
-            "increased" => 0,
-            "decreased" => 0,
-            "mantained" => 0
-        )
-    );
+    public $args;
 
+    protected function initRegisterFunctions()
+    {
+
+        //$logMessage = "Registering funtcionts...";
+        //$this->_log($logMessage);
+
+        $this->_registerFunction = array(
+                'importPrices' => 'importPrices'
+        );
+    }
+
+    protected function init()
+    {
+        //$logMessage = "Starting worker";
+        //$this->_log($logMessage);
+
+        $this->_dbAdapter = \Zend_Db_Table::getDefaultAdapter();
+    }
+
+    protected function timeout()
+    {
+
+        $this->_dbAdapter->closeConnection();
+    }
+
+    public function importPrices(\GearmanJob $serializedJob)
+    {
+
+        $job = igbinary_unserialize($serializedJob->workload());
+        $this->args = $job->getParams();
+        $logMessage = "Starting Job";
+        $this->_log($logMessage);
+
+        $this->resetSummary();
+
+        $this->setUp();
+        $this->perform();   
+        $this->tearDown();
+
+        return true;
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////
+    public function resetSummary()
+    {
+        $this->_summary = array(
+            "totalRows" => 0,
+            "errorRows" => 0,
+            "newPatterns" => 0,
+            "updatedPatterns" => 0,
+            "newPrices" => 0,
+            "updatedPrices" => array(
+                "total" => 0,
+                "increased" => 0,
+                "decreased" => 0,
+                "mantained" => 0
+            )
+        );
+
+    }
 
     public function setUp()
     {
         $front = \Zend_Controller_Front::getInstance();
         $this->_bootstrap = $front->getParam('bootstrap');
-        $this->_logger = $this->_bootstrap->getResource('log');
-        if (is_null($this->_logger)) {
-            $params = array(
-                array(
-                    'writerName' => 'Null'
-                )
-            );
-            $this->_logger = \Zend_Log::factory($params);
-        }
+        //$this->_logger = $this->_bootstrap->getResource('log');
+        //if (is_null($this->_logger)) {
+        //    $params = array(
+        //        array(
+        //            'writerName' => 'Null'
+        //        )
+        //    );
+        //    $this->_logger = \Zend_Log::factory($params);
+        //}
 
         $logMessage = "Starting Import Processor Job.";
         $this->_log($logMessage);
@@ -302,5 +352,5 @@ class Processor
         $logMessage = $prefix. "    Mantainded Prices: ". $this->_summary["updatedPrices"]["mantained"];
         $this->_log($logMessage);
     }
+
 }
-    

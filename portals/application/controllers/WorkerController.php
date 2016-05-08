@@ -45,4 +45,9 @@ class WorkerController extends Zend_Controller_Action
     {
         \Iron_Gearman_Manager::runWorker("Invoicer");
     }
+
+    public function pricesimporterAction()
+    {
+        \Iron_Gearman_Manager::runWorker("PricesImporter");
+    }
 }
