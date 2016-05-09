@@ -7,7 +7,7 @@ build_userweb:
 	cd userweb ; node_modules/bower/bin/bower install --allow-root
 	cd userweb ; node_modules/grunt-cli/bin/grunt build 
 	cd userweb ; rm -f dist/.htaccess
-	cd userweb ; mv dist/index.html ./
+	cd userweb ; mv dist/index.html ./index.phtml
 
 build_library:
 	# Build with composer
