@@ -368,6 +368,23 @@ class Companies extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'mediarelay_setid' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'mediarelay_setid',
+	    'COLUMN_POSITION' => 17,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => '32',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

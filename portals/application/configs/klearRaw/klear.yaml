@@ -311,6 +311,10 @@ production:
           title: ngettext('Kam dispatcher', 'Kam dispatcher', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kam dispatcher', 'Kam dispatcher', 0))
+        KamRtpproxyList: 
+          title: ngettext('Kam rtpproxy', 'Kam rtpproxy', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kam rtpproxy', 'Kam rtpproxy', 0))
         KamTrunksDialplanList: 
           title: ngettext('Kam trunks dialplan', 'Kam trunks dialplan', 0)
           class: ui-silk-text-list-bullets

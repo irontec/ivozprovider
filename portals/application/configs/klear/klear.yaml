@@ -65,6 +65,10 @@ production:
           title: ngettext('Proxy trunk', 'Proxy trunks', 0)
           class: ui-silk-server
           description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))              
+        KamRtpproxyList:
+          title: ngettext('Media relay', 'Media relays', 0)
+          class: ui-silk-bell-go
+          description: _("List of %s", ngettext('Media relay', 'Media relays', 0))
         TerminalManufacturersList:
           title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
           class: ui-silk-telephone-link

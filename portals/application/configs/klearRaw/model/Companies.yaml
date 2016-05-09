@@ -116,6 +116,11 @@ production:
             template: '%iden%'
           order: iden
         'null': _("Unasigned")
+    mediarelay_setid:
+      title: _('Mediarelay setid')
+      type: text
+      defaultValue: 0
+      maxLength: 32
 staging: 
   _extends: production
 testing: 

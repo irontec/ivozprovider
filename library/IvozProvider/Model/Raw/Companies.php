@@ -135,6 +135,13 @@ class Companies extends ModelAbstract
      */
     protected $_languageId;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_mediarelaySetid;
+
 
     /**
      * Parent relation Companies_ibfk_10
@@ -405,6 +412,7 @@ class Companies extends ModelAbstract
         'outbound_prefix'=>'outboundPrefix',
         'countryId'=>'countryId',
         'languageId'=>'languageId',
+        'mediarelay_setid'=>'mediarelaySetid',
     );
 
     /**
@@ -564,6 +572,7 @@ class Companies extends ModelAbstract
 
         $this->_defaultValues = array(
             'externalMaxCalls' => '0',
+            'mediarelaySetid' => '0',
         );
 
         $this->_initFileObjects();
@@ -1166,6 +1175,40 @@ class Companies extends ModelAbstract
     public function getLanguageId()
     {
         return $this->_languageId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setMediarelaySetid($data)
+    {
+
+        if ($this->_mediarelaySetid != $data) {
+            $this->_logChange('mediarelaySetid');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_mediarelaySetid = $data;
+
+        } else if (!is_null($data)) {
+            $this->_mediarelaySetid = (string) $data;
+
+        } else {
+            $this->_mediarelaySetid = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column mediarelay_setid
+     *
+     * @return string
+     */
+    public function getMediarelaySetid()
+    {
+        return $this->_mediarelaySetid;
     }
 
     /**

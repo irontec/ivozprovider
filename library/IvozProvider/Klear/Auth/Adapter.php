@@ -127,6 +127,7 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
         $auth = \Zend_Auth::getInstance();
         $authStorage = $auth->getStorage();
         $this->_user->id = $this->_user->getId();
+        $this->_user->isNotMainOperator = !$this->_user->isMainOperator;
 
         $authStorage->write($this->_user);
     }

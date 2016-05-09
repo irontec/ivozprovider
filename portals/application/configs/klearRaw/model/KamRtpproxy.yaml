@@ -1,0 +1,38 @@
+production: 
+  class: \IvozProvider\Model\KamRtpproxy
+  fields: 
+    setid: 
+      title: _('Setid')
+      type: text
+      defaultValue: 0
+      maxLength: 32
+      default: true
+    url: 
+      title: ngettext('Url', 'Urls', 1)
+      type: text
+      required: true
+      maxLength: 128
+    flags: 
+      title: _('Flag')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    weight: 
+      title: _('Weight')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      maxLength: 200
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

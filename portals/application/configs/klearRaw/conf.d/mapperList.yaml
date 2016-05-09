@@ -71,6 +71,7 @@ mappers:
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}
+  - &KamRtpproxy {mapper: \IvozProvider\Mapper\Sql\KamRtpproxy, modelFile: KamRtpproxy}
   - &KamTrunksAcc {mapper: \IvozProvider\Mapper\Sql\KamTrunksAcc, modelFile: KamTrunksAcc}
   - &KamTrunksAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksAccCdrs, modelFile: KamTrunksAccCdrs}
   - &KamTrunksDialplan {mapper: \IvozProvider\Mapper\Sql\KamTrunksDialplan, modelFile: KamTrunksDialplan}
@@ -80,7 +81,6 @@ mappers:
   - &KamTrunksLocation {mapper: \IvozProvider\Mapper\Sql\KamTrunksLocation, modelFile: KamTrunksLocation}
   - &KamTrunksMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamTrunksMissedCalls, modelFile: KamTrunksMissedCalls}
   - &KamTrunksUacreg {mapper: \IvozProvider\Mapper\Sql\KamTrunksUacreg, modelFile: KamTrunksUacreg}
-  - &KamTrunksUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamTrunksUsrPreferences, modelFile: KamTrunksUsrPreferences}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
   - &KamUsersAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamUsersAccCdrs, modelFile: KamUsersAccCdrs}
   - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
@@ -91,5 +91,4 @@ mappers:
   - &KamUsersLocationAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs, modelFile: KamUsersLocationAttrs}
   - &KamUsersMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamUsersMissedCalls, modelFile: KamUsersMissedCalls}
   - &KamUsersTrusted {mapper: \IvozProvider\Mapper\Sql\KamUsersTrusted, modelFile: KamUsersTrusted}
-  - &KamUsersUsrPreferences {mapper: \IvozProvider\Mapper\Sql\KamUsersUsrPreferences, modelFile: KamUsersUsrPreferences}
   - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}
