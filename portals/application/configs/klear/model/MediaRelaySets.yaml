@@ -1,0 +1,20 @@
+production: 
+  class: \IvozProvider\Model\MediaRelaySets
+  fields: 
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 32
+      required: true
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      maxLength: 200
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

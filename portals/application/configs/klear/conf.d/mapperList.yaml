@@ -39,6 +39,7 @@ mappers:
   - &LcrRules {mapper: \IvozProvider\Mapper\Sql\LcrRules, modelFile: LcrRules}
   - &Locutions {mapper: \IvozProvider\Mapper\Sql\Locutions, modelFile: Locutions}
   - &MainOperators {mapper: \IvozProvider\Mapper\Sql\MainOperators, modelFile: MainOperators}
+  - &MediaRelaySets {mapper: \IvozProvider\Mapper\Sql\MediaRelaySets, modelFile: MediaRelaySets}
   - &MusicOnHold {mapper: \IvozProvider\Mapper\Sql\MusicOnHold, modelFile: MusicOnHold}
   - &OutgoingRouting {mapper: \IvozProvider\Mapper\Sql\OutgoingRouting, modelFile: OutgoingRouting}
   - &ParsedCDRs {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRs}

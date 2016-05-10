@@ -116,11 +116,19 @@ production:
             template: '%iden%'
           order: iden
         'null': _("Unasigned")
-    mediarelay_setid:
-      title: _('Mediarelay setid')
-      type: text
-      defaultValue: 0
-      maxLength: 32
+    mediaRelaySetsId: 
+      title: _('Media relay sets id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\MediaRelaySets
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
 staging: 
   _extends: production
 testing: 

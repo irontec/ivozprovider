@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\KamRtpproxy
+ * Data Mapper implementation for IvozProvider\Model\MediaRelaySets
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class KamRtpproxy extends MapperAbstract
+class MediaRelaySets extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\KamRtpproxy';
+    protected $_modelName = 'IvozProvider\\Model\\MediaRelaySets';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class KamRtpproxy extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\KamRtpproxy $model
+     * @param IvozProvider\Model\Raw\MediaRelaySets $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\KamRtpproxy) {
+        if (!$model instanceof \IvozProvider\Model\Raw\MediaRelaySets) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\KamRtpproxy object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\MediaRelaySets object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\KamRtpproxy object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\MediaRelaySets object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,12 +49,8 @@ class KamRtpproxy extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'setid' => $model->getSetid(),
-                'url' => $model->getUrl(),
-                'flags' => $model->getFlags(),
-                'weight' => $model->getWeight(),
+                'name' => $model->getName(),
                 'description' => $model->getDescription(),
-                'mediaRelaySetsId' => $model->getMediaRelaySetsId(),
             );
         } else {
             $result = array();
@@ -93,12 +89,12 @@ class KamRtpproxy extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\KamRtpproxy
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\KamRtpproxy');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets');
         }
 
         return $this->_dbTable;
@@ -107,17 +103,17 @@ class KamRtpproxy extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\KamRtpproxy $model The model to delete
+     * @param IvozProvider\Model\Raw\MediaRelaySets $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\KamRtpproxy) {
+        if (!$model instanceof \IvozProvider\Model\Raw\MediaRelaySets) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\KamRtpproxy object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\MediaRelaySets object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\KamRtpproxy object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\MediaRelaySets object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -167,7 +163,7 @@ class KamRtpproxy extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamRtpproxy', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -215,7 +211,7 @@ class KamRtpproxy extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamRtpproxy', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -293,7 +289,7 @@ class KamRtpproxy extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\KamRtpproxy $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\MediaRelaySets $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -301,17 +297,17 @@ class KamRtpproxy extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\KamRtpproxy $model
+     * @param \IvozProvider\Model\Raw\MediaRelaySets $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\KamRtpproxy $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\MediaRelaySets $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\KamRtpproxy $model,
+    protected function _save(\IvozProvider\Model\Raw\MediaRelaySets $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -440,6 +436,37 @@ class KamRtpproxy extends MapperAbstract
             }
 
 
+            if ($recursive) {
+                if ($model->getCompanies(null, null, true) !== null) {
+                    $companies = $model->getCompanies();
+
+                    if (!is_array($companies)) {
+
+                        $companies = array($companies);
+                    }
+
+                    foreach ($companies as $value) {
+                        $value->setMediaRelaySetsId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getKamRtpproxy(null, null, true) !== null) {
+                    $kamRtpproxy = $model->getKamRtpproxy();
+
+                    if (!is_array($kamRtpproxy)) {
+
+                        $kamRtpproxy = array($kamRtpproxy);
+                    }
+
+                    foreach ($kamRtpproxy as $value) {
+                        $value->setMediaRelaySetsId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+            }
+
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -519,13 +546,13 @@ class KamRtpproxy extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\KamRtpproxy|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\KamRtpproxy The model with the data provided
+     * @param IvozProvider\Model\Raw\MediaRelaySets|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\MediaRelaySets The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\KamRtpproxy();
+            $entry = new \IvozProvider\Model\MediaRelaySets();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -533,29 +560,17 @@ class KamRtpproxy extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setSetid($data['setid'])
-                  ->setUrl($data['url'])
-                  ->setFlags($data['flags'])
-                  ->setWeight($data['weight'])
-                  ->setDescription($data['description'])
-                  ->setMediaRelaySetsId($data['mediaRelaySetsId']);
+                  ->setName($data['name'])
+                  ->setDescription($data['description']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setSetid($data->{'setid'})
-                  ->setUrl($data->{'url'})
-                  ->setFlags($data->{'flags'})
-                  ->setWeight($data->{'weight'})
-                  ->setDescription($data->{'description'})
-                  ->setMediaRelaySetsId($data->{'mediaRelaySetsId'});
+                  ->setName($data->{'name'})
+                  ->setDescription($data->{'description'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\KamRtpproxy) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\MediaRelaySets) {
             $entry->setId($data->getId())
-                  ->setSetid($data->getSetid())
-                  ->setUrl($data->getUrl())
-                  ->setFlags($data->getFlags())
-                  ->setWeight($data->getWeight())
-                  ->setDescription($data->getDescription())
-                  ->setMediaRelaySetsId($data->getMediaRelaySetsId());
+                  ->setName($data->getName())
+                  ->setDescription($data->getDescription());
 
         }
 

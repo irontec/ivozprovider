@@ -66,6 +66,10 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 $show = $this->_pricingPlanHasStarted();
 //                 $show = false;
                 break;
+            case "mediaRelaySetsEdit_screen":
+            case "mediaRelaySetsDel_dialog":
+                $show = $this->_isRemovable();
+                break;
             case "domainsEdit_screen":
             case "domainsDel_dialog":
                 $show = $this->_isEditable();
@@ -89,6 +93,15 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             return $response;
         }
 
+    }
+
+    protected function _isRemovable() {
+        $name = $this->_parentModel->getName();
+        if ($name == 'Default') {
+            return false;
+        }
+
+        return true;
     }
 
     protected function _isEditable() {

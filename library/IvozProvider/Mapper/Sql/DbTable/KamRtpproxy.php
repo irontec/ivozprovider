@@ -39,7 +39,13 @@ class KamRtpproxy extends TableAbstract
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\KamRtpproxy';
 
     protected $_sequence = true; // int
-    
+    protected $_referenceMap = array(
+        'KamRtpproxyIbfk1' => array(
+            'columns' => 'mediaRelaySetsId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets',
+            'refColumns' => 'id'
+        )
+    );
     
     protected $_metadata = array (
 	  'id' => 
@@ -140,6 +146,23 @@ class KamRtpproxy extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'mediaRelaySetsId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'kam_rtpproxy',
+	    'COLUMN_NAME' => 'mediaRelaySetsId',
+	    'COLUMN_POSITION' => 7,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

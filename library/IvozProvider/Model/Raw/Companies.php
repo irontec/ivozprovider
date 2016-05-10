@@ -136,12 +136,19 @@ class Companies extends ModelAbstract
     protected $_languageId;
 
     /**
-     * Database var type varchar
+     * Database var type int
      *
-     * @var string
+     * @var int
      */
-    protected $_mediarelaySetid;
+    protected $_mediaRelaySetsId;
 
+
+    /**
+     * Parent relation Companies_ibfk_11
+     *
+     * @var \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    protected $_MediaRelaySets;
 
     /**
      * Parent relation Companies_ibfk_10
@@ -412,7 +419,7 @@ class Companies extends ModelAbstract
         'outbound_prefix'=>'outboundPrefix',
         'countryId'=>'countryId',
         'languageId'=>'languageId',
-        'mediarelay_setid'=>'mediarelaySetid',
+        'mediaRelaySetsId'=>'mediaRelaySetsId',
     );
 
     /**
@@ -429,6 +436,10 @@ class Companies extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'CompaniesIbfk11'=> array(
+                    'property' => 'MediaRelaySets',
+                    'table_name' => 'MediaRelaySets',
+                ),
             'CompaniesIbfk10'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
@@ -572,7 +583,6 @@ class Companies extends ModelAbstract
 
         $this->_defaultValues = array(
             'externalMaxCalls' => '0',
-            'mediarelaySetid' => '0',
         );
 
         $this->_initFileObjects();
@@ -1179,36 +1189,87 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Companies
      */
-    public function setMediarelaySetid($data)
+    public function setMediaRelaySetsId($data)
     {
 
-        if ($this->_mediarelaySetid != $data) {
-            $this->_logChange('mediarelaySetid');
+        if ($this->_mediaRelaySetsId != $data) {
+            $this->_logChange('mediaRelaySetsId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_mediarelaySetid = $data;
+            $this->_mediaRelaySetsId = $data;
 
         } else if (!is_null($data)) {
-            $this->_mediarelaySetid = (string) $data;
+            $this->_mediaRelaySetsId = (int) $data;
 
         } else {
-            $this->_mediarelaySetid = $data;
+            $this->_mediaRelaySetsId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column mediarelay_setid
+     * Gets column mediaRelaySetsId
      *
-     * @return string
+     * @return int
      */
-    public function getMediarelaySetid()
+    public function getMediaRelaySetsId()
     {
-        return $this->_mediarelaySetid;
+        return $this->_mediaRelaySetsId;
+    }
+
+    /**
+     * Sets parent relation MediaRelaySets
+     *
+     * @param \IvozProvider\Model\Raw\MediaRelaySets $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setMediaRelaySets(\IvozProvider\Model\Raw\MediaRelaySets $data)
+    {
+        $this->_MediaRelaySets = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setMediaRelaySetsId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk11');
+        return $this;
+    }
+
+    /**
+     * Gets parent MediaRelaySets
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    public function getMediaRelaySets($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk11';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_MediaRelaySets = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_MediaRelaySets;
     }
 
     /**

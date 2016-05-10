@@ -49,6 +49,9 @@ production:
       title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
       fixedPositions:
         <<: *ProxyTrunksFixedPositions_link
+      fields:
+        readOnly:
+          name: true
 staging: 
   _extends: production
 testing: 

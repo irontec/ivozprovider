@@ -65,6 +65,20 @@ class KamRtpproxy extends ModelAbstract
      */
     protected $_description;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_mediaRelaySetsId;
+
+
+    /**
+     * Parent relation kam_rtpproxy_ibfk_1
+     *
+     * @var \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    protected $_MediaRelaySets;
 
 
     protected $_columnsList = array(
@@ -74,6 +88,7 @@ class KamRtpproxy extends ModelAbstract
         'flags'=>'flags',
         'weight'=>'weight',
         'description'=>'description',
+        'mediaRelaySetsId'=>'mediaRelaySetsId',
     );
 
     /**
@@ -90,6 +105,10 @@ class KamRtpproxy extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'KamRtpproxyIbfk1'=> array(
+                    'property' => 'MediaRelaySets',
+                    'table_name' => 'MediaRelaySets',
+                ),
         ));
 
         $this->setDependentList(array(
@@ -340,6 +359,91 @@ class KamRtpproxy extends ModelAbstract
     public function getDescription()
     {
         return $this->_description;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\KamRtpproxy
+     */
+    public function setMediaRelaySetsId($data)
+    {
+
+        if ($this->_mediaRelaySetsId != $data) {
+            $this->_logChange('mediaRelaySetsId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_mediaRelaySetsId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_mediaRelaySetsId = (int) $data;
+
+        } else {
+            $this->_mediaRelaySetsId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column mediaRelaySetsId
+     *
+     * @return int
+     */
+    public function getMediaRelaySetsId()
+    {
+        return $this->_mediaRelaySetsId;
+    }
+
+    /**
+     * Sets parent relation MediaRelaySets
+     *
+     * @param \IvozProvider\Model\Raw\MediaRelaySets $data
+     * @return \IvozProvider\Model\Raw\KamRtpproxy
+     */
+    public function setMediaRelaySets(\IvozProvider\Model\Raw\MediaRelaySets $data)
+    {
+        $this->_MediaRelaySets = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setMediaRelaySetsId($primaryKey);
+        }
+
+        $this->_setLoaded('KamRtpproxyIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent MediaRelaySets
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    public function getMediaRelaySets($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamRtpproxyIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_MediaRelaySets = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_MediaRelaySets;
     }
 
     /**

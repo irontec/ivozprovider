@@ -6,60 +6,63 @@
 production: 
   main: 
     module: klearMatrix
-    defaultScreen: kamKamRtpproxyList_screen
-  screens: &kamKamRtpproxy_screensLink 
-    kamKamRtpproxyList_screen: &kamRtpproxyList_screenLink 
+    defaultScreen: kamRtpproxyList_screen
+  screens: &kamRtpproxy_screensLink 
+    kamRtpproxyList_screen: &kamRtpproxyList_screenLink 
       controller: list
       pagination: 
         items: 25
       <<: *KamRtpproxy
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Media relay', 'Media relay(s)', 0), "[format| (%parent%)]")
-      fields: &kamKamRtpproxy_fieldsLink 
+      fields: &kamRtpproxy_fieldsLink 
         blacklist:
+          setid: true
           flags: true
         options: 
           title: _("Options")
           screens: 
-            kamKamRtpproxyEdit_screen: true
+            kamRtpproxyEdit_screen: true
           dialogs: 
-            kamKamRtpproxyDel_dialog: true
-          default: kamKamRtpproxyEdit_screen
+            kamRtpproxyDel_dialog: true
+          default: kamRtpproxyEdit_screen
       options: 
         title: _("Options")
         screens: 
-          kamKamRtpproxyNew_screen: true
+          kamRtpproxyNew_screen: true
         dialogs: 
-          kamKamRtpproxyDel_dialog: true
+          kamRtpproxyDel_dialog: true
       <<: *kamRtpproxyHelp
-    kamKamRtpproxyNew_screen: &kamRtpproxyNew_screenLink 
+    kamRtpproxyNew_screen: &kamRtpproxyNew_screenLink 
       <<: *KamRtpproxy
       controller: new
       class: ui-silk-add
       fields:
         blacklist:
           flags: true
+          setid: true
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Media relay', 'Media relay(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
       postActionOptions: 
         screens: 
-          kamKamRtpproxyEdit_screen: true
+          kamRtpproxyEdit_screen: true
       <<: *kamRtpproxyHelp
-    kamKamRtpproxyEdit_screen: &kamRtpproxyEdit_screenLink 
+    kamRtpproxyEdit_screen: &kamRtpproxyEdit_screenLink 
       <<: *KamRtpproxy
       controller: edit
       class: ui-silk-pencil
       fields:
         blacklist:
           flags: true
+          setid: true
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Media relay', 'Media relay(s)', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Media relay', 'Media relay(s)', 1), "[format| (%item%)]")
       <<: *kamRtpproxyHelp
-  dialogs: &kamKamRtpproxy_dialogsLink 
-    kamKamRtpproxyDel_dialog: &kamRtpproxyDel_dialogLink 
+  dialogs: &kamRtpproxy_dialogsLink 
+    kamRtpproxyDel_dialog: &kamRtpproxyDel_dialogLink 
       <<: *KamRtpproxy
       controller: delete
       class: ui-silk-bin

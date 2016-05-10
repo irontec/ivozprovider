@@ -45,7 +45,7 @@ production:
           externalMaxCalls: true
           defaultTimezoneId: true
           applicationServerId: true
-          mediarelay_setid: true
+          mediaRelaySetsId: true
         order:
           name: true
           nif: true
@@ -79,7 +79,7 @@ production:
           musicOnHoldId: true
           transformationRulesetGroupsId: true
           applicationServerId: true
-          mediarelay_setid: ${auth.isNotMainOperator}
+          mediaRelaySetsId: ${auth.isNotMainOperator}
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -101,7 +101,7 @@ production:
           fields:
             outbound_prefix: 4
             externalMaxCalls: 4
-            mediarelay_setid: 4
+            mediaRelaySetsId: 4
             countryId: 6
             domain_users: 6
         group4:
@@ -123,7 +123,7 @@ production:
           musicOnHoldId: true
           transformationRulesetGroupsId: true
           applicationServerId: true
-          mediarelay_setid: ${auth.isNotMainOperator}
+          mediaRelaySetsId: ${auth.isNotMainOperator}
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Company', 'Companies', 1), "[format| (%item%)]")

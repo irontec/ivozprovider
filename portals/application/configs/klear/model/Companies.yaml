@@ -151,19 +151,18 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    mediarelay_setid:
-      title: _('Mediarelay group')
-      type: text
-      defaultValue: 0
-      pattern: "^[0-9]{1,3}$"
-      required: true
-      showOnlyIf: ${auth.canSeeMain}
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Use 0 unless you know what you are doing")
-        label: _("Need help?")
+    mediaRelaySetsId: 
+      title: _('Media relay Set')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\MediaRelaySets
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
 staging: 
   _extends: production
 testing: 

@@ -206,7 +206,7 @@ class CallsController extends BaseController
         $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
         $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
-        $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediarelaySetId());
+        $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
         
         // Set Callee information. 
         // Use channelname to get this information because in case of ringall hungroup

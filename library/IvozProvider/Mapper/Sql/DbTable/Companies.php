@@ -40,6 +40,11 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'CompaniesIbfk11' => array(
+            'columns' => 'mediaRelaySetsId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets',
+            'refColumns' => 'id'
+        ),
         'CompaniesIbfk10' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
@@ -368,19 +373,19 @@ class Companies extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'mediarelay_setid' => 
+	  'mediaRelaySetsId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Companies',
-	    'COLUMN_NAME' => 'mediarelay_setid',
+	    'COLUMN_NAME' => 'mediaRelaySetsId',
 	    'COLUMN_POSITION' => 17,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => '0',
-	    'NULLABLE' => false,
-	    'LENGTH' => '32',
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
