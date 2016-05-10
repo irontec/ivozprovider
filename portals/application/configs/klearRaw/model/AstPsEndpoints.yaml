@@ -128,6 +128,14 @@ production:
           'no': _('no')
           'required': _('required')
           'yes': _('yes')
+    trust_id_inbound: 
+      title: _('Trust id inbound')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
 staging: 
   _extends: production
 testing: 

@@ -45,6 +45,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
                 ->setAllow($model->getAllow())
                 ->setDirectMedia($model->getDirectMedia())
                 ->setDirectMediaMethod($model->getDirectMediaMethod())
+                ->setTrustIdInbound('yes')
                 ->save();
         }
         return $response;
