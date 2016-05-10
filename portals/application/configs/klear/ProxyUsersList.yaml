@@ -38,6 +38,9 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Proxy user', 'Proxy users', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Proxy user', 'Proxy users', 1), "[format| (%item%)]")
+      fields:
+        readOnly:
+          name: true
 staging: 
   _extends: production
 testing: 
