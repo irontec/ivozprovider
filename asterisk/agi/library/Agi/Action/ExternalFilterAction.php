@@ -44,8 +44,8 @@ class ExternalFilterAction extends RouterAction
         // Route to configured destination
         $this->_routeType       = $filter->getHolidayTargetType();
         $this->_routeExtension  = $filter->getHolidayExtension();
-        $this->_routeExternal   = $filter->getOutOfScheduleNumberValue();
-        $this->_routeVoiceMail  = $filter->getolidayVoiceMailUser();
+        $this->_routeExternal   = $filter->getHolidayNumberValue();
+        $this->_routeVoiceMail  = $filter->getHolidayVoiceMailUser();
         $this->route();
     }
 
