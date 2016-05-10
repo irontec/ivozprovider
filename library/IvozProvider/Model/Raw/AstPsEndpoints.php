@@ -205,14 +205,6 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_AstPsAors;
 
-    /**
-     * Dependent relation ast_ps_identify_ibfk_1
-     * Type: One-to-One relationship
-     *
-     * @var \IvozProvider\Model\Raw\AstPsIdentify
-     */
-    protected $_AstPsIdentify;
-
     protected $_columnsList = array(
         'id'=>'id',
         'sorcery_id'=>'sorceryId',
@@ -263,10 +255,6 @@ class AstPsEndpoints extends ModelAbstract
             'AstPsAorsIbfk1' => array(
                     'property' => 'AstPsAors',
                     'table_name' => 'ast_ps_aors',
-                ),
-            'AstPsIdentifyIbfk1' => array(
-                    'property' => 'AstPsIdentify',
-                    'table_name' => 'ast_ps_identify',
                 ),
         ));
 
@@ -1094,48 +1082,6 @@ class AstPsEndpoints extends ModelAbstract
         }
 
         return $this->_AstPsAors;
-    }
-
-    /**
-     * Sets dependent relation ast_ps_identify_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\AstPsIdentify $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setAstPsIdentify(\IvozProvider\Model\Raw\AstPsIdentify $data)
-    {
-        $this->_AstPsIdentify = $data;
-        $this->_setLoaded('AstPsIdentifyIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent ast_ps_identify_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return \IvozProvider\Model\Raw\AstPsIdentify
-     */
-    public function getAstPsIdentify($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'AstPsIdentifyIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_AstPsIdentify = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_AstPsIdentify;
     }
 
     /**

@@ -68,7 +68,6 @@ mappers:
   - &AstMusiconhold {mapper: \IvozProvider\Mapper\Sql\AstMusiconhold, modelFile: AstMusiconhold}
   - &AstPsAors {mapper: \IvozProvider\Mapper\Sql\AstPsAors, modelFile: AstPsAors}
   - &AstPsEndpoints {mapper: \IvozProvider\Mapper\Sql\AstPsEndpoints, modelFile: AstPsEndpoints}
-  - &AstPsIdentify {mapper: \IvozProvider\Mapper\Sql\AstPsIdentify, modelFile: AstPsIdentify}
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}

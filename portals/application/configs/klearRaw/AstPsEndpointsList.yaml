@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include AstPsAorsList.yaml
-#include AstPsIdentifyList.yaml
 
 
 production: 
@@ -22,7 +21,6 @@ production:
           screens: 
             astPsEndpointsEdit_screen: true
             astPsAorsList_screen: true
-            astPsIdentifyList_screen: true
           dialogs: 
             astPsEndpointsDel_dialog: true
           default: astPsEndpointsEdit_screen
@@ -64,19 +62,6 @@ production:
       <<: *astPsAorsEdit_screenLink
       filterField: id
 
-    #astPsIdentify: 
-    astPsIdentifyList_screen: 
-      <<: *astPsIdentifyList_screenLink
-      filterField: id
-      parentOptionCustomizer: 
-        - recordCount
-    astPsIdentifyNew_screen: 
-      <<: *astPsIdentifyNew_screenLink
-      filterField: id
-    astPsIdentifyEdit_screen: 
-      <<: *astPsIdentifyEdit_screenLink
-      filterField: id
-
   dialogs: &astPsEndpoints_dialogsLink 
     astPsEndpointsDel_dialog: &astPsEndpointsDel_dialogLink 
       <<: *AstPsEndpoints
@@ -90,8 +75,6 @@ production:
       labelOnList: 1
   # astPsAors dialogs: 
     <<: *astPsAors_dialogsLink
-  # astPsIdentify dialogs: 
-    <<: *astPsIdentify_dialogsLink
 staging: 
   _extends: production
 testing: 

@@ -52,8 +52,7 @@ class AstPsEndpoints extends TableAbstract
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsAors',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsIdentify'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsAors'
     );
     protected $_metadata = array (
 	  'id' => 

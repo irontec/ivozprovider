@@ -458,12 +458,6 @@ class AstPsEndpoints extends MapperAbstract
                           ->saveRecursive(false, $transactionTag);
                 }
 
-                if ($model->getAstPsIdentify(null, null, true) !== null) {
-                    $model->getAstPsIdentify()
-                          ->setId($primaryKey)
-                          ->saveRecursive(false, $transactionTag);
-                }
-
             }
 
             if ($success === true) {
