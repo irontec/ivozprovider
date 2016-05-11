@@ -42,8 +42,6 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
 
         if (count($servicesIds)) {
             $this->_condition[] = "`id` NOT IN (" . implode(',', $servicesIds) . ")";
-        } else {
-            $this->_condition[] = "`id` IS NULL";  // Hackish
         }
 
         return true;
