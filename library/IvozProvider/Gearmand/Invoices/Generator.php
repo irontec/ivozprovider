@@ -59,7 +59,7 @@ class Generator
             $brandLogoPath = "images/palmera90.png";
         }
 
-        $dateFormat = \Zend_Locale_Format::getDateFormat($invoice->getCompany()->getInvoiceLanguage()->getIden());
+        $dateFormat = \Zend_Locale_Format::getDateFormat($invoice->getCompany()->getLanguageCode());
         $invoiceTz = $company->getDefaultTimezone()->getTz();
         $invoiceDate = new \Zend_Date();
         $invoiceDate->setTimezone($invoiceTz);
@@ -84,7 +84,7 @@ class Generator
         )
         ->build();
 
-        $locale = $invoice->getCompany()->getInvoiceLanguage()->getIden();
+        $locale = $invoice->getCompany()->getLanguageCode();
 
         $invoiceArray = $invoice->toArray();
         $invoiceArray["invoiceDate"] = $invoiceDate->toString($dateFormat);
@@ -153,8 +153,7 @@ class Generator
                 break;
             }
             foreach ($calls as $call) {
-                $locale = $invoice->getCompany()->getInvoiceLanguage()->getIden();
-                $lang = explode("_", $locale)[0];
+                $lang = $invoice->getCompany()->getLanguageCode();
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getCallDate(true)->setTimezone($invoiceTz)->toString();
                 $callData["price"] = number_format(ceil($callData["price"]*100)/100, 2);

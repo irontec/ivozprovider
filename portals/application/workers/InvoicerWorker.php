@@ -35,7 +35,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
         $this->_logger->log("[INVOICER] ID = ".$pk, \Zend_Log::INFO);
         $invoicesMapper = new \IvozProvider\Mapper\Sql\Invoices();
 
-        $unsetInvoiceIdQuery = "UPDATE parsedCDRs set invoiceId = null WHERE invoiceId = '".$pk."'";
+        $unsetInvoiceIdQuery = "UPDATE ParsedCDRs set invoiceId = null WHERE invoiceId = '".$pk."'";
         $dbAdapter = $invoicesMapper->getDbTable()->getAdapter();
         $dbAdapter->query($unsetInvoiceIdQuery);
 
@@ -45,7 +45,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
         try {
             $invoiceGenerator = new \IvozProvider\Gearmand\Invoices\Generator($pk, $this->_logger);
             $content = $invoiceGenerator->getInvoicePDFContents();
-            $tempPath = APPLICATION_PATH."/../storage/invoice";
+            $tempPath = "/opt/irontec/ivozprovider/storage/invoice";
             if (!file_exists($tempPath)) {
                 mkdir($tempPath);
             }
