@@ -14,7 +14,7 @@ production:
       <<: *BrandServices
       forcedValues:
         <<: *forcedBrand
-      class: ui-silk-text-list-bullets
+      class: ui-silk-page-white-wrench
       title: _("List of %s %2s", ngettext('Brand service', 'Brand services', 0), "[format| (%parent%)]")
       fields: &brandServices_fieldsLink 
         options: 
