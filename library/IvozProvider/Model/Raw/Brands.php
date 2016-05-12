@@ -53,13 +53,6 @@ class Brands extends ModelAbstract
      *
      * @var string
      */
-    protected $_extensionBlackListRegExp;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
     protected $_domainTrunks;
 
     /**
@@ -327,7 +320,6 @@ class Brands extends ModelAbstract
         'id'=>'id',
         'name'=>'name',
         'nif'=>'nif',
-        'extensionBlackListRegExp'=>'extensionBlackListRegExp',
         'domain_trunks'=>'domainTrunks',
         'domain_users'=>'domainUsers',
         'defaultTimezoneId'=>'defaultTimezoneId',
@@ -682,40 +674,6 @@ class Brands extends ModelAbstract
     public function getNif()
     {
         return $this->_nif;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function setExtensionBlackListRegExp($data)
-    {
-
-        if ($this->_extensionBlackListRegExp != $data) {
-            $this->_logChange('extensionBlackListRegExp');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_extensionBlackListRegExp = $data;
-
-        } else if (!is_null($data)) {
-            $this->_extensionBlackListRegExp = (string) $data;
-
-        } else {
-            $this->_extensionBlackListRegExp = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column extensionBlackListRegExp
-     *
-     * @return string
-     */
-    public function getExtensionBlackListRegExp()
-    {
-        return $this->_extensionBlackListRegExp;
     }
 
     /**

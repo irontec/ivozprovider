@@ -51,7 +51,6 @@ class Brands extends MapperAbstract
                 'id' => $model->getId(),
                 'name' => $model->getName(),
                 'nif' => $model->getNif(),
-                'extensionBlackListRegExp' => $model->getExtensionBlackListRegExp(),
                 'domain_trunks' => $model->getDomainTrunks(),
                 'domain_users' => $model->getDomainUsers(),
                 'defaultTimezoneId' => $model->getDefaultTimezoneId(),
@@ -828,7 +827,6 @@ class Brands extends MapperAbstract
             $entry->setId($data['id'])
                   ->setName($data['name'])
                   ->setNif($data['nif'])
-                  ->setExtensionBlackListRegExp($data['extensionBlackListRegExp'])
                   ->setDomainTrunks($data['domain_trunks'])
                   ->setDomainUsers($data['domain_users'])
                   ->setDefaultTimezoneId($data['defaultTimezoneId'])
@@ -846,7 +844,6 @@ class Brands extends MapperAbstract
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
                   ->setNif($data->{'nif'})
-                  ->setExtensionBlackListRegExp($data->{'extensionBlackListRegExp'})
                   ->setDomainTrunks($data->{'domain_trunks'})
                   ->setDomainUsers($data->{'domain_users'})
                   ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
@@ -865,7 +862,6 @@ class Brands extends MapperAbstract
             $entry->setId($data->getId())
                   ->setName($data->getName())
                   ->setNif($data->getNif())
-                  ->setExtensionBlackListRegExp($data->getExtensionBlackListRegExp())
                   ->setDomainTrunks($data->getDomainTrunks())
                   ->setDomainUsers($data->getDomainUsers())
                   ->setDefaultTimezoneId($data->getDefaultTimezoneId())

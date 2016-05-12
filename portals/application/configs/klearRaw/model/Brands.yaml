@@ -12,11 +12,6 @@ production:
       type: text
       required: true
       maxLength: 25
-    extensionBlackListRegExp: 
-      title: _('Extension black list reg exp')
-      type: text
-      defaultValue: 
-      maxLength: 255
     domain_trunks: 
       title: _('Domain trunk')
       type: text
