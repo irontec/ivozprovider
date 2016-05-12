@@ -124,9 +124,9 @@ production:
           class: ui-silk-script-link
           description: _("List of %s", ngettext('Destination group', 'Destination groups', 0))          
         OutgoingRoutingList: 
-          title: ngettext('Outgoing Routing', 'Outgoing Routing', 0)
+          title: ngettext('Outgoing Routing', 'Outgoing Routings', 0)
           class: ui-silk-arrow-divide
-          description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routing', 0))          
+          description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routings', 0))
         PricingPlansList:
           title: ngettext('Pricing plan', 'Pricing plans', 0)
           class:  ui-silk-money
