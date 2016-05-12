@@ -64,6 +64,9 @@ production:
               - regExp
             template: '%name% (%regExp%)'
           order: name
+      decorators:
+        autocomplete:
+            command: targetPatternautocomplete_command
     brandId: 
       title: _('Brand id')
       type: number

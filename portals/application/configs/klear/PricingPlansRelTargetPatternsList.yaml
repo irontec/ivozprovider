@@ -133,6 +133,22 @@ production:
       <<: *PricingPlansRelTargetPatterns
       controller: File
       action: free-upload
+    targetPatternautocomplete_command:
+      <<: *PricingPlansRelTargetPatterns
+      controller: field-decorator
+      action: index
+      autocomplete:
+        mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+        filterClass: IvozProvider_Klear_Filter_Brand
+        fieldName:
+          fields:
+            - name_es
+            - name_en
+            - name
+            - regExp
+          template: '%name% (%regExp%)'
+        limit: 8
+        order: name
 staging: 
   _extends: production
 testing: 
