@@ -69,13 +69,16 @@ class Users extends Raw\Users
         return $endpoint;
     }
     
-
     /**
      * @return string with the voicemail
      */
     public function getVoiceMail()
     {
-        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
+        if (!is_null($this->getVoiceMailUser())) {
+            return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
+        } else {
+            return "";
+        }
     }
 
     /**
@@ -83,7 +86,12 @@ class Users extends Raw\Users
      */
     public function getVoiceMailUser()
     {
-        return 'user' . $this->getId();
+        $exten = $this->getExtensionNumber();
+        if (!empty($exten)) {
+            return $exten;
+        } else {
+            return "";
+        }
     }
 
     /**
