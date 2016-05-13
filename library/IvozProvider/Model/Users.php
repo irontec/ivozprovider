@@ -235,4 +235,13 @@ class Users extends Raw\Users
         }
         return $language->getIden();
     }
+
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $country = parent::getCountry($where, $orderBy, $avoidLoading);
+        if (is_null($country)) {
+            return $this->getCompany()->getCountries();
+        }
+        return $country;
+    }
 }

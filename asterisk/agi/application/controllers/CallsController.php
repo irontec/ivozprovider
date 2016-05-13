@@ -138,11 +138,6 @@ class CallsController extends BaseController
         $this->agi->verbose("Processing ougoing call from %s [%s] to number %s",
                         $user->getFullName(), $user->getId(), $exten);
 
-        if (! $user->hasSrcUserPerm($exten)) {
-            $this->agi->error("User %d is not allowed to place this call.", $user->getId());
-            return;
-        }
-
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
             if (($service = $company->getService($exten))) {
