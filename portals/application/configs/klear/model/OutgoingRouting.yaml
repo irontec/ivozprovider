@@ -30,7 +30,9 @@ production:
           fieldName: 
             fields: 
               - name
-            template: '%name%'
+              - description
+              - regExp
+            template: '%name% %description% (%regExp%)'
           order: name
     targetGroupId: 
       title: _('Select destination group')

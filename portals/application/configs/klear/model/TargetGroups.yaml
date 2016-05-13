@@ -34,10 +34,14 @@ production:
             brandId: brandId
           relationMapper: \IvozProvider\Mapper\Sql\TargetGroupsRelPatterns
           relatedMapperName: \IvozProvider\Mapper\Sql\TargetPatterns
-          relatedFieldName: description
+          relatedFieldName:
+            fields:
+              - name_es
+              - description_es
+              - regExp
+            template: "%name_es% %description_es% (%regExp%)"
           relationProperty: TargetPattern
           filterClass: IvozProvider_Klear_Filter_Brand
-          
 staging: 
   _extends: production
 testing: 
