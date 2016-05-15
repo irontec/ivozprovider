@@ -67,6 +67,7 @@ class AstPsEndpoints extends MapperAbstract
                 'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
                 'trust_id_inbound' => $model->getTrustIdInbound(),
+                't38_udptl' => $model->getT38Udptl(),
             );
         } else {
             $result = array();
@@ -571,7 +572,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendRpid($data['send_rpid'])
                   ->setSubscribecontext($data['subscribecontext'])
                   ->set100rel($data['100rel'])
-                  ->setTrustIdInbound($data['trust_id_inbound']);
+                  ->setTrustIdInbound($data['trust_id_inbound'])
+                  ->setT38Udptl($data['t38_udptl']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setSorceryId($data->{'sorcery_id'})
@@ -591,7 +593,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendRpid($data->{'send_rpid'})
                   ->setSubscribecontext($data->{'subscribecontext'})
                   ->set100rel($data->{'100rel'})
-                  ->setTrustIdInbound($data->{'trust_id_inbound'});
+                  ->setTrustIdInbound($data->{'trust_id_inbound'})
+                  ->setT38Udptl($data->{'t38_udptl'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
             $entry->setId($data->getId())
@@ -612,7 +615,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendRpid($data->getSendRpid())
                   ->setSubscribecontext($data->getSubscribecontext())
                   ->set100rel($data->get100rel())
-                  ->setTrustIdInbound($data->getTrustIdInbound());
+                  ->setTrustIdInbound($data->getTrustIdInbound())
+                  ->setT38Udptl($data->getT38Udptl());
 
         }
 

@@ -16,12 +16,6 @@ production:
       title: _('Per period charge')
       type: text
       required: true
-    metric: 
-      title: _('Metric')
-      type: number
-      defaultValue: 10
-      source: 
-        control: Spinner
     pricingPlanId: 
       title: _('Pricing plan id')
       type: select

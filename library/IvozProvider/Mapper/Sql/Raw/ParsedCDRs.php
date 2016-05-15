@@ -75,6 +75,7 @@ class ParsedCDRs extends MapperAbstract
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
                 'peeringContractId' => $model->getPeeringContractId(),
+                'externallyRated' => $model->getExternallyRated(),
             );
         } else {
             $result = array();
@@ -578,7 +579,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setPrice($data['price'])
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
                   ->setInvoiceId($data['invoiceId'])
-                  ->setPeeringContractId($data['peeringContractId']);
+                  ->setPeeringContractId($data['peeringContractId'])
+                  ->setExternallyRated($data['externallyRated']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCalldate($data->{'calldate'})
@@ -606,7 +608,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setPrice($data->{'price'})
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
                   ->setInvoiceId($data->{'invoiceId'})
-                  ->setPeeringContractId($data->{'peeringContractId'});
+                  ->setPeeringContractId($data->{'peeringContractId'})
+                  ->setExternallyRated($data->{'externallyRated'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ParsedCDRs) {
             $entry->setId($data->getId())
@@ -635,7 +638,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setPrice($data->getPrice())
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
                   ->setInvoiceId($data->getInvoiceId())
-                  ->setPeeringContractId($data->getPeeringContractId());
+                  ->setPeeringContractId($data->getPeeringContractId())
+                  ->setExternallyRated($data->getExternallyRated());
 
         }
 

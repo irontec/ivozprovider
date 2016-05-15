@@ -30,6 +30,12 @@ class ParsedCDRs extends Raw\ParsedCDRs
 
     public function tarificate($plan = null)
     {
+        $peeringContract = $this->getPeeringContract();
+        if ($peeringContract->getExternallyRated() == 1) {
+            $this->setExternallyRated(1);
+            return null;
+        }
+
         $callDate = $this->getCalldate(true);
         $dst = $this->getDst();
         $duration = $this->getDstDuration();
@@ -48,7 +54,7 @@ class ParsedCDRs extends Raw\ParsedCDRs
 
         $planToApply = $companyPricingPlanToApply->getPricingPlan();
         $this->_log("[tarificate] PlanToApply: ".$planToApply->getPrimaryKey(), \Zend_Log::INFO);
-return;
+
         $matchedPrices = $planToApply->getMatchedPrices($dst);
         if (is_null($matchedPrices)) {
             $this->_log("[tarificate] No matched Price found ", \Zend_Log::INFO);

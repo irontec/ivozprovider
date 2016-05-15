@@ -58,6 +58,13 @@ class PeeringContracts extends ModelAbstract
      */
     protected $_transformationRulesetGroupsTrunksId;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_externallyRated;
+
 
     /**
      * Parent relation PeeringContracts_ibfk_1
@@ -112,6 +119,7 @@ class PeeringContracts extends ModelAbstract
         'description'=>'description',
         'name'=>'name',
         'transformationRulesetGroupsTrunksId'=>'transformationRulesetGroupsTrunksId',
+        'externallyRated'=>'externallyRated',
     );
 
     /**
@@ -374,6 +382,40 @@ class PeeringContracts extends ModelAbstract
     public function getTransformationRulesetGroupsTrunksId()
     {
         return $this->_transformationRulesetGroupsTrunksId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function setExternallyRated($data)
+    {
+
+        if ($this->_externallyRated != $data) {
+            $this->_logChange('externallyRated');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_externallyRated = $data;
+
+        } else if (!is_null($data)) {
+            $this->_externallyRated = (int) $data;
+
+        } else {
+            $this->_externallyRated = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column externallyRated
+     *
+     * @return int
+     */
+    public function getExternallyRated()
+    {
+        return $this->_externallyRated;
     }
 
     /**

@@ -35,8 +35,8 @@ production:
             title: _("No")
           '1': 
             title: _("Yes")
-    outgoingDDI: 
-      title: _('Outgoing d d i')
+    outgoingDDIId: 
+      title: _('Outgoing d d i id')
       type: select
       source: 
         data: mapper

@@ -378,6 +378,23 @@ class AstPsEndpoints extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  't38_udptl' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_ps_endpoints',
+	    'COLUMN_NAME' => 't38_udptl',
+	    'COLUMN_POSITION' => 20,
+	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
+	    'DEFAULT' => 'no',
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

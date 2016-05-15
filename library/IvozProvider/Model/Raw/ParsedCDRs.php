@@ -223,6 +223,13 @@ class ParsedCDRs extends ModelAbstract
      */
     protected $_peeringContractId;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_externallyRated;
+
 
     /**
      * Parent relation parsedCDRs_ibfk_1
@@ -295,6 +302,7 @@ class ParsedCDRs extends ModelAbstract
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
         'peeringContractId'=>'peeringContractId',
+        'externallyRated'=>'externallyRated',
     );
 
     /**
@@ -1349,6 +1357,40 @@ class ParsedCDRs extends ModelAbstract
     public function getPeeringContractId()
     {
         return $this->_peeringContractId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setExternallyRated($data)
+    {
+
+        if ($this->_externallyRated != $data) {
+            $this->_logChange('externallyRated');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_externallyRated = $data;
+
+        } else if (!is_null($data)) {
+            $this->_externallyRated = (int) $data;
+
+        } else {
+            $this->_externallyRated = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column externallyRated
+     *
+     * @return int
+     */
+    public function getExternallyRated()
+    {
+        return $this->_externallyRated;
     }
 
     /**

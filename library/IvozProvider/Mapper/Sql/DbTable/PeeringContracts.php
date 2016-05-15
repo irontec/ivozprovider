@@ -143,6 +143,23 @@ class PeeringContracts extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'externallyRated' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'PeeringContracts',
+	    'COLUMN_NAME' => 'externallyRated',
+	    'COLUMN_POSITION' => 6,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

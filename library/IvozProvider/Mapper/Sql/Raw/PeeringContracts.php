@@ -53,6 +53,7 @@ class PeeringContracts extends MapperAbstract
                 'description' => $model->getDescription(),
                 'name' => $model->getName(),
                 'transformationRulesetGroupsTrunksId' => $model->getTransformationRulesetGroupsTrunksId(),
+                'externallyRated' => $model->getExternallyRated(),
             );
         } else {
             $result = array();
@@ -593,20 +594,23 @@ class PeeringContracts extends MapperAbstract
                   ->setBrandId($data['brandId'])
                   ->setDescription($data['description'])
                   ->setName($data['name'])
-                  ->setTransformationRulesetGroupsTrunksId($data['transformationRulesetGroupsTrunksId']);
+                  ->setTransformationRulesetGroupsTrunksId($data['transformationRulesetGroupsTrunksId'])
+                  ->setExternallyRated($data['externallyRated']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
                   ->setDescription($data->{'description'})
                   ->setName($data->{'name'})
-                  ->setTransformationRulesetGroupsTrunksId($data->{'transformationRulesetGroupsTrunksId'});
+                  ->setTransformationRulesetGroupsTrunksId($data->{'transformationRulesetGroupsTrunksId'})
+                  ->setExternallyRated($data->{'externallyRated'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\PeeringContracts) {
             $entry->setId($data->getId())
                   ->setBrandId($data->getBrandId())
                   ->setDescription($data->getDescription())
                   ->setName($data->getName())
-                  ->setTransformationRulesetGroupsTrunksId($data->getTransformationRulesetGroupsTrunksId());
+                  ->setTransformationRulesetGroupsTrunksId($data->getTransformationRulesetGroupsTrunksId())
+                  ->setExternallyRated($data->getExternallyRated());
 
         }
 

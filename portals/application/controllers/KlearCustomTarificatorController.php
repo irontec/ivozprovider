@@ -159,11 +159,11 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $cost = $priceToApply->getCost($duration);
             $table[] = array(
                     "Plan" => $planToApply->getName(),
-                    "Pattern" => $matchedPattern->getName(),
+                    "Pattern" => $matchedPattern->getName()." ".$matchedPattern->getDescription()." (".$matchedPattern->getRegExp().")",
                     "Con. charge (€)" => $priceToApply->getConnectionCharge(),
                     "Period time (s)" => $priceToApply->getPeriodTime(),
                     "Per Period charge (€)" => $priceToApply->getPerPeriodCharge(),
-                    "Metric" => $priceToApply->getMetric(),
+                    //"Metric" => $priceToApply->getMetric(),
                     "Cost" => $cost
             );
         }
@@ -294,7 +294,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                             "Valid to" => $data["CompanyPlan"]["validTo"],
                             "Pattern Name" => $data["Pattern"]["name"],
                             "RegExp" => $data["Pattern"]["regExp"],
-                            "Metric" => $data["Price"]["metric"],
+                            //"Metric" => $data["Price"]["metric"],
                             "Con. Charge" => $data["Price"]["connectionCharge"],
                             "Period Time" => $data["Price"]["periodTime"],
                             "Per Period Charge" => $data["Price"]["perPeriodCharge"],

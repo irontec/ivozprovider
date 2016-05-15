@@ -38,14 +38,14 @@ class ParsedCDRs extends Raw\ParsedCDRs
     public function fetchTarificableList(array $where = array(), $order = null, $limit = null, $offset = null)
     {
 
-        $where[] = "type IN ('".implode("', '", $this->_tarificableTypes)."')";
+        $where[] = "billCallID IS NOT NULL";
         return $this->fetchList(implode(" AND ", $where), $order, $limit, $offset);
     }
 
     public function countTarificableByQuery(array $where = array())
     {
 
-        $where[] = "type IN ('".implode("', '", $this->_tarificableTypes)."')";
+        $where[] = "billCallID IS NOT NULL";
         return $this->countByQuery(implode(" AND ", $where));
     }
 

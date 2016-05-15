@@ -52,13 +52,6 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
     protected $_perPeriodCharge;
 
     /**
-     * Database var type mediumint
-     *
-     * @var int
-     */
-    protected $_metric;
-
-    /**
      * Database var type int
      *
      * @var int
@@ -107,7 +100,6 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
         'connectionCharge'=>'connectionCharge',
         'periodTime'=>'periodTime',
         'perPeriodCharge'=>'perPeriodCharge',
-        'metric'=>'metric',
         'pricingPlanId'=>'pricingPlanId',
         'targetPatternId'=>'targetPatternId',
         'brandId'=>'brandId',
@@ -148,7 +140,6 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'metric' => '10',
         );
 
         $this->_initFileObjects();
@@ -325,40 +316,6 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
     public function getPerPeriodCharge()
     {
         return $this->_perPeriodCharge;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns
-     */
-    public function setMetric($data)
-    {
-
-        if ($this->_metric != $data) {
-            $this->_logChange('metric');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_metric = $data;
-
-        } else if (!is_null($data)) {
-            $this->_metric = (int) $data;
-
-        } else {
-            $this->_metric = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column metric
-     *
-     * @return int
-     */
-    public function getMetric()
-    {
-        return $this->_metric;
     }
 
     /**

@@ -453,7 +453,7 @@ class DDIs extends MapperAbstract
                     }
 
                     foreach ($faxes as $value) {
-                        $value->setOutgoingDDI($primaryKey)
+                        $value->setOutgoingDDIId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }

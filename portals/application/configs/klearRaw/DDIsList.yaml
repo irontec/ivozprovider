@@ -54,15 +54,15 @@ production:
     <<: *faxes_screensLink
     faxesList_screen: 
       <<: *faxesList_screenLink
-      filterField: outgoingDDI
+      filterField: outgoingDDIId
       parentOptionCustomizer: 
         - recordCount
     faxesNew_screen: 
       <<: *faxesNew_screenLink
-      filterField: outgoingDDI
+      filterField: outgoingDDIId
     faxesEdit_screen: 
       <<: *faxesEdit_screenLink
-      filterField: outgoingDDI
+      filterField: outgoingDDIId
 
     #users: 
     usersList_screen: 

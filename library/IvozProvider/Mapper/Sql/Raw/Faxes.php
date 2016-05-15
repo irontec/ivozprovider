@@ -53,7 +53,7 @@ class Faxes extends MapperAbstract
                 'name' => $model->getName(),
                 'email' => $model->getEmail(),
                 'sendByEmail' => $model->getSendByEmail(),
-                'outgoingDDI' => $model->getOutgoingDDI(),
+                'outgoingDDIId' => $model->getOutgoingDDIId(),
             );
         } else {
             $result = array();
@@ -567,14 +567,14 @@ class Faxes extends MapperAbstract
                   ->setName($data['name'])
                   ->setEmail($data['email'])
                   ->setSendByEmail($data['sendByEmail'])
-                  ->setOutgoingDDI($data['outgoingDDI']);
+                  ->setOutgoingDDIId($data['outgoingDDIId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
                   ->setName($data->{'name'})
                   ->setEmail($data->{'email'})
                   ->setSendByEmail($data->{'sendByEmail'})
-                  ->setOutgoingDDI($data->{'outgoingDDI'});
+                  ->setOutgoingDDIId($data->{'outgoingDDIId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Faxes) {
             $entry->setId($data->getId())
@@ -582,7 +582,7 @@ class Faxes extends MapperAbstract
                   ->setName($data->getName())
                   ->setEmail($data->getEmail())
                   ->setSendByEmail($data->getSendByEmail())
-                  ->setOutgoingDDI($data->getOutgoingDDI());
+                  ->setOutgoingDDIId($data->getOutgoingDDIId());
 
         }
 

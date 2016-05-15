@@ -144,18 +144,18 @@ class Companies extends ModelAbstract
 
 
     /**
-     * Parent relation Companies_ibfk_11
-     *
-     * @var \IvozProvider\Model\Raw\MediaRelaySets
-     */
-    protected $_MediaRelaySets;
-
-    /**
      * Parent relation Companies_ibfk_10
      *
      * @var \IvozProvider\Model\Raw\Languages
      */
     protected $_Language;
+
+    /**
+     * Parent relation Companies_ibfk_11
+     *
+     * @var \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    protected $_MediaRelaySets;
 
     /**
      * Parent relation Companies_ibfk_2
@@ -436,13 +436,13 @@ class Companies extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'CompaniesIbfk11'=> array(
-                    'property' => 'MediaRelaySets',
-                    'table_name' => 'MediaRelaySets',
-                ),
             'CompaniesIbfk10'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
+                ),
+            'CompaniesIbfk11'=> array(
+                    'property' => 'MediaRelaySets',
+                    'table_name' => 'MediaRelaySets',
                 ),
             'CompaniesIbfk2'=> array(
                     'property' => 'DefaultTimezone',
@@ -1222,57 +1222,6 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets parent relation MediaRelaySets
-     *
-     * @param \IvozProvider\Model\Raw\MediaRelaySets $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setMediaRelaySets(\IvozProvider\Model\Raw\MediaRelaySets $data)
-    {
-        $this->_MediaRelaySets = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setMediaRelaySetsId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk11');
-        return $this;
-    }
-
-    /**
-     * Gets parent MediaRelaySets
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\MediaRelaySets
-     */
-    public function getMediaRelaySets($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk11';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_MediaRelaySets = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_MediaRelaySets;
-    }
-
-    /**
      * Sets parent relation Language
      *
      * @param \IvozProvider\Model\Raw\Languages $data
@@ -1321,6 +1270,57 @@ class Companies extends ModelAbstract
         }
 
         return $this->_Language;
+    }
+
+    /**
+     * Sets parent relation MediaRelaySets
+     *
+     * @param \IvozProvider\Model\Raw\MediaRelaySets $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setMediaRelaySets(\IvozProvider\Model\Raw\MediaRelaySets $data)
+    {
+        $this->_MediaRelaySets = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setMediaRelaySetsId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk11');
+        return $this;
+    }
+
+    /**
+     * Gets parent MediaRelaySets
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    public function getMediaRelaySets($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk11';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_MediaRelaySets = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_MediaRelaySets;
     }
 
     /**

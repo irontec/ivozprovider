@@ -22,6 +22,7 @@ class PricingPlansRelTargetPatterns extends Raw\PricingPlansRelTargetPatterns
 {
 
 
+/*
     protected function _save(\IvozProvider\Model\Raw\PricingPlansRelTargetPatterns $model,
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
@@ -38,4 +39,5 @@ class PricingPlansRelTargetPatterns extends Raw\PricingPlansRelTargetPatterns
 
         return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
     }
+*/
 }

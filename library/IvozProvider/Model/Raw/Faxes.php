@@ -63,8 +63,15 @@ class Faxes extends ModelAbstract
      *
      * @var int
      */
-    protected $_outgoingDDI;
+    protected $_outgoingDDIId;
 
+
+    /**
+     * Parent relation Faxes_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\DDIs
+     */
+    protected $_OutgoingDDI;
 
     /**
      * Parent relation Faxes_ibfk_1
@@ -73,13 +80,6 @@ class Faxes extends ModelAbstract
      */
     protected $_Company;
 
-    /**
-     * Parent relation Faxes_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\DDIs
-     */
-    protected $_DDIs;
-
 
     /**
      * Dependent relation DDIs_ibfk_7
@@ -87,7 +87,7 @@ class Faxes extends ModelAbstract
      *
      * @var \IvozProvider\Model\Raw\DDIs[]
      */
-    protected $_DDIsByFax;
+    protected $_DDIs;
 
     /**
      * Dependent relation FaxesInOut_ibfk_2
@@ -103,7 +103,7 @@ class Faxes extends ModelAbstract
         'name'=>'name',
         'email'=>'email',
         'sendByEmail'=>'sendByEmail',
-        'outgoingDDI'=>'outgoingDDI',
+        'outgoingDDIId'=>'outgoingDDIId',
     );
 
     /**
@@ -120,19 +120,19 @@ class Faxes extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'FaxesIbfk2'=> array(
+                    'property' => 'OutgoingDDI',
+                    'table_name' => 'DDIs',
+                ),
             'FaxesIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
-                ),
-            'FaxesIbfk2'=> array(
-                    'property' => 'DDIs',
-                    'table_name' => 'DDIs',
                 ),
         ));
 
         $this->setDependentList(array(
             'DDIsIbfk7' => array(
-                    'property' => 'DDIsByFax',
+                    'property' => 'DDIs',
                     'table_name' => 'DDIs',
                 ),
             'FaxesInOutIbfk2' => array(
@@ -363,33 +363,84 @@ class Faxes extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\Faxes
      */
-    public function setOutgoingDDI($data)
+    public function setOutgoingDDIId($data)
     {
 
-        if ($this->_outgoingDDI != $data) {
-            $this->_logChange('outgoingDDI');
+        if ($this->_outgoingDDIId != $data) {
+            $this->_logChange('outgoingDDIId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_outgoingDDI = $data;
+            $this->_outgoingDDIId = $data;
 
         } else if (!is_null($data)) {
-            $this->_outgoingDDI = (int) $data;
+            $this->_outgoingDDIId = (int) $data;
 
         } else {
-            $this->_outgoingDDI = $data;
+            $this->_outgoingDDIId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column outgoingDDI
+     * Gets column outgoingDDIId
      *
      * @return int
      */
-    public function getOutgoingDDI()
+    public function getOutgoingDDIId()
     {
-        return $this->_outgoingDDI;
+        return $this->_outgoingDDIId;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDI
+     *
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\Faxes
+     */
+    public function setOutgoingDDI(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_OutgoingDDI = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIId($primaryKey);
+        }
+
+        $this->_setLoaded('FaxesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDI
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FaxesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDI = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDI;
     }
 
     /**
@@ -444,72 +495,21 @@ class Faxes extends ModelAbstract
     }
 
     /**
-     * Sets parent relation OutgoingDDI
-     *
-     * @param \IvozProvider\Model\Raw\DDIs $data
-     * @return \IvozProvider\Model\Raw\Faxes
-     */
-    public function setDDIs(\IvozProvider\Model\Raw\DDIs $data)
-    {
-        $this->_DDIs = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setOutgoingDDI($primaryKey);
-        }
-
-        $this->_setLoaded('FaxesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent OutgoingDDI
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function getDDIs($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'FaxesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_DDIs = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_DDIs;
-    }
-
-    /**
      * Sets dependent relations DDIs_ibfk_7
      *
      * @param array $data An array of \IvozProvider\Model\Raw\DDIs
      * @return \IvozProvider\Model\Raw\Faxes
      */
-    public function setDDIsByFax(array $data, $deleteOrphans = false)
+    public function setDDIs(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_DDIsByFax === null) {
+            if ($this->_DDIs === null) {
 
-                $this->getDDIsByFax();
+                $this->getDDIs();
             }
 
-            $oldRelations = $this->_DDIsByFax;
+            $oldRelations = $this->_DDIs;
 
             if (is_array($oldRelations)) {
 
@@ -533,10 +533,10 @@ class Faxes extends ModelAbstract
             }
         }
 
-        $this->_DDIsByFax = array();
+        $this->_DDIs = array();
 
         foreach ($data as $object) {
-            $this->addDDIsByFax($object);
+            $this->addDDIs($object);
         }
 
         return $this;
@@ -548,9 +548,9 @@ class Faxes extends ModelAbstract
      * @param \IvozProvider\Model\Raw\DDIs $data
      * @return \IvozProvider\Model\Raw\Faxes
      */
-    public function addDDIsByFax(\IvozProvider\Model\Raw\DDIs $data)
+    public function addDDIs(\IvozProvider\Model\Raw\DDIs $data)
     {
-        $this->_DDIsByFax[] = $data;
+        $this->_DDIs[] = $data;
         $this->_setLoaded('DDIsIbfk7');
         return $this;
     }
@@ -563,7 +563,7 @@ class Faxes extends ModelAbstract
      * @param boolean $avoidLoading skip data loading if it is not already
      * @return array The array of \IvozProvider\Model\Raw\DDIs
      */
-    public function getDDIsByFax($where = null, $orderBy = null, $avoidLoading = false)
+    public function getDDIs($where = null, $orderBy = null, $avoidLoading = false)
     {
         $fkName = 'DDIsIbfk7';
 
@@ -577,11 +577,11 @@ class Faxes extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_DDIsByFax = $related;
+            $this->_DDIs = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_DDIsByFax;
+        return $this->_DDIs;
     }
 
     /**

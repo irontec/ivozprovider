@@ -187,6 +187,31 @@ production:
             template: '%number%'
           order: number
         'null': _("Unbilled")
+    peeringContractId:
+      title: _('Peering contract id')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          fieldName:
+            fields:
+              - name
+              - externallyRated
+            template: '%name% - Externally Rated: %externallyRated%'
+          order: name
+        'null': _("Unasigned")
+    externallyRated:
+      title: _('Externally rated')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
 staging: 
   _extends: production
 testing: 

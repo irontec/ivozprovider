@@ -40,14 +40,14 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'CompaniesIbfk11' => array(
-            'columns' => 'mediaRelaySetsId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets',
-            'refColumns' => 'id'
-        ),
         'CompaniesIbfk10' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
+        ),
+        'CompaniesIbfk11' => array(
+            'columns' => 'mediaRelaySetsId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets',
             'refColumns' => 'id'
         ),
         'CompaniesIbfk2' => array(

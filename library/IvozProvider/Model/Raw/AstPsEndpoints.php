@@ -57,6 +57,10 @@ class AstPsEndpoints extends ModelAbstract
         'yes',
         'no',
     );
+    protected $_t38UdptlAcceptedValues = array(
+        'yes',
+        'no',
+    );
 
     /**
      * Database var type int
@@ -192,6 +196,13 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_trustIdInbound;
 
+    /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_t38Udptl;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -236,6 +247,7 @@ class AstPsEndpoints extends ModelAbstract
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'trust_id_inbound'=>'trustIdInbound',
+        't38_udptl'=>'t38Udptl',
     );
 
     /**
@@ -664,39 +676,51 @@ class AstPsEndpoints extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param string|Zend_Date|DateTime $date
      * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
     public function setDirectMediaMethod($data)
     {
+        if ($data === 'CURRENT_TIMESTAMP') {
+            $data = \Zend_Date::now()->setTimezone('UTC');
+        }
+
+        if ($data instanceof \Zend_Date) {
+
+            $data = new \DateTime($data->toString('yyyy-MM-dd HH:mm:ss'), new \DateTimeZone($data->getTimezone()));
+
+        } elseif (!is_null($data) && !$data instanceof \DateTime) {
+
+            $data = new \DateTime($data, new \DateTimeZone('UTC'));
+        }
 
         if ($this->_directMediaMethod != $data) {
             $this->_logChange('directMediaMethod');
         }
 
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_directMediaMethod = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
-            }
-            $this->_directMediaMethod = (string) $data;
-
-        } else {
-            $this->_directMediaMethod = $data;
-        }
+        $this->_directMediaMethod = $data;
         return $this;
     }
 
     /**
      * Gets column direct_media_method
      *
-     * @return string
+     * @param boolean $returnZendDate
+     * @return Zend_Date|null|string Zend_Date representation of this datetime if enabled, or ISO 8601 string if not
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod($returnZendDate = false)
     {
-        return $this->_directMediaMethod;
+        if (is_null($this->_directMediaMethod)) {
+            return null;
+        }
+
+        if ($returnZendDate) {
+            $zendDate = new \Zend_Date($this->_directMediaMethod->getTimestamp(), \Zend_Date::TIMESTAMP);
+            $zendDate->setTimezone('UTC');
+            return $zendDate;
+        }
+
+        return $this->_directMediaMethod->format('Y-m-d H:i:s');
     }
 
     /**
@@ -987,6 +1011,43 @@ class AstPsEndpoints extends ModelAbstract
     public function getTrustIdInbound()
     {
         return $this->_trustIdInbound;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setT38Udptl($data)
+    {
+
+        if ($this->_t38Udptl != $data) {
+            $this->_logChange('t38Udptl');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_t38Udptl = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_t38UdptlAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for t38Udptl'));
+            }
+            $this->_t38Udptl = (string) $data;
+
+        } else {
+            $this->_t38Udptl = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column t38_udptl
+     *
+     * @return string
+     */
+    public function getT38Udptl()
+    {
+        return $this->_t38Udptl;
     }
 
     /**

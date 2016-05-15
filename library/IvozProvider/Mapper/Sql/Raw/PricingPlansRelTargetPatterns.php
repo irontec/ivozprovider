@@ -52,7 +52,6 @@ class PricingPlansRelTargetPatterns extends MapperAbstract
                 'connectionCharge' => $model->getConnectionCharge(),
                 'periodTime' => $model->getPeriodTime(),
                 'perPeriodCharge' => $model->getPerPeriodCharge(),
-                'metric' => $model->getMetric(),
                 'pricingPlanId' => $model->getPricingPlanId(),
                 'targetPatternId' => $model->getTargetPatternId(),
                 'brandId' => $model->getBrandId(),
@@ -537,7 +536,6 @@ class PricingPlansRelTargetPatterns extends MapperAbstract
                   ->setConnectionCharge($data['connectionCharge'])
                   ->setPeriodTime($data['periodTime'])
                   ->setPerPeriodCharge($data['perPeriodCharge'])
-                  ->setMetric($data['metric'])
                   ->setPricingPlanId($data['pricingPlanId'])
                   ->setTargetPatternId($data['targetPatternId'])
                   ->setBrandId($data['brandId']);
@@ -546,7 +544,6 @@ class PricingPlansRelTargetPatterns extends MapperAbstract
                   ->setConnectionCharge($data->{'connectionCharge'})
                   ->setPeriodTime($data->{'periodTime'})
                   ->setPerPeriodCharge($data->{'perPeriodCharge'})
-                  ->setMetric($data->{'metric'})
                   ->setPricingPlanId($data->{'pricingPlanId'})
                   ->setTargetPatternId($data->{'targetPatternId'})
                   ->setBrandId($data->{'brandId'});
@@ -556,7 +553,6 @@ class PricingPlansRelTargetPatterns extends MapperAbstract
                   ->setConnectionCharge($data->getConnectionCharge())
                   ->setPeriodTime($data->getPeriodTime())
                   ->setPerPeriodCharge($data->getPerPeriodCharge())
-                  ->setMetric($data->getMetric())
                   ->setPricingPlanId($data->getPricingPlanId())
                   ->setTargetPatternId($data->getTargetPatternId())
                   ->setBrandId($data->getBrandId());

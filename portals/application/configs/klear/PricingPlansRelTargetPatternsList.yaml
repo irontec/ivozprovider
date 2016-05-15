@@ -27,9 +27,9 @@ production:
         order:
           pricingPlanId: true
           targetPatternId: true
-      order:
-        field:
-          - metric asc
+      #order:
+      #  field:
+      #    - metric asc
       options: 
         title: _("Options")
         screens: 

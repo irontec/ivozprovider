@@ -31,23 +31,23 @@ class TarificatorWorker extends Iron_Gearman_Worker
     {
 
         $pks = null;
-        if (is_null($serializedJob)) {
+        if (!is_null($serializedJob)) {
             $job = igbinary_unserialize($serializedJob->workload());
             $pks = $job->getPks();
         }
 
         $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
 
-        $tarificableTypes = $callMapper->getTarificableTypes();
-        $message = "Mettering calls of types: ".implode(" ", $tarificableTypes);
-        $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
+//        $tarificableTypes = $callMapper->getTarificableTypes();
+//        $message = "Mettering calls of types: ".implode(" ", $tarificableTypes);
+//        $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
 
         $wheres = array();
         if (!is_null($pks)) {
             $wheres[] = "`id` IN (".implode(",", $pks).")";
         }
 
-        $wheres[] = "(metered = 0 OR metered IS NULL)";
+//        $wheres[] = "(metered = 0 OR metered IS NULL)";
 //         $where = implode(" AND ", $wheres);
 
         $numberRegs = $callMapper->countTarificableByQuery($wheres);
@@ -68,7 +68,11 @@ class TarificatorWorker extends Iron_Gearman_Worker
                 try {
                     $mettered = $call->tarificate();
                     $call->save();
-                    $message = "Cost for call with id = ".$call->getPrimaryKey().": ".$call->getPrice();
+                    if ($call->getExternallyRated() == 1) {
+                        $message = "Call with id = ".$call->getPrimaryKey()." whill be mettered externally. ";
+                    } else {
+                        $message = "Cost for call with id = ".$call->getPrimaryKey().": ".$call->getPrice();
+                    }
                     if (!is_null($mettered)) {
                         $nMettered ++;
                     }
@@ -77,7 +81,6 @@ class TarificatorWorker extends Iron_Gearman_Worker
                     $message .= "  ERROR SAVING CALL. ERROR WAS: '".$e->getMessage()."'";
                 }
                 $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
-
             }
         }
 

@@ -46,6 +46,17 @@ production:
       options:
         screens:
           transformationRulesetGroupsTrunksList_screen: true
+    externallyRated:
+      title: _('Externally rated')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
 staging: 
   _extends: production
 testing: 

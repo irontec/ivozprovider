@@ -462,39 +462,51 @@ class Terminals extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param string|Zend_Date|DateTime $date
      * @return \IvozProvider\Model\Raw\Terminals
      */
     public function setDirectMediaMethod($data)
     {
+        if ($data === 'CURRENT_TIMESTAMP' || is_null($data)) {
+            $data = \Zend_Date::now()->setTimezone('UTC');
+        }
+
+        if ($data instanceof \Zend_Date) {
+
+            $data = new \DateTime($data->toString('yyyy-MM-dd HH:mm:ss'), new \DateTimeZone($data->getTimezone()));
+
+        } elseif (!is_null($data) && !$data instanceof \DateTime) {
+
+            $data = new \DateTime($data, new \DateTimeZone('UTC'));
+        }
 
         if ($this->_directMediaMethod != $data) {
             $this->_logChange('directMediaMethod');
         }
 
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_directMediaMethod = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
-            }
-            $this->_directMediaMethod = (string) $data;
-
-        } else {
-            $this->_directMediaMethod = $data;
-        }
+        $this->_directMediaMethod = $data;
         return $this;
     }
 
     /**
      * Gets column direct_media_method
      *
-     * @return string
+     * @param boolean $returnZendDate
+     * @return Zend_Date|null|string Zend_Date representation of this datetime if enabled, or ISO 8601 string if not
      */
-    public function getDirectMediaMethod()
+    public function getDirectMediaMethod($returnZendDate = false)
     {
-        return $this->_directMediaMethod;
+        if (is_null($this->_directMediaMethod)) {
+            return null;
+        }
+
+        if ($returnZendDate) {
+            $zendDate = new \Zend_Date($this->_directMediaMethod->getTimestamp(), \Zend_Date::TIMESTAMP);
+            $zendDate->setTimezone('UTC');
+            return $zendDate;
+        }
+
+        return $this->_directMediaMethod->format('Y-m-d H:i:s');
     }
 
     /**

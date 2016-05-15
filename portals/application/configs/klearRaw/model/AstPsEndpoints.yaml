@@ -136,6 +136,15 @@ production:
         values: 
           'yes': _('yes')
           'no': _('no')
+    t38_udptl: 
+      title: _('T38 udptl')
+      type: select
+      defaultValue: no
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
 staging: 
   _extends: production
 testing: 

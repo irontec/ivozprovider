@@ -32,17 +32,15 @@ class PricingPlans extends Raw\PricingPlans
     public function getMatchedPrices($subject)
     {
         $matchedPrices = array();
-        $prices = $this->getPricingPlansRelTargetPatterns(null, "metric asc");
+        $dbAdapter = $this->getMapper()->getDbTable()->getAdapter();
+        $query =    "select Rel.* from PricingPlansRelTargetPatterns Rel LEFT JOIN TargetPatterns Patterns ON (Rel.targetPatternId = Patterns.id)".
+                    "where Rel.pricingPlanId = '".$this->getPrimaryKey()."' AND '".$subject."' LIKE CONCAT(Patterns.`regExp`, '%')".
+                    "order by length(Patterns.`regExp`) desc";
+        $prices = $dbAdapter->fetchAssoc($query);
         foreach ($prices as $price) {
-            $regExp = trim($price->getTargetPattern()->getRegExp());
-            if($regExp[0] != $regExp[strlen($regExp)-1]){
-                $this->_logger->log("[Model][PricingPlans] Regular expresion malformed", \Zend_Log::WARN);
-                continue;
-            }
-
-            if (preg_match($regExp, $subject)){
-                $matchedPrices[] = $price;
-            }
+            $priceModel = new \IvozProvider\Model\PricingPlansRelTargetPatterns();
+            $priceModel->populateFromArray($price);
+            $matchedPrices[] = $priceModel;
         }
 
         if (empty($matchedPrices)) {
