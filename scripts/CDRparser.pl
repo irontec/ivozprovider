@@ -111,7 +111,7 @@ my $dbh = DBI->connect($dsn, $user, $pass)
 my $MAXCALLS = 100;
 
 # My needed variables
-my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder int_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
+my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder int_forwarder forward_to companyId brandId aleg bleg billCallID billDuration billDestination peeringContractId/;
 my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
 my %execution = ('ok' => 0, 'error' => 0);
 
@@ -177,6 +177,8 @@ sub setCallType {
             $stat{type} = 'USER-PSTN';
             $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN PSTN';
             $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
+            $stat{billDuration} = $stat{dst_duration}; # Only billable calls will have this field
+            $stat{billDestination} = $stat{dst}; # Only billable calls will have this field
         }
         when (/proxyusers-none/) {
             if ($stat{typeA} eq 'saliente') {
@@ -198,6 +200,8 @@ sub setCallType {
             $stat{type} = 'PSTN->PSTN';
             $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
             $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
+            $stat{billDuration} = $stat{dst_duration}; # Only billable calls will have this field
+            $stat{billDestination} = $stat{dst}; # Only billable calls will have this field
         }
         when (/proxytrunks-none/) {
             if ($stat{typeA} eq 'entrante') {
@@ -207,6 +211,8 @@ sub setCallType {
                 $stat{type} = 'PBX-PSTN';
                 $stat{desc} = 'LLAMADA DE PBX QUE ACABA EN PSTN';
                 $stat{billCallID} = $stat{aleg}; # Only billable calls will have this field
+                $stat{billDuration} = $stat{src_duration}; # Only billable calls will have this field
+                $stat{billDestination} = $stat{src_dialed}; # Only billable calls will have this field
             } else {
                 say "[$stat{callid}] Invalid typeA '$stat{typeA}' (nor entrante/saliente), check!";
                 return undef;

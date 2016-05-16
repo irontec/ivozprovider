@@ -48,8 +48,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 $companyId = $this->getParam("parentId");
                 $call = new \IvozProvider\Model\ParsedCDRs();
                 $call
-                    ->setDst($this->getParam("number"))
-                    ->setDstDuration($this->getParam("duration"))
+                    ->setBillDestination($this->getParam("number"))
+                    ->setBillDuration($this->getParam("duration"))
                     ->setBrandId($this->_brandId)
                     ->setCompanyId($companyId)
                     ->setCalldate(new \Zend_Date());

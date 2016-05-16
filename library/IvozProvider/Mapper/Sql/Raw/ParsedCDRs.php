@@ -60,13 +60,15 @@ class ParsedCDRs extends MapperAbstract
                 'desc' => $model->getDesc(),
                 'fw_desc' => $model->getFwDesc(),
                 'ext_forwarder' => $model->getExtForwarder(),
-                'oasis_forwarder' => $model->getOasisForwarder(),
+                'int_forwarder' => $model->getIntForwarder(),
                 'forward_to' => $model->getForwardTo(),
                 'companyId' => $model->getCompanyId(),
                 'brandId' => $model->getBrandId(),
                 'aleg' => $model->getAleg(),
                 'bleg' => $model->getBleg(),
                 'billCallID' => $model->getBillCallID(),
+                'billDuration' => $model->getBillDuration(),
+                'billDestination' => $model->getBillDestination(),
                 'metered' => $model->getMetered(),
                 'meteringDate' => $model->getMeteringDate(),
                 'pricingPlanId' => $model->getPricingPlanId(),
@@ -565,13 +567,15 @@ class ParsedCDRs extends MapperAbstract
                   ->setDesc($data['desc'])
                   ->setFwDesc($data['fw_desc'])
                   ->setExtForwarder($data['ext_forwarder'])
-                  ->setOasisForwarder($data['oasis_forwarder'])
+                  ->setIntForwarder($data['int_forwarder'])
                   ->setForwardTo($data['forward_to'])
                   ->setCompanyId($data['companyId'])
                   ->setBrandId($data['brandId'])
                   ->setAleg($data['aleg'])
                   ->setBleg($data['bleg'])
                   ->setBillCallID($data['billCallID'])
+                  ->setBillDuration($data['billDuration'])
+                  ->setBillDestination($data['billDestination'])
                   ->setMetered($data['metered'])
                   ->setMeteringDate($data['meteringDate'])
                   ->setPricingPlanId($data['pricingPlanId'])
@@ -594,13 +598,15 @@ class ParsedCDRs extends MapperAbstract
                   ->setDesc($data->{'desc'})
                   ->setFwDesc($data->{'fw_desc'})
                   ->setExtForwarder($data->{'ext_forwarder'})
-                  ->setOasisForwarder($data->{'oasis_forwarder'})
+                  ->setIntForwarder($data->{'int_forwarder'})
                   ->setForwardTo($data->{'forward_to'})
                   ->setCompanyId($data->{'companyId'})
                   ->setBrandId($data->{'brandId'})
                   ->setAleg($data->{'aleg'})
                   ->setBleg($data->{'bleg'})
                   ->setBillCallID($data->{'billCallID'})
+                  ->setBillDuration($data->{'billDuration'})
+                  ->setBillDestination($data->{'billDestination'})
                   ->setMetered($data->{'metered'})
                   ->setMeteringDate($data->{'meteringDate'})
                   ->setPricingPlanId($data->{'pricingPlanId'})
@@ -624,13 +630,15 @@ class ParsedCDRs extends MapperAbstract
                   ->setDesc($data->getDesc())
                   ->setFwDesc($data->getFwDesc())
                   ->setExtForwarder($data->getExtForwarder())
-                  ->setOasisForwarder($data->getOasisForwarder())
+                  ->setIntForwarder($data->getIntForwarder())
                   ->setForwardTo($data->getForwardTo())
                   ->setCompanyId($data->getCompanyId())
                   ->setBrandId($data->getBrandId())
                   ->setAleg($data->getAleg())
                   ->setBleg($data->getBleg())
                   ->setBillCallID($data->getBillCallID())
+                  ->setBillDuration($data->getBillDuration())
+                  ->setBillDestination($data->getBillDestination())
                   ->setMetered($data->getMetered())
                   ->setMeteringDate($data->getMeteringDate())
                   ->setPricingPlanId($data->getPricingPlanId())

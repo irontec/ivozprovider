@@ -120,7 +120,7 @@ class ParsedCDRs extends ModelAbstract
      *
      * @var string
      */
-    protected $_oasisForwarder;
+    protected $_intForwarder;
 
     /**
      * Database var type varchar
@@ -166,6 +166,20 @@ class ParsedCDRs extends ModelAbstract
      * @var string
      */
     protected $_billCallID;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_billDuration;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_billDestination;
 
     /**
      * Database var type tinyint
@@ -287,13 +301,15 @@ class ParsedCDRs extends ModelAbstract
         'desc'=>'desc',
         'fw_desc'=>'fwDesc',
         'ext_forwarder'=>'extForwarder',
-        'oasis_forwarder'=>'oasisForwarder',
+        'int_forwarder'=>'intForwarder',
         'forward_to'=>'forwardTo',
         'companyId'=>'companyId',
         'brandId'=>'brandId',
         'aleg'=>'aleg',
         'bleg'=>'bleg',
         'billCallID'=>'billCallID',
+        'billDuration'=>'billDuration',
+        'billDestination'=>'billDestination',
         'metered'=>'metered',
         'meteringDate'=>'meteringDate',
         'pricingPlanId'=>'pricingPlanId',
@@ -832,33 +848,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setOasisForwarder($data)
+    public function setIntForwarder($data)
     {
 
-        if ($this->_oasisForwarder != $data) {
-            $this->_logChange('oasisForwarder');
+        if ($this->_intForwarder != $data) {
+            $this->_logChange('intForwarder');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_oasisForwarder = $data;
+            $this->_intForwarder = $data;
 
         } else if (!is_null($data)) {
-            $this->_oasisForwarder = (string) $data;
+            $this->_intForwarder = (string) $data;
 
         } else {
-            $this->_oasisForwarder = $data;
+            $this->_intForwarder = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column oasis_forwarder
+     * Gets column int_forwarder
      *
      * @return string
      */
-    public function getOasisForwarder()
+    public function getIntForwarder()
     {
-        return $this->_oasisForwarder;
+        return $this->_intForwarder;
     }
 
     /**
@@ -1063,6 +1079,74 @@ class ParsedCDRs extends ModelAbstract
     public function getBillCallID()
     {
         return $this->_billCallID;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setBillDuration($data)
+    {
+
+        if ($this->_billDuration != $data) {
+            $this->_logChange('billDuration');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_billDuration = $data;
+
+        } else if (!is_null($data)) {
+            $this->_billDuration = (int) $data;
+
+        } else {
+            $this->_billDuration = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column billDuration
+     *
+     * @return int
+     */
+    public function getBillDuration()
+    {
+        return $this->_billDuration;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setBillDestination($data)
+    {
+
+        if ($this->_billDestination != $data) {
+            $this->_logChange('billDestination');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_billDestination = $data;
+
+        } else if (!is_null($data)) {
+            $this->_billDestination = (string) $data;
+
+        } else {
+            $this->_billDestination = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column billDestination
+     *
+     * @return string
+     */
+    public function getBillDestination()
+    {
+        return $this->_billDestination;
     }
 
     /**

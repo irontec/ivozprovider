@@ -37,8 +37,8 @@ class ParsedCDRs extends Raw\ParsedCDRs
         }
 
         $callDate = $this->getCalldate(true);
-        $dst = $this->getDst();
-        $duration = $this->getDstDuration();
+        $dst = $this->getBillDestination();
+        $duration = $this->getBillDuration();
 
         $company = $this->getCompany();
         $this->_log("[tarificate] Company: ".$company->getName(), \Zend_Log::INFO);

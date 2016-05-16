@@ -52,8 +52,8 @@ production:
       title: _('Ext forwarder')
       type: text
       maxLength: 32
-    oasis_forwarder: 
-      title: _('Oasis forwarder')
+    int_forwarder: 
+      title: _('Int forwarder')
       type: text
       maxLength: 32
     forward_to: 
@@ -96,6 +96,15 @@ production:
       maxLength: 128
     billCallID: 
       title: _('Bill call i d')
+      type: text
+      maxLength: 128
+    billDuration: 
+      title: _('Bill duration')
+      type: number
+      source: 
+        control: Spinner
+    billDestination: 
+      title: _('Bill destination')
       type: text
       maxLength: 128
     metered: 
