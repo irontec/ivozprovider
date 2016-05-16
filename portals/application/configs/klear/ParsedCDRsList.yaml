@@ -139,6 +139,8 @@ production:
       fields:
         order:
           brandId: true
+        blacklist:
+          pricingPlanDetails: true
       fixedPositions:
         group0:
           label: _("Company info")

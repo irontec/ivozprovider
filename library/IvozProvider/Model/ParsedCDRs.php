@@ -44,6 +44,7 @@ class ParsedCDRs extends Raw\ParsedCDRs
         $this->_log("[tarificate] Company: ".$company->getName(), \Zend_Log::INFO);
 
         $companyActivePricingPlans = $company->getCompanyActivePricingPlan($callDate);
+        $priceToApply = null;
         foreach ($companyActivePricingPlans as $companyActivePricingPlan) {
             $this->_log("[tarificate] CompanyPricingPlanToApply: ".$companyActivePricingPlan->getPrimaryKey(), \Zend_Log::INFO);
 

@@ -17,7 +17,11 @@ production:
         blacklist:
           <<: *parsedCDRsBlacklist_Link
           brandId: true             
-      options:
+        options:
+          screens:
+            parsedCDRsEdit_screen: true
+          dialogs:
+            getMeteringInfo_dialog: true
   dialogs: 
     <<: *parsedCDRs_dialogsLink
             

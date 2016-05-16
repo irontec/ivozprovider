@@ -33,26 +33,24 @@ class TarificatorWorker extends Iron_Gearman_Worker
         $pks = null;
         if (!is_null($serializedJob)) {
             $job = igbinary_unserialize($serializedJob->workload());
-            $pks = $job->getPks();
+            if ($job) {
+                $pks = $job->getPks();
+            }
         }
 
         $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
-
-//        $tarificableTypes = $callMapper->getTarificableTypes();
-//        $message = "Mettering calls of types: ".implode(" ", $tarificableTypes);
-//        $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
 
         $wheres = array();
         if (!is_null($pks)) {
             $wheres[] = "`id` IN (".implode(",", $pks).")";
         }
 
-//        $wheres[] = "(metered = 0 OR metered IS NULL)";
-//         $where = implode(" AND ", $wheres);
+        $wheres[] = "(metered = 0 OR metered IS NULL)";
+        $where = implode(" AND ", $wheres);
 
         $numberRegs = $callMapper->countTarificableByQuery($wheres);
 
-        $message = "Number of calls to be mettered: ".$numberRegs;
+        $message = "Number of calls to be metered: ".$numberRegs;
         $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
 
         $interval = 100;
@@ -60,21 +58,21 @@ class TarificatorWorker extends Iron_Gearman_Worker
         $factor = ceil($numberRegs/$interval);
         $this->_logger->log("[GEARMAND][TARIFICATOR] Factor: ".$factor, \Zend_Log::INFO);
         $offset = 0;
-        $nMettered = 0;
+        $nMetered = 0;
         for($i = 0; $i< $factor; $i++) {
             $this->_logger->log("[GEARMAND][TARIFICATOR] Offset: ".$offset, \Zend_Log::INFO);
             $calls = $callMapper->fetchTarificableList($wheres, "calldate", $interval, $offset);
             foreach ($calls as $call) {
                 try {
-                    $mettered = $call->tarificate();
+                    $metered = $call->tarificate();
                     $call->save();
                     if ($call->getExternallyRated() == 1) {
-                        $message = "Call with id = ".$call->getPrimaryKey()." whill be mettered externally. ";
+                        $message = "Call with id = ".$call->getPrimaryKey()." whill be metered externally. ";
                     } else {
                         $message = "Cost for call with id = ".$call->getPrimaryKey().": ".$call->getPrice();
                     }
-                    if (!is_null($mettered)) {
-                        $nMettered ++;
+                    if (!is_null($metered)) {
+                        $nMetered ++;
                     }
                 } catch (Exception $e) {
                     $message = "Cost for call with id = ".$call->getPrimaryKey().": ".$call->getPrice();
@@ -84,7 +82,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
             }
         }
 
-        $message = $nMettered." calls mettered from ".$numberRegs;
+        $message = $nMetered." calls metered from ".$numberRegs;
         $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
     }
 
