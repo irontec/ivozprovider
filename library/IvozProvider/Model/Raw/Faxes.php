@@ -67,18 +67,18 @@ class Faxes extends ModelAbstract
 
 
     /**
-     * Parent relation Faxes_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\DDIs
-     */
-    protected $_OutgoingDDI;
-
-    /**
      * Parent relation Faxes_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
+
+    /**
+     * Parent relation Faxes_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\DDIs
+     */
+    protected $_OutgoingDDI;
 
 
     /**
@@ -120,13 +120,13 @@ class Faxes extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'FaxesIbfk2'=> array(
-                    'property' => 'OutgoingDDI',
-                    'table_name' => 'DDIs',
-                ),
             'FaxesIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
+                ),
+            'FaxesIbfk2'=> array(
+                    'property' => 'OutgoingDDI',
+                    'table_name' => 'DDIs',
                 ),
         ));
 
@@ -393,57 +393,6 @@ class Faxes extends ModelAbstract
     }
 
     /**
-     * Sets parent relation OutgoingDDI
-     *
-     * @param \IvozProvider\Model\Raw\DDIs $data
-     * @return \IvozProvider\Model\Raw\Faxes
-     */
-    public function setOutgoingDDI(\IvozProvider\Model\Raw\DDIs $data)
-    {
-        $this->_OutgoingDDI = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setOutgoingDDIId($primaryKey);
-        }
-
-        $this->_setLoaded('FaxesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent OutgoingDDI
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'FaxesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_OutgoingDDI = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_OutgoingDDI;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -492,6 +441,57 @@ class Faxes extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDI
+     *
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\Faxes
+     */
+    public function setOutgoingDDI(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_OutgoingDDI = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIId($primaryKey);
+        }
+
+        $this->_setLoaded('FaxesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDI
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FaxesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDI = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDI;
     }
 
     /**

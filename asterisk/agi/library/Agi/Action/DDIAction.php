@@ -56,6 +56,7 @@ class DDIAction extends RouterAction
         // Route to the extension destination
         $this->_routeType       = $ddi->getRouteType();
         $this->_routeUser       = $ddi->getUser();
+        $this->_routeFax        = $ddi->getFax();
         $this->_routeIVRCommon  = $ddi->getIVRCommon();
         $this->_routeIVRCustom  = $ddi->getIVRCustom();
         $this->_routeHuntGroup  = $ddi->getHuntGroup();

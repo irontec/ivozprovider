@@ -8,6 +8,7 @@ use Agi\Action\UserCallAction;
 use Agi\Action\HuntGroupAction;
 use Agi\Action\IVRAction;
 use Agi\Action\ServiceAction;
+use Agi\Action\FaxCallAction;
 
 /**
  * @brief Controller for Incoming and Outgoing calls
@@ -43,7 +44,7 @@ class CallsController extends BaseController
             $this->agi->error("DDI %s not found in database.", $exten);
             return;
         }
-    
+
         // Mark this call as external
         $this->agi->setCallType("external");
 
@@ -52,7 +53,7 @@ class CallsController extends BaseController
         if (!empty($callid)) {
             $this->agi->setVariable("__CALL_ID", $callid);
         }
-    
+
         // Get company MusicClass: company, Generic or default
         $company = $ddi->getCompany();
         $this->_setMusicClass($company);
@@ -65,7 +66,7 @@ class CallsController extends BaseController
             ->process();
 
     }
-    
+
     /**
      * @brief Outgoing calls from terminals to Extensions, Services o World
      */
@@ -90,7 +91,7 @@ class CallsController extends BaseController
             $this->agi->error("Call without valid callerid. Dropping.");
             return;
         }
-    
+
         // Get caller peer
         $terminalMapper = new Mapper\Terminals();
         $terminal = $terminalMapper->findOneByField("name", $callerid);
@@ -99,21 +100,21 @@ class CallsController extends BaseController
             $this->agi->error("Terminal %s not found.", $callerid);
             return;
         }
-    
+
         // Get caller user
         $user = $terminal->getUser();
         if (empty($user)) {
             $this->agi->error("Terminal %s has no user.", $terminal->getId());
             return;
         }
-    
+
         // Get caller extension
         $extension = $user->getExtension();
         if (empty($extension)) {
             $this->agi->error("User %s has no extension.", $user->getId());
             return;
         }
-    
+
         // Set Company/Brand/Generic Music class
         $company = $user->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
@@ -165,7 +166,7 @@ class CallsController extends BaseController
             $extensionAction
                 ->setExtension($dstExtension)
                 ->process();
-            
+
         // This number don't belong to IvozProvider
         } else {
             $this->agi->verbose("Number %s is handled as external DDI.", $exten);
@@ -186,7 +187,7 @@ class CallsController extends BaseController
                 ->process();
         }
     }
-    
+
     /**
      * @brief Add SIP Headers for proxies
      */
@@ -195,14 +196,14 @@ class CallsController extends BaseController
         $companyId = $this->agi->getVariable("COMPANYID");
         $companyMapper = new Mapper\Companies();
         $company = $companyMapper->find($companyId);
-        
+
         // Add headers for Friendly Kamailio  Proxy;-))            
         $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
         $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
         $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
         $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
-        
+
         // Set Callee information. 
         // Use channelname to get this information because in case of ringall hungroup
         // this action will be invoked once per generated channel
@@ -216,7 +217,7 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-MaxCalls",     $company->getExternalMaxCalls());
         }
     }
-    
+
     /**
      * @brief Process User after call status
      */
@@ -231,20 +232,20 @@ class CallsController extends BaseController
             $this->agi->error("Terminal %s not found in database. (BUG?)", $iface);
             return;
         }
-        
+
         // Get user from the terminal.
         $user = $terminal->getUser();
         if (empty($user)) {
             $this->agi->error("Terminal %s has no user (BUG?).", $iface);
             return;
         }
-        
+
         // ProcessDialStatus
         $userAction = new UserCallAction($this);
         $userAction
             ->setUser($user)
             ->processDialStatus();
-        
+
     }
 
     /**
@@ -253,7 +254,7 @@ class CallsController extends BaseController
     public function ivrstatusAction ()
     {
         $dialStatus = $this->agi->getVariable("DIALSTATUS");
-        
+
         // Noone picked up
         if ($dialStatus == "NOANSWER") {
             $ivrId = $this->agi->getVariable("IVRID");
@@ -277,6 +278,62 @@ class CallsController extends BaseController
     }
 
     /**
+     * @brief Process fax after call status
+     */
+    public function faxstatusAction ()
+    {
+        // FIXME Process Dialed fax dialstatus FIXME
+        $faxid = $this->agi->getVariable("FAXIN_ID");
+        $faxInOutMapper = new Mapper\FaxesInOut();
+        $faxInOut = $faxInOutMapper->find($faxid);
+        if (empty($faxInOut)) {
+            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
+            return;
+        }
+
+        // ProcessDialStatus
+        $faxAction = new FaxCallAction($this);
+        $faxAction
+            ->setFax($faxInOut->getFax())
+            ->setFaxInOut($faxInOut)
+            ->processDialStatus();
+
+    }
+
+    /**
+     * @brief Process fax after call status
+     */
+    public function faxoutAction ()
+    {
+        $faxOutId = $this->agi->getVariable("FAXOUT_ID");
+        if (! $faxOutId) {
+            $this->agi->error("No FAX_ID found in this channel.");
+            $this->agi->hangup();
+            return;
+        }
+
+
+        // Get Fax file filename
+        $faxInOutMapper = new Mapper\FaxesInOut();
+        $faxOut = $faxInOutMapper->find($faxOutId);
+        if (! $faxOut) {
+            $this->agi->error("There is no Fax with id $faxOutId");
+            $this->agi->hangup();
+            return;
+        }
+
+        $this->agi->setVariable("__COMPANYID", $faxOut->getFax()->getCompanyId());
+
+        // ProcessDialStatus
+        $faxAction = new FaxCallAction($this);
+        $faxAction
+        ->setFax($faxOut->getFax())
+        ->setFaxInOut($faxOut)
+        ->sendFax();
+
+    }
+
+    /**
      * @brief Call a user from a Huntgroup
      */
     public  function hgcalluserAction()
@@ -292,7 +349,7 @@ class CallsController extends BaseController
             ->setHuntGroup($huntgroup)
             ->call();
     }
-    
+
     /**
      * @brief Process Huntgroup after call status
      */
@@ -302,14 +359,14 @@ class CallsController extends BaseController
         $huntgroupId = $this->agi->getVariable("HG_ID");
         $huntgroupMapper = new Mapper\HuntGroups();
         $huntgroup = $huntgroupMapper->find($huntgroupId);
-        
+
         // Continue processing
         $hungroupAction = new HuntGroupAction($this);
         $hungroupAction
             ->setHuntGroup($huntgroup)
             ->processHuntgroupStatus();
     }
-    
+
     /**
      * @brief Set musicclass for given company
      *
@@ -318,7 +375,7 @@ class CallsController extends BaseController
      *
      */
     private function _setMusicClass($company){
-        
+
         $musicClass = "default";
         $musicOnHoldMapper = new Mapper\MusicOnHold();
         $musicOnHold = $musicOnHoldMapper->fetchOne("companyId='" . $company->getId() . "'");
@@ -337,7 +394,4 @@ class CallsController extends BaseController
         $this->agi->setVariable("CHANNEL(musicclass)", $musicClass);
         return $this;
     }
-
-
-   
 }

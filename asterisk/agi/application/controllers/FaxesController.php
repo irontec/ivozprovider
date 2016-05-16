@@ -46,7 +46,7 @@ class FaxesController extends BaseController
         $this->agi->setVariable("FAXOPT(localstationid)", $exten);
 
         // Create a new items for received fax data
-        $faxIn = new Model\FaxesInOut();
+        $faxIn = new Mapper\FaxesInOut();
         $faxIn->setFaxId($fax->getId())
             ->setSrc($this->agi->getVariable("CALLERID(number)"))
             ->setDst($exten)
@@ -175,9 +175,6 @@ class FaxesController extends BaseController
         // Set headers to place the outgoing call
         $this->agi->setVariable("CALLERID(num)", $DDIOut->getDDI());
         $this->agi->setVariable("CALLERID(name)", $fax->getName());
-
-        // FIXME
-        $this->_processInfoHeader($DDIOut, false, true, false);
     }
 
     /**

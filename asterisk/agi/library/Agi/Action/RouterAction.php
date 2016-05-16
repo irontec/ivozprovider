@@ -27,6 +27,8 @@ class RouterAction
     
     protected $_routeExternal;
     
+    protected $_routeFax;
+    
     public function __construct($parent)
     {
         // Store parent
@@ -52,55 +54,7 @@ class RouterAction
         $this->_user = $user;
         return $this;
     }
-    
-    public function setRouteType($type)
-    {
-        $this->_routeType = $type;
-        return $this;
-    }
-    
-    public function setRouteUser($user)
-    {
-        $this->_routeUser = $user;
-        return $this;
-    }
-    
-    public function setRouteExtension($exten)
-    {
-        $this->_routeExtension = $exten;
-        return $this;
-    }
-    
-    public function setRouteIVRCommon($ivrcommon)
-    {
-        $this->_routeIVRCommon = $ivrcommon;
-        return $this;
-    }
-
-    public function setRouteIVRCustom($ivrcustom)
-    {
-        $this->_routeIVRCustom = $ivrcustom;
-        return $this;
-    }
-    
-    public function setRouteVoiceMail($voicemail)
-    {
-        $this->_routeVoiceMail = $voicemail;
-        return $this;
-    }
-    
-    public function setRouteHuntGroup($huntGroup)
-    {
-        $this->_routeHuntGroup = $huntGroup;
-        return $this;
-    }
-    
-    public function setRouteExternal($number)
-    {
-        $this->_routeExternal = $number;
-        return $this;
-    }
-    
+   
     public function route()
     {
         // Validate route type
@@ -135,6 +89,9 @@ class RouterAction
                 break;
             case 'huntGroup':
                 $this->_routeToHuntGroup();
+                break;
+            case 'fax':
+                $this->_routeToFax();
                 break;
         }
     }
@@ -201,5 +158,12 @@ class RouterAction
         $huntGroupAction
             ->setHuntGroup($this->_routeHuntGroup)
             ->process();
+    }
+    protected function _routeToFax()
+    {
+        $faxAction = new FaxCallAction($this);
+        $faxAction
+            ->setFax($this->_routeFax)
+            ->call();
     }
 }
