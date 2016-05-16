@@ -24,14 +24,13 @@
 ###    
 ###    SELECT * FROM CDRs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
 ###
-###    (A) Si, en un registro de proxyusers: LLAMADA INTERNA.
+###    (A) Si, en un registro de proxyusers: LLAMADA DE USUARIO QUE ACABA EN USUARIO
 ###    
-###    (B) Si, en un registro de proxytrunks:
-###        Comprobar type-subtype de aleg:
-###        (B1) Si es externa-saliente: LLAMADA SALIENTE EXTERNA PURA.
-###        (B2) Si es interna-saliente: LLAMADA SALIENTE EXTERNA POR DESVIO DE USUARIO.
+###    (B) Si, en un registro de proxytrunks: LLAMADA DE USUARIO QUE ACABA EN PSTN
 ###    
-###    (C) No: LLAMADA DE USUARIO QUE MUERE EN AS (voicemail, etc.)
+###    (C) No:
+###       (C1) typeA == saliente: LLAMADA DE USUARIO QUE ACABA EN AS
+###       (C2) typeA == entrante: LLAMADA DE AS QUE ACABA EN USUARIO (no contemplado a 2016/05/16)
 ###    
 ###    - Si es de proxytrunks:
 ###    
@@ -39,15 +38,14 @@
 ###    
 ###    SELECT * FROM CDRs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
 ###    
-###    (D) Si, en un registro de proxyusers: LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO.
+###    (D) Si, en un registro de proxyusers: LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO
 ###    
-###    (E) Si, en un registro de proxytrunks: LLAMADA ENTRANTE EXTERNA DESVIADA A NUMERO EXTERNO.
-###        Evaluar diferencia entre desvio de DID o de usuario.
-###        En base al valor del Diversion, puedo saber si es uno u otro:
-###        (E1) Si 'Dialed number' es igual a diversion: DESVIO DE DID.
-###        (E2) Si no, DESVIO DE USUARIO.
+###    (E) Si, en un registro de proxytrunks: LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN
 ###    
-###    (F) No: LLAMADA ENTRANTE EXTERNA QUE MUERE EN AS (voicemail, etc.)
+###    (F) No: LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS
+###    (F) No:
+###       (F1) typeA == entrante: LLAMADA DE PSTN QUE ACABA EN AS
+###       (F2) typeA == saliente: LLAMADA DE AS QUE ACABA EN PSTN (unico caso comtemplado a 2016/05/16: fax)
 ###    
 ###    Una vez finalizado todo:
 ###    UPDATE kam_{users,trunks}_acc_cdrs SET parsed='yes' WHERE callid='$CURRENT_CALLID';
@@ -75,6 +73,8 @@
 ###     brandId
 ###     aleg
 ###     bleg
+###     billCallID: si llamada facturable, tendra el valor de aleg/bleg (la pata facturable)
+###     peeringContractId: si llamada saliente, tendra el id del PeeringContract por el que haya salido
 
 #########################################
 # INCLUDES & PRAGMAS
@@ -84,7 +84,6 @@ use strict;
 use v5.10;
 use DBI;
 no warnings;
-use Data::Dumper;
 use Gearman::Client;
 use POSIX;
 
@@ -112,7 +111,7 @@ my $dbh = DBI->connect($dsn, $user, $pass)
 my $MAXCALLS = 100;
 
 # My needed variables
-my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
+my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
 my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
 my %execution = ('ok' => 0, 'error' => 0);
 
@@ -177,10 +176,19 @@ sub setCallType {
         when (/proxyusers-proxytrunks/) {
             $stat{type} = 'USER-PSTN';
             $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN PSTN';
+            $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
         }
         when (/proxyusers-none/) {
-            $stat{type} = 'USER-PBX';
-            $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN AS';
+            if ($stat{typeA} eq 'saliente') {
+                $stat{type} = 'USER-PBX';
+                $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN AS';
+            } elsif ($stat{typeA} eq 'entrante') {
+                $stat{type} = 'PBX-USER';
+                $stat{desc} = 'LLAMADA DE PBX QUE ACABA EN USUARIO';
+            } else {
+                say "[$stat{callid}] Invalid typeA '$stat{typeA}' (nor entrante/saliente), check!";
+                return undef;
+            }
         }
         when (/proxytrunks-proxyusers/) {
             $stat{type} = 'PSTN-USER';
@@ -189,10 +197,21 @@ sub setCallType {
         when (/proxytrunks-proxytrunks/) {
             $stat{type} = 'PSTN->PSTN';
             $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
+            $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
         }
         when (/proxytrunks-none/) {
-            $stat{type} = 'PSTN-PBX';           
-            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS';
+            if ($stat{typeA} eq 'entrante') {
+                $stat{type} = 'PSTN-PBX';
+                $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS';
+            } elsif ($stat{typeA} eq 'saliente') {
+                $stat{type} = 'PBX-PSTN';
+                $stat{desc} = 'LLAMADA DE PBX QUE ACABA EN PSTN';
+                $stat{billCallID} = $stat{aleg}; # Only billable calls will have this field
+            } else {
+                say "[$stat{callid}] Invalid typeA '$stat{typeA}' (nor entrante/saliente), check!";
+                return undef;
+            }
+            $stat{desc} = "$stat{desc} ($stat{subtypeA})" if $stat{subtypeA} ne 'normal';
         }
     }
 
@@ -201,8 +220,7 @@ sub setCallType {
         $stat{desc} .= ' (DESVIADA)';
     }
 
-    say "[$stat{callid}] Tipo: $stat{type}";
-    say "[$stat{callid}] Desc: $stat{desc}";
+    return 1;
 }
 
 sub parseForward {
@@ -295,7 +313,6 @@ sub insertStat {
           or die "Couldn't execute statement: $insertStat";
 }
 
-
 #########################################
 # MAIN LOGIC
 #########################################
@@ -341,20 +358,15 @@ while (my $call = $sth->fetchrow_hashref) {
     # Set aditional fields for future reference (not used in INSERT)
     $stat{proxy} = $$call{proxy};
     $stat{callid} = $$call{callid};
-    $stat{subtypeA} = $$call{subtype};
+    $stat{typeA} = $$call{type}; # entrante / saliente
+    $stat{subtypeA} = $$call{subtype}; # interna / externa (proxyusers) - fax / normal (proxytrunks)
     $stat{peeringContractId} = $$call{peeringContractId} if $$call{peeringContractId};
-
-    my $originator = ($stat{proxy} eq 'proxyusers') ? 'user' : 'external caller';
-    say "[$stat{callid}] Parse call originated by $originator";
 
     setBlegInfo or setParsedValue 'error' and next;
     parseForward or setParsedValue 'error' and next;
-    setCallType;
-    $stat{billCallID} = $stat{bleg} if $stat{type} =~ /PSTN$/; # Only billable calls will have this field
+    setCallType or setParsedValue 'error' and next;
     insertStat;
     setParsedValue 'yes';
-
-    say Dumper \%stat if @ARGV;
 
     # Only parse $MAXCALLS on each run
     last if ++$i >= $MAXCALLS;
@@ -363,7 +375,7 @@ while (my $call = $sth->fetchrow_hashref) {
 # Disconnect from database
 $dbh->disconnect;
 
-# Call Gearmand trarificator Job
+# Call Gearmand tarificator Job
 my $client = Gearman::Client->new;
 $client->job_servers(@gearman_servers);
 $client->do_task($gearman_job);
