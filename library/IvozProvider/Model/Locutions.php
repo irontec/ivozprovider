@@ -30,6 +30,6 @@ class Locutions extends Raw\Locutions
 
     public function getLocutionPath ()
     {
-        return substr($this->fetchFile()->getFilePath(), 0, - 4);
+        return substr($this->fetchEncodedFile()->getFilePath(), 0, - 4);
     }
 }

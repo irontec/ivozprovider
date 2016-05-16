@@ -50,10 +50,14 @@ class Locutions extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'companyId' => $model->getCompanyId(),
-                'fileFileSize' => $model->getFileFileSize(),
-                'fileMimeType' => $model->getFileMimeType(),
-                'fileBaseName' => $model->getFileBaseName(),
                 'name' => $model->getName(),
+                'originalFileFileSize' => $model->getOriginalFileFileSize(),
+                'originalFileMimeType' => $model->getOriginalFileMimeType(),
+                'originalFileBaseName' => $model->getOriginalFileBaseName(),
+                'encodedFileFileSize' => $model->getEncodedFileFileSize(),
+                'encodedFileMimeType' => $model->getEncodedFileMimeType(),
+                'encodedFileBaseName' => $model->getEncodedFileBaseName(),
+                'status' => $model->getStatus(),
             );
         } else {
             $result = array();
@@ -718,25 +722,37 @@ class Locutions extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setCompanyId($data['companyId'])
-                  ->setFileFileSize($data['fileFileSize'])
-                  ->setFileMimeType($data['fileMimeType'])
-                  ->setFileBaseName($data['fileBaseName'])
-                  ->setName($data['name']);
+                  ->setName($data['name'])
+                  ->setOriginalFileFileSize($data['originalFileFileSize'])
+                  ->setOriginalFileMimeType($data['originalFileMimeType'])
+                  ->setOriginalFileBaseName($data['originalFileBaseName'])
+                  ->setEncodedFileFileSize($data['encodedFileFileSize'])
+                  ->setEncodedFileMimeType($data['encodedFileMimeType'])
+                  ->setEncodedFileBaseName($data['encodedFileBaseName'])
+                  ->setStatus($data['status']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
-                  ->setFileFileSize($data->{'fileFileSize'})
-                  ->setFileMimeType($data->{'fileMimeType'})
-                  ->setFileBaseName($data->{'fileBaseName'})
-                  ->setName($data->{'name'});
+                  ->setName($data->{'name'})
+                  ->setOriginalFileFileSize($data->{'originalFileFileSize'})
+                  ->setOriginalFileMimeType($data->{'originalFileMimeType'})
+                  ->setOriginalFileBaseName($data->{'originalFileBaseName'})
+                  ->setEncodedFileFileSize($data->{'encodedFileFileSize'})
+                  ->setEncodedFileMimeType($data->{'encodedFileMimeType'})
+                  ->setEncodedFileBaseName($data->{'encodedFileBaseName'})
+                  ->setStatus($data->{'status'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Locutions) {
             $entry->setId($data->getId())
                   ->setCompanyId($data->getCompanyId())
-                  ->setFileFileSize($data->getFileFileSize())
-                  ->setFileMimeType($data->getFileMimeType())
-                  ->setFileBaseName($data->getFileBaseName())
-                  ->setName($data->getName());
+                  ->setName($data->getName())
+                  ->setOriginalFileFileSize($data->getOriginalFileFileSize())
+                  ->setOriginalFileMimeType($data->getOriginalFileMimeType())
+                  ->setOriginalFileBaseName($data->getOriginalFileBaseName())
+                  ->setEncodedFileFileSize($data->getEncodedFileFileSize())
+                  ->setEncodedFileMimeType($data->getEncodedFileMimeType())
+                  ->setEncodedFileBaseName($data->getEncodedFileBaseName())
+                  ->setStatus($data->getStatus());
 
         }
 

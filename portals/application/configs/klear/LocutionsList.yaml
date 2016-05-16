@@ -26,7 +26,9 @@ production:
         order: &locutions_orderLink
           companyId: true
           name: true
-          file: true
+          originalFile: true
+        blacklist:
+          encodedFile: true
       options: 
         title: _("Options")
         screens: 
@@ -46,17 +48,19 @@ production:
       fields:
         order:
           <<: *locutions_orderLink
-      fixedPositions: &locutions_fixedPosLink
+        blacklist:
+          encodedFile: true
+          status: true
+      fixedPositions:
         group0:
           colsPerRow: 2
           fields:
             companyId: 1
             name: 1
         group1:
-          colsPerRow: 2
+          colsPerRow: 1
           fields:
-            file: 2
-            
+            originalFile: 1
     locutionsEdit_screen: &locutionsEdit_screenLink 
       <<: *Locutions
       controller: edit
@@ -68,8 +72,19 @@ production:
       fields:
         order:
           <<: *locutions_orderLink
+        readOnly: 
+          status: true        
       fixedPositions:
-        <<: *locutions_fixedPosLink
+        group0:
+          colsPerRow: 2
+          fields:
+            companyId: 1
+            name: 1
+        group1:
+          colsPerRow: 1
+          fields:
+            originalFile: 1  
+            encodedFile: 1        
   dialogs: &locutions_dialogsLink
     locutionsDel_dialog: &locutionsDel_dialogLink 
       <<: *Locutions
@@ -81,22 +96,32 @@ production:
       message: _("%s successfully deleted.", ngettext('Locution', 'Locutions', 1))
       multiItem: 1
       labelOnList: 1
-  commands: &locutions_commandsLink
-    locutions_FileDownload_command: 
+  commands: &locutions_commandsLink 
+    locutionsOriginalFileDownload_command: &locutionsOriginalFileDownload_commandLink 
       <<: *Locutions
       controller: File
       action: force-download
-      mainColumn: file
-    locutions_FileUpload_command: 
+      mainColumn: originalFile
+    locutionsOriginalFileUpload_command: &locutionsOriginalFileUpload_commandLink 
       <<: *Locutions
       controller: File
       action: upload
-      mainColumn: file
-    locutions_FilePreview_command: 
+      mainColumn: originalFile
+    locutionsOriginalFilePreview_command: &locutionsOriginalFilePreview_commandLink 
       <<: *Locutions
       controller: File
       action: preview
-      mainColumn: file
+      mainColumn: originalFile
+    locutionsEncodedFileDownload_command: &locutionsEncodedFileDownload_commandLink 
+      <<: *Locutions
+      controller: File
+      action: force-download
+      mainColumn: encodedFile
+    locutionsEncodedFilePreview_command: &locutionsEncodedFilePreview_commandLink 
+      <<: *Locutions
+      controller: File
+      action: preview
+      mainColumn: encodedFile
 staging: 
   _extends: production
 testing: 

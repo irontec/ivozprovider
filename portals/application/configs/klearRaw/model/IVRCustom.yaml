@@ -29,9 +29,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
-              - fileMimeType
-            template: '%fileMimeType%'
-          order: fileMimeType
+              - name
+            template: '%name%'
+          order: name
         'null': _("Unasigned")
     noAnswerLocutionId: 
       title: _('No answer locution id')
@@ -42,9 +42,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
-              - fileMimeType
-            template: '%fileMimeType%'
-          order: fileMimeType
+              - name
+            template: '%name%'
+          order: name
         'null': _("Unasigned")
     errorLocutionId: 
       title: _('Error locution id')
@@ -55,9 +55,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
-              - fileMimeType
-            template: '%fileMimeType%'
-          order: fileMimeType
+              - name
+            template: '%name%'
+          order: name
         'null': _("Unasigned")
     successLocutionId: 
       title: _('Success locution id')
@@ -68,9 +68,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
-              - fileMimeType
-            template: '%fileMimeType%'
-          order: fileMimeType
+              - name
+            template: '%name%'
+          order: name
         'null': _("Unasigned")
     timeout: 
       title: _('Timeout')

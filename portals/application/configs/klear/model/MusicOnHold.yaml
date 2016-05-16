@@ -40,27 +40,6 @@ production:
             class: jmedia
             onNull: hide
             target: musicOnHold_FileDownload_command
-          preview: 
-            target: musicOnHold_FilePreview_command
-            type: command
-            class: filePreview
-            external: 1
-            props: 
-              width: 150
-              height: 150
-              crop: false
-            onNull: hide
-          previewList: 
-            target: musicOnHold_FilePreview_command
-            type: command
-            class: filePreview
-            listController: 1
-            external: 1
-            props: 
-              width: 30
-              height: 30
-              crop: false
-            onNull: hide
     encodedFile: 
       title: ngettext('File for play', 'Files for play', 1)
       type: file
@@ -81,16 +60,6 @@ production:
             class: jmedia
             onNull: hide
             target: musicOnHold_FileDownload_command
-          preview: 
-            target: musicOnHold_FilePreview_command
-            type: command
-            class: filePreview
-            external: 1
-            props: 
-              width: 150
-              height: 150
-              crop: false
-            onNull: hide
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text

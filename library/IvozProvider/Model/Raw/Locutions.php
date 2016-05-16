@@ -24,8 +24,18 @@ class Locutions extends ModelAbstract
     /*
      * @var \Iron_Model_Fso
      */
-    protected $_fileFso;
+    protected $_originalFileFso;
+    /*
+     * @var \Iron_Model_Fso
+     */
+    protected $_encodedFileFso;
 
+    protected $_statusAcceptedValues = array(
+        'pending',
+        'encoding',
+        'ready',
+        'error',
+    );
 
     /**
      * Database var type int
@@ -42,33 +52,63 @@ class Locutions extends ModelAbstract
     protected $_companyId;
 
     /**
-     * [FSO:keepExtension]
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_fileFileSize;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_fileMimeType;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_fileBaseName;
-
-    /**
      * Database var type varchar
      *
      * @var string
      */
     protected $_name;
+
+    /**
+     * [FSO:keepExtension]
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_originalFileFileSize;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_originalFileMimeType;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_originalFileBaseName;
+
+    /**
+     * [FSO:keepExtension|storeInBaseFolder]
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_encodedFileFileSize;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_encodedFileMimeType;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_encodedFileBaseName;
+
+    /**
+     * [enum:pending|encoding|ready|error]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_status;
 
 
     /**
@@ -186,10 +226,14 @@ class Locutions extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'companyId'=>'companyId',
-        'fileFileSize'=>'fileFileSize',
-        'fileMimeType'=>'fileMimeType',
-        'fileBaseName'=>'fileBaseName',
         'name'=>'name',
+        'originalFileFileSize'=>'originalFileFileSize',
+        'originalFileMimeType'=>'originalFileMimeType',
+        'originalFileBaseName'=>'originalFileBaseName',
+        'encodedFileFileSize'=>'encodedFileFileSize',
+        'encodedFileMimeType'=>'encodedFileMimeType',
+        'encodedFileBaseName'=>'encodedFileBaseName',
+        'status'=>'status',
     );
 
     /**
@@ -198,7 +242,9 @@ class Locutions extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'fileFileSize'=> array('FSO:keepExtension'),
+            'originalFileFileSize'=> array('FSO:keepExtension'),
+            'encodedFileFileSize'=> array('FSO:keepExtension|storeInBaseFolder'),
+            'status'=> array('enum:pending|encoding|ready|error'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -305,8 +351,10 @@ class Locutions extends ModelAbstract
 
     protected function _initFileObjects()
     {
-        $this->_fileFso = new \Iron_Model_Fso($this, $this->getFileSpecs());
-        $this->_fileFso->getPathResolver()->setModifiers(array('keepExtension' => true));
+        $this->_originalFileFso = new \Iron_Model_Fso($this, $this->getOriginalFileSpecs());
+        $this->_originalFileFso->getPathResolver()->setModifiers(array('keepExtension' => true));
+        $this->_encodedFileFso = new \Iron_Model_Fso($this, $this->getEncodedFileSpecs());
+        $this->_encodedFileFso->getPathResolver()->setModifiers(array('keepExtension' => true,'storeInBaseFolder' => true));
 
         return $this;
     }
@@ -314,48 +362,130 @@ class Locutions extends ModelAbstract
     public function getFileObjects()
     {
 
-        return array('file');
+        return array('originalFile','encodedFile');
     }
 
-    public function getFileSpecs()
+    public function getOriginalFileSpecs()
     {
         return array(
-            'basePath' => 'file',
-            'sizeName' => 'fileFileSize',
-            'mimeName' => 'fileMimeType',
-            'baseNameName' => 'fileBaseName',
+            'basePath' => 'originalFile',
+            'sizeName' => 'originalFileFileSize',
+            'mimeName' => 'originalFileMimeType',
+            'baseNameName' => 'originalFileBaseName',
         );
     }
 
-    public function putFile($filePath = '',$baseName = '')
+    public function putOriginalFile($filePath = '',$baseName = '')
     {
-        $this->_fileFso->put($filePath);
+        $this->_originalFileFso->put($filePath);
 
         if (!empty($baseName)) {
 
-            $this->_fileFso->setBaseName($baseName);
+            $this->_originalFileFso->setBaseName($baseName);
         }
     }
 
-    public function fetchFile($autoload = true)
+    public function fetchOriginalFile($autoload = true)
     {
-        if ($autoload === true && $this->getfileFileSize() > 0) {
+        if ($autoload === true && $this->getoriginalFileFileSize() > 0) {
 
-            $this->_fileFso->fetch();
+            $this->_originalFileFso->fetch();
         }
 
-        return $this->_fileFso;
+        return $this->_originalFileFso;
     }
 
-    public function removeFile()
+    public function removeOriginalFile()
     {
-        $this->_fileFso->remove();
-        $this->_fileFso = null;
+        $this->_originalFileFso->remove();
+        $this->_originalFileFso = null;
 
         return true;
     }
 
-    public function getFileUrl($profile)
+    public function getOriginalFileUrl($profile)
+    {
+        $fsoConfig = \Zend_Registry::get('fsoConfig');
+        $profileConf = $fsoConfig->$profile;
+
+        if (is_null($profileConf)) {
+            throw new \Exception('Profile invalid. not exist in fso.ini');
+        }
+        $routeMap = isset($profileConf->routeMap) ? $profileConf->routeMap : $fsoConfig->config->routeMap;
+
+        $fsoColumn = $profileConf->fso;
+        $fsoSkipColumns = array(
+                $fsoColumn."FileSize",
+                $fsoColumn."MimeType",
+        );
+        $fsoBaseNameColum = $fsoColumn."BaseName";
+
+        foreach ($this->_columnsList as $column) {
+            if (in_array($column, $fsoSkipColumns)) {
+                continue;
+            }
+            $getter = "get".ucfirst($column);
+            $search = "{".$column."}";
+            if ($column == $fsoBaseNameColum) {
+                $search = "{basename}";
+            }
+            $routeMap = str_replace($search, $this->$getter(), $routeMap);
+        }
+
+        if (!$routeMap) {
+            return null;
+        }
+        $route = array(
+            'profile' => $profile,
+            'routeMap' => $routeMap
+        );
+
+        $view = new \Zend_View();
+        $fsoUrl = $view->serverUrl($view->url($route, 'fso'));
+
+        return $fsoUrl;
+
+    }
+
+    public function getEncodedFileSpecs()
+    {
+        return array(
+            'basePath' => 'encodedFile',
+            'sizeName' => 'encodedFileFileSize',
+            'mimeName' => 'encodedFileMimeType',
+            'baseNameName' => 'encodedFileBaseName',
+        );
+    }
+
+    public function putEncodedFile($filePath = '',$baseName = '')
+    {
+        $this->_encodedFileFso->put($filePath);
+
+        if (!empty($baseName)) {
+
+            $this->_encodedFileFso->setBaseName($baseName);
+        }
+    }
+
+    public function fetchEncodedFile($autoload = true)
+    {
+        if ($autoload === true && $this->getencodedFileFileSize() > 0) {
+
+            $this->_encodedFileFso->fetch();
+        }
+
+        return $this->_encodedFileFso;
+    }
+
+    public function removeEncodedFile()
+    {
+        $this->_encodedFileFso->remove();
+        $this->_encodedFileFso = null;
+
+        return true;
+    }
+
+    public function getEncodedFileUrl($profile)
     {
         $fsoConfig = \Zend_Registry::get('fsoConfig');
         $profileConf = $fsoConfig->$profile;
@@ -477,108 +607,6 @@ class Locutions extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Locutions
-     */
-    public function setFileFileSize($data)
-    {
-
-        if ($this->_fileFileSize != $data) {
-            $this->_logChange('fileFileSize');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_fileFileSize = $data;
-
-        } else if (!is_null($data)) {
-            $this->_fileFileSize = (int) $data;
-
-        } else {
-            $this->_fileFileSize = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column fileFileSize
-     *
-     * @return int
-     */
-    public function getFileFileSize()
-    {
-        return $this->_fileFileSize;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Locutions
-     */
-    public function setFileMimeType($data)
-    {
-
-        if ($this->_fileMimeType != $data) {
-            $this->_logChange('fileMimeType');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_fileMimeType = $data;
-
-        } else if (!is_null($data)) {
-            $this->_fileMimeType = (string) $data;
-
-        } else {
-            $this->_fileMimeType = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column fileMimeType
-     *
-     * @return string
-     */
-    public function getFileMimeType()
-    {
-        return $this->_fileMimeType;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Locutions
-     */
-    public function setFileBaseName($data)
-    {
-
-        if ($this->_fileBaseName != $data) {
-            $this->_logChange('fileBaseName');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_fileBaseName = $data;
-
-        } else if (!is_null($data)) {
-            $this->_fileBaseName = (string) $data;
-
-        } else {
-            $this->_fileBaseName = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column fileBaseName
-     *
-     * @return string
-     */
-    public function getFileBaseName()
-    {
-        return $this->_fileBaseName;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param string $data
      * @return \IvozProvider\Model\Raw\Locutions
      */
@@ -612,6 +640,247 @@ class Locutions extends ModelAbstract
     public function getName()
     {
         return $this->_name;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setOriginalFileFileSize($data)
+    {
+
+        if ($this->_originalFileFileSize != $data) {
+            $this->_logChange('originalFileFileSize');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_originalFileFileSize = $data;
+
+        } else if (!is_null($data)) {
+            $this->_originalFileFileSize = (int) $data;
+
+        } else {
+            $this->_originalFileFileSize = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column originalFileFileSize
+     *
+     * @return int
+     */
+    public function getOriginalFileFileSize()
+    {
+        return $this->_originalFileFileSize;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setOriginalFileMimeType($data)
+    {
+
+        if ($this->_originalFileMimeType != $data) {
+            $this->_logChange('originalFileMimeType');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_originalFileMimeType = $data;
+
+        } else if (!is_null($data)) {
+            $this->_originalFileMimeType = (string) $data;
+
+        } else {
+            $this->_originalFileMimeType = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column originalFileMimeType
+     *
+     * @return string
+     */
+    public function getOriginalFileMimeType()
+    {
+        return $this->_originalFileMimeType;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setOriginalFileBaseName($data)
+    {
+
+        if ($this->_originalFileBaseName != $data) {
+            $this->_logChange('originalFileBaseName');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_originalFileBaseName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_originalFileBaseName = (string) $data;
+
+        } else {
+            $this->_originalFileBaseName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column originalFileBaseName
+     *
+     * @return string
+     */
+    public function getOriginalFileBaseName()
+    {
+        return $this->_originalFileBaseName;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setEncodedFileFileSize($data)
+    {
+
+        if ($this->_encodedFileFileSize != $data) {
+            $this->_logChange('encodedFileFileSize');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_encodedFileFileSize = $data;
+
+        } else if (!is_null($data)) {
+            $this->_encodedFileFileSize = (int) $data;
+
+        } else {
+            $this->_encodedFileFileSize = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column encodedFileFileSize
+     *
+     * @return int
+     */
+    public function getEncodedFileFileSize()
+    {
+        return $this->_encodedFileFileSize;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setEncodedFileMimeType($data)
+    {
+
+        if ($this->_encodedFileMimeType != $data) {
+            $this->_logChange('encodedFileMimeType');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_encodedFileMimeType = $data;
+
+        } else if (!is_null($data)) {
+            $this->_encodedFileMimeType = (string) $data;
+
+        } else {
+            $this->_encodedFileMimeType = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column encodedFileMimeType
+     *
+     * @return string
+     */
+    public function getEncodedFileMimeType()
+    {
+        return $this->_encodedFileMimeType;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setEncodedFileBaseName($data)
+    {
+
+        if ($this->_encodedFileBaseName != $data) {
+            $this->_logChange('encodedFileBaseName');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_encodedFileBaseName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_encodedFileBaseName = (string) $data;
+
+        } else {
+            $this->_encodedFileBaseName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column encodedFileBaseName
+     *
+     * @return string
+     */
+    public function getEncodedFileBaseName()
+    {
+        return $this->_encodedFileBaseName;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setStatus($data)
+    {
+
+        if ($this->_status != $data) {
+            $this->_logChange('status');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_status = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_statusAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for status'));
+            }
+            $this->_status = (string) $data;
+
+        } else {
+            $this->_status = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->_status;
     }
 
     /**

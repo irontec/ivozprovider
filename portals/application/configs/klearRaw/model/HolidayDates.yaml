@@ -37,9 +37,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           fieldName: 
             fields: 
-              - fileMimeType
-            template: '%fileMimeType%'
-          order: fileMimeType
+              - name
+            template: '%name%'
+          order: name
         'null': _("Unasigned")
 staging: 
   _extends: production

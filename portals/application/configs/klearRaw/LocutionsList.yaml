@@ -144,21 +144,36 @@ production:
   # iVRCustomEntries dialogs: 
     <<: *iVRCustomEntries_dialogsLink
   commands: &locutions_commandsLink 
-    locutionsFileDownload_command: &locutionsFileDownload_commandLink 
+    locutionsOriginalFileDownload_command: &locutionsOriginalFileDownload_commandLink 
       <<: *Locutions
       controller: File
       action: force-download
-      mainColumn: file
-    locutionsFileUpload_command: &locutionsFileUpload_commandLink 
+      mainColumn: originalFile
+    locutionsOriginalFileUpload_command: &locutionsOriginalFileUpload_commandLink 
       <<: *Locutions
       controller: File
       action: upload
-      mainColumn: file
-    locutionsFilePreview_command: &locutionsFilePreview_commandLink 
+      mainColumn: originalFile
+    locutionsOriginalFilePreview_command: &locutionsOriginalFilePreview_commandLink 
       <<: *Locutions
       controller: File
       action: preview
-      mainColumn: file
+      mainColumn: originalFile
+    locutionsEncodedFileDownload_command: &locutionsEncodedFileDownload_commandLink 
+      <<: *Locutions
+      controller: File
+      action: force-download
+      mainColumn: encodedFile
+    locutionsEncodedFileUpload_command: &locutionsEncodedFileUpload_commandLink 
+      <<: *Locutions
+      controller: File
+      action: upload
+      mainColumn: encodedFile
+    locutionsEncodedFilePreview_command: &locutionsEncodedFilePreview_commandLink 
+      <<: *Locutions
+      controller: File
+      action: preview
+      mainColumn: encodedFile
 staging: 
   _extends: production
 testing: 

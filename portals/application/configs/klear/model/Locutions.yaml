@@ -14,8 +14,8 @@ production:
               - name
             template: '%name%'
           order: name
-    file: 
-      title: ngettext('File', 'Files', 1)
+    originalFile: 
+      title: ngettext('Uploaded file', 'Uploaded files', 1)
       type: file
       source: 
         data: fso
@@ -24,23 +24,42 @@ production:
           download: 
             external: true
             type: command
-            target: locutions_FileDownload_command
+            target: locutionsOriginalFileDownload_command
             icon: ui-silk-bullet-disk
             title: _("Download file")
             onNull: hide
-          delete:
-            type: setNullFso
-            icon: ui-silk-bin
-            title: _("Delete file")
-            onNull: hide
           upload: 
             type: command
-            target: locutions_FileUpload_command
+            target: locutionsOriginalFileUpload_command
             title: _("Upload file")
             class: qq-uploader
             onNull: show
-            
-            
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: musicOnHold_FileDownload_command
+    encodedFile: 
+      title: ngettext('File for play', 'Files for play', 1)
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: locutionsEncodedFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: musicOnHold_FileDownload_command
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text

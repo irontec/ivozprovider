@@ -15,8 +15,13 @@ production:
             template: '%name%'
           order: name
       default: true
-    file: 
-      title: ngettext('File', 'Files', 1)
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 50
+    originalFile: 
+      title: _('Original file')
       type: file
       source: 
         data: fso
@@ -25,18 +30,18 @@ production:
           download: 
             external: true
             type: command
-            target: locutionsFileDownload_command
+            target: locutionsOriginalFileDownload_command
             icon: ui-silk-bullet-disk
             title: _("Download file")
             onNull: hide
           upload: 
             type: command
-            target: locutionsFileUpload_command
+            target: locutionsOriginalFileUpload_command
             title: _("Upload file")
             class: qq-uploader
             onNull: show
           preview: 
-            target: locutionsFilePreview_command
+            target: locutionsOriginalFilePreview_command
             type: command
             class: filePreview
             external: 1
@@ -46,7 +51,7 @@ production:
               crop: false
             onNull: hide
           previewList: 
-            target: locutionsFilePreview_command
+            target: locutionsOriginalFilePreview_command
             type: command
             class: filePreview
             listController: 1
@@ -61,11 +66,62 @@ production:
             icon: ui-silk-bin
             title: _("Delete file")
             onNull: hide
-    name: 
-      title: ngettext('Name', 'Names', 1)
-      type: text
-      required: true
-      maxLength: 50
+    encodedFile: 
+      title: _('Encoded file')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: locutionsEncodedFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload: 
+            type: command
+            target: locutionsEncodedFileUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview: 
+            target: locutionsEncodedFilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props: 
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList: 
+            target: locutionsEncodedFilePreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props: 
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
+          delete: 
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+    status: 
+      title: _('Statu')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'pending': _('pending')
+          'encoding': _('encoding')
+          'ready': _('ready')
+          'error': _('error')
 staging: 
   _extends: production
 testing: 
