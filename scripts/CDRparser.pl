@@ -67,7 +67,7 @@
 ###     desc (detalla el tipo con una frase descriptiva)
 ###     fw_desc (detalla el tipo de desvio con una frase descriptiva)
 ###     ext_forwarder (si nos entra una llamada con un desvio ajeno, el desviador se guarda aqui)
-###     oasis_forwarder (el desviador de desvios de OASIS)
+###     int_forwarder (si hay un desvio dentro de nuestra plataforma, el desviador se guarda aqui)
 ###     forward_to (user/pstn: desvios de oasis, a donde se desvia)
 ###     companyId
 ###     brandId
@@ -111,7 +111,7 @@ my $dbh = DBI->connect($dsn, $user, $pass)
 my $MAXCALLS = 100;
 
 # My needed variables
-my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
+my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder int_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
 my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
 my %execution = ('ok' => 0, 'error' => 0);
 
@@ -215,7 +215,7 @@ sub setCallType {
         }
     }
 
-    if ($stat{oasis_forwarder}) {
+    if ($stat{int_forwarder}) {
         $stat{type} =~ s/-/->/;
         $stat{desc} .= ' (DESVIADA)';
     }
@@ -244,7 +244,7 @@ sub parseForward {
             say "[$stat{callid}] bleg has the same diversion as aleg, skip parsing (AS has just resend it)";
             return 1;
         }
-        $stat{oasis_forwarder} = $stat{diversionB};
+        $stat{int_forwarder} = $stat{diversionB};
         if ($stat{proxyB} eq 'proxyusers') {
             say "[$stat{callid}] Desvio: desvio de Oasis a usuario"; 
             $stat{forward_to} = 'user';
