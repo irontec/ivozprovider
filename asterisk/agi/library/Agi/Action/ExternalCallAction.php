@@ -46,7 +46,7 @@ class ExternalCallAction extends RouterAction
         /*****************************************************************
          * COMPANY PREFIX CHECKING (FAST CALL DROPS)
          ****************************************************************/
-        if (strpos($number, $outboundPrefix) !== 0) {
+        if (!empty($outboundPrefix) && strpos($number, $outboundPrefix) !== 0) {
             // Check the user has this call allowed in its ACL
             $this->agi->error("Destination without Company [company%d] prefix: %d",
                             $company->getId(), $outboundPrefix);
@@ -100,11 +100,14 @@ class ExternalCallAction extends RouterAction
         /*****************************************************************
          * TARIFICATE CHECKING
          ****************************************************************/
-/*
-        // Can the user pay this call??
-        if (!$user->isDstTarificable($number)) {
+        // Can the company pay this call??
+        $pricingPlan = $company->isDstTarificable($number);
+        if (!$pricingPlan) {
             $this->agi->error("Destination %s can not be billed.", $number);
             return;
+        } else {
+            $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
+            $pricingPlan->getName(), $pricingPlan->getId());
         }
 */
         if ($user) {

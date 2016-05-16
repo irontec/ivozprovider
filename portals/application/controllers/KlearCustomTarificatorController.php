@@ -282,17 +282,19 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $meteringDate = $call->getMeteringDate(true);
             $meteringDate->setTimezone(date_default_timezone_get());
             $data = json_decode($jsonData, true);
-//             var_dump($data); die();
             $table = array(
                     array(
                             "Call date" => $call->getCalldate(true)->setTimezone(date_default_timezone_get()),
                             "Metering date" => $meteringDate->toString(),
                             "Company" => $data["Company"]["name"],
-                            "Plan" => $data["Plan"]["name"],
+                            "Plan" => $data["Plan"]["name_es"],
                             "Plan Metric" => $data["CompanyPlan"]["metric"],
                             "Valid from" => $data["CompanyPlan"]["validFrom"],
                             "Valid to" => $data["CompanyPlan"]["validTo"],
-                            "Pattern Name" => $data["Pattern"]["name"],
+                            "Pattern Name" => sprintf("%s %s (%s)",
+                                    $data["Pattern"]["name_es"],
+                                    $data["Pattern"]["description_es"],
+                                    $data["Pattern"]["regExp"]),
                             "RegExp" => $data["Pattern"]["regExp"],
                             //"Metric" => $data["Price"]["metric"],
                             "Con. Charge" => $data["Price"]["connectionCharge"],

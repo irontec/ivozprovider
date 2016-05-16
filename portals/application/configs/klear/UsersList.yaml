@@ -17,7 +17,7 @@ production:
         field: name
       <<: *Users
       class: ui-silk-user
-      title: _("List of %s %2s %3s", ngettext('User', 'Users', 0), "[format| (%parent%)]", "Irontec : fuckers")
+      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
       fields: 

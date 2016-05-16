@@ -17,35 +17,36 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
-
 namespace IvozProvider\Model;
+
 class Companies extends Raw\Companies
 {
+
     /**
      * This method is called just after parent's constructor
      */
     public function init()
-    {
-    }
+    {}
 
     /**
+     *
      * @param string $exten
      * @return string
      */
     public function getTypeCall($exten)
     {
-        $extensions = $this->getExtensions("number='".$exten."'");
+        $extensions = $this->getExtensions("number='" . $exten . "'");
         $extension = array_shift($extensions);
 
-        if(empty($extension)) {
+        if (empty($extension)) {
             return "shared-external";
         }
-        return "shared-".$extension->getRouteType();
+        return "shared-" . $extension->getRouteType();
     }
 
     public function getExtension($exten)
     {
-        $extensions = $this->getExtensions("number='".$exten."'");
+        $extensions = $this->getExtensions("number='" . $exten . "'");
         return array_shift($extensions);
     }
 
@@ -78,13 +79,12 @@ class Companies extends Raw\Companies
 
     public function getTerminal($name)
     {
-        $terminals = $this->getTerminals("name='".$name."'");
+        $terminals = $this->getTerminals("name='" . $name . "'");
         return array_shift($terminals);
     }
 
     public function getCompanyActivePricingPlan($date = null)
     {
-
         if (is_null($date)) {
             $date = new \Zend_Date();
             $date->setTimezone("UTC");
@@ -92,12 +92,16 @@ class Companies extends Raw\Companies
 
         $dateTime = $date->toString('yyyy-MM-dd HH:mm:ss');
 
-        $where = "validFrom <= '".$dateTime."' AND validTo >= '".$dateTime."'";
-        $this->_logger->log("[Model][Companies] Condition: ".$where, \Zend_Log::DEBUG);
+        $where = "validFrom <= '" . $dateTime . "' AND validTo >= '" . $dateTime .
+                         "'";
+        $this->_logger->log("[Model][Companies] Condition: " . $where,
+                        \Zend_Log::DEBUG);
         $order = "metric asc";
-        $companyPricingPlans = $this->getPricingPlansRelCompanies($where, $order);
+        $companyPricingPlans = $this->getPricingPlansRelCompanies($where,
+                        $order);
         if (empty($companyPricingPlans)) {
-            $this->_logger->log("[Model][Companies] No active Pricing Plan.", \Zend_Log::WARN);
+            $this->_logger->log("[Model][Companies] No active Pricing Plan.",
+                            \Zend_Log::WARN);
             return null;
         }
         return $companyPricingPlans;
@@ -106,10 +110,30 @@ class Companies extends Raw\Companies
     public function getLanguageCode()
     {
         $language = $this->getLanguage();
-        if (!$language) {
+        if (! $language) {
             return $this->getBrand()->getLanguageCode();
         }
         return $language->getIden();
     }
-    
+
+    /**
+     *
+     * @param string $number
+     * @return bool tarificable
+     */
+    public function isDstTarificable($number)
+    {
+        $call = new \IvozProvider\Model\ParsedCDRs();
+
+        $call->setDst($number)
+            ->setCompanyId($this->getId())
+            ->setBrandId($this->getBrandId())
+            ->setCalldate(new \Zend_Date());
+
+        $result = $call->tarificate();
+        if (! is_null($result)) {
+            return $result->getPricingPlan();
+        }
+        return null;
+    }
 }

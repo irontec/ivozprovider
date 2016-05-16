@@ -31,7 +31,7 @@ class ParsedCDRs extends Raw\ParsedCDRs
     public function tarificate($plan = null)
     {
         $peeringContract = $this->getPeeringContract();
-        if ($peeringContract->getExternallyRated() == 1) {
+        if (!is_null($peeringContract) && $peeringContract->getExternallyRated() == 1) {
             $this->setExternallyRated(1);
             return null;
         }
@@ -44,25 +44,27 @@ class ParsedCDRs extends Raw\ParsedCDRs
         $this->_log("[tarificate] Company: ".$company->getName(), \Zend_Log::INFO);
 
         $companyActivePricingPlans = $company->getCompanyActivePricingPlan($callDate);
-        if (is_null($companyActivePricingPlans)) {
-            $this->_log("[tarificate] No Pricing Plan found ", \Zend_Log::INFO);
-            return null;
+        foreach ($companyActivePricingPlans as $companyActivePricingPlan) {
+            $this->_log("[tarificate] CompanyPricingPlanToApply: ".$companyActivePricingPlan->getPrimaryKey(), \Zend_Log::INFO);
+
+            $pricingPlan = $companyActivePricingPlan->getPricingPlan();
+            $matchedPrices = $pricingPlan->getMatchedPrices($dst);
+
+            if (!is_null($matchedPrices)) {
+                $companyPricingPlanToApply = $companyActivePricingPlan;
+                $planToApply = $pricingPlan;
+                $priceToApply = $matchedPrices[0];
+                break;
+            }
         }
 
-        $companyPricingPlanToApply = $companyActivePricingPlans[0];
-        $this->_log("[tarificate] CompanyPricingPlanToApply: ".$companyPricingPlanToApply->getPrimaryKey(), \Zend_Log::INFO);
-
-        $planToApply = $companyPricingPlanToApply->getPricingPlan();
-        $this->_log("[tarificate] PlanToApply: ".$planToApply->getPrimaryKey(), \Zend_Log::INFO);
-
-        $matchedPrices = $planToApply->getMatchedPrices($dst);
-        if (is_null($matchedPrices)) {
+        // Check if any of the pricing plans matches the given dst
+        if ($priceToApply) {
+            $this->_log("[tarificate] PriceToApply: ".$priceToApply->getPrimaryKey(), \Zend_Log::INFO);
+        } else {
             $this->_log("[tarificate] No matched Price found ", \Zend_Log::INFO);
             return null;
         }
-
-        $priceToApply = $matchedPrices[0];
-        $this->_log("[tarificate] PriceToApply: ".$priceToApply->getPrimaryKey(), \Zend_Log::INFO);
 
         $matchedPattern = $priceToApply->getTargetPattern();
         $this->_log("[tarificate] MatchedPattern: ".$matchedPattern->getName(), \Zend_Log::INFO);
