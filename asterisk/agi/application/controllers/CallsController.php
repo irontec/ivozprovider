@@ -15,12 +15,12 @@ use Agi\Action\FaxCallAction;
  *
  * This controllers is invoked from different contexts of dialplan and routes
  * the call based on configuretion
- * 
+ *
  * Following actions are defined in this controller
  * - incoming: Handle incoming calls from external numbers
  * - outgoing: Handle outgoing calls from registered users
  * - forwards: Handle channel redirections and transfers
- * - dialstatus: Handle post-call user call forwards  
+ * - dialstatus: Handle post-call user call forwards
  *
  * @package AGI
  * @subpackage CallsController
@@ -56,15 +56,14 @@ class CallsController extends BaseController
 
         // Get company MusicClass: company, Generic or default
         $company = $ddi->getCompany();
-        $this->_setMusicClass($company);
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Process this DDI
         $ddiAction = new DDIAction($this);
         $ddiAction
             ->setDDI($ddi)
             ->process();
-
     }
 
     /**
@@ -118,6 +117,7 @@ class CallsController extends BaseController
         // Set Company/Brand/Generic Music class
         $company = $user->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Check User's permission to does this call
         $exten = $this->agi->getExtension();
@@ -133,7 +133,6 @@ class CallsController extends BaseController
 
         // Set user language
         $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
-        $this->_setMusicClass($company);
 
         // Some output
         $this->agi->verbose("Processing ougoing call from %s [%s] to number %s",
@@ -185,36 +184,6 @@ class CallsController extends BaseController
                 ->setUser($user)
                 ->setDestination($exten)
                 ->process();
-        }
-    }
-
-    /**
-     * @brief Add SIP Headers for proxies
-     */
-    public function addheadersAction()
-    {
-        $companyId = $this->agi->getVariable("COMPANYID");
-        $companyMapper = new Mapper\Companies();
-        $company = $companyMapper->find($companyId);
-
-        // Add headers for Friendly Kamailio  Proxy;-))            
-        $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
-        $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
-        $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
-        $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
-        $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
-
-        // Set Callee information. 
-        // Use channelname to get this information because in case of ringall hungroup
-        // this action will be invoked once per generated channel
-        $peer = $this->agi->getPeer();
-        $terminal = $company->getTerminal($peer);
-        if (!empty($terminal)) {
-            $extension = $terminal->getUser()->getExtension();
-            $this->agi->setSIPHeader("X-Info-OutPrefix", $company->getOutboundPrefix());
-            $this->agi->setSIPHeader("X-Info-Callee",    $extension->getNumber());
-        } else {
-            $this->agi->setSIPHeader("X-Info-MaxCalls",     $company->getExternalMaxCalls());
         }
     }
 
@@ -368,30 +337,37 @@ class CallsController extends BaseController
     }
 
     /**
-     * @brief Set musicclass for given company
-     *
-     * If no specific company music on hold is found, brand music will be used.
-     * If no specific brand music  on hold is found, dafault music will be sued.
-     *
+     * @brief Add SIP Headers for proxies
      */
-    private function _setMusicClass($company){
+    public function addheadersAction()
+    {
+        $companyId = $this->agi->getVariable("COMPANYID");
+        $companyMapper = new Mapper\Companies();
+        $company = $companyMapper->find($companyId);
 
-        $musicClass = "default";
-        $musicOnHoldMapper = new Mapper\MusicOnHold();
-        $musicOnHold = $musicOnHoldMapper->fetchOne("companyId='" . $company->getId() . "'");
+        // Add headers for Friendly Kamailio  Proxy;-))
+        $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
+        $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
+        $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
+        $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
+        $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
 
-        if (! empty($musicOnHold)) {
-            $musicClass = $musicOnHold->getOwner();
+        // Set Callee information.
+        // Use channelname to get this information because in case of ringall hungroup
+        // this action will be invoked once per generated channel
+        $peer = $this->agi->getPeer();
+        $terminal = $company->getTerminal($peer);
+        if (!empty($terminal)) {
+            $extension = $terminal->getUser()->getExtension();
+            $this->agi->setSIPHeader("X-Info-OutPrefix", $company->getOutboundPrefix());
+            $this->agi->setSIPHeader("X-Info-Callee",    $extension->getNumber());
         } else {
-            $brandId = $company->getBrandId();
-            $genericMusicOnHoldMapper = new Mapper\GenericMusicOnHold();
-            $genericMusicOnHold = $genericMusicOnHoldMapper->fetchOne("brandId='" . $brandId . "'");
-            if (! empty($genericMusicOnHold)) {
-                $musicClass = $genericMusicOnHold->getOwner();
-            }
+            $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
         }
 
-        $this->agi->setVariable("CHANNEL(musicclass)", $musicClass);
-        return $this;
+        // Set special headers for Fax outgoing calls
+        if ($this->agi->getVariable("FAXOUT_ID")) {
+            $this->agi->setSIPHeader("X-Info-Special", "fax");
+        }
     }
 }

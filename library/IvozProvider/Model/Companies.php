@@ -117,6 +117,31 @@ class Companies extends Raw\Companies
     }
 
     /**
+     * @brief Set musicclass for given company
+     *
+     * If no specific company music on hold is found, brand music will be used.
+     * If no specific brand music  on hold is found, dafault music will be sued.
+     *
+     */
+    public function getMusicClass()
+    {
+        // Company has music on hold
+        $companyMoH = $this->getMusicOnHold();
+        if (!empty($companyMoH)) {
+            return $companyMoH[0]->getOwner();
+        }
+
+        // Brand has music on hold
+        $brandMoH = $this->getBrand()->getGenericMusicOnHold();
+        if (!empty($brandMoH)) {
+            return $brandMoH[0]->getOwner();
+        }
+
+        return "default";
+    }
+
+
+    /**
      *
      * @param string $number
      * @return bool tarificable
