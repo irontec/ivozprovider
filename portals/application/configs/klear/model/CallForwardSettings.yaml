@@ -82,7 +82,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Extensions
+          filterClass: IvozProvider_Klear_Filter_ForwardExtension
           fieldName: 
             fields: 
               - number
