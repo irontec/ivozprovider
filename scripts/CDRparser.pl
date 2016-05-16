@@ -108,6 +108,9 @@ my $gearman_job = 'tarificateCalls';
 my $dbh = DBI->connect($dsn, $user, $pass)
                 or die "Couldn't connect to database: " . DBI->errstr;
 
+# Max calls to parse on each run
+my $MAXCALLS = 100;
+
 # My needed variables
 my @STATFIELDS = qw /calldate src src_dialed src_duration dst dst_src_cid dst_duration type desc fw_desc ext_forwarder oasis_forwarder forward_to companyId brandId aleg bleg billCallID peeringContractId/;
 my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
@@ -297,7 +300,7 @@ sub insertStat {
 # MAIN LOGIC
 #########################################
 
-# Fetch unparsed calls (only alegs with duration > 0)
+# Fetch oldest 100 unparsed calls (only alegs with duration > 0)
 my $getPendingCalls = "SELECT c.*, com.brandId FROM CDRs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' ORDER BY start_time";
 
 my $sth = $dbh->prepare($getPendingCalls)
@@ -313,8 +316,13 @@ if (not $pendingCallsNumber) {
     exit;
 }
 
-say "There are $pendingCallsNumber pending calls";
+if ($pendingCallsNumber > $MAXCALLS) {
+    say "$MAXCALLS pending calls will be parsed this run (out of $pendingCallsNumber pending calls)";
+} else {
+    say "All $pendingCallsNumber pending calls will be parsed this run";
+}
 
+my $i = 0;
 while (my $call = $sth->fetchrow_hashref) {
     %stat = ();
 
@@ -347,6 +355,9 @@ while (my $call = $sth->fetchrow_hashref) {
     setParsedValue 'yes';
 
     say Dumper \%stat if @ARGV;
+
+    # Only parse $MAXCALLS on each run
+    last if ++$i >= $MAXCALLS;
 }
 
 # Disconnect from database
