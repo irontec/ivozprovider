@@ -92,6 +92,7 @@ production:
     send_diversion: 
       title: _('Send diversion')
       type: select
+      defaultValue: yes
       source: 
         data: inline
         values: 
@@ -100,14 +101,7 @@ production:
     send_pai: 
       title: _('Send pai')
       type: select
-      source: 
-        data: inline
-        values: 
-          'yes': _('yes')
-          'no': _('no')
-    send_rpid: 
-      title: _('Send rpid')
-      type: select
+      defaultValue: yes
       source: 
         data: inline
         values: 

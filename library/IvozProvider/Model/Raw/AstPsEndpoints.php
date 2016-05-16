@@ -44,10 +44,6 @@ class AstPsEndpoints extends ModelAbstract
         'yes',
         'no',
     );
-    protected $_sendRpidAcceptedValues = array(
-        'yes',
-        'no',
-    );
     protected $_100relAcceptedValues = array(
         'no',
         'required',
@@ -169,13 +165,6 @@ class AstPsEndpoints extends ModelAbstract
     protected $_sendPai;
 
     /**
-     * Database var type enum('yes','no')
-     *
-     * @var string
-     */
-    protected $_sendRpid;
-
-    /**
      * Database var type varchar
      *
      * @var string
@@ -243,7 +232,6 @@ class AstPsEndpoints extends ModelAbstract
         'mailboxes'=>'mailboxes',
         'send_diversion'=>'sendDiversion',
         'send_pai'=>'sendPai',
-        'send_rpid'=>'sendRpid',
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'trust_id_inbound'=>'trustIdInbound',
@@ -854,43 +842,6 @@ class AstPsEndpoints extends ModelAbstract
     public function getSendPai()
     {
         return $this->_sendPai;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setSendRpid($data)
-    {
-
-        if ($this->_sendRpid != $data) {
-            $this->_logChange('sendRpid');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_sendRpid = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_sendRpidAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for sendRpid'));
-            }
-            $this->_sendRpid = (string) $data;
-
-        } else {
-            $this->_sendRpid = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column send_rpid
-     *
-     * @return string
-     */
-    public function getSendRpid()
-    {
-        return $this->_sendRpid;
     }
 
     /**

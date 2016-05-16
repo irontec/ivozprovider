@@ -63,7 +63,6 @@ class AstPsEndpoints extends MapperAbstract
                 'mailboxes' => $model->getMailboxes(),
                 'send_diversion' => $model->getSendDiversion(),
                 'send_pai' => $model->getSendPai(),
-                'send_rpid' => $model->getSendRpid(),
                 'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
                 'trust_id_inbound' => $model->getTrustIdInbound(),
@@ -569,7 +568,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setMailboxes($data['mailboxes'])
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
-                  ->setSendRpid($data['send_rpid'])
                   ->setSubscribecontext($data['subscribecontext'])
                   ->set100rel($data['100rel'])
                   ->setTrustIdInbound($data['trust_id_inbound'])
@@ -590,7 +588,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setMailboxes($data->{'mailboxes'})
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
-                  ->setSendRpid($data->{'send_rpid'})
                   ->setSubscribecontext($data->{'subscribecontext'})
                   ->set100rel($data->{'100rel'})
                   ->setTrustIdInbound($data->{'trust_id_inbound'})
@@ -612,7 +609,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setMailboxes($data->getMailboxes())
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())
-                  ->setSendRpid($data->getSendRpid())
                   ->setSubscribecontext($data->getSubscribecontext())
                   ->set100rel($data->get100rel())
                   ->setTrustIdInbound($data->getTrustIdInbound())
