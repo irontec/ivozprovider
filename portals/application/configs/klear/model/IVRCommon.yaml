@@ -96,7 +96,7 @@ production:
       source: 
         data: inline
         values: 
-          'null':
+          '__null__':
             title: _('Unasigned')
             visualFilter:
               hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
@@ -156,7 +156,7 @@ production:
       source: 
         data: inline
         values: 
-          'null':
+          '__null__':
             title: _('Unasigned')
             visualFilter:
               hide: ["errorNumberValue", "errorExtensionId", "errorVoiceMailUserId" ]
