@@ -135,6 +135,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\InvoiceTemplates
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
