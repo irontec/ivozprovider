@@ -5,12 +5,12 @@ namespace Agi\Action;
 class UserCallAction extends RouterAction
 {
     protected $_timeout;
-    
+
     protected $_dialStatus = null;
-    
+
     protected $_dialContext = 'call-user';
-    
-    protected $_allowForwading = true;
+
+    protected $_allowForwarding = true;
 
     protected $_processDialStatus = true;
 
@@ -19,16 +19,16 @@ class UserCallAction extends RouterAction
         $this->_timeout = $timeout;
         return $this;
     }
-    
+
     public function setDialContext($context)
     {
         $this->_dialContext = $context;
         return $this;
     }
-    
-	public function allowForwading($allow)
+
+	public function allowForwarding($allow)
 	{
-	    $this->_allowForwading = $allow;
+	    $this->_allowForwarding = $allow;
 	    return $this;
 	}
 
@@ -37,12 +37,12 @@ class UserCallAction extends RouterAction
 	    $this->_processDialStatus = $process;
 	    return $this;
 	}
-	
+
 	public function getDialStatus()
 	{
 	    return $this->_dialStatus;
 	}
-	
+
   	public function call()
     {
   	    if (empty($this->_user)) {
@@ -62,7 +62,7 @@ class UserCallAction extends RouterAction
             $this->processDialStatus();
             return;
         }
-  	    
+
   	    // Check if user has extension configured
   	    $extension = $this->_user->getExtension();
   	    if (empty($extension)) {
@@ -71,7 +71,7 @@ class UserCallAction extends RouterAction
             $this->processDialStatus();
             return;
   	    }
-  	    
+
   	    // Check if user has terminal configured
   	    $terminal = $this->_user->getTerminal();
   	    if (empty($terminal)) {
@@ -80,17 +80,17 @@ class UserCallAction extends RouterAction
             $this->processDialStatus();
             return;
   	    }
-  	    
+
         // Some verbose dolan pls
-        $this->agi->verbose("Preparing call to user %s [%d] (%s [%d])", 
+        $this->agi->verbose("Preparing call to user %s [%d] (%s [%d])",
                         $user->getFullName(), $user->getId(), $terminal->getName(), $terminal->getId());
 
-        // Check if user has call forwading enabled
-        if ($this->_allowForwading) {
+        // Check if user has call forwarding enabled
+        if ($this->_allowForwarding) {
             // Process inconditional Call Forwards
             $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='inconditional'");
             foreach ($cfwSettings as $cfwSetting) {
-                $cfwType = $cfwSetting->getCallTypeFilter(); 
+                $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
                     $cfwAction = new CallForwardAction($this);
                     $cfwAction
@@ -105,7 +105,7 @@ class UserCallAction extends RouterAction
         if ($user->getDoNotDisturb()) {
             $this->_dialStatus = "BUSY";
             $this->processDialStatus();
-            return;            
+            return;
         }
 
         // Check if this user is a boss
@@ -119,7 +119,7 @@ class UserCallAction extends RouterAction
                 ->call();
             return;
         }
-        
+
         // If there's no timeout
         if (empty($this->_timeout)) {
             // Get the timeout from the call forward
@@ -141,14 +141,14 @@ class UserCallAction extends RouterAction
         if (in_array($devicestate, $unavailableArray)) {
             $this->_dialStatus = "CHANUNAVAIL";
             $this->processDialStatus();
-            return; 
+            return;
         }
 
         // Check if the user can have multiple calls at the same time
         if ($devicestate != "NOT_INUSE" && !$user->getCallWaiting()) {
             $this->_dialStatus = "BUSY";
             $this->processDialStatus();
-            return; 
+            return;
         }
 
         // Configure Dial options
@@ -157,7 +157,7 @@ class UserCallAction extends RouterAction
         $options = ""; // FIXME
 
         // Don't accept forwards SIP redirections for this call
-        if (!$this->_allowForwading) {
+        if (!$this->_allowForwarding) {
             $options .= "i";
         }
 
@@ -215,30 +215,30 @@ class UserCallAction extends RouterAction
 
         return 0;
     }
-    
+
     public function processDialStatus()
     {
         //! Requested no to parse dialo status
         if (!$this->_processDialStatus) {
-            return; 
+            return;
         }
-        
+
         if (empty($this->_user)) {
             $this->agi->error("User is not properly defined. Check configuration.");
             return;
         }
-        
+
         // Local variables to improve readability
         $user = $this->_user;
-        
+
         // If no dialstatus has been provided, try to get Dial output
         if (empty($this->_dialStatus)) {
             $this->_dialStatus = $this->agi->getVariable("DIALSTATUS");
         }
-        
+
         // Some output for the asterisk cli
         $this->agi->verbose("Call ended with status %s", $this->_dialStatus);
-        
+
         // Check Call Forward configuration configured with dialstatus
         switch ($this->_dialStatus) {
             case 'CHANUNAVAIL';
@@ -259,7 +259,7 @@ class UserCallAction extends RouterAction
                 break;
         }
     }
-    
+
     private function _processCallForward($user, $type)
     {
         // Process busy Call Forwards

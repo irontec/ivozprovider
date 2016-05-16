@@ -62,7 +62,7 @@ class HuntGroupAction extends RouterAction
             ->setUser($user)
             ->setTimeout($firstTimeout)
             ->setDialContext('call-huntgroup')
-            ->allowForwading(false)
+            ->allowForwarding(false)
             ->setProcessDialStatus(false)
             ->call();
 
