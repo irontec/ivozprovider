@@ -98,7 +98,13 @@ Package: ivozprovider-profile-proxy
 Architecture: all
 Section: admin
 Priority: optional
-Depends: ivozprovider-profile-common, sngrep, mysql-client, netcat-openbsd, ssl-cert
+Depends: ivozprovider-profile-common,
+        sngrep,
+        mysql-client,
+        netcat-openbsd,
+        ssl-cert,
+        ivozprovider-kamailio-trunks,
+        ivozprovider-kamailio-users
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
  .
