@@ -68,7 +68,7 @@
 ###     fw_desc (detalla el tipo de desvio con una frase descriptiva)
 ###     ext_forwarder (si nos entra una llamada con un desvio ajeno, el desviador se guarda aqui)
 ###     int_forwarder (si hay un desvio dentro de nuestra plataforma, el desviador se guarda aqui)
-###     forward_to (user/pstn: desvios de oasis, a donde se desvia)
+###     forward_to (user/pstn: desvios de la plataforma, a donde se desvia)
 ###     companyId
 ###     brandId
 ###     aleg
@@ -162,7 +162,7 @@ sub setCallType {
     #    * donde nace la llamada
     #    * Valores posibles: USER, PSTN
     # delimiter:
-    #    * Indica si la llamada ha tenido desvios o no (por parte de Oasis)
+    #    * Indica si la llamada ha tenido desvios o no (por parte de la plataforma)
     #    * Valores posibles: '-' (sin desvios) / '->' (con desvios)
     # param2:
     #    * donde acaba la llamada
@@ -239,9 +239,9 @@ sub parseForward {
             warn "[$stat{callid}] Llamada de un terminal con Diversion seteado, error\n"; 
             return undef;
         } else {
-            say "[$stat{callid}] Desvio: desvio de PSTN ajeno a Oasis";
+            say "[$stat{callid}] Desvio: desvio de PSTN ajeno a la plataforma";
             $stat{ext_forwarder} = $stat{diversionA};
-            $stat{fw_desc} = 'Desvio de PSTN ajeno a Oasis';
+            $stat{fw_desc} = 'Desvio de PSTN ajeno a la plataforma';
         }
     }
 
@@ -252,20 +252,20 @@ sub parseForward {
         }
         $stat{int_forwarder} = $stat{diversionB};
         if ($stat{proxyB} eq 'proxyusers') {
-            say "[$stat{callid}] Desvio: desvio de Oasis a usuario"; 
+            say "[$stat{callid}] Desvio: desvio de la plataforma a usuario"; 
             $stat{forward_to} = 'user';
             if ($stat{fw_desc}) { # Evitar que se pise, si existe (doble forward), append
-                $stat{fw_desc} .= " - Desvio de Oasis a usuario";
+                $stat{fw_desc} .= " - Desvio de la plataforma a usuario";
             } else {
-                $stat{fw_desc} = "Desvio de Oasis a usuario";
+                $stat{fw_desc} = "Desvio de la plataforma a usuario";
             }
         } else {
-            say "[$stat{callid}] Desvio: desvio de Oasis a PSTN"; 
+            say "[$stat{callid}] Desvio: desvio de la plataforma a PSTN"; 
             $stat{forward_to} = 'pstn';
             if ($stat{fw_desc}) { # Evitar que se pise, si existe (doble forward), append
-                $stat{fw_desc} .= " - Desvio de Oasis a PSTN";
+                $stat{fw_desc} .= " - Desvio de la plataforma a PSTN";
             } else {
-                $stat{fw_desc} = 'Desvio de Oasis a PSTN';
+                $stat{fw_desc} = 'Desvio de la plataforma a PSTN';
             }
         }
     }

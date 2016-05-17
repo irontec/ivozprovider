@@ -11,15 +11,15 @@ production:
           disabled: 'false'
       default: true
     src: 
-      title: _('Src')
+      title: _('Source')
       type: text
       maxLength: 128
     src_dialed: 
-      title: _('Src dialed')
+      title: _('Destination')
       type: text
       maxLength: 128
     src_duration: 
-      title: _('Src duration')
+      title: _('Call duration')
       type: text
       defaultValue: 
       maxLength: 32
@@ -41,19 +41,19 @@ production:
       type: text
       maxLength: 256
     desc: 
-      title: _('Desc')
+      title: _('Call description')
       type: text
       maxLength: 256
     fw_desc: 
-      title: _('Fw desc')
+      title: _('Forward description')
       type: text
       maxLength: 256
     ext_forwarder: 
-      title: _('Ext forwarder')
+      title: _('External forwarder')
       type: text
       maxLength: 32
-    oasis_forwarder: 
-      title: _('Oasis forwarder')
+    int_forwarder: 
+      title: _('Internal forwarder')
       type: text
       maxLength: 32
     forward_to: 
@@ -127,7 +127,7 @@ production:
           order: name
         'null': _("Unasigned")
     targetPatternId: 
-      title: _('Target pattern')
+      title: _('Destination type')
       type: select
       source: 
         data: mapper

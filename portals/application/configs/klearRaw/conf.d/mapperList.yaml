@@ -79,7 +79,6 @@ mappers:
   - &KamTrunksDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomainAttrs, modelFile: KamTrunksDomainAttrs}
   - &KamTrunksHtable {mapper: \IvozProvider\Mapper\Sql\KamTrunksHtable, modelFile: KamTrunksHtable}
   - &KamTrunksLocation {mapper: \IvozProvider\Mapper\Sql\KamTrunksLocation, modelFile: KamTrunksLocation}
-  - &KamTrunksMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamTrunksMissedCalls, modelFile: KamTrunksMissedCalls}
   - &KamTrunksUacreg {mapper: \IvozProvider\Mapper\Sql\KamTrunksUacreg, modelFile: KamTrunksUacreg}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
   - &KamUsersAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamUsersAccCdrs, modelFile: KamUsersAccCdrs}

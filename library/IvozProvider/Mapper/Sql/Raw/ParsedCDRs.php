@@ -50,25 +50,24 @@ class ParsedCDRs extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'calldate' => $model->getCalldate(),
+                'type' => $model->getType(),
+                'desc' => $model->getDesc(),
                 'src' => $model->getSrc(),
                 'src_dialed' => $model->getSrcDialed(),
                 'src_duration' => $model->getSrcDuration(),
                 'dst' => $model->getDst(),
                 'dst_src_cid' => $model->getDstSrcCid(),
                 'dst_duration' => $model->getDstDuration(),
-                'type' => $model->getType(),
-                'desc' => $model->getDesc(),
                 'fw_desc' => $model->getFwDesc(),
                 'ext_forwarder' => $model->getExtForwarder(),
                 'int_forwarder' => $model->getIntForwarder(),
                 'forward_to' => $model->getForwardTo(),
-                'companyId' => $model->getCompanyId(),
-                'brandId' => $model->getBrandId(),
                 'aleg' => $model->getAleg(),
                 'bleg' => $model->getBleg(),
                 'billCallID' => $model->getBillCallID(),
                 'billDuration' => $model->getBillDuration(),
                 'billDestination' => $model->getBillDestination(),
+                'externallyRated' => $model->getExternallyRated(),
                 'metered' => $model->getMetered(),
                 'meteringDate' => $model->getMeteringDate(),
                 'pricingPlanId' => $model->getPricingPlanId(),
@@ -77,7 +76,8 @@ class ParsedCDRs extends MapperAbstract
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
                 'peeringContractId' => $model->getPeeringContractId(),
-                'externallyRated' => $model->getExternallyRated(),
+                'companyId' => $model->getCompanyId(),
+                'brandId' => $model->getBrandId(),
             );
         } else {
             $result = array();
@@ -557,25 +557,24 @@ class ParsedCDRs extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setCalldate($data['calldate'])
+                  ->setType($data['type'])
+                  ->setDesc($data['desc'])
                   ->setSrc($data['src'])
                   ->setSrcDialed($data['src_dialed'])
                   ->setSrcDuration($data['src_duration'])
                   ->setDst($data['dst'])
                   ->setDstSrcCid($data['dst_src_cid'])
                   ->setDstDuration($data['dst_duration'])
-                  ->setType($data['type'])
-                  ->setDesc($data['desc'])
                   ->setFwDesc($data['fw_desc'])
                   ->setExtForwarder($data['ext_forwarder'])
                   ->setIntForwarder($data['int_forwarder'])
                   ->setForwardTo($data['forward_to'])
-                  ->setCompanyId($data['companyId'])
-                  ->setBrandId($data['brandId'])
                   ->setAleg($data['aleg'])
                   ->setBleg($data['bleg'])
                   ->setBillCallID($data['billCallID'])
                   ->setBillDuration($data['billDuration'])
                   ->setBillDestination($data['billDestination'])
+                  ->setExternallyRated($data['externallyRated'])
                   ->setMetered($data['metered'])
                   ->setMeteringDate($data['meteringDate'])
                   ->setPricingPlanId($data['pricingPlanId'])
@@ -584,29 +583,29 @@ class ParsedCDRs extends MapperAbstract
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
                   ->setInvoiceId($data['invoiceId'])
                   ->setPeeringContractId($data['peeringContractId'])
-                  ->setExternallyRated($data['externallyRated']);
+                  ->setCompanyId($data['companyId'])
+                  ->setBrandId($data['brandId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCalldate($data->{'calldate'})
+                  ->setType($data->{'type'})
+                  ->setDesc($data->{'desc'})
                   ->setSrc($data->{'src'})
                   ->setSrcDialed($data->{'src_dialed'})
                   ->setSrcDuration($data->{'src_duration'})
                   ->setDst($data->{'dst'})
                   ->setDstSrcCid($data->{'dst_src_cid'})
                   ->setDstDuration($data->{'dst_duration'})
-                  ->setType($data->{'type'})
-                  ->setDesc($data->{'desc'})
                   ->setFwDesc($data->{'fw_desc'})
                   ->setExtForwarder($data->{'ext_forwarder'})
                   ->setIntForwarder($data->{'int_forwarder'})
                   ->setForwardTo($data->{'forward_to'})
-                  ->setCompanyId($data->{'companyId'})
-                  ->setBrandId($data->{'brandId'})
                   ->setAleg($data->{'aleg'})
                   ->setBleg($data->{'bleg'})
                   ->setBillCallID($data->{'billCallID'})
                   ->setBillDuration($data->{'billDuration'})
                   ->setBillDestination($data->{'billDestination'})
+                  ->setExternallyRated($data->{'externallyRated'})
                   ->setMetered($data->{'metered'})
                   ->setMeteringDate($data->{'meteringDate'})
                   ->setPricingPlanId($data->{'pricingPlanId'})
@@ -615,30 +614,30 @@ class ParsedCDRs extends MapperAbstract
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
                   ->setInvoiceId($data->{'invoiceId'})
                   ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setExternallyRated($data->{'externallyRated'});
+                  ->setCompanyId($data->{'companyId'})
+                  ->setBrandId($data->{'brandId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ParsedCDRs) {
             $entry->setId($data->getId())
                   ->setCalldate($data->getCalldate())
+                  ->setType($data->getType())
+                  ->setDesc($data->getDesc())
                   ->setSrc($data->getSrc())
                   ->setSrcDialed($data->getSrcDialed())
                   ->setSrcDuration($data->getSrcDuration())
                   ->setDst($data->getDst())
                   ->setDstSrcCid($data->getDstSrcCid())
                   ->setDstDuration($data->getDstDuration())
-                  ->setType($data->getType())
-                  ->setDesc($data->getDesc())
                   ->setFwDesc($data->getFwDesc())
                   ->setExtForwarder($data->getExtForwarder())
                   ->setIntForwarder($data->getIntForwarder())
                   ->setForwardTo($data->getForwardTo())
-                  ->setCompanyId($data->getCompanyId())
-                  ->setBrandId($data->getBrandId())
                   ->setAleg($data->getAleg())
                   ->setBleg($data->getBleg())
                   ->setBillCallID($data->getBillCallID())
                   ->setBillDuration($data->getBillDuration())
                   ->setBillDestination($data->getBillDestination())
+                  ->setExternallyRated($data->getExternallyRated())
                   ->setMetered($data->getMetered())
                   ->setMeteringDate($data->getMeteringDate())
                   ->setPricingPlanId($data->getPricingPlanId())
@@ -647,7 +646,8 @@ class ParsedCDRs extends MapperAbstract
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
                   ->setInvoiceId($data->getInvoiceId())
                   ->setPeeringContractId($data->getPeeringContractId())
-                  ->setExternallyRated($data->getExternallyRated());
+                  ->setCompanyId($data->getCompanyId())
+                  ->setBrandId($data->getBrandId());
 
         }
 

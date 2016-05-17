@@ -31,7 +31,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_id;
 
     /**
-     * Llamada establecida pata 1
+     * aleg timestamp
      * Database var type timestamp
      *
      * @var string
@@ -39,7 +39,23 @@ class ParsedCDRs extends ModelAbstract
     protected $_calldate;
 
     /**
-     * Real Caller
+     * Call type
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_type;
+
+    /**
+     * Call description
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_desc;
+
+    /**
+     * Caller
      * Database var type varchar
      *
      * @var string
@@ -55,7 +71,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_srcDialed;
 
     /**
-     * Duracion llamada pata 1
+     * aleg call duration
      * Database var type int
      *
      * @var int
@@ -63,7 +79,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_srcDuration;
 
     /**
-     * Final Callee, numero llamado en pata 2
+     * Final Callee - bleg destination
      * Database var type varchar
      *
      * @var string
@@ -71,7 +87,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_dst;
 
     /**
-     * Numero mostrado como origen en pata 2
+     * CallerID seen by call destination
      * Database var type varchar
      *
      * @var string
@@ -79,7 +95,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_dstSrcCid;
 
     /**
-     * Duracion llamada pata 2
+     * bleg call duration
      * Database var type int
      *
      * @var int
@@ -87,21 +103,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_dstDuration;
 
     /**
-     * Mucha miga, needs work
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_type;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_desc;
-
-    /**
+     * Call forwarding description
      * Database var type varchar
      *
      * @var string
@@ -109,6 +111,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_fwDesc;
 
     /**
+     * aleg diversion
      * Database var type varchar
      *
      * @var string
@@ -116,6 +119,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_extForwarder;
 
     /**
+     * bleg diversion
      * Database var type varchar
      *
      * @var string
@@ -123,6 +127,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_intForwarder;
 
     /**
+     * Dialed number after forwarding
      * Database var type varchar
      *
      * @var string
@@ -130,21 +135,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_forwardTo;
 
     /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_companyId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_brandId;
-
-    /**
-     * callid pata 1
+     * aleg CallID
      * Database var type varchar
      *
      * @var string
@@ -152,7 +143,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_aleg;
 
     /**
-     * callid pata 2
+     * bleg CallID
      * Database var type varchar
      *
      * @var string
@@ -160,7 +151,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_bleg;
 
     /**
-     * callid pata facturable
+     * Billable leg CallID
      * Database var type varchar
      *
      * @var string
@@ -168,6 +159,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_billCallID;
 
     /**
+     * Billable leg duration
      * Database var type int
      *
      * @var int
@@ -175,6 +167,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_billDuration;
 
     /**
+     * Billable leg destination
      * Database var type varchar
      *
      * @var string
@@ -182,6 +175,15 @@ class ParsedCDRs extends ModelAbstract
     protected $_billDestination;
 
     /**
+     * 1 for billable calls billed elsewhere
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_externallyRated;
+
+    /**
+     * 1 for billable calls with price set
      * Database var type tinyint
      *
      * @var int
@@ -196,6 +198,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_meteringDate;
 
     /**
+     * Pricing plan used for setting price
      * Database var type int
      *
      * @var int
@@ -203,6 +206,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_pricingPlanId;
 
     /**
+     * Destination group for billable call
      * Database var type int
      *
      * @var int
@@ -210,6 +214,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_targetPatternId;
 
     /**
+     * Final price for billable call
      * Database var type decimal
      *
      * @var float
@@ -224,6 +229,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_pricingPlanDetails;
 
     /**
+     * Invoice for billable billed call
      * Database var type int
      *
      * @var int
@@ -231,6 +237,7 @@ class ParsedCDRs extends ModelAbstract
     protected $_invoiceId;
 
     /**
+     * Billable call used Peering Contract
      * Database var type int
      *
      * @var int
@@ -238,11 +245,18 @@ class ParsedCDRs extends ModelAbstract
     protected $_peeringContractId;
 
     /**
-     * Database var type tinyint
+     * Database var type int
      *
      * @var int
      */
-    protected $_externallyRated;
+    protected $_companyId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_brandId;
 
 
     /**
@@ -291,25 +305,24 @@ class ParsedCDRs extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'calldate'=>'calldate',
+        'type'=>'type',
+        'desc'=>'desc',
         'src'=>'src',
         'src_dialed'=>'srcDialed',
         'src_duration'=>'srcDuration',
         'dst'=>'dst',
         'dst_src_cid'=>'dstSrcCid',
         'dst_duration'=>'dstDuration',
-        'type'=>'type',
-        'desc'=>'desc',
         'fw_desc'=>'fwDesc',
         'ext_forwarder'=>'extForwarder',
         'int_forwarder'=>'intForwarder',
         'forward_to'=>'forwardTo',
-        'companyId'=>'companyId',
-        'brandId'=>'brandId',
         'aleg'=>'aleg',
         'bleg'=>'bleg',
         'billCallID'=>'billCallID',
         'billDuration'=>'billDuration',
         'billDestination'=>'billDestination',
+        'externallyRated'=>'externallyRated',
         'metered'=>'metered',
         'meteringDate'=>'meteringDate',
         'pricingPlanId'=>'pricingPlanId',
@@ -318,7 +331,8 @@ class ParsedCDRs extends ModelAbstract
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
         'peeringContractId'=>'peeringContractId',
-        'externallyRated'=>'externallyRated',
+        'companyId'=>'companyId',
+        'brandId'=>'brandId',
     );
 
     /**
@@ -328,16 +342,30 @@ class ParsedCDRs extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'calldate'=> array(''),
+            'type'=> array(''),
+            'desc'=> array(''),
             'src'=> array(''),
             'src_dialed'=> array(''),
             'src_duration'=> array(''),
             'dst'=> array(''),
             'dst_src_cid'=> array(''),
             'dst_duration'=> array(''),
-            'type'=> array(''),
+            'fw_desc'=> array(''),
+            'ext_forwarder'=> array(''),
+            'int_forwarder'=> array(''),
+            'forward_to'=> array(''),
             'aleg'=> array(''),
             'bleg'=> array(''),
             'billCallID'=> array(''),
+            'billDuration'=> array(''),
+            'billDestination'=> array(''),
+            'externallyRated'=> array(''),
+            'metered'=> array(''),
+            'pricingPlanId'=> array(''),
+            'targetPatternId'=> array(''),
+            'price'=> array(''),
+            'invoiceId'=> array(''),
+            'peeringContractId'=> array(''),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -501,6 +529,74 @@ class ParsedCDRs extends ModelAbstract
         }
 
         return $this->_calldate->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setType($data)
+    {
+
+        if ($this->_type != $data) {
+            $this->_logChange('type');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_type = $data;
+
+        } else if (!is_null($data)) {
+            $this->_type = (string) $data;
+
+        } else {
+            $this->_type = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setDesc($data)
+    {
+
+        if ($this->_desc != $data) {
+            $this->_logChange('desc');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_desc = $data;
+
+        } else if (!is_null($data)) {
+            $this->_desc = (string) $data;
+
+        } else {
+            $this->_desc = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column desc
+     *
+     * @return string
+     */
+    public function getDesc()
+    {
+        return $this->_desc;
     }
 
     /**
@@ -712,74 +808,6 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setType($data)
-    {
-
-        if ($this->_type != $data) {
-            $this->_logChange('type');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_type = $data;
-
-        } else if (!is_null($data)) {
-            $this->_type = (string) $data;
-
-        } else {
-            $this->_type = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->_type;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setDesc($data)
-    {
-
-        if ($this->_desc != $data) {
-            $this->_logChange('desc');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_desc = $data;
-
-        } else if (!is_null($data)) {
-            $this->_desc = (string) $data;
-
-        } else {
-            $this->_desc = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column desc
-     *
-     * @return string
-     */
-    public function getDesc()
-    {
-        return $this->_desc;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
     public function setFwDesc($data)
     {
 
@@ -909,74 +937,6 @@ class ParsedCDRs extends ModelAbstract
     public function getForwardTo()
     {
         return $this->_forwardTo;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setCompanyId($data)
-    {
-
-        if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_companyId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_companyId = (int) $data;
-
-        } else {
-            $this->_companyId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column companyId
-     *
-     * @return int
-     */
-    public function getCompanyId()
-    {
-        return $this->_companyId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setBrandId($data)
-    {
-
-        if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_brandId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_brandId = (int) $data;
-
-        } else {
-            $this->_brandId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column brandId
-     *
-     * @return int
-     */
-    public function getBrandId()
-    {
-        return $this->_brandId;
     }
 
     /**
@@ -1147,6 +1107,40 @@ class ParsedCDRs extends ModelAbstract
     public function getBillDestination()
     {
         return $this->_billDestination;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setExternallyRated($data)
+    {
+
+        if ($this->_externallyRated != $data) {
+            $this->_logChange('externallyRated');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_externallyRated = $data;
+
+        } else if (!is_null($data)) {
+            $this->_externallyRated = (int) $data;
+
+        } else {
+            $this->_externallyRated = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column externallyRated
+     *
+     * @return int
+     */
+    public function getExternallyRated()
+    {
+        return $this->_externallyRated;
     }
 
     /**
@@ -1448,33 +1442,67 @@ class ParsedCDRs extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setExternallyRated($data)
+    public function setCompanyId($data)
     {
 
-        if ($this->_externallyRated != $data) {
-            $this->_logChange('externallyRated');
+        if ($this->_companyId != $data) {
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_externallyRated = $data;
+            $this->_companyId = $data;
 
         } else if (!is_null($data)) {
-            $this->_externallyRated = (int) $data;
+            $this->_companyId = (int) $data;
 
         } else {
-            $this->_externallyRated = $data;
+            $this->_companyId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column externallyRated
+     * Gets column companyId
      *
      * @return int
      */
-    public function getExternallyRated()
+    public function getCompanyId()
     {
-        return $this->_externallyRated;
+        return $this->_companyId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setBrandId($data)
+    {
+
+        if ($this->_brandId != $data) {
+            $this->_logChange('brandId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_brandId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_brandId = (int) $data;
+
+        } else {
+            $this->_brandId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column brandId
+     *
+     * @return int
+     */
+    public function getBrandId()
+    {
+        return $this->_brandId;
     }
 
     /**
