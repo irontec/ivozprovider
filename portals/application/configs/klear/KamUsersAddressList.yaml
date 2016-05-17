@@ -33,7 +33,7 @@ production:
         position: left
         icon: error
         label:
-          "Insert 0.0.0.0/0 to disable source address checking"
+          "Enable IP filter in Companies settings to apply. If enabled and no address set, all calls will be rejected."
       options: 
         title: _("Options")
         screens: 

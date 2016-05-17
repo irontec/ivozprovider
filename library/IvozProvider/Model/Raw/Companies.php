@@ -142,6 +142,13 @@ class Companies extends ModelAbstract
      */
     protected $_mediaRelaySetsId;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_ipFilter;
+
 
     /**
      * Parent relation Companies_ibfk_10
@@ -420,6 +427,7 @@ class Companies extends ModelAbstract
         'countryId'=>'countryId',
         'languageId'=>'languageId',
         'mediaRelaySetsId'=>'mediaRelaySetsId',
+        'ipFilter'=>'ipFilter',
     );
 
     /**
@@ -1219,6 +1227,40 @@ class Companies extends ModelAbstract
     public function getMediaRelaySetsId()
     {
         return $this->_mediaRelaySetsId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setIpFilter($data)
+    {
+
+        if ($this->_ipFilter != $data) {
+            $this->_logChange('ipFilter');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_ipFilter = $data;
+
+        } else if (!is_null($data)) {
+            $this->_ipFilter = (int) $data;
+
+        } else {
+            $this->_ipFilter = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column ipFilter
+     *
+     * @return int
+     */
+    public function getIpFilter()
+    {
+        return $this->_ipFilter;
     }
 
     /**

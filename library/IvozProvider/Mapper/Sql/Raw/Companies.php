@@ -65,6 +65,7 @@ class Companies extends MapperAbstract
                 'countryId' => $model->getCountryId(),
                 'languageId' => $model->getLanguageId(),
                 'mediaRelaySetsId' => $model->getMediaRelaySetsId(),
+                'ipFilter' => $model->getIpFilter(),
             );
         } else {
             $result = array();
@@ -939,7 +940,8 @@ class Companies extends MapperAbstract
                   ->setOutboundPrefix($data['outbound_prefix'])
                   ->setCountryId($data['countryId'])
                   ->setLanguageId($data['languageId'])
-                  ->setMediaRelaySetsId($data['mediaRelaySetsId']);
+                  ->setMediaRelaySetsId($data['mediaRelaySetsId'])
+                  ->setIpFilter($data['ipFilter']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -957,7 +959,8 @@ class Companies extends MapperAbstract
                   ->setOutboundPrefix($data->{'outbound_prefix'})
                   ->setCountryId($data->{'countryId'})
                   ->setLanguageId($data->{'languageId'})
-                  ->setMediaRelaySetsId($data->{'mediaRelaySetsId'});
+                  ->setMediaRelaySetsId($data->{'mediaRelaySetsId'})
+                  ->setIpFilter($data->{'ipFilter'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -976,7 +979,8 @@ class Companies extends MapperAbstract
                   ->setOutboundPrefix($data->getOutboundPrefix())
                   ->setCountryId($data->getCountryId())
                   ->setLanguageId($data->getLanguageId())
-                  ->setMediaRelaySetsId($data->getMediaRelaySetsId());
+                  ->setMediaRelaySetsId($data->getMediaRelaySetsId())
+                  ->setIpFilter($data->getIpFilter());
 
         }
 

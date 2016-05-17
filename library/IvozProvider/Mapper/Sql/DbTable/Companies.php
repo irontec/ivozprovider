@@ -390,6 +390,23 @@ class Companies extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'ipFilter' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'ipFilter',
+	    'COLUMN_POSITION' => 18,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '1',
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

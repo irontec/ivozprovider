@@ -163,6 +163,24 @@ production:
               - name
             template: '%name%'
           order: name
+    ipFilter:
+      title: _('Filter by IP address')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Add IPs or network if enabled. Otherwise all calls will be rejected.")
+        label: _("Need help?")
+
 staging: 
   _extends: production
 testing: 
