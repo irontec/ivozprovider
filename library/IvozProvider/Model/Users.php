@@ -52,23 +52,23 @@ class Users extends Raw\Users
         return $terminal->getName();
 
     }
-    
+
     /**
      * return associated endpoint with the user
-     * 
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints 
+     *
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
     public function getEndpoint()
     {
         $terminal = $this->getTerminal();
         if (!$terminal) return null;
-        
+
         // $terminal->getAstPsEndpoints(); SIMPLY NOT WORKING :\
         $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
         $endpoint = $endpointMapper->findOneByField("terminalId", $terminal->getId());
         return $endpoint;
     }
-    
+
     /**
      * @return string with the voicemail
      */
@@ -155,24 +155,6 @@ class Users extends Raw\Users
         return $callAcl->dstIsCallable($exten);
     }
 
-    /**
-    *
-    * @param string $exten
-    * @return bool tarificable
-    */
-    public function isDstTarificable ($exten)
-    {
-        $call = new \IvozProvider\Model\ParsedCDRs();
-        $call->setDst($exten)
-            ->setCompanyId($this->getCompanyId())
-            ->setCalldate(new \Zend_Date());
-        $result = $call->tarificate();
-        if (is_null($result)) {
-            return false;
-        }
-        return true;
-    }
-    
     public function getPickUpGroups()
     {
         $pickUpGroups = array();
@@ -226,12 +208,12 @@ class Users extends Raw\Users
         // Looks like a complete user
         return true;
     }
-    
+
     public function getLanguageCode()
     {
         $language = $this->getLanguage();
         if (!$language) {
-            return $this->getCompany()->getLanguageCode(); 
+            return $this->getCompany()->getLanguageCode();
         }
         return $language->getIden();
     }
