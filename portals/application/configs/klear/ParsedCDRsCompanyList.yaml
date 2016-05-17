@@ -9,6 +9,10 @@ production:
   screens: &parsedCDRs_screensLink 
     parsedCDRsList_screen: &parsedCDRsList_screenLink 
       controller: list
+      order:
+        field:
+          - calldate
+        type: desc
       pagination: 
         items: 25
       <<: *ParsedCDRs
@@ -80,6 +84,7 @@ production:
           peeringContractId: true
           aleg: true
           bleg: true
+          ext_forwarder: true
         order:
           calldate: true
           type: true
@@ -88,7 +93,6 @@ production:
           src_dialed: true
           src_duration: true
           fw_desc: true
-          ext_forwarder: true
           int_forwarder: true
           forward_to: true
           metered: true
@@ -109,8 +113,7 @@ production:
           label: _("Forwarding information")
           colsPerRow: 12
           fields:
-            fw_desc: 6
-            ext_forwarder: 6
+            fw_desc: 12
             int_forwarder: 6
             forward_to: 6
         group3:

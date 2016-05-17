@@ -53,7 +53,7 @@ production:
       type: text
       maxLength: 32
     int_forwarder: 
-      title: _('Internal forwarder')
+      title: _('Forwarder')
       type: text
       maxLength: 32
     forward_to: 

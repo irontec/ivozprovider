@@ -68,7 +68,7 @@
 ###     fw_desc (detalla el tipo de desvio con una frase descriptiva)
 ###     ext_forwarder (si nos entra una llamada con un desvio ajeno, el desviador se guarda aqui)
 ###     int_forwarder (si hay un desvio dentro de nuestra plataforma, el desviador se guarda aqui)
-###     forward_to (user/pstn: desvios de la plataforma, a donde se desvia)
+###     forward_to (numero llamado a raiz del desvio)
 ###     companyId
 ###     brandId
 ###     aleg
@@ -241,7 +241,6 @@ sub parseForward {
         } else {
             say "[$stat{callid}] Desvio: desvio de PSTN ajeno a la plataforma";
             $stat{ext_forwarder} = $stat{diversionA};
-            $stat{fw_desc} = 'Desvio de PSTN ajeno a la plataforma';
         }
     }
 
@@ -250,23 +249,17 @@ sub parseForward {
             say "[$stat{callid}] bleg has the same diversion as aleg, skip parsing (AS has just resend it)";
             return 1;
         }
+
+        $stat{forward_to} = $stat{dst};
         $stat{int_forwarder} = $stat{diversionB};
+
         if ($stat{proxyB} eq 'proxyusers') {
-            say "[$stat{callid}] Desvio: desvio de la plataforma a usuario"; 
-            $stat{forward_to} = 'user';
-            if ($stat{fw_desc}) { # Evitar que se pise, si existe (doble forward), append
-                $stat{fw_desc} .= " - Desvio de la plataforma a usuario";
-            } else {
-                $stat{fw_desc} = "Desvio de la plataforma a usuario";
-            }
+            say "[$stat{callid}] Desvio: $stat{int_forwarder} desvia la llamada a numero interno $stat{forward_to}"; 
+            $stat{fw_desc} = "$stat{int_forwarder} desvia la llamada a numero interno $stat{forward_to}";
         } else {
-            say "[$stat{callid}] Desvio: desvio de la plataforma a PSTN"; 
-            $stat{forward_to} = 'pstn';
-            if ($stat{fw_desc}) { # Evitar que se pise, si existe (doble forward), append
-                $stat{fw_desc} .= " - Desvio de la plataforma a PSTN";
-            } else {
-                $stat{fw_desc} = 'Desvio de la plataforma a PSTN';
-            }
+            # En desvio a PSTN, diversion contendra el DDI out del desviador y la extension desviadora
+            say "[$stat{callid}] Desvio: $stat{int_forwarder} desvia la llamada a numero externo $stat{forward_to}"; 
+            $stat{fw_desc} = "$stat{int_forwarder} desvia la llamada a numero externo $stat{forward_to}";
         }
     }
 

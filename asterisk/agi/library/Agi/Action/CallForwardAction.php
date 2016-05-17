@@ -4,7 +4,7 @@ namespace Agi\Action;
 class CallForwardAction extends RouterAction
 {
     protected $_maxRedirections = 5;
-    
+
     protected $_cfw;
 
     public function setCallForward($cfw)
@@ -23,10 +23,10 @@ class CallForwardAction extends RouterAction
         // Some CLI information
         $cfw = $this->_cfw;
         $this->agi->verbose("Processing %s call forward", $cfw->getCallForwardType());
-        
+
         /**
          * Set Diversion reason based on current Call Forward settings
-         * 
+         *
          * https://wiki.asterisk.org/wiki/display/AST/Function_REDIRECTING
          */
         switch ($cfw->getCallForwardType()) {
@@ -43,7 +43,7 @@ class CallForwardAction extends RouterAction
                 $this->agi->setRedirecting('reason,i', 'unavailable');
                 break;
         }
-        
+
         // Avoid Redirection loops
         $count = $this->agi->getRedirecting('count');
         if ($count < $this->_maxRedirections) {
@@ -53,7 +53,7 @@ class CallForwardAction extends RouterAction
             $this->agi->hangup(44);
             return;
         }
-        
+
         // Route to destination
         $this->_user            = $cfw->getUser();
         $this->_routeType       = $cfw->getTargetType();
@@ -88,6 +88,7 @@ class CallForwardAction extends RouterAction
         // Set as diversion number the user Outgoing DDI
         $this->agi->setRedirecting('from-num,i', $this->_user->getOutgoingDDINumber());
         $this->agi->setRedirecting('from-name',  $this->_user->getFullName());
+        $this->agi->setRedirecting('from-tag,i', $this->_user->getExtensionNumber());
 
         // Use default route function
         parent::_routeToExternal();

@@ -160,6 +160,11 @@ class CallsController extends BaseController
         } elseif (($dstExtension = $company->getExtension($exten))) {
             $this->agi->verbose("Number %s belongs to a company extension [%d].", $exten, $dstExtension->getId());
 
+            // Update who is redirecting this call
+            if ($this->agi->getRedirecting('from-num')) {
+                $this->agi->setRedirecting('from-num', $extension->getNumber());
+            }
+
             // Handle extension
             $extensionAction = new ExtensionAction($this);
             $extensionAction
@@ -176,6 +181,7 @@ class CallsController extends BaseController
             } else if (isset($forwader) && !empty($forwader)) {
                 $this->agi->setRedirecting('from-name,i', $user->getFullName());
                 $this->agi->setRedirecting('from-num,i', $user->getOutgoingDDINumber());
+                $this->agi->setRedirecting('from-tag,i',   $user->getExtensionNumber());
             }
 
             // Otherwise, handle this call as external
@@ -368,6 +374,11 @@ class CallsController extends BaseController
         // Set special headers for Fax outgoing calls
         if ($this->agi->getVariable("FAXOUT_ID")) {
             $this->agi->setSIPHeader("X-Info-Special", "fax");
+        }
+
+        // Set Special header for Forwarding
+        if ($this->agi->getRedirecting('from-tag')) {
+            $this->agi->setSIPHeader("X-Info-ForwardExt", $this->agi->getRedirecting('from-tag'));
         }
     }
 }
