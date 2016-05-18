@@ -50,10 +50,10 @@ class ExternalCallAction extends RouterAction
         $callingCode = $company->getCountries()->getCallingCode();
         $outboundPrefix = $company->getOutboundPrefix();
 
-        if (!empty($outboundPrefix) && strpos($number, $outboundPrefix) !== 0) {
+        if (strlen($outboundPrefix) !== 0 && strpos($number, $outboundPrefix) !== 0) {
             // Check the user has this call allowed in its ACL
-            $this->agi->error("Destination without [company%d] prefix: %d",
-                            $company->getId(), $outboundPrefix);
+            $this->agi->error("Destination number %s without [company%d] prefix: %d",
+                            $number, $company->getId(), $outboundPrefix);
             $this->agi->hangup(21); // Declined
             return;
         }
