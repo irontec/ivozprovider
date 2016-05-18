@@ -28,9 +28,10 @@ production:
         options: 
           title: _("Options")
           screens: 
-            dDIsEdit_screen: true
+            dDIsEdit_screen: ${auth.isNotCompanyOperator}
+            dDIsEditLimited_screen: ${auth.isCompanyOperator}
           dialogs: 
-            dDIsDel_dialog: true
+            dDIsDel_dialog: ${auth.isNotCompanyOperator}
           default: dDIsEdit_screen
         blacklist:
           userId: true
@@ -41,9 +42,9 @@ production:
       options: 
         title: _("Options")
         screens: 
-          dDIsNew_screen: true
+          dDIsNew_screen: ${auth.isNotCompanyOperator}
         dialogs: 
-          dDIsDel_dialog: true
+          dDIsDel_dialog: ${auth.isNotCompanyOperator}
     dDIsNew_screen: &dDIsNew_screenLink 
       <<: *DDIs
       controller: new
@@ -68,6 +69,19 @@ production:
       fields:
         blacklist:
           target: true
+    dDIsEditLimited_screen: &dDIsEdit_screenLink 
+      <<: *DDIs
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      forcedValues:
+        <<: *forcedCompany
+      title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          target: true
+        readOnly:
+          DDI: true
   dialogs: &dDIs_dialogsLink
     dDIsDel_dialog: &dDIsDel_dialogLink 
       <<: *DDIs

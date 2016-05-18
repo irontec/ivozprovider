@@ -128,7 +128,10 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
         $authStorage = $auth->getStorage();
         $this->_user->id = $this->_user->getId();
         $this->_user->isNotMainOperator = !$this->_user->isMainOperator;
-
+        $this->_user->isBrandOperator = $this->_user->canSeeBrand && !$this->_user->canSeeMain;
+        $this->_user->isNotBrandOperator = !$this->_user->isBrandOperator;
+        $this->_user->isCompanyOperator = !$this->_user->canSeeBrand && $this->_user->canSeeCompany;
+        $this->_user->isNotCompanyOperator = !$this->_user->isCompanyOperator;
         $authStorage->write($this->_user);
     }
 }
