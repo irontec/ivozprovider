@@ -91,26 +91,31 @@ class FaxCallAction extends RouterAction
         $this->agi->setVariable("FAXIN_ID", $faxIn->getId());
 
         // Some verbose dolan pls
-        $this->agi->verbose("Incoming fax from %d did. Preparing fax to send to %s)", 
+        $this->agi->verbose("Incoming fax from %d did. Preparing fax to send to %s)",
                    $did,$fax->getName());
-        
+
+        // Transform number to Company Preferred
+        // This transformation will be overriden if this calls ends in an User
+        $preferred = $fax->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
+        $this->agi->setCallerIdNum($preferred);
+
         // Redirect to the calling dialplan context
         if ($this->_dialContext) {
             $this->agi->redirect($this->_dialContext, $did);
         }
     }
-    
+
     public function sendFax()
     {
         if (empty($this->_fax) || empty($this->_faxInOut)) {
             $this->agi->error("fax is not properly defined. Check configuration.");
             return;
         }
-    
+
         // Local variables to improve readability
         $fax = $this->_fax;
         $faxOut = $this->_faxInOut;
-         
+
         // Prepare to call destination
         $DDIOut = $fax->getOutgoingDDI();
 
@@ -127,7 +132,14 @@ class FaxCallAction extends RouterAction
         $this->agi->setVariable("CALLERID(name)", $fax->getName());    
 
         $faxOut->setStatus("inprogress")->save();
-        
+
+        // Normalize called number to E164
+        $number = $fax->getCompany()->preferredToE164($this->agi->getExtension());
+
+        // Call the PSJIP endpoint
+        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
+        $this->agi->setVariable("DIAL_OPTS", "");
+
     }
     
     public function processDialStatus()

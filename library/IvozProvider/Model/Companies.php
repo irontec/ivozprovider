@@ -140,7 +140,6 @@ class Companies extends Raw\Companies
         return "default";
     }
 
-
     /**
      *
      * @param string $number
@@ -150,7 +149,7 @@ class Companies extends Raw\Companies
     {
         $call = new \IvozProvider\Model\ParsedCDRs();
 
-        $call->setDst($number)
+        $call->setBillDestination($number)
             ->setCompanyId($this->getId())
             ->setBrandId($this->getBrandId())
             ->setCalldate(new \Zend_Date());
@@ -160,5 +159,72 @@ class Companies extends Raw\Companies
             return $result->getPricingPlan();
         }
         return null;
+    }
+
+    /**
+     * Convert a received number to Company prefered format
+     *
+     * @param unknown $number
+     */
+    public function preferredToACL($number)
+    {
+        // Get company Data
+        $callingCode = $this->getCountries()->getCallingCode();
+        $outboundPrefix = $this->getOutboundPrefix();
+
+        // Remove outbound prefix (if any)
+        $number = preg_replace("/^$outboundPrefix/", "", $number);
+
+        // Remove Calling code If matches the company
+        $number = preg_replace("/^00$callingCode/", "", $number);
+
+        // Add Company outubound prefix
+        $number = $outboundPrefix . $number;
+
+        return $number;
+    }
+
+    /**
+     * Convert a company dialed number to E164 form
+     *
+     * param string $number
+     * return string number in E164
+     */
+    public function preferredToE164($number)
+    {
+        // Get company Data
+        $callingCode = $this->getCountries()->getCallingCode();
+        $outboundPrefix = $this->getOutboundPrefix();
+
+        // Remove company outbound prefix
+        $number = preg_replace("/^$outboundPrefix/", "", $number);
+
+        // Remove international code
+        $number = preg_replace("/^00/", "", $number, 1, $found);
+
+        // No international code found
+        if (! $found) {
+            // Append user Calling code
+            $callingCode = $this->getCountries()->getCallingCode();
+            $number = $callingCode . $number;
+        }
+
+        return $number;
+    }
+
+    /**
+     * Convert a received number to Company prefered format
+     *
+     * @param unknown $number
+     */
+    public function E164ToPreferred($number)
+    {
+        // Get company Data
+        $callingCode = $this->getCountries()->getCallingCode();
+
+        // Remove Calling code If matches the company
+        $number = preg_replace("/^$callingCode/", "", $number);
+
+        return $number;
     }
 }

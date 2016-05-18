@@ -353,7 +353,6 @@ class CallsController extends BaseController
 
         // Add headers for Friendly Kamailio  Proxy;-))
         $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
-        $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
         $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
         $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
@@ -365,7 +364,6 @@ class CallsController extends BaseController
         $terminal = $company->getTerminal($peer);
         if (!empty($terminal)) {
             $extension = $terminal->getUser()->getExtension();
-            $this->agi->setSIPHeader("X-Info-OutPrefix", $company->getOutboundPrefix());
             $this->agi->setSIPHeader("X-Info-Callee",    $extension->getNumber());
         } else {
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());

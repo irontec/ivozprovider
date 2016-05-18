@@ -39,16 +39,20 @@ class ExternalCallAction extends RouterAction
             $company = $user->getCompany();
         }
 
-        // Get company Data
-        $callingCode = $company->getCountries()->getCallingCode();
-        $outboundPrefix = $company->getOutboundPrefix();
+        // Update Called name and number
+        $this->agi->setConnectedLine('name,i', '');
+        $this->agi->setConnectedLine('num,i', $number);
 
         /*****************************************************************
          * COMPANY PREFIX CHECKING (FAST CALL DROPS)
          ****************************************************************/
+        // Get company Data
+        $callingCode = $company->getCountries()->getCallingCode();
+        $outboundPrefix = $company->getOutboundPrefix();
+
         if (!empty($outboundPrefix) && strpos($number, $outboundPrefix) !== 0) {
             // Check the user has this call allowed in its ACL
-            $this->agi->error("Destination without Company [company%d] prefix: %d",
+            $this->agi->error("Destination without [company%d] prefix: %d",
                             $company->getId(), $outboundPrefix);
             $this->agi->hangup(21); // Declined
             return;
@@ -59,11 +63,8 @@ class ExternalCallAction extends RouterAction
          ****************************************************************/
         // Check If user can place this call
         if ($user) {
-            $aclNumber = preg_replace("/^$outboundPrefix/", "", $number);
-            // Remove Calling code If matches the company
-            $aclNumber = preg_replace("/^00$callingCode/", "", $aclNumber, 1, $count);
-            // Add Company prefix
-            $aclNumber = $outboundPrefix . $aclNumber;
+            // Convert number to user prefered format to check ACLs
+            $aclNumber = $company->preferredToACL($number);
 
             // Check the user has this call allowed in its ACL
             $this->agi->verbose("Checking if %s [user%d] can call %d",
@@ -78,23 +79,11 @@ class ExternalCallAction extends RouterAction
         /*****************************************************************
          * E164 FIXUPS
          ****************************************************************/
-        // Remove company outbound prefix
-        $number = preg_replace("/^$outboundPrefix/", "", $number);
-
-        // Remove international code
-        $number = preg_replace("/^00/", "", $number, 1, $found);
-
-        // No international code found
-        if (!$found) {
-            // Add the Calling code based on who place this call
-            if ($user) {
-                $country = $user->getCountry();
-            } else {
-                $country = $company->getCountries();
-            }
-            // Append user Calling code
-            $callingCode = $country->getCallingCode();
-            $number = $callingCode . $number;
+        // Add the Calling code based on who place this call
+        if ($user) {
+            $number = $user->preferredToE164($number);
+        } else {
+            $number = $company->preferredToE164($number);
         }
 
         /*****************************************************************
@@ -109,7 +98,10 @@ class ExternalCallAction extends RouterAction
             $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
             $pricingPlan->getName(), $pricingPlan->getId());
         }
-*/
+
+        /*****************************************************************
+         * ORIGIN DDI PRESENTATION
+         ****************************************************************/
         if ($user) {
             // Set Outgoing number
             $company = $user->getCompany();
@@ -128,9 +120,6 @@ class ExternalCallAction extends RouterAction
             // FIXME COMPANY DEFAULT DDI OUT ???
         }
 
-        // Update Called name
-        $this->agi->setConnectedLine('name,i', '');
-        $this->agi->setConnectedLine('num,i', $number);
 
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');

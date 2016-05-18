@@ -82,8 +82,9 @@ class UserCallAction extends RouterAction
   	    }
 
         // Some verbose dolan pls
-        $this->agi->verbose("Preparing call to user %s [%d] (%s [%d])",
-                        $user->getFullName(), $user->getId(), $terminal->getName(), $terminal->getId());
+        $this->agi->verbose("Preparing call to user %s [user%d] (%s [terminal%d])",
+                        $user->getFullName(), $user->getId(),
+                        $terminal->getName(), $terminal->getId());
 
         // Check if user has call forwarding enabled
         if ($this->_allowForwarding) {
@@ -103,6 +104,7 @@ class UserCallAction extends RouterAction
 
         // User requested peace
         if ($user->getDoNotDisturb()) {
+            $this->agi->verbose("User %s [user%s] has DND enabled.", $user->getFullName(), $user->getId());
             $this->_dialStatus = "BUSY";
             $this->processDialStatus();
             return;
@@ -171,8 +173,12 @@ class UserCallAction extends RouterAction
             // FIXME WHY THIS DOESN'T UPDATE EXTERNAL PAI ???
             $this->agi->setConnectedLine('name,i', $user->getFullName());
             $this->agi->setConnectedLine('num', $user->getOutgoingDDINumber());
+
+            // Transfor number to User Preferred
+            $preferred = $user->E164ToPreferred($this->agi->getOrigCallerIdNum());
+            $this->agi->setCallerIdNum($preferred);
         }
-            
+
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_EXT", $extension->getNumber());
         $this->agi->setVariable("DIAL_DST", "PJSIP/$interface");
@@ -190,7 +196,7 @@ class UserCallAction extends RouterAction
      * @param unknown $user
      * @param unknown $source
      */
-    protected function _canCallBoss($boss, $source)
+    private function _canCallBoss($boss, $source)
     {
         // Assistant can allways call its boss
         $assistant = $boss->getBossAssistant();
