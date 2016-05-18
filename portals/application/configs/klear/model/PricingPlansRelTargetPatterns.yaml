@@ -7,6 +7,7 @@ production:
     connectionCharge: 
       title: _('Connection charge')
       type: text
+      trim: both
       required: true
       default: true
       sufix: "€"
@@ -22,6 +23,7 @@ production:
     perPeriodCharge: 
       title: _('Per period charge')
       type: text
+      trim: both
       required: true
       sufix: "€"
     metric: 

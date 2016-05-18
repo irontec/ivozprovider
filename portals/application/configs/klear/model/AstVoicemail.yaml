@@ -4,12 +4,14 @@ production:
     context: 
       title: _('Context')
       type: text
+      trim: both
       required: true
       maxLength: 80
       default: true
     mailbox: 
       title: _('Mailbox')
       type: text
+      trim: both
       required: true
       maxLength: 80
     password: 
@@ -20,18 +22,22 @@ production:
     fullname: 
       title: _('Fullname')
       type: text
+      trim: both
       maxLength: 80
     alias: 
       title: _('Alia')
       type: text
+      trim: both
       maxLength: 80
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
+      trim: both
       maxLength: 80
     pager: 
       title: _('Pager')
       type: text
+      trim: both
       maxLength: 80
     attach: 
       title: _('Attach')
@@ -44,18 +50,22 @@ production:
     attachfmt: 
       title: _('Attachfmt')
       type: text
+      trim: both
       maxLength: 10
     serveremail: 
       title: _('Serveremail')
       type: text
+      trim: both
       maxLength: 80
     language: 
       title: _('Language')
       type: text
+      trim: both
       maxLength: 20
     tz: 
       title: _('Tz')
       type: text
+      trim: both
       maxLength: 30
     deleteast_voicemail: 
       title: _('Deleteast voicemail')
@@ -137,14 +147,17 @@ production:
     callback: 
       title: _('Callback')
       type: text
+      trim: both
       maxLength: 80
     dialout: 
       title: _('Dialout')
       type: text
+      trim: both
       maxLength: 80
     exitcontext: 
       title: _('Exitcontext')
       type: text
+      trim: both
       maxLength: 80
     maxmsg: 
       title: _('Maxmsg')
@@ -154,9 +167,11 @@ production:
     volgain: 
       title: _('Volgain')
       type: text
+      trim: both
     imapuser: 
       title: _('Imapuser')
       type: text
+      trim: both
       maxLength: 80
     imappassword: 
       title: _('Imappassword')
@@ -165,14 +180,17 @@ production:
     imapserver: 
       title: _('Imapserver')
       type: text
+      trim: both
       maxLength: 80
     imapport: 
       title: _('Imapport')
       type: text
+      trim: both
       maxLength: 8
     imapflags: 
       title: _('Imapflag')
       type: text
+      trim: both
       maxLength: 80
     stamp: 
       title: _('Stamp')

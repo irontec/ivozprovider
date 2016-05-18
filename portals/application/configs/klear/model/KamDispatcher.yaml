@@ -11,6 +11,7 @@ production:
     destination: 
       title: _('Destination')
       type: text
+      trim: both
       defaultValue: 
       maxLength: 192
     flags: 
@@ -28,11 +29,13 @@ production:
     attrs: 
       title: _('Attr')
       type: text
+      trim: both
       defaultValue: 
       maxLength: 128
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
       maxLength: 64
 staging: 

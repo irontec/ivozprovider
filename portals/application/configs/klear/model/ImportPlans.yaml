@@ -4,6 +4,7 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 55
       default: true

@@ -4,11 +4,13 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       defaultValue: 
       default: true
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
     companyId: 
       title: _('Company id')
@@ -105,6 +107,7 @@ production:
       title: _('Number value')
       pattern: "^[0-9]+$"
       type: text
+      trim: both
       maxLength: 25
       required: true
     extensionId: 

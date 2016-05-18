@@ -4,6 +4,7 @@ production:
     setid: 
       title: _('Setid')
       type: text
+      trim: both
       pattern: "^[0-9]{1,3}$"
       defaultValue: 0
       required: true
@@ -16,6 +17,7 @@ production:
     url: 
       title: ngettext('Url', 'Urls', 1)
       type: text
+      trim: both
       required: true
       maxLength: 128
       info:
@@ -47,6 +49,7 @@ production:
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       maxLength: 200
     mediaRelaySetsId: 
       title: _('Media relay sets id')

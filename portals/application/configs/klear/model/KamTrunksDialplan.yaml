@@ -23,6 +23,7 @@ production:
     match_exp: 
       title: _('Match exp')
       type: text
+      trim: both
       required: true
       maxLength: 64
     match_len: 
@@ -34,16 +35,19 @@ production:
     subst_exp: 
       title: _('Subst exp')
       type: text
+      trim: both
       required: true
       maxLength: 64
     repl_exp: 
       title: _('Repl exp')
       type: text
+      trim: both
       required: true
       maxLength: 64
     attrs: 
       title: _('Attr')
       type: text
+      trim: both
       required: true
       maxLength: 64
 staging: 

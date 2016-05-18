@@ -4,11 +4,13 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       maxLength: 100
       default: true
     ip: 
       title: _('Ip')
       type: text
+      trim: both
       maxLength: 100
 staging: 
   _extends: production

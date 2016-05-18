@@ -17,6 +17,7 @@ production:
     url: 
       title: ngettext('Url', 'Urls', 1)
       type: text
+      trim: both
       required: true
       maxLength: 255
     klearTheme: 
@@ -98,6 +99,7 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       default: true
       defaultValue: 
       maxLength: 200

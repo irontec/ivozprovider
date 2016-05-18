@@ -4,17 +4,20 @@ production:
     iden: 
       title: ngettext('Iden', 'Idens', 1)
       type: text
+      trim: both
       defaultValue: 
       maxLength: 50
       default: true
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       defaultValue: 
       maxLength: 50
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
       maxLength: 255
 staging: 

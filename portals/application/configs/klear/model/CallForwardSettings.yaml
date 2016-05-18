@@ -74,6 +74,7 @@ production:
       title: _('Number value')
       pattern: "^[0-9]+$"
       type: text
+      trim: both
       required: true
     extensionId: 
       title: _('Extension')

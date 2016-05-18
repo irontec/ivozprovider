@@ -17,15 +17,15 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       maxLength: 100
       default: true
-      trim: both
     disallow: 
       title: _('Disallowed codecs')
       type: text
+      trim: both
       defaultValue: all
       maxLength: 100
-      trim: both
       info:
         type: box
         position: left
@@ -35,9 +35,9 @@ production:
     allow: 
       title: _('Allowed codecs')
       type: text
+      trim: both
       defaultValue: alaw
       maxLength: 100
-      trim: both
       info:
         type: box
         position: left

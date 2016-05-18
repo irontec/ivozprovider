@@ -18,21 +18,26 @@ production:
     name: 
       title: _('name')
       type: text
+      trim: both
       required: true      
     ip: 
       title: _('Ip')
       type: text
+      trim: both
       required: true
     transport: 
       title: _('Transport')
       type: text
+      trim: both
       defaultValue: udp
     from_pattern: 
       title: _('From pattern')
       type: text
+      trim: both
     tag: 
       title: _('Tag')
       type: text
+      trim: both
 staging: 
   _extends: production
 testing: 

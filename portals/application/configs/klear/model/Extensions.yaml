@@ -17,6 +17,7 @@ production:
     number: 
       title: _('Number')
       type: text
+      trim: both
       pattern: "^[0-9]+$"
       required: true
       default: true

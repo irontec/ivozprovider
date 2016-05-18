@@ -13,52 +13,64 @@ production:
     src: 
       title: _('Source')
       type: text
+      trim: both
       maxLength: 128
     src_dialed: 
       title: _('Destination')
       type: text
+      trim: both
       maxLength: 128
     src_duration: 
       title: _('Call duration')
       type: text
+      trim: both
       defaultValue: 
       maxLength: 32
     dst: 
       title: _('Dst')
       type: text
+      trim: both
       maxLength: 128
     dst_src_cid: 
       title: _('Dst src cid')
       type: text
+      trim: both
       maxLength: 128
     dst_duration: 
       title: _('Dst duration')
       type: text
+      trim: both
       defaultValue: 
       maxLength: 32
     type: 
       title: ngettext('Type', 'Types', 1)
       type: text
+      trim: both
       maxLength: 256
     desc: 
       title: _('Call description')
       type: text
+      trim: both
       maxLength: 256
     fw_desc: 
       title: _('Forward description')
       type: text
+      trim: both
       maxLength: 256
     ext_forwarder: 
       title: _('External forwarder')
       type: text
+      trim: both
       maxLength: 32
     int_forwarder: 
       title: _('Forwarder')
       type: text
+      trim: both
       maxLength: 32
     forward_to: 
       title: _('Forward to')
       type: text
+      trim: both
       maxLength: 32
     companyId: 
       title: _('Company')
@@ -89,10 +101,12 @@ production:
     aleg: 
       title: _('Aleg')
       type: text
+      trim: both
       maxLength: 128
     bleg: 
       title: _('Bleg')
       type: text
+      trim: both
       maxLength: 128
     metered: 
       title: _('Metered')
@@ -142,6 +156,7 @@ production:
     price: 
       title: ngettext('Price', 'Prices', 1)
       type: text
+      trim: both
     pricingPlanDetails: 
       title: _('Pricing plan details')
       type: textarea

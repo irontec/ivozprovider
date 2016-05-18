@@ -18,15 +18,18 @@ production:
     ip: 
       title: _('Ip')
       type: text
+      trim: both
       required: true
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       defaultValue: 
       required: true
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
     brandId: 
       title: _('Brand id')
@@ -44,6 +47,7 @@ production:
     hostname: 
       title: _('Hostname')
       type: text
+      trim: both
       info:
         type: box
         position: left
@@ -59,6 +63,7 @@ production:
     params: 
       title: _('Param')
       type: text
+      trim: both
       info:
         type: box
         position: left
@@ -103,6 +108,7 @@ production:
     prefix: 
       title: _('Prefix')
       type: text
+      trim: both
       info:
         type: box
         position: left
@@ -138,6 +144,7 @@ production:
     auth_user:
       title: _('Auth user')
       type: text
+      trim: both
       required: true
     auth_password:
       title: _('Auth password')

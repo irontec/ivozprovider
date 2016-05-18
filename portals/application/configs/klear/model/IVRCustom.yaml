@@ -17,6 +17,7 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       default: true
     welcomeLocutionId: 
@@ -115,6 +116,7 @@ production:
     timeoutNumberValue: 
       title: _('Timeout number value')
       type: text
+      trim: both
       required: true
     timeoutExtensionId: 
       title: _('Timeout extension id')
@@ -175,6 +177,7 @@ production:
     errorNumberValue: 
       title: _('Error number value')
       type: text
+      trim: both
       required: true
     errorExtensionId: 
       title: _('Error extension id')

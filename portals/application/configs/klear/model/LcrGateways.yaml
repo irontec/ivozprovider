@@ -18,16 +18,19 @@ production:
     gw_name: 
       title: _('Gw name')
       type: text
+      trim: both
       required: true
       maxLength: 200
     ip: 
       title: _('Ip')
       type: text
+      trim: both
       required: true
       maxLength: 50
     hostname: 
       title: _('Hostname')
       type: text
+      trim: both
       maxLength: 64
     port: 
       title: _('Port')
@@ -37,6 +40,7 @@ production:
     params: 
       title: _('Param')
       type: text
+      trim: both
       maxLength: 64
     uri_scheme: 
       title: _('Uri scheme')
@@ -56,10 +60,12 @@ production:
     prefix: 
       title: _('Prefix')
       type: text
+      trim: both
       maxLength: 16
     tag: 
       title: _('Tag')
       type: text
+      trim: both
       maxLength: 64
     flags: 
       title: _('Flag')

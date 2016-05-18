@@ -18,6 +18,7 @@ production:
     username: 
       title: _('Username')
       type: text
+      trim: both
       required: true
       maxLength: 50
     pass: 
@@ -28,6 +29,7 @@ production:
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
+      trim: both
       defaultValue: 
       maxLength: 100
     active: 
@@ -57,11 +59,13 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 100
     lastname: 
       title: _('Lastname')
       type: text
+      trim: both
       required: true
       maxLength: 100
 staging: 

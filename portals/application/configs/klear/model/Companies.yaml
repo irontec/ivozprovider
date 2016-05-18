@@ -20,15 +20,18 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       default: true
     domain_users: 
       title: _('Domain')
       type: text
+      trim: both
       maxLength: 255
     nif: 
       title: _('Nif')
       type: text
+      trim: both
       required: true
     defaultTimezoneId: 
       title: _('Default timezone')
@@ -82,26 +85,31 @@ production:
     postalAddress: 
       title: _('Postal address')
       type: text
+      trim: both
       required: true
       maxLength: 255
     postalCode: 
       title: ngettext('Postal code', 'Postal codes', 1)
       type: text
+      trim: both
       required: true
       maxLength: 10
     town: 
       title: _('Town')
       type: text
+      trim: both
       required: true
       maxLength: 255
     province: 
       title: ngettext('Province', 'Provinces', 1)
       type: text
+      trim: both
       required: true
       maxLength: 255
     country: 
       title: ngettext('Country', 'Countries', 1)
       type: text
+      trim: both
       required: true
       maxLength: 255
     invoiceLanguageId: 
@@ -121,6 +129,7 @@ production:
     outbound_prefix: 
       title: _('Outbound prefix')
       type: text
+      trim: both
       maxLength: 255
     countryId: 
       title: _('Country code')

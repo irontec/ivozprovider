@@ -63,6 +63,7 @@ production:
     targetNumberValue: 
       title: _('Target number value')
       type: text
+      trim: both
       required: true
     targetExtensionId: 
       title: _('Target extension id')

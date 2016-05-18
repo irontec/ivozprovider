@@ -4,15 +4,18 @@ production:
     iden: 
       title: ngettext('Iden', 'Idens', 1)
       type: text
+      trim: both
       required: true
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       defaultValue:
       default: true
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
     TerminalManufacturerId: 
       title: _('Terminal manufacturer')
@@ -31,6 +34,7 @@ production:
     genericUrlPattern: 
       title: _('Patrón de la url genérica')
       type: text
+      trim: both
       prefix: 'http://{SERVER_URL}/provision'
       info:
         type: box
@@ -61,6 +65,7 @@ production:
     specificUrlPattern: 
       title: _('Patrón de la url específica')
       type: text
+      trim: both
       prefix: 'http://{SERVER_URL}/provision'
       info:
         type: box

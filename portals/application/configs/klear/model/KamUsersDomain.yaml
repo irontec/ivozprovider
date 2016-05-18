@@ -4,12 +4,14 @@ production:
     domain: 
       title: _('Domain')
       type: text
+      trim: both
       required: true
       maxLength: 64
       default: true
     did: 
       title: _('Did')
       type: text
+      trim: both
       maxLength: 64
     last_modified: 
       title: _('Last modified')

@@ -4,6 +4,7 @@ production:
     l_uuid: 
       title: _('DDI')
       type: text
+      trim: both
       defaultValue: 
       default: true
       info:
@@ -16,24 +17,29 @@ production:
     l_username: 
       title: _('L username')
       type: text
+      trim: both
       defaultValue: 
     l_domain: 
       title: _('L domain')
       type: text
+      trim: both
       defaultValue: 
     r_username: 
       title: _('Username')
       type: text
+      trim: both
       defaultValue: 
       required: true
     r_domain: 
       title: _('Domain')
       type: text
+      trim: both
       defaultValue: 
       required: true
     realm: 
       title: _('Realm')
       type: text
+      trim: both
       defaultValue: 
       info:
         type: box
@@ -44,6 +50,7 @@ production:
     auth_username: 
       title: _('Auth username')
       type: text
+      trim: both
       defaultValue: 
       required: false
       info:
@@ -61,6 +68,7 @@ production:
     auth_proxy: 
       title: _('Registrar Server URI')
       type: text
+      trim: both
       defaultValue:
       pattern: "^sip:.*$|^sips:.*$"
       required: false

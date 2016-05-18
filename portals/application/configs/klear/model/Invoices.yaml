@@ -5,6 +5,7 @@ production:
       title: _('Number')
       pattern: "^[0-9]+$"
       type: text
+      trim: both
       required: true
       maxLength: 30
       default: true
@@ -31,15 +32,18 @@ production:
     total: 
       title: _('Total')
       type: text
+      trim: both
       sufix: "€"
     taxRate: 
       title: _('Tax rate')
       type: text
+      trim: both
       required: true
       sufix: "%"
     totalWithTax: 
       title: _('Total with tax')
       type: text
+      trim: both
       sufix: "€"
 #    languageId: 
 #      title: _('Language')

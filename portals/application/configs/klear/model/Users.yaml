@@ -18,18 +18,22 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
     lastname: 
       title: _('Lastname')
       type: text
+      trim: both
       required: true
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
+      trim: both
       required: true
     username: 
       title: _('Username')
       type: text
+      trim: both
       required: true
       default: true
     pass: 
@@ -163,10 +167,12 @@ production:
     exceptionBoosAssistantRegExp: 
       title: _('Exception boos assistant reg exp')
       type: text
+      trim: both
       maxLength: 255
     username: 
       title: _('Username')
       type: text
+      trim: both
       required: true
       maxLength: 50
     active: 

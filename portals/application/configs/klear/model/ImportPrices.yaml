@@ -4,27 +4,32 @@ production:
     pricingPlanId: 
       title: _('Pricing plan id')
       type: text
+      trim: both
       required: true
       maxLength: 50
       default: true
     targetPatternId: 
       title: _('Target pattern id')
       type: text
+      trim: both
       required: true
       maxLength: 50
     connectionCharge: 
       title: _('Connection charge')
       type: text
+      trim: both
       required: true
       maxLength: 40
     periodTime: 
       title: _('Period time')
       type: text
+      trim: both
       required: true
       maxLength: 40
     perPeriodCharge: 
       title: _('Per period charge')
       type: text
+      trim: both
       required: true
     importFileId: 
       title: _('Import file id')

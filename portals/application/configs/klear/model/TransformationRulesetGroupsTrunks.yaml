@@ -18,6 +18,7 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 100
     caller_in: 
@@ -43,6 +44,7 @@ production:
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
       maxLength: 500
 staging: 

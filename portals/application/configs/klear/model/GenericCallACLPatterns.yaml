@@ -18,10 +18,12 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
     regExp: 
       title: _('Reg exp')
       type: text
+      trim: both
       required: true
 staging: 
   _extends: production

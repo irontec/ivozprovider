@@ -18,12 +18,14 @@ production:
     name:
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 50
       default: true
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
+      trim: both
       required: true
       maxLength: 255
     sendByEmail: 

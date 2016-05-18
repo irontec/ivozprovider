@@ -18,13 +18,16 @@ production:
     prefix: 
       title: _('Prefix')
       type: text
+      trim: both
     from_uri: 
       title: _('From uri')
       type: text
+      trim: both
     request_uri: 
       title: _('Pattern')
       required: true
       type: text
+      trim: both
       pattern: "^:.*@$"
       maxLength: 64
       info:
@@ -58,6 +61,7 @@ production:
     tag: 
       title: _('Tag')
       type: text
+      trim: both
       required: true
       pattern: "^[a-zA-Z0-9_]+$"
       maxLength: 50
@@ -71,6 +75,7 @@ production:
       title: ngettext('Description', 'Descriptions', 1)
       required: true
       type: text
+      trim: both
       defaultValue: 
       maxLength: 500
 staging: 

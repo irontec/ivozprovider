@@ -18,12 +18,15 @@ production:
     prefix: 
       title: _('Prefix')
       type: text
+      trim: both
     fromUri: 
       title: _('From uri')
       type: text
+      trim: both
     requestUri: 
       title: _('Request uri')
       type: text
+      trim: both
     stopper: 
       title: _('Stopper')
       type: number

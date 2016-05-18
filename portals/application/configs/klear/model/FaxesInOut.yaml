@@ -26,12 +26,13 @@ production:
     src: 
       title: _('Src')
       type: text
+      trim: both
       maxLength: 128
     dst: 
       title: _('Dst')
       type: text
-      maxLength: 128
       trim: both
+      maxLength: 128
     type: 
       title: ngettext('Type', 'Types', 1)
       type: select
@@ -44,6 +45,7 @@ production:
     pages: 
       title: _('Page')
       type: text
+      trim: both
       maxLength: 64
     status: 
       title: _('Statu')

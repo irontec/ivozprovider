@@ -4,22 +4,26 @@ production:
     proxy: 
       title: _('Proxy')
       type: text
+      trim: both
       required: true
       maxLength: 10
       default: true
     module: 
       title: _('Module')
       type: text
+      trim: both
       required: true
       maxLength: 10
     method: 
       title: _('Method')
       type: text
+      trim: both
       required: true
       maxLength: 10
     mapperName: 
       title: _('Mapper name')
       type: text
+      trim: both
       required: true
       maxLength: 20
     startDate: 

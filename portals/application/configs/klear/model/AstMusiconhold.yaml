@@ -4,6 +4,7 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 80
       default: true
@@ -21,22 +22,27 @@ production:
     directory: 
       title: _('Directory')
       type: text
+      trim: both
       maxLength: 255
     application: 
       title: _('Application')
       type: text
+      trim: both
       maxLength: 255
     digit: 
       title: _('Digit')
       type: text
+      trim: both
       maxLength: 1
     sort: 
       title: _('Sort')
       type: text
+      trim: both
       maxLength: 10
     format: 
       title: _('Format')
       type: text
+      trim: both
       maxLength: 10
     stamp: 
       title: _('Stamp')

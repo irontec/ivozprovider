@@ -32,6 +32,7 @@ production:
     code: 
       title: _('Code')
       type: text
+      trim: both
       required: true
       maxLength: 6
       prefix: '<span class="asterisc">*</span>'

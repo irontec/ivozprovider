@@ -4,27 +4,33 @@ production:
     id: 
       title: _('Id')
       type: text
+      trim: both
       required: true
       default: true
     transport: 
       title: _('Transport')
       type: text
+      trim: both
       maxLength: 40
     aors: 
       title: _('Aor')
       type: text
+      trim: both
       maxLength: 200
     context: 
       title: _('Context')
       type: text
+      trim: both
       maxLength: 40
     disallow: 
       title: _('Disallow')
       type: text
+      trim: both
       maxLength: 200
     allow: 
       title: _('Allow')
       type: text
+      trim: both
       maxLength: 200
     direct_media: 
       title: _('Direct media')
@@ -55,6 +61,7 @@ production:
     mailboxes: 
       title: _('Mailbox')
       type: text
+      trim: both
       maxLength: 40
     send_diversion: 
       title: _('Send diversion')
@@ -83,6 +90,7 @@ production:
     subscribecontext: 
       title: _('Subscribecontext')
       type: text
+      trim: both
       defaultValue: default
       maxLength: 40
 staging: 

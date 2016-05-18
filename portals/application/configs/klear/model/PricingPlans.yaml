@@ -7,6 +7,7 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 55
       default: true
@@ -14,6 +15,7 @@ production:
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       maxLength: 300
     createdOn: 
       title: _('Created on')

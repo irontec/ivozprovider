@@ -17,6 +17,7 @@ production:
     name:
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       default: true
     welcomeLocutionId:
@@ -95,6 +96,7 @@ production:
     holidayNumberValue:
       title: _('Holiday number')
       type: text
+      trim: both
       required: true
     holidayExtensionId:
       title: _('Holiday extension')
@@ -157,6 +159,7 @@ production:
     outOfScheduleNumberValue:
       title: _('Out of schedule number')
       type: text
+      trim: both
       required: true
     outOfScheduleExtensionId:
       title: _('Out of schedule extension')

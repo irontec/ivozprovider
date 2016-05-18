@@ -4,6 +4,7 @@ production:
     id: 
       title: _('Id')
       type: text
+      trim: both
       required: true
       default: true
     default_expiration: 

@@ -4,16 +4,19 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       maxLength: 100
       default: true
     ip: 
       title: _('Ip')
       type: text
+      trim: both
       required: true
       maxLength: 100
     disallow: 
       title: _('Disallowed codecs')
       type: text
+      trim: both
       defaultValue: all
       maxLength: 100
       info:
@@ -25,6 +28,7 @@ production:
     allow: 
       title: _('Allowed codecs')
       type: text
+      trim: both
       defaultValue: alaw
       maxLength: 100
       info:

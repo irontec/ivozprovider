@@ -4,24 +4,29 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       default: true
     nif: 
       title: _('Nif')
       type: text
+      trim: both
       required: true
       maxLength: 25
     extensionBlackListRegExp: 
       title: _('Extension black list reg exp')
       type: text
+      trim: both
       defaultValue: 
     domain_users:
       title: _('Users domain')
       type: text
+      trim: both
       maxLength: 255
     domain_trunks:
       title: _('Trunks domain')
       type: text
+      trim: both
       maxLength: 255
     defaultTimezoneId: 
       title: _('Default timezone')
@@ -87,31 +92,37 @@ production:
     postalAddress: 
       title: _('Postal address')
       type: text
+      trim: both
       required: true
       maxLength: 255
     postalCode: 
       title: ngettext('Postal code', 'Postal codes', 1)
       type: text
+      trim: both
       required: true
       maxLength: 10
     town: 
       title: _('Town')
       type: text
+      trim: both
       required: true
       maxLength: 255
     province: 
       title: ngettext('Province', 'Provinces', 1)
       type: text
+      trim: both
       required: true
       maxLength: 255
     country: 
       title: ngettext('Country', 'Countries', 1)
       type: text
+      trim: both
       required: true
       maxLength: 255
     registryData: 
       title: _('Registry data')
       type: text
+      trim: both
       required: true
       maxLength: 255
     languageId: 

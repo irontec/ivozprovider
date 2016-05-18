@@ -4,12 +4,14 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
       maxLength: 55
       default: true
     regExp: 
       title: _('Reg exp')
       type: text
+      trim: both
       required: true
       maxLength: 80
     metric: 

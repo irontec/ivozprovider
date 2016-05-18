@@ -50,6 +50,7 @@ production:
     callNumberValue: 
       title: _('Call number value')
       type: text
+      trim: both
       required: true
       maxLength: 25
     callExtensionId: 

@@ -18,14 +18,17 @@ production:
     tz: 
       title: _('Tz')
       type: text
+      trim: both
       required: true
     comment: 
       title: _('Comment')
       type: text
+      trim: both
       defaultValue: 
     timeZoneLabel: 
       title: _('Time zone label')
       type: text
+      trim: both
       defaultValue: 
 staging: 
   _extends: production

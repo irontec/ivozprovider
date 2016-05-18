@@ -4,15 +4,18 @@ production:
     iden: 
       title: ngettext('Iden', 'Idens', 1)
       type: text
+      trim: both
       required: true
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       defaultValue: 
       default: true
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
+      trim: both
       defaultValue: 
 staging: 
   _extends: production

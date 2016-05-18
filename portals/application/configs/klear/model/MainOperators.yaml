@@ -4,6 +4,7 @@ production:
     username: 
       title: _('Username')
       type: text
+      trim: both
       required: true
       default: true
     pass: 
@@ -14,14 +15,17 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      trim: both
       required: true
     lastname: 
       title: _('Lastname')
       type: text
+      trim: both
       required: true
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
+      trim: both
       defaultValue: 
     active: 
       title: _('Active')

@@ -4,6 +4,7 @@ production:
     domain: 
       title: _('Domain')
       type: text
+      trim: both
       required: true
       maxLength: 255
       default: true
@@ -67,6 +68,7 @@ production:
     descripton: 
       title: _('Description')
       type: text
+      trim: both
       maxLength: 500
     target:
       title: _('Scope')
