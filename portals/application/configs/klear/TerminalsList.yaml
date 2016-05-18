@@ -21,7 +21,6 @@ production:
         blacklist: 
           password: true
           mac: true
-          dtmf_mode: true
           lastProvisionDate: true
         options: 
           title: _("Options")
@@ -38,7 +37,6 @@ production:
           allow: true
           direct_media: true
           direct_media_method: true
-          dtmf_mode: true
           mac: true
           lastProvisionDate: true
       options: 
@@ -75,7 +73,6 @@ production:
           fields:
             disallow: 3
             allow: 3
-            dtmf_mode: 2
             direct_media: 2
             direct_media_method: 2
         group2:

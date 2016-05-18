@@ -71,16 +71,6 @@ production:
           'invite': 'invite'
           'reinvite': 'reinvite'
           'update': 'update'
-    dtmf_mode: 
-      title: _('Dtmf mode')
-      type: select
-      defaultValue: rfc4733
-      source: 
-        data: inline
-        values: 
-          'rfc4733': 'rfc4733'
-          'inband': 'inband'
-          'info': 'info'
     password: 
       title: ngettext('Password', 'Passwords', 1)
       type: password
