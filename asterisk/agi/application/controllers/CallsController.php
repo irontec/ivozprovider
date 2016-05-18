@@ -58,6 +58,7 @@ class CallsController extends BaseController
         $company = $ddi->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
+        $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
 
         // Process this DDI
         $ddiAction = new DDIAction($this);
