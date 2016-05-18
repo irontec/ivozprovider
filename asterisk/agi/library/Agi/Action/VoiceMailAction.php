@@ -21,6 +21,12 @@ class VoiceMailAction extends RouterAction
             return;
         }
 
+        // Transfor number to User Preferred
+        if ($this->agi->getCallType() == "external") {
+            $preferred = $voicemail->E164ToPreferred($this->agi->getOrigCallerIdNum());
+            $this->agi->setCallerIdNum($preferred);
+        }
+
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail
             $this->agi->voicemail($voicemail->getVoiceMail());
