@@ -43,6 +43,7 @@ production:
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Invoice template', 'Invoice templates', 1), "[format| (%parent%)]")
+      fullWidth: true
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
@@ -61,6 +62,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
+      fullWidth: true
       title: _("Edit %s %2s", ngettext('Invoice template', 'Invoice templates', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand

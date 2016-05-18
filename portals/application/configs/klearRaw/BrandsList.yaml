@@ -5,6 +5,8 @@
 #include BrandURLsList.yaml
 #include CompaniesList.yaml
 #include DomainsList.yaml
+#include FixedCostsList.yaml
+#include FixedCostsRelInvoicesList.yaml
 #include GenericCallACLPatternsList.yaml
 #include GenericMusicOnHoldList.yaml
 #include InvoiceTemplatesList.yaml
@@ -44,6 +46,8 @@ production:
             brandURLsList_screen: true
             companiesList_screen: true
             domainsList_screen: true
+            fixedCostsList_screen: true
+            fixedCostsRelInvoicesList_screen: true
             genericCallACLPatternsList_screen: true
             genericMusicOnHoldList_screen: true
             invoiceTemplatesList_screen: true
@@ -150,6 +154,32 @@ production:
       filterField: brandId
     domainsEdit_screen: 
       <<: *domainsEdit_screenLink
+      filterField: brandId
+
+    #fixedCosts: 
+    fixedCostsList_screen: 
+      <<: *fixedCostsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    fixedCostsNew_screen: 
+      <<: *fixedCostsNew_screenLink
+      filterField: brandId
+    fixedCostsEdit_screen: 
+      <<: *fixedCostsEdit_screenLink
+      filterField: brandId
+
+    #fixedCostsRelInvoices: 
+    fixedCostsRelInvoicesList_screen: 
+      <<: *fixedCostsRelInvoicesList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    fixedCostsRelInvoicesNew_screen: 
+      <<: *fixedCostsRelInvoicesNew_screenLink
+      filterField: brandId
+    fixedCostsRelInvoicesEdit_screen: 
+      <<: *fixedCostsRelInvoicesEdit_screenLink
       filterField: brandId
 
     #genericCallACLPatterns: 
@@ -368,6 +398,10 @@ production:
     <<: *companies_dialogsLink
   # domains dialogs: 
     <<: *domains_dialogsLink
+  # fixedCosts dialogs: 
+    <<: *fixedCosts_dialogsLink
+  # fixedCostsRelInvoices dialogs: 
+    <<: *fixedCostsRelInvoices_dialogsLink
   # genericCallACLPatterns dialogs: 
     <<: *genericCallACLPatterns_dialogsLink
   # genericMusicOnHold dialogs: 

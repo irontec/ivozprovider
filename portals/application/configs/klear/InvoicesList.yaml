@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include ParsedCDRsList.yaml
+#include FixedCostsRelInvoicesList.yaml
 
 production: 
   main: 
@@ -21,8 +22,10 @@ production:
           title: _("Options")
           screens: 
             invoicesEdit_screen: true
+            fixedCostsRelInvoicesList_screen: true
             parsedCDRsList_screen: true
-          dialogs: 
+          dialogs:
+            generateInvoice_dialog: true
             invoicesDel_dialog: true
           default: invoicesEdit_screen
         order: &invoicesOrder_Link
@@ -36,12 +39,15 @@ production:
           status: true
           invoiceTemplateId: true
           pdfFile: true
+        blacklist:
+          FixedCostsRelInvoices: true
       options: 
         title: _("Options")
         screens: 
           invoicesNew_screen: true
-        dialogs: 
+        dialogs:
           invoicesDel_dialog: true
+          generateInvoice_dialog: true
     invoicesNew_screen: &invoicesNew_screenLink 
       <<: *Invoices
       controller: new
@@ -60,6 +66,7 @@ production:
           totalWithTax: true
           status: true
           pdfFile: true
+          FixedCostsRelInvoices: true
       fixedPositions: &invoicesFixedPositions_Link
         group0:
           colsPerRow: 2
@@ -99,8 +106,17 @@ production:
           status: true
       fixedPositions:
         <<: *invoicesFixedPositions_Link
+      options:
+        dialogs:
+          generateInvoice_dialog: true
         
-#    parsedCDRs: 
+    <<: *fixedCostsRelInvoices_screensLink
+    fixedCostsRelInvoicesList_screen:
+      <<: *fixedCostsRelInvoicesList_screenLink
+      filterField: invoiceId
+      parentOptionCustomizer:
+        - recordCount
+#    parsedCDRs:
     <<: *parsedCDRs_screenLink
     parsedCDRsList_screen: 
       <<: *parsedCDRsList_screenLink
@@ -114,7 +130,8 @@ production:
 #    parsedCDRsEdit_screen: 
 #      <<: *parsedCDRsEdit_screenLink
 #      filterField: invoiceId
-      
+
+
   dialogs: &invoices_dialogsLink 
     invoicesDel_dialog: &invoicesDel_dialogLink 
       <<: *Invoices
@@ -126,8 +143,25 @@ production:
       message: _("%s successfully deleted.", _('Invoice(s)'))
       multiItem: 1
       labelOnList: 1
+    generateInvoice_dialog:
+      <<: *Invoices
+      module: default
+      title: _("Generate %s", ngettext('invoice', 'invoices', 1))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOption: false
+      labelOnEntityPostSave: false
+      controller: klear-custom-generate-invoice
+      action: generate
+      class:  ui-silk-report-add
+      multiItem: true
+
+
+
 #  # parsedCDRs dialogs: 
     <<: *parsedCDRs_dialogsLink
+    <<: *fixedCostsRelInvoices_dialogsLink
   commands: &invoices_commandsLink 
     invoicesPdfFileDownload_command: &invoicesPdfFileDownload_commandLink 
       <<: *Invoices

@@ -147,6 +147,37 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
+    FixedCostsRelInvoices:
+      title: _('Fixed costs')
+      searchable: false
+      type: ghost
+      source:
+        predefined: list
+      data: mapper
+      config:
+        mapperName: \IvozProvider\Mapper\Sql\FixedCostsRelInvoices
+        filterField: invoiceId
+        showAsTable: true
+        fieldName:
+          fields:
+            fixedCostId:
+              title: _("Fixed cost")
+              mapperName: \IvozProvider\Mapper\Sql\FixedCosts
+              field:
+                - description
+                - cost
+              pattern: "%description% - %cost% €"
+            quantity:
+              title: _("Quantity")
+        options:
+          dialogs:
+            fixedCostsRelInvoicesDel_dialog: true
+          screens:
+            fixedCostsRelInvoicesEdit_screen: true
+          default:
+      options:
+        screens:
+          fixedCostsRelInvoicesNew_screen: true
 staging: 
   _extends: production
 testing: 

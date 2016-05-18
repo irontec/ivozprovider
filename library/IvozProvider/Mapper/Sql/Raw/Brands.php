@@ -520,6 +520,34 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getFixedCosts(null, null, true) !== null) {
+                    $fixedCosts = $model->getFixedCosts();
+
+                    if (!is_array($fixedCosts)) {
+
+                        $fixedCosts = array($fixedCosts);
+                    }
+
+                    foreach ($fixedCosts as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getFixedCostsRelInvoices(null, null, true) !== null) {
+                    $fixedCostsRelInvoices = $model->getFixedCostsRelInvoices();
+
+                    if (!is_array($fixedCostsRelInvoices)) {
+
+                        $fixedCostsRelInvoices = array($fixedCostsRelInvoices);
+                    }
+
+                    foreach ($fixedCostsRelInvoices as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getGenericCallACLPatterns(null, null, true) !== null) {
                     $genericCallACLPatterns = $model->getGenericCallACLPatterns();
 

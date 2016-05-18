@@ -57,6 +57,7 @@ class Invoices extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\FixedCostsRelInvoices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs'
     );
     protected $_metadata = array (

@@ -123,6 +123,14 @@ production:
           title: ngettext('Faxes in out', 'Faxes in out', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Faxes in out', 'Faxes in out', 0))
+        FixedCostsList: 
+          title: ngettext('Fixed cost', 'Fixed costs', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
+        FixedCostsRelInvoicesList: 
+          title: ngettext('Fixed costs rel invoice', 'Fixed costs rel invoices', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Fixed costs rel invoice', 'Fixed costs rel invoices', 0))
         GenericCallACLPatternsList: 
           title: ngettext('Generic call a c l pattern', 'Generic call a c l patterns', 0)
           class: ui-silk-text-list-bullets

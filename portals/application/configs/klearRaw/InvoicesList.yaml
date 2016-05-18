@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include FixedCostsRelInvoicesList.yaml
 #include ParsedCDRsList.yaml
 
 
@@ -20,6 +21,7 @@ production:
           title: _("Options")
           screens: 
             invoicesEdit_screen: true
+            fixedCostsRelInvoicesList_screen: true
             parsedCDRsList_screen: true
           dialogs: 
             invoicesDel_dialog: true
@@ -48,8 +50,21 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Invoice', 'Invoices', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Invoice', 'Invoices', 1), "[format| (%item%)]")
+    #fixedCostsRelInvoices: 
+    <<: *fixedCostsRelInvoices_screensLink
+    fixedCostsRelInvoicesList_screen: 
+      <<: *fixedCostsRelInvoicesList_screenLink
+      filterField: invoiceId
+      parentOptionCustomizer: 
+        - recordCount
+    fixedCostsRelInvoicesNew_screen: 
+      <<: *fixedCostsRelInvoicesNew_screenLink
+      filterField: invoiceId
+    fixedCostsRelInvoicesEdit_screen: 
+      <<: *fixedCostsRelInvoicesEdit_screenLink
+      filterField: invoiceId
+
     #parsedCDRs: 
-    <<: *parsedCDRs_screensLink
     parsedCDRsList_screen: 
       <<: *parsedCDRsList_screenLink
       filterField: invoiceId
@@ -73,6 +88,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Invoice', 'Invoices', 1))
       multiItem: 1
       labelOnList: 1
+  # fixedCostsRelInvoices dialogs: 
+    <<: *fixedCostsRelInvoices_dialogsLink
   # parsedCDRs dialogs: 
     <<: *parsedCDRs_dialogsLink
   commands: &invoices_commandsLink 

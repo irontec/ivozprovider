@@ -1,0 +1,56 @@
+production: 
+  class: \IvozProvider\Model\FixedCostsRelInvoices
+  fields: 
+    brandId: 
+      title: _('Brand id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    fixedCostId: 
+      title: _('Fixed cost id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\FixedCosts
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+    invoiceId: 
+      title: _('Invoice id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Invoices
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+    quantity: 
+      title: ngettext('Quantity', 'Quantities', 1)
+      type: number
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

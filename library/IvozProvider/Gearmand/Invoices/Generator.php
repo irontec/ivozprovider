@@ -51,7 +51,7 @@ class Generator
         $callData = $this->_getCallData($invoice);
 
         $brand = $invoice->getBrand();
-        $company =$invoice->getCompany();
+        $company = $invoice->getCompany();
 
         $brandLogoPath = $brand->fetchLogo()->getFilePath();
 
@@ -97,7 +97,7 @@ class Generator
                 "invoice" => $invoiceArray,
                 "company" => $company->toArray(),
                 "brand" => $brandArray,
-                "callData" => $callData
+                "callData" => $callData,
         );
         $templateModel = $invoice->getInvoiceTemplate();
         if (!$templateModel) {
@@ -144,6 +144,22 @@ class Generator
                 "totalPrice" => 0
         );
 
+        $fixedCosts = array();
+        $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
+        foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
+            $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
+            $quantity = $fixedCostsRelInvoice->getQuantity();
+            $subTotal = $cost * $quantity;
+            $fixedCosts[] = array(
+                "quantity" => $quantity,
+                "description" => $fixedCostsRelInvoice->getFixedCost()->getDescription(),
+                "cost" => number_format(ceil($cost*100)/100, 2),
+                "subTotal" => number_format(ceil($subTotal*100)/100, 2)
+            );
+            $callSumaryTotals["totalPrice"] += number_format(ceil($subTotal*100)/100, 2);
+        }
+        $fixedCostTotal = $callSumaryTotals["totalPrice"];
+
         while ($continue) {
             $calls = $callsMapper->fetchList($where, $order, $limit, $offset);
             if (count($calls) < $limit) {
@@ -184,7 +200,7 @@ class Generator
                 $callSumaryTotals["numberOfCalls"] += 1;
                 $callSumaryTotals["totalCallsDuration"] += $call->getDstDuration();
                 $callSumaryTotals["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumaryTotals["totalCallsDuration"]);
-                $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*100)/100, 2);
+                $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*100)/100, 3);
 
                 $call->setInvoice($invoice)->save();
             }
@@ -203,7 +219,9 @@ class Generator
         return array(
                 "callSumary" => $callSumary,
                 "callsPerType" => $callsPerType,
-                "callSumaryTotals" => $callSumaryTotals
+                "callSumaryTotals" => $callSumaryTotals,
+                "fixedCosts" => array($fixedCosts),
+                "fixedCoststotals" => $fixedCostTotal,
         );
     }
 

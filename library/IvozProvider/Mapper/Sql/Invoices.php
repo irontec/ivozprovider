@@ -25,38 +25,17 @@ class Invoices extends Raw\Invoices
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
-
-        $createPdf = false;
-        if (is_null($model->getPrimaryKey())) {
-//             $model->setStatus("waiting");
-            $createPdf = true;
-        }
         $error = $this->_checkErrors($model);
         if ($error !== false) {
-            $createPdf = false;
             $model->setStatus("error");
+            throw new \Exception("", $error);
         }
 
-        $hasChangedInDate = $model->hasChange("inDate");
-        $hasChangedOutDate = $model->hasChange("outDate");
-        $hasChangedTaxRate = $model->hasChange("taxRate");
-        $hasChangedTemplate = $model->hasChange("invoiceTemplateId");
-        $hasChanged = $hasChangedInDate || $hasChangedOutDate || $hasChangedTaxRate || $hasChangedTemplate;
-
-        if ($hasChanged && $error === false) {
-            $createPdf = true;
+        if (is_null($model->getStatus())) {
             $model->setStatus("waiting");
         }
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-        if ($error !== false) {
-            $createPdf = false;
-            throw new \Exception("", $error);
-        }
-        if ($createPdf) {
-            $invoicerJob = new \IvozProvider\Gearmand\Jobs\Invoicer();
-            $invoicerJob->setPk($pk)->send();
-        }
         return $pk;
     }
 

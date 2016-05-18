@@ -157,6 +157,14 @@ class Invoices extends ModelAbstract
 
 
     /**
+     * Dependent relation FixedCostsRelInvoices_ibfk_3
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\FixedCostsRelInvoices[]
+     */
+    protected $_FixedCostsRelInvoices;
+
+    /**
      * Dependent relation parsedCDRs_ibfk_5
      * Type: One-to-Many relationship
      *
@@ -212,12 +220,19 @@ class Invoices extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'FixedCostsRelInvoicesIbfk3' => array(
+                    'property' => 'FixedCostsRelInvoices',
+                    'table_name' => 'FixedCostsRelInvoices',
+                ),
             'ParsedCDRsIbfk5' => array(
                     'property' => 'ParsedCDRs',
                     'table_name' => 'ParsedCDRs',
                 ),
         ));
 
+        $this->setOnDeleteCascadeRelationships(array(
+            'FixedCostsRelInvoices_ibfk_3'
+        ));
 
 
 
@@ -1021,6 +1036,96 @@ class Invoices extends ModelAbstract
         }
 
         return $this->_InvoiceTemplate;
+    }
+
+    /**
+     * Sets dependent relations FixedCostsRelInvoices_ibfk_3
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\FixedCostsRelInvoices
+     * @return \IvozProvider\Model\Raw\Invoices
+     */
+    public function setFixedCostsRelInvoices(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_FixedCostsRelInvoices === null) {
+
+                $this->getFixedCostsRelInvoices();
+            }
+
+            $oldRelations = $this->_FixedCostsRelInvoices;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_FixedCostsRelInvoices = array();
+
+        foreach ($data as $object) {
+            $this->addFixedCostsRelInvoices($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations FixedCostsRelInvoices_ibfk_3
+     *
+     * @param \IvozProvider\Model\Raw\FixedCostsRelInvoices $data
+     * @return \IvozProvider\Model\Raw\Invoices
+     */
+    public function addFixedCostsRelInvoices(\IvozProvider\Model\Raw\FixedCostsRelInvoices $data)
+    {
+        $this->_FixedCostsRelInvoices[] = $data;
+        $this->_setLoaded('FixedCostsRelInvoicesIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets dependent FixedCostsRelInvoices_ibfk_3
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\FixedCostsRelInvoices
+     */
+    public function getFixedCostsRelInvoices($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FixedCostsRelInvoicesIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_FixedCostsRelInvoices = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_FixedCostsRelInvoices;
     }
 
     /**

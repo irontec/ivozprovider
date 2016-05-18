@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\Invoices
+ * Data Mapper implementation for IvozProvider\Model\FixedCosts
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class Invoices extends MapperAbstract
+class FixedCosts extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\Invoices';
+    protected $_modelName = 'IvozProvider\\Model\\FixedCosts';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class Invoices extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\Invoices $model
+     * @param IvozProvider\Model\Raw\FixedCosts $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\Invoices) {
+        if (!$model instanceof \IvozProvider\Model\Raw\FixedCosts) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Invoices object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\FixedCosts object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\Invoices object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\FixedCosts object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,19 +49,9 @@ class Invoices extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'number' => $model->getNumber(),
-                'inDate' => $model->getInDate(),
-                'outDate' => $model->getOutDate(),
-                'total' => $model->getTotal(),
-                'taxRate' => $model->getTaxRate(),
-                'totalWithTax' => $model->getTotalWithTax(),
-                'status' => $model->getStatus(),
-                'companyId' => $model->getCompanyId(),
                 'brandId' => $model->getBrandId(),
-                'pdfFileFileSize' => $model->getPdfFileFileSize(),
-                'pdfFileMimeType' => $model->getPdfFileMimeType(),
-                'pdfFileBaseName' => $model->getPdfFileBaseName(),
-                'invoiceTemplateId' => $model->getInvoiceTemplateId(),
+                'description' => $model->getDescription(),
+                'cost' => $model->getCost(),
             );
         } else {
             $result = array();
@@ -100,12 +90,12 @@ class Invoices extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Invoices
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\FixedCosts
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Invoices');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\FixedCosts');
         }
 
         return $this->_dbTable;
@@ -114,17 +104,17 @@ class Invoices extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\Invoices $model The model to delete
+     * @param IvozProvider\Model\Raw\FixedCosts $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\Invoices) {
+        if (!$model instanceof \IvozProvider\Model\Raw\FixedCosts) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Invoices object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\FixedCosts object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\Invoices object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\FixedCosts object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -174,7 +164,7 @@ class Invoices extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Invoices', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\FixedCosts', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -222,7 +212,7 @@ class Invoices extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Invoices', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\FixedCosts', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -300,7 +290,7 @@ class Invoices extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\Invoices $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\FixedCosts $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -308,17 +298,17 @@ class Invoices extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\Invoices $model
+     * @param \IvozProvider\Model\Raw\FixedCosts $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\Invoices $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\FixedCosts $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\Invoices $model,
+    protected function _save(\IvozProvider\Model\Raw\FixedCosts $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -457,21 +447,7 @@ class Invoices extends MapperAbstract
                     }
 
                     foreach ($fixedCostsRelInvoices as $value) {
-                        $value->setInvoiceId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getParsedCDRs(null, null, true) !== null) {
-                    $parsedCDRs = $model->getParsedCDRs();
-
-                    if (!is_array($parsedCDRs)) {
-
-                        $parsedCDRs = array($parsedCDRs);
-                    }
-
-                    foreach ($parsedCDRs as $value) {
-                        $value->setInvoiceId($primaryKey)
+                        $value->setFixedCostId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -557,13 +533,13 @@ class Invoices extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\Invoices|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\Invoices The model with the data provided
+     * @param IvozProvider\Model\Raw\FixedCosts|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\FixedCosts The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\Invoices();
+            $entry = new \IvozProvider\Model\FixedCosts();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -571,50 +547,20 @@ class Invoices extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setNumber($data['number'])
-                  ->setInDate($data['inDate'])
-                  ->setOutDate($data['outDate'])
-                  ->setTotal($data['total'])
-                  ->setTaxRate($data['taxRate'])
-                  ->setTotalWithTax($data['totalWithTax'])
-                  ->setStatus($data['status'])
-                  ->setCompanyId($data['companyId'])
                   ->setBrandId($data['brandId'])
-                  ->setPdfFileFileSize($data['pdfFileFileSize'])
-                  ->setPdfFileMimeType($data['pdfFileMimeType'])
-                  ->setPdfFileBaseName($data['pdfFileBaseName'])
-                  ->setInvoiceTemplateId($data['invoiceTemplateId']);
+                  ->setDescription($data['description'])
+                  ->setCost($data['cost']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setNumber($data->{'number'})
-                  ->setInDate($data->{'inDate'})
-                  ->setOutDate($data->{'outDate'})
-                  ->setTotal($data->{'total'})
-                  ->setTaxRate($data->{'taxRate'})
-                  ->setTotalWithTax($data->{'totalWithTax'})
-                  ->setStatus($data->{'status'})
-                  ->setCompanyId($data->{'companyId'})
                   ->setBrandId($data->{'brandId'})
-                  ->setPdfFileFileSize($data->{'pdfFileFileSize'})
-                  ->setPdfFileMimeType($data->{'pdfFileMimeType'})
-                  ->setPdfFileBaseName($data->{'pdfFileBaseName'})
-                  ->setInvoiceTemplateId($data->{'invoiceTemplateId'});
+                  ->setDescription($data->{'description'})
+                  ->setCost($data->{'cost'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\Invoices) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\FixedCosts) {
             $entry->setId($data->getId())
-                  ->setNumber($data->getNumber())
-                  ->setInDate($data->getInDate())
-                  ->setOutDate($data->getOutDate())
-                  ->setTotal($data->getTotal())
-                  ->setTaxRate($data->getTaxRate())
-                  ->setTotalWithTax($data->getTotalWithTax())
-                  ->setStatus($data->getStatus())
-                  ->setCompanyId($data->getCompanyId())
                   ->setBrandId($data->getBrandId())
-                  ->setPdfFileFileSize($data->getPdfFileFileSize())
-                  ->setPdfFileMimeType($data->getPdfFileMimeType())
-                  ->setPdfFileBaseName($data->getPdfFileBaseName())
-                  ->setInvoiceTemplateId($data->getInvoiceTemplateId());
+                  ->setDescription($data->getDescription())
+                  ->setCost($data->getCost());
 
         }
 
