@@ -17,6 +17,7 @@ production:
     DDI: 
       title: _('DDI')
       type: text
+      pattern: "^[0-9]+$"
       required: true
       default: true
     externalCallFilterId: 

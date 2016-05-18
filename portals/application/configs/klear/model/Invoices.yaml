@@ -3,6 +3,7 @@ production:
   fields: 
     number: 
       title: _('Number')
+      pattern: "^[0-9]+$"
       type: text
       required: true
       maxLength: 30

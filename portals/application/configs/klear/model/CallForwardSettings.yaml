@@ -72,6 +72,7 @@ production:
               hide: ["extensionId", "numberValue"]
     numberValue: 
       title: _('Number value')
+      pattern: "^[0-9]+$"
       type: text
       required: true
     extensionId: 
