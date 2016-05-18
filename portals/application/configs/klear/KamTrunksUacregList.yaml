@@ -74,6 +74,8 @@ production:
         blacklist:
           l_username: true 
           l_domain: true 
+          flags: true
+          reg_delay: true
         order:
           r_username: true
           l_uuid: true
@@ -97,6 +99,8 @@ production:
         blacklist:
           l_username: true 
           l_domain: true 
+          flags: true
+          reg_delay: true
         order:
           r_username: true
           l_uuid: true
