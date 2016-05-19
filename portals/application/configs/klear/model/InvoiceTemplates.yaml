@@ -18,6 +18,7 @@ production:
     template: 
       title: ngettext('Template', 'Templates', 1)
       type: textarea
+      required: true
       source:
         control: Codemirror
         settings:

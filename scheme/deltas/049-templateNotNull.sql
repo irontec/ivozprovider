@@ -1,0 +1,1 @@
+ALTER TABLE InvoiceTemplates MODIFY template TEXT NOT NULL;

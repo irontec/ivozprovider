@@ -76,13 +76,13 @@ production:
         data: fso
         size_limit: 20M
         options: 
-          download: 
-            external: true
-            type: command
-            target: invoicesPdfFileDownload_command
-            icon: ui-silk-bullet-disk
-            title: _("Download file")
-            onNull: hide
+#          download:
+#            external: true
+#            type: command
+#            target: invoicesPdfFileDownload_command
+#            icon: ui-silk-bullet-disk
+#            title: _("Download file")
+#            onNull: hide
           preview: 
             target: invoicesPdfFilePreview_command
             type: command
@@ -104,6 +104,9 @@ production:
               height: 30
               crop: false
             onNull: hide
+      options:
+        commands:
+          invoicesPdfFileDownload_command: true
     companyId: 
       title: _('Company')
       type: select

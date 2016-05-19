@@ -14,6 +14,7 @@ production:
     template: 
       title: ngettext('Template', 'Templates', 1)
       type: textarea
+      required: true
     brandId: 
       title: _('Brand id')
       type: select

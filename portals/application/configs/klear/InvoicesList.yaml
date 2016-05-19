@@ -106,9 +106,6 @@ production:
           status: true
       fixedPositions:
         <<: *invoicesFixedPositions_Link
-      options:
-        dialogs:
-          generateInvoice_dialog: true
         
     <<: *fixedCostsRelInvoices_screensLink
     fixedCostsRelInvoicesList_screen:
@@ -168,6 +165,7 @@ production:
       controller: File
       action: force-download
       mainColumn: pdfFile
+      class: ui-silk-bullet-disk
     invoicesPdfFileUpload_command: &invoicesPdfFileUpload_commandLink 
       <<: *Invoices
       controller: File

@@ -104,6 +104,9 @@ class Generator
             throw new \Exception("No template assigned.");
         }
         $template = $templateModel->getTemplate();
+//        var_dump("template", $template);
+//        var_dump("variables", $variables);
+//        die();
         $xml = \IvozProvider\Template\Formatter::format($template, $variables);
         $content = $facade->render($xml);
         return $content;

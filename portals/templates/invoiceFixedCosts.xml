@@ -57,20 +57,20 @@
                 <td colspan="2" text-align="center" font-size="15" border.type="none">Resumen</td>
             </tr>
             {{#callData.fixedCosts id,costs}}
-            <tr font-style="bold" text-align="center">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td padding="5px" border.color="white" background.color="black" color="white">Costes fijos</td>
-                <td padding="5px" border.color="black">{{callData.fixedCostsTotals}} €</td>
-            </tr>
+                <tr font-style="bold" text-align="center">
+                    <td border.type="none"></td>
+                    <td border.type="none"></td>
+                    <td padding="5px" border.color="white" background.color="black" color="white">Costes fijos</td>
+                    <td padding="5px" border.color="black">{{callData.fixedCostsTotals}} €</td>
+                </tr>
             {{/callData.fixedCosts}}
             {{#callSumarytotals.totalPrice}}
-            <tr font-style="bold" text-align="center">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td padding="5px" border.color="white" background.color="black" color="white">Llamadas</td>
-                <td padding="5px" border.color="black">{{callSumarytotals.totalPrice}} €</td>
-            </tr>
+                <tr font-style="bold" text-align="center">
+                    <td border.type="none"></td>
+                    <td border.type="none"></td>
+                    <td padding="5px" border.color="white" background.color="black" color="white">Llamadas</td>
+                    <td padding="5px" border.color="black">{{callData.callSumaryTotals.totalPrice}} €</td>
+                </tr>
             {{/callSumarytotals.totalPrice}}
             <tr font-style="bold">
                 <td border.type="none"></td>

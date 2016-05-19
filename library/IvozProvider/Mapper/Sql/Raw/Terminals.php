@@ -55,6 +55,7 @@ class Terminals extends MapperAbstract
                 'allow' => $model->getAllow(),
                 'direct_media' => $model->getDirectMedia(),
                 'direct_media_method' => $model->getDirectMediaMethod(),
+                'dtmf_mode' => $model->getDtmfMode(),
                 'password' => $model->getPassword(),
                 'companyId' => $model->getCompanyId(),
                 'mac' => $model->getMac(),
@@ -574,6 +575,7 @@ class Terminals extends MapperAbstract
                   ->setAllow($data['allow'])
                   ->setDirectMedia($data['direct_media'])
                   ->setDirectMediaMethod($data['direct_media_method'])
+                  ->setDtmfMode($data['dtmf_mode'])
                   ->setPassword($data['password'])
                   ->setCompanyId($data['companyId'])
                   ->setMac($data['mac'])
@@ -586,6 +588,7 @@ class Terminals extends MapperAbstract
                   ->setAllow($data->{'allow'})
                   ->setDirectMedia($data->{'direct_media'})
                   ->setDirectMediaMethod($data->{'direct_media_method'})
+                  ->setDtmfMode($data->{'dtmf_mode'})
                   ->setPassword($data->{'password'})
                   ->setCompanyId($data->{'companyId'})
                   ->setMac($data->{'mac'})
@@ -599,6 +602,7 @@ class Terminals extends MapperAbstract
                   ->setAllow($data->getAllow())
                   ->setDirectMedia($data->getDirectMedia())
                   ->setDirectMediaMethod($data->getDirectMediaMethod())
+                  ->setDtmfMode($data->getDtmfMode())
                   ->setPassword($data->getPassword())
                   ->setCompanyId($data->getCompanyId())
                   ->setMac($data->getMac())
