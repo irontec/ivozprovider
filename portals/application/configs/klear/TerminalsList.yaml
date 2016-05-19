@@ -23,7 +23,6 @@ production:
           mac: true
           lastProvisionDate: true
           direct_media: true
-          direct_media_method: true
         options: 
           title: _("Options")
           screens: 
@@ -37,7 +36,6 @@ production:
           password: true
           disallow: true
           allow: true
-          direct_media: true
           direct_media_method: true
           mac: true
           lastProvisionDate: true
@@ -62,7 +60,6 @@ production:
         blacklist: 
           lastProvisionDate: true
           direct_media: true
-          direct_media_method: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
           label: _("Login Info")
@@ -98,7 +95,6 @@ production:
           lastProvisionDate: true
         blacklist:
           direct_media: true
-          direct_media_method: true
       fixedPositions:
         <<: *TerminalsFixedPositions_link
   dialogs: &terminals_dialogsLink

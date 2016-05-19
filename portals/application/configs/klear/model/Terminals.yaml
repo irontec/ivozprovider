@@ -62,14 +62,13 @@ production:
               show: []
               hide: ["direct_media_method"]
     direct_media_method: 
-      title: _('Direct media method')
+      title: _('CallerID update method')
       type: select
       defaultValue: update
       source: 
         data: inline
         values: 
           'invite': 'invite'
-          'reinvite': 'reinvite'
           'update': 'update'
     password: 
       title: ngettext('Password', 'Passwords', 1)
