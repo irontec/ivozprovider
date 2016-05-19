@@ -39,5 +39,10 @@ invoiceTemplateHelp:
             <li>callsPerType: list of all calls grouped by type. Keys of callsPerType are call types
               <ul style='margin-left: 30px'><li>$callsPerType[$callType][] = $callModel;</li></ul>
             </li>
+            <li>fixedCosts: list of all calls grouped by type. Keys of fixedCosts are autoincrement integers starting from 0
+              <ul style='margin-left: 30px'><li>$fixedCosts[] = $fixedCostModel;</li></ul>
+            </li>
+            <li>fixedCostsTotals: Total price of fixedCosts
+            </li>
             </ul>
         "

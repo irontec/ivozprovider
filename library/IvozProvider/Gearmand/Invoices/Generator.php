@@ -221,7 +221,7 @@ class Generator
                 "callsPerType" => $callsPerType,
                 "callSumaryTotals" => $callSumaryTotals,
                 "fixedCosts" => array($fixedCosts),
-                "fixedCoststotals" => $fixedCostTotal,
+                "fixedCostsTotals" => $fixedCostTotal,
         );
     }
 
