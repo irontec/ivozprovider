@@ -146,6 +146,12 @@
                 <td padding="2px">{{value.totalPrice}} €</td>
             </tr>
             {{/callData.callSumary}}
+            <tr font-style="bold">
+                <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Totales:</td>
+                <td text-align="center" padding="5px">{{callData.callSumaryTotals.numberOfCalls}}</td>
+                <td text-align="center" padding="5px">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</td>
+                <td text-align="center" padding="5px">{{callData.callSumaryTotals.totalPrice}} €</td>
+            </tr>
         </table>
         {{#callData.callsPerType id,value}}
         <table margin-bottom="5px" margin-top="50px">
