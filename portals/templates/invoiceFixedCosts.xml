@@ -56,14 +56,14 @@
                 <td border.type="none"></td>
                 <td colspan="2" text-align="center" font-size="15" border.type="none">Resumen</td>
             </tr>
-            {{#callData.fixedCosts id,costs}}
+            {{#fixedCosts id,costs}}
                 <tr font-style="bold" text-align="center">
                     <td border.type="none"></td>
                     <td border.type="none"></td>
                     <td padding="5px" border.color="white" background.color="black" color="white">Costes fijos</td>
-                    <td padding="5px" border.color="black">{{callData.fixedCostsTotals}} €</td>
+                    <td padding="5px" border.color="black">{{fixedCostsTotals}} €</td>
                 </tr>
-            {{/callData.fixedCosts}}
+            {{/fixedCosts}}
             {{#callSumarytotals.totalPrice}}
                 <tr font-style="bold" text-align="center">
                     <td border.type="none"></td>
@@ -76,7 +76,7 @@
                 <td border.type="none"></td>
                 <td border.type="none"></td>
                 <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Total:</td>
-                <td text-align="center" padding="5px" border.color="black">{{callData.callSumaryTotals.totalPrice}} €</td>
+                <td text-align="center" padding="5px" border.color="black">{{totals.totalPrice}} €</td>
             </tr>
             <tr font-style="bold">
                 <td border.type="none"></td>
@@ -88,19 +88,19 @@
                 <td border.type="none"></td>
                 <td border.type="none"></td>
                 <td text-align="center" border.color="white" padding="5px" background.color="black" color="white">IVA</td>
-                <td text-align="center" border.color="black" padding="5px" >{{callData.callSumaryTotals.totalTaxes}} €</td>
+                <td text-align="center" border.color="black" padding="5px" >{{totals.totalTaxes}} €</td>
             </tr>
             <tr font-style="bold">
                 <td border.type="none"></td>
                 <td border.type="none"></td>
                 <td text-align="center" border.color="white" padding="5px" background.color="black" color="white">Total con IVA</td>
-                <td text-align="center" border.color="black" padding="5px" >{{callData.callSumaryTotals.totalWithTaxes}} €</td>
+                <td text-align="center" border.color="black" padding="5px" >{{totals.totalWithTaxes}} €</td>
             </tr>
 
         </table>
 
 
-        {{#callData.fixedCosts id,costs}}
+        {{#fixedCosts id,costs}}
         <table margin-bottom="5px" margin-top="50px">
             <tr border.type="none" margin-bottom="5px" font-style="bold">
                 <td colspan="4" text-align="center" font-size="15" border.type="none">Costes fijos</td>
@@ -123,11 +123,10 @@
                 <td text-align="center" border.type="none" padding="5px"></td>
                 <td text-align="center" border.type="none" padding="5px"></td>
                 <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Total:</td>
-                <td text-align="center" padding="5px">{{callData.fixedCostsTotals}}</td>
+                <td text-align="center" padding="5px">{{fixedCostsTotals}}</td>
             </tr>
         </table>
-        {{/callData.fixedCosts}}
-
+        {{/fixedCosts}}
 
         <table margin-top="50px" margin-bottom="5px" text-align="center">
             <tr border.type="none" margin-bottom="5px" font-style="bold">

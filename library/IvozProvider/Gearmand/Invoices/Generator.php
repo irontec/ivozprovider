@@ -6,6 +6,8 @@ class Generator
 
     protected $_invoiceId = null;
     protected $_logger = null;
+    protected $_fixedCostTotal = 0;
+    protected $_fixedCosts = array();
     protected $_totals = array();
 
     public function __construct($invoiceId = null, $logger = null)
@@ -98,15 +100,15 @@ class Generator
                 "company" => $company->toArray(),
                 "brand" => $brandArray,
                 "callData" => $callData,
+                "fixedCosts" => array($this->_fixedCosts),
+                "fixedCostsTotals" => $this->_fixedCostTotal,
+                "totals" => $this->_totals
         );
         $templateModel = $invoice->getInvoiceTemplate();
         if (!$templateModel) {
             throw new \Exception("No template assigned.");
         }
         $template = $templateModel->getTemplate();
-//        var_dump("template", $template);
-//        var_dump("variables", $variables);
-//        die();
         $xml = \IvozProvider\Template\Formatter::format($template, $variables);
         $content = $facade->render($xml);
         return $content;
@@ -147,21 +149,20 @@ class Generator
                 "totalPrice" => 0
         );
 
-        $fixedCosts = array();
+        $this->_fixedCostTotal = 0;
         $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
         foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
             $quantity = $fixedCostsRelInvoice->getQuantity();
             $subTotal = $cost * $quantity;
-            $fixedCosts[] = array(
+            $this->_fixedCosts[] = array(
                 "quantity" => $quantity,
                 "description" => $fixedCostsRelInvoice->getFixedCost()->getDescription(),
                 "cost" => number_format(ceil($cost*100)/100, 2),
                 "subTotal" => number_format(ceil($subTotal*100)/100, 2)
             );
-            $callSumaryTotals["totalPrice"] += number_format(ceil($subTotal*100)/100, 2);
+            $this->_fixedCostTotal  += number_format(ceil($subTotal*100)/100, 2);
         }
-        $fixedCostTotal = $callSumaryTotals["totalPrice"];
 
         while ($continue) {
             $calls = $callsMapper->fetchList($where, $order, $limit, $offset);
@@ -209,22 +210,25 @@ class Generator
             }
         }
 
-        $callSumaryTotals["totalTaxes"] = number_format(ceil($callSumaryTotals["totalPrice"]*$invoice->getTaxRate())/100, 2);
-        $callSumaryTotals["totalWithTaxes"] = number_format($callSumaryTotals["totalTaxes"]+$callSumaryTotals["totalPrice"], 2);
+        $total = $callSumaryTotals["totalPrice"] + $this->_fixedCostTotal;
+        $totalTaxex = ceil($total*$invoice->getTaxRate())/100;
+        $totalWithTaxex = $totalTaxex + $total;
+
+        $this->_totals = array(
+            "totalPrice" => $total,
+            "totalTaxes" => $totalTaxex,
+            "totalWithTaxes" => $totalWithTaxex
+        );
+
 
         $this->_log("[Invoices][Generator] Saving TotalPrice and Total price with taxes", \Zend_Log::INFO);
-        $this->_log("[Invoices][Generator] TotalPrice: ".$callSumaryTotals["totalPrice"], \Zend_Log::INFO);
-        $this->_log("[Invoices][Generator] Total price with taxes: ".$callSumaryTotals["totalWithTaxes"], \Zend_Log::INFO);
-
-        $this->_totals["totalPrice"] =  $callSumaryTotals["totalPrice"];
-        $this->_totals["totalWithTaxes"] =  $callSumaryTotals["totalWithTaxes"];
+        $this->_log("[Invoices][Generator] TotalPrice: ".$total, \Zend_Log::INFO);
+        $this->_log("[Invoices][Generator] Total price with taxes: ".$totalWithTaxex, \Zend_Log::INFO);
 
         return array(
                 "callSumary" => $callSumary,
                 "callsPerType" => $callsPerType,
                 "callSumaryTotals" => $callSumaryTotals,
-                "fixedCosts" => array($fixedCosts),
-                "fixedCostsTotals" => $fixedCostTotal,
         );
     }
 
