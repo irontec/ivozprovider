@@ -77,7 +77,10 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
             $pks = array($pks);
         }
 
+        $invoicesMapper = new \IvozProvider\Mapper\Sql\Invoices();
         foreach ($pks as $pk) {
+            $invoice = $invoicesMapper->find($pk);
+            $invoice->setStatus("waiting")->save();
             $invoicerJob = new \IvozProvider\Gearmand\Jobs\Invoicer();
             $invoicerJob->setPk($pk)->send();
         }
@@ -98,7 +101,7 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
             'buttons' => array(
                 $closeButton => array(
                     "recall" => false,
-                    "reloadParent" => false
+                    "reloadParent" => true
                 )
             )
         );
