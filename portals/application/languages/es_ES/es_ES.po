@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-11 20:27+0100\n"
-"PO-Revision-Date: 2016-05-11 20:46+0100\n"
+"POT-Creation-Date: 2016-05-18 14:07+0100\n"
+"PO-Revision-Date: 2016-05-18 17:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -45,6 +45,7 @@ msgstr[1] "Horarios"
 #: application/configs/klear/OutgoingRoutingList.yaml:16
 #: application/configs/klear/TargetPatternsList.yaml:17
 #: application/configs/klear/TargetPatternsList.yaml:101
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:20
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:19
 #: application/configs/klear/CompanyServicesList.yaml:18
 #: application/configs/klear/MainOperatorsList.yaml:15
@@ -57,7 +58,7 @@ msgstr[1] "Horarios"
 #: application/configs/klear/ProxyUsersList.yaml:16
 #: application/configs/klear/DDIsList.yaml:14
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:16
-#: application/configs/klear/PeeringContractsList.yaml:18
+#: application/configs/klear/PeeringContractsList.yaml:19
 #: application/configs/klear/KamUsersAddressList.yaml:16
 #: application/configs/klear/KamTrunksUacregList.yaml:15
 #: application/configs/klear/CompaniesList.yaml:21
@@ -130,7 +131,7 @@ msgstr "Listado de %s  %2s"
 #: application/configs/klear/IVRCustomList.yaml:39
 #: application/configs/klear/IVRCustomList.yaml:47
 #: application/configs/klear/LocutionsList.yaml:20
-#: application/configs/klear/LocutionsList.yaml:31
+#: application/configs/klear/LocutionsList.yaml:33
 #: application/configs/klear/ExtensionsList.yaml:22
 #: application/configs/klear/ExtensionsList.yaml:38
 #: application/configs/klear/IVRCustomEntriesList.yaml:27
@@ -143,6 +144,7 @@ msgstr "Listado de %s  %2s"
 #: application/configs/klear/OutgoingRoutingList.yaml:40
 #: application/configs/klear/TargetPatternsList.yaml:22
 #: application/configs/klear/TargetPatternsList.yaml:30
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:49
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:24
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:45
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:120
@@ -170,14 +172,14 @@ msgstr "Listado de %s  %2s"
 #: application/configs/klear/DDIsList.yaml:42
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:24
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:32
-#: application/configs/klear/PeeringContractsList.yaml:23
-#: application/configs/klear/PeeringContractsList.yaml:38
+#: application/configs/klear/PeeringContractsList.yaml:24
+#: application/configs/klear/PeeringContractsList.yaml:39
 #: application/configs/klear/KamUsersAddressList.yaml:25
 #: application/configs/klear/KamUsersAddressList.yaml:38
 #: application/configs/klear/KamTrunksUacregList.yaml:34
 #: application/configs/klear/KamTrunksUacregList.yaml:58
 #: application/configs/klear/CompaniesList.yaml:26
-#: application/configs/klear/CompaniesList.yaml:55
+#: application/configs/klear/CompaniesList.yaml:56
 #: application/configs/klear/LcrGatewaysList.yaml:20
 #: application/configs/klear/LcrGatewaysList.yaml:28
 #: application/configs/klear/FaxesInOutList.yaml:21
@@ -215,8 +217,8 @@ msgstr "Listado de %s  %2s"
 #: application/configs/klear/MediaRelaySetsList.yaml:27
 #: application/configs/klear/DomainsList.yaml:21
 #: application/configs/klear/DomainsList.yaml:41
-#: application/configs/klear/TerminalsList.yaml:27
-#: application/configs/klear/TerminalsList.yaml:45
+#: application/configs/klear/TerminalsList.yaml:26
+#: application/configs/klear/TerminalsList.yaml:43
 #: application/configs/klear/PickUpRelUsersList.yaml:17
 #: application/configs/klear/PickUpRelUsersList.yaml:24
 #: application/configs/klear/MusicOnHoldList.yaml:20
@@ -283,7 +285,7 @@ msgid "Options"
 msgstr "Opciones"
 
 #: application/configs/klear/SchedulesList.yaml:46
-#: application/configs/klear/LocutionsList.yaml:42
+#: application/configs/klear/LocutionsList.yaml:44
 #: application/configs/klear/CallForwardSettingsList.yaml:46
 #: application/configs/klear/MusicOnHoldList.yaml:44
 #: application/configs/klear/CalendarsList.yaml:40
@@ -305,7 +307,7 @@ msgstr "Añadir %s %2s"
 #: application/configs/klear/KamDispatcherList.yaml:47
 #: application/configs/klear/KamDispatcherList.yaml:48
 #: application/configs/klear/IVRCustomList.yaml:102
-#: application/configs/klear/LocutionsList.yaml:65
+#: application/configs/klear/LocutionsList.yaml:69
 #: application/configs/klear/ExtensionsList.yaml:78
 #: application/configs/klear/IVRCustomEntriesList.yaml:55
 #: application/configs/klear/UsersList.yaml:141
@@ -330,11 +332,11 @@ msgstr "Añadir %s %2s"
 #: application/configs/klear/ProxyUsersList.yaml:40
 #: application/configs/klear/DDIsList.yaml:67
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:73
-#: application/configs/klear/PeeringContractsList.yaml:62
+#: application/configs/klear/PeeringContractsList.yaml:63
 #: application/configs/klear/KamUsersAddressList.yaml:69
 #: application/configs/klear/KamUsersAddressList.yaml:70
 #: application/configs/klear/KamTrunksUacregList.yaml:93
-#: application/configs/klear/CompaniesList.yaml:129
+#: application/configs/klear/CompaniesList.yaml:131
 #: application/configs/klear/LcrGatewaysList.yaml:49
 #: application/configs/klear/LcrGatewaysList.yaml:50
 #: application/configs/klear/FaxesInOutList.yaml:46
@@ -362,7 +364,7 @@ msgstr "Añadir %s %2s"
 #: application/configs/klear/MediaRelaySetsList.yaml:49
 #: application/configs/klear/DomainsList.yaml:86
 #: application/configs/klear/DomainsList.yaml:87
-#: application/configs/klear/TerminalsList.yaml:92
+#: application/configs/klear/TerminalsList.yaml:89
 #: application/configs/klear/PickUpRelUsersList.yaml:42
 #: application/configs/klear/MusicOnHoldList.yaml:71
 #: application/configs/klear/PeerServersList.yaml:110
@@ -406,7 +408,7 @@ msgstr "Editar %s %2s"
 #: application/configs/klear/AstPsEndpointsList.yaml:55
 #: application/configs/klear/KamDispatcherList.yaml:55
 #: application/configs/klear/IVRCustomList.yaml:131
-#: application/configs/klear/LocutionsList.yaml:79
+#: application/configs/klear/LocutionsList.yaml:94
 #: application/configs/klear/ExtensionsList.yaml:90
 #: application/configs/klear/IVRCustomEntriesList.yaml:65
 #: application/configs/klear/UsersList.yaml:195
@@ -425,10 +427,10 @@ msgstr "Editar %s %2s"
 #: application/configs/klear/KamTrunksLcrRuleList.yaml:49
 #: application/configs/klear/DDIsList.yaml:77
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:98
-#: application/configs/klear/PeeringContractsList.yaml:114
+#: application/configs/klear/PeeringContractsList.yaml:115
 #: application/configs/klear/KamUsersAddressList.yaml:80
 #: application/configs/klear/KamTrunksUacregList.yaml:117
-#: application/configs/klear/CompaniesList.yaml:195
+#: application/configs/klear/CompaniesList.yaml:197
 #: application/configs/klear/LcrGatewaysList.yaml:71
 #: application/configs/klear/FaxesInOutList.yaml:53
 #: application/configs/klear/AstVoicemailList.yaml:55
@@ -446,7 +448,7 @@ msgstr "Editar %s %2s"
 #: application/configs/klear/AstPsAorsList.yaml:55
 #: application/configs/klear/MediaRelaySetsList.yaml:70
 #: application/configs/klear/DomainsList.yaml:129
-#: application/configs/klear/TerminalsList.yaml:106
+#: application/configs/klear/TerminalsList.yaml:103
 #: application/configs/klear/PickUpRelUsersList.yaml:49
 #: application/configs/klear/MusicOnHoldList.yaml:87
 #: application/configs/klear/PeerServersList.yaml:123
@@ -488,7 +490,7 @@ msgstr "Borrar %s"
 #: application/configs/klear/AstPsEndpointsList.yaml:56
 #: application/configs/klear/KamDispatcherList.yaml:56
 #: application/configs/klear/IVRCustomList.yaml:132
-#: application/configs/klear/LocutionsList.yaml:80
+#: application/configs/klear/LocutionsList.yaml:95
 #: application/configs/klear/ExtensionsList.yaml:91
 #: application/configs/klear/IVRCustomEntriesList.yaml:66
 #: application/configs/klear/UsersList.yaml:196
@@ -506,10 +508,10 @@ msgstr "Borrar %s"
 #: application/configs/klear/CallACLRelPatternsList.yaml:51
 #: application/configs/klear/KamTrunksLcrRuleList.yaml:50
 #: application/configs/klear/DDIsList.yaml:78
-#: application/configs/klear/PeeringContractsList.yaml:115
+#: application/configs/klear/PeeringContractsList.yaml:116
 #: application/configs/klear/KamUsersAddressList.yaml:81
 #: application/configs/klear/KamTrunksUacregList.yaml:118
-#: application/configs/klear/CompaniesList.yaml:196
+#: application/configs/klear/CompaniesList.yaml:198
 #: application/configs/klear/LcrGatewaysList.yaml:72
 #: application/configs/klear/FaxesInOutList.yaml:54
 #: application/configs/klear/AstVoicemailList.yaml:56
@@ -527,7 +529,7 @@ msgstr "Borrar %s"
 #: application/configs/klear/AstPsAorsList.yaml:56
 #: application/configs/klear/MediaRelaySetsList.yaml:71
 #: application/configs/klear/DomainsList.yaml:130
-#: application/configs/klear/TerminalsList.yaml:107
+#: application/configs/klear/TerminalsList.yaml:104
 #: application/configs/klear/PickUpRelUsersList.yaml:50
 #: application/configs/klear/MusicOnHoldList.yaml:88
 #: application/configs/klear/PeerServersList.yaml:124
@@ -568,7 +570,7 @@ msgstr "¿Quieres eliminar %s?"
 #: application/configs/klear/AstPsEndpointsList.yaml:57
 #: application/configs/klear/KamDispatcherList.yaml:57
 #: application/configs/klear/IVRCustomList.yaml:133
-#: application/configs/klear/LocutionsList.yaml:81
+#: application/configs/klear/LocutionsList.yaml:96
 #: application/configs/klear/ExtensionsList.yaml:92
 #: application/configs/klear/IVRCustomEntriesList.yaml:67
 #: application/configs/klear/UsersList.yaml:197
@@ -586,10 +588,10 @@ msgstr "¿Quieres eliminar %s?"
 #: application/configs/klear/CallACLRelPatternsList.yaml:52
 #: application/configs/klear/KamTrunksLcrRuleList.yaml:51
 #: application/configs/klear/DDIsList.yaml:79
-#: application/configs/klear/PeeringContractsList.yaml:116
+#: application/configs/klear/PeeringContractsList.yaml:117
 #: application/configs/klear/KamUsersAddressList.yaml:82
 #: application/configs/klear/KamTrunksUacregList.yaml:119
-#: application/configs/klear/CompaniesList.yaml:197
+#: application/configs/klear/CompaniesList.yaml:199
 #: application/configs/klear/LcrGatewaysList.yaml:73
 #: application/configs/klear/FaxesInOutList.yaml:55
 #: application/configs/klear/AstVoicemailList.yaml:57
@@ -607,7 +609,7 @@ msgstr "¿Quieres eliminar %s?"
 #: application/configs/klear/AstPsAorsList.yaml:57
 #: application/configs/klear/MediaRelaySetsList.yaml:72
 #: application/configs/klear/DomainsList.yaml:131
-#: application/configs/klear/TerminalsList.yaml:108
+#: application/configs/klear/TerminalsList.yaml:105
 #: application/configs/klear/PickUpRelUsersList.yaml:51
 #: application/configs/klear/MusicOnHoldList.yaml:89
 #: application/configs/klear/PeerServersList.yaml:125
@@ -676,10 +678,10 @@ msgstr[1] ""
 #: application/configs/klear/ProxyUsersList.yaml:29
 #: application/configs/klear/DDIsList.yaml:55
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:50
-#: application/configs/klear/PeeringContractsList.yaml:49
+#: application/configs/klear/PeeringContractsList.yaml:50
 #: application/configs/klear/KamUsersAddressList.yaml:54
 #: application/configs/klear/KamTrunksUacregList.yaml:69
-#: application/configs/klear/CompaniesList.yaml:86
+#: application/configs/klear/CompaniesList.yaml:87
 #: application/configs/klear/LcrGatewaysList.yaml:39
 #: application/configs/klear/AstVoicemailList.yaml:37
 #: application/configs/klear/ProxyTrunksList.yaml:27
@@ -696,7 +698,7 @@ msgstr[1] ""
 #: application/configs/klear/AstPsAorsList.yaml:37
 #: application/configs/klear/MediaRelaySetsList.yaml:36
 #: application/configs/klear/DomainsList.yaml:62
-#: application/configs/klear/TerminalsList.yaml:57
+#: application/configs/klear/TerminalsList.yaml:55
 #: application/configs/klear/PickUpRelUsersList.yaml:35
 #: application/configs/klear/PeerServersList.yaml:62
 #: application/configs/klear/CompanyAdminsList.yaml:37
@@ -743,8 +745,8 @@ msgstr[1] "Marcas"
 #: application/configs/klear/AstPsEndpointsList.yaml:57
 msgid "Ast ps endpoint"
 msgid_plural "Ast ps endpoints"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Endpoint"
+msgstr[1] "Endpoints"
 
 #: application/configs/klear/KamDispatcherList.yaml:16
 #: application/configs/klear/KamDispatcherList.yaml:37
@@ -785,11 +787,11 @@ msgid "Error configuration"
 msgstr "Configuración Error"
 
 #: application/configs/klear/LocutionsList.yaml:15
-#: application/configs/klear/LocutionsList.yaml:42
-#: application/configs/klear/LocutionsList.yaml:65
-#: application/configs/klear/LocutionsList.yaml:79
-#: application/configs/klear/LocutionsList.yaml:80
-#: application/configs/klear/LocutionsList.yaml:81
+#: application/configs/klear/LocutionsList.yaml:44
+#: application/configs/klear/LocutionsList.yaml:69
+#: application/configs/klear/LocutionsList.yaml:94
+#: application/configs/klear/LocutionsList.yaml:95
+#: application/configs/klear/LocutionsList.yaml:96
 #: application/configs/klear/klear.yaml:197
 #: application/configs/klear/klear.yaml:199
 #: application/configs/klear/model/HolidayDates.yaml:32
@@ -806,7 +808,7 @@ msgstr[1] "Locuciones"
 #: application/configs/klear/ExtensionsList.yaml:92
 #: application/configs/klear/klear.yaml:157
 #: application/configs/klear/klear.yaml:159
-#: application/configs/klear/model/CallForwardSettings.yaml:78
+#: application/configs/klear/model/CallForwardSettings.yaml:79
 #: application/configs/klear/model/Users.yaml:80
 msgid "Extension"
 msgid_plural "Extensions"
@@ -815,13 +817,12 @@ msgstr[1] "Extensiones"
 
 #: application/configs/klear/ExtensionsList.yaml:99
 #: application/configs/klear/UsersList.yaml:204
-#: application/configs/klear/CompaniesList.yaml:218
-#: application/configs/klear/TerminalsList.yaml:115
+#: application/configs/klear/CompaniesList.yaml:220
+#: application/configs/klear/TerminalsList.yaml:112
 #: application/configs/klear/model/GenericMusicOnHold.yaml:18
 #: application/configs/klear/model/GenericMusicOnHold.yaml:67
 #: application/configs/klear/model/FaxesInOut.yaml:59
 #: application/configs/klear/model/ImportFiles.yaml:5
-#: application/configs/klear/model/Locutions.yaml:18
 msgid "File"
 msgid_plural "Files"
 msgstr[0] "Fichero"
@@ -830,8 +831,8 @@ msgstr[1] "Ficheros"
 #: application/configs/klear/ExtensionsList.yaml:99
 #: application/configs/klear/UsersList.yaml:204
 #: application/configs/klear/TargetPatternsList.yaml:123
-#: application/configs/klear/CompaniesList.yaml:218
-#: application/configs/klear/TerminalsList.yaml:115
+#: application/configs/klear/CompaniesList.yaml:220
+#: application/configs/klear/TerminalsList.yaml:112
 #: application/configs/klear/PricingPlansRelTargetPatternsList.yaml:115
 #: application/configs/klear/PricingPlansList.yaml:150
 #, fuzzy, python-format
@@ -861,7 +862,7 @@ msgstr[1] "IVRs a medida"
 #: application/configs/klear/HuntGroupsList.yaml:95
 #: application/configs/klear/HuntGroupsList.yaml:99
 #: application/configs/klear/HuntGroupsList.yaml:134
-#: application/configs/klear/model/Extensions.yaml:97
+#: application/configs/klear/model/Extensions.yaml:98
 msgid "User"
 msgid_plural "Users"
 msgstr[0] "Usuario"
@@ -869,7 +870,7 @@ msgstr[1] "Usuarios"
 
 #: application/configs/klear/UsersList.yaml:98
 msgid "Personal data"
-msgstr ""
+msgstr "Datos personales"
 
 #: application/configs/klear/UsersList.yaml:105
 #, fuzzy
@@ -903,8 +904,8 @@ msgstr[1] "Grupos de salto"
 #: application/configs/klear/UsersList.yaml:163
 msgid "hunt group"
 msgid_plural "hunt groups"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Grupo de Captura"
+msgstr[1] "Grupos de Captura"
 
 #: application/configs/klear/UsersList.yaml:163
 #, fuzzy, python-format
@@ -990,25 +991,63 @@ msgid_plural "Pricing plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
 
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:20
+#, fuzzy
+msgid "Call registry"
+msgid_plural "Call registry"
+msgstr[0] "Permiso llamada"
+msgstr[1] "Permiso llamada"
+
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:62
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:63
+#, fuzzy
+msgid "Call details"
+msgid_plural "Call details"
+msgstr[0] "Festivo"
+msgstr[1] "Festivo"
+
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:62
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:63
+#: application/configs/klear/ParsedCDRsList.yaml:138
+#: application/configs/klear/DomainsList.yaml:92
+#: application/configs/klear/DomainsList.yaml:93
+#, python-format
+msgid "View %s %2s"
+msgstr "Ver %s %2s"
+
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:103
+#, fuzzy
+msgid "Basic information"
+msgstr "Configuración básica"
+
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:113
+msgid "Forwarding information"
+msgstr ""
+
+#: application/configs/klear/ParsedCDRsCompanyList.yaml:120
+#, fuzzy
+msgid "Billing information"
+msgstr "Transformaciones Llamante"
+
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:19
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:62
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:84
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:183
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:184
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:185
-#: application/configs/klear/PeeringContractsList.yaml:102
+#: application/configs/klear/PeeringContractsList.yaml:103
 msgid "Transformation ruleset groups trunk"
 msgid_plural "Transformation ruleset groups trunks"
-msgstr[0] "Regla de transf. entrantes"
-msgstr[1] "Reglas de transf. entrantes"
+msgstr[0] "Regla de transf. numérica"
+msgstr[1] "Reglas de transf. numéricas"
 
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:115
 msgid "Caller transformations"
-msgstr "Transformaciones Llamante"
+msgstr "Transf. Llamante Entrada"
 
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:129
 msgid "Callee transformations"
-msgstr "Transformaciones Llamado"
+msgstr "Transf. Llamado Entrada"
 
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:143
 msgid ""
@@ -1018,11 +1057,11 @@ msgstr ""
 
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:149
 msgid "Kam Trunks Dialplan Caller Out"
-msgstr ""
+msgstr "Transf. Llamante Salida"
 
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:164
 msgid "Kam Trunks Dialplan Callee Out"
-msgstr ""
+msgstr "Transf. Llamado Salida"
 
 #: application/configs/klear/CompanyServicesList.yaml:18
 #: application/configs/klear/CompanyServicesList.yaml:41
@@ -1031,11 +1070,10 @@ msgstr ""
 #: application/configs/klear/CompanyServicesList.yaml:61
 #: application/configs/klear/CompanyServicesList.yaml:62
 #: application/configs/klear/CompanyServicesList.yaml:63
-#, fuzzy
 msgid "Company service"
 msgid_plural "Company services"
-msgstr[0] "Administrador de empresa"
-msgstr[1] "Administrador de empresa"
+msgstr[0] "Servicio"
+msgstr[1] "Servicios"
 
 #: application/configs/klear/MainOperatorsList.yaml:15
 #: application/configs/klear/MainOperatorsList.yaml:45
@@ -1189,7 +1227,7 @@ msgstr[0] "Precio"
 msgstr[1] "Precios"
 
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:82
-#: application/configs/klear/PeeringContractsList.yaml:102
+#: application/configs/klear/PeeringContractsList.yaml:103
 #: application/configs/klear/klear.yaml:51
 #: application/configs/klear/klear.yaml:55
 #: application/configs/klear/klear.yaml:59
@@ -1246,18 +1284,18 @@ msgstr "%s %2s borrado satisfactoriamente. "
 
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:106
 msgid "Simulate a call"
-msgstr ""
+msgstr "Simular una llamada"
 
-#: application/configs/klear/PeeringContractsList.yaml:18
-#: application/configs/klear/PeeringContractsList.yaml:49
-#: application/configs/klear/PeeringContractsList.yaml:62
-#: application/configs/klear/PeeringContractsList.yaml:114
+#: application/configs/klear/PeeringContractsList.yaml:19
+#: application/configs/klear/PeeringContractsList.yaml:50
+#: application/configs/klear/PeeringContractsList.yaml:63
 #: application/configs/klear/PeeringContractsList.yaml:115
 #: application/configs/klear/PeeringContractsList.yaml:116
+#: application/configs/klear/PeeringContractsList.yaml:117
 #: application/configs/klear/klear.yaml:99
 #: application/configs/klear/klear.yaml:101
 #: application/configs/klear/model/PeerServers.yaml:5
-#: application/configs/klear/model/OutgoingRouting.yaml:49
+#: application/configs/klear/model/OutgoingRouting.yaml:51
 msgid "Peering contract"
 msgid_plural "Peering contracts"
 msgstr[0] "Contrato de Peering"
@@ -1294,47 +1332,46 @@ msgstr "Configuración"
 
 #: application/configs/klear/KamTrunksUacregList.yaml:50
 msgid "Optional Settings"
-msgstr ""
+msgstr "Configuraciones Opcionales"
 
 #: application/configs/klear/CompaniesList.yaml:21
-#: application/configs/klear/CompaniesList.yaml:86
-#: application/configs/klear/CompaniesList.yaml:129
-#: application/configs/klear/CompaniesList.yaml:195
-#: application/configs/klear/CompaniesList.yaml:196
+#: application/configs/klear/CompaniesList.yaml:87
+#: application/configs/klear/CompaniesList.yaml:131
 #: application/configs/klear/CompaniesList.yaml:197
+#: application/configs/klear/CompaniesList.yaml:198
+#: application/configs/klear/CompaniesList.yaml:199
 #: application/configs/klear/klear.yaml:95
 #: application/configs/klear/klear.yaml:97
 #: application/configs/klear/model/ParsedCDRs.yaml:64
 #: application/configs/klear/model/PricingPlansRelCompanies.yaml:20
 #: application/configs/klear/model/ExternalCallFilters.yaml:5
 #: application/configs/klear/model/Calendars.yaml:5
-#: application/configs/klear/model/Invoices.yaml:103
+#: application/configs/klear/model/Invoices.yaml:104
 #: application/configs/klear/model/Locutions.yaml:5
 #: application/configs/klear/model/Users.yaml:5
 #: application/configs/klear/model/CallACL.yaml:5
 #: application/configs/klear/model/CallACLPatterns.yaml:5
-#: application/configs/klear/model/OutgoingRouting.yaml:80
+#: application/configs/klear/model/OutgoingRouting.yaml:82
 #: application/configs/klear/model/MusicOnHold.yaml:5
 msgid "Company"
 msgid_plural "Companies"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
 
-#: application/configs/klear/CompaniesList.yaml:100
+#: application/configs/klear/CompaniesList.yaml:101
 #, fuzzy
 msgid "Server data"
 msgstr "Tipo de fichero"
 
-#: application/configs/klear/CompaniesList.yaml:109
+#: application/configs/klear/CompaniesList.yaml:111
 #: application/configs/klear/BrandsList.yaml:95
-#, fuzzy
 msgid "Invoice data"
-msgstr "Factura"
+msgstr "Datos de facturación"
 
-#: application/configs/klear/CompaniesList.yaml:202
+#: application/configs/klear/CompaniesList.yaml:204
 #, python-format
 msgid "Emulate Company %s"
-msgstr ""
+msgstr "Emular Compañía %s"
 
 #: application/configs/klear/LcrGatewaysList.yaml:17
 #: application/configs/klear/LcrGatewaysList.yaml:39
@@ -1395,10 +1432,10 @@ msgstr "Gestión general"
 #: application/configs/klear/BrandsList.yaml:171
 #: application/configs/klear/BrandsList.yaml:172
 #: application/configs/klear/BrandsList.yaml:173
-#: application/configs/klear/model/TargetPatterns.yaml:23
+#: application/configs/klear/model/TargetPatterns.yaml:29
 #: application/configs/klear/model/BrandOperators.yaml:5
 #: application/configs/klear/model/ParsedCDRs.yaml:77
-#: application/configs/klear/model/Invoices.yaml:118
+#: application/configs/klear/model/Invoices.yaml:119
 #: application/configs/klear/model/TransformationRulesetGroups.yaml:15
 #: application/configs/klear/model/GenericCallACLPatterns.yaml:5
 #: application/configs/klear/model/PricingPlans.yaml:27
@@ -1504,7 +1541,7 @@ msgstr "Configuración de Marca"
 
 #: application/configs/klear/klear.yaml:91
 msgid "Brands"
-msgstr ""
+msgstr "Marcas"
 
 #: application/configs/klear/klear.yaml:103
 #: application/configs/klear/klear.yaml:105
@@ -1603,16 +1640,16 @@ msgstr "Configuración de Empresa"
 
 #: application/configs/klear/klear.yaml:146
 msgid "Admin"
-msgstr ""
+msgstr "Adminsitrador"
 
 #: application/configs/klear/klear.yaml:153
 #: application/configs/klear/klear.yaml:155
 #: application/configs/klear/TerminalsList.yaml:17
-#: application/configs/klear/TerminalsList.yaml:57
-#: application/configs/klear/TerminalsList.yaml:92
-#: application/configs/klear/TerminalsList.yaml:106
-#: application/configs/klear/TerminalsList.yaml:107
-#: application/configs/klear/TerminalsList.yaml:108
+#: application/configs/klear/TerminalsList.yaml:55
+#: application/configs/klear/TerminalsList.yaml:89
+#: application/configs/klear/TerminalsList.yaml:103
+#: application/configs/klear/TerminalsList.yaml:104
+#: application/configs/klear/TerminalsList.yaml:105
 #: application/configs/klear/model/Users.yaml:66
 msgid "Terminal"
 msgid_plural "Terminals"
@@ -1765,7 +1802,7 @@ msgid "Basic Info"
 msgstr "Configuración básica"
 
 #: application/configs/klear/ProxyTrunksList.yaml:37
-#: application/configs/klear/TerminalsList.yaml:73
+#: application/configs/klear/TerminalsList.yaml:71
 msgid "Connection Info"
 msgstr "Configuración de conexión"
 
@@ -1811,7 +1848,7 @@ msgstr "Ya existe un desvío si usuario no registrado con ese tipo de llamada."
 
 #: application/configs/klear/errors.yaml:8
 msgid "Error reloading modules. Please reload modules manually."
-msgstr ""
+msgstr "Error recargando módulos. Por favor recarge módulos manualmente."
 
 #: application/configs/klear/errors.yaml:9
 #, fuzzy
@@ -1823,11 +1860,11 @@ msgstr ""
 
 #: application/configs/klear/errors.yaml:10
 msgid "'Valid From' must be earlier than 'Valid to'"
-msgstr ""
+msgstr "'Válido desde' debe ser anterior a 'Válido hasta'"
 
 #: application/configs/klear/errors.yaml:11
 msgid "You can't create a pricing plan that starts in de past"
-msgstr ""
+msgstr "No es posible crear un Plan de precios en el pasado"
 
 #: application/configs/klear/errors.yaml:12
 msgid ""
@@ -1867,7 +1904,7 @@ msgstr ""
 
 #: application/configs/klear/errors.yaml:18
 msgid "Brand is not setted"
-msgstr ""
+msgstr "Marca no seleccionada"
 
 #: application/configs/klear/errors.yaml:19
 msgid "Invalid IP address, discarding value."
@@ -1980,66 +2017,58 @@ msgstr ""
 msgid "LLAMADA EXTERNA ENTRANTE QUE ACABA DESVIANDOSE A UN NÚMERO DE LA PSTN"
 msgstr ""
 
-#: application/configs/klear/ParsedCDRsList.yaml:138
-#: application/configs/klear/DomainsList.yaml:92
-#: application/configs/klear/DomainsList.yaml:93
-#, python-format
-msgid "View %s %2s"
-msgstr "Ver %s %2s"
-
-#: application/configs/klear/ParsedCDRsList.yaml:144
+#: application/configs/klear/ParsedCDRsList.yaml:146
 #, fuzzy
 msgid "Company info"
 msgstr "Administrador de empresa"
 
-#: application/configs/klear/ParsedCDRsList.yaml:150
+#: application/configs/klear/ParsedCDRsList.yaml:152
 msgid "Call info"
 msgstr ""
 
-#: application/configs/klear/ParsedCDRsList.yaml:157
-#: application/configs/klear/model/ParsedCDRs.yaml:14
+#: application/configs/klear/ParsedCDRsList.yaml:159
 #: application/configs/klear/model/FaxesInOut.yaml:27
 msgid "Src"
-msgstr ""
+msgstr "Origen"
 
-#: application/configs/klear/ParsedCDRsList.yaml:164
+#: application/configs/klear/ParsedCDRsList.yaml:166
 #: application/configs/klear/model/ParsedCDRs.yaml:27
 #: application/configs/klear/model/FaxesInOut.yaml:31
 msgid "Dst"
-msgstr ""
+msgstr "Destino"
 
-#: application/configs/klear/ParsedCDRsList.yaml:171
+#: application/configs/klear/ParsedCDRsList.yaml:173
 msgid "Fw"
-msgstr ""
+msgstr "Desviada"
 
-#: application/configs/klear/ParsedCDRsList.yaml:179
+#: application/configs/klear/ParsedCDRsList.yaml:181
 msgid "Legs"
-msgstr ""
+msgstr "Patas"
 
-#: application/configs/klear/ParsedCDRsList.yaml:185
+#: application/configs/klear/ParsedCDRsList.yaml:187
 msgid "Metering"
 msgstr ""
 
-#: application/configs/klear/ParsedCDRsList.yaml:199
-#: application/configs/klear/ParsedCDRsList.yaml:200
-#: application/configs/klear/ParsedCDRsList.yaml:209
-#: application/configs/klear/ParsedCDRsList.yaml:210
-#: application/configs/klear/ParsedCDRsList.yaml:217
-#: application/configs/klear/ParsedCDRsList.yaml:218
+#: application/configs/klear/ParsedCDRsList.yaml:201
+#: application/configs/klear/ParsedCDRsList.yaml:202
+#: application/configs/klear/ParsedCDRsList.yaml:211
+#: application/configs/klear/ParsedCDRsList.yaml:212
+#: application/configs/klear/ParsedCDRsList.yaml:219
+#: application/configs/klear/ParsedCDRsList.yaml:220
 msgid "call"
 msgid_plural "calls"
 msgstr[0] ""
 msgstr[1] ""
 
-#: application/configs/klear/ParsedCDRsList.yaml:199
-#: application/configs/klear/ParsedCDRsList.yaml:200
-#: application/configs/klear/ParsedCDRsList.yaml:209
-#: application/configs/klear/ParsedCDRsList.yaml:210
-#: application/configs/klear/ParsedCDRsList.yaml:217
-#: application/configs/klear/ParsedCDRsList.yaml:218
+#: application/configs/klear/ParsedCDRsList.yaml:201
+#: application/configs/klear/ParsedCDRsList.yaml:202
+#: application/configs/klear/ParsedCDRsList.yaml:211
+#: application/configs/klear/ParsedCDRsList.yaml:212
+#: application/configs/klear/ParsedCDRsList.yaml:219
+#: application/configs/klear/ParsedCDRsList.yaml:220
 #, python-format
 msgid "Tarificate %s"
-msgstr ""
+msgstr "Tarificar %s"
 
 #: application/configs/klear/CallForwardSettingsList.yaml:15
 #: application/configs/klear/CallForwardSettingsList.yaml:46
@@ -2049,8 +2078,8 @@ msgstr ""
 #: application/configs/klear/CallForwardSettingsList.yaml:86
 msgid "Call forward setting"
 msgid_plural "Call forward settings"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Opción de desvío"
+msgstr[1] "Opciones de desvío"
 
 #: application/configs/klear/TargetGroupsRelPatternsList.yaml:16
 #: application/configs/klear/TargetGroupsRelPatternsList.yaml:37
@@ -2079,8 +2108,8 @@ msgstr "Plantilla"
 #: application/configs/klear/XMLRPCLogsList.yaml:63
 msgid "X m l r p c log"
 msgid_plural "X m l r p c logs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "X m l r p c log"
+msgstr[1] "X m l r p c logs"
 
 #: application/configs/klear/AstPsAorsList.yaml:16
 #: application/configs/klear/AstPsAorsList.yaml:37
@@ -2091,17 +2120,17 @@ msgstr[1] ""
 #: application/configs/klear/AstPsAorsList.yaml:57
 msgid "Ast ps aor"
 msgid_plural "Ast ps aors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ast ps aor"
+msgstr[1] "Ast ps aors"
 
-#: application/configs/klear/TerminalsList.yaml:66
+#: application/configs/klear/TerminalsList.yaml:64
 #, fuzzy
 msgid "Login Info"
 msgstr "Nombre de usuario"
 
-#: application/configs/klear/TerminalsList.yaml:82
+#: application/configs/klear/TerminalsList.yaml:79
 msgid "Provisioning Info"
-msgstr ""
+msgstr "Provisioning"
 
 #: application/configs/klear/PickUpRelUsersList.yaml:14
 #: application/configs/klear/PickUpRelUsersList.yaml:35
@@ -2131,7 +2160,7 @@ msgstr "Configuración básica"
 
 #: application/configs/klear/PeerServersList.yaml:82
 msgid "Authentication Settings"
-msgstr ""
+msgstr "Opciones de Autenticación"
 
 #: application/configs/klear/PeerServersList.yaml:90
 #, fuzzy
@@ -2179,11 +2208,10 @@ msgstr[1] ""
 #: application/configs/klear/model/MainOperators.yaml:38
 #: application/configs/klear/model/BrandOperators.yaml:43
 #: application/configs/klear/model/Users.yaml:52
-#, fuzzy
 msgid "Timezone"
 msgid_plural "Timezones"
-msgstr[0] "Tiempo"
-msgstr[1] "Tiempos"
+msgstr[0] "Zona Horaria"
+msgstr[1] "Zonas Horarias"
 
 #: application/configs/klear/CallACLPatternsList.yaml:39
 msgid "Add %s %2S"
@@ -2327,7 +2355,7 @@ msgstr ""
 
 #: application/configs/klear/CallACLList.yaml:69
 msgid "Patterns"
-msgstr ""
+msgstr "Patrones"
 
 #: application/configs/klear/CallACLList.yaml:83
 #, python-format
@@ -2340,7 +2368,6 @@ msgid "Edit pattern of %s"
 msgstr "Editar %s %2s"
 
 #: application/configs/klear/PricingPlansList.yaml:103
-#: application/configs/klear/model/ParsedCDRs.yaml:130
 #: application/configs/klear/model/PricingPlansRelTargetPatterns.yaml:53
 #, fuzzy
 msgid "Target pattern"
@@ -2390,11 +2417,11 @@ msgstr[1] "Servidores de media"
 
 #: application/configs/klear/BrandsList.yaml:82
 msgid "SIP domains"
-msgstr ""
+msgstr "Dominios SIP"
 
 #: application/configs/klear/BrandsList.yaml:88
 msgid "Locales"
-msgstr ""
+msgstr "Localización"
 
 #: application/configs/klear/BrandsList.yaml:105
 msgid "Who knows section"
@@ -2447,17 +2474,18 @@ msgid "Domain id"
 msgstr "Locución"
 
 #: application/configs/klear/model/KamUsersDomain.yaml:34
-#: application/configs/klear/model/Extensions.yaml:61
-#: application/configs/klear/model/Extensions.yaml:75
-#: application/configs/klear/model/Extensions.yaml:89
+#: application/configs/klear/model/Extensions.yaml:62
+#: application/configs/klear/model/Extensions.yaml:76
+#: application/configs/klear/model/Extensions.yaml:90
 #: application/configs/klear/model/HolidayDates.yaml:44
 #: application/configs/klear/model/Faxes.yaml:57
-#: application/configs/klear/model/CallForwardSettings.yaml:91
-#: application/configs/klear/model/CallForwardSettings.yaml:107
+#: application/configs/klear/model/CallForwardSettings.yaml:92
+#: application/configs/klear/model/CallForwardSettings.yaml:108
 #: application/configs/klear/model/ParsedCDRs.yaml:75
 #: application/configs/klear/model/ParsedCDRs.yaml:88
 #: application/configs/klear/model/ParsedCDRs.yaml:128
 #: application/configs/klear/model/ParsedCDRs.yaml:141
+#: application/configs/klear/model/ParsedCDRs.yaml:203
 #: application/configs/klear/model/ExternalCallFilters.yaml:37
 #: application/configs/klear/model/ExternalCallFilters.yaml:53
 #: application/configs/klear/model/ExternalCallFilters.yaml:69
@@ -2481,9 +2509,9 @@ msgstr "Locución"
 #: application/configs/klear/model/IVRCustom.yaml:157
 #: application/configs/klear/model/IVRCustom.yaml:193
 #: application/configs/klear/model/IVRCustom.yaml:209
-#: application/configs/klear/model/Invoices.yaml:116
-#: application/configs/klear/model/Invoices.yaml:129
-#: application/configs/klear/model/Invoices.yaml:143
+#: application/configs/klear/model/Invoices.yaml:117
+#: application/configs/klear/model/Invoices.yaml:130
+#: application/configs/klear/model/Invoices.yaml:145
 #: application/configs/klear/model/IVRCommon.yaml:52
 #: application/configs/klear/model/IVRCommon.yaml:66
 #: application/configs/klear/model/IVRCommon.yaml:80
@@ -2502,12 +2530,12 @@ msgstr "Locución"
 #: application/configs/klear/model/Users.yaml:316
 #: application/configs/klear/model/KamTrunksDomain.yaml:26
 #: application/configs/klear/model/KamRtpproxy.yaml:63
-#: application/configs/klear/model/DDIs.yaml:35
-#: application/configs/klear/model/DDIs.yaml:83
-#: application/configs/klear/model/DDIs.yaml:98
-#: application/configs/klear/model/DDIs.yaml:113
-#: application/configs/klear/model/DDIs.yaml:128
-#: application/configs/klear/model/DDIs.yaml:143
+#: application/configs/klear/model/DDIs.yaml:36
+#: application/configs/klear/model/DDIs.yaml:84
+#: application/configs/klear/model/DDIs.yaml:99
+#: application/configs/klear/model/DDIs.yaml:114
+#: application/configs/klear/model/DDIs.yaml:129
+#: application/configs/klear/model/DDIs.yaml:144
 #: application/configs/klear/model/Timezones.yaml:16
 #: application/configs/klear/model/Companies.yaml:60
 #: application/configs/klear/model/Companies.yaml:75
@@ -2515,8 +2543,8 @@ msgstr "Locución"
 #: application/configs/klear/model/Companies.yaml:140
 #: application/configs/klear/model/Companies.yaml:153
 #: application/configs/klear/model/HuntGroups.yaml:81
-#: application/configs/klear/model/HuntGroups.yaml:125
-#: application/configs/klear/model/HuntGroups.yaml:142
+#: application/configs/klear/model/HuntGroups.yaml:126
+#: application/configs/klear/model/HuntGroups.yaml:143
 #: application/configs/klear/model/Brands.yaml:129
 #: application/configs/klear/model/PeeringContracts.yaml:37
 msgid "Unasigned"
@@ -2546,7 +2574,7 @@ msgstr "Sin asignar"
 #: application/configs/klear/model/PickUpGroups.yaml:5
 #: application/configs/klear/model/ImportPlans.yaml:5
 #: application/configs/klear/model/CompanyAdmins.yaml:58
-#: application/configs/klear/model/Locutions.yaml:45
+#: application/configs/klear/model/Locutions.yaml:64
 #: application/configs/klear/model/TransformationRulesetGroups.yaml:5
 #: application/configs/klear/model/IVRCommon.yaml:19
 #: application/configs/klear/model/Languages.yaml:10
@@ -2561,7 +2589,7 @@ msgstr "Sin asignar"
 #: application/configs/klear/model/Companies.yaml:21
 #: application/configs/klear/model/ImportPatterns.yaml:5
 #: application/configs/klear/model/AstMusiconhold.yaml:5
-#: application/configs/klear/model/MusicOnHold.yaml:95
+#: application/configs/klear/model/MusicOnHold.yaml:64
 #: application/configs/klear/model/HuntGroups.yaml:5
 #: application/configs/klear/model/Brands.yaml:5
 #: application/configs/klear/model/PeeringContracts.yaml:5
@@ -2607,7 +2635,7 @@ msgstr[1] "Descripciones"
 #: application/configs/klear/model/ImportFiles.yaml:94
 #: application/configs/klear/model/Domains.yaml:42
 #: application/configs/klear/model/LcrRuleTarget.yaml:5
-#: application/configs/klear/model/PricingPlansRelTargetPatterns.yaml:68
+#: application/configs/klear/model/PricingPlansRelTargetPatterns.yaml:71
 #: application/configs/klear/model/TransformationRulesetGroupsTrunks.yaml:5
 #: application/configs/klear/model/KamTrunksUacreg.yaml:81
 #: application/configs/klear/model/ImportPatterns.yaml:42
@@ -2621,7 +2649,7 @@ msgstr "Patrones de destinos"
 #: application/configs/klear/model/Extensions.yaml:5
 #: application/configs/klear/model/Schedules.yaml:5
 #: application/configs/klear/model/Faxes.yaml:5
-#: application/configs/klear/model/Terminals.yaml:90
+#: application/configs/klear/model/Terminals.yaml:80
 #: application/configs/klear/model/IVRCustom.yaml:5
 #: application/configs/klear/model/LcrRuleTargets.yaml:5
 #: application/configs/klear/model/PickUpGroups.yaml:10
@@ -2634,7 +2662,7 @@ msgstr "Patrones de destinos"
 #: application/configs/klear/model/DDIs.yaml:5
 #: application/configs/klear/model/HuntGroups.yaml:14
 msgid "Company id"
-msgstr ""
+msgstr "Compañia"
 
 #: application/configs/klear/model/Extensions.yaml:18
 #: application/configs/klear/model/Invoices.yaml:5
@@ -2642,54 +2670,54 @@ msgstr ""
 msgid "Number"
 msgstr "Número de teléfono"
 
-#: application/configs/klear/model/Extensions.yaml:23
-#: application/configs/klear/model/DDIs.yaml:37
+#: application/configs/klear/model/Extensions.yaml:24
+#: application/configs/klear/model/DDIs.yaml:38
 #, fuzzy
 msgid "Route type"
 msgstr "Tipo de fichero"
 
-#: application/configs/klear/model/Extensions.yaml:29
+#: application/configs/klear/model/Extensions.yaml:30
 #: application/configs/klear/model/BrandURLs.yaml:94
-#: application/configs/klear/model/DDIs.yaml:44
+#: application/configs/klear/model/DDIs.yaml:45
 msgid "user"
 msgstr "Usuario"
 
-#: application/configs/klear/model/Extensions.yaml:34
-#: application/configs/klear/model/DDIs.yaml:49
+#: application/configs/klear/model/Extensions.yaml:35
+#: application/configs/klear/model/DDIs.yaml:50
 msgid "IVRCommon"
 msgstr "IVR Genérico"
 
-#: application/configs/klear/model/Extensions.yaml:39
-#: application/configs/klear/model/DDIs.yaml:54
+#: application/configs/klear/model/Extensions.yaml:40
+#: application/configs/klear/model/DDIs.yaml:55
 msgid "IVRCustom"
 msgstr "IVR a medida"
 
-#: application/configs/klear/model/Extensions.yaml:44
-#: application/configs/klear/model/DDIs.yaml:59
+#: application/configs/klear/model/Extensions.yaml:45
+#: application/configs/klear/model/DDIs.yaml:60
 msgid "huntGroup"
 msgstr "Grupo de Salto"
 
-#: application/configs/klear/model/Extensions.yaml:49
-#: application/configs/klear/model/DDIs.yaml:85
+#: application/configs/klear/model/Extensions.yaml:50
+#: application/configs/klear/model/DDIs.yaml:86
 msgid "I v r common id"
 msgstr "IVR Genérico"
 
-#: application/configs/klear/model/Extensions.yaml:63
+#: application/configs/klear/model/Extensions.yaml:64
 #: application/configs/klear/model/IVRCustomEntries.yaml:5
-#: application/configs/klear/model/DDIs.yaml:100
+#: application/configs/klear/model/DDIs.yaml:101
 msgid "I v r custom id"
 msgstr "IVR a medida"
 
-#: application/configs/klear/model/Extensions.yaml:77
+#: application/configs/klear/model/Extensions.yaml:78
 #: application/configs/klear/model/HuntGroupsRelUsers.yaml:5
 #: application/configs/klear/model/HuntGroupCallForwardSettings.yaml:5
-#: application/configs/klear/model/DDIs.yaml:115
+#: application/configs/klear/model/DDIs.yaml:116
 msgid "Hunt group id"
 msgstr "Grupo de salto"
 
-#: application/configs/klear/model/Extensions.yaml:91
+#: application/configs/klear/model/Extensions.yaml:92
 #: application/configs/klear/model/IVRCustomEntries.yaml:99
-#: application/configs/klear/model/DDIs.yaml:145
+#: application/configs/klear/model/DDIs.yaml:146
 #, fuzzy
 msgid "Target"
 msgstr "Tipo de fichero"
@@ -2699,10 +2727,11 @@ msgstr "Tipo de fichero"
 #: application/configs/klear/model/BrandURLs.yaml:117
 #: application/configs/klear/model/FaxesInOut.yaml:70
 #: application/configs/klear/model/ImportFiles.yaml:17
-#: application/configs/klear/model/Invoices.yaml:79
+#: application/configs/klear/model/Invoices.yaml:80
 #: application/configs/klear/model/Locutions.yaml:29
+#: application/configs/klear/model/Locutions.yaml:55
 #: application/configs/klear/model/MusicOnHold.yaml:29
-#: application/configs/klear/model/MusicOnHold.yaml:76
+#: application/configs/klear/model/MusicOnHold.yaml:55
 #: application/configs/klear/model/Brands.yaml:53
 #: application/configs/klear/conf.d/actions.yaml:44
 #, fuzzy
@@ -2711,8 +2740,10 @@ msgstr "Descargar fichero"
 
 #: application/configs/klear/model/GenericMusicOnHold.yaml:34
 #: application/configs/klear/model/GenericMusicOnHold.yaml:82
+#: application/configs/klear/model/Locutions.yaml:39
+#: application/configs/klear/model/Locutions.yaml:59
 #: application/configs/klear/model/MusicOnHold.yaml:39
-#: application/configs/klear/model/MusicOnHold.yaml:80
+#: application/configs/klear/model/MusicOnHold.yaml:59
 #, fuzzy
 msgid "Listen to MoH"
 msgstr "Listado de %s"
@@ -2721,7 +2752,7 @@ msgstr "Listado de %s"
 #: application/configs/klear/model/BrandURLs.yaml:127
 #: application/configs/klear/model/FaxesInOut.yaml:75
 #: application/configs/klear/model/ImportFiles.yaml:22
-#: application/configs/klear/model/Locutions.yaml:39
+#: application/configs/klear/model/Locutions.yaml:34
 #: application/configs/klear/model/MusicOnHold.yaml:34
 #: application/configs/klear/model/Brands.yaml:63
 #, fuzzy
@@ -2737,8 +2768,8 @@ msgstr "Código"
 #: application/configs/klear/model/HuntGroupsRelUsers.yaml:20
 #: application/configs/klear/model/CallForwardSettings.yaml:5
 #: application/configs/klear/model/PickUpRelUsers.yaml:19
-#: application/configs/klear/model/DDIs.yaml:69
-#: application/configs/klear/model/HuntGroups.yaml:127
+#: application/configs/klear/model/DDIs.yaml:70
+#: application/configs/klear/model/HuntGroups.yaml:128
 #, fuzzy
 msgid "User id"
 msgstr "Usuario"
@@ -2754,7 +2785,7 @@ msgstr ""
 #: application/configs/klear/model/Users.yaml:294
 #: application/configs/klear/model/LcrRuleTarget.yaml:38
 #: application/configs/klear/model/CallACL.yaml:51
-#: application/configs/klear/model/OutgoingRouting.yaml:63
+#: application/configs/klear/model/OutgoingRouting.yaml:65
 #: application/configs/klear/model/KamTrunksLcrRuleTarget.yaml:31
 msgid "Priority"
 msgstr "Prioridad"
@@ -2776,10 +2807,28 @@ msgstr[0] "Identificador"
 msgstr[1] "Identificadores"
 
 #: application/configs/klear/model/TargetPatterns.yaml:18
-#: application/configs/klear/model/GenericCallACLPatterns.yaml:23
-#: application/configs/klear/model/CallACLPatterns.yaml:23
-#: application/configs/klear/model/ImportPatterns.yaml:11
-msgid "Reg exp"
+#: application/configs/klear/model/LcrRules.yaml:19
+#: application/configs/klear/model/PeerServers.yaml:104
+#: application/configs/klear/model/KamTrunksLcrRule.yaml:19
+#: application/configs/klear/model/LcrGateways.yaml:57
+msgid "Prefix"
+msgstr "Prefijo"
+
+#: application/configs/klear/model/TargetPatterns.yaml:26
+msgid "Prefix must be numeric-only"
+msgstr "El prefijo debe ser numérico"
+
+#: application/configs/klear/model/TargetPatterns.yaml:27
+#: application/configs/klear/model/LcrRules.yaml:35
+#: application/configs/klear/model/LcrRules.yaml:69
+#: application/configs/klear/model/PricingPlansRelCompanies.yaml:57
+#: application/configs/klear/model/KamUsersAddress.yaml:28
+#: application/configs/klear/model/PricingPlansRelTargetPatterns.yaml:38
+#: application/configs/klear/model/KamTrunksUacreg.yaml:14
+#: application/configs/klear/model/KamTrunksUacreg.yaml:43
+#: application/configs/klear/model/KamTrunksUacreg.yaml:54
+#: application/configs/klear/model/KamTrunksUacreg.yaml:72
+msgid "¿Necesitas ayuda?"
 msgstr ""
 
 #: application/configs/klear/model/TerminalModels.yaml:5
@@ -2835,16 +2884,8 @@ msgstr ""
 
 #: application/configs/klear/model/BrandServices.yaml:5
 #: application/configs/klear/model/CompanyServices.yaml:5
-#, fuzzy
 msgid "Service id"
 msgstr "Servicio"
-
-#: application/configs/klear/model/LcrRules.yaml:19
-#: application/configs/klear/model/PeerServers.yaml:104
-#: application/configs/klear/model/KamTrunksLcrRule.yaml:19
-#: application/configs/klear/model/LcrGateways.yaml:57
-msgid "Prefix"
-msgstr ""
 
 #: application/configs/klear/model/LcrRules.yaml:22
 #: application/configs/klear/model/KamTrunksLcrRule.yaml:22
@@ -2862,18 +2903,6 @@ msgid ""
 "Caracter de inicio ':' en lugar de '^', caracter de fin '@' en lugar de '$'"
 msgstr ""
 
-#: application/configs/klear/model/LcrRules.yaml:35
-#: application/configs/klear/model/LcrRules.yaml:69
-#: application/configs/klear/model/PricingPlansRelCompanies.yaml:57
-#: application/configs/klear/model/KamUsersAddress.yaml:28
-#: application/configs/klear/model/PricingPlansRelTargetPatterns.yaml:38
-#: application/configs/klear/model/KamTrunksUacreg.yaml:14
-#: application/configs/klear/model/KamTrunksUacreg.yaml:43
-#: application/configs/klear/model/KamTrunksUacreg.yaml:54
-#: application/configs/klear/model/KamTrunksUacreg.yaml:72
-msgid "¿Necesitas ayuda?"
-msgstr ""
-
 #: application/configs/klear/model/LcrRules.yaml:37
 #: application/configs/klear/model/KamTrunksLcrRule.yaml:28
 msgid "Stopper"
@@ -2886,6 +2915,7 @@ msgstr ""
 #: application/configs/klear/model/BrandOperators.yaml:39
 #: application/configs/klear/model/ProxyTrunks.yaml:49
 #: application/configs/klear/model/ParsedCDRs.yaml:105
+#: application/configs/klear/model/ParsedCDRs.yaml:212
 #: application/configs/klear/model/Terminals.yaml:60
 #: application/configs/klear/model/CompanyAdmins.yaml:41
 #: application/configs/klear/model/Users.yaml:48
@@ -2896,6 +2926,8 @@ msgstr ""
 #: application/configs/klear/model/Users.yaml:208
 #: application/configs/klear/model/Users.yaml:225
 #: application/configs/klear/model/Users.yaml:242
+#: application/configs/klear/model/Companies.yaml:174
+#: application/configs/klear/model/PeeringContracts.yaml:57
 msgid "No"
 msgstr "No"
 
@@ -2906,6 +2938,7 @@ msgstr "No"
 #: application/configs/klear/model/BrandOperators.yaml:41
 #: application/configs/klear/model/ProxyTrunks.yaml:44
 #: application/configs/klear/model/ParsedCDRs.yaml:107
+#: application/configs/klear/model/ParsedCDRs.yaml:214
 #: application/configs/klear/model/Terminals.yaml:55
 #: application/configs/klear/model/CompanyAdmins.yaml:43
 #: application/configs/klear/model/Users.yaml:50
@@ -2916,6 +2949,8 @@ msgstr "No"
 #: application/configs/klear/model/Users.yaml:213
 #: application/configs/klear/model/Users.yaml:230
 #: application/configs/klear/model/Users.yaml:244
+#: application/configs/klear/model/Companies.yaml:176
+#: application/configs/klear/model/PeeringContracts.yaml:59
 msgid "Yes"
 msgstr "Si"
 
@@ -3057,9 +3092,10 @@ msgstr ""
 #: application/configs/klear/model/KamRtpproxy.yaml:15
 #: application/configs/klear/model/KamRtpproxy.yaml:26
 #: application/configs/klear/model/KamRtpproxy.yaml:46
+#: application/configs/klear/model/Companies.yaml:182
 #: application/configs/klear/model/PeeringContracts.yaml:33
 msgid "Need help?"
-msgstr ""
+msgstr "¿Necesita ayuda?"
 
 #: application/configs/klear/model/ProxyTrunks.yaml:26
 #: application/configs/klear/model/Terminals.yaml:36
@@ -3121,30 +3157,30 @@ msgstr ""
 
 #: application/configs/klear/model/PeerServers.yaml:76
 msgid "sip"
-msgstr ""
+msgstr "sip"
 
 #: application/configs/klear/model/PeerServers.yaml:78
 msgid "sips"
-msgstr ""
+msgstr "sips"
 
 #: application/configs/klear/model/PeerServers.yaml:80
 #: application/configs/klear/model/ApplicationServers.yaml:27
 #: application/configs/klear/model/LcrGateways.yaml:47
 #: application/configs/klear/model/AstPsEndpoints.yaml:10
 msgid "Transport"
-msgstr ""
+msgstr "Transporte"
 
 #: application/configs/klear/model/PeerServers.yaml:87
 msgid "udp"
-msgstr ""
+msgstr "udp"
 
 #: application/configs/klear/model/PeerServers.yaml:89
 msgid "tcp"
-msgstr ""
+msgstr "tcp"
 
 #: application/configs/klear/model/PeerServers.yaml:91
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #: application/configs/klear/model/PeerServers.yaml:93
 #: application/configs/klear/model/LcrGateways.yaml:52
@@ -3163,15 +3199,15 @@ msgstr ""
 
 #: application/configs/klear/model/PeerServers.yaml:113
 msgid "Send PAI"
-msgstr ""
+msgstr "Enviar PAI"
 
 #: application/configs/klear/model/PeerServers.yaml:116
 msgid "Send RPID"
-msgstr ""
+msgstr "Enviar RPID"
 
 #: application/configs/klear/model/PeerServers.yaml:119
 msgid "Use auth user as from user"
-msgstr ""
+msgstr "Emplear usuario de autenticación como origen"
 
 #: application/configs/klear/model/PeerServers.yaml:122
 msgid "Auth needed"
@@ -3237,6 +3273,7 @@ msgid "Setid"
 msgstr ""
 
 #: application/configs/klear/model/KamDispatcher.yaml:12
+#: application/configs/klear/model/ParsedCDRs.yaml:18
 #, fuzzy
 msgid "Destination"
 msgstr "Descripción"
@@ -3268,13 +3305,13 @@ msgstr "Intervalo"
 #: application/configs/klear/model/HuntGroupCallForwardSettings.yaml:26
 #: application/configs/klear/model/HuntGroups.yaml:74
 msgid "external"
-msgstr ""
+msgstr "externa"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:27
 #: application/configs/klear/model/HuntGroupCallForwardSettings.yaml:27
 #: application/configs/klear/model/HuntGroups.yaml:78
 msgid "both"
-msgstr ""
+msgstr "ambas"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:29
 msgid "Call forward type"
@@ -3286,15 +3323,15 @@ msgstr ""
 
 #: application/configs/klear/model/CallForwardSettings.yaml:40
 msgid "noAnswer"
-msgstr ""
+msgstr "Perdida"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:44
 msgid "busy"
-msgstr ""
+msgstr "Ocupado"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:48
 msgid "userNotRegistered"
-msgstr ""
+msgstr "No registrado"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:52
 #: application/configs/klear/model/IVRCustomEntries.yaml:42
@@ -3345,19 +3382,19 @@ msgstr "Buzón de voz"
 #: application/configs/klear/model/CallForwardSettings.yaml:74
 #: application/configs/klear/model/HuntGroups.yaml:105
 msgid "Number value"
-msgstr ""
+msgstr "Número"
 
-#: application/configs/klear/model/CallForwardSettings.yaml:93
+#: application/configs/klear/model/CallForwardSettings.yaml:94
 #, fuzzy
 msgid "Voice mail user"
 msgstr "Buzón de voz"
 
-#: application/configs/klear/model/CallForwardSettings.yaml:109
+#: application/configs/klear/model/CallForwardSettings.yaml:110
 #: application/configs/klear/model/IVRCommon.yaml:88
 msgid "No answer timeout"
 msgstr ""
 
-#: application/configs/klear/model/CallForwardSettings.yaml:117
+#: application/configs/klear/model/CallForwardSettings.yaml:118
 #, fuzzy
 msgid "Target type value"
 msgstr "Tipo de fichero"
@@ -3367,14 +3404,15 @@ msgstr "Tipo de fichero"
 msgid "Calldate"
 msgstr ""
 
-#: application/configs/klear/model/ParsedCDRs.yaml:18
-msgid "Src dialed"
-msgstr ""
+#: application/configs/klear/model/ParsedCDRs.yaml:14
+#, fuzzy
+msgid "Source"
+msgstr "Dirección de email"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:22
 #, fuzzy
-msgid "Src duration"
-msgstr "Sección"
+msgid "Call duration"
+msgstr "Duración total"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:31
 msgid "Dst src cid"
@@ -3396,19 +3434,22 @@ msgstr[0] "Tipo"
 msgstr[1] "Tipos"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:44
-msgid "Desc"
-msgstr ""
+#, fuzzy
+msgid "Call description"
+msgstr "Festivo"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:48
-msgid "Fw desc"
-msgstr ""
+#, fuzzy
+msgid "Forward description"
+msgstr "Descripción"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:52
-msgid "Ext forwarder"
-msgstr ""
+#, fuzzy
+msgid "External forwarder"
+msgstr "Filtro de entrada externo"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:56
-msgid "Oasis forwarder"
+msgid "Forwarder"
 msgstr ""
 
 #: application/configs/klear/model/ParsedCDRs.yaml:60
@@ -3428,9 +3469,14 @@ msgstr ""
 msgid "Metering date"
 msgstr "Contrato de Peering"
 
+#: application/configs/klear/model/ParsedCDRs.yaml:130
+#, fuzzy
+msgid "Destination type"
+msgstr "Descripción"
+
 #: application/configs/klear/model/ParsedCDRs.yaml:146
 msgid "Pricing plan details"
-msgstr ""
+msgstr "Detalles Plan de precios"
 
 #: application/configs/klear/model/ParsedCDRs.yaml:149
 #: application/configs/klear/model/ParsedCDRs.yaml:156
@@ -3446,6 +3492,17 @@ msgstr ""
 msgid "Unbilled"
 msgstr ""
 
+#: application/configs/klear/model/ParsedCDRs.yaml:191
+#: application/configs/klear/model/KamTrunksUacreg.yaml:94
+msgid "Peering contract id"
+msgstr ""
+
+#: application/configs/klear/model/ParsedCDRs.yaml:205
+#: application/configs/klear/model/PeeringContracts.yaml:50
+#, fuzzy
+msgid "Externally rated"
+msgstr "Filtro de entrada externo"
+
 #: application/configs/klear/model/AstVoicemail.yaml:5
 #: application/configs/klear/model/AstPsEndpoints.yaml:18
 msgid "Context"
@@ -3457,7 +3514,7 @@ msgid "Mailbox"
 msgstr "Buzón de voz"
 
 #: application/configs/klear/model/AstVoicemail.yaml:16
-#: application/configs/klear/model/Terminals.yaml:85
+#: application/configs/klear/model/Terminals.yaml:75
 #: application/configs/klear/model/Users.yaml:36
 #: application/configs/klear/model/KamTrunksUacreg.yaml:56
 msgid "Password"
@@ -3494,7 +3551,7 @@ msgstr "Buzón de voz"
 #: application/configs/klear/model/AstVoicemail.yaml:57
 #: application/configs/klear/model/Timezones.yaml:19
 msgid "Tz"
-msgstr ""
+msgstr "Tz"
 
 #: application/configs/klear/model/AstVoicemail.yaml:61
 #, fuzzy
@@ -3595,26 +3652,21 @@ msgstr ""
 msgid "Terminal model id"
 msgstr ""
 
-#: application/configs/klear/model/Terminals.yaml:75
-#: application/configs/klear/model/AstPsEndpoints.yaml:47
-msgid "Dtmf mode"
-msgstr ""
-
-#: application/configs/klear/model/Terminals.yaml:103
+#: application/configs/klear/model/Terminals.yaml:93
 msgid "Mac"
 msgstr ""
 
-#: application/configs/klear/model/Terminals.yaml:108
+#: application/configs/klear/model/Terminals.yaml:98
 msgid "Last provision date"
 msgstr ""
 
 #: application/configs/klear/model/PricingPlansRelCompanies.yaml:33
 msgid "Valid from"
-msgstr ""
+msgstr "Válido desde"
 
 #: application/configs/klear/model/PricingPlansRelCompanies.yaml:40
 msgid "Valid to"
-msgstr ""
+msgstr "Válido hasta"
 
 #: application/configs/klear/model/PricingPlansRelCompanies.yaml:47
 #: application/configs/klear/model/PricingPlansRelTargetPatterns.yaml:28
@@ -3692,19 +3744,19 @@ msgstr ""
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:133
 msgid "Out of schedule target type"
-msgstr ""
+msgstr "Tipo desvío fuera de horario"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:158
 msgid "Out of schedule number"
-msgstr ""
+msgstr "Número"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:162
 msgid "Out of schedule extension"
-msgstr ""
+msgstr "Extensión"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:179
 msgid "Out of schedule voice mail user"
-msgstr ""
+msgstr "Buzón de voz"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:195
 msgid "Schedules"
@@ -3763,15 +3815,15 @@ msgstr "Loc. Bienvenida"
 
 #: application/configs/klear/model/IVRCustomEntries.yaml:64
 msgid "Target number value"
-msgstr ""
+msgstr "Número"
 
 #: application/configs/klear/model/IVRCustomEntries.yaml:68
 msgid "Target extension id"
-msgstr ""
+msgstr "Extensión"
 
 #: application/configs/klear/model/IVRCustomEntries.yaml:83
 msgid "Target voice mail user id"
-msgstr ""
+msgstr "Buzón de voz"
 
 #: application/configs/klear/model/IVRCustom.yaml:37
 #: application/configs/klear/model/IVRCommon.yaml:40
@@ -3852,14 +3904,14 @@ msgstr "Desvío Error"
 #: application/configs/klear/model/KamRtpproxy.yaml:17
 msgid "Url"
 msgid_plural "Urls"
-msgstr[0] "Url"
-msgstr[1] "Urls"
+msgstr[0] "URL"
+msgstr[1] "URLs"
 
 #: application/configs/klear/model/BrandURLs.yaml:23
 msgid "Klear theme"
 msgid_plural "Klear themes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tema de Klear"
+msgstr[1] "Temas de Klear"
 
 #: application/configs/klear/model/BrandURLs.yaml:29
 #, fuzzy
@@ -3875,7 +3927,7 @@ msgstr "Tipo de fichero"
 
 #: application/configs/klear/model/BrandURLs.yaml:79
 msgid "god"
-msgstr ""
+msgstr "Super Usuario"
 
 #: application/configs/klear/model/BrandURLs.yaml:84
 #: application/configs/klear/model/Domains.yaml:28
@@ -3885,23 +3937,22 @@ msgstr "Marca"
 
 #: application/configs/klear/model/BrandURLs.yaml:89
 msgid "admin"
-msgstr ""
+msgstr "Administador"
 
 #: application/configs/klear/model/BrandURLs.yaml:105
 #: application/configs/klear/model/Brands.yaml:41
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #: application/configs/klear/model/BrandURLs.yaml:122
 #: application/configs/klear/model/ImportFiles.yaml:49
-#: application/configs/klear/model/Locutions.yaml:34
 #: application/configs/klear/model/Brands.yaml:58
 #, fuzzy
 msgid "Delete file"
 msgstr "Borrar %s"
 
 #: application/configs/klear/model/InvoiceTemplates.yaml:17
-#: application/configs/klear/model/Invoices.yaml:131
+#: application/configs/klear/model/Invoices.yaml:132
 msgid "Template"
 msgid_plural "Templates"
 msgstr[0] "Plantilla"
@@ -3930,7 +3981,7 @@ msgstr ""
 #: application/configs/klear/model/LcrRuleTargets.yaml:51
 #: application/configs/klear/model/LcrRuleTarget.yaml:44
 #: application/configs/klear/model/KamRtpproxy.yaml:34
-#: application/configs/klear/model/OutgoingRouting.yaml:71
+#: application/configs/klear/model/OutgoingRouting.yaml:73
 #: application/configs/klear/model/KamTrunksLcrRuleTarget.yaml:37
 msgid "Weight"
 msgstr "Peso"
@@ -3980,7 +4031,7 @@ msgid "Imported on"
 msgstr "Creado"
 
 #: application/configs/klear/model/FaxesInOut.yaml:13
-#: application/configs/klear/model/DDIs.yaml:130
+#: application/configs/klear/model/DDIs.yaml:131
 msgid "Fax id"
 msgstr "Fax"
 
@@ -3995,30 +4046,30 @@ msgstr ""
 
 #: application/configs/klear/model/FaxesInOut.yaml:45
 msgid "Page"
-msgstr ""
+msgstr "Páginas"
 
 #: application/configs/klear/model/FaxesInOut.yaml:49
-#: application/configs/klear/model/Invoices.yaml:58
+#: application/configs/klear/model/Invoices.yaml:59
 msgid "Statu"
 msgstr "Estado"
 
 #: application/configs/klear/model/FaxesInOut.yaml:54
-#: application/configs/klear/model/Invoices.yaml:66
+#: application/configs/klear/model/Invoices.yaml:67
 #, fuzzy
 msgid "error"
 msgstr "Error"
 
 #: application/configs/klear/model/FaxesInOut.yaml:55
 msgid "pending"
-msgstr ""
+msgstr "Pendiente"
 
 #: application/configs/klear/model/FaxesInOut.yaml:56
 msgid "completed"
-msgstr ""
+msgstr "Completado"
 
 #: application/configs/klear/model/FaxesInOut.yaml:57
 msgid "inprogress"
-msgstr ""
+msgstr "En curso"
 
 #: application/configs/klear/model/ImportFiles.yaml:6
 msgid "Arvhico a importar"
@@ -4071,11 +4122,11 @@ msgstr ""
 
 #: application/configs/klear/model/KamUsersAddress.yaml:30
 msgid "Ip addr"
-msgstr ""
+msgstr "Dirección IP"
 
 #: application/configs/klear/model/KamUsersAddress.yaml:34
 msgid "Mask"
-msgstr ""
+msgstr "Máscara"
 
 #: application/configs/klear/model/AstPsAors.yaml:10
 msgid "Default expiration"
@@ -4106,42 +4157,42 @@ msgstr ""
 msgid "Support path"
 msgstr ""
 
-#: application/configs/klear/model/Invoices.yaml:11
+#: application/configs/klear/model/Invoices.yaml:12
 #, fuzzy
 msgid "In date"
 msgstr "Modificado"
 
-#: application/configs/klear/model/Invoices.yaml:21
+#: application/configs/klear/model/Invoices.yaml:22
 #, fuzzy
 msgid "Out date"
 msgstr "Modificado"
 
-#: application/configs/klear/model/Invoices.yaml:31
+#: application/configs/klear/model/Invoices.yaml:32
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
-#: application/configs/klear/model/Invoices.yaml:35
+#: application/configs/klear/model/Invoices.yaml:36
 msgid "Tax rate"
 msgstr ""
 
-#: application/configs/klear/model/Invoices.yaml:40
+#: application/configs/klear/model/Invoices.yaml:41
 msgid "Total with tax"
 msgstr ""
 
-#: application/configs/klear/model/Invoices.yaml:63
-msgid "waiting"
-msgstr ""
-
 #: application/configs/klear/model/Invoices.yaml:64
-msgid "processing"
-msgstr ""
+msgid "waiting"
+msgstr "Esperando"
 
 #: application/configs/klear/model/Invoices.yaml:65
+msgid "processing"
+msgstr "Procesando"
+
+#: application/configs/klear/model/Invoices.yaml:66
 #, fuzzy
 msgid "created"
 msgstr "Creado"
 
-#: application/configs/klear/model/Invoices.yaml:68
+#: application/configs/klear/model/Invoices.yaml:69
 #, fuzzy
 msgid "Pdf file"
 msgstr "Subir fichero"
@@ -4175,6 +4226,20 @@ msgstr ""
 #: application/configs/klear/model/CompanyAdmins.yaml:45
 msgid "Timezone id"
 msgstr "Zona horaria"
+
+#: application/configs/klear/model/Locutions.yaml:18
+#: application/configs/klear/model/MusicOnHold.yaml:18
+msgid "Uploaded file"
+msgid_plural "Uploaded files"
+msgstr[0] "Fichero original"
+msgstr[1] "Ficheros originales"
+
+#: application/configs/klear/model/Locutions.yaml:44
+#: application/configs/klear/model/MusicOnHold.yaml:44
+msgid "File for play"
+msgid_plural "Files for play"
+msgstr[0] "Fichero convertido"
+msgstr[1] "Ficheros convertidos"
 
 #: application/configs/klear/model/TransformationRulesetGroups.yaml:29
 #: application/configs/klear/model/TransformationRulesetGroupsTrunks.yaml:24
@@ -4213,6 +4278,12 @@ msgstr ""
 #, fuzzy
 msgid "Peer server id"
 msgstr "Servicio genérico"
+
+#: application/configs/klear/model/GenericCallACLPatterns.yaml:23
+#: application/configs/klear/model/CallACLPatterns.yaml:23
+#: application/configs/klear/model/ImportPatterns.yaml:11
+msgid "Reg exp"
+msgstr ""
 
 #: application/configs/klear/model/Domains.yaml:11
 #: application/configs/klear/model/Domains.yaml:72
@@ -4339,11 +4410,11 @@ msgstr ""
 msgid "Media relay sets id"
 msgstr "Dirección de email"
 
-#: application/configs/klear/model/DDIs.yaml:23
+#: application/configs/klear/model/DDIs.yaml:24
 msgid "External call filter id"
 msgstr ""
 
-#: application/configs/klear/model/DDIs.yaml:64
+#: application/configs/klear/model/DDIs.yaml:65
 msgid "fax"
 msgstr "Fax"
 
@@ -4384,7 +4455,7 @@ msgstr "Comentario"
 
 #: application/configs/klear/model/Timezones.yaml:27
 msgid "Time zone label"
-msgstr ""
+msgstr "Zona Horaria"
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:14
 msgid "Aor"
@@ -4411,6 +4482,10 @@ msgstr "reinvite"
 msgid "update"
 msgstr "Modificado"
 
+#: application/configs/klear/model/AstPsEndpoints.yaml:47
+msgid "Dtmf mode"
+msgstr ""
+
 #: application/configs/klear/model/AstPsEndpoints.yaml:52
 msgid "rfc4733"
 msgstr ""
@@ -4425,15 +4500,15 @@ msgstr ""
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:60
 msgid "Send diversion"
-msgstr ""
+msgstr "Enviar Diversion"
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:68
 msgid "Send pai"
-msgstr ""
+msgstr "Enviar PAI"
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:76
 msgid "Send rpid"
-msgstr ""
+msgstr "Enviar RPID"
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:84
 msgid "Subscribecontext"
@@ -4448,11 +4523,11 @@ msgstr "Grupo de Salto"
 msgid "Select destination pattern"
 msgstr ""
 
-#: application/configs/klear/model/OutgoingRouting.yaml:36
+#: application/configs/klear/model/OutgoingRouting.yaml:38
 msgid "Select destination group"
 msgstr ""
 
-#: application/configs/klear/model/OutgoingRouting.yaml:94
+#: application/configs/klear/model/OutgoingRouting.yaml:96
 msgid "Destino"
 msgstr ""
 
@@ -4463,7 +4538,7 @@ msgstr "Proxy de Salida"
 
 #: application/configs/klear/model/XMLRPCLogs.yaml:11
 msgid "Module"
-msgstr ""
+msgstr "Módulo"
 
 #: application/configs/klear/model/XMLRPCLogs.yaml:16
 msgid "Method"
@@ -4532,10 +4607,6 @@ msgstr ""
 msgid "Expire"
 msgstr ""
 
-#: application/configs/klear/model/KamTrunksUacreg.yaml:94
-msgid "Peering contract id"
-msgstr ""
-
 #: application/configs/klear/model/KamTrunksUacreg.yaml:113
 msgid "Reg delay"
 msgstr ""
@@ -4596,9 +4667,20 @@ msgstr ""
 msgid "Media relay Set"
 msgstr "Servidores de Media"
 
+#: application/configs/klear/model/Companies.yaml:167
+#, fuzzy
+msgid "Filter by IP address"
+msgstr "Dirección de email"
+
+#: application/configs/klear/model/Companies.yaml:181
+msgid "Add IPs or network if enabled. Otherwise all calls will be rejected."
+msgstr ""
+"Si el filtro esta habilitado, añada IPs o redes, sino todas las llamadas "
+"serán rechazadas."
+
 #: application/configs/klear/model/AstMusiconhold.yaml:11
 msgid "Mode"
-msgstr ""
+msgstr "Modo"
 
 #: application/configs/klear/model/AstMusiconhold.yaml:16
 #, fuzzy
@@ -4624,7 +4706,7 @@ msgstr ""
 
 #: application/configs/klear/model/AstMusiconhold.yaml:22
 msgid "Directory"
-msgstr ""
+msgstr "Directorio"
 
 #: application/configs/klear/model/AstMusiconhold.yaml:26
 #, fuzzy
@@ -4633,50 +4715,35 @@ msgstr "Servidor de Aplicación"
 
 #: application/configs/klear/model/AstMusiconhold.yaml:30
 msgid "Digit"
-msgstr ""
+msgstr "Dígito"
 
 #: application/configs/klear/model/AstMusiconhold.yaml:34
 msgid "Sort"
-msgstr ""
+msgstr "Orden"
 
 #: application/configs/klear/model/AstMusiconhold.yaml:38
 msgid "Format"
-msgstr ""
-
-#: application/configs/klear/model/MusicOnHold.yaml:18
-#, fuzzy
-msgid "Uploaded file"
-msgid_plural "Uploaded files"
-msgstr[0] "Subir fichero"
-msgstr[1] "Subir fichero"
-
-#: application/configs/klear/model/MusicOnHold.yaml:65
-#, fuzzy
-msgid "File for play"
-msgid_plural "Files for play"
-msgstr[0] "Ruta de fichero"
-msgstr[1] "Ruta de fichero"
+msgstr "Formato"
 
 #: application/configs/klear/model/HuntGroups.yaml:27
-#, fuzzy
 msgid "Strategy"
-msgstr "Categoría"
+msgstr "Estrategia"
 
 #: application/configs/klear/model/HuntGroups.yaml:34
 msgid "ringAll"
-msgstr ""
+msgstr "A todos"
 
 #: application/configs/klear/model/HuntGroups.yaml:39
 msgid "linear"
-msgstr ""
+msgstr "Secuencialmente (una vez)"
 
 #: application/configs/klear/model/HuntGroups.yaml:44
 msgid "roundRobin"
-msgstr ""
+msgstr "Secuencialmente (∞)"
 
 #: application/configs/klear/model/HuntGroups.yaml:49
 msgid "random"
-msgstr ""
+msgstr "Aleatoriamente"
 
 #: application/configs/klear/model/HuntGroups.yaml:54
 msgid "Ring all timeout"
@@ -4687,11 +4754,11 @@ msgstr ""
 msgid "unasigned"
 msgstr "Sin asignar"
 
-#: application/configs/klear/model/HuntGroups.yaml:110
+#: application/configs/klear/model/HuntGroups.yaml:111
 msgid "Extension id"
 msgstr ""
 
-#: application/configs/klear/model/HuntGroups.yaml:144
+#: application/configs/klear/model/HuntGroups.yaml:145
 msgid "Next user position"
 msgstr ""
 
@@ -4710,7 +4777,7 @@ msgstr ""
 
 #: application/configs/klear/model/Brands.yaml:113
 msgid "Registry data"
-msgstr ""
+msgstr "Información de registro"
 
 #: application/configs/klear/model/PeeringContracts.yaml:27
 msgid "Transformation ruleset groups trunks"
@@ -4729,13 +4796,12 @@ msgstr "Plantilla"
 msgid "Advanced Setting, read carefully"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Src duration"
+#~ msgstr "Sección"
+
 #~ msgid "Login"
 #~ msgstr "Nombre de usuario"
-
-#~ msgid "Email address"
-#~ msgid_plural "Email addresses"
-#~ msgstr[0] "Dirección de email"
-#~ msgstr[1] "Direcciones de email"
 
 #~ msgid "Surname"
 #~ msgid_plural "Surnames"
@@ -5378,10 +5444,6 @@ msgstr ""
 #~ msgstr "Buzón de voz"
 
 #, fuzzy
-#~ msgid "Source address"
-#~ msgstr "Dirección de email"
-
-#, fuzzy
 #~ msgid "Sorcery id"
 #~ msgstr "País"
 
@@ -5449,9 +5511,6 @@ msgstr ""
 
 #~ msgid "Number of calls"
 #~ msgstr "Número de llamadas"
-
-#~ msgid "Total duration"
-#~ msgstr "Duración total"
 
 #~ msgid "Total price"
 #~ msgstr "Precio total"
