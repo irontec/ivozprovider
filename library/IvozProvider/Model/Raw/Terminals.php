@@ -31,11 +31,6 @@ class Terminals extends ModelAbstract
         'reinvite',
         'update',
     );
-    protected $_dtmfModeAcceptedValues = array(
-        'rfc4733',
-        'inband',
-        'info',
-    );
 
     /**
      * Database var type int
@@ -86,13 +81,6 @@ class Terminals extends ModelAbstract
      * @var string
      */
     protected $_directMediaMethod;
-
-    /**
-     * Database var type enum('rfc4733','inband','info')
-     *
-     * @var string
-     */
-    protected $_dtmfMode;
 
     /**
      * [password]
@@ -163,7 +151,6 @@ class Terminals extends ModelAbstract
         'allow'=>'allow',
         'direct_media'=>'directMedia',
         'direct_media_method'=>'directMediaMethod',
-        'dtmf_mode'=>'dtmfMode',
         'password'=>'password',
         'companyId'=>'companyId',
         'mac'=>'mac',
@@ -215,7 +202,6 @@ class Terminals extends ModelAbstract
             'allow' => 'alaw',
             'directMedia' => 'yes',
             'directMediaMethod' => 'update',
-            'dtmfMode' => 'rfc4733',
             'password' => '',
         );
 
@@ -495,43 +481,6 @@ class Terminals extends ModelAbstract
     public function getDirectMediaMethod()
     {
         return $this->_directMediaMethod;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setDtmfMode($data)
-    {
-
-        if ($this->_dtmfMode != $data) {
-            $this->_logChange('dtmfMode');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_dtmfMode = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_dtmfModeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for dtmfMode'));
-            }
-            $this->_dtmfMode = (string) $data;
-
-        } else {
-            $this->_dtmfMode = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column dtmf_mode
-     *
-     * @return string
-     */
-    public function getDtmfMode()
-    {
-        return $this->_dtmfMode;
     }
 
     /**

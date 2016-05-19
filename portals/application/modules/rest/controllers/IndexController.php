@@ -91,7 +91,7 @@ class Rest_IndexController extends Iron_Controller_Rest_BaseController
         $prepareWhere[] = 'dst = "' . $extension . '"';
         $prepareWhere[] = 'dst_src_cid = "' . $extension . '"';
         $prepareWhere[] = 'ext_forwarder = "' . $extension . '"';
-        $prepareWhere[] = 'oasis_forwarder = "' . $extension . '"';
+        $prepareWhere[] = 'int_forwarder = "' . $extension . '"';
         $prepareWhere[] = 'forward_to = "' . $extension . '"';
 
         $whereOrs = implode(' OR ', $prepareWhere);

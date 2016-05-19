@@ -40,24 +40,24 @@ class Rest_AuthController extends Iron_Controller_Rest_BaseController
 
         if (!empty($terminal)) {
 
-            $dbAdapter = Zend_Db_Table::getDefaultAdapter();
-            $sourceId = $terminal->getName();
+           $dbAdapter = Zend_Db_Table::getDefaultAdapter();
+           $terminalName = $terminal->getName();
 
-            $query = "SELECT user_agent, uri FROM ast_ps_contacts";
-            $query .= " WHERE sorcery_id LIKE '" . $sourceId . "^%'";
+           $query = "SELECT user_agent, contact FROM kam_users_location";
+           $query .= " WHERE username LIKE '" . $terminalName . "%'";
 
-            $resultQuery = $dbAdapter->fetchAll($query);
-            $restult = reset($resultQuery);
+           $resultQuery = $dbAdapter->fetchAll($query);
+           $restult = reset($resultQuery);
 
-            if (!empty($restult)) {
+           if (!empty($restult)) {
 
-                $ip = explode('^', $restult['uri']);
+               $ip = explode(';', $restult['contact']);
 
-                $result['statusTerminal'] = true;
-                $result['userAgent'] = $restult['user_agent'];
-                $result['ipRegistered'] = $ip[0];
+               $result['statusTerminal'] = true;
+               $result['userAgent'] = $restult['user_agent'];
+               $result['ipRegistered'] = $ip[0];
 
-            }
+           }
 
         }
 

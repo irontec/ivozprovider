@@ -54,7 +54,7 @@
     "desc": "Descripción",
     "fw_desc": "Descripción desvío",
     "ext_forwarder": "Desviador externo",
-    "oasis_forwarder": "Desviador interno",
+    "in_forwarder": "Desviador interno",
     "forward_to": "Destino desvío",
     "exportToCsv": "Exportal a .CSV",
     "clear": "Limpiar",
