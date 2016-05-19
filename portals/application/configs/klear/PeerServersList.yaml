@@ -93,7 +93,7 @@ production:
             sendPAI: 1
             sendRPID: 1
         group3:
-          label: _("R-URI customization")
+          label: _("R-URI customization pre-transformations")
           colsPerRow: 12
           fields:
             strip: 6

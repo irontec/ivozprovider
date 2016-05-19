@@ -453,6 +453,20 @@ class Countries extends MapperAbstract
                     }
                 }
 
+                if ($model->getDDIs(null, null, true) !== null) {
+                    $dDIs = $model->getDDIs();
+
+                    if (!is_array($dDIs)) {
+
+                        $dDIs = array($dDIs);
+                    }
+
+                    foreach ($dDIs as $value) {
+                        $value->setCountryId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getTimezones(null, null, true) !== null) {
                     $timezones = $model->getTimezones();
 

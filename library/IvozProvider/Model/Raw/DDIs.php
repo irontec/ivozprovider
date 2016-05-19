@@ -52,6 +52,13 @@ class DDIs extends ModelAbstract
     protected $_DDI;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_DDIE164;
+
+    /**
      * Database var type int
      *
      * @var int
@@ -101,6 +108,27 @@ class DDIs extends ModelAbstract
      */
     protected $_faxId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_peeringContractId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_countryId;
+
+
+    /**
+     * Parent relation DDIs_ibfk_9
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Country;
 
     /**
      * Parent relation DDIs_ibfk_1
@@ -151,6 +179,13 @@ class DDIs extends ModelAbstract
      */
     protected $_Fax;
 
+    /**
+     * Parent relation DDIs_ibfk_8
+     *
+     * @var \IvozProvider\Model\Raw\PeeringContracts
+     */
+    protected $_PeeringContract;
+
 
     /**
      * Dependent relation Faxes_ibfk_2
@@ -172,6 +207,7 @@ class DDIs extends ModelAbstract
         'id'=>'id',
         'companyId'=>'companyId',
         'DDI'=>'DDI',
+        'DDIE164'=>'DDIE164',
         'externalCallFilterId'=>'externalCallFilterId',
         'routeType'=>'routeType',
         'userId'=>'userId',
@@ -179,6 +215,8 @@ class DDIs extends ModelAbstract
         'IVRCustomId'=>'IVRCustomId',
         'huntGroupId'=>'huntGroupId',
         'faxId'=>'faxId',
+        'peeringContractId'=>'peeringContractId',
+        'countryId'=>'countryId',
     );
 
     /**
@@ -196,6 +234,10 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'DDIsIbfk9'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
+                ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -223,6 +265,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk7'=> array(
                     'property' => 'Fax',
                     'table_name' => 'Faxes',
+                ),
+            'DDIsIbfk8'=> array(
+                    'property' => 'PeeringContract',
+                    'table_name' => 'PeeringContracts',
                 ),
         ));
 
@@ -380,6 +426,40 @@ class DDIs extends ModelAbstract
     public function getDDI()
     {
         return $this->_DDI;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setDDIE164($data)
+    {
+
+        if ($this->_DDIE164 != $data) {
+            $this->_logChange('DDIE164');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_DDIE164 = $data;
+
+        } else if (!is_null($data)) {
+            $this->_DDIE164 = (string) $data;
+
+        } else {
+            $this->_DDIE164 = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column DDIE164
+     *
+     * @return string
+     */
+    public function getDDIE164()
+    {
+        return $this->_DDIE164;
     }
 
     /**
@@ -624,6 +704,125 @@ class DDIs extends ModelAbstract
     public function getFaxId()
     {
         return $this->_faxId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setPeeringContractId($data)
+    {
+
+        if ($this->_peeringContractId != $data) {
+            $this->_logChange('peeringContractId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peeringContractId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peeringContractId = (int) $data;
+
+        } else {
+            $this->_peeringContractId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column peeringContractId
+     *
+     * @return int
+     */
+    public function getPeeringContractId()
+    {
+        return $this->_peeringContractId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setCountryId($data)
+    {
+
+        if ($this->_countryId != $data) {
+            $this->_logChange('countryId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_countryId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_countryId = (int) $data;
+
+        } else {
+            $this->_countryId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column countryId
+     *
+     * @return int
+     */
+    public function getCountryId()
+    {
+        return $this->_countryId;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk9');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk9';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
     }
 
     /**
@@ -981,6 +1180,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Fax;
+    }
+
+    /**
+     * Sets parent relation PeeringContract
+     *
+     * @param \IvozProvider\Model\Raw\PeeringContracts $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setPeeringContract(\IvozProvider\Model\Raw\PeeringContracts $data)
+    {
+        $this->_PeeringContract = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setPeeringContractId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk8');
+        return $this;
+    }
+
+    /**
+     * Gets parent PeeringContract
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function getPeeringContract($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk8';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_PeeringContract = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_PeeringContract;
     }
 
     /**

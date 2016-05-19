@@ -186,6 +186,11 @@ class Agi_Wrapper
 	    return $this->_fastagi->get_variable("CALLERID(ANI-num)");
 	}
 
+	public function setOrigCallerIdNum($num)
+	{
+	    return $this->_fastagi->set_variable("CALLERID(ANI-num)", $num);
+	}
+
 	public function getCallerIdName()
 	{
 	    return $this->_fastagi->get_variable("CALLERID(name)");

@@ -51,6 +51,7 @@ class DDIs extends MapperAbstract
                 'id' => $model->getId(),
                 'companyId' => $model->getCompanyId(),
                 'DDI' => $model->getDDI(),
+                'DDIE164' => $model->getDDIE164(),
                 'externalCallFilterId' => $model->getExternalCallFilterId(),
                 'routeType' => $model->getRouteType(),
                 'userId' => $model->getUserId(),
@@ -58,6 +59,8 @@ class DDIs extends MapperAbstract
                 'IVRCustomId' => $model->getIVRCustomId(),
                 'huntGroupId' => $model->getHuntGroupId(),
                 'faxId' => $model->getFaxId(),
+                'peeringContractId' => $model->getPeeringContractId(),
+                'countryId' => $model->getCountryId(),
             );
         } else {
             $result = array();
@@ -569,36 +572,45 @@ class DDIs extends MapperAbstract
             $entry->setId($data['id'])
                   ->setCompanyId($data['companyId'])
                   ->setDDI($data['DDI'])
+                  ->setDDIE164($data['DDIE164'])
                   ->setExternalCallFilterId($data['externalCallFilterId'])
                   ->setRouteType($data['routeType'])
                   ->setUserId($data['userId'])
                   ->setIVRCommonId($data['IVRCommonId'])
                   ->setIVRCustomId($data['IVRCustomId'])
                   ->setHuntGroupId($data['huntGroupId'])
-                  ->setFaxId($data['faxId']);
+                  ->setFaxId($data['faxId'])
+                  ->setPeeringContractId($data['peeringContractId'])
+                  ->setCountryId($data['countryId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
                   ->setDDI($data->{'DDI'})
+                  ->setDDIE164($data->{'DDIE164'})
                   ->setExternalCallFilterId($data->{'externalCallFilterId'})
                   ->setRouteType($data->{'routeType'})
                   ->setUserId($data->{'userId'})
                   ->setIVRCommonId($data->{'IVRCommonId'})
                   ->setIVRCustomId($data->{'IVRCustomId'})
                   ->setHuntGroupId($data->{'huntGroupId'})
-                  ->setFaxId($data->{'faxId'});
+                  ->setFaxId($data->{'faxId'})
+                  ->setPeeringContractId($data->{'peeringContractId'})
+                  ->setCountryId($data->{'countryId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
             $entry->setId($data->getId())
                   ->setCompanyId($data->getCompanyId())
                   ->setDDI($data->getDDI())
+                  ->setDDIE164($data->getDDIE164())
                   ->setExternalCallFilterId($data->getExternalCallFilterId())
                   ->setRouteType($data->getRouteType())
                   ->setUserId($data->getUserId())
                   ->setIVRCommonId($data->getIVRCommonId())
                   ->setIVRCustomId($data->getIVRCustomId())
                   ->setHuntGroupId($data->getHuntGroupId())
-                  ->setFaxId($data->getFaxId());
+                  ->setFaxId($data->getFaxId())
+                  ->setPeeringContractId($data->getPeeringContractId())
+                  ->setCountryId($data->getCountryId());
 
         }
 

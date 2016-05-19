@@ -50,9 +50,9 @@ class ExternalCallAction extends RouterAction
         $callingCode = $company->getCountries()->getCallingCode();
         $outboundPrefix = $company->getOutboundPrefix();
 
+        // If Company has Outbound Prefix, check it's present
         if (strlen($outboundPrefix) !== 0 && strpos($number, $outboundPrefix) !== 0) {
-            // Check the user has this call allowed in its ACL
-            $this->agi->error("Destination number %s without [company%d] prefix: %d",
+            $this->agi->error("Destination number %s without [company%d] prefix: %s",
                             $number, $company->getId(), $outboundPrefix);
             $this->agi->hangup(21); // Declined
             return;
@@ -65,9 +65,8 @@ class ExternalCallAction extends RouterAction
         if ($user) {
             // Convert number to user prefered format to check ACLs
             $aclNumber = $company->preferredToACL($number);
-
             // Check the user has this call allowed in its ACL
-            $this->agi->verbose("Checking if %s [user%d] can call %d",
+            $this->agi->verbose("Checking if %s [user%d] can call %s",
                             $user->getFullName(), $user->getId(), $aclNumber);
             if (!$user->hasSrcUserPerm($aclNumber)) {
                 $this->agi->error("User is not allowed to place this call.");
@@ -94,10 +93,11 @@ class ExternalCallAction extends RouterAction
         if (!$pricingPlan) {
             $this->agi->error("Destination %s can not be billed.", $number);
             return;
-        } else {
-            $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
-            $pricingPlan->getName(), $pricingPlan->getId());
         }
+
+        // Log what Pricing plan has been selected
+        $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
+                $pricingPlan->getName(), $pricingPlan->getId());
 
         /*****************************************************************
          * ORIGIN DDI PRESENTATION
@@ -116,10 +116,7 @@ class ExternalCallAction extends RouterAction
                 // Set as Display number users Outgoing DDI
                 $this->agi->setVariable("CALLERID(num)", $outddi);
             }
-        } else {
-            // FIXME COMPANY DEFAULT DDI OUT ???
         }
-
 
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');

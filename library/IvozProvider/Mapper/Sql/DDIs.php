@@ -39,6 +39,12 @@ class DDIs extends Raw\DDIs
             $setter = "set".ucfirst($fieldName);
             $model->{$setter}(null);
         }
+
+        // Set standarized E164 number
+        // FIXME Country IS MANDATODY
+        $counrty = $model->getCountry();
+        $model->setDDIE164($counrty->getCallingCode() . $model->getDDI());
+
         return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
     }
 

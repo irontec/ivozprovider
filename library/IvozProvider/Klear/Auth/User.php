@@ -21,6 +21,8 @@ class User extends \Klear_Model_UserAdvanced
     public $brandName = null;
     public $companyName = null;
 
+    public $companyCountryId = null;
+
 
     public function setUserName($username)
     {
@@ -51,12 +53,14 @@ class User extends \Klear_Model_UserAdvanced
     public function setCompany(Companies $company)
     {
         $this->companyId = $company->getPrimaryKey();
+        $this->companyCountryId = $company->getCountryId();
         $this->companyName = $company->getName();
     }
 
     public function unsetCompany()
     {
         $this->companyId = null;
+        $this->companyCountryId = null;
         $this->companyName = null;
     }
 

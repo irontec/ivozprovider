@@ -25,7 +25,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
     )
     {
         $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
-        
+
         if ($response) {
             // Replicate Terminal into ast_ps_endpoint
             $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
@@ -35,7 +35,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
             if (is_null($endpoint)) {
                 $endpoint = new \IvozProvider\Model\AstPsEndpoints();
             }
-            
+
             // Update/Insert endpoint data
             $endpoint->setProxyTrunkId($response)
                 ->setSorceryId($model->getName())
@@ -45,6 +45,7 @@ class ProxyTrunks extends Raw\ProxyTrunks
                 ->setAllow($model->getAllow())
                 ->setDirectMedia($model->getDirectMedia())
                 ->setDirectMediaMethod($model->getDirectMediaMethod())
+                ->setSendPai('no')
                 ->setTrustIdInbound('yes')
                 ->save();
         }

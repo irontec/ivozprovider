@@ -272,7 +272,7 @@ production:
             fields: 
               - name
               - calling_code
-            template: '%name% (%calling_code%)'
+            template: '%name% (+%calling_code%)'
           order: code
         'null': _("Company's default")
     HuntGroupsRelUsers:

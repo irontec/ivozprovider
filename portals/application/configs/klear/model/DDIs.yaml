@@ -149,6 +149,34 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_DDITarget
         method: getData
+    peeringContractId: 
+      title: _('Peering contract id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+    countryId: 
+      title: _('Country id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - name
+              - calling_code
+            template: '%name% (+%calling_code%)'
+          order: name_es
 staging: 
   _extends: production
 testing: 

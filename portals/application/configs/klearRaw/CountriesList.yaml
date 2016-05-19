@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include CompaniesList.yaml
+#include DDIsList.yaml
 #include TimezonesList.yaml
 #include UsersList.yaml
 
@@ -23,6 +24,7 @@ production:
           screens: 
             countriesEdit_screen: true
             companiesList_screen: true
+            dDIsList_screen: true
             timezonesList_screen: true
             usersList_screen: true
           dialogs: 
@@ -66,6 +68,19 @@ production:
       <<: *companiesEdit_screenLink
       filterField: countryId
 
+    #dDIs: 
+    dDIsList_screen: 
+      <<: *dDIsList_screenLink
+      filterField: countryId
+      parentOptionCustomizer: 
+        - recordCount
+    dDIsNew_screen: 
+      <<: *dDIsNew_screenLink
+      filterField: countryId
+    dDIsEdit_screen: 
+      <<: *dDIsEdit_screenLink
+      filterField: countryId
+
     #timezones: 
     timezonesList_screen: 
       <<: *timezonesList_screenLink
@@ -105,6 +120,8 @@ production:
       labelOnList: 1
   # companies dialogs: 
     <<: *companies_dialogsLink
+  # dDIs dialogs: 
+    <<: *dDIs_dialogsLink
   # timezones dialogs: 
     <<: *timezones_dialogsLink
   # users dialogs: 

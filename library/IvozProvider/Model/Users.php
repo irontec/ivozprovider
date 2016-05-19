@@ -109,7 +109,7 @@ class Users extends Raw\Users
     {
         $DDI = $this->getOutgoingDDI();
         if ($DDI) {
-            return $DDI->getDDI();
+            return $DDI->getDDIE164();
         }
         return $valueIfEmpty;
     }

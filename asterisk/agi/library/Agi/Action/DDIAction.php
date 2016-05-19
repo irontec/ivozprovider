@@ -23,15 +23,12 @@ class DDIAction extends RouterAction
 
         // Local variables to improve readability
         $ddi = $this->_ddi;
-        $ddiId = $ddi->getId();
-        $ddiNumber = $ddi->getDDI();
-
         // Check And Process if necesary external call filters
         $externalCallFilter = $ddi->getExternalCallFilter();
         if (! empty($externalCallFilter)) {
             $holidayDate = $externalCallFilter->getHolidayDateForToday();
             if (! empty($holidayDate)) {
-                $this->agi->verbose("DDI %s is on Holidays.", $ddiNumber);
+                $this->agi->verbose("DDI %s [ddi%d] is on Holidays.", $ddi->getDDI(), $ddi->getId());
                 $filterAction = new ExternalFilterAction($this);
                 $filterAction
                     ->setDDI($ddi)
@@ -40,7 +37,7 @@ class DDIAction extends RouterAction
                 return;
             }
             if (! $externalCallFilter->isOutOfSchedule()) {
-                $this->agi->verbose("DDI %s is out of schedule.", $ddiNumber);
+                $this->agi->verbose("DDI %s [ddi%d] is on Out of schedule.", $ddi->getDDI(), $ddi->getId());
                 $filterAction = new ExternalFilterAction($this);
                 $filterAction
                     ->setDDI($ddi)

@@ -40,6 +40,11 @@ class DDIs extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'DDIsIbfk9' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
         'DDIsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -73,6 +78,11 @@ class DDIs extends TableAbstract
         'DDIsIbfk7' => array(
             'columns' => 'faxId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk8' => array(
+            'columns' => 'peeringContractId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
             'refColumns' => 'id'
         )
     );
@@ -132,12 +142,29 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'DDIE164' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'DDIE164',
+	    'COLUMN_POSITION' => 4,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	  'externalCallFilterId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'externalCallFilterId',
-	    'COLUMN_POSITION' => 4,
+	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -154,7 +181,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'routeType',
-	    'COLUMN_POSITION' => 5,
+	    'COLUMN_POSITION' => 6,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
@@ -171,7 +198,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'userId',
-	    'COLUMN_POSITION' => 6,
+	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -188,7 +215,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'IVRCommonId',
-	    'COLUMN_POSITION' => 7,
+	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -205,7 +232,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'IVRCustomId',
-	    'COLUMN_POSITION' => 8,
+	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -222,7 +249,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'huntGroupId',
-	    'COLUMN_POSITION' => 9,
+	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -239,7 +266,41 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'faxId',
-	    'COLUMN_POSITION' => 10,
+	    'COLUMN_POSITION' => 11,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'peeringContractId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'peeringContractId',
+	    'COLUMN_POSITION' => 12,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'countryId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'countryId',
+	    'COLUMN_POSITION' => 13,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

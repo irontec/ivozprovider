@@ -27,12 +27,6 @@ production:
           order: name
     transformationRulesetGroupsTrunksId: 
       title: _('Transformation ruleset groups trunks')
-      info:
-        type: box
-        position: left
-        icon: error
-        text: "Read Inbound Transformation section help carefully"
-        label: _("Need help?")
       type: select
       source: 
         data: mapper
@@ -47,7 +41,7 @@ production:
           order: name
       options:
         screens:
-          transformationRulesetGroupsTrunksList_screen: true
+          transformationRulesetGroupsTrunksList_screen: false
     externallyRated:
       title: _('Externally rated')
       type: select

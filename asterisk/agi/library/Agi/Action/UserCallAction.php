@@ -129,6 +129,8 @@ class UserCallAction extends RouterAction
             foreach ($cfwSettings as $cfwSetting) {
                 $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
+                    $this->agi->verbose("Call Forward No answer enabled [callForwardSettings%d]. Setting call timeout.",
+                                    $cfwSetting->getId());
                     $this->_timeout = $cfwSetting->getNoAnswerTimeout();
                 }
             }
@@ -170,10 +172,6 @@ class UserCallAction extends RouterAction
 
         // Update Called name
         if ($this->agi->getCallType() == "external") {
-            // FIXME WHY THIS DOESN'T UPDATE EXTERNAL PAI ???
-            $this->agi->setConnectedLine('name,i', $user->getFullName());
-            $this->agi->setConnectedLine('num', $user->getOutgoingDDINumber());
-
             // Transfor number to User Preferred
             $preferred = $user->E164ToPreferred($this->agi->getOrigCallerIdNum());
             $this->agi->setCallerIdNum($preferred);

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include DDIsList.yaml
 #include OutgoingRoutingList.yaml
 #include ParsedCDRsList.yaml
 #include PeerServersList.yaml
@@ -23,6 +24,7 @@ production:
           title: _("Options")
           screens: 
             peeringContractsEdit_screen: true
+            dDIsList_screen: true
             outgoingRoutingList_screen: true
             parsedCDRsList_screen: true
             peerServersList_screen: true
@@ -54,8 +56,21 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Peering contract', 'Peering contracts', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Peering contract', 'Peering contracts', 1), "[format| (%item%)]")
+    #dDIs: 
+    <<: *dDIs_screensLink
+    dDIsList_screen: 
+      <<: *dDIsList_screenLink
+      filterField: peeringContractId
+      parentOptionCustomizer: 
+        - recordCount
+    dDIsNew_screen: 
+      <<: *dDIsNew_screenLink
+      filterField: peeringContractId
+    dDIsEdit_screen: 
+      <<: *dDIsEdit_screenLink
+      filterField: peeringContractId
+
     #outgoingRouting: 
-    <<: *outgoingRouting_screensLink
     outgoingRoutingList_screen: 
       <<: *outgoingRoutingList_screenLink
       filterField: peeringContractId
@@ -118,6 +133,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Peering contract', 'Peering contracts', 1))
       multiItem: 1
       labelOnList: 1
+  # dDIs dialogs: 
+    <<: *dDIs_dialogsLink
   # outgoingRouting dialogs: 
     <<: *outgoingRouting_dialogsLink
   # parsedCDRs dialogs: 

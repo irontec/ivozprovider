@@ -440,6 +440,20 @@ class PeeringContracts extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getDDIs(null, null, true) !== null) {
+                    $dDIs = $model->getDDIs();
+
+                    if (!is_array($dDIs)) {
+
+                        $dDIs = array($dDIs);
+                    }
+
+                    foreach ($dDIs as $value) {
+                        $value->setPeeringContractId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getOutgoingRouting(null, null, true) !== null) {
                     $outgoingRouting = $model->getOutgoingRouting();
 

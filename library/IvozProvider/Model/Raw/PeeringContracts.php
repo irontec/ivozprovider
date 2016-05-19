@@ -82,6 +82,14 @@ class PeeringContracts extends ModelAbstract
 
 
     /**
+     * Dependent relation DDIs_ibfk_8
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\DDIs[]
+     */
+    protected $_DDIs;
+
+    /**
      * Dependent relation OutgoingRouting_ibfk_5
      * Type: One-to-Many relationship
      *
@@ -147,6 +155,10 @@ class PeeringContracts extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'DDIsIbfk8' => array(
+                    'property' => 'DDIs',
+                    'table_name' => 'DDIs',
+                ),
             'OutgoingRoutingIbfk5' => array(
                     'property' => 'OutgoingRouting',
                     'table_name' => 'OutgoingRouting',
@@ -171,6 +183,7 @@ class PeeringContracts extends ModelAbstract
         ));
 
         $this->setOnDeleteSetNullRelationships(array(
+            'DDIs_ibfk_8',
             'parsedCDRs_ibfk_6'
         ));
 
@@ -518,6 +531,96 @@ class PeeringContracts extends ModelAbstract
         }
 
         return $this->_TransformationRulesetGroupsTrunks;
+    }
+
+    /**
+     * Sets dependent relations DDIs_ibfk_8
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\DDIs
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function setDDIs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_DDIs === null) {
+
+                $this->getDDIs();
+            }
+
+            $oldRelations = $this->_DDIs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_DDIs = array();
+
+        foreach ($data as $object) {
+            $this->addDDIs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations DDIs_ibfk_8
+     *
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\PeeringContracts
+     */
+    public function addDDIs(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_DDIs[] = $data;
+        $this->_setLoaded('DDIsIbfk8');
+        return $this;
+    }
+
+    /**
+     * Gets dependent DDIs_ibfk_8
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\DDIs
+     */
+    public function getDDIs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk8';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_DDIs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_DDIs;
     }
 
     /**

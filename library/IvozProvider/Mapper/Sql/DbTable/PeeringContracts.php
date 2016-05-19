@@ -52,6 +52,7 @@ class PeeringContracts extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',

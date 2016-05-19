@@ -38,10 +38,10 @@ class CallACL extends Raw\CallACL
             $pattern = $aclPattern->getRegExp();
             $match = preg_match('/'.$pattern.'/', $dst);
             if($match) {
-                return "allow"== $policy;
+                return "allow" == $policy;
             }
         }
-        return "allow"== $defaultPolicy;
+        return "allow" == $defaultPolicy;
     }
 
 }

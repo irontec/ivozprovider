@@ -38,7 +38,7 @@ class ExternalFilterAction extends RouterAction
         $count = $this->agi->getRedirecting('count'); 
         $this->agi->setRedirecting('count,i', ++$count);
         $this->agi->setRedirecting('from-name,i', $ddi->getCompany()->getName());
-        $this->agi->setRedirecting('from-num,i', $ddi->getDDI());
+        $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
         
         // Route to configured destination
@@ -67,7 +67,7 @@ class ExternalFilterAction extends RouterAction
         $count = $this->agi->getRedirecting('count'); 
         $this->agi->setRedirecting('count,i', ++$count);        
         $this->agi->setRedirecting('from-name,i', $ddi->getCompany()->getName());
-        $this->agi->setRedirecting('from-num,i', $ddi->getDDI());
+        $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
         
         // Route to destination

@@ -39,11 +39,14 @@ class CallsController extends BaseController
 
         // Check if incoming DDI is for us
         $DDIMapper = new Mapper\DDIs();
-        $ddi = $DDIMapper->findOneByField("DDI", $exten);
+        $ddi = $DDIMapper->findOneByField("DDIE164", $exten);
         if (empty($ddi)) {
             $this->agi->error("DDI %s not found in database.", $exten);
             return;
         }
+
+        // Store Original E164 Number for further transformations
+        $this->agi->setOrigCallerIdNum($exten);
 
         // Mark this call as external
         $this->agi->setCallType("external");
@@ -118,7 +121,6 @@ class CallsController extends BaseController
         // Set Company/Brand/Generic Music class
         $company = $user->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
-        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Check User's permission to does this call
         $exten = $this->agi->getExtension();
@@ -132,17 +134,19 @@ class CallsController extends BaseController
             $this->agi->setVariable("__CALL_ID", $callid);
         }
 
-        // Set user language
+        // Set user language and music
         $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
+        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Some output
-        $this->agi->verbose("Processing ougoing call from %s [%s] to number %s",
+        $this->agi->verbose("Processing ougoing call from %s [user%d] to number %s",
                         $user->getFullName(), $user->getId(), $exten);
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
             if (($service = $company->getService($exten))) {
-                $this->agi->verbose("Number %s belongs to a company service.", $exten);
+                $this->agi->verbose("Number %s belongs to a company service [service%d].",
+                                $exten, $service->getId());
 
                 // Handle service code
                 $serviceAction = new ServiceAction($this);
@@ -159,7 +163,8 @@ class CallsController extends BaseController
 
         // Check if this is an extension call
         } elseif (($dstExtension = $company->getExtension($exten))) {
-            $this->agi->verbose("Number %s belongs to a company extension [%d].", $exten, $dstExtension->getId());
+            $this->agi->verbose("Number %s belongs to a Company Extension [extension%d].",
+                            $exten, $dstExtension->getId());
 
             // Update who is redirecting this call
             if ($this->agi->getRedirecting('from-num')) {
@@ -174,7 +179,7 @@ class CallsController extends BaseController
 
         // This number don't belong to IvozProvider
         } else {
-            $this->agi->verbose("Number %s is handled as external DDI.", $exten);
+            $this->agi->verbose("Number %s is handled as external number.", $exten);
 
             // Update who is calling
             if (isset($transfererURI) && !empty($transfererURI)) {
@@ -379,5 +384,6 @@ class CallsController extends BaseController
         if ($this->agi->getRedirecting('from-tag')) {
             $this->agi->setSIPHeader("X-Info-ForwardExt", $this->agi->getRedirecting('from-tag'));
         }
+
     }
 }
