@@ -34,7 +34,7 @@ production:
           name: true
           description: true
         blacklist:
-          transformationRulesetGroupsTrunksId: true
+          externallyRated: true
       options: 
         title: _("Options")
         screens: 

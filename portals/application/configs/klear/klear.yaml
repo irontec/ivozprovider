@@ -104,9 +104,9 @@ production:
           class: ui-silk-connect
           description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
         TransformationRulesetGroupsTrunksList:
-          title: ngettext('Inbound transformation', 'Inbound transformations', 0)
+          title: ngettext('Numeric transformation', 'Numeric transformations', 0)
           class: ui-silk-application-side-expand
-          description: _("List of %s", ngettext('Inbound transformation', 'Inbound transformations', 0))
+          description: _("List of %s", ngettext('Numeric transformation', 'Numeric transformations', 0))
         GenericMusicOnHoldList:
           title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
           class: ui-silk-music
@@ -146,8 +146,7 @@ production:
         InvoicesList:
           title: _('Invoices')
           class: ui-silk-report
-          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
-
+          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))          
         ParsedCDRsBrandList:
           title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
           class: ui-silk-application-view-list

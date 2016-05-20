@@ -16,7 +16,7 @@ production:
       class: ui-silk-shape-rotate-anticlockwise
       <<: *TransformationRulesetGroupsTrunks
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Numeric transformation group', 'Numeric transformation groups', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields: &transformationRulesetGroupsTrunks_fieldsLink 
@@ -26,8 +26,8 @@ production:
             transformationRulesetGroupsTrunksEdit_screen: true
             kamTrunksDialplan_callee_inList_screen: true
             kamTrunksDialplan_caller_inList_screen: true
-            kamTrunksDialplan_caller_outList_screen: false
-            kamTrunksDialplan_callee_outList_screen: false
+            kamTrunksDialplan_callee_outList_screen: true
+            kamTrunksDialplan_caller_outList_screen: true
             peerServersList_screen: false
           dialogs: 
             transformationRulesetGroupsTrunksDel_dialog: true
@@ -47,19 +47,13 @@ production:
           transformationRulesetGroupsTrunksNew_screen: true
         dialogs: 
           transformationRulesetGroupsTrunksDel_dialog: true
-      info: &transformationRulesetGroupsTrunks_helpLink
-        type: tooltip
-        position: left
-        icon: error
-        label:
-          "Inbound transformation group is assigned to PeeringContract, but apply in IP address basis. They will apply to all calls coming from source address matching that Peering Contract's PeerServers."
     transformationRulesetGroupsTrunksNew_screen: &transformationRulesetGroupsTrunksNew_screenLink 
       <<: *TransformationRulesetGroupsTrunks
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Numeric transformation group', 'Numeric transformation groups', 1), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
@@ -74,14 +68,12 @@ production:
           fields:
             name: 1
             description: 1
-      info:
-        <<: *transformationRulesetGroupsTrunks_helpLink
     transformationRulesetGroupsTrunksEdit_screen: &transformationRulesetGroupsTrunksEdit_screenLink 
       <<: *TransformationRulesetGroupsTrunks
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Numeric transformation group', 'Numeric transformation groups', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
@@ -91,8 +83,6 @@ production:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions:
         <<: *transformationRulesetGroupsTrunksFixedPositions_Link
-      info:
-        <<: *transformationRulesetGroupsTrunks_helpLink
     #peerServers: 
     <<: *peerServers_screensLink
     peerServersList_screen: 
@@ -136,11 +126,6 @@ production:
           kamTrunksDialplan_callee_inNew_screen: true
         dialogs: 
           kamTrunksDialplanDel_dialog: true
-      info:
-        type: tooltip
-        position: left
-        icon: error
-        label: _("Callee transformation needs calls to be placed to brand's proxytrunk's domain to work")
     kamTrunksDialplan_callee_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
       
@@ -180,9 +165,9 @@ production:
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 1))
-      description: _("Do you want to delete this %s?", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 1))
-      message: _("%s successfully deleted.", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 1))
+      title: _("Delete %s", ngettext('Numeric transformation group', 'Numeric transformation groups', 1))
+      description: _("Do you want to delete this %s?", ngettext('Numeric transformation group', 'Numeric transformation groups', 1))
+      message: _("%s successfully deleted.", ngettext('Numeric transformation group', 'Numeric transformation groups', 1))
       multiItem: 1
       labelOnList: 1
       
