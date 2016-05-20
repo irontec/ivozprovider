@@ -21,8 +21,10 @@ class HuntGroupAction extends RouterAction
         }
 
         // Process different huntGroups types
-        $type = $this->_huntgroup->getStrategy();
-        $this->agi->verbose("Processing %s HuntGroup.", $type);
+        $huntgroup = $this->_huntgroup;
+        $type = $huntgroup->getStrategy();
+        $this->agi->verbose("Processing %s HuntGroup %s [huntgroup%d].",
+                        $type, $huntgroup->getName(), $huntgroup->getId());
         switch ($type) {
             case 'ringAll':
                 $this->_processRingAll();
@@ -189,7 +191,7 @@ class HuntGroupAction extends RouterAction
             array_push($callExtensions, $user->getExtensionNumber());
             array_push($callTimeouts, $entry->getTimeoutTime());
         }
-        
+
         // Anyone is available?
         if (empty($callExtensions)) {
             $this->agi->verbose("Hungroup is empty or users are invalid.");

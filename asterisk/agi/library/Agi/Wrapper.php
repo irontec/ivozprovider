@@ -211,14 +211,14 @@ class Agi_Wrapper
 	    return $this->_fastagi->set_variable("CALLERID(num)", $num);
 	}
 
-	public function setCallerId($type, $value)
-	{
-	    return $this->_fastagi->set_variable("CALLERID($type)", $value);
-	}
-
 	public function setConnectedLine($type, $value)
 	{
 	    return $this->_fastagi->set_variable("CONNECTEDLINE($type)", $value);
+	}
+
+	public function getConnectedLineNum($type)
+	{
+	    return $this->_fastagi->get_variable("CONNECTEDLINE($type)");
 	}
 
 	public function setRDNIS($num)

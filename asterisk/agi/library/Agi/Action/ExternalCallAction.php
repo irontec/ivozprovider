@@ -39,10 +39,6 @@ class ExternalCallAction extends RouterAction
             $company = $user->getCompany();
         }
 
-        // Update Called name and number
-        $this->agi->setConnectedLine('name,i', '');
-        $this->agi->setConnectedLine('num,i', $number);
-
         /*****************************************************************
          * COMPANY PREFIX CHECKING (FAST CALL DROPS)
          ****************************************************************/
@@ -107,6 +103,7 @@ class ExternalCallAction extends RouterAction
             // Set Outgoing number
             $company = $user->getCompany();
             $callerExt = $this->agi->getCallerId('num');
+
             if (($extension = $company->getExtension($callerExt))) {
                 $callerUser = $extension->getUser();
                 $outddi = $callerUser->getOutgoingDDINumber();
@@ -114,8 +111,13 @@ class ExternalCallAction extends RouterAction
                     $this->agi->error("User %s has no external DDI", $user->getId());
                     return;
                 }
+
                 // Set as Display number users Outgoing DDI
                 $this->agi->setVariable("CALLERID(num)", $outddi);
+                $this->agi->setVariable("USERID", $user->getId());
+
+                // Setup the update callid for the calling user
+                $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$number,1");
             }
         }
 

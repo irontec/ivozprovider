@@ -46,7 +46,7 @@ class CallsController extends BaseController
         }
 
         // Store Original E164 Number for further transformations
-        $this->agi->setOrigCallerIdNum($exten);
+        $this->agi->setOrigCallerIdNum($this->agi->getCallerIdNum());
 
         // Mark this call as external
         $this->agi->setCallType("external");
@@ -139,7 +139,7 @@ class CallsController extends BaseController
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Some output
-        $this->agi->verbose("Processing ougoing call from %s [user%d] to number %s",
+        $this->agi->verbose("Processing outgoing call from %s [user%d] to number %s",
                         $user->getFullName(), $user->getId(), $exten);
 
         // Check if this extension starts with '*' code
@@ -168,7 +168,7 @@ class CallsController extends BaseController
 
             // Update who is redirecting this call
             if ($this->agi->getRedirecting('from-num')) {
-                $this->agi->setRedirecting('from-num', $extension->getNumber());
+                $this->agi->setRedirecting('from-num,i', $extension->getNumber());
             }
 
             // Handle extension
@@ -385,5 +385,18 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-ForwardExt", $this->agi->getRedirecting('from-tag'));
         }
 
+    }
+
+    public function updatelineAction()
+    {
+        $userId = $this->agi->getVariable("USERID");
+        if ($userId) {
+            $userMapper = new Mapper\Users();
+            $user = $userMapper->find($userId);
+            $e164exten = $this->agi->getExtension();
+            $exten = $user->E164toPreferred($e164exten);
+            $this->agi->setConnectedLine('num,i', $exten);
+            $this->agi->setConnectedLine('name', '');
+        }
     }
 }
