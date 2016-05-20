@@ -2,20 +2,133 @@
 #include conf.d/actions.yaml
 #include ParsedCDRsList.yaml
 
+
 production: 
   main: 
     module: klearMatrix
-    defaultScreen: parsedCDRsBrandList_screen
-  screens: &parsedCDRsBrand_screenLink
-    <<: *parsedCDRs_screenLink
-    parsedCDRsBrandList_screen: &parsedCDRsBrandList_screenLink
-      <<: *parsedCDRsList_screenLink
-      class: ui-silk-application-view-list  
+    defaultScreen: parsedCDRsList_screen
+  screens:
+    parsedCDRsList_screen: 
+      <<: *parsedCDRsList_screenLink 
+      fields:
+        options:
+          <<: *parsedCDRs_fieldOptionsLink
+        order:
+          calldate: true
+          companyId: true
+          type: true
+          srcAdapted: true
+          srcDialedAdapted: true
+          dstAdapted: true
+          smartDuration: true
+          metered: true
+        blacklist:
+          src: true
+          src_dialed: true
+          dst: true
+          pricingPlanDetails: true
+          aleg: true
+          bleg: true
+          billCallID: true
+          fw_desc: true
+          ext_forwarder: true
+          int_forwarder: true
+          forward_to: true
+          meteringDate: true
+          pricingPlanId: true
+          invoiceId: true
+          peeringContractId: true
+          externallyRated: true
+          targetPatternId: true
+          desc: true
+          dst_duration: true
+          billDuration: true
+          billDestination: true
+          dst_src_cid: true
+          price: true
+          src_duration: true
       forcedValues:
-        <<: *forcedBrand             
-  dialogs: 
+        <<: *forcedBrand
+    parsedCDRsEdit_screen:
+      <<: *ParsedCDRs
+      <<: *parsedCDRsEdit_screenLink
+      fullWidth: false
+      fields:
+        blacklist:
+          brandId: true
+          src_duration: true
+          dst_duration: true
+          src: true
+          src_dialed: true
+          dst: true
+          dst_src_cid: true
+          aleg: true
+          bleg: true
+          ext_forwarder: true
+          pricingPlanDetails: true
+          billCallID: true
+        order:
+          companyId: true
+          calldate: true
+          type: true
+          desc: true
+          smartDuration: true
+          srcAdapted: true
+          srcDialedAdapted: true
+          dstAdapted: true
+          fw_desc: true
+          int_forwarder: true
+          forward_to: true
+          metered: true
+          meteringDate: true
+          price: true
+          invoiceId: true
+          externallyRated: true
+          billDuration: true
+          billDestination: true
+          targetPatternId: true
+          pricingPlanId: true
+          peeringContractId: true
+      fixedPositions:
+        group0:
+          label: _("Basic information")
+          colsPerRow: 12
+          fields:
+            companyId: 12
+            calldate: 4
+            smartDuration: 4
+            type: 4
+            desc: 12
+            srcAdapted: 4
+            srcDialedAdapted: 4
+            dstAdapted: 4
+        group1:
+          label: _("Forwarding information")
+          colsPerRow: 12
+          fields:
+            fw_desc: 12
+            int_forwarder: 6
+            forward_to: 6
+        group2:
+          label: _("Billing information")
+          colsPerRow: 12
+          fields:
+            metered: 6
+            meteringDate: 6
+            price: 6
+            invoiceId: 6
+        group3:
+          label: _("Details")
+          colsPerRow: 12
+          fields:
+            externallyRated: 6
+            billDuration: 6
+            billDestination: 6
+            targetPatternId: 6
+            pricingPlanId: 6
+            peeringContractId: 6
+  dialogs:
     <<: *parsedCDRs_dialogsLink
-            
 staging: 
   _extends: production
 testing: 

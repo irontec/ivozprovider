@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
+
 production: 
   main: 
     module: klearMatrix
@@ -8,192 +9,152 @@ production:
   screens: &parsedCDRs_screenLink
     parsedCDRsList_screen: &parsedCDRsList_screenLink 
       controller: list
+      order:
+        field:
+          - calldate
+        type: desc
       csv: true
       pagination: 
         items: 25
       <<: *ParsedCDRs
       class: ui-silk-application-view-list   
-      title: _("List of %s %2s", ngettext('Parsed CDR', 'Parsed CDRs', 0), "[format| (%parent%)]")
-      order:
-        field:
-          - calldate desc
-      fields: 
-        options: 
+      title: _("List of %s %2s", ngettext('Call registry', 'Call registry', 0), "[format| (%parent%)]")
+      fields: &parsedCDRs_fieldsLink
+        options: &parsedCDRs_fieldOptionsLink
           title: _("Options")
           screens: 
             parsedCDRsEdit_screen: true
           dialogs:
-            testTarificateCall_dialog: false
             getMeteringInfo_dialog: true
           default: parsedCDRsEdit_screen
         order:
           calldate: true
-          src: true
-          src_dialed: true
-          src_duration: true
-          dst: true
-          dst_duration: true
-          callSrcSumary: true
-          callDstSumary: true
-          callTypeSumary: true
-          type: true
           brandId: true
           companyId: true
+          type: true
+          srcAdapted: true
+          srcDialedAdapted: true
+          dstAdapted: true
+          smartDuration: true
           metered: true
-          meteringSumary: true
-          
         blacklist: &parsedCDRsBlacklist_Link
+          src: true
+          src_dialed: true
+          dst: true
+          pricingPlanDetails: true
           aleg: true
           bleg: true
-          dst_src_cid: true
+          billCallID: true
           fw_desc: true
           ext_forwarder: true
-          oasis_forwarder: true
+          int_forwarder: true
           forward_to: true
-          pricingPlanDetails: true
-
-          callSrcSumary: true
-          callDstSumary: true
-#          callTypeSumary: true
-          meteringSumary: true
-
           meteringDate: true
           pricingPlanId: true
+          invoiceId: true
+          peeringContractId: true
+          externallyRated: true
           targetPatternId: true
-#          price: true
-#          dst_duration: true
           desc: true
-#          src: true
-##          calldate: true
-          type: true
-#          src_dialed: true
-#          src_duration: true
-#          dst: true
-      options: 
+          dst_duration: true
+          billDuration: true
+          billDestination: true
+          dst_src_cid: true
+          price: true
+          src_duration: true
+      options:
         title: _("Options")
         dialogs:
           tarificateCall_dialog: true
-#        screens: 
-#          parsedCDRsNew_screen: true
-#    parsedCDRsNew_screen: &parsedCDRsNew_screenLink 
-#      <<: *ParsedCDRs
-#      controller: new
-#      class: ui-silk-add
-#      label: true
-#      multiInstance: true
-#      title: _("Add %s", ngettext('Parsed c d r', 'Parsed c d rs', 1))
-#      shortcutOption: N
-      preconfiguredFilters:
-        metered:
-          title: _("Metered")
-          description: _("Metered")
-          field: metered
-          value: "1"
-        notMetered:
-          title: _("Not Metered")
-          description: _("Not Metered")
-          field: metered
-          value: "0"
-        useruser: 
-          title: _("USER-USER")
-          description: _("LLAMADA INTERNA")
-          field: callTypeSumary
-          value: "USER-USER"
-        userpbx: 
-          title: _("USER-PBX")
-          description: _("LLAMADA DE USUARIO QUE MUERE EN AS")
-          field: callTypeSumary
-          value: "USER-PBX"
-        userpstn: 
-          title: _("USER-PSTN")
-          description: _("LLAMADA SALIENTE EXTERNA PURA")
-          field: callTypeSumary
-          value: "USER-PSTN"
-        userDESVpstn: 
-          title: _("USER->PSTN")
-          description: _("LLAMADA SALIENTE EXTERNA POR DESVIO DE USUARIO")
-          field: callTypeSumary
-          value: "USER->PSTN"
-        pstnuser: 
-          title: _("PSTN-USER")
-          description: _("LLAMADA EXTERNA ENTRANTE QUE ACABA EN UN USUARIO")
-          field: callTypeSumary
-          value: "PSTN-USER"
-        pstnpbx: 
-          title: _("PSTN-PBX")
-          description: _("LLAMADA ENTRANTE EXTERNA QUE MUERE EN AS")
-          field: callTypeSumary
-          value: "PSTN-PBX"
-        pstnDESVpstn: 
-          title: _("PSTN->PSTN")
-          description: _("LLAMADA EXTERNA ENTRANTE QUE ACABA DESVIANDOSE A UN NÚMERO DE LA PSTN")
-          field: callTypeSumary
-          value: "PSTN->PSTN"
     parsedCDRsEdit_screen: &parsedCDRsEdit_screenLink 
       <<: *ParsedCDRs
       controller: edit
       class: ui-silk-eye
-      label: false
       disableSave: true
-      title: _("View %s %2s", ngettext('Parsed CDR', 'Parsed CDRs', 1), "[format| (%item%)]")
-      fields:
+      label: false
+      fullWidth: true
+      labelOnPostAction: _("View %s %2s", ngettext('Call details', 'Call details', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Call details', 'Call details', 1), "[format| (%item%)]")
+      fields: &parsedCDRs_fieldsLink 
+        blacklist:
+          src_duration: true
+          dst_duration: true
+          src: true
+          src_dialed: true
+          dst: true
+          dst_src_cid: true
+          aleg: true
+          bleg: true
+          ext_forwarder: true
+          billCallID: true
         order:
           brandId: true
-        blacklist:
+          companyId: true
+          calldate: true
+          type: true
+          desc: true
+          smartDuration: true
+          srcAdapted: true
+          srcDialedAdapted: true
+          dstAdapted: true
+          fw_desc: true
+          int_forwarder: true
+          forward_to: true
+          metered: true
+          meteringDate: true
+          price: true
+          invoiceId: true
+          externallyRated: true
+          billDuration: true
+          billDestination: true
+          targetPatternId: true
+          pricingPlanId: true
+          peeringContractId: true
           pricingPlanDetails: true
       fixedPositions:
         group0:
-          label: _("Company info")
-          colsPerRow: 3
+          label: _("Basic information")
+          colsPerRow: 12
           fields:
-            brandId: 1
-            companyId: 1        
+            brandId: 4
+            companyId: 4
+            calldate: 4
+            smartDuration: 4
+            type: 4
+            desc: 4
+            srcAdapted: 4
+            srcDialedAdapted: 4
+            dstAdapted: 4
         group1:
-          label: _("Call info")
-          colsPerRow: 2
+          label: _("Forwarding information")
+          colsPerRow: 12
           fields:
-            calldate: 1
-            type: 1
-            desc: 1
+            fw_desc: 12
+            int_forwarder: 6
+            forward_to: 6
         group2:
-          label: _("Src")
-          colsPerRow: 3
+          label: _("Billing information")
+          colsPerRow: 12
           fields:
-            src: 1
-            src_dialed: 1
-            src_duration: 1
+            metered: 6
+            meteringDate: 6
+            price: 6
+            invoiceId: 6
         group3:
-          label: _("Dst")
-          colsPerRow: 3
+          label: _("Details")
+          colsPerRow: 12
           fields:
-            dst: 1
-            dst_src_cid: 1
-            dst_duration: 1
+            externallyRated: 6
+            billDuration: 6
+            billDestination: 6
+            targetPatternId: 6
+            pricingPlanId: 6
+            peeringContractId: 6
         group4:
-          label: _("Fw")
-          colsPerRow: 2
+          label: _("Log")
+          colsPerRow: 1
           fields:
-            fw_desc: 1
-            ext_forwarder: 1
-            IvozProvider_forwarder: 1
-            forward_to: 1
-        group5:
-          label: _("Legs")
-          colsPerRow: 2
-          fields:
-            aleg: 1
-            bleg: 1
-        group6:
-          label: _("Metering")
-          colsPerRow: 6
-          fields:
-            metered: 2
-            meteringDate: 2
-            price: 2
-            pricingPlanId: 2
-            targetPatternId: 2
-            invoiceId: 2
-            pricingPlanDetails: 6
+            pricingPlanDetails: 1
   dialogs:  &parsedCDRs_dialogsLink
     tarificateCall_dialog: 
       <<: *ParsedCDRs
@@ -204,15 +165,7 @@ production:
       action: tarificate-call
       class:  ui-silk-coins-add
       multiItem: true
-      alwaysEnabled: true
-    testTarificateCall_dialog: 
-      <<: *ParsedCDRs
-      module: default
-      title: _("Tarificate %s", ngettext('call', 'calls', 1))
-      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
-      controller: klear-custom-tarificator
-      action: test-tarificate-call
-      class:  ui-silk-coins
+      alwaysEnabled: false
     getMeteringInfo_dialog: 
       <<: *ParsedCDRs
       module: default

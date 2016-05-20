@@ -85,6 +85,10 @@ production:
           title: ngettext('Language', 'Languages', 0)
           class: ui-silk-flag-blue
           description: _("List of %s", ngettext('Language', 'Languages', 0))
+        ParsedCDRsList:
+          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
     Brands:
       title: _("Brand Configuration")
       meta: "[mine:${auth.isBrandOperator}|brand:${auth.brandId}|name:${auth.brandName}]"
@@ -144,6 +148,10 @@ production:
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
 
+        ParsedCDRsBrandList:
+          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
     Admin:
       title: _("Company Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|name:${auth.companyName}]"

@@ -1,25 +1,33 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include ParsedCDRsList.yaml
 
 
 production: 
   main: 
     module: klearMatrix
     defaultScreen: parsedCDRsList_screen
-  screens: &parsedCDRs_screensLink 
-    parsedCDRsList_screen: &parsedCDRsList_screenLink 
-      controller: list
-      order:
-        field:
-          - calldate
-        type: desc
-      pagination: 
-        items: 25
-      <<: *ParsedCDRs
-      class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Call registry', 'Call registry', 0), "[format| (%parent%)]")
+  screens:
+    parsedCDRsList_screen:
+      <<: *parsedCDRsList_screenLink
       fields: &parsedCDRs_fieldsLink 
+        options:
+          title: _("Options")
+          screens:
+            parsedCDRsEdit_screen: true
+          default: parsedCDRsEdit_screen
+        order:
+          calldate: true
+          type: true
+          srcAdapted: true
+          srcDialedAdapted: true
+          dstAdapted: true
+          smartDuration: true
         blacklist:
+          brandId: true
+          src: true
+          src_dialed: true
+          dst: true
           pricingPlanDetails: true
           aleg: true
           bleg: true
@@ -31,10 +39,6 @@ production:
           metered: true
           meteringDate: true
           pricingPlanId: true
-          callSrcSumary: true
-          callDstSumary: true
-          callTypeSumary: true
-          meteringSumary: true
           invoiceId: true
           peeringContractId: true
           externallyRated: true
@@ -43,72 +47,64 @@ production:
           dst_duration: true
           billDuration: true
           billDestination: true
+          dst_src_cid: true
+          price: true
+          src_duration: true
+      forcedValues:
+        <<: *forcedCompany
+      options:
+    parsedCDRsEdit_screen:
+      <<: *ParsedCDRs
+      <<: *parsedCDRsEdit_screenLink
+      fullWidth: false
+      fields:
+        blacklist:
+          brandId: true
+          companyId: true
+          src_duration: true
+          dst_duration: true
+          src: true
+          src_dialed: true
           dst: true
           dst_src_cid: true
-        options: 
-          title: _("Options")
-          screens: 
-            parsedCDRsView_screen: edit
-          default: parsedCDRsView_screen
-      forcedValues:
-        <<: *forcedCompany
-        <<: *forcedBrand
-    parsedCDRsView_screen: &parsedCDRsView_screenLink 
-      <<: *ParsedCDRs
-      controller: edit
-      class: ui-silk-eye
-      disableSave: true
-      label: false
-      labelOnPostAction: _("View %s %2s", ngettext('Call details', 'Call details', 1), "[format| (%item%)]")
-      title: _("View %s %2s", ngettext('Call details', 'Call details', 1), "[format| (%item%)]")
-      forcedValues:
-        <<: *forcedCompany
-        <<: *forcedBrand
-      fields: &parsedCDRs_fieldsLink 
-        blacklist:
+          aleg: true
+          bleg: true
+          ext_forwarder: true
           pricingPlanDetails: true
           billCallID: true
           billDestination: true
-          dst_duration: true
-          dst: true
-          dst_src_cid: true
           billDuration: true
-          callSrcSumary: true
-          callDstSumary: true
-          callTypeSumary: true
-          meteringSumary: true
           externallyRated: true
           meteringDate: true
           pricingPlanId: true
           invoiceId: true
           peeringContractId: true
-          aleg: true
-          bleg: true
-          ext_forwarder: true
+          metered: true
+          price: true
+          targetPatternId: true
         order:
           calldate: true
           type: true
           desc: true
-          src: true
-          src_dialed: true
-          src_duration: true
+          srcAdapted: true
+          srcDialedAdapted: true
+          dstAdapted: true
           fw_desc: true
           int_forwarder: true
           forward_to: true
-          metered: true
-          price: true
-          targetPatternId: true
+          smartDuration: true
       fixedPositions:
         group0:
           label: _("Basic information")
           colsPerRow: 12
           fields:
             calldate: 8
+            smartDuration: 4
             type: 4
-            desc: 12
-            src: 4
-            src_dialed: 4
-            src_duration: 4
+            desc: 8
+            srcAdapted: 4
+            srcDialedAdapted: 4
+            dstAdapted: 4
         group1:
           label: _("Forwarding information")
           colsPerRow: 12
@@ -116,13 +112,6 @@ production:
             fw_desc: 12
             int_forwarder: 6
             forward_to: 6
-        group3:
-          label: _("Billing information")
-          colsPerRow: 1
-          fields:
-            metered: 1
-            price: 1
-            targetPatternId: 1
 staging: 
   _extends: production
 testing: 

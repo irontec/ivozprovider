@@ -16,7 +16,7 @@ production:
       trim: both
       maxLength: 128
     src_dialed: 
-      title: _('Destination')
+      title: _('Dialed number')
       type: text
       trim: both
       maxLength: 128
@@ -27,7 +27,7 @@ production:
       defaultValue: 
       maxLength: 32
     dst: 
-      title: _('Dst')
+      title: _('Final destination')
       type: text
       trim: both
       maxLength: 128
@@ -154,41 +154,42 @@ production:
           order: name
         'null': _("Unasigned")
     price: 
-      title: ngettext('Price', 'Prices', 1)
+      title: ngettext('Price (€)', 'Prices (€)', 1)
       type: text
       trim: both
     pricingPlanDetails: 
       title: _('Pricing plan details')
       type: textarea
-    callSrcSumary:
-      title: _('Call sumary')
+      prefix: <p align=left>
+      sufix: </p>
+    srcAdapted:
+      title: _('Source')
       type: ghost
       dirty: true
       source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsSymary
-        method: getCallSrcSumary
-    callDstSumary:
-      title: _('Call sumary')
+        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
+        method: getSrcAdapted
+    srcDialedAdapted:
+      title: _('Source dialed')
       type: ghost
       dirty: true
       source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsSymary
-        method: getCallDstSumary
-    callTypeSumary:
-      title: _('Type')
+        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
+        method: getSrcDialedAdapted
+    dstAdapted:
+      title: _('Final destination')
       type: ghost
       dirty: true
       source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsSymary
-        method: getCallTypeSumary
-        searchMethod: getSearchConditionsForCallTypeSumary
-    meteringSumary:
-      title: _('Metering sumary')
+        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
+        method: getDstAdapted
+    smartDuration:
+      title: _('Call Duration')
       type: ghost
       dirty: true
       source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsSymary
-        method: getMeteringSumary
+        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
+        method: getSmartDuration
     invoiceId: 
       title: _('Invoice')
       type: select
@@ -202,8 +203,21 @@ production:
             template: '%number%'
           order: number
         'null': _("Unbilled")
+    billCallID:
+      title: _('Bill callid')
+      type: text
+      maxLength: 128
+    billDuration:
+      title: _('Duration')
+      type: number
+      source:
+        control: Spinner
+    billDestination:
+      title: _('Destination')
+      type: text
+      maxLength: 128
     peeringContractId:
-      title: _('Peering contract id')
+      title: _('Peering contract')
       type: select
       source:
         data: mapper
@@ -212,8 +226,7 @@ production:
           fieldName:
             fields:
               - name
-              - externallyRated
-            template: '%name% - Externally Rated: %externallyRated%'
+            template: '%name%'
           order: name
         'null': _("Unasigned")
     externallyRated:

@@ -1,6 +1,6 @@
 <?php
 
-class IvozProvider_Klear_Ghost_ParsedCDRsSymary extends KlearMatrix_Model_Field_Ghost_Abstract
+class IvozProvider_Klear_Ghost_ParsedCDRsFields extends KlearMatrix_Model_Field_Ghost_Abstract
 {
 
     /**
@@ -9,7 +9,7 @@ class IvozProvider_Klear_Ghost_ParsedCDRsSymary extends KlearMatrix_Model_Field_
      *            model
      * @return name of target based on DDI type
      */
-    public function getCallSrcSumary (\IvozProvider\Model\ParsedCDRs $model)
+    public function getCallSrcSummary (\IvozProvider\Model\ParsedCDRs $model)
     {
         $content = "<p>";
         $content .=     " <b>Extension: </b>".$model->getSrc()."<br />";
@@ -20,7 +20,7 @@ class IvozProvider_Klear_Ghost_ParsedCDRsSymary extends KlearMatrix_Model_Field_
         return $content;
     }
 
-    public function getCallDstSumary (\IvozProvider\Model\ParsedCDRs $model)
+    public function getCallDstSummary (\IvozProvider\Model\ParsedCDRs $model)
     {
         $content = "<p>";
         $content .=     " <b>Number: </b>".$model->getDst()."</br>";
@@ -31,20 +31,20 @@ class IvozProvider_Klear_Ghost_ParsedCDRsSymary extends KlearMatrix_Model_Field_
         return $content;
     }
 
-    public function getCallTypeSumary (\IvozProvider\Model\ParsedCDRs $model)
+    public function getCallTypeSummary (\IvozProvider\Model\ParsedCDRs $model)
     {
         $content = "<span title='".$model->getDesc()."'>".$model->getType()."</span>";
 
         return $content;
     }
 
-    public function getSearchConditionsForCallTypeSumary($values, $searchOps, $model)
+    public function getSearchConditionsForCallTypeSummary($values, $searchOps, $model)
     {
         $where = "type in ('".implode("','", $values)."')";
         return $where;
     }
 
-    public function getMeteringSumary (\IvozProvider\Model\ParsedCDRs $model)
+    public function getMeteringSummary (\IvozProvider\Model\ParsedCDRs $model)
     {
         $metered = $model->getMetered();
         if ($metered == 0) {
@@ -63,5 +63,35 @@ class IvozProvider_Klear_Ghost_ParsedCDRsSymary extends KlearMatrix_Model_Field_
         $content .= "</p>";
 
         return $content;
+    }
+
+    public function getSrcAdapted (\IvozProvider\Model\ParsedCDRs $model)
+    {
+        return $this->stripCompanyCC($model->getSrc(), $model->getCompany()->getCountries()->getCallingCode());
+    }
+
+    public function getSrcDialedAdapted (\IvozProvider\Model\ParsedCDRs $model)
+    {
+        return $this->stripCompanyCC($model->getSrcDialed(), $model->getCompany()->getCountries()->getCallingCode());
+    }
+
+    public function getDstAdapted (\IvozProvider\Model\ParsedCDRs $model)
+    {
+        return $this->stripCompanyCC($model->getDst(), $model->getCompany()->getCountries()->getCallingCode());
+    }
+
+    public function getSmartDuration (\IvozProvider\Model\ParsedCDRs $model)
+    {
+        $billDuration = $model->getBillDuration();
+
+        if (!is_null($billDuration)) {
+            return $billDuration;
+        }
+        
+        return $model->getSrcDuration();
+    }
+
+    public function stripCompanyCC ($num, $cc) {
+        return preg_replace("/^$cc/", "", $num);
     }
 }
