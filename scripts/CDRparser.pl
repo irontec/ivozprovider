@@ -197,7 +197,7 @@ sub setCallType {
             $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO';
         }
         when (/proxytrunks-proxytrunks/) {
-            $stat{type} = 'PSTN->PSTN';
+            $stat{type} = 'PSTN-PSTN';
             $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
             $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
             $stat{billDuration} = $stat{dst_duration}; # Only billable calls will have this field
@@ -312,6 +312,12 @@ sub insertStat {
           or die "Couldn't execute statement: $insertStat";
 }
 
+sub callTarificator {
+    my $client = Gearman::Client->new;
+    $client->job_servers(@gearman_servers);
+    $client->do_task($gearman_job);
+}
+
 #########################################
 # MAIN LOGIC
 #########################################
@@ -375,9 +381,7 @@ while (my $call = $sth->fetchrow_hashref) {
 $dbh->disconnect;
 
 # Call Gearmand tarificator Job
-my $client = Gearman::Client->new;
-$client->job_servers(@gearman_servers);
-$client->do_task($gearman_job);
+callTarificator;
 
 say "Execution ended: $execution{ok} ok, $execution{error} error (total: $pendingCallsNumber)";
 exit;
