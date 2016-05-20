@@ -109,7 +109,7 @@ class InvoiceTemplates extends TableAbstract
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'text',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
+	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

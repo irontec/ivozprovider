@@ -260,9 +260,6 @@ class InvoiceTemplates extends ModelAbstract
     public function setTemplate($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_template != $data) {
             $this->_logChange('template');
         }
