@@ -54,7 +54,7 @@ class ExternalCallAction extends RouterAction
         if (strlen($outboundPrefix) !== 0 && strpos($number, $outboundPrefix) !== 0) {
             $this->agi->error("Destination number %s without [company%d] prefix: %s",
                             $number, $company->getId(), $outboundPrefix);
-            $this->agi->hangup(21); // Declined
+            $this->agi->hangup(21); // Decline
             return;
         }
 
@@ -70,7 +70,7 @@ class ExternalCallAction extends RouterAction
                             $user->getFullName(), $user->getId(), $aclNumber);
             if (!$user->hasSrcUserPerm($aclNumber)) {
                 $this->agi->error("User is not allowed to place this call.");
-                $this->agi->hangup(21); // Declined
+                $this->agi->hangup(57); // AST_CAUSE_BEARERCAPABILITY_NOTAUTH
                 return;
             }
         }
@@ -92,6 +92,7 @@ class ExternalCallAction extends RouterAction
         $pricingPlan = $company->isDstTarificable($number);
         if (!$pricingPlan) {
             $this->agi->error("Destination %s can not be billed.", $number);
+            $this->agi->hangup(52); // AST_CAUSE_OUTGOING_CALL_BARRED
             return;
         }
 
