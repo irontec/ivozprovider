@@ -1,0 +1,70 @@
+production: 
+  class: \IvozProvider\Model\AstPsAors
+  fields: 
+    sorcery_id: 
+      title: _('Sorcery id')
+      type: text
+      required: true
+      maxLength: 40
+      default: true
+    default_expiration: 
+      title: _('Default expiration')
+      type: number
+      source: 
+        control: Spinner
+    max_contacts: 
+      title: _('Max contact')
+      type: number
+      source: 
+        control: Spinner
+    minimum_expiration: 
+      title: _('Minimum expiration')
+      type: number
+      source: 
+        control: Spinner
+    remove_existing: 
+      title: _('Remove existing')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    authenticate_qualify: 
+      title: _('Authenticate qualify')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    maximum_expiration: 
+      title: _('Maximum expiration')
+      type: number
+      source: 
+        control: Spinner
+    support_path: 
+      title: _('Support path')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    contact: 
+      title: _('Contact')
+      type: text
+      maxLength: 200
+    qualify_frequency: 
+      title: _('Qualify frequency')
+      type: number
+      source: 
+        control: Spinner
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

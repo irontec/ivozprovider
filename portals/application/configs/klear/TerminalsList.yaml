@@ -31,8 +31,8 @@ production:
             terminalsDel_dialog: true
           default: terminalsEdit_screen
         order:
-          TerminalModelId: true
           name: true
+          TerminalModelId: true
           password: true
           disallow: true
           allow: true

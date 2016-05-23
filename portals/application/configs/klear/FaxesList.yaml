@@ -75,6 +75,7 @@ production:
       fields: 
         <<: *faxesInOut_fieldsLink
         options:
+          title: _("Options")
           screens:
             faxesInView_screen: true
           default: faxesInEdit_screen
@@ -99,6 +100,7 @@ production:
       fields: 
         <<: *faxesInOut_fieldsLink
         options:
+          title: _("Options")
           screens:
             faxesOutEdit_screen: true
           default: faxesOutEdit_screen

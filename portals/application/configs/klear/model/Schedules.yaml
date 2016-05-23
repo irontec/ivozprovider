@@ -32,7 +32,7 @@ production:
         settings: 
           disabled: 'false'
     timeout: 
-      title: _('Timeout')
+      title: _('Time out')
       type: picker
       required: true
       source: 

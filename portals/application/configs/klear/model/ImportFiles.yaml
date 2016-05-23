@@ -3,7 +3,7 @@ production:
   fields: 
     file: 
       title: ngettext('File', 'Files', 1)
-      help: _("Arvhico a importar")
+      help: _("File to Import")
       type: file
       source: 
         data: fso

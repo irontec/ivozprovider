@@ -41,7 +41,7 @@ production:
             fields: 
               - name
             template: '%name%'
-          order: fileMimeType
+          order: encodedFileMimeType
         'null': _("Unasigned")
 staging: 
   _extends: production

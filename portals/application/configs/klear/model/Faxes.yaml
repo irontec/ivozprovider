@@ -43,7 +43,7 @@ production:
             title: _("Yes")
             visualFilter:
               show: ["email"]
-    outgoingDDI:
+    outgoingDDIId:
       title: _('Outgoing DDI')
       type: select
       source: 

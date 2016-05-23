@@ -136,9 +136,9 @@ production:
           class:  ui-silk-money
           description: _("List of %s", ngettext('Pricing Plan', 'Pricing Plans', 0))
         FixedCostsList:
-          title: _("List of %s", ngettext('fixed cost', 'fixed costs', 0))
+          title: ngettext('Fixed cost', 'Fixed costs', 0)
           class:  ui-silk-money-add
-          description: _("List of %s", ngettext('fixed cost', 'fixed costs', 0))
+          description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
         InvoiceTemplatesList:
           title: _('Invoice templates')
           class: ui-silk-report-key

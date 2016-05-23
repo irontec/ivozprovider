@@ -71,16 +71,11 @@ production:
           fields:
             companyId: 1
             name: 1
-        group1:
-          label: _("Locutions")
-          colsPerRow: 3
-          fields:
             welcomeLocutionId: 1
-            holidayLocutionId: 1
-            outOfScheduleLocutionId: 1
         group3:
           colsPerRow: 2
           fields:
+            holidayLocutionId: 2
             holidayTargetType: 1
             holidayNumberValue: 1
             holidayExtensionId: 1
@@ -88,6 +83,7 @@ production:
         group4:
           colsPerRow: 2
           fields:
+            outOfScheduleLocutionId: 2
             outOfScheduleTargetType: 1
             outOfScheduleNumberValue: 1
             outOfScheduleExtensionId: 1

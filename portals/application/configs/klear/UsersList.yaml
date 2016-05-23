@@ -38,7 +38,6 @@ production:
           username: true
           pass: true
           isBoss: true
-          active: true
           doNotDisturb: true
           timezoneId: true
           terminalId: true
@@ -49,24 +48,26 @@ production:
           bossAssistantId: true
           exceptionBoosAssistantRegExp: true
           voicemailEnabled: true
-          attachVoicemailSound: true
+          active: true
         blacklist:
           email: true
           pass: true
           timezoneId: true
-          outgoingDDIId: true
           callACLId: true
           bossAssistantId: true
           exceptionBoosAssistantRegExp: true
           HuntGroupsRelUsers: true
           PickUpRelUsers: true
           timeout: true
+          isBoss: true
           maxCalls: true 
           callWaiting: true
           tokenKey: true
           countryId: true
           voicemailEnabled: true
-          attachVoicemailSound: true
+          voicemailAttachSound: true
+          voicemailSendMail: true
+          languageId: true
       options: 
         title: _("Options")
         screens: 
@@ -89,9 +90,8 @@ production:
           <<: *Users_orderLink
         blacklist:
           HuntGroupsRelUsers: true
-          maxCalls: true 
-          attachVoicemailSound: true
-          voicemailEnabled: true
+          maxCalls: true
+          countryId: true 
           tokenKey: true
       fixedPositions: &UsersFixedPositions_link
         group0:
