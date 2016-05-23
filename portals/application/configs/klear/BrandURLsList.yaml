@@ -48,10 +48,10 @@ production:
           <<: *brandURLsOrder_Link
       fixedPositions: &brandURLsFixedPos_Link
         group0:
-          colsPerRow: 7
+          colsPerRow: 8
           fields:
             name: 5
-            urlType: 1
+            urlType: 2
             url: 7
         group1:
           colsPerRow: 3

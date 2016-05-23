@@ -13,7 +13,7 @@ production:
       pagination: 
         items: 25
       <<: *KamRtpproxy
-      class: ui-silk-text-list-bullets
+      class: ui-silk-bell-link
       title: _("List of %s %2s", ngettext('Media relay', 'Media relay(s)', 0), "[format| (%parent%)]")
       fields: &kamRtpproxy_fieldsLink 
         blacklist:

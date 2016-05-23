@@ -102,7 +102,7 @@ production:
     
     kamTrunksDialplan_caller_inList_screen:
       <<: *kamTrunksDialplanList_screenLink
-      title: _("Caller transformations")
+      title: _("Caller In transformations")
       filterClass: IvozProvider_Klear_Filter_KamDialplanCallerIn
       parentOptionCustomizer:
         - recordCount
@@ -116,7 +116,7 @@ production:
       <<: *kamTrunksDialplanNew_screenLink
     kamTrunksDialplan_callee_inList_screen:
       <<: *kamTrunksDialplanList_screenLink
-      title: _("Callee transformations")
+      title: _("Callee In transformations")
       filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeIn
       parentOptionCustomizer:
         - recordCount
@@ -131,7 +131,7 @@ production:
       
     kamTrunksDialplan_caller_outList_screen:
       <<: *kamTrunksDialplanList_screenLink
-      title: _("Kam Trunks Dialplan Caller Out")
+      title: _("Caller Out transformations")
       filterClass: IvozProvider_Klear_Filter_KamDialplanCallerOut
       parentOptionCustomizer:
         - recordCount
@@ -146,7 +146,7 @@ production:
       
     kamTrunksDialplan_callee_outList_screen:
       <<: *kamTrunksDialplanList_screenLink
-      title: _("Kam Trunks Dialplan Callee Out")
+      title: _("Callee Out transformations")
       filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeOut
       parentOptionCustomizer:
         - recordCount

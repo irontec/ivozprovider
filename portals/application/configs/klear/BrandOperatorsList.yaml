@@ -30,6 +30,9 @@ production:
           pass: true
           timezoneId: true
           active: true
+        blacklist:
+          pass: true
+          timezoneId: true
       options: 
         title: _("Options")
         screens: 
@@ -47,6 +50,21 @@ production:
       fields:
         order:
           <<: *BrandOperators_orderLink
+      fixedPositions: &BrandOperatorsFixedPositions_link
+        group0:
+          label: _("Personal data")
+          colsPerRow: 3
+          fields:
+            name: 1
+            lastname: 1
+            email: 1
+        group1:
+          label: _("Login info")
+          colsPerRow: 3
+          fields:
+            username: 1
+            pass: 1
+            active: 1
     brandOperatorsEdit_screen: &brandOperatorsEdit_screenLink 
       <<: *BrandOperators
       controller: edit
@@ -56,6 +74,8 @@ production:
       fields:
         order:
           <<: *BrandOperators_orderLink
+      fixedPositions:
+        <<: *BrandOperatorsFixedPositions_link
   dialogs: &brandOperators_dialogsLink
     brandOperatorsDel_dialog: &brandOperatorsDel_dialogLink 
       <<: *BrandOperators

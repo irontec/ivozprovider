@@ -27,9 +27,11 @@ production:
           email: true
           username: true
           pass: true
-          timezoneIde: true
+          timezoneId: true
           active: true
-          
+        blacklist:
+          pass: true
+          timezoneId: true          
       options: 
         title: _("Options")
         screens: 
@@ -47,6 +49,21 @@ production:
       fields:
         order:
           <<: *MainOperators_orderLink
+      fixedPositions: &MainOperatorsFixedPositions_link
+        group0:
+          label: _("Personal data")
+          colsPerRow: 3
+          fields:
+            name: 1
+            lastname: 1
+            email: 1
+        group1:
+          label: _("Login info")
+          colsPerRow: 3
+          fields:
+            username: 1
+            pass: 1
+            active: 1          
     mainOperatorsEdit_screen: &mainOperatorsEdit_screenLink 
       <<: *MainOperators
       controller: edit
@@ -56,6 +73,8 @@ production:
       fields:
         order:
           <<: *MainOperators_orderLink
+      fixedPositions:
+        <<: *MainOperatorsFixedPositions_link
   dialogs: 
     mainOperatorsDel_dialog: &mainOperatorsDel_dialogLink 
       <<: *MainOperators
