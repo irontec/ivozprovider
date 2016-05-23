@@ -322,8 +322,8 @@ sub callTarificator {
 # MAIN LOGIC
 #########################################
 
-# Fetch oldest 100 unparsed calls (only alegs with duration > 0)
-my $getPendingCalls = "SELECT c.*, com.brandId FROM CDRs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' ORDER BY start_time";
+# Fetch oldest unparsed calls (only alegs with duration > 0) - 30" from its hangup
+my $getPendingCalls = "SELECT c.*, com.brandId FROM CDRs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' AND (UNIX_TIMESTAMP(calldate) + 30) < UNIX_TIMESTAMP(NOW()) ORDER BY start_time";
 
 my $sth = $dbh->prepare($getPendingCalls)
                 or die "Couldn't prepare statement: $getPendingCalls";
