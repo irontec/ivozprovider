@@ -32,7 +32,7 @@ class Terminals extends Raw\Terminals
         } else {
             throw new \Exception('Invalid mac', 417);
         }
-        
+
         $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
         if ($response) {
             // Replicate Terminal into ast_ps_endpoint
@@ -56,7 +56,6 @@ class Terminals extends Raw\Terminals
                 ->setAllow($model->getAllow())
                 ->setDirectmedia($model->getDirectmedia())
                 ->setDirectmediaMethod($model->getDirectmediaMethod())
-                ->setDtmfMode($model->getDtmfMode())
                 ->setSubscribecontext('company' . $model->getCompanyId())
                 ->save($forceInsert);
 
