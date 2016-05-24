@@ -86,6 +86,7 @@ use DBI;
 no warnings;
 use Gearman::Client;
 use POSIX;
+use Data::Dumper;
 
 #########################################
 # GLOBALS
@@ -111,52 +112,155 @@ my $dbh = DBI->connect($dsn, $user, $pass)
 my $MAXCALLS = 100;
 
 # My needed variables
-my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder int_forwarder forward_to companyId brandId aleg bleg billCallID billDuration billDestination peeringContractId/;
-my %stat; # Hash containing keys referred in @STATFIELDS and aditional stuff not inserted in stat
+my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder int_forwarder forward_to referrer referee companyId brandId aleg bleg cleg billCallID billDuration billDestination peeringContractId/;
 my %execution = ('ok' => 0, 'error' => 0);
+
+my @stats; # Array to hashrefs, one per insert in ParsedCDRs
+my $ids; # Ref to array with IDs in kam_acc_cdrs
 
 #########################################
 # SUBROUTINES
 #########################################
 
 sub setBlegInfo {
-    my $callid = $stat{callid};
-    
-    my $get_bleg = "SELECT * from kam_acc_cdrs WHERE xcallid='$callid' AND duration!='0'";
+    my $stat = shift;
+
+    my $callid = $$stat{callid};
+
+    # Real blegs would not have referrer field
+    my $get_bleg = "SELECT * from kam_acc_cdrs WHERE xcallid='$callid' AND referrer='' AND duration!='0'";
     my $sth = $dbh->prepare($get_bleg)
-                or die "Couldn't prepare statement: $get_bleg";
+          or die "Couldn't prepare statement: $get_bleg";
     $sth->execute() 
           or die "Couldn't execute statement: $get_bleg";
 
     if ($sth->rows > 1) {
-        warn "[$callid] Has multiple blegs, skip\n";
-        return undef;
+        warn "[$callid] Has multiple blegs, error\n";
+        while (my $bleg = $sth->fetchrow_hashref) {
+            say "[$callid] bleg: $$bleg{callid} ($$bleg{id})";
+            push @$ids, $$bleg{id};
+        }
+        return 1;
     }
 
     if ($sth->rows == 1) {
         my $bleg = $sth->fetchrow_hashref;
-        say "[$callid] Has unique bleg: $$bleg{callid}";
+        say "[$callid] Has unique bleg: $$bleg{callid} ($$bleg{id})";
         say "[$callid] bleg is from $$bleg{proxy}";
 
+        push @$ids, $$bleg{id};
+
         # Set bleg stuff
-        $stat{bleg} = $$bleg{callid};
-        $stat{dst_duration} = ceil $$bleg{duration};
-        $stat{dst_src_cid} = $$bleg{caller};
-        $stat{dst} = $$bleg{callee};
-        $stat{diversionB} = $$bleg{diversion};
+        $$stat{bleg} = $$bleg{callid};
+        $$stat{dst_duration} = ceil $$bleg{duration};
+        $$stat{dst_src_cid} = $$bleg{caller};
+        $$stat{dst} = $$bleg{callee};
+        $$stat{diversionB} = $$bleg{diversion};
  
         # Set aditional fields for future reference (not used in INSERT)
-        $stat{proxyB} = $$bleg{proxy};
-        $stat{peeringContractId} = $$bleg{peeringContractId} if $$bleg{peeringContractId};
+        $$stat{proxyB} = $$bleg{proxy};
+        $$stat{peeringContractId} = $$bleg{peeringContractId} if $$bleg{peeringContractId};
+        $$stat{refereeB} = $$bleg{referee};
     } else {
         say "[$callid] Has NO bleg";
-        $stat{proxyB} = 'none';
+        $$stat{proxyB} = 'none';
     }
 
-    return 1;
+    return 0;
+}
+
+sub setAlegData {
+    my $call = shift;
+    my $stat = shift;
+
+    push @$ids, $$call{id};
+    # Set aleg stuff
+    $$stat{aleg} = $$call{callid};
+    $$stat{calldate} = $$call{start_time};
+    $$stat{src_duration} = ceil $$call{duration};
+    $$stat{src} = $$call{caller};
+    $$stat{src_dialed} = $$call{callee};
+    $$stat{diversionA} = $$call{diversion};
+
+    # Set generic stuff
+    $$stat{companyId} = $$call{companyId};
+    $$stat{brandId} = $$call{brandId};
+
+    # Set aditional fields for future reference (not used in INSERT)
+    $$stat{proxy} = $$call{proxy};
+    $$stat{callid} = $$call{callid};
+    $$stat{typeA} = $$call{type}; # entrante / saliente
+    $$stat{subtypeA} = $$call{subtype}; # interna / externa (proxyusers) - fax / normal (proxytrunks)
+    $$stat{peeringContractId} = $$call{peeringContractId} if $$call{peeringContractId};
+    $$stat{referrerA} = $$call{referrer};
+    $$stat{refereeA} = $$call{referee};
+}
+
+sub parseClegs {
+    my $callid = shift;
+
+    # Get calls generated with REFERs from initial call (or its bleg)
+    my $get_clegs = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='$callid' AND referrer!='' AND duration!='0' ORDER BY start_time";
+
+    my $sth = $dbh->prepare($get_clegs)
+          or die "Couldn't prepare statement: $get_clegs";
+    $sth->execute() 
+          or die "Couldn't execute statement: $get_clegs";
+
+    my $cleg_num = $sth->rows;
+    say "[$callid] Has $cleg_num clegs";
+
+    while (my $call = $sth->fetchrow_hashref) {
+        my $stat = {};
+
+        say "[$callid] cleg: $$call{callid} ($$call{id})";
+
+        # Clegs are treated as aleg only calls
+        setAlegData($call, $stat);
+
+        # Custom stuff for C legs
+        $$stat{aleg} = $callid;
+        $$stat{cleg} = $$call{callid};
+
+        push @stats, $stat;
+    }
+}
+
+# FIXME Llamadas para clegs??
+sub parseRefer {
+    my $stat = shift;
+
+    if ($$stat{referrerA}) {
+        $$stat{referrer} = $$stat{referrerA};
+        say "[$$stat{callid}] Call dued to a previous refer by $$stat{referrer}";
+    } else {
+        say "[$$stat{callid}] Call not dued to refer";
+    }
+
+    if ($$stat{refereeA} and $$stat{refereeB}) {
+        $$stat{referee} = $$stat{refereeA} . '-' . $$stat{refereeB};
+        $$stat{referrer} = $$stat{src} . '-' . $$stat{dst};
+        say "[$$stat{callid}] Both aleg and bleg refer the call";
+    } elsif ($$stat{refereeA}) {
+        $$stat{referee} = $$stat{refereeA};
+        $$stat{referrer} = $$stat{src};
+        say "[$$stat{callid}] aleg refers the call to $$stat{referee}";
+    } elsif ($$stat{refereeB}) {
+        $$stat{referee} = $$stat{refereeB};
+        $$stat{referrer} = $$stat{dst};
+        say "[$$stat{callid}] bleg refers the call to $$stat{referee}";
+    } else {
+        say "[$$stat{callid}] Not referred anywhere";
+    }
 }
 
 sub setCallType {
+    my $stat = shift;
+
+    if ($$stat{cleg}) {
+        $$stat{proxyB} = 'none';
+    }
+
     # Significado: param1 (delimiter) param2
     # param1:
     #    * donde nace la llamada
@@ -168,133 +272,146 @@ sub setCallType {
     #    * donde acaba la llamada
     #    * Valores posibles: USER, PSTN, PBX
 
-    given($stat{proxy} . '-' . $stat{proxyB}) {
+    given($$stat{proxy} . '-' . $$stat{proxyB}) {
         when (/proxyusers-proxyusers/) {
-            $stat{type} = 'USER-USER';
-            $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN USUARIO';
+            $$stat{type} = 'USER-USER';
+            $$stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN USUARIO';
         }
         when (/proxyusers-proxytrunks/) {
-            $stat{type} = 'USER-PSTN';
-            $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN PSTN';
-            $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
-            $stat{billDuration} = $stat{dst_duration}; # Only billable calls will have this field
-            $stat{billDestination} = $stat{dst}; # Only billable calls will have this field
+            $$stat{type} = 'USER-PSTN';
+            $$stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN PSTN';
+            $$stat{billCallID} = $$stat{bleg}; # Only billable calls will have this field
+            $$stat{billDuration} = $$stat{dst_duration}; # Only billable calls will have this field
+            $$stat{billDestination} = $$stat{dst}; # Only billable calls will have this field
         }
         when (/proxyusers-none/) {
-            if ($stat{typeA} eq 'saliente') {
-                $stat{type} = 'USER-PBX';
-                $stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN AS';
-            } elsif ($stat{typeA} eq 'entrante') {
-                $stat{type} = 'PBX-USER';
-                $stat{desc} = 'LLAMADA DE PBX QUE ACABA EN USUARIO';
+            if ($$stat{typeA} eq 'saliente') {
+                $$stat{type} = 'USER-PBX';
+                $$stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN AS';
+            } elsif ($$stat{typeA} eq 'entrante') {
+                $$stat{type} = 'PBX-USER';
+                $$stat{desc} = 'LLAMADA DE PBX QUE ACABA EN USUARIO';
             } else {
-                say "[$stat{callid}] Invalid typeA '$stat{typeA}' (nor entrante/saliente), check!";
-                return undef;
+                say "[$$stat{callid}] Invalid typeA '$$stat{typeA}' (nor entrante/saliente), check!";
+                return 1;
             }
         }
         when (/proxytrunks-proxyusers/) {
-            $stat{type} = 'PSTN-USER';
-            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO';
+            $$stat{type} = 'PSTN-USER';
+            $$stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO';
         }
         when (/proxytrunks-proxytrunks/) {
-            $stat{type} = 'PSTN-PSTN';
-            $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
-            $stat{billCallID} = $stat{bleg}; # Only billable calls will have this field
-            $stat{billDuration} = $stat{dst_duration}; # Only billable calls will have this field
-            $stat{billDestination} = $stat{dst}; # Only billable calls will have this field
+            $$stat{type} = 'PSTN-PSTN';
+            $$stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
+            $$stat{billCallID} = $$stat{bleg}; # Only billable calls will have this field
+            $$stat{billDuration} = $$stat{dst_duration}; # Only billable calls will have this field
+            $$stat{billDestination} = $$stat{dst}; # Only billable calls will have this field
         }
         when (/proxytrunks-none/) {
-            if ($stat{typeA} eq 'entrante') {
-                $stat{type} = 'PSTN-PBX';
-                $stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS';
-            } elsif ($stat{typeA} eq 'saliente') {
-                $stat{type} = 'PBX-PSTN';
-                $stat{desc} = 'LLAMADA DE PBX QUE ACABA EN PSTN';
-                $stat{billCallID} = $stat{aleg}; # Only billable calls will have this field
-                $stat{billDuration} = $stat{src_duration}; # Only billable calls will have this field
-                $stat{billDestination} = $stat{src_dialed}; # Only billable calls will have this field
+            if ($$stat{typeA} eq 'entrante') {
+                $$stat{type} = 'PSTN-PBX';
+                $$stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS';
+            } elsif ($$stat{typeA} eq 'saliente') {
+                $$stat{type} = 'PBX-PSTN';
+                $$stat{desc} = 'LLAMADA DE PBX QUE ACABA EN PSTN';
+                if ($$stat{cleg}) {
+                    $$stat{billCallID} = $$stat{cleg}; # Only billable calls will have this field
+                } else {
+                    $$stat{billCallID} = $$stat{aleg}; # Only billable calls will have this field
+                }
+                $$stat{billDuration} = $$stat{src_duration}; # Only billable calls will have this field
+                $$stat{billDestination} = $$stat{src_dialed}; # Only billable calls will have this field
             } else {
-                say "[$stat{callid}] Invalid typeA '$stat{typeA}' (nor entrante/saliente), check!";
-                return undef;
+                say "[$$stat{callid}] Invalid typeA '$$stat{typeA}' (nor entrante/saliente), check!";
+                return 1;
             }
-            $stat{desc} = "$stat{desc} ($stat{subtypeA})" if $stat{subtypeA} ne 'normal';
+            $$stat{desc} = "$$stat{desc} ($$stat{subtypeA})" if $$stat{subtypeA} ne 'normal';
         }
     }
 
-    if ($stat{int_forwarder}) {
-        $stat{type} =~ s/-/->/;
-        $stat{desc} .= ' (DESVIADA)';
+    if ($$stat{int_forwarder}) {
+        $$stat{type} =~ s/-/->/;
+        $$stat{desc} .= ' (DESVIADA)';
     }
 
-    return 1;
+    if ($$stat{cleg}) {
+        $$stat{desc} .= ' (TRANSFERENCIA CIEGA)';
+    }
+
+    return 0;
 }
 
+# FIXME Llamadas para clegs??
 sub parseForward {
-    unless ($stat{diversionA} or $stat{diversionB}) {
-        say "[$stat{callid}] Desvio: no";
+    my $stat = shift;
+
+    unless ($$stat{diversionA} or $$stat{diversionB}) {
+        say "[$$stat{callid}] Desvio: no";
     } 
 
-    if ($stat{diversionA}) {
-        if ($stat{proxy} eq 'proxyusers') {
-            warn "[$stat{callid}] Llamada de un terminal con Diversion seteado, error\n"; 
-            return undef;
+    if ($$stat{diversionA}) {
+        if ($$stat{proxy} eq 'proxyusers') {
+            warn "[$$stat{callid}] Llamada de un terminal con Diversion seteado, error\n"; 
+            return 1;
         } else {
-            say "[$stat{callid}] Desvio: desvio de PSTN ajeno a la plataforma";
-            $stat{ext_forwarder} = $stat{diversionA};
+            say "[$$stat{callid}] Desvio: desvio de PSTN ajeno a la plataforma";
+            $$stat{ext_forwarder} = $$stat{diversionA};
         }
     }
 
-    if ($stat{diversionB}) {
-        if ($stat{diversionB} eq $stat{diversionA}) {
-            say "[$stat{callid}] bleg has the same diversion as aleg, skip parsing (AS has just resend it)";
-            return 1;
+    if ($$stat{diversionB}) {
+        if ($$stat{diversionB} eq $$stat{diversionA}) {
+            say "[$$stat{callid}] bleg has the same diversion as aleg, skip parsing (AS has just resend it)";
+            return 0;
         }
 
-        $stat{forward_to} = $stat{dst};
-        $stat{int_forwarder} = $stat{diversionB};
+        $$stat{forward_to} = $$stat{dst};
+        $$stat{int_forwarder} = $$stat{diversionB};
 
-        if ($stat{proxyB} eq 'proxyusers') {
-            say "[$stat{callid}] Desvio: $stat{int_forwarder} desvia la llamada a numero interno $stat{forward_to}"; 
-            $stat{fw_desc} = "$stat{int_forwarder} desvia la llamada a numero interno $stat{forward_to}";
+        if ($$stat{proxyB} eq 'proxyusers') {
+            say "[$$stat{callid}] Desvio: $$stat{int_forwarder} desvia la llamada a numero interno $$stat{forward_to}"; 
+            $$stat{fw_desc} = "$$stat{int_forwarder} desvia la llamada a numero interno $$stat{forward_to}";
         } else {
             # En desvio a PSTN, diversion contendra el DDI out del desviador y la extension desviadora
-            say "[$stat{callid}] Desvio: $stat{int_forwarder} desvia la llamada a numero externo $stat{forward_to}"; 
-            $stat{fw_desc} = "$stat{int_forwarder} desvia la llamada a numero externo $stat{forward_to}";
+            say "[$$stat{callid}] Desvio: $$stat{int_forwarder} desvia la llamada a numero externo $$stat{forward_to}"; 
+            $$stat{fw_desc} = "$$stat{int_forwarder} desvia la llamada a numero externo $$stat{forward_to}";
         }
     }
 
-    return 1;
+    return 0;
 }
 
 sub setParsedValue {
+    my $mainCallId = shift;
+    my $ids = shift;
     my $value = shift;
-
-    my $proxy = $stat{proxy};
-    my $callid = $stat{callid};
 
     # Update execution counters
     $execution{ok}++ if $value eq 'yes';
     $execution{error}++ if $value eq 'error';
 
-    # Prepare query
-    my $table = ($proxy eq 'proxyusers') ? 'kam_users_acc_cdrs' : 'kam_trunks_acc_cdrs';
-    my $markAsParsed = "UPDATE $table SET parsed='$value' WHERE callid='$callid'";
+    for (@$ids) {
+        # Prepare query
+        my $markAsParsed = "UPDATE kam_acc_cdrs SET parsed='$value' WHERE id='$_'";
 
-    # Execute query
-    my $sth = $dbh->prepare($markAsParsed)
-                    or die "Couldn't prepare statement: $markAsParsed";
-    $sth->execute() 
-          or die "Couldn't execute statement: $markAsParsed";
+        # Execute query
+        my $sth = $dbh->prepare($markAsParsed)
+              or die "Couldn't prepare statement: $markAsParsed";
+        $sth->execute() 
+              or die "Couldn't execute statement: $markAsParsed";
 
-    say "[$callid] Marked as '$value'";
+        say "[$mainCallId] Marked as '$value' (id: $_)";
+    }
 }
 
 sub insertStat {
+    my $stat = shift;
+
     # Prepare INSERT query
     my $fields = join ',', map {"`$_`"} @STATFIELDS;
     my $values = join ',', map {
-        if ($stat{$_}) {
-            "'$stat{$_}'";
+        if ($$stat{$_}) {
+            "'$$stat{$_}'";
         } else {
             "NULL";
         }
@@ -303,7 +420,7 @@ sub insertStat {
     my $insertStat = "INSERT INTO ParsedCDRs ($fields) VALUES ($values)";
 
     # Print values
-    say "[$stat{aleg}] $_ => $stat{$_}" for @STATFIELDS;
+    say "[$$stat{callid}] $_ => $$stat{$_}" for @STATFIELDS;
 
     # Insert new row to ParsedCDRs
     my $sth = $dbh->prepare($insertStat)
@@ -323,7 +440,7 @@ sub callTarificator {
 #########################################
 
 # Fetch oldest unparsed calls (only alegs with duration > 0) - 30" from its hangup
-my $getPendingCalls = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' AND (UNIX_TIMESTAMP(calldate) + 30) < UNIX_TIMESTAMP(NOW()) ORDER BY start_time";
+my $getPendingCalls = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' AND (UNIX_TIMESTAMP(calldate) + 3) < UNIX_TIMESTAMP(NOW()) ORDER BY start_time";
 
 my $sth = $dbh->prepare($getPendingCalls)
                 or die "Couldn't prepare statement: $getPendingCalls";
@@ -346,32 +463,44 @@ if ($pendingCallsNumber > $MAXCALLS) {
 
 my $i = 0;
 while (my $call = $sth->fetchrow_hashref) {
-    %stat = ();
+    my $stat = {};
+    @stats = ();
+    $ids = [];
 
-    # Set aleg stuff
-    $stat{aleg} = $$call{callid};
-    $stat{calldate} = $$call{calldate};
-    $stat{src_duration} = ceil $$call{duration};
-    $stat{src} = $$call{caller};
-    $stat{src_dialed} = $$call{callee};
-    $stat{diversionA} = $$call{diversion};
-    
-    # Set generic stuff
-    $stat{companyId} = $$call{companyId};
-    $stat{brandId} = $$call{brandId};
+    say "[$$call{callid}] Initial leg: $$call{callid} ($$call{id})";
 
-    # Set aditional fields for future reference (not used in INSERT)
-    $stat{proxy} = $$call{proxy};
-    $stat{callid} = $$call{callid};
-    $stat{typeA} = $$call{type}; # entrante / saliente
-    $stat{subtypeA} = $$call{subtype}; # interna / externa (proxyusers) - fax / normal (proxytrunks)
-    $stat{peeringContractId} = $$call{peeringContractId} if $$call{peeringContractId};
+    setAlegData($call, $stat);
+    parseClegs $$stat{callid}; # Add cleg(s) to @stats (and its ids to @ids)
 
-    setBlegInfo or setParsedValue 'error' and next;
-    parseForward or setParsedValue 'error' and next;
-    setCallType or setParsedValue 'error' and next;
-    insertStat;
-    setParsedValue 'yes';
+    if (setBlegInfo($stat)) {
+        setParsedValue($$stat{callid}, $ids, 'error');
+        next;
+    }
+
+    if ($$stat{proxyB} eq 'none' and $$stat{refereeA}) {
+        say "[$$stat{callid}] Skip call, its bleg has not hangup yet";
+        next;
+    }
+
+    push @stats, $stat; # Add aleg(-bleg)
+
+    # @stats now has aleg(-bleg) + cleg(s)
+    my $markAsError = 0;
+    for my $stat (reverse @stats) {
+        parseRefer($stat);
+        if (parseForward($stat) or setCallType($stat)) {
+            $markAsError = 1;
+            last;
+        }
+    }
+
+    if ($markAsError) {
+        setParsedValue($$stat{callid}, $ids, 'error');
+        next;
+    }
+
+    insertStat($_) for @stats;
+    setParsedValue($$stat{callid}, $ids, 'yes');
 
     # Only parse $MAXCALLS on each run
     last if ++$i >= $MAXCALLS;

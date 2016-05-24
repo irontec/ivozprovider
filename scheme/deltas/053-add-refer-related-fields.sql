@@ -1,0 +1,12 @@
+ALTER TABLE `kam_users_acc_cdrs` ADD `referee` varchar(128) DEFAULT NULL AFTER `callee`;
+ALTER TABLE `kam_users_acc_cdrs` ADD `referrer` varchar(128) DEFAULT NULL AFTER `referee`;
+
+ALTER TABLE `kam_trunks_acc_cdrs` ADD `referee` varchar(128) DEFAULT NULL AFTER `callee`;
+ALTER TABLE `kam_trunks_acc_cdrs` ADD `referrer` varchar(128) DEFAULT NULL AFTER `referee`;
+
+ALTER TABLE `ParsedCDRs` ADD `referee` varchar(128) DEFAULT NULL AFTER `forward_to`;
+ALTER TABLE `ParsedCDRs` ADD `referrer` varchar(128) DEFAULT NULL AFTER `referee`;
+
+DROP VIEW IF EXISTS `CDRs`;
+CREATE VIEW `CDRs` AS select 'proxyusers' AS `proxy`,`kam_users_acc_cdrs`.`id` AS `id`,`kam_users_acc_cdrs`.`calldate` AS `calldate`,`kam_users_acc_cdrs`.`start_time` AS `start_time`,`kam_users_acc_cdrs`.`end_time` AS `end_time`,`kam_users_acc_cdrs`.`duration` AS `duration`,`kam_users_acc_cdrs`.`caller` AS `caller`,`kam_users_acc_cdrs`.`callee` AS `callee`,`kam_users_acc_cdrs`.`referee` AS `referee`,`kam_users_acc_cdrs`.`referrer` AS `referrer`,`kam_users_acc_cdrs`.`type` AS `type`,`kam_users_acc_cdrs`.`subtype` AS `subtype`,`kam_users_acc_cdrs`.`companyId` AS `companyId`,`kam_users_acc_cdrs`.`companyName` AS `companyName`,`kam_users_acc_cdrs`.`asIden` AS `asIden`,`kam_users_acc_cdrs`.`asAddress` AS `asAddress`,`kam_users_acc_cdrs`.`callid` AS `callid`,`kam_users_acc_cdrs`.`xcallid` AS `xcallid`,`kam_users_acc_cdrs`.`parsed` AS `parsed`,`kam_users_acc_cdrs`.`diversion` AS `diversion`,`kam_users_acc_cdrs`.`peeringContractId` AS `peeringContractId` from `kam_users_acc_cdrs` union select 'proxytrunks' AS `proxy`,`kam_trunks_acc_cdrs`.`id` AS `id`,`kam_trunks_acc_cdrs`.`calldate` AS `calldate`,`kam_trunks_acc_cdrs`.`start_time` AS `start_time`,`kam_trunks_acc_cdrs`.`end_time` AS `end_time`,`kam_trunks_acc_cdrs`.`duration` AS `duration`,`kam_trunks_acc_cdrs`.`caller` AS `caller`,`kam_trunks_acc_cdrs`.`callee` AS `callee`,`kam_trunks_acc_cdrs`.`referee` AS `referee`,`kam_trunks_acc_cdrs`.`referrer` AS `referrer`,`kam_trunks_acc_cdrs`.`type` AS `type`,`kam_trunks_acc_cdrs`.`subtype` AS `subtype`,`kam_trunks_acc_cdrs`.`companyId` AS `companyId`,`kam_trunks_acc_cdrs`.`companyName` AS `companyName`,`kam_trunks_acc_cdrs`.`asIden` AS `asIden`,`kam_trunks_acc_cdrs`.`asAddress` AS `asAddress`,`kam_trunks_acc_cdrs`.`callid` AS `callid`,`kam_trunks_acc_cdrs`.`xcallid` AS `xcallid`,`kam_trunks_acc_cdrs`.`parsed` AS `parsed`,`kam_trunks_acc_cdrs`.`diversion` AS `diversion`,`kam_trunks_acc_cdrs`.`peeringContractId` AS `peeringContractId` from `kam_trunks_acc_cdrs`;
+

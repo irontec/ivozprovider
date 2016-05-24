@@ -76,6 +76,10 @@ production:
       title: _('Bleg')
       type: text
       maxLength: 128
+    cleg: 
+      title: _('Cleg')
+      type: text
+      maxLength: 128
     billCallID: 
       title: _('Bill call i d')
       type: text
