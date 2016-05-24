@@ -14,7 +14,7 @@
 ###
 ###    
 ###    Query:
-###    SELECT proxy, callid FROM CDRs WHERE xcallid='' AND duration!='0' AND parsed='no';
+###    SELECT proxy, callid FROM kam_acc_cdrs WHERE xcallid='' AND duration!='0' AND parsed='no';
 ###    
 ###    Parseamos cada callid:
 ###    
@@ -22,7 +22,7 @@
 ###    
 ###    -- El valor de callid aparece como xcallid en otro registro?
 ###    
-###    SELECT * FROM CDRs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
+###    SELECT * FROM kam_acc_cdrs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
 ###
 ###    (A) Si, en un registro de proxyusers: LLAMADA DE USUARIO QUE ACABA EN USUARIO
 ###    
@@ -36,7 +36,7 @@
 ###    
 ###    -- El valor de callid aparece como xcallid en otro registro?
 ###    
-###    SELECT * FROM CDRs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
+###    SELECT * FROM kam_acc_cdrs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
 ###    
 ###    (D) Si, en un registro de proxyusers: LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO
 ###    
@@ -122,7 +122,7 @@ my %execution = ('ok' => 0, 'error' => 0);
 sub setBlegInfo {
     my $callid = $stat{callid};
     
-    my $get_bleg = "SELECT * from CDRs WHERE xcallid='$callid' AND duration!='0'";
+    my $get_bleg = "SELECT * from kam_acc_cdrs WHERE xcallid='$callid' AND duration!='0'";
     my $sth = $dbh->prepare($get_bleg)
                 or die "Couldn't prepare statement: $get_bleg";
     $sth->execute() 
@@ -323,7 +323,7 @@ sub callTarificator {
 #########################################
 
 # Fetch oldest unparsed calls (only alegs with duration > 0) - 30" from its hangup
-my $getPendingCalls = "SELECT c.*, com.brandId FROM CDRs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' AND (UNIX_TIMESTAMP(calldate) + 30) < UNIX_TIMESTAMP(NOW()) ORDER BY start_time";
+my $getPendingCalls = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' AND (UNIX_TIMESTAMP(calldate) + 30) < UNIX_TIMESTAMP(NOW()) ORDER BY start_time";
 
 my $sth = $dbh->prepare($getPendingCalls)
                 or die "Couldn't prepare statement: $getPendingCalls";
