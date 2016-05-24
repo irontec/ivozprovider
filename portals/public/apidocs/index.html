@@ -1,0 +1,2503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="php-apidoc - apid documenation generator">
+    <meta name="author" content="Calin Rada">
+    <title>index.html</title>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body      { padding-top: 70px; margin-bottom: 15px; }
+        .tab-pane { padding-top: 10px; }
+        .mt0      { margin-top: 0px; }
+        .footer   { font-size: 12px; color: #666; }
+        .label    { display: inline-block; min-width: 65px; padding: 0.3em 0.6em 0.3em; }
+        .string   { color: green; }
+        .number   { color: darkorange; }
+        .boolean  { color: blue; }
+        .null     { color: magenta; }
+        .key      { color: red; }
+        .popover  { max-width: 400px; max-height: 400px; overflow-y: auto;}
+    </style>
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">index.html</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    Api key: <a href="javascript:void(0);" class="tooltipP" data-toggle="tooltip" title="Api key header with api key (key) and api key value (value) "><span class="glyphicon glyphicon-info-sign"></span></a>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" placeholder="key" id="apikey_key">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" placeholder="value" id="apikey_value">
+                </div>
+                <div class="form-group" style="margin-left: 10px;">
+                    Basic Auth: <a href="javascript:void(0);" class="tooltipP" data-toggle="tooltip" title="If needed"><span class="glyphicon glyphicon-info-sign"></span></a>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" placeholder="Username" id="basic_auth_username">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" placeholder="Password" id="basic_auth_password">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-success btn-sm tooltipP" data-toggle="tooltip" title="Save API key and Basic Auth data in localstorage" id="save_auth_data">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Api URL</h5>
+                <input id="apiUrl" type="text" class="form-control input-sm" placeholder="https://api.mydomain.tld">
+            </div>
+        </div>
+        <hr>
+        <div class="panel-group" id="accordion">
+            <h2>Brands</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-success">GET</span> <a data-toggle="collapse" data-parent="#accordion0" href="#collapseOne0"> /rest/brands/</a>
+        </h4>
+    </div>
+    <div id="collapseOne0" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab0">
+                <li class="active"><a href="#info0" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox0" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample0" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info0">
+                    <div class="well">
+                    GET information about all Brands
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>page</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>order</td>
+    <td>string 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>search</td>
+    <td>json_encode 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox0">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/brands/" method="get" name="form0" id="form0">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="page">page</label>
+    <input type="text" class="form-control input-sm" id="page" placeholder=" - Ex: " name="page">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="order">order</label>
+    <input type="text" class="form-control input-sm" id="order" placeholder=" - Ex: " name="order">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="search">search</label>
+    <input type="text" class="form-control input-sm" id="search" placeholder=" - Ex: " name="search">
+</div>
+    <button type="submit" class="btn btn-success send" rel="0">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers0"></pre>
+                                <pre id="response0"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header0">HTTP 200 OK</pre>
+                            
+
+<hr>
+<pre id="sample_response0">[{
+     'id': '', 
+     'name': '', 
+     'nif': '', 
+     'domain_trunks': '', 
+     'domain_users': '', 
+     'defaultTimezoneId': '', 
+     'logo': '', 
+     'postalAddress': '', 
+     'postalCode': '', 
+     'town': '', 
+     'province': '', 
+     'country': '', 
+     'registryData': '', 
+     'languageId': ''
+ },{
+     'id': '', 
+     'name': '', 
+     'nif': '', 
+     'domain_trunks': '', 
+     'domain_users': '', 
+     'defaultTimezoneId': '', 
+     'logo': '', 
+     'postalAddress': '', 
+     'postalCode': '', 
+     'town': '', 
+     'province': '', 
+     'country': '', 
+     'registryData': '', 
+     'languageId': ''
+ }]</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-success">GET</span> <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1"> /rest/brands/{id}</a>
+        </h4>
+    </div>
+    <div id="collapseOne1" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab1">
+                <li class="active"><a href="#info1" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox1" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample1" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info1">
+                    <div class="well">
+                    Get information about Brands
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>id</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox1">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/brands/{id}" method="get" name="form1" id="form1">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="id">id</label>
+    <input type="text" class="form-control input-sm" id="id" placeholder=" - Ex: " name="id">
+</div>
+    <button type="submit" class="btn btn-success send" rel="1">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers1"></pre>
+                                <pre id="response1"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample1">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header1">HTTP 200 OK</pre>
+                            
+
+<hr>
+<pre id="sample_response1">{
+     'id': '', 
+     'name': '', 
+     'nif': '', 
+     'domain_trunks': '', 
+     'domain_users': '', 
+     'defaultTimezoneId': '', 
+     'logo': '', 
+     'postalAddress': '', 
+     'postalCode': '', 
+     'town': '', 
+     'province': '', 
+     'country': '', 
+     'registryData': '', 
+     'languageId': ''
+ }</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-primary">POST</span> <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2"> /rest/brands/</a>
+        </h4>
+    </div>
+    <div id="collapseOne2" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab2">
+                <li class="active"><a href="#info2" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox2" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample2" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info2">
+                    <div class="well">
+                    Create's a new Brands
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>name</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>nif</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>domain_trunks</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>domain_users</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>defaultTimezoneId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>logo</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td>[FSO]</td>
+</tr>
+
+<tr>
+    <td>postalAddress</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>postalCode</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>town</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>province</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>country</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>registryData</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>languageId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox2">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/brands/" method="post" name="form2" id="form2">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="name">name</label>
+    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="nif">nif</label>
+    <input type="text" class="form-control input-sm" id="nif" placeholder=" - Ex: " name="nif">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="domain_trunks">domain_trunks</label>
+    <input type="text" class="form-control input-sm" id="domain_trunks" placeholder=" - Ex: " name="domain_trunks">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="domain_users">domain_users</label>
+    <input type="text" class="form-control input-sm" id="domain_users" placeholder=" - Ex: " name="domain_users">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="defaultTimezoneId">defaultTimezoneId</label>
+    <input type="text" class="form-control input-sm" id="defaultTimezoneId" placeholder=" - Ex: " name="defaultTimezoneId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="logo">logo</label>
+    <input type="text" class="form-control input-sm" id="logo" placeholder="[FSO] - Ex: " name="logo">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalAddress">postalAddress</label>
+    <input type="text" class="form-control input-sm" id="postalAddress" placeholder=" - Ex: " name="postalAddress">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalCode">postalCode</label>
+    <input type="text" class="form-control input-sm" id="postalCode" placeholder=" - Ex: " name="postalCode">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="town">town</label>
+    <input type="text" class="form-control input-sm" id="town" placeholder=" - Ex: " name="town">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="province">province</label>
+    <input type="text" class="form-control input-sm" id="province" placeholder=" - Ex: " name="province">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="country">country</label>
+    <input type="text" class="form-control input-sm" id="country" placeholder=" - Ex: " name="country">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="registryData">registryData</label>
+    <input type="text" class="form-control input-sm" id="registryData" placeholder=" - Ex: " name="registryData">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="languageId">languageId</label>
+    <input type="text" class="form-control input-sm" id="languageId" placeholder=" - Ex: " name="languageId">
+</div>
+    <button type="submit" class="btn btn-success send" rel="2">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers2"></pre>
+                                <pre id="response2"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header2">HTTP 201</pre>
+
+<pre id="sample_resp_header2">Location: /rest/brands/{id}</pre>
+                            
+
+<hr>
+<pre id="sample_response2">{}</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-warning">PUT</span> <a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3"> /rest/brands/</a>
+        </h4>
+    </div>
+    <div id="collapseOne3" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab3">
+                <li class="active"><a href="#info3" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox3" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample3" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info3">
+                    <div class="well">
+                    Table Brands
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>id</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>name</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>nif</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>domain_trunks</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>domain_users</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>defaultTimezoneId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>logo</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td>[FSO]</td>
+</tr>
+
+<tr>
+    <td>postalAddress</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>postalCode</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>town</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>province</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>country</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>registryData</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>languageId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox3">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/brands/" method="put" name="form3" id="form3">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="id">id</label>
+    <input type="text" class="form-control input-sm" id="id" placeholder=" - Ex: " name="id">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="name">name</label>
+    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="nif">nif</label>
+    <input type="text" class="form-control input-sm" id="nif" placeholder=" - Ex: " name="nif">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="domain_trunks">domain_trunks</label>
+    <input type="text" class="form-control input-sm" id="domain_trunks" placeholder=" - Ex: " name="domain_trunks">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="domain_users">domain_users</label>
+    <input type="text" class="form-control input-sm" id="domain_users" placeholder=" - Ex: " name="domain_users">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="defaultTimezoneId">defaultTimezoneId</label>
+    <input type="text" class="form-control input-sm" id="defaultTimezoneId" placeholder=" - Ex: " name="defaultTimezoneId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="logo">logo</label>
+    <input type="text" class="form-control input-sm" id="logo" placeholder="[FSO] - Ex: " name="logo">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalAddress">postalAddress</label>
+    <input type="text" class="form-control input-sm" id="postalAddress" placeholder=" - Ex: " name="postalAddress">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalCode">postalCode</label>
+    <input type="text" class="form-control input-sm" id="postalCode" placeholder=" - Ex: " name="postalCode">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="town">town</label>
+    <input type="text" class="form-control input-sm" id="town" placeholder=" - Ex: " name="town">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="province">province</label>
+    <input type="text" class="form-control input-sm" id="province" placeholder=" - Ex: " name="province">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="country">country</label>
+    <input type="text" class="form-control input-sm" id="country" placeholder=" - Ex: " name="country">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="registryData">registryData</label>
+    <input type="text" class="form-control input-sm" id="registryData" placeholder=" - Ex: " name="registryData">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="languageId">languageId</label>
+    <input type="text" class="form-control input-sm" id="languageId" placeholder=" - Ex: " name="languageId">
+</div>
+    <button type="submit" class="btn btn-success send" rel="3">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers3"></pre>
+                                <pre id="response3"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header3">HTTP 200</pre>
+                            
+
+<hr>
+<pre id="sample_response3">{}</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-danger">DELETE</span> <a data-toggle="collapse" data-parent="#accordion4" href="#collapseOne4"> /rest/brands/</a>
+        </h4>
+    </div>
+    <div id="collapseOne4" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab4">
+                <li class="active"><a href="#info4" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox4" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample4" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info4">
+                    <div class="well">
+                    Table Brands
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>id</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox4">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/brands/" method="delete" name="form4" id="form4">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="id">id</label>
+    <input type="text" class="form-control input-sm" id="id" placeholder=" - Ex: " name="id">
+</div>
+    <button type="submit" class="btn btn-success send" rel="4">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers4"></pre>
+                                <pre id="response4"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header4">HTTP 204</pre>
+                            
+
+<hr>
+<pre id="sample_response4">{}</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div><h2>Companies</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-success">GET</span> <a data-toggle="collapse" data-parent="#accordion5" href="#collapseOne5"> /rest/companies/</a>
+        </h4>
+    </div>
+    <div id="collapseOne5" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab5">
+                <li class="active"><a href="#info5" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox5" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample5" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info5">
+                    <div class="well">
+                    GET information about all Companies
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>page</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>order</td>
+    <td>string 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>search</td>
+    <td>json_encode 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox5">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/companies/" method="get" name="form5" id="form5">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="page">page</label>
+    <input type="text" class="form-control input-sm" id="page" placeholder=" - Ex: " name="page">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="order">order</label>
+    <input type="text" class="form-control input-sm" id="order" placeholder=" - Ex: " name="order">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="search">search</label>
+    <input type="text" class="form-control input-sm" id="search" placeholder=" - Ex: " name="search">
+</div>
+    <button type="submit" class="btn btn-success send" rel="5">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers5"></pre>
+                                <pre id="response5"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header5">HTTP 200 OK</pre>
+                            
+
+<hr>
+<pre id="sample_response5">[{
+     'id': '', 
+     'brandId': '', 
+     'name': '', 
+     'domain_users': '', 
+     'nif': '', 
+     'defaultTimezoneId': '', 
+     'applicationServerId': '', 
+     'externalMaxCalls': '', 
+     'postalAddress': '', 
+     'postalCode': '', 
+     'town': '', 
+     'province': '', 
+     'country': '', 
+     'outbound_prefix': '', 
+     'countryId': '', 
+     'languageId': '', 
+     'mediaRelaySetsId': '', 
+     'ipFilter': ''
+ },{
+     'id': '', 
+     'brandId': '', 
+     'name': '', 
+     'domain_users': '', 
+     'nif': '', 
+     'defaultTimezoneId': '', 
+     'applicationServerId': '', 
+     'externalMaxCalls': '', 
+     'postalAddress': '', 
+     'postalCode': '', 
+     'town': '', 
+     'province': '', 
+     'country': '', 
+     'outbound_prefix': '', 
+     'countryId': '', 
+     'languageId': '', 
+     'mediaRelaySetsId': '', 
+     'ipFilter': ''
+ }]</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-success">GET</span> <a data-toggle="collapse" data-parent="#accordion6" href="#collapseOne6"> /rest/companies/{id}</a>
+        </h4>
+    </div>
+    <div id="collapseOne6" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab6">
+                <li class="active"><a href="#info6" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox6" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample6" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info6">
+                    <div class="well">
+                    Get information about Companies
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>id</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox6">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/companies/{id}" method="get" name="form6" id="form6">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="id">id</label>
+    <input type="text" class="form-control input-sm" id="id" placeholder=" - Ex: " name="id">
+</div>
+    <button type="submit" class="btn btn-success send" rel="6">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers6"></pre>
+                                <pre id="response6"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header6">HTTP 200 OK</pre>
+                            
+
+<hr>
+<pre id="sample_response6">{
+     'id': '', 
+     'brandId': '', 
+     'name': '', 
+     'domain_users': '', 
+     'nif': '', 
+     'defaultTimezoneId': '', 
+     'applicationServerId': '', 
+     'externalMaxCalls': '', 
+     'postalAddress': '', 
+     'postalCode': '', 
+     'town': '', 
+     'province': '', 
+     'country': '', 
+     'outbound_prefix': '', 
+     'countryId': '', 
+     'languageId': '', 
+     'mediaRelaySetsId': '', 
+     'ipFilter': ''
+ }</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-primary">POST</span> <a data-toggle="collapse" data-parent="#accordion7" href="#collapseOne7"> /rest/companies/</a>
+        </h4>
+    </div>
+    <div id="collapseOne7" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab7">
+                <li class="active"><a href="#info7" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox7" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample7" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info7">
+                    <div class="well">
+                    Create's a new Companies
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>brandId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>name</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>domain_users</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>nif</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>defaultTimezoneId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>applicationServerId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>externalMaxCalls</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>postalAddress</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>postalCode</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>town</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>province</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>country</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>outbound_prefix</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>countryId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>languageId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>mediaRelaySetsId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>ipFilter</td>
+    <td>tinyint 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox7">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/companies/" method="post" name="form7" id="form7">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="brandId">brandId</label>
+    <input type="text" class="form-control input-sm" id="brandId" placeholder=" - Ex: " name="brandId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="name">name</label>
+    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="domain_users">domain_users</label>
+    <input type="text" class="form-control input-sm" id="domain_users" placeholder=" - Ex: " name="domain_users">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="nif">nif</label>
+    <input type="text" class="form-control input-sm" id="nif" placeholder=" - Ex: " name="nif">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="defaultTimezoneId">defaultTimezoneId</label>
+    <input type="text" class="form-control input-sm" id="defaultTimezoneId" placeholder=" - Ex: " name="defaultTimezoneId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="applicationServerId">applicationServerId</label>
+    <input type="text" class="form-control input-sm" id="applicationServerId" placeholder=" - Ex: " name="applicationServerId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="externalMaxCalls">externalMaxCalls</label>
+    <input type="text" class="form-control input-sm" id="externalMaxCalls" placeholder=" - Ex: " name="externalMaxCalls">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalAddress">postalAddress</label>
+    <input type="text" class="form-control input-sm" id="postalAddress" placeholder=" - Ex: " name="postalAddress">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalCode">postalCode</label>
+    <input type="text" class="form-control input-sm" id="postalCode" placeholder=" - Ex: " name="postalCode">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="town">town</label>
+    <input type="text" class="form-control input-sm" id="town" placeholder=" - Ex: " name="town">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="province">province</label>
+    <input type="text" class="form-control input-sm" id="province" placeholder=" - Ex: " name="province">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="country">country</label>
+    <input type="text" class="form-control input-sm" id="country" placeholder=" - Ex: " name="country">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="outbound_prefix">outbound_prefix</label>
+    <input type="text" class="form-control input-sm" id="outbound_prefix" placeholder=" - Ex: " name="outbound_prefix">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="countryId">countryId</label>
+    <input type="text" class="form-control input-sm" id="countryId" placeholder=" - Ex: " name="countryId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="languageId">languageId</label>
+    <input type="text" class="form-control input-sm" id="languageId" placeholder=" - Ex: " name="languageId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="mediaRelaySetsId">mediaRelaySetsId</label>
+    <input type="text" class="form-control input-sm" id="mediaRelaySetsId" placeholder=" - Ex: " name="mediaRelaySetsId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="ipFilter">ipFilter</label>
+    <input type="text" class="form-control input-sm" id="ipFilter" placeholder=" - Ex: " name="ipFilter">
+</div>
+    <button type="submit" class="btn btn-success send" rel="7">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers7"></pre>
+                                <pre id="response7"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header7">HTTP 201</pre>
+
+<pre id="sample_resp_header7">Location: /rest/companies/{id}</pre>
+                            
+
+<hr>
+<pre id="sample_response7">{}</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-warning">PUT</span> <a data-toggle="collapse" data-parent="#accordion8" href="#collapseOne8"> /rest/companies/</a>
+        </h4>
+    </div>
+    <div id="collapseOne8" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab8">
+                <li class="active"><a href="#info8" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox8" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample8" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info8">
+                    <div class="well">
+                    Table Companies
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>id</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>brandId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>name</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>domain_users</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>nif</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>defaultTimezoneId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>applicationServerId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>externalMaxCalls</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>postalAddress</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>postalCode</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>town</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>province</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>country</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>outbound_prefix</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>countryId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>languageId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>mediaRelaySetsId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>ipFilter</td>
+    <td>tinyint 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox8">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/companies/" method="put" name="form8" id="form8">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="id">id</label>
+    <input type="text" class="form-control input-sm" id="id" placeholder=" - Ex: " name="id">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="brandId">brandId</label>
+    <input type="text" class="form-control input-sm" id="brandId" placeholder=" - Ex: " name="brandId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="name">name</label>
+    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="domain_users">domain_users</label>
+    <input type="text" class="form-control input-sm" id="domain_users" placeholder=" - Ex: " name="domain_users">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="nif">nif</label>
+    <input type="text" class="form-control input-sm" id="nif" placeholder=" - Ex: " name="nif">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="defaultTimezoneId">defaultTimezoneId</label>
+    <input type="text" class="form-control input-sm" id="defaultTimezoneId" placeholder=" - Ex: " name="defaultTimezoneId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="applicationServerId">applicationServerId</label>
+    <input type="text" class="form-control input-sm" id="applicationServerId" placeholder=" - Ex: " name="applicationServerId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="externalMaxCalls">externalMaxCalls</label>
+    <input type="text" class="form-control input-sm" id="externalMaxCalls" placeholder=" - Ex: " name="externalMaxCalls">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalAddress">postalAddress</label>
+    <input type="text" class="form-control input-sm" id="postalAddress" placeholder=" - Ex: " name="postalAddress">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="postalCode">postalCode</label>
+    <input type="text" class="form-control input-sm" id="postalCode" placeholder=" - Ex: " name="postalCode">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="town">town</label>
+    <input type="text" class="form-control input-sm" id="town" placeholder=" - Ex: " name="town">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="province">province</label>
+    <input type="text" class="form-control input-sm" id="province" placeholder=" - Ex: " name="province">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="country">country</label>
+    <input type="text" class="form-control input-sm" id="country" placeholder=" - Ex: " name="country">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="outbound_prefix">outbound_prefix</label>
+    <input type="text" class="form-control input-sm" id="outbound_prefix" placeholder=" - Ex: " name="outbound_prefix">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="countryId">countryId</label>
+    <input type="text" class="form-control input-sm" id="countryId" placeholder=" - Ex: " name="countryId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="languageId">languageId</label>
+    <input type="text" class="form-control input-sm" id="languageId" placeholder=" - Ex: " name="languageId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="mediaRelaySetsId">mediaRelaySetsId</label>
+    <input type="text" class="form-control input-sm" id="mediaRelaySetsId" placeholder=" - Ex: " name="mediaRelaySetsId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="ipFilter">ipFilter</label>
+    <input type="text" class="form-control input-sm" id="ipFilter" placeholder=" - Ex: " name="ipFilter">
+</div>
+    <button type="submit" class="btn btn-success send" rel="8">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers8"></pre>
+                                <pre id="response8"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header8">HTTP 200</pre>
+                            
+
+<hr>
+<pre id="sample_response8">{}</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span class="label label-danger">DELETE</span> <a data-toggle="collapse" data-parent="#accordion9" href="#collapseOne9"> /rest/companies/</a>
+        </h4>
+    </div>
+    <div id="collapseOne9" class="panel-collapse collapse">
+        <div class="panel-body">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="php-apidoctab9">
+                <li class="active"><a href="#info9" data-toggle="tab">Info</a></li>
+                <li><a href="#sandbox9" data-toggle="tab">Sandbox</a></li>
+                <li><a href="#sample9" data-toggle="tab">Sample output</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="info9">
+                    <div class="well">
+                    Table Companies
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Headers</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Parameters</strong></div>
+                      <div class="panel-body">
+                        
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr>
+    <td>id</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>Yes</td>
+    <td></td>
+</tr>
+    </tbody>
+</table>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><strong>Body</strong></div>
+                      <div class="panel-body">
+                        
+                      </div>
+                    </div>
+                </div><!-- #info -->
+
+                <div class="tab-pane" id="sandbox9">
+                    <div class="row">
+                        <div class="col-md-12">
+                        
+        <div class="col-md-6">
+    Headers
+    <hr/>
+    <div class="headers">
+    
+    </div>
+    </div>
+    <div class="col-md-6">
+<form enctype="application/x-www-form-urlencoded" role="form" action="/rest/companies/" method="delete" name="form9" id="form9">
+    
+    Parameters
+    <hr/>
+    
+<div class="form-group">
+    <label class="control-label" for="id">id</label>
+    <input type="text" class="form-control input-sm" id="id" placeholder=" - Ex: " name="id">
+</div>
+    <button type="submit" class="btn btn-success send" rel="9">Send</button>
+</form></div>
+                        </div>
+                        <div class="col-md-12">
+                            Response
+                            <hr>
+                            <div class="col-md-12" style="overflow-x:auto">
+                                <pre id="response_headers9"></pre>
+                                <pre id="response9"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- #sandbox -->
+
+                <div class="tab-pane" id="sample9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+<pre id="sample_resp_header9">HTTP 204</pre>
+                            
+
+<hr>
+<pre id="sample_response9">{}</pre>
+                        </div>
+                    </div>
+                </div><!-- #sample -->
+
+            </div><!-- .tab-content -->
+        </div>
+    </div>
+</div>
+        </div>
+        <hr>
+
+        <div class="row mt0 footer">
+            <div class="col-md-6" align="left">
+                Generated on 2016-05-23, 20:48:30
+            </div>
+            <div class="col-md-6" align="right">
+                <a href="https://github.com/calinrada/php-apidoc" target="_blank">php-apidoc v 1.3.4</a>
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function syntaxHighlight(json) {
+        if (typeof json != 'string') {
+            json = JSON.stringify(json, undefined, 2);
+        }
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    function prepareStr(str) {
+        try {
+            return syntaxHighlight(JSON.stringify(JSON.parse(str.replace(/'/g, '"')), null, 2));
+        } catch (e) {
+            return str;
+        }
+    }
+    var storage = (function() {
+        var uid = new Date;
+        var storage;
+        var result;
+        try {
+            (storage = window.localStorage).setItem(uid, uid);
+            result = storage.getItem(uid) == uid;
+            storage.removeItem(uid);
+            return result && storage;
+        } catch (exception) {}
+    }());
+
+    $.fn.serializeObject = function()
+    {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if(!this.value) {
+                return;
+            }
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    $(document).ready(function() {
+
+        if (storage) {
+            $('#basic_auth_username').val(storage.getItem('basicAuthUsername'));
+            $('#basic_auth_password').val(storage.getItem('basicAuthPassword'));
+            $('#apikey_key').val(storage.getItem('apiKey'));
+            $('#apikey_value').val(storage.getItem('apiKeyValue'));
+        }
+
+        $('#php-apidoctab a').click(function(e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+
+        $('.tooltipP').tooltip({
+            placement: 'bottom'
+        });
+
+        $('code[id^=response]').hide();
+
+        $.each($('pre[id^=sample_response],pre[id^=sample_post_body]'), function() {
+            if ($(this).html() == 'NA') {
+                return;
+            }
+            var str = prepareStr($(this).html());
+            $(this).html(str);
+        });
+
+        $("[data-toggle=popover]").popover({placement:'right'});
+
+        $('[data-toggle=popover]').on('shown.bs.popover', function() {
+            var $sample = $(this).parent().find(".popover-content"),
+                str = $(this).data('content');
+            if (typeof str == "undefined" || str === "") {
+                return;
+            }
+            var str = prepareStr(str);
+            $sample.html('<pre>' + str + '</pre>');
+        });
+
+        $('body').on('click', '#save_auth_data', function(e) {
+            if (storage) {
+                storage.setItem('basicAuthUsername', $('#basic_auth_username').val());
+                storage.setItem('basicAuthPassword', $('#basic_auth_password').val());
+                storage.setItem('apiKey', $('#apikey_key').val());
+                storage.setItem('apiKeyValue', $('#apikey_value').val());
+            } else {
+                alert('Your browser does not support local storage');
+            }
+        });
+
+        $('body').on('click', '.send', function(e) {
+            e.preventDefault();
+            var form = $(this).closest('form');
+            //added /g to get all the matched params instead of only first
+            var matchedParamsInRoute = $(form).attr('action').match(/[^{]+(?=\})/g);
+            var theId = $(this).attr('rel');
+            //keep a copy of action attribute in order to modify the copy
+            //instead of the initial attribute
+            var url = $(form).attr('action');
+
+            //get form serialized data in order to remove matchedParams
+            var serializedData = $(form).serializeObject();
+
+            var index, key, value;
+
+            if(matchedParamsInRoute) {
+                for (index = 0; index < matchedParamsInRoute.length; ++index) {
+                    try {
+                        key = matchedParamsInRoute[index];
+                        value = serializedData[key];
+                        if (typeof value == "undefined") value ="";
+                        url = url.replace("{" + key + "}", value);
+                        delete serializedData[key];
+                    } catch (err) {
+                        console.log(err);
+                    }
+                }
+            }
+
+            var st_headers = {};
+
+            var basicAuthUsername = $('#basic_auth_username').val();
+            var basicAuthPassword = $('#basic_auth_password').val();
+            var apiKey = $('#apikey_key').val();
+            var apiKeyValue = $('#apikey_value').val();
+
+            if(apiKey.length > 0 && apiKeyValue.length > 0) {
+                st_headers[apiKey] = apiKeyValue;
+            }
+
+            if (basicAuthUsername != '' && basicAuthPassword != '') {
+                st_headers['Authorization'] = "Basic " + btoa(basicAuthUsername + ":" + basicAuthPassword);
+            }
+
+            $("#sandbox" + theId + " .headers input[type=text]").each(function() {
+                val = $(this).val();
+                if(val.length > 0) {
+                    st_headers[$(this).prop('name')] = val;
+                }
+            });
+
+            $.ajax({
+                url: $('#apiUrl').val() + url,
+                data: serializedData,
+                type: $(form).attr('method') + '',
+                dataType: 'json',
+                headers: st_headers,
+                success: function(data, textStatus, xhr) {
+                    if (typeof data === 'object') {
+                        var str = JSON.stringify(data, null, 2);
+                        $('#response' + theId).html(syntaxHighlight(str));
+                    } else {
+                        $('#response' + theId).html(data || '');
+                    }
+                    $('#response_headers' + theId).html('HTTP ' + xhr.status + ' ' + xhr.statusText + '<br/><br/>' + xhr.getAllResponseHeaders());
+                    $('#response' + theId).show();
+                },
+                error: function(xhr, textStatus, error) {
+                    var str = JSON.stringify($.parseJSON(xhr.responseText), null, 2);
+                    $('#response_headers' + theId).html('HTTP ' + xhr.status + ' ' + xhr.statusText + '<br/><br/>' + xhr.getAllResponseHeaders());
+                    $('#response' + theId).html(syntaxHighlight(str));
+                    $('#response' + theId).show();
+
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+</body>
+</html>

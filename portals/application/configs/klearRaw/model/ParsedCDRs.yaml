@@ -60,6 +60,14 @@ production:
       title: _('Forward to')
       type: text
       maxLength: 32
+    referee: 
+      title: _('Referee')
+      type: text
+      maxLength: 128
+    referrer: 
+      title: _('Referrer')
+      type: text
+      maxLength: 128
     aleg: 
       title: _('Aleg')
       type: text

@@ -293,7 +293,7 @@ class Brands extends MapperAbstract
             throw $exception;
         }
 
-
+        $this->_etagChange();
         return $result;
 
     }
@@ -827,6 +827,9 @@ class Brands extends MapperAbstract
             }
         }
 
+        if ($model->mustUpdateEtag()) {
+            $this->_etagChange();
+        }
 
         if ($success === true) {
             return $primaryKey;
@@ -910,4 +913,35 @@ class Brands extends MapperAbstract
 
         return $entry;
     }
+
+    protected function _etagChange()
+    {
+
+        $date = new \Zend_Date();
+        $date->setTimezone('UTC');
+        $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
+
+        $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
+        $etag = $etags->findOneByField('table', 'Brands');
+
+        if (empty($etag)) {
+            $etag = new \IvozProvider\Model\EtagVersions();
+            $etag->setTable('Brands');
+        }
+
+        $random = substr(
+            str_shuffle(
+                str_repeat(
+                    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+                    5
+                )
+            ), 0, 5
+        );
+
+        $etag->setEtag(md5($nowUTC . $random));
+        $etag->setLastChange($nowUTC);
+        $etag->save();
+
+    }
+
 }

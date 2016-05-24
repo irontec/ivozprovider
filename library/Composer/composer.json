@@ -1,0 +1,7 @@
+{
+    "name":"IvozProvider",
+    "description":"",
+    "require":{
+        "crada/php-apidoc":"@dev"
+    }
+}

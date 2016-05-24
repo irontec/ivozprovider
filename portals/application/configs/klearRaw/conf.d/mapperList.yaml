@@ -4,7 +4,6 @@ mappers:
   - &BrandServices {mapper: \IvozProvider\Mapper\Sql\BrandServices, modelFile: BrandServices}
   - &BrandURLs {mapper: \IvozProvider\Mapper\Sql\BrandURLs, modelFile: BrandURLs}
   - &Brands {mapper: \IvozProvider\Mapper\Sql\Brands, modelFile: Brands}
-  - &CDRs {mapper: \IvozProvider\Mapper\Sql\CDRs, modelFile: CDRs}
   - &Calendars {mapper: \IvozProvider\Mapper\Sql\Calendars, modelFile: Calendars}
   - &CallACL {mapper: \IvozProvider\Mapper\Sql\CallACL, modelFile: CallACL}
   - &CallACLPatterns {mapper: \IvozProvider\Mapper\Sql\CallACLPatterns, modelFile: CallACLPatterns}
@@ -16,6 +15,7 @@ mappers:
   - &Countries {mapper: \IvozProvider\Mapper\Sql\Countries, modelFile: Countries}
   - &DDIs {mapper: \IvozProvider\Mapper\Sql\DDIs, modelFile: DDIs}
   - &Domains {mapper: \IvozProvider\Mapper\Sql\Domains, modelFile: Domains}
+  - &EtagVersions {mapper: \IvozProvider\Mapper\Sql\EtagVersions, modelFile: EtagVersions}
   - &Extensions {mapper: \IvozProvider\Mapper\Sql\Extensions, modelFile: Extensions}
   - &ExternalCallFilterRelCalendars {mapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelCalendars, modelFile: ExternalCallFilterRelCalendars}
   - &ExternalCallFilterRelSchedules {mapper: \IvozProvider\Mapper\Sql\ExternalCallFilterRelSchedules, modelFile: ExternalCallFilterRelSchedules}
@@ -72,17 +72,16 @@ mappers:
   - &AstPsEndpoints {mapper: \IvozProvider\Mapper\Sql\AstPsEndpoints, modelFile: AstPsEndpoints}
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
+  - &KamAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrs}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}
   - &KamRtpproxy {mapper: \IvozProvider\Mapper\Sql\KamRtpproxy, modelFile: KamRtpproxy}
   - &KamTrunksAcc {mapper: \IvozProvider\Mapper\Sql\KamTrunksAcc, modelFile: KamTrunksAcc}
-  - &KamTrunksAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksAccCdrs, modelFile: KamTrunksAccCdrs}
   - &KamTrunksDialplan {mapper: \IvozProvider\Mapper\Sql\KamTrunksDialplan, modelFile: KamTrunksDialplan}
   - &KamTrunksDomain {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomain, modelFile: KamTrunksDomain}
   - &KamTrunksDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomainAttrs, modelFile: KamTrunksDomainAttrs}
   - &KamTrunksHtable {mapper: \IvozProvider\Mapper\Sql\KamTrunksHtable, modelFile: KamTrunksHtable}
   - &KamTrunksUacreg {mapper: \IvozProvider\Mapper\Sql\KamTrunksUacreg, modelFile: KamTrunksUacreg}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
-  - &KamUsersAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamUsersAccCdrs, modelFile: KamUsersAccCdrs}
   - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}

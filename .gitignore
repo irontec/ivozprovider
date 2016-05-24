@@ -2,6 +2,8 @@
 *.project
 *.settings
 portals/application/cache/*
+library/Composer/*
+!library/Composer/composer.json
 
 storage/*
 *.idea

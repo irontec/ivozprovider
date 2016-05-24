@@ -66,4 +66,8 @@
 	</target>
 	<target name="db-change" description="Database Migration and Model - Yaml generator" depends="db-change-migrate, run-generators">
 	</target>
+    <!-- REST -->
+    <target name="generate-rest-controllers">
+        <exec command="php klear-rest-generator.php -a ${env.PWD}/${application.path} -e ${application.env}" dir="${modelGenerator.path}" checkreturn="true" passthru="true" />
+    </target>
 </project>
