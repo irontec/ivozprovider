@@ -66,6 +66,7 @@ class ParsedCDRs extends MapperAbstract
                 'referrer' => $model->getReferrer(),
                 'aleg' => $model->getAleg(),
                 'bleg' => $model->getBleg(),
+                'cleg' => $model->getCleg(),
                 'billCallID' => $model->getBillCallID(),
                 'billDuration' => $model->getBillDuration(),
                 'billDestination' => $model->getBillDestination(),
@@ -578,6 +579,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setReferrer($data['referrer'])
                   ->setAleg($data['aleg'])
                   ->setBleg($data['bleg'])
+                  ->setCleg($data['cleg'])
                   ->setBillCallID($data['billCallID'])
                   ->setBillDuration($data['billDuration'])
                   ->setBillDestination($data['billDestination'])
@@ -611,6 +613,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setReferrer($data->{'referrer'})
                   ->setAleg($data->{'aleg'})
                   ->setBleg($data->{'bleg'})
+                  ->setCleg($data->{'cleg'})
                   ->setBillCallID($data->{'billCallID'})
                   ->setBillDuration($data->{'billDuration'})
                   ->setBillDestination($data->{'billDestination'})
@@ -645,6 +648,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setReferrer($data->getReferrer())
                   ->setAleg($data->getAleg())
                   ->setBleg($data->getBleg())
+                  ->setCleg($data->getCleg())
                   ->setBillCallID($data->getBillCallID())
                   ->setBillDuration($data->getBillDuration())
                   ->setBillDestination($data->getBillDestination())

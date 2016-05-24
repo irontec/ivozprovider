@@ -11,7 +11,7 @@
  */
 
 /**
- * [entity]
+ * [entity][rest]
  *
  * @package IvozProvider\Model
  * @subpackage Model

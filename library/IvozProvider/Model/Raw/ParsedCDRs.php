@@ -11,7 +11,7 @@
  */
 
 /**
- * [entity]
+ * [entity][rest]
  *
  * @package IvozProvider\Model
  * @subpackage Model
@@ -135,6 +135,20 @@ class ParsedCDRs extends ModelAbstract
     protected $_forwardTo;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_referee;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_referrer;
+
+    /**
      * aleg CallID
      * Database var type varchar
      *
@@ -149,6 +163,14 @@ class ParsedCDRs extends ModelAbstract
      * @var string
      */
     protected $_bleg;
+
+    /**
+     * cleg CallID
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_cleg;
 
     /**
      * Billable leg CallID
@@ -317,8 +339,11 @@ class ParsedCDRs extends ModelAbstract
         'ext_forwarder'=>'extForwarder',
         'int_forwarder'=>'intForwarder',
         'forward_to'=>'forwardTo',
+        'referee'=>'referee',
+        'referrer'=>'referrer',
         'aleg'=>'aleg',
         'bleg'=>'bleg',
+        'cleg'=>'cleg',
         'billCallID'=>'billCallID',
         'billDuration'=>'billDuration',
         'billDestination'=>'billDestination',
@@ -356,6 +381,7 @@ class ParsedCDRs extends ModelAbstract
             'forward_to'=> array(''),
             'aleg'=> array(''),
             'bleg'=> array(''),
+            'cleg'=> array(''),
             'billCallID'=> array(''),
             'billDuration'=> array(''),
             'billDestination'=> array(''),
@@ -944,6 +970,74 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
+    public function setReferee($data)
+    {
+
+        if ($this->_referee != $data) {
+            $this->_logChange('referee');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_referee = $data;
+
+        } else if (!is_null($data)) {
+            $this->_referee = (string) $data;
+
+        } else {
+            $this->_referee = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column referee
+     *
+     * @return string
+     */
+    public function getReferee()
+    {
+        return $this->_referee;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setReferrer($data)
+    {
+
+        if ($this->_referrer != $data) {
+            $this->_logChange('referrer');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_referrer = $data;
+
+        } else if (!is_null($data)) {
+            $this->_referrer = (string) $data;
+
+        } else {
+            $this->_referrer = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column referrer
+     *
+     * @return string
+     */
+    public function getReferrer()
+    {
+        return $this->_referrer;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
     public function setAleg($data)
     {
 
@@ -1005,6 +1099,40 @@ class ParsedCDRs extends ModelAbstract
     public function getBleg()
     {
         return $this->_bleg;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setCleg($data)
+    {
+
+        if ($this->_cleg != $data) {
+            $this->_logChange('cleg');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_cleg = $data;
+
+        } else if (!is_null($data)) {
+            $this->_cleg = (string) $data;
+
+        } else {
+            $this->_cleg = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column cleg
+     *
+     * @return string
+     */
+    public function getCleg()
+    {
+        return $this->_cleg;
     }
 
     /**
