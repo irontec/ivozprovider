@@ -161,7 +161,7 @@ angular
     
 })
 .constant('appConfig', {
-    'urlRest': '/rest/'
+    'urlRest': '/userweb/'
 })
 .provider('configGlobal', function(appConfig) {
 

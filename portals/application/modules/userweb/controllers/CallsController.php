@@ -6,7 +6,7 @@
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_CallsController extends Iron_Controller_Rest_BaseController
+class Userweb_CallsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_limitPage = 10;

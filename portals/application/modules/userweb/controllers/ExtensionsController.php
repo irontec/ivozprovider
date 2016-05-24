@@ -6,7 +6,7 @@
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
+class Userweb_ExtensionsController extends Iron_Controller_Rest_BaseController
 {
 
     public function optionsAction()

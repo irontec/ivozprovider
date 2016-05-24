@@ -6,9 +6,8 @@
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_AuthController extends Iron_Controller_Rest_BaseController
+class Userweb_AuthController extends Iron_Controller_Rest_BaseController
 {
-
     public function headAction()
     {
         $this->status->setCode(200);
