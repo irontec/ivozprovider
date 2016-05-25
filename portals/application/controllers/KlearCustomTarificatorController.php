@@ -77,11 +77,19 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
 
         if ($this->getParam("tarificate")) {
-            $tarificatorJob = new \IvozProvider\Gearmand\Jobs\Tarificator();
-            $tarificatorJob->setPks($pks);
-            $tarificatorJob->send();
-            $message = "<p>Tarificator Job started</p>";
-            $title = $this->_helper->translate("OK");
+
+            $retarificable = $this->_checkRetarificables($pks);
+            if (false === $retarificable["error"]) {
+                $tarificatorJob = new \IvozProvider\Gearmand\Jobs\Tarificator();
+                $tarificatorJob->setPks($pks);
+                $tarificatorJob->send();
+                $message = "<p>".$this->_helper->translate("Tarificator Job started")."</p>";
+                $title = $this->_helper->translate("OK");
+            } else {
+                $message = "<p>".$retarificable["message"]."</p>";
+                $title = $this->_helper->translate("ERROR");
+            }
+
             $this->_showDialog($title, $message, false, "Ok", false, "300", "100");
         } else {
             if (empty($pks)) {
@@ -401,6 +409,30 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 '/js/plugins/jquery.klearmatrix.genericdialog.js');
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
+    }
+
+    protected function _checkRetarificables($pks)
+    {
+
+        $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+
+        $wheres = array();
+        $wheres[] = "`id` IN (".implode(",", $pks).")";
+        $wheres[] = "(`invoiceId` IS NOT NULL OR billCallID IS NULL)";
+
+        $result = array(
+            "error" => false,
+            "message" => ""
+        );
+
+        $numberRegs = $callMapper->countByQuery(implode(" AND ", $wheres));
+        if ($numberRegs > 0) {
+            $result = array(
+                "error" => true,
+                "message" => $this->_helper->translate("You have selected NO tarificable calls")
+            );
+        }
+        return $result;
     }
 }
 

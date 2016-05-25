@@ -41,12 +41,12 @@ class TarificatorWorker extends Iron_Gearman_Worker
         $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
 
         $wheres = array();
-        if (!is_null($pks)) {
+        if (is_null($pks)) {
+            $wheres[] = "(metered = 0 OR metered IS NULL)";
+        } else {
             $wheres[] = "`id` IN (".implode(",", $pks).")";
+            $wheres[] = "`invoiceId` IS NULL";
         }
-
-        $wheres[] = "(metered = 0 OR metered IS NULL)";
-        $where = implode(" AND ", $wheres);
 
         $numberRegs = $callMapper->countTarificableByQuery($wheres);
 
