@@ -18,7 +18,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
     public function routeShutdown(Zend_Controller_Request_Abstract $request)
     {
 
-        if ('rest' !== $request->getModuleName()) {
+        if ('userweb' !== $request->getModuleName()) {
             return;
         }
 
