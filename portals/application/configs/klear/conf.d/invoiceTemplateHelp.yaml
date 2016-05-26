@@ -45,4 +45,10 @@ invoiceTemplateHelp:
             <li>fixedCostsTotals: Total price of fixedCosts
             </li>
             </ul>
+         <p>You can use following examples as base for your custom Invoice template
+            <ul style='margin-left: 30px'>
+            <li><a href='/templates/invoice.txt' target='_blank'>Basic Invoice template</a></li>
+            <li><a href='/templates/invoiceFixedCosts.txt' target='_blank'>Fixed costs Invoice template</a></li>
+            </ul>
+            </p>
         "
