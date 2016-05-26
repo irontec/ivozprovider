@@ -66,6 +66,7 @@ Section: admin
 Priority: optional
 Pre-Depends: ivozprovider-profile-common,
     mysql-server,
+    bind9,
     libstring-crc32-perl,
     libgearman-client-perl
 Homepage: http://www.irontec.com

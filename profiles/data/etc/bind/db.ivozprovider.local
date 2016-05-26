@@ -1,0 +1,19 @@
+$TTL    604800
+@       IN      SOA     ns1.ivozprovider.local. admin.ivozprovider.local. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+
+; Name servers
+ivozprovider.local.    IN      NS      ns1.ivozprovider.local.
+
+; A records for name servers
+ns1             IN      A       127.0.0.1
+
+; Other A records
+users           IN      A       127.0.0.1
+trunks          IN      A       127.0.0.1
+data            IN      A       127.0.0.1
+jobs            IN      A       127.0.0.1
