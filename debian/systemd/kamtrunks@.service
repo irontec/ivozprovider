@@ -1,6 +1,7 @@
 [Unit]
 Description=Kamailio - the Open Source SIP Server
 After=network.target
+After=multi-user.target
 
 [Service]
 Type=forking
