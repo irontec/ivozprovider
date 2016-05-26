@@ -189,6 +189,14 @@ class Brands extends ModelAbstract
     protected $_Companies;
 
     /**
+     * Dependent relation DDIs_ibfk_10
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\DDIs[]
+     */
+    protected $_DDIs;
+
+    /**
      * Dependent relation Domains_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -392,6 +400,10 @@ class Brands extends ModelAbstract
             'CompaniesIbfk4' => array(
                     'property' => 'Companies',
                     'table_name' => 'Companies',
+                ),
+            'DDIsIbfk10' => array(
+                    'property' => 'DDIs',
+                    'table_name' => 'DDIs',
                 ),
             'DomainsIbfk2' => array(
                     'property' => 'Domains',
@@ -1623,6 +1635,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_Companies;
+    }
+
+    /**
+     * Sets dependent relations DDIs_ibfk_10
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\DDIs
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setDDIs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_DDIs === null) {
+
+                $this->getDDIs();
+            }
+
+            $oldRelations = $this->_DDIs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_DDIs = array();
+
+        foreach ($data as $object) {
+            $this->addDDIs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations DDIs_ibfk_10
+     *
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addDDIs(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_DDIs[] = $data;
+        $this->_setLoaded('DDIsIbfk10');
+        return $this;
+    }
+
+    /**
+     * Gets dependent DDIs_ibfk_10
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\DDIs
+     */
+    public function getDDIs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk10';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_DDIs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_DDIs;
     }
 
     /**

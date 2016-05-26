@@ -506,6 +506,20 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getDDIs(null, null, true) !== null) {
+                    $dDIs = $model->getDDIs();
+
+                    if (!is_array($dDIs)) {
+
+                        $dDIs = array($dDIs);
+                    }
+
+                    foreach ($dDIs as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDomains(null, null, true) !== null) {
                     $domains = $model->getDomains();
 

@@ -4,6 +4,7 @@
 #include BrandServicesList.yaml
 #include BrandURLsList.yaml
 #include CompaniesList.yaml
+#include DDIsList.yaml
 #include DomainsList.yaml
 #include FixedCostsList.yaml
 #include FixedCostsRelInvoicesList.yaml
@@ -45,6 +46,7 @@ production:
             brandServicesList_screen: true
             brandURLsList_screen: true
             companiesList_screen: true
+            dDIsList_screen: true
             domainsList_screen: true
             fixedCostsList_screen: true
             fixedCostsRelInvoicesList_screen: true
@@ -141,6 +143,19 @@ production:
       filterField: brandId
     companiesEdit_screen: 
       <<: *companiesEdit_screenLink
+      filterField: brandId
+
+    #dDIs: 
+    dDIsList_screen: 
+      <<: *dDIsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    dDIsNew_screen: 
+      <<: *dDIsNew_screenLink
+      filterField: brandId
+    dDIsEdit_screen: 
+      <<: *dDIsEdit_screenLink
       filterField: brandId
 
     #domains: 
@@ -396,6 +411,8 @@ production:
     <<: *brandURLs_dialogsLink
   # companies dialogs: 
     <<: *companies_dialogsLink
+  # dDIs dialogs: 
+    <<: *dDIs_dialogsLink
   # domains dialogs: 
     <<: *domains_dialogsLink
   # fixedCosts dialogs: 

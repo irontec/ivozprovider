@@ -14,13 +14,14 @@ production:
       title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
       class: ui-silk-lightning-go
       forcedValues:
-        <<: *forcedCompany
+        <<: *forcedBrand
       order:
         field:
           - DDI asc
           - routeType desc
       fields:
         order: &dDIsFieldsOder_Link
+          companyId: true
           countryId: true
           DDI: true
           externalCallFilterId: true
@@ -81,7 +82,7 @@ production:
       defaultValues:
         countryId: ${auth.companyCountryId}
       forcedValues:
-        <<: *forcedCompany
+        <<: *forcedBrand
       title: _("Add %s", ngettext('DDI', 'DDIs', 1))
       fields:
         order:
@@ -98,7 +99,7 @@ production:
       class: ui-silk-pencil
       label: false
       forcedValues:
-        <<: *forcedCompany
+        <<: *forcedBrand
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
         order:
@@ -107,6 +108,8 @@ production:
           target: true
           DDIE164: true
           brandId: true
+        readOnly:
+          companyId: true
       fixedPositions:
         <<: *dDIsFixedPositions_Link
     dDIsEditLimited_screen: &dDIsEdit_screenLink 
@@ -115,7 +118,7 @@ production:
       class: ui-silk-pencil
       label: false
       forcedValues:
-        <<: *forcedCompany
+        <<: *forcedBrand
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
         order:

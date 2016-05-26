@@ -42,6 +42,13 @@ class DDIs extends ModelAbstract
      *
      * @var int
      */
+    protected $_brandId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
     protected $_companyId;
 
     /**
@@ -124,11 +131,11 @@ class DDIs extends ModelAbstract
 
 
     /**
-     * Parent relation DDIs_ibfk_9
+     * Parent relation DDIs_ibfk_10
      *
-     * @var \IvozProvider\Model\Raw\Countries
+     * @var \IvozProvider\Model\Raw\Brands
      */
-    protected $_Country;
+    protected $_Brand;
 
     /**
      * Parent relation DDIs_ibfk_1
@@ -186,6 +193,13 @@ class DDIs extends ModelAbstract
      */
     protected $_PeeringContract;
 
+    /**
+     * Parent relation DDIs_ibfk_9
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Country;
+
 
     /**
      * Dependent relation Faxes_ibfk_2
@@ -205,6 +219,7 @@ class DDIs extends ModelAbstract
 
     protected $_columnsList = array(
         'id'=>'id',
+        'brandId'=>'brandId',
         'companyId'=>'companyId',
         'DDI'=>'DDI',
         'DDIE164'=>'DDIE164',
@@ -234,9 +249,9 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'DDIsIbfk9'=> array(
-                    'property' => 'Country',
-                    'table_name' => 'Countries',
+            'DDIsIbfk10'=> array(
+                    'property' => 'Brand',
+                    'table_name' => 'Brands',
                 ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
@@ -269,6 +284,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk8'=> array(
                     'property' => 'PeeringContract',
                     'table_name' => 'PeeringContracts',
+                ),
+            'DDIsIbfk9'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
                 ),
         ));
 
@@ -352,6 +371,43 @@ class DDIs extends ModelAbstract
     public function getId()
     {
         return $this->_id;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setBrandId($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_brandId != $data) {
+            $this->_logChange('brandId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_brandId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_brandId = (int) $data;
+
+        } else {
+            $this->_brandId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column brandId
+     *
+     * @return int
+     */
+    public function getBrandId()
+    {
+        return $this->_brandId;
     }
 
     /**
@@ -775,14 +831,14 @@ class DDIs extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Country
+     * Sets parent relation Brand
      *
-     * @param \IvozProvider\Model\Raw\Countries $data
+     * @param \IvozProvider\Model\Raw\Brands $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
-    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
     {
-        $this->_Country = $data;
+        $this->_Brand = $data;
 
         $primaryKey = $data->getPrimaryKey();
         if (is_array($primaryKey)) {
@@ -790,21 +846,21 @@ class DDIs extends ModelAbstract
         }
 
         if (!is_null($primaryKey)) {
-            $this->setCountryId($primaryKey);
+            $this->setBrandId($primaryKey);
         }
 
-        $this->_setLoaded('DDIsIbfk9');
+        $this->_setLoaded('DDIsIbfk10');
         return $this;
     }
 
     /**
-     * Gets parent Country
+     * Gets parent Brand
      * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Countries
+     * @return \IvozProvider\Model\Raw\Brands
      */
-    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'DDIsIbfk9';
+        $fkName = 'DDIsIbfk10';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -816,13 +872,13 @@ class DDIs extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Country = array_shift($related);
+            $this->_Brand = array_shift($related);
             if ($usingDefaultArguments) {
                 $this->_setLoaded($fkName);
             }
         }
 
-        return $this->_Country;
+        return $this->_Brand;
     }
 
     /**
@@ -1231,6 +1287,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_PeeringContract;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk9');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk9';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
     }
 
     /**

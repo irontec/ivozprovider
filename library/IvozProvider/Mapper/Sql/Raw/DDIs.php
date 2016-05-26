@@ -49,6 +49,7 @@ class DDIs extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
+                'brandId' => $model->getBrandId(),
                 'companyId' => $model->getCompanyId(),
                 'DDI' => $model->getDDI(),
                 'DDIE164' => $model->getDDIE164(),
@@ -573,6 +574,7 @@ class DDIs extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
+                  ->setBrandId($data['brandId'])
                   ->setCompanyId($data['companyId'])
                   ->setDDI($data['DDI'])
                   ->setDDIE164($data['DDIE164'])
@@ -587,6 +589,7 @@ class DDIs extends MapperAbstract
                   ->setCountryId($data['countryId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
+                  ->setBrandId($data->{'brandId'})
                   ->setCompanyId($data->{'companyId'})
                   ->setDDI($data->{'DDI'})
                   ->setDDIE164($data->{'DDIE164'})
@@ -602,6 +605,7 @@ class DDIs extends MapperAbstract
 
         } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
             $entry->setId($data->getId())
+                  ->setBrandId($data->getBrandId())
                   ->setCompanyId($data->getCompanyId())
                   ->setDDI($data->getDDI())
                   ->setDDIE164($data->getDDIE164())

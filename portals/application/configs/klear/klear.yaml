@@ -115,6 +115,10 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
+        BrandDDIsList:
+          title: ngettext('DDI', 'DDIs', 0)
+          class: ui-silk-lightning-go
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))             
         GenericCallACLPatternsList:
           title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
           class: ui-silk-lock-go

@@ -56,6 +56,7 @@ class Brands extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\BrandServices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\BrandURLs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Domains',
         'IvozProvider\\Mapper\\Sql\\DbTable\\FixedCosts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\FixedCostsRelInvoices',
