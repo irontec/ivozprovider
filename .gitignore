@@ -4,6 +4,7 @@
 portals/application/cache/*
 library/Composer/*
 !library/Composer/composer.json
+scheme/build.properties.development
 
 storage/*
 *.idea
