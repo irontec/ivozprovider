@@ -17,3 +17,4 @@ users           IN      A       127.0.0.1
 trunks          IN      A       127.0.0.1
 data            IN      A       127.0.0.1
 jobs            IN      A       127.0.0.1
+logs            IN      A       127.0.0.1
