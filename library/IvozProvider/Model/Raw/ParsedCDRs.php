@@ -31,15 +31,76 @@ class ParsedCDRs extends ModelAbstract
     protected $_id;
 
     /**
-     * aleg timestamp
-     * Database var type timestamp
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_statId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_xstatId;
+
+    /**
+     * Database var type varchar
      *
      * @var string
      */
-    protected $_calldate;
+    protected $_statType;
 
     /**
-     * Call type
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_initialLeg;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_initialLegHash;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_cid;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_cidHash;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_xcid;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_xcidHash;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_proxies;
+
+    /**
      * Database var type varchar
      *
      * @var string
@@ -47,92 +108,88 @@ class ParsedCDRs extends ModelAbstract
     protected $_type;
 
     /**
-     * Call description
      * Database var type varchar
      *
      * @var string
      */
-    protected $_desc;
+    protected $_subtype;
 
     /**
-     * Caller
-     * Database var type varchar
+     * Database var type timestamp
      *
      * @var string
      */
-    protected $_src;
+    protected $_calldate;
 
     /**
-     * Dialed Number
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_srcDialed;
-
-    /**
-     * aleg call duration
      * Database var type int
      *
      * @var int
      */
-    protected $_srcDuration;
+    protected $_duration;
 
     /**
-     * Final Callee - bleg destination
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_dst;
-
-    /**
-     * CallerID seen by call destination
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_dstSrcCid;
-
-    /**
-     * bleg call duration
      * Database var type int
      *
      * @var int
      */
-    protected $_dstDuration;
+    protected $_xDuration;
 
     /**
-     * Call forwarding description
      * Database var type varchar
      *
      * @var string
      */
-    protected $_fwDesc;
+    protected $_aParty;
 
     /**
-     * aleg diversion
      * Database var type varchar
      *
      * @var string
      */
-    protected $_extForwarder;
+    protected $_bParty;
 
     /**
-     * bleg diversion
      * Database var type varchar
      *
      * @var string
      */
-    protected $_intForwarder;
+    protected $_caller;
 
     /**
-     * Dialed number after forwarding
      * Database var type varchar
      *
      * @var string
      */
-    protected $_forwardTo;
+    protected $_callee;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_xCaller;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_xCallee;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_initialReferrer;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_referrer;
 
     /**
      * Database var type varchar
@@ -146,31 +203,28 @@ class ParsedCDRs extends ModelAbstract
      *
      * @var string
      */
-    protected $_referrer;
+    protected $_lastForwarder;
 
     /**
-     * aleg CallID
-     * Database var type varchar
+     * Database var type int
      *
-     * @var string
+     * @var int
      */
-    protected $_aleg;
+    protected $_brandId;
 
     /**
-     * bleg CallID
-     * Database var type varchar
+     * Database var type int
      *
-     * @var string
+     * @var int
      */
-    protected $_bleg;
+    protected $_companyId;
 
     /**
-     * cleg CallID
-     * Database var type varchar
+     * Database var type int
      *
-     * @var string
+     * @var int
      */
-    protected $_cleg;
+    protected $_peeringContractId;
 
     /**
      * Billable leg CallID
@@ -258,28 +312,6 @@ class ParsedCDRs extends ModelAbstract
      */
     protected $_invoiceId;
 
-    /**
-     * Billable call used Peering Contract
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_peeringContractId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_companyId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_brandId;
-
 
     /**
      * Parent relation parsedCDRs_ibfk_1
@@ -326,24 +358,34 @@ class ParsedCDRs extends ModelAbstract
 
     protected $_columnsList = array(
         'id'=>'id',
-        'calldate'=>'calldate',
+        'statId'=>'statId',
+        'xstatId'=>'xstatId',
+        'statType'=>'statType',
+        'initialLeg'=>'initialLeg',
+        'initialLegHash'=>'initialLegHash',
+        'cid'=>'cid',
+        'cidHash'=>'cidHash',
+        'xcid'=>'xcid',
+        'xcidHash'=>'xcidHash',
+        'proxies'=>'proxies',
         'type'=>'type',
-        'desc'=>'desc',
-        'src'=>'src',
-        'src_dialed'=>'srcDialed',
-        'src_duration'=>'srcDuration',
-        'dst'=>'dst',
-        'dst_src_cid'=>'dstSrcCid',
-        'dst_duration'=>'dstDuration',
-        'fw_desc'=>'fwDesc',
-        'ext_forwarder'=>'extForwarder',
-        'int_forwarder'=>'intForwarder',
-        'forward_to'=>'forwardTo',
-        'referee'=>'referee',
+        'subtype'=>'subtype',
+        'calldate'=>'calldate',
+        'duration'=>'duration',
+        'xDuration'=>'xDuration',
+        'aParty'=>'aParty',
+        'bParty'=>'bParty',
+        'caller'=>'caller',
+        'callee'=>'callee',
+        'xCaller'=>'xCaller',
+        'xCallee'=>'xCallee',
+        'initialReferrer'=>'initialReferrer',
         'referrer'=>'referrer',
-        'aleg'=>'aleg',
-        'bleg'=>'bleg',
-        'cleg'=>'cleg',
+        'referee'=>'referee',
+        'lastForwarder'=>'lastForwarder',
+        'brandId'=>'brandId',
+        'companyId'=>'companyId',
+        'peeringContractId'=>'peeringContractId',
         'billCallID'=>'billCallID',
         'billDuration'=>'billDuration',
         'billDestination'=>'billDestination',
@@ -355,9 +397,6 @@ class ParsedCDRs extends ModelAbstract
         'price'=>'price',
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
-        'peeringContractId'=>'peeringContractId',
-        'companyId'=>'companyId',
-        'brandId'=>'brandId',
     );
 
     /**
@@ -366,22 +405,6 @@ class ParsedCDRs extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'calldate'=> array(''),
-            'type'=> array(''),
-            'desc'=> array(''),
-            'src'=> array(''),
-            'src_dialed'=> array(''),
-            'src_duration'=> array(''),
-            'dst'=> array(''),
-            'dst_src_cid'=> array(''),
-            'dst_duration'=> array(''),
-            'fw_desc'=> array(''),
-            'ext_forwarder'=> array(''),
-            'int_forwarder'=> array(''),
-            'forward_to'=> array(''),
-            'aleg'=> array(''),
-            'bleg'=> array(''),
-            'cleg'=> array(''),
             'billCallID'=> array(''),
             'billDuration'=> array(''),
             'billDestination'=> array(''),
@@ -391,7 +414,6 @@ class ParsedCDRs extends ModelAbstract
             'targetPatternId'=> array(''),
             'price'=> array(''),
             'invoiceId'=> array(''),
-            'peeringContractId'=> array(''),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -433,7 +455,7 @@ class ParsedCDRs extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'calldate' => '0000-00-00 00:00:00',
+            'calldate' => 'CURRENT_TIMESTAMP',
         );
 
         $this->_initFileObjects();
@@ -503,6 +525,414 @@ class ParsedCDRs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setStatId($data)
+    {
+
+        if ($this->_statId != $data) {
+            $this->_logChange('statId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_statId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_statId = (int) $data;
+
+        } else {
+            $this->_statId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column statId
+     *
+     * @return int
+     */
+    public function getStatId()
+    {
+        return $this->_statId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setXstatId($data)
+    {
+
+        if ($this->_xstatId != $data) {
+            $this->_logChange('xstatId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_xstatId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_xstatId = (int) $data;
+
+        } else {
+            $this->_xstatId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column xstatId
+     *
+     * @return int
+     */
+    public function getXstatId()
+    {
+        return $this->_xstatId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setStatType($data)
+    {
+
+        if ($this->_statType != $data) {
+            $this->_logChange('statType');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_statType = $data;
+
+        } else if (!is_null($data)) {
+            $this->_statType = (string) $data;
+
+        } else {
+            $this->_statType = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column statType
+     *
+     * @return string
+     */
+    public function getStatType()
+    {
+        return $this->_statType;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setInitialLeg($data)
+    {
+
+        if ($this->_initialLeg != $data) {
+            $this->_logChange('initialLeg');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_initialLeg = $data;
+
+        } else if (!is_null($data)) {
+            $this->_initialLeg = (string) $data;
+
+        } else {
+            $this->_initialLeg = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column initialLeg
+     *
+     * @return string
+     */
+    public function getInitialLeg()
+    {
+        return $this->_initialLeg;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setInitialLegHash($data)
+    {
+
+        if ($this->_initialLegHash != $data) {
+            $this->_logChange('initialLegHash');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_initialLegHash = $data;
+
+        } else if (!is_null($data)) {
+            $this->_initialLegHash = (string) $data;
+
+        } else {
+            $this->_initialLegHash = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column initialLegHash
+     *
+     * @return string
+     */
+    public function getInitialLegHash()
+    {
+        return $this->_initialLegHash;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setCid($data)
+    {
+
+        if ($this->_cid != $data) {
+            $this->_logChange('cid');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_cid = $data;
+
+        } else if (!is_null($data)) {
+            $this->_cid = (string) $data;
+
+        } else {
+            $this->_cid = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column cid
+     *
+     * @return string
+     */
+    public function getCid()
+    {
+        return $this->_cid;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setCidHash($data)
+    {
+
+        if ($this->_cidHash != $data) {
+            $this->_logChange('cidHash');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_cidHash = $data;
+
+        } else if (!is_null($data)) {
+            $this->_cidHash = (string) $data;
+
+        } else {
+            $this->_cidHash = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column cidHash
+     *
+     * @return string
+     */
+    public function getCidHash()
+    {
+        return $this->_cidHash;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setXcid($data)
+    {
+
+        if ($this->_xcid != $data) {
+            $this->_logChange('xcid');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_xcid = $data;
+
+        } else if (!is_null($data)) {
+            $this->_xcid = (string) $data;
+
+        } else {
+            $this->_xcid = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column xcid
+     *
+     * @return string
+     */
+    public function getXcid()
+    {
+        return $this->_xcid;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setXcidHash($data)
+    {
+
+        if ($this->_xcidHash != $data) {
+            $this->_logChange('xcidHash');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_xcidHash = $data;
+
+        } else if (!is_null($data)) {
+            $this->_xcidHash = (string) $data;
+
+        } else {
+            $this->_xcidHash = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column xcidHash
+     *
+     * @return string
+     */
+    public function getXcidHash()
+    {
+        return $this->_xcidHash;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setProxies($data)
+    {
+
+        if ($this->_proxies != $data) {
+            $this->_logChange('proxies');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_proxies = $data;
+
+        } else if (!is_null($data)) {
+            $this->_proxies = (string) $data;
+
+        } else {
+            $this->_proxies = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column proxies
+     *
+     * @return string
+     */
+    public function getProxies()
+    {
+        return $this->_proxies;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setType($data)
+    {
+
+        if ($this->_type != $data) {
+            $this->_logChange('type');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_type = $data;
+
+        } else if (!is_null($data)) {
+            $this->_type = (string) $data;
+
+        } else {
+            $this->_type = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setSubtype($data)
+    {
+
+        if ($this->_subtype != $data) {
+            $this->_logChange('subtype');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_subtype = $data;
+
+        } else if (!is_null($data)) {
+            $this->_subtype = (string) $data;
+
+        } else {
+            $this->_subtype = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column subtype
+     *
+     * @return string
+     */
+    public function getSubtype()
+    {
+        return $this->_subtype;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
      * @param string|Zend_Date|DateTime $date
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
@@ -559,138 +989,36 @@ class ParsedCDRs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setType($data)
+    public function setDuration($data)
     {
 
-        if ($this->_type != $data) {
-            $this->_logChange('type');
+        if ($this->_duration != $data) {
+            $this->_logChange('duration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_type = $data;
+            $this->_duration = $data;
 
         } else if (!is_null($data)) {
-            $this->_type = (string) $data;
+            $this->_duration = (int) $data;
 
         } else {
-            $this->_type = $data;
+            $this->_duration = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column type
+     * Gets column duration
      *
-     * @return string
+     * @return int
      */
-    public function getType()
+    public function getDuration()
     {
-        return $this->_type;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setDesc($data)
-    {
-
-        if ($this->_desc != $data) {
-            $this->_logChange('desc');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_desc = $data;
-
-        } else if (!is_null($data)) {
-            $this->_desc = (string) $data;
-
-        } else {
-            $this->_desc = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column desc
-     *
-     * @return string
-     */
-    public function getDesc()
-    {
-        return $this->_desc;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setSrc($data)
-    {
-
-        if ($this->_src != $data) {
-            $this->_logChange('src');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_src = $data;
-
-        } else if (!is_null($data)) {
-            $this->_src = (string) $data;
-
-        } else {
-            $this->_src = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column src
-     *
-     * @return string
-     */
-    public function getSrc()
-    {
-        return $this->_src;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setSrcDialed($data)
-    {
-
-        if ($this->_srcDialed != $data) {
-            $this->_logChange('srcDialed');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_srcDialed = $data;
-
-        } else if (!is_null($data)) {
-            $this->_srcDialed = (string) $data;
-
-        } else {
-            $this->_srcDialed = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column src_dialed
-     *
-     * @return string
-     */
-    public function getSrcDialed()
-    {
-        return $this->_srcDialed;
+        return $this->_duration;
     }
 
     /**
@@ -698,33 +1026,33 @@ class ParsedCDRs extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setSrcDuration($data)
+    public function setXDuration($data)
     {
 
-        if ($this->_srcDuration != $data) {
-            $this->_logChange('srcDuration');
+        if ($this->_xDuration != $data) {
+            $this->_logChange('xDuration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_srcDuration = $data;
+            $this->_xDuration = $data;
 
         } else if (!is_null($data)) {
-            $this->_srcDuration = (int) $data;
+            $this->_xDuration = (int) $data;
 
         } else {
-            $this->_srcDuration = $data;
+            $this->_xDuration = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column src_duration
+     * Gets column xDuration
      *
      * @return int
      */
-    public function getSrcDuration()
+    public function getXDuration()
     {
-        return $this->_srcDuration;
+        return $this->_xDuration;
     }
 
     /**
@@ -732,33 +1060,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setDst($data)
+    public function setAParty($data)
     {
 
-        if ($this->_dst != $data) {
-            $this->_logChange('dst');
+        if ($this->_aParty != $data) {
+            $this->_logChange('aParty');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_dst = $data;
+            $this->_aParty = $data;
 
         } else if (!is_null($data)) {
-            $this->_dst = (string) $data;
+            $this->_aParty = (string) $data;
 
         } else {
-            $this->_dst = $data;
+            $this->_aParty = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column dst
+     * Gets column aParty
      *
      * @return string
      */
-    public function getDst()
+    public function getAParty()
     {
-        return $this->_dst;
+        return $this->_aParty;
     }
 
     /**
@@ -766,67 +1094,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setDstSrcCid($data)
+    public function setBParty($data)
     {
 
-        if ($this->_dstSrcCid != $data) {
-            $this->_logChange('dstSrcCid');
+        if ($this->_bParty != $data) {
+            $this->_logChange('bParty');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_dstSrcCid = $data;
+            $this->_bParty = $data;
 
         } else if (!is_null($data)) {
-            $this->_dstSrcCid = (string) $data;
+            $this->_bParty = (string) $data;
 
         } else {
-            $this->_dstSrcCid = $data;
+            $this->_bParty = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column dst_src_cid
+     * Gets column bParty
      *
      * @return string
      */
-    public function getDstSrcCid()
+    public function getBParty()
     {
-        return $this->_dstSrcCid;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setDstDuration($data)
-    {
-
-        if ($this->_dstDuration != $data) {
-            $this->_logChange('dstDuration');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_dstDuration = $data;
-
-        } else if (!is_null($data)) {
-            $this->_dstDuration = (int) $data;
-
-        } else {
-            $this->_dstDuration = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column dst_duration
-     *
-     * @return int
-     */
-    public function getDstDuration()
-    {
-        return $this->_dstDuration;
+        return $this->_bParty;
     }
 
     /**
@@ -834,33 +1128,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setFwDesc($data)
+    public function setCaller($data)
     {
 
-        if ($this->_fwDesc != $data) {
-            $this->_logChange('fwDesc');
+        if ($this->_caller != $data) {
+            $this->_logChange('caller');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_fwDesc = $data;
+            $this->_caller = $data;
 
         } else if (!is_null($data)) {
-            $this->_fwDesc = (string) $data;
+            $this->_caller = (string) $data;
 
         } else {
-            $this->_fwDesc = $data;
+            $this->_caller = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column fw_desc
+     * Gets column caller
      *
      * @return string
      */
-    public function getFwDesc()
+    public function getCaller()
     {
-        return $this->_fwDesc;
+        return $this->_caller;
     }
 
     /**
@@ -868,33 +1162,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setExtForwarder($data)
+    public function setCallee($data)
     {
 
-        if ($this->_extForwarder != $data) {
-            $this->_logChange('extForwarder');
+        if ($this->_callee != $data) {
+            $this->_logChange('callee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_extForwarder = $data;
+            $this->_callee = $data;
 
         } else if (!is_null($data)) {
-            $this->_extForwarder = (string) $data;
+            $this->_callee = (string) $data;
 
         } else {
-            $this->_extForwarder = $data;
+            $this->_callee = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column ext_forwarder
+     * Gets column callee
      *
      * @return string
      */
-    public function getExtForwarder()
+    public function getCallee()
     {
-        return $this->_extForwarder;
+        return $this->_callee;
     }
 
     /**
@@ -902,33 +1196,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setIntForwarder($data)
+    public function setXCaller($data)
     {
 
-        if ($this->_intForwarder != $data) {
-            $this->_logChange('intForwarder');
+        if ($this->_xCaller != $data) {
+            $this->_logChange('xCaller');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_intForwarder = $data;
+            $this->_xCaller = $data;
 
         } else if (!is_null($data)) {
-            $this->_intForwarder = (string) $data;
+            $this->_xCaller = (string) $data;
 
         } else {
-            $this->_intForwarder = $data;
+            $this->_xCaller = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column int_forwarder
+     * Gets column xCaller
      *
      * @return string
      */
-    public function getIntForwarder()
+    public function getXCaller()
     {
-        return $this->_intForwarder;
+        return $this->_xCaller;
     }
 
     /**
@@ -936,33 +1230,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setForwardTo($data)
+    public function setXCallee($data)
     {
 
-        if ($this->_forwardTo != $data) {
-            $this->_logChange('forwardTo');
+        if ($this->_xCallee != $data) {
+            $this->_logChange('xCallee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_forwardTo = $data;
+            $this->_xCallee = $data;
 
         } else if (!is_null($data)) {
-            $this->_forwardTo = (string) $data;
+            $this->_xCallee = (string) $data;
 
         } else {
-            $this->_forwardTo = $data;
+            $this->_xCallee = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column forward_to
+     * Gets column xCallee
      *
      * @return string
      */
-    public function getForwardTo()
+    public function getXCallee()
     {
-        return $this->_forwardTo;
+        return $this->_xCallee;
     }
 
     /**
@@ -970,33 +1264,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setReferee($data)
+    public function setInitialReferrer($data)
     {
 
-        if ($this->_referee != $data) {
-            $this->_logChange('referee');
+        if ($this->_initialReferrer != $data) {
+            $this->_logChange('initialReferrer');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_referee = $data;
+            $this->_initialReferrer = $data;
 
         } else if (!is_null($data)) {
-            $this->_referee = (string) $data;
+            $this->_initialReferrer = (string) $data;
 
         } else {
-            $this->_referee = $data;
+            $this->_initialReferrer = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column referee
+     * Gets column initialReferrer
      *
      * @return string
      */
-    public function getReferee()
+    public function getInitialReferrer()
     {
-        return $this->_referee;
+        return $this->_initialReferrer;
     }
 
     /**
@@ -1038,33 +1332,33 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setAleg($data)
+    public function setReferee($data)
     {
 
-        if ($this->_aleg != $data) {
-            $this->_logChange('aleg');
+        if ($this->_referee != $data) {
+            $this->_logChange('referee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_aleg = $data;
+            $this->_referee = $data;
 
         } else if (!is_null($data)) {
-            $this->_aleg = (string) $data;
+            $this->_referee = (string) $data;
 
         } else {
-            $this->_aleg = $data;
+            $this->_referee = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column aleg
+     * Gets column referee
      *
      * @return string
      */
-    public function getAleg()
+    public function getReferee()
     {
-        return $this->_aleg;
+        return $this->_referee;
     }
 
     /**
@@ -1072,67 +1366,135 @@ class ParsedCDRs extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setBleg($data)
+    public function setLastForwarder($data)
     {
 
-        if ($this->_bleg != $data) {
-            $this->_logChange('bleg');
+        if ($this->_lastForwarder != $data) {
+            $this->_logChange('lastForwarder');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_bleg = $data;
+            $this->_lastForwarder = $data;
 
         } else if (!is_null($data)) {
-            $this->_bleg = (string) $data;
+            $this->_lastForwarder = (string) $data;
 
         } else {
-            $this->_bleg = $data;
+            $this->_lastForwarder = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column bleg
+     * Gets column lastForwarder
      *
      * @return string
      */
-    public function getBleg()
+    public function getLastForwarder()
     {
-        return $this->_bleg;
+        return $this->_lastForwarder;
     }
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\ParsedCDRs
      */
-    public function setCleg($data)
+    public function setBrandId($data)
     {
 
-        if ($this->_cleg != $data) {
-            $this->_logChange('cleg');
+        if ($this->_brandId != $data) {
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_cleg = $data;
+            $this->_brandId = $data;
 
         } else if (!is_null($data)) {
-            $this->_cleg = (string) $data;
+            $this->_brandId = (int) $data;
 
         } else {
-            $this->_cleg = $data;
+            $this->_brandId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column cleg
+     * Gets column brandId
      *
-     * @return string
+     * @return int
      */
-    public function getCleg()
+    public function getBrandId()
     {
-        return $this->_cleg;
+        return $this->_brandId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setCompanyId($data)
+    {
+
+        if ($this->_companyId != $data) {
+            $this->_logChange('companyId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_companyId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_companyId = (int) $data;
+
+        } else {
+            $this->_companyId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column companyId
+     *
+     * @return int
+     */
+    public function getCompanyId()
+    {
+        return $this->_companyId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\ParsedCDRs
+     */
+    public function setPeeringContractId($data)
+    {
+
+        if ($this->_peeringContractId != $data) {
+            $this->_logChange('peeringContractId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_peeringContractId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_peeringContractId = (int) $data;
+
+        } else {
+            $this->_peeringContractId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column peeringContractId
+     *
+     * @return int
+     */
+    public function getPeeringContractId()
+    {
+        return $this->_peeringContractId;
     }
 
     /**
@@ -1529,108 +1891,6 @@ class ParsedCDRs extends ModelAbstract
     public function getInvoiceId()
     {
         return $this->_invoiceId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setPeeringContractId($data)
-    {
-
-        if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_peeringContractId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_peeringContractId = (int) $data;
-
-        } else {
-            $this->_peeringContractId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column peeringContractId
-     *
-     * @return int
-     */
-    public function getPeeringContractId()
-    {
-        return $this->_peeringContractId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setCompanyId($data)
-    {
-
-        if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_companyId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_companyId = (int) $data;
-
-        } else {
-            $this->_companyId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column companyId
-     *
-     * @return int
-     */
-    public function getCompanyId()
-    {
-        return $this->_companyId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function setBrandId($data)
-    {
-
-        if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_brandId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_brandId = (int) $data;
-
-        } else {
-            $this->_brandId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column brandId
-     *
-     * @return int
-     */
-    public function getBrandId()
-    {
-        return $this->_brandId;
     }
 
     /**

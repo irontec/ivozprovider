@@ -1,85 +1,154 @@
 production: 
   class: \IvozProvider\Model\ParsedCDRs
   fields: 
+    statId: 
+      title: _('Stat id')
+      type: number
+      source: 
+        control: Spinner
+      default: true
+    xstatId: 
+      title: _('Xstat id')
+      type: number
+      source: 
+        control: Spinner
+    statType: 
+      title: _('Stat type')
+      type: text
+      maxLength: 256
+    initialLeg: 
+      title: _('Initial leg')
+      type: text
+      maxLength: 128
+    initialLegHash: 
+      title: _('Initial leg hash')
+      type: text
+      maxLength: 128
+    cid: 
+      title: _('Cid')
+      type: text
+      maxLength: 128
+    cidHash: 
+      title: _('Cid hash')
+      type: text
+      maxLength: 128
+    xcid: 
+      title: _('Xcid')
+      type: text
+      maxLength: 128
+    xcidHash: 
+      title: _('Xcid hash')
+      type: text
+      maxLength: 128
+    proxies: 
+      title: _('Proxy')
+      type: text
+      maxLength: 32
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: text
+      maxLength: 32
+    subtype: 
+      title: _('Subtype')
+      type: text
+      maxLength: 64
     calldate: 
       title: _('Calldate')
       type: picker
-      defaultValue: 0000-00-00 00:00:00
+      defaultValue: CURRENT_TIMESTAMP
       source: 
         control: datetime
         settings: 
           disabled: 'false'
-      default: true
-    type: 
-      title: ngettext('Type', 'Types', 1)
-      type: text
-      maxLength: 256
-    desc: 
-      title: _('Desc')
-      type: text
-      maxLength: 256
-    src: 
-      title: _('Src')
-      type: text
-      maxLength: 128
-    src_dialed: 
-      title: _('Src dialed')
-      type: text
-      maxLength: 128
-    src_duration: 
-      title: _('Src duration')
+    duration: 
+      title: _('Duration')
       type: number
       source: 
         control: Spinner
-    dst: 
-      title: _('Dst')
-      type: text
-      maxLength: 128
-    dst_src_cid: 
-      title: _('Dst src cid')
-      type: text
-      maxLength: 128
-    dst_duration: 
-      title: _('Dst duration')
+    xDuration: 
+      title: _('X duration')
       type: number
       source: 
         control: Spinner
-    fw_desc: 
-      title: _('Fw desc')
+    aParty: 
+      title: _('A party')
       type: text
-      maxLength: 256
-    ext_forwarder: 
-      title: _('Ext forwarder')
+      maxLength: 128
+    bParty: 
+      title: _('B party')
       type: text
-      maxLength: 32
-    int_forwarder: 
-      title: _('Int forwarder')
+      maxLength: 128
+    caller: 
+      title: _('Caller')
       type: text
-      maxLength: 32
-    forward_to: 
-      title: _('Forward to')
+      maxLength: 128
+    callee: 
+      title: _('Callee')
       type: text
-      maxLength: 32
-    referee: 
-      title: _('Referee')
+      maxLength: 128
+    xCaller: 
+      title: _('X caller')
+      type: text
+      maxLength: 128
+    xCallee: 
+      title: _('X callee')
+      type: text
+      maxLength: 128
+    initialReferrer: 
+      title: _('Initial referrer')
       type: text
       maxLength: 128
     referrer: 
       title: _('Referrer')
       type: text
       maxLength: 128
-    aleg: 
-      title: _('Aleg')
+    referee: 
+      title: _('Referee')
       type: text
       maxLength: 128
-    bleg: 
-      title: _('Bleg')
+    lastForwarder: 
+      title: _('Last forwarder')
       type: text
-      maxLength: 128
-    cleg: 
-      title: _('Cleg')
-      type: text
-      maxLength: 128
+      maxLength: 32
+    brandId: 
+      title: _('Brand id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    companyId: 
+      title: _('Company id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    peeringContractId: 
+      title: _('Peering contract id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
+        'null': _("Unasigned")
     billCallID: 
       title: _('Bill call i d')
       type: text
@@ -167,45 +236,6 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
-    peeringContractId: 
-      title: _('Peering contract id')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
-          fieldName: 
-            fields: 
-              - description
-            template: '%description%'
-          order: description
-        'null': _("Unasigned")
-    companyId: 
-      title: _('Company id')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unasigned")
-    brandId: 
-      title: _('Brand id')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
         'null': _("Unasigned")
 staging: 
   _extends: production

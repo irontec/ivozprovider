@@ -1,80 +1,12 @@
 #!/usr/bin/perl
 
-#########################################
-# README
-#########################################
-
-###    # Solo tenemos en cuenta en cada run las no parseadas con xcallid=NULL
-###    # (las que tengan xcallid seran arrastradas por las que no lo tengan,
-###    # no es posible que haya una entrada con xcallid sin que su valor salga
-###    # en otra entrada como callid).
-###
-###    # IMPORTANTE: solo se tienen en cuenta llamadas establecidas (duration!=0)
-###                  Se descartan llamadas canceladas y patas de ringall no contestadas, entre otras
-###
-###    
-###    Query:
-###    SELECT proxy, callid FROM kam_acc_cdrs WHERE xcallid='' AND duration!='0' AND parsed='no';
-###    
-###    Parseamos cada callid:
-###    
-###    - Si es de proxyusers:
-###    
-###    -- El valor de callid aparece como xcallid en otro registro?
-###    
-###    SELECT * FROM kam_acc_cdrs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
-###
-###    (A) Si, en un registro de proxyusers: LLAMADA DE USUARIO QUE ACABA EN USUARIO
-###    
-###    (B) Si, en un registro de proxytrunks: LLAMADA DE USUARIO QUE ACABA EN PSTN
-###    
-###    (C) No:
-###       (C1) typeA == saliente: LLAMADA DE USUARIO QUE ACABA EN AS
-###       (C2) typeA == entrante: LLAMADA DE AS QUE ACABA EN USUARIO (no contemplado a 2016/05/16)
-###    
-###    - Si es de proxytrunks:
-###    
-###    -- El valor de callid aparece como xcallid en otro registro?
-###    
-###    SELECT * FROM kam_acc_cdrs WHERE xcallid='$CURRENT_CALLID' AND duration!='0';
-###    
-###    (D) Si, en un registro de proxyusers: LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO
-###    
-###    (E) Si, en un registro de proxytrunks: LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN
-###    
-###    (F) No: LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS
-###    (F) No:
-###       (F1) typeA == entrante: LLAMADA DE PSTN QUE ACABA EN AS
-###       (F2) typeA == saliente: LLAMADA DE AS QUE ACABA EN PSTN (unico caso comtemplado a 2016/05/16: fax)
-###    
-###    Una vez finalizado todo:
-###    UPDATE kam_{users,trunks}_acc_cdrs SET parsed='yes' WHERE callid='$CURRENT_CALLID';
-###    
-###    Si error en algun punto:
-###    UPDATE kam_{users,trunks}_acc_cdrs SET parsed='error' WHERE callid='$CURRENT_CALLID';
-###    
-###     
-###     FORMATO TABLA FINAL: ParsedCDR    
-###     
-###     calldate (es el calldate de la pata A, el de la pata B podria obtenerse con las duraciones)
-###     src (Real Caller)
-###     src_dialed (Dialed number)
-###     src_duration (Duracion pata A)
-###     dst (Final Callee)
-###     dst_src_cid (Shown number to final callee)
-###     dst_duration (Duracion pata B)
-###     type (ahora mismo 7 casos)
-###     desc (detalla el tipo con una frase descriptiva)
-###     fw_desc (detalla el tipo de desvio con una frase descriptiva)
-###     ext_forwarder (si nos entra una llamada con un desvio ajeno, el desviador se guarda aqui)
-###     int_forwarder (si hay un desvio dentro de nuestra plataforma, el desviador se guarda aqui)
-###     forward_to (numero llamado a raiz del desvio)
-###     companyId
-###     brandId
-###     aleg
-###     bleg
-###     billCallID: si llamada facturable, tendra el valor de aleg/bleg (la pata facturable)
-###     peeringContractId: si llamada saliente, tendra el id del PeeringContract por el que haya salido
+# TRANSFERENCIAS A MONOPATA (features, por ejemplo)
+#
+# TODO Impedir transferencias a features!!! ---> Easy de cojones
+#
+# TODO Casos no detectables (DID virtual a MOH, e.g.)
+# - bxfer y attxfer: Asterisk no deberia hacerlo
+# - semiattxfer: not possible
 
 #########################################
 # INCLUDES & PRAGMAS
@@ -86,15 +18,18 @@ use DBI;
 no warnings;
 use Gearman::Client;
 use POSIX;
-use Data::Dumper;
+use Digest::MD5 qw(md5_hex);
 
 #########################################
 # GLOBALS
 #########################################
 
+# Set start time
+my $start_time = time();
+
 # MySQL connection data
 my $db = 'ivozprovider';
-my $host = '127.0.0.1';
+my $host = 'data.ivozprovider.local';
 my $port = 3306;
 my $user = 'kamailio';
 my $pass = 'ironsecret';
@@ -106,412 +41,717 @@ my $gearman_job = 'tarificateCalls';
 
 # Connect to DB
 my $dbh = DBI->connect($dsn, $user, $pass)
-                or die "Couldn't connect to database: " . DBI->errstr;
+    or die "Couldn't connect to database: " . DBI->errstr;
 
 # Max calls to parse on each run
 my $MAXCALLS = 100;
 
 # My needed variables
-my @STATFIELDS = qw /type desc calldate src src_dialed src_duration dst dst_src_cid dst_duration fw_desc ext_forwarder int_forwarder forward_to referrer referee companyId brandId aleg bleg cleg billCallID billDuration billDestination peeringContractId/;
-my %execution = ('ok' => 0, 'error' => 0);
 
-my @stats; # Array to hashrefs, one per insert in ParsedCDRs
-my $ids; # Ref to array with IDs in kam_acc_cdrs
+# my @STATFIELDS = qw {
+#     id
+#     proxy
+#     calldate
+#     start_time
+#     end_time
+#     duration
+#     caller
+#     callee
+#     referrer
+#     referee
+#     callid
+#     xcallid
+#     type
+#     subtype
+#     diversion
+#     companyId
+#     peeringContractId
+#     parsed
+# };
+# 
+# my @STATAUXFIELDS = qw {
+#     legType
+#     initialLeg
+#     initialLegHash
+#     callidHash
+#     xferdst
+#     xfercid
+# };
+
+my @CDRFIELDS  = qw {
+    statId
+    xstatId
+    statType
+    initialLeg
+    initialLegHash
+    cidHash
+    cid
+    xcid
+    xcidHash
+    proxies
+    type
+    subtype
+    calldate
+    duration
+    xDuration
+    aParty
+    bParty
+    caller
+    callee
+    xCaller
+    xCallee
+    initialReferrer
+    referrer
+    referee
+    lastForwarder
+    brandId
+    companyId
+    peeringContractId
+    billCallID
+    billDuration
+    billDestination
+};
+
+my %execution = (
+    'pendingLegs' => 0,
+    'wantToParseLegs' => 0,
+    'groupedLegs' => 0,
+    'ungroupedLegs' => 0,
+    'completedGroups' => 0,
+    'incompletedGroups' => 0,
+    'generatedCDRs' => 0,
+    'parsed-yes' => 0,
+    'parsed-delayed' => 0,
+);
+my %cids;
+my $cdrs = [];
 
 #########################################
 # SUBROUTINES
 #########################################
 
-sub setBlegInfo {
-    my $stat = shift;
+sub logger {
+    say "[$start_time] ", @_;
+}
 
-    my $callid = $$stat{callid};
+sub getDiversion {
+    my $diversion = shift;
+    return undef if not $diversion;
 
-    # Real blegs would not have referrer field
-    my $get_bleg = "SELECT * from kam_acc_cdrs WHERE xcallid='$callid' AND referrer='' AND duration!='0'";
-    my $sth = $dbh->prepare($get_bleg)
-          or die "Couldn't prepare statement: $get_bleg";
-    $sth->execute() 
-          or die "Couldn't execute statement: $get_bleg";
+    if ($diversion =~ /\((\d+)\)/) {
+        $diversion = $1;
+    }
+    return $diversion;
+}
 
-    if ($sth->rows > 1) {
-        warn "[$callid] Has multiple blegs, error\n";
-        while (my $bleg = $sth->fetchrow_hashref) {
-            say "[$callid] bleg: $$bleg{callid} ($$bleg{id})";
-            push @$ids, $$bleg{id};
+sub setBillableVars {
+    my $cdr = shift;
+    my $leg = shift;
+
+    if ($$leg{peeringContractId}) {
+        $$cdr{peeringContractId} = $$leg{peeringContractId};
+        $$cdr{billCallID} = $$leg{callid};
+        $$cdr{billDuration} = $$leg{duration};
+        $$cdr{billDestination} = $$leg{callee};
+    }
+}
+
+sub setCommon {
+    my $cdr = shift;
+    my $leg = shift;
+    my $bleg = shift;
+
+    $$cdr{brandId} = $$leg{brandId};
+    $$cdr{companyId} = $$leg{companyId};
+    $$cdr{initialLeg} = $$leg{initialLeg};
+    $$cdr{initialLegHash} = $$leg{initialLegHash};
+    $$cdr{statId} = $$leg{id};
+    $$cdr{statType} = $$leg{legType};
+    $$cdr{cid} = $$leg{callid};
+    $$cdr{cidHash} = $$leg{callidHash};
+    $$cdr{proxies} = $$leg{proxy};
+    $$cdr{calldate} = $$leg{start_time};
+    $$cdr{duration} = $$leg{duration};
+    $$cdr{caller} = $$leg{caller};
+    $$cdr{callee} = $$leg{callee};
+    $$cdr{lastForwarder} = getDiversion $$leg{diversion};
+
+    if (!$bleg) {
+        if ($$leg{legType} ne 'A') {
+            # It is a C or D type
+
+            # Single leg CDR entries C/D always start by user
+            $$cdr{proxies} = 'USER-' . $$cdr{proxies};
+
+            # C/D stats will use xcid to store A leg CID
+            $$cdr{xcid} = $$leg{xcallid};
         }
-        return 1;
+
+        return;
     }
 
-    if ($sth->rows == 1) {
-        my $bleg = $sth->fetchrow_hashref;
-        say "[$callid] Has unique bleg: $$bleg{callid} ($$bleg{id})";
-        say "[$callid] bleg is from $$bleg{proxy}";
+    # For blegs only
+    $$cdr{proxies} = $$cdr{proxies} . '-' . $$bleg{proxy};
+    $$cdr{statType} = $$cdr{statType} . '-' . $$bleg{legType};
+    $$cdr{xstatId} = $$bleg{id};
+    $$cdr{xcid} = $$bleg{callid};
+    $$cdr{xcidHash} = $$bleg{callidHash};
+    $$cdr{lastForwarder} = getDiversion $$bleg{diversion}; # On AB, A diversion is always discarded
+    $$cdr{xDuration} = $$bleg{duration};
+    $$cdr{xCaller} = $$bleg{caller};
+    $$cdr{xCallee} = $$bleg{callee};
+}
 
-        push @$ids, $$bleg{id};
+sub updateCaller {
+    my $prev_cdr = shift;
 
-        # Set bleg stuff
-        $$stat{bleg} = $$bleg{callid};
-        $$stat{dst_duration} = ceil $$bleg{duration};
-        $$stat{dst_src_cid} = $$bleg{caller};
-        $$stat{dst} = $$bleg{callee};
-        $$stat{diversionB} = $$bleg{diversion};
- 
-        # Set aditional fields for future reference (not used in INSERT)
-        $$stat{proxyB} = $$bleg{proxy};
-        $$stat{peeringContractId} = $$bleg{peeringContractId} if $$bleg{peeringContractId};
-        $$stat{refereeB} = $$bleg{referee};
+    if ($$prev_cdr{aParty} == $$prev_cdr{referrer}) {
+        return $$prev_cdr{bParty};
+    } elsif ($$prev_cdr{bParty} == $$prev_cdr{referrer}) {
+        return $$prev_cdr{aParty};
     } else {
-        say "[$callid] Has NO bleg";
-        $$stat{proxyB} = 'none';
+        logger "I cannot guess who is the caller and referrer, weird";
+        return;
     }
-
-    return 0;
 }
 
-sub setAlegData {
-    my $call = shift;
-    my $stat = shift;
-
-    push @$ids, $$call{id};
-    # Set aleg stuff
-    $$stat{aleg} = $$call{callid};
-    $$stat{calldate} = $$call{start_time};
-    $$stat{src_duration} = ceil $$call{duration};
-    $$stat{src} = $$call{caller};
-    $$stat{src_dialed} = $$call{callee};
-    $$stat{diversionA} = $$call{diversion};
-
-    # Set generic stuff
-    $$stat{companyId} = $$call{companyId};
-    $$stat{brandId} = $$call{brandId};
-
-    # Set aditional fields for future reference (not used in INSERT)
-    $$stat{proxy} = $$call{proxy};
-    $$stat{callid} = $$call{callid};
-    $$stat{typeA} = $$call{type}; # entrante / saliente
-    $$stat{subtypeA} = $$call{subtype}; # interna / externa (proxyusers) - fax / normal (proxytrunks)
-    $$stat{peeringContractId} = $$call{peeringContractId} if $$call{peeringContractId};
-    $$stat{referrerA} = $$call{referrer};
-    $$stat{refereeA} = $$call{referee};
-}
-
-sub parseClegs {
+sub getInitialReferrer {
     my $callid = shift;
 
-    # Get calls generated with REFERs from initial call (or its bleg)
-    my $get_clegs = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='$callid' AND referrer!='' AND duration!='0' ORDER BY start_time";
-
-    my $sth = $dbh->prepare($get_clegs)
-          or die "Couldn't prepare statement: $get_clegs";
+    # Lookup call in kam_users_acc to get the real transferrer
+    my $getExtension = "SELECT EXT.number FROM kam_users_acc KUA LEFT JOIN Terminals T on T.name=KUA.from_user LEFT JOIN Users U ON U.terminalId=T.id LEFT JOIN Extensions EXT ON EXT.Id=U.extensionId LEFT JOIN Companies C ON T.companyId=C.id where KUA.callid='$callid'";
+    
+    my $sth = $dbh->prepare($getExtension)
+      or die "Couldn't prepare statement: $getExtension";
     $sth->execute() 
-          or die "Couldn't execute statement: $get_clegs";
-
-    my $cleg_num = $sth->rows;
-    say "[$callid] Has $cleg_num clegs";
-
-    while (my $call = $sth->fetchrow_hashref) {
-        my $stat = {};
-
-        say "[$callid] cleg: $$call{callid} ($$call{id})";
-
-        # Clegs are treated as aleg only calls
-        setAlegData($call, $stat);
-
-        # Custom stuff for C legs
-        $$stat{aleg} = $callid;
-        $$stat{cleg} = $$call{callid};
-
-        push @stats, $stat;
+      or die "Couldn't execute statement: $getExtension";
+    
+    my $extension = $sth->rows;
+    
+    if (not $extension) {
+        logger "No extension found looking up in kam_users_acc, weird";
+        return;
     }
+    
+    my $result = $sth->fetchrow_hashref;
+    $sth->finish();
+
+    return $$result{number};
 }
 
-# FIXME Llamadas para clegs??
-sub parseRefer {
-    my $stat = shift;
+sub semiattXfer {
+    my $cdr = shift;
+    my $leg = shift;
+    my $prev_cdr = shift;
 
-    if ($$stat{referrerA}) {
-        $$stat{referrer} = $$stat{referrerA};
-        say "[$$stat{callid}] Call dued to a previous refer by $$stat{referrer}";
-    } else {
-        say "[$$stat{callid}] Call not dued to refer";
-    }
+    $$prev_cdr{referee} = $$leg{diversion} || $$leg{callee};
+    $$cdr{initialReferrer} = getInitialReferrer $$leg{xcallid};
 
-    if ($$stat{refereeA} and $$stat{refereeB}) {
-        $$stat{referee} = $$stat{refereeA} . '-' . $$stat{refereeB};
-        $$stat{referrer} = $$stat{src} . '-' . $$stat{dst};
-        say "[$$stat{callid}] Both aleg and bleg refer the call";
-    } elsif ($$stat{refereeA}) {
-        $$stat{referee} = $$stat{refereeA};
-        $$stat{referrer} = $$stat{src};
-        say "[$$stat{callid}] aleg refers the call to $$stat{referee}";
-    } elsif ($$stat{refereeB}) {
-        $$stat{referee} = $$stat{refereeB};
-        $$stat{referrer} = $$stat{dst};
-        say "[$$stat{callid}] bleg refers the call to $$stat{referee}";
-    } else {
-        say "[$$stat{callid}] Not referred anywhere";
-    }
-}
+    if ($$cdr{initialReferrer}) {
+        $$prev_cdr{referrer} = $$cdr{initialReferrer};
 
-sub setCallType {
-    my $stat = shift;
-
-    if ($$stat{cleg}) {
-        $$stat{proxyB} = 'none';
-    }
-
-    # Significado: param1 (delimiter) param2
-    # param1:
-    #    * donde nace la llamada
-    #    * Valores posibles: USER, PSTN
-    # delimiter:
-    #    * Indica si la llamada ha tenido desvios o no (por parte de la plataforma)
-    #    * Valores posibles: '-' (sin desvios) / '->' (con desvios)
-    # param2:
-    #    * donde acaba la llamada
-    #    * Valores posibles: USER, PSTN, PBX
-
-    given($$stat{proxy} . '-' . $$stat{proxyB}) {
-        when (/proxyusers-proxyusers/) {
-            $$stat{type} = 'USER-USER';
-            $$stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN USUARIO';
-        }
-        when (/proxyusers-proxytrunks/) {
-            $$stat{type} = 'USER-PSTN';
-            $$stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN PSTN';
-            $$stat{billCallID} = $$stat{bleg}; # Only billable calls will have this field
-            $$stat{billDuration} = $$stat{dst_duration}; # Only billable calls will have this field
-            $$stat{billDestination} = $$stat{dst}; # Only billable calls will have this field
-        }
-        when (/proxyusers-none/) {
-            if ($$stat{typeA} eq 'saliente') {
-                $$stat{type} = 'USER-PBX';
-                $$stat{desc} = 'LLAMADA DE USUARIO QUE ACABA EN AS';
-            } elsif ($$stat{typeA} eq 'entrante') {
-                $$stat{type} = 'PBX-USER';
-                $$stat{desc} = 'LLAMADA DE PBX QUE ACABA EN USUARIO';
-            } else {
-                say "[$$stat{callid}] Invalid typeA '$$stat{typeA}' (nor entrante/saliente), check!";
-                return 1;
-            }
-        }
-        when (/proxytrunks-proxyusers/) {
-            $$stat{type} = 'PSTN-USER';
-            $$stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN USUARIO';
-        }
-        when (/proxytrunks-proxytrunks/) {
-            $$stat{type} = 'PSTN-PSTN';
-            $$stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN PSTN';
-            $$stat{billCallID} = $$stat{bleg}; # Only billable calls will have this field
-            $$stat{billDuration} = $$stat{dst_duration}; # Only billable calls will have this field
-            $$stat{billDestination} = $$stat{dst}; # Only billable calls will have this field
-        }
-        when (/proxytrunks-none/) {
-            if ($$stat{typeA} eq 'entrante') {
-                $$stat{type} = 'PSTN-PBX';
-                $$stat{desc} = 'LLAMADA ENTRANTE EXTERNA QUE ACABA EN AS';
-            } elsif ($$stat{typeA} eq 'saliente') {
-                $$stat{type} = 'PBX-PSTN';
-                $$stat{desc} = 'LLAMADA DE PBX QUE ACABA EN PSTN';
-                if ($$stat{cleg}) {
-                    $$stat{billCallID} = $$stat{cleg}; # Only billable calls will have this field
-                } else {
-                    $$stat{billCallID} = $$stat{aleg}; # Only billable calls will have this field
-                }
-                $$stat{billDuration} = $$stat{src_duration}; # Only billable calls will have this field
-                $$stat{billDestination} = $$stat{src_dialed}; # Only billable calls will have this field
-            } else {
-                say "[$$stat{callid}] Invalid typeA '$$stat{typeA}' (nor entrante/saliente), check!";
-                return 1;
-            }
-            $$stat{desc} = "$$stat{desc} ($$stat{subtypeA})" if $$stat{subtypeA} ne 'normal';
-        }
-    }
-
-    if ($$stat{int_forwarder}) {
-        $$stat{type} =~ s/-/->/;
-        $$stat{desc} .= ' (DESVIADA)';
-    }
-
-    if ($$stat{cleg}) {
-        $$stat{desc} .= ' (TRANSFERENCIA CIEGA)';
-    }
-
-    return 0;
-}
-
-# FIXME Llamadas para clegs??
-sub parseForward {
-    my $stat = shift;
-
-    unless ($$stat{diversionA} or $$stat{diversionB}) {
-        say "[$$stat{callid}] Desvio: no";
-    } 
-
-    if ($$stat{diversionA}) {
-        if ($$stat{proxy} eq 'proxyusers') {
-            warn "[$$stat{callid}] Llamada de un terminal con Diversion seteado, error\n"; 
-            return 1;
+        # In semi-att xfers, caller must be updated to show the real interlocutor
+        if ($$prev_cdr{aParty} == $$cdr{initialReferrer}) {
+            $$cdr{caller} = $$prev_cdr{bParty};
+        } elsif ($$prev_cdr{bParty} == $$cdr{initialReferrer}) {
+            $$cdr{caller} = $$prev_cdr{aParty};
         } else {
-            say "[$$stat{callid}] Desvio: desvio de PSTN ajeno a la plataforma";
-            $$stat{ext_forwarder} = $$stat{diversionA};
+            logger "$$cdr{initialReferrer} was not the aParty nor the bParty, weird...";
         }
     }
+}
 
-    if ($$stat{diversionB}) {
-        if ($$stat{diversionB} eq $$stat{diversionA}) {
-            say "[$$stat{callid}] bleg has the same diversion as aleg, skip parsing (AS has just resend it)";
-            return 0;
-        }
+sub blindXfer {
+    my $cdr = shift;
+    my $leg = shift;
+    my $prev_cdr = shift;
 
-        $$stat{forward_to} = $$stat{dst};
-        $$stat{int_forwarder} = $$stat{diversionB};
+    # Set referee
+    $$prev_cdr{referee} = $$leg{diversion} || $$leg{callee};
 
-        if ($$stat{proxyB} eq 'proxyusers') {
-            say "[$$stat{callid}] Desvio: $$stat{int_forwarder} desvia la llamada a numero interno $$stat{forward_to}"; 
-            $$stat{fw_desc} = "$$stat{int_forwarder} desvia la llamada a numero interno $$stat{forward_to}";
-        } else {
-            # En desvio a PSTN, diversion contendra el DDI out del desviador y la extension desviadora
-            say "[$$stat{callid}] Desvio: $$stat{int_forwarder} desvia la llamada a numero externo $$stat{forward_to}"; 
-            $$stat{fw_desc} = "$$stat{int_forwarder} desvia la llamada a numero externo $$stat{forward_to}";
-        }
+    # C type has always reliable referrer (via Referred-By)
+    $$prev_cdr{referrer} = $$leg{referrer};
+    $$cdr{initialReferrer} = $$prev_cdr{referrer};
+
+    # In blind xfers, caller might need to be changed to show the real interlocutor
+    my $new_caller = updateCaller $prev_cdr;
+    $$cdr{caller} = $new_caller if $new_caller;
+}
+
+sub attXfer {
+    my $cdr = shift;
+    my $leg = shift;
+    my $prev_cdr = shift;
+
+    # Set referrer/referee
+    $$prev_cdr{referrer} = $$leg{caller};
+    $$prev_cdr{referee} = $$leg{callee};
+    $$cdr{initialReferrer} = $$prev_cdr{referrer};
+
+    # In attxfers, caller must be updated to show the real interlocutor
+    my $new_caller = updateCaller $prev_cdr;
+    $$cdr{caller} = $new_caller if $new_caller;
+}
+
+sub getXferred {
+    my $leg = shift;
+    my $related = shift;
+
+    if ($$leg{referee} =~ /sip:(.*)\@.*Replaces=(.*?)%40(.*?)%/) {
+        $$leg{xferdst} = $1;
+        $$leg{xfercid} = $2 . '@' . $3;
+        $$related{$$leg{xfercid}}++;
+    } elsif ($$leg{referee} =~ /sip:(.*)\@/) {
+        $$leg{xferdst} = $1;
     }
+}
 
-    return 0;
+sub deleteCDR {
+    my $id = shift;
+
+    return unless $id; # Safety check
+
+    # Fetch already parsed related CDRs, if any
+    my $deleteCDR = "DELETE FROM ParsedCDRs WHERE id='$id'";
+    
+    my $sth = $dbh->prepare($deleteCDR)
+      or die "Couldn't prepare statement: $deleteCDR";
+    $sth->execute() 
+      or die "Couldn't execute statement: $deleteCDR";
+    
+    $sth->finish();
+
+    logger "Delete CDR entry with id '$id'";
 }
 
 sub setParsedValue {
-    my $mainCallId = shift;
-    my $ids = shift;
-    my $value = shift;
+    my $id = shift;
+    my $callidHash = shift;
+    my $parsedValue = shift;
 
     # Update execution counters
-    $execution{ok}++ if $value eq 'yes';
-    $execution{error}++ if $value eq 'error';
+    $execution{'parsed-' . $parsedValue}++;
 
-    for (@$ids) {
-        # Prepare query
-        my $markAsParsed = "UPDATE kam_acc_cdrs SET parsed='$value' WHERE id='$_'";
+    # Prepare query
+    my $sql = "UPDATE kam_acc_cdrs SET parsed='$parsedValue' WHERE id='$id'";
 
-        # Execute query
-        my $sth = $dbh->prepare($markAsParsed)
-              or die "Couldn't prepare statement: $markAsParsed";
-        $sth->execute() 
-              or die "Couldn't execute statement: $markAsParsed";
+    # Execute query
+    my $sth = $dbh->prepare($sql)
+          or die "Couldn't prepare statement: $sql";
+    $sth->execute()
+          or die "Couldn't execute statement: $sql";
+    $sth->finish();
 
-        say "[$mainCallId] Marked as '$value' (id: $_)";
+    logger "[$callidHash] Marked as '$parsedValue' (id: $id)";
+}
+
+sub isRealDleg {
+    my $leg = shift;
+
+    # Fetch already parsed related CDRs, if any
+    my $getRelatedCDRs = "SELECT * FROM ParsedCDRs WHERE cid='$$leg{xcallid}'";
+    
+    my $sth = $dbh->prepare($getRelatedCDRs)
+      or die "Couldn't prepare statement: $getRelatedCDRs";
+    $sth->execute() 
+      or die "Couldn't execute statement: $getRelatedCDRs";
+    
+    my $RelatedCDRs = $sth->rows;
+    
+    if (not $RelatedCDRs) {
+        return 1;
+    }
+    
+    my $cdr = $sth->fetchrow_hashref;
+    $sth->finish();
+
+    logger "Leg with id '$$leg{id}' is not a real D leg (related leg id: $$cdr{statId})";
+
+    deleteCDR $$cdr{id};
+    setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'no';
+    
+    return 0;
+}
+
+sub setLegType {
+    my $leg = shift;
+    my $newGroupCIDs = shift;
+
+    if (!$$leg{xcallid}) {
+        $$leg{legType} = 'A';
+    } else {
+        if (!$$newGroupCIDs{$$leg{xcallid}}) {
+            # D type legs could be B legs with A legs previously treated as A-only legs :(
+            if (isRealDleg $leg) {
+                $$leg{legType} = 'D';
+            } else {
+                return;
+            }
+        } else {
+            $$leg{legType} = ($$leg{referrer}) ? 'C' : 'B';
+        }
+    }
+
+    return $$leg{legType};
+}
+
+sub setCdrType {
+    my $cdr = shift;
+
+    # Set type and subtype
+    if ($$cdr{proxies} =~ /PSTN/) {
+        $$cdr{type} = 'externa'; 
+        if (not $$cdr{peeringContractId}) {
+            $$cdr{subtype} = 'entrante';
+        } else {
+            if ($$cdr{proxies} eq 'PSTN-PSTN') {
+                $$cdr{subtype} = 'entrante-saliente';
+            } else {
+                $$cdr{subtype} = 'saliente';
+            }
+        }
+    } else {
+        $$cdr{type} = 'interna'; 
     }
 }
 
-sub insertStat {
-    my $stat = shift;
+sub addLegToGroup {
+    my $leg = shift;
+    my %group = @_;
+
+    $execution{groupedLegs}++; # Add to grouped leg counter
+
+    # If leg has referee, add to counter
+    push @{$group{referees}}, $$leg{callid} if $$leg{referee};
+
+    # Set callidHash
+    $$leg{callidHash} = substr md5_hex($$leg{callid}), 0, 8;
+
+    # Set leg initial callid
+    $$leg{initialLeg} = $group{initialLeg};
+    $$leg{initialLegHash} = $group{initialLegHash};
+
+    # Add callid to group
+    $group{callids}{$$leg{callid}}++;
+    $group{related}{$$leg{callid}}++;
+    push $group{legs}, $leg;
+
+    delete $cids{$$leg{key}};
+
+    # Extract relations via attended xfers
+    getXferred $leg, $group{related};
+}
+
+sub findRelatedLegs {
+    my %group = @_; 
+    
+    for my $cid (sort {$a <=> $b} keys %cids) {
+        my $leg = $cids{$cid};
+        if ($group{related}{$$leg{xcallid}} || $group{related}{$$leg{callid}}) {
+            # Leg is somehow related to current group
+            addLegToGroup $leg, %group;
+        }
+    }
+}
+
+# For A, C and D CDRs
+sub generateSingleLegCdr {
+    my $leg = shift;
+    my $cdr = {};
+
+    setCommon $cdr, $leg;
+
+    # Set xfer specific stuff
+    if ($$leg{legType} eq 'C') {
+        blindXfer $cdr, $leg, $$cdrs[-1];
+    } elsif ($$leg{legType} eq 'D') {
+        semiattXfer $cdr, $leg, $$cdrs[-1];
+    }
+
+    # Set interlocutors
+    $$cdr{aParty} = $$cdr{caller};
+    $$cdr{bParty} = $$cdr{callee};
+
+    setBillableVars $cdr, $leg;
+
+    setCdrType $cdr;
+
+    push @$cdrs, $cdr;
+}
+
+# For AB CDRs
+sub generateDualLegCdr {
+    my $aleg = shift;
+    my $bleg = shift;
+    my $cdr = {};
+
+    if ($$aleg{legType} ne 'A' || $$bleg{legType} ne 'B') {
+        logger "Dual leg CDR can only be AB stats, we have $$aleg{legType} and $$bleg{legType} here (ids: $$aleg{id} $$bleg{id})";
+    }
+
+    setCommon $cdr, $aleg, $bleg;
+
+    # Set xfer stuff if AB is dued to att-xfer
+    if ($$aleg{callid} ne $$aleg{initialLeg}) {
+        attXfer $cdr, $aleg, $$cdrs[-1];
+    }
+
+    # Set interlocutors
+    $$cdr{aParty} = $$cdr{caller};
+    $$cdr{bParty} = $$cdr{xCallee};
+
+    if ($$aleg{peeringContractId}) {
+        setBillableVars $cdr, $aleg;
+    } elsif ($$bleg{peeringContractId}) {
+        setBillableVars $cdr, $bleg;
+    }
+
+    setCdrType $cdr;
+
+    push @$cdrs, $cdr;
+}
+
+sub isAlreadyGrouped {
+    my $groups = shift;
+    my $callid = shift;
+
+    # Skip already grouped
+    for my $gr (@$groups) {
+        for my $leg (@$gr) {
+            return 1 if $$leg{callid} eq $callid;
+        }
+    }
+    return 0;
+}
+
+sub groupIsCompleted {
+    my %group = @_;
+
+    # Check if group is incompleted
+
+    # Rule 1: if number of legs equals number of legs with referee, incompleted
+    if (@{$group{legs}} == @{$group{referees}}) {
+        my @legs_ids;
+        push @legs_ids, $$_{id} for (@{$group{legs}});
+        logger "Group is incomplete, same number of referees than legs (ids: @legs_ids)";
+        return 0;
+    }
+
+    # Rule 2: if more than 1 leg, there is no A without B (and viceversa)
+    if (@{$group{legs}} > 1) {
+        if (@{$group{alegs}} != @{$group{blegs}}) {
+            my @legs_ids;
+            push @legs_ids, $$_{id} for (@{$group{legs}});
+            logger "Group is incomplete, A without B or B without A (ids: @legs_ids)";
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+sub insertCDR {
+    my $cdr = shift;
 
     # Prepare INSERT query
-    my $fields = join ',', map {"`$_`"} @STATFIELDS;
+    my $fields = join ',', map {"`$_`"} @CDRFIELDS;
     my $values = join ',', map {
-        if ($$stat{$_}) {
-            "'$$stat{$_}'";
+        if ($$cdr{$_}) {
+            "'$$cdr{$_}'";
         } else {
             "NULL";
         }
-    } @STATFIELDS;
+    } @CDRFIELDS;
 
     my $insertStat = "INSERT INTO ParsedCDRs ($fields) VALUES ($values)";
 
-    # Print values
-    say "[$$stat{callid}] $_ => $$stat{$_}" for @STATFIELDS;
-
     # Insert new row to ParsedCDRs
     my $sth = $dbh->prepare($insertStat)
-                    or die "Couldn't prepare statement: $insertStat";
-    $sth->execute() 
+          or die "Couldn't prepare statement: $insertStat";
+    $sth->execute()
           or die "Couldn't execute statement: $insertStat";
-}
+    $sth->finish();
 
-sub callTarificator {
-    my $client = Gearman::Client->new;
-    $client->job_servers(@gearman_servers);
-    $client->do_task($gearman_job);
+    # Print values and set parsed value
+    if ($$cdr{xcidHash}) {
+        logger "[$$cdr{initialLegHash}][$$cdr{cidHash}][$$cdr{xcidHash}] $_ => $$cdr{$_}" for @CDRFIELDS;
+        setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'yes';
+        setParsedValue $$cdr{xstatId}, $$cdr{xcidHash}, 'yes' if $$cdr{xcidHash};
+    } else {
+        logger "[$$cdr{initialLegHash}][$$cdr{cidHash}] $_ => $$cdr{$_}" for @CDRFIELDS;
+        setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'yes';
+    }
 }
 
 #########################################
 # MAIN LOGIC
 #########################################
 
-# Fetch oldest unparsed calls (only alegs with duration > 0) - 30" from its hangup
-my $getPendingCalls = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE xcallid='' AND duration!='0' AND parsed='no' AND (UNIX_TIMESTAMP(calldate) + 3) < UNIX_TIMESTAMP(NOW()) ORDER BY start_time";
+logger "Execution started at " . localtime();
 
-my $sth = $dbh->prepare($getPendingCalls)
-                or die "Couldn't prepare statement: $getPendingCalls";
+# Fetch oldest unparsed calls
+my $getPendingStats = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE parsed!='yes' ORDER BY start_time";
 
+my $sth = $dbh->prepare($getPendingStats)
+  or die "Couldn't prepare statement: $getPendingStats";
 $sth->execute() 
-      or die "Couldn't execute statement: $getPendingCalls";
+  or die "Couldn't execute statement: $getPendingStats";
 
-my $pendingCallsNumber = $sth->rows;
+$execution{pendingLegs} = $sth->rows;
 
-if (not $pendingCallsNumber) {
-    say "No pending calls";
+if (not $execution{pendingLegs}) {
+    logger "No pending stats";
+    logger "Execution ended at " . localtime();
     exit;
 }
 
-if ($pendingCallsNumber > $MAXCALLS) {
-    say "$MAXCALLS pending calls will be parsed this run (out of $pendingCallsNumber pending calls)";
+logger "Pending stats: $execution{pendingLegs}";
+
+if ($execution{pendingLegs} > $MAXCALLS) {
+    $execution{wantToParseLegs} = $MAXCALLS;
 } else {
-    say "All $pendingCallsNumber pending calls will be parsed this run";
+    $execution{wantToParseLegs} = $execution{pendingLegs};
 }
 
-my $i = 0;
-while (my $call = $sth->fetchrow_hashref) {
-    my $stat = {};
-    @stats = ();
-    $ids = [];
+logger "Goal parse stats on this run: $execution{wantToParseLegs}";
 
-    say "[$$call{callid}] Initial leg: $$call{callid} ($$call{id})";
+# Get pending stats
+my $alegs = [];
 
-    setAlegData($call, $stat);
-    parseClegs $$stat{callid}; # Add cleg(s) to @stats (and its ids to @ids)
+my $i=1;
+while (my $leg = $sth->fetchrow_hashref) {
+    $cids{$i} = $leg;
+    $$leg{key} = $i;
+    push @$alegs, $leg if not $$leg{xcallid};
+    last if $i++ >= $MAXCALLS;
+}
 
-    if (setBlegInfo($stat)) {
-        setParsedValue($$stat{callid}, $ids, 'error');
+$sth->finish();
+
+# Log oldest stat
+logger "Oldest stat was inserted at $cids{1}{calldate} (id: $cids{1}{id})";
+
+# Create groups of related legs
+my $groups = [];
+my $group_candidates = [];
+for my $aleg (@$alegs) {
+    next if isAlreadyGrouped $group_candidates, $$aleg{callid};
+
+    # New group
+    my %group;
+    $group{callids} = {}; 
+    $group{referees} = [];
+    $group{related} = {}; 
+    $group{legs} = []; 
+    $group{alegs} = []; 
+    $group{blegs} = []; 
+    $group{initialLeg} = $$aleg{callid};
+    $group{initialLegHash} = substr md5_hex($$aleg{callid}), 0, 8;
+    $group{reparsing} = 0;
+
+    # Add aleg to a new group
+    addLegToGroup $aleg, %group;
+
+    # Find legs related with this new group
+    findRelatedLegs %group;
+
+    # Add legType for each leg in new group (A, B, C, D)
+    for my $leg (@{$group{legs}}) {
+        my $type = setLegType $leg, $group{callids};
+        if (not $type) {
+            logger "One already inserted CDR stat was detected as this group member";
+            $group{reparsing} = 1;
+        }
+        push @{$group{alegs}}, $$leg{callid} if $type eq 'A';
+        push @{$group{blegs}}, $$leg{callid} if $type eq 'B';
+    }
+
+    # Add to group_candidates even if it is incompleted or reparsing done
+    push @$group_candidates, $group{legs};
+
+    # If any CDR stat needs reparsing, skip group
+    if ($group{reparsing}) {
+        logger "Not processing this group in this run";
         next;
     }
 
-    if ($$stat{proxyB} eq 'none' and $$stat{refereeA}) {
-        say "[$$stat{callid}] Skip call, its bleg has not hangup yet";
+    # Check if group is incompleted
+    if (not groupIsCompleted %group) {
+        $execution{incompletedGroups}++;
         next;
     }
 
-    push @stats, $stat; # Add aleg(-bleg)
+    push @$groups, $group{legs};
+}
 
-    # @stats now has aleg(-bleg) + cleg(s)
-    my $markAsError = 0;
-    for my $stat (reverse @stats) {
-        parseRefer($stat);
-        if (parseForward($stat) or setCallType($stat)) {
-            $markAsError = 1;
-            last;
+# Log formed groups stats
+$execution{completedGroups} = @$groups;
+logger "Formed groups: $execution{completedGroups}";
+logger "Grouped stats: $execution{groupedLegs}";
+$execution{ungroupedLegs} = scalar keys %cids;
+my @ungrouped;
+for (keys %cids) {
+    push @ungrouped, $cids{$_}{id};
+}
+logger "Ungrouped stats: $execution{ungroupedLegs} (@ungrouped)";
+logger "Incompleted skipped groups: $execution{incompletedGroups}";
+
+# Parse groups and generate CDR entries
+for my $legs (@$groups) {
+    # Generate A(-B) CDR
+    my $aleg;
+    my $bleg;
+    if (@$legs == 1) {
+        $aleg = shift @$legs;
+        if ($$aleg{parsed} eq 'delayed') {
+            generateSingleLegCdr $aleg;
+        } else {
+            # A leg only stats wait for 1 run to avoid errors in mid-inserted AB stats
+            setParsedValue $$aleg{id}, $$aleg{callidHash}, 'delayed';
+        }
+    } else {
+        $aleg = shift @$legs;
+        $bleg = shift @$legs;
+        generateDualLegCdr $aleg, $bleg;
+    }
+ 
+    # Generate remaining CDR(s), if any
+    while (@$legs) {
+        my $leg = shift @$legs;
+
+        if ($$leg{legType} eq 'C' || $$leg{legType} eq 'D') {
+            generateSingleLegCdr $leg;
+        } else {
+            my $nextLeg = shift @$legs;
+            if ($$leg{legType} eq 'A') {
+                generateDualLegCdr $leg, $nextLeg;
+            } else { # B
+                generateDualLegCdr $nextLeg, $leg;
+            }
         }
     }
-
-    if ($markAsError) {
-        setParsedValue($$stat{callid}, $ids, 'error');
-        next;
-    }
-
-    insertStat($_) for @stats;
-    setParsedValue($$stat{callid}, $ids, 'yes');
-
-    # Only parse $MAXCALLS on each run
-    last if ++$i >= $MAXCALLS;
 }
+
+# Log generated CDR stats
+$execution{generatedCDRs} = @$cdrs;
+logger "Generated CDR entries: $execution{generatedCDRs}";
+
+# Insert generated CDRs to DB
+insertCDR($_) for @$cdrs;
+
+# Log final stats
+logger "Stats marked as parsed: $execution{'parsed-yes'}";
+logger "Stats marked as delayed: $execution{'parsed-delayed'}";
 
 # Disconnect from database
 $dbh->disconnect;
 
 # Call Gearmand tarificator Job
-callTarificator;
+my $client = Gearman::Client->new;
+$client->job_servers(@gearman_servers);
+$client->do_task($gearman_job);
 
-say "Execution ended: $execution{ok} ok, $execution{error} error (total: $pendingCallsNumber)";
+# Report finish time and leave
+logger "Execution ended at " . localtime();
 exit;
 

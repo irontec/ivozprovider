@@ -49,24 +49,34 @@ class ParsedCDRs extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'calldate' => $model->getCalldate(),
+                'statId' => $model->getStatId(),
+                'xstatId' => $model->getXstatId(),
+                'statType' => $model->getStatType(),
+                'initialLeg' => $model->getInitialLeg(),
+                'initialLegHash' => $model->getInitialLegHash(),
+                'cid' => $model->getCid(),
+                'cidHash' => $model->getCidHash(),
+                'xcid' => $model->getXcid(),
+                'xcidHash' => $model->getXcidHash(),
+                'proxies' => $model->getProxies(),
                 'type' => $model->getType(),
-                'desc' => $model->getDesc(),
-                'src' => $model->getSrc(),
-                'src_dialed' => $model->getSrcDialed(),
-                'src_duration' => $model->getSrcDuration(),
-                'dst' => $model->getDst(),
-                'dst_src_cid' => $model->getDstSrcCid(),
-                'dst_duration' => $model->getDstDuration(),
-                'fw_desc' => $model->getFwDesc(),
-                'ext_forwarder' => $model->getExtForwarder(),
-                'int_forwarder' => $model->getIntForwarder(),
-                'forward_to' => $model->getForwardTo(),
-                'referee' => $model->getReferee(),
+                'subtype' => $model->getSubtype(),
+                'calldate' => $model->getCalldate(),
+                'duration' => $model->getDuration(),
+                'xDuration' => $model->getXDuration(),
+                'aParty' => $model->getAParty(),
+                'bParty' => $model->getBParty(),
+                'caller' => $model->getCaller(),
+                'callee' => $model->getCallee(),
+                'xCaller' => $model->getXCaller(),
+                'xCallee' => $model->getXCallee(),
+                'initialReferrer' => $model->getInitialReferrer(),
                 'referrer' => $model->getReferrer(),
-                'aleg' => $model->getAleg(),
-                'bleg' => $model->getBleg(),
-                'cleg' => $model->getCleg(),
+                'referee' => $model->getReferee(),
+                'lastForwarder' => $model->getLastForwarder(),
+                'brandId' => $model->getBrandId(),
+                'companyId' => $model->getCompanyId(),
+                'peeringContractId' => $model->getPeeringContractId(),
                 'billCallID' => $model->getBillCallID(),
                 'billDuration' => $model->getBillDuration(),
                 'billDestination' => $model->getBillDestination(),
@@ -78,9 +88,6 @@ class ParsedCDRs extends MapperAbstract
                 'price' => $model->getPrice(),
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
-                'peeringContractId' => $model->getPeeringContractId(),
-                'companyId' => $model->getCompanyId(),
-                'brandId' => $model->getBrandId(),
             );
         } else {
             $result = array();
@@ -562,24 +569,34 @@ class ParsedCDRs extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setCalldate($data['calldate'])
+                  ->setStatId($data['statId'])
+                  ->setXstatId($data['xstatId'])
+                  ->setStatType($data['statType'])
+                  ->setInitialLeg($data['initialLeg'])
+                  ->setInitialLegHash($data['initialLegHash'])
+                  ->setCid($data['cid'])
+                  ->setCidHash($data['cidHash'])
+                  ->setXcid($data['xcid'])
+                  ->setXcidHash($data['xcidHash'])
+                  ->setProxies($data['proxies'])
                   ->setType($data['type'])
-                  ->setDesc($data['desc'])
-                  ->setSrc($data['src'])
-                  ->setSrcDialed($data['src_dialed'])
-                  ->setSrcDuration($data['src_duration'])
-                  ->setDst($data['dst'])
-                  ->setDstSrcCid($data['dst_src_cid'])
-                  ->setDstDuration($data['dst_duration'])
-                  ->setFwDesc($data['fw_desc'])
-                  ->setExtForwarder($data['ext_forwarder'])
-                  ->setIntForwarder($data['int_forwarder'])
-                  ->setForwardTo($data['forward_to'])
-                  ->setReferee($data['referee'])
+                  ->setSubtype($data['subtype'])
+                  ->setCalldate($data['calldate'])
+                  ->setDuration($data['duration'])
+                  ->setXDuration($data['xDuration'])
+                  ->setAParty($data['aParty'])
+                  ->setBParty($data['bParty'])
+                  ->setCaller($data['caller'])
+                  ->setCallee($data['callee'])
+                  ->setXCaller($data['xCaller'])
+                  ->setXCallee($data['xCallee'])
+                  ->setInitialReferrer($data['initialReferrer'])
                   ->setReferrer($data['referrer'])
-                  ->setAleg($data['aleg'])
-                  ->setBleg($data['bleg'])
-                  ->setCleg($data['cleg'])
+                  ->setReferee($data['referee'])
+                  ->setLastForwarder($data['lastForwarder'])
+                  ->setBrandId($data['brandId'])
+                  ->setCompanyId($data['companyId'])
+                  ->setPeeringContractId($data['peeringContractId'])
                   ->setBillCallID($data['billCallID'])
                   ->setBillDuration($data['billDuration'])
                   ->setBillDestination($data['billDestination'])
@@ -590,30 +607,37 @@ class ParsedCDRs extends MapperAbstract
                   ->setTargetPatternId($data['targetPatternId'])
                   ->setPrice($data['price'])
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
-                  ->setInvoiceId($data['invoiceId'])
-                  ->setPeeringContractId($data['peeringContractId'])
-                  ->setCompanyId($data['companyId'])
-                  ->setBrandId($data['brandId']);
+                  ->setInvoiceId($data['invoiceId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setCalldate($data->{'calldate'})
+                  ->setStatId($data->{'statId'})
+                  ->setXstatId($data->{'xstatId'})
+                  ->setStatType($data->{'statType'})
+                  ->setInitialLeg($data->{'initialLeg'})
+                  ->setInitialLegHash($data->{'initialLegHash'})
+                  ->setCid($data->{'cid'})
+                  ->setCidHash($data->{'cidHash'})
+                  ->setXcid($data->{'xcid'})
+                  ->setXcidHash($data->{'xcidHash'})
+                  ->setProxies($data->{'proxies'})
                   ->setType($data->{'type'})
-                  ->setDesc($data->{'desc'})
-                  ->setSrc($data->{'src'})
-                  ->setSrcDialed($data->{'src_dialed'})
-                  ->setSrcDuration($data->{'src_duration'})
-                  ->setDst($data->{'dst'})
-                  ->setDstSrcCid($data->{'dst_src_cid'})
-                  ->setDstDuration($data->{'dst_duration'})
-                  ->setFwDesc($data->{'fw_desc'})
-                  ->setExtForwarder($data->{'ext_forwarder'})
-                  ->setIntForwarder($data->{'int_forwarder'})
-                  ->setForwardTo($data->{'forward_to'})
-                  ->setReferee($data->{'referee'})
+                  ->setSubtype($data->{'subtype'})
+                  ->setCalldate($data->{'calldate'})
+                  ->setDuration($data->{'duration'})
+                  ->setXDuration($data->{'xDuration'})
+                  ->setAParty($data->{'aParty'})
+                  ->setBParty($data->{'bParty'})
+                  ->setCaller($data->{'caller'})
+                  ->setCallee($data->{'callee'})
+                  ->setXCaller($data->{'xCaller'})
+                  ->setXCallee($data->{'xCallee'})
+                  ->setInitialReferrer($data->{'initialReferrer'})
                   ->setReferrer($data->{'referrer'})
-                  ->setAleg($data->{'aleg'})
-                  ->setBleg($data->{'bleg'})
-                  ->setCleg($data->{'cleg'})
+                  ->setReferee($data->{'referee'})
+                  ->setLastForwarder($data->{'lastForwarder'})
+                  ->setBrandId($data->{'brandId'})
+                  ->setCompanyId($data->{'companyId'})
+                  ->setPeeringContractId($data->{'peeringContractId'})
                   ->setBillCallID($data->{'billCallID'})
                   ->setBillDuration($data->{'billDuration'})
                   ->setBillDestination($data->{'billDestination'})
@@ -624,31 +648,38 @@ class ParsedCDRs extends MapperAbstract
                   ->setTargetPatternId($data->{'targetPatternId'})
                   ->setPrice($data->{'price'})
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
-                  ->setInvoiceId($data->{'invoiceId'})
-                  ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setCompanyId($data->{'companyId'})
-                  ->setBrandId($data->{'brandId'});
+                  ->setInvoiceId($data->{'invoiceId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ParsedCDRs) {
             $entry->setId($data->getId())
-                  ->setCalldate($data->getCalldate())
+                  ->setStatId($data->getStatId())
+                  ->setXstatId($data->getXstatId())
+                  ->setStatType($data->getStatType())
+                  ->setInitialLeg($data->getInitialLeg())
+                  ->setInitialLegHash($data->getInitialLegHash())
+                  ->setCid($data->getCid())
+                  ->setCidHash($data->getCidHash())
+                  ->setXcid($data->getXcid())
+                  ->setXcidHash($data->getXcidHash())
+                  ->setProxies($data->getProxies())
                   ->setType($data->getType())
-                  ->setDesc($data->getDesc())
-                  ->setSrc($data->getSrc())
-                  ->setSrcDialed($data->getSrcDialed())
-                  ->setSrcDuration($data->getSrcDuration())
-                  ->setDst($data->getDst())
-                  ->setDstSrcCid($data->getDstSrcCid())
-                  ->setDstDuration($data->getDstDuration())
-                  ->setFwDesc($data->getFwDesc())
-                  ->setExtForwarder($data->getExtForwarder())
-                  ->setIntForwarder($data->getIntForwarder())
-                  ->setForwardTo($data->getForwardTo())
-                  ->setReferee($data->getReferee())
+                  ->setSubtype($data->getSubtype())
+                  ->setCalldate($data->getCalldate())
+                  ->setDuration($data->getDuration())
+                  ->setXDuration($data->getXDuration())
+                  ->setAParty($data->getAParty())
+                  ->setBParty($data->getBParty())
+                  ->setCaller($data->getCaller())
+                  ->setCallee($data->getCallee())
+                  ->setXCaller($data->getXCaller())
+                  ->setXCallee($data->getXCallee())
+                  ->setInitialReferrer($data->getInitialReferrer())
                   ->setReferrer($data->getReferrer())
-                  ->setAleg($data->getAleg())
-                  ->setBleg($data->getBleg())
-                  ->setCleg($data->getCleg())
+                  ->setReferee($data->getReferee())
+                  ->setLastForwarder($data->getLastForwarder())
+                  ->setBrandId($data->getBrandId())
+                  ->setCompanyId($data->getCompanyId())
+                  ->setPeeringContractId($data->getPeeringContractId())
                   ->setBillCallID($data->getBillCallID())
                   ->setBillDuration($data->getBillDuration())
                   ->setBillDestination($data->getBillDestination())
@@ -659,10 +690,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setTargetPatternId($data->getTargetPatternId())
                   ->setPrice($data->getPrice())
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
-                  ->setInvoiceId($data->getInvoiceId())
-                  ->setPeeringContractId($data->getPeeringContractId())
-                  ->setCompanyId($data->getCompanyId())
-                  ->setBrandId($data->getBrandId());
+                  ->setInvoiceId($data->getInvoiceId());
 
         }
 

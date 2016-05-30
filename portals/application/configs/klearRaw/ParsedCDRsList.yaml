@@ -39,6 +39,9 @@ production:
       postActionOptions: 
         screens: 
           parsedCDRsEdit_screen: true
+      fields: 
+        blacklist: 
+          calldate: true
     parsedCDRsEdit_screen: &parsedCDRsEdit_screenLink 
       <<: *ParsedCDRs
       controller: edit
@@ -46,6 +49,9 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Parsed c d r', 'Parsed c d rs', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Parsed c d r', 'Parsed c d rs', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
+          calldate: true
   dialogs: &parsedCDRs_dialogsLink 
     parsedCDRsDel_dialog: &parsedCDRsDel_dialogLink 
       <<: *ParsedCDRs
