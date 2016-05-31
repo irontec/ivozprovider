@@ -76,17 +76,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
 
         $serverUrl = $view->serverUrl();
         $brandsMap = new Mappers\BrandURLs();
-        $brand = $brandsMap->findOneByField('url', $serverUrl);
-
-        $companiesMap = new Mappers\Companies();
-        $companies = $companiesMap->findOneByField(
-            'brandId',
-            $brand->getBrandId()
-        );
-
-        if (empty($companies)) {
-            $this->_errorAuth();
-        }
+        $brandURL = $brandsMap->findOneByField('url', $serverUrl);
 
         $token = $this->getRequest()->getHeader('Authorization');
 
@@ -110,7 +100,11 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
             $auth = new \Iron_Auth_RestBasic();
             $user = $auth->authenticate($tokenParts[1], $mapper, $getData);
 
-            if ($user->getCompanyId() !== $companies->getId()) {
+            if ($user->getActive() !== 1) {
+                $this->_errorAuth();
+            }
+
+            if ($user->getCompany()->getBrandId() !== $brandURL->getBrandId()) {
                 $this->_errorAuth();
             }
 
@@ -125,7 +119,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
                 $this->_errorAuth();
             }
 
-            if ($user->getCompanyId() !== $companies->getId()) {
+            if ($user->getCompany()->getBrandId() !== $brandURL->getBrandId()) {
                 $this->_errorAuth();
             }
 
