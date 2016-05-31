@@ -97,11 +97,6 @@ class Builder
 
     protected static function _resolveLogo()
     {
-        $brandURLType = self::$_brandURL->getUrlType();
-        if ($brandURLType == 'god') {
-            return null;
-        }
-
         $brandURLLogoBaseName = self::$_brandURL->getLogoBaseName();
         if (!empty($brandURLLogoBaseName)) {
             return "fso/klearBrandUrl/".self::$_brandURL->getPrimaryKey()."-".$brandURLLogoBaseName;
