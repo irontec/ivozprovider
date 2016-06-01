@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include HuntGroupsRelUsersList.yaml
-#include HuntGroupCallForwardSettingsList.yaml
 
 production: 
   main: 
@@ -23,7 +22,6 @@ production:
           screens: 
             huntGroupsEdit_screen: true
             huntGroupsRelUsersList_screen: true
-            huntGroupCallForwardSettingsList_screen: true
           dialogs: 
             huntGroupsDel_dialog: true
           default: huntGroupsEdit_screen
@@ -99,23 +97,6 @@ production:
       title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
       filterField: huntGroupId
       
-    #HuntGroupCallForwardSettings
-    <<: *huntGroupCallForwardSettings_screensLink
-    huntGroupCallForwardSettingsList_screen: 
-      <<: *huntGroupCallForwardSettingsList_screenLink
-      filterField: huntGroupId
-      parentOptionCustomizer:
-        - recordCount
-    huntGroupCallForwardSettingsNew_screen:
-      <<: *huntGroupCallForwardSettingsNew_screenLink
-      filterField: huntGroupId
-    huntGroupCallForwardSettingsEdit_screen:
-      <<: *huntGroupCallForwardSettingsEdit_screenLink
-      filterField: huntGroupId
-      fields:
-        readOnly:
-          huntGroupId: true
-
   dialogs: &huntGroups_dialogsLink 
     huntGroupsDel_dialog: &huntGroupsDel_dialogLink 
       <<: *HuntGroups
@@ -132,8 +113,7 @@ production:
     huntGroupsRelUsersDel_dialog:
       <<: *huntGroupsRelUsersDel_dialogLink
       title: _("Delete %s", ngettext('User', 'Users', 1))
-        #huntGroupCallForwardSettings
-    <<: *huntGroupCallForwardSettings_dialogsLink
+
 staging: 
   _extends: production
 testing: 
