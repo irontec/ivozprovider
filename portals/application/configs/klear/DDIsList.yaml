@@ -14,7 +14,6 @@ production:
       title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
       class: ui-silk-lightning-go
       forcedValues:
-        <<: *forcedBrand
         <<: *forcedCompany
       order:
         field:
@@ -89,9 +88,9 @@ production:
         order:
           <<: *dDIsFieldsOder_Link
         blacklist:
+          brandId: true
           target: true
           DDIE164: true
-          brandId: true
       fixedPositions:
         <<: *dDIsFixedPositions_Link
     dDIsEdit_screen: &dDIsEdit_screenLink 
@@ -127,10 +126,10 @@ production:
           target: true
           DDIE164: true
           peeringContractId: true
+          brandId: true
         readOnly:
           DDI: true
           countryId: true
-          brandId: true
       fixedPositions:
         <<: *dDIsFixedPositions_Link
   dialogs: &dDIs_dialogsLink
