@@ -111,7 +111,7 @@ class FixedCosts extends TableAbstract
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
-	    'SCALE' => '3',
+	    'SCALE' => '4',
 	    'PRECISION' => '10',
 	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,

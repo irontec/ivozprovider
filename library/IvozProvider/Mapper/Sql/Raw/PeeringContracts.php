@@ -496,20 +496,6 @@ class PeeringContracts extends MapperAbstract
                     }
                 }
 
-                if ($model->getKamAccCdrs(null, null, true) !== null) {
-                    $kamAccCdrs = $model->getKamAccCdrs();
-
-                    if (!is_array($kamAccCdrs)) {
-
-                        $kamAccCdrs = array($kamAccCdrs);
-                    }
-
-                    foreach ($kamAccCdrs as $value) {
-                        $value->setPeeringContractId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getKamTrunksUacreg(null, null, true) !== null) {
                     $kamTrunksUacreg = $model->getKamTrunksUacreg();
 

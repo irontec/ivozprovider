@@ -56,7 +56,6 @@ class PeeringContracts extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksUacreg'
     );
     protected $_metadata = array (

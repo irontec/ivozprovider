@@ -30,7 +30,11 @@ class KamAccCdrs extends Raw\KamAccCdrs
 
     public function tarificate($plan = null)
     {
-        $peeringContract = $this->getPeeringContract();
+
+        $peeringContractId = $this->getPeeringContractId();
+        $peeringContractMapper = new \IvozProvider\Mapper\Sql\PeeringContracts();
+        $peeringContract = $peeringContractMapper->find($peeringContractId);
+
         if (!is_null($peeringContract) && $peeringContract->getExternallyRated() == 1) {
             $this->setExternallyRated(1);
             return null;

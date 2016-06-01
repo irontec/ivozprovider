@@ -109,17 +109,9 @@ production:
       maxLength: 64
     peeringContractId: 
       title: _('Peering contract id')
-      type: select
+      type: number
       source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
-          fieldName: 
-            fields: 
-              - description
-            template: '%description%'
-          order: description
-        'null': _("Unasigned")
+        control: Spinner
     externallyRated: 
       title: _('Externally rated')
       type: select

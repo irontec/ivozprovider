@@ -23,14 +23,14 @@ class KamAccCdrs extends Raw\KamAccCdrs
     public function fetchTarificableList(array $where = array(), $order = null, $limit = null, $offset = null)
     {
 
-        $where[] = "peeringContractId IS NOT NULL";
+        $where[] = "peeringContractId IS NOT NULL AND peeringContractId! =''";
         return $this->fetchList(implode(" AND ", $where), $order, $limit, $offset);
     }
 
     public function countTarificableByQuery(array $where = array())
     {
 
-        $where[] = "peeringContractId IS NOT NULL";
+        $where[] = "peeringContractId IS NOT NULL AND peeringContractId! =''";
         return $this->countByQuery(implode(" AND ", $where));
     }
 }

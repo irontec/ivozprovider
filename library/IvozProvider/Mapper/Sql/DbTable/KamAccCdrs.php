@@ -40,11 +40,6 @@ class KamAccCdrs extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'KamAccCdrsIbfk6' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
         'KamAccCdrsIbfk1' => array(
             'columns' => 'pricingPlanId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlans',
@@ -60,14 +55,14 @@ class KamAccCdrs extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Invoices',
             'refColumns' => 'id'
         ),
-        'KamAccCdrsIbfk4' => array(
-            'columns' => 'peeringContractId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
-            'refColumns' => 'id'
-        ),
         'KamAccCdrsIbfk5' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'KamAccCdrsIbfk6' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         )
     );
@@ -491,7 +486,7 @@ class KamAccCdrs extends TableAbstract
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
-	    'SCALE' => '3',
+	    'SCALE' => '4',
 	    'PRECISION' => '10',
 	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,

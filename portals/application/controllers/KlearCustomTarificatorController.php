@@ -418,7 +418,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $wheres = array();
         $wheres[] = "`id` IN (".implode(",", $pks).")";
-        $wheres[] = "(`invoiceId` IS NOT NULL OR peeringContractId IS NULL)";
+        $wheres[] = "(`invoiceId` IS NOT NULL OR peeringContractId IS NULL OR peeringContractId ='')";
 
         $result = array(
             "error" => false,

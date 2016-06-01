@@ -13,7 +13,7 @@ production:
           - calldate
           - brandId
           - companyId
-      rawCondition: "peeringContractId IS NOT NULL"
+      rawCondition: "peeringContractId IS NOT NULL AND peeringContractId!=''"
       pagination: 
         items: 25
       <<: *KamAccCdrs
