@@ -28,9 +28,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Proxy user', 'Proxy users', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          proxyUsersEdit_screen: true
     proxyUsersEdit_screen: &proxyUsersEdit_screenLink 
       <<: *ProxyUsers
       controller: edit

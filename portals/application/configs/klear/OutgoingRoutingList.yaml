@@ -80,9 +80,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          outgoingRoutingEdit_screen: true
     outgoingRoutingEdit_screen: &outgoingRoutingEdit_screenLink 
       <<: *OutgoingRouting
       forcedValues:

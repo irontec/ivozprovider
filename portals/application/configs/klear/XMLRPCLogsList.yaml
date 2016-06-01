@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('X m l r p c log', 'X m l r p c logs', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          xMLRPCLogsEdit_screen: true
       fields: 
         blacklist: 
           startDate: true

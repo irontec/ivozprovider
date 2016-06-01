@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Ast ps aor', 'Ast ps aors', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          astPsAorsEdit_screen: true
     astPsAorsEdit_screen: &astPsAorsEdit_screenLink 
       <<: *AstPsAors
       controller: edit

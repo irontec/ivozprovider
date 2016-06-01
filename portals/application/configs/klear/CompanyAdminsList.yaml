@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          companyAdminsEdit_screen: true
     companyAdminsEdit_screen: &companyAdminsEdit_screenLink 
       <<: *CompanyAdmins
       controller: edit

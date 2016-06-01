@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Lcr rule target', 'Lcr rule targets', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          lcrRuleTargetsEdit_screen: true
     lcrRuleTargetsEdit_screen: &lcrRuleTargetsEdit_screenLink 
       <<: *LcrRuleTargets
       controller: edit

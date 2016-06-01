@@ -53,9 +53,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Authorized source', 'Authorized source(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          kamUsersAddressEdit_screen: true
     kamUsersAddressEdit_screen: &kamUsersAddressEdit_screenLink 
       <<: *KamUsersAddress
       controller: edit

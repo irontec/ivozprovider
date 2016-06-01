@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Kam users domain', 'Kam users domain(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          kamUsersDomainEdit_screen: true
     kamUsersDomainEdit_screen: &kamUsersDomainEdit_screenLink 
       <<: *KamUsersDomain
       controller: edit

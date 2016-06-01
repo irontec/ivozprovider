@@ -38,9 +38,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Lcr gateway', 'Lcr gateways', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          lcrGatewaysEdit_screen: true
     lcrGatewaysEdit_screen: &lcrGatewaysEdit_screenLink 
       <<: *LcrGateways
       controller: edit

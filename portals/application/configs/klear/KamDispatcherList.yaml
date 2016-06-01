@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Kam dispatcher', 'Kam dispatcher(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          kamDispatcherEdit_screen: true
     kamDispatcherEdit_screen: &kamDispatcherEdit_screenLink 
       <<: *KamDispatcher
       controller: edit

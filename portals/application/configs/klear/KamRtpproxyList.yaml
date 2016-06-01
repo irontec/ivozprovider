@@ -45,9 +45,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Media relay', 'Media relay(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          kamRtpproxyEdit_screen: true
       <<: *kamRtpproxyHelp
     kamRtpproxyEdit_screen: &kamRtpproxyEdit_screenLink 
       <<: *KamRtpproxy

@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Target groups rel pattern', 'Target groups rel patterns', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          targetGroupsRelPatternsEdit_screen: true
     targetGroupsRelPatternsEdit_screen: &targetGroupsRelPatternsEdit_screenLink 
       <<: *TargetGroupsRelPatterns
       controller: edit

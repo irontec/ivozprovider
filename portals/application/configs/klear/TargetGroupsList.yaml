@@ -47,9 +47,6 @@ production:
       forcedValues:
         <<: *forcedBrand      
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          targetGroupsEdit_screen: true
     targetGroupsEdit_screen: &targetGroupsEdit_screenLink 
       <<: *TargetGroups
       controller: edit

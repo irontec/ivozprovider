@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Ast voicemail', 'Ast voicemail(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          astVoicemailEdit_screen: true
     astVoicemailEdit_screen: &astVoicemailEdit_screenLink 
       <<: *AstVoicemail
       controller: edit

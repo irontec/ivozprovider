@@ -61,9 +61,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Domain', 'Domains', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          domainsEdit_screen: true
     domainsEdit_screen: &domainsEdit_screenLink 
       <<: *Domains
       controller: edit

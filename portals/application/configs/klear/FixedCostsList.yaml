@@ -40,9 +40,6 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
-      postActionOptions:
-        screens:
-          fixedCostsEdit_screen: true
       fixedPositions:
         group0:
           colsPerRow: 12

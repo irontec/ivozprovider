@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Etag version', 'Etag versions', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          etagVersionsEdit_screen: true
     etagVersionsEdit_screen: &etagVersionsEdit_screenLink 
       <<: *EtagVersions
       controller: edit

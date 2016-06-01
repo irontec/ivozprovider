@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Ast musiconhold', 'Ast musiconhold(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          astMusiconholdEdit_screen: true
     astMusiconholdEdit_screen: &astMusiconholdEdit_screenLink 
       <<: *AstMusiconhold
       controller: edit

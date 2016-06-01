@@ -38,9 +38,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          astPsEndpointsEdit_screen: true
     astPsEndpointsEdit_screen: &astPsEndpointsEdit_screenLink 
       <<: *AstPsEndpoints
       controller: edit

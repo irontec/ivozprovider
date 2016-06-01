@@ -38,9 +38,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Service', 'Services', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          servicesEdit_screen: true
     servicesEdit_screen: &servicesEdit_screenLink 
       <<: *Services
       controller: edit

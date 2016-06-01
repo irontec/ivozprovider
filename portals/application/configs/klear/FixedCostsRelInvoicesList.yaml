@@ -39,9 +39,6 @@ production:
       title: _("Add %s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%parent%)]")
       shortcutOption: N
       fullWidth: true
-      postActionOptions: 
-        screens: 
-          fixedCostsRelInvoicesEdit_screen: true
       filterField: invoiceId
       forcedValues:
         <<: *forcedBrand

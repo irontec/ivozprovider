@@ -35,9 +35,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          mediaRelaySetsEdit_screen: true
     mediaRelaySetsEdit_screen: &mediaRelaySetsEdit_screenLink 
       <<: *MediaRelaySets
       controller: edit

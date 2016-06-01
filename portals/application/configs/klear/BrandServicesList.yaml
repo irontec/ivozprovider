@@ -40,9 +40,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Brand service', 'Brand services', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          brandServicesEdit_screen: true
     brandServicesEdit_screen: &brandServicesEdit_screenLink 
       <<: *BrandServices
       forcedValues:
