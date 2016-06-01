@@ -3,4 +3,9 @@
 # Change cache dir perms
 chmod 777 /opt/irontec/ivozprovider/portals/application/cache
 
+# Enable php5 environment variables
+/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php5/cli/php.ini
+/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php5/apache2/php.ini
+
+
 :
