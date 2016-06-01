@@ -15,7 +15,8 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
         $unfilteredScreens = array(
-                "brandServicesList_screen"
+                "brandServicesList_screen",
+                "brandServicesEdit_screen",
         );
 
         if (in_array($currentItemName, $unfilteredScreens)) {
