@@ -16,10 +16,16 @@ production:
           order: description
       default: true
     ip: 
-      title: _('Ip')
+      title: _('Destination IP address')
       type: text
+      pattern: "^[.0-9]+$"
       trim: both
-      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Leave empty to send to Host field")
+        label: _("Need help?")
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
@@ -45,14 +51,15 @@ production:
             template: '%name%'
           order: name
     hostname: 
-      title: _('Hostname')
+      title: _('Host')
       type: text
       trim: both
+      required: true
       info:
         type: box
         position: left
         icon: help
-        text: _("Use this as R-URI domain instead of IP address")
+        text: _("Use address or hostname")
         label: _("Need help?")
     port: 
       title: _('Port')
@@ -61,7 +68,7 @@ production:
       source: 
         control: Spinner
     params: 
-      title: _('Param')
+      title: _('R-URI params')
       type: text
       trim: both
       info:

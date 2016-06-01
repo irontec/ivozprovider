@@ -37,11 +37,11 @@ production:
           sendRPID: true
           strip: true
           prefix: true
-          hostname: true
-        order:
-          name: true
           ip: true
           port: true
+        order:
+          name: true
+          hostname: true
           domain: true
           params: true
           description: true
@@ -66,7 +66,8 @@ production:
           name: true
           auth_needed: true
           sendPAI: true
-          params: true
+          strip: true
+          ip: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
           label: _("Basic Settings")
@@ -74,10 +75,9 @@ production:
           fields:
             name: 6
             description: 6
-            ip: 6
-            port: 6
-            uri_scheme: 6
-            transport: 6
+            hostname: 6
+            uri_scheme: 3
+            transport: 3
         group1:
           label: _("Authentication Settings")
           colsPerRow: 12
@@ -98,8 +98,13 @@ production:
           fields:
             strip: 6
             prefix: 4 
-            hostname: 6
             params: 6
+        group4:
+          label: _("Destination set")
+          colsPerRow: 12
+          fields:
+            ip: 6
+            port: 6
     peerServersEdit_screen: &peerServersEdit_screenLink
       <<: *PeerServers
       forcedValues:
