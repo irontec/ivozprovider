@@ -66,11 +66,11 @@ production:
       source: 
         control: Spinner
     aParty: 
-      title: _('A party')
+      title: _('Caller')
       type: text
       maxLength: 128
     bParty: 
-      title: _('B party')
+      title: _('Callee')
       type: text
       maxLength: 128
     caller: 

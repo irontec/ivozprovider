@@ -45,6 +45,7 @@ production:
           referee: true
           lastForwarder: true
           companyId: true
+          brandId: true
         order: &parsedCDRs_orderLink
           calldate: 1
           type: 1
