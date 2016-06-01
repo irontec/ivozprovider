@@ -22,6 +22,7 @@
 #include TargetGroupsList.yaml
 #include TargetPatternsList.yaml
 #include TransformationRulesetGroupsTrunksList.yaml
+#include KamAccCdrsList.yaml
 #include KamTrunksUacregList.yaml
 
 
@@ -64,6 +65,7 @@ production:
             targetGroupsList_screen: true
             targetPatternsList_screen: true
             transformationRulesetGroupsTrunksList_screen: true
+            kamAccCdrsList_screen: true
             kamTrunksUacregList_screen: true
           dialogs: 
             brandsDel_dialog: true
@@ -379,6 +381,19 @@ production:
       <<: *transformationRulesetGroupsTrunksEdit_screenLink
       filterField: brandId
 
+    #kamAccCdrs: 
+    kamAccCdrsList_screen: 
+      <<: *kamAccCdrsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    kamAccCdrsNew_screen: 
+      <<: *kamAccCdrsNew_screenLink
+      filterField: brandId
+    kamAccCdrsEdit_screen: 
+      <<: *kamAccCdrsEdit_screenLink
+      filterField: brandId
+
     #kamTrunksUacreg: 
     kamTrunksUacregList_screen: 
       <<: *kamTrunksUacregList_screenLink
@@ -447,6 +462,8 @@ production:
     <<: *targetPatterns_dialogsLink
   # transformationRulesetGroupsTrunks dialogs: 
     <<: *transformationRulesetGroupsTrunks_dialogsLink
+  # kamAccCdrs dialogs: 
+    <<: *kamAccCdrs_dialogsLink
   # kamTrunksUacreg dialogs: 
     <<: *kamTrunksUacreg_dialogsLink
   commands: &brands_commandsLink 

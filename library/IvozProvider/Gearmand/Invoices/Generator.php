@@ -126,7 +126,7 @@ class Generator
         $outDate->addDay(1)->subSecond(1);
 
 
-        $callsMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+        $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
         $limit = 50;
         $offset = 0;
         $continue = true;
@@ -176,8 +176,9 @@ class Generator
                 $lang = $invoice->getCompany()->getLanguageCode();
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getCallDate(true)->setTimezone($invoiceTz)->toString();
+                $callData["dst"] = $call->getCallee();
                 $callData["price"] = number_format(ceil($callData["price"]*100)/100, 2);
-                $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["dst_duration"]);
+                $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["targetPattern"] = $call->getTargetPattern()->toArray();
                 $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
                 $callData["targetPattern"]["description"] = $call->getTargetPattern()->getDescription($lang);
@@ -198,11 +199,11 @@ class Generator
                 }
                 $callsPerType[$callType][] = $callData;
                 $callSumary[$callType]["numberOfCalls"] += 1;
-                $callSumary[$callType]["totalCallsDuration"] += $call->getDstDuration();
+                $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
                 $callSumary[$callType]["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumary[$callType]["totalCallsDuration"]);
                 $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*100)/100, 2);
                 $callSumaryTotals["numberOfCalls"] += 1;
-                $callSumaryTotals["totalCallsDuration"] += $call->getDstDuration();
+                $callSumaryTotals["totalCallsDuration"] += $call->getDuration();
                 $callSumaryTotals["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumaryTotals["totalCallsDuration"]);
                 $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*100)/100, 3);
 

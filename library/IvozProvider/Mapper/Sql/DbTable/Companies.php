@@ -98,6 +98,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Schedules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\KamUsersAddress'
     );
     protected $_metadata = array (

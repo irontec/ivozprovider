@@ -469,20 +469,6 @@ class TargetPatterns extends MapperAbstract
                     }
                 }
 
-                if ($model->getParsedCDRs(null, null, true) !== null) {
-                    $parsedCDRs = $model->getParsedCDRs();
-
-                    if (!is_array($parsedCDRs)) {
-
-                        $parsedCDRs = array($parsedCDRs);
-                    }
-
-                    foreach ($parsedCDRs as $value) {
-                        $value->setTargetPatternId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getPricingPlansRelTargetPatterns(null, null, true) !== null) {
                     $pricingPlansRelTargetPatterns = $model->getPricingPlansRelTargetPatterns();
 
@@ -506,6 +492,20 @@ class TargetPatterns extends MapperAbstract
                     }
 
                     foreach ($targetGroupsRelPatterns as $value) {
+                        $value->setTargetPatternId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getKamAccCdrs(null, null, true) !== null) {
+                    $kamAccCdrs = $model->getKamAccCdrs();
+
+                    if (!is_array($kamAccCdrs)) {
+
+                        $kamAccCdrs = array($kamAccCdrs);
+                    }
+
+                    foreach ($kamAccCdrs as $value) {
                         $value->setTargetPatternId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

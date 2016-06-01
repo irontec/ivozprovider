@@ -26,6 +26,7 @@
 #include SchedulesList.yaml
 #include TerminalsList.yaml
 #include UsersList.yaml
+#include KamAccCdrsList.yaml
 #include KamUsersAddressList.yaml
 
 
@@ -72,6 +73,7 @@ production:
             schedulesList_screen: true
             terminalsList_screen: true
             usersList_screen: true
+            kamAccCdrsList_screen: true
             kamUsersAddressList_screen: true
           dialogs: 
             companiesDel_dialog: true
@@ -439,6 +441,19 @@ production:
       <<: *usersEdit_screenLink
       filterField: companyId
 
+    #kamAccCdrs: 
+    kamAccCdrsList_screen: 
+      <<: *kamAccCdrsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    kamAccCdrsNew_screen: 
+      <<: *kamAccCdrsNew_screenLink
+      filterField: companyId
+    kamAccCdrsEdit_screen: 
+      <<: *kamAccCdrsEdit_screenLink
+      filterField: companyId
+
     #kamUsersAddress: 
     kamUsersAddressList_screen: 
       <<: *kamUsersAddressList_screenLink
@@ -515,6 +530,8 @@ production:
     <<: *terminals_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
+  # kamAccCdrs dialogs: 
+    <<: *kamAccCdrs_dialogsLink
   # kamUsersAddress dialogs: 
     <<: *kamUsersAddress_dialogsLink
 staging: 

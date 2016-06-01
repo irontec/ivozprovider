@@ -93,7 +93,6 @@ my @CDRFIELDS  = qw {
     subtype
     calldate
     duration
-    xDuration
     aParty
     bParty
     caller
@@ -107,9 +106,6 @@ my @CDRFIELDS  = qw {
     brandId
     companyId
     peeringContractId
-    billCallID
-    billDuration
-    billDestination
 };
 
 my %execution = (
@@ -122,6 +118,7 @@ my %execution = (
     'generatedCDRs' => 0,
     'parsed-yes' => 0,
     'parsed-delayed' => 0,
+    'taficableCalls' => 0,
 );
 my %cids;
 my $cdrs = [];
@@ -144,18 +141,6 @@ sub getDiversion {
     return $diversion;
 }
 
-sub setBillableVars {
-    my $cdr = shift;
-    my $leg = shift;
-
-    if ($$leg{peeringContractId}) {
-        $$cdr{peeringContractId} = $$leg{peeringContractId};
-        $$cdr{billCallID} = $$leg{callid};
-        $$cdr{billDuration} = $$leg{duration};
-        $$cdr{billDestination} = $$leg{callee};
-    }
-}
-
 sub setCommon {
     my $cdr = shift;
     my $leg = shift;
@@ -175,6 +160,7 @@ sub setCommon {
     $$cdr{caller} = $$leg{caller};
     $$cdr{callee} = $$leg{callee};
     $$cdr{lastForwarder} = getDiversion $$leg{diversion};
+    $$cdr{peeringContractId} = $$leg{peeringContractId};
 
     if (!$bleg) {
         if ($$leg{legType} ne 'A') {
@@ -197,9 +183,13 @@ sub setCommon {
     $$cdr{xcid} = $$bleg{callid};
     $$cdr{xcidHash} = $$bleg{callidHash};
     $$cdr{lastForwarder} = getDiversion $$bleg{diversion}; # On AB, A diversion is always discarded
-    $$cdr{xDuration} = $$bleg{duration};
+    $$cdr{duration} = $$bleg{duration}; # On AB, B duration is the winner
     $$cdr{xCaller} = $$bleg{caller};
     $$cdr{xCallee} = $$bleg{callee};
+    $$cdr{peeringContractId} = $$cdr{peeringContractId} || $$bleg{peeringContractId};
+
+    # If peeringContractId is set, increase tarificable calls counter
+    $execution{tarificableCalls}++ if $$cdr{peeringContractId};
 }
 
 sub updateCaller {
@@ -472,8 +462,6 @@ sub generateSingleLegCdr {
     $$cdr{aParty} = $$cdr{caller};
     $$cdr{bParty} = $$cdr{callee};
 
-    setBillableVars $cdr, $leg;
-
     setCdrType $cdr;
 
     push @$cdrs, $cdr;
@@ -499,12 +487,6 @@ sub generateDualLegCdr {
     # Set interlocutors
     $$cdr{aParty} = $$cdr{caller};
     $$cdr{bParty} = $$cdr{xCallee};
-
-    if ($$aleg{peeringContractId}) {
-        setBillableVars $cdr, $aleg;
-    } elsif ($$bleg{peeringContractId}) {
-        setBillableVars $cdr, $bleg;
-    }
 
     setCdrType $cdr;
 
@@ -746,10 +728,14 @@ logger "Stats marked as delayed: $execution{'parsed-delayed'}";
 # Disconnect from database
 $dbh->disconnect;
 
-# Call Gearmand tarificator Job
-my $client = Gearman::Client->new;
-$client->job_servers(@gearman_servers);
-$client->do_task($gearman_job);
+# Call tarificator if necessary
+say "Tarificable calls on this run: $execution{tarificableCalls}";
+if ($execution{tarificableCalls}) {
+    # Call Gearmand tarificator Job
+    my $client = Gearman::Client->new;
+    $client->job_servers(@gearman_servers);
+    $client->do_task($gearman_job);
+}
 
 # Report finish time and leave
 logger "Execution ended at " . localtime();

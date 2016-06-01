@@ -74,6 +74,7 @@ class Brands extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\TargetPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\TransformationRulesetGroupsTrunks',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksUacreg'
     );
     protected $_metadata = array (

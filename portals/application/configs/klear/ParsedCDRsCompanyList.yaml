@@ -1,117 +1,141 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include ParsedCDRsList.yaml
 
 
 production: 
   main: 
     module: klearMatrix
     defaultScreen: parsedCDRsList_screen
-  screens:
-    parsedCDRsList_screen:
-      <<: *parsedCDRsList_screenLink
+  screens: &parsedCDRs_screensLink 
+    parsedCDRsList_screen: &parsedCDRsList_screenLink 
+      controller: list
+      order:
+        field:
+          - calldate
+        type: desc
+      pagination: 
+        items: 50
+      <<: *ParsedCDRs
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 0), "[format| (%parent%)]")
       fields: &parsedCDRs_fieldsLink 
-        options:
+        options: 
           title: _("Options")
-          screens:
-            parsedCDRsEdit_screen: true
-          default: parsedCDRsEdit_screen
-        order:
-          calldate: true
-          type: true
-          srcAdapted: true
-          srcDialedAdapted: true
-          dstAdapted: true
-          smartDuration: true
-        blacklist:
-          brandId: true
-          src: true
-          src_dialed: true
-          dst: true
-          pricingPlanDetails: true
-          aleg: true
-          bleg: true
-          billCallID: true
-          fw_desc: true
-          ext_forwarder: true
-          int_forwarder: true
-          forward_to: true
-          metered: true
-          meteringDate: true
-          pricingPlanId: true
-          invoiceId: true
+          screens: 
+            parsedCDRsView_screen: true
+          default: parsedCDRsView_screen
+        blacklist: &parsedCDRs_blacklistLink
+          statId: true
+          xstatId: true
+          statType: true
+          initialLeg: true
+          initialLegHash: true
+          cid: true
+          cidHash: true
+          xcid: true
+          xcidHash: true
+          proxies: true
           peeringContractId: true
-          externallyRated: true
-          targetPatternId: true
-          desc: true
-          dst_duration: true
-          billDuration: true
-          billDestination: true
-          dst_src_cid: true
-          price: true
-          src_duration: true
+          caller: true
+          callee: true
+          xCaller: true
+          xCallee: true
+          initialReferrer: true
+          referrer: true
+          referee: true
+          lastForwarder: true
+          companyId: true
+        order: &parsedCDRs_orderLink
+          calldate: 1
+          type: 1
+          subtype: 1
+          aParty: 1
+          bParty: 1
+          duration: 1
       forcedValues:
         <<: *forcedCompany
-      options:
-    parsedCDRsEdit_screen:
+    parsedCDRsView_screen: &parsedCDRsView_screenLink 
       <<: *ParsedCDRs
-      <<: *parsedCDRsEdit_screenLink
-      fullWidth: false
-      fields:
-        blacklist:
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      fields: 
+        blacklist: 
           brandId: true
+          initialLeg: true
+          initialLegHash: true
+          cid: true
+          cidHash: true
+          xcid: true
+          xcidHash: true
+          statType: true
+          proxies: true
+          statId: true
+          xstatId: true
           companyId: true
-          src_duration: true
-          dst_duration: true
-          src: true
-          src_dialed: true
-          dst: true
-          dst_src_cid: true
-          aleg: true
-          bleg: true
-          ext_forwarder: true
-          pricingPlanDetails: true
-          billCallID: true
-          billDestination: true
-          billDuration: true
-          externallyRated: true
-          meteringDate: true
-          pricingPlanId: true
-          invoiceId: true
           peeringContractId: true
-          metered: true
-          price: true
-          targetPatternId: true
-        order:
-          calldate: true
-          type: true
-          desc: true
-          srcAdapted: true
-          srcDialedAdapted: true
-          dstAdapted: true
-          fw_desc: true
-          int_forwarder: true
-          forward_to: true
-          smartDuration: true
+        order: 
+          calldate: 1
+          duration: 1
+          statId: 1
+          xstatId: 1
+          type: 1
+          subtype: 1
+          aParty: 1
+          bParty: 1
+          caller: 1
+          callee: 1
+          xCaller: 1
+          xCallee: 1
+          statType: 1
+          initialReferrer: 1
+          referrer: 1
+          referee: 1
+          lastForwarder: 1
+          initialLeg: 1
+          initialLegHash: 1
+          cid: 1
+          cidHash: 1
+          xcid: 1
+          xcidHash: 1
       fixedPositions:
         group0:
           label: _("Basic information")
           colsPerRow: 12
           fields:
             calldate: 8
-            smartDuration: 4
-            type: 4
-            desc: 8
-            srcAdapted: 4
-            srcDialedAdapted: 4
-            dstAdapted: 4
-        group1:
-          label: _("Forwarding information")
+            duration: 4
+        group2:
+          label: _("Type of call")
           colsPerRow: 12
           fields:
-            fw_desc: 12
-            int_forwarder: 6
-            forward_to: 6
+            type: 6
+            subtype: 6
+        group3:
+          label: _("Call parties")
+          colsPerRow: 12
+          fields:
+            aParty: 6
+            bParty: 6
+            caller: 3
+            callee: 3
+            xCaller: 3
+            xCallee: 3
+        group4:
+          label: _("Refer information")
+          colsPerRow: 12
+          fields:
+            initialReferrer: 4
+            referrer: 4
+            referee: 4
+        group5:
+          label: _("Forwarding information")
+          colsPerRow: 1
+          fields:
+            lastForwarder: 1
 staging: 
   _extends: production
 testing: 

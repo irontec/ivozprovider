@@ -6,175 +6,148 @@ production:
   main: 
     module: klearMatrix
     defaultScreen: parsedCDRsList_screen
-  screens: &parsedCDRs_screenLink
+  screens: &parsedCDRs_screensLink 
     parsedCDRsList_screen: &parsedCDRsList_screenLink 
       controller: list
       order:
         field:
           - calldate
+          - brandId
+          - companyId
         type: desc
-      csv: true
       pagination: 
-        items: 25
+        items: 50
       <<: *ParsedCDRs
-      class: ui-silk-application-view-list   
-      title: _("List of %s %2s", ngettext('Call registry', 'Call registry', 0), "[format| (%parent%)]")
-      fields: &parsedCDRs_fieldsLink
-        options: &parsedCDRs_fieldOptionsLink
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 0), "[format| (%parent%)]")
+      fields: &parsedCDRs_fieldsLink 
+        options: 
           title: _("Options")
           screens: 
-            parsedCDRsEdit_screen: true
-          dialogs:
-            getMeteringInfo_dialog: true
-          default: parsedCDRsEdit_screen
-        order:
-          calldate: true
-          brandId: true
-          companyId: true
-          type: true
-          srcAdapted: true
-          srcDialedAdapted: true
-          dstAdapted: true
-          smartDuration: true
-          metered: true
-        blacklist: &parsedCDRsBlacklist_Link
-          src: true
-          src_dialed: true
-          dst: true
-          pricingPlanDetails: true
-          aleg: true
-          bleg: true
-          billCallID: true
-          fw_desc: true
-          ext_forwarder: true
-          int_forwarder: true
-          forward_to: true
-          meteringDate: true
-          pricingPlanId: true
-          invoiceId: true
+            parsedCDRsView_screen: true
+          default: parsedCDRsView_screen
+        blacklist: &parsedCDRs_blacklistLink
+          statId: true
+          xstatId: true
+          statType: true
+          initialLeg: true
+          initialLegHash: true
+          cid: true
+          cidHash: true
+          xcid: true
+          xcidHash: true
+          proxies: true
           peeringContractId: true
-          externallyRated: true
-          targetPatternId: true
-          desc: true
-          dst_duration: true
-          billDuration: true
-          billDestination: true
-          dst_src_cid: true
-          price: true
-          src_duration: true
-      options:
-        title: _("Options")
-        dialogs:
-          tarificateCall_dialog: true
-    parsedCDRsEdit_screen: &parsedCDRsEdit_screenLink 
+          caller: true
+          callee: true
+          xCaller: true
+          xCallee: true
+          initialReferrer: true
+          referrer: true
+          referee: true
+          lastForwarder: true
+        order: &parsedCDRs_orderLink
+          calldate: 1
+          brandId: 1
+          companyId: 1
+          type: 1
+          subtype: 1
+          aParty: 1
+          bParty: 1
+          duration: 1
+    parsedCDRsView_screen: &parsedCDRsView_screenLink 
       <<: *ParsedCDRs
       controller: edit
       class: ui-silk-eye
-      disableSave: true
       label: false
-      fullWidth: true
-      labelOnPostAction: _("View %s %2s", ngettext('Call details', 'Call details', 1), "[format| (%item%)]")
-      title: _("View %s %2s", ngettext('Call details', 'Call details', 1), "[format| (%item%)]")
-      fields: &parsedCDRs_fieldsLink 
-        blacklist:
-          src_duration: true
-          dst_duration: true
-          src: true
-          src_dialed: true
-          dst: true
-          dst_src_cid: true
-          aleg: true
-          bleg: true
-          ext_forwarder: true
-          billCallID: true
-        order:
-          brandId: true
-          companyId: true
-          calldate: true
-          type: true
-          desc: true
-          smartDuration: true
-          srcAdapted: true
-          srcDialedAdapted: true
-          dstAdapted: true
-          fw_desc: true
-          int_forwarder: true
-          forward_to: true
-          metered: true
-          meteringDate: true
-          price: true
-          invoiceId: true
-          externallyRated: true
-          billDuration: true
-          billDestination: true
-          targetPatternId: true
-          pricingPlanId: true
-          peeringContractId: true
-          pricingPlanDetails: true
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      fields: 
+        order: 
+          calldate: 1
+          duration: 1
+          brandId: 1
+          companyId: 1
+          statId: 1
+          xstatId: 1
+          proxies: 1
+          type: 1
+          subtype: 1
+          aParty: 1
+          bParty: 1
+          caller: 1
+          callee: 1
+          xCaller: 1
+          xCallee: 1
+          statType: 1
+          initialReferrer: 1
+          referrer: 1
+          referee: 1
+          lastForwarder: 1
+          initialLeg: 1
+          initialLegHash: 1
+          cid: 1
+          cidHash: 1
+          xcid: 1
+          xcidHash: 1
+          peeringContractId: 1
       fixedPositions:
         group0:
           label: _("Basic information")
           colsPerRow: 12
           fields:
-            brandId: 4
-            companyId: 4
-            calldate: 4
-            smartDuration: 4
-            type: 4
-            desc: 4
-            srcAdapted: 4
-            srcDialedAdapted: 4
-            dstAdapted: 4
+            calldate: 8
+            duration: 4
+            brandId: 12
+            companyId: 12
         group1:
-          label: _("Forwarding information")
+          label: _("Stats ids")
           colsPerRow: 12
           fields:
-            fw_desc: 12
-            int_forwarder: 6
-            forward_to: 6
+            statId: 6
+            xstatId: 6
         group2:
-          label: _("Billing information")
+          label: _("Type of call")
           colsPerRow: 12
           fields:
-            metered: 6
-            meteringDate: 6
-            price: 6
-            invoiceId: 6
+            proxies: 4
+            type: 4
+            subtype: 4
         group3:
-          label: _("Details")
+          label: _("Call parties")
           colsPerRow: 12
           fields:
-            externallyRated: 6
-            billDuration: 6
-            billDestination: 6
-            targetPatternId: 6
-            pricingPlanId: 6
-            peeringContractId: 6
+            aParty: 6
+            bParty: 6
+            caller: 3
+            callee: 3
+            xCaller: 3
+            xCallee: 3
         group4:
-          label: _("Log")
+          label: _("Refer information")
+          colsPerRow: 12
+          fields:
+            initialReferrer: 4
+            referrer: 4
+            referee: 4
+        group5:
+          label: _("Forwarding information")
           colsPerRow: 1
           fields:
-            pricingPlanDetails: 1
-  dialogs:  &parsedCDRs_dialogsLink
-    tarificateCall_dialog: 
-      <<: *ParsedCDRs
-      module: default
-      title: _("Tarificate %s", ngettext('call', 'calls', 1))
-      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
-      controller: klear-custom-tarificator
-      action: tarificate-call
-      class:  ui-silk-coins-add
-      multiItem: true
-      alwaysEnabled: false
-    getMeteringInfo_dialog: 
-      <<: *ParsedCDRs
-      module: default
-      title: _("Tarificate %s", ngettext('call', 'calls', 1))
-      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
-      controller: klear-custom-tarificator
-      action: tarification-info
-      class:  ui-silk-information
-    
+            lastForwarder: 1
+        group6:
+          label: _("Additional information")
+          colsPerRow: 12
+          fields:
+            initialLeg: 8
+            initialLegHash: 4
+            cid: 8
+            cidHash: 4
+            xcid: 8
+            xcidHash: 4
+            peeringContractId: 8
+            statType: 4
 staging: 
   _extends: production
 testing: 

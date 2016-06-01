@@ -4,6 +4,7 @@
 #include OutgoingRoutingList.yaml
 #include ParsedCDRsList.yaml
 #include PeerServersList.yaml
+#include KamAccCdrsList.yaml
 #include KamTrunksUacregList.yaml
 
 
@@ -28,6 +29,7 @@ production:
             outgoingRoutingList_screen: true
             parsedCDRsList_screen: true
             peerServersList_screen: true
+            kamAccCdrsList_screen: true
             kamTrunksUacregList_screen: true
           dialogs: 
             peeringContractsDel_dialog: true
@@ -109,6 +111,19 @@ production:
       <<: *peerServersEdit_screenLink
       filterField: peeringContractId
 
+    #kamAccCdrs: 
+    kamAccCdrsList_screen: 
+      <<: *kamAccCdrsList_screenLink
+      filterField: peeringContractId
+      parentOptionCustomizer: 
+        - recordCount
+    kamAccCdrsNew_screen: 
+      <<: *kamAccCdrsNew_screenLink
+      filterField: peeringContractId
+    kamAccCdrsEdit_screen: 
+      <<: *kamAccCdrsEdit_screenLink
+      filterField: peeringContractId
+
     #kamTrunksUacreg: 
     kamTrunksUacregList_screen: 
       <<: *kamTrunksUacregList_screenLink
@@ -141,6 +156,8 @@ production:
     <<: *parsedCDRs_dialogsLink
   # peerServers dialogs: 
     <<: *peerServers_dialogsLink
+  # kamAccCdrs dialogs: 
+    <<: *kamAccCdrs_dialogsLink
   # kamTrunksUacreg dialogs: 
     <<: *kamTrunksUacreg_dialogsLink
 staging: 

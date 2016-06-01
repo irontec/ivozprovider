@@ -85,6 +85,10 @@ production:
           title: ngettext('Language', 'Languages', 0)
           class: ui-silk-flag-blue
           description: _("List of %s", ngettext('Language', 'Languages', 0))
+        KamAccCdrsList:
+          title: ngettext('Billable call', 'Billable calls', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
         ParsedCDRsList:
           title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
           class: ui-silk-application-view-list
@@ -151,6 +155,10 @@ production:
           title: _('Invoices')
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))          
+        KamAccCdrsBrandList:
+          title: ngettext('Billable call', 'Billable calls', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
         ParsedCDRsBrandList:
           title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
           class: ui-silk-application-view-list

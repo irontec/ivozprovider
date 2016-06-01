@@ -63,7 +63,6 @@ class ParsedCDRs extends MapperAbstract
                 'subtype' => $model->getSubtype(),
                 'calldate' => $model->getCalldate(),
                 'duration' => $model->getDuration(),
-                'xDuration' => $model->getXDuration(),
                 'aParty' => $model->getAParty(),
                 'bParty' => $model->getBParty(),
                 'caller' => $model->getCaller(),
@@ -77,17 +76,6 @@ class ParsedCDRs extends MapperAbstract
                 'brandId' => $model->getBrandId(),
                 'companyId' => $model->getCompanyId(),
                 'peeringContractId' => $model->getPeeringContractId(),
-                'billCallID' => $model->getBillCallID(),
-                'billDuration' => $model->getBillDuration(),
-                'billDestination' => $model->getBillDestination(),
-                'externallyRated' => $model->getExternallyRated(),
-                'metered' => $model->getMetered(),
-                'meteringDate' => $model->getMeteringDate(),
-                'pricingPlanId' => $model->getPricingPlanId(),
-                'targetPatternId' => $model->getTargetPatternId(),
-                'price' => $model->getPrice(),
-                'pricingPlanDetails' => $model->getPricingPlanDetails(),
-                'invoiceId' => $model->getInvoiceId(),
             );
         } else {
             $result = array();
@@ -583,7 +571,6 @@ class ParsedCDRs extends MapperAbstract
                   ->setSubtype($data['subtype'])
                   ->setCalldate($data['calldate'])
                   ->setDuration($data['duration'])
-                  ->setXDuration($data['xDuration'])
                   ->setAParty($data['aParty'])
                   ->setBParty($data['bParty'])
                   ->setCaller($data['caller'])
@@ -596,18 +583,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setLastForwarder($data['lastForwarder'])
                   ->setBrandId($data['brandId'])
                   ->setCompanyId($data['companyId'])
-                  ->setPeeringContractId($data['peeringContractId'])
-                  ->setBillCallID($data['billCallID'])
-                  ->setBillDuration($data['billDuration'])
-                  ->setBillDestination($data['billDestination'])
-                  ->setExternallyRated($data['externallyRated'])
-                  ->setMetered($data['metered'])
-                  ->setMeteringDate($data['meteringDate'])
-                  ->setPricingPlanId($data['pricingPlanId'])
-                  ->setTargetPatternId($data['targetPatternId'])
-                  ->setPrice($data['price'])
-                  ->setPricingPlanDetails($data['pricingPlanDetails'])
-                  ->setInvoiceId($data['invoiceId']);
+                  ->setPeeringContractId($data['peeringContractId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setStatId($data->{'statId'})
@@ -624,7 +600,6 @@ class ParsedCDRs extends MapperAbstract
                   ->setSubtype($data->{'subtype'})
                   ->setCalldate($data->{'calldate'})
                   ->setDuration($data->{'duration'})
-                  ->setXDuration($data->{'xDuration'})
                   ->setAParty($data->{'aParty'})
                   ->setBParty($data->{'bParty'})
                   ->setCaller($data->{'caller'})
@@ -637,18 +612,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setLastForwarder($data->{'lastForwarder'})
                   ->setBrandId($data->{'brandId'})
                   ->setCompanyId($data->{'companyId'})
-                  ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setBillCallID($data->{'billCallID'})
-                  ->setBillDuration($data->{'billDuration'})
-                  ->setBillDestination($data->{'billDestination'})
-                  ->setExternallyRated($data->{'externallyRated'})
-                  ->setMetered($data->{'metered'})
-                  ->setMeteringDate($data->{'meteringDate'})
-                  ->setPricingPlanId($data->{'pricingPlanId'})
-                  ->setTargetPatternId($data->{'targetPatternId'})
-                  ->setPrice($data->{'price'})
-                  ->setPricingPlanDetails($data->{'pricingPlanDetails'})
-                  ->setInvoiceId($data->{'invoiceId'});
+                  ->setPeeringContractId($data->{'peeringContractId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ParsedCDRs) {
             $entry->setId($data->getId())
@@ -666,7 +630,6 @@ class ParsedCDRs extends MapperAbstract
                   ->setSubtype($data->getSubtype())
                   ->setCalldate($data->getCalldate())
                   ->setDuration($data->getDuration())
-                  ->setXDuration($data->getXDuration())
                   ->setAParty($data->getAParty())
                   ->setBParty($data->getBParty())
                   ->setCaller($data->getCaller())
@@ -679,18 +642,7 @@ class ParsedCDRs extends MapperAbstract
                   ->setLastForwarder($data->getLastForwarder())
                   ->setBrandId($data->getBrandId())
                   ->setCompanyId($data->getCompanyId())
-                  ->setPeeringContractId($data->getPeeringContractId())
-                  ->setBillCallID($data->getBillCallID())
-                  ->setBillDuration($data->getBillDuration())
-                  ->setBillDestination($data->getBillDestination())
-                  ->setExternallyRated($data->getExternallyRated())
-                  ->setMetered($data->getMetered())
-                  ->setMeteringDate($data->getMeteringDate())
-                  ->setPricingPlanId($data->getPricingPlanId())
-                  ->setTargetPatternId($data->getTargetPatternId())
-                  ->setPrice($data->getPrice())
-                  ->setPricingPlanDetails($data->getPricingPlanDetails())
-                  ->setInvoiceId($data->getInvoiceId());
+                  ->setPeeringContractId($data->getPeeringContractId());
 
         }
 

@@ -47,9 +47,9 @@ class PricingPlans extends TableAbstract
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelCompanies',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelTargetPatterns'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelTargetPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs'
     );
     protected $_metadata = array (
 	  'id' => 

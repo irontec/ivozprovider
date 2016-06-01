@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include FixedCostsRelInvoicesList.yaml
-#include ParsedCDRsList.yaml
+#include KamAccCdrsList.yaml
 
 
 production: 
@@ -22,7 +22,7 @@ production:
           screens: 
             invoicesEdit_screen: true
             fixedCostsRelInvoicesList_screen: true
-            parsedCDRsList_screen: true
+            kamAccCdrsList_screen: true
           dialogs: 
             invoicesDel_dialog: true
           default: invoicesEdit_screen
@@ -64,17 +64,17 @@ production:
       <<: *fixedCostsRelInvoicesEdit_screenLink
       filterField: invoiceId
 
-    #parsedCDRs: 
-    parsedCDRsList_screen: 
-      <<: *parsedCDRsList_screenLink
+    #kamAccCdrs: 
+    kamAccCdrsList_screen: 
+      <<: *kamAccCdrsList_screenLink
       filterField: invoiceId
       parentOptionCustomizer: 
         - recordCount
-    parsedCDRsNew_screen: 
-      <<: *parsedCDRsNew_screenLink
+    kamAccCdrsNew_screen: 
+      <<: *kamAccCdrsNew_screenLink
       filterField: invoiceId
-    parsedCDRsEdit_screen: 
-      <<: *parsedCDRsEdit_screenLink
+    kamAccCdrsEdit_screen: 
+      <<: *kamAccCdrsEdit_screenLink
       filterField: invoiceId
 
   dialogs: &invoices_dialogsLink 
@@ -90,8 +90,8 @@ production:
       labelOnList: 1
   # fixedCostsRelInvoices dialogs: 
     <<: *fixedCostsRelInvoices_dialogsLink
-  # parsedCDRs dialogs: 
-    <<: *parsedCDRs_dialogsLink
+  # kamAccCdrs dialogs: 
+    <<: *kamAccCdrs_dialogsLink
   commands: &invoices_commandsLink 
     invoicesPdfFileDownload_command: &invoicesPdfFileDownload_commandLink 
       <<: *Invoices

@@ -333,6 +333,14 @@ class Brands extends ModelAbstract
     protected $_TransformationRulesetGroupsTrunks;
 
     /**
+     * Dependent relation kam_acc_cdrs_ibfk_5
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\KamAccCdrs[]
+     */
+    protected $_KamAccCdrs;
+
+    /**
      * Dependent relation kam_trunks_uacreg_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -472,6 +480,10 @@ class Brands extends ModelAbstract
             'TransformationRulesetGroupsTrunksIbfk1' => array(
                     'property' => 'TransformationRulesetGroupsTrunks',
                     'table_name' => 'TransformationRulesetGroupsTrunks',
+                ),
+            'KamAccCdrsIbfk5' => array(
+                    'property' => 'KamAccCdrs',
+                    'table_name' => 'kam_acc_cdrs',
                 ),
             'KamTrunksUacregIbfk1' => array(
                     'property' => 'KamTrunksUacreg',
@@ -3255,6 +3267,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_TransformationRulesetGroupsTrunks;
+    }
+
+    /**
+     * Sets dependent relations kam_acc_cdrs_ibfk_5
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\KamAccCdrs
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setKamAccCdrs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_KamAccCdrs === null) {
+
+                $this->getKamAccCdrs();
+            }
+
+            $oldRelations = $this->_KamAccCdrs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_KamAccCdrs = array();
+
+        foreach ($data as $object) {
+            $this->addKamAccCdrs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations kam_acc_cdrs_ibfk_5
+     *
+     * @param \IvozProvider\Model\Raw\KamAccCdrs $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addKamAccCdrs(\IvozProvider\Model\Raw\KamAccCdrs $data)
+    {
+        $this->_KamAccCdrs[] = $data;
+        $this->_setLoaded('KamAccCdrsIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets dependent kam_acc_cdrs_ibfk_5
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function getKamAccCdrs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamAccCdrsIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_KamAccCdrs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_KamAccCdrs;
     }
 
     /**

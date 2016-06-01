@@ -1,0 +1,125 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kamAccCdrsList_screen
+  screens: &kamAccCdrs_screensLink 
+    kamAccCdrsList_screen: &kamAccCdrsList_screenLink 
+      controller: list
+      rawCondition: "peeringContractId IS NOT NULL"
+      pagination: 
+        items: 25
+      <<: *KamAccCdrs
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
+      fields: &kamAccCdrs_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            kamAccCdrsView_screen: true
+          default: kamAccCdrsView_screen
+#        blacklist:
+#          proxy: true
+#          start_time: true
+#          end_time: true
+#          caller: true
+#          referee: true
+#          referrer: true
+#          diversion: true
+#          asIden: true
+#          asAddress: true
+#          parsed: true
+#          callid: true
+#          xcallid: true
+#        order:
+#          calldate: 1
+#          brandId: 1
+#          companyId: 1
+#          callee: 1
+#          duration: 1
+#          peeringContractId: 1
+#          externallyRated: 1
+#          metered: 1
+#          meteringDate: 1
+#          pricingPlanId: 1
+#          targetPatternId: 1
+#          price: 1
+#          pricingPlanDetails: 1
+#          invoiceId: 1
+        blacklist:
+          proxy: true
+          start_time: true
+          end_time: true
+          caller: true
+          referee: true
+          referrer: true
+          diversion: true
+          asIden: true
+          asAddress: true
+          parsed: true
+          callid: true
+          xcallid: true
+          pricingPlanDetails: true
+          meteringDate: true
+        order:
+          calldate: 1
+          brandId: 1
+          companyId: 1
+          callee: 1
+          duration: 1
+          metered: 1
+          price: 1
+          peeringContractId: 1
+          externallyRated: 1
+          pricingPlanId: 1
+          targetPatternId: 1
+          invoiceId: 1
+    kamAccCdrsView_screen: &kamAccCdrsView_screenLink 
+      <<: *KamAccCdrs
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      fullWidth: true
+      labelOnPostAction: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
+      fields: 
+        blacklist:
+          proxy: true
+          start_time: true
+          end_time: true
+          caller: true
+          referee: true
+          referrer: true
+          diversion: true
+          asIden: true
+          asAddress: true
+          parsed: true
+          callid: true
+          xcallid: true
+          meteringDate: true
+        order:
+          calldate: 1
+          brandId: 1
+          companyId: 1
+          callee: 1
+          duration: 1
+          metered: 1
+          price: 1
+          peeringContractId: 1
+          externallyRated: 1
+          pricingPlanId: 1
+          targetPatternId: 1
+          invoiceId: 1
+          pricingPlanDetails: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

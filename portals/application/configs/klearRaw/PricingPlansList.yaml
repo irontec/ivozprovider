@@ -1,8 +1,8 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include ParsedCDRsList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include PricingPlansRelTargetPatternsList.yaml
+#include KamAccCdrsList.yaml
 
 
 production: 
@@ -22,9 +22,9 @@ production:
           title: _("Options")
           screens: 
             pricingPlansEdit_screen: true
-            parsedCDRsList_screen: true
             pricingPlansRelCompaniesList_screen: true
             pricingPlansRelTargetPatternsList_screen: true
+            kamAccCdrsList_screen: true
           dialogs: 
             pricingPlansDel_dialog: true
           default: pricingPlansEdit_screen
@@ -58,21 +58,8 @@ production:
       fields: 
         blacklist: 
           createdOn: true
-    #parsedCDRs: 
-    <<: *parsedCDRs_screensLink
-    parsedCDRsList_screen: 
-      <<: *parsedCDRsList_screenLink
-      filterField: pricingPlanId
-      parentOptionCustomizer: 
-        - recordCount
-    parsedCDRsNew_screen: 
-      <<: *parsedCDRsNew_screenLink
-      filterField: pricingPlanId
-    parsedCDRsEdit_screen: 
-      <<: *parsedCDRsEdit_screenLink
-      filterField: pricingPlanId
-
     #pricingPlansRelCompanies: 
+    <<: *pricingPlansRelCompanies_screensLink
     pricingPlansRelCompaniesList_screen: 
       <<: *pricingPlansRelCompaniesList_screenLink
       filterField: pricingPlanId
@@ -98,6 +85,19 @@ production:
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
       filterField: pricingPlanId
 
+    #kamAccCdrs: 
+    kamAccCdrsList_screen: 
+      <<: *kamAccCdrsList_screenLink
+      filterField: pricingPlanId
+      parentOptionCustomizer: 
+        - recordCount
+    kamAccCdrsNew_screen: 
+      <<: *kamAccCdrsNew_screenLink
+      filterField: pricingPlanId
+    kamAccCdrsEdit_screen: 
+      <<: *kamAccCdrsEdit_screenLink
+      filterField: pricingPlanId
+
   dialogs: &pricingPlans_dialogsLink 
     pricingPlansDel_dialog: &pricingPlansDel_dialogLink 
       <<: *PricingPlans
@@ -109,12 +109,12 @@ production:
       message: _("%s successfully deleted.", ngettext('Pricing plan', 'Pricing plans', 1))
       multiItem: 1
       labelOnList: 1
-  # parsedCDRs dialogs: 
-    <<: *parsedCDRs_dialogsLink
   # pricingPlansRelCompanies dialogs: 
     <<: *pricingPlansRelCompanies_dialogsLink
   # pricingPlansRelTargetPatterns dialogs: 
     <<: *pricingPlansRelTargetPatterns_dialogsLink
+  # kamAccCdrs dialogs: 
+    <<: *kamAccCdrs_dialogsLink
 staging: 
   _extends: production
 testing: 

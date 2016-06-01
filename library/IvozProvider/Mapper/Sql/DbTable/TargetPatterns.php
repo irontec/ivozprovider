@@ -49,9 +49,9 @@ class TargetPatterns extends TableAbstract
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelTargetPatterns',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroupsRelPatterns'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\TargetGroupsRelPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs'
     );
     protected $_metadata = array (
 	  'id' => 

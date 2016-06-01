@@ -61,7 +61,7 @@ class Invoices extends Raw\Invoices
             return 50006;
         }
 
-        $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+        $callMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 
         $wheres = array(
                 "companyId = '".$invoice->getCompanyId()."'",

@@ -441,20 +441,6 @@ class PricingPlans extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getParsedCDRs(null, null, true) !== null) {
-                    $parsedCDRs = $model->getParsedCDRs();
-
-                    if (!is_array($parsedCDRs)) {
-
-                        $parsedCDRs = array($parsedCDRs);
-                    }
-
-                    foreach ($parsedCDRs as $value) {
-                        $value->setPricingPlanId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getPricingPlansRelCompanies(null, null, true) !== null) {
                     $pricingPlansRelCompanies = $model->getPricingPlansRelCompanies();
 
@@ -478,6 +464,20 @@ class PricingPlans extends MapperAbstract
                     }
 
                     foreach ($pricingPlansRelTargetPatterns as $value) {
+                        $value->setPricingPlanId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getKamAccCdrs(null, null, true) !== null) {
+                    $kamAccCdrs = $model->getKamAccCdrs();
+
+                    if (!is_array($kamAccCdrs)) {
+
+                        $kamAccCdrs = array($kamAccCdrs);
+                    }
+
+                    foreach ($kamAccCdrs as $value) {
                         $value->setPricingPlanId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

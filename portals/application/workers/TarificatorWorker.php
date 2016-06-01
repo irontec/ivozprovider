@@ -38,7 +38,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
             }
         }
 
-        $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+        $callMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 
         $wheres = array();
         if (is_null($pks)) {

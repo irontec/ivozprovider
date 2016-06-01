@@ -1,92 +1,112 @@
 production: 
   class: \IvozProvider\Model\ParsedCDRs
   fields: 
-    calldate: 
-      title: _('Calldate')
-      type: picker
-      defaultValue: 0000-00-00 00:00:00
+    statId: 
+      title: _('Stat id')
+      type: number
       source: 
-        control: datetime
-        settings: 
-          disabled: 'false'
+        control: Spinner
       default: true
-    src: 
-      title: _('Source')
+    xstatId: 
+      title: _('Xstat id')
+      type: number
+      source: 
+        control: Spinner
+    statType: 
+      title: _('Stat type')
       type: text
-      trim: both
+      maxLength: 256
+    initialLeg: 
+      title: _('Initial leg')
+      type: text
       maxLength: 128
-    src_dialed: 
-      title: _('Dialed number')
+    initialLegHash: 
+      title: _('Initial leg hash')
       type: text
-      trim: both
       maxLength: 128
-    src_duration: 
-      title: _('Call duration')
+    cid: 
+      title: _('Cid')
       type: text
-      trim: both
-      defaultValue: 
-      maxLength: 32
-    dst: 
-      title: _('Final destination')
-      type: text
-      trim: both
       maxLength: 128
-    dst_src_cid: 
-      title: _('Dst src cid')
+    cidHash: 
+      title: _('Cid hash')
       type: text
-      trim: both
       maxLength: 128
-    dst_duration: 
-      title: _('Dst duration')
+    xcid: 
+      title: _('Xcid')
       type: text
-      trim: both
-      defaultValue: 
+      maxLength: 128
+    xcidHash: 
+      title: _('Xcid hash')
+      type: text
+      maxLength: 128
+    proxies: 
+      title: _('Proxy')
+      type: text
       maxLength: 32
     type: 
       title: ngettext('Type', 'Types', 1)
       type: text
-      trim: both
-      maxLength: 256
-    desc: 
-      title: _('Call description')
-      type: text
-      trim: both
-      maxLength: 256
-    fw_desc: 
-      title: _('Forward description')
-      type: text
-      trim: both
-      maxLength: 256
-    ext_forwarder: 
-      title: _('External forwarder')
-      type: text
-      trim: both
       maxLength: 32
-    int_forwarder: 
-      title: _('Forwarder')
+    subtype: 
+      title: _('Subtype')
       type: text
-      trim: both
-      maxLength: 32
-    forward_to: 
-      title: _('Forward to')
-      type: text
-      trim: both
-      maxLength: 32
-    companyId: 
-      title: _('Company')
-      type: select
+      maxLength: 64
+    calldate: 
+      title: _('Calldate')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
       source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unasigned")
+        control: datetime
+        settings: 
+          disabled: 'false'
+    duration: 
+      title: _('Duration')
+      type: number
+      source: 
+        control: Spinner
+    aParty: 
+      title: _('A party')
+      type: text
+      maxLength: 128
+    bParty: 
+      title: _('B party')
+      type: text
+      maxLength: 128
+    caller: 
+      title: _('Original caller')
+      type: text
+      maxLength: 128
+    callee: 
+      title: _('Dialed number')
+      type: text
+      maxLength: 128
+    xCaller: 
+      title: _('Presented CID')
+      type: text
+      maxLength: 128
+    xCallee: 
+      title: _('Final callee')
+      type: text
+      maxLength: 128
+    initialReferrer: 
+      title: _('Initial referrer')
+      type: text
+      maxLength: 128
+    referrer: 
+      title: _('Referrer')
+      type: text
+      maxLength: 128
+    referee: 
+      title: _('Referee')
+      type: text
+      maxLength: 128
+    lastForwarder: 
+      title: _('Last forwarder')
+      type: text
+      maxLength: 32
     brandId: 
-      title: _('Brand')
+      title: _('Brand id')
       type: select
       source: 
         data: mapper
@@ -98,148 +118,32 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    aleg: 
-      title: _('Aleg')
-      type: text
-      trim: both
-      maxLength: 128
-    bleg: 
-      title: _('Bleg')
-      type: text
-      trim: both
-      maxLength: 128
-    metered: 
-      title: _('Metered')
-      type: select
-      defaultValue: 0
-      source: 
-        data: inline
-        values: 
-          '0': 
-            title: _("No")
-          '1': 
-            title: _("Yes")
-    meteringDate: 
-      title: _('Metering date')
-      type: picker
-      defaultValue: 0000-00-00 00:00:00
-      source: 
-        control: datetime
-        settings: 
-          disabled: 'false'
-    pricingPlanId: 
-      title: _('Pricing plan')
+    companyId: 
+      title: _('Company id')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
+          mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
               - name
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    targetPatternId: 
-      title: _('Destination type')
+    peeringContractId: 
+      title: _('Peering contract id')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unasigned")
-    price: 
-      title: ngettext('Price (€)', 'Prices (€)', 1)
-      type: text
-      trim: both
-    pricingPlanDetails: 
-      title: _('Pricing plan details')
-      type: textarea
-      prefix: <p align=left>
-      sufix: </p>
-    srcAdapted:
-      title: _('Source')
-      type: ghost
-      dirty: true
-      source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
-        method: getSrcAdapted
-    srcDialedAdapted:
-      title: _('Source dialed')
-      type: ghost
-      dirty: true
-      source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
-        method: getSrcDialedAdapted
-    dstAdapted:
-      title: _('Final destination')
-      type: ghost
-      dirty: true
-      source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
-        method: getDstAdapted
-    smartDuration:
-      title: _('Call Duration')
-      type: ghost
-      dirty: true
-      source:
-        class: IvozProvider_Klear_Ghost_ParsedCDRsFields
-        method: getSmartDuration
-    invoiceId: 
-      title: _('Invoice')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\Invoices
-          fieldName: 
-            fields: 
-              - number
-            template: '%number%'
-          order: number
-        'null': _("Unbilled")
-    billCallID:
-      title: _('Bill callid')
-      type: text
-      maxLength: 128
-    billDuration:
-      title: _('Duration')
-      type: number
-      source:
-        control: Spinner
-    billDestination:
-      title: _('Destination')
-      type: text
-      maxLength: 128
-    peeringContractId:
-      title: _('Peering contract')
-      type: select
-      source:
-        data: mapper
-        config:
           mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
-          fieldName:
-            fields:
-              - name
-            template: '%name%'
-          order: name
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order: description
         'null': _("Unasigned")
-    externallyRated:
-      title: _('Externally rated')
-      type: select
-      defaultValue: 0
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-          '1':
-            title: _("Yes")
 staging: 
   _extends: production
 testing: 

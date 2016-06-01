@@ -35,7 +35,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
         $this->_logger->log("[INVOICER] ID = ".$pk, \Zend_Log::INFO);
         $invoicesMapper = new \IvozProvider\Mapper\Sql\Invoices();
 
-        $unsetInvoiceIdQuery = "UPDATE ParsedCDRs set invoiceId = null WHERE invoiceId = '".$pk."'";
+        $unsetInvoiceIdQuery = "UPDATE kam_acc_cdrs set invoiceId = null WHERE invoiceId = '".$pk."'";
         $dbAdapter = $invoicesMapper->getDbTable()->getAdapter();
         $dbAdapter->query($unsetInvoiceIdQuery);
 

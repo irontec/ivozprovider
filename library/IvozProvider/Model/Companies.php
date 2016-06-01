@@ -147,9 +147,9 @@ class Companies extends Raw\Companies
      */
     public function isDstTarificable($number)
     {
-        $call = new \IvozProvider\Model\ParsedCDRs();
+        $call = new \IvozProvider\Model\KamAccCdrs();
 
-        $call->setBillDestination($number)
+        $call->setCallee($number)
             ->setCompanyId($this->getId())
             ->setBrandId($this->getBrandId())
             ->setCalldate(new \Zend_Date());

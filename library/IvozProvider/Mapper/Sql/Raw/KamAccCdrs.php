@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\Invoices
+ * Data Mapper implementation for IvozProvider\Model\KamAccCdrs
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class Invoices extends MapperAbstract
+class KamAccCdrs extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\Invoices';
+    protected $_modelName = 'IvozProvider\\Model\\KamAccCdrs';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class Invoices extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\Invoices $model
+     * @param IvozProvider\Model\Raw\KamAccCdrs $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\Invoices) {
+        if (!$model instanceof \IvozProvider\Model\Raw\KamAccCdrs) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Invoices object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\KamAccCdrs object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\Invoices object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\KamAccCdrs object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,19 +49,32 @@ class Invoices extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'number' => $model->getNumber(),
-                'inDate' => $model->getInDate(),
-                'outDate' => $model->getOutDate(),
-                'total' => $model->getTotal(),
-                'taxRate' => $model->getTaxRate(),
-                'totalWithTax' => $model->getTotalWithTax(),
-                'status' => $model->getStatus(),
+                'proxy' => $model->getProxy(),
+                'calldate' => $model->getCalldate(),
+                'start_time' => $model->getStartTime(),
+                'end_time' => $model->getEndTime(),
+                'duration' => $model->getDuration(),
+                'caller' => $model->getCaller(),
+                'callee' => $model->getCallee(),
+                'referee' => $model->getReferee(),
+                'referrer' => $model->getReferrer(),
                 'companyId' => $model->getCompanyId(),
                 'brandId' => $model->getBrandId(),
-                'pdfFileFileSize' => $model->getPdfFileFileSize(),
-                'pdfFileMimeType' => $model->getPdfFileMimeType(),
-                'pdfFileBaseName' => $model->getPdfFileBaseName(),
-                'invoiceTemplateId' => $model->getInvoiceTemplateId(),
+                'asIden' => $model->getAsIden(),
+                'asAddress' => $model->getAsAddress(),
+                'callid' => $model->getCallid(),
+                'xcallid' => $model->getXcallid(),
+                'parsed' => $model->getParsed(),
+                'diversion' => $model->getDiversion(),
+                'peeringContractId' => $model->getPeeringContractId(),
+                'externallyRated' => $model->getExternallyRated(),
+                'metered' => $model->getMetered(),
+                'meteringDate' => $model->getMeteringDate(),
+                'pricingPlanId' => $model->getPricingPlanId(),
+                'targetPatternId' => $model->getTargetPatternId(),
+                'price' => $model->getPrice(),
+                'pricingPlanDetails' => $model->getPricingPlanDetails(),
+                'invoiceId' => $model->getInvoiceId(),
             );
         } else {
             $result = array();
@@ -100,12 +113,12 @@ class Invoices extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Invoices
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Invoices');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs');
         }
 
         return $this->_dbTable;
@@ -114,17 +127,17 @@ class Invoices extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\Invoices $model The model to delete
+     * @param IvozProvider\Model\Raw\KamAccCdrs $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\Invoices) {
+        if (!$model instanceof \IvozProvider\Model\Raw\KamAccCdrs) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Invoices object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\KamAccCdrs object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\Invoices object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\KamAccCdrs object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -174,7 +187,7 @@ class Invoices extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Invoices', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -222,7 +235,7 @@ class Invoices extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Invoices', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamAccCdrs', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -300,7 +313,7 @@ class Invoices extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\Invoices $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\KamAccCdrs $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -308,17 +321,17 @@ class Invoices extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\Invoices $model
+     * @param \IvozProvider\Model\Raw\KamAccCdrs $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\Invoices $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\KamAccCdrs $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\Invoices $model,
+    protected function _save(\IvozProvider\Model\Raw\KamAccCdrs $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -447,37 +460,6 @@ class Invoices extends MapperAbstract
             }
 
 
-            if ($recursive) {
-                if ($model->getFixedCostsRelInvoices(null, null, true) !== null) {
-                    $fixedCostsRelInvoices = $model->getFixedCostsRelInvoices();
-
-                    if (!is_array($fixedCostsRelInvoices)) {
-
-                        $fixedCostsRelInvoices = array($fixedCostsRelInvoices);
-                    }
-
-                    foreach ($fixedCostsRelInvoices as $value) {
-                        $value->setInvoiceId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getKamAccCdrs(null, null, true) !== null) {
-                    $kamAccCdrs = $model->getKamAccCdrs();
-
-                    if (!is_array($kamAccCdrs)) {
-
-                        $kamAccCdrs = array($kamAccCdrs);
-                    }
-
-                    foreach ($kamAccCdrs as $value) {
-                        $value->setInvoiceId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-            }
-
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -560,13 +542,13 @@ class Invoices extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\Invoices|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\Invoices The model with the data provided
+     * @param IvozProvider\Model\Raw\KamAccCdrs|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\KamAccCdrs The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\Invoices();
+            $entry = new \IvozProvider\Model\KamAccCdrs();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -574,50 +556,89 @@ class Invoices extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setNumber($data['number'])
-                  ->setInDate($data['inDate'])
-                  ->setOutDate($data['outDate'])
-                  ->setTotal($data['total'])
-                  ->setTaxRate($data['taxRate'])
-                  ->setTotalWithTax($data['totalWithTax'])
-                  ->setStatus($data['status'])
+                  ->setProxy($data['proxy'])
+                  ->setCalldate($data['calldate'])
+                  ->setStartTime($data['start_time'])
+                  ->setEndTime($data['end_time'])
+                  ->setDuration($data['duration'])
+                  ->setCaller($data['caller'])
+                  ->setCallee($data['callee'])
+                  ->setReferee($data['referee'])
+                  ->setReferrer($data['referrer'])
                   ->setCompanyId($data['companyId'])
                   ->setBrandId($data['brandId'])
-                  ->setPdfFileFileSize($data['pdfFileFileSize'])
-                  ->setPdfFileMimeType($data['pdfFileMimeType'])
-                  ->setPdfFileBaseName($data['pdfFileBaseName'])
-                  ->setInvoiceTemplateId($data['invoiceTemplateId']);
+                  ->setAsIden($data['asIden'])
+                  ->setAsAddress($data['asAddress'])
+                  ->setCallid($data['callid'])
+                  ->setXcallid($data['xcallid'])
+                  ->setParsed($data['parsed'])
+                  ->setDiversion($data['diversion'])
+                  ->setPeeringContractId($data['peeringContractId'])
+                  ->setExternallyRated($data['externallyRated'])
+                  ->setMetered($data['metered'])
+                  ->setMeteringDate($data['meteringDate'])
+                  ->setPricingPlanId($data['pricingPlanId'])
+                  ->setTargetPatternId($data['targetPatternId'])
+                  ->setPrice($data['price'])
+                  ->setPricingPlanDetails($data['pricingPlanDetails'])
+                  ->setInvoiceId($data['invoiceId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setNumber($data->{'number'})
-                  ->setInDate($data->{'inDate'})
-                  ->setOutDate($data->{'outDate'})
-                  ->setTotal($data->{'total'})
-                  ->setTaxRate($data->{'taxRate'})
-                  ->setTotalWithTax($data->{'totalWithTax'})
-                  ->setStatus($data->{'status'})
+                  ->setProxy($data->{'proxy'})
+                  ->setCalldate($data->{'calldate'})
+                  ->setStartTime($data->{'start_time'})
+                  ->setEndTime($data->{'end_time'})
+                  ->setDuration($data->{'duration'})
+                  ->setCaller($data->{'caller'})
+                  ->setCallee($data->{'callee'})
+                  ->setReferee($data->{'referee'})
+                  ->setReferrer($data->{'referrer'})
                   ->setCompanyId($data->{'companyId'})
                   ->setBrandId($data->{'brandId'})
-                  ->setPdfFileFileSize($data->{'pdfFileFileSize'})
-                  ->setPdfFileMimeType($data->{'pdfFileMimeType'})
-                  ->setPdfFileBaseName($data->{'pdfFileBaseName'})
-                  ->setInvoiceTemplateId($data->{'invoiceTemplateId'});
+                  ->setAsIden($data->{'asIden'})
+                  ->setAsAddress($data->{'asAddress'})
+                  ->setCallid($data->{'callid'})
+                  ->setXcallid($data->{'xcallid'})
+                  ->setParsed($data->{'parsed'})
+                  ->setDiversion($data->{'diversion'})
+                  ->setPeeringContractId($data->{'peeringContractId'})
+                  ->setExternallyRated($data->{'externallyRated'})
+                  ->setMetered($data->{'metered'})
+                  ->setMeteringDate($data->{'meteringDate'})
+                  ->setPricingPlanId($data->{'pricingPlanId'})
+                  ->setTargetPatternId($data->{'targetPatternId'})
+                  ->setPrice($data->{'price'})
+                  ->setPricingPlanDetails($data->{'pricingPlanDetails'})
+                  ->setInvoiceId($data->{'invoiceId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\Invoices) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\KamAccCdrs) {
             $entry->setId($data->getId())
-                  ->setNumber($data->getNumber())
-                  ->setInDate($data->getInDate())
-                  ->setOutDate($data->getOutDate())
-                  ->setTotal($data->getTotal())
-                  ->setTaxRate($data->getTaxRate())
-                  ->setTotalWithTax($data->getTotalWithTax())
-                  ->setStatus($data->getStatus())
+                  ->setProxy($data->getProxy())
+                  ->setCalldate($data->getCalldate())
+                  ->setStartTime($data->getStartTime())
+                  ->setEndTime($data->getEndTime())
+                  ->setDuration($data->getDuration())
+                  ->setCaller($data->getCaller())
+                  ->setCallee($data->getCallee())
+                  ->setReferee($data->getReferee())
+                  ->setReferrer($data->getReferrer())
                   ->setCompanyId($data->getCompanyId())
                   ->setBrandId($data->getBrandId())
-                  ->setPdfFileFileSize($data->getPdfFileFileSize())
-                  ->setPdfFileMimeType($data->getPdfFileMimeType())
-                  ->setPdfFileBaseName($data->getPdfFileBaseName())
-                  ->setInvoiceTemplateId($data->getInvoiceTemplateId());
+                  ->setAsIden($data->getAsIden())
+                  ->setAsAddress($data->getAsAddress())
+                  ->setCallid($data->getCallid())
+                  ->setXcallid($data->getXcallid())
+                  ->setParsed($data->getParsed())
+                  ->setDiversion($data->getDiversion())
+                  ->setPeeringContractId($data->getPeeringContractId())
+                  ->setExternallyRated($data->getExternallyRated())
+                  ->setMetered($data->getMetered())
+                  ->setMeteringDate($data->getMeteringDate())
+                  ->setPricingPlanId($data->getPricingPlanId())
+                  ->setTargetPatternId($data->getTargetPatternId())
+                  ->setPrice($data->getPrice())
+                  ->setPricingPlanDetails($data->getPricingPlanDetails())
+                  ->setInvoiceId($data->getInvoiceId());
 
         }
 
@@ -634,11 +655,11 @@ class Invoices extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'Invoices');
+        $etag = $etags->findOneByField('table', 'KamAccCdrs');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('Invoices');
+            $etag->setTable('KamAccCdrs');
         }
 
         $random = substr(

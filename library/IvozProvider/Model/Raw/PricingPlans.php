@@ -98,14 +98,6 @@ class PricingPlans extends ModelAbstract
 
 
     /**
-     * Dependent relation parsedCDRs_ibfk_3
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\ParsedCDRs[]
-     */
-    protected $_ParsedCDRs;
-
-    /**
      * Dependent relation PricingPlansRelCompanies_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -120,6 +112,14 @@ class PricingPlans extends ModelAbstract
      * @var \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns[]
      */
     protected $_PricingPlansRelTargetPatterns;
+
+    /**
+     * Dependent relation kam_acc_cdrs_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\KamAccCdrs[]
+     */
+    protected $_KamAccCdrs;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -158,10 +158,6 @@ class PricingPlans extends ModelAbstract
         ));
 
         $this->setDependentList(array(
-            'ParsedCDRsIbfk3' => array(
-                    'property' => 'ParsedCDRs',
-                    'table_name' => 'ParsedCDRs',
-                ),
             'PricingPlansRelCompaniesIbfk1' => array(
                     'property' => 'PricingPlansRelCompanies',
                     'table_name' => 'PricingPlansRelCompanies',
@@ -170,12 +166,13 @@ class PricingPlans extends ModelAbstract
                     'property' => 'PricingPlansRelTargetPatterns',
                     'table_name' => 'PricingPlansRelTargetPatterns',
                 ),
+            'KamAccCdrsIbfk1' => array(
+                    'property' => 'KamAccCdrs',
+                    'table_name' => 'kam_acc_cdrs',
+                ),
         ));
 
 
-        $this->setOnDeleteSetNullRelationships(array(
-            'parsedCDRs_ibfk_3'
-        ));
 
 
         $this->_defaultValues = array(
@@ -626,96 +623,6 @@ class PricingPlans extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_3
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
-     * @return \IvozProvider\Model\Raw\PricingPlans
-     */
-    public function setParsedCDRs(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_ParsedCDRs === null) {
-
-                $this->getParsedCDRs();
-            }
-
-            $oldRelations = $this->_ParsedCDRs;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_ParsedCDRs = array();
-
-        foreach ($data as $object) {
-            $this->addParsedCDRs($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations parsedCDRs_ibfk_3
-     *
-     * @param \IvozProvider\Model\Raw\ParsedCDRs $data
-     * @return \IvozProvider\Model\Raw\PricingPlans
-     */
-    public function addParsedCDRs(\IvozProvider\Model\Raw\ParsedCDRs $data)
-    {
-        $this->_ParsedCDRs[] = $data;
-        $this->_setLoaded('ParsedCDRsIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets dependent parsedCDRs_ibfk_3
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\ParsedCDRs
-     */
-    public function getParsedCDRs($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ParsedCDRsIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_ParsedCDRs = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_ParsedCDRs;
-    }
-
-    /**
      * Sets dependent relations PricingPlansRelCompanies_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\PricingPlansRelCompanies
@@ -893,6 +800,96 @@ class PricingPlans extends ModelAbstract
         }
 
         return $this->_PricingPlansRelTargetPatterns;
+    }
+
+    /**
+     * Sets dependent relations kam_acc_cdrs_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\KamAccCdrs
+     * @return \IvozProvider\Model\Raw\PricingPlans
+     */
+    public function setKamAccCdrs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_KamAccCdrs === null) {
+
+                $this->getKamAccCdrs();
+            }
+
+            $oldRelations = $this->_KamAccCdrs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_KamAccCdrs = array();
+
+        foreach ($data as $object) {
+            $this->addKamAccCdrs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations kam_acc_cdrs_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\KamAccCdrs $data
+     * @return \IvozProvider\Model\Raw\PricingPlans
+     */
+    public function addKamAccCdrs(\IvozProvider\Model\Raw\KamAccCdrs $data)
+    {
+        $this->_KamAccCdrs[] = $data;
+        $this->_setLoaded('KamAccCdrsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent kam_acc_cdrs_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function getKamAccCdrs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamAccCdrsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_KamAccCdrs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_KamAccCdrs;
     }
 
     /**

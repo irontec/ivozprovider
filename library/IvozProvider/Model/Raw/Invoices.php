@@ -165,12 +165,12 @@ class Invoices extends ModelAbstract
     protected $_FixedCostsRelInvoices;
 
     /**
-     * Dependent relation parsedCDRs_ibfk_5
+     * Dependent relation kam_acc_cdrs_ibfk_3
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\ParsedCDRs[]
+     * @var \IvozProvider\Model\Raw\KamAccCdrs[]
      */
-    protected $_ParsedCDRs;
+    protected $_KamAccCdrs;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -224,9 +224,9 @@ class Invoices extends ModelAbstract
                     'property' => 'FixedCostsRelInvoices',
                     'table_name' => 'FixedCostsRelInvoices',
                 ),
-            'ParsedCDRsIbfk5' => array(
-                    'property' => 'ParsedCDRs',
-                    'table_name' => 'ParsedCDRs',
+            'KamAccCdrsIbfk3' => array(
+                    'property' => 'KamAccCdrs',
+                    'table_name' => 'kam_acc_cdrs',
                 ),
         ));
 
@@ -1129,21 +1129,21 @@ class Invoices extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_5
+     * Sets dependent relations kam_acc_cdrs_ibfk_3
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
+     * @param array $data An array of \IvozProvider\Model\Raw\KamAccCdrs
      * @return \IvozProvider\Model\Raw\Invoices
      */
-    public function setParsedCDRs(array $data, $deleteOrphans = false)
+    public function setKamAccCdrs(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_ParsedCDRs === null) {
+            if ($this->_KamAccCdrs === null) {
 
-                $this->getParsedCDRs();
+                $this->getKamAccCdrs();
             }
 
-            $oldRelations = $this->_ParsedCDRs;
+            $oldRelations = $this->_KamAccCdrs;
 
             if (is_array($oldRelations)) {
 
@@ -1167,39 +1167,39 @@ class Invoices extends ModelAbstract
             }
         }
 
-        $this->_ParsedCDRs = array();
+        $this->_KamAccCdrs = array();
 
         foreach ($data as $object) {
-            $this->addParsedCDRs($object);
+            $this->addKamAccCdrs($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_5
+     * Sets dependent relations kam_acc_cdrs_ibfk_3
      *
-     * @param \IvozProvider\Model\Raw\ParsedCDRs $data
+     * @param \IvozProvider\Model\Raw\KamAccCdrs $data
      * @return \IvozProvider\Model\Raw\Invoices
      */
-    public function addParsedCDRs(\IvozProvider\Model\Raw\ParsedCDRs $data)
+    public function addKamAccCdrs(\IvozProvider\Model\Raw\KamAccCdrs $data)
     {
-        $this->_ParsedCDRs[] = $data;
-        $this->_setLoaded('ParsedCDRsIbfk5');
+        $this->_KamAccCdrs[] = $data;
+        $this->_setLoaded('KamAccCdrsIbfk3');
         return $this;
     }
 
     /**
-     * Gets dependent parsedCDRs_ibfk_5
+     * Gets dependent kam_acc_cdrs_ibfk_3
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\ParsedCDRs
+     * @return array The array of \IvozProvider\Model\Raw\KamAccCdrs
      */
-    public function getParsedCDRs($where = null, $orderBy = null, $avoidLoading = false)
+    public function getKamAccCdrs($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'ParsedCDRsIbfk5';
+        $fkName = 'KamAccCdrsIbfk3';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -1211,11 +1211,11 @@ class Invoices extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_ParsedCDRs = $related;
+            $this->_KamAccCdrs = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_ParsedCDRs;
+        return $this->_KamAccCdrs;
     }
 
     /**

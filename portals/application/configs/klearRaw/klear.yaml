@@ -319,6 +319,10 @@ production:
           title: ngettext('Ast voicemail', 'Ast voicemail', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Ast voicemail', 'Ast voicemail', 0))
+        KamAccCdrsList: 
+          title: ngettext('Kam acc cdr', 'Kam acc cdrs', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kam acc cdr', 'Kam acc cdrs', 0))
         KamDispatcherList: 
           title: ngettext('Kam dispatcher', 'Kam dispatcher', 0)
           class: ui-silk-text-list-bullets
