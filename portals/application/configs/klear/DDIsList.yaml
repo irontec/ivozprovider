@@ -14,6 +14,7 @@ production:
       title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
       class: ui-silk-lightning-go
       forcedValues:
+        <<: *forcedBrand
         <<: *forcedCompany
       order:
         field:
@@ -81,6 +82,7 @@ production:
       defaultValues:
         countryId: ${auth.companyCountryId}
       forcedValues:
+        <<: *forcedBrand
         <<: *forcedCompany
       title: _("Add %s", ngettext('DDI', 'DDIs', 1))
       fields:
@@ -98,6 +100,7 @@ production:
       class: ui-silk-pencil
       label: false
       forcedValues:
+        <<: *forcedBrand
         <<: *forcedCompany
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
