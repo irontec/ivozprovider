@@ -31,7 +31,7 @@ class ImportCustomFileController extends Zend_Controller_Action
             "help" => "",
         ),
         "regularExpresion" => array(
-            "title" => "Regular Expresion",
+            "title" => "Prefix",
             "required" => true,
             "help" => "Regular Expresion",
         ),

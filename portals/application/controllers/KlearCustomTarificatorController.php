@@ -46,10 +46,10 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 $this->_confirmDialog($errors);
             } else {
                 $companyId = $this->getParam("parentId");
-                $call = new \IvozProvider\Model\ParsedCDRs();
+                $call = new \IvozProvider\Model\KamAccCdrs();
                 $call
-                    ->setBillDestination($this->getParam("number"))
-                    ->setBillDuration($this->getParam("duration"))
+                    ->setCallee($this->getParam("number"))
+                    ->setDuration($this->getParam("duration"))
                     ->setBrandId($this->_brandId)
                     ->setCompanyId($companyId)
                     ->setCalldate(new \Zend_Date());
@@ -109,7 +109,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         $pk = $this->getRequest()->getParam("pk");
 
-        $callsMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+        $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
         $this->_helper->log("[Tarificator] Tarificating call with id = ".$pk);
         $call = $callsMapper->find($pk);
         $call->tarificate();
@@ -124,7 +124,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     public function tarificationInfoAction ()
     {
         $pk = $this->getRequest()->getParam("pk");
-        $callsMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+        $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
         $call = $callsMapper->find($pk);
         $message = $this->_getTarificationInfo($call);
         $message .= "<br />";
@@ -281,7 +281,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
     }
 
-    protected function _getTarificationInfo(\IvozProvider\Model\ParsedCDRs $call, $errorMessage = "No tarification info found")
+    protected function _getTarificationInfo(\IvozProvider\Model\KamAccCdrs $call, $errorMessage = "No tarification info found")
     {
         $jsonData = $call->getPricingPlanDetails();
         if (is_null($jsonData)) {
@@ -312,7 +312,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                     )
             );
 
-            $info = $this->_drawTable($table, $call->getDst(), $call->getDstDuration());
+            $info = $this->_drawTable($table, $call->getCallee(), $call->getDuration());
         }
 
         return $info;
@@ -414,11 +414,11 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     protected function _checkRetarificables($pks)
     {
 
-        $callMapper = new \IvozProvider\Mapper\Sql\ParsedCDRs();
+        $callMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 
         $wheres = array();
         $wheres[] = "`id` IN (".implode(",", $pks).")";
-        $wheres[] = "(`invoiceId` IS NOT NULL OR billCallID IS NULL)";
+        $wheres[] = "(`invoiceId` IS NOT NULL OR peeringContractId IS NULL)";
 
         $result = array(
             "error" => false,
@@ -427,9 +427,11 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $numberRegs = $callMapper->countByQuery(implode(" AND ", $wheres));
         if ($numberRegs > 0) {
+            $message = "<p>".$this->_helper->translate("Invoiced calls can't be metered again")."</p>";
+            $message .= "<p>".$this->_helper->translate("Please select only uninvoiced calls")."</p>";
             $result = array(
                 "error" => true,
-                "message" => $this->_helper->translate("You have selected NO tarificable calls")
+                "message" => $message
             );
         }
         return $result;

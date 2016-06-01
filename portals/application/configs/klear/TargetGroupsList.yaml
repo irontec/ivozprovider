@@ -70,6 +70,22 @@ production:
       multiItem: 1
       labelOnList: 1
 
+  commands:
+    targetGroupsAutocomplete_command: &targetGroupsAutocomplete_commandLink
+      <<: *TargetGroups
+      controller: field-decorator
+      action: index
+      autocomplete:
+        mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+        filterClass: IvozProvider_Klear_Filter_Brand
+        fieldName:
+          fields:
+            - name_es
+            - name_en
+            - description
+          template: '%name_en% - %description% (%regExp%)'
+        limit: 8
+        order: name
 staging: 
   _extends: production
 testing: 

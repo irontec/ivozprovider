@@ -1,0 +1,49 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include KamAccCdrsList.yaml
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: kamAccCdrsList_screen
+  screens:
+    <<: *kamAccCdrs_screensLink
+    kamAccCdrsList_screen:
+      <<: *kamAccCdrsList_screenLink
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        <<: *kamAccCdrs_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            kamAccCdrsView_screen: true
+          dialogs:
+            tarificateCall_dialog: true
+          default: kamAccCdrsView_screen
+      options:
+        dialogs:
+          tarificateCall_dialog: true
+    kamAccCdrsView_screen:
+      <<: *kamAccCdrsView_screenLink
+      forcedValues:
+        <<: *forcedBrand
+  dialogs:  &parsedCDRs_dialogsLink
+    tarificateCall_dialog:
+      <<: *ParsedCDRs
+      module: default
+      title: _("Tarificate %s", ngettext('call', 'calls', 1))
+      labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))
+      controller: klear-custom-tarificator
+      action: tarificate-call
+      class:  ui-silk-coins-add
+      multiItem: true
+      alwaysEnabled: false
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

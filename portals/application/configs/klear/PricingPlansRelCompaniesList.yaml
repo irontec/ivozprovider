@@ -112,6 +112,9 @@ production:
       controller: klear-custom-tarificator
       action: test-company-plans
       class:  ui-silk-telephone
+  commands: &pricingPlansRelCompanies_commandsLink
+    <<: *pricingPlansRelTargetPatterns_commandsLink
+
 staging: 
   _extends: production
 testing: 

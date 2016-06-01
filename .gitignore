@@ -5,7 +5,10 @@ portals/application/cache/*
 library/Composer/*
 !library/Composer/composer.json
 scheme/build.properties.development
-
+storage
 storage/*
 *.idea
 .idea/*
+mount-storage.sh
+portals/storage
+

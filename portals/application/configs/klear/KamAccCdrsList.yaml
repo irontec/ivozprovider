@@ -1,8 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-
-production: 
+production:
   main: 
     module: klearMatrix
     defaultScreen: kamAccCdrsList_screen

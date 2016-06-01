@@ -50,6 +50,9 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_TargetGroupPatterns
         method: getData
+#      decorators:
+#        autocomplete:
+#            command: targetGroupsAutocomplete_command
 staging: 
   _extends: production
 testing: 

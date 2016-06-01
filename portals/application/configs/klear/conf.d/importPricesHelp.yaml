@@ -1,0 +1,14 @@
+importPricesHelp:
+  - &importPricesHelp
+    info:
+      type: box
+      position: left
+      icon: help
+      label: _("Prices Help")
+      text: "
+         <p>csv file must be as following example:
+            <ul style='margin-left: 30px'>
+            <li><a href='/samples/pricesSample.csv' target='_blank'>Prices sample</a></li>
+            </ul>
+            </p>
+        "

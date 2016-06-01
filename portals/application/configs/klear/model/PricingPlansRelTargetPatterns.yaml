@@ -61,7 +61,7 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
-            fields: 
+            fields:
               - name
               - regExp
             template: '%name% (%regExp%)'

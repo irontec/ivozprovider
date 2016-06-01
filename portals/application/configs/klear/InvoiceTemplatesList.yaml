@@ -57,6 +57,7 @@ production:
           colsPerRow: 1
           fields:
             template: 1
+      <<: *invoiceTemplateHelp
     invoiceTemplatesEdit_screen: &invoiceTemplatesEdit_screenLink 
       <<: *InvoiceTemplates
       controller: edit
@@ -68,6 +69,7 @@ production:
         <<: *forcedBrand
       fixedPositions:
         <<: *invoiceTemplatesFixedPositions_Link
+      <<: *invoiceTemplateHelp
     #invoices: 
     <<: *invoices_screensLink
     invoicesList_screen: 

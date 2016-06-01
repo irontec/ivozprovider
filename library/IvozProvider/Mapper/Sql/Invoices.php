@@ -57,9 +57,15 @@ class Invoices extends Raw\Invoices
         $now->setTimezone($invoiceTz);
         $inDateIsInFuture = $invoice->getInDate(true)->getDate()->compare($now->getDate()) >= 0;
         $outDateIsInFuture = $invoice->getOutDate(true)->getDate()->compare($now->getDate()) >= 0;
-        if ($inDateIsInFuture || $outDateIsInFuture) {
-            return 50006;
-        }
+
+
+        /**
+         * No facturar llamadas del día de hoy en adelante
+         * @todo Descomentar esto después de la reunión
+         */
+//        if ($inDateIsInFuture || $outDateIsInFuture) {
+//            return 50006;
+//        }
 
         $callMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 

@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-
+#include conf.d/importPricesHelp.yaml
 
 production: 
   main: 
@@ -49,12 +49,7 @@ production:
         newLine: "\r\n"
         encoding: "utf-8"
         executionSeconds: ""
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("<p><b>Metric:</b> In case that two patterns were matched pattern with lower metric will be applied.</p>")
-        label: _("Help")
+      <<: *importPricesHelp
     pricingPlansRelTargetPatternsNew_screen: &pricingPlansRelTargetPatternsNew_screenLink 
       <<: *PricingPlansRelTargetPatterns
       controller: new
@@ -133,7 +128,7 @@ production:
       <<: *PricingPlansRelTargetPatterns
       controller: File
       action: free-upload
-    targetPatternautocomplete_command:
+    targetPatternautocomplete_command: &targetPatternautocomplete_commandLink
       <<: *PricingPlansRelTargetPatterns
       controller: field-decorator
       action: index
@@ -144,9 +139,8 @@ production:
           fields:
             - name_es
             - name_en
-            - name
             - regExp
-          template: '%name% (%regExp%)'
+          template: '%name_en% (%regExp%)'
         limit: 8
         order: name
 staging: 

@@ -2,7 +2,6 @@
 #include conf.d/actions.yaml
 #include CompanyAdminsList.yaml
 #include PricingPlansRelCompaniesList.yaml
-#include InvoicesList.yaml
 #include OutgoingRoutingList.yaml
 #include KamUsersAddressList.yaml
 
@@ -247,6 +246,7 @@ production:
       <<: *Companies
       controller: File
       action: free-upload
+    <<: *pricingPlansRelCompanies_commandsLink
 staging:
   _extends: production
 testing:
