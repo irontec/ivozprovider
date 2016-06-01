@@ -55,14 +55,13 @@ production:
               show: []
               hide: ["direct_media_method"]
     direct_media_method: 
-      title: _('Direct media method')
+      title: _('CallerID update method')
       type: select
       defaultValue: invite
       source: 
         data: inline
         values: 
           'invite': 'invite'
-          'reinvite': 'reinvite'
           'update': 'update'
 staging: 
   _extends: production
