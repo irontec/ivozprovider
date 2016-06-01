@@ -102,7 +102,7 @@ class Companies extends Raw\Companies
         if (empty($companyPricingPlans)) {
             $this->_logger->log("[Model][Companies] No active Pricing Plan.",
                             \Zend_Log::WARN);
-            return null;
+            return array();
         }
         return $companyPricingPlans;
     }
