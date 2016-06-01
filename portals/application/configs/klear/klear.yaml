@@ -28,6 +28,7 @@ production:
         - "default/css/customMenu.css"
       javascript:
         - "default/js/customMenu.js"
+        - "default/js/customTooltip.js"
     actionHelpers:
     auth:
       adapter: IvozProvider\Klear\Auth\Adapter
