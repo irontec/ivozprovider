@@ -39,7 +39,7 @@ production:
       type: text
       maxLength: 128
     callee: 
-      title: _('Callee')
+      title: _('Destination')
       type: text
       maxLength: 128
     referee: 
@@ -164,7 +164,7 @@ production:
           order: name_${lang}
         'null': _("Unasigned")
     targetPatternId: 
-      title: _('Target pattern id')
+      title: _('Target pattern')
       type: select
       source: 
         data: mapper
@@ -182,6 +182,8 @@ production:
     pricingPlanDetails: 
       title: _('Pricing plan detail')
       type: textarea
+      prefix: <p align=left>
+      sufix: </p>
     invoiceId: 
       title: _('Invoice id')
       type: select

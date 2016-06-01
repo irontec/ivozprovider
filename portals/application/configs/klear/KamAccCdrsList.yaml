@@ -41,18 +41,18 @@ production:
           xcallid: true
           pricingPlanDetails: true
           meteringDate: true
+          externallyRated: true
         order:
           calldate: 1
           brandId: 1
           companyId: 1
           callee: 1
+          targetPatternId: 1
           duration: 1
           metered: 1
           price: 1
-          peeringContractId: 1
-          externallyRated: 1
           pricingPlanId: 1
-          targetPatternId: 1
+          peeringContractId: 1
           invoiceId: 1
     kamAccCdrsView_screen: &kamAccCdrsView_screenLink 
       <<: *KamAccCdrs
@@ -60,7 +60,6 @@ production:
       class: ui-silk-eye
       label: false
       disableSave: true
-      fullWidth: true
       labelOnPostAction: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
       title: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
       fields: 
@@ -78,6 +77,7 @@ production:
           callid: true
           xcallid: true
           meteringDate: true
+          pricingPlanDetails: true
         order:
           calldate: 1
           brandId: 1
@@ -91,7 +91,27 @@ production:
           pricingPlanId: 1
           targetPatternId: 1
           invoiceId: 1
-          pricingPlanDetails: 1
+      fixedPositions:
+        group0:
+          label: _("Basic information")
+          colsPerRow: 12
+          fields:
+            brandId: 12
+            companyId: 12
+            calldate: 6
+            metered: 6
+            externallyRated: 6
+            invoiceId: 6
+        group1:
+          label: _("Details")
+          colsPerRow: 12
+          fields:
+            callee: 6
+            targetPatternId: 6
+            duration: 6
+            price: 6
+            pricingPlanId: 6
+            peeringContractId: 6
 staging: 
   _extends: production
 testing: 
