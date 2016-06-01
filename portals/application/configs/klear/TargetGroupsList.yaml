@@ -16,8 +16,14 @@ production:
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Destination group', 'Destination groups', 0), "[format| (%parent%)]")
       forcedValues:
-        <<: *forcedBrand      
-      fields: &targetGroups_fieldsLink 
+        <<: *forcedBrand
+      fields: &targetGroups_fieldsLink
+        order:
+          name: true
+          description: true
+          patterns: true
+        blacklist:
+          TargetGroupsRelPatterns: true
         options: 
           title: _("Options")
           screens: 

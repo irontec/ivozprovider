@@ -44,6 +44,12 @@ production:
             template: "%name_es% %description_es% (%regExp%)"
           relationProperty: TargetPattern
           filterClass: IvozProvider_Klear_Filter_Brand
+    patterns:
+      title: _('Destination patterns')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_TargetGroupPatterns
+        method: getData
 staging: 
   _extends: production
 testing: 

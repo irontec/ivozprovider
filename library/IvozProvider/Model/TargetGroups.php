@@ -17,7 +17,7 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
- 
+
 namespace IvozProvider\Model;
 class TargetGroups extends Raw\TargetGroups
 {
@@ -26,5 +26,22 @@ class TargetGroups extends Raw\TargetGroups
      */
     public function init()
     {
+    }
+
+    /**
+     * Gets dependent getTargetPatterns
+     *
+     * @return array The array of \IvozProvider\Model\Raw\TargetPatterns
+     * @author Ivan Alonso <kaian@irontec.com>
+     */
+    public function getTargetPatterns()
+    {
+        $targetPatterns = array();
+
+        $targetRelPatterns = $this->getTargetGroupsRelPatterns();
+        foreach ($targetRelPatterns as $targetRel) {
+            $targetPatterns[] = $targetRel->getTargetPattern();
+        }
+        return $targetPatterns;
     }
 }
