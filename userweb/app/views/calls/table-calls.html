@@ -3,27 +3,21 @@
         <tr class="pointer">
            <th translate="calldate" ng-click="callsOrder('calldate')"></th>
            <th translate="src" ng-click="callsOrder('src')"></th>
-           <th translate="src_dialed" ng-click="callsOrder('src_dialed')"></th>
-           <th translate="src_duration" ng-click="callsOrder('src_duration')"></th>
            <th translate="dst" ng-click="callsOrder('dst')"></th>
-           <th translate="dst_src_cid" ng-click="callsOrder('dst_src_cid')"></th>
            <th translate="dst_duration" ng-click="callsOrder('dst_duration')"></th>
            <th translate="type" ng-click="callsOrder('type')"></th>
-           <th translate="desc" ng-click="callsOrder('desc')"></th>
+           <th translate="subtype" ng-click="callsOrder('subtype')"></th>
         </tr>
     </thead>
     
     <tbody>
         <tr ng-repeat="call in calls" ng-click="clickToOpen(call)" class="pointer">
             <td data-th="{{'calldate' | translate}}">{{getFormatDate(call.calldate)}}</td>
-            <td data-th="{{'src' | translate}}" class="text-right">{{call.src}}</td>
-            <td data-th="{{'src_dialed' | translate}}" class="text-right">{{call.src_dialed}}</td>
-            <td data-th="{{'src_duration' | translate}}" class="text-right">{{getDuration(call.src_duration)}}</td>
-            <td data-th="{{'dst' | translate}}" class="text-right">{{call.dst}}</td>
-            <td data-th="{{'dst_src_cid' | translate}}" class="text-right">{{call.dst_src_cid}}</td>
-            <td data-th="{{'dst_duration' | translate}}" class="text-right">{{getDuration(call.dst_duration)}}</td>
+            <td data-th="{{'src' | translate}}">{{call.aParty}}</td>
+            <td data-th="{{'dst' | translate}}">{{call.bParty}}</td>
+            <td data-th="{{'dst_duration' | translate}}">{{getDuration(call.duration)}}</td>
             <td data-th="{{'type' | translate}}">{{call.type}}</td>
-            <td data-th="{{'desc' | translate}}">{{call.desc}}</td>
+            <td data-th="{{'subtype' | translate}}">{{call.subtype}}</td>
         </tr>
     </tbody>
 </table>

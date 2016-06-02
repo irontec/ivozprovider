@@ -51,6 +51,7 @@
     "dst_src_cid": "CallerID destino",
     "dst_duration": "Duración destino",
     "type": "Tipo",
+    "subtype": "Subtipo",
     "desc": "Descripción",
     "fw_desc": "Descripción desvío",
     "ext_forwarder": "Desviador externo",
