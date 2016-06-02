@@ -18,7 +18,6 @@ production:
     ip: 
       title: _('Ip')
       type: text
-      required: true
       maxLength: 50
     name: 
       title: ngettext('Name', 'Names', 1)
