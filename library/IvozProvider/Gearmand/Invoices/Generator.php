@@ -153,7 +153,6 @@ class Generator
         $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
         foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
-//            var_dump($cost);
             $quantity = $fixedCostsRelInvoice->getQuantity();
             $subTotal = $cost * $quantity;
             $this->_fixedCosts[] = array(
@@ -164,8 +163,6 @@ class Generator
             );
             $this->_fixedCostTotal  += number_format(ceil($subTotal*10000)/10000, 4);
         }
-//        var_dump($this->_fixedCosts);
-//        die();
         while ($continue) {
             $calls = $callsMapper->fetchList($where, $order, $limit, $offset);
             if (count($calls) < $limit) {
