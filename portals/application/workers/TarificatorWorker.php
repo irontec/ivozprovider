@@ -42,10 +42,8 @@ class TarificatorWorker extends Iron_Gearman_Worker
 
         $wheres = array();
 
-        if (is_null($pks)) {  //called from kamailo script
+        if (is_null($pks)) {  // called from CDR parsing script
             $wheres[] = "(metered = 0 OR metered IS NULL)";
-            $wheres[] = "peeringContractId IS NOT NULL";
-            $wheres[] = "peeringContractId != ''";
         } else { //called from klear
             $wheres[] = "`id` IN (".implode(",", $pks).")";
             $wheres[] = "`invoiceId` IS NULL";
