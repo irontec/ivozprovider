@@ -46,6 +46,9 @@ production:
       title: _("Add %s", ngettext('Destination group', 'Destination groups', 1), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand      
+      fields:
+        blacklist:
+            patterns: true
       shortcutOption: N
     targetGroupsEdit_screen: &targetGroupsEdit_screenLink 
       <<: *TargetGroups
@@ -56,7 +59,9 @@ production:
       title: _("Edit %s %2s", ngettext('Destination group', 'Destination groups', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
-
+      fields:
+        blacklist:
+            patterns: true
 
   dialogs: &targetGroups_dialogsLink 
     targetGroupsDel_dialog: &targetGroupsDel_dialogLink 
