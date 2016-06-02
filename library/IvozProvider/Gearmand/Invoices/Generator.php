@@ -134,6 +134,8 @@ class Generator
                 "brandId = '".$brand->getPrimaryKey()."'",
                 "companyId = '".$company->getPrimaryKey()."'",
                 "metered = 1 ",
+                "peeringContractId IS NOT NULL",
+                "peeringContractId != ''",
                 "calldate >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
                 "calldate <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
         );
