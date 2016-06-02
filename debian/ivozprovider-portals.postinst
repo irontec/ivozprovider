@@ -8,7 +8,7 @@ chmod 777 /opt/irontec/ivozprovider/portals/application/cache
 /bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php5/apache2/php.ini
 /bin/sed -i 's/upload_max_filesize = 10M/upload_max_filesize = 20M/g' /etc/php5/apache2/php.ini
 /bin/sed -i 's/post_max_size = 10M/post_max_size = 20M/g' /etc/php5/apache2/php.ini
-/bin/sed -i 's/max_input_vars = 1000/max_input_vars = 10000/g' /etc/php5/apache2/php.ini
+/bin/sed -i 's/; max_input_vars = 1000/max_input_vars = 10000/g' /etc/php5/apache2/php.ini
 
 
 :
