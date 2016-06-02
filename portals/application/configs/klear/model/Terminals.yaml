@@ -72,9 +72,15 @@ production:
           'update': 'update'
     password: 
       title: ngettext('Password', 'Passwords', 1)
-      type: password
+      type: text
+      pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
       required: true
-      adapter: PlainText
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '!@#$&*'")
+        label: _("Need help?")
     companyId: 
       title: _('Company id')
       type: select
