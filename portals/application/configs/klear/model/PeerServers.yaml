@@ -129,7 +129,7 @@ production:
       title: _('Send RPID')
       type: checkbox
     useAuthUserAsFromUser: 
-      title: _('Use auth user as from user')
+      title: _('Set From to auth_user@peerserver_host')
       type: checkbox
     auth_needed:
       title: _('Auth needed')
