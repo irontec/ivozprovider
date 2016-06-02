@@ -16,7 +16,14 @@
             value = this.curvalue != null ? this.curvalue : min || max || 0; // must confirm not null in case just initializing and had blank value
 
         var element = self.element[0];
-        if (element && element.hasOwnProperty('selectionStart')) {
+        if (element &&
+            (
+                element.type === 'text' ||
+                element.type === 'search' ||
+                element.type === 'password' ||
+                element.type === 'url' ||
+                element.type === 'tel'
+            )) {
             var selectedText = element.value.substring(element.selectionStart, element.selectionEnd);
             if (selectedText.length) {
                 value = self.value = null;
@@ -41,7 +48,17 @@
             increment = options.increment;
 
         // make sure any changes are posted
-        self.element[0].selectionStart = self.element[0].selectionEnd = 0;
+        var element = self.element[0];
+        if (element &&
+            (
+                element.type === 'text' ||
+                element.type === 'search' ||
+                element.type === 'password' ||
+                element.type === 'url' ||
+                element.type === 'tel'
+            )) {
+            self.element[0].selectionStart = self.element[0].selectionEnd = 0;
+        }
         self._change();
         self._doSpin(dir * (large ? self.options.largeStep : self.options.step));
 
