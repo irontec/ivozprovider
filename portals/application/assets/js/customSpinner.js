@@ -16,10 +16,12 @@
             value = this.curvalue != null ? this.curvalue : min || max || 0; // must confirm not null in case just initializing and had blank value
 
         var element = self.element[0];
-        var selectedText = element.value.substring(element.selectionStart, element.selectionEnd);
-        if (selectedText.length) {
-            value = self.value = null;
-            return value;
+        if (element && element.hasOwnProperty('selectionStart')) {
+            var selectedText = element.value.substring(element.selectionStart, element.selectionEnd);
+            if (selectedText.length) {
+                value = self.value = null;
+                return value;
+            }
         }
 
         if ((max != null) && (value > max))
