@@ -160,7 +160,6 @@
             </tr>
             <tr background.color="black" color="white" border.color="black" font-style="bold" text-align="center">
                 <td padding="5px" border.color="white">Fecha</td>
-                <td padding="5px" border.color="white">Origen</td>
                 <td padding="5px" border.color="white">Destino</td>
                 <td padding="5px" border.color="white">Duración</td>
                 <td padding="5px" border.color="white">Plan</td>
@@ -169,9 +168,8 @@
             {{#value id,call}}
             <tr border.color="black" text-align="center">
                 <td padding="5px" >{{call.calldate}}</td>
-                <td padding="5px" >{{call.src}}</td>
                 <td padding="5px" >{{call.dst}}</td>
-                <td padding="5px" >{{call.dst_duration_formatted}}</td>
+                <td padding="5px" >{{call.duration}}</td>
                 <td padding="5px" >{{call.pricingPlan.name}}</td>
                 <td padding="5px" >{{call.price}} €</td>
             </tr>
