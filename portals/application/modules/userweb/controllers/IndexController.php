@@ -86,14 +86,8 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
     {
 
         $prepareWhere = array();
-        $prepareWhere[] = 'src = "' . $extension . '"';
-        $prepareWhere[] = 'src_dialed = "' . $extension . '"';
-        $prepareWhere[] = 'dst = "' . $extension . '"';
-        $prepareWhere[] = 'dst_src_cid = "' . $extension . '"';
-        $prepareWhere[] = 'ext_forwarder = "' . $extension . '"';
-        $prepareWhere[] = 'int_forwarder = "' . $extension . '"';
-        $prepareWhere[] = 'forward_to = "' . $extension . '"';
-
+        $prepareWhere[] = 'aParty = "' . $extension . '"';
+        $prepareWhere[] = 'bParty = "' . $extension . '"';
         $whereOrs = implode(' OR ', $prepareWhere);
 
         $whereUser = $whereOrs . ' AND companyId = "' . $companyId . '"';
