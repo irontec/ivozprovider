@@ -156,9 +156,9 @@ class KamAccCdrs extends ModelAbstract
     protected $_diversion;
 
     /**
-     * Database var type int
+     * Database var type varchar
      *
-     * @var int
+     * @var string
      */
     protected $_peeringContractId;
 
@@ -1048,7 +1048,7 @@ class KamAccCdrs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
+     * @param string $data
      * @return \IvozProvider\Model\Raw\KamAccCdrs
      */
     public function setPeeringContractId($data)
@@ -1062,7 +1062,7 @@ class KamAccCdrs extends ModelAbstract
             $this->_peeringContractId = $data;
 
         } else if (!is_null($data)) {
-            $this->_peeringContractId = (int) $data;
+            $this->_peeringContractId = (string) $data;
 
         } else {
             $this->_peeringContractId = $data;
@@ -1073,7 +1073,7 @@ class KamAccCdrs extends ModelAbstract
     /**
      * Gets column peeringContractId
      *
-     * @return int
+     * @return string
      */
     public function getPeeringContractId()
     {

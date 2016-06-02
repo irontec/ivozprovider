@@ -109,9 +109,8 @@ production:
       maxLength: 64
     peeringContractId: 
       title: _('Peering contract id')
-      type: number
-      source: 
-        control: Spinner
+      type: text
+      maxLength: 64
     externallyRated: 
       title: _('Externally rated')
       type: select
