@@ -14,7 +14,7 @@ production:
           - brandId
           - companyId
         type: desc
-      rawCondition: "peeringContractId IS NOT NULL AND peeringContractId!=''"
+      rawCondition: "peeringContractId IS NOT NULL AND peeringContractId != ''"
       pagination: 
         items: 25
       <<: *KamAccCdrs

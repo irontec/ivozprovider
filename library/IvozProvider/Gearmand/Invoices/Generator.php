@@ -153,17 +153,19 @@ class Generator
         $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
         foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
+//            var_dump($cost);
             $quantity = $fixedCostsRelInvoice->getQuantity();
             $subTotal = $cost * $quantity;
             $this->_fixedCosts[] = array(
                 "quantity" => $quantity,
                 "description" => $fixedCostsRelInvoice->getFixedCost()->getDescription(),
-                "cost" => number_format(ceil($cost*100)/100, 2),
-                "subTotal" => number_format(ceil($subTotal*100)/100, 2)
+                "cost" => number_format(ceil($cost*10000)/10000, 4),
+                "subTotal" => number_format(ceil($subTotal*10000)/10000, 4)
             );
-            $this->_fixedCostTotal  += number_format(ceil($subTotal*100)/100, 2);
+            $this->_fixedCostTotal  += number_format(ceil($subTotal*10000)/10000, 4);
         }
-
+//        var_dump($this->_fixedCosts);
+//        die();
         while ($continue) {
             $calls = $callsMapper->fetchList($where, $order, $limit, $offset);
             if (count($calls) < $limit) {
@@ -177,7 +179,7 @@ class Generator
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getCallDate(true)->setTimezone($invoiceTz)->toString();
                 $callData["dst"] = $call->getCallee();
-                $callData["price"] = number_format(ceil($callData["price"]*100)/100, 2);
+                $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["targetPattern"] = $call->getTargetPattern()->toArray();
                 $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
@@ -201,19 +203,19 @@ class Generator
                 $callSumary[$callType]["numberOfCalls"] += 1;
                 $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
                 $callSumary[$callType]["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumary[$callType]["totalCallsDuration"]);
-                $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*100)/100, 2);
+                $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callSumaryTotals["numberOfCalls"] += 1;
                 $callSumaryTotals["totalCallsDuration"] += $call->getDuration();
                 $callSumaryTotals["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumaryTotals["totalCallsDuration"]);
-                $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*100)/100, 3);
+                $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
 
                 $call->setInvoice($invoice)->save();
             }
         }
 
         $total = $callSumaryTotals["totalPrice"] + $this->_fixedCostTotal;
-        $totalTaxex = ceil($total*$invoice->getTaxRate())/100;
-        $totalWithTaxex = $totalTaxex + $total;
+        $totalTaxex = ceil(($total*$invoice->getTaxRate()/100)*10000)/10000;
+        $totalWithTaxex = ceil(($totalTaxex + $total)*100)/100;
 
         $this->_totals = array(
             "totalPrice" => $total,

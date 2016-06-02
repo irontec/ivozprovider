@@ -41,9 +41,12 @@ class TarificatorWorker extends Iron_Gearman_Worker
         $callMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 
         $wheres = array();
-        if (is_null($pks)) {
+
+        if (is_null($pks)) {  //called from kamailo script
             $wheres[] = "(metered = 0 OR metered IS NULL)";
-        } else {
+            $wheres[] = "peeringContractId IS NOT NULL";
+            $wheres[] = "peeringContractId != ''";
+        } else { //called from klear
             $wheres[] = "`id` IN (".implode(",", $pks).")";
             $wheres[] = "`invoiceId` IS NULL";
         }

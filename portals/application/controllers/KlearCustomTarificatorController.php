@@ -303,7 +303,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                                     $data["Pattern"]["name_es"],
                                     $data["Pattern"]["description_es"],
                                     $data["Pattern"]["regExp"]),
-                            "RegExp" => $data["Pattern"]["regExp"],
+                            "Prefix" => $data["Pattern"]["regExp"],
                             //"Metric" => $data["Price"]["metric"],
                             "Con. Charge" => $data["Price"]["connectionCharge"],
                             "Period Time" => $data["Price"]["periodTime"],
