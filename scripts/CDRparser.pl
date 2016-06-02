@@ -36,7 +36,7 @@ my $pass = 'ironsecret';
 my $dsn = "DBI:mysql:database=$db;host=$host;port=$port";
 
 # Gearmand connection data
-my @gearman_servers = ('jobs:4730');
+my @gearman_servers = ('jobs.ivozprovider.local:4730');
 my $gearman_job = 'tarificateCalls';
 
 # Connect to DB
