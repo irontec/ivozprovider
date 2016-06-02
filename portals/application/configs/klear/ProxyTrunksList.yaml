@@ -12,21 +12,25 @@ production:
         items: 25
       <<: *ProxyTrunks
       title: _("List of %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 0), "[format| (%parent%)]")
+      forcedValues:
+        direct_media_method: invite
+        disallow: all
       fields: 
         options: 
           title: _("Options")
           screens: 
             proxyTrunksEdit_screen: true
           default: proxyTrunksEdit_screen
-    proxyTrunksNew_screen: &proxyTrunksNew_screenLink 
+    proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink 
       <<: *ProxyTrunks
-      controller: new
-      class: ui-silk-add
-      label: true
-      multiInstance: true
-      title: _("Add %s", ngettext('Proxy trunk', 'Proxy trunks', 1))
-      shortcutOption: N
-      fixedPositions: &ProxyTrunksFixedPositions_link
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
+      forcedValues:
+        direct_media_method: invite
+        disallow: all
+      fixedPositions:
         group0:
           label: _("Basic Info")
           colsPerRow: 3
@@ -37,18 +41,8 @@ production:
           label: _("Connection Info")     
           colsPerRow: 5
           fields:
-            disallow: 2
             allow: 2
             direct_media: 2
-            direct_media_method: 2
-    proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink 
-      <<: *ProxyTrunks
-      controller: edit
-      class: ui-silk-pencil
-      label: false
-      title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
-      fixedPositions:
-        <<: *ProxyTrunksFixedPositions_link
       fields:
         readOnly:
           name: true
