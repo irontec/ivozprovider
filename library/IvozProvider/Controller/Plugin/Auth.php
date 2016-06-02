@@ -18,7 +18,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
     public function routeShutdown(Zend_Controller_Request_Abstract $request)
     {
 
-        if ('userweb' !== $request->getModuleName()) {
+        if ('userweb' !== $request->getModuleName() && 'rest' !== $request->getModuleName()) {
             return;
         }
 
@@ -88,9 +88,9 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
 
         $authType = $tokenParts[0];
 
-        $mapper = new Mappers\Users();
-
         if ($authType === 'Basic') {
+
+           $mapper = new Mappers\MainOperators();
 
             $getData = array(
                 'user' => 'username',
@@ -104,11 +104,9 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
                 $this->_errorAuth();
             }
 
-            if ($user->getCompany()->getBrandId() !== $brandURL->getBrandId()) {
-                $this->_errorAuth();
-            }
-
         } elseif ($authType = 'Hmac') {
+
+            $mapper = new Mappers\Users();
 
             $requestDate = $this->getRequest()->getHeader('Request-Date', false);
 
