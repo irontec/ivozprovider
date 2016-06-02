@@ -5,24 +5,30 @@
         return;
     }
 
-    $.ui.spinner.prototype._change = function() {
+    $.ui.spinner.prototype._validate = function(value) {
+
         var self = this, // shortcut
-            value = self._parseValue(),
-            min = self.options.min,
-            max = self.options.max;
+            options = this.options,
+            min = options.min,
+            max = options.max;
 
-        // don't reprocess if change was self triggered
-        if (!self.selfChange) {
-            if (isNaN(value))
-                value = self.curvalue;
+        if ((value == null) && !options.allowNull)
+            value = this.curvalue != null ? this.curvalue : min || max || 0; // must confirm not null in case just initializing and had blank value
 
-            var element = self.element[0];
-            var selectedText = element.value.substring(element.selectionStart, element.selectionEnd);
-            if (selectedText.length) 
-                value = null;
-
-            self._setValue(value, true);
+        var element = self.element[0];
+        var selectedText = element.value.substring(element.selectionStart, element.selectionEnd);
+        if (selectedText.length) {
+            value = self.value = null;
+            return value;
         }
+
+        if ((max != null) && (value > max))
+            return max;
+        else if ((min != null) && (value < min))
+            return min;
+        else
+            return value;
+
     }
 
     // performs first step, and starts the spin timer if increment is set
