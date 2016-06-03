@@ -57,6 +57,11 @@ class AstPsEndpoints extends ModelAbstract
         'yes',
         'no',
     );
+    protected $_t38UdptlEcAcceptedValues = array(
+        'none',
+        'fec',
+        'redundancy',
+    );
 
     /**
      * Database var type int
@@ -192,6 +197,20 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_t38Udptl;
 
+    /**
+     * Database var type enum('none','fec','redundancy')
+     *
+     * @var string
+     */
+    protected $_t38UdptlEc;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_t38UdptlMaxdatagram;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -236,6 +255,8 @@ class AstPsEndpoints extends ModelAbstract
         '100rel'=>'100rel',
         'trust_id_inbound'=>'trustIdInbound',
         't38_udptl'=>'t38Udptl',
+        't38_udptl_ec'=>'t38UdptlEc',
+        't38_udptl_maxdatagram'=>'t38UdptlMaxdatagram',
     );
 
     /**
@@ -283,6 +304,7 @@ class AstPsEndpoints extends ModelAbstract
             'dtmfMode' => 'rfc4733',
             'subscribecontext' => 'default',
             '100rel' => 'no',
+            't38UdptlMaxdatagram' => '0',
         );
 
         $this->_initFileObjects();
@@ -987,6 +1009,77 @@ class AstPsEndpoints extends ModelAbstract
     public function getT38Udptl()
     {
         return $this->_t38Udptl;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setT38UdptlEc($data)
+    {
+
+        if ($this->_t38UdptlEc != $data) {
+            $this->_logChange('t38UdptlEc');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_t38UdptlEc = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_t38UdptlEcAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for t38UdptlEc'));
+            }
+            $this->_t38UdptlEc = (string) $data;
+
+        } else {
+            $this->_t38UdptlEc = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column t38_udptl_ec
+     *
+     * @return string
+     */
+    public function getT38UdptlEc()
+    {
+        return $this->_t38UdptlEc;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setT38UdptlMaxdatagram($data)
+    {
+
+        if ($this->_t38UdptlMaxdatagram != $data) {
+            $this->_logChange('t38UdptlMaxdatagram');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_t38UdptlMaxdatagram = $data;
+
+        } else if (!is_null($data)) {
+            $this->_t38UdptlMaxdatagram = (string) $data;
+
+        } else {
+            $this->_t38UdptlMaxdatagram = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column t38_udptl_maxdatagram
+     *
+     * @return string
+     */
+    public function getT38UdptlMaxdatagram()
+    {
+        return $this->_t38UdptlMaxdatagram;
     }
 
     /**

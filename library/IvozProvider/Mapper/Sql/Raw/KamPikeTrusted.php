@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\AstPsEndpoints
+ * Data Mapper implementation for IvozProvider\Model\KamPikeTrusted
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class AstPsEndpoints extends MapperAbstract
+class KamPikeTrusted extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\AstPsEndpoints';
+    protected $_modelName = 'IvozProvider\\Model\\KamPikeTrusted';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class AstPsEndpoints extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\AstPsEndpoints $model
+     * @param IvozProvider\Model\Raw\KamPikeTrusted $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
+        if (!$model instanceof \IvozProvider\Model\Raw\KamPikeTrusted) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\AstPsEndpoints object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\KamPikeTrusted object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\AstPsEndpoints object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\KamPikeTrusted object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,26 +49,12 @@ class AstPsEndpoints extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'sorcery_id' => $model->getSorceryId(),
-                'terminalId' => $model->getTerminalId(),
-                'proxyTrunkId' => $model->getProxyTrunkId(),
-                'aors' => $model->getAors(),
-                'callerid' => $model->getCallerid(),
-                'context' => $model->getContext(),
-                'disallow' => $model->getDisallow(),
-                'allow' => $model->getAllow(),
-                'direct_media' => $model->getDirectMedia(),
-                'direct_media_method' => $model->getDirectMediaMethod(),
-                'dtmf_mode' => $model->getDtmfMode(),
-                'mailboxes' => $model->getMailboxes(),
-                'send_diversion' => $model->getSendDiversion(),
-                'send_pai' => $model->getSendPai(),
-                'subscribecontext' => $model->getSubscribecontext(),
-                '100rel' => $model->get100rel(),
-                'trust_id_inbound' => $model->getTrustIdInbound(),
-                't38_udptl' => $model->getT38Udptl(),
-                't38_udptl_ec' => $model->getT38UdptlEc(),
-                't38_udptl_maxdatagram' => $model->getT38UdptlMaxdatagram(),
+                'src_ip' => $model->getSrcIp(),
+                'proto' => $model->getProto(),
+                'from_pattern' => $model->getFromPattern(),
+                'ruri_pattern' => $model->getRuriPattern(),
+                'tag' => $model->getTag(),
+                'priority' => $model->getPriority(),
             );
         } else {
             $result = array();
@@ -107,12 +93,12 @@ class AstPsEndpoints extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\KamPikeTrusted
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\KamPikeTrusted');
         }
 
         return $this->_dbTable;
@@ -121,17 +107,17 @@ class AstPsEndpoints extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\AstPsEndpoints $model The model to delete
+     * @param IvozProvider\Model\Raw\KamPikeTrusted $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
+        if (!$model instanceof \IvozProvider\Model\Raw\KamPikeTrusted) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\AstPsEndpoints object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\KamPikeTrusted object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\AstPsEndpoints object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\KamPikeTrusted object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -181,7 +167,7 @@ class AstPsEndpoints extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamPikeTrusted', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -229,7 +215,7 @@ class AstPsEndpoints extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamPikeTrusted', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -307,7 +293,7 @@ class AstPsEndpoints extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\AstPsEndpoints $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\KamPikeTrusted $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -315,17 +301,17 @@ class AstPsEndpoints extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\AstPsEndpoints $model
+     * @param \IvozProvider\Model\Raw\KamPikeTrusted $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\AstPsEndpoints $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\KamPikeTrusted $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\AstPsEndpoints $model,
+    protected function _save(\IvozProvider\Model\Raw\KamPikeTrusted $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -454,15 +440,6 @@ class AstPsEndpoints extends MapperAbstract
             }
 
 
-            if ($recursive) {
-                if ($model->getAstPsAors(null, null, true) !== null) {
-                    $model->getAstPsAors()
-                          ->setId($primaryKey)
-                          ->saveRecursive(false, $transactionTag);
-                }
-
-            }
-
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -545,13 +522,13 @@ class AstPsEndpoints extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\AstPsEndpoints|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\AstPsEndpoints The model with the data provided
+     * @param IvozProvider\Model\Raw\KamPikeTrusted|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\KamPikeTrusted The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\AstPsEndpoints();
+            $entry = new \IvozProvider\Model\KamPikeTrusted();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -559,71 +536,29 @@ class AstPsEndpoints extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setSorceryId($data['sorcery_id'])
-                  ->setTerminalId($data['terminalId'])
-                  ->setProxyTrunkId($data['proxyTrunkId'])
-                  ->setAors($data['aors'])
-                  ->setCallerid($data['callerid'])
-                  ->setContext($data['context'])
-                  ->setDisallow($data['disallow'])
-                  ->setAllow($data['allow'])
-                  ->setDirectMedia($data['direct_media'])
-                  ->setDirectMediaMethod($data['direct_media_method'])
-                  ->setDtmfMode($data['dtmf_mode'])
-                  ->setMailboxes($data['mailboxes'])
-                  ->setSendDiversion($data['send_diversion'])
-                  ->setSendPai($data['send_pai'])
-                  ->setSubscribecontext($data['subscribecontext'])
-                  ->set100rel($data['100rel'])
-                  ->setTrustIdInbound($data['trust_id_inbound'])
-                  ->setT38Udptl($data['t38_udptl'])
-                  ->setT38UdptlEc($data['t38_udptl_ec'])
-                  ->setT38UdptlMaxdatagram($data['t38_udptl_maxdatagram']);
+                  ->setSrcIp($data['src_ip'])
+                  ->setProto($data['proto'])
+                  ->setFromPattern($data['from_pattern'])
+                  ->setRuriPattern($data['ruri_pattern'])
+                  ->setTag($data['tag'])
+                  ->setPriority($data['priority']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setSorceryId($data->{'sorcery_id'})
-                  ->setTerminalId($data->{'terminalId'})
-                  ->setProxyTrunkId($data->{'proxyTrunkId'})
-                  ->setAors($data->{'aors'})
-                  ->setCallerid($data->{'callerid'})
-                  ->setContext($data->{'context'})
-                  ->setDisallow($data->{'disallow'})
-                  ->setAllow($data->{'allow'})
-                  ->setDirectMedia($data->{'direct_media'})
-                  ->setDirectMediaMethod($data->{'direct_media_method'})
-                  ->setDtmfMode($data->{'dtmf_mode'})
-                  ->setMailboxes($data->{'mailboxes'})
-                  ->setSendDiversion($data->{'send_diversion'})
-                  ->setSendPai($data->{'send_pai'})
-                  ->setSubscribecontext($data->{'subscribecontext'})
-                  ->set100rel($data->{'100rel'})
-                  ->setTrustIdInbound($data->{'trust_id_inbound'})
-                  ->setT38Udptl($data->{'t38_udptl'})
-                  ->setT38UdptlEc($data->{'t38_udptl_ec'})
-                  ->setT38UdptlMaxdatagram($data->{'t38_udptl_maxdatagram'});
+                  ->setSrcIp($data->{'src_ip'})
+                  ->setProto($data->{'proto'})
+                  ->setFromPattern($data->{'from_pattern'})
+                  ->setRuriPattern($data->{'ruri_pattern'})
+                  ->setTag($data->{'tag'})
+                  ->setPriority($data->{'priority'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\KamPikeTrusted) {
             $entry->setId($data->getId())
-                  ->setSorceryId($data->getSorceryId())
-                  ->setTerminalId($data->getTerminalId())
-                  ->setProxyTrunkId($data->getProxyTrunkId())
-                  ->setAors($data->getAors())
-                  ->setCallerid($data->getCallerid())
-                  ->setContext($data->getContext())
-                  ->setDisallow($data->getDisallow())
-                  ->setAllow($data->getAllow())
-                  ->setDirectMedia($data->getDirectMedia())
-                  ->setDirectMediaMethod($data->getDirectMediaMethod())
-                  ->setDtmfMode($data->getDtmfMode())
-                  ->setMailboxes($data->getMailboxes())
-                  ->setSendDiversion($data->getSendDiversion())
-                  ->setSendPai($data->getSendPai())
-                  ->setSubscribecontext($data->getSubscribecontext())
-                  ->set100rel($data->get100rel())
-                  ->setTrustIdInbound($data->getTrustIdInbound())
-                  ->setT38Udptl($data->getT38Udptl())
-                  ->setT38UdptlEc($data->getT38UdptlEc())
-                  ->setT38UdptlMaxdatagram($data->getT38UdptlMaxdatagram());
+                  ->setSrcIp($data->getSrcIp())
+                  ->setProto($data->getProto())
+                  ->setFromPattern($data->getFromPattern())
+                  ->setRuriPattern($data->getRuriPattern())
+                  ->setTag($data->getTag())
+                  ->setPriority($data->getPriority());
 
         }
 
@@ -640,11 +575,11 @@ class AstPsEndpoints extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'AstPsEndpoints');
+        $etag = $etags->findOneByField('table', 'KamPikeTrusted');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('AstPsEndpoints');
+            $etag->setTable('KamPikeTrusted');
         }
 
         $random = substr(

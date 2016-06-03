@@ -25,7 +25,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("CIDR notation (e.g. 10.0.0.0/8) or specific IP address (e.g. 8.8.8.8)")
+        text: _("CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)")
         label: _("¿Necesitas ayuda?")
     ip_addr: 
       title: _('Ip addr')

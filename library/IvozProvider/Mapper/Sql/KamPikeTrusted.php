@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\KamUsersAddress
+ * Data Mapper implementation for IvozProvider\Model\KamPikeTrusted
  *
  * @package Mapper
  * @subpackage Sql
@@ -20,45 +20,27 @@
 namespace IvozProvider\Mapper\Sql;
 use IvozProvider\Gearmand\Jobs\Xmlrpc;
 
-class KamUsersAddress extends Raw\KamUsersAddress
+class KamPikeTrusted extends Raw\KamPikeTrusted
 {
-    protected function _save(\IvozProvider\Model\Raw\KamUsersAddress $model,
+    protected function _save(\IvozProvider\Model\Raw\KamPikeTrusted $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
-        $address = explode('/', $model->getSourceAddress());
-        $ip = array_shift($address);    
-        $mask = array_shift($address);    
+        $ip = $model->getSrcIp();
 
         // Validate IP
         if (!filter_var($ip, FILTER_VALIDATE_IP, array(FILTER_FLAG_IPV4))) {
             throw new \Exception("Invalid IP address, discarding value.", 70000);
         }
 
-        // Validate mask
-        if (is_null($mask)) {
-            $mask = 32;
-        } else {
-            if (!is_numeric($mask) or $mask < 0 or $mask > 32) {
-                throw new \Exception("Wrong mask, discarding value.", 70001);
-            }
-        }
-
-        // Avoid too big ranges
-        if ($mask < 24) {
-                throw new \Exception("Wrong mask, it should be at least /24", 70002);
-        }
-
-        // Save validated values
-        $model->setIpAddr($ip);
-        $model->setMask($mask);
+        $model->setProto('any');
 
         $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
 
         try {
             $this->_sendXmlRcp();
         } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Authorized source may have been saved.</p>";
+            $message = $e->getMessage()."<p>Trusted source may have been saved.</p>";
             throw new \Exception($message);
         }
 
@@ -71,7 +53,7 @@ class KamUsersAddress extends Raw\KamUsersAddress
         try {
             $this->_sendXmlRcp();
         } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>Authorized source may have been deleted.</p>";
+            $message = $e->getMessage()."<p>Trusted source may have been deleted.</p>";
             throw new \Exception($message);
         }
         return $response;
@@ -80,7 +62,8 @@ class KamUsersAddress extends Raw\KamUsersAddress
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxyusers' => "permissions.addressReload",
+                'proxyusers' => "permissions.trustedReload",
+                'proxytrunks' => "permissions.trustedReload",
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);

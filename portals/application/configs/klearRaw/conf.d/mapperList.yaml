@@ -74,8 +74,10 @@ mappers:
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
   - &KamAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrs}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}
+  - &KamPikeTrusted {mapper: \IvozProvider\Mapper\Sql\KamPikeTrusted, modelFile: KamPikeTrusted}
   - &KamRtpproxy {mapper: \IvozProvider\Mapper\Sql\KamRtpproxy, modelFile: KamRtpproxy}
   - &KamTrunksAcc {mapper: \IvozProvider\Mapper\Sql\KamTrunksAcc, modelFile: KamTrunksAcc}
+  - &KamTrunksAddress {mapper: \IvozProvider\Mapper\Sql\KamTrunksAddress, modelFile: KamTrunksAddress}
   - &KamTrunksDialplan {mapper: \IvozProvider\Mapper\Sql\KamTrunksDialplan, modelFile: KamTrunksDialplan}
   - &KamTrunksDomain {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomain, modelFile: KamTrunksDomain}
   - &KamTrunksDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomainAttrs, modelFile: KamTrunksDomainAttrs}
@@ -89,5 +91,4 @@ mappers:
   - &KamUsersLocation {mapper: \IvozProvider\Mapper\Sql\KamUsersLocation, modelFile: KamUsersLocation}
   - &KamUsersLocationAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs, modelFile: KamUsersLocationAttrs}
   - &KamUsersMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamUsersMissedCalls, modelFile: KamUsersMissedCalls}
-  - &KamUsersTrusted {mapper: \IvozProvider\Mapper\Sql\KamUsersTrusted, modelFile: KamUsersTrusted}
   - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}

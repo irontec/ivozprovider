@@ -139,6 +139,21 @@ production:
         values: 
           'yes': _('yes')
           'no': _('no')
+    t38_udptl_ec: 
+      title: _('T38 udptl ec')
+      type: select
+      defaultValue: none
+      source: 
+        data: inline
+        values: 
+          'none': _('none')
+          'fec': _('fec')
+          'redundancy': _('redundancy')
+    t38_udptl_maxdatagram: 
+      title: _('T38 udptl maxdatagram')
+      type: text
+      defaultValue: 0
+      maxLength: 40
 staging: 
   _extends: production
 testing: 

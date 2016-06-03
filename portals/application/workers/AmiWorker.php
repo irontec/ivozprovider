@@ -82,26 +82,29 @@ class AmiWorker extends Iron_Gearman_Worker
         $id = $fax->getPrimaryKey();
         $file = $fax->fetchFile()->getFilePath();
 
+        $this->_logger->log("[GEARMAND][FAX] Converting PDF to TIFF...", \Zend_Log::INFO);
         $fileTIF = $file.".tif";
         // Set destination file an fax options
-        shell_exec("/usr/bin/gs -r400x400 -g3456x4676 -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sPAPERSIZE=a4 -sOutputFile=$fileTIF $file 2>&1 >/dev/null");
+        shell_exec("/usr/bin/gs -g1728x1145 -r209x98 -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sPAPERSIZE=a4 -sOutputFile=$fileTIF $file 2>&1 >/dev/null");
+        //shell_exec("/usr/bin/gs -r400x400 -g3456x4676 -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sPAPERSIZE=a4 -sOutputFile=$fileTIF $file 2>&1 >/dev/null");
 
         $headers = array(
                 "Action" => "Originate",
-                "Channel" => "Local/".$dest."@shared-faxout-dial",
-                "Context" => "shared-faxout",
+                "Channel" => "Local/$dest@fax-out-leg0",
+                "Context" => "fax-out-leg1",
                 "Exten" => $dest,
                 "Priority" => 1,
-                "Variable" => "FAX_ID=".$id.",FAXFILE=".$fileTIF
+                "Variable" => "__FAXOUT_ID=".$id.",__FAXFILE=".$fileTIF
         );
 
         $applicationSerersMapper = new \IvozProvider\Mapper\Sql\ApplicationServers();
-        $applicationServer = $applicationSerersMapper->findOneByField("name", "asfax");
+        $applicationServer = $applicationSerersMapper->fetchOne();
+        //shuffle($applicationServers);
         $ip = $applicationServer->getIp();
+        $this->_logger->log("[GEARMAND] Sending AMI Request to $ip...", \Zend_Log::INFO);
 
         $ami = new \Ami_Connector($ip, $this->_amiPort, $this->_amiUserName, $this->_amiPassword);
-        $ami->setLogger($this->_logger)
-        ->setHeaders($headers);
+        $ami->setLogger($this->_logger)->setHeaders($headers);
         $response = $ami->send();
         if ($response === false) {
             $this->_logger->log("[GEARMAND][FAX] Error sending fax.", \Zend_Log::ERR);
