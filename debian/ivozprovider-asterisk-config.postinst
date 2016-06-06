@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#DEBHELPER#
+
 ## Check if database connection is setup
 grep asterisk /etc/odbc.ini &>/dev/null
 [ $? -ne 0 ] && cat /etc/odbc.ivozprovider.ini >> /etc/odbc.ini

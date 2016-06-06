@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#DEBHELPER#
+
 # Add bashrc.d include on first install
 if [ -z "$2" ]; then
     echo >> ~/.bashrc

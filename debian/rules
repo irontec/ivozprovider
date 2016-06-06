@@ -31,7 +31,7 @@ override_dh_systemd_start:
 	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi      fastagi.socket     --restart-after-upgrade
 	dh_systemd_start  -p ivozprovider-kamailio-users   --name=kamusers@    kamusers@.service  --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-kamailio-trunks  --name=kamtrunks@   kamtrunks@.service --no-restart-on-upgrade --no-start
-	dh_systemd_start  -p ivozprovider-profile-data	   --name=cdrparser    cdrparser@.service --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-profile-data	   --name=cdrparser    cdrparser.service  --no-restart-on-upgrade --no-start
 
 # Install /etc/default configuration
 override_dh_installinit:
