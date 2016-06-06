@@ -2,6 +2,6 @@
 
 # Enable and start asterisk
 /bin/systemctl enable asterisk
-/bin/systemctl start asterisk
+/bin/systemctl restart asterisk
 
 :
