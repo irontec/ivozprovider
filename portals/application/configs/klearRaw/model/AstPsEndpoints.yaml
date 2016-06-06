@@ -20,19 +20,6 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
-    proxyTrunkId: 
-      title: _('Proxy trunk id')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\ProxyTrunks
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unasigned")
     aors: 
       title: _('Aor')
       type: text
@@ -122,38 +109,6 @@ production:
           'no': _('no')
           'required': _('required')
           'yes': _('yes')
-    trust_id_inbound: 
-      title: _('Trust id inbound')
-      type: select
-      source: 
-        data: inline
-        values: 
-          'yes': _('yes')
-          'no': _('no')
-    t38_udptl: 
-      title: _('T38 udptl')
-      type: select
-      defaultValue: no
-      source: 
-        data: inline
-        values: 
-          'yes': _('yes')
-          'no': _('no')
-    t38_udptl_ec: 
-      title: _('T38 udptl ec')
-      type: select
-      defaultValue: none
-      source: 
-        data: inline
-        values: 
-          'none': _('none')
-          'fec': _('fec')
-          'redundancy': _('redundancy')
-    t38_udptl_maxdatagram: 
-      title: _('T38 udptl maxdatagram')
-      type: text
-      defaultValue: 0
-      maxLength: 40
 staging: 
   _extends: production
 testing: 

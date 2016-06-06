@@ -40,9 +40,7 @@ class ProxyTrunks extends TableAbstract
 
     protected $_sequence = true; // int
     
-    protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints'
-    );
+    
     protected $_metadata = array (
 	  'id' => 
 	  array (
@@ -88,74 +86,6 @@ class ProxyTrunks extends TableAbstract
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => '100',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'disallow' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ProxyTrunks',
-	    'COLUMN_NAME' => 'disallow',
-	    'COLUMN_POSITION' => 4,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => 'all',
-	    'NULLABLE' => false,
-	    'LENGTH' => '200',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'allow' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ProxyTrunks',
-	    'COLUMN_NAME' => 'allow',
-	    'COLUMN_POSITION' => 5,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => 'all',
-	    'NULLABLE' => false,
-	    'LENGTH' => '200',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'direct_media' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ProxyTrunks',
-	    'COLUMN_NAME' => 'direct_media',
-	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
-	    'DEFAULT' => 'yes',
-	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'direct_media_method' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ProxyTrunks',
-	    'COLUMN_NAME' => 'direct_media_method',
-	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'enum(\'invite\',\'reinvite\',\'update\')',
-	    'DEFAULT' => 'update',
-	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

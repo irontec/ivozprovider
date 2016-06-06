@@ -12,9 +12,6 @@ production:
         items: 25
       <<: *ProxyTrunks
       title: _("List of %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 0), "[format| (%parent%)]")
-      forcedValues:
-        direct_media_method: invite
-        disallow: all
       fields: 
         options: 
           title: _("Options")
@@ -27,9 +24,6 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
-      forcedValues:
-        direct_media_method: invite
-        disallow: all
       fixedPositions:
         group0:
           label: _("Basic Info")
@@ -37,12 +31,6 @@ production:
           fields:
             name: 1
             ip: 1
-        group1:
-          label: _("Connection Info")     
-          colsPerRow: 5
-          fields:
-            allow: 2
-            direct_media: 2
       fields:
         readOnly:
           name: true

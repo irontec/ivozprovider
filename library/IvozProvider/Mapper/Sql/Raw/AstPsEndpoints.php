@@ -51,7 +51,6 @@ class AstPsEndpoints extends MapperAbstract
                 'id' => $model->getId(),
                 'sorcery_id' => $model->getSorceryId(),
                 'terminalId' => $model->getTerminalId(),
-                'proxyTrunkId' => $model->getProxyTrunkId(),
                 'aors' => $model->getAors(),
                 'callerid' => $model->getCallerid(),
                 'context' => $model->getContext(),
@@ -65,10 +64,6 @@ class AstPsEndpoints extends MapperAbstract
                 'send_pai' => $model->getSendPai(),
                 'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
-                'trust_id_inbound' => $model->getTrustIdInbound(),
-                't38_udptl' => $model->getT38Udptl(),
-                't38_udptl_ec' => $model->getT38UdptlEc(),
-                't38_udptl_maxdatagram' => $model->getT38UdptlMaxdatagram(),
             );
         } else {
             $result = array();
@@ -561,7 +556,6 @@ class AstPsEndpoints extends MapperAbstract
             $entry->setId($data['id'])
                   ->setSorceryId($data['sorcery_id'])
                   ->setTerminalId($data['terminalId'])
-                  ->setProxyTrunkId($data['proxyTrunkId'])
                   ->setAors($data['aors'])
                   ->setCallerid($data['callerid'])
                   ->setContext($data['context'])
@@ -574,16 +568,11 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
                   ->setSubscribecontext($data['subscribecontext'])
-                  ->set100rel($data['100rel'])
-                  ->setTrustIdInbound($data['trust_id_inbound'])
-                  ->setT38Udptl($data['t38_udptl'])
-                  ->setT38UdptlEc($data['t38_udptl_ec'])
-                  ->setT38UdptlMaxdatagram($data['t38_udptl_maxdatagram']);
+                  ->set100rel($data['100rel']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setSorceryId($data->{'sorcery_id'})
                   ->setTerminalId($data->{'terminalId'})
-                  ->setProxyTrunkId($data->{'proxyTrunkId'})
                   ->setAors($data->{'aors'})
                   ->setCallerid($data->{'callerid'})
                   ->setContext($data->{'context'})
@@ -596,17 +585,12 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
                   ->setSubscribecontext($data->{'subscribecontext'})
-                  ->set100rel($data->{'100rel'})
-                  ->setTrustIdInbound($data->{'trust_id_inbound'})
-                  ->setT38Udptl($data->{'t38_udptl'})
-                  ->setT38UdptlEc($data->{'t38_udptl_ec'})
-                  ->setT38UdptlMaxdatagram($data->{'t38_udptl_maxdatagram'});
+                  ->set100rel($data->{'100rel'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
             $entry->setId($data->getId())
                   ->setSorceryId($data->getSorceryId())
                   ->setTerminalId($data->getTerminalId())
-                  ->setProxyTrunkId($data->getProxyTrunkId())
                   ->setAors($data->getAors())
                   ->setCallerid($data->getCallerid())
                   ->setContext($data->getContext())
@@ -619,11 +603,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())
                   ->setSubscribecontext($data->getSubscribecontext())
-                  ->set100rel($data->get100rel())
-                  ->setTrustIdInbound($data->getTrustIdInbound())
-                  ->setT38Udptl($data->getT38Udptl())
-                  ->setT38UdptlEc($data->getT38UdptlEc())
-                  ->setT38UdptlMaxdatagram($data->getT38UdptlMaxdatagram());
+                  ->set100rel($data->get100rel());
 
         }
 

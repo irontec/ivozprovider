@@ -49,19 +49,6 @@ class AstPsEndpoints extends ModelAbstract
         'required',
         'yes',
     );
-    protected $_trustIdInboundAcceptedValues = array(
-        'yes',
-        'no',
-    );
-    protected $_t38UdptlAcceptedValues = array(
-        'yes',
-        'no',
-    );
-    protected $_t38UdptlEcAcceptedValues = array(
-        'none',
-        'fec',
-        'redundancy',
-    );
 
     /**
      * Database var type int
@@ -83,13 +70,6 @@ class AstPsEndpoints extends ModelAbstract
      * @var int
      */
     protected $_terminalId;
-
-    /**
-     * Database var type int
-     *
-     * @var int
-     */
-    protected $_proxyTrunkId;
 
     /**
      * Database var type varchar
@@ -183,34 +163,6 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_100rel;
 
-    /**
-     * Database var type enum('yes','no')
-     *
-     * @var string
-     */
-    protected $_trustIdInbound;
-
-    /**
-     * Database var type enum('yes','no')
-     *
-     * @var string
-     */
-    protected $_t38Udptl;
-
-    /**
-     * Database var type enum('none','fec','redundancy')
-     *
-     * @var string
-     */
-    protected $_t38UdptlEc;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_t38UdptlMaxdatagram;
-
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -218,13 +170,6 @@ class AstPsEndpoints extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Terminals
      */
     protected $_Terminal;
-
-    /**
-     * Parent relation ast_ps_endpoints_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\ProxyTrunks
-     */
-    protected $_ProxyTrunk;
 
 
     /**
@@ -239,7 +184,6 @@ class AstPsEndpoints extends ModelAbstract
         'id'=>'id',
         'sorcery_id'=>'sorceryId',
         'terminalId'=>'terminalId',
-        'proxyTrunkId'=>'proxyTrunkId',
         'aors'=>'aors',
         'callerid'=>'callerid',
         'context'=>'context',
@@ -253,10 +197,6 @@ class AstPsEndpoints extends ModelAbstract
         'send_pai'=>'sendPai',
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
-        'trust_id_inbound'=>'trustIdInbound',
-        't38_udptl'=>'t38Udptl',
-        't38_udptl_ec'=>'t38UdptlEc',
-        't38_udptl_maxdatagram'=>'t38UdptlMaxdatagram',
     );
 
     /**
@@ -277,10 +217,6 @@ class AstPsEndpoints extends ModelAbstract
             'AstPsEndpointsIbfk1'=> array(
                     'property' => 'Terminal',
                     'table_name' => 'Terminals',
-                ),
-            'AstPsEndpointsIbfk2'=> array(
-                    'property' => 'ProxyTrunk',
-                    'table_name' => 'ProxyTrunks',
                 ),
         ));
 
@@ -304,7 +240,6 @@ class AstPsEndpoints extends ModelAbstract
             'dtmfMode' => 'rfc4733',
             'subscribecontext' => 'default',
             '100rel' => 'no',
-            't38UdptlMaxdatagram' => '0',
         );
 
         $this->_initFileObjects();
@@ -441,40 +376,6 @@ class AstPsEndpoints extends ModelAbstract
     public function getTerminalId()
     {
         return $this->_terminalId;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setProxyTrunkId($data)
-    {
-
-        if ($this->_proxyTrunkId != $data) {
-            $this->_logChange('proxyTrunkId');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_proxyTrunkId = $data;
-
-        } else if (!is_null($data)) {
-            $this->_proxyTrunkId = (int) $data;
-
-        } else {
-            $this->_proxyTrunkId = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column proxyTrunkId
-     *
-     * @return int
-     */
-    public function getProxyTrunkId()
-    {
-        return $this->_proxyTrunkId;
     }
 
     /**
@@ -938,151 +839,6 @@ class AstPsEndpoints extends ModelAbstract
     }
 
     /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setTrustIdInbound($data)
-    {
-
-        if ($this->_trustIdInbound != $data) {
-            $this->_logChange('trustIdInbound');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_trustIdInbound = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_trustIdInboundAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for trustIdInbound'));
-            }
-            $this->_trustIdInbound = (string) $data;
-
-        } else {
-            $this->_trustIdInbound = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column trust_id_inbound
-     *
-     * @return string
-     */
-    public function getTrustIdInbound()
-    {
-        return $this->_trustIdInbound;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setT38Udptl($data)
-    {
-
-        if ($this->_t38Udptl != $data) {
-            $this->_logChange('t38Udptl');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_t38Udptl = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_t38UdptlAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for t38Udptl'));
-            }
-            $this->_t38Udptl = (string) $data;
-
-        } else {
-            $this->_t38Udptl = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column t38_udptl
-     *
-     * @return string
-     */
-    public function getT38Udptl()
-    {
-        return $this->_t38Udptl;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setT38UdptlEc($data)
-    {
-
-        if ($this->_t38UdptlEc != $data) {
-            $this->_logChange('t38UdptlEc');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_t38UdptlEc = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_t38UdptlEcAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for t38UdptlEc'));
-            }
-            $this->_t38UdptlEc = (string) $data;
-
-        } else {
-            $this->_t38UdptlEc = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column t38_udptl_ec
-     *
-     * @return string
-     */
-    public function getT38UdptlEc()
-    {
-        return $this->_t38UdptlEc;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setT38UdptlMaxdatagram($data)
-    {
-
-        if ($this->_t38UdptlMaxdatagram != $data) {
-            $this->_logChange('t38UdptlMaxdatagram');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_t38UdptlMaxdatagram = $data;
-
-        } else if (!is_null($data)) {
-            $this->_t38UdptlMaxdatagram = (string) $data;
-
-        } else {
-            $this->_t38UdptlMaxdatagram = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column t38_udptl_maxdatagram
-     *
-     * @return string
-     */
-    public function getT38UdptlMaxdatagram()
-    {
-        return $this->_t38UdptlMaxdatagram;
-    }
-
-    /**
      * Sets parent relation Terminal
      *
      * @param \IvozProvider\Model\Raw\Terminals $data
@@ -1131,57 +887,6 @@ class AstPsEndpoints extends ModelAbstract
         }
 
         return $this->_Terminal;
-    }
-
-    /**
-     * Sets parent relation ProxyTrunk
-     *
-     * @param \IvozProvider\Model\Raw\ProxyTrunks $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setProxyTrunk(\IvozProvider\Model\Raw\ProxyTrunks $data)
-    {
-        $this->_ProxyTrunk = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setProxyTrunkId($primaryKey);
-        }
-
-        $this->_setLoaded('AstPsEndpointsIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent ProxyTrunk
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\ProxyTrunks
-     */
-    public function getProxyTrunk($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'AstPsEndpointsIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_ProxyTrunk = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_ProxyTrunk;
     }
 
     /**

@@ -51,10 +51,6 @@ class ProxyTrunks extends MapperAbstract
                 'id' => $model->getId(),
                 'name' => $model->getName(),
                 'ip' => $model->getIp(),
-                'disallow' => $model->getDisallow(),
-                'allow' => $model->getAllow(),
-                'direct_media' => $model->getDirectMedia(),
-                'direct_media_method' => $model->getDirectMediaMethod(),
             );
         } else {
             $result = array();
@@ -440,23 +436,6 @@ class ProxyTrunks extends MapperAbstract
             }
 
 
-            if ($recursive) {
-                if ($model->getAstPsEndpoints(null, null, true) !== null) {
-                    $astPsEndpoints = $model->getAstPsEndpoints();
-
-                    if (!is_array($astPsEndpoints)) {
-
-                        $astPsEndpoints = array($astPsEndpoints);
-                    }
-
-                    foreach ($astPsEndpoints as $value) {
-                        $value->setProxyTrunkId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-            }
-
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -554,28 +533,16 @@ class ProxyTrunks extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setName($data['name'])
-                  ->setIp($data['ip'])
-                  ->setDisallow($data['disallow'])
-                  ->setAllow($data['allow'])
-                  ->setDirectMedia($data['direct_media'])
-                  ->setDirectMediaMethod($data['direct_media_method']);
+                  ->setIp($data['ip']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
-                  ->setIp($data->{'ip'})
-                  ->setDisallow($data->{'disallow'})
-                  ->setAllow($data->{'allow'})
-                  ->setDirectMedia($data->{'direct_media'})
-                  ->setDirectMediaMethod($data->{'direct_media_method'});
+                  ->setIp($data->{'ip'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ProxyTrunks) {
             $entry->setId($data->getId())
                   ->setName($data->getName())
-                  ->setIp($data->getIp())
-                  ->setDisallow($data->getDisallow())
-                  ->setAllow($data->getAllow())
-                  ->setDirectMedia($data->getDirectMedia())
-                  ->setDirectMediaMethod($data->getDirectMediaMethod());
+                  ->setIp($data->getIp());
 
         }
 
