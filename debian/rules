@@ -20,25 +20,23 @@ override_dh_auto_build: build_userweb build_library
 
 # Install systemd unit files
 override_dh_systemd_enable:
-	dh_systemd_enable --name=fastagi@
-	dh_systemd_enable --name=fastagi fastagi.socket
-	dh_systemd_enable --no-enable --name=kamusers@
-	dh_systemd_enable --no-enable --name=kamtrunks@
-	dh_systemd_enable --no-enable --name=cdrparser.timer
-	dh_systemd_enable --no-enable --name=cdrparser
+	dh_systemd_enable -p ivozprovider-asterisk-agi	  --name=fastagi@      fastagi@.service
+	dh_systemd_enable -p ivozprovider-asterisk-agi	  --name=fastagi       fastagi.socket
+	dh_systemd_enable -p ivozprovider-kamailio-users  --name=kamusers@     kamusers@.service  --no-enable
+	dh_systemd_enable -p ivozprovider-kamailio-trunks --name=kamtrunks@    kamtrunks@.service --no-enable
+	dh_systemd_enable -p ivozprovider-profile-data	  --name=cdrparser     cdrparser.service  --no-enable
 
 override_dh_systemd_start:
-	dh_systemd_start --restart-after-upgrade --name=fastagi@
-	dh_systemd_start --restart-after-upgrade --name=fastagi.socket
-	dh_systemd_start --no-restart-on-upgrade --name=kamusers@
-	dh_systemd_start --no-restart-on-upgrade --name=kamtrunks@
-	dh_systemd_start --no-restart-on-upgrade --name=cdrparser.timer
-	dh_systemd_start --no-restart-on-upgrade --name=cdrparser
+	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi@     fastagi@.service   --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi      fastagi.socket     --restart-after-upgrade
+	dh_systemd_start  -p ivozprovider-kamailio-users   --name=kamusers@    kamusers@.service  --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-kamailio-trunks  --name=kamtrunks@   kamtrunks@.service --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-profile-data	   --name=cdrparser    cdrparser@.service --no-restart-on-upgrade --no-start
 
 # Install /etc/default configuration
 override_dh_installinit:
-	dh_installinit --name=kamusers --noscripts --no-restart-on-upgrade --no-start
-	dh_installinit --name=kamtrunks --noscripts --no-restart-on-upgrade --no-start
+	dh_installinit    -p ivozprovider-kamailio-users   --name=kamusers     --noscripts --no-restart-on-upgrade --no-start
+	dh_installinit    -p ivozprovider-kamailio-trunks  --name=kamtrunks    --noscripts --no-restart-on-upgrade --no-start
 
 %:
 	dh $@ --with systemd
