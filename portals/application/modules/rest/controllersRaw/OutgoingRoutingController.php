@@ -224,7 +224,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="OutgoingRouting", description="Create's a new OutgoingRouting")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/outgoing-routing/")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="type", nullable=true, type="enum('pattern','group')", sample="", description="")
      * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="targetGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
@@ -267,7 +267,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/outgoing-routing/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="type", nullable=true, type="enum('pattern','group')", sample="", description="")
      * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="targetGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
@@ -370,7 +370,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'type' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('pattern','group')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -421,7 +421,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
                     'comment' => '[pk]',
                 ),
                 'type' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('pattern','group')',
                     'required' => false,
                     'comment' => '',
                 ),

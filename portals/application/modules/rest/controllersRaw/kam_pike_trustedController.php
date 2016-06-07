@@ -1,12 +1,12 @@
 <?php
 /**
- * EtagVersions
+ * kam_pike_trusted
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
+class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,23 +24,29 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="GET information about all EtagVersions")
+     * @ApiDescription(section="kam_pike_trusted", description="GET information about all kam_pike_trusted")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/etag-versions/")
+     * @ApiRoute(name="/rest/kam_pike_trusted/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'table': '', 
-     *     'etag': '', 
-     *     'lastChange': ''
+     *     'src_ip': '', 
+     *     'proto': '', 
+     *     'from_pattern': '', 
+     *     'ruri_pattern': '', 
+     *     'tag': '', 
+     *     'priority': ''
      * },{
      *     'id': '', 
-     *     'table': '', 
-     *     'etag': '', 
-     *     'lastChange': ''
+     *     'src_ip': '', 
+     *     'proto': '', 
+     *     'from_pattern': '', 
+     *     'ruri_pattern': '', 
+     *     'tag': '', 
+     *     'priority': ''
      * }]")
      */
     public function indexAction()
@@ -59,9 +65,12 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'table',
-                'etag',
-                'lastChange',
+                'srcIp',
+                'proto',
+                'fromPattern',
+                'ruriPattern',
+                'tag',
+                'priority',
             );
         }
 
@@ -80,7 +89,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('EtagVersions');
+        $etag = $this->_cache->getEtagVersions('kam_pike_trusted');
 
         $hashEtag = md5(
             serialize(
@@ -96,7 +105,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_pike_trusted();
 
         $items = $mapper->fetchList(
             $where,
@@ -129,16 +138,19 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Get information about EtagVersions")
+     * @ApiDescription(section="kam_pike_trusted", description="Get information about kam_pike_trusted")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/etag-versions/{id}")
-     * @ApiParams(name="id", type="mediumint", nullable=false, description="", sample="")
+     * @ApiRoute(name="/rest/kam_pike_trusted/{id}")
+     * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'table': '', 
-     *     'etag': '', 
-     *     'lastChange': ''
+     *     'src_ip': '', 
+     *     'proto': '', 
+     *     'from_pattern': '', 
+     *     'ruri_pattern': '', 
+     *     'tag': '', 
+     *     'priority': ''
      * }")
      */
     public function getAction()
@@ -156,13 +168,16 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'table',
-                'etag',
-                'lastChange',
+                'srcIp',
+                'proto',
+                'fromPattern',
+                'ruriPattern',
+                'tag',
+                'priority',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('EtagVersions');
+        $etag = $this->_cache->getEtagVersions('kam_pike_trusted');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -178,7 +193,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_pike_trusted();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -196,14 +211,17 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Create's a new EtagVersions")
+     * @ApiDescription(section="kam_pike_trusted", description="Create's a new kam_pike_trusted")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/etag-versions/")
-     * @ApiParams(name="table", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="etag", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="lastChange", nullable=true, type="timestamp", sample="", description="")
+     * @ApiRoute(name="/rest/kam_pike_trusted/")
+     * @ApiParams(name="src_ip", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proto", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="ruri_pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="priority", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/etagversions/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kam_pike_trusted/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -211,7 +229,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\EtagVersions();
+        $model = new Models\kam_pike_trusted();
 
         try {
             $model->populateFromArray($params);
@@ -233,13 +251,16 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Table EtagVersions")
+     * @ApiDescription(section="kam_pike_trusted", description="Table kam_pike_trusted")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/etag-versions/")
-     * @ApiParams(name="id", nullable=false, type="mediumint", sample="", description="")
-     * @ApiParams(name="table", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="etag", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="lastChange", nullable=true, type="timestamp", sample="", description="")
+     * @ApiRoute(name="/rest/kam_pike_trusted/")
+     * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="src_ip", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proto", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="ruri_pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="priority", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -255,7 +276,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_pike_trusted();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -279,10 +300,10 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Table EtagVersions")
+     * @ApiDescription(section="kam_pike_trusted", description="Table kam_pike_trusted")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/etag-versions/")
-     * @ApiParams(name="id", nullable=false, type="mediumint", sample="", description="")
+     * @ApiRoute(name="/rest/kam_pike_trusted/")
+     * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -296,7 +317,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_pike_trusted();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -324,7 +345,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -334,19 +355,34 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'table' => array(
+                'src_ip' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'etag' => array(
+                'proto' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'lastChange' => array(
-                    'type' => 'timestamp',
+                'from_pattern' => array(
+                    'type' => 'varchar',
                     'required' => false,
+                    'comment' => '',
+                ),
+                'ruri_pattern' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'tag' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'priority' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -356,23 +392,38 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'table' => array(
+                'src_ip' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'etag' => array(
+                'proto' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'lastChange' => array(
-                    'type' => 'timestamp',
+                'from_pattern' => array(
+                    'type' => 'varchar',
                     'required' => false,
+                    'comment' => '',
+                ),
+                'ruri_pattern' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'tag' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'priority' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -381,7 +432,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => 'int',
                     'required' => true
                 )
             )

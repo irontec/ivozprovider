@@ -238,10 +238,10 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="default_expiration", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="max_contacts", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="minimum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="remove_existing", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="authenticate_qualify", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="remove_existing", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="authenticate_qualify", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="maximum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="support_path", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="support_path", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="contact", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="qualify_frequency", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
@@ -283,10 +283,10 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="default_expiration", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="max_contacts", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="minimum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="remove_existing", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="authenticate_qualify", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="remove_existing", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="authenticate_qualify", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="maximum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="support_path", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="support_path", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="contact", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="qualify_frequency", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -404,12 +404,12 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'remove_existing' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'authenticate_qualify' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -419,7 +419,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'support_path' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -465,12 +465,12 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'remove_existing' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'authenticate_qualify' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -480,7 +480,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'support_path' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),

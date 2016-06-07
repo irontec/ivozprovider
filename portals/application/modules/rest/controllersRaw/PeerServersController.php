@@ -275,7 +275,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/peer-servers/")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
@@ -289,7 +289,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="sendPAI", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="sendRPID", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="useAuthUserAsFromUser", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="auth_needed", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
@@ -328,7 +328,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/peer-servers/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
@@ -342,7 +342,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="sendPAI", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="sendRPID", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="useAuthUserAsFromUser", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="auth_needed", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -446,7 +446,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 ),
                 'ip' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(
@@ -515,7 +515,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'auth_needed' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -547,7 +547,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 ),
                 'ip' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(
@@ -616,7 +616,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'auth_needed' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => true,
                     'comment' => '',
                 ),

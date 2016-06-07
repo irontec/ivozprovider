@@ -33,6 +33,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
      *     'DDI': '', 
      *     'DDIE164': '', 
@@ -47,6 +48,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'countryId': ''
      * },{
      *     'id': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
      *     'DDI': '', 
      *     'DDIE164': '', 
@@ -77,6 +79,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
+                'brandId',
                 'companyId',
                 'DDI',
                 'DDIE164',
@@ -163,6 +166,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
      *     'DDI': '', 
      *     'DDIE164': '', 
@@ -192,6 +196,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
+                'brandId',
                 'companyId',
                 'DDI',
                 'DDIE164',
@@ -244,6 +249,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="DDIs", description="Create's a new DDIs")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/d-d-is/")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="DDI", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
@@ -291,6 +297,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/d-d-is/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="DDI", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
@@ -397,6 +404,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
+                'brandId' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'companyId' => array(
                     'type' => 'int',
                     'required' => true,
@@ -467,6 +479,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'type' => 'int',
                     'required' => true,
                     'comment' => '[pk]',
+                ),
+                'brandId' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
                 ),
                 'companyId' => array(
                     'type' => 'int',

@@ -1,12 +1,12 @@
 <?php
 /**
- * EtagVersions
+ * kam_trunks_address
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
+class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,23 +24,27 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="GET information about all EtagVersions")
+     * @ApiDescription(section="kam_trunks_address", description="GET information about all kam_trunks_address")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/etag-versions/")
+     * @ApiRoute(name="/rest/kam_trunks_address/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'table': '', 
-     *     'etag': '', 
-     *     'lastChange': ''
+     *     'grp': '', 
+     *     'ip_addr': '', 
+     *     'mask': '', 
+     *     'port': '', 
+     *     'tag': ''
      * },{
      *     'id': '', 
-     *     'table': '', 
-     *     'etag': '', 
-     *     'lastChange': ''
+     *     'grp': '', 
+     *     'ip_addr': '', 
+     *     'mask': '', 
+     *     'port': '', 
+     *     'tag': ''
      * }]")
      */
     public function indexAction()
@@ -59,9 +63,11 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'table',
-                'etag',
-                'lastChange',
+                'grp',
+                'ipAddr',
+                'mask',
+                'port',
+                'tag',
             );
         }
 
@@ -80,7 +86,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('EtagVersions');
+        $etag = $this->_cache->getEtagVersions('kam_trunks_address');
 
         $hashEtag = md5(
             serialize(
@@ -96,7 +102,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_trunks_address();
 
         $items = $mapper->fetchList(
             $where,
@@ -129,16 +135,18 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Get information about EtagVersions")
+     * @ApiDescription(section="kam_trunks_address", description="Get information about kam_trunks_address")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/etag-versions/{id}")
-     * @ApiParams(name="id", type="mediumint", nullable=false, description="", sample="")
+     * @ApiRoute(name="/rest/kam_trunks_address/{id}")
+     * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'table': '', 
-     *     'etag': '', 
-     *     'lastChange': ''
+     *     'grp': '', 
+     *     'ip_addr': '', 
+     *     'mask': '', 
+     *     'port': '', 
+     *     'tag': ''
      * }")
      */
     public function getAction()
@@ -156,13 +164,15 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'table',
-                'etag',
-                'lastChange',
+                'grp',
+                'ipAddr',
+                'mask',
+                'port',
+                'tag',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('EtagVersions');
+        $etag = $this->_cache->getEtagVersions('kam_trunks_address');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -178,7 +188,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_trunks_address();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -196,14 +206,16 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Create's a new EtagVersions")
+     * @ApiDescription(section="kam_trunks_address", description="Create's a new kam_trunks_address")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/etag-versions/")
-     * @ApiParams(name="table", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="etag", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="lastChange", nullable=true, type="timestamp", sample="", description="")
+     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiParams(name="grp", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/etagversions/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kam_trunks_address/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -211,7 +223,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\EtagVersions();
+        $model = new Models\kam_trunks_address();
 
         try {
             $model->populateFromArray($params);
@@ -233,13 +245,15 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Table EtagVersions")
+     * @ApiDescription(section="kam_trunks_address", description="Table kam_trunks_address")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/etag-versions/")
-     * @ApiParams(name="id", nullable=false, type="mediumint", sample="", description="")
-     * @ApiParams(name="table", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="etag", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="lastChange", nullable=true, type="timestamp", sample="", description="")
+     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="grp", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -255,7 +269,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_trunks_address();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -279,10 +293,10 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="EtagVersions", description="Table EtagVersions")
+     * @ApiDescription(section="kam_trunks_address", description="Table kam_trunks_address")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/etag-versions/")
-     * @ApiParams(name="id", nullable=false, type="mediumint", sample="", description="")
+     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -296,7 +310,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\EtagVersions();
+        $mapper = new Mappers\kam_trunks_address();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -324,7 +338,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -334,18 +348,28 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'table' => array(
+                'grp' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'ip_addr' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'etag' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                'mask' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
-                'lastChange' => array(
-                    'type' => 'timestamp',
+                'port' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'tag' => array(
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -356,22 +380,32 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'table' => array(
+                'grp' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'ip_addr' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'etag' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                'mask' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
-                'lastChange' => array(
-                    'type' => 'timestamp',
+                'port' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'tag' => array(
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -381,7 +415,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => 'int',
                     'required' => true
                 )
             )

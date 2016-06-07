@@ -361,21 +361,21 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="alias", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="pager", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="attach", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="attach", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="attachfmt", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="serveremail", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="language", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="tz", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="deleteast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="saycid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="sendast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="review", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="tempgreetwarn", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="operator", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="envelope", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="deleteast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="saycid", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="sendast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="review", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="tempgreetwarn", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="operator", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="envelope", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="sayduration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="forcename", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="forcegreetings", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="forcename", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="forcegreetings", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="callback", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="dialout", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="exitcontext", nullable=true, type="varchar", sample="", description="")
@@ -430,21 +430,21 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="alias", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="pager", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="attach", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="attach", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="attachfmt", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="serveremail", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="language", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="tz", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="deleteast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="saycid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="sendast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="review", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="tempgreetwarn", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="operator", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="envelope", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="deleteast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="saycid", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="sendast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="review", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="tempgreetwarn", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="operator", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="envelope", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="sayduration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="forcename", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="forcegreetings", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="forcename", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="forcegreetings", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="callback", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="dialout", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="exitcontext", nullable=true, type="varchar", sample="", description="")
@@ -587,7 +587,7 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'attach' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -612,37 +612,37 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'deleteast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'saycid' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'review' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'tempgreetwarn' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'operator' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'envelope' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -652,12 +652,12 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'forcename' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'forcegreetings' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -768,7 +768,7 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'attach' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -793,37 +793,37 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'deleteast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'saycid' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'review' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'tempgreetwarn' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'operator' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'envelope' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -833,12 +833,12 @@ class Rest_ast_voicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'forcename' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'forcegreetings' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),

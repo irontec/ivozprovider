@@ -1,12 +1,12 @@
 <?php
 /**
- * ParsedCDRs
+ * kam_acc_cdrs
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
+class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,71 +24,69 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ParsedCDRs", description="GET information about all ParsedCDRs")
+     * @ApiDescription(section="kam_acc_cdrs", description="GET information about all kam_acc_cdrs")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/parsed-c-d-rs/")
+     * @ApiRoute(name="/rest/kam_acc_cdrs/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'statId': '', 
-     *     'xstatId': '', 
-     *     'statType': '', 
-     *     'initialLeg': '', 
-     *     'initialLegHash': '', 
-     *     'cid': '', 
-     *     'cidHash': '', 
-     *     'xcid': '', 
-     *     'xcidHash': '', 
-     *     'proxies': '', 
-     *     'type': '', 
-     *     'subtype': '', 
+     *     'proxy': '', 
      *     'calldate': '', 
+     *     'start_time': '', 
+     *     'end_time': '', 
      *     'duration': '', 
-     *     'aParty': '', 
-     *     'bParty': '', 
      *     'caller': '', 
      *     'callee': '', 
-     *     'xCaller': '', 
-     *     'xCallee': '', 
-     *     'initialReferrer': '', 
-     *     'referrer': '', 
      *     'referee': '', 
-     *     'lastForwarder': '', 
-     *     'brandId': '', 
+     *     'referrer': '', 
      *     'companyId': '', 
-     *     'peeringContractId': ''
+     *     'brandId': '', 
+     *     'asIden': '', 
+     *     'asAddress': '', 
+     *     'callid': '', 
+     *     'xcallid': '', 
+     *     'parsed': '', 
+     *     'diversion': '', 
+     *     'peeringContractId': '', 
+     *     'externallyRated': '', 
+     *     'metered': '', 
+     *     'meteringDate': '', 
+     *     'pricingPlanId': '', 
+     *     'targetPatternId': '', 
+     *     'price': '', 
+     *     'pricingPlanDetails': '', 
+     *     'invoiceId': ''
      * },{
      *     'id': '', 
-     *     'statId': '', 
-     *     'xstatId': '', 
-     *     'statType': '', 
-     *     'initialLeg': '', 
-     *     'initialLegHash': '', 
-     *     'cid': '', 
-     *     'cidHash': '', 
-     *     'xcid': '', 
-     *     'xcidHash': '', 
-     *     'proxies': '', 
-     *     'type': '', 
-     *     'subtype': '', 
+     *     'proxy': '', 
      *     'calldate': '', 
+     *     'start_time': '', 
+     *     'end_time': '', 
      *     'duration': '', 
-     *     'aParty': '', 
-     *     'bParty': '', 
      *     'caller': '', 
      *     'callee': '', 
-     *     'xCaller': '', 
-     *     'xCallee': '', 
-     *     'initialReferrer': '', 
-     *     'referrer': '', 
      *     'referee': '', 
-     *     'lastForwarder': '', 
-     *     'brandId': '', 
+     *     'referrer': '', 
      *     'companyId': '', 
-     *     'peeringContractId': ''
+     *     'brandId': '', 
+     *     'asIden': '', 
+     *     'asAddress': '', 
+     *     'callid': '', 
+     *     'xcallid': '', 
+     *     'parsed': '', 
+     *     'diversion': '', 
+     *     'peeringContractId': '', 
+     *     'externallyRated': '', 
+     *     'metered': '', 
+     *     'meteringDate': '', 
+     *     'pricingPlanId': '', 
+     *     'targetPatternId': '', 
+     *     'price': '', 
+     *     'pricingPlanDetails': '', 
+     *     'invoiceId': ''
      * }]")
      */
     public function indexAction()
@@ -107,33 +105,32 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'statId',
-                'xstatId',
-                'statType',
-                'initialLeg',
-                'initialLegHash',
-                'cid',
-                'cidHash',
-                'xcid',
-                'xcidHash',
-                'proxies',
-                'type',
-                'subtype',
+                'proxy',
                 'calldate',
+                'startTime',
+                'endTime',
                 'duration',
-                'aParty',
-                'bParty',
                 'caller',
                 'callee',
-                'xCaller',
-                'xCallee',
-                'initialReferrer',
-                'referrer',
                 'referee',
-                'lastForwarder',
-                'brandId',
+                'referrer',
                 'companyId',
+                'brandId',
+                'asIden',
+                'asAddress',
+                'callid',
+                'xcallid',
+                'parsed',
+                'diversion',
                 'peeringContractId',
+                'externallyRated',
+                'metered',
+                'meteringDate',
+                'pricingPlanId',
+                'targetPatternId',
+                'price',
+                'pricingPlanDetails',
+                'invoiceId',
             );
         }
 
@@ -152,7 +149,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('ParsedCDRs');
+        $etag = $this->_cache->getEtagVersions('kam_acc_cdrs');
 
         $hashEtag = md5(
             serialize(
@@ -168,7 +165,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ParsedCDRs();
+        $mapper = new Mappers\kam_acc_cdrs();
 
         $items = $mapper->fetchList(
             $where,
@@ -201,40 +198,39 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ParsedCDRs", description="Get information about ParsedCDRs")
+     * @ApiDescription(section="kam_acc_cdrs", description="Get information about kam_acc_cdrs")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/parsed-c-d-rs/{id}")
+     * @ApiRoute(name="/rest/kam_acc_cdrs/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'statId': '', 
-     *     'xstatId': '', 
-     *     'statType': '', 
-     *     'initialLeg': '', 
-     *     'initialLegHash': '', 
-     *     'cid': '', 
-     *     'cidHash': '', 
-     *     'xcid': '', 
-     *     'xcidHash': '', 
-     *     'proxies': '', 
-     *     'type': '', 
-     *     'subtype': '', 
+     *     'proxy': '', 
      *     'calldate': '', 
+     *     'start_time': '', 
+     *     'end_time': '', 
      *     'duration': '', 
-     *     'aParty': '', 
-     *     'bParty': '', 
      *     'caller': '', 
      *     'callee': '', 
-     *     'xCaller': '', 
-     *     'xCallee': '', 
-     *     'initialReferrer': '', 
-     *     'referrer': '', 
      *     'referee': '', 
-     *     'lastForwarder': '', 
-     *     'brandId': '', 
+     *     'referrer': '', 
      *     'companyId': '', 
-     *     'peeringContractId': ''
+     *     'brandId': '', 
+     *     'asIden': '', 
+     *     'asAddress': '', 
+     *     'callid': '', 
+     *     'xcallid': '', 
+     *     'parsed': '', 
+     *     'diversion': '', 
+     *     'peeringContractId': '', 
+     *     'externallyRated': '', 
+     *     'metered': '', 
+     *     'meteringDate': '', 
+     *     'pricingPlanId': '', 
+     *     'targetPatternId': '', 
+     *     'price': '', 
+     *     'pricingPlanDetails': '', 
+     *     'invoiceId': ''
      * }")
      */
     public function getAction()
@@ -252,37 +248,36 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'statId',
-                'xstatId',
-                'statType',
-                'initialLeg',
-                'initialLegHash',
-                'cid',
-                'cidHash',
-                'xcid',
-                'xcidHash',
-                'proxies',
-                'type',
-                'subtype',
+                'proxy',
                 'calldate',
+                'startTime',
+                'endTime',
                 'duration',
-                'aParty',
-                'bParty',
                 'caller',
                 'callee',
-                'xCaller',
-                'xCallee',
-                'initialReferrer',
-                'referrer',
                 'referee',
-                'lastForwarder',
-                'brandId',
+                'referrer',
                 'companyId',
+                'brandId',
+                'asIden',
+                'asAddress',
+                'callid',
+                'xcallid',
+                'parsed',
+                'diversion',
                 'peeringContractId',
+                'externallyRated',
+                'metered',
+                'meteringDate',
+                'pricingPlanId',
+                'targetPatternId',
+                'price',
+                'pricingPlanDetails',
+                'invoiceId',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('ParsedCDRs');
+        $etag = $this->_cache->getEtagVersions('kam_acc_cdrs');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -298,7 +293,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ParsedCDRs();
+        $mapper = new Mappers\kam_acc_cdrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -316,38 +311,37 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ParsedCDRs", description="Create's a new ParsedCDRs")
+     * @ApiDescription(section="kam_acc_cdrs", description="Create's a new kam_acc_cdrs")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/parsed-c-d-rs/")
-     * @ApiParams(name="statId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="xstatId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="statType", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="initialLeg", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="initialLegHash", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="cid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="cidHash", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xcid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xcidHash", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="proxies", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="subtype", nullable=true, type="varchar", sample="", description="")
+     * @ApiRoute(name="/rest/kam_acc_cdrs/")
+     * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="duration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="aParty", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="bParty", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="end_time", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xCaller", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xCallee", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="initialReferrer", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="referrer", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="referee", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="lastForwarder", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="referrer", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="asIden", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="asAddress", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
+     * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="metered", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="meteringDate", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="pricingPlanId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="")
+     * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
+     * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/parsedcdrs/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kam_acc_cdrs/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -355,7 +349,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\ParsedCDRs();
+        $model = new Models\kam_acc_cdrs();
 
         try {
             $model->populateFromArray($params);
@@ -377,37 +371,36 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ParsedCDRs", description="Table ParsedCDRs")
+     * @ApiDescription(section="kam_acc_cdrs", description="Table kam_acc_cdrs")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/parsed-c-d-rs/")
+     * @ApiRoute(name="/rest/kam_acc_cdrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="statId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="xstatId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="statType", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="initialLeg", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="initialLegHash", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="cid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="cidHash", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xcid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xcidHash", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="proxies", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="subtype", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="duration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="aParty", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="bParty", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="end_time", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xCaller", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="xCallee", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="initialReferrer", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="referrer", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="referee", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="lastForwarder", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="referrer", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="asIden", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="asAddress", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
+     * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="metered", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="meteringDate", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="pricingPlanId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="")
+     * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
+     * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -423,7 +416,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\ParsedCDRs();
+        $mapper = new Mappers\kam_acc_cdrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -447,9 +440,9 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ParsedCDRs", description="Table ParsedCDRs")
+     * @ApiDescription(section="kam_acc_cdrs", description="Table kam_acc_cdrs")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/parsed-c-d-rs/")
+     * @ApiRoute(name="/rest/kam_acc_cdrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -464,7 +457,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\ParsedCDRs();
+        $mapper = new Mappers\kam_acc_cdrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -502,62 +495,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'statId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xstatId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'statType' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'initialLeg' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'initialLegHash' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'cid' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'cidHash' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xcid' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xcidHash' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'proxies' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'type' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'subtype' => array(
+                'proxy' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -567,19 +505,19 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'start_time' => array(
+                    'type' => 'datetime',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'end_time' => array(
+                    'type' => 'datetime',
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'duration' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'aParty' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'bParty' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                    'type' => 'float',
+                    'required' => true,
                     'comment' => '',
                 ),
                 'caller' => array(
@@ -592,17 +530,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'xCaller' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xCallee' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'initialReferrer' => array(
+                'referee' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -612,13 +540,8 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'referee' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'lastForwarder' => array(
-                    'type' => 'varchar',
+                'companyId' => array(
+                    'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -627,12 +550,77 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'companyId' => array(
-                    'type' => 'int',
+                'asIden' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'asAddress' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'callid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xcallid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'parsed' => array(
+                    'type' => 'enum('yes','no','delayed','error')',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'diversion' => array(
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'externallyRated' => array(
+                    'type' => 'tinyint',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'metered' => array(
+                    'type' => 'tinyint',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'meteringDate' => array(
+                    'type' => 'datetime',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'pricingPlanId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'targetPatternId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'price' => array(
+                    'type' => 'decimal',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'pricingPlanDetails' => array(
+                    'type' => 'text',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'invoiceId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
@@ -648,62 +636,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'statId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xstatId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'statType' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'initialLeg' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'initialLegHash' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'cid' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'cidHash' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xcid' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xcidHash' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'proxies' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'type' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'subtype' => array(
+                'proxy' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -713,19 +646,19 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'start_time' => array(
+                    'type' => 'datetime',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'end_time' => array(
+                    'type' => 'datetime',
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'duration' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'aParty' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'bParty' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                    'type' => 'float',
+                    'required' => true,
                     'comment' => '',
                 ),
                 'caller' => array(
@@ -738,17 +671,7 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'xCaller' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'xCallee' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'initialReferrer' => array(
+                'referee' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -758,13 +681,8 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'referee' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'lastForwarder' => array(
-                    'type' => 'varchar',
+                'companyId' => array(
+                    'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -773,12 +691,77 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'companyId' => array(
-                    'type' => 'int',
+                'asIden' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'asAddress' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'callid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xcallid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'parsed' => array(
+                    'type' => 'enum('yes','no','delayed','error')',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'diversion' => array(
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'externallyRated' => array(
+                    'type' => 'tinyint',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'metered' => array(
+                    'type' => 'tinyint',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'meteringDate' => array(
+                    'type' => 'datetime',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'pricingPlanId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'targetPatternId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'price' => array(
+                    'type' => 'decimal',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'pricingPlanDetails' => array(
+                    'type' => 'text',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'invoiceId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',

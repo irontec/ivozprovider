@@ -230,7 +230,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="dst", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="[enum:In|Out]")
      * @ApiParams(name="pages", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="status", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="status", nullable=true, type="enum('error','pending','inprogress','completed')", sample="", description="")
      * @ApiParams(name="file", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/faxesinout/{id}")
@@ -278,7 +278,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="dst", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="[enum:In|Out]")
      * @ApiParams(name="pages", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="status", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="status", nullable=true, type="enum('error','pending','inprogress','completed')", sample="", description="")
      * @ApiParams(name="file", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -410,7 +410,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'status' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('error','pending','inprogress','completed')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -461,7 +461,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'status' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('error','pending','inprogress','completed')',
                     'required' => false,
                     'comment' => '',
                 ),

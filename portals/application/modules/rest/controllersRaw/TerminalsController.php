@@ -238,8 +238,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=false, type="varchar", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="direct_media", nullable=false, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="mac", nullable=true, type="varchar", sample="", description="")
@@ -283,8 +283,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=false, type="varchar", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="direct_media", nullable=false, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="mac", nullable=true, type="varchar", sample="", description="")
@@ -404,12 +404,12 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => true,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('invite','reinvite','update')',
                     'required' => true,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
@@ -465,12 +465,12 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => true,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('invite','reinvite','update')',
                     'required' => true,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),

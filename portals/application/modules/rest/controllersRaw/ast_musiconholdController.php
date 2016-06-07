@@ -225,7 +225,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/ast_musiconhold/")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mode", nullable=true, type="enum('custom','files','mp3nb','quietmp3nb','quietmp3')", sample="", description="")
      * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
@@ -268,7 +268,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/ast_musiconhold/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mode", nullable=true, type="enum('custom','files','mp3nb','quietmp3nb','quietmp3')", sample="", description="")
      * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
@@ -375,7 +375,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'mode' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('custom','files','mp3nb','quietmp3nb','quietmp3')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -426,7 +426,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'mode' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('custom','files','mp3nb','quietmp3nb','quietmp3')',
                     'required' => false,
                     'comment' => '',
                 ),

@@ -35,7 +35,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
-     *     'proxyTrunkId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -48,14 +47,11 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'trust_id_inbound': '', 
-     *     't38_udptl': ''
+     *     '100rel': ''
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
-     *     'proxyTrunkId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -68,9 +64,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'trust_id_inbound': '', 
-     *     't38_udptl': ''
+     *     '100rel': ''
      * }]")
      */
     public function indexAction()
@@ -91,7 +85,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'id',
                 'sorceryId',
                 'terminalId',
-                'proxyTrunkId',
                 'aors',
                 'callerid',
                 'context',
@@ -105,8 +98,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'sendPai',
                 'subscribecontext',
                 '100rel',
-                'trustId',
-                't38Udptl',
             );
         }
 
@@ -183,7 +174,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
-     *     'proxyTrunkId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -196,9 +186,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'trust_id_inbound': '', 
-     *     't38_udptl': ''
+     *     '100rel': ''
      * }")
      */
     public function getAction()
@@ -218,7 +206,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'id',
                 'sorceryId',
                 'terminalId',
-                'proxyTrunkId',
                 'aors',
                 'callerid',
                 'context',
@@ -232,8 +219,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'sendPai',
                 'subscribecontext',
                 '100rel',
-                'trustId',
-                't38Udptl',
             );
         }
 
@@ -276,22 +261,19 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      * @ApiRoute(name="/rest/ast_ps_endpoints/")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="proxyTrunkId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="varchar", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="dtmf_mode", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="dtmf_mode", nullable=false, type="enum('rfc4733','inband','info')", sample="", description="")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="trust_id_inbound", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="t38_udptl", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/ast_ps_endpoints/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -329,22 +311,19 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="proxyTrunkId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="varchar", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="dtmf_mode", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="dtmf_mode", nullable=false, type="enum('rfc4733','inband','info')", sample="", description="")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="trust_id_inbound", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="t38_udptl", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -449,11 +428,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => false,
                     'comment' => '',
                 ),
-                'proxyTrunkId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'aors' => array(
                     'type' => 'varchar',
                     'required' => false,
@@ -480,17 +454,17 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('invite','reinvite','update')',
                     'required' => false,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
                 'dtmf_mode' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('rfc4733','inband','info')',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -500,12 +474,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'send_diversion' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'send_pai' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -515,18 +489,8 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 '100rel' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('no','required','yes')',
                     'required' => true,
-                    'comment' => '',
-                ),
-                'trust_id_inbound' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                't38_udptl' => array(
-                    'type' => 'varchar',
-                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -550,11 +514,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => false,
                     'comment' => '',
                 ),
-                'proxyTrunkId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'aors' => array(
                     'type' => 'varchar',
                     'required' => false,
@@ -581,17 +540,17 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('invite','reinvite','update')',
                     'required' => false,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
                 'dtmf_mode' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('rfc4733','inband','info')',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -601,12 +560,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'send_diversion' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
                 'send_pai' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('yes','no')',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -616,18 +575,8 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 '100rel' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('no','required','yes')',
                     'required' => true,
-                    'comment' => '',
-                ),
-                'trust_id_inbound' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                't38_udptl' => array(
-                    'type' => 'varchar',
-                    'required' => false,
                     'comment' => '',
                 ),
             )

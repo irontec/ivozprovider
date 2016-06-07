@@ -215,8 +215,8 @@ class Rest_DomainsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/domains/")
      * @ApiParams(name="domain", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="scope", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="pointsTo", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="scope", nullable=false, type="enum('global','company','brand')", sample="", description="")
+     * @ApiParams(name="pointsTo", nullable=false, type="enum('proxyusers','proxytrunks')", sample="", description="")
      * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
@@ -256,8 +256,8 @@ class Rest_DomainsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/domains/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="domain", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="scope", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="pointsTo", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="scope", nullable=false, type="enum('global','company','brand')", sample="", description="")
+     * @ApiParams(name="pointsTo", nullable=false, type="enum('proxyusers','proxytrunks')", sample="", description="")
      * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
@@ -361,12 +361,12 @@ class Rest_DomainsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'scope' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('global','company','brand')',
                     'required' => true,
                     'comment' => '',
                 ),
                 'pointsTo' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('proxyusers','proxytrunks')',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -402,12 +402,12 @@ class Rest_DomainsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'scope' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('global','company','brand')',
                     'required' => true,
                     'comment' => '',
                 ),
                 'pointsTo' => array(
-                    'type' => 'varchar',
+                    'type' => 'enum('proxyusers','proxytrunks')',
                     'required' => true,
                     'comment' => '',
                 ),
