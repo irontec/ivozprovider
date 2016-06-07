@@ -3,3 +3,4 @@ portals/docs            /opt/irontec/ivozprovider/portals/
 portals/public          /opt/irontec/ivozprovider/portals/
 portals/tests           /opt/irontec/ivozprovider/portals/
 portals/templates       /opt/irontec/ivozprovider/portals/
+portals/samples         /opt/irontec/ivozprovider/portals/
