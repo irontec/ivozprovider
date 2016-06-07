@@ -81,6 +81,10 @@ production:
         icon: help
         text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '!@#$&*'")
         label: _("Need help?")
+      suffix: '<a href="#" class="generatePasswd">G</a>'
+      options:
+        commands:
+          generatePassword_command: true 
     companyId: 
       title: _('Company id')
       type: select

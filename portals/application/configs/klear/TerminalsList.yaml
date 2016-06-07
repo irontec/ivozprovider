@@ -53,6 +53,10 @@ production:
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Terminal', 'Terminals', 1))
+      scripts:
+        module: default
+        name: jquery.passwordgennew.js
+      plugin: passwordgen
       forcedValues:
         <<: *forcedCompany
       shortcutOption: N
@@ -63,11 +67,12 @@ production:
       fixedPositions: &TerminalsFixedPositions_link
         group0:
           label: _("Login Info")
-          colsPerRow: 3
+          colsPerRow: 12
           fields:
-            TerminalModelId: 1
-            name: 1
-            password: 1
+            TerminalModelId: 6
+            __empty1: 6
+            name: 6
+            password: 6
         group1:
           label: _("Connection Info")     
           colsPerRow: 6
@@ -88,6 +93,10 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Terminal', 'Terminals', 1), "[format| (%item%)]")
+      scripts:
+        module: default
+        name: jquery.passwordgenedit.js
+      plugin: passwordgen
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -133,7 +142,13 @@ production:
       <<: *Terminals
       controller: File
       action: free-upload
-
+    generatePassword_command:
+      <<: *Terminals
+      title: "Generate new secure password"
+      class: ui-silk-arrow-refresh
+      module: default
+      controller: Password
+      action: generate
 staging: 
   _extends: production
 testing: 
