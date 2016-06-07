@@ -72,15 +72,15 @@ production:
             TerminalModelId: 6
             __empty1: 6
             name: 6
-            password: 6
+            __empty2: 1
+            password: 5
         group1:
           label: _("Connection Info")     
-          colsPerRow: 6
+          colsPerRow: 12
           fields:
-            disallow: 3
-            allow: 3
-            direct_media: 2
-            direct_media_method: 2
+            disallow: 6
+            allow: 6
+            direct_media_method: 5
         group2:
           label: _("Provisioning Info")
           colsPerRow: 3
