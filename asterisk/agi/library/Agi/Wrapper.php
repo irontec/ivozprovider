@@ -158,7 +158,7 @@ class Agi_Wrapper
 	    if (empty($file))
 	        return;
 
-	    return $this->_fastagi->stream_file($file);
+	    return $this->_fastagi->exec("Playback", $file);
 	}
 
 	public function pickup($interface)
