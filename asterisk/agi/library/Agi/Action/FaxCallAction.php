@@ -11,9 +11,7 @@ class FaxCallAction extends RouterAction
     protected $_dialStatus = null;
     
     protected $_dialContext = 'fax-in';
-    
-    protected $_processDialStatus = true;
-    
+
     protected $_fax = null;
     
     protected $_faxInOut = null;
@@ -29,13 +27,8 @@ class FaxCallAction extends RouterAction
         $this->_dialContext = $context;
         return $this;
     }
-    
-	public function setProcessDialStatus($process)
-	{
-	    $this->_processDialStatus = $process;
-	    return $this;
-	}
-	
+
+
 	public function getDialStatus()
 	{
 	    return $this->_dialStatus;
@@ -53,14 +46,14 @@ class FaxCallAction extends RouterAction
 	    return $this;
 	}
 	
-  	public function call()
+    public function reciveFax()
     {
-  	    if (empty($this->_fax)) {
-  	        $this->agi->error("fax is not properly defined. Check configuration.");
-  	        $this->_dialStatus = "INVALIDARGS";
-  	        $this->processDialStatus();
+        if (empty($this->_fax)) {
+            $this->agi->error("fax is not properly defined. Check configuration.");
+            $this->_dialStatus = "INVALIDARGS";
+            $this->processFaxInStatus();
             return;
-  	    }
+        }
 
         // Local variables to improve readability
   	    $fax = $this->_fax;
@@ -99,6 +92,9 @@ class FaxCallAction extends RouterAction
         $preferred = $fax->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
         $this->agi->setCallerIdNum($preferred);
 
+        // Set recive fax options
+        $this->agi->setVariable("FAX_OPT","f");
+
         // Redirect to the calling dialplan context
         if ($this->_dialContext) {
             $this->agi->redirect($this->_dialContext, $did);
@@ -128,10 +124,13 @@ class FaxCallAction extends RouterAction
         }
 
         // Set headers to place the outgoing call
-        $this->agi->setVariable("CALLERID(num)", $DDIOut->getDDI());
-        $this->agi->setVariable("CALLERID(name)", $fax->getName());    
+        $this->agi->setVariable("CALLERID(num)", $DDIOut->getDDIE164());
+        $this->agi->setVariable("CALLERID(name)", $fax->getName());
 
         $faxOut->setStatus("inprogress")->save();
+
+        // Set recive fax options
+        $this->agi->setVariable("FAX_OPT","f");
 
         // Normalize called number to E164
         $number = $fax->getCompany()->preferredToE164($this->agi->getExtension());
@@ -141,14 +140,10 @@ class FaxCallAction extends RouterAction
         $this->agi->setVariable("DIAL_OPTS", "");
 
     }
-    
-    public function processDialStatus()
+
+    public function processFaxInStatus()
     {
-        //! Requested no to parse dialo status
-        if (!$this->_processDialStatus) {
-            return; 
-        }
-        
+
         if (empty($this->_fax) || empty($this->_faxInOut)) {
             $this->agi->error("fax is not properly defined. Check configuration.");
             return;
@@ -184,35 +179,30 @@ class FaxCallAction extends RouterAction
         $this->agi->verbose("Converting Fax [faxInOut%d] [fax%d] TIFF to PDF", $faxIn->getId(), $fax->getId());
         // Convert TIF file to PDF before storing
         $output = shell_exec("/usr/bin/tiff2pdf -o $faxPDF $faxTIF 2>/dev/null");
+
         // TODO Check return value for errors (use exec instead of shell_exec?)
         // Remove received tif file after conversion
-        $this->agi->verbose("bORRANDO FAX");
         unlink($faxTIF);
-        $this->agi->verbose("fAX BORRADO haora hay que enviar el mail????? %s ????",$fax->getSendByEmail());
         // Check if this fax is associated with an email address
         if ($fax->getSendByEmail()) {
             $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxIn->getId(), $fax->getEmail());
-            
+
             // Get faxdata values for mail message body and subject
             $faxSrc = $faxIn->getSrc();
             $faxDst = $faxIn->getDst();
 
             // Create attachment for PDF file
-            $att = new \Zend_Mime_Part(file_get_contents($faxPDF));
-            $att->type = "application/pdf";
-            $att->disposition = \Zend_Mime::DISPOSITION_ATTACHMENT;
-            $att->encoding = \Zend_Mime::ENCODING_BASE64;
-            $att->filename = "fax-$faxSrc-$faxDst.pdf";
+            $attach = new \Zend_Mime_Part(file_get_contents($faxPDF));
+            $attach->type = "application/pdf";
+            $attach->disposition = \Zend_Mime::DISPOSITION_ATTACHMENT;
+            $attach->encoding = \Zend_Mime::ENCODING_BASE64;
+            $attach->filename = "fax-$faxSrc-$faxDst.pdf";
             
             // Create an email for destination and send it
-            $mail = new \Zend_Mail();
-            $mail->setBodyText(
-                    "New fax received in $faxDst.\nSee attached PDF file.")
-                    ->setFrom("fax@as001.oasis-dev.irontec.com")
-                    ->addTo($fax->getEmail())
-                    ->setSubject("New fax received in $faxDst from $faxSrc")
-                    ->addAttachment($att)
-                    ->send();
+            $this->_faxSendMail($fax->getEmail(),
+                "New fax received in $faxDst from $faxSrc",
+                "New fax received in $faxDst.\nSee attached PDF file.",
+                $attach);
         }
 
         // Store fax pages
@@ -222,5 +212,88 @@ class FaxCallAction extends RouterAction
         // Success!!
         $faxIn->setStatus('completed')->save();
         $this->agi->verbose("Fax [faxInOut%d] completed (%d pages)", $faxIn->getId(), $faxIn->getPages());
+    }
+
+    public function processleg0FaxOutStatus()
+    {
+
+        if (empty($this->_fax) || empty($this->_faxInOut)) {
+            $this->agi->error("fax is not properly defined. Check configuration.");
+            return;
+        }
+        // Local variables to improve readability
+        $fax = $this->_fax;
+        $faxOut = $this->_faxInOut;
+        $this->agi->verbose("Fax leg0 dial status %s", $this->agi->getVariable("DIALSTATUS"));
+
+        // Store fax pages
+        if ($this->agi->getVariable("DIALSTATUS") != "ANSWER"){
+            // Mark as success and save
+            $faxOut->setStatus('error')->save();
+            if ($fax->getSendByEmail()) {
+                $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxOut->getId(), $fax->getEmail());
+
+                // Create an email for destination and send it
+                $faxDst = $faxOut->getDst();
+                $this->_faxSendMail($fax->getEmail(), "Fax sent to $faxDst", "Sending Fax to $faxDst FAILED.\n");
+            }
+        }
+    }
+    public function processleg1FaxOutStatus()
+    {
+
+        if (empty($this->_fax) || empty($this->_faxInOut)) {
+            $this->agi->error("fax is not properly defined. Check configuration.");
+            return;
+        }
+        // Local variables to improve readability
+        $fax = $this->_fax;
+        $faxOut = $this->_faxInOut;
+
+        // Check no errors happened during ReceiveFax
+        $error = $this->agi->getVariable("FAXOPT(error)");
+        $statusstr = $this->agi->getVariable("FAXOPT(statusstr)");
+        if (! empty($error) && $statusstr != "OK") {
+            // Show error message in asterisk CLI
+            $this->agi->error("Error sending fax: $statusstr ($error)");
+            // Mark this fax as error and save
+            $faxOut->setStatus('error')->save();
+            if ($fax->getSendByEmail()) {
+                $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxOut->getId(), $fax->getEmail());
+
+                // Create an email for destination and send it
+                $faxDst = $faxOut->getDst();
+                $this->_faxSendMail($fax->getEmail(), "Fax sent to $faxDst", "Sending Fax to $faxDst FAILED.\n");
+            }
+            return;
+        }
+        // Store fax pages
+        $faxOut->setPages($this->agi->getVariable("FAXOPT(pages)"));
+        // Mark as success and save
+        $faxOut->setStatus('completed')->save();
+        // Send mail with status SENT
+        if ($fax->getSendByEmail()) {
+            $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxOut->getId(), $fax->getEmail());
+
+            // Create an email for destination and send it
+            $faxDst = $faxOut->getDst();
+            $this->_faxSendMail($fax->getEmail(), "Fax sent to $faxDst", "Fax Sent to $faxDst.\n");
+
+        }
+
+    }
+
+    private function _faxSendMail($toEmail, $subject, $body, $attach = null)
+    {
+        // Create an email for destination and send it
+        $mail = new \Zend_Mail();
+        if (!is_null($attach)){
+            $mail->addAttachment($attach);
+        }
+        $mail->setBodyText($body)
+             ->setFrom("IvozProvider")
+             ->addTo($toEmail)
+             ->setSubject($subject)
+             ->send();
     }
 }

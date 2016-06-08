@@ -164,6 +164,6 @@ class RouterAction
         $faxAction = new FaxCallAction($this);
         $faxAction
             ->setFax($this->_routeFax)
-            ->call();
+            ->reciveFax();
     }
 }

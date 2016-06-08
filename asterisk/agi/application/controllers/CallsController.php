@@ -289,9 +289,10 @@ class CallsController extends BaseController
         $faxAction
             ->setFax($faxInOut->getFax())
             ->setFaxInOut($faxInOut)
-            ->processDialStatus();
+            ->processFaxInStatus();
 
     }
+
 
     /**
      * @brief Process fax after call status
@@ -320,9 +321,56 @@ class CallsController extends BaseController
         // ProcessDialStatus
         $faxAction = new FaxCallAction($this);
         $faxAction
-        ->setFax($faxOut->getFax())
-        ->setFaxInOut($faxOut)
-        ->sendFax();
+            ->setFax($faxOut->getFax())
+            ->setFaxInOut($faxOut)
+            ->sendFax();
+
+    }
+
+
+    /**
+     * @brief Process fax after call status
+     */
+    public function leg0faxoutstatusAction ()
+    {
+        // FIXME Process Dialed fax dialstatus FIXME
+        $faxid = $this->agi->getVariable("FAXOUT_ID");
+        $faxInOutMapper = new Mapper\FaxesInOut();
+        $faxInOut = $faxInOutMapper->find($faxid);
+        if (empty($faxInOut)) {
+            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
+            return;
+        }
+
+        // ProcessDialStatus
+        $faxAction = new FaxCallAction($this);
+        $faxAction
+            ->setFax($faxInOut->getFax())
+            ->setFaxInOut($faxInOut)
+            ->processleg0FaxOutStatus();
+
+    }
+
+    /**
+     * @brief Process fax after call status
+     */
+    public function leg1faxoutstatusAction ()
+    {
+        // FIXME Process Dialed fax dialstatus FIXME
+        $faxid = $this->agi->getVariable("FAXOUT_ID");
+        $faxInOutMapper = new Mapper\FaxesInOut();
+        $faxInOut = $faxInOutMapper->find($faxid);
+        if (empty($faxInOut)) {
+            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
+            return;
+        }
+
+        // ProcessDialStatus
+        $faxAction = new FaxCallAction($this);
+        $faxAction
+            ->setFax($faxInOut->getFax())
+            ->setFaxInOut($faxInOut)
+            ->processleg1FaxOutStatus();
 
     }
 

@@ -83,10 +83,10 @@ class AmiWorker extends Iron_Gearman_Worker
         $file = $fax->fetchFile()->getFilePath();
 
         $this->_logger->log("[GEARMAND][FAX] Converting PDF to TIFF...", \Zend_Log::INFO);
-        $fileTIF = $file.".tif";
+        $fileTIF = $file . ".tif";
+
         // Set destination file an fax options
         shell_exec("/usr/bin/gs -g1728x1145 -r209x98 -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sPAPERSIZE=a4 -sOutputFile=$fileTIF $file 2>&1 >/dev/null");
-        //shell_exec("/usr/bin/gs -r400x400 -g3456x4676 -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sPAPERSIZE=a4 -sOutputFile=$fileTIF $file 2>&1 >/dev/null");
 
         $headers = array(
                 "Action" => "Originate",
