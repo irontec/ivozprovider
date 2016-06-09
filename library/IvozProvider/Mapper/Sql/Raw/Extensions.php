@@ -55,6 +55,7 @@ class Extensions extends MapperAbstract
                 'IVRCommonId' => $model->getIVRCommonId(),
                 'IVRCustomId' => $model->getIVRCustomId(),
                 'huntGroupId' => $model->getHuntGroupId(),
+                'conferenceRoomId' => $model->getConferenceRoomId(),
             );
         } else {
             $result = array();
@@ -684,7 +685,8 @@ class Extensions extends MapperAbstract
                   ->setRouteType($data['routeType'])
                   ->setIVRCommonId($data['IVRCommonId'])
                   ->setIVRCustomId($data['IVRCustomId'])
-                  ->setHuntGroupId($data['huntGroupId']);
+                  ->setHuntGroupId($data['huntGroupId'])
+                  ->setConferenceRoomId($data['conferenceRoomId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -692,7 +694,8 @@ class Extensions extends MapperAbstract
                   ->setRouteType($data->{'routeType'})
                   ->setIVRCommonId($data->{'IVRCommonId'})
                   ->setIVRCustomId($data->{'IVRCustomId'})
-                  ->setHuntGroupId($data->{'huntGroupId'});
+                  ->setHuntGroupId($data->{'huntGroupId'})
+                  ->setConferenceRoomId($data->{'conferenceRoomId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Extensions) {
             $entry->setId($data->getId())
@@ -701,7 +704,8 @@ class Extensions extends MapperAbstract
                   ->setRouteType($data->getRouteType())
                   ->setIVRCommonId($data->getIVRCommonId())
                   ->setIVRCustomId($data->getIVRCustomId())
-                  ->setHuntGroupId($data->getHuntGroupId());
+                  ->setHuntGroupId($data->getHuntGroupId())
+                  ->setConferenceRoomId($data->getConferenceRoomId());
 
         }
 

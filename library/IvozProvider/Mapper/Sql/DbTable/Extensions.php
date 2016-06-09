@@ -40,6 +40,11 @@ class Extensions extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'ExtensionsIbfk5' => array(
+            'columns' => 'conferenceRoomId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
+            'refColumns' => 'id'
+        ),
         'ExtensionsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -182,6 +187,23 @@ class Extensions extends TableAbstract
 	    'TABLE_NAME' => 'Extensions',
 	    'COLUMN_NAME' => 'huntGroupId',
 	    'COLUMN_POSITION' => 7,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'conferenceRoomId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Extensions',
+	    'COLUMN_NAME' => 'conferenceRoomId',
+	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

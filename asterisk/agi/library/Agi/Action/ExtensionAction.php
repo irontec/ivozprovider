@@ -20,15 +20,16 @@ class ExtensionAction extends RouterAction
             $this->agi->error("Extension is not properly defined. Check configuration.");
             return;
         }
-       
+
         // Route to the extension destination
         $this->_routeType       = $extension->getRouteType();
         $this->_routeUser       = $extension->getUser();
         $this->_routeIVRCommon  = $extension->getIVRCommon();
         $this->_routeIVRCustom  = $extension->getIVRCustom();
         $this->_routeHuntGroup  = $extension->getHuntGroup();
+        $this->_routeConference = $extension->getConferenceRoom();
         $this->route();
     }
 
-    
+
 }

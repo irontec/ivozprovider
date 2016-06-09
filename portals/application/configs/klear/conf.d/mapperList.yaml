@@ -12,6 +12,7 @@ mappers:
   - &Companies {mapper: \IvozProvider\Mapper\Sql\Companies, modelFile: Companies}
   - &CompanyAdmins {mapper: \IvozProvider\Mapper\Sql\CompanyAdmins, modelFile: CompanyAdmins}
   - &CompanyServices {mapper: \IvozProvider\Mapper\Sql\CompanyServices, modelFile: CompanyServices}
+  - &ConferenceRooms {mapper: \IvozProvider\Mapper\Sql\ConferenceRooms, modelFile: ConferenceRooms}
   - &Countries {mapper: \IvozProvider\Mapper\Sql\Countries, modelFile: Countries}
   - &DDIs {mapper: \IvozProvider\Mapper\Sql\DDIs, modelFile: DDIs}
   - &Domains {mapper: \IvozProvider\Mapper\Sql\Domains, modelFile: Domains}

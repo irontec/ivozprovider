@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\DDIs
+ * Data Mapper implementation for IvozProvider\Model\ConferenceRooms
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class DDIs extends MapperAbstract
+class ConferenceRooms extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\DDIs';
+    protected $_modelName = 'IvozProvider\\Model\\ConferenceRooms';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class DDIs extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\DDIs $model
+     * @param IvozProvider\Model\Raw\ConferenceRooms $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\DDIs) {
+        if (!$model instanceof \IvozProvider\Model\Raw\ConferenceRooms) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\DDIs object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\ConferenceRooms object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\DDIs object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\ConferenceRooms object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,20 +49,11 @@ class DDIs extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'brandId' => $model->getBrandId(),
                 'companyId' => $model->getCompanyId(),
-                'DDI' => $model->getDDI(),
-                'DDIE164' => $model->getDDIE164(),
-                'externalCallFilterId' => $model->getExternalCallFilterId(),
-                'routeType' => $model->getRouteType(),
-                'userId' => $model->getUserId(),
-                'IVRCommonId' => $model->getIVRCommonId(),
-                'IVRCustomId' => $model->getIVRCustomId(),
-                'huntGroupId' => $model->getHuntGroupId(),
-                'faxId' => $model->getFaxId(),
-                'conferenceRoomId' => $model->getConferenceRoomId(),
-                'peeringContractId' => $model->getPeeringContractId(),
-                'countryId' => $model->getCountryId(),
+                'name' => $model->getName(),
+                'pinProtected' => $model->getPinProtected(),
+                'pinCode' => $model->getPinCode(),
+                'maxMembers' => $model->getMaxMembers(),
             );
         } else {
             $result = array();
@@ -101,12 +92,12 @@ class DDIs extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\DDIs
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\DDIs');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms');
         }
 
         return $this->_dbTable;
@@ -115,17 +106,17 @@ class DDIs extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\DDIs $model The model to delete
+     * @param IvozProvider\Model\Raw\ConferenceRooms $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\DDIs) {
+        if (!$model instanceof \IvozProvider\Model\Raw\ConferenceRooms) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\DDIs object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\ConferenceRooms object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\DDIs object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\ConferenceRooms object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -175,7 +166,7 @@ class DDIs extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\DDIs', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -223,7 +214,7 @@ class DDIs extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\DDIs', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -301,7 +292,7 @@ class DDIs extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\DDIs $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\ConferenceRooms $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -309,17 +300,17 @@ class DDIs extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\DDIs $model
+     * @param \IvozProvider\Model\Raw\ConferenceRooms $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\DDIs $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\ConferenceRooms $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\DDIs $model,
+    protected function _save(\IvozProvider\Model\Raw\ConferenceRooms $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -449,30 +440,30 @@ class DDIs extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getFaxes(null, null, true) !== null) {
-                    $faxes = $model->getFaxes();
+                if ($model->getDDIs(null, null, true) !== null) {
+                    $dDIs = $model->getDDIs();
 
-                    if (!is_array($faxes)) {
+                    if (!is_array($dDIs)) {
 
-                        $faxes = array($faxes);
+                        $dDIs = array($dDIs);
                     }
 
-                    foreach ($faxes as $value) {
-                        $value->setOutgoingDDIId($primaryKey)
+                    foreach ($dDIs as $value) {
+                        $value->setConferenceRoomId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
 
-                if ($model->getUsers(null, null, true) !== null) {
-                    $users = $model->getUsers();
+                if ($model->getExtensions(null, null, true) !== null) {
+                    $extensions = $model->getExtensions();
 
-                    if (!is_array($users)) {
+                    if (!is_array($extensions)) {
 
-                        $users = array($users);
+                        $extensions = array($extensions);
                     }
 
-                    foreach ($users as $value) {
-                        $value->setOutgoingDDIId($primaryKey)
+                    foreach ($extensions as $value) {
+                        $value->setConferenceRoomId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -561,13 +552,13 @@ class DDIs extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\DDIs|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\DDIs The model with the data provided
+     * @param IvozProvider\Model\Raw\ConferenceRooms|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\ConferenceRooms The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\DDIs();
+            $entry = new \IvozProvider\Model\ConferenceRooms();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -575,53 +566,26 @@ class DDIs extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setBrandId($data['brandId'])
                   ->setCompanyId($data['companyId'])
-                  ->setDDI($data['DDI'])
-                  ->setDDIE164($data['DDIE164'])
-                  ->setExternalCallFilterId($data['externalCallFilterId'])
-                  ->setRouteType($data['routeType'])
-                  ->setUserId($data['userId'])
-                  ->setIVRCommonId($data['IVRCommonId'])
-                  ->setIVRCustomId($data['IVRCustomId'])
-                  ->setHuntGroupId($data['huntGroupId'])
-                  ->setFaxId($data['faxId'])
-                  ->setConferenceRoomId($data['conferenceRoomId'])
-                  ->setPeeringContractId($data['peeringContractId'])
-                  ->setCountryId($data['countryId']);
+                  ->setName($data['name'])
+                  ->setPinProtected($data['pinProtected'])
+                  ->setPinCode($data['pinCode'])
+                  ->setMaxMembers($data['maxMembers']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setBrandId($data->{'brandId'})
                   ->setCompanyId($data->{'companyId'})
-                  ->setDDI($data->{'DDI'})
-                  ->setDDIE164($data->{'DDIE164'})
-                  ->setExternalCallFilterId($data->{'externalCallFilterId'})
-                  ->setRouteType($data->{'routeType'})
-                  ->setUserId($data->{'userId'})
-                  ->setIVRCommonId($data->{'IVRCommonId'})
-                  ->setIVRCustomId($data->{'IVRCustomId'})
-                  ->setHuntGroupId($data->{'huntGroupId'})
-                  ->setFaxId($data->{'faxId'})
-                  ->setConferenceRoomId($data->{'conferenceRoomId'})
-                  ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setCountryId($data->{'countryId'});
+                  ->setName($data->{'name'})
+                  ->setPinProtected($data->{'pinProtected'})
+                  ->setPinCode($data->{'pinCode'})
+                  ->setMaxMembers($data->{'maxMembers'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\ConferenceRooms) {
             $entry->setId($data->getId())
-                  ->setBrandId($data->getBrandId())
                   ->setCompanyId($data->getCompanyId())
-                  ->setDDI($data->getDDI())
-                  ->setDDIE164($data->getDDIE164())
-                  ->setExternalCallFilterId($data->getExternalCallFilterId())
-                  ->setRouteType($data->getRouteType())
-                  ->setUserId($data->getUserId())
-                  ->setIVRCommonId($data->getIVRCommonId())
-                  ->setIVRCustomId($data->getIVRCustomId())
-                  ->setHuntGroupId($data->getHuntGroupId())
-                  ->setFaxId($data->getFaxId())
-                  ->setConferenceRoomId($data->getConferenceRoomId())
-                  ->setPeeringContractId($data->getPeeringContractId())
-                  ->setCountryId($data->getCountryId());
+                  ->setName($data->getName())
+                  ->setPinProtected($data->getPinProtected())
+                  ->setPinCode($data->getPinCode())
+                  ->setMaxMembers($data->getMaxMembers());
 
         }
 
@@ -638,11 +602,11 @@ class DDIs extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'DDIs');
+        $etag = $etags->findOneByField('table', 'ConferenceRooms');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('DDIs');
+            $etag->setTable('ConferenceRooms');
         }
 
         $random = substr(

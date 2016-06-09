@@ -49,7 +49,7 @@ class DDIAction extends RouterAction
             // Play Welcome message
             $this->agi->playback($externalCallFilter->getWelcomeLocution());
         }
-        
+
         // Route to the extension destination
         $this->_routeType       = $ddi->getRouteType();
         $this->_routeUser       = $ddi->getUser();
@@ -57,6 +57,7 @@ class DDIAction extends RouterAction
         $this->_routeIVRCommon  = $ddi->getIVRCommon();
         $this->_routeIVRCustom  = $ddi->getIVRCustom();
         $this->_routeHuntGroup  = $ddi->getHuntGroup();
+        $this->_routeConference = $ddi->getConferenceRoom();
         $this->route();
     }
 }

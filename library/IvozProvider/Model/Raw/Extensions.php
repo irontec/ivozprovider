@@ -27,6 +27,7 @@ class Extensions extends ModelAbstract
         'IVRCommon',
         'IVRCustom',
         'huntGroup',
+        'conferenceRoom',
     );
 
     /**
@@ -51,7 +52,7 @@ class Extensions extends ModelAbstract
     protected $_number;
 
     /**
-     * [enum:user|IVRCommon|IVRCustom|huntGroup]
+     * [enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]
      * Database var type varchar
      *
      * @var string
@@ -79,6 +80,20 @@ class Extensions extends ModelAbstract
      */
     protected $_huntGroupId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_conferenceRoomId;
+
+
+    /**
+     * Parent relation Extensions_ibfk_5
+     *
+     * @var \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    protected $_ConferenceRoom;
 
     /**
      * Parent relation Extensions_ibfk_1
@@ -197,6 +212,7 @@ class Extensions extends ModelAbstract
         'IVRCommonId'=>'IVRCommonId',
         'IVRCustomId'=>'IVRCustomId',
         'huntGroupId'=>'huntGroupId',
+        'conferenceRoomId'=>'conferenceRoomId',
     );
 
     /**
@@ -205,7 +221,7 @@ class Extensions extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup'),
+            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -214,6 +230,10 @@ class Extensions extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'ExtensionsIbfk5'=> array(
+                    'property' => 'ConferenceRoom',
+                    'table_name' => 'ConferenceRooms',
+                ),
             'ExtensionsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -561,6 +581,91 @@ class Extensions extends ModelAbstract
     public function getHuntGroupId()
     {
         return $this->_huntGroupId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setConferenceRoomId($data)
+    {
+
+        if ($this->_conferenceRoomId != $data) {
+            $this->_logChange('conferenceRoomId');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_conferenceRoomId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_conferenceRoomId = (int) $data;
+
+        } else {
+            $this->_conferenceRoomId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column conferenceRoomId
+     *
+     * @return int
+     */
+    public function getConferenceRoomId()
+    {
+        return $this->_conferenceRoomId;
+    }
+
+    /**
+     * Sets parent relation ConferenceRoom
+     *
+     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
+    {
+        $this->_ConferenceRoom = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setConferenceRoomId($primaryKey);
+        }
+
+        $this->_setLoaded('ExtensionsIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets parent ConferenceRoom
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExtensionsIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ConferenceRoom = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ConferenceRoom;
     }
 
     /**

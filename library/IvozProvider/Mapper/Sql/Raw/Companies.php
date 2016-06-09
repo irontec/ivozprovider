@@ -522,6 +522,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getConferenceRooms(null, null, true) !== null) {
+                    $conferenceRooms = $model->getConferenceRooms();
+
+                    if (!is_array($conferenceRooms)) {
+
+                        $conferenceRooms = array($conferenceRooms);
+                    }
+
+                    foreach ($conferenceRooms as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 

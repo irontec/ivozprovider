@@ -31,6 +31,7 @@ production:
           'IVRCommon': _('IVRCommon')
           'IVRCustom': _('IVRCustom')
           'huntGroup': _('huntGroup')
+          'conferenceRoom': _('conferenceRoom')
     IVRCommonId: 
       title: _('I v r common id')
       type: select
@@ -64,6 +65,19 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\HuntGroups
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    conferenceRoomId: 
+      title: _('Conference room id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
           fieldName: 
             fields: 
               - name

@@ -66,6 +66,7 @@ production:
             IVRCommonId: 1
             IVRCustomId: 1
             huntGroupId: 1
+            conferenceRoomId: 1
       options: 
         title: _("Options")
         screens: 

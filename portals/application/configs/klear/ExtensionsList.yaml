@@ -30,6 +30,7 @@ production:
           IVRCustomId: true
           huntGroupId: true
           userId: true
+          conferenceRoomId: true
         order:
           number: true
           routeType: true
@@ -68,6 +69,7 @@ production:
             IVRCustomId: 1
             huntGroupId: 1
             userId: 1
+            conferenceRoomId: 1
     extensionsEdit_screen: &extensionsEdit_screenLink 
       <<: *Extensions
       controller: edit

@@ -77,6 +77,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallACLPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyAdmins',
         'IvozProvider\\Mapper\\Sql\\DbTable\\CompanyServices',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Domains',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',

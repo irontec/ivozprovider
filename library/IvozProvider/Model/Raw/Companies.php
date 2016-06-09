@@ -234,6 +234,14 @@ class Companies extends ModelAbstract
     protected $_CompanyServices;
 
     /**
+     * Dependent relation ConferenceRooms_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConferenceRooms[]
+     */
+    protected $_ConferenceRooms;
+
+    /**
      * Dependent relation DDIs_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -498,6 +506,10 @@ class Companies extends ModelAbstract
             'CompanyServicesIbfk1' => array(
                     'property' => 'CompanyServices',
                     'table_name' => 'CompanyServices',
+                ),
+            'ConferenceRoomsIbfk1' => array(
+                    'property' => 'ConferenceRooms',
+                    'table_name' => 'ConferenceRooms',
                 ),
             'DDIsIbfk1' => array(
                     'property' => 'DDIs',
@@ -2029,6 +2041,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_CompanyServices;
+    }
+
+    /**
+     * Sets dependent relations ConferenceRooms_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConferenceRooms
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setConferenceRooms(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConferenceRooms === null) {
+
+                $this->getConferenceRooms();
+            }
+
+            $oldRelations = $this->_ConferenceRooms;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConferenceRooms = array();
+
+        foreach ($data as $object) {
+            $this->addConferenceRooms($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConferenceRooms_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addConferenceRooms(\IvozProvider\Model\Raw\ConferenceRooms $data)
+    {
+        $this->_ConferenceRooms[] = $data;
+        $this->_setLoaded('ConferenceRoomsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConferenceRooms_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    public function getConferenceRooms($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConferenceRoomsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConferenceRooms = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConferenceRooms;
     }
 
     /**

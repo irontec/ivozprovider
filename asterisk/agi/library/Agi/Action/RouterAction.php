@@ -4,57 +4,59 @@ namespace Agi\Action;
 class RouterAction
 {
     private $_actionHistory;
-    
+
     private $_parent;
-    
+
     protected $agi;
-    
+
     protected $_user;
-    
+
     protected $_routeType;
-    
+
     protected $_routeUser;
-    
+
     protected $_routeExtension;
-    
+
     protected $_routeIVRCommon;
-    
+
     protected $_routeIVRCustom;
-    
+
     protected $_routeVoiceMail;
-    
+
     protected $_routeHuntGroup;
-    
+
     protected $_routeExternal;
-    
+
     protected $_routeFax;
-    
+
+    protected $_routeConference;
+
     public function __construct($parent)
     {
         // Store parent
         $this->_parent = $parent;
-    
+
         // Get agi wrapper from parent
         $this->agi = $parent->agi;
-    
+
         // Get action history so far
         if ($parent instanceOf \Agi\Action\RouterAction) {
             $this->_actionHistory = $parent->_actionHistory;
         } else {
             $this->_actionHistory = array();
         }
-    
+
         // Add current Action to history
         array_push($this->_actionHistory, $this);
-    
+
     }
-    
+
     public function setUser($user)
     {
         $this->_user = $user;
         return $this;
     }
-   
+
     public function route()
     {
         // Validate route type
@@ -62,7 +64,7 @@ class RouterAction
             $this->agi->error("No configured routeType. This can not be routed.");
             return;
         }
-        
+
         // Get Action name
         $reflect = new \ReflectionClass($this);
 
@@ -85,7 +87,7 @@ class RouterAction
                 $this->_routeToIVRCustom();
                 break;
             case 'voicemail':
-                $this->_routeToVoiceMail(); 
+                $this->_routeToVoiceMail();
                 break;
             case 'huntGroup':
                 $this->_routeToHuntGroup();
@@ -93,9 +95,12 @@ class RouterAction
             case 'fax':
                 $this->_routeToFax();
                 break;
+            case 'conferenceRoom':
+                $this->_routeToConferenceRoom();
+                break;
         }
     }
-    
+
     protected function _routeToExtension()
     {
         $extensionAction = new ExtensionAction($this);
@@ -104,7 +109,7 @@ class RouterAction
             ->setExtension($this->_routeExtension)
             ->process();
     }
-    
+
     protected function _routeToUser()
     {
         // Handle Call user route
@@ -114,7 +119,7 @@ class RouterAction
             ->setProcessDialStatus(true)
             ->call();
     }
-    
+
     protected function _routeToExternal()
     {
         $externalAction = new ExternalCallAction($this);
@@ -123,7 +128,7 @@ class RouterAction
             ->setDestination($this->_routeExternal)
             ->process();
     }
-    
+
     protected function _routeToIVRCommon()
     {
         // Handle DTMF IVR route
@@ -132,7 +137,7 @@ class RouterAction
             ->setIVR($this->_routeIVRCommon)
             ->process();
     }
-    
+
     protected function _routeToIVRCustom()
     {
         // Handle Extension IVR route
@@ -141,7 +146,7 @@ class RouterAction
             ->setIVR($this->_routeIVRCustom)
             ->process();
     }
-    
+
     protected function _routeToVoiceMail()
     {
         // Handle voicemail route
@@ -150,7 +155,7 @@ class RouterAction
             ->setVoiceMail($this->_routeVoiceMail)
             ->process();
     }
-    
+
     protected function _routeToHuntGroup()
     {
         // Handle huntgroup route
@@ -159,6 +164,7 @@ class RouterAction
             ->setHuntGroup($this->_routeHuntGroup)
             ->process();
     }
+
     protected function _routeToFax()
     {
         $faxAction = new FaxCallAction($this);
@@ -166,4 +172,13 @@ class RouterAction
             ->setFax($this->_routeFax)
             ->reciveFax();
     }
+
+    protected function _routeToConferenceRoom()
+    {
+        $conferenceAction = new ConferenceRoomAction($this);
+        $conferenceAction
+            ->setConferenceRoom($this->_routeConference)
+            ->process();
+    }
+
 }

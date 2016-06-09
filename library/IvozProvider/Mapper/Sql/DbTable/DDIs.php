@@ -40,14 +40,19 @@ class DDIs extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'DDIsIbfk10' => array(
-            'columns' => 'brandId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+        'DDIsIbfk11' => array(
+            'columns' => 'conferenceRoomId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
             'refColumns' => 'id'
         ),
         'DDIsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk10' => array(
+            'columns' => 'brandId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
             'refColumns' => 'id'
         ),
         'DDIsIbfk2' => array(
@@ -300,12 +305,29 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'conferenceRoomId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'conferenceRoomId',
+	    'COLUMN_POSITION' => 13,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	  'peeringContractId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'peeringContractId',
-	    'COLUMN_POSITION' => 13,
+	    'COLUMN_POSITION' => 14,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -322,7 +344,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'countryId',
-	    'COLUMN_POSITION' => 14,
+	    'COLUMN_POSITION' => 15,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

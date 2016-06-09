@@ -176,9 +176,9 @@ class Agi_Wrapper
 	    return $this->_fastagi->get_variable("PRESSED");
 	}
 
-	public function getDeviceState($interface)
+	public function getDeviceState($interface, $prefix = "PJSIP/")
 	{
-	    return $this->getVariable("DEVICE_STATE(PJSIP/$interface)");
+	    return $this->getVariable("DEVICE_STATE($prefix$interface)");
 	}
 
 	public function getOrigCallerIdNum()
@@ -234,6 +234,21 @@ class Agi_Wrapper
 	public function getRedirecting($type)
 	{
 	    return $this->_fastagi->get_variable("REDIRECTING($type)");
+	}
+
+	public function getConferenceInfo($num, $type)
+	{
+	    return $this->_fastagi->get_variable("CONFBRIDGE_INFO($type,$num)");
+	}
+
+	public function setConferenceSetting($setting, $value)
+	{
+        return $this->_fastagi->set_variable("CONFBRIDGE($setting)", $value);
+	}
+
+	public function getConferenceSetting($setting)
+	{
+	    return $this->_fastagi->get_variable("CONFBRIDGE($setting)");
 	}
 
 	public function dial($interfaces, $timeout, $options = "", $headers = "")
