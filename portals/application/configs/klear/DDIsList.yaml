@@ -40,8 +40,8 @@ production:
           IVRCommonId: true
           IVRCustomId: true
           huntGroupId: true
+          conferenceRoomId: true
           DDIE164: true
-          peeringContractId: true
           brandId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:

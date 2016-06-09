@@ -34,8 +34,8 @@ production:
           IVRCustomId: true
           huntGroupId: true
           DDIE164: true
-          peeringContractId: true
           brandId: true
+          conferenceRoomId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
