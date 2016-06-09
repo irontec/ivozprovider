@@ -22,13 +22,19 @@ while (<>) {
     s!#015!!g;
     s!#012!\n!g;
 
+    # If '[<null>]', remove
+    s!\[<null>\] !!g;
+
     # Print each message with its colour
     given ($_) {
-        when (/ ALERT:| BUG: | CRITICAL: | ERROR:/) { print RED $_; }
-        when (/ WARNING:/) { print YELLOW $_; }
-        when (/ NOTICE:/) { print MAGENTA $_; }
-        when (/ INFO:/) { print GREEN $_; }
-        when (/ DEBUG:/) { print CYAN $_; }
+        when (/(.*) ALERT: (.*)/) { say RED "$1 $2"; }
+        when (/(.*) BUG: (.*)/) { say RED "$1 $2"; }
+        when (/(.*) CRITICAL: (.*)/) { say RED "$1 $2"; }
+        when (/(.*) ERROR: (.*)/) { say RED "$1 $2"; }
+        when (/(.*) WARNING: (.*)/) { say YELLOW "$1 $2"; }
+        when (/(.*) NOTICE: (.*)/) { say MAGENTA "$1 $2"; }
+        when (/(.*) INFO: (.*)/) { say GREEN "$1 $2"; }
+        when (/(.*) DEBUG: (.*)/) { say CYAN "$1 $2"; }
         default { print WHITE $_; }
     }
 }

@@ -571,7 +571,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'parsed' => array(
-                    'type' => 'enum('yes','no','delayed','error')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -712,7 +712,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'parsed' => array(
-                    'type' => 'enum('yes','no','delayed','error')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),

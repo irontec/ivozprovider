@@ -139,6 +139,13 @@ class KamAccCdrs extends ModelAbstract
      *
      * @var string
      */
+    protected $_callidHash;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_xcallid;
 
     /**
@@ -271,6 +278,7 @@ class KamAccCdrs extends ModelAbstract
         'asIden'=>'asIden',
         'asAddress'=>'asAddress',
         'callid'=>'callid',
+        'callidHash'=>'callidHash',
         'xcallid'=>'xcallid',
         'parsed'=>'parsed',
         'diversion'=>'diversion',
@@ -939,6 +947,40 @@ class KamAccCdrs extends ModelAbstract
     public function getCallid()
     {
         return $this->_callid;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setCallidHash($data)
+    {
+
+        if ($this->_callidHash != $data) {
+            $this->_logChange('callidHash');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_callidHash = $data;
+
+        } else if (!is_null($data)) {
+            $this->_callidHash = (string) $data;
+
+        } else {
+            $this->_callidHash = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column callidHash
+     *
+     * @return string
+     */
+    public function getCallidHash()
+    {
+        return $this->_callidHash;
     }
 
     /**

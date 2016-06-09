@@ -88,6 +88,10 @@ production:
       title: _('Callid')
       type: text
       maxLength: 128
+    callidHash: 
+      title: _('Callid hash')
+      type: text
+      maxLength: 128
     xcallid: 
       title: _('Xcallid')
       type: text

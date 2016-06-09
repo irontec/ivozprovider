@@ -18,7 +18,6 @@ use DBI;
 no warnings;
 use Gearman::Client;
 use POSIX;
-use Digest::MD5 qw(md5_hex);
 
 #########################################
 # GLOBALS
@@ -60,6 +59,7 @@ my $MAXCALLS = 100;
 #     referrer
 #     referee
 #     callid
+#     callidHash
 #     xcallid
 #     type
 #     subtype
@@ -73,7 +73,6 @@ my $MAXCALLS = 100;
 #     legType
 #     initialLeg
 #     initialLegHash
-#     callidHash
 #     xferdst
 #     xfercid
 # };
@@ -414,9 +413,6 @@ sub addLegToGroup {
     # If leg has referee, add to counter
     push @{$group{referees}}, $$leg{callid} if $$leg{referee};
 
-    # Set callidHash
-    $$leg{callidHash} = substr md5_hex($$leg{callid}), 0, 8;
-
     # Set leg initial callid
     $$leg{initialLeg} = $group{initialLeg};
     $$leg{initialLegHash} = $group{initialLegHash};
@@ -628,7 +624,7 @@ for my $aleg (@$alegs) {
     $group{alegs} = []; 
     $group{blegs} = []; 
     $group{initialLeg} = $$aleg{callid};
-    $group{initialLegHash} = substr md5_hex($$aleg{callid}), 0, 8;
+    $group{initialLegHash} = $$aleg{callidHash};
     $group{reparsing} = 0;
 
     # Add aleg to a new group

@@ -63,6 +63,7 @@ class KamAccCdrs extends MapperAbstract
                 'asIden' => $model->getAsIden(),
                 'asAddress' => $model->getAsAddress(),
                 'callid' => $model->getCallid(),
+                'callidHash' => $model->getCallidHash(),
                 'xcallid' => $model->getXcallid(),
                 'parsed' => $model->getParsed(),
                 'diversion' => $model->getDiversion(),
@@ -570,6 +571,7 @@ class KamAccCdrs extends MapperAbstract
                   ->setAsIden($data['asIden'])
                   ->setAsAddress($data['asAddress'])
                   ->setCallid($data['callid'])
+                  ->setCallidHash($data['callidHash'])
                   ->setXcallid($data['xcallid'])
                   ->setParsed($data['parsed'])
                   ->setDiversion($data['diversion'])
@@ -598,6 +600,7 @@ class KamAccCdrs extends MapperAbstract
                   ->setAsIden($data->{'asIden'})
                   ->setAsAddress($data->{'asAddress'})
                   ->setCallid($data->{'callid'})
+                  ->setCallidHash($data->{'callidHash'})
                   ->setXcallid($data->{'xcallid'})
                   ->setParsed($data->{'parsed'})
                   ->setDiversion($data->{'diversion'})
@@ -627,6 +630,7 @@ class KamAccCdrs extends MapperAbstract
                   ->setAsIden($data->getAsIden())
                   ->setAsAddress($data->getAsAddress())
                   ->setCallid($data->getCallid())
+                  ->setCallidHash($data->getCallidHash())
                   ->setXcallid($data->getXcallid())
                   ->setParsed($data->getParsed())
                   ->setDiversion($data->getDiversion())
