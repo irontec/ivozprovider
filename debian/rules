@@ -25,6 +25,7 @@ override_dh_systemd_enable:
 	dh_systemd_enable -p ivozprovider-kamailio-users  --name=kamusers@     kamusers@.service  --no-enable
 	dh_systemd_enable -p ivozprovider-kamailio-trunks --name=kamtrunks@    kamtrunks@.service --no-enable
 	dh_systemd_enable -p ivozprovider-profile-data	  --name=cdrparser     cdrparser.service  --no-enable
+	dh_systemd_enable -p ivozprovider-profile-portal  --name=gearman-job-server gearman-job-server.service
 
 override_dh_systemd_start:
 	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi@     fastagi@.service   --no-restart-on-upgrade --no-start
@@ -32,6 +33,7 @@ override_dh_systemd_start:
 	dh_systemd_start  -p ivozprovider-kamailio-users   --name=kamusers@    kamusers@.service  --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-kamailio-trunks  --name=kamtrunks@   kamtrunks@.service --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-profile-data	   --name=cdrparser    cdrparser.service  --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-profile-portal   --name=gearman-job-server gearman-job-server.service --restart-after-upgrade
 
 # Install /etc/default configuration
 override_dh_installinit:
