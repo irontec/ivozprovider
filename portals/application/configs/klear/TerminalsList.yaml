@@ -78,8 +78,8 @@ production:
           label: _("Connection Info")     
           colsPerRow: 12
           fields:
-            disallow: 6
-            allow: 6
+            disallow: 8
+            allow: 8
             direct_media_method: 5
         group2:
           label: _("Provisioning Info")

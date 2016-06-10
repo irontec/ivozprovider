@@ -1,3 +1,5 @@
+#include ../conf.d/codecsHelp.yaml
+
 production: 
   class: \IvozProvider\Model\Terminals
   fields: 
@@ -26,24 +28,14 @@ production:
       trim: both
       defaultValue: all
       maxLength: 100
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Comma separated codec names")
-        label: _("Need help?")       
+      <<: *codecsHelp
     allow: 
       title: _('Allowed codecs')
       type: text
       trim: both
       defaultValue: alaw
       maxLength: 100
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Comma separated codec names")
-        label: _("Need help?")      
+      <<: *codecsHelp
     direct_media: 
       title: _('Direct media')
       type: select
@@ -81,7 +73,6 @@ production:
         icon: help
         text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '!@#$&*'")
         label: _("Need help?")
-      suffix: '<a href="#" class="generatePasswd">G</a>'
       options:
         commands:
           generatePassword_command: true 
