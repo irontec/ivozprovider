@@ -92,7 +92,6 @@ class Users extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroupCallForwardSettings',
         'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroupsRelUsers',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',

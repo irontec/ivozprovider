@@ -149,14 +149,6 @@ class Extensions extends ModelAbstract
     protected $_ExternalCallFiltersByOutOfScheduleExtension;
 
     /**
-     * Dependent relation HuntGroupCallForwardSettings_ibfk_2
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\HuntGroupCallForwardSettings[]
-     */
-    protected $_HuntGroupCallForwardSettings;
-
-    /**
      * Dependent relation IVRCommon_ibfk_6
      * Type: One-to-Many relationship
      *
@@ -264,10 +256,6 @@ class Extensions extends ModelAbstract
             'ExternalCallFiltersIbfk6' => array(
                     'property' => 'ExternalCallFiltersByOutOfScheduleExtension',
                     'table_name' => 'ExternalCallFilters',
-                ),
-            'HuntGroupCallForwardSettingsIbfk2' => array(
-                    'property' => 'HuntGroupCallForwardSettings',
-                    'table_name' => 'HuntGroupCallForwardSettings',
                 ),
             'IVRCommonIbfk6' => array(
                     'property' => 'IVRCommonByTimeoutExtension',
@@ -1140,96 +1128,6 @@ class Extensions extends ModelAbstract
         }
 
         return $this->_ExternalCallFiltersByOutOfScheduleExtension;
-    }
-
-    /**
-     * Sets dependent relations HuntGroupCallForwardSettings_ibfk_2
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
-     * @return \IvozProvider\Model\Raw\Extensions
-     */
-    public function setHuntGroupCallForwardSettings(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_HuntGroupCallForwardSettings === null) {
-
-                $this->getHuntGroupCallForwardSettings();
-            }
-
-            $oldRelations = $this->_HuntGroupCallForwardSettings;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_HuntGroupCallForwardSettings = array();
-
-        foreach ($data as $object) {
-            $this->addHuntGroupCallForwardSettings($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations HuntGroupCallForwardSettings_ibfk_2
-     *
-     * @param \IvozProvider\Model\Raw\HuntGroupCallForwardSettings $data
-     * @return \IvozProvider\Model\Raw\Extensions
-     */
-    public function addHuntGroupCallForwardSettings(\IvozProvider\Model\Raw\HuntGroupCallForwardSettings $data)
-    {
-        $this->_HuntGroupCallForwardSettings[] = $data;
-        $this->_setLoaded('HuntGroupCallForwardSettingsIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets dependent HuntGroupCallForwardSettings_ibfk_2
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
-     */
-    public function getHuntGroupCallForwardSettings($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'HuntGroupCallForwardSettingsIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_HuntGroupCallForwardSettings = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_HuntGroupCallForwardSettings;
     }
 
     /**

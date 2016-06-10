@@ -3,7 +3,6 @@
 #include CallForwardSettingsList.yaml
 #include DDIsList.yaml
 #include ExternalCallFiltersList.yaml
-#include HuntGroupCallForwardSettingsList.yaml
 #include HuntGroupsRelUsersList.yaml
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
@@ -32,7 +31,6 @@ production:
             callForwardSettingsList_screen: true
             dDIsList_screen: true
             externalCallFiltersList_screen: true
-            huntGroupCallForwardSettingsList_screen: true
             huntGroupsRelUsersList_screen: true
             iVRCommonList_screen: true
             iVRCustomList_screen: true
@@ -105,19 +103,6 @@ production:
     externalCallFiltersEdit_screen: 
       <<: *externalCallFiltersEdit_screenLink
       filterField: outOfScheduleVoiceMailUserId
-
-    #huntGroupCallForwardSettings: 
-    huntGroupCallForwardSettingsList_screen: 
-      <<: *huntGroupCallForwardSettingsList_screenLink
-      filterField: callVoiceMailUserId
-      parentOptionCustomizer: 
-        - recordCount
-    huntGroupCallForwardSettingsNew_screen: 
-      <<: *huntGroupCallForwardSettingsNew_screenLink
-      filterField: callVoiceMailUserId
-    huntGroupCallForwardSettingsEdit_screen: 
-      <<: *huntGroupCallForwardSettingsEdit_screenLink
-      filterField: callVoiceMailUserId
 
     #huntGroupsRelUsers: 
     huntGroupsRelUsersList_screen: 
@@ -214,8 +199,6 @@ production:
     <<: *dDIs_dialogsLink
   # externalCallFilters dialogs: 
     <<: *externalCallFilters_dialogsLink
-  # huntGroupCallForwardSettings dialogs: 
-    <<: *huntGroupCallForwardSettings_dialogsLink
   # huntGroupsRelUsers dialogs: 
     <<: *huntGroupsRelUsers_dialogsLink
   # iVRCommon dialogs: 

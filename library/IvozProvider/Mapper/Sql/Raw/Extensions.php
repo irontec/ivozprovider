@@ -484,20 +484,6 @@ class Extensions extends MapperAbstract
                     }
                 }
 
-                if ($model->getHuntGroupCallForwardSettings(null, null, true) !== null) {
-                    $huntGroupCallForwardSettings = $model->getHuntGroupCallForwardSettings();
-
-                    if (!is_array($huntGroupCallForwardSettings)) {
-
-                        $huntGroupCallForwardSettings = array($huntGroupCallForwardSettings);
-                    }
-
-                    foreach ($huntGroupCallForwardSettings as $value) {
-                        $value->setCallExtensionId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getIVRCommonByTimeoutExtension(null, null, true) !== null) {
                     $iVRCommon = $model->getIVRCommonByTimeoutExtension();
 

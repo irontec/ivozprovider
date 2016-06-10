@@ -305,14 +305,6 @@ class Users extends ModelAbstract
     protected $_ExternalCallFiltersByOutOfScheduleVoiceMailUser;
 
     /**
-     * Dependent relation HuntGroupCallForwardSettings_ibfk_3
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\HuntGroupCallForwardSettings[]
-     */
-    protected $_HuntGroupCallForwardSettings;
-
-    /**
      * Dependent relation HuntGroupsRelUsers_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -486,10 +478,6 @@ class Users extends ModelAbstract
                     'property' => 'ExternalCallFiltersByOutOfScheduleVoiceMailUser',
                     'table_name' => 'ExternalCallFilters',
                 ),
-            'HuntGroupCallForwardSettingsIbfk3' => array(
-                    'property' => 'HuntGroupCallForwardSettings',
-                    'table_name' => 'HuntGroupCallForwardSettings',
-                ),
             'HuntGroupsRelUsersIbfk2' => array(
                     'property' => 'HuntGroupsRelUsers',
                     'table_name' => 'HuntGroupsRelUsers',
@@ -531,7 +519,6 @@ class Users extends ModelAbstract
         $this->setOnDeleteCascadeRelationships(array(
             'CallForwardSettings_ibfk_1',
             'CallForwardSettings_ibfk_3',
-            'HuntGroupCallForwardSettings_ibfk_3',
             'HuntGroupsRelUsers_ibfk_2',
             'PickUpRelUsers_ibfk_2'
         ));
@@ -2366,96 +2353,6 @@ class Users extends ModelAbstract
         }
 
         return $this->_ExternalCallFiltersByOutOfScheduleVoiceMailUser;
-    }
-
-    /**
-     * Sets dependent relations HuntGroupCallForwardSettings_ibfk_3
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setHuntGroupCallForwardSettings(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_HuntGroupCallForwardSettings === null) {
-
-                $this->getHuntGroupCallForwardSettings();
-            }
-
-            $oldRelations = $this->_HuntGroupCallForwardSettings;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_HuntGroupCallForwardSettings = array();
-
-        foreach ($data as $object) {
-            $this->addHuntGroupCallForwardSettings($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations HuntGroupCallForwardSettings_ibfk_3
-     *
-     * @param \IvozProvider\Model\Raw\HuntGroupCallForwardSettings $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function addHuntGroupCallForwardSettings(\IvozProvider\Model\Raw\HuntGroupCallForwardSettings $data)
-    {
-        $this->_HuntGroupCallForwardSettings[] = $data;
-        $this->_setLoaded('HuntGroupCallForwardSettingsIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets dependent HuntGroupCallForwardSettings_ibfk_3
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\HuntGroupCallForwardSettings
-     */
-    public function getHuntGroupCallForwardSettings($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'HuntGroupCallForwardSettingsIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_HuntGroupCallForwardSettings = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_HuntGroupCallForwardSettings;
     }
 
     /**

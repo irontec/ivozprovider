@@ -49,7 +49,6 @@ class HuntGroups extends TableAbstract
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroupCallForwardSettings',
         'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroupsRelUsers'
     );
     protected $_metadata = array (

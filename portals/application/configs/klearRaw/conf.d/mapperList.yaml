@@ -28,7 +28,6 @@ mappers:
   - &GenericCallACLPatterns {mapper: \IvozProvider\Mapper\Sql\GenericCallACLPatterns, modelFile: GenericCallACLPatterns}
   - &GenericMusicOnHold {mapper: \IvozProvider\Mapper\Sql\GenericMusicOnHold, modelFile: GenericMusicOnHold}
   - &HolidayDates {mapper: \IvozProvider\Mapper\Sql\HolidayDates, modelFile: HolidayDates}
-  - &HuntGroupCallForwardSettings {mapper: \IvozProvider\Mapper\Sql\HuntGroupCallForwardSettings, modelFile: HuntGroupCallForwardSettings}
   - &HuntGroups {mapper: \IvozProvider\Mapper\Sql\HuntGroups, modelFile: HuntGroups}
   - &HuntGroupsRelUsers {mapper: \IvozProvider\Mapper\Sql\HuntGroupsRelUsers, modelFile: HuntGroupsRelUsers}
   - &IVRCommon {mapper: \IvozProvider\Mapper\Sql\IVRCommon, modelFile: IVRCommon}

@@ -2,7 +2,6 @@
 #include conf.d/actions.yaml
 #include DDIsList.yaml
 #include ExtensionsList.yaml
-#include HuntGroupCallForwardSettingsList.yaml
 #include HuntGroupsRelUsersList.yaml
 
 
@@ -25,7 +24,6 @@ production:
             huntGroupsEdit_screen: true
             dDIsList_screen: true
             extensionsList_screen: true
-            huntGroupCallForwardSettingsList_screen: true
             huntGroupsRelUsersList_screen: true
           dialogs: 
             huntGroupsDel_dialog: true
@@ -81,19 +79,6 @@ production:
       <<: *extensionsEdit_screenLink
       filterField: huntGroupId
 
-    #huntGroupCallForwardSettings: 
-    huntGroupCallForwardSettingsList_screen: 
-      <<: *huntGroupCallForwardSettingsList_screenLink
-      filterField: huntGroupId
-      parentOptionCustomizer: 
-        - recordCount
-    huntGroupCallForwardSettingsNew_screen: 
-      <<: *huntGroupCallForwardSettingsNew_screenLink
-      filterField: huntGroupId
-    huntGroupCallForwardSettingsEdit_screen: 
-      <<: *huntGroupCallForwardSettingsEdit_screenLink
-      filterField: huntGroupId
-
     #huntGroupsRelUsers: 
     huntGroupsRelUsersList_screen: 
       <<: *huntGroupsRelUsersList_screenLink
@@ -122,8 +107,6 @@ production:
     <<: *dDIs_dialogsLink
   # extensions dialogs: 
     <<: *extensions_dialogsLink
-  # huntGroupCallForwardSettings dialogs: 
-    <<: *huntGroupCallForwardSettings_dialogsLink
   # huntGroupsRelUsers dialogs: 
     <<: *huntGroupsRelUsers_dialogsLink
 staging: 

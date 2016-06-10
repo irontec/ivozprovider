@@ -469,20 +469,6 @@ class HuntGroups extends MapperAbstract
                     }
                 }
 
-                if ($model->getHuntGroupCallForwardSettings(null, null, true) !== null) {
-                    $huntGroupCallForwardSettings = $model->getHuntGroupCallForwardSettings();
-
-                    if (!is_array($huntGroupCallForwardSettings)) {
-
-                        $huntGroupCallForwardSettings = array($huntGroupCallForwardSettings);
-                    }
-
-                    foreach ($huntGroupCallForwardSettings as $value) {
-                        $value->setHuntGroupId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getHuntGroupsRelUsers(null, null, true) !== null) {
                     $huntGroupsRelUsers = $model->getHuntGroupsRelUsers();
 

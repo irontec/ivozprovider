@@ -151,10 +151,6 @@ production:
           title: ngettext('Holiday date', 'Holiday dates', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Holiday date', 'Holiday dates', 0))
-        HuntGroupCallForwardSettingsList: 
-          title: ngettext('Hunt group call forward setting', 'Hunt group call forward settings', 0)
-          class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Hunt group call forward setting', 'Hunt group call forward settings', 0))
         HuntGroupsList: 
           title: ngettext('Hunt group', 'Hunt groups', 0)
           class: ui-silk-text-list-bullets
