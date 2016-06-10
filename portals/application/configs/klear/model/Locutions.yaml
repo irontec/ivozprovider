@@ -39,7 +39,7 @@ production:
             title: _("Listen to MoH")
             class: jmedia
             onNull: hide
-            target: musicOnHold_FileDownload_command
+            target: locutionsEncodedFileDownload_command
     encodedFile: 
       title: ngettext('File for play', 'Files for play', 1)
       type: file
@@ -59,7 +59,7 @@ production:
             title: _("Listen to MoH")
             class: jmedia
             onNull: hide
-            target: musicOnHold_FileDownload_command
+            target: locutionsEncodedFileDownload_command
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text

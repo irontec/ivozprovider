@@ -42,28 +42,7 @@ production:
             title: _("Upload file")
             class: qq-uploader
             onNull: show
-          preview: 
-            target: genericMusicOnHold_FilePreview_command
-            type: command
-            class: filePreview
-            external: 1
-            props: 
-              width: 150
-              height: 150
-              crop: false
-            onNull: hide
-          previewList: 
-            target: genericMusicOnHold_FilePreview_command
-            type: command
-            class: filePreview
-            listController: 1
-            external: 1
-            props: 
-              width: 30
-              height: 30
-              crop: false
-            onNull: hide
-    encodedFile: 
+    encodedFile:
       title: ngettext('File', 'Files', 1)
       type: file
       source: 
@@ -83,17 +62,7 @@ production:
             class: jmedia
             onNull: hide
             target: genericMusicOnHold_FileDownload_command
-          preview: 
-            target: genericMusicOnHold_FilePreview_command
-            type: command
-            class: filePreview
-            external: 1
-            props: 
-              width: 150
-              height: 150
-              crop: false
-            onNull: hide
-    name: 
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
