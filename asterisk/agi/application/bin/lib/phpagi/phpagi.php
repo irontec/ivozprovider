@@ -654,10 +654,9 @@ class AGI
 	function set_variable($variable, $value)
 	{
 		$bt = debug_backtrace();
-		$file = basename($bt[1]['file']);
-		$line = $bt[1]['line'];
+		$location = $this->source_location($bt[1]['file'], $bt[1]['line']);
 		$value = str_replace("\n", '\n', addslashes($value));
-		return $this->evaluate("SET VARIABLE $variable \"$value\" $file $line");
+		return $this->evaluate("SET VARIABLE $variable \"$value\" $location");
 	}
 
 	/**
@@ -709,22 +708,20 @@ class AGI
 	{
 		// Get original file and line for this message
 		$bt = debug_backtrace();
-		$file = basename($bt[1]['file']);
-		$line = $bt[1]['line'];
+		$location = $this->source_location($bt[1]['file'], $bt[1]['line']);
 
 		// Send this command to asterisk
-		return $this->evaluate("VERBOSE \"$msg\" 3 $file $line");
+		return $this->evaluate("VERBOSE \"$msg\" 4 $location");
 	}
 
 	function error($msg)
 	{
 		// Get original file and line for this message
 		$bt = debug_backtrace();
-		$file = basename($bt[1]['file']);
-		$line = $bt[1]['line'];
+		$location = $this->source_location($bt[1]['file'], $bt[1]['line']);
 
 		// Send this command to asterisk
-		return $this->evaluate("ERROR \"$msg\" 3 $file $line");
+		return $this->evaluate("ERROR \"$msg\" 4 $location");
 	}
 
 
@@ -1667,6 +1664,37 @@ class AGI
 			$base .= DIRECTORY_SEPARATOR;
 		}
 	}
+
+	/**
+	 * Build the location string for cli messages
+	 *
+	 * Location string contains file and line separated by :
+	 * with a maximum of 25 chars. If the location is greater than this size
+	 * file will be printed without extension. If still is greater than this
+	 * size, it will be striped to fill the 25 max length.
+	 *
+	 * @param file Full path filename
+	 * @param line Line of code in the file
+	 * @return string Location in form filename:file
+	 */
+	function source_location($file, $line)
+	{
+	    $maxlen = 25;
+	    $fileinfo = pathinfo($file);
+
+	    $location = sprintf("%s:%d", $fileinfo["basename"], $line);
+        if (strlen($location) > $maxlen) {
+            $location = sprintf("%s:%d", $fileinfo["filename"], $line);
+        }
+
+        if (strlen($location) > $maxlen) {
+            $filename = substr($fileinfo["filename"], 0, 25 - 1 - strlen($line));
+            $location = sprintf("%s:%d",$filename, $line);
+        }
+
+        return $location;
+	}
+
 }
 
 /**
