@@ -21,6 +21,10 @@ class ExtensionAction extends RouterAction
             return;
         }
 
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing Extension with number %s [extension%d]",
+                        $extension->getNumber(), $extension->getId());
+
         // Route to the extension destination
         $this->_routeType       = $extension->getRouteType();
         $this->_routeUser       = $extension->getUser();

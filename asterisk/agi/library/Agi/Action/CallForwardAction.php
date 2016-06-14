@@ -22,7 +22,7 @@ class CallForwardAction extends RouterAction
 
         // Some CLI information
         $cfw = $this->_cfw;
-        $this->agi->verbose("Processing %s call forward", $cfw->getCallForwardType());
+        $this->agi->notice("Processing %s call forward", $cfw->getCallForwardType());
 
         /**
          * Set Diversion reason based on current Call Forward settings

@@ -6,13 +6,13 @@ class ServiceAction extends RouterAction
 {
 
     protected  $_service;
-    
+
     public function setService($service)
     {
         $this->_service = $service;
         return $this;
     }
-    
+
     public function process()
     {
         if (empty($this->_service) || empty($this->_user)) {
@@ -21,7 +21,10 @@ class ServiceAction extends RouterAction
         }
         // Local variables to improve readability
         $service = $this->_service;
-        
+
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing Service %s [service%d]", $service->getName(), $service->getId());
+
         // Process this service
         switch ($service->getService()->getIden()) {
             case 'Voicemail':
@@ -40,18 +43,18 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $user = $this->_user;
-        
+
         // Checkvoicemail for this user
         $this->agi->checkVoicemail($user->getVoiceMail());
     }
-    
+
     protected function _processDirectPickUp()
     {
         // Local variables to improve readability
         $user = $this->_user;
         $service = $this->_service;
         $company = $user->getCompany();
-        
+
         $exten = substr($this->agi->getExtension(), strlen($service->getCode()) + 1);
         $extension = $company->getExtension($exten);
         if (empty($extension)) {
@@ -59,19 +62,19 @@ class ServiceAction extends RouterAction
             return;
         }
         $capturedUser = $extension->getUser();
-        
+
         if (empty($capturedUser) || $capturedUser == $user) {
             $this->agi->verbose("Pickup without valid destination.");
             return;
         }
-        
+
         //check if user is in any pickupgroup
         $pickUpGroups = $user->getPickUpGroups();
         if (empty($pickUpGroups)) {
             $this->agi->verbose("User %s (%s) has no capture groups.", $user->getFullName(), $user->getId());
             return;
         }
-        
+
         $isCapturable = false;
         foreach ($pickUpGroups as $pickUpGroup) {
             $isCapturable = $pickUpGroup->isPickUpable($capturedUser);
@@ -80,8 +83,8 @@ class ServiceAction extends RouterAction
             }
         }
         $capturedUserId = $capturedUser->getId();
-        
-        
+
+
         if (! $isCapturable) {
             $this->agi->verbose("User %s can not be pickuped.", $capturedUserId);
             return;
@@ -91,33 +94,33 @@ class ServiceAction extends RouterAction
             $this->agi->verbose("User %s has not associated terminal.", $capturedUserId);
             return;
         }
-        
+
         $capturedTerminal = $capturedUser->getUserTerminalInterface();
         $this->agi->verbose("Attempting pickup %s", $capturedTerminal);
         $result = $this->agi->pickup($interface);
-        
+
         if ($result == "SUCCESS") {
             $this->agi->verbose("Successful pickup %s", $capturedTerminal);
         } else {
             // Target not found here
             $this->agi->hangup(3);
         }
-     
+
     }
-    
+
     protected function _processGroupPickUp()
     {
         // Local variables to improve readability
         $service = $this->_service;
         $user = $this->_user;
-        
+
         //check if user is in any pickupgroup
         $pickUpGroups = $user->getPickUpGroups();
         if (empty($pickUpGroups)) {
             $this->agi->verbose("User %s (%s) has no capture groups.", $user->getFullName(), $user->getId());
             return;
         }
-        
+
         //find for each pickUpGroup all users to pickup
         foreach ($pickUpGroups as $pickUpGroup) {
             $groupPickUpRelUsers = $pickUpGroup->getPickUpRelUsers();
@@ -143,5 +146,5 @@ class ServiceAction extends RouterAction
         // Target not found in current application server
         $this->agi->hangup(3);
     }
-    
+
 }

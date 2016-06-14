@@ -21,7 +21,7 @@ class ConferenceRoomAction extends RouterAction
 
         // Local variables to improve readability
         $room = $this->_room;
-        $this->agi->verbose("Processing Conference Room %s [conferenceRoom%s]",
+        $this->agi->notice("Processing Conference Room %s [conferenceRoom%s]",
                         $room->getName(), $room->getId());
 
         $conferenceState = $this->agi->getDeviceState($room->getId(), "confbridge:");

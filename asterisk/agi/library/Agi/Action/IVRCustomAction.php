@@ -14,6 +14,9 @@ class IVRCustomAction extends IVRAction
             return;
         }
 
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing IVRCustom %s [ivrcustom%d]", $ivr->getName(), $ivr->getId());
+
         // Get IVR all Locutions
         $welcomLocution = $ivr->getWelcomeLocution();
         if (empty($welcomLocution)) {

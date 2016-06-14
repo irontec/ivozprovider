@@ -86,6 +86,15 @@ class Agi_Wrapper
 	    return $this->_fastagi->verbose($msg);
 	}
 
+	public function notice()
+	{
+	    // Build the message using first argument as format
+	    $arg_list = func_get_args();
+	    $fmt = array_shift($arg_list);
+	    $msg = vsprintf($fmt, $arg_list);
+	    return $this->_fastagi->notice($msg);
+	}
+
 	public function error()
 	{
 	    // Build the message using first argument as format

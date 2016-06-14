@@ -39,6 +39,15 @@ class ExternalCallAction extends RouterAction
             $company = $user->getCompany();
         }
 
+        // Some feedback for asterisk cli
+        if ($user) {
+            $this->agi->notice("Processing External call from %s [user%d] to %s",
+                $user->getFullName(), $user->getId(), $number);
+        } else {
+            $this->agi->notice("Processing External call from DDI %s to %s",
+                $this->agi->getExtension(), $number);
+        }
+
         /*****************************************************************
          * COMPANY PREFIX CHECKING (FAST CALL DROPS)
          ****************************************************************/

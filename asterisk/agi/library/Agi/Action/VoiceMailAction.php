@@ -21,6 +21,10 @@ class VoiceMailAction extends RouterAction
             return;
         }
 
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing Voicemail of %s [user%d]",
+                        $voicemail->getFullName(), $voicemail->getId());
+
         // Transfor number to User Preferred
         if ($this->agi->getCallType() == "external") {
             $preferred = $voicemail->E164ToPreferred($this->agi->getOrigCallerIdNum());
@@ -31,7 +35,7 @@ class VoiceMailAction extends RouterAction
             // Run the voicemail
             $this->agi->voicemail($voicemail->getVoiceMail());
         } else {
-            $this->agi->verbose("User %s has voicemail disabled.", $voicemail->getFullName());
+            $this->agi->error("User %s has voicemail disabled.", $voicemail->getFullName());
             $this->agi->busy();
         }
     }

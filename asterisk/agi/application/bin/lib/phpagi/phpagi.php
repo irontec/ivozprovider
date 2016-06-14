@@ -714,6 +714,16 @@ class AGI
 		return $this->evaluate("VERBOSE \"$msg\" 4 $location");
 	}
 
+	function notice($msg)
+	{
+	    // Get original file and line for this message
+	    $bt = debug_backtrace();
+	    $location = $this->source_location($bt[1]['file'], $bt[1]['line']);
+
+	    // Send this command to asterisk
+	    return $this->evaluate("NOTICE \"$msg\" 4 $location");
+	}
+
 	function error($msg)
 	{
 		// Get original file and line for this message

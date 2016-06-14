@@ -7,13 +7,13 @@ use IvozProvider\Mapper\Sql as Mapper;
 class FaxCallAction extends RouterAction
 {
     protected $_timeout;
-    
+
     protected $_dialStatus = null;
-    
+
     protected $_dialContext = 'fax-in';
 
     protected $_fax = null;
-    
+
     protected $_faxInOut = null;
 
     public function setTimeout($timeout)
@@ -21,7 +21,7 @@ class FaxCallAction extends RouterAction
         $this->_timeout = $timeout;
         return $this;
     }
-    
+
     public function setDialContext($context)
     {
         $this->_dialContext = $context;
@@ -33,19 +33,19 @@ class FaxCallAction extends RouterAction
 	{
 	    return $this->_dialStatus;
 	}
-	
+
 	public function setFax($fax)
 	{
 	    $this->_fax = $fax;
 	    return $this;
 	}
-	
+
 	public function setFaxInOut($faxInOut)
 	{
 	    $this->_faxInOut = $faxInOut;
 	    return $this;
 	}
-	
+
     public function reciveFax()
     {
         if (empty($this->_fax)) {
@@ -64,7 +64,7 @@ class FaxCallAction extends RouterAction
         // Fax location is lbased on asterisk configuration
         $faxdir = $this->agi->getVariable(
                         "AST_CONFIG(asterisk.conf,directories,astspooldir)");
-  	    
+
         // Set destination file an fax options
         $this->agi->setVariable("FAXFILE",
                         $faxdir . "/faxes/fax-" . $did . "-" . time() . ".tif");
@@ -84,7 +84,7 @@ class FaxCallAction extends RouterAction
         $this->agi->setVariable("FAXIN_ID", $faxIn->getId());
 
         // Some verbose dolan pls
-        $this->agi->verbose("Incoming fax from %d did. Preparing fax to send to %s)",
+        $this->agi->notice("Incoming fax from %d did. Preparing fax to send to %s)",
                    $did,$fax->getName());
 
         // Transform number to Company Preferred
@@ -148,11 +148,11 @@ class FaxCallAction extends RouterAction
             $this->agi->error("fax is not properly defined. Check configuration.");
             return;
         }
-        
+
         // Local variables to improve readability
         $fax = $this->_fax;
         $faxIn = $this->_faxInOut;
-        
+
         // Check no errors happened during ReceiveFax
         $error = $this->agi->getVariable("FAXOPT(error)");
         $statusstr = $this->agi->getVariable("FAXOPT(statusstr)");
@@ -163,7 +163,7 @@ class FaxCallAction extends RouterAction
             $faxIn->setStatus('error')->save();
             return;
         }
-        
+
         // Get final PDF name
         $faxTIF = $this->agi->getVariable("FAXOPT(filename)");
         $faxPDF = str_replace(".tif", ".pdf", $faxTIF);
@@ -174,7 +174,7 @@ class FaxCallAction extends RouterAction
             $faxIn->setStatus('error')->save();
             return;
         }
-        
+
         // Some asterisk cli output
         $this->agi->verbose("Converting Fax [faxInOut%d] [fax%d] TIFF to PDF", $faxIn->getId(), $fax->getId());
         // Convert TIF file to PDF before storing
@@ -197,7 +197,7 @@ class FaxCallAction extends RouterAction
             $attach->disposition = \Zend_Mime::DISPOSITION_ATTACHMENT;
             $attach->encoding = \Zend_Mime::ENCODING_BASE64;
             $attach->filename = "fax-$faxSrc-$faxDst.pdf";
-            
+
             // Create an email for destination and send it
             $this->_faxSendMail($fax->getEmail(),
                 "New fax received in $faxDst from $faxSrc",

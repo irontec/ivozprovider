@@ -14,6 +14,10 @@ class IVRCommonAction extends IVRAction
 
         // Get IVR welcome locution path
         $ivr = $this->_ivr;
+
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing IVRCommon %s [ivrcommon%d]", $ivr->getName(), $ivr->getId());
+
         $welcomLocution = $ivr->getWelcomeLocution()->getLocutionPath();
 
         // Play locution and expect user press
@@ -27,7 +31,7 @@ class IVRCommonAction extends IVRAction
         // User hasn't pressed anything
         if (empty($userPressed))
             return $this->processError();
-    
+
         // Not allowed numbers for this IVR
         $blackList = $ivr->getBlackListRegExp();
         if (! empty($blackList)) {
@@ -46,7 +50,7 @@ class IVRCommonAction extends IVRAction
 
         // Success!! Place call to given extension
         $this->agi->playback($ivr->getSuccessLocution());
-        
+
         // !! Route this IVR using th extension parmaters !!
         $this->_routeType       = $extension->getRouteType();
         $this->_routeUser       = $extension->getUser();

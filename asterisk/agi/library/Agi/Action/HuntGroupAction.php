@@ -23,7 +23,7 @@ class HuntGroupAction extends RouterAction
         // Process different huntGroups types
         $huntgroup = $this->_huntgroup;
         $type = $huntgroup->getStrategy();
-        $this->agi->verbose("Processing %s HuntGroup %s [huntgroup%d].",
+        $this->agi->notice("Processing %s HuntGroup %s [huntgroup%d].",
                         $type, $huntgroup->getName(), $huntgroup->getId());
         switch ($type) {
             case 'ringAll':

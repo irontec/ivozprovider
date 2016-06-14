@@ -15,14 +15,18 @@ class DDIAction extends RouterAction
 
     public function process()
     {
+        // Local variables to improve readability
+        $ddi = $this->_ddi;
+
         // Validate Action
         if (empty($this->_ddi)) {
             $this->agi->error("DDI is not properly defined. Check configuration.");
             return;
         }
 
-        // Local variables to improve readability
-        $ddi = $this->_ddi;
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing DDI with number %s [ddi%d]", $ddi->getDDI(), $ddi->getId());
+
         // Check And Process if necesary external call filters
         $externalCallFilter = $ddi->getExternalCallFilter();
         if (! empty($externalCallFilter)) {
