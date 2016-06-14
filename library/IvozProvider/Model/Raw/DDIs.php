@@ -22,6 +22,12 @@ namespace IvozProvider\Model\Raw;
 class DDIs extends ModelAbstract
 {
 
+    protected $_recordCallsAcceptedValues = array(
+        'none',
+        'all',
+        'inbound',
+        'outbound',
+    );
     protected $_routeTypeAcceptedValues = array(
         'user',
         'IVRCommon',
@@ -72,6 +78,14 @@ class DDIs extends ModelAbstract
      * @var int
      */
     protected $_externalCallFilterId;
+
+    /**
+     * [enum:none|all|inbound|outbound]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_recordCalls;
 
     /**
      * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]
@@ -139,13 +153,6 @@ class DDIs extends ModelAbstract
 
 
     /**
-     * Parent relation DDIs_ibfk_11
-     *
-     * @var \IvozProvider\Model\Raw\ConferenceRooms
-     */
-    protected $_ConferenceRoom;
-
-    /**
      * Parent relation DDIs_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -158,6 +165,13 @@ class DDIs extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
+
+    /**
+     * Parent relation DDIs_ibfk_11
+     *
+     * @var \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    protected $_ConferenceRoom;
 
     /**
      * Parent relation DDIs_ibfk_2
@@ -239,6 +253,7 @@ class DDIs extends ModelAbstract
         'DDI'=>'DDI',
         'DDIE164'=>'DDIE164',
         'externalCallFilterId'=>'externalCallFilterId',
+        'recordCalls'=>'recordCalls',
         'routeType'=>'routeType',
         'userId'=>'userId',
         'IVRCommonId'=>'IVRCommonId',
@@ -256,6 +271,7 @@ class DDIs extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'recordCalls'=> array('enum:none|all|inbound|outbound'),
             'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom'),
         ));
 
@@ -265,10 +281,6 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'DDIsIbfk11'=> array(
-                    'property' => 'ConferenceRoom',
-                    'table_name' => 'ConferenceRooms',
-                ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -276,6 +288,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk10'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'DDIsIbfk11'=> array(
+                    'property' => 'ConferenceRoom',
+                    'table_name' => 'ConferenceRooms',
                 ),
             'DDIsIbfk2'=> array(
                     'property' => 'ExternalCallFilter',
@@ -326,6 +342,7 @@ class DDIs extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'recordCalls' => 'none',
         );
 
         $this->_initFileObjects();
@@ -570,6 +587,43 @@ class DDIs extends ModelAbstract
     public function getExternalCallFilterId()
     {
         return $this->_externalCallFilterId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setRecordCalls($data)
+    {
+
+        if ($this->_recordCalls != $data) {
+            $this->_logChange('recordCalls');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_recordCalls = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_recordCallsAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for recordCalls'));
+            }
+            $this->_recordCalls = (string) $data;
+
+        } else {
+            $this->_recordCalls = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column recordCalls
+     *
+     * @return string
+     */
+    public function getRecordCalls()
+    {
+        return $this->_recordCalls;
     }
 
     /**
@@ -885,57 +939,6 @@ class DDIs extends ModelAbstract
     }
 
     /**
-     * Sets parent relation ConferenceRoom
-     *
-     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
-    {
-        $this->_ConferenceRoom = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setConferenceRoomId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk11');
-        return $this;
-    }
-
-    /**
-     * Gets parent ConferenceRoom
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\ConferenceRooms
-     */
-    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk11';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_ConferenceRoom = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_ConferenceRoom;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -1035,6 +1038,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation ConferenceRoom
+     *
+     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
+    {
+        $this->_ConferenceRoom = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setConferenceRoomId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk11');
+        return $this;
+    }
+
+    /**
+     * Gets parent ConferenceRoom
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk11';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ConferenceRoom = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ConferenceRoom;
     }
 
     /**

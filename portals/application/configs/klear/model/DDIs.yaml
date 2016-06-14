@@ -46,33 +46,50 @@ production:
           'user':
             title: _('user')
             visualFilter:
-              show: ["userId"]
+              show: ["userId", "recordCalls" ]
               hide: ["IVRCommonId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId" ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
-              show: [ "IVRCommonId" ]
+              show: [ "IVRCommonId", "recordCalls" ]
               hide: [ "userId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId" ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
-              show: [ "IVRCustomId" ]
+              show: [ "IVRCustomId", "recordCalls" ]
               hide: [ "IVRCommonId", "userId", "huntGroupId", "faxId", "conferenceRoomId" ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
-              show: [ "huntGroupId" ]
+              show: [ "huntGroupId", "recordCalls" ]
               hide: [ "IVRCommonId", "IVRCustomId", "userId", "faxId", "conferenceRoomId" ]
           'fax':
             title: _('fax')
             visualFilter:
-              show: [ "faxId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "conferenceRoomId"]
+              show: [ "faxId", "recordCalls" ]
+              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "conferenceRoomId", "recordCalls"]
           'conferenceRoom':
             title: _('ConferenceRoom')
             visualFilter:
-              show: [ "conferenceRoomId" ]
+              show: [ "conferenceRoomId", "recordCalls" ]
               hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId" ]
+    recordCalls: 
+      title: _('Record call')
+      type: select
+      defaultValue: none
+      source: 
+        data: inline
+        values: 
+          'none': _('none')
+          'all': _('all')
+          'inbound': _('inbound')
+          'outbound': _('outbound')
+      info:
+        type: box
+        position: left
+        icon: error
+        text: _("Local legislation may enforce to announce the call recording to both parties, act responsibly")
+        label: _("Need help?")
     userId: 
       title: _('User id')
       type: select

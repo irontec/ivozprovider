@@ -788,6 +788,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getRecordings(null, null, true) !== null) {
+                    $recordings = $model->getRecordings();
+
+                    if (!is_array($recordings)) {
+
+                        $recordings = array($recordings);
+                    }
+
+                    foreach ($recordings as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getSchedules(null, null, true) !== null) {
                     $schedules = $model->getSchedules();
 

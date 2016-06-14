@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\DDIs
+ * Data Mapper implementation for IvozProvider\Model\Recordings
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class DDIs extends MapperAbstract
+class Recordings extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\DDIs';
+    protected $_modelName = 'IvozProvider\\Model\\Recordings';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class DDIs extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\DDIs $model
+     * @param IvozProvider\Model\Raw\Recordings $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\DDIs) {
+        if (!$model instanceof \IvozProvider\Model\Raw\Recordings) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\DDIs object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Recordings object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\DDIs object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\Recordings object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,21 +49,15 @@ class DDIs extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'brandId' => $model->getBrandId(),
                 'companyId' => $model->getCompanyId(),
-                'DDI' => $model->getDDI(),
-                'DDIE164' => $model->getDDIE164(),
-                'externalCallFilterId' => $model->getExternalCallFilterId(),
-                'recordCalls' => $model->getRecordCalls(),
-                'routeType' => $model->getRouteType(),
-                'userId' => $model->getUserId(),
-                'IVRCommonId' => $model->getIVRCommonId(),
-                'IVRCustomId' => $model->getIVRCustomId(),
-                'huntGroupId' => $model->getHuntGroupId(),
-                'faxId' => $model->getFaxId(),
-                'conferenceRoomId' => $model->getConferenceRoomId(),
-                'peeringContractId' => $model->getPeeringContractId(),
-                'countryId' => $model->getCountryId(),
+                'callid' => $model->getCallid(),
+                'calldate' => $model->getCalldate(),
+                'duration' => $model->getDuration(),
+                'caller' => $model->getCaller(),
+                'callee' => $model->getCallee(),
+                'recordedFileFileSize' => $model->getRecordedFileFileSize(),
+                'recordedFileMimeType' => $model->getRecordedFileMimeType(),
+                'recordedFileBaseName' => $model->getRecordedFileBaseName(),
             );
         } else {
             $result = array();
@@ -102,12 +96,12 @@ class DDIs extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\DDIs
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Recordings
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\DDIs');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Recordings');
         }
 
         return $this->_dbTable;
@@ -116,17 +110,17 @@ class DDIs extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\DDIs $model The model to delete
+     * @param IvozProvider\Model\Raw\Recordings $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\DDIs) {
+        if (!$model instanceof \IvozProvider\Model\Raw\Recordings) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\DDIs object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Recordings object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\DDIs object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\Recordings object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -176,7 +170,7 @@ class DDIs extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\DDIs', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Recordings', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -224,7 +218,7 @@ class DDIs extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\DDIs', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Recordings', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -302,7 +296,7 @@ class DDIs extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\DDIs $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\Recordings $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -310,17 +304,17 @@ class DDIs extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\DDIs $model
+     * @param \IvozProvider\Model\Raw\Recordings $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\DDIs $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\Recordings $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\DDIs $model,
+    protected function _save(\IvozProvider\Model\Raw\Recordings $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -449,37 +443,6 @@ class DDIs extends MapperAbstract
             }
 
 
-            if ($recursive) {
-                if ($model->getFaxes(null, null, true) !== null) {
-                    $faxes = $model->getFaxes();
-
-                    if (!is_array($faxes)) {
-
-                        $faxes = array($faxes);
-                    }
-
-                    foreach ($faxes as $value) {
-                        $value->setOutgoingDDIId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getUsers(null, null, true) !== null) {
-                    $users = $model->getUsers();
-
-                    if (!is_array($users)) {
-
-                        $users = array($users);
-                    }
-
-                    foreach ($users as $value) {
-                        $value->setOutgoingDDIId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-            }
-
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -562,13 +525,13 @@ class DDIs extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\DDIs|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\DDIs The model with the data provided
+     * @param IvozProvider\Model\Raw\Recordings|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\Recordings The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\DDIs();
+            $entry = new \IvozProvider\Model\Recordings();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -576,56 +539,38 @@ class DDIs extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setBrandId($data['brandId'])
                   ->setCompanyId($data['companyId'])
-                  ->setDDI($data['DDI'])
-                  ->setDDIE164($data['DDIE164'])
-                  ->setExternalCallFilterId($data['externalCallFilterId'])
-                  ->setRecordCalls($data['recordCalls'])
-                  ->setRouteType($data['routeType'])
-                  ->setUserId($data['userId'])
-                  ->setIVRCommonId($data['IVRCommonId'])
-                  ->setIVRCustomId($data['IVRCustomId'])
-                  ->setHuntGroupId($data['huntGroupId'])
-                  ->setFaxId($data['faxId'])
-                  ->setConferenceRoomId($data['conferenceRoomId'])
-                  ->setPeeringContractId($data['peeringContractId'])
-                  ->setCountryId($data['countryId']);
+                  ->setCallid($data['callid'])
+                  ->setCalldate($data['calldate'])
+                  ->setDuration($data['duration'])
+                  ->setCaller($data['caller'])
+                  ->setCallee($data['callee'])
+                  ->setRecordedFileFileSize($data['recordedFileFileSize'])
+                  ->setRecordedFileMimeType($data['recordedFileMimeType'])
+                  ->setRecordedFileBaseName($data['recordedFileBaseName']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setBrandId($data->{'brandId'})
                   ->setCompanyId($data->{'companyId'})
-                  ->setDDI($data->{'DDI'})
-                  ->setDDIE164($data->{'DDIE164'})
-                  ->setExternalCallFilterId($data->{'externalCallFilterId'})
-                  ->setRecordCalls($data->{'recordCalls'})
-                  ->setRouteType($data->{'routeType'})
-                  ->setUserId($data->{'userId'})
-                  ->setIVRCommonId($data->{'IVRCommonId'})
-                  ->setIVRCustomId($data->{'IVRCustomId'})
-                  ->setHuntGroupId($data->{'huntGroupId'})
-                  ->setFaxId($data->{'faxId'})
-                  ->setConferenceRoomId($data->{'conferenceRoomId'})
-                  ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setCountryId($data->{'countryId'});
+                  ->setCallid($data->{'callid'})
+                  ->setCalldate($data->{'calldate'})
+                  ->setDuration($data->{'duration'})
+                  ->setCaller($data->{'caller'})
+                  ->setCallee($data->{'callee'})
+                  ->setRecordedFileFileSize($data->{'recordedFileFileSize'})
+                  ->setRecordedFileMimeType($data->{'recordedFileMimeType'})
+                  ->setRecordedFileBaseName($data->{'recordedFileBaseName'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\Recordings) {
             $entry->setId($data->getId())
-                  ->setBrandId($data->getBrandId())
                   ->setCompanyId($data->getCompanyId())
-                  ->setDDI($data->getDDI())
-                  ->setDDIE164($data->getDDIE164())
-                  ->setExternalCallFilterId($data->getExternalCallFilterId())
-                  ->setRecordCalls($data->getRecordCalls())
-                  ->setRouteType($data->getRouteType())
-                  ->setUserId($data->getUserId())
-                  ->setIVRCommonId($data->getIVRCommonId())
-                  ->setIVRCustomId($data->getIVRCustomId())
-                  ->setHuntGroupId($data->getHuntGroupId())
-                  ->setFaxId($data->getFaxId())
-                  ->setConferenceRoomId($data->getConferenceRoomId())
-                  ->setPeeringContractId($data->getPeeringContractId())
-                  ->setCountryId($data->getCountryId());
+                  ->setCallid($data->getCallid())
+                  ->setCalldate($data->getCalldate())
+                  ->setDuration($data->getDuration())
+                  ->setCaller($data->getCaller())
+                  ->setCallee($data->getCallee())
+                  ->setRecordedFileFileSize($data->getRecordedFileFileSize())
+                  ->setRecordedFileMimeType($data->getRecordedFileMimeType())
+                  ->setRecordedFileBaseName($data->getRecordedFileBaseName());
 
         }
 
@@ -642,11 +587,11 @@ class DDIs extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'DDIs');
+        $etag = $etags->findOneByField('table', 'Recordings');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('DDIs');
+            $etag->setTable('Recordings');
         }
 
         $random = substr(

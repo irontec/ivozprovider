@@ -202,4 +202,13 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - Mappers and Models for Zend applications
  .
 
+Package: ivozprovider-recordings
+Architecture: all
+Priority: optional
+Depends: ivozprovider-data-library, 
+    libav-tools
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Recordings - Zendframework application
+ Recordings Zend Application for uploading recordings to klear
+ .
 

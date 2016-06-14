@@ -43,6 +43,7 @@ production:
           conferenceRoomId: true
           DDIE164: true
           brandId: true
+          recordCalls: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -57,6 +58,11 @@ production:
           fields:
             externalCallFilterId: 2
         group2:
+          label: _("Recording data")
+          colsPerRow: 12
+          fields:
+            recordCalls: 8
+        group3:
           label: _("Routing data")
           colsPerRow: 3
           fields:

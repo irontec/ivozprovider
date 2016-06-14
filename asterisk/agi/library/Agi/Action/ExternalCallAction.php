@@ -115,19 +115,27 @@ class ExternalCallAction extends RouterAction
 
             if (($extension = $company->getExtension($callerExt))) {
                 $callerUser = $extension->getUser();
-                $outddi = $callerUser->getOutgoingDDINumber();
-                if (empty($outddi)) {
+                $ddi = $callerUser->getOutgoingDDI();
+                if (empty($ddi)) {
                     $this->agi->error("User %s has no external DDI", $user->getId());
                     return;
                 }
 
                 // Set as Display number users Outgoing DDI
-                $this->agi->setVariable("CALLERID(num)", $outddi);
+                $this->agi->setVariable("CALLERID(num)", $ddi->getDDI());
                 $this->agi->setVariable("USERID", $user->getId());
 
                 // Setup the update callid for the calling user
                 $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$number,1");
             }
+        } else {
+            $DDIMapper = new Mapper\DDIs();
+            $ddi = $DDIMapper->findOneByField("DDIE164", $this->agi->getExtension());
+        }
+
+        // If ddi is configured to record
+        if (in_array($ddi->getRecordCalls(), array('all', 'outbound'))) {
+            $this->agi->setVariable("_RECORD", "yes");
         }
 
         // Call the PSJIP endpoint

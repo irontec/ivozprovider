@@ -24,6 +24,7 @@
 #include ParsedCDRsList.yaml
 #include PickUpGroupsList.yaml
 #include PricingPlansRelCompaniesList.yaml
+#include RecordingsList.yaml
 #include SchedulesList.yaml
 #include TerminalsList.yaml
 #include UsersList.yaml
@@ -72,6 +73,7 @@ production:
             parsedCDRsList_screen: true
             pickUpGroupsList_screen: true
             pricingPlansRelCompaniesList_screen: true
+            recordingsList_screen: true
             schedulesList_screen: true
             terminalsList_screen: true
             usersList_screen: true
@@ -417,6 +419,19 @@ production:
       <<: *pricingPlansRelCompaniesEdit_screenLink
       filterField: companyId
 
+    #recordings: 
+    recordingsList_screen: 
+      <<: *recordingsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    recordingsNew_screen: 
+      <<: *recordingsNew_screenLink
+      filterField: companyId
+    recordingsEdit_screen: 
+      <<: *recordingsEdit_screenLink
+      filterField: companyId
+
     #schedules: 
     schedulesList_screen: 
       <<: *schedulesList_screenLink
@@ -541,6 +556,8 @@ production:
     <<: *pickUpGroups_dialogsLink
   # pricingPlansRelCompanies dialogs: 
     <<: *pricingPlansRelCompanies_dialogsLink
+  # recordings dialogs: 
+    <<: *recordings_dialogsLink
   # schedules dialogs: 
     <<: *schedules_dialogsLink
   # terminals dialogs: 

@@ -446,6 +446,11 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-ForwardExt", $this->agi->getRedirecting('from-tag'));
         }
 
+        // Set recording header
+        if ($this->agi->getVariable("RECORD")) {
+            $this->agi->setSIPHeader("X-Info-Record", $this->agi->getVariable("RECORD"));
+        }
+
     }
 
     public function updatelineAction()

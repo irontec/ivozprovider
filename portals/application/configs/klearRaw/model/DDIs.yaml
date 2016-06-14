@@ -50,6 +50,17 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
+    recordCalls: 
+      title: _('Record call')
+      type: select
+      defaultValue: none
+      source: 
+        data: inline
+        values: 
+          'none': _('none')
+          'all': _('all')
+          'inbound': _('inbound')
+          'outbound': _('outbound')
     routeType: 
       title: _('Route type')
       type: select

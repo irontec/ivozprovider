@@ -1,0 +1,69 @@
+production: 
+  class: \IvozProvider\Model\Recordings
+  fields: 
+    companyId: 
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    callid: 
+      title: _('Callid')
+      type: text
+      maxLength: 128
+    calldate: 
+      title: _('Calldate')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    duration: 
+      title: _('Duration')
+      type: text
+      defaultValue: 0.000
+    caller: 
+      title: _('Caller')
+      type: text
+      maxLength: 128
+    callee: 
+      title: _('Callee')
+      type: text
+      maxLength: 128
+    recordedFile: 
+      title: _('Recorded file')
+      type: file
+      source: 
+        data: fso
+        size_limit: 20M
+        options: 
+          download: 
+            external: true
+            type: command
+            target: recordingsRecordedFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to File")
+            class: jmedia
+            onNull: hide
+            target: recordingsRecordedFileDownload_command
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

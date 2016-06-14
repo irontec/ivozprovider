@@ -54,6 +54,7 @@ mappers:
   - &PricingPlansRelTargetPatterns {mapper: \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns, modelFile: PricingPlansRelTargetPatterns}
   - &ProxyTrunks {mapper: \IvozProvider\Mapper\Sql\ProxyTrunks, modelFile: ProxyTrunks}
   - &ProxyUsers {mapper: \IvozProvider\Mapper\Sql\ProxyUsers, modelFile: ProxyUsers}
+  - &Recordings {mapper: \IvozProvider\Mapper\Sql\Recordings, modelFile: Recordings}
   - &Schedules {mapper: \IvozProvider\Mapper\Sql\Schedules, modelFile: Schedules}
   - &Services {mapper: \IvozProvider\Mapper\Sql\Services, modelFile: Services}
   - &TargetGroups {mapper: \IvozProvider\Mapper\Sql\TargetGroups, modelFile: TargetGroups}

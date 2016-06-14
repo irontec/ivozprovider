@@ -36,6 +36,7 @@ production:
           DDIE164: true
           brandId: true
           conferenceRoomId: true
+          recordCalls: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")

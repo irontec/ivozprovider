@@ -386,6 +386,14 @@ class Companies extends ModelAbstract
     protected $_PricingPlansRelCompanies;
 
     /**
+     * Dependent relation Recordings_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Recordings[]
+     */
+    protected $_Recordings;
+
+    /**
      * Dependent relation Schedules_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -582,6 +590,10 @@ class Companies extends ModelAbstract
             'PricingPlansRelCompaniesIbfk2' => array(
                     'property' => 'PricingPlansRelCompanies',
                     'table_name' => 'PricingPlansRelCompanies',
+                ),
+            'RecordingsIbfk1' => array(
+                    'property' => 'Recordings',
+                    'table_name' => 'Recordings',
                 ),
             'SchedulesIbfk1' => array(
                     'property' => 'Schedules',
@@ -3751,6 +3763,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_PricingPlansRelCompanies;
+    }
+
+    /**
+     * Sets dependent relations Recordings_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Recordings
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setRecordings(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Recordings === null) {
+
+                $this->getRecordings();
+            }
+
+            $oldRelations = $this->_Recordings;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Recordings = array();
+
+        foreach ($data as $object) {
+            $this->addRecordings($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Recordings_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\Recordings $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addRecordings(\IvozProvider\Model\Raw\Recordings $data)
+    {
+        $this->_Recordings[] = $data;
+        $this->_setLoaded('RecordingsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Recordings_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Recordings
+     */
+    public function getRecordings($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RecordingsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Recordings = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Recordings;
     }
 
     /**

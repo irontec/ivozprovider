@@ -40,11 +40,6 @@ class DDIs extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'DDIsIbfk11' => array(
-            'columns' => 'conferenceRoomId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
-            'refColumns' => 'id'
-        ),
         'DDIsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -53,6 +48,11 @@ class DDIs extends TableAbstract
         'DDIsIbfk10' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk11' => array(
+            'columns' => 'conferenceRoomId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
             'refColumns' => 'id'
         ),
         'DDIsIbfk2' => array(
@@ -203,12 +203,29 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'recordCalls' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'recordCalls',
+	    'COLUMN_POSITION' => 7,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => 'none',
+	    'NULLABLE' => false,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	  'routeType' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'routeType',
-	    'COLUMN_POSITION' => 7,
+	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
@@ -225,7 +242,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'userId',
-	    'COLUMN_POSITION' => 8,
+	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -242,7 +259,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'IVRCommonId',
-	    'COLUMN_POSITION' => 9,
+	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -259,7 +276,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'IVRCustomId',
-	    'COLUMN_POSITION' => 10,
+	    'COLUMN_POSITION' => 11,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -276,7 +293,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'huntGroupId',
-	    'COLUMN_POSITION' => 11,
+	    'COLUMN_POSITION' => 12,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -293,7 +310,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'faxId',
-	    'COLUMN_POSITION' => 12,
+	    'COLUMN_POSITION' => 13,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -310,7 +327,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'conferenceRoomId',
-	    'COLUMN_POSITION' => 13,
+	    'COLUMN_POSITION' => 14,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -327,7 +344,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'peeringContractId',
-	    'COLUMN_POSITION' => 14,
+	    'COLUMN_POSITION' => 15,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -344,7 +361,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'countryId',
-	    'COLUMN_POSITION' => 15,
+	    'COLUMN_POSITION' => 16,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
