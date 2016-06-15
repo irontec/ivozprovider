@@ -1,9 +1,0 @@
-#!/bin/bash
-
-#DEBHELPER#
-
-# Enable and start asterisk
-/bin/systemctl enable asterisk
-/bin/systemctl restart asterisk
-
-:
