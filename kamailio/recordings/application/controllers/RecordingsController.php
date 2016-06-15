@@ -12,14 +12,33 @@ use IvozProvider\Model as Model;
  */
 class RecordingsController extends Zend_Controller_Action
 {
+    private $_logger;
+
     private $_recordDir = "/opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/";
 
     private $_interval = 180;
+
+    public function init()
+    {
+        $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
+        $this->_logger = $bootstrap->getResource('log');
+        if (is_null($this->_logger)) {
+            $params = array(
+                    array(
+                            'writerName' => 'Null'
+                    )
+            );
+            $this->_logger = \Zend_Log::factory($params);
+        }
+    }
 
     public function processAction()
     {
         while (true) {
             $this->processRecordings();
+            $this->_logger->log(
+                            sprintf("[Recordings] Sleeping for %d seconds.\n", $this->_interval),
+                            \Zend_Log::INFO);
             sleep($this->_interval);
         }
     }
@@ -38,8 +57,9 @@ class RecordingsController extends Zend_Controller_Action
             }
         }
 
-        //$this->_helper->log("[Recordings] Processing %d files in recording dir\n", count($files));
-        printf("[Recordings] Processing %d files in recording dir %s\n", count($files), $this->_recordDir);
+        $this->_logger->log(
+                        sprintf("[Recordings] Processing %d files in recording dir %s\n", count($files), $this->_recordDir),
+                        \Zend_Log::INFO);
 
         // Get a mappers to reuse multiple times
         $kamAccCdrsMapper = new Mapper\KamAccCdrs;
@@ -52,12 +72,16 @@ class RecordingsController extends Zend_Controller_Action
             $hashid = substr(md5($callid),0,8);
 
             // Get callid from file
-            printf("[Recordings][%s] Checking file %s\n", $hashid, $file);
+            $this->_logger->log(
+                            sprintf("[Recordings][%s] Checking file %s\n", $hashid, $file),
+                            \Zend_Log::INFO);
 
             // Look if the converstation with that id has ended
             $kamAccCdr = $kamAccCdrsMapper->findOneByField("callid", $callid);
             if (!$kamAccCdr) {
-                printf("[Recordings][%s] Call with id = %s has not yet finished!\n", $hashid, $callid);
+                $this->_logger->log(
+                                sprintf("[Recordings][%s] Call with id = %s has not yet finished!\n", $hashid, $callid),
+                                \Zend_Log::INFO);
                 continue;
             }
 
@@ -65,10 +89,14 @@ class RecordingsController extends Zend_Controller_Action
             $extract_rtp = $this->_recordDir . $file;
             $extract_wav = $this->_recordDir . $callid . '.wav';
             $extract_cmd = "/usr/bin/extractaudio -sd '$extract_rtp' '$extract_wav' >/dev/null";
-            printf("[Recordings][%s] Extracting audio into %s\n", $hashid, basename($extract_wav));
+            $this->_logger->log(
+                            sprintf("[Recordings][%s] Extracting audio into %s\n", $hashid, basename($extract_wav)),
+                            \Zend_Log::INFO);
             exec($extract_cmd, $output, $retval);
             if ($retval != 0) {
-                printf("[Recordings][%s] Failed to extract audio: Command was %s\n", $hashid, $extract_cmd);
+                $this->_logger->log(
+                                sprintf("[Recordings][%s] Failed to extract audio: Command was %s\n", $hashid, $extract_cmd),
+                                \Zend_Log::INFO);
                 continue;
             }
 
@@ -76,10 +104,14 @@ class RecordingsController extends Zend_Controller_Action
             $convert_wav = $this->_recordDir . $callid . ".wav";
             $convert_mp3 = $this->_recordDir . $callid . ".mp3";
             $convert_cmd = "/usr/bin/avconv -i '$convert_wav' '$convert_mp3' 2>&1 >/dev/null";
-            printf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convert_mp3));
+            $this->_logger->log(
+                            sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convert_mp3)),
+                            \Zend_Log::INFO);
             exec($convert_cmd, $output, $retval);
             if ($retval != 0) {
-                printf("[Recordings][%s] Failed to convert audio: Command was %s\n", $hashid, $convert_cmd);
+                $this->_logger->log(
+                                sprintf("[Recordings][%s] Failed to convert audio: Command was %s\n", $hashid, $convert_cmd),
+                                \Zend_Log::INFO);
                 continue;
             }
 
@@ -94,7 +126,9 @@ class RecordingsController extends Zend_Controller_Action
 
             // Store this Recording
             $recordId = $recordingsMapper->save($recording);
-            printf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recordId);
+            $this->_logger->log(
+                            sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recordId),
+                            \Zend_Log::INFO);
 
             // Remove encoded files
             unlink($convert_wav);
