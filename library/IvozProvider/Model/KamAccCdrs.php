@@ -36,6 +36,7 @@ class KamAccCdrs extends Raw\KamAccCdrs
         $peeringContract = $peeringContractMapper->find($peeringContractId);
 
         if (!is_null($peeringContract) && $peeringContract->getExternallyRated() == 1) {
+            $this->_resetCall();
             $this->setExternallyRated(1);
             return null;
         }
@@ -103,6 +104,18 @@ class KamAccCdrs extends Raw\KamAccCdrs
     protected function _log($message, $priority)
     {
         $this->_logger->log("[Model][ParsedCDRs]".$message, $priority);
+    }
+
+    protected function _resetCall ()
+    {
+        $this
+            ->setMetered(0)
+            ->setMeteringDate(null)
+            ->setPricingPlanId(null)
+            ->setTargetPatternId(null)
+            ->setPrice(null);
+
+        return $this;
     }
 
 }
