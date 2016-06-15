@@ -124,6 +124,14 @@ production:
       title: _('Auth password')
       type: password
       adapter: Blowfish
+    sip_proxy: 
+      title: _('Sip proxy')
+      type: text
+      maxLength: 128
+    outbound_proxy: 
+      title: _('Outbound proxy')
+      type: text
+      maxLength: 128
 staging: 
   _extends: production
 testing: 

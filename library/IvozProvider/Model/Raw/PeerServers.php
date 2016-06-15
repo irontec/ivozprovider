@@ -160,6 +160,20 @@ class PeerServers extends ModelAbstract
      */
     protected $_authPassword;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_sipProxy;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_outboundProxy;
+
 
     /**
      * Parent relation PeerServers_ibfk_1
@@ -204,6 +218,8 @@ class PeerServers extends ModelAbstract
         'auth_needed'=>'authNeeded',
         'auth_user'=>'authUser',
         'auth_password'=>'authPassword',
+        'sip_proxy'=>'sipProxy',
+        'outbound_proxy'=>'outboundProxy',
     );
 
     /**
@@ -935,6 +951,74 @@ class PeerServers extends ModelAbstract
     public function getAuthPassword()
     {
         return $this->_authPassword;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setSipProxy($data)
+    {
+
+        if ($this->_sipProxy != $data) {
+            $this->_logChange('sipProxy');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_sipProxy = $data;
+
+        } else if (!is_null($data)) {
+            $this->_sipProxy = (string) $data;
+
+        } else {
+            $this->_sipProxy = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column sip_proxy
+     *
+     * @return string
+     */
+    public function getSipProxy()
+    {
+        return $this->_sipProxy;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setOutboundProxy($data)
+    {
+
+        if ($this->_outboundProxy != $data) {
+            $this->_logChange('outboundProxy');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outboundProxy = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outboundProxy = (string) $data;
+
+        } else {
+            $this->_outboundProxy = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outbound_proxy
+     *
+     * @return string
+     */
+    public function getOutboundProxy()
+    {
+        return $this->_outboundProxy;
     }
 
     /**

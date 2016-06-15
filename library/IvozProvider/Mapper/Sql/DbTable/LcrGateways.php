@@ -119,7 +119,7 @@ class LcrGateways extends TableAbstract
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
+	    'NULLABLE' => true,
 	    'LENGTH' => '50',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

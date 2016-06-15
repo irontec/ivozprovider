@@ -49,6 +49,42 @@ class PeerServers extends Raw\PeerServers
             $model->setUseAuthUserAsFromUser('0');
         }
 
+        # --- SIP Proxy and Outbound Proxy logic
+
+        $sip_proxy = explode(':', $model->getSipProxy());
+        $hostname = array_shift($sip_proxy);
+        $port = array_shift($sip_proxy);
+
+        if ($model->getOutboundProxy()) {
+            $outbound_proxy = explode(':', $model->getOutboundProxy());
+            $ip = array_shift($outbound_proxy);
+            $ob_port = array_shift($outbound_proxy);
+            if (!is_null($port)) {
+                throw new \Exception("When Outbound Proxy is used, SIP Proxy must not include a port.", 70003);
+            } else {
+                $port = $ob_port;
+            }
+        } else {
+            $ip = null;
+            $model->setOutboundProxy(null);
+        }
+
+        if (!is_numeric($port) or !$port) {
+            $port = 5060;
+        }
+
+        // Validate IP
+        if (!is_null($ip) && !filter_var($ip, FILTER_VALIDATE_IP, array(FILTER_FLAG_IPV4))) {
+            throw new \Exception("Outbound Proxy IP value is not valid.", 70004);
+        }
+
+        // Save validated values
+        $model->setHostname($hostname);
+        $model->setIp($ip);
+        $model->setPort($port);
+
+        # --- SIP Proxy and Outbound Proxy logic - End
+
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
         // Si el peerContract de este peerServer se utiliza en algun OutgoingRouting, update LCR

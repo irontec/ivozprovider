@@ -23,7 +23,6 @@ production:
     ip: 
       title: _('Ip')
       type: text
-      required: true
       maxLength: 50
     hostname: 
       title: _('Hostname')

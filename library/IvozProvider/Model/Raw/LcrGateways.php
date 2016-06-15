@@ -374,9 +374,6 @@ class LcrGateways extends ModelAbstract
     public function setIp($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_ip != $data) {
             $this->_logChange('ip');
         }

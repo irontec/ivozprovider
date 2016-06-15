@@ -54,7 +54,6 @@ production:
       title: _('Host')
       type: text
       trim: both
-      required: true
       info:
         type: box
         position: left
@@ -159,13 +158,28 @@ production:
       adapter: PlainText
       required: true
     sip_proxy: 
-      title: _('SIP proxy')
+      title: _('SIP Proxy')
       type: text
+      trim: both
       maxLength: 128
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("IP or domain name (port with ':')")
+        label: _("Need help?")
     outbound_proxy: 
-      title: _('Outbound proxy')
+      title: _('Outbound Proxy')
       type: text
+      trim: both
       maxLength: 128
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Send to IP[:PORT] instead of SIP Proxy address")
+        label: _("Need help?")
 staging: 
   _extends: production
 testing: 

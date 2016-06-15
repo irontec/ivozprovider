@@ -67,6 +67,8 @@ class PeerServers extends MapperAbstract
                 'auth_needed' => $model->getAuthNeeded(),
                 'auth_user' => $model->getAuthUser(),
                 'auth_password' => $model->getAuthPassword(),
+                'sip_proxy' => $model->getSipProxy(),
+                'outbound_proxy' => $model->getOutboundProxy(),
             );
         } else {
             $result = array();
@@ -582,7 +584,9 @@ class PeerServers extends MapperAbstract
                   ->setUseAuthUserAsFromUser($data['useAuthUserAsFromUser'])
                   ->setAuthNeeded($data['auth_needed'])
                   ->setAuthUser($data['auth_user'])
-                  ->setAuthPassword($data['auth_password']);
+                  ->setAuthPassword($data['auth_password'])
+                  ->setSipProxy($data['sip_proxy'])
+                  ->setOutboundProxy($data['outbound_proxy']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setPeeringContractId($data->{'peeringContractId'})
@@ -602,7 +606,9 @@ class PeerServers extends MapperAbstract
                   ->setUseAuthUserAsFromUser($data->{'useAuthUserAsFromUser'})
                   ->setAuthNeeded($data->{'auth_needed'})
                   ->setAuthUser($data->{'auth_user'})
-                  ->setAuthPassword($data->{'auth_password'});
+                  ->setAuthPassword($data->{'auth_password'})
+                  ->setSipProxy($data->{'sip_proxy'})
+                  ->setOutboundProxy($data->{'outbound_proxy'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\PeerServers) {
             $entry->setId($data->getId())
@@ -623,7 +629,9 @@ class PeerServers extends MapperAbstract
                   ->setUseAuthUserAsFromUser($data->getUseAuthUserAsFromUser())
                   ->setAuthNeeded($data->getAuthNeeded())
                   ->setAuthUser($data->getAuthUser())
-                  ->setAuthPassword($data->getAuthPassword());
+                  ->setAuthPassword($data->getAuthPassword())
+                  ->setSipProxy($data->getSipProxy())
+                  ->setOutboundProxy($data->getOutboundProxy());
 
         }
 
