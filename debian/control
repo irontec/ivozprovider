@@ -160,7 +160,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-data-library, php5-cli, php5-mysql, klear-library
+Depends: ivozprovider-data-library
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik Gateway Interface Zend Application
  .
@@ -197,7 +197,7 @@ Description: IVOZ Provider - User Webapp - Zendframework application
 Package: ivozprovider-data-library
 Architecture: all
 Section: php
-Depends: zendframework
+Depends: zendframework, php5-cli, php5-mysql, klear-library
 Priority: optional
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Mappers and Models for Zend applications
