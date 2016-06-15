@@ -58,7 +58,6 @@ class AstPsEndpoints extends MapperAbstract
                 'allow' => $model->getAllow(),
                 'direct_media' => $model->getDirectMedia(),
                 'direct_media_method' => $model->getDirectMediaMethod(),
-                'dtmf_mode' => $model->getDtmfMode(),
                 'mailboxes' => $model->getMailboxes(),
                 'send_diversion' => $model->getSendDiversion(),
                 'send_pai' => $model->getSendPai(),
@@ -563,7 +562,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setAllow($data['allow'])
                   ->setDirectMedia($data['direct_media'])
                   ->setDirectMediaMethod($data['direct_media_method'])
-                  ->setDtmfMode($data['dtmf_mode'])
                   ->setMailboxes($data['mailboxes'])
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
@@ -580,7 +578,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setAllow($data->{'allow'})
                   ->setDirectMedia($data->{'direct_media'})
                   ->setDirectMediaMethod($data->{'direct_media_method'})
-                  ->setDtmfMode($data->{'dtmf_mode'})
                   ->setMailboxes($data->{'mailboxes'})
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
@@ -598,7 +595,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setAllow($data->getAllow())
                   ->setDirectMedia($data->getDirectMedia())
                   ->setDirectMediaMethod($data->getDirectMediaMethod())
-                  ->setDtmfMode($data->getDtmfMode())
                   ->setMailboxes($data->getMailboxes())
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())

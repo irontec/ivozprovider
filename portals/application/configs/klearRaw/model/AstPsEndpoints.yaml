@@ -62,16 +62,6 @@ production:
           'invite': _('invite')
           'reinvite': _('reinvite')
           'update': _('update')
-    dtmf_mode: 
-      title: _('Dtmf mode')
-      type: select
-      defaultValue: rfc4733
-      source: 
-        data: inline
-        values: 
-          'rfc4733': _('rfc4733')
-          'inband': _('inband')
-          'info': _('info')
     mailboxes: 
       title: _('Mailbox')
       type: text
