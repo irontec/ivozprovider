@@ -161,7 +161,8 @@ production:
           fieldName: 
             fields: 
               - name
-            template: '%name%'
+              - lastname
+            template: '%name% %lastname%'
           order: name
         'null': _("Unasigned")
     exceptionBoosAssistantRegExp: 
