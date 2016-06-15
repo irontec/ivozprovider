@@ -19,7 +19,7 @@ production:
     initialLeg: 
       title: _('Initial leg')
       type: text
-      maxLength: 128
+      maxLength: 255
     initialLegHash: 
       title: _('Initial leg hash')
       type: text
@@ -27,7 +27,7 @@ production:
     cid: 
       title: _('Cid')
       type: text
-      maxLength: 128
+      maxLength: 255
     cidHash: 
       title: _('Cid hash')
       type: text
@@ -35,7 +35,7 @@ production:
     xcid: 
       title: _('Xcid')
       type: text
-      maxLength: 128
+      maxLength: 255
     xcidHash: 
       title: _('Xcid hash')
       type: text

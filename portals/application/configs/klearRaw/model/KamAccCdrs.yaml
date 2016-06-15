@@ -87,7 +87,7 @@ production:
     callid: 
       title: _('Callid')
       type: text
-      maxLength: 128
+      maxLength: 255
     callidHash: 
       title: _('Callid hash')
       type: text
@@ -95,7 +95,7 @@ production:
     xcallid: 
       title: _('Xcallid')
       type: text
-      maxLength: 128
+      maxLength: 255
     parsed: 
       title: _('Parsed')
       type: select

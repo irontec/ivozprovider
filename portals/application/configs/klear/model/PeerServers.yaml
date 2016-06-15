@@ -158,6 +158,14 @@ production:
       type: password
       adapter: PlainText
       required: true
+    sip_proxy: 
+      title: _('SIP proxy')
+      type: text
+      maxLength: 128
+    outbound_proxy: 
+      title: _('Outbound proxy')
+      type: text
+      maxLength: 128
 staging: 
   _extends: production
 testing: 

@@ -18,7 +18,7 @@ production:
     callid: 
       title: _('Callid')
       type: text
-      maxLength: 128
+      maxLength: 255
     calldate: 
       title: _('Calldate')
       type: picker
