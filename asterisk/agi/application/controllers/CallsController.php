@@ -451,6 +451,11 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-Record", $this->agi->getVariable("RECORD"));
         }
 
+        // Set pickups group on outgoing channels
+        if ($this->agi->getVariable("CHANNEL(pickupgroup)")) {
+            $this->agi->setVariable("CHANNEL(callgroup)", $this->agi->getVariable("CHANNEL(pickupgroup)"));
+        }
+
     }
 
     public function updatelineAction()

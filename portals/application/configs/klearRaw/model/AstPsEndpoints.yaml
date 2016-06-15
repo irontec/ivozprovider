@@ -66,6 +66,10 @@ production:
       title: _('Mailbox')
       type: text
       maxLength: 100
+    pickup_group: 
+      title: _('Pickup group')
+      type: text
+      maxLength: 40
     send_diversion: 
       title: _('Send diversion')
       type: select

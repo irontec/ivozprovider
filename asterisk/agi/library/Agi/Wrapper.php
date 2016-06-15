@@ -170,9 +170,13 @@ class Agi_Wrapper
 	    return $this->_fastagi->exec("Playback", $file);
 	}
 
-	public function pickup($interface)
+	public function pickup($interface = "")
 	{
-	    $this->_fastagi->exec("PickupChan", "PJSIP/$interface,p");
+	    if (!empty($interface)) {
+	       $this->_fastagi->exec("PickupChan", "PJSIP/$interface,p");
+	    } else {
+	        $this->_fastagi->exec("Pickup","");
+	    }
 	    return $this->getVariable("PICKUPRESULT");
 	}
 

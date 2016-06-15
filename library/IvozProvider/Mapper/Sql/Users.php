@@ -24,7 +24,7 @@ class Users extends Raw\Users
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
-        
+
         // Nice pass for nice users
         $pass = $model->hasChange('pass');
         if ($pass) {
@@ -64,6 +64,7 @@ class Users extends Raw\Users
             // Update previous terminal
             if ($endpoint = $original->getEndpoint()) {
                 $endpoint
+                    ->setPickupGroup(null)
                     ->setCallerid(null)
                     ->setMailboxes(null)
                     ->save();
@@ -106,9 +107,10 @@ class Users extends Raw\Users
         $endpoint = $model->getEndpoint();
         if ($endpoint) {
             $endpoint
-            ->setCallerid($model->getFullName() . " <" . $model->getExtensionNumber() . ">")
-            ->setMailboxes($model->getVoiceMail())
-            ->save();
+                ->setPickupGroup($model->getPickUpGroupsIds())
+                ->setCallerid(sprintf("%s <%s>", $model->getFullName(), $model->getExtensionNumber()))
+                ->setMailboxes($model->getVoiceMail())
+                ->save();
         }
 
         // Reload Hints
@@ -138,7 +140,7 @@ class Users extends Raw\Users
         if ($vm) {
             $vm->delete();
         }
-        
+
         // Update the endpoint
         $endpoint = $model->getEndpoint();
         if ($endpoint) {
@@ -149,7 +151,7 @@ class Users extends Raw\Users
         }
 
         $response = parent::delete($model);
-        
+
         if (!is_null($extension)) {
             $this->_reloadDialplan();
         }

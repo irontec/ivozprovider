@@ -59,6 +59,7 @@ class AstPsEndpoints extends MapperAbstract
                 'direct_media' => $model->getDirectMedia(),
                 'direct_media_method' => $model->getDirectMediaMethod(),
                 'mailboxes' => $model->getMailboxes(),
+                'pickup_group' => $model->getPickupGroup(),
                 'send_diversion' => $model->getSendDiversion(),
                 'send_pai' => $model->getSendPai(),
                 'subscribecontext' => $model->getSubscribecontext(),
@@ -563,6 +564,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setDirectMedia($data['direct_media'])
                   ->setDirectMediaMethod($data['direct_media_method'])
                   ->setMailboxes($data['mailboxes'])
+                  ->setPickupGroup($data['pickup_group'])
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
                   ->setSubscribecontext($data['subscribecontext'])
@@ -579,6 +581,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setDirectMedia($data->{'direct_media'})
                   ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setMailboxes($data->{'mailboxes'})
+                  ->setPickupGroup($data->{'pickup_group'})
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
                   ->setSubscribecontext($data->{'subscribecontext'})
@@ -596,6 +599,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setDirectMedia($data->getDirectMedia())
                   ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setMailboxes($data->getMailboxes())
+                  ->setPickupGroup($data->getPickupGroup())
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())
                   ->setSubscribecontext($data->getSubscribecontext())

@@ -124,6 +124,13 @@ class AstPsEndpoints extends ModelAbstract
     protected $_mailboxes;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_pickupGroup;
+
+    /**
      * Database var type enum('yes','no')
      *
      * @var string
@@ -180,6 +187,7 @@ class AstPsEndpoints extends ModelAbstract
         'direct_media'=>'directMedia',
         'direct_media_method'=>'directMediaMethod',
         'mailboxes'=>'mailboxes',
+        'pickup_group'=>'pickupGroup',
         'send_diversion'=>'sendDiversion',
         'send_pai'=>'sendPai',
         'subscribecontext'=>'subscribecontext',
@@ -640,6 +648,40 @@ class AstPsEndpoints extends ModelAbstract
     public function getMailboxes()
     {
         return $this->_mailboxes;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setPickupGroup($data)
+    {
+
+        if ($this->_pickupGroup != $data) {
+            $this->_logChange('pickupGroup');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_pickupGroup = $data;
+
+        } else if (!is_null($data)) {
+            $this->_pickupGroup = (string) $data;
+
+        } else {
+            $this->_pickupGroup = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column pickup_group
+     *
+     * @return string
+     */
+    public function getPickupGroup()
+    {
+        return $this->_pickupGroup;
     }
 
     /**

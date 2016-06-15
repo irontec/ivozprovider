@@ -23,7 +23,8 @@ class ServiceAction extends RouterAction
         $service = $this->_service;
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing Service %s [service%d]", $service->getName(), $service->getId());
+        $this->agi->notice("Processing Service %s [service%d]",
+                        $service->getService()->getName(), $service->getId());
 
         // Process this service
         switch ($service->getService()->getIden()) {
@@ -121,30 +122,15 @@ class ServiceAction extends RouterAction
             return;
         }
 
-        //find for each pickUpGroup all users to pickup
-        foreach ($pickUpGroups as $pickUpGroup) {
-            $groupPickUpRelUsers = $pickUpGroup->getPickUpRelUsers();
-            foreach ($groupPickUpRelUsers as $groupPickUpRelUser) {
-                $capturedUser = $groupPickUpRelUser->getUser();
-                if ($capturedUser == $user || empty($capturedUser)) {
-                    continue;
-                }
-                $interface = $capturedUser->getUserTerminalInterface();
-                if (empty($interface)) {
-                    continue;
-                }
-                $capturedTerminal = $capturedUser->getUserTerminalInterface();
-                $this->agi->verbose("Attempting pickup %s", $capturedTerminal);
-                $result = $this->agi->pickup($interface);
-                if ($result == "SUCCESS") {
-                    $this->agi->verbose("Successful pickup %s", $capturedTerminal);
-                    return;
-                }
-            }
+        $result = $this->agi->pickup();
+
+        if ($result == "SUCCESS") {
+            $this->agi->verbose("Successful pickup %s", $capturedTerminal);
+        } else {
+            // Target not found here
+            $this->agi->hangup(3);
         }
 
-        // Target not found in current application server
-        $this->agi->hangup(3);
     }
 
 }

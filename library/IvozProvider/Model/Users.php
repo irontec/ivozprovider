@@ -167,6 +167,18 @@ class Users extends Raw\Users
         return $pickUpGroups;
     }
 
+    public function getPickUpGroupsIds()
+    {
+        $pickUpGroupIds = array();
+        $pickUpRelUsers = $this->getPickUpRelUsers();
+        if (!empty($pickUpRelUsers)) {
+            foreach ($pickUpRelUsers as $pickUpRel) {
+                array_push($pickUpGroupIds, $pickUpRel->getPickUpGroupId());
+            }
+        }
+        return join(',', $pickUpGroupIds);
+    }
+
     /**
      * @return string
      */
