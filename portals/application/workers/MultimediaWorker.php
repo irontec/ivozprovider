@@ -48,15 +48,25 @@ class MultimediaWorker extends Iron_Gearman_Worker
 
             $path = $this->_getFilePath();
             $encodedFilePath = $path . DIRECTORY_SEPARATOR . 'tmp';
-            $encodedFile = $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.wav';
+            $encodedFile = $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.dump.wav';
+            $finalWavFile= $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.wav';
 
             $this->_createFolder($encodedFilePath);
 
+            // 2 Pass decoding. 1st dump audio to wav
             $cmd = 'avconv -i ' . str_replace(" ", "\ ", "'$originalFile'") . ' -b:a 64k -ar 8000 -ac 1 ' . "'$encodedFile'";
             $this->_logger->log($this->_modelName . "-  " . $cmd, Zend_Log::INFO);
-            exec($cmd);
+            exec($cmd); // Hey?? Checking $retvalue anyone?
 
-            $model->putEncodedFile($encodedFile, $filename .'.wav');
+            // 2 Pass decoding. 2nd normalize audio for asterisk
+            $cmd = "sox '$encodedFile'  -b 16 -c 1 '$finalWavFile' rate -ql 8000";
+            $this->_logger->log($this->_modelName . "-  " . $cmd, Zend_Log::INFO);
+            exec($cmd); // Hey?? Checking $retvalue anyone?
+
+            // Remove temp files
+            unlink($encodedFile);
+
+            $model->putEncodedFile($finalWavFile, $filename .'.wav');
             $model->setStatus("ready")
                   ->save();
 
