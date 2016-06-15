@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+# Enable php5 environment variables
+/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php5/cli/php.ini
+
+:
