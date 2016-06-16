@@ -48,8 +48,23 @@ class RecordingsController extends Zend_Controller_Action
         // Get a list of pending recordings
         $files = array();
         if ($dir = opendir($this->_recordDir)) {
-            while (false !== ($file = readdir($dir))) {
-                if (preg_match("/((.*)=.*)\.a\.rtp$/", $file, $matches)) {
+            while (false !== ($filename = readdir($dir))) {
+                // Absolute path to file
+                $filenameabs = $this->_recordDir . $filename;
+
+                // Only handle files
+                if (!is_file($filenameabs))
+                    continue;
+
+                // Delete empty files
+                if (filesize($filenameabs) === 0) {
+                    $this->_logger->log(sprintf("[Recordings] Deleting empty file %s\n", $filename), \Zend_Log::INFO);
+                    unlink($filenameabs);
+                    continue;
+                }
+
+                // Store valid files
+                if (preg_match("/((.*)=.*)\.[ao]\.rtp$/", $filename, $matches)) {
                     $file = $matches[1];
                     $callid = $matches[2];
                     $files[$callid] = $file;
