@@ -1,12 +1,12 @@
 <?php
 /**
- * ast_musiconhold
+ * AstMusiconhold
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
+class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="GET information about all ast_musiconhold")
+     * @ApiDescription(section="AstMusiconhold", description="GET information about all AstMusiconhold")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -95,7 +95,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('ast_musiconhold');
+        $etag = $this->_cache->getEtagVersions('AstMusiconhold');
 
         $hashEtag = md5(
             serialize(
@@ -111,7 +111,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\AstMusiconhold();
 
         $items = $mapper->fetchList(
             $where,
@@ -144,9 +144,9 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Get information about ast_musiconhold")
+     * @ApiDescription(section="AstMusiconhold", description="Get information about AstMusiconhold")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_musiconhold/{id}")
+     * @ApiRoute(name="/rest/ast-musiconhold/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
@@ -187,7 +187,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('ast_musiconhold');
+        $etag = $this->_cache->getEtagVersions('AstMusiconhold');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -203,7 +203,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\AstMusiconhold();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -221,9 +221,9 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Create's a new ast_musiconhold")
+     * @ApiDescription(section="AstMusiconhold", description="Create's a new AstMusiconhold")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
@@ -233,7 +233,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="format", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/ast_musiconhold/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/astmusiconhold/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -241,7 +241,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\ast_musiconhold();
+        $model = new Models\AstMusiconhold();
 
         try {
             $model->populateFromArray($params);
@@ -263,9 +263,9 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Table ast_musiconhold")
+     * @ApiDescription(section="AstMusiconhold", description="Table AstMusiconhold")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
@@ -290,7 +290,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\AstMusiconhold();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -314,9 +314,9 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Table ast_musiconhold")
+     * @ApiDescription(section="AstMusiconhold", description="Table AstMusiconhold")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -331,7 +331,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\AstMusiconhold();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {

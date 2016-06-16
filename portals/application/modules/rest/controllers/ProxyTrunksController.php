@@ -34,19 +34,11 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'name': '', 
-     *     'ip': '', 
-     *     'disallow': '', 
-     *     'allow': '', 
-     *     'direct_media': '', 
-     *     'direct_media_method': ''
+     *     'ip': ''
      * },{
      *     'id': '', 
      *     'name': '', 
-     *     'ip': '', 
-     *     'disallow': '', 
-     *     'allow': '', 
-     *     'direct_media': '', 
-     *     'direct_media_method': ''
+     *     'ip': ''
      * }]")
      */
     public function indexAction()
@@ -67,10 +59,6 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
                 'id',
                 'name',
                 'ip',
-                'disallow',
-                'allow',
-                'directMedia',
-                'directMedia',
             );
         }
 
@@ -146,11 +134,7 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'name': '', 
-     *     'ip': '', 
-     *     'disallow': '', 
-     *     'allow': '', 
-     *     'direct_media': '', 
-     *     'direct_media_method': ''
+     *     'ip': ''
      * }")
      */
     public function getAction()
@@ -170,10 +154,6 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
                 'id',
                 'name',
                 'ip',
-                'disallow',
-                'allow',
-                'directMedia',
-                'directMedia',
             );
         }
 
@@ -216,10 +196,6 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/proxy-trunks/")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=false, type="varchar", sample="", description="[enum:update|invite|reinvite]")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/proxytrunks/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -257,10 +233,6 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=false, type="varchar", sample="", description="[enum:update|invite|reinvite]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -365,26 +337,6 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'disallow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'allow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media_method' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '[enum:update|invite|reinvite]',
-                ),
             )
         );
 
@@ -405,26 +357,6 @@ class Rest_ProxyTrunksController extends Iron_Controller_Rest_BaseController
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
-                ),
-                'disallow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'allow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media_method' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '[enum:update|invite|reinvite]',
                 ),
             )
         );

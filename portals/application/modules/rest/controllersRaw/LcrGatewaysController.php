@@ -261,7 +261,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/lcr-gateways/")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="gw_name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="hostname", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
      * @ApiParams(name="params", nullable=true, type="varchar", sample="", description="")
@@ -311,7 +311,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="gw_name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="hostname", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
      * @ApiParams(name="params", nullable=true, type="varchar", sample="", description="")
@@ -430,7 +430,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                 ),
                 'ip' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'hostname' => array(
@@ -516,7 +516,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                 ),
                 'ip' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'hostname' => array(

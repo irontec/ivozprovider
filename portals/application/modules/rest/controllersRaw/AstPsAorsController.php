@@ -1,12 +1,12 @@
 <?php
 /**
- * ast_ps_aors
+ * AstPsAors
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
+class Rest_AstPsAorsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_ps_aors", description="GET information about all ast_ps_aors")
+     * @ApiDescription(section="AstPsAors", description="GET information about all AstPsAors")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_ps_aors/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -101,7 +101,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('ast_ps_aors');
+        $etag = $this->_cache->getEtagVersions('AstPsAors');
 
         $hashEtag = md5(
             serialize(
@@ -117,7 +117,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ast_ps_aors();
+        $mapper = new Mappers\AstPsAors();
 
         $items = $mapper->fetchList(
             $where,
@@ -150,9 +150,9 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_ps_aors", description="Get information about ast_ps_aors")
+     * @ApiDescription(section="AstPsAors", description="Get information about AstPsAors")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_ps_aors/{id}")
+     * @ApiRoute(name="/rest/ast-ps-aors/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
@@ -197,7 +197,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('ast_ps_aors');
+        $etag = $this->_cache->getEtagVersions('AstPsAors');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -213,7 +213,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ast_ps_aors();
+        $mapper = new Mappers\AstPsAors();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -231,21 +231,21 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_ps_aors", description="Create's a new ast_ps_aors")
+     * @ApiDescription(section="AstPsAors", description="Create's a new AstPsAors")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/ast_ps_aors/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="default_expiration", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="max_contacts", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="minimum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="remove_existing", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="authenticate_qualify", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="remove_existing", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="authenticate_qualify", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="maximum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="support_path", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="support_path", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="contact", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="qualify_frequency", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/ast_ps_aors/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/astpsaors/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -253,7 +253,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\ast_ps_aors();
+        $model = new Models\AstPsAors();
 
         try {
             $model->populateFromArray($params);
@@ -275,18 +275,18 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_ps_aors", description="Table ast_ps_aors")
+     * @ApiDescription(section="AstPsAors", description="Table AstPsAors")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/ast_ps_aors/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="default_expiration", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="max_contacts", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="minimum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="remove_existing", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="authenticate_qualify", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="remove_existing", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="authenticate_qualify", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="maximum_expiration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="support_path", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="support_path", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="contact", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="qualify_frequency", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -304,7 +304,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\ast_ps_aors();
+        $mapper = new Mappers\AstPsAors();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -328,9 +328,9 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_ps_aors", description="Table ast_ps_aors")
+     * @ApiDescription(section="AstPsAors", description="Table AstPsAors")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/ast_ps_aors/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -345,7 +345,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\ast_ps_aors();
+        $mapper = new Mappers\AstPsAors();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -404,12 +404,12 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'remove_existing' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
                 'authenticate_qualify' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -419,7 +419,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'support_path' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -465,12 +465,12 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'remove_existing' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
                 'authenticate_qualify' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -480,7 +480,7 @@ class Rest_ast_ps_aorsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'support_path' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),

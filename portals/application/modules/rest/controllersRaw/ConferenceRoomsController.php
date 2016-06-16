@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_users_address
+ * ConferenceRooms
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseController
+class Rest_ConferenceRoomsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_users_address", description="GET information about all kam_users_address")
+     * @ApiDescription(section="ConferenceRooms", description="GET information about all ConferenceRooms")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_users_address/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -34,21 +34,17 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'companyId': '', 
-     *     'source_address': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': '', 
-     *     'description': ''
+     *     'name': '', 
+     *     'pinProtected': '', 
+     *     'pinCode': '', 
+     *     'maxMembers': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
-     *     'source_address': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': '', 
-     *     'description': ''
+     *     'name': '', 
+     *     'pinProtected': '', 
+     *     'pinCode': '', 
+     *     'maxMembers': ''
      * }]")
      */
     public function indexAction()
@@ -68,12 +64,10 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
             $fields = array(
                 'id',
                 'companyId',
-                'sourceAddress',
-                'ipAddr',
-                'mask',
-                'port',
-                'tag',
-                'description',
+                'name',
+                'pinProtected',
+                'pinCode',
+                'maxMembers',
             );
         }
 
@@ -92,7 +86,7 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_users_address');
+        $etag = $this->_cache->getEtagVersions('ConferenceRooms');
 
         $hashEtag = md5(
             serialize(
@@ -108,7 +102,7 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
             }
         }
 
-        $mapper = new Mappers\kam_users_address();
+        $mapper = new Mappers\ConferenceRooms();
 
         $items = $mapper->fetchList(
             $where,
@@ -141,20 +135,18 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_users_address", description="Get information about kam_users_address")
+     * @ApiDescription(section="ConferenceRooms", description="Get information about ConferenceRooms")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_users_address/{id}")
+     * @ApiRoute(name="/rest/conference-rooms/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'companyId': '', 
-     *     'source_address': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': '', 
-     *     'description': ''
+     *     'name': '', 
+     *     'pinProtected': '', 
+     *     'pinCode': '', 
+     *     'maxMembers': ''
      * }")
      */
     public function getAction()
@@ -173,16 +165,14 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
             $fields = array(
                 'id',
                 'companyId',
-                'sourceAddress',
-                'ipAddr',
-                'mask',
-                'port',
-                'tag',
-                'description',
+                'name',
+                'pinProtected',
+                'pinCode',
+                'maxMembers',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_users_address');
+        $etag = $this->_cache->getEtagVersions('ConferenceRooms');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -198,7 +188,7 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
             }
         }
 
-        $mapper = new Mappers\kam_users_address();
+        $mapper = new Mappers\ConferenceRooms();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -216,18 +206,16 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_users_address", description="Create's a new kam_users_address")
+     * @ApiDescription(section="ConferenceRooms", description="Create's a new ConferenceRooms")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_users_address/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="source_address", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="pinProtected", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="pinCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maxMembers", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_users_address/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/conferencerooms/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -235,7 +223,7 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_users_address();
+        $model = new Models\ConferenceRooms();
 
         try {
             $model->populateFromArray($params);
@@ -257,17 +245,15 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_users_address", description="Table kam_users_address")
+     * @ApiDescription(section="ConferenceRooms", description="Table ConferenceRooms")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_users_address/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="source_address", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="pinProtected", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="pinCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maxMembers", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -283,7 +269,7 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_users_address();
+        $mapper = new Mappers\ConferenceRooms();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -307,9 +293,9 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_users_address", description="Table kam_users_address")
+     * @ApiDescription(section="ConferenceRooms", description="Table ConferenceRooms")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_users_address/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -324,7 +310,7 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
             return;
         }
 
-        $mapper = new Mappers\kam_users_address();
+        $mapper = new Mappers\ConferenceRooms();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -367,34 +353,24 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
                     'required' => true,
                     'comment' => '',
                 ),
-                'source_address' => array(
+                'name' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'ip_addr' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'mask' => array(
-                    'type' => 'int',
+                'pinProtected' => array(
+                    'type' => 'tinyint',
                     'required' => true,
                     'comment' => '',
                 ),
-                'port' => array(
-                    'type' => 'int',
+                'pinCode' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'maxMembers' => array(
+                    'type' => 'tinyint',
                     'required' => true,
-                    'comment' => '',
-                ),
-                'tag' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'description' => array(
-                    'type' => 'varchar',
-                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -413,34 +389,24 @@ class Rest_kam_users_addressController extends Iron_Controller_Rest_BaseControll
                     'required' => true,
                     'comment' => '',
                 ),
-                'source_address' => array(
+                'name' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'ip_addr' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'mask' => array(
-                    'type' => 'int',
+                'pinProtected' => array(
+                    'type' => 'tinyint',
                     'required' => true,
                     'comment' => '',
                 ),
-                'port' => array(
-                    'type' => 'int',
+                'pinCode' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'maxMembers' => array(
+                    'type' => 'tinyint',
                     'required' => true,
-                    'comment' => '',
-                ),
-                'tag' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'description' => array(
-                    'type' => 'varchar',
-                    'required' => false,
                     'comment' => '',
                 ),
             )

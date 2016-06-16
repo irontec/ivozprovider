@@ -1,12 +1,12 @@
 <?php
 /**
- * ast_ps_endpoints
+ * AstPsAors
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseController
+class Rest_AstPsAorsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="GET information about all ast_ps_endpoints")
+     * @ApiDescription(section="AstPsAors", description="GET information about all AstPsAors")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -34,37 +34,27 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'sorcery_id': '', 
-     *     'terminalId': '', 
-     *     'aors': '', 
-     *     'callerid': '', 
-     *     'context': '', 
-     *     'disallow': '', 
-     *     'allow': '', 
-     *     'direct_media': '', 
-     *     'direct_media_method': '', 
-     *     'dtmf_mode': '', 
-     *     'mailboxes': '', 
-     *     'send_diversion': '', 
-     *     'send_pai': '', 
-     *     'subscribecontext': '', 
-     *     '100rel': ''
+     *     'default_expiration': '', 
+     *     'max_contacts': '', 
+     *     'minimum_expiration': '', 
+     *     'remove_existing': '', 
+     *     'authenticate_qualify': '', 
+     *     'maximum_expiration': '', 
+     *     'support_path': '', 
+     *     'contact': '', 
+     *     'qualify_frequency': ''
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
-     *     'terminalId': '', 
-     *     'aors': '', 
-     *     'callerid': '', 
-     *     'context': '', 
-     *     'disallow': '', 
-     *     'allow': '', 
-     *     'direct_media': '', 
-     *     'direct_media_method': '', 
-     *     'dtmf_mode': '', 
-     *     'mailboxes': '', 
-     *     'send_diversion': '', 
-     *     'send_pai': '', 
-     *     'subscribecontext': '', 
-     *     '100rel': ''
+     *     'default_expiration': '', 
+     *     'max_contacts': '', 
+     *     'minimum_expiration': '', 
+     *     'remove_existing': '', 
+     *     'authenticate_qualify': '', 
+     *     'maximum_expiration': '', 
+     *     'support_path': '', 
+     *     'contact': '', 
+     *     'qualify_frequency': ''
      * }]")
      */
     public function indexAction()
@@ -84,20 +74,15 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             $fields = array(
                 'id',
                 'sorceryId',
-                'terminalId',
-                'aors',
-                'callerid',
-                'context',
-                'disallow',
-                'allow',
-                'directMedia',
-                'directMedia',
-                'dtmfMode',
-                'mailboxes',
-                'sendDiversion',
-                'sendPai',
-                'subscribecontext',
-                '100rel',
+                'defaultExpiration',
+                'maxContacts',
+                'minimumExpiration',
+                'removeExisting',
+                'authenticateQualify',
+                'maximumExpiration',
+                'supportPath',
+                'contact',
+                'qualifyFrequency',
             );
         }
 
@@ -116,7 +101,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('ast_ps_endpoints');
+        $etag = $this->_cache->getEtagVersions('AstPsAors');
 
         $hashEtag = md5(
             serialize(
@@ -132,7 +117,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             }
         }
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsAors();
 
         $items = $mapper->fetchList(
             $where,
@@ -165,28 +150,23 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Get information about ast_ps_endpoints")
+     * @ApiDescription(section="AstPsAors", description="Get information about AstPsAors")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/{id}")
+     * @ApiRoute(name="/rest/ast-ps-aors/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'sorcery_id': '', 
-     *     'terminalId': '', 
-     *     'aors': '', 
-     *     'callerid': '', 
-     *     'context': '', 
-     *     'disallow': '', 
-     *     'allow': '', 
-     *     'direct_media': '', 
-     *     'direct_media_method': '', 
-     *     'dtmf_mode': '', 
-     *     'mailboxes': '', 
-     *     'send_diversion': '', 
-     *     'send_pai': '', 
-     *     'subscribecontext': '', 
-     *     '100rel': ''
+     *     'default_expiration': '', 
+     *     'max_contacts': '', 
+     *     'minimum_expiration': '', 
+     *     'remove_existing': '', 
+     *     'authenticate_qualify': '', 
+     *     'maximum_expiration': '', 
+     *     'support_path': '', 
+     *     'contact': '', 
+     *     'qualify_frequency': ''
      * }")
      */
     public function getAction()
@@ -205,24 +185,19 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             $fields = array(
                 'id',
                 'sorceryId',
-                'terminalId',
-                'aors',
-                'callerid',
-                'context',
-                'disallow',
-                'allow',
-                'directMedia',
-                'directMedia',
-                'dtmfMode',
-                'mailboxes',
-                'sendDiversion',
-                'sendPai',
-                'subscribecontext',
-                '100rel',
+                'defaultExpiration',
+                'maxContacts',
+                'minimumExpiration',
+                'removeExisting',
+                'authenticateQualify',
+                'maximumExpiration',
+                'supportPath',
+                'contact',
+                'qualifyFrequency',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('ast_ps_endpoints');
+        $etag = $this->_cache->getEtagVersions('AstPsAors');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -238,7 +213,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             }
         }
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsAors();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -256,26 +231,21 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Create's a new ast_ps_endpoints")
+     * @ApiDescription(section="AstPsAors", description="Create's a new AstPsAors")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="dtmf_mode", nullable=false, type="enum('rfc4733','inband','info')", sample="", description="")
-     * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
+     * @ApiParams(name="default_expiration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="max_contacts", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="minimum_expiration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="remove_existing", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="authenticate_qualify", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maximum_expiration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="support_path", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="contact", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="qualify_frequency", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/ast_ps_endpoints/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/astpsaors/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -283,7 +253,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\ast_ps_endpoints();
+        $model = new Models\AstPsAors();
 
         try {
             $model->populateFromArray($params);
@@ -305,25 +275,20 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Table ast_ps_endpoints")
+     * @ApiDescription(section="AstPsAors", description="Table AstPsAors")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="dtmf_mode", nullable=false, type="enum('rfc4733','inband','info')", sample="", description="")
-     * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
+     * @ApiParams(name="default_expiration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="max_contacts", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="minimum_expiration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="remove_existing", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="authenticate_qualify", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maximum_expiration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="support_path", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="contact", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="qualify_frequency", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -339,7 +304,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsAors();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -363,9 +328,9 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Table ast_ps_endpoints")
+     * @ApiDescription(section="AstPsAors", description="Table AstPsAors")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-aors/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -380,7 +345,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             return;
         }
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsAors();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -423,74 +388,49 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => true,
                     'comment' => '',
                 ),
-                'terminalId' => array(
+                'default_expiration' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
-                'aors' => array(
+                'max_contacts' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'minimum_expiration' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'remove_existing' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'callerid' => array(
+                'authenticate_qualify' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'context' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'disallow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'allow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media' => array(
-                    'type' => 'enum('yes','no')',
+                'maximum_expiration' => array(
+                    'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
-                'direct_media_method' => array(
-                    'type' => 'enum('invite','reinvite','update')',
-                    'required' => false,
-                    'comment' => '[enum:update|invite|reinvite]',
-                ),
-                'dtmf_mode' => array(
-                    'type' => 'enum('rfc4733','inband','info')',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'mailboxes' => array(
+                'support_path' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'send_diversion' => array(
-                    'type' => 'enum('yes','no')',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'send_pai' => array(
-                    'type' => 'enum('yes','no')',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'subscribecontext' => array(
+                'contact' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
-                '100rel' => array(
-                    'type' => 'enum('no','required','yes')',
-                    'required' => true,
+                'qualify_frequency' => array(
+                    'type' => 'int',
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -509,74 +449,49 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => true,
                     'comment' => '',
                 ),
-                'terminalId' => array(
+                'default_expiration' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
-                'aors' => array(
+                'max_contacts' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'minimum_expiration' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'remove_existing' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'callerid' => array(
+                'authenticate_qualify' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'context' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'disallow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'allow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media' => array(
-                    'type' => 'enum('yes','no')',
+                'maximum_expiration' => array(
+                    'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
-                'direct_media_method' => array(
-                    'type' => 'enum('invite','reinvite','update')',
-                    'required' => false,
-                    'comment' => '[enum:update|invite|reinvite]',
-                ),
-                'dtmf_mode' => array(
-                    'type' => 'enum('rfc4733','inband','info')',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'mailboxes' => array(
+                'support_path' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'send_diversion' => array(
-                    'type' => 'enum('yes','no')',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'send_pai' => array(
-                    'type' => 'enum('yes','no')',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'subscribecontext' => array(
+                'contact' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
-                '100rel' => array(
-                    'type' => 'enum('no','required','yes')',
-                    'required' => true,
+                'qualify_frequency' => array(
+                    'type' => 'int',
+                    'required' => false,
                     'comment' => '',
                 ),
             )

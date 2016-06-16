@@ -1,12 +1,12 @@
 <?php
 /**
- * ast_ps_endpoints
+ * AstPsEndpoints
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseController
+class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="GET information about all ast_ps_endpoints")
+     * @ApiDescription(section="AstPsEndpoints", description="GET information about all AstPsEndpoints")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -35,7 +35,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
-     *     'proxyTrunkId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -43,19 +42,16 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'allow': '', 
      *     'direct_media': '', 
      *     'direct_media_method': '', 
-     *     'dtmf_mode': '', 
      *     'mailboxes': '', 
+     *     'pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'trust_id_inbound': '', 
-     *     't38_udptl': ''
+     *     '100rel': ''
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
-     *     'proxyTrunkId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -63,14 +59,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'allow': '', 
      *     'direct_media': '', 
      *     'direct_media_method': '', 
-     *     'dtmf_mode': '', 
      *     'mailboxes': '', 
+     *     'pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'trust_id_inbound': '', 
-     *     't38_udptl': ''
+     *     '100rel': ''
      * }]")
      */
     public function indexAction()
@@ -91,7 +85,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'id',
                 'sorceryId',
                 'terminalId',
-                'proxyTrunkId',
                 'aors',
                 'callerid',
                 'context',
@@ -99,14 +92,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'allow',
                 'directMedia',
                 'directMedia',
-                'dtmfMode',
                 'mailboxes',
+                'pickupGroup',
                 'sendDiversion',
                 'sendPai',
                 'subscribecontext',
                 '100rel',
-                'trustId',
-                't38Udptl',
             );
         }
 
@@ -125,7 +116,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('ast_ps_endpoints');
+        $etag = $this->_cache->getEtagVersions('AstPsEndpoints');
 
         $hashEtag = md5(
             serialize(
@@ -141,7 +132,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             }
         }
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsEndpoints();
 
         $items = $mapper->fetchList(
             $where,
@@ -174,16 +165,15 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Get information about ast_ps_endpoints")
+     * @ApiDescription(section="AstPsEndpoints", description="Get information about AstPsEndpoints")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/{id}")
+     * @ApiRoute(name="/rest/ast-ps-endpoints/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
-     *     'proxyTrunkId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -191,14 +181,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      *     'allow': '', 
      *     'direct_media': '', 
      *     'direct_media_method': '', 
-     *     'dtmf_mode': '', 
      *     'mailboxes': '', 
+     *     'pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'trust_id_inbound': '', 
-     *     't38_udptl': ''
+     *     '100rel': ''
      * }")
      */
     public function getAction()
@@ -218,7 +206,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'id',
                 'sorceryId',
                 'terminalId',
-                'proxyTrunkId',
                 'aors',
                 'callerid',
                 'context',
@@ -226,18 +213,16 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 'allow',
                 'directMedia',
                 'directMedia',
-                'dtmfMode',
                 'mailboxes',
+                'pickupGroup',
                 'sendDiversion',
                 'sendPai',
                 'subscribecontext',
                 '100rel',
-                'trustId',
-                't38Udptl',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('ast_ps_endpoints');
+        $etag = $this->_cache->getEtagVersions('AstPsEndpoints');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -253,7 +238,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             }
         }
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsEndpoints();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -271,12 +256,11 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Create's a new ast_ps_endpoints")
+     * @ApiDescription(section="AstPsEndpoints", description="Create's a new AstPsEndpoints")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="proxyTrunkId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
@@ -284,16 +268,14 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="direct_media", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="direct_media_method", nullable=true, type="varchar", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="dtmf_mode", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_pai", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="trust_id_inbound", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="t38_udptl", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/ast_ps_endpoints/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/astpsendpoints/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -301,7 +283,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\ast_ps_endpoints();
+        $model = new Models\AstPsEndpoints();
 
         try {
             $model->populateFromArray($params);
@@ -323,13 +305,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Table ast_ps_endpoints")
+     * @ApiDescription(section="AstPsEndpoints", description="Table AstPsEndpoints")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="proxyTrunkId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
@@ -337,14 +318,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="direct_media", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="direct_media_method", nullable=true, type="varchar", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="dtmf_mode", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_pai", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="trust_id_inbound", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="t38_udptl", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -360,7 +339,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsEndpoints();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -384,9 +363,9 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="ast_ps_endpoints", description="Table ast_ps_endpoints")
+     * @ApiDescription(section="AstPsEndpoints", description="Table AstPsEndpoints")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/ast_ps_endpoints/")
+     * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -401,7 +380,7 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
             return;
         }
 
-        $mapper = new Mappers\ast_ps_endpoints();
+        $mapper = new Mappers\AstPsEndpoints();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -449,11 +428,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => false,
                     'comment' => '',
                 ),
-                'proxyTrunkId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'aors' => array(
                     'type' => 'varchar',
                     'required' => false,
@@ -489,12 +463,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => false,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
-                'dtmf_mode' => array(
+                'mailboxes' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
-                'mailboxes' => array(
+                'pickup_group' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -517,16 +491,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 '100rel' => array(
                     'type' => 'varchar',
                     'required' => true,
-                    'comment' => '',
-                ),
-                'trust_id_inbound' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                't38_udptl' => array(
-                    'type' => 'varchar',
-                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -550,11 +514,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => false,
                     'comment' => '',
                 ),
-                'proxyTrunkId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'aors' => array(
                     'type' => 'varchar',
                     'required' => false,
@@ -590,12 +549,12 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                     'required' => false,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
-                'dtmf_mode' => array(
+                'mailboxes' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
-                'mailboxes' => array(
+                'pickup_group' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -618,16 +577,6 @@ class Rest_ast_ps_endpointsController extends Iron_Controller_Rest_BaseControlle
                 '100rel' => array(
                     'type' => 'varchar',
                     'required' => true,
-                    'comment' => '',
-                ),
-                'trust_id_inbound' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                't38_udptl' => array(
-                    'type' => 'varchar',
-                    'required' => false,
                     'comment' => '',
                 ),
             )

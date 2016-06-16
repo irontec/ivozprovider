@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_acc_cdrs
+ * KamAccCdrs
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
+class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="kam_acc_cdrs", description="GET information about all kam_acc_cdrs")
+     * @ApiDescription(section="KamAccCdrs", description="GET information about all KamAccCdrs")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_acc_cdrs/")
+     * @ApiRoute(name="/rest/kam-acc-cdrs/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -47,6 +47,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
      *     'asIden': '', 
      *     'asAddress': '', 
      *     'callid': '', 
+     *     'callidHash': '', 
      *     'xcallid': '', 
      *     'parsed': '', 
      *     'diversion': '', 
@@ -75,6 +76,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
      *     'asIden': '', 
      *     'asAddress': '', 
      *     'callid': '', 
+     *     'callidHash': '', 
      *     'xcallid': '', 
      *     'parsed': '', 
      *     'diversion': '', 
@@ -119,6 +121,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
                 'asIden',
                 'asAddress',
                 'callid',
+                'callidHash',
                 'xcallid',
                 'parsed',
                 'diversion',
@@ -149,7 +152,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_acc_cdrs');
+        $etag = $this->_cache->getEtagVersions('KamAccCdrs');
 
         $hashEtag = md5(
             serialize(
@@ -165,7 +168,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\kam_acc_cdrs();
+        $mapper = new Mappers\KamAccCdrs();
 
         $items = $mapper->fetchList(
             $where,
@@ -198,9 +201,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="kam_acc_cdrs", description="Get information about kam_acc_cdrs")
+     * @ApiDescription(section="KamAccCdrs", description="Get information about KamAccCdrs")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_acc_cdrs/{id}")
+     * @ApiRoute(name="/rest/kam-acc-cdrs/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
@@ -219,6 +222,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
      *     'asIden': '', 
      *     'asAddress': '', 
      *     'callid': '', 
+     *     'callidHash': '', 
      *     'xcallid': '', 
      *     'parsed': '', 
      *     'diversion': '', 
@@ -262,6 +266,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
                 'asIden',
                 'asAddress',
                 'callid',
+                'callidHash',
                 'xcallid',
                 'parsed',
                 'diversion',
@@ -277,7 +282,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_acc_cdrs');
+        $etag = $this->_cache->getEtagVersions('KamAccCdrs');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -293,7 +298,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\kam_acc_cdrs();
+        $mapper = new Mappers\KamAccCdrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -311,9 +316,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="kam_acc_cdrs", description="Create's a new kam_acc_cdrs")
+     * @ApiDescription(section="KamAccCdrs", description="Create's a new KamAccCdrs")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_acc_cdrs/")
+     * @ApiRoute(name="/rest/kam-acc-cdrs/")
      * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
@@ -328,8 +333,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="asIden", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="asAddress", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callidHash", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
@@ -341,7 +347,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_acc_cdrs/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kamacccdrs/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -349,7 +355,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_acc_cdrs();
+        $model = new Models\KamAccCdrs();
 
         try {
             $model->populateFromArray($params);
@@ -371,9 +377,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="kam_acc_cdrs", description="Table kam_acc_cdrs")
+     * @ApiDescription(section="KamAccCdrs", description="Table KamAccCdrs")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_acc_cdrs/")
+     * @ApiRoute(name="/rest/kam-acc-cdrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
@@ -389,8 +395,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="asIden", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="asAddress", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callidHash", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
@@ -416,7 +423,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_acc_cdrs();
+        $mapper = new Mappers\KamAccCdrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -440,9 +447,9 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="kam_acc_cdrs", description="Table kam_acc_cdrs")
+     * @ApiDescription(section="KamAccCdrs", description="Table KamAccCdrs")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_acc_cdrs/")
+     * @ApiRoute(name="/rest/kam-acc-cdrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -457,7 +464,7 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\kam_acc_cdrs();
+        $mapper = new Mappers\KamAccCdrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -561,6 +568,11 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'callid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'callidHash' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -702,6 +714,11 @@ class Rest_kam_acc_cdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'callid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'callidHash' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',

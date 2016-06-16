@@ -33,72 +33,62 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'calldate': '', 
+     *     'statId': '', 
+     *     'xstatId': '', 
+     *     'statType': '', 
+     *     'initialLeg': '', 
+     *     'initialLegHash': '', 
+     *     'cid': '', 
+     *     'cidHash': '', 
+     *     'xcid': '', 
+     *     'xcidHash': '', 
+     *     'proxies': '', 
      *     'type': '', 
-     *     'desc': '', 
-     *     'src': '', 
-     *     'src_dialed': '', 
-     *     'src_duration': '', 
-     *     'dst': '', 
-     *     'dst_src_cid': '', 
-     *     'dst_duration': '', 
-     *     'fw_desc': '', 
-     *     'ext_forwarder': '', 
-     *     'int_forwarder': '', 
-     *     'forward_to': '', 
-     *     'referee': '', 
+     *     'subtype': '', 
+     *     'calldate': '', 
+     *     'duration': '', 
+     *     'aParty': '', 
+     *     'bParty': '', 
+     *     'caller': '', 
+     *     'callee': '', 
+     *     'xCaller': '', 
+     *     'xCallee': '', 
+     *     'initialReferrer': '', 
      *     'referrer': '', 
-     *     'aleg': '', 
-     *     'bleg': '', 
-     *     'cleg': '', 
-     *     'billCallID': '', 
-     *     'billDuration': '', 
-     *     'billDestination': '', 
-     *     'externallyRated': '', 
-     *     'metered': '', 
-     *     'meteringDate': '', 
-     *     'pricingPlanId': '', 
-     *     'targetPatternId': '', 
-     *     'price': '', 
-     *     'pricingPlanDetails': '', 
-     *     'invoiceId': '', 
-     *     'peeringContractId': '', 
+     *     'referee': '', 
+     *     'lastForwarder': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
-     *     'brandId': ''
+     *     'peeringContractId': ''
      * },{
      *     'id': '', 
-     *     'calldate': '', 
+     *     'statId': '', 
+     *     'xstatId': '', 
+     *     'statType': '', 
+     *     'initialLeg': '', 
+     *     'initialLegHash': '', 
+     *     'cid': '', 
+     *     'cidHash': '', 
+     *     'xcid': '', 
+     *     'xcidHash': '', 
+     *     'proxies': '', 
      *     'type': '', 
-     *     'desc': '', 
-     *     'src': '', 
-     *     'src_dialed': '', 
-     *     'src_duration': '', 
-     *     'dst': '', 
-     *     'dst_src_cid': '', 
-     *     'dst_duration': '', 
-     *     'fw_desc': '', 
-     *     'ext_forwarder': '', 
-     *     'int_forwarder': '', 
-     *     'forward_to': '', 
-     *     'referee': '', 
+     *     'subtype': '', 
+     *     'calldate': '', 
+     *     'duration': '', 
+     *     'aParty': '', 
+     *     'bParty': '', 
+     *     'caller': '', 
+     *     'callee': '', 
+     *     'xCaller': '', 
+     *     'xCallee': '', 
+     *     'initialReferrer': '', 
      *     'referrer': '', 
-     *     'aleg': '', 
-     *     'bleg': '', 
-     *     'cleg': '', 
-     *     'billCallID': '', 
-     *     'billDuration': '', 
-     *     'billDestination': '', 
-     *     'externallyRated': '', 
-     *     'metered': '', 
-     *     'meteringDate': '', 
-     *     'pricingPlanId': '', 
-     *     'targetPatternId': '', 
-     *     'price': '', 
-     *     'pricingPlanDetails': '', 
-     *     'invoiceId': '', 
-     *     'peeringContractId': '', 
+     *     'referee': '', 
+     *     'lastForwarder': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
-     *     'brandId': ''
+     *     'peeringContractId': ''
      * }]")
      */
     public function indexAction()
@@ -117,38 +107,33 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'calldate',
+                'statId',
+                'xstatId',
+                'statType',
+                'initialLeg',
+                'initialLegHash',
+                'cid',
+                'cidHash',
+                'xcid',
+                'xcidHash',
+                'proxies',
                 'type',
-                'desc',
-                'src',
-                'srcDialed',
-                'srcDuration',
-                'dst',
-                'dstSrc',
-                'dstDuration',
-                'fwDesc',
-                'extForwarder',
-                'intForwarder',
-                'forwardTo',
-                'referee',
+                'subtype',
+                'calldate',
+                'duration',
+                'aParty',
+                'bParty',
+                'caller',
+                'callee',
+                'xCaller',
+                'xCallee',
+                'initialReferrer',
                 'referrer',
-                'aleg',
-                'bleg',
-                'cleg',
-                'billCallID',
-                'billDuration',
-                'billDestination',
-                'externallyRated',
-                'metered',
-                'meteringDate',
-                'pricingPlanId',
-                'targetPatternId',
-                'price',
-                'pricingPlanDetails',
-                'invoiceId',
-                'peeringContractId',
-                'companyId',
+                'referee',
+                'lastForwarder',
                 'brandId',
+                'companyId',
+                'peeringContractId',
             );
         }
 
@@ -223,38 +208,33 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'calldate': '', 
+     *     'statId': '', 
+     *     'xstatId': '', 
+     *     'statType': '', 
+     *     'initialLeg': '', 
+     *     'initialLegHash': '', 
+     *     'cid': '', 
+     *     'cidHash': '', 
+     *     'xcid': '', 
+     *     'xcidHash': '', 
+     *     'proxies': '', 
      *     'type': '', 
-     *     'desc': '', 
-     *     'src': '', 
-     *     'src_dialed': '', 
-     *     'src_duration': '', 
-     *     'dst': '', 
-     *     'dst_src_cid': '', 
-     *     'dst_duration': '', 
-     *     'fw_desc': '', 
-     *     'ext_forwarder': '', 
-     *     'int_forwarder': '', 
-     *     'forward_to': '', 
-     *     'referee': '', 
+     *     'subtype': '', 
+     *     'calldate': '', 
+     *     'duration': '', 
+     *     'aParty': '', 
+     *     'bParty': '', 
+     *     'caller': '', 
+     *     'callee': '', 
+     *     'xCaller': '', 
+     *     'xCallee': '', 
+     *     'initialReferrer': '', 
      *     'referrer': '', 
-     *     'aleg': '', 
-     *     'bleg': '', 
-     *     'cleg': '', 
-     *     'billCallID': '', 
-     *     'billDuration': '', 
-     *     'billDestination': '', 
-     *     'externallyRated': '', 
-     *     'metered': '', 
-     *     'meteringDate': '', 
-     *     'pricingPlanId': '', 
-     *     'targetPatternId': '', 
-     *     'price': '', 
-     *     'pricingPlanDetails': '', 
-     *     'invoiceId': '', 
-     *     'peeringContractId': '', 
+     *     'referee': '', 
+     *     'lastForwarder': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
-     *     'brandId': ''
+     *     'peeringContractId': ''
      * }")
      */
     public function getAction()
@@ -272,38 +252,33 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'calldate',
+                'statId',
+                'xstatId',
+                'statType',
+                'initialLeg',
+                'initialLegHash',
+                'cid',
+                'cidHash',
+                'xcid',
+                'xcidHash',
+                'proxies',
                 'type',
-                'desc',
-                'src',
-                'srcDialed',
-                'srcDuration',
-                'dst',
-                'dstSrc',
-                'dstDuration',
-                'fwDesc',
-                'extForwarder',
-                'intForwarder',
-                'forwardTo',
-                'referee',
+                'subtype',
+                'calldate',
+                'duration',
+                'aParty',
+                'bParty',
+                'caller',
+                'callee',
+                'xCaller',
+                'xCallee',
+                'initialReferrer',
                 'referrer',
-                'aleg',
-                'bleg',
-                'cleg',
-                'billCallID',
-                'billDuration',
-                'billDestination',
-                'externallyRated',
-                'metered',
-                'meteringDate',
-                'pricingPlanId',
-                'targetPatternId',
-                'price',
-                'pricingPlanDetails',
-                'invoiceId',
-                'peeringContractId',
-                'companyId',
+                'referee',
+                'lastForwarder',
                 'brandId',
+                'companyId',
+                'peeringContractId',
             );
         }
 
@@ -344,38 +319,33 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="ParsedCDRs", description="Create's a new ParsedCDRs")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/parsed-c-d-rs/")
-     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="aleg timestamp")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="Call type")
-     * @ApiParams(name="desc", nullable=true, type="varchar", sample="", description="Call description")
-     * @ApiParams(name="src", nullable=true, type="varchar", sample="", description="Caller")
-     * @ApiParams(name="src_dialed", nullable=true, type="varchar", sample="", description="Dialed Number")
-     * @ApiParams(name="src_duration", nullable=true, type="int", sample="", description="aleg call duration")
-     * @ApiParams(name="dst", nullable=true, type="varchar", sample="", description="Final Callee - bleg destination")
-     * @ApiParams(name="dst_src_cid", nullable=true, type="varchar", sample="", description="CallerID seen by call destination")
-     * @ApiParams(name="dst_duration", nullable=true, type="int", sample="", description="bleg call duration")
-     * @ApiParams(name="fw_desc", nullable=true, type="varchar", sample="", description="Call forwarding description")
-     * @ApiParams(name="ext_forwarder", nullable=true, type="varchar", sample="", description="aleg diversion")
-     * @ApiParams(name="int_forwarder", nullable=true, type="varchar", sample="", description="bleg diversion")
-     * @ApiParams(name="forward_to", nullable=true, type="varchar", sample="", description="Dialed number after forwarding")
-     * @ApiParams(name="referee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="statId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="xstatId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="statType", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="initialLeg", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="initialLegHash", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="cid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="cidHash", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xcid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xcidHash", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proxies", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="subtype", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="duration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="aParty", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="bParty", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xCaller", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xCallee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="initialReferrer", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="referrer", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="aleg", nullable=true, type="varchar", sample="", description="aleg CallID")
-     * @ApiParams(name="bleg", nullable=true, type="varchar", sample="", description="bleg CallID")
-     * @ApiParams(name="cleg", nullable=true, type="varchar", sample="", description="cleg CallID")
-     * @ApiParams(name="billCallID", nullable=true, type="varchar", sample="", description="Billable leg CallID")
-     * @ApiParams(name="billDuration", nullable=true, type="int", sample="", description="Billable leg duration")
-     * @ApiParams(name="billDestination", nullable=true, type="varchar", sample="", description="Billable leg destination")
-     * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="1 for billable calls billed elsewhere")
-     * @ApiParams(name="metered", nullable=true, type="tinyint", sample="", description="1 for billable calls with price set")
-     * @ApiParams(name="meteringDate", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="pricingPlanId", nullable=true, type="int", sample="", description="Pricing plan used for setting price")
-     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="Destination group for billable call")
-     * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="Final price for billable call")
-     * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
-     * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="Invoice for billable billed call")
-     * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="Billable call used Peering Contract")
-     * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="referee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="lastForwarder", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/parsedcdrs/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -411,38 +381,33 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/parsed-c-d-rs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="aleg timestamp")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="Call type")
-     * @ApiParams(name="desc", nullable=true, type="varchar", sample="", description="Call description")
-     * @ApiParams(name="src", nullable=true, type="varchar", sample="", description="Caller")
-     * @ApiParams(name="src_dialed", nullable=true, type="varchar", sample="", description="Dialed Number")
-     * @ApiParams(name="src_duration", nullable=true, type="int", sample="", description="aleg call duration")
-     * @ApiParams(name="dst", nullable=true, type="varchar", sample="", description="Final Callee - bleg destination")
-     * @ApiParams(name="dst_src_cid", nullable=true, type="varchar", sample="", description="CallerID seen by call destination")
-     * @ApiParams(name="dst_duration", nullable=true, type="int", sample="", description="bleg call duration")
-     * @ApiParams(name="fw_desc", nullable=true, type="varchar", sample="", description="Call forwarding description")
-     * @ApiParams(name="ext_forwarder", nullable=true, type="varchar", sample="", description="aleg diversion")
-     * @ApiParams(name="int_forwarder", nullable=true, type="varchar", sample="", description="bleg diversion")
-     * @ApiParams(name="forward_to", nullable=true, type="varchar", sample="", description="Dialed number after forwarding")
-     * @ApiParams(name="referee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="statId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="xstatId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="statType", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="initialLeg", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="initialLegHash", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="cid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="cidHash", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xcid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xcidHash", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proxies", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="subtype", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="duration", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="aParty", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="bParty", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xCaller", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="xCallee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="initialReferrer", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="referrer", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="aleg", nullable=true, type="varchar", sample="", description="aleg CallID")
-     * @ApiParams(name="bleg", nullable=true, type="varchar", sample="", description="bleg CallID")
-     * @ApiParams(name="cleg", nullable=true, type="varchar", sample="", description="cleg CallID")
-     * @ApiParams(name="billCallID", nullable=true, type="varchar", sample="", description="Billable leg CallID")
-     * @ApiParams(name="billDuration", nullable=true, type="int", sample="", description="Billable leg duration")
-     * @ApiParams(name="billDestination", nullable=true, type="varchar", sample="", description="Billable leg destination")
-     * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="1 for billable calls billed elsewhere")
-     * @ApiParams(name="metered", nullable=true, type="tinyint", sample="", description="1 for billable calls with price set")
-     * @ApiParams(name="meteringDate", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="pricingPlanId", nullable=true, type="int", sample="", description="Pricing plan used for setting price")
-     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="Destination group for billable call")
-     * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="Final price for billable call")
-     * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
-     * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="Invoice for billable billed call")
-     * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="Billable call used Peering Contract")
-     * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="referee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="lastForwarder", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -537,72 +502,107 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'calldate' => array(
-                    'type' => 'timestamp',
-                    'required' => true,
-                    'comment' => 'aleg timestamp',
+                'statId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xstatId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'statType' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'initialLeg' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'initialLegHash' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'cid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'cidHash' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xcid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xcidHash' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'proxies' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
                 ),
                 'type' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Call type',
+                    'comment' => '',
                 ),
-                'desc' => array(
+                'subtype' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Call description',
+                    'comment' => '',
                 ),
-                'src' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Caller',
+                'calldate' => array(
+                    'type' => 'timestamp',
+                    'required' => true,
+                    'comment' => '',
                 ),
-                'src_dialed' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Dialed Number',
-                ),
-                'src_duration' => array(
+                'duration' => array(
                     'type' => 'int',
                     'required' => false,
-                    'comment' => 'aleg call duration',
+                    'comment' => '',
                 ),
-                'dst' => array(
+                'aParty' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Final Callee - bleg destination',
+                    'comment' => '',
                 ),
-                'dst_src_cid' => array(
+                'bParty' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'CallerID seen by call destination',
+                    'comment' => '',
                 ),
-                'dst_duration' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'bleg call duration',
-                ),
-                'fw_desc' => array(
+                'caller' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Call forwarding description',
+                    'comment' => '',
                 ),
-                'ext_forwarder' => array(
+                'callee' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'aleg diversion',
+                    'comment' => '',
                 ),
-                'int_forwarder' => array(
+                'xCaller' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'bleg diversion',
+                    'comment' => '',
                 ),
-                'forward_to' => array(
+                'xCallee' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Dialed number after forwarding',
+                    'comment' => '',
                 ),
-                'referee' => array(
+                'initialReferrer' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -612,87 +612,27 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'aleg' => array(
+                'referee' => array(
                     'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'aleg CallID',
-                ),
-                'bleg' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'bleg CallID',
-                ),
-                'cleg' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'cleg CallID',
-                ),
-                'billCallID' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Billable leg CallID',
-                ),
-                'billDuration' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Billable leg duration',
-                ),
-                'billDestination' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Billable leg destination',
-                ),
-                'externallyRated' => array(
-                    'type' => 'tinyint',
-                    'required' => false,
-                    'comment' => '1 for billable calls billed elsewhere',
-                ),
-                'metered' => array(
-                    'type' => 'tinyint',
-                    'required' => false,
-                    'comment' => '1 for billable calls with price set',
-                ),
-                'meteringDate' => array(
-                    'type' => 'datetime',
                     'required' => false,
                     'comment' => '',
                 ),
-                'pricingPlanId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Pricing plan used for setting price',
-                ),
-                'targetPatternId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Destination group for billable call',
-                ),
-                'price' => array(
-                    'type' => 'decimal',
-                    'required' => false,
-                    'comment' => 'Final price for billable call',
-                ),
-                'pricingPlanDetails' => array(
-                    'type' => 'text',
+                'lastForwarder' => array(
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'invoiceId' => array(
+                'brandId' => array(
                     'type' => 'int',
                     'required' => false,
-                    'comment' => 'Invoice for billable billed call',
-                ),
-                'peeringContractId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Billable call used Peering Contract',
+                    'comment' => '',
                 ),
                 'companyId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
-                'brandId' => array(
+                'peeringContractId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
@@ -708,72 +648,107 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'calldate' => array(
-                    'type' => 'timestamp',
-                    'required' => true,
-                    'comment' => 'aleg timestamp',
+                'statId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xstatId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'statType' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'initialLeg' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'initialLegHash' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'cid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'cidHash' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xcid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'xcidHash' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'proxies' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
                 ),
                 'type' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Call type',
+                    'comment' => '',
                 ),
-                'desc' => array(
+                'subtype' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Call description',
+                    'comment' => '',
                 ),
-                'src' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Caller',
+                'calldate' => array(
+                    'type' => 'timestamp',
+                    'required' => true,
+                    'comment' => '',
                 ),
-                'src_dialed' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Dialed Number',
-                ),
-                'src_duration' => array(
+                'duration' => array(
                     'type' => 'int',
                     'required' => false,
-                    'comment' => 'aleg call duration',
+                    'comment' => '',
                 ),
-                'dst' => array(
+                'aParty' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Final Callee - bleg destination',
+                    'comment' => '',
                 ),
-                'dst_src_cid' => array(
+                'bParty' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'CallerID seen by call destination',
+                    'comment' => '',
                 ),
-                'dst_duration' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'bleg call duration',
-                ),
-                'fw_desc' => array(
+                'caller' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Call forwarding description',
+                    'comment' => '',
                 ),
-                'ext_forwarder' => array(
+                'callee' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'aleg diversion',
+                    'comment' => '',
                 ),
-                'int_forwarder' => array(
+                'xCaller' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'bleg diversion',
+                    'comment' => '',
                 ),
-                'forward_to' => array(
+                'xCallee' => array(
                     'type' => 'varchar',
                     'required' => false,
-                    'comment' => 'Dialed number after forwarding',
+                    'comment' => '',
                 ),
-                'referee' => array(
+                'initialReferrer' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -783,87 +758,27 @@ class Rest_ParsedCDRsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'aleg' => array(
+                'referee' => array(
                     'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'aleg CallID',
-                ),
-                'bleg' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'bleg CallID',
-                ),
-                'cleg' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'cleg CallID',
-                ),
-                'billCallID' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Billable leg CallID',
-                ),
-                'billDuration' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Billable leg duration',
-                ),
-                'billDestination' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => 'Billable leg destination',
-                ),
-                'externallyRated' => array(
-                    'type' => 'tinyint',
-                    'required' => false,
-                    'comment' => '1 for billable calls billed elsewhere',
-                ),
-                'metered' => array(
-                    'type' => 'tinyint',
-                    'required' => false,
-                    'comment' => '1 for billable calls with price set',
-                ),
-                'meteringDate' => array(
-                    'type' => 'datetime',
                     'required' => false,
                     'comment' => '',
                 ),
-                'pricingPlanId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Pricing plan used for setting price',
-                ),
-                'targetPatternId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Destination group for billable call',
-                ),
-                'price' => array(
-                    'type' => 'decimal',
-                    'required' => false,
-                    'comment' => 'Final price for billable call',
-                ),
-                'pricingPlanDetails' => array(
-                    'type' => 'text',
+                'lastForwarder' => array(
+                    'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'invoiceId' => array(
+                'brandId' => array(
                     'type' => 'int',
                     'required' => false,
-                    'comment' => 'Invoice for billable billed call',
-                ),
-                'peeringContractId' => array(
-                    'type' => 'int',
-                    'required' => false,
-                    'comment' => 'Billable call used Peering Contract',
+                    'comment' => '',
                 ),
                 'companyId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
                 ),
-                'brandId' => array(
+                'peeringContractId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',

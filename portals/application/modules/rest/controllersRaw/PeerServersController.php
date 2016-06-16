@@ -50,7 +50,9 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'useAuthUserAsFromUser': '', 
      *     'auth_needed': '', 
      *     'auth_user': '', 
-     *     'auth_password': ''
+     *     'auth_password': '', 
+     *     'sip_proxy': '', 
+     *     'outbound_proxy': ''
      * },{
      *     'id': '', 
      *     'peeringContractId': '', 
@@ -70,7 +72,9 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'useAuthUserAsFromUser': '', 
      *     'auth_needed': '', 
      *     'auth_user': '', 
-     *     'auth_password': ''
+     *     'auth_password': '', 
+     *     'sip_proxy': '', 
+     *     'outbound_proxy': ''
      * }]")
      */
     public function indexAction()
@@ -107,6 +111,8 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'authNeeded',
                 'authUser',
                 'authPassword',
+                'sipProxy',
+                'outboundProxy',
             );
         }
 
@@ -198,7 +204,9 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'useAuthUserAsFromUser': '', 
      *     'auth_needed': '', 
      *     'auth_user': '', 
-     *     'auth_password': ''
+     *     'auth_password': '', 
+     *     'sip_proxy': '', 
+     *     'outbound_proxy': ''
      * }")
      */
     public function getAction()
@@ -234,6 +242,8 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'authNeeded',
                 'authUser',
                 'authPassword',
+                'sipProxy',
+                'outboundProxy',
             );
         }
 
@@ -289,9 +299,11 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="sendPAI", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="sendRPID", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="useAuthUserAsFromUser", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="sip_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/peerservers/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -342,9 +354,11 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="sendPAI", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="sendRPID", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="useAuthUserAsFromUser", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="sip_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -515,7 +529,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'auth_needed' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -525,6 +539,16 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'auth_password' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'sip_proxy' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'outbound_proxy' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
@@ -616,7 +640,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'auth_needed' => array(
-                    'type' => 'enum('yes','no')',
+                    'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -626,6 +650,16 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'auth_password' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'sip_proxy' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'outbound_proxy' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',

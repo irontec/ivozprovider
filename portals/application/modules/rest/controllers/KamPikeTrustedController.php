@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_trunks_address
+ * KamPikeTrusted
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseController
+class Rest_KamPikeTrustedController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,27 +24,29 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="GET information about all kam_trunks_address")
+     * @ApiDescription(section="KamPikeTrusted", description="GET information about all KamPikeTrusted")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiRoute(name="/rest/kam-pike-trusted/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'grp': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': ''
+     *     'src_ip': '', 
+     *     'proto': '', 
+     *     'from_pattern': '', 
+     *     'ruri_pattern': '', 
+     *     'tag': '', 
+     *     'priority': ''
      * },{
      *     'id': '', 
-     *     'grp': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': ''
+     *     'src_ip': '', 
+     *     'proto': '', 
+     *     'from_pattern': '', 
+     *     'ruri_pattern': '', 
+     *     'tag': '', 
+     *     'priority': ''
      * }]")
      */
     public function indexAction()
@@ -63,11 +65,12 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
         } else {
             $fields = array(
                 'id',
-                'grp',
-                'ipAddr',
-                'mask',
-                'port',
+                'srcIp',
+                'proto',
+                'fromPattern',
+                'ruriPattern',
                 'tag',
+                'priority',
             );
         }
 
@@ -86,7 +89,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_address');
+        $etag = $this->_cache->getEtagVersions('KamPikeTrusted');
 
         $hashEtag = md5(
             serialize(
@@ -102,7 +105,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             }
         }
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\KamPikeTrusted();
 
         $items = $mapper->fetchList(
             $where,
@@ -135,18 +138,19 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Get information about kam_trunks_address")
+     * @ApiDescription(section="KamPikeTrusted", description="Get information about KamPikeTrusted")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_address/{id}")
+     * @ApiRoute(name="/rest/kam-pike-trusted/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'grp': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': ''
+     *     'src_ip': '', 
+     *     'proto': '', 
+     *     'from_pattern': '', 
+     *     'ruri_pattern': '', 
+     *     'tag': '', 
+     *     'priority': ''
      * }")
      */
     public function getAction()
@@ -164,15 +168,16 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
         } else {
             $fields = array(
                 'id',
-                'grp',
-                'ipAddr',
-                'mask',
-                'port',
+                'srcIp',
+                'proto',
+                'fromPattern',
+                'ruriPattern',
                 'tag',
+                'priority',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_address');
+        $etag = $this->_cache->getEtagVersions('KamPikeTrusted');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -188,7 +193,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             }
         }
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\KamPikeTrusted();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -206,16 +211,17 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Create's a new kam_trunks_address")
+     * @ApiDescription(section="KamPikeTrusted", description="Create's a new KamPikeTrusted")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
-     * @ApiParams(name="grp", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
+     * @ApiRoute(name="/rest/kam-pike-trusted/")
+     * @ApiParams(name="src_ip", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proto", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="ruri_pattern", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="priority", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_trunks_address/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kampiketrusted/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -223,7 +229,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_trunks_address();
+        $model = new Models\KamPikeTrusted();
 
         try {
             $model->populateFromArray($params);
@@ -245,15 +251,16 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Table kam_trunks_address")
+     * @ApiDescription(section="KamPikeTrusted", description="Table KamPikeTrusted")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiRoute(name="/rest/kam-pike-trusted/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="grp", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="src_ip", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="proto", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="ruri_pattern", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="priority", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -269,7 +276,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\KamPikeTrusted();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -293,9 +300,9 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Table kam_trunks_address")
+     * @ApiDescription(section="KamPikeTrusted", description="Table KamPikeTrusted")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiRoute(name="/rest/kam-pike-trusted/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -310,7 +317,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             return;
         }
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\KamPikeTrusted();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -348,29 +355,34 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'grp' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'ip_addr' => array(
+                'src_ip' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'mask' => array(
-                    'type' => 'int',
-                    'required' => true,
+                'proto' => array(
+                    'type' => 'varchar',
+                    'required' => false,
                     'comment' => '',
                 ),
-                'port' => array(
-                    'type' => 'int',
-                    'required' => true,
+                'from_pattern' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'ruri_pattern' => array(
+                    'type' => 'varchar',
+                    'required' => false,
                     'comment' => '',
                 ),
                 'tag' => array(
                     'type' => 'varchar',
                     'required' => false,
+                    'comment' => '',
+                ),
+                'priority' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -384,29 +396,34 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'grp' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'ip_addr' => array(
+                'src_ip' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'mask' => array(
-                    'type' => 'int',
-                    'required' => true,
+                'proto' => array(
+                    'type' => 'varchar',
+                    'required' => false,
                     'comment' => '',
                 ),
-                'port' => array(
-                    'type' => 'int',
-                    'required' => true,
+                'from_pattern' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'ruri_pattern' => array(
+                    'type' => 'varchar',
+                    'required' => false,
                     'comment' => '',
                 ),
                 'tag' => array(
                     'type' => 'varchar',
                     'required' => false,
+                    'comment' => '',
+                ),
+                'priority' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
             )

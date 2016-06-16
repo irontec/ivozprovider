@@ -1,12 +1,12 @@
 <?php
 /**
- * PickUpRelUsers
+ * Recordings
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
+class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,21 +24,31 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="PickUpRelUsers", description="GET information about all PickUpRelUsers")
+     * @ApiDescription(section="Recordings", description="GET information about all Recordings")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/pick-up-rel-users/")
+     * @ApiRoute(name="/rest/recordings/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'pickUpGroupId': '', 
-     *     'userId': ''
+     *     'companyId': '', 
+     *     'callid': '', 
+     *     'calldate': '', 
+     *     'duration': '', 
+     *     'caller': '', 
+     *     'callee': '', 
+     *     'recordedFile': ''
      * },{
      *     'id': '', 
-     *     'pickUpGroupId': '', 
-     *     'userId': ''
+     *     'companyId': '', 
+     *     'callid': '', 
+     *     'calldate': '', 
+     *     'duration': '', 
+     *     'caller': '', 
+     *     'callee': '', 
+     *     'recordedFile': ''
      * }]")
      */
     public function indexAction()
@@ -57,8 +67,12 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'pickUpGroupId',
-                'userId',
+                'companyId',
+                'callid',
+                'calldate',
+                'duration',
+                'caller',
+                'callee',
             );
         }
 
@@ -77,7 +91,7 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('PickUpRelUsers');
+        $etag = $this->_cache->getEtagVersions('Recordings');
 
         $hashEtag = md5(
             serialize(
@@ -93,7 +107,7 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\PickUpRelUsers();
+        $mapper = new Mappers\Recordings();
 
         $items = $mapper->fetchList(
             $where,
@@ -126,15 +140,20 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="PickUpRelUsers", description="Get information about PickUpRelUsers")
+     * @ApiDescription(section="Recordings", description="Get information about Recordings")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/pick-up-rel-users/{id}")
+     * @ApiRoute(name="/rest/recordings/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'pickUpGroupId': '', 
-     *     'userId': ''
+     *     'companyId': '', 
+     *     'callid': '', 
+     *     'calldate': '', 
+     *     'duration': '', 
+     *     'caller': '', 
+     *     'callee': '', 
+     *     'recordedFile': ''
      * }")
      */
     public function getAction()
@@ -152,12 +171,16 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'pickUpGroupId',
-                'userId',
+                'companyId',
+                'callid',
+                'calldate',
+                'duration',
+                'caller',
+                'callee',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('PickUpRelUsers');
+        $etag = $this->_cache->getEtagVersions('Recordings');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -173,7 +196,7 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\PickUpRelUsers();
+        $mapper = new Mappers\Recordings();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -191,13 +214,18 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="PickUpRelUsers", description="Create's a new PickUpRelUsers")
+     * @ApiDescription(section="Recordings", description="Create's a new Recordings")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/pick-up-rel-users/")
-     * @ApiParams(name="pickUpGroupId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="userId", nullable=false, type="int", sample="", description="")
+     * @ApiRoute(name="/rest/recordings/")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
+     * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/pickuprelusers/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/recordings/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -205,9 +233,14 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\PickUpRelUsers();
+        $model = new Models\Recordings();
 
         try {
+            if (!empty($_FILES['recordedFile'])) {
+                $recordedFile = $_FILES['recordedFile'];
+                $model->putRecordedFile($recordedFile['tmp_name'], $recordedFile['name']);
+            }
+
             $model->populateFromArray($params);
             $model->save();
 
@@ -227,12 +260,17 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="PickUpRelUsers", description="Table PickUpRelUsers")
+     * @ApiDescription(section="Recordings", description="Table Recordings")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/pick-up-rel-users/")
+     * @ApiRoute(name="/rest/recordings/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="pickUpGroupId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="userId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
+     * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -248,7 +286,7 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\PickUpRelUsers();
+        $mapper = new Mappers\Recordings();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -257,6 +295,11 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
         }
 
         try {
+            if (!empty($_FILES['recordedFile'])) {
+                $recordedFile = $_FILES['recordedFile'];
+                $model->putRecordedFile($recordedFile['tmp_name'], $recordedFile['name']);
+            }
+
             $model->populateFromArray($params);
             $model->save();
 
@@ -272,9 +315,9 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="PickUpRelUsers", description="Table PickUpRelUsers")
+     * @ApiDescription(section="Recordings", description="Table Recordings")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/pick-up-rel-users/")
+     * @ApiRoute(name="/rest/recordings/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -289,7 +332,7 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\PickUpRelUsers();
+        $mapper = new Mappers\Recordings();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -327,15 +370,40 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'pickUpGroupId' => array(
+                'companyId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'userId' => array(
-                    'type' => 'int',
+                'callid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'calldate' => array(
+                    'type' => 'timestamp',
                     'required' => true,
                     'comment' => '',
+                ),
+                'duration' => array(
+                    'type' => 'float',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'caller' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'callee' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordedFile' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '[FSO:keepExtension|storeInBaseFolder]',
                 ),
             )
         );
@@ -348,15 +416,40 @@ class Rest_PickUpRelUsersController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'pickUpGroupId' => array(
+                'companyId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'userId' => array(
-                    'type' => 'int',
+                'callid' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'calldate' => array(
+                    'type' => 'timestamp',
                     'required' => true,
                     'comment' => '',
+                ),
+                'duration' => array(
+                    'type' => 'float',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'caller' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'callee' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordedFile' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '[FSO:keepExtension|storeInBaseFolder]',
                 ),
             )
         );

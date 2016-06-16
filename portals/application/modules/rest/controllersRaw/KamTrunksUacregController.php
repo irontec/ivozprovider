@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_trunks_dialplan
+ * KamTrunksUacreg
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseController
+class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,35 +24,45 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="GET information about all kam_trunks_dialplan")
+     * @ApiDescription(section="KamTrunksUacreg", description="GET information about all KamTrunksUacreg")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
+     * @ApiRoute(name="/rest/kam-trunks-uacreg/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'dpid': '', 
-     *     'pr': '', 
-     *     'match_op': '', 
-     *     'match_exp': '', 
-     *     'match_len': '', 
-     *     'subst_exp': '', 
-     *     'repl_exp': '', 
-     *     'attrs': '', 
-     *     'transformationRulesetGroupsTrunksId': ''
+     *     'l_uuid': '', 
+     *     'l_username': '', 
+     *     'l_domain': '', 
+     *     'r_username': '', 
+     *     'r_domain': '', 
+     *     'realm': '', 
+     *     'auth_username': '', 
+     *     'auth_password': '', 
+     *     'auth_proxy': '', 
+     *     'expires': '', 
+     *     'flags': '', 
+     *     'reg_delay': '', 
+     *     'brandId': '', 
+     *     'peeringContractId': ''
      * },{
      *     'id': '', 
-     *     'dpid': '', 
-     *     'pr': '', 
-     *     'match_op': '', 
-     *     'match_exp': '', 
-     *     'match_len': '', 
-     *     'subst_exp': '', 
-     *     'repl_exp': '', 
-     *     'attrs': '', 
-     *     'transformationRulesetGroupsTrunksId': ''
+     *     'l_uuid': '', 
+     *     'l_username': '', 
+     *     'l_domain': '', 
+     *     'r_username': '', 
+     *     'r_domain': '', 
+     *     'realm': '', 
+     *     'auth_username': '', 
+     *     'auth_password': '', 
+     *     'auth_proxy': '', 
+     *     'expires': '', 
+     *     'flags': '', 
+     *     'reg_delay': '', 
+     *     'brandId': '', 
+     *     'peeringContractId': ''
      * }]")
      */
     public function indexAction()
@@ -71,15 +81,20 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
         } else {
             $fields = array(
                 'id',
-                'dpid',
-                'pr',
-                'matchOp',
-                'matchExp',
-                'matchLen',
-                'substExp',
-                'replExp',
-                'attrs',
-                'transformationRulesetGroupsTrunksId',
+                'lUuid',
+                'lUsername',
+                'lDomain',
+                'rUsername',
+                'rDomain',
+                'realm',
+                'authUsername',
+                'authPassword',
+                'authProxy',
+                'expires',
+                'flags',
+                'regDelay',
+                'brandId',
+                'peeringContractId',
             );
         }
 
@@ -98,7 +113,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_dialplan');
+        $etag = $this->_cache->getEtagVersions('KamTrunksUacreg');
 
         $hashEtag = md5(
             serialize(
@@ -114,7 +129,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             }
         }
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\KamTrunksUacreg();
 
         $items = $mapper->fetchList(
             $where,
@@ -147,22 +162,27 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Get information about kam_trunks_dialplan")
+     * @ApiDescription(section="KamTrunksUacreg", description="Get information about KamTrunksUacreg")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/{id}")
+     * @ApiRoute(name="/rest/kam-trunks-uacreg/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'dpid': '', 
-     *     'pr': '', 
-     *     'match_op': '', 
-     *     'match_exp': '', 
-     *     'match_len': '', 
-     *     'subst_exp': '', 
-     *     'repl_exp': '', 
-     *     'attrs': '', 
-     *     'transformationRulesetGroupsTrunksId': ''
+     *     'l_uuid': '', 
+     *     'l_username': '', 
+     *     'l_domain': '', 
+     *     'r_username': '', 
+     *     'r_domain': '', 
+     *     'realm': '', 
+     *     'auth_username': '', 
+     *     'auth_password': '', 
+     *     'auth_proxy': '', 
+     *     'expires': '', 
+     *     'flags': '', 
+     *     'reg_delay': '', 
+     *     'brandId': '', 
+     *     'peeringContractId': ''
      * }")
      */
     public function getAction()
@@ -180,19 +200,24 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
         } else {
             $fields = array(
                 'id',
-                'dpid',
-                'pr',
-                'matchOp',
-                'matchExp',
-                'matchLen',
-                'substExp',
-                'replExp',
-                'attrs',
-                'transformationRulesetGroupsTrunksId',
+                'lUuid',
+                'lUsername',
+                'lDomain',
+                'rUsername',
+                'rDomain',
+                'realm',
+                'authUsername',
+                'authPassword',
+                'authProxy',
+                'expires',
+                'flags',
+                'regDelay',
+                'brandId',
+                'peeringContractId',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_dialplan');
+        $etag = $this->_cache->getEtagVersions('KamTrunksUacreg');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -208,7 +233,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             }
         }
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\KamTrunksUacreg();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -226,20 +251,25 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Create's a new kam_trunks_dialplan")
+     * @ApiDescription(section="KamTrunksUacreg", description="Create's a new KamTrunksUacreg")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
-     * @ApiParams(name="dpid", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="pr", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_op", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="match_len", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="subst_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="repl_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="attrs", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="transformationRulesetGroupsTrunksId", nullable=false, type="int", sample="", description="")
+     * @ApiRoute(name="/rest/kam-trunks-uacreg/")
+     * @ApiParams(name="l_uuid", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="l_username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="l_domain", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="r_username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="r_domain", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="realm", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_password", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_proxy", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="expires", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="reg_delay", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_trunks_dialplan/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kamtrunksuacreg/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -247,7 +277,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_trunks_dialplan();
+        $model = new Models\KamTrunksUacreg();
 
         try {
             $model->populateFromArray($params);
@@ -269,19 +299,24 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Table kam_trunks_dialplan")
+     * @ApiDescription(section="KamTrunksUacreg", description="Table KamTrunksUacreg")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
+     * @ApiRoute(name="/rest/kam-trunks-uacreg/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="dpid", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="pr", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_op", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="match_len", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="subst_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="repl_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="attrs", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="transformationRulesetGroupsTrunksId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="l_uuid", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="l_username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="l_domain", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="r_username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="r_domain", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="realm", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_password", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_proxy", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="expires", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="reg_delay", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -297,7 +332,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\KamTrunksUacreg();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -321,9 +356,9 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Table kam_trunks_dialplan")
+     * @ApiDescription(section="KamTrunksUacreg", description="Table KamTrunksUacreg")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
+     * @ApiRoute(name="/rest/kam-trunks-uacreg/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -338,7 +373,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             return;
         }
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\KamTrunksUacreg();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -376,47 +411,72 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'dpid' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'pr' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_op' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_exp' => array(
+                'l_uuid' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'match_len' => array(
+                'l_username' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'l_domain' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'r_username' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'r_domain' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'realm' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'auth_username' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'auth_password' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'auth_proxy' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'expires' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'subst_exp' => array(
-                    'type' => 'varchar',
+                'flags' => array(
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'repl_exp' => array(
-                    'type' => 'varchar',
+                'reg_delay' => array(
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'attrs' => array(
-                    'type' => 'varchar',
+                'brandId' => array(
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'transformationRulesetGroupsTrunksId' => array(
+                'peeringContractId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
@@ -432,47 +492,72 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'dpid' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'pr' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_op' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_exp' => array(
+                'l_uuid' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'match_len' => array(
+                'l_username' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'l_domain' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'r_username' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'r_domain' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'realm' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'auth_username' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'auth_password' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'auth_proxy' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'expires' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'subst_exp' => array(
-                    'type' => 'varchar',
+                'flags' => array(
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'repl_exp' => array(
-                    'type' => 'varchar',
+                'reg_delay' => array(
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'attrs' => array(
-                    'type' => 'varchar',
+                'brandId' => array(
+                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'transformationRulesetGroupsTrunksId' => array(
+                'peeringContractId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',

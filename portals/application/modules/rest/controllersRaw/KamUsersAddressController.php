@@ -1,12 +1,12 @@
 <?php
 /**
- * ast_musiconhold
+ * KamUsersAddress
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
+class Rest_KamUsersAddressController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,33 +24,31 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="GET information about all ast_musiconhold")
+     * @ApiDescription(section="KamUsersAddress", description="GET information about all KamUsersAddress")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/kam-users-address/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'name': '', 
-     *     'mode': '', 
-     *     'directory': '', 
-     *     'application': '', 
-     *     'digit': '', 
-     *     'sort': '', 
-     *     'format': '', 
-     *     'stamp': ''
+     *     'companyId': '', 
+     *     'source_address': '', 
+     *     'ip_addr': '', 
+     *     'mask': '', 
+     *     'port': '', 
+     *     'tag': '', 
+     *     'description': ''
      * },{
      *     'id': '', 
-     *     'name': '', 
-     *     'mode': '', 
-     *     'directory': '', 
-     *     'application': '', 
-     *     'digit': '', 
-     *     'sort': '', 
-     *     'format': '', 
-     *     'stamp': ''
+     *     'companyId': '', 
+     *     'source_address': '', 
+     *     'ip_addr': '', 
+     *     'mask': '', 
+     *     'port': '', 
+     *     'tag': '', 
+     *     'description': ''
      * }]")
      */
     public function indexAction()
@@ -69,14 +67,13 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'name',
-                'mode',
-                'directory',
-                'application',
-                'digit',
-                'sort',
-                'format',
-                'stamp',
+                'companyId',
+                'sourceAddress',
+                'ipAddr',
+                'mask',
+                'port',
+                'tag',
+                'description',
             );
         }
 
@@ -95,7 +92,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('ast_musiconhold');
+        $etag = $this->_cache->getEtagVersions('KamUsersAddress');
 
         $hashEtag = md5(
             serialize(
@@ -111,7 +108,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\KamUsersAddress();
 
         $items = $mapper->fetchList(
             $where,
@@ -144,21 +141,20 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Get information about ast_musiconhold")
+     * @ApiDescription(section="KamUsersAddress", description="Get information about KamUsersAddress")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast_musiconhold/{id}")
+     * @ApiRoute(name="/rest/kam-users-address/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'name': '', 
-     *     'mode': '', 
-     *     'directory': '', 
-     *     'application': '', 
-     *     'digit': '', 
-     *     'sort': '', 
-     *     'format': '', 
-     *     'stamp': ''
+     *     'companyId': '', 
+     *     'source_address': '', 
+     *     'ip_addr': '', 
+     *     'mask': '', 
+     *     'port': '', 
+     *     'tag': '', 
+     *     'description': ''
      * }")
      */
     public function getAction()
@@ -176,18 +172,17 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'name',
-                'mode',
-                'directory',
-                'application',
-                'digit',
-                'sort',
-                'format',
-                'stamp',
+                'companyId',
+                'sourceAddress',
+                'ipAddr',
+                'mask',
+                'port',
+                'tag',
+                'description',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('ast_musiconhold');
+        $etag = $this->_cache->getEtagVersions('KamUsersAddress');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -203,7 +198,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\KamUsersAddress();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -221,19 +216,18 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Create's a new ast_musiconhold")
+     * @ApiDescription(section="KamUsersAddress", description="Create's a new KamUsersAddress")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
-     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mode", nullable=true, type="enum('custom','files','mp3nb','quietmp3nb','quietmp3')", sample="", description="")
-     * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="sort", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="format", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
+     * @ApiRoute(name="/rest/kam-users-address/")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="source_address", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/ast_musiconhold/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kamusersaddress/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -241,7 +235,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\ast_musiconhold();
+        $model = new Models\KamUsersAddress();
 
         try {
             $model->populateFromArray($params);
@@ -263,18 +257,17 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Table ast_musiconhold")
+     * @ApiDescription(section="KamUsersAddress", description="Table KamUsersAddress")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/kam-users-address/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mode", nullable=true, type="enum('custom','files','mp3nb','quietmp3nb','quietmp3')", sample="", description="")
-     * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="sort", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="format", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="source_address", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -290,7 +283,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\KamUsersAddress();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -314,9 +307,9 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="ast_musiconhold", description="Table ast_musiconhold")
+     * @ApiDescription(section="KamUsersAddress", description="Table KamUsersAddress")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/ast_musiconhold/")
+     * @ApiRoute(name="/rest/kam-users-address/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -331,7 +324,7 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\ast_musiconhold();
+        $mapper = new Mappers\KamUsersAddress();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -369,43 +362,38 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'name' => array(
+                'companyId' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'source_address' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'mode' => array(
-                    'type' => 'enum('custom','files','mp3nb','quietmp3nb','quietmp3')',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'directory' => array(
+                'ip_addr' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'application' => array(
+                'mask' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'port' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'tag' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'digit' => array(
+                'description' => array(
                     'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'sort' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'format' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'stamp' => array(
-                    'type' => 'datetime',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -420,43 +408,38 @@ class Rest_ast_musiconholdController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'name' => array(
+                'companyId' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'source_address' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'mode' => array(
-                    'type' => 'enum('custom','files','mp3nb','quietmp3nb','quietmp3')',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'directory' => array(
+                'ip_addr' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'application' => array(
+                'mask' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'port' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'tag' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'digit' => array(
+                'description' => array(
                     'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'sort' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'format' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'stamp' => array(
-                    'type' => 'datetime',
                     'required' => false,
                     'comment' => '',
                 ),

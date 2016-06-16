@@ -33,30 +33,36 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
      *     'DDI': '', 
      *     'DDIE164': '', 
      *     'externalCallFilterId': '', 
+     *     'recordCalls': '', 
      *     'routeType': '', 
      *     'userId': '', 
      *     'IVRCommonId': '', 
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
      *     'faxId': '', 
+     *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
      *     'countryId': ''
      * },{
      *     'id': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
      *     'DDI': '', 
      *     'DDIE164': '', 
      *     'externalCallFilterId': '', 
+     *     'recordCalls': '', 
      *     'routeType': '', 
      *     'userId': '', 
      *     'IVRCommonId': '', 
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
      *     'faxId': '', 
+     *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
      *     'countryId': ''
      * }]")
@@ -77,16 +83,19 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
+                'brandId',
                 'companyId',
                 'DDI',
                 'DDIE164',
                 'externalCallFilterId',
+                'recordCalls',
                 'routeType',
                 'userId',
                 'IVRCommonId',
                 'IVRCustomId',
                 'huntGroupId',
                 'faxId',
+                'conferenceRoomId',
                 'peeringContractId',
                 'countryId',
             );
@@ -163,16 +172,19 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
+     *     'brandId': '', 
      *     'companyId': '', 
      *     'DDI': '', 
      *     'DDIE164': '', 
      *     'externalCallFilterId': '', 
+     *     'recordCalls': '', 
      *     'routeType': '', 
      *     'userId': '', 
      *     'IVRCommonId': '', 
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
      *     'faxId': '', 
+     *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
      *     'countryId': ''
      * }")
@@ -192,16 +204,19 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
+                'brandId',
                 'companyId',
                 'DDI',
                 'DDIE164',
                 'externalCallFilterId',
+                'recordCalls',
                 'routeType',
                 'userId',
                 'IVRCommonId',
                 'IVRCustomId',
                 'huntGroupId',
                 'faxId',
+                'conferenceRoomId',
                 'peeringContractId',
                 'countryId',
             );
@@ -244,16 +259,19 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="DDIs", description="Create's a new DDIs")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/d-d-is/")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="DDI", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externalCallFilterId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="routeType", nullable=false, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax]")
+     * @ApiParams(name="recordCalls", nullable=false, type="varchar", sample="", description="[enum:none|all|inbound|outbound]")
+     * @ApiParams(name="routeType", nullable=false, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="faxId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
@@ -291,16 +309,19 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/d-d-is/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="DDI", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externalCallFilterId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="routeType", nullable=false, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax]")
+     * @ApiParams(name="recordCalls", nullable=false, type="varchar", sample="", description="[enum:none|all|inbound|outbound]")
+     * @ApiParams(name="routeType", nullable=false, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="faxId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -397,6 +418,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
+                'brandId' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'companyId' => array(
                     'type' => 'int',
                     'required' => true,
@@ -417,10 +443,15 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'recordCalls' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '[enum:none|all|inbound|outbound]',
+                ),
                 'routeType' => array(
                     'type' => 'varchar',
                     'required' => true,
-                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax]',
+                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]',
                 ),
                 'userId' => array(
                     'type' => 'int',
@@ -443,6 +474,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'faxId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'conferenceRoomId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',
@@ -468,6 +504,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
+                'brandId' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'companyId' => array(
                     'type' => 'int',
                     'required' => true,
@@ -488,10 +529,15 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'recordCalls' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '[enum:none|all|inbound|outbound]',
+                ),
                 'routeType' => array(
                     'type' => 'varchar',
                     'required' => true,
-                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax]',
+                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]',
                 ),
                 'userId' => array(
                     'type' => 'int',
@@ -514,6 +560,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'faxId' => array(
+                    'type' => 'int',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'conferenceRoomId' => array(
                     'type' => 'int',
                     'required' => false,
                     'comment' => '',

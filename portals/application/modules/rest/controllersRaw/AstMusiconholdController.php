@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_trunks_address
+ * AstMusiconhold
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseController
+class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,27 +24,33 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="GET information about all kam_trunks_address")
+     * @ApiDescription(section="AstMusiconhold", description="GET information about all AstMusiconhold")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'grp': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': ''
+     *     'name': '', 
+     *     'mode': '', 
+     *     'directory': '', 
+     *     'application': '', 
+     *     'digit': '', 
+     *     'sort': '', 
+     *     'format': '', 
+     *     'stamp': ''
      * },{
      *     'id': '', 
-     *     'grp': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': ''
+     *     'name': '', 
+     *     'mode': '', 
+     *     'directory': '', 
+     *     'application': '', 
+     *     'digit': '', 
+     *     'sort': '', 
+     *     'format': '', 
+     *     'stamp': ''
      * }]")
      */
     public function indexAction()
@@ -63,11 +69,14 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
         } else {
             $fields = array(
                 'id',
-                'grp',
-                'ipAddr',
-                'mask',
-                'port',
-                'tag',
+                'name',
+                'mode',
+                'directory',
+                'application',
+                'digit',
+                'sort',
+                'format',
+                'stamp',
             );
         }
 
@@ -86,7 +95,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_address');
+        $etag = $this->_cache->getEtagVersions('AstMusiconhold');
 
         $hashEtag = md5(
             serialize(
@@ -102,7 +111,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             }
         }
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\AstMusiconhold();
 
         $items = $mapper->fetchList(
             $where,
@@ -135,18 +144,21 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Get information about kam_trunks_address")
+     * @ApiDescription(section="AstMusiconhold", description="Get information about AstMusiconhold")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_address/{id}")
+     * @ApiRoute(name="/rest/ast-musiconhold/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'grp': '', 
-     *     'ip_addr': '', 
-     *     'mask': '', 
-     *     'port': '', 
-     *     'tag': ''
+     *     'name': '', 
+     *     'mode': '', 
+     *     'directory': '', 
+     *     'application': '', 
+     *     'digit': '', 
+     *     'sort': '', 
+     *     'format': '', 
+     *     'stamp': ''
      * }")
      */
     public function getAction()
@@ -164,15 +176,18 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
         } else {
             $fields = array(
                 'id',
-                'grp',
-                'ipAddr',
-                'mask',
-                'port',
-                'tag',
+                'name',
+                'mode',
+                'directory',
+                'application',
+                'digit',
+                'sort',
+                'format',
+                'stamp',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_address');
+        $etag = $this->_cache->getEtagVersions('AstMusiconhold');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -188,7 +203,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             }
         }
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\AstMusiconhold();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -206,16 +221,19 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Create's a new kam_trunks_address")
+     * @ApiDescription(section="AstMusiconhold", description="Create's a new AstMusiconhold")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
-     * @ApiParams(name="grp", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="sort", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="format", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_trunks_address/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/astmusiconhold/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -223,7 +241,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_trunks_address();
+        $model = new Models\AstMusiconhold();
 
         try {
             $model->populateFromArray($params);
@@ -245,15 +263,18 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Table kam_trunks_address")
+     * @ApiDescription(section="AstMusiconhold", description="Table AstMusiconhold")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="grp", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip_addr", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="mask", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="port", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="sort", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="format", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -269,7 +290,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\AstMusiconhold();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -293,9 +314,9 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_address", description="Table kam_trunks_address")
+     * @ApiDescription(section="AstMusiconhold", description="Table AstMusiconhold")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_trunks_address/")
+     * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -310,7 +331,7 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
             return;
         }
 
-        $mapper = new Mappers\kam_trunks_address();
+        $mapper = new Mappers\AstMusiconhold();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -348,28 +369,43 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'grp' => array(
-                    'type' => 'int',
+                'name' => array(
+                    'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'ip_addr' => array(
+                'mode' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'mask' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'port' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'tag' => array(
+                'directory' => array(
                     'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'application' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'digit' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'sort' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'stamp' => array(
+                    'type' => 'datetime',
                     'required' => false,
                     'comment' => '',
                 ),
@@ -384,28 +420,43 @@ class Rest_kam_trunks_addressController extends Iron_Controller_Rest_BaseControl
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'grp' => array(
-                    'type' => 'int',
+                'name' => array(
+                    'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'ip_addr' => array(
+                'mode' => array(
                     'type' => 'varchar',
                     'required' => false,
                     'comment' => '',
                 ),
-                'mask' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'port' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'tag' => array(
+                'directory' => array(
                     'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'application' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'digit' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'sort' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'stamp' => array(
+                    'type' => 'datetime',
                     'required' => false,
                     'comment' => '',
                 ),

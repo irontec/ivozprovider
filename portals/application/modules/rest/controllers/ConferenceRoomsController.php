@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_trunks_dialplan
+ * ConferenceRooms
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseController
+class Rest_ConferenceRoomsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,35 +24,27 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="GET information about all kam_trunks_dialplan")
+     * @ApiDescription(section="ConferenceRooms", description="GET information about all ConferenceRooms")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'dpid': '', 
-     *     'pr': '', 
-     *     'match_op': '', 
-     *     'match_exp': '', 
-     *     'match_len': '', 
-     *     'subst_exp': '', 
-     *     'repl_exp': '', 
-     *     'attrs': '', 
-     *     'transformationRulesetGroupsTrunksId': ''
+     *     'companyId': '', 
+     *     'name': '', 
+     *     'pinProtected': '', 
+     *     'pinCode': '', 
+     *     'maxMembers': ''
      * },{
      *     'id': '', 
-     *     'dpid': '', 
-     *     'pr': '', 
-     *     'match_op': '', 
-     *     'match_exp': '', 
-     *     'match_len': '', 
-     *     'subst_exp': '', 
-     *     'repl_exp': '', 
-     *     'attrs': '', 
-     *     'transformationRulesetGroupsTrunksId': ''
+     *     'companyId': '', 
+     *     'name': '', 
+     *     'pinProtected': '', 
+     *     'pinCode': '', 
+     *     'maxMembers': ''
      * }]")
      */
     public function indexAction()
@@ -71,15 +63,11 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
         } else {
             $fields = array(
                 'id',
-                'dpid',
-                'pr',
-                'matchOp',
-                'matchExp',
-                'matchLen',
-                'substExp',
-                'replExp',
-                'attrs',
-                'transformationRulesetGroupsTrunksId',
+                'companyId',
+                'name',
+                'pinProtected',
+                'pinCode',
+                'maxMembers',
             );
         }
 
@@ -98,7 +86,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_dialplan');
+        $etag = $this->_cache->getEtagVersions('ConferenceRooms');
 
         $hashEtag = md5(
             serialize(
@@ -114,7 +102,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             }
         }
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\ConferenceRooms();
 
         $items = $mapper->fetchList(
             $where,
@@ -147,22 +135,18 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Get information about kam_trunks_dialplan")
+     * @ApiDescription(section="ConferenceRooms", description="Get information about ConferenceRooms")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/{id}")
+     * @ApiRoute(name="/rest/conference-rooms/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'dpid': '', 
-     *     'pr': '', 
-     *     'match_op': '', 
-     *     'match_exp': '', 
-     *     'match_len': '', 
-     *     'subst_exp': '', 
-     *     'repl_exp': '', 
-     *     'attrs': '', 
-     *     'transformationRulesetGroupsTrunksId': ''
+     *     'companyId': '', 
+     *     'name': '', 
+     *     'pinProtected': '', 
+     *     'pinCode': '', 
+     *     'maxMembers': ''
      * }")
      */
     public function getAction()
@@ -180,19 +164,15 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
         } else {
             $fields = array(
                 'id',
-                'dpid',
-                'pr',
-                'matchOp',
-                'matchExp',
-                'matchLen',
-                'substExp',
-                'replExp',
-                'attrs',
-                'transformationRulesetGroupsTrunksId',
+                'companyId',
+                'name',
+                'pinProtected',
+                'pinCode',
+                'maxMembers',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_dialplan');
+        $etag = $this->_cache->getEtagVersions('ConferenceRooms');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -208,7 +188,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             }
         }
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\ConferenceRooms();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -226,20 +206,16 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Create's a new kam_trunks_dialplan")
+     * @ApiDescription(section="ConferenceRooms", description="Create's a new ConferenceRooms")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
-     * @ApiParams(name="dpid", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="pr", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_op", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="match_len", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="subst_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="repl_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="attrs", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="transformationRulesetGroupsTrunksId", nullable=false, type="int", sample="", description="")
+     * @ApiRoute(name="/rest/conference-rooms/")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="pinProtected", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="pinCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maxMembers", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_trunks_dialplan/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/conferencerooms/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -247,7 +223,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_trunks_dialplan();
+        $model = new Models\ConferenceRooms();
 
         try {
             $model->populateFromArray($params);
@@ -269,19 +245,15 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Table kam_trunks_dialplan")
+     * @ApiDescription(section="ConferenceRooms", description="Table ConferenceRooms")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="dpid", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="pr", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_op", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="match_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="match_len", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="subst_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="repl_exp", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="attrs", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="transformationRulesetGroupsTrunksId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="pinProtected", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="pinCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maxMembers", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -297,7 +269,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\ConferenceRooms();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -321,9 +293,9 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_dialplan", description="Table kam_trunks_dialplan")
+     * @ApiDescription(section="ConferenceRooms", description="Table ConferenceRooms")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_trunks_dialplan/")
+     * @ApiRoute(name="/rest/conference-rooms/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -338,7 +310,7 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
             return;
         }
 
-        $mapper = new Mappers\kam_trunks_dialplan();
+        $mapper = new Mappers\ConferenceRooms();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -376,48 +348,28 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'dpid' => array(
+                'companyId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'pr' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_op' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_exp' => array(
+                'name' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'match_len' => array(
-                    'type' => 'int',
+                'pinProtected' => array(
+                    'type' => 'tinyint',
                     'required' => true,
                     'comment' => '',
                 ),
-                'subst_exp' => array(
+                'pinCode' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
-                'repl_exp' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'attrs' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'transformationRulesetGroupsTrunksId' => array(
-                    'type' => 'int',
+                'maxMembers' => array(
+                    'type' => 'tinyint',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -432,48 +384,28 @@ class Rest_kam_trunks_dialplanController extends Iron_Controller_Rest_BaseContro
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'dpid' => array(
+                'companyId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'pr' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_op' => array(
-                    'type' => 'int',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'match_exp' => array(
+                'name' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'match_len' => array(
-                    'type' => 'int',
+                'pinProtected' => array(
+                    'type' => 'tinyint',
                     'required' => true,
                     'comment' => '',
                 ),
-                'subst_exp' => array(
+                'pinCode' => array(
                     'type' => 'varchar',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
-                'repl_exp' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'attrs' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'transformationRulesetGroupsTrunksId' => array(
-                    'type' => 'int',
+                'maxMembers' => array(
+                    'type' => 'tinyint',
                     'required' => true,
                     'comment' => '',
                 ),

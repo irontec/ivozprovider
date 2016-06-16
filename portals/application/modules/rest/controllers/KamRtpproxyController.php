@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_trunks_uacreg
+ * KamRtpproxy
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseController
+class Rest_KamRtpproxyController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,45 +24,29 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_uacreg", description="GET information about all kam_trunks_uacreg")
+     * @ApiDescription(section="KamRtpproxy", description="GET information about all KamRtpproxy")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_uacreg/")
+     * @ApiRoute(name="/rest/kam-rtpproxy/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'l_uuid': '', 
-     *     'l_username': '', 
-     *     'l_domain': '', 
-     *     'r_username': '', 
-     *     'r_domain': '', 
-     *     'realm': '', 
-     *     'auth_username': '', 
-     *     'auth_password': '', 
-     *     'auth_proxy': '', 
-     *     'expires': '', 
+     *     'setid': '', 
+     *     'url': '', 
      *     'flags': '', 
-     *     'reg_delay': '', 
-     *     'brandId': '', 
-     *     'peeringContractId': ''
+     *     'weight': '', 
+     *     'description': '', 
+     *     'mediaRelaySetsId': ''
      * },{
      *     'id': '', 
-     *     'l_uuid': '', 
-     *     'l_username': '', 
-     *     'l_domain': '', 
-     *     'r_username': '', 
-     *     'r_domain': '', 
-     *     'realm': '', 
-     *     'auth_username': '', 
-     *     'auth_password': '', 
-     *     'auth_proxy': '', 
-     *     'expires': '', 
+     *     'setid': '', 
+     *     'url': '', 
      *     'flags': '', 
-     *     'reg_delay': '', 
-     *     'brandId': '', 
-     *     'peeringContractId': ''
+     *     'weight': '', 
+     *     'description': '', 
+     *     'mediaRelaySetsId': ''
      * }]")
      */
     public function indexAction()
@@ -81,20 +65,12 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
         } else {
             $fields = array(
                 'id',
-                'lUuid',
-                'lUsername',
-                'lDomain',
-                'rUsername',
-                'rDomain',
-                'realm',
-                'authUsername',
-                'authPassword',
-                'authProxy',
-                'expires',
+                'setid',
+                'url',
                 'flags',
-                'regDelay',
-                'brandId',
-                'peeringContractId',
+                'weight',
+                'description',
+                'mediaRelaySetsId',
             );
         }
 
@@ -113,7 +89,7 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_uacreg');
+        $etag = $this->_cache->getEtagVersions('KamRtpproxy');
 
         $hashEtag = md5(
             serialize(
@@ -129,7 +105,7 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
             }
         }
 
-        $mapper = new Mappers\kam_trunks_uacreg();
+        $mapper = new Mappers\KamRtpproxy();
 
         $items = $mapper->fetchList(
             $where,
@@ -162,27 +138,19 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_uacreg", description="Get information about kam_trunks_uacreg")
+     * @ApiDescription(section="KamRtpproxy", description="Get information about KamRtpproxy")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_trunks_uacreg/{id}")
+     * @ApiRoute(name="/rest/kam-rtpproxy/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'l_uuid': '', 
-     *     'l_username': '', 
-     *     'l_domain': '', 
-     *     'r_username': '', 
-     *     'r_domain': '', 
-     *     'realm': '', 
-     *     'auth_username': '', 
-     *     'auth_password': '', 
-     *     'auth_proxy': '', 
-     *     'expires': '', 
+     *     'setid': '', 
+     *     'url': '', 
      *     'flags': '', 
-     *     'reg_delay': '', 
-     *     'brandId': '', 
-     *     'peeringContractId': ''
+     *     'weight': '', 
+     *     'description': '', 
+     *     'mediaRelaySetsId': ''
      * }")
      */
     public function getAction()
@@ -200,24 +168,16 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
         } else {
             $fields = array(
                 'id',
-                'lUuid',
-                'lUsername',
-                'lDomain',
-                'rUsername',
-                'rDomain',
-                'realm',
-                'authUsername',
-                'authPassword',
-                'authProxy',
-                'expires',
+                'setid',
+                'url',
                 'flags',
-                'regDelay',
-                'brandId',
-                'peeringContractId',
+                'weight',
+                'description',
+                'mediaRelaySetsId',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_trunks_uacreg');
+        $etag = $this->_cache->getEtagVersions('KamRtpproxy');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -233,7 +193,7 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
             }
         }
 
-        $mapper = new Mappers\kam_trunks_uacreg();
+        $mapper = new Mappers\KamRtpproxy();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -251,25 +211,17 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_uacreg", description="Create's a new kam_trunks_uacreg")
+     * @ApiDescription(section="KamRtpproxy", description="Create's a new KamRtpproxy")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_trunks_uacreg/")
-     * @ApiParams(name="l_uuid", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="l_username", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="l_domain", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="r_username", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="r_domain", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="realm", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_username", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_password", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_proxy", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="expires", nullable=false, type="int", sample="", description="")
+     * @ApiRoute(name="/rest/kam-rtpproxy/")
+     * @ApiParams(name="setid", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="url", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="reg_delay", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="weight", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mediaRelaySetsId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_trunks_uacreg/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kamrtpproxy/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -277,7 +229,7 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_trunks_uacreg();
+        $model = new Models\KamRtpproxy();
 
         try {
             $model->populateFromArray($params);
@@ -299,24 +251,16 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_uacreg", description="Table kam_trunks_uacreg")
+     * @ApiDescription(section="KamRtpproxy", description="Table KamRtpproxy")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_trunks_uacreg/")
+     * @ApiRoute(name="/rest/kam-rtpproxy/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="l_uuid", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="l_username", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="l_domain", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="r_username", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="r_domain", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="realm", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_username", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_password", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_proxy", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="expires", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="setid", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="url", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="reg_delay", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="weight", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mediaRelaySetsId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -332,7 +276,7 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_trunks_uacreg();
+        $mapper = new Mappers\KamRtpproxy();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -356,9 +300,9 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
     }
 
     /**
-     * @ApiDescription(section="kam_trunks_uacreg", description="Table kam_trunks_uacreg")
+     * @ApiDescription(section="KamRtpproxy", description="Table KamRtpproxy")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_trunks_uacreg/")
+     * @ApiRoute(name="/rest/kam-rtpproxy/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -373,7 +317,7 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
             return;
         }
 
-        $mapper = new Mappers\kam_trunks_uacreg();
+        $mapper = new Mappers\KamRtpproxy();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -411,53 +355,13 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'l_uuid' => array(
+                'setid' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'l_username' => array(
+                'url' => array(
                     'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'l_domain' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'r_username' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'r_domain' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'realm' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'auth_username' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'auth_password' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'auth_proxy' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'expires' => array(
-                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -466,19 +370,19 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
                     'required' => true,
                     'comment' => '',
                 ),
-                'reg_delay' => array(
+                'weight' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'brandId' => array(
-                    'type' => 'int',
-                    'required' => true,
+                'description' => array(
+                    'type' => 'varchar',
+                    'required' => false,
                     'comment' => '',
                 ),
-                'peeringContractId' => array(
+                'mediaRelaySetsId' => array(
                     'type' => 'int',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -492,53 +396,13 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'l_uuid' => array(
+                'setid' => array(
                     'type' => 'varchar',
                     'required' => true,
                     'comment' => '',
                 ),
-                'l_username' => array(
+                'url' => array(
                     'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'l_domain' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'r_username' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'r_domain' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'realm' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'auth_username' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'auth_password' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'auth_proxy' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'expires' => array(
-                    'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
@@ -547,19 +411,19 @@ class Rest_kam_trunks_uacregController extends Iron_Controller_Rest_BaseControll
                     'required' => true,
                     'comment' => '',
                 ),
-                'reg_delay' => array(
+                'weight' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
                 ),
-                'brandId' => array(
-                    'type' => 'int',
-                    'required' => true,
+                'description' => array(
+                    'type' => 'varchar',
+                    'required' => false,
                     'comment' => '',
                 ),
-                'peeringContractId' => array(
+                'mediaRelaySetsId' => array(
                     'type' => 'int',
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
             )

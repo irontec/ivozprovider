@@ -1,12 +1,12 @@
 <?php
 /**
- * kam_pike_trusted
+ * KamDispatcher
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseController
+class Rest_KamDispatcherController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,29 +24,31 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="kam_pike_trusted", description="GET information about all kam_pike_trusted")
+     * @ApiDescription(section="KamDispatcher", description="GET information about all KamDispatcher")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_pike_trusted/")
+     * @ApiRoute(name="/rest/kam-dispatcher/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'src_ip': '', 
-     *     'proto': '', 
-     *     'from_pattern': '', 
-     *     'ruri_pattern': '', 
-     *     'tag': '', 
-     *     'priority': ''
+     *     'setid': '', 
+     *     'destination': '', 
+     *     'flags': '', 
+     *     'priority': '', 
+     *     'attrs': '', 
+     *     'description': '', 
+     *     'applicationServerId': ''
      * },{
      *     'id': '', 
-     *     'src_ip': '', 
-     *     'proto': '', 
-     *     'from_pattern': '', 
-     *     'ruri_pattern': '', 
-     *     'tag': '', 
-     *     'priority': ''
+     *     'setid': '', 
+     *     'destination': '', 
+     *     'flags': '', 
+     *     'priority': '', 
+     *     'attrs': '', 
+     *     'description': '', 
+     *     'applicationServerId': ''
      * }]")
      */
     public function indexAction()
@@ -65,12 +67,13 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
         } else {
             $fields = array(
                 'id',
-                'srcIp',
-                'proto',
-                'fromPattern',
-                'ruriPattern',
-                'tag',
+                'setid',
+                'destination',
+                'flags',
                 'priority',
+                'attrs',
+                'description',
+                'applicationServerId',
             );
         }
 
@@ -89,7 +92,7 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('kam_pike_trusted');
+        $etag = $this->_cache->getEtagVersions('KamDispatcher');
 
         $hashEtag = md5(
             serialize(
@@ -105,7 +108,7 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
             }
         }
 
-        $mapper = new Mappers\kam_pike_trusted();
+        $mapper = new Mappers\KamDispatcher();
 
         $items = $mapper->fetchList(
             $where,
@@ -138,19 +141,20 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="kam_pike_trusted", description="Get information about kam_pike_trusted")
+     * @ApiDescription(section="KamDispatcher", description="Get information about KamDispatcher")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/kam_pike_trusted/{id}")
+     * @ApiRoute(name="/rest/kam-dispatcher/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'src_ip': '', 
-     *     'proto': '', 
-     *     'from_pattern': '', 
-     *     'ruri_pattern': '', 
-     *     'tag': '', 
-     *     'priority': ''
+     *     'setid': '', 
+     *     'destination': '', 
+     *     'flags': '', 
+     *     'priority': '', 
+     *     'attrs': '', 
+     *     'description': '', 
+     *     'applicationServerId': ''
      * }")
      */
     public function getAction()
@@ -168,16 +172,17 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
         } else {
             $fields = array(
                 'id',
-                'srcIp',
-                'proto',
-                'fromPattern',
-                'ruriPattern',
-                'tag',
+                'setid',
+                'destination',
+                'flags',
                 'priority',
+                'attrs',
+                'description',
+                'applicationServerId',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('kam_pike_trusted');
+        $etag = $this->_cache->getEtagVersions('KamDispatcher');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -193,7 +198,7 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
             }
         }
 
-        $mapper = new Mappers\kam_pike_trusted();
+        $mapper = new Mappers\KamDispatcher();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -211,17 +216,18 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="kam_pike_trusted", description="Create's a new kam_pike_trusted")
+     * @ApiDescription(section="KamDispatcher", description="Create's a new KamDispatcher")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/kam_pike_trusted/")
-     * @ApiParams(name="src_ip", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="proto", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="from_pattern", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="ruri_pattern", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiRoute(name="/rest/kam-dispatcher/")
+     * @ApiParams(name="setid", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="destination", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="attrs", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="applicationServerId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/kam_pike_trusted/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kamdispatcher/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -229,7 +235,7 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\kam_pike_trusted();
+        $model = new Models\KamDispatcher();
 
         try {
             $model->populateFromArray($params);
@@ -251,16 +257,17 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="kam_pike_trusted", description="Table kam_pike_trusted")
+     * @ApiDescription(section="KamDispatcher", description="Table KamDispatcher")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/kam_pike_trusted/")
+     * @ApiRoute(name="/rest/kam-dispatcher/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="src_ip", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="proto", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="from_pattern", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="ruri_pattern", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="tag", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="setid", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="destination", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="attrs", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="applicationServerId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -276,7 +283,7 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\kam_pike_trusted();
+        $mapper = new Mappers\KamDispatcher();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -300,9 +307,9 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
     }
 
     /**
-     * @ApiDescription(section="kam_pike_trusted", description="Table kam_pike_trusted")
+     * @ApiDescription(section="KamDispatcher", description="Table KamDispatcher")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/kam_pike_trusted/")
+     * @ApiRoute(name="/rest/kam-dispatcher/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -317,7 +324,7 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
             return;
         }
 
-        $mapper = new Mappers\kam_pike_trusted();
+        $mapper = new Mappers\KamDispatcher();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -355,32 +362,37 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'src_ip' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                'setid' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
-                'proto' => array(
+                'destination' => array(
                     'type' => 'varchar',
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
-                'from_pattern' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'ruri_pattern' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'tag' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                'flags' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'attrs' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'description' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'applicationServerId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
@@ -396,32 +408,37 @@ class Rest_kam_pike_trustedController extends Iron_Controller_Rest_BaseControlle
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'src_ip' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                'setid' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
-                'proto' => array(
+                'destination' => array(
                     'type' => 'varchar',
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
-                'from_pattern' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'ruri_pattern' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'tag' => array(
-                    'type' => 'varchar',
-                    'required' => false,
+                'flags' => array(
+                    'type' => 'int',
+                    'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
+                    'type' => 'int',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'attrs' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'description' => array(
+                    'type' => 'varchar',
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'applicationServerId' => array(
                     'type' => 'int',
                     'required' => true,
                     'comment' => '',
