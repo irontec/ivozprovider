@@ -61,6 +61,14 @@ class RecordingsController extends Zend_Controller_Action
 
     public function processRecordings ()
     {
+        // Store statistics
+        $stats = array(
+            'deleted' => 0,
+            'skipped' => 0,
+            'encoded' => 0,
+            'error'   => 0
+        );
+
         // Get a list of pending recordings
         $files = array();
         if ($dir = opendir($this->_rawRecordingsDir)) {
@@ -74,6 +82,7 @@ class RecordingsController extends Zend_Controller_Action
 
                 // Delete empty files
                 if (filesize($filenameabs) === 0) {
+                    $stats['deleted']++;
                     $this->_logger->log(sprintf("[Recordings] Deleting empty file %s\n", $filename), \Zend_Log::INFO);
                     unlink($filenameabs);
                     continue;
@@ -110,6 +119,7 @@ class RecordingsController extends Zend_Controller_Action
             // Look if the converstation with that id has ended
             $kamAccCdr = $kamAccCdrsMapper->findOneByField("callid", $callid);
             if (!$kamAccCdr) {
+                $stats['skipped']++;
                 $this->_logger->log(
                                 sprintf("[Recordings][%s] Call with id = %s has not yet finished!\n", $hashid, $callid),
                                 \Zend_Log::INFO);
@@ -125,6 +135,7 @@ class RecordingsController extends Zend_Controller_Action
                             \Zend_Log::INFO);
             exec($extract_cmd, $output, $retval);
             if ($retval != 0) {
+                $stats['error']++;
                 $this->_logger->log(
                                 sprintf("[Recordings][%s] Failed to extract audio: Command was %s\n", $hashid, $extract_cmd),
                                 \Zend_Log::INFO);
@@ -140,6 +151,7 @@ class RecordingsController extends Zend_Controller_Action
                             \Zend_Log::INFO);
             exec($convert_cmd, $output, $retval);
             if ($retval != 0) {
+                $stats['error']++;
                 $this->_logger->log(
                                 sprintf("[Recordings][%s] Failed to convert audio: Command was %s\n", $hashid, $convert_cmd),
                                 \Zend_Log::INFO);
@@ -163,8 +175,15 @@ class RecordingsController extends Zend_Controller_Action
 
             // Remove encoded files
             unlink($convert_wav);
-
+            $stats['encoded']++;
         }
+
+        // Total processed calls
+        $total = $stats['encoded'] + $stats['error'] + $stats['deleted'] + $stats['skipped'];
+        $summary = sprintf("[Recordings] Total %d processed: %d successful, %d error, %d deleted, %d skipped.\n",
+                        $total, $stats['encoded'], $stats['error'], $stats['deleted'], $stats['skipped']);
+        $this->_logger->log($summary, \Zend_Log::INFO);
+
     }
 
 }
