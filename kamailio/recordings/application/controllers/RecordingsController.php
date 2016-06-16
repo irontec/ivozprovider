@@ -12,11 +12,11 @@ use IvozProvider\Model as Model;
  */
 class RecordingsController extends Zend_Controller_Action
 {
-    private $_logger;
+    protected $_logger;
 
-    private $_recordDir = "/opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/";
+    protected $_rawRecordingsDir;
 
-    private $_interval = 180;
+    protected $_interval;
 
     public function init()
     {
@@ -30,15 +30,31 @@ class RecordingsController extends Zend_Controller_Action
             );
             $this->_logger = \Zend_Log::factory($params);
         }
+
+        if (is_null($bootstrap)) {
+            $conf = new \Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV);
+            $config = (Object) $conf->toArray();
+        } else {
+            $config = (Object) $bootstrap->getOptions();
+        }
+
+        $this->_rawRecordingsDir = $config->recordings['rawRecordingsDir'];
+        $this->_interval  = $config->recordings['interval'];
     }
 
     public function processAction()
     {
         while (true) {
-            $this->processRecordings();
-            $this->_logger->log(
-                            sprintf("[Recordings] Sleeping for %d seconds.\n", $this->_interval),
-                            \Zend_Log::INFO);
+            try {
+                $this->processRecordings();
+                $this->_logger->log(
+                                sprintf("[Recordings] Sleeping for %d seconds.\n", $this->_interval),
+                                \Zend_Log::INFO);
+            } catch (Exception $e) {
+                $this->_logger->log(
+                                sprintf("[Recordings] An error occurred processing recordings: %s.\n", $e->getMessage()),
+                                \Zend_Log::ERR);
+            }
             sleep($this->_interval);
         }
     }
@@ -47,10 +63,10 @@ class RecordingsController extends Zend_Controller_Action
     {
         // Get a list of pending recordings
         $files = array();
-        if ($dir = opendir($this->_recordDir)) {
+        if ($dir = opendir($this->_rawRecordingsDir)) {
             while (false !== ($filename = readdir($dir))) {
                 // Absolute path to file
-                $filenameabs = $this->_recordDir . $filename;
+                $filenameabs = $this->_rawRecordingsDir . $filename;
 
                 // Only handle files
                 if (!is_file($filenameabs))
@@ -73,7 +89,7 @@ class RecordingsController extends Zend_Controller_Action
         }
 
         $this->_logger->log(
-                        sprintf("[Recordings] Processing %d files in recording dir %s\n", count($files), $this->_recordDir),
+                        sprintf("[Recordings] Processing %d files in recording dir %s\n", count($files), $this->_rawRecordingsDir),
                         \Zend_Log::INFO);
 
         // Get a mappers to reuse multiple times
@@ -101,8 +117,8 @@ class RecordingsController extends Zend_Controller_Action
             }
 
             // Convert files to .wav
-            $extract_rtp = $this->_recordDir . $file;
-            $extract_wav = $this->_recordDir . $callid . '.wav';
+            $extract_rtp = $this->_rawRecordingsDir . $file;
+            $extract_wav = $this->_rawRecordingsDir . $callid . '.wav';
             $extract_cmd = "/usr/bin/extractaudio -sd '$extract_rtp' '$extract_wav' >/dev/null";
             $this->_logger->log(
                             sprintf("[Recordings][%s] Extracting audio into %s\n", $hashid, basename($extract_wav)),
@@ -116,8 +132,8 @@ class RecordingsController extends Zend_Controller_Action
             }
 
             // Convert .wav to .mp3
-            $convert_wav = $this->_recordDir . $callid . ".wav";
-            $convert_mp3 = $this->_recordDir . $callid . ".mp3";
+            $convert_wav = $this->_rawRecordingsDir . $callid . ".wav";
+            $convert_mp3 = $this->_rawRecordingsDir . $callid . ".mp3";
             $convert_cmd = "/usr/bin/avconv -i '$convert_wav' '$convert_mp3' 2>&1 >/dev/null";
             $this->_logger->log(
                             sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convert_mp3)),
