@@ -69,12 +69,13 @@ production:
     params: 
       title: _('R-URI params')
       type: text
+      pattern: "^;.*$"
       trim: both
       info:
         type: box
         position: left
         icon: help
-        text: _("Add this params to R-URI (start with ';')")
+        text: _("Add this params to R-URI (must start with ';')")
         label: _("Need help?")
     uri_scheme: 
       title: _('Uri scheme')
