@@ -43,6 +43,12 @@ class Provision_IndexController extends Zend_Controller_Action
             $terminalModel = $this->_searchGenericPattern($terminalMapper, $terminalUrl);
             
             if ( $terminalModel == null ) {
+
+                if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") {
+                    $this->_error('Trying to access using incorrect protocol', 'Forbidden', 403);
+                    return; 
+                }
+
                 $data = $this->_searchSpecificPattern($terminalMapper, $terminalUrl);
                 if($data) {
                     $terminalModel = $data['terminalModel'];
@@ -64,6 +70,8 @@ class Provision_IndexController extends Zend_Controller_Action
                                 $brandModel = $companyModel->getBrand();
                                 $this->view->brand = $brandModel;
                                 
+                                $this->view->terminal = $model;
+
                                 $model->setLastProvisionDate(date("d-m-o h:i:s"));
                                 $model->save();
                             }
@@ -130,12 +138,7 @@ class Provision_IndexController extends Zend_Controller_Action
                     }
                 }
                 $urlPattern = str_replace( '/', '\/', $urlPattern);
-                if( preg_match('/' . $urlPattern . '/', '/'. $terminalUrl, $match)){
-                    $urlVariables = $this->_joinKeyValues($urlVariables, $match);
-                    $this->logger->debug('Url params: ' . implode(';', $urlVariables));
-                    return array( 'terminalModel' => $terminalModel, 'urlVariables' => $urlVariables);
-                }
-                elseif (preg_match('/' . $urlPattern . '/', $terminalUrl, $match)){
+                if (preg_match('/' . $urlPattern . '/', $terminalUrl, $match)){
                     $urlVariables = $this->_joinKeyValues($urlVariables, $match);
                     $this->logger->debug('Url params: ' . implode(';', $urlVariables));
                     return array( 'terminalModel' => $terminalModel, 'urlVariables' => $urlVariables);
