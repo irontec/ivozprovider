@@ -10,7 +10,7 @@
     <!-- create initial changelog table -->
     <target name="init">
         <exec
-            command="${progs.mysql} -h${db.host} -u${db.user} -p${db.pass} ${db.name} &lt; predeploy.sql"
+            command="${progs.mysql} -h'${db.host}' -u'${db.user}' -p'${db.pass}' '${db.name}' &lt; predeploy.sql"
             dir="${build.dir}"
             checkreturn="true" />
     </target>
@@ -36,7 +36,7 @@
 
         <!-- execute the SQL - Use mysql command line to avoid trouble with large files or many statements and PDO -->
         <exec
-            command="${progs.mysql} -h${db.host} -u${db.user} -p${db.pass} ${db.name} &lt; ${build.dbdeploy.deployfile}"
+            command="${progs.mysql} -h'${db.host}' -u'${db.user}' -p'${db.pass}' '${db.name}' &lt; ${build.dbdeploy.deployfile}"
             dir="${build.dir}"
             checkreturn="true" />
     </target>
@@ -61,7 +61,7 @@
 
         <!-- execute the SQL - Use mysql command line to avoid trouble with large files or many statements and PDO -->
         <exec
-            command="${progs.mysql} -h${db.host} -u${db.user} -p${db.pass} ${db.name} &lt; ${build.dbdeploy.deployfile}"
+            command="${progs.mysql} -h'${db.host}' -u'${db.user}' -p'${db.pass}' '${db.name}' &lt; ${build.dbdeploy.deployfile}"
             dir="${build.dir}"
             checkreturn="true" />
     </target>
