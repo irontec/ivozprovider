@@ -13,8 +13,9 @@ ivozprovider.local.    IN      NS      ns1.ivozprovider.local.
 ns1             IN      A       127.0.0.1
 
 ; Other A records
-users           IN      A       127.0.0.1
-trunks          IN      A       127.0.0.1
-data            IN      A       127.0.0.1
-jobs            IN      A       127.0.0.1
-logs            IN      A       127.0.0.1
+users           IN      A       #VIRTUALIP_users#
+trunks          IN      A       #VIRTUALIP_trunks#
+jobs            IN      A       #VIRTUALIP_jobs#
+data            IN      A       #VIRTUALIP_data#
+storage         IN      A       #VIRTUALIP_storage#
+logs            IN      A       #VIRTUALIP_logs#

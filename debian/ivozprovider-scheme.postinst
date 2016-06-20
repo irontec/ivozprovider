@@ -2,19 +2,23 @@
 
 #DEBHELPER#
 
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
 # Get actual environment
 export $(systemctl show-environment)
 
+# Setup mysql connection
+db_get mysql-server/root_password || true
+MYSQL_PASSWORD=$RET
+MYSQL_USER=root
+
+# Replace settings in properties
+sed -i "s/db.user=.*/db.user=$MYSQL_USER/"     /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
+sed -i "s/db.pass=.*/db.pass=$MYSQL_PASSWORD/" /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
+
 # Setup password and user in first install (allow changing it later)
 if [ -z "$2" ]; then
-    # Use debian maint password
-    MYSQL_PASSWORD=`awk '/password = / { print $3; exit}' /etc/mysql/debian.cnf`
-    MYSQL_USER=debian-sys-maint
-
-    # Replace settings in properties
-    sed -i "s/db.user=.*/db.user=$MYSQL_USER/"     /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
-    sed -i "s/db.pass=.*/db.pass=$MYSQL_PASSWORD/" /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
-
     # Fist time, run phing on scheme dir
     pushd /opt/irontec/ivozprovider/scheme 
     /usr/bin/phing -f build_prod.xml init -De=$APPLICATION_ENV
