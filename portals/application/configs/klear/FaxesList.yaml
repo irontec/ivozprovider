@@ -149,6 +149,8 @@ production:
           type: true
           pages: true
           src: true
+        readOnly:
+          status: true
 
   dialogs: &faxes_dialogsLink 
     faxesDel_dialog: &faxesDel_dialogLink 
