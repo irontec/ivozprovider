@@ -6,7 +6,7 @@
 Documentación oficial de IvozProvider
 =====================================
 
-Contenido:
+CContenido:
 
 .. toctree::
    :maxdepth: 2
