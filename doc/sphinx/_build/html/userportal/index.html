@@ -133,6 +133,116 @@
             
   <div class="section" id="portal-nivel-usuario">
 <h1>Portal nivel Usuario<a class="headerlink" href="#portal-nivel-usuario" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>A continuación vamos a hacer una lista numérica sin especificar el número, porque mola
+y es fácil meter nuevos items a posteriori:</p>
+<ol class="arabic simple">
+<li>Este es el primer elemento.</li>
+<li>Este es el segundo.</li>
+</ol>
+<p>Ahora un listado encadenado con bullets:</p>
+<ul class="simple">
+<li>Esto es un elemento.<ul>
+<li>Esto es un subelemento</li>
+<li>Esto es un subelemento</li>
+</ul>
+</li>
+<li>Otro elemento.</li>
+</ul>
+<p>Ahora las dos cosas juntas:</p>
+<ol class="arabic simple">
+<li>Esto tiene tres aspectos importantes:<ul>
+<li>Primer aspecto</li>
+<li>Segundo aspecto</li>
+<li>Tercer aspecto</li>
+</ul>
+</li>
+<li>Este punto tiene 3 cosas que enumero a continuación:<ol class="arabic">
+<li>Cosa número 1</li>
+<li>Cosa número 2</li>
+<li>Cosa número 3</li>
+</ol>
+</li>
+</ol>
+<p>A continuación definimos unos conceptos clave:</p>
+<dl class="docutils">
+<dt>proxy</dt>
+<dd><p class="first">Un proxy se limita a reenviar tráfico SIP.</p>
+<p class="last">No toca el audio de la llamada.</p>
+</dd>
+<dt>b2bua</dt>
+<dd>Ya tal.</dd>
+</dl>
+<p>Extracto de código de un <strong>hack muy serio</strong> que hacemos en el <em>kamailio.cfg</em>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>request_route {
+    dlg_manage();
+    $ru = &quot;sip:676216531@sarevoz.com&quot;;
+    $fu = &quot;sip:25190@sarevoz.com&quot;;
+    route(RELAY);
+}
+
+# Relay request
+route[RELAY] {
+    if(!t_is_set(&quot;failure_route&quot;)) t_on_failure(&quot;MANAGE_FAILURE&quot;);
+
+    if (!t_relay())
+        sl_reply_error();
+
+    exit;
+}
+
+failure_route[MANAGE_FAILURE] {
+    if (t_is_canceled()) {
+        exit;
+    }
+
+    if (t_check_status(&quot;(401)|(407)&quot;)) {
+        $avp(realm) = &#39;&#39;;
+        $avp(provideruser) = &#39;25190&#39;;
+        $avp(secret) = &#39;o79avxYpcB&#39;;
+
+        if (is_avp_set(&quot;$avp(secret)&quot;)) {
+            uac_auth();
+        }
+    }
+
+    route(RELAY);
+}
+</pre></div>
+</div>
+<p>Ahora metemos una tabla y nos vamos a comer:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="29%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A and B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Aquí puedes encontrar toda la información: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">http://www.sphinx-doc.org/en/stable/rest.html</a></p>
+<p>Otra forma de poner el mismo <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">enlace</a>.</p>
 </div>
 
 
