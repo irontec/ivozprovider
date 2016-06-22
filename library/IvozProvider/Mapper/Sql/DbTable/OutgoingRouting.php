@@ -95,7 +95,7 @@ class OutgoingRouting extends TableAbstract
 	    'TABLE_NAME' => 'OutgoingRouting',
 	    'COLUMN_NAME' => 'type',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'enum(\'pattern\',\'group\')',
+	    'DATA_TYPE' => 'enum(\'pattern\',\'group\',\'fax\')',
 	    'DEFAULT' => 'group',
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,

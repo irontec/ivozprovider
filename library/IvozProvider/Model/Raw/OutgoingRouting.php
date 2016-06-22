@@ -25,6 +25,7 @@ class OutgoingRouting extends ModelAbstract
     protected $_typeAcceptedValues = array(
         'pattern',
         'group',
+        'fax',
     );
 
     /**
@@ -35,7 +36,7 @@ class OutgoingRouting extends ModelAbstract
     protected $_id;
 
     /**
-     * Database var type enum('pattern','group')
+     * Database var type enum('pattern','group','fax')
      *
      * @var string
      */

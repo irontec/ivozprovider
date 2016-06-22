@@ -30,7 +30,7 @@ class LcrRules extends Raw\LcrRules
 
     public function setCondition($regexp)
     {
-        if (is_numeric($regexp)) {
+        if (is_numeric($regexp) || $regexp == 'fax') {
             $this->setPrefix($regexp);
             $this->setRequestUri(null);
         } else {

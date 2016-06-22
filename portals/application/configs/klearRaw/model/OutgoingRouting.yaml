@@ -10,6 +10,7 @@ production:
         values: 
           'pattern': _('pattern')
           'group': _('group')
+          'fax': _('fax')
       default: true
     targetPatternId: 
       title: _('Target pattern id')

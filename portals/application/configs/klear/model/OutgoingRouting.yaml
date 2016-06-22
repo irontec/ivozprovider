@@ -18,6 +18,10 @@ production:
             visualFilter:
               show: ["targetGroupId" ]
               hide: ["targetPatternId"]
+          'fax':
+            title: _('Fax')
+            visualFilter:
+              hide: ["targetPatternId","targetGroupId"]
       default: true
     targetPatternId: 
       title: _('Select destination pattern')

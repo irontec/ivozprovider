@@ -65,6 +65,9 @@ class OutgoingRouting extends Raw\OutgoingRouting
         } elseif ($outgoingRouting->getType() == 'pattern') {
                 $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $outgoingRouting->getTargetPattern());
                 array_push($lcrRules, $lcrRule);
+        } elseif ($outgoingRouting->getType() == 'fax') {
+                $lcrRule = $this->_addLcrRuleForFax($outgoingRouting);
+                array_push($lcrRules, $lcrRule);
         } else {
             throw new \Exception("Incorrect Outgoing Routing Type");
         }
@@ -155,6 +158,19 @@ class OutgoingRouting extends Raw\OutgoingRouting
                 ->setCondition($pattern->getRegExp())
                 ->save();
         
+        return $lcrRule;
+    }
+
+    protected function _addLcrRuleForFax($model)
+    {
+        $lcrRule = new \IvozProvider\Model\LcrRules();
+        $lcrRule->setCompanyId($model->getCompanyId())
+                ->setTag("fax")
+                ->setDescription("Special route for fax")
+                ->setOutgoingRoutingId($model->getPrimaryKey())
+                ->setCondition("fax")
+                ->save();
+
         return $lcrRule;
     }
 }
