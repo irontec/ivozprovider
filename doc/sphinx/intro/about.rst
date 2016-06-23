@@ -9,10 +9,10 @@ Está dividido en las siguientes 5 secciones:
 
 - **Arquitectura de la solución:** presenta el esquema interno de la solución con las distintas entidades lógicas que la componen.
 
-- **Portal de Operador Global:** describe sección a sección el apartado relativo a la configuración global de la solución, rol que en el mundo IvozProvider se entiende como *God*.
+- **Perspectiva de Operador Global:** describe sección a sección el apartado relativo a la configuración global de la solución, rol que en el mundo IvozProvider se entiende como *God*.
 
-- **Portal de Operador de Marca:** describe sección a sección el apartado relativo a la configuración relativa a una Marca concreta.
+- **Perspectiva de Operador de Marca:** describe sección a sección el apartado relativo a la configuración relativa a una Marca concreta.
 
-- **Portal de Operador de Empresa:** describe sección a sección el apartado relativo a la configuración relativa a una Empresa concreta (dentro de una Marca concreta).
+- **Perspectiva de Administrador Empresa:** describe sección a sección el apartado relativo a la configuración relativa a una Empresa concreta (dentro de una Marca concreta).
 
 - **Portal de Usuario:** describe sección a sección la interfaz web que se le presenta a un usuario concreto y las posibilidades que le brinda.

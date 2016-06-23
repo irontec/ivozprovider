@@ -9,10 +9,6 @@ Estas son las secciones que componen esta sección de introducción que tiene co
    :maxdepth: 2
 
    about
-   gettinghelp
    whatisit
-   whatisincluded
-   whoshoulduseit
+   whatisnot
    operatorlevels
-
-
