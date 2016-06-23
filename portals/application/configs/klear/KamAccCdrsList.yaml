@@ -10,7 +10,7 @@ production:
       controller: list
       order:
         field:
-          - calldate
+          - start_time_utc
           - brandId
           - companyId
         type: desc
@@ -42,8 +42,10 @@ production:
           pricingPlanDetails: true
           meteringDate: true
           externallyRated: true
+          callidHash: true
+          end_time_utc: true
         order:
-          calldate: 1
+          start_time_utc: 1
           brandId: 1
           companyId: 1
           callee: 1
@@ -78,8 +80,10 @@ production:
           xcallid: true
           meteringDate: true
           pricingPlanDetails: true
+          callidHash: true
+          end_time_utc: true
         order:
-          calldate: 1
+          start_time_utc: 1
           brandId: 1
           companyId: 1
           callee: 1
@@ -98,7 +102,7 @@ production:
           fields:
             brandId: 12
             companyId: 12
-            calldate: 6
+            start_time_utc: 6
             metered: 6
             externallyRated: 6
             invoiceId: 6

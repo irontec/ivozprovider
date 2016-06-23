@@ -41,7 +41,7 @@ class KamAccCdrs extends Raw\KamAccCdrs
             return null;
         }
 
-        $callDate = $this->getCalldate(true);
+        $callDate = $this->getStartTimeUtc(true);
         $dst = $this->getCallee();
         $duration = $this->getDuration();
 

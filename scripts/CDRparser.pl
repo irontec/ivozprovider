@@ -50,7 +50,8 @@ my $MAXCALLS = 100;
 # my @STATFIELDS = qw {
 #     id
 #     proxy
-#     calldate
+#     start_time_utc
+#     end_time_utc
 #     start_time
 #     end_time
 #     duration
@@ -154,7 +155,7 @@ sub setCommon {
     $$cdr{cid} = $$leg{callid};
     $$cdr{cidHash} = $$leg{callidHash};
     $$cdr{proxies} = $$leg{proxy};
-    $$cdr{calldate} = $$leg{start_time};
+    $$cdr{calldate} = $$leg{start_time_utc};
     $$cdr{duration} = $$leg{duration};
     $$cdr{caller} = $$leg{caller};
     $$cdr{callee} = $$leg{callee};

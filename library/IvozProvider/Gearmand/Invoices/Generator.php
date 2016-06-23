@@ -136,12 +136,12 @@ class Generator
                 "metered = 1 ",
                 "peeringContractId IS NOT NULL",
                 "peeringContractId != ''",
-                "calldate >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
-                "calldate <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
+                "start_time_utc >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
+                "start_time_utc <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
         );
         $where = implode(" AND ", $wheres);
         $this->_log("[INVOICE GENERATOR] Where: ".$where, \Zend_Log::DEBUG);
-        $order = "calldate asc";
+        $order = "start_time_utc asc";
 
         $callsPerType = array();
         $callSumary = array();
@@ -176,7 +176,7 @@ class Generator
             foreach ($calls as $call) {
                 $lang = $invoice->getCompany()->getLanguageCode();
                 $callData = $call->toArray();
-                $callData["calldate"] = $call->getCallDate(true)->setTimezone($invoiceTz)->toString();
+                $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
                 $callData["dst"] = $call->getCallee();
                 $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);

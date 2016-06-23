@@ -48,7 +48,14 @@ class KamAccCdrs extends ModelAbstract
      *
      * @var string
      */
-    protected $_calldate;
+    protected $_startTimeUtc;
+
+    /**
+     * Database var type timestamp
+     *
+     * @var string
+     */
+    protected $_endTimeUtc;
 
     /**
      * Database var type datetime
@@ -265,7 +272,8 @@ class KamAccCdrs extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'proxy'=>'proxy',
-        'calldate'=>'calldate',
+        'start_time_utc'=>'startTimeUtc',
+        'end_time_utc'=>'endTimeUtc',
         'start_time'=>'startTime',
         'end_time'=>'endTime',
         'duration'=>'duration',
@@ -336,7 +344,8 @@ class KamAccCdrs extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'calldate' => 'CURRENT_TIMESTAMP',
+            'startTimeUtc' => '2000-01-01 00:00:00',
+            'endTimeUtc' => 'CURRENT_TIMESTAMP',
             'startTime' => '2000-01-01 00:00:00',
             'endTime' => '2000-01-01 00:00:00',
             'duration' => '0.000',
@@ -446,7 +455,7 @@ class KamAccCdrs extends ModelAbstract
      * @param string|Zend_Date|DateTime $date
      * @return \IvozProvider\Model\Raw\KamAccCdrs
      */
-    public function setCalldate($data)
+    public function setStartTimeUtc($data)
     {
         if ($data == '0000-00-00 00:00:00') {
             $data = null;
@@ -468,33 +477,89 @@ class KamAccCdrs extends ModelAbstract
             $data->setTimezone(new \DateTimeZone('UTC'));
         }
 
-        if ($this->_calldate != $data) {
-            $this->_logChange('calldate');
+        if ($this->_startTimeUtc != $data) {
+            $this->_logChange('startTimeUtc');
         }
 
-        $this->_calldate = $data;
+        $this->_startTimeUtc = $data;
         return $this;
     }
 
     /**
-     * Gets column calldate
+     * Gets column start_time_utc
      *
      * @param boolean $returnZendDate
      * @return Zend_Date|null|string Zend_Date representation of this datetime if enabled, or ISO 8601 string if not
      */
-    public function getCalldate($returnZendDate = false)
+    public function getStartTimeUtc($returnZendDate = false)
     {
-        if (is_null($this->_calldate)) {
+        if (is_null($this->_startTimeUtc)) {
             return null;
         }
 
         if ($returnZendDate) {
-            $zendDate = new \Zend_Date($this->_calldate->getTimestamp(), \Zend_Date::TIMESTAMP);
+            $zendDate = new \Zend_Date($this->_startTimeUtc->getTimestamp(), \Zend_Date::TIMESTAMP);
             $zendDate->setTimezone('UTC');
             return $zendDate;
         }
 
-        return $this->_calldate->format('Y-m-d H:i:s');
+        return $this->_startTimeUtc->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string|Zend_Date|DateTime $date
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setEndTimeUtc($data)
+    {
+        if ($data == '0000-00-00 00:00:00') {
+            $data = null;
+        }
+        if ($data === 'CURRENT_TIMESTAMP' || is_null($data)) {
+            $data = \Zend_Date::now()->setTimezone('UTC');
+        }
+
+        if ($data instanceof \Zend_Date) {
+
+            $data = new \DateTime($data->toString('yyyy-MM-dd HH:mm:ss'), new \DateTimeZone($data->getTimezone()));
+
+        } elseif (!is_null($data) && !$data instanceof \DateTime) {
+
+            $data = new \DateTime($data, new \DateTimeZone('UTC'));
+        }
+        if ($data instanceof \DateTime && $data->getTimezone()->getName() != 'UTC') {
+
+            $data->setTimezone(new \DateTimeZone('UTC'));
+        }
+
+        if ($this->_endTimeUtc != $data) {
+            $this->_logChange('endTimeUtc');
+        }
+
+        $this->_endTimeUtc = $data;
+        return $this;
+    }
+
+    /**
+     * Gets column end_time_utc
+     *
+     * @param boolean $returnZendDate
+     * @return Zend_Date|null|string Zend_Date representation of this datetime if enabled, or ISO 8601 string if not
+     */
+    public function getEndTimeUtc($returnZendDate = false)
+    {
+        if (is_null($this->_endTimeUtc)) {
+            return null;
+        }
+
+        if ($returnZendDate) {
+            $zendDate = new \Zend_Date($this->_endTimeUtc->getTimestamp(), \Zend_Date::TIMESTAMP);
+            $zendDate->setTimezone('UTC');
+            return $zendDate;
+        }
+
+        return $this->_endTimeUtc->format('Y-m-d H:i:s');
     }
 
     /**

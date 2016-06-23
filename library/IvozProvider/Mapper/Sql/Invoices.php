@@ -68,7 +68,7 @@ class Invoices extends Raw\Invoices
         $wheres = array(
                 "companyId = '".$invoice->getCompanyId()."'",
                 "brandId = '".$invoice->getBrandId()."'",
-                "calldate <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'",
+                "start_time_utc <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'",
                 "metered = 0"
         );
         $untarificattedCalls = $callMapper->fetchTarificableList($wheres);
@@ -79,7 +79,7 @@ class Invoices extends Raw\Invoices
         $wheres = array(
                 "companyId = '".$invoice->getCompanyId()."'",
                 "brandId = '".$invoice->getBrandId()."'",
-                "calldate < '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
+                "start_time_utc < '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
                 "(invoiceId is null OR invoiceId = '".$invoice->getPrimaryKey()."')"
         );
         $unbilledCalls = $callMapper->fetchTarificableList($wheres);
@@ -99,8 +99,8 @@ class Invoices extends Raw\Invoices
             $wheres = array(
                     "companyId = '".$invoice->getCompanyId()."'",
                     "brandId = '".$invoice->getBrandId()."'",
-                    "calldate > '".$outDate->setTimezone($invoiceTz)->toString('yyyy-MM-dd HH:mm:ss')."'",
-                    "calldate < '".$nextInvoiceInDate->setTimezone($invoiceTz)->toString('yyyy-MM-dd HH:mm:ss')."'"
+                    "start_time_utc > '".$outDate->setTimezone($invoiceTz)->toString('yyyy-MM-dd HH:mm:ss')."'",
+                    "start_time_utc < '".$nextInvoiceInDate->setTimezone($invoiceTz)->toString('yyyy-MM-dd HH:mm:ss')."'"
             );
             $calls = $callMapper->fetchTarificableList($wheres);
             if (!empty($calls)) {

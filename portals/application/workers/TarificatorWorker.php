@@ -66,7 +66,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
         $nMetered = 0;
         for($i = 0; $i< $factor; $i++) {
             $this->_logger->log("[GEARMAND][TARIFICATOR] Offset: ".$offset, \Zend_Log::DEBUG);
-            $calls = $callMapper->fetchTarificableList($wheres, "calldate", $interval, $offset);
+            $calls = $callMapper->fetchTarificableList($wheres, "start_time_utc", $interval, $offset);
             $offset += $interval;
             foreach ($calls as $call) {
                 try {

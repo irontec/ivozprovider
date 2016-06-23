@@ -50,7 +50,8 @@ class KamAccCdrs extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'proxy' => $model->getProxy(),
-                'calldate' => $model->getCalldate(),
+                'start_time_utc' => $model->getStartTimeUtc(),
+                'end_time_utc' => $model->getEndTimeUtc(),
                 'start_time' => $model->getStartTime(),
                 'end_time' => $model->getEndTime(),
                 'duration' => $model->getDuration(),
@@ -558,7 +559,8 @@ class KamAccCdrs extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setProxy($data['proxy'])
-                  ->setCalldate($data['calldate'])
+                  ->setStartTimeUtc($data['start_time_utc'])
+                  ->setEndTimeUtc($data['end_time_utc'])
                   ->setStartTime($data['start_time'])
                   ->setEndTime($data['end_time'])
                   ->setDuration($data['duration'])
@@ -587,7 +589,8 @@ class KamAccCdrs extends MapperAbstract
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setProxy($data->{'proxy'})
-                  ->setCalldate($data->{'calldate'})
+                  ->setStartTimeUtc($data->{'start_time_utc'})
+                  ->setEndTimeUtc($data->{'end_time_utc'})
                   ->setStartTime($data->{'start_time'})
                   ->setEndTime($data->{'end_time'})
                   ->setDuration($data->{'duration'})
@@ -617,7 +620,8 @@ class KamAccCdrs extends MapperAbstract
         } else if ($data instanceof \IvozProvider\Model\Raw\KamAccCdrs) {
             $entry->setId($data->getId())
                   ->setProxy($data->getProxy())
-                  ->setCalldate($data->getCalldate())
+                  ->setStartTimeUtc($data->getStartTimeUtc())
+                  ->setEndTimeUtc($data->getEndTimeUtc())
                   ->setStartTime($data->getStartTime())
                   ->setEndTime($data->getEndTime())
                   ->setDuration($data->getDuration())

@@ -41,7 +41,7 @@ production:
           kamAccCdrsEdit_screen: true
       fields: 
         blacklist: 
-          calldate: true
+          end_time_utc: true
     kamAccCdrsEdit_screen: &kamAccCdrsEdit_screenLink 
       <<: *KamAccCdrs
       controller: edit
@@ -51,7 +51,7 @@ production:
       title: _("Edit %s %2s", ngettext('Kam acc cdr', 'Kam acc cdrs', 1), "[format| (%item%)]")
       fields: 
         blacklist: 
-          calldate: true
+          end_time_utc: true
   dialogs: &kamAccCdrs_dialogsLink 
     kamAccCdrsDel_dialog: &kamAccCdrsDel_dialogLink 
       <<: *KamAccCdrs

@@ -152,7 +152,7 @@ class Companies extends Raw\Companies
         $call->setCallee($number)
             ->setCompanyId($this->getId())
             ->setBrandId($this->getBrandId())
-            ->setCalldate(new \Zend_Date());
+            ->setStartTimeUtc(new \Zend_Date());
 
         $result = $call->tarificate();
         if (! is_null($result)) {
