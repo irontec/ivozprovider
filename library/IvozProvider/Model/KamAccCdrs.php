@@ -35,9 +35,11 @@ class KamAccCdrs extends Raw\KamAccCdrs
         $peeringContractMapper = new \IvozProvider\Mapper\Sql\PeeringContracts();
         $peeringContract = $peeringContractMapper->find($peeringContractId);
 
-        if (!is_null($peeringContract) && $peeringContract->getExternallyRated() == 1) {
-            $this->_resetCall();
-            $this->setExternallyRated(1);
+        $this->_resetCall();
+        if (!is_null($peeringContract)) {
+            $this->setExternallyRated($peeringContract->getExternallyRated());
+        }
+        if ($this->getExternallyRated() == 1) {
             return null;
         }
 
@@ -113,7 +115,8 @@ class KamAccCdrs extends Raw\KamAccCdrs
             ->setMeteringDate(null)
             ->setPricingPlanId(null)
             ->setTargetPatternId(null)
-            ->setPrice(null);
+            ->setPrice(null)
+            ->setExternallyRated(null);
 
         return $this;
     }

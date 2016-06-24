@@ -432,7 +432,7 @@ class KamAccCdrs extends TableAbstract
 	    'COLUMN_NAME' => 'externallyRated',
 	    'COLUMN_POSITION' => 22,
 	    'DATA_TYPE' => 'tinyint',
-	    'DEFAULT' => '0',
+	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
