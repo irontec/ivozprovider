@@ -2,9 +2,6 @@
 Description=IvozProvider Recordings Parser
 
 [Service]
+Type=oneshot
 User=root
-Restart=always
 ExecStart= /usr/bin/php /opt/irontec/ivozprovider/kamailio/recordings/application/bin/cli.php -a default/recordings/process
-
-[Install]
-WantedBy=multi-user.target

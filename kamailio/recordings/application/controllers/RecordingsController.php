@@ -39,27 +39,9 @@ class RecordingsController extends Zend_Controller_Action
         }
 
         $this->_rawRecordingsDir = $config->recordings['rawRecordingsDir'];
-        $this->_interval  = $config->recordings['interval'];
     }
 
     public function processAction()
-    {
-        while (true) {
-            try {
-                $this->processRecordings();
-                $this->_logger->log(
-                                sprintf("[Recordings] Sleeping for %d seconds.\n", $this->_interval),
-                                \Zend_Log::INFO);
-            } catch (Exception $e) {
-                $this->_logger->log(
-                                sprintf("[Recordings] An error occurred processing recordings: %s.\n", $e->getMessage()),
-                                \Zend_Log::ERR);
-            }
-            sleep($this->_interval);
-        }
-    }
-
-    public function processRecordings ()
     {
         // Store statistics
         $stats = array(
