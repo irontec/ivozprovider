@@ -30,24 +30,45 @@ class DDIAction extends RouterAction
         // Check And Process if necesary external call filters
         $externalCallFilter = $ddi->getExternalCallFilter();
         if (! empty($externalCallFilter)) {
-            $holidayDate = $externalCallFilter->getHolidayDateForToday();
-            if (! empty($holidayDate)) {
-                $this->agi->verbose("DDI %s [ddi%d] is on Holidays.", $ddi->getDDI(), $ddi->getId());
-                $filterAction = new ExternalFilterAction($this);
-                $filterAction
-                    ->setDDI($ddi)
-                    ->setFilter($externalCallFilter)
-                    ->processHoliday();
+            // Some feedback for asterisk cli
+            $this->agi->notice("DDI %s [ddi%d] has filter %s [externalcallfilter%d]",
+                            $ddi->getDDI(), $ddi->getId(),
+                            $externalCallFilter->getName(), $externalCallFilter->getId());
+
+            // Transform origin to company preferred
+            $origin = $ddi->getCompany()->E164ToPreferred($this->agi->getCallerIdNum());
+
+            // Users matching BlackList will be always rejected
+            if ($externalCallFilter->matchBlackList($origin)) {
+                $this->agi->notice("%s matches filter's BlackList. Dropping call.", $origin);
+                $this->agi->Hangup(21); // AST_CAUSE_CALL_REJECTED
                 return;
             }
-            if (! $externalCallFilter->isOutOfSchedule()) {
-                $this->agi->verbose("DDI %s [ddi%d] is on Out of schedule.", $ddi->getDDI(), $ddi->getId());
-                $filterAction = new ExternalFilterAction($this);
-                $filterAction
-                    ->setDDI($ddi)
-                    ->setFilter($externalCallFilter)
-                    ->processOutOfSchedule();
-                return;
+
+            // Users matching WhiteList will skip Holiday/Schedule checks
+            if ($externalCallFilter->matchWhiteList($origin)) {
+                $this->agi->notice("%s matches filter's whitelist. Calendar/Schedules checks will be skipped.", $origin);
+            } else {
+                $holidayDate = $externalCallFilter->getHolidayDateForToday();
+                if (! empty($holidayDate)) {
+                    $this->agi->verbose("DDI %s [ddi%d] is on Holidays.", $ddi->getDDI(), $ddi->getId());
+                    $filterAction = new ExternalFilterAction($this);
+                    $filterAction
+                        ->setDDI($ddi)
+                        ->setFilter($externalCallFilter)
+                        ->processHoliday();
+                    return;
+                }
+
+                if (! $externalCallFilter->isOutOfSchedule()) {
+                    $this->agi->verbose("DDI %s [ddi%d] is on Out of schedule.", $ddi->getDDI(), $ddi->getId());
+                    $filterAction = new ExternalFilterAction($this);
+                    $filterAction
+                        ->setDDI($ddi)
+                        ->setFilter($externalCallFilter)
+                        ->processOutOfSchedule();
+                    return;
+                }
             }
 
             // Play Welcome message

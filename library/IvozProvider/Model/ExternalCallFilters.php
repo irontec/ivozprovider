@@ -29,6 +29,44 @@ class ExternalCallFilters extends Raw\ExternalCallFilters
     }
 
     /**
+     * Check if the given number matches the regular expression
+     *
+     * @param string $origin in E164 form
+     * @return true if number matches, false otherwise
+     */
+    public function matchOrigin($origin, $regexp)
+    {
+        // Nothing matches empty expressions
+        if (is_null($regexp) || empty($regexp)) {
+            return false;
+        }
+
+        // Check if origin matches
+        return preg_match("/$regexp/", "$origin");
+    }
+
+
+    /**
+     * Check if the given number matches External Filter black list
+     * @param string $origin in E164 form
+     * @return true if number matches, false otherwise
+     */
+    public function matchBlackList($origin)
+    {
+        return $this->matchOrigin($origin, $this->getBlackListRegExp());
+    }
+
+    /**
+     * Check if the given number matches External Filter white list
+     * @param string $origin in E164 form
+     * @return true if number matches, false otherwise
+     */
+    public function matchWhiteList($origin)
+    {
+        return $this->matchOrigin($origin, $this->getWhiteListRegExp());
+    }
+
+    /**
      * @return \IvozProvider\Model\Raw\holidayDates or false
      */
     public function getHolidayDateForToday()

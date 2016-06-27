@@ -228,6 +228,22 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_ExternalCallFiltersTarget
         method: getOutOfScheduleData
+    blackListRegExp: 
+      title: _('Black list reg exp')
+      type: text
+      maxLength: 255
+      info:
+        type: box
+        text: _("Incoming numbers that match this expression will be always REJECTED without checking this filter configuration.")
+        label: _("Need help?")      
+    whiteListRegExp: 
+      title: _('White list reg exp')
+      type: text
+      maxLength: 255
+      info:
+        type: box
+        text: _("Incoming numbers that match this expression will be always ACCEPTED without checking this filter configuration.")
+        label: _("Need help?")      
 staging:
   _extends: production
 testing:

@@ -137,6 +137,14 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
+    blackListRegExp: 
+      title: _('Black list reg exp')
+      type: text
+      maxLength: 255
+    whiteListRegExp: 
+      title: _('White list reg exp')
+      type: text
+      maxLength: 255
 staging: 
   _extends: production
 testing: 

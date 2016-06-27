@@ -38,6 +38,8 @@ production:
           outOfScheduleNumberValue: true
           outOfScheduleExtensionId: true
           outOfScheduleVoiceMailUserId: true
+          blackListRegExp: true
+          whiteListRegExp: true
         order: &externalCallFilters_orderLink
           companyId: true
           name: true
@@ -72,6 +74,11 @@ production:
             companyId: 1
             name: 1
             welcomeLocutionId: 1
+        group2:
+          colsPerRow: 12
+          fields:
+            blackListRegExp: 9
+            whiteListRegExp: 9
         group3:
           colsPerRow: 2
           fields:

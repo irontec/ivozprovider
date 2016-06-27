@@ -32,8 +32,13 @@ class BaseController extends Zend_Controller_Action
         }
 
         $uniqueid = $this->agi->getUniqueId();
-        $file = $error["file"];
-        $line = $error["line"];
+        if (isset($error['file'])) {
+            $file = $error["file"];
+            $line = $error["line"];
+        } else {
+            $file = "unknown";
+            $line = "0";
+        }
 
         $this->_helper->Logger($uniqueid, $file, $line, "LOG_ALERT", $errors->exception->getMessage());
         $this->agi->error("[$file:$line] " . $errors->exception->getMessage());

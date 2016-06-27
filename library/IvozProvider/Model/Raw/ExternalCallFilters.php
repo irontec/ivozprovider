@@ -133,6 +133,20 @@ class ExternalCallFilters extends ModelAbstract
      */
     protected $_outOfScheduleVoiceMailUserId;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_blackListRegExp;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_whiteListRegExp;
+
 
     /**
      * Parent relation ExternalCallFilters_ibfk_1
@@ -230,6 +244,8 @@ class ExternalCallFilters extends ModelAbstract
         'outOfScheduleNumberValue'=>'outOfScheduleNumberValue',
         'outOfScheduleExtensionId'=>'outOfScheduleExtensionId',
         'outOfScheduleVoiceMailUserId'=>'outOfScheduleVoiceMailUserId',
+        'blackListRegExp'=>'blackListRegExp',
+        'whiteListRegExp'=>'whiteListRegExp',
     );
 
     /**
@@ -827,6 +843,74 @@ class ExternalCallFilters extends ModelAbstract
     public function getOutOfScheduleVoiceMailUserId()
     {
         return $this->_outOfScheduleVoiceMailUserId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ExternalCallFilters
+     */
+    public function setBlackListRegExp($data)
+    {
+
+        if ($this->_blackListRegExp != $data) {
+            $this->_logChange('blackListRegExp');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_blackListRegExp = $data;
+
+        } else if (!is_null($data)) {
+            $this->_blackListRegExp = (string) $data;
+
+        } else {
+            $this->_blackListRegExp = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column blackListRegExp
+     *
+     * @return string
+     */
+    public function getBlackListRegExp()
+    {
+        return $this->_blackListRegExp;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\ExternalCallFilters
+     */
+    public function setWhiteListRegExp($data)
+    {
+
+        if ($this->_whiteListRegExp != $data) {
+            $this->_logChange('whiteListRegExp');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_whiteListRegExp = $data;
+
+        } else if (!is_null($data)) {
+            $this->_whiteListRegExp = (string) $data;
+
+        } else {
+            $this->_whiteListRegExp = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column whiteListRegExp
+     *
+     * @return string
+     */
+    public function getWhiteListRegExp()
+    {
+        return $this->_whiteListRegExp;
     }
 
     /**

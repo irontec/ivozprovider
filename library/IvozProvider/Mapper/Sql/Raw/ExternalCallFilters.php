@@ -62,6 +62,8 @@ class ExternalCallFilters extends MapperAbstract
                 'outOfScheduleNumberValue' => $model->getOutOfScheduleNumberValue(),
                 'outOfScheduleExtensionId' => $model->getOutOfScheduleExtensionId(),
                 'outOfScheduleVoiceMailUserId' => $model->getOutOfScheduleVoiceMailUserId(),
+                'blackListRegExp' => $model->getBlackListRegExp(),
+                'whiteListRegExp' => $model->getWhiteListRegExp(),
             );
         } else {
             $result = array();
@@ -600,7 +602,9 @@ class ExternalCallFilters extends MapperAbstract
                   ->setOutOfScheduleTargetType($data['outOfScheduleTargetType'])
                   ->setOutOfScheduleNumberValue($data['outOfScheduleNumberValue'])
                   ->setOutOfScheduleExtensionId($data['outOfScheduleExtensionId'])
-                  ->setOutOfScheduleVoiceMailUserId($data['outOfScheduleVoiceMailUserId']);
+                  ->setOutOfScheduleVoiceMailUserId($data['outOfScheduleVoiceMailUserId'])
+                  ->setBlackListRegExp($data['blackListRegExp'])
+                  ->setWhiteListRegExp($data['whiteListRegExp']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -615,7 +619,9 @@ class ExternalCallFilters extends MapperAbstract
                   ->setOutOfScheduleTargetType($data->{'outOfScheduleTargetType'})
                   ->setOutOfScheduleNumberValue($data->{'outOfScheduleNumberValue'})
                   ->setOutOfScheduleExtensionId($data->{'outOfScheduleExtensionId'})
-                  ->setOutOfScheduleVoiceMailUserId($data->{'outOfScheduleVoiceMailUserId'});
+                  ->setOutOfScheduleVoiceMailUserId($data->{'outOfScheduleVoiceMailUserId'})
+                  ->setBlackListRegExp($data->{'blackListRegExp'})
+                  ->setWhiteListRegExp($data->{'whiteListRegExp'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\ExternalCallFilters) {
             $entry->setId($data->getId())
@@ -631,7 +637,9 @@ class ExternalCallFilters extends MapperAbstract
                   ->setOutOfScheduleTargetType($data->getOutOfScheduleTargetType())
                   ->setOutOfScheduleNumberValue($data->getOutOfScheduleNumberValue())
                   ->setOutOfScheduleExtensionId($data->getOutOfScheduleExtensionId())
-                  ->setOutOfScheduleVoiceMailUserId($data->getOutOfScheduleVoiceMailUserId());
+                  ->setOutOfScheduleVoiceMailUserId($data->getOutOfScheduleVoiceMailUserId())
+                  ->setBlackListRegExp($data->getBlackListRegExp())
+                  ->setWhiteListRegExp($data->getWhiteListRegExp());
 
         }
 
