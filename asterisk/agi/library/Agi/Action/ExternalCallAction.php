@@ -16,22 +16,22 @@ class ExternalCallAction extends RouterAction
         return $this;
     }
 
-	public function setDestination($number)
-	{
-	    $this->_number = $number;
-	    return $this;
-	}
-
-  	public function process()
+    public function setDestination($number)
     {
-  	    if (empty($this->_number)) {
-  	        $this->agi->error("Calling to an empty number?. Check configuration.");
-  	        return;
-  	    }
+        $this->_number = $number;
+        return $this;
+    }
+
+    public function process()
+    {
+        if (empty($this->_number)) {
+            $this->agi->error("Calling to an empty number?. Check configuration.");
+            return;
+        }
 
         // Local variables
-  	    $user = $this->_user;
-  	    $number = $this->_number;
+        $user = $this->_user;
+        $number = $this->_number;
         $company = $this->_company;
 
         // Get company from the user
@@ -120,9 +120,6 @@ class ExternalCallAction extends RouterAction
                     $this->agi->error("User %s has no external DDI", $user->getId());
                     return;
                 }
-
-                // Set as Display number users Outgoing DDI
-                $this->agi->setVariable("CALLERID(num)", $ddi->getDDI());
                 $this->agi->setVariable("USERID", $user->getId());
 
                 // Setup the update callid for the calling user
@@ -133,6 +130,12 @@ class ExternalCallAction extends RouterAction
             $ddi = $DDIMapper->findOneByField("DDIE164", $this->agi->getExtension());
         }
 
+        // Set as Display number users Outgoing DDI
+        $this->agi->setVariable("CALLERID(num)", $ddi->getDDIE164());
+
+        /*****************************************************************
+         * RECORD EXTERNAL DDI
+         ****************************************************************/
         // If ddi is configured to record
         if (in_array($ddi->getRecordCalls(), array('all', 'outbound'))) {
             $this->agi->setVariable("_RECORD", "yes");
@@ -142,5 +145,5 @@ class ExternalCallAction extends RouterAction
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");
         $this->agi->redirect('call-world', $number);
-  	}
+    }
 }
