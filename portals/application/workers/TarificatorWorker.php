@@ -44,6 +44,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
 
         if (is_null($pks)) {  // called from CDR parsing script
             $wheres[] = "(metered = 0 OR metered IS NULL)";
+            $wheres[] = "`externallyRated` != 1";
             $message = "Tarificator called from CDR parsing script";
             $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
         } else { //called from klear
@@ -73,7 +74,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
                     $metered = $call->tarificate();
                     $call->save();
                     if ($call->getExternallyRated() == 1) {
-                        $message = "Call with id = ".$call->getPrimaryKey()." whill be metered externally. ";
+                        $message = "Call with id = ".$call->getPrimaryKey()." will be metered externally. ";
                     } else {
                         $message = "Cost for call with id = ".$call->getPrimaryKey().": ".$call->getPrice();
                     }
