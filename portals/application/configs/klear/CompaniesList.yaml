@@ -78,7 +78,7 @@ production:
         blacklist:
           musicOnHoldId: true
           transformationRulesetGroupsId: true
-          applicationServerId: true
+          applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySetsId: ${auth.isNotMainOperator}
       class: ui-silk-add
       label: true
@@ -101,6 +101,7 @@ production:
           fields:
             outbound_prefix: 6
             mediaRelaySetsId: 6
+            applicationServerId: 6
             countryId: 6
             domain_users: 6
             ipFilter: 6
@@ -123,7 +124,7 @@ production:
         blacklist:
           musicOnHoldId: true
           transformationRulesetGroupsId: true
-          applicationServerId: true
+          applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySetsId: ${auth.isNotMainOperator}
       class: ui-silk-pencil
       label: false

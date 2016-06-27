@@ -63,9 +63,7 @@ production:
         'null': _("Unasigned")
     applicationServerId: 
       title: _('Application server id')
-      showOnlyIf: ${auth.canSeeMain}
       type: select
-      required: true
       source: 
         data: mapper
         config: 
@@ -75,7 +73,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Dispatch to any AS")
     externalMaxCalls: 
       title: _('External max call')
       type: number
