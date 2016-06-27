@@ -44,7 +44,7 @@ class TarificatorWorker extends Iron_Gearman_Worker
 
         if (is_null($pks)) {  // called from CDR parsing script
             $wheres[] = "(metered = 0 OR metered IS NULL)";
-            $wheres[] = "`externallyRated` != 1";
+            $wheres[] = "(externallyRated = 0 OR externallyRated IS NULL)";
             $message = "Tarificator called from CDR parsing script";
             $this->_logger->log("[GEARMAND][TARIFICATOR] ".$message, \Zend_Log::INFO);
         } else { //called from klear
