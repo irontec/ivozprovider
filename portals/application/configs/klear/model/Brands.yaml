@@ -18,13 +18,8 @@ production:
       type: text
       trim: both
       defaultValue: 
-    domain_users:
-      title: _('Users domain')
-      type: text
-      trim: both
-      maxLength: 255
     domain_trunks:
-      title: _('Trunks domain')
+      title: _('Trunks SIP domain')
       type: text
       trim: both
       maxLength: 255

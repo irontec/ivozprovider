@@ -64,6 +64,7 @@ class AstPsEndpoints extends MapperAbstract
                 'send_pai' => $model->getSendPai(),
                 'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
+                'outbound_proxy' => $model->getOutboundProxy(),
             );
         } else {
             $result = array();
@@ -568,7 +569,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
                   ->setSubscribecontext($data['subscribecontext'])
-                  ->set100rel($data['100rel']);
+                  ->set100rel($data['100rel'])
+                  ->setOutboundProxy($data['outbound_proxy']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setSorceryId($data->{'sorcery_id'})
@@ -585,7 +587,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
                   ->setSubscribecontext($data->{'subscribecontext'})
-                  ->set100rel($data->{'100rel'});
+                  ->set100rel($data->{'100rel'})
+                  ->setOutboundProxy($data->{'outbound_proxy'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
             $entry->setId($data->getId())
@@ -603,7 +606,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())
                   ->setSubscribecontext($data->getSubscribecontext())
-                  ->set100rel($data->get100rel());
+                  ->set100rel($data->get100rel())
+                  ->setOutboundProxy($data->getOutboundProxy());
 
         }
 

@@ -58,6 +58,13 @@ class Terminals extends ModelAbstract
      *
      * @var string
      */
+    protected $_domain;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
     protected $_disallow;
 
     /**
@@ -147,6 +154,7 @@ class Terminals extends ModelAbstract
         'id'=>'id',
         'TerminalModelId'=>'TerminalModelId',
         'name'=>'name',
+        'domain'=>'domain',
         'disallow'=>'disallow',
         'allow'=>'allow',
         'direct_media'=>'directMedia',
@@ -339,6 +347,40 @@ class Terminals extends ModelAbstract
     public function getName()
     {
         return $this->_name;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setDomain($data)
+    {
+
+        if ($this->_domain != $data) {
+            $this->_logChange('domain');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_domain = $data;
+
+        } else if (!is_null($data)) {
+            $this->_domain = (string) $data;
+
+        } else {
+            $this->_domain = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column domain
+     *
+     * @return string
+     */
+    public function getDomain()
+    {
+        return $this->_domain;
     }
 
     /**

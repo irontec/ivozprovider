@@ -23,6 +23,7 @@ production:
     domain_users: 
       title: _('Domain user')
       type: text
+      required: true
       maxLength: 255
     nif: 
       title: _('Nif')

@@ -24,10 +24,11 @@ production:
       required: true
       default: true
     domain_users: 
-      title: _('Domain')
+      title: _('SIP domain')
       type: text
       trim: both
       maxLength: 255
+      required: true
     nif: 
       title: _('Nif')
       type: text

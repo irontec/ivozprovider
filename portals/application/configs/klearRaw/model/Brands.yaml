@@ -16,10 +16,6 @@ production:
       title: _('Domain trunk')
       type: text
       maxLength: 255
-    domain_users: 
-      title: _('Domain user')
-      type: text
-      maxLength: 255
     defaultTimezoneId: 
       title: _('Default timezone id')
       type: select

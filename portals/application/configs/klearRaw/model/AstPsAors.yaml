@@ -5,7 +5,7 @@ production:
       title: _('Sorcery id')
       type: text
       required: true
-      maxLength: 40
+      maxLength: 355
       default: true
     default_expiration: 
       title: _('Default expiration')

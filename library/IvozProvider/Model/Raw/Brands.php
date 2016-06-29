@@ -56,13 +56,6 @@ class Brands extends ModelAbstract
     protected $_domainTrunks;
 
     /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_domainUsers;
-
-    /**
      * Database var type int
      *
      * @var int
@@ -353,7 +346,6 @@ class Brands extends ModelAbstract
         'name'=>'name',
         'nif'=>'nif',
         'domain_trunks'=>'domainTrunks',
-        'domain_users'=>'domainUsers',
         'defaultTimezoneId'=>'defaultTimezoneId',
         'logoFileSize'=>'logoFileSize',
         'logoMimeType'=>'logoMimeType',
@@ -756,40 +748,6 @@ class Brands extends ModelAbstract
     public function getDomainTrunks()
     {
         return $this->_domainTrunks;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function setDomainUsers($data)
-    {
-
-        if ($this->_domainUsers != $data) {
-            $this->_logChange('domainUsers');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_domainUsers = $data;
-
-        } else if (!is_null($data)) {
-            $this->_domainUsers = (string) $data;
-
-        } else {
-            $this->_domainUsers = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column domain_users
-     *
-     * @return string
-     */
-    public function getDomainUsers()
-    {
-        return $this->_domainUsers;
     }
 
     /**

@@ -163,7 +163,7 @@ class Companies extends TableAbstract
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
+	    'NULLABLE' => false,
 	    'LENGTH' => '255',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

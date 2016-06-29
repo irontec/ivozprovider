@@ -158,6 +158,13 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_100rel;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_outboundProxy;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -192,6 +199,7 @@ class AstPsEndpoints extends ModelAbstract
         'send_pai'=>'sendPai',
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
+        'outbound_proxy'=>'outboundProxy',
     );
 
     /**
@@ -380,6 +388,9 @@ class AstPsEndpoints extends ModelAbstract
     public function setAors($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_aors != $data) {
             $this->_logChange('aors');
         }
@@ -827,6 +838,40 @@ class AstPsEndpoints extends ModelAbstract
     public function get100rel()
     {
         return $this->_100rel;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setOutboundProxy($data)
+    {
+
+        if ($this->_outboundProxy != $data) {
+            $this->_logChange('outboundProxy');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outboundProxy = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outboundProxy = (string) $data;
+
+        } else {
+            $this->_outboundProxy = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outbound_proxy
+     *
+     * @return string
+     */
+    public function getOutboundProxy()
+    {
+        return $this->_outboundProxy;
     }
 
     /**

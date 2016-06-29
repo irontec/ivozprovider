@@ -19,6 +19,10 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       maxLength: 100
+    domain: 
+      title: _('Domain')
+      type: text
+      maxLength: 255
     disallow: 
       title: _('Disallow')
       type: text

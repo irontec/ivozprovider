@@ -52,7 +52,6 @@ class Brands extends MapperAbstract
                 'name' => $model->getName(),
                 'nif' => $model->getNif(),
                 'domain_trunks' => $model->getDomainTrunks(),
-                'domain_users' => $model->getDomainUsers(),
                 'defaultTimezoneId' => $model->getDefaultTimezoneId(),
                 'logoFileSize' => $model->getLogoFileSize(),
                 'logoMimeType' => $model->getLogoMimeType(),
@@ -887,7 +886,6 @@ class Brands extends MapperAbstract
                   ->setName($data['name'])
                   ->setNif($data['nif'])
                   ->setDomainTrunks($data['domain_trunks'])
-                  ->setDomainUsers($data['domain_users'])
                   ->setDefaultTimezoneId($data['defaultTimezoneId'])
                   ->setLogoFileSize($data['logoFileSize'])
                   ->setLogoMimeType($data['logoMimeType'])
@@ -904,7 +902,6 @@ class Brands extends MapperAbstract
                   ->setName($data->{'name'})
                   ->setNif($data->{'nif'})
                   ->setDomainTrunks($data->{'domain_trunks'})
-                  ->setDomainUsers($data->{'domain_users'})
                   ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
                   ->setLogoFileSize($data->{'logoFileSize'})
                   ->setLogoMimeType($data->{'logoMimeType'})
@@ -922,7 +919,6 @@ class Brands extends MapperAbstract
                   ->setName($data->getName())
                   ->setNif($data->getNif())
                   ->setDomainTrunks($data->getDomainTrunks())
-                  ->setDomainUsers($data->getDomainUsers())
                   ->setDefaultTimezoneId($data->getDefaultTimezoneId())
                   ->setLogoFileSize($data->getLogoFileSize())
                   ->setLogoMimeType($data->getLogoMimeType())

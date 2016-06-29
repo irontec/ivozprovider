@@ -51,6 +51,7 @@ class Terminals extends MapperAbstract
                 'id' => $model->getId(),
                 'TerminalModelId' => $model->getTerminalModelId(),
                 'name' => $model->getName(),
+                'domain' => $model->getDomain(),
                 'disallow' => $model->getDisallow(),
                 'allow' => $model->getAllow(),
                 'direct_media' => $model->getDirectMedia(),
@@ -573,6 +574,7 @@ class Terminals extends MapperAbstract
             $entry->setId($data['id'])
                   ->setTerminalModelId($data['TerminalModelId'])
                   ->setName($data['name'])
+                  ->setDomain($data['domain'])
                   ->setDisallow($data['disallow'])
                   ->setAllow($data['allow'])
                   ->setDirectMedia($data['direct_media'])
@@ -585,6 +587,7 @@ class Terminals extends MapperAbstract
             $entry->setId($data->{'id'})
                   ->setTerminalModelId($data->{'TerminalModelId'})
                   ->setName($data->{'name'})
+                  ->setDomain($data->{'domain'})
                   ->setDisallow($data->{'disallow'})
                   ->setAllow($data->{'allow'})
                   ->setDirectMedia($data->{'direct_media'})
@@ -598,6 +601,7 @@ class Terminals extends MapperAbstract
             $entry->setId($data->getId())
                   ->setTerminalModelId($data->getTerminalModelId())
                   ->setName($data->getName())
+                  ->setDomain($data->getDomain())
                   ->setDisallow($data->getDisallow())
                   ->setAllow($data->getAllow())
                   ->setDirectMedia($data->getDirectMedia())

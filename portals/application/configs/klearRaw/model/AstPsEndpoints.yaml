@@ -5,7 +5,7 @@ production:
       title: _('Sorcery id')
       type: text
       required: true
-      maxLength: 40
+      maxLength: 355
       default: true
     terminalId: 
       title: _('Terminal id')
@@ -23,7 +23,8 @@ production:
     aors: 
       title: _('Aor')
       type: text
-      maxLength: 200
+      required: true
+      maxLength: 355
     callerid: 
       title: _('Callerid')
       type: text
@@ -103,6 +104,10 @@ production:
           'no': _('no')
           'required': _('required')
           'yes': _('yes')
+    outbound_proxy: 
+      title: _('Outbound proxy')
+      type: text
+      maxLength: 256
 staging: 
   _extends: production
 testing: 

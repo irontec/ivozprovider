@@ -20,10 +20,10 @@ production:
         options: 
           title: _("Options")
           screens: 
-            domainsEdit_screen: true
+            domainsEdit_screen: false
             domainsView_screen: true
           dialogs: 
-            domainsDel_dialog: true
+            domainsDel_dialog: false
           default: domainsView_screen
         order: &domains_orderLink
           domain: true
@@ -40,7 +40,7 @@ production:
       options: 
         title: _("Options")
         screens: 
-          domainsNew_screen: true
+          domainsNew_screen: false
     domainsNew_screen: &domainsNew_screenLink 
       <<: *Domains
       controller: new
