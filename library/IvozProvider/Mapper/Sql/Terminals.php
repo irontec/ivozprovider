@@ -53,8 +53,8 @@ class Terminals extends Raw\Terminals
             }
             // Update/Insert endpoint data
             $endpoint->setTerminalId($response)
-                ->setSorceryId($model->getName())
-                ->setAors($model->getName())
+                ->setSorceryId($model->getSorcery())
+                ->setAors($model->getSorcery())
                 ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())
                 ->setDirectmedia($model->getDirectmedia())
