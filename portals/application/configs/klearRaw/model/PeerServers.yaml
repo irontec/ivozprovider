@@ -96,17 +96,6 @@ production:
             title: _("No")
           '1': 
             title: _("Yes")
-    useAuthUserAsFromUser: 
-      title: _('Use auth user as from user')
-      type: select
-      defaultValue: 0
-      source: 
-        data: inline
-        values: 
-          '0': 
-            title: _("No")
-          '1': 
-            title: _("Yes")
     auth_needed: 
       title: _('Auth needed')
       type: select
@@ -132,6 +121,14 @@ production:
       title: _('Outbound proxy')
       type: text
       maxLength: 128
+    from_user: 
+      title: _('From user')
+      type: text
+      maxLength: 64
+    from_domain: 
+      title: _('From domain')
+      type: text
+      maxLength: 64
 staging: 
   _extends: production
 testing: 

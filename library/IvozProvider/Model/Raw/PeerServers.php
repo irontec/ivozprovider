@@ -133,13 +133,6 @@ class PeerServers extends ModelAbstract
     protected $_sendRPID;
 
     /**
-     * Database var type tinyint
-     *
-     * @var int
-     */
-    protected $_useAuthUserAsFromUser;
-
-    /**
      * Database var type enum('yes','no')
      *
      * @var string
@@ -173,6 +166,20 @@ class PeerServers extends ModelAbstract
      * @var string
      */
     protected $_outboundProxy;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_fromUser;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_fromDomain;
 
 
     /**
@@ -214,12 +221,13 @@ class PeerServers extends ModelAbstract
         'prefix'=>'prefix',
         'sendPAI'=>'sendPAI',
         'sendRPID'=>'sendRPID',
-        'useAuthUserAsFromUser'=>'useAuthUserAsFromUser',
         'auth_needed'=>'authNeeded',
         'auth_user'=>'authUser',
         'auth_password'=>'authPassword',
         'sip_proxy'=>'sipProxy',
         'outbound_proxy'=>'outboundProxy',
+        'from_user'=>'fromUser',
+        'from_domain'=>'fromDomain',
     );
 
     /**
@@ -816,40 +824,6 @@ class PeerServers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setUseAuthUserAsFromUser($data)
-    {
-
-        if ($this->_useAuthUserAsFromUser != $data) {
-            $this->_logChange('useAuthUserAsFromUser');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_useAuthUserAsFromUser = $data;
-
-        } else if (!is_null($data)) {
-            $this->_useAuthUserAsFromUser = (int) $data;
-
-        } else {
-            $this->_useAuthUserAsFromUser = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column useAuthUserAsFromUser
-     *
-     * @return int
-     */
-    public function getUseAuthUserAsFromUser()
-    {
-        return $this->_useAuthUserAsFromUser;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param string $data
      * @return \IvozProvider\Model\Raw\PeerServers
      */
@@ -1019,6 +993,74 @@ class PeerServers extends ModelAbstract
     public function getOutboundProxy()
     {
         return $this->_outboundProxy;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setFromUser($data)
+    {
+
+        if ($this->_fromUser != $data) {
+            $this->_logChange('fromUser');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_fromUser = $data;
+
+        } else if (!is_null($data)) {
+            $this->_fromUser = (string) $data;
+
+        } else {
+            $this->_fromUser = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column from_user
+     *
+     * @return string
+     */
+    public function getFromUser()
+    {
+        return $this->_fromUser;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\PeerServers
+     */
+    public function setFromDomain($data)
+    {
+
+        if ($this->_fromDomain != $data) {
+            $this->_logChange('fromDomain');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_fromDomain = $data;
+
+        } else if (!is_null($data)) {
+            $this->_fromDomain = (string) $data;
+
+        } else {
+            $this->_fromDomain = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column from_domain
+     *
+     * @return string
+     */
+    public function getFromDomain()
+    {
+        return $this->_fromDomain;
     }
 
     /**

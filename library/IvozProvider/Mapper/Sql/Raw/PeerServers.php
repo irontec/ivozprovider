@@ -63,12 +63,13 @@ class PeerServers extends MapperAbstract
                 'prefix' => $model->getPrefix(),
                 'sendPAI' => $model->getSendPAI(),
                 'sendRPID' => $model->getSendRPID(),
-                'useAuthUserAsFromUser' => $model->getUseAuthUserAsFromUser(),
                 'auth_needed' => $model->getAuthNeeded(),
                 'auth_user' => $model->getAuthUser(),
                 'auth_password' => $model->getAuthPassword(),
                 'sip_proxy' => $model->getSipProxy(),
                 'outbound_proxy' => $model->getOutboundProxy(),
+                'from_user' => $model->getFromUser(),
+                'from_domain' => $model->getFromDomain(),
             );
         } else {
             $result = array();
@@ -581,12 +582,13 @@ class PeerServers extends MapperAbstract
                   ->setPrefix($data['prefix'])
                   ->setSendPAI($data['sendPAI'])
                   ->setSendRPID($data['sendRPID'])
-                  ->setUseAuthUserAsFromUser($data['useAuthUserAsFromUser'])
                   ->setAuthNeeded($data['auth_needed'])
                   ->setAuthUser($data['auth_user'])
                   ->setAuthPassword($data['auth_password'])
                   ->setSipProxy($data['sip_proxy'])
-                  ->setOutboundProxy($data['outbound_proxy']);
+                  ->setOutboundProxy($data['outbound_proxy'])
+                  ->setFromUser($data['from_user'])
+                  ->setFromDomain($data['from_domain']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setPeeringContractId($data->{'peeringContractId'})
@@ -603,12 +605,13 @@ class PeerServers extends MapperAbstract
                   ->setPrefix($data->{'prefix'})
                   ->setSendPAI($data->{'sendPAI'})
                   ->setSendRPID($data->{'sendRPID'})
-                  ->setUseAuthUserAsFromUser($data->{'useAuthUserAsFromUser'})
                   ->setAuthNeeded($data->{'auth_needed'})
                   ->setAuthUser($data->{'auth_user'})
                   ->setAuthPassword($data->{'auth_password'})
                   ->setSipProxy($data->{'sip_proxy'})
-                  ->setOutboundProxy($data->{'outbound_proxy'});
+                  ->setOutboundProxy($data->{'outbound_proxy'})
+                  ->setFromUser($data->{'from_user'})
+                  ->setFromDomain($data->{'from_domain'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\PeerServers) {
             $entry->setId($data->getId())
@@ -626,12 +629,13 @@ class PeerServers extends MapperAbstract
                   ->setPrefix($data->getPrefix())
                   ->setSendPAI($data->getSendPAI())
                   ->setSendRPID($data->getSendRPID())
-                  ->setUseAuthUserAsFromUser($data->getUseAuthUserAsFromUser())
                   ->setAuthNeeded($data->getAuthNeeded())
                   ->setAuthUser($data->getAuthUser())
                   ->setAuthPassword($data->getAuthPassword())
                   ->setSipProxy($data->getSipProxy())
-                  ->setOutboundProxy($data->getOutboundProxy());
+                  ->setOutboundProxy($data->getOutboundProxy())
+                  ->setFromUser($data->getFromUser())
+                  ->setFromDomain($data->getFromDomain());
 
         }
 

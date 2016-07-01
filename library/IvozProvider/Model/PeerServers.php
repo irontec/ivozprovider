@@ -30,6 +30,6 @@ class PeerServers extends Raw\PeerServers
 
     public function getFlags()
     {
-        return $this->getSendPAI() + ($this->getSendRPID()*2) + ($this->getUseAuthUserAsFromUser()*4);
+        return $this->getSendPAI() + ($this->getSendRPID()*2);
     }
 }

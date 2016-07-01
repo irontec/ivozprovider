@@ -42,11 +42,10 @@ class PeerServers extends Raw\PeerServers
 
             $model->setBrandId($brand->getId());
         }
-        
+
         if ($model->auth_needed == 'no') {
             $model->setAuthUser(null);
             $model->setAuthPassword(null);
-            $model->setUseAuthUserAsFromUser('0');
         }
 
         # --- SIP Proxy and Outbound Proxy logic

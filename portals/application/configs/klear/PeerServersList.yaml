@@ -32,7 +32,6 @@ production:
           auth_needed: true
           auth_user: true
           auth_password: true
-          useAuthUserAsFromUser: true
           sendPAI: true
           sendRPID: true
           strip: true
@@ -40,6 +39,8 @@ production:
           hostname: true
           ip: true
           port: true
+          from_user: true
+          from_domain: true
         order:
           name: true
           sip_proxy: true
@@ -90,7 +91,6 @@ production:
             auth_needed: 4
             auth_user: 4
             auth_password: 4
-            useAuthUserAsFromUser: 12
         group2:
           label: _("Source number header")
           colsPerRow: 2
@@ -104,6 +104,12 @@ production:
             strip: 6
             prefix: 4 
             params: 6
+        group4:
+          label: _("From optional customization")
+          colsPerRow: 12
+          fields:
+            from_user: 6
+            from_domain: 6
     peerServersEdit_screen: &peerServersEdit_screenLink
       <<: *PeerServers
       forcedValues:
