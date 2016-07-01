@@ -16,9 +16,7 @@ class Agi_Wrapper
 
 	/**
 	 * Constructor Agi_Common
-	 *
 	 * Se instancian también $fastagi y $_logger
-	 *
 	 */
 	public function __construct ()
 	{
@@ -29,7 +27,7 @@ class Agi_Wrapper
 
     public function dump()
     {
-        return $this->_fastagi->exec("DumpChan");
+        return $this->_fastagi->exec("DumpChan","");
     }
 
 	private function getRequestData($name)
@@ -37,19 +35,9 @@ class Agi_Wrapper
 	    return $this->_fastagi->request[$name];
 	}
 
-	public function getChannel()
-	{
-	    return $this->getRequestData('agi_channel');
-	}
-
 	public function getUniqueId()
 	{
 		return $this->getRequestData('agi_uniqueid');
-	}
-
-	public function getLanguage()
-	{
-		return $this->getRequestData('agi_language');
 	}
 
 	public function getExtension()
@@ -57,26 +45,11 @@ class Agi_Wrapper
 		return $this->getRequestData('agi_extension');
 	}
 
-	public function getContext()
-	{
-	    return $this->getRequestData('agi_context');
-	}
-
-	public function getRDNIS()
-	{
-	    return $this->getRequestData('agi_rdnis');
-	}
-
-	public function getCallerID()
-	{
-	    return $this->getRequestData('agi_callerid');
-	}
-
 	public function getAgiType()
 	{
 	    return $this->getRequestData('agi_type');
 	}
-    // verbose("Esto es una %s muy %d/%d", "mierda", "grande");
+
 	public function verbose()
 	{
 	    // Build the message using first argument as format
@@ -115,15 +88,6 @@ class Agi_Wrapper
 	public function getVariable($variable)
 	{
 	    return $this->_fastagi->get_variable($variable, true);
-	}
-
-	public function appendVariable($variable, $value)
-	{
-	    // TODO
-	    return;
-	    $oldvariable = preg_replace("/^_*/", "", $variable);
-	    $oldvalue =  $this->_fastagi->get_variable($oldvariable, true);
-	    return $this->_fastagi->set_variable($variable, $oldvalue . $value);
 	}
 
 	public function redirect($context, $exten = null, $priority = '1')
@@ -264,12 +228,6 @@ class Agi_Wrapper
 	    return $this->_fastagi->get_variable("CONFBRIDGE($setting)");
 	}
 
-	public function dial($interfaces, $timeout, $options = "", $headers = "")
-	{
-	    $dialopts = $options . "b(addheaders^s^1($headers))";
-	    return $this->_fastagi->exec("Dial", "$interfaces,$timeout,$dialopts");
-	}
-
 	public function voicemail($mailbox)
 	{
 	    return $this->_fastagi->exec('VoiceMail', "$mailbox,u");
@@ -313,25 +271,34 @@ class Agi_Wrapper
 	    return $this->_fastagi->set_variable("PJSIP_HEADER(add,$header)", $value);
 	}
 
-	public function getPeer()
+	public function getEndpoint()
 	{
-	    if (preg_match("/PJSIP\/(.*)-\w{8}/", $this->getChannel(), $matches)) {
-	       return $matches[1];
-	    } else {
-	        return null;
-	    }
+        return $this->_fastagi->get_variable("CHANNEL(endpoint)");
+	}
+
+	public function getCallId()
+	{
+	    if ($callid = $this->_fastagi->get_variable("CALL_ID"))
+	        return $callid;
+
+	    if ($this->getAgiType() == "Local")
+	        return "";
+
+	    return $this->_fastagi->get_variable("CHANNEL(pjsip,call-id)");
 	}
 
 	public function extractURI($uri, $variable)
 	{
-	    if (preg_match("/([^<]*)sip:([^@>]+)@?([^>]*)?/", $uri, $matches)) {
+	    if (preg_match("/([^<]*)(sip:([^@>]+)@?([^>]*)?)/", $uri, $matches)) {
             switch ($variable) {
 	            case 'name':
 	                return $matches[1];
+                case 'uri':
+                    return $matches[2];
 	            case 'num':
-	                return $matches[2];
-	            case 'domain':
 	                return $matches[3];
+	            case 'domain':
+	                return $matches[4];
 	        }
         }
 	    return "";

@@ -137,8 +137,9 @@ class UserCallAction extends RouterAction
         }
 
         // Check if user is available before placing the call
-        $devicestate = $this->agi->getDeviceState($terminal->getName());
-        $this->agi->verbose("Terminal %s has DeviceState %s", $terminal->getName(), $devicestate);
+        $endpointName = $terminal->getSorcery();
+        $devicestate = $this->agi->getDeviceState($endpointName);
+        $this->agi->verbose("Terminal %s has DeviceState %s", $endpointName, $devicestate);
 
         // Avoid placing a call for device in this states
         $unavailableArray = array("UNKNOWN", "INVALID", "UNAVAILABLE");
@@ -156,7 +157,6 @@ class UserCallAction extends RouterAction
         }
 
         // Configure Dial options
-        $interface = $terminal->getName();
         $timeout = $this->_timeout;
         $options = ""; // FIXME
 
@@ -180,7 +180,8 @@ class UserCallAction extends RouterAction
 
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_EXT", $extension->getNumber());
-        $this->agi->setVariable("DIAL_DST", "PJSIP/$interface");
+        $this->agi->setVariable("DIAL_DST", "PJSIP/$endpointName");
+        $this->agi->setVariable("__DIAL_ENDPOINT", $endpointName);
         $this->agi->setVariable("DIAL_TIMEOUT", $this->_timeout);
         $this->agi->setVariable("DIAL_OPTS", $options);
 

@@ -147,7 +147,7 @@ class HuntGroupAction extends RouterAction
                 $this->agi->error("Skipping user %s without terminal.", $user->getId());
                 continue;
             }
-            array_push($callInterfaces, "PJSIP/" . $terminal->getName());
+            array_push($callInterfaces, "PJSIP/" . $terminal->getSorcery());
         }
 
         // Anyone is available?

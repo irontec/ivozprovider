@@ -5,7 +5,7 @@ production:
       title: _('Sorcery id')
       type: text
       required: true
-      maxLength: 355
+      maxLength: 40
       default: true
     terminalId: 
       title: _('Terminal id')
@@ -24,7 +24,7 @@ production:
       title: _('Aor')
       type: text
       required: true
-      maxLength: 355
+      maxLength: 40
     callerid: 
       title: _('Callerid')
       type: text

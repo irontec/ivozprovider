@@ -39,4 +39,20 @@ class Terminals extends Raw\Terminals
         $users = $this->getUsers($where);
         return array_shift($users);
     }
+
+    public function getContact()
+    {
+        return sprintf("sip:%s@%s",
+            $this->getName(),
+            $this->getDomain());
+    }
+
+    public function getSorcery()
+    {
+        return sprintf("b%dc%dt%d_%s",
+            $this->getCompany()->getBrandId(),
+            $this->getCompanyId(),
+            $this->getId(),
+            $this->getName());
+    }
 }

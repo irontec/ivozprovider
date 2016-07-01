@@ -33,6 +33,9 @@ class Terminals extends Raw\Terminals
             throw new \Exception('Invalid mac', 417);
         }
 
+        // Set terminal domain to its company user domain
+        $model->setDomain($model->getCompany()->getDomainUsers());
+
         $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
         if ($response) {
             // Replicate Terminal into ast_ps_endpoint
@@ -70,8 +73,8 @@ class Terminals extends Raw\Terminals
                 $aor = new \IvozProvider\Model\AstPsAors();
             }
             $aor->setId($endpoint->getId())
-                ->setSorceryId($model->getName())
-                ->setContact("sip:". $model->getName() . "@users.ivozprovider.local")
+                ->setSorceryId($model->getSorcery())
+                ->setContact($model->getContact())
                 ->setMaxContacts(1)
                 ->setQualifyFrequency(0)
                 ->setRemoveExisting('yes')

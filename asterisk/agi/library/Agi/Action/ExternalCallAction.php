@@ -111,7 +111,7 @@ class ExternalCallAction extends RouterAction
         if ($user) {
             // Set Outgoing number
             $company = $user->getCompany();
-            $callerExt = $this->agi->getCallerId('num');
+            $callerExt = $this->agi->getCallerIdNum();
 
             if (($extension = $company->getExtension($callerExt))) {
                 $callerUser = $extension->getUser();

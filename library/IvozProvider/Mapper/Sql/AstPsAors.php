@@ -20,5 +20,17 @@
 namespace IvozProvider\Mapper\Sql;
 class AstPsAors extends Raw\AstPsAors
 {
-
+    /**
+     * Get endpoint name from a given contact
+     *
+     * @param string $contact
+     */
+    public function getSorceryByContact($contact)
+    {
+        $aor = $this->findOneByField('contact', $contact);
+        if ($aor) {
+            return $aor->getSorceryId();
+        }
+        return "";
+    }
 }

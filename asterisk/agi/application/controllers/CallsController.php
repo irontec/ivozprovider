@@ -52,10 +52,7 @@ class CallsController extends BaseController
         $this->agi->setCallType("external");
 
         // Set Outgoing Channels X-CID header variable
-        $callid = $this->agi->getSIPHeader("Call-Id");
-        if (!empty($callid)) {
-            $this->agi->setVariable("__CALL_ID", $callid);
-        }
+        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Get company MusicClass: company, Generic or default
         $company = $ddi->getCompany();
@@ -79,29 +76,38 @@ class CallsController extends BaseController
          * Determine who is placing this call:
          * - SIPTRANSFER: set by asterisk on blind transfers
          * - Diversion:   set by asterisk on 302 Moved SIP Message
-         * - CallerID:    set by asterisk reading From: SIP Header
+         * - Endpoint:    set by asterisk on matching endpoint
          */
         if ($this->agi->getVariable("SIPTRANSFER")) {
-            $transfererURI = $this->agi->getVariable("SIPREFERREDBYHDR");
-            $callerid = $this->agi->extractURI($transfererURI, "num");
-        } else if ($forwader = $this->agi->getRedirecting('from-num')) {
-            // 302 Moved here caller
-            $callerid = $forwader;
+            // Asterisk stores the Refered-By header of the transferer
+            $transfererURI = $this->agi->extractURI($this->agi->getVariable("SIPREFERREDBYHDR"), "uri");
+            $aorMapper = new Mapper\AstPsAors;
+            // Get the endpoint name matching the referer contact
+            $endpointName = $aorMapper->getSorceryByContact($transfererURI);
+        } else if ($forwarder = $this->agi->getRedirecting('from-num')) {
+            // 302 Moved here caller. The variable MUST store the last dialed endpoint
+            $endpointName = $this->agi->getVariable("DIAL_ENDPOINT");
         } else {
-            $callerid = $this->agi->getPeer();
+            $endpointName = $this->agi->getEndpoint();
         }
 
-        if (! $callerid) {
-            $this->agi->error("Call without valid callerid. Dropping.");
+        // Do we get who is actually calling?
+        if (empty($endpointName)) {
+            $this->agi->error("Call without valid endpointName. Dropping.");
             return;
         }
 
-        // Get caller peer
-        $terminalMapper = new Mapper\Terminals();
-        $terminal = $terminalMapper->findOneByField("name", $callerid);
+        // Get caller endpoitn model
+        $endpointsMapper = new Mapper\AstPsEndpoints();
+        $endpoint = $endpointsMapper->findOneByField("sorcery_id", $endpointName);
+        if (empty($endpoint)) {
+            $this->agi->error("Endpoint %s not found.", $endpointName);
+            return;
+        }
 
+        $terminal = $endpoint->getTerminal();
         if (empty($terminal)) {
-            $this->agi->error("Terminal %s not found.", $callerid);
+            $this->agi->error("No terminal found for endpoint %s.", $endpointName);
             return;
         }
 
@@ -130,10 +136,7 @@ class CallsController extends BaseController
         $this->agi->setCallType("internal");
 
         // Set Outgoing Channels X-CID header variable
-        $callid = $this->agi->getSIPHeader("Call-Id");
-        if (!empty($callid)) {
-            $this->agi->setVariable("__CALL_ID", $callid);
-        }
+        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set user language and music
         $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
@@ -146,12 +149,12 @@ class CallsController extends BaseController
 
         // If this call is being BlindXfered, update Referred-By header
         if (isset($transfererURI) && !empty($transfererURI)) {
-            $transfererURI = str_replace($terminal->getName(), $extension->getNumber(), $transfererURI);
+            $transfererURI = str_replace($endpointName, $extension->getNumber(), $transfererURI);
             $this->agi->setVariable("__SIPREFERREDBYHDR", $transfererURI);
         }
 
-        // Some output
-        $this->agi->verbose("Processing outgoing call from %s [user%d] to number %s",
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing outgoing call from %s [user%d] to number %s",
                         $user->getFullName(), $user->getId(), $exten);
 
         // Check if this extension starts with '*' code
@@ -179,7 +182,7 @@ class CallsController extends BaseController
                             $exten, $dstExtension->getId());
 
             // Update Diversion Header with User Extension Number
-            if (isset($forwader) && !empty($forwader)) {
+            if (isset($forwarder) && !empty($forwarder)) {
                 $this->agi->setRedirecting('from-num,i', $extension->getNumber());
                 $this->agi->setRedirecting('count,i', 1);
             }
@@ -195,10 +198,10 @@ class CallsController extends BaseController
             $this->agi->verbose("Number %s is handled as external number.", $exten);
 
             // Update Diversion Header with User Outgoing DDI
-            if (isset($forwader) && !empty($forwader)) {
+            if (isset($forwarder) && !empty($forwarder)) {
                 $this->agi->setRedirecting('from-name,i', $user->getFullName());
-                $this->agi->setRedirecting('from-num,i', $user->getOutgoingDDINumber());
-                $this->agi->setRedirecting('from-tag,i',   $user->getExtensionNumber());
+                $this->agi->setRedirecting('from-num,i',  $user->getOutgoingDDINumber());
+                $this->agi->setRedirecting('from-tag,i',  $user->getExtensionNumber());
                 $this->agi->setRedirecting('count,i', 1);
             }
 
@@ -216,20 +219,26 @@ class CallsController extends BaseController
      */
     public function userstatusAction ()
     {
-        // FIXME Process Dialed user dialstatus FIXME
-        $iface = $this->agi->getVariable("DIAL_DST");
-        $iface = preg_replace('/^\w+\//', '', $iface);
-        $terminalMapper = new Mapper\Terminals();
-        $terminal = $terminalMapper->findOneByField("name", $iface);
+        // Get the called endpoint to check postcall actions
+        $endpointName = $this->agi->getVariable("DIAL_ENDPOINT");
+        $endpointsMapper = new Mapper\AstPsEndpoints();
+        $endpoint = $endpointsMapper->findOneByField("sorcery_id", $endpointName);
+
+        if (empty($endpoint)) {
+            $this->agi->error("No matching endpoint found with name %s", $endpointName);
+            return;
+        }
+
+        $terminal = $endpoint->getTerminal();
         if (empty($terminal)) {
-            $this->agi->error("Terminal %s not found in database. (BUG?)", $iface);
+            $this->agi->error("Terminal %s not found in database. (BUG?)", $endpointName);
             return;
         }
 
         // Get user from the terminal.
         $user = $terminal->getUser();
         if (empty($user)) {
-            $this->agi->error("Terminal %s has no user (BUG?).", $iface);
+            $this->agi->error("Terminal %s has no user (BUG?).", $endpointName);
             return;
         }
 
@@ -238,7 +247,6 @@ class CallsController extends BaseController
         $userAction
             ->setUser($user)
             ->processDialStatus();
-
     }
 
     /**
@@ -424,13 +432,12 @@ class CallsController extends BaseController
         $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
         $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
 
-        // Set Callee information.
-        // Use channelname to get this information because in case of ringall hungroup
-        // this action will be invoked once per generated channel
-        $peer = $this->agi->getPeer();
-        $terminal = $company->getTerminal($peer);
-        if (!empty($terminal)) {
-            $extension = $terminal->getUser()->getExtension();
+        // Get Calle data, take if from called endpoint
+        $endpointsMapper = new Mapper\AstPsEndpoints();
+        $endpoint = $endpointsMapper->findOneByField("sorcery_id", $this->agi->getEndpoint());
+        if (!empty($endpoint)) {
+            // FIXME Too many assumptions here...
+            $extension = $endpoint->getTerminal()->getUser()->getExtension();
             $this->agi->setSIPHeader("X-Info-Callee",    $extension->getNumber());
         } else {
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
