@@ -55,4 +55,10 @@ class Terminals extends Raw\Terminals
             $this->getId(),
             $this->getName());
     }
+
+    public function getAstPsEndpoint()
+    {
+        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
+        return $endpointMapper->findOneByField("terminalId", $this->getId());
+    }
 }

@@ -58,6 +58,7 @@ class Companies extends Raw\Companies
             $domain = new \IvozProvider\Model\Domains();
         } else {
             $domain = $domains[0];
+            $this->_updateTerminalsDomain($model, $domain);
         }
 
         $name = trim($model->getDomainUsers());
@@ -72,6 +73,20 @@ class Companies extends Raw\Companies
                ->setCompanyId($pk)
                ->setDescription($model->getName() . " proxyusers domain")
                ->save();
+    }
+
+    protected function _updateTerminalsDomain($model, $domain)
+    {
+        $terminals = $model->getTerminals();
+
+        foreach ($terminals as $terminal) {
+            $terminal->setDomain($domain->getDomain())->save();
+            $endpoint = $terminal->getAstPsEndpoint();
+            $aor = $endpoint->getAstPsAor();
+
+            $aor->setContact($terminal->getContact())
+                ->save();
+        }
     }
 
     protected function _propagateCallACLPatterns()

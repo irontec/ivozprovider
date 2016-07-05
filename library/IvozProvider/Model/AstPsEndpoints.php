@@ -27,4 +27,11 @@ class AstPsEndpoints extends Raw\AstPsEndpoints
     public function init()
     {
     }
+
+    public function getAstPsAor()
+    {
+        $aorMapper = new \IvozProvider\Mapper\Sql\AstPsAors();
+        return $aorMapper->findOneByField("sorcery_id", $this->getSorceryId());
+    }
+
 }
