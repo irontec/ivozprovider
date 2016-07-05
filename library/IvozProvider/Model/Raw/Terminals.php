@@ -22,10 +22,6 @@ namespace IvozProvider\Model\Raw;
 class Terminals extends ModelAbstract
 {
 
-    protected $_directMediaAcceptedValues = array(
-        'yes',
-        'no',
-    );
     protected $_directMediaMethodAcceptedValues = array(
         'invite',
         'reinvite',
@@ -73,13 +69,6 @@ class Terminals extends ModelAbstract
      * @var string
      */
     protected $_allow;
-
-    /**
-     * Database var type enum('yes','no')
-     *
-     * @var string
-     */
-    protected $_directMedia;
 
     /**
      * [enum:update|invite|reinvite]
@@ -157,7 +146,6 @@ class Terminals extends ModelAbstract
         'domain'=>'domain',
         'disallow'=>'disallow',
         'allow'=>'allow',
-        'direct_media'=>'directMedia',
         'direct_media_method'=>'directMediaMethod',
         'password'=>'password',
         'companyId'=>'companyId',
@@ -208,7 +196,6 @@ class Terminals extends ModelAbstract
         $this->_defaultValues = array(
             'disallow' => 'all',
             'allow' => 'alaw',
-            'directMedia' => 'yes',
             'directMediaMethod' => 'update',
             'password' => '',
         );
@@ -449,43 +436,6 @@ class Terminals extends ModelAbstract
     public function getAllow()
     {
         return $this->_allow;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setDirectMedia($data)
-    {
-
-        if ($this->_directMedia != $data) {
-            $this->_logChange('directMedia');
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_directMedia = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_directMediaAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMedia'));
-            }
-            $this->_directMedia = (string) $data;
-
-        } else {
-            $this->_directMedia = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column direct_media
-     *
-     * @return string
-     */
-    public function getDirectMedia()
-    {
-        return $this->_directMedia;
     }
 
     /**

@@ -33,15 +33,6 @@ production:
       type: text
       defaultValue: alaw
       maxLength: 200
-    direct_media: 
-      title: _('Direct media')
-      type: select
-      defaultValue: yes
-      source: 
-        data: inline
-        values: 
-          'yes': _('yes')
-          'no': _('no')
     direct_media_method: 
       title: _('Direct media method')
       type: select

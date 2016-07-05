@@ -22,7 +22,6 @@ production:
           password: true
           mac: true
           lastProvisionDate: true
-          direct_media: true
           domain: true
         options: 
           title: _("Options")
@@ -64,7 +63,6 @@ production:
       fields:
         blacklist: 
           lastProvisionDate: true
-          direct_media: true
           domain: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
@@ -105,7 +103,6 @@ production:
         readOnly: 
           lastProvisionDate: true
         blacklist:
-          direct_media: true
           domain: true
       fixedPositions:
         <<: *TerminalsFixedPositions_link

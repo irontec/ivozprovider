@@ -57,7 +57,6 @@ class Terminals extends Raw\Terminals
                 ->setAors($model->getSorcery())
                 ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())
-                ->setDirectmedia($model->getDirectmedia())
                 ->setDirectmediaMethod($model->getDirectmediaMethod())
                 ->setSubscribecontext('company' . $model->getCompanyId())
                 ->save($forceInsert);

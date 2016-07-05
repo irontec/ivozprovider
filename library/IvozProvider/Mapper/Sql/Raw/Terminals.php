@@ -54,7 +54,6 @@ class Terminals extends MapperAbstract
                 'domain' => $model->getDomain(),
                 'disallow' => $model->getDisallow(),
                 'allow' => $model->getAllow(),
-                'direct_media' => $model->getDirectMedia(),
                 'direct_media_method' => $model->getDirectMediaMethod(),
                 'password' => $model->getPassword(),
                 'companyId' => $model->getCompanyId(),
@@ -577,7 +576,6 @@ class Terminals extends MapperAbstract
                   ->setDomain($data['domain'])
                   ->setDisallow($data['disallow'])
                   ->setAllow($data['allow'])
-                  ->setDirectMedia($data['direct_media'])
                   ->setDirectMediaMethod($data['direct_media_method'])
                   ->setPassword($data['password'])
                   ->setCompanyId($data['companyId'])
@@ -590,7 +588,6 @@ class Terminals extends MapperAbstract
                   ->setDomain($data->{'domain'})
                   ->setDisallow($data->{'disallow'})
                   ->setAllow($data->{'allow'})
-                  ->setDirectMedia($data->{'direct_media'})
                   ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setPassword($data->{'password'})
                   ->setCompanyId($data->{'companyId'})
@@ -604,7 +601,6 @@ class Terminals extends MapperAbstract
                   ->setDomain($data->getDomain())
                   ->setDisallow($data->getDisallow())
                   ->setAllow($data->getAllow())
-                  ->setDirectMedia($data->getDirectMedia())
                   ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setPassword($data->getPassword())
                   ->setCompanyId($data->getCompanyId())
