@@ -45,30 +45,27 @@ class Brands extends Raw\Brands
     {
         $pk = $model->getPrimaryKey();
         $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
-    
-        $proxies = array('proxyusers', 'proxytrunks');
-        foreach ($proxies as $proxy) {
-            $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='$proxy'");
-            if (empty($domains)) {
-                $domain = new \IvozProvider\Model\Domains();
-            } else {
-                $domain = $domains[0];
-            }
-    
-            $name = ($proxy == 'proxyusers') ? $model->getDomainUsers() : $model->getDomainTrunks();
-            $name = trim($name);
-            if (!$name) {
-                $domain->delete();
-                continue;
-            }
 
-            $domain->setDomain($name)
-                   ->setScope('brand')
-                   ->setPointsTo($proxy)
-                   ->setBrandId($pk)
-                   ->setDescription($model->getName() . " $proxy domain")
-                   ->save();
+        $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='proxytrunks'");
+        if (empty($domains)) {
+            $domain = new \IvozProvider\Model\Domains();
+        } else {
+            $domain = $domains[0];
         }
+
+        $name = $model->getDomainTrunks();
+        $name = trim($name);
+        if (!$name) {
+            $domain->delete();
+            continue;
+        }
+
+        $domain->setDomain($name)
+               ->setScope('brand')
+               ->setPointsTo('proxytrunks')
+               ->setBrandId($pk)
+               ->setDescription($model->getName() . " proxytrunks domain")
+               ->save();
     }
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
