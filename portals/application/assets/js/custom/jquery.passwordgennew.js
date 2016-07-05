@@ -4,11 +4,11 @@
         return;
     }
 
-    var __namespace__ = "custom.passwordgen";
+    var __namespace__ = "custom.passwordgennew";
 
     $.custom = $.custom || {};
 
-    $.widget("custom.passwordgen", $.klearmatrix.new,  {
+    $.widget("custom.passwordgennew", $.klearmatrix.new,  {
         options: {
             moduleName: 'new'
         },
@@ -64,6 +64,6 @@
         },
     });
 
-    $.widget.bridge("custom.passwordgen", $.custom.passwordgen);
+    $.widget.bridge("custom.passwordgennew", $.custom.passwordgennew);
 
 })(jQuery);

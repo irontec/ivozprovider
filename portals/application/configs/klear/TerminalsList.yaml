@@ -56,7 +56,7 @@ production:
       scripts:
         module: default
         name: jquery.passwordgennew.js
-      plugin: passwordgen
+      plugin: passwordgennew
       forcedValues:
         <<: *forcedCompany
       shortcutOption: N
