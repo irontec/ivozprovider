@@ -34,68 +34,63 @@ class Provision_IndexController extends Zend_Controller_Action
     public function templateAction()
     {
         
-        if( $_SERVER['SSL_CLIENT_CERT']) {
-            $terminalUrl = $this->getRequest()->getParam('requested_url');
-            
-            $path = $this->_getFilePath();
-            
-            $terminalMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
-            $terminalModel = $this->_searchGenericPattern($terminalMapper, $terminalUrl);
-            
-            if ( $terminalModel == null ) {
+       $terminalUrl = $this->getRequest()->getParam('requested_url');
+       
+       $path = $this->_getFilePath();
+       
+       $terminalMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
+       $terminalModel = $this->_searchGenericPattern($terminalMapper, $terminalUrl);
+       
+       if ( $terminalModel == null ) {
 
-                if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") {
-                    $this->_error('Trying to access using incorrect protocol', 'Forbidden', 403);
-                    return; 
-                }
+           if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") {
+               $this->_error('Trying to access using incorrect protocol', 'Forbidden', 403);
+               return; 
+           }
 
-                $data = $this->_searchSpecificPattern($terminalMapper, $terminalUrl);
-                if($data) {
-                    $terminalModel = $data['terminalModel'];
-                    $urlVariables = $data['urlVariables'];
-                    
-                    $userMapper = new \IvozProvider\Mapper\Sql\Users();
-                    
-                    foreach( $this->_allowedVariables as $key=>$variable){
-                        $mapper = new $variable['mapperName']();
-                        $model = $mapper->findOneByField($variable['field'], $urlVariables[$key]);
-                        if($model){
-                            if($model instanceof IvozProvider\Model\Terminals){
-                                $userModel = $userMapper->findOneByField('terminalId', $model->getId() );
-                                $this->view->user = $userModel;
-                                
-                                $companyModel = $model->getCompany();
-                                $this->view->company = $companyModel;
-                                
-                                $brandModel = $companyModel->getBrand();
-                                $this->view->brand = $brandModel;
-                                
-                                $this->view->terminal = $model;
+           $data = $this->_searchSpecificPattern($terminalMapper, $terminalUrl);
+           if($data) {
+               $terminalModel = $data['terminalModel'];
+               $urlVariables = $data['urlVariables'];
+               
+               $userMapper = new \IvozProvider\Mapper\Sql\Users();
+               
+               foreach( $this->_allowedVariables as $key=>$variable){
+                   $mapper = new $variable['mapperName']();
+                   $model = $mapper->findOneByField($variable['field'], $urlVariables[$key]);
+                   if($model){
+                       if($model instanceof IvozProvider\Model\Terminals){
+                           $userModel = $userMapper->findOneByField('terminalId', $model->getId() );
+                           $this->view->user = $userModel;
+                           
+                           $companyModel = $model->getCompany();
+                           $this->view->company = $companyModel;
+                           
+                           $brandModel = $companyModel->getBrand();
+                           $this->view->brand = $brandModel;
+                           
+                           $this->view->terminal = $model;
 
-                                $model->setLastProvisionDate(date("d-m-o h:i:s"));
-                                $model->save();
-                            }
-                            $this->view->$variable['viewName'] = $model;
-                        }
-                        else{
-                            $this->logger->log($variable['mapperName'] . $variable['field'] . ' = '. $urlVariables[$key] .' does not exist', Zend_Log::WARN);
-                        }
-                        
-                    }
-                    
-                    $this->_renderPage('specific', $path, $terminalModel);
-                }
-                else{
-                    $this->_error('TerminalModel not found', 'Not found', $errorNumber);
-                }
-            }
-            else{
-                $this->_renderPage('generic', $path, $terminalModel);
-            }
-        }
-        else{
-            $this->_error('Trying to access without certificate', 'Forbidden', 403);
-        }
+                           $model->setLastProvisionDate(date("d-m-o h:i:s"));
+                           $model->save();
+                       }
+                       $this->view->$variable['viewName'] = $model;
+                   }
+                   else{
+                       $this->logger->log($variable['mapperName'] . $variable['field'] . ' = '. $urlVariables[$key] .' does not exist', Zend_Log::WARN);
+                   }
+                   
+               }
+               
+               $this->_renderPage('specific', $path, $terminalModel);
+           }
+           else{
+               $this->_error('TerminalModel not found', 'Not found', "404");
+           }
+       }
+       else{
+           $this->_renderPage('generic', $path, $terminalModel);
+       }
     }
     
     protected function _error( $logMessage, $errorMesage, $errorNumber){
@@ -131,8 +126,10 @@ class Provision_IndexController extends Zend_Controller_Action
         foreach($terminalModels as $terminalModel){
             $urlPattern = $terminalModel->getSpecificUrlPattern();
             if( $urlPattern != ''){
+                /* FIXME the only thing that will be replaced in URL is mac. No need to loop over anything!!! */
                 foreach($this->_allowedVariables as $variable=>$attributes){
-                    $urlPattern = str_replace( '{' . $variable . '}', '(.*)', $urlPattern, $count);
+                    // Replace '{mac}' in url for a hexadecimal pattern
+                    $urlPattern = str_replace( '{' . $variable . '}', '([[:xdigit:]]+)', $urlPattern, $count);
                     if( $count > 0 ){
                         $urlVariables[$variable] = ''; 
                     }
