@@ -42,6 +42,7 @@ production:
               - description_es
               - regExp
             template: "%name_es% %description_es% (%regExp%)"
+          order: name_es
           relationProperty: TargetPattern
           filterClass: IvozProvider_Klear_Filter_Brand
     patterns:
