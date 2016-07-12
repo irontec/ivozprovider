@@ -19,9 +19,16 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
+      pattern: "^[a-zA-Z0-9_]+$"
       trim: both
       maxLength: 100
-      default: true
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Allowed characters are a-z, A-Z, 0-9 and underscore")
+        label: _("Need help?")
     disallow: 
       title: _('Disallowed codecs')
       type: text
