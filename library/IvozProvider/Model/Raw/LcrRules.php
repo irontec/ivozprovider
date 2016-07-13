@@ -91,7 +91,7 @@ class LcrRules extends ModelAbstract
      *
      * @var int
      */
-    protected $_targetPatternId;
+    protected $_routingPatternId;
 
     /**
      * Database var type int
@@ -102,18 +102,18 @@ class LcrRules extends ModelAbstract
 
 
     /**
+     * Parent relation LcrRules_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    protected $_RoutingPattern;
+
+    /**
      * Parent relation LcrRules_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
-
-    /**
-     * Parent relation LcrRules_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\TargetPatterns
-     */
-    protected $_TargetPattern;
 
     /**
      * Parent relation LcrRules_ibfk_3
@@ -141,7 +141,7 @@ class LcrRules extends ModelAbstract
         'enabled'=>'enabled',
         'tag'=>'tag',
         'description'=>'description',
-        'targetPatternId'=>'targetPatternId',
+        'routingPatternId'=>'routingPatternId',
         'outgoingRoutingId'=>'outgoingRoutingId',
     );
 
@@ -159,13 +159,13 @@ class LcrRules extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'LcrRulesIbfk4'=> array(
+                    'property' => 'RoutingPattern',
+                    'table_name' => 'RoutingPatterns',
+                ),
             'LcrRulesIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
-                ),
-            'LcrRulesIbfk2'=> array(
-                    'property' => 'TargetPattern',
-                    'table_name' => 'TargetPatterns',
                 ),
             'LcrRulesIbfk3'=> array(
                     'property' => 'OutgoingRouting',
@@ -540,33 +540,33 @@ class LcrRules extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\LcrRules
      */
-    public function setTargetPatternId($data)
+    public function setRoutingPatternId($data)
     {
 
-        if ($this->_targetPatternId != $data) {
-            $this->_logChange('targetPatternId');
+        if ($this->_routingPatternId != $data) {
+            $this->_logChange('routingPatternId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_targetPatternId = $data;
+            $this->_routingPatternId = $data;
 
         } else if (!is_null($data)) {
-            $this->_targetPatternId = (int) $data;
+            $this->_routingPatternId = (int) $data;
 
         } else {
-            $this->_targetPatternId = $data;
+            $this->_routingPatternId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column targetPatternId
+     * Gets column routingPatternId
      *
      * @return int
      */
-    public function getTargetPatternId()
+    public function getRoutingPatternId()
     {
-        return $this->_targetPatternId;
+        return $this->_routingPatternId;
     }
 
     /**
@@ -601,6 +601,57 @@ class LcrRules extends ModelAbstract
     public function getOutgoingRoutingId()
     {
         return $this->_outgoingRoutingId;
+    }
+
+    /**
+     * Sets parent relation RoutingPattern
+     *
+     * @param \IvozProvider\Model\Raw\RoutingPatterns $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setRoutingPattern(\IvozProvider\Model\Raw\RoutingPatterns $data)
+    {
+        $this->_RoutingPattern = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRoutingPatternId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRulesIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent RoutingPattern
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    public function getRoutingPattern($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RoutingPattern = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RoutingPattern;
     }
 
     /**
@@ -652,57 +703,6 @@ class LcrRules extends ModelAbstract
         }
 
         return $this->_Company;
-    }
-
-    /**
-     * Sets parent relation TargetPattern
-     *
-     * @param \IvozProvider\Model\Raw\TargetPatterns $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setTargetPattern(\IvozProvider\Model\Raw\TargetPatterns $data)
-    {
-        $this->_TargetPattern = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setTargetPatternId($primaryKey);
-        }
-
-        $this->_setLoaded('LcrRulesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent TargetPattern
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\TargetPatterns
-     */
-    public function getTargetPattern($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'LcrRulesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_TargetPattern = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_TargetPattern;
     }
 
     /**

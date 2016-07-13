@@ -27,6 +27,17 @@ class OutgoingRouting extends Raw\OutgoingRouting
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        if ($model->getType() == 'group') {
+            $model->setRoutingPatternId(null);
+        } elseif ($model->getType() == 'pattern') {
+            $model->setRoutingPatternGroupId(null);
+        } elseif ($model->getType() == 'fax') {
+            $model->setRoutingPatternId(null);
+            $model->setRoutingPatternGroupId(null);
+        } else {
+            throw new \Exception("Incorrect Outgoing Routing Type");
+        }
+
         $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
         $this->updateLCRPerOutgoingRouting($model);
         return $pk;
@@ -56,14 +67,14 @@ class OutgoingRouting extends Raw\OutgoingRouting
         }
 
         $lcrRules = array();
-        // Create LcrRule for each TargetPattern
+        // Create LcrRule for each RoutingPattern
         if ($outgoingRouting->getType() == 'group') {
-            foreach ($outgoingRouting->getTargetGroup()->getTargetGroupsRelPatterns() as $relPattern) {
-                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $relPattern->getTargetPattern());
+            foreach ($outgoingRouting->getRoutingPatternGroup()->getRoutingPatternGroupsRelPatterns() as $relPattern) {
+                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $relPattern->getRoutingPattern());
                 array_push($lcrRules, $lcrRule);
             }
         } elseif ($outgoingRouting->getType() == 'pattern') {
-                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $outgoingRouting->getTargetPattern());
+                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $outgoingRouting->getRoutingPattern());
                 array_push($lcrRules, $lcrRule);
         } elseif ($outgoingRouting->getType() == 'fax') {
                 $lcrRule = $this->_addLcrRuleForFax($outgoingRouting);
@@ -153,7 +164,7 @@ class OutgoingRouting extends Raw\OutgoingRouting
         $lcrRule->setCompanyId($model->getCompanyId())
                 ->setTag($pattern->getName())
                 ->setDescription($pattern->getDescription())
-                ->setTargetPatternId($pattern->getId())
+                ->setRoutingPatternId($pattern->getId())
                 ->setOutgoingRoutingId($model->getPrimaryKey())
                 ->setCondition($pattern->getRegExp())
                 ->save();

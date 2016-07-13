@@ -50,8 +50,8 @@ class OutgoingRouting extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'type' => $model->getType(),
-                'targetPatternId' => $model->getTargetPatternId(),
-                'targetGroupId' => $model->getTargetGroupId(),
+                'routingPatternId' => $model->getRoutingPatternId(),
+                'routingPatternGroupId' => $model->getRoutingPatternGroupId(),
                 'peeringContractId' => $model->getPeeringContractId(),
                 'priority' => $model->getPriority(),
                 'weight' => $model->getWeight(),
@@ -584,8 +584,8 @@ class OutgoingRouting extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setType($data['type'])
-                  ->setTargetPatternId($data['targetPatternId'])
-                  ->setTargetGroupId($data['targetGroupId'])
+                  ->setRoutingPatternId($data['routingPatternId'])
+                  ->setRoutingPatternGroupId($data['routingPatternGroupId'])
                   ->setPeeringContractId($data['peeringContractId'])
                   ->setPriority($data['priority'])
                   ->setWeight($data['weight'])
@@ -594,8 +594,8 @@ class OutgoingRouting extends MapperAbstract
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setType($data->{'type'})
-                  ->setTargetPatternId($data->{'targetPatternId'})
-                  ->setTargetGroupId($data->{'targetGroupId'})
+                  ->setRoutingPatternId($data->{'routingPatternId'})
+                  ->setRoutingPatternGroupId($data->{'routingPatternGroupId'})
                   ->setPeeringContractId($data->{'peeringContractId'})
                   ->setPriority($data->{'priority'})
                   ->setWeight($data->{'weight'})
@@ -605,8 +605,8 @@ class OutgoingRouting extends MapperAbstract
         } else if ($data instanceof \IvozProvider\Model\Raw\OutgoingRouting) {
             $entry->setId($data->getId())
                   ->setType($data->getType())
-                  ->setTargetPatternId($data->getTargetPatternId())
-                  ->setTargetGroupId($data->getTargetGroupId())
+                  ->setRoutingPatternId($data->getRoutingPatternId())
+                  ->setRoutingPatternGroupId($data->getRoutingPatternGroupId())
                   ->setPeeringContractId($data->getPeeringContractId())
                   ->setPriority($data->getPriority())
                   ->setWeight($data->getWeight())

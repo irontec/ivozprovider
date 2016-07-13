@@ -1,5 +1,5 @@
 production: 
-  class: \IvozProvider\Model\TargetGroups
+  class: \IvozProvider\Model\RoutingPatterns
   fields: 
     name: 
       title: ngettext('Name', 'Names', 1)
@@ -11,6 +11,11 @@ production:
       title: ngettext('Description', 'Descriptions', 1)
       type: text
       maxLength: 55
+    regExp: 
+      title: _('Reg exp')
+      type: text
+      required: true
+      maxLength: 80
     brandId: 
       title: _('Brand id')
       type: select

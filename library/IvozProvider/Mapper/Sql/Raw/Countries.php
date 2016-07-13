@@ -52,6 +52,8 @@ class Countries extends MapperAbstract
                 'code' => $model->getCode(),
                 'name_en' => $model->getNameEn(),
                 'name_es' => $model->getNameEs(),
+                'zone_en' => $model->getZoneEn(),
+                'zone_es' => $model->getZoneEs(),
                 'calling_code' => $model->getCallingCode(),
             );
         } else {
@@ -596,12 +598,16 @@ class Countries extends MapperAbstract
                   ->setCode($data['code'])
                   ->setNameEn($data['name_en'])
                   ->setNameEs($data['name_es'])
+                  ->setZoneEn($data['zone_en'])
+                  ->setZoneEs($data['zone_es'])
                   ->setCallingCode($data['calling_code']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCode($data->{'code'})
                   ->setNameEn($data->{'name_en'})
                   ->setNameEs($data->{'name_es'})
+                  ->setZoneEn($data->{'zone_en'})
+                  ->setZoneEs($data->{'zone_es'})
                   ->setCallingCode($data->{'calling_code'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Countries) {
@@ -609,6 +615,8 @@ class Countries extends MapperAbstract
                   ->setCode($data->getCode())
                   ->setNameEn($data->getNameEn())
                   ->setNameEs($data->getNameEs())
+                  ->setZoneEn($data->getZoneEn())
+                  ->setZoneEs($data->getZoneEs())
                   ->setCallingCode($data->getCallingCode());
 
         }

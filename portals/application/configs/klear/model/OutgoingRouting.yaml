@@ -11,25 +11,25 @@ production:
           'pattern':
             title: _('Pattern')
             visualFilter:
-              show: ["targetPatternId"]
-              hide: ["targetGroupId"]
+              show: ["routingPatternId"]
+              hide: ["routingPatternGroupId"]
           'group':
             title: _('Group')
             visualFilter:
-              show: ["targetGroupId" ]
-              hide: ["targetPatternId"]
+              show: ["routingPatternGroupId" ]
+              hide: ["routingPatternId"]
           'fax':
             title: _('Fax')
             visualFilter:
-              hide: ["targetPatternId","targetGroupId"]
+              hide: ["routingPatternId","routingPatternGroupId"]
       default: true
-    targetPatternId: 
+    routingPatternId: 
       title: _('Select destination pattern')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          mapperName: \IvozProvider\Mapper\Sql\RoutingPatterns
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
@@ -38,13 +38,13 @@ production:
               - regExp
             template: '%name% %description% (%regExp%)'
           order: name_es
-    targetGroupId: 
+    routingPatternGroupId: 
       title: _('Select destination group')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\TargetGroups
+          mapperName: \IvozProvider\Mapper\Sql\RoutingPatternGroups
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 

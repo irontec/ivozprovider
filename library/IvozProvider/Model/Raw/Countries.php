@@ -60,6 +60,28 @@ class Countries extends ModelAbstract
     protected $_nameEs;
 
     /**
+     * [ml]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_zone;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_zoneEn;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_zoneEs;
+
+    /**
      * Database var type int
      *
      * @var int
@@ -106,6 +128,9 @@ class Countries extends ModelAbstract
         'name'=>'name',
         'name_en'=>'nameEn',
         'name_es'=>'nameEs',
+        'zone'=>'zone',
+        'zone_en'=>'zoneEn',
+        'zone_es'=>'zoneEs',
         'calling_code'=>'callingCode',
     );
 
@@ -116,10 +141,12 @@ class Countries extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'name'=> array('ml'),
+            'zone'=> array('ml'),
         ));
 
         $this->setMultiLangColumnsList(array(
             'name'=>'Name',
+            'zone'=>'Zone',
         ));
 
         $this->setAvailableLangs(array('es', 'en'));
@@ -154,6 +181,8 @@ class Countries extends ModelAbstract
 
         $this->_defaultValues = array(
             'code' => '',
+            'zoneEn' => '',
+            'zoneEs' => '',
         );
 
         $this->_initFileObjects();
@@ -361,6 +390,114 @@ class Countries extends ModelAbstract
     public function getNameEs()
     {
         return $this->_nameEs;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setZone($data, $language = '')
+    {
+
+        $language = $this->_getCurrentLanguage($language);
+
+        $methodName = "setZone". ucfirst(str_replace('_', '', $language));
+        if (!method_exists($this, $methodName)) {
+
+            // new \Exception('Unavailable language');
+            $this->_zone = $data;
+            return $this;
+        }
+        $this->$methodName($data);
+        return $this;
+    }
+
+    /**
+     * Gets column zone
+     *
+     * @return string
+     */
+    public function getZone($language = '')
+    {
+        $language = $this->_getCurrentLanguage($language);
+
+        $methodName = "getZone". ucfirst(str_replace('_', '', $language));
+        if (!method_exists($this, $methodName)) {
+
+            // new \Exception('Unavailable language');
+            return $this->_zone;
+        }
+
+        return $this->$methodName();
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setZoneEn($data)
+    {
+
+        if ($this->_zoneEn != $data) {
+            $this->_logChange('zoneEn');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_zoneEn = $data;
+
+        } else if (!is_null($data)) {
+            $this->_zoneEn = (string) $data;
+
+        } else {
+            $this->_zoneEn = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column zone_en
+     *
+     * @return string
+     */
+    public function getZoneEn()
+    {
+        return $this->_zoneEn;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setZoneEs($data)
+    {
+
+        if ($this->_zoneEs != $data) {
+            $this->_logChange('zoneEs');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_zoneEs = $data;
+
+        } else if (!is_null($data)) {
+            $this->_zoneEs = (string) $data;
+
+        } else {
+            $this->_zoneEs = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column zone_es
+     *
+     * @return string
+     */
+    public function getZoneEs()
+    {
+        return $this->_zoneEs;
     }
 
     /**

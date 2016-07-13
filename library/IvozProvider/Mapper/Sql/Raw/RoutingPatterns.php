@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\LcrRules
+ * Data Mapper implementation for IvozProvider\Model\RoutingPatterns
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class LcrRules extends MapperAbstract
+class RoutingPatterns extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\LcrRules';
+    protected $_modelName = 'IvozProvider\\Model\\RoutingPatterns';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class LcrRules extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\LcrRules $model
+     * @param IvozProvider\Model\Raw\RoutingPatterns $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\LcrRules) {
+        if (!$model instanceof \IvozProvider\Model\Raw\RoutingPatterns) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\LcrRules object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\RoutingPatterns object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\LcrRules object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\RoutingPatterns object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,16 +49,12 @@ class LcrRules extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'companyId' => $model->getCompanyId(),
-                'prefix' => $model->getPrefix(),
-                'from_uri' => $model->getFromUri(),
-                'request_uri' => $model->getRequestUri(),
-                'stopper' => $model->getStopper(),
-                'enabled' => $model->getEnabled(),
-                'tag' => $model->getTag(),
-                'description' => $model->getDescription(),
-                'routingPatternId' => $model->getRoutingPatternId(),
-                'outgoingRoutingId' => $model->getOutgoingRoutingId(),
+                'name_en' => $model->getNameEn(),
+                'name_es' => $model->getNameEs(),
+                'description_en' => $model->getDescriptionEn(),
+                'description_es' => $model->getDescriptionEs(),
+                'regExp' => $model->getRegExp(),
+                'brandId' => $model->getBrandId(),
             );
         } else {
             $result = array();
@@ -97,12 +93,12 @@ class LcrRules extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns');
         }
 
         return $this->_dbTable;
@@ -111,17 +107,17 @@ class LcrRules extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\LcrRules $model The model to delete
+     * @param IvozProvider\Model\Raw\RoutingPatterns $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\LcrRules) {
+        if (!$model instanceof \IvozProvider\Model\Raw\RoutingPatterns) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\LcrRules object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\RoutingPatterns object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\LcrRules object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\RoutingPatterns object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -171,7 +167,7 @@ class LcrRules extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -219,7 +215,7 @@ class LcrRules extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -297,7 +293,7 @@ class LcrRules extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\LcrRules $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\RoutingPatterns $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -305,17 +301,17 @@ class LcrRules extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\LcrRules $model
+     * @param \IvozProvider\Model\Raw\RoutingPatterns $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\LcrRules $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\RoutingPatterns $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\LcrRules $model,
+    protected function _save(\IvozProvider\Model\Raw\RoutingPatterns $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -445,16 +441,44 @@ class LcrRules extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getLcrRuleTargets(null, null, true) !== null) {
-                    $lcrRuleTargets = $model->getLcrRuleTargets();
+                if ($model->getLcrRules(null, null, true) !== null) {
+                    $lcrRules = $model->getLcrRules();
 
-                    if (!is_array($lcrRuleTargets)) {
+                    if (!is_array($lcrRules)) {
 
-                        $lcrRuleTargets = array($lcrRuleTargets);
+                        $lcrRules = array($lcrRules);
                     }
 
-                    foreach ($lcrRuleTargets as $value) {
-                        $value->setRuleId($primaryKey)
+                    foreach ($lcrRules as $value) {
+                        $value->setRoutingPatternId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getOutgoingRouting(null, null, true) !== null) {
+                    $outgoingRouting = $model->getOutgoingRouting();
+
+                    if (!is_array($outgoingRouting)) {
+
+                        $outgoingRouting = array($outgoingRouting);
+                    }
+
+                    foreach ($outgoingRouting as $value) {
+                        $value->setRoutingPatternId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getRoutingPatternGroupsRelPatterns(null, null, true) !== null) {
+                    $routingPatternGroupsRelPatterns = $model->getRoutingPatternGroupsRelPatterns();
+
+                    if (!is_array($routingPatternGroupsRelPatterns)) {
+
+                        $routingPatternGroupsRelPatterns = array($routingPatternGroupsRelPatterns);
+                    }
+
+                    foreach ($routingPatternGroupsRelPatterns as $value) {
+                        $value->setRoutingPatternId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -543,13 +567,13 @@ class LcrRules extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\LcrRules|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\LcrRules The model with the data provided
+     * @param IvozProvider\Model\Raw\RoutingPatterns|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\RoutingPatterns The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\LcrRules();
+            $entry = new \IvozProvider\Model\RoutingPatterns();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -557,41 +581,29 @@ class LcrRules extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setCompanyId($data['companyId'])
-                  ->setPrefix($data['prefix'])
-                  ->setFromUri($data['from_uri'])
-                  ->setRequestUri($data['request_uri'])
-                  ->setStopper($data['stopper'])
-                  ->setEnabled($data['enabled'])
-                  ->setTag($data['tag'])
-                  ->setDescription($data['description'])
-                  ->setRoutingPatternId($data['routingPatternId'])
-                  ->setOutgoingRoutingId($data['outgoingRoutingId']);
+                  ->setNameEn($data['name_en'])
+                  ->setNameEs($data['name_es'])
+                  ->setDescriptionEn($data['description_en'])
+                  ->setDescriptionEs($data['description_es'])
+                  ->setRegExp($data['regExp'])
+                  ->setBrandId($data['brandId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setCompanyId($data->{'companyId'})
-                  ->setPrefix($data->{'prefix'})
-                  ->setFromUri($data->{'from_uri'})
-                  ->setRequestUri($data->{'request_uri'})
-                  ->setStopper($data->{'stopper'})
-                  ->setEnabled($data->{'enabled'})
-                  ->setTag($data->{'tag'})
-                  ->setDescription($data->{'description'})
-                  ->setRoutingPatternId($data->{'routingPatternId'})
-                  ->setOutgoingRoutingId($data->{'outgoingRoutingId'});
+                  ->setNameEn($data->{'name_en'})
+                  ->setNameEs($data->{'name_es'})
+                  ->setDescriptionEn($data->{'description_en'})
+                  ->setDescriptionEs($data->{'description_es'})
+                  ->setRegExp($data->{'regExp'})
+                  ->setBrandId($data->{'brandId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\LcrRules) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\RoutingPatterns) {
             $entry->setId($data->getId())
-                  ->setCompanyId($data->getCompanyId())
-                  ->setPrefix($data->getPrefix())
-                  ->setFromUri($data->getFromUri())
-                  ->setRequestUri($data->getRequestUri())
-                  ->setStopper($data->getStopper())
-                  ->setEnabled($data->getEnabled())
-                  ->setTag($data->getTag())
-                  ->setDescription($data->getDescription())
-                  ->setRoutingPatternId($data->getRoutingPatternId())
-                  ->setOutgoingRoutingId($data->getOutgoingRoutingId());
+                  ->setNameEn($data->getNameEn())
+                  ->setNameEs($data->getNameEs())
+                  ->setDescriptionEn($data->getDescriptionEn())
+                  ->setDescriptionEs($data->getDescriptionEs())
+                  ->setRegExp($data->getRegExp())
+                  ->setBrandId($data->getBrandId());
 
         }
 
@@ -608,11 +620,11 @@ class LcrRules extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'LcrRules');
+        $etag = $etags->findOneByField('table', 'RoutingPatterns');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('LcrRules');
+            $etag->setTable('RoutingPatterns');
         }
 
         $random = substr(

@@ -19,7 +19,7 @@
  */
 
 namespace IvozProvider\Model\Raw;
-class TargetPatterns extends ModelAbstract
+class RoutingPatterns extends ModelAbstract
 {
 
 
@@ -90,7 +90,7 @@ class TargetPatterns extends ModelAbstract
 
 
     /**
-     * Parent relation TargetPatterns_ibfk_1
+     * Parent relation RoutingPatterns_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
@@ -98,20 +98,28 @@ class TargetPatterns extends ModelAbstract
 
 
     /**
-     * Dependent relation PricingPlansRelTargetPatterns_ibfk_2
+     * Dependent relation LcrRules_ibfk_4
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns[]
+     * @var \IvozProvider\Model\Raw\LcrRules[]
      */
-    protected $_PricingPlansRelTargetPatterns;
+    protected $_LcrRules;
 
     /**
-     * Dependent relation kam_acc_cdrs_ibfk_2
+     * Dependent relation OutgoingRouting_ibfk_6
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\KamAccCdrs[]
+     * @var \IvozProvider\Model\Raw\OutgoingRouting[]
      */
-    protected $_KamAccCdrs;
+    protected $_OutgoingRouting;
+
+    /**
+     * Dependent relation RoutingPatternGroupsRelPatterns_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RoutingPatternGroupsRelPatterns[]
+     */
+    protected $_RoutingPatternGroupsRelPatterns;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -143,30 +151,38 @@ class TargetPatterns extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'TargetPatternsIbfk1'=> array(
+            'RoutingPatternsIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
                 ),
         ));
 
         $this->setDependentList(array(
-            'PricingPlansRelTargetPatternsIbfk2' => array(
-                    'property' => 'PricingPlansRelTargetPatterns',
-                    'table_name' => 'PricingPlansRelTargetPatterns',
+            'LcrRulesIbfk4' => array(
+                    'property' => 'LcrRules',
+                    'table_name' => 'LcrRules',
                 ),
-            'KamAccCdrsIbfk2' => array(
-                    'property' => 'KamAccCdrs',
-                    'table_name' => 'kam_acc_cdrs',
+            'OutgoingRoutingIbfk6' => array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
+                ),
+            'RoutingPatternGroupsRelPatternsIbfk1' => array(
+                    'property' => 'RoutingPatternGroupsRelPatterns',
+                    'table_name' => 'RoutingPatternGroupsRelPatterns',
                 ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
-            'PricingPlansRelTargetPatterns_ibfk_2'
+            'LcrRules_ibfk_4',
+            'OutgoingRouting_ibfk_6',
+            'RoutingPatternGroupsRelPatterns_ibfk_1'
         ));
 
 
 
         $this->_defaultValues = array(
+            'descriptionEn' => '',
+            'descriptionEs' => '',
         );
 
         $this->_initFileObjects();
@@ -203,7 +219,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setId($data)
     {
@@ -237,7 +253,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setName($data, $language = '')
     {
@@ -280,7 +296,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setNameEn($data)
     {
@@ -317,7 +333,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setNameEs($data)
     {
@@ -354,14 +370,11 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setDescription($data, $language = '')
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         $language = $this->_getCurrentLanguage($language);
 
         $methodName = "setDescription". ucfirst(str_replace('_', '', $language));
@@ -397,14 +410,11 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setDescriptionEn($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_descriptionEn != $data) {
             $this->_logChange('descriptionEn');
         }
@@ -434,14 +444,11 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setDescriptionEs($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_descriptionEs != $data) {
             $this->_logChange('descriptionEs');
         }
@@ -471,7 +478,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setRegExp($data)
     {
@@ -508,7 +515,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setBrandId($data)
     {
@@ -546,7 +553,7 @@ class TargetPatterns extends ModelAbstract
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
     public function setBrand(\IvozProvider\Model\Raw\Brands $data)
     {
@@ -561,7 +568,7 @@ class TargetPatterns extends ModelAbstract
             $this->setBrandId($primaryKey);
         }
 
-        $this->_setLoaded('TargetPatternsIbfk1');
+        $this->_setLoaded('RoutingPatternsIbfk1');
         return $this;
     }
 
@@ -572,7 +579,7 @@ class TargetPatterns extends ModelAbstract
      */
     public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'TargetPatternsIbfk1';
+        $fkName = 'RoutingPatternsIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -594,21 +601,21 @@ class TargetPatterns extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations PricingPlansRelTargetPatterns_ibfk_2
+     * Sets dependent relations LcrRules_ibfk_4
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
-    public function setPricingPlansRelTargetPatterns(array $data, $deleteOrphans = false)
+    public function setLcrRules(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_PricingPlansRelTargetPatterns === null) {
+            if ($this->_LcrRules === null) {
 
-                $this->getPricingPlansRelTargetPatterns();
+                $this->getLcrRules();
             }
 
-            $oldRelations = $this->_PricingPlansRelTargetPatterns;
+            $oldRelations = $this->_LcrRules;
 
             if (is_array($oldRelations)) {
 
@@ -632,39 +639,39 @@ class TargetPatterns extends ModelAbstract
             }
         }
 
-        $this->_PricingPlansRelTargetPatterns = array();
+        $this->_LcrRules = array();
 
         foreach ($data as $object) {
-            $this->addPricingPlansRelTargetPatterns($object);
+            $this->addLcrRules($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations PricingPlansRelTargetPatterns_ibfk_2
+     * Sets dependent relations LcrRules_ibfk_4
      *
-     * @param \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @param \IvozProvider\Model\Raw\LcrRules $data
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
-    public function addPricingPlansRelTargetPatterns(\IvozProvider\Model\Raw\PricingPlansRelTargetPatterns $data)
+    public function addLcrRules(\IvozProvider\Model\Raw\LcrRules $data)
     {
-        $this->_PricingPlansRelTargetPatterns[] = $data;
-        $this->_setLoaded('PricingPlansRelTargetPatternsIbfk2');
+        $this->_LcrRules[] = $data;
+        $this->_setLoaded('LcrRulesIbfk4');
         return $this;
     }
 
     /**
-     * Gets dependent PricingPlansRelTargetPatterns_ibfk_2
+     * Gets dependent LcrRules_ibfk_4
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns
+     * @return array The array of \IvozProvider\Model\Raw\LcrRules
      */
-    public function getPricingPlansRelTargetPatterns($where = null, $orderBy = null, $avoidLoading = false)
+    public function getLcrRules($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'PricingPlansRelTargetPatternsIbfk2';
+        $fkName = 'LcrRulesIbfk4';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -676,29 +683,29 @@ class TargetPatterns extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_PricingPlansRelTargetPatterns = $related;
+            $this->_LcrRules = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_PricingPlansRelTargetPatterns;
+        return $this->_LcrRules;
     }
 
     /**
-     * Sets dependent relations kam_acc_cdrs_ibfk_2
+     * Sets dependent relations OutgoingRouting_ibfk_6
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\KamAccCdrs
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingRouting
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
-    public function setKamAccCdrs(array $data, $deleteOrphans = false)
+    public function setOutgoingRouting(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_KamAccCdrs === null) {
+            if ($this->_OutgoingRouting === null) {
 
-                $this->getKamAccCdrs();
+                $this->getOutgoingRouting();
             }
 
-            $oldRelations = $this->_KamAccCdrs;
+            $oldRelations = $this->_OutgoingRouting;
 
             if (is_array($oldRelations)) {
 
@@ -722,39 +729,39 @@ class TargetPatterns extends ModelAbstract
             }
         }
 
-        $this->_KamAccCdrs = array();
+        $this->_OutgoingRouting = array();
 
         foreach ($data as $object) {
-            $this->addKamAccCdrs($object);
+            $this->addOutgoingRouting($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations kam_acc_cdrs_ibfk_2
+     * Sets dependent relations OutgoingRouting_ibfk_6
      *
-     * @param \IvozProvider\Model\Raw\KamAccCdrs $data
-     * @return \IvozProvider\Model\Raw\TargetPatterns
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
      */
-    public function addKamAccCdrs(\IvozProvider\Model\Raw\KamAccCdrs $data)
+    public function addOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
     {
-        $this->_KamAccCdrs[] = $data;
-        $this->_setLoaded('KamAccCdrsIbfk2');
+        $this->_OutgoingRouting[] = $data;
+        $this->_setLoaded('OutgoingRoutingIbfk6');
         return $this;
     }
 
     /**
-     * Gets dependent kam_acc_cdrs_ibfk_2
+     * Gets dependent OutgoingRouting_ibfk_6
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\KamAccCdrs
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingRouting
      */
-    public function getKamAccCdrs($where = null, $orderBy = null, $avoidLoading = false)
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'KamAccCdrsIbfk2';
+        $fkName = 'OutgoingRoutingIbfk6';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -766,17 +773,107 @@ class TargetPatterns extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_KamAccCdrs = $related;
+            $this->_OutgoingRouting = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_KamAccCdrs;
+        return $this->_OutgoingRouting;
+    }
+
+    /**
+     * Sets dependent relations RoutingPatternGroupsRelPatterns_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RoutingPatternGroupsRelPatterns
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    public function setRoutingPatternGroupsRelPatterns(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RoutingPatternGroupsRelPatterns === null) {
+
+                $this->getRoutingPatternGroupsRelPatterns();
+            }
+
+            $oldRelations = $this->_RoutingPatternGroupsRelPatterns;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RoutingPatternGroupsRelPatterns = array();
+
+        foreach ($data as $object) {
+            $this->addRoutingPatternGroupsRelPatterns($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations RoutingPatternGroupsRelPatterns_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\RoutingPatternGroupsRelPatterns $data
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    public function addRoutingPatternGroupsRelPatterns(\IvozProvider\Model\Raw\RoutingPatternGroupsRelPatterns $data)
+    {
+        $this->_RoutingPatternGroupsRelPatterns[] = $data;
+        $this->_setLoaded('RoutingPatternGroupsRelPatternsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent RoutingPatternGroupsRelPatterns_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RoutingPatternGroupsRelPatterns
+     */
+    public function getRoutingPatternGroupsRelPatterns($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RoutingPatternGroupsRelPatternsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RoutingPatternGroupsRelPatterns = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RoutingPatternGroupsRelPatterns;
     }
 
     /**
      * Returns the mapper class for this model
      *
-     * @return IvozProvider\Mapper\Sql\TargetPatterns
+     * @return IvozProvider\Mapper\Sql\RoutingPatterns
      */
     public function getMapper()
     {
@@ -784,9 +881,9 @@ class TargetPatterns extends ModelAbstract
 
             \Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(true);
 
-            if (class_exists('\IvozProvider\Mapper\Sql\TargetPatterns')) {
+            if (class_exists('\IvozProvider\Mapper\Sql\RoutingPatterns')) {
 
-                $this->setMapper(new \IvozProvider\Mapper\Sql\TargetPatterns);
+                $this->setMapper(new \IvozProvider\Mapper\Sql\RoutingPatterns);
 
             } else {
 
@@ -802,15 +899,15 @@ class TargetPatterns extends ModelAbstract
     /**
      * Returns the validator class for this model
      *
-     * @return null | \IvozProvider\Model\Validator\TargetPatterns
+     * @return null | \IvozProvider\Model\Validator\RoutingPatterns
      */
     public function getValidator()
     {
         if ($this->_validator === null) {
 
-            if (class_exists('\IvozProvider\\Validator\TargetPatterns')) {
+            if (class_exists('\IvozProvider\\Validator\RoutingPatterns')) {
 
-                $this->setValidator(new \IvozProvider\Validator\TargetPatterns);
+                $this->setValidator(new \IvozProvider\Validator\RoutingPatterns);
             }
         }
 
@@ -825,7 +922,7 @@ class TargetPatterns extends ModelAbstract
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-     * @see \Mapper\Sql\TargetPatterns::delete
+     * @see \Mapper\Sql\RoutingPatterns::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()

@@ -19,7 +19,8 @@
 #include PricingPlansList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include PricingPlansRelTargetPatternsList.yaml
-#include TargetGroupsList.yaml
+#include RoutingPatternGroupsList.yaml
+#include RoutingPatternsList.yaml
 #include TargetPatternsList.yaml
 #include TransformationRulesetGroupsTrunksList.yaml
 #include KamAccCdrsList.yaml
@@ -62,7 +63,8 @@ production:
             pricingPlansList_screen: true
             pricingPlansRelCompaniesList_screen: true
             pricingPlansRelTargetPatternsList_screen: true
-            targetGroupsList_screen: true
+            routingPatternGroupsList_screen: true
+            routingPatternsList_screen: true
             targetPatternsList_screen: true
             transformationRulesetGroupsTrunksList_screen: true
             kamAccCdrsList_screen: true
@@ -342,17 +344,30 @@ production:
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
       filterField: brandId
 
-    #targetGroups: 
-    targetGroupsList_screen: 
-      <<: *targetGroupsList_screenLink
+    #routingPatternGroups: 
+    routingPatternGroupsList_screen: 
+      <<: *routingPatternGroupsList_screenLink
       filterField: brandId
       parentOptionCustomizer: 
         - recordCount
-    targetGroupsNew_screen: 
-      <<: *targetGroupsNew_screenLink
+    routingPatternGroupsNew_screen: 
+      <<: *routingPatternGroupsNew_screenLink
       filterField: brandId
-    targetGroupsEdit_screen: 
-      <<: *targetGroupsEdit_screenLink
+    routingPatternGroupsEdit_screen: 
+      <<: *routingPatternGroupsEdit_screenLink
+      filterField: brandId
+
+    #routingPatterns: 
+    routingPatternsList_screen: 
+      <<: *routingPatternsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    routingPatternsNew_screen: 
+      <<: *routingPatternsNew_screenLink
+      filterField: brandId
+    routingPatternsEdit_screen: 
+      <<: *routingPatternsEdit_screenLink
       filterField: brandId
 
     #targetPatterns: 
@@ -456,8 +471,10 @@ production:
     <<: *pricingPlansRelCompanies_dialogsLink
   # pricingPlansRelTargetPatterns dialogs: 
     <<: *pricingPlansRelTargetPatterns_dialogsLink
-  # targetGroups dialogs: 
-    <<: *targetGroups_dialogsLink
+  # routingPatternGroups dialogs: 
+    <<: *routingPatternGroups_dialogsLink
+  # routingPatterns dialogs: 
+    <<: *routingPatterns_dialogsLink
   # targetPatterns dialogs: 
     <<: *targetPatterns_dialogsLink
   # transformationRulesetGroupsTrunks dialogs: 

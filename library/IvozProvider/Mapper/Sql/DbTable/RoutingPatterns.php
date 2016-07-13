@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for OutgoingRouting
+ * Table definition for RoutingPatterns
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -19,14 +19,14 @@
  */
 
 namespace IvozProvider\Mapper\Sql\DbTable;
-class OutgoingRouting extends TableAbstract
+class RoutingPatterns extends TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'OutgoingRouting';
+    protected $_name = 'RoutingPatterns';
 
     /**
      * $_id - this is the primary key name
@@ -35,47 +35,27 @@ class OutgoingRouting extends TableAbstract
      */
     protected $_id = 'id';
 
-    protected $_rowClass = 'IvozProvider\\Model\\OutgoingRouting';
-    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\OutgoingRouting';
+    protected $_rowClass = 'IvozProvider\\Model\\RoutingPatterns';
+    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\RoutingPatterns';
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'OutgoingRoutingIbfk7' => array(
-            'columns' => 'routingPatternGroupId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatternGroups',
-            'refColumns' => 'id'
-        ),
-        'OutgoingRoutingIbfk1' => array(
+        'RoutingPatternsIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
-            'refColumns' => 'id'
-        ),
-        'OutgoingRoutingIbfk2' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
-        'OutgoingRoutingIbfk5' => array(
-            'columns' => 'peeringContractId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
-            'refColumns' => 'id'
-        ),
-        'OutgoingRoutingIbfk6' => array(
-            'columns' => 'routingPatternId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
             'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrGateways',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatternGroupsRelPatterns'
     );
     protected $_metadata = array (
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
+	    'TABLE_NAME' => 'RoutingPatterns',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -89,16 +69,16 @@ class OutgoingRouting extends TableAbstract
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => true,
 	  ),
-	  'type' => 
+	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'type',
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 2,
-	    'DATA_TYPE' => 'enum(\'pattern\',\'group\',\'fax\')',
-	    'DEFAULT' => 'group',
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '55',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -106,104 +86,104 @@ class OutgoingRouting extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'routingPatternId' => 
+	  'name_en' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'routingPatternId',
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'name_en',
 	    'COLUMN_POSITION' => 3,
-	    'DATA_TYPE' => 'int',
+	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '55',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'routingPatternGroupId' => 
+	  'name_es' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'routingPatternGroupId',
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'name_es',
 	    'COLUMN_POSITION' => 4,
-	    'DATA_TYPE' => 'int',
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '55',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'description' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'description',
+	    'COLUMN_POSITION' => 5,
+	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '55',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'peeringContractId' => 
+	  'description_en' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'peeringContractId',
-	    'COLUMN_POSITION' => 5,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'priority' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'priority',
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'description_en',
 	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'tinyint',
-	    'DEFAULT' => NULL,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
 	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '55',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'weight' => 
+	  'description_es' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'weight',
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'description_es',
 	    'COLUMN_POSITION' => 7,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => '1',
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
 	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '55',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'companyId' => 
+	  'regExp' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
-	    'COLUMN_NAME' => 'companyId',
+	    'TABLE_NAME' => 'RoutingPatterns',
+	    'COLUMN_NAME' => 'regExp',
 	    'COLUMN_POSITION' => 8,
-	    'DATA_TYPE' => 'int',
+	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '80',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
@@ -211,7 +191,7 @@ class OutgoingRouting extends TableAbstract
 	  'brandId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'OutgoingRouting',
+	    'TABLE_NAME' => 'RoutingPatterns',
 	    'COLUMN_NAME' => 'brandId',
 	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',

@@ -49,13 +49,13 @@ production:
       type: text
       defaultValue: 
       maxLength: 500
-    targetPatternId: 
-      title: _('Target pattern id')
+    routingPatternId: 
+      title: _('Routing pattern id')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          mapperName: \IvozProvider\Mapper\Sql\RoutingPatterns
           fieldName: 
             fields: 
               - name

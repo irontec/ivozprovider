@@ -302,12 +302,20 @@ class Brands extends ModelAbstract
     protected $_PricingPlansRelTargetPatterns;
 
     /**
-     * Dependent relation TargetGroups_ibfk_1
+     * Dependent relation RoutingPatternGroups_ibfk_1
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\TargetGroups[]
+     * @var \IvozProvider\Model\Raw\RoutingPatternGroups[]
      */
-    protected $_TargetGroups;
+    protected $_RoutingPatternGroups;
+
+    /**
+     * Dependent relation RoutingPatterns_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RoutingPatterns[]
+     */
+    protected $_RoutingPatterns;
 
     /**
      * Dependent relation TargetPatterns_ibfk_1
@@ -461,9 +469,13 @@ class Brands extends ModelAbstract
                     'property' => 'PricingPlansRelTargetPatterns',
                     'table_name' => 'PricingPlansRelTargetPatterns',
                 ),
-            'TargetGroupsIbfk1' => array(
-                    'property' => 'TargetGroups',
-                    'table_name' => 'TargetGroups',
+            'RoutingPatternGroupsIbfk1' => array(
+                    'property' => 'RoutingPatternGroups',
+                    'table_name' => 'RoutingPatternGroups',
+                ),
+            'RoutingPatternsIbfk1' => array(
+                    'property' => 'RoutingPatterns',
+                    'table_name' => 'RoutingPatterns',
                 ),
             'TargetPatternsIbfk1' => array(
                     'property' => 'TargetPatterns',
@@ -2958,21 +2970,21 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations TargetGroups_ibfk_1
+     * Sets dependent relations RoutingPatternGroups_ibfk_1
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\TargetGroups
+     * @param array $data An array of \IvozProvider\Model\Raw\RoutingPatternGroups
      * @return \IvozProvider\Model\Raw\Brands
      */
-    public function setTargetGroups(array $data, $deleteOrphans = false)
+    public function setRoutingPatternGroups(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_TargetGroups === null) {
+            if ($this->_RoutingPatternGroups === null) {
 
-                $this->getTargetGroups();
+                $this->getRoutingPatternGroups();
             }
 
-            $oldRelations = $this->_TargetGroups;
+            $oldRelations = $this->_RoutingPatternGroups;
 
             if (is_array($oldRelations)) {
 
@@ -2996,39 +3008,39 @@ class Brands extends ModelAbstract
             }
         }
 
-        $this->_TargetGroups = array();
+        $this->_RoutingPatternGroups = array();
 
         foreach ($data as $object) {
-            $this->addTargetGroups($object);
+            $this->addRoutingPatternGroups($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations TargetGroups_ibfk_1
+     * Sets dependent relations RoutingPatternGroups_ibfk_1
      *
-     * @param \IvozProvider\Model\Raw\TargetGroups $data
+     * @param \IvozProvider\Model\Raw\RoutingPatternGroups $data
      * @return \IvozProvider\Model\Raw\Brands
      */
-    public function addTargetGroups(\IvozProvider\Model\Raw\TargetGroups $data)
+    public function addRoutingPatternGroups(\IvozProvider\Model\Raw\RoutingPatternGroups $data)
     {
-        $this->_TargetGroups[] = $data;
-        $this->_setLoaded('TargetGroupsIbfk1');
+        $this->_RoutingPatternGroups[] = $data;
+        $this->_setLoaded('RoutingPatternGroupsIbfk1');
         return $this;
     }
 
     /**
-     * Gets dependent TargetGroups_ibfk_1
+     * Gets dependent RoutingPatternGroups_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\TargetGroups
+     * @return array The array of \IvozProvider\Model\Raw\RoutingPatternGroups
      */
-    public function getTargetGroups($where = null, $orderBy = null, $avoidLoading = false)
+    public function getRoutingPatternGroups($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'TargetGroupsIbfk1';
+        $fkName = 'RoutingPatternGroupsIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -3040,11 +3052,101 @@ class Brands extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_TargetGroups = $related;
+            $this->_RoutingPatternGroups = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_TargetGroups;
+        return $this->_RoutingPatternGroups;
+    }
+
+    /**
+     * Sets dependent relations RoutingPatterns_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RoutingPatterns
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setRoutingPatterns(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RoutingPatterns === null) {
+
+                $this->getRoutingPatterns();
+            }
+
+            $oldRelations = $this->_RoutingPatterns;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RoutingPatterns = array();
+
+        foreach ($data as $object) {
+            $this->addRoutingPatterns($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations RoutingPatterns_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\RoutingPatterns $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addRoutingPatterns(\IvozProvider\Model\Raw\RoutingPatterns $data)
+    {
+        $this->_RoutingPatterns[] = $data;
+        $this->_setLoaded('RoutingPatternsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent RoutingPatterns_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    public function getRoutingPatterns($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RoutingPatternsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RoutingPatterns = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RoutingPatterns;
     }
 
     /**

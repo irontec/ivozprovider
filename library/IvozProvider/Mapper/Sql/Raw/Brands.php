@@ -715,15 +715,29 @@ class Brands extends MapperAbstract
                     }
                 }
 
-                if ($model->getTargetGroups(null, null, true) !== null) {
-                    $targetGroups = $model->getTargetGroups();
+                if ($model->getRoutingPatternGroups(null, null, true) !== null) {
+                    $routingPatternGroups = $model->getRoutingPatternGroups();
 
-                    if (!is_array($targetGroups)) {
+                    if (!is_array($routingPatternGroups)) {
 
-                        $targetGroups = array($targetGroups);
+                        $routingPatternGroups = array($routingPatternGroups);
                     }
 
-                    foreach ($targetGroups as $value) {
+                    foreach ($routingPatternGroups as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getRoutingPatterns(null, null, true) !== null) {
+                    $routingPatterns = $model->getRoutingPatterns();
+
+                    if (!is_array($routingPatterns)) {
+
+                        $routingPatterns = array($routingPatterns);
+                    }
+
+                    foreach ($routingPatterns as $value) {
                         $value->setBrandId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

@@ -55,10 +55,11 @@ mappers:
   - &ProxyTrunks {mapper: \IvozProvider\Mapper\Sql\ProxyTrunks, modelFile: ProxyTrunks}
   - &ProxyUsers {mapper: \IvozProvider\Mapper\Sql\ProxyUsers, modelFile: ProxyUsers}
   - &Recordings {mapper: \IvozProvider\Mapper\Sql\Recordings, modelFile: Recordings}
+  - &RoutingPatternGroups {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroups, modelFile: RoutingPatternGroups}
+  - &RoutingPatternGroupsRelPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroupsRelPatterns, modelFile: RoutingPatternGroupsRelPatterns}
+  - &RoutingPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatterns, modelFile: RoutingPatterns}
   - &Schedules {mapper: \IvozProvider\Mapper\Sql\Schedules, modelFile: Schedules}
   - &Services {mapper: \IvozProvider\Mapper\Sql\Services, modelFile: Services}
-  - &TargetGroups {mapper: \IvozProvider\Mapper\Sql\TargetGroups, modelFile: TargetGroups}
-  - &TargetGroupsRelPatterns {mapper: \IvozProvider\Mapper\Sql\TargetGroupsRelPatterns, modelFile: TargetGroupsRelPatterns}
   - &TargetPatterns {mapper: \IvozProvider\Mapper\Sql\TargetPatterns, modelFile: TargetPatterns}
   - &TerminalManufacturers {mapper: \IvozProvider\Mapper\Sql\TerminalManufacturers, modelFile: TerminalManufacturers}
   - &TerminalModels {mapper: \IvozProvider\Mapper\Sql\TerminalModels, modelFile: TerminalModels}

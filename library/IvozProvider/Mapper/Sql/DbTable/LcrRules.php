@@ -40,14 +40,14 @@ class LcrRules extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'LcrRulesIbfk4' => array(
+            'columns' => 'routingPatternId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
+            'refColumns' => 'id'
+        ),
         'LcrRulesIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
-        'LcrRulesIbfk2' => array(
-            'columns' => 'targetPatternId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\TargetPatterns',
             'refColumns' => 'id'
         ),
         'LcrRulesIbfk3' => array(
@@ -213,11 +213,11 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'targetPatternId' => 
+	  'routingPatternId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'targetPatternId',
+	    'COLUMN_NAME' => 'routingPatternId',
 	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,

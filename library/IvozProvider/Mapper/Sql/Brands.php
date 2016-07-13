@@ -27,9 +27,15 @@ class Brands extends Raw\Brands
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        $isNew = !$model->getPrimaryKey();
+
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
         $this->_updateDomains($model);
+
+        if ($isNew) {
+            $this->_createDefaultRoutes($model);
+        }
 
         try {
             $this->_sendXmlRcp();
@@ -39,6 +45,39 @@ class Brands extends Raw\Brands
         }
 
         return $pk;
+    }
+
+    protected function _createDefaultRoutes($model)
+    {
+        $routingPatternGroupsMapper = new \IvozProvider\Mapper\Sql\RoutingPatternGroups();
+
+        $countriesMapper = new \IvozProvider\Mapper\Sql\Countries();
+        $countries = $countriesMapper->fetchAll();
+
+        foreach ($countries as $country) {
+            $routingPattern = new \IvozProvider\Model\RoutingPatterns();
+            $routingPattern->setNameEs($country->getNameEs())
+                           ->setNameEn($country->getNameEn())
+                           ->setRegExp($country->getCallingCode())
+                           ->setBrandId($model->getPrimaryKey())
+                           ->save();
+            if ($country->getZone()) {
+                $routingPatternGroups = $routingPatternGroupsMapper->fetchList("brandId=" . $model->getPrimaryKey() . " AND name='" . $country->getZone() . "'");
+                if (empty($routingPatternGroups)) {
+                    $routingPatternGroup = new \IvozProvider\Model\RoutingPatternGroups();
+                    $routingPatternGroup->setName($country->getZone())
+                                        ->setBrandId($model->getPrimaryKey())
+                                        ->save();
+                } else {
+                    $routingPatternGroup = $routingPatternGroups[0];
+                }
+
+                $routingPatternGroupsRelPatterns = new \IvozProvider\Model\RoutingPatternGroupsRelPatterns();
+                $routingPatternGroupsRelPatterns->setRoutingPatternId($routingPattern->getPrimaryKey())
+                                                ->setRoutingPatternGroupid($routingPatternGroup->getPrimaryKey())
+                                                ->save();
+            }
+        }
     }
 
     protected function _updateDomains($model)
@@ -57,7 +96,7 @@ class Brands extends Raw\Brands
         $name = trim($name);
         if (!$name) {
             $domain->delete();
-            continue;
+            return;
         }
 
         $domain->setDomain($name)

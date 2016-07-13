@@ -11,6 +11,10 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       maxLength: 100
+    zone: 
+      title: _('Zone')
+      type: text
+      maxLength: 55
     calling_code: 
       title: _('Calling code')
       type: number

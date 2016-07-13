@@ -12,26 +12,26 @@ production:
           'group': _('group')
           'fax': _('fax')
       default: true
-    targetPatternId: 
-      title: _('Target pattern id')
+    routingPatternId: 
+      title: _('Routing pattern id')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          mapperName: \IvozProvider\Mapper\Sql\RoutingPatterns
           fieldName: 
             fields: 
               - name
             template: '%name%'
           order: name_${lang}
         'null': _("Unasigned")
-    targetGroupId: 
-      title: _('Target group id')
+    routingPatternGroupId: 
+      title: _('Routing pattern group id')
       type: select
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\TargetGroups
+          mapperName: \IvozProvider\Mapper\Sql\RoutingPatternGroups
           fieldName: 
             fields: 
               - name

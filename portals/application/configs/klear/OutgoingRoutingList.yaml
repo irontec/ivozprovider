@@ -19,14 +19,14 @@ production:
           companyId: true
           type: true
           target: true
-          targetPatternId: true
-          targetGroupId: true
+          routingPatternId: true
+          routingPatternGroupId: true
           peeringContractId: true
           priority: true
           weight: true
         blacklist:
-          targetPatternId: true
-          targetGroupId: true
+          routingPatternId: true
+          routingPatternGroupId: true
         options: 
           title: _("Options")
           screens: 
@@ -62,8 +62,8 @@ production:
           label: _("Call destination")
           fields:
             type: 5
-            targetPatternId: 5
-            targetGroupId: 5
+            routingPatternId: 5
+            routingPatternGroupId: 5
         group2:
           colsPerRow: 12
           label: _("Outgoing route")
