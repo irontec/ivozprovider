@@ -78,7 +78,7 @@ class Languages extends ModelAbstract
     protected $_Companies;
 
     /**
-     * Dependent relation Users_ibfk_15
+     * Dependent relation Users_ibfk_13
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\Users[]
@@ -120,7 +120,7 @@ class Languages extends ModelAbstract
                     'property' => 'Companies',
                     'table_name' => 'Companies',
                 ),
-            'UsersIbfk15' => array(
+            'UsersIbfk13' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
                 ),
@@ -530,7 +530,7 @@ class Languages extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Users_ibfk_15
+     * Sets dependent relations Users_ibfk_13
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Users
      * @return \IvozProvider\Model\Raw\Languages
@@ -578,7 +578,7 @@ class Languages extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Users_ibfk_15
+     * Sets dependent relations Users_ibfk_13
      *
      * @param \IvozProvider\Model\Raw\Users $data
      * @return \IvozProvider\Model\Raw\Languages
@@ -586,12 +586,12 @@ class Languages extends ModelAbstract
     public function addUsers(\IvozProvider\Model\Raw\Users $data)
     {
         $this->_Users[] = $data;
-        $this->_setLoaded('UsersIbfk15');
+        $this->_setLoaded('UsersIbfk13');
         return $this;
     }
 
     /**
-     * Gets dependent Users_ibfk_15
+     * Gets dependent Users_ibfk_13
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -600,7 +600,7 @@ class Languages extends ModelAbstract
      */
     public function getUsers($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'UsersIbfk15';
+        $fkName = 'UsersIbfk13';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

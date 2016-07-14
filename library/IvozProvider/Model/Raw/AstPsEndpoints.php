@@ -388,9 +388,6 @@ class AstPsEndpoints extends ModelAbstract
     public function setAors($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_aors != $data) {
             $this->_logChange('aors');
         }

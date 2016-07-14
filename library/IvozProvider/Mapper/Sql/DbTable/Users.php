@@ -40,6 +40,11 @@ class Users extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'UsersIbfk1' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
         'UsersIbfk10' => array(
             'columns' => 'callACLId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
@@ -55,12 +60,7 @@ class Users extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
             'refColumns' => 'id'
         ),
-        'UsersIbfk14' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk15' => array(
+        'UsersIbfk13' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'

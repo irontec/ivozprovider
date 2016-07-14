@@ -40,6 +40,11 @@ class Extensions extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'ExtensionsIbfk5' => array(
+            'columns' => 'conferenceRoomId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
+            'refColumns' => 'id'
+        ),
         'ExtensionsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -58,11 +63,6 @@ class Extensions extends TableAbstract
         'ExtensionsIbfk4' => array(
             'columns' => 'huntGroupId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroups',
-            'refColumns' => 'id'
-        ),
-        'ExtensionsIbfk5' => array(
-            'columns' => 'conferenceRoomId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
             'refColumns' => 'id'
         )
     );

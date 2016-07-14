@@ -1,3 +1,5 @@
+/*!40101 SET NAMES latin1 */;
+/*!40101 SET character_set_client = latin1 */;
 UPDATE Countries SET name_es='Afganistán', name_en='Afghanistan', calling_code='93' WHERE code='AF';
 UPDATE Countries SET name_es='Albania', name_en='Albania', calling_code='355' WHERE code='AL';
 UPDATE Countries SET name_es='Alemania', name_en='Germany', calling_code='49' WHERE code='DE';

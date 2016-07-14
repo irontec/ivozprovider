@@ -1,3 +1,5 @@
+/*!40101 SET NAMES latin1 */;
+/*!40101 SET character_set_client = latin1 */;
 UPDATE Countries SET zone_es='Europa', zone_en='Europe' WHERE code='AD';
 UPDATE Countries SET zone_es='Asia', zone_en='Asia' WHERE code='AE';
 UPDATE Countries SET zone_es='Asia', zone_en='Asia' WHERE code='AF';

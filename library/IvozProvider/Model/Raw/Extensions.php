@@ -89,6 +89,13 @@ class Extensions extends ModelAbstract
 
 
     /**
+     * Parent relation Extensions_ibfk_5
+     *
+     * @var \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    protected $_ConferenceRoom;
+
+    /**
      * Parent relation Extensions_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -115,13 +122,6 @@ class Extensions extends ModelAbstract
      * @var \IvozProvider\Model\Raw\HuntGroups
      */
     protected $_HuntGroup;
-
-    /**
-     * Parent relation Extensions_ibfk_5
-     *
-     * @var \IvozProvider\Model\Raw\ConferenceRooms
-     */
-    protected $_ConferenceRoom;
 
 
     /**
@@ -222,6 +222,10 @@ class Extensions extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'ExtensionsIbfk5'=> array(
+                    'property' => 'ConferenceRoom',
+                    'table_name' => 'ConferenceRooms',
+                ),
             'ExtensionsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -237,10 +241,6 @@ class Extensions extends ModelAbstract
             'ExtensionsIbfk4'=> array(
                     'property' => 'HuntGroup',
                     'table_name' => 'HuntGroups',
-                ),
-            'ExtensionsIbfk5'=> array(
-                    'property' => 'ConferenceRoom',
-                    'table_name' => 'ConferenceRooms',
                 ),
         ));
 
@@ -606,6 +606,57 @@ class Extensions extends ModelAbstract
     }
 
     /**
+     * Sets parent relation ConferenceRoom
+     *
+     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
+    {
+        $this->_ConferenceRoom = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setConferenceRoomId($primaryKey);
+        }
+
+        $this->_setLoaded('ExtensionsIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets parent ConferenceRoom
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExtensionsIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ConferenceRoom = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ConferenceRoom;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -807,57 +858,6 @@ class Extensions extends ModelAbstract
         }
 
         return $this->_HuntGroup;
-    }
-
-    /**
-     * Sets parent relation ConferenceRoom
-     *
-     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
-     * @return \IvozProvider\Model\Raw\Extensions
-     */
-    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
-    {
-        $this->_ConferenceRoom = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setConferenceRoomId($primaryKey);
-        }
-
-        $this->_setLoaded('ExtensionsIbfk5');
-        return $this;
-    }
-
-    /**
-     * Gets parent ConferenceRoom
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\ConferenceRooms
-     */
-    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ExtensionsIbfk5';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_ConferenceRoom = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_ConferenceRoom;
     }
 
     /**

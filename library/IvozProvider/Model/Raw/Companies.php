@@ -410,7 +410,7 @@ class Companies extends ModelAbstract
     protected $_Terminals;
 
     /**
-     * Dependent relation Users_ibfk_14
+     * Dependent relation Users_ibfk_1
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\Users[]
@@ -603,7 +603,7 @@ class Companies extends ModelAbstract
                     'property' => 'Terminals',
                     'table_name' => 'Terminals',
                 ),
-            'UsersIbfk14' => array(
+            'UsersIbfk1' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
                 ),
@@ -4039,7 +4039,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Users_ibfk_14
+     * Sets dependent relations Users_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Users
      * @return \IvozProvider\Model\Raw\Companies
@@ -4087,7 +4087,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Users_ibfk_14
+     * Sets dependent relations Users_ibfk_1
      *
      * @param \IvozProvider\Model\Raw\Users $data
      * @return \IvozProvider\Model\Raw\Companies
@@ -4095,12 +4095,12 @@ class Companies extends ModelAbstract
     public function addUsers(\IvozProvider\Model\Raw\Users $data)
     {
         $this->_Users[] = $data;
-        $this->_setLoaded('UsersIbfk14');
+        $this->_setLoaded('UsersIbfk1');
         return $this;
     }
 
     /**
-     * Gets dependent Users_ibfk_14
+     * Gets dependent Users_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -4109,7 +4109,7 @@ class Companies extends ModelAbstract
      */
     public function getUsers($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'UsersIbfk14';
+        $fkName = 'UsersIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

@@ -201,6 +201,13 @@ class Users extends ModelAbstract
 
 
     /**
+     * Parent relation Users_ibfk_1
+     *
+     * @var \IvozProvider\Model\Raw\Companies
+     */
+    protected $_Company;
+
+    /**
      * Parent relation Users_ibfk_10
      *
      * @var \IvozProvider\Model\Raw\CallACL
@@ -222,14 +229,7 @@ class Users extends ModelAbstract
     protected $_Country;
 
     /**
-     * Parent relation Users_ibfk_14
-     *
-     * @var \IvozProvider\Model\Raw\Companies
-     */
-    protected $_Company;
-
-    /**
-     * Parent relation Users_ibfk_15
+     * Parent relation Users_ibfk_13
      *
      * @var \IvozProvider\Model\Raw\Languages
      */
@@ -419,6 +419,10 @@ class Users extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'UsersIbfk1'=> array(
+                    'property' => 'Company',
+                    'table_name' => 'Companies',
+                ),
             'UsersIbfk10'=> array(
                     'property' => 'CallACL',
                     'table_name' => 'CallACL',
@@ -431,11 +435,7 @@ class Users extends ModelAbstract
                     'property' => 'Country',
                     'table_name' => 'Countries',
                 ),
-            'UsersIbfk14'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
-                ),
-            'UsersIbfk15'=> array(
+            'UsersIbfk13'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
                 ),
@@ -1447,6 +1447,57 @@ class Users extends ModelAbstract
     }
 
     /**
+     * Sets parent relation Company
+     *
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
+    {
+        $this->_Company = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCompanyId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent Company
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Company = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Company;
+    }
+
+    /**
      * Sets parent relation CallACL
      *
      * @param \IvozProvider\Model\Raw\CallACL $data
@@ -1600,57 +1651,6 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Company
-     *
-     * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
-    {
-        $this->_Company = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk14');
-        return $this;
-    }
-
-    /**
-     * Gets parent Company
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk14';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Company;
-    }
-
-    /**
      * Sets parent relation Language
      *
      * @param \IvozProvider\Model\Raw\Languages $data
@@ -1669,7 +1669,7 @@ class Users extends ModelAbstract
             $this->setLanguageId($primaryKey);
         }
 
-        $this->_setLoaded('UsersIbfk15');
+        $this->_setLoaded('UsersIbfk13');
         return $this;
     }
 
@@ -1680,7 +1680,7 @@ class Users extends ModelAbstract
      */
     public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'UsersIbfk15';
+        $fkName = 'UsersIbfk13';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

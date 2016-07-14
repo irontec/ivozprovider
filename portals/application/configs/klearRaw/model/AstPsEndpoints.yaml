@@ -23,8 +23,7 @@ production:
     aors: 
       title: _('Aor')
       type: text
-      required: true
-      maxLength: 40
+      maxLength: 200
     callerid: 
       title: _('Callerid')
       type: text
