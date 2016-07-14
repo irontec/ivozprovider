@@ -12,10 +12,16 @@ production:
       type: text
       maxLength: 55
     regExp: 
-      title: _('Reg exp')
+      title: _('Reg exp / Prefix')
       type: text
       required: true
       maxLength: 80
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("If you want a prefix, use only digits. Otherwise, define your regular expresion.")
+        label: _("Need help?")
     brandId: 
       title: _('Brand id')
       type: select
