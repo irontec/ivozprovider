@@ -4,7 +4,7 @@ production:
     type: 
       title: ngettext('Type', 'Types', 1)
       type: select
-      defaultValue: group
+      defaultValue: pattern
       source: 
         data: inline
         values: 

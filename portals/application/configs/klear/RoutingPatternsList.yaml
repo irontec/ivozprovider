@@ -1,6 +1,5 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include RoutingPatternGroupsRelPatternsList.yaml
 
 
 production: 
@@ -22,7 +21,6 @@ production:
           title: _("Options")
           screens: 
             routingPatternsEdit_screen: true
-            routingPatternGroupsRelPatternsList_screen: false
           dialogs: 
             routingPatternsDel_dialog: true
           default: routingPatternsEdit_screen
@@ -54,19 +52,6 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Routing pattern', 'Routing patterns', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Routing pattern', 'Routing patterns', 1), "[format| (%item%)]")
-    #routingPatternGroupsRelPatterns: 
-    <<: *routingPatternGroupsRelPatterns_screensLink
-    routingPatternGroupsRelPatternsList_screen: 
-      <<: *routingPatternGroupsRelPatternsList_screenLink
-      filterField: routingPatternId
-      parentOptionCustomizer: 
-        - recordCount
-    routingPatternGroupsRelPatternsNew_screen: 
-      <<: *routingPatternGroupsRelPatternsNew_screenLink
-      filterField: routingPatternId
-    routingPatternGroupsRelPatternsEdit_screen: 
-      <<: *routingPatternGroupsRelPatternsEdit_screenLink
-      filterField: routingPatternId
 
   dialogs: &routingPatterns_dialogsLink 
     routingPatternsDel_dialog: &routingPatternsDel_dialogLink 
@@ -79,8 +64,6 @@ production:
       message: _("%s successfully deleted.", ngettext('Routing pattern', 'Routing patterns', 1))
       multiItem: 1
       labelOnList: 1
-  # routingPatternGroupsRelPatterns dialogs: 
-    <<: *routingPatternGroupsRelPatterns_dialogsLink
 staging: 
   _extends: production
 testing: 

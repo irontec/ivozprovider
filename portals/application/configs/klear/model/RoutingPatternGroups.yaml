@@ -24,6 +24,24 @@ production:
               - name
             template: '%name%'
           order: name
+    RoutingPatternGroupsRelPatterns:
+      title: _('Destination patterns')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          extraDataAttributes:
+            brandId: brandId
+          relationMapper: \IvozProvider\Mapper\Sql\RoutingPatternGroupsRelPatterns
+          relatedMapperName: \IvozProvider\Mapper\Sql\RoutingPatterns
+          relatedFieldName:
+            fields:
+              - name
+              - description
+              - regExp
+            template: "%name% %description% (%regExp%)"
+          relationProperty: RoutingPattern
+          filterClass: IvozProvider_Klear_Filter_Brand
 staging: 
   _extends: production
 testing: 
