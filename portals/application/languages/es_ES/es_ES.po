@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-14 17:02+0200\n"
-"PO-Revision-Date: 2016-07-14 17:02+0200\n"
+"POT-Creation-Date: 2016-07-15 13:18+0200\n"
+"PO-Revision-Date: 2016-07-15 13:18+0200\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -58,8 +58,8 @@ msgstr[1] "Servidores de Aplicación"
 #: PricingPlansList.yaml:103 PricingPlansRelCompaniesList.yaml:16
 #: PricingPlansRelTargetPatternsList.yaml:16 ProxyTrunksList.yaml:14
 #: ProxyUsersList.yaml:16 RecordingsList.yaml:20
-#: RoutingPatternGroupsList.yaml:17 RoutingPatternGroupsRelPatternsList.yaml:16
-#: RoutingPatternsList.yaml:17 SchedulesList.yaml:15 ServicesList.yaml:18
+#: RoutingPatternGroupsList.yaml:16 RoutingPatternGroupsRelPatternsList.yaml:16
+#: RoutingPatternsList.yaml:16 SchedulesList.yaml:15 ServicesList.yaml:18
 #: TargetPatternsList.yaml:17 TargetPatternsList.yaml:101
 #: TerminalManufacturersList.yaml:15 TerminalModelsList.yaml:16
 #: TerminalsList.yaml:17 TimezonesList.yaml:14
@@ -131,10 +131,10 @@ msgstr "Listado de %s  %2s"
 #: PricingPlansRelTargetPatternsList.yaml:21
 #: PricingPlansRelTargetPatternsList.yaml:34 ProxyTrunksList.yaml:17
 #: ProxyUsersList.yaml:19 RecordingsList.yaml:33 RecordingsList.yaml:40
-#: RoutingPatternGroupsList.yaml:22 RoutingPatternGroupsList.yaml:30
+#: RoutingPatternGroupsList.yaml:21 RoutingPatternGroupsList.yaml:28
 #: RoutingPatternGroupsRelPatternsList.yaml:19
-#: RoutingPatternGroupsRelPatternsList.yaml:26 RoutingPatternsList.yaml:22
-#: RoutingPatternsList.yaml:30 SchedulesList.yaml:20 SchedulesList.yaml:35
+#: RoutingPatternGroupsRelPatternsList.yaml:26 RoutingPatternsList.yaml:21
+#: RoutingPatternsList.yaml:28 SchedulesList.yaml:20 SchedulesList.yaml:35
 #: ServicesList.yaml:21 ServicesList.yaml:28 TargetPatternsList.yaml:22
 #: TargetPatternsList.yaml:30 TerminalManufacturersList.yaml:18
 #: TerminalManufacturersList.yaml:26 TerminalModelsList.yaml:19
@@ -176,8 +176,8 @@ msgstr "Opciones"
 #: PickUpRelUsersList.yaml:35 PricingPlansList.yaml:55
 #: PricingPlansRelCompaniesList.yaml:50
 #: PricingPlansRelTargetPatternsList.yaml:59 ProxyUsersList.yaml:29
-#: RoutingPatternGroupsList.yaml:43 RoutingPatternGroupsRelPatternsList.yaml:37
-#: RoutingPatternsList.yaml:43 ServicesList.yaml:39 TargetPatternsList.yaml:55
+#: RoutingPatternGroupsList.yaml:41 RoutingPatternGroupsRelPatternsList.yaml:37
+#: RoutingPatternsList.yaml:41 ServicesList.yaml:39 TargetPatternsList.yaml:55
 #: TerminalManufacturersList.yaml:37 TerminalModelsList.yaml:45
 #: TerminalsList.yaml:55 TimezonesList.yaml:35
 #: TransformationRulesetGroupsTrunksList.yaml:56 UsersList.yaml:84
@@ -227,10 +227,10 @@ msgstr "Añadir %s"
 #: PricingPlansRelCompaniesList.yaml:73
 #: PricingPlansRelTargetPatternsList.yaml:86 ProxyTrunksList.yaml:26
 #: ProxyUsersList.yaml:36 ProxyUsersList.yaml:37 RecordingsList.yaml:48
-#: RecordingsList.yaml:49 RoutingPatternGroupsList.yaml:55
-#: RoutingPatternGroupsList.yaml:56 RoutingPatternGroupsRelPatternsList.yaml:47
-#: RoutingPatternGroupsRelPatternsList.yaml:48 RoutingPatternsList.yaml:55
-#: RoutingPatternsList.yaml:56 SchedulesList.yaml:77 ServicesList.yaml:46
+#: RecordingsList.yaml:49 RoutingPatternGroupsList.yaml:53
+#: RoutingPatternGroupsList.yaml:54 RoutingPatternGroupsRelPatternsList.yaml:47
+#: RoutingPatternGroupsRelPatternsList.yaml:48 RoutingPatternsList.yaml:53
+#: RoutingPatternsList.yaml:54 SchedulesList.yaml:77 ServicesList.yaml:46
 #: ServicesList.yaml:47 TargetPatternsList.yaml:74
 #: TerminalManufacturersList.yaml:44 TerminalModelsList.yaml:59
 #: TerminalsList.yaml:95 TimezonesList.yaml:42
@@ -271,8 +271,8 @@ msgstr "Editar %s %2s"
 #: PickUpRelUsersList.yaml:49 PricingPlansList.yaml:116
 #: PricingPlansRelCompaniesList.yaml:98
 #: PricingPlansRelTargetPatternsList.yaml:101 RecordingsList.yaml:72
-#: RoutingPatternGroupsList.yaml:77 RoutingPatternGroupsRelPatternsList.yaml:55
-#: RoutingPatternsList.yaml:77 SchedulesList.yaml:88 ServicesList.yaml:55
+#: RoutingPatternGroupsList.yaml:62 RoutingPatternGroupsRelPatternsList.yaml:55
+#: RoutingPatternsList.yaml:62 SchedulesList.yaml:88 ServicesList.yaml:55
 #: TargetPatternsList.yaml:114 TerminalManufacturersList.yaml:71
 #: TerminalModelsList.yaml:74 TerminalsList.yaml:115 TimezonesList.yaml:49
 #: TransformationRulesetGroupsTrunksList.yaml:184 UsersList.yaml:195
@@ -310,8 +310,8 @@ msgstr "Borrar %s"
 #: PeeringContractsList.yaml:116 PickUpGroupsList.yaml:57
 #: PickUpRelUsersList.yaml:50 PricingPlansList.yaml:117
 #: PricingPlansRelTargetPatternsList.yaml:102 RecordingsList.yaml:73
-#: RoutingPatternGroupsList.yaml:78 RoutingPatternGroupsRelPatternsList.yaml:56
-#: RoutingPatternsList.yaml:78 SchedulesList.yaml:89 ServicesList.yaml:56
+#: RoutingPatternGroupsList.yaml:63 RoutingPatternGroupsRelPatternsList.yaml:56
+#: RoutingPatternsList.yaml:63 SchedulesList.yaml:89 ServicesList.yaml:56
 #: TargetPatternsList.yaml:115 TerminalManufacturersList.yaml:72
 #: TerminalModelsList.yaml:75 TerminalsList.yaml:116 TimezonesList.yaml:50
 #: TransformationRulesetGroupsTrunksList.yaml:185 UsersList.yaml:196
@@ -349,8 +349,8 @@ msgstr "Do you want to delete this %s?"
 #: PeeringContractsList.yaml:117 PickUpGroupsList.yaml:58
 #: PickUpRelUsersList.yaml:51 PricingPlansList.yaml:118
 #: PricingPlansRelTargetPatternsList.yaml:103 RecordingsList.yaml:74
-#: RoutingPatternGroupsList.yaml:79 RoutingPatternGroupsRelPatternsList.yaml:57
-#: RoutingPatternsList.yaml:79 SchedulesList.yaml:90 ServicesList.yaml:57
+#: RoutingPatternGroupsList.yaml:64 RoutingPatternGroupsRelPatternsList.yaml:57
+#: RoutingPatternsList.yaml:64 SchedulesList.yaml:90 ServicesList.yaml:57
 #: TargetPatternsList.yaml:116 TerminalManufacturersList.yaml:73
 #: TerminalModelsList.yaml:76 TerminalsList.yaml:117 TimezonesList.yaml:51
 #: TransformationRulesetGroupsTrunksList.yaml:186 UsersList.yaml:197
@@ -395,7 +395,7 @@ msgstr[1] "Ast voicemail(s)"
 
 #: BrandDDIsList.yaml:14 DDIsList.yaml:14 DDIsList.yaml:93 DDIsList.yaml:111
 #: DDIsList.yaml:128 DDIsList.yaml:148 DDIsList.yaml:149 DDIsList.yaml:150
-#: klear.yaml:130 klear.yaml:132 klear.yaml:192 klear.yaml:194
+#: klear.yaml:130 klear.yaml:132 klear.yaml:196 klear.yaml:198
 #: model/DDIs.yaml:19 model/KamTrunksUacreg.yaml:5
 msgid "DDI"
 msgid_plural "DDIs"
@@ -493,15 +493,15 @@ msgstr "Emular Marca %s"
 
 #: CalendarsList.yaml:16 CalendarsList.yaml:40 CalendarsList.yaml:49
 #: CalendarsList.yaml:74 CalendarsList.yaml:75 CalendarsList.yaml:76
-#: klear.yaml:200 klear.yaml:202 model/HolidayDates.yaml:5
+#: klear.yaml:204 klear.yaml:206 model/HolidayDates.yaml:5
 msgid "Calendar"
 msgid_plural "Calendars"
 msgstr[0] "Calendario"
 msgstr[1] "Calendarios"
 
 #: CallACLList.yaml:16 CallACLList.yaml:41 CallACLList.yaml:55
-#: CallACLList.yaml:96 CallACLList.yaml:97 CallACLList.yaml:98 klear.yaml:208
-#: klear.yaml:210 model/CallACLRelPatterns.yaml:5 model/Users.yaml:112
+#: CallACLList.yaml:96 CallACLList.yaml:97 CallACLList.yaml:98 klear.yaml:212
+#: klear.yaml:214 model/CallACLRelPatterns.yaml:5 model/Users.yaml:112
 msgid "Call ACL"
 msgid_plural "Call ACLs"
 msgstr[0] "Permiso llamada"
@@ -544,8 +544,8 @@ msgstr[1] "Call ACL Rel patterns"
 
 #: CallACLPatternsList.yaml:16 CallACLPatternsList.yaml:39
 #: CallACLPatternsList.yaml:48 CallACLPatternsList.yaml:58
-#: CallACLPatternsList.yaml:59 CallACLPatternsList.yaml:60 klear.yaml:212
-#: klear.yaml:214 model/CallACLRelPatterns.yaml:19
+#: CallACLPatternsList.yaml:59 CallACLPatternsList.yaml:60 klear.yaml:216
+#: klear.yaml:218 model/CallACLRelPatterns.yaml:19
 msgid "Call ACL pattern"
 msgid_plural "Call ACL patterns"
 msgstr[0] "Patrón permisos llamada"
@@ -621,7 +621,7 @@ msgstr[1] "Servicios"
 #: ConferenceRoomsList.yaml:16 ConferenceRoomsList.yaml:44
 #: ConferenceRoomsList.yaml:66 ConferenceRoomsList.yaml:67
 #: ConferenceRoomsList.yaml:78 ConferenceRoomsList.yaml:79
-#: ConferenceRoomsList.yaml:80 klear.yaml:232 klear.yaml:234
+#: ConferenceRoomsList.yaml:80 klear.yaml:236 klear.yaml:238
 msgid "Conference room"
 msgid_plural "Conference rooms"
 msgstr[0] "Sala de conferencias"
@@ -643,7 +643,7 @@ msgstr[1] "Países"
 msgid "Recording data"
 msgstr ""
 
-#: Dashboard.yaml:12 DashboardMaps.yaml:15 klear.yaml:267
+#: Dashboard.yaml:12 DashboardMaps.yaml:15 klear.yaml:271
 msgid "Vista general de la plataforma"
 msgstr ""
 
@@ -675,7 +675,7 @@ msgstr[1] ""
 
 #: ExtensionsList.yaml:16 ExtensionsList.yaml:51 ExtensionsList.yaml:80
 #: ExtensionsList.yaml:92 ExtensionsList.yaml:93 ExtensionsList.yaml:94
-#: klear.yaml:188 klear.yaml:190 model/CallForwardSettings.yaml:80
+#: klear.yaml:192 klear.yaml:194 model/CallForwardSettings.yaml:80
 #: model/Users.yaml:84
 msgid "Extension"
 msgid_plural "Extensions"
@@ -707,7 +707,7 @@ msgstr[1] "External call filter rel schedules"
 #: ExternalCallFiltersList.yaml:16 ExternalCallFiltersList.yaml:62
 #: ExternalCallFiltersList.yaml:108 ExternalCallFiltersList.yaml:123
 #: ExternalCallFiltersList.yaml:124 ExternalCallFiltersList.yaml:125
-#: klear.yaml:196 klear.yaml:198
+#: klear.yaml:200 klear.yaml:202
 msgid "External call filter"
 msgid_plural "External call filters"
 msgstr[0] "Filtro de entrada externo"
@@ -733,7 +733,7 @@ msgid "Send new %s"
 msgstr "Enviar nuevo %s"
 
 #: FaxesList.yaml:19 FaxesList.yaml:47 FaxesList.yaml:59 FaxesList.yaml:161
-#: FaxesList.yaml:162 FaxesList.yaml:163 klear.yaml:252
+#: FaxesList.yaml:162 FaxesList.yaml:163 klear.yaml:256
 #: model/OutgoingRouting.yaml:22
 msgid "Fax"
 msgid_plural "Faxes"
@@ -806,7 +806,7 @@ msgstr[1] "Festivos"
 #: HuntGroupsList.yaml:16 HuntGroupsList.yaml:43 HuntGroupsList.yaml:73
 #: HuntGroupsList.yaml:106 HuntGroupsList.yaml:107 HuntGroupsList.yaml:108
 #: UsersList.yaml:157 UsersList.yaml:168 UsersList.yaml:225 UsersList.yaml:226
-#: UsersList.yaml:227 klear.yaml:216 klear.yaml:218 model/Users.yaml:293
+#: UsersList.yaml:227 klear.yaml:220 klear.yaml:222 model/Users.yaml:293
 msgid "Hunt group"
 msgid_plural "Hunt groups"
 msgstr[0] "Grupo de salto"
@@ -820,7 +820,7 @@ msgstr "Tipo de fichero"
 #: HuntGroupsList.yaml:86 HuntGroupsList.yaml:93 HuntGroupsList.yaml:97
 #: HuntGroupsList.yaml:115 UsersList.yaml:20 UsersList.yaml:84
 #: UsersList.yaml:141 UsersList.yaml:195 UsersList.yaml:196 UsersList.yaml:197
-#: klear.yaml:180 klear.yaml:182 model/Extensions.yaml:122
+#: klear.yaml:184 klear.yaml:186 model/Extensions.yaml:122
 msgid "User"
 msgid_plural "Users"
 msgstr[0] "Usuario"
@@ -875,7 +875,7 @@ msgstr[1] "IVRs a medida"
 
 #: InvoiceTemplatesList.yaml:17 InvoiceTemplatesList.yaml:45
 #: InvoiceTemplatesList.yaml:67 InvoiceTemplatesList.yaml:93
-#: InvoiceTemplatesList.yaml:94 InvoiceTemplatesList.yaml:95 klear.yaml:160
+#: InvoiceTemplatesList.yaml:94 InvoiceTemplatesList.yaml:95 klear.yaml:164
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Plantilla de factura"
@@ -886,11 +886,11 @@ msgstr[1] "Plantillas de facturas"
 msgid "Template testing"
 msgstr "Plantilla"
 
-#: InvoicesList.yaml:17 klear.yaml:162
+#: InvoicesList.yaml:17 klear.yaml:166
 msgid "Invoices"
 msgstr "Facturas"
 
-#: InvoicesList.yaml:57 InvoicesList.yaml:97 klear.yaml:164
+#: InvoicesList.yaml:57 InvoicesList.yaml:97 klear.yaml:168
 #, fuzzy
 msgid "Invoice"
 msgstr "Factura"
@@ -922,7 +922,7 @@ msgid "Tarificate %s"
 msgstr "Tarificar %s"
 
 #: KamAccCdrsList.yaml:22 KamAccCdrsList.yaml:65 KamAccCdrsList.yaml:66
-#: klear.yaml:96 klear.yaml:98 klear.yaml:166 klear.yaml:168
+#: klear.yaml:96 klear.yaml:98 klear.yaml:170 klear.yaml:172
 msgid "Billable call"
 msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
@@ -1084,7 +1084,7 @@ msgstr[1] "Reglas LCR"
 
 #: LocutionsList.yaml:15 LocutionsList.yaml:44 LocutionsList.yaml:69
 #: LocutionsList.yaml:94 LocutionsList.yaml:95 LocutionsList.yaml:96
-#: klear.yaml:236 klear.yaml:238 model/HolidayDates.yaml:33
+#: klear.yaml:240 klear.yaml:242 model/HolidayDates.yaml:33
 msgid "Locution"
 msgid_plural "Locutions"
 msgstr[0] "Locución"
@@ -1110,7 +1110,7 @@ msgstr[1] "Servidores de Media"
 
 #: MusicOnHoldList.yaml:15 MusicOnHoldList.yaml:44 MusicOnHoldList.yaml:71
 #: MusicOnHoldList.yaml:87 MusicOnHoldList.yaml:88 MusicOnHoldList.yaml:89
-#: klear.yaml:240 klear.yaml:242 model/Companies.yaml:52
+#: klear.yaml:244 klear.yaml:246 model/Companies.yaml:52
 msgid "Music on hold"
 msgid_plural "Musics on hold"
 msgstr[0] "Música en espera"
@@ -1222,18 +1222,18 @@ msgstr[1] "Transformaciones numéricas"
 #: klear.yaml:94 klear.yaml:98 klear.yaml:102 klear.yaml:112 klear.yaml:116
 #: klear.yaml:120 klear.yaml:124 klear.yaml:128 klear.yaml:132 klear.yaml:136
 #: klear.yaml:140 klear.yaml:144 klear.yaml:148 klear.yaml:152 klear.yaml:156
-#: klear.yaml:160 klear.yaml:164 klear.yaml:168 klear.yaml:172 klear.yaml:182
+#: klear.yaml:160 klear.yaml:164 klear.yaml:168 klear.yaml:172 klear.yaml:176
 #: klear.yaml:186 klear.yaml:190 klear.yaml:194 klear.yaml:198 klear.yaml:202
 #: klear.yaml:206 klear.yaml:210 klear.yaml:214 klear.yaml:218 klear.yaml:222
 #: klear.yaml:226 klear.yaml:230 klear.yaml:234 klear.yaml:238 klear.yaml:242
-#: klear.yaml:246 klear.yaml:250 klear.yaml:254 klear.yaml:258
+#: klear.yaml:246 klear.yaml:250 klear.yaml:254 klear.yaml:258 klear.yaml:262
 #, python-format
 msgid "List of %s"
 msgstr "Listado de %s"
 
 #: PickUpGroupsList.yaml:15 PickUpGroupsList.yaml:38 PickUpGroupsList.yaml:47
 #: PickUpGroupsList.yaml:56 PickUpGroupsList.yaml:57 PickUpGroupsList.yaml:58
-#: klear.yaml:220 klear.yaml:222
+#: klear.yaml:224 klear.yaml:226
 msgid "Pick up group"
 msgid_plural "Pick up groups"
 msgstr[0] "Grupo de captura"
@@ -1352,16 +1352,16 @@ msgstr[1] "Proxies de Usuarios"
 
 #: RecordingsList.yaml:20 RecordingsList.yaml:48 RecordingsList.yaml:49
 #: RecordingsList.yaml:72 RecordingsList.yaml:73 RecordingsList.yaml:74
-#: klear.yaml:244 klear.yaml:246
+#: klear.yaml:248 klear.yaml:250
 msgid "Recording"
 msgid_plural "Recordings"
 msgstr[0] "Grabación"
 msgstr[1] "Grabaciones"
 
-#: RoutingPatternGroupsList.yaml:17 RoutingPatternGroupsList.yaml:43
-#: RoutingPatternGroupsList.yaml:55 RoutingPatternGroupsList.yaml:56
-#: RoutingPatternGroupsList.yaml:77 RoutingPatternGroupsList.yaml:78
-#: RoutingPatternGroupsList.yaml:79 klear.yaml:142 klear.yaml:144
+#: RoutingPatternGroupsList.yaml:16 RoutingPatternGroupsList.yaml:41
+#: RoutingPatternGroupsList.yaml:53 RoutingPatternGroupsList.yaml:54
+#: RoutingPatternGroupsList.yaml:62 RoutingPatternGroupsList.yaml:63
+#: RoutingPatternGroupsList.yaml:64 klear.yaml:142 klear.yaml:144
 msgid "Routing pattern group"
 msgid_plural "Routing pattern groups"
 msgstr[0] "Grupo de patrones de destino"
@@ -1379,10 +1379,10 @@ msgid_plural "Routing pattern groups rel patterns"
 msgstr[0] "Patrón de destino"
 msgstr[1] "Patrones de destino"
 
-#: RoutingPatternsList.yaml:17 RoutingPatternsList.yaml:43
-#: RoutingPatternsList.yaml:55 RoutingPatternsList.yaml:56
-#: RoutingPatternsList.yaml:77 RoutingPatternsList.yaml:78
-#: RoutingPatternsList.yaml:79 klear.yaml:138 klear.yaml:140
+#: RoutingPatternsList.yaml:16 RoutingPatternsList.yaml:41
+#: RoutingPatternsList.yaml:53 RoutingPatternsList.yaml:54
+#: RoutingPatternsList.yaml:62 RoutingPatternsList.yaml:63
+#: RoutingPatternsList.yaml:64 klear.yaml:138 klear.yaml:140 klear.yaml:160
 msgid "Routing pattern"
 msgid_plural "Routing patterns"
 msgstr[0] "Patrón de destino"
@@ -1390,7 +1390,7 @@ msgstr[1] "Patrones de destino"
 
 #: SchedulesList.yaml:15 SchedulesList.yaml:46 SchedulesList.yaml:77
 #: SchedulesList.yaml:88 SchedulesList.yaml:89 SchedulesList.yaml:90
-#: klear.yaml:204 klear.yaml:206
+#: klear.yaml:208 klear.yaml:210
 msgid "Schedule"
 msgid_plural "Schedules"
 msgstr[0] "Horario"
@@ -1399,7 +1399,7 @@ msgstr[1] "Horarios"
 #: ServicesList.yaml:18 ServicesList.yaml:39 ServicesList.yaml:46
 #: ServicesList.yaml:47 ServicesList.yaml:55 ServicesList.yaml:56
 #: ServicesList.yaml:57 klear.yaml:88 klear.yaml:90 klear.yaml:126
-#: klear.yaml:128 klear.yaml:248 klear.yaml:250
+#: klear.yaml:128 klear.yaml:252 klear.yaml:254
 msgid "Service"
 msgid_plural "Services"
 msgstr[0] "Servicio"
@@ -1408,11 +1408,11 @@ msgstr[1] "Servicios"
 #: TargetPatternsList.yaml:17 TargetPatternsList.yaml:55
 #: TargetPatternsList.yaml:74 TargetPatternsList.yaml:114
 #: TargetPatternsList.yaml:115 TargetPatternsList.yaml:116
-#: TargetPatternsList.yaml:123
-msgid "Destination pattern"
-msgid_plural "Destination patterns"
-msgstr[0] "Patrón de destino"
-msgstr[1] "Patrones de destino"
+#: TargetPatternsList.yaml:123 klear.yaml:158
+msgid "Pricing pattern"
+msgid_plural "Pricing patterns"
+msgstr[0] "Patrón de precio"
+msgstr[1] "Patrones de precio"
 
 #: TerminalManufacturersList.yaml:15 TerminalManufacturersList.yaml:37
 #: TerminalManufacturersList.yaml:44 TerminalManufacturersList.yaml:71
@@ -1449,7 +1449,7 @@ msgstr ""
 
 #: TerminalsList.yaml:17 TerminalsList.yaml:55 TerminalsList.yaml:95
 #: TerminalsList.yaml:115 TerminalsList.yaml:116 TerminalsList.yaml:117
-#: klear.yaml:184 klear.yaml:186 model/Users.yaml:70
+#: klear.yaml:188 klear.yaml:190 model/Users.yaml:70
 msgid "Terminal"
 msgid_plural "Terminals"
 msgstr[0] "Terminal"
@@ -1680,8 +1680,8 @@ msgid_plural "Antiflood trusted IPs"
 msgstr[0] "IP de confianza"
 msgstr[1] "IPs de confianza"
 
-#: klear.yaml:100 klear.yaml:102 klear.yaml:170 klear.yaml:172 klear.yaml:256
-#: klear.yaml:258
+#: klear.yaml:100 klear.yaml:102 klear.yaml:174 klear.yaml:176 klear.yaml:260
+#: klear.yaml:262
 msgid "Parsed CDR"
 msgid_plural "Parsed CDRs"
 msgstr[0] "Histórico de llamadas"
@@ -1713,37 +1713,37 @@ msgid_plural "Pricing Plans"
 msgstr[0] "Plan de precios"
 msgstr[1] "Planes de precios"
 
-#: klear.yaml:158
+#: klear.yaml:162
 msgid "Invoice templates"
 msgstr "Plantillas de facturas"
 
-#: klear.yaml:174
+#: klear.yaml:178
 msgid "Company Configuration"
 msgstr "Configuración de Empresa"
 
-#: klear.yaml:177
+#: klear.yaml:181
 msgid "Admin"
 msgstr "Adminsitrador"
 
-#: klear.yaml:224 klear.yaml:226
+#: klear.yaml:228 klear.yaml:230
 msgid "IVR common"
 msgid_plural "IVR common"
 msgstr[0] "IVR Génerico"
 msgstr[1] "IVR genérico"
 
-#: klear.yaml:228 klear.yaml:230
+#: klear.yaml:232 klear.yaml:234
 msgid "IVR custom"
 msgid_plural "IVR custom"
 msgstr[0] "IVR a medida"
 msgstr[1] "IVR a medida"
 
-#: klear.yaml:254
+#: klear.yaml:258
 msgid "Faxes"
 msgid_plural "Faxes"
 msgstr[0] "Fax"
 msgstr[1] "Faxes"
 
-#: klear.yaml:265
+#: klear.yaml:269
 msgid "Panel de control"
 msgstr ""
 
@@ -3685,6 +3685,10 @@ msgstr ""
 msgid "Listen to File"
 msgstr ""
 
+#: model/RoutingPatternGroups.yaml:28
+msgid "Destination patterns"
+msgstr "Patrones de destinos"
+
 #: model/RoutingPatternGroupsRelPatterns.yaml:5
 msgid "Routing pattern id"
 msgstr ""
@@ -3928,6 +3932,11 @@ msgstr "Modificado"
 msgid "Finish date"
 msgstr "Modificado"
 
+#~ msgid "Destination pattern"
+#~ msgid_plural "Destination patterns"
+#~ msgstr[0] "Patrón de destino"
+#~ msgstr[1] "Patrones de destino"
+
 #~ msgid "Antiflood trusted IPs"
 #~ msgid_plural "Antiflood trusted IPs"
 #~ msgstr[0] "IP de confianza"
@@ -3967,9 +3976,6 @@ msgstr "Modificado"
 #~ msgstr ""
 #~ "<p><b>Métrica:</b> En caso de que dos patrones coincidan, se empleará el "
 #~ "de menor métrica.</p>"
-
-#~ msgid "Destination patterns"
-#~ msgstr "Patrones de destinos"
 
 #~ msgid "Comma separated codec names"
 #~ msgstr "Nombre de codecs separados por coma"

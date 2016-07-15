@@ -154,6 +154,10 @@ production:
           title: ngettext('Fixed cost', 'Fixed costs', 0)
           class:  ui-silk-money-add
           description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
+        TargetPatternsList: 
+          title: ngettext('Pricing pattern', 'Pricing patterns', 0)
+          class: ui-silk-money-yen
+          description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
         InvoiceTemplatesList:
           title: _('Invoice templates')
           class: ui-silk-report-key
