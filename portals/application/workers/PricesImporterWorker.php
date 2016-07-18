@@ -308,7 +308,6 @@ class PricesimporterWorker extends Iron_Gearman_Worker
             ->setPerPeriodCharge($data["perPeriodCharge"])
             ->setConnectionCharge($data["connectionCharge"])
             ->setPeriodTime($data["periodTime"])
-//            ->setMetric(10)
         ;
 
         try {

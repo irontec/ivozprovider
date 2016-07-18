@@ -18,7 +18,67 @@
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
+use IvozProvider\Gearmand\Jobs\Xmlrpc;
+
 class RoutingPatterns extends Raw\RoutingPatterns
 {
+    protected function _save(\IvozProvider\Model\Raw\RoutingPatterns $model,
+        $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
+    )
+    {
+        $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
+
+        // If any LcrRule uses this Pattern, update accordingly
+        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
+        $lcrRules = $lcrRulesMapper->findByField("routingPatternId", $pk);
+
+        if (!empty($lcrRules)) {
+            foreach ($lcrRules as $lcrRule) {
+                $lcrRule->setTag($model->getName())
+                        ->setDescription($model->getDescription())
+                        ->setCondition($model->getRegExp())
+                        ->save();
+            }
+
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>Routing pattern may have been saved.</p>";
+                throw new \Exception($message);
+            }
+        }
+
+        return $pk;
+    }
+
+    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
+    {
+        // If any LcrRule uses this Pattern, lcr.reload
+        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
+        $lcrRules = $lcrRulesMapper->findByField("routingPatternId", $model->getPrimaryKey());
+
+        $response = parent::delete($model);
+
+        if (!empty($lcrRules)) {
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>Routing pattern may have been deleted.</p>";
+                throw new \Exception($message);
+            }
+        }
+
+        return $response;
+    }
+
+    protected function _sendXmlRcp()
+    {
+        $proxyServers = array(
+                'proxytrunks' => "lcr.reload",
+        );
+        $xmlrpcJob = new Xmlrpc();
+        $xmlrpcJob->setProxyServers($proxyServers);
+        $xmlrpcJob->send();
+    }
 
 }
