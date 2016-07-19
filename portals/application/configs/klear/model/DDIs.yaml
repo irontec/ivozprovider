@@ -198,8 +198,8 @@ production:
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
-              - description
-            template: '%description%'
+              - name
+            template: '%name%'
           order: description
     countryId: 
       title: _('Country id')

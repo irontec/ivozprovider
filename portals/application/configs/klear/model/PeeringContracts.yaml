@@ -5,7 +5,7 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
-      defaultValue: 
+      required: true
       default: true 
     description: 
       title: ngettext('Description', 'Descriptions', 1)

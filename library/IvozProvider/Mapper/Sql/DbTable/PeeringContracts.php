@@ -117,7 +117,7 @@ class PeeringContracts extends TableAbstract
 	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => '',
+	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => '200',
 	    'SCALE' => NULL,

@@ -190,7 +190,6 @@ class PeeringContracts extends ModelAbstract
 
         $this->_defaultValues = array(
             'description' => '',
-            'name' => '',
         );
 
         $this->_initFileObjects();
@@ -337,6 +336,9 @@ class PeeringContracts extends ModelAbstract
     public function setName($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_name != $data) {
             $this->_logChange('name');
         }
