@@ -433,6 +433,14 @@ class Companies extends ModelAbstract
      */
     protected $_KamUsersAddress;
 
+    /**
+     * Dependent relation kam_users_domain_attrs_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\KamUsersDomainAttrs[]
+     */
+    protected $_KamUsersDomainAttrs;
+
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
@@ -614,6 +622,10 @@ class Companies extends ModelAbstract
             'KamUsersAddressIbfk1' => array(
                     'property' => 'KamUsersAddress',
                     'table_name' => 'kam_users_address',
+                ),
+            'KamUsersDomainAttrsIbfk1' => array(
+                    'property' => 'KamUsersDomainAttrs',
+                    'table_name' => 'kam_users_domain_attrs',
                 ),
         ));
 
@@ -4306,6 +4318,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_KamUsersAddress;
+    }
+
+    /**
+     * Sets dependent relations kam_users_domain_attrs_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\KamUsersDomainAttrs
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setKamUsersDomainAttrs(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_KamUsersDomainAttrs === null) {
+
+                $this->getKamUsersDomainAttrs();
+            }
+
+            $oldRelations = $this->_KamUsersDomainAttrs;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_KamUsersDomainAttrs = array();
+
+        foreach ($data as $object) {
+            $this->addKamUsersDomainAttrs($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations kam_users_domain_attrs_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\KamUsersDomainAttrs $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addKamUsersDomainAttrs(\IvozProvider\Model\Raw\KamUsersDomainAttrs $data)
+    {
+        $this->_KamUsersDomainAttrs[] = $data;
+        $this->_setLoaded('KamUsersDomainAttrsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent kam_users_domain_attrs_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\KamUsersDomainAttrs
+     */
+    public function getKamUsersDomainAttrs($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamUsersDomainAttrsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_KamUsersDomainAttrs = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_KamUsersDomainAttrs;
     }
 
     /**

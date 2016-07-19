@@ -73,6 +73,22 @@ class Companies extends Raw\Companies
                ->setCompanyId($pk)
                ->setDescription($model->getName() . " proxyusers domain")
                ->save();
+
+        // Update domain attributes
+        $domainAttrsMapper = new \IvozProvider\Mapper\Sql\KamUsersDomainAttrs();
+
+        $domainsAttr = $domainAttrsMapper->fetchList("did='$name' AND name='brandId'");
+        if (empty($domainsAttr)) {
+            $domainAttr = new \IvozProvider\Model\KamUsersDomainAttrs();
+        } else {
+            $domainAttr = $domainsAttr[0];
+        }
+
+        $domainAttr->setDid($name)
+                   ->setName('brandId')
+                   ->setType('0')
+                   ->setValue($model->getBrand()->getPrimaryKey())
+                   ->save();
     }
 
     protected function _updateTerminalsDomain($model, $domain)

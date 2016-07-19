@@ -30,6 +30,7 @@
 #include UsersList.yaml
 #include KamAccCdrsList.yaml
 #include KamUsersAddressList.yaml
+#include KamUsersDomainAttrsList.yaml
 
 
 production: 
@@ -79,6 +80,7 @@ production:
             usersList_screen: true
             kamAccCdrsList_screen: true
             kamUsersAddressList_screen: true
+            kamUsersDomainAttrsList_screen: true
           dialogs: 
             companiesDel_dialog: true
           default: companiesEdit_screen
@@ -497,6 +499,19 @@ production:
       <<: *kamUsersAddressEdit_screenLink
       filterField: companyId
 
+    #kamUsersDomainAttrs: 
+    kamUsersDomainAttrsList_screen: 
+      <<: *kamUsersDomainAttrsList_screenLink
+      filterField: did
+      parentOptionCustomizer: 
+        - recordCount
+    kamUsersDomainAttrsNew_screen: 
+      <<: *kamUsersDomainAttrsNew_screenLink
+      filterField: did
+    kamUsersDomainAttrsEdit_screen: 
+      <<: *kamUsersDomainAttrsEdit_screenLink
+      filterField: did
+
   dialogs: &companies_dialogsLink 
     companiesDel_dialog: &companiesDel_dialogLink 
       <<: *Companies
@@ -568,6 +583,8 @@ production:
     <<: *kamAccCdrs_dialogsLink
   # kamUsersAddress dialogs: 
     <<: *kamUsersAddress_dialogsLink
+  # kamUsersDomainAttrs dialogs: 
+    <<: *kamUsersDomainAttrs_dialogsLink
 staging: 
   _extends: production
 testing: 
