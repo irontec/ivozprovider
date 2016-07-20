@@ -184,6 +184,9 @@ production:
             template: '%name%'
           order: name_${lang}
         'null': _("Unasigned")
+      decorators:
+        autocomplete:
+            command: targetPatternautocomplete_command
     price: 
       title: ngettext('Price', 'Prices', 1)
       type: text
