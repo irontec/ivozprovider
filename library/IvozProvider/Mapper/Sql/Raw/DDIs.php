@@ -64,6 +64,7 @@ class DDIs extends MapperAbstract
                 'conferenceRoomId' => $model->getConferenceRoomId(),
                 'peeringContractId' => $model->getPeeringContractId(),
                 'countryId' => $model->getCountryId(),
+                'billInboundCalls' => $model->getBillInboundCalls(),
             );
         } else {
             $result = array();
@@ -590,7 +591,8 @@ class DDIs extends MapperAbstract
                   ->setFaxId($data['faxId'])
                   ->setConferenceRoomId($data['conferenceRoomId'])
                   ->setPeeringContractId($data['peeringContractId'])
-                  ->setCountryId($data['countryId']);
+                  ->setCountryId($data['countryId'])
+                  ->setBillInboundCalls($data['billInboundCalls']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -607,7 +609,8 @@ class DDIs extends MapperAbstract
                   ->setFaxId($data->{'faxId'})
                   ->setConferenceRoomId($data->{'conferenceRoomId'})
                   ->setPeeringContractId($data->{'peeringContractId'})
-                  ->setCountryId($data->{'countryId'});
+                  ->setCountryId($data->{'countryId'})
+                  ->setBillInboundCalls($data->{'billInboundCalls'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
             $entry->setId($data->getId())
@@ -625,7 +628,8 @@ class DDIs extends MapperAbstract
                   ->setFaxId($data->getFaxId())
                   ->setConferenceRoomId($data->getConferenceRoomId())
                   ->setPeeringContractId($data->getPeeringContractId())
-                  ->setCountryId($data->getCountryId());
+                  ->setCountryId($data->getCountryId())
+                  ->setBillInboundCalls($data->getBillInboundCalls());
 
         }
 

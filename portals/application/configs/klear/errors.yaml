@@ -22,6 +22,8 @@ production:
     70003: _("When Outbound Proxy is used, SIP Proxy must not include a port.")
     70004: _("Outbound Proxy IP value is not valid.")
     80000: _("Template field can not be null.")
+    90000: _("Inbound Calls cannot be billed as PeeringContract is not externally rated.")
+    90001: _("Externally rated cannot be disabled as some DDIs wants to bill inbound calls.")
   adminErrors: 
 staging: 
   _extends: production

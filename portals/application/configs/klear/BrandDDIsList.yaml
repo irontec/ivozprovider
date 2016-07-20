@@ -37,6 +37,7 @@ production:
           brandId: true
           conferenceRoomId: true
           recordCalls: true
+          billInboundCalls: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")

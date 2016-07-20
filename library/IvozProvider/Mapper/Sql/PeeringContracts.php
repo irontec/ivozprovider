@@ -39,6 +39,20 @@ class PeeringContracts extends Raw\PeeringContracts
             }
         }
 
+        // externallyRated cannot be unset if any DDI has inbound billing enabled
+        if ( !$model->getExternallyRated() ) {
+            $wrongDDIs = array();
+            $DDIs = $model->getDDIs();
+            foreach ($DDIs as $DDI) {
+                if ($DDI->getBillInboundCalls()) {
+                    array_push($wrongDDIs, $DDI->getDDI());
+                }
+            }
+            if (!empty($wrongDDIs)) {
+                throw new \Exception('Externally rated cannot be disabled as some DDIs wants to bill inbound calls: ' . implode(", ", $wrongDDIs), 90001);
+            }
+        }
+
         return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
     }
 

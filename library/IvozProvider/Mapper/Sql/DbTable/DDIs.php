@@ -373,6 +373,23 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'billInboundCalls' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'billInboundCalls',
+	    'COLUMN_POSITION' => 17,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

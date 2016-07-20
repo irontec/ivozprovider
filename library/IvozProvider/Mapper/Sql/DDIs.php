@@ -45,6 +45,11 @@ class DDIs extends Raw\DDIs
         $country = $model->getCountry();
         $model->setDDIE164($country->getCallingCode() . $model->getDDI());
 
+        // If billInboundCalls is set, peeringContract must have externallyRated to 1
+        if ($model->getBillInboundCalls() && !$model->getPeeringContract()->getExternallyRated() ) {
+            throw new \Exception('Inbound Calls cannot be billed as PeeringContract is not externally rated', 90000);
+        }
+
         return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
     }
 

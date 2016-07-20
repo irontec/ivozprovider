@@ -561,6 +561,23 @@ class KamAccCdrs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'direction' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'kam_acc_cdrs',
+	    'COLUMN_NAME' => 'direction',
+	    'COLUMN_POSITION' => 30,
+	    'DATA_TYPE' => 'enum(\'inbound\',\'outbound\')',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

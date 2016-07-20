@@ -68,6 +68,7 @@ my $MAXCALLS = 100;
 #     companyId
 #     peeringContractId
 #     parsed
+#     direction
 # };
 # 
 # my @STATAUXFIELDS = qw {
@@ -161,6 +162,7 @@ sub setCommon {
     $$cdr{callee} = $$leg{callee};
     $$cdr{lastForwarder} = getDiversion $$leg{diversion};
     $$cdr{peeringContractId} = $$leg{peeringContractId};
+    $$cdr{direction} = $$leg{direction}; # See setCDRType
 
     if (!$bleg) {
         if ($$leg{legType} ne 'A') {
@@ -186,7 +188,8 @@ sub setCommon {
     $$cdr{duration} = $$bleg{duration}; # On AB, B duration is the winner
     $$cdr{xCaller} = $$bleg{caller};
     $$cdr{xCallee} = $$bleg{callee};
-    $$cdr{peeringContractId} = $$cdr{peeringContractId} || $$bleg{peeringContractId};
+    $$cdr{peeringContractId} = $$bleg{peeringContractId} || $$cdr{peeringContractId}; # If both AB, B is saved
+                                                                                      # (entrante-saliente con facturacion de entrantes)
 
     # If peeringContractId is set, increase tarificable calls counter
     $execution{tarificableCalls}++ if $$cdr{peeringContractId};
@@ -388,20 +391,27 @@ sub setLegType {
 sub setCdrType {
     my $cdr = shift;
 
-    # Set type and subtype
+    # Set type: interna / externa
     if ($$cdr{proxies} =~ /PSTN/) {
         $$cdr{type} = 'externa'; 
-        if (not $$cdr{peeringContractId}) {
-            $$cdr{subtype} = 'entrante';
-        } else {
-            if ($$cdr{proxies} eq 'PSTN-PSTN') {
-                $$cdr{subtype} = 'entrante-saliente';
+    } else {
+        $$cdr{type} = 'interna'; 
+    }
+
+    # Set subtype for external calls: entrante, saliente, entrante-saliente
+    given ($$cdr{proxies}) {
+        when (/^USER-PSTN$/) { $$cdr{subtype} = 'saliente'; }
+        when (/^PSTN-USER$/) { $$cdr{subtype} = 'entrante'; }
+        when (/^PSTN-PSTN$/) { $$cdr{subtype} = 'entrante-saliente'; }
+        when (/^PSTN$/) {
+            # A-leg-only calls were distinguished using peeringContractId
+            # Since inboundCallsBilling this must be done using direction
+            if ($$cdr{direction} eq 'inbound') {
+                $$cdr{subtype} = 'entrante';
             } else {
                 $$cdr{subtype} = 'saliente';
             }
         }
-    } else {
-        $$cdr{type} = 'interna'; 
     }
 }
 

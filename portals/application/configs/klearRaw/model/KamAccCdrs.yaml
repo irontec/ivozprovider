@@ -197,6 +197,14 @@ production:
             template: '%number%'
           order: number
         'null': _("Unasigned")
+    direction: 
+      title: _('Direction')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'inbound': _('inbound')
+          'outbound': _('outbound')
 staging: 
   _extends: production
 testing: 

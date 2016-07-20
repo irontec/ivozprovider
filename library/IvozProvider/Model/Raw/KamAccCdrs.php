@@ -28,6 +28,10 @@ class KamAccCdrs extends ModelAbstract
         'delayed',
         'error',
     );
+    protected $_directionAcceptedValues = array(
+        'inbound',
+        'outbound',
+    );
 
     /**
      * Database var type int
@@ -232,6 +236,13 @@ class KamAccCdrs extends ModelAbstract
      */
     protected $_invoiceId;
 
+    /**
+     * Database var type enum('inbound','outbound')
+     *
+     * @var string
+     */
+    protected $_direction;
+
 
     /**
      * Parent relation kam_acc_cdrs_ibfk_1
@@ -299,6 +310,7 @@ class KamAccCdrs extends ModelAbstract
         'price'=>'price',
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
+        'direction'=>'direction',
     );
 
     /**
@@ -1479,6 +1491,43 @@ class KamAccCdrs extends ModelAbstract
     public function getInvoiceId()
     {
         return $this->_invoiceId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setDirection($data)
+    {
+
+        if ($this->_direction != $data) {
+            $this->_logChange('direction');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_direction = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_directionAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for direction'));
+            }
+            $this->_direction = (string) $data;
+
+        } else {
+            $this->_direction = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column direction
+     *
+     * @return string
+     */
+    public function getDirection()
+    {
+        return $this->_direction;
     }
 
     /**

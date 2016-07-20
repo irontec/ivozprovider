@@ -151,6 +151,13 @@ class DDIs extends ModelAbstract
      */
     protected $_countryId;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_billInboundCalls;
+
 
     /**
      * Parent relation DDIs_ibfk_1
@@ -263,6 +270,7 @@ class DDIs extends ModelAbstract
         'conferenceRoomId'=>'conferenceRoomId',
         'peeringContractId'=>'peeringContractId',
         'countryId'=>'countryId',
+        'billInboundCalls'=>'billInboundCalls',
     );
 
     /**
@@ -343,6 +351,7 @@ class DDIs extends ModelAbstract
 
         $this->_defaultValues = array(
             'recordCalls' => 'none',
+            'billInboundCalls' => '0',
         );
 
         $this->_initFileObjects();
@@ -936,6 +945,40 @@ class DDIs extends ModelAbstract
     public function getCountryId()
     {
         return $this->_countryId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setBillInboundCalls($data)
+    {
+
+        if ($this->_billInboundCalls != $data) {
+            $this->_logChange('billInboundCalls');
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_billInboundCalls = $data;
+
+        } else if (!is_null($data)) {
+            $this->_billInboundCalls = (int) $data;
+
+        } else {
+            $this->_billInboundCalls = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column billInboundCalls
+     *
+     * @return int
+     */
+    public function getBillInboundCalls()
+    {
+        return $this->_billInboundCalls;
     }
 
     /**

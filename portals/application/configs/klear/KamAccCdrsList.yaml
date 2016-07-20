@@ -44,6 +44,7 @@ production:
           externallyRated: true
           callidHash: true
           end_time_utc: true
+          srcIfInbound: true
         order:
           start_time_utc: 1
           brandId: 1
@@ -116,6 +117,8 @@ production:
             price: 6
             pricingPlanId: 6
             peeringContractId: 6
+            direction: 6
+            srcIfInbound: 6
 
   commands: 
     targetPatternautocomplete_command: &targetPatternautocomplete_commandLink

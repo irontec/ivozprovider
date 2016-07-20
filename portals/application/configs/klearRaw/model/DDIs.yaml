@@ -178,6 +178,17 @@ production:
             template: '%code%'
           order: code
         'null': _("Unasigned")
+    billInboundCalls: 
+      title: _('Bill inbound call')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
 staging: 
   _extends: production
 testing: 

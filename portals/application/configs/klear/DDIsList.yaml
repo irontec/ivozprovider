@@ -44,6 +44,7 @@ production:
           DDIE164: true
           brandId: true
           recordCalls: true
+          billInboundCalls: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -73,6 +74,11 @@ production:
             IVRCustomId: 1
             huntGroupId: 1
             conferenceRoomId: 1
+        group4:
+          label: _("Additional configuration")
+          colsPerRow: 12
+          fields:
+            billInboundCalls: 8
       options: 
         title: _("Options")
         screens: 
@@ -134,6 +140,7 @@ production:
           DDIE164: true
           peeringContractId: true
           brandId: true
+          billInboundCalls: true
         readOnly:
           DDI: true
           countryId: true

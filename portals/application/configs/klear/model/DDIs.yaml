@@ -90,6 +90,23 @@ production:
         icon: error
         text: _("Local legislation may enforce to announce the call recording to both parties, act responsibly")
         label: _("Need help?")
+    billInboundCalls: 
+      title: _('Bill inbound call')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: error
+        text: _("This setting needs external tarification module")
+        label: _("Need help?")
     userId: 
       title: _('User id')
       type: select

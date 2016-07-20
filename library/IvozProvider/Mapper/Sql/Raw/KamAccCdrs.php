@@ -77,6 +77,7 @@ class KamAccCdrs extends MapperAbstract
                 'price' => $model->getPrice(),
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
+                'direction' => $model->getDirection(),
             );
         } else {
             $result = array();
@@ -585,7 +586,8 @@ class KamAccCdrs extends MapperAbstract
                   ->setTargetPatternId($data['targetPatternId'])
                   ->setPrice($data['price'])
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
-                  ->setInvoiceId($data['invoiceId']);
+                  ->setInvoiceId($data['invoiceId'])
+                  ->setDirection($data['direction']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setProxy($data->{'proxy'})
@@ -615,7 +617,8 @@ class KamAccCdrs extends MapperAbstract
                   ->setTargetPatternId($data->{'targetPatternId'})
                   ->setPrice($data->{'price'})
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
-                  ->setInvoiceId($data->{'invoiceId'});
+                  ->setInvoiceId($data->{'invoiceId'})
+                  ->setDirection($data->{'direction'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\KamAccCdrs) {
             $entry->setId($data->getId())
@@ -646,7 +649,8 @@ class KamAccCdrs extends MapperAbstract
                   ->setTargetPatternId($data->getTargetPatternId())
                   ->setPrice($data->getPrice())
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
-                  ->setInvoiceId($data->getInvoiceId());
+                  ->setInvoiceId($data->getInvoiceId())
+                  ->setDirection($data->getDirection());
 
         }
 

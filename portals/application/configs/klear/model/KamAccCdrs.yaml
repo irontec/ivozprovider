@@ -42,6 +42,14 @@ production:
       title: _('Duration')
       type: text
       defaultValue: 0.000
+    direction: 
+      title: _('Type')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'inbound': _('inbound')
+          'outbound': _('outbound')
     caller: 
       title: _('Caller')
       type: text
@@ -124,9 +132,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           fieldName: 
             fields: 
-              - description
-            template: '%description%'
-          order: description
+              - name
+            template: '%name%'
+          order: name
         'null': _("Unasigned")
     externallyRated: 
       title: _('Externally rated')
@@ -208,6 +216,12 @@ production:
             template: '%number%'
           order: number
         'null': _("Unasigned")
+    srcIfInbound:
+      title: _('Source')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrSrc
+        method: getData
 staging: 
   _extends: production
 testing: 
