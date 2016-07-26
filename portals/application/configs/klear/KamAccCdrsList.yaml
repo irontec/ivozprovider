@@ -41,6 +41,7 @@ production:
           xcallid: true
           pricingPlanDetails: true
           meteringDate: true
+          reMeteringDate: true
           externallyRated: true
           callidHash: true
           end_time_utc: true
@@ -80,6 +81,7 @@ production:
           callid: true
           xcallid: true
           meteringDate: true
+          reMeteringDate: true
           pricingPlanDetails: true
           callidHash: true
           end_time_utc: true
