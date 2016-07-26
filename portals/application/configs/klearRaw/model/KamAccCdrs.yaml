@@ -205,6 +205,13 @@ production:
         values: 
           'inbound': _('inbound')
           'outbound': _('outbound')
+    reMeteringDate: 
+      title: _('Re metering date')
+      type: picker
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
 staging: 
   _extends: production
 testing: 
