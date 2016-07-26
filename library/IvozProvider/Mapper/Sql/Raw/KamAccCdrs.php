@@ -78,6 +78,7 @@ class KamAccCdrs extends MapperAbstract
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
                 'direction' => $model->getDirection(),
+                'reMeteringDate' => $model->getReMeteringDate(),
             );
         } else {
             $result = array();
@@ -587,7 +588,8 @@ class KamAccCdrs extends MapperAbstract
                   ->setPrice($data['price'])
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
                   ->setInvoiceId($data['invoiceId'])
-                  ->setDirection($data['direction']);
+                  ->setDirection($data['direction'])
+                  ->setReMeteringDate($data['reMeteringDate']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setProxy($data->{'proxy'})
@@ -618,7 +620,8 @@ class KamAccCdrs extends MapperAbstract
                   ->setPrice($data->{'price'})
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
                   ->setInvoiceId($data->{'invoiceId'})
-                  ->setDirection($data->{'direction'});
+                  ->setDirection($data->{'direction'})
+                  ->setReMeteringDate($data->{'reMeteringDate'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\KamAccCdrs) {
             $entry->setId($data->getId())
@@ -650,7 +653,8 @@ class KamAccCdrs extends MapperAbstract
                   ->setPrice($data->getPrice())
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
                   ->setInvoiceId($data->getInvoiceId())
-                  ->setDirection($data->getDirection());
+                  ->setDirection($data->getDirection())
+                  ->setReMeteringDate($data->getReMeteringDate());
 
         }
 

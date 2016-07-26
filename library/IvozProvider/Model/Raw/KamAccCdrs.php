@@ -243,6 +243,13 @@ class KamAccCdrs extends ModelAbstract
      */
     protected $_direction;
 
+    /**
+     * Database var type datetime
+     *
+     * @var string
+     */
+    protected $_reMeteringDate;
+
 
     /**
      * Parent relation kam_acc_cdrs_ibfk_1
@@ -311,6 +318,7 @@ class KamAccCdrs extends ModelAbstract
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
         'direction'=>'direction',
+        'reMeteringDate'=>'reMeteringDate',
     );
 
     /**
@@ -1528,6 +1536,62 @@ class KamAccCdrs extends ModelAbstract
     public function getDirection()
     {
         return $this->_direction;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string|Zend_Date|DateTime $date
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setReMeteringDate($data)
+    {
+        if ($data == '0000-00-00 00:00:00') {
+            $data = null;
+        }
+        if ($data === 'CURRENT_TIMESTAMP') {
+            $data = \Zend_Date::now()->setTimezone('UTC');
+        }
+
+        if ($data instanceof \Zend_Date) {
+
+            $data = new \DateTime($data->toString('yyyy-MM-dd HH:mm:ss'), new \DateTimeZone($data->getTimezone()));
+
+        } elseif (!is_null($data) && !$data instanceof \DateTime) {
+
+            $data = new \DateTime($data, new \DateTimeZone('UTC'));
+        }
+        if ($data instanceof \DateTime && $data->getTimezone()->getName() != 'UTC') {
+
+            $data->setTimezone(new \DateTimeZone('UTC'));
+        }
+
+        if ($this->_reMeteringDate != $data) {
+            $this->_logChange('reMeteringDate');
+        }
+
+        $this->_reMeteringDate = $data;
+        return $this;
+    }
+
+    /**
+     * Gets column reMeteringDate
+     *
+     * @param boolean $returnZendDate
+     * @return Zend_Date|null|string Zend_Date representation of this datetime if enabled, or ISO 8601 string if not
+     */
+    public function getReMeteringDate($returnZendDate = false)
+    {
+        if (is_null($this->_reMeteringDate)) {
+            return null;
+        }
+
+        if ($returnZendDate) {
+            $zendDate = new \Zend_Date($this->_reMeteringDate->getTimestamp(), \Zend_Date::TIMESTAMP);
+            $zendDate->setTimezone('UTC');
+            return $zendDate;
+        }
+
+        return $this->_reMeteringDate->format('Y-m-d H:i:s');
     }
 
     /**
