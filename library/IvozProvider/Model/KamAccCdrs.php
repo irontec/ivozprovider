@@ -41,7 +41,11 @@ class KamAccCdrs extends Raw\KamAccCdrs
         }
 
         $callDate = $this->getStartTimeUtc(true);
+
         $dst = $this->getCallee();
+        if ($this->getDirection() == "inbound") {
+            $dst = $this->getCaller();
+        }
         $duration = $this->getDuration();
 
         $company = $this->getCompany();

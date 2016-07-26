@@ -169,7 +169,7 @@
             <tr border.color="black" text-align="center">
                 <td padding="5px" >{{call.calldate}}</td>
                 <td padding="5px" >{{call.dst}}</td>
-                <td padding="5px" >{{call.duration}}</td>
+                <td padding="5px" >{{call.durationFormatted}}</td>
                 <td padding="5px" >{{call.pricingPlan.name}}</td>
                 <td padding="5px" >{{call.price}} €</td>
             </tr>

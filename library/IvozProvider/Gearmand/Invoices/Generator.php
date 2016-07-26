@@ -180,13 +180,20 @@ class Generator
                 $callData["dst"] = $call->getCallee();
                 $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);
+                $callData["durationFormatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["targetPattern"] = $call->getTargetPattern()->toArray();
                 $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
+                if ($call->getDirection() == "inbound") {
+                    $callData["targetPattern"]["name"] = " Inbound";
+                }
                 $callData["targetPattern"]["description"] = $call->getTargetPattern()->getDescription($lang);
                 $callData["pricingPlan"] = $call->getPricingPlan()->toArray();
                 $callData["pricingPlan"]["name"] = $call->getPricingPlan()->getName($lang);
                 $callData["pricingPlan"]["description"] = $call->getPricingPlan()->getDescription($lang);
                 $callType = md5($call->getTargetPattern()->getName());
+                if ($call->getDirection() == "inbound") {
+                    $callType = md5(" inbound");
+                }
                 if (!isset($callSumary[$callType])) {
                     $callSumary[$callType] = array(
                             "type" => $callData["targetPattern"]["name"],
@@ -194,6 +201,9 @@ class Generator
                             "totalCallsDuration" => 0,
                             "totalPrice" => 0
                     );
+                }
+                if ($call->getDirection() == "inbound") {
+                    $callSumary[$callType]["type"] = " Inbound";
                 }
                 if (!isset($callsPerType[$callType])) {
                     $callsPerType[$callType] = array();
@@ -227,6 +237,8 @@ class Generator
         $this->_log("[Invoices][Generator] TotalPrice: ".$total, \Zend_Log::INFO);
         $this->_log("[Invoices][Generator] Total price with taxes: ".$totalWithTaxex, \Zend_Log::INFO);
 
+        asort($callSumary);
+        asort($callsPerType);
         return array(
                 "callSumary" => $callSumary,
                 "callsPerType" => $callsPerType,
