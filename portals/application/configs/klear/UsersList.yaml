@@ -91,7 +91,6 @@ production:
         blacklist:
           HuntGroupsRelUsers: true
           maxCalls: true
-          countryId: true 
           tokenKey: true
       fixedPositions: &UsersFixedPositions_link
         group0:
