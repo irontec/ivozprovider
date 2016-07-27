@@ -51,9 +51,6 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
-      fields:
-        blacklist:
-          metric: true
       fixedPositions: &pricingPlansRelCompaniesFixedPositions_Link
         group0:
           colsPerRow: 3
