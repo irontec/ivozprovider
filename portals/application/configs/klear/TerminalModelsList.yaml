@@ -41,6 +41,7 @@ production:
       controller: new
       class: ui-silk-add
       label: true
+      fullWidth: true
       multiInstance: true
       title: _("Add %s", ngettext('Terminal model', 'Terminal models', 1))
       shortcutOption: N
@@ -56,6 +57,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
+      fullWidth: true
       title: _("Edit %s %2s", ngettext('Terminal model', 'Terminal models', 1), "[format| (%item%)]")
       fields:
         order:

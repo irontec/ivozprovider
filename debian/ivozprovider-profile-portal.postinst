@@ -10,6 +10,14 @@ if [ -z "$2" ]; then
     echo >> ~/.bashrc
 fi
 
+# Create certificate links if required
+[ ! -e /etc/ssl/certs/ivozprovider-portals.pem ]    && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem   /etc/ssl/certs/ivozprovider-portals.pem
+[ ! -e /etc/ssl/private/ivozprovider-portals.key ]  && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/private/ivozprovider-portals.key
+[ ! -e /etc/ssl/certs/yealink.crt ]     && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/yealink.crt
+[ ! -e /etc/ssl/private/yealink.key ]   && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/yealink.key
+[ ! -e /etc/ssl/certs/cisco.crt ]       && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/cisco.crt
+[ ! -e /etc/ssl/private/cisco.key ]     && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/cisco.key
+
 # Enable apache sites and modules
 [ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
 [ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
