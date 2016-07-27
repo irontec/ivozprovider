@@ -41,6 +41,11 @@ class Formatter
             $valueKey = $matches[4];
             $string = $matches[5];
             $array = self::_getVariableValue($values, $arrayKey);
+
+            if (is_null($array)) {
+                $array = array();
+            }
+
             $parsedString = "";
             foreach ($array as $id => $value) {
                 $targetStr = "{{".$idKey."}}";
@@ -60,6 +65,7 @@ class Formatter
 
 
             }
+
             $template = str_replace($fullMatch, $parsedString, $template);
             if ($targetArray == "callData.callsPerType") {
                 //echo $template; die();
@@ -85,7 +91,7 @@ class Formatter
         $keysArray = explode(".", $key);
         $value = $variables;
         foreach ($keysArray as $key) {
-            if (isset($value[$key])) {
+            if (isset($value[$key]) && !empty($value[$key])) {
                 $value = $value[$key];
             } else {
                 return null;

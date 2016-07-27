@@ -150,6 +150,7 @@ class Generator
                 "totalCallsDuration" => 0,
                 "totalPrice" => 0
         );
+        $inboundCalls = array();
 
         $this->_fixedCostTotal = 0;
         $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
@@ -183,42 +184,61 @@ class Generator
                 $callData["durationFormatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["targetPattern"] = $call->getTargetPattern()->toArray();
                 $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
-                if ($call->getDirection() == "inbound") {
-                    $callData["targetPattern"]["name"] = " Inbound";
-                }
+//                if ($call->getDirection() == "inbound") {
+//                    $callData["targetPattern"]["name"] = " Inbound";
+//                }
                 $callData["targetPattern"]["description"] = $call->getTargetPattern()->getDescription($lang);
                 $callData["pricingPlan"] = $call->getPricingPlan()->toArray();
                 $callData["pricingPlan"]["name"] = $call->getPricingPlan()->getName($lang);
                 $callData["pricingPlan"]["description"] = $call->getPricingPlan()->getDescription($lang);
                 $callType = md5($call->getTargetPattern()->getName());
                 if ($call->getDirection() == "inbound") {
-                    $callType = md5(" inbound");
-                }
-                if (!isset($callSumary[$callType])) {
-                    $callSumary[$callType] = array(
+//                    $callType = md5(" inbound");
+                    if (!isset($inboundCalls["summary"])) {
+                        $inboundCalls["summary"] = array(
+                            "numberOfCalls" => 0,
+                            "totalCallsDuration" => 0,
+                            "totalPrice" => 0
+                        );
+                    }
+
+                } else {
+                    if (!isset($callSumary[$callType])) {
+                        $callSumary[$callType] = array(
                             "type" => $callData["targetPattern"]["name"],
                             "numberOfCalls" => 0,
                             "totalCallsDuration" => 0,
                             "totalPrice" => 0
-                    );
+                        );
+                    }
                 }
                 if ($call->getDirection() == "inbound") {
-                    $callSumary[$callType]["type"] = " Inbound";
+//                    $callSumary[$callType]["type"] = " Inbound";
+                    $inboundCalls["calls"][] = $callData;
+                } else {
+                    if (!isset($callsPerType[$callType])) {
+                        $callsPerType[$callType] = array();
+                    }
+                    $callsPerType[$callType][] = $callData;
                 }
-                if (!isset($callsPerType[$callType])) {
-                    $callsPerType[$callType] = array();
+                if ($call->getDirection() == "inbound") {
+                    $inboundCalls["summary"]["numberOfCalls"] += 1;
+                    $inboundCalls["summary"]["totalCallsDuration"] += $call->getDuration();
+                    $inboundCalls["summary"]["totalCallsDurationFormatted"] = gmdate("H:i:s", $inboundCalls["summary"]["totalCallsDuration"]);
+                    $inboundCalls["summary"]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
+                } else {
+                    $callSumary[$callType]["numberOfCalls"] += 1;
+                    $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
+                    $callSumary[$callType]["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumary[$callType]["totalCallsDuration"]);
+                    $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
                 }
-                $callsPerType[$callType][] = $callData;
-                $callSumary[$callType]["numberOfCalls"] += 1;
-                $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
-                $callSumary[$callType]["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumary[$callType]["totalCallsDuration"]);
-                $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callSumaryTotals["numberOfCalls"] += 1;
                 $callSumaryTotals["totalCallsDuration"] += $call->getDuration();
                 $callSumaryTotals["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumaryTotals["totalCallsDuration"]);
                 $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
 
                 $call->setInvoice($invoice)->save();
+
             }
         }
 
@@ -239,11 +259,14 @@ class Generator
 
         asort($callSumary);
         asort($callsPerType);
-        return array(
+        $finalData= array(
                 "callSumary" => $callSumary,
                 "callsPerType" => $callsPerType,
                 "callSumaryTotals" => $callSumaryTotals,
+                "inboundCalls" => $inboundCalls,
         );
+
+        return $finalData;
     }
 
     protected function _log($message, $priority)
