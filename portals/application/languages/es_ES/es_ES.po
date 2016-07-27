@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-20 17:23+0200\n"
-"PO-Revision-Date: 2016-07-20 17:23+0200\n"
+"PO-Revision-Date: 2016-07-21 13:03+0200\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-Basepath: ../../configs/klear\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: ApplicationServersList.yaml:20 ApplicationServersList.yaml:46
@@ -2280,7 +2280,7 @@ msgstr "Marca"
 
 #: model/BrandURLs.yaml:90
 msgid "admin"
-msgstr "Administador"
+msgstr "Administrador"
 
 #: model/BrandURLs.yaml:95 model/DDIs.yaml:47 model/Extensions.yaml:31
 msgid "user"
