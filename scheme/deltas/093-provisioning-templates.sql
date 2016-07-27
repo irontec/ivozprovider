@@ -5,7 +5,7 @@ account.1.label = Line
 
 auto_provision.mode = 6
 auto_provision.schedule.periodic_minute = 1
-auto_provision.server.url = https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:1443/provision/t21E2
+auto_provision.server.url = https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:1443/provision/t21E2
 auto_provision.dhcp_option.enable = 0
 auto_provision.pnp_enable = 0
 
@@ -37,7 +37,7 @@ account.1.label = Line
 
 auto_provision.mode = 6
 auto_provision.schedule.periodic_minute = 1
-auto_provision.server.url = https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:1443/provision/t21
+auto_provision.server.url = https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:1443/provision/t21
 auto_provision.dhcp_option.enable = 0
 auto_provision.pnp_enable = 0
 
@@ -67,7 +67,7 @@ account.1.label = Line
 
 auto_provision.mode = 6
 auto_provision.schedule.periodic_minute = 1
-auto_provision.server.url = https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:1443/provision/t27
+auto_provision.server.url = https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:1443/provision/t27
 auto_provision.dhcp_option.enable = 0
 auto_provision.pnp_enable = 0
 
@@ -107,7 +107,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 <Resync_Fails_On_FNF>Yes</Resync_Fails_On_FNF>
 <SPCP_Auto-detect>No</SPCP_Auto-detect>
 
-<Profile_Rule>https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:2433/provision/spa502g/$MA.cfg</Profile_Rule>
+<Profile_Rule>https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:2433/provision/spa502g/$MA.cfg</Profile_Rule>
 
 <Set_Local_Date__mm_dd_/>
 <Set_Local_Time__HH_mm_/>
@@ -125,7 +125,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 
 <?php
 echo \"<Language_Selection>Spanish</Language_Selection>\";
-echo \"<Dictionary_Server_Script>serv=https://\" . $_SERVER[\'HTTP_HOST\'] . \":2443/terminals/ciscolang/\";
+echo \"<Dictionary_Server_Script>serv=https://\" . $_SERVER[\'SERVER_NAME\'] . \":2443/terminals/ciscolang/\";
 
 preg_match(\"/-([0-9\.]*).*[\s,]+/\",$_SERVER[\'HTTP_USER_AGENT\'],$firmware);
 if(array_key_exists(\"1\",$firmware)){
@@ -179,7 +179,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 <Resync_Fails_On_FNF>Yes</Resync_Fails_On_FNF>
 <SPCP_Auto-detect>No</SPCP_Auto-detect>
 
-<Profile_Rule>https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:2433/provision/spa504g/$MA.cfg</Profile_Rule>
+<Profile_Rule>https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:2433/provision/spa504g/$MA.cfg</Profile_Rule>
 
 <Resync_Periodic></Resync_Periodic>
 
@@ -200,7 +200,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 
 <?php
 echo \"<Language_Selection>Spanish</Language_Selection>\";
-echo \"<Dictionary_Server_Script>serv=https://\" . $_SERVER[\'HTTP_HOST\'] . \":2443/terminals/ciscolang/\";
+echo \"<Dictionary_Server_Script>serv=https://\" . $_SERVER[\'SERVER_NAME\'] . \":2443/terminals/ciscolang/\";
 
 preg_match(\"/-([0-9\.]*).*[\s,]+/\",$_SERVER[\'HTTP_USER_AGENT\'],$firmware);
 if(array_key_exists(\"1\",$firmware)){
@@ -252,7 +252,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 <Resync_Fails_On_FNF>Yes</Resync_Fails_On_FNF>
 <SPCP_Auto-detect>No</SPCP_Auto-detect>
 
-<Profile_Rule>https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:2433/provision/spa509g/$MA.cfg</Profile_Rule>
+<Profile_Rule>https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:2433/provision/spa509g/$MA.cfg</Profile_Rule>
 
 <Set_Local_Date__mm_dd_/>
 <Set_Local_Time__HH_mm_/>
@@ -270,7 +270,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 
 <?php
 echo \"<Language_Selection>Spanish</Language_Selection>\";
-echo \"<Dictionary_Server_Script>serv=https://\" . $_SERVER[\'HTTP_HOST\'] . \":2443/terminals/ciscolang/\";
+echo \"<Dictionary_Server_Script>serv=https://\" . $_SERVER[\'SERVER_NAME\'] . \":2443/terminals/ciscolang/\";
 
 preg_match(\"/-([0-9\.]*).*[\s,]+/\",$_SERVER[\'HTTP_USER_AGENT\'],$firmware);
 if(array_key_exists(\"1\",$firmware)){
@@ -323,7 +323,7 @@ INSERT IGNORE INTO TerminalModels (iden, name, description, genericTemplate, gen
 <Resync_Fails_On_FNF>Yes</Resync_Fails_On_FNF>
 <SPCP_Auto-detect>No</SPCP_Auto-detect>
 
-<Profile_Rule>https://<?php echo $_SERVER[\'HTTP_HOST\'] ?>:2433/provision/spa525g2/$MA.cfg</Profile_Rule>
+<Profile_Rule>https://<?php echo $_SERVER[\'SERVER_NAME\']; ?>:2433/provision/spa525g2/$MA.cfg</Profile_Rule>
 
 <Set_Local_Date__mm_dd_/>
 <Set_Local_Time__HH_mm_/>
