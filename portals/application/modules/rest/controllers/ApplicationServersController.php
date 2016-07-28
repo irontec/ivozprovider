@@ -317,7 +317,7 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -328,12 +328,12 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'ip' => array(
-                    'type' => 'varbinary(16)',
+                    'type' => "varbinary(16)",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -344,17 +344,17 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'ip' => array(
-                    'type' => 'varbinary(16)',
+                    'type' => "varbinary(16)",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -364,7 +364,7 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

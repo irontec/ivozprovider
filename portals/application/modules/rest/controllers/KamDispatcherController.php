@@ -352,7 +352,7 @@ class Rest_KamDispatcherController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -363,37 +363,37 @@ class Rest_KamDispatcherController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'setid' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'destination' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'flags' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'attrs' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'applicationServerId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -404,42 +404,42 @@ class Rest_KamDispatcherController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'setid' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'destination' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'flags' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'attrs' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'applicationServerId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -449,7 +449,7 @@ class Rest_KamDispatcherController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

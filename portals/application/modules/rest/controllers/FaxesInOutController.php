@@ -230,7 +230,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="dst", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="[enum:In|Out]")
      * @ApiParams(name="pages", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="status", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="status", nullable=true, type="enum('error','pending','inprogress','completed')", sample="", description="")
      * @ApiParams(name="file", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/faxesinout/{id}")
@@ -278,7 +278,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="dst", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="[enum:In|Out]")
      * @ApiParams(name="pages", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="status", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="status", nullable=true, type="enum('error','pending','inprogress','completed')", sample="", description="")
      * @ApiParams(name="file", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -369,7 +369,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -380,42 +380,42 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'calldate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => 'Hora de recepcion del fax',
                 ),
                 'faxId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'src' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'dst' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'type' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:In|Out]',
                 ),
                 'pages' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'status' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('error','pending','inprogress','completed')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'file' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO]',
                 ),
@@ -426,47 +426,47 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'calldate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => 'Hora de recepcion del fax',
                 ),
                 'faxId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'src' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'dst' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'type' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:In|Out]',
                 ),
                 'pages' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'status' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('error','pending','inprogress','completed')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'file' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO]',
                 ),
@@ -476,7 +476,7 @@ class Rest_FaxesInOutController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

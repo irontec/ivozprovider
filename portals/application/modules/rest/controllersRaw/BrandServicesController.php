@@ -324,7 +324,7 @@ class Rest_BrandServicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -335,17 +335,17 @@ class Rest_BrandServicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'serviceId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'code' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -356,22 +356,22 @@ class Rest_BrandServicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'serviceId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'code' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -381,7 +381,7 @@ class Rest_BrandServicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

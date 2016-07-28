@@ -360,7 +360,7 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -371,37 +371,37 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'callid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'calldate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'duration' => array(
-                    'type' => 'float',
+                    'type' => "float",
                     'required' => true,
                     'comment' => '',
                 ),
                 'caller' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'recordedFile' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO:keepExtension|storeInBaseFolder]',
                 ),
@@ -412,42 +412,42 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'callid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'calldate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'duration' => array(
-                    'type' => 'float',
+                    'type' => "float",
                     'required' => true,
                     'comment' => '',
                 ),
                 'caller' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'recordedFile' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO:keepExtension|storeInBaseFolder]',
                 ),
@@ -457,7 +457,7 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

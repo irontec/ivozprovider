@@ -331,7 +331,7 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -342,22 +342,22 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'huntGroupId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'timeoutTime' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -368,27 +368,27 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'huntGroupId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'timeoutTime' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -398,7 +398,7 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -345,7 +345,7 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -356,32 +356,32 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
             'description' => '',
             'params' => array(
                 'pricingPlanId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'validFrom' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'validTo' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'metric' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -392,37 +392,37 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'pricingPlanId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'validFrom' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'validTo' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'metric' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -432,7 +432,7 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

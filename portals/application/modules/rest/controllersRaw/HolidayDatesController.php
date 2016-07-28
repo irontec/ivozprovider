@@ -331,7 +331,7 @@ class Rest_HolidayDatesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -342,22 +342,22 @@ class Rest_HolidayDatesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'calendarId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'eventDate' => array(
-                    'type' => 'date',
+                    'type' => "date",
                     'required' => true,
                     'comment' => '',
                 ),
                 'locutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -368,27 +368,27 @@ class Rest_HolidayDatesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'calendarId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'eventDate' => array(
-                    'type' => 'date',
+                    'type' => "date",
                     'required' => true,
                     'comment' => '',
                 ),
                 'locutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -398,7 +398,7 @@ class Rest_HolidayDatesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

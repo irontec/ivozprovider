@@ -359,7 +359,7 @@ class Rest_TerminalModelsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -370,42 +370,42 @@ class Rest_TerminalModelsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'iden' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'TerminalManufacturerId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'genericTemplate' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
                 'specificTemplate' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
                 'genericUrlPattern' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'specificUrlPattern' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -416,47 +416,47 @@ class Rest_TerminalModelsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'iden' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'TerminalManufacturerId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'genericTemplate' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
                 'specificTemplate' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
                 'genericUrlPattern' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'specificUrlPattern' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -466,7 +466,7 @@ class Rest_TerminalModelsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

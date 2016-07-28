@@ -352,7 +352,7 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -363,37 +363,37 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
             'description' => '',
             'params' => array(
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'caller_in' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee_in' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'caller_out' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee_out' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -404,42 +404,42 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'caller_in' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee_in' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'caller_out' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee_out' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -449,7 +449,7 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -41,7 +41,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      *     'enabled': '', 
      *     'tag': '', 
      *     'description': '', 
-     *     'targetPatternId': '', 
+     *     'routingPatternId': '', 
      *     'outgoingRoutingId': ''
      * },{
      *     'id': '', 
@@ -53,7 +53,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      *     'enabled': '', 
      *     'tag': '', 
      *     'description': '', 
-     *     'targetPatternId': '', 
+     *     'routingPatternId': '', 
      *     'outgoingRoutingId': ''
      * }]")
      */
@@ -81,7 +81,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
                 'enabled',
                 'tag',
                 'description',
-                'targetPatternId',
+                'routingPatternId',
                 'outgoingRoutingId',
             );
         }
@@ -165,7 +165,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      *     'enabled': '', 
      *     'tag': '', 
      *     'description': '', 
-     *     'targetPatternId': '', 
+     *     'routingPatternId': '', 
      *     'outgoingRoutingId': ''
      * }")
      */
@@ -192,7 +192,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
                 'enabled',
                 'tag',
                 'description',
-                'targetPatternId',
+                'routingPatternId',
                 'outgoingRoutingId',
             );
         }
@@ -242,7 +242,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="enabled", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="tag", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="routingPatternId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outgoingRoutingId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/lcrrules/{id}")
@@ -287,7 +287,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="enabled", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="tag", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="routingPatternId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outgoingRoutingId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -373,7 +373,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -384,52 +384,52 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'prefix' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'from_uri' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'request_uri' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'stopper' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'enabled' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'tag' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'targetPatternId' => array(
-                    'type' => 'int',
+                'routingPatternId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outgoingRoutingId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -440,57 +440,57 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'prefix' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'from_uri' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'request_uri' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'stopper' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'enabled' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'tag' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'targetPatternId' => array(
-                    'type' => 'int',
+                'routingPatternId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outgoingRoutingId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -500,7 +500,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

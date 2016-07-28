@@ -331,7 +331,7 @@ class Rest_CallACLRelPatternsController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -342,22 +342,22 @@ class Rest_CallACLRelPatternsController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'CallACLId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'CallACLPatternId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'policy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:allow|deny]',
                 ),
@@ -368,27 +368,27 @@ class Rest_CallACLRelPatternsController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'CallACLId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'CallACLPatternId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'policy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:allow|deny]',
                 ),
@@ -398,7 +398,7 @@ class Rest_CallACLRelPatternsController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -324,7 +324,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => "mediumint",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -335,17 +335,17 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'table' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'etag' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'lastChange' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -356,22 +356,22 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => "mediumint",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'table' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'etag' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'lastChange' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -381,7 +381,7 @@ class Rest_EtagVersionsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'mediumint',
+                    'type' => "mediumint",
                     'required' => true
                 )
             )

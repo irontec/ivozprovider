@@ -1,12 +1,12 @@
 <?php
 /**
- * XMLRPCLogs
+ * RoutingPatterns
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
+class Rest_RoutingPatternsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,31 +24,33 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="GET information about all XMLRPCLogs")
+     * @ApiDescription(section="RoutingPatterns", description="GET information about all RoutingPatterns")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
+     * @ApiRoute(name="/rest/routing-patterns/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'proxy': '', 
-     *     'module': '', 
-     *     'method': '', 
-     *     'mapperName': '', 
-     *     'startDate': '', 
-     *     'execDate': '', 
-     *     'finishDate': ''
+     *     'name': '', 
+     *     'name_en': '', 
+     *     'name_es': '', 
+     *     'description': '', 
+     *     'description_en': '', 
+     *     'description_es': '', 
+     *     'regExp': '', 
+     *     'brandId': ''
      * },{
      *     'id': '', 
-     *     'proxy': '', 
-     *     'module': '', 
-     *     'method': '', 
-     *     'mapperName': '', 
-     *     'startDate': '', 
-     *     'execDate': '', 
-     *     'finishDate': ''
+     *     'name': '', 
+     *     'name_en': '', 
+     *     'name_es': '', 
+     *     'description': '', 
+     *     'description_en': '', 
+     *     'description_es': '', 
+     *     'regExp': '', 
+     *     'brandId': ''
      * }]")
      */
     public function indexAction()
@@ -67,13 +69,14 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'proxy',
-                'module',
-                'method',
-                'mapperName',
-                'startDate',
-                'execDate',
-                'finishDate',
+                'name',
+                'nameEn',
+                'nameEs',
+                'description',
+                'descriptionEn',
+                'descriptionEs',
+                'regExp',
+                'brandId',
             );
         }
 
@@ -92,7 +95,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('XMLRPCLogs');
+        $etag = $this->_cache->getEtagVersions('RoutingPatterns');
 
         $hashEtag = md5(
             serialize(
@@ -108,7 +111,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\RoutingPatterns();
 
         $items = $mapper->fetchList(
             $where,
@@ -141,20 +144,21 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Get information about XMLRPCLogs")
+     * @ApiDescription(section="RoutingPatterns", description="Get information about RoutingPatterns")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/{id}")
+     * @ApiRoute(name="/rest/routing-patterns/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'proxy': '', 
-     *     'module': '', 
-     *     'method': '', 
-     *     'mapperName': '', 
-     *     'startDate': '', 
-     *     'execDate': '', 
-     *     'finishDate': ''
+     *     'name': '', 
+     *     'name_en': '', 
+     *     'name_es': '', 
+     *     'description': '', 
+     *     'description_en': '', 
+     *     'description_es': '', 
+     *     'regExp': '', 
+     *     'brandId': ''
      * }")
      */
     public function getAction()
@@ -172,17 +176,18 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'proxy',
-                'module',
-                'method',
-                'mapperName',
-                'startDate',
-                'execDate',
-                'finishDate',
+                'name',
+                'nameEn',
+                'nameEs',
+                'description',
+                'descriptionEn',
+                'descriptionEs',
+                'regExp',
+                'brandId',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('XMLRPCLogs');
+        $etag = $this->_cache->getEtagVersions('RoutingPatterns');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -198,7 +203,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\RoutingPatterns();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -216,18 +221,19 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Create's a new XMLRPCLogs")
+     * @ApiDescription(section="RoutingPatterns", description="Create's a new RoutingPatterns")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
-     * @ApiParams(name="proxy", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="module", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="method", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mapperName", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="startDate", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="execDate", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="finishDate", nullable=true, type="datetime", sample="", description="")
+     * @ApiRoute(name="/rest/routing-patterns/")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="[ml]")
+     * @ApiParams(name="name_en", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="[ml]")
+     * @ApiParams(name="description_en", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="regExp", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/xmlrpclogs/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/routingpatterns/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -235,7 +241,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\XMLRPCLogs();
+        $model = new Models\RoutingPatterns();
 
         try {
             $model->populateFromArray($params);
@@ -257,17 +263,18 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Table XMLRPCLogs")
+     * @ApiDescription(section="RoutingPatterns", description="Table RoutingPatterns")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
+     * @ApiRoute(name="/rest/routing-patterns/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="proxy", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="module", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="method", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mapperName", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="startDate", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="execDate", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="finishDate", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="[ml]")
+     * @ApiParams(name="name_en", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="[ml]")
+     * @ApiParams(name="description_en", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="regExp", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -283,7 +290,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\RoutingPatterns();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -307,9 +314,9 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Table XMLRPCLogs")
+     * @ApiDescription(section="RoutingPatterns", description="Table RoutingPatterns")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
+     * @ApiRoute(name="/rest/routing-patterns/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -324,7 +331,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\RoutingPatterns();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -362,39 +369,34 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'proxy' => array(
+                'name_en' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'module' => array(
+                'name_es' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'method' => array(
+                'description_en' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'mapperName' => array(
+                'description_es' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'startDate' => array(
-                    'type' => "timestamp",
+                'regExp' => array(
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'execDate' => array(
-                    'type' => "datetime",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'finishDate' => array(
-                    'type' => "datetime",
-                    'required' => false,
+                'brandId' => array(
+                    'type' => "int",
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -408,39 +410,34 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'proxy' => array(
+                'name_en' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'module' => array(
+                'name_es' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'method' => array(
+                'description_en' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'mapperName' => array(
+                'description_es' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'startDate' => array(
-                    'type' => "timestamp",
+                'regExp' => array(
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'execDate' => array(
-                    'type' => "datetime",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'finishDate' => array(
-                    'type' => "datetime",
-                    'required' => false,
+                'brandId' => array(
+                    'type' => "int",
+                    'required' => true,
                     'comment' => '',
                 ),
             )

@@ -36,7 +36,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'name': '', 
      *     'nif': '', 
      *     'domain_trunks': '', 
-     *     'domain_users': '', 
      *     'defaultTimezoneId': '', 
      *     'logo': '', 
      *     'postalAddress': '', 
@@ -51,7 +50,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'name': '', 
      *     'nif': '', 
      *     'domain_trunks': '', 
-     *     'domain_users': '', 
      *     'defaultTimezoneId': '', 
      *     'logo': '', 
      *     'postalAddress': '', 
@@ -82,7 +80,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'name',
                 'nif',
                 'domainTrunks',
-                'domainUsers',
                 'defaultTimezoneId',
                 //'logoUrl:@profile', Cambia @profile por el profile del fso.ini
                 'postalAddress',
@@ -169,7 +166,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'name': '', 
      *     'nif': '', 
      *     'domain_trunks': '', 
-     *     'domain_users': '', 
      *     'defaultTimezoneId': '', 
      *     'logo': '', 
      *     'postalAddress': '', 
@@ -199,7 +195,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'name',
                 'nif',
                 'domainTrunks',
-                'domainUsers',
                 'defaultTimezoneId',
                 //'logoUrl:@profile', Cambia @profile por el profile del fso.ini
                 'postalAddress',
@@ -252,7 +247,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="domain_trunks", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="logo", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -305,7 +299,6 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="domain_trunks", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="logo", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -404,7 +397,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -415,67 +408,62 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'nif' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'domain_trunks' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'domain_users' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'defaultTimezoneId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'logo' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO]',
                 ),
                 'postalAddress' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'postalCode' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'town' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'province' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'country' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'registryData' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'languageId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -486,72 +474,67 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'nif' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'domain_trunks' => array(
-                    'type' => 'varchar',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'domain_users' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'defaultTimezoneId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'logo' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO]',
                 ),
                 'postalAddress' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'postalCode' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'town' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'province' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'country' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'registryData' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'languageId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -561,7 +544,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

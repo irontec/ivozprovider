@@ -47,7 +47,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'faxId': '', 
      *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
-     *     'countryId': ''
+     *     'countryId': '', 
+     *     'billInboundCalls': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -64,7 +65,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'faxId': '', 
      *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
-     *     'countryId': ''
+     *     'countryId': '', 
+     *     'billInboundCalls': ''
      * }]")
      */
     public function indexAction()
@@ -98,6 +100,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'conferenceRoomId',
                 'peeringContractId',
                 'countryId',
+                'billInboundCalls',
             );
         }
 
@@ -186,7 +189,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'faxId': '', 
      *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
-     *     'countryId': ''
+     *     'countryId': '', 
+     *     'billInboundCalls': ''
      * }")
      */
     public function getAction()
@@ -219,6 +223,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'conferenceRoomId',
                 'peeringContractId',
                 'countryId',
+                'billInboundCalls',
             );
         }
 
@@ -274,6 +279,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="billInboundCalls", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/ddis/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -324,6 +330,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="billInboundCalls", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -408,7 +415,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -419,78 +426,83 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'DDI' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'DDIE164' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'externalCallFilterId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'recordCalls' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:none|all|inbound|outbound]',
                 ),
                 'routeType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'IVRCommonId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'IVRCustomId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'huntGroupId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'faxId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'conferenceRoomId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'countryId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'billInboundCalls' => array(
+                    'type' => "tinyint",
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -500,83 +512,88 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'DDI' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'DDIE164' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'externalCallFilterId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'recordCalls' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:none|all|inbound|outbound]',
                 ),
                 'routeType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'IVRCommonId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'IVRCustomId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'huntGroupId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'faxId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'conferenceRoomId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'countryId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'billInboundCalls' => array(
+                    'type' => "tinyint",
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -585,7 +602,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

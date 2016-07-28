@@ -225,7 +225,7 @@ class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mode", nullable=true, type="enum('custom','files','mp3nb','quietmp3nb','quietmp3')", sample="", description="")
      * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
@@ -268,7 +268,7 @@ class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/ast-musiconhold/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="mode", nullable=true, type="enum('custom','files','mp3nb','quietmp3nb','quietmp3')", sample="", description="")
      * @ApiParams(name="directory", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="application", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="digit", nullable=true, type="varchar", sample="", description="")
@@ -359,7 +359,7 @@ class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -370,42 +370,42 @@ class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mode' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('custom','files','mp3nb','quietmp3nb','quietmp3')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'directory' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'application' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'digit' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sort' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'format' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'stamp' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -416,47 +416,47 @@ class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mode' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('custom','files','mp3nb','quietmp3nb','quietmp3')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'directory' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'application' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'digit' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sort' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'format' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'stamp' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -466,7 +466,7 @@ class Rest_AstMusiconholdController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

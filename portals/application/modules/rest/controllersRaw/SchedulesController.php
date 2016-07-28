@@ -380,7 +380,7 @@ class Rest_SchedulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -391,57 +391,57 @@ class Rest_SchedulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'timeIn' => array(
-                    'type' => 'time',
+                    'type' => "time",
                     'required' => true,
                     'comment' => '',
                 ),
                 'timeout' => array(
-                    'type' => 'time',
+                    'type' => "time",
                     'required' => true,
                     'comment' => '',
                 ),
                 'monday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'tuesday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'wednesday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'thursday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'friday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'saturday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sunday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -452,62 +452,62 @@ class Rest_SchedulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'timeIn' => array(
-                    'type' => 'time',
+                    'type' => "time",
                     'required' => true,
                     'comment' => '',
                 ),
                 'timeout' => array(
-                    'type' => 'time',
+                    'type' => "time",
                     'required' => true,
                     'comment' => '',
                 ),
                 'monday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'tuesday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'wednesday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'thursday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'friday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'saturday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sunday' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -517,7 +517,7 @@ class Rest_SchedulesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

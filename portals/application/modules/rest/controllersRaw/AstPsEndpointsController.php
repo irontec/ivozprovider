@@ -47,7 +47,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': ''
+     *     '100rel': '', 
+     *     'outbound_proxy': ''
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
@@ -64,7 +65,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': ''
+     *     '100rel': '', 
+     *     'outbound_proxy': ''
      * }]")
      */
     public function indexAction()
@@ -91,13 +93,14 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'disallow',
                 'allow',
                 'directMedia',
-                'directMedia',
+                'directMediaMethod',
                 'mailboxes',
                 'pickupGroup',
                 'sendDiversion',
                 'sendPai',
                 'subscribecontext',
                 '100rel',
+                'outboundProxy',
             );
         }
 
@@ -186,7 +189,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     'subscribecontext': '', 
-     *     '100rel': ''
+     *     '100rel': '', 
+     *     'outbound_proxy': ''
      * }")
      */
     public function getAction()
@@ -212,13 +216,14 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'disallow',
                 'allow',
                 'directMedia',
-                'directMedia',
+                'directMediaMethod',
                 'mailboxes',
                 'pickupGroup',
                 'sendDiversion',
                 'sendPai',
                 'subscribecontext',
                 '100rel',
+                'outboundProxy',
             );
         }
 
@@ -266,14 +271,15 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="varchar", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
+     * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/astpsendpoints/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -316,14 +322,15 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="varchar", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
+     * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -408,7 +415,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -419,78 +426,83 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'sorcery_id' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'terminalId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'aors' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callerid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'context' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'disallow' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'allow' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('invite','reinvite','update')",
                     'required' => false,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
                 'mailboxes' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pickup_group' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'send_diversion' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'send_pai' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'subscribecontext' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 '100rel' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('no','required','yes')",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'outbound_proxy' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -500,83 +512,88 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'sorcery_id' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'terminalId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'aors' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callerid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'context' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'disallow' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'allow' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('invite','reinvite','update')",
                     'required' => false,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
                 'mailboxes' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pickup_group' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'send_diversion' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'send_pai' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'subscribecontext' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 '100rel' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('no','required','yes')",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'outbound_proxy' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -585,7 +602,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

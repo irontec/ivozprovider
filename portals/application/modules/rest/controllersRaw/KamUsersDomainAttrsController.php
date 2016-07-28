@@ -1,12 +1,12 @@
 <?php
 /**
- * XMLRPCLogs
+ * KamUsersDomainAttrs
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
+class Rest_KamUsersDomainAttrsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,31 +24,27 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="GET information about all XMLRPCLogs")
+     * @ApiDescription(section="KamUsersDomainAttrs", description="GET information about all KamUsersDomainAttrs")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
+     * @ApiRoute(name="/rest/kam-users-domain-attrs/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'proxy': '', 
-     *     'module': '', 
-     *     'method': '', 
-     *     'mapperName': '', 
-     *     'startDate': '', 
-     *     'execDate': '', 
-     *     'finishDate': ''
+     *     'did': '', 
+     *     'name': '', 
+     *     'type': '', 
+     *     'value': '', 
+     *     'last_modified': ''
      * },{
      *     'id': '', 
-     *     'proxy': '', 
-     *     'module': '', 
-     *     'method': '', 
-     *     'mapperName': '', 
-     *     'startDate': '', 
-     *     'execDate': '', 
-     *     'finishDate': ''
+     *     'did': '', 
+     *     'name': '', 
+     *     'type': '', 
+     *     'value': '', 
+     *     'last_modified': ''
      * }]")
      */
     public function indexAction()
@@ -67,13 +63,11 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'proxy',
-                'module',
-                'method',
-                'mapperName',
-                'startDate',
-                'execDate',
-                'finishDate',
+                'did',
+                'name',
+                'type',
+                'value',
+                'lastModified',
             );
         }
 
@@ -92,7 +86,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('XMLRPCLogs');
+        $etag = $this->_cache->getEtagVersions('KamUsersDomainAttrs');
 
         $hashEtag = md5(
             serialize(
@@ -108,7 +102,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\KamUsersDomainAttrs();
 
         $items = $mapper->fetchList(
             $where,
@@ -141,20 +135,18 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Get information about XMLRPCLogs")
+     * @ApiDescription(section="KamUsersDomainAttrs", description="Get information about KamUsersDomainAttrs")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/{id}")
+     * @ApiRoute(name="/rest/kam-users-domain-attrs/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'proxy': '', 
-     *     'module': '', 
-     *     'method': '', 
-     *     'mapperName': '', 
-     *     'startDate': '', 
-     *     'execDate': '', 
-     *     'finishDate': ''
+     *     'did': '', 
+     *     'name': '', 
+     *     'type': '', 
+     *     'value': '', 
+     *     'last_modified': ''
      * }")
      */
     public function getAction()
@@ -172,17 +164,15 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'proxy',
-                'module',
-                'method',
-                'mapperName',
-                'startDate',
-                'execDate',
-                'finishDate',
+                'did',
+                'name',
+                'type',
+                'value',
+                'lastModified',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('XMLRPCLogs');
+        $etag = $this->_cache->getEtagVersions('KamUsersDomainAttrs');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -198,7 +188,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\KamUsersDomainAttrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -216,18 +206,16 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Create's a new XMLRPCLogs")
+     * @ApiDescription(section="KamUsersDomainAttrs", description="Create's a new KamUsersDomainAttrs")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
-     * @ApiParams(name="proxy", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="module", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="method", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mapperName", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="startDate", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="execDate", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="finishDate", nullable=true, type="datetime", sample="", description="")
+     * @ApiRoute(name="/rest/kam-users-domain-attrs/")
+     * @ApiParams(name="did", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="type", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="value", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="last_modified", nullable=false, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/xmlrpclogs/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/kamusersdomainattrs/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -235,7 +223,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\XMLRPCLogs();
+        $model = new Models\KamUsersDomainAttrs();
 
         try {
             $model->populateFromArray($params);
@@ -257,17 +245,15 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Table XMLRPCLogs")
+     * @ApiDescription(section="KamUsersDomainAttrs", description="Table KamUsersDomainAttrs")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
+     * @ApiRoute(name="/rest/kam-users-domain-attrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="proxy", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="module", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="method", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="mapperName", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="startDate", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="execDate", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="finishDate", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="did", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="type", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="value", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="last_modified", nullable=false, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -283,7 +269,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\KamUsersDomainAttrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -307,9 +293,9 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="XMLRPCLogs", description="Table XMLRPCLogs")
+     * @ApiDescription(section="KamUsersDomainAttrs", description="Table KamUsersDomainAttrs")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/x-m-l-r-p-c-logs/")
+     * @ApiRoute(name="/rest/kam-users-domain-attrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -324,7 +310,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\XMLRPCLogs();
+        $mapper = new Mappers\KamUsersDomainAttrs();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -362,39 +348,29 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'proxy' => array(
+                'did' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'module' => array(
+                'name' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'method' => array(
+                'type' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'value' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'mapperName' => array(
-                    'type' => "varchar",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'startDate' => array(
-                    'type' => "timestamp",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'execDate' => array(
+                'last_modified' => array(
                     'type' => "datetime",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'finishDate' => array(
-                    'type' => "datetime",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -408,39 +384,29 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'proxy' => array(
+                'did' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'module' => array(
+                'name' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'method' => array(
+                'type' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'value' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'mapperName' => array(
-                    'type' => "varchar",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'startDate' => array(
-                    'type' => "timestamp",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'execDate' => array(
+                'last_modified' => array(
                     'type' => "datetime",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'finishDate' => array(
-                    'type' => "datetime",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
             )

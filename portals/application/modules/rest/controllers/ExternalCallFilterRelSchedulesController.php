@@ -317,7 +317,7 @@ class Rest_ExternalCallFilterRelSchedulesController extends Iron_Controller_Rest
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -328,12 +328,12 @@ class Rest_ExternalCallFilterRelSchedulesController extends Iron_Controller_Rest
             'description' => '',
             'params' => array(
                 'filterId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'scheduleId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -344,17 +344,17 @@ class Rest_ExternalCallFilterRelSchedulesController extends Iron_Controller_Rest
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'filterId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'scheduleId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -364,7 +364,7 @@ class Rest_ExternalCallFilterRelSchedulesController extends Iron_Controller_Rest
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

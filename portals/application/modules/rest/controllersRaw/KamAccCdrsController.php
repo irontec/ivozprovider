@@ -34,7 +34,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'proxy': '', 
-     *     'calldate': '', 
+     *     'start_time_utc': '', 
+     *     'end_time_utc': '', 
      *     'start_time': '', 
      *     'end_time': '', 
      *     'duration': '', 
@@ -59,11 +60,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      *     'targetPatternId': '', 
      *     'price': '', 
      *     'pricingPlanDetails': '', 
-     *     'invoiceId': ''
+     *     'invoiceId': '', 
+     *     'direction': '', 
+     *     'reMeteringDate': ''
      * },{
      *     'id': '', 
      *     'proxy': '', 
-     *     'calldate': '', 
+     *     'start_time_utc': '', 
+     *     'end_time_utc': '', 
      *     'start_time': '', 
      *     'end_time': '', 
      *     'duration': '', 
@@ -88,7 +92,9 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      *     'targetPatternId': '', 
      *     'price': '', 
      *     'pricingPlanDetails': '', 
-     *     'invoiceId': ''
+     *     'invoiceId': '', 
+     *     'direction': '', 
+     *     'reMeteringDate': ''
      * }]")
      */
     public function indexAction()
@@ -108,7 +114,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'proxy',
-                'calldate',
+                'startTimeUtc',
+                'endTimeUtc',
                 'startTime',
                 'endTime',
                 'duration',
@@ -134,6 +141,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                 'price',
                 'pricingPlanDetails',
                 'invoiceId',
+                'direction',
+                'reMeteringDate',
             );
         }
 
@@ -209,7 +218,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'proxy': '', 
-     *     'calldate': '', 
+     *     'start_time_utc': '', 
+     *     'end_time_utc': '', 
      *     'start_time': '', 
      *     'end_time': '', 
      *     'duration': '', 
@@ -234,7 +244,9 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      *     'targetPatternId': '', 
      *     'price': '', 
      *     'pricingPlanDetails': '', 
-     *     'invoiceId': ''
+     *     'invoiceId': '', 
+     *     'direction': '', 
+     *     'reMeteringDate': ''
      * }")
      */
     public function getAction()
@@ -253,7 +265,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'proxy',
-                'calldate',
+                'startTimeUtc',
+                'endTimeUtc',
                 'startTime',
                 'endTime',
                 'duration',
@@ -279,6 +292,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                 'price',
                 'pricingPlanDetails',
                 'invoiceId',
+                'direction',
+                'reMeteringDate',
             );
         }
 
@@ -320,7 +335,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/kam-acc-cdrs/")
      * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="start_time_utc", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="end_time_utc", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
      * @ApiParams(name="end_time", nullable=false, type="datetime", sample="", description="")
      * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
@@ -335,7 +351,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callidHash", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="parsed", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
@@ -346,6 +362,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="")
      * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="direction", nullable=true, type="enum('inbound','outbound')", sample="", description="")
+     * @ApiParams(name="reMeteringDate", nullable=true, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/kamacccdrs/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -382,7 +400,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/kam-acc-cdrs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="start_time_utc", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="end_time_utc", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
      * @ApiParams(name="end_time", nullable=false, type="datetime", sample="", description="")
      * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
@@ -397,7 +416,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callidHash", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="parsed", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
@@ -408,6 +427,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="")
      * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="direction", nullable=true, type="enum('inbound','outbound')", sample="", description="")
+     * @ApiParams(name="reMeteringDate", nullable=true, type="datetime", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -492,7 +513,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -503,137 +524,152 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
-                'calldate' => array(
-                    'type' => 'timestamp',
+                'start_time_utc' => array(
+                    'type' => "timestamp",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'end_time_utc' => array(
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'start_time' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => true,
                     'comment' => '',
                 ),
                 'end_time' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => true,
                     'comment' => '',
                 ),
                 'duration' => array(
-                    'type' => 'float',
+                    'type' => "float",
                     'required' => true,
                     'comment' => '',
                 ),
                 'caller' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'referee' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'referrer' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'asIden' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'asAddress' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callidHash' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'xcallid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'parsed' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no','delayed','error')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'diversion' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'externallyRated' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'metered' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'meteringDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pricingPlanId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetPatternId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'price' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pricingPlanDetails' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
                 'invoiceId' => array(
-                    'type' => 'int',
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'direction' => array(
+                    'type' => "enum('inbound','outbound')",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'reMeteringDate' => array(
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -644,142 +680,157 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
-                'calldate' => array(
-                    'type' => 'timestamp',
+                'start_time_utc' => array(
+                    'type' => "timestamp",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'end_time_utc' => array(
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'start_time' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => true,
                     'comment' => '',
                 ),
                 'end_time' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => true,
                     'comment' => '',
                 ),
                 'duration' => array(
-                    'type' => 'float',
+                    'type' => "float",
                     'required' => true,
                     'comment' => '',
                 ),
                 'caller' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callee' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'referee' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'referrer' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'asIden' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'asAddress' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callidHash' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'xcallid' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'parsed' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no','delayed','error')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'diversion' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'externallyRated' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'metered' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'meteringDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pricingPlanId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetPatternId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'price' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pricingPlanDetails' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
                 'invoiceId' => array(
-                    'type' => 'int',
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'direction' => array(
+                    'type' => "enum('inbound','outbound')",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'reMeteringDate' => array(
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -789,7 +840,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

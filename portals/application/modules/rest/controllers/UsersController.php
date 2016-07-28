@@ -471,7 +471,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -482,122 +482,122 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'lastname' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'email' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pass' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[password]',
                 ),
                 'timezoneId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'terminalId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'extensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outgoingDDIId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callACLId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'doNotDisturb' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'isBoss' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'bossAssistantId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'exceptionBoosAssistantRegExp' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'username' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'active' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'maxCalls' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'callWaiting' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'voicemailEnabled' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'voicemailSendMail' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'voicemailAttachSound' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'tokenKey' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'countryId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'languageId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -608,127 +608,127 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'lastname' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'email' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pass' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[password]',
                 ),
                 'timezoneId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'terminalId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'extensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outgoingDDIId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callACLId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'doNotDisturb' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'isBoss' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'bossAssistantId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'exceptionBoosAssistantRegExp' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'username' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'active' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'maxCalls' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'callWaiting' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'voicemailEnabled' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'voicemailSendMail' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'voicemailAttachSound' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'tokenKey' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'countryId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'languageId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -738,7 +738,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

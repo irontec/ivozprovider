@@ -338,7 +338,7 @@ class Rest_ConferenceRoomsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -349,27 +349,27 @@ class Rest_ConferenceRoomsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pinProtected' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pinCode' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'maxMembers' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -380,32 +380,32 @@ class Rest_ConferenceRoomsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pinProtected' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pinCode' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'maxMembers' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -415,7 +415,7 @@ class Rest_ConferenceRoomsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

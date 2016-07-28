@@ -352,7 +352,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -363,37 +363,37 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'module' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'method' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mapperName' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'startDate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'execDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'finishDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -404,42 +404,42 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'module' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'method' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mapperName' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'startDate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'execDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'finishDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -449,7 +449,7 @@ class Rest_XMLRPCLogsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -361,21 +361,21 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="alias", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="pager", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="attach", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="attach", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="attachfmt", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="serveremail", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="language", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="tz", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="deleteast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="saycid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="sendast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="review", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="tempgreetwarn", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="operator", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="envelope", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="deleteast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="saycid", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="sendast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="review", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="tempgreetwarn", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="operator", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="envelope", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="sayduration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="forcename", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="forcegreetings", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="forcename", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="forcegreetings", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="callback", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="dialout", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="exitcontext", nullable=true, type="varchar", sample="", description="")
@@ -430,21 +430,21 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="alias", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="pager", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="attach", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="attach", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="attachfmt", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="serveremail", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="language", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="tz", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="deleteast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="saycid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="sendast_voicemail", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="review", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="tempgreetwarn", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="operator", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="envelope", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="deleteast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="saycid", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="sendast_voicemail", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="review", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="tempgreetwarn", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="operator", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="envelope", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="sayduration", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="forcename", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="forcegreetings", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="forcename", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="forcegreetings", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="callback", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="dialout", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="exitcontext", nullable=true, type="varchar", sample="", description="")
@@ -541,7 +541,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'uniqueid' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -552,172 +552,172 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'context' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mailbox' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'password' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'fullname' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'alias' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'email' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pager' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'attach' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'attachfmt' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'serveremail' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'language' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'tz' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'deleteast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'saycid' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'review' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'tempgreetwarn' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'operator' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'envelope' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sayduration' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'forcename' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'forcegreetings' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callback' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'dialout' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'exitcontext' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'maxmsg' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'volgain' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapuser' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imappassword' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapserver' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapport' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapflags' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'stamp' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -728,177 +728,177 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'uniqueid' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'context' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mailbox' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'password' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'fullname' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'alias' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'email' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'pager' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'attach' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'attachfmt' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'serveremail' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'language' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'tz' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'deleteast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'saycid' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendast_voicemail' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'review' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'tempgreetwarn' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'operator' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'envelope' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sayduration' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'forcename' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'forcegreetings' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
                 'callback' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'dialout' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'exitcontext' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'maxmsg' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'volgain' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapuser' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imappassword' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapserver' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapport' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'imapflags' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'stamp' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -908,7 +908,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'uniqueid' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

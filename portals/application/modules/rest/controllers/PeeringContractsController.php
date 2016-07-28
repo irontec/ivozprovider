@@ -338,7 +338,7 @@ class Rest_PeeringContractsController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -349,27 +349,27 @@ class Rest_PeeringContractsController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'transformationRulesetGroupsTrunksId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'externallyRated' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -380,32 +380,32 @@ class Rest_PeeringContractsController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'transformationRulesetGroupsTrunksId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'externallyRated' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -415,7 +415,7 @@ class Rest_PeeringContractsController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

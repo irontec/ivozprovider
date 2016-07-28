@@ -359,7 +359,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -370,42 +370,42 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'callTypeFilter' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:internal|external|both]',
                 ),
                 'callForwardType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:inconditional|noAnswer|busy|userNotRegistered]',
                 ),
                 'targetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'numberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'extensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'voiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'noAnswerTimeout' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -416,47 +416,47 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'userId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'callTypeFilter' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:internal|external|both]',
                 ),
                 'callForwardType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:inconditional|noAnswer|busy|userNotRegistered]',
                 ),
                 'targetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'numberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'extensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'voiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'noAnswerTimeout' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -466,7 +466,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -45,7 +45,9 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
      *     'outOfScheduleTargetType': '', 
      *     'outOfScheduleNumberValue': '', 
      *     'outOfScheduleExtensionId': '', 
-     *     'outOfScheduleVoiceMailUserId': ''
+     *     'outOfScheduleVoiceMailUserId': '', 
+     *     'blackListRegExp': '', 
+     *     'whiteListRegExp': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -60,7 +62,9 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
      *     'outOfScheduleTargetType': '', 
      *     'outOfScheduleNumberValue': '', 
      *     'outOfScheduleExtensionId': '', 
-     *     'outOfScheduleVoiceMailUserId': ''
+     *     'outOfScheduleVoiceMailUserId': '', 
+     *     'blackListRegExp': '', 
+     *     'whiteListRegExp': ''
      * }]")
      */
     public function indexAction()
@@ -92,6 +96,8 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
                 'outOfScheduleNumberValue',
                 'outOfScheduleExtensionId',
                 'outOfScheduleVoiceMailUserId',
+                'blackListRegExp',
+                'whiteListRegExp',
             );
         }
 
@@ -178,7 +184,9 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
      *     'outOfScheduleTargetType': '', 
      *     'outOfScheduleNumberValue': '', 
      *     'outOfScheduleExtensionId': '', 
-     *     'outOfScheduleVoiceMailUserId': ''
+     *     'outOfScheduleVoiceMailUserId': '', 
+     *     'blackListRegExp': '', 
+     *     'whiteListRegExp': ''
      * }")
      */
     public function getAction()
@@ -209,6 +217,8 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
                 'outOfScheduleNumberValue',
                 'outOfScheduleExtensionId',
                 'outOfScheduleVoiceMailUserId',
+                'blackListRegExp',
+                'whiteListRegExp',
             );
         }
 
@@ -262,6 +272,8 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
      * @ApiParams(name="outOfScheduleNumberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outOfScheduleExtensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outOfScheduleVoiceMailUserId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="blackListRegExp", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="whiteListRegExp", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/externalcallfilters/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -310,6 +322,8 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
      * @ApiParams(name="outOfScheduleNumberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outOfScheduleExtensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outOfScheduleVoiceMailUserId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="blackListRegExp", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="whiteListRegExp", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -394,7 +408,7 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -405,67 +419,77 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'welcomeLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayTargetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'holidayNumberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayExtensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayVoiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleTargetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'outOfScheduleNumberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleExtensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleVoiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'blackListRegExp' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'whiteListRegExp' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -476,72 +500,82 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'welcomeLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayTargetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'holidayNumberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayExtensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'holidayVoiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleTargetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'outOfScheduleNumberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleExtensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outOfScheduleVoiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'blackListRegExp' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'whiteListRegExp' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -551,7 +585,7 @@ class Rest_ExternalCallFiltersController extends Iron_Controller_Rest_BaseContro
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

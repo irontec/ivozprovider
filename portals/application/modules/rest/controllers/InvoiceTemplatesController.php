@@ -331,7 +331,7 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -342,22 +342,22 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'template' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -368,27 +368,27 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'template' => array(
-                    'type' => 'text',
+                    'type' => "text",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -398,7 +398,7 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -35,9 +35,9 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'TerminalModelId': '', 
      *     'name': '', 
+     *     'domain': '', 
      *     'disallow': '', 
      *     'allow': '', 
-     *     'direct_media': '', 
      *     'direct_media_method': '', 
      *     'password': '', 
      *     'companyId': '', 
@@ -47,9 +47,9 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'TerminalModelId': '', 
      *     'name': '', 
+     *     'domain': '', 
      *     'disallow': '', 
      *     'allow': '', 
-     *     'direct_media': '', 
      *     'direct_media_method': '', 
      *     'password': '', 
      *     'companyId': '', 
@@ -75,10 +75,10 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'TerminalModelId',
                 'name',
+                'domain',
                 'disallow',
                 'allow',
-                'directMedia',
-                'directMedia',
+                'directMediaMethod',
                 'password',
                 'companyId',
                 'mac',
@@ -159,9 +159,9 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'TerminalModelId': '', 
      *     'name': '', 
+     *     'domain': '', 
      *     'disallow': '', 
      *     'allow': '', 
-     *     'direct_media': '', 
      *     'direct_media_method': '', 
      *     'password': '', 
      *     'companyId': '', 
@@ -186,10 +186,10 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'TerminalModelId',
                 'name',
+                'domain',
                 'disallow',
                 'allow',
-                'directMedia',
-                'directMedia',
+                'directMediaMethod',
                 'password',
                 'companyId',
                 'mac',
@@ -236,10 +236,10 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/terminals/")
      * @ApiParams(name="TerminalModelId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=false, type="varchar", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="mac", nullable=true, type="varchar", sample="", description="")
@@ -281,10 +281,10 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="TerminalModelId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=false, type="varchar", sample="", description="[enum:update|invite|reinvite]")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="mac", nullable=true, type="varchar", sample="", description="")
@@ -373,7 +373,7 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -384,52 +384,52 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'TerminalModelId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'domain' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'disallow' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'allow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('invite','reinvite','update')",
                     'required' => true,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
                 'password' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[password]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mac' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'lastProvisionDate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -440,57 +440,57 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'TerminalModelId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'domain' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'disallow' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'allow' => array(
-                    'type' => 'varchar',
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'direct_media' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('invite','reinvite','update')",
                     'required' => true,
                     'comment' => '[enum:update|invite|reinvite]',
                 ),
                 'password' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[password]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'mac' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'lastProvisionDate' => array(
-                    'type' => 'timestamp',
+                    'type' => "timestamp",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -500,7 +500,7 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -345,7 +345,7 @@ class Rest_PricingPlansRelTargetPatternsController extends Iron_Controller_Rest_
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -356,32 +356,32 @@ class Rest_PricingPlansRelTargetPatternsController extends Iron_Controller_Rest_
             'description' => '',
             'params' => array(
                 'connectionCharge' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => true,
                     'comment' => '',
                 ),
                 'periodTime' => array(
-                    'type' => 'mediumint',
+                    'type' => "mediumint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'perPeriodCharge' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pricingPlanId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'targetPatternId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -392,37 +392,37 @@ class Rest_PricingPlansRelTargetPatternsController extends Iron_Controller_Rest_
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'connectionCharge' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => true,
                     'comment' => '',
                 ),
                 'periodTime' => array(
-                    'type' => 'mediumint',
+                    'type' => "mediumint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'perPeriodCharge' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pricingPlanId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'targetPatternId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -432,7 +432,7 @@ class Rest_PricingPlansRelTargetPatternsController extends Iron_Controller_Rest_
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

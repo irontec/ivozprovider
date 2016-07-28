@@ -390,7 +390,7 @@ class Rest_InvoicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -401,57 +401,57 @@ class Rest_InvoicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'number' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'inDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'total' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'taxRate' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'totalWithTax' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'status' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:waiting|processing|created|error]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pdfFile' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO]',
                 ),
                 'invoiceTemplateId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -462,62 +462,62 @@ class Rest_InvoicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'number' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'inDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outDate' => array(
-                    'type' => 'datetime',
+                    'type' => "datetime",
                     'required' => false,
                     'comment' => '',
                 ),
                 'total' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'taxRate' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'totalWithTax' => array(
-                    'type' => 'decimal',
+                    'type' => "decimal",
                     'required' => false,
                     'comment' => '',
                 ),
                 'status' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '[enum:waiting|processing|created|error]',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'pdfFile' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '[FSO]',
                 ),
                 'invoiceTemplateId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -527,7 +527,7 @@ class Rest_InvoicesController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

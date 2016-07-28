@@ -47,12 +47,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'prefix': '', 
      *     'sendPAI': '', 
      *     'sendRPID': '', 
-     *     'useAuthUserAsFromUser': '', 
      *     'auth_needed': '', 
      *     'auth_user': '', 
      *     'auth_password': '', 
      *     'sip_proxy': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'from_user': '', 
+     *     'from_domain': ''
      * },{
      *     'id': '', 
      *     'peeringContractId': '', 
@@ -69,12 +70,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'prefix': '', 
      *     'sendPAI': '', 
      *     'sendRPID': '', 
-     *     'useAuthUserAsFromUser': '', 
      *     'auth_needed': '', 
      *     'auth_user': '', 
      *     'auth_password': '', 
      *     'sip_proxy': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'from_user': '', 
+     *     'from_domain': ''
      * }]")
      */
     public function indexAction()
@@ -107,12 +109,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'prefix',
                 'sendPAI',
                 'sendRPID',
-                'useAuthUserAsFromUser',
                 'authNeeded',
                 'authUser',
                 'authPassword',
                 'sipProxy',
                 'outboundProxy',
+                'fromUser',
+                'fromDomain',
             );
         }
 
@@ -201,12 +204,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'prefix': '', 
      *     'sendPAI': '', 
      *     'sendRPID': '', 
-     *     'useAuthUserAsFromUser': '', 
      *     'auth_needed': '', 
      *     'auth_user': '', 
      *     'auth_password': '', 
      *     'sip_proxy': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'from_user': '', 
+     *     'from_domain': ''
      * }")
      */
     public function getAction()
@@ -238,12 +242,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'prefix',
                 'sendPAI',
                 'sendRPID',
-                'useAuthUserAsFromUser',
                 'authNeeded',
                 'authUser',
                 'authPassword',
                 'sipProxy',
                 'outboundProxy',
+                'fromUser',
+                'fromDomain',
             );
         }
 
@@ -298,12 +303,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="prefix", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="sendPAI", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="sendRPID", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="useAuthUserAsFromUser", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="auth_needed", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="sip_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_user", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/peerservers/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -353,12 +359,13 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="prefix", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="sendPAI", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="sendRPID", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="useAuthUserAsFromUser", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="auth_needed", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="sip_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_user", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -443,7 +450,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -454,102 +461,107 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'peeringContractId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'ip' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'hostname' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'port' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'params' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'uri_scheme' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'transport' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'strip' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'prefix' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendPAI' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendRPID' => array(
-                    'type' => 'tinyint',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'useAuthUserAsFromUser' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'auth_needed' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => true,
                     'comment' => '',
                 ),
                 'auth_user' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'auth_password' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sip_proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outbound_proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'from_user' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'from_domain' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -560,107 +572,112 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'ip' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'hostname' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'port' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'params' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'uri_scheme' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'transport' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'strip' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'prefix' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendPAI' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sendRPID' => array(
-                    'type' => 'tinyint',
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'useAuthUserAsFromUser' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => false,
                     'comment' => '',
                 ),
                 'auth_needed' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('yes','no')",
                     'required' => true,
                     'comment' => '',
                 ),
                 'auth_user' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'auth_password' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'sip_proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'outbound_proxy' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'from_user' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'from_domain' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -670,7 +687,7 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

@@ -34,8 +34,8 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'type': '', 
-     *     'targetPatternId': '', 
-     *     'targetGroupId': '', 
+     *     'routingPatternId': '', 
+     *     'routingPatternGroupId': '', 
      *     'peeringContractId': '', 
      *     'priority': '', 
      *     'weight': '', 
@@ -44,8 +44,8 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * },{
      *     'id': '', 
      *     'type': '', 
-     *     'targetPatternId': '', 
-     *     'targetGroupId': '', 
+     *     'routingPatternId': '', 
+     *     'routingPatternGroupId': '', 
      *     'peeringContractId': '', 
      *     'priority': '', 
      *     'weight': '', 
@@ -70,8 +70,8 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'type',
-                'targetPatternId',
-                'targetGroupId',
+                'routingPatternId',
+                'routingPatternGroupId',
                 'peeringContractId',
                 'priority',
                 'weight',
@@ -152,8 +152,8 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'type': '', 
-     *     'targetPatternId': '', 
-     *     'targetGroupId': '', 
+     *     'routingPatternId': '', 
+     *     'routingPatternGroupId': '', 
      *     'peeringContractId': '', 
      *     'priority': '', 
      *     'weight': '', 
@@ -177,8 +177,8 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'type',
-                'targetPatternId',
-                'targetGroupId',
+                'routingPatternId',
+                'routingPatternGroupId',
                 'peeringContractId',
                 'priority',
                 'weight',
@@ -224,9 +224,9 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="OutgoingRouting", description="Create's a new OutgoingRouting")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/outgoing-routing/")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="targetGroupId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="type", nullable=true, type="enum('pattern','group','fax')", sample="", description="")
+     * @ApiParams(name="routingPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="routingPatternGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="weight", nullable=false, type="int", sample="", description="")
@@ -267,9 +267,9 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/outgoing-routing/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="type", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="targetGroupId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="type", nullable=true, type="enum('pattern','group','fax')", sample="", description="")
+     * @ApiParams(name="routingPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="routingPatternGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="weight", nullable=false, type="int", sample="", description="")
@@ -359,7 +359,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -370,42 +370,42 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'type' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('pattern','group','fax')",
                     'required' => false,
                     'comment' => '',
                 ),
-                'targetPatternId' => array(
-                    'type' => 'int',
+                'routingPatternId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
-                'targetGroupId' => array(
-                    'type' => 'int',
+                'routingPatternGroupId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'weight' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -416,47 +416,47 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'type' => array(
-                    'type' => 'varchar',
+                    'type' => "enum('pattern','group','fax')",
                     'required' => false,
                     'comment' => '',
                 ),
-                'targetPatternId' => array(
-                    'type' => 'int',
+                'routingPatternId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
-                'targetGroupId' => array(
-                    'type' => 'int',
+                'routingPatternGroupId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'peeringContractId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'priority' => array(
-                    'type' => 'tinyint',
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'weight' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'companyId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -466,7 +466,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

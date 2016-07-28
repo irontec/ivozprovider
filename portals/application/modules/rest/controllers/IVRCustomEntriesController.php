@@ -352,7 +352,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -363,37 +363,37 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'IVRCustomId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'entry' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'welcomeLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'targetNumberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetExtensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetVoiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -404,42 +404,42 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'IVRCustomId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
                 'entry' => array(
-                    'type' => 'smallint',
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'welcomeLocutionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetType' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:number|extension|voicemail]',
                 ),
                 'targetNumberValue' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetExtensionId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
                 'targetVoiceMailUserId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -449,7 +449,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )

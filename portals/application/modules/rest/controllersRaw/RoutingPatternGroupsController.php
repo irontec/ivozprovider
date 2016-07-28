@@ -1,12 +1,12 @@
 <?php
 /**
- * TargetGroups
+ * RoutingPatternGroups
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
+class Rest_RoutingPatternGroupsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,9 +24,9 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="TargetGroups", description="GET information about all TargetGroups")
+     * @ApiDescription(section="RoutingPatternGroups", description="GET information about all RoutingPatternGroups")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/target-groups/")
+     * @ApiRoute(name="/rest/routing-pattern-groups/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
@@ -80,7 +80,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('TargetGroups');
+        $etag = $this->_cache->getEtagVersions('RoutingPatternGroups');
 
         $hashEtag = md5(
             serialize(
@@ -96,7 +96,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\TargetGroups();
+        $mapper = new Mappers\RoutingPatternGroups();
 
         $items = $mapper->fetchList(
             $where,
@@ -129,9 +129,9 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="TargetGroups", description="Get information about TargetGroups")
+     * @ApiDescription(section="RoutingPatternGroups", description="Get information about RoutingPatternGroups")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/target-groups/{id}")
+     * @ApiRoute(name="/rest/routing-pattern-groups/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
@@ -162,7 +162,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('TargetGroups');
+        $etag = $this->_cache->getEtagVersions('RoutingPatternGroups');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -178,7 +178,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\TargetGroups();
+        $mapper = new Mappers\RoutingPatternGroups();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -196,14 +196,14 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="TargetGroups", description="Create's a new TargetGroups")
+     * @ApiDescription(section="RoutingPatternGroups", description="Create's a new RoutingPatternGroups")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/target-groups/")
+     * @ApiRoute(name="/rest/routing-pattern-groups/")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/targetgroups/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/routingpatterngroups/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -211,7 +211,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\TargetGroups();
+        $model = new Models\RoutingPatternGroups();
 
         try {
             $model->populateFromArray($params);
@@ -233,9 +233,9 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="TargetGroups", description="Table TargetGroups")
+     * @ApiDescription(section="RoutingPatternGroups", description="Table RoutingPatternGroups")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/target-groups/")
+     * @ApiRoute(name="/rest/routing-pattern-groups/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
@@ -255,7 +255,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\TargetGroups();
+        $mapper = new Mappers\RoutingPatternGroups();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -279,9 +279,9 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="TargetGroups", description="Table TargetGroups")
+     * @ApiDescription(section="RoutingPatternGroups", description="Table RoutingPatternGroups")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/target-groups/")
+     * @ApiRoute(name="/rest/routing-pattern-groups/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -296,7 +296,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\TargetGroups();
+        $mapper = new Mappers\RoutingPatternGroups();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -324,7 +324,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]'
                 )
@@ -335,17 +335,17 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -356,22 +356,22 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '[pk]',
                 ),
                 'name' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
                 'description' => array(
-                    'type' => 'varchar',
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -381,7 +381,7 @@ class Rest_TargetGroupsController extends Iron_Controller_Rest_BaseController
             'description' => '',
             'params' => array(
                 'id' => array(
-                    'type' => 'int',
+                    'type' => "int",
                     'required' => true
                 )
             )
