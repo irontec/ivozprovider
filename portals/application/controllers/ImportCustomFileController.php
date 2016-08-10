@@ -36,9 +36,9 @@ class ImportCustomFileController extends Zend_Controller_Action
             "help" => "Regular Expresion",
         ),
         "perPeriodCharge" => array(
-            "title" => "Per period charge",
+            "title" => "Per minute charge",
             "required" => true,
-            "help" => "Per period charge",
+            "help" => "Per minute charge",
         ),
         "connectionCharge" => array(
             "title" => "Connection charge",
@@ -46,9 +46,9 @@ class ImportCustomFileController extends Zend_Controller_Action
             "help" => "Connection charge",
         ),
         "periodTime" => array(
-            "title" => "Period time",
+            "title" => "Charge period",
             "required" => true,
-            "help" => "Period time",
+            "help" => "Charge period",
         ),
     );
 

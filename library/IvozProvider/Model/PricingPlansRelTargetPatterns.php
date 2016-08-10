@@ -41,14 +41,15 @@ class PricingPlansRelTargetPatterns extends Raw\PricingPlansRelTargetPatterns
 
         $connectionCharge = $this->getConnectionCharge();
         $periodTime = $this->getPeriodTime();
-        $periodCharge = $this->getPerPeriodCharge();
-        if ($periodTime != 0){
-            $factor = ceil($this->_duration/$periodTime);
+        $periodCharge = ($this->getPerPeriodCharge() / 60) * $periodTime;
+
+        if ($periodTime != 0) {
+            $numPeriods = ceil($this->_duration / $periodTime);
         } else {
-            $factor = 0;
+            $numPeriods = 0;
         }
 
-        return $connectionCharge + ($factor*$periodCharge);
+        return $connectionCharge + $numPeriods * $periodCharge;
 
     }
 }

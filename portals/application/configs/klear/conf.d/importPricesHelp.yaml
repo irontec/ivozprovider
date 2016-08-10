@@ -7,7 +7,7 @@ importPricesHelp:
       label: _("Prices Help")
       text: "
          <p>CSV file must be as following example:</p>
-         <p>Target Pattern Name,Target Pattern Description,Prefix,Per period charge,Connection charge,Period time
+         <p>Target Pattern Name,Target Pattern Description,Prefix,Per minute charge,Connection charge,Charge period
          <br>Spain,Mobile,347,\"0,028\",\"0,028\",60</p>
          <p>You can download an example file <a href='/samples/pricesSample.csv' target='_blank'>here</a></p>
         "

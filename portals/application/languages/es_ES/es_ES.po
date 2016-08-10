@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-20 17:23+0200\n"
-"PO-Revision-Date: 2016-07-21 13:03+0200\n"
+"POT-Creation-Date: 2016-08-10 17:46+0200\n"
+"PO-Revision-Date: 2016-08-10 17:46+0200\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -64,7 +64,7 @@ msgstr[1] "Servidores de Aplicación"
 #: TerminalManufacturersList.yaml:15 TerminalModelsList.yaml:16
 #: TerminalsList.yaml:17 TimezonesList.yaml:14
 #: TransformationRulesetGroupsTrunksList.yaml:19 UsersList.yaml:20
-#: UsersList.yaml:157 XMLRPCLogsList.yaml:16
+#: UsersList.yaml:156 XMLRPCLogsList.yaml:16
 #, python-format
 msgid "List of %s %2s"
 msgstr "Listado de %s  %2s"
@@ -84,7 +84,7 @@ msgstr "Listado de %s  %2s"
 #: CompanyAdminsList.yaml:26 CompanyServicesList.yaml:21
 #: CompanyServicesList.yaml:28 ConferenceRoomsList.yaml:26
 #: ConferenceRoomsList.yaml:33 CountriesList.yaml:23 CountriesList.yaml:34
-#: DDIsList.yaml:30 DDIsList.yaml:77 DomainsList.yaml:21 DomainsList.yaml:41
+#: DDIsList.yaml:30 DDIsList.yaml:83 DomainsList.yaml:21 DomainsList.yaml:41
 #: EtagVersionsList.yaml:19 EtagVersionsList.yaml:26 ExtensionsList.yaml:22
 #: ExtensionsList.yaml:39 ExternalCallFilterRelCalendarsList.yaml:17
 #: ExternalCallFilterRelCalendarsList.yaml:24
@@ -157,7 +157,7 @@ msgstr "Opciones"
 #: BrandServicesList.yaml:41 BrandURLsList.yaml:44 BrandsList.yaml:68
 #: CallACLRelPatternsList.yaml:36 CompaniesList.yaml:86
 #: CompanyAdminsList.yaml:37 CompanyServicesList.yaml:41
-#: ConferenceRoomsList.yaml:44 CountriesList.yaml:45 DDIsList.yaml:93
+#: ConferenceRoomsList.yaml:44 CountriesList.yaml:45 DDIsList.yaml:99
 #: DomainsList.yaml:62 EtagVersionsList.yaml:37 ExtensionsList.yaml:51
 #: ExternalCallFilterRelCalendarsList.yaml:35
 #: ExternalCallFilterRelSchedulesList.yaml:35 ExternalCallFiltersList.yaml:62
@@ -180,7 +180,7 @@ msgstr "Opciones"
 #: PricingPlansRelTargetPatternsList.yaml:59 ProxyUsersList.yaml:29
 #: RoutingPatternGroupsList.yaml:41 RoutingPatternGroupsRelPatternsList.yaml:37
 #: RoutingPatternsList.yaml:41 ServicesList.yaml:39 TargetPatternsList.yaml:55
-#: TerminalManufacturersList.yaml:37 TerminalModelsList.yaml:45
+#: TerminalManufacturersList.yaml:37 TerminalModelsList.yaml:46
 #: TerminalsList.yaml:55 TimezonesList.yaml:35
 #: TransformationRulesetGroupsTrunksList.yaml:56 UsersList.yaml:84
 #: XMLRPCLogsList.yaml:37
@@ -199,8 +199,8 @@ msgstr "Añadir %s"
 #: CompanyAdminsList.yaml:44 CompanyAdminsList.yaml:45
 #: CompanyServicesList.yaml:50 CompanyServicesList.yaml:51
 #: ConferenceRoomsList.yaml:66 ConferenceRoomsList.yaml:67
-#: CountriesList.yaml:55 CountriesList.yaml:56 DDIsList.yaml:111
-#: DDIsList.yaml:128 DomainsList.yaml:83 DomainsList.yaml:84
+#: CountriesList.yaml:55 CountriesList.yaml:56 DDIsList.yaml:117
+#: DDIsList.yaml:134 DomainsList.yaml:83 DomainsList.yaml:84
 #: EtagVersionsList.yaml:44 EtagVersionsList.yaml:45 ExtensionsList.yaml:80
 #: ExternalCallFilterRelCalendarsList.yaml:42
 #: ExternalCallFilterRelSchedulesList.yaml:42 ExternalCallFiltersList.yaml:108
@@ -227,7 +227,7 @@ msgstr "Añadir %s"
 #: OutgoingRoutingList.yaml:95 OutgoingRoutingList.yaml:96
 #: PeerServersList.yaml:120 PeeringContractsList.yaml:63
 #: PickUpGroupsList.yaml:47 PickUpRelUsersList.yaml:42 PricingPlansList.yaml:73
-#: PricingPlansRelCompaniesList.yaml:73
+#: PricingPlansRelCompaniesList.yaml:70
 #: PricingPlansRelTargetPatternsList.yaml:86 ProxyTrunksList.yaml:26
 #: ProxyUsersList.yaml:36 ProxyUsersList.yaml:37 RecordingsList.yaml:48
 #: RecordingsList.yaml:49 RoutingPatternGroupsList.yaml:53
@@ -235,9 +235,9 @@ msgstr "Añadir %s"
 #: RoutingPatternGroupsRelPatternsList.yaml:48 RoutingPatternsList.yaml:53
 #: RoutingPatternsList.yaml:54 SchedulesList.yaml:77 ServicesList.yaml:46
 #: ServicesList.yaml:47 TargetPatternsList.yaml:74
-#: TerminalManufacturersList.yaml:44 TerminalModelsList.yaml:59
+#: TerminalManufacturersList.yaml:44 TerminalModelsList.yaml:61
 #: TerminalsList.yaml:95 TimezonesList.yaml:42
-#: TransformationRulesetGroupsTrunksList.yaml:76 UsersList.yaml:141
+#: TransformationRulesetGroupsTrunksList.yaml:76 UsersList.yaml:140
 #: XMLRPCLogsList.yaml:47 XMLRPCLogsList.yaml:48
 #, python-format
 msgid "Edit %s %2s"
@@ -250,7 +250,7 @@ msgstr "Editar %s %2s"
 #: CallACLList.yaml:106 CallACLPatternsList.yaml:58
 #: CallACLRelPatternsList.yaml:50 CallForwardSettingsList.yaml:84
 #: CompaniesList.yaml:197 CompanyAdminsList.yaml:52 CompanyServicesList.yaml:58
-#: ConferenceRoomsList.yaml:78 CountriesList.yaml:116 DDIsList.yaml:148
+#: ConferenceRoomsList.yaml:78 CountriesList.yaml:116 DDIsList.yaml:155
 #: DomainsList.yaml:126 EtagVersionsList.yaml:52 ExtensionsList.yaml:92
 #: ExternalCallFilterRelCalendarsList.yaml:49
 #: ExternalCallFilterRelSchedulesList.yaml:49 ExternalCallFiltersList.yaml:123
@@ -272,14 +272,14 @@ msgstr "Editar %s %2s"
 #: MusicOnHoldList.yaml:87 OutgoingRoutingList.yaml:105
 #: PeerServersList.yaml:137 PeeringContractsList.yaml:115
 #: PickUpGroupsList.yaml:56 PickUpRelUsersList.yaml:49
-#: PricingPlansList.yaml:116 PricingPlansRelCompaniesList.yaml:98
+#: PricingPlansList.yaml:116 PricingPlansRelCompaniesList.yaml:95
 #: PricingPlansRelTargetPatternsList.yaml:101 RecordingsList.yaml:72
 #: RoutingPatternGroupsList.yaml:62 RoutingPatternGroupsRelPatternsList.yaml:55
 #: RoutingPatternsList.yaml:62 SchedulesList.yaml:88 ServicesList.yaml:55
 #: TargetPatternsList.yaml:114 TerminalManufacturersList.yaml:71
-#: TerminalModelsList.yaml:74 TerminalsList.yaml:115 TimezonesList.yaml:49
-#: TransformationRulesetGroupsTrunksList.yaml:184 UsersList.yaml:195
-#: UsersList.yaml:225 XMLRPCLogsList.yaml:58
+#: TerminalModelsList.yaml:76 TerminalsList.yaml:115 TimezonesList.yaml:49
+#: TransformationRulesetGroupsTrunksList.yaml:184 UsersList.yaml:194
+#: UsersList.yaml:224 XMLRPCLogsList.yaml:58
 #, python-format
 msgid "Delete %s"
 msgstr "Borrar %s"
@@ -291,7 +291,7 @@ msgstr "Borrar %s"
 #: CallACLList.yaml:107 CallACLPatternsList.yaml:59
 #: CallACLRelPatternsList.yaml:51 CallForwardSettingsList.yaml:85
 #: CompaniesList.yaml:198 CompanyAdminsList.yaml:53 CompanyServicesList.yaml:59
-#: ConferenceRoomsList.yaml:79 CountriesList.yaml:117 DDIsList.yaml:149
+#: ConferenceRoomsList.yaml:79 CountriesList.yaml:117 DDIsList.yaml:156
 #: DomainsList.yaml:127 EtagVersionsList.yaml:53 ExtensionsList.yaml:93
 #: ExternalCallFilterRelCalendarsList.yaml:50
 #: ExternalCallFilterRelSchedulesList.yaml:50 ExternalCallFiltersList.yaml:124
@@ -316,10 +316,10 @@ msgstr "Borrar %s"
 #: RecordingsList.yaml:73 RoutingPatternGroupsList.yaml:63
 #: RoutingPatternGroupsRelPatternsList.yaml:56 RoutingPatternsList.yaml:63
 #: SchedulesList.yaml:89 ServicesList.yaml:56 TargetPatternsList.yaml:115
-#: TerminalManufacturersList.yaml:72 TerminalModelsList.yaml:75
+#: TerminalManufacturersList.yaml:72 TerminalModelsList.yaml:77
 #: TerminalsList.yaml:116 TimezonesList.yaml:50
-#: TransformationRulesetGroupsTrunksList.yaml:185 UsersList.yaml:196
-#: UsersList.yaml:226 XMLRPCLogsList.yaml:59
+#: TransformationRulesetGroupsTrunksList.yaml:185 UsersList.yaml:195
+#: UsersList.yaml:225 XMLRPCLogsList.yaml:59
 #, python-format
 msgid "Do you want to delete this %s?"
 msgstr "Do you want to delete this %s?"
@@ -331,7 +331,7 @@ msgstr "Do you want to delete this %s?"
 #: CallACLList.yaml:108 CallACLPatternsList.yaml:60
 #: CallACLRelPatternsList.yaml:52 CallForwardSettingsList.yaml:86
 #: CompaniesList.yaml:199 CompanyAdminsList.yaml:54 CompanyServicesList.yaml:60
-#: ConferenceRoomsList.yaml:80 CountriesList.yaml:118 DDIsList.yaml:150
+#: ConferenceRoomsList.yaml:80 CountriesList.yaml:118 DDIsList.yaml:157
 #: DomainsList.yaml:128 EtagVersionsList.yaml:54 ExtensionsList.yaml:94
 #: ExternalCallFilterRelCalendarsList.yaml:51
 #: ExternalCallFilterRelSchedulesList.yaml:51 ExternalCallFiltersList.yaml:125
@@ -356,10 +356,10 @@ msgstr "Do you want to delete this %s?"
 #: RecordingsList.yaml:74 RoutingPatternGroupsList.yaml:64
 #: RoutingPatternGroupsRelPatternsList.yaml:57 RoutingPatternsList.yaml:64
 #: SchedulesList.yaml:90 ServicesList.yaml:57 TargetPatternsList.yaml:116
-#: TerminalManufacturersList.yaml:73 TerminalModelsList.yaml:76
+#: TerminalManufacturersList.yaml:73 TerminalModelsList.yaml:78
 #: TerminalsList.yaml:117 TimezonesList.yaml:51
-#: TransformationRulesetGroupsTrunksList.yaml:186 UsersList.yaml:197
-#: UsersList.yaml:227 XMLRPCLogsList.yaml:60
+#: TransformationRulesetGroupsTrunksList.yaml:186 UsersList.yaml:196
+#: UsersList.yaml:226 XMLRPCLogsList.yaml:60
 #, python-format
 msgid "%s successfully deleted."
 msgstr "%s borrado satisfactoriamente. "
@@ -398,8 +398,8 @@ msgid_plural "Ast voicemail(s)"
 msgstr[0] "Ast voicemail"
 msgstr[1] "Ast voicemail(s)"
 
-#: BrandDDIsList.yaml:14 DDIsList.yaml:14 DDIsList.yaml:93 DDIsList.yaml:111
-#: DDIsList.yaml:128 DDIsList.yaml:148 DDIsList.yaml:149 DDIsList.yaml:150
+#: BrandDDIsList.yaml:14 DDIsList.yaml:14 DDIsList.yaml:99 DDIsList.yaml:117
+#: DDIsList.yaml:134 DDIsList.yaml:155 DDIsList.yaml:156 DDIsList.yaml:157
 #: klear.yaml:130 klear.yaml:132 klear.yaml:196 klear.yaml:198
 #: model/DDIs.yaml:19 model/KamTrunksUacreg.yaml:5
 msgid "DDI"
@@ -407,15 +407,15 @@ msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
 
-#: BrandDDIsList.yaml:42 DDIsList.yaml:49
+#: BrandDDIsList.yaml:43 DDIsList.yaml:50
 msgid "Number data"
 msgstr "Información número"
 
-#: BrandDDIsList.yaml:49 DDIsList.yaml:56
+#: BrandDDIsList.yaml:50 DDIsList.yaml:57
 msgid "Filters data"
 msgstr "Información filtrado"
 
-#: BrandDDIsList.yaml:54 DDIsList.yaml:66
+#: BrandDDIsList.yaml:55 DDIsList.yaml:67
 msgid "Routing data"
 msgstr "Información enrutado"
 
@@ -436,11 +436,11 @@ msgstr[1] "Operadores de Marca"
 msgid "Add %s %2s"
 msgstr "Añadir %s %2s"
 
-#: BrandOperatorsList.yaml:55 MainOperatorsList.yaml:54 UsersList.yaml:98
+#: BrandOperatorsList.yaml:55 MainOperatorsList.yaml:54 UsersList.yaml:97
 msgid "Personal data"
 msgstr "Datos personales"
 
-#: BrandOperatorsList.yaml:62 MainOperatorsList.yaml:61 UsersList.yaml:105
+#: BrandOperatorsList.yaml:62 MainOperatorsList.yaml:61 UsersList.yaml:104
 msgid "Login info"
 msgstr "Información Login"
 
@@ -591,7 +591,7 @@ msgid "Emulate Company %s"
 msgstr "Emular Compañía %s"
 
 #: CompaniesList.yaml:220 ExtensionsList.yaml:101 TerminalsList.yaml:124
-#: UsersList.yaml:204 model/FaxesInOut.yaml:61 model/GenericMusicOnHold.yaml:18
+#: UsersList.yaml:203 model/FaxesInOut.yaml:61 model/GenericMusicOnHold.yaml:18
 #: model/GenericMusicOnHold.yaml:46 model/ImportFiles.yaml:5
 msgid "File"
 msgid_plural "Files"
@@ -600,7 +600,7 @@ msgstr[1] "Ficheros"
 
 #: CompaniesList.yaml:220 ExtensionsList.yaml:101 PricingPlansList.yaml:150
 #: PricingPlansRelTargetPatternsList.yaml:110 TargetPatternsList.yaml:123
-#: TerminalsList.yaml:124 UsersList.yaml:204
+#: TerminalsList.yaml:124 UsersList.yaml:203
 #, python-format
 msgid "Import %s"
 msgstr "Importar %s"
@@ -644,9 +644,13 @@ msgid_plural "Countries"
 msgstr[0] "País"
 msgstr[1] "Países"
 
-#: DDIsList.yaml:61
+#: DDIsList.yaml:62
 msgid "Recording data"
 msgstr "Grabaciones"
+
+#: DDIsList.yaml:78
+msgid "Additional configuration"
+msgstr ""
 
 #: Dashboard.yaml:12 DashboardMaps.yaml:15 klear.yaml:271
 msgid "Vista general de la plataforma"
@@ -662,8 +666,8 @@ msgid_plural "Domains"
 msgstr[0] "Dominio"
 msgstr[1] "Dominios"
 
-#: DomainsList.yaml:89 DomainsList.yaml:90 KamAccCdrsList.yaml:65
-#: KamAccCdrsList.yaml:66 ParsedCDRsBrandList.yaml:64
+#: DomainsList.yaml:89 DomainsList.yaml:90 KamAccCdrsList.yaml:67
+#: KamAccCdrsList.yaml:68 ParsedCDRsBrandList.yaml:64
 #: ParsedCDRsBrandList.yaml:65 ParsedCDRsCompanyList.yaml:64
 #: ParsedCDRsCompanyList.yaml:65 ParsedCDRsList.yaml:64 ParsedCDRsList.yaml:65
 #, python-format
@@ -810,8 +814,8 @@ msgstr[1] "Festivos"
 
 #: HuntGroupsList.yaml:16 HuntGroupsList.yaml:43 HuntGroupsList.yaml:73
 #: HuntGroupsList.yaml:106 HuntGroupsList.yaml:107 HuntGroupsList.yaml:108
-#: UsersList.yaml:157 UsersList.yaml:168 UsersList.yaml:225 UsersList.yaml:226
-#: UsersList.yaml:227 klear.yaml:220 klear.yaml:222 model/Users.yaml:293
+#: UsersList.yaml:156 UsersList.yaml:167 UsersList.yaml:224 UsersList.yaml:225
+#: UsersList.yaml:226 klear.yaml:220 klear.yaml:222 model/Users.yaml:293
 msgid "Hunt group"
 msgid_plural "Hunt groups"
 msgstr[0] "Grupo de salto"
@@ -824,7 +828,7 @@ msgstr "Tipo de fichero"
 
 #: HuntGroupsList.yaml:86 HuntGroupsList.yaml:93 HuntGroupsList.yaml:97
 #: HuntGroupsList.yaml:115 UsersList.yaml:20 UsersList.yaml:84
-#: UsersList.yaml:141 UsersList.yaml:195 UsersList.yaml:196 UsersList.yaml:197
+#: UsersList.yaml:140 UsersList.yaml:194 UsersList.yaml:195 UsersList.yaml:196
 #: klear.yaml:184 klear.yaml:186 model/Extensions.yaml:122
 msgid "User"
 msgid_plural "Users"
@@ -926,19 +930,19 @@ msgstr[1] "llamadas"
 msgid "Tarificate %s"
 msgstr "Tarificar %s"
 
-#: KamAccCdrsList.yaml:22 KamAccCdrsList.yaml:65 KamAccCdrsList.yaml:66
+#: KamAccCdrsList.yaml:22 KamAccCdrsList.yaml:67 KamAccCdrsList.yaml:68
 #: klear.yaml:96 klear.yaml:98 klear.yaml:170 klear.yaml:172
 msgid "Billable call"
 msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
 msgstr[1] "Llamadas facturables"
 
-#: KamAccCdrsList.yaml:100 ParsedCDRsBrandList.yaml:107
+#: KamAccCdrsList.yaml:103 ParsedCDRsBrandList.yaml:107
 #: ParsedCDRsCompanyList.yaml:107 ParsedCDRsList.yaml:97
 msgid "Basic information"
 msgstr "Información básica"
 
-#: KamAccCdrsList.yaml:110
+#: KamAccCdrsList.yaml:113
 msgid "Details"
 msgstr "Detalles"
 
@@ -1230,7 +1234,7 @@ msgid_plural "Transformation ruleset groups trunks"
 msgstr[0] "Transformación numérica"
 msgstr[1] "Transformaciones numéricas"
 
-#: PeeringContractsList.yaml:103 PricingPlansRelCompaniesList.yaml:82
+#: PeeringContractsList.yaml:103 PricingPlansRelCompaniesList.yaml:79
 #: klear.yaml:54 klear.yaml:58 klear.yaml:62 klear.yaml:66 klear.yaml:70
 #: klear.yaml:74 klear.yaml:78 klear.yaml:82 klear.yaml:86 klear.yaml:90
 #: klear.yaml:94 klear.yaml:98 klear.yaml:102 klear.yaml:112 klear.yaml:116
@@ -1265,8 +1269,8 @@ msgstr[1] "Pick up rel users"
 #: PricingPlansList.yaml:116 PricingPlansList.yaml:117
 #: PricingPlansList.yaml:118 PricingPlansList.yaml:150
 #: PricingPlansRelCompaniesList.yaml:16 PricingPlansRelCompaniesList.yaml:50
-#: PricingPlansRelCompaniesList.yaml:73 PricingPlansRelCompaniesList.yaml:98
-#: PricingPlansRelCompaniesList.yaml:99 PricingPlansRelCompaniesList.yaml:100
+#: PricingPlansRelCompaniesList.yaml:70 PricingPlansRelCompaniesList.yaml:95
+#: PricingPlansRelCompaniesList.yaml:96 PricingPlansRelCompaniesList.yaml:97
 #: TargetPatternsList.yaml:101 klear.yaml:150
 #: model/PricingPlansRelCompanies.yaml:5
 #: model/PricingPlansRelTargetPatterns.yaml:42
@@ -1275,7 +1279,7 @@ msgid_plural "Pricing plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
 
-#: PricingPlansList.yaml:103 model/KamAccCdrs.yaml:175
+#: PricingPlansList.yaml:103 model/KamAccCdrs.yaml:190
 #: model/PricingPlansRelTargetPatterns.yaml:55
 msgid "Target pattern"
 msgid_plural "Target patterns"
@@ -1310,7 +1314,7 @@ msgstr ""
 msgid "Help"
 msgstr "Ayuda"
 
-#: PricingPlansRelCompaniesList.yaml:82
+#: PricingPlansRelCompaniesList.yaml:79
 #: PricingPlansRelTargetPatternsList.yaml:16
 #: PricingPlansRelTargetPatternsList.yaml:110
 msgid "price"
@@ -1318,23 +1322,23 @@ msgid_plural "prices"
 msgstr[0] "Precio"
 msgstr[1] "Precios"
 
-#: PricingPlansRelCompaniesList.yaml:99
+#: PricingPlansRelCompaniesList.yaml:96
 #, python-format
 msgid "Do you want to delete this %s %2s?"
 msgstr "¿Quieres eliminar %s %2s?"
 
-#: PricingPlansRelCompaniesList.yaml:100
+#: PricingPlansRelCompaniesList.yaml:97
 #, python-format
 msgid "%s %2s successfully deleted."
 msgstr "%s %2s borrado satisfactoriamente. "
 
-#: PricingPlansRelCompaniesList.yaml:106
+#: PricingPlansRelCompaniesList.yaml:103
 msgid "Simulate a call"
 msgstr "Simular una llamada"
 
 #: PricingPlansRelTargetPatternsList.yaml:59
 #: PricingPlansRelTargetPatternsList.yaml:86
-#: PricingPlansRelTargetPatternsList.yaml:101 model/KamAccCdrs.yaml:191
+#: PricingPlansRelTargetPatternsList.yaml:101 model/KamAccCdrs.yaml:206
 msgid "Price"
 msgid_plural "Prices"
 msgstr[0] "Precio"
@@ -1437,27 +1441,27 @@ msgid_plural "Terminal manufacturers"
 msgstr[0] "Fabricante de Terminales"
 msgstr[1] "Fabricantes de Terminales"
 
-#: TerminalModelsList.yaml:16 TerminalModelsList.yaml:45
-#: TerminalModelsList.yaml:59 TerminalModelsList.yaml:74
-#: TerminalModelsList.yaml:75 TerminalModelsList.yaml:76
+#: TerminalModelsList.yaml:16 TerminalModelsList.yaml:46
+#: TerminalModelsList.yaml:61 TerminalModelsList.yaml:76
+#: TerminalModelsList.yaml:77 TerminalModelsList.yaml:78
 msgid "Terminal model"
 msgid_plural "Terminal models"
 msgstr[0] "Model de Terminales"
 msgstr[1] "Modelos de Terminales"
 
-#: TerminalModelsList.yaml:81
+#: TerminalModelsList.yaml:83
 msgid "Cargar desde un fichero"
 msgstr ""
 
-#: TerminalModelsList.yaml:88
+#: TerminalModelsList.yaml:90
 msgid "Descargar fichero"
 msgstr ""
 
-#: TerminalModelsList.yaml:95 TerminalModelsList.yaml:102
+#: TerminalModelsList.yaml:97 TerminalModelsList.yaml:104
 msgid "Restaurar último backup"
 msgstr ""
 
-#: TerminalModelsList.yaml:109 TerminalModelsList.yaml:116
+#: TerminalModelsList.yaml:111 TerminalModelsList.yaml:118
 msgid "Ejecutar el código"
 msgstr ""
 
@@ -1516,22 +1520,22 @@ msgstr "Transf. Llamante Salida"
 msgid "Callee Out transformations"
 msgstr "Transf. Llamado Salida"
 
-#: UsersList.yaml:130
+#: UsersList.yaml:129
 msgid "Voicemail"
 msgstr "Buzón de voz"
 
-#: UsersList.yaml:163
+#: UsersList.yaml:162
 msgid "hunt group"
 msgid_plural "hunt groups"
 msgstr[0] "Grupo de Captura"
 msgstr[1] "Grupos de Captura"
 
-#: UsersList.yaml:163
+#: UsersList.yaml:162
 #, python-format
 msgid "Join to %s %2s"
 msgstr "Unirse a %s %2s"
 
-#: UsersList.yaml:168
+#: UsersList.yaml:167
 #, python-format
 msgid "Edit Join of %s"
 msgstr "Editar Union de %s"
@@ -1553,15 +1557,15 @@ msgid "Download file"
 msgstr "Descargar fichero"
 
 #: conf.d/codecsHelp.yaml:6 model/Companies.yaml:190 model/DDIs.yaml:92
-#: model/ExternalCallFilters.yaml:238 model/ExternalCallFilters.yaml:246
-#: model/KamRtpproxy.yaml:16 model/KamRtpproxy.yaml:28
-#: model/KamRtpproxy.yaml:48 model/PeerServers.yaml:28
-#: model/PeerServers.yaml:62 model/PeerServers.yaml:79
-#: model/PeerServers.yaml:112 model/PeerServers.yaml:124
-#: model/PeerServers.yaml:169 model/PeerServers.yaml:180
-#: model/PeerServers.yaml:190 model/PeerServers.yaml:200
-#: model/RoutingPatterns.yaml:24 model/Terminals.yaml:31
-#: model/Terminals.yaml:65
+#: model/DDIs.yaml:109 model/ExternalCallFilters.yaml:238
+#: model/ExternalCallFilters.yaml:246 model/KamRtpproxy.yaml:16
+#: model/KamRtpproxy.yaml:28 model/KamRtpproxy.yaml:48
+#: model/PeerServers.yaml:28 model/PeerServers.yaml:62
+#: model/PeerServers.yaml:79 model/PeerServers.yaml:112
+#: model/PeerServers.yaml:124 model/PeerServers.yaml:169
+#: model/PeerServers.yaml:180 model/PeerServers.yaml:190
+#: model/PeerServers.yaml:200 model/RoutingPatterns.yaml:24
+#: model/Terminals.yaml:31 model/Terminals.yaml:65
 msgid "Need help?"
 msgstr "¿Necesita ayuda?"
 
@@ -1675,6 +1679,16 @@ msgstr ""
 #: errors.yaml:24
 msgid "Template field can not be null."
 msgstr "El campo plantilla no puede estar vacio."
+
+#: errors.yaml:25
+msgid ""
+"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+msgstr ""
+
+#: errors.yaml:26
+msgid ""
+"Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
+msgstr ""
 
 #: klear.yaml:38
 msgid "Access denied"
@@ -1891,7 +1905,7 @@ msgstr "Remove existing"
 #: model/AstVoicemail.yaml:90 model/AstVoicemail.yaml:98
 #: model/AstVoicemail.yaml:106 model/AstVoicemail.yaml:114
 #: model/AstVoicemail.yaml:127 model/AstVoicemail.yaml:135
-#: model/KamAccCdrs.yaml:110 model/PeerServers.yaml:139
+#: model/KamAccCdrs.yaml:118 model/PeerServers.yaml:139
 msgid "yes"
 msgstr "Si"
 
@@ -1904,7 +1918,7 @@ msgstr "Si"
 #: model/AstVoicemail.yaml:91 model/AstVoicemail.yaml:99
 #: model/AstVoicemail.yaml:107 model/AstVoicemail.yaml:115
 #: model/AstVoicemail.yaml:128 model/AstVoicemail.yaml:136
-#: model/KamAccCdrs.yaml:111 model/PeerServers.yaml:144
+#: model/KamAccCdrs.yaml:119 model/PeerServers.yaml:144
 #, fuzzy
 msgid "no"
 msgstr "Nota"
@@ -1938,9 +1952,9 @@ msgstr "Terminal"
 #: model/AstVoicemail.yaml:196 model/Brands.yaml:135
 #: model/CallForwardSettings.yaml:93 model/CallForwardSettings.yaml:109
 #: model/Companies.yaml:64 model/Companies.yaml:127 model/Companies.yaml:148
-#: model/Companies.yaml:161 model/DDIs.yaml:38 model/DDIs.yaml:108
-#: model/DDIs.yaml:123 model/DDIs.yaml:138 model/DDIs.yaml:153
-#: model/DDIs.yaml:168 model/DDIs.yaml:183 model/Extensions.yaml:69
+#: model/Companies.yaml:161 model/DDIs.yaml:38 model/DDIs.yaml:125
+#: model/DDIs.yaml:140 model/DDIs.yaml:155 model/DDIs.yaml:170
+#: model/DDIs.yaml:185 model/DDIs.yaml:200 model/Extensions.yaml:69
 #: model/Extensions.yaml:84 model/Extensions.yaml:99 model/Extensions.yaml:114
 #: model/ExternalCallFilters.yaml:38 model/ExternalCallFilters.yaml:54
 #: model/ExternalCallFilters.yaml:70 model/ExternalCallFilters.yaml:78
@@ -1957,9 +1971,9 @@ msgstr "Terminal"
 #: model/IVRCustom.yaml:196 model/IVRCustom.yaml:212
 #: model/IVRCustomEntries.yaml:40 model/IVRCustomEntries.yaml:82
 #: model/IVRCustomEntries.yaml:98 model/Invoices.yaml:123
-#: model/Invoices.yaml:136 model/Invoices.yaml:151 model/KamAccCdrs.yaml:73
-#: model/KamAccCdrs.yaml:86 model/KamAccCdrs.yaml:130 model/KamAccCdrs.yaml:173
-#: model/KamAccCdrs.yaml:186 model/KamAccCdrs.yaml:210
+#: model/Invoices.yaml:136 model/Invoices.yaml:151 model/KamAccCdrs.yaml:81
+#: model/KamAccCdrs.yaml:94 model/KamAccCdrs.yaml:138 model/KamAccCdrs.yaml:188
+#: model/KamAccCdrs.yaml:201 model/KamAccCdrs.yaml:225
 #: model/KamRtpproxy.yaml:66 model/KamTrunksDomain.yaml:28
 #: model/KamUsersDomain.yaml:36 model/ParsedCDRs.yaml:120
 #: model/ParsedCDRs.yaml:133 model/ParsedCDRs.yaml:146
@@ -2179,7 +2193,7 @@ msgid "Imapflag"
 msgstr "Imapflag"
 
 #: model/AstVoicemail.yaml:185 model/CallForwardSettings.yaml:5
-#: model/DDIs.yaml:94 model/HuntGroups.yaml:131
+#: model/DDIs.yaml:111 model/HuntGroups.yaml:131
 #: model/HuntGroupsRelUsers.yaml:20 model/PickUpRelUsers.yaml:19
 msgid "User id"
 msgstr "Usuario"
@@ -2202,21 +2216,23 @@ msgstr "Activo"
 
 #: model/BrandOperators.yaml:41 model/Companies.yaml:182
 #: model/CompanyAdmins.yaml:43 model/ConferenceRooms.yaml:31
-#: model/Faxes.yaml:39 model/KamAccCdrs.yaml:139 model/KamAccCdrs.yaml:150
-#: model/LcrRules.yaml:47 model/LcrRules.yaml:58 model/MainOperators.yaml:38
-#: model/PeeringContracts.yaml:53 model/Users.yaml:52 model/Users.yaml:133
-#: model/Users.yaml:144 model/Users.yaml:187 model/Users.yaml:204
-#: model/Users.yaml:215 model/Users.yaml:232 model/Users.yaml:249
+#: model/DDIs.yaml:101 model/Faxes.yaml:39 model/KamAccCdrs.yaml:147
+#: model/KamAccCdrs.yaml:158 model/LcrRules.yaml:47 model/LcrRules.yaml:58
+#: model/MainOperators.yaml:38 model/PeeringContracts.yaml:53
+#: model/Users.yaml:52 model/Users.yaml:133 model/Users.yaml:144
+#: model/Users.yaml:187 model/Users.yaml:204 model/Users.yaml:215
+#: model/Users.yaml:232 model/Users.yaml:249
 msgid "No"
 msgstr "No"
 
 #: model/BrandOperators.yaml:43 model/Companies.yaml:184
 #: model/CompanyAdmins.yaml:45 model/ConferenceRooms.yaml:36
-#: model/Faxes.yaml:43 model/KamAccCdrs.yaml:141 model/KamAccCdrs.yaml:152
-#: model/LcrRules.yaml:49 model/LcrRules.yaml:60 model/MainOperators.yaml:40
-#: model/PeeringContracts.yaml:55 model/Users.yaml:54 model/Users.yaml:135
-#: model/Users.yaml:149 model/Users.yaml:189 model/Users.yaml:206
-#: model/Users.yaml:220 model/Users.yaml:237 model/Users.yaml:251
+#: model/DDIs.yaml:103 model/Faxes.yaml:43 model/KamAccCdrs.yaml:149
+#: model/KamAccCdrs.yaml:160 model/LcrRules.yaml:49 model/LcrRules.yaml:60
+#: model/MainOperators.yaml:40 model/PeeringContracts.yaml:55
+#: model/Users.yaml:54 model/Users.yaml:135 model/Users.yaml:149
+#: model/Users.yaml:189 model/Users.yaml:206 model/Users.yaml:220
+#: model/Users.yaml:237 model/Users.yaml:251
 msgid "Yes"
 msgstr "Si"
 
@@ -2234,7 +2250,7 @@ msgstr "Servicio"
 #: model/GenericMusicOnHold.yaml:5 model/ImportFiles.yaml:94
 #: model/ImportPatterns.yaml:44 model/ImportPlans.yaml:32
 #: model/ImportPrices.yaml:55 model/InvoiceTemplates.yaml:36
-#: model/KamAccCdrs.yaml:75 model/KamTrunksUacreg.yaml:89
+#: model/KamAccCdrs.yaml:83 model/KamTrunksUacreg.yaml:89
 #: model/LcrRuleTarget.yaml:5 model/LcrRules.yaml:5 model/ParsedCDRs.yaml:109
 #: model/PeerServers.yaml:41 model/PricingPlansRelCompanies.yaml:59
 #: model/PricingPlansRelTargetPatterns.yaml:73
@@ -2505,7 +2521,7 @@ msgstr ""
 #: model/CompanyAdmins.yaml:5 model/CompanyServices.yaml:20
 #: model/ConferenceRooms.yaml:5 model/DDIs.yaml:5 model/Domains.yaml:56
 #: model/Extensions.yaml:5 model/Faxes.yaml:5 model/HuntGroups.yaml:16
-#: model/IVRCommon.yaml:5 model/IVRCustom.yaml:5 model/KamAccCdrs.yaml:62
+#: model/IVRCommon.yaml:5 model/IVRCustom.yaml:5 model/KamAccCdrs.yaml:70
 #: model/KamUsersAddress.yaml:5 model/LcrGateways.yaml:5
 #: model/LcrRuleTargets.yaml:5 model/ParsedCDRs.yaml:122
 #: model/PickUpGroups.yaml:11 model/Recordings.yaml:5 model/Schedules.yaml:5
@@ -2577,11 +2593,11 @@ msgstr ""
 msgid "all"
 msgstr ""
 
-#: model/DDIs.yaml:85
+#: model/DDIs.yaml:85 model/KamAccCdrs.yaml:51
 msgid "inbound"
 msgstr "entrante"
 
-#: model/DDIs.yaml:86
+#: model/DDIs.yaml:86 model/KamAccCdrs.yaml:52
 msgid "outbound"
 msgstr "saliente"
 
@@ -2593,37 +2609,45 @@ msgstr ""
 "La legislación vigente obliga a avisar a los participantes antes de grabar, "
 "actúa con responsabilidad."
 
-#: model/DDIs.yaml:110 model/Extensions.yaml:56
+#: model/DDIs.yaml:94
+msgid "Bill inbound call"
+msgstr ""
+
+#: model/DDIs.yaml:108
+msgid "This setting needs external tarification module"
+msgstr ""
+
+#: model/DDIs.yaml:127 model/Extensions.yaml:56
 msgid "I v r common id"
 msgstr "IVR Genérico"
 
-#: model/DDIs.yaml:125 model/Extensions.yaml:71 model/IVRCustomEntries.yaml:5
+#: model/DDIs.yaml:142 model/Extensions.yaml:71 model/IVRCustomEntries.yaml:5
 msgid "I v r custom id"
 msgstr "IVR a medida"
 
-#: model/DDIs.yaml:140 model/Extensions.yaml:86 model/HuntGroupsRelUsers.yaml:5
+#: model/DDIs.yaml:157 model/Extensions.yaml:86 model/HuntGroupsRelUsers.yaml:5
 msgid "Hunt group id"
 msgstr "Grupo de salto"
 
-#: model/DDIs.yaml:155 model/FaxesInOut.yaml:13
+#: model/DDIs.yaml:172 model/FaxesInOut.yaml:13
 msgid "Fax id"
 msgstr "Fax"
 
-#: model/DDIs.yaml:170 model/Extensions.yaml:101
+#: model/DDIs.yaml:187 model/Extensions.yaml:101
 msgid "Conference room id"
 msgstr ""
 
-#: model/DDIs.yaml:185 model/Extensions.yaml:116
+#: model/DDIs.yaml:202 model/Extensions.yaml:116
 #: model/IVRCustomEntries.yaml:100
 msgid "Target"
 msgstr "Destino"
 
-#: model/DDIs.yaml:191 model/KamAccCdrs.yaml:119 model/KamTrunksUacreg.yaml:102
+#: model/DDIs.yaml:208 model/KamAccCdrs.yaml:127 model/KamTrunksUacreg.yaml:102
 #: model/ParsedCDRs.yaml:135
 msgid "Peering contract id"
 msgstr "Contrato de Peering"
 
-#: model/DDIs.yaml:205 model/Timezones.yaml:5
+#: model/DDIs.yaml:222 model/Timezones.yaml:5
 msgid "Country id"
 msgstr "País"
 
@@ -2803,7 +2827,7 @@ msgstr "Origen"
 msgid "Dst"
 msgstr "Destino"
 
-#: model/FaxesInOut.yaml:37 model/ImportFiles.yaml:53
+#: model/FaxesInOut.yaml:37 model/ImportFiles.yaml:53 model/KamAccCdrs.yaml:46
 #: model/KamUsersDomainAttrs.yaml:16 model/OutgoingRouting.yaml:5
 #: model/ParsedCDRs.yaml:48
 msgid "Type"
@@ -2827,7 +2851,7 @@ msgstr "Páginas"
 msgid "Statu"
 msgstr "Estado"
 
-#: model/FaxesInOut.yaml:56 model/Invoices.yaml:70 model/KamAccCdrs.yaml:113
+#: model/FaxesInOut.yaml:56 model/Invoices.yaml:70 model/KamAccCdrs.yaml:121
 msgid "error"
 msgstr "Error"
 
@@ -2847,7 +2871,7 @@ msgstr "En curso"
 msgid "Cost"
 msgstr "Coste"
 
-#: model/FixedCostsRelInvoices.yaml:34 model/KamAccCdrs.yaml:199
+#: model/FixedCostsRelInvoices.yaml:34 model/KamAccCdrs.yaml:214
 msgid "Invoice id"
 msgstr "Factura"
 
@@ -3039,7 +3063,7 @@ msgstr "Métrica"
 msgid "Import file id"
 msgstr "Fichero importado"
 
-#: model/ImportPrices.yaml:5 model/KamAccCdrs.yaml:162
+#: model/ImportPrices.yaml:5 model/KamAccCdrs.yaml:177
 msgid "Pricing plan id"
 msgstr "Plan de precios"
 
@@ -3052,12 +3076,12 @@ msgid "Connection charge"
 msgstr "Coste de conexión"
 
 #: model/ImportPrices.yaml:24 model/PricingPlansRelTargetPatterns.yaml:15
-msgid "Period time"
-msgstr "Periodo"
+msgid "Charge period"
+msgstr "Período de facturación"
 
 #: model/ImportPrices.yaml:30 model/PricingPlansRelTargetPatterns.yaml:24
-msgid "Per period charge"
-msgstr "Coste por periodo"
+msgid "Per minute charge"
+msgstr "Coste por minuto"
 
 #: model/InvoiceTemplates.yaml:19 model/Invoices.yaml:138
 msgid "Template"
@@ -3125,65 +3149,73 @@ msgstr "Fecha fin"
 msgid "Duration"
 msgstr "Duración"
 
-#: model/KamAccCdrs.yaml:46 model/ParsedCDRs.yaml:69 model/Recordings.yaml:35
+#: model/KamAccCdrs.yaml:54 model/ParsedCDRs.yaml:69 model/Recordings.yaml:35
 msgid "Caller"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:50 model/KamDispatcher.yaml:12
+#: model/KamAccCdrs.yaml:58 model/KamDispatcher.yaml:12
 msgid "Destination"
 msgstr "Destino"
 
-#: model/KamAccCdrs.yaml:54 model/ParsedCDRs.yaml:101
+#: model/KamAccCdrs.yaml:62 model/ParsedCDRs.yaml:101
 msgid "Referee"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:58 model/ParsedCDRs.yaml:97
+#: model/KamAccCdrs.yaml:66 model/ParsedCDRs.yaml:97
 msgid "Referrer"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:88
+#: model/KamAccCdrs.yaml:96
 msgid "As iden"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:92
+#: model/KamAccCdrs.yaml:100
 msgid "As address"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:96 model/Recordings.yaml:19
+#: model/KamAccCdrs.yaml:104 model/Recordings.yaml:19
 msgid "Callid"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:100
+#: model/KamAccCdrs.yaml:108
 msgid "Xcallid"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:104
+#: model/KamAccCdrs.yaml:112
 msgid "Parsed"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:112
+#: model/KamAccCdrs.yaml:120
 msgid "delayed"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:115
+#: model/KamAccCdrs.yaml:123
 msgid "Diversion"
 msgstr ""
 
-#: model/KamAccCdrs.yaml:132 model/PeeringContracts.yaml:46
+#: model/KamAccCdrs.yaml:140 model/PeeringContracts.yaml:46
 msgid "Externally rated"
 msgstr "Tarificación externa"
 
-#: model/KamAccCdrs.yaml:143
+#: model/KamAccCdrs.yaml:151
 msgid "Metered"
 msgstr "Tarificado"
 
-#: model/KamAccCdrs.yaml:154
+#: model/KamAccCdrs.yaml:162
 msgid "Metering date"
 msgstr "Fecha de tarificación"
 
-#: model/KamAccCdrs.yaml:194
+#: model/KamAccCdrs.yaml:170
+msgid "Re metering date"
+msgstr ""
+
+#: model/KamAccCdrs.yaml:209
 msgid "Pricing plan detail"
 msgstr ""
+
+#: model/KamAccCdrs.yaml:227
+msgid "Source"
+msgstr "Origen"
 
 #: model/KamDispatcher.yaml:5 model/KamRtpproxy.yaml:5
 msgid "Setid"
@@ -3946,6 +3978,12 @@ msgstr "Modificado"
 msgid "Finish date"
 msgstr "Modificado"
 
+#~ msgid "Period time"
+#~ msgstr "Periodo"
+
+#~ msgid "Per period charge"
+#~ msgstr "Coste por periodo"
+
 #~ msgid "Destination pattern"
 #~ msgid_plural "Destination patterns"
 #~ msgstr[0] "Patrón de destino"
@@ -4003,9 +4041,6 @@ msgstr "Modificado"
 
 #~ msgid "Use auth user as from user"
 #~ msgstr "Emplear usuario de autenticación como origen"
-
-#~ msgid "Source"
-#~ msgstr "Origen"
 
 #~ msgid "Call duration"
 #~ msgstr "Duración llamada"

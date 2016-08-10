@@ -169,8 +169,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                     "Plan" => $planToApply->getName(),
                     "Pattern" => $matchedPattern->getName()." ".$matchedPattern->getDescription()." (".$matchedPattern->getRegExp().")",
                     "Con. charge (€)" => $priceToApply->getConnectionCharge(),
-                    "Period time (s)" => $priceToApply->getPeriodTime(),
-                    "Per Period charge (€)" => $priceToApply->getPerPeriodCharge(),
+                    "Charge period (s)" => $priceToApply->getPeriodTime(),
+                    "Per minute charge (€)" => $priceToApply->getPerPeriodCharge(),
                     //"Metric" => $priceToApply->getMetric(),
                     "Cost" => $cost
             );
@@ -306,8 +306,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                             "Prefix" => $data["Pattern"]["regExp"],
                             //"Metric" => $data["Price"]["metric"],
                             "Con. Charge" => $data["Price"]["connectionCharge"],
-                            "Period Time" => $data["Price"]["periodTime"],
-                            "Per Period Charge" => $data["Price"]["perPeriodCharge"],
+                            "Charge Period" => $data["Price"]["periodTime"],
+                            "Per Minute Charge" => $data["Price"]["perPeriodCharge"],
                             "Cost" => $data["Cost"],
                     )
             );

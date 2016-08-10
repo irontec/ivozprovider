@@ -12,7 +12,7 @@ production:
       default: true
       sufix: "€"
     periodTime: 
-      title: _('Period time')
+      title: _('Charge period')
       type: number
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
         step: 1
       sufix: "s"
     perPeriodCharge: 
-      title: _('Per period charge')
+      title: _('Per minute charge')
       type: text
       trim: both
       required: true

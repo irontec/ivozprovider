@@ -21,13 +21,13 @@ production:
       required: true
       maxLength: 40
     periodTime: 
-      title: _('Period time')
+      title: _('Charge period')
       type: text
       trim: both
       required: true
       maxLength: 40
     perPeriodCharge: 
-      title: _('Per period charge')
+      title: _('Per minute charge')
       type: text
       trim: both
       required: true
