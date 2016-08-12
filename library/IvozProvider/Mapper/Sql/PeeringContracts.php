@@ -62,11 +62,25 @@ class PeeringContracts extends Raw\PeeringContracts
         $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
         $outgoingRoutings = $outgoingRoutingMapper->findByField("peeringContractId", $model->getPrimaryKey());
 
+        // If this PeeringContract has Registers, uac.reg_reload
+        $KamTrunksUacregMapper = new \IvozProvider\Mapper\Sql\KamTrunksUacreg();
+        $KamTrunksUacregs = $KamTrunksUacregMapper->findByField("peeringContractId", $model->getPrimaryKey());
+
         $response = parent::delete($model);
 
+        $commands = array();
+
         if (!empty($outgoingRoutings)) {
+            array_push($commands, 'lcr.reload');
+        }
+
+        if (!empty($KamTrunksUacregs)) {
+            array_push($commands, 'uac.reg_reload');
+        }
+
+        if (!empty($commands)) {
             try {
-                $this->_sendXmlRcp();
+                $this->_sendXmlRcpToTrunks($commands);
             } catch (\Exception $e) {
                 $message = $e->getMessage()."<p>PeeringContract may have been deleted.</p>";
                 throw new \Exception($message);
@@ -76,12 +90,10 @@ class PeeringContracts extends Raw\PeeringContracts
         return $response;
     }
 
-    protected function _sendXmlRcp()
+    protected function _sendXmlRcpToTrunks($commands)
     {
         $proxyServers = array(
-                'proxytrunks' => array(
-                        "lcr.reload"
-                        )
+                'proxytrunks' => $commands
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);
