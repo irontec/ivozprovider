@@ -96,9 +96,9 @@ class ServiceAction extends RouterAction
             return;
         }
 
-        $capturedTerminal = $capturedUser->getUserTerminalInterface();
+        $capturedTerminal = $capturedUser->getEndpoint()->getSorceryId();
         $this->agi->verbose("Attempting pickup %s", $capturedTerminal);
-        $result = $this->agi->pickup($interface);
+        $result = $this->agi->pickup($capturedTerminal);
 
         if ($result == "SUCCESS") {
             $this->agi->verbose("Successful pickup %s", $capturedTerminal);
