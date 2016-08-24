@@ -83,25 +83,25 @@ class ServiceAction extends RouterAction
                 break;
             }
         }
-        $capturedUserId = $capturedUser->getId();
-
-
         if (! $isCapturable) {
-            $this->agi->verbose("User %s can not be pickuped.", $capturedUserId);
-            return;
-        }
-        $interface = $capturedUser->getUserTerminalInterface();
-        if (empty($interface)) {
-            $this->agi->verbose("User %s has not associated terminal.", $capturedUserId);
+            $this->agi->verbose("User %s can not be pickuped.", $capturedUser->getId());
             return;
         }
 
-        $capturedTerminal = $capturedUser->getEndpoint()->getSorceryId();
-        $this->agi->verbose("Attempting pickup %s", $capturedTerminal);
-        $result = $this->agi->pickup($capturedTerminal);
+        // Get user terminal
+        $capturedTerminal = $capturedUser->getTerminal();
+        if (empty($capturedTerminal)) {
+            $this->agi->verbose("User %s has not associated terminal.", $capturedUser->getId());
+            return;
+        }
+
+        // Get Terminal endpoint
+        $capturedEndpoint = $capturedTerminal->getSorcery();
+        $this->agi->verbose("Attempting pickup %s", $capturedEndpoint);
+        $result = $this->agi->pickup($capturedEndpoint);
 
         if ($result == "SUCCESS") {
-            $this->agi->verbose("Successful pickup %s", $capturedTerminal);
+            $this->agi->verbose("Successful pickup %s", $capturedEndpoint);
         } else {
             // Target not found here
             $this->agi->hangup(3);
