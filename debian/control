@@ -91,7 +91,9 @@ Depends: ivozprovider-profile-common,
     ivozprovider-userweb,
     gearman-job-server,
     supervisor,
-    libav-tools
+    libav-tools,
+    sox,
+    libsox-fmt-mp3
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portal System Profile
  .
