@@ -20,7 +20,7 @@ class IVRCustomAction extends IVRAction
         // Get IVR all Locutions
         $welcomLocution = $ivr->getWelcomeLocution();
         if (empty($welcomLocution)) {
-            // DIXME ??
+            // FIXME ??
             $welcomLocutionFile = '/var/lib/asterisk/sounds/en/if-u-know-ext-dial';
         } else {
             $welcomLocutionFile = $welcomLocution->getLocutionPath();
@@ -59,8 +59,8 @@ class IVRCustomAction extends IVRAction
                     // Route to destination
                     $this->_routeType       = $entry->getTargetType();
                     $this->_routeExtension  = $entry->getTargetExtension();
-                    $this->_routeVoiceMail  = $entry->getTargetNumber();
-                    $this->_routeExternal   = $entry->getTargetVoiceMailUser();
+                    $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
+                    $this->_routeExternal   = $entry->getTargetNumberValue();
                 }
                 // Routed! :)
                 return $this->route();
