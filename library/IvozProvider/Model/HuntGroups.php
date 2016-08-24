@@ -29,7 +29,8 @@ class HuntGroups extends Raw\HuntGroups
     }
 
     /**
-     * return array
+     * Get this Hungroup related users
+     * return array of object of \IvozProvider\Model\Raw\Users
      */
     public function getHuntGroupUsersArray()
     {
@@ -43,80 +44,6 @@ class HuntGroups extends Raw\HuntGroups
             $huntGroupUsersArray[] = $user;
         }
         return $huntGroupUsersArray;
-    }
-    /**
-     * @param array of object of \IvozProvider\Model\Raw\Users
-     * return array interfaces and callwaiting
-     */
-    public function getHuntGroupUsersInterfacesArray($users)
-    {
-        $ringAllInterfaces = array();
-        
-        foreach($users as $user) {
-            $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='inconditional'");
-            if(!empty($cfwSettings)){
-                continue;
-            }
-            $interface = $user->getUserTerminalInterface();
-            if(empty($interface)) {
-                continue;
-            }
-            
-            $ringAllInterfaces[] = array(
-                    'interface' => "PJSIP/".$interface,
-                    'callwaiting' => $user->getCallWaiting()
-                    );
-            
-        }
-        return $ringAllInterfaces;
-    }
-
-    public function hasHungGroupMoreUsers($loopCounter)
-    {
-        $huntGroupsRelUsers = $this->getHuntGroupsRelUsers(null, "priority asc");
-        $totalUsers = count($huntGroupsRelUsers);
-        $areMoreUsers = ($totalUsers> $loopCounter);
-        return $areMoreUsers;
-    }
-
-    public function getHuntGroupLinearNextUser($currentPosition)
-    {
-        $huntGroupsRelUsers = $this->getHuntGroupsRelUsers(null, "priority asc");
-        $huntGroupUser = $huntGroupsRelUsers[$currentPosition]->getUser();
-        $extension = $huntGroupUser->getExtension();
-        return $extension;
-    }
-
-    public function getHuntGroupRoundRobinNextUser($nextUserPosition)
-    {
-        $huntGroupsRelUsers = $this->getHuntGroupsRelUsers(null, "priority asc");
-        $huntGroupUser = $huntGroupsRelUsers[$nextUserPosition]->getUser();
-        $extension = $huntGroupUser->getExtension();
-
-        $totalUsers = count($huntGroupsRelUsers);
-        $nextUserPosition++;
-        if($nextUserPosition== $totalUsers) {
-            $nextUserPosition = 0;
-        }
-        $this->setNextUserPosition($nextUserPosition);
-        $this->save();
-        return $extension;
-    }
-
-    public function getHuntGroupRandomSequence()
-    {
-        $huntGroupsRelUsers = $this->getHuntGroupsRelUsers();
-        $userIds = array();
-        foreach($huntGroupsRelUsers as $huntGroupsRelUser) {
-            $userIds[] = $huntGroupsRelUser->getUserId();
-        }
-
-        if(empty($userIds)) {
-            return null;
-        }
-
-        shuffle($userIds);
-        return implode(",", $userIds);
     }
 
 }
