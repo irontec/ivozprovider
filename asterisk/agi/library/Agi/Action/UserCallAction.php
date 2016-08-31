@@ -4,6 +4,8 @@ namespace Agi\Action;
 
 class UserCallAction extends RouterAction
 {
+    protected $_user;
+
     protected $_timeout;
 
     protected $_dialStatus = null;
@@ -13,6 +15,13 @@ class UserCallAction extends RouterAction
     protected $_allowForwarding = true;
 
     protected $_processDialStatus = true;
+
+
+    public function setUser($user)
+    {
+        $this->_user = $user;
+        return $this;
+    }
 
     public function setTimeout($timeout)
     {

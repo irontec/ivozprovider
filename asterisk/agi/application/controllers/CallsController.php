@@ -63,6 +63,7 @@ class CallsController extends BaseController
         // Process this DDI
         $ddiAction = new DDIAction($this);
         $ddiAction
+            ->setCaller($ddi)
             ->setDDI($ddi)
             ->process();
     }
@@ -166,7 +167,7 @@ class CallsController extends BaseController
                 // Handle service code
                 $serviceAction = new ServiceAction($this);
                 $serviceAction
-                    ->setUser($user)
+                    ->setCaller($user)
                     ->setService($service)
                     ->process();
 
@@ -190,6 +191,7 @@ class CallsController extends BaseController
             // Handle extension
             $extensionAction = new ExtensionAction($this);
             $extensionAction
+                ->setCaller($user)
                 ->setExtension($dstExtension)
                 ->process();
 
@@ -208,7 +210,7 @@ class CallsController extends BaseController
             // Otherwise, handle this call as external
             $externalCallAction = new ExternalCallAction($this);
             $externalCallAction
-                ->setUser($user)
+                ->setCaller($user)
                 ->setDestination($exten)
                 ->process();
         }
@@ -245,6 +247,7 @@ class CallsController extends BaseController
         // ProcessDialStatus
         $userAction = new UserCallAction($this);
         $userAction
+            // FIXME setCaller()???
             ->setUser($user)
             ->processDialStatus();
     }
@@ -273,6 +276,7 @@ class CallsController extends BaseController
             // Process NoAnswer handler
             $ivrAction = new IVRAction($this);
             $ivrAction
+                // FIXME setCaller()???
                 ->setIvr($ivr)
                 ->processTimeout();
         }
@@ -395,6 +399,7 @@ class CallsController extends BaseController
         // Continue processing
         $hungroupAction = new HuntGroupAction($this);
         $hungroupAction
+            // FIXME setCaller()???
             ->setHuntGroup($huntgroup)
             ->call();
     }
@@ -412,6 +417,7 @@ class CallsController extends BaseController
         // Continue processing
         $hungroupAction = new HuntGroupAction($this);
         $hungroupAction
+            // FIXME setCaller()???
             ->setHuntGroup($huntgroup)
             ->processHuntgroupStatus();
     }

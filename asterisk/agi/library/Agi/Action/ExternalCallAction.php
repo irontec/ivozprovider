@@ -6,19 +6,19 @@ use IvozProvider\Mapper\Sql as Mapper;
 
 class ExternalCallAction extends RouterAction
 {
-    protected $_company;
-
     protected $_number;
 
-    public function setCompany($company)
-    {
-        $this->_company = $company;
-        return $this;
-    }
+    protected $_checkACL = true;
 
     public function setDestination($number)
     {
         $this->_number = $number;
+        return $this;
+    }
+
+    public function setCheckACL($check)
+    {
+        $this->_checkACL = $check;
         return $this;
     }
 
@@ -30,22 +30,19 @@ class ExternalCallAction extends RouterAction
         }
 
         // Local variables
-        $user = $this->_user;
+        $caller = $this->_caller;
         $number = $this->_number;
-        $company = $this->_company;
 
-        // Get company from the user
-        if (is_null($company)) {
-            $company = $user->getCompany();
-        }
+        // Get company from the caller (It should be User or DDI)
+        $company = $caller->getCompany();
 
         // Some feedback for asterisk cli
-        if ($user) {
+        if ($caller instanceof \IvozProvider\Model\Raw\Users) {
             $this->agi->notice("Processing External call from %s [user%d] to %s",
-                $user->getFullName(), $user->getId(), $number);
+                $caller->getFullName(), $caller->getId(), $number);
         } else {
             $this->agi->notice("Processing External call from DDI %s to %s",
-                $this->agi->getExtension(), $number);
+                $caller->getDDI(), $number);
         }
 
         /*****************************************************************
@@ -66,26 +63,31 @@ class ExternalCallAction extends RouterAction
         /*****************************************************************
          * ACL CHECKING
          ****************************************************************/
-        // Check If user can place this call
-        if ($user) {
-            // Convert number to user prefered format to check ACLs
-            $aclNumber = $company->preferredToACL($number);
-            // Check the user has this call allowed in its ACL
-            $this->agi->verbose("Checking if %s [user%d] can call %s",
-                            $user->getFullName(), $user->getId(), $aclNumber);
-            if (!$user->hasSrcUserPerm($aclNumber)) {
-                $this->agi->error("User is not allowed to place this call.");
-                $this->agi->hangup(57); // AST_CAUSE_BEARERCAPABILITY_NOTAUTH
-                return;
+        // If ACL checks are requested
+        if ($this->_checkACL) {
+            // Check If user can place this call
+            if ($caller instanceof \IvozProvider\Model\Raw\Users) {
+                // Convert number to user prefered format to check ACLs
+                $aclNumber = $company->preferredToACL($number);
+                // Check the user has this call allowed in its ACL
+                $this->agi->verbose("Checking if %s [user%d] can call %s",
+                                $caller->getFullName(), $caller->getId(), $aclNumber);
+                if (!$caller->hasSrcUserPerm($aclNumber)) {
+                    $this->agi->error("User is not allowed to place this call.");
+                    $this->agi->hangup(57); // AST_CAUSE_BEARERCAPABILITY_NOTAUTH
+                    return;
+                }
             }
+        } else {
+            $this->agi->verbose("Skipping ACL Checking as requested");
         }
 
         /*****************************************************************
          * E164 FIXUPS
          ****************************************************************/
         // Add the Calling code based on who place this call
-        if ($user) {
-            $number = $user->preferredToE164($number);
+        if ($caller instanceof  \IvozProvider\Model\Raw\Users) {
+            $number = $caller->preferredToE164($number);
         } else {
             $number = $company->preferredToE164($number);
         }
@@ -108,37 +110,39 @@ class ExternalCallAction extends RouterAction
         /*****************************************************************
          * ORIGIN DDI PRESENTATION
          ****************************************************************/
-        if ($user) {
-            // Set Outgoing number
-            $company = $user->getCompany();
-            $callerExt = $this->agi->getCallerIdNum();
-
-            if (($extension = $company->getExtension($callerExt))) {
-                $callerUser = $extension->getUser();
-                $ddi = $callerUser->getOutgoingDDI();
-                if (empty($ddi)) {
-                    $this->agi->error("User %s has no external DDI", $user->getId());
-                    return;
-                }
-                $this->agi->setVariable("USERID", $user->getId());
-
-                // Setup the update callid for the calling user
-                $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$number,1");
+        $origin = $this->agi->getCallerIdNum();
+        // If origin is a user extension
+        if (($extension = $company->getExtension($origin))) {
+            $originUser = $extension->getUser();
+            $originDDI = $originUser->getOutgoingDDI();
+            if (empty($originDDI)) {
+                $this->agi->error("User %s has no external DDI", $user->getId());
+                return;
             }
-        } else {
-            $DDIMapper = new Mapper\DDIs();
-            $ddi = $DDIMapper->findOneByField("DDIE164", $this->agi->getExtension());
-        }
 
-        // Set as Display number users Outgoing DDI
-        $this->agi->setVariable("CALLERID(num)", $ddi->getDDIE164());
+            $this->agi->setVariable("USERID", $originUser->getId());
+
+            // Setup the update callid for the calling user
+            $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$number,1");
+
+            // Set as Display number users Outgoing DDI
+            $this->agi->setVariable("CALLERID(num)", $originDDI->getDDI());
+        }
 
         /*****************************************************************
          * RECORD EXTERNAL DDI
          ****************************************************************/
-        // If ddi is configured to record
-        if (in_array($ddi->getRecordCalls(), array('all', 'outbound'))) {
-            $this->agi->setVariable("_RECORD", "yes");
+        // If caller is a ddi and is configured to record
+        if ($caller instanceof \IvozProvider\Model\Raw\DDIs) {
+            if (in_array($caller->getRecordCalls(), array('all', 'outbound'))) {
+                $this->agi->setVariable("_RECORD", "yes");
+            }
+        }
+        // If origin is an user with a DDI configured to record
+        if (!empty($originDDI)) {
+            if (in_array($originDDI->getRecordCalls(), array('all', 'outbound'))) {
+                $this->agi->setVariable("_RECORD", "yes");
+            }
         }
 
         // Call the PSJIP endpoint

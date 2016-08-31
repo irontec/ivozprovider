@@ -91,7 +91,7 @@ class ExternalFilterAction extends RouterAction
         // This call to external is paid by the Company :)
         $externalAction = new ExternalCallAction($this);
         $externalAction
-            ->setCompany($this->_ddi->getCompany())
+            ->setCheckACL(false)
             ->setDestination($this->_routeExternal)
             ->process();
     }

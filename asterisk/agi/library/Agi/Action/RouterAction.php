@@ -9,7 +9,7 @@ class RouterAction
 
     protected $agi;
 
-    protected $_user;
+    protected $_caller;
 
     protected $_routeType;
 
@@ -42,6 +42,9 @@ class RouterAction
         // Get action history so far
         if ($parent instanceOf \Agi\Action\RouterAction) {
             $this->_actionHistory = $parent->_actionHistory;
+
+            // Inherit the caller
+            $this->_caller = $parent->_caller;
         } else {
             $this->_actionHistory = array();
         }
@@ -51,9 +54,9 @@ class RouterAction
 
     }
 
-    public function setUser($user)
+    public function setCaller($caller)
     {
-        $this->_user = $user;
+        $this->_caller = $caller;
         return $this;
     }
 
@@ -105,7 +108,6 @@ class RouterAction
     {
         $extensionAction = new ExtensionAction($this);
         $extensionAction
-            ->setUser($this->_user)
             ->setExtension($this->_routeExtension)
             ->process();
     }
@@ -124,7 +126,6 @@ class RouterAction
     {
         $externalAction = new ExternalCallAction($this);
         $externalAction
-            ->setUser($this->_user)
             ->setDestination($this->_routeExternal)
             ->process();
     }

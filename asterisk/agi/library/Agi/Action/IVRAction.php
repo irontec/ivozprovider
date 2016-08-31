@@ -31,7 +31,7 @@ class IVRAction extends RouterAction
     public function processError()
     {
         $ivr = $this->_ivr;
-        $this->agi->verbose("Processing IVR error handler.");        
+        $this->agi->verbose("Processing IVR error handler.");
 
         // Play Error Locution
         $this->agi->playback($ivr->getErrorLocution());
@@ -51,7 +51,7 @@ class IVRAction extends RouterAction
     {
         // Set id variable for postprocessing
         $this->agi->setVariable("IVRID", $this->_ivr->getId());
-        
+
         // Handle Call user route
         $userAction = new UserCallAction($this);
         $userAction
@@ -70,7 +70,7 @@ class IVRAction extends RouterAction
         // This call to external is paid by the Company :)
         $externalAction = new ExternalCallAction($this);
         $externalAction
-            ->setCompany($this->_ivr->getCompany())
+            ->setCheckACL(false)
             ->setDestination($this->_routeExternal)
             ->process();
     }
