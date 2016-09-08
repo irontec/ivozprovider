@@ -102,13 +102,6 @@ class LcrRules extends ModelAbstract
 
 
     /**
-     * Parent relation LcrRules_ibfk_4
-     *
-     * @var \IvozProvider\Model\Raw\RoutingPatterns
-     */
-    protected $_RoutingPattern;
-
-    /**
      * Parent relation LcrRules_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -121,6 +114,13 @@ class LcrRules extends ModelAbstract
      * @var \IvozProvider\Model\Raw\OutgoingRouting
      */
     protected $_OutgoingRouting;
+
+    /**
+     * Parent relation LcrRules_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    protected $_RoutingPattern;
 
 
     /**
@@ -159,10 +159,6 @@ class LcrRules extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'LcrRulesIbfk4'=> array(
-                    'property' => 'RoutingPattern',
-                    'table_name' => 'RoutingPatterns',
-                ),
             'LcrRulesIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -170,6 +166,10 @@ class LcrRules extends ModelAbstract
             'LcrRulesIbfk3'=> array(
                     'property' => 'OutgoingRouting',
                     'table_name' => 'OutgoingRouting',
+                ),
+            'LcrRulesIbfk4'=> array(
+                    'property' => 'RoutingPattern',
+                    'table_name' => 'RoutingPatterns',
                 ),
         ));
 
@@ -232,7 +232,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -269,7 +269,7 @@ class LcrRules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -303,7 +303,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_prefix != $data) {
-            $this->_logChange('prefix');
+            $this->_logChange('prefix', $this->_prefix, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -337,7 +337,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_fromUri != $data) {
-            $this->_logChange('fromUri');
+            $this->_logChange('fromUri', $this->_fromUri, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -371,7 +371,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_requestUri != $data) {
-            $this->_logChange('requestUri');
+            $this->_logChange('requestUri', $this->_requestUri, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -405,7 +405,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_stopper != $data) {
-            $this->_logChange('stopper');
+            $this->_logChange('stopper', $this->_stopper, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -439,7 +439,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_enabled != $data) {
-            $this->_logChange('enabled');
+            $this->_logChange('enabled', $this->_enabled, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -476,7 +476,7 @@ class LcrRules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_tag != $data) {
-            $this->_logChange('tag');
+            $this->_logChange('tag', $this->_tag, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -510,7 +510,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -544,7 +544,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_routingPatternId != $data) {
-            $this->_logChange('routingPatternId');
+            $this->_logChange('routingPatternId', $this->_routingPatternId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -578,7 +578,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_outgoingRoutingId != $data) {
-            $this->_logChange('outgoingRoutingId');
+            $this->_logChange('outgoingRoutingId', $this->_outgoingRoutingId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -601,57 +601,6 @@ class LcrRules extends ModelAbstract
     public function getOutgoingRoutingId()
     {
         return $this->_outgoingRoutingId;
-    }
-
-    /**
-     * Sets parent relation RoutingPattern
-     *
-     * @param \IvozProvider\Model\Raw\RoutingPatterns $data
-     * @return \IvozProvider\Model\Raw\LcrRules
-     */
-    public function setRoutingPattern(\IvozProvider\Model\Raw\RoutingPatterns $data)
-    {
-        $this->_RoutingPattern = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setRoutingPatternId($primaryKey);
-        }
-
-        $this->_setLoaded('LcrRulesIbfk4');
-        return $this;
-    }
-
-    /**
-     * Gets parent RoutingPattern
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\RoutingPatterns
-     */
-    public function getRoutingPattern($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'LcrRulesIbfk4';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_RoutingPattern = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_RoutingPattern;
     }
 
     /**
@@ -754,6 +703,57 @@ class LcrRules extends ModelAbstract
         }
 
         return $this->_OutgoingRouting;
+    }
+
+    /**
+     * Sets parent relation RoutingPattern
+     *
+     * @param \IvozProvider\Model\Raw\RoutingPatterns $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setRoutingPattern(\IvozProvider\Model\Raw\RoutingPatterns $data)
+    {
+        $this->_RoutingPattern = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRoutingPatternId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRulesIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent RoutingPattern
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RoutingPatterns
+     */
+    public function getRoutingPattern($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RoutingPattern = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RoutingPattern;
     }
 
     /**

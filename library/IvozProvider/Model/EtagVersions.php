@@ -26,5 +26,7 @@ class EtagVersions extends Raw\EtagVersions
      */
     public function init()
     {
+        // Dont save changelog on this entities
+        $this->_saveChanges = false;
     }
 }

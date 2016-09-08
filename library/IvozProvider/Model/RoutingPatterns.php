@@ -26,5 +26,7 @@ class RoutingPatterns extends Raw\RoutingPatterns
      */
     public function init()
     {
+        // Dont save changelog on this entities
+        $this->_saveChanges = false;
     }
 }

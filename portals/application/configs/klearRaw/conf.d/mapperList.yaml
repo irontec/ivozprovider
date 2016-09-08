@@ -9,6 +9,7 @@ mappers:
   - &CallACLPatterns {mapper: \IvozProvider\Mapper\Sql\CallACLPatterns, modelFile: CallACLPatterns}
   - &CallACLRelPatterns {mapper: \IvozProvider\Mapper\Sql\CallACLRelPatterns, modelFile: CallACLRelPatterns}
   - &CallForwardSettings {mapper: \IvozProvider\Mapper\Sql\CallForwardSettings, modelFile: CallForwardSettings}
+  - &ChangeHistory {mapper: \IvozProvider\Mapper\Sql\ChangeHistory, modelFile: ChangeHistory}
   - &Companies {mapper: \IvozProvider\Mapper\Sql\Companies, modelFile: Companies}
   - &CompanyAdmins {mapper: \IvozProvider\Mapper\Sql\CompanyAdmins, modelFile: CompanyAdmins}
   - &CompanyServices {mapper: \IvozProvider\Mapper\Sql\CompanyServices, modelFile: CompanyServices}

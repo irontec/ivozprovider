@@ -73,7 +73,9 @@ class KamAccCdrs extends MapperAbstract
                 'metered' => $model->getMetered(),
                 'meteringDate' => $model->getMeteringDate(),
                 'pricingPlanId' => $model->getPricingPlanId(),
+                'pricingPlanName' => $model->getPricingPlanName(),
                 'targetPatternId' => $model->getTargetPatternId(),
+                'targetPatternName' => $model->getTargetPatternName(),
                 'price' => $model->getPrice(),
                 'pricingPlanDetails' => $model->getPricingPlanDetails(),
                 'invoiceId' => $model->getInvoiceId(),
@@ -309,6 +311,10 @@ class KamAccCdrs extends MapperAbstract
         }
 
         $this->_etagChange();
+        // Save Changelog if requested
+        $model->logDelete();
+        $model->saveChangeLog();
+
         return $result;
 
     }
@@ -535,6 +541,10 @@ class KamAccCdrs extends MapperAbstract
             $this->_etagChange();
         }
 
+        if ($model->hasChange()) {
+            $model->saveChangeLog();
+        }
+
         if ($success === true) {
             return $primaryKey;
         }
@@ -584,7 +594,9 @@ class KamAccCdrs extends MapperAbstract
                   ->setMetered($data['metered'])
                   ->setMeteringDate($data['meteringDate'])
                   ->setPricingPlanId($data['pricingPlanId'])
+                  ->setPricingPlanName($data['pricingPlanName'])
                   ->setTargetPatternId($data['targetPatternId'])
+                  ->setTargetPatternName($data['targetPatternName'])
                   ->setPrice($data['price'])
                   ->setPricingPlanDetails($data['pricingPlanDetails'])
                   ->setInvoiceId($data['invoiceId'])
@@ -616,7 +628,9 @@ class KamAccCdrs extends MapperAbstract
                   ->setMetered($data->{'metered'})
                   ->setMeteringDate($data->{'meteringDate'})
                   ->setPricingPlanId($data->{'pricingPlanId'})
+                  ->setPricingPlanName($data->{'pricingPlanName'})
                   ->setTargetPatternId($data->{'targetPatternId'})
+                  ->setTargetPatternName($data->{'targetPatternName'})
                   ->setPrice($data->{'price'})
                   ->setPricingPlanDetails($data->{'pricingPlanDetails'})
                   ->setInvoiceId($data->{'invoiceId'})
@@ -649,7 +663,9 @@ class KamAccCdrs extends MapperAbstract
                   ->setMetered($data->getMetered())
                   ->setMeteringDate($data->getMeteringDate())
                   ->setPricingPlanId($data->getPricingPlanId())
+                  ->setPricingPlanName($data->getPricingPlanName())
                   ->setTargetPatternId($data->getTargetPatternId())
+                  ->setTargetPatternName($data->getTargetPatternName())
                   ->setPrice($data->getPrice())
                   ->setPricingPlanDetails($data->getPricingPlanDetails())
                   ->setInvoiceId($data->getInvoiceId())

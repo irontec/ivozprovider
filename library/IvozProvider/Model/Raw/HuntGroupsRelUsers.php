@@ -155,7 +155,7 @@ class HuntGroupsRelUsers extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -192,7 +192,7 @@ class HuntGroupsRelUsers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_huntGroupId != $data) {
-            $this->_logChange('huntGroupId');
+            $this->_logChange('huntGroupId', $this->_huntGroupId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -229,7 +229,7 @@ class HuntGroupsRelUsers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_userId != $data) {
-            $this->_logChange('userId');
+            $this->_logChange('userId', $this->_userId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -266,7 +266,7 @@ class HuntGroupsRelUsers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_timeoutTime != $data) {
-            $this->_logChange('timeoutTime');
+            $this->_logChange('timeoutTime', $this->_timeoutTime, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -303,7 +303,7 @@ class HuntGroupsRelUsers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_priority != $data) {
-            $this->_logChange('priority');
+            $this->_logChange('priority', $this->_priority, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

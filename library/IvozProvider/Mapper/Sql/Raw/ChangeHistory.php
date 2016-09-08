@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\KamTrunksDomain
+ * Data Mapper implementation for IvozProvider\Model\ChangeHistory
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class KamTrunksDomain extends MapperAbstract
+class ChangeHistory extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\KamTrunksDomain';
+    protected $_modelName = 'IvozProvider\\Model\\ChangeHistory';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class KamTrunksDomain extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\KamTrunksDomain $model
+     * @param IvozProvider\Model\Raw\ChangeHistory $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\KamTrunksDomain) {
+        if (!$model instanceof \IvozProvider\Model\Raw\ChangeHistory) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\KamTrunksDomain object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\ChangeHistory object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\KamTrunksDomain object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\ChangeHistory object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,10 +49,14 @@ class KamTrunksDomain extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'domain' => $model->getDomain(),
-                'did' => $model->getDid(),
-                'domainId' => $model->getDomainId(),
-                'last_modified' => $model->getLastModified(),
+                'user' => $model->getUser(),
+                'date' => $model->getDate(),
+                'action' => $model->getAction(),
+                'table' => $model->getTable(),
+                'objid' => $model->getObjid(),
+                'field' => $model->getField(),
+                'old_value' => $model->getOldValue(),
+                'new_value' => $model->getNewValue(),
             );
         } else {
             $result = array();
@@ -91,12 +95,12 @@ class KamTrunksDomain extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksDomain
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\ChangeHistory
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksDomain');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\ChangeHistory');
         }
 
         return $this->_dbTable;
@@ -105,17 +109,17 @@ class KamTrunksDomain extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\KamTrunksDomain $model The model to delete
+     * @param IvozProvider\Model\Raw\ChangeHistory $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\KamTrunksDomain) {
+        if (!$model instanceof \IvozProvider\Model\Raw\ChangeHistory) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\KamTrunksDomain object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\ChangeHistory object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\KamTrunksDomain object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\ChangeHistory object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -165,7 +169,7 @@ class KamTrunksDomain extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksDomain', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ChangeHistory', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -213,7 +217,7 @@ class KamTrunksDomain extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\KamTrunksDomain', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ChangeHistory', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -282,6 +286,10 @@ class KamTrunksDomain extends MapperAbstract
             throw $exception;
         }
 
+        $this->_etagChange();
+        // Save Changelog if requested
+        $model->logDelete();
+        $model->saveChangeLog();
 
         return $result;
 
@@ -291,7 +299,7 @@ class KamTrunksDomain extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\KamTrunksDomain $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\ChangeHistory $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -299,17 +307,17 @@ class KamTrunksDomain extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\KamTrunksDomain $model
+     * @param \IvozProvider\Model\Raw\ChangeHistory $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\KamTrunksDomain $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\ChangeHistory $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\KamTrunksDomain $model,
+    protected function _save(\IvozProvider\Model\Raw\ChangeHistory $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -505,6 +513,13 @@ class KamTrunksDomain extends MapperAbstract
             }
         }
 
+        if ($model->mustUpdateEtag()) {
+            $this->_etagChange();
+        }
+
+        if ($model->hasChange()) {
+            $model->saveChangeLog();
+        }
 
         if ($success === true) {
             return $primaryKey;
@@ -517,13 +532,13 @@ class KamTrunksDomain extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\KamTrunksDomain|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\KamTrunksDomain The model with the data provided
+     * @param IvozProvider\Model\Raw\ChangeHistory|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\ChangeHistory The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\KamTrunksDomain();
+            $entry = new \IvozProvider\Model\ChangeHistory();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -531,23 +546,35 @@ class KamTrunksDomain extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setDomain($data['domain'])
-                  ->setDid($data['did'])
-                  ->setDomainId($data['domainId'])
-                  ->setLastModified($data['last_modified']);
+                  ->setUser($data['user'])
+                  ->setDate($data['date'])
+                  ->setAction($data['action'])
+                  ->setTable($data['table'])
+                  ->setObjid($data['objid'])
+                  ->setField($data['field'])
+                  ->setOldValue($data['old_value'])
+                  ->setNewValue($data['new_value']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setDomain($data->{'domain'})
-                  ->setDid($data->{'did'})
-                  ->setDomainId($data->{'domainId'})
-                  ->setLastModified($data->{'last_modified'});
+                  ->setUser($data->{'user'})
+                  ->setDate($data->{'date'})
+                  ->setAction($data->{'action'})
+                  ->setTable($data->{'table'})
+                  ->setObjid($data->{'objid'})
+                  ->setField($data->{'field'})
+                  ->setOldValue($data->{'old_value'})
+                  ->setNewValue($data->{'new_value'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\KamTrunksDomain) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\ChangeHistory) {
             $entry->setId($data->getId())
-                  ->setDomain($data->getDomain())
-                  ->setDid($data->getDid())
-                  ->setDomainId($data->getDomainId())
-                  ->setLastModified($data->getLastModified());
+                  ->setUser($data->getUser())
+                  ->setDate($data->getDate())
+                  ->setAction($data->getAction())
+                  ->setTable($data->getTable())
+                  ->setObjid($data->getObjid())
+                  ->setField($data->getField())
+                  ->setOldValue($data->getOldValue())
+                  ->setNewValue($data->getNewValue());
 
         }
 
@@ -555,4 +582,35 @@ class KamTrunksDomain extends MapperAbstract
 
         return $entry;
     }
+
+    protected function _etagChange()
+    {
+
+        $date = new \Zend_Date();
+        $date->setTimezone('UTC');
+        $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
+
+        $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
+        $etag = $etags->findOneByField('table', 'ChangeHistory');
+
+        if (empty($etag)) {
+            $etag = new \IvozProvider\Model\EtagVersions();
+            $etag->setTable('ChangeHistory');
+        }
+
+        $random = substr(
+            str_shuffle(
+                str_repeat(
+                    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+                    5
+                )
+            ), 0, 5
+        );
+
+        $etag->setEtag(md5($nowUTC . $random));
+        $etag->setLastChange($nowUTC);
+        $etag->save();
+
+    }
+
 }

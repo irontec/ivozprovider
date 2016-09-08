@@ -276,7 +276,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -313,7 +313,7 @@ class Recordings extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -347,7 +347,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_callid != $data) {
-            $this->_logChange('callid');
+            $this->_logChange('callid', $this->_callid, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -400,7 +400,7 @@ class Recordings extends ModelAbstract
         }
 
         if ($this->_calldate != $data) {
-            $this->_logChange('calldate');
+            $this->_logChange('calldate', $this->_calldate, $data);
         }
 
         $this->_calldate = $data;
@@ -437,7 +437,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_duration != $data) {
-            $this->_logChange('duration');
+            $this->_logChange('duration', $this->_duration, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -471,7 +471,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_caller != $data) {
-            $this->_logChange('caller');
+            $this->_logChange('caller', $this->_caller, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -505,7 +505,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_callee != $data) {
-            $this->_logChange('callee');
+            $this->_logChange('callee', $this->_callee, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -539,7 +539,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_recordedFileFileSize != $data) {
-            $this->_logChange('recordedFileFileSize');
+            $this->_logChange('recordedFileFileSize', $this->_recordedFileFileSize, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -573,7 +573,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_recordedFileMimeType != $data) {
-            $this->_logChange('recordedFileMimeType');
+            $this->_logChange('recordedFileMimeType', $this->_recordedFileMimeType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -607,7 +607,7 @@ class Recordings extends ModelAbstract
     {
 
         if ($this->_recordedFileBaseName != $data) {
-            $this->_logChange('recordedFileBaseName');
+            $this->_logChange('recordedFileBaseName', $this->_recordedFileBaseName, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

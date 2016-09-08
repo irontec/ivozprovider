@@ -225,7 +225,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -259,7 +259,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_code != $data) {
-            $this->_logChange('code');
+            $this->_logChange('code', $this->_code, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -333,7 +333,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_nameEn != $data) {
-            $this->_logChange('nameEn');
+            $this->_logChange('nameEn', $this->_nameEn, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -367,7 +367,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_nameEs != $data) {
-            $this->_logChange('nameEs');
+            $this->_logChange('nameEs', $this->_nameEs, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -441,7 +441,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_zoneEn != $data) {
-            $this->_logChange('zoneEn');
+            $this->_logChange('zoneEn', $this->_zoneEn, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -475,7 +475,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_zoneEs != $data) {
-            $this->_logChange('zoneEs');
+            $this->_logChange('zoneEs', $this->_zoneEs, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -509,7 +509,7 @@ class Countries extends ModelAbstract
     {
 
         if ($this->_callingCode != $data) {
-            $this->_logChange('callingCode');
+            $this->_logChange('callingCode', $this->_callingCode, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

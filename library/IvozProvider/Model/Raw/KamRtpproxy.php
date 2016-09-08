@@ -163,7 +163,7 @@ class KamRtpproxy extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -197,7 +197,7 @@ class KamRtpproxy extends ModelAbstract
     {
 
         if ($this->_setid != $data) {
-            $this->_logChange('setid');
+            $this->_logChange('setid', $this->_setid, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -234,7 +234,7 @@ class KamRtpproxy extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_url != $data) {
-            $this->_logChange('url');
+            $this->_logChange('url', $this->_url, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -268,7 +268,7 @@ class KamRtpproxy extends ModelAbstract
     {
 
         if ($this->_flags != $data) {
-            $this->_logChange('flags');
+            $this->_logChange('flags', $this->_flags, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -302,7 +302,7 @@ class KamRtpproxy extends ModelAbstract
     {
 
         if ($this->_weight != $data) {
-            $this->_logChange('weight');
+            $this->_logChange('weight', $this->_weight, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -336,7 +336,7 @@ class KamRtpproxy extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -370,7 +370,7 @@ class KamRtpproxy extends ModelAbstract
     {
 
         if ($this->_mediaRelaySetsId != $data) {
-            $this->_logChange('mediaRelaySetsId');
+            $this->_logChange('mediaRelaySetsId', $this->_mediaRelaySetsId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

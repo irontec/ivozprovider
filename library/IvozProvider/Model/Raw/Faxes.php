@@ -67,18 +67,18 @@ class Faxes extends ModelAbstract
 
 
     /**
-     * Parent relation Faxes_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\DDIs
-     */
-    protected $_OutgoingDDI;
-
-    /**
      * Parent relation Faxes_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
+
+    /**
+     * Parent relation Faxes_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\DDIs
+     */
+    protected $_OutgoingDDI;
 
 
     /**
@@ -120,13 +120,13 @@ class Faxes extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'FaxesIbfk2'=> array(
-                    'property' => 'OutgoingDDI',
-                    'table_name' => 'DDIs',
-                ),
             'FaxesIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
+                ),
+            'FaxesIbfk2'=> array(
+                    'property' => 'OutgoingDDI',
+                    'table_name' => 'DDIs',
                 ),
         ));
 
@@ -191,7 +191,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -228,7 +228,7 @@ class Faxes extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -265,7 +265,7 @@ class Faxes extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -299,7 +299,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_email != $data) {
-            $this->_logChange('email');
+            $this->_logChange('email', $this->_email, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -333,7 +333,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_sendByEmail != $data) {
-            $this->_logChange('sendByEmail');
+            $this->_logChange('sendByEmail', $this->_sendByEmail, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -367,7 +367,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_outgoingDDIId != $data) {
-            $this->_logChange('outgoingDDIId');
+            $this->_logChange('outgoingDDIId', $this->_outgoingDDIId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -390,57 +390,6 @@ class Faxes extends ModelAbstract
     public function getOutgoingDDIId()
     {
         return $this->_outgoingDDIId;
-    }
-
-    /**
-     * Sets parent relation OutgoingDDI
-     *
-     * @param \IvozProvider\Model\Raw\DDIs $data
-     * @return \IvozProvider\Model\Raw\Faxes
-     */
-    public function setOutgoingDDI(\IvozProvider\Model\Raw\DDIs $data)
-    {
-        $this->_OutgoingDDI = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setOutgoingDDIId($primaryKey);
-        }
-
-        $this->_setLoaded('FaxesIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent OutgoingDDI
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'FaxesIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_OutgoingDDI = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_OutgoingDDI;
     }
 
     /**
@@ -492,6 +441,57 @@ class Faxes extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDI
+     *
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\Faxes
+     */
+    public function setOutgoingDDI(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_OutgoingDDI = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIId($primaryKey);
+        }
+
+        $this->_setLoaded('FaxesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDI
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FaxesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDI = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDI;
     }
 
     /**

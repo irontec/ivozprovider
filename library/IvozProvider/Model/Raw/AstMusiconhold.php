@@ -172,7 +172,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -209,7 +209,7 @@ class AstMusiconhold extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -243,7 +243,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_mode != $data) {
-            $this->_logChange('mode');
+            $this->_logChange('mode', $this->_mode, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -280,7 +280,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_directory != $data) {
-            $this->_logChange('directory');
+            $this->_logChange('directory', $this->_directory, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -314,7 +314,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_application != $data) {
-            $this->_logChange('application');
+            $this->_logChange('application', $this->_application, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -348,7 +348,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_digit != $data) {
-            $this->_logChange('digit');
+            $this->_logChange('digit', $this->_digit, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -382,7 +382,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_sort != $data) {
-            $this->_logChange('sort');
+            $this->_logChange('sort', $this->_sort, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -416,7 +416,7 @@ class AstMusiconhold extends ModelAbstract
     {
 
         if ($this->_format != $data) {
-            $this->_logChange('format');
+            $this->_logChange('format', $this->_format, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -469,7 +469,7 @@ class AstMusiconhold extends ModelAbstract
         }
 
         if ($this->_stamp != $data) {
-            $this->_logChange('stamp');
+            $this->_logChange('stamp', $this->_stamp, $data);
         }
 
         $this->_stamp = $data;

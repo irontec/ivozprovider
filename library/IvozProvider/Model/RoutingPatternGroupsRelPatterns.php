@@ -26,5 +26,7 @@ class RoutingPatternGroupsRelPatterns extends Raw\RoutingPatternGroupsRelPattern
      */
     public function init()
     {
+        // Dont save changelog on this entities
+        $this->_saveChanges = false;
     }
 }

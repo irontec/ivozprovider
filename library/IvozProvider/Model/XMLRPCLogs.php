@@ -26,5 +26,7 @@ class XMLRPCLogs extends Raw\XMLRPCLogs
      */
     public function init()
     {
+        // Dont save changelog on this entities
+        $this->_saveChanges = false;
     }
 }

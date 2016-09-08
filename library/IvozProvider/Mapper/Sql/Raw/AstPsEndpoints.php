@@ -65,6 +65,7 @@ class AstPsEndpoints extends MapperAbstract
                 'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
                 'outbound_proxy' => $model->getOutboundProxy(),
+                'dtmf_mode' => $model->getDtmfMode(),
             );
         } else {
             $result = array();
@@ -295,6 +296,10 @@ class AstPsEndpoints extends MapperAbstract
         }
 
         $this->_etagChange();
+        // Save Changelog if requested
+        $model->logDelete();
+        $model->saveChangeLog();
+
         return $result;
 
     }
@@ -530,6 +535,10 @@ class AstPsEndpoints extends MapperAbstract
             $this->_etagChange();
         }
 
+        if ($model->hasChange()) {
+            $model->saveChangeLog();
+        }
+
         if ($success === true) {
             return $primaryKey;
         }
@@ -570,7 +579,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendPai($data['send_pai'])
                   ->setSubscribecontext($data['subscribecontext'])
                   ->set100rel($data['100rel'])
-                  ->setOutboundProxy($data['outbound_proxy']);
+                  ->setOutboundProxy($data['outbound_proxy'])
+                  ->setDtmfMode($data['dtmf_mode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setSorceryId($data->{'sorcery_id'})
@@ -588,7 +598,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendPai($data->{'send_pai'})
                   ->setSubscribecontext($data->{'subscribecontext'})
                   ->set100rel($data->{'100rel'})
-                  ->setOutboundProxy($data->{'outbound_proxy'});
+                  ->setOutboundProxy($data->{'outbound_proxy'})
+                  ->setDtmfMode($data->{'dtmf_mode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
             $entry->setId($data->getId())
@@ -607,7 +618,8 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendPai($data->getSendPai())
                   ->setSubscribecontext($data->getSubscribecontext())
                   ->set100rel($data->get100rel())
-                  ->setOutboundProxy($data->getOutboundProxy());
+                  ->setOutboundProxy($data->getOutboundProxy())
+                  ->setDtmfMode($data->getDtmfMode());
 
         }
 

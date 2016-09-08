@@ -150,7 +150,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -184,7 +184,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_srcIp != $data) {
-            $this->_logChange('srcIp');
+            $this->_logChange('srcIp', $this->_srcIp, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -218,7 +218,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_proto != $data) {
-            $this->_logChange('proto');
+            $this->_logChange('proto', $this->_proto, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -252,7 +252,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_fromPattern != $data) {
-            $this->_logChange('fromPattern');
+            $this->_logChange('fromPattern', $this->_fromPattern, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -286,7 +286,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_ruriPattern != $data) {
-            $this->_logChange('ruriPattern');
+            $this->_logChange('ruriPattern', $this->_ruriPattern, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -320,7 +320,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_tag != $data) {
-            $this->_logChange('tag');
+            $this->_logChange('tag', $this->_tag, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -354,7 +354,7 @@ class KamPikeTrusted extends ModelAbstract
     {
 
         if ($this->_priority != $data) {
-            $this->_logChange('priority');
+            $this->_logChange('priority', $this->_priority, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

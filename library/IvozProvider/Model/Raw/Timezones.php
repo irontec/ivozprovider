@@ -245,7 +245,7 @@ class Timezones extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -279,7 +279,7 @@ class Timezones extends ModelAbstract
     {
 
         if ($this->_countryId != $data) {
-            $this->_logChange('countryId');
+            $this->_logChange('countryId', $this->_countryId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -316,7 +316,7 @@ class Timezones extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_tz != $data) {
-            $this->_logChange('tz');
+            $this->_logChange('tz', $this->_tz, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -350,7 +350,7 @@ class Timezones extends ModelAbstract
     {
 
         if ($this->_comment != $data) {
-            $this->_logChange('comment');
+            $this->_logChange('comment', $this->_comment, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -424,7 +424,7 @@ class Timezones extends ModelAbstract
     {
 
         if ($this->_timeZoneLabelEn != $data) {
-            $this->_logChange('timeZoneLabelEn');
+            $this->_logChange('timeZoneLabelEn', $this->_timeZoneLabelEn, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -458,7 +458,7 @@ class Timezones extends ModelAbstract
     {
 
         if ($this->_timeZoneLabelEs != $data) {
-            $this->_logChange('timeZoneLabelEs');
+            $this->_logChange('timeZoneLabelEs', $this->_timeZoneLabelEs, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

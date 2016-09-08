@@ -156,7 +156,7 @@ class InvoiceTemplates extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -193,7 +193,7 @@ class InvoiceTemplates extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -227,7 +227,7 @@ class InvoiceTemplates extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -264,7 +264,7 @@ class InvoiceTemplates extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_template != $data) {
-            $this->_logChange('template');
+            $this->_logChange('template', $this->_template, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -301,7 +301,7 @@ class InvoiceTemplates extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
+            $this->_logChange('brandId', $this->_brandId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

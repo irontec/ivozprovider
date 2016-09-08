@@ -107,6 +107,15 @@ production:
       title: _('Outbound proxy')
       type: text
       maxLength: 256
+    dtmf_mode: 
+      title: _('Dtmf mode')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'rfc4733': _('rfc4733')
+          'inband': _('inband')
+          'info': _('info')
 staging: 
   _extends: production
 testing: 

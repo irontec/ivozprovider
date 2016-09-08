@@ -93,13 +93,6 @@ class OutgoingRouting extends ModelAbstract
 
 
     /**
-     * Parent relation OutgoingRouting_ibfk_7
-     *
-     * @var \IvozProvider\Model\Raw\RoutingPatternGroups
-     */
-    protected $_RoutingPatternGroup;
-
-    /**
      * Parent relation OutgoingRouting_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
@@ -126,6 +119,13 @@ class OutgoingRouting extends ModelAbstract
      * @var \IvozProvider\Model\Raw\RoutingPatterns
      */
     protected $_RoutingPattern;
+
+    /**
+     * Parent relation OutgoingRouting_ibfk_7
+     *
+     * @var \IvozProvider\Model\Raw\RoutingPatternGroups
+     */
+    protected $_RoutingPatternGroup;
 
 
     /**
@@ -178,10 +178,6 @@ class OutgoingRouting extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'OutgoingRoutingIbfk7'=> array(
-                    'property' => 'RoutingPatternGroup',
-                    'table_name' => 'RoutingPatternGroups',
-                ),
             'OutgoingRoutingIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
@@ -197,6 +193,10 @@ class OutgoingRouting extends ModelAbstract
             'OutgoingRoutingIbfk6'=> array(
                     'property' => 'RoutingPattern',
                     'table_name' => 'RoutingPatterns',
+                ),
+            'OutgoingRoutingIbfk7'=> array(
+                    'property' => 'RoutingPatternGroup',
+                    'table_name' => 'RoutingPatternGroups',
                 ),
         ));
 
@@ -267,7 +267,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -301,7 +301,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_type != $data) {
-            $this->_logChange('type');
+            $this->_logChange('type', $this->_type, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -338,7 +338,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_routingPatternId != $data) {
-            $this->_logChange('routingPatternId');
+            $this->_logChange('routingPatternId', $this->_routingPatternId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -372,7 +372,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_routingPatternGroupId != $data) {
-            $this->_logChange('routingPatternGroupId');
+            $this->_logChange('routingPatternGroupId', $this->_routingPatternGroupId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -409,7 +409,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId');
+            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -446,7 +446,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_priority != $data) {
-            $this->_logChange('priority');
+            $this->_logChange('priority', $this->_priority, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_weight != $data) {
-            $this->_logChange('weight');
+            $this->_logChange('weight', $this->_weight, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -517,7 +517,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -554,7 +554,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
+            $this->_logChange('brandId', $this->_brandId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -577,57 +577,6 @@ class OutgoingRouting extends ModelAbstract
     public function getBrandId()
     {
         return $this->_brandId;
-    }
-
-    /**
-     * Sets parent relation RoutingPatternGroup
-     *
-     * @param \IvozProvider\Model\Raw\RoutingPatternGroups $data
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function setRoutingPatternGroup(\IvozProvider\Model\Raw\RoutingPatternGroups $data)
-    {
-        $this->_RoutingPatternGroup = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setRoutingPatternGroupId($primaryKey);
-        }
-
-        $this->_setLoaded('OutgoingRoutingIbfk7');
-        return $this;
-    }
-
-    /**
-     * Gets parent RoutingPatternGroup
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\RoutingPatternGroups
-     */
-    public function getRoutingPatternGroup($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'OutgoingRoutingIbfk7';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_RoutingPatternGroup = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_RoutingPatternGroup;
     }
 
     /**
@@ -832,6 +781,57 @@ class OutgoingRouting extends ModelAbstract
         }
 
         return $this->_RoutingPattern;
+    }
+
+    /**
+     * Sets parent relation RoutingPatternGroup
+     *
+     * @param \IvozProvider\Model\Raw\RoutingPatternGroups $data
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function setRoutingPatternGroup(\IvozProvider\Model\Raw\RoutingPatternGroups $data)
+    {
+        $this->_RoutingPatternGroup = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRoutingPatternGroupId($primaryKey);
+        }
+
+        $this->_setLoaded('OutgoingRoutingIbfk7');
+        return $this;
+    }
+
+    /**
+     * Gets parent RoutingPatternGroup
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RoutingPatternGroups
+     */
+    public function getRoutingPatternGroup($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingRoutingIbfk7';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RoutingPatternGroup = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RoutingPatternGroup;
     }
 
     /**

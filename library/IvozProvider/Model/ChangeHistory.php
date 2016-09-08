@@ -19,7 +19,7 @@
  */
  
 namespace IvozProvider\Model;
-class CDR extends Raw\CDR
+class ChangeHistory extends Raw\ChangeHistory
 {
     /**
      * This method is called just after parent's constructor

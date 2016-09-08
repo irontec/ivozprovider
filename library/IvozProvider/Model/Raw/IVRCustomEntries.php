@@ -208,7 +208,7 @@ class IVRCustomEntries extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -245,7 +245,7 @@ class IVRCustomEntries extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_IVRCustomId != $data) {
-            $this->_logChange('IVRCustomId');
+            $this->_logChange('IVRCustomId', $this->_IVRCustomId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -282,7 +282,7 @@ class IVRCustomEntries extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_entry != $data) {
-            $this->_logChange('entry');
+            $this->_logChange('entry', $this->_entry, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -316,7 +316,7 @@ class IVRCustomEntries extends ModelAbstract
     {
 
         if ($this->_welcomeLocutionId != $data) {
-            $this->_logChange('welcomeLocutionId');
+            $this->_logChange('welcomeLocutionId', $this->_welcomeLocutionId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -353,7 +353,7 @@ class IVRCustomEntries extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_targetType != $data) {
-            $this->_logChange('targetType');
+            $this->_logChange('targetType', $this->_targetType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -390,7 +390,7 @@ class IVRCustomEntries extends ModelAbstract
     {
 
         if ($this->_targetNumberValue != $data) {
-            $this->_logChange('targetNumberValue');
+            $this->_logChange('targetNumberValue', $this->_targetNumberValue, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -424,7 +424,7 @@ class IVRCustomEntries extends ModelAbstract
     {
 
         if ($this->_targetExtensionId != $data) {
-            $this->_logChange('targetExtensionId');
+            $this->_logChange('targetExtensionId', $this->_targetExtensionId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -458,7 +458,7 @@ class IVRCustomEntries extends ModelAbstract
     {
 
         if ($this->_targetVoiceMailUserId != $data) {
-            $this->_logChange('targetVoiceMailUserId');
+            $this->_logChange('targetVoiceMailUserId', $this->_targetVoiceMailUserId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

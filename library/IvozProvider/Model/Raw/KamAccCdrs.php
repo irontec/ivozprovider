@@ -209,11 +209,25 @@ class KamAccCdrs extends ModelAbstract
     protected $_pricingPlanId;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_pricingPlanName;
+
+    /**
      * Database var type int
      *
      * @var int
      */
     protected $_targetPatternId;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_targetPatternName;
 
     /**
      * Database var type decimal
@@ -313,7 +327,9 @@ class KamAccCdrs extends ModelAbstract
         'metered'=>'metered',
         'meteringDate'=>'meteringDate',
         'pricingPlanId'=>'pricingPlanId',
+        'pricingPlanName'=>'pricingPlanName',
         'targetPatternId'=>'targetPatternId',
+        'targetPatternName'=>'targetPatternName',
         'price'=>'price',
         'pricingPlanDetails'=>'pricingPlanDetails',
         'invoiceId'=>'invoiceId',
@@ -411,7 +427,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -445,7 +461,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_proxy != $data) {
-            $this->_logChange('proxy');
+            $this->_logChange('proxy', $this->_proxy, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -498,7 +514,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_startTimeUtc != $data) {
-            $this->_logChange('startTimeUtc');
+            $this->_logChange('startTimeUtc', $this->_startTimeUtc, $data);
         }
 
         $this->_startTimeUtc = $data;
@@ -554,7 +570,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_endTimeUtc != $data) {
-            $this->_logChange('endTimeUtc');
+            $this->_logChange('endTimeUtc', $this->_endTimeUtc, $data);
         }
 
         $this->_endTimeUtc = $data;
@@ -610,7 +626,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_startTime != $data) {
-            $this->_logChange('startTime');
+            $this->_logChange('startTime', $this->_startTime, $data);
         }
 
         $this->_startTime = $data;
@@ -666,7 +682,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_endTime != $data) {
-            $this->_logChange('endTime');
+            $this->_logChange('endTime', $this->_endTime, $data);
         }
 
         $this->_endTime = $data;
@@ -703,7 +719,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_duration != $data) {
-            $this->_logChange('duration');
+            $this->_logChange('duration', $this->_duration, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -737,7 +753,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_caller != $data) {
-            $this->_logChange('caller');
+            $this->_logChange('caller', $this->_caller, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -771,7 +787,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_callee != $data) {
-            $this->_logChange('callee');
+            $this->_logChange('callee', $this->_callee, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -805,7 +821,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_referee != $data) {
-            $this->_logChange('referee');
+            $this->_logChange('referee', $this->_referee, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -839,7 +855,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_referrer != $data) {
-            $this->_logChange('referrer');
+            $this->_logChange('referrer', $this->_referrer, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -873,7 +889,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -907,7 +923,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
+            $this->_logChange('brandId', $this->_brandId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -941,7 +957,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_asIden != $data) {
-            $this->_logChange('asIden');
+            $this->_logChange('asIden', $this->_asIden, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -975,7 +991,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_asAddress != $data) {
-            $this->_logChange('asAddress');
+            $this->_logChange('asAddress', $this->_asAddress, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1009,7 +1025,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_callid != $data) {
-            $this->_logChange('callid');
+            $this->_logChange('callid', $this->_callid, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1043,7 +1059,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_callidHash != $data) {
-            $this->_logChange('callidHash');
+            $this->_logChange('callidHash', $this->_callidHash, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1077,7 +1093,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_xcallid != $data) {
-            $this->_logChange('xcallid');
+            $this->_logChange('xcallid', $this->_xcallid, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1111,7 +1127,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_parsed != $data) {
-            $this->_logChange('parsed');
+            $this->_logChange('parsed', $this->_parsed, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1148,7 +1164,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_diversion != $data) {
-            $this->_logChange('diversion');
+            $this->_logChange('diversion', $this->_diversion, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1182,7 +1198,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId');
+            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1216,7 +1232,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_externallyRated != $data) {
-            $this->_logChange('externallyRated');
+            $this->_logChange('externallyRated', $this->_externallyRated, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1250,7 +1266,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_metered != $data) {
-            $this->_logChange('metered');
+            $this->_logChange('metered', $this->_metered, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1303,7 +1319,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_meteringDate != $data) {
-            $this->_logChange('meteringDate');
+            $this->_logChange('meteringDate', $this->_meteringDate, $data);
         }
 
         $this->_meteringDate = $data;
@@ -1340,7 +1356,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_pricingPlanId != $data) {
-            $this->_logChange('pricingPlanId');
+            $this->_logChange('pricingPlanId', $this->_pricingPlanId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1367,6 +1383,40 @@ class KamAccCdrs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setPricingPlanName($data)
+    {
+
+        if ($this->_pricingPlanName != $data) {
+            $this->_logChange('pricingPlanName', $this->_pricingPlanName, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_pricingPlanName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_pricingPlanName = (string) $data;
+
+        } else {
+            $this->_pricingPlanName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column pricingPlanName
+     *
+     * @return string
+     */
+    public function getPricingPlanName()
+    {
+        return $this->_pricingPlanName;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
      * @param int $data
      * @return \IvozProvider\Model\Raw\KamAccCdrs
      */
@@ -1374,7 +1424,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_targetPatternId != $data) {
-            $this->_logChange('targetPatternId');
+            $this->_logChange('targetPatternId', $this->_targetPatternId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1401,6 +1451,40 @@ class KamAccCdrs extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setTargetPatternName($data)
+    {
+
+        if ($this->_targetPatternName != $data) {
+            $this->_logChange('targetPatternName', $this->_targetPatternName, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_targetPatternName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_targetPatternName = (string) $data;
+
+        } else {
+            $this->_targetPatternName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column targetPatternName
+     *
+     * @return string
+     */
+    public function getTargetPatternName()
+    {
+        return $this->_targetPatternName;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
      * @param float $data
      * @return \IvozProvider\Model\Raw\KamAccCdrs
      */
@@ -1408,7 +1492,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_price != $data) {
-            $this->_logChange('price');
+            $this->_logChange('price', $this->_price, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1442,7 +1526,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_pricingPlanDetails != $data) {
-            $this->_logChange('pricingPlanDetails');
+            $this->_logChange('pricingPlanDetails', $this->_pricingPlanDetails, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1476,7 +1560,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_invoiceId != $data) {
-            $this->_logChange('invoiceId');
+            $this->_logChange('invoiceId', $this->_invoiceId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1510,7 +1594,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_direction != $data) {
-            $this->_logChange('direction');
+            $this->_logChange('direction', $this->_direction, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1566,7 +1650,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_reMeteringDate != $data) {
-            $this->_logChange('reMeteringDate');
+            $this->_logChange('reMeteringDate', $this->_reMeteringDate, $data);
         }
 
         $this->_reMeteringDate = $data;

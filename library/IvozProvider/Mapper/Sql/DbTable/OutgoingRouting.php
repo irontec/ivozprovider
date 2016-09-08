@@ -40,11 +40,6 @@ class OutgoingRouting extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'OutgoingRoutingIbfk7' => array(
-            'columns' => 'routingPatternGroupId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatternGroups',
-            'refColumns' => 'id'
-        ),
         'OutgoingRoutingIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
@@ -63,6 +58,11 @@ class OutgoingRouting extends TableAbstract
         'OutgoingRoutingIbfk6' => array(
             'columns' => 'routingPatternId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
+            'refColumns' => 'id'
+        ),
+        'OutgoingRoutingIbfk7' => array(
+            'columns' => 'routingPatternGroupId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatternGroups',
             'refColumns' => 'id'
         )
     );

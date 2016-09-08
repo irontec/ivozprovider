@@ -44,6 +44,11 @@ class AstPsEndpoints extends ModelAbstract
         'required',
         'yes',
     );
+    protected $_dtmfModeAcceptedValues = array(
+        'rfc4733',
+        'inband',
+        'info',
+    );
 
     /**
      * Database var type int
@@ -165,6 +170,13 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_outboundProxy;
 
+    /**
+     * Database var type enum('rfc4733','inband','info')
+     *
+     * @var string
+     */
+    protected $_dtmfMode;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -200,6 +212,7 @@ class AstPsEndpoints extends ModelAbstract
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'outbound_proxy'=>'outboundProxy',
+        'dtmf_mode'=>'dtmfMode',
     );
 
     /**
@@ -284,7 +297,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -321,7 +334,7 @@ class AstPsEndpoints extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_sorceryId != $data) {
-            $this->_logChange('sorceryId');
+            $this->_logChange('sorceryId', $this->_sorceryId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -355,7 +368,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_terminalId != $data) {
-            $this->_logChange('terminalId');
+            $this->_logChange('terminalId', $this->_terminalId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -389,7 +402,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_aors != $data) {
-            $this->_logChange('aors');
+            $this->_logChange('aors', $this->_aors, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -423,7 +436,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_callerid != $data) {
-            $this->_logChange('callerid');
+            $this->_logChange('callerid', $this->_callerid, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -457,7 +470,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_context != $data) {
-            $this->_logChange('context');
+            $this->_logChange('context', $this->_context, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -491,7 +504,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_disallow != $data) {
-            $this->_logChange('disallow');
+            $this->_logChange('disallow', $this->_disallow, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -525,7 +538,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_allow != $data) {
-            $this->_logChange('allow');
+            $this->_logChange('allow', $this->_allow, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -559,7 +572,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_directMedia != $data) {
-            $this->_logChange('directMedia');
+            $this->_logChange('directMedia', $this->_directMedia, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -596,7 +609,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_directMediaMethod != $data) {
-            $this->_logChange('directMediaMethod');
+            $this->_logChange('directMediaMethod', $this->_directMediaMethod, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -633,7 +646,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_mailboxes != $data) {
-            $this->_logChange('mailboxes');
+            $this->_logChange('mailboxes', $this->_mailboxes, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -667,7 +680,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_pickupGroup != $data) {
-            $this->_logChange('pickupGroup');
+            $this->_logChange('pickupGroup', $this->_pickupGroup, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -701,7 +714,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_sendDiversion != $data) {
-            $this->_logChange('sendDiversion');
+            $this->_logChange('sendDiversion', $this->_sendDiversion, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -738,7 +751,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_sendPai != $data) {
-            $this->_logChange('sendPai');
+            $this->_logChange('sendPai', $this->_sendPai, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -775,7 +788,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_subscribecontext != $data) {
-            $this->_logChange('subscribecontext');
+            $this->_logChange('subscribecontext', $this->_subscribecontext, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -809,7 +822,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_100rel != $data) {
-            $this->_logChange('100rel');
+            $this->_logChange('100rel', $this->_100rel, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -846,7 +859,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_outboundProxy != $data) {
-            $this->_logChange('outboundProxy');
+            $this->_logChange('outboundProxy', $this->_outboundProxy, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -869,6 +882,43 @@ class AstPsEndpoints extends ModelAbstract
     public function getOutboundProxy()
     {
         return $this->_outboundProxy;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setDtmfMode($data)
+    {
+
+        if ($this->_dtmfMode != $data) {
+            $this->_logChange('dtmfMode', $this->_dtmfMode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_dtmfMode = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_dtmfModeAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for dtmfMode'));
+            }
+            $this->_dtmfMode = (string) $data;
+
+        } else {
+            $this->_dtmfMode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column dtmf_mode
+     *
+     * @return string
+     */
+    public function getDtmfMode()
+    {
+        return $this->_dtmfMode;
     }
 
     /**

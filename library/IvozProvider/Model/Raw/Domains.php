@@ -182,7 +182,7 @@ class Domains extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -219,7 +219,7 @@ class Domains extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_domain != $data) {
-            $this->_logChange('domain');
+            $this->_logChange('domain', $this->_domain, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -253,7 +253,7 @@ class Domains extends ModelAbstract
     {
 
         if ($this->_scope != $data) {
-            $this->_logChange('scope');
+            $this->_logChange('scope', $this->_scope, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -290,7 +290,7 @@ class Domains extends ModelAbstract
     {
 
         if ($this->_pointsTo != $data) {
-            $this->_logChange('pointsTo');
+            $this->_logChange('pointsTo', $this->_pointsTo, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -327,7 +327,7 @@ class Domains extends ModelAbstract
     {
 
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId');
+            $this->_logChange('brandId', $this->_brandId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -361,7 +361,7 @@ class Domains extends ModelAbstract
     {
 
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -395,7 +395,7 @@ class Domains extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

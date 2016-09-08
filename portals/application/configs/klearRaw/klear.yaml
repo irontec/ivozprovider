@@ -75,6 +75,10 @@ production:
           title: ngettext('Call forward setting', 'Call forward settings', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Call forward setting', 'Call forward settings', 0))
+        ChangeHistoryList: 
+          title: ngettext('Change history', 'Change history', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Change history', 'Change history', 0))
         CompaniesList: 
           title: ngettext('Company', 'Companies', 0)
           class: ui-silk-text-list-bullets

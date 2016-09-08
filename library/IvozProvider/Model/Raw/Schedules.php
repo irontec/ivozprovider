@@ -215,7 +215,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -252,7 +252,7 @@ class Schedules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -289,7 +289,7 @@ class Schedules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -338,7 +338,7 @@ class Schedules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_timeIn != $data) {
-            $this->_logChange('timeIn');
+            $this->_logChange('timeIn', $this->_timeIn, $data);
         }
 
         $this->_timeIn = $data;
@@ -390,7 +390,7 @@ class Schedules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_timeout != $data) {
-            $this->_logChange('timeout');
+            $this->_logChange('timeout', $this->_timeout, $data);
         }
 
         $this->_timeout = $data;
@@ -427,7 +427,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_monday != $data) {
-            $this->_logChange('monday');
+            $this->_logChange('monday', $this->_monday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -461,7 +461,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_tuesday != $data) {
-            $this->_logChange('tuesday');
+            $this->_logChange('tuesday', $this->_tuesday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -495,7 +495,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_wednesday != $data) {
-            $this->_logChange('wednesday');
+            $this->_logChange('wednesday', $this->_wednesday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -529,7 +529,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_thursday != $data) {
-            $this->_logChange('thursday');
+            $this->_logChange('thursday', $this->_thursday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -563,7 +563,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_friday != $data) {
-            $this->_logChange('friday');
+            $this->_logChange('friday', $this->_friday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -597,7 +597,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_saturday != $data) {
-            $this->_logChange('saturday');
+            $this->_logChange('saturday', $this->_saturday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -631,7 +631,7 @@ class Schedules extends ModelAbstract
     {
 
         if ($this->_sunday != $data) {
-            $this->_logChange('sunday');
+            $this->_logChange('sunday', $this->_sunday, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

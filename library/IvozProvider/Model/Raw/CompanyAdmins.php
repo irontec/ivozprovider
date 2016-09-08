@@ -190,7 +190,7 @@ class CompanyAdmins extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -227,7 +227,7 @@ class CompanyAdmins extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -264,7 +264,7 @@ class CompanyAdmins extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_username != $data) {
-            $this->_logChange('username');
+            $this->_logChange('username', $this->_username, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -301,7 +301,7 @@ class CompanyAdmins extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pass != $data) {
-            $this->_logChange('pass');
+            $this->_logChange('pass', $this->_pass, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -335,7 +335,7 @@ class CompanyAdmins extends ModelAbstract
     {
 
         if ($this->_email != $data) {
-            $this->_logChange('email');
+            $this->_logChange('email', $this->_email, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -369,7 +369,7 @@ class CompanyAdmins extends ModelAbstract
     {
 
         if ($this->_active != $data) {
-            $this->_logChange('active');
+            $this->_logChange('active', $this->_active, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -406,7 +406,7 @@ class CompanyAdmins extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_timezoneId != $data) {
-            $this->_logChange('timezoneId');
+            $this->_logChange('timezoneId', $this->_timezoneId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -443,7 +443,7 @@ class CompanyAdmins extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class CompanyAdmins extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_lastname != $data) {
-            $this->_logChange('lastname');
+            $this->_logChange('lastname', $this->_lastname, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

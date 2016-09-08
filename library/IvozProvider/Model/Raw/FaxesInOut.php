@@ -296,7 +296,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -349,7 +349,7 @@ class FaxesInOut extends ModelAbstract
         }
 
         if ($this->_calldate != $data) {
-            $this->_logChange('calldate');
+            $this->_logChange('calldate', $this->_calldate, $data);
         }
 
         $this->_calldate = $data;
@@ -389,7 +389,7 @@ class FaxesInOut extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_faxId != $data) {
-            $this->_logChange('faxId');
+            $this->_logChange('faxId', $this->_faxId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -423,7 +423,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_src != $data) {
-            $this->_logChange('src');
+            $this->_logChange('src', $this->_src, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -457,7 +457,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_dst != $data) {
-            $this->_logChange('dst');
+            $this->_logChange('dst', $this->_dst, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -491,7 +491,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_type != $data) {
-            $this->_logChange('type');
+            $this->_logChange('type', $this->_type, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -528,7 +528,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_pages != $data) {
-            $this->_logChange('pages');
+            $this->_logChange('pages', $this->_pages, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -562,7 +562,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_status != $data) {
-            $this->_logChange('status');
+            $this->_logChange('status', $this->_status, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -599,7 +599,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_fileFileSize != $data) {
-            $this->_logChange('fileFileSize');
+            $this->_logChange('fileFileSize', $this->_fileFileSize, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -633,7 +633,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_fileMimeType != $data) {
-            $this->_logChange('fileMimeType');
+            $this->_logChange('fileMimeType', $this->_fileMimeType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -667,7 +667,7 @@ class FaxesInOut extends ModelAbstract
     {
 
         if ($this->_fileBaseName != $data) {
-            $this->_logChange('fileBaseName');
+            $this->_logChange('fileBaseName', $this->_fileBaseName, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -153,7 +153,7 @@ class KamUsersDomainAttrs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -190,7 +190,7 @@ class KamUsersDomainAttrs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_did != $data) {
-            $this->_logChange('did');
+            $this->_logChange('did', $this->_did, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -227,7 +227,7 @@ class KamUsersDomainAttrs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -264,7 +264,7 @@ class KamUsersDomainAttrs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_type != $data) {
-            $this->_logChange('type');
+            $this->_logChange('type', $this->_type, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -301,7 +301,7 @@ class KamUsersDomainAttrs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_value != $data) {
-            $this->_logChange('value');
+            $this->_logChange('value', $this->_value, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -354,7 +354,7 @@ class KamUsersDomainAttrs extends ModelAbstract
         }
 
         if ($this->_lastModified != $data) {
-            $this->_logChange('lastModified');
+            $this->_logChange('lastModified', $this->_lastModified, $data);
         }
 
         $this->_lastModified = $data;
