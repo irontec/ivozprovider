@@ -126,7 +126,7 @@ class ExternalCallAction extends RouterAction
             $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$number,1");
 
             // Set as Display number users Outgoing DDI
-            $this->agi->setVariable("CALLERID(num)", $originDDI->getDDI());
+            $this->agi->setVariable("CALLERID(num)", $originDDI->getDDIE164());
         }
 
         /*****************************************************************
