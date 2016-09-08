@@ -46,16 +46,20 @@ production:
           callidHash: true
           end_time_utc: true
           srcIfInbound: true
+          pricingPlanId: true
+          pricingPlanName: true
+          targetPatternId: true
+          targetPatternName: true
         order:
           start_time_utc: 1
           brandId: 1
           companyId: 1
           callee: 1
-          targetPatternId: 1
+          targetPattern: 1
           duration: 1
           metered: 1
           price: 1
-          pricingPlanId: 1
+          pricingPlan: 1
           peeringContractId: 1
           invoiceId: 1
     kamAccCdrsView_screen: &kamAccCdrsView_screenLink 
@@ -85,6 +89,10 @@ production:
           pricingPlanDetails: true
           callidHash: true
           end_time_utc: true
+          pricingPlanId: true
+          pricingPlanName: true
+          targetPatternId: true
+          targetPatternName: true
         order:
           start_time_utc: 1
           brandId: 1
@@ -95,8 +103,8 @@ production:
           price: 1
           peeringContractId: 1
           externallyRated: 1
-          pricingPlanId: 1
-          targetPatternId: 1
+          pricingPlan: 1
+          targetPattern: 1
           invoiceId: 1
       fixedPositions:
         group0:
@@ -117,7 +125,7 @@ production:
             targetPatternId: 6
             duration: 6
             price: 6
-            pricingPlanId: 6
+            pricingPlan: 6
             peeringContractId: 6
             direction: 6
             srcIfInbound: 6

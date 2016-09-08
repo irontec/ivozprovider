@@ -229,6 +229,18 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_KamAccCdrSrc
         method: getData
+    pricingPlan:
+      title: _('Pricing plan')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrPricingPlan
+        method: getData
+    targetPattern:
+      title: _('Target pattern')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrTargetPattern
+        method: getData
 staging: 
   _extends: production
 testing: 
