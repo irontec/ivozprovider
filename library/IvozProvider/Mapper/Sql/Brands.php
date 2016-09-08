@@ -83,20 +83,26 @@ class Brands extends Raw\Brands
     protected function _updateDomains($model)
     {
         $pk = $model->getPrimaryKey();
-        $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
-
-        $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='proxytrunks'");
-        if (empty($domains)) {
-            $domain = new \IvozProvider\Model\Domains();
-        } else {
-            $domain = $domains[0];
-        }
 
         $name = $model->getDomainTrunks();
         $name = trim($name);
+
+        $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
+        $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='proxytrunks'");
+
+        // Empty domain field, delete any related domain
         if (!$name) {
-            $domain->delete();
+            foreach ($domains as $domain) {
+                $domain->delete();
+            }
             return;
+        } else {
+            // If domain field is filled, look for brand domains or create a new one
+            if (empty($domains)) {
+                $domain = new \IvozProvider\Model\Domains();
+            } else {
+                $domain = $domains[0];
+            }
         }
 
         $domain->setDomain($name)

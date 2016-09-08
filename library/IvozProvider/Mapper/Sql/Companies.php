@@ -52,19 +52,23 @@ class Companies extends Raw\Companies
     {
         $pk = $model->getPrimaryKey();
         $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
-
         $domains = $domainMapper->fetchList("companyId=$pk AND PointsTo='proxyusers'");
-        if (empty($domains)) {
-            $domain = new \IvozProvider\Model\Domains();
-        } else {
-            $domain = $domains[0];
-            $this->_updateTerminalsDomain($model, $domain);
-        }
 
         $name = trim($model->getDomainUsers());
+        // Empty domain field, delete any related domain
         if (!$name) {
-            $domain->delete();
+            foreach ($domains as $domain) {
+                $domain->delete();
+            }
             return;
+        } else {
+            // If domain field is filled, look for brand domains or create a new one
+            if (empty($domains)) {
+                $domain = new \IvozProvider\Model\Domains();
+            } else {
+                $domain = $domains[0];
+                $this->_updateTerminalsDomain($model, $domain);
+            }
         }
 
         $domain->setDomain($name)
