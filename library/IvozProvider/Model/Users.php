@@ -70,6 +70,21 @@ class Users extends Raw\Users
     }
 
     /**
+     * Update this user endpoint with current model data
+     */
+    public function updateEndpoint()
+    {
+        // Update the endpoint
+        $endpoint = $this->getEndpoint();
+        if ($endpoint) {
+            $endpoint->setPickupGroup($this->getPickUpGroupsIds())
+                ->setCallerid(sprintf("%s <%s>", $this->getFullName(), $this->getExtensionNumber()))
+                ->setMailboxes($this->getVoiceMail())
+                ->save();
+        }
+    }
+
+    /**
      * @return string with the voicemail
      */
     public function getVoiceMail()

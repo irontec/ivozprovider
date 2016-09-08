@@ -37,7 +37,20 @@ class Extensions extends Raw\Extensions
             $setter = "set".ucfirst($fieldName);
             $model->{$setter}(null);
         }
-        return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+
+        $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+
+        // If this extension was pointing to a user and number has changed
+        if ($routeType == 'user' && $model->hasChange('number')) {
+            // Check if this extension belongs to a user
+            $user = $model->getUser();
+            if (!empty($user)) {
+                // Update endpoint data
+                $user->updateEndpoint();
+            }
+        }
+
+        return $pk;
     }
 
 }

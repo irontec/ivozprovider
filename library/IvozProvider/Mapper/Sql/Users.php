@@ -104,14 +104,7 @@ class Users extends Raw\Users
             ->save();
 
         // Update the endpoint
-        $endpoint = $model->getEndpoint();
-        if ($endpoint) {
-            $endpoint
-                ->setPickupGroup($model->getPickUpGroupsIds())
-                ->setCallerid(sprintf("%s <%s>", $model->getFullName(), $model->getExtensionNumber()))
-                ->setMailboxes($model->getVoiceMail())
-                ->save();
-        }
+        $model->updateEndpoint();
 
         // Reload Hints
         if ($haschangedExtension || $hasChangedTerminal) {
