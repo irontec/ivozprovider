@@ -117,8 +117,8 @@ class FaxCallAction extends RouterAction
 
         // Fax without assigned DDIout
         if (! $DDIOut) {
-            $this->agi->error("Fax " . $fax->getId() . "does not have DDIOut");
-            $faxOut->setStats("error")->save();
+            $this->agi->error("Fax " . $fax->getId() . " does not have DDIOut");
+            $faxOut->setStatus("error")->save();
             $this->agi->hangup();
             return;
         }
