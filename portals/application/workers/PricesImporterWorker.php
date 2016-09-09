@@ -252,12 +252,18 @@ class PricesimporterWorker extends Iron_Gearman_Worker
 
     protected function _saveRow($data)
     {
+        $where = array(
+            "`brandId` = " . $data["brandId"],
+            "`regExp` = '" . $data["regularExpresion"] . "'",
+        );
 
         $this->_summary["totalRows"] ++;
-        $targetPatternModel = $this->_targetPatternMapper->findOneByField("regExp", $data["regularExpresion"]);
+        $targetPatternModels = $this->_targetPatternMapper->fetchList(implode(" AND " , $where));
+        $targetPatternModel = array_shift($targetPatternModels);
         if (is_null($targetPatternModel)) {
             $targetPatternModel = new \IvozProvider\Model\TargetPatterns();
             $targetPatternModel
+                ->stopChangeLog()
                 ->setBrandId($data["brandId"])
                 ->setName($data["targetPatternName"])
                 ->setNameEn($data["targetPatternName"])
@@ -294,6 +300,7 @@ class PricesimporterWorker extends Iron_Gearman_Worker
             $isNewPrice = true;
             $pricingPlanRelTargetPatternsModel = new \IvozProvider\Model\PricingPlansRelTargetPatterns();
             $pricingPlanRelTargetPatternsModel
+                ->stopChangeLog()
                 ->setPricingPlanId($this->_pricingPlanId)
                 ->setTargetPatternId($targetPatternModel->getPrimaryKey())
                 ->setBrandId($data["brandId"])
@@ -305,6 +312,7 @@ class PricesimporterWorker extends Iron_Gearman_Worker
         }
 
         $pricingPlanRelTargetPatternsModel
+            ->stopChangeLog()
             ->setPerPeriodCharge($data["perPeriodCharge"])
             ->setConnectionCharge($data["connectionCharge"])
             ->setPeriodTime($data["periodTime"])
