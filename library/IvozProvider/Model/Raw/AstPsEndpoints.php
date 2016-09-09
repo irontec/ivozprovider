@@ -44,11 +44,6 @@ class AstPsEndpoints extends ModelAbstract
         'required',
         'yes',
     );
-    protected $_dtmfModeAcceptedValues = array(
-        'rfc4733',
-        'inband',
-        'info',
-    );
 
     /**
      * Database var type int
@@ -170,13 +165,6 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_outboundProxy;
 
-    /**
-     * Database var type enum('rfc4733','inband','info')
-     *
-     * @var string
-     */
-    protected $_dtmfMode;
-
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -212,7 +200,6 @@ class AstPsEndpoints extends ModelAbstract
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'outbound_proxy'=>'outboundProxy',
-        'dtmf_mode'=>'dtmfMode',
     );
 
     /**
@@ -882,43 +869,6 @@ class AstPsEndpoints extends ModelAbstract
     public function getOutboundProxy()
     {
         return $this->_outboundProxy;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setDtmfMode($data)
-    {
-
-        if ($this->_dtmfMode != $data) {
-            $this->_logChange('dtmfMode', $this->_dtmfMode, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_dtmfMode = $data;
-
-        } else if (!is_null($data)) {
-            if (!in_array($data, $this->_dtmfModeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for dtmfMode'));
-            }
-            $this->_dtmfMode = (string) $data;
-
-        } else {
-            $this->_dtmfMode = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column dtmf_mode
-     *
-     * @return string
-     */
-    public function getDtmfMode()
-    {
-        return $this->_dtmfMode;
     }
 
     /**

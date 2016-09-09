@@ -339,23 +339,6 @@ class AstPsEndpoints extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'dtmf_mode' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'ast_ps_endpoints',
-	    'COLUMN_NAME' => 'dtmf_mode',
-	    'COLUMN_POSITION' => 18,
-	    'DATA_TYPE' => 'enum(\'rfc4733\',\'inband\',\'info\')',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
 	);
 
 
