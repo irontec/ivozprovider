@@ -59,9 +59,9 @@ class Invoices extends Raw\Invoices
         $outDateIsInFuture = $invoice->getOutDate(true)->getDate()->compare($now->getDate()) >= 0;
 
 
-        if ($inDateIsInFuture || $outDateIsInFuture) {
-            return 50006;
-        }
+//        if ($inDateIsInFuture || $outDateIsInFuture) {
+//            return 50006;
+//        }
 
         $callMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 
@@ -76,16 +76,17 @@ class Invoices extends Raw\Invoices
             return 50001;
         }
 
-        $wheres = array(
-                "companyId = '".$invoice->getCompanyId()."'",
-                "brandId = '".$invoice->getBrandId()."'",
-                "start_time_utc < '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
-                "(invoiceId is null OR invoiceId = '".$invoice->getPrimaryKey()."')"
-        );
-        $unbilledCalls = $callMapper->fetchTarificableList($wheres);
-        if (!empty($unbilledCalls)) {
-            return 50002;
-        }
+//        $wheres = array(
+//                "companyId = '".$invoice->getCompanyId()."'",
+//                "brandId = '".$invoice->getBrandId()."'",
+//                "start_time_utc < '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
+//                "(invoiceId is null OR invoiceId = '".$invoice->getPrimaryKey()."')"
+//        );
+
+//        $unbilledCalls = $callMapper->fetchTarificableList($wheres);
+//        if (!empty($unbilledCalls)) {
+//            return 50002;
+//        }
 
         $wheres = array(
                 "companyId = '".$invoice->getCompanyId()."'",

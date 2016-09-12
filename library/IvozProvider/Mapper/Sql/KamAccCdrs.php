@@ -20,6 +20,30 @@
 namespace IvozProvider\Mapper\Sql;
 class KamAccCdrs extends Raw\KamAccCdrs
 {
+    protected function _save(\IvozProvider\Model\Raw\KamAccCdrs $model,
+                             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
+    )
+    {
+        if ($model->getPricingPlanId()) {
+            $pricingPlanName = $model->getPricingPlan()->getName();
+            $model->setPricingPlanName($pricingPlanName);
+        }
+
+        if ($model->getTargetPatternId()) {
+            $targetPatternName = $model->getTargetPattern()->getName();
+            $model->setTargetPatternName($targetPatternName);
+        }
+
+        $result = parent::_save(
+            $model,
+            $recursive,
+            $useTransaction,
+            $transactionTag
+        );
+
+        return $result;
+    }
+
     public function fetchTarificableList(array $where = array(), $order = null, $limit = null, $offset = null)
     {
 

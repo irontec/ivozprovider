@@ -174,7 +174,12 @@ class Generator
             if (empty($calls)) {
                 break;
             }
+
+
             foreach ($calls as $call) {
+//                if (!$call) {
+//                    $call = new \IvozProvider\Model\KamAccCdrs();
+//                }
                 $lang = $invoice->getCompany()->getLanguageCode();
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
@@ -183,13 +188,17 @@ class Generator
                 $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["durationFormatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["targetPattern"] = $call->getTargetPattern()->toArray();
-                $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
+//                $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
+                $callData["targetPattern"]["name"] = $call->getTargetPatternName();
+
 //                if ($call->getDirection() == "inbound") {
 //                    $callData["targetPattern"]["name"] = " Inbound";
 //                }
                 $callData["targetPattern"]["description"] = $call->getTargetPattern()->getDescription($lang);
                 $callData["pricingPlan"] = $call->getPricingPlan()->toArray();
-                $callData["pricingPlan"]["name"] = $call->getPricingPlan()->getName($lang);
+//                $callData["pricingPlan"]["name"] = $call->getPricingPlan()->getName($lang);
+                $callData["pricingPlan"]["name"] = $call->getPricingPlanName();
+
                 $callData["pricingPlan"]["description"] = $call->getPricingPlan()->getDescription($lang);
                 $callType = md5($call->getTargetPattern()->getName());
                 if ($call->getDirection() == "inbound") {
