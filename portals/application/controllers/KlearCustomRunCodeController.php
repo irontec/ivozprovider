@@ -3,7 +3,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
 {
     protected $_mainRouter;
     
-    protected $_template = APPLICATION_PATH."/bin/template.php";
+    protected $_template;
 
     protected $_logger;
     
@@ -12,14 +12,15 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter)) ) {
             throw New Zend_Exception('',Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
-        
 
         $this->_helper->ContextSwitch()
         ->addActionContext('run-generic-code', 'json')
         ->addActionContext('run-specific-code', 'json')
         ->initContext('json');
-    
+
         $this->_helper->layout->disableLayout();
+
+        $this->_template = APPLICATION_PATH."/bin/template.php";
     }
     
     public function runGenericCodeAction()
@@ -28,6 +29,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
     }
     
     public function runSpecificCodeAction(){
+
         $error = "";
         $inputMac = '<br/> Mac:<input type="text" name="mac" />';
         if ($this->getParam("exec")) {
@@ -62,6 +64,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
     protected function _runCode($type, $inputMac, $error = false){
         $buttons = array();
         $id = $this->_mainRouter->getParam('pk', false);
+
         if( $id )
         {
             
