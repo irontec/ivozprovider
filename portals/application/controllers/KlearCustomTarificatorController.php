@@ -182,7 +182,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         } else {
             $table = $this->_order($table, "Cost", "asc");
             $message = $this->_drawTable($table, $dst, $duration);
-            $width = "1000";
+            $width = "850";
         }
         $title = $this->_helper->translate("Results");
         $this->_showDialog($title, $message, false, "Close", false, $width);
