@@ -27,6 +27,7 @@ production:
         - "css/klear.css"
         - "default/css/customMenu.css"
         - "default/css/customFields.css"
+        - "default/css/global.css"
       javascript:
         - "default/js/customMenu.js"
         - "default/js/customTooltip.js"
