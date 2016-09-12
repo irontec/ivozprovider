@@ -85,6 +85,7 @@ production:
           dDIsNew_screen: ${auth.isNotCompanyOperator}
         dialogs: 
           dDIsDel_dialog: ${auth.isNotCompanyOperator}
+          importDDIs_dialog: ${auth.isNotCompanyOperator}
     dDIsNew_screen: &dDIsNew_screenLink 
       <<: *DDIs
       controller: new
@@ -157,6 +158,33 @@ production:
       message: _("%s successfully deleted.", ngettext('DDI', 'DDIs', 1))
       multiItem: 1
       labelOnList: 1
+
+    importDDIs_dialog:
+      <<: *DDIs
+      module: default
+      title: _("Import %s", ngettext('File', 'Files', 1))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importDDIsFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        companyId: ${auth.companyId}
+        brandId: ${auth.brandId}
+
+  commands:
+    importDDIsFreeUpload_command:
+      <<: *DDIs
+      controller: File
+      action: free-upload
+
 staging: 
   _extends: production
 testing: 
