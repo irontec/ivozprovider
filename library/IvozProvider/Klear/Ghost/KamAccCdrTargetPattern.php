@@ -10,10 +10,14 @@ class IvozProvider_Klear_Ghost_KamAccCdrTargetPattern extends KlearMatrix_Model_
      */
     public function getData ($model)
     {
-        if (!is_null ($model->getTargetPattern())) {
+        if (!is_null($model->getTargetPattern())) {
             return $model->getTargetPattern()->getName();
         } else {
-            return $model->getTargetPatternName() . ' (borrado)';
+            if ($model->getExternallyRated()) {
+                return $model->getTargetPatternName();
+            } else {
+                return $model->getTargetPatternName() . ' (borrado)';
+            }
         }
     }
 }
