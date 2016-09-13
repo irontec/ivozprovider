@@ -175,6 +175,7 @@ class Generator
                 break;
             }
 
+            $offset += $limit;
 
             foreach ($calls as $call) {
 //                if (!$call) {
