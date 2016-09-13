@@ -8,6 +8,7 @@ production:
   screens: &kamAccCdrs_screensLink 
     kamAccCdrsList_screen: &kamAccCdrsList_screenLink 
       controller: list
+      csv: true
       order:
         field:
           - start_time_utc

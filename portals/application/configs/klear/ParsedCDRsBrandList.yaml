@@ -9,6 +9,7 @@ production:
   screens: &parsedCDRs_screensLink 
     parsedCDRsList_screen: &parsedCDRsList_screenLink 
       controller: list
+      csv: true
       order:
         field:
           - calldate
@@ -46,8 +47,8 @@ production:
           referee: true
           lastForwarder: true
         order: &parsedCDRs_orderLink
-          calldate: 1
           companyId: 1
+          calldate: 1
           type: 1
           subtype: 1
           aParty: 1
