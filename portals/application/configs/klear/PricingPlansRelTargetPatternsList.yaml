@@ -143,6 +143,7 @@ production:
           template: '%name_en% (%regExp%)'
         limit: 8
         order: name
+        ignoreWhereDefault: true
 staging: 
   _extends: production
 testing: 

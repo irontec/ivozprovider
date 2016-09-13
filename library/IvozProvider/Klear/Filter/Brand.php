@@ -15,7 +15,19 @@ class IvozProvider_Klear_Filter_Brand implements KlearMatrix_Model_Field_Select_
 
         $this->_condition[] = "`brandId` = '".$currentBrandyId."'";
 
+        if ($routeDispatcher->getParam('file') == 'PricingPlansList') {
+            $this->_filterAutocompletePrincingPlans($routeDispatcher->getParam('term'));
+        }
+
         return true;
+    }
+
+    protected function _filterAutocompletePrincingPlans($term) {
+        if (is_numeric($term)) {
+            $this->_condition[] = "`regExp` = '".$term."'";
+        } else {
+            $this->_condition[] = "(`name_en` LIKE '%".str_replace(' ','%',$term)."%' OR `name_es` LIKE '%".str_replace(' ','%',$term)."%')";
+        }
     }
 
     public function getCondition()
