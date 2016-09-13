@@ -11,9 +11,9 @@ production:
       controller: list
       order:
         field:
-          - calldate
           - brandId
           - companyId
+          - calldate
         type: desc
       pagination: 
         items: 50
@@ -47,14 +47,14 @@ production:
           referee: true
           lastForwarder: true
         order: &parsedCDRs_orderLink
-          calldate: 1
-          brandId: 1
-          companyId: 1
-          type: 1
-          subtype: 1
-          aParty: 1
-          bParty: 1
-          duration: 1
+          brandId: true
+          companyId: true
+          calldate: true
+          type: tru
+          subtype: true
+          aParty: true
+          bParty: true
+          duration: true
     parsedCDRsView_screen: &parsedCDRsView_screenLink 
       <<: *ParsedCDRs
       controller: edit
