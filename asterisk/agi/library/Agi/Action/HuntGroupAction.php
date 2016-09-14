@@ -156,6 +156,16 @@ class HuntGroupAction extends RouterAction
             return;
         }
 
+        // FIXME Set presentation in company preferred format...
+        $preferred = $huntGroup->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
+        $this->agi->setCallerIdNum($preferred);
+        $this->agi->setCallerIdName("");
+
+        // FIXME Set company On-demand recording code
+        if ($huntGroup->getCompany()->getOnDemandRecord()) {
+            $this->agi->setVariable("_RECORDCODE", $huntGroup->getCompany()->getOnDemandRecordCode());
+        }
+
         // Call everyone
         $this->agi->setVariable("HG_ID", $huntGroup->getId());
         $this->agi->setVariable("DIAL_DST", join($callInterfaces, '&'));
