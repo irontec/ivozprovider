@@ -29,7 +29,7 @@ production:
           '1': 
             title: _("Yes")
     timezoneId: 
-      title: _('Timezone id')
+      title: _('Timezoneid')
       type: select
       required: true
       source: 

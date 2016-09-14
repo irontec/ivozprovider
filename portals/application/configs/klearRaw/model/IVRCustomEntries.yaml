@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\IVRCustomEntries
   fields: 
     IVRCustomId: 
-      title: _('I v r custom id')
+      title: _('Ivrcustomid')
       type: select
       required: true
       source: 
@@ -22,7 +22,7 @@ production:
       source: 
         control: Spinner
     welcomeLocutionId: 
-      title: _('Welcome locution id')
+      title: _('Welcomelocutionid')
       type: select
       source: 
         data: mapper
@@ -35,7 +35,7 @@ production:
           order: name
         'null': _("Unasigned")
     targetType: 
-      title: _('Target type')
+      title: _('Targettype')
       type: select
       required: true
       source: 
@@ -45,11 +45,11 @@ production:
           'extension': _('extension')
           'voicemail': _('voicemail')
     targetNumberValue: 
-      title: _('Target number value')
+      title: _('Targetnumbervalue')
       type: text
       maxLength: 25
     targetExtensionId: 
-      title: _('Target extension id')
+      title: _('Targetextensionid')
       type: select
       source: 
         data: mapper
@@ -62,7 +62,7 @@ production:
           order: number
         'null': _("Unasigned")
     targetVoiceMailUserId: 
-      title: _('Target voice mail user id')
+      title: _('Targetvoicemailuserid')
       type: select
       source: 
         data: mapper

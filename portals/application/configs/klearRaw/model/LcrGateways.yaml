@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\LcrGateways
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     gw_name: 
-      title: _('Gw name')
+      title: _('Gwname')
       type: text
       required: true
       maxLength: 200
@@ -38,7 +38,7 @@ production:
       type: text
       maxLength: 64
     uri_scheme: 
-      title: _('Uri scheme')
+      title: _('Urischeme')
       type: number
       source: 
         control: Spinner
@@ -72,7 +72,7 @@ production:
       source: 
         control: Spinner
     peerServerId: 
-      title: _('Peer server id')
+      title: _('Peerserverid')
       type: select
       required: true
       source: 
@@ -85,7 +85,7 @@ production:
             template: '%ip%'
           order: ip
     outgoingRoutingId: 
-      title: _('Outgoing routing id')
+      title: _('Outgoingroutingid')
       type: select
       required: true
       source: 

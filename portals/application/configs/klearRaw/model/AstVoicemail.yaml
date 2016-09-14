@@ -58,7 +58,7 @@ production:
       type: text
       maxLength: 30
     deleteast_voicemail: 
-      title: _('Deleteast voicemail')
+      title: _('Deleteastvoicemail')
       type: select
       source: 
         data: inline
@@ -74,7 +74,7 @@ production:
           'yes': _('yes')
           'no': _('no')
     sendast_voicemail: 
-      title: _('Sendast voicemail')
+      title: _('Sendastvoicemail')
       type: select
       source: 
         data: inline
@@ -182,7 +182,7 @@ production:
         settings: 
           disabled: 'false'
     userId: 
-      title: _('User id')
+      title: _('Userid')
       type: select
       source: 
         data: mapper

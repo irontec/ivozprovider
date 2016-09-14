@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Calendars
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 

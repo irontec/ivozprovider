@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\LcrRuleTargets
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     rule_id: 
-      title: _('Rule id')
+      title: _('Ruleid')
       type: select
       required: true
       source: 
@@ -29,7 +29,7 @@ production:
             template: '%prefix%'
           order: prefix
     gw_id: 
-      title: _('Gw id')
+      title: _('Gwid')
       type: select
       required: true
       source: 
@@ -54,7 +54,7 @@ production:
       source: 
         control: Spinner
     outgoingRoutingId: 
-      title: _('Outgoing routing id')
+      title: _('Outgoingroutingid')
       type: select
       required: true
       source: 

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Recordings
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -27,6 +27,15 @@ production:
         control: datetime
         settings: 
           disabled: 'false'
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: select
+      defaultValue: ddi
+      source: 
+        data: inline
+        values: 
+          'ondemand': _('ondemand')
+          'ddi': _('ddi')
     duration: 
       title: _('Duration')
       type: text
@@ -39,8 +48,12 @@ production:
       title: _('Callee')
       type: text
       maxLength: 128
+    recorder: 
+      title: _('Recorder')
+      type: text
+      maxLength: 128
     recordedFile: 
-      title: _('Recorded file')
+      title: _('Recordedfile')
       type: file
       source: 
         data: fso

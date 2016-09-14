@@ -188,6 +188,31 @@ production:
         icon: help
         text: _("Add IPs or network if enabled. Otherwise all calls will be rejected.")
         label: _("Need help?")
+    onDemandRecord:
+      title: _('On-demand call recording')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: ["onDemandRecordCode"]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: ["onDemandRecordCode"]
+              hide: []
+    onDemandRecordCode: 
+      title: _('Code')
+      type: text
+      trim: both
+      required: true
+      maxLength: 3
+      prefix: '<span class="asterisc">*</span>'
+      pattern: '[0-9*]+'
 
 staging: 
   _extends: production

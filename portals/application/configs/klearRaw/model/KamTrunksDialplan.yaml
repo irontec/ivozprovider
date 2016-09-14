@@ -15,29 +15,29 @@ production:
       source: 
         control: Spinner
     match_op: 
-      title: _('Match op')
+      title: _('Matchop')
       type: number
       required: true
       source: 
         control: Spinner
     match_exp: 
-      title: _('Match exp')
+      title: _('Matchexp')
       type: text
       required: true
       maxLength: 64
     match_len: 
-      title: _('Match len')
+      title: _('Matchlen')
       type: number
       required: true
       source: 
         control: Spinner
     subst_exp: 
-      title: _('Subst exp')
+      title: _('Substexp')
       type: text
       required: true
       maxLength: 64
     repl_exp: 
-      title: _('Repl exp')
+      title: _('Replexp')
       type: text
       required: true
       maxLength: 64
@@ -47,7 +47,7 @@ production:
       required: true
       maxLength: 64
     transformationRulesetGroupsTrunksId: 
-      title: _('Transformation ruleset groups trunks id')
+      title: _('Transformationrulesetgroupstrunksid')
       type: select
       required: true
       source: 

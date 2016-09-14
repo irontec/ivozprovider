@@ -11,7 +11,7 @@ production:
           disabled: 'false'
       default: true
     faxId: 
-      title: _('Fax id')
+      title: _('Faxid')
       type: select
       required: true
       source: 

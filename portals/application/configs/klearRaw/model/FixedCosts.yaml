@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\FixedCosts
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

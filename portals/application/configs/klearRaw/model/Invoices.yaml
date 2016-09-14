@@ -8,14 +8,14 @@ production:
       maxLength: 30
       default: true
     inDate: 
-      title: _('In date')
+      title: _('Indate')
       type: picker
       source: 
         control: datetime
         settings: 
           disabled: 'false'
     outDate: 
-      title: _('Out date')
+      title: _('Outdate')
       type: picker
       source: 
         control: datetime
@@ -25,10 +25,10 @@ production:
       title: _('Total')
       type: text
     taxRate: 
-      title: _('Tax rate')
+      title: _('Taxrate')
       type: text
     totalWithTax: 
-      title: _('Total with tax')
+      title: _('Totalwithtax')
       type: text
     status: 
       title: _('Statu')
@@ -41,7 +41,7 @@ production:
           'created': _('created')
           'error': _('error')
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -54,7 +54,7 @@ production:
             template: '%name%'
           order: name
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -67,7 +67,7 @@ production:
             template: '%name%'
           order: name
     pdfFile: 
-      title: _('Pdf file')
+      title: _('Pdffile')
       type: file
       source: 
         data: fso
@@ -113,7 +113,7 @@ production:
             title: _("Delete file")
             onNull: hide
     invoiceTemplateId: 
-      title: _('Invoice template id')
+      title: _('Invoicetemplateid')
       type: select
       source: 
         data: mapper

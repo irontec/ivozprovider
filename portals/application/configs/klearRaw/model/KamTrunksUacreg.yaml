@@ -2,28 +2,28 @@ production:
   class: \IvozProvider\Model\KamTrunksUacreg
   fields: 
     l_uuid: 
-      title: _('L uuid')
+      title: _('Luuid')
       type: text
       defaultValue: 
       maxLength: 64
       default: true
     l_username: 
-      title: _('L username')
+      title: _('Lusername')
       type: text
       defaultValue: unused
       maxLength: 64
     l_domain: 
-      title: _('L domain')
+      title: _('Ldomain')
       type: text
       defaultValue: unused
       maxLength: 128
     r_username: 
-      title: _('R username')
+      title: _('Rusername')
       type: text
       defaultValue: 
       maxLength: 64
     r_domain: 
-      title: _('R domain')
+      title: _('Rdomain')
       type: text
       defaultValue: 
       maxLength: 128
@@ -33,17 +33,17 @@ production:
       defaultValue: 
       maxLength: 64
     auth_username: 
-      title: _('Auth username')
+      title: _('Authusername')
       type: text
       defaultValue: 
       maxLength: 64
     auth_password: 
-      title: _('Auth password')
+      title: _('Authpassword')
       type: password
       defaultValue: 
       adapter: Blowfish
     auth_proxy: 
-      title: _('Auth proxy')
+      title: _('Authproxy')
       type: text
       defaultValue: 
       maxLength: 64
@@ -60,13 +60,13 @@ production:
       source: 
         control: Spinner
     reg_delay: 
-      title: _('Reg delay')
+      title: _('Regdelay')
       type: number
       defaultValue: 0
       source: 
         control: Spinner
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -79,7 +79,7 @@ production:
             template: '%name%'
           order: name
     peeringContractId: 
-      title: _('Peering contract id')
+      title: _('Peeringcontractid')
       type: select
       required: true
       source: 

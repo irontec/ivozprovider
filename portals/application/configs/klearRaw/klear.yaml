@@ -36,21 +36,21 @@ production:
             i18n: 
               es: Panel de control
         ApplicationServersList: 
-          title: ngettext('Application server', 'Application servers', 0)
+          title: ngettext('Applicationserver', 'Applicationservers', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Application server', 'Application servers', 0))
+          description: _("List of %s", ngettext('Applicationserver', 'Applicationservers', 0))
         BrandOperatorsList: 
-          title: ngettext('Brand operator', 'Brand operators', 0)
+          title: ngettext('Brandoperator', 'Brandoperators', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Brand operator', 'Brand operators', 0))
+          description: _("List of %s", ngettext('Brandoperator', 'Brandoperators', 0))
         BrandServicesList: 
-          title: ngettext('Brand service', 'Brand services', 0)
+          title: ngettext('Brandservice', 'Brandservices', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Brand service', 'Brand services', 0))
+          description: _("List of %s", ngettext('Brandservice', 'Brandservices', 0))
         BrandURLsList: 
-          title: ngettext('Brand u r l', 'Brand u r ls', 0)
+          title: ngettext('Brandurl', 'Brandurls', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Brand u r l', 'Brand u r ls', 0))
+          description: _("List of %s", ngettext('Brandurl', 'Brandurls', 0))
         BrandsList: 
           title: ngettext('Brand', 'Brands', 0)
           class: ui-silk-text-list-bullets
@@ -60,125 +60,125 @@ production:
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Calendar', 'Calendars', 0))
         CallACLList: 
-          title: ngettext('Call a c l', 'Call a c l', 0)
+          title: ngettext('Callacl', 'Callacl', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Call a c l', 'Call a c l', 0))
+          description: _("List of %s", ngettext('Callacl', 'Callacl', 0))
         CallACLPatternsList: 
-          title: ngettext('Call a c l pattern', 'Call a c l patterns', 0)
+          title: ngettext('Callaclpattern', 'Callaclpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Call a c l pattern', 'Call a c l patterns', 0))
+          description: _("List of %s", ngettext('Callaclpattern', 'Callaclpatterns', 0))
         CallACLRelPatternsList: 
-          title: ngettext('Call a c l rel pattern', 'Call a c l rel patterns', 0)
+          title: ngettext('Callaclrelpattern', 'Callaclrelpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Call a c l rel pattern', 'Call a c l rel patterns', 0))
+          description: _("List of %s", ngettext('Callaclrelpattern', 'Callaclrelpatterns', 0))
         CallForwardSettingsList: 
-          title: ngettext('Call forward setting', 'Call forward settings', 0)
+          title: ngettext('Callforwardsetting', 'Callforwardsettings', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Call forward setting', 'Call forward settings', 0))
+          description: _("List of %s", ngettext('Callforwardsetting', 'Callforwardsettings', 0))
         ChangeHistoryList: 
-          title: ngettext('Change history', 'Change history', 0)
+          title: ngettext('Changehistory', 'Changehistory', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Change history', 'Change history', 0))
+          description: _("List of %s", ngettext('Changehistory', 'Changehistory', 0))
         CompaniesList: 
           title: ngettext('Company', 'Companies', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Company', 'Companies', 0))
         CompanyAdminsList: 
-          title: ngettext('Company admin', 'Company admins', 0)
+          title: ngettext('Companyadmin', 'Companyadmins', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Company admin', 'Company admins', 0))
+          description: _("List of %s", ngettext('Companyadmin', 'Companyadmins', 0))
         CompanyServicesList: 
-          title: ngettext('Company service', 'Company services', 0)
+          title: ngettext('Companyservice', 'Companyservices', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Company service', 'Company services', 0))
+          description: _("List of %s", ngettext('Companyservice', 'Companyservices', 0))
         ConferenceRoomsList: 
-          title: ngettext('Conference room', 'Conference rooms', 0)
+          title: ngettext('Conferenceroom', 'Conferencerooms', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
+          description: _("List of %s", ngettext('Conferenceroom', 'Conferencerooms', 0))
         CountriesList: 
           title: ngettext('Country', 'Countries', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Country', 'Countries', 0))
         DDIsList: 
-          title: ngettext('D d i', 'D d is', 0)
+          title: ngettext('Ddi', 'Ddis', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('D d i', 'D d is', 0))
+          description: _("List of %s", ngettext('Ddi', 'Ddis', 0))
         DomainsList: 
           title: ngettext('Domain', 'Domains', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Domain', 'Domains', 0))
         EtagVersionsList: 
-          title: ngettext('Etag version', 'Etag versions', 0)
+          title: ngettext('Etagversion', 'Etagversions', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Etag version', 'Etag versions', 0))
+          description: _("List of %s", ngettext('Etagversion', 'Etagversions', 0))
         ExtensionsList: 
           title: ngettext('Extension', 'Extensions', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Extension', 'Extensions', 0))
         ExternalCallFilterRelCalendarsList: 
-          title: ngettext('External call filter rel calendar', 'External call filter rel calendars', 0)
+          title: ngettext('Externalcallfilterrelcalendar', 'Externalcallfilterrelcalendars', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('External call filter rel calendar', 'External call filter rel calendars', 0))
+          description: _("List of %s", ngettext('Externalcallfilterrelcalendar', 'Externalcallfilterrelcalendars', 0))
         ExternalCallFilterRelSchedulesList: 
-          title: ngettext('External call filter rel schedule', 'External call filter rel schedules', 0)
+          title: ngettext('Externalcallfilterrelschedule', 'Externalcallfilterrelschedules', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('External call filter rel schedule', 'External call filter rel schedules', 0))
+          description: _("List of %s", ngettext('Externalcallfilterrelschedule', 'Externalcallfilterrelschedules', 0))
         ExternalCallFiltersList: 
-          title: ngettext('External call filter', 'External call filters', 0)
+          title: ngettext('Externalcallfilter', 'Externalcallfilters', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+          description: _("List of %s", ngettext('Externalcallfilter', 'Externalcallfilters', 0))
         FaxesList: 
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Fax', 'Faxes', 0))
         FaxesInOutList: 
-          title: ngettext('Faxes in out', 'Faxes in out', 0)
+          title: ngettext('Faxesinout', 'Faxesinout', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Faxes in out', 'Faxes in out', 0))
+          description: _("List of %s", ngettext('Faxesinout', 'Faxesinout', 0))
         FixedCostsList: 
-          title: ngettext('Fixed cost', 'Fixed costs', 0)
+          title: ngettext('Fixedcost', 'Fixedcosts', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
+          description: _("List of %s", ngettext('Fixedcost', 'Fixedcosts', 0))
         FixedCostsRelInvoicesList: 
-          title: ngettext('Fixed costs rel invoice', 'Fixed costs rel invoices', 0)
+          title: ngettext('Fixedcostsrelinvoice', 'Fixedcostsrelinvoices', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Fixed costs rel invoice', 'Fixed costs rel invoices', 0))
+          description: _("List of %s", ngettext('Fixedcostsrelinvoice', 'Fixedcostsrelinvoices', 0))
         GenericCallACLPatternsList: 
-          title: ngettext('Generic call a c l pattern', 'Generic call a c l patterns', 0)
+          title: ngettext('Genericcallaclpattern', 'Genericcallaclpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Generic call a c l pattern', 'Generic call a c l patterns', 0))
+          description: _("List of %s", ngettext('Genericcallaclpattern', 'Genericcallaclpatterns', 0))
         GenericMusicOnHoldList: 
-          title: ngettext('Generic music on hold', 'Generic music on hold', 0)
+          title: ngettext('Genericmusiconhold', 'Genericmusiconhold', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Generic music on hold', 'Generic music on hold', 0))
+          description: _("List of %s", ngettext('Genericmusiconhold', 'Genericmusiconhold', 0))
         HolidayDatesList: 
-          title: ngettext('Holiday date', 'Holiday dates', 0)
+          title: ngettext('Holidaydate', 'Holidaydates', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Holiday date', 'Holiday dates', 0))
+          description: _("List of %s", ngettext('Holidaydate', 'Holidaydates', 0))
         HuntGroupsList: 
-          title: ngettext('Hunt group', 'Hunt groups', 0)
+          title: ngettext('Huntgroup', 'Huntgroups', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Hunt group', 'Hunt groups', 0))
+          description: _("List of %s", ngettext('Huntgroup', 'Huntgroups', 0))
         HuntGroupsRelUsersList: 
-          title: ngettext('Hunt groups rel user', 'Hunt groups rel users', 0)
+          title: ngettext('Huntgroupsreluser', 'Huntgroupsrelusers', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Hunt groups rel user', 'Hunt groups rel users', 0))
+          description: _("List of %s", ngettext('Huntgroupsreluser', 'Huntgroupsrelusers', 0))
         IVRCommonList: 
-          title: ngettext('I v r common', 'I v r common', 0)
+          title: ngettext('Ivrcommon', 'Ivrcommon', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('I v r common', 'I v r common', 0))
+          description: _("List of %s", ngettext('Ivrcommon', 'Ivrcommon', 0))
         IVRCustomList: 
-          title: ngettext('I v r custom', 'I v r custom', 0)
+          title: ngettext('Ivrcustom', 'Ivrcustom', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('I v r custom', 'I v r custom', 0))
+          description: _("List of %s", ngettext('Ivrcustom', 'Ivrcustom', 0))
         IVRCustomEntriesList: 
-          title: ngettext('I v r custom entry', 'I v r custom entries', 0)
+          title: ngettext('Ivrcustomentry', 'Ivrcustomentries', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('I v r custom entry', 'I v r custom entries', 0))
+          description: _("List of %s", ngettext('Ivrcustomentry', 'Ivrcustomentries', 0))
         InvoiceTemplatesList: 
-          title: ngettext('Invoice template', 'Invoice templates', 0)
+          title: ngettext('Invoicetemplate', 'Invoicetemplates', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
+          description: _("List of %s", ngettext('Invoicetemplate', 'Invoicetemplates', 0))
         InvoicesList: 
           title: ngettext('Invoice', 'Invoices', 0)
           class: ui-silk-text-list-bullets
@@ -188,93 +188,93 @@ production:
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Language', 'Languages', 0))
         LcrGatewaysList: 
-          title: ngettext('Lcr gateway', 'Lcr gateways', 0)
+          title: ngettext('Lcrgateway', 'Lcrgateways', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Lcr gateway', 'Lcr gateways', 0))
+          description: _("List of %s", ngettext('Lcrgateway', 'Lcrgateways', 0))
         LcrRuleTargetsList: 
-          title: ngettext('Lcr rule target', 'Lcr rule targets', 0)
+          title: ngettext('Lcrruletarget', 'Lcrruletargets', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Lcr rule target', 'Lcr rule targets', 0))
+          description: _("List of %s", ngettext('Lcrruletarget', 'Lcrruletargets', 0))
         LcrRulesList: 
-          title: ngettext('Lcr rule', 'Lcr rules', 0)
+          title: ngettext('Lcrrule', 'Lcrrules', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Lcr rule', 'Lcr rules', 0))
+          description: _("List of %s", ngettext('Lcrrule', 'Lcrrules', 0))
         LocutionsList: 
           title: ngettext('Locution', 'Locutions', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Locution', 'Locutions', 0))
         MainOperatorsList: 
-          title: ngettext('Main operator', 'Main operators', 0)
+          title: ngettext('Mainoperator', 'Mainoperators', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))
+          description: _("List of %s", ngettext('Mainoperator', 'Mainoperators', 0))
         MediaRelaySetsList: 
-          title: ngettext('Media relay set', 'Media relay sets', 0)
+          title: ngettext('Mediarelayset', 'Mediarelaysets', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Media relay set', 'Media relay sets', 0))
+          description: _("List of %s", ngettext('Mediarelayset', 'Mediarelaysets', 0))
         MusicOnHoldList: 
-          title: ngettext('Music on hold', 'Music on hold', 0)
+          title: ngettext('Musiconhold', 'Musiconhold', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Music on hold', 'Music on hold', 0))
+          description: _("List of %s", ngettext('Musiconhold', 'Musiconhold', 0))
         OutgoingRoutingList: 
-          title: ngettext('Outgoing routing', 'Outgoing routing', 0)
+          title: ngettext('Outgoingrouting', 'Outgoingrouting', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Outgoing routing', 'Outgoing routing', 0))
+          description: _("List of %s", ngettext('Outgoingrouting', 'Outgoingrouting', 0))
         ParsedCDRsList: 
-          title: ngettext('Parsed c d r', 'Parsed c d rs', 0)
+          title: ngettext('Parsedcdr', 'Parsedcdrs', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Parsed c d r', 'Parsed c d rs', 0))
+          description: _("List of %s", ngettext('Parsedcdr', 'Parsedcdrs', 0))
         PeerServersList: 
-          title: ngettext('Peer server', 'Peer servers', 0)
+          title: ngettext('Peerserver', 'Peerservers', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Peer server', 'Peer servers', 0))
+          description: _("List of %s", ngettext('Peerserver', 'Peerservers', 0))
         PeeringContractsList: 
-          title: ngettext('Peering contract', 'Peering contracts', 0)
+          title: ngettext('Peeringcontract', 'Peeringcontracts', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
+          description: _("List of %s", ngettext('Peeringcontract', 'Peeringcontracts', 0))
         PickUpGroupsList: 
-          title: ngettext('Pick up group', 'Pick up groups', 0)
+          title: ngettext('Pickupgroup', 'Pickupgroups', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
+          description: _("List of %s", ngettext('Pickupgroup', 'Pickupgroups', 0))
         PickUpRelUsersList: 
-          title: ngettext('Pick up rel user', 'Pick up rel users', 0)
+          title: ngettext('Pickupreluser', 'Pickuprelusers', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Pick up rel user', 'Pick up rel users', 0))
+          description: _("List of %s", ngettext('Pickupreluser', 'Pickuprelusers', 0))
         PricingPlansList: 
-          title: ngettext('Pricing plan', 'Pricing plans', 0)
+          title: ngettext('Pricingplan', 'Pricingplans', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Pricing plan', 'Pricing plans', 0))
+          description: _("List of %s", ngettext('Pricingplan', 'Pricingplans', 0))
         PricingPlansRelCompaniesList: 
-          title: ngettext('Pricing plans rel company', 'Pricing plans rel companies', 0)
+          title: ngettext('Pricingplansrelcompany', 'Pricingplansrelcompanies', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Pricing plans rel company', 'Pricing plans rel companies', 0))
+          description: _("List of %s", ngettext('Pricingplansrelcompany', 'Pricingplansrelcompanies', 0))
         PricingPlansRelTargetPatternsList: 
-          title: ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 0)
+          title: ngettext('Pricingplansreltargetpattern', 'Pricingplansreltargetpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 0))
+          description: _("List of %s", ngettext('Pricingplansreltargetpattern', 'Pricingplansreltargetpatterns', 0))
         ProxyTrunksList: 
-          title: ngettext('Proxy trunk', 'Proxy trunks', 0)
+          title: ngettext('Proxytrunk', 'Proxytrunks', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))
+          description: _("List of %s", ngettext('Proxytrunk', 'Proxytrunks', 0))
         ProxyUsersList: 
-          title: ngettext('Proxy user', 'Proxy users', 0)
+          title: ngettext('Proxyuser', 'Proxyusers', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))
+          description: _("List of %s", ngettext('Proxyuser', 'Proxyusers', 0))
         RecordingsList: 
           title: ngettext('Recording', 'Recordings', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Recording', 'Recordings', 0))
         RoutingPatternGroupsList: 
-          title: ngettext('Routing pattern group', 'Routing pattern groups', 0)
+          title: ngettext('Routingpatterngroup', 'Routingpatterngroups', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Routing pattern group', 'Routing pattern groups', 0))
+          description: _("List of %s", ngettext('Routingpatterngroup', 'Routingpatterngroups', 0))
         RoutingPatternGroupsRelPatternsList: 
-          title: ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 0)
+          title: ngettext('Routingpatterngroupsrelpattern', 'Routingpatterngroupsrelpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 0))
+          description: _("List of %s", ngettext('Routingpatterngroupsrelpattern', 'Routingpatterngroupsrelpatterns', 0))
         RoutingPatternsList: 
-          title: ngettext('Routing pattern', 'Routing patterns', 0)
+          title: ngettext('Routingpattern', 'Routingpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
+          description: _("List of %s", ngettext('Routingpattern', 'Routingpatterns', 0))
         SchedulesList: 
           title: ngettext('Schedule', 'Schedules', 0)
           class: ui-silk-text-list-bullets
@@ -284,17 +284,17 @@ production:
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Service', 'Services', 0))
         TargetPatternsList: 
-          title: ngettext('Target pattern', 'Target patterns', 0)
+          title: ngettext('Targetpattern', 'Targetpatterns', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Target pattern', 'Target patterns', 0))
+          description: _("List of %s", ngettext('Targetpattern', 'Targetpatterns', 0))
         TerminalManufacturersList: 
-          title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
+          title: ngettext('Terminalmanufacturer', 'Terminalmanufacturers', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0))
+          description: _("List of %s", ngettext('Terminalmanufacturer', 'Terminalmanufacturers', 0))
         TerminalModelsList: 
-          title: ngettext('Terminal model', 'Terminal models', 0)
+          title: ngettext('Terminalmodel', 'Terminalmodels', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Terminal model', 'Terminal models', 0))
+          description: _("List of %s", ngettext('Terminalmodel', 'Terminalmodels', 0))
         TerminalsList: 
           title: ngettext('Terminal', 'Terminals', 0)
           class: ui-silk-text-list-bullets
@@ -304,69 +304,69 @@ production:
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Timezone', 'Timezones', 0))
         TransformationRulesetGroupsTrunksList: 
-          title: ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0)
+          title: ngettext('Transformationrulesetgroupstrunk', 'Transformationrulesetgroupstrunks', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0))
+          description: _("List of %s", ngettext('Transformationrulesetgroupstrunk', 'Transformationrulesetgroupstrunks', 0))
         UsersList: 
           title: ngettext('User', 'Users', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('User', 'Users', 0))
         XMLRPCLogsList: 
-          title: ngettext('X m l r p c log', 'X m l r p c logs', 0)
+          title: ngettext('Xmlrpclog', 'Xmlrpclogs', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('X m l r p c log', 'X m l r p c logs', 0))
+          description: _("List of %s", ngettext('Xmlrpclog', 'Xmlrpclogs', 0))
         AstMusiconholdList: 
-          title: ngettext('Ast musiconhold', 'Ast musiconhold', 0)
+          title: ngettext('Astmusiconhold', 'Astmusiconhold', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Ast musiconhold', 'Ast musiconhold', 0))
+          description: _("List of %s", ngettext('Astmusiconhold', 'Astmusiconhold', 0))
         AstPsAorsList: 
-          title: ngettext('Ast ps aor', 'Ast ps aors', 0)
+          title: ngettext('Astpsaor', 'Astpsaors', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Ast ps aor', 'Ast ps aors', 0))
+          description: _("List of %s", ngettext('Astpsaor', 'Astpsaors', 0))
         AstPsEndpointsList: 
-          title: ngettext('Ast ps endpoint', 'Ast ps endpoints', 0)
+          title: ngettext('Astpsendpoint', 'Astpsendpoints', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Ast ps endpoint', 'Ast ps endpoints', 0))
+          description: _("List of %s", ngettext('Astpsendpoint', 'Astpsendpoints', 0))
         AstVoicemailList: 
-          title: ngettext('Ast voicemail', 'Ast voicemail', 0)
+          title: ngettext('Astvoicemail', 'Astvoicemail', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Ast voicemail', 'Ast voicemail', 0))
+          description: _("List of %s", ngettext('Astvoicemail', 'Astvoicemail', 0))
         KamAccCdrsList: 
-          title: ngettext('Kam acc cdr', 'Kam acc cdrs', 0)
+          title: ngettext('Kamacccdr', 'Kamacccdrs', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam acc cdr', 'Kam acc cdrs', 0))
+          description: _("List of %s", ngettext('Kamacccdr', 'Kamacccdrs', 0))
         KamDispatcherList: 
-          title: ngettext('Kam dispatcher', 'Kam dispatcher', 0)
+          title: ngettext('Kamdispatcher', 'Kamdispatcher', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam dispatcher', 'Kam dispatcher', 0))
+          description: _("List of %s", ngettext('Kamdispatcher', 'Kamdispatcher', 0))
         KamPikeTrustedList: 
-          title: ngettext('Kam pike trusted', 'Kam pike trusted', 0)
+          title: ngettext('Kampiketrusted', 'Kampiketrusted', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam pike trusted', 'Kam pike trusted', 0))
+          description: _("List of %s", ngettext('Kampiketrusted', 'Kampiketrusted', 0))
         KamRtpproxyList: 
-          title: ngettext('Kam rtpproxy', 'Kam rtpproxy', 0)
+          title: ngettext('Kamrtpproxy', 'Kamrtpproxy', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam rtpproxy', 'Kam rtpproxy', 0))
+          description: _("List of %s", ngettext('Kamrtpproxy', 'Kamrtpproxy', 0))
         KamTrunksAddressList: 
-          title: ngettext('Kam trunks address', 'Kam trunks address', 0)
+          title: ngettext('Kamtrunksaddress', 'Kamtrunksaddress', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam trunks address', 'Kam trunks address', 0))
+          description: _("List of %s", ngettext('Kamtrunksaddress', 'Kamtrunksaddress', 0))
         KamTrunksDialplanList: 
-          title: ngettext('Kam trunks dialplan', 'Kam trunks dialplan', 0)
+          title: ngettext('Kamtrunksdialplan', 'Kamtrunksdialplan', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam trunks dialplan', 'Kam trunks dialplan', 0))
+          description: _("List of %s", ngettext('Kamtrunksdialplan', 'Kamtrunksdialplan', 0))
         KamTrunksUacregList: 
-          title: ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0)
+          title: ngettext('Kamtrunksuacreg', 'Kamtrunksuacreg', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg', 0))
+          description: _("List of %s", ngettext('Kamtrunksuacreg', 'Kamtrunksuacreg', 0))
         KamUsersAddressList: 
-          title: ngettext('Kam users address', 'Kam users address', 0)
+          title: ngettext('Kamusersaddress', 'Kamusersaddress', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam users address', 'Kam users address', 0))
+          description: _("List of %s", ngettext('Kamusersaddress', 'Kamusersaddress', 0))
         KamUsersDomainAttrsList: 
-          title: ngettext('Kam users domain attr', 'Kam users domain attrs', 0)
+          title: ngettext('Kamusersdomainattr', 'Kamusersdomainattrs', 0)
           class: ui-silk-text-list-bullets
-          description: _("List of %s", ngettext('Kam users domain attr', 'Kam users domain attrs', 0))
+          description: _("List of %s", ngettext('Kamusersdomainattr', 'Kamusersdomainattrs', 0))
 staging: 
   _extends: production
 testing: 

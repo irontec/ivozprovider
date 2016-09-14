@@ -29,7 +29,7 @@ production:
       type: text
       maxLength: 200
     mediaRelaySetsId: 
-      title: _('Media relay sets id')
+      title: _('Mediarelaysetsid')
       type: select
       source: 
         data: mapper

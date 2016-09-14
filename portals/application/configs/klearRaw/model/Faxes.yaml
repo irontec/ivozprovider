@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Faxes
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -25,7 +25,7 @@ production:
       type: text
       maxLength: 255
     sendByEmail: 
-      title: _('Send by email')
+      title: _('Sendbyemail')
       type: select
       defaultValue: 1
       source: 
@@ -36,7 +36,7 @@ production:
           '1': 
             title: _("Yes")
     outgoingDDIId: 
-      title: _('Outgoing d d i id')
+      title: _('Outgoingddiid')
       type: select
       source: 
         data: mapper

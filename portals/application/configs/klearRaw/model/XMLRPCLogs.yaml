@@ -18,12 +18,12 @@ production:
       required: true
       maxLength: 10
     mapperName: 
-      title: _('Mapper name')
+      title: _('Mappername')
       type: text
       required: true
       maxLength: 20
     startDate: 
-      title: _('Start date')
+      title: _('Startdate')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
       source: 
@@ -31,14 +31,14 @@ production:
         settings: 
           disabled: 'false'
     execDate: 
-      title: _('Exec date')
+      title: _('Execdate')
       type: picker
       source: 
         control: datetime
         settings: 
           disabled: 'false'
     finishDate: 
-      title: _('Finish date')
+      title: _('Finishdate')
       type: picker
       source: 
         control: datetime

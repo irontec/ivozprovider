@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\KamPikeTrusted
   fields: 
     src_ip: 
-      title: _('Src ip')
+      title: _('Srcip')
       type: text
       maxLength: 50
       default: true
@@ -11,11 +11,11 @@ production:
       type: text
       maxLength: 4
     from_pattern: 
-      title: _('From pattern')
+      title: _('Frompattern')
       type: text
       maxLength: 64
     ruri_pattern: 
-      title: _('Ruri pattern')
+      title: _('Ruripattern')
       type: text
       maxLength: 64
     tag: 

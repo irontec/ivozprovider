@@ -11,7 +11,7 @@ production:
       type: text
       maxLength: 255
     lastChange: 
-      title: _('Last change')
+      title: _('Lastchange')
       type: picker
       source: 
         control: datetime

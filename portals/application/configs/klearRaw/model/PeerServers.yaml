@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\PeerServers
   fields: 
     peeringContractId: 
-      title: _('Peering contract id')
+      title: _('Peeringcontractid')
       type: select
       required: true
       source: 
@@ -30,7 +30,7 @@ production:
       defaultValue: 
       maxLength: 500
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -56,7 +56,7 @@ production:
       type: text
       maxLength: 64
     uri_scheme: 
-      title: _('Uri scheme')
+      title: _('Urischeme')
       type: number
       source: 
         control: Spinner
@@ -75,7 +75,7 @@ production:
       type: text
       maxLength: 16
     sendPAI: 
-      title: _('Send p a i')
+      title: _('Sendpai')
       type: select
       defaultValue: 0
       source: 
@@ -86,7 +86,7 @@ production:
           '1': 
             title: _("Yes")
     sendRPID: 
-      title: _('Send r p i d')
+      title: _('Sendrpid')
       type: select
       defaultValue: 0
       source: 
@@ -97,7 +97,7 @@ production:
           '1': 
             title: _("Yes")
     auth_needed: 
-      title: _('Auth needed')
+      title: _('Authneeded')
       type: select
       defaultValue: no
       source: 
@@ -106,27 +106,27 @@ production:
           'yes': _('yes')
           'no': _('no')
     auth_user: 
-      title: _('Auth user')
+      title: _('Authuser')
       type: text
       maxLength: 64
     auth_password: 
-      title: _('Auth password')
+      title: _('Authpassword')
       type: password
       adapter: Blowfish
     sip_proxy: 
-      title: _('Sip proxy')
+      title: _('Sipproxy')
       type: text
       maxLength: 128
     outbound_proxy: 
-      title: _('Outbound proxy')
+      title: _('Outboundproxy')
       type: text
       maxLength: 128
     from_user: 
-      title: _('From user')
+      title: _('Fromuser')
       type: text
       maxLength: 64
     from_domain: 
-      title: _('From domain')
+      title: _('Fromdomain')
       type: text
       maxLength: 64
 staging: 

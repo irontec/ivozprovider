@@ -7,7 +7,7 @@ production:
       maxLength: 64
       default: true
     start_time_utc: 
-      title: _('Start time utc')
+      title: _('Starttimeutc')
       type: picker
       defaultValue: 2000-01-01 00:00:00
       source: 
@@ -15,7 +15,7 @@ production:
         settings: 
           disabled: 'false'
     end_time_utc: 
-      title: _('End time utc')
+      title: _('Endtimeutc')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
       source: 
@@ -23,7 +23,7 @@ production:
         settings: 
           disabled: 'false'
     start_time: 
-      title: _('Start time')
+      title: _('Starttime')
       type: picker
       defaultValue: 2000-01-01 00:00:00
       source: 
@@ -31,7 +31,7 @@ production:
         settings: 
           disabled: 'false'
     end_time: 
-      title: _('End time')
+      title: _('Endtime')
       type: picker
       defaultValue: 2000-01-01 00:00:00
       source: 
@@ -59,7 +59,7 @@ production:
       type: text
       maxLength: 128
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       source: 
         data: mapper
@@ -72,7 +72,7 @@ production:
           order: name
         'null': _("Unasigned")
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       source: 
         data: mapper
@@ -85,11 +85,11 @@ production:
           order: name
         'null': _("Unasigned")
     asIden: 
-      title: _('As iden')
+      title: _('Asiden')
       type: text
       maxLength: 64
     asAddress: 
-      title: _('As address')
+      title: _('Asaddress')
       type: text
       maxLength: 64
     callid: 
@@ -97,7 +97,7 @@ production:
       type: text
       maxLength: 255
     callidHash: 
-      title: _('Callid hash')
+      title: _('Callidhash')
       type: text
       maxLength: 128
     xcallid: 
@@ -120,11 +120,11 @@ production:
       type: text
       maxLength: 64
     peeringContractId: 
-      title: _('Peering contract id')
+      title: _('Peeringcontractid')
       type: text
       maxLength: 64
     externallyRated: 
-      title: _('Externally rated')
+      title: _('Externallyrated')
       type: select
       source: 
         data: inline
@@ -145,7 +145,7 @@ production:
           '1': 
             title: _("Yes")
     meteringDate: 
-      title: _('Metering date')
+      title: _('Meteringdate')
       type: picker
       defaultValue: 0000-00-00 00:00:00
       source: 
@@ -153,7 +153,7 @@ production:
         settings: 
           disabled: 'false'
     pricingPlanId: 
-      title: _('Pricing plan id')
+      title: _('Pricingplanid')
       type: select
       source: 
         data: mapper
@@ -166,11 +166,11 @@ production:
           order: name_${lang}
         'null': _("Unasigned")
     pricingPlanName: 
-      title: _('Pricing plan name')
+      title: _('Pricingplanname')
       type: text
       maxLength: 55
     targetPatternId: 
-      title: _('Target pattern id')
+      title: _('Targetpatternid')
       type: select
       source: 
         data: mapper
@@ -183,17 +183,17 @@ production:
           order: name_${lang}
         'null': _("Unasigned")
     targetPatternName: 
-      title: _('Target pattern name')
+      title: _('Targetpatternname')
       type: text
       maxLength: 55
     price: 
       title: ngettext('Price', 'Prices', 1)
       type: text
     pricingPlanDetails: 
-      title: _('Pricing plan detail')
+      title: _('Pricingplandetail')
       type: textarea
     invoiceId: 
-      title: _('Invoice id')
+      title: _('Invoiceid')
       type: select
       source: 
         data: mapper
@@ -214,7 +214,7 @@ production:
           'inbound': _('inbound')
           'outbound': _('outbound')
     reMeteringDate: 
-      title: _('Re metering date')
+      title: _('Remeteringdate')
       type: picker
       source: 
         control: datetime

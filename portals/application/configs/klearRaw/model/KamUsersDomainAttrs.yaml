@@ -32,7 +32,7 @@ production:
       required: true
       maxLength: 255
     last_modified: 
-      title: _('Last modified')
+      title: _('Lastmodified')
       type: picker
       defaultValue: 1900-01-01 00:00:01
       source: 

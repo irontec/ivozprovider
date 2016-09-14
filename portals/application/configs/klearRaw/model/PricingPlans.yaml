@@ -13,7 +13,7 @@ production:
       required: true
       maxLength: 55
     createdOn: 
-      title: _('Created on')
+      title: _('Createdon')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
       source: 
@@ -21,7 +21,7 @@ production:
         settings: 
           disabled: 'false'
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

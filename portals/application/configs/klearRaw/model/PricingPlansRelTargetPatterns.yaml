@@ -2,22 +2,22 @@ production:
   class: \IvozProvider\Model\PricingPlansRelTargetPatterns
   fields: 
     connectionCharge: 
-      title: _('Connection charge')
+      title: _('Connectioncharge')
       type: text
       required: true
       default: true
     periodTime: 
-      title: _('Period time')
+      title: _('Periodtime')
       type: number
       required: true
       source: 
         control: Spinner
     perPeriodCharge: 
-      title: _('Per period charge')
+      title: _('Perperiodcharge')
       type: text
       required: true
     pricingPlanId: 
-      title: _('Pricing plan id')
+      title: _('Pricingplanid')
       type: select
       required: true
       source: 
@@ -30,7 +30,7 @@ production:
             template: '%name%'
           order: name_${lang}
     targetPatternId: 
-      title: _('Target pattern id')
+      title: _('Targetpatternid')
       type: select
       required: true
       source: 
@@ -43,7 +43,7 @@ production:
             template: '%name%'
           order: name_${lang}
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Companies
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 80
     domain_users: 
-      title: _('Domain user')
+      title: _('Domainuser')
       type: text
       required: true
       maxLength: 255
@@ -31,7 +31,7 @@ production:
       required: true
       maxLength: 25
     defaultTimezoneId: 
-      title: _('Default timezone id')
+      title: _('Defaulttimezoneid')
       type: select
       required: true
       source: 
@@ -44,7 +44,7 @@ production:
             template: '%tz%'
           order: tz
     applicationServerId: 
-      title: _('Application server id')
+      title: _('Applicationserverid')
       type: select
       source: 
         data: mapper
@@ -57,18 +57,18 @@ production:
           order: name
         'null': _("Unasigned")
     externalMaxCalls: 
-      title: _('External max call')
+      title: _('Externalmaxcall')
       type: number
       defaultValue: 0
       source: 
         control: Spinner
     postalAddress: 
-      title: _('Postal address')
+      title: _('Postaladdress')
       type: text
       required: true
       maxLength: 255
     postalCode: 
-      title: ngettext('Postal code', 'Postal codes', 1)
+      title: ngettext('Postalcode', 'Postalcodes', 1)
       type: text
       required: true
       maxLength: 10
@@ -88,11 +88,11 @@ production:
       required: true
       maxLength: 255
     outbound_prefix: 
-      title: _('Outbound prefix')
+      title: _('Outboundprefix')
       type: text
       maxLength: 255
     countryId: 
-      title: _('Country id')
+      title: _('Countryid')
       type: select
       source: 
         data: mapper
@@ -105,7 +105,7 @@ production:
           order: code
         'null': _("Unasigned")
     languageId: 
-      title: _('Language id')
+      title: _('Languageid')
       type: select
       source: 
         data: mapper
@@ -118,7 +118,7 @@ production:
           order: iden
         'null': _("Unasigned")
     mediaRelaySetsId: 
-      title: _('Media relay sets id')
+      title: _('Mediarelaysetsid')
       type: select
       source: 
         data: mapper
@@ -131,7 +131,7 @@ production:
           order: name
         'null': _("Unasigned")
     ipFilter: 
-      title: _('Ip filter')
+      title: _('Ipfilter')
       type: select
       defaultValue: 1
       source: 
@@ -141,6 +141,21 @@ production:
             title: _("No")
           '1': 
             title: _("Yes")
+    onDemandRecord: 
+      title: _('Ondemandrecord')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    onDemandRecordCode: 
+      title: _('Ondemandrecordcode')
+      type: text
+      maxLength: 3
 staging: 
   _extends: production
 testing: 

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\KamUsersAddress
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -16,12 +16,12 @@ production:
           order: name
       default: true
     source_address: 
-      title: _('Source address')
+      title: _('Sourceaddress')
       type: text
       required: true
       maxLength: 100
     ip_addr: 
-      title: _('Ip addr')
+      title: _('Ipaddr')
       type: text
       maxLength: 50
     mask: 

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\GenericCallACLPatterns
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 50
     regExp: 
-      title: _('Reg exp')
+      title: _('Regexp')
       type: text
       required: true
       maxLength: 255

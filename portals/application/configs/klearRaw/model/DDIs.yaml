@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\DDIs
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -29,16 +29,16 @@ production:
             template: '%name%'
           order: name
     DDI: 
-      title: _('D d i')
+      title: _('Ddi')
       type: text
       required: true
       maxLength: 25
     DDIE164: 
-      title: _('D d i e164')
+      title: _('Ddie164')
       type: text
       maxLength: 25
     externalCallFilterId: 
-      title: _('External call filter id')
+      title: _('Externalcallfilterid')
       type: select
       source: 
         data: mapper
@@ -51,7 +51,7 @@ production:
           order: name
         'null': _("Unasigned")
     recordCalls: 
-      title: _('Record call')
+      title: _('Recordcall')
       type: select
       defaultValue: none
       source: 
@@ -62,7 +62,7 @@ production:
           'inbound': _('inbound')
           'outbound': _('outbound')
     routeType: 
-      title: _('Route type')
+      title: _('Routetype')
       type: select
       required: true
       source: 
@@ -75,7 +75,7 @@ production:
           'fax': _('fax')
           'conferenceRoom': _('conferenceRoom')
     userId: 
-      title: _('User id')
+      title: _('Userid')
       type: select
       source: 
         data: mapper
@@ -88,7 +88,7 @@ production:
           order: name
         'null': _("Unasigned")
     IVRCommonId: 
-      title: _('I v r common id')
+      title: _('Ivrcommonid')
       type: select
       source: 
         data: mapper
@@ -101,7 +101,7 @@ production:
           order: name
         'null': _("Unasigned")
     IVRCustomId: 
-      title: _('I v r custom id')
+      title: _('Ivrcustomid')
       type: select
       source: 
         data: mapper
@@ -114,7 +114,7 @@ production:
           order: name
         'null': _("Unasigned")
     huntGroupId: 
-      title: _('Hunt group id')
+      title: _('Huntgroupid')
       type: select
       source: 
         data: mapper
@@ -127,7 +127,7 @@ production:
           order: name
         'null': _("Unasigned")
     faxId: 
-      title: _('Fax id')
+      title: _('Faxid')
       type: select
       source: 
         data: mapper
@@ -140,7 +140,7 @@ production:
           order: name
         'null': _("Unasigned")
     conferenceRoomId: 
-      title: _('Conference room id')
+      title: _('Conferenceroomid')
       type: select
       source: 
         data: mapper
@@ -153,7 +153,7 @@ production:
           order: name
         'null': _("Unasigned")
     peeringContractId: 
-      title: _('Peering contract id')
+      title: _('Peeringcontractid')
       type: select
       source: 
         data: mapper
@@ -166,7 +166,7 @@ production:
           order: description
         'null': _("Unasigned")
     countryId: 
-      title: _('Country id')
+      title: _('Countryid')
       type: select
       source: 
         data: mapper
@@ -179,7 +179,7 @@ production:
           order: code
         'null': _("Unasigned")
     billInboundCalls: 
-      title: _('Bill inbound call')
+      title: _('Billinboundcall')
       type: select
       defaultValue: 0
       source: 

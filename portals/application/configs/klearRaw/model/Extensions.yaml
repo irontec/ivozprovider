@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Extensions
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 10
     routeType: 
-      title: _('Route type')
+      title: _('Routetype')
       type: select
       defaultValue: user
       source: 
@@ -33,7 +33,7 @@ production:
           'huntGroup': _('huntGroup')
           'conferenceRoom': _('conferenceRoom')
     IVRCommonId: 
-      title: _('I v r common id')
+      title: _('Ivrcommonid')
       type: select
       source: 
         data: mapper
@@ -46,7 +46,7 @@ production:
           order: name
         'null': _("Unasigned")
     IVRCustomId: 
-      title: _('I v r custom id')
+      title: _('Ivrcustomid')
       type: select
       source: 
         data: mapper
@@ -59,7 +59,7 @@ production:
           order: name
         'null': _("Unasigned")
     huntGroupId: 
-      title: _('Hunt group id')
+      title: _('Huntgroupid')
       type: select
       source: 
         data: mapper
@@ -72,7 +72,7 @@ production:
           order: name
         'null': _("Unasigned")
     conferenceRoomId: 
-      title: _('Conference room id')
+      title: _('Conferenceroomid')
       type: select
       source: 
         data: mapper

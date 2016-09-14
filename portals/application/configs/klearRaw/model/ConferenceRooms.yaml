@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ConferenceRooms
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 50
     pinProtected: 
-      title: _('Pin protected')
+      title: _('Pinprotected')
       type: select
       defaultValue: 0
       source: 
@@ -32,11 +32,11 @@ production:
           '1': 
             title: _("Yes")
     pinCode: 
-      title: _('Pin code')
+      title: _('Pincode')
       type: text
       maxLength: 6
     maxMembers: 
-      title: _('Max member')
+      title: _('Maxmember')
       type: number
       defaultValue: 0
       source: 

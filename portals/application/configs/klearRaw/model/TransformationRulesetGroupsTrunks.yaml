@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\TransformationRulesetGroupsTrunks
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -21,22 +21,22 @@ production:
       required: true
       maxLength: 100
     caller_in: 
-      title: _('Caller in')
+      title: _('Callerin')
       type: number
       source: 
         control: Spinner
     callee_in: 
-      title: _('Callee in')
+      title: _('Calleein')
       type: number
       source: 
         control: Spinner
     caller_out: 
-      title: _('Caller out')
+      title: _('Callerout')
       type: number
       source: 
         control: Spinner
     callee_out: 
-      title: _('Callee out')
+      title: _('Calleeout')
       type: number
       source: 
         control: Spinner

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ExternalCallFilters
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 50
     welcomeLocutionId: 
-      title: _('Welcome locution id')
+      title: _('Welcomelocutionid')
       type: select
       source: 
         data: mapper
@@ -34,7 +34,7 @@ production:
           order: name
         'null': _("Unasigned")
     holidayLocutionId: 
-      title: _('Holiday locution id')
+      title: _('Holidaylocutionid')
       type: select
       source: 
         data: mapper
@@ -47,7 +47,7 @@ production:
           order: name
         'null': _("Unasigned")
     outOfScheduleLocutionId: 
-      title: _('Out of schedule locution id')
+      title: _('Outofschedulelocutionid')
       type: select
       source: 
         data: mapper
@@ -60,7 +60,7 @@ production:
           order: name
         'null': _("Unasigned")
     holidayTargetType: 
-      title: _('Holiday target type')
+      title: _('Holidaytargettype')
       type: select
       source: 
         data: inline
@@ -69,11 +69,11 @@ production:
           'extension': _('extension')
           'voicemail': _('voicemail')
     holidayNumberValue: 
-      title: _('Holiday number value')
+      title: _('Holidaynumbervalue')
       type: text
       maxLength: 25
     holidayExtensionId: 
-      title: _('Holiday extension id')
+      title: _('Holidayextensionid')
       type: select
       source: 
         data: mapper
@@ -86,7 +86,7 @@ production:
           order: number
         'null': _("Unasigned")
     holidayVoiceMailUserId: 
-      title: _('Holiday voice mail user id')
+      title: _('Holidayvoicemailuserid')
       type: select
       source: 
         data: mapper
@@ -99,7 +99,7 @@ production:
           order: name
         'null': _("Unasigned")
     outOfScheduleTargetType: 
-      title: _('Out of schedule target type')
+      title: _('Outofscheduletargettype')
       type: select
       source: 
         data: inline
@@ -108,11 +108,11 @@ production:
           'extension': _('extension')
           'voicemail': _('voicemail')
     outOfScheduleNumberValue: 
-      title: _('Out of schedule number value')
+      title: _('Outofschedulenumbervalue')
       type: text
       maxLength: 25
     outOfScheduleExtensionId: 
-      title: _('Out of schedule extension id')
+      title: _('Outofscheduleextensionid')
       type: select
       source: 
         data: mapper
@@ -125,7 +125,7 @@ production:
           order: number
         'null': _("Unasigned")
     outOfScheduleVoiceMailUserId: 
-      title: _('Out of schedule voice mail user id')
+      title: _('Outofschedulevoicemailuserid')
       type: select
       source: 
         data: mapper
@@ -138,11 +138,11 @@ production:
           order: name
         'null': _("Unasigned")
     blackListRegExp: 
-      title: _('Black list reg exp')
+      title: _('Blacklistregexp')
       type: text
       maxLength: 255
     whiteListRegExp: 
-      title: _('White list reg exp')
+      title: _('Whitelistregexp')
       type: text
       maxLength: 255
 staging: 

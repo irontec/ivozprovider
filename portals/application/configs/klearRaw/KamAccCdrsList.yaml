@@ -13,7 +13,7 @@ production:
         items: 25
       <<: *KamAccCdrs
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Kam acc cdr', 'Kam acc cdrs', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Kamacccdr', 'Kamacccdrs', 0), "[format| (%parent%)]")
       fields: &kamAccCdrs_fieldsLink 
         options: 
           title: _("Options")
@@ -34,7 +34,7 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Kam acc cdr', 'Kam acc cdrs', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Kamacccdr', 'Kamacccdrs', 1), "[format| (%parent%)]")
       shortcutOption: N
       postActionOptions: 
         screens: 
@@ -47,8 +47,8 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      labelOnPostAction: _("Edit %s %2s", ngettext('Kam acc cdr', 'Kam acc cdrs', 1), "[format| (%item%)]")
-      title: _("Edit %s %2s", ngettext('Kam acc cdr', 'Kam acc cdrs', 1), "[format| (%item%)]")
+      labelOnPostAction: _("Edit %s %2s", ngettext('Kamacccdr', 'Kamacccdrs', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Kamacccdr', 'Kamacccdrs', 1), "[format| (%item%)]")
       fields: 
         blacklist: 
           end_time_utc: true
@@ -58,9 +58,9 @@ production:
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Kam acc cdr', 'Kam acc cdrs', 1))
-      description: _("Do you want to delete this %s?", ngettext('Kam acc cdr', 'Kam acc cdrs', 1))
-      message: _("%s successfully deleted.", ngettext('Kam acc cdr', 'Kam acc cdrs', 1))
+      title: _("Delete %s", ngettext('Kamacccdr', 'Kamacccdrs', 1))
+      description: _("Do you want to delete this %s?", ngettext('Kamacccdr', 'Kamacccdrs', 1))
+      message: _("%s successfully deleted.", ngettext('Kamacccdr', 'Kamacccdrs', 1))
       multiItem: 1
       labelOnList: 1
 staging: 

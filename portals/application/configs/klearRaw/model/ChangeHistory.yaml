@@ -37,11 +37,11 @@ production:
       required: true
       maxLength: 50
     old_value: 
-      title: _('Old value')
+      title: _('Oldvalue')
       type: text
       maxLength: 250
     new_value: 
-      title: _('New value')
+      title: _('Newvalue')
       type: text
       maxLength: 250
 staging: 

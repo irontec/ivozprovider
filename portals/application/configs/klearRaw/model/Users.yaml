@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Users
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -36,7 +36,7 @@ production:
       required: true
       adapter: Blowfish
     timezoneId: 
-      title: _('Timezone id')
+      title: _('Timezoneid')
       type: select
       source: 
         data: mapper
@@ -49,7 +49,7 @@ production:
           order: tz
         'null': _("Unasigned")
     terminalId: 
-      title: _('Terminal id')
+      title: _('Terminalid')
       type: select
       source: 
         data: mapper
@@ -62,7 +62,7 @@ production:
           order: name
         'null': _("Unasigned")
     extensionId: 
-      title: _('Extension id')
+      title: _('Extensionid')
       type: select
       source: 
         data: mapper
@@ -75,7 +75,7 @@ production:
           order: number
         'null': _("Unasigned")
     outgoingDDIId: 
-      title: _('Outgoing d d i id')
+      title: _('Outgoingddiid')
       type: select
       source: 
         data: mapper
@@ -88,7 +88,7 @@ production:
           order: DDI
         'null': _("Unasigned")
     callACLId: 
-      title: _('Call a c l id')
+      title: _('Callaclid')
       type: select
       source: 
         data: mapper
@@ -101,7 +101,7 @@ production:
           order: name
         'null': _("Unasigned")
     doNotDisturb: 
-      title: _('Do not disturb')
+      title: _('Donotdisturb')
       type: select
       defaultValue: 0
       source: 
@@ -112,7 +112,7 @@ production:
           '1': 
             title: _("Yes")
     isBoss: 
-      title: _('Is boss')
+      title: _('Isboss')
       type: select
       defaultValue: 0
       source: 
@@ -123,7 +123,7 @@ production:
           '1': 
             title: _("Yes")
     bossAssistantId: 
-      title: _('Boss assistant id')
+      title: _('Bossassistantid')
       type: select
       source: 
         data: mapper
@@ -136,7 +136,7 @@ production:
           order: name
         'null': _("Unasigned")
     exceptionBoosAssistantRegExp: 
-      title: _('Exception boos assistant reg exp')
+      title: _('Exceptionboosassistantregexp')
       type: text
       maxLength: 255
     username: 
@@ -156,13 +156,13 @@ production:
           '1': 
             title: _("Yes")
     maxCalls: 
-      title: _('Max call')
+      title: _('Maxcall')
       type: number
       defaultValue: 2
       source: 
         control: Spinner
     callWaiting: 
-      title: _('Call waiting')
+      title: _('Callwaiting')
       type: select
       defaultValue: 0
       source: 
@@ -173,7 +173,7 @@ production:
           '1': 
             title: _("Yes")
     voicemailEnabled: 
-      title: _('Voicemail enabled')
+      title: _('Voicemailenabled')
       type: select
       defaultValue: 1
       source: 
@@ -184,7 +184,7 @@ production:
           '1': 
             title: _("Yes")
     voicemailSendMail: 
-      title: _('Voicemail send mail')
+      title: _('Voicemailsendmail')
       type: select
       defaultValue: 1
       source: 
@@ -195,7 +195,7 @@ production:
           '1': 
             title: _("Yes")
     voicemailAttachSound: 
-      title: _('Voicemail attach sound')
+      title: _('Voicemailattachsound')
       type: select
       defaultValue: 1
       source: 
@@ -206,11 +206,11 @@ production:
           '1': 
             title: _("Yes")
     tokenKey: 
-      title: _('Token key')
+      title: _('Tokenkey')
       type: text
       maxLength: 125
     countryId: 
-      title: _('Country id')
+      title: _('Countryid')
       type: select
       source: 
         data: mapper
@@ -223,7 +223,7 @@ production:
           order: code
         'null': _("Unasigned")
     languageId: 
-      title: _('Language id')
+      title: _('Languageid')
       type: select
       source: 
         data: mapper

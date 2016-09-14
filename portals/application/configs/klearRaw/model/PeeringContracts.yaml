@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\PeeringContracts
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -26,7 +26,7 @@ production:
       required: true
       maxLength: 200
     transformationRulesetGroupsTrunksId: 
-      title: _('Transformation ruleset groups trunks id')
+      title: _('Transformationrulesetgroupstrunksid')
       type: select
       source: 
         data: mapper
@@ -39,7 +39,7 @@ production:
           order: name
         'null': _("Unasigned")
     externallyRated: 
-      title: _('Externally rated')
+      title: _('Externallyrated')
       type: select
       defaultValue: 0
       source: 

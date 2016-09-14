@@ -13,7 +13,7 @@ production:
           'fax': _('fax')
       default: true
     routingPatternId: 
-      title: _('Routing pattern id')
+      title: _('Routingpatternid')
       type: select
       source: 
         data: mapper
@@ -26,7 +26,7 @@ production:
           order: name_${lang}
         'null': _("Unasigned")
     routingPatternGroupId: 
-      title: _('Routing pattern group id')
+      title: _('Routingpatterngroupid')
       type: select
       source: 
         data: mapper
@@ -39,7 +39,7 @@ production:
           order: name
         'null': _("Unasigned")
     peeringContractId: 
-      title: _('Peering contract id')
+      title: _('Peeringcontractid')
       type: select
       required: true
       source: 
@@ -64,7 +64,7 @@ production:
       source: 
         control: Spinner
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -77,7 +77,7 @@ production:
             template: '%name%'
           order: name
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

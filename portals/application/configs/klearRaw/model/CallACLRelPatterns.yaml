@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CallACLRelPatterns
   fields: 
     CallACLId: 
-      title: _('Call a c l id')
+      title: _('Callaclid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     CallACLPatternId: 
-      title: _('Call a c l pattern id')
+      title: _('Callaclpatternid')
       type: select
       required: true
       source: 

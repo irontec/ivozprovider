@@ -39,6 +39,21 @@ production:
       title: _('Callee')
       type: text
       maxLength: 128
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: select
+      defaultValue: ddi
+      source: 
+        data: inline
+        values: 
+          'ondemand': _('On-demand')
+          'ddi': _('DDI')
+    typeGhost:
+      title: ngettext('Type', 'Types', 1)
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RecordingsType
+        method: getData
     recordedFile: 
       title: _('Recorded file')
       type: file

@@ -8,7 +8,7 @@ production:
       maxLength: 50
       default: true
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\MusicOnHold
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 50
     originalFile: 
-      title: _('Original file')
+      title: _('Originalfile')
       type: file
       source: 
         data: fso
@@ -67,7 +67,7 @@ production:
             title: _("Delete file")
             onNull: hide
     encodedFile: 
-      title: _('Encoded file')
+      title: _('Encodedfile')
       type: file
       source: 
         data: fso

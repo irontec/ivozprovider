@@ -8,7 +8,7 @@ production:
       maxLength: 80
       default: true
     originalFile: 
-      title: _('Original file')
+      title: _('Originalfile')
       type: file
       source: 
         data: fso
@@ -54,7 +54,7 @@ production:
             title: _("Delete file")
             onNull: hide
     encodedFile: 
-      title: _('Encoded file')
+      title: _('Encodedfile')
       type: file
       source: 
         data: fso
@@ -110,7 +110,7 @@ production:
           'ready': _('ready')
           'error': _('error')
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

@@ -165,6 +165,11 @@ class UserCallAction extends RouterAction
             return;
         }
 
+        // Set company On-demand recording code
+        if ($user->getCompany()->getOnDemandRecord()) {
+            $this->agi->setVariable("_RECORDCODE", $user->getCompany()->getOnDemandRecordCode());
+        }
+
         // Configure Dial options
         $timeout = $this->_timeout;
         $options = ""; // FIXME

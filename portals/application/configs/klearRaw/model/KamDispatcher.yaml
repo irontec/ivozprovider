@@ -36,7 +36,7 @@ production:
       defaultValue: 
       maxLength: 64
     applicationServerId: 
-      title: _('Application server id')
+      title: _('Applicationserverid')
       type: select
       required: true
       source: 

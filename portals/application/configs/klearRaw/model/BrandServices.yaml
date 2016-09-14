@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\BrandServices
   fields: 
     serviceId: 
-      title: _('Service id')
+      title: _('Serviceid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: iden
       default: true
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

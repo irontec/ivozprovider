@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CompanyAdmins
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -42,7 +42,7 @@ production:
           '1': 
             title: _("Yes")
     timezoneId: 
-      title: _('Timezone id')
+      title: _('Timezoneid')
       type: select
       required: true
       source: 

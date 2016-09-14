@@ -18,7 +18,7 @@ production:
       defaultValue: 
       maxLength: 500
     TerminalManufacturerId: 
-      title: _('Terminal manufacturer id')
+      title: _('Terminalmanufacturerid')
       type: select
       required: true
       source: 
@@ -31,17 +31,17 @@ production:
             template: '%iden%'
           order: iden
     genericTemplate: 
-      title: _('Generic template')
+      title: _('Generictemplate')
       type: textarea
     specificTemplate: 
-      title: _('Specific template')
+      title: _('Specifictemplate')
       type: textarea
     genericUrlPattern: 
-      title: _('Generic url pattern')
+      title: _('Genericurlpattern')
       type: text
       maxLength: 225
     specificUrlPattern: 
-      title: _('Specific url pattern')
+      title: _('Specificurlpattern')
       type: text
       maxLength: 225
 staging: 

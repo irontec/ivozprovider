@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\FixedCostsRelInvoices
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     fixedCostId: 
-      title: _('Fixed cost id')
+      title: _('Fixedcostid')
       type: select
       required: true
       source: 
@@ -29,7 +29,7 @@ production:
             template: '%description%'
           order: description
     invoiceId: 
-      title: _('Invoice id')
+      title: _('Invoiceid')
       type: select
       required: true
       source: 

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\LcrRules
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -20,11 +20,11 @@ production:
       type: text
       maxLength: 100
     from_uri: 
-      title: _('From uri')
+      title: _('Fromuri')
       type: text
       maxLength: 64
     request_uri: 
-      title: _('Request uri')
+      title: _('Requesturi')
       type: text
       maxLength: 100
     stopper: 
@@ -50,7 +50,7 @@ production:
       defaultValue: 
       maxLength: 500
     routingPatternId: 
-      title: _('Routing pattern id')
+      title: _('Routingpatternid')
       type: select
       source: 
         data: mapper
@@ -63,7 +63,7 @@ production:
           order: name_${lang}
         'null': _("Unasigned")
     outgoingRoutingId: 
-      title: _('Outgoing routing id')
+      title: _('Outgoingroutingid')
       type: select
       source: 
         data: mapper

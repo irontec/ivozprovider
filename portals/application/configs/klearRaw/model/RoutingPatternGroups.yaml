@@ -12,7 +12,7 @@ production:
       type: text
       maxLength: 55
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

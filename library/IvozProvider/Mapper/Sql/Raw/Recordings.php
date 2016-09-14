@@ -52,9 +52,11 @@ class Recordings extends MapperAbstract
                 'companyId' => $model->getCompanyId(),
                 'callid' => $model->getCallid(),
                 'calldate' => $model->getCalldate(),
+                'type' => $model->getType(),
                 'duration' => $model->getDuration(),
                 'caller' => $model->getCaller(),
                 'callee' => $model->getCallee(),
+                'recorder' => $model->getRecorder(),
                 'recordedFileFileSize' => $model->getRecordedFileFileSize(),
                 'recordedFileMimeType' => $model->getRecordedFileMimeType(),
                 'recordedFileBaseName' => $model->getRecordedFileBaseName(),
@@ -550,9 +552,11 @@ class Recordings extends MapperAbstract
                   ->setCompanyId($data['companyId'])
                   ->setCallid($data['callid'])
                   ->setCalldate($data['calldate'])
+                  ->setType($data['type'])
                   ->setDuration($data['duration'])
                   ->setCaller($data['caller'])
                   ->setCallee($data['callee'])
+                  ->setRecorder($data['recorder'])
                   ->setRecordedFileFileSize($data['recordedFileFileSize'])
                   ->setRecordedFileMimeType($data['recordedFileMimeType'])
                   ->setRecordedFileBaseName($data['recordedFileBaseName']);
@@ -561,9 +565,11 @@ class Recordings extends MapperAbstract
                   ->setCompanyId($data->{'companyId'})
                   ->setCallid($data->{'callid'})
                   ->setCalldate($data->{'calldate'})
+                  ->setType($data->{'type'})
                   ->setDuration($data->{'duration'})
                   ->setCaller($data->{'caller'})
                   ->setCallee($data->{'callee'})
+                  ->setRecorder($data->{'recorder'})
                   ->setRecordedFileFileSize($data->{'recordedFileFileSize'})
                   ->setRecordedFileMimeType($data->{'recordedFileMimeType'})
                   ->setRecordedFileBaseName($data->{'recordedFileBaseName'});
@@ -573,9 +579,11 @@ class Recordings extends MapperAbstract
                   ->setCompanyId($data->getCompanyId())
                   ->setCallid($data->getCallid())
                   ->setCalldate($data->getCalldate())
+                  ->setType($data->getType())
                   ->setDuration($data->getDuration())
                   ->setCaller($data->getCaller())
                   ->setCallee($data->getCallee())
+                  ->setRecorder($data->getRecorder())
                   ->setRecordedFileFileSize($data->getRecordedFileFileSize())
                   ->setRecordedFileMimeType($data->getRecordedFileMimeType())
                   ->setRecordedFileBaseName($data->getRecordedFileBaseName());

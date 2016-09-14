@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\PricingPlansRelCompanies
   fields: 
     pricingPlanId: 
-      title: _('Pricing plan id')
+      title: _('Pricingplanid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name_${lang}
       default: true
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -29,14 +29,14 @@ production:
             template: '%name%'
           order: name
     validFrom: 
-      title: _('Valid from')
+      title: _('Validfrom')
       type: picker
       source: 
         control: datetime
         settings: 
           disabled: 'false'
     validTo: 
-      title: _('Valid to')
+      title: _('Validto')
       type: picker
       source: 
         control: datetime
@@ -49,7 +49,7 @@ production:
       source: 
         control: Spinner
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 

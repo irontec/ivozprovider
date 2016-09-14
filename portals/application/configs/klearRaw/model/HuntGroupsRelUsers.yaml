@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\HuntGroupsRelUsers
   fields: 
     huntGroupId: 
-      title: _('Hunt group id')
+      title: _('Huntgroupid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     userId: 
-      title: _('User id')
+      title: _('Userid')
       type: select
       required: true
       source: 
@@ -29,7 +29,7 @@ production:
             template: '%name%'
           order: name
     timeoutTime: 
-      title: _('Timeout time')
+      title: _('Timeouttime')
       type: number
       required: true
       source: 

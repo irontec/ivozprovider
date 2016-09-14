@@ -16,7 +16,7 @@ production:
       type: text
       maxLength: 55
     calling_code: 
-      title: _('Calling code')
+      title: _('Callingcode')
       type: number
       source: 
         control: Spinner

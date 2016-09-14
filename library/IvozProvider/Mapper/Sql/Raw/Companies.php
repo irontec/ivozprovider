@@ -66,6 +66,8 @@ class Companies extends MapperAbstract
                 'languageId' => $model->getLanguageId(),
                 'mediaRelaySetsId' => $model->getMediaRelaySetsId(),
                 'ipFilter' => $model->getIpFilter(),
+                'onDemandRecord' => $model->getOnDemandRecord(),
+                'onDemandRecordCode' => $model->getOnDemandRecordCode(),
             );
         } else {
             $result = array();
@@ -1008,7 +1010,9 @@ class Companies extends MapperAbstract
                   ->setCountryId($data['countryId'])
                   ->setLanguageId($data['languageId'])
                   ->setMediaRelaySetsId($data['mediaRelaySetsId'])
-                  ->setIpFilter($data['ipFilter']);
+                  ->setIpFilter($data['ipFilter'])
+                  ->setOnDemandRecord($data['onDemandRecord'])
+                  ->setOnDemandRecordCode($data['onDemandRecordCode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -1027,7 +1031,9 @@ class Companies extends MapperAbstract
                   ->setCountryId($data->{'countryId'})
                   ->setLanguageId($data->{'languageId'})
                   ->setMediaRelaySetsId($data->{'mediaRelaySetsId'})
-                  ->setIpFilter($data->{'ipFilter'});
+                  ->setIpFilter($data->{'ipFilter'})
+                  ->setOnDemandRecord($data->{'onDemandRecord'})
+                  ->setOnDemandRecordCode($data->{'onDemandRecordCode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -1047,7 +1053,9 @@ class Companies extends MapperAbstract
                   ->setCountryId($data->getCountryId())
                   ->setLanguageId($data->getLanguageId())
                   ->setMediaRelaySetsId($data->getMediaRelaySetsId())
-                  ->setIpFilter($data->getIpFilter());
+                  ->setIpFilter($data->getIpFilter())
+                  ->setOnDemandRecord($data->getOnDemandRecord())
+                  ->setOnDemandRecordCode($data->getOnDemandRecordCode());
 
         }
 

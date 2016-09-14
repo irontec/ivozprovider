@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\RoutingPatternGroupsRelPatterns
   fields: 
     routingPatternId: 
-      title: _('Routing pattern id')
+      title: _('Routingpatternid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name_${lang}
       default: true
     routingPatternGroupId: 
-      title: _('Routing pattern group id')
+      title: _('Routingpatterngroupid')
       type: select
       required: true
       source: 

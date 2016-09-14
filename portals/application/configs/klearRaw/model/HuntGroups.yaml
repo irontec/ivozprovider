@@ -13,7 +13,7 @@ production:
       defaultValue: 
       maxLength: 500
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -37,13 +37,13 @@ production:
           'roundRobin': _('roundRobin')
           'random': _('random')
     ringAllTimeout: 
-      title: _('Ring all timeout')
+      title: _('Ringalltimeout')
       type: number
       required: true
       source: 
         control: Spinner
     nextUserPosition: 
-      title: _('Next user position')
+      title: _('Nextuserposition')
       type: number
       defaultValue: 0
       source: 

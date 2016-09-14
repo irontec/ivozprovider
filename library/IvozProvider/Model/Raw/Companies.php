@@ -149,6 +149,20 @@ class Companies extends ModelAbstract
      */
     protected $_ipFilter;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_onDemandRecord;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_onDemandRecordCode;
+
 
     /**
      * Parent relation Companies_ibfk_10
@@ -460,6 +474,8 @@ class Companies extends ModelAbstract
         'languageId'=>'languageId',
         'mediaRelaySetsId'=>'mediaRelaySetsId',
         'ipFilter'=>'ipFilter',
+        'onDemandRecord'=>'onDemandRecord',
+        'onDemandRecordCode'=>'onDemandRecordCode',
     );
 
     /**
@@ -1312,6 +1328,74 @@ class Companies extends ModelAbstract
     public function getIpFilter()
     {
         return $this->_ipFilter;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOnDemandRecord($data)
+    {
+
+        if ($this->_onDemandRecord != $data) {
+            $this->_logChange('onDemandRecord', $this->_onDemandRecord, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_onDemandRecord = $data;
+
+        } else if (!is_null($data)) {
+            $this->_onDemandRecord = (int) $data;
+
+        } else {
+            $this->_onDemandRecord = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column onDemandRecord
+     *
+     * @return int
+     */
+    public function getOnDemandRecord()
+    {
+        return $this->_onDemandRecord;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOnDemandRecordCode($data)
+    {
+
+        if ($this->_onDemandRecordCode != $data) {
+            $this->_logChange('onDemandRecordCode', $this->_onDemandRecordCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_onDemandRecordCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_onDemandRecordCode = (string) $data;
+
+        } else {
+            $this->_onDemandRecordCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column onDemandRecordCode
+     *
+     * @return string
+     */
+    public function getOnDemandRecordCode()
+    {
+        return $this->_onDemandRecordCode;
     }
 
     /**

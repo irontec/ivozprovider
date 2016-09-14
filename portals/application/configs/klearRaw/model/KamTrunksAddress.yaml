@@ -9,7 +9,7 @@ production:
         control: Spinner
       default: true
     ip_addr: 
-      title: _('Ip addr')
+      title: _('Ipaddr')
       type: text
       maxLength: 50
     mask: 

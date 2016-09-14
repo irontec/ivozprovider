@@ -2,13 +2,13 @@ production:
   class: \IvozProvider\Model\AstPsEndpoints
   fields: 
     sorcery_id: 
-      title: _('Sorcery id')
+      title: _('Sorceryid')
       type: text
       required: true
       maxLength: 40
       default: true
     terminalId: 
-      title: _('Terminal id')
+      title: _('Terminalid')
       type: select
       source: 
         data: mapper
@@ -44,7 +44,7 @@ production:
       defaultValue: all
       maxLength: 200
     direct_media: 
-      title: _('Direct media')
+      title: _('Directmedia')
       type: select
       defaultValue: yes
       source: 
@@ -53,7 +53,7 @@ production:
           'yes': _('yes')
           'no': _('no')
     direct_media_method: 
-      title: _('Direct media method')
+      title: _('Directmediamethod')
       type: select
       defaultValue: update
       source: 
@@ -67,11 +67,11 @@ production:
       type: text
       maxLength: 100
     pickup_group: 
-      title: _('Pickup group')
+      title: _('Pickupgroup')
       type: text
       maxLength: 40
     send_diversion: 
-      title: _('Send diversion')
+      title: _('Senddiversion')
       type: select
       defaultValue: yes
       source: 
@@ -80,7 +80,7 @@ production:
           'yes': _('yes')
           'no': _('no')
     send_pai: 
-      title: _('Send pai')
+      title: _('Sendpai')
       type: select
       defaultValue: yes
       source: 
@@ -104,18 +104,9 @@ production:
           'required': _('required')
           'yes': _('yes')
     outbound_proxy: 
-      title: _('Outbound proxy')
+      title: _('Outboundproxy')
       type: text
       maxLength: 256
-    dtmf_mode: 
-      title: _('Dtmf mode')
-      type: select
-      source: 
-        data: inline
-        values: 
-          'rfc4733': _('rfc4733')
-          'inband': _('inband')
-          'info': _('info')
 staging: 
   _extends: production
 testing: 

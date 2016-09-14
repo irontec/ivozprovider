@@ -18,7 +18,7 @@ production:
           'company': _('company')
           'brand': _('brand')
     pointsTo: 
-      title: _('Points to')
+      title: _('Pointsto')
       type: select
       defaultValue: proxyusers
       source: 
@@ -27,7 +27,7 @@ production:
           'proxyusers': _('proxyusers')
           'proxytrunks': _('proxytrunks')
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       source: 
         data: mapper
@@ -40,7 +40,7 @@ production:
           order: name
         'null': _("Unasigned")
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       source: 
         data: mapper

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\BrandURLs
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: _('Brandid')
       type: select
       required: true
       source: 
@@ -21,12 +21,12 @@ production:
       required: true
       maxLength: 255
     klearTheme: 
-      title: _('Klear theme')
+      title: _('Kleartheme')
       type: text
       defaultValue: 
       maxLength: 200
     urlType: 
-      title: _('Url type')
+      title: _('Urltype')
       type: select
       required: true
       source: 
@@ -88,7 +88,7 @@ production:
             title: _("Delete file")
             onNull: hide
     userTheme: 
-      title: _('User theme')
+      title: _('Usertheme')
       type: text
       defaultValue: 
       maxLength: 200

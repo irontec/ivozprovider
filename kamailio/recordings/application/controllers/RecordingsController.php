@@ -142,7 +142,24 @@ class RecordingsController extends Zend_Controller_Action
 
             // Create an entry in Recordings table with the file
             $recording = new Model\Recordings;
+
+            if ($kamAccCdr->getProxy() == 'USER') {
+                $type = 'ondemand';
+                if ($kamAccCdr->getXcallid()) {
+                    // If call second leg, callee is who activated the recording
+                    $recorder = $kamAccCdr->getCallee();
+                } else {
+                    // If call first leg, caller is who activated the recording
+                    $recorder = $kamAccCdr->getCaller();
+                }
+                $recording->setRecorder($recorder);
+            } else {
+                $type = 'ddi';
+            }
+
             $recording->setCompanyId($kamAccCdr->getCompanyId())
+                ->setCalldate($kamAccCdr->getStartTimeUtc())
+                ->setType($type)
                 ->setCallid($kamAccCdr->getCallid())
                 ->setDuration($kamAccCdr->getDuration())
                 ->setCaller($kamAccCdr->getCaller())

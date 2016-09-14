@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\IVRCustom
   fields: 
     companyId: 
-      title: _('Company id')
+      title: _('Companyid')
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
       required: true
       maxLength: 50
     welcomeLocutionId: 
-      title: _('Welcome locution id')
+      title: _('Welcomelocutionid')
       type: select
       source: 
         data: mapper
@@ -34,7 +34,7 @@ production:
           order: name
         'null': _("Unasigned")
     noAnswerLocutionId: 
-      title: _('No answer locution id')
+      title: _('Noanswerlocutionid')
       type: select
       source: 
         data: mapper
@@ -47,7 +47,7 @@ production:
           order: name
         'null': _("Unasigned")
     errorLocutionId: 
-      title: _('Error locution id')
+      title: _('Errorlocutionid')
       type: select
       source: 
         data: mapper
@@ -60,7 +60,7 @@ production:
           order: name
         'null': _("Unasigned")
     successLocutionId: 
-      title: _('Success locution id')
+      title: _('Successlocutionid')
       type: select
       source: 
         data: mapper
@@ -79,13 +79,13 @@ production:
       source: 
         control: Spinner
     noAnswerTimeout: 
-      title: _('No answer timeout')
+      title: _('Noanswertimeout')
       type: number
       defaultValue: 10
       source: 
         control: Spinner
     timeoutTargetType: 
-      title: _('Timeout target type')
+      title: _('Timeouttargettype')
       type: select
       source: 
         data: inline
@@ -94,11 +94,11 @@ production:
           'extension': _('extension')
           'voicemail': _('voicemail')
     timeoutNumberValue: 
-      title: _('Timeout number value')
+      title: _('Timeoutnumbervalue')
       type: text
       maxLength: 25
     timeoutExtensionId: 
-      title: _('Timeout extension id')
+      title: _('Timeoutextensionid')
       type: select
       source: 
         data: mapper
@@ -111,7 +111,7 @@ production:
           order: number
         'null': _("Unasigned")
     timeoutVoiceMailUserId: 
-      title: _('Timeout voice mail user id')
+      title: _('Timeoutvoicemailuserid')
       type: select
       source: 
         data: mapper
@@ -124,7 +124,7 @@ production:
           order: name
         'null': _("Unasigned")
     errorTargetType: 
-      title: _('Error target type')
+      title: _('Errortargettype')
       type: select
       source: 
         data: inline
@@ -133,11 +133,11 @@ production:
           'extension': _('extension')
           'voicemail': _('voicemail')
     errorNumberValue: 
-      title: _('Error number value')
+      title: _('Errornumbervalue')
       type: text
       maxLength: 25
     errorExtensionId: 
-      title: _('Error extension id')
+      title: _('Errorextensionid')
       type: select
       source: 
         data: mapper
@@ -150,7 +150,7 @@ production:
           order: number
         'null': _("Unasigned")
     errorVoiceMailUserId: 
-      title: _('Error voice mail user id')
+      title: _('Errorvoicemailuserid')
       type: select
       source: 
         data: mapper

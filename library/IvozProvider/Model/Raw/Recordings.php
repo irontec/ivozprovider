@@ -26,6 +26,10 @@ class Recordings extends ModelAbstract
      */
     protected $_recordedFileFso;
 
+    protected $_typeAcceptedValues = array(
+        'ondemand',
+        'ddi',
+    );
 
     /**
      * Database var type int
@@ -56,6 +60,14 @@ class Recordings extends ModelAbstract
     protected $_calldate;
 
     /**
+     * [enum:ondemand|ddi]
+     * Database var type enum('ondemand','ddi')
+     *
+     * @var string
+     */
+    protected $_type;
+
+    /**
      * Database var type float
      *
      * @var float
@@ -75,6 +87,13 @@ class Recordings extends ModelAbstract
      * @var string
      */
     protected $_callee;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_recorder;
 
     /**
      * [FSO:keepExtension|storeInBaseFolder]
@@ -112,9 +131,11 @@ class Recordings extends ModelAbstract
         'companyId'=>'companyId',
         'callid'=>'callid',
         'calldate'=>'calldate',
+        'type'=>'type',
         'duration'=>'duration',
         'caller'=>'caller',
         'callee'=>'callee',
+        'recorder'=>'recorder',
         'recordedFileFileSize'=>'recordedFileFileSize',
         'recordedFileMimeType'=>'recordedFileMimeType',
         'recordedFileBaseName'=>'recordedFileBaseName',
@@ -126,6 +147,7 @@ class Recordings extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'type'=> array('enum:ondemand|ddi'),
             'recordedFileFileSize'=> array('FSO:keepExtension|storeInBaseFolder'),
         ));
 
@@ -149,6 +171,7 @@ class Recordings extends ModelAbstract
 
         $this->_defaultValues = array(
             'calldate' => 'CURRENT_TIMESTAMP',
+            'type' => 'ddi',
             'duration' => '0.000',
         );
 
@@ -430,6 +453,43 @@ class Recordings extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Recordings
+     */
+    public function setType($data)
+    {
+
+        if ($this->_type != $data) {
+            $this->_logChange('type', $this->_type, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_type = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_typeAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for type'));
+            }
+            $this->_type = (string) $data;
+
+        } else {
+            $this->_type = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
      * @param float $data
      * @return \IvozProvider\Model\Raw\Recordings
      */
@@ -528,6 +588,40 @@ class Recordings extends ModelAbstract
     public function getCallee()
     {
         return $this->_callee;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Recordings
+     */
+    public function setRecorder($data)
+    {
+
+        if ($this->_recorder != $data) {
+            $this->_logChange('recorder', $this->_recorder, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_recorder = $data;
+
+        } else if (!is_null($data)) {
+            $this->_recorder = (string) $data;
+
+        } else {
+            $this->_recorder = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column recorder
+     *
+     * @return string
+     */
+    public function getRecorder()
+    {
+        return $this->_recorder;
     }
 
     /**

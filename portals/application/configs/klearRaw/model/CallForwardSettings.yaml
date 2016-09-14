@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CallForwardSettings
   fields: 
     userId: 
-      title: _('User id')
+      title: _('Userid')
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     callTypeFilter: 
-      title: _('Call type filter')
+      title: _('Calltypefilter')
       type: select
       required: true
       source: 
@@ -26,7 +26,7 @@ production:
           'external': _('external')
           'both': _('both')
     callForwardType: 
-      title: _('Call forward type')
+      title: _('Callforwardtype')
       type: select
       required: true
       source: 
@@ -37,7 +37,7 @@ production:
           'busy': _('busy')
           'userNotRegistered': _('userNotRegistered')
     targetType: 
-      title: _('Target type')
+      title: _('Targettype')
       type: select
       required: true
       source: 
@@ -47,11 +47,11 @@ production:
           'extension': _('extension')
           'voicemail': _('voicemail')
     numberValue: 
-      title: _('Number value')
+      title: _('Numbervalue')
       type: text
       maxLength: 25
     extensionId: 
-      title: _('Extension id')
+      title: _('Extensionid')
       type: select
       source: 
         data: mapper
@@ -64,7 +64,7 @@ production:
           order: number
         'null': _("Unasigned")
     voiceMailUserId: 
-      title: _('Voice mail user id')
+      title: _('Voicemailuserid')
       type: select
       source: 
         data: mapper
@@ -77,7 +77,7 @@ production:
           order: name
         'null': _("Unasigned")
     noAnswerTimeout: 
-      title: _('No answer timeout')
+      title: _('Noanswertimeout')
       type: number
       defaultValue: 10
       source: 
