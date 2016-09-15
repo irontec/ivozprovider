@@ -1,5 +1,6 @@
 mappers: 
   - &ApplicationServers {mapper: \IvozProvider\Mapper\Sql\ApplicationServers, modelFile: ApplicationServers}
+  - &BillableCalls {mapper: \IvozProvider\Mapper\Sql\BillableCalls, modelFile: BillableCalls}
   - &BrandOperators {mapper: \IvozProvider\Mapper\Sql\BrandOperators, modelFile: BrandOperators}
   - &BrandServices {mapper: \IvozProvider\Mapper\Sql\BrandServices, modelFile: BrandServices}
   - &BrandURLs {mapper: \IvozProvider\Mapper\Sql\BrandURLs, modelFile: BrandURLs}
