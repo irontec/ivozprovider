@@ -95,9 +95,6 @@ class KamAccCdrs extends Raw\KamAccCdrs
             "Cost" => $cost
         );
 
-        // GUARDAR EL ANTIGUO DATO EN EL HISTORIAL
-        $this->_historyPricingPlanDetails($data);
-
         $now = new \Zend_Date();
         $now->setTimezone("UTC");
 
