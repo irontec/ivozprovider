@@ -38,7 +38,12 @@ class KamAccCdrs extends Raw\KamAccCdrs
         $this->_resetCall();
         if (!is_null($peeringContract)) {
             $this->setExternallyRated($peeringContract->getExternallyRated());
+            if ($this->getExternallyRated()) {
+                $this->setMetered(0);
+                return null;
+            }
         }
+        // If the peeringContract has been deleted, treat as a normal call (not externally rater)
 
         $callDate = $this->getStartTimeUtc(true);
 
@@ -98,15 +103,8 @@ class KamAccCdrs extends Raw\KamAccCdrs
             ->setMeteringDate($now)
             ->setPricingPlanId($planToApply->getPrimaryKey())
             ->setTargetPatternId($matchedPattern->getPrimaryKey())
+            ->setMetered(1)
             ->setPrice($cost);
-
-
-        if ($this->getExternallyRated() == 1) {
-            $this->setMetered(0);
-            return null;
-        } else {
-            $this->setMetered(1);
-        }
 
         return $this;
     }
