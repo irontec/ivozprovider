@@ -72,8 +72,6 @@ class Generator
         $outDate->setTimezone($invoiceTz);
         $outDate->addDay(1)->subSecond(1);
 
-        $footer = "Inforamción de la marca";
-
         $engine = 'pdf';
         $facade = \PHPPdf\Core\FacadeBuilder::create()
         ->setEngineType($engine)
@@ -85,8 +83,6 @@ class Generator
             )
         )
         ->build();
-
-        $locale = $invoice->getCompany()->getLanguageCode();
 
         $invoiceArray = $invoice->toArray();
         $invoiceArray["invoiceDate"] = $invoiceDate->toString($dateFormat);
@@ -124,7 +120,6 @@ class Generator
         $outDate = $invoice->getOutDate(true);
         $outDate->setTimezone($invoiceTz);
         $outDate->addDay(1)->subSecond(1);
-
 
         $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
         $limit = 50;
@@ -178,9 +173,10 @@ class Generator
             $offset += $limit;
 
             foreach ($calls as $call) {
-//                if (!$call) {
-//                    $call = new \IvozProvider\Model\KamAccCdrs();
-//                }
+                if (!$call) {
+                    $call = new \IvozProvider\Model\KamAccCdrs();
+                }
+
                 $lang = $invoice->getCompany()->getLanguageCode();
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
@@ -188,22 +184,23 @@ class Generator
                 $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);
                 $callData["durationFormatted"] = gmdate("H:i:s", $callData["duration"]);
-                $callData["targetPattern"] = $call->getTargetPattern()->toArray();
-//                $callData["targetPattern"]["name"] = $call->getTargetPattern()->getName($lang);
+
+                $callData["targetPattern"] = array();
+                if ($call->getTargetPatternId()) {
+                    $callData["targetPattern"] = $call->getTargetPattern()->toArray();
+                    $callData["targetPattern"]["description"] = $call->getTargetPattern()->getDescription($lang);
+                }
                 $callData["targetPattern"]["name"] = $call->getTargetPatternName();
 
-//                if ($call->getDirection() == "inbound") {
-//                    $callData["targetPattern"]["name"] = " Inbound";
-//                }
-                $callData["targetPattern"]["description"] = $call->getTargetPattern()->getDescription($lang);
-                $callData["pricingPlan"] = $call->getPricingPlan()->toArray();
-//                $callData["pricingPlan"]["name"] = $call->getPricingPlan()->getName($lang);
+                $callData["pricingPlan"] = array();
+                if ($call->getPricingPlanId()) {
+                    $callData["pricingPlan"] = $call->getPricingPlan()->toArray();
+                    $callData["pricingPlan"]["description"] = $call->getPricingPlan()->getDescription($lang);
+                }
                 $callData["pricingPlan"]["name"] = $call->getPricingPlanName();
 
-                $callData["pricingPlan"]["description"] = $call->getPricingPlan()->getDescription($lang);
-                $callType = md5($call->getTargetPattern()->getName());
+                $callType = md5($callData["targetPattern"]["name"]);
                 if ($call->getDirection() == "inbound") {
-//                    $callType = md5(" inbound");
                     if (!isset($inboundCalls["summary"])) {
                         $inboundCalls["summary"] = array(
                             "numberOfCalls" => 0,
@@ -223,7 +220,6 @@ class Generator
                     }
                 }
                 if ($call->getDirection() == "inbound") {
-//                    $callSumary[$callType]["type"] = " Inbound";
                     $inboundCalls["calls"][] = $callData;
                 } else {
                     if (!isset($callsPerType[$callType])) {
