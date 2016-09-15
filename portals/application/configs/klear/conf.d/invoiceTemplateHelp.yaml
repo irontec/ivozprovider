@@ -47,10 +47,10 @@ invoiceTemplateHelp:
             </ul>
          <p>You can use following examples as base for your custom Invoice template
             <ul style='margin-left: 30px'>
-                <li><a href='/oasis/templates/invoice.txt' target='_blank' >Basic Invoice template</a></li>
-                <li><a href='/oasis/templates/invoiceFixedCosts.txt' target='_blank'>Fixed costs Invoice template</a></li>
-                <li><a href='/oasis/templates/invoiceInboundCalls.txt' target='_blank'>Inbound calls Invoice template</a></li>
-                <li><a href='/oasis/templates/invoiceFixedCostsAndInboundCalls.txt' target='_blank'>Fixed costs and Inbound calls Invoice template</a></li>
+                <li><a href='/templates/invoice.txt' target='_blank' >Basic Invoice template</a></li>
+                <li><a href='/templates/invoiceFixedCosts.txt' target='_blank'>Fixed costs Invoice template</a></li>
+                <li><a href='/templates/invoiceInboundCalls.txt' target='_blank'>Inbound calls Invoice template</a></li>
+                <li><a href='/templates/invoiceFixedCostsAndInboundCalls.txt' target='_blank'>Fixed costs and Inbound calls Invoice template</a></li>
             </ul>
             </p>
         "
