@@ -22,6 +22,8 @@ production:
           screens: 
             huntGroupsEdit_screen: true
             huntGroupsRelUsersList_screen: true
+            huntGroupsRelUsersFilterRingAllList_screen: true
+            huntGroupsRelUsersFilterRandomList_screen: true
           dialogs: 
             huntGroupsDel_dialog: true
           default: huntGroupsEdit_screen
@@ -87,6 +89,7 @@ production:
       class: ui-silk-user
       filterField: huntGroupId
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
         - recordCount
     huntGroupsRelUsersEdit_screen:
       <<: *huntGroupsRelUsersEdit_screenLink
@@ -96,7 +99,90 @@ production:
       <<: *huntGroupsRelUsersNew_screenLink
       title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
       filterField: huntGroupId
-      
+
+    # HuntGroupRelUsers filter by "ringAll"
+    huntGroupsRelUsersFilterRingAllList_screen:
+      <<: *huntGroupsRelUsersList_screenLink
+      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
+      class: ui-silk-user
+      filterField: huntGroupId
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
+        - recordCount
+      fields:
+        blacklist:
+          timeoutTime: true
+          priority: true
+        options:
+          title: _("Options")
+          screens:
+            huntGroupsRelUsersFilterRingAllEdit_screen: true
+          dialogs:
+            huntGroupsRelUsersDel_dialog: true
+          default: huntGroupsRelUsersFilterRingAllEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          huntGroupsRelUsersFilterRingAllNew_screen: true
+        dialogs:
+          huntGroupsRelUsersDel_dialog: true
+    huntGroupsRelUsersFilterRingAllEdit_screen:
+      <<: *huntGroupsRelUsersEdit_screenLink
+      title: _("Edit %s", ngettext('User', 'User', 1))
+      filterField: huntGroupId
+      fields:
+        blacklist:
+          timeoutTime: true
+          priority: true
+    huntGroupsRelUsersFilterRingAllNew_screen:
+      <<: *huntGroupsRelUsersNew_screenLink
+      title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
+      filterField: huntGroupId
+      fields:
+        blacklist:
+          timeoutTime: true
+          priority: true
+
+    # HuntGroupRelUsers filter by "random"
+    huntGroupsRelUsersFilterRandomList_screen:
+      <<: *huntGroupsRelUsersList_screenLink
+      title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
+      class: ui-silk-user
+      filterField: huntGroupId
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
+        - recordCount
+      fields:
+        blacklist:
+          priority: true
+        options:
+          title: _("Options")
+          screens:
+            huntGroupsRelUsersFilterRandomEdit_screen: true
+          dialogs:
+            huntGroupsRelUsersDel_dialog: true
+          default: huntGroupsRelUsersFilterRandomEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          huntGroupsRelUsersFilterRandomNew_screen: true
+        dialogs:
+          huntGroupsRelUsersDel_dialog: true
+    huntGroupsRelUsersFilterRandomEdit_screen:
+      <<: *huntGroupsRelUsersEdit_screenLink
+      title: _("Edit %s", ngettext('User', 'User', 1))
+      filterField: huntGroupId
+      fields:
+        blacklist:
+          priority: true
+    huntGroupsRelUsersFilterRandomNew_screen:
+      <<: *huntGroupsRelUsersNew_screenLink
+      title: _("Add %s %2s", ngettext("User", "users", 1), "[format| (%parent%)]")
+      filterField: huntGroupId
+      fields:
+        blacklist:
+          priority: true
+
   dialogs: &huntGroups_dialogsLink 
     huntGroupsDel_dialog: &huntGroupsDel_dialogLink 
       <<: *HuntGroups
