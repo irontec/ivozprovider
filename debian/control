@@ -116,7 +116,7 @@ Description: IVOZ Provider - Profile files for a Proxy Systems
 Package: ivozprovider-kamailio-users
 Architecture: all
 Section: admin
-Depends: kamailio,
+Depends: kamailio (=4.4.3+jessie),
     kamailio-json-modules,
     kamailio-mysql-modules,
     kamailio-tls-modules,
