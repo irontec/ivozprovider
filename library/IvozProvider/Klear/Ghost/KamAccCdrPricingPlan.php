@@ -10,6 +10,10 @@ class IvozProvider_Klear_Ghost_KamAccCdrPricingPlan extends KlearMatrix_Model_Fi
      */
     public function getData ($model)
     {
+        if (!$model->getMetered()) {
+            return null;
+        }
+
         if (!is_null($model->getPricingPlan())) {
             return $model->getPricingPlan()->getName();
         } else {
