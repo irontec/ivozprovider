@@ -95,11 +95,13 @@ class KamAccCdrs extends Raw\KamAccCdrs
             "Cost" => $cost
         );
 
+        // GUARDAR EL ANTIGUO DATO EN EL HISTORIAL
+        $this->_historyPricingPlanDetails($data);
+
         $now = new \Zend_Date();
         $now->setTimezone("UTC");
 
         $this
-            ->setPricingPlanDetails(json_encode($data))
             ->setMeteringDate($now)
             ->setPricingPlanId($planToApply->getPrimaryKey())
             ->setTargetPatternId($matchedPattern->getPrimaryKey())
@@ -107,6 +109,21 @@ class KamAccCdrs extends Raw\KamAccCdrs
             ->setPrice($cost);
 
         return $this;
+    }
+
+    protected function _historyPricingPlanDetails($newData)
+    {
+        $pricingPlanDetails = array();
+
+        if ($this->getPricingPlanDetails() && (strpos($this->getPricingPlanDetails(), '[') !== false)) {
+            $pricingPlanDetails = json_decode($this->getPricingPlanDetails(), true);
+        } else if ($this->getPricingPlanDetails()) {
+            $pricingPlanDetails = array(json_decode($this->getPricingPlanDetails(),true));
+        }
+
+        $pricingPlanDetails[count($pricingPlanDetails)] = $newData;
+
+        $this->setPricingPlanDetails(json_encode($pricingPlanDetails));
     }
 
     protected function _log($message, $priority)
