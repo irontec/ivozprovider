@@ -126,21 +126,7 @@ class KamAccCdrs extends Raw\KamAccCdrs
 
         $data = json_encode($pricingPlanDetails);
 
-        if ($this->_pricingPlanDetails != $data) {
-            $this->_logChange('pricingPlanDetails', $this->_pricingPlanDetails, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_pricingPlanDetails = $data;
-
-        } else if (!is_null($data)) {
-            $this->_pricingPlanDetails = (string) $data;
-
-        } else {
-            $this->_pricingPlanDetails = $data;
-        }
-
-        return $this;
+        return parent::setPricingPlanDetails($data);
     }
 
     protected function _log($message, $priority)
