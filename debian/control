@@ -107,6 +107,12 @@ Depends: ivozprovider-profile-common,
         mysql-client,
         netcat-openbsd,
         ssl-cert,
+        kamailio (=4.4.2+jessie),
+        kamailio-json-modules (=4.4.2+jessie),
+        kamailio-mysql-modules (=4.4.2+jessie),
+        kamailio-tls-modules (=4.4.2+jessie),
+        kamailio-xml-modules (=4.4.2+jessie),
+        kamailio-websocket-modules (=4.4.2+jessie),
         ivozprovider-kamailio-trunks,
         ivozprovider-kamailio-users
 Homepage: http://www.irontec.com
@@ -116,12 +122,6 @@ Description: IVOZ Provider - Profile files for a Proxy Systems
 Package: ivozprovider-kamailio-users
 Architecture: all
 Section: admin
-Depends: kamailio (=4.4.2+0~20160909010658.46+jessie),
-    kamailio-json-modules,
-    kamailio-mysql-modules,
-    kamailio-tls-modules,
-    kamailio-xml-modules,
-    kamailio-websocket-modules
 Priority: optional
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Kamailio - Configuration files for Users kamailio
@@ -133,12 +133,6 @@ Package: ivozprovider-kamailio-trunks
 Architecture: all
 Section: admin
 Priority: optional
-Depends: kamailio,
-    kamailio-json-modules,
-    kamailio-mysql-modules,
-    kamailio-tls-modules,
-    kamailio-xml-modules,
-    kamailio-websocket-modules
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Kamailio - Configuration files for Trunks proxy kamailio
   This package include all requires files to configure kamailio properly
