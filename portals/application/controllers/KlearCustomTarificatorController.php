@@ -182,7 +182,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         } else {
             $table = $this->_order($table, "Cost", "asc");
             $message = $this->_drawTable($table, $dst, $duration);
-            $width = "500";
+            $width = "80%";
         }
         $title = $this->_helper->translate("Results");
         $this->_showDialog($title, $message, false, "Close", false, $width);
@@ -322,7 +322,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         $fieldNames = array_keys($array[0]);
 
-        $table = '<table class="kMatrix" style="width: 850px;">';
+        $table = '<table class="kMatrix" style="min-width: 850px;">';
         if (!is_null($dest)) {
             $table .= '<caption class="ui-state-active ui-priority-primary">'.$dest;
             if (!is_null($duration)) {
