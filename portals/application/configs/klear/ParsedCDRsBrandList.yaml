@@ -47,8 +47,8 @@ production:
           referee: true
           lastForwarder: true
         order: &parsedCDRs_orderLink
-          companyId: 1
           calldate: 1
+          companyId: 1
           type: 1
           subtype: 1
           aParty: 1

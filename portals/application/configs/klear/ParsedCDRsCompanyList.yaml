@@ -48,9 +48,9 @@ production:
           companyId: true
           brandId: true
         order: &parsedCDRs_orderLink
+          calldate: 1
           type: 1
           subtype: 1
-          calldate: 1
           aParty: 1
           bParty: 1
           duration: 1
