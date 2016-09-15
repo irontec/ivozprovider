@@ -102,6 +102,7 @@ class KamAccCdrs extends Raw\KamAccCdrs
         $now->setTimezone("UTC");
 
         $this
+            ->setPricingPlanDetails($data)
             ->setMeteringDate($now)
             ->setPricingPlanId($planToApply->getPrimaryKey())
             ->setTargetPatternId($matchedPattern->getPrimaryKey())
@@ -111,7 +112,7 @@ class KamAccCdrs extends Raw\KamAccCdrs
         return $this;
     }
 
-    protected function _historyPricingPlanDetails($newData)
+    public function setPricingPlanDetails($data)
     {
         $pricingPlanDetails = array();
 
@@ -121,9 +122,25 @@ class KamAccCdrs extends Raw\KamAccCdrs
             $pricingPlanDetails = array(json_decode($this->getPricingPlanDetails(),true));
         }
 
-        $pricingPlanDetails[count($pricingPlanDetails)] = $newData;
+        $pricingPlanDetails[count($pricingPlanDetails)] = $data;
 
-        $this->setPricingPlanDetails(json_encode($pricingPlanDetails));
+        $data = json_encode($pricingPlanDetails);
+
+        if ($this->_pricingPlanDetails != $data) {
+            $this->_logChange('pricingPlanDetails', $this->_pricingPlanDetails, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_pricingPlanDetails = $data;
+
+        } else if (!is_null($data)) {
+            $this->_pricingPlanDetails = (string) $data;
+
+        } else {
+            $this->_pricingPlanDetails = $data;
+        }
+
+        return $this;
     }
 
     protected function _log($message, $priority)
