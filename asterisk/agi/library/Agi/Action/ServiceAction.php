@@ -15,7 +15,7 @@ class ServiceAction extends RouterAction
 
     public function process()
     {
-        if (empty($this->_service) || empty($this->_user)) {
+        if (empty($this->_service) || empty($this->_caller)) {
              $this->agi->error("Service is not properly defined. Check configuration.");
             return;
         }
@@ -43,18 +43,18 @@ class ServiceAction extends RouterAction
     protected function _processVoiceMail()
     {
         // Local variables to improve readability
-        $user = $this->_user;
+        $caller = $this->_caller;
 
         // Checkvoicemail for this user
-        $this->agi->checkVoicemail($user->getVoiceMail());
+        $this->agi->checkVoicemail($caller->getVoiceMail());
     }
 
     protected function _processDirectPickUp()
     {
         // Local variables to improve readability
-        $user = $this->_user;
+        $caller = $this->_caller;
         $service = $this->_service;
-        $company = $user->getCompany();
+        $company = $caller->getCompany();
 
         $exten = substr($this->agi->getExtension(), strlen($service->getCode()) + 1);
         $extension = $company->getExtension($exten);
@@ -64,15 +64,15 @@ class ServiceAction extends RouterAction
         }
         $capturedUser = $extension->getUser();
 
-        if (empty($capturedUser) || $capturedUser == $user) {
+        if (empty($capturedUser) || $capturedUser == $caller) {
             $this->agi->verbose("Pickup without valid destination.");
             return;
         }
 
         //check if user is in any pickupgroup
-        $pickUpGroups = $user->getPickUpGroups();
+        $pickUpGroups = $caller->getPickUpGroups();
         if (empty($pickUpGroups)) {
-            $this->agi->verbose("User %s (%s) has no capture groups.", $user->getFullName(), $user->getId());
+            $this->agi->verbose("User %s (%s) has no capture groups.", $caller->getFullName(), $caller->getId());
             return;
         }
 
@@ -113,12 +113,12 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $service = $this->_service;
-        $user = $this->_user;
+        $caller = $this->_caller;
 
         //check if user is in any pickupgroup
-        $pickUpGroups = $user->getPickUpGroups();
+        $pickUpGroups = $caller->getPickUpGroups();
         if (empty($pickUpGroups)) {
-            $this->agi->verbose("User %s (%s) has no capture groups.", $user->getFullName(), $user->getId());
+            $this->agi->verbose("User %s (%s) has no capture groups.", $caller->getFullName(), $caller->getId());
             return;
         }
 
