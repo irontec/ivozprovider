@@ -116,7 +116,7 @@ class ExternalCallAction extends RouterAction
             $originUser = $extension->getUser();
             $originDDI = $originUser->getOutgoingDDI();
             if (empty($originDDI)) {
-                $this->agi->error("User %s has no external DDI", $user->getId());
+                $this->agi->error("User %s has no external DDI", $originUser->getId());
                 return;
             }
 
