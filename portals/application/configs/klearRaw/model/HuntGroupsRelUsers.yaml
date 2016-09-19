@@ -31,13 +31,11 @@ production:
     timeoutTime: 
       title: _('Timeouttime')
       type: number
-      required: true
       source: 
         control: Spinner
     priority: 
       title: _('Priority')
       type: number
-      required: true
       source: 
         control: Spinner
 staging: 

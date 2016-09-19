@@ -281,7 +281,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -318,7 +318,7 @@ class BrandURLs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -355,7 +355,7 @@ class BrandURLs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_url != $data) {
-            $this->_logChange('url', $this->_url, $data);
+            $this->_logChange('url');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -389,7 +389,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_klearTheme != $data) {
-            $this->_logChange('klearTheme', $this->_klearTheme, $data);
+            $this->_logChange('klearTheme');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -426,7 +426,7 @@ class BrandURLs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_urlType != $data) {
-            $this->_logChange('urlType', $this->_urlType, $data);
+            $this->_logChange('urlType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -463,7 +463,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -497,7 +497,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_logoFileSize != $data) {
-            $this->_logChange('logoFileSize', $this->_logoFileSize, $data);
+            $this->_logChange('logoFileSize');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -531,7 +531,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_logoMimeType != $data) {
-            $this->_logChange('logoMimeType', $this->_logoMimeType, $data);
+            $this->_logChange('logoMimeType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -565,7 +565,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_logoBaseName != $data) {
-            $this->_logChange('logoBaseName', $this->_logoBaseName, $data);
+            $this->_logChange('logoBaseName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -599,7 +599,7 @@ class BrandURLs extends ModelAbstract
     {
 
         if ($this->_userTheme != $data) {
-            $this->_logChange('userTheme', $this->_userTheme, $data);
+            $this->_logChange('userTheme');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

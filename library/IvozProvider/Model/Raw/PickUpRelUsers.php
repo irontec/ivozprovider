@@ -139,7 +139,7 @@ class PickUpRelUsers extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -176,7 +176,7 @@ class PickUpRelUsers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pickUpGroupId != $data) {
-            $this->_logChange('pickUpGroupId', $this->_pickUpGroupId, $data);
+            $this->_logChange('pickUpGroupId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -213,7 +213,7 @@ class PickUpRelUsers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_userId != $data) {
-            $this->_logChange('userId', $this->_userId, $data);
+            $this->_logChange('userId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

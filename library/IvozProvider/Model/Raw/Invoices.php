@@ -362,7 +362,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -399,7 +399,7 @@ class Invoices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_number != $data) {
-            $this->_logChange('number', $this->_number, $data);
+            $this->_logChange('number');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -452,7 +452,7 @@ class Invoices extends ModelAbstract
         }
 
         if ($this->_inDate != $data) {
-            $this->_logChange('inDate', $this->_inDate, $data);
+            $this->_logChange('inDate');
         }
 
         $this->_inDate = $data;
@@ -508,7 +508,7 @@ class Invoices extends ModelAbstract
         }
 
         if ($this->_outDate != $data) {
-            $this->_logChange('outDate', $this->_outDate, $data);
+            $this->_logChange('outDate');
         }
 
         $this->_outDate = $data;
@@ -545,7 +545,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_total != $data) {
-            $this->_logChange('total', $this->_total, $data);
+            $this->_logChange('total');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -579,7 +579,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_taxRate != $data) {
-            $this->_logChange('taxRate', $this->_taxRate, $data);
+            $this->_logChange('taxRate');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -613,7 +613,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_totalWithTax != $data) {
-            $this->_logChange('totalWithTax', $this->_totalWithTax, $data);
+            $this->_logChange('totalWithTax');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -647,7 +647,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_status != $data) {
-            $this->_logChange('status', $this->_status, $data);
+            $this->_logChange('status');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -687,7 +687,7 @@ class Invoices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -724,7 +724,7 @@ class Invoices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -758,7 +758,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_pdfFileFileSize != $data) {
-            $this->_logChange('pdfFileFileSize', $this->_pdfFileFileSize, $data);
+            $this->_logChange('pdfFileFileSize');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -792,7 +792,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_pdfFileMimeType != $data) {
-            $this->_logChange('pdfFileMimeType', $this->_pdfFileMimeType, $data);
+            $this->_logChange('pdfFileMimeType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -826,7 +826,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_pdfFileBaseName != $data) {
-            $this->_logChange('pdfFileBaseName', $this->_pdfFileBaseName, $data);
+            $this->_logChange('pdfFileBaseName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -860,7 +860,7 @@ class Invoices extends ModelAbstract
     {
 
         if ($this->_invoiceTemplateId != $data) {
-            $this->_logChange('invoiceTemplateId', $this->_invoiceTemplateId, $data);
+            $this->_logChange('invoiceTemplateId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

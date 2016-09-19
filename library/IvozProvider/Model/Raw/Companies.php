@@ -697,7 +697,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -734,7 +734,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -771,7 +771,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -808,7 +808,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_domainUsers != $data) {
-            $this->_logChange('domainUsers', $this->_domainUsers, $data);
+            $this->_logChange('domainUsers');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -845,7 +845,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_nif != $data) {
-            $this->_logChange('nif', $this->_nif, $data);
+            $this->_logChange('nif');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -882,7 +882,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_defaultTimezoneId != $data) {
-            $this->_logChange('defaultTimezoneId', $this->_defaultTimezoneId, $data);
+            $this->_logChange('defaultTimezoneId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -916,7 +916,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_applicationServerId != $data) {
-            $this->_logChange('applicationServerId', $this->_applicationServerId, $data);
+            $this->_logChange('applicationServerId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -950,7 +950,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_externalMaxCalls != $data) {
-            $this->_logChange('externalMaxCalls', $this->_externalMaxCalls, $data);
+            $this->_logChange('externalMaxCalls');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -987,7 +987,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_postalAddress != $data) {
-            $this->_logChange('postalAddress', $this->_postalAddress, $data);
+            $this->_logChange('postalAddress');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1024,7 +1024,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_postalCode != $data) {
-            $this->_logChange('postalCode', $this->_postalCode, $data);
+            $this->_logChange('postalCode');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1061,7 +1061,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_town != $data) {
-            $this->_logChange('town', $this->_town, $data);
+            $this->_logChange('town');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1098,7 +1098,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_province != $data) {
-            $this->_logChange('province', $this->_province, $data);
+            $this->_logChange('province');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1135,7 +1135,7 @@ class Companies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_country != $data) {
-            $this->_logChange('country', $this->_country, $data);
+            $this->_logChange('country');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1169,7 +1169,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_outboundPrefix != $data) {
-            $this->_logChange('outboundPrefix', $this->_outboundPrefix, $data);
+            $this->_logChange('outboundPrefix');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1203,7 +1203,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_countryId != $data) {
-            $this->_logChange('countryId', $this->_countryId, $data);
+            $this->_logChange('countryId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1237,7 +1237,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_languageId != $data) {
-            $this->_logChange('languageId', $this->_languageId, $data);
+            $this->_logChange('languageId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1271,7 +1271,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_mediaRelaySetsId != $data) {
-            $this->_logChange('mediaRelaySetsId', $this->_mediaRelaySetsId, $data);
+            $this->_logChange('mediaRelaySetsId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1305,7 +1305,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_ipFilter != $data) {
-            $this->_logChange('ipFilter', $this->_ipFilter, $data);
+            $this->_logChange('ipFilter');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1339,7 +1339,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_onDemandRecord != $data) {
-            $this->_logChange('onDemandRecord', $this->_onDemandRecord, $data);
+            $this->_logChange('onDemandRecord');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1373,7 +1373,7 @@ class Companies extends ModelAbstract
     {
 
         if ($this->_onDemandRecordCode != $data) {
-            $this->_logChange('onDemandRecordCode', $this->_onDemandRecordCode, $data);
+            $this->_logChange('onDemandRecordCode');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -372,7 +372,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -409,7 +409,7 @@ class MusicOnHold extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -446,7 +446,7 @@ class MusicOnHold extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_originalFileFileSize != $data) {
-            $this->_logChange('originalFileFileSize', $this->_originalFileFileSize, $data);
+            $this->_logChange('originalFileFileSize');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -514,7 +514,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_originalFileMimeType != $data) {
-            $this->_logChange('originalFileMimeType', $this->_originalFileMimeType, $data);
+            $this->_logChange('originalFileMimeType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -548,7 +548,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_originalFileBaseName != $data) {
-            $this->_logChange('originalFileBaseName', $this->_originalFileBaseName, $data);
+            $this->_logChange('originalFileBaseName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -582,7 +582,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_encodedFileFileSize != $data) {
-            $this->_logChange('encodedFileFileSize', $this->_encodedFileFileSize, $data);
+            $this->_logChange('encodedFileFileSize');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -616,7 +616,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_encodedFileMimeType != $data) {
-            $this->_logChange('encodedFileMimeType', $this->_encodedFileMimeType, $data);
+            $this->_logChange('encodedFileMimeType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -650,7 +650,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_encodedFileBaseName != $data) {
-            $this->_logChange('encodedFileBaseName', $this->_encodedFileBaseName, $data);
+            $this->_logChange('encodedFileBaseName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -684,7 +684,7 @@ class MusicOnHold extends ModelAbstract
     {
 
         if ($this->_status != $data) {
-            $this->_logChange('status', $this->_status, $data);
+            $this->_logChange('status');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

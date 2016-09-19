@@ -139,7 +139,7 @@ class ExternalCallFilterRelCalendars extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -176,7 +176,7 @@ class ExternalCallFilterRelCalendars extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_filterId != $data) {
-            $this->_logChange('filterId', $this->_filterId, $data);
+            $this->_logChange('filterId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -213,7 +213,7 @@ class ExternalCallFilterRelCalendars extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_calendarId != $data) {
-            $this->_logChange('calendarId', $this->_calendarId, $data);
+            $this->_logChange('calendarId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

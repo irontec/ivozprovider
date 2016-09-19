@@ -312,7 +312,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -349,7 +349,7 @@ class PeerServers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
+            $this->_logChange('peeringContractId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -383,7 +383,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_ip != $data) {
-            $this->_logChange('ip', $this->_ip, $data);
+            $this->_logChange('ip');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -420,7 +420,7 @@ class PeerServers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -454,7 +454,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description', $this->_description, $data);
+            $this->_logChange('description');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -491,7 +491,7 @@ class PeerServers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -525,7 +525,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_hostname != $data) {
-            $this->_logChange('hostname', $this->_hostname, $data);
+            $this->_logChange('hostname');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -559,7 +559,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_port != $data) {
-            $this->_logChange('port', $this->_port, $data);
+            $this->_logChange('port');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -593,7 +593,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_params != $data) {
-            $this->_logChange('params', $this->_params, $data);
+            $this->_logChange('params');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -627,7 +627,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_uriScheme != $data) {
-            $this->_logChange('uriScheme', $this->_uriScheme, $data);
+            $this->_logChange('uriScheme');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -661,7 +661,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_transport != $data) {
-            $this->_logChange('transport', $this->_transport, $data);
+            $this->_logChange('transport');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -695,7 +695,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_strip != $data) {
-            $this->_logChange('strip', $this->_strip, $data);
+            $this->_logChange('strip');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -729,7 +729,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_prefix != $data) {
-            $this->_logChange('prefix', $this->_prefix, $data);
+            $this->_logChange('prefix');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -763,7 +763,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_sendPAI != $data) {
-            $this->_logChange('sendPAI', $this->_sendPAI, $data);
+            $this->_logChange('sendPAI');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -797,7 +797,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_sendRPID != $data) {
-            $this->_logChange('sendRPID', $this->_sendRPID, $data);
+            $this->_logChange('sendRPID');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -831,7 +831,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_authNeeded != $data) {
-            $this->_logChange('authNeeded', $this->_authNeeded, $data);
+            $this->_logChange('authNeeded');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -868,7 +868,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_authUser != $data) {
-            $this->_logChange('authUser', $this->_authUser, $data);
+            $this->_logChange('authUser');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -902,7 +902,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_authPassword != $data) {
-            $this->_logChange('authPassword', $this->_authPassword, $data);
+            $this->_logChange('authPassword');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -936,7 +936,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_sipProxy != $data) {
-            $this->_logChange('sipProxy', $this->_sipProxy, $data);
+            $this->_logChange('sipProxy');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -970,7 +970,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_outboundProxy != $data) {
-            $this->_logChange('outboundProxy', $this->_outboundProxy, $data);
+            $this->_logChange('outboundProxy');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1004,7 +1004,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_fromUser != $data) {
-            $this->_logChange('fromUser', $this->_fromUser, $data);
+            $this->_logChange('fromUser');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1038,7 +1038,7 @@ class PeerServers extends ModelAbstract
     {
 
         if ($this->_fromDomain != $data) {
-            $this->_logChange('fromDomain', $this->_fromDomain, $data);
+            $this->_logChange('fromDomain');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -351,7 +351,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -385,7 +385,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_statId != $data) {
-            $this->_logChange('statId', $this->_statId, $data);
+            $this->_logChange('statId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -419,7 +419,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_xstatId != $data) {
-            $this->_logChange('xstatId', $this->_xstatId, $data);
+            $this->_logChange('xstatId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -453,7 +453,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_statType != $data) {
-            $this->_logChange('statType', $this->_statType, $data);
+            $this->_logChange('statType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -487,7 +487,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_initialLeg != $data) {
-            $this->_logChange('initialLeg', $this->_initialLeg, $data);
+            $this->_logChange('initialLeg');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -521,7 +521,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_initialLegHash != $data) {
-            $this->_logChange('initialLegHash', $this->_initialLegHash, $data);
+            $this->_logChange('initialLegHash');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -555,7 +555,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_cid != $data) {
-            $this->_logChange('cid', $this->_cid, $data);
+            $this->_logChange('cid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -589,7 +589,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_cidHash != $data) {
-            $this->_logChange('cidHash', $this->_cidHash, $data);
+            $this->_logChange('cidHash');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -623,7 +623,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_xcid != $data) {
-            $this->_logChange('xcid', $this->_xcid, $data);
+            $this->_logChange('xcid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -657,7 +657,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_xcidHash != $data) {
-            $this->_logChange('xcidHash', $this->_xcidHash, $data);
+            $this->_logChange('xcidHash');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -691,7 +691,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_proxies != $data) {
-            $this->_logChange('proxies', $this->_proxies, $data);
+            $this->_logChange('proxies');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -725,7 +725,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_type != $data) {
-            $this->_logChange('type', $this->_type, $data);
+            $this->_logChange('type');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -759,7 +759,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_subtype != $data) {
-            $this->_logChange('subtype', $this->_subtype, $data);
+            $this->_logChange('subtype');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -812,7 +812,7 @@ class ParsedCDRs extends ModelAbstract
         }
 
         if ($this->_calldate != $data) {
-            $this->_logChange('calldate', $this->_calldate, $data);
+            $this->_logChange('calldate');
         }
 
         $this->_calldate = $data;
@@ -849,7 +849,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_duration != $data) {
-            $this->_logChange('duration', $this->_duration, $data);
+            $this->_logChange('duration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -883,7 +883,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_aParty != $data) {
-            $this->_logChange('aParty', $this->_aParty, $data);
+            $this->_logChange('aParty');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -917,7 +917,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_bParty != $data) {
-            $this->_logChange('bParty', $this->_bParty, $data);
+            $this->_logChange('bParty');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -951,7 +951,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_caller != $data) {
-            $this->_logChange('caller', $this->_caller, $data);
+            $this->_logChange('caller');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -985,7 +985,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_callee != $data) {
-            $this->_logChange('callee', $this->_callee, $data);
+            $this->_logChange('callee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1019,7 +1019,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_xCaller != $data) {
-            $this->_logChange('xCaller', $this->_xCaller, $data);
+            $this->_logChange('xCaller');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1053,7 +1053,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_xCallee != $data) {
-            $this->_logChange('xCallee', $this->_xCallee, $data);
+            $this->_logChange('xCallee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1087,7 +1087,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_initialReferrer != $data) {
-            $this->_logChange('initialReferrer', $this->_initialReferrer, $data);
+            $this->_logChange('initialReferrer');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1121,7 +1121,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_referrer != $data) {
-            $this->_logChange('referrer', $this->_referrer, $data);
+            $this->_logChange('referrer');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1155,7 +1155,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_referee != $data) {
-            $this->_logChange('referee', $this->_referee, $data);
+            $this->_logChange('referee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1189,7 +1189,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_lastForwarder != $data) {
-            $this->_logChange('lastForwarder', $this->_lastForwarder, $data);
+            $this->_logChange('lastForwarder');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1223,7 +1223,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1257,7 +1257,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1291,7 +1291,7 @@ class ParsedCDRs extends ModelAbstract
     {
 
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
+            $this->_logChange('peeringContractId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

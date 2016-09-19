@@ -267,7 +267,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -301,7 +301,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_type != $data) {
-            $this->_logChange('type', $this->_type, $data);
+            $this->_logChange('type');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -338,7 +338,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_routingPatternId != $data) {
-            $this->_logChange('routingPatternId', $this->_routingPatternId, $data);
+            $this->_logChange('routingPatternId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -372,7 +372,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_routingPatternGroupId != $data) {
-            $this->_logChange('routingPatternGroupId', $this->_routingPatternGroupId, $data);
+            $this->_logChange('routingPatternGroupId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -409,7 +409,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
+            $this->_logChange('peeringContractId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -446,7 +446,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_priority != $data) {
-            $this->_logChange('priority', $this->_priority, $data);
+            $this->_logChange('priority');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class OutgoingRouting extends ModelAbstract
     {
 
         if ($this->_weight != $data) {
-            $this->_logChange('weight', $this->_weight, $data);
+            $this->_logChange('weight');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -517,7 +517,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -554,7 +554,7 @@ class OutgoingRouting extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

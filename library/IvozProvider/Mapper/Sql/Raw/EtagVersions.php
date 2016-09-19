@@ -282,10 +282,6 @@ class EtagVersions extends MapperAbstract
         }
 
 
-        // Save Changelog if requested
-        $model->logDelete();
-        $model->saveChangeLog();
-
         return $result;
 
     }
@@ -508,10 +504,6 @@ class EtagVersions extends MapperAbstract
             }
         }
 
-
-        if ($model->hasChange()) {
-            $model->saveChangeLog();
-        }
 
         if ($success === true) {
             return $primaryKey;

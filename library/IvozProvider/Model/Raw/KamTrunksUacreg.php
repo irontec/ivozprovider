@@ -247,7 +247,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -281,7 +281,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_lUuid != $data) {
-            $this->_logChange('lUuid', $this->_lUuid, $data);
+            $this->_logChange('lUuid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -315,7 +315,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_lUsername != $data) {
-            $this->_logChange('lUsername', $this->_lUsername, $data);
+            $this->_logChange('lUsername');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -349,7 +349,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_lDomain != $data) {
-            $this->_logChange('lDomain', $this->_lDomain, $data);
+            $this->_logChange('lDomain');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -383,7 +383,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_rUsername != $data) {
-            $this->_logChange('rUsername', $this->_rUsername, $data);
+            $this->_logChange('rUsername');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -417,7 +417,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_rDomain != $data) {
-            $this->_logChange('rDomain', $this->_rDomain, $data);
+            $this->_logChange('rDomain');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -451,7 +451,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_realm != $data) {
-            $this->_logChange('realm', $this->_realm, $data);
+            $this->_logChange('realm');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -485,7 +485,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_authUsername != $data) {
-            $this->_logChange('authUsername', $this->_authUsername, $data);
+            $this->_logChange('authUsername');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -519,7 +519,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_authPassword != $data) {
-            $this->_logChange('authPassword', $this->_authPassword, $data);
+            $this->_logChange('authPassword');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -553,7 +553,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_authProxy != $data) {
-            $this->_logChange('authProxy', $this->_authProxy, $data);
+            $this->_logChange('authProxy');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -587,7 +587,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_expires != $data) {
-            $this->_logChange('expires', $this->_expires, $data);
+            $this->_logChange('expires');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -621,7 +621,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_flags != $data) {
-            $this->_logChange('flags', $this->_flags, $data);
+            $this->_logChange('flags');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -655,7 +655,7 @@ class KamTrunksUacreg extends ModelAbstract
     {
 
         if ($this->_regDelay != $data) {
-            $this->_logChange('regDelay', $this->_regDelay, $data);
+            $this->_logChange('regDelay');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -692,7 +692,7 @@ class KamTrunksUacreg extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -729,7 +729,7 @@ class KamTrunksUacreg extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
+            $this->_logChange('peeringContractId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

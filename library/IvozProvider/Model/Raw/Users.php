@@ -587,7 +587,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -624,7 +624,7 @@ class Users extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -661,7 +661,7 @@ class Users extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -698,7 +698,7 @@ class Users extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_lastname != $data) {
-            $this->_logChange('lastname', $this->_lastname, $data);
+            $this->_logChange('lastname');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -735,7 +735,7 @@ class Users extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_email != $data) {
-            $this->_logChange('email', $this->_email, $data);
+            $this->_logChange('email');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -772,7 +772,7 @@ class Users extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pass != $data) {
-            $this->_logChange('pass', $this->_pass, $data);
+            $this->_logChange('pass');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -806,7 +806,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_timezoneId != $data) {
-            $this->_logChange('timezoneId', $this->_timezoneId, $data);
+            $this->_logChange('timezoneId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -840,7 +840,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_terminalId != $data) {
-            $this->_logChange('terminalId', $this->_terminalId, $data);
+            $this->_logChange('terminalId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -874,7 +874,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_extensionId != $data) {
-            $this->_logChange('extensionId', $this->_extensionId, $data);
+            $this->_logChange('extensionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -908,7 +908,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_outgoingDDIId != $data) {
-            $this->_logChange('outgoingDDIId', $this->_outgoingDDIId, $data);
+            $this->_logChange('outgoingDDIId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -942,7 +942,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_callACLId != $data) {
-            $this->_logChange('callACLId', $this->_callACLId, $data);
+            $this->_logChange('callACLId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -976,7 +976,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_doNotDisturb != $data) {
-            $this->_logChange('doNotDisturb', $this->_doNotDisturb, $data);
+            $this->_logChange('doNotDisturb');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1010,7 +1010,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_isBoss != $data) {
-            $this->_logChange('isBoss', $this->_isBoss, $data);
+            $this->_logChange('isBoss');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1044,7 +1044,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_bossAssistantId != $data) {
-            $this->_logChange('bossAssistantId', $this->_bossAssistantId, $data);
+            $this->_logChange('bossAssistantId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1078,7 +1078,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_exceptionBoosAssistantRegExp != $data) {
-            $this->_logChange('exceptionBoosAssistantRegExp', $this->_exceptionBoosAssistantRegExp, $data);
+            $this->_logChange('exceptionBoosAssistantRegExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1115,7 +1115,7 @@ class Users extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_username != $data) {
-            $this->_logChange('username', $this->_username, $data);
+            $this->_logChange('username');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1149,7 +1149,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_active != $data) {
-            $this->_logChange('active', $this->_active, $data);
+            $this->_logChange('active');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1183,7 +1183,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_maxCalls != $data) {
-            $this->_logChange('maxCalls', $this->_maxCalls, $data);
+            $this->_logChange('maxCalls');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1217,7 +1217,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_callWaiting != $data) {
-            $this->_logChange('callWaiting', $this->_callWaiting, $data);
+            $this->_logChange('callWaiting');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1251,7 +1251,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_voicemailEnabled != $data) {
-            $this->_logChange('voicemailEnabled', $this->_voicemailEnabled, $data);
+            $this->_logChange('voicemailEnabled');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1285,7 +1285,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_voicemailSendMail != $data) {
-            $this->_logChange('voicemailSendMail', $this->_voicemailSendMail, $data);
+            $this->_logChange('voicemailSendMail');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1319,7 +1319,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_voicemailAttachSound != $data) {
-            $this->_logChange('voicemailAttachSound', $this->_voicemailAttachSound, $data);
+            $this->_logChange('voicemailAttachSound');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1353,7 +1353,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_tokenKey != $data) {
-            $this->_logChange('tokenKey', $this->_tokenKey, $data);
+            $this->_logChange('tokenKey');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1387,7 +1387,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_countryId != $data) {
-            $this->_logChange('countryId', $this->_countryId, $data);
+            $this->_logChange('countryId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1421,7 +1421,7 @@ class Users extends ModelAbstract
     {
 
         if ($this->_languageId != $data) {
-            $this->_logChange('languageId', $this->_languageId, $data);
+            $this->_logChange('languageId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

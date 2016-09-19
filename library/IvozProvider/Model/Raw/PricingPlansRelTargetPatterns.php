@@ -182,7 +182,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -219,7 +219,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_connectionCharge != $data) {
-            $this->_logChange('connectionCharge', $this->_connectionCharge, $data);
+            $this->_logChange('connectionCharge');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -256,7 +256,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_periodTime != $data) {
-            $this->_logChange('periodTime', $this->_periodTime, $data);
+            $this->_logChange('periodTime');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -293,7 +293,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_perPeriodCharge != $data) {
-            $this->_logChange('perPeriodCharge', $this->_perPeriodCharge, $data);
+            $this->_logChange('perPeriodCharge');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -330,7 +330,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pricingPlanId != $data) {
-            $this->_logChange('pricingPlanId', $this->_pricingPlanId, $data);
+            $this->_logChange('pricingPlanId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -367,7 +367,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_targetPatternId != $data) {
-            $this->_logChange('targetPatternId', $this->_targetPatternId, $data);
+            $this->_logChange('targetPatternId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -404,7 +404,7 @@ class PricingPlansRelTargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

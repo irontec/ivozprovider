@@ -378,7 +378,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -415,7 +415,7 @@ class IVRCommon extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -452,7 +452,7 @@ class IVRCommon extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -486,7 +486,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_blackListRegExp != $data) {
-            $this->_logChange('blackListRegExp', $this->_blackListRegExp, $data);
+            $this->_logChange('blackListRegExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -520,7 +520,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_welcomeLocutionId != $data) {
-            $this->_logChange('welcomeLocutionId', $this->_welcomeLocutionId, $data);
+            $this->_logChange('welcomeLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -554,7 +554,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_noAnswerLocutionId != $data) {
-            $this->_logChange('noAnswerLocutionId', $this->_noAnswerLocutionId, $data);
+            $this->_logChange('noAnswerLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -588,7 +588,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_errorLocutionId != $data) {
-            $this->_logChange('errorLocutionId', $this->_errorLocutionId, $data);
+            $this->_logChange('errorLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -622,7 +622,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_successLocutionId != $data) {
-            $this->_logChange('successLocutionId', $this->_successLocutionId, $data);
+            $this->_logChange('successLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -659,7 +659,7 @@ class IVRCommon extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_timeout != $data) {
-            $this->_logChange('timeout', $this->_timeout, $data);
+            $this->_logChange('timeout');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -693,7 +693,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_noAnswerTimeout != $data) {
-            $this->_logChange('noAnswerTimeout', $this->_noAnswerTimeout, $data);
+            $this->_logChange('noAnswerTimeout');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -727,7 +727,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_timeoutTargetType != $data) {
-            $this->_logChange('timeoutTargetType', $this->_timeoutTargetType, $data);
+            $this->_logChange('timeoutTargetType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -764,7 +764,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_timeoutNumberValue != $data) {
-            $this->_logChange('timeoutNumberValue', $this->_timeoutNumberValue, $data);
+            $this->_logChange('timeoutNumberValue');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -798,7 +798,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_timeoutExtensionId != $data) {
-            $this->_logChange('timeoutExtensionId', $this->_timeoutExtensionId, $data);
+            $this->_logChange('timeoutExtensionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -832,7 +832,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_timeoutVoiceMailUserId != $data) {
-            $this->_logChange('timeoutVoiceMailUserId', $this->_timeoutVoiceMailUserId, $data);
+            $this->_logChange('timeoutVoiceMailUserId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -866,7 +866,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_errorTargetType != $data) {
-            $this->_logChange('errorTargetType', $this->_errorTargetType, $data);
+            $this->_logChange('errorTargetType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -903,7 +903,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_errorNumberValue != $data) {
-            $this->_logChange('errorNumberValue', $this->_errorNumberValue, $data);
+            $this->_logChange('errorNumberValue');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -937,7 +937,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_errorExtensionId != $data) {
-            $this->_logChange('errorExtensionId', $this->_errorExtensionId, $data);
+            $this->_logChange('errorExtensionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -971,7 +971,7 @@ class IVRCommon extends ModelAbstract
     {
 
         if ($this->_errorVoiceMailUserId != $data) {
-            $this->_logChange('errorVoiceMailUserId', $this->_errorVoiceMailUserId, $data);
+            $this->_logChange('errorVoiceMailUserId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

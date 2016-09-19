@@ -179,7 +179,7 @@ class Languages extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -216,7 +216,7 @@ class Languages extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_iden != $data) {
-            $this->_logChange('iden', $this->_iden, $data);
+            $this->_logChange('iden');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -290,7 +290,7 @@ class Languages extends ModelAbstract
     {
 
         if ($this->_nameEn != $data) {
-            $this->_logChange('nameEn', $this->_nameEn, $data);
+            $this->_logChange('nameEn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -324,7 +324,7 @@ class Languages extends ModelAbstract
     {
 
         if ($this->_nameEs != $data) {
-            $this->_logChange('nameEs', $this->_nameEs, $data);
+            $this->_logChange('nameEs');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

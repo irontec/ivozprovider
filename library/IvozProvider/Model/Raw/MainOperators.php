@@ -171,7 +171,7 @@ class MainOperators extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -208,7 +208,7 @@ class MainOperators extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_username != $data) {
-            $this->_logChange('username', $this->_username, $data);
+            $this->_logChange('username');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -245,7 +245,7 @@ class MainOperators extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pass != $data) {
-            $this->_logChange('pass', $this->_pass, $data);
+            $this->_logChange('pass');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -279,7 +279,7 @@ class MainOperators extends ModelAbstract
     {
 
         if ($this->_email != $data) {
-            $this->_logChange('email', $this->_email, $data);
+            $this->_logChange('email');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -313,7 +313,7 @@ class MainOperators extends ModelAbstract
     {
 
         if ($this->_active != $data) {
-            $this->_logChange('active', $this->_active, $data);
+            $this->_logChange('active');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -350,7 +350,7 @@ class MainOperators extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_timezoneId != $data) {
-            $this->_logChange('timezoneId', $this->_timezoneId, $data);
+            $this->_logChange('timezoneId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -387,7 +387,7 @@ class MainOperators extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -424,7 +424,7 @@ class MainOperators extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_lastname != $data) {
-            $this->_logChange('lastname', $this->_lastname, $data);
+            $this->_logChange('lastname');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

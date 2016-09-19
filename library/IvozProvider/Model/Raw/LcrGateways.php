@@ -267,7 +267,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -304,7 +304,7 @@ class LcrGateways extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -341,7 +341,7 @@ class LcrGateways extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_gwName != $data) {
-            $this->_logChange('gwName', $this->_gwName, $data);
+            $this->_logChange('gwName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -375,7 +375,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_ip != $data) {
-            $this->_logChange('ip', $this->_ip, $data);
+            $this->_logChange('ip');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -409,7 +409,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_hostname != $data) {
-            $this->_logChange('hostname', $this->_hostname, $data);
+            $this->_logChange('hostname');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -443,7 +443,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_port != $data) {
-            $this->_logChange('port', $this->_port, $data);
+            $this->_logChange('port');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -477,7 +477,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_params != $data) {
-            $this->_logChange('params', $this->_params, $data);
+            $this->_logChange('params');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -511,7 +511,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_uriScheme != $data) {
-            $this->_logChange('uriScheme', $this->_uriScheme, $data);
+            $this->_logChange('uriScheme');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -545,7 +545,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_transport != $data) {
-            $this->_logChange('transport', $this->_transport, $data);
+            $this->_logChange('transport');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -579,7 +579,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_strip != $data) {
-            $this->_logChange('strip', $this->_strip, $data);
+            $this->_logChange('strip');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -613,7 +613,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_prefix != $data) {
-            $this->_logChange('prefix', $this->_prefix, $data);
+            $this->_logChange('prefix');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -647,7 +647,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_tag != $data) {
-            $this->_logChange('tag', $this->_tag, $data);
+            $this->_logChange('tag');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -681,7 +681,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_flags != $data) {
-            $this->_logChange('flags', $this->_flags, $data);
+            $this->_logChange('flags');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -715,7 +715,7 @@ class LcrGateways extends ModelAbstract
     {
 
         if ($this->_defunct != $data) {
-            $this->_logChange('defunct', $this->_defunct, $data);
+            $this->_logChange('defunct');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -752,7 +752,7 @@ class LcrGateways extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_peerServerId != $data) {
-            $this->_logChange('peerServerId', $this->_peerServerId, $data);
+            $this->_logChange('peerServerId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -789,7 +789,7 @@ class LcrGateways extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_outgoingRoutingId != $data) {
-            $this->_logChange('outgoingRoutingId', $this->_outgoingRoutingId, $data);
+            $this->_logChange('outgoingRoutingId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

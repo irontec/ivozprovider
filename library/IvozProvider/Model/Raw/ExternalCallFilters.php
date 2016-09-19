@@ -366,7 +366,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -403,7 +403,7 @@ class ExternalCallFilters extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -440,7 +440,7 @@ class ExternalCallFilters extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -474,7 +474,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_welcomeLocutionId != $data) {
-            $this->_logChange('welcomeLocutionId', $this->_welcomeLocutionId, $data);
+            $this->_logChange('welcomeLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -508,7 +508,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_holidayLocutionId != $data) {
-            $this->_logChange('holidayLocutionId', $this->_holidayLocutionId, $data);
+            $this->_logChange('holidayLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -542,7 +542,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_outOfScheduleLocutionId != $data) {
-            $this->_logChange('outOfScheduleLocutionId', $this->_outOfScheduleLocutionId, $data);
+            $this->_logChange('outOfScheduleLocutionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -576,7 +576,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_holidayTargetType != $data) {
-            $this->_logChange('holidayTargetType', $this->_holidayTargetType, $data);
+            $this->_logChange('holidayTargetType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -613,7 +613,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_holidayNumberValue != $data) {
-            $this->_logChange('holidayNumberValue', $this->_holidayNumberValue, $data);
+            $this->_logChange('holidayNumberValue');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -647,7 +647,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_holidayExtensionId != $data) {
-            $this->_logChange('holidayExtensionId', $this->_holidayExtensionId, $data);
+            $this->_logChange('holidayExtensionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -681,7 +681,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_holidayVoiceMailUserId != $data) {
-            $this->_logChange('holidayVoiceMailUserId', $this->_holidayVoiceMailUserId, $data);
+            $this->_logChange('holidayVoiceMailUserId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -715,7 +715,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_outOfScheduleTargetType != $data) {
-            $this->_logChange('outOfScheduleTargetType', $this->_outOfScheduleTargetType, $data);
+            $this->_logChange('outOfScheduleTargetType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -752,7 +752,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_outOfScheduleNumberValue != $data) {
-            $this->_logChange('outOfScheduleNumberValue', $this->_outOfScheduleNumberValue, $data);
+            $this->_logChange('outOfScheduleNumberValue');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -786,7 +786,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_outOfScheduleExtensionId != $data) {
-            $this->_logChange('outOfScheduleExtensionId', $this->_outOfScheduleExtensionId, $data);
+            $this->_logChange('outOfScheduleExtensionId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -820,7 +820,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_outOfScheduleVoiceMailUserId != $data) {
-            $this->_logChange('outOfScheduleVoiceMailUserId', $this->_outOfScheduleVoiceMailUserId, $data);
+            $this->_logChange('outOfScheduleVoiceMailUserId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -854,7 +854,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_blackListRegExp != $data) {
-            $this->_logChange('blackListRegExp', $this->_blackListRegExp, $data);
+            $this->_logChange('blackListRegExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -888,7 +888,7 @@ class ExternalCallFilters extends ModelAbstract
     {
 
         if ($this->_whiteListRegExp != $data) {
-            $this->_logChange('whiteListRegExp', $this->_whiteListRegExp, $data);
+            $this->_logChange('whiteListRegExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

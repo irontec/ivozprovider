@@ -139,7 +139,7 @@ class TerminalManufacturers extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -176,7 +176,7 @@ class TerminalManufacturers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_iden != $data) {
-            $this->_logChange('iden', $this->_iden, $data);
+            $this->_logChange('iden');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -210,7 +210,7 @@ class TerminalManufacturers extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -244,7 +244,7 @@ class TerminalManufacturers extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description', $this->_description, $data);
+            $this->_logChange('description');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

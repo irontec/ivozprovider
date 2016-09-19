@@ -183,7 +183,7 @@ class PricingPlansRelCompanies extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -220,7 +220,7 @@ class PricingPlansRelCompanies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pricingPlanId != $data) {
-            $this->_logChange('pricingPlanId', $this->_pricingPlanId, $data);
+            $this->_logChange('pricingPlanId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -257,7 +257,7 @@ class PricingPlansRelCompanies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -310,7 +310,7 @@ class PricingPlansRelCompanies extends ModelAbstract
         }
 
         if ($this->_validFrom != $data) {
-            $this->_logChange('validFrom', $this->_validFrom, $data);
+            $this->_logChange('validFrom');
         }
 
         $this->_validFrom = $data;
@@ -366,7 +366,7 @@ class PricingPlansRelCompanies extends ModelAbstract
         }
 
         if ($this->_validTo != $data) {
-            $this->_logChange('validTo', $this->_validTo, $data);
+            $this->_logChange('validTo');
         }
 
         $this->_validTo = $data;
@@ -403,7 +403,7 @@ class PricingPlansRelCompanies extends ModelAbstract
     {
 
         if ($this->_metric != $data) {
-            $this->_logChange('metric', $this->_metric, $data);
+            $this->_logChange('metric');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -440,7 +440,7 @@ class PricingPlansRelCompanies extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -34,14 +34,12 @@ production:
     timeoutTime: 
       title: _('Timeout time')
       type: number
-      required: true
-      source: 
+      source:
         control: Spinner
     priority: 
       title: _('Priority')
       type: number
-      required: true
-      source: 
+      source:
         control: Spinner
 staging: 
   _extends: production

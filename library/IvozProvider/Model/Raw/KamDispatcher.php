@@ -174,7 +174,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -208,7 +208,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_setid != $data) {
-            $this->_logChange('setid', $this->_setid, $data);
+            $this->_logChange('setid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -242,7 +242,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_destination != $data) {
-            $this->_logChange('destination', $this->_destination, $data);
+            $this->_logChange('destination');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -276,7 +276,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_flags != $data) {
-            $this->_logChange('flags', $this->_flags, $data);
+            $this->_logChange('flags');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -310,7 +310,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_priority != $data) {
-            $this->_logChange('priority', $this->_priority, $data);
+            $this->_logChange('priority');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -344,7 +344,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_attrs != $data) {
-            $this->_logChange('attrs', $this->_attrs, $data);
+            $this->_logChange('attrs');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -378,7 +378,7 @@ class KamDispatcher extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description', $this->_description, $data);
+            $this->_logChange('description');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -415,7 +415,7 @@ class KamDispatcher extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_applicationServerId != $data) {
-            $this->_logChange('applicationServerId', $this->_applicationServerId, $data);
+            $this->_logChange('applicationServerId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

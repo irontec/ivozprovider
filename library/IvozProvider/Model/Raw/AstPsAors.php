@@ -204,7 +204,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -241,7 +241,7 @@ class AstPsAors extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_sorceryId != $data) {
-            $this->_logChange('sorceryId', $this->_sorceryId, $data);
+            $this->_logChange('sorceryId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -275,7 +275,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_defaultExpiration != $data) {
-            $this->_logChange('defaultExpiration', $this->_defaultExpiration, $data);
+            $this->_logChange('defaultExpiration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -309,7 +309,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_maxContacts != $data) {
-            $this->_logChange('maxContacts', $this->_maxContacts, $data);
+            $this->_logChange('maxContacts');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -343,7 +343,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_minimumExpiration != $data) {
-            $this->_logChange('minimumExpiration', $this->_minimumExpiration, $data);
+            $this->_logChange('minimumExpiration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -377,7 +377,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_removeExisting != $data) {
-            $this->_logChange('removeExisting', $this->_removeExisting, $data);
+            $this->_logChange('removeExisting');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -414,7 +414,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_authenticateQualify != $data) {
-            $this->_logChange('authenticateQualify', $this->_authenticateQualify, $data);
+            $this->_logChange('authenticateQualify');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -451,7 +451,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_maximumExpiration != $data) {
-            $this->_logChange('maximumExpiration', $this->_maximumExpiration, $data);
+            $this->_logChange('maximumExpiration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -485,7 +485,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_supportPath != $data) {
-            $this->_logChange('supportPath', $this->_supportPath, $data);
+            $this->_logChange('supportPath');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -522,7 +522,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_contact != $data) {
-            $this->_logChange('contact', $this->_contact, $data);
+            $this->_logChange('contact');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -556,7 +556,7 @@ class AstPsAors extends ModelAbstract
     {
 
         if ($this->_qualifyFrequency != $data) {
-            $this->_logChange('qualifyFrequency', $this->_qualifyFrequency, $data);
+            $this->_logChange('qualifyFrequency');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

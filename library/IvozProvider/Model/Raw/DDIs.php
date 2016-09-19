@@ -394,7 +394,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -431,7 +431,7 @@ class DDIs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -468,7 +468,7 @@ class DDIs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -505,7 +505,7 @@ class DDIs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_DDI != $data) {
-            $this->_logChange('DDI', $this->_DDI, $data);
+            $this->_logChange('DDI');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -539,7 +539,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_DDIE164 != $data) {
-            $this->_logChange('DDIE164', $this->_DDIE164, $data);
+            $this->_logChange('DDIE164');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -573,7 +573,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_externalCallFilterId != $data) {
-            $this->_logChange('externalCallFilterId', $this->_externalCallFilterId, $data);
+            $this->_logChange('externalCallFilterId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -607,7 +607,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_recordCalls != $data) {
-            $this->_logChange('recordCalls', $this->_recordCalls, $data);
+            $this->_logChange('recordCalls');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -647,7 +647,7 @@ class DDIs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_routeType != $data) {
-            $this->_logChange('routeType', $this->_routeType, $data);
+            $this->_logChange('routeType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -684,7 +684,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_userId != $data) {
-            $this->_logChange('userId', $this->_userId, $data);
+            $this->_logChange('userId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -718,7 +718,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_IVRCommonId != $data) {
-            $this->_logChange('IVRCommonId', $this->_IVRCommonId, $data);
+            $this->_logChange('IVRCommonId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -752,7 +752,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_IVRCustomId != $data) {
-            $this->_logChange('IVRCustomId', $this->_IVRCustomId, $data);
+            $this->_logChange('IVRCustomId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -786,7 +786,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_huntGroupId != $data) {
-            $this->_logChange('huntGroupId', $this->_huntGroupId, $data);
+            $this->_logChange('huntGroupId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -820,7 +820,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_faxId != $data) {
-            $this->_logChange('faxId', $this->_faxId, $data);
+            $this->_logChange('faxId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -854,7 +854,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_conferenceRoomId != $data) {
-            $this->_logChange('conferenceRoomId', $this->_conferenceRoomId, $data);
+            $this->_logChange('conferenceRoomId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -888,7 +888,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
+            $this->_logChange('peeringContractId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -922,7 +922,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_countryId != $data) {
-            $this->_logChange('countryId', $this->_countryId, $data);
+            $this->_logChange('countryId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -956,7 +956,7 @@ class DDIs extends ModelAbstract
     {
 
         if ($this->_billInboundCalls != $data) {
-            $this->_logChange('billInboundCalls', $this->_billInboundCalls, $data);
+            $this->_logChange('billInboundCalls');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

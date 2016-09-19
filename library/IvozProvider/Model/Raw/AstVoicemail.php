@@ -424,7 +424,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_uniqueid != $data) {
-            $this->_logChange('uniqueid', $this->_uniqueid, $data);
+            $this->_logChange('uniqueid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -461,7 +461,7 @@ class AstVoicemail extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_context != $data) {
-            $this->_logChange('context', $this->_context, $data);
+            $this->_logChange('context');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -498,7 +498,7 @@ class AstVoicemail extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_mailbox != $data) {
-            $this->_logChange('mailbox', $this->_mailbox, $data);
+            $this->_logChange('mailbox');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -535,7 +535,7 @@ class AstVoicemail extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_password != $data) {
-            $this->_logChange('password', $this->_password, $data);
+            $this->_logChange('password');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -569,7 +569,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_fullname != $data) {
-            $this->_logChange('fullname', $this->_fullname, $data);
+            $this->_logChange('fullname');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -603,7 +603,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_alias != $data) {
-            $this->_logChange('alias', $this->_alias, $data);
+            $this->_logChange('alias');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -637,7 +637,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_email != $data) {
-            $this->_logChange('email', $this->_email, $data);
+            $this->_logChange('email');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -671,7 +671,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_pager != $data) {
-            $this->_logChange('pager', $this->_pager, $data);
+            $this->_logChange('pager');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -705,7 +705,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_attach != $data) {
-            $this->_logChange('attach', $this->_attach, $data);
+            $this->_logChange('attach');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -742,7 +742,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_attachfmt != $data) {
-            $this->_logChange('attachfmt', $this->_attachfmt, $data);
+            $this->_logChange('attachfmt');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -776,7 +776,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_serveremail != $data) {
-            $this->_logChange('serveremail', $this->_serveremail, $data);
+            $this->_logChange('serveremail');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -810,7 +810,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_language != $data) {
-            $this->_logChange('language', $this->_language, $data);
+            $this->_logChange('language');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -844,7 +844,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_tz != $data) {
-            $this->_logChange('tz', $this->_tz, $data);
+            $this->_logChange('tz');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -878,7 +878,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_deleteastVoicemail != $data) {
-            $this->_logChange('deleteastVoicemail', $this->_deleteastVoicemail, $data);
+            $this->_logChange('deleteastVoicemail');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -915,7 +915,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_saycid != $data) {
-            $this->_logChange('saycid', $this->_saycid, $data);
+            $this->_logChange('saycid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -952,7 +952,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_sendastVoicemail != $data) {
-            $this->_logChange('sendastVoicemail', $this->_sendastVoicemail, $data);
+            $this->_logChange('sendastVoicemail');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -989,7 +989,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_review != $data) {
-            $this->_logChange('review', $this->_review, $data);
+            $this->_logChange('review');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1026,7 +1026,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_tempgreetwarn != $data) {
-            $this->_logChange('tempgreetwarn', $this->_tempgreetwarn, $data);
+            $this->_logChange('tempgreetwarn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1063,7 +1063,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_operator != $data) {
-            $this->_logChange('operator', $this->_operator, $data);
+            $this->_logChange('operator');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1100,7 +1100,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_envelope != $data) {
-            $this->_logChange('envelope', $this->_envelope, $data);
+            $this->_logChange('envelope');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1137,7 +1137,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_sayduration != $data) {
-            $this->_logChange('sayduration', $this->_sayduration, $data);
+            $this->_logChange('sayduration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1171,7 +1171,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_forcename != $data) {
-            $this->_logChange('forcename', $this->_forcename, $data);
+            $this->_logChange('forcename');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1208,7 +1208,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_forcegreetings != $data) {
-            $this->_logChange('forcegreetings', $this->_forcegreetings, $data);
+            $this->_logChange('forcegreetings');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1245,7 +1245,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_callback != $data) {
-            $this->_logChange('callback', $this->_callback, $data);
+            $this->_logChange('callback');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1279,7 +1279,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_dialout != $data) {
-            $this->_logChange('dialout', $this->_dialout, $data);
+            $this->_logChange('dialout');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1313,7 +1313,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_exitcontext != $data) {
-            $this->_logChange('exitcontext', $this->_exitcontext, $data);
+            $this->_logChange('exitcontext');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1347,7 +1347,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_maxmsg != $data) {
-            $this->_logChange('maxmsg', $this->_maxmsg, $data);
+            $this->_logChange('maxmsg');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1381,7 +1381,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_volgain != $data) {
-            $this->_logChange('volgain', $this->_volgain, $data);
+            $this->_logChange('volgain');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1415,7 +1415,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_imapuser != $data) {
-            $this->_logChange('imapuser', $this->_imapuser, $data);
+            $this->_logChange('imapuser');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1449,7 +1449,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_imappassword != $data) {
-            $this->_logChange('imappassword', $this->_imappassword, $data);
+            $this->_logChange('imappassword');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1483,7 +1483,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_imapserver != $data) {
-            $this->_logChange('imapserver', $this->_imapserver, $data);
+            $this->_logChange('imapserver');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1517,7 +1517,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_imapport != $data) {
-            $this->_logChange('imapport', $this->_imapport, $data);
+            $this->_logChange('imapport');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1551,7 +1551,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_imapflags != $data) {
-            $this->_logChange('imapflags', $this->_imapflags, $data);
+            $this->_logChange('imapflags');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1604,7 +1604,7 @@ class AstVoicemail extends ModelAbstract
         }
 
         if ($this->_stamp != $data) {
-            $this->_logChange('stamp', $this->_stamp, $data);
+            $this->_logChange('stamp');
         }
 
         $this->_stamp = $data;
@@ -1641,7 +1641,7 @@ class AstVoicemail extends ModelAbstract
     {
 
         if ($this->_userId != $data) {
-            $this->_logChange('userId', $this->_userId, $data);
+            $this->_logChange('userId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

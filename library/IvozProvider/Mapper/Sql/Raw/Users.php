@@ -303,10 +303,6 @@ class Users extends MapperAbstract
         }
 
         $this->_etagChange();
-        // Save Changelog if requested
-        $model->logDelete();
-        $model->saveChangeLog();
-
         return $result;
 
     }
@@ -730,10 +726,6 @@ class Users extends MapperAbstract
 
         if ($model->mustUpdateEtag()) {
             $this->_etagChange();
-        }
-
-        if ($model->hasChange()) {
-            $model->saveChangeLog();
         }
 
         if ($success === true) {

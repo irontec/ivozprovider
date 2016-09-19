@@ -166,7 +166,7 @@ class FixedCostsRelInvoices extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -203,7 +203,7 @@ class FixedCostsRelInvoices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -240,7 +240,7 @@ class FixedCostsRelInvoices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_fixedCostId != $data) {
-            $this->_logChange('fixedCostId', $this->_fixedCostId, $data);
+            $this->_logChange('fixedCostId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -277,7 +277,7 @@ class FixedCostsRelInvoices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_invoiceId != $data) {
-            $this->_logChange('invoiceId', $this->_invoiceId, $data);
+            $this->_logChange('invoiceId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -311,7 +311,7 @@ class FixedCostsRelInvoices extends ModelAbstract
     {
 
         if ($this->_quantity != $data) {
-            $this->_logChange('quantity', $this->_quantity, $data);
+            $this->_logChange('quantity');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -139,7 +139,7 @@ class RoutingPatternGroupsRelPatterns extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -176,7 +176,7 @@ class RoutingPatternGroupsRelPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_routingPatternId != $data) {
-            $this->_logChange('routingPatternId', $this->_routingPatternId, $data);
+            $this->_logChange('routingPatternId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -213,7 +213,7 @@ class RoutingPatternGroupsRelPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_routingPatternGroupId != $data) {
-            $this->_logChange('routingPatternGroupId', $this->_routingPatternGroupId, $data);
+            $this->_logChange('routingPatternGroupId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

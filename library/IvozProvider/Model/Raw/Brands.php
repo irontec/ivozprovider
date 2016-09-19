@@ -629,7 +629,7 @@ class Brands extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -666,7 +666,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -703,7 +703,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_nif != $data) {
-            $this->_logChange('nif', $this->_nif, $data);
+            $this->_logChange('nif');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -737,7 +737,7 @@ class Brands extends ModelAbstract
     {
 
         if ($this->_domainTrunks != $data) {
-            $this->_logChange('domainTrunks', $this->_domainTrunks, $data);
+            $this->_logChange('domainTrunks');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -774,7 +774,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_defaultTimezoneId != $data) {
-            $this->_logChange('defaultTimezoneId', $this->_defaultTimezoneId, $data);
+            $this->_logChange('defaultTimezoneId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -808,7 +808,7 @@ class Brands extends ModelAbstract
     {
 
         if ($this->_logoFileSize != $data) {
-            $this->_logChange('logoFileSize', $this->_logoFileSize, $data);
+            $this->_logChange('logoFileSize');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -842,7 +842,7 @@ class Brands extends ModelAbstract
     {
 
         if ($this->_logoMimeType != $data) {
-            $this->_logChange('logoMimeType', $this->_logoMimeType, $data);
+            $this->_logChange('logoMimeType');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -876,7 +876,7 @@ class Brands extends ModelAbstract
     {
 
         if ($this->_logoBaseName != $data) {
-            $this->_logChange('logoBaseName', $this->_logoBaseName, $data);
+            $this->_logChange('logoBaseName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -913,7 +913,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_postalAddress != $data) {
-            $this->_logChange('postalAddress', $this->_postalAddress, $data);
+            $this->_logChange('postalAddress');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -950,7 +950,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_postalCode != $data) {
-            $this->_logChange('postalCode', $this->_postalCode, $data);
+            $this->_logChange('postalCode');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -987,7 +987,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_town != $data) {
-            $this->_logChange('town', $this->_town, $data);
+            $this->_logChange('town');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1024,7 +1024,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_province != $data) {
-            $this->_logChange('province', $this->_province, $data);
+            $this->_logChange('province');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1061,7 +1061,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_country != $data) {
-            $this->_logChange('country', $this->_country, $data);
+            $this->_logChange('country');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1098,7 +1098,7 @@ class Brands extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_registryData != $data) {
-            $this->_logChange('registryData', $this->_registryData, $data);
+            $this->_logChange('registryData');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1132,7 +1132,7 @@ class Brands extends ModelAbstract
     {
 
         if ($this->_languageId != $data) {
-            $this->_logChange('languageId', $this->_languageId, $data);
+            $this->_logChange('languageId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

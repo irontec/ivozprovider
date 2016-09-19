@@ -166,7 +166,7 @@ class ChangeHistory extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -203,7 +203,7 @@ class ChangeHistory extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_user != $data) {
-            $this->_logChange('user', $this->_user, $data);
+            $this->_logChange('user');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -256,7 +256,7 @@ class ChangeHistory extends ModelAbstract
         }
 
         if ($this->_date != $data) {
-            $this->_logChange('date', $this->_date, $data);
+            $this->_logChange('date');
         }
 
         $this->_date = $data;
@@ -296,7 +296,7 @@ class ChangeHistory extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_action != $data) {
-            $this->_logChange('action', $this->_action, $data);
+            $this->_logChange('action');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -333,7 +333,7 @@ class ChangeHistory extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_table != $data) {
-            $this->_logChange('table', $this->_table, $data);
+            $this->_logChange('table');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -370,7 +370,7 @@ class ChangeHistory extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_objid != $data) {
-            $this->_logChange('objid', $this->_objid, $data);
+            $this->_logChange('objid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -407,7 +407,7 @@ class ChangeHistory extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_field != $data) {
-            $this->_logChange('field', $this->_field, $data);
+            $this->_logChange('field');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -441,7 +441,7 @@ class ChangeHistory extends ModelAbstract
     {
 
         if ($this->_oldValue != $data) {
-            $this->_logChange('oldValue', $this->_oldValue, $data);
+            $this->_logChange('oldValue');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -475,7 +475,7 @@ class ChangeHistory extends ModelAbstract
     {
 
         if ($this->_newValue != $data) {
-            $this->_logChange('newValue', $this->_newValue, $data);
+            $this->_logChange('newValue');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -196,7 +196,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -233,7 +233,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -270,7 +270,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -304,7 +304,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     {
 
         if ($this->_callerIn != $data) {
-            $this->_logChange('callerIn', $this->_callerIn, $data);
+            $this->_logChange('callerIn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -338,7 +338,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     {
 
         if ($this->_calleeIn != $data) {
-            $this->_logChange('calleeIn', $this->_calleeIn, $data);
+            $this->_logChange('calleeIn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -372,7 +372,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     {
 
         if ($this->_callerOut != $data) {
-            $this->_logChange('callerOut', $this->_callerOut, $data);
+            $this->_logChange('callerOut');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -406,7 +406,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     {
 
         if ($this->_calleeOut != $data) {
-            $this->_logChange('calleeOut', $this->_calleeOut, $data);
+            $this->_logChange('calleeOut');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -440,7 +440,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description', $this->_description, $data);
+            $this->_logChange('description');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

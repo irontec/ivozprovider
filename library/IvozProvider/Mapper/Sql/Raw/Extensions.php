@@ -286,10 +286,6 @@ class Extensions extends MapperAbstract
         }
 
         $this->_etagChange();
-        // Save Changelog if requested
-        $model->logDelete();
-        $model->saveChangeLog();
-
         return $result;
 
     }
@@ -643,10 +639,6 @@ class Extensions extends MapperAbstract
 
         if ($model->mustUpdateEtag()) {
             $this->_etagChange();
-        }
-
-        if ($model->hasChange()) {
-            $model->saveChangeLog();
         }
 
         if ($success === true) {

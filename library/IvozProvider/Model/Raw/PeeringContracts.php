@@ -232,7 +232,7 @@ class PeeringContracts extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -269,7 +269,7 @@ class PeeringContracts extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -303,7 +303,7 @@ class PeeringContracts extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description', $this->_description, $data);
+            $this->_logChange('description');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -340,7 +340,7 @@ class PeeringContracts extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -374,7 +374,7 @@ class PeeringContracts extends ModelAbstract
     {
 
         if ($this->_transformationRulesetGroupsTrunksId != $data) {
-            $this->_logChange('transformationRulesetGroupsTrunksId', $this->_transformationRulesetGroupsTrunksId, $data);
+            $this->_logChange('transformationRulesetGroupsTrunksId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -408,7 +408,7 @@ class PeeringContracts extends ModelAbstract
     {
 
         if ($this->_externallyRated != $data) {
-            $this->_logChange('externallyRated', $this->_externallyRated, $data);
+            $this->_logChange('externallyRated');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

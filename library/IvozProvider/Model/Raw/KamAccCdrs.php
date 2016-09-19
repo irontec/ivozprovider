@@ -427,7 +427,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -461,7 +461,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_proxy != $data) {
-            $this->_logChange('proxy', $this->_proxy, $data);
+            $this->_logChange('proxy');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -514,7 +514,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_startTimeUtc != $data) {
-            $this->_logChange('startTimeUtc', $this->_startTimeUtc, $data);
+            $this->_logChange('startTimeUtc');
         }
 
         $this->_startTimeUtc = $data;
@@ -570,7 +570,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_endTimeUtc != $data) {
-            $this->_logChange('endTimeUtc', $this->_endTimeUtc, $data);
+            $this->_logChange('endTimeUtc');
         }
 
         $this->_endTimeUtc = $data;
@@ -626,7 +626,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_startTime != $data) {
-            $this->_logChange('startTime', $this->_startTime, $data);
+            $this->_logChange('startTime');
         }
 
         $this->_startTime = $data;
@@ -682,7 +682,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_endTime != $data) {
-            $this->_logChange('endTime', $this->_endTime, $data);
+            $this->_logChange('endTime');
         }
 
         $this->_endTime = $data;
@@ -719,7 +719,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_duration != $data) {
-            $this->_logChange('duration', $this->_duration, $data);
+            $this->_logChange('duration');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -753,7 +753,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_caller != $data) {
-            $this->_logChange('caller', $this->_caller, $data);
+            $this->_logChange('caller');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -787,7 +787,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_callee != $data) {
-            $this->_logChange('callee', $this->_callee, $data);
+            $this->_logChange('callee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -821,7 +821,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_referee != $data) {
-            $this->_logChange('referee', $this->_referee, $data);
+            $this->_logChange('referee');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -855,7 +855,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_referrer != $data) {
-            $this->_logChange('referrer', $this->_referrer, $data);
+            $this->_logChange('referrer');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -889,7 +889,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -923,7 +923,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -957,7 +957,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_asIden != $data) {
-            $this->_logChange('asIden', $this->_asIden, $data);
+            $this->_logChange('asIden');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -991,7 +991,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_asAddress != $data) {
-            $this->_logChange('asAddress', $this->_asAddress, $data);
+            $this->_logChange('asAddress');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1025,7 +1025,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_callid != $data) {
-            $this->_logChange('callid', $this->_callid, $data);
+            $this->_logChange('callid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1059,7 +1059,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_callidHash != $data) {
-            $this->_logChange('callidHash', $this->_callidHash, $data);
+            $this->_logChange('callidHash');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1093,7 +1093,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_xcallid != $data) {
-            $this->_logChange('xcallid', $this->_xcallid, $data);
+            $this->_logChange('xcallid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1127,7 +1127,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_parsed != $data) {
-            $this->_logChange('parsed', $this->_parsed, $data);
+            $this->_logChange('parsed');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1164,7 +1164,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_diversion != $data) {
-            $this->_logChange('diversion', $this->_diversion, $data);
+            $this->_logChange('diversion');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1198,7 +1198,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_peeringContractId != $data) {
-            $this->_logChange('peeringContractId', $this->_peeringContractId, $data);
+            $this->_logChange('peeringContractId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1232,7 +1232,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_externallyRated != $data) {
-            $this->_logChange('externallyRated', $this->_externallyRated, $data);
+            $this->_logChange('externallyRated');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1266,7 +1266,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_metered != $data) {
-            $this->_logChange('metered', $this->_metered, $data);
+            $this->_logChange('metered');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1319,7 +1319,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_meteringDate != $data) {
-            $this->_logChange('meteringDate', $this->_meteringDate, $data);
+            $this->_logChange('meteringDate');
         }
 
         $this->_meteringDate = $data;
@@ -1356,7 +1356,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_pricingPlanId != $data) {
-            $this->_logChange('pricingPlanId', $this->_pricingPlanId, $data);
+            $this->_logChange('pricingPlanId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1390,7 +1390,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_pricingPlanName != $data) {
-            $this->_logChange('pricingPlanName', $this->_pricingPlanName, $data);
+            $this->_logChange('pricingPlanName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1424,7 +1424,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_targetPatternId != $data) {
-            $this->_logChange('targetPatternId', $this->_targetPatternId, $data);
+            $this->_logChange('targetPatternId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1458,7 +1458,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_targetPatternName != $data) {
-            $this->_logChange('targetPatternName', $this->_targetPatternName, $data);
+            $this->_logChange('targetPatternName');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1492,7 +1492,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_price != $data) {
-            $this->_logChange('price', $this->_price, $data);
+            $this->_logChange('price');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1526,7 +1526,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_pricingPlanDetails != $data) {
-            $this->_logChange('pricingPlanDetails', $this->_pricingPlanDetails, $data);
+            $this->_logChange('pricingPlanDetails');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1560,7 +1560,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_invoiceId != $data) {
-            $this->_logChange('invoiceId', $this->_invoiceId, $data);
+            $this->_logChange('invoiceId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1594,7 +1594,7 @@ class KamAccCdrs extends ModelAbstract
     {
 
         if ($this->_direction != $data) {
-            $this->_logChange('direction', $this->_direction, $data);
+            $this->_logChange('direction');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -1650,7 +1650,7 @@ class KamAccCdrs extends ModelAbstract
         }
 
         if ($this->_reMeteringDate != $data) {
-            $this->_logChange('reMeteringDate', $this->_reMeteringDate, $data);
+            $this->_logChange('reMeteringDate');
         }
 
         $this->_reMeteringDate = $data;

@@ -209,7 +209,7 @@ class TargetPatterns extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -289,7 +289,7 @@ class TargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_nameEn != $data) {
-            $this->_logChange('nameEn', $this->_nameEn, $data);
+            $this->_logChange('nameEn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -326,7 +326,7 @@ class TargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_nameEs != $data) {
-            $this->_logChange('nameEs', $this->_nameEs, $data);
+            $this->_logChange('nameEs');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -406,7 +406,7 @@ class TargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_descriptionEn != $data) {
-            $this->_logChange('descriptionEn', $this->_descriptionEn, $data);
+            $this->_logChange('descriptionEn');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -443,7 +443,7 @@ class TargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_descriptionEs != $data) {
-            $this->_logChange('descriptionEs', $this->_descriptionEs, $data);
+            $this->_logChange('descriptionEs');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class TargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_regExp != $data) {
-            $this->_logChange('regExp', $this->_regExp, $data);
+            $this->_logChange('regExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -517,7 +517,7 @@ class TargetPatterns extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_brandId != $data) {
-            $this->_logChange('brandId', $this->_brandId, $data);
+            $this->_logChange('brandId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

@@ -178,7 +178,7 @@ class ConferenceRooms extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -215,7 +215,7 @@ class ConferenceRooms extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+            $this->_logChange('companyId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -252,7 +252,7 @@ class ConferenceRooms extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -286,7 +286,7 @@ class ConferenceRooms extends ModelAbstract
     {
 
         if ($this->_pinProtected != $data) {
-            $this->_logChange('pinProtected', $this->_pinProtected, $data);
+            $this->_logChange('pinProtected');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -320,7 +320,7 @@ class ConferenceRooms extends ModelAbstract
     {
 
         if ($this->_pinCode != $data) {
-            $this->_logChange('pinCode', $this->_pinCode, $data);
+            $this->_logChange('pinCode');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -354,7 +354,7 @@ class ConferenceRooms extends ModelAbstract
     {
 
         if ($this->_maxMembers != $data) {
-            $this->_logChange('maxMembers', $this->_maxMembers, $data);
+            $this->_logChange('maxMembers');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

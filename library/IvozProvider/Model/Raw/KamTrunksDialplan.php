@@ -184,7 +184,7 @@ class KamTrunksDialplan extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -221,7 +221,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_dpid != $data) {
-            $this->_logChange('dpid', $this->_dpid, $data);
+            $this->_logChange('dpid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -258,7 +258,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_pr != $data) {
-            $this->_logChange('pr', $this->_pr, $data);
+            $this->_logChange('pr');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -295,7 +295,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_matchOp != $data) {
-            $this->_logChange('matchOp', $this->_matchOp, $data);
+            $this->_logChange('matchOp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -332,7 +332,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_matchExp != $data) {
-            $this->_logChange('matchExp', $this->_matchExp, $data);
+            $this->_logChange('matchExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -369,7 +369,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_matchLen != $data) {
-            $this->_logChange('matchLen', $this->_matchLen, $data);
+            $this->_logChange('matchLen');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -406,7 +406,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_substExp != $data) {
-            $this->_logChange('substExp', $this->_substExp, $data);
+            $this->_logChange('substExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -443,7 +443,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_replExp != $data) {
-            $this->_logChange('replExp', $this->_replExp, $data);
+            $this->_logChange('replExp');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_attrs != $data) {
-            $this->_logChange('attrs', $this->_attrs, $data);
+            $this->_logChange('attrs');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -517,7 +517,7 @@ class KamTrunksDialplan extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_transformationRulesetGroupsTrunksId != $data) {
-            $this->_logChange('transformationRulesetGroupsTrunksId', $this->_transformationRulesetGroupsTrunksId, $data);
+            $this->_logChange('transformationRulesetGroupsTrunksId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

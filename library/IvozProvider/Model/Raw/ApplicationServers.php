@@ -141,7 +141,7 @@ class ApplicationServers extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -178,7 +178,7 @@ class ApplicationServers extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_ip != $data) {
-            $this->_logChange('ip', $this->_ip, $data);
+            $this->_logChange('ip');
         }
 
         $this->_ip = $data;
@@ -204,7 +204,7 @@ class ApplicationServers extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
+            $this->_logChange('name');
         }
 
         if ($data instanceof \Zend_Db_Expr) {

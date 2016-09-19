@@ -284,7 +284,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id', $this->_id, $data);
+            $this->_logChange('id');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -321,7 +321,7 @@ class AstPsEndpoints extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_sorceryId != $data) {
-            $this->_logChange('sorceryId', $this->_sorceryId, $data);
+            $this->_logChange('sorceryId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -355,7 +355,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_terminalId != $data) {
-            $this->_logChange('terminalId', $this->_terminalId, $data);
+            $this->_logChange('terminalId');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -389,7 +389,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_aors != $data) {
-            $this->_logChange('aors', $this->_aors, $data);
+            $this->_logChange('aors');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -423,7 +423,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_callerid != $data) {
-            $this->_logChange('callerid', $this->_callerid, $data);
+            $this->_logChange('callerid');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -457,7 +457,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_context != $data) {
-            $this->_logChange('context', $this->_context, $data);
+            $this->_logChange('context');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -491,7 +491,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_disallow != $data) {
-            $this->_logChange('disallow', $this->_disallow, $data);
+            $this->_logChange('disallow');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -525,7 +525,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_allow != $data) {
-            $this->_logChange('allow', $this->_allow, $data);
+            $this->_logChange('allow');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -559,7 +559,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_directMedia != $data) {
-            $this->_logChange('directMedia', $this->_directMedia, $data);
+            $this->_logChange('directMedia');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -596,7 +596,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_directMediaMethod != $data) {
-            $this->_logChange('directMediaMethod', $this->_directMediaMethod, $data);
+            $this->_logChange('directMediaMethod');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -633,7 +633,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_mailboxes != $data) {
-            $this->_logChange('mailboxes', $this->_mailboxes, $data);
+            $this->_logChange('mailboxes');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -667,7 +667,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_pickupGroup != $data) {
-            $this->_logChange('pickupGroup', $this->_pickupGroup, $data);
+            $this->_logChange('pickupGroup');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -701,7 +701,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_sendDiversion != $data) {
-            $this->_logChange('sendDiversion', $this->_sendDiversion, $data);
+            $this->_logChange('sendDiversion');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -738,7 +738,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_sendPai != $data) {
-            $this->_logChange('sendPai', $this->_sendPai, $data);
+            $this->_logChange('sendPai');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -775,7 +775,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_subscribecontext != $data) {
-            $this->_logChange('subscribecontext', $this->_subscribecontext, $data);
+            $this->_logChange('subscribecontext');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -809,7 +809,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_100rel != $data) {
-            $this->_logChange('100rel', $this->_100rel, $data);
+            $this->_logChange('100rel');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -846,7 +846,7 @@ class AstPsEndpoints extends ModelAbstract
     {
 
         if ($this->_outboundProxy != $data) {
-            $this->_logChange('outboundProxy', $this->_outboundProxy, $data);
+            $this->_logChange('outboundProxy');
         }
 
         if ($data instanceof \Zend_Db_Expr) {
