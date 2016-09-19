@@ -71,7 +71,9 @@ class Provision_IndexController extends Zend_Controller_Action
 
                            $this->view->terminal = $model;
 
-                           $model->setLastProvisionDate(date("d-m-o h:i:s"));
+                           $now = \Zend_Date::now()->setTimezone('UTC');
+
+                           $model->setLastProvisionDate($now->toString('dd-MM-yyyy HH:mm:ss'));
                            $model->save();
                        }
                        $this->view->$variable['viewName'] = $model;
