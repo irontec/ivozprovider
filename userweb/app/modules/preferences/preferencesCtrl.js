@@ -14,17 +14,34 @@ angular
     ngProgress.start();
     $scope.loading = true;
     $scope.user = {};
-    $scope.timeZones = {};
+    $scope.timeZones = [];
     $scope.assistants = {};
     $scope.bossAssistantActive = false;
+    $scope.temp = {};
     
     Restangular.all('time-zones').getList().then(function(response) {
-        $scope.timeZones = response.data;
+        for (var i = 0; i < response.data.length; i++) {
+            $scope.timeZones[i] = {
+                'id' : response.data[i].id,
+                'tz' : response.data[i].tz
+            };
+        }
         Restangular.all('users').getList().then(function(response) {
             $scope.assistants = response.data;
             Restangular.all('users').get(1).then(function(response) {
                 $scope.user = response.data;
                 $scope.user.formType = 'preferences';
+
+                for (var i = 0; i < $scope.timeZones.length; i++) {
+                    if ($scope.timeZones[i].id == $scope.user.timezoneId) {
+                        $scope.user.timezoneSelect = $scope.timeZones[i];
+                        break;
+                    }
+                }
+
+                $scope.user.doNotDisturb = String($scope.user.doNotDisturb);
+                $scope.user.callWaiting = String($scope.user.callWaiting);
+
                 $scope.loading = false;
                 ngProgress.complete();
             });

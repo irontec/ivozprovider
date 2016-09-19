@@ -46,11 +46,11 @@
                         <select
                             name="timezoneId"
                             class="form-control"
-                            id="timezoneId"
-                            ng-model="user.timezoneId"
                             required="required"
-                            >
-                            <option ng-repeat="timeZone in timeZones" value="{{timeZone.id}}">{{timeZone.tz}}</option>
+                            ng-model="user.timezoneSelect"
+                            ng-options="timeZone.tz for timeZone in timeZones track by timeZone.id"
+                            ng-change="user.timezoneId = user.timezoneSelect.id"
+                        >
                         </select>
                     </div>
                 </div>
