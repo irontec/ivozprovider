@@ -17,7 +17,7 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
- 
+
 namespace IvozProvider\Model;
 class KamAccCdrs extends Raw\KamAccCdrs
 {
@@ -111,17 +111,19 @@ class KamAccCdrs extends Raw\KamAccCdrs
 
     public function setPricingPlanDetails($data)
     {
-        $pricingPlanDetails = array();
+        if (is_array($data)) {
+            $pricingPlanDetails = array();
 
-        if ($this->getPricingPlanDetails() && (strpos($this->getPricingPlanDetails(), '[') !== false)) {
-            $pricingPlanDetails = json_decode($this->getPricingPlanDetails(), true);
-        } else if ($this->getPricingPlanDetails()) {
-            $pricingPlanDetails = array(json_decode($this->getPricingPlanDetails(),true));
+            if ($this->getPricingPlanDetails() && (strpos($this->getPricingPlanDetails(), '[') !== false)) {
+                $pricingPlanDetails = \Zend_Json::decode($this->getPricingPlanDetails());
+            } else if ($this->getPricingPlanDetails()) {
+                $pricingPlanDetails = array(\Zend_Json::decode($this->getPricingPlanDetails()));
+            }
+
+            $pricingPlanDetails[count($pricingPlanDetails)] = $data;
+
+            $data = \Zend_Json::encode($pricingPlanDetails);
         }
-
-        $pricingPlanDetails[count($pricingPlanDetails)] = $data;
-
-        $data = json_encode($pricingPlanDetails);
 
         return parent::setPricingPlanDetails($data);
     }
