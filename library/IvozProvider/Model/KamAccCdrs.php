@@ -120,6 +120,8 @@ class KamAccCdrs extends Raw\KamAccCdrs
                 $pricingPlanDetails = array(\Zend_Json::decode($this->getPricingPlanDetails()));
             }
 
+            $data['meteringDate'] = $this->getMeteringDate();
+
             $pricingPlanDetails[count($pricingPlanDetails)] = $data;
 
             $data = \Zend_Json::encode($pricingPlanDetails);
