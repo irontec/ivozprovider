@@ -28,21 +28,17 @@ class Userweb_ConfigController extends Iron_Controller_Rest_BaseController
 
     public function indexAction()
     {
-
         $serverUrl = $this->view->serverUrl();
-
-        $imageUrl = $serverUrl . '/fso/brandUrl/';
 
         $mapper = new Mappers\BrandURLs();
         $currentBrand = $mapper->findOneByField('url', $serverUrl);
 
         if (!empty($currentBrand)) {
+            if (!$currentBrand) {
+                $currentBrand = new IvozProvider\Model\BrandURLs();
+            }
 
-            $logo = array(
-                $currentBrand->getId(),
-                $currentBrand->getLogoBaseName()
-            );
-            $image = $imageUrl . implode('-', $logo);
+            $image = $currentBrand->getLogoUrl('brandUrl');
 
             $theme = 'default';
             if (trim($currentBrand->getUserTheme()) != '') {
@@ -62,7 +58,6 @@ class Userweb_ConfigController extends Iron_Controller_Rest_BaseController
             $this->addViewData(array());
             $this->status->setCode(204);
         }
-
     }
 
 }
