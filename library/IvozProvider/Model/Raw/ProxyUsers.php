@@ -117,7 +117,7 @@ class ProxyUsers extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -151,7 +151,7 @@ class ProxyUsers extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -185,7 +185,7 @@ class ProxyUsers extends ModelAbstract
     {
 
         if ($this->_ip != $data) {
-            $this->_logChange('ip');
+            $this->_logChange('ip', $this->_ip, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

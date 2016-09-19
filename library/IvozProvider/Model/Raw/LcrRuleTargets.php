@@ -194,7 +194,7 @@ class LcrRuleTargets extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -231,7 +231,7 @@ class LcrRuleTargets extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -268,7 +268,7 @@ class LcrRuleTargets extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_ruleId != $data) {
-            $this->_logChange('ruleId');
+            $this->_logChange('ruleId', $this->_ruleId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -305,7 +305,7 @@ class LcrRuleTargets extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_gwId != $data) {
-            $this->_logChange('gwId');
+            $this->_logChange('gwId', $this->_gwId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -342,7 +342,7 @@ class LcrRuleTargets extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_priority != $data) {
-            $this->_logChange('priority');
+            $this->_logChange('priority', $this->_priority, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -376,7 +376,7 @@ class LcrRuleTargets extends ModelAbstract
     {
 
         if ($this->_weight != $data) {
-            $this->_logChange('weight');
+            $this->_logChange('weight', $this->_weight, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -413,7 +413,7 @@ class LcrRuleTargets extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_outgoingRoutingId != $data) {
-            $this->_logChange('outgoingRoutingId');
+            $this->_logChange('outgoingRoutingId', $this->_outgoingRoutingId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

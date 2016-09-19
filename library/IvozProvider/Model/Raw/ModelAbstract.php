@@ -82,6 +82,16 @@ abstract class ModelAbstract implements \IteratorAggregate
     protected $_logChanges = true;
 
     /***
+     * Save Logs into Database switcher
+     */
+    protected $_saveChanges = true;
+
+    /***
+     * Author name of the model changes
+     */
+    protected $_authorChanges = "system";
+
+    /***
      * Changed attributes
      */
     protected $_changeLog = array();
@@ -257,6 +267,12 @@ abstract class ModelAbstract implements \IteratorAggregate
         return $this;
     }
 
+    static public function setChangeAuthor($author)
+    {
+        $this->_authorChanges = $author;
+        return $this;
+    }
+
     public function hasChange($field = '')
     {
         if (empty($field)) {
@@ -268,11 +284,11 @@ abstract class ModelAbstract implements \IteratorAggregate
 
         } else {
 
-            if ( in_array($field, $this->_changeLog) ) {
+            if ( array_key_exists($field, $this->_changeLog) ) {
 
                 return true;
 
-            } elseif (in_array(lcfirst($field), $this->_changeLog)) {
+            } elseif ( array_key_exists(lcfirst($field), $this->_changeLog) ) {
 
                 return true;
             }
@@ -292,10 +308,69 @@ abstract class ModelAbstract implements \IteratorAggregate
         return $this;
     }
 
-    protected final function _logChange($field)
+    public function logDelete()
     {
         if ($this->_logChanges === true) {
-            $this->_changeLog[] = $field;
+            $this->_changeLog['deleted'] = array();
+        }
+    }
+
+    protected function getActionChangeLog()
+    {
+        if (array_key_exists('deleted', $this->_changeLog)) {
+            return "delete";
+        }
+        if (array_key_exists($this->getPrimaryKeyName(), $this->_changeLog)) {
+            if ($this->_changeLog[$this->getPrimaryKeyName()][0] === null) {
+                return "create";
+            }
+        }
+        return "update";
+    }
+
+    public function saveChangeLog()
+    {
+        // Dont save history for this model
+        if ($this->_saveChanges == false) {
+            return;
+        }
+
+        $action = $this->getActionChangeLog();
+        $table_name = $this->_mapper->getDbTable()->info('name');
+        $objid = $this->getPrimaryKey();
+        $changeAuthor = $this->_authorChanges;
+
+        // Add an entry for each changed field
+        foreach ($this->_changeLog as $field => $data) {
+            // Get ChangeLog data
+            $oldValue = array_shift($data);
+            $newValue = array_shift($data);
+
+            // Convert DateTimes to string
+            if ($oldValue instanceof \DateTime)
+                $oldValue = $oldValue->format("Y-m-d H:i:s");
+            if ($newValue instanceof \DateTime)
+                $newValue = $newValue->format("Y-m-d H:i:s");
+
+            // Add a new Change to the history table
+            $entry = new ChangeHistory();
+            $entry->stopChangeLog();
+            $entry->setUser($changeAuthor);
+            $entry->setAction($action);
+            $entry->setTable($table_name);
+            $entry->setObjid($objid);
+            $entry->setField($field);
+            $entry->setOldValue($oldValue);
+            $entry->setNewValue($newValue);
+            $entry->save();
+        }
+
+    }
+
+    protected final function _logChange($field, $old, $new)
+    {
+        if ($this->_logChanges === true) {
+            $this->_changeLog[$field] = array( $old, $new );
         }
     }
 

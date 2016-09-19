@@ -221,7 +221,7 @@ class CallForwardSettings extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -258,7 +258,7 @@ class CallForwardSettings extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_userId != $data) {
-            $this->_logChange('userId');
+            $this->_logChange('userId', $this->_userId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -295,7 +295,7 @@ class CallForwardSettings extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_callTypeFilter != $data) {
-            $this->_logChange('callTypeFilter');
+            $this->_logChange('callTypeFilter', $this->_callTypeFilter, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -335,7 +335,7 @@ class CallForwardSettings extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_callForwardType != $data) {
-            $this->_logChange('callForwardType');
+            $this->_logChange('callForwardType', $this->_callForwardType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -375,7 +375,7 @@ class CallForwardSettings extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_targetType != $data) {
-            $this->_logChange('targetType');
+            $this->_logChange('targetType', $this->_targetType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -412,7 +412,7 @@ class CallForwardSettings extends ModelAbstract
     {
 
         if ($this->_numberValue != $data) {
-            $this->_logChange('numberValue');
+            $this->_logChange('numberValue', $this->_numberValue, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -446,7 +446,7 @@ class CallForwardSettings extends ModelAbstract
     {
 
         if ($this->_extensionId != $data) {
-            $this->_logChange('extensionId');
+            $this->_logChange('extensionId', $this->_extensionId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -480,7 +480,7 @@ class CallForwardSettings extends ModelAbstract
     {
 
         if ($this->_voiceMailUserId != $data) {
-            $this->_logChange('voiceMailUserId');
+            $this->_logChange('voiceMailUserId', $this->_voiceMailUserId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -514,7 +514,7 @@ class CallForwardSettings extends ModelAbstract
     {
 
         if ($this->_noAnswerTimeout != $data) {
-            $this->_logChange('noAnswerTimeout');
+            $this->_logChange('noAnswerTimeout', $this->_noAnswerTimeout, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

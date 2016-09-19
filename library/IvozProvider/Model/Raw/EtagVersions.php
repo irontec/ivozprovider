@@ -125,7 +125,7 @@ class EtagVersions extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -159,7 +159,7 @@ class EtagVersions extends ModelAbstract
     {
 
         if ($this->_table != $data) {
-            $this->_logChange('table');
+            $this->_logChange('table', $this->_table, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -193,7 +193,7 @@ class EtagVersions extends ModelAbstract
     {
 
         if ($this->_etag != $data) {
-            $this->_logChange('etag');
+            $this->_logChange('etag', $this->_etag, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -246,7 +246,7 @@ class EtagVersions extends ModelAbstract
         }
 
         if ($this->_lastChange != $data) {
-            $this->_logChange('lastChange');
+            $this->_logChange('lastChange', $this->_lastChange, $data);
         }
 
         $this->_lastChange = $data;

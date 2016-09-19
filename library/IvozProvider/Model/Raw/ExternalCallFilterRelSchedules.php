@@ -139,7 +139,7 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -176,7 +176,7 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_filterId != $data) {
-            $this->_logChange('filterId');
+            $this->_logChange('filterId', $this->_filterId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -213,7 +213,7 @@ class ExternalCallFilterRelSchedules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_scheduleId != $data) {
-            $this->_logChange('scheduleId');
+            $this->_logChange('scheduleId', $this->_scheduleId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

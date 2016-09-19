@@ -240,7 +240,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -277,7 +277,7 @@ class Terminals extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_TerminalModelId != $data) {
-            $this->_logChange('TerminalModelId');
+            $this->_logChange('TerminalModelId', $this->_TerminalModelId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -311,7 +311,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -345,7 +345,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_domain != $data) {
-            $this->_logChange('domain');
+            $this->_logChange('domain', $this->_domain, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -379,7 +379,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_disallow != $data) {
-            $this->_logChange('disallow');
+            $this->_logChange('disallow', $this->_disallow, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -413,7 +413,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_allow != $data) {
-            $this->_logChange('allow');
+            $this->_logChange('allow', $this->_allow, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -447,7 +447,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_directMediaMethod != $data) {
-            $this->_logChange('directMediaMethod');
+            $this->_logChange('directMediaMethod', $this->_directMediaMethod, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -484,7 +484,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_password != $data) {
-            $this->_logChange('password');
+            $this->_logChange('password', $this->_password, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -521,7 +521,7 @@ class Terminals extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -555,7 +555,7 @@ class Terminals extends ModelAbstract
     {
 
         if ($this->_mac != $data) {
-            $this->_logChange('mac');
+            $this->_logChange('mac', $this->_mac, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -608,7 +608,7 @@ class Terminals extends ModelAbstract
         }
 
         if ($this->_lastProvisionDate != $data) {
-            $this->_logChange('lastProvisionDate');
+            $this->_logChange('lastProvisionDate', $this->_lastProvisionDate, $data);
         }
 
         $this->_lastProvisionDate = $data;

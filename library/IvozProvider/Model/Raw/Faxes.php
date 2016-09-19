@@ -191,7 +191,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -228,7 +228,7 @@ class Faxes extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -265,7 +265,7 @@ class Faxes extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -299,7 +299,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_email != $data) {
-            $this->_logChange('email');
+            $this->_logChange('email', $this->_email, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -333,7 +333,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_sendByEmail != $data) {
-            $this->_logChange('sendByEmail');
+            $this->_logChange('sendByEmail', $this->_sendByEmail, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -367,7 +367,7 @@ class Faxes extends ModelAbstract
     {
 
         if ($this->_outgoingDDIId != $data) {
-            $this->_logChange('outgoingDDIId');
+            $this->_logChange('outgoingDDIId', $this->_outgoingDDIId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

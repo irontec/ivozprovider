@@ -155,7 +155,7 @@ class HolidayDates extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -192,7 +192,7 @@ class HolidayDates extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_calendarId != $data) {
-            $this->_logChange('calendarId');
+            $this->_logChange('calendarId', $this->_calendarId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -229,7 +229,7 @@ class HolidayDates extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -281,7 +281,7 @@ class HolidayDates extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_eventDate != $data) {
-            $this->_logChange('eventDate');
+            $this->_logChange('eventDate', $this->_eventDate, $data);
         }
 
         $this->_eventDate = $data;
@@ -318,7 +318,7 @@ class HolidayDates extends ModelAbstract
     {
 
         if ($this->_locutionId != $data) {
-            $this->_logChange('locutionId');
+            $this->_logChange('locutionId', $this->_locutionId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

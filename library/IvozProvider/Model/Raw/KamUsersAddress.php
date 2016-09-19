@@ -170,7 +170,7 @@ class KamUsersAddress extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -207,7 +207,7 @@ class KamUsersAddress extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -244,7 +244,7 @@ class KamUsersAddress extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_sourceAddress != $data) {
-            $this->_logChange('sourceAddress');
+            $this->_logChange('sourceAddress', $this->_sourceAddress, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -278,7 +278,7 @@ class KamUsersAddress extends ModelAbstract
     {
 
         if ($this->_ipAddr != $data) {
-            $this->_logChange('ipAddr');
+            $this->_logChange('ipAddr', $this->_ipAddr, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -312,7 +312,7 @@ class KamUsersAddress extends ModelAbstract
     {
 
         if ($this->_mask != $data) {
-            $this->_logChange('mask');
+            $this->_logChange('mask', $this->_mask, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -346,7 +346,7 @@ class KamUsersAddress extends ModelAbstract
     {
 
         if ($this->_port != $data) {
-            $this->_logChange('port');
+            $this->_logChange('port', $this->_port, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -380,7 +380,7 @@ class KamUsersAddress extends ModelAbstract
     {
 
         if ($this->_tag != $data) {
-            $this->_logChange('tag');
+            $this->_logChange('tag', $this->_tag, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -414,7 +414,7 @@ class KamUsersAddress extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

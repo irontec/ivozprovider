@@ -543,7 +543,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -580,7 +580,7 @@ class Locutions extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -617,7 +617,7 @@ class Locutions extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -651,7 +651,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_originalFileFileSize != $data) {
-            $this->_logChange('originalFileFileSize');
+            $this->_logChange('originalFileFileSize', $this->_originalFileFileSize, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -685,7 +685,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_originalFileMimeType != $data) {
-            $this->_logChange('originalFileMimeType');
+            $this->_logChange('originalFileMimeType', $this->_originalFileMimeType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -719,7 +719,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_originalFileBaseName != $data) {
-            $this->_logChange('originalFileBaseName');
+            $this->_logChange('originalFileBaseName', $this->_originalFileBaseName, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -753,7 +753,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_encodedFileFileSize != $data) {
-            $this->_logChange('encodedFileFileSize');
+            $this->_logChange('encodedFileFileSize', $this->_encodedFileFileSize, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -787,7 +787,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_encodedFileMimeType != $data) {
-            $this->_logChange('encodedFileMimeType');
+            $this->_logChange('encodedFileMimeType', $this->_encodedFileMimeType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -821,7 +821,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_encodedFileBaseName != $data) {
-            $this->_logChange('encodedFileBaseName');
+            $this->_logChange('encodedFileBaseName', $this->_encodedFileBaseName, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -855,7 +855,7 @@ class Locutions extends ModelAbstract
     {
 
         if ($this->_status != $data) {
-            $this->_logChange('status');
+            $this->_logChange('status', $this->_status, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

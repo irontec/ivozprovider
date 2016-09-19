@@ -147,7 +147,7 @@ class CompanyServices extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -184,7 +184,7 @@ class CompanyServices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_serviceId != $data) {
-            $this->_logChange('serviceId');
+            $this->_logChange('serviceId', $this->_serviceId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -221,7 +221,7 @@ class CompanyServices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -258,7 +258,7 @@ class CompanyServices extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_code != $data) {
-            $this->_logChange('code');
+            $this->_logChange('code', $this->_code, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

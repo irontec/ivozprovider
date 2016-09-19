@@ -333,7 +333,7 @@ class Extensions extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -370,7 +370,7 @@ class Extensions extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -407,7 +407,7 @@ class Extensions extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_number != $data) {
-            $this->_logChange('number');
+            $this->_logChange('number', $this->_number, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -441,7 +441,7 @@ class Extensions extends ModelAbstract
     {
 
         if ($this->_routeType != $data) {
-            $this->_logChange('routeType');
+            $this->_logChange('routeType', $this->_routeType, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -478,7 +478,7 @@ class Extensions extends ModelAbstract
     {
 
         if ($this->_IVRCommonId != $data) {
-            $this->_logChange('IVRCommonId');
+            $this->_logChange('IVRCommonId', $this->_IVRCommonId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -512,7 +512,7 @@ class Extensions extends ModelAbstract
     {
 
         if ($this->_IVRCustomId != $data) {
-            $this->_logChange('IVRCustomId');
+            $this->_logChange('IVRCustomId', $this->_IVRCustomId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -546,7 +546,7 @@ class Extensions extends ModelAbstract
     {
 
         if ($this->_huntGroupId != $data) {
-            $this->_logChange('huntGroupId');
+            $this->_logChange('huntGroupId', $this->_huntGroupId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -580,7 +580,7 @@ class Extensions extends ModelAbstract
     {
 
         if ($this->_conferenceRoomId != $data) {
-            $this->_logChange('conferenceRoomId');
+            $this->_logChange('conferenceRoomId', $this->_conferenceRoomId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

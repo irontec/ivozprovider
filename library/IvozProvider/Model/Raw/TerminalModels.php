@@ -190,7 +190,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -227,7 +227,7 @@ class TerminalModels extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_iden != $data) {
-            $this->_logChange('iden');
+            $this->_logChange('iden', $this->_iden, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -261,7 +261,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -295,7 +295,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -332,7 +332,7 @@ class TerminalModels extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_TerminalManufacturerId != $data) {
-            $this->_logChange('TerminalManufacturerId');
+            $this->_logChange('TerminalManufacturerId', $this->_TerminalManufacturerId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -366,7 +366,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_genericTemplate != $data) {
-            $this->_logChange('genericTemplate');
+            $this->_logChange('genericTemplate', $this->_genericTemplate, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -400,7 +400,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_specificTemplate != $data) {
-            $this->_logChange('specificTemplate');
+            $this->_logChange('specificTemplate', $this->_specificTemplate, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -434,7 +434,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_genericUrlPattern != $data) {
-            $this->_logChange('genericUrlPattern');
+            $this->_logChange('genericUrlPattern', $this->_genericUrlPattern, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -468,7 +468,7 @@ class TerminalModels extends ModelAbstract
     {
 
         if ($this->_specificUrlPattern != $data) {
-            $this->_logChange('specificUrlPattern');
+            $this->_logChange('specificUrlPattern', $this->_specificUrlPattern, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

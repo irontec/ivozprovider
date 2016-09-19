@@ -145,7 +145,7 @@ class MediaRelaySets extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -179,7 +179,7 @@ class MediaRelaySets extends ModelAbstract
     {
 
         if ($this->_name != $data) {
-            $this->_logChange('name');
+            $this->_logChange('name', $this->_name, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -213,7 +213,7 @@ class MediaRelaySets extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

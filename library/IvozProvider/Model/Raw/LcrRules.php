@@ -232,7 +232,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -269,7 +269,7 @@ class LcrRules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_companyId != $data) {
-            $this->_logChange('companyId');
+            $this->_logChange('companyId', $this->_companyId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -303,7 +303,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_prefix != $data) {
-            $this->_logChange('prefix');
+            $this->_logChange('prefix', $this->_prefix, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -337,7 +337,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_fromUri != $data) {
-            $this->_logChange('fromUri');
+            $this->_logChange('fromUri', $this->_fromUri, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -371,7 +371,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_requestUri != $data) {
-            $this->_logChange('requestUri');
+            $this->_logChange('requestUri', $this->_requestUri, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -405,7 +405,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_stopper != $data) {
-            $this->_logChange('stopper');
+            $this->_logChange('stopper', $this->_stopper, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -439,7 +439,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_enabled != $data) {
-            $this->_logChange('enabled');
+            $this->_logChange('enabled', $this->_enabled, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -476,7 +476,7 @@ class LcrRules extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_tag != $data) {
-            $this->_logChange('tag');
+            $this->_logChange('tag', $this->_tag, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -510,7 +510,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_description != $data) {
-            $this->_logChange('description');
+            $this->_logChange('description', $this->_description, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -544,7 +544,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_routingPatternId != $data) {
-            $this->_logChange('routingPatternId');
+            $this->_logChange('routingPatternId', $this->_routingPatternId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -578,7 +578,7 @@ class LcrRules extends ModelAbstract
     {
 
         if ($this->_outgoingRoutingId != $data) {
-            $this->_logChange('outgoingRoutingId');
+            $this->_logChange('outgoingRoutingId', $this->_outgoingRoutingId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {

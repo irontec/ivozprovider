@@ -158,7 +158,7 @@ class XMLRPCLogs extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -195,7 +195,7 @@ class XMLRPCLogs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_proxy != $data) {
-            $this->_logChange('proxy');
+            $this->_logChange('proxy', $this->_proxy, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -232,7 +232,7 @@ class XMLRPCLogs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_module != $data) {
-            $this->_logChange('module');
+            $this->_logChange('module', $this->_module, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -269,7 +269,7 @@ class XMLRPCLogs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_method != $data) {
-            $this->_logChange('method');
+            $this->_logChange('method', $this->_method, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -306,7 +306,7 @@ class XMLRPCLogs extends ModelAbstract
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
         if ($this->_mapperName != $data) {
-            $this->_logChange('mapperName');
+            $this->_logChange('mapperName', $this->_mapperName, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -359,7 +359,7 @@ class XMLRPCLogs extends ModelAbstract
         }
 
         if ($this->_startDate != $data) {
-            $this->_logChange('startDate');
+            $this->_logChange('startDate', $this->_startDate, $data);
         }
 
         $this->_startDate = $data;
@@ -415,7 +415,7 @@ class XMLRPCLogs extends ModelAbstract
         }
 
         if ($this->_execDate != $data) {
-            $this->_logChange('execDate');
+            $this->_logChange('execDate', $this->_execDate, $data);
         }
 
         $this->_execDate = $data;
@@ -471,7 +471,7 @@ class XMLRPCLogs extends ModelAbstract
         }
 
         if ($this->_finishDate != $data) {
-            $this->_logChange('finishDate');
+            $this->_logChange('finishDate', $this->_finishDate, $data);
         }
 
         $this->_finishDate = $data;

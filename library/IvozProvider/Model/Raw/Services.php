@@ -198,7 +198,7 @@ class Services extends ModelAbstract
     {
 
         if ($this->_id != $data) {
-            $this->_logChange('id');
+            $this->_logChange('id', $this->_id, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -232,7 +232,7 @@ class Services extends ModelAbstract
     {
 
         if ($this->_iden != $data) {
-            $this->_logChange('iden');
+            $this->_logChange('iden', $this->_iden, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -306,7 +306,7 @@ class Services extends ModelAbstract
     {
 
         if ($this->_nameEn != $data) {
-            $this->_logChange('nameEn');
+            $this->_logChange('nameEn', $this->_nameEn, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -340,7 +340,7 @@ class Services extends ModelAbstract
     {
 
         if ($this->_nameEs != $data) {
-            $this->_logChange('nameEs');
+            $this->_logChange('nameEs', $this->_nameEs, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -414,7 +414,7 @@ class Services extends ModelAbstract
     {
 
         if ($this->_descriptionEn != $data) {
-            $this->_logChange('descriptionEn');
+            $this->_logChange('descriptionEn', $this->_descriptionEn, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
@@ -448,7 +448,7 @@ class Services extends ModelAbstract
     {
 
         if ($this->_descriptionEs != $data) {
-            $this->_logChange('descriptionEs');
+            $this->_logChange('descriptionEs', $this->_descriptionEs, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
