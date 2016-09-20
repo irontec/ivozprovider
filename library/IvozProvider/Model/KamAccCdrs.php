@@ -101,8 +101,8 @@ class KamAccCdrs extends Raw\KamAccCdrs
         $now->setTimezone("UTC");
 
         $this
-            ->setPricingPlanDetails($data)
             ->setMeteringDate($now)
+            ->setPricingPlanDetails($data)
             ->setPricingPlanId($planToApply->getPrimaryKey())
             ->setTargetPatternId($matchedPattern->getPrimaryKey())
             ->setMetered(1)
