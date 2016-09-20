@@ -93,7 +93,7 @@ production:
       class: ui-silk-bin
       labelOption: false
       title: _("Delete %s de %2s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%parent%)]")
-      description: _("Do you want to delete this %s %2s?", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%parent%)]")
+      description: _("Do you want to delete this %s from %2s?", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%parent%)]")
       message: _("%s successfully deleted.", ngettext('Pricing plan', 'Pricing plans', 1))
       multiItem: 1
       labelOnList: 1
