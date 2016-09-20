@@ -145,6 +145,17 @@ class ExternalCallAction extends RouterAction
             }
         }
 
+        /*****************************************************************
+         * BOUNCE INTERNAL DDI
+         ****************************************************************/
+        // Check if incoming DDI is for us
+        $DDIMapper = new Mapper\DDIs();
+        $internalDDI = $DDIMapper->findOneByField("DDIE164", $number);
+        if (!empty($internalDDI)) {
+            $this->agi->notice("DDI $number belongs to use, request bounce back this call");
+            $this->agi->setVariable("_BOUNCEME", "yes");
+        }
+
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");

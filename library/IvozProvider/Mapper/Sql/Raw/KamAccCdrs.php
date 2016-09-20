@@ -69,6 +69,7 @@ class KamAccCdrs extends MapperAbstract
                 'parsed' => $model->getParsed(),
                 'diversion' => $model->getDiversion(),
                 'peeringContractId' => $model->getPeeringContractId(),
+                'bounced' => $model->getBounced(),
                 'externallyRated' => $model->getExternallyRated(),
                 'metered' => $model->getMetered(),
                 'meteringDate' => $model->getMeteringDate(),
@@ -590,6 +591,7 @@ class KamAccCdrs extends MapperAbstract
                   ->setParsed($data['parsed'])
                   ->setDiversion($data['diversion'])
                   ->setPeeringContractId($data['peeringContractId'])
+                  ->setBounced($data['bounced'])
                   ->setExternallyRated($data['externallyRated'])
                   ->setMetered($data['metered'])
                   ->setMeteringDate($data['meteringDate'])
@@ -624,6 +626,7 @@ class KamAccCdrs extends MapperAbstract
                   ->setParsed($data->{'parsed'})
                   ->setDiversion($data->{'diversion'})
                   ->setPeeringContractId($data->{'peeringContractId'})
+                  ->setBounced($data->{'bounced'})
                   ->setExternallyRated($data->{'externallyRated'})
                   ->setMetered($data->{'metered'})
                   ->setMeteringDate($data->{'meteringDate'})
@@ -659,6 +662,7 @@ class KamAccCdrs extends MapperAbstract
                   ->setParsed($data->getParsed())
                   ->setDiversion($data->getDiversion())
                   ->setPeeringContractId($data->getPeeringContractId())
+                  ->setBounced($data->getBounced())
                   ->setExternallyRated($data->getExternallyRated())
                   ->setMetered($data->getMetered())
                   ->setMeteringDate($data->getMeteringDate())

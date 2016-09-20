@@ -51,6 +51,7 @@ production:
           pricingPlanName: true
           targetPatternId: true
           targetPatternName: true
+          bounced: true
         order:
           start_time_utc: true
           brandId: true
@@ -94,6 +95,7 @@ production:
           pricingPlanName: true
           targetPatternId: true
           targetPatternName: true
+          bounced: true
         order:
           start_time_utc: 1
           brandId: 1

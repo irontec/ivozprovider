@@ -28,6 +28,10 @@ class KamAccCdrs extends ModelAbstract
         'delayed',
         'error',
     );
+    protected $_bouncedAcceptedValues = array(
+        'yes',
+        'no',
+    );
     protected $_directionAcceptedValues = array(
         'inbound',
         'outbound',
@@ -181,6 +185,13 @@ class KamAccCdrs extends ModelAbstract
     protected $_peeringContractId;
 
     /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_bounced;
+
+    /**
      * Database var type tinyint
      *
      * @var int
@@ -323,6 +334,7 @@ class KamAccCdrs extends ModelAbstract
         'parsed'=>'parsed',
         'diversion'=>'diversion',
         'peeringContractId'=>'peeringContractId',
+        'bounced'=>'bounced',
         'externallyRated'=>'externallyRated',
         'metered'=>'metered',
         'meteringDate'=>'meteringDate',
@@ -385,6 +397,7 @@ class KamAccCdrs extends ModelAbstract
             'startTime' => '2000-01-01 00:00:00',
             'endTime' => '2000-01-01 00:00:00',
             'duration' => '0.000',
+            'bounced' => 'no',
         );
 
         $this->_initFileObjects();
@@ -1221,6 +1234,43 @@ class KamAccCdrs extends ModelAbstract
     public function getPeeringContractId()
     {
         return $this->_peeringContractId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setBounced($data)
+    {
+
+        if ($this->_bounced != $data) {
+            $this->_logChange('bounced', $this->_bounced, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_bounced = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_bouncedAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for bounced'));
+            }
+            $this->_bounced = (string) $data;
+
+        } else {
+            $this->_bounced = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column bounced
+     *
+     * @return string
+     */
+    public function getBounced()
+    {
+        return $this->_bounced;
     }
 
     /**

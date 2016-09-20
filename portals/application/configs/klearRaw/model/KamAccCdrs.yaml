@@ -123,6 +123,15 @@ production:
       title: _('Peeringcontractid')
       type: text
       maxLength: 64
+    bounced: 
+      title: _('Bounced')
+      type: select
+      defaultValue: no
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
     externallyRated: 
       title: _('Externallyrated')
       type: select

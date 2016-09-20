@@ -469,6 +469,11 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-RecordCode", $this->agi->getVariable("RECORDCODE"));
         }
 
+        // Request intra DDI bounce
+        if ($this->agi->getVariable("BOUNCEME")) {
+            $this->agi->setSIPHeader("X-Info-BounceMe", $this->agi->getVariable("BOUNCEME"));
+        }
+
         // Set pickups group on outgoing channels
         if ($this->agi->getVariable("CHANNEL(pickupgroup)")) {
             $this->agi->setVariable("CHANNEL(callgroup)", $this->agi->getVariable("CHANNEL(pickupgroup)"));
