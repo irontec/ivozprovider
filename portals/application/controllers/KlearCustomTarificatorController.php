@@ -1,5 +1,4 @@
 <?php
-ini_set('html_errors', false);
 class KlearCustomTarificatorController extends Zend_Controller_Action
 {
 
