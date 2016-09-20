@@ -1,5 +1,5 @@
 <?php
-
+ini_set('html_errors', false);
 class KlearCustomTarificatorController extends Zend_Controller_Action
 {
 
@@ -39,7 +39,6 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
     public function testCompanyPlansAction ()
     {
-
         if ($this->getParam("tarificate")) {
             $errors = $this->_getFormErrors();
             if (!is_null($errors)) {
@@ -61,7 +60,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 }
                 $message = $this->_getTarificationInfo($call, "No plan matched");
                 $title = $this->_helper->translate("Results");
-                $this->_showDialog($title, $message, false, "Close", false, "auto");
+                $this->_showDialog($title, $message, false, "Close", false, '80%');
             }
 
         } else {
@@ -289,28 +288,31 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         } else {
             $meteringDate = $call->getMeteringDate(true);
             $meteringDate->setTimezone(date_default_timezone_get());
-            $data = json_decode($jsonData, true);
-            $table = array(
-                    array(
-                            "Call date" => $call->getStartTimeUtc(true)->setTimezone(date_default_timezone_get()),
-                            "Metering date" => $meteringDate->toString(),
-                            "Company" => $data["Company"]["name"],
-                            "Plan" => $data["Plan"]["name_es"],
-                            "Plan Metric" => $data["CompanyPlan"]["metric"],
-                            "Valid from" => $data["CompanyPlan"]["validFrom"],
-                            "Valid to" => $data["CompanyPlan"]["validTo"],
-                            "Pattern Name" => sprintf("%s %s (%s)",
-                                    $data["Pattern"]["name_es"],
-                                    $data["Pattern"]["description_es"],
-                                    $data["Pattern"]["regExp"]),
-                            "Prefix" => $data["Pattern"]["regExp"],
-                            //"Metric" => $data["Price"]["metric"],
-                            "Con. Charge" => $data["Price"]["connectionCharge"],
-                            "Charge Period" => $data["Price"]["periodTime"],
-                            "Per Minute Charge" => $data["Price"]["perPeriodCharge"],
-                            "Cost" => $data["Cost"],
-                    )
-            );
+            $dataArray = json_decode($jsonData, true);
+
+            $table = array();
+
+            foreach($dataArray as $data) {
+                $table[] = array(
+                    "Call date" => $call->getStartTimeUtc(true)->setTimezone(date_default_timezone_get()),
+                    "Metering date" => $meteringDate->toString(),
+                    "Company" => $data["Company"]["name"],
+                    "Plan" => $data["Plan"]["name_es"],
+                    "Plan Metric" => $data["CompanyPlan"]["metric"],
+                    "Valid from" => $data["CompanyPlan"]["validFrom"],
+                    "Valid to" => $data["CompanyPlan"]["validTo"],
+                    "Pattern Name" => sprintf("%s %s (%s)",
+                        $data["Pattern"]["name_es"],
+                        $data["Pattern"]["description_es"],
+                        $data["Pattern"]["regExp"]),
+                    "Prefix" => $data["Pattern"]["regExp"],
+                    //"Metric" => $data["Price"]["metric"],
+                    "Con. Charge" => $data["Price"]["connectionCharge"],
+                    "Charge Period" => $data["Price"]["periodTime"],
+                    "Per Minute Charge" => $data["Price"]["perPeriodCharge"],
+                    "Cost" => $data["Cost"],
+                );
+            }
 
             $info = $this->_drawTable($table, $call->getCallee(), $call->getDuration());
         }
