@@ -36,10 +36,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          routingPatternGroupsRelPatternsEdit_screen: true
-    routingPatternGroupsRelPatternsEdit_screen: &routingPatternGroupsRelPatternsEdit_screenLink 
+    routingPatternGroupsRelPatternsEdit_screen: &routingPatternGroupsRelPatternsEdit_screenLink
       <<: *RoutingPatternGroupsRelPatterns
       controller: edit
       class: ui-silk-pencil

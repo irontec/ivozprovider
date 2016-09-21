@@ -36,10 +36,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Kam trunks address', 'Kam trunks address(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          kamTrunksAddressEdit_screen: true
-    kamTrunksAddressEdit_screen: &kamTrunksAddressEdit_screenLink 
+    kamTrunksAddressEdit_screen: &kamTrunksAddressEdit_screenLink
       <<: *KamTrunksAddress
       controller: edit
       class: ui-silk-pencil

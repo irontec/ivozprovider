@@ -44,10 +44,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Country', 'Countries', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          countriesEdit_screen: true
-    countriesEdit_screen: &countriesEdit_screenLink 
+    countriesEdit_screen: &countriesEdit_screenLink
       <<: *Countries
       controller: edit
       class: ui-silk-pencil

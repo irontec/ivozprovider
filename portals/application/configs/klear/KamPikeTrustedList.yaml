@@ -47,10 +47,7 @@ production:
           from_pattern: true
           ruri_pattern: true
           priority: true
-      postActionOptions: 
-        screens: 
-          kamPikeTrustedEdit_screen: true
-    kamPikeTrustedEdit_screen: &kamPikeTrustedEdit_screenLink 
+    kamPikeTrustedEdit_screen: &kamPikeTrustedEdit_screenLink
       <<: *KamPikeTrusted
       controller: edit
       class: ui-silk-pencil

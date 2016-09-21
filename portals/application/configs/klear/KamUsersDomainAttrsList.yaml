@@ -36,10 +36,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Kam users domain attr', 'Kam users domain attrs', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          kamUsersDomainAttrsEdit_screen: true
-    kamUsersDomainAttrsEdit_screen: &kamUsersDomainAttrsEdit_screenLink 
+    kamUsersDomainAttrsEdit_screen: &kamUsersDomainAttrsEdit_screenLink
       <<: *KamUsersDomainAttrs
       controller: edit
       class: ui-silk-pencil

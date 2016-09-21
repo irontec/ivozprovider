@@ -36,10 +36,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Change history', 'Change history(s)', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions: 
-        screens: 
-          changeHistoryEdit_screen: true
-      fields: 
+      fields:
         blacklist: 
           date: true
     changeHistoryEdit_screen: &changeHistoryEdit_screenLink 
