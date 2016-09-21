@@ -78,9 +78,9 @@ production:
           title: _("Options")
           screens:
             faxesInView_screen: true
-          default: faxesInEdit_screen
           commands:
             faxesInOutFileDownload_command: true
+          default: faxesInEdit_screen
         blacklist:
           dst: true
       options:
@@ -103,9 +103,11 @@ production:
           title: _("Options")
           screens:
             faxesOutEdit_screen: true
-          default: faxesOutEdit_screen
+          dialogs:
+            forwardFax_dialog: true
           commands:
             faxesInOutFileDownload_command: true
+          default: faxesOutEdit_screen
         blacklist:
           src: true
       options:
@@ -163,7 +165,22 @@ production:
       message: _("%s successfully deleted.", ngettext('Fax', 'Faxes', 1))
       multiItem: 1
       labelOnList: 1
-  # faxesInOut dialogs: 
+    forwardFax_dialog:
+      <<: *FaxesInOut
+      title: _("Forward Fax")
+      module: default
+      controller: klear-custom-forward-fax
+      action: forward-fax
+      class: ui-silk-page-go
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForFax
+
+  # faxesInOut dialogs:
     <<: *faxesInOut_dialogsLink
   commands:
     faxesInOutFileDownload_command: 
