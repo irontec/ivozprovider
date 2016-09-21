@@ -1,34 +1,31 @@
-<div class="row" style="min-height: 275px;">
-    
-    <div class="shaft-load" ng-show="loading">
-        <div class="shaft1"></div>
-        <div class="shaft2"></div>
-        <div class="shaft3"></div>
-        <div class="shaft4"></div>
-        <div class="shaft5"></div>
-        <div class="shaft6"></div>
-        <div class="shaft7"></div>
-        <div class="shaft8"></div>
-        <div class="shaft9"></div>
-        <div class="shaft10"></div>
+<div class="shaft-load2" ng-show="loading">
+    <div class="shaft1"></div>
+    <div class="shaft2"></div>
+    <div class="shaft3"></div>
+    <div class="shaft4"></div>
+    <div class="shaft5"></div>
+    <div class="shaft6"></div>
+    <div class="shaft7"></div>
+    <div class="shaft8"></div>
+    <div class="shaft9"></div>
+    <div class="shaft10"></div>
+</div>
+
+<div class="panel panel-default" ng-show="!loading">
+    <div class="panel-heading">
+        <h3>
+            {{'Detours' | translate}}
+            <span class="label label-default">{{callsFSCount}}</span>
+        </h3>
     </div>
-    
-    <div class="col-md-12" ng-show="!loading">
-        <div class="col-md-12">
-            <div class="col-md-6">
-               <h3>{{'Detours' | translate}} ({{callsFSCount}})</h3>
-            </div>
-        </div>
-        
-        <div class="col-md-12">
-            <div ng-include="'views/detours/table-detours.html'"></div>
-        </div>
-        
-        <div class="col-md-12 text-right">
-            <a
-                class="btn btn-success" 
+    <div class="panel-body">
+        <div ng-include="'views/detours/table-detours.html'"></div>
+    </div>
+    <div class="panel-footer text-right">
+        <a
+                class="btn btn-success"
                 translate="nuevoDesvio"
                 ng-href="#/detour"></a>
-        </div>
     </div>
 </div>
+

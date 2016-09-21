@@ -5,7 +5,9 @@ angular
     .controller('HeaderCtrl', function (
         $scope,
         $rootScope,
-        $location
+        $location,
+        $http,
+        appConfig
     ) {
     
     var loadData = function() {
@@ -18,6 +20,16 @@ angular
         if ($location.$$path !== '/login') {
             $scope.nombre = localStorage.getItem('userName');
             $scope.brandName = localStorage.getItem('companyName');
+
+            $http.get(appConfig.urlRest + 'index').success(function(data, status) {
+                if (status > 400) {
+                    $scope.totalCalls = 0;
+                    $scope.totalDetours = 0;
+                } else {
+                    $scope.totalCalls = data.calls.total;
+                    $scope.totalDetours = data.detours.total;
+                }
+            });
         } else {
             $scope.nombre = '';
         }

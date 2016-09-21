@@ -15,6 +15,7 @@
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/Font-Awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.css" />
+        <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css" />
         <link rel="stylesheet" href="bower_components/ngprogress/ngProgress.css" />
         <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css" />
         <!-- endbower -->
@@ -31,64 +32,19 @@
         
     </head>
     <body>
-        
-        <div class="container">
-            <div ng-show="$state.current.name !== 'login'">
-                <div ui-view="header" style="min-height: 64px;"></div>
-                
-                <div class="well row">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs pointer">
-                        <li ng-class="$state.current.name === 'app.index' ? 'active' : ''">
-                            <a 
-                                href="#/"
-                                translate="Index" 
-                                ></a>
-                        </li>
-                        <li ng-class="$state.current.name === 'app.calls' ? 'active' : ''">
-                            <a 
-                                href="#/calls"
-                                translate="Calls" 
-                                ></a>
-                        </li>
-                        <li ng-class="$state.current.name === 'app.detours' ? 'active' : ''">
-                            <a 
-                                href="#/detours"
-                                translate="Detours" 
-                                ></a>
-                        </li>
-                        <li ng-class="$state.current.name === 'app.preferences' ? 'active' : ''">
-                            <a 
-                                href="#/preferences"
-                                translate="MyPreferences" 
-                                ></a>
-                        </li>
-                        <li ng-class="$state.current.name === 'app.account' ? 'active' : ''">
-                            <a 
-                                href="#/account"
-                                translate="MyAccount" 
-                                ></a>
-                        </li>
-                    </ul>
-                    
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane active">
-                            <div class="col-md-12 containerTab">
-                                <div ui-view="content" style="padding-top: 15px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
+        <div ng-class="$state.current.name != 'login' ? 'container-fluid' : ''">
+            <div class="row" ng-show="$state.current.name !== 'login'">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div ui-view="header" class="header" style="min-height: 64px;"></div>
                 </div>
-                
-                <div ui-view="footer"></div>
+                <div class="col-sm-8 col-md-9 main">
+                    <div ui-view="content" style="padding-top: 20px;"></div>
+                    <div ui-view="footer"></div>
+                </div>
             </div>
             <div ui-view=""></div>
         </div>
         
-        
-
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
