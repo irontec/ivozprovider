@@ -42,7 +42,7 @@ production:
         name: MainOperator
         disableChangeName: false        
     timezone: Europe/Madrid
-    disabledFixed: true
+    disableFixed: true
 
   menu:
     General:
