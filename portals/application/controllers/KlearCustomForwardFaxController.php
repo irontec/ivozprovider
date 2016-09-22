@@ -33,7 +33,7 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
         ';
 
         if ($this->getRequest()->getParam("forward")) {
-            $modelFax->setStatus('inprogress');
+            $modelFax->setStatus('pending');
             $modelFax->save();
 
             $data = array(
