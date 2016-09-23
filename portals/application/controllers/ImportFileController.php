@@ -5,6 +5,7 @@ class ImportFileController extends Zend_Controller_Action
     protected $_mainRouter;
     protected $_item;
     protected $_pk;
+    protected $_parentPk;
     protected $_ids;
     protected $_mapperName;
     protected $_mapper;
@@ -43,7 +44,10 @@ class ImportFileController extends Zend_Controller_Action
         $this->_scape = $this->_config->getProperty("scape");
 
         $this->_mapper = new $this->_mapperName;
+
         $this->_pk = $this->getRequest()->getParam("pk");
+        $this->_parentPk = $this->getRequest()->getParam("parentId");
+
         $this->_model = $this->_item->getModelSpec()->getInstance();
         $this->_modelName = $this->_item->getModelSpec()->getClassName();
          $availableFields = $this->_item->getModelSpec()->getFields();
@@ -417,6 +421,9 @@ class ImportFileController extends Zend_Controller_Action
                     $conditions["id"] = $data["id"];
                 }
                 foreach ($this->_forcedValues as $field => $value) {
+                    if ($value == "%parent%") {
+                        $value = $this->_parentPk;
+                    }
                     $data[$field] = $value;
                     $conditions[$field] = $value;
                 }

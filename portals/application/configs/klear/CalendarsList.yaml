@@ -56,6 +56,7 @@ production:
       filterField: calendarId
       parentOptionCustomizer:
         - recordCount
+
     holidayDatesNew_screen:
       <<: *holidayDatesNew_screenLink
       filterField: calendarId
@@ -79,7 +80,9 @@ production:
   
     #HolidayDates
     <<: *holidayDates_dialogsLink
-    
+  commands:
+    <<: *holidayDates_commandsLink
+
 staging: 
   _extends: production
 testing: 

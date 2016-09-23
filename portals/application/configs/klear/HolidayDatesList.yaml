@@ -27,6 +27,7 @@ production:
           holidayDatesNew_screen: true
         dialogs: 
           holidayDatesDel_dialog: true
+          importHolidayDates_dialog: true
     holidayDatesNew_screen: &holidayDatesNew_screenLink 
       <<: *HolidayDates
       controller: new
@@ -52,6 +53,34 @@ production:
       message: _("%s successfully deleted.", ngettext('Holiday date', 'Holiday dates', 1))
       multiItem: 1
       labelOnList: 1
+
+
+    importHolidayDates_dialog:
+      <<: *HolidayDates
+      module: default
+      title: _("Import %s", ngettext('File', 'Files', 1))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importHolidayDatesFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        companyId: ${auth.companyId}
+        calendarId: "%parent%"
+
+  commands: &holidayDates_commandsLink
+    importHolidayDatesFreeUpload_command:
+      <<: *HolidayDates
+      controller: File
+      action: free-upload
+
 staging: 
   _extends: production
 testing: 
