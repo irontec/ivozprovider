@@ -1,4 +1,5 @@
 #include ../conf.d/codecsHelp.yaml
+#include ../conf.d/updateMethodHelp.yaml
 
 production: 
   class: \IvozProvider\Model\Terminals
@@ -52,6 +53,7 @@ production:
         values: 
           'invite': 'invite'
           'update': 'update'
+      <<: *updateMethodHelp
     password: 
       title: ngettext('Password', 'Passwords', 1)
       type: text
