@@ -12,5 +12,7 @@ storage/*
 mount-storage.sh
 portals/storage
 
+userweb/index.phtml
+userweb/scripts/
 userweb/app/styles/main.css.map
 userweb/app/styles/main.css
