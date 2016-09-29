@@ -36,7 +36,13 @@ production:
       required: true
       maxLength: 3
       prefix: '<span class="asterisc">*</span>'
-      pattern: '[0-9*]+'
+      pattern: '[#0-9*]+'
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Allowed characters are 0-9, * and #")
+        label: _("Need help?")
 staging: 
   _extends: production
 testing: 
