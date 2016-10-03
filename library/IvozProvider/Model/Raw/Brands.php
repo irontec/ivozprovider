@@ -1094,9 +1094,6 @@ class Brands extends ModelAbstract
     public function setRegistryData($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_registryData != $data) {
             $this->_logChange('registryData', $this->_registryData, $data);
         }

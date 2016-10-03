@@ -118,8 +118,13 @@ production:
       title: _('Registry data')
       type: text
       trim: both
-      required: true
-      maxLength: 255
+      maxLength: 1024
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Información del registro mercantil de la marca que se incluirá en las facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo XXXX, libro Y, folio ZZZ, hoja AA-BBBB'")
+        label: _("Need help?")
     languageId: 
       title: _('Language')
       type: select

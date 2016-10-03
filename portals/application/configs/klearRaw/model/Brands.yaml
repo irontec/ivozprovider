@@ -103,8 +103,7 @@ production:
     registryData: 
       title: _('Registrydata')
       type: text
-      required: true
-      maxLength: 255
+      maxLength: 1024
     languageId: 
       title: _('Languageid')
       type: select
