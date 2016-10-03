@@ -162,16 +162,6 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik Gateway Interface Zend Application
  .
 
-Package: ivozprovider-asterisk-sounds
-Architecture: all
-Section: admin
-Priority: optional
-Homepage: http://www.irontec.com
-Description: IVOZ Provider - Asterisk - Common use sound files
- This package includes sound files for common use in all the
- platform.
- .
-
 Package: ivozprovider-scheme
 Architecture: all
 Section: database
