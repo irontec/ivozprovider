@@ -37,7 +37,7 @@ class ApplicationServers extends Raw\ApplicationServers
             }
             $kamDispatcher->setSetid('1')
                           ->setDestination('sip:' . $model->getIp() . ":6060")
-                          ->setAttrs('maxload=1000;duid=' . $model->getId())
+                          ->setAttrs('duid=' . $model->getId())
                           ->setDescription($model->getName())
                           ->save();
         }
