@@ -1,9 +1,0 @@
-Template: ivozprovider/environment
-Type: select
-Choices: testing, production
-Description: Select current enviroment
- .
- IVOZ Provider packages are ready to be configured for differentes enviroment.
- .
- Some of the files of the package may vary depending on the selected enviroment.
- .
