@@ -67,6 +67,8 @@ production:
         blacklist: 
           holidayTarget: true
           outOfScheduleTarget: true
+          blackListRegExp: true
+          whiteListRegExp: true
       fixedPositions: &externalCallFilters_fixedPositionsLink
         group0:
           colsPerRow: 2
@@ -112,6 +114,8 @@ production:
         blacklist: 
           holidayTarget: true
           outOfScheduleTarget: true
+          blackListRegExp: true
+          whiteListRegExp: true
       fixedPositions:
         <<: *externalCallFilters_fixedPositionsLink
   dialogs: &externalCallFilters_dialogsLink
