@@ -90,10 +90,6 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
-        LanguagesList:
-          title: ngettext('Language', 'Languages', 0)
-          class: ui-silk-comments
-          description: _("List of %s", ngettext('Language', 'Languages', 0))
         KamAccCdrsList:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
