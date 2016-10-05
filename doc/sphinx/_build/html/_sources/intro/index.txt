@@ -1,14 +1,34 @@
-Introducción
-============
+###########################
+Introducción a Ivozprovider
+###########################
 
-Bienvenido a la documentación oficial de IvozProvider.
+********************
+Sobre este documento
+********************
 
-Estas son las secciones que componen esta sección de introducción que tiene como objetivo presentar la solución de forma esquemática:
+.. include:: about.rst
 
-.. toctree::
-   :maxdepth: 2
+*************
+Obtener ayuda
+*************
 
-   about
-   whatisit
-   whatisnot
-   operatorlevels
+.. include:: getting_help.rst
+
+*********************
+¿Qué es IvozProvider?
+*********************
+
+.. include:: what_is_ivozprovider.rst
+
+********************************
+¿Qué hay dentro de IvozProvider?
+********************************
+
+.. include:: what_is_inside.rst
+
+************************************
+¿Quién debería de usar IvozProvider?
+************************************
+
+.. include:: use_cases.rst
+

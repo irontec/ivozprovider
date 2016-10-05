@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Portal nivel Usuario &mdash; documentación de IvozProvider - Oasis</title>
+  <title>Portal de Usuario &mdash; documentación de IvozProvider - Oasis</title>
   
 
   
@@ -31,7 +31,8 @@
 
   
     <link rel="top" title="documentación de IvozProvider - Oasis" href="../index.html"/>
-        <link rel="prev" title="Portal nivel Company" href="../companyportal/index.html"/> 
+        <link rel="next" title="Elementos de seguridad" href="../security/index.html"/>
+        <link rel="prev" title="Faxing Virtual" href="../faxing/index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -80,13 +81,47 @@
           
             
             
-                <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Arquitectura de la solución</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../godportal/index.html">Portal nivel God</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../brandportal/index.html">Portal nivel Brand</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../companyportal/index.html">Portal nivel Company</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Portal nivel Usuario</a></li>
+                <p class="caption"><span class="caption-text">Conceptos iniciales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introducción a Ivozprovider</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Arquitectura general de la plataforma</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../operation_roles/index.html">Roles de usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Instalación y configuración mínima</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instalación inicial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../internal_calls/index.html">Realizar llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_calls/index.html">Emitir/recibir llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuración avanzada</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pbx_features/index.html">Funcionalidades de PBX</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../billing_and_invoices/index.html">Tarificación y facturación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../provisioning/index.html">Provisión de terminales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faxing/index.html">Faxing Virtual</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Portal de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#credenciales-de-acceso">Credenciales de acceso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#urls-de-acceso">URLs de acceso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcionalidades">Funcionalidades</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#estado-del-registro-sip">Estado del registro SIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-basica-a-nivel-de-usuario">Configuración básica a nivel de usuario</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Seguridad y mantenimiento</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Elementos de seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Mantenimiento de la solución</a></li>
 </ul>
 
             
@@ -117,7 +152,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Portal nivel Usuario</li>
+    <li>Portal de Usuario</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -131,118 +166,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="portal-nivel-usuario">
-<h1>Portal nivel Usuario<a class="headerlink" href="#portal-nivel-usuario" title="Enlazar permanentemente con este título">¶</a></h1>
-<p>A continuación vamos a hacer una lista numérica sin especificar el número, porque mola
-y es fácil meter nuevos items a posteriori:</p>
-<ol class="arabic simple">
-<li>Este es el primer elemento.</li>
-<li>Este es el segundo.</li>
-</ol>
-<p>Ahora un listado encadenado con bullets:</p>
-<ul class="simple">
-<li>Esto es un elemento.<ul>
-<li>Esto es un subelemento</li>
-<li>Esto es un subelemento</li>
-</ul>
-</li>
-<li>Otro elemento.</li>
-</ul>
-<p>Ahora las dos cosas juntas:</p>
-<ol class="arabic simple">
-<li>Esto tiene tres aspectos importantes:<ul>
-<li>Primer aspecto</li>
-<li>Segundo aspecto</li>
-<li>Tercer aspecto</li>
-</ul>
-</li>
-<li>Este punto tiene 3 cosas que enumero a continuación:<ol class="arabic">
-<li>Cosa número 1</li>
-<li>Cosa número 2</li>
-<li>Cosa número 3</li>
-</ol>
-</li>
-</ol>
-<p>A continuación definimos unos conceptos clave:</p>
-<dl class="docutils">
-<dt>proxy</dt>
-<dd><p class="first">Un proxy se limita a reenviar tráfico SIP.</p>
-<p class="last">No toca el audio de la llamada.</p>
-</dd>
-<dt>b2bua</dt>
-<dd>Ya tal.</dd>
-</dl>
-<p>Extracto de código de un <strong>hack muy serio</strong> que hacemos en el <em>kamailio.cfg</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre>request_route {
-    dlg_manage();
-    $ru = &quot;sip:676216531@sarevoz.com&quot;;
-    $fu = &quot;sip:25190@sarevoz.com&quot;;
-    route(RELAY);
-}
-
-# Relay request
-route[RELAY] {
-    if(!t_is_set(&quot;failure_route&quot;)) t_on_failure(&quot;MANAGE_FAILURE&quot;);
-
-    if (!t_relay())
-        sl_reply_error();
-
-    exit;
-}
-
-failure_route[MANAGE_FAILURE] {
-    if (t_is_canceled()) {
-        exit;
-    }
-
-    if (t_check_status(&quot;(401)|(407)&quot;)) {
-        $avp(realm) = &#39;&#39;;
-        $avp(provideruser) = &#39;25190&#39;;
-        $avp(secret) = &#39;o79avxYpcB&#39;;
-
-        if (is_avp_set(&quot;$avp(secret)&quot;)) {
-            uac_auth();
-        }
-    }
-
-    route(RELAY);
-}
-</pre></div>
+  <div class="section" id="portal-de-usuario">
+<h1>Portal de Usuario<a class="headerlink" href="#portal-de-usuario" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="credenciales-de-acceso">
+<h2>Credenciales de acceso<a class="headerlink" href="#credenciales-de-acceso" title="Enlazar permanentemente con este título">¶</a></h2>
 </div>
-<p>Ahora metemos una tabla y nos vamos a comer:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="29%" />
-<col width="29%" />
-<col width="41%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">A</th>
-<th class="head">B</th>
-<th class="head">A and B</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>False</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>True</td>
-<td>False</td>
-<td>False</td>
-</tr>
-<tr class="row-even"><td>False</td>
-<td>True</td>
-<td>False</td>
-</tr>
-<tr class="row-odd"><td>True</td>
-<td>True</td>
-<td>True</td>
-</tr>
-</tbody>
-</table>
-<p>Aquí puedes encontrar toda la información: <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">http://www.sphinx-doc.org/en/stable/rest.html</a></p>
-<p>Otra forma de poner el mismo <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">enlace</a>.</p>
+<div class="section" id="urls-de-acceso">
+<h2>URLs de acceso<a class="headerlink" href="#urls-de-acceso" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="funcionalidades">
+<h2>Funcionalidades<a class="headerlink" href="#funcionalidades" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="estado-del-registro-sip">
+<h3>Estado del registro SIP<a class="headerlink" href="#estado-del-registro-sip" title="Enlazar permanentemente con este título">¶</a></h3>
+</div>
+<div class="section" id="configuracion-basica-a-nivel-de-usuario">
+<h3>Configuración básica a nivel de usuario<a class="headerlink" href="#configuracion-basica-a-nivel-de-usuario" title="Enlazar permanentemente con este título">¶</a></h3>
+</div>
+</div>
 </div>
 
 
@@ -252,8 +192,10 @@ failure_route[MANAGE_FAILURE] {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../security/index.html" class="btn btn-neutral float-right" title="Elementos de seguridad" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="../companyportal/index.html" class="btn btn-neutral" title="Portal nivel Company" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="../faxing/index.html" class="btn btn-neutral" title="Faxing Virtual" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

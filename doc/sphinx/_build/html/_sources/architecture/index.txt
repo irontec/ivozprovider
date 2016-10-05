@@ -1,6 +1,41 @@
-Arquitectura de la solución
-===========================
+#####################################
+Arquitectura general de la plataforma
+#####################################
 
-Este esquema refleja la arquitectura global de la solución IvozProvider, con todos los elementos que la componen.
 
-.. image:: img/ivozprovider_flows.png
+***************
+Esquema general
+***************
+
+.. include:: general_scheme.rst
+
+**********************
+Flujo señalización SIP
+**********************
+
+.. include:: signalling_flow.rst
+
+***************
+Flujo audio RTP
+***************
+
+.. include:: audio_flow.rst
+
+*************
+Tráfico HTTPS
+*************
+
+.. include:: web_traffic.rst
+
+*********************
+Elementos adicionales
+*********************
+
+.. include:: additional_elements.rst
+
+********************
+Elementos auxiliares
+********************
+
+.. include:: aux_elements.rst
+

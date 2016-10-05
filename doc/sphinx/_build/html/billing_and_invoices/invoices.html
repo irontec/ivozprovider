@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Generación de facturas &mdash; documentación de IvozProvider - Oasis</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="documentación de IvozProvider - Oasis" href="../index.html"/>
+        <link rel="up" title="Tarificación y facturación" href="index.html"/>
+        <link rel="next" title="Provisión de terminales" href="../provisioning/index.html"/>
+        <link rel="prev" title="Tarificación de llamadas" href="bill_a_call.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> IvozProvider
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Conceptos iniciales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Introducción a Ivozprovider</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Arquitectura general de la plataforma</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../operation_roles/index.html">Roles de usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Instalación y configuración mínima</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Instalación inicial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../internal_calls/index.html">Realizar llamadas internas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_calls/index.html">Emitir/recibir llamadas externas</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuración avanzada</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pbx_features/index.html">Funcionalidades de PBX</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tarificación y facturación</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="call_registry.html">Histórico de llamadas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="billable_calls.html">Llamadas facturables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricing_plans.html">Planes de precio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricing_plans_and_companies.html">Planes de precio asociados a empresas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bill_a_call.html">Tarificación de llamadas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Generación de facturas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plantillas-de-facturas">Plantillas de facturas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#costes-fijos">Costes fijos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-una-factura">Creacion de una factura</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../provisioning/index.html">Provisión de terminales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faxing/index.html">Faxing Virtual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userportal/index.html">Portal de Usuario</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Seguridad y mantenimiento</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Elementos de seguridad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Mantenimiento de la solución</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">IvozProvider</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tarificación y facturación</a> &raquo;</li>
+      
+    <li>Generación de facturas</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/billing_and_invoices/invoices.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="generacion-de-facturas">
+<h1>Generación de facturas<a class="headerlink" href="#generacion-de-facturas" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="plantillas-de-facturas">
+<h2>Plantillas de facturas<a class="headerlink" href="#plantillas-de-facturas" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="costes-fijos">
+<h2>Costes fijos<a class="headerlink" href="#costes-fijos" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="creacion-de-una-factura">
+<h2>Creacion de una factura<a class="headerlink" href="#creacion-de-una-factura" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../provisioning/index.html" class="btn btn-neutral float-right" title="Provisión de terminales" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bill_a_call.html" class="btn btn-neutral" title="Tarificación de llamadas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Irontec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'Oasis',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
