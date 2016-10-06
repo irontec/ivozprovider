@@ -40,6 +40,14 @@ function setup_proxies()
     /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
     /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
 
+}
+
+function start_services()
+{
+    # Start media proxy
+    /bin/systemctl start rtpproxy
+    /bin/systemctl enable rtpproxy
+
     # Stop and disable default kamailio unit
     /bin/systemctl stop kamailio
     /bin/systemctl disable kamailio
@@ -49,6 +57,9 @@ function setup_proxies()
     /bin/systemctl enable kamailio@users
     /bin/systemctl start kamailio@trunks
     /bin/systemctl enable kamailio@trunks
+
+    # Start asterisk right now :p
+    /bin/systemctl start asterisk
 
 }
 
@@ -60,4 +71,6 @@ if [ $1 == "reconfigure" ] || [ -z "$2" ]; then
     setup_portals
     # Setup proxy addresses
     setup_proxies
+    # Setup pbx systems
+    start_services
 fi
