@@ -3,8 +3,8 @@ export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\H\[\033[00m\]:\
 
 # Watch kamailio logs as in tail -f
 alias kamtail='journalctl -u kam* -f -a | kamlog'
-alias kamtail-proxyusers='journalctl -u kamusers* -f -a | kamlog'
-alias kamtail-proxytrunks='journalctl -u kamtrunks* -f -a | kamlog'
+alias kamtail-proxyusers='journalctl -u kamailio@users -f -a | kamlog'
+alias kamtail-proxytrunks='journalctl -u kamailio@trunks -f -a | kamlog'
 
 # Watch rtpengien logs as in tail -f
 alias rtptail='journalctl -u rtpengine -a -f'

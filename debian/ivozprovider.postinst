@@ -45,10 +45,10 @@ function setup_proxies()
     /bin/systemctl disable kamailio
 
     # Start Users & trunks proxyies
-    /bin/systemctl start kamusers@users
-    /bin/systemctl enable kamusers@users
-    /bin/systemctl start kamtrunks@trunks
-    /bin/systemctl enable kamtrunks@trunks
+    /bin/systemctl start kamailio@users
+    /bin/systemctl enable kamailio@users
+    /bin/systemctl start kamailio@trunks
+    /bin/systemctl enable kamailio@trunks
 
 }
 
