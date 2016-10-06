@@ -64,7 +64,7 @@ function start_services()
 }
 
 # Run while reconfigure or first install
-if [ $1 == "reconfigure" ] || [ -z "$2" ]; then
+if [ $1 == "configure" ] || [ -z "$2" ]; then
     # Setup local DNS server
     setup_bind
     # Setup web portals
