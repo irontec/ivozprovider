@@ -11,6 +11,8 @@ storage/*
 .idea/*
 mount-storage.sh
 portals/storage
+portals/public/img/
+portals/public/styles/
 
 userweb/index.phtml
 userweb/scripts/
