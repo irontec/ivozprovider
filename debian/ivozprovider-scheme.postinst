@@ -9,7 +9,7 @@
 export $(systemctl show-environment)
 
 # Setup mysql connection
-db_get mysql-server/root_password || true
+db_get ivozprovider/mysql_password || true
 MYSQL_PASSWORD=$RET
 MYSQL_USER=root
 
@@ -19,6 +19,9 @@ sed -i "s/db.pass=.*/db.pass=$MYSQL_PASSWORD/" /opt/irontec/ivozprovider/scheme/
 
 # Setup password and user in first install (allow changing it later)
 if [ -z "$2" ]; then
+    # Create database if it doesn't exist
+    /usr/bin/mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS ivozprovider"
+
     # Fist time, run phing on scheme dir
     pushd /opt/irontec/ivozprovider/scheme 
     /usr/bin/phing -f build_prod.xml init -De=$APPLICATION_ENV
