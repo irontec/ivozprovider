@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="documentación de IvozProvider - Oasis" href="../index.html"/>
-        <link rel="next" title="Panel de administrador global" href="god_portal.html"/>
+        <link rel="next" title="Bloque ‘Gestión General’" href="god_portal.html"/>
         <link rel="prev" title="Instalación desde DockerHub" href="../installation/docker_install.html"/> 
 
   
@@ -97,9 +97,9 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Realizar llamadas internas</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html">Panel de administrador global</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brand_portal.html">Panel de administrador de marca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="company_portal.html">Panel de administrador de empresa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="god_portal.html">Bloque &#8216;Gestión General&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brand_portal.html">Bloque &#8216;Configuración de Marca&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="company_portal.html">Bloque &#8216;Configuración de Empresa&#8217;</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../external_calls/index.html">Emitir/recibir llamadas externas</a></li>
@@ -165,44 +165,23 @@
   <div class="section" id="realizar-llamadas-internas">
 <h1>Realizar llamadas internas<a class="headerlink" href="#realizar-llamadas-internas" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>El objetivo de este bloque será configurar IvozProvider para realizar llamadas internas, partiendo de la instalación base descrita en la sección anterior.</p>
-<p>Este será el índice que seguiremos para conseguir que Alice llame a Bob :)</p>
+<p>Para conseguir conseguir que Alice llame a Bob, tendremos que realizar labores de 3 niveles descritos en <a class="reference internal" href="../operation_roles/index.html#operation-roles"><span class="std std-ref">Roles de usuario</span></a>, de ahí la organización del siguiente índice en esos 3 bloques:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="god_portal.html">Panel de administrador global</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html#configuracion-global-personalizada">Configuración global personalizada</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#proxies-de-usuarios">Proxies de Usuarios</a></li>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#proxies-de-salida">Proxies de Salida</a></li>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#dominios-sip">Dominios SIP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="god_portal.html">Bloque &#8216;Gestión General&#8217;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="god_portal.html#configuracion-personalizada-en-la-instalacion">Configuración personalizada en la instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="god_portal.html#configuracion-global-estandar">Configuración global estándar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="god_portal.html#emular-la-marca-demo">Emular la marca Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html#configuracion-global-de-partida">Configuración global de partida</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#servidores-de-aplicacion">Servidores de aplicación</a></li>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#servidores-de-media">Servidores de Media</a></li>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#operadores-de-plataforma">Operadores de plataforma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand_portal.html">Bloque &#8216;Configuración de Marca&#8217;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="brand_portal.html#dominio-sip-de-la-compania">Dominio SIP de la compañía</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brand_portal.html#emular-la-empresa-demo">Emular la empresa Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html#configuracion-marca-demo-demobrand">Configuración marca Demo (demoBrand)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#datos-basicos">Datos básicos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#configuracion-de-operadores-de-marca">Configuración de operadores de marca</a></li>
-<li class="toctree-l3"><a class="reference internal" href="god_portal.html#configuracion-de-urls-de-acceso">Configuración de URLs de acceso</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html#emular-la-marca-demo-concepto">Emular la marca Demo: concepto</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="brand_portal.html">Panel de administrador de marca</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="brand_portal.html#configuracion-empresa-demo-democompany">Configuración empresa Demo (demoCompany)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="brand_portal.html#datos-basicos">Datos básicos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="brand_portal.html#configuracion-de-operadores-de-empresa">Configuración de operadores de empresa</a></li>
-<li class="toctree-l3"><a class="reference internal" href="brand_portal.html#configuracion-de-urls-de-acceso">Configuración de URLs de acceso</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="brand_portal.html#emular-la-empresa-demo-concepto">Emular la empresa Demo: concepto</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="company_portal.html">Panel de administrador de empresa</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="company_portal.html#terminal">Terminal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="company_portal.html#extension">Extensión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="company_portal.html">Bloque &#8216;Configuración de Empresa&#8217;</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="company_portal.html#terminales">Terminales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="company_portal.html#extensiones">Extensiones</a></li>
 <li class="toctree-l2"><a class="reference internal" href="company_portal.html#usuarios">Usuarios</a></li>
 </ul>
 </li>
@@ -217,7 +196,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="god_portal.html" class="btn btn-neutral float-right" title="Panel de administrador global" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="god_portal.html" class="btn btn-neutral float-right" title="Bloque ‘Gestión General’" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../installation/docker_install.html" class="btn btn-neutral" title="Instalación desde DockerHub" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

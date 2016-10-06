@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Panel de administrador de marca &mdash; documentación de IvozProvider - Oasis</title>
+  <title>Bloque ‘Configuración de Marca’ &mdash; documentación de IvozProvider - Oasis</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="documentación de IvozProvider - Oasis" href="../index.html"/>
         <link rel="up" title="Realizar llamadas internas" href="index.html"/>
-        <link rel="next" title="Panel de administrador de empresa" href="company_portal.html"/>
-        <link rel="prev" title="Panel de administrador global" href="god_portal.html"/> 
+        <link rel="next" title="Bloque ‘Configuración de Empresa’" href="company_portal.html"/>
+        <link rel="prev" title="Bloque ‘Gestión General’" href="god_portal.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,18 +98,16 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Realizar llamadas internas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html">Panel de administrador global</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Panel de administrador de marca</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configuracion-empresa-demo-democompany">Configuración empresa Demo (demoCompany)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#datos-basicos">Datos básicos</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuracion-de-operadores-de-empresa">Configuración de operadores de empresa</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuracion-de-urls-de-acceso">Configuración de URLs de acceso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="god_portal.html">Bloque &#8216;Gestión General&#8217;</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bloque &#8216;Configuración de Marca&#8217;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dominio-sip-de-la-compania">Dominio SIP de la compañía</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#no-tengo-tiempo-para-crear-registros-dns">No tengo tiempo para crear registros DNS</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#emular-la-empresa-demo-concepto">Emular la empresa Demo: concepto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emular-la-empresa-demo">Emular la empresa Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="company_portal.html">Panel de administrador de empresa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="company_portal.html">Bloque &#8216;Configuración de Empresa&#8217;</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../external_calls/index.html">Emitir/recibir llamadas externas</a></li>
@@ -160,7 +158,7 @@
       
           <li><a href="index.html">Realizar llamadas internas</a> &raquo;</li>
       
-    <li>Panel de administrador de marca</li>
+    <li>Bloque &#8216;Configuración de Marca&#8217;</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -174,22 +172,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="panel-de-administrador-de-marca">
-<h1>Panel de administrador de marca<a class="headerlink" href="#panel-de-administrador-de-marca" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="section" id="configuracion-empresa-demo-democompany">
-<h2>Configuración empresa Demo (demoCompany)<a class="headerlink" href="#configuracion-empresa-demo-democompany" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="section" id="datos-basicos">
-<h3>Datos básicos<a class="headerlink" href="#datos-basicos" title="Enlazar permanentemente con este título">¶</a></h3>
+  <div class="section" id="bloque-configuracion-de-marca">
+<h1>Bloque &#8216;Configuración de Marca&#8217;<a class="headerlink" href="#bloque-configuracion-de-marca" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Para conseguir que esta DemoBrand tenga una compañía con 2 usuarios que se puedan llamar entre sí, vamos a tener que hacer muy poco en este bloque.</p>
+<p>De hecho, al acceder a la sección <strong>Empresas</strong>, vemos que ya existe una compañía <em>DemoCompany</em> que podremos utilizar para cumplir nuestro ansiado objetivo :)</p>
+<img alt="../_images/company_list.png" src="../_images/company_list.png" />
+<p>Solo le falta una cosa a esta empresa, marcado con <strong>EDIT</strong> en la captura anterior.</p>
+<div class="section" id="dominio-sip-de-la-compania">
+<span id="domain-per-company"></span><h2>Dominio SIP de la compañía<a class="headerlink" href="#dominio-sip-de-la-compania" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Tal y como se introdujo en la sección anterior, es <strong>imprescindible</strong> que cada empresa tenga un dominio público que resuelva a la IP configurada para el <a class="reference internal" href="god_portal.html#proxyusers"><span class="std std-ref">Proxy de Usuarios</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El registro DNS puede ser de tipo A (soportado por todos los hardphones/softphones) o del tipo NAPTR+SRV.</p>
 </div>
-<div class="section" id="configuracion-de-operadores-de-empresa">
-<h3>Configuración de operadores de empresa<a class="headerlink" href="#configuracion-de-operadores-de-empresa" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez configurado el dominio (por medio de procedimientos que escapan al objetivo de este documento), bastará con escribir el parámetro en el campo adecuado de nuestra empresa:</p>
+<img alt="../_images/set_domain.png" src="../_images/set_domain.png" />
+<p>Una vez guardada la empresa, este dominio aparecerá en la sección descrita <a class="reference internal" href="god_portal.html#god-sipdomains"><span class="std std-ref">en la sección anterior</span></a>:</p>
+<img alt="../_images/domain_list.png" src="../_images/domain_list.png" />
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Es fundamental entender este bloque, sin un registro DNS correctamente configurado apuntando a la IP del Proxy de Usuarios, ¡fracasaremos en nuestro objetivo!</p>
 </div>
-<div class="section" id="configuracion-de-urls-de-acceso">
-<h3>Configuración de URLs de acceso<a class="headerlink" href="#configuracion-de-urls-de-acceso" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Esta es una buena señal para el dominio que acabamos de configurar, siempre y cuando en lugar de 10.10.3.10 aparezca la IP pública configurada en <a class="reference internal" href="god_portal.html#proxyusers"><span class="std std-ref">Proxy de Usuarios</span></a>.</p>
+<img alt="../_images/dominio_bien_configurado.png" src="../_images/dominio_bien_configurado.png" />
+<div class="admonition danger">
+<p class="first admonition-title">Peligro</p>
+<p class="last">¿Se ha insistido suficiente en que sin un registro DNS correctamente configurado apuntando a la IP del Proxy de Usuarios no funcionará nada?</p>
+</div>
+<div class="section" id="no-tengo-tiempo-para-crear-registros-dns">
+<span id="dnshack"></span><h3>No tengo tiempo para crear registros DNS<a class="headerlink" href="#no-tengo-tiempo-para-crear-registros-dns" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Todo lo contado hasta este punto es verídico: a medida que vayamos creando marcas y éstas vayan creando empresas, cada una de ellas necesitará un registro DNS.</p>
+<p>Pero la primera empresa de la plataforma es especial y puede apoderarse de la IP del Proxy de Usuarios y usarla como si de un DNS se tratara:</p>
+<img alt="../_images/fake_domain.png" src="../_images/fake_domain.png" />
+<p>A pesar de no ser un dominio, al estar usándose como tal, aparecerá en la sección de <strong>Dominios</strong>:</p>
+<img alt="../_images/fake_domain2.png" src="../_images/fake_domain2.png" />
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Es importante entender que este truco solo es válido para la primera empresa de la plataforma ;)</p>
 </div>
 </div>
-<div class="section" id="emular-la-empresa-demo-concepto">
-<h2>Emular la empresa Demo: concepto<a class="headerlink" href="#emular-la-empresa-demo-concepto" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="emular-la-empresa-demo">
+<h2>Emular la empresa Demo<a class="headerlink" href="#emular-la-empresa-demo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El proceso de emulación de empresa es idéntico al de emulación de marca, con la diferencia de que filtra el bloque &#8216;Configuración de Empresa&#8217; en lugar del bloque &#8216;Configuración de Marca&#8217;.</p>
+<p>Una vez emulada la empresa, la parte superior derecha de la pantalla mostrará que vamos por el buen camino :)</p>
+<img alt="../_images/emular_empresa.png" src="../_images/emular_empresa.png" />
 </div>
 </div>
 
@@ -200,10 +227,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="company_portal.html" class="btn btn-neutral float-right" title="Panel de administrador de empresa" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="company_portal.html" class="btn btn-neutral float-right" title="Bloque ‘Configuración de Empresa’" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="god_portal.html" class="btn btn-neutral" title="Panel de administrador global" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="god_portal.html" class="btn btn-neutral" title="Bloque ‘Gestión General’" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

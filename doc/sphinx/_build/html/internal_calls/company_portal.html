@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Panel de administrador de empresa &mdash; documentación de IvozProvider - Oasis</title>
+  <title>Bloque ‘Configuración de Empresa’ &mdash; documentación de IvozProvider - Oasis</title>
   
 
   
@@ -33,7 +33,7 @@
     <link rel="top" title="documentación de IvozProvider - Oasis" href="../index.html"/>
         <link rel="up" title="Realizar llamadas internas" href="index.html"/>
         <link rel="next" title="Emitir/recibir llamadas externas" href="../external_calls/index.html"/>
-        <link rel="prev" title="Panel de administrador de marca" href="brand_portal.html"/> 
+        <link rel="prev" title="Bloque ‘Configuración de Marca’" href="brand_portal.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,12 +98,15 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Realizar llamadas internas</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="god_portal.html">Panel de administrador global</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brand_portal.html">Panel de administrador de marca</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Panel de administrador de empresa</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extension">Extensión</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usuarios">Usuarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="god_portal.html">Bloque &#8216;Gestión General&#8217;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brand_portal.html">Bloque &#8216;Configuración de Marca&#8217;</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bloque &#8216;Configuración de Empresa&#8217;</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminales">Terminales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extensiones">Extensiones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usuarios">Usuarios</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#que-nos-falta">¿Qué nos falta?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -156,7 +159,7 @@
       
           <li><a href="index.html">Realizar llamadas internas</a> &raquo;</li>
       
-    <li>Panel de administrador de empresa</li>
+    <li>Bloque &#8216;Configuración de Empresa&#8217;</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -170,16 +173,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="panel-de-administrador-de-empresa">
-<h1>Panel de administrador de empresa<a class="headerlink" href="#panel-de-administrador-de-empresa" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="section" id="terminal">
-<h2>Terminal<a class="headerlink" href="#terminal" title="Enlazar permanentemente con este título">¶</a></h2>
+  <div class="section" id="bloque-configuracion-de-empresa">
+<h1>Bloque &#8216;Configuración de Empresa&#8217;<a class="headerlink" href="#bloque-configuracion-de-empresa" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Estamos cerca de hacer nuestra primera llamada en nuestro flamente nuevo IvozProvider, solo queda crear 6 cosas dentro de nuestra empresa DemoCompany:</p>
+<ul class="simple">
+<li>2 terminales</li>
+<li>2 extensiones</li>
+<li>2 usuarios</li>
+</ul>
+<div class="section" id="terminales">
+<h2>Terminales<a class="headerlink" href="#terminales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Vamos a la sección terminales y... voilà! Ya tenemos 2 terminales pre-creados:</p>
+<img alt="../_images/terminals.png" src="../_images/terminals.png" />
 </div>
-<div class="section" id="extension">
-<h2>Extensión<a class="headerlink" href="#extension" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="extensiones">
+<h2>Extensiones<a class="headerlink" href="#extensiones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Seguimos por tanto en la sección de extensiones, pero se nos han adelantado y ya tenemos 2 extensiones para nuestro uso:</p>
+<img alt="../_images/extensions.png" src="../_images/extensions.png" />
+<p>Nada por hacer en esta sección tampoco, ¡vamos a la última!</p>
 </div>
 <div class="section" id="usuarios">
 <h2>Usuarios<a class="headerlink" href="#usuarios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Como era de esperar, también tenemos 2 usuarios:</p>
+<img alt="../_images/users.png" src="../_images/users.png" />
+<p>Llegados a este punto y sin necesidad de tocar nada en este bloque, ya tenemos todo listo para hacer una llamada de Alice a Bob.</p>
+<div class="section" id="que-nos-falta">
+<h3>¿Qué nos falta?<a class="headerlink" href="#que-nos-falta" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Lo único que nos falta es disponer de 2 terminales SIP (hardphone, softphone, Android/IOS APP) y configurarlos como sigue:</p>
+<p><strong>ALICE</strong></p>
+<ul class="simple">
+<li><strong>Usuario</strong>: alice</li>
+<li><strong>Contraseña</strong>: alice</li>
+<li><strong>Dominio</strong>: users.democompany.com (o la IP si hemos hecho <a class="reference internal" href="brand_portal.html#dnshack"><span class="std std-ref">el truco</span></a>)</li>
+</ul>
+<p><strong>BOB</strong></p>
+<ul class="simple">
+<li><strong>Usuario</strong>: bob</li>
+<li><strong>Contraseña</strong>: bob</li>
+<li><strong>Dominio</strong>: users.democompany.com (o la IP si hemos hecho <a class="reference internal" href="brand_portal.html#dnshack"><span class="std std-ref">el truco</span></a>)</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Es posible que el usuario y el dominio se nos pida junto, tendremos que introducir <a class="reference external" href="mailto:alice&#37;&#52;&#48;users&#46;democompany&#46;com">alice<span>&#64;</span>users<span>&#46;</span>democompany<span>&#46;</span>com</a> y <a class="reference external" href="mailto:bob&#37;&#52;&#48;users&#46;democompany&#46;com">bob<span>&#64;</span>users<span>&#46;</span>democompany<span>&#46;</span>com</a>, respectivamente (o con la IP si hemos hecho <a class="reference internal" href="brand_portal.html#dnshack"><span class="std std-ref">el truco</span></a>).</p>
+</div>
+<p>Tras configurar los terminales, Alice debería de poder llamar a Bob sin más que marcar 102 en su terminal.</p>
+</div>
 </div>
 </div>
 
@@ -193,7 +231,7 @@
         <a href="../external_calls/index.html" class="btn btn-neutral float-right" title="Emitir/recibir llamadas externas" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="brand_portal.html" class="btn btn-neutral" title="Panel de administrador de marca" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="brand_portal.html" class="btn btn-neutral" title="Bloque ‘Configuración de Marca’" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
