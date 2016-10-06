@@ -1,0 +1,54 @@
+Template: ivozprovider/menu
+Type: select
+Choices: configure_users_address, configure_trunks_address, configure_mysql_password, configure_finish
+Choices-es.UTF-8: Configurar IP para proxy SIP de usuarios, Configurar IP para proxy SIP de proveedores, Configurar password de MySQL, >> Finalizar configuración
+Choices-en.UTF-8: Configure Users SIP proxy address, Configure Providers SIP proxy address, Configure MySQL root password, >> Finish configurating
+Default: configure_users_address
+Description:
+ Welcome to IVOZ Provider Standalone setup.
+ .
+ You can access to this menu anytime by running "dpkg-reconfigure ivozprovider"
+ .
+ Please, configure the minimum required data in order to setup all required services:
+ .
+Description-es.UTF-8:
+ Bienvenido a la instación de instancia unica IVOZ Provider.
+ .
+ Puede acceder a este menu en cualquier momento ejecutando "dpkg-reconfigure ivozprovider"
+ .
+ Por favor, introduzca los minimos datos requereidos para configurar los servicios:
+ .
+
+Template: ivozprovider/users_address
+Type: string
+Description: Enter Users SIP proxy listen IP address:
+Description-es: Introduzca la IP para proxy SIP de Usuarios:
+
+Template: ivozprovider/trunks_address
+Type: string
+Description: Enter Providers SIP proxy listen IP address:
+
+Template: ivozprovider/mysql_password
+Type: password
+Description: Enter root (administrator) MySQL password:
+
+Template: ivozprovider/mysql_password_confirm
+Type: password
+Description: Renter root (administrator) MySQL password:
+
+Template: ivozprovider/mysql_password_error
+Type: error
+Description: Entered passwords does not match. Please select again the option to configure MySQL password.
+
+Template: ivozprovider/invalid_ip
+Type: error
+Description: Entered IP address doesn't seems a valid IPv4 address. Please select again the configuration option.
+
+Template: ivozprovider/incomplete_config
+Type: error
+Description:
+ It seems some of the configurable options are not properly filled. Please, be sure you
+ configure all required options to set basic service data.
+ .
+ You can reconfigure this options anytime running "dpkg-reconfigure ivozprovider"
+ .

@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+function setup_bind()
+{
+    # Configure local domain
+    db_get ivozprovider/users_address       || true
+    sed -i "s/#VIRTUALIP_users#/$RET/g"         /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/trunks_address      || true
+    sed -i "s/#VIRTUALIP_trunks#/$RET/g"        /etc/bind/db.ivozprovider.local
+    sed -i "s/#VIRTUALIP_jobs#/127.0.0.1/g"     /etc/bind/db.ivozprovider.local
+    sed -i "s/#VIRTUALIP_data#/127.0.0.1/g"     /etc/bind/db.ivozprovider.local
+    sed -i "s/#VIRTUALIP_storage#/127.0.0.1/g"  /etc/bind/db.ivozprovider.local
+    sed -i "s/#VIRTUALIP_logs#/127.0.0.1/g"     /etc/bind/db.ivozprovider.local
+
+    # Restart DNS server
+    /bin/systemctl restart bind9
+}
+
+function setup_resolv()
+{
+    # Already tweaked resolv.conf
+    if grep -q ivozprovider.local /etc/resolv.conf; then
+        return
+    fi
+
+    # StandAlone instance, resolve DNS to local server
+    /bin/cat > /etc/resolv.conf <<- EOM
+domain ivozprovider.local
+search ivozprovider.local
+nameserver 127.0.0.1
+EOM
+
+}
+
+function setup_portals()
+{
+    # Setup portals mysql address
+    db_get ivozprovider/mysql_password      || true
+    sed -i "s/changme/$RET/g"   /opt/irontec/ivozprovider/portals/application/configs/application.ini
+}
+
+# Setup local DNS server
+setup_bind
+# Setup resolution to configured DNS server
+setup_resolv
+# Setup wbe portals
+setup_portals

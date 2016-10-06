@@ -20,10 +20,12 @@ Package: ivozprovider
 Architecture: all
 Section: admin
 Priority: optional
-Depends: ivozprovider-profile-as,
+Depends: debconf, po-debconf,
+    ivozprovider-profile-as,
     ivozprovider-profile-data,
     ivozprovider-profile-proxy,
     ivozprovider-profile-portal,
+    ivozprovider-scheme,
     ivozprovider-kamailio-users,
     ivozprovider-kamailio-trunks
 Homepage: http://www.irontec.com
