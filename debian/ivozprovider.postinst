@@ -7,13 +7,9 @@ function setup_bind()
 {
     # Configure local domain
     db_get ivozprovider/users_address       || true
-    sed -i "s/#VIRTUALIP_users#/$RET/g"         /etc/bind/db.ivozprovider.local
+    sed -i "s/users\s+IN\s+A\s+.*/\t\tIN\tA\t$RET/g"    /etc/bind/db.ivozprovider.local
     db_get ivozprovider/trunks_address      || true
-    sed -i "s/#VIRTUALIP_trunks#/$RET/g"        /etc/bind/db.ivozprovider.local
-    sed -i "s/#VIRTUALIP_jobs#/127.0.0.1/g"     /etc/bind/db.ivozprovider.local
-    sed -i "s/#VIRTUALIP_data#/127.0.0.1/g"     /etc/bind/db.ivozprovider.local
-    sed -i "s/#VIRTUALIP_storage#/127.0.0.1/g"  /etc/bind/db.ivozprovider.local
-    sed -i "s/#VIRTUALIP_logs#/127.0.0.1/g"     /etc/bind/db.ivozprovider.local
+    sed -i "s/trunks\s+IN\s+A\s+.*/\t\tIN\tA\t$RET/g"    /etc/bind/db.ivozprovider.local
 
     # Restart DNS server
     /bin/systemctl restart bind9
@@ -39,12 +35,39 @@ function setup_portals()
 {
     # Setup portals mysql address
     db_get ivozprovider/mysql_password      || true
-    sed -i "s/changme/$RET/g"   /opt/irontec/ivozprovider/portals/application/configs/application.ini
+    sed -i "s/changeme/$RET/g"   /opt/irontec/ivozprovider/portals/application/configs/application.ini
 }
 
-# Setup local DNS server
-setup_bind
-# Setup resolution to configured DNS server
-setup_resolv
-# Setup wbe portals
-setup_portals
+function setup_proxies()
+{
+    # Setup portals mysql address
+    db_get ivozprovider/mysql_password      || true
+    MYSQL_PASS=$RET
+    db_get ivozprovider/users_address       || true
+    USERS_ADDRESS=$RET
+    db_get ivozprovider/trunks_address      || true
+    TRUNKS_ADDRESS=$RET
+
+    # Update database tables
+    /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
+    /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
+
+    # Start Users & trunks proxyies
+    /bin/systemctl start kamusers@users
+    /bin/systemctl enable kamusers@users
+    /bin/systemctl start kamtrunks@trunks
+    /bin/systemctl enable kamtrunks@trunks
+
+}
+
+# Run while reconfigure or first install
+if [ $1 == "reconfigure" ] || [ -z "$2" ]; then
+    # Setup local DNS server
+    setup_bind
+    # Setup resolution to configured DNS server
+    setup_resolv
+    # Setup web portals
+    setup_portals
+    # Setup proxy addresses
+    setup_proxies
+fi

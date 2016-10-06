@@ -168,7 +168,7 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Depends: phing, php5-mysql, ivozprovider-profile-common
+Depends: phing, php5-mysql, ivozprovider-profile-data
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
