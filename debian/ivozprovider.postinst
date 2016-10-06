@@ -40,6 +40,10 @@ function setup_proxies()
     /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
     /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
 
+    # Stop and disable default kamailio unit
+    /bin/systemctl stop kamailio
+    /bin/systemctl disable kamailio
+
     # Start Users & trunks proxyies
     /bin/systemctl start kamusers@users
     /bin/systemctl enable kamusers@users
