@@ -6,12 +6,12 @@
 function setup_bind()
 {
     # Configure local domain
-    sed -i "s/users /d"    /etc/bind/db.ivozprovider.local
+    sed -i "/users /d"    /etc/bind/db.ivozprovider.local
     db_get ivozprovider/users_address       || true
     echo "users      A      IN      $RET"           >> /etc/bind/db.ivozprovider.local
 
 
-    sed -i "s/trunks /d"    /etc/bind/db.ivozprovider.local
+    sed -i "/trunks /d"    /etc/bind/db.ivozprovider.local
     db_get ivozprovider/trunks_address      || true
     echo "trunks      A      IN      $RET"          >> /etc/bind/db.ivozprovider.local
 
