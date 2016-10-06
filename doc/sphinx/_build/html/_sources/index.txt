@@ -56,12 +56,3 @@ Documentación oficial de IvozProvider
     security/index
     maintenance/index
 
-################
-Indices y tablas
-################
-
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
