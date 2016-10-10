@@ -23,7 +23,7 @@ function setup_portals()
 {
     # Setup portals mysql address
     db_get ivozprovider/mysql_password      || true
-    sed -i "s/changeme/$RET/g"   /opt/irontec/ivozprovider/portals/application/configs/application.ini
+    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/portals/application/configs/application.ini
 }
 
 function setup_proxies()
