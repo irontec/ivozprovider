@@ -9,5 +9,7 @@ Nada como una imagen para ilustrar los distintos proyectos que integra IvozProvi
 .. image:: img/ivozprovider_logos.png
     :align: center
 
-Cada una de estas piezas se detallará con mayor profundidad en el bloque titulado :ref:`architecture`.
+.. note:: Nuestro más sincero agradecimiento a los desarrolladores de todos estos proyectos, así como a las comunidades de usuarios.
+
+La función que cumple cada una de estas piezas se detallará con mayor profundidad en el bloque titulado :ref:`architecture`.
 
