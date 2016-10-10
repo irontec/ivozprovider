@@ -1,18 +1,9 @@
 Source: ivozprovider
 Section: php
 Priority: optional
-Build-Depends: debhelper,
-    dh-systemd,
-    nodejs,
-    npm,
-    ruby-compass,
-    git,
-    openssh-client,
-    curl,
-    python,
-    php5,
-    nodejs,
-    ruby-compass
+Build-Depends: debhelper, dh-systemd,
+    nodejs, npm, ruby-compass, git, openssh-client, curl, php5,
+    python, make, python-sphinx, python-sphinx-rtd-theme
 Standards-Version: 3.9.6
 Maintainer: Irontec Package Team <packages@irontec.com>
 
@@ -82,6 +73,7 @@ Architecture: all
 Section: admin
 Priority: optional
 Depends: ivozprovider-profile-common,
+    ivozprovider-doc,
     apache2,
     php5,
     php5-igbinary,
@@ -213,3 +205,10 @@ Description: IVOZ Provider - Recordings - Zendframework application
  Recordings Zend Application for uploading recordings to klear
  .
 
+Package: ivozprovider-doc
+Architecture: all
+Priority: optional
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - HTML Documentation
+ Generated documentation with sphinx using Read the Docs theme.
+ .
