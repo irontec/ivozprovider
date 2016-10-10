@@ -60,4 +60,5 @@ El proceso de emulación de empresa es idéntico al de emulación de marca, con 
 Una vez emulada la empresa, la parte superior derecha de la pantalla mostrará que vamos por el buen camino :)
 
 .. image:: img/emular_empresa.png
+    :align: center
 

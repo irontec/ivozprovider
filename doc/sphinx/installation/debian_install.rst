@@ -2,6 +2,10 @@
 Instalación por paquetes Debian
 ########################################################
 
+IvozProvider está diseñado para instalarse y actualizarse mediante paquetes Debian. En concreto, la release actual esta pensada para funcionar sobre `Debian Jessie 8 <https://www.debian.org/releases/jessie>`_.
+
+Se recomienda emplear las `guias oficiales de instalación <https://www.debian.org/releases/jessie/installmanual>`_ para obtener un sistema base mínimo, ya que toda dependencia que necesite posteriormente será instalada automaticamente.
+
 Tanto si deseas realizar una :ref:`instalacion-standalone` o una :ref:`instalacion-distribuida`, es preciso configurar los repositorios de paquetes debian de Irontec.
 
 ********************************************************
@@ -10,7 +14,7 @@ Configurar repositorios APT
 
 Actualmente se emplean dos repositorios diferentes tanto para la última release de IvozProvider (oasis) como para la de Klear (chloe)
 
-.. code-block:: bash
+.. code-block:: console
 
     cd /etc/apt/sources.list.d
     echo deb http://packages.irontec.com/debian oasis main extra > ivozprovider.list
@@ -18,7 +22,7 @@ Actualmente se emplean dos repositorios diferentes tanto para la última release
 
 Añadimos la clave publica del repositorio:
 
-.. code-block:: bash
+.. code-block:: console
 
     wget http://packages.irontec.com/public.key -q -O - | apt-key add -
 
@@ -37,10 +41,14 @@ Una vez configurados los repositorios será preciso seleccionar el paquete acord
     - ivozprovider-profile-portal
     - ivozprovider-profile-as
 
-.. code-block:: bash
+.. code-block:: console
 
     apt-get update
     apt-get -o Dpkg::Options::="--force-confnew" install ivozprovider
+
+.. note::
+
+    Algunos de los paquetes de IvozProvider continen configuración predeterminada para los servicios, por lo que varios ficheros de configuración remplazan a los distrubuidos por los mantenedores originales. Durante la instalación incial es recomendable emplear la opción :code:`--force-confnew` para evitar preguntas acerca de estos ficheros.
 
 ********************************************************
 Completar instalación
@@ -57,12 +65,8 @@ El menú permite, entre otros:
 
 Es posible cambiar cualquiera de estos valores una vez instalado IvozProvider volviendo a ejecutar:
 
-.. code-block:: bash
+.. code-block:: console
 
     dpkg-reconfigure ivozprovider
-
-
-
-
 
 

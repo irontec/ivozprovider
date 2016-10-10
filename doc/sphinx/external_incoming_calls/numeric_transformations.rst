@@ -1,3 +1,5 @@
+.. _numeric_transformations:
+
 ##########################
 Transformaciones numéricas
 ##########################
@@ -9,6 +11,11 @@ Concepto
 **IvozProvider** está diseñado con la intención de **poder dar servicio en cualquier lugar del planeta**, no solamente en el país originario de la solución.
 
 Un concepto muy importante para conseguir este objetivo es el de las transformaciones númericas, que consisten en la adaptación de los distintos sistemas de numeración de los países del mundo definidos en `E.164 <https://www.itu.int/rec/T-REC-E.164/es>`_ a un formato neutro.
+
+La sección que le permite configurar al operador de marca todo lo relativo a **Transformaciones numéricas** es:
+
+.. image:: img/numeric_transformations_section.png
+    :align: center
 
 En concreto, se distinguen 2 casos:
 

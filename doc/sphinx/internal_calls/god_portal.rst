@@ -7,6 +7,7 @@ Bloque 'Gestión General'
 En esta sección haremos referencia a todo lo relativo al rol operador global, configurable en el bloque **Gestión general** del panel web (solo visible para God):
 
 .. image:: img/bloque_god.png
+    :align: center
 
 Configuración personalizada en la instalación
 =============================================
@@ -105,22 +106,27 @@ Antes de pasar a la siguiente sección, es importante entender el concepto de **
 - Aparte de ese bloque, también ves los bloques **Configuración de marca** y **Configuración de empresa** que tienen este aspecto:
 
 .. image:: img/emular_marca_prev.png
+    :align: center
 
 - Atención especial al siguiente botón:
 
 .. image:: img/emular_marca.png
+    :align: center
 
 - Una vez pulsado, muestra una ventana flotante tal que:
 
 .. image:: img/emular_marca2.png
+    :align: center
 
 - Al seleccionar la marca DemoBrand, el icono cambia y muestra la marca que se está emulando:
 
 .. image:: img/emular_marca3.png
+    :align: center
 
 - La parte superior derecha de la página también muestra la marca que se está emulando:
 
 .. image:: img/emular_marca4.png
+    :align: center
 
 ¿Qué implica esta emulación?
 ----------------------------

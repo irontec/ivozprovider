@@ -35,7 +35,8 @@ Documentación oficial de IvozProvider
     :maxdepth: 1
 
     internal_calls/index
-    external_calls/index
+    external_incoming_calls/index
+    external_outgoing_calls/index
 
 .. toctree::
     :maxdepth: 2
