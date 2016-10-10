@@ -1,3 +1,5 @@
+.. _architecture:
+
 #####################################
 Arquitectura general de la plataforma
 #####################################

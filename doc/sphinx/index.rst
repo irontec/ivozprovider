@@ -10,6 +10,7 @@ Documentación oficial de IvozProvider
 .. toctree::
     :maxdepth: 2
     :caption: Conceptos iniciales
+    :name: concepts
 
     intro/index
 
@@ -26,6 +27,7 @@ Documentación oficial de IvozProvider
 .. toctree::
     :maxdepth: 2
     :caption: Instalación y configuración mínima
+    :name: installation
 
     installation/index
 
@@ -38,6 +40,7 @@ Documentación oficial de IvozProvider
 .. toctree::
     :maxdepth: 2
     :caption: Configuración avanzada
+    :name: advanced
 
     pbx_features/index
 
@@ -52,6 +55,7 @@ Documentación oficial de IvozProvider
 .. toctree::
     :maxdepth: 2
     :caption: Seguridad y mantenimiento
+    :name: security
 
     security/index
     maintenance/index
