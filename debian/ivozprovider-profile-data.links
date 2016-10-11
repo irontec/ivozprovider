@@ -1,0 +1,3 @@
+/etc/bind/named.conf.options.ivozprovider   /etc/bind/named.conf.options
+/etc/bind/named.conf.local.ivozprovider     /etc/bind/named.conf.local
+/etc/mysql/my.cnf.ivozprovider              /etc/mysql/my.cnf

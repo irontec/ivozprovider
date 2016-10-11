@@ -156,7 +156,7 @@ Section: php
 Priority: optional
 Depends: ivozprovider-data-library
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - Asterik Gateway Interface Zend Application
+Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
 
 Package: ivozprovider-scheme
