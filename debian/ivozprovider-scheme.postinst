@@ -15,6 +15,7 @@ export $(systemctl show-environment)
 db_get ivozprovider/mysql_password || true
 MYSQL_PASSWORD=$RET
 MYSQL_USER=root
+db_stop
 
 # Replace settings in properties
 sed -i "s/db.user=.*/db.user=$MYSQL_USER/"     /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
