@@ -27,3 +27,5 @@ Aparte de esta función principal, su visibilidad global y acceso total le hacen
 
 En resumen, **es el único rol que no tiene límites dentro de la plataforma**, de ahí la denominación *God* que se utilizará en múltiples lugares de esta documentación.
 
+.. important:: Este rol se encarga de mantener la plataforma, adaptándola a las necesidades de cada momento. Su rol no tiene ningún tipo de límite y es el que da acceso a los *n* operadores de marca.
+

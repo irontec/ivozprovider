@@ -44,11 +44,7 @@ Una vez configurados los repositorios será preciso seleccionar el paquete acord
 .. code-block:: console
 
     apt-get update
-    apt-get -o Dpkg::Options::="--force-confnew" install ivozprovider
-
-.. note::
-
-    Algunos de los paquetes de IvozProvider continen configuración predeterminada para los servicios, por lo que varios ficheros de configuración remplazan a los distrubuidos por los mantenedores originales. Durante la instalación incial es recomendable emplear la opción :code:`--force-confnew` para evitar preguntas acerca de estos ficheros.
+    apt-get install ivozprovider
 
 ********************************************************
 Completar instalación

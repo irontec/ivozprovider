@@ -14,3 +14,5 @@ Por otra parte, las credenciales SIP le permitirán configurar su terminal (o te
 
 .. note:: Unas mismas credenciales se pueden utilizar desde múltiples dispositivos, dando lugar a lo que se conoce como *parallel-forking*: si llaman al usuario, sonarán todos sus dispositivos activos y podrá contestar la llamada desde cualquiera de ellos.
 
+.. important:: Los usuarios son los que utilizan y disfrutan todas las funcionalidades de IvozProvider.
+

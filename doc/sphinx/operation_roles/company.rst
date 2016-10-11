@@ -20,5 +20,5 @@ Para ello, tendrá que:
     - Llamada en espera
 
 
-En resumen, son los responsables de **configurar su sistema de telefonía a su gusto y de utilizar todas las funcionalidades que proveé IvozProvider**.
+.. important:: En resumen, los administradores de empresa son los responsables de **configurar su sistema de telefonía a su gusto y de utilizar todas las funcionalidades que proveé IvozProvider**.
 
