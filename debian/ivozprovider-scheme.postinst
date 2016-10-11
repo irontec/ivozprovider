@@ -22,6 +22,9 @@ sed -i "s/db.pass=.*/db.pass=$MYSQL_PASSWORD/" /opt/irontec/ivozprovider/scheme/
 
 # Setup password and user in first install (allow changing it later)
 if [ -z "$2" ]; then
+    # Load Timezones
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -uroot -p$MYSQL_PASSWORD mysql
+
     # Create database if it doesn't exist
     /usr/bin/mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS ivozprovider"
 
