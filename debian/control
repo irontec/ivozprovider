@@ -45,6 +45,7 @@ Package: ivozprovider-profile-as
 Architecture: all
 Section: admin
 Priority: optional
+Pre-Depends: libmyodbc, unixodbc
 Depends: ivozprovider-profile-common,
     ivozprovider-asterisk-agi,
     ivozprovider-asterisk-config,
@@ -52,9 +53,7 @@ Depends: ivozprovider-profile-common,
     ivozprovider-asterisk,
     sngrep,
     ghostscript,
-    libtiff-tools,
-    libmyodbc,
-    unixodbc
+    libtiff-tools
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile for Application Servers
  .
