@@ -52,10 +52,18 @@ A pesar de no ser un dominio, al estar usándose como tal, aparecerá en la secc
 
 .. tip:: Es importante entender que este truco solo es válido para la primera empresa de la plataforma ;)
 
+.. _emulate_company:
+
 Emular la empresa Demo
 ======================
 
 El proceso de emulación de empresa es idéntico al de emulación de marca, con la diferencia de que filtra el bloque 'Configuración de Empresa' en lugar del bloque 'Configuración de Marca'.
+
+.. image:: img/emulate_company.png
+    :align: center
+
+.. image:: img/emulate_company2.png
+    :align: center
 
 Una vez emulada la empresa, la parte superior derecha de la pantalla mostrará que vamos por el buen camino :)
 

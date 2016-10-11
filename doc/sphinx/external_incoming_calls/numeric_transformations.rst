@@ -44,6 +44,8 @@ En el caso de un operador de Ucrania, que no utiliza 00 como código internacion
 
 El objetivo de la adaptación de entrada es que, independientemente de la notación utilizada por el operador, la llamada se acabe en un formato homogéneo y común.
 
+.. _e164:
+
 .. important:: Este formato común se suele llamar E.164 y muestra los números sin el código internacional y con el prefijo de país: e.g. 34911234567
 
 

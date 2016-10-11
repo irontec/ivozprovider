@@ -17,5 +17,7 @@ Dado que el operador de marca es el encargado de facturar a sus empresas y de ha
 
 Como se puede ver, las tareas del operador de marca poco tienen que ver con las del operador global, pero son vitales para que los usuarios finales puedan hacer uso de las funcionalidades de IvozProvider.
 
-.. important:: En resumen, los operadores de marca dan acceso a los administradores de las empresas a las que den servicio y configuran la plataforma para poder enrutar, tarificar y facturar sus llamadas.
+.. _brand_responsibilities:
+
+.. important:: **En resumen**, los operadores de marca **dan acceso a** los administradores de las **empresas** a las que den servicio **y configuran la plataforma para poder enrutar, tarificar y facturar sus llamadas**.
 

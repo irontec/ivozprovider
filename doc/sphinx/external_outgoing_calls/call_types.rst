@@ -6,6 +6,8 @@ En este punto de la configuración, tenemos que configurar IvozProvider para que
 
 Para ello, en primer lugar, necesitamos que los números externos recaigan en un **patrón de destino** dado de alta con anterioridad.
 
+.. _target_patterns:
+
 *******************
 Patrones de destino
 *******************
