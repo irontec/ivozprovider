@@ -7,7 +7,6 @@
 
 case "$1" in
     install|upgrade)
-        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/odbcinst.ini.divert            /etc/odbcinst.ini
         dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/odbc.ini.divert                /etc/odbc.ini
     ;;
 esac
