@@ -52,7 +52,9 @@ Depends: ivozprovider-profile-common,
     ivozprovider-asterisk,
     sngrep,
     ghostscript,
-    libtiff-tools
+    libtiff-tools,
+    libmyodbc,
+    unixodbc
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile for Application Servers
  .
@@ -140,7 +142,6 @@ Package: ivozprovider-asterisk-config
 Architecture: all
 Section: admin
 Priority: optional
-Depends: libmyodbc, unixodbc
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterisk - Configuration files
  This package includes all config files found in /etc
