@@ -1,0 +1,14 @@
+#!/bin/bash
+
+### This function will be used to fix that files that are owned by another packages
+### We'll move original files and will be replaces symlinks to our package files.
+### That would grant proper update files without regenerating links.
+### We'll be super-safers and move original files to .noivozng backups
+
+case "$1" in
+    install|upgrade)
+        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/odbcinst.ini.divert            /etc/odbcinst.ini
+        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/odbc.ini.divert                /etc/odbc.ini
+    ;;
+esac
+
