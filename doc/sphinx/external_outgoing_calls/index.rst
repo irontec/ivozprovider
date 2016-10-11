@@ -7,7 +7,6 @@ El objetivo de este bloque será configurar IvozProvider para realizar llamadas 
 Para ello, seguiremos los siguientes pasos:
 
 .. toctree::
-   :maxdepth: 1
 
    call_types
    call_routing
