@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Make resolv.conf read-only
+/bin/chmod 400 /etc/resolv.conf
+
 # Restart Local DNS
 /bin/systemctl restart bind9
 
