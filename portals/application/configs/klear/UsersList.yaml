@@ -114,14 +114,14 @@ production:
             pass: 1
             active: 1
         group2:
-          label: _("Jefe-Asistente")
+          label: _("Boss-Assistant")
           colsPerRow: 12
           fields:
             isBoss: 4
             bossAssistantId: 8
             exceptionBoosAssistantRegExp: 12
         group3:
-          label: _("Datos básicos")
+          label: _("Basic Configuration")
           colsPerRow: 6
           fields:
             terminalId: 2
@@ -138,7 +138,7 @@ production:
             voicemailSendMail: 1
             voicemailAttachSound: 1
         group5:
-          label: _("Pertenencia a grupos")
+          label: _("Group belonging")
           colsPerRow: 3
           fields:
             PickUpRelUsers: 3
