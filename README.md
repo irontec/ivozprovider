@@ -6,6 +6,15 @@ Ivoz Provider is a multitenant solution for VoIP telephony providers.
 
 You can browse online documentation at https://ironArt3mis.github.io/ivozprovider
 
+## Frequent Asked Questions
+
+Feel free to subscribe to ivozprovider mailing lists for users or developers for any question
+or suggestion.
+
+    - users@lists-ivozprovider.irontec.com
+    - dev@list-ivozproivder.irontec.com
+
+Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
 
 ## License
     Ivoz Provider - Multitenant solution for VoIP telephony providers
