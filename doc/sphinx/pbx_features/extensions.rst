@@ -1,3 +1,5 @@
+.. _extensions:
+
 ###########
 Extensiones
 ###########
@@ -6,9 +8,7 @@ La configuración de partida incluía 2 extensiones (101 y 102) que apuntaban di
 
 .. note:: **Una extensión es**, por definición, **un número interno con una lógica asignada**.
 
-*************************
-Crear una nueva extensión
-*************************
+.. rubric:: Crear una nueva extensión
 
 La ventana de creación de una nueva extensión es tal que así:
 

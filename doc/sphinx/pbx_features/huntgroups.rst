@@ -1,3 +1,5 @@
+.. _huntgroups:
+
 ###############
 Grupos de salto
 ###############

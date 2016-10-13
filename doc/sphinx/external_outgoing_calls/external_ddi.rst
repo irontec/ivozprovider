@@ -1,3 +1,5 @@
+.. _external_ddi:
+
 #######################
 Configurar DDI saliente
 #######################

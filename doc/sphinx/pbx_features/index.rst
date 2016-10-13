@@ -23,7 +23,6 @@ Para ello, seguiremos el siguiente índice:
     :caption: Números externos
 
     sounds
-    timefilters
     external_filters
     external_ddis
 
