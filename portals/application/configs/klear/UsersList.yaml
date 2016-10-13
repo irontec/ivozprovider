@@ -37,20 +37,23 @@ production:
           email: true
           username: true
           pass: true
-          isBoss: true
+          active: true
           doNotDisturb: true
           timezoneId: true
-          terminalId: true
           extensionId: true
+          terminalId: true
           outgoingDDIId: true
           callACLId: true
-          PickUpRelUsers: true
+          voicemailEnabled: true
+          isBoss: true
           bossAssistantId: true
           exceptionBoosAssistantRegExp: true
-          voicemailEnabled: true
-          active: true
+          PickUpRelUsers: true
         blacklist:
           email: true
+          username: true
+          active: true
+          doNotDisturb: true
           pass: true
           timezoneId: true
           callACLId: true
@@ -95,11 +98,14 @@ production:
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
-          colsPerRow: 3
+          colsPerRow: 12
           fields:
-            name: 1
-            lastname: 1
-            email: 1
+            name: 4
+            lastname: 4
+            email: 4
+            countryId: 5
+            languageId: 4
+            timezoneId: 3
         group1:
           label: _("Login info")
           colsPerRow: 3
@@ -108,14 +114,14 @@ production:
             pass: 1
             active: 1
         group2:
-          colsPerRow: 3
+          label: _("Jefe-Asistente")
+          colsPerRow: 12
           fields:
-            timezoneId: 1
-            languageId: 1
-            isBoss: 1
-            bossAssistantId: 1
-            exceptionBoosAssistantRegExp: 2
+            isBoss: 4
+            bossAssistantId: 8
+            exceptionBoosAssistantRegExp: 12
         group3:
+          label: _("Datos básicos")
           colsPerRow: 6
           fields:
             terminalId: 2
@@ -124,7 +130,6 @@ production:
             callACLId: 2
             doNotDisturb: 2
             callWaiting: 2
-            PickUpRelUsers: 4
         group4:
           label: _("Voicemail")
           colsPerRow: 3
@@ -132,6 +137,12 @@ production:
             voicemailEnabled: 1
             voicemailSendMail: 1
             voicemailAttachSound: 1
+        group5:
+          label: _("Pertenencia a grupos")
+          colsPerRow: 3
+          fields:
+            PickUpRelUsers: 3
+            HuntGroupsRelUsers: 3
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
       controller: edit

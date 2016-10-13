@@ -56,7 +56,6 @@ production:
       title: _('Timezone')
       type: select
       defaultValue: 145
-      required: true
       source: 
         data: mapper
         config: 
@@ -151,7 +150,7 @@ production:
               show: ["bossAssistantId", "exceptionBoosAssistantRegExp"]
               hide: []
     bossAssistantId: 
-      title: _('Boss assistant')
+      title: _('Assistant')
       type: select
       source: 
         data: mapper
