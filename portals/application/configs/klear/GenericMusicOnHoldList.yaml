@@ -72,6 +72,8 @@ production:
         <<: *forcedBrand
       fields:
         order:
+          <<: *genericMusicOnHold_orderLink
+        fixedPositions:
           <<: *musicOnHold_fixedPosLink
         blacklist:
           status: true
