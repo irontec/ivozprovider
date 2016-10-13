@@ -47,7 +47,7 @@ production:
     direct_media_method: 
       title: _('CallerID update method')
       type: select
-      defaultValue: update
+      defaultValue: invite
       source: 
         data: inline
         values: 
