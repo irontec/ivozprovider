@@ -1,5 +1,7 @@
 Una vez que hemos llegado a un acuerdo con un Operador VoIP y hemos configurado esta relación de *peering*, solo faltan dos tareas:
 
+.. _settingup_ddi:
+
 ##########################
 Dar de alta un DDI externo
 ##########################

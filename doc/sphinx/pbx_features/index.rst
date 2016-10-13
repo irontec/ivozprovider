@@ -24,15 +24,15 @@ Para ello, seguiremos el siguiente índice:
 
     sounds
     external_filters
+    huntgroups
+    ivrs
+    conference_rooms
     external_ddis
 
 .. toctree::
     :maxdepth: 1
     :caption: Funcionalidades adicionales
 
-    huntgroups
-    ivrs
-    conference_rooms
     call_captures
     services
     call_recording

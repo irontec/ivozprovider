@@ -1,3 +1,5 @@
+.. _faxing_system:
+
 ##################
 [P] Faxing Virtual
 ##################
