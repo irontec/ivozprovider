@@ -63,11 +63,11 @@ production:
           class: ui-silk-asterisk-yellow
           description: _("List of %s", ngettext('Application server', 'Application servers', 0))  
         ProxyUsersList:
-          title: ngettext('Proxy user', 'Proxy users', 0)
+          title: ngettext('Proxy user', 'Proxy users', 1)
           class: ui-silk-server
           description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))              
         ProxyTrunksList:
-          title: ngettext('Proxy trunk', 'Proxy trunks', 0)
+          title: ngettext('Proxy trunk', 'Proxy trunks', 1)
           class: ui-silk-server
           description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))              
         MediaRelaySetsList: 
