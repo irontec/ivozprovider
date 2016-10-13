@@ -1,10 +1,12 @@
-######################
-Funcionalidades de PBX
-######################
+##########################
+[S] Funcionalidades de PBX
+##########################
 
-A pesar de que IvozProvider es una solución orientada a operador, dispone de muchas de las funcionalidades de PBX más habituales.
+En el bloque anterior hemos conseguido realizar llamadas internas y externas realizando una configuración mínima, partiendo de la configuración que deja el propio instalador y dejando de lado múltiples apartados y funcionalidades.
 
-En este bloque se explicará cada una de ellas, siguiendo el siguiente índice:
+El objetivo de este bloque será describir cada una de estas secciones con profundidad y ver así las funcionalidades de PBX que IvozProvider ofrece.
+
+Para ello, seguiremos el siguiente índice:
 
 .. toctree::
     :maxdepth: 1

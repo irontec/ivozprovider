@@ -33,7 +33,7 @@ Esta es una buena señal para el dominio que acabamos de configurar, siempre y c
 
 .. image:: img/dominio_bien_configurado.png
 
-.. danger:: ¿Se ha insistido suficiente en que sin un registro DNS correctamente configurado apuntando a la IP del Proxy de Usuarios no funcionará nada? 
+.. danger:: ¿Se ha insistido suficiente en que sin un registro DNS correctamente configurado apuntando a la IP del Proxy de Usuarios no funcionará nada?
 
 .. _dnshack:
 

@@ -3,6 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. danger:: Work in progress:
+
+        - **[P]**: Pending (not even started)
+        - **[S]**: Started (but not finished)
+
+    Not marked sections are finished.
+
 #####################################
 Documentación oficial de IvozProvider
 #####################################

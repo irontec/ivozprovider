@@ -1,6 +1,8 @@
-#######################
-Provisión de terminales
-#######################
+.. _provisioning:
+
+###########################
+[P] Provisión de terminales
+###########################
 
 ********************
 Esquema de provisión

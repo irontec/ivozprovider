@@ -1,6 +1,6 @@
-##########################
-Tarificación y facturación
-##########################
+##############################
+[P] Tarificación y facturación
+##############################
 
 En este bloque se tratará un tema de primordial importancia para los administradores de marca:
 
