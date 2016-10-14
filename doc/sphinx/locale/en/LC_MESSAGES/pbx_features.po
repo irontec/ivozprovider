@@ -1,0 +1,1535 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-14 11:48+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: ../../pbx_features/call_captures.rst:5
+msgid "Capturas de llamada"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:7
+msgid ""
+"Se entiende por captura de llamada **la acción de un usuario que "
+"escucha** (o se entera de otro modo, vía panel de supervisión, etc.) "
+"**que una extensión está sonando y, desde su terminal, roba dicha "
+"llamada**."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:9
+msgid "IvozProvider soporta dos tipos de captura de llamadas:"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:12
+msgid "Captura de llamadas directa"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:14
+msgid ""
+"En las capturas de llamadas directas el usuario indica un código que "
+"incluye la extensión del teléfono cuya llamada quiere *robar*. Si el "
+"código fuera \\*95, por ejemplo, marcaría \\*95101 para capturar una "
+"llamada que esté sonando en la extensión 101."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:15
+msgid "Captura de llamadas indirecta"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:17
+msgid ""
+"En las capturas de llamadas indirectas, en cambio, el usuario indica un "
+"código y el sistema busca qué teléfono está sonando dentro de sus grupos "
+"de captura."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:21
+msgid "Grupos de captura de llamada"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:23
+msgid ""
+"Para poder realizar **capturas de llamada indirectas**, el usuario que "
+"captura tiene que pertener al mismo grupo de captura que el usuario al "
+"que pretende capturar."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:25
+msgid ""
+"La sección **Grupos de captura de llamada** nos permite crear estos "
+"grupos y decir qué usuarios pertenecen a ellos:"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:29
+msgid ""
+"Como vimos en la sección de :ref:`users`, también se puede editar un "
+"usuario para editar los grupos de captura a los que pertenece."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:31
+msgid ""
+"Un usuario puede pertenecer a más de un grupo de captura, el sistema "
+"tendrá en cuenta todos sus grupos."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:34
+msgid ""
+"Desde el momento en el que un usuario está en un grupo de captura, puede "
+"empezar a intentar capturar de forma indirecta pero para ello necesita "
+"saber el código de captura."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:38
+msgid "Código de captura de llamada"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:40
+msgid "IvozProvider permite definir los códigos de captura a 2 niveles:"
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:42
+msgid "A nivel de marca en **Configuración de Marca** > **Servicios**."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:44
+msgid "A nivel de empresa en **Configuración de Empresa** > **Servicios**."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:46
+msgid ""
+"Esto permite que el administrador de marca pueda definir unos códigos "
+"genéricos para todas sus empresas y que, las empresas que deseen utilizar"
+" otros códigos, puedan redefinirlos."
+msgstr ""
+
+#: ../../pbx_features/call_captures.rst:48
+msgid ""
+":ref:`La siguiente sección <services>` explica todo lo relativo a "
+"servicios, que engloba los códigos de captura y otros servicios "
+"adicionales a los que se accede marcando códigos que comienzan por \\*."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:5
+#: ../../pbx_features/call_permissions.rst:46
+msgid "Permisos de llamada"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:7
+msgid ""
+"Los **Permisos de llamada** determinan qué usuarios pueden llamar a qué "
+"destinos internos."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:9
+msgid ""
+"Las extensiones internas son accesibles por todos los usuarios, **los "
+"permisos de llamada solo aplican a llamadas externas**."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:11
+msgid "La configuración de **permisos de llamada** tiene 2 partes:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:13
+msgid ""
+"Clasificar las llamadas en determinados tipos utilizando **expresiones "
+"regulares** [*]_:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:15
+msgid ""
+"A nivel de marca: **Configuración de Marca** > **Patrones de permiso "
+"genéricos**."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:17
+msgid ""
+"A nivel de empresa: **Configuración de Empresa** > **Patrones de permisos"
+" de llamada**."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:19
+msgid ""
+"Definir políticas para los patrones deseados: **Configuración de "
+"Empresa** > **Permisos llamada**"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:23
+msgid "Patrones de permiso"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:25
+msgid ""
+"La clasificación de llamadas se realiza en las secciones indicadas a "
+"nivel de marca o a nivel de empresa."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:27
+msgid ""
+"Cuando un operador de marca crea una empresa, todos los **Patrones de "
+"permiso genéricos** definidos en ese momento a nivel de **Configuración "
+"de Marca** se copian a **Configuración de Empresa** > **Patrones de "
+"permisos de llamada**. De esta forma, el operador de marca puede definir "
+"los más habituales y evitar este trabajo a los administradores de "
+"empresa."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:29
+msgid "La creación de nuevos patrones es muy simple:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:34
+msgid ""
+"Este nuevo patrón de permisos engloba las llamadas que comiencen por 6 o "
+"7 y sigan con 8 dígitos del 0 al 9. Es decir, engloba todas las "
+"numeraciones móviles nacionales."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:37
+msgid "Formato de los números externos"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:38
+msgid ""
+"Las expresiones regulares de los patrones de permiso tienen que utilizar "
+"el formato que utilice un usuario del mismo país que la compañía a la "
+"hora de llamar."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:40
+msgid ""
+"Es decir, un usuario (español, porque tal y como veremos los usuarios "
+"tienen también un código de país) de una empresa de española llamará a "
+"números móviles, por ejemplo, así: 676 676 676."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:42
+msgid ""
+"No se utiliza código de país ni formato E.164, **se escriben las "
+"expresiones regulares tal y como llamaría un usuario con el mismo código "
+"de país que la empresa en cuestión**."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:48
+msgid ""
+"La definición de un **Permiso de llamada** utiliza una lógica más fácil "
+"de describir con un ejemplo."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:50
+msgid "Imaginemos que tenemos los siguientes **patrones de permisos**:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:54
+msgid "Podríamos definir un **Permiso de llamada** como el que sigue:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:58
+msgid ""
+"La acción por defecto describe lo que hay que hacer con la llamada una "
+"vez que se han evaluado todas las reglas (permitir/rechazar)."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:60
+msgid ""
+"Editamos el **permiso de llamada** que acabamos de crear para añadir las "
+"reglas necesarias:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:64
+msgid ""
+"La **métrica** determina el orden de evaluación de las reglas y la acción"
+" lo que se hará con la llamada en caso de *matchear* (permitir/rechazar)."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:68
+msgid ""
+"Una vez hecho lo propio para el otro **patrón de permisos**, nuestro "
+"**permiso de llamadas** quedará como sigue:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:73
+msgid ""
+"Ya solo faltaría añadírselo a un usuario concreto en la sección "
+"**Configuración de empresa** > **Usuarios**:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:77
+msgid ""
+"Desde este momento, Alice solo podría llamar a extensiones internas "
+"(siempre están permitidas) y a móviles y fijos nacionales."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:79
+msgid "https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:5
+msgid "Grabación de llamadas"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:9
+msgid "Grabación automática por DDI"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:13
+msgid "Grabación on demand"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:17
+msgid "Listado de grabaciones"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:5
+msgid "Salas de audioconferencias"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:7
+msgid ""
+"IvozProvider provee la funcionalidad de salas de audiconferencias que se "
+"pueden configurar en la sección **Configuración de empresa** > **Salas de"
+" conferencias**."
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:10
+msgid "Crear una sala de audioconferencias"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:11
+msgid ""
+"La siguiente imagen ilustra el proceso de creación de una sala de "
+"audioconferencias:"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:16
+#: ../../pbx_features/external_filters.rst:62 ../../pbx_features/ivrs.rst:20
+#: ../../pbx_features/terminals.rst:14 ../../pbx_features/users.rst:20
+msgid "Nombre"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:18
+msgid "Nombre por el que se referenciará la sala en otras secciones"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:19
+msgid "Límite de participantes"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:21
+msgid "Apartir del número especificado, no se admitirán más miembros."
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:22
+msgid "Protegido con contraseña / Código PIN"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:24
+msgid ""
+"Se puede forzar al sistema a pedir un PIN para poder entrar. En caso de "
+"activar, se puede introducir un PIN numérico."
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:26
+msgid "Para desactivar el límite de participantes, configurar su valor a 0."
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:29
+msgid "Asociar una extensión o un DDI externo"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:30
+msgid ""
+"De poco sirve una sala de conferencias si no podemos meter a los "
+"participantes a la misma."
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:32
+msgid ""
+"Para poder meter participantes, el primer paso sería asociar una "
+"extensión interna a la sala, para poder desvíar a la misma, transferir, "
+"etc.:"
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:36
+msgid ""
+"En la siguiente sección veremos como también se puede apuntar un "
+":ref:`DDI externo <external_ddis>` a una sala de conferencias, para meter"
+" en la sala a gente externa a la empresa."
+msgstr ""
+
+#: ../../pbx_features/conference_rooms.rst:38
+msgid ""
+"Existen otras formas de meter un participante externo a una sala de "
+"audioconferencias sin dedicar un DDI externo: que alguien de dentro "
+"transfiera la llamada a la extensión de la sala, acceder por medio de un "
+"IVR, etc."
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:5
+msgid "Extensiones"
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:7
+msgid ""
+"La configuración de partida incluía 2 extensiones (101 y 102) que "
+"apuntaban directamente a *Alice* y *Bob*, por lo que apenas dijimos nada "
+"sobre la sección **Configuración de empresa** > **Extensiones**."
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:9
+msgid ""
+"**Una extensión es**, por definición, **un número interno con una lógica "
+"asignada**."
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:12
+msgid "Crear una nueva extensión"
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:13
+msgid "La ventana de creación de una nueva extensión es tal que así:"
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:18
+msgid "Número"
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:20
+msgid ""
+"El número que al ser marcado por un usuario interno activará la lógica "
+"que sigue. Tiene que tener una longitud mínima de 2 y estar compuesto "
+"únicamente por dígitos."
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:21
+msgid "Enrutar"
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:23
+msgid ""
+"Este selector nos permite indicar la lógica que seguirá esta numeración "
+"cuando sea marcada por un usuario concreto. Al seleccionar un ítem en "
+"cuestión, se nos mostrará un selector adicional para seleccionar el grupo"
+" de salto, sala de conferencias, etc."
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:25
+msgid ""
+"En el caso de las extensiones que apuntan a usuario, la vinculación con "
+"el usuario concreto tendrá que hacerse desde **Configuración de empresa**"
+" > **Usuarios**."
+msgstr ""
+
+#: ../../pbx_features/extensions.rst:27
+msgid ""
+"Si existe una extensión cuyo número conflicte con un número externo, el "
+"número externo quedará enmascarado y resultará, en la práctica, "
+"inaccesible para toda la empresa."
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:5
+msgid "DDIs externos"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:7
+msgid ""
+"En la sección preliminar :ref:`settingup_ddi` se describió con todo "
+"detalle la configuración necesaria para configurar un DDI externo directo"
+" a un usuario."
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:9
+msgid ""
+"Después de explicar las secciones anteriores, podemos llevar esta "
+"configuración un poco más allá:"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:13
+msgid "Filtro de entrada"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:15
+msgid ""
+"Podemos seleccionar el **Filtro de entrada externo** configurado en "
+":ref:`la sección anterior <external_filters>`."
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:23
+msgid "Tratamientos"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:25
+msgid ""
+"Vemos que tenemos más opciones aparte de enviar la llamada, una vez "
+"superado los filtros de horario y calendario (y previa locución de "
+"bienvenida), directamente a un usuario:"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:27
+msgid ":ref:`huntgroups`"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:31
+msgid ":ref:`IVR Genérico <generic_ivrs>`"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:35
+msgid ":ref:`IVR a medida <custom_ivrs>`"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:39
+msgid ":ref:`conference_rooms`"
+msgstr ""
+
+#: ../../pbx_features/external_ddis.rst:43
+msgid ""
+"También podemos apuntar el DDI a un :ref:`fax virtual <faxing_system>`, "
+"pero esto se verá en el siguiente bloque."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:5
+msgid "Filtros de entrada externo"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:7
+msgid ""
+"Una de las configuraciones más habituales que todo administrador de "
+"empresa querrá realizar en un momento dado es poner filtros de horario y "
+"de calendario a sus :ref:`external_ddis`."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:9
+msgid "Para ello, el primer paso es crear un horario."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:12
+msgid "Crear un horario"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:13
+msgid ""
+"La sección **Configuración de Empresa** > **Horarios** permite definir "
+"los tramos horarios en los que un :ref:`DDI externo <external_ddis>` está"
+" dentro de horario."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:15
+msgid ""
+"La interfaz que se le presenta al administrador de empresa cuando añade "
+"un horario es la siguiente:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:19
+msgid ""
+"Con la configuración anterior, hemos definido el tramo horario de mañana "
+"de una empresa de Lunes a Jueves."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:21
+msgid ""
+"Sigamos con el ejemplo y definamos el tramo horario de tarde de Lunes a "
+"Jueves:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:25
+msgid "Y el horario reducido de los viernes:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:29
+msgid ""
+"Ya tenemos los siguientes tramos horarios que, combinados, describen un "
+"horario de oficina tradicional:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:33
+msgid ""
+"Los horarios definen, una vez sumados, los tramos horarios activos: toda "
+"hora que no caiga dentro de uno de los tramos agrupados será considerada "
+"como llamada fuera de horario."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:36
+msgid "Crear un calendario"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:37
+msgid ""
+"Los calendarios definen, una vez sumados, los días que se tienen que "
+"considerar festivos."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:39
+msgid "Imaginemos que creamos 3 calendarios tal que:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:43
+msgid ""
+"La creación de calendarios solo requiere dar un nombre al mismo, una vez "
+"creado hay que añadir días festivos a dicho calendario pulsando el botón "
+"de la derecha del lápiz:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:47
+msgid ""
+"Desde este momento, es calendario tiene marcado el día 1 de Enero de 2016"
+" como día festivo con locución de festivo especial llamada \"Feliz año\"."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:49
+msgid ""
+"Los calendarios tienen una lógica contraria a los horarios: si un día "
+"concreto no está definido como festivo en uno de los calendarios, será "
+"considerado como día laborable."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:51
+msgid ""
+"Si un día es festivo en un calendario y no hay locución de festivo "
+"especial, se reproducirá la locución de festivo del filtro de entrada "
+"externo (ver más abajo)."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:54
+msgid "Crear un filtro de entrada externo"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:55
+msgid ""
+"Una vez que tenemos unos horaris y unos calendarios creados, llega el "
+"momento de agruparlos en lo que en IvozProvider se conoce por **Filtro de"
+" entrada externos**."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:57
+msgid ""
+"El interfaz que se le presenta al administrador de empresa es el "
+"siguiente:"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:64
+msgid "Nombre con el que se referenciará este filtro."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:65 ../../pbx_features/ivrs.rst:26
+msgid "Locución de bienvenida"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:67
+msgid ""
+"Esta locución se reproduce siempre que la llamada no se va a rechazar por"
+" festivo o fuera horario (es decir, en una hora normal de un día normal)."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:68
+msgid "Locución de festivo"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:70
+msgid ""
+"Esta locución se reproducirá cuando el día de hoy esté marcado como "
+"festivo en uno de los calendarios y no se haya definido una locución de "
+"festivo especial en dicho calendario para ese día."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:71
+msgid "Tipo de desvío festivo"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:73
+msgid ""
+"Si una llamada entra un día festivo, aparte de la locución de festivo (si"
+" la hay), se puede realizar un desvío a un buzón de voz, a un número "
+"externo o a una extensión interna. En el ejemplo, la llamada se desviará "
+"los días festivos al móvil 676 676 676."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:74
+msgid "Locución fuera horario"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:76
+msgid ""
+"Esta locución se reproducirá cuando, siendo un día no festivo, la hora "
+"actual no esté dentro de ningunos de los horarios vinculados."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:77
+msgid "Tipo de desvío fuera horario"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:79
+msgid ""
+"Lo mismo que en festivo, pero para el caso de fuera horario. En la "
+"imagen, no se ejecutaría ningún desvío."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:80
+msgid "Calendarios"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:82
+msgid ""
+"Permite seleccionar múltiples calendarios, de forma que el calendario del"
+" filtro es la suma de todos ellos."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:83
+msgid "Horarios"
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:85
+msgid ""
+"Permite seleccionar múltiples horarios, de forma que el horario del "
+"filtro es la suma de todos ellos."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:87
+msgid ""
+"El día festivo tiene prevalencia sobre el fuera horario. Primero se "
+"evalúan los calendarios, luego los horarios."
+msgstr ""
+
+#: ../../pbx_features/external_filters.rst:89
+msgid ""
+"En la siguiente sección veremos como este filtro se asigna a los "
+":ref:`external_ddis` que queramos, definiendo así el comportamiento de "
+"los mismos fuera de horario y en días festivos, así como dentro de "
+"horario en el caso de *setear* locución de bienvenida en el filtro."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:5
+msgid "Grupos de salto"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:7
+msgid ""
+"Los grupos de salto nos permiten definir lógicas de *ringado* más allá de"
+" la básica **llamada a usuario**."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:9
+msgid "Existen de varios tipos:"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:12
+msgid "A todos"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:14
+msgid "La llamada suena en varios terminales a la vez durante el tiempo definido."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:15
+msgid "Secuencialmente (una vez)"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:17
+msgid ""
+"Suenan los usuarios definidos, en el orden definido y durante el tiempo "
+"definido a cada uno de ellos. Al acabar la secuencia, la llamada se "
+"cuelga."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:18
+msgid "Secuencialmente (infito)"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:20
+msgid ""
+"Suenan los usuarios definidos, en el orden definido y durante el tiempo "
+"definido. Al acabar la secuencia, se vuelve a iniciar la secuencia."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:21
+msgid "Aleatoriamente"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:23
+msgid ""
+"Reparte las llamadas entre los usuarios elegidos de forma aleatoria, "
+"sonando cada uno de ellos el tiempo acordado. Una vez que suenan todos, "
+"la llamada se cuelga."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:26
+msgid "Ejemplo 1: Grupo de salto *ringall*"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:27
+msgid ""
+"Creemos por ejemplo un grupo de salto que llame a la par a nuestros 2 "
+"usuarios durante 30 segundos:"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:31
+msgid ""
+"Pulsando el icono de las personas podemos añadir a Alice y Bob a nuestro "
+"grupo de salto:"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:36
+msgid "Ejemplo 2: Grupo de salto secuencial"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:37
+msgid ""
+"Editemos ahora este grupo de salto para que llame 10 segundos a Alice y "
+"después 15 segundos a Bob, reiniciando la secuencia si ninguno de los 2 "
+"contesta:"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:41
+msgid ""
+"En este caso tenemos que indicar una **prioridad** (los usuarios suenan "
+"de menos a mayor prioridad) y un tiempo de *ringing*:"
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:45
+msgid ""
+"Para que ciertas lógicas (desvíos, etc.) alcancen un **Grupo de salto**, "
+"basta con crear una extensión apuntando a dicho grupo de salto y utilizar"
+" esta extensión como destino de la lógica."
+msgstr ""
+
+#: ../../pbx_features/huntgroups.rst:47
+msgid "Creemos la extensión 200 que apunte a este grupo de salto:"
+msgstr ""
+
+#: ../../pbx_features/index.rst:3
+msgid "[S] Funcionalidades de PBX"
+msgstr ""
+
+#: ../../pbx_features/index.rst:5
+msgid ""
+"En el bloque anterior hemos conseguido realizar llamadas internas y "
+"externas realizando una configuración mínima, partiendo de la "
+"configuración que deja el propio instalador y dejando de lado múltiples "
+"apartados y funcionalidades."
+msgstr ""
+
+#: ../../pbx_features/index.rst:7
+msgid ""
+"El objetivo de este bloque será describir cada una de estas secciones con"
+" profundidad y ver así las funcionalidades de PBX que IvozProvider "
+"ofrece."
+msgstr ""
+
+#: ../../pbx_features/index.rst:9
+msgid "Para ello, seguiremos el siguiente índice:"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:3
+msgid "Interactive Voice Response (IVR)"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:5
+msgid ""
+"Un IVR es la forma habitual de realizar **menús telefónicos** en los que "
+"**el llamante puede decidir el destino de su llamada sin más que pulsar "
+"dígitos** en base a las locuciones que se le van reproduciendo."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:11
+msgid "IVRs genéricos"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:13
+msgid ""
+"En los IVR genéricos el llamante marca directamente una extensión interna"
+" que conoce (o que se le indica en la locución de bienvenida) y el "
+"sistema le pone en contacto con dicha extensión de forma automática:"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:17
+msgid "Describamos cada uno de los parámetros de un IVR genérico:"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:22
+msgid "Forma de referenciar el IVR"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:23
+msgid "Timeout"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:25
+msgid ""
+"Tiempo adicional al de la locución de bienvenida que el sistema espera a "
+"que el interlocutor marque los dígitos."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:28
+msgid ""
+"Locución que se le presenta al llamante invitándole a marcar la extensión"
+" con la que quiera hablar."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:29
+msgid "Locución de éxito"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:31
+msgid ""
+"En caso de que la extensión marcada sea correcta, se reproducirá esta "
+"locución (típicamente dirá algo así como \"Contantando...\")."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:32
+msgid "Expresión regular lista negra"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:34
+msgid ""
+"Si queremos que alguna extensión interna no sea accesible desde el IVR, "
+"basta con añadirla aquí utilizando expresiones regulares. En el ejemplo, "
+"las extensiones 105 y 106 no serían accesibles desde el IVR y marcarlas "
+"provocaría que se activase la **Configuración de Error**."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:35
+msgid "Configuración No contesta"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:37
+msgid ""
+"En caso de que la extensión destino no conteste en el tiempo indicado, se"
+" reproduce la locución indicada y se desvía al número externo, extensión "
+"interna o buzón seleccionado."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:38
+msgid "Configuración Error"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:40
+msgid ""
+"Si lo que ha marcado el llamante no es válido (o no ha marcado nada), se "
+"reproduce la locución indicada y se desvía la llamada al número externo, "
+"extensión interna o buzón seleccionado."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:46
+msgid "IVRs a medida"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:48
+msgid ""
+"A diferencia de los IVRs genéricos en donde el llamante solo puede marcar"
+" extensiones internas, los IVRs a medida permiten marcar dígitos que "
+"luego se pueden convertir a lo que el administrador de empresa desee."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:50
+msgid ""
+"El caso más típico es el IVR que dice algo así como \"Marque 1 si quiere "
+"hablar con administración, marque 2 si quiere hablar con informática...\""
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:52
+msgid "Los campos que se presentan son prácticamente idénticos al IVR genérico:"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:56
+msgid ""
+"La única diferencia es que no existe el campo **Expresión regular lista "
+"negra**, que carece de sentido en este tipo de IVRs."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:58
+msgid ""
+"Pulsando el botón de la siguiente imagen se pueden definir las "
+"equivalencias deseadas:"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:62
+msgid ""
+"En este caso se puede marcar 1, 2 y 3 (todo lo demás será considerado "
+"inválido y activará la **Configuración de Error**):"
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:66
+msgid ""
+"1: Llamada a la extensión interna 200, creada :ref:`en la sección "
+"anterior <huntgroups>` y que apunta al grupo de salto *Recepción*."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:67
+msgid "2: Llama a la extensión interna 101."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:68
+msgid "3: Desvía la llamada al número externo 676 676 676."
+msgstr ""
+
+#: ../../pbx_features/ivrs.rst:70
+msgid ""
+"Cada una de las opciones del IVR a medida permite la selección de una "
+"locución que pisa a la **locución de éxito** si está definida. De esta "
+"forma aparte de tener una locución de éxito genérica con \"Contactando\" "
+"podríamos tener otra que dijera \"Contactando con Administración, espere "
+"por favor\"."
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:5
+msgid "Música en espera"
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:7
+msgid ""
+"La música en espera suena cuando un usuario retiene la llamada y su "
+"interlocutor queda a la espera de seguir la conversación."
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:9
+msgid ""
+"IvozProvider permite definir la música que sonará en estos momentos en 2 "
+"niveles distintos:"
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:11
+msgid ""
+"A nivel de operador de marca: **Configuración de Marca** > **Músicas en "
+"espera genéricas**"
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:13
+msgid ""
+"A nivel de administrador de empresa: **Configuración de Empresa** > "
+"**Música en espera**"
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:15
+msgid ""
+"Si una empresa define su música en espera, sonará. Si, por el contrario, "
+"no define ninguna, sonará la que haya definido el operador de su marca."
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:17
+msgid ""
+"Se pueden definir más de una música en espera y el sistema elegirá de "
+"forma aleatoria la música en espera para cada llamada."
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:20
+msgid "Añadir una nueva música en espera"
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:23
+msgid ""
+"Una vez *encodeada* el campo **Status** muestra que está *ready* y se "
+"utilizará en las próximas llamadas:"
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:27
+msgid ""
+"IvozProvider reconoce archivos de audio en los formatos más comunes y los"
+" *encodea* a los formatos óptimos para la plataforma."
+msgstr ""
+
+#: ../../pbx_features/music_on_hold.rst:29
+msgid ""
+"Después de *encodear*, podemos descargar el archivo original y el "
+"convertido sin más que editar el ítem:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:5
+msgid "Servicios adicionales"
+msgstr ""
+
+#: ../../pbx_features/services.rst:9
+msgid "Definición de servicios y códigos a nivel de marca"
+msgstr ""
+
+#: ../../pbx_features/services.rst:13
+msgid "Definición de códigos a nivel de empresa"
+msgstr ""
+
+#: ../../pbx_features/sounds.rst:3
+msgid "Locuciones"
+msgstr ""
+
+#: ../../pbx_features/sounds.rst:5
+msgid ""
+"Las locuciones de la plataforma se crean y se suben de forma idéntica a "
+"cómo lo hacen las :ref:`músicas en espera <musiconhold>`."
+msgstr ""
+
+#: ../../pbx_features/sounds.rst:7
+msgid ""
+"La sección que permite al administrador de empresa subir las locuciones "
+"que utilizará en diversos puntos de la configuración (IVR, etc.) es "
+"**Configuración de Empresa** > **Locuciones**."
+msgstr ""
+
+#: ../../pbx_features/sounds.rst:11
+msgid ""
+"La única diferencia entre una **locución** y una **música en espera** es "
+"su uso: la primera sonará cuando el administrador de empresa lo indique "
+"(fuera de horario, IVRs, etc.) y la segunda, en cambio, cuando la llamada"
+" sea retenida por un usuario."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:5
+msgid "Terminales"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:7
+msgid ""
+"La sección **Configuración de empresa** > **Terminales** permite dar de "
+"alta credenciales SIP que podrán ser utilizados por diversos dispositivos"
+" SIP para realizar y recibir llamadas de IvozProvider."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:9
+msgid ""
+"La mejor forma de entender la sección es crear uno nuevo y ver los campos"
+" que tenemos que cumplimentar:"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:16
+msgid ""
+"Usuario que utilizará el terminal para presentarse ante IvozProvider y "
+"para realizar la fase de autenticación SIP."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:17 ../../pbx_features/users.rst:40
+msgid "Contraseña"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:19
+msgid ""
+"Contraseña que utilizará el terminal para responder a la fase de "
+"autenticación SIP. Utilizar el generador automático de contraseñas para "
+"cumplir los criterios de seguridad exigidos."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:20
+msgid "Codecs rechazados/permitidos"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:22
+msgid ""
+"Indica las capacidades del terminal en lo que a codecs se refiere. "
+"Primero se descarta los rechazados y posteriormente incluye los "
+"soportados. Se recomienda dejar *alaw* como único soportado."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:23
+msgid "Modo de actualización"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:25
+msgid ""
+"Indica si el terminal prefiere utilizar reINVITEs o UPDATEs para "
+"actualizar la sesión. La sección de ayuda indica qué terminales suelen "
+"requerir qué método. En caso de duda, utilizar *invite*."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:26
+msgid "Modelo de terminal"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:28
+msgid ""
+"Indica el tipo de provisión que tendrá que recibir este terminal "
+"concreto. En el apartado dedicado a la :ref:`provisión de terminales "
+"<provisioning>` se verá que existen unos modelos con provisión automática"
+" y se explicará todo en profundidad. En caso de no necesitar provisión, "
+"utilizar *Generic*."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:29
+msgid "MAC"
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:31
+msgid ""
+"Campo necesario para modelos que utilizan el sistema de :ref:`provisión "
+"de terminales <provisioning>` de IvozProvider. Recoge la `dirección "
+"física <https://es.wikipedia.org/wiki/Direcci%C3%B3n_MAC>`_ del adaptador"
+" de red del dispositivo SIP."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:33
+msgid ""
+"**En la mayoría** de dispositivos, siempre que no requieran provisión, "
+"**bastará con rellenar el nombre y contraseña**."
+msgstr ""
+
+#: ../../pbx_features/terminals.rst:35
+msgid ""
+"Una vez dado de alta el Terminal, en la mayoría de dispositivos bastará "
+"con configurar nombre, contraseña y :ref:`dominio SIP de la compañía "
+"<domain_per_company>` para poder llamar."
+msgstr ""
+
+#: ../../pbx_features/users.rst:5
+msgid "Usuarios"
+msgstr ""
+
+#: ../../pbx_features/users.rst:7
+msgid ""
+"El proceso de instalación nos creó a *Alice* y a *Bob*, y esto nos "
+"permitió ahorrar mucho tiempo a la hora de conseguir que se llamarán "
+"entre ellos."
+msgstr ""
+
+#: ../../pbx_features/users.rst:9
+msgid ""
+"También nos permitió pasar un poco de puntillas por la sección de "
+"**Usuarios**, que ahora pasamos a definir en profundidad."
+msgstr ""
+
+#: ../../pbx_features/users.rst:11
+msgid ""
+"Para ello, nada mejor que editar el usuario *Alice* y describir cada "
+"campo del mismo, bloque a bloque:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:15
+msgid "Datos personales"
+msgstr ""
+
+#: ../../pbx_features/users.rst:22
+msgid ""
+"Se utilizará para referenciar al usuario en múltiples ámbitos, incluyendo"
+" el nombre que se presenta en llamadas internas."
+msgstr ""
+
+#: ../../pbx_features/users.rst:23
+msgid "Apellidos"
+msgstr ""
+
+#: ../../pbx_features/users.rst:25
+msgid "Irá junto con el Nombre en casi todos los casos."
+msgstr ""
+
+#: ../../pbx_features/users.rst:26
+msgid "Email"
+msgstr ""
+
+#: ../../pbx_features/users.rst:28
+msgid ""
+"Dirección de correo electrónico del usuario al que se enviarán los "
+"mensajes de voz del buzón."
+msgstr ""
+
+#: ../../pbx_features/users.rst:32
+msgid "Credenciales portal de usuario"
+msgstr ""
+
+#: ../../pbx_features/users.rst:37
+msgid "Nombre de usuario"
+msgstr ""
+
+#: ../../pbx_features/users.rst:39
+msgid "Nombre de usuario para acceder al :ref:`portal de usuario <userportal>`."
+msgstr ""
+
+#: ../../pbx_features/users.rst:42
+msgid "Contraseña para acceder al :ref:`portal de usuario <userportal>`."
+msgstr ""
+
+#: ../../pbx_features/users.rst:43
+msgid "Activo"
+msgstr ""
+
+#: ../../pbx_features/users.rst:45
+msgid ""
+"Da posibilidad al administrador de la plataforma de desactivar el acceso "
+"al :ref:`portal de usuario <userportal>`."
+msgstr ""
+
+#: ../../pbx_features/users.rst:49
+msgid "Configuración básica"
+msgstr ""
+
+#: ../../pbx_features/users.rst:54
+msgid "Terminal"
+msgstr ""
+
+#: ../../pbx_features/users.rst:56
+msgid ""
+"Los terminales dados de alta en :ref:`terminals` se listan aquí para "
+"realizar la vinculación usuario-terminal."
+msgstr ""
+
+#: ../../pbx_features/users.rst:57
+msgid "Extensión"
+msgstr ""
+
+#: ../../pbx_features/users.rst:59
+msgid ""
+"Tal y como se explicaba en :ref:`extensions`, fija la extensión del "
+"usuario para llamadas internas."
+msgstr ""
+
+#: ../../pbx_features/users.rst:60
+msgid "DDI de salida"
+msgstr ""
+
+#: ../../pbx_features/users.rst:62
+msgid ""
+"Adelantado en :ref:`external_ddi`, determina el número que presenta el "
+"usuario en llamadas externas salientes."
+msgstr ""
+
+#: ../../pbx_features/users.rst:63
+msgid "Permiso de llamada"
+msgstr ""
+
+#: ../../pbx_features/users.rst:65
+msgid ""
+"Asignación de un grupo de permisos explicado en profundidad "
+":ref:`aquí<call_permissions>`."
+msgstr ""
+
+#: ../../pbx_features/users.rst:66
+msgid "No molestar"
+msgstr ""
+
+#: ../../pbx_features/users.rst:68
+msgid ""
+"Impide que nadie pueda llamar a este usuario, sin impedirle a él llamar a"
+" donde desee."
+msgstr ""
+
+#: ../../pbx_features/users.rst:69
+msgid "Llamada en espera"
+msgstr ""
+
+#: ../../pbx_features/users.rst:71
+msgid ""
+"Determina si el sistema tendrá que llamar al usuario cuando éste ya esté "
+"en conversación."
+msgstr ""
+
+#: ../../pbx_features/users.rst:75 ../../pbx_features/users.rst:80
+#: ../../pbx_features/users.rst:164
+msgid "Buzón de voz"
+msgstr ""
+
+#: ../../pbx_features/users.rst:82
+msgid ""
+"Activa o desactiva **la existencia** del buzón de voz del usuario. Aparte"
+" de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá que "
+"desviar las llamadas que queramos al buzón."
+msgstr ""
+
+#: ../../pbx_features/users.rst:83
+msgid "Notificar por email"
+msgstr ""
+
+#: ../../pbx_features/users.rst:85
+msgid ""
+"Mandar a la dirección del usuario un correo notificando del mensaje de "
+"voz."
+msgstr ""
+
+#: ../../pbx_features/users.rst:86
+msgid "Adjuntar audio del mensaje"
+msgstr ""
+
+#: ../../pbx_features/users.rst:88
+msgid "Adjuntar o no en dicho mail el audio del mensaje"
+msgstr ""
+
+#: ../../pbx_features/users.rst:92
+msgid "Jefe-Asistente"
+msgstr ""
+
+#: ../../pbx_features/users.rst:96
+msgid ""
+"La funcionalidad jefe-asistente impide que un usuario sea molestado por "
+"nadie que no sea:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:98
+msgid "Su asistente."
+msgstr ""
+
+#: ../../pbx_features/users.rst:100
+msgid "Las excepciones que él defina."
+msgstr ""
+
+#: ../../pbx_features/users.rst:102
+msgid "Toda llamada con destino a *un jefe* será desviada al asistente."
+msgstr ""
+
+#: ../../pbx_features/users.rst:105
+msgid "Jefe"
+msgstr ""
+
+#: ../../pbx_features/users.rst:107
+msgid "Indica que el usuario en cuestión es jefe o no."
+msgstr ""
+
+#: ../../pbx_features/users.rst:108
+msgid "Asistente"
+msgstr ""
+
+#: ../../pbx_features/users.rst:110
+msgid "Si el usuario es jefe, indica quién es su asistente."
+msgstr ""
+
+#: ../../pbx_features/users.rst:111
+msgid "Whitelist jefe/asistente"
+msgstr ""
+
+#: ../../pbx_features/users.rst:113
+msgid "Permite indicar utilizando expresiones regulares las excepciones deseadas."
+msgstr ""
+
+#: ../../pbx_features/users.rst:115
+msgid ""
+"Con la configuración de la imagen, toda llamada a *Alice* acabará en "
+"*Bob*, salvo las que haga el propio *Bob* y el número de teléfono 945 945"
+" 945."
+msgstr ""
+
+#: ../../pbx_features/users.rst:119
+msgid "Pertenencia a grupos"
+msgstr ""
+
+#: ../../pbx_features/users.rst:123
+msgid ""
+"Tal y como se verá en las secciones :ref:`huntgroups` y "
+":ref:`capture_groups`, un usuario puede pertenecer a uno o a varios "
+"grupos de captura y grupos de salto."
+msgstr ""
+
+#: ../../pbx_features/users.rst:125
+msgid ""
+"Aparte de poder configurar dicha pertenencia desde las propias secciones "
+":ref:`huntgroups` y :ref:`capture_groups`, se puede añadir al usuario que"
+" estamos editando a los grupos de captura y grupos de salto deseados que "
+"ya existan."
+msgstr ""
+
+#: ../../pbx_features/users.rst:127
+msgid ""
+"En el caso de la pertenencia a **grupos de salto**, también se puede "
+"configurar desde el listado general:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:134
+msgid "Desvíos de llamada"
+msgstr ""
+
+#: ../../pbx_features/users.rst:136
+msgid ""
+"Los desvíos de las llamadas de un usuario concreto se configura pulsando "
+"el siguiente botón:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:143
+msgid ""
+"Para desviar las llamadas externas que no se contesten en 15 segundos al "
+"buzón de voz que acabamos de configurar, por ejemplo, habría que "
+"configurar un desvío tal que:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:148
+msgid "Estos son los campos y los posibles valores:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:151
+msgid "Tipo de llamada"
+msgstr ""
+
+#: ../../pbx_features/users.rst:153
+msgid ""
+"Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
+"interna o ambas"
+msgstr ""
+
+#: ../../pbx_features/users.rst:154
+msgid "Tipo de desvío"
+msgstr ""
+
+#: ../../pbx_features/users.rst:160
+msgid "Indica cuándo aplica el desvío:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:157
+msgid "Incondicional: siempre"
+msgstr ""
+
+#: ../../pbx_features/users.rst:158
+msgid "Perdida: cuando no se conteste al de X segundos"
+msgstr ""
+
+#: ../../pbx_features/users.rst:159
+msgid ""
+"Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
+"activo)"
+msgstr ""
+
+#: ../../pbx_features/users.rst:160
+msgid ""
+"No registrado: cuando el usuario tenga su terminal sin conectar con "
+"IvozProvider"
+msgstr ""
+
+#: ../../pbx_features/users.rst:161
+msgid "Tipo de destino"
+msgstr ""
+
+#: ../../pbx_features/users.rst:165
+msgid "Indica a dónde se enviará la llamada cuando el desvío aplique:"
+msgstr ""
+
+#: ../../pbx_features/users.rst:165
+msgid "Número (externo)"
+msgstr ""
+
+#: ../../pbx_features/users.rst:166
+msgid "Extensión (interna)"
+msgstr ""
+
+#: ../../pbx_features/users.rst:168
+msgid ""
+"Si queremos que desviar a un grupo de salto, por ejemplo, bastaría con "
+"crear una extensión que apunte al grupo de salto deseado y seleccionar "
+"*Extensión* en el **Tipo de destino**."
+msgstr ""
+
+#~ msgid "Código a nivel de marca"
+#~ msgstr ""
+
+#~ msgid "Código a nivel de empresa"
+#~ msgstr ""
+
+#~ msgid "Número máximo de miembros"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Apartir del número especificado, no se"
+#~ " admitirán más miembros (para desactivar"
+#~ " el límite, utilizar 0)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Existen otras formas de meter un "
+#~ "participante externo a una sala de "
+#~ "audioconferencias sin gastar un DDI "
+#~ "externo: que alguien de dentro "
+#~ "transfiera la llamada a la extensión "
+#~ "de la sala, acceder por medio de"
+#~ " un IVR, etc."
+#~ msgstr ""
+
