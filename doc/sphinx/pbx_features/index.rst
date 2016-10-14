@@ -1,6 +1,6 @@
-##########################
-[S] Funcionalidades de PBX
-##########################
+######################
+Funcionalidades de PBX
+######################
 
 En el bloque anterior hemos conseguido realizar llamadas internas y externas realizando una configuración mínima, partiendo de la configuración que deja el propio instalador y dejando de lado múltiples apartados y funcionalidades.
 

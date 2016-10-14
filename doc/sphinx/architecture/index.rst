@@ -11,11 +11,15 @@ Esquema general
 
 .. include:: general_scheme.rst
 
+.. _signallingflow:
+
 **********************
 Flujo señalización SIP
 **********************
 
 .. include:: signalling_flow.rst
+
+.. _audioflow:
 
 ***************
 Flujo audio RTP
