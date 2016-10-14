@@ -23,6 +23,7 @@ Por el contrario, si somos más generosos y decidimos permitir todas las llamada
 .. image:: img/outgoing_routes_by_patterngroup.png
     :align: center
 
+.. _routes_metrics:
 
 Existen dos parámetros que merecen explicación:
 
