@@ -4,6 +4,8 @@ build_doc:
 	# Build doc using sphinx
 	cd doc/sphinx ; sphinx-build -D"language=en" . ../html/en
 	cd doc/sphinx ; sphinx-build -D"language=es" . ../html/es
+	cd doc/sphinx ; sphinx-build -D"language=es" -bsinglehtml . ../html/essingle
+	cd doc/sphinx ; sphinx-build -D"language=en" -bsinglehtml . ../html/ensingle
 
 build_userweb:
 	# Build with npm
