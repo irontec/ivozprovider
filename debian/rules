@@ -2,7 +2,8 @@
 
 build_doc:
 	# Build doc using sphinx
-	cd doc/sphinx ; make html
+	cd doc/sphinx ; sphinx-build -D"language=en" . ../html/en
+	cd doc/sphinx ; sphinx-build -D"language=es" . ../html/es
 
 build_userweb:
 	# Build with npm

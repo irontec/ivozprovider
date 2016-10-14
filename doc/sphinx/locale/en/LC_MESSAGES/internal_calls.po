@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../../internal_calls/brand_portal.rst:3
 msgid "Bloque 'Configuración de Marca'"
-msgstr ""
+msgstr "'Brand Configuration' block"
 
 #: ../../internal_calls/brand_portal.rst:5
 msgid ""
@@ -28,6 +28,9 @@ msgid ""
 "se puedan llamar entre sí, vamos a tener que hacer muy poco en este "
 "bloque."
 msgstr ""
+"To make the default DemoBrand have a company with 2 users that "
+"can call each other, we only must configure a couple of things in this "
+"block."
 
 #: ../../internal_calls/brand_portal.rst:7
 msgid ""
@@ -35,16 +38,21 @@ msgid ""
 "compañía *DemoCompany* que podremos utilizar para cumplir nuestro ansiado"
 " objetivo :)"
 msgstr ""
+"In fact, while accessing the **Company** section, we will see the default "
+"company *DemoCompany* that we can use to accomplished our more desired"
+" goal :)"
 
 #: ../../internal_calls/brand_portal.rst:11
 msgid ""
 "Solo le falta una cosa a esta empresa, marcado con **EDIT** en la captura"
 " anterior."
 msgstr ""
+"There is only one thing missing in this company, marked as **EDIT** in the "
+" previous image."
 
 #: ../../internal_calls/brand_portal.rst:16
 msgid "Dominio SIP de la compañía"
-msgstr ""
+msgstr "SIP Domain of the company"
 
 #: ../../internal_calls/brand_portal.rst:18
 msgid ""
@@ -52,12 +60,17 @@ msgid ""
 " cada empresa tenga un dominio público que resuelva a la IP configurada "
 "para el :ref:`proxyusers`."
 msgstr ""
+"As documented in the previous section, it is **a must** that"
+" each company have a public domain pointing to the configured IP address "
+"for the :ref:`proxyusers`."
 
 #: ../../internal_calls/brand_portal.rst:20
 msgid ""
 "El registro DNS puede ser de tipo A (soportado por todos los "
 "hardphones/softphones) o del tipo NAPTR+SRV."
 msgstr ""
+"The DNS registy can be type A (supported by all the hardphones/softphine) "
+"or type NAPTR+SRV."
 
 #: ../../internal_calls/brand_portal.rst:22
 msgid ""
@@ -65,12 +78,17 @@ msgid ""
 "al objetivo de este documento), bastará con escribir el parámetro en el "
 "campo adecuado de nuestra empresa:"
 msgstr ""
+"Once the domain is configured (how to archieve this is out of scope for "
+"this document), it will be enough to set the correct parameter in our "
+"company:"
 
 #: ../../internal_calls/brand_portal.rst:26
 msgid ""
 "Una vez guardada la empresa, este dominio aparecerá en la sección "
 "descrita :ref:`en la sección anterior <god_sipdomains>`:"
 msgstr ""
+"Once the company has been saved, the domain will appear in the previous "
+"described :ref:`section <god_sipdomains>`:"
 
 #: ../../internal_calls/brand_portal.rst:30
 msgid ""
@@ -78,6 +96,9 @@ msgid ""
 "configurado apuntando a la IP del Proxy de Usuarios, ¡fracasaremos en "
 "nuestro objetivo!"
 msgstr ""
+"It it quite important to understand this block, without a correctly "
+"configured DNS pointing to Users proxy IP address, we will fail our "
+"goal!"
 
 #: ../../internal_calls/brand_portal.rst:32
 msgid ""
@@ -85,16 +106,21 @@ msgid ""
 "siempre y cuando en lugar de 10.10.3.10 aparezca la IP pública "
 "configurada en :ref:`proxyusers`."
 msgstr ""
+"This is a good sign for the domain we have already configured, "
+"as long as insted of 10.10.3.10 it will show the public IP address "
+"configured in :ref:`proxyusers`."
 
 #: ../../internal_calls/brand_portal.rst:36
 msgid ""
 "¿Se ha insistido suficiente en que sin un registro DNS correctamente "
 "configurado apuntando a la IP del Proxy de Usuarios no funcionará nada?"
 msgstr ""
+"Have we stressed enough that without a properly configured DNS "
+"pointing to the Users proxy IP address nothing will work?"
 
 #: ../../internal_calls/brand_portal.rst:41
 msgid "No tengo tiempo para crear registros DNS"
-msgstr ""
+msgstr "I have no time for a DNS registry"
 
 #: ../../internal_calls/brand_portal.rst:43
 msgid ""
@@ -102,28 +128,37 @@ msgid ""
 "creando marcas y éstas vayan creando empresas, cada una de ellas "
 "necesitará un registro DNS."
 msgstr ""
+"Everything we have said is true: as we create new brands and "
+"brands create new companies, each of them will need a "
+"DNS registry."
 
 #: ../../internal_calls/brand_portal.rst:45
 msgid ""
 "Pero la primera empresa de la plataforma es especial y puede apoderarse "
 "de la IP del Proxy de Usuarios y usarla como si de un DNS se tratara:"
 msgstr ""
+"But the first company of the platform is quite special and can take over "
+"the IP address of the proxy to use it as a domain:"
 
 #: ../../internal_calls/brand_portal.rst:49
 msgid ""
 "A pesar de no ser un dominio, al estar usándose como tal, aparecerá en la"
 " sección de **Dominios**:"
 msgstr ""
+"Although it is not a domain, but being used like it was, it will be displayed"
+" in **Domain** section:"
 
 #: ../../internal_calls/brand_portal.rst:53
 msgid ""
 "Es importante entender que este truco solo es válido para la primera "
 "empresa de la plataforma ;)"
 msgstr ""
+"It's important to understand the this trick is only valid for the first "
+"company of the platform ;)"
 
 #: ../../internal_calls/brand_portal.rst:58
 msgid "Emular la empresa Demo"
-msgstr ""
+msgstr "Emulate Demo company"
 
 #: ../../internal_calls/brand_portal.rst:60
 msgid ""
@@ -131,16 +166,21 @@ msgid ""
 "con la diferencia de que filtra el bloque 'Configuración de Empresa' en "
 "lugar del bloque 'Configuración de Marca'."
 msgstr ""
+"The company emulation process is the same as the brand emulation, with the "
+"difference that it filters the block 'Company Configuration' insted of "
+"'Brand Configuration'."
 
 #: ../../internal_calls/brand_portal.rst:68
 msgid ""
 "Una vez emulada la empresa, la parte superior derecha de la pantalla "
 "mostrará que vamos por el buen camino :)"
 msgstr ""
+"Once the company has been emulated, the top right corner of the portal "
+"will show that we are in the right path :)"
 
 #: ../../internal_calls/company_portal.rst:3
 msgid "Bloque 'Configuración de Empresa'"
-msgstr ""
+msgstr "'Company Configration' block"
 
 #: ../../internal_calls/company_portal.rst:5
 msgid ""
@@ -148,78 +188,88 @@ msgid ""
 "IvozProvider, solo queda crear 6 cosas dentro de nuestra empresa "
 "DemoCompany:"
 msgstr ""
+"We are close to place our first call in our awesome new Ivozprovider, "
+"lacking only six more things in our DemoCompany:"
 
 #: ../../internal_calls/company_portal.rst:7
 msgid "2 terminales"
-msgstr ""
+msgstr "2 terminals"
 
 #: ../../internal_calls/company_portal.rst:8
 msgid "2 extensiones"
-msgstr ""
+msgstr "2 extension"
 
 #: ../../internal_calls/company_portal.rst:9
 msgid "2 usuarios"
-msgstr ""
+msgstr "2 users"
 
 #: ../../internal_calls/company_portal.rst:12
 msgid "Terminales"
-msgstr ""
+msgstr "Terminals"
 
 #: ../../internal_calls/company_portal.rst:14
 msgid ""
 "Vamos a la sección terminales y... voilà! Ya tenemos 2 terminales pre-"
 "creados:"
 msgstr ""
+"Go to the terminals section and... voilà! We have already two terminals "
+"created:"
 
 #: ../../internal_calls/company_portal.rst:19
 msgid "Extensiones"
-msgstr ""
+msgstr "Extensions"
 
 #: ../../internal_calls/company_portal.rst:21
 msgid ""
 "Seguimos por tanto en la sección de extensiones, pero se nos han "
 "adelantado y ya tenemos 2 extensiones para nuestro uso:"
 msgstr ""
+"Continue then to the extensions section to discover that someone "
+"have already created 2 extensions for us:"
 
 #: ../../internal_calls/company_portal.rst:25
 msgid "Nada por hacer en esta sección tampoco, ¡vamos a la última!"
-msgstr ""
+msgstr "Nothing to do in this section either, lets go to the last one!"
 
 #: ../../internal_calls/company_portal.rst:28
 msgid "Usuarios"
-msgstr ""
+msgstr "Users"
 
 #: ../../internal_calls/company_portal.rst:30
 msgid "Como era de esperar, también tenemos 2 usuarios:"
-msgstr ""
+msgstr "As expected, we also have 2 users:"
 
 #: ../../internal_calls/company_portal.rst:34
 msgid ""
 "Llegados a este punto y sin necesidad de tocar nada en este bloque, ya "
 "tenemos todo listo para hacer una llamada de Alice a Bob."
 msgstr ""
+"At this point and without nothing to configure in this block, we already "
+"have everything ready to place a call from Alice to Bob."
 
 #: ../../internal_calls/configure_sipuacs.rst:2
 msgid "Configurar terminales SIP"
-msgstr ""
+msgstr "Configure SIP terminals"
 
 #: ../../internal_calls/configure_sipuacs.rst:4
 msgid ""
 "Lo único que nos falta es disponer de 2 terminales SIP (hardphone, "
 "softphone, Android/IOS APP) y configurarlos como sigue:"
 msgstr ""
+"The only thing we require is to have 2 SIP terminals (hardphone, "
+"softphone, Android/IOS APP) and configure them as follows:"
 
 #: ../../internal_calls/configure_sipuacs.rst:6
 msgid "**ALICE**"
-msgstr ""
+msgstr "**ALICE**"
 
 #: ../../internal_calls/configure_sipuacs.rst:8
 msgid "**Usuario**: alice"
-msgstr ""
+msgstr "**User**: alice"
 
 #: ../../internal_calls/configure_sipuacs.rst:9
 msgid "**Contraseña**: alice"
-msgstr ""
+msgstr "**Password**: alice"
 
 #: ../../internal_calls/configure_sipuacs.rst:10
 #: ../../internal_calls/configure_sipuacs.rst:16
@@ -227,18 +277,20 @@ msgid ""
 "**Dominio**: users.democompany.com (o la IP si hemos hecho :ref:`el truco"
 " <dnshack>`)"
 msgstr ""
+"**Domain**": users.democompany.com (or the IP address if we are using "
+":ref:`the domain trick <dnshack>`)"
 
 #: ../../internal_calls/configure_sipuacs.rst:12
 msgid "**BOB**"
-msgstr ""
+msgstr "**BOB**"
 
 #: ../../internal_calls/configure_sipuacs.rst:14
 msgid "**Usuario**: bob"
-msgstr ""
+msgstr "**User**: bob"
 
 #: ../../internal_calls/configure_sipuacs.rst:15
 msgid "**Contraseña**: bob"
-msgstr ""
+msgstr "**Password**: bob"
 
 #: ../../internal_calls/configure_sipuacs.rst:18
 msgid ""
@@ -246,16 +298,21 @@ msgid ""
 "introducir alice@users.democompany.com y bob@users.democompany.com, "
 "respectivamente (o con la IP si hemos hecho :ref:`el truco <dnshack>`)."
 msgstr ""
+"It's possible that both the user and the domain are requested together, so we have "
+"to use alice@users.democompany.com and bob@users.democompany.com (or the "
+"IP address if we are using :ref:`the domain trick <dnshack>`)."
 
 #: ../../internal_calls/configure_sipuacs.rst:21
 msgid ""
 "Tras configurar los terminales, Alice debería de poder llamar a Bob sin "
 "más que marcar 102 en su terminal."
 msgstr ""
+"After configurint the terminals, Alice should be able to call Bob by only "
+"dialing 102 in its terminal."
 
 #: ../../internal_calls/god_portal.rst:3
 msgid "Bloque 'Gestión General'"
-msgstr ""
+msgstr "'General Configuration' block"
 
 #: ../../internal_calls/god_portal.rst:5
 msgid ""
@@ -263,6 +320,8 @@ msgid ""
 "para acceder al panel web. Las credenciales por defecto son *admin / "
 "changeme*."
 msgstr ""
+"Any of the 2 IP public addresses configured during the installation can be "
+"used to access the web portal. The default credentials are *admin / changeme*."
 
 #: ../../internal_calls/god_portal.rst:7
 msgid ""
@@ -270,64 +329,81 @@ msgid ""
 "global, configurable en el bloque **Gestión general** del panel web (solo"
 " visible para God):"
 msgstr ""
+"In this section we will reference everything relative to the global operator "
+"role, avaialble in the block **General configuration** in the web portal (only"
+" visible for God administrator):"
 
 #: ../../internal_calls/god_portal.rst:13
 msgid "Configuración personalizada en la instalación"
-msgstr ""
+msgstr "Customized configration of the installation"
 
 #: ../../internal_calls/god_portal.rst:15
 msgid ""
 "En el proceso de instalación se pregunta al administrador dos direcciones"
 " IP, con el fin de arrancar los siguientes 2 procesos:"
 msgstr ""
+"During the installation process, it will be requested two IP addresses, "
+"in order to start following 2 processes:"
 
 #: ../../internal_calls/god_portal.rst:20
 msgid "Proxy de Usuarios"
-msgstr ""
+msgstr "Users Proxy"
 
 #: ../../internal_calls/god_portal.rst:22
 msgid ""
 "Es el proxy SIP expuesto al mundo exterior al que se registran los "
 "terminales de los usuarios."
 msgstr ""
+"This is the SIP proxy exposed to the world where users' terminals are "
+"registered."
 
 #: ../../internal_calls/god_portal.rst:24
 msgid ""
 "El valor mostrado en la sección **Proxy de Usuarios** reflejará la IP "
 "introducida en el proceso de instalación."
 msgstr ""
+"The value displayed in the section **Proxy user** will show the IP "
+"address supplied during the installation process."
 
 #: ../../internal_calls/god_portal.rst:29
 msgid "Proxy de Salida"
-msgstr ""
+msgstr "Trunks Proxy"
 
 #: ../../internal_calls/god_portal.rst:31
 msgid ""
 "Es el proxy SIP expuesto al mundo exterior al que hablarán los Operadores"
 " IP con los que el operador de marca decida hacer *peering*."
 msgstr ""
+"This is the SIP proxy exposed to the world that IP Providers configured by"
+"the brand operator will use."
 
 #: ../../internal_calls/god_portal.rst:33
 msgid ""
 "El valor mostrado en la sección **Proxy de Salida** reflejará la IP "
 "introducida en el proceso de instalación."
 msgstr ""
+"The value displayed in the section **Proxy trunk** will show the IP "
+"address supplied during the installation process."
 
 #: ../../internal_calls/god_portal.rst:37
 msgid ""
 "Solo se explicita la dirección IP, ya que el puerto siempre será 5060 "
 "(5061 para SIP sobre TLS)."
 msgstr ""
+"Only the IP address will be displayed as the port will always be 5060 "
+"(5061 for SIP over TLS)."
 
 #: ../../internal_calls/god_portal.rst:39
 msgid ""
 "Estos 2 valores pueden editarse desde la web, pero siempre tienen que "
 "tener la dirección IP a la que escuchan dichos procesos."
 msgstr ""
+"This 2 values can be edited in the portal, but it always must have the "
+"same IP address that the proxy processes are listening to."
 
 #: ../../internal_calls/god_portal.rst:42
 msgid "Configuración global estándar"
-msgstr ""
+msgstr "Standard global configuratio"
 
 #: ../../internal_calls/god_portal.rst:44
 msgid ""
@@ -335,10 +411,13 @@ msgid ""
 "en toda instalación de IvozProvider (standalone) y que también se pueden "
 "ver desde la interfaz web."
 msgstr ""
+"The installation procesis includes other global values that are static "
+"in every IvozProvider installation (standalone) and can also be checked "
+"from the web interface."
 
 #: ../../internal_calls/god_portal.rst:47
 msgid "Servidores de aplicación"
-msgstr ""
+msgstr "Application Servers"
 
 #: ../../internal_calls/god_portal.rst:49
 msgid ""
@@ -347,6 +426,9 @@ msgid ""
 " como se ha mencionado, escalan horizontalmente para adaptarse a la carga"
 " de la plataforma."
 msgstr ""
+"In the section **Application Servers** will display the IP addresses "
+"where the different Asterisk processes are listening for requests and, "
+"as mentioned, they scale horizontally to adapt the platform load."
 
 #: ../../internal_calls/god_portal.rst:51
 msgid ""
@@ -354,12 +436,17 @@ msgid ""
 "exterior, por lo que en una instalación standalone solo habrá uno y "
 "escuchará en 127.0.0.1."
 msgstr ""
+"Contrary to the Proxies, this Application Servers are not expoed to "
+"the world, so only one will be required in a standalone installation "
+"listening at 127.0.0.1 address."
 
 #: ../../internal_calls/god_portal.rst:55
 msgid ""
 "El puerto en el que escuchan no se recoge en el campo, ya que siempre "
 "será 6060 (UDP)."
 msgstr ""
+"The listening port will not be displayed in this field, as it always "
+"will be 6006 (UDP)."
 
 #: ../../internal_calls/god_portal.rst:57
 msgid ""
@@ -367,10 +454,13 @@ msgid ""
 "intentará contar con él a la hora de repartir la carga. Si éste no "
 "responde, se desactivará automáticamente."
 msgstr ""
+"As soon as another Application Server is added, it will be used "
+"for load balancing. If it doesn't answer to requests, it will be "
+"disabled automatically."
 
 #: ../../internal_calls/god_portal.rst:61
 msgid "Servidores de Media"
-msgstr ""
+msgstr "Media relays"
 
 #: ../../internal_calls/god_portal.rst:63
 msgid ""
@@ -379,6 +469,9 @@ msgid ""
 "permiten un escalado horizontal para adaptarse a la carga de la "
 "plataforma."
 msgstr ""
+"Media-relays only move RTP traffic from an established call and, "
+"like Application Servers, they allow horizontal scaling to adapt the "
+"load of the platform."
 
 #: ../../internal_calls/god_portal.rst:65
 msgid ""
@@ -388,6 +481,11 @@ msgid ""
 "grupo (e.g. media-relay1 métrica 1; media-relay2 métrica 2: media-relay2 "
 "gestionará el audio del doble de llamadas que media-relay1)."
 msgstr ""
+"Media-relays are organized in groups in order to assign a single group "
+"to a company. Each element of the group have a **metric** that allows "
+"non-equal load balancing withing the same "
+"group (p.e. media-relay1 metric 1; media-relay2 metric 2: media-relay2 "
+"will handle twice the audio of calls compared to media-relay1)."
 
 #: ../../internal_calls/god_portal.rst:67
 msgid ""
@@ -399,16 +497,22 @@ msgid ""
 "lejanas al resto de la plataforma) para **reducir las latencias** en sus "
 "conversaciones."
 msgstr ""
+"The assignment of media-relay groups to companies allows them to use "
+"static resources, disabling global balancing. The most common use for "
+"this kind of assignments is to place **media-relay groups near the "
+"company location** (and geographically far from the rest of the platform) "
+"in order to **reduce latencies** during the conversation."
 
 #: ../../internal_calls/god_portal.rst:69
 msgid ""
 "En una instalación standalone, no obstante, solo existe un grupo de "
 "media-relays:"
 msgstr ""
+"For a standlone installation, only one media-replay group will exist:"
 
 #: ../../internal_calls/god_portal.rst:73
 msgid "Por defecto, este grupo solo contiene un media-relay:"
-msgstr ""
+msgstr "By default, this grup will only have one media-replay:"
 
 #: ../../internal_calls/god_portal.rst:77
 msgid ""
@@ -417,36 +521,46 @@ msgid ""
 "Por defecto, este único media-relay utiliza la misma IP que el Proxy de "
 "Usuarios."
 msgstr ""
+"The address displayed is the address of the control coscket, not the "
+"address included in the SDP payload during the session negociation."
+"By default, this lonely media-relay will use the same IP address as "
+"the proxy that serve users."
 
 #: ../../internal_calls/god_portal.rst:82
 msgid "Dominios SIP"
-msgstr ""
+msgstr "SIP Domains"
 
 #: ../../internal_calls/god_portal.rst:84
 msgid ""
 "En la sección **Dominios** se muestran los dominios SIP que apuntan a las"
 " 2 IPs públicas:"
 msgstr ""
+"The **Domain** section will display the SIP domains pointing to the "
+" 2 public IP addresses:"
 
 #: ../../internal_calls/god_portal.rst:86
 msgid "IP de Proxy de Usuarios"
-msgstr ""
+msgstr "Users proxy IP address"
 
 #: ../../internal_calls/god_portal.rst:87
 msgid "IP de Proxy de Salida"
-msgstr ""
+msgstr "Trunks proxy IP address"
 
 #: ../../internal_calls/god_portal.rst:89
 msgid ""
 "Tras una instalación inicial existen 2 dominios, uno para queda una de "
 "esas 2 IPs:"
 msgstr ""
+"After an initial installation 2 domain will exist, one for each of this "
+"2 IP addresses:"
 
 #: ../../internal_calls/god_portal.rst:93
 msgid ""
 "Estos dominios se utilizan internamente y el servidor de DNS incorporado "
 "en la solución los resuelve a las IPs concretas."
 msgstr ""
+"This domains will be used internally and the integrated DNS server of the "
+"solution will resolved to the configured IP addressed."
 
 #: ../../internal_calls/god_portal.rst:95
 msgid ""
@@ -455,10 +569,14 @@ msgid ""
 "configurado, el dominio aparecerá en esta sección para que el operador "
 "global sepa los dominios configurados para cada empresa de un vistazo."
 msgstr ""
+"As show in the section :ref:`domain_per_company`, each company"
+" will need a DNS pointing to the Users proxy IP address. Once configured, "
+"the domain will be displayed in this section so the Global operator can "
+"check all the configured domains in one shot."
 
 #: ../../internal_calls/god_portal.rst:98
 msgid "Emular la marca Demo"
-msgstr ""
+msgstr "Emulate Demo brand"
 
 #: ../../internal_calls/god_portal.rst:100
 msgid ""
@@ -466,48 +584,61 @@ msgid ""
 "llamada DemoBrand, que es la que utilizaremos para el fin que nos ocupa: "
 "tener 2 teléfonos registrados y que se puedan llamar entre sí."
 msgstr ""
+"After the initial installation, the platform includes an already pre-created "
+"brand called DemoBrand, that will be used for the starting goal: "
+"to have 2 registerd phones that can call each other"
 
 #: ../../internal_calls/god_portal.rst:102
 msgid ""
 "Antes de pasar a la siguiente sección, es importante entender el concepto"
 " de **Emular una marca**:"
 msgstr ""
+"Before going into the next section it is important to understand the concept"
+" of **Emulating brands**:"
 
 #: ../../internal_calls/god_portal.rst:104
 msgid ""
 "Como operador global, tienes acceso al bloque **Gestión general**, que "
 "solo ve *God*."
 msgstr ""
+"As global operator, you have access to the **General configuration** block, "
+"that only *God* administator can see."
 
 #: ../../internal_calls/god_portal.rst:106
 msgid ""
 "Aparte de ese bloque, también ves los bloques **Configuración de marca** "
 "y **Configuración de empresa** que tienen este aspecto:"
 msgstr ""
+"Apart from this block, both **Brand configuration** and **Company configuration** "
+"are visible, looking more or less like this: "
 
 #: ../../internal_calls/god_portal.rst:111
 msgid "Atención especial al siguiente botón:"
-msgstr ""
+msgstr "Special caution with the following button:"
 
 #: ../../internal_calls/god_portal.rst:116
 msgid "Una vez pulsado, muestra una ventana flotante tal que:"
-msgstr ""
+msgstr "Once pressed, a modal dial will be displayed so:"
 
 #: ../../internal_calls/god_portal.rst:121
 msgid ""
 "Al seleccionar la marca DemoBrand, el icono cambia y muestra la marca que"
 " se está emulando:"
 msgstr ""
+"If we select the brand DemoBrand, the icon will change and displays the brand"
+" that is being emulated:"
 
 #: ../../internal_calls/god_portal.rst:126
 msgid ""
 "La parte superior derecha de la página también muestra la marca que se "
 "está emulando:"
 msgstr ""
+"The upper right corner of the portal will also show the brand that is "
+"being emulated:"
 
 #: ../../internal_calls/god_portal.rst:132
 msgid "¿Qué implica esta emulación?"
-msgstr ""
+msgstr "What does this emaulation mean?"
 
 #: ../../internal_calls/god_portal.rst:134
 msgid ""
@@ -515,6 +646,9 @@ msgid ""
 " a esa marca** y es *exactamente* lo mismo que lo que ve el operador de "
 "marca cuando entra con sus credenciales de acceso."
 msgstr ""
+"It means that **everything displayed in 'Brand configuration' block is "
+"related only with this brand** and is **exactly** the same data the "
+"brand operator will see accessing through the brand portal."
 
 #: ../../internal_calls/god_portal.rst:136
 msgid ""
@@ -523,10 +657,14 @@ msgid ""
 "de marca no ve. e.g. Al editar una empresa *God* ve 'Servidores de media'"
 " y 'AS', que el operador de marca no ve."
 msgstr ""
+"Ok, maybe not *exactly*. The global administator is able to see some fields "
+"in some screens of the **Brand confugration** block that the brand operator "
+"can't. For example, while editing a company, *God* administator will see "
+"'Media relay group' and 'Application Server' fields, while the brand operator won't".
 
 #: ../../internal_calls/index.rst:3
 msgid "Realizar llamadas internas"
-msgstr ""
+msgstr "Making internal calls"
 
 #: ../../internal_calls/index.rst:5
 msgid ""
@@ -534,11 +672,15 @@ msgid ""
 "llamadas internas, partiendo de la instalación base descrita en la "
 "sección anterior."
 msgstr ""
+"The goal of this block will be to configure IvozProvider to make internal "
+"calls, from a fresh base install described in the previous section."
 
 #: ../../internal_calls/index.rst:7
 msgid ""
-"Para conseguir conseguir que Alice llame a Bob, tendremos que realizar "
+"Para conseguir que Alice llame a Bob, tendremos que realizar "
 "labores de 3 niveles descritos en :ref:`operation_roles`, de ahí la "
 "organización del siguiente índice en esos 3 bloques:"
 msgstr ""
-
+"In order to archieve a call between Alice and Bob, it will be required "
+"to do task at the 3 levels described in :ref:`operation_roles`, and "
+"that's why we have divided this block into 3 sections: "

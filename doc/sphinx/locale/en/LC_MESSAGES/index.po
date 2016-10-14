@@ -20,21 +20,21 @@ msgstr ""
 
 #: ../../index.rst:6
 msgid "Work in progress:"
-msgstr ""
+msgstr "Work in progress:"
 
 #: ../../index.rst:8
 msgid "**[P]**: Pending (not even started)"
-msgstr ""
+msgstr "**[P]**: Pending (not even started)"
 
 #: ../../index.rst:9
 msgid "**[S]**: Started (but not finished)"
-msgstr ""
+msgstr "**[S]**: Started (but not finished)"
 
 #: ../../index.rst:11
 msgid "Not marked sections are finished."
-msgstr ""
+msgstr "Not marked sections are finished."
 
 #: ../../index.rst:15
 msgid "Documentación oficial de IvozProvider"
-msgstr ""
+msgstr "IvozProvider Official documentation"
 

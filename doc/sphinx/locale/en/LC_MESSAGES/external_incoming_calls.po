@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-13 19:41+0200\n"
+"POT-Creation-Date: 2016-10-14 15:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,67 +68,67 @@ msgid ""
 "los campos necesarios:"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:31
+#: ../../external_incoming_calls/configure_ddi.rst:34
 msgid "País"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:33
+#: ../../external_incoming_calls/configure_ddi.rst:36
 msgid "El país de la númeración pública que estamos dando de alta."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:34
-#: ../../external_incoming_calls/peering_contracts.rst:116
+#: ../../external_incoming_calls/configure_ddi.rst:37
+#: ../../external_incoming_calls/peering_contracts.rst:118
 msgid "DDI"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:36
+#: ../../external_incoming_calls/configure_ddi.rst:39
 msgid "El número en cuestión, sin códigos de país."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:37
+#: ../../external_incoming_calls/configure_ddi.rst:40
 msgid "Contrato de peering"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:39
+#: ../../external_incoming_calls/configure_ddi.rst:42
 msgid ""
 "El contrato de peering por el que entra la numeración. Esta relación "
 "permite aplicar las :ref:`numeric_transformations` adecuadas."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:40
+#: ../../external_incoming_calls/configure_ddi.rst:43
 msgid "Filtro de entrada"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:42
+#: ../../external_incoming_calls/configure_ddi.rst:45
 msgid ""
 "Permite aplicar lógicas de filtrado en base a horario y calendario, se "
 "verán en :ref:`external_filters`. Dejar sin seleccionar para no aplicar "
 "filtro alguno."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:43
+#: ../../external_incoming_calls/configure_ddi.rst:46
 msgid "Enrutar"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:45
+#: ../../external_incoming_calls/configure_ddi.rst:48
 msgid ""
 "Un DDI puede tener distintos :ref:`tratamientos <routing_logics>`. Para "
 "nuestro objetivo, enrutar al usuario *Alice*."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:46
+#: ../../external_incoming_calls/configure_ddi.rst:49
 msgid "Grabar llamadas"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:48
+#: ../../external_incoming_calls/configure_ddi.rst:51
 msgid "Dejar desactivado de momento, se explicará en :ref:`call_recordings`."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:49
-msgid "Bill inbound call"
+#: ../../external_incoming_calls/configure_ddi.rst:52
+msgid "Tarificar llamadas entrantes"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:51
+#: ../../external_incoming_calls/configure_ddi.rst:54
 msgid ""
 "Requiere del módulo de tarificación externa y permite tarificar llamadas "
 "entrantes a numeraciones especiales. Consultar a los "
@@ -136,11 +136,11 @@ msgid ""
 "interesados."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:56
+#: ../../external_incoming_calls/configure_ddi.rst:59
 msgid "Configurar tratamiento en entrada"
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:58
+#: ../../external_incoming_calls/configure_ddi.rst:61
 msgid ""
 "En la sección anterior hemos dado de alta el DDI y lo hemos configurado, "
 "pero conviene tener claro que **en un uso normal, el administrador de "
@@ -150,7 +150,7 @@ msgid ""
 "calendarios, etc."
 msgstr ""
 
-#: ../../external_incoming_calls/configure_ddi.rst:60
+#: ../../external_incoming_calls/configure_ddi.rst:63
 msgid ""
 "En este punto, marcando el número público debería de sonar el teléfono de"
 " *Alice* consiguiendo, por tanto, el objetivo de este bloque :)"
@@ -461,70 +461,70 @@ msgstr ""
 msgid "https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:3
+#: ../../external_incoming_calls/peering_contracts.rst:5
 msgid "Configurar Contrato de Peering"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:5
+#: ../../external_incoming_calls/peering_contracts.rst:7
 msgid ""
 "En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre "
 "un **Operador de Marca** y un Operador VoIP para sacar y recibir "
 "llamadas."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:7
+#: ../../external_incoming_calls/peering_contracts.rst:9
 msgid ""
 "IvozProvider permite integrarse con Operadores IP por medio de la sección"
 " **Contratos de Peering** que pasamos a describir:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:14
+#: ../../external_incoming_calls/peering_contracts.rst:16
 msgid "Datos básicos"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:16
+#: ../../external_incoming_calls/peering_contracts.rst:18
 msgid "Analicemos los campos de un PeeringContract de ejemplo:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:21
+#: ../../external_incoming_calls/peering_contracts.rst:23
 msgid "Si entramos a editar este Contrato de Peering concreto:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:27
-#: ../../external_incoming_calls/peering_contracts.rst:58
+#: ../../external_incoming_calls/peering_contracts.rst:29
+#: ../../external_incoming_calls/peering_contracts.rst:60
 msgid "Nombre"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:29
+#: ../../external_incoming_calls/peering_contracts.rst:31
 msgid "Se utilizará para referencia a este Contrato de Peering."
-msgstr ""
-
-#: ../../external_incoming_calls/peering_contracts.rst:30
-#: ../../external_incoming_calls/peering_contracts.rst:61
-msgid "Descripción"
 msgstr ""
 
 #: ../../external_incoming_calls/peering_contracts.rst:32
 #: ../../external_incoming_calls/peering_contracts.rst:63
+msgid "Descripción"
+msgstr ""
+
+#: ../../external_incoming_calls/peering_contracts.rst:34
+#: ../../external_incoming_calls/peering_contracts.rst:65
 msgid "Un campo adicional para escribir algún detalle."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:33
+#: ../../external_incoming_calls/peering_contracts.rst:35
 msgid "Transformación numérica"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:35
+#: ../../external_incoming_calls/peering_contracts.rst:37
 msgid ""
 "Transformaciones que se aplicarán al origen y al destino a las "
 "numeraciones que entren o salgan por este PeeringContract (ver "
 ":ref:`numeric_transformations`)."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:36
+#: ../../external_incoming_calls/peering_contracts.rst:38
 msgid "Tarificación externa"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:38
+#: ../../external_incoming_calls/peering_contracts.rst:40
 msgid ""
 "Módulo de tarificación externa disponible solo para ciertos operadores. "
 "Permite poner precio a la llamada atacando una API externa en lugar de "
@@ -533,15 +533,15 @@ msgid ""
 "interesados."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:41
+#: ../../external_incoming_calls/peering_contracts.rst:43
 msgid "Los campos marcados con una estrella roja son obligatorios."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:45
+#: ../../external_incoming_calls/peering_contracts.rst:47
 msgid "PeerServers"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:47
+#: ../../external_incoming_calls/peering_contracts.rst:49
 msgid ""
 "El concepto de **PeerServer** se refiere a los distintos servidores SIP "
 "que puede tener un Operador IP para servir su dominio SIP. Para definir "
@@ -549,47 +549,47 @@ msgid ""
 " botón:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:52
+#: ../../external_incoming_calls/peering_contracts.rst:54
 msgid ""
 "Tal y como indica el 0, no hay ningún PeerServer definido, por lo que "
 "añadimos uno:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:60
+#: ../../external_incoming_calls/peering_contracts.rst:62
 msgid "Se utilizará para referencia a este PeerServer."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:64
+#: ../../external_incoming_calls/peering_contracts.rst:66
 msgid "SIP Proxy"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:66
+#: ../../external_incoming_calls/peering_contracts.rst:68
 msgid ""
 "Dirección IP (o registro DNS) del PeerServer. Si utiliza un puerto "
 "distinto a 5060, se puede indicar con ':'."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:67
+#: ../../external_incoming_calls/peering_contracts.rst:69
 msgid "Esquema URI"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:69
+#: ../../external_incoming_calls/peering_contracts.rst:71
 msgid "Los esquemas soportados son sip y sips. Dejar en 'sip' en caso de duda."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:70
+#: ../../external_incoming_calls/peering_contracts.rst:72
 msgid "Transporte"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:72
+#: ../../external_incoming_calls/peering_contracts.rst:74
 msgid "Los protocolos de transporte SIP soportados. En caso de duda, dejar 'udp'."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:73
+#: ../../external_incoming_calls/peering_contracts.rst:75
 msgid "Outbound Proxy"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:75
+#: ../../external_incoming_calls/peering_contracts.rst:77
 msgid ""
 "Normalmente se deja vacío o se pone la IP del dominio indicado en **SIP "
 "Proxy** (para evitar resolución de dominios y hacer que el mensaje SIP "
@@ -598,11 +598,11 @@ msgid ""
 " la IP:PUERTO de este campo."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:76
+#: ../../external_incoming_calls/peering_contracts.rst:78
 msgid "Requiere autenticación"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:78
+#: ../../external_incoming_calls/peering_contracts.rst:80
 msgid ""
 "Existen contratos de Peering que nos validarán por IP, otros necesitarán "
 "que nos autentiquemos en cada sesión que queramos establecer. En caso de "
@@ -610,22 +610,22 @@ msgid ""
 "una contraseña para responder a esa autenticación."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:79
+#: ../../external_incoming_calls/peering_contracts.rst:81
 msgid "Cabecera de origen de llamada"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:81
+#: ../../external_incoming_calls/peering_contracts.rst:83
 msgid ""
 "Algunos operadores recogen el origen del From. Otros utilizan el From "
 "para validar la cuenta de cliente y necesitan cabeceras adicionales para "
 "recoger el origen. En caso de duda, marcar **PAI**."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:82
+#: ../../external_incoming_calls/peering_contracts.rst:84
 msgid "Transformaciones R-URI previas a las transformaciones numéricas"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:84
+#: ../../external_incoming_calls/peering_contracts.rst:86
 msgid ""
 "Permiten realizar cambios estáticos al destino de la llamada antes de "
 "aplicar las reglas de transformación numéricas mendionadas en "
@@ -635,11 +635,11 @@ msgid ""
 "en blanco."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:85
+#: ../../external_incoming_calls/peering_contracts.rst:87
 msgid "Personalización de la cabecera From"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:87
+#: ../../external_incoming_calls/peering_contracts.rst:89
 msgid ""
 "Los operadores que muestren el origen en otras cabeceras (PAI/RPID), es "
 "posible que nos soliciten que el From User sea el número de cuenta de "
@@ -647,14 +647,14 @@ msgid ""
 "dejar en blanco."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:89
+#: ../../external_incoming_calls/peering_contracts.rst:91
 msgid ""
 "Existen muchos campos para poder establecer *peering* con operadores de "
 "todo tipo, pero lo habitual será poner solo nombre y SIP Proxy (para los "
 "operadores que nos validen por IP) o nombre, SIP Proxy y Autenticación."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:91
+#: ../../external_incoming_calls/peering_contracts.rst:93
 msgid ""
 "En caso de definir múltiples PeerServers para un PeeringContract, "
 "IvozProvider hará balanceo y failover utilizando todos. Es decir, a veces"
@@ -662,11 +662,11 @@ msgid ""
 "lo intentará con el resto hasta dar con uno que conteste."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:95
+#: ../../external_incoming_calls/peering_contracts.rst:97
 msgid "Registro SIP"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:97
+#: ../../external_incoming_calls/peering_contracts.rst:99
 msgid ""
 "Hay operadores que exigen que tengamos un `Registro SIP "
 "<https://tools.ietf.org/html/rfc3261#section-10>`_ activo para que nos "
@@ -675,7 +675,7 @@ msgid ""
 " (???)."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:99
+#: ../../external_incoming_calls/peering_contracts.rst:101
 msgid ""
 "IvozProvider soporta *peerings* de todo tipo, pero recomendamos acordar "
 "*peerings de tú a tú*: sin autenticación, sin registro y validados por "
@@ -684,37 +684,37 @@ msgid ""
 " con los valores por defecto."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:101
+#: ../../external_incoming_calls/peering_contracts.rst:103
 msgid ""
 "Por este motivo IvozProvider permite configurar registros SIP periódicos "
 "por medio del siguiente botón:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:105
+#: ../../external_incoming_calls/peering_contracts.rst:107
 msgid "Si creamos uno nuevo, nos encontramos con la siguiente ventana:"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:110
+#: ../../external_incoming_calls/peering_contracts.rst:112
 msgid "Nombre de usuario"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:112
+#: ../../external_incoming_calls/peering_contracts.rst:114
 msgid ""
 "Número de cuenta de cliente o similar proporcionada por el operador que "
 "exige registro SIP."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:113
+#: ../../external_incoming_calls/peering_contracts.rst:115
 msgid "Dominio"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:115
+#: ../../external_incoming_calls/peering_contracts.rst:117
 msgid ""
 "Dominio o IP del servidor de registros. Habitualmente el mismo que sirve "
 "de Proxy SIP en el PeerServer."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:118
+#: ../../external_incoming_calls/peering_contracts.rst:120
 msgid ""
 "Se envía en la cabecera Contact y tiene que ser único a nivel de toda la "
 "plataforma. En PeeringContracts con un DDI asociado, se recomienda meter "
@@ -723,51 +723,54 @@ msgid ""
 " (cualquier valor que te deje guardar)."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:119
+#: ../../external_incoming_calls/peering_contracts.rst:121
 msgid "Usuario"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:121
+#: ../../external_incoming_calls/peering_contracts.rst:123
 msgid ""
 "Usuario de autenticación, practicamente siempre es igual al \"Nombre de "
 "usuario\" por lo que se recomienda dejar en blanco."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:122
+#: ../../external_incoming_calls/peering_contracts.rst:124
 msgid "URI Servidor de registro"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:124
+#: ../../external_incoming_calls/peering_contracts.rst:126
 msgid ""
 "Normalmente se puede dejar en blanco ya que se deduce del Dominio "
 "introducido. Si no fuera así, poner una dirección IP con 'sip:' por "
 "delante."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:125
+#: ../../external_incoming_calls/peering_contracts.rst:127
 msgid "Realm"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:127
+#: ../../external_incoming_calls/peering_contracts.rst:129
 msgid ""
 "Dejar en blanco para aceptar el propuesto por el extremo contrario. "
 "Definir solo si de estar familiarizado el mecanismo de autorización de "
 "SIP y saber lo que este campo implica."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:128
+#: ../../external_incoming_calls/peering_contracts.rst:130
 msgid "Expire"
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:130
+#: ../../external_incoming_calls/peering_contracts.rst:132
 msgid "Tiempo que IvozProvider sugerirá como tiempo de expiración del registro."
 msgstr ""
 
-#: ../../external_incoming_calls/peering_contracts.rst:132
+#: ../../external_incoming_calls/peering_contracts.rst:134
 msgid ""
 "Al igual que ocurre con los PeerServers, existen múltiples campos. Hay "
 "que tener en cuenta, no obstante, que la mayoría de operadores no "
 "deberían de exigir registro y, los que lo hagan, habitualmente solo "
 "requerirán de usuario, dominio y contraseña."
 msgstr ""
+
+#~ msgid "Bill inbound call"
+#~ msgstr ""
 

@@ -297,9 +297,9 @@ msgid ""
 "comunicaciones en tiempo real *peer-to-peer*."
 msgstr ""
 "This last transport protocol described in `RFC 7118 "
-"<https://tools.ietf.org/html/rfc7118>`_  allows web intregrated "
+"<https://tools.ietf.org/html/rfc7118>`_ supports web intregrated "
 "softphones, using the `WebRTC <https://webrtc.org/>`_ "
-"standard to allow browsers establish real-time *peer-to-peer* connections."
+"standard allowing browsers to establish real-time *peer-to-peer* connections."
 
 #: ../../intro/what_is_ivozprovider.rst:25
 msgid ""

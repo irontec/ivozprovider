@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 11:48+0200\n"
+"POT-Creation-Date: 2016-10-14 15:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,16 +282,253 @@ msgstr ""
 msgid "Grabación de llamadas"
 msgstr ""
 
+#: ../../pbx_features/call_recording.rst:7
+msgid ""
+"IvozProvider permite grabar las llamadas que se cursan en 2 modalidades "
+"distintas:"
+msgstr ""
+
 #: ../../pbx_features/call_recording.rst:9
+msgid ""
+"**Grabación automática** para llamadas desde/hacia cierto :ref:`DDI "
+"externo <external_ddis>`."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:11
+msgid ""
+"**Grabación bajo demanda** solicitada por un usuario en medio de una "
+"conversación."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:15
 msgid "Grabación automática por DDI"
 msgstr ""
 
-#: ../../pbx_features/call_recording.rst:13
-msgid "Grabación on demand"
+#: ../../pbx_features/call_recording.rst:17
+msgid ""
+"En el caso de grabaciones automáticas por DDI, **se graba toda la "
+"conversación**: desde el principio hasta el final."
 msgstr ""
 
-#: ../../pbx_features/call_recording.rst:17
+#: ../../pbx_features/call_recording.rst:19
+msgid "Se distinguen 2 casos:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:21
+msgid ""
+"**Llamadas entrantes a un DDI**: la grabación seguirá mientras la parte "
+"externa de la llamada permanezca en la conversación."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:23
+msgid ""
+"**Llamadas salientes utilizando un DDI** como :ref:`DDI saliente "
+"<external_ddis>`: mientras el interlocutor externo permanezca en la "
+"conversación, la grabación sigue."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:25
+msgid ""
+"El hecho de que **mientras el interlocutor permanezca en la llamada la "
+"grabación continúe**, hace que no importe cuántes veces se transfiera la "
+"llamada de un usuario a otro, la grabación contendrá toda la conversación"
+" (desde el punto de vista del participante externo)."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:28
+msgid "Grabar todas las llamadas de un DDI"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:29
+msgid "Basta con editar el DDI en cuestión y habilitar las grabaciones:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:33
+msgid "Existen 4 opciones:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:35
+msgid "Desactivar la grabación"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:36
+msgid "Activarla para llamadas entrantes a dicho DDI"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:37
+msgid "Activarla para llamadas salientes que presente dicho DDI"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:38
+msgid "Activarla para ambas"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:42
+msgid "Grabación bajo demanda"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:44
+msgid ""
+"La grabación bajo demanda u *on-demand* la tiene que activar el *operador"
+" de marca* para las empresas que la necesiten, sin más que editar su "
+"empresa y configurar el código deseado:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:48
+msgid ""
+"A diferencia de los :ref:`Servicios <services>` comentado en la sección "
+"anterior, la funcionalidad de grabación bajo demanda se activa en mitad "
+"de una conversación."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:51
+msgid "Activación por medio de tecla *Record*"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:53
+msgid ""
+"Los terminales *Yealink* soportan el envío de mensajes `SIP INFO "
+"<https://tools.ietf.org/html/rfc6086>`_ con una cabecera *Record* (ver "
+"`referencia "
+"<http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_)."
+" No es un estándar, pero al ser *Yealink* uno de los modelos soportados, "
+"IvozProvider incluye soporte para la activación de grabación bajo demanda"
+" de esta forma."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:55
+msgid ""
+"El código seleccionado no influye en este caso, pero **la empresa sí que "
+"tiene que tener las grabaciones bajo demanda activadas**."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:57
+msgid ""
+"La activación de las grabaciones es muy simple en este caso, basta con "
+"pulsar la tecla y el sistema inicia la grabación."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:60
+msgid "Activación por medio de transferencia ciega frustrada"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:62
+msgid ""
+"Existe otra forma de acceder a esta funcionalidad para los terminales que"
+" no tengan soporte para el método anterior."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:64
+msgid ""
+"Este método de acceder a la funcionalidad es una forma imaginativa de "
+"hacerla accesible para terminales sin soporte nativo de tecla *Record* "
+"(que es el método recomendado). En función del terminal en cuestión y de "
+"la configuración del mismo, resultará más o menos cómodo utilizar la "
+"funcionalidad (tecla rápida de transferencia ciega, no retener al "
+"interlocutor, etc.)."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:66
+msgid ""
+"Los pasos a seguir en este método alternativo e imaginativo son los "
+"siguientes:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:68
+msgid "No se activa marcando el código en medio de la conversación."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:70
+msgid "Se activa iniciando una transferencia ciega al código configurado."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:72
+msgid "El sistema rechazará la transferencia e iniciará la grabación."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:74
+msgid ""
+"El usuario podrá volver a la conversación que tenía (si es que su "
+"terminal no ha vuelto solo) y seguir hablando."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:77
+msgid ""
+"¿Por qué esta forma tan *peculiar* de activar la grabación y no por medio"
+" de tonos normales?"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:78
+msgid ""
+"El motivo de activar la grabación por medio de una transferencia ciega "
+"frustrada se debe a la :ref:`architecture` y, más concretamente, al "
+":ref:`flujo de audio RTP <audioflow>`."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:80
+msgid ""
+"Lo habitual suele ser activar servicios por medio de pulsaciones en medio"
+" de la llamada (lo que se conoce por `tonos DTMF "
+"<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_). Estos tonos "
+"suelen viajar por el mismo camino del audio (siguiendo el `RFC 4733 "
+"<https://tools.ietf.org/html/rfc4733>`_ o como sonido audible)."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:82
+msgid ""
+"IvozProvider utiliza la transmisión de estos tonos siguiendo el `RFC 4733"
+" <https://tools.ietf.org/html/rfc4733>`_ y, por tanto, dichos paquetes de"
+" audio pasan por los *media-relays*, que se limitan a reenviar el audio "
+"sin analizar su contenido. Al no analizar su contenido, no pueden "
+"detectar las pulsaciones y activar lógicas."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:84
+msgid ""
+"Esta decisión de diseño es la que permite escalar la solución y ser capaz"
+" de gestionar cientos de miles de llamadas concurrentes."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:86
+msgid ""
+"Al realizar una transferencia ciega, en cambio, se produce señalización "
+"SIP dentro de un diálogo (en concreto, un `REFER "
+"<https://tools.ietf.org/html/rfc3515>`_) y sí que es posible activar "
+"lógicas de este estilo, ya que la señalización sigue `otro camino "
+"<signallingflow>` que incluye a los elementos con lógica (servidores de "
+"aplicación y *proxies*)."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:88
+msgid ""
+"La grabación bajo demanda graba la llamada desde que se activa hasta que "
+"el usuario que la activó desaparece de la misma."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:90
+msgid ""
+"No existe la funcionalidad de parar la grabación, independientemente del "
+"método elegido para activarla."
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:94
 msgid "Listado de grabaciones"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:96
+msgid ""
+"El *administrador de empresa* puede acceder a las grabaciones realizadas "
+"por medio de la sección **Configuración de Empresa** > **Grabaciones**:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:100
+msgid ""
+"Haciendo clic en una de ellas, podría escucharla desde la *web* o "
+"descargársela en formato MP3:"
+msgstr ""
+
+#: ../../pbx_features/call_recording.rst:104
+msgid "En el caso de una grabación bajo demanda, se indica qué usuario la inició:"
 msgstr ""
 
 #: ../../pbx_features/conference_rooms.rst:5
@@ -810,7 +1047,7 @@ msgid "Creemos la extensión 200 que apunte a este grupo de salto:"
 msgstr ""
 
 #: ../../pbx_features/index.rst:3
-msgid "[S] Funcionalidades de PBX"
+msgid "Funcionalidades de PBX"
 msgstr ""
 
 #: ../../pbx_features/index.rst:5
@@ -1050,12 +1287,151 @@ msgstr ""
 msgid "Servicios adicionales"
 msgstr ""
 
+#: ../../pbx_features/services.rst:7
+msgid ""
+"Existen **servicios especiales** a los que se accede **marcando códigos**"
+" especiales **desde un terminal** de usuario **cuando éste está en "
+"reposo**."
+msgstr ""
+
 #: ../../pbx_features/services.rst:9
-msgid "Definición de servicios y códigos a nivel de marca"
+msgid ""
+"Los servicios que se definen en esta sección **no son accesibles en medio"
+" de una conversación**. Se activan **llamando** a los códigos que se "
+"mencionarán, no marcándolos en medio de una conversación."
 msgstr ""
 
 #: ../../pbx_features/services.rst:13
+msgid "Listado de códigos a nivel global"
+msgstr ""
+
+#: ../../pbx_features/services.rst:15
+msgid ""
+"En el momento de realizar esta documentación, existen los siguientes "
+"**servicios especiales** visibles en la sección **Gestión general** > "
+"**Servicios**:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:20
+msgid "Captura Directa"
+msgstr ""
+
+#: ../../pbx_features/services.rst:22
+msgid ""
+"Es el servicio que permite capturar metiendo el código que se asigne "
+"seguido de la extensión del teléfono a capturar."
+msgstr ""
+
+#: ../../pbx_features/services.rst:23
+msgid "Captura de Grupo"
+msgstr ""
+
+#: ../../pbx_features/services.rst:25
+msgid ""
+"Es el servicio que permite capturar el teléfono que esté sonando dentro "
+"de tu(s) grupo(s) de captura."
+msgstr ""
+
+#: ../../pbx_features/services.rst:26
+msgid "Consultar el buzón de voz"
+msgstr ""
+
+#: ../../pbx_features/services.rst:28
+msgid ""
+"Este servicio permite acceder a un menú de voz que te presenta los "
+"mensajes de voz nuevos, viejos, etc. Es una alternativa a la recepción de"
+" mensajes de voz vía correo electrónico."
+msgstr ""
+
+#: ../../pbx_features/services.rst:30
+msgid ""
+"A medida que la solución vaya evolucionando y surjan servicios nuevos, "
+"aparecerán en este listado para que el operador global sepa de su "
+"existencia y lo comunique a sus operadores de marca."
+msgstr ""
+
+#: ../../pbx_features/services.rst:32
+msgid ""
+"Este listado no especifica el código de acceso al servicio, serán los "
+"operadores de marca los que especifiquen el código de acceso por defecto "
+"a los servicios que quieran hacer disponibles."
+msgstr ""
+
+#: ../../pbx_features/services.rst:36
+msgid "Definición de servicios y códigos a nivel de marca"
+msgstr ""
+
+#: ../../pbx_features/services.rst:38
+msgid ""
+"La sección **Configuración de Marca ** > **Servicios** permite al "
+"operador de marca:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:40
+msgid ""
+"Dar de alta, de entre los servicios disponibles, los servicios que quiere"
+" hacer disponibles a sus empresas."
+msgstr ""
+
+#: ../../pbx_features/services.rst:42
+msgid "Asignar el código de acceso por defecto a dichos servicios."
+msgstr ""
+
+#: ../../pbx_features/services.rst:44
+msgid ""
+"Por defecto este listado aparece vacío y se pueden añadir servicios tal "
+"que:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:48
+msgid "Los caracteres permitidos son 0-9, \\* y #, un máximo de 3."
+msgstr ""
+
+#: ../../pbx_features/services.rst:50
+msgid "Imaginemos que añadimos los 3 disponibles:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:54
+msgid ""
+"Desde ese momento, las empresas podrían acceder a dichos servicios sin "
+"más que marcar los códigos elegidos."
+msgstr ""
+
+#: ../../pbx_features/services.rst:56
+msgid ""
+"El operador de marca puede elegir no dar acceso a sus empresas al "
+"servicio *Buzón de voz*, por ejemplo. Bastaría con no asignarle código."
+msgstr ""
+
+#: ../../pbx_features/services.rst:60
 msgid "Definición de códigos a nivel de empresa"
+msgstr ""
+
+#: ../../pbx_features/services.rst:62
+msgid ""
+"Puede darse el caso que una empresa concreta esté habituada a otros "
+"códigos o, simplemente, prefiera otros."
+msgstr ""
+
+#: ../../pbx_features/services.rst:64
+msgid ""
+"Cada empresa puede *pisar* los valores por defecto asignados por su "
+"*operador de marca* accediendo a **Configuración de Empresa** > "
+"**Servicios**:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:67
+msgid "Ejemplo: empresa que no quiere capturar con \\*7 sino con \\*95"
+msgstr ""
+
+#: ../../pbx_features/services.rst:70
+msgid "Quedando la sección con:"
+msgstr ""
+
+#: ../../pbx_features/services.rst:74
+msgid ""
+"Los servicios que el *administrador de empresa* no redefina utilizarán el"
+" código por defecto asignado por el *operador de marca*."
 msgstr ""
 
 #: ../../pbx_features/sounds.rst:3
@@ -1518,18 +1894,23 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Apartir del número especificado, no se"
-#~ " admitirán más miembros (para desactivar"
-#~ " el límite, utilizar 0)"
+#~ msgstr ""
+
+#~ msgid "Grabación on demand"
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Existen otras formas de meter un "
-#~ "participante externo a una sala de "
-#~ "audioconferencias sin gastar un DDI "
-#~ "externo: que alguien de dentro "
-#~ "transfiera la llamada a la extensión "
-#~ "de la sala, acceder por medio de"
-#~ " un IVR, etc."
+#~ "Al realizar una transferencia ciega, en"
+#~ " cambio, se produce `señalización SIP "
+#~ "<https://tools.ietf.org/html/rfc3515>`_ dentro de un"
+#~ " diálogo y sí que es posible "
+#~ "activar lógicas de este estilo, ya "
+#~ "que la señalización sigue `otro camino"
+#~ " <signallingflow>` que incluye a los "
+#~ "elementos con lógica (servidores de "
+#~ "aplicación <ases> y *proxies*)."
+#~ msgstr ""
+
+#~ msgid "[S] Funcionalidades de PBX"
 #~ msgstr ""
 
