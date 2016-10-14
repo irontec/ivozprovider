@@ -1,6 +1,6 @@
-##############################
-[P] Tarificación y facturación
-##############################
+##########################
+Tarificación y facturación
+##########################
 
 En este bloque se tratará un tema de primordial importancia para los administradores de marca:
 
@@ -17,7 +17,6 @@ Pare ello, abordaremos las siguientes cuestiones:
     call_registry
     billable_calls
     pricing_plans
-    pricing_plans_and_companies
     bill_a_call
     invoices
 

@@ -1,3 +1,5 @@
+.. _peering_contracts:
+
 ##############################
 Configurar Contrato de Peering
 ##############################

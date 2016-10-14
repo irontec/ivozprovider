@@ -1,5 +1,7 @@
 Llegados a este punto y estando deseosos como estamos de hacer nuestra primera llamada, habremos intentando llamar con la configuración actual pero...
 
+.. _noplan_nocall:
+
 ##################################
 Sin plan de precio, no hay llamada
 ##################################
@@ -11,6 +13,8 @@ Tal y como advertimos :ref:`cuando describimos las funciones del operador de mar
 Para evitar que por un descuido el operador de marca no defina el precio para un tipo de llamada y llamadas que implican coste salgan a precio 0, **en el momento del establecimiento de una llamada se comprueba que la llamada se va a poder tarificar**.
 
 .. error:: Si una llamada no se va a poder tarificar, IvozProvider no permitirá su establecimiento.
+
+.. _price_pattern:
 
 *************************
 Crear un patrón de precio
@@ -27,6 +31,8 @@ A diferencia de los patrones de destino, que vienen precreados con los 254 país
 Creemos el patrón de precio *Spain* para nuestra llamada saliente externa:
 
 .. image:: img/pricing_pattern_add.png
+
+.. _price_plan:
 
 ***********************
 Crear un plan de precio
@@ -61,6 +67,8 @@ Introducimos el número destino en :ref:`formato E.164 <e164>`:
 Y vemos que *matchea* con el **plan de precio** que acabamos de crear:
 
 .. image:: img/pricing_plans_find_plan3.png
+
+.. _pricing_plan_to_company:
 
 *********************************
 Vincular plan de precio a empresa

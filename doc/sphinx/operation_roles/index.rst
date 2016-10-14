@@ -1,8 +1,8 @@
 .. _operation_roles:
 
-################
-Roles de usuario
-################
+######################
+Roles de la plataforma
+######################
 
 Ivozprovider es una solución orientada a operador con múltiples niveles de usuarios.
 

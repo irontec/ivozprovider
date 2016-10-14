@@ -24,8 +24,11 @@ Por otra parte, la sección **Configuración de marca > DDIs** solo sirve para q
 
 Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos los campos necesarios:
 
+
 .. image:: img/ddis_add.png
     :align: center
+
+.. _bill_inbound:
 
 .. glossary::
 
@@ -47,7 +50,7 @@ Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos los camp
     Grabar llamadas
         Dejar desactivado de momento, se explicará en :ref:`call_recordings`.
 
-    Bill inbound call
+    Tarificar llamadas entrantes
         Requiere del módulo de tarificación externa y permite tarificar llamadas entrantes a numeraciones especiales. Consultar a los :ref:`desarrolladores de la solución <getting_help>` en caso de estar interesados.
 
 
