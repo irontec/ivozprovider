@@ -39,11 +39,15 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
+#    'sphinx.ext.githubpages',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+# Put localized texts here
+locale_dirs = ['locale']
+gettext_compact = True
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
