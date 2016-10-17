@@ -20,9 +20,9 @@ production:
       fields: &faxes_fieldsLink 
         order: &faxes_orderLink
           name: true
+          outgoingDDIId: true
           sendByEmail: true
           email: true
-          outgoingDDI: true
         options: 
           title: _("Options")
           screens: 
@@ -51,6 +51,19 @@ production:
       fields:
         order:
           <<: *faxes_orderLink
+      fixedPositions:
+        group0:
+          label: _("Outbound configuration")
+          colsPerRow: 12
+          fields:
+            name: 6
+            outgoingDDIId: 6
+        group1:
+          label: _("Inbound configuration")
+          colsPerRow: 12
+          fields:
+            sendByEmail: 6
+            email: 6
     faxesEdit_screen: &faxesEdit_screenLink 
       <<: *Faxes
       controller: edit
