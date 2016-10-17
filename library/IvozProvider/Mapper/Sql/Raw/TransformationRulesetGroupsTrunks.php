@@ -56,6 +56,10 @@ class TransformationRulesetGroupsTrunks extends MapperAbstract
                 'caller_out' => $model->getCallerOut(),
                 'callee_out' => $model->getCalleeOut(),
                 'description' => $model->getDescription(),
+                'automatic' => $model->getAutomatic(),
+                'countryId' => $model->getCountryId(),
+                'internationalCode' => $model->getInternationalCode(),
+                'nationalNumLength' => $model->getNationalNumLength(),
             );
         } else {
             $result = array();
@@ -582,7 +586,11 @@ class TransformationRulesetGroupsTrunks extends MapperAbstract
                   ->setCalleeIn($data['callee_in'])
                   ->setCallerOut($data['caller_out'])
                   ->setCalleeOut($data['callee_out'])
-                  ->setDescription($data['description']);
+                  ->setDescription($data['description'])
+                  ->setAutomatic($data['automatic'])
+                  ->setCountryId($data['countryId'])
+                  ->setInternationalCode($data['internationalCode'])
+                  ->setNationalNumLength($data['nationalNumLength']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -591,7 +599,11 @@ class TransformationRulesetGroupsTrunks extends MapperAbstract
                   ->setCalleeIn($data->{'callee_in'})
                   ->setCallerOut($data->{'caller_out'})
                   ->setCalleeOut($data->{'callee_out'})
-                  ->setDescription($data->{'description'});
+                  ->setDescription($data->{'description'})
+                  ->setAutomatic($data->{'automatic'})
+                  ->setCountryId($data->{'countryId'})
+                  ->setInternationalCode($data->{'internationalCode'})
+                  ->setNationalNumLength($data->{'nationalNumLength'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks) {
             $entry->setId($data->getId())
@@ -601,7 +613,11 @@ class TransformationRulesetGroupsTrunks extends MapperAbstract
                   ->setCalleeIn($data->getCalleeIn())
                   ->setCallerOut($data->getCallerOut())
                   ->setCalleeOut($data->getCalleeOut())
-                  ->setDescription($data->getDescription());
+                  ->setDescription($data->getDescription())
+                  ->setAutomatic($data->getAutomatic())
+                  ->setCountryId($data->getCountryId())
+                  ->setInternationalCode($data->getInternationalCode())
+                  ->setNationalNumLength($data->getNationalNumLength());
 
         }
 

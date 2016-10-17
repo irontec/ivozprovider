@@ -47,6 +47,49 @@ production:
       trim: both
       defaultValue: 
       maxLength: 500
+    automatic: 
+      title: _('Automatic')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: ["countryId", "internationalCode", "nationalNumLength"]
+          '1': 
+            title: _("Yes")
+            visualFilter:
+              show: ["countryId", "internationalCode", "nationalNumLength"]
+              hide: []
+    countryId: 
+      title: _('Country code')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - name
+              - calling_code
+            template: '%name% (+%calling_code%)'
+          order: name_es
+    internationalCode: 
+      title: _('Internationalcode')
+      type: text
+      pattern: "^[0-9]{2,10}$"
+      maxLength: 10
+      defaultValue: '00'
+    nationalNumLength: 
+      title: _('Nationalnumlength')
+      type: number
+      defaultValue: 9
+      source: 
+        control: Spinner
 staging: 
   _extends: production
 testing: 

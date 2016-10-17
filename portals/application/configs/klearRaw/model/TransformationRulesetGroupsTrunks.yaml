@@ -45,6 +45,39 @@ production:
       type: text
       defaultValue: 
       maxLength: 500
+    automatic: 
+      title: _('Automatic')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
+    countryId: 
+      title: _('Countryid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - code
+            template: '%code%'
+          order: code
+        'null': _("Unasigned")
+    internationalCode: 
+      title: _('Internationalcode')
+      type: text
+      maxLength: 10
+    nationalNumLength: 
+      title: _('Nationalnumlength')
+      type: number
+      source: 
+        control: Spinner
 staging: 
   _extends: production
 testing: 

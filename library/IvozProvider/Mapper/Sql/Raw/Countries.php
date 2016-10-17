@@ -487,6 +487,20 @@ class Countries extends MapperAbstract
                     }
                 }
 
+                if ($model->getTransformationRulesetGroupsTrunks(null, null, true) !== null) {
+                    $transformationRulesetGroupsTrunks = $model->getTransformationRulesetGroupsTrunks();
+
+                    if (!is_array($transformationRulesetGroupsTrunks)) {
+
+                        $transformationRulesetGroupsTrunks = array($transformationRulesetGroupsTrunks);
+                    }
+
+                    foreach ($transformationRulesetGroupsTrunks as $value) {
+                        $value->setCountryId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 

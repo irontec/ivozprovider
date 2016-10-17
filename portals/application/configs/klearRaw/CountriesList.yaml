@@ -3,6 +3,7 @@
 #include CompaniesList.yaml
 #include DDIsList.yaml
 #include TimezonesList.yaml
+#include TransformationRulesetGroupsTrunksList.yaml
 #include UsersList.yaml
 
 
@@ -26,6 +27,7 @@ production:
             companiesList_screen: true
             dDIsList_screen: true
             timezonesList_screen: true
+            transformationRulesetGroupsTrunksList_screen: true
             usersList_screen: true
           dialogs: 
             countriesDel_dialog: true
@@ -94,6 +96,19 @@ production:
       <<: *timezonesEdit_screenLink
       filterField: countryId
 
+    #transformationRulesetGroupsTrunks: 
+    transformationRulesetGroupsTrunksList_screen: 
+      <<: *transformationRulesetGroupsTrunksList_screenLink
+      filterField: countryId
+      parentOptionCustomizer: 
+        - recordCount
+    transformationRulesetGroupsTrunksNew_screen: 
+      <<: *transformationRulesetGroupsTrunksNew_screenLink
+      filterField: countryId
+    transformationRulesetGroupsTrunksEdit_screen: 
+      <<: *transformationRulesetGroupsTrunksEdit_screenLink
+      filterField: countryId
+
     #users: 
     usersList_screen: 
       <<: *usersList_screenLink
@@ -124,6 +139,8 @@ production:
     <<: *dDIs_dialogsLink
   # timezones dialogs: 
     <<: *timezones_dialogsLink
+  # transformationRulesetGroupsTrunks dialogs: 
+    <<: *transformationRulesetGroupsTrunks_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
 staging: 

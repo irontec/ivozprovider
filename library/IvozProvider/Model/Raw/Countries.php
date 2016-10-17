@@ -115,6 +115,14 @@ class Countries extends ModelAbstract
     protected $_Timezones;
 
     /**
+     * Dependent relation TransformationRulesetGroupsTrunks_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks[]
+     */
+    protected $_TransformationRulesetGroupsTrunks;
+
+    /**
      * Dependent relation Users_ibfk_12
      * Type: One-to-Many relationship
      *
@@ -166,6 +174,10 @@ class Countries extends ModelAbstract
             'TimezonesIbfk2' => array(
                     'property' => 'Timezones',
                     'table_name' => 'Timezones',
+                ),
+            'TransformationRulesetGroupsTrunksIbfk2' => array(
+                    'property' => 'TransformationRulesetGroupsTrunks',
+                    'table_name' => 'TransformationRulesetGroupsTrunks',
                 ),
             'UsersIbfk12' => array(
                     'property' => 'Users',
@@ -802,6 +814,96 @@ class Countries extends ModelAbstract
         }
 
         return $this->_Timezones;
+    }
+
+    /**
+     * Sets dependent relations TransformationRulesetGroupsTrunks_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setTransformationRulesetGroupsTrunks(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_TransformationRulesetGroupsTrunks === null) {
+
+                $this->getTransformationRulesetGroupsTrunks();
+            }
+
+            $oldRelations = $this->_TransformationRulesetGroupsTrunks;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_TransformationRulesetGroupsTrunks = array();
+
+        foreach ($data as $object) {
+            $this->addTransformationRulesetGroupsTrunks($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations TransformationRulesetGroupsTrunks_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function addTransformationRulesetGroupsTrunks(\IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks $data)
+    {
+        $this->_TransformationRulesetGroupsTrunks[] = $data;
+        $this->_setLoaded('TransformationRulesetGroupsTrunksIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent TransformationRulesetGroupsTrunks_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function getTransformationRulesetGroupsTrunks($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'TransformationRulesetGroupsTrunksIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_TransformationRulesetGroupsTrunks = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_TransformationRulesetGroupsTrunks;
     }
 
     /**

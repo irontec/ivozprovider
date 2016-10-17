@@ -44,7 +44,7 @@ class KamTrunksDialplan extends Raw\KamTrunksDialplan
                 $parentField = null;
                 break;
             default:
-                throw new \Klear_Exception_Default("Screen invalid");
+                $parentField = null;
                 break;
         }
         if (!is_null($parentField)) {

@@ -32,11 +32,15 @@ production:
           dialogs: 
             transformationRulesetGroupsTrunksDel_dialog: true
           default: transformationRulesetGroupsTrunksEdit_screen
-        blacklist: &transformationRulesetGroupsTrunks_blacklistLink
+        blacklist:
           caller_in: true
           callee_in: true
           caller_out: true
           callee_out: true
+          automatic: true
+          countryId: true
+          nationalNumLength: true
+          internationalCode: true
         order: &transformationRulesetGroupsTrunks_orderLink
           brandId: true
           name: true
@@ -58,8 +62,11 @@ production:
         <<: *forcedBrand
       shortcutOption: N
       fields:
-        blacklist: 
-          <<: *transformationRulesetGroupsTrunks_blacklistLink
+        blacklist: &transformationRulesetGroupsTrunks_blacklistLink
+          caller_in: true
+          callee_in: true
+          caller_out: true
+          callee_out: true
         order:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions: &transformationRulesetGroupsTrunksFixedPositions_Link

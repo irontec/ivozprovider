@@ -44,6 +44,7 @@ class Countries extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\TransformationRulesetGroupsTrunks',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (

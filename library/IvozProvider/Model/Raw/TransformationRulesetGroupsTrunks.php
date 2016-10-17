@@ -79,6 +79,41 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
      */
     protected $_description;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_automatic;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_countryId;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_internationalCode;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_nationalNumLength;
+
+
+    /**
+     * Parent relation TransformationRulesetGroupsTrunks_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Country;
 
     /**
      * Parent relation TransformationRulesetGroupsTrunks_ibfk_1
@@ -113,6 +148,10 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
         'caller_out'=>'callerOut',
         'callee_out'=>'calleeOut',
         'description'=>'description',
+        'automatic'=>'automatic',
+        'countryId'=>'countryId',
+        'internationalCode'=>'internationalCode',
+        'nationalNumLength'=>'nationalNumLength',
     );
 
     /**
@@ -129,6 +168,10 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'TransformationRulesetGroupsTrunksIbfk2'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
+                ),
             'TransformationRulesetGroupsTrunksIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
@@ -154,6 +197,7 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
 
         $this->_defaultValues = array(
             'description' => '',
+            'automatic' => '0',
         );
 
         $this->_initFileObjects();
@@ -463,6 +507,193 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     public function getDescription()
     {
         return $this->_description;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function setAutomatic($data)
+    {
+
+        if ($this->_automatic != $data) {
+            $this->_logChange('automatic', $this->_automatic, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_automatic = $data;
+
+        } else if (!is_null($data)) {
+            $this->_automatic = (int) $data;
+
+        } else {
+            $this->_automatic = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column automatic
+     *
+     * @return int
+     */
+    public function getAutomatic()
+    {
+        return $this->_automatic;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function setCountryId($data)
+    {
+
+        if ($this->_countryId != $data) {
+            $this->_logChange('countryId', $this->_countryId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_countryId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_countryId = (int) $data;
+
+        } else {
+            $this->_countryId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column countryId
+     *
+     * @return int
+     */
+    public function getCountryId()
+    {
+        return $this->_countryId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function setInternationalCode($data)
+    {
+
+        if ($this->_internationalCode != $data) {
+            $this->_logChange('internationalCode', $this->_internationalCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_internationalCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_internationalCode = (string) $data;
+
+        } else {
+            $this->_internationalCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column internationalCode
+     *
+     * @return string
+     */
+    public function getInternationalCode()
+    {
+        return $this->_internationalCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function setNationalNumLength($data)
+    {
+
+        if ($this->_nationalNumLength != $data) {
+            $this->_logChange('nationalNumLength', $this->_nationalNumLength, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_nationalNumLength = $data;
+
+        } else if (!is_null($data)) {
+            $this->_nationalNumLength = (int) $data;
+
+        } else {
+            $this->_nationalNumLength = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column nationalNumLength
+     *
+     * @return int
+     */
+    public function getNationalNumLength()
+    {
+        return $this->_nationalNumLength;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('TransformationRulesetGroupsTrunksIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'TransformationRulesetGroupsTrunksIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
     }
 
     /**
