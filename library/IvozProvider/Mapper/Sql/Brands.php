@@ -35,6 +35,7 @@ class Brands extends Raw\Brands
 
         if ($isNew) {
             $this->_createDefaultRoutes($model);
+            $this->_createDefaultServices($model);
         }
 
         try {
@@ -77,6 +78,19 @@ class Brands extends Raw\Brands
                                                 ->setRoutingPatternGroupid($routingPatternGroup->getPrimaryKey())
                                                 ->save();
             }
+        }
+    }
+
+    protected function _createDefaultServices($model)
+    {
+        $servicesMapper = new \IvozProvider\Mapper\Sql\Services();
+        $services = $servicesMapper->fetchAll();
+        foreach ($services as $service) {
+            $newService = new \IvozProvider\Model\BrandServices();
+            $newService->setServiceId($service->getId())
+                       ->setCode($service->getDefaultCode())
+                       ->setBrandId($model->getPrimaryKey())
+                       ->save();
         }
     }
 

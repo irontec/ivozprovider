@@ -181,6 +181,23 @@ class Services extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'defaultCode' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Services',
+	    'COLUMN_NAME' => 'defaultCode',
+	    'COLUMN_POSITION' => 9,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '3',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

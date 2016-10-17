@@ -81,6 +81,13 @@ class Services extends ModelAbstract
      */
     protected $_descriptionEs;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_defaultCode;
+
 
 
     /**
@@ -108,6 +115,7 @@ class Services extends ModelAbstract
         'description'=>'description',
         'description_en'=>'descriptionEn',
         'description_es'=>'descriptionEs',
+        'defaultCode'=>'defaultCode',
     );
 
     /**
@@ -471,6 +479,43 @@ class Services extends ModelAbstract
     public function getDescriptionEs()
     {
         return $this->_descriptionEs;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function setDefaultCode($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_defaultCode != $data) {
+            $this->_logChange('defaultCode', $this->_defaultCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_defaultCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_defaultCode = (string) $data;
+
+        } else {
+            $this->_defaultCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column defaultCode
+     *
+     * @return string
+     */
+    public function getDefaultCode()
+    {
+        return $this->_defaultCode;
     }
 
     /**

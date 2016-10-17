@@ -54,6 +54,7 @@ class Services extends MapperAbstract
                 'name_es' => $model->getNameEs(),
                 'description_en' => $model->getDescriptionEn(),
                 'description_es' => $model->getDescriptionEs(),
+                'defaultCode' => $model->getDefaultCode(),
             );
         } else {
             $result = array();
@@ -578,14 +579,16 @@ class Services extends MapperAbstract
                   ->setNameEn($data['name_en'])
                   ->setNameEs($data['name_es'])
                   ->setDescriptionEn($data['description_en'])
-                  ->setDescriptionEs($data['description_es']);
+                  ->setDescriptionEs($data['description_es'])
+                  ->setDefaultCode($data['defaultCode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setIden($data->{'iden'})
                   ->setNameEn($data->{'name_en'})
                   ->setNameEs($data->{'name_es'})
                   ->setDescriptionEn($data->{'description_en'})
-                  ->setDescriptionEs($data->{'description_es'});
+                  ->setDescriptionEs($data->{'description_es'})
+                  ->setDefaultCode($data->{'defaultCode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Services) {
             $entry->setId($data->getId())
@@ -593,7 +596,8 @@ class Services extends MapperAbstract
                   ->setNameEn($data->getNameEn())
                   ->setNameEs($data->getNameEs())
                   ->setDescriptionEn($data->getDescriptionEn())
-                  ->setDescriptionEs($data->getDescriptionEs());
+                  ->setDescriptionEs($data->getDescriptionEs())
+                  ->setDefaultCode($data->getDefaultCode());
 
         }
 

@@ -11,6 +11,9 @@ production:
   screens: &services_screensLink 
     servicesList_screen: &servicesList_screenLink 
       controller: list
+      order:
+        field:
+          - defaultCode
       pagination: 
         items: 25
       <<: *Services
@@ -22,14 +25,14 @@ production:
           screens: 
             servicesEdit_screen: true
           dialogs: 
-            servicesDel_dialog: true
+            servicesDel_dialog: false
           default: servicesEdit_screen
       options: 
         title: _("Options")
         screens: 
-          servicesNew_screen: true
+          servicesNew_screen: false
         dialogs: 
-          servicesDel_dialog: true
+          servicesDel_dialog: false
     servicesNew_screen: &servicesNew_screenLink 
       <<: *Services
       controller: new
@@ -45,6 +48,11 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Service', 'Services', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Service', 'Services', 1), "[format| (%item%)]")
+      fields:
+        readOnly:
+          name: true
+          description: true
+          iden: true
 
   dialogs: &services_dialogsLink 
     servicesDel_dialog: &servicesDel_dialogLink 

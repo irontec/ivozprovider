@@ -28,6 +28,8 @@ class Companies extends Raw\Companies
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        $isNew = !$model->getPrimaryKey();
+
         $this->_model = $model;
         $this->_recursive = $recursive;
         if (is_null($model->getPrimaryKey())) {
@@ -35,6 +37,10 @@ class Companies extends Raw\Companies
         }
 
         $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
+
+        if ($isNew) {
+            $this->_propagateServices($model);
+        }
 
         $this->_updateDomains($model);
 
@@ -128,6 +134,19 @@ class Companies extends Raw\Companies
         if (!empty($callACLPatterns)) {
             $this->_model->setCallACLPatterns($callACLPatterns);
             $this->_recursive = true;
+        }
+    }
+
+    protected function _propagateServices($model)
+    {
+        $servicesMapper = new \IvozProvider\Mapper\Sql\BrandServices();
+        $services = $servicesMapper->fetchList("brandId=" . $model->getBrandId());
+        foreach ($services as $service) {
+            $newService = new \IvozProvider\Model\CompanyServices();
+            $newService->setServiceId($service->getServiceId())
+                       ->setCode($service->getCode())
+                       ->setCompanyId($model->getPrimaryKey())
+                       ->save();
         }
     }
 

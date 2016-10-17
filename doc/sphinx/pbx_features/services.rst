@@ -29,7 +29,9 @@ En el momento de realizar esta documentación, existen los siguientes **servicio
 
 A medida que la solución vaya evolucionando y surjan servicios nuevos, aparecerán en este listado para que el operador global sepa de su existencia y lo comunique a sus operadores de marca.
 
-.. attention:: Este listado no especifica el código de acceso al servicio, serán los operadores de marca los que especifiquen el código de acceso por defecto a los servicios que quieran hacer disponibles.
+.. attention:: Este listado determina los servicios disponibles y los códigos por defecto de las **nuevas marcas**.
+
+.. hint:: Cambiar un código solo afecta a las marcas que se creen tras el cambio.
 
 **************************************************
 Definición de servicios y códigos a nivel de marca
@@ -37,39 +39,27 @@ Definición de servicios y códigos a nivel de marca
 
 La sección **Configuración de Marca ** > **Servicios** permite al operador de marca:
 
-- Dar de alta, de entre los servicios disponibles, los servicios que quiere hacer disponibles a sus empresas.
+- Redefinir el código de acceso por defecto a dichos servicios para las empresas que a su vez no lo redefinan.
 
-- Asignar el código de acceso por defecto a dichos servicios.
+- Borrar servicios que no quieran que puedan utilizar sus empresas.
 
-Por defecto este listado aparece vacío y se pueden añadir servicios tal que:
-
-.. image:: img/services_brand_add.png
-
-.. note:: Los caracteres permitidos son 0-9, \* y #, un máximo de 3.
-
-Imaginemos que añadimos los 3 disponibles:
+Por defecto este listado aparece con todas los servicios y los códigos configurados a nivel Global:
 
 .. image:: img/services_brand_list.png
 
-Desde ese momento, las empresas podrían acceder a dichos servicios sin más que marcar los códigos elegidos.
+.. attention:: Este listado determina los servicios disponibles y los códigos por defecto de las **nuevas empresas**.
 
-.. hint:: El operador de marca puede elegir no dar acceso a sus empresas al servicio *Buzón de voz*, por ejemplo. Bastaría con no asignarle código.
+.. hint:: Cambiar un código solo afecta a las empresas que se creen tras el cambio. Borrar un servicio hace que no esté disponible para ninguna empresa de la marca.
 
 ****************************************
 Definición de códigos a nivel de empresa
 ****************************************
 
-Puede darse el caso que una empresa concreta esté habituada a otros códigos o, simplemente, prefiera otros.
+Cada empresa puede *pisar* los valores por defecto asignados por su *operador de marca* accediendo a **Configuración de Empresa** > **Servicios** y cambiando el código asignado.
 
-Cada empresa puede *pisar* los valores por defecto asignados por su *operador de marca* accediendo a **Configuración de Empresa** > **Servicios**:
+.. rubric:: Empresa que quiere capturar con \*\* en lugar de con \*95:
 
-.. rubric:: Ejemplo: empresa que no quiere capturar con \*7 sino con \*95
+.. image:: img/services_company_edit.png
 
-.. image:: img/services_company_add.png
-
-Quedando la sección con:
-
-.. image:: img/services_company_list.png
-
-.. note:: Los servicios que el *administrador de empresa* no redefina utilizarán el código por defecto asignado por el *operador de marca*.
+.. hint:: Los servicios que el *administrador de empresa* borre no podrán ser utilizados por sus usuarios.
 

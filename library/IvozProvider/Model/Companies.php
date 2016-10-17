@@ -54,13 +54,7 @@ class Companies extends Raw\Companies
     {
         $services = array();
 
-        // Add Brand Service Codes
-        $brandServices = $this->getBrand()->getBrandServices();
-        foreach ($brandServices as $brandService) {
-            $services[$brandService->getServiceId()] = $brandService;
-        }
-
-        // Override Brand services with company codes
+        // Get company services
         $companyServices = $this->getCompanyServices();
         foreach ($companyServices as $companyService) {
             $services[$companyService->getServiceId()] = $companyService;
