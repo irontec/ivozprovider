@@ -2,7 +2,6 @@
 #include conf.d/actions.yaml
 #include BrandOperatorsList.yaml
 #include BrandURLsList.yaml
-#include BrandServicesList.yaml
 
 production:
   main:
@@ -48,7 +47,6 @@ production:
             brandsEdit_screen: true
             brandOperatorsList_screen: true
             brandURLsList_screen: true
-            brandServicesList_screen: true
           dialogs:
             emulateBrand_dialog: true
             brandsDel_dialog: true
@@ -147,21 +145,7 @@ production:
     brandURLsEdit_screen: 
       <<: *brandURLsEdit_screenLink
       filterField: brandId
-      
-    #BrandServices
-    <<: *brandServices_screensLink
-    brandServicesList_screen:
-      <<: *brandServicesList_screenLink
-      filterField: brandId
-      parentOptionCustomizer: 
-        - recordCount
-    brandServicesNew_screen:
-      <<: *brandServicesNew_screenLink
-      filterField: brandId
-    brandServicesEdit_screen:
-      <<: *brandServicesEdit_screenLink
-      filterField: brandId
-      
+
   dialogs:
     brandsDel_dialog: &brandsDel_dialogLink
       <<: *Brands
@@ -193,9 +177,6 @@ production:
     
     # Brand URLs dialogs
     <<: *brandURLs_dialogsLink
-    
-    # Brand Services dialogs
-    <<: *brandServices_dialogsLink 
     
   commands: &brands_commandsLink 
     brandsLogoDownload_command: &brandsLogoDownload_commandLink 
