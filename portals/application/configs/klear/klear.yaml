@@ -9,8 +9,8 @@ production:
     sitename: "OASIS MAIN KLEAR"
     sitesubname: "Main website" 
     logo: images/irontec.png
-    year: 2015
-    lang: es
+    year: 2016
+    lang: en
     langs:
       es:
         title: Español
