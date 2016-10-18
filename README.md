@@ -2,9 +2,9 @@
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
-## Features 
+## Features
 #### Multitenancy
-IvozPorivder supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration task.
+IvozProvider supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration task.
 
  * Global Administator manages multiple Brands
  * Brand Administrators manage multiple Companies
@@ -18,7 +18,7 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
  * Portals: Provides Web interfaces for all platform roles and API services
  * Application Servers: Provides PBX features and runs configured logics
  * Data: Provides database and shared storage for the rest of machines
- 
+
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standlone installation).
 
 #### Cloud Service
@@ -41,10 +41,10 @@ If you want to test an [standlone](https://ironart3mis.github.io/ivozprovider/en
 
 You can browse online documentation in different formats:
 
-| Language | Online HTML | Single HTML | LaTeX | PDF |
-|----------|:-----------:|:-----------:|:-----:|-----|
-| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://ironArt3mis.github.io/ivozprovider/es) | [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ironArt3mis.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ironArt3mis.github.io/ivozprovider/eslatex) |  [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ironArt3mis.github.io/ivozprovider/espdf) |
-| English  | [![badge html](portals/public/images/doc-html-green.png)](https://ironArt3mis.github.io/ivozprovider/en) | [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ironArt3mis.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ironArt3mis.github.io/ivozprovider/enlatex) |  [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ironArt3mis.github.io/ivozprovider/enpdf) |
+| Language | Online HTML | Single HTML | LaTeX | PDF | EPUB |
+|----------|:-----------:|:-----------:|:-----:|:---:|:----:|
+| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://ironArt3mis.github.io/ivozprovider/es) | [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ironArt3mis.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ironart3mis.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ironart3mis.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://ironart3mis.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis.epub) |
+| English  | [![badge html](portals/public/images/doc-html-green.png)](https://ironArt3mis.github.io/ivozprovider/en) | [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ironArt3mis.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ironart3mis.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ironart3mis.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://ironart3mis.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis.epub) |
 
 
 ## Feedback & Questions
