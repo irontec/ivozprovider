@@ -64,6 +64,12 @@ production:
             visualFilter:
               show: ["countryId", "internationalCode", "nationalNumLength"]
               hide: []
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Will create default rules for a given country. This rules can be modified later.")
+        label: _("Need help?")
     countryId: 
       title: _('Country code')
       type: select

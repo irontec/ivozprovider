@@ -32,7 +32,7 @@ production:
           dialogs: 
             transformationRulesetGroupsTrunksDel_dialog: true
           default: transformationRulesetGroupsTrunksEdit_screen
-        blacklist:
+        blacklist: &transformationRulesetGroupsTrunks_blacklistLink
           caller_in: true
           callee_in: true
           caller_out: true
@@ -45,6 +45,10 @@ production:
           brandId: true
           name: true
           description: true
+          automatic: true
+          countryId: true
+          internationalCode: true
+          nationalNumLength: true
       options: 
         title: _("Options")
         screens: 
@@ -62,7 +66,7 @@ production:
         <<: *forcedBrand
       shortcutOption: N
       fields:
-        blacklist: &transformationRulesetGroupsTrunks_blacklistLink
+        blacklist:
           caller_in: true
           callee_in: true
           caller_out: true
@@ -71,10 +75,19 @@ production:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions: &transformationRulesetGroupsTrunksFixedPositions_Link
         group0:
+          label: _("Basic configuration")
           colsPerRow: 2
           fields:
             name: 1
             description: 1
+        group1:
+          label: _("Automatic creation of rules")
+          colsPerRow: 2
+          fields:
+            automatic: 1
+            countryId: 1
+            internationalCode: 1
+            nationalNumLength: 1
     transformationRulesetGroupsTrunksEdit_screen: &transformationRulesetGroupsTrunksEdit_screenLink 
       <<: *TransformationRulesetGroupsTrunks
       controller: edit
