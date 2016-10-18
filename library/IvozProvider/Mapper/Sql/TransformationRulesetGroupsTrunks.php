@@ -36,13 +36,11 @@ class TransformationRulesetGroupsTrunks extends Raw\TransformationRulesetGroupsT
             $intcode = $model->getInternationalCode();
 
             // Calculate next dpid
-            if (is_null($dpid)) {
-                $dialplanMapper = new \IvozProvider\Mapper\Sql\KamTrunksDialplan();
-                $maxDpiModel = $dialplanMapper->fetchOne(null, "dpid desc");
-                $dpid = 1;
-                if (!is_null($maxDpiModel)) {
-                    $dpid = $maxDpiModel->getDpid()+1;
-                }
+            $dialplanMapper = new \IvozProvider\Mapper\Sql\KamTrunksDialplan();
+            $maxDpiModel = $dialplanMapper->fetchOne(null, "dpid desc");
+            $dpid = 1;
+            if (!is_null($maxDpiModel)) {
+                $dpid = $maxDpiModel->getDpid()+1;
             }
 
             // Callee Out rules
