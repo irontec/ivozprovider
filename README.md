@@ -1,4 +1,4 @@
-![IvozProvider Logo](portals/public/images/logoprovider.png)
+![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.0-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -30,43 +30,12 @@ There are [several ways](https://ironart3mis.github.io/ivozprovider/en/installat
 
 If you want to test an [standlone](https://ironart3mis.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
 
-<table>
-  <tr>
-    <th>Version</th>
-    <th colspan="2" align="center">Install CD</th>
-    <th colspan="2" align="center">VMKD</th>
-  </tr>
-  <tr>
-    <td>oasis 1.0 (stable)</td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.torrent">torrent</a>
-    </td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso">HTTP</a>
-    </td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.torrent">torrent</a>
-    </td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso">HTTP</a>
-    </td>
-  </tr>
-  <tr>
-    <td>oasis 1.0 (nightly-builds)</td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-latest-amd64.torrent">torrent</a>
-    </td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-latest-amd64.iso">HTTP</a>
-    </td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-latest-amd64.torrent">torrent</a>
-    </td>
-    <td>
-      <a href="http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-latest-amd64.iso">HTTP</a>
-    </td>
-  </tr>
-</table>
+
+| Version  | ISO torrent | ISO HTTP | VMKD torrent | VMKD HTTP |
+|----------|:-----------:|:--------:|:------------:|:---------:|
+|oasis 1.0 (stable) | [![iso torrent](portals/public/images/iso-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64-iso.torrent) |[![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso)| [![vmkd torrent](portals/public/images/vmkd-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.torrent) |[![vmkd http](portals/public/images/vmkd-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso)|
+|oasis 1.1 (nightly-build) | [![iso torrent](portals/public/images/iso-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64-iso.torrent) |[![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso)| [![vmkd torrent](portals/public/images/vmkd-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.torrent) |[![vmkd http](portals/public/images/vmkd-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso)|
+
 
 ## Documentation
 
