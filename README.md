@@ -2,11 +2,33 @@
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
+## Features 
+#### Multitenancy
+IvozPorivder supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration task.
+
+ * Global Administator manages multiple Brands
+ * Brand Administrators manage multiple Companies
+ * Company Administrators manage multiple Users
+ * Users manage themselves
+
+#### Horizontal scaling
+From its beginning, IvozProvider was designed to be installed distributed between multiple machines, each one fullfilling one of the existing profiles:
+
+ * Proxy: Provides communication with SIP Providers and Users terminals
+ * Portals: Provides Web interfaces for all platform roles and API services
+ * Application Servers: Provides PBX features and runs configured logics
+ * Data: Provides database and shared storage for the rest of machines
+ 
+Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standlone installation).
+
+#### Cloud Service
+IvozProvider is designed to work directly from The Internet. Although it can be used in local enviromnets, being exposed to the public network [has it's advantages](https://ironart3mis.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
+
 ## Installation
 
 There are [several ways](https://ironart3mis.github.io/ivozprovider/en/installation) to install IvozProvider. 
 
-If you want to test an [standlone](https://ironart3mis.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auton-install cds based on Debian Jessie.
+If you want to test an [standlone](https://ironart3mis.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
 
 <table>
   <tr>
