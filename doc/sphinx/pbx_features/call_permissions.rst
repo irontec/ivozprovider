@@ -24,7 +24,7 @@ Patrones de permiso
 
 La clasificación de llamadas se realiza en las secciones indicadas a nivel de marca o a nivel de empresa.
 
-.. hint:: Cuando un operador de marca crea una empresa, todos los **Patrones de permiso genéricos** definidos en ese momento a nivel de **Configuración de Marca** se copian a **Configuración de Empresa** > **Patrones de permisos de llamada**. De esta forma, el operador de marca puede definir los más habituales y evitar este trabajo a los administradores de empresa.
+.. note:: Cuando un operador de marca crea una empresa, todos los **Patrones de permiso genéricos** definidos en ese momento a nivel de **Configuración de Marca** se copian a **Configuración de Empresa** > **Patrones de permisos de llamada**. De esta forma, el operador de marca puede definir los más habituales y evitar este trabajo a los administradores de empresa.
 
 La creación de nuevos patrones es muy simple:
 
@@ -32,6 +32,20 @@ La creación de nuevos patrones es muy simple:
 
 
 Este nuevo patrón de permisos engloba las llamadas que comiencen por 6 o 7 y sigan con 8 dígitos del 0 al 9. Es decir, engloba todas las numeraciones móviles nacionales.
+
+Otros patrones de permisos que pueden resultar interesantes son:
+
+- Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): ^[89][0-9]{8}$
+    - Un 8 o un 9 seguido de 8 dígitos.
+
+- Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): ^[89][1-9][0-9]{7}$
+    - Un 8 o un 9, seguido de 1 dígito del 1 al 9, seguido de 7 dígitos.
+
+- Llamadas internacionales: ^00[0-9]+$
+    - 00 (código internacional) seguido de 1 o más dígitos.
+
+- Llamadas a Reino Unido: ^0044[0-9]+$
+    - 00 (código internacional), 44 (código de UK), seguido de 1 o más dígitos.
 
 .. rubric:: Formato de los números externos
 
