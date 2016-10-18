@@ -235,7 +235,7 @@ html_static_path = ['_static']
 #   'da', 'de', 'en', 'es', 'fi', 'fr', 'h', 'it', 'ja'
 #   'nl', 'no', 'pt', 'ro', 'r', 'sv', 'tr', 'zh'
 #
-# html_search_language = 'en'
+html_search_language = 'es'
 
 # A dictionary with options for the search language support, empty by default.
 # 'ja' uses this config value.
@@ -249,7 +249,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Oasisdoc'
+htmlhelp_basename = 'IvozProviderdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -275,7 +275,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Oasis.tex', 'Oasis Documentation',
+    (master_doc, 'IvozProvider.tex', 'IvozProvider 1.0 Documentation',
      'Irontec', 'manual'),
 ]
 
@@ -304,6 +304,8 @@ latex_documents = [
 # If false, no module index is generated.
 #
 # latex_domain_indices = True
+
+latex_additional_files = [ "iftex.sty" ]
 
 
 # -- Options for manual page output ---------------------------------------
