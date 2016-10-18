@@ -45,6 +45,9 @@ skip-external-locking
 # UTC timezone
 default-time-zone = utc
 
+# UTF-8 encodings
+character-set-server = utf8
+
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
@@ -122,6 +125,7 @@ max_allowed_packet	= 16M
 
 [mysql]
 #no-auto-rehash	# faster start of mysql but no tab completition
+default-character-set = utf8
 
 [isamchk]
 key_buffer		= 16M
