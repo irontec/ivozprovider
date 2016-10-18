@@ -1,10 +1,6 @@
 ![IvozProvider Logo](portals/public/images/logoprovider.png)
 
-
-## Ivoz Provider [![Documentation Status](https://readthedocs.org/projects/ivozprovider/badge/?version=oasis)](http://ivozprovider.readthedocs.io/en/oasis/?badge=oasis)
-
-
-Ivoz Provider is a multitenant solution for VoIP telephony providers.
+Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
 ## Documentation
 
