@@ -1,10 +1,20 @@
-## Ivoz Provider
+![IvozProvider Logo](portals/public/images/logoprovider.png)
+
+
+## Ivoz Provider [![Documentation Status](https://readthedocs.org/projects/ivozprovider/badge/?version=oasis)](http://ivozprovider.readthedocs.io/en/oasis/?badge=oasis)
+
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers.
 
 ## Documentation
 
-You can browse online documentation at https://ironArt3mis.github.io/ivozprovider
+You can browse online documentation in different formats:
+
+| Language | Online HTML | Single HTML | LaTeX | PDF |
+|----------|:-----------:|:-----------:|:-----:|-----|
+| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://ironArt3mis.github.io/ivozprovider/es) | [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ironArt3mis.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ironArt3mis.github.io/ivozprovider/eslatex) |  [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ironArt3mis.github.io/ivozprovider/espdf) |
+| English  | [![badge html](portals/public/images/doc-html-green.png)](https://ironArt3mis.github.io/ivozprovider/es) | [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ironArt3mis.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ironArt3mis.github.io/ivozprovider/eslatex) |  [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ironArt3mis.github.io/ivozprovider/espdf) |
+
 
 ## Frequent Asked Questions
 
