@@ -225,7 +225,7 @@ msgstr ""
 
 #: ../../intro/what_is_ivozprovider.rst:3
 msgid "¿Qué es IvozProvider?"
-msgstr "What is IvoProvider?"
+msgstr "What is IvozProvider?"
 
 #: ../../intro/what_is_ivozprovider.rst:5
 msgid ""
