@@ -48,7 +48,7 @@ production:
       defaultValue: 
       maxLength: 500
     automatic: 
-      title: _('Automatic')
+      title: _('Generate rules?')
       type: select
       defaultValue: 0
       source: 
@@ -85,17 +85,29 @@ production:
             template: '%name% (+%calling_code%)'
           order: name_es
     internationalCode: 
-      title: _('Internationalcode')
+      title: _('International Code')
       type: text
       pattern: "^[0-9]{2,10}$"
       maxLength: 10
       defaultValue: '00'
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Code used for internationals calls, usually 00.")
+        label: _("Need help?")
     nationalNumLength: 
-      title: _('Nationalnumlength')
+      title: _('National number length')
       type: number
       defaultValue: 9
       source: 
         control: Spinner
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("How long are the normal phone numbers called inside this country?")
+        label: _("Need help?")
 staging: 
   _extends: production
 testing: 

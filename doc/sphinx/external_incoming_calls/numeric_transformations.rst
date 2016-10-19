@@ -10,7 +10,7 @@ Concepto
 
 **IvozProvider** está diseñado con la intención de **poder dar servicio en cualquier lugar del planeta**, no solamente en el país originario de la solución.
 
-Un concepto muy importante para conseguir este objetivo es el de las transformaciones númericas, que consisten en la adaptación de los distintos sistemas de numeración de los países del mundo definidos en `E.164 <https://www.itu.int/rec/T-REC-E.164/es>`_ a un formato neutro.
+Un concepto muy importante para conseguir este objetivo es el de las transformaciones númericas, que consisten en la **adaptación de los distintos sistemas de numeración de los países del mundo** definidos en `E.164 <https://www.itu.int/rec/T-REC-E.164/es>`_ **a un formato neutro**.
 
 La sección que le permite configurar al operador de marca todo lo relativo a **Transformaciones numéricas** es:
 
@@ -62,13 +62,20 @@ Por ejemplo, para una llamada a un número español:
 
 .. note:: En resumen, consiste en entregar origen y destino en el formato en el que el operador elegido los espera, para que la llamada progrese con normalidad.
 
-.. tip:: Las transformaciones numéricas utilizan **expresiones regulares** [*]_ muy simples para describir los cambios a realizar en las numeraciones. En Internet se pueden encontrar múltiples tutoriales sobre el uso básico de expresiones regulares.
+.. tip:: Las transformaciones numéricas utilizan `expresiones regulares <https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular>`_ muy simples para describir los cambios a realizar en las numeraciones. En Internet se pueden encontrar múltiples tutoriales sobre el uso básico de expresiones regulares.
 
 **********************************
 Transformación 'Operador Nacional'
 **********************************
 
-IvozProvider incluye un *set* de transformaciones denominado **Operador nacional** que realiza las modificaciones adecuadas para operadores nacionales que muestren las numeraciones siguiendo estas reglas:
+IvozProvider permite crear automáticamente las reglas de transformación típicas de la mayoría de países.
+
+Para crear el set de reglas necesarias para los operadores españoles, basta con:
+
+.. image:: img/numeric_transformations_auto.png
+    :align: center
+
+Las reglas que se han autocreado realizan las modificaciones adecuadas para operadores nacionales que muestren las numeraciones siguiendo estas reglas:
 
 - Número español: se muestra sin código internacional y sin el 34.
 - Número internacional: se precede de 00 y del código del país.
@@ -78,6 +85,8 @@ Los *sets* de transformaciones numéricas se asignan a **PeeringContracts**, tal
 Analicemos el *set* para entender lo que hace cada regla de transformación:
 
 .. image:: img/numeric_transformations.png
+
+.. attention:: La creación automática genera las 8 reglas habituales en función de los parámetros especificados. Estas reglas se pueden editar después, el proceso de automatización termina una vez creado el set.
 
 Adaptación en entrada
 =====================
@@ -124,4 +133,3 @@ Siguiendo la misma lógica, estas 2 reglas realizan los siguientes cambos sobre 
 
 .. attention:: **En resumen**: las transformaciones numéricas adaptan orígenes y destinos, a E.164 en entrada y a los formatos que los operadores esperan en salida, utilizando reglas con expresiones regulares y métricas agrupadas en *sets* que se asocian a **PeeringContracts**.
 
-.. [*] https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular
