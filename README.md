@@ -4,12 +4,12 @@ Ivoz Provider is a multitenant solution for VoIP telephony providers designed fo
 
 ## Features
 #### Multitenancy
-IvozProvider supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration task.
+IvozProvider supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration tasks.
 
  * Global Administator manages multiple Brands
  * Brand Administrators manage multiple Companies
  * Company Administrators manage multiple Users
- * Users manage themselves
+ * Users manage their preferences
 
 #### Scaling
 From its beginning, IvozProvider was designed to be installed distributed between multiple machines, each one fullfilling one of the existing profiles:
@@ -27,7 +27,7 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
 
  * Application Server:
    - Provides **PBX features** and runs configured logics
-   - Powered by [Asterisk 13 LTS](http://www.asterisk.org/)
+   - Powered by [Asterisk 13 LTS](http://www.asterisk.org/) with [PJSIP](http://www.pjsip.org/) channel driver
    - Logics implemented in PHP using fastagi AGI
 
  * Data:
@@ -45,7 +45,7 @@ IvozProvider is designed to work directly from The Internet. Although it can be 
 
 ## Installation
 
-There are [several ways](https://ironart3mis.github.io/ivozprovider/en/installation) to install IvozProvider. 
+There are [several ways](https://ironart3mis.github.io/ivozprovider/en/installation) to install IvozProvider.
 
 If you want to test an [standlone](https://ironart3mis.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
 
