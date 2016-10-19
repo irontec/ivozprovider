@@ -38,6 +38,8 @@ And [many others](https://ironart3mis.github.io/ivozprovider/en/intro/what_is_in
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standlone installation).
 
+![scaling](portals/public/images/horizontalscaling.png)
+
 #### Cloud Service
 IvozProvider is designed to work directly from The Internet. Although it can be used in local enviromnets, being exposed to the public network [has it's advantages](https://ironart3mis.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
 
