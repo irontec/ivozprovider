@@ -1,0 +1,6 @@
+[client]
+default-character-set = utf8
+
+[mysqld]
+default-time-zone = utc
+character-set-server = utf8

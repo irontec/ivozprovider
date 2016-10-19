@@ -7,7 +7,6 @@
 
 case "$1" in
     install|upgrade)
-        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/mysql/my.cnf.divert            /etc/mysql/my.cnf
         dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/bind/named.conf.local.divert   /etc/bind/named.conf.local
         dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/bind/named.conf.options.divert /etc/bind/named.conf.options
     ;;
