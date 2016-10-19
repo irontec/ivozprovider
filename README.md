@@ -11,13 +11,30 @@ IvozProvider supports multiple management levels, from Global platform administa
  * Company Administrators manage multiple Users
  * Users manage themselves
 
-#### Horizontal scaling
+#### Scaling
 From its beginning, IvozProvider was designed to be installed distributed between multiple machines, each one fullfilling one of the existing profiles:
 
- * Proxy: Provides communication with SIP Providers and Users terminals
- * Portals: Provides Web interfaces for all platform roles and API services
- * Application Servers: Provides PBX features and runs configured logics
- * Data: Provides database and shared storage for the rest of machines
+ * Proxy:
+   - Provides **SIP communication** with Providers and Users terminals
+   - Provides **media relay** between endpoints
+   - Powered by [Kamailo SIP Server 4.4](https://www.kamailio.org/w/)
+
+ * Portal:
+   - Provides **Web interfaces** for all platform roles
+   - Access to all Bussiness data and shared files through **Rest API** services
+   - Management interfaces powered by [Klear Framework](https://www.irontec.com/internet/klear)
+   - User interface powered by [AngularJS](https://angularjs.org/)
+
+ * Application Server:
+   - Provides **PBX features** and runs configured logics
+   - Powered by [Asterisk 13 LTS](http://www.asterisk.org/)
+   - Logics implemented in PHP using fastagi AGI
+
+ * Data:
+   - Provides database and shared storage for the rest of machines
+   - Powered by [MySQL 5.5 Server](http://www.mysql.com/)
+
+And [many others](https://ironart3mis.github.io/ivozprovider/en/intro/what_is_inside.html) open source projects.
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standlone installation).
 
