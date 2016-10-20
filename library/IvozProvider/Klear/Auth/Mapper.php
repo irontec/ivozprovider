@@ -22,8 +22,8 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
 
     public function findByLogin($login)
     {
-
         $userOperator = $this->_mapper->fetchOne(array('username=? and active=1',array($login)));
+
         if (is_object($userOperator)) {
             $user = new \IvozProvider\Klear\Auth\User();
             $this->_poblateUser($user, $userOperator);
@@ -44,7 +44,9 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
             ->setEmail($operator->getEmail())
             ->setPassword($operator->getPass())
             ->setActive($operator->getActive())
-            ->setTimezone($operator->getTimezone()->getTz());
+            ->setTimezone($operator->getTimezone()->getTz())
+            ->setBrandId($this->_brand->getId());
+        ;
         return $this;
     }
 
