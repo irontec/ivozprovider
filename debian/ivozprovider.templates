@@ -66,7 +66,7 @@ Description:
  Are you sure you want to finish the configuration process?
  .
 Description-es.UTF-8:
- Algunas de las opciones no están configuradas completamente. Aseurese de que todas las opciones tienen valores
+ Algunas de las opciones no están configuradas completamente. Asegúrese de que todas las opciones tienen valores
  informados para el correcto funcionamiento de los servicios básicos.
  .
  Puede volver a configurar estas opciones en cualquier momento ejecutando "dpkg-reconfigure ivozprovider"

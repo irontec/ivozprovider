@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#DEBHELPER#
+
 case "$1" in
         remove)
                 ### This function will be used to restore files that are owned by another packages
@@ -9,3 +12,4 @@ case "$1" in
         ;;
 esac
 
+:
