@@ -2467,7 +2467,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,1,'Alice','','alice@decompany.com','$5$rounds=5000$4afb6be9$QsMbjWvhxRqhqQGPgu4H3YSEUsk8B/2j9pk9PRiHGE2',145,1,1,NULL,NULL,0,0,NULL,'','alice',1,2,0,1,1,1,'4c18027290f0c1ed517680bb4bcf2402',NULL,1),(2,1,'Bob','','bob@democompany.com','$5$rounds=5000$f1edd170$LCnaGJiOaLKUQKU3golD5AjdGSNODu5K98r9EMlC624',145,2,2,NULL,NULL,0,0,NULL,'','bob',1,2,0,1,1,1,'10fd9fbe1c6861fb0a14a57e78f871c5',NULL,1);
+INSERT INTO `Users` VALUES (1,1,'Alice','Allison','alice@decompany.com','$5$rounds=5000$4afb6be9$QsMbjWvhxRqhqQGPgu4H3YSEUsk8B/2j9pk9PRiHGE2',145,1,1,NULL,NULL,0,0,NULL,'','alice',1,2,0,1,1,1,'4c18027290f0c1ed517680bb4bcf2402',NULL,1),(2,1,'Bob','Bobson','bob@democompany.com','$5$rounds=5000$f1edd170$LCnaGJiOaLKUQKU3golD5AjdGSNODu5K98r9EMlC624',145,2,2,NULL,NULL,0,0,NULL,'','bob',1,2,0,1,1,1,'10fd9fbe1c6861fb0a14a57e78f871c5',NULL,1);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
