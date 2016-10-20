@@ -65,14 +65,16 @@ function setup_pbx()
 {
     # Set asterisk bind address to localhost
     sed -i "s/bind=0.0.0.0:6060/bind=127.0.0.1:6060/g" /etc/asterisk/pjsip.conf
-
 }
 
 
 function start_services()
 {
+    db_get ivozprovider/restart_services    || true
+    [ "$RET" = true ] && ACTION=restart || ACTION=start
+
     # Start media proxy
-    /bin/systemctl start rtpproxy
+    /bin/systemctl $ACTION rtpproxy
     /bin/systemctl enable rtpproxy
 
     # Stop and disable default kamailio unit
@@ -80,13 +82,13 @@ function start_services()
     /bin/systemctl disable kamailio
 
     # Start Users & trunks proxyies
-    /bin/systemctl start kamailio@users
+    /bin/systemctl $ACTION kamailio@users
     /bin/systemctl enable kamailio@users
-    /bin/systemctl start kamailio@trunks
+    /bin/systemctl $ACTION kamailio@trunks
     /bin/systemctl enable kamailio@trunks
 
     # Start asterisk right now :p
-    /bin/systemctl start asterisk
+    /bin/systemctl $ACTION asterisk
 }
 
 # Run while reconfigure or first install

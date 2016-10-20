@@ -73,3 +73,10 @@ Description-es.UTF-8:
  .
  ¿Está seguro de querer finalizar el proceso de configuración?
  .
+
+Template: ivozprovider/restart_services
+Type: boolean
+Default: false
+Description: Do you want to RESTART services with new configured data?
+Description-es.UTF-8: ¿Desea REINICIAR los servicios con la nueva configuración?
+
