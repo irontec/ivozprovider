@@ -75,24 +75,27 @@ function start_services()
 
     # Start media proxy
     /bin/systemctl $ACTION rtpproxy
-    /bin/systemctl enable rtpproxy
-
-    # Stop and disable default kamailio unit
-    /bin/systemctl stop kamailio
-    /bin/systemctl disable kamailio
 
     # Start Users & trunks proxyies
     /bin/systemctl $ACTION kamailio@users
-    /bin/systemctl enable kamailio@users
     /bin/systemctl $ACTION kamailio@trunks
-    /bin/systemctl enable kamailio@trunks
 
     # Start asterisk right now :p
     /bin/systemctl $ACTION asterisk
 }
 
+function enable_services()
+{
+    /bin/systemctl enable rtpproxy
+    /bin/systemctl stop kamailio
+    /bin/systemctl disable kamailio
+    /bin/systemctl enable kamailio@users
+    /bin/systemctl enable kamailio@trunks
+    /bin/systemctl enable asterisk
+}
+
 # Run while reconfigure or first install
-if [ $1 == "configure" ] || [ -z "$2" ]; then
+if [ "$1" == "configure" ] || [ -z "$2" ]; then
     # Setup local DNS server
     setup_bind
     # Setup mysql password
@@ -105,4 +108,9 @@ if [ $1 == "configure" ] || [ -z "$2" ]; then
     setup_pbx
     # Restart services
     start_services
+fi
+
+# Enable services on first installation
+if [ -z "$2" ]; then
+    enable_services
 fi
