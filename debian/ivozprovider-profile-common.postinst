@@ -4,10 +4,11 @@
 
 # Add bashrc.d include on first install
 if [ -z "$2" ]; then
-    echo >> ~/.bashrc
-    echo '# Include extra resources files' >> ~/.bashrc
-    echo '[ -d ~/.bashrc.d ] && for RC_FILE in ~/.bashrc.d/*; do . $RC_FILE; done' >> ~/.bashrc
-    echo >> ~/.bashrc
+    mkdir -p /root/
+    echo >> /root/.bashrc
+    echo '# Include extra resources files' >> /root/.bashrc
+    echo '[ -d ~/.bashrc.d ] && for RC_FILE in ~/.bashrc.d/*; do . $RC_FILE; done' >> /root/.bashrc
+    echo >> /root/.bashrc
 fi
 
 # Change storage perms

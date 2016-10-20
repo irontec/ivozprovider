@@ -2,14 +2,6 @@
 
 #DEBHELPER#
 
-# Add bashrc.d include on first install
-if [ -z "$2" ]; then
-    echo >> ~/.bashrc
-    echo '# Include extra resources files' >> ~/.bashrc
-    echo '[ -d ~/.bashrc.d ] && for RC_FILE in ~/.bashrc.d/*; do . $RC_FILE; done' >> ~/.bashrc
-    echo >> ~/.bashrc
-fi
-
 # Create certificate links if required
 [ ! -e /etc/ssl/certs/ivozprovider-portals.pem ]    && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem   /etc/ssl/certs/ivozprovider-portals.pem
 [ ! -e /etc/ssl/private/ivozprovider-portals.key ]  && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/private/ivozprovider-portals.key
