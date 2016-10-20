@@ -24,7 +24,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 
     protected $_title = '';
     protected $_subTitle = '';
-    protected $_year = '2015';
+    protected $_year = '2016';
     protected $_logo = "images/palmera90.png";
 
     protected $_sessionName = 'BrandOperatorSession';

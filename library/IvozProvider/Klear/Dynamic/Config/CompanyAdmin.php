@@ -7,7 +7,7 @@ class CompanyAdmin extends Base
 
     protected $_title = '[Company Admin]';
     protected $_subTitle = '[admin operator session]';
-    protected $_year = '2015';
+    protected $_year = '2016';
 
     protected $_sessionName = 'CompanyAdminSession';
     protected $_userMapper = 'IvozProvider\Klear\Auth\CompanyAdmins\Mapper';

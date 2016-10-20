@@ -6,7 +6,7 @@ class BrandOperator extends Base
 
     protected $_title = '[Brand]';
     protected $_subTitle = '[brand operator session]';
-    protected $_year = '2015';
+    protected $_year = '2016';
 
     protected $_sessionName = 'BrandOperatorSession';
     protected $_userMapper = 'IvozProvider\Klear\Auth\BrandOperators\Mapper';

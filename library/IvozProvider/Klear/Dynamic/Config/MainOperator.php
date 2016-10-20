@@ -6,7 +6,7 @@ class MainOperator extends Base
 
     protected $_title = '[Main Global Operator]';
     protected $_subTitle = '[master operator session]';
-    protected $_year = '2015';
+    protected $_year = '2016';
     
     protected $_sessionName = 'MainOperatorSession';
     protected $_userMapper = 'IvozProvider\Klear\Auth\MainOperators\Mapper';
@@ -28,5 +28,10 @@ class MainOperator extends Base
                 $this->_subTitle .= '<br />Empresa emulada: <strong>' . $this->_user->companyName .'</strong>';
             }
         }
+    }
+
+    public function processSignature($signature)
+    {
+        return $this->_title;
     }
 }

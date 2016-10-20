@@ -43,6 +43,7 @@ production:
         disableChangeName: false        
     timezone: Europe/Madrid
     disableFixed: true
+    hideKlearName: true
 
   menu:
     General:
@@ -258,10 +259,6 @@ production:
           title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
-  headerMenu:
-    menu:
-      title: 'Holitas Menu'
-      disabledFixed: true
   footerMenu:
     footer:
       title: ''
