@@ -19,6 +19,22 @@ function setup_bind()
     /bin/systemctl restart bind9
 }
 
+function setup_mysql()
+{
+    # Get debian-sys-main password
+    MYSQL_USER="debian-sys-maint"
+    MYSQL_PASSWORD=$(awk '$1 == "password" { print $3; exit }' /etc/mysql/debian.cnf)
+
+    # Change database password
+    db_get ivozprovider/mysql_password      || true
+    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
+    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
+    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
+    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
+    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
+
+}
+
 function setup_portals()
 {
     # Setup portals mysql address
@@ -77,6 +93,8 @@ function start_services()
 if [ $1 == "configure" ] || [ -z "$2" ]; then
     # Setup local DNS server
     setup_bind
+    # Setup mysql password
+    setup_mysql
     # Setup web portals
     setup_portals
     # Setup proxy addresses
