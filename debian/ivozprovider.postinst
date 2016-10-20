@@ -43,8 +43,15 @@ function setup_proxies()
     # Update database tables
     /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
     /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
+}
+
+function setup_pbx()
+{
+    # Set asterisk bind address to localhost
+    sed -i "s/bind=0.0.0.0:6060/bind=127.0.0.1:6060/g" /etc/asterisk/pjsip.conf
 
 }
+
 
 function start_services()
 {
@@ -64,7 +71,6 @@ function start_services()
 
     # Start asterisk right now :p
     /bin/systemctl start asterisk
-
 }
 
 # Run while reconfigure or first install
@@ -75,6 +81,8 @@ if [ $1 == "configure" ] || [ -z "$2" ]; then
     setup_portals
     # Setup proxy addresses
     setup_proxies
-    # Setup pbx systems
+    # Setup pbx system
+    setup_pbx
+    # Restart services
     start_services
 fi
