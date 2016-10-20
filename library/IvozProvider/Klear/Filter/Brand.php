@@ -24,7 +24,10 @@ class IvozProvider_Klear_Filter_Brand implements KlearMatrix_Model_Field_Select_
 
     protected function _filterAutocompletePrincingPlans($term) {
         if (is_numeric($term)) {
-            $this->_condition[] = "`regExp` = '".$term."'";
+            $this->_condition[] = "`regExp` like '%".$term."%'";
+        } elseif (substr($term, 0, 1) == '(') {
+            $term = str_replace("(","",$term);
+            $this->_condition[] = "`regExp` like '".$term."%'";
         } else {
             $this->_condition[] = "(`name_en` LIKE '%".str_replace(' ','%',$term)."%' OR `name_es` LIKE '%".str_replace(' ','%',$term)."%')";
         }
