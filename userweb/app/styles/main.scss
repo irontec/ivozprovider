@@ -75,8 +75,22 @@ body {
         .brandLogin {
             margin-top: -55px;
 
-            img {
-                border: solid 4px #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .img-circle {
+                border: solid 3px #ffffff;
+                width: 100px;
+                height: 100px;
+
+                overflow: hidden;
+
+                background-color: #ffffff;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
             }
         }
     }
