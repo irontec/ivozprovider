@@ -1,1 +1,0 @@
-INSERT INTO `Domains` VALUES (1,'users.ivozprovider.local','global','proxyusers',NULL,NULL,'Minimal proxyusers global domain'),(2,'trunks.ivozprovider.local','global','proxytrunks',NULL,NULL,'Minimal proxytrunks global domain');
