@@ -49,7 +49,7 @@ class LcrGateways extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'companyId' => $model->getCompanyId(),
+                'lcr_id' => $model->getLcrId(),
                 'gw_name' => $model->getGwName(),
                 'ip' => $model->getIp(),
                 'hostname' => $model->getHostname(),
@@ -63,7 +63,6 @@ class LcrGateways extends MapperAbstract
                 'flags' => $model->getFlags(),
                 'defunct' => $model->getDefunct(),
                 'peerServerId' => $model->getPeerServerId(),
-                'outgoingRoutingId' => $model->getOutgoingRoutingId(),
             );
         } else {
             $result = array();
@@ -570,7 +569,7 @@ class LcrGateways extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setCompanyId($data['companyId'])
+                  ->setLcrId($data['lcr_id'])
                   ->setGwName($data['gw_name'])
                   ->setIp($data['ip'])
                   ->setHostname($data['hostname'])
@@ -583,11 +582,10 @@ class LcrGateways extends MapperAbstract
                   ->setTag($data['tag'])
                   ->setFlags($data['flags'])
                   ->setDefunct($data['defunct'])
-                  ->setPeerServerId($data['peerServerId'])
-                  ->setOutgoingRoutingId($data['outgoingRoutingId']);
+                  ->setPeerServerId($data['peerServerId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setCompanyId($data->{'companyId'})
+                  ->setLcrId($data->{'lcr_id'})
                   ->setGwName($data->{'gw_name'})
                   ->setIp($data->{'ip'})
                   ->setHostname($data->{'hostname'})
@@ -600,12 +598,11 @@ class LcrGateways extends MapperAbstract
                   ->setTag($data->{'tag'})
                   ->setFlags($data->{'flags'})
                   ->setDefunct($data->{'defunct'})
-                  ->setPeerServerId($data->{'peerServerId'})
-                  ->setOutgoingRoutingId($data->{'outgoingRoutingId'});
+                  ->setPeerServerId($data->{'peerServerId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\LcrGateways) {
             $entry->setId($data->getId())
-                  ->setCompanyId($data->getCompanyId())
+                  ->setLcrId($data->getLcrId())
                   ->setGwName($data->getGwName())
                   ->setIp($data->getIp())
                   ->setHostname($data->getHostname())
@@ -618,8 +615,7 @@ class LcrGateways extends MapperAbstract
                   ->setTag($data->getTag())
                   ->setFlags($data->getFlags())
                   ->setDefunct($data->getDefunct())
-                  ->setPeerServerId($data->getPeerServerId())
-                  ->setOutgoingRoutingId($data->getOutgoingRoutingId());
+                  ->setPeerServerId($data->getPeerServerId());
 
         }
 

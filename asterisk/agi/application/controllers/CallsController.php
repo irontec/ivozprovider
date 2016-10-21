@@ -436,6 +436,7 @@ class CallsController extends BaseController
         $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
         $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
+        $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain());
         $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
 
         // Get Calle data, take if from called endpoint

@@ -29,4 +29,29 @@ class RoutingPatterns extends Raw\RoutingPatterns
         // Dont save changelog on this entities
         $this->_saveChanges = false;
     }
+
+    public function getGenericLcrRulePerPattern()
+    {
+        $from_uri_condition = 'from_uri IS NULL';
+
+        $lcrRules = $this->getLcrRules($from_uri_condition);
+        if (empty($lcrRules)) {
+            return null;
+        } else {
+            return $lcrRules[0];
+        }
+    }
+
+    public function getCompanyLcrRulePerPattern(\IvozProvider\Model\Raw\Companies $company)
+    {
+        $from_uri = '^' . $company->getDomain() . '$';
+        $from_uri_condition = "from_uri='".$from_uri."'";
+
+        $lcrRules = $this->getLcrRules($from_uri_condition);
+        if (empty($lcrRules)) {
+            return null;
+        } else {
+            return $lcrRules[0];
+        }
+    }
 }

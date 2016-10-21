@@ -27,6 +27,8 @@ class PeerServers extends Raw\PeerServers
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        $isNew = !$model->getPrimaryKey();
+
         $isNotNewAndPeeringContractHasChanged = $model->getId() != "" && $model->hasChange("peeringContractId");
         if ( $model->getBrandId() == "" || $isNotNewAndPeeringContractHasChanged) {
 
@@ -86,12 +88,44 @@ class PeerServers extends Raw\PeerServers
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-        // Si el peerContract de este peerServer se utiliza en algun OutgoingRouting, update LCR
-        $outgoingRoutings = $model->getPeeringContract()->getOutgoingRouting();
-        $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
 
-        foreach ($outgoingRoutings as $outgoingRouting) {
-            $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
+        // Si el peerContract de este peerServer se utiliza en algun OutgoingRouting, update LCR
+        if ($isNew) {
+            $outgoingRoutings = $model->getPeeringContract()->getOutgoingRouting();
+            $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
+
+            foreach ($outgoingRoutings as $outgoingRouting) {
+                $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
+            }
+        }
+
+        // Create/Edit LCR Gateway for this PeerServer
+        $lcrGatewayMapper = new \IvozProvider\Mapper\Sql\LcrGateways();
+        $lcrGateway = $lcrGatewayMapper->findOneByField('peerServerId', $model->getPrimaryKey());
+
+        if (is_null($lcrGateway)) {
+            $lcrGateway = new \IvozProvider\Model\LcrGateways();
+        }
+
+        $lcrGateway->setGwName($model->getName())
+                   ->setIp($model->getIp())
+                   ->setHostname($model->getHostname())
+                   ->setPort($model->getPort())
+                   ->setParams($model->getParams())
+                   ->setUriScheme($model->getUriScheme())
+                   ->setTransport($model->getTransport())
+                   ->setStrip($model->getStrip())
+                   ->setPrefix($model->getPrefix())
+                   ->setTag($model->getId())
+                   ->setFlags($model->getFlags())
+                   ->setPeerServerId($model->getId())
+                   ->save();
+
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>LCR Gateways may have been reloaded.</p>";
+            throw new \Exception($message);
         }
 
         return $pk;
@@ -99,19 +133,13 @@ class PeerServers extends Raw\PeerServers
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        // If any LcrGateway uses this PeerServer, lcr.reload
-        $lcrGatewaysMapper = new \IvozProvider\Mapper\Sql\LcrGateways();
-        $lcrGateways = $lcrGatewaysMapper->findByField("peerServerId", $model->getPrimaryKey());
-
         $response = parent::delete($model);
 
-        if (!empty($lcrGateways)) {
-            try {
-                $this->_sendXmlRcp();
-            } catch (\Exception $e) {
-                $message = $e->getMessage()."<p>Peerserver may have been deleted.</p>";
-                throw new \Exception($message);
-            }
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>LCR Gateways may have been reloaded.</p>";
+            throw new \Exception($message);
         }
 
         return $response;

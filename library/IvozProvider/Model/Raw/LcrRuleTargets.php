@@ -35,7 +35,7 @@ class LcrRuleTargets extends ModelAbstract
      *
      * @var int
      */
-    protected $_companyId;
+    protected $_lcrId;
 
     /**
      * Database var type int
@@ -74,13 +74,6 @@ class LcrRuleTargets extends ModelAbstract
 
 
     /**
-     * Parent relation LcrRuleTargets_ibfk_1
-     *
-     * @var \IvozProvider\Model\Raw\Companies
-     */
-    protected $_Company;
-
-    /**
      * Parent relation LcrRuleTargets_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\LcrRules
@@ -104,7 +97,7 @@ class LcrRuleTargets extends ModelAbstract
 
     protected $_columnsList = array(
         'id'=>'id',
-        'companyId'=>'companyId',
+        'lcr_id'=>'lcrId',
         'rule_id'=>'ruleId',
         'gw_id'=>'gwId',
         'priority'=>'priority',
@@ -126,10 +119,6 @@ class LcrRuleTargets extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'LcrRuleTargetsIbfk1'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
-                ),
             'LcrRuleTargetsIbfk2'=> array(
                     'property' => 'Rule',
                     'table_name' => 'LcrRules',
@@ -151,6 +140,7 @@ class LcrRuleTargets extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'lcrId' => '1',
             'weight' => '1',
         );
 
@@ -224,36 +214,33 @@ class LcrRuleTargets extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\LcrRuleTargets
      */
-    public function setCompanyId($data)
+    public function setLcrId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_companyId != $data) {
-            $this->_logChange('companyId', $this->_companyId, $data);
+        if ($this->_lcrId != $data) {
+            $this->_logChange('lcrId', $this->_lcrId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_companyId = $data;
+            $this->_lcrId = $data;
 
         } else if (!is_null($data)) {
-            $this->_companyId = (int) $data;
+            $this->_lcrId = (int) $data;
 
         } else {
-            $this->_companyId = $data;
+            $this->_lcrId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column companyId
+     * Gets column lcr_id
      *
      * @return int
      */
-    public function getCompanyId()
+    public function getLcrId()
     {
-        return $this->_companyId;
+        return $this->_lcrId;
     }
 
     /**
@@ -436,57 +423,6 @@ class LcrRuleTargets extends ModelAbstract
     public function getOutgoingRoutingId()
     {
         return $this->_outgoingRoutingId;
-    }
-
-    /**
-     * Sets parent relation Company
-     *
-     * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\LcrRuleTargets
-     */
-    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
-    {
-        $this->_Company = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
-        }
-
-        $this->_setLoaded('LcrRuleTargetsIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets parent Company
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'LcrRuleTargetsIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Company;
     }
 
     /**

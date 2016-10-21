@@ -668,48 +668,6 @@ class Companies extends MapperAbstract
                     }
                 }
 
-                if ($model->getLcrGateways(null, null, true) !== null) {
-                    $lcrGateways = $model->getLcrGateways();
-
-                    if (!is_array($lcrGateways)) {
-
-                        $lcrGateways = array($lcrGateways);
-                    }
-
-                    foreach ($lcrGateways as $value) {
-                        $value->setCompanyId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getLcrRuleTargets(null, null, true) !== null) {
-                    $lcrRuleTargets = $model->getLcrRuleTargets();
-
-                    if (!is_array($lcrRuleTargets)) {
-
-                        $lcrRuleTargets = array($lcrRuleTargets);
-                    }
-
-                    foreach ($lcrRuleTargets as $value) {
-                        $value->setCompanyId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getLcrRules(null, null, true) !== null) {
-                    $lcrRules = $model->getLcrRules();
-
-                    if (!is_array($lcrRules)) {
-
-                        $lcrRules = array($lcrRules);
-                    }
-
-                    foreach ($lcrRules as $value) {
-                        $value->setCompanyId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getLocutions(null, null, true) !== null) {
                     $locutions = $model->getLocutions();
 

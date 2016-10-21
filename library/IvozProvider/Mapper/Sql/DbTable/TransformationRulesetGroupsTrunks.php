@@ -40,14 +40,14 @@ class TransformationRulesetGroupsTrunks extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'TransformationRulesetGroupsTrunksIbfk2' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
-            'refColumns' => 'id'
-        ),
         'TransformationRulesetGroupsTrunksIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'TransformationRulesetGroupsTrunksIbfk2' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
             'refColumns' => 'id'
         )
     );

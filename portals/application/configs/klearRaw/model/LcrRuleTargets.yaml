@@ -1,19 +1,12 @@
 production: 
   class: \IvozProvider\Model\LcrRuleTargets
   fields: 
-    companyId: 
-      title: _('Companyid')
-      type: select
-      required: true
+    lcr_id: 
+      title: _('Lcrid')
+      type: number
+      defaultValue: 1
       source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
+        control: Spinner
       default: true
     rule_id: 
       title: _('Ruleid')

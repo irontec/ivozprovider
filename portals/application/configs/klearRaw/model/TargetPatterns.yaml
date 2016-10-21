@@ -10,7 +10,6 @@ production:
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
-      required: true
       maxLength: 55
     regExp: 
       title: _('Regexp')

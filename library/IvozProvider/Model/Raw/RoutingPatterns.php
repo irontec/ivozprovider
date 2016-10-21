@@ -181,8 +181,6 @@ class RoutingPatterns extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'descriptionEn' => '',
-            'descriptionEs' => '',
         );
 
         $this->_initFileObjects();

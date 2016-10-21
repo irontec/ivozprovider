@@ -40,11 +40,6 @@ class LcrRuleTargets extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'LcrRuleTargetsIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
         'LcrRuleTargetsIbfk2' => array(
             'columns' => 'rule_id',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules',
@@ -80,14 +75,14 @@ class LcrRuleTargets extends TableAbstract
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => true,
 	  ),
-	  'companyId' => 
+	  'lcr_id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'LcrRuleTargets',
-	    'COLUMN_NAME' => 'companyId',
+	    'COLUMN_NAME' => 'lcr_id',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '1',
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,

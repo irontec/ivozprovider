@@ -1,19 +1,12 @@
 production: 
   class: \IvozProvider\Model\LcrGateways
   fields: 
-    companyId: 
-      title: _('Companyid')
-      type: select
-      required: true
+    lcr_id: 
+      title: _('Lcrid')
+      type: number
+      defaultValue: 1
       source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
+        control: Spinner
       default: true
     gw_name: 
       title: _('Gwname')
@@ -84,19 +77,6 @@ production:
               - ip
             template: '%ip%'
           order: ip
-    outgoingRoutingId: 
-      title: _('Outgoingroutingid')
-      type: select
-      required: true
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
-          fieldName: 
-            fields: 
-              - id
-            template: '%id%'
-          order: id
 staging: 
   _extends: production
 testing: 

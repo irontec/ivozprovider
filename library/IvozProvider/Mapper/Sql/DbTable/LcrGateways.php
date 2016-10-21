@@ -40,19 +40,9 @@ class LcrGateways extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'LcrGatewaysIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
         'LcrGatewaysIbfk2' => array(
             'columns' => 'peerServerId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeerServers',
-            'refColumns' => 'id'
-        ),
-        'LcrGatewaysIbfk3' => array(
-            'columns' => 'outgoingRoutingId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
             'refColumns' => 'id'
         )
     );
@@ -77,14 +67,14 @@ class LcrGateways extends TableAbstract
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => true,
 	  ),
-	  'companyId' => 
+	  'lcr_id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'LcrGateways',
-	    'COLUMN_NAME' => 'companyId',
+	    'COLUMN_NAME' => 'lcr_id',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '1',
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
@@ -304,23 +294,6 @@ class LcrGateways extends TableAbstract
 	    'TABLE_NAME' => 'LcrGateways',
 	    'COLUMN_NAME' => 'peerServerId',
 	    'COLUMN_POSITION' => 15,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'outgoingRoutingId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrGateways',
-	    'COLUMN_NAME' => 'outgoingRoutingId',
-	    'COLUMN_POSITION' => 16,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,

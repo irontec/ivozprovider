@@ -49,7 +49,7 @@ class LcrRuleTargets extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'companyId' => $model->getCompanyId(),
+                'lcr_id' => $model->getLcrId(),
                 'rule_id' => $model->getRuleId(),
                 'gw_id' => $model->getGwId(),
                 'priority' => $model->getPriority(),
@@ -544,7 +544,7 @@ class LcrRuleTargets extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setCompanyId($data['companyId'])
+                  ->setLcrId($data['lcr_id'])
                   ->setRuleId($data['rule_id'])
                   ->setGwId($data['gw_id'])
                   ->setPriority($data['priority'])
@@ -552,7 +552,7 @@ class LcrRuleTargets extends MapperAbstract
                   ->setOutgoingRoutingId($data['outgoingRoutingId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setCompanyId($data->{'companyId'})
+                  ->setLcrId($data->{'lcr_id'})
                   ->setRuleId($data->{'rule_id'})
                   ->setGwId($data->{'gw_id'})
                   ->setPriority($data->{'priority'})
@@ -561,7 +561,7 @@ class LcrRuleTargets extends MapperAbstract
 
         } else if ($data instanceof \IvozProvider\Model\Raw\LcrRuleTargets) {
             $entry->setId($data->getId())
-                  ->setCompanyId($data->getCompanyId())
+                  ->setLcrId($data->getLcrId())
                   ->setRuleId($data->getRuleId())
                   ->setGwId($data->getGwId())
                   ->setPriority($data->getPriority())

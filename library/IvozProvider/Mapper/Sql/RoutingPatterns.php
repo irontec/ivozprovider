@@ -48,6 +48,21 @@ class RoutingPatterns extends Raw\RoutingPatterns
             }
         }
 
+        // Create/Edit LCR Rules for this RoutingPattern
+        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
+        $lcrRules = $lcrRulesMapper->fetchList("from_uri IS NULL AND routingPatternId=" . $model->getPrimaryKey());
+        if (empty($lcrRules)) {
+            $lcrRule = new \IvozProvider\Model\LcrRules();
+        } else {
+            $lcrRule = $lcrRules[0];
+        }
+
+        $lcrRule->setTag($model->getName())
+                ->setDescription($model->getDescription())
+                ->setRoutingPatternId($model->getId())
+                ->setCondition($model->getRegExp())
+                ->save();
+
         return $pk;
     }
 

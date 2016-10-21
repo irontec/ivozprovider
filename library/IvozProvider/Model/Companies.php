@@ -112,7 +112,7 @@ class Companies extends Raw\Companies
     }
 
     /**
-     * @brief Set musicclass for given company
+     * @brief Get musicclass for given company
      *
      * If no specific company music on hold is found, brand music will be used.
      * If no specific brand music  on hold is found, dafault music will be sued.
@@ -133,6 +133,20 @@ class Companies extends Raw\Companies
         }
 
         return "default";
+    }
+
+    /**
+     * Get associated user domain for this company
+     */
+    public function getDomain()
+    {
+        $domains = $this->getDomains();
+        if (!empty($domains)) {
+            $domain = array_shift($domains);
+            return $domain->getDomain();
+        } else {
+            return "";
+        }
     }
 
     /**

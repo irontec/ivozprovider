@@ -49,7 +49,7 @@ class LcrRules extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'companyId' => $model->getCompanyId(),
+                'lcr_id' => $model->getLcrId(),
                 'prefix' => $model->getPrefix(),
                 'from_uri' => $model->getFromUri(),
                 'request_uri' => $model->getRequestUri(),
@@ -58,7 +58,6 @@ class LcrRules extends MapperAbstract
                 'tag' => $model->getTag(),
                 'description' => $model->getDescription(),
                 'routingPatternId' => $model->getRoutingPatternId(),
-                'outgoingRoutingId' => $model->getOutgoingRoutingId(),
             );
         } else {
             $result = array();
@@ -565,7 +564,7 @@ class LcrRules extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setCompanyId($data['companyId'])
+                  ->setLcrId($data['lcr_id'])
                   ->setPrefix($data['prefix'])
                   ->setFromUri($data['from_uri'])
                   ->setRequestUri($data['request_uri'])
@@ -573,11 +572,10 @@ class LcrRules extends MapperAbstract
                   ->setEnabled($data['enabled'])
                   ->setTag($data['tag'])
                   ->setDescription($data['description'])
-                  ->setRoutingPatternId($data['routingPatternId'])
-                  ->setOutgoingRoutingId($data['outgoingRoutingId']);
+                  ->setRoutingPatternId($data['routingPatternId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setCompanyId($data->{'companyId'})
+                  ->setLcrId($data->{'lcr_id'})
                   ->setPrefix($data->{'prefix'})
                   ->setFromUri($data->{'from_uri'})
                   ->setRequestUri($data->{'request_uri'})
@@ -585,12 +583,11 @@ class LcrRules extends MapperAbstract
                   ->setEnabled($data->{'enabled'})
                   ->setTag($data->{'tag'})
                   ->setDescription($data->{'description'})
-                  ->setRoutingPatternId($data->{'routingPatternId'})
-                  ->setOutgoingRoutingId($data->{'outgoingRoutingId'});
+                  ->setRoutingPatternId($data->{'routingPatternId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\LcrRules) {
             $entry->setId($data->getId())
-                  ->setCompanyId($data->getCompanyId())
+                  ->setLcrId($data->getLcrId())
                   ->setPrefix($data->getPrefix())
                   ->setFromUri($data->getFromUri())
                   ->setRequestUri($data->getRequestUri())
@@ -598,8 +595,7 @@ class LcrRules extends MapperAbstract
                   ->setEnabled($data->getEnabled())
                   ->setTag($data->getTag())
                   ->setDescription($data->getDescription())
-                  ->setRoutingPatternId($data->getRoutingPatternId())
-                  ->setOutgoingRoutingId($data->getOutgoingRoutingId());
+                  ->setRoutingPatternId($data->getRoutingPatternId());
 
         }
 

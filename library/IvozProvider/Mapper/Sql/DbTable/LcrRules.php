@@ -40,16 +40,6 @@ class LcrRules extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'LcrRulesIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
-        'LcrRulesIbfk3' => array(
-            'columns' => 'outgoingRoutingId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
-            'refColumns' => 'id'
-        ),
         'LcrRulesIbfk4' => array(
             'columns' => 'routingPatternId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
@@ -77,14 +67,14 @@ class LcrRules extends TableAbstract
 	    'PRIMARY_POSITION' => 1,
 	    'IDENTITY' => true,
 	  ),
-	  'companyId' => 
+	  'lcr_id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'companyId',
+	    'COLUMN_NAME' => 'lcr_id',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '1',
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
@@ -120,7 +110,7 @@ class LcrRules extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '64',
+	    'LENGTH' => '255',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -219,23 +209,6 @@ class LcrRules extends TableAbstract
 	    'TABLE_NAME' => 'LcrRules',
 	    'COLUMN_NAME' => 'routingPatternId',
 	    'COLUMN_POSITION' => 10,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'outgoingRoutingId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'LcrRules',
-	    'COLUMN_NAME' => 'outgoingRoutingId',
-	    'COLUMN_POSITION' => 11,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

@@ -129,28 +129,12 @@ class OutgoingRouting extends ModelAbstract
 
 
     /**
-     * Dependent relation LcrGateways_ibfk_3
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\LcrGateways[]
-     */
-    protected $_LcrGateways;
-
-    /**
      * Dependent relation LcrRuleTargets_ibfk_4
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\LcrRuleTargets[]
      */
     protected $_LcrRuleTargets;
-
-    /**
-     * Dependent relation LcrRules_ibfk_3
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\LcrRules[]
-     */
-    protected $_LcrRules;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -201,24 +185,14 @@ class OutgoingRouting extends ModelAbstract
         ));
 
         $this->setDependentList(array(
-            'LcrGatewaysIbfk3' => array(
-                    'property' => 'LcrGateways',
-                    'table_name' => 'LcrGateways',
-                ),
             'LcrRuleTargetsIbfk4' => array(
                     'property' => 'LcrRuleTargets',
                     'table_name' => 'LcrRuleTargets',
                 ),
-            'LcrRulesIbfk3' => array(
-                    'property' => 'LcrRules',
-                    'table_name' => 'LcrRules',
-                ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
-            'LcrGateways_ibfk_3',
-            'LcrRuleTargets_ibfk_4',
-            'LcrRules_ibfk_3'
+            'LcrRuleTargets_ibfk_4'
         ));
 
 
@@ -513,9 +487,6 @@ class OutgoingRouting extends ModelAbstract
     public function setCompanyId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_companyId != $data) {
             $this->_logChange('companyId', $this->_companyId, $data);
         }
@@ -835,96 +806,6 @@ class OutgoingRouting extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrGateways_ibfk_3
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\LcrGateways
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function setLcrGateways(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_LcrGateways === null) {
-
-                $this->getLcrGateways();
-            }
-
-            $oldRelations = $this->_LcrGateways;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_LcrGateways = array();
-
-        foreach ($data as $object) {
-            $this->addLcrGateways($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations LcrGateways_ibfk_3
-     *
-     * @param \IvozProvider\Model\Raw\LcrGateways $data
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function addLcrGateways(\IvozProvider\Model\Raw\LcrGateways $data)
-    {
-        $this->_LcrGateways[] = $data;
-        $this->_setLoaded('LcrGatewaysIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets dependent LcrGateways_ibfk_3
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\LcrGateways
-     */
-    public function getLcrGateways($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'LcrGatewaysIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_LcrGateways = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_LcrGateways;
-    }
-
-    /**
      * Sets dependent relations LcrRuleTargets_ibfk_4
      *
      * @param array $data An array of \IvozProvider\Model\Raw\LcrRuleTargets
@@ -1012,96 +893,6 @@ class OutgoingRouting extends ModelAbstract
         }
 
         return $this->_LcrRuleTargets;
-    }
-
-    /**
-     * Sets dependent relations LcrRules_ibfk_3
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\LcrRules
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function setLcrRules(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_LcrRules === null) {
-
-                $this->getLcrRules();
-            }
-
-            $oldRelations = $this->_LcrRules;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_LcrRules = array();
-
-        foreach ($data as $object) {
-            $this->addLcrRules($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations LcrRules_ibfk_3
-     *
-     * @param \IvozProvider\Model\Raw\LcrRules $data
-     * @return \IvozProvider\Model\Raw\OutgoingRouting
-     */
-    public function addLcrRules(\IvozProvider\Model\Raw\LcrRules $data)
-    {
-        $this->_LcrRules[] = $data;
-        $this->_setLoaded('LcrRulesIbfk3');
-        return $this;
-    }
-
-    /**
-     * Gets dependent LcrRules_ibfk_3
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\LcrRules
-     */
-    public function getLcrRules($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'LcrRulesIbfk3';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_LcrRules = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_LcrRules;
     }
 
     /**

@@ -85,7 +85,6 @@ production:
     companyId: 
       title: _('Company')
       type: select
-      required: true
       source: 
         data: mapper
         config: 
@@ -96,6 +95,7 @@ production:
               - name
             template: '%name%'
           order: name
+        'null': _("Apply to all companies")
     target:
       title: _('Destino')
       type: ghost

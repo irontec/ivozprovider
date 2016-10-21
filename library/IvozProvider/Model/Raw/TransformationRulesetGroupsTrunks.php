@@ -109,18 +109,18 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
 
 
     /**
-     * Parent relation TransformationRulesetGroupsTrunks_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\Countries
-     */
-    protected $_Country;
-
-    /**
      * Parent relation TransformationRulesetGroupsTrunks_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
+
+    /**
+     * Parent relation TransformationRulesetGroupsTrunks_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Country;
 
 
     /**
@@ -168,13 +168,13 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'TransformationRulesetGroupsTrunksIbfk2'=> array(
-                    'property' => 'Country',
-                    'table_name' => 'Countries',
-                ),
             'TransformationRulesetGroupsTrunksIbfk1'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
+                ),
+            'TransformationRulesetGroupsTrunksIbfk2'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
                 ),
         ));
 
@@ -646,57 +646,6 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Country
-     *
-     * @param \IvozProvider\Model\Raw\Countries $data
-     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
-     */
-    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
-    {
-        $this->_Country = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCountryId($primaryKey);
-        }
-
-        $this->_setLoaded('TransformationRulesetGroupsTrunksIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent Country
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Countries
-     */
-    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'TransformationRulesetGroupsTrunksIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Country = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Country;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -745,6 +694,57 @@ class TransformationRulesetGroupsTrunks extends ModelAbstract
         }
 
         return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\TransformationRulesetGroupsTrunks
+     */
+    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('TransformationRulesetGroupsTrunksIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'TransformationRulesetGroupsTrunksIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
     }
 
     /**

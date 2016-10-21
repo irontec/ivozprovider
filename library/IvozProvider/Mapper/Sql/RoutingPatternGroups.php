@@ -38,10 +38,17 @@ class RoutingPatternGroups extends Raw\RoutingPatternGroups
             if (!empty($outgoingRoutings)) {
                 foreach ($outgoingRoutings as $outgoingRouting) {
                     $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
-                    // updateLCRPerOutgoingRouting calls lcr.reload
                 }
             }
         }
+
+        try {
+            $this->_sendXmlRcp();
+        } catch (\Exception $e) {
+            $message = $e->getMessage()."<p>LCR module may have been reloaded.</p>";
+            throw new \Exception($message);
+        }
+
         return $pk;
     }
 

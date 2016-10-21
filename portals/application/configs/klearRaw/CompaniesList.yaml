@@ -15,9 +15,6 @@
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
 #include InvoicesList.yaml
-#include LcrGatewaysList.yaml
-#include LcrRuleTargetsList.yaml
-#include LcrRulesList.yaml
 #include LocutionsList.yaml
 #include MusicOnHoldList.yaml
 #include OutgoingRoutingList.yaml
@@ -65,9 +62,6 @@ production:
             iVRCommonList_screen: true
             iVRCustomList_screen: true
             invoicesList_screen: true
-            lcrGatewaysList_screen: true
-            lcrRuleTargetsList_screen: true
-            lcrRulesList_screen: true
             locutionsList_screen: true
             musicOnHoldList_screen: true
             outgoingRoutingList_screen: true
@@ -304,45 +298,6 @@ production:
       <<: *invoicesEdit_screenLink
       filterField: companyId
 
-    #lcrGateways: 
-    lcrGatewaysList_screen: 
-      <<: *lcrGatewaysList_screenLink
-      filterField: companyId
-      parentOptionCustomizer: 
-        - recordCount
-    lcrGatewaysNew_screen: 
-      <<: *lcrGatewaysNew_screenLink
-      filterField: companyId
-    lcrGatewaysEdit_screen: 
-      <<: *lcrGatewaysEdit_screenLink
-      filterField: companyId
-
-    #lcrRuleTargets: 
-    lcrRuleTargetsList_screen: 
-      <<: *lcrRuleTargetsList_screenLink
-      filterField: companyId
-      parentOptionCustomizer: 
-        - recordCount
-    lcrRuleTargetsNew_screen: 
-      <<: *lcrRuleTargetsNew_screenLink
-      filterField: companyId
-    lcrRuleTargetsEdit_screen: 
-      <<: *lcrRuleTargetsEdit_screenLink
-      filterField: companyId
-
-    #lcrRules: 
-    lcrRulesList_screen: 
-      <<: *lcrRulesList_screenLink
-      filterField: companyId
-      parentOptionCustomizer: 
-        - recordCount
-    lcrRulesNew_screen: 
-      <<: *lcrRulesNew_screenLink
-      filterField: companyId
-    lcrRulesEdit_screen: 
-      <<: *lcrRulesEdit_screenLink
-      filterField: companyId
-
     #locutions: 
     locutionsList_screen: 
       <<: *locutionsList_screenLink
@@ -553,12 +508,6 @@ production:
     <<: *iVRCustom_dialogsLink
   # invoices dialogs: 
     <<: *invoices_dialogsLink
-  # lcrGateways dialogs: 
-    <<: *lcrGateways_dialogsLink
-  # lcrRuleTargets dialogs: 
-    <<: *lcrRuleTargets_dialogsLink
-  # lcrRules dialogs: 
-    <<: *lcrRules_dialogsLink
   # locutions dialogs: 
     <<: *locutions_dialogsLink
   # musicOnHold dialogs: 
