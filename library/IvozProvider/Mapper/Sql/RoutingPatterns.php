@@ -26,6 +26,8 @@ class RoutingPatterns extends Raw\RoutingPatterns
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        $isNew = !$model->getPrimaryKey();
+
         $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
 
         // If any LcrRule uses this Pattern, update accordingly
@@ -48,20 +50,27 @@ class RoutingPatterns extends Raw\RoutingPatterns
             }
         }
 
-        // Create/Edit LCR Rules for this RoutingPattern
-        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
-        $lcrRules = $lcrRulesMapper->fetchList("from_uri IS NULL AND routingPatternId=" . $model->getPrimaryKey());
-        if (empty($lcrRules)) {
-            $lcrRule = new \IvozProvider\Model\LcrRules();
-        } else {
-            $lcrRule = $lcrRules[0];
-        }
+        if (!$isNew) {
+            // Edit LCR Rules for this RoutingPattern (if exists)
+            $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
+            $lcrRules = $lcrRulesMapper->fetchList("from_uri IS NULL AND routingPatternId=" . $model->getPrimaryKey());
+            if (!empty($lcrRules)) {
+                $lcrRule = $lcrRules[0];
 
-        $lcrRule->setTag($model->getName())
-                ->setDescription($model->getDescription())
-                ->setRoutingPatternId($model->getId())
-                ->setCondition($model->getRegExp())
-                ->save();
+                $lcrRule->setTag($model->getName())
+                        ->setDescription($model->getDescription())
+                        ->setRoutingPatternId($model->getId())
+                        ->setCondition($model->getRegExp())
+                        ->save();
+
+                try {
+                    $this->_sendXmlRcp();
+                } catch (\Exception $e) {
+                    $message = $e->getMessage()."<p>LCR module may have been reloaded.</p>";
+                    throw new \Exception($message);
+                }
+            }
+        }
 
         return $pk;
     }
