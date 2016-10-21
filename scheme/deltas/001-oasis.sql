@@ -1396,7 +1396,7 @@ DROP TABLE IF EXISTS `LcrGateways`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `LcrGateways` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `lcr_id` int(10) unsigned NOT NULL DEFAULT '1',
   `gw_name` varchar(200) NOT NULL,
   `ip` varchar(50) DEFAULT NULL,
   `hostname` varchar(64) DEFAULT NULL,
@@ -1410,14 +1410,11 @@ CREATE TABLE `LcrGateways` (
   `flags` int(10) unsigned NOT NULL DEFAULT '0',
   `defunct` int(10) unsigned DEFAULT NULL,
   `peerServerId` int(10) unsigned NOT NULL,
-  `outgoingRoutingId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `companyId` (`companyId`),
+  UNIQUE KEY `peerServerIdUnique` (`peerServerId`),
   KEY `peerServerId` (`peerServerId`),
-  KEY `outgoingRoutingId` (`outgoingRoutingId`),
-  CONSTRAINT `LcrGateways_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrGateways_ibfk_2` FOREIGN KEY (`peerServerId`) REFERENCES `PeerServers` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrGateways_ibfk_3` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE
+  KEY `lcr_id` (`lcr_id`),
+  CONSTRAINT `LcrGateways_ibfk_2` FOREIGN KEY (`peerServerId`) REFERENCES `PeerServers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1439,18 +1436,17 @@ DROP TABLE IF EXISTS `LcrRuleTargets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `LcrRuleTargets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `lcr_id` int(10) unsigned NOT NULL DEFAULT '1',
   `rule_id` int(10) unsigned NOT NULL,
   `gw_id` int(10) unsigned NOT NULL,
   `priority` tinyint(3) unsigned NOT NULL,
   `weight` int(10) unsigned NOT NULL DEFAULT '1',
   `outgoingRoutingId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `companyId` (`companyId`),
   KEY `rule_id` (`rule_id`),
   KEY `gw_id` (`gw_id`),
   KEY `outgoingRoutingId` (`outgoingRoutingId`),
-  CONSTRAINT `LcrRuleTargets_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
+  KEY `lcr_id` (`lcr_id`),
   CONSTRAINT `LcrRuleTargets_ibfk_2` FOREIGN KEY (`rule_id`) REFERENCES `LcrRules` (`id`) ON DELETE CASCADE,
   CONSTRAINT `LcrRuleTargets_ibfk_3` FOREIGN KEY (`gw_id`) REFERENCES `LcrGateways` (`id`) ON DELETE CASCADE,
   CONSTRAINT `LcrRuleTargets_ibfk_4` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE
@@ -1475,23 +1471,19 @@ DROP TABLE IF EXISTS `LcrRules`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `LcrRules` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `lcr_id` int(10) unsigned NOT NULL DEFAULT '1',
   `prefix` varchar(100) DEFAULT NULL,
-  `from_uri` varchar(64) DEFAULT NULL,
+  `from_uri` varchar(255) DEFAULT NULL,
   `request_uri` varchar(100) DEFAULT NULL,
   `stopper` int(10) unsigned NOT NULL DEFAULT '0',
   `enabled` int(10) unsigned NOT NULL DEFAULT '1',
   `tag` varchar(55) NOT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
   `routingPatternId` int(10) unsigned DEFAULT NULL,
-  `outgoingRoutingId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `companyId` (`companyId`),
-  KEY `outgoingRoutingId` (`outgoingRoutingId`),
   KEY `routingPatternId` (`routingPatternId`),
-  CONSTRAINT `LcrRules_ibfk_4` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrRules_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `LcrRules_ibfk_3` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE
+  KEY `lcr_id` (`lcr_id`),
+  CONSTRAINT `LcrRules_ibfk_4` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1643,7 +1635,7 @@ CREATE TABLE `OutgoingRouting` (
   `peeringContractId` int(10) unsigned NOT NULL,
   `priority` tinyint(3) unsigned NOT NULL,
   `weight` int(10) unsigned NOT NULL DEFAULT '1',
-  `companyId` int(10) unsigned NOT NULL,
+  `companyId` int(10) unsigned DEFAULT NULL,
   `brandId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `companyId` (`companyId`),
@@ -1651,11 +1643,11 @@ CREATE TABLE `OutgoingRouting` (
   KEY `peeringContractId` (`peeringContractId`),
   KEY `routingPatternId` (`routingPatternId`),
   KEY `routingPatternGroupId` (`routingPatternGroupId`),
-  CONSTRAINT `OutgoingRouting_ibfk_7` FOREIGN KEY (`routingPatternGroupId`) REFERENCES `RoutingPatternGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingRouting_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingRouting_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingRouting_ibfk_5` FOREIGN KEY (`peeringContractId`) REFERENCES `PeeringContracts` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `OutgoingRouting_ibfk_6` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE
+  CONSTRAINT `OutgoingRouting_ibfk_6` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `OutgoingRouting_ibfk_7` FOREIGN KEY (`routingPatternGroupId`) REFERENCES `RoutingPatternGroups` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
