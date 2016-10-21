@@ -59,21 +59,37 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-image: url(../img/degradadoBack.jpg);
-    background-size: cover;
-    background-position: center;
+
+    .imgBack {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background-image: url(../img/abstract-texture.png);
+        background-size: cover;
+        background-position: center;
+
+        z-index: 1;
+    }
+
+    animation: changeColorBackground linear 20s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 50%;
 
     .formLogin {
         margin: 10px;
         max-width: 650px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.25);
         border-radius: 5px;
         padding-left: 10px;
         padding-right: 10px;
         padding-bottom: 30px;
+        color: #ffffff;
+
+        z-index: 2;
 
         .brandLogin {
-            margin-top: -55px;
+            margin-top: -60px;
 
             display: flex;
             flex-direction: column;
@@ -82,8 +98,8 @@ body {
 
             .img-circle {
                 border: solid 3px #ffffff;
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
 
                 overflow: hidden;
 
@@ -94,6 +110,14 @@ body {
             }
         }
     }
+}
+
+@keyframes changeColorBackground {
+    0%   {background: red;}
+    25%  {background: yellow;}
+    50%  {background: blue;}
+    75%  {background: green;}
+    100% {background: red;}
 }
 
 #menu-header {
