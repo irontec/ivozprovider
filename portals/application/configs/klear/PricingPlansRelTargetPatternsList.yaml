@@ -26,6 +26,7 @@ production:
           default: pricingPlansRelTargetPatternsEdit_screen
         order:
           pricingPlanId: true
+        blacklist:
           targetPatternId: true
       #order:
       #  field:
@@ -78,6 +79,7 @@ production:
           targetPatternId: true
         blacklist:
           metric: true
+          targetPatternIdGhost: true
     pricingPlansRelTargetPatternsEdit_screen: &pricingPlansRelTargetPatternsEdit_screenLink 
       <<: *PricingPlansRelTargetPatterns
       controller: edit
@@ -91,6 +93,8 @@ production:
       fields: 
         order:
           <<: *pricingPlansRelTargetPatternsOrder_Link
+        blacklist:
+          targetPatternIdGhost: true
         
   dialogs: &pricingPlansRelTargetPatterns_dialogsLink 
     pricingPlansRelTargetPatternsDel_dialog: &pricingPlansRelTargetPatternsDel_dialogLink

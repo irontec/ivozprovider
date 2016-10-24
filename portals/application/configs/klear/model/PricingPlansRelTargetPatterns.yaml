@@ -89,7 +89,14 @@ production:
       required: true
       source: 
         control: Spinner
-staging: 
+    targetPatternIdGhost:
+      title: _('Target pattern')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_TargetPattern
+        method: getTargetPattern
+        searchMethod: getSearchConditionsForItem
+staging:
   _extends: production
 testing: 
   _extends: production
