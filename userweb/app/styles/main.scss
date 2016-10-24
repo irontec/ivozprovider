@@ -231,6 +231,19 @@ table {
             align-items: center;
             background: linear-gradient(to bottom, #ffffff 0%,#f3f3f3 50%,#ededed 51%,#ffffff 100%);
 
+            .img-circle {
+                border: solid 3px #ffffff;
+                width: 120px;
+                height: 120px;
+
+                overflow: hidden;
+
+                background-color: #ffffff;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
             h4 {
                 width: 100%;
                 text-align: center;
@@ -244,16 +257,11 @@ table {
             .btn-group {
                 margin-top: 20px;
             }
-
-            img {
-                border: solid 4px #d4d4d4;
-            }
         }
     }
 }
 
 @media screen and (max-width: 750px) {
-
     table thead {
         display: none;
     }
