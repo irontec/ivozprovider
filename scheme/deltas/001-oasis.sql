@@ -722,11 +722,12 @@ CREATE TABLE `Extensions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `companyId` int(10) unsigned NOT NULL,
   `number` varchar(10) NOT NULL,
-  `routeType` varchar(25) NOT NULL DEFAULT 'user' COMMENT '[enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]',
+  `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]',
   `IVRCommonId` int(10) unsigned DEFAULT NULL,
   `IVRCustomId` int(10) unsigned DEFAULT NULL,
   `huntGroupId` int(10) unsigned DEFAULT NULL,
   `conferenceRoomId` int(10) unsigned DEFAULT NULL,
+  `userId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyId_2` (`companyId`,`number`),
   KEY `companyId` (`companyId`),
@@ -734,12 +735,14 @@ CREATE TABLE `Extensions` (
   KEY `IVRCustomId` (`IVRCustomId`),
   KEY `huntGroupId` (`huntGroupId`),
   KEY `conferenceRoomId` (`conferenceRoomId`),
-  CONSTRAINT `Extensions_ibfk_5` FOREIGN KEY (`conferenceRoomId`) REFERENCES `ConferenceRooms` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  KEY `userId` (`userId`),
   CONSTRAINT `Extensions_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Extensions_ibfk_2` FOREIGN KEY (`IVRCommonId`) REFERENCES `IVRCommon` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Extensions_ibfk_3` FOREIGN KEY (`IVRCustomId`) REFERENCES `IVRCustom` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `Extensions_ibfk_4` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+  CONSTRAINT `Extensions_ibfk_4` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Extensions_ibfk_5` FOREIGN KEY (`conferenceRoomId`) REFERENCES `ConferenceRooms` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `Extensions_ibfk_6` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]'
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -23,15 +23,12 @@ class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Com
         $isUserEditScreen = ($currentScreen == "usersEdit_screen");
         $isUserNewScreen = ($currentScreen == "usersNew_screen");
 
-        if ($isUserEditScreen || $isUserNewScreen) {
-            //Filter extensions in use
-            $subquery = "SELECT `extensionId` FROM `Users` WHERE extensionId IS NOT NULL";
-            if ($isUserEditScreen) {
-                $userExtensionId = $this->_getUserExtensionId($pk);
-    	        $subquery .= " AND `extensionId` != '" . $userExtensionId. "'";
-            }
-            $this->_condition[] = "`id` NOT IN (".$subquery.")";
-           $this->_condition[] = " `routeType` = 'user'";
+        if ($isUserNewScreen) {
+            $this->_condition[] = " routeType IS NULL";
+        }
+
+        if ($isUserEditScreen) {
+            $this->_condition[] = " (userId = $pk OR routeType IS NULL) ";
         }
         return true;
     }

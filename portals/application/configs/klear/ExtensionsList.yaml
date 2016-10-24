@@ -55,7 +55,6 @@ production:
       fields:
         blacklist:
           target: true
-          userId: true
       fixedPositions: &extensionFixedPositions_link
         group0:
           colsPerRow: 2
@@ -68,8 +67,8 @@ production:
             IVRCommonId: 1
             IVRCustomId: 1
             huntGroupId: 1
-            userId: 1
             conferenceRoomId: 1
+            userId: 1
     extensionsEdit_screen: &extensionsEdit_screenLink 
       <<: *Extensions
       controller: edit

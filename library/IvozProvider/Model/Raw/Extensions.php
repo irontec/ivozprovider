@@ -87,6 +87,13 @@ class Extensions extends ModelAbstract
      */
     protected $_conferenceRoomId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_userId;
+
 
     /**
      * Parent relation Extensions_ibfk_1
@@ -122,6 +129,13 @@ class Extensions extends ModelAbstract
      * @var \IvozProvider\Model\Raw\ConferenceRooms
      */
     protected $_ConferenceRoom;
+
+    /**
+     * Parent relation Extensions_ibfk_6
+     *
+     * @var \IvozProvider\Model\Raw\Users
+     */
+    protected $_User;
 
 
     /**
@@ -205,6 +219,7 @@ class Extensions extends ModelAbstract
         'IVRCustomId'=>'IVRCustomId',
         'huntGroupId'=>'huntGroupId',
         'conferenceRoomId'=>'conferenceRoomId',
+        'userId'=>'userId',
     );
 
     /**
@@ -241,6 +256,10 @@ class Extensions extends ModelAbstract
             'ExtensionsIbfk5'=> array(
                     'property' => 'ConferenceRoom',
                     'table_name' => 'ConferenceRooms',
+                ),
+            'ExtensionsIbfk6'=> array(
+                    'property' => 'User',
+                    'table_name' => 'Users',
                 ),
         ));
 
@@ -290,7 +309,6 @@ class Extensions extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'routeType' => 'user',
         );
 
         $this->_initFileObjects();
@@ -606,6 +624,40 @@ class Extensions extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setUserId($data)
+    {
+
+        if ($this->_userId != $data) {
+            $this->_logChange('userId', $this->_userId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_userId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_userId = (int) $data;
+
+        } else {
+            $this->_userId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column userId
+     *
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->_userId;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -858,6 +910,57 @@ class Extensions extends ModelAbstract
         }
 
         return $this->_ConferenceRoom;
+    }
+
+    /**
+     * Sets parent relation User
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setUser(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_User = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setUserId($primaryKey);
+        }
+
+        $this->_setLoaded('ExtensionsIbfk6');
+        return $this;
+    }
+
+    /**
+     * Gets parent User
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function getUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExtensionsIbfk6';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_User = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_User;
     }
 
     /**

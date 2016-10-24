@@ -23,7 +23,6 @@ production:
     routeType: 
       title: _('Routetype')
       type: select
-      defaultValue: user
       source: 
         data: inline
         values: 
@@ -78,6 +77,19 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unasigned")
+    userId: 
+      title: _('Userid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Users
           fieldName: 
             fields: 
               - name

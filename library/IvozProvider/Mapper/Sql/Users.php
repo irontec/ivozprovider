@@ -106,6 +106,14 @@ class Users extends Raw\Users
         // Update the endpoint
         $model->updateEndpoint();
 
+        // If extension has changed, update extension user
+        if ($haschangedExtension && $model->getExtension()) {
+            $model->getExtension()
+                ->setRouteType('user')
+                ->setUser($model)
+                ->save();
+        }
+
         // Reload Hints
         if ($haschangedExtension || $hasChangedTerminal) {
             $this->_reloadDialplan();

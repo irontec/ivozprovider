@@ -25,11 +25,14 @@ class Extensions extends Raw\Extensions
     )
     {
         $nullableFields = array(
-                "IVRCommon" => "IVRCommonId",
-                "IVRCustom" => "IVRCustomId",
-                "huntGroup" => "huntGroupId"
+                "IVRCommon"     => "IVRCommonId",
+                "IVRCustom"     => "IVRCustomId",
+                "huntGroup"     => "huntGroupId",
+                "user"          => "userId",
+                "conferenceRoom" => "conferenceRoomId"
         );
         $routeType = $model->getRouteType();
+        $original = $this->find($model->getPrimaryKey());
         foreach ($nullableFields as $type => $fieldName) {
             if ($routeType == $type) {
                 continue;
@@ -39,6 +42,25 @@ class Extensions extends Raw\Extensions
         }
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+
+        // If this extension was pointing to a user and number has changed
+        if (!is_null($original) && $original->getUserId() != $model->getUserId()) {
+            // If there was an user and it was its screen extension
+            $olduser = $original->getUser();
+            if (!is_null($olduser) && $olduser->getExtensionId() == $model->getId()) {
+                // Remove its screen extension
+                $olduser->setExtensionId(NULL)->save();
+            }
+        }
+
+        // If there is a new user and new user has no extension
+        if ($routeType == 'user') {
+            $user = $model->getUser();
+            if (!is_null($user) && is_null($user->getExtension())) {
+                // Set this as its screen extension
+                $user->setExtension($model)->save();
+            }
+        }
 
         // If this extension was pointing to a user and number has changed
         if ($routeType == 'user' && $model->hasChange('number')) {

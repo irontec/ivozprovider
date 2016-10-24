@@ -33,6 +33,11 @@ production:
       source: 
         data: inline
         values: 
+          '__null__':
+            title: _("Unasigned")
+            visualFilter:
+              show: [ ]
+              hide: [ "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId" ]
           'user':
             title: _('user')
             visualFilter:
@@ -81,7 +86,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\IVRCustom
-          filterClass: IvozProvider_Klear_Filter_Company           
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -96,7 +101,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\HuntGroups
-          filterClass: IvozProvider_Klear_Filter_Company           
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -118,18 +123,28 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
+    userId:
+      title: _('User')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unasigned")
     target:
       title: _('Target')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_DDITarget
         method: getData
-    userId:
-      title: _('User')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_ExtensionsTarget
-        method: getUser
 staging: 
   _extends: production
 testing: 

@@ -64,6 +64,11 @@ class Extensions extends TableAbstract
             'columns' => 'conferenceRoomId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
             'refColumns' => 'id'
+        ),
+        'ExtensionsIbfk6' => array(
+            'columns' => 'userId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -136,8 +141,8 @@ class Extensions extends TableAbstract
 	    'COLUMN_NAME' => 'routeType',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => 'user',
-	    'NULLABLE' => false,
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
 	    'LENGTH' => '25',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
@@ -203,6 +208,23 @@ class Extensions extends TableAbstract
 	    'TABLE_NAME' => 'Extensions',
 	    'COLUMN_NAME' => 'conferenceRoomId',
 	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'userId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Extensions',
+	    'COLUMN_NAME' => 'userId',
+	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

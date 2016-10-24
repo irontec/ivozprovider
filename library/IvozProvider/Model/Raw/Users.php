@@ -289,6 +289,14 @@ class Users extends ModelAbstract
     protected $_DDIs;
 
     /**
+     * Dependent relation Extensions_ibfk_6
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Extensions[]
+     */
+    protected $_Extensions;
+
+    /**
      * Dependent relation ExternalCallFilters_ibfk_7
      * Type: One-to-Many relationship
      *
@@ -470,6 +478,10 @@ class Users extends ModelAbstract
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
                 ),
+            'ExtensionsIbfk6' => array(
+                    'property' => 'Extensions',
+                    'table_name' => 'Extensions',
+                ),
             'ExternalCallFiltersIbfk7' => array(
                     'property' => 'ExternalCallFiltersByHolidayVoiceMailUser',
                     'table_name' => 'ExternalCallFilters',
@@ -525,6 +537,7 @@ class Users extends ModelAbstract
 
         $this->setOnDeleteSetNullRelationships(array(
             'DDIs_ibfk_3',
+            'Extensions_ibfk_6',
             'ExternalCallFilters_ibfk_7',
             'ExternalCallFilters_ibfk_8',
             'IVRCommon_ibfk_8',
@@ -2173,6 +2186,96 @@ class Users extends ModelAbstract
         }
 
         return $this->_DDIs;
+    }
+
+    /**
+     * Sets dependent relations Extensions_ibfk_6
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Extensions
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setExtensions(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Extensions === null) {
+
+                $this->getExtensions();
+            }
+
+            $oldRelations = $this->_Extensions;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Extensions = array();
+
+        foreach ($data as $object) {
+            $this->addExtensions($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Extensions_ibfk_6
+     *
+     * @param \IvozProvider\Model\Raw\Extensions $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addExtensions(\IvozProvider\Model\Raw\Extensions $data)
+    {
+        $this->_Extensions[] = $data;
+        $this->_setLoaded('ExtensionsIbfk6');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Extensions_ibfk_6
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Extensions
+     */
+    public function getExtensions($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExtensionsIbfk6';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Extensions = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Extensions;
     }
 
     /**

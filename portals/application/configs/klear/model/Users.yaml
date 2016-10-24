@@ -80,7 +80,7 @@ production:
           order: name
         'null': _("Unasigned")
     extensionId: 
-      title: _('Extension')
+      title: _('Screen Extension')
       type: select
       source: 
         data: mapper

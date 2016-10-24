@@ -193,8 +193,6 @@ production:
       fields:
         blacklist:
           targetTypeValue: true
-        readOnly:
-          userId: true
 
   dialogs: &users_dialogsLink 
     usersDel_dialog: &usersDel_dialogLink 

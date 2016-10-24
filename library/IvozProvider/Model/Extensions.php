@@ -27,11 +27,6 @@ class Extensions extends Raw\Extensions
     public function init()
     {
     }
-    public function getUser($where = null)
-    {
-        $users = $this->getUsers($where);
-        return array_shift($users);
-    }
 
     public function toArrayPortal()
     {

@@ -505,6 +505,20 @@ class Users extends MapperAbstract
                     }
                 }
 
+                if ($model->getExtensions(null, null, true) !== null) {
+                    $extensions = $model->getExtensions();
+
+                    if (!is_array($extensions)) {
+
+                        $extensions = array($extensions);
+                    }
+
+                    foreach ($extensions as $value) {
+                        $value->setUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getExternalCallFiltersByHolidayVoiceMailUser(null, null, true) !== null) {
                     $externalCallFilters = $model->getExternalCallFiltersByHolidayVoiceMailUser();
 
