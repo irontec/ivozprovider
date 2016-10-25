@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 15:54+0200\n"
+"POT-Creation-Date: 2016-10-25 13:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:5
-#: ../../pbx_features/call_permissions.rst:46
+#: ../../pbx_features/call_permissions.rst:60
 msgid "Permisos de llamada"
 msgstr ""
 
@@ -199,82 +199,122 @@ msgid ""
 "numeraciones móviles nacionales."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:37
+#: ../../pbx_features/call_permissions.rst:36
+msgid "Otros patrones de permisos que pueden resultar interesantes son:"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:39
+msgid ""
+"Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): "
+"^[89][0-9]{8}$"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:39
+msgid "Un 8 o un 9 seguido de 8 dígitos."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:42
+msgid ""
+"Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): "
+"^[89][1-9][0-9]{7}$"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:42
+msgid "Un 8 o un 9, seguido de 1 dígito del 1 al 9, seguido de 7 dígitos."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:45
+msgid "Llamadas internacionales: ^00[0-9]+$"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:45
+msgid "00 (código internacional) seguido de 1 o más dígitos."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:48
+msgid "Llamadas a Reino Unido: ^0044[0-9]+$"
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:48
+msgid "00 (código internacional), 44 (código de UK), seguido de 1 o más dígitos."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:51
 msgid "Formato de los números externos"
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:38
+#: ../../pbx_features/call_permissions.rst:52
 msgid ""
 "Las expresiones regulares de los patrones de permiso tienen que utilizar "
 "el formato que utilice un usuario del mismo país que la compañía a la "
 "hora de llamar."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:40
+#: ../../pbx_features/call_permissions.rst:54
 msgid ""
 "Es decir, un usuario (español, porque tal y como veremos los usuarios "
 "tienen también un código de país) de una empresa de española llamará a "
 "números móviles, por ejemplo, así: 676 676 676."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:42
+#: ../../pbx_features/call_permissions.rst:56
 msgid ""
 "No se utiliza código de país ni formato E.164, **se escriben las "
 "expresiones regulares tal y como llamaría un usuario con el mismo código "
 "de país que la empresa en cuestión**."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:48
+#: ../../pbx_features/call_permissions.rst:62
 msgid ""
 "La definición de un **Permiso de llamada** utiliza una lógica más fácil "
 "de describir con un ejemplo."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:50
+#: ../../pbx_features/call_permissions.rst:64
 msgid "Imaginemos que tenemos los siguientes **patrones de permisos**:"
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:54
+#: ../../pbx_features/call_permissions.rst:68
 msgid "Podríamos definir un **Permiso de llamada** como el que sigue:"
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:58
+#: ../../pbx_features/call_permissions.rst:72
 msgid ""
 "La acción por defecto describe lo que hay que hacer con la llamada una "
 "vez que se han evaluado todas las reglas (permitir/rechazar)."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:60
+#: ../../pbx_features/call_permissions.rst:74
 msgid ""
 "Editamos el **permiso de llamada** que acabamos de crear para añadir las "
 "reglas necesarias:"
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:64
+#: ../../pbx_features/call_permissions.rst:78
 msgid ""
 "La **métrica** determina el orden de evaluación de las reglas y la acción"
 " lo que se hará con la llamada en caso de *matchear* (permitir/rechazar)."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:68
+#: ../../pbx_features/call_permissions.rst:82
 msgid ""
 "Una vez hecho lo propio para el otro **patrón de permisos**, nuestro "
 "**permiso de llamadas** quedará como sigue:"
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:73
+#: ../../pbx_features/call_permissions.rst:87
 msgid ""
 "Ya solo faltaría añadírselo a un usuario concreto en la sección "
 "**Configuración de empresa** > **Usuarios**:"
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:77
+#: ../../pbx_features/call_permissions.rst:91
 msgid ""
 "Desde este momento, Alice solo podría llamar a extensiones internas "
 "(siempre están permitidas) y a móviles y fijos nacionales."
 msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:79
+#: ../../pbx_features/call_permissions.rst:93
 msgid "https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular"
 msgstr ""
 
@@ -1352,86 +1392,72 @@ msgstr ""
 
 #: ../../pbx_features/services.rst:32
 msgid ""
-"Este listado no especifica el código de acceso al servicio, serán los "
-"operadores de marca los que especifiquen el código de acceso por defecto "
-"a los servicios que quieran hacer disponibles."
+"Este listado determina los servicios disponibles y los códigos por "
+"defecto de las **nuevas marcas**."
 msgstr ""
 
-#: ../../pbx_features/services.rst:36
-msgid "Definición de servicios y códigos a nivel de marca"
+#: ../../pbx_features/services.rst:34
+msgid "Cambiar un código solo afecta a las marcas que se creen tras el cambio."
 msgstr ""
 
 #: ../../pbx_features/services.rst:38
+msgid "Definición de servicios y códigos a nivel de marca"
+msgstr ""
+
+#: ../../pbx_features/services.rst:40
 msgid ""
 "La sección **Configuración de Marca ** > **Servicios** permite al "
 "operador de marca:"
 msgstr ""
 
-#: ../../pbx_features/services.rst:40
-msgid ""
-"Dar de alta, de entre los servicios disponibles, los servicios que quiere"
-" hacer disponibles a sus empresas."
-msgstr ""
-
 #: ../../pbx_features/services.rst:42
-msgid "Asignar el código de acceso por defecto a dichos servicios."
+msgid ""
+"Redefinir el código de acceso por defecto a dichos servicios para las "
+"empresas que a su vez no lo redefinan."
 msgstr ""
 
 #: ../../pbx_features/services.rst:44
-msgid ""
-"Por defecto este listado aparece vacío y se pueden añadir servicios tal "
-"que:"
+msgid "Borrar servicios que no quieran que puedan utilizar sus empresas."
 msgstr ""
 
-#: ../../pbx_features/services.rst:48
-msgid "Los caracteres permitidos son 0-9, \\* y #, un máximo de 3."
+#: ../../pbx_features/services.rst:46
+msgid ""
+"Por defecto este listado aparece con todas los servicios y los códigos "
+"configurados a nivel Global:"
 msgstr ""
 
 #: ../../pbx_features/services.rst:50
-msgid "Imaginemos que añadimos los 3 disponibles:"
+msgid ""
+"Este listado determina los servicios disponibles y los códigos por "
+"defecto de las **nuevas empresas**."
 msgstr ""
 
-#: ../../pbx_features/services.rst:54
+#: ../../pbx_features/services.rst:52
 msgid ""
-"Desde ese momento, las empresas podrían acceder a dichos servicios sin "
-"más que marcar los códigos elegidos."
+"Cambiar un código solo afecta a las empresas que se creen tras el cambio."
+" Borrar un servicio hace que no esté disponible para ninguna empresa de "
+"la marca."
 msgstr ""
 
 #: ../../pbx_features/services.rst:56
-msgid ""
-"El operador de marca puede elegir no dar acceso a sus empresas al "
-"servicio *Buzón de voz*, por ejemplo. Bastaría con no asignarle código."
-msgstr ""
-
-#: ../../pbx_features/services.rst:60
 msgid "Definición de códigos a nivel de empresa"
 msgstr ""
 
-#: ../../pbx_features/services.rst:62
+#: ../../pbx_features/services.rst:58
 msgid ""
-"Puede darse el caso que una empresa concreta esté habituada a otros "
-"códigos o, simplemente, prefiera otros."
+"Cada empresa puede *pisar* los valores por defecto asignados por su "
+"*operador de marca* accediendo a **Configuración de Empresa** > "
+"**Servicios** y cambiando el código asignado."
+msgstr ""
+
+#: ../../pbx_features/services.rst:61
+msgid "Empresa que quiere capturar con \\*\\* en lugar de con \\*95:"
 msgstr ""
 
 #: ../../pbx_features/services.rst:64
 msgid ""
-"Cada empresa puede *pisar* los valores por defecto asignados por su "
-"*operador de marca* accediendo a **Configuración de Empresa** > "
-"**Servicios**:"
-msgstr ""
-
-#: ../../pbx_features/services.rst:67
-msgid "Ejemplo: empresa que no quiere capturar con \\*7 sino con \\*95"
-msgstr ""
-
-#: ../../pbx_features/services.rst:70
-msgid "Quedando la sección con:"
-msgstr ""
-
-#: ../../pbx_features/services.rst:74
-msgid ""
-"Los servicios que el *administrador de empresa* no redefina utilizarán el"
-" código por defecto asignado por el *operador de marca*."
+"Los servicios que el *administrador de empresa* borre no podrán ser "
+"utilizados por sus usuarios."
 msgstr ""
 
 #: ../../pbx_features/sounds.rst:3
@@ -1899,18 +1925,76 @@ msgstr ""
 #~ msgid "Grabación on demand"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "Al realizar una transferencia ciega, en"
-#~ " cambio, se produce `señalización SIP "
-#~ "<https://tools.ietf.org/html/rfc3515>`_ dentro de un"
-#~ " diálogo y sí que es posible "
-#~ "activar lógicas de este estilo, ya "
-#~ "que la señalización sigue `otro camino"
-#~ " <signallingflow>` que incluye a los "
-#~ "elementos con lógica (servidores de "
-#~ "aplicación <ases> y *proxies*)."
+#~ msgid "[S] Funcionalidades de PBX"
 #~ msgstr ""
 
-#~ msgid "[S] Funcionalidades de PBX"
+#~ msgid ""
+#~ "Este listado no especifica el código "
+#~ "de acceso al servicio, serán los "
+#~ "operadores de marca los que especifiquen"
+#~ " el código de acceso por defecto "
+#~ "a los servicios que quieran hacer "
+#~ "disponibles."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Dar de alta, de entre los "
+#~ "servicios disponibles, los servicios que "
+#~ "quiere hacer disponibles a sus empresas."
+#~ msgstr ""
+
+#~ msgid "Asignar el código de acceso por defecto a dichos servicios."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Por defecto este listado aparece vacío"
+#~ " y se pueden añadir servicios tal "
+#~ "que:"
+#~ msgstr ""
+
+#~ msgid "Los caracteres permitidos son 0-9, \\* y #, un máximo de 3."
+#~ msgstr ""
+
+#~ msgid "Imaginemos que añadimos los 3 disponibles:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Desde ese momento, las empresas podrían"
+#~ " acceder a dichos servicios sin más"
+#~ " que marcar los códigos elegidos."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "El operador de marca puede elegir "
+#~ "no dar acceso a sus empresas al"
+#~ " servicio *Buzón de voz*, por "
+#~ "ejemplo. Bastaría con no asignarle "
+#~ "código."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Puede darse el caso que una "
+#~ "empresa concreta esté habituada a otros"
+#~ " códigos o, simplemente, prefiera otros."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Cada empresa puede *pisar* los valores"
+#~ " por defecto asignados por su "
+#~ "*operador de marca* accediendo a "
+#~ "**Configuración de Empresa** > **Servicios**:"
+#~ msgstr ""
+
+#~ msgid "Ejemplo: empresa que no quiere capturar con \\*7 sino con \\*95"
+#~ msgstr ""
+
+#~ msgid "Quedando la sección con:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Los servicios que el *administrador de"
+#~ " empresa* no redefina utilizarán el "
+#~ "código por defecto asignado por el "
+#~ "*operador de marca*."
 #~ msgstr ""
 

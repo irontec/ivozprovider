@@ -23,36 +23,38 @@ msgid ""
 "Este esquema refleja la arquitectura global de la solución IvozProvider, "
 "con todos los elementos que la componen."
 msgstr ""
+"Following diagram shows the global architecture of IvozProvider solution, "
+"with all its components:"
 
 #: ../../architecture/general_scheme.rst:5
 msgid "Este es otro esquema más conceptual:"
-msgstr ""
+msgstr "This is a more conceptual diagram:"
 
 #: ../../architecture/index.rst:5
 msgid "[P] Arquitectura general de la plataforma"
-msgstr ""
+msgstr "[P] Platform general architecture"
 
 #: ../../architecture/index.rst:10
 msgid "Esquema general"
-msgstr ""
+msgstr "General diagram"
 
 #: ../../architecture/index.rst:16
 msgid "Flujo señalización SIP"
-msgstr ""
+msgstr "SIP signaling flow"
 
 #: ../../architecture/index.rst:22
 msgid "Flujo audio RTP"
-msgstr ""
+msgstr "RTP audio flow"
 
 #: ../../architecture/index.rst:28
 msgid "Tráfico HTTPS"
-msgstr ""
+msgstr "HTTPS traffic"
 
 #: ../../architecture/index.rst:34
 msgid "Elementos adicionales"
-msgstr ""
+msgstr "Additional elements"
 
 #: ../../architecture/index.rst:40
 msgid "Elementos auxiliares"
-msgstr ""
+msgstr "Auxiliar elements"
 

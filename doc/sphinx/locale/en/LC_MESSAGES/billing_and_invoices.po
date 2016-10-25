@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 17:32+0200\n"
+"POT-Creation-Date: 2016-10-25 13:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -350,7 +350,7 @@ msgid ""
 msgstr ""
 
 #: ../../billing_and_invoices/index.rst:3
-msgid "[P] Tarificación y facturación"
+msgid "Tarificación y facturación"
 msgstr ""
 
 #: ../../billing_and_invoices/index.rst:5
@@ -508,11 +508,23 @@ msgstr ""
 #: ../../billing_and_invoices/invoices.rst:80
 msgid ""
 "Pulsando el siguiente botón podemos ver las llamadas que han sido "
-"incluídas en la factura:"
+"incluidas en la factura:"
 msgstr ""
 
 #: ../../billing_and_invoices/invoices.rst:85
 msgid "Y pulsando este botón podemos descargar la factura en formato PDF:"
+msgstr ""
+
+#: ../../billing_and_invoices/invoices.rst:90
+msgid ""
+"La fecha fin tiene que ser una fecha ya pasada. Es decir, no se puede "
+"sacar facturas de tramos futuros o del día actual."
+msgstr ""
+
+#: ../../billing_and_invoices/invoices.rst:92
+msgid ""
+"Todas las llamadas del tramo escogido tienen que estar facturadas para "
+"poder emitir la factura."
 msgstr ""
 
 #: ../../billing_and_invoices/pricing_plans.rst:3
@@ -710,9 +722,6 @@ msgid ""
 msgstr ""
 
 #~ msgid ""
-#~ "El exportador a CSV permite exportar "
-#~ "el listado para su posterior "
-#~ "almacenamiento o procesado."
 #~ msgstr ""
 
 #~ msgid "Encontrar un plan de precios"
@@ -728,5 +737,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Simular una llamada"
+#~ msgstr ""
+
+#~ msgid "[P] Tarificación y facturación"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Pulsando el siguiente botón podemos ver"
+#~ " las llamadas que han sido incluídas"
+#~ " en la factura:"
 #~ msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-13 19:41+0200\n"
+"POT-Creation-Date: 2016-10-25 13:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,22 +19,121 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: ../../security/index.rst:3
-msgid "[P] Elementos de seguridad"
+msgid "[S] Elementos de seguridad"
 msgstr ""
 
 #: ../../security/index.rst:7
 msgid "Firewall con geoIP"
 msgstr ""
 
-#: ../../security/index.rst:11
+#: ../../security/index.rst:13
 msgid "Rangos de IP autorizados por empresa"
 msgstr ""
 
 #: ../../security/index.rst:15
+msgid ""
+"En el proceso de creación de empresas nos saltamos deliberademente un "
+"mecanismo de seguridad que **limita las direcciones IP o rangos de red "
+"que pueden utilizar las credenciales de los terminales de una empresa "
+"concreta**."
+msgstr ""
+
+#: ../../security/index.rst:17
+msgid "Se puede activar en la sección **Configuración de Marca** > **Empresas**:"
+msgstr ""
+
+#: ../../security/index.rst:22
+msgid ""
+"Todo usuario que quiera conectarse desde una red no incluida no podrá, a "
+"pesar de disponer de unas credenciales válidas."
+msgstr ""
+
+#: ../../security/index.rst:24
+msgid ""
+"Una vez activado el filtrado, **es obligatorio** añadir redes o "
+"direcciones válidas o, por el contrario, todas las llamadas se "
+"rechazarán:"
+msgstr ""
+
+#: ../../security/index.rst:28
+msgid ""
+"Se pueden añadir direcciones IP y rangos de direcciones, en formato CIDR "
+"(IP/mask):"
+msgstr ""
+
+#: ../../security/index.rst:32
+msgid ""
+"Este mecanismo limita los orígenes de los usuarios de una empresa, no "
+"filtra en absoluto los orígenes de los **Contratos de Peering**."
+msgstr ""
+
+#: ../../security/index.rst:36
 msgid "Anti-flooding"
 msgstr ""
 
-#: ../../security/index.rst:19
+#: ../../security/index.rst:38
+msgid ""
+"IvozProvider incorpora un mecanismo de *anti-flooding* que evita que un "
+"emisor sature nuestra plataforma enviando peticiones. Ambos *proxies* "
+"(usuarios y salida) incorporan este mecanismo, que **limita el número de "
+"peticiones desde un dirección origen en un tramo concreto de tiempo**."
+msgstr ""
+
+#: ../../security/index.rst:40
+msgid ""
+"Cuando un origen llega al límite, el proxy dejará de contestarle durante "
+"un tiempo dado. Pasado ese tiempo, volverá a contestarle con normalidad."
+msgstr ""
+
+#: ../../security/index.rst:42
+msgid ""
+"Ciertos orígenes que están automáticamente excluidos de este mecanismo de"
+" *anti-flooding*:"
+msgstr ""
+
+#: ../../security/index.rst:44
+msgid "Servidores de aplicación de la plataforma."
+msgstr ""
+
+#: ../../security/index.rst:46
+msgid "IPs o rangos autorizados de empresas (ver sección anterior)."
+msgstr ""
+
+#: ../../security/index.rst:48
+msgid ""
+"El operador global puede añadir otras direcciones que queden excluidas de"
+" este mecanismo por medio del apartado **Configuración global** > **IPs "
+"de confianza**:"
+msgstr ""
+
+#: ../../security/index.rst:54
 msgid "Límite de llamadas concurrentes"
 msgstr ""
+
+#: ../../security/index.rst:56
+msgid ""
+"Otro mecanismo de seguridad que puede evitar que unas credenciales "
+"comprometidas sean utilizadas para establecer cientos de llamadas en poco"
+" tiempo, es el mecanismo que **limita el número de llamadas externas** de"
+" cada empresa."
+msgstr ""
+
+#: ../../security/index.rst:58
+msgid ""
+"Este mecanismo tiene en cuenta los canales externos concurrentes, es "
+"decir, cuenta llamadas externas entrantes y llamadas externas salientes."
+msgstr ""
+
+#: ../../security/index.rst:60
+msgid ""
+"Se puede configurar editando una empresa y fijando el valor del siguiente"
+" campo:"
+msgstr ""
+
+#: ../../security/index.rst:65
+msgid "Para desactivar este mecanismo, basta con fijar el valor a 0."
+msgstr ""
+
+#~ msgid "[P] Elementos de seguridad"
+#~ msgstr ""
 
