@@ -111,6 +111,14 @@ class KamAccCdrs extends Raw\KamAccCdrs
         return $this;
     }
 
+    public function isBounced() {
+        if ($this->getBounced() == 'yes') {
+            return true;
+        }
+
+        return false;
+    }
+
     public function setPricingPlanDetails($data)
     {
         if (is_array($data)) {
