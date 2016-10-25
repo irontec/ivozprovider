@@ -26,7 +26,12 @@ En lo relativo a los **codecs de audio soportados**, la lista sería la siguient
 
 - PCMA (*alaw*)
 - PCMU (*ulaw*)
+- GSM
+- SpeeX
+- G.722
+- G.726
 - G.729
+- iLBC
 - `OPUS <http://opus-codec.org/>`_
 
 .. _multilevel:
