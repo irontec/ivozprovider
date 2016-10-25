@@ -13,6 +13,7 @@ mount-storage.sh
 portals/storage
 portals/public/img/
 portals/public/styles/
+portals/public/fonts/
 userweb/index.phtml
 userweb/scripts/
 userweb/app/styles/main.css.map
