@@ -87,8 +87,6 @@ function start_services()
 function enable_services()
 {
     /bin/systemctl enable rtpproxy
-    /bin/systemctl stop kamailio
-    /bin/systemctl disable kamailio
     /bin/systemctl enable kamailio@users
     /bin/systemctl enable kamailio@trunks
     /bin/systemctl enable asterisk
