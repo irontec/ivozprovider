@@ -8,3 +8,4 @@ Password     = ironsecret
 Database     = ivozprovider
 Option       = 3
 Socket       =
+Charset      = utf8
