@@ -27,6 +27,10 @@ production:
           iden: true
           name: true
           description: true
+          genericUrlPattern: true
+          genericTemplate: true
+          specificUrlPattern: true
+          specificTemplate: true
         blacklist:
           genericTemplate: true
           specificTemplate: true
@@ -48,10 +52,6 @@ production:
       fields:
         order:
           <<: *terminalModels_orderLink
-          genericUrlPattern: true
-          genericTemplate: true
-          specificUrlPattern: true
-          specificTemplate: true
     terminalModelsEdit_screen: &terminalModelsEdit_screenLink 
       <<: *TerminalModels
       controller: edit
@@ -62,11 +62,6 @@ production:
       fields:
         order:
           <<: *terminalModels_orderLink
-          genericUrlPattern: true
-          genericTemplate: true
-          specificUrlPattern: true
-          specificTemplate: true
-
   dialogs: &terminalModels_dialogsLink
     terminalModelsDel_dialog: &terminalModelsDel_dialogLink 
       <<: *TerminalModels
