@@ -40,7 +40,7 @@ class Brands extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'BrandsIbfk1' => array(
+        'BrandsIbfk3' => array(
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
@@ -155,7 +155,7 @@ class Brands extends TableAbstract
 	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
+	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

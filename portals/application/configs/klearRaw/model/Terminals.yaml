@@ -4,7 +4,6 @@ production:
     TerminalModelId: 
       title: _('Terminalmodelid')
       type: select
-      required: true
       source: 
         data: mapper
         config: 
@@ -14,6 +13,7 @@ production:
               - iden
             template: '%iden%'
           order: iden
+        'null': _("Unasigned")
       default: true
     name: 
       title: ngettext('Name', 'Names', 1)

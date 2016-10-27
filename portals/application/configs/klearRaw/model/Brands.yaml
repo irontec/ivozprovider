@@ -19,7 +19,6 @@ production:
     defaultTimezoneId: 
       title: _('Defaulttimezoneid')
       type: select
-      required: true
       source: 
         data: mapper
         config: 
@@ -29,6 +28,7 @@ production:
               - tz
             template: '%tz%'
           order: tz
+        'null': _("Unasigned")
     logo: 
       title: _('Logo')
       type: file

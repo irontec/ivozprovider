@@ -346,9 +346,6 @@ class MainOperators extends ModelAbstract
     public function setTimezoneId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_timezoneId != $data) {
             $this->_logChange('timezoneId', $this->_timezoneId, $data);
         }

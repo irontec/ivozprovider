@@ -110,14 +110,14 @@ CREATE TABLE `BrandOperators` (
   `pass` varchar(80) NOT NULL COMMENT '[password]',
   `email` varchar(100) NOT NULL DEFAULT '',
   `active` tinyint(1) DEFAULT '1',
-  `timezoneId` int(10) unsigned NOT NULL,
+  `timezoneId` int(10) unsigned DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `MainOperatorsUniqueBrandUsername` (`brandId`,`username`),
   KEY `brandId` (`brandId`),
   KEY `timezoneId` (`timezoneId`),
-  CONSTRAINT `BrandOperators_ibfk_2` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `BrandOperators_ibfk_4` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
   CONSTRAINT `BrandOperators_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -208,7 +208,7 @@ CREATE TABLE `Brands` (
   `name` varchar(75) NOT NULL,
   `nif` varchar(25) NOT NULL,
   `domain_trunks` varchar(255) DEFAULT NULL,
-  `defaultTimezoneId` int(10) unsigned NOT NULL,
+  `defaultTimezoneId` int(10) unsigned DEFAULT NULL,
   `logoFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
   `logoMimeType` varchar(80) DEFAULT NULL,
   `logoBaseName` varchar(255) DEFAULT NULL,
@@ -223,7 +223,7 @@ CREATE TABLE `Brands` (
   UNIQUE KEY `name` (`name`),
   KEY `defaultTimezoneId` (`defaultTimezoneId`),
   KEY `languageId` (`languageId`),
-  CONSTRAINT `Brands_ibfk_1` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `Brands_ibfk_3` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Brands_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -250,6 +250,7 @@ CREATE TABLE `Calendars` (
   `companyId` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `Calendars_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -305,6 +306,7 @@ CREATE TABLE `CallACLPatterns` (
   `name` varchar(50) NOT NULL,
   `regExp` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `CallACLPatterns_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -368,6 +370,7 @@ CREATE TABLE `CallForwardSettings` (
   `voiceMailUserId` int(10) unsigned DEFAULT NULL,
   `noAnswerTimeout` smallint(4) NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `callFwTypeUser` (`callForwardType`,`userId`),
   KEY `userId` (`userId`),
   KEY `extensionId` (`extensionId`),
   KEY `voiceMailUserId` (`voiceMailUserId`),
@@ -420,7 +423,7 @@ CREATE TABLE `Companies` (
   `name` varchar(80) NOT NULL,
   `domain_users` varchar(255) NOT NULL,
   `nif` varchar(25) NOT NULL,
-  `defaultTimezoneId` int(10) unsigned NOT NULL,
+  `defaultTimezoneId` int(10) unsigned DEFAULT NULL,
   `applicationServerId` int(10) unsigned DEFAULT NULL,
   `externalMaxCalls` int(10) unsigned NOT NULL DEFAULT '0',
   `postalAddress` varchar(255) NOT NULL,
@@ -437,15 +440,16 @@ CREATE TABLE `Companies` (
   `onDemandRecordCode` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `domain_unique` (`domain_users`),
+  UNIQUE KEY `nameBrand` (`name`,`brandId`),
   KEY `brandId` (`brandId`),
   KEY `defaultTimezoneId` (`defaultTimezoneId`),
   KEY `applicationServerId` (`applicationServerId`),
   KEY `countryId` (`countryId`),
   KEY `languageId` (`languageId`),
   KEY `mediaRelaySetsId` (`mediaRelaySetsId`),
+  CONSTRAINT `Companies_ibfk_12` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_10` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_11` FOREIGN KEY (`mediaRelaySetsId`) REFERENCES `MediaRelaySets` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `Companies_ibfk_2` FOREIGN KEY (`defaultTimezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Companies_ibfk_4` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Companies_ibfk_5` FOREIGN KEY (`applicationServerId`) REFERENCES `ApplicationServers` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Companies_ibfk_9` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
@@ -476,14 +480,15 @@ CREATE TABLE `CompanyAdmins` (
   `pass` varchar(80) NOT NULL COMMENT '[password]',
   `email` varchar(100) NOT NULL DEFAULT '',
   `active` tinyint(1) DEFAULT '1',
-  `timezoneId` int(10) unsigned NOT NULL,
+  `timezoneId` int(10) unsigned DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `usernameCompany` (`username`,`companyId`),
   KEY `companyId` (`companyId`),
   KEY `timezoneId` (`timezoneId`),
-  CONSTRAINT `CompanyAdmins_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `CompanyAdmins_ibfk_2` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE
+  CONSTRAINT `CompanyAdmins_ibfk_2` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `CompanyAdmins_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -614,7 +619,7 @@ CREATE TABLE `DDIs` (
   `countryId` int(10) unsigned DEFAULT NULL,
   `billInboundCalls` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `DDI` (`DDI`),
+  UNIQUE KEY `DDIcountry` (`DDI`,`countryId`),
   KEY `companyId` (`companyId`),
   KEY `externalCallFilterId` (`externalCallFilterId`),
   KEY `userId` (`userId`),
@@ -836,6 +841,7 @@ CREATE TABLE `ExternalCallFilters` (
   `blackListRegExp` varchar(255) DEFAULT NULL,
   `whiteListRegExp` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
   KEY `holidayLocutionId` (`holidayLocutionId`),
@@ -943,6 +949,7 @@ CREATE TABLE `FixedCosts` (
   `description` varchar(255) NOT NULL,
   `cost` decimal(10,4) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `descBrand` (`brandId`,`description`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `FixedCosts_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1002,6 +1009,7 @@ CREATE TABLE `GenericCallACLPatterns` (
   `name` varchar(50) NOT NULL,
   `regExp` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameBrand` (`name`,`brandId`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `GenericCallACLPatterns_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1035,7 +1043,7 @@ CREATE TABLE `GenericMusicOnHold` (
   `status` varchar(20) DEFAULT NULL COMMENT '[enum:pending|encoding|ready|error]',
   `brandId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `nameBrand` (`name`,`brandId`),
   KEY `fGenericMusicOnHold_ibfk_1` (`brandId`),
   CONSTRAINT `fGenericMusicOnHold_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1064,6 +1072,7 @@ CREATE TABLE `HolidayDates` (
   `eventDate` date NOT NULL,
   `locutionId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `dateCalendar` (`eventDate`,`calendarId`),
   KEY `calendarId` (`calendarId`),
   KEY `locutionId` (`locutionId`),
   CONSTRAINT `HolidayDates_ibfk_1` FOREIGN KEY (`calendarId`) REFERENCES `Calendars` (`id`) ON DELETE CASCADE,
@@ -1096,6 +1105,7 @@ CREATE TABLE `HuntGroups` (
   `ringAllTimeout` smallint(6) NOT NULL,
   `nextUserPosition` smallint(4) unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `HuntGroups_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1124,6 +1134,8 @@ CREATE TABLE `HuntGroupsRelUsers` (
   `timeoutTime` smallint(6) DEFAULT NULL,
   `priority` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `userHuntgroup` (`userId`,`huntGroupId`),
+  UNIQUE KEY `prioHuntgroup` (`priority`,`huntGroupId`),
   KEY `huntGroupId` (`huntGroupId`),
   KEY `userId` (`userId`),
   CONSTRAINT `HuntGroupsRelUsers_ibfk_1` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE CASCADE,
@@ -1167,6 +1179,7 @@ CREATE TABLE `IVRCommon` (
   `errorExtensionId` int(10) unsigned DEFAULT NULL,
   `errorVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
   KEY `noAnswerLocutionId` (`noAnswerLocutionId`),
@@ -1223,6 +1236,7 @@ CREATE TABLE `IVRCustom` (
   `errorExtensionId` int(10) unsigned DEFAULT NULL,
   `errorVoiceMailUserId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   KEY `welcomeLocutionId` (`welcomeLocutionId`),
   KEY `noAnswerLocutionId` (`noAnswerLocutionId`),
@@ -1305,7 +1319,7 @@ CREATE TABLE `InvoiceTemplates` (
   `template` text NOT NULL,
   `brandId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `nameBrand` (`name`,`brandId`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `InvoiceTemplates_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1343,7 +1357,7 @@ CREATE TABLE `Invoices` (
   `pdfFileBaseName` varchar(255) DEFAULT NULL,
   `invoiceTemplateId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `numberLanguage` (`number`),
+  UNIQUE KEY `numberBrand` (`number`,`brandId`),
   KEY `brandId` (`brandId`),
   KEY `companyId` (`companyId`),
   KEY `invoiceTemplateId` (`invoiceTemplateId`),
@@ -1518,6 +1532,7 @@ CREATE TABLE `Locutions` (
   `encodedFileBaseName` varchar(255) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL COMMENT '[enum:pending|encoding|ready|error]',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `Locutions_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1545,13 +1560,13 @@ CREATE TABLE `MainOperators` (
   `pass` varchar(80) NOT NULL COMMENT '[password]',
   `email` varchar(100) NOT NULL DEFAULT '',
   `active` tinyint(1) DEFAULT '1',
-  `timezoneId` int(10) unsigned NOT NULL,
+  `timezoneId` int(10) unsigned DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `timezoneId` (`timezoneId`),
-  CONSTRAINT `MainOperators_ibfk_1` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE CASCADE
+  CONSTRAINT `MainOperators_ibfk_1` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1576,7 +1591,8 @@ CREATE TABLE `MediaRelaySets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL DEFAULT '0',
   `description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1609,6 +1625,7 @@ CREATE TABLE `MusicOnHold` (
   `encodedFileBaseName` varchar(255) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL COMMENT '[enum:pending|encoding|ready|error]',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `MusicOnHold_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1810,6 +1827,7 @@ CREATE TABLE `PickUpGroups` (
   `name` varchar(50) NOT NULL,
   `companyId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `PickUpGroups_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -1870,6 +1888,8 @@ CREATE TABLE `PricingPlans` (
   `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `brandId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameEsBrand` (`name_es`,`brandId`),
+  UNIQUE KEY `nameEnBrand` (`name_en`,`brandId`),
   KEY `brandId` (`brandId`),
   CONSTRAINT `PricingPlans_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -2152,6 +2172,7 @@ CREATE TABLE `Schedules` (
   `saturday` tinyint(1) unsigned DEFAULT '0',
   `sunday` tinyint(1) unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `nameCompany` (`name`,`companyId`),
   KEY `companyId` (`companyId`),
   CONSTRAINT `Schedules_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
@@ -2300,7 +2321,7 @@ DROP TABLE IF EXISTS `Terminals`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Terminals` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `TerminalModelId` int(10) unsigned NOT NULL,
+  `TerminalModelId` int(10) unsigned DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `domain` varchar(255) DEFAULT NULL,
   `disallow` varchar(200) NOT NULL DEFAULT 'all',
@@ -2314,8 +2335,8 @@ CREATE TABLE `Terminals` (
   UNIQUE KEY `name_domain` (`name`,`domain`),
   KEY `TerminalModelId` (`TerminalModelId`),
   KEY `Terminals_CompanyId_ibfk_2` (`companyId`),
-  CONSTRAINT `Terminals_CompanyId_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `Terminals_ibfk_1` FOREIGN KEY (`TerminalModelId`) REFERENCES `TerminalModels` (`id`) ON DELETE CASCADE
+  CONSTRAINT `Terminals_ibfk_1` FOREIGN KEY (`TerminalModelId`) REFERENCES `TerminalModels` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Terminals_CompanyId_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2434,7 +2455,6 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UsersUniqueCompanyUsername` (`companyId`,`username`),
   UNIQUE KEY `uniqueTerminalId` (`terminalId`),
-  UNIQUE KEY `terminalId_2` (`terminalId`),
   UNIQUE KEY `uniqueExtensionId` (`extensionId`),
   KEY `companyId` (`companyId`),
   KEY `timezoneId` (`timezoneId`),

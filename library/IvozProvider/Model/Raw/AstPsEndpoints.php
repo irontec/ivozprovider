@@ -44,6 +44,14 @@ class AstPsEndpoints extends ModelAbstract
         'required',
         'yes',
     );
+    protected $_trustIdInboundAcceptedValues = array(
+        'yes',
+        'no',
+    );
+    protected $_trustIdOutboundAcceptedValues = array(
+        'yes',
+        'no',
+    );
 
     /**
      * Database var type int
@@ -165,6 +173,20 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_outboundProxy;
 
+    /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_trustIdInbound;
+
+    /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_trustIdOutbound;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -200,6 +222,8 @@ class AstPsEndpoints extends ModelAbstract
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'outbound_proxy'=>'outboundProxy',
+        'trust_id_inbound'=>'trustIdInbound',
+        'trust_id_outbound'=>'trustIdOutbound',
     );
 
     /**
@@ -869,6 +893,80 @@ class AstPsEndpoints extends ModelAbstract
     public function getOutboundProxy()
     {
         return $this->_outboundProxy;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setTrustIdInbound($data)
+    {
+
+        if ($this->_trustIdInbound != $data) {
+            $this->_logChange('trustIdInbound', $this->_trustIdInbound, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_trustIdInbound = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_trustIdInboundAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for trustIdInbound'));
+            }
+            $this->_trustIdInbound = (string) $data;
+
+        } else {
+            $this->_trustIdInbound = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column trust_id_inbound
+     *
+     * @return string
+     */
+    public function getTrustIdInbound()
+    {
+        return $this->_trustIdInbound;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setTrustIdOutbound($data)
+    {
+
+        if ($this->_trustIdOutbound != $data) {
+            $this->_logChange('trustIdOutbound', $this->_trustIdOutbound, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_trustIdOutbound = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_trustIdOutboundAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for trustIdOutbound'));
+            }
+            $this->_trustIdOutbound = (string) $data;
+
+        } else {
+            $this->_trustIdOutbound = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column trust_id_outbound
+     *
+     * @return string
+     */
+    public function getTrustIdOutbound()
+    {
+        return $this->_trustIdOutbound;
     }
 
     /**

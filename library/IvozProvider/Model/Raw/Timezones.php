@@ -83,7 +83,7 @@ class Timezones extends ModelAbstract
 
 
     /**
-     * Dependent relation BrandOperators_ibfk_2
+     * Dependent relation BrandOperators_ibfk_4
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\BrandOperators[]
@@ -91,7 +91,7 @@ class Timezones extends ModelAbstract
     protected $_BrandOperators;
 
     /**
-     * Dependent relation Brands_ibfk_1
+     * Dependent relation Brands_ibfk_3
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\Brands[]
@@ -99,7 +99,7 @@ class Timezones extends ModelAbstract
     protected $_Brands;
 
     /**
-     * Dependent relation Companies_ibfk_2
+     * Dependent relation Companies_ibfk_12
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\Companies[]
@@ -163,15 +163,15 @@ class Timezones extends ModelAbstract
         ));
 
         $this->setDependentList(array(
-            'BrandOperatorsIbfk2' => array(
+            'BrandOperatorsIbfk4' => array(
                     'property' => 'BrandOperators',
                     'table_name' => 'BrandOperators',
                 ),
-            'BrandsIbfk1' => array(
+            'BrandsIbfk3' => array(
                     'property' => 'Brands',
                     'table_name' => 'Brands',
                 ),
-            'CompaniesIbfk2' => array(
+            'CompaniesIbfk12' => array(
                     'property' => 'Companies',
                     'table_name' => 'Companies',
                 ),
@@ -189,14 +189,14 @@ class Timezones extends ModelAbstract
                 ),
         ));
 
-        $this->setOnDeleteCascadeRelationships(array(
-            'BrandOperators_ibfk_2',
-            'Brands_ibfk_1',
-            'Companies_ibfk_2',
+
+        $this->setOnDeleteSetNullRelationships(array(
+            'BrandOperators_ibfk_4',
+            'Brands_ibfk_3',
+            'Companies_ibfk_12',
             'CompanyAdmins_ibfk_2',
             'MainOperators_ibfk_1'
         ));
-
 
 
         $this->_defaultValues = array(
@@ -535,7 +535,7 @@ class Timezones extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations BrandOperators_ibfk_2
+     * Sets dependent relations BrandOperators_ibfk_4
      *
      * @param array $data An array of \IvozProvider\Model\Raw\BrandOperators
      * @return \IvozProvider\Model\Raw\Timezones
@@ -583,7 +583,7 @@ class Timezones extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations BrandOperators_ibfk_2
+     * Sets dependent relations BrandOperators_ibfk_4
      *
      * @param \IvozProvider\Model\Raw\BrandOperators $data
      * @return \IvozProvider\Model\Raw\Timezones
@@ -591,12 +591,12 @@ class Timezones extends ModelAbstract
     public function addBrandOperators(\IvozProvider\Model\Raw\BrandOperators $data)
     {
         $this->_BrandOperators[] = $data;
-        $this->_setLoaded('BrandOperatorsIbfk2');
+        $this->_setLoaded('BrandOperatorsIbfk4');
         return $this;
     }
 
     /**
-     * Gets dependent BrandOperators_ibfk_2
+     * Gets dependent BrandOperators_ibfk_4
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -605,7 +605,7 @@ class Timezones extends ModelAbstract
      */
     public function getBrandOperators($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'BrandOperatorsIbfk2';
+        $fkName = 'BrandOperatorsIbfk4';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -625,7 +625,7 @@ class Timezones extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Brands_ibfk_1
+     * Sets dependent relations Brands_ibfk_3
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Brands
      * @return \IvozProvider\Model\Raw\Timezones
@@ -673,7 +673,7 @@ class Timezones extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Brands_ibfk_1
+     * Sets dependent relations Brands_ibfk_3
      *
      * @param \IvozProvider\Model\Raw\Brands $data
      * @return \IvozProvider\Model\Raw\Timezones
@@ -681,12 +681,12 @@ class Timezones extends ModelAbstract
     public function addBrands(\IvozProvider\Model\Raw\Brands $data)
     {
         $this->_Brands[] = $data;
-        $this->_setLoaded('BrandsIbfk1');
+        $this->_setLoaded('BrandsIbfk3');
         return $this;
     }
 
     /**
-     * Gets dependent Brands_ibfk_1
+     * Gets dependent Brands_ibfk_3
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -695,7 +695,7 @@ class Timezones extends ModelAbstract
      */
     public function getBrands($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'BrandsIbfk1';
+        $fkName = 'BrandsIbfk3';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -715,7 +715,7 @@ class Timezones extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Companies_ibfk_2
+     * Sets dependent relations Companies_ibfk_12
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Companies
      * @return \IvozProvider\Model\Raw\Timezones
@@ -763,7 +763,7 @@ class Timezones extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations Companies_ibfk_2
+     * Sets dependent relations Companies_ibfk_12
      *
      * @param \IvozProvider\Model\Raw\Companies $data
      * @return \IvozProvider\Model\Raw\Timezones
@@ -771,12 +771,12 @@ class Timezones extends ModelAbstract
     public function addCompanies(\IvozProvider\Model\Raw\Companies $data)
     {
         $this->_Companies[] = $data;
-        $this->_setLoaded('CompaniesIbfk2');
+        $this->_setLoaded('CompaniesIbfk12');
         return $this;
     }
 
     /**
-     * Gets dependent Companies_ibfk_2
+     * Gets dependent Companies_ibfk_12
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -785,7 +785,7 @@ class Timezones extends ModelAbstract
      */
     public function getCompanies($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'CompaniesIbfk2';
+        $fkName = 'CompaniesIbfk12';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

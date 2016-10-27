@@ -31,7 +31,6 @@ production:
     timezoneId: 
       title: _('Timezoneid')
       type: select
-      required: true
       source: 
         data: mapper
         config: 
@@ -41,6 +40,7 @@ production:
               - tz
             template: '%tz%'
           order: tz
+        'null': _("Unasigned")
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text

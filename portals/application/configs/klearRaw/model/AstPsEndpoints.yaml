@@ -107,6 +107,22 @@ production:
       title: _('Outboundproxy')
       type: text
       maxLength: 256
+    trust_id_inbound: 
+      title: _('Trustidinbound')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    trust_id_outbound: 
+      title: _('Trustidoutbound')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
 staging: 
   _extends: production
 testing: 

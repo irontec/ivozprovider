@@ -135,7 +135,7 @@ class Brands extends ModelAbstract
 
 
     /**
-     * Parent relation Brands_ibfk_1
+     * Parent relation Brands_ibfk_3
      *
      * @var \IvozProvider\Model\Raw\Timezones
      */
@@ -382,7 +382,7 @@ class Brands extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'BrandsIbfk1'=> array(
+            'BrandsIbfk3'=> array(
                     'property' => 'DefaultTimezone',
                     'table_name' => 'Timezones',
                 ),
@@ -770,9 +770,6 @@ class Brands extends ModelAbstract
     public function setDefaultTimezoneId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_defaultTimezoneId != $data) {
             $this->_logChange('defaultTimezoneId', $this->_defaultTimezoneId, $data);
         }
@@ -1173,7 +1170,7 @@ class Brands extends ModelAbstract
             $this->setDefaultTimezoneId($primaryKey);
         }
 
-        $this->_setLoaded('BrandsIbfk1');
+        $this->_setLoaded('BrandsIbfk3');
         return $this;
     }
 
@@ -1184,7 +1181,7 @@ class Brands extends ModelAbstract
      */
     public function getDefaultTimezone($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'BrandsIbfk1';
+        $fkName = 'BrandsIbfk3';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

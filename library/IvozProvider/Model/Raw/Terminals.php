@@ -109,18 +109,18 @@ class Terminals extends ModelAbstract
 
 
     /**
-     * Parent relation Terminals_CompanyId_ibfk_2
-     *
-     * @var \IvozProvider\Model\Raw\Companies
-     */
-    protected $_Company;
-
-    /**
      * Parent relation Terminals_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\TerminalModels
      */
     protected $_TerminalModel;
+
+    /**
+     * Parent relation Terminals_CompanyId_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Companies
+     */
+    protected $_Company;
 
 
     /**
@@ -169,13 +169,13 @@ class Terminals extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'TerminalsCompanyIdIbfk2'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
-                ),
             'TerminalsIbfk1'=> array(
                     'property' => 'TerminalModel',
                     'table_name' => 'TerminalModels',
+                ),
+            'TerminalsCompanyIdIbfk2'=> array(
+                    'property' => 'Company',
+                    'table_name' => 'Companies',
                 ),
         ));
 
@@ -273,9 +273,6 @@ class Terminals extends ModelAbstract
     public function setTerminalModelId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_TerminalModelId != $data) {
             $this->_logChange('TerminalModelId', $this->_TerminalModelId, $data);
         }
@@ -637,57 +634,6 @@ class Terminals extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Company
-     *
-     * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
-    {
-        $this->_Company = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
-        }
-
-        $this->_setLoaded('TerminalsCompanyIdIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets parent Company
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'TerminalsCompanyIdIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Company;
-    }
-
-    /**
      * Sets parent relation TerminalModel
      *
      * @param \IvozProvider\Model\Raw\TerminalModels $data
@@ -736,6 +682,57 @@ class Terminals extends ModelAbstract
         }
 
         return $this->_TerminalModel;
+    }
+
+    /**
+     * Sets parent relation Company
+     *
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
+    {
+        $this->_Company = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCompanyId($primaryKey);
+        }
+
+        $this->_setLoaded('TerminalsCompanyIdIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Company
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'TerminalsCompanyIdIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Company = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Company;
     }
 
     /**
