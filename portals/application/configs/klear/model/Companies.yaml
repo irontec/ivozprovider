@@ -149,6 +149,7 @@ production:
     languageId: 
       title: _('Language')
       type: select
+      defaultValue: 1
       source: 
         data: mapper
         config: 
@@ -158,7 +159,6 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
     mediaRelaySetsId: 
       title: _('Media relay Set')
       type: select

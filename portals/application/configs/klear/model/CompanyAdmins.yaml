@@ -47,6 +47,7 @@ production:
       title: _('Timezone id')
       type: select
       required: true
+      defaultValue: 145
       source: 
         data: mapper
         config: 
