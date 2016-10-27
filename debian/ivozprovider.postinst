@@ -67,6 +67,14 @@ function setup_pbx()
     sed -i "s/bind=0.0.0.0:6060/bind=127.0.0.1:6060/g" /etc/asterisk/pjsip.conf
 }
 
+function setup_rtpproxy()
+{
+    db_get ivozprovider/users_address       || true
+    USERS_ADDRESS=$RET
+    # Update rtpproxy listen address
+    sed -i -r "s/(AUDIO_SOCK *= *).*/\1$RET/" /etc/default/rtpproxy
+}
+
 
 function start_services()
 {
@@ -102,6 +110,8 @@ if [ "$1" == "configure" ] || [ -z "$2" ]; then
     setup_portals
     # Setup proxy addresses
     setup_proxies
+    # Setu Media relay address
+    setup_rtpproxy
     # Setup pbx system
     setup_pbx
     # Restart services
