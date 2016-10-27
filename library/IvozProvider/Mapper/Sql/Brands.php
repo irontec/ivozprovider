@@ -59,6 +59,8 @@ class Brands extends Raw\Brands
             $routingPattern = new \IvozProvider\Model\RoutingPatterns();
             $routingPattern->setNameEs($country->getNameEs())
                            ->setNameEn($country->getNameEn())
+                           ->setDescriptionEs('')
+                           ->setDescriptionEn('')
                            ->setRegExp($country->getCallingCode())
                            ->setBrandId($model->getPrimaryKey())
                            ->save();
