@@ -310,6 +310,7 @@ production:
     languageId: 
       title: _('Language')
       type: select
+      defaultValue: 1
       source: 
         data: mapper
         config: 
@@ -319,7 +320,6 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")          
 staging: 
   _extends: production
 testing: 
