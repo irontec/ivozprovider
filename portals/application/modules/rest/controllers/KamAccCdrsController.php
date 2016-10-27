@@ -53,11 +53,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      *     'parsed': '', 
      *     'diversion': '', 
      *     'peeringContractId': '', 
+     *     'bounced': '', 
      *     'externallyRated': '', 
      *     'metered': '', 
      *     'meteringDate': '', 
      *     'pricingPlanId': '', 
+     *     'pricingPlanName': '', 
      *     'targetPatternId': '', 
+     *     'targetPatternName': '', 
      *     'price': '', 
      *     'pricingPlanDetails': '', 
      *     'invoiceId': '', 
@@ -85,11 +88,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      *     'parsed': '', 
      *     'diversion': '', 
      *     'peeringContractId': '', 
+     *     'bounced': '', 
      *     'externallyRated': '', 
      *     'metered': '', 
      *     'meteringDate': '', 
      *     'pricingPlanId': '', 
+     *     'pricingPlanName': '', 
      *     'targetPatternId': '', 
+     *     'targetPatternName': '', 
      *     'price': '', 
      *     'pricingPlanDetails': '', 
      *     'invoiceId': '', 
@@ -133,11 +139,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                 'parsed',
                 'diversion',
                 'peeringContractId',
+                'bounced',
                 'externallyRated',
                 'metered',
                 'meteringDate',
                 'pricingPlanId',
+                'pricingPlanName',
                 'targetPatternId',
+                'targetPatternName',
                 'price',
                 'pricingPlanDetails',
                 'invoiceId',
@@ -237,11 +246,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      *     'parsed': '', 
      *     'diversion': '', 
      *     'peeringContractId': '', 
+     *     'bounced': '', 
      *     'externallyRated': '', 
      *     'metered': '', 
      *     'meteringDate': '', 
      *     'pricingPlanId': '', 
+     *     'pricingPlanName': '', 
      *     'targetPatternId': '', 
+     *     'targetPatternName': '', 
      *     'price': '', 
      *     'pricingPlanDetails': '', 
      *     'invoiceId': '', 
@@ -284,11 +296,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                 'parsed',
                 'diversion',
                 'peeringContractId',
+                'bounced',
                 'externallyRated',
                 'metered',
                 'meteringDate',
                 'pricingPlanId',
+                'pricingPlanName',
                 'targetPatternId',
+                'targetPatternName',
                 'price',
                 'pricingPlanDetails',
                 'invoiceId',
@@ -354,11 +369,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="bounced", nullable=false, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="metered", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="meteringDate", nullable=true, type="datetime", sample="", description="")
      * @ApiParams(name="pricingPlanId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="pricingPlanName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="targetPatternName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="")
      * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
@@ -419,11 +437,14 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="bounced", nullable=false, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="externallyRated", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="metered", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="meteringDate", nullable=true, type="datetime", sample="", description="")
      * @ApiParams(name="pricingPlanId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="pricingPlanName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="targetPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="targetPatternName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="price", nullable=true, type="decimal", sample="", description="")
      * @ApiParams(name="pricingPlanDetails", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="invoiceId", nullable=true, type="int", sample="", description="")
@@ -623,6 +644,11 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'bounced' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'externallyRated' => array(
                     'type' => "tinyint",
                     'required' => false,
@@ -643,8 +669,18 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'pricingPlanName' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'targetPatternId' => array(
                     'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'targetPatternName' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -784,6 +820,11 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'bounced' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'externallyRated' => array(
                     'type' => "tinyint",
                     'required' => false,
@@ -804,8 +845,18 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'pricingPlanName' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'targetPatternId' => array(
                     'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'targetPatternName' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),

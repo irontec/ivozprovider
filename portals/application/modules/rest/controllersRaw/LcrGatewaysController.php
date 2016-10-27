@@ -33,7 +33,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'companyId': '', 
+     *     'lcr_id': '', 
      *     'gw_name': '', 
      *     'ip': '', 
      *     'hostname': '', 
@@ -46,11 +46,10 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      *     'tag': '', 
      *     'flags': '', 
      *     'defunct': '', 
-     *     'peerServerId': '', 
-     *     'outgoingRoutingId': ''
+     *     'peerServerId': ''
      * },{
      *     'id': '', 
-     *     'companyId': '', 
+     *     'lcr_id': '', 
      *     'gw_name': '', 
      *     'ip': '', 
      *     'hostname': '', 
@@ -63,8 +62,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      *     'tag': '', 
      *     'flags': '', 
      *     'defunct': '', 
-     *     'peerServerId': '', 
-     *     'outgoingRoutingId': ''
+     *     'peerServerId': ''
      * }]")
      */
     public function indexAction()
@@ -83,7 +81,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'companyId',
+                'lcrId',
                 'gwName',
                 'ip',
                 'hostname',
@@ -97,7 +95,6 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                 'flags',
                 'defunct',
                 'peerServerId',
-                'outgoingRoutingId',
             );
         }
 
@@ -172,7 +169,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'companyId': '', 
+     *     'lcr_id': '', 
      *     'gw_name': '', 
      *     'ip': '', 
      *     'hostname': '', 
@@ -185,8 +182,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      *     'tag': '', 
      *     'flags': '', 
      *     'defunct': '', 
-     *     'peerServerId': '', 
-     *     'outgoingRoutingId': ''
+     *     'peerServerId': ''
      * }")
      */
     public function getAction()
@@ -204,7 +200,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'companyId',
+                'lcrId',
                 'gwName',
                 'ip',
                 'hostname',
@@ -218,7 +214,6 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                 'flags',
                 'defunct',
                 'peerServerId',
-                'outgoingRoutingId',
             );
         }
 
@@ -259,7 +254,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="LcrGateways", description="Create's a new LcrGateways")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/lcr-gateways/")
-     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="lcr_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="gw_name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="hostname", nullable=true, type="varchar", sample="", description="")
@@ -273,7 +268,6 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="defunct", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peerServerId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="outgoingRoutingId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/lcrgateways/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -309,7 +303,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/lcr-gateways/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="lcr_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="gw_name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="hostname", nullable=true, type="varchar", sample="", description="")
@@ -323,7 +317,6 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="flags", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="defunct", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="peerServerId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="outgoingRoutingId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -418,7 +411,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'companyId' => array(
+                'lcr_id' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -484,11 +477,6 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'peerServerId' => array(
-                    'type' => "int",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'outgoingRoutingId' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -504,7 +492,7 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'companyId' => array(
+                'lcr_id' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -570,11 +558,6 @@ class Rest_LcrGatewaysController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'peerServerId' => array(
-                    'type' => "int",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'outgoingRoutingId' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',

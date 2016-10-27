@@ -36,18 +36,22 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
      *     'companyId': '', 
      *     'callid': '', 
      *     'calldate': '', 
+     *     'type': '', 
      *     'duration': '', 
      *     'caller': '', 
      *     'callee': '', 
+     *     'recorder': '', 
      *     'recordedFile': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
      *     'callid': '', 
      *     'calldate': '', 
+     *     'type': '', 
      *     'duration': '', 
      *     'caller': '', 
      *     'callee': '', 
+     *     'recorder': '', 
      *     'recordedFile': ''
      * }]")
      */
@@ -70,9 +74,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                 'companyId',
                 'callid',
                 'calldate',
+                'type',
                 'duration',
                 'caller',
                 'callee',
+                'recorder',
             );
         }
 
@@ -150,9 +156,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
      *     'companyId': '', 
      *     'callid': '', 
      *     'calldate': '', 
+     *     'type': '', 
      *     'duration': '', 
      *     'caller': '', 
      *     'callee': '', 
+     *     'recorder': '', 
      *     'recordedFile': ''
      * }")
      */
@@ -174,9 +182,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                 'companyId',
                 'callid',
                 'calldate',
+                'type',
                 'duration',
                 'caller',
                 'callee',
+                'recorder',
             );
         }
 
@@ -220,9 +230,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="type", nullable=false, type="enum('ondemand','ddi')", sample="", description="[enum:ondemand|ddi]")
      * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recorder", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/recordings/{id}")
@@ -267,9 +279,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="calldate", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="type", nullable=false, type="enum('ondemand','ddi')", sample="", description="[enum:ondemand|ddi]")
      * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recorder", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -385,6 +399,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'type' => array(
+                    'type' => "enum('ondemand','ddi')",
+                    'required' => true,
+                    'comment' => '[enum:ondemand|ddi]',
+                ),
                 'duration' => array(
                     'type' => "float",
                     'required' => true,
@@ -396,6 +415,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'callee' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recorder' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
@@ -431,6 +455,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'type' => array(
+                    'type' => "enum('ondemand','ddi')",
+                    'required' => true,
+                    'comment' => '[enum:ondemand|ddi]',
+                ),
                 'duration' => array(
                     'type' => "float",
                     'required' => true,
@@ -442,6 +471,11 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'callee' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recorder' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',

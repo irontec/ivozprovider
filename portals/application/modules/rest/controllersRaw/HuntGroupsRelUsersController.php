@@ -206,8 +206,8 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
      * @ApiRoute(name="/rest/hunt-groups-rel-users/")
      * @ApiParams(name="huntGroupId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="userId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="timeoutTime", nullable=false, type="smallint", sample="", description="")
-     * @ApiParams(name="priority", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="timeoutTime", nullable=true, type="smallint", sample="", description="")
+     * @ApiParams(name="priority", nullable=true, type="smallint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/huntgroupsrelusers/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -245,8 +245,8 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="userId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="timeoutTime", nullable=false, type="smallint", sample="", description="")
-     * @ApiParams(name="priority", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="timeoutTime", nullable=true, type="smallint", sample="", description="")
+     * @ApiParams(name="priority", nullable=true, type="smallint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -353,12 +353,12 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
                 ),
                 'timeoutTime' => array(
                     'type' => "smallint",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'priority' => array(
                     'type' => "smallint",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -384,12 +384,12 @@ class Rest_HuntGroupsRelUsersController extends Iron_Controller_Rest_BaseControl
                 ),
                 'timeoutTime' => array(
                     'type' => "smallint",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'priority' => array(
                     'type' => "smallint",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
             )

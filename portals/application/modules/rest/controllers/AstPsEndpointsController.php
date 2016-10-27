@@ -48,7 +48,9 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_pai': '', 
      *     'subscribecontext': '', 
      *     '100rel': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'trust_id_inbound': '', 
+     *     'trust_id_outbound': ''
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
@@ -66,7 +68,9 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_pai': '', 
      *     'subscribecontext': '', 
      *     '100rel': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'trust_id_inbound': '', 
+     *     'trust_id_outbound': ''
      * }]")
      */
     public function indexAction()
@@ -101,6 +105,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'subscribecontext',
                 '100rel',
                 'outboundProxy',
+                'trustIdInbound',
+                'trustIdOutbound',
             );
         }
 
@@ -190,7 +196,9 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_pai': '', 
      *     'subscribecontext': '', 
      *     '100rel': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'trust_id_inbound': '', 
+     *     'trust_id_outbound': ''
      * }")
      */
     public function getAction()
@@ -224,6 +232,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'subscribecontext',
                 '100rel',
                 'outboundProxy',
+                'trustIdInbound',
+                'trustIdOutbound',
             );
         }
 
@@ -280,6 +290,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="trust_id_outbound", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/astpsendpoints/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -331,6 +343,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="trust_id_outbound", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -505,6 +519,16 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'trust_id_inbound' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'trust_id_outbound' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -593,6 +617,16 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 ),
                 'outbound_proxy' => array(
                     'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'trust_id_inbound' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'trust_id_outbound' => array(
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),

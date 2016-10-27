@@ -39,7 +39,8 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
      *     'name_es': '', 
      *     'description': '', 
      *     'description_en': '', 
-     *     'description_es': ''
+     *     'description_es': '', 
+     *     'defaultCode': ''
      * },{
      *     'id': '', 
      *     'iden': '', 
@@ -48,7 +49,8 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
      *     'name_es': '', 
      *     'description': '', 
      *     'description_en': '', 
-     *     'description_es': ''
+     *     'description_es': '', 
+     *     'defaultCode': ''
      * }]")
      */
     public function indexAction()
@@ -74,6 +76,7 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
                 'description',
                 'descriptionEn',
                 'descriptionEs',
+                'defaultCode',
             );
         }
 
@@ -154,7 +157,8 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
      *     'name_es': '', 
      *     'description': '', 
      *     'description_en': '', 
-     *     'description_es': ''
+     *     'description_es': '', 
+     *     'defaultCode': ''
      * }")
      */
     public function getAction()
@@ -179,6 +183,7 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
                 'description',
                 'descriptionEn',
                 'descriptionEs',
+                'defaultCode',
             );
         }
 
@@ -226,6 +231,7 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="[ml]")
      * @ApiParams(name="description_en", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="defaultCode", nullable=false, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/services/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -268,6 +274,7 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="[ml]")
      * @ApiParams(name="description_en", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="defaultCode", nullable=false, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -387,6 +394,11 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'defaultCode' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -419,6 +431,11 @@ class Rest_ServicesController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'description_es' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'defaultCode' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',

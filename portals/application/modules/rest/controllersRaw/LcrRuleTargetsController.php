@@ -33,7 +33,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'companyId': '', 
+     *     'lcr_id': '', 
      *     'rule_id': '', 
      *     'gw_id': '', 
      *     'priority': '', 
@@ -41,7 +41,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
      *     'outgoingRoutingId': ''
      * },{
      *     'id': '', 
-     *     'companyId': '', 
+     *     'lcr_id': '', 
      *     'rule_id': '', 
      *     'gw_id': '', 
      *     'priority': '', 
@@ -65,7 +65,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'companyId',
+                'lcrId',
                 'ruleId',
                 'gwId',
                 'priority',
@@ -145,7 +145,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'companyId': '', 
+     *     'lcr_id': '', 
      *     'rule_id': '', 
      *     'gw_id': '', 
      *     'priority': '', 
@@ -168,7 +168,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'companyId',
+                'lcrId',
                 'ruleId',
                 'gwId',
                 'priority',
@@ -214,7 +214,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="LcrRuleTargets", description="Create's a new LcrRuleTargets")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/lcr-rule-targets/")
-     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="lcr_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="rule_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="gw_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="tinyint", sample="", description="")
@@ -255,7 +255,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/lcr-rule-targets/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="lcr_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="rule_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="gw_id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="tinyint", sample="", description="")
@@ -355,7 +355,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'companyId' => array(
+                'lcr_id' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -396,7 +396,7 @@ class Rest_LcrRuleTargetsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'companyId' => array(
+                'lcr_id' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',

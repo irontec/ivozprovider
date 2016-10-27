@@ -223,7 +223,7 @@ class Rest_MainOperatorsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="pass", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="timezoneId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="lastname", nullable=false, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
@@ -265,7 +265,7 @@ class Rest_MainOperatorsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="pass", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=true, type="tinyint", sample="", description="")
-     * @ApiParams(name="timezoneId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="lastname", nullable=false, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -384,7 +384,7 @@ class Rest_MainOperatorsController extends Iron_Controller_Rest_BaseController
                 ),
                 'timezoneId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(
@@ -430,7 +430,7 @@ class Rest_MainOperatorsController extends Iron_Controller_Rest_BaseController
                 ),
                 'timezoneId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(

@@ -230,7 +230,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="weight", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/outgoingrouting/{id}")
@@ -273,7 +273,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="weight", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -401,7 +401,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
                 ),
                 'companyId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(
@@ -452,7 +452,7 @@ class Rest_OutgoingRoutingController extends Iron_Controller_Rest_BaseController
                 ),
                 'companyId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(

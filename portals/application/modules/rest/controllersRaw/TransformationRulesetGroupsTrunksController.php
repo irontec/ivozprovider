@@ -39,7 +39,11 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
      *     'callee_in': '', 
      *     'caller_out': '', 
      *     'callee_out': '', 
-     *     'description': ''
+     *     'description': '', 
+     *     'automatic': '', 
+     *     'countryId': '', 
+     *     'internationalCode': '', 
+     *     'nationalNumLength': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -48,7 +52,11 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
      *     'callee_in': '', 
      *     'caller_out': '', 
      *     'callee_out': '', 
-     *     'description': ''
+     *     'description': '', 
+     *     'automatic': '', 
+     *     'countryId': '', 
+     *     'internationalCode': '', 
+     *     'nationalNumLength': ''
      * }]")
      */
     public function indexAction()
@@ -74,6 +82,10 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
                 'callerOut',
                 'calleeOut',
                 'description',
+                'automatic',
+                'countryId',
+                'internationalCode',
+                'nationalNumLength',
             );
         }
 
@@ -154,7 +166,11 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
      *     'callee_in': '', 
      *     'caller_out': '', 
      *     'callee_out': '', 
-     *     'description': ''
+     *     'description': '', 
+     *     'automatic': '', 
+     *     'countryId': '', 
+     *     'internationalCode': '', 
+     *     'nationalNumLength': ''
      * }")
      */
     public function getAction()
@@ -179,6 +195,10 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
                 'callerOut',
                 'calleeOut',
                 'description',
+                'automatic',
+                'countryId',
+                'internationalCode',
+                'nationalNumLength',
             );
         }
 
@@ -226,6 +246,10 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
      * @ApiParams(name="caller_out", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callee_out", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="automatic", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="internationalCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="nationalNumLength", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/transformationrulesetgroupstrunks/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -268,6 +292,10 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
      * @ApiParams(name="caller_out", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callee_out", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="automatic", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="internationalCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="nationalNumLength", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -397,6 +425,26 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
                     'required' => true,
                     'comment' => '',
                 ),
+                'automatic' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'countryId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'internationalCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'nationalNumLength' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -441,6 +489,26 @@ class Rest_TransformationRulesetGroupsTrunksController extends Iron_Controller_R
                 'description' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'automatic' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'countryId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'internationalCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'nationalNumLength' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
             )

@@ -247,14 +247,14 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="domain_trunks", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="defaultTimezoneId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="logo", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="postalCode", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="town", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="province", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="country", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="registryData", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="registryData", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/brands/{id}")
@@ -299,14 +299,14 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="domain_trunks", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="defaultTimezoneId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="logo", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="postalCode", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="town", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="province", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="country", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="registryData", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="registryData", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -424,7 +424,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 ),
                 'defaultTimezoneId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'logo' => array(
@@ -459,7 +459,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 ),
                 'registryData' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'languageId' => array(
@@ -495,7 +495,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 ),
                 'defaultTimezoneId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'logo' => array(
@@ -530,7 +530,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 ),
                 'registryData' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'languageId' => array(

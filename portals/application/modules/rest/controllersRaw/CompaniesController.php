@@ -49,7 +49,9 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'countryId': '', 
      *     'languageId': '', 
      *     'mediaRelaySetsId': '', 
-     *     'ipFilter': ''
+     *     'ipFilter': '', 
+     *     'onDemandRecord': '', 
+     *     'onDemandRecordCode': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -68,7 +70,9 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'countryId': '', 
      *     'languageId': '', 
      *     'mediaRelaySetsId': '', 
-     *     'ipFilter': ''
+     *     'ipFilter': '', 
+     *     'onDemandRecord': '', 
+     *     'onDemandRecordCode': ''
      * }]")
      */
     public function indexAction()
@@ -104,6 +108,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'languageId',
                 'mediaRelaySetsId',
                 'ipFilter',
+                'onDemandRecord',
+                'onDemandRecordCode',
             );
         }
 
@@ -194,7 +200,9 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'countryId': '', 
      *     'languageId': '', 
      *     'mediaRelaySetsId': '', 
-     *     'ipFilter': ''
+     *     'ipFilter': '', 
+     *     'onDemandRecord': '', 
+     *     'onDemandRecordCode': ''
      * }")
      */
     public function getAction()
@@ -229,6 +237,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'languageId',
                 'mediaRelaySetsId',
                 'ipFilter',
+                'onDemandRecord',
+                'onDemandRecordCode',
             );
         }
 
@@ -273,7 +283,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="domain_users", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="defaultTimezoneId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="externalMaxCalls", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -286,6 +296,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="mediaRelaySetsId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="ipFilter", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/companies/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -325,7 +337,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="domain_users", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="defaultTimezoneId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="externalMaxCalls", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -338,6 +350,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="mediaRelaySetsId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="ipFilter", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -454,7 +468,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'defaultTimezoneId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'applicationServerId' => array(
@@ -514,6 +528,16 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'ipFilter' => array(
                     'type' => "tinyint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'onDemandRecord' => array(
+                    'type' => "tinyint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'onDemandRecordCode' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -550,7 +574,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'defaultTimezoneId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'applicationServerId' => array(
@@ -610,6 +634,16 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'ipFilter' => array(
                     'type' => "tinyint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'onDemandRecord' => array(
+                    'type' => "tinyint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'onDemandRecordCode' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),

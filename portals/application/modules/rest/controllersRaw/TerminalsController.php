@@ -234,7 +234,7 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiDescription(section="Terminals", description="Create's a new Terminals")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/terminals/")
-     * @ApiParams(name="TerminalModelId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="TerminalModelId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
@@ -279,7 +279,7 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/terminals/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="TerminalModelId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="TerminalModelId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
@@ -385,7 +385,7 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
             'params' => array(
                 'TerminalModelId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(
@@ -446,7 +446,7 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                 ),
                 'TerminalModelId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'name' => array(

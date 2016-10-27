@@ -228,8 +228,8 @@ class Rest_RoutingPatternsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name_en", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="name_es", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="[ml]")
-     * @ApiParams(name="description_en", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="description_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description_en", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="description_es", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="regExp", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
@@ -271,8 +271,8 @@ class Rest_RoutingPatternsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name_en", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="name_es", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="[ml]")
-     * @ApiParams(name="description_en", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="description_es", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description_en", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="description_es", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="regExp", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -381,12 +381,12 @@ class Rest_RoutingPatternsController extends Iron_Controller_Rest_BaseController
                 ),
                 'description_en' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'description_es' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'regExp' => array(
@@ -422,12 +422,12 @@ class Rest_RoutingPatternsController extends Iron_Controller_Rest_BaseController
                 ),
                 'description_en' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'description_es' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'regExp' => array(
