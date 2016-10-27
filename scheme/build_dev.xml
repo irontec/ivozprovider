@@ -58,7 +58,7 @@
 	<target name="generate-yaml">
 		<exec command="/usr/bin/php klear-yaml-generator.php -a ${env.PWD}/${application.path} -e ${application.env}" dir="${modelGenerator.path}" />
 	</target>
-	<target name="run-generators" depends="generate-models,generate-yaml">
+	<target name="run-generators" depends="generate-models,generate-yaml,generate-rest-controllers">
 	</target>
 	<target name="migrate" depends="first-pass-migrate">
 	</target>

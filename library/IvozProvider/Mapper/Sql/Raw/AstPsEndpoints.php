@@ -65,8 +65,6 @@ class AstPsEndpoints extends MapperAbstract
                 'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
                 'outbound_proxy' => $model->getOutboundProxy(),
-                'trust_id_inbound' => $model->getTrustIdInbound(),
-                'trust_id_outbound' => $model->getTrustIdOutbound(),
             );
         } else {
             $result = array();
@@ -580,9 +578,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendPai($data['send_pai'])
                   ->setSubscribecontext($data['subscribecontext'])
                   ->set100rel($data['100rel'])
-                  ->setOutboundProxy($data['outbound_proxy'])
-                  ->setTrustIdInbound($data['trust_id_inbound'])
-                  ->setTrustIdOutbound($data['trust_id_outbound']);
+                  ->setOutboundProxy($data['outbound_proxy']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setSorceryId($data->{'sorcery_id'})
@@ -600,9 +596,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendPai($data->{'send_pai'})
                   ->setSubscribecontext($data->{'subscribecontext'})
                   ->set100rel($data->{'100rel'})
-                  ->setOutboundProxy($data->{'outbound_proxy'})
-                  ->setTrustIdInbound($data->{'trust_id_inbound'})
-                  ->setTrustIdOutbound($data->{'trust_id_outbound'});
+                  ->setOutboundProxy($data->{'outbound_proxy'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
             $entry->setId($data->getId())
@@ -621,9 +615,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setSendPai($data->getSendPai())
                   ->setSubscribecontext($data->getSubscribecontext())
                   ->set100rel($data->get100rel())
-                  ->setOutboundProxy($data->getOutboundProxy())
-                  ->setTrustIdInbound($data->getTrustIdInbound())
-                  ->setTrustIdOutbound($data->getTrustIdOutbound());
+                  ->setOutboundProxy($data->getOutboundProxy());
 
         }
 
