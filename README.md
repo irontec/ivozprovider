@@ -36,12 +36,12 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
 
 And [many others](https://ironart3mis.github.io/ivozprovider/en/intro/what_is_inside.html) open source projects.
 
-Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standlone installation).
+Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
 ![scaling](portals/public/images/horizontalscaling.png)
 
 #### Cloud Service
-IvozProvider is designed to work directly from The Internet. Although it can be used in local enviromnets, being exposed to the public network [has it's advantages](https://ironart3mis.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://ironart3mis.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
 
 ## Installation
 
