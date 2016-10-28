@@ -71,8 +71,8 @@ You can browse online documentation in different formats:
 Feel free to subscribe to ivozprovider mailing lists for users or developers for any question
 or suggestion.
 
- - users@lists-ivozprovider.irontec.com
- - dev@list-ivozproivder.irontec.com
+ - [users@lists-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/users)
+ - [dev@list-ivozproivder.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/users)
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
 
