@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include TerminalsList.yaml
+#include conf.d/terminalManufacturersHelp.yaml:
 
 production: 
   main: 
@@ -8,6 +9,7 @@ production:
     defaultScreen: terminalModelsList_screen
   screens: &terminalModels_screensLink
     terminalModelsList_screen: &terminalModelsList_screenLink 
+      <<: *terminalManufacturersHelp
       controller: list
       pagination: 
         items: 25
@@ -41,6 +43,7 @@ production:
         dialogs: 
           terminalModelsDel_dialog: true
     terminalModelsNew_screen: &terminalModelsNew_screenLink 
+      <<: *terminalManufacturersHelp
       <<: *TerminalModels
       controller: new
       class: ui-silk-add
@@ -53,6 +56,7 @@ production:
         order:
           <<: *terminalModels_orderLink
     terminalModelsEdit_screen: &terminalModelsEdit_screenLink 
+      <<: *terminalManufacturersHelp
       <<: *TerminalModels
       controller: edit
       class: ui-silk-pencil

@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include TerminalModelsList.yaml
+#include conf.d/terminalManufacturersHelp.yaml:
 production: 
   main: 
     module: klearMatrix
@@ -28,6 +29,7 @@ production:
           terminalManufacturersNew_screen: true
         dialogs: 
           terminalManufacturersDel_dialog: true
+      <<: *terminalManufacturersHelp
     terminalManufacturersNew_screen: &terminalManufacturersNew_screenLink 
       <<: *TerminalManufacturers
       controller: new
@@ -36,12 +38,14 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1))
       shortcutOption: N
+      <<: *terminalManufacturersHelp
     terminalManufacturersEdit_screen: &terminalManufacturersEdit_screenLink 
       <<: *TerminalManufacturers
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 1), "[format| (%item%)]")
+      <<: *terminalManufacturersHelp
     
     #TerminalModels
     <<: *terminalModels_screensLink
