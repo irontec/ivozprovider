@@ -20,3 +20,5 @@ userweb/app/styles/main.css.map
 userweb/app/styles/main.css
 doc/html/*
 doc/doctrees/
+kamailio/users/config/kamailio-selfsigned.key
+kamailio/trunks/config/kamailio-selfsigned.key
