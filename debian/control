@@ -91,6 +91,7 @@ Depends: ivozprovider-profile-common,
     supervisor,
     libav-tools,
     sox,
+    redis-server,
     libsox-fmt-mp3
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portal System Profile
