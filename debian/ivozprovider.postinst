@@ -75,6 +75,13 @@ function setup_rtpproxy()
     sed -i -r "s/(AUDIO_SOCK *= *).*/\1$RET/" /etc/default/rtpproxy
 }
 
+function setup_rtpengine()
+{
+    db_get ivozprovider/users_address       || true
+    USERS_ADDRESS=$RET
+    # Update rtpengine listen address
+    sed -i -r "s/(IP *= *).*/\1$RET/" /etc/default/rtpengine
+}
 
 function start_services()
 {
@@ -112,6 +119,7 @@ if [ "$1" == "configure" ] || [ -z "$2" ]; then
     setup_proxies
     # Setu Media relay address
     setup_rtpproxy
+    setup_rtpengine
     # Setup pbx system
     setup_pbx
     # Restart services
