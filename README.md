@@ -34,20 +34,20 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
    - Provides database and shared storage for the rest of machines
    - Powered by [MySQL 5.5 Server](http://www.mysql.com/)
 
-And [many others](https://ivozprovider.github.io/ivozprovider/en/intro/what_is_inside.html) open source projects.
+And [many others](https://irontec.github.io/ivozprovider/en/intro/what_is_inside.html) open source projects.
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
 ![scaling](portals/public/images/horizontalscaling.png)
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://ivozprovider.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
 
 ## Installation
 
-There are [several ways](https://ivozprovider.github.io/ivozprovider/en/installation) to install IvozProvider.
+There are [several ways](https://irontec.github.io/ivozprovider/en/installation) to install IvozProvider.
 
-If you want to test an [standlone](https://ivozprovider.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
+If you want to test an [standlone](https://irontec.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
 
 
 | Version  | 64 bits  | 32 bits |
@@ -62,8 +62,8 @@ You can browse online documentation in different formats:
 
 | Language | HTML | LaTeX | PDF | EPUB |
 |----------|:----:|:-----:|:---:|:----:|
-| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://ivozprovider.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ivozprovider.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ivozprovider.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ivozprovider.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://ivozprovider.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis-es.epub) |
-| English  | [![badge html](portals/public/images/doc-html-green.png)](https://ivozprovider.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://ivozprovider.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://ivozprovider.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://ivozprovider.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://ivozprovider.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis-en.epub) |
+| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis-es.epub) |
+| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis-en.epub) |
 
 
 ## Feedback & Questions
