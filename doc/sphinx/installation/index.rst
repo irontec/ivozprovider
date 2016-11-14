@@ -1,5 +1,5 @@
 #######################
-[S] Instalación inicial
+Instalación inicial
 #######################
 
 .. toctree::
@@ -8,5 +8,5 @@
     install_types
     requirements
     debian_install
-    docker_install
+    cd_install
 

@@ -26,6 +26,8 @@ Añadimos la clave publica del repositorio:
 
     wget http://packages.irontec.com/public.key -q -O - | apt-key add -
 
+.. _instalando-paquete-virtual:
+
 ********************************************************
 Instalar el paquete del rol
 ********************************************************
