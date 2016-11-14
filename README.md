@@ -50,10 +50,10 @@ There are [several ways](https://ivozprovider.github.io/ivozprovider/en/installa
 If you want to test an [standlone](https://ivozprovider.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
 
 
-| Version  | 64 bits  | 32 bits | VMKD image |
-|----------|:--------:|:-------:|:----------:|
-|oasis 1.0 (stable) | [![iso torrent](portals/public/images/iso-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64-iso.torrent) [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.iso)| [![iso torrent](portals/public/images/iso-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-i386-iso.torrent) [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-i386.iso)| [![vmkd torrent](portals/public/images/vmkd-torrent-blue.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64-vmkd.torrent) [![vmkd http](portals/public/images/vmkd-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.0-oasis-amd64.vmkd)|
-|oasis 1.1 (nightly-build) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.1-oasis-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.1-oasis-nightly-amd64.iso)| [![vmkd http](portals/public/images/vmkd-http-green.png)](http://daily.ivozprovider.irontec.com/torrents/ivozprovider-1.1-oasis-nightly-amd64.vmkd)|
+| Version  | 64 bits  | 32 bits |
+|----------|:--------:|:-------:|
+|oasis 1.0 (stable) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.0-oasis-i386.iso)|
+|oasis 1.1 (nightly-build) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-nightly-i386.iso)|
 
 
 ## Documentation
