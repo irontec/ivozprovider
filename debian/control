@@ -20,7 +20,8 @@ Depends: debconf, po-debconf,
     ivozprovider-profile-portal,
     ivozprovider-kamailio-users,
     ivozprovider-kamailio-trunks,
-    ivozprovider-rtpproxy
+    ivozprovider-rtpproxy,
+    rtpengine
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Virtual standalone package
  .
@@ -112,6 +113,7 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-tls-modules,
         ivozprovider-kamailio-xml-modules,
         ivozprovider-kamailio-websocket-modules,
+        ivozprovider-kamailio-redis-modules,
         ivozprovider-kamailio-trunks,
         ivozprovider-kamailio-users
 Homepage: http://www.irontec.com
