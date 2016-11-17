@@ -27,11 +27,11 @@ function setup_mysql()
 
     # Change database password
     db_get ivozprovider/mysql_password      || true
-    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
-    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
-    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
-    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
-    /usr/bin/mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
+    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "FLUSH PRIVILEGES;"
 
 }
 
