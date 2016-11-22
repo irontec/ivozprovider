@@ -55,6 +55,19 @@ production:
             template: '%name%'
           order: name_${lang}
         'null': _("Unasigned")
+    outgoingRoutingId: 
+      title: _('Outgoingroutingid')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
+          fieldName: 
+            fields: 
+              - id
+            template: '%id%'
+          order: id
 staging: 
   _extends: production
 testing: 

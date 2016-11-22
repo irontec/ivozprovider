@@ -88,25 +88,13 @@ class PeerServers extends Raw\PeerServers
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-
-        // Si el peerContract de este peerServer se utiliza en algun OutgoingRouting, update LCR
-        if ($isNew) {
-            $outgoingRoutings = $model->getPeeringContract()->getOutgoingRouting();
-            $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
-
-            foreach ($outgoingRoutings as $outgoingRouting) {
-                $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
-            }
-        }
-
-        // Create/Edit LCR Gateway for this PeerServer
-        $lcrGatewayMapper = new \IvozProvider\Mapper\Sql\LcrGateways();
-        $lcrGateway = $lcrGatewayMapper->findOneByField('peerServerId', $model->getPrimaryKey());
-
+        // Update LCR tables
+        $lcrGateway = $model->getLcrGateway();
         if (is_null($lcrGateway)) {
             $lcrGateway = new \IvozProvider\Model\LcrGateways();
         }
 
+        // Update/Create LcrGateway for this PeerServer
         $lcrGateway->setGwName($model->getName())
                    ->setIp($model->getIp())
                    ->setHostname($model->getHostname())
@@ -121,6 +109,15 @@ class PeerServers extends Raw\PeerServers
                    ->setPeerServerId($model->getId())
                    ->save();
 
+        if ($isNew) {
+            $outgoingRoutings = $model->getPeeringContract()->getOutgoingRouting();
+            $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
+
+            foreach ($outgoingRoutings as $outgoingRouting) {
+                $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
+            }
+        }
+
         try {
             $this->_sendXmlRcp();
         } catch (\Exception $e) {
@@ -133,13 +130,18 @@ class PeerServers extends Raw\PeerServers
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
+        // If any Outgoing Routing used this PeerServer, reload lcr module
+        $outgoingRoutings = $model->getPeeringContract()->getOutgoingRouting();
+
         $response = parent::delete($model);
 
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>LCR Gateways may have been reloaded.</p>";
-            throw new \Exception($message);
+        if (!empty($outgoingRoutings)) {
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>LCR Gateways may have been reloaded.</p>";
+                throw new \Exception($message);
+            }
         }
 
         return $response;

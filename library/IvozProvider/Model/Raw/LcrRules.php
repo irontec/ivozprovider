@@ -93,6 +93,13 @@ class LcrRules extends ModelAbstract
      */
     protected $_routingPatternId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_outgoingRoutingId;
+
 
     /**
      * Parent relation LcrRules_ibfk_4
@@ -100,6 +107,13 @@ class LcrRules extends ModelAbstract
      * @var \IvozProvider\Model\Raw\RoutingPatterns
      */
     protected $_RoutingPattern;
+
+    /**
+     * Parent relation LcrRules_ibfk_7
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    protected $_OutgoingRouting;
 
 
     /**
@@ -121,6 +135,7 @@ class LcrRules extends ModelAbstract
         'tag'=>'tag',
         'description'=>'description',
         'routingPatternId'=>'routingPatternId',
+        'outgoingRoutingId'=>'outgoingRoutingId',
     );
 
     /**
@@ -140,6 +155,10 @@ class LcrRules extends ModelAbstract
             'LcrRulesIbfk4'=> array(
                     'property' => 'RoutingPattern',
                     'table_name' => 'RoutingPatterns',
+                ),
+            'LcrRulesIbfk7'=> array(
+                    'property' => 'OutgoingRouting',
+                    'table_name' => 'OutgoingRouting',
                 ),
         ));
 
@@ -538,6 +557,43 @@ class LcrRules extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setOutgoingRoutingId($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_outgoingRoutingId != $data) {
+            $this->_logChange('outgoingRoutingId', $this->_outgoingRoutingId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingRoutingId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingRoutingId = (int) $data;
+
+        } else {
+            $this->_outgoingRoutingId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingRoutingId
+     *
+     * @return int
+     */
+    public function getOutgoingRoutingId()
+    {
+        return $this->_outgoingRoutingId;
+    }
+
+    /**
      * Sets parent relation RoutingPattern
      *
      * @param \IvozProvider\Model\Raw\RoutingPatterns $data
@@ -586,6 +642,57 @@ class LcrRules extends ModelAbstract
         }
 
         return $this->_RoutingPattern;
+    }
+
+    /**
+     * Sets parent relation OutgoingRouting
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingRouting $data
+     * @return \IvozProvider\Model\Raw\LcrRules
+     */
+    public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $data)
+    {
+        $this->_OutgoingRouting = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingRoutingId($primaryKey);
+        }
+
+        $this->_setLoaded('LcrRulesIbfk7');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingRouting
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk7';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingRouting = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingRouting;
     }
 
     /**

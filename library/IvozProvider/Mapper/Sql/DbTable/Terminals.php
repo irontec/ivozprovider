@@ -40,14 +40,14 @@ class Terminals extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'TerminalsIbfk1' => array(
-            'columns' => 'TerminalModelId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\TerminalModels',
-            'refColumns' => 'id'
-        ),
         'TerminalsCompanyIdIbfk2' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'TerminalsIbfk1' => array(
+            'columns' => 'TerminalModelId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\TerminalModels',
             'refColumns' => 'id'
         )
     );

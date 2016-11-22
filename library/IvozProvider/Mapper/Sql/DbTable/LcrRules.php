@@ -44,6 +44,11 @@ class LcrRules extends TableAbstract
             'columns' => 'routingPatternId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
             'refColumns' => 'id'
+        ),
+        'LcrRulesIbfk7' => array(
+            'columns' => 'outgoingRoutingId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -212,6 +217,23 @@ class LcrRules extends TableAbstract
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'outgoingRoutingId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'LcrRules',
+	    'COLUMN_NAME' => 'outgoingRoutingId',
+	    'COLUMN_POSITION' => 11,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

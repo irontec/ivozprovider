@@ -461,6 +461,20 @@ class OutgoingRouting extends MapperAbstract
                     }
                 }
 
+                if ($model->getLcrRules(null, null, true) !== null) {
+                    $lcrRules = $model->getLcrRules();
+
+                    if (!is_array($lcrRules)) {
+
+                        $lcrRules = array($lcrRules);
+                    }
+
+                    foreach ($lcrRules as $value) {
+                        $value->setOutgoingRoutingId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {

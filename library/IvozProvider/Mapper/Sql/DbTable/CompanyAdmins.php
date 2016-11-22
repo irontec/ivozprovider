@@ -40,14 +40,14 @@ class CompanyAdmins extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'CompanyAdminsIbfk2' => array(
-            'columns' => 'timezoneId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
-            'refColumns' => 'id'
-        ),
         'CompanyAdminsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'CompanyAdminsIbfk2' => array(
+            'columns' => 'timezoneId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
         )
     );

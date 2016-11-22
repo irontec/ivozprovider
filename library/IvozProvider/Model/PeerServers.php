@@ -32,4 +32,10 @@ class PeerServers extends Raw\PeerServers
     {
         return $this->getSendPAI() + ($this->getSendRPID()*2);
     }
+
+    public function getLcrGateway()
+    {
+        $lcrGateways = $this->getLcrGateways();
+        return array_shift($lcrGateways);
+    }
 }

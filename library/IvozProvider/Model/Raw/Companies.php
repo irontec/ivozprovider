@@ -165,13 +165,6 @@ class Companies extends ModelAbstract
 
 
     /**
-     * Parent relation Companies_ibfk_12
-     *
-     * @var \IvozProvider\Model\Raw\Timezones
-     */
-    protected $_DefaultTimezone;
-
-    /**
      * Parent relation Companies_ibfk_10
      *
      * @var \IvozProvider\Model\Raw\Languages
@@ -184,6 +177,13 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\MediaRelaySets
      */
     protected $_MediaRelaySets;
+
+    /**
+     * Parent relation Companies_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Timezones
+     */
+    protected $_DefaultTimezone;
 
     /**
      * Parent relation Companies_ibfk_4
@@ -468,10 +468,6 @@ class Companies extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'CompaniesIbfk12'=> array(
-                    'property' => 'DefaultTimezone',
-                    'table_name' => 'Timezones',
-                ),
             'CompaniesIbfk10'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
@@ -479,6 +475,10 @@ class Companies extends ModelAbstract
             'CompaniesIbfk11'=> array(
                     'property' => 'MediaRelaySets',
                     'table_name' => 'MediaRelaySets',
+                ),
+            'CompaniesIbfk12'=> array(
+                    'property' => 'DefaultTimezone',
+                    'table_name' => 'Timezones',
                 ),
             'CompaniesIbfk4'=> array(
                     'property' => 'Brand',
@@ -1360,57 +1360,6 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets parent relation DefaultTimezone
-     *
-     * @param \IvozProvider\Model\Raw\Timezones $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setDefaultTimezone(\IvozProvider\Model\Raw\Timezones $data)
-    {
-        $this->_DefaultTimezone = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setDefaultTimezoneId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk12');
-        return $this;
-    }
-
-    /**
-     * Gets parent DefaultTimezone
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Timezones
-     */
-    public function getDefaultTimezone($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk12';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_DefaultTimezone = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_DefaultTimezone;
-    }
-
-    /**
      * Sets parent relation Language
      *
      * @param \IvozProvider\Model\Raw\Languages $data
@@ -1510,6 +1459,57 @@ class Companies extends ModelAbstract
         }
 
         return $this->_MediaRelaySets;
+    }
+
+    /**
+     * Sets parent relation DefaultTimezone
+     *
+     * @param \IvozProvider\Model\Raw\Timezones $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDefaultTimezone(\IvozProvider\Model\Raw\Timezones $data)
+    {
+        $this->_DefaultTimezone = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setDefaultTimezoneId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent DefaultTimezone
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Timezones
+     */
+    public function getDefaultTimezone($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_DefaultTimezone = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_DefaultTimezone;
     }
 
     /**

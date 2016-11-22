@@ -30,23 +30,23 @@ class RoutingPatternGroups extends Raw\RoutingPatternGroups
 
         $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
 
+        // If any LcrRule uses this PatternGroup, update accordingly
         if ($isNotNew) {
-            // If any LcrRule uses this PatternGroup, update accordingly
             $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
-            $outgoingRoutings = $outgoingRoutingMapper->findByField("routingPatternGroupId", $pk);
+            $outgoingRoutings = $model->getOutgoingRouting();
 
             if (!empty($outgoingRoutings)) {
                 foreach ($outgoingRoutings as $outgoingRouting) {
                     $outgoingRoutingMapper->updateLCRPerOutgoingRouting($outgoingRouting);
                 }
             }
-        }
 
-        try {
-            $this->_sendXmlRcp();
-        } catch (\Exception $e) {
-            $message = $e->getMessage()."<p>LCR module may have been reloaded.</p>";
-            throw new \Exception($message);
+            try {
+                $this->_sendXmlRcp();
+            } catch (\Exception $e) {
+                $message = $e->getMessage()."<p>LCR module may have been reloaded.</p>";
+                throw new \Exception($message);
+            }
         }
 
         return $pk;
@@ -55,17 +55,11 @@ class RoutingPatternGroups extends Raw\RoutingPatternGroups
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
         // If any LcrRule uses this PatternGroup, update accordingly
-        $outgoingRoutingMapper = new \IvozProvider\Mapper\Sql\OutgoingRouting();
-        $outgoingRoutings = $outgoingRoutingMapper->findByField("routingPatternGroupId", $model->getPrimaryKey());
-
-        $isUsed = 0;
-        if (!empty($outgoingRoutings)) {
-            $isUsed = 1;
-        }
+        $outgoingRoutings = $model->getOutgoingRouting();
 
         $response = parent::delete($model);
 
-        if ($isUsed) {
+        if (!empty($outgoingRoutings)) {
             try {
                 $this->_sendXmlRcp();
             } catch (\Exception $e) {

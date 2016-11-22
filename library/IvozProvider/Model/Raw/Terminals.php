@@ -109,18 +109,18 @@ class Terminals extends ModelAbstract
 
 
     /**
-     * Parent relation Terminals_ibfk_1
-     *
-     * @var \IvozProvider\Model\Raw\TerminalModels
-     */
-    protected $_TerminalModel;
-
-    /**
      * Parent relation Terminals_CompanyId_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
+
+    /**
+     * Parent relation Terminals_ibfk_1
+     *
+     * @var \IvozProvider\Model\Raw\TerminalModels
+     */
+    protected $_TerminalModel;
 
 
     /**
@@ -169,13 +169,13 @@ class Terminals extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'TerminalsIbfk1'=> array(
-                    'property' => 'TerminalModel',
-                    'table_name' => 'TerminalModels',
-                ),
             'TerminalsCompanyIdIbfk2'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
+                ),
+            'TerminalsIbfk1'=> array(
+                    'property' => 'TerminalModel',
+                    'table_name' => 'TerminalModels',
                 ),
         ));
 
@@ -634,57 +634,6 @@ class Terminals extends ModelAbstract
     }
 
     /**
-     * Sets parent relation TerminalModel
-     *
-     * @param \IvozProvider\Model\Raw\TerminalModels $data
-     * @return \IvozProvider\Model\Raw\Terminals
-     */
-    public function setTerminalModel(\IvozProvider\Model\Raw\TerminalModels $data)
-    {
-        $this->_TerminalModel = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setTerminalModelId($primaryKey);
-        }
-
-        $this->_setLoaded('TerminalsIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets parent TerminalModel
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\TerminalModels
-     */
-    public function getTerminalModel($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'TerminalsIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_TerminalModel = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_TerminalModel;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -733,6 +682,57 @@ class Terminals extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets parent relation TerminalModel
+     *
+     * @param \IvozProvider\Model\Raw\TerminalModels $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setTerminalModel(\IvozProvider\Model\Raw\TerminalModels $data)
+    {
+        $this->_TerminalModel = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTerminalModelId($primaryKey);
+        }
+
+        $this->_setLoaded('TerminalsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets parent TerminalModel
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\TerminalModels
+     */
+    public function getTerminalModel($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'TerminalsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_TerminalModel = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_TerminalModel;
     }
 
     /**

@@ -67,7 +67,8 @@ class OutgoingRouting extends TableAbstract
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRuleTargets',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\LcrRules'
     );
     protected $_metadata = array (
 	  'id' => 

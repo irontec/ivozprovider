@@ -40,11 +40,6 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'CompaniesIbfk12' => array(
-            'columns' => 'defaultTimezoneId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
-            'refColumns' => 'id'
-        ),
         'CompaniesIbfk10' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
@@ -53,6 +48,11 @@ class Companies extends TableAbstract
         'CompaniesIbfk11' => array(
             'columns' => 'mediaRelaySetsId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\MediaRelaySets',
+            'refColumns' => 'id'
+        ),
+        'CompaniesIbfk12' => array(
+            'columns' => 'defaultTimezoneId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
         ),
         'CompaniesIbfk4' => array(

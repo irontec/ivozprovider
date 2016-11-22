@@ -28,6 +28,19 @@ class LcrRules extends Raw\LcrRules
     {
     }
 
+    public function setOutgoingRouting(\IvozProvider\Model\Raw\OutgoingRouting $outgoingRouting)
+    {
+        $this->setOutgoingRoutingId($outgoingRouting->getPrimaryKey());
+
+        if (!is_null($outgoingRouting->getCompany())) {
+            $this->setFromUri(sprintf("^b%dc%d$", $outgoingRouting->getBrandId(), $outgoingRouting->getCompanyId()));
+        } else {
+            $this->setFromUri(sprintf("^b%dc[0-9]+$", $outgoingRouting->getBrandId()));
+        }
+
+        return $this;
+    }
+
     public function setCondition($regexp)
     {
         if (is_numeric($regexp) || $regexp == 'fax') {

@@ -26,14 +26,10 @@ class RoutingPatterns extends Raw\RoutingPatterns
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
-        $isNew = !$model->getPrimaryKey();
-
         $pk = parent::_save($model, true, $useTransaction, $transactionTag, $forceInsert);
 
         // If any LcrRule uses this Pattern, update accordingly
-        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
-        $lcrRules = $lcrRulesMapper->findByField("routingPatternId", $pk);
-
+        $lcrRules = $model->getLcrRules();
         if (!empty($lcrRules)) {
             foreach ($lcrRules as $lcrRule) {
                 $lcrRule->setTag($model->getName())
@@ -50,36 +46,13 @@ class RoutingPatterns extends Raw\RoutingPatterns
             }
         }
 
-        if (!$isNew) {
-            // Edit LCR Rules for this RoutingPattern (if exists)
-            $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
-            $lcrRules = $lcrRulesMapper->fetchList("from_uri IS NULL AND routingPatternId=" . $model->getPrimaryKey());
-            if (!empty($lcrRules)) {
-                $lcrRule = $lcrRules[0];
-
-                $lcrRule->setTag($model->getName())
-                        ->setDescription($model->getDescription())
-                        ->setRoutingPatternId($model->getId())
-                        ->setCondition($model->getRegExp())
-                        ->save();
-
-                try {
-                    $this->_sendXmlRcp();
-                } catch (\Exception $e) {
-                    $message = $e->getMessage()."<p>LCR module may have been reloaded.</p>";
-                    throw new \Exception($message);
-                }
-            }
-        }
-
         return $pk;
     }
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
         // If any LcrRule uses this Pattern, lcr.reload
-        $lcrRulesMapper = new \IvozProvider\Mapper\Sql\LcrRules();
-        $lcrRules = $lcrRulesMapper->findByField("routingPatternId", $model->getPrimaryKey());
+        $lcrRules = $model->getLcrRules();
 
         $response = parent::delete($model);
 

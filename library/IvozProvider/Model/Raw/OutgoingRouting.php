@@ -136,6 +136,14 @@ class OutgoingRouting extends ModelAbstract
      */
     protected $_LcrRuleTargets;
 
+    /**
+     * Dependent relation LcrRules_ibfk_7
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\LcrRules[]
+     */
+    protected $_LcrRules;
+
     protected $_columnsList = array(
         'id'=>'id',
         'type'=>'type',
@@ -189,10 +197,15 @@ class OutgoingRouting extends ModelAbstract
                     'property' => 'LcrRuleTargets',
                     'table_name' => 'LcrRuleTargets',
                 ),
+            'LcrRulesIbfk7' => array(
+                    'property' => 'LcrRules',
+                    'table_name' => 'LcrRules',
+                ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
-            'LcrRuleTargets_ibfk_4'
+            'LcrRuleTargets_ibfk_4',
+            'LcrRules_ibfk_7'
         ));
 
 
@@ -893,6 +906,96 @@ class OutgoingRouting extends ModelAbstract
         }
 
         return $this->_LcrRuleTargets;
+    }
+
+    /**
+     * Sets dependent relations LcrRules_ibfk_7
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\LcrRules
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function setLcrRules(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_LcrRules === null) {
+
+                $this->getLcrRules();
+            }
+
+            $oldRelations = $this->_LcrRules;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_LcrRules = array();
+
+        foreach ($data as $object) {
+            $this->addLcrRules($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations LcrRules_ibfk_7
+     *
+     * @param \IvozProvider\Model\Raw\LcrRules $data
+     * @return \IvozProvider\Model\Raw\OutgoingRouting
+     */
+    public function addLcrRules(\IvozProvider\Model\Raw\LcrRules $data)
+    {
+        $this->_LcrRules[] = $data;
+        $this->_setLoaded('LcrRulesIbfk7');
+        return $this;
+    }
+
+    /**
+     * Gets dependent LcrRules_ibfk_7
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\LcrRules
+     */
+    public function getLcrRules($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'LcrRulesIbfk7';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_LcrRules = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_LcrRules;
     }
 
     /**

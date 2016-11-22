@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include LcrRuleTargetsList.yaml
+#include LcrRulesList.yaml
 
 
 production: 
@@ -21,6 +22,7 @@ production:
           screens: 
             outgoingRoutingEdit_screen: true
             lcrRuleTargetsList_screen: true
+            lcrRulesList_screen: true
           dialogs: 
             outgoingRoutingDel_dialog: true
           default: outgoingRoutingEdit_screen
@@ -62,6 +64,19 @@ production:
       <<: *lcrRuleTargetsEdit_screenLink
       filterField: outgoingRoutingId
 
+    #lcrRules: 
+    lcrRulesList_screen: 
+      <<: *lcrRulesList_screenLink
+      filterField: outgoingRoutingId
+      parentOptionCustomizer: 
+        - recordCount
+    lcrRulesNew_screen: 
+      <<: *lcrRulesNew_screenLink
+      filterField: outgoingRoutingId
+    lcrRulesEdit_screen: 
+      <<: *lcrRulesEdit_screenLink
+      filterField: outgoingRoutingId
+
   dialogs: &outgoingRouting_dialogsLink 
     outgoingRoutingDel_dialog: &outgoingRoutingDel_dialogLink 
       <<: *OutgoingRouting
@@ -75,6 +90,8 @@ production:
       labelOnList: 1
   # lcrRuleTargets dialogs: 
     <<: *lcrRuleTargets_dialogsLink
+  # lcrRules dialogs: 
+    <<: *lcrRules_dialogsLink
 staging: 
   _extends: production
 testing: 

@@ -27,4 +27,16 @@ class RoutingPatternGroups extends Raw\RoutingPatternGroups
     public function init()
     {
     }
+
+    public function getRoutingPatterns()
+    {
+        $patterns = array();
+        $rels = $this->getRoutingPatternGroupsRelPatterns();
+
+        foreach ($rels as $rel) {
+            array_push($patterns, $rel->getRoutingPattern());
+        }
+
+        return $patterns;
+    }
 }

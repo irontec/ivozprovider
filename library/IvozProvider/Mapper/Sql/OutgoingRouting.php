@@ -53,10 +53,10 @@ class OutgoingRouting extends Raw\OutgoingRouting
 
     public function updateLCRPerOutgoingRouting($outgoingRouting)
     {
-        // If edit, delete everything and fresh-start (claramente mejorable)
-        $lcrRuleTargets = $outgoingRouting->getLcrRuleTargets("outgoingRoutingId=".$outgoingRouting->getPrimaryKey());
-        foreach ($lcrRuleTargets as $lcrRuleTarget) {
-            $lcrRuleTarget->delete();
+        // If edit, delete everything and fresh-start
+        $lcrRules = $outgoingRouting->getLcrRules();
+        foreach ($lcrRules as $lcrRule) {
+            $lcrRule->delete();
         }
 
         $peeringContract = $outgoingRouting->getPeeringContract();
@@ -71,21 +71,21 @@ class OutgoingRouting extends Raw\OutgoingRouting
 
         $lcrGateways = array();
         foreach ($peerServers as $peerServer) {
-            $lcrGateways = array_merge($lcrGateways, $peerServer->getLcrGateways("peerServerId=".$peerServer->getId()));
+            $lcrGateways = array_merge($lcrGateways, $peerServer->getLcrGateways());
         }
 
         $lcrRules = array();
         // Create LcrRule for each RoutingPattern
         if ($outgoingRouting->getType() == 'group') {
-            foreach ($outgoingRouting->getRoutingPatternGroup()->getRoutingPatternGroupsRelPatterns() as $relPattern) {
-                $lcrRule = $this->_getLcrRulePerPattern($outgoingRouting, $relPattern->getRoutingPattern());
+            foreach ($outgoingRouting->getRoutingPatternGroup()->getRoutingPatterns() as $pattern) {
+                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $pattern);
                 array_push($lcrRules, $lcrRule);
             }
         } elseif ($outgoingRouting->getType() == 'pattern') {
-                $lcrRule = $this->_getLcrRulePerPattern($outgoingRouting, $outgoingRouting->getRoutingPattern());
+                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting, $outgoingRouting->getRoutingPattern());
                 array_push($lcrRules, $lcrRule);
         } elseif ($outgoingRouting->getType() == 'fax') {
-                $lcrRule = $this->_addLcrRuleForFax($outgoingRouting);
+                $lcrRule = $this->_addLcrRulePerPattern($outgoingRouting);
                 array_push($lcrRules, $lcrRule);
         } else {
             throw new \Exception("Incorrect Outgoing Routing Type");
@@ -118,13 +118,6 @@ class OutgoingRouting extends Raw\OutgoingRouting
         return $response;
     }
 
-    protected function _deleteRelated($mapper, $pk)
-    {
-        foreach ($mapper->findByField("outgoingRoutingId", $pk) as $item) {
-            $item->delete();
-        }
-    }
-
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
@@ -136,38 +129,24 @@ class OutgoingRouting extends Raw\OutgoingRouting
     }
 
 
-    protected function _getLcrRulePerPattern($model, $pattern)
-    {
-        if (!is_null($model->getCompany())) {
-            $lcrRule = $pattern->getCompanyLcrRulePerPattern($model->getCompany());
-        } else {
-            $lcrRule = $pattern->getGenericLcrRulePerPattern();
-        }
-
-        if (is_null($lcrRule)) {
-            $lcrRule = new \IvozProvider\Model\LcrRules();
-        }
-
-        if (!is_null($model->getCompany())) {
-            $from_uri = '^' . $model->getCompany()->getDomain() . '$';
-            $lcrRule->setFromUri($from_uri);
-        }
-
-        $lcrRule->setTag($pattern->getName())
-                ->setDescription($pattern->getDescription())
-                ->setRoutingPatternId($pattern->getId())
-                ->setCondition($pattern->getRegExp())
-                ->save();
-
-        return $lcrRule;
-    }
-
-    protected function _addLcrRuleForFax($model)
+    protected function _addLcrRulePerPattern($model, $pattern=null)
     {
         $lcrRule = new \IvozProvider\Model\LcrRules();
-        $lcrRule->setTag("fax")
-                ->setDescription("Special route for fax")
-                ->setCondition("fax")
+        if (is_null($pattern)) {
+            // Fax route
+            $lcrRule->setTag("fax")
+                    ->setDescription("Special route for fax")
+                    ->setCondition("fax");
+        } else {
+            // Non-fax route
+            $lcrRule->setTag($pattern->getName())
+                    ->setDescription($pattern->getDescription())
+                    ->setCondition($pattern->getRegExp())
+                    ->setRoutingPatternId($pattern->getId());
+        }
+
+        // Setting Outgoing Routing also sets from_uri (see model)
+        $lcrRule->setOutgoingRouting($model)
                 ->save();
 
         return $lcrRule;
