@@ -34,7 +34,7 @@ production:
         data: inline
         values: 
           '__null__':
-            title: _("Unasigned")
+            title: _("Unassigned")
             visualFilter:
               show: [ ]
               hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId" ]
@@ -89,7 +89,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     IVRCustomId: 
       title: _('I v r custom id')
       type: select
@@ -104,7 +104,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     huntGroupId: 
       title: _('Hunt group id')
       type: select
@@ -119,7 +119,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     conferenceRoomId:
       title: _('Conference room id')
       type: select
@@ -134,7 +134,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     userId:
       title: _('User')
       type: select
@@ -150,7 +150,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     target:
       title: _('Target')
       type: ghost

@@ -33,7 +33,7 @@ production:
               - domain
             template: '%domain%'
           order: domain
-        'null': _("Unasigned")
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

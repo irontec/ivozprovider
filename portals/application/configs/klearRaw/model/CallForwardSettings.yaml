@@ -62,7 +62,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     voiceMailUserId: 
       title: _('Voicemailuserid')
       type: select
@@ -75,7 +75,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     noAnswerTimeout: 
       title: _('Noanswertimeout')
       type: number

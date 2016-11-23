@@ -32,7 +32,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     noAnswerLocutionId: 
       title: _('Noanswerlocutionid')
       type: select
@@ -45,7 +45,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     errorLocutionId: 
       title: _('Errorlocutionid')
       type: select
@@ -58,7 +58,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     successLocutionId: 
       title: _('Successlocutionid')
       type: select
@@ -71,7 +71,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     timeout: 
       title: _('Timeout')
       type: number
@@ -109,7 +109,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     timeoutVoiceMailUserId: 
       title: _('Timeoutvoicemailuserid')
       type: select
@@ -122,7 +122,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     errorTargetType: 
       title: _('Errortargettype')
       type: select
@@ -148,7 +148,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     errorVoiceMailUserId: 
       title: _('Errorvoicemailuserid')
       type: select
@@ -161,7 +161,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

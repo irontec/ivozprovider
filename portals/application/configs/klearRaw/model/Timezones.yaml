@@ -13,7 +13,7 @@ production:
               - code
             template: '%code%'
           order: code
-        'null': _("Unasigned")
+        'null': _("Unassigned")
       default: true
     tz: 
       title: _('Tz')

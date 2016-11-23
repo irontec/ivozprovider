@@ -19,7 +19,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     aors: 
       title: _('Aor')
       type: text

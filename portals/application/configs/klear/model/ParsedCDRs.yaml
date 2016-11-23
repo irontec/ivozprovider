@@ -117,7 +117,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     companyId: 
       title: _('Company id')
       type: select
@@ -130,7 +130,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     peeringContractId: 
       title: _('Peering contract id')
       type: select
@@ -143,7 +143,7 @@ production:
               - description
             template: '%description%'
           order: description
-        'null': _("Unasigned")
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

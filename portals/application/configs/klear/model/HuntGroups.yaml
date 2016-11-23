@@ -65,7 +65,7 @@ production:
         data: inline
         values:
           '__null__': 
-            title: _('unasigned')
+            title: _('Unassigned')
             visualFilter:
               hide: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
           'internal': 
@@ -80,7 +80,7 @@ production:
             title: _('both')
             visualFilter:
               show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
-        'null': _("Unasigned")          
+        'null': _("Unassigned")
     targetType: 
       title: _('Target type')
       type: select
@@ -126,7 +126,7 @@ production:
           order: number
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     voiceMailUserId: 
       title: _('User id')
       type: select
@@ -143,7 +143,7 @@ production:
             template: '%name% %lastname%'
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     nextUserPosition: 
       title: _('Next user position')
       type: number

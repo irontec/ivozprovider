@@ -78,7 +78,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     brandId: 
       title: _('Brand id')
       type: select
@@ -91,7 +91,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     asIden: 
       title: _('As iden')
       type: text
@@ -135,7 +135,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     externallyRated: 
       title: _('Externally rated')
       type: select
@@ -185,7 +185,7 @@ production:
               - name
             template: '%name%'
           order: name_${lang}
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     targetPatternId: 
       title: _('Target pattern')
       type: select
@@ -198,7 +198,7 @@ production:
               - name
             template: '%name%'
           order: name_${lang}
-        'null': _("Unasigned")
+        'null': _("Unassigned")
       decorators:
         autocomplete:
             command: targetPatternautocomplete_command
@@ -222,7 +222,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     srcIfInbound:
       title: _('Source')
       type: ghost

@@ -14,7 +14,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
@@ -78,7 +78,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     extensionId: 
       title: _('Screen Extension')
       type: select
@@ -92,7 +92,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outgoingDDIId: 
       title: _('Outgoing DDI')
       type: select
@@ -106,7 +106,7 @@ production:
               - DDI
             template: '%DDI%'
           order: DDI
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     callACLId: 
       title: _('Call ACL')
       type: select
@@ -120,7 +120,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     doNotDisturb: 
       title: _('Do not disturb')
       type: select
@@ -163,7 +163,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     exceptionBoosAssistantRegExp: 
       title: _('Exception boos assistant reg exp')
       type: text

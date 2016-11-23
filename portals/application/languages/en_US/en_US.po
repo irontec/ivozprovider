@@ -1009,7 +1009,7 @@ msgstr ""
 #: www/portals/application/configs/klear/model/HuntGroupCallForwardSettings.yaml:68
 #: www/portals/application/configs/klear/model/HuntGroupCallForwardSettings.yaml:82
 #: www/portals/application/configs/klear/model/Faxes.yaml:57
-msgid "Unasigned"
+msgid "Unassigned"
 msgstr ""
 
 #: www/portals/application/languages/common-strings.php:129
@@ -8445,7 +8445,7 @@ msgid "Voice mail user"
 msgstr ""
 
 #: www/portals/application/configs/klear/model/HuntGroups.yaml:66
-msgid "unasigned"
+msgid "unassigned"
 msgstr ""
 
 #: www/portals/application/configs/klear/model/KamTrunksUacreg.yaml:5

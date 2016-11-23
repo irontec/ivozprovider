@@ -56,7 +56,7 @@ production:
               - DDI
             template: '%DDI%'
           order: DDI
-        'null': _("Unasigned")
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

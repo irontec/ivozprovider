@@ -30,7 +30,7 @@ production:
       type: select
       source: 
         data: mapper
-        'null': _("Unasigned")
+        'null': _("Unassigned")
         config: 
           mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks
           filterClass: IvozProvider_Klear_Filter_Brand

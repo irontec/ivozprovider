@@ -90,7 +90,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     voiceMailUserId: 
       title: _('Voice mail user')
       type: select
@@ -106,7 +106,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     noAnswerTimeout: 
       title: _('No answer timeout')
       type: number

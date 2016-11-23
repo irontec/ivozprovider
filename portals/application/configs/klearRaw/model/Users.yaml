@@ -47,7 +47,7 @@ production:
               - tz
             template: '%tz%'
           order: tz
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     terminalId: 
       title: _('Terminalid')
       type: select
@@ -60,7 +60,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     extensionId: 
       title: _('Extensionid')
       type: select
@@ -73,7 +73,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outgoingDDIId: 
       title: _('Outgoingddiid')
       type: select
@@ -86,7 +86,7 @@ production:
               - DDI
             template: '%DDI%'
           order: DDI
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     callACLId: 
       title: _('Callaclid')
       type: select
@@ -99,7 +99,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     doNotDisturb: 
       title: _('Donotdisturb')
       type: select
@@ -134,7 +134,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     exceptionBoosAssistantRegExp: 
       title: _('Exceptionboosassistantregexp')
       type: text
@@ -221,7 +221,7 @@ production:
               - code
             template: '%code%'
           order: code
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     languageId: 
       title: _('Languageid')
       type: select
@@ -234,7 +234,7 @@ production:
               - iden
             template: '%iden%'
           order: iden
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     areaCode: 
       title: _('Areacode')
       type: text

@@ -70,7 +70,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     brandId: 
       title: _('Brandid')
       type: select
@@ -83,7 +83,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     asIden: 
       title: _('Asiden')
       type: text
@@ -173,7 +173,7 @@ production:
               - name
             template: '%name%'
           order: name_${lang}
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     pricingPlanName: 
       title: _('Pricingplanname')
       type: text
@@ -190,7 +190,7 @@ production:
               - name
             template: '%name%'
           order: name_${lang}
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     targetPatternName: 
       title: _('Targetpatternname')
       type: text
@@ -213,7 +213,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     direction: 
       title: _('Direction')
       type: select

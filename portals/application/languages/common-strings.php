@@ -125,7 +125,7 @@ _('No');
 _('Yes');
 _('Off');
 _('On');
-_('Unasigned');
+_('Unassigned');
 ngettext('Error', 'Errors', 1);
 _('Success');
 _('Fail');

@@ -24,7 +24,7 @@ production:
               - name
             template: '%name%'
           order: name_${lang}
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     routingPatternGroupId: 
       title: _('Routingpatterngroupid')
       type: select
@@ -37,7 +37,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     peeringContractId: 
       title: _('Peeringcontractid')
       type: select
@@ -75,7 +75,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     brandId: 
       title: _('Brandid')
       type: select

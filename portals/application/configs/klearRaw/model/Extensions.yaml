@@ -44,7 +44,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     IVRCustomId: 
       title: _('Ivrcustomid')
       type: select
@@ -57,7 +57,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     huntGroupId: 
       title: _('Huntgroupid')
       type: select
@@ -70,7 +70,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     conferenceRoomId: 
       title: _('Conferenceroomid')
       type: select
@@ -83,7 +83,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     userId: 
       title: _('Userid')
       type: select
@@ -96,7 +96,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     numberValue: 
       title: _('Numbervalue')
       type: text

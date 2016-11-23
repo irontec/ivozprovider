@@ -42,7 +42,7 @@ production:
               - name
             template: '%name%'
           order: encodedFileMimeType
-        'null': _("Unasigned")
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

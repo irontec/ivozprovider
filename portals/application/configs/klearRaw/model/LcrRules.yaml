@@ -54,7 +54,7 @@ production:
               - name
             template: '%name%'
           order: name_${lang}
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outgoingRoutingId: 
       title: _('Outgoingroutingid')
       type: select

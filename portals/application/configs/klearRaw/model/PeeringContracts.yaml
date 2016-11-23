@@ -37,7 +37,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     externallyRated: 
       title: _('Externallyrated')
       type: select

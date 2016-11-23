@@ -38,7 +38,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     companyId: 
       title: _('Companyid')
       type: select
@@ -51,7 +51,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text

@@ -13,7 +13,7 @@ production:
               - iden
             template: '%iden%'
           order: iden
-        'null': _("Unasigned")
+        'null': _("Unassigned")
       default: true
     name: 
       title: ngettext('Name', 'Names', 1)

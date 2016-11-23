@@ -35,7 +35,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     routeType: 
       title: _('Route type')
       type: select
@@ -122,7 +122,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     IVRCommonId: 
       title: _('I v r common id')
       type: select
@@ -137,7 +137,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     IVRCustomId: 
       title: _('I v r custom id')
       type: select
@@ -152,7 +152,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     huntGroupId: 
       title: _('Hunt group id')
       type: select
@@ -167,7 +167,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     faxId: 
       title: _('Fax id')
       type: select
@@ -182,7 +182,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     conferenceRoomId:
       title: _('Conference room id')
       type: select
@@ -197,7 +197,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     target:
       title: _('Target')
       type: ghost

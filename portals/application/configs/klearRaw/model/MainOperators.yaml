@@ -40,7 +40,7 @@ production:
               - tz
             template: '%tz%'
           order: tz
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text

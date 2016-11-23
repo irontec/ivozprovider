@@ -57,7 +57,7 @@ production:
 #              - name
 #            template: '%name%'
 #          order: iden
-#        'null': _("Unasigned")
+#        'null': _("Unassigned")
     status: 
       title: _('Statu')
       type: select
@@ -120,7 +120,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     brandId: 
       title: _('Brand')
       type: select
@@ -133,7 +133,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     invoiceTemplateId: 
       title: _('Template')
       type: select
@@ -148,7 +148,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     FixedCostsRelInvoices:
       title: _('Fixed costs')
       searchable: false

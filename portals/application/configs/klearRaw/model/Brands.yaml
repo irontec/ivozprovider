@@ -28,7 +28,7 @@ production:
               - tz
             template: '%tz%'
           order: tz
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     logo: 
       title: _('Logo')
       type: file
@@ -116,7 +116,7 @@ production:
               - iden
             template: '%iden%'
           order: iden
-        'null': _("Unasigned")
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

@@ -68,7 +68,7 @@ production:
               - code
             template: '%code%'
           order: code
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     internationalCode: 
       title: _('Internationalcode')
       type: text

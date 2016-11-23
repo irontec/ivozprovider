@@ -51,7 +51,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     errorLocutionId: 
       title: _('Error locution id')
       type: select
@@ -65,7 +65,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     successLocutionId: 
       title: _('Success locution id')
       type: select
@@ -79,7 +79,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     timeout: 
       title: _('Timeout')
       type: number
@@ -99,7 +99,7 @@ production:
         data: inline
         values: 
           '__null__':
-            title: _('Unasigned')
+            title: _('Unassigned')
             visualFilter:
               hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
           'number':
@@ -136,7 +136,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     timeoutVoiceMailUserId: 
       title: _('Timeout voice mail user id')
       type: select
@@ -152,7 +152,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     errorTargetType: 
       title: _('Error target type')
       type: select
@@ -160,7 +160,7 @@ production:
         data: inline
         values: 
           '__null__':
-            title: _('Unasigned')
+            title: _('Unassigned')
             visualFilter:
               hide: ["errorNumberValue", "errorExtensionId", "errorVoiceMailUserId" ]
           'number':
@@ -197,7 +197,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     errorVoiceMailUserId: 
       title: _('Error voice mail user id')
       type: select
@@ -213,7 +213,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     timeoutTarget:
       title: _('Timeout target')
       type: ghost

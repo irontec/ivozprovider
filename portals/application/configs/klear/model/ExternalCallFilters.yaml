@@ -35,7 +35,7 @@ production:
           order: name
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     holidayLocutionId:
       title: _('Holiday locution')
       type: select
@@ -51,7 +51,7 @@ production:
           order: name
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outOfScheduleLocutionId:
       title: _('Out of schedule locution')
       type: select
@@ -67,7 +67,7 @@ production:
           order: name
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     holidayTargetType:
       title: _('Holiday target type')
       type: select
@@ -75,7 +75,7 @@ production:
         data: inline
         values:
           '__null__':
-            title: _('Unasigned')
+            title: _('Unassigned')
             visualFilter:
               hide: ['holidayNumberValue', 'holidayExtensionId', 'holidayVoiceMailUserId']
           'number':
@@ -114,7 +114,7 @@ production:
           order: number
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     holidayVoiceMailUserId:
       title: _('Holiday voice mail user')
       type: select
@@ -130,7 +130,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outOfScheduleTargetType:
       title: _('Out of schedule target type')
       type: select
@@ -138,7 +138,7 @@ production:
         data: inline
         values:
           '__null__':
-            title: _('Unasigned')
+            title: _('Unassigned')
             visualFilter:
               hide: ['outOfScheduleNumberValue', 'outOfScheduleExtensionId', 'outOfScheduleVoiceMailUserId']
           'number':
@@ -177,7 +177,7 @@ production:
           order: number
           extraDataAttributes:
             iden: companyId
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outOfScheduleVoiceMailUserId:
       title: _('Out of schedule voice mail user')
       type: select
@@ -193,7 +193,7 @@ production:
               - lastname
             template: '%name% %lastname%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     ExternalCallFilterRelSchedules:
       title: _('Schedules')
       type: multiselect

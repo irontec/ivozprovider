@@ -42,7 +42,7 @@ production:
               - tz
             template: '%tz%'
           order: tz
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     applicationServerId: 
       title: _('Applicationserverid')
       type: select
@@ -55,7 +55,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     externalMaxCalls: 
       title: _('Externalmaxcall')
       type: number
@@ -103,7 +103,7 @@ production:
               - code
             template: '%code%'
           order: code
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     languageId: 
       title: _('Languageid')
       type: select
@@ -116,7 +116,7 @@ production:
               - iden
             template: '%iden%'
           order: iden
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     mediaRelaySetsId: 
       title: _('Mediarelaysetsid')
       type: select
@@ -129,7 +129,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     ipFilter: 
       title: _('Ipfilter')
       type: select

@@ -61,7 +61,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     applicationServerId: 
       title: _('Application server id')
       type: select
@@ -124,7 +124,7 @@ production:
               - name
             template: '%name%'
           order: iden
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outbound_prefix: 
       title: _('Outbound prefix')
       type: text
@@ -145,7 +145,7 @@ production:
               - calling_code
             template: '%name% (+%calling_code%)'
           order: code
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     areaCode: 
       title: _('Areacode')
       type: text

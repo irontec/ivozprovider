@@ -32,7 +32,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     holidayLocutionId: 
       title: _('Holidaylocutionid')
       type: select
@@ -45,7 +45,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outOfScheduleLocutionId: 
       title: _('Outofschedulelocutionid')
       type: select
@@ -58,7 +58,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     holidayTargetType: 
       title: _('Holidaytargettype')
       type: select
@@ -84,7 +84,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     holidayVoiceMailUserId: 
       title: _('Holidayvoicemailuserid')
       type: select
@@ -97,7 +97,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outOfScheduleTargetType: 
       title: _('Outofscheduletargettype')
       type: select
@@ -123,7 +123,7 @@ production:
               - number
             template: '%number%'
           order: number
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     outOfScheduleVoiceMailUserId: 
       title: _('Outofschedulevoicemailuserid')
       type: select
@@ -136,7 +136,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unasigned")
+        'null': _("Unassigned")
     blackListRegExp: 
       title: _('Blacklistregexp')
       type: text
