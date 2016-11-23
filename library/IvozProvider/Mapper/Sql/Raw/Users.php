@@ -73,6 +73,7 @@ class Users extends MapperAbstract
                 'tokenKey' => $model->getTokenKey(),
                 'countryId' => $model->getCountryId(),
                 'languageId' => $model->getLanguageId(),
+                'areaCode' => $model->getAreaCode(),
             );
         } else {
             $result = array();
@@ -798,7 +799,8 @@ class Users extends MapperAbstract
                   ->setVoicemailAttachSound($data['voicemailAttachSound'])
                   ->setTokenKey($data['tokenKey'])
                   ->setCountryId($data['countryId'])
-                  ->setLanguageId($data['languageId']);
+                  ->setLanguageId($data['languageId'])
+                  ->setAreaCode($data['areaCode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -824,7 +826,8 @@ class Users extends MapperAbstract
                   ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
                   ->setTokenKey($data->{'tokenKey'})
                   ->setCountryId($data->{'countryId'})
-                  ->setLanguageId($data->{'languageId'});
+                  ->setLanguageId($data->{'languageId'})
+                  ->setAreaCode($data->{'areaCode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Users) {
             $entry->setId($data->getId())
@@ -851,7 +854,8 @@ class Users extends MapperAbstract
                   ->setVoicemailAttachSound($data->getVoicemailAttachSound())
                   ->setTokenKey($data->getTokenKey())
                   ->setCountryId($data->getCountryId())
-                  ->setLanguageId($data->getLanguageId());
+                  ->setLanguageId($data->getLanguageId())
+                  ->setAreaCode($data->getAreaCode());
 
         }
 

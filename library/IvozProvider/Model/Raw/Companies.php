@@ -163,6 +163,13 @@ class Companies extends ModelAbstract
      */
     protected $_onDemandRecordCode;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_areaCode;
+
 
     /**
      * Parent relation Companies_ibfk_10
@@ -452,6 +459,7 @@ class Companies extends ModelAbstract
         'ipFilter'=>'ipFilter',
         'onDemandRecord'=>'onDemandRecord',
         'onDemandRecordCode'=>'onDemandRecordCode',
+        'areaCode'=>'areaCode',
     );
 
     /**
@@ -1357,6 +1365,40 @@ class Companies extends ModelAbstract
     public function getOnDemandRecordCode()
     {
         return $this->_onDemandRecordCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setAreaCode($data)
+    {
+
+        if ($this->_areaCode != $data) {
+            $this->_logChange('areaCode', $this->_areaCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_areaCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_areaCode = (string) $data;
+
+        } else {
+            $this->_areaCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column areaCode
+     *
+     * @return string
+     */
+    public function getAreaCode()
+    {
+        return $this->_areaCode;
     }
 
     /**

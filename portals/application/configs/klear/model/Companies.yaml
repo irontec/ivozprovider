@@ -146,6 +146,16 @@ production:
             template: '%name% (+%calling_code%)'
           order: code
         'null': _("Unasigned")
+    areaCode: 
+      title: _('Areacode')
+      type: text
+      maxLength: 10
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Default Area code for users in this company")
+        label: _("Need help?")
     languageId: 
       title: _('Language')
       type: select

@@ -235,6 +235,10 @@ production:
             template: '%iden%'
           order: iden
         'null': _("Unasigned")
+    areaCode: 
+      title: _('Areacode')
+      type: text
+      maxLength: 10
 staging: 
   _extends: production
 testing: 

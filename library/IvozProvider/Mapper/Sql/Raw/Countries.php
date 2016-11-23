@@ -55,6 +55,9 @@ class Countries extends MapperAbstract
                 'zone_en' => $model->getZoneEn(),
                 'zone_es' => $model->getZoneEs(),
                 'calling_code' => $model->getCallingCode(),
+                'intCode' => $model->getIntCode(),
+                'e164Pattern' => $model->getE164Pattern(),
+                'nationalCC' => $model->getNationalCC(),
             );
         } else {
             $result = array();
@@ -622,7 +625,10 @@ class Countries extends MapperAbstract
                   ->setNameEs($data['name_es'])
                   ->setZoneEn($data['zone_en'])
                   ->setZoneEs($data['zone_es'])
-                  ->setCallingCode($data['calling_code']);
+                  ->setCallingCode($data['calling_code'])
+                  ->setIntCode($data['intCode'])
+                  ->setE164Pattern($data['e164Pattern'])
+                  ->setNationalCC($data['nationalCC']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCode($data->{'code'})
@@ -630,7 +636,10 @@ class Countries extends MapperAbstract
                   ->setNameEs($data->{'name_es'})
                   ->setZoneEn($data->{'zone_en'})
                   ->setZoneEs($data->{'zone_es'})
-                  ->setCallingCode($data->{'calling_code'});
+                  ->setCallingCode($data->{'calling_code'})
+                  ->setIntCode($data->{'intCode'})
+                  ->setE164Pattern($data->{'e164Pattern'})
+                  ->setNationalCC($data->{'nationalCC'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Countries) {
             $entry->setId($data->getId())
@@ -639,7 +648,10 @@ class Countries extends MapperAbstract
                   ->setNameEs($data->getNameEs())
                   ->setZoneEn($data->getZoneEn())
                   ->setZoneEs($data->getZoneEs())
-                  ->setCallingCode($data->getCallingCode());
+                  ->setCallingCode($data->getCallingCode())
+                  ->setIntCode($data->getIntCode())
+                  ->setE164Pattern($data->getE164Pattern())
+                  ->setNationalCC($data->getNationalCC());
 
         }
 

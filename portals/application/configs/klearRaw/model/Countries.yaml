@@ -20,6 +20,25 @@ production:
       type: number
       source: 
         control: Spinner
+    intCode: 
+      title: _('Intcode')
+      type: text
+      maxLength: 5
+    e164Pattern: 
+      title: _('E164pattern')
+      type: text
+      maxLength: 250
+    nationalCC: 
+      title: _('Nationalcc')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
 staging: 
   _extends: production
 testing: 

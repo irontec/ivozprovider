@@ -56,7 +56,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
      *     'countryId': '', 
-     *     'languageId': ''
+     *     'languageId': '', 
+     *     'areaCode': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -82,7 +83,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
      *     'countryId': '', 
-     *     'languageId': ''
+     *     'languageId': '', 
+     *     'areaCode': ''
      * }]")
      */
     public function indexAction()
@@ -125,6 +127,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'tokenKey',
                 'countryId',
                 'languageId',
+                'areaCode',
             );
         }
 
@@ -222,7 +225,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
      *     'countryId': '', 
-     *     'languageId': ''
+     *     'languageId': '', 
+     *     'areaCode': ''
      * }")
      */
     public function getAction()
@@ -264,6 +268,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'tokenKey',
                 'countryId',
                 'languageId',
+                'areaCode',
             );
         }
 
@@ -328,6 +333,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="tokenKey", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/users/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -387,6 +393,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="tokenKey", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -601,6 +608,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'areaCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -729,6 +741,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 ),
                 'languageId' => array(
                     'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'areaCode' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),

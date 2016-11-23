@@ -88,6 +88,27 @@ class Countries extends ModelAbstract
      */
     protected $_callingCode;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_intCode;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_e164Pattern;
+
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_nationalCC;
+
 
 
     /**
@@ -140,6 +161,9 @@ class Countries extends ModelAbstract
         'zone_en'=>'zoneEn',
         'zone_es'=>'zoneEs',
         'calling_code'=>'callingCode',
+        'intCode'=>'intCode',
+        'e164Pattern'=>'e164Pattern',
+        'nationalCC'=>'nationalCC',
     );
 
     /**
@@ -195,6 +219,7 @@ class Countries extends ModelAbstract
             'code' => '',
             'zoneEn' => '',
             'zoneEs' => '',
+            'nationalCC' => '0',
         );
 
         $this->_initFileObjects();
@@ -544,6 +569,108 @@ class Countries extends ModelAbstract
     public function getCallingCode()
     {
         return $this->_callingCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setIntCode($data)
+    {
+
+        if ($this->_intCode != $data) {
+            $this->_logChange('intCode', $this->_intCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_intCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_intCode = (string) $data;
+
+        } else {
+            $this->_intCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column intCode
+     *
+     * @return string
+     */
+    public function getIntCode()
+    {
+        return $this->_intCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setE164Pattern($data)
+    {
+
+        if ($this->_e164Pattern != $data) {
+            $this->_logChange('e164Pattern', $this->_e164Pattern, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_e164Pattern = $data;
+
+        } else if (!is_null($data)) {
+            $this->_e164Pattern = (string) $data;
+
+        } else {
+            $this->_e164Pattern = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column e164Pattern
+     *
+     * @return string
+     */
+    public function getE164Pattern()
+    {
+        return $this->_e164Pattern;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setNationalCC($data)
+    {
+
+        if ($this->_nationalCC != $data) {
+            $this->_logChange('nationalCC', $this->_nationalCC, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_nationalCC = $data;
+
+        } else if (!is_null($data)) {
+            $this->_nationalCC = (int) $data;
+
+        } else {
+            $this->_nationalCC = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column nationalCC
+     *
+     * @return int
+     */
+    public function getNationalCC()
+    {
+        return $this->_nationalCC;
     }
 
     /**

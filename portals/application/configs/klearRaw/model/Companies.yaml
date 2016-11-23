@@ -156,6 +156,10 @@ production:
       title: _('Ondemandrecordcode')
       type: text
       maxLength: 3
+    areaCode: 
+      title: _('Areacode')
+      type: text
+      maxLength: 10
 staging: 
   _extends: production
 testing: 

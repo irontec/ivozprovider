@@ -275,6 +275,16 @@ production:
             template: '%name% (+%calling_code%)'
           order: code
         'null': _("Company's default")
+    areaCode: 
+      title: _('Areacode')
+      type: text
+      maxLength: 10
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Calling a number within the same Area can omit Area Code")
+        label: _("Need help?")
     HuntGroupsRelUsers:
       title: _('Hunt groups joinned')
       searchable: false

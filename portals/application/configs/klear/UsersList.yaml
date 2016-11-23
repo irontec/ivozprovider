@@ -67,6 +67,7 @@ production:
           callWaiting: true
           tokenKey: true
           countryId: true
+          areaCode: true
           voicemailEnabled: true
           voicemailAttachSound: true
           voicemailSendMail: true
@@ -104,8 +105,9 @@ production:
             lastname: 4
             email: 4
             countryId: 5
-            languageId: 4
-            timezoneId: 3
+            areaCode: 5
+            languageId: 5
+            timezoneId: 5
         group1:
           label: _("Login info")
           colsPerRow: 3

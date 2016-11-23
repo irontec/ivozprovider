@@ -68,6 +68,7 @@ class Companies extends MapperAbstract
                 'ipFilter' => $model->getIpFilter(),
                 'onDemandRecord' => $model->getOnDemandRecord(),
                 'onDemandRecordCode' => $model->getOnDemandRecordCode(),
+                'areaCode' => $model->getAreaCode(),
             );
         } else {
             $result = array();
@@ -970,7 +971,8 @@ class Companies extends MapperAbstract
                   ->setMediaRelaySetsId($data['mediaRelaySetsId'])
                   ->setIpFilter($data['ipFilter'])
                   ->setOnDemandRecord($data['onDemandRecord'])
-                  ->setOnDemandRecordCode($data['onDemandRecordCode']);
+                  ->setOnDemandRecordCode($data['onDemandRecordCode'])
+                  ->setAreaCode($data['areaCode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -991,7 +993,8 @@ class Companies extends MapperAbstract
                   ->setMediaRelaySetsId($data->{'mediaRelaySetsId'})
                   ->setIpFilter($data->{'ipFilter'})
                   ->setOnDemandRecord($data->{'onDemandRecord'})
-                  ->setOnDemandRecordCode($data->{'onDemandRecordCode'});
+                  ->setOnDemandRecordCode($data->{'onDemandRecordCode'})
+                  ->setAreaCode($data->{'areaCode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -1013,7 +1016,8 @@ class Companies extends MapperAbstract
                   ->setMediaRelaySetsId($data->getMediaRelaySetsId())
                   ->setIpFilter($data->getIpFilter())
                   ->setOnDemandRecord($data->getOnDemandRecord())
-                  ->setOnDemandRecordCode($data->getOnDemandRecordCode());
+                  ->setOnDemandRecordCode($data->getOnDemandRecordCode())
+                  ->setAreaCode($data->getAreaCode());
 
         }
 

@@ -40,6 +40,7 @@ production:
           town: true
           province: true
           country: true
+          areaCode: true
           registryData: true
           externalMaxCalls: true
           defaultTimezoneId: true
@@ -80,8 +81,23 @@ production:
         blacklist:
           musicOnHoldId: true
           transformationRulesetGroupsId: true
-          applicationServerId: ${auth.isNotMainOperator}
-          mediaRelaySetsId: ${auth.isNotMainOperator}
+          nif: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          country: true
+          onDemandRecord: true
+          onDemandRecordCode: true
+          ipFilter: true
+          mediaRelaySetsId: true
+          outbound_prefix: true
+          applicationServerId: true
+          externalMaxCalls: true
+          countryId: true
+          areaCode: true
+          languageId: true
+          defaultTimezoneId: true
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -104,8 +120,9 @@ production:
             outbound_prefix: 6
             mediaRelaySetsId: 6
             applicationServerId: 6
-            countryId: 6
             domain_users: 6
+            countryId: 6
+            areaCode: 6
             ipFilter: 6
             externalMaxCalls: 6
         group3:

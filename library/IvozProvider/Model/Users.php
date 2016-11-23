@@ -262,24 +262,27 @@ class Users extends Raw\Users
      */
     public function preferredToE164($number)
     {
-        // Get company Data
-        $callingCode = $this->getCountry()->getCallingCode();
-        $outboundPrefix = $this->getCompany()->getOutboundPrefix();
-
         // Remove company outbound prefix
+        $outboundPrefix = $this->getCompany()->getOutboundPrefix();
         $number = preg_replace("/^$outboundPrefix/", "", $number);
 
-        // Remove international code
-        $number = preg_replace("/^00/", "", $number, 1, $found);
+        // Get country pattern
+        $e164Pattern = $this->getCountry()->getE164Pattern();
 
-        // No international code found
-        if (! $found) {
-            // Append user Calling code
-            $callingCode =  $this->getCountry()->getCallingCode();
-            $number = $callingCode . $number;
+        // Extract number data
+        preg_match($e164Pattern, $number, $result);
+        if (count($result) == 0) {
+            // Get User international code
+            $intcode = $this->getCountry()->getIntCode();
+            // Remove international Preffix
+            return preg_replace("/^$intcode|^\+/", "", $number);
+        } else {
+            // Get E164 if not part of the number
+            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountry()->getCallingCode();
+            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
+            $sn = $result['sn'];
+            return $cc . $ac . $sn;
         }
-
-        return $number;
     }
 
     /**
@@ -289,21 +292,45 @@ class Users extends Raw\Users
      */
     public function E164ToPreferred($number)
     {
-        // Get company Data
-        $callingCode = $this->getCountry()->getCallingCode();
+        $preferred = "";
 
-        // Remove Calling code If matches the user one
-        $number = preg_replace("/^$callingCode/", "", $number, 1, $count);
+        // Get country pattern
+        $e164Pattern = $this->getCountry()->getE164Pattern();
 
-        // Or prefix with international code
-        if (!$count) {
-            $number = "00" . $number;
+        // Extract number data
+        preg_match($e164Pattern, $number, $result);
+        if (count($result) == 0) {
+            // Add international preffix
+            $preferred = $this->getCountry()->getIntCode() . $number;
+        } else {
+            // Split E164 components
+            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountry()->getCallingCode();
+            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
+            $sn = $result['sn'];
+
+            if ($ac != $this->getAreaCode()) {
+                if ($this->getCountry()->getNationalCC())
+                    $preferred .= $cc;
+                $preferred .= $ac;
+            }
+            $preferred .= $sn;
         }
 
         // Add Company outbound prefix
-        $number = $this->getCompany()->getOutboundPrefix() . $number;
-
-
-        return $number;
+        return $this->getCompany()->getOutboundPrefix() . $preferred;
     }
+
+    /**
+     * Gets user Area Code. If empty, get Company Area code
+     *
+     * @return string
+     */
+    public function getAreaCode()
+    {
+        if (!empty($this->_areaCode))
+            return $this->_areaCode;
+
+        return $this->getCompany()->getAreaCode();
+    }
+
 }
