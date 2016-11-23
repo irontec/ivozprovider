@@ -37,32 +37,44 @@ production:
             title: _("Unasigned")
             visualFilter:
               show: [ ]
-              hide: [ "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId" ]
           'user':
             title: _('user')
             visualFilter:
               show: [ "userId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId" ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
               show: [ "IVRCommonId" ]
-              hide: [ "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId" ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
               show: [ "IVRCustomId" ]
-              hide: [ "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId" ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
               show: [ "huntGroupId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId" ]
           'conferenceRoom':
             title: _('Conference Room')
             visualFilter:
               show: [ "conferenceRoomId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "userId", "huntGroupId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId" ]
+          'number':
+            title: _('number')
+            visualFilter:
+              show: [ "numberValue" ]
+              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId" ]
+    numberValue:
+      title: _('Number value')
+      type: text
+      pattern: "^\\+?[0-9]+$"
+      required: true
+      maxLength: 25
+      trim: both
     IVRCommonId: 
       title: _('I v r common id')
       type: select

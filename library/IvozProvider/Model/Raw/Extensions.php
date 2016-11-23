@@ -24,6 +24,7 @@ class Extensions extends ModelAbstract
 
     protected $_routeTypeAcceptedValues = array(
         'user',
+        'number',
         'IVRCommon',
         'IVRCustom',
         'huntGroup',
@@ -52,7 +53,7 @@ class Extensions extends ModelAbstract
     protected $_number;
 
     /**
-     * [enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]
+     * [enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom]
      * Database var type varchar
      *
      * @var string
@@ -93,6 +94,13 @@ class Extensions extends ModelAbstract
      * @var int
      */
     protected $_userId;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_numberValue;
 
 
     /**
@@ -220,6 +228,7 @@ class Extensions extends ModelAbstract
         'huntGroupId'=>'huntGroupId',
         'conferenceRoomId'=>'conferenceRoomId',
         'userId'=>'userId',
+        'numberValue'=>'numberValue',
     );
 
     /**
@@ -228,7 +237,7 @@ class Extensions extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom'),
+            'routeType'=> array('enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -655,6 +664,40 @@ class Extensions extends ModelAbstract
     public function getUserId()
     {
         return $this->_userId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setNumberValue($data)
+    {
+
+        if ($this->_numberValue != $data) {
+            $this->_logChange('numberValue', $this->_numberValue, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_numberValue = $data;
+
+        } else if (!is_null($data)) {
+            $this->_numberValue = (string) $data;
+
+        } else {
+            $this->_numberValue = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column numberValue
+     *
+     * @return string
+     */
+    public function getNumberValue()
+    {
+        return $this->_numberValue;
     }
 
     /**

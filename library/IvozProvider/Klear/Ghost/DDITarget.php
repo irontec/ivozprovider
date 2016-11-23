@@ -14,6 +14,12 @@ class IvozProvider_Klear_Ghost_DDITarget extends KlearMatrix_Model_Field_Ghost_A
 
         // Get DDI Route Type
         $routeType = $model->getRouteType();
+
+        // We already have the route destination
+        if ($routeType == 'number') {
+            return $model->getNumberValue();
+        }
+
         if ($routeType) {
             // Get Target Type
             $targetGetter = 'get' . ucfirst($routeType);

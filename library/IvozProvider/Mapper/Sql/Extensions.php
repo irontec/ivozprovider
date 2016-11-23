@@ -29,7 +29,8 @@ class Extensions extends Raw\Extensions
                 "IVRCustom"     => "IVRCustomId",
                 "huntGroup"     => "huntGroupId",
                 "user"          => "userId",
-                "conferenceRoom" => "conferenceRoomId"
+                "conferenceRoom" => "conferenceRoomId",
+                "number"        => "numberValue"
         );
         $routeType = $model->getRouteType();
         $original = $this->find($model->getPrimaryKey());

@@ -27,6 +27,7 @@ production:
         data: inline
         values: 
           'user': _('user')
+          'number': _('number')
           'IVRCommon': _('IVRCommon')
           'IVRCustom': _('IVRCustom')
           'huntGroup': _('huntGroup')
@@ -96,6 +97,10 @@ production:
             template: '%name%'
           order: name
         'null': _("Unasigned")
+    numberValue: 
+      title: _('Numbervalue')
+      type: text
+      maxLength: 25
 staging: 
   _extends: production
 testing: 

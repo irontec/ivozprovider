@@ -32,8 +32,17 @@ class ExtensionAction extends RouterAction
         $this->_routeIVRCustom  = $extension->getIVRCustom();
         $this->_routeHuntGroup  = $extension->getHuntGroup();
         $this->_routeConference = $extension->getConferenceRoom();
+        $this->_routeExternal   = $extension->getNumberValue();
         $this->route();
     }
 
-
+    protected function _routeToExternal()
+    {
+        // This call to external world is paid by the Company, do not check user ACLs :)
+        $externalAction = new ExternalCallAction($this);
+        $externalAction
+            ->setCheckACL(false)
+            ->setDestination($this->_routeExternal)
+            ->process();
+    }
 }

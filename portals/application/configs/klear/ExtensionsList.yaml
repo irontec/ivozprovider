@@ -31,6 +31,7 @@ production:
           huntGroupId: true
           userId: true
           conferenceRoomId: true
+          numberValue: true
         order:
           number: true
           routeType: true
@@ -69,6 +70,7 @@ production:
             huntGroupId: 1
             conferenceRoomId: 1
             userId: 1
+            numberValue: 1
     extensionsEdit_screen: &extensionsEdit_screenLink 
       <<: *Extensions
       controller: edit
