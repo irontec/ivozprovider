@@ -76,9 +76,9 @@ or suggestion.
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
 
-## Comercial support
+## Commercial support
 
-Don't hesitate to [contact us](https://www.irontec.com/contacto) for support if you plan to create a multi instance installation or want any kind of help with your system.
+Don't hesitate to [contact us](https://www.irontec.com/contacto) for support if you plan to create a multi instance installation or want any kind of help with your systems.
 
 ## License
     Ivoz Provider - Multitenant solution for VoIP telephony providers
