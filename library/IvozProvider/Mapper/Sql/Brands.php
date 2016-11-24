@@ -29,6 +29,20 @@ class Brands extends Raw\Brands
     {
         $isNew = !$model->getPrimaryKey();
 
+        if ($isNew) {
+            // Create sane defaults for hidden fields
+            $model->setNif('12345678-Z');
+            $model->setPostalAddress('Postal address');
+            $model->setPostalCode('PC');
+            $model->setTown('Town');
+            $model->setCountry('Country');
+            $model->setProvince('Province');
+            $model->setDefaultTimezoneId(145);
+            $model->setLanguageId(1);
+            $model->setRegistryData('');
+            $model->setDomainTrunks('');
+        }
+
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
         $this->_updateDomains($model);

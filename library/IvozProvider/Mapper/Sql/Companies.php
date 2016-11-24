@@ -36,6 +36,24 @@ class Companies extends Raw\Companies
             $this->_propagateCallACLPatterns();
         }
 
+        if ($isNew) {
+            // Create sane defaults for hidden fields
+            $model->setNif('12345678-Z');
+            $model->setPostalAddress('Postal address');
+            $model->setPostalCode('PC');
+            $model->setTown('Town');
+            $model->setCountry('Country');
+            $model->setProvince('Province');
+            $model->setDefaultTimezoneId($model->getBrand()->getDefaultTimezoneId());
+            $model->setCountryId(70);
+            $model->setLanguageId($model->getBrand()->getLanguageId());
+            $model->setOutboundPrefix('');
+            $model->setMediaRelaySetsId(0);
+            $model->setIpFilter(0);
+            $model->setOnDemandRecord(0);
+            $model->setOnDemandRecordCode('');
+        }
+
         $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
 
         if ($isNew) {

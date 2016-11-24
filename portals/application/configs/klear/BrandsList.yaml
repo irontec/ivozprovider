@@ -66,6 +66,18 @@ production:
       title: _("Add %s", ngettext('Brand', 'Brands', 1))
       shortcutOption: N
       fields:
+        blacklist:
+          nif: true
+          logo: true
+          domain_trunks: true
+          defaultTimezoneId: true
+          languageId: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          country: true
+          registryData: true
         order:
           <<: *brandsOrder_Link
       fixedPositions: &brandsFixedPositions_Link

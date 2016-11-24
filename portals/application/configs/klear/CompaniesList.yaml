@@ -105,6 +105,18 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
+    companiesEdit_screen: &companiesEdit_screenLink
+      <<: *Companies
+      controller: edit
+      fields:
+        blacklist:
+          applicationServerId: ${auth.isNotMainOperator}
+          mediaRelaySetsId: ${auth.isNotMainOperator}
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Company', 'Companies', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
       fixedPositions: &companiesFixedPositions_Link
         group0:
           colsPerRow: 2
@@ -142,22 +154,6 @@ production:
           fields:
             onDemandRecord: 1
             onDemandRecordCode: 1
-    companiesEdit_screen: &companiesEdit_screenLink
-      <<: *Companies
-      controller: edit
-      fields:
-        blacklist:
-          musicOnHoldId: true
-          transformationRulesetGroupsId: true
-          applicationServerId: ${auth.isNotMainOperator}
-          mediaRelaySetsId: ${auth.isNotMainOperator}
-      class: ui-silk-pencil
-      label: false
-      title: _("Edit %s %2s", ngettext('Company', 'Companies', 1), "[format| (%item%)]")
-      forcedValues:
-        <<: *forcedBrand
-      fixedPositions:
-        <<: *companiesFixedPositions_Link
           
     #companyAdmins: 
     companyAdminsList_screen: 
