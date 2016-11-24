@@ -29,13 +29,6 @@ production:
       title: ngettext('Email', 'Emails', 1)
       type: text
       trim: both
-      required: true
-    username: 
-      title: _('Username')
-      type: text
-      trim: both
-      required: true
-      default: true
     pass: 
       title: ngettext('Password', 'Passwords', 1)
       type: password
@@ -173,7 +166,6 @@ production:
       title: _('Username')
       type: text
       trim: both
-      required: true
       maxLength: 50
     active: 
       title: _('Active')

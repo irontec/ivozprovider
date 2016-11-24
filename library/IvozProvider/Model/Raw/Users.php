@@ -752,9 +752,6 @@ class Users extends ModelAbstract
     public function setEmail($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_email != $data) {
             $this->_logChange('email', $this->_email, $data);
         }
@@ -1132,9 +1129,6 @@ class Users extends ModelAbstract
     public function setUsername($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_username != $data) {
             $this->_logChange('username', $this->_username, $data);
         }

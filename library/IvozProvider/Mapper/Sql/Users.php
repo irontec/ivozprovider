@@ -24,6 +24,16 @@ class Users extends Raw\Users
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        $isNew = !$model->getPrimaryKey();
+
+        if ($isNew) {
+            // Sane defaults for hidden fields
+            $model->setPass("1234");
+            $model->setTimezoneId($model->getCompany()->getBrand()->getDefaultTimezoneId());
+            $model->setLanguageId($model->getCompany()->getBrand()->getLanguageId());
+            $model->setVoicemailSendMail(0);
+            $model->setActive(0);
+        }
 
         // Nice pass for nice users
         $pass = $model->hasChange('pass');
@@ -43,7 +53,6 @@ class Users extends Raw\Users
             }
         }
 
-        $isNew = !$model->getPrimaryKey();
         $isBoss = $model->getIsBoss() == 1;
         $hasChangedIsBoss = $model->hasChange('isBoss');
         $hasChangedTerminal = $model->hasChange('terminalId');

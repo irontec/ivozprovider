@@ -96,6 +96,56 @@ production:
           HuntGroupsRelUsers: true
           maxCalls: true
           tokenKey: true
+          email: true
+          username: true
+          active: true
+          doNotDisturb: true
+          pass: true
+          timezoneId: true
+          callACLId: true
+          bossAssistantId: true
+          exceptionBoosAssistantRegExp: true
+          HuntGroupsRelUsers: true
+          PickUpRelUsers: true
+          timeout: true
+          isBoss: true
+          maxCalls: true 
+          callWaiting: true
+          tokenKey: true
+          countryId: true
+          areaCode: true
+          voicemailEnabled: true
+          voicemailAttachSound: true
+          voicemailSendMail: true
+          languageId: true
+      fixedPositions: &UsersFixedPositions_link
+        group0:
+          label: _("Personal data")
+          colsPerRow: 12
+          fields:
+            name: 6
+            lastname: 6
+        group1:
+          label: _("Basic Configuration")
+          colsPerRow: 6
+          fields:
+            terminalId: 2
+            extensionId: 2
+            outgoingDDIId: 2
+    usersEdit_screen: &usersEdit_screenLink
+      <<: *Users
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('User', 'Users', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          maxCalls: true 
+          tokenKey: true
+        order:
+          <<: *Users_orderLink
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -145,22 +195,6 @@ production:
           fields:
             PickUpRelUsers: 3
             HuntGroupsRelUsers: 3
-    usersEdit_screen: &usersEdit_screenLink
-      <<: *Users
-      controller: edit
-      class: ui-silk-pencil
-      label: false
-      title: _("Edit %s %2s", ngettext('User', 'Users', 1), "[format| (%item%)]")
-      forcedValues:
-        <<: *forcedCompany
-      fields:
-        blacklist:
-          maxCalls: true 
-          tokenKey: true
-        order:
-          <<: *Users_orderLink
-      fixedPositions:
-        <<: *UsersFixedPositions_link
         
     #HuntGroupsRelUsers
     <<: *huntGroupsRelUsers_screensLink
