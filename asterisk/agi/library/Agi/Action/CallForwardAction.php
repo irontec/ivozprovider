@@ -71,8 +71,12 @@ class CallForwardAction extends RouterAction
         $this->agi->setRedirecting('from-num,i', $this->_caller->getExtensionNumber());
         $this->agi->setRedirecting('from-name',  $this->_caller->getFullName());
 
-        // Use default route function
-        parent::_routeToVoiceMail();
+        // Enable unavailable user banner
+        $voicemailAction = new VoiceMailAction($this);
+        $voicemailAction
+            ->setPlayBanner(true)
+            ->setVoiceMail($this->_routeVoiceMail)
+            ->process();
     }
 
     protected function _routeToExtension()

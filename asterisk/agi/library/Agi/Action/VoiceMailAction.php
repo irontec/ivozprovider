@@ -6,6 +6,14 @@ class VoiceMailAction extends RouterAction
 {
     protected $_voicemail;
 
+    protected $_playBanner = false;
+
+    public function setPlayBanner($playBanner)
+    {
+        $this->_playBanner = $playBanner;
+        return $this;
+    }
+
     public function setVoiceMail($voicemail)
     {
         $this->_voicemail = $voicemail;
@@ -33,7 +41,8 @@ class VoiceMailAction extends RouterAction
 
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail
-            $this->agi->voicemail($voicemail->getVoiceMail());
+            $vmopts = ($this->_playBanner) ? "u" : "s";
+            $this->agi->voicemail($voicemail->getVoiceMail(), $vmopts);
         } else {
             $this->agi->error("User %s has voicemail disabled.", $voicemail->getFullName());
             $this->agi->busy();

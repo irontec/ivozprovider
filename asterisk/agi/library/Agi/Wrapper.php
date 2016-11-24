@@ -228,9 +228,9 @@ class Agi_Wrapper
 	    return $this->_fastagi->get_variable("CONFBRIDGE($setting)");
 	}
 
-	public function voicemail($mailbox)
+	public function voicemail($mailbox, $opts)
 	{
-	    return $this->_fastagi->exec('VoiceMail', "$mailbox,u");
+	    return $this->_fastagi->exec('VoiceMail', "$mailbox,$opts");
 	}
 
 	public function checkVoicemail($mailbox)
