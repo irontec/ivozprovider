@@ -236,4 +236,21 @@ class Companies extends Raw\Companies
 
         return $number;
     }
+
+    public function getOutgoingRoutings() {
+        $outgoingRoutings = $this->getBrand()->getOutgoingRouting();
+
+        $applicableOutgoingRoutings = array();
+
+        foreach ($outgoingRoutings as $outgoingRouting) {
+            $isForMyCompany = $outgoingRouting->getCompanyId() == $this->getPrimaryKey();
+            $isForAllCompanies = is_null($outgoingRouting->getCompanyId());
+
+            if ($isForMyCompany or $isForAllCompanies) {
+                array_push($applicableOutgoingRoutings, $outgoingRouting);
+            }
+        }
+
+        return $applicableOutgoingRoutings;
+    }
 }

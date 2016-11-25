@@ -58,4 +58,18 @@ class Brands extends Raw\Brands
         }
         return $language->getIden();
     }
+
+    public function willUseExternallyRating($company, $destination=null)
+    {
+        $outgoingRoutings = $company->getOutgoingRoutings();
+
+        foreach ($outgoingRoutings as $outgoingRouting) {
+            if (! $outgoingRouting->getPeeringContract()->getExternallyRated()) {
+                return false;
+            }
+        }
+
+        // This call will be rated using externally rater
+        return true;
+    }
 }

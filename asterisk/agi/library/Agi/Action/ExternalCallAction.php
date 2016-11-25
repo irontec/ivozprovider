@@ -96,16 +96,20 @@ class ExternalCallAction extends RouterAction
          * TARIFICATE CHECKING
          ****************************************************************/
         // Can the company pay this call??
-        $pricingPlan = $company->isDstTarificable($number);
-        if (!$pricingPlan) {
-            $this->agi->error("Destination %s can not be billed.", $number);
-            $this->agi->hangup(52); // AST_CAUSE_OUTGOING_CALL_BARRED
-            return;
-        }
+        if ($company->getBrand()->willUseExternallyRating($company, $number)) {
+            $this->agi->verbose("Skipping tarificate checking as Externally Rating will be used");
+        } else {
+            $pricingPlan = $company->isDstTarificable($number);
+            if (!$pricingPlan) {
+                $this->agi->error("Destination %s can not be billed.", $number);
+                $this->agi->hangup(52); // AST_CAUSE_OUTGOING_CALL_BARRED
+                return;
+            }
 
-        // Log what Pricing plan has been selected
-        $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
-                $pricingPlan->getName(), $pricingPlan->getId());
+            // Log what Pricing plan has been selected
+            $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
+                    $pricingPlan->getName(), $pricingPlan->getId());
+        }
 
         /*****************************************************************
          * ORIGIN DDI PRESENTATION
