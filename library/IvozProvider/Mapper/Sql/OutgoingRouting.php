@@ -65,10 +65,6 @@ class OutgoingRouting extends Raw\OutgoingRouting
         }
 
         $peerServers = $peeringContract->getPeerServers();
-        if (empty($peerServers)) {
-            throw new \Exception("Peer Servers not found");
-        }
-
         $lcrGateways = array();
         foreach ($peerServers as $peerServer) {
             $lcrGateways = array_merge($lcrGateways, $peerServer->getLcrGateways());
