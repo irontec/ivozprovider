@@ -260,29 +260,14 @@ class Users extends Raw\Users
      * param string $number
      * return string number in E164
      */
-    public function preferredToE164($number)
+    public function preferredToE164($prefnumber)
     {
         // Remove company outbound prefix
-        $outboundPrefix = $this->getCompany()->getOutboundPrefix();
-        $number = preg_replace("/^$outboundPrefix/", "", $number);
-
-        // Get country pattern
-        $e164Pattern = $this->getCountry()->getE164Pattern();
-
-        // Extract number data
-        preg_match($e164Pattern, $number, $result);
-        if (count($result) == 0) {
-            // Get User international code
-            $intcode = $this->getCountry()->getIntCode();
-            // Remove international Preffix
-            return preg_replace("/^$intcode|^\+/", "", $number);
-        } else {
-            // Get E164 if not part of the number
-            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountry()->getCallingCode();
-            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
-            $sn = $result['sn'];
-            return $cc . $ac . $sn;
-        }
+        $prefnumber = $this->getCompany()->removeOutboundPrefix($prefnumber);
+        // Get user country
+        $country = $this->getCountry();
+        // Return e164 number dialed by this user
+        return $country->preferredToE164($prefnumber, $this->getAreaCode());
     }
 
     /**
@@ -290,34 +275,14 @@ class Users extends Raw\Users
      *
      * @param unknown $number
      */
-    public function E164ToPreferred($number)
+    public function E164ToPreferred($e164number)
     {
-        $preferred = "";
-
-        // Get country pattern
-        $e164Pattern = $this->getCountry()->getE164Pattern();
-
-        // Extract number data
-        preg_match($e164Pattern, $number, $result);
-        if (count($result) == 0) {
-            // Add international preffix
-            $preferred = $this->getCountry()->getIntCode() . $number;
-        } else {
-            // Split E164 components
-            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountry()->getCallingCode();
-            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
-            $sn = $result['sn'];
-
-            if ($ac != $this->getAreaCode()) {
-                if ($this->getCountry()->getNationalCC())
-                    $preferred .= $cc;
-                $preferred .= $ac;
-            }
-            $preferred .= $sn;
-        }
-
+        // Get User country
+        $country = $this->getCountry();
+        // Convert from E164 to user country preferred format
+        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
         // Add Company outbound prefix
-        return $this->getCompany()->getOutboundPrefix() . $preferred;
+        return $this->getCompany()->addOutboundPrefix($prefnumber);
     }
 
     /**

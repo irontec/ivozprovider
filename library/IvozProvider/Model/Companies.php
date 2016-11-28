@@ -175,22 +175,18 @@ class Companies extends Raw\Companies
      *
      * @param unknown $number
      */
-    public function preferredToACL($number)
+    public function preferredToACL($prefnumber)
     {
-        // Get company Data
-        $callingCode = $this->getCountries()->getCallingCode();
-        $outboundPrefix = $this->getOutboundPrefix();
-
-        // Remove outbound prefix (if any)
-        $number = preg_replace("/^$outboundPrefix/", "", $number);
-
-        // Remove Calling code If matches the company
-        $number = preg_replace("/^00$callingCode/", "", $number);
-
-        // Add Company outubound prefix
-        $number = $outboundPrefix . $number;
-
-        return $number;
+        // Remove company prefix
+        $prefnumber = $this->removeOutboundPrefix($prefnumber);
+        // Get company country
+        $country = $this->getCountries();
+        // Normalize this number to e164. TODO Is this really necessary?
+        $e164number = $country->preferredToE164($prefnumber, $this->getAreaCode());
+        // And back to Company preferred
+        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
+        // And finally add Company outbound prefix
+        return $this->addOutboundPrefix($prefnumber);
     }
 
     /**
@@ -199,29 +195,14 @@ class Companies extends Raw\Companies
      * param string $number
      * return string number in E164
      */
-    public function preferredToE164($number)
+    public function preferredToE164($prefnumber)
     {
         // Remove company outbound prefix
-        $outboundPrefix = $this->getOutboundPrefix();
-        $number = preg_replace("/^$outboundPrefix/", "", $number);
-
-        // Get country pattern
-        $e164Pattern = $this->getCountries()->getE164Pattern();
-
-        // Extract number data
-        preg_match($e164Pattern, $number, $result);
-        if (count($result) == 0) {
-            // Get User international code
-            $intcode = $this->getCountries()->getIntCode();
-            // Remove international Preffix
-            return preg_replace("/^$intcode|^\+/", "", $number);
-        } else {
-            // Get E164 if not part of the number
-            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountries()->getCallingCode();
-            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
-            $sn = $result['sn'];
-            return $cc . $ac . $sn;
-        }
+        $prefnumber = $this->removeOutboundPrefix($prefnumber);
+        // Get user country
+        $country = $this->getCountries();
+        // Return e164 number dialed by this user
+        return $country->preferredToE164($prefnumber, $this->getAreaCode());
     }
 
     /**
@@ -229,34 +210,28 @@ class Companies extends Raw\Companies
      *
      * @param unknown $number
      */
-    public function E164ToPreferred($number)
+    public function E164ToPreferred($e164number)
     {
-        $preferred = "";
-
-        // Get country pattern
-        $e164Pattern = $this->getCountries()->getE164Pattern();
-
-        // Extract number data
-        preg_match($e164Pattern, $number, $result);
-        if (count($result) == 0) {
-            // Add international preffix
-            $preferred = $this->getCountries()->getIntCode() . $number;
-        } else {
-            // Split E164 components
-            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountries()->getCallingCode();
-            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
-            $sn = $result['sn'];
-
-            if ($ac != $this->getAreaCode()) {
-                if ($this->getCountries()->getNationalCC())
-                    $preferred .= $cc;
-                $preferred .= $ac;
-            }
-            $preferred .= $sn;
-        }
-
+        // Get Compnay country
+        $country = $this->getCountries();
+        // Convert from E164 to user country preferred format
+        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
         // Add Company outbound prefix
-        return $this->getOutboundPrefix() . $preferred;
+        return $this->addOutboundPrefix($prefnumber);
+    }
+
+
+    public function removeOutboundPrefix($number)
+    {
+        // Remove company outbound prefix
+        $outboundPrefix = $this->getOutboundPrefix();
+        return preg_replace("/^$outboundPrefix/", "", $number);
+    }
+
+    public function addOutboundPrefix($number)
+    {
+        // Add Company outbound prefix
+        return $this->getOutboundPrefix() . $number;
     }
 
     public function getOutgoingRoutings() {
