@@ -12,6 +12,11 @@ class ExtensionAction extends RouterAction
         return $this;
     }
 
+    public function getExtension()
+    {
+        return $this->_extension;
+    }
+
     public function process()
     {
         // Check extension is defined
@@ -41,8 +46,9 @@ class ExtensionAction extends RouterAction
         // This call to external world is paid by the Company, do not check user ACLs :)
         $externalAction = new ExternalCallAction($this);
         $externalAction
-            ->setCheckACL(false)
             ->setDestination($this->_routeExternal)
+            ->setCaller($this->_caller->getOutgoingDDI())
+            ->setCheckACL(false)
             ->process();
     }
 }

@@ -201,24 +201,27 @@ class Companies extends Raw\Companies
      */
     public function preferredToE164($number)
     {
-        // Get company Data
-        $callingCode = $this->getCountries()->getCallingCode();
-        $outboundPrefix = $this->getOutboundPrefix();
-
         // Remove company outbound prefix
+        $outboundPrefix = $this->getOutboundPrefix();
         $number = preg_replace("/^$outboundPrefix/", "", $number);
 
-        // Remove international code
-        $number = preg_replace("/^00/", "", $number, 1, $found);
+        // Get country pattern
+        $e164Pattern = $this->getCountries()->getE164Pattern();
 
-        // No international code found
-        if (! $found) {
-            // Append user Calling code
-            $callingCode = $this->getCountries()->getCallingCode();
-            $number = $callingCode . $number;
+        // Extract number data
+        preg_match($e164Pattern, $number, $result);
+        if (count($result) == 0) {
+            // Get User international code
+            $intcode = $this->getCountries()->getIntCode();
+            // Remove international Preffix
+            return preg_replace("/^$intcode|^\+/", "", $number);
+        } else {
+            // Get E164 if not part of the number
+            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountries()->getCallingCode();
+            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
+            $sn = $result['sn'];
+            return $cc . $ac . $sn;
         }
-
-        return $number;
     }
 
     /**
@@ -228,13 +231,32 @@ class Companies extends Raw\Companies
      */
     public function E164ToPreferred($number)
     {
-        // Get company Data
-        $callingCode = $this->getCountries()->getCallingCode();
+        $preferred = "";
 
-        // Remove Calling code If matches the company
-        $number = preg_replace("/^$callingCode/", "", $number);
+        // Get country pattern
+        $e164Pattern = $this->getCountries()->getE164Pattern();
 
-        return $number;
+        // Extract number data
+        preg_match($e164Pattern, $number, $result);
+        if (count($result) == 0) {
+            // Add international preffix
+            $preferred = $this->getCountries()->getIntCode() . $number;
+        } else {
+            // Split E164 components
+            $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCountries()->getCallingCode();
+            $ac = (!empty($result['ac'])) ? $result['ac'] : $this->getAreaCode();
+            $sn = $result['sn'];
+
+            if ($ac != $this->getAreaCode()) {
+                if ($this->getCountries()->getNationalCC())
+                    $preferred .= $cc;
+                $preferred .= $ac;
+            }
+            $preferred .= $sn;
+        }
+
+        // Add Company outbound prefix
+        return $this->getOutboundPrefix() . $preferred;
     }
 
     public function getOutgoingRoutings() {
