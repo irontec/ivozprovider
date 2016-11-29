@@ -4,6 +4,7 @@
 #include DDIsList.yaml
 #include ExtensionsList.yaml
 #include ExternalCallFiltersList.yaml
+#include HuntGroupsList.yaml
 #include HuntGroupsRelUsersList.yaml
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
@@ -33,6 +34,7 @@ production:
             dDIsList_screen: true
             extensionsList_screen: true
             externalCallFiltersList_screen: true
+            huntGroupsList_screen: true
             huntGroupsRelUsersList_screen: true
             iVRCommonList_screen: true
             iVRCustomList_screen: true
@@ -118,6 +120,19 @@ production:
     externalCallFiltersEdit_screen: 
       <<: *externalCallFiltersEdit_screenLink
       filterField: outOfScheduleVoiceMailUserId
+
+    #huntGroups: 
+    huntGroupsList_screen: 
+      <<: *huntGroupsList_screenLink
+      filterField: noAnswerVoiceMailUserId
+      parentOptionCustomizer: 
+        - recordCount
+    huntGroupsNew_screen: 
+      <<: *huntGroupsNew_screenLink
+      filterField: noAnswerVoiceMailUserId
+    huntGroupsEdit_screen: 
+      <<: *huntGroupsEdit_screenLink
+      filterField: noAnswerVoiceMailUserId
 
     #huntGroupsRelUsers: 
     huntGroupsRelUsersList_screen: 
@@ -216,6 +231,8 @@ production:
     <<: *extensions_dialogsLink
   # externalCallFilters dialogs: 
     <<: *externalCallFilters_dialogsLink
+  # huntGroups dialogs: 
+    <<: *huntGroups_dialogsLink
   # huntGroupsRelUsers dialogs: 
     <<: *huntGroupsRelUsers_dialogsLink
   # iVRCommon dialogs: 

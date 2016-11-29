@@ -152,6 +152,14 @@ class Locutions extends ModelAbstract
     protected $_HolidayDates;
 
     /**
+     * Dependent relation HuntGroups_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\HuntGroups[]
+     */
+    protected $_HuntGroups;
+
+    /**
      * Dependent relation IVRCommon_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -276,6 +284,10 @@ class Locutions extends ModelAbstract
                     'property' => 'HolidayDates',
                     'table_name' => 'HolidayDates',
                 ),
+            'HuntGroupsIbfk2' => array(
+                    'property' => 'HuntGroups',
+                    'table_name' => 'HuntGroups',
+                ),
             'IVRCommonIbfk2' => array(
                     'property' => 'IVRCommonByWelcomeLocution',
                     'table_name' => 'IVRCommon',
@@ -320,6 +332,7 @@ class Locutions extends ModelAbstract
             'ExternalCallFilters_ibfk_3',
             'ExternalCallFilters_ibfk_4',
             'HolidayDates_ibfk_2',
+            'HuntGroups_ibfk_2',
             'IVRCommon_ibfk_2',
             'IVRCommon_ibfk_3',
             'IVRCommon_ibfk_4',
@@ -1292,6 +1305,96 @@ class Locutions extends ModelAbstract
         }
 
         return $this->_HolidayDates;
+    }
+
+    /**
+     * Sets dependent relations HuntGroups_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\HuntGroups
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setHuntGroups(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_HuntGroups === null) {
+
+                $this->getHuntGroups();
+            }
+
+            $oldRelations = $this->_HuntGroups;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_HuntGroups = array();
+
+        foreach ($data as $object) {
+            $this->addHuntGroups($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations HuntGroups_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\HuntGroups $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function addHuntGroups(\IvozProvider\Model\Raw\HuntGroups $data)
+    {
+        $this->_HuntGroups[] = $data;
+        $this->_setLoaded('HuntGroupsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent HuntGroups_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function getHuntGroups($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_HuntGroups = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_HuntGroups;
     }
 
     /**

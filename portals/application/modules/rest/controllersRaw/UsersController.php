@@ -312,8 +312,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="lastname", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="pass", nullable=false, type="varchar", sample="", description="[password]")
+     * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="pass", nullable=true, type="varchar", sample="", description="[password]")
      * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
@@ -323,7 +323,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="bossAssistantId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="username", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="maxCalls", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="callWaiting", nullable=false, type="tinyint", sample="", description="")
@@ -372,8 +372,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="lastname", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="pass", nullable=false, type="varchar", sample="", description="[password]")
+     * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="pass", nullable=true, type="varchar", sample="", description="[password]")
      * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
@@ -383,7 +383,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="bossAssistantId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="username", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="username", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="maxCalls", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="callWaiting", nullable=false, type="tinyint", sample="", description="")
@@ -505,12 +505,12 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 ),
                 'email' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'pass' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '[password]',
                 ),
                 'timezoneId' => array(
@@ -560,7 +560,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 ),
                 'username' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'active' => array(
@@ -641,12 +641,12 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 ),
                 'email' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'pass' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '[password]',
                 ),
                 'timezoneId' => array(
@@ -696,7 +696,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 ),
                 'username' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'active' => array(

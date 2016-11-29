@@ -15,7 +15,7 @@ production:
     password: 
       title: ngettext('Password', 'Passwords', 1)
       type: password
-      required: true
+      defaultValue: 1234
       adapter: Blowfish
     fullname: 
       title: _('Fullname')

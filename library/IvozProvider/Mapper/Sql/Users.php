@@ -26,13 +26,40 @@ class Users extends Raw\Users
     {
         $isNew = !$model->getPrimaryKey();
 
+        // FIXME '' equals null (and avoids triggering unique) :((( 
+        if ($model->getUsername() == '') $model->setUsername(null);
+
         if ($isNew) {
             // Sane defaults for hidden fields
-            $model->setPass("1234");
-            $model->setTimezoneId($model->getCompany()->getBrand()->getDefaultTimezoneId());
-            $model->setLanguageId($model->getCompany()->getBrand()->getLanguageId());
-            $model->setVoicemailSendMail(0);
-            $model->setActive(0);
+            if (!$model->hasChange('timezoneId'))
+                $model->setTimezoneId($model->getCompany()->getBrand()->getDefaultTimezoneId());
+
+            if (!$model->hasChange('languageId'))
+                $model->setLanguageId($model->getCompany()->getBrand()->getLanguageId());
+
+            if (!$model->hasChange('exceptionBoosAssistantRegExp'))
+                $model->setExceptionBoosAssistantRegExp('');
+
+            if (!$model->hasChange('voicemailSendMail')) {
+                if ($model->getEmail()) $model->setVoicemailSendMail(1);
+            }
+        } else {
+            // Avoid username/pass/active incoherences
+            if (!$model->getActive()) {
+                // Web access not active
+                $model->setUsername(null);
+                $model->setPass(null);
+            } else {
+                if (is_null($model->getUsername())) {
+                    $model->setPass(null);
+                    $model->setActive(0);
+                } elseif (is_null($model->getPass())) {
+                    $model->setPass("1234");
+                }
+            }
+
+            // If no mail, no SendMail
+            if (!$model->getEmail()) $model->setVoicemailSendMail(0);
         }
 
         // Nice pass for nice users
@@ -107,7 +134,6 @@ class Users extends Raw\Users
         $vm->setUserId($model->getId())
             ->setContext($model->getVoiceMailContext())
             ->setMailbox($model->getVoiceMailUser())
-            ->setPassword($model->getPass())
             ->setFullname($model->getName() . " " . $model->getLastname())
             ->setTz($model->getTimezone()->getTz())
             ->save();

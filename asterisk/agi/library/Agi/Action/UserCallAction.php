@@ -64,14 +64,6 @@ class UserCallAction extends RouterAction
         // Local variables to improve readability
   	    $user = $this->_user;
 
-  	    // Check if user is valid to be called
-        if (! $user->getActive()) {
-            $this->agi->error("User %s [%d] is not active.", $user->getFullName(), $user->getId());
-            $this->_dialStatus = "INVALIDARGS";
-            $this->processDialStatus();
-            return;
-        }
-
   	    // Check if user has extension configured
   	    $extension = $this->_user->getExtension();
   	    if (empty($extension)) {

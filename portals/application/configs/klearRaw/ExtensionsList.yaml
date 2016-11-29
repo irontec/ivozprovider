@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include CallForwardSettingsList.yaml
 #include ExternalCallFiltersList.yaml
+#include HuntGroupsList.yaml
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
 #include IVRCustomEntriesList.yaml
@@ -27,6 +28,7 @@ production:
             extensionsEdit_screen: true
             callForwardSettingsList_screen: true
             externalCallFiltersList_screen: true
+            huntGroupsList_screen: true
             iVRCommonList_screen: true
             iVRCustomList_screen: true
             iVRCustomEntriesList_screen: true
@@ -84,6 +86,19 @@ production:
     externalCallFiltersEdit_screen: 
       <<: *externalCallFiltersEdit_screenLink
       filterField: outOfScheduleExtensionId
+
+    #huntGroups: 
+    huntGroupsList_screen: 
+      <<: *huntGroupsList_screenLink
+      filterField: noAnswerExtensionId
+      parentOptionCustomizer: 
+        - recordCount
+    huntGroupsNew_screen: 
+      <<: *huntGroupsNew_screenLink
+      filterField: noAnswerExtensionId
+    huntGroupsEdit_screen: 
+      <<: *huntGroupsEdit_screenLink
+      filterField: noAnswerExtensionId
 
     #iVRCommon: 
     iVRCommonList_screen: 
@@ -152,6 +167,8 @@ production:
     <<: *callForwardSettings_dialogsLink
   # externalCallFilters dialogs: 
     <<: *externalCallFilters_dialogsLink
+  # huntGroups dialogs: 
+    <<: *huntGroups_dialogsLink
   # iVRCommon dialogs: 
     <<: *iVRCommon_dialogsLink
   # iVRCustom dialogs: 

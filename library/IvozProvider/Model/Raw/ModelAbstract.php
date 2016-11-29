@@ -299,7 +299,7 @@ abstract class ModelAbstract implements \IteratorAggregate
 
     public function fetchChangelog()
     {
-        return $this->_changeLog;
+        return array_keys($this->_changeLog);
     }
 
     public function resetChangeLog()

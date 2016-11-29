@@ -7,7 +7,6 @@ class IvozProvider_Klear_Filter_Company implements KlearMatrix_Model_Field_Selec
     {
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
-            //TODO Exceptionante
             throw new Klear_Exception_Default("No company emulated");
         }
         $loggedUser = $auth->getIdentity();

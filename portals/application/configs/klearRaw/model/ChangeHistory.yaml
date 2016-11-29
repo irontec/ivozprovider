@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ChangeHistory
   fields: 
     user: 
-      title: ngettext('User', 'Users', 1)
+      title: _('User')
       type: text
       required: true
       maxLength: 50

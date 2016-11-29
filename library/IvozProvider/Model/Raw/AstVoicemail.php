@@ -382,6 +382,7 @@ class AstVoicemail extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'password' => '1234',
         );
 
         $this->_initFileObjects();
@@ -531,9 +532,6 @@ class AstVoicemail extends ModelAbstract
     public function setPassword($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_password != $data) {
             $this->_logChange('password', $this->_password, $data);
         }

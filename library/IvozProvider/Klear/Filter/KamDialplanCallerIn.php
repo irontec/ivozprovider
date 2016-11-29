@@ -15,7 +15,6 @@ class IvozProvider_Klear_Filter_KamDialplanCallerIn implements KlearMatrix_Model
         //Get ModelName and your Controller
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
-        //NUESTRA CONDICIÓN CON CODIO WHERE MYSQL
 
         switch ($currentItemName) {
             case "transformationRulesetGroupsTrunksList_screen":

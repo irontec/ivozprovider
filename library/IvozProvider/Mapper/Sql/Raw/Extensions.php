@@ -324,6 +324,12 @@ class Extensions extends MapperAbstract
     {
         $this->_setCleanUrlIdentifiers($model);
 
+        $fieldsChanged = array();
+        if ($this->_saveOnlyChangedFields) {
+            // Save which files are changed, if updateOnlyChangedFields is enabled
+            $fieldsChanged = $model->fetchChangelog();
+        }
+
         $fileObjects = array();
 
         $availableObjects = $model->getFileObjects();
@@ -355,7 +361,7 @@ class Extensions extends MapperAbstract
             }
         }
 
-        $data = $model->sanitize()->toArray();
+        $data = $model->sanitize()->toArray($fieldsChanged);
 
         $primaryKey = $model->getId();
         $success = true;
@@ -486,6 +492,20 @@ class Extensions extends MapperAbstract
 
                     foreach ($externalCallFilters as $value) {
                         $value->setOutOfScheduleExtensionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getHuntGroups(null, null, true) !== null) {
+                    $huntGroups = $model->getHuntGroups();
+
+                    if (!is_array($huntGroups)) {
+
+                        $huntGroups = array($huntGroups);
+                    }
+
+                    foreach ($huntGroups as $value) {
+                        $value->setNoAnswerExtensionId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }

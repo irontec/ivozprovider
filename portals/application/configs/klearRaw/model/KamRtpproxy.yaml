@@ -8,7 +8,7 @@ production:
       maxLength: 32
       default: true
     url: 
-      title: ngettext('Url', 'Urls', 1)
+      title: _('Url')
       type: text
       required: true
       maxLength: 128

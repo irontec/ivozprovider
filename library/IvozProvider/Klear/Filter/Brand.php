@@ -7,7 +7,6 @@ class IvozProvider_Klear_Filter_Brand implements KlearMatrix_Model_Field_Select_
     {
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
-            //TODO Exceptionante
             throw new Klear_Exception_Default("No brand emulated");
         }
         $loggedUser = $auth->getIdentity();

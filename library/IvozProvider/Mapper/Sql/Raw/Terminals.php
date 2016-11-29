@@ -325,6 +325,12 @@ class Terminals extends MapperAbstract
     {
         $this->_setCleanUrlIdentifiers($model);
 
+        $fieldsChanged = array();
+        if ($this->_saveOnlyChangedFields) {
+            // Save which files are changed, if updateOnlyChangedFields is enabled
+            $fieldsChanged = $model->fetchChangelog();
+        }
+
         $fileObjects = array();
 
         $availableObjects = $model->getFileObjects();
@@ -356,7 +362,7 @@ class Terminals extends MapperAbstract
             }
         }
 
-        $data = $model->sanitize()->toArray();
+        $data = $model->sanitize()->toArray($fieldsChanged);
 
         $primaryKey = $model->getId();
         $success = true;

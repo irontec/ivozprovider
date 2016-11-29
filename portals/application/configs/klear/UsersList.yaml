@@ -35,9 +35,9 @@ production:
           name: true
           lastname: true
           email: true
+          active: true
           username: true
           pass: true
-          active: true
           doNotDisturb: true
           timezoneId: true
           extensionId: true
@@ -96,7 +96,6 @@ production:
           HuntGroupsRelUsers: true
           maxCalls: true
           tokenKey: true
-          email: true
           username: true
           active: true
           doNotDisturb: true
@@ -121,10 +120,11 @@ production:
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
-          colsPerRow: 12
+          colsPerRow: 24
           fields:
-            name: 6
-            lastname: 6
+            name: 7
+            lastname: 7
+            email: 10
         group1:
           label: _("Basic Configuration")
           colsPerRow: 6
@@ -162,9 +162,9 @@ production:
           label: _("Login info")
           colsPerRow: 3
           fields:
+            active: 1
             username: 1
             pass: 1
-            active: 1
         group2:
           label: _("Boss-Assistant")
           colsPerRow: 12

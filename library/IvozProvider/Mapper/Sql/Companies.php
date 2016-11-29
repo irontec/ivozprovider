@@ -38,20 +38,21 @@ class Companies extends Raw\Companies
 
         if ($isNew) {
             // Create sane defaults for hidden fields
-            $model->setNif('12345678-Z');
-            $model->setPostalAddress('Postal address');
-            $model->setPostalCode('PC');
-            $model->setTown('Town');
-            $model->setCountry('Country');
-            $model->setProvince('Province');
-            $model->setDefaultTimezoneId($model->getBrand()->getDefaultTimezoneId());
-            $model->setCountryId(70);
-            $model->setLanguageId($model->getBrand()->getLanguageId());
-            $model->setOutboundPrefix('');
-            $model->setMediaRelaySetsId(0);
-            $model->setIpFilter(0);
-            $model->setOnDemandRecord(0);
-            $model->setOnDemandRecordCode('');
+            if (!$model->hasChange('nif')) $model->setNif('12345678-Z');
+            if (!$model->hasChange('postalAddress')) $model->setPostalAddress('Postal address');
+            if (!$model->hasChange('postalCode')) $model->setPostalCode('PC');
+            if (!$model->hasChange('town')) $model->setTown('Town');
+            if (!$model->hasChange('country')) $model->setCountry('Country');
+            if (!$model->hasChange('province')) $model->setProvince('Province');
+            if (!$model->hasChange('timezoneId')) $model->setDefaultTimezoneId($model->getBrand()->getDefaultTimezoneId());
+            if (!$model->hasChange('countryId')) $model->setCountryId(70);
+            if (!$model->hasChange('languageId')) $model->setLanguageId($model->getBrand()->getLanguageId());
+            if (!$model->hasChange('outbound_prefix')) $model->setOutboundPrefix('');
+            if (!$model->hasChange('mediaRelaySetsId')) $model->setMediaRelaySetsId(0);
+            if (!$model->hasChange('ipFilter')) $model->setIpFilter(0);
+            if (!$model->hasChange('onDemandRecord')) $model->setOnDemandRecord(0);
+            if (!$model->hasChange('onDemandRecordCode')) $model->setOnDemandRecordCode('');
+            if (!$model->hasChange('areaCode')) $model->setAreaCode('');
         }
 
         $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);

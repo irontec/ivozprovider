@@ -8,7 +8,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
     {
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
-        
+
         //Get Action
         $currentAction = $routeDispatcher->getActionName();
 
@@ -27,10 +27,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         }
 
         $pk = $routeDispatcher->getParam("pk", false);
-        
-        if ($pk) {
-            $this->_condition[] = "`id` NOT IN (SELECT `terminalId` FROM `Users` WHERE terminalId IS NOT NULL AND `id` != '".$pk."')";
-        } else {
+        if (!is_array($pk)) {
             $this->_condition[] = "`id` NOT IN (SELECT `terminalId` FROM `Users` WHERE terminalId IS NOT NULL)";
         }
 

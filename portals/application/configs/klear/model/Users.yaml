@@ -32,19 +32,24 @@ production:
     pass: 
       title: ngettext('Password', 'Passwords', 1)
       type: password
-      required: true
       adapter: PlainText
     active: 
       title: _('Active')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source: 
         data: inline
         values: 
           '0': 
             title: _("No")
+            visualFilter:
+              show: []
+              hide: ["username", "pass"]
           '1': 
             title: _("Yes")
+            visualFilter:
+              show: ["username", "pass"]
+              hide: []
     timezoneId: 
       title: _('Timezone')
       type: select
@@ -167,17 +172,6 @@ production:
       type: text
       trim: both
       maxLength: 50
-    active: 
-      title: _('Active')
-      type: select
-      defaultValue: 1
-      source: 
-        data: inline
-        values: 
-          '0': 
-            title: _("No")
-          '1': 
-            title: _("Yes")
     maxCalls: 
       title: _('Max call')
       type: number

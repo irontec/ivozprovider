@@ -9,13 +9,13 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
         if (!$auth->hasIdentity()) {
             throw new Klear_Exception_Default("No brand emulated");
         }
-        
+
         $loggedUser = $auth->getIdentity();
         $currentBrandyId = $loggedUser->brandId;
-        
+
         $brandServiceMapper = new \IvozProvider\Mapper\Sql\BrandServices();
         $brandServices = $brandServiceMapper->fetchList("`brandId` = " . $currentBrandyId);
-        
+
         $servicesIds = array();
         foreach ($brandServices as $brandService) {
             array_push($servicesIds, $brandService->getServiceId());

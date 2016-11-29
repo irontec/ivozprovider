@@ -31,16 +31,16 @@ class Brands extends Raw\Brands
 
         if ($isNew) {
             // Create sane defaults for hidden fields
-            $model->setNif('12345678-Z');
-            $model->setPostalAddress('Postal address');
-            $model->setPostalCode('PC');
-            $model->setTown('Town');
-            $model->setCountry('Country');
-            $model->setProvince('Province');
-            $model->setDefaultTimezoneId(145);
-            $model->setLanguageId(1);
-            $model->setRegistryData('');
-            $model->setDomainTrunks('');
+            if (!$model->hasChange('timezoneId')) $model->setNif('12345678-Z');
+            if (!$model->hasChange('timezoneId')) $model->setPostalAddress('Postal address');
+            if (!$model->hasChange('timezoneId')) $model->setPostalCode('ZIP');
+            if (!$model->hasChange('timezoneId')) $model->setTown('Town');
+            if (!$model->hasChange('timezoneId')) $model->setCountry('Country');
+            if (!$model->hasChange('timezoneId')) $model->setProvince('Province');
+            if (!$model->hasChange('timezoneId')) $model->setDefaultTimezoneId(145);
+            if (!$model->hasChange('timezoneId')) $model->setLanguageId(1);
+            if (!$model->hasChange('timezoneId')) $model->setRegistryData('');
+            if (!$model->hasChange('timezoneId')) $model->setDomainTrunks('');
         }
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);

@@ -15,7 +15,6 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
         //Get ModelName and your Controller
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
-        //NUESTRA CONDICIÓN CON CODIO WHERE MYSQL
 
         $pk = $routeDispatcher->getParam("pk", false);
         $parentId = $routeDispatcher->getParam("parentId", false);

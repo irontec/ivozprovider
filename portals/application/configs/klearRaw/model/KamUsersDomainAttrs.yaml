@@ -27,7 +27,7 @@ production:
       source: 
         control: Spinner
     value: 
-      title: ngettext('Value', 'Values', 1)
+      title: _('Value')
       type: text
       required: true
       maxLength: 255

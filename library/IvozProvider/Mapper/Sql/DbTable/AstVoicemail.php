@@ -106,7 +106,7 @@ class AstVoicemail extends TableAbstract
 	    'COLUMN_NAME' => 'password',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
+	    'DEFAULT' => '1234',
 	    'NULLABLE' => false,
 	    'LENGTH' => '80',
 	    'SCALE' => NULL,

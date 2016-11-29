@@ -28,12 +28,10 @@ production:
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
-      required: true
       maxLength: 100
     pass: 
       title: _('Pass')
       type: password
-      required: true
       adapter: Blowfish
     timezoneId: 
       title: _('Timezoneid')
@@ -142,12 +140,11 @@ production:
     username: 
       title: _('Username')
       type: text
-      required: true
       maxLength: 50
     active: 
       title: _('Active')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source: 
         data: inline
         values: 
@@ -186,7 +183,7 @@ production:
     voicemailSendMail: 
       title: _('Voicemailsendmail')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source: 
         data: inline
         values: 
