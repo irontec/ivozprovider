@@ -367,6 +367,10 @@ production:
           title: ngettext('Kamusersdomainattr', 'Kamusersdomainattrs', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Kamusersdomainattr', 'Kamusersdomainattrs', 0))
+        KamUsersLocationList: 
+          title: ngettext('Kamuserslocation', 'Kamuserslocation', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Kamuserslocation', 'Kamuserslocation', 0))
 staging: 
   _extends: production
 testing: 
