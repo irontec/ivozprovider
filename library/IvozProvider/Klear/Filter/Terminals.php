@@ -28,7 +28,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
 
         $pk = $routeDispatcher->getParam("pk", false);
         if (!is_array($pk)) {
-            $this->_condition[] = "`id` NOT IN (SELECT `terminalId` FROM `Users` WHERE terminalId IS NOT NULL)";
+            $this->_condition[] = "`id` NOT IN (SELECT `terminalId` FROM `Users` WHERE terminalId IS NOT NULL AND `id` != '" . $pk . "')";
         }
 
         return true;
