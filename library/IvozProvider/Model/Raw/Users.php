@@ -320,6 +320,14 @@ class Users extends ModelAbstract
     protected $_ExternalCallFiltersByOutOfScheduleVoiceMailUser;
 
     /**
+     * Dependent relation HuntGroups_ibfk_4
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\HuntGroups[]
+     */
+    protected $_HuntGroups;
+
+    /**
      * Dependent relation HuntGroupsRelUsers_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -498,6 +506,10 @@ class Users extends ModelAbstract
                     'property' => 'ExternalCallFiltersByOutOfScheduleVoiceMailUser',
                     'table_name' => 'ExternalCallFilters',
                 ),
+            'HuntGroupsIbfk4' => array(
+                    'property' => 'HuntGroups',
+                    'table_name' => 'HuntGroups',
+                ),
             'HuntGroupsRelUsersIbfk2' => array(
                     'property' => 'HuntGroupsRelUsers',
                     'table_name' => 'HuntGroupsRelUsers',
@@ -548,6 +560,7 @@ class Users extends ModelAbstract
             'Extensions_ibfk_6',
             'ExternalCallFilters_ibfk_7',
             'ExternalCallFilters_ibfk_8',
+            'HuntGroups_ibfk_4',
             'IVRCommon_ibfk_8',
             'IVRCommon_ibfk_9',
             'IVRCustom_ibfk_8',
@@ -560,11 +573,11 @@ class Users extends ModelAbstract
         $this->_defaultValues = array(
             'doNotDisturb' => '0',
             'isBoss' => '0',
-            'active' => '1',
+            'active' => '0',
             'maxCalls' => '2',
             'callWaiting' => '0',
             'voicemailEnabled' => '1',
-            'voicemailSendMail' => '1',
+            'voicemailSendMail' => '0',
             'voicemailAttachSound' => '1',
         );
 
@@ -786,9 +799,6 @@ class Users extends ModelAbstract
     public function setPass($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_pass != $data) {
             $this->_logChange('pass', $this->_pass, $data);
         }
@@ -2492,6 +2502,96 @@ class Users extends ModelAbstract
         }
 
         return $this->_ExternalCallFiltersByOutOfScheduleVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations HuntGroups_ibfk_4
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\HuntGroups
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setHuntGroups(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_HuntGroups === null) {
+
+                $this->getHuntGroups();
+            }
+
+            $oldRelations = $this->_HuntGroups;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_HuntGroups = array();
+
+        foreach ($data as $object) {
+            $this->addHuntGroups($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations HuntGroups_ibfk_4
+     *
+     * @param \IvozProvider\Model\Raw\HuntGroups $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addHuntGroups(\IvozProvider\Model\Raw\HuntGroups $data)
+    {
+        $this->_HuntGroups[] = $data;
+        $this->_setLoaded('HuntGroupsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets dependent HuntGroups_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function getHuntGroups($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_HuntGroups = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_HuntGroups;
     }
 
     /**

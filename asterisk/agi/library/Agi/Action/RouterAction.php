@@ -124,7 +124,11 @@ class RouterAction
 
     protected function _routeToExternal()
     {
-        $externalAction = new ExternalCallAction($this);
+        // FIXME Should the company have a default Outgoing DDI ?
+        if ($this->_caller instanceof \IvozProvider\Model\Users)
+            $this->_caller = $this->_caller->getOutgoingDDI();
+
+        $externalAction = new ExternalDDICallAction($this);
         $externalAction
             ->setDestination($this->_routeExternal)
             ->process();

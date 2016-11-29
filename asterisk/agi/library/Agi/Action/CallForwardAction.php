@@ -96,7 +96,10 @@ class CallForwardAction extends RouterAction
         $this->agi->setRedirecting('from-name',  $this->_caller->getFullName());
         $this->agi->setRedirecting('from-tag,i', $this->_caller->getExtensionNumber());
 
-        // Use default route function
-        parent::_routeToExternal();
+
+        $externalAction = new ExternalUserCallAction($this);
+        $externalAction
+            ->setDestination($this->_routeExternal)
+            ->process();
     }
 }

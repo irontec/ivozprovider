@@ -55,6 +55,11 @@ class HuntGroups extends MapperAbstract
                 'strategy' => $model->getStrategy(),
                 'ringAllTimeout' => $model->getRingAllTimeout(),
                 'nextUserPosition' => $model->getNextUserPosition(),
+                'noAnswerLocutionId' => $model->getNoAnswerLocutionId(),
+                'noAnswerTargetType' => $model->getNoAnswerTargetType(),
+                'noAnswerNumberValue' => $model->getNoAnswerNumberValue(),
+                'noAnswerExtensionId' => $model->getNoAnswerExtensionId(),
+                'noAnswerVoiceMailUserId' => $model->getNoAnswerVoiceMailUserId(),
             );
         } else {
             $result = array();
@@ -321,6 +326,12 @@ class HuntGroups extends MapperAbstract
     {
         $this->_setCleanUrlIdentifiers($model);
 
+        $fieldsChanged = array();
+        if ($this->_saveOnlyChangedFields) {
+            // Save which files are changed, if updateOnlyChangedFields is enabled
+            $fieldsChanged = $model->fetchChangelog();
+        }
+
         $fileObjects = array();
 
         $availableObjects = $model->getFileObjects();
@@ -352,7 +363,7 @@ class HuntGroups extends MapperAbstract
             }
         }
 
-        $data = $model->sanitize()->toArray();
+        $data = $model->sanitize()->toArray($fieldsChanged);
 
         $primaryKey = $model->getId();
         $success = true;
@@ -594,7 +605,12 @@ class HuntGroups extends MapperAbstract
                   ->setCompanyId($data['companyId'])
                   ->setStrategy($data['strategy'])
                   ->setRingAllTimeout($data['ringAllTimeout'])
-                  ->setNextUserPosition($data['nextUserPosition']);
+                  ->setNextUserPosition($data['nextUserPosition'])
+                  ->setNoAnswerLocutionId($data['noAnswerLocutionId'])
+                  ->setNoAnswerTargetType($data['noAnswerTargetType'])
+                  ->setNoAnswerNumberValue($data['noAnswerNumberValue'])
+                  ->setNoAnswerExtensionId($data['noAnswerExtensionId'])
+                  ->setNoAnswerVoiceMailUserId($data['noAnswerVoiceMailUserId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
@@ -602,7 +618,12 @@ class HuntGroups extends MapperAbstract
                   ->setCompanyId($data->{'companyId'})
                   ->setStrategy($data->{'strategy'})
                   ->setRingAllTimeout($data->{'ringAllTimeout'})
-                  ->setNextUserPosition($data->{'nextUserPosition'});
+                  ->setNextUserPosition($data->{'nextUserPosition'})
+                  ->setNoAnswerLocutionId($data->{'noAnswerLocutionId'})
+                  ->setNoAnswerTargetType($data->{'noAnswerTargetType'})
+                  ->setNoAnswerNumberValue($data->{'noAnswerNumberValue'})
+                  ->setNoAnswerExtensionId($data->{'noAnswerExtensionId'})
+                  ->setNoAnswerVoiceMailUserId($data->{'noAnswerVoiceMailUserId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\HuntGroups) {
             $entry->setId($data->getId())
@@ -611,7 +632,12 @@ class HuntGroups extends MapperAbstract
                   ->setCompanyId($data->getCompanyId())
                   ->setStrategy($data->getStrategy())
                   ->setRingAllTimeout($data->getRingAllTimeout())
-                  ->setNextUserPosition($data->getNextUserPosition());
+                  ->setNextUserPosition($data->getNextUserPosition())
+                  ->setNoAnswerLocutionId($data->getNoAnswerLocutionId())
+                  ->setNoAnswerTargetType($data->getNoAnswerTargetType())
+                  ->setNoAnswerNumberValue($data->getNoAnswerNumberValue())
+                  ->setNoAnswerExtensionId($data->getNoAnswerExtensionId())
+                  ->setNoAnswerVoiceMailUserId($data->getNoAnswerVoiceMailUserId());
 
         }
 

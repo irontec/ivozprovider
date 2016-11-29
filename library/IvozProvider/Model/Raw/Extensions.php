@@ -171,6 +171,14 @@ class Extensions extends ModelAbstract
     protected $_ExternalCallFiltersByOutOfScheduleExtension;
 
     /**
+     * Dependent relation HuntGroups_ibfk_3
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\HuntGroups[]
+     */
+    protected $_HuntGroups;
+
+    /**
      * Dependent relation IVRCommon_ibfk_6
      * Type: One-to-Many relationship
      *
@@ -284,6 +292,10 @@ class Extensions extends ModelAbstract
             'ExternalCallFiltersIbfk6' => array(
                     'property' => 'ExternalCallFiltersByOutOfScheduleExtension',
                     'table_name' => 'ExternalCallFilters',
+                ),
+            'HuntGroupsIbfk3' => array(
+                    'property' => 'HuntGroups',
+                    'table_name' => 'HuntGroups',
                 ),
             'IVRCommonIbfk6' => array(
                     'property' => 'IVRCommonByTimeoutExtension',
@@ -1274,6 +1286,96 @@ class Extensions extends ModelAbstract
         }
 
         return $this->_ExternalCallFiltersByOutOfScheduleExtension;
+    }
+
+    /**
+     * Sets dependent relations HuntGroups_ibfk_3
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\HuntGroups
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setHuntGroups(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_HuntGroups === null) {
+
+                $this->getHuntGroups();
+            }
+
+            $oldRelations = $this->_HuntGroups;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_HuntGroups = array();
+
+        foreach ($data as $object) {
+            $this->addHuntGroups($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations HuntGroups_ibfk_3
+     *
+     * @param \IvozProvider\Model\Raw\HuntGroups $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function addHuntGroups(\IvozProvider\Model\Raw\HuntGroups $data)
+    {
+        $this->_HuntGroups[] = $data;
+        $this->_setLoaded('HuntGroupsIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets dependent HuntGroups_ibfk_3
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function getHuntGroups($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_HuntGroups = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_HuntGroups;
     }
 
     /**

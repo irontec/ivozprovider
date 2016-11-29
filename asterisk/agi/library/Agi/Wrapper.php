@@ -118,6 +118,11 @@ class Agi_Wrapper
 	    return $this->_fastagi->Exec("Busy", $duration);
 	}
 
+	public  function decline()
+	{
+	    $this->_fastagi->hangup(21);
+	}
+
 	public function playback($file)
 	{
 	    // TODO Check file exists?

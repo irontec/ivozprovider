@@ -61,17 +61,4 @@ class IVRAction extends RouterAction
             ->setProcessDialStatus(true)
             ->call();
     }
-
-    /**
-     * Overload roteToExternal to set the company that pays this call
-     */
-    protected function _routeToExternal()
-    {
-        // This call to external is paid by the Company :)
-        $externalAction = new ExternalCallAction($this);
-        $externalAction
-            ->setCheckACL(false)
-            ->setDestination($this->_routeExternal)
-            ->process();
-    }
 }

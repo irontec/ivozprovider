@@ -30,6 +30,11 @@ production:
         blacklist:
           nextUserPosition: true
           ringAllTimeout: true
+          noAnswerTargetType: true
+          noAnswerLocutionId: true
+          noAnswerNumberValue: true
+          noAnswerExtensionId: true
+          noAnswerVoiceMailUserId: true
       options: 
         title: _("Options")
         screens: 
@@ -67,6 +72,15 @@ production:
             numberValue: 1
             extensionId: 1
             voiceMailUserId: 1
+        group2:
+          label: _("No answer configuration")
+          colsPerRow: 3
+          fields:
+            noAnswerLocutionId: 3
+            noAnswerTargetType: 1
+            noAnswerNumberValue: 1
+            noAnswerExtensionId: 1
+            noAnswerVoiceMailUserId: 1
     huntGroupsEdit_screen: &huntGroupsEdit_screenLink 
       <<: *HuntGroups
       controller: edit

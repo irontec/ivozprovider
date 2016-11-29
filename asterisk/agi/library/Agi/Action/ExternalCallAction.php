@@ -4,117 +4,87 @@ namespace Agi\Action;
 
 use IvozProvider\Mapper\Sql as Mapper;
 
+/**
+ * @class ExternalCallAction
+ *
+ * @brief Manage outgoing external calls
+ */
 class ExternalCallAction extends RouterAction
 {
-    protected $_number;
-
-    protected $_checkACL = true;
-
-    public function setDestination($number)
+    /**
+     * @brief Check if the dialed number starts with Company outbound prefix
+     *
+     * Company can configure outbound prefix that MUST be present in all outgoing
+     * external calls. This prefix only exists for compatibility with old pbx
+     * behaviours where the prefix was needed to make difference between external
+     * and internal calls.
+     *
+     * @param string $number Outgoing Dialed number
+     * @return true if prefix is present or company has no prefix, false otherwise
+     */
+    protected function checkCompanyOutboundPrefix($number)
     {
-        $this->_number = $number;
-        return $this;
-    }
-
-    public function setCheckACL($check)
-    {
-        $this->_checkACL = $check;
-        return $this;
-    }
-
-    public function process()
-    {
-        if (empty($this->_number)) {
-            $this->agi->error("Calling to an empty number?. Check configuration.");
-            return;
-        }
-
-        // Local variables
-        $caller = $this->_caller;
-        $number = $this->_number;
-
-        // Get company from the caller (It should be User or DDI)
-        $company = $caller->getCompany();
-
-        // Some feedback for asterisk cli
-        if ($caller instanceof \IvozProvider\Model\Raw\Users) {
-            $this->agi->notice("Processing External call from %s [user%d] to %s",
-                $caller->getFullName(), $caller->getId(), $number);
-        } else {
-            $this->agi->notice("Processing External call from DDI %s to %s",
-                $caller->getDDI(), $number);
-        }
-
-        /*****************************************************************
-         * COMPANY PREFIX CHECKING (FAST CALL DROPS)
-         ****************************************************************/
         // Get company Data
-        $callingCode = $company->getCountries()->getCallingCode();
+        $company = $this->_caller->getCompany();
         $outboundPrefix = $company->getOutboundPrefix();
 
-        // If Company has Outbound Prefix, check it's present
-        if (strlen($outboundPrefix) !== 0 && strpos($number, $outboundPrefix) !== 0) {
-            $this->agi->error("Destination number %s without [company%d] prefix: %s",
-                            $number, $company->getId(), $outboundPrefix);
-            $this->agi->hangup(21); // Decline
-            return;
-        }
+        // If Company has Outbound no prefix, number is always ok
+        if (strlen($outboundPrefix) == 0)
+            return true;
 
-        /*****************************************************************
-         * ACL CHECKING
-         ****************************************************************/
-        // If ACL checks are requested
-        if ($this->_checkACL) {
-            // Check If user can place this call
-            if ($caller instanceof \IvozProvider\Model\Raw\Users) {
-                // Convert number to user prefered format to check ACLs
-                $aclNumber = $company->preferredToACL($number);
-                // Check the user has this call allowed in its ACL
-                $this->agi->verbose("Checking if %s [user%d] can call %s",
-                                $caller->getFullName(), $caller->getId(), $aclNumber);
-                if (!$caller->hasSrcUserPerm($aclNumber)) {
-                    $this->agi->error("User is not allowed to place this call.");
-                    $this->agi->hangup(57); // AST_CAUSE_BEARERCAPABILITY_NOTAUTH
-                    return;
-                }
-            }
-        } else {
-            $this->agi->verbose("Skipping ACL Checking as requested");
-        }
+        // Check if the first number matches the prefix
+        return (strpos($number, $outboundPrefix) === 0);
+    }
 
-        /*****************************************************************
-         * E164 FIXUPS
-         ****************************************************************/
-        // Add the Calling code based on who place this call
-        if ($caller instanceof  \IvozProvider\Model\Raw\Users) {
-            $number = $caller->preferredToE164($number);
-        } else {
-            $number = $company->preferredToE164($number);
-        }
+    /**
+     * @brief Determine if the call can be tarificable
+     *
+     * Only calls that can be tarificated are allowed to be placed. There is an
+     * exception to this: if all Brand Pricing Plans are externally rated (the
+     * tarification is done by a third party module), all calls are considered
+     * tarificable.
+     *
+     * @param string $e164number Dialed number in E.164 format
+     * @return true if call can be tarificated, false otherwise
+     */
+    protected function checkTarificable($e164number)
+    {
+        // Get Dialer company
+        $company = $this->_caller->getCompany();
 
-        /*****************************************************************
-         * TARIFICATE CHECKING
-         ****************************************************************/
         // Can the company pay this call??
-        if ($company->getBrand()->willUseExternallyRating($company, $number)) {
+        if ($company->getBrand()->willUseExternallyRating($company, $e164number)) {
             $this->agi->verbose("Skipping tarificate checking as Externally Rating will be used");
         } else {
-            $pricingPlan = $company->isDstTarificable($number);
+            $pricingPlan = $company->isDstTarificable($e164number);
             if (!$pricingPlan) {
-                $this->agi->error("Destination %s can not be billed.", $number);
-                $this->agi->hangup(52); // AST_CAUSE_OUTGOING_CALL_BARRED
-                return;
+                return false;
             }
-
             // Log what Pricing plan has been selected
             $this->agi->verbose("Using Pricing Plan %s [pricingPlan%d]",
-                    $pricingPlan->getName(), $pricingPlan->getId());
+                            $pricingPlan->getName(), $pricingPlan->getId());
         }
+        return true;
+    }
 
-        /*****************************************************************
-         * ORIGIN DDI PRESENTATION
-         ****************************************************************/
+    /**
+     * @brief Update origin connected line with destination
+     *
+     * If the origin is a well know terminal, update its connected line to reflect
+     * the new external dialed number.
+     *
+     * TODO This may have undesired behaviours, like changing the dialed number
+     *   by an user.
+     *
+     * @param string $e164number Dialed number in E.164 format
+     */
+    protected function updateOriginConnectedLine($e164number)
+    {
+        // Get caller company
+        $company = $this->_caller->getCompany();
+        // Get origin extension
         $origin = $this->agi->getCallerIdNum();
+
         // If origin is a user extension
         if (($extension = $company->getExtension($origin))) {
             $originUser = $extension->getUser();
@@ -127,42 +97,45 @@ class ExternalCallAction extends RouterAction
             $this->agi->setVariable("USERID", $originUser->getId());
 
             // Setup the update callid for the calling user
-            $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$number,1");
+            $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$e164number,1");
 
             // Set as Display number users Outgoing DDI
             $this->agi->setVariable("CALLERID(num)", $originDDI->getDDIE164());
         }
+    }
 
-        /*****************************************************************
-         * RECORD EXTERNAL DDI
-         ****************************************************************/
-        // If caller is a ddi and is configured to record
-        if ($caller instanceof \IvozProvider\Model\Raw\DDIs) {
-            if (in_array($caller->getRecordCalls(), array('all', 'outbound'))) {
-                $this->agi->setVariable("_RECORD", "yes");
-            }
+    /**
+     * @brief Check if the dialer requested recording of outgoing calls
+     *
+     * DDIs can be configured to record outgoing calls (or all calls).
+     * This function will mark the outgoing channel to add a recording header for
+     * proxytrunks.
+     *
+     * @param \IvozProvider\Model\DDI $ddi Outgoing DDI
+     */
+    protected function checkDDIRecording($ddi)
+    {
+        if (in_array($ddi->getRecordCalls(), array('all', 'outbound'))) {
+            $this->agi->setVariable("_RECORD", "yes");
         }
-        // If origin is an user with a DDI configured to record
-        if (!empty($originDDI)) {
-            if (in_array($originDDI->getRecordCalls(), array('all', 'outbound'))) {
-                $this->agi->setVariable("_RECORD", "yes");
-            }
-        }
+    }
 
-        /*****************************************************************
-         * BOUNCE INTERNAL DDI
-         ****************************************************************/
-        // Check if incoming DDI is for us
+    /**
+     * @brief Check if the dialed external number belongs to our platform
+     *
+     * If outgoing number belongs to our platform we will mark it with a header
+     * before placing the call to proxytrunks. This will allow to handle it as
+     * an incoming call with a new callid.
+     *
+     * @parma string $e164number dialed number in E.164 format
+     */
+    protected function checkDDIBounced($e164number)
+    {
         $DDIMapper = new Mapper\DDIs();
-        $internalDDI = $DDIMapper->findOneByField("DDIE164", $number);
+        $internalDDI = $DDIMapper->findOneByField("DDIE164", $e164number);
         if (!empty($internalDDI)) {
-            $this->agi->notice("DDI $number belongs to use, request bounce back this call");
+            $this->agi->notice("DDI $e164number belongs to us, request bounce back this call");
             $this->agi->setVariable("_BOUNCEME", "yes");
         }
-
-        // Call the PSJIP endpoint
-        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
-        $this->agi->setVariable("DIAL_OPTS", "");
-        $this->agi->redirect('call-world', $number);
     }
 }

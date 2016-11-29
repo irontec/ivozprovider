@@ -48,6 +48,58 @@ production:
       defaultValue: 0
       source: 
         control: Spinner
+    noAnswerLocutionId: 
+      title: _('Noanswerlocutionid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    noAnswerTargetType: 
+      title: _('Noanswertargettype')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'number': _('number')
+          'extension': _('extension')
+          'voicemail': _('voicemail')
+    noAnswerNumberValue: 
+      title: _('Noanswernumbervalue')
+      type: text
+      maxLength: 25
+    noAnswerExtensionId: 
+      title: _('Noanswerextensionid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unassigned")
+    noAnswerVoiceMailUserId: 
+      title: _('Noanswervoicemailuserid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

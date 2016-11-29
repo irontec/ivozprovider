@@ -171,25 +171,6 @@ class Companies extends Raw\Companies
     }
 
     /**
-     * Convert a received number to Company prefered format
-     *
-     * @param unknown $number
-     */
-    public function preferredToACL($prefnumber)
-    {
-        // Remove company prefix
-        $prefnumber = $this->removeOutboundPrefix($prefnumber);
-        // Get company country
-        $country = $this->getCountries();
-        // Normalize this number to e164. TODO Is this really necessary?
-        $e164number = $country->preferredToE164($prefnumber, $this->getAreaCode());
-        // And back to Company preferred
-        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
-        // And finally add Company outbound prefix
-        return $this->addOutboundPrefix($prefnumber);
-    }
-
-    /**
      * Convert a company dialed number to E164 form
      *
      * param string $number

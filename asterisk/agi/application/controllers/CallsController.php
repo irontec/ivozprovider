@@ -3,7 +3,7 @@ require_once("BaseController.php");
 use IvozProvider\Mapper\Sql as Mapper;
 use Agi\Action\DDIAction;
 use Agi\Action\ExtensionAction;
-use Agi\Action\ExternalCallAction;
+use Agi\Action\ExternalUserCallAction;
 use Agi\Action\UserCallAction;
 use Agi\Action\HuntGroupAction;
 use Agi\Action\IVRAction;
@@ -59,6 +59,9 @@ class CallsController extends BaseController
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
         $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
+
+        // Set DDI as the caller
+        $this->setChannelOwner($ddi);
 
         // Process this DDI
         $ddiAction = new DDIAction($this);
@@ -154,6 +157,9 @@ class CallsController extends BaseController
             $this->agi->setVariable("__SIPREFERREDBYHDR", $transfererURI);
         }
 
+        // Set User as the caller
+        $this->setChannelOwner($user);
+
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from %s [user%d] to number %s",
                         $user->getFullName(), $user->getId(), $exten);
@@ -208,7 +214,7 @@ class CallsController extends BaseController
             }
 
             // Otherwise, handle this call as external
-            $externalCallAction = new ExternalCallAction($this);
+            $externalCallAction = new ExternalUserCallAction($this);
             $externalCallAction
                 ->setCaller($user)
                 ->setDestination($exten)
@@ -247,7 +253,7 @@ class CallsController extends BaseController
         // ProcessDialStatus
         $userAction = new UserCallAction($this);
         $userAction
-            // FIXME setCaller()???
+            ->setCaller($this->getChannelOwner())
             ->setUser($user)
             ->processDialStatus();
     }
@@ -276,7 +282,7 @@ class CallsController extends BaseController
             // Process NoAnswer handler
             $ivrAction = new IVRAction($this);
             $ivrAction
-                // FIXME setCaller()???
+                ->setCaller($this->getChannelOwner())
                 ->setIvr($ivr)
                 ->processTimeout();
         }
@@ -399,7 +405,7 @@ class CallsController extends BaseController
         // Continue processing
         $hungroupAction = new HuntGroupAction($this);
         $hungroupAction
-            // FIXME setCaller()???
+            ->setCaller($this->getChannelOwner())
             ->setHuntGroup($huntgroup)
             ->call();
     }
@@ -417,7 +423,7 @@ class CallsController extends BaseController
         // Continue processing
         $hungroupAction = new HuntGroupAction($this);
         $hungroupAction
-            // FIXME setCaller()???
+            ->setCaller($this->getChannelOwner())
             ->setHuntGroup($huntgroup)
             ->processHuntgroupStatus();
     }
@@ -494,4 +500,29 @@ class CallsController extends BaseController
             $this->agi->setConnectedLine('name', '');
         }
     }
+
+    private function setChannelOwner($owner)
+    {
+        if ($owner instanceof \IvozProvider\Model\Raw\Users)
+            $this->agi->setVariable("CALLER_TYPE", "USER");
+        if ($owner instanceof \IvozProvider\Model\Raw\DDIs)
+            $this->agi->setVariable("CALLER_TYPE", "DDI");
+        $this->agi->setVariable("CALLER_ID", $owner->getId());
+    }
+
+    private function getChannelOwner()
+    {
+        switch($this->agi->getVariable("CALLER_TYPE")) {
+            case "USER":
+                $mapper = new \IvozProvider\Mapper\Sql\Users();
+                break;
+            case "DDI":
+                $mapper = new \IvozProvider\Mapper\Sql\DDIs();
+                break;
+            default: return null;
+        }
+
+        return $mapper->find($this->agi->getVariable("CALLER_ID"));
+    }
+
 }

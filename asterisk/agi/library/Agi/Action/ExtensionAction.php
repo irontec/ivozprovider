@@ -41,14 +41,4 @@ class ExtensionAction extends RouterAction
         $this->route();
     }
 
-    protected function _routeToExternal()
-    {
-        // This call to external world is paid by the Company, do not check user ACLs :)
-        $externalAction = new ExternalCallAction($this);
-        $externalAction
-            ->setDestination($this->_routeExternal)
-            ->setCaller($this->_caller->getOutgoingDDI())
-            ->setCheckACL(false)
-            ->process();
-    }
 }

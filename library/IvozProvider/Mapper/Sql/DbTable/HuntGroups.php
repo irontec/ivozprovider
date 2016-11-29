@@ -40,9 +40,24 @@ class HuntGroups extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'HuntGroupsIbfk4' => array(
+            'columns' => 'noAnswerVoiceMailUserId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
+        ),
         'HuntGroupsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'HuntGroupsIbfk2' => array(
+            'columns' => 'noAnswerLocutionId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Locutions',
+            'refColumns' => 'id'
+        ),
+        'HuntGroupsIbfk3' => array(
+            'columns' => 'noAnswerExtensionId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
             'refColumns' => 'id'
         )
     );
@@ -162,6 +177,91 @@ class HuntGroups extends TableAbstract
 	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'smallint',
 	    'DEFAULT' => '0',
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'noAnswerLocutionId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'HuntGroups',
+	    'COLUMN_NAME' => 'noAnswerLocutionId',
+	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'noAnswerTargetType' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'HuntGroups',
+	    'COLUMN_NAME' => 'noAnswerTargetType',
+	    'COLUMN_POSITION' => 9,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'noAnswerNumberValue' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'HuntGroups',
+	    'COLUMN_NAME' => 'noAnswerNumberValue',
+	    'COLUMN_POSITION' => 10,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'noAnswerExtensionId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'HuntGroups',
+	    'COLUMN_NAME' => 'noAnswerExtensionId',
+	    'COLUMN_POSITION' => 11,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'noAnswerVoiceMailUserId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'HuntGroups',
+	    'COLUMN_NAME' => 'noAnswerVoiceMailUserId',
+	    'COLUMN_POSITION' => 12,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,

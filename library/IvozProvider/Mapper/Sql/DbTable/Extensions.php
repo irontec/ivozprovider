@@ -75,6 +75,7 @@ class Extensions extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallForwardSettings',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',

@@ -83,10 +83,6 @@ class HuntGroupAction extends RouterAction
         // Local variables to improve readability
         $huntGroup = $this->_huntgroup;
 
-        // No post-process for RingAll huntgroups
-        if ($huntGroup->getStrategy() == 'ringAll')
-            return;
-
         // User didn't picket up
         $dialStatus = $this->agi->getVariable("DIALSTATUS");
         if ($dialStatus == "ANSWER")
@@ -115,10 +111,24 @@ class HuntGroupAction extends RouterAction
 
                 // Everyone has rejected the hungroup call....
                 if ($tries == count($callExtensions)) {
-                    $this->agi->verbose("Noone is available to receive this call..");
-                    $this->agi->busy();
-                    return;
+                    return $this->_processNoAnswer();
                 }
+            }
+        }
+
+        // Check NoAnswer Handler
+        if ($dialStatus != "ANSWER") {
+            switch ($huntGroup->getStrategy()) {
+                case 'roundRobin':
+                    break;
+                case 'ringAll':
+                    return $this->_processNoAnswer();
+                case 'linear':
+                case 'random':
+                    // No more pending extensions to call
+                    if (empty($callExtensions))
+                        return $this->_processNoAnswer();
+                    break;
             }
         }
 
@@ -157,9 +167,11 @@ class HuntGroupAction extends RouterAction
         }
 
         // FIXME Set presentation in company preferred format...
-        $preferred = $huntGroup->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
-        $this->agi->setCallerIdNum($preferred);
-        $this->agi->setCallerIdName("");
+        if ($this->agi->getCallType() == "external") {
+            $preferred = $huntGroup->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
+            $this->agi->setCallerIdNum($preferred);
+            $this->agi->setCallerIdName("");
+        }
 
         // FIXME Set company On-demand recording code
         if ($huntGroup->getCompany()->getOnDemandRecord()) {
@@ -214,6 +226,26 @@ class HuntGroupAction extends RouterAction
 
         // Start calling the Et user
         $this->callUser();
+    }
+
+    private function _processNoAnswer()
+    {
+        // Local variables to improve readability
+        $huntGroup = $this->_huntgroup;
+        $this->agi->verbose("Processing Hungroup %s [huntgroup%d] timeout handler.",
+            $huntGroup->getName(), $huntGroup->getId());
+
+        // Play NoAnswer Locution
+        $this->agi->playback($huntGroup->getNoAnswerLocution());
+
+        // Route to destination
+        $this->_routeType       = $huntGroup->getNoAnswerTargetType();
+        $this->_routeExtension  = $huntGroup->getNoAnswerExtension();
+        $this->_routeVoiceMail  = $huntGroup->getNoAnswerVoiceMailUser();
+        $this->_routeExternal   = $huntGroup->getNoAnswerNumberValue();
+
+        // Route to its handler
+        if ($this->_routeType) $this->route();
     }
 
 }

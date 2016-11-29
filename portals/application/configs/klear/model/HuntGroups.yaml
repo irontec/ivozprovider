@@ -58,98 +58,81 @@ production:
       required: true
       source: 
         control: Spinner
-    callTypeFilter: 
-      title: _('Call type filter')
+    noAnswerTargetType: 
+      title: _('Timeout target type')
       type: select
-      source: 
-        data: inline
-        values:
-          '__null__': 
-            title: _('Unassigned')
-            visualFilter:
-              hide: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
-          'internal': 
-            title: _('internal')
-            visualFilter:
-              show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
-          'external':
-            title:  _('external')
-            visualFilter:
-              show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
-          'both': 
-            title: _('both')
-            visualFilter:
-              show: ['extensionId', 'voiceMailUserId', 'numberValue', 'targetType']
-        'null': _("Unassigned")
-    targetType: 
-      title: _('Target type')
-      type: select
-      required: true
       source: 
         data: inline
         values: 
-          'number': 
+          '__null__':
+            title:  _("Unassigned")
+            visualFilter:
+              hide: ["noAnswerNumberValue", "noAnswerExtensionId", "noAnswerVoiceMailUserId" ]
+          'number':
             title: _('number')
             visualFilter:
-              show: ['numberValue']
-              hide: ['extensionId', 'voiceMailUserId']
+              show: ["noAnswerNumberValue"]
+              hide: ["noAnswerExtensionId", "noAnswerVoiceMailUserId" ]
           'extension':
             title: _('extension')
             visualFilter:
-              show: ['extensionId']
-              hide: ['numberValue', 'voiceMailUserId']          
+              show: ["noAnswerExtensionId"]
+              hide: ["noAnswerNumberValue", "noAnswerVoiceMailUserId" ]
           'voicemail':
             title: _('voicemail')
             visualFilter:
-              show: ['voiceMailUserId']
-              hide: ['extensionId', 'numberValue']          
-    numberValue: 
-      title: _('Number value')
-      pattern: "^[0-9]+$"
+              show: ["noAnswerVoiceMailUserId"]
+              hide: ["noAnswerExtensionId", "noAnswerNumberValue"]
+    noAnswerLocutionId: 
+      title: _('No answer locution id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    noAnswerNumberValue: 
+      title: _('Timeout number value')
       type: text
-      trim: both
-      maxLength: 25
       required: true
-    extensionId: 
-      title: _('Extension id')
+      maxLength: 25
+    noAnswerExtensionId: 
+      title: _('Timeout extension id')
       type: select
       required: true
-      source:
+      source: 
         data: mapper
-        config:
+        config: 
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company          
-          fieldName:
-            fields:
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName: 
+            fields: 
               - number
             template: '%number%'
           order: number
-          extraDataAttributes:
-            iden: companyId
         'null': _("Unassigned")
-    voiceMailUserId: 
-      title: _('User id')
+    noAnswerVoiceMailUserId: 
+      title: _('Timeout voice mail user id')
       type: select
       required: true
-      source:
+      source: 
         data: mapper
-        config:
+        config: 
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company          
-          fieldName:
-            fields:
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName: 
+            fields: 
               - name
               - lastname
             template: '%name% %lastname%'
-          extraDataAttributes:
-            iden: companyId
+          order: name
         'null': _("Unassigned")
-    nextUserPosition: 
-      title: _('Next user position')
-      type: number
-      defaultValue: 0
-      source: 
-        control: Spinner
 staging: 
   _extends: production
 testing: 

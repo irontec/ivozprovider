@@ -28,6 +28,11 @@ class HuntGroups extends ModelAbstract
         'roundRobin',
         'random',
     );
+    protected $_noAnswerTargetTypeAcceptedValues = array(
+        'number',
+        'extension',
+        'voicemail',
+    );
 
     /**
      * Database var type int
@@ -79,6 +84,49 @@ class HuntGroups extends ModelAbstract
      */
     protected $_nextUserPosition;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_noAnswerLocutionId;
+
+    /**
+     * [enum:number|extension|voicemail]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_noAnswerTargetType;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_noAnswerNumberValue;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_noAnswerExtensionId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_noAnswerVoiceMailUserId;
+
+
+    /**
+     * Parent relation HuntGroups_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\Users
+     */
+    protected $_NoAnswerVoiceMailUser;
 
     /**
      * Parent relation HuntGroups_ibfk_1
@@ -86,6 +134,20 @@ class HuntGroups extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
+
+    /**
+     * Parent relation HuntGroups_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Locutions
+     */
+    protected $_NoAnswerLocution;
+
+    /**
+     * Parent relation HuntGroups_ibfk_3
+     *
+     * @var \IvozProvider\Model\Raw\Extensions
+     */
+    protected $_NoAnswerExtension;
 
 
     /**
@@ -120,6 +182,11 @@ class HuntGroups extends ModelAbstract
         'strategy'=>'strategy',
         'ringAllTimeout'=>'ringAllTimeout',
         'nextUserPosition'=>'nextUserPosition',
+        'noAnswerLocutionId'=>'noAnswerLocutionId',
+        'noAnswerTargetType'=>'noAnswerTargetType',
+        'noAnswerNumberValue'=>'noAnswerNumberValue',
+        'noAnswerExtensionId'=>'noAnswerExtensionId',
+        'noAnswerVoiceMailUserId'=>'noAnswerVoiceMailUserId',
     );
 
     /**
@@ -129,6 +196,7 @@ class HuntGroups extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'strategy'=> array('enum:ringAll|linear|roundRobin|random'),
+            'noAnswerTargetType'=> array('enum:number|extension|voicemail'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -137,9 +205,21 @@ class HuntGroups extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'HuntGroupsIbfk4'=> array(
+                    'property' => 'NoAnswerVoiceMailUser',
+                    'table_name' => 'Users',
+                ),
             'HuntGroupsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
+                ),
+            'HuntGroupsIbfk2'=> array(
+                    'property' => 'NoAnswerLocution',
+                    'table_name' => 'Locutions',
+                ),
+            'HuntGroupsIbfk3'=> array(
+                    'property' => 'NoAnswerExtension',
+                    'table_name' => 'Extensions',
                 ),
         ));
 
@@ -452,6 +532,230 @@ class HuntGroups extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerLocutionId($data)
+    {
+
+        if ($this->_noAnswerLocutionId != $data) {
+            $this->_logChange('noAnswerLocutionId', $this->_noAnswerLocutionId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_noAnswerLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_noAnswerLocutionId = (int) $data;
+
+        } else {
+            $this->_noAnswerLocutionId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column noAnswerLocutionId
+     *
+     * @return int
+     */
+    public function getNoAnswerLocutionId()
+    {
+        return $this->_noAnswerLocutionId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerTargetType($data)
+    {
+
+        if ($this->_noAnswerTargetType != $data) {
+            $this->_logChange('noAnswerTargetType', $this->_noAnswerTargetType, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_noAnswerTargetType = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_noAnswerTargetTypeAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for noAnswerTargetType'));
+            }
+            $this->_noAnswerTargetType = (string) $data;
+
+        } else {
+            $this->_noAnswerTargetType = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column noAnswerTargetType
+     *
+     * @return string
+     */
+    public function getNoAnswerTargetType()
+    {
+        return $this->_noAnswerTargetType;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerNumberValue($data)
+    {
+
+        if ($this->_noAnswerNumberValue != $data) {
+            $this->_logChange('noAnswerNumberValue', $this->_noAnswerNumberValue, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_noAnswerNumberValue = $data;
+
+        } else if (!is_null($data)) {
+            $this->_noAnswerNumberValue = (string) $data;
+
+        } else {
+            $this->_noAnswerNumberValue = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column noAnswerNumberValue
+     *
+     * @return string
+     */
+    public function getNoAnswerNumberValue()
+    {
+        return $this->_noAnswerNumberValue;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerExtensionId($data)
+    {
+
+        if ($this->_noAnswerExtensionId != $data) {
+            $this->_logChange('noAnswerExtensionId', $this->_noAnswerExtensionId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_noAnswerExtensionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_noAnswerExtensionId = (int) $data;
+
+        } else {
+            $this->_noAnswerExtensionId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column noAnswerExtensionId
+     *
+     * @return int
+     */
+    public function getNoAnswerExtensionId()
+    {
+        return $this->_noAnswerExtensionId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerVoiceMailUserId($data)
+    {
+
+        if ($this->_noAnswerVoiceMailUserId != $data) {
+            $this->_logChange('noAnswerVoiceMailUserId', $this->_noAnswerVoiceMailUserId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_noAnswerVoiceMailUserId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_noAnswerVoiceMailUserId = (int) $data;
+
+        } else {
+            $this->_noAnswerVoiceMailUserId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column noAnswerVoiceMailUserId
+     *
+     * @return int
+     */
+    public function getNoAnswerVoiceMailUserId()
+    {
+        return $this->_noAnswerVoiceMailUserId;
+    }
+
+    /**
+     * Sets parent relation NoAnswerVoiceMailUser
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerVoiceMailUser(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_NoAnswerVoiceMailUser = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setNoAnswerVoiceMailUserId($primaryKey);
+        }
+
+        $this->_setLoaded('HuntGroupsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent NoAnswerVoiceMailUser
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function getNoAnswerVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_NoAnswerVoiceMailUser = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_NoAnswerVoiceMailUser;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -500,6 +804,108 @@ class HuntGroups extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets parent relation NoAnswerLocution
+     *
+     * @param \IvozProvider\Model\Raw\Locutions $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerLocution(\IvozProvider\Model\Raw\Locutions $data)
+    {
+        $this->_NoAnswerLocution = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setNoAnswerLocutionId($primaryKey);
+        }
+
+        $this->_setLoaded('HuntGroupsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent NoAnswerLocution
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function getNoAnswerLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_NoAnswerLocution = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_NoAnswerLocution;
+    }
+
+    /**
+     * Sets parent relation NoAnswerExtension
+     *
+     * @param \IvozProvider\Model\Raw\Extensions $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerExtension(\IvozProvider\Model\Raw\Extensions $data)
+    {
+        $this->_NoAnswerExtension = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setNoAnswerExtensionId($primaryKey);
+        }
+
+        $this->_setLoaded('HuntGroupsIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets parent NoAnswerExtension
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function getNoAnswerExtension($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_NoAnswerExtension = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_NoAnswerExtension;
     }
 
     /**
