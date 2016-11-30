@@ -110,6 +110,12 @@ production:
       default: true
       defaultValue: 
       maxLength: 200
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Will be shown on page footer")
+        label: _("Need help?")
     logo: 
       title: _('Logo')
       type: file

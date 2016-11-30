@@ -27,6 +27,6 @@ class BrandOperator extends Base
     }
     public function processSignature($signature)
     {
-        return $this->_title;
+        return $this->_brandURL->name;
     }
 }
