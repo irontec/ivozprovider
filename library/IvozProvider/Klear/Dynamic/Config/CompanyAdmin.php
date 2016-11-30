@@ -21,4 +21,8 @@ class CompanyAdmin extends Base
         }
         
     }
+    public function processSignature($signature)
+    {
+        return $this->_title;
+    }
 }
