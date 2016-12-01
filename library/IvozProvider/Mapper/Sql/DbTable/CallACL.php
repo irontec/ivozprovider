@@ -48,6 +48,7 @@ class CallACL extends TableAbstract
     );
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\CallACLRelPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (

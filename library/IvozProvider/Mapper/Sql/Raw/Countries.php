@@ -482,6 +482,20 @@ class Countries extends MapperAbstract
                     }
                 }
 
+                if ($model->getFriends(null, null, true) !== null) {
+                    $friends = $model->getFriends();
+
+                    if (!is_array($friends)) {
+
+                        $friends = array($friends);
+                    }
+
+                    foreach ($friends as $value) {
+                        $value->setCountryId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getTimezones(null, null, true) !== null) {
                     $timezones = $model->getTimezones();
 

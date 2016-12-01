@@ -1,0 +1,237 @@
+production: 
+  class: \IvozProvider\Model\Friends
+  fields: 
+    companyId: 
+      title: _('Companyid')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name: 
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      pattern: "^[a-zA-Z0-9_]+$"
+      trim: both
+      maxLength: 100
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Allowed characters are a-z, A-Z, 0-9 and underscore")
+        label: _("Need help?")
+    description: 
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      defaultValue: 
+      maxLength: 500
+    transport: 
+      title: _('Transport')
+      type: select
+      required: true
+      source: 
+        data: inline
+        values: 
+          'udp': _('udp')
+          'tcp': _('tcp')
+          'tls': _('tls')
+    ip: 
+      title: _('Destination IP address')
+      type: text
+      pattern: "^[.0-9]+$"
+      trim: both
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("e.g. 8.8.8.8")
+        label: _("Need help?")
+    port: 
+      title: _('Port')
+      type: text
+      pattern: "^[0-9]+$"
+      defaultValue: 5060
+    auth_needed:
+      title: _('Auth needed')
+      type: select
+      defaultValue: 'no'
+      source:
+        data: inline
+        values:
+          'yes':
+            title: _("yes")
+            visualFilter:
+              show: ["password"]
+              hide: []
+          'no':
+            title: _("no")
+            visualFilter:
+              hide: ["password"]
+              show: []
+    disallow: 
+      title: _('Disallowed codecs')
+      type: text
+      trim: both
+      defaultValue: all
+      maxLength: 100
+    allow: 
+      title: _('Allowed codecs')
+      type: text
+      trim: both
+      defaultValue: alaw
+      maxLength: 100
+    direct_media_method: 
+      title: _('CallerID update method')
+      type: select
+      defaultValue: invite
+      source: 
+        data: inline
+        values: 
+          'yes': _('yes')
+          'no': _('no')
+    password: 
+      title: ngettext('Password', 'Passwords', 1)
+      type: text
+      pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[-!@#$%^&*()+<>])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '!@#$&*'")
+        label: _("Need help?")
+      options:
+        commands:
+          generatePassword_command: true 
+    callACLId: 
+      title: _('Call ACL')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\CallACL
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    countryId: 
+      title: _('Country code')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Countries
+          fieldName: 
+            fields: 
+              - name
+              - calling_code
+            template: '%name% (+%calling_code%)'
+          order: code
+        'null': _("Company's default")
+    areaCode: 
+      title: _('Areacode')
+      type: text
+      maxLength: 10
+    outgoingDDIId: 
+      title: _('Outgoing DDI')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          fieldName: 
+            fields: 
+              - DDI
+            template: '%DDI%'
+          order: DDI
+        'null': _("Unassigned")
+    priority: 
+      title: _('Priority')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+    disallow: 
+      title: _('Disallow')
+      type: text
+      defaultValue: all
+      maxLength: 200
+    allow: 
+      title: _('Allow')
+      type: text
+      defaultValue: alaw
+      maxLength: 200
+    direct_media_method: 
+      title: _('CallerID update method')
+      type: select
+      defaultValue: update
+      source: 
+        data: inline
+        values: 
+          'invite': 'INVITE'
+          'update': 'UPDATE'
+    callerid_update_header: 
+      title: _('CallerID update header')
+      type: select
+      defaultValue: pai
+      source: 
+        data: inline
+        values: 
+          'pai': 'P-Asserted-Identity (PAI)'
+          'rpid': 'Remote-Party-ID (RPID)'
+    update_callerid: 
+      title: _('Update CallerID?')
+      type: select
+      defaultValue: yes
+      source:
+        data: inline
+        values:
+          'yes':
+            title: _("yes")
+            visualFilter:
+              show: ["direct_media_method", "callerid_update_header"]
+              hide: []
+          'no':
+            title: _("no")
+            visualFilter:
+              hide: ["direct_media_method", "callerid_update_header"]
+              show: []
+    from_domain: 
+      title: _('From domain')
+      type: text
+      maxLength: 64
+    directConnectivity: 
+      title: _('Direct connectivity')
+      type: select
+      defaultValue: yes
+      source:
+        data: inline
+        values:
+          'yes':
+            title: _("yes")
+            visualFilter:
+              show: ["ip", "port", "transport", "auth_needed"]
+              hide: []
+          'no':
+            title: _("no")
+            visualFilter:
+              hide: ["ip", "port", "transport", "auth_needed"]
+              show: ["password"]
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -35,6 +35,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
+     *     'friendId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -48,11 +49,13 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_pai': '', 
      *     'subscribecontext': '', 
      *     '100rel': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'trust_id_inbound': ''
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
+     *     'friendId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -66,7 +69,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_pai': '', 
      *     'subscribecontext': '', 
      *     '100rel': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'trust_id_inbound': ''
      * }]")
      */
     public function indexAction()
@@ -87,6 +91,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'sorceryId',
                 'terminalId',
+                'friendId',
                 'aors',
                 'callerid',
                 'context',
@@ -101,6 +106,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'subscribecontext',
                 '100rel',
                 'outboundProxy',
+                'trustIdInbound',
             );
         }
 
@@ -177,6 +183,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'sorcery_id': '', 
      *     'terminalId': '', 
+     *     'friendId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -190,7 +197,8 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'send_pai': '', 
      *     'subscribecontext': '', 
      *     '100rel': '', 
-     *     'outbound_proxy': ''
+     *     'outbound_proxy': '', 
+     *     'trust_id_inbound': ''
      * }")
      */
     public function getAction()
@@ -210,6 +218,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'sorceryId',
                 'terminalId',
+                'friendId',
                 'aors',
                 'callerid',
                 'context',
@@ -224,6 +233,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'subscribecontext',
                 '100rel',
                 'outboundProxy',
+                'trustIdInbound',
             );
         }
 
@@ -266,6 +276,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
@@ -280,6 +291,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/astpsendpoints/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -317,6 +329,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
@@ -331,6 +344,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -435,6 +449,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'friendId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'aors' => array(
                     'type' => "varchar",
                     'required' => false,
@@ -502,6 +521,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 ),
                 'outbound_proxy' => array(
                     'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'trust_id_inbound' => array(
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -526,6 +550,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'friendId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'aors' => array(
                     'type' => "varchar",
                     'required' => false,
@@ -593,6 +622,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 ),
                 'outbound_proxy' => array(
                     'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'trust_id_inbound' => array(
+                    'type' => "enum('yes','no')",
                     'required' => false,
                     'comment' => '',
                 ),

@@ -191,6 +191,10 @@ production:
           title: ngettext('Extension', 'Extensions', 0)
           class: ui-silk-book-open
           description: _("List of %s", ngettext('Extension', 'Extensions', 0))          
+        FriendsList: 
+          title: ngettext('Friend', 'Friends', 0)
+          class: ui-silk-heart
+          description: _("List of %s", ngettext('Friend', 'Friends', 0))
         DDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go

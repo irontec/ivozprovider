@@ -3,12 +3,14 @@ require_once("BaseController.php");
 use IvozProvider\Mapper\Sql as Mapper;
 use Agi\Action\DDIAction;
 use Agi\Action\ExtensionAction;
-use Agi\Action\ExternalUserCallAction;
 use Agi\Action\UserCallAction;
 use Agi\Action\HuntGroupAction;
 use Agi\Action\IVRAction;
 use Agi\Action\ServiceAction;
 use Agi\Action\FaxCallAction;
+use Agi\Action\FriendCallAction;
+use Agi\Action\ExternalUserCallAction;
+use Agi\Action\ExternalFriendCallAction;
 
 /**
  * @brief Controller for Incoming and Outgoing calls
@@ -32,7 +34,7 @@ class CallsController extends BaseController
     /**
      * @brief Incomming from from external numbers
      */
-    public function incomingAction ()
+    public function trunksAction ()
     {
         // Get Dialed number
         $exten = $this->agi->getExtension();
@@ -74,7 +76,7 @@ class CallsController extends BaseController
     /**
      * @brief Outgoing calls from terminals to Extensions, Services o World
      */
-    public function outgoingAction ()
+    public function usersAction ()
     {
         /**
          * Determine who is placing this call:
@@ -161,7 +163,7 @@ class CallsController extends BaseController
         $this->setChannelOwner($user);
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing outgoing call from %s [user%d] to number %s",
+        $this->agi->notice("Processing outgoing call from \e[0;32m%s [user%d]\e[0;93m to number %s",
                         $user->getFullName(), $user->getId(), $exten);
 
         // Check if this extension starts with '*' code
@@ -200,6 +202,24 @@ class CallsController extends BaseController
                 ->setCaller($user)
                 ->setExtension($dstExtension)
                 ->process();
+
+        // Check if this number matches one of friendly trunks patterns
+        } else if (($friend = $company->getFriend($exten))) {
+            $this->agi->verbose("Number %s is handled by friendly trunk.", $exten);
+
+            // Update Diversion Header with User Extension Number
+            if (isset($forwarder) && !empty($forwarder)) {
+                $this->agi->setRedirecting('from-num,i', $extension->getNumber());
+                $this->agi->setRedirecting('count,i', 1);
+            }
+
+            // Handle call through friendly trunk
+            $friendAction = new FriendCallAction($this);
+            $friendAction
+                ->setCaller($user)
+                ->setFriend($friend)
+                ->setDestination($exten)
+                ->call();
 
         // This number don't belong to IvozProvider
         } else {
@@ -257,6 +277,95 @@ class CallsController extends BaseController
             ->setUser($user)
             ->processDialStatus();
     }
+
+    /**
+     * @brief Outgoing calls from friends
+     */
+    public function friendsAction ()
+    {
+        // Get identified Enpoint name
+        $endpointName = $this->agi->getEndpoint();
+
+        // Do we get who is actually calling?
+        if (empty($endpointName)) {
+            $this->agi->error("Call without valid endpointName. Dropping.");
+            return;
+        }
+
+        // Get caller endpoitn model
+        $endpointsMapper = new Mapper\AstPsEndpoints();
+        $endpoint = $endpointsMapper->findOneByField("sorcery_id", $endpointName);
+        if (empty($endpoint)) {
+            $this->agi->error("Endpoint %s not found.", $endpointName);
+            return;
+        }
+
+        $friend = $endpoint->getFriend();
+        if (empty($friend)) {
+            $this->agi->error("No friend found for endpoint %s.", $endpointName);
+            return;
+        }
+
+        // Set Company/Brand/Generic Music class
+        $company = $friend->getCompany();
+        $this->agi->setVariable("__COMPANYID", $company->getId());
+
+        // Check User's permission to does this call
+        $exten = $this->agi->getExtension();
+
+        // Mark this call as generated from user
+        $this->agi->setCallType("internal");
+
+        // Set Outgoing Channels X-CID header variable
+        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
+
+        // Set user language and music
+        $this->agi->setVariable("CHANNEL(language)",   $company->getLanguageCode());
+        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
+
+        // Set User as the caller
+        $this->setChannelOwner($friend);
+
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing outgoing call from \e[0;36m%s [friend%d]\e[0;93m to number %s",
+                        $friend->getName(), $friend->getId(), $exten);
+
+        // Check if this is an extension call
+        if (($dstExtension = $company->getExtension($exten))) {
+            $this->agi->verbose("Number %s belongs to a Company Extension [extension%d].",
+                            $exten, $dstExtension->getId());
+
+            // Handle extension
+            $extensionAction = new ExtensionAction($this);
+            $extensionAction
+                ->setCaller($friend)
+                ->setExtension($dstExtension)
+                ->process();
+
+        } else if (($outfriend = $company->getFriend($exten))) {
+            $this->agi->verbose("Number %s is handled by friendly trunk.", $exten);
+
+            // Handle call through friendly trunk
+            $friendAction = new FriendCallAction($this);
+            $friendAction
+                ->setCaller($friend)
+                ->setFriend($outfriend)
+                ->setDestination($exten)
+                ->call();
+
+        // This number don't belong to IvozProvider
+        } else {
+            $this->agi->verbose("Number %s is handled as external number.", $exten);
+
+            // Otherwise, handle this call as external
+            $externalCallAction = new ExternalFriendCallAction($this);
+            $externalCallAction
+                ->setCaller($friend)
+                ->setDestination($exten)
+                ->process();
+        }
+    }
+
 
     /**
      * @brief Process IVR after call status
@@ -449,9 +558,16 @@ class CallsController extends BaseController
         $endpointsMapper = new Mapper\AstPsEndpoints();
         $endpoint = $endpointsMapper->findOneByField("sorcery_id", $this->agi->getEndpoint());
         if (!empty($endpoint)) {
-            // FIXME Too many assumptions here...
-            $extension = $endpoint->getTerminal()->getUser()->getExtension();
-            $this->agi->setSIPHeader("X-Info-Callee",    $extension->getNumber());
+            $terminal = $endpoint->getTerminal();
+            if (!empty($terminal)) {
+                $this->agi->setSIPHeader("X-Info-Callee", $terminal->getUser()->getExtensionNumber());
+            }
+            $friend = $endpoint->getFriend();
+            if (!empty($friend)) {
+                $exten = $this->agi->getExtension();
+                $this->agi->setSIPHeader("X-Info-Callee", $exten);
+                $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
+            }
         } else {
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
         }
@@ -507,6 +623,8 @@ class CallsController extends BaseController
             $this->agi->setVariable("CALLER_TYPE", "USER");
         if ($owner instanceof \IvozProvider\Model\Raw\DDIs)
             $this->agi->setVariable("CALLER_TYPE", "DDI");
+        if ($owner instanceof \IvozProvider\Model\Raw\Friends)
+            $this->agi->setVariable("CALLER_TYPE", "FRIEND");
         $this->agi->setVariable("CALLER_ID", $owner->getId());
     }
 
@@ -514,10 +632,13 @@ class CallsController extends BaseController
     {
         switch($this->agi->getVariable("CALLER_TYPE")) {
             case "USER":
-                $mapper = new \IvozProvider\Mapper\Sql\Users();
+                $mapper = new Mapper\Users();
                 break;
             case "DDI":
-                $mapper = new \IvozProvider\Mapper\Sql\DDIs();
+                $mapper = new Mapper\DDIs();
+                break;
+            case "FRIEND":
+                $mapper = new Mapper\Friends();
                 break;
             default: return null;
         }

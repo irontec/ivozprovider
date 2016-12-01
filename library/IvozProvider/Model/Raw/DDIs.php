@@ -35,6 +35,7 @@ class DDIs extends ModelAbstract
         'huntGroup',
         'fax',
         'conferenceRoom',
+        'friend',
     );
 
     /**
@@ -88,7 +89,7 @@ class DDIs extends ModelAbstract
     protected $_recordCalls;
 
     /**
-     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]
+     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]
      * Database var type varchar
      *
      * @var string
@@ -157,6 +158,13 @@ class DDIs extends ModelAbstract
      * @var int
      */
     protected $_billInboundCalls;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_friendValue;
 
 
     /**
@@ -246,6 +254,14 @@ class DDIs extends ModelAbstract
     protected $_Faxes;
 
     /**
+     * Dependent relation Friends_ibfk_4
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Friends[]
+     */
+    protected $_Friends;
+
+    /**
      * Dependent relation Users_ibfk_9
      * Type: One-to-Many relationship
      *
@@ -271,6 +287,7 @@ class DDIs extends ModelAbstract
         'peeringContractId'=>'peeringContractId',
         'countryId'=>'countryId',
         'billInboundCalls'=>'billInboundCalls',
+        'friendValue'=>'friendValue',
     );
 
     /**
@@ -280,7 +297,7 @@ class DDIs extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'recordCalls'=> array('enum:none|all|inbound|outbound'),
-            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom'),
+            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -339,6 +356,10 @@ class DDIs extends ModelAbstract
             'FaxesIbfk2' => array(
                     'property' => 'Faxes',
                     'table_name' => 'Faxes',
+                ),
+            'FriendsIbfk4' => array(
+                    'property' => 'Friends',
+                    'table_name' => 'Friends',
                 ),
             'UsersIbfk9' => array(
                     'property' => 'Users',
@@ -643,9 +664,6 @@ class DDIs extends ModelAbstract
     public function setRouteType($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_routeType != $data) {
             $this->_logChange('routeType', $this->_routeType, $data);
         }
@@ -979,6 +997,40 @@ class DDIs extends ModelAbstract
     public function getBillInboundCalls()
     {
         return $this->_billInboundCalls;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setFriendValue($data)
+    {
+
+        if ($this->_friendValue != $data) {
+            $this->_logChange('friendValue', $this->_friendValue, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_friendValue = $data;
+
+        } else if (!is_null($data)) {
+            $this->_friendValue = (string) $data;
+
+        } else {
+            $this->_friendValue = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column friendValue
+     *
+     * @return string
+     */
+    public function getFriendValue()
+    {
+        return $this->_friendValue;
     }
 
     /**
@@ -1630,6 +1682,96 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Faxes;
+    }
+
+    /**
+     * Sets dependent relations Friends_ibfk_4
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Friends
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setFriends(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Friends === null) {
+
+                $this->getFriends();
+            }
+
+            $oldRelations = $this->_Friends;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Friends = array();
+
+        foreach ($data as $object) {
+            $this->addFriends($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Friends_ibfk_4
+     *
+     * @param \IvozProvider\Model\Raw\Friends $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function addFriends(\IvozProvider\Model\Raw\Friends $data)
+    {
+        $this->_Friends[] = $data;
+        $this->_setLoaded('FriendsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Friends_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Friends
+     */
+    public function getFriends($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FriendsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Friends = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Friends;
     }
 
     /**

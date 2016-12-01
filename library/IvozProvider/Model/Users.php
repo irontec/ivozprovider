@@ -161,7 +161,7 @@ class Users extends Raw\Users
      * @param string $exten
      * @return bool canCall
      */
-    public function hasSrcUserPerm($exten)
+    public function isAllowedToCall($exten)
     {
         $callAcl = $this->getCallACL();
         if (empty($callAcl)) {

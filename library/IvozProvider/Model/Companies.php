@@ -50,6 +50,17 @@ class Companies extends Raw\Companies
         return array_shift($extensions);
     }
 
+    public function getFriend($exten)
+    {
+        $friends = $this->getFriends(null, "priority ASC");
+        foreach ($friends as $friend) {
+            if ($friend->checkExtension($exten)) {
+                return $friend;
+            }
+        }
+        return null;
+    }
+
     public function getService($exten)
     {
         $services = array();

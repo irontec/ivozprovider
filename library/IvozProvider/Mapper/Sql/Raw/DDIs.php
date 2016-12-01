@@ -65,6 +65,7 @@ class DDIs extends MapperAbstract
                 'peeringContractId' => $model->getPeeringContractId(),
                 'countryId' => $model->getCountryId(),
                 'billInboundCalls' => $model->getBillInboundCalls(),
+                'friendValue' => $model->getFriendValue(),
             );
         } else {
             $result = array();
@@ -475,6 +476,20 @@ class DDIs extends MapperAbstract
                     }
                 }
 
+                if ($model->getFriends(null, null, true) !== null) {
+                    $friends = $model->getFriends();
+
+                    if (!is_array($friends)) {
+
+                        $friends = array($friends);
+                    }
+
+                    foreach ($friends as $value) {
+                        $value->setOutgoingDDIId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 
@@ -606,7 +621,8 @@ class DDIs extends MapperAbstract
                   ->setConferenceRoomId($data['conferenceRoomId'])
                   ->setPeeringContractId($data['peeringContractId'])
                   ->setCountryId($data['countryId'])
-                  ->setBillInboundCalls($data['billInboundCalls']);
+                  ->setBillInboundCalls($data['billInboundCalls'])
+                  ->setFriendValue($data['friendValue']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -624,7 +640,8 @@ class DDIs extends MapperAbstract
                   ->setConferenceRoomId($data->{'conferenceRoomId'})
                   ->setPeeringContractId($data->{'peeringContractId'})
                   ->setCountryId($data->{'countryId'})
-                  ->setBillInboundCalls($data->{'billInboundCalls'});
+                  ->setBillInboundCalls($data->{'billInboundCalls'})
+                  ->setFriendValue($data->{'friendValue'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
             $entry->setId($data->getId())
@@ -643,7 +660,8 @@ class DDIs extends MapperAbstract
                   ->setConferenceRoomId($data->getConferenceRoomId())
                   ->setPeeringContractId($data->getPeeringContractId())
                   ->setCountryId($data->getCountryId())
-                  ->setBillInboundCalls($data->getBillInboundCalls());
+                  ->setBillInboundCalls($data->getBillInboundCalls())
+                  ->setFriendValue($data->getFriendValue());
 
         }
 

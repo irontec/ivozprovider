@@ -115,6 +115,8 @@ class ExternalCallAction extends RouterAction
      */
     protected function checkDDIRecording($ddi)
     {
+        if (!$ddi) return;
+
         if (in_array($ddi->getRecordCalls(), array('all', 'outbound'))) {
             $this->agi->setVariable("_RECORD", "yes");
         }

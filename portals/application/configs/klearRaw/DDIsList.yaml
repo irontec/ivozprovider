@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include FaxesList.yaml
+#include FriendsList.yaml
 #include UsersList.yaml
 
 
@@ -22,6 +23,7 @@ production:
           screens: 
             dDIsEdit_screen: true
             faxesList_screen: true
+            friendsList_screen: true
             usersList_screen: true
           dialogs: 
             dDIsDel_dialog: true
@@ -64,6 +66,19 @@ production:
       <<: *faxesEdit_screenLink
       filterField: outgoingDDIId
 
+    #friends: 
+    friendsList_screen: 
+      <<: *friendsList_screenLink
+      filterField: outgoingDDIId
+      parentOptionCustomizer: 
+        - recordCount
+    friendsNew_screen: 
+      <<: *friendsNew_screenLink
+      filterField: outgoingDDIId
+    friendsEdit_screen: 
+      <<: *friendsEdit_screenLink
+      filterField: outgoingDDIId
+
     #users: 
     usersList_screen: 
       <<: *usersList_screenLink
@@ -90,6 +105,8 @@ production:
       labelOnList: 1
   # faxes dialogs: 
     <<: *faxes_dialogsLink
+  # friends dialogs: 
+    <<: *friends_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
 staging: 

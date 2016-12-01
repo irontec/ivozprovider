@@ -143,6 +143,14 @@ production:
           title: ngettext('Fixedcostsrelinvoice', 'Fixedcostsrelinvoices', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Fixedcostsrelinvoice', 'Fixedcostsrelinvoices', 0))
+        FriendsList: 
+          title: ngettext('Friend', 'Friends', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Friend', 'Friends', 0))
+        FriendsPatternsList: 
+          title: ngettext('Friendspattern', 'Friendspatterns', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Friendspattern', 'Friendspatterns', 0))
         GenericCallACLPatternsList: 
           title: ngettext('Genericcallaclpattern', 'Genericcallaclpatterns', 0)
           class: ui-silk-text-list-bullets

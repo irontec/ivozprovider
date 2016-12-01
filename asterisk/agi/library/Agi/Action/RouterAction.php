@@ -31,6 +31,8 @@ class RouterAction
 
     protected $_routeConference;
 
+    protected $_routeFriend;
+
     public function __construct($parent)
     {
         // Store parent
@@ -51,7 +53,6 @@ class RouterAction
 
         // Add current Action to history
         array_push($this->_actionHistory, $this);
-
     }
 
     public function setCaller($caller)
@@ -101,6 +102,9 @@ class RouterAction
             case 'conferenceRoom':
                 $this->_routeToConferenceRoom();
                 break;
+            case 'friend':
+                $this->_routeToFriend();
+                break;
         }
     }
 
@@ -125,7 +129,10 @@ class RouterAction
     protected function _routeToExternal()
     {
         // FIXME Should the company have a default Outgoing DDI ?
-        if ($this->_caller instanceof \IvozProvider\Model\Users)
+        if ($this->_caller instanceof \IvozProvider\Model\Raw\Users)
+            $this->_caller = $this->_caller->getOutgoingDDI();
+
+        if ($this->_caller instanceof \IvozProvider\Model\Raw\Friends)
             $this->_caller = $this->_caller->getOutgoingDDI();
 
         $externalAction = new ExternalDDICallAction($this);
@@ -184,6 +191,19 @@ class RouterAction
         $conferenceAction
             ->setConferenceRoom($this->_routeConference)
             ->process();
+    }
+
+    protected function _routeToFriend()
+    {
+        // Look for the friend that handles this destination
+        $company = $this->_caller->getCompany();
+        $friend = $company->getFriend($this->_routeFriend);
+
+        $friendAction = new FriendCallAction($this);
+        $friendAction
+            ->setFriend($friend)
+            ->setDestination($this->_routeFriend)
+            ->call();
     }
 
 }

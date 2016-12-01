@@ -98,6 +98,7 @@ class DDIs extends TableAbstract
     );
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
@@ -228,7 +229,7 @@ class DDIs extends TableAbstract
 	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
-	    'NULLABLE' => false,
+	    'NULLABLE' => true,
 	    'LENGTH' => '25',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
@@ -386,6 +387,23 @@ class DDIs extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'friendValue' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'friendValue',
+	    'COLUMN_POSITION' => 18,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '25',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

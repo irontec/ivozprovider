@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include CallACLRelPatternsList.yaml
+#include FriendsList.yaml
 #include UsersList.yaml
 
 
@@ -22,6 +23,7 @@ production:
           screens: 
             callACLEdit_screen: true
             callACLRelPatternsList_screen: true
+            friendsList_screen: true
             usersList_screen: true
           dialogs: 
             callACLDel_dialog: true
@@ -64,6 +66,19 @@ production:
       <<: *callACLRelPatternsEdit_screenLink
       filterField: CallACLId
 
+    #friends: 
+    friendsList_screen: 
+      <<: *friendsList_screenLink
+      filterField: callACLId
+      parentOptionCustomizer: 
+        - recordCount
+    friendsNew_screen: 
+      <<: *friendsNew_screenLink
+      filterField: callACLId
+    friendsEdit_screen: 
+      <<: *friendsEdit_screenLink
+      filterField: callACLId
+
     #users: 
     usersList_screen: 
       <<: *usersList_screenLink
@@ -90,6 +105,8 @@ production:
       labelOnList: 1
   # callACLRelPatterns dialogs: 
     <<: *callACLRelPatterns_dialogsLink
+  # friends dialogs: 
+    <<: *friends_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
 staging: 

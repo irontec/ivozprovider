@@ -37,37 +37,42 @@ production:
             title: _("Unassigned")
             visualFilter:
               show: [ ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId", "friendValue" ]
           'user':
             title: _('user')
             visualFilter:
               show: [ "userId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue" ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
               show: [ "IVRCommonId" ]
-              hide: [ "numberValue", "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue" ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
               show: [ "IVRCustomId" ]
-              hide: [ "numberValue", "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId", "friendValue" ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
               show: [ "huntGroupId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId", "friendValue" ]
           'conferenceRoom':
             title: _('Conference Room')
             visualFilter:
               show: [ "conferenceRoomId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue" ]
           'number':
             title: _('number')
             visualFilter:
               show: [ "numberValue" ]
-              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId" ]
+              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue" ]
+          'friend':
+            title: _('Friend')
+            visualFilter:
+              show: [ "friendValue" ]
+              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "numberValue" ]
     numberValue:
       title: _('Number value')
       type: text
@@ -151,6 +156,10 @@ production:
             template: '%name% %lastname%'
           order: name
         'null': _("Unassigned")
+    friendValue: 
+      title: _('Friend value')
+      type: text
+      maxLength: 25
     target:
       title: _('Target')
       type: ghost

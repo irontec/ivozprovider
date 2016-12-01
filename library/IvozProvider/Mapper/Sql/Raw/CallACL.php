@@ -462,6 +462,20 @@ class CallACL extends MapperAbstract
                     }
                 }
 
+                if ($model->getFriends(null, null, true) !== null) {
+                    $friends = $model->getFriends();
+
+                    if (!is_array($friends)) {
+
+                        $friends = array($friends);
+                    }
+
+                    foreach ($friends as $value) {
+                        $value->setCallACLId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 

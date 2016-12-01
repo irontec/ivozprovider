@@ -41,6 +41,7 @@ production:
           IVRCustomId: true
           huntGroupId: true
           conferenceRoomId: true
+          friendValue: true
           DDIE164: true
           brandId: true
           recordCalls: true
@@ -74,6 +75,7 @@ production:
             IVRCustomId: 1
             huntGroupId: 1
             conferenceRoomId: 1
+            friendValue: 1
         group4:
           label: _("Additional configuration")
           colsPerRow: 12

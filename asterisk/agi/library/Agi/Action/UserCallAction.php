@@ -83,7 +83,7 @@ class UserCallAction extends RouterAction
   	    }
 
         // Some verbose dolan pls
-        $this->agi->notice("Preparing call to user %s [user%d] (%s [terminal%d])",
+        $this->agi->notice("Preparing call to user \e[0;32m%s [user%d]\e[0;93m (%s [terminal%d])",
                         $user->getFullName(), $user->getId(),
                         $terminal->getName(), $terminal->getId());
 

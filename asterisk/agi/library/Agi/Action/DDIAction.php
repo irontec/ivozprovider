@@ -83,6 +83,7 @@ class DDIAction extends RouterAction
         $this->_routeIVRCustom  = $ddi->getIVRCustom();
         $this->_routeHuntGroup  = $ddi->getHuntGroup();
         $this->_routeConference = $ddi->getConferenceRoom();
+        $this->_routeFriend     = $ddi->getFriendValue();
         $this->route();
     }
 }

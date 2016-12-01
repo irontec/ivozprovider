@@ -29,6 +29,7 @@ class Extensions extends ModelAbstract
         'IVRCustom',
         'huntGroup',
         'conferenceRoom',
+        'friend',
     );
 
     /**
@@ -53,7 +54,7 @@ class Extensions extends ModelAbstract
     protected $_number;
 
     /**
-     * [enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom]
+     * [enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend]
      * Database var type varchar
      *
      * @var string
@@ -101,6 +102,13 @@ class Extensions extends ModelAbstract
      * @var string
      */
     protected $_numberValue;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_friendValue;
 
 
     /**
@@ -237,6 +245,7 @@ class Extensions extends ModelAbstract
         'conferenceRoomId'=>'conferenceRoomId',
         'userId'=>'userId',
         'numberValue'=>'numberValue',
+        'friendValue'=>'friendValue',
     );
 
     /**
@@ -245,7 +254,7 @@ class Extensions extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'routeType'=> array('enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom'),
+            'routeType'=> array('enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -710,6 +719,40 @@ class Extensions extends ModelAbstract
     public function getNumberValue()
     {
         return $this->_numberValue;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setFriendValue($data)
+    {
+
+        if ($this->_friendValue != $data) {
+            $this->_logChange('friendValue', $this->_friendValue, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_friendValue = $data;
+
+        } else if (!is_null($data)) {
+            $this->_friendValue = (string) $data;
+
+        } else {
+            $this->_friendValue = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column friendValue
+     *
+     * @return string
+     */
+    public function getFriendValue()
+    {
+        return $this->_friendValue;
     }
 
     /**

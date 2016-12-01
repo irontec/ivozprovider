@@ -44,6 +44,10 @@ class AstPsEndpoints extends ModelAbstract
         'required',
         'yes',
     );
+    protected $_trustIdInboundAcceptedValues = array(
+        'yes',
+        'no',
+    );
 
     /**
      * Database var type int
@@ -65,6 +69,13 @@ class AstPsEndpoints extends ModelAbstract
      * @var int
      */
     protected $_terminalId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_friendId;
 
     /**
      * Database var type varchar
@@ -165,6 +176,13 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_outboundProxy;
 
+    /**
+     * Database var type enum('yes','no')
+     *
+     * @var string
+     */
+    protected $_trustIdInbound;
+
 
     /**
      * Parent relation ast_ps_endpoints_ibfk_1
@@ -172,6 +190,13 @@ class AstPsEndpoints extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Terminals
      */
     protected $_Terminal;
+
+    /**
+     * Parent relation ast_ps_endpoints_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\Friends
+     */
+    protected $_Friend;
 
 
     /**
@@ -186,6 +211,7 @@ class AstPsEndpoints extends ModelAbstract
         'id'=>'id',
         'sorcery_id'=>'sorceryId',
         'terminalId'=>'terminalId',
+        'friendId'=>'friendId',
         'aors'=>'aors',
         'callerid'=>'callerid',
         'context'=>'context',
@@ -200,6 +226,7 @@ class AstPsEndpoints extends ModelAbstract
         'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'outbound_proxy'=>'outboundProxy',
+        'trust_id_inbound'=>'trustIdInbound',
     );
 
     /**
@@ -220,6 +247,10 @@ class AstPsEndpoints extends ModelAbstract
             'AstPsEndpointsIbfk1'=> array(
                     'property' => 'Terminal',
                     'table_name' => 'Terminals',
+                ),
+            'AstPsEndpointsIbfk2'=> array(
+                    'property' => 'Friend',
+                    'table_name' => 'Friends',
                 ),
         ));
 
@@ -378,6 +409,40 @@ class AstPsEndpoints extends ModelAbstract
     public function getTerminalId()
     {
         return $this->_terminalId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setFriendId($data)
+    {
+
+        if ($this->_friendId != $data) {
+            $this->_logChange('friendId', $this->_friendId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_friendId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_friendId = (int) $data;
+
+        } else {
+            $this->_friendId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column friendId
+     *
+     * @return int
+     */
+    public function getFriendId()
+    {
+        return $this->_friendId;
     }
 
     /**
@@ -872,6 +937,43 @@ class AstPsEndpoints extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setTrustIdInbound($data)
+    {
+
+        if ($this->_trustIdInbound != $data) {
+            $this->_logChange('trustIdInbound', $this->_trustIdInbound, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_trustIdInbound = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_trustIdInboundAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for trustIdInbound'));
+            }
+            $this->_trustIdInbound = (string) $data;
+
+        } else {
+            $this->_trustIdInbound = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column trust_id_inbound
+     *
+     * @return string
+     */
+    public function getTrustIdInbound()
+    {
+        return $this->_trustIdInbound;
+    }
+
+    /**
      * Sets parent relation Terminal
      *
      * @param \IvozProvider\Model\Raw\Terminals $data
@@ -920,6 +1022,57 @@ class AstPsEndpoints extends ModelAbstract
         }
 
         return $this->_Terminal;
+    }
+
+    /**
+     * Sets parent relation Friend
+     *
+     * @param \IvozProvider\Model\Raw\Friends $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setFriend(\IvozProvider\Model\Raw\Friends $data)
+    {
+        $this->_Friend = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setFriendId($primaryKey);
+        }
+
+        $this->_setLoaded('AstPsEndpointsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent Friend
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Friends
+     */
+    public function getFriend($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsEndpointsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Friend = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Friend;
     }
 
     /**

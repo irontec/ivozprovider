@@ -83,6 +83,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
         'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',

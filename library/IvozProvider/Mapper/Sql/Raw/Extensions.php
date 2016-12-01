@@ -58,6 +58,7 @@ class Extensions extends MapperAbstract
                 'conferenceRoomId' => $model->getConferenceRoomId(),
                 'userId' => $model->getUserId(),
                 'numberValue' => $model->getNumberValue(),
+                'friendValue' => $model->getFriendValue(),
             );
         } else {
             $result = array();
@@ -704,7 +705,8 @@ class Extensions extends MapperAbstract
                   ->setHuntGroupId($data['huntGroupId'])
                   ->setConferenceRoomId($data['conferenceRoomId'])
                   ->setUserId($data['userId'])
-                  ->setNumberValue($data['numberValue']);
+                  ->setNumberValue($data['numberValue'])
+                  ->setFriendValue($data['friendValue']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -715,7 +717,8 @@ class Extensions extends MapperAbstract
                   ->setHuntGroupId($data->{'huntGroupId'})
                   ->setConferenceRoomId($data->{'conferenceRoomId'})
                   ->setUserId($data->{'userId'})
-                  ->setNumberValue($data->{'numberValue'});
+                  ->setNumberValue($data->{'numberValue'})
+                  ->setFriendValue($data->{'friendValue'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Extensions) {
             $entry->setId($data->getId())
@@ -727,7 +730,8 @@ class Extensions extends MapperAbstract
                   ->setHuntGroupId($data->getHuntGroupId())
                   ->setConferenceRoomId($data->getConferenceRoomId())
                   ->setUserId($data->getUserId())
-                  ->setNumberValue($data->getNumberValue());
+                  ->setNumberValue($data->getNumberValue())
+                  ->setFriendValue($data->getFriendValue());
 
         }
 

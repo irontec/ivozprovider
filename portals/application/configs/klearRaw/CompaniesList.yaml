@@ -11,6 +11,7 @@
 #include ExtensionsList.yaml
 #include ExternalCallFiltersList.yaml
 #include FaxesList.yaml
+#include FriendsList.yaml
 #include HuntGroupsList.yaml
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
@@ -58,6 +59,7 @@ production:
             extensionsList_screen: true
             externalCallFiltersList_screen: true
             faxesList_screen: true
+            friendsList_screen: true
             huntGroupsList_screen: true
             iVRCommonList_screen: true
             iVRCustomList_screen: true
@@ -244,6 +246,19 @@ production:
       filterField: companyId
     faxesEdit_screen: 
       <<: *faxesEdit_screenLink
+      filterField: companyId
+
+    #friends: 
+    friendsList_screen: 
+      <<: *friendsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    friendsNew_screen: 
+      <<: *friendsNew_screenLink
+      filterField: companyId
+    friendsEdit_screen: 
+      <<: *friendsEdit_screenLink
       filterField: companyId
 
     #huntGroups: 
@@ -500,6 +515,8 @@ production:
     <<: *externalCallFilters_dialogsLink
   # faxes dialogs: 
     <<: *faxes_dialogsLink
+  # friends dialogs: 
+    <<: *friends_dialogsLink
   # huntGroups dialogs: 
     <<: *huntGroups_dialogsLink
   # iVRCommon dialogs: 

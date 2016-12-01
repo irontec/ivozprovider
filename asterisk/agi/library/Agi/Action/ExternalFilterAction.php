@@ -85,14 +85,4 @@ class ExternalFilterAction extends RouterAction
         $this->_routeVoiceMail  = $filter->getOutOfScheduleVoiceMailUser();
         $this->route();
     }
-
-    protected function _routeToExternal()
-    {
-        // This call to external is paid by the Company :)
-        $externalAction = new ExternalCallAction($this);
-        $externalAction
-            ->setCheckACL(false)
-            ->setDestination($this->_routeExternal)
-            ->process();
-    }
 }

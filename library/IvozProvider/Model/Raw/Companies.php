@@ -303,6 +303,14 @@ class Companies extends ModelAbstract
     protected $_Faxes;
 
     /**
+     * Dependent relation Friends_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Friends[]
+     */
+    protected $_Friends;
+
+    /**
      * Dependent relation HuntGroups_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -546,6 +554,10 @@ class Companies extends ModelAbstract
             'FaxesIbfk1' => array(
                     'property' => 'Faxes',
                     'table_name' => 'Faxes',
+                ),
+            'FriendsIbfk1' => array(
+                    'property' => 'Friends',
+                    'table_name' => 'Friends',
                 ),
             'HuntGroupsIbfk1' => array(
                     'property' => 'HuntGroups',
@@ -2695,6 +2707,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_Faxes;
+    }
+
+    /**
+     * Sets dependent relations Friends_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Friends
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setFriends(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Friends === null) {
+
+                $this->getFriends();
+            }
+
+            $oldRelations = $this->_Friends;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Friends = array();
+
+        foreach ($data as $object) {
+            $this->addFriends($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Friends_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\Friends $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addFriends(\IvozProvider\Model\Raw\Friends $data)
+    {
+        $this->_Friends[] = $data;
+        $this->_setLoaded('FriendsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Friends_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Friends
+     */
+    public function getFriends($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FriendsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Friends = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Friends;
     }
 
     /**

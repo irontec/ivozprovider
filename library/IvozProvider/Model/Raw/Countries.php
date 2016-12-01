@@ -128,6 +128,14 @@ class Countries extends ModelAbstract
     protected $_DDIs;
 
     /**
+     * Dependent relation Friends_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Friends[]
+     */
+    protected $_Friends;
+
+    /**
      * Dependent relation Timezones_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -194,6 +202,10 @@ class Countries extends ModelAbstract
             'DDIsIbfk9' => array(
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
+                ),
+            'FriendsIbfk2' => array(
+                    'property' => 'Friends',
+                    'table_name' => 'Friends',
                 ),
             'TimezonesIbfk2' => array(
                     'property' => 'Timezones',
@@ -851,6 +863,96 @@ class Countries extends ModelAbstract
         }
 
         return $this->_DDIs;
+    }
+
+    /**
+     * Sets dependent relations Friends_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Friends
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setFriends(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Friends === null) {
+
+                $this->getFriends();
+            }
+
+            $oldRelations = $this->_Friends;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Friends = array();
+
+        foreach ($data as $object) {
+            $this->addFriends($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Friends_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\Friends $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function addFriends(\IvozProvider\Model\Raw\Friends $data)
+    {
+        $this->_Friends[] = $data;
+        $this->_setLoaded('FriendsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Friends_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Friends
+     */
+    public function getFriends($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FriendsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Friends = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Friends;
     }
 
     /**

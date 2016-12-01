@@ -48,7 +48,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
      *     'countryId': '', 
-     *     'billInboundCalls': ''
+     *     'billInboundCalls': '', 
+     *     'friendValue': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -66,7 +67,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
      *     'countryId': '', 
-     *     'billInboundCalls': ''
+     *     'billInboundCalls': '', 
+     *     'friendValue': ''
      * }]")
      */
     public function indexAction()
@@ -101,6 +103,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'peeringContractId',
                 'countryId',
                 'billInboundCalls',
+                'friendValue',
             );
         }
 
@@ -190,7 +193,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'conferenceRoomId': '', 
      *     'peeringContractId': '', 
      *     'countryId': '', 
-     *     'billInboundCalls': ''
+     *     'billInboundCalls': '', 
+     *     'friendValue': ''
      * }")
      */
     public function getAction()
@@ -224,6 +228,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'peeringContractId',
                 'countryId',
                 'billInboundCalls',
+                'friendValue',
             );
         }
 
@@ -270,7 +275,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externalCallFilterId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordCalls", nullable=false, type="varchar", sample="", description="[enum:none|all|inbound|outbound]")
-     * @ApiParams(name="routeType", nullable=false, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]")
+     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
@@ -280,6 +285,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="billInboundCalls", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/ddis/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -321,7 +327,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externalCallFilterId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordCalls", nullable=false, type="varchar", sample="", description="[enum:none|all|inbound|outbound]")
-     * @ApiParams(name="routeType", nullable=false, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]")
+     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
@@ -331,6 +337,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="peeringContractId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="billInboundCalls", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -457,8 +464,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 ),
                 'routeType' => array(
                     'type' => "varchar",
-                    'required' => true,
-                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]',
+                    'required' => false,
+                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]',
                 ),
                 'userId' => array(
                     'type' => "int",
@@ -503,6 +510,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'billInboundCalls' => array(
                     'type' => "tinyint",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'friendValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -548,8 +560,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 ),
                 'routeType' => array(
                     'type' => "varchar",
-                    'required' => true,
-                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom]',
+                    'required' => false,
+                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]',
                 ),
                 'userId' => array(
                     'type' => "int",
@@ -594,6 +606,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'billInboundCalls' => array(
                     'type' => "tinyint",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'friendValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
             )

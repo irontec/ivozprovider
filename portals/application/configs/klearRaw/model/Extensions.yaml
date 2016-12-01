@@ -32,6 +32,7 @@ production:
           'IVRCustom': _('IVRCustom')
           'huntGroup': _('huntGroup')
           'conferenceRoom': _('conferenceRoom')
+          'friend': _('friend')
     IVRCommonId: 
       title: _('Ivrcommonid')
       type: select
@@ -99,6 +100,10 @@ production:
         'null': _("Unassigned")
     numberValue: 
       title: _('Numbervalue')
+      type: text
+      maxLength: 25
+    friendValue: 
+      title: _('Friendvalue')
       type: text
       maxLength: 25
 staging: 

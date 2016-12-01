@@ -619,6 +619,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getFriends(null, null, true) !== null) {
+                    $friends = $model->getFriends();
+
+                    if (!is_array($friends)) {
+
+                        $friends = array($friends);
+                    }
+
+                    foreach ($friends as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getHuntGroups(null, null, true) !== null) {
                     $huntGroups = $model->getHuntGroups();
 

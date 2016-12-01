@@ -18,6 +18,8 @@ class IvozProvider_Klear_Ghost_DDITarget extends KlearMatrix_Model_Field_Ghost_A
         // We already have the route destination
         if ($routeType == 'number') {
             return $model->getNumberValue();
+        } else if ($routeType == 'friend') {
+            return $model->getFriendValue();
         }
 
         if ($routeType) {

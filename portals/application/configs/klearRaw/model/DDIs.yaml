@@ -64,7 +64,6 @@ production:
     routeType: 
       title: _('Routetype')
       type: select
-      required: true
       source: 
         data: inline
         values: 
@@ -74,6 +73,7 @@ production:
           'huntGroup': _('huntGroup')
           'fax': _('fax')
           'conferenceRoom': _('conferenceRoom')
+          'friend': _('friend')
     userId: 
       title: _('Userid')
       type: select
@@ -189,6 +189,10 @@ production:
             title: _("No")
           '1': 
             title: _("Yes")
+    friendValue: 
+      title: _('Friendvalue')
+      type: text
+      maxLength: 25
 staging: 
   _extends: production
 testing: 

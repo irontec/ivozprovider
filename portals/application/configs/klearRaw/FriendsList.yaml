@@ -1,0 +1,102 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include FriendsPatternsList.yaml
+#include AstPsEndpointsList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: friendsList_screen
+  screens: &friends_screensLink 
+    friendsList_screen: &friendsList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Friends
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Friend', 'Friends', 0), "[format| (%parent%)]")
+      fields: &friends_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            friendsEdit_screen: true
+            friendsPatternsList_screen: true
+            astPsEndpointsList_screen: true
+          dialogs: 
+            friendsDel_dialog: true
+          default: friendsEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          friendsNew_screen: true
+        dialogs: 
+          friendsDel_dialog: true
+    friendsNew_screen: &friendsNew_screenLink 
+      <<: *Friends
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Friend', 'Friends', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          friendsEdit_screen: true
+    friendsEdit_screen: &friendsEdit_screenLink 
+      <<: *Friends
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Friend', 'Friends', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Friend', 'Friends', 1), "[format| (%item%)]")
+    #friendsPatterns: 
+    <<: *friendsPatterns_screensLink
+    friendsPatternsList_screen: 
+      <<: *friendsPatternsList_screenLink
+      filterField: friendId
+      parentOptionCustomizer: 
+        - recordCount
+    friendsPatternsNew_screen: 
+      <<: *friendsPatternsNew_screenLink
+      filterField: friendId
+    friendsPatternsEdit_screen: 
+      <<: *friendsPatternsEdit_screenLink
+      filterField: friendId
+
+    #astPsEndpoints: 
+    astPsEndpointsList_screen: 
+      <<: *astPsEndpointsList_screenLink
+      filterField: friendId
+      parentOptionCustomizer: 
+        - recordCount
+    astPsEndpointsNew_screen: 
+      <<: *astPsEndpointsNew_screenLink
+      filterField: friendId
+    astPsEndpointsEdit_screen: 
+      <<: *astPsEndpointsEdit_screenLink
+      filterField: friendId
+
+  dialogs: &friends_dialogsLink 
+    friendsDel_dialog: &friendsDel_dialogLink 
+      <<: *Friends
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Friend', 'Friends', 1))
+      description: _("Do you want to delete this %s?", ngettext('Friend', 'Friends', 1))
+      message: _("%s successfully deleted.", ngettext('Friend', 'Friends', 1))
+      multiItem: 1
+      labelOnList: 1
+  # friendsPatterns dialogs: 
+    <<: *friendsPatterns_dialogsLink
+  # astPsEndpoints dialogs: 
+    <<: *astPsEndpoints_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

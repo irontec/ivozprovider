@@ -39,40 +39,50 @@ production:
     routeType: 
       title: _('Route type')
       type: select
-      required: true
       source: 
         data: inline
         values: 
+          '__null__':
+            title: _("Unassigned")
+            visualFilter:
+              show: [ ]
+              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "conferenceRoomId", "friendValue", "recordCalls" ]
           'user':
             title: _('user')
             visualFilter:
               show: ["userId", "recordCalls" ]
-              hide: ["IVRCommonId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId" ]
+              hide: ["IVRCommonId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId", "friendValue" ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
               show: [ "IVRCommonId", "recordCalls" ]
-              hide: [ "userId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId" ]
+              hide: [ "userId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId", "friendValue" ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
               show: [ "IVRCustomId", "recordCalls" ]
-              hide: [ "IVRCommonId", "userId", "huntGroupId", "faxId", "conferenceRoomId" ]
+              hide: [ "IVRCommonId", "userId", "huntGroupId", "faxId", "conferenceRoomId", "friendValue" ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
               show: [ "huntGroupId", "recordCalls" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "userId", "faxId", "conferenceRoomId" ]
+              hide: [ "IVRCommonId", "IVRCustomId", "userId", "faxId", "conferenceRoomId", "friendValue" ]
           'fax':
             title: _('fax')
             visualFilter:
               show: [ "faxId", "recordCalls" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "conferenceRoomId", "recordCalls"]
+              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "conferenceRoomId", "recordCalls", "friendValue"]
           'conferenceRoom':
             title: _('ConferenceRoom')
             visualFilter:
               show: [ "conferenceRoomId", "recordCalls" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId" ]
+              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "friendValue" ]
+          'friend':
+            title: _('Friend')
+            visualFilter:
+              show: [ "friendValue", "recordCalls" ]
+              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "conferenceRoomId" ]
+
     recordCalls: 
       title: _('Record call')
       type: select
@@ -198,6 +208,10 @@ production:
             template: '%name%'
           order: name
         'null': _("Unassigned")
+    friendValue: 
+      title: _('Friend value')
+      type: text
+      maxLength: 25
     target:
       title: _('Target')
       type: ghost
