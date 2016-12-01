@@ -59,7 +59,7 @@ class Terminals extends Raw\Terminals
                 ->setAllow($model->getAllow())
                 ->setDirectmediaMethod($model->getDirectmediaMethod())
                 ->setSubscribecontext('company' . $model->getCompanyId())
-                ->setOutboundProxy('sip:users.ivozprovider.local')
+                ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
                 ->save($forceInsert);
 
             // Replicate Terminal into ast_ps_aors
