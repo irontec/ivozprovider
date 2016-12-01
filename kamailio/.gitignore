@@ -1,2 +1,4 @@
 custom-defines.cfg
 custom-global-params.cfg
+*.key
+*.crt
