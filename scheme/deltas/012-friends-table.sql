@@ -1,3 +1,7 @@
+--
+-- Main Friends table
+-- Basic required fields to configure a trunk for both asterisk and kamailio
+--
 CREATE TABLE `Friends` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `companyId` int(10) unsigned NOT NULL,
@@ -33,6 +37,11 @@ CREATE TABLE `Friends` (
   CONSTRAINT `Friends_ibfk_4` FOREIGN KEY (`outgoingDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 
+--
+-- Friends Patterns
+-- This table is used to determine if a dialed number (that doesn't match an existing Extension) will
+-- be routed through this trunk
+--
 CREATE TABLE `FriendsPatterns` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `friendId` int(10) unsigned NOT NULL,
@@ -43,15 +52,30 @@ CREATE TABLE `FriendsPatterns` (
   CONSTRAINT `FriendsPatterns_ibfk_1` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 
+--
+-- A simple view to authenticate friendly trunks or terminals with just a single query
+--
+CREATE VIEW `kam_users_authdb` AS SELECT name, domain, password FROM `Friends` UNION SELECT name, domain, password FROM `Terminals`;
+
+--
+-- Friends are configured in Asterisk Endpoint table more or less like terminals do
+--
 ALTER TABLE `ast_ps_endpoints` ADD `trust_id_inbound` enum('yes','no') DEFAULT NULL;
 ALTER TABLE `ast_ps_endpoints` ADD `friendId` int(10) unsigned DEFAULT NULL AFTER `terminalId`;
 ALTER TABLE `ast_ps_endpoints` ADD FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE CASCADE;
+
+-- We also updated the endpoints contexts in asterisk
+-- * proxyTrunks will now use [trunks] (statically defined in pjsip.conf)
+-- * users/terminals will now use [users]
+-- * friendly trunks will now use [friends]
 UPDATE `ast_ps_endpoints` SET `context` = 'users' where `terminalId` IS NOT NULL;
 
-CREATE VIEW `kam_users_authdb` AS SELECT name, domain, password FROM `Friends` UNION SELECT name, domain, password FROM `Terminals`;
-
-ALTER TABLE `Extensions` ADD `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend]';
+--
+-- We now allow Extensions and DDIs to route a number through a friendly trunk
+-- Which trunk will be used is based on the patterns avaialable in FriendPatterns table (see above)
+--
+ALTER TABLE `Extensions` MODIFY `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend]';
 ALTER TABLE `Extensions` ADD `friendValue` varchar(25) DEFAULT NULL;
-ALTER TABLE `DDIs` ADD `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]';
+ALTER TABLE `DDIs` MODIFY `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]';
 ALTER TABLE `DDIs` ADD `friendValue` varchar(25) DEFAULT NULL;
 
