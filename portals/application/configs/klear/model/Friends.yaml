@@ -118,6 +118,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\CallACL
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - name
@@ -149,6 +150,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 
             fields: 
               - DDIE164
