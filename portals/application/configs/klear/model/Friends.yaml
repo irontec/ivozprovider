@@ -1,3 +1,6 @@
+#include ../conf.d/codecsHelp.yaml
+#include ../conf.d/updateMethodHelp.yaml
+
 production: 
   class: \IvozProvider\Model\Friends
   fields: 
@@ -76,27 +79,6 @@ production:
             visualFilter:
               hide: ["password"]
               show: []
-    disallow: 
-      title: _('Disallowed codecs')
-      type: text
-      trim: both
-      defaultValue: all
-      maxLength: 100
-    allow: 
-      title: _('Allowed codecs')
-      type: text
-      trim: both
-      defaultValue: alaw
-      maxLength: 100
-    direct_media_method: 
-      title: _('CallerID update method')
-      type: select
-      defaultValue: invite
-      source: 
-        data: inline
-        values: 
-          'yes': _('yes')
-          'no': _('no')
     password: 
       title: ngettext('Password', 'Passwords', 1)
       type: text
@@ -124,7 +106,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Unassigned")
+        'null': _("Allow all outgoing calls")
     countryId: 
       title: _('Country code')
       type: select
@@ -139,10 +121,22 @@ production:
             template: '%name% (+%calling_code%)'
           order: code
         'null': _("Company's default")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Outgoing calls coming from Friend must have this country format")
+        label: _("Need help?")
     areaCode: 
       title: _('Areacode')
       type: text
       maxLength: 10
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Outgoing calls coming from Friend must have this area code format")
+        label: _("Need help?")
     outgoingDDIId: 
       title: _('Outgoing DDI')
       type: select
@@ -157,6 +151,12 @@ production:
             template: '+%DDIE164%'
           order: DDIE164
         'null': _("Unassigned")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("No outgoing calls will be allowed if this field is unassigned")
+        label: _("Need help?")
     priority: 
       title: _('Priority')
       type: number
@@ -164,15 +164,19 @@ production:
       source: 
         control: Spinner
     disallow: 
-      title: _('Disallow')
+      title: _('Disallowed codecs')
       type: text
+      trim: both
       defaultValue: all
-      maxLength: 200
+      maxLength: 100
+      <<: *codecsHelp
     allow: 
-      title: _('Allow')
+      title: _('Allowed codecs')
       type: text
+      trim: both
       defaultValue: alaw
-      maxLength: 200
+      maxLength: 100
+      <<: *codecsHelp
     direct_media_method: 
       title: _('CallerID update method')
       type: select
@@ -180,8 +184,9 @@ production:
       source: 
         data: inline
         values: 
-          'invite': 'INVITE'
-          'update': 'UPDATE'
+          'invite': 'invite'
+          'update': 'update'
+      <<: *updateMethodHelp
     callerid_update_header: 
       title: _('CallerID update header')
       type: select
