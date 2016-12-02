@@ -53,9 +53,9 @@ production:
           filterClass: IvozProvider_Klear_Filter_Company          
           fieldName: 
             fields: 
-              - DDI
-            template: '%DDI%'
-          order: DDI
+              - DDIE164
+            template: '+%DDIE164%'
+          order: DDIE164
         'null': _("Unassigned")
 staging: 
   _extends: production

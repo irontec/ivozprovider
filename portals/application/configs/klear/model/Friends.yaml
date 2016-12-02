@@ -151,9 +151,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\DDIs
           fieldName: 
             fields: 
-              - DDI
-            template: '%DDI%'
-          order: DDI
+              - DDIE164
+            template: '+%DDIE164%'
+          order: DDIE164
         'null': _("Unassigned")
     priority: 
       title: _('Priority')
