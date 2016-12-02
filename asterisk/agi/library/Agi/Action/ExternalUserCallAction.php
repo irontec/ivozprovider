@@ -72,8 +72,6 @@ class ExternalUserCallAction extends ExternalCallAction
             $this->agi->error("User %s [friend%d] has not OutgoingDDI configured", $user->getName(), $user->getId());
             $this->agi->decline();
             return;
-        } else {
-            $this->agi->setCallerIdNum($ddi->getDDI());
         }
 
         // Call the PSJIP endpoint

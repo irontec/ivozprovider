@@ -39,9 +39,6 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
-        // Outgoing presentation
-        $ddi = $friend->getOutgoingDDI();
-
         // Convert to E.164 format
         $e164number = $friend->preferredToE164($number);
 
@@ -59,21 +56,22 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
-        // Update caller displayed number
-        $this->updateOriginConnectedLine($e164number);
-        // Check if DDI has recordings enabled
-        $this->checkDDIRecording($ddi);
-        // Check if DDI belong to platform
-        $this->checkDDIBounced($e164number);
+        // Outgoing presentation
+        $ddi = $friend->getOutgoingDDI();
 
-        // We need Outgoing DDI for external call presentation
+        // Update caller displayed number
         if (!$ddi) {
             $this->agi->error("Friend %s [friend%d] has not OutgoingDDI configured",  $friend->getName(), $friend->getId());
             $this->agi->decline();
             return;
         } else {
-            $this->agi->setCallerIdNum($ddi->getDDI());
+            $this->agi->setCallerIdNum($ddi->getDDIE164());
         }
+
+        // Check if DDI has recordings enabled
+        $this->checkDDIRecording($ddi);
+        // Check if DDI belong to platform
+        $this->checkDDIBounced($e164number);
 
 
         // Call the PSJIP endpoint
