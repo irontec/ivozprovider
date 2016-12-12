@@ -164,7 +164,7 @@ class AstPsEndpoints extends TableAbstract
 	    'COLUMN_NAME' => 'context',
 	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => 'outgoing',
+	    'DEFAULT' => 'users',
 	    'NULLABLE' => false,
 	    'LENGTH' => '40',
 	    'SCALE' => NULL,

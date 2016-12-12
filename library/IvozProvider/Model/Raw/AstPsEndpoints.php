@@ -268,7 +268,7 @@ class AstPsEndpoints extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'context' => 'outgoing',
+            'context' => 'users',
             'disallow' => 'all',
             'allow' => 'all',
             'subscribecontext' => 'default',

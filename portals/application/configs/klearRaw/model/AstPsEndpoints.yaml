@@ -44,7 +44,7 @@ production:
     context: 
       title: _('Context')
       type: text
-      defaultValue: outgoing
+      defaultValue: users
       maxLength: 40
     disallow: 
       title: _('Disallow')

@@ -122,13 +122,6 @@ class HuntGroups extends ModelAbstract
 
 
     /**
-     * Parent relation HuntGroups_ibfk_4
-     *
-     * @var \IvozProvider\Model\Raw\Users
-     */
-    protected $_NoAnswerVoiceMailUser;
-
-    /**
      * Parent relation HuntGroups_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -148,6 +141,13 @@ class HuntGroups extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Extensions
      */
     protected $_NoAnswerExtension;
+
+    /**
+     * Parent relation HuntGroups_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\Users
+     */
+    protected $_NoAnswerVoiceMailUser;
 
 
     /**
@@ -205,10 +205,6 @@ class HuntGroups extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'HuntGroupsIbfk4'=> array(
-                    'property' => 'NoAnswerVoiceMailUser',
-                    'table_name' => 'Users',
-                ),
             'HuntGroupsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -220,6 +216,10 @@ class HuntGroups extends ModelAbstract
             'HuntGroupsIbfk3'=> array(
                     'property' => 'NoAnswerExtension',
                     'table_name' => 'Extensions',
+                ),
+            'HuntGroupsIbfk4'=> array(
+                    'property' => 'NoAnswerVoiceMailUser',
+                    'table_name' => 'Users',
                 ),
         ));
 
@@ -705,57 +705,6 @@ class HuntGroups extends ModelAbstract
     }
 
     /**
-     * Sets parent relation NoAnswerVoiceMailUser
-     *
-     * @param \IvozProvider\Model\Raw\Users $data
-     * @return \IvozProvider\Model\Raw\HuntGroups
-     */
-    public function setNoAnswerVoiceMailUser(\IvozProvider\Model\Raw\Users $data)
-    {
-        $this->_NoAnswerVoiceMailUser = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setNoAnswerVoiceMailUserId($primaryKey);
-        }
-
-        $this->_setLoaded('HuntGroupsIbfk4');
-        return $this;
-    }
-
-    /**
-     * Gets parent NoAnswerVoiceMailUser
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function getNoAnswerVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'HuntGroupsIbfk4';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_NoAnswerVoiceMailUser = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_NoAnswerVoiceMailUser;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -906,6 +855,57 @@ class HuntGroups extends ModelAbstract
         }
 
         return $this->_NoAnswerExtension;
+    }
+
+    /**
+     * Sets parent relation NoAnswerVoiceMailUser
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setNoAnswerVoiceMailUser(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_NoAnswerVoiceMailUser = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setNoAnswerVoiceMailUserId($primaryKey);
+        }
+
+        $this->_setLoaded('HuntGroupsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent NoAnswerVoiceMailUser
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function getNoAnswerVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'HuntGroupsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_NoAnswerVoiceMailUser = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_NoAnswerVoiceMailUser;
     }
 
     /**

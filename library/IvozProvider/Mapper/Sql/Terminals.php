@@ -47,7 +47,7 @@ class Terminals extends Raw\Terminals
             if (is_null($endpoint)) {
                 $forceInsert = true;
                 $endpoint = new \IvozProvider\Model\AstPsEndpoints();
-                $endpoint->setContext("outgoing")
+                $endpoint->setContext("users")
                     ->setSendDiversion("yes")
                     ->setSendPai("yes");
             }

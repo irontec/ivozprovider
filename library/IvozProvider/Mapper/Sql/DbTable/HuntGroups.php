@@ -40,11 +40,6 @@ class HuntGroups extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'HuntGroupsIbfk4' => array(
-            'columns' => 'noAnswerVoiceMailUserId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
         'HuntGroupsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -58,6 +53,11 @@ class HuntGroups extends TableAbstract
         'HuntGroupsIbfk3' => array(
             'columns' => 'noAnswerExtensionId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
+            'refColumns' => 'id'
+        ),
+        'HuntGroupsIbfk4' => array(
+            'columns' => 'noAnswerVoiceMailUserId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
             'refColumns' => 'id'
         )
     );
