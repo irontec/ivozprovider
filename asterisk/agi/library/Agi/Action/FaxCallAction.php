@@ -62,12 +62,17 @@ class FaxCallAction extends RouterAction
         $did = $this->agi->getExtension();
 
         // Fax location is lbased on asterisk configuration
-        $faxdir = $this->agi->getVariable(
+        $spoolDir = $this->agi->getVariable(
                         "AST_CONFIG(asterisk.conf,directories,astspooldir)");
 
         // Set destination file an fax options
+        $faxDir = $spoolDir . "/faxes";
+        if(!is_dir($faxDir)){
+            mkdir($faxDir,0777);
+        }
+
         $this->agi->setVariable("FAXFILE",
-                        $faxdir . "/faxes/fax-" . $did . "-" . time() . ".tif");
+                        $spoolDir . "/faxes/fax-" . $did . "-" . time() . ".tif");
         $this->agi->setVariable("FAXOPT(headerinfo)", $fax->getName());
         $this->agi->setVariable("FAXOPT(localstationid)", $did);
 
