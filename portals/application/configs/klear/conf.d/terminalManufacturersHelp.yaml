@@ -46,6 +46,7 @@ terminalManufacturersHelp:
                         <li><a href='/templates/provisioning/cisco/502g.cfg' target='_blank' >502G generic</a></li>
                         <li><a href='/templates/provisioning/cisco/504g.cfg' target='_blank' >504G generic</a></li>
                         <li><a href='/templates/provisioning/cisco/509g.cfg' target='_blank' >509G generic</a></li>
+                        <li><a href='/templates/provisioning/cisco/514g.cfg' target='_blank' >514G generic</a></li>
                         <li><a href='/templates/provisioning/cisco/525g.cfg' target='_blank' >525G generic</a></li>
                      </ul>
                 </li>
@@ -53,14 +54,15 @@ terminalManufacturersHelp:
                 <li>CISCO specific
                      <ul style='margin-left: 30px'>
                         <li><a href='/templates/provisioning/cisco/502g-mac.cfg' target='_blank' >502G specific</a></li>
-                        <li><a href='/templates/provisioning/cisco/509g-mac.cfg' target='_blank' >509G specific</a></li>
                         <li><a href='/templates/provisioning/cisco/504g-mac.cfg' target='_blank' >504G specific</a></li>
+                        <li><a href='/templates/provisioning/cisco/509g-mac.cfg' target='_blank' >509G specific</a></li>
+                        <li><a href='/templates/provisioning/cisco/514g-mac.cfg' target='_blank' >514G specific</a></li>
                         <li><a href='/templates/provisioning/cisco/525g-mac.cfg' target='_blank' >525G specific</a></li>
                     </ul>
                 </li>
                 </br>
                 </br>
-                <li>YEALINK specific
+                <li>YEALINK generic
                      <ul style='margin-left: 30px'>
                         <li><a href='/templates/provisioning/yealink/yealinkt21P_E2.cfg' target='_blank' >yealinkt21P_E2 generic</a></li>
                         <li><a href='/templates/provisioning/yealink/yealinkt21P.cfg' target='_blank' >yealinkt21P generic</a></li>
@@ -68,10 +70,10 @@ terminalManufacturersHelp:
                      </ul>
                 </li>
                 <p></p>
-                <li>YEALINK generic
+                <li>YEALINK specific
                      <ul style='margin-left: 30px'>
-                        <li><a href='/templates/provisioning/yealink/yealinkt21P-mac.cfg' target='_blank' >yealinkt21P specific</a></li>
                         <li><a href='/templates/provisioning/yealink/yealinkt21P_E2-mac.cfg' target='_blank' >yealinkt21P_E2 specific</a></li>
+                        <li><a href='/templates/provisioning/yealink/yealinkt21P-mac.cfg' target='_blank' >yealinkt21P specific</a></li>
                         <li><a href='/templates/provisioning/yealink/yealinkt27P-mac.cfg' target='_blank' >yealinkt27P specific</a></li>
                     </ul>
                 </li>
