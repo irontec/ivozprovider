@@ -27,10 +27,10 @@ if [ -z "$2" ]; then
     /etc/init.d/mysql start
 
     # Load Timezones
-    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -uroot -p"$MYSQL_PASSWORD" mysql
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
 
     # Create database if it doesn't exist
-    /usr/bin/mysql -uroot -p"$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS ivozprovider"
+    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS ivozprovider"
 
     # Fist time, run phing on scheme dir
     pushd /opt/irontec/ivozprovider/scheme
