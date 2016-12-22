@@ -111,6 +111,8 @@ function enable_services()
     /bin/systemctl enable kamailio@users
     /bin/systemctl enable kamailio@trunks
     /bin/systemctl enable asterisk
+    /bin/systemctl enable cdrparser.timer
+    /bin/systemctl enable ivozprovider-recordings.timer
 }
 
 # Run while reconfigure or first install
