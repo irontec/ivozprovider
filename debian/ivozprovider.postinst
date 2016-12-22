@@ -24,15 +24,14 @@ function setup_mysql()
     # Get debian-sys-main password
     MYSQL_USER="debian-sys-maint"
     MYSQL_PASSWORD=$(awk '$1 == "password" { print $3; exit }' /etc/mysql/debian.cnf)
-    [ -n "$MYSQL_PASSWORD" ] && MYSQL_PASSWD_PARAM=" -p '$MYSQL_PASSWORD'"
 
     # Change database password
     db_get ivozprovider/mysql_password      || true
-    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "FLUSH PRIVILEGES;"
+    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
 
 }
 
@@ -58,9 +57,8 @@ function setup_proxies()
     TRUNKS_ADDRESS=$RET
 
     # Update database tables
-    [ -n "$MYSQL_PASSWORD" ] && MYSQL_PASSWD_PARAM=" -p '$MYSQL_PASSWORD'"
-    /usr/bin/mysql -uroot "$MYSQL_PASSWD_PARAM" ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
-    /usr/bin/mysql -uroot "$MYSQL_PASSWD_PARAM" ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
+    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
+    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
 }
 
 function setup_pbx()
@@ -83,6 +81,12 @@ function setup_rtpengine()
     USERS_ADDRESS=$RET
     # Update rtpengine listen address
     sed -i -r "s/(IP *= *).*/\1$RET/" /etc/default/rtpengine
+}
+
+function setup_sshd()
+{
+    # Allow root login using password
+    sed -i -r "s/(PermitRootLogin) .*/\1 yes/"  /etc/ssh/sshd_config
 }
 
 function start_services()
@@ -124,6 +128,8 @@ if [ "$1" == "configure" ] || [ -z "$2" ]; then
     setup_rtpengine
     # Setup pbx system
     setup_pbx
+    # Setup ssh daemon
+    setup_sshd
     # Restart services
     start_services
 fi
