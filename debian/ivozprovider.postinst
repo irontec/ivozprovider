@@ -24,14 +24,15 @@ function setup_mysql()
     # Get debian-sys-main password
     MYSQL_USER="debian-sys-maint"
     MYSQL_PASSWORD=$(awk '$1 == "password" { print $3; exit }' /etc/mysql/debian.cnf)
+    [ -n "$MYSQL_PASSWORD" ] && MYSQL_PASSWD_PARAM=" -p '$MYSQL_PASSWORD'"
 
     # Change database password
     db_get ivozprovider/mysql_password      || true
-    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
-    /usr/bin/mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "FLUSH PRIVILEGES;"
+    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
+    /usr/bin/mysql -u"$MYSQL_USER" "$MYSQL_PASSWD_PARAM" -e "FLUSH PRIVILEGES;"
 
 }
 
@@ -50,15 +51,16 @@ function setup_proxies()
 {
     # Setup portals mysql address
     db_get ivozprovider/mysql_password      || true
-    MYSQL_PASS=$RET
+    MYSQL_PASSWORD=$RET
     db_get ivozprovider/users_address       || true
     USERS_ADDRESS=$RET
     db_get ivozprovider/trunks_address      || true
     TRUNKS_ADDRESS=$RET
 
     # Update database tables
-    /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
-    /usr/bin/mysql -uroot -p$MYSQL_PASS ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
+    [ -n "$MYSQL_PASSWORD" ] && MYSQL_PASSWD_PARAM=" -p '$MYSQL_PASSWORD'"
+    /usr/bin/mysql -uroot "$MYSQL_PASSWD_PARAM" ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
+    /usr/bin/mysql -uroot "$MYSQL_PASSWD_PARAM" ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
 }
 
 function setup_pbx()
