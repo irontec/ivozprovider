@@ -267,7 +267,7 @@ class Users extends Raw\Users
         // Get user country
         $country = $this->getCountry();
         // Return e164 number dialed by this user
-        return $country->preferredToE164($prefnumber, $this->getAreaCode());
+        return $country->preferredToE164($prefnumber, $this->getAreaCodeValue());
     }
 
     /**
@@ -280,7 +280,7 @@ class Users extends Raw\Users
         // Get User country
         $country = $this->getCountry();
         // Convert from E164 to user country preferred format
-        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
+        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCodeValue());
         // Add Company outbound prefix
         return $this->getCompany()->addOutboundPrefix($prefnumber);
     }
@@ -290,12 +290,15 @@ class Users extends Raw\Users
      *
      * @return string
      */
-    public function getAreaCode()
+    public function getAreaCodeValue()
     {
+        if (!$this->getCountry()->hasAreaCode())
+            return "";
+
         if (!empty($this->_areaCode))
             return $this->_areaCode;
 
-        return $this->getCompany()->getAreaCode();
+        return $this->getCompany()->getAreaCodeValue();
     }
 
 }

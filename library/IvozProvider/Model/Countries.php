@@ -88,4 +88,14 @@ class Countries extends Raw\Countries
         return $preferred;
     }
 
+    /**
+     * Check if a country uses Area code
+     *
+     * return true if the country has area code in its e164 pattern
+     */
+    public function hasAreaCode()
+    {
+        return strpos($this->getE164Pattern(), "ac") !== FALSE;
+    }
+
 }

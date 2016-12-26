@@ -194,7 +194,7 @@ class Companies extends Raw\Companies
         // Get user country
         $country = $this->getCountries();
         // Return e164 number dialed by this user
-        return $country->preferredToE164($prefnumber, $this->getAreaCode());
+        return $country->preferredToE164($prefnumber, $this->getAreaCodeValue());
     }
 
     /**
@@ -207,11 +207,23 @@ class Companies extends Raw\Companies
         // Get Compnay country
         $country = $this->getCountries();
         // Convert from E164 to user country preferred format
-        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
+        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCodeValue());
         // Add Company outbound prefix
         return $this->addOutboundPrefix($prefnumber);
     }
 
+    /**
+     * Gets company area code if company country uses area code
+     *
+     * @return string
+     */
+    public function getAreaCodeValue()
+    {
+        if (!$this->getCountries()->hasAreaCode())
+            return "";
+
+        return $this->getAreaCode();
+    }
 
     public function removeOutboundPrefix($number)
     {
