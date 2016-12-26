@@ -73,6 +73,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Companies
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -130,6 +131,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -217,6 +219,7 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\Invoices
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - number
