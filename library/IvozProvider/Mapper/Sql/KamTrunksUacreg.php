@@ -33,6 +33,14 @@ class KamTrunksUacreg extends Raw\KamTrunksUacreg
         if (empty($model->getAuthProxy())) {
             $model->setAuthProxy('sip:'.$model->getRDomain());
         }
+
+        // Multi-DDI support
+        $multiDDI_is_enabled_in_new_item = !$model->getPrimaryKey() && $model->getMultiDdi(); # New item
+        $multiDDI_has_been_enabled = $model->getPrimaryKey() && $model->hasChange('multiDDI') && $model->getMultiDdi(); # Existing item
+        if ($multiDDI_has_been_enabled or $multiDDI_is_enabled_in_new_item) {
+            $model->setLUuid(round(microtime(true) * 1000));
+        }
+
         $response =  parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
         try {
             $this->_sendXmlRcp();

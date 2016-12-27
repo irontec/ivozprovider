@@ -63,6 +63,7 @@ class KamTrunksUacreg extends MapperAbstract
                 'reg_delay' => $model->getRegDelay(),
                 'brandId' => $model->getBrandId(),
                 'peeringContractId' => $model->getPeeringContractId(),
+                'multiDDI' => $model->getMultiDDI(),
             );
         } else {
             $result = array();
@@ -571,7 +572,8 @@ class KamTrunksUacreg extends MapperAbstract
                   ->setFlags($data['flags'])
                   ->setRegDelay($data['reg_delay'])
                   ->setBrandId($data['brandId'])
-                  ->setPeeringContractId($data['peeringContractId']);
+                  ->setPeeringContractId($data['peeringContractId'])
+                  ->setMultiDDI($data['multiDDI']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setLUuid($data->{'l_uuid'})
@@ -587,7 +589,8 @@ class KamTrunksUacreg extends MapperAbstract
                   ->setFlags($data->{'flags'})
                   ->setRegDelay($data->{'reg_delay'})
                   ->setBrandId($data->{'brandId'})
-                  ->setPeeringContractId($data->{'peeringContractId'});
+                  ->setPeeringContractId($data->{'peeringContractId'})
+                  ->setMultiDDI($data->{'multiDDI'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\KamTrunksUacreg) {
             $entry->setId($data->getId())
@@ -604,7 +607,8 @@ class KamTrunksUacreg extends MapperAbstract
                   ->setFlags($data->getFlags())
                   ->setRegDelay($data->getRegDelay())
                   ->setBrandId($data->getBrandId())
-                  ->setPeeringContractId($data->getPeeringContractId());
+                  ->setPeeringContractId($data->getPeeringContractId())
+                  ->setMultiDDI($data->getMultiDDI());
 
         }
 

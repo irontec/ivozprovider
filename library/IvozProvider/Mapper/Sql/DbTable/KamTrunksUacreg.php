@@ -308,6 +308,23 @@ class KamTrunksUacreg extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'multiDDI' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'kam_trunks_uacreg',
+	    'COLUMN_NAME' => 'multiDDI',
+	    'COLUMN_POSITION' => 16,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

@@ -128,6 +128,13 @@ class KamTrunksUacreg extends ModelAbstract
      */
     protected $_peeringContractId;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_multiDDI;
+
 
     /**
      * Parent relation kam_trunks_uacreg_ibfk_1
@@ -160,6 +167,7 @@ class KamTrunksUacreg extends ModelAbstract
         'reg_delay'=>'regDelay',
         'brandId'=>'brandId',
         'peeringContractId'=>'peeringContractId',
+        'multiDDI'=>'multiDDI',
     );
 
     /**
@@ -205,6 +213,7 @@ class KamTrunksUacreg extends ModelAbstract
             'expires' => '0',
             'flags' => '0',
             'regDelay' => '0',
+            'multiDDI' => '0',
         );
 
         $this->_initFileObjects();
@@ -752,6 +761,40 @@ class KamTrunksUacreg extends ModelAbstract
     public function getPeeringContractId()
     {
         return $this->_peeringContractId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\KamTrunksUacreg
+     */
+    public function setMultiDDI($data)
+    {
+
+        if ($this->_multiDDI != $data) {
+            $this->_logChange('multiDDI', $this->_multiDDI, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_multiDDI = $data;
+
+        } else if (!is_null($data)) {
+            $this->_multiDDI = (int) $data;
+
+        } else {
+            $this->_multiDDI = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column multiDDI
+     *
+     * @return int
+     */
+    public function getMultiDDI()
+    {
+        return $this->_multiDDI;
     }
 
     /**

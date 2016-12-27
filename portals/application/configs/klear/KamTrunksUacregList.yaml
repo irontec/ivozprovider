@@ -17,6 +17,7 @@ production:
         <<: *forcedBrand
       fields:
         blacklist:
+          l_uuid: true 
           l_username: true 
           l_domain: true 
           realm: true 
@@ -26,8 +27,9 @@ production:
           auth_proxy: true
           flags: true
           reg_delay: true
+          multiDDI: true
         order:
-          l_uuid: true
+          targetDDI: true
           r_username: true
           r_domain: true
         options: 
@@ -45,7 +47,8 @@ production:
             r_username: 5
             r_domain: 5
             auth_password: 12
-            l_uuid: 12
+            multiddi: 4
+            l_uuid: 8
         group1:
           label: _("Optional Settings")
           colsPerRow: 12
@@ -72,6 +75,7 @@ production:
       shortcutOption: N
       fields:
         blacklist:
+          targetDDI: true
           l_username: true 
           l_domain: true 
           flags: true
@@ -97,12 +101,14 @@ production:
         <<: *forcedBrand
       fields:
         blacklist:
+          targetDDI: true
           l_username: true 
           l_domain: true 
           flags: true
           reg_delay: true
         order:
           r_username: true
+          multiddi: true
           l_uuid: true
           r_domain: true
           auth_password: true

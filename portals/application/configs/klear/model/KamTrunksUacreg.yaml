@@ -1,6 +1,23 @@
 production: 
   class: \IvozProvider\Model\KamTrunksUacreg
   fields: 
+    multiDDI: 
+      title: _('Multiddi')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+            visualFilter:
+              show: ["l_uuid"]
+              hide: []
+          '1': 
+            title: _("Yes")
+            visualFilter:
+              show: []
+              hide: ["l_uuid"]
     l_uuid: 
       title: _('DDI')
       type: text
@@ -11,7 +28,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Si es una cuenta multiDID, introducir uno de ellos (se envía en el Contact).")
+        text: _("Is sent in the username of Contact header in generated REGISTER.")
         label: _("¿Necesitas ayuda?")
       required: true
     l_username: 
@@ -123,6 +140,12 @@ production:
       defaultValue: 0
       source:
         control: Spinner
+    targetDDI:
+      title: _('DDI')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamTrunksUacRegTargetDDI
+        method: getData
 staging: 
   _extends: production
 testing: 
