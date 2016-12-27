@@ -28,7 +28,14 @@ production:
     email: 
       title: ngettext('Email', 'Emails', 1)
       type: text
+      maxLength: 100
       trim: both
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Used as voicemail reception and user portal credential")
+        label: _("Need help?")
     pass: 
       title: ngettext('Password', 'Passwords', 1)
       type: password
@@ -177,7 +184,7 @@ production:
       title: _('Username')
       type: text
       trim: both
-      maxLength: 50
+      maxLength: 100
     maxCalls: 
       title: _('Max call')
       type: number

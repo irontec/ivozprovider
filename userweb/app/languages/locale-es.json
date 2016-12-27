@@ -1,5 +1,6 @@
 {
     "Username": "Nombre de usuario",
+    "email": "Correo electrónico",
     "Password": "Contraseña",
     "Login": "Entrar",
     "Error login": "Error de autenticación",

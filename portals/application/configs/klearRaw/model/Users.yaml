@@ -140,7 +140,7 @@ production:
     username: 
       title: _('Username')
       type: text
-      maxLength: 50
+      maxLength: 100
     active: 
       title: _('Active')
       type: select

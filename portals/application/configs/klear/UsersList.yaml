@@ -36,7 +36,6 @@ production:
           lastname: true
           email: true
           active: true
-          username: true
           pass: true
           doNotDisturb: true
           timezoneId: true
@@ -144,6 +143,7 @@ production:
         blacklist:
           maxCalls: true 
           tokenKey: true
+          username: true
         order:
           <<: *Users_orderLink
       fixedPositions: &UsersFixedPositions_link
@@ -163,7 +163,6 @@ production:
           colsPerRow: 3
           fields:
             active: 1
-            username: 1
             pass: 1
         group2:
           label: _("Boss-Assistant")

@@ -26,9 +26,6 @@ class Users extends Raw\Users
     {
         $isNew = !$model->getPrimaryKey();
 
-        // FIXME '' equals null (and avoids triggering unique) :((( 
-        if ($model->getUsername() == '') $model->setUsername(null);
-
         if ($isNew) {
             // Sane defaults for hidden fields
             if (!$model->hasChange('timezoneId'))
@@ -43,19 +40,21 @@ class Users extends Raw\Users
             if (!$model->hasChange('voicemailSendMail')) {
                 if ($model->getEmail()) $model->setVoicemailSendMail(1);
             }
+
+            if (!$model->hasChange('username') && $model->getEmail()) {
+                $model->setActive(1);
+                $model->setUsername($model->getEmail());
+                $model->setPass("1234");
+            }
         } else {
             // Avoid username/pass/active incoherences
-            if (!$model->getActive()) {
-                // Web access not active
+            if ($model->getActive() && $model->getEmail()) {
+                $model->setUsername($model->getEmail());
+                if (!$model->getPass()) $model->setPass("1234");
+            } else {
+                $model->setActive(0);
                 $model->setUsername(null);
                 $model->setPass(null);
-            } else {
-                if (is_null($model->getUsername())) {
-                    $model->setPass(null);
-                    $model->setActive(0);
-                } elseif (is_null($model->getPass())) {
-                    $model->setPass("1234");
-                }
             }
 
             // If no mail, no SendMail
