@@ -109,6 +109,10 @@ production:
           title: ngettext('Company', 'Companies', 0)
           class: ui-silk-building
           description: _("List of %s", ngettext('Company', 'Companies', 0))
+        CompanyURLsList:
+          title: ngettext('Portal URL', 'Portal URLs', 0)
+          class: ui-silk-world
+          description: _("List of %s", ngettext('Companyurls', 'Companyurls', 0))
         PeeringContractsList:
           title: ngettext('Peering contract', 'Peering contracts', 0)
           class: ui-silk-connect
