@@ -1,18 +1,26 @@
-########################################################
-Instalación por paquetes Debian
-########################################################
+#######################
+Debian packages install
+#######################
 
-IvozProvider está diseñado para instalarse y actualizarse mediante paquetes Debian. En concreto, la release actual esta pensada para funcionar sobre `Debian Jessie 8 <https://www.debian.org/releases/jessie>`_.
+IvozProvider is designed to be installed and updated using Debian packages.
+More exactly, the current release is ready to be installed on
+`Debian Jessie 8 <https://www.debian.org/releases/jessie>`_.
 
-Se recomienda emplear las `guias oficiales de instalación <https://www.debian.org/releases/jessie/installmanual>`_ para obtener un sistema base mínimo, ya que toda dependencia que necesite posteriormente será instalada automaticamente.
+It's recommended to use one of the `official installation guides
+<https://www.debian.org/releases/jessie/installmanual>`_ to install the minimum
+base system. The rest of required  dependencies will be installed automatically
+with IvozProvider meta packages.
 
-Tanto si deseas realizar una :ref:`instalacion-standalone` o una :ref:`instalacion-distribuida`, es preciso configurar los repositorios de paquetes debian de Irontec.
+No matter if you are installing a  :ref:`StandAlone install` or a
+:ref:`Distributed install`, it's required to configure Irontec debian
+repositories.
 
-********************************************************
-Configurar repositorios APT
-********************************************************
+****************************
+APT Repository configuration
+****************************
 
-Actualmente se emplean dos repositorios diferentes tanto para la última release de IvozProvider (oasis) como para la de Klear (chloe)
+Right now, two different repositories are used for the latest IvozProvider
+release (called oasis) and it's frontend Klear release (called chloe).
 
 .. code-block:: console
 
@@ -20,24 +28,25 @@ Actualmente se emplean dos repositorios diferentes tanto para la última release
     echo deb http://packages.irontec.com/debian oasis main extra > ivozprovider.list
     echo deb http://packages.irontec.com/debian chloe main > klear.list
 
-Añadimos la clave publica del repositorio:
+Optionally, we can add the repository key to check signed packages:
 
 .. code-block:: console
 
     wget http://packages.irontec.com/public.key -q -O - | apt-key add -
 
-.. _instalando-paquete-virtual:
+**************************
+Installing profile package
+**************************
 
-********************************************************
-Instalar el paquete del rol
-********************************************************
+Once the repositories are configured, it will be required to select the proper
+metapackage depending on the type of installation.
 
-Una vez configurados los repositorios será preciso seleccionar el paquete acorde al perfil que queramos instalar:
-
-- Para una :ref:`instalacion-standalone`:
+- For a :ref:`StandAlone install`:
     - ivozprovider
 
-- Para una :ref:`instalacion-distribuida`: uno de los paquetes en función rol se desee que desempeñe la máquina
+- For a :ref:`Distributed install`: one of the profile packages depending on the
+  role the machine will perform.
+
     - ivozprovider-profile-data
     - ivozprovider-profile-proxy
     - ivozprovider-profile-portal
@@ -48,20 +57,24 @@ Una vez configurados los repositorios será preciso seleccionar el paquete acord
     apt-get update
     apt-get install ivozprovider
 
-********************************************************
-Completar instalación
-********************************************************
-Las instalaciones distribuidas requieren multiples configuraciones en funcion del rol que se haya instalado. Consulte `completar la instalción de un rol <http://google.com>`_ para más información.
+***********************
+Finish the installation
+***********************
+Distributed installation require a couple manual configuration based on the
+roles that are performing. Check `finishing role configuration
+<http://github.com/irontec/ivozprovider>`_ for more information.
 
-Las instalaciones standalone cuentan con un menú que ayuda a configurar los datos básicos de los servicios empleados en IvozProvider. Puesto que todos los servicios se ejecutan en la misma máquina, muchos de los procesos vienen configurados automáticamente con los valores por defecto.
+Standalone installation have a menu that can be used to configure the basic
+services used in IvozProvider. Most of the services are automatically configured
+to work in the same machine with the default values.
 
-El menú permite, entre otros:
+This menu allows:
 
-- Configurar las IPs públicas de los proxies SIP
-- El lenguaje por defecto que empleará la plataforma
-- Las contraseñas para acceder a las bases de datos
+- Configure IP addresses for SIP proxies
+- Default platform language
+- Administrator MySQL database password
 
-Es posible cambiar cualquiera de estos valores una vez instalado IvozProvider volviendo a ejecutar:
+It's possible to change any of this values anytime by running:
 
 .. code-block:: console
 

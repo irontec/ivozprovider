@@ -10,13 +10,13 @@
 
     Not marked sections are finished.
 
-#####################################
-Documentación oficial de IvozProvider
-#####################################
+###################################
+IvozProvider Official Documentation
+###################################
 
 .. toctree::
     :maxdepth: 2
-    :caption: Conceptos iniciales
+    :caption: Basic Concepts
     :name: concepts
 
     intro/index
@@ -33,7 +33,7 @@ Documentación oficial de IvozProvider
 
 .. toctree::
     :maxdepth: 2
-    :caption: Instalación y configuración mínima
+    :caption: Minimum Configuration
     :name: installation
 
     installation/index
@@ -47,7 +47,7 @@ Documentación oficial de IvozProvider
 
 .. toctree::
     :maxdepth: 2
-    :caption: Configuración avanzada
+    :caption: Advanced Configuration
     :name: advanced
 
     pbx_features/index
@@ -62,7 +62,7 @@ Documentación oficial de IvozProvider
 
 .. toctree::
     :maxdepth: 2
-    :caption: Seguridad y mantenimiento
+    :caption: Security and Maintenance
     :name: security
 
     security/index

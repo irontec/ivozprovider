@@ -1,15 +1,19 @@
-********************************
-¿Qué hay dentro de IvozProvider?
-********************************
+****************************
+What is inside IvozProvider?
+****************************
 
-IvozProvider incluye proyectos de `Software Libre <https://www.gnu.org/philosophy/free-sw.es.html>`_ de reconocido prestigio y larga trayectoria para cumplir las tareas de diversa índole que necesita la plataforma.
+IvozProvider uses well-known and stable `Free Software
+<https://www.gnu.org/philosophy/free-sw.en.html>`_ projects to fullfill
+the different required task of the platform.
 
-Nada como una imagen para ilustrar los distintos proyectos que integra IvozProvider:
+Nothing better than an image to show all the software that its integrated
+into IvozProvider:
 
 .. image:: img/ivozprovider_logos.png
     :align: center
 
-.. note:: Nuestro más sincero agradecimiento a los desarrolladores de todos estos proyectos, así como a las comunidades de usuarios.
+.. note:: We can not stress enough our gratitude to the developers and communities
+          of this projects.
 
-La función que cumple cada una de estas piezas se detallará con mayor profundidad en el bloque titulado :ref:`architecture`.
-
+The task of each of this software will be deeply detailed in the block
+:ref:`architecture`.

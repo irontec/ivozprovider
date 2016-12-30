@@ -1,23 +1,26 @@
-##################
-Requisitos mínimos
-##################
+####################
+Minimum requirements
+####################
 
-**************************
-Requerimientos del sistema
-**************************
-IvozProvider está diseñado para funcionar e instalarse a través del sistema de paquetes APT de Debian GNU/Linux.
+*******************
+System requirements
+*******************
+IvozProvider is designed to be installed using Debian GNU/Linux APT package
+system.
 
-.. important:: Es recomendable instalar IvozProvider en una máquina dedicada para la plataforma. Muchos de los software instalados podrían hacer malfuncionar otros software pre-instalados (por ejemplo MySQL o servidores DNS).
+.. important:: It's recommended to install IvozProvider in a dedicated server
+   for the platform. Many of the installed software may not work properly with
+   other pre-installed services (like MySQL or DNS servers).
 
-Para una instalación standalone, se requiere al menos:
+For a StandAlone installation, we recommend at least:
 
-    * 4 CPUs (preferentemente x86_64)
-    * 4 Gb Memoria RAM
+    * 4 CPUs (x86_64 or i386)
+    * 4 Gb memory
     * 30GB HDD
-    * 2 Direcciones IPs (preferentemente públicas)
+    * 2 IP Addresses (preferably public)
 
-Si no está empleando la :ref:`instalacion-cd` también será necesario:
+If you're not using a :ref:`Automatic ISO CD image` you will also need:
 
-    * Instalacion base de Debian Jessie 8.0
-    * Acceso a Internet
+    * Debian Jessie 8.0 base install
+    * Internet access
 

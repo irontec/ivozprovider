@@ -1,31 +1,38 @@
-El rol de administrador global (operador en la imagen) lo desempeña habitualmente instalador de IvozProvider.
+The global administator role (operator in the image) is usually done by
+the installation responsible.
 
-Tiene visibilidad total de todos los aspectos de la plataforma y suele ser el encargado del mantenimiento de la misma.
+All options and platform features are visible to this role and usually is
+in charge of its maintenance.
 
-Su **función más importante es crear Marcas** y hacer todo lo necesario para que dispongan de la autonomía necesaria para usar la plataforma:
+Their most important task is to **create Brands** and configure them so
+they have the enough autonomy to properly use the platform:
 
-    - Configurar sus accesos web.
+    - Configure their web access.
 
-    - Configurar el aspecto de su portal de administración de marca: tema, colores, etc.
+    - Configure their brand portal look and feel: themes, colors, etc.
 
-Aparte de esta función principal, su visibilidad global y acceso total le hacen responsable de:
+Appart from their main task, their global visibility and total access
+makes them responsible of:
 
-- Monitorizar la plataforma para que esté siempre UP & RUNNING.
+- Monitor the platform so it keeps always UP & RUNNING
 
-- Analizar los logs de la plataforma en busca de posibles errores.
+- Analyze platform logs to track possible errors.
 
-- Afinar los mecanismos de seguridad para evitar ataques externos.
+- Polish the security mechanisms to avoid external attacks.
 
-- Obtener estadísticas globales de calidad de llamada.
+- Obtain global statistics of calls audio quality.
 
-- Ir aumentando los recursos de la plataforma a medida que se vaya necesitando:
+- Increase the available resources of the platform as long as is needed:
 
-    - Aumentando los recursos de la instalación standalone.
+    - Increasing resources available in a standalone installation
 
-    - Migrando, llegado el momento, a una instalación distribuida con múltiples AS-es, media relays, etc.
+    - Migrating, whenever required, to a distributed installation with multiple
+      AS, media relays, etc.
 
+To sum up, **this role is the only one that has no limits within the
+platform**, thats why *God* is a term used in multiple places along this
+documentation.
 
-En resumen, **es el único rol que no tiene límites dentro de la plataforma**, de ahí la denominación *God* que se utilizará en múltiples lugares de esta documentación.
-
-.. important:: **Este rol se encarga de mantener la plataforma**, adaptándola a las necesidades de cada momento. Su rol **no tiene ningún tipo de límite y** es el que **da acceso a** los *n* **operadores de marca**.
-
+.. important:: *This role is responsible of maintain the platform**, configuring
+               it for the correct behaviour. This role **doesn't have any kind
+               of limit** and **grants access** to the **brand operators**.

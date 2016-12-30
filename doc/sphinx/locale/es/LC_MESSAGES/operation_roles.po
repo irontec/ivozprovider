@@ -1,0 +1,342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-28 15:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: ../../operation_roles/brand.rst:1
+msgid ""
+"Brand operator can access a portal with less sections available compared "
+"to the previous role. The general (God) administrator is in charge of "
+"providing an URL with credentials for its brand portal."
+msgstr "El operador de marca utiliza la plataforma con un acceso y una "
+"visibilidad menor que el rol anterior. En concreto, el operador global le"
+"facilita una URL y unas credenciales y ese portal web de operador de "
+"Marca es su único interfaz con IvozProvider."
+
+#: ../../operation_roles/brand.rst:5
+msgid ""
+"The most important task for brand operator can be managed through this "
+"portal: **create and configure companies so they can work properly**."
+msgstr "No obstante, este portal le permite desempeñar su función más importante,"
+"que es **crear empresas y configurar todo lo necesario para que éstas "
+"desempeñen su función**."
+
+#: ../../operation_roles/brand.rst:8
+msgid ""
+"Due to brand operators are also resposible of billing their companies and"
+" make sure the external cals are properly setup, it must also manage:"
+msgstr "Dado que el operador de marca es el encargado de facturar a sus empresas "
+"y de hacer que sus llamadas salgan al exterior, también tiene que "
+"gestionar:"
+
+#: ../../operation_roles/brand.rst:11
+msgid "Peering contracts with other IP providers for PSTN interconectivity."
+msgstr "Contratos de Peering con otros operadores IP para conectar con la PSTN."
+
+#: ../../operation_roles/brand.rst:13
+msgid "Include all required company information for the billing process."
+msgstr "Incluir en los datos de la empresa toda información necesaria para las "
+"facturas."
+
+#: ../../operation_roles/brand.rst:15
+msgid ""
+"Pricing plans that will offer to their companies, that will determine how"
+" match they pay for each call."
+msgstr "Planes de Precio que ofertarán a sus empresas, qué determinarán cuánto "
+"pagan por cada tipo de llamada."
+
+#: ../../operation_roles/brand.rst:18
+msgid ""
+"Setup the routes for each outgoing call types based on their final "
+"destination"
+msgstr "Configurar por dónde sale cada tipo de llamada de cada empresa, en "
+"función del destino."
+
+#: ../../operation_roles/brand.rst:21
+msgid ""
+"Create the invoices for each billing period and send them to their "
+"clients."
+msgstr "Generar las facturas en cada período de facturación y emitarlas al "
+"cliente."
+
+#: ../../operation_roles/brand.rst:24
+msgid ""
+"As you can see, the task of brand operator has little in common with the "
+"global operator, but their importance is vital so the final users can use"
+" all the features includes in IvozProvider"
+msgstr "Como se puede ver, las tareas del operador de marca poco tienen que ver "
+"con las del operador global, pero son vitales para que los usuarios "
+"finales puedan hacer uso de las funcionalidades de IvozProvider."
+
+#: ../../operation_roles/brand.rst:30
+msgid ""
+"**To sum up**, the brand operators **grant access** to the **company** "
+"administrators they serve and **configure the platform to route, "
+"tarificate and bill their calls**."
+msgstr "**En resumen**, los operadores de marca **dan acceso a** los "
+"administradores de las **empresas** a las que den servicio **y configuran"
+" la plataforma para poder enrutar, tarificar y facturar sus llamadas**."
+
+#: ../../operation_roles/company.rst:1
+msgid ""
+"The company administrator has access to the portal supplied by the brand "
+"operator."
+msgstr "El administrador de empresa dispone del acceso web que le proveé el "
+"administrador de marca."
+
+#: ../../operation_roles/company.rst:4
+msgid ""
+"From its point of view, it has a virtual pbx in the cloud that must "
+"configure for its users."
+msgstr "Desde su perspectiva, dispone de una centralita virtual en la nube que "
+"tiene que configurar para que la utilicen sus usuarios."
+
+#: ../../operation_roles/company.rst:7
+msgid "To accomplish that, it's required:"
+msgstr "Para ello, tendrá que:"
+
+#: ../../operation_roles/company.rst:9
+msgid "Configure terminals, extensions and users."
+msgstr "Dar de alta terminales, extensiones y usuarios."
+
+#: ../../operation_roles/company.rst:11
+msgid "Configure the DDI incoming process with the proper logic:"
+msgstr "Configurar el tratamiento de los DDIs de entrada, para que se comporten "
+"como quieran:"
+
+#: ../../operation_roles/company.rst:13
+msgid "Directly to an user"
+msgstr "Directos a usuario"
+
+#: ../../operation_roles/company.rst:14
+msgid "IVRs"
+msgstr "IVRs"
+
+#: ../../operation_roles/company.rst:15
+msgid "Hunt groups"
+msgstr "Grupos de Salto"
+
+#: ../../operation_roles/company.rst:16
+msgid "Faxes"
+msgstr "Faxes"
+
+#: ../../operation_roles/company.rst:18
+msgid ""
+"Give access to the final users to their web portal, so they can configure"
+" their profile options:"
+msgstr "Dar acceso a los usuarios finales a su portal web, para que configuren a "
+"su gusto aspectos como:"
+
+#: ../../operation_roles/company.rst:21
+#: ../../operation_roles/user.rst:10
+msgid "Call forward"
+msgstr "Desvíos"
+
+#: ../../operation_roles/company.rst:22
+#: ../../operation_roles/user.rst:11
+msgid "Do not disturb"
+msgstr "No molestar"
+
+#: ../../operation_roles/company.rst:23
+#: ../../operation_roles/user.rst:12
+msgid "Call waiting"
+msgstr "Llamada en espera"
+
+#: ../../operation_roles/company.rst:25
+msgid ""
+"To sum up, the company administrators are resposible for **configuring "
+"the telephony system and make use of all the features available in "
+"IvozProvider**."
+msgstr "En resumen, los administradores de empresa son los responsables de "
+"**configurar su sistema de telefonía a su gusto y de utilizar todas las "
+"funcionalidades que proveé IvozProvider**."
+
+#: ../../operation_roles/god.rst:1
+msgid ""
+"The global administator role (operator in the image) is usually done by "
+"the installation responsible."
+msgstr "El rol de administrador global (operador en la imagen) lo desempeña "
+"habitualmente instalador de IvozProvider."
+
+#: ../../operation_roles/god.rst:4
+msgid ""
+"All options and platform features are visible to this role and usually is"
+" in charge of its maintenance."
+msgstr "Tiene visibilidad total de todos los aspectos de la plataforma y suele "
+"ser el encargado del mantenimiento de la misma."
+
+#: ../../operation_roles/god.rst:7
+msgid ""
+"Their most important task is to **create Brands** and configure them so "
+"they have the enough autonomy to properly use the platform:"
+msgstr "Su **función más importante es crear Marcas** y hacer todo lo necesario "
+"para que dispongan de la autonomía necesaria para usar la plataforma:"
+
+#: ../../operation_roles/god.rst:10
+msgid "Configure their web access."
+msgstr "Configurar sus accesos web."
+
+#: ../../operation_roles/god.rst:12
+msgid "Configure their brand portal look and feel: themes, colors, etc."
+msgstr "Configurar el aspecto de su portal de administración de marca: tema, "
+"colores, etc."
+
+#: ../../operation_roles/god.rst:14
+msgid ""
+"Appart from their main task, their global visibility and total access "
+"makes them responsible of:"
+msgstr "Aparte de esta función principal, su visibilidad global y acceso total le"
+" hacen responsable de:"
+
+#: ../../operation_roles/god.rst:17
+msgid "Monitor the platform so it keeps always UP & RUNNING"
+msgstr "Monitorizar la plataforma para que esté siempre UP & RUNNING."
+
+#: ../../operation_roles/god.rst:19
+msgid "Analyze platform logs to track possible errors."
+msgstr "Analizar los logs de la plataforma en busca de posibles errores."
+
+#: ../../operation_roles/god.rst:21
+msgid "Polish the security mechanisms to avoid external attacks."
+msgstr "Afinar los mecanismos de seguridad para evitar ataques externos."
+
+#: ../../operation_roles/god.rst:23
+msgid "Obtain global statistics of calls audio quality."
+msgstr "Obtener estadísticas globales de calidad de llamada."
+
+#: ../../operation_roles/god.rst:25
+msgid "Increase the available resources of the platform as long as is needed:"
+msgstr "Ir aumentando los recursos de la plataforma a medida que se vaya "
+"necesitando:"
+
+#: ../../operation_roles/god.rst:27
+msgid "Increasing resources available in a standalone installation"
+msgstr "Aumentando los recursos de la instalación standalone."
+
+#: ../../operation_roles/god.rst:29
+msgid ""
+"Migrating, whenever required, to a distributed installation with multiple"
+" AS, media relays, etc."
+msgstr "Migrando, llegado el momento, a una instalación distribuida con múltiples"
+" AS-es, media relays, etc."
+
+#: ../../operation_roles/god.rst:32
+msgid ""
+"To sum up, **this role is the only one that has no limits within the "
+"platform**, thats why *God* is a term used in multiple places along this "
+"documentation."
+msgstr "En resumen, **es el único rol que no tiene límites dentro de la "
+"plataforma**, de ahí la denominación *God* que se utilizará en múltiples "
+"lugares de esta documentación."
+
+#: ../../operation_roles/god.rst:36
+msgid ""
+"*This role is responsible of maintain the platform**, configuring it for "
+"the correct behaviour. This role **doesn't have any kind of limit** and "
+"**grants access** to the **brand operators**."
+msgstr "**Este rol se encarga de mantener la plataforma**, adaptándola a las "
+"necesidades de cada momento. Su rol **no tiene ningún tipo de límite y** "
+"es el que **da acceso a** los *n* **operadores de marca**."
+
+#: ../../operation_roles/index.rst:5
+msgid "Platform roles"
+msgstr "Roles de la plataforma"
+
+#: ../../operation_roles/index.rst:7
+msgid "IvozProvider is a multilevel role provider solution."
+msgstr "Ivozprovider es una solución orientada a operador con múltiples niveles "
+"de usuarios."
+
+#: ../../operation_roles/index.rst:9
+msgid ""
+"The following images shows the different available levels and the "
+"relation between them:"
+msgstr "La siguiente imagen ilustra los niveles que existen, así como la relación"
+" entre ellos:"
+
+#: ../../operation_roles/index.rst:14
+msgid ""
+"This section will explain each of the available roles, describing their "
+"responsibilities and more important tasks."
+msgstr "En esta sección se explicará cada uno de estos roles, describiendo sus "
+"responsabilidades y sus funciones más importantes."
+
+#: ../../operation_roles/index.rst:19
+msgid "Global administator role"
+msgstr "Rol de administrador global"
+
+#: ../../operation_roles/index.rst:25
+msgid "Brand andministator role"
+msgstr "Rol de operador de marca"
+
+#: ../../operation_roles/index.rst:31
+msgid "Company administator role"
+msgstr "Rol de administrador de empresa"
+
+#: ../../operation_roles/index.rst:37
+msgid "Final user role"
+msgstr "Rol de usuario final"
+
+#: ../../operation_roles/user.rst:1
+msgid ""
+"The final user has two different kinds of credentials, both supplied by "
+"its company administator:"
+msgstr "El usuario final dispondrá de dos credenciales, ambas provistas por su "
+"administrador de empresa:"
+
+#: ../../operation_roles/user.rst:4
+msgid "User portal access credetentials"
+msgstr "Credenciales de acceso web al portal de usuario."
+
+#: ../../operation_roles/user.rst:6
+msgid ""
+"SIP credentials used to register its terminal (or terminals) to "
+"IvozProvider"
+msgstr "Credenciales SIP para registrar su terminal (o terminales) contra "
+"IvozProvider."
+
+#: ../../operation_roles/user.rst:8
+msgid "Through the user portal, it can browse their call registry and configure:"
+msgstr "Desde el portal de usuario podrán ver sus registros de llamadas y "
+"configurar aspectos como:"
+
+#: ../../operation_roles/user.rst:14
+msgid ""
+"On the other hand, the SIP creadentials allow the users to configure "
+"their terminal (or terminals) to place and receive calls."
+msgstr "Por otra parte, las credenciales SIP le permitirán configurar su terminal"
+"(o terminales) para poder emitir y recibir llamadas."
+
+#: ../../operation_roles/user.rst:17
+msgid ""
+"The same SIP credentials can be used in multiple devices at the same "
+"time,generating what is known as *parallel-forking*: whenever a call is "
+"placed to an user, all the active devices will ring so the user can "
+"answer the call from any of them."
+msgstr "Unas mismas credenciales se pueden utilizar desde múltiples dispositivos,"
+"dando lugar a lo que se conoce como *parallel-forking*: si llaman al "
+"usuario, sonarán todos sus dispositivos activos y podrá contestar la "
+"llamada desde cualquiera de ellos."
+
+#: ../../operation_roles/user.rst:22
+msgid ""
+"Final users are the ones that use and enjoy all the feature of "
+"IvozProvider"
+msgstr "Los usuarios son los que utilizan y disfrutan todas las funcionalidades "
+"de IvozProvider."
+

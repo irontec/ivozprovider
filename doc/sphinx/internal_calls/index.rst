@@ -1,10 +1,14 @@
-##########################
-Realizar llamadas internas
-##########################
+#####################
+Make an internal call
+#####################
 
-El objetivo de este bloque será configurar IvozProvider para realizar llamadas internas, partiendo de la instalación base descrita en la sección anterior.
+The goal of this block will be to configure IvozProvider in order to make
+internal calls, using as the starting point the base installation described
+in the previous step.
 
-Para conseguir que Alice llame a Bob, tendremos que realizar labores de 3 niveles descritos en :ref:`operation_roles`, de ahí la organización del siguiente índice en esos 3 bloques:
+In order to archive a call between Alice and Bob, we have to do some task in
+the three configuration levels described in :ref:`operation_roles`, and that
+is why we have ordered the index in this blocks:
 
 .. toctree::
 

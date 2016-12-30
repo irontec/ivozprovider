@@ -1,8 +1,8 @@
-###########################
-Introducción a Ivozprovider
-###########################
+############################
+Introduction to IvozProvider
+############################
 
-Las siguientes secciones servirán como introducción general a IvozProvider:
+The following sections will serve as general introduction to IvozProvider:
 
 .. toctree::
 

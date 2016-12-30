@@ -1,47 +1,47 @@
 .. _architecture:
 
-#########################################
-[P] Arquitectura general de la plataforma
-#########################################
+#################################
+[P] Platform general architecture
+#################################
 
 
 ***************
-Esquema general
+General diagram
 ***************
 
 .. include:: general_scheme.rst
 
 .. _signallingflow:
 
-**********************
-Flujo señalización SIP
-**********************
+******************
+SIP signaling flow
+******************
 
 .. include:: signalling_flow.rst
 
 .. _audioflow:
 
-***************
-Flujo audio RTP
-***************
+**************
+RTP audio flow
+**************
 
 .. include:: audio_flow.rst
 
 *************
-Tráfico HTTPS
+HTTPS traffic
 *************
 
 .. include:: web_traffic.rst
 
-*********************
-Elementos adicionales
-*********************
+*******************
+Additional elements
+*******************
 
 .. include:: additional_elements.rst
 
-********************
-Elementos auxiliares
-********************
+*****************
+Auxiliar elements
+*****************
 
 .. include:: aux_elements.rst
 

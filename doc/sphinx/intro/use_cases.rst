@@ -1,21 +1,23 @@
-************************************
-¿Quién debería de usar IvozProvider?
-************************************
+****************************
+Who should use IvozProvider?
+****************************
 
-IvozProvider es un buen candidato para todo aquel que esté interesado en disponer de una plataforma de telefonía para poder dar servicios a **cientos de miles de llamadas de forma concurrente**.
+IvozProvider is a good option for those insterested in having a telephony
+platform that can provide service to **thousands concurrent calls**.
 
-Las grandes fortalezas de IvozProvider pueden servir para saber si IvozProvider encaja en tu caso concreto:
+The greatest strengths of IvozProvide can help to decide if the solution
+feeds your needs:
 
-- VoIP: SIP.
+- VoIP: SIP
 
-- Multinivel, multimarca.
+- Multilevel, multitenant
 
-- Escalado horizontal.
+- Horizontal scaling
 
-- PseudoSBC: abierto a Internet.
+- PseudoSBC: open to Internet
 
-- Funcionalidades de PBX.
+- PBX Features
 
 
-El proceso de instalación es tan simple, que la mejor forma de saber si IvozProvider es para ti, ¡es probarlo!
-
+The installation process is so simple, that the best way to test if
+IvozProvider fullfills yout needs is to test it!

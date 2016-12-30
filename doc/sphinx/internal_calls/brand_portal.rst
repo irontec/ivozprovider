@@ -1,63 +1,82 @@
-*******************************
-Bloque 'Configuración de Marca'
-*******************************
+*******************
+Brand Configuration
+*******************
 
-Para conseguir que esta DemoBrand tenga una compañía con 2 usuarios que se puedan llamar entre sí, vamos a tener que hacer muy poco en este bloque.
+We need that the default DemoBrand have a company with at least 2 users. In
+order to archive this we will require little configuration in this section.
 
-De hecho, al acceder a la sección **Empresas**, vemos que ya existe una compañía *DemoCompany* que podremos utilizar para cumplir nuestro ansiado objetivo :)
+In fact, if we check **Companies** in the brand menu, we'll discover that there
+is already an existing *DemoCompany* that we can use to fulfill our desired
+goal :)
 
 .. image:: img/company_list.png
 
-Solo le falta una cosa a esta empresa, marcado con **EDIT** en la captura anterior.
+Only a thing is required to configure for this company, marked as edit in the
+previous image.
 
 .. _domain_per_company:
 
-Dominio SIP de la compañía
-==========================
+Company SIP Domain
+==================
 
-Tal y como se introdujo en la sección anterior, es **imprescindible** que cada empresa tenga un dominio público que resuelva a la IP configurada para el :ref:`proxyusers`.
+As mentioned in the previous section, is **required** that each of the companies
+have a public domain that resolves to the configured IP address for
+:ref:`proxyusers`.
 
-.. note:: El registro DNS puede ser de tipo A (soportado por todos los hardphones/softphones) o del tipo NAPTR+SRV.
+.. note:: DNS register can be type A (supported by all the hardphones/softphones
+   ) or even NAPTR+SRV.
 
-Una vez configurado el dominio (por medio de procedimientos que escapan al objetivo de este documento), bastará con escribir el parámetro en el campo adecuado de nuestra empresa:
+Once the domain has been configured (by means that are out of scope of this
+document), it will be enought to write it in our company configuration:
 
 .. image:: img/set_domain.png
 
-Una vez guardada la empresa, este dominio aparecerá en la sección descrita :ref:`en la sección anterior <god_sipdomains>`:
+Once the company has been saved, the domain will be also displayed in the list
+:ref:`previously mentioned <god_sipdomains>`:
 
 .. image:: img/domain_list.png
 
-.. attention:: Es fundamental entender este bloque, sin un registro DNS correctamente configurado apuntando a la IP del Proxy de Usuarios, ¡fracasaremos en nuestro objetivo!
+.. attention:: It's important to understand this block. Wihout a DNS domain
+   pointing to our users proxy IP address, everything will fail.
 
-Esta es una buena señal para el dominio que acabamos de configurar, siempre y cuando en lugar de 10.10.3.10 aparezca la IP pública configurada en :ref:`proxyusers`.
+This is a good sign for the domain we have configured right now, replacing the
+10.10.3.10 with the public address we have used to configure :ref:`proxyusers`.
 
 .. image:: img/dominio_bien_configurado.png
 
-.. danger:: ¿Se ha insistido suficiente en que sin un registro DNS correctamente configurado apuntando a la IP del Proxy de Usuarios no funcionará nada?
+.. danger:: Have we stressed enough that without a properly configured DNS
+   pointing to the Users proxy IP address nothing will work?
 
 .. _dnshack:
 
-No tengo tiempo para crear registros DNS
-----------------------------------------
+I have no time for a DNS registry
+---------------------------------
 
-Todo lo contado hasta este punto es verídico: a medida que vayamos creando marcas y éstas vayan creando empresas, cada una de ellas necesitará un registro DNS.
+Everything we have said is true: as we create new brands and brands create new
+companies, each of them will need a DNS registry.
 
-Pero la primera empresa de la plataforma es especial y puede apoderarse de la IP del Proxy de Usuarios y usarla como si de un DNS se tratara:
+But the first company of the platform is quite special and can take over the IP
+address of the proxy to use it as a domain:
 
 .. image:: img/fake_domain.png
 
-A pesar de no ser un dominio, al estar usándose como tal, aparecerá en la sección de **Dominios**:
+Although it is not a domain, but being used like it was, it will be displayed
+in Domain section:
 
 .. image:: img/fake_domain2.png
 
-.. tip:: Es importante entender que este truco solo es válido para la primera empresa de la plataforma ;)
+.. tip:: It’s important to understand the this trick is only valid for the first
+   company of the platform ;)
+
 
 .. _emulate_company:
 
-Emular la empresa Demo
-======================
+Emulate Demo company
+====================
 
-El proceso de emulación de empresa es idéntico al de emulación de marca, con la diferencia de que filtra el bloque 'Configuración de Empresa' en lugar del bloque 'Configuración de Marca'.
+The company emulation process is the same as the brand emulation, with the
+difference that it filters the block ‘Company Configuration’ insted of
+‘Brand Configuration’.
 
 .. image:: img/emulate_company.png
     :align: center
@@ -65,7 +84,8 @@ El proceso de emulación de empresa es idéntico al de emulación de marca, con 
 .. image:: img/emulate_company2.png
     :align: center
 
-Una vez emulada la empresa, la parte superior derecha de la pantalla mostrará que vamos por el buen camino :)
+Once the company has been emulated, the top right corner of the portal will
+show that we are in the right path :)
 
 .. image:: img/emular_empresa.png
     :align: center

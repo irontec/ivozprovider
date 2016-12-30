@@ -1,24 +1,28 @@
-El administrador de empresa dispone del acceso web que le proveé el administrador de marca.
+The company administrator has access to the portal supplied by the brand
+operator.
 
-Desde su perspectiva, dispone de una centralita virtual en la nube que tiene que configurar para que la utilicen sus usuarios.
+From its point of view, it has a virtual pbx in the cloud that must
+configure for its users.
 
-Para ello, tendrá que:
+To accomplish that, it's required:
 
-- Dar de alta terminales, extensiones y usuarios.
+- Configure terminals, extensions and users.
 
-- Configurar el tratamiento de los DDIs de entrada, para que se comporten como quieran:
+- Configure the DDI incoming process with the proper logic:
 
-    - Directos a usuario.
-    - IVRs.
-    - Grupos de Salto.
-    - Faxes.
+    - Directly to an user
+    - IVRs
+    - Hunt groups
+    - Faxes
 
-- Dar acceso a los usuarios finales a su portal web, para que configuren a su gusto aspectos como:
+- Give access to the final users to their web portal, so they can configure
+  their profile options:
 
-    - Desvíos
-    - No molestar
-    - Llamada en espera
+    - Call forward
+    - Do not disturb
+    - Call waiting
 
-
-.. important:: En resumen, los administradores de empresa son los responsables de **configurar su sistema de telefonía a su gusto y de utilizar todas las funcionalidades que proveé IvozProvider**.
+.. important:: To sum up, the company administrators are resposible for
+               **configuring the telephony system and make use of all the
+               features available in IvozProvider**.
 

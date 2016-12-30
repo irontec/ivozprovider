@@ -1,35 +1,37 @@
-*********************************
-Bloque 'Configuración de Empresa'
-*********************************
+*********************
+Company Configuration
+*********************
 
-Estamos cerca de hacer nuestra primera llamada en nuestro flamente nuevo IvozProvider, solo queda crear 6 cosas dentro de nuestra empresa DemoCompany:
+We're close to make our fist call in our fresh installed IvozProvider, there
+are only 6 steps to configure in our DemoCompany company.
 
-- 2 terminales
-- 2 extensiones
-- 2 usuarios
+- 2 terminals
+- 2 extensions
+- 2 users
 
-Terminales
-==========
+Creating Terminals
+==================
 
-Vamos a la sección terminales y... voilà! Ya tenemos 2 terminales pre-creados:
+Go to the terminal section and... voilà! We already have 2 terminals created:
 
 .. image:: img/terminals.png
 
-Extensiones
-===========
+Creating Extensions
+===================
 
-Seguimos por tanto en la sección de extensiones, pero se nos han adelantado y ya tenemos 2 extensiones para nuestro uso:
+Then we go to extensions, just to check that we have 2 extensions already
+created for us:
 
 .. image:: img/extensions.png
 
-Nada por hacer en esta sección tampoco, ¡vamos a la última!
+Nothing more to do in this section, let's go the next one!
 
-Usuarios
-========
+Creating Users
+==============
 
-Como era de esperar, también tenemos 2 usuarios:
+As expected, we also have 2 created users:
 
 .. image:: img/users.png
 
-Llegados a este punto y sin necesidad de tocar nada en este bloque, ya tenemos todo listo para hacer una llamada de Alice a Bob.
-
+At this point, we have everthing ready make a call between this two users:
+Alice and Bob.

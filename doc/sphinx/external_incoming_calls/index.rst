@@ -1,10 +1,11 @@
-#########################
-Recibir llamadas externas
-#########################
+######################
+Receive external calls
+######################
 
-El objetivo de este bloque será configurar IvozProvider para recibir llamadas externas.
+The goal of this block will be configure IvozProvider to receive incoming
+external calls.
 
-Para ello, seguiremos los siguientes pasos:
+In order tho archive this, this steps will be followed:
 
 .. toctree::
 

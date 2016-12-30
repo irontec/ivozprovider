@@ -1,28 +1,37 @@
-Una vez que hemos llegado a un acuerdo con un Operador VoIP y hemos configurado esta relación de *peering*, solo faltan dos tareas:
+Once we have an agreement with a VoIP provider and we have configured it in
+the *peering* section, only two task are pending:
 
 .. _settingup_ddi:
 
-##########################
-Dar de alta un DDI externo
-##########################
+###########################
+Configuring an external DDI
+###########################
 
-El operador de marca, como único responsable de llegar a acuerdos de *peering* con operadores IP, es el responsable de dar de alta los DDIs de cada operador.
+The brand operator, responsible of this *peering* agreements with VoIP providers
+, has the task to create the DDIs for each provider.
 
-Para ello, tiene que acceder a la siguiente sección:
+To accomplish this, following section can be used:
 
 .. image:: img/ddis_company_section.png
     :align: center
 
-Observar que para poder acceder a esta sección el operador de marca (o *god*) tiene que haber emulado una empresa concreta y acceder desde el bloque **Configuración de empresa**.
+Notice that in order to access this section, the brand operator (or *god*)
+must have emulated the proper company and access the menu section **Company
+Configuration**.
 
-.. attention:: La sección **Configuración de empresa > DDIs** es distinta cuando accede un administrador de empresa que cuando accede un operador global o de marca. El administrador de empresa no puede crear nuevos DDIs ni borrar los que ya existen, solo puede editar los que el operador de marca haya creado.
+.. attention:: Section **Company configuration > DDIs** is different when the
+   company administrator access than the displayed data when a global or brand
+   administrator does. Company administrator are unable to create or delete
+   DDIs, just edit the one created by the brand or god administrator.
 
-Por otra parte, la sección **Configuración de marca > DDIs** solo sirve para que el operador de marca pueda ver los DDIs asociados a sus distintas empresas, es un listado en *read-only*.
+The section **Brand configuration > DDIs** is a *read-only* display of all the
+DDIs of the brand, associated with the different companies.
 
 .. image:: img/ddis_brand_section.png
     :align: center
 
-Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos los campos necesarios:
+Taking into account this concepts, we create a new DDI and fill the required
+fields:
 
 
 .. image:: img/ddis_add.png
@@ -32,33 +41,42 @@ Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos los camp
 
 .. glossary::
 
-    País
-        El país de la númeración pública que estamos dando de alta.
+    Country
+        The country of the new created DDI. Used for E164 standarization.
 
     DDI
-        El número en cuestión, sin códigos de país.
+        The number, without country code.
 
-    Contrato de peering
-        El contrato de peering por el que entra la numeración. Esta relación permite aplicar las :ref:`numeric_transformations` adecuadas.
+    Peering contract
+        The peering contract that provides this number. This relation allow
+        the platform to apply the required :ref:`numeric_transformations` in
+        order to determine its standard form.
 
-    Filtro de entrada
-        Permite aplicar lógicas de filtrado en base a horario y calendario, se verán en :ref:`external_filters`. Dejar sin seleccionar para no aplicar filtro alguno.
+    External Call Filter
+        Allows configuration based on Calendars and Schedulers as shown in
+        :ref:`external_filters`. Leave empty if you don't need to apply any
+        kind of filter.
 
-    Enrutar
-        Un DDI puede tener distintos :ref:`tratamientos <routing_logics>`. Para nuestro objetivo, enrutar al usuario *Alice*.
+    Route
+        A DDI can have different :ref:`treatments <routing_logics>`. For our
+        current goul, set route to user and select *Alice*.
 
-    Grabar llamadas
-        Dejar desactivado de momento, se explicará en :ref:`call_recordings`.
+    Record calls
+        Can be used to record external calls (see :ref:`call_recordings`).
 
-    Tarificar llamadas entrantes
-        Requiere del módulo de tarificación externa y permite tarificar llamadas entrantes a numeraciones especiales. Consultar a los :ref:`desarrolladores de la solución <getting_help>` en caso de estar interesados.
+    Tarificate incoming calls
+        This setting requires the external tarification module and allows
+        tarification on special numbers. This module is not standard so don't
+        hesitate in `contact us <getting_help>` if you are interested.
 
+#########################
+Configure incoming routes
+#########################
 
-#################################
-Configurar tratamiento en entrada
-#################################
+In the previous section, we have created the DDI and configure it, but **the
+most common procedure** is that the brand operator just create it while the
+**company administator**, using the same saction **will configure** it choosing
+the correct route (user, huntgroup, etc.), its filters with calendars and so on.
 
-En la sección anterior hemos dado de alta el DDI y lo hemos configurado, pero conviene tener claro que **en un uso normal, el administrador de marca** simplemente **daría de alta el DDI y el administrador de empresa**, accediendo a la misma sección, **lo configuraría** apuntándolo al usuario / grupo de salto / etc. adecuado, configurando horarios, calendarios, etc.
-
-.. note:: En este punto, marcando el número público debería de sonar el teléfono de *Alice* consiguiendo, por tanto, el objetivo de este bloque :)
-
+.. note:: At this point, calling the number of the configured DDI will make the
+   *Alice* phone ring.

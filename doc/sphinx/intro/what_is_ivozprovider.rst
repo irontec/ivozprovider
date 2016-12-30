@@ -1,133 +1,181 @@
 *********************
-¿Qué es IvozProvider?
+What is IvozProvider?
 *********************
 
-IvozProvider es una solución de :ref:`telefonía IP <voip>` :ref:`multinivel <multilevel>` :ref:`orientada a operador <operator_oriented>` :ref:`expuesta a la red pública <exposed>`.
+IvozProvider is a :ref:`provider oriented <operator_oriented>`
+:ref:`multilevel <multilevel>` :ref:`IP telephony <voip>` solution
+:ref:`exposed to the public network <exposed>`.
 
 .. _voip:
 
-Telefonía IP
+IP Telephony
 ============
 
-IvozProvider es compatible con los sistemas de telefonía que utilicen el protocolo *Session Initiation Protocol*, **SIP**, descrito en el `RFC 3261 <https://tools.ietf.org/html/rfc3261>`_ y todos los `RFCs relacionados <https://www.packetizer.com/ipmc/sip/standards.html>`_, independientemente del fabricante.
+IvozProvider supports telephony systems that use *Session Initialitation
+Protocol*, **SIP**, described in `RFC 3261
+<https://tools.ietf.org/html/rfc3261>`_ and any `related RFCs
+<https://www.packetizer.com/ipmc/sip/standards.html>`_ independent of
+manufacturers.
 
-Esto implica libertad total a la hora de elegir *softphones*, *hardphones* y el resto de elementos que interactúan con IvozProvider, sin ningún tipo de ataduras a ningún fabricante.
+This allows total freedom to choose *softphones*, *hardphones* and the
+rest of elements that interact with IvozProvider, without any kind of
+binding with a manufacturer.
 
-En lo relativo a los **protocolos de transporte** para transportar SIP, actualmente IvozProvider soporta:
+Right now, IvozProvider supports the following **transport protocols**
+for SIP:
 
-- UDP
-- TCP
-- TLS
-- Websockets
+   - UDP
+   - TCP
+   - TLS
+   - Websockets
 
-Este último protocolo de transporte descrito en el `RFC 7118 <https://tools.ietf.org/html/rfc7118>`_ permite la utilización de softphones desde la web, utilizando el estándar `WebRTC <https://webrtc.org/>`_ de los navegadores web para establecer comunicaciones en tiempo real *peer-to-peer*.
+This last transport protocol described in `RFC 7118
+<https://tools.ietf.org/html/rfc7118>`_ supports web intregrated
+softphones, using the `WebRTC <https://webrtc.org/>`_ standard allowing
+browsers to establish real-time *peer-to-peer* connections.
 
-En lo relativo a los **codecs de audio soportados**, la lista sería la siguiente:
+The **supported audio codec** list is:
 
-- PCMA (*alaw*)
-- PCMU (*ulaw*)
-- GSM
-- SpeeX
-- G.722
-- G.726
-- G.729
-- iLBC
-- `OPUS <http://opus-codec.org/>`_
+   - PCMA (*alaw*)
+   - PCMU (*ulaw*)
+   - GSM
+   - SpeeX
+   - G.722
+   - G.726
+   - G.729
+   - iLBC
+   - `OPUS <http://opus-codec.org/>`_
 
-.. _multilevel:
-
-Multinivel
+Multilevel
 ==========
 
-El esquema de portales y diseño de IvozProvider permite que **múltiples actores cohabiten en una misma infraestructura**:
+The web portal design of IvozProvider allows **multiple actors within the
+same infrastructure**:
 
 .. image:: ../operation_roles/img/operator_levels.png
 
-En la sección :ref:`operation_roles` se describen los distintos roles en profundidad, pero se puede resumir en:
+In :ref:`operation_roles` section, the different roles are deeply
+described, but to sum up:
 
-- **Nivel God**: instalador y mantenedor de la solución. Da acceso a n operadores de marca.
+- **God Admin**: The administrator and maintainer of the solution. Provides
+  access to multiple brand operators.
 
-- **Nivel Brand Operator**: Responsable de dar acceso, tarificar y facturar a n operadores de empresa.
+- **Brand Operator**: Responsible of giving access, tarificate and bill to
+  multiple company operators.
 
-- **Nivel Company Operator**: Responsable de configurar el comportamiento de su centralita y dar de alta n usuarios finales.
+- **Company Operator**: Responsible of its own PBX configuration and to
+  manage the final platform users.
 
-- **Nivel de Usuario**: Dispone de unas credenciales para sus terminales SIP y otra para el acceso a su panel web.
+- **Users**: The last link of the chain, has SIP credentials and can access
+  its own portal for custom configurations.
 
+**Each one** of this roles **has its own portal** that allows them to
+fullfill their tasks. Each portal can be customized in the following
+ways:
 
-Cabe destacar que **cada uno** de estos niveles **dispone de un acceso web** que le permite realizar sus funciones. Los acceso web se pueden personalizar a nivel de:
+- Themes and *skins* for corporative colours.
 
-- Temas y *skins* con los colores corporativos.
+- Company Logos.
 
-- Logo de la empresa.
-
-- URLs personalizadas con el dominio de la marca/empresa.
+- Customized URLs with the Brand or Company domain.
 
 .. _operator_oriented:
 
-Orientada a operador
-====================
+Provider oriented
+=================
 
-IvozProvider es una solución de telefonía **diseñada con el escalado horizontal en mente**, lo que la permite adecuarse a **altos volúmenes de tráfico y de usuarios** sin más que adaptar el número de máquinas y los recursos de éstas.
+IvozProvider is a telephony solution **designed with horizontal scaling
+in mind**, what allows handling a great amount of **traffic and users**
+only by increasing the machines and resources of them.
 
-Estas son las ideas principales que lo hacen un producto orientado a operador:
+This are the main ideas that makes this product provider oriented:
 
-- A pesar de que todas las piezas pueden correr en una misma máquina, lo que facilita las pruebas iniciales, cada elemento de IvozProvider se puede separar del resto y correr en su propio hardware.
+- Despite the fact that all machine profiles can run in the same host,
+  whatmakes it easier for the initial testing, each profile of IvozProvider
+  can be splitted from the rest to make it run in its own machine.
 
-- Una **instalación distribuida** permite asignar máquinas con recursos adecuados a cada tarea, pero también posibilita:
 
-    - Separación geográfica de los elementos para garantizar una disponibilidad a prueba de fallo de CPD.
+- A **distributed installation** allows to distribute the correct amount of
+  resources to each task, but also:
 
-    - Instalación de elementos clave cerca de los usuarios finales, para minimizar latencias en sus comunicaciones.
+    - Geographic distribution of elements to warranty high availability in
+      caseof CPD failure.
 
-    - Escalado horizontal de los elementos clave para dar servicios a cientos de miles de llamadas concurrentes.
+    - Setup of key elements near the final users, to minimize the communication
+      latencies.
 
-Los elementos que limitan la capacidad de servicio de las soluciones VoIP suelen ser:
+    - Horizontal scaling of key profiles to handle hundred of thousands
+      concurrent calls.
 
-- Gestión del audio de las llamadas establecidas.
+The resource consuming elements that limit the service of VoIP solutions
+use to be:
 
-- Gestión de las lógicas programadas por cada administador de empresa (IVRs, salas de conferencias, filtros de horario, etc.)
+- Already established calls audio management.
 
-- Bases de datos de almacenamiento de configuraciones y registros.
+- Managing configuration for each company administrator (IVRs, conference
+  rooms, external call filters, etc.)
 
-IvozProvider ha sido diseñado con la idea de mantener el **escalado horizontal** de cada uno de estos elementos, **para así poder llegar a poder gestionar cientos de miles de llamadas concurrentes** y, lo que es más importante, poder **adaptar los recursos de la plataforma al nivel de servicio que se espera en cada momento**:
+- Databases of configuration and records.
 
-- Los **Media-relays** se encargan de reenviar las tramas de audio de las sesiones establecidas:
+IvozProvider was designed always keeping in mind the **horizontal
+scaling** of each of its elements, so it **can handle hundred of
+thousands concurrent calls** and what is more important, **adapt the
+platform resources to the expected service quality**:
 
-    - Se pueden poner tantos media-relays como sean necesarios.
+- **Media-relay** servers handle audio frames for the already established
+  calls:
 
-    - Se pueden crear grupos de media-relays y hacer una asignación estática a las empresas deseadas.
+    - You can use as many media-relays as you need.
 
-    - Se pueden poner los media-relays cerca de los usuarios finales, para evitar latencias en las llamadas.
+    - You can join media-relay in groups, and force some companies to use a
+      group if you want.
 
-- Los **Servidores de Aplicación** se encargan de la fase previa de toda llamada: hacer que siga la lógica programada. Este rol:
+    - You can setup media-relays near the final users, to minimize network
+      latencies in the calls.
 
-    - Se puede escalar horizontalmente: que los Servidores de Aplicación empiezan a estar saturados, se instalan más y se añaden al pool.
+- **Application servers** are in charge of processing the configurad logics:
 
-    - Una llamada acaba en el Servidor de Aplicación que menos cargado esté en cada momento.
+    - They scale horizontally: new Application Serves can be installed and
+      added to the pool if you feel the need.
 
-    - En la configuración por defecto no existe asignación estática [*]_ que envíe las llamadas de una empresa a un Servidor de Aplicación concreto, de modo que la caída de cualquier Servidor de Aplicación no es crítica: el sistema dejará de contar con él a la hora de distribuir las llamadas.
+    - Every call is handled by the least busy Appliction Server
+
+    - By default, there is no static assigment * between Companies and
+      Application Servers. This way failure of any Application Server is not
+      critical: the platform will ignore the faulty Application Server while
+      distributing calls.
 
 .. _exposed:
 
-Expuesta a la red pública
-=========================
+Exposed to the public network
+=============================
 
-Tal y como se verá en el proceso de instalación, **IvozProvider está diseñado para servir a usuarios directamente desde Internet**. Aunque pueda utilizarse en entornos locales, IvozProvider se ha diseñado para disponer de direcciones IPs públicas para dar servicio sin necesidad de túneles VPN o IPsec que te conecten con la infraestructura.
+As showed in the installation proces, **IvozProvider is designed to serve
+users directly from Internet**. Althoughit can be used in local
+enviroments, IvozProvider is designed to use public IP addresses for its
+services, removing the need of VPN or IPSec tunnels that connect the
+infrastructure with the final users
 
-Cabe destacar:
+Highlights:
 
-- Solo los elementos imprescindibles están expuestos a Internet.
+- Only the required services will be exposed to Internet.
 
-- Los accesos desde países de dudosa confianza se cortan en el firewall incorporado.
+- The unstrusted origins access can be filtered out by integrated firewall
 
-- Se puede filtrar el acceso desde IPs/redes autorizadas para evitar fraudes.
+- Access from IP addresses or networks can be filtered to avoid any kind of
+  phishing.
 
-- Existe un mecanismo anti-flood para evitar grandes consumos en poco tiempo.
+- There is also an anti-flood mechanism to avoid short-life Denial of
+  Service attacks.
 
-- Existe un mecanismo de control de llamadas concurrentes por empresa.
+- Each company concurrent calls can be limited to a fixed amount.
 
-- IvozProvider soporta la conexión desde terminales tras `NAT <https://es.wikipedia.org/wiki/Traducci%C3%B3n_de_direcciones_de_red>`_.
+- IvozProvider soporta la conexión desde terminales tras
+  `NAT <https://es.wikipedia.org/wiki/Traducci%C3%B3n_de_direcciones_de_red>`_.
 
-- IvozProvider se encarga de mantener activas dichas ventanas de NAT con mecanismos de *nat-piercing*.
+- IvozProvider keep track of those NAT windows and keep them alive with
+  *nat-piercing* mechanisms.
 
-.. [*] El administrador global puede asignar Servidores de Aplicación estáticamente a empresas, pero esta funcionalidad está pensada como herramienta de *troubleshooting* puntual.
+.. [*] The global administrator can assign Application Servers to companies but
+   this feature is more designed as a temporal debug and troubleshoot
+   measure.

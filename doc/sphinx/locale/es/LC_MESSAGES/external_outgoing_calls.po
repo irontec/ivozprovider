@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-13 19:41+0200\n"
+"POT-Creation-Date: 2016-12-29 19:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,71 +25,71 @@ msgid ""
 "destino** que incluye 'España', 'Europa'."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:5
+#: ../../external_outgoing_calls/call_routing.rst:7
 msgid ""
 "Ahora solo nos falta decir a IvozProvider que las llamadas de 'España' o "
 "de 'Europa' salgan por nuestro **Contrato de peering**."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:9
+#: ../../external_outgoing_calls/call_routing.rst:12
 msgid "Rutas salientes"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:11
+#: ../../external_outgoing_calls/call_routing.rst:14
 msgid ""
 "Para realizar esta vinculación, accedemos a la sección **Rutas "
 "salientes**:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:16
+#: ../../external_outgoing_calls/call_routing.rst:19
 msgid ""
 "Si optamos por enrutar solamente las llamadas de España por nuestro "
 "Contrato de *peering*, tendremos que realizar la siguiente configuración:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:21
+#: ../../external_outgoing_calls/call_routing.rst:25
 msgid ""
 "Por el contrario, si somos más generosos y decidimos permitir todas las "
 "llamadas a países europeos, la configuración a aplicar sería la "
 "siguiente:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:27
+#: ../../external_outgoing_calls/call_routing.rst:33
 msgid "Existen dos parámetros que merecen explicación:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:30
+#: ../../external_outgoing_calls/call_routing.rst:36
 msgid "Prioridad"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:32
+#: ../../external_outgoing_calls/call_routing.rst:38
 msgid ""
-"Si una llamada concreta encaja con rutas de distinta prioridad, la "
-"llamada se sacará por la que menor prioridad tenga siempre y cuando esté "
+"Si una llamada concreta encaja con rutas de distinta prioridad, la lamada"
+" se sacará por la que menor prioridad tenga siempre y cuando esté "
 "disponible."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:33
+#: ../../external_outgoing_calls/call_routing.rst:41
 msgid "Métrica"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:35
+#: ../../external_outgoing_calls/call_routing.rst:43
 msgid ""
 "Si una llamada concreta encaja con rutas con la misma prioridad, la "
 "métrica determina cuántas se sacarán por una ruta y cuántas por otra."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:37
+#: ../../external_outgoing_calls/call_routing.rst:46
 msgid ""
 "Estos dos parámetros son clave para conseguir dos funcionalidades muy "
 "interesantes: **load-balancing** y **failover-routes**."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:40
+#: ../../external_outgoing_calls/call_routing.rst:50
 msgid "Balanceo de carga"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:42
+#: ../../external_outgoing_calls/call_routing.rst:52
 msgid ""
 "El balanceo de carga o *load-balancing* nos permite sacar un porcentaje "
 "de llamadas por una ruta y otro porcentaje de llamadas por otra ruta, es "
@@ -97,66 +97,66 @@ msgid ""
 " válidas."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:45
+#: ../../external_outgoing_calls/call_routing.rst:57
 msgid "Ejemplo 1"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:46
-#: ../../external_outgoing_calls/call_routing.rst:53
-#: ../../external_outgoing_calls/call_routing.rst:65
+#: ../../external_outgoing_calls/call_routing.rst:58
+#: ../../external_outgoing_calls/call_routing.rst:66
+#: ../../external_outgoing_calls/call_routing.rst:80
 msgid "Ruta A: prioridad 1, métrica 1"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:47
+#: ../../external_outgoing_calls/call_routing.rst:59
 msgid "Ruta B: prioridad 1, métrica 1"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:49
+#: ../../external_outgoing_calls/call_routing.rst:61
 msgid ""
 "Las llamadas que encajen en ambas rutas se sacaran el 50% por una ruta y "
 "el 50% por la otra."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:52
+#: ../../external_outgoing_calls/call_routing.rst:65
 msgid "Ejemplo 2"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:54
+#: ../../external_outgoing_calls/call_routing.rst:67
 msgid "Ruta B: prioridad 1, métrica 2"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:56
+#: ../../external_outgoing_calls/call_routing.rst:69
 msgid ""
 "Las llamadas que encajen en ambas rutas se sacaran el 33% por la Ruta A y"
 " el 66% por la Ruta B (el doble por B que por A)."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:59
+#: ../../external_outgoing_calls/call_routing.rst:73
 msgid "Conmutación por error"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:61
+#: ../../external_outgoing_calls/call_routing.rst:75
 msgid ""
 "Las rutas en caso de fallo o *failover-routes* nos permite disponer de "
 "ruta adicional en caso de que la ruta preferida falle."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:64
+#: ../../external_outgoing_calls/call_routing.rst:79
 msgid "Ejemplo"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:66
+#: ../../external_outgoing_calls/call_routing.rst:81
 msgid "Ruta B: prioridad 2, métrica 1"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:68
+#: ../../external_outgoing_calls/call_routing.rst:83
 msgid ""
 "Las llamadas que encajen en ambas rutas se intentarán sacar siempre por "
 "la Ruta A. En caso de no error (operador caído, etc.), se intentará sacar"
 " por la Ruta B."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_routing.rst:70
+#: ../../external_outgoing_calls/call_routing.rst:86
 msgid ""
 "Tanto el balanceo de carga como las rutas de fallo permiten "
 "encadenar/utilizar más de 2 rutas, aunque en los ejemplo se hayan "
@@ -175,23 +175,23 @@ msgid ""
 "anterior."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:7
+#: ../../external_outgoing_calls/call_types.rst:9
 msgid ""
 "Para ello, en primer lugar, necesitamos que los números externos recaigan"
 " en un **patrón de destino** dado de alta con anterioridad."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:13
+#: ../../external_outgoing_calls/call_types.rst:16
 msgid "Patrones de destino"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:15
+#: ../../external_outgoing_calls/call_types.rst:18
 msgid ""
 "Cuando un usuario marca un número externo, IvozProvider intenta calificar"
 " este número en uno de los patrones de destino definidos en esta sección:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:20
+#: ../../external_outgoing_calls/call_types.rst:24
 msgid ""
 "Lo más normal será que nos interese tener un patrón de destino por cada "
 "uno de los 254 países definidos en la `ISO 3166 "
@@ -199,13 +199,13 @@ msgid ""
 "incluye estos países y sus prefijos de forma automática:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:25
+#: ../../external_outgoing_calls/call_types.rst:32
 msgid ""
 "Dentro de este listado aparece el prefijo de España, que será el grupo "
 "del número que probemos en este bloque:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:30
+#: ../../external_outgoing_calls/call_types.rst:38
 msgid ""
 "Cada operador de marca puede elegir mantener estos patrones o borrarlos y"
 " crear los que le interesen. De hecho, aparte de prefijos, también se "
@@ -213,46 +213,46 @@ msgid ""
 " que englobe todas las llamadas: ^[0-9]+$."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:32
+#: ../../external_outgoing_calls/call_types.rst:43
 msgid ""
 "Crear patrones de destino en base a expresiones regulares puede provocar "
 "que un número encaje en 2 patrones. Usar con responsabilidad."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:36
+#: ../../external_outgoing_calls/call_types.rst:48
 msgid "Grupos de patrones"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:38
+#: ../../external_outgoing_calls/call_types.rst:50
 msgid ""
 "Como veremos en la sección de :ref:`rutas salientes <outgoing_routes>`, "
 "cada patrón de destino se vinculará a un Contrato de Peering concreto."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:40
+#: ../../external_outgoing_calls/call_types.rst:53
 msgid ""
 "Por este motivo, puede ser interesante agrupar los patrones en grupos y "
 "así poder vincular un grupo entero a un Contrato de Peering."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:42
+#: ../../external_outgoing_calls/call_types.rst:56
 msgid "Para ello se utiliza esta sección:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:47
+#: ../../external_outgoing_calls/call_types.rst:61
 msgid ""
 "Por defecto aparecen los 254 países agrupados en base a su continente "
 "definidos en la `ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_:"
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:52
+#: ../../external_outgoing_calls/call_types.rst:67
 msgid ""
 "**En resumen**, cuando un usuario marca un número externo, IvozProvider "
 "busca el patrón de destino al que pertenece para saber por dónde tiene "
 "que sacar dicha llamada."
 msgstr ""
 
-#: ../../external_outgoing_calls/call_types.rst:54
+#: ../../external_outgoing_calls/call_types.rst:71
 msgid ""
 "Para conseguir nuestro objetivo de llamar a un número español, no hemos "
 "tenido que modificar el contenido de partida de estas dos secciones :)"
@@ -269,14 +269,14 @@ msgid ""
 "llamado podría devolvernos la llamada cómodamente."
 msgstr ""
 
-#: ../../external_outgoing_calls/external_ddi.rst:9
+#: ../../external_outgoing_calls/external_ddi.rst:11
 msgid ""
 "Para ello, basta con configurar dicho DDI como **DDI saliente** de "
 "*Alice*, que será la elegida para realizar la primera llamada saliente de"
 " nuestro recién instalado IvozProvider:"
 msgstr ""
 
-#: ../../external_outgoing_calls/external_ddi.rst:13
+#: ../../external_outgoing_calls/external_ddi.rst:17
 msgid ""
 "Esta configuración se realiza desde **Configuración de empresa** > "
 "**Usuarios**, editando el usuario de *Alice*. Si ese el operador de marca"
@@ -284,7 +284,7 @@ msgid ""
 ":ref:`emulado la empresa <emulate_company>` previamente."
 msgstr ""
 
-#: ../../external_outgoing_calls/external_ddi.rst:15
+#: ../../external_outgoing_calls/external_ddi.rst:22
 msgid ""
 "Sin configurar un DDI saliente para el usuario que realiza la llamada, "
 "ésta no saldrá al exterior."
@@ -301,7 +301,7 @@ msgid ""
 "hasta este momento."
 msgstr ""
 
-#: ../../external_outgoing_calls/index.rst:7
+#: ../../external_outgoing_calls/index.rst:8
 msgid "Para ello, seguiremos los siguientes pasos:"
 msgstr ""
 
@@ -312,11 +312,11 @@ msgid ""
 "pero..."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:5
+#: ../../external_outgoing_calls/noplan_nocall.rst:8
 msgid "Sin plan de precio, no hay llamada"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:7
+#: ../../external_outgoing_calls/noplan_nocall.rst:10
 msgid ""
 "Tal y como advertimos :ref:`cuando describimos las funciones del operador"
 " de marca <brand_responsibilities>`, el operador de marca era el "
@@ -324,13 +324,13 @@ msgid ""
 "llamadas externas se puedan tarificar**."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:9
+#: ../../external_outgoing_calls/noplan_nocall.rst:15
 msgid ""
 "Se entiende por **tarificar** la **acción de poner precio** a una llamada"
 " que implique coste."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:11
+#: ../../external_outgoing_calls/noplan_nocall.rst:18
 msgid ""
 "Para evitar que por un descuido el operador de marca no defina el precio "
 "para un tipo de llamada y llamadas que implican coste salgan a precio 0, "
@@ -338,30 +338,30 @@ msgid ""
 "llamada se va a poder tarificar**."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:13
+#: ../../external_outgoing_calls/noplan_nocall.rst:23
 msgid ""
 "Si una llamada no se va a poder tarificar, IvozProvider no permitirá su "
 "establecimiento."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:17
+#: ../../external_outgoing_calls/noplan_nocall.rst:30
 msgid "Crear un patrón de precio"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:19
+#: ../../external_outgoing_calls/noplan_nocall.rst:32
 msgid ""
 "Del mismo modo que existen los :ref:`patrones de destino "
 "<target_patterns>`, existen los **patrones de precio** y se configuran en"
 " esta sección:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:23
+#: ../../external_outgoing_calls/noplan_nocall.rst:37
 msgid ""
 "Para que una llamada se considere tarificable, tiene que *matchear* con "
 "algún patrón de precio dado de alta previamente."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:25
+#: ../../external_outgoing_calls/noplan_nocall.rst:40
 msgid ""
 "A diferencia de los patrones de destino, que vienen precreados con los "
 "254 países del mundo, los patrones de precio no se crean ya que lo "
@@ -370,118 +370,126 @@ msgid ""
 " etc.)."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:27
+#: ../../external_outgoing_calls/noplan_nocall.rst:45
 msgid "Creemos el patrón de precio *Spain* para nuestra llamada saliente externa:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:33
+#: ../../external_outgoing_calls/noplan_nocall.rst:53
 msgid "Crear un plan de precio"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:35
+#: ../../external_outgoing_calls/noplan_nocall.rst:55
 msgid ""
 "Un **Plan de precio** determina el coste de un tipo de llamada (de un "
 "patrón de precio) y se configura en esta sección:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:39
+#: ../../external_outgoing_calls/noplan_nocall.rst:60
 msgid "Creamos un **plan de precio** para nuestro objetivo:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:43
+#: ../../external_outgoing_calls/noplan_nocall.rst:64
 msgid "Y le añadimos el **patrón de precio** que hemos creado antes:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:49
+#: ../../external_outgoing_calls/noplan_nocall.rst:70
 msgid ""
 "Los números decimales se tienen que introducir utilizando el \".\" como "
 "separador decimal (e.g. 0.02)"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:52
+#: ../../external_outgoing_calls/noplan_nocall.rst:74
 msgid "Encontrar un plan de precios para un destino concreto"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:53
+#: ../../external_outgoing_calls/noplan_nocall.rst:75
 msgid ""
 "Para comprobar que hasta este punto la configuración es correcta, podemos"
 " **encontrar un plan de precio** para una llamada concreta pulsando:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:57
-#: ../../external_outgoing_calls/noplan_nocall.rst:91
+#: ../../external_outgoing_calls/noplan_nocall.rst:80
+#: ../../external_outgoing_calls/noplan_nocall.rst:126
 msgid "Introducimos el número destino en :ref:`formato E.164 <e164>`:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:61
+#: ../../external_outgoing_calls/noplan_nocall.rst:84
 msgid "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:67
+#: ../../external_outgoing_calls/noplan_nocall.rst:92
 msgid "Vincular plan de precio a empresa"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:69
+#: ../../external_outgoing_calls/noplan_nocall.rst:94
 msgid ""
 "Un **plan de precios** concreto se puede vincular a *n* empresas y "
 "corresponde al *Operador de marca* realizar esta vinculación."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:71
+#: ../../external_outgoing_calls/noplan_nocall.rst:97
 msgid ""
 "Para ello, desde la sección **Configuración de Marca** > **Empresas**, "
 "seleccionando la empresa *demo*:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:75
+#: ../../external_outgoing_calls/noplan_nocall.rst:102
 msgid ""
 "La vinculación de **Planes de precio** y **Empresas** es efectiva en un "
 "período de tiempo concreto, de ahí que haya que seleccionar *Fecha "
 "inicio* y *Fecha fin*:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:79
+#: ../../external_outgoing_calls/noplan_nocall.rst:107
 msgid ""
 "La **metrica** de la vinculación permite vincular más de un *plan de "
 "precios* a una empresa de forma coincidente en el tiempo, aunque ciertos "
 "destinos estén incluidos en más de uno de esos planes de precio."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:81
+#: ../../external_outgoing_calls/noplan_nocall.rst:111
 msgid ""
 "Una llamada que puede tarificarse en base a más de un plan de precio "
 "vinculado a una empresa y activo en un momento dado lo hará en base al "
 "plan de precio con menor métrica."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:83
+#: ../../external_outgoing_calls/noplan_nocall.rst:115
 msgid ""
 "Esto permite tener un *Plan de precios* general y matizar el coste de "
 "algún tipo de llamada en otro *Plan de precio* (móviles gratis, por "
 "ejemplo)."
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:86
+#: ../../external_outgoing_calls/noplan_nocall.rst:119
 msgid "Simular una llamada desde una empresa concreta"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:87
+#: ../../external_outgoing_calls/noplan_nocall.rst:120
 msgid ""
 "Del mismo modo que al crear un *Plan de precios* hemos comprobado que a "
 "nuestra llamada aplicaba dicho plan, podemos simular una llamada concreta"
 " en una empresa concreta y saber qué coste se le aplicaría:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:96
+#: ../../external_outgoing_calls/noplan_nocall.rst:131
 msgid ""
 "Y vemos que efectivamente se le asignaría un precio correcto en base al "
 "plan de precio que acabamos de crear y vincular:"
 msgstr ""
 
-#: ../../external_outgoing_calls/noplan_nocall.rst:100
+#: ../../external_outgoing_calls/noplan_nocall.rst:136
 msgid ""
 "En este punto, *Alice* debería de ser capaz de realizar llamadas "
 "nacionales externas, que se tendrían que cursar y tarificar con "
 "normalidad."
 msgstr ""
+
+#~ msgid ""
+#~ "Si una llamada concreta encaja con "
+#~ "rutas de distinta prioridad, la llamada"
+#~ " se sacará por la que menor "
+#~ "prioridad tenga siempre y cuando esté"
+#~ " disponible."
+#~ msgstr ""
 

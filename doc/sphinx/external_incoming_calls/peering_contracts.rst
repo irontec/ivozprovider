@@ -1,135 +1,183 @@
 .. _peering_contracts:
 
 ##############################
-Configurar Contrato de Peering
+Configuring a Peering Contract
 ##############################
 
-En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre un **Operador de Marca** y un Operador VoIP para sacar y recibir llamadas.
+We understand a **Peering contract** the agreeming between a **Brand Operator**
+and a VoIP Provider to make and receive calls.
 
-IvozProvider permite integrarse con Operadores IP por medio de la sección **Contratos de Peering** que pasamos a describir:
+IvozProvider is ready to integrate with IP providers created on the secteion
+**Perring contracts**:
 
 .. image:: img/peeringcontract_section.png
     :align: center
 
-*************
-Datos básicos
-*************
+***************************
+Peering contract Basic data
+***************************
 
-Analicemos los campos de un PeeringContract de ejemplo:
+These are the basic information of a Peering contract:
 
 .. image:: img/peeringcontract.png
     :align: center
 
-Si entramos a editar este Contrato de Peering concreto:
+If we edit it, well see something like this:
 
 .. image:: img/peeringcontract_edit.png
     :align: center
 
 .. glossary::
 
-    Nombre
-        Se utilizará para referencia a este Contrato de Peering.
+    Name
+        Used to reference this Peering contract.
 
-    Descripción
-        Un campo adicional para escribir algún detalle.
+    Description
+        Optional field with any required extra information.
 
-    Transformación numérica
-        Transformaciones que se aplicarán al origen y al destino a las numeraciones que entren o salgan por este PeeringContract (ver :ref:`numeric_transformations`).
+    Numeric Transformation
+        Transformation that will be applied to the origin and destination of the
+        incoming and outgoing numbers that use this Peering contact
+        (see :ref:`numeric_transformations`).
 
-    Tarificación externa
-        Módulo de tarificación externa disponible solo para ciertos operadores. Permite poner precio a la llamada atacando una API externa en lugar de hacerlo con las lógicas de IvozProvider. Consultar a los :ref:`desarrolladores de la solución <getting_help>` en caso de estar interesados.
+    External tarification
+        This setting requires the external tarification module and allows
+        tarification on special numbers. This module is not standard so don't
+        hesitate in `contact us <getting_help>` if you are interested.
 
+.. important:: Fields marked with a red start are mandatory.
 
-.. important:: Los campos marcados con una estrella roja son obligatorios.
+************
+Peer Servers
+************
 
-***********
-PeerServers
-***********
-
-El concepto de **PeerServer** se refiere a los distintos servidores SIP que puede tener un Operador IP para servir su dominio SIP. Para definir los PeerServers del OPERADOR que acabamos de definir, hay que pulsar este botón:
+A **Peer Server** is a SIP server associated to an IP Provider.
+In order to add some Peer Servers for the Peer Contract that
+have just created, we only have to use the following section:
 
 .. image:: img/peerservers.png
     :align: center
 
-Tal y como indica el 0, no hay ningún PeerServer definido, por lo que añadimos uno:
+As displayed by the zero counter, no Peer Serve has been created yet:
 
 .. image:: img/peerservers_add.png
     :align: center
 
 .. glossary::
 
-    Nombre
-        Se utilizará para referencia a este PeerServer.
+    Name
+        Used to identify this Peer Server
 
-    Descripción
-        Un campo adicional para escribir algún detalle.
+    Description
+        Optional field with any required extra information.
 
     SIP Proxy
-        Dirección IP (o registro DNS) del PeerServer. Si utiliza un puerto distinto a 5060, se puede indicar con ':'.
+        IP address (or DNS registry) of the Peer Server. You can also specify
+        a port if it's different from 5060.
 
-    Esquema URI
-        Los esquemas soportados son sip y sips. Dejar en 'sip' en caso de duda.
+    URI Scheme
+        Supported schemes are sip and sips. Use 'sip' in case of doubt.
 
-    Transporte
-        Los protocolos de transporte SIP soportados. En caso de duda, dejar 'udp'.
+    Transport
+        Supported transport protocols. Use 'udp' in case of doubt.
 
     Outbound Proxy
-        Normalmente se deja vacío o se pone la IP del dominio indicado en **SIP Proxy** (para evitar resolución de dominios y hacer que el mensaje SIP contenga el dominio en lugar de una IP). Funciona como un proxy web: en lugar de enviar los mensajes SIP al destino de **SIP Proxy**, los envía a la IP:PUERTO de este campo.
+        Usually this is left empty. It can be filled with the IP address of the
+        **SIP Proxy** domain (to avoid DNS resolution, but keeping the domain
+        in the SIP messages). It works like a web proxy: instead of sending the
+        SIP messages to destination **SIP Proxy**, they will be sent to the
+        IP:PORT of this field.
 
-    Requiere autenticación
-        Existen contratos de Peering que nos validarán por IP, otros necesitarán que nos autentiquemos en cada sesión que queramos establecer. En caso de ser del último grupo, este selector nos permite introducir un usuario y una contraseña para responder a esa autenticación.
+    Requires Authentication
+        Some Peering contracts validate our platform by IP, others require
+        each session that we want to establish. For this last case, this section
+        allows to configure user and password for this authentication.
 
-    Cabecera de origen de llamada
-        Algunos operadores recogen el origen del From. Otros utilizan el From para validar la cuenta de cliente y necesitan cabeceras adicionales para recoger el origen. En caso de duda, marcar **PAI**.
+    Call Origin Header
+        Some Providers get origin from SIP From header. Others use the From
+        header for accounting and need extra headers to identify the origin.
+        In case of doubt leave **PAI** checked.
 
-    Transformaciones R-URI previas a las transformaciones numéricas
-        Permiten realizar cambios estáticos al destino de la llamada antes de aplicar las reglas de transformación numéricas mendionadas en :ref:`numeric_transformations`. Se pueden quitar uno dígitos del comienzo, añadir un prefijo después e, incluso, añadir parámetros a la URI siguiendo el formato indicado. En caso de duda, dejar todo el bloque en blanco.
+    R-URI Transformations before numeric transformations
+        This setting allow static changes to the destination of the calls before
+        applying numeric transformation rules mentioned in
+        :ref:`numeric_transformations`. Some digits can be stripped from the
+        begining, add a prefix, or even, add extra parameters to the URI
+        followinging the given format. In case of doubt, leave empty.
 
-    Personalización de la cabecera From
-        Los operadores que muestren el origen en otras cabeceras (PAI/RPID), es posible que nos soliciten que el From User sea el número de cuenta de cliente y el From Domain (por ejemplo), su dominio SIP. En caso de duda, dejar en blanco.
+    From header customization
+        For those providers that show origin in other headers (PAI/RPID), it is
+        possible that request that From User have the account code being used
+        and from domain their SIP domain. In case of doubt, leave empty.
 
-.. tip:: Existen muchos campos para poder establecer *peering* con operadores de todo tipo, pero lo habitual será poner solo nombre y SIP Proxy (para los operadores que nos validen por IP) o nombre, SIP Proxy y Autenticación.
+.. tip:: There are many fields to establish *peering* with multiple kind of
+   providers, but usually with the name and SIP Proxy will be enough (for
+   those that validate our platform by IP) and Authentication (for those that
+   won't).
 
-.. warning:: En caso de definir múltiples PeerServers para un PeeringContract, IvozProvider hará balanceo y failover utilizando todos. Es decir, a veces hablará a uno y otras veces a otro. En caso de que uno no le conteste, lo intentará con el resto hasta dar con uno que conteste.
+.. warning:: In case of defining multiple Peering Servers for a single
+   Peering Contract, IvozProvider will balance and failover using all of them.
+   Like with Application Servers, it will disable those who doesn't respond to
+   our requests.
 
 ************
-Registro SIP
+SIP Register
 ************
 
-Hay operadores que exigen que tengamos un `Registro SIP <https://tools.ietf.org/html/rfc3261#section-10>`_ activo para que nos metan las llamadas de nuestras numeraciones. Es más, existen operadores que exigen un registro activo para poder sacar llamadas a través de ellos (???).
+Some providerss require a `SIP Register
+<https://tools.ietf.org/html/rfc3261#section-10>`_ active in order to receive
+incoming calls to our DDIs. Some of them, even require this register in order
+to process our outgoing calls through their services.
 
-.. note:: IvozProvider soporta *peerings* de todo tipo, pero recomendamos acordar *peerings de tú a tú*: sin autenticación, sin registro y validados por IP. Esto evita tráfico innecesario (autenticación en cada sesión y registros periódicos) y simplifica la configuración, quedándose casi todo con los valores por defecto.
+.. note:: IvozProvider supports any kind of *peering*, but we highly recomend
+   *peer to peer peerings*: without authentication, without registry and
+   validated by IP. This will avoid unnecessary traffic (authentication in each
+   session and preriodic registers) and simplifies its configuration, just by
+   leaving most of the fields by default.
 
-Por este motivo IvozProvider permite configurar registros SIP periódicos por medio del siguiente botón:
+For this reason, IvozProvider allows periodic SIP register configuration in the
+following section:
 
 .. image:: img/sip_registers.png
 
-Si creamos uno nuevo, nos encontramos con la siguiente ventana:
+If we create a new one, the following screen will be displayed:
 
 .. image:: img/sip_registers_add.png
 
 .. glossary::
 
-    Nombre de usuario
-        Número de cuenta de cliente o similar proporcionada por el operador que exige registro SIP.
+    Username
+        Account number or similar provider by the provider that requires SIP
+        register.
 
-    Dominio
-        Dominio o IP del servidor de registros. Habitualmente el mismo que sirve de Proxy SIP en el PeerServer.
+    Domain
+        Domain or IP of the registar server. Usually the same as the SIP proxy
+        of the Peer server.
 
     DDI
-        Se envía en la cabecera Contact y tiene que ser único a nivel de toda la plataforma. En PeeringContracts con un DDI asociado, se recomienda meter ese DDI. En caso de múltiples DDIs asociados, se recomienda meter uno de ellos. En caso de ningún DDI asociado, se recomienda meter un valor único (cualquier valor que te deje guardar).
+        This will be sent in the SIP Contact header and must be unique in all
+        the platform. For Peering contracts with an associated DDI, it is
+        recommended to enter that DDI. In case of multiples DDI for the same
+        Peering Contract, use any of them. If no DDI is associated with this
+        Peering Contract just enter an unique numeric value.
 
-    Usuario
-        Usuario de autenticación, practicamente siempre es igual al "Nombre de usuario" por lo que se recomienda dejar en blanco.
+    User
+        Authentication user. Most of the time it's the same as username, so
+        it's recommended to leave empty.
 
-    URI Servidor de registro
-        Normalmente se puede dejar en blanco ya que se deduce del Dominio introducido. Si no fuera así, poner una dirección IP con 'sip:' por delante.
+    Register server URI
+        Usually this can be left empty, as it can be obtained from the
+        Domain. If it is not the case, enter the IP address with the 'sip:'
+        prefix.
 
     Realm
-        Dejar en blanco para aceptar el propuesto por el extremo contrario. Definir solo si de estar familiarizado el mecanismo de autorización de SIP y saber lo que este campo implica.
+        Leave empty to accept the authentication realm proposed by the provider.
+        Define only if you are familiar to the authentication mechanism used
+        in SIP.
 
     Expire
-        Tiempo que IvozProvider sugerirá como tiempo de expiración del registro.
+        Default suggested register expire time.
 
-.. tip:: Al igual que ocurre con los PeerServers, existen múltiples campos. Hay que tener en cuenta, no obstante, que la mayoría de operadores no deberían de exigir registro y, los que lo hagan, habitualmente solo requerirán de usuario, dominio y contraseña.
-
+.. tip:: Similar to the Peer Servers, there are lots of fields in the screen.
+   You must have into account that most of the provider doesn't require register
+   , and those who does, will only use user, domain and password.

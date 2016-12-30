@@ -1,23 +1,33 @@
-El operador de marca utiliza la plataforma con un acceso y una visibilidad menor que el rol anterior. En concreto, el operador global le facilita una URL y unas credenciales y ese portal web de operador de Marca es su único interfaz con IvozProvider.
+Brand operator can access a portal with less sections available compared
+to the previous role. The general (God) administrator is in charge of
+providing an URL with credentials for its brand portal.
 
-No obstante, este portal le permite desempeñar su función más importante, que es **crear empresas y configurar todo lo necesario para que éstas desempeñen su función**.
+The most important task for brand operator can be managed through this
+portal: **create and configure companies so they can work properly**.
 
-Dado que el operador de marca es el encargado de facturar a sus empresas y de hacer que sus llamadas salgan al exterior, también tiene que gestionar:
+Due to brand operators are also resposible of billing their companies and
+make sure the external cals are properly setup, it must also manage:
 
-- Contratos de Peering con otros operadores IP para conectar con la PSTN.
+- Peering contracts with other IP providers for PSTN interconectivity.
 
-- Incluir en los datos de la empresa toda información necesaria para las facturas.
+- Include all required company information for the billing process.
 
-- Planes de Precio que ofertarán a sus empresas, qué determinarán cuánto pagan por cada tipo de llamada.
+- Pricing plans that will offer to their companies, that will determine how
+  match they pay for each call.
 
-- Configurar por dónde sale cada tipo de llamada de cada empresa, en función del destino.
+- Setup the routes for each outgoing call types based on their final
+  destination
 
-- Generar las facturas en cada período de facturación y emitarlas al cliente.
+- Create the invoices for each billing period and send them to their
+  clients.
 
-
-Como se puede ver, las tareas del operador de marca poco tienen que ver con las del operador global, pero son vitales para que los usuarios finales puedan hacer uso de las funcionalidades de IvozProvider.
+As you can see, the task of brand operator has little in common with the
+global operator, but their importance is vital so the final users can use
+all the features includes in IvozProvider
 
 .. _brand_responsibilities:
 
-.. important:: **En resumen**, los operadores de marca **dan acceso a** los administradores de las **empresas** a las que den servicio **y configuran la plataforma para poder enrutar, tarificar y facturar sus llamadas**.
+.. important:: **To sum up**, the brand operators **grant access** to the
+               **company** administrators they serve and **configure the
+               platform to route, tarificate and bill their calls**.
 

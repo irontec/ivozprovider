@@ -4,21 +4,30 @@
 Generación de facturas
 ######################
 
-El objetivo final de todo el proceso de facturación es generar facturas que incluyan las llamadas con coste de una empresa concreta.
+El objetivo final de todo el proceso de facturación es generar facturas que 
+incluyan las llamadas con coste de una empresa concreta.
 
 **********************
 Plantillas de facturas
 **********************
 
-Antes de generar una factura de ejemplo, es importante entender que las facturas generadas utilizan unas plantillas que permiten su modificación.
+Antes de generar una factura de ejemplo, es importante entender que las 
+facturas generadas utilizan unas plantillas que permiten su modificación.
 
-.. hint:: De este modo, cada *operador de marca* puede crear plantillas con los datos deseados, la estética deseada, añadir logos y hasta gráficas de consumo.
+.. hint:: De este modo, cada *operador de marca* puede crear plantillas con los 
+   datos deseados, la estética deseada, añadir logos y hasta gráficas de 
+   consumo.
 
-Todo ello se realiza utilizando la librería `PHPPdf <https://github.com/psliwa/PHPPdf>`_.
+Todo ello se realiza utilizando la librería `PHPPdf 
+<https://github.com/psliwa/PHPPdf>`_.
 
-La ayuda contextual de la sección **Configuración de Marca** > **Plantillas de facturas** incluye una explicación resumida del proceso de creación de plantillas. En la `página oficial de PHPPdf <https://github.com/psliwa/PHPPdf>`_ se puede encontrar más información.
+La ayuda contextual de la sección **Configuración de Marca** > **Plantillas de 
+facturas** incluye una explicación resumida del proceso de creación de 
+plantillas. En la `página oficial de PHPPdf 
+<https://github.com/psliwa/PHPPdf>`_ se puede encontrar más información.
 
-Por defecto, IvozProvider incluye las siguientes plantillas de ejemplo (en la ayuda contextual se pueden encontrar enlaces a las mismas):
+Por defecto, IvozProvider incluye las siguientes plantillas de ejemplo (en la 
+ayuda contextual se pueden encontrar enlaces a las mismas):
 
 .. image:: img/invoices_templates.png
 
@@ -26,19 +35,22 @@ Por defecto, IvozProvider incluye las siguientes plantillas de ejemplo (en la ay
 Costes fijos
 ************
 
-Los costes fijos son un concepto fijo que se pueden añadir a las facturas que utilicen plantillas que tengan en cuenta costes fijos.
+Los costes fijos son un concepto fijo que se pueden añadir a las facturas que 
+utilicen plantillas que tengan en cuenta costes fijos.
 
 Sirva la siguiente imagen de ejemplo (sección **Costes Fijos**):
 
 .. image:: img/fixed_costs.png
 
-A la hora de generar una factura, como se verá más adelante, se podrá indicar cuáles de estos conceptos se incluyen en la factura (y en qué cantidades).
+A la hora de generar una factura, como se verá más adelante, se podrá indicar 
+cuáles de estos conceptos se incluyen en la factura (y en qué cantidades).
 
 ***********************
 Creacion de una factura
 ***********************
 
-La sección **Facturas** es la que permite al **operador de marca** generar facturas para emitir a sus empresas.
+La sección **Facturas** es la que permite al **operador de marca** generar 
+facturas para emitir a sus empresas.
 
 Añadimos una factura nueva para explicar el proceso:
 
@@ -77,7 +89,8 @@ En este punto, podemos generar la factura pulsando:
 .. image:: img/invoice_add4.png
     :align: center
 
-Pulsando el siguiente botón podemos ver las llamadas que han sido incluidas en la factura:
+Pulsando el siguiente botón podemos ver las llamadas que han sido incluidas en 
+la factura:
 
 .. image:: img/invoice_add5.png
     :align: center
@@ -87,7 +100,9 @@ Y pulsando este botón podemos descargar la factura en formato PDF:
 .. image:: img/invoice_add6.png
     :align: center
 
-.. warning:: La fecha fin tiene que ser una fecha ya pasada. Es decir, no se puede sacar facturas de tramos futuros o del día actual.
+.. warning:: La fecha fin tiene que ser una fecha ya pasada. Es decir, no se 
+   puede sacar facturas de tramos futuros o del día actual.
 
-.. error:: Todas las llamadas del tramo escogido tienen que estar facturadas para poder emitir la factura.
+.. error:: Todas las llamadas del tramo escogido tienen que estar facturadas 
+   para poder emitir la factura.
 

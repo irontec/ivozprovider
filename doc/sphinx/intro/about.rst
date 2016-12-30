@@ -1,16 +1,25 @@
-********************
-Sobre este documento
-********************
+*******************
+About this document
+*******************
 
-Este documento describe el proceso de instalación y de utilización de IvozProvider, la plataforma de telefonía multinivel orientada a operadores desarrollada por `Irontec <http://irontec.com>`_.
+This document describes the process of installation and usage of
+IvozProvider, the multi-tenant telephony platform for providers developed
+by `Irontec <http://irontec.com>`_.
 
-Es el punto de partida para todo aquel interesado en esta solución, tanto desde el punto de vista técnico como desde el punto de vista de uso y consta de cuatro bloques:
+This should be the starting point for anyone interested in this solution,
+both  from the technical point of view and the user one and it's divided
+in four blocks:
 
-- El primer bloque expone unos :ref:`concepts` que desglosan los elementos del producto y su función.
+ - The first block is about :ref:`concepts` where each element of the
+   product and its main function is decscribed.
 
-- El siguiente bloque se describe el proceso de :ref:`installation` con la plataforma recién instalada, dejando de lado detalles que describirán en profundidad en el siguiente bloque.
+ - The second block describes the :ref:`installation` process with a fresh
+   installed platform, leaving the deep configuration details for the next
+   block.
 
-- El tercer bloque es el que profundiza en aspectos de :ref:`advanced` como **tarificación, facturación, funcionalidades de PBX y todos los detalles** que en el bloque anterior se obviaron.
+ - The third block goes deeper into the most :ref:`advanced` features like
+   **trarification, billing, PBX advanced options and every call details**
+   that were omitted in the previous block.
 
-- En el cuarto y último, se describen los mecanismos de :ref:`security` que implementa la solución.
-
+ - The fourth and last block describes the :ref:`security` measures that
+   implements the solution.

@@ -1,32 +1,37 @@
-####################
-Tipos de instalación
-####################
+##################
+Installation Types
+##################
 
-.. _instalacion-distribuida:
+*******************
+Distributed Install
+*******************
 
-***********************
-Instalación distribuida
-***********************
+IvozProvider software is designed to run distributed between multiple systems
+in what we call profiles:
 
-IvozProvider está diseñado para que la mayor parte del software trabaje de manera distribuida en lo que llamamos perfiles.
-
-Cada perfil es encargado de realizar una de las funciones de la plataforma:
+Each profile is in charge of performing one of the platform functionalities:
 
     * Data storage
     * SIP Proxy
     * Application Server
     * Web portal
 
-Para cada uno de estos perfiles existe un paquete virtual que instalará todas las dependencias necesarias (ver :ref:`instalando-paquete-virtual`).
+For each of this profiles, there's a virtual package that will install all the
+required dependencies (see :ref:`Installing profile package`).
 
-Puedes instalar cuantas instancias desees de cada perfil, pero ten en cuenta que, mientras algunos estan pensados para escalar horizontalmente de manera nativa (por ejemplo: asterisk o media-relays) otros requerirán software adicional para que las máquinas del mismo perfil esten coordinadas (por ejemplo: replicación de bases de datos o balanceo de peticiones web).
+You can install as many instances as you want for each profile, but take into
+account, that while some of them are designed to scale horizontally (for
+example: asterisk or media-relays) others will require aditional software so the
+systems that have the same profile are syncronized (for example: database
+replication or http request balancing).
 
-.. _instalacion-standalone:
+******************
+StandAlone Install
+******************
 
-**********************
-Instalación standalone
-**********************
-Pero si lo que deseas es tener una plataforma pequeña para realizar tus pruebas o dar un servicio básico, hemos diseñado todas las configuraciones para que puedan convivir en una sola máquina.
+If you want an small installation to make a couple of tests or give a basic
+service, we have designed all this configuration so they can work in a single
+machine.
 
-Hemos bautizado este tipo de instalaciones como **StandAlone** y hemos creado `CDs automáticos de instalación <https://github.com/irontec/ivozprovider>`_ para que puedas instalarlos en un par de minutos (ver :ref:`instalacion-cd`).
-
+We have called this kind of installations as **StandAlone** and we have also
+created :ref:`Automatic ISO CD image` so you can install in a couple of minutes.

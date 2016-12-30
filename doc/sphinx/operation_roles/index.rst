@@ -1,38 +1,40 @@
 .. _operation_roles:
 
-######################
-Roles de la plataforma
-######################
+##############
+Platform roles
+##############
 
-Ivozprovider es una solución orientada a operador con múltiples niveles de usuarios.
+IvozProvider is a multilevel role provider solution.
 
-La siguiente imagen ilustra los niveles que existen, así como la relación entre ellos:
+The following images shows the different available levels and the
+relation between them:
 
 .. image:: img/operator_levels.png
 
-En esta sección se explicará cada uno de estos roles, describiendo sus responsabilidades y sus funciones más importantes.
+This section will explain each of the available roles, describing their
+responsibilities and more important tasks.
 
-***************************
-Rol de administrador global
-***************************
+************************
+Global administator role
+************************
 
 .. include:: god.rst
 
 ************************
-Rol de operador de marca
+Brand andministator role
 ************************
 
 .. include:: brand.rst
 
-*******************************
-Rol de administrador de empresa
-*******************************
+*************************
+Company administator role
+*************************
 
 .. include:: company.rst
 
-********************
-Rol de usuario final
-********************
+***************
+Final user role
+***************
 
 .. include:: user.rst
 

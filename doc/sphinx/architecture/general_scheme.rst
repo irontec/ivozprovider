@@ -1,8 +1,10 @@
-Este esquema refleja la arquitectura global de la solución IvozProvider, con todos los elementos que la componen.
+
+Following diagram shows the global architecture of IvozProvider solution, 
+with all its components:
 
 .. image:: img/ivozprovider_flows.png
 
-Este es otro esquema más conceptual:
+This is a more conceptual diagram:
 
 .. image:: img/ivozprovider_esquema_conceptual.png
 

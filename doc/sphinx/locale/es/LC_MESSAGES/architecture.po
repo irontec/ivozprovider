@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-28 14:27+0100\n"
+"PO-Revision-Date: 2016-12-28 14:25+0100\n"
+"Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
+"Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: ../../architecture/general_scheme.rst:2
+msgid ""
+"Following diagram shows the global architecture of IvozProvider solution,"
+" with all its components:"
+msgstr "Este esquema refleja la arquitectura global de la solución IvozProvider, "
+"con todos los elementos que la componen."
+
+#: ../../architecture/general_scheme.rst:7
+msgid "This is a more conceptual diagram:"
+msgstr "Este es otro esquema más conceptual:"
+
+#: ../../architecture/index.rst:5
+msgid "[P] Platform general architecture"
+msgstr "[P] Arquitectura general de la plataforma"
+
+#: ../../architecture/index.rst:10
+msgid "General diagram"
+msgstr "Esquema general"
+
+#: ../../architecture/index.rst:18
+msgid "SIP signaling flow"
+msgstr "Flujo señalización SIP"
+
+#: ../../architecture/index.rst:26
+msgid "RTP audio flow"
+msgstr "Flujo audio RTP"
+
+#: ../../architecture/index.rst:32
+msgid "HTTPS traffic"
+msgstr "Tráfico HTTPS"
+
+#: ../../architecture/index.rst:38
+msgid "Additional elements"
+msgstr "Elementos adicionales"
+
+#: ../../architecture/index.rst:44
+msgid "Auxiliar elements"
+msgstr "Elementos auxiliares"
+

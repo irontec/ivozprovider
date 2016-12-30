@@ -134,6 +134,3 @@ msgstr ""
 msgid "Para desactivar este mecanismo, basta con fijar el valor a 0."
 msgstr ""
 
-#~ msgid "[P] Elementos de seguridad"
-#~ msgstr ""
-

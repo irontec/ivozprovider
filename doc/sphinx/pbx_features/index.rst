@@ -2,9 +2,12 @@
 Funcionalidades de PBX
 ######################
 
-En el bloque anterior hemos conseguido realizar llamadas internas y externas realizando una configuración mínima, partiendo de la configuración que deja el propio instalador y dejando de lado múltiples apartados y funcionalidades.
+En el bloque anterior hemos conseguido realizar llamadas internas y externas 
+realizando una configuración mínima, partiendo de la configuración que deja el 
+propio instalador y dejando de lado múltiples apartados y funcionalidades.
 
-El objetivo de este bloque será describir cada una de estas secciones con profundidad y ver así las funcionalidades de PBX que IvozProvider ofrece.
+El objetivo de este bloque será describir cada una de estas secciones con 
+profundidad y ver así las funcionalidades de PBX que IvozProvider ofrece.
 
 Para ello, seguiremos el siguiente índice:
 

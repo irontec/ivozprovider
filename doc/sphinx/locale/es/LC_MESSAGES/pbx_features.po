@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-25 13:31+0200\n"
+"POT-Creation-Date: 2016-12-29 19:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,8 +124,7 @@ msgid ""
 msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:5
-#: ../../pbx_features/call_permissions.rst:60
-msgid "Permisos de llamada"
+msgid "Control ACL para llamadas"
 msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:7
@@ -262,6 +261,10 @@ msgid ""
 "No se utiliza código de país ni formato E.164, **se escriben las "
 "expresiones regulares tal y como llamaría un usuario con el mismo código "
 "de país que la empresa en cuestión**."
+msgstr ""
+
+#: ../../pbx_features/call_permissions.rst:60
+msgid "Permisos de llamada"
 msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:62
@@ -656,47 +659,47 @@ msgid ""
 "IVR, etc."
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:5
-msgid "Extensiones"
+#: ../../pbx_features/extensions.rst:3
+msgid "Extensions"
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:7
+#: ../../pbx_features/extensions.rst:5
 msgid ""
 "La configuración de partida incluía 2 extensiones (101 y 102) que "
 "apuntaban directamente a *Alice* y *Bob*, por lo que apenas dijimos nada "
 "sobre la sección **Configuración de empresa** > **Extensiones**."
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:9
+#: ../../pbx_features/extensions.rst:7
 msgid ""
 "**Una extensión es**, por definición, **un número interno con una lógica "
 "asignada**."
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:12
+#: ../../pbx_features/extensions.rst:10
 msgid "Crear una nueva extensión"
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:13
+#: ../../pbx_features/extensions.rst:11
 msgid "La ventana de creación de una nueva extensión es tal que así:"
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:18
+#: ../../pbx_features/extensions.rst:16
 msgid "Número"
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:20
+#: ../../pbx_features/extensions.rst:18
 msgid ""
 "El número que al ser marcado por un usuario interno activará la lógica "
 "que sigue. Tiene que tener una longitud mínima de 2 y estar compuesto "
 "únicamente por dígitos."
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:21
+#: ../../pbx_features/extensions.rst:19
 msgid "Enrutar"
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:23
+#: ../../pbx_features/extensions.rst:21
 msgid ""
 "Este selector nos permite indicar la lógica que seguirá esta numeración "
 "cuando sea marcada por un usuario concreto. Al seleccionar un ítem en "
@@ -704,14 +707,14 @@ msgid ""
 " de salto, sala de conferencias, etc."
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:25
+#: ../../pbx_features/extensions.rst:23
 msgid ""
 "En el caso de las extensiones que apuntan a usuario, la vinculación con "
 "el usuario concreto tendrá que hacerse desde **Configuración de empresa**"
 " > **Usuarios**."
 msgstr ""
 
-#: ../../pbx_features/extensions.rst:27
+#: ../../pbx_features/extensions.rst:25
 msgid ""
 "Si existe una extensión cuyo número conflicte con un número externo, el "
 "número externo quedará enmascarado y resultará, en la práctica, "
@@ -1910,91 +1913,6 @@ msgid ""
 "*Extensión* en el **Tipo de destino**."
 msgstr ""
 
-#~ msgid "Código a nivel de marca"
-#~ msgstr ""
-
-#~ msgid "Código a nivel de empresa"
-#~ msgstr ""
-
-#~ msgid "Número máximo de miembros"
-#~ msgstr ""
-
-#~ msgid ""
-#~ msgstr ""
-
-#~ msgid "Grabación on demand"
-#~ msgstr ""
-
-#~ msgid "[S] Funcionalidades de PBX"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Este listado no especifica el código "
-#~ "de acceso al servicio, serán los "
-#~ "operadores de marca los que especifiquen"
-#~ " el código de acceso por defecto "
-#~ "a los servicios que quieran hacer "
-#~ "disponibles."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Dar de alta, de entre los "
-#~ "servicios disponibles, los servicios que "
-#~ "quiere hacer disponibles a sus empresas."
-#~ msgstr ""
-
-#~ msgid "Asignar el código de acceso por defecto a dichos servicios."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Por defecto este listado aparece vacío"
-#~ " y se pueden añadir servicios tal "
-#~ "que:"
-#~ msgstr ""
-
-#~ msgid "Los caracteres permitidos son 0-9, \\* y #, un máximo de 3."
-#~ msgstr ""
-
-#~ msgid "Imaginemos que añadimos los 3 disponibles:"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Desde ese momento, las empresas podrían"
-#~ " acceder a dichos servicios sin más"
-#~ " que marcar los códigos elegidos."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "El operador de marca puede elegir "
-#~ "no dar acceso a sus empresas al"
-#~ " servicio *Buzón de voz*, por "
-#~ "ejemplo. Bastaría con no asignarle "
-#~ "código."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Puede darse el caso que una "
-#~ "empresa concreta esté habituada a otros"
-#~ " códigos o, simplemente, prefiera otros."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Cada empresa puede *pisar* los valores"
-#~ " por defecto asignados por su "
-#~ "*operador de marca* accediendo a "
-#~ "**Configuración de Empresa** > **Servicios**:"
-#~ msgstr ""
-
-#~ msgid "Ejemplo: empresa que no quiere capturar con \\*7 sino con \\*95"
-#~ msgstr ""
-
-#~ msgid "Quedando la sección con:"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Los servicios que el *administrador de"
-#~ " empresa* no redefina utilizarán el "
-#~ "código por defecto asignado por el "
-#~ "*operador de marca*."
+#~ msgid "Extensiones"
 #~ msgstr ""
 

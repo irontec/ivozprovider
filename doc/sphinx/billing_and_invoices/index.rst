@@ -2,7 +2,8 @@
 Tarificación y facturación
 ##########################
 
-En este bloque se tratará un tema de primordial importancia para los administradores de marca:
+En este bloque se tratará un tema de primordial importancia para los 
+administradores de marca:
 
 - Crear planes de precio para poner precio a las llamadas de los usuarios.
 

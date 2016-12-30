@@ -1,6 +1,6 @@
-#######################
-Instalación inicial
-#######################
+####################
+Initial Installation
+####################
 
 .. toctree::
     :maxdepth: 2

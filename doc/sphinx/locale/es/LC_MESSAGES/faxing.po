@@ -132,12 +132,3 @@ msgid ""
 "pulsando:"
 msgstr ""
 
-#~ msgid "[P] Faxing Virtual"
-#~ msgstr ""
-
-#~ msgid "Configuración de un fax de recepción"
-#~ msgstr ""
-
-#~ msgid "Configuración de un fax de emisión"
-#~ msgstr ""
-

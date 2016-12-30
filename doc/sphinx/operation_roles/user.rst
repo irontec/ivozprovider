@@ -1,18 +1,24 @@
-El usuario final dispondrá de dos credenciales, ambas provistas por su administrador de empresa:
+The final user has two different kinds of credentials, both supplied by
+its company administator:
 
-- Credenciales de acceso web al portal de usuario.
+- User portal access credetentials
 
-- Credenciales SIP para registrar su terminal (o terminales) contra IvozProvider.
+- SIP credentials used to register its terminal (or terminals) to IvozProvider
 
-Desde el portal de usuario podrán ver sus registros de llamadas y configurar aspectos como:
+Through the user portal, it can browse their call registry and configure:
 
-- Desvíos
-- No molestar
-- Llamada en espera
+    - Call forward
+    - Do not disturb
+    - Call waiting
 
-Por otra parte, las credenciales SIP le permitirán configurar su terminal (o terminales) para poder emitir y recibir llamadas.
+On the other hand, the SIP creadentials allow the users to configure
+their terminal (or terminals) to place and receive calls.
 
-.. note:: Unas mismas credenciales se pueden utilizar desde múltiples dispositivos, dando lugar a lo que se conoce como *parallel-forking*: si llaman al usuario, sonarán todos sus dispositivos activos y podrá contestar la llamada desde cualquiera de ellos.
+.. note:: The same SIP credentials can be used in multiple devices at the same
+   time,generating what is known as *parallel-forking*: whenever a call is
+   placed to an user, all the active devices will ring so the user can
+   answer the call from any of them.
 
-.. important:: Los usuarios son los que utilizan y disfrutan todas las funcionalidades de IvozProvider.
+.. important:: Final users are the ones that use and enjoy all the feature of
+   IvozProvider
 

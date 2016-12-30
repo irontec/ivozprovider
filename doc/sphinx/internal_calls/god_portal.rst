@@ -1,137 +1,184 @@
-************************
-Bloque 'Gestión General'
-************************
+***************
+Main Management
+***************
+   
+.. important:: Any of the 2 Public IP addresses configured during the
+   installation will work to acces the web portal. Default credentials are
+   *admin / changeme*.
 
-.. important:: Cualquiera de las 2 IPs públicas configuradas en la instalación servirá para acceder al panel web. Las credenciales por defecto son *admin / changeme*.
-
-En esta sección haremos referencia a todo lo relativo al rol operador global, configurable en el bloque **Gestión general** del panel web (solo visible para God):
+In this section will reference global administrator configuration options,
+avaible in the menu (**Main management**) of the web portal (only visible to
+God Admins):
 
 .. image:: img/bloque_god.png
     :align: center
 
-Configuración personalizada en la instalación
-=============================================
+Custom installation configuration
+=================================
 
-En el proceso de instalación se pregunta al administrador dos direcciones IP, con el fin de arrancar los siguientes 2 procesos:
+During the install process two IP addresses will be requested in order to run
+the following two processes:
 
 .. _proxyusers:
 
-Proxy de Usuarios
------------------
+Users SIP Proxy
+---------------
 
-Es el proxy SIP expuesto al mundo exterior al que se registran los terminales de los usuarios.
+This is the SIP proxy exposed to the external world where users register their
+terminals.
 
-El valor mostrado en la sección **Proxy de Usuarios** reflejará la IP introducida en el proceso de instalación.
+The value displayed in the section **Proxy users** will show the IP address
+entered during the installation process.
 
 .. image:: img/proxyusers.png
 
-Proxy de Salida
----------------
+Providers SIP proxy
+-------------------
 
-Es el proxy SIP expuesto al mundo exterior al que hablarán los Operadores IP con los que el operador de marca decida hacer *peering*.
+This is the SIP proxy exposed to the external world in charge of connecting
+the provider that brand aministrators will configure for *peering*.
 
-El valor mostrado en la sección **Proxy de Salida** reflejará la IP introducida en el proceso de instalación.
+The value displayed in the section **Proxy trunk** will show the IP address
+entered during the installation process.
 
 .. image:: img/proxytrunks.png
 
-.. note:: Solo se explicita la dirección IP, ya que el puerto siempre será 5060 (5061 para SIP sobre TLS).
+.. note:: Only the IP address will be entered as the port will be always 5060
+   (5061 for SIP over TLS).
 
-.. danger:: Estos 2 valores pueden editarse desde la web, pero siempre tienen que tener la dirección IP a la que escuchan dichos procesos.
+.. danger:: This 2 values can be changed from the portal, but they must always
+   have the same IP address that proxy process listen to requests.
 
-Configuración global estándar
+Standard global configuration
 =============================
 
-El proceso de instalación incluye otros valores globales que son iguales en toda instalación de IvozProvider (standalone) y que también se pueden ver desde la interfaz web.
+The installation process includes other global values that are the same in
+any standalone IvozProvider installation and can also be checked from the
+web interface.
 
-Servidores de aplicación
-------------------------
+Application Servers
+-------------------
 
-En la sección **Servidores de Aplicación** se listan las direcciones IP donde escuchan los distintos Asterisk que componen la solución que, tal y como se ha mencionado, escalan horizontalmente para adaptarse a la carga de la plataforma.
+The section **Application Servers** will list the IP address where the existing
+Asterisk processes will listen for request, and like previously mentioned,
+can scale horizontaly to adapt the platform for the required load.
 
-A diferencia de los Proxies, estos Asterisk no están expuestos al exterior, por lo que en una instalación standalone solo habrá uno y escuchará en 127.0.0.1.
+Contrary to the Proxies, Asterisk is not exposed to the external world, so
+for a standalone installation there will only be one listening at 127.0.0.1.
 
 .. image:: img/app_servers.png
 
-.. note:: El puerto en el que escuchan no se recoge en el campo, ya que siempre será 6060 (UDP).
+.. note:: The listening port will not be displayed in the field because it will
+   always be 6060 (UDP).
 
-.. important:: Desde el momento en el que se añade otro Servidor de Aplicación, se intentará contar con él a la hora de repartir la carga. Si éste no responde, se desactivará automáticamente.
+.. important:: As soon as another Application Server is added, the proxies will
+   try to balance load using it. If no response is received from added
+   Application server, it will be disabled automatically.
 
 
-Servidores de Media
--------------------
+Media relay
+-----------
 
-Los media-relays son los que mueven el tráfico RTP en una llamada establecida y, al igual que ocurre con los Servidores de Aplicación, permiten un escalado horizontal para adaptarse a la carga de la plataforma.
+Media relays are in charge of bridging RTP traffic of established calls. Like
+the Application Servers, they can scale horizontally as much as required.
 
-Los media-relays se organizan en grupos con el fin de poder asignar un grupo concreto a una empresa concreta. Cada elemento del grupo tiene una **métrica** que permite repartos de carga desiguales dentro de un mismo grupo (e.g. media-relay1 métrica 1; media-relay2 métrica 2: media-relay2 gestionará el audio del doble de llamadas que media-relay1). 
+Media relays are organized in groups so they can be assigned to a company. Each
+element of the group has a **metric** that allows non-equal load balancing
+within the same group (i.e. media-relay1 metric 1; media-relay2 metric 2:
+the second media relay will handle two times the calls than the first one).
 
-.. hint:: La asignación de grupos de media-relays concretos a empresas concretas permite asignar recursos estáticos a empresas que requieren tener garantizado unos recursos concretos. Pero, lo más útil de este tipo de configuración es que estos **grupos de media-relays pueden estar en ubicaciones geográficas cercanas al emplazamiento de la empresa** (y lejanas al resto de la plataforma) para **reducir las latencias** en sus conversaciones.
+.. hint:: The static assigment of media relay groups is not the common practice
+   but allow us to assign strategic resources to companies that need a warranted
+   service. The most common usage of this **groups of media relays** is to
+   place them near the geographic area of the company (usually far from the
+   rest of the platform systems) in order to reduce **latencies** in their
+   conversations.
 
-En una instalación standalone, no obstante, solo existe un grupo de media-relays:
+In a standalone installation, only one media relay group will be exist:
 
 .. image:: img/media_relay_groups.png
 
-Por defecto, este grupo solo contiene un media-relay:
+By default this group only has a media server:
 
 .. image:: img/media_relays.png
 
-.. note:: La dirección que aparece es la dirección del socket de control, no la dirección que se acaba incluyendo en los SDPs de negociación de sesión. Por defecto, este único media-relay utiliza la misma IP que el Proxy de Usuarios.
+.. note:: The address displayed is the control socket, not the SDP address that
+   will be included during SIP negociation. By default this alone media-relay
+   will share the same IP address that the User's SIP proxy.
+
 
 .. _god_sipdomains:
 
-Dominios SIP
-------------
+SIP Domains
+-----------
 
-En la sección **Dominios** se muestran los dominios SIP que apuntan a las 2 IPs públicas:
+The section **Domains** will display the SIP domains that points to our two
+public IP addresses.
 
-- IP de Proxy de Usuarios
-- IP de Proxy de Salida
+- Users SIP Proxy IP address
+- Trunks SIP Proxy IP address
 
-Tras una instalación inicial existen 2 dominios, uno para queda una de esas 2 IPs:
+After the initial installation, there will be two domains, one for each address:
 
 .. image:: img/domain_list_local.png
 
-Estos dominios se utilizan internamente y el servidor de DNS incorporado en la solución los resuelve a las IPs concretas.
+This domains will be used internally by a builtin DNS server included in the
+solution.
 
-.. attention:: Tal y como se verá en la sección :ref:`domain_per_company`, cada compañía necesitará un DNS que apunte a la IP del Proxy de Usuarios. Una vez configurado, el dominio aparecerá en esta sección para que el operador global sepa los dominios configurados para cada empresa de un vistazo.
+.. attention:: As mentioned in the section :ref:`domain_per_company`, each
+   company will require a DNS pointing to the users SIP proxy. Once configured,
+   the domain will be displayed in this list so global administrator can check
+   what domains are registered for each company.
 
-Emular la marca Demo
-====================
+Emulate the Demo brand
+======================
 
-Tras la instalación inicial, la plataforma incluye una marca pre-creada llamada DemoBrand, que es la que utilizaremos para el fin que nos ocupa: tener 2 teléfonos registrados y que se puedan llamar entre sí.
+After the initial installation, the platform will have an already created brand
+called DemoBrand, that will be used for our goal: to have 2 telephones registered
+that can call each other. 
 
-Antes de pasar a la siguiente sección, es importante entender el concepto de **Emular una marca**:
+Before going to the next section, is quite important to understand how the
+**emulation** works.
 
-- Como operador global, tienes acceso al bloque **Gestión general**, que solo ve *God*.
+- As global operator, you have access to the menu **Main management** only
+  visible to *God* administators.
 
-- Aparte de ese bloque, también ves los bloques **Configuración de marca** y **Configuración de empresa** que tienen este aspecto:
+- Apart from that menu, you will also have access to the **Brand configuration**
+  and **Company configuration** that will look more or less like this:
 
 .. image:: img/emular_marca_prev.png
     :align: center
 
-- Atención especial al siguiente botón:
+- Check following button
 
 .. image:: img/emular_marca.png
     :align: center
 
-- Una vez pulsado, muestra una ventana flotante tal que:
+- When pressed, a popup will be displayed:
 
 .. image:: img/emular_marca2.png
     :align: center
 
-- Al seleccionar la marca DemoBrand, el icono cambia y muestra la marca que se está emulando:
+- After selecting the DemoBrand brand, the icon will change and shows the
+  emulted brand:
 
 .. image:: img/emular_marca3.png
     :align: center
 
-- La parte superior derecha de la página también muestra la marca que se está emulando:
-
+- The upper right corner of the portal will also display the brand that is being
+  emulted:
+  
 .. image:: img/emular_marca4.png
     :align: center
 
-¿Qué implica esta emulación?
-----------------------------
+What emulation means
+--------------------
 
-Que **todo lo que se ve en el bloque 'Configuración de marca' es relativo a esa marca** y es *exactamente* lo mismo que lo que ve el operador de marca cuando entra con sus credenciales de acceso.
+Basically, that **everything in the menu 'Brand configuration' will be relative
+to the chosen brand** and is **exactly** the same menu entries that the brand
+operator will see using its brand portal.
 
-.. tip:: Decir exactamente es mucho decir, ya que el operador global ve campos en ciertas secciones del bloque **Configuración de marca** que el operador de marca no ve. e.g. Al editar una empresa *God* ve 'Servidores de media' y 'AS', que el operador de marca no ve.
-
+.. tip:: Ok, ok. maybe exactly is not totally accurate. The global operator is
+   able to see some fields in some screens that other admins cann't (i.e. On
+   Company edit screen, fields like 'Media relays' or 'Application server' are
+   only configurable by the global operator.  

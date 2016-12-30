@@ -1,58 +1,69 @@
-.. _instalacion-cd:
+######################
+Automatic ISO CD image
+######################
 
-########################################################
-Instalación por CD automático
-########################################################
-
-Puedes descargar uno de los `CDs automáticos de instalacion de IvozProvider <https://github.com/irontec/ivozprovider>`_ (generados mediante `simplecdd <https://wiki.debian.org/Simple-CDD>`_) en su versión estable o en una de las builds nocturnas:
-
-.. important:: IMPORTANTE: Los CDs de instalación formatearán automáticamente el disco de la máquina.
+You can download one of the `IvozProvider Automatic ISO CD images
+<https://github.com/irontec/ivozprovider>`_ (generated using
+`simplecdd <https://wiki.debian.org/Simple-CDD>`_) in stable or nighly versions:
 
 
-* Configure la máquina para iniciar desde CD, mostrará el menún de instalación de Debian GNU/Linux.
+.. important:: IMPORTANT: Automatic install CDs will format target machine disk!
 
-.. note:: Si lo desea puede emplear la instalación gráfica del CD, pero los pantallazos a continuación se muestran con la instalación estándar.
+* Configure the target machine to boot from CD. It will display the Debian
+  GNU/Linux installation menu.
+
+.. note:: You can use graphic installation if you prefer, but the following
+   screenshots show the standard installation.
 
 .. image:: img/installcd-intro.png
 
-* Seleccione el idioma de la instalación:
+* Choose installation language:
 
 .. image:: img/installcd-language.png
 
-* Seleccione la ubicación:
+* Choose location:
 
 .. image:: img/installcd-location.png
 
-* Seleccione la configuración de hora:
+* Choose date and time configuration:
 
 .. image:: img/installcd-clock.png
 
-.. note:: En este punto se realizará la configuración automática de red y particionado de disco, así como la instalación del sistema base.
+.. note:: At this point, a generic network configuration and disk partitioning
+   will be performed, and also a installation of base system.
 
 * Configure IvozProvider:
 
 .. image:: img/installcd-ivozmenu.png
 
-Como hemos mencionado en los :ref:`requisitos-minimos` es necesario dos direcciones IPs para los proxies SIP de usuarios y proveedores.
+As mentioned in :ref:`Minimum requirements` is required at least two IP
+addresses for User and Trunk SIP proxies.
 
-Puede asignar sus valores ahora y configurar sus interfaces mas tarde, o bien puede mostar el siguiente menu para configurar estos valores más adelante.
+You can set its addresses right now and configure the interfaces properly when
+the system is fully installed. This menu can be displayed anytime after the
+installation.
 
 .. image:: img/installcd-proxyaddr.png
 
-También puede configurar el valor por defecto para acceder a MySQL en este momento.
+You can also configure default root MySQL password right now.
+
+.. note:: If you don't configure MySQL password, default password will be used
+   (changeme). You can still change it later.
 
 .. image:: img/installcd-mysql.png
 
-Y el idioma por defecto de los portales web:
+And default language for portals:
 
 .. image:: img/installcd-portallang.png
 
-.. note:: No es preciso configurar todas estas cosas durante la instalación. En caso de que algún dato esté sin configurar se mostará un dialogo de aviso:
+.. note:: It is not require to configure all settings during initial
+   installation. In case any setting has been left without configuration a
+   warning dialog will be displayed.
+
 .. image:: img/installcd-warning.png
 
-Por último, seleccione el disco donde se instalará el cargador de arranque GRUB.
+At last, select where the GRUB boot loader will be installed.
 
 .. image:: img/installcd-grub.png
 
-Una vez reiniciada la máquina podrá entrar y acceder a través de los portales web!
-
+After the reboot, you are ready to access using the web portals!

@@ -1,23 +1,26 @@
-Configurar terminales SIP
-=========================
+SIP Terminal configuration
+==========================
 
-Lo único que nos falta es disponer de 2 terminales SIP (hardphone, softphone, Android/IOS APP) y configurarlos como sigue:
+The last thing we need is 2 SIP terminals (hardphones, softphones or even
+mobile applications) and configure them as follows: 
 
 **ALICE**
 
-- **Usuario**: alice
-- **Contraseña**: alice
-- **Dominio**: users.democompany.com (o la IP si hemos hecho :ref:`el truco <dnshack>`)
+- **User**: alice
+- **Password**: alice
+- **Domain**: users.democompany.com (or the IP if we are using :ref:`the DNS 
+  trick <dnshack>`)
 
 **BOB**
 
-- **Usuario**: bob
-- **Contraseña**: bob
-- **Dominio**: users.democompany.com (o la IP si hemos hecho :ref:`el truco <dnshack>`)
+- **User**: bob
+- **Password**: bob
+- **Domain**: users.democompany.com (or the IP if we are using :ref:`the DNS 
+  trick <dnshack>`)
 
-.. tip:: Es posible que el usuario y el dominio se nos pida junto, tendremos que introducir alice@users.democompany.com y bob@users.democompany.com, respectivamente (o con la IP si hemos hecho :ref:`el truco <dnshack>`).
-
-
-Tras configurar los terminales, Alice debería de poder llamar a Bob sin más que marcar 102 en su terminal.
-
-
+.. tip:: Sometimes the user and domain is configured in a single option. In this
+   case we should enter alice@users.democompany.com and bob@users.democompany.com
+   (or the IP if we are using :ref:`the DNS trick <dnshack>`)
+   
+After configuring the terminals, Alices should be able to call Bob only by
+dialing 102 in her terminal.

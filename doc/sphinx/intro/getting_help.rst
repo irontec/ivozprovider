@@ -1,22 +1,24 @@
 .. _getting_help:
 
-*************
-Obtener ayuda
-*************
+************
+Getting help
+************
 
-IvozProvider es un proyecto vivo y en continua evolución. Existen múltiples canales para obtener información o reportar errores:
+IvozProvider is an alive and highly developed project. There are
+multiple channels to get information or report bugs:
 
 - GitHub: https://github.com/irontec/ivozprovider
 
-- Listas de correo para usuarios: users@lists-ivozprovider.irontec.com
+- Users mailing list: users@lists-ivozprovider.irontec.com
 
-- Listas de correo para desarrolladores: dev@lists-ivozprovider.irontec.com
+- Developers mailing list: dev@lists-ivozprovider.irontec.com
 
-- Dirección de correo: vozip@irontec.com
+- email: vozip@irontec.com
 
 - Twitter: `@irontec <https://twitter.com/irontec>`_
 
-- Canal IRC `#ivozprovider <https://webchat.freenode.net/?channels=ivozprovider>`_
+- IRC Channel `#ivozprovider
+  <https://webchat.freenode.net/?channels=ivozprovider>`_ at irc.freenode.net
 
-No dudes en contactarnos cualquiera que sea el motivo :)
+Don't hesitate to contact us for any kind of feedback :)
 
