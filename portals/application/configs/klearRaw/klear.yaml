@@ -5,7 +5,7 @@ production:
       writerParams: 
     sitename: MyApp
     logo: klear/images/klear.png
-    year: 2016
+    year: 2017
     lang: es
     langs: 
       es: 

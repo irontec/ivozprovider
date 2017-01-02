@@ -9,7 +9,7 @@ production:
     sitename: "OASIS MAIN KLEAR"
     sitesubname: "Main website" 
     logo: images/irontec.png
-    year: 2016
+    year: 2017
     lang: en
     langs:
       es:
