@@ -89,9 +89,9 @@ mappers:
   - &KamTrunksDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamTrunksDomainAttrs, modelFile: KamTrunksDomainAttrs}
   - &KamTrunksHtable {mapper: \IvozProvider\Mapper\Sql\KamTrunksHtable, modelFile: KamTrunksHtable}
   - &KamTrunksUacreg {mapper: \IvozProvider\Mapper\Sql\KamTrunksUacreg, modelFile: KamTrunksUacreg}
+  - &KamUsers {mapper: \IvozProvider\Mapper\Sql\KamUsers, modelFile: KamUsers}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
   - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
-  - &KamUsersAuthdb {mapper: \IvozProvider\Mapper\Sql\KamUsersAuthdb, modelFile: KamUsersAuthdb}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}
   - &KamUsersHtable {mapper: \IvozProvider\Mapper\Sql\KamUsersHtable, modelFile: KamUsersHtable}
