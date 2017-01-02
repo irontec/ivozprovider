@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include KamAccCdrsList.yaml
+#include KamAccCdrsGodList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
 production: 

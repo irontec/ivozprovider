@@ -18,7 +18,7 @@ production:
       rawCondition: "peeringContractId IS NOT NULL AND peeringContractId != ''"
       pagination: 
         items: 25
-      <<: *KamAccCdrsBrand
+      <<: *KamAccCdrsGod
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
       fields: &kamAccCdrs_fieldsLink 
@@ -65,7 +65,7 @@ production:
           peeringContractId: true
           invoiceId: true
     kamAccCdrsView_screen: &kamAccCdrsView_screenLink 
-      <<: *KamAccCdrsBrand
+      <<: *KamAccCdrsGod
       controller: edit
       class: ui-silk-eye
       label: false

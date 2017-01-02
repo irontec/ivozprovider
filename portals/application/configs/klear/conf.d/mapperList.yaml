@@ -79,7 +79,8 @@ mappers:
   - &AstPsEndpoints {mapper: \IvozProvider\Mapper\Sql\AstPsEndpoints, modelFile: AstPsEndpoints}
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
-  - &KamAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrs}
+  - &KamAccCdrsBrand {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrsBrand}
+  - &KamAccCdrsGod {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrsGod}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}
   - &KamPikeTrusted {mapper: \IvozProvider\Mapper\Sql\KamPikeTrusted, modelFile: KamPikeTrusted}
   - &KamRtpproxy {mapper: \IvozProvider\Mapper\Sql\KamRtpproxy, modelFile: KamRtpproxy}

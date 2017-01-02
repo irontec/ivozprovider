@@ -91,7 +91,7 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
-        KamAccCdrsList:
+        KamAccCdrsGodList:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
