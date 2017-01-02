@@ -18,7 +18,7 @@ production:
         type: desc
       pagination: 
         items: 50
-      <<: *ParsedCDRs
+      <<: *ParsedCDRsGod
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 0), "[format| (%parent%)]")
       fields: &parsedCDRs_fieldsLink 
@@ -57,7 +57,7 @@ production:
           bParty: true
           duration: true
     parsedCDRsView_screen: &parsedCDRsView_screenLink 
-      <<: *ParsedCDRs
+      <<: *ParsedCDRsGod
       controller: edit
       class: ui-silk-eye
       label: false

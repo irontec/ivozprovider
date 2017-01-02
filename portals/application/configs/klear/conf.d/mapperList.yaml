@@ -50,6 +50,7 @@ mappers:
   - &MusicOnHold {mapper: \IvozProvider\Mapper\Sql\MusicOnHold, modelFile: MusicOnHold}
   - &OutgoingRouting {mapper: \IvozProvider\Mapper\Sql\OutgoingRouting, modelFile: OutgoingRouting}
   - &ParsedCDRs {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRs}
+  - &ParsedCDRsGod {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRsGod}
   - &PeerServers {mapper: \IvozProvider\Mapper\Sql\PeerServers, modelFile: PeerServers}
   - &PeeringContracts {mapper: \IvozProvider\Mapper\Sql\PeeringContracts, modelFile: PeeringContracts}
   - &PickUpGroups {mapper: \IvozProvider\Mapper\Sql\PickUpGroups, modelFile: PickUpGroups}
