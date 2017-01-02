@@ -26,6 +26,9 @@ class Users extends Raw\Users
     {
         $isNew = !$model->getPrimaryKey();
 
+        // '' is NULL (avoid triggering the UNIQUE KEY)
+        if ($model->getEmail() == '') $model->setEmail(null);
+
         if ($isNew) {
             // Sane defaults for hidden fields
             if (!$model->hasChange('timezoneId'))
