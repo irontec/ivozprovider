@@ -10,6 +10,22 @@ class Mapper extends \IvozProvider\Klear\Auth\Mapper
         $this->_mapper = new CompanyAdmins();
     }
 
+    public function findByLogin($login)
+    {
+        $companyAdmins = $this->_mapper->fetchList(array('username=? and active=1',array($login)));
+
+        foreach ($companyAdmins as $companyAdmin) {
+            if ($companyAdmin->getCompany()->getBrandId() === $this->_brand->getId()) {
+                $user = new \IvozProvider\Klear\Auth\User();
+                $this->_poblateUser($user, $companyAdmin);
+                $this->_populateCustomPerms($user, $companyAdmin);
+                return $user;
+            }
+        }
+
+        return null;
+    }
+
     protected function _populateCustomPerms(\IvozProvider\Klear\Auth\User $user, $operator)
     {
         $user->isCompanyAdmin  = true;
