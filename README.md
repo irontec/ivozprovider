@@ -1,4 +1,4 @@
-![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.0-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
+![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.1-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -52,8 +52,8 @@ If you want to test an [standlone](https://irontec.github.io/ivozprovider/en/ins
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|oasis 1.0 (stable) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.0-oasis-i386.iso)|
-|oasis 1.1 (nightly-build) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-nightly-i386.iso)|
+|oasis 1.1 (stable) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-i386.iso)|
+|oasis 1.2 (nightly-build) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.2-oasis-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.2-oasis-nightly-i386.iso)|
 
 
 ## Documentation
@@ -62,8 +62,8 @@ You can browse online documentation in different formats:
 
 | Language | HTML | LaTeX | PDF | EPUB |
 |----------|:----:|:-----:|:---:|:----:|
-| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.0-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis-es.epub) |
-| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.0-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.0-oasis-en.epub) |
+| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.1-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.1-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.1-oasis-es.epub) |
+| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.1-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.1-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.1-oasis-en.epub) |
 
 
 ## Feedback & Questions
