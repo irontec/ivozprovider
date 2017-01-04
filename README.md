@@ -72,7 +72,7 @@ Feel free to subscribe to ivozprovider mailing lists for users or developers for
 or suggestion.
 
  - [users@lists-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/users)
- - [dev@list-ivozproivder.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/dev)
+ - [dev@list-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/dev)
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
 

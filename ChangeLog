@@ -1,0 +1,50 @@
+Mon Jan 2 17:15:31 2017 +0100 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.1 released
+
+    * Standalone Installation:
+        - Fixed a bug with systemd-timers services not being properly enabled
+        - Fixed a bug with MySQL passwords with spaces
+        - SSH Server now allows root access by default
+        - Change default asterisk/rtpengine/rtpproxy RTP port ranges to avoid conflicts
+
+    * Web Portals:
+        - Simplified some creation screens with only required fields
+        - Added an icon in terminal list to display register status
+        - Added a new company section to configure company/user portal URLs
+        - Fixed a bug in global call lists when company was being emulated
+        - Fixed a bug where some selects displayed info from other brands/companies
+        - Standarize displayed DDIs to E.164 in lists
+        - Fixed a bug where admins with same name were unable to login
+        - Fixed a legendary typo with the word Unassigned
+        - Users must now login in their portals using email instead of username
+
+    * PBX
+        - Friends: Added a new entity to represent SIP Trunks endpoints on company basis
+        - Improved E.164 standarization process
+        - Huntgroups now have a noAnswer handler
+        - Extensions can now be routed to external numbers
+        - Voicemail unavailable banner will only be played in User's Call Forward
+        - Any extension routed to user can now be monitored using BLFs
+        - Call ACLs are now applied after E.164 number standarization
+        - Fixed a bug where only one User Call Forward of each type could be created
+        - Asterisk: endpoints have now proxyUsers address as outbound_proxy
+        - Asterisk: renamed contexts to match trunks, users and friends calls
+        - Asterisk: console now displays DTMF inputs
+        - Asterisk: added sorcery cache configuration
+
+    * Recordings
+        - Added support to stop on demand started recordings
+        - Added support for multiple recordings in the same call
+
+    * Proxies
+        - Reworked outgoing routing server selection logic
+        - Improved NAT detection mechanism to avoid detecting NAT on LAN installations
+        - Refactorized kamailio configuration logics to improve calls concurrency
+
+Mon Nov 14 19:12:30 2016 +0100 IvozProvider Development Team <dev@list-ivozproivder.irontec.com>
+
+    * IvozProvider 1.0 released
+    * Initial release
+
+
