@@ -34,9 +34,6 @@ my $gearman_job = 'tarificateCalls';
 my $dbh = DBI->connect($dsn, $user, $pass)
     or die "Couldn't connect to database: " . DBI->errstr;
 
-# Max calls to parse on each run
-my $MAXCALLS = 100;
-
 # My needed variables
 
 # my @STATFIELDS = qw {
@@ -103,7 +100,6 @@ my @CDRFIELDS  = qw {
 
 my %execution = (
     'pendingLegs' => 0,
-    'wantToParseLegs' => 0,
     'groupedLegs' => 0,
     'ungroupedLegs' => 0,
     'completedGroups' => 0,
@@ -588,23 +584,13 @@ if (not $execution{pendingLegs}) {
 
 logger "Pending stats: $execution{pendingLegs}";
 
-if ($execution{pendingLegs} > $MAXCALLS) {
-    $execution{wantToParseLegs} = $MAXCALLS;
-} else {
-    $execution{wantToParseLegs} = $execution{pendingLegs};
-}
-
-logger "Goal parse stats on this run: $execution{wantToParseLegs}";
-
 # Get pending stats
 my $alegs = [];
 
-my $i=1;
-while (my $leg = $sth->fetchrow_hashref) {
+for (my $i=1; my $leg = $sth->fetchrow_hashref; $i++) {
     $cids{$i} = $leg;
     $$leg{key} = $i;
     push @$alegs, $leg if not $$leg{xcallid};
-    last if $i++ >= $MAXCALLS;
 }
 
 $sth->finish();
