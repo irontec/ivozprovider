@@ -610,7 +610,7 @@ while (my $leg = $sth->fetchrow_hashref) {
 $sth->finish();
 
 # Log oldest stat
-logger "Oldest stat was inserted at $cids{1}{calldate} (id: $cids{1}{id})";
+logger "Oldest stat was inserted at $cids{1}{start_time_utc} (id: $cids{1}{id})";
 
 # Create groups of related legs
 my $groups = [];
@@ -728,7 +728,8 @@ logger "Stats marked as delayed: $execution{'parsed-delayed'}";
 $dbh->disconnect;
 
 # Call tarificator if necessary
-say "Tarificable calls on this run: $execution{tarificableCalls}";
+$execution{tarificableCalls} = 0 unless $execution{tarificableCalls};
+logger "Tarificable calls on this run: $execution{tarificableCalls}";
 if ($execution{tarificableCalls}) {
     # Call Gearmand tarificator Job
     my $client = Gearman::Client->new;
