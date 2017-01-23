@@ -674,6 +674,7 @@ my @ungrouped;
 for (keys %cids) {
     push @ungrouped, $cids{$_}{id};
 }
+@ungrouped = sort {$a <=> $b} @ungrouped;
 logger "Ungrouped stats: $execution{ungroupedLegs} (@ungrouped)";
 logger "Incompleted skipped groups: $execution{incompletedGroups}";
 
