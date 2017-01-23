@@ -1,5 +1,3 @@
-# Copy this file to /etc/default/kamailio with suitable values
-
 # Specify the shared memory size in MB
 SH_MEM=64
 
