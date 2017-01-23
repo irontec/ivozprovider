@@ -596,7 +596,14 @@ for (my $i=1; my $leg = $sth->fetchrow_hashref; $i++) {
 $sth->finish();
 
 # Log oldest stat
-logger "Oldest stat was inserted at $cids{1}{start_time_utc} (id: $cids{1}{id})";
+logger sprintf("Oldest stat: '%s' (id: %d)",
+               $cids{1}{start_time_utc},
+               $cids{1}{id});
+
+# Log newest stat
+logger sprintf("Newest stat: '%s' (id: %d)",
+               $cids{$execution{pendingLegs}-1}{start_time_utc},
+               $cids{$execution{pendingLegs}-1}{id});
 
 # Create groups of related legs
 my $groups = [];
