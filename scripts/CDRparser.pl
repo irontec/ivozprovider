@@ -1,13 +1,5 @@
 #!/usr/bin/perl
 
-# TRANSFERENCIAS A MONOPATA (features, por ejemplo)
-#
-# TODO Impedir transferencias a features!!! ---> Easy de cojones
-#
-# TODO Casos no detectables (DID virtual a MOH, e.g.)
-# - bxfer y attxfer: Asterisk no deberia hacerlo
-# - semiattxfer: not possible
-
 #########################################
 # INCLUDES & PRAGMAS
 #########################################
@@ -70,7 +62,7 @@ my $MAXCALLS = 100;
 #     parsed
 #     direction
 # };
-# 
+#
 # my @STATAUXFIELDS = qw {
 #     legType
 #     initialLeg
@@ -213,19 +205,19 @@ sub getInitialReferrer {
 
     # Lookup call in kam_users_acc to get the real transferrer
     my $getExtension = "SELECT EXT.number FROM kam_users_acc KUA LEFT JOIN Terminals T on T.name=KUA.from_user LEFT JOIN Users U ON U.terminalId=T.id LEFT JOIN Extensions EXT ON EXT.Id=U.extensionId LEFT JOIN Companies C ON T.companyId=C.id where KUA.callid='$callid'";
-    
+
     my $sth = $dbh->prepare($getExtension)
       or die "Couldn't prepare statement: $getExtension";
-    $sth->execute() 
+    $sth->execute()
       or die "Couldn't execute statement: $getExtension";
-    
+
     my $extension = $sth->rows;
-    
+
     if (not $extension) {
         logger "No extension found looking up in kam_users_acc, weird";
         return;
     }
-    
+
     my $result = $sth->fetchrow_hashref;
     $sth->finish();
 
@@ -306,12 +298,12 @@ sub deleteCDR {
 
     # Fetch already parsed related CDRs, if any
     my $deleteCDR = "DELETE FROM ParsedCDRs WHERE id='$id'";
-    
+
     my $sth = $dbh->prepare($deleteCDR)
       or die "Couldn't prepare statement: $deleteCDR";
     $sth->execute() 
       or die "Couldn't execute statement: $deleteCDR";
-    
+
     $sth->finish();
 
     logger "Delete CDR entry with id '$id'";
@@ -343,18 +335,18 @@ sub isRealDleg {
 
     # Fetch already parsed related CDRs, if any
     my $getRelatedCDRs = "SELECT * FROM ParsedCDRs WHERE cid='$$leg{xcallid}'";
-    
+
     my $sth = $dbh->prepare($getRelatedCDRs)
       or die "Couldn't prepare statement: $getRelatedCDRs";
-    $sth->execute() 
+    $sth->execute()
       or die "Couldn't execute statement: $getRelatedCDRs";
-    
+
     my $RelatedCDRs = $sth->rows;
-    
+
     if (not $RelatedCDRs) {
         return 1;
     }
-    
+
     my $cdr = $sth->fetchrow_hashref;
     $sth->finish();
 
@@ -362,7 +354,7 @@ sub isRealDleg {
 
     deleteCDR $$cdr{id};
     setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'no';
-    
+
     return 0;
 }
 
@@ -393,9 +385,9 @@ sub setCdrType {
 
     # Set type: interna / externa
     if ($$cdr{proxies} =~ /PSTN/) {
-        $$cdr{type} = 'externa'; 
+        $$cdr{type} = 'externa';
     } else {
-        $$cdr{type} = 'interna'; 
+        $$cdr{type} = 'interna';
     }
 
     # Set subtype for external calls: entrante, saliente, entrante-saliente
@@ -440,8 +432,8 @@ sub addLegToGroup {
 }
 
 sub findRelatedLegs {
-    my %group = @_; 
-    
+    my %group = @_;
+
     for my $cid (sort {$a <=> $b} keys %cids) {
         my $leg = $cids{$cid};
         if ($group{related}{$$leg{xcallid}} || $group{related}{$$leg{callid}}) {
@@ -583,7 +575,7 @@ my $getPendingStats = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Com
 
 my $sth = $dbh->prepare($getPendingStats)
   or die "Couldn't prepare statement: $getPendingStats";
-$sth->execute() 
+$sth->execute()
   or die "Couldn't execute statement: $getPendingStats";
 
 $execution{pendingLegs} = $sth->rows;
@@ -628,12 +620,12 @@ for my $aleg (@$alegs) {
 
     # New group
     my %group;
-    $group{callids} = {}; 
+    $group{callids} = {};
     $group{referees} = [];
-    $group{related} = {}; 
-    $group{legs} = []; 
-    $group{alegs} = []; 
-    $group{blegs} = []; 
+    $group{related} = {};
+    $group{legs} = [];
+    $group{alegs} = [];
+    $group{blegs} = [];
     $group{initialLeg} = $$aleg{callid};
     $group{initialLegHash} = $$aleg{callidHash};
     $group{reparsing} = 0;
@@ -703,7 +695,7 @@ for my $legs (@$groups) {
         $bleg = shift @$legs;
         generateDualLegCdr $aleg, $bleg;
     }
- 
+
     # Generate remaining CDR(s), if any
     while (@$legs) {
         my $leg = shift @$legs;
