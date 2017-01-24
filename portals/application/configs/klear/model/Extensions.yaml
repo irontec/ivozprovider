@@ -1,3 +1,5 @@
+#include ../conf.d/friendValueHelp.yaml
+
 production: 
   class: \IvozProvider\Model\Extensions
   fields: 
@@ -161,6 +163,7 @@ production:
       type: text
       maxLength: 25
       required: true
+      <<: *friendValueHelp
     target:
       title: _('Target')
       type: ghost
