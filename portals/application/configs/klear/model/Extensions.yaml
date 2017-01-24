@@ -160,6 +160,7 @@ production:
       title: _('Friend value')
       type: text
       maxLength: 25
+      required: true
     target:
       title: _('Target')
       type: ghost
