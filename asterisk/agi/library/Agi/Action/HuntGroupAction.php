@@ -173,14 +173,18 @@ class HuntGroupAction extends RouterAction
             $this->agi->setCallerIdName("");
         }
 
-        // FIXME Set company On-demand recording code
-        if ($huntGroup->getCompany()->getOnDemandRecord()) {
-            $this->agi->setVariable("_RECORDCODE", $huntGroup->getCompany()->getOnDemandRecordCode());
+        // Dial Options
+        $options = "";
+
+        // For record asterisk builtin feature code (FIXME Dont use both X's)
+        if ($user->getCompany()->getOnDemandRecord() == 2) {
+            $options .= "xX";
         }
 
         // Call everyone
         $this->agi->setVariable("HG_ID", $huntGroup->getId());
         $this->agi->setVariable("DIAL_DST", join($callInterfaces, '&'));
+        $this->agi->setVariable("DIAL_OPTS", $options);
         $this->agi->setVariable("DIAL_TIMEOUT", $huntGroup->getRingAllTimeout());
         $this->agi->redirect('call-huntgroup');
     }

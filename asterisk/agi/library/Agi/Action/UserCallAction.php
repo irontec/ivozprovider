@@ -157,14 +157,14 @@ class UserCallAction extends RouterAction
             return;
         }
 
-        // Set company On-demand recording code
-        if ($user->getCompany()->getOnDemandRecord()) {
-            $this->agi->setVariable("_RECORDCODE", $user->getCompany()->getOnDemandRecordCode());
-        }
-
         // Configure Dial options
         $timeout = $this->_timeout;
-        $options = ""; // FIXME
+        $options = "";
+
+        // For record asterisk builtin feature code (FIXME Dont use both X's)
+        if ($user->getCompany()->getOnDemandRecord() == 2) {
+            $options .= "xX";
+        }
 
         // Don't accept forwards SIP redirections for this call
         if (!$this->_allowForwarding) {

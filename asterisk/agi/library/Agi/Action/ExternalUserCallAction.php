@@ -69,14 +69,22 @@ class ExternalUserCallAction extends ExternalCallAction
 
         // We need Outgoing DDI for external call presentation
         if (!$ddi) {
-            $this->agi->error("User %s [friend%d] has not OutgoingDDI configured", $user->getName(), $user->getId());
+            $this->agi->error("User %s [user%d] has not OutgoingDDI configured", $user->getName(), $user->getId());
             $this->agi->decline();
             return;
         }
 
+        // Dial Options
+        $options = "";
+
+        // For record asterisk builtin feature code (FIXME Dont use both X's)
+        if ($user->getCompany()->getOnDemandRecord() == 2) {
+            $options .= "xX";
+        }
+
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
-        $this->agi->setVariable("DIAL_OPTS", "");
+        $this->agi->setVariable("DIAL_OPTS", $options);
         $this->agi->redirect('call-world', $e164number);
     }
 }

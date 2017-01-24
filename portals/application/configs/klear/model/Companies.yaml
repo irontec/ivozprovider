@@ -1,3 +1,5 @@
+#include ../conf.d/recordingHelp.yaml
+
 production: 
   class: \IvozProvider\Model\Companies
   fields: 
@@ -206,15 +208,21 @@ production:
         data: inline
         values:
           '0':
-            title: _("No")
+            title: _("Disabled")
             visualFilter:
               show: []
               hide: ["onDemandRecordCode"]
           '1':
-            title: _("Yes")
+            title: _("Using BXFER or INFO")
             visualFilter:
               show: ["onDemandRecordCode"]
               hide: []
+          '2':
+            title: _("Using DTMFs (read WARNING)")
+            visualFilter:
+              show: ["onDemandRecordCode"]
+              hide: []
+      <<: *recordingHelp
     onDemandRecordCode: 
       title: _('Code')
       type: text
