@@ -25,7 +25,6 @@ class KamAccCdrs extends ModelAbstract
     protected $_parsedAcceptedValues = array(
         'yes',
         'no',
-        'delayed',
         'error',
     );
     protected $_bouncedAcceptedValues = array(
@@ -164,7 +163,7 @@ class KamAccCdrs extends ModelAbstract
     protected $_xcallid;
 
     /**
-     * Database var type enum('yes','no','delayed','error')
+     * Database var type enum('yes','no','error')
      *
      * @var string
      */

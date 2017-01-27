@@ -380,7 +380,7 @@ class KamAccCdrs extends TableAbstract
 	    'TABLE_NAME' => 'kam_acc_cdrs',
 	    'COLUMN_NAME' => 'parsed',
 	    'COLUMN_POSITION' => 19,
-	    'DATA_TYPE' => 'enum(\'yes\',\'no\',\'delayed\',\'error\')',
+	    'DATA_TYPE' => 'enum(\'yes\',\'no\',\'error\')',
 	    'DEFAULT' => 'no',
 	    'NULLABLE' => true,
 	    'LENGTH' => NULL,

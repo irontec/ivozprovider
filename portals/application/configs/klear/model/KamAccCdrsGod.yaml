@@ -117,7 +117,6 @@ production:
         values: 
           'yes': _('yes')
           'no': _('no')
-          'delayed': _('delayed')
           'error': _('error')
     diversion: 
       title: _('Diversion')
