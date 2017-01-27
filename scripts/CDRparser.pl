@@ -106,7 +106,6 @@ my %execution = (
     'incompletedGroups' => 0,
     'generatedCDRs' => 0,
     'parsed-yes' => 0,
-    'parsed-delayed' => 0,
     'taficableCalls' => 0,
 );
 my %cids;
@@ -560,6 +559,28 @@ sub insertCDR {
     }
 }
 
+sub fixPreviousWrongDecisions {
+    # Does this leg have a xcallid that has been wrongly classified in previous run?
+    my $leg = shift;
+
+    # Fetch already parsed related CDRs, if any
+    my $getRelatedCDRs = "SELECT * FROM ParsedCDRs WHERE cid='$$leg{xcallid}' OR xcid='$$leg{xcallid}'";
+
+    my $sth = $dbh->prepare($getRelatedCDRs)
+      or die "Couldn't prepare statement: $getRelatedCDRs";
+    $sth->execute()
+      or die "Couldn't execute statement: $getRelatedCDRs";
+
+    while (my $cdr = $sth->fetchrow_hashref) {
+        logger "ParsedCDRs.id: $$cdr{id}) wrongly classified in previous run as $$cdr{statType} (guessed by kam_acc_cdrs.id: $$leg{id}), heal";
+        setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'no';
+        setParsedValue $$cdr{xstatId}, $$cdr{xcidHash}, 'no' if $$cdr{xstatId};
+        deleteCDR $$cdr{id};
+    }
+
+    $sth->finish();
+}
+
 #########################################
 # MAIN LOGIC
 #########################################
@@ -567,7 +588,8 @@ sub insertCDR {
 logger "Execution started at " . localtime();
 
 # Fetch oldest unparsed calls
-my $getPendingStats = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE parsed!='yes' ORDER BY start_time";
+# parsed possible values: no, yes, error
+my $getPendingStats = "SELECT c.*, com.brandId FROM kam_acc_cdrs c LEFT JOIN Companies com ON com.id=c.companyId WHERE parsed='no' ORDER BY start_time";
 
 my $sth = $dbh->prepare($getPendingStats)
   or die "Couldn't prepare statement: $getPendingStats";
@@ -590,7 +612,11 @@ my $alegs = [];
 for (my $i=1; my $leg = $sth->fetchrow_hashref; $i++) {
     $cids{$i} = $leg;
     $$leg{key} = $i;
-    push @$alegs, $leg if not $$leg{xcallid};
+    if ($$leg{xcallid}) {
+        fixPreviousWrongDecisions $leg;
+    } else {
+        push @$alegs, $leg;
+    }
 }
 
 $sth->finish();
@@ -678,12 +704,7 @@ for my $legs (@$groups) {
     my $bleg;
     if (@$legs == 1) {
         $aleg = shift @$legs;
-        if ($$aleg{parsed} eq 'delayed') {
-            generateSingleLegCdr $aleg;
-        } else {
-            # A leg only stats wait for 1 run to avoid errors in mid-inserted AB stats
-            setParsedValue $$aleg{id}, $$aleg{callidHash}, 'delayed';
-        }
+        generateSingleLegCdr $aleg;
     } else {
         $aleg = shift @$legs;
         $bleg = shift @$legs;
@@ -716,7 +737,6 @@ insertCDR($_) for @$cdrs;
 
 # Log final stats
 logger "Stats marked as parsed: $execution{'parsed-yes'}";
-logger "Stats marked as delayed: $execution{'parsed-delayed'}";
 
 # Disconnect from database
 $dbh->disconnect;
