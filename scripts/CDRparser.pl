@@ -584,6 +584,28 @@ sub fixPreviousWrongDecisions {
     $sth->finish();
 }
 
+sub is_leg_canceled {
+    my ($stat, $callid) = @_;
+
+    my @tables = qw/kam_users_acc kam_trunks_acc/;
+
+    for my $table (@tables) {
+        # Fetch already parsed related CDRs, if any
+        my $cancelTransactions = "SELECT * FROM $table WHERE callid='$callid' AND method='CANCEL'";
+
+        my $sth = $dbh->prepare($cancelTransactions)
+          or die "Couldn't prepare statement: $cancelTransactions";
+        $sth->execute()
+          or die "Couldn't execute statement: $cancelTransactions";
+
+        return $table if $sth->rows;
+
+        $sth->finish();
+    }
+
+    return 0;
+}
+
 #########################################
 # MAIN LOGIC
 #########################################
@@ -617,8 +639,14 @@ for (my $i=1; my $leg = $sth->fetchrow_hashref; $i++) {
     $$leg{key} = $i;
     if ($$leg{xcallid}) {
         fixPreviousWrongDecisions $leg;
+        my $cancel_table = is_leg_canceled $$leg{id}, $$leg{callid};
+        logger "$$leg{direction} bleg $$leg{id} seems to involve a fast cancelation situation in its callid '$$leg{callid}' ($cancel_table, duration: $$leg{duration})" if $cancel_table;
+        $cancel_table = is_leg_canceled $$leg{id}, $$leg{xcallid};
+        logger "$$leg{direction} bleg $$leg{id} seems to involve a fast cancelation situation in its xcallid '$$leg{xcallid}' ($cancel_table, duration: $$leg{duration})" if $cancel_table;
     } else {
         push @$alegs, $leg;
+        my $cancel_table = is_leg_canceled $$leg{id}, $$leg{callid};
+        logger "$$leg{direction} aleg $$leg{id} seems to involve a fast cancelation situation in its callid '$$leg{callid}' ($cancel_table, duration: $$leg{duration})" if $cancel_table;
     }
 }
 
