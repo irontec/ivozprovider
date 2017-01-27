@@ -15,6 +15,9 @@ use POSIX;
 # GLOBALS
 #########################################
 
+# Separator for array values interpolated into a double-quoted string
+$"=', ';
+
 # Set start time
 my $start_time = time();
 
@@ -688,6 +691,8 @@ for my $aleg (@$alegs) {
 $execution{completedGroups} = @$groups;
 logger "Formed groups: $execution{completedGroups}";
 logger "Grouped stats: $execution{groupedLegs}";
+
+# Log ungrouped legs
 $execution{ungroupedLegs} = scalar keys %cids;
 my @ungrouped;
 for (keys %cids) {
@@ -695,6 +700,8 @@ for (keys %cids) {
 }
 @ungrouped = sort {$a <=> $b} @ungrouped;
 logger "Ungrouped stats: $execution{ungroupedLegs} (@ungrouped)";
+
+# Log incomplete groups
 logger "Incompleted skipped groups: $execution{incompletedGroups}";
 
 # Parse groups and generate CDR entries
