@@ -109,6 +109,7 @@ function start_services()
 function enable_services()
 {
     /bin/systemctl enable rtpproxy
+    /bin/systemctl enable rtpengine
     /bin/systemctl enable kamailio@users
     /bin/systemctl enable kamailio@trunks
     /bin/systemctl enable asterisk
