@@ -39,11 +39,22 @@ production:
       <<: *codecsHelp
     allow: 
       title: _('Allowed codecs')
-      type: text
+      type: select
       trim: both
       defaultValue: alaw
       maxLength: 100
-      <<: *codecsHelp
+      source:
+        data: inline
+        values:
+            'alaw': 'alaw - G.711 a-law'
+            'ulaw': 'ulaw - G.711 u-law'
+            'gsm': 'gsm - GSM'
+            'speex': 'speex - SpeeX 32khz'
+            'g722': 'g722 - G.722'
+            'g726': 'g726 - G.726 RFC3551'
+            'g729': 'g729 - G.729A'
+            'ilbc': 'ilbc - iLBC'
+            'opus': 'opus - Opus codec'
     direct_media_method: 
       title: _('CallerID update method')
       type: select

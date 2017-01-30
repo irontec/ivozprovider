@@ -23,6 +23,7 @@ production:
           mac: true
           lastProvisionDate: true
           domain: true
+          disallow: true
         options: 
           title: _("Options")
           screens: 
@@ -34,7 +35,6 @@ production:
           name: true
           TerminalModelId: true
           password: true
-          disallow: true
           allow: true
           direct_media_method: true
           mac: true
@@ -64,13 +64,13 @@ production:
         order:
           name: true
           password: true
-          disallow: true
           allow: true
           direct_media_method: true
           TerminalModelId: true
           mac: true
           lastProvisionDate: true
         blacklist: 
+          disallow: true
           lastProvisionDate: true
           domain: true
       fixedPositions: &TerminalsFixedPositions_link
@@ -85,7 +85,6 @@ production:
           label: _("Connection Info")     
           colsPerRow: 12
           fields:
-            disallow: 6
             allow: 6
             direct_media_method: 5
         group2:
@@ -112,10 +111,10 @@ production:
           lastProvisionDate: true
         blacklist:
           domain: true
+          disallow: true
         order:
           name: true
           password: true
-          disallow: true
           allow: true
           direct_media_method: true
           TerminalModelId: true

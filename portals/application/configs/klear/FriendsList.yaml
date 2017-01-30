@@ -70,6 +70,7 @@ production:
           update_callerid: true
           callerid_update_header: true
           auth_needed: true
+          disallow: true
         order: &friends_orderLink
           name: true
           description: true
@@ -84,7 +85,6 @@ production:
           areaCode: true
           outgoingDDIId: true
           allow: true
-          disallow: true
           from_domain: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
@@ -113,7 +113,6 @@ production:
           colsPerRow: 6
           fields:
             allow: 2
-            disallow: 2
             from_domain: 2
       shortcutOption: N
       postActionOptions: 
