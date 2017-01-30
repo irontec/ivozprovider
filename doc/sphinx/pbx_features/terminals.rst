@@ -1,56 +1,56 @@
 .. _terminals:
 
-##########
-Terminales
-##########
+#######################
+Terminals configuration
+#######################
 
-La sección **Configuración de empresa** > **Terminales** permite dar de alta 
-credenciales SIP que podrán ser utilizados por diversos dispositivos SIP para 
-realizar y recibir llamadas de IvozProvider.
+The section **Company configuration** > **Terminals** allows creating new
+SIP credentials that can be used by multiple SIP devices to place and receive
+calls from IvozProvider.
 
-La mejor forma de entender la sección es crear uno nuevo y ver los campos que 
-tenemos que cumplimentar:
+The best way to understand this section is creating a new item and see the 
+fields that must be filled.
 
 .. image:: img/terminals_add.png
 
 .. glossary::
 
-    Nombre
-        Usuario que utilizará el terminal para presentarse ante IvozProvider y 
-        para realizar la fase de autenticación SIP.
+    Name
+        Username that will use the terminal during the SIP authentication phase
+        with IvozProvider.
 
-    Contraseña
-        Contraseña que utilizará el terminal para responder a la fase de 
-        autenticación SIP. Utilizar el generador automático de contraseñas para 
-        cumplir los criterios de seguridad exigidos.
+    Password
+        Password that will use the terminal to answer the SIP authentication
+        challenge. You can use the automatic password generator to fullfill the
+        secure password requirements.
 
-    Codecs rechazados/permitidos
-        Indica las capacidades del terminal en lo que a codecs se refiere. 
-        Primero se descarta los rechazados y posteriormente incluye los 
-        soportados. Se recomienda dejar *alaw* como único soportado.
+    Allowed/Disallowed codecs
+        Determines what media codecs will be used with the terminal. First the
+        disallowed codecs will be removed, then the allowed codecs will be 
+        added. The default suggested configuration is to only support *alaw*
+        codec.
 
-    Modo de actualización
-        Indica si el terminal prefiere utilizar reINVITEs o UPDATEs para 
-        actualizar la sesión. La sección de ayuda indica qué terminales suelen 
-        requerir qué método. En caso de duda, utilizar *invite*.
+    CallerID update method
+        Choose the SIP method the terminal prefers to received the session
+        update information: INVITE or UPDATE. The help hint can be used as
+        guide to configure different terminal manufacturers. Use *INVITE* in 
+        case of doubt.
 
-    Modelo de terminal
-        Indica el tipo de provisión que tendrá que recibir este terminal 
-        concreto. En el apartado dedicado a la :ref:`provisión de terminales 
-        <provisioning>` se verá que existen unos modelos con provisión 
-        automática y se explicará todo en profundidad. En caso de no necesitar 
-        provisión, utilizar *Generic*.
+    Terminal model
+        Determines the provisioning type that will receive this terminal.
+        The section :ref:`terminal provisioning <provisioning>` will explain
+        in depth the different models for automatic provision. If your device
+        does not require provisioning, just select *Generic*.
 
     MAC
-        Campo necesario para modelos que utilizan el sistema de :ref:`provisión 
-        de terminales <provisioning>` de IvozProvider. Recoge la `dirección 
-        física <https://es.wikipedia.org/wiki/Direcci%C3%B3n_MAC>`_ del 
-        adaptador de red del dispositivo SIP.
+        Optional field that is only required if you plan to use IvozProvider 
+        :ref:`terminal provisioning <provisioning>`. This is the `phisical 
+        address <https://wikipedia.org/wiki/MAC_Address>`_ of the network 
+        adapter of the SIP device.
 
-.. note:: **En la mayoría** de dispositivos, siempre que no requieran 
-   provisión, **bastará con rellenar el nombre y contraseña**.
+.. note:: For **most of devices** that doesn't require provisioning just
+   filling **username** and **password** will be enough.
 
-.. hint:: Una vez dado de alta el Terminal, en la mayoría de dispositivos 
-   bastará con configurar nombre, contraseña y :ref:`dominio SIP de la 
-   compañía <domain_per_company>` para poder llamar.
-
+.. hint:: Once the terminal has been created, most devices will only
+   require the name, password and :ref:`Company SIP domain <domain_per_company>` 
+   in order to place calls.

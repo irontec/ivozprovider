@@ -29,9 +29,9 @@ replication or http request balancing).
 StandAlone Install
 ******************
 
-If you want an small installation to make a couple of tests or give a basic
+If you want a small installation to make a couple of tests or give a basic
 service, we have designed all this configuration so they can work in a single
 machine.
 
-We have called this kind of installations as **StandAlone** and we have also
+We have called this kind of installations **StandAlone** and we have also
 created :ref:`Automatic ISO CD image` so you can install in a couple of minutes.

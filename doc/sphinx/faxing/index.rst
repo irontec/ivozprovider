@@ -11,7 +11,11 @@ permite:
 
 - Recibir faxes vía correo electrónico y visualización web.
 
-.. error:: IvozProvider utiliza `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ para la emisión y recepción de faxes. Es responsabilidad de el administrador de marca disponer de Contratos de Peering con operadores que soporten dicho protocolo, así como configurar las rutas de salida para utilizar dicho operador.
+.. error:: IvozProvider utiliza 
+   `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ para la emisión y 
+   recepción de faxes. Es responsabilidad de el administrador de marca disponer 
+   de Contratos de Peering con operadores que soporten dicho protocolo, así como 
+   configurar las rutas de salida para utilizar dicho operador.
 
 **************************
 Creación de un fax virtual

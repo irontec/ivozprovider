@@ -1,24 +1,20 @@
 .. _external_ddi:
 
-#######################
-Configurar DDI saliente
-#######################
+##########################
+Outgoing DDI configuration
+##########################
 
-Antes de realizar la llamada externa, estaría muy bien que dicha llamada se
-presentara con el DDI que ya hemos configurado en entrada, así el llamado podría
-devolvernos la llamada cómodamente.
+Before placing our first outgoing call, it would be desirable to choose the
+number that the callee will see when the phone rings, so that he can return the
+call easily.
 
-Para ello, basta con configurar dicho DDI como **DDI saliente** de *Alice*, que
-será la elegida para realizar la primera llamada saliente de nuestro recién
-instalado IvozProvider:
+To achieve this goal, we have to configure our DDI as *Alice's* **outbound DDI**,
+because she will be the chosen one to place our first outgoing call:
 
 .. image:: img/ddi_out.png
 
-Esta configuración se realiza desde **Configuración de empresa** > **Usuarios**,
-editando el usuario de *Alice*. Si ese el operador de marca o el operador global
-el que realiza esta edición, tendrá que haber :ref:`emulado la empresa 
-<emulate_company>` previamente.
+We can set this up editing *Alice* in **Company Configuration** > **Users**. If
+this change is made by brand operator or global operator, he must :ref:`emulate
+the corresponding company <emulate_company>` previously.
 
-.. warning:: Sin configurar un DDI saliente para el usuario que realiza la
-   llamada, ésta no saldrá al exterior.
-
+.. warning:: Calls from users without an outgoing DDI will be rejected by IvozProvider.

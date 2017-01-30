@@ -151,7 +151,7 @@ Exposed to the public network
 =============================
 
 As showed in the installation proces, **IvozProvider is designed to serve
-users directly from Internet**. Althoughit can be used in local
+users directly from Internet**. Although it can be used in local
 enviroments, IvozProvider is designed to use public IP addresses for its
 services, removing the need of VPN or IPSec tunnels that connect the
 infrastructure with the final users

@@ -1,120 +1,103 @@
 .. _call_permissions:
 
-#########################
-Control ACL para llamadas
-#########################
+################
+Call ACL Control
+################
 
-Los **Permisos de llamada** determinan qué usuarios pueden llamar a qué 
-destinos internos.
+The **Call ACLs** determines what users can call to external numbers. 
 
-.. attention:: Las extensiones internas son accesibles por todos los usuarios, 
-   **los permisos de llamada solo aplican a llamadas externas**.
+.. attention:: The internal extensions are allowed to all users, the **Call 
+   ACLs only apply to external numbers**  
 
-La configuración de **permisos de llamada** tiene 2 partes:
+The **Call ACL** setup has two different parts: 
 
-- Clasificar las llamadas en determinados tipos utilizando **expresiones 
-  regulares** [*]_:
+- Classify the call in different types based on **regular expressions**:
 
-    - A nivel de marca: **Configuración de Marca** > **Patrones de permiso 
-      genéricos**.
+    - Brand level: **Brand Configuration** > **Generic call ACL patterns**
 
-    - A nivel de empresa: **Configuración de Empresa** > **Patrones de permisos 
-      de llamada**.
+    - Company level: **Company Configuration** > **Call ACL patterns**
 
-- Definir políticas para los patrones deseados: **Configuración de Empresa** > 
-  **Permisos llamada**
+- Choose policies for groups of patterns: **Company Configuration** > **Call 
+  ACLs**
 
-*******************
-Patrones de permiso
-*******************
+*****************
+Call ACL patterns
+*****************
 
-La clasificación de llamadas se realiza en las secciones indicadas a nivel de 
-marca o a nivel de empresa.
+The destination number is matched against the **Company ACL patterns** to determine
+the destination type.
 
-.. note:: Cuando un operador de marca crea una empresa, todos los **Patrones de 
-   permiso genéricos** definidos en ese momento a nivel de **Configuración de 
-   Marca** se copian a **Configuración de Empresa** > **Patrones de permisos de 
-   llamada**. De esta forma, el operador de marca puede definir los más 
-   habituales y evitar este trabajo a los administradores de empresa.
+.. note:: When a Brand operator creates a new company, all of the **Generic 
+   ACL patterns** defined in the **Brand configuration** are copied to the
+   **Company configuration** > **Call ACLs**. This way, the brand operator can
+   define the most common patterns to speed up the company configuration.
 
-La creación de nuevos patrones es muy simple:
+The patterns creation process is quite simple:
 
 .. image:: img/permissions_patterns.png
 
+This new ACL pattern are grouped the calls starting with the spanish E.164 
+prefix followed by 6 or 7 and 8 more digits between 0 and 9. These is the E.164 
+format for the spanish mobile numbers. 
 
-Este nuevo patrón de permisos engloba las llamadas que comiencen por 6 o 7 y 
-sigan con 8 dígitos del 0 al 9. Es decir, engloba todas las numeraciones 
-móviles nacionales.
+Following this spanish example, other formats will be:
 
-Otros patrones de permisos que pueden resultar interesantes son:
+- Spanish Landline (including special numbers prefix: 902, etc.): ^34[89][0-9]{8}$
+    - 8 or 9 followed by 8 digits 
 
-- Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): ^[89][0-9]{8}$
-    - Un 8 o un 9 seguido de 8 dígitos.
+- Spanish Landline (excluding special number prefix: 902, etc.): ^34[89][1-9][0-9]{7}$
+    - 8 or 9, followed by one dígito between 1 and 9, followed by 7 digits.
 
-- Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): ^[89][1-9][0-9]{7}$
-    - Un 8 o un 9, seguido de 1 dígito del 1 al 9, seguido de 7 dígitos.
+- United Kingdom Landline: ^44[0-9]+$
+    - 44 (UK E.164 prefix), followed by more digits
 
-- Llamadas internacionales: ^00[0-9]+$
-    - 00 (código internacional) seguido de 1 o más dígitos.
+.. rubric:: External numbers format
 
-- Llamadas a Reino Unido: ^0044[0-9]+$
-    - 00 (código internacional), 44 (código de UK), seguido de 1 o más dígitos.
+The regular expresions of the Call ACL patterns must be in E.164 format. The 
+main reason for this is that the same pattern will be applied to all the users 
+of the company no matter what country the user is.
 
-.. rubric:: Formato de los números externos
+For example, a spanish user will call a french number using its international 
+prefix (00) and France E.164 code (33) followed by the number, while a french 
+user of the same company will only dial the number. For both of them the same 
+company ACL pattern will be applied. 
 
-Las expresiones regulares de los patrones de permiso tienen que utilizar el 
-formato que utilice un usuario del mismo país que la compañía a la hora de 
-llamar.
+********
+Call ACL
+********
 
-Es decir, un usuario (español, porque tal y como veremos los usuarios tienen 
-también un código de país) de una empresa de española llamará a números 
-móviles, por ejemplo, así: 676 676 676.
+The **Call ACL** configuration is easier to explain with an example:
 
-.. danger:: No se utiliza código de país ni formato E.164, **se escriben las 
-   expresiones regulares tal y como llamaría un usuario con el mismo código de 
-   país que la empresa en cuestión**.
-
-*******************
-Permisos de llamada
-*******************
-
-La definición de un **Permiso de llamada** utiliza una lógica más fácil de 
-describir con un ejemplo.
-
-Imaginemos que tenemos los siguientes **patrones de permisos**:
+Imagine the following **CALL ACL patterns**: 
 
 .. image:: img/permissions_patterns_list.png
 
-Podríamos definir un **Permiso de llamada** como el que sigue:
+We could create a **Call ACL** that only allow calling to this destinations:
 
 .. image:: img/permissions_add.png
 
-.. note:: La acción por defecto describe lo que hay que hacer con la llamada 
-   una vez que se han evaluado todas las reglas (permitir/rechazar).
+.. note:: The default action determines what to do with the call when the 
+   destination number **does not match any ACL patterns**.
 
-Editamos el **permiso de llamada** que acabamos de crear para añadir las reglas 
-necesarias:
+After creating the **Call ACL** we can edit it to add the required rules:
 
 .. image:: img/permissions_add2.png
 
-La **métrica** determina el orden de evaluación de las reglas y la acción lo 
-que se hará con la llamada en caso de *matchear* (permitir/rechazar).
+The **metric** determines the evaulation order of the rules and the action that
+ that will be applied if it *matches* the pattern (allow/deny).
 
 .. image:: img/permissions_add3.png
 
-Una vez hecho lo propio para el otro **patrón de permisos**, nuestro **permiso 
-de llamadas** quedará como sigue:
+Once we have added our two spanish **Call ACL patterns**, our **Call ACL** will 
+look like this:
 
 .. image:: img/permissions_add4.png
 
-
-Ya solo faltaría añadírselo a un usuario concreto en la sección **Configuración 
-de empresa** > **Usuarios**:
+We only have to assign this ACL to the users in the section **Company 
+configuration** > **Users**:
 
 .. image:: img/permissions_add5.png
 
-Desde este momento, Alice solo podría llamar a extensiones internas (siempre 
-están permitidas) y a móviles y fijos nacionales.
-
-.. [*] https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular
-
+From this moment on, Alice will only be allowed to call internal extensions 
+(they are always allowed) and spanish numbers.
+ 

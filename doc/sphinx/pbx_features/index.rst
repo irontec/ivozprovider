@@ -1,19 +1,17 @@
-######################
-Funcionalidades de PBX
-######################
+############
+PBX Features
+############
 
-En el bloque anterior hemos conseguido realizar llamadas internas y externas 
-realizando una configuración mínima, partiendo de la configuración que deja el 
-propio instalador y dejando de lado múltiples apartados y funcionalidades.
+In the previous block we have successfully make internal and external calls
+with just a minimum configuration, based on the base data left by the installer
+itself and ignoring a lot of the sections and features.
 
-El objetivo de este bloque será describir cada una de estas secciones con 
-profundidad y ver así las funcionalidades de PBX que IvozProvider ofrece.
-
-Para ello, seguiremos el siguiente índice:
+The goal of this section will be describe each one of those features that
+are also included in IvozProvider.
 
 .. toctree::
     :maxdepth: 1
-    :caption: Conceptos básicos
+    :caption: Basic concepts
 
     extensions
     terminals
@@ -23,7 +21,7 @@ Para ello, seguiremos el siguiente índice:
 
 .. toctree::
     :maxdepth: 1
-    :caption: Números externos
+    :caption: External numbers
 
     sounds
     external_filters
@@ -34,7 +32,7 @@ Para ello, seguiremos el siguiente índice:
 
 .. toctree::
     :maxdepth: 1
-    :caption: Funcionalidades adicionales
+    :caption: Additional features
 
     call_captures
     services

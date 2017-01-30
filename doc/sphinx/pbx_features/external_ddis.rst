@@ -4,15 +4,18 @@
 DDIs externos
 #############
 
-En la sección preliminar :ref:`settingup_ddi` se describió con todo detalle la configuración necesaria para configurar un DDI externo directo a un usuario.
+En la sección preliminar :ref:`settingup_ddi` se describió con todo detalle la 
+configuración necesaria para configurar un DDI externo directo a un usuario.
 
-Después de explicar las secciones anteriores, podemos llevar esta configuración un poco más allá:
+Después de explicar las secciones anteriores, podemos llevar esta configuración 
+un poco más allá:
 
 *****************
 Filtro de entrada
 *****************
 
-Podemos seleccionar el **Filtro de entrada externo** configurado en :ref:`la sección anterior <external_filters>`.
+Podemos seleccionar el **Filtro de entrada externo** configurado en :ref:`la 
+sección anterior <external_filters>`.
 
 .. image:: img/ddi_edit.png
 
@@ -22,7 +25,9 @@ Podemos seleccionar el **Filtro de entrada externo** configurado en :ref:`la sec
 Tratamientos
 ************
 
-Vemos que tenemos más opciones aparte de enviar la llamada, una vez superado los filtros de horario y calendario (y previa locución de bienvenida), directamente a un usuario:
+Vemos que tenemos más opciones aparte de enviar la llamada, una vez superado 
+los filtros de horario y calendario (y previa locución de bienvenida), 
+directamente a un usuario:
 
 - :ref:`huntgroups`
 
@@ -40,5 +45,6 @@ Vemos que tenemos más opciones aparte de enviar la llamada, una vez superado lo
 
 .. image:: img/ddi_edit5.png
 
-.. hint:: También podemos apuntar el DDI a un :ref:`fax virtual <faxing_system>`, pero esto se verá en el siguiente bloque.
+.. hint:: También podemos apuntar el DDI a un :ref:`fax virtual 
+   <faxing_system>`, pero esto se verá en el siguiente bloque.
 

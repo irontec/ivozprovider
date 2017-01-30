@@ -1,200 +1,194 @@
 .. _users:
 
-########
-Usuarios
-########
+###################
+Users configuration
+###################
 
-El proceso de instalación nos creó a *Alice* y a *Bob*, y esto nos permitió 
-ahorrar mucho tiempo a la hora de conseguir que se llamarán entre ellos.
+The installation process creates *Alice* and *Bob* users, allowing us
+to test internals calls between them without too much effort.
 
-También nos permitió pasar un poco de puntillas por la sección de **Usuarios**, 
-que ahora pasamos a definir en profundidad.
+We also skipped most of the setting in **Users** configuration that we will 
+define in this section.
 
-Para ello, nada mejor que editar el usuario *Alice* y describir cada campo del 
-mismo, bloque a bloque:
+As usually, the best way is to edit an existing user and describe each of its 
+fields:
 
-****************
-Datos personales
-****************
+*************
+Personal data
+*************
 
 .. image:: img/users_edit_personal_data.png
 
 .. glossary::
 
-    Nombre
-        Se utilizará para referenciar al usuario en múltiples ámbitos, 
-        incluyendo el nombre que se presenta en llamadas internas.
+    Name
+        Used to identify this user in most of the screens. This is also the 
+        name that will be displayed in internal calls made from this user.
 
-    Apellidos
-        Irá junto con el Nombre en casi todos los casos.
+    Lastname
+        Most of the times this is used to complete the previous field.
 
     Email
-        Dirección de correo electrónico del usuario al que se enviarán los 
-        mensajes de voz del buzón.
+        Email used to send the user's received voicemails. This is also used to 
+        identify the user in their portal.
 
-******************************
-Credenciales portal de usuario
-******************************
+**********
+Login Info
+**********
 
 .. image:: img/users_edit_login.png
 
 .. glossary::
 
-    Nombre de usuario
-        Nombre de usuario para acceder al :ref:`portal de usuario <userportal>`.
+    Active
+        Allows administrators to grant or disable user's acces to the 
+        :ref:`user's portal <userportal>`.
 
-    Contraseña
-        Contraseña para acceder al :ref:`portal de usuario <userportal>`.
+    Password
+        Password used to access the :ref:`user's portal <userportal>`.
 
-    Activo
-        Da posibilidad al administrador de la plataforma de desactivar el 
-        acceso al :ref:`portal de usuario <userportal>`.
-
-********************
-Configuración básica
-********************
+*******************
+Basic Configuration
+*******************
 
 .. image:: img/users_edit_basic_config.png
 
 .. glossary::
 
     Terminal
-        Los terminales dados de alta en :ref:`terminals` se listan aquí para 
-        realizar la vinculación usuario-terminal.
+        The available terminals created in :ref:`terminals` are listed here 
+        for assignment.
 
-    Extensión
-        Tal y como se explicaba en :ref:`extensions`, fija la extensión del 
-        usuario para llamadas internas.
+    Extension
+        One of the available :ref:`extensions` that this user will display when 
+        placing internal calls. While multiple extensions can be routed to the 
+        user, only one of them will be presented when the user calls. 
 
-    DDI de salida
-        Adelantado en :ref:`external_ddi`, determina el número que presenta el 
-        usuario en llamadas externas salientes.
+    Outgoing DDI
+        As described in :ref:`external_ddi`, determines the number that will 
+        present when placing external outgoing calls. 
 
-    Permiso de llamada
-        Asignación de un grupo de permisos explicado en profundidad 
-        :ref:`aquí<call_permissions>`.
+    Call ACL
+        One of the created :ref:`Call ACL <call_permissions>` groups, described 
+        it the previous sections.
 
-    No molestar
-        Impide que nadie pueda llamar a este usuario, sin impedirle a él 
-        llamar a donde desee.
+    Do not disturb
+        When this setting is enabled, the user won't receive any call but can 
+        still place calls.
 
-    Llamada en espera
-        Determina si el sistema tendrá que llamar al usuario cuando éste ya 
-        esté en conversación.
+    Call saiting
+        When this setting is enabled, the user terminal will receive new calls 
+        even if it already talking.
 
-************
-Buzón de voz
-************
+*********
+Voicemail
+*********
 
 .. image:: img/users_edit_vm.png
 
 .. glossary::
 
-    Buzón de voz
-        Activa o desactiva **la existencia** del buzón de voz del usuario. 
-        Aparte de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá 
-        que desviar las llamadas que queramos al buzón.
+    VoiceMail enabled
+        Enables or disables the **existance** of a users voicemail.
+        This only makes the voicemail available to be routed as described in the 
+        section :ref:`forward to voicemail <fwd_to_vm>`.
 
-    Notificar por email
-        Mandar a la dirección del usuario un correo notificando del mensaje de 
-        voz.
+    Email notification
+        Send an email to the configured user address when a new voicemail is 
+        received.
 
-    Adjuntar audio del mensaje
-        Adjuntar o no en dicho mail el audio del mensaje
+    Attach sounds:
+        Attach the audio message to the sent email.
 
 **************
-Jefe-Asistente
+Boss-Assistant
 **************
 
 .. image:: img/users_edit_boss.png
 
-La funcionalidad jefe-asistente impide que un usuario sea molestado por nadie 
-que no sea:
+This feature will turn the user into a boss that can only be directly call by:
 
-- Su asistente.
+- The selected assistant.
 
-- Las excepciones que él defina.
+- Any exception defined in the whitelist regular expression.
 
-Toda llamada con destino a *un jefe* será desviada al asistente.
+The rest of the calls to *a bos* will be redirected to the assistant.
 
 .. glossary::
 
-    Jefe
-        Indica que el usuario en cuestión es jefe o no.
+    Is boss
+        Determines if this user is a boss.
 
-    Asistente
-        Si el usuario es jefe, indica quién es su asistente.
+    Assistant
+        Who will receive the redirected calls of this boss.
 
-    Whitelist jefe/asistente
-        Permite indicar utilizando expresiones regulares las excepciones 
-        deseadas.
+    Whitelist regular expression.
+        Regular expresion to match numbers that are allowed to call directly to 
+        the boss.
 
-Con la configuración de la imagen, toda llamada a *Alice* acabará en *Bob*, 
-salvo las que haga el propio *Bob* y el número de teléfono 945 945 945.
+With the setup in the image, every call to *Alice* will be redirected to *Bob*, 
+except the ones placed by *Bob* itself and those coming from the number  
+945 945 945.
 
-********************
-Pertenencia a grupos
-********************
+*******************
+Group Configuration
+*******************
 
 .. image:: img/users_edit_groups.png
 
-Tal y como se verá en las secciones :ref:`huntgroups` y :ref:`capture_groups`, 
-un usuario puede pertenecer a uno o a varios grupos de captura y grupos de salto.
+As described in the sections :ref:`huntgroups` and :ref:`capture_groups`, the 
+user can be part of one or more huntgroups and pickup groups.
 
-Aparte de poder configurar dicha pertenencia desde las propias secciones 
-:ref:`huntgroups` y :ref:`capture_groups`, se puede añadir al usuario que 
-estamos editando a los grupos de captura y grupos de salto deseados que ya 
-existan.
+Those groups can be configured from the sections :ref:`huntgroups` and 
+:ref:`capture_groups` or the user's screen if the groups already exists. 
 
-En el caso de la pertenencia a **grupos de salto**, también se puede configurar 
-desde el listado general:
+You can also configure the user's **hunt groups** from the icon in each user 
+line of the users list. 
 
 .. image:: img/users_huntgroups.png
     :align: center
 
-******************
-Desvíos de llamada
-******************
+*****************
+User Call Forward
+*****************
 
-Los desvíos de las llamadas de un usuario concreto se configura pulsando el 
-siguiente botón:
+The user's call forward can be configured in the following button:
 
 .. image:: img/users_call_fwd.png
     :align: center
 
 .. _fwd_to_vm:
 
-Para desviar las llamadas externas que no se contesten en 15 segundos al buzón 
-de voz que acabamos de configurar, por ejemplo, habría que configurar un desvío 
-tal que:
+For example, to forward all external calls that are not answered after 15 
+seconds, we could configure a call forward like this:
 
 .. image:: img/users_call_fwd2.png
     :align: center
 
-Estos son los campos y los posibles valores:
+These are the fields and available values:
 
 .. glossary::
 
-    Tipo de llamada
-        Limita el desvío a cierto tipo de llamadas, a elegir entre externa, 
-        interna o ambas
+    Call Type
+        Determines if the forward must be applied to external, internal or any 
+        type of call.
 
-    Tipo de desvío
-        Indica cuándo aplica el desvío:
-            - Incondicional: siempre
-            - Perdida: cuando no se conteste al de X segundos
-            - Ocupado: cuando el usuario esté ocupado (hablando o con el *No 
-              molestar* activo)
-            - No registrado: cuando el usuario tenga su terminal sin conectar 
-              con IvozProvider
+    Forward type
+        When this forward must be applied:
+            - Inconditional: always
+            - No answer: when the call is not answered in X seconds
+            - Busy: When the user is talking to someone (and call waiting is 
+              disabled), when *Do not disturb* is enabled or when the user 
+              rejects an incoming call.
+            - Not registered: when the user SIP terminal is not registered 
+              against IvozProvider.
 
-    Tipo de destino
-        Indica a dónde se enviará la llamada cuando el desvío aplique:
-            - Buzón de voz
-            - Número (externo)
-            - Extensión (interna)
+    Target type
+        What route will use the forwaded call.
+            - VoiceMail
+            - Number (external)
+            - Extension (internal)
 
-.. hint:: Si queremos que desviar a un grupo de salto, por ejemplo, bastaría 
-   con crear una extensión que apunte al grupo de salto deseado y seleccionar 
-   *Extensión* en el **Tipo de destino**.
+.. hint:: If we want to forward to other process, we can create an extension 
+   routed to that object and use the target type *Extension*. 
 

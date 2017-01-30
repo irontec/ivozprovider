@@ -1,18 +1,18 @@
-##########
-Locuciones
-##########
+#########
+Locutions
+#########
 
-Las locuciones de la plataforma se crean y se suben de forma idéntica a cómo 
-lo hacen las :ref:`músicas en espera <musiconhold>`.
+The locutions of the platform are created and uploaded just like the files of  
+:ref:`Music on Hold <musiconhold>`.
 
-La sección que permite al administrador de empresa subir las locuciones que 
-utilizará en diversos puntos de la configuración (IVR, etc.) es **Configuración 
-de Empresa** > **Locuciones**.
+The section **Company configuration** > **Locutions**  allows the company admin 
+to choose the sounds that will be played in many configuration places (IVR, etc)
+accross the platform.
 
 .. image:: img/sounds.png
 
-.. hint:: La única diferencia entre una **locución** y una **música en espera** 
-   es su uso: la primera sonará cuando el administrador de empresa lo indique 
-   (fuera de horario, IVRs, etc.) y la segunda, en cambio, cuando la llamada 
-   sea retenida por un usuario.
+.. hint:: The main difference between a **locution** and **music on hold** is 
+   that the administrator chooses when the first one will be played (out of 
+   schedule, IVRs, and so on) and the second one will be played when a call is
+   holded by an user.
 

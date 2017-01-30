@@ -1,73 +1,71 @@
-###############
-¿A dónde llamo?
-###############
+################
+Where do I call?
+################
 
-En este punto de la configuración, tenemos que configurar IvozProvider para que
-las llamadas a los destinos externos que vayamos a probar salgan por el Contrato
-de *peering* que hemos configurado en el bloque anterior.
+At this point of the configuration, we have to configure IvozProvider to use the
+already configured *Contract Peering* to place the external calls we are making.
 
-Para ello, en primer lugar, necesitamos que los números externos recaigan en un
-**patrón de destino** dado de alta con anterioridad.
+To achieve this, in first place, we need that the dialed external numbers fall
+in an existing **target pattern**.
 
 .. _target_patterns:
 
-*******************
-Patrones de destino
-*******************
+***************
+Target patterns
+***************
 
-Cuando un usuario marca un número externo, IvozProvider intenta calificar este
-número en uno de los patrones de destino definidos en esta sección:
+When a user dials an external phone number, IvozProvider tries to categorize
+this call into a one of the target patterns defined in this section:
 
 .. image:: img/target_patterns_section.png
     :align: center
 
-Lo más normal será que nos interese tener un patrón de destino por cada uno de
-los 254 países definidos en la `ISO 3166 
-<https://es.wikipedia.org/wiki/ISO_3166>`_. Por ese motivo, IvozProvider incluye
-estos países y sus prefijos de forma automática:
+Usually, it will we useful to have one target pattern for the 254 countries
+defined in the `ISO 3166
+<https://es.wikipedia.org/wiki/ISO_3166>`_. That's why IvozProvider automatically
+includes all this countries and their prefixes:
 
 .. image:: img/target_patterns_default.png
     :align: center
 
-Dentro de este listado aparece el prefijo de España, que será el grupo del
-número que probemos en este bloque:
+Within this list we can find Spain's prefix, that will be the prefix of the test
+call we are going to make in this section:
 
 .. image:: img/target_patterns_spain.png
     :align: center
 
-.. warning:: Cada operador de marca puede elegir mantener estos patrones o
-   borrarlos y crear los que le interesen. De hecho, aparte de prefijos, también
-   se pueden definir expresiones regulares. e.g. Queremos crear un único patrón
-   que englobe todas las llamadas: ^[0-9]+$.
+.. warning:: Brand operator can choose between keeping this target pattern if
+   finds them useful or deleting them an creating the ones that meet his needs. In
+   fact, apart from phone prefixes it is also possible to use regular expressions.
+   e.g. Unique target pattern that contains all possible targets: ^[0-9]+$
 
-.. danger:: Crear patrones de destino en base a expresiones regulares puede
-   provocar que un número encaje en 2 patrones. Usar con responsabilidad.
+.. danger:: Notice that using regular expressions instead of prefixes can make
+   a phone number to match more than one target pattern. Use with responsibility.
 
-******************
-Grupos de patrones
-******************
+*********************
+Target pattern groups
+*********************
 
-Como veremos en la sección de :ref:`rutas salientes <outgoing_routes>`, cada
-patrón de destino se vinculará a un Contrato de Peering concreto.
+As we will see in :ref:`rutas salientes <outgoing_routes>` section, every target
+pattern will be linked to a Peering Contract.
 
-Por este motivo, puede ser interesante agrupar los patrones en grupos y así
-poder vincular un grupo entero a un Contrato de Peering.
+That's why it can be useful to group the target patterns in **target pattern group**
+so that we can link a whole group to a Peering Contract more easily.
 
-Para ello se utiliza esta sección:
+This is the goal of this section:
 
 .. image:: img/target_patterngroups_section.png
     :align: center
 
-Por defecto aparecen los 254 países agrupados en base a su continente definidos
-en la `ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_: 
+By default we can see the 254 countries grouped in the continents defined in
+`ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_:
 
 .. image:: img/target_patterngroups_default.png
     :align: center
 
-.. important:: **En resumen**, cuando un usuario marca un número externo,
-   IvozProvider busca el patrón de destino al que pertenece para saber por dónde
-   tiene que sacar dicha llamada.
+.. important:: **To sum up**, when a user dials an external number, IvozProvider
+   looks up a matching target pattern to decide which PeeringContract must be used
+   to place this call.
 
-Para conseguir nuestro objetivo de llamar a un número español, no hemos tenido
-que modificar el contenido de partida de estas dos secciones :)
-
+To achive our goal of making an external call to a spanish number, we didn't have
+to modify the initial contents of this two sections :)

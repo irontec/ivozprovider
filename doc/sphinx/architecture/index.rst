@@ -1,8 +1,8 @@
 .. _architecture:
 
-#################################
-[P] Platform general architecture
-#################################
+#############################
+Platform general architecture
+#############################
 
 
 ***************
@@ -13,9 +13,9 @@ General diagram
 
 .. _signallingflow:
 
-******************
-SIP signaling flow
-******************
+*******************
+SIP signalling flow
+*******************
 
 .. include:: signalling_flow.rst
 
@@ -44,4 +44,3 @@ Auxiliar elements
 *****************
 
 .. include:: aux_elements.rst
-

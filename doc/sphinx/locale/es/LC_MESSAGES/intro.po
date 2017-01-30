@@ -4,12 +4,11 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-30 14:07+0100\n"
+"POT-Creation-Date: 2017-01-03 18:20+0100\n"
 "PO-Revision-Date: 2016-10-13 19:41+0200\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -584,7 +583,7 @@ msgstr "Expuesta a la red pública"
 #: ../../intro/what_is_ivozprovider.rst:153
 msgid ""
 "As showed in the installation proces, **IvozProvider is designed to serve"
-" users directly from Internet**. Althoughit can be used in local "
+" users directly from Internet**. Although it can be used in local "
 "enviroments, IvozProvider is designed to use public IP addresses for its "
 "services, removing the need of VPN or IPSec tunnels that connect the "
 "infrastructure with the final users"

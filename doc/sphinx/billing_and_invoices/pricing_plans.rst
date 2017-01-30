@@ -30,7 +30,9 @@ La :ref:`creación manual de un plan de precio <price_plan>` implicaba la
 creación previa de un :ref:`patrón de precio <price_pattern>`.
 
 En ese momento, es posible que el futuro administrador de marca se haya dado 
-cuenta de la titánica tarea que implicaría crear miles de patrones de precio (254 países por las distintas redes móviles, fijos, numeraciones especiales, etc.) para luego poder agruparlos en un plan de precios.
+cuenta de la titánica tarea que implicaría crear miles de patrones de precio 
+(254 países por las distintas redes móviles, fijos, numeraciones especiales, 
+etc.) para luego poder agruparlos en un plan de precios.
 
 Es por ello que el proceso de creación de planes y patrones de precio se 
 realiza partiendo de un `CSV <https://es.wikipedia.org/wiki/CSV>`_.

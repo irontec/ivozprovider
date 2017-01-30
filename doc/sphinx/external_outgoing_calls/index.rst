@@ -1,11 +1,11 @@
-##########################
-Realizar llamadas externas
-##########################
+#####################
+Making external calls
+#####################
 
-El objetivo de este bloque será configurar IvozProvider para realizar llamadas
-externas salientes, partiendo de la configuración realizada hasta este momento.
+The goal of this section is configuring IvozProvider to make external outgoing
+calls, taking previous section configuration as a starting point.
 
-Para ello, seguiremos los siguientes pasos:
+We will follow this steps:
 
 .. toctree::
 
@@ -13,4 +13,3 @@ Para ello, seguiremos los siguientes pasos:
    call_routing
    external_ddi
    noplan_nocall
-

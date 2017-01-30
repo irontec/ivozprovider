@@ -1,41 +1,39 @@
 .. _musiconhold:
 
-################
-Música en espera
-################
+#############
+Music on Hold
+#############
 
-La música en espera suena cuando un usuario retiene la llamada y su 
-interlocutor queda a la espera de seguir la conversación.
+The music on hold will be played when the user holds the call and the other 
+member waits until the call is resumed. 
 
-IvozProvider permite definir la música que sonará en estos momentos en 2 
-niveles distintos:
+IvozProvider can be configured at two levels what music will be played:
 
-- A nivel de operador de marca: **Configuración de Marca** > **Músicas en 
-  espera genéricas**
+- At brand level: **Brand Configuration** > **Generic Music on Hold**
 
-- A nivel de administrador de empresa: **Configuración de Empresa** > **Música 
-  en espera**
+- At company level: **Company Configuration** > **Music on Hold**
 
-Si una empresa define su música en espera, sonará. Si, por el contrario, no 
-define ninguna, sonará la que haya definido el operador de su marca.
+If a company has defined a music on hold, it will be played. Otherwise, the 
+one defined by the brand administrator. If none of this is configured, a global 
+music will be played.
 
-.. note:: Se pueden definir más de una música en espera y el sistema elegirá 
-   de forma aleatoria la música en espera para cada llamada.
+.. note:: Multiple files can be added to be played as Music on Hold. The system 
+   will choose them randomly for each call. 
 
-.. rubric:: Añadir una nueva música en espera
+.. rubric:: Add a new music on hold
 
 .. image:: img/moh_add.png
 
-Una vez *encodeada* el campo **Status** muestra que está *ready* y se utilizará 
-en las próximas llamadas:
+Once the music has been *encoded* the **Status** fill will display *ready* and 
+the music will be used for the next calls.
 
 .. image:: img/moh_add2.png
 
-.. tip:: IvozProvider reconoce archivos de audio en los formatos más comunes y 
-   los *encodea* a los formatos óptimos para la plataforma.
+.. tip:: IvozProvider supports most of the common audio formats and *encodes* 
+   them to the optimal format for the platform. 
 
-Después de *encodear*, podemos descargar el archivo original y el convertido 
-sin más que editar el ítem:
+After the *encoding*, we can download both the original and the converted 
+version in the edit screen.  
 
 .. image:: img/moh_add3.png
 
