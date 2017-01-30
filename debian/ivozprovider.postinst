@@ -30,7 +30,7 @@ function setup_mysql()
     /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
     /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
     /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
-    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'ivozprovider-standalone' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'$HOSTNAME' = PASSWORD('$RET')"
     /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
 
 }
