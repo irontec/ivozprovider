@@ -51,13 +51,15 @@ class XmlrpcdelayedproxytrunksWorker extends Iron_Gearman_Worker
 
             if ($serverName == 'proxyusers') {
                 $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyUsers();
+                $port = 8000;
             } else { // proxytrunks
                 $proxyMapper = new \IvozProvider\Mapper\Sql\ProxyTrunks();
+                $port = 8001;
             }
 
             $proxies = $proxyMapper->fetchList();
             foreach ($proxies as $proxy) {
-                $client = new \Zend_XmlRpc_Client( 'http://' . $proxy->getIp() . ':8000/RPC2' );
+                $client = new \Zend_XmlRpc_Client( 'http://' . $proxy->getIp() . ":$port/RPC2" );
                 if (!$this->_canBeSent($serverName, $jobObject)) {
                     return;
                 }
