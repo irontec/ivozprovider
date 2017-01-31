@@ -462,7 +462,7 @@ CREATE TABLE `Companies` (
 
 LOCK TABLES `Companies` WRITE;
 /*!40000 ALTER TABLE `Companies` DISABLE KEYS */;
-INSERT INTO `Companies` VALUES (1,1,'DemoCompany','A.B.C.D','12345678A',145,NULL,0,'Company Address','54321','Company Town','Company Province','Company Country','',70,1,0,0,0,'');
+INSERT INTO `Companies` VALUES (1,1,'DemoCompany','127.0.0.1','12345678A',145,NULL,0,'Company Address','54321','Company Town','Company Province','Company Country','',70,1,0,0,0,'');
 /*!40000 ALTER TABLE `Companies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -686,7 +686,7 @@ CREATE TABLE `Domains` (
 
 LOCK TABLES `Domains` WRITE;
 /*!40000 ALTER TABLE `Domains` DISABLE KEYS */;
-INSERT INTO `Domains` VALUES (1,'users.ivozprovider.local','global','proxyusers',NULL,NULL,'Minimal proxyusers global domain'),(2,'trunks.ivozprovider.local','global','proxytrunks',NULL,NULL,'Minimal proxytrunks global domain'),(3,'A.B.C.D','company','proxyusers',NULL,1,'DemoCompany proxyusers domain');
+INSERT INTO `Domains` VALUES (1,'users.ivozprovider.local','global','proxyusers',NULL,NULL,'Minimal proxyusers global domain'),(2,'trunks.ivozprovider.local','global','proxytrunks',NULL,NULL,'Minimal proxytrunks global domain'),(3,'127.0.0.1','company','proxyusers',NULL,1,'DemoCompany proxyusers domain');
 /*!40000 ALTER TABLE `Domains` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2346,7 +2346,7 @@ CREATE TABLE `Terminals` (
 
 LOCK TABLES `Terminals` WRITE;
 /*!40000 ALTER TABLE `Terminals` DISABLE KEYS */;
-INSERT INTO `Terminals` VALUES (1,1,'alice','A.B.C.D','all','alaw','invite','alice',1,'',NULL),(2,1,'bob','A.B.C.D','all','alaw','invite','bob',1,'',NULL);
+INSERT INTO `Terminals` VALUES (1,1,'alice','127.0.0.1','all','alaw','invite','alice',1,'',NULL),(2,1,'bob','127.0.0.1','all','alaw','invite','bob',1,'',NULL);
 /*!40000 ALTER TABLE `Terminals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2592,7 +2592,7 @@ CREATE TABLE `ast_ps_aors` (
 
 LOCK TABLES `ast_ps_aors` WRITE;
 /*!40000 ALTER TABLE `ast_ps_aors` DISABLE KEYS */;
-INSERT INTO `ast_ps_aors` VALUES (1,'b1c1t1_alice',NULL,1,NULL,'yes',NULL,NULL,NULL,'sip:alice@A.B.C.D',0),(2,'b1c1t2_bob',NULL,1,NULL,'yes',NULL,NULL,NULL,'sip:bob@A.B.C.D',0);
+INSERT INTO `ast_ps_aors` VALUES (1,'b1c1t1_alice',NULL,1,NULL,'yes',NULL,NULL,NULL,'sip:alice@127.0.0.1',0),(2,'b1c1t2_bob',NULL,1,NULL,'yes',NULL,NULL,NULL,'sip:bob@127.0.0.1',0);
 /*!40000 ALTER TABLE `ast_ps_aors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3224,7 +3224,7 @@ CREATE TABLE `kam_users_domain_attrs` (
 
 LOCK TABLES `kam_users_domain_attrs` WRITE;
 /*!40000 ALTER TABLE `kam_users_domain_attrs` DISABLE KEYS */;
-INSERT INTO `kam_users_domain_attrs` VALUES (1,'A.B.C.D','brandId',0,'1','1900-01-01 00:00:01');
+INSERT INTO `kam_users_domain_attrs` VALUES (1,'127.0.0.1','brandId',0,'1','1900-01-01 00:00:01');
 /*!40000 ALTER TABLE `kam_users_domain_attrs` ENABLE KEYS */;
 UNLOCK TABLES;
 
