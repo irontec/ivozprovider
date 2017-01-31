@@ -1,155 +1,141 @@
 .. _call_recordings:
 
-#####################
-Grabación de llamadas
-#####################
+##############
+Call recording
+##############
 
-IvozProvider permite grabar las llamadas que se cursan en 2 modalidades 
-distintas:
+IvozProvider supports two different ways of recording calls:
 
-- **Grabación automática** para llamadas desde/hacia cierto :ref:`DDI externo 
-  <external_ddis>`.
+- **Automatic recordings** for the incoming/outgoing calls that use a 
+  :ref:`External DDI <external_ddis>`.
+  
+- **On demand recordings** requested by a user during a call.
 
-- **Grabación bajo demanda** solicitada por un usuario en medio de una 
-  conversación.
+************************
+Automatic DDI recordings
+************************
 
-****************************
-Grabación automática por DDI
-****************************
+In this type of recording, **the whole conversation will be recorded**: from 
+the start until it finishes. 
 
-En el caso de grabaciones automáticas por DDI, **se graba toda la 
-conversación**: desde el principio hasta el final.
+Two different scenarios:
 
-Se distinguen 2 casos:
+- **Incoming calls to a DDI**: The call will continue until the external 
+  dialer hangups (no matter whom is talking to).
 
-- **Llamadas entrantes a un DDI**: la grabación seguirá mientras la parte 
-  externa de la llamada permanezca en la conversación.
+- **Outgoing calls using a DDI** as :ref:`Outgoing DDI <external_ddis>`: the 
+  recording will continue as long as the external destination keeps in the
+  conversation.
 
-- **Llamadas salientes utilizando un DDI** como :ref:`DDI saliente 
-  <external_ddis>`: mientras el interlocutor externo permanezca en la 
-  conversación, la grabación sigue.
+.. attention:: Take into account that the call will be recorded while the 
+   external entity is present, even it the call is being transfered between
+   multiple users of the platform. 
 
-.. attention:: El hecho de que **mientras el interlocutor permanezca en la 
-   llamada la grabación continúe**, hace que no importe cuántes veces se 
-   transfiera la llamada de un usuario a otro, la grabación contendrá toda la 
-   conversación (desde el punto de vista del participante externo).
+.. rubric:: Record all the calls of a DDI
 
-.. rubric:: Grabar todas las llamadas de un DDI
-
-Basta con editar el DDI en cuestión y habilitar las grabaciones:
+To enable this feature, edit the DDI and configure the field under the section
+recording data: 
 
 .. image:: img/recordings_ddi.png
 
-Existen 4 opciones:
+There are 4 available options:
 
-- Desactivar la grabación
-- Activarla para llamadas entrantes a dicho DDI
-- Activarla para llamadas salientes que presente dicho DDI
-- Activarla para ambas
+- Disable recordings
+- Enable incoming recordings
+- Enable outgoing recordings
+- Enable all call recordings 
 
-**********************
-Grabación bajo demanda
-**********************
+********************
+On demand recordings
+********************
 
-La grabación bajo demanda u *on-demand* la tiene que activar el *operador de 
-marca* para las empresas que la necesiten, sin más que editar su empresa y 
-configurar el código deseado:
+The *on-demand* recordings must be enabled by the *brand administator* for the
+companies that request it. This can be done in the companey edit screen:
 
 .. image:: img/recordings_ondemand.png
 
-.. warning:: A diferencia de los :ref:`Servicios <services>` comentado en la 
-   sección anterior, la funcionalidad de grabación bajo demanda se activa en 
-   mitad de una conversación.
+.. warning:: Contrary to the :ref:`Services <services>` mentioned in the
+   previous section, the on demand record are actived within a conversation.
 
-Activación por medio de tecla *Record*
-======================================
+Contrary to automatic ones, on demand recording can be stoped using the same 
+process that started them.
 
-Los terminales *Yealink* soportan el envío de mensajes `SIP INFO 
-<https://tools.ietf.org/html/rfc6086>`_ con una cabecera *Record* (ver 
-`referencia <http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_). 
-No es un estándar, pero al ser *Yealink* uno de los modelos soportados, 
-IvozProvider incluye soporte para la activación de grabación bajo demanda de 
-esta forma.
+Activated using the *Record* key
+================================
 
-.. important:: El código seleccionado no influye en este caso, pero **la 
-   empresa sí que tiene que tener las grabaciones bajo demanda activadas**.
+Some terminals (for example, *Yealink*) support sending a `SIP INFO 
+<https://tools.ietf.org/html/rfc6086>`_ message during the conversation with a
+special *Record* header (see `reference <http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_). 
+This is not a standard for the protocol, but being Yealink one of the supported
+manufacturers of the solution, we include this kind of on-demand recording.
 
-La activación de las grabaciones es muy simple en este caso, basta con pulsar 
-la tecla y el sistema inicia la grabación.
+.. important:: For this recording requests, the configured code doesn't matter
+   but the company still must have on demand records enabled. 
 
-Activación por medio de transferencia ciega frustrada
-=====================================================
+To start or stop this kind of recordings, just press the Record key in the 
+terminal and the system will handle the sent message.
 
-Existe otra forma de acceder a esta funcionalidad para los terminales que no 
-tengan soporte para el método anterior.
+Activated using *DTMF* codes
+============================
 
-.. danger:: Este método de acceder a la funcionalidad es una forma imaginativa 
-   de hacerla accesible para terminales sin soporte nativo de tecla *Record* 
-   (que es el método recomendado). En función del terminal en cuestión y de la 
-   configuración del mismo, resultará más o menos cómodo utilizar la 
-   funcionalidad (tecla rápida de transferencia ciega, no retener al
-   interlocutor, etc.).
+The more traditional approach for this feature is to press a combination of 
+keys during the call. Some notification will be played and the recording will 
+start or stop. This combination is sent to the system using `DTMF tones
+<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ using the same audio
+stream that the conversation (as mentioned in `RFC 4733 
+<https://tools.ietf.org/html/rfc4733>`_).
 
-Los pasos a seguir en este método alternativo e imaginativo son los siguientes:
+IvozProvider supports this kind of on demand record activation but with an 
+important downside. In order to capture this codes, the pbx must process each
+audio packet to detect the code, avoiding the direct flow of media between the
+final endpoints.
 
-- No se activa marcando el código en medio de la conversación.
+.. important:: Enabling this record mode highly affects the performance of the
+   platform. Use at your own risk.
 
-- Se activa iniciando una transferencia ciega al código configurado.
 
-- El sistema rechazará la transferencia e iniciará la grabación.
+Activated using a frustated blind transfer
+==========================================
 
-- El usuario podrá volver a la conversación que tenía (si es que su terminal no 
-  ha vuelto solo) y seguir hablando.
+There is a tricky way to access this feature for terminals that does not support 
+the INFO message and don't want its audio to be parsed:
 
-.. rubric:: ¿Por qué esta forma tan *peculiar* de activar la grabación y no por 
-   medio de tonos normales?
+.. danger:: This method is a workaround for those terminals that does not support
+   the native *Record* key activation (recommended). Take into account that not 
+   all terminals will behave the same way while performing the transfer described 
+   in this section.
 
-El motivo de activar la grabación por medio de una transferencia ciega 
-frustrada se debe a la :ref:`architecture` y, más concretamente, al 
-:ref:`flujo de audio RTP <audioflow>`.
+The keys for this methods are:
 
-Lo habitual suele ser activar servicios por medio de pulsaciones en medio de 
-la llamada (lo que se conoce por `tonos DTMF 
-<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_). Estos tonos suelen 
-viajar por el mismo camino del audio (siguiendo el `RFC 4733 
-<https://tools.ietf.org/html/rfc4733>`_ o como sonido audible).
+- It's not activated using a code during the conversation.
 
-IvozProvider utiliza la transmisión de estos tonos siguiendo el `RFC 4733 
-<https://tools.ietf.org/html/rfc4733>`_ y, por tanto, dichos paquetes de audio 
-pasan por los *media-relays*, que se limitan a reenviar el audio sin analizar 
-su contenido. Al no analizar su contenido, no pueden detectar las pulsaciones y 
-activar lógicas.
+- It's activated making a **blind transfer** to the on demand record code.
 
-.. note:: Esta decisión de diseño es la que permite escalar la solución y ser 
-   capaz de gestionar cientos de miles de llamadas concurrentes.
+- The system will understand this as a request to record and will reject the transfer.
 
-Al realizar una transferencia ciega, en cambio, se produce señalización SIP 
-dentro de un diálogo (en concreto, un `REFER 
-<https://tools.ietf.org/html/rfc3515>`_) y sí que es posible activar lógicas de 
-este estilo, ya que la señalización sigue `otro camino <signallingflow>` que 
-incluye a los elementos con lógica (servidores de aplicación y *proxies*).
+- The user will continue with the existing call and keep talking.
 
-.. warning:: La grabación bajo demanda graba la llamada desde que se activa 
-   hasta que el usuario que la activó desaparece de la misma.
+.. rubric:: Why this method does even exist?
 
-.. important:: No existe la funcionalidad de parar la grabación, 
-   independientemente del método elegido para activarla.
+The reason behind this tricky method is based, as explained in the previous 
+block, on the design of the :ref:`architecture` and the :ref:`RTP audio 
+flow <audioflow>`.
 
-**********************
-Listado de grabaciones
-**********************
+***************
+Recordings list
+***************
 
-El *administrador de empresa* puede acceder a las grabaciones realizadas por 
-medio de la sección **Configuración de Empresa** > **Grabaciones**:
+The *company administrator* can access to all the recordings in the section 
+**Company configuration** > **Recordings**:
 
 .. image:: img/recordings_list.png
 
-Haciendo clic en una de ellas, podría escucharla desde la *web* o descargársela 
-en formato MP3:
+Recordings can be heard from the *web* or downloaded in MP3 format:
 
 .. image:: img/recordings_list2.png
 
-En el caso de una grabación bajo demanda, se indica qué usuario la inició:
+If the recording has been started on demand, it will also include the user 
+that requested it:
 
 .. image:: img/recordings_list3.png
 

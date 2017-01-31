@@ -1,63 +1,65 @@
 .. _huntgroups:
 
-###############
-Grupos de salto
-###############
+###########
+Hunt gorups
+###########
 
-Los grupos de salto nos permiten definir lógicas de *ringado* más allá de la 
-básica **llamada a usuario**.
+The hungroups allows configuring more complex *ringing* process that the 
+traditional **call to a user**.
 
-Existen de varios tipos:
+There are multiple types:
 
 .. glossary::
 
-    A todos
-        La llamada suena en varios terminales a la vez durante el tiempo 
-        definido.
+    Ring all
+        The call will make all the terminals of the group during a predefined 
+        time.
 
-    Secuencialmente (una vez)
-        Suenan los usuarios definidos, en el orden definido y durante el tiempo 
-        definido a cada uno de ellos. Al acabar la secuencia, la llamada se 
-        cuelga.
+    Secuential (once)
+        The call will *jump* from one user to another in a predefined order
+        ringing during the configured time. If the call is not answered by any 
+        user of the group, it will be hanguped (or trigger the no answer logic).
 
-    Secuencialmente (infito)
-        Suenan los usuarios definidos, en el orden definido y durante el tiempo 
-        definido. Al acabar la secuencia, se vuelve a iniciar la secuencia.
+    Secuential (infinite)
+        The call will *jump* from one user to another in a predefined order 
+        ringing during the configured time. If the call is not answered by any
+        user of the group, the call will *jump* again to the first member of the 
+        group and keep looping.  
 
-    Aleatoriamente
-        Reparte las llamadas entre los usuarios elegidos de forma aleatoria, 
-        sonando cada uno de ellos el tiempo acordado. Una vez que suenan todos, 
-        la llamada se cuelga.
+    Random
+        The call will *jump* from one user to another in a random order, 
+        ringing during the configured time.  If the call is not answered by any 
+        user of the group, it will be hanguped (or trigger the no answer logic).
 
-.. rubric:: Ejemplo 1: Grupo de salto *ringall*
+.. rubric:: Example 1: *Ringall* hunt group
 
-Creemos por ejemplo un grupo de salto que llame a la par a nuestros 2 usuarios 
-durante 30 segundos:
+The following example will show how to create a hunt group that will call our 2 
+users at the same time during 30 seconds: 
 
 .. image:: img/huntgroup_add.png
 
-Pulsando el icono de las personas podemos añadir a Alice y Bob a nuestro grupo 
-de salto:
+Pressing the proper icon, we can add Alice and Bob to the hunt group: 
 
 .. image:: img/huntgroup_add2.png
 
-.. rubric:: Ejemplo 2: Grupo de salto secuencial
+.. rubric:: Example 2: *Secuential* hunt group 
 
-Editemos ahora este grupo de salto para que llame 10 segundos a Alice y después 
-15 segundos a Bob, reiniciando la secuencia si ninguno de los 2 contesta:
+We will edit the hunt group to convert it into secuential: the call will ring 
+Alice during 10 seconds, then it will ring Bob 15 seconds, repeting this process
+until one of them answers.
 
 .. image:: img/huntgroup_add3.png
 
-En este caso tenemos que indicar una **prioridad** (los usuarios suenan de 
-menos a mayor prioridad) y un tiempo de *ringing*:
+For this type of groups we have to configure priority (the call will *jump* 
+from the users with lower number priority to the ones with higher number 
+priority) and a *ringing* time for each user. 
 
 .. image:: img/huntgroup_add4.png
 
-.. hint:: Para que ciertas lógicas (desvíos, etc.) alcancen un **Grupo de 
-   salto**, basta con crear una extensión apuntando a dicho grupo de salto y 
-   utilizar esta extensión como destino de la lógica.
+.. hint:: Hunt groups can be routed from any process of IvozProvider by simply
+   adding an extension that route to them.
 
-Creemos la extensión 200 que apunte a este grupo de salto:
+Let's create a new extension that routes to this hunt group:
 
 .. image:: img/huntgroup_extension.png
 

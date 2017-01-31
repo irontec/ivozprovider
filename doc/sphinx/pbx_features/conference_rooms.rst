@@ -1,49 +1,43 @@
 .. _conference_rooms:
 
-##########################
-Salas de audioconferencias
-##########################
+################
+Conference rooms
+################
 
-IvozProvider provee la funcionalidad de salas de audiconferencias que se pueden 
-configurar en la sección **Configuración de empresa** > **Salas de conferencias**.
+IvozProvider supports Conference rooms that can be configured in the section
+**Company configuration** > **Conference rooms**. 
 
-.. rubric:: Crear una sala de audioconferencias
+.. rubric:: Create a new audio conference
 
-La siguiente imagen ilustra el proceso de creación de una sala de 
-audioconferencias:
+The following image shows the process of creating a new confrence room:
 
 .. image:: img/conference_room.png
 
 .. glossary::
 
-    Nombre
-        Nombre por el que se referenciará la sala en otras secciones
+    Name
+        Name that will used to identify this conference room in other sections
+        
+    Max members
+        Maximum number of participants in the conference. When this limit is 
+        reached, join requests will be rejected.
 
-    Límite de participantes
-        Apartir del número especificado, no se admitirán más miembros.
+    Pin protected
+        Conference rooms can be pin protected. The pin will be requested before
+        entering and must be numeric. 
 
-    Protegido con contraseña / Código PIN
-        Se puede forzar al sistema a pedir un PIN para poder entrar. En caso de 
-        activar, se puede introducir un PIN numérico.
+.. note:: Member limit can be disabled by setting it to 0. 
 
-.. note:: Para desactivar el límite de participantes, configurar su valor a 0.
+.. rubric:: Route an extension or DDI to the conference
 
-.. rubric:: Asociar una extensión o un DDI externo
-
-De poco sirve una sala de conferencias si no podemos meter a los participantes 
-a la misma.
-
-Para poder meter participantes, el primer paso sería asociar una extensión 
-interna a la sala, para poder desvíar a la misma, transferir, etc.:
+In order to enter a conference there must be a number that is route to them:
 
 .. image:: img/conference_room_ext.png
 
-En la siguiente sección veremos como también se puede apuntar un :ref:`DDI 
-externo <external_ddis>` a una sala de conferencias, para meter en la sala a 
-gente externa a la empresa.
+In the following section we will see how to configure a :ref:`external DDI 
+<external_ddis>` to a conference room so it can be used by external callers.
 
-.. hint:: Existen otras formas de meter un participante externo a una sala de 
-   audioconferencias sin dedicar un DDI externo: que alguien de dentro 
-   transfiera la llamada a la extensión de la sala, acceder por medio de un 
-   IVR, etc.
-
+.. hint:: There are other ways to make external callers join a conference room
+   without using a DDI: it can be assigned to an Extension. This way, any user
+   can transfer the call to the conference extension, or can be routed, for 
+   exmaple using an IVR entry.

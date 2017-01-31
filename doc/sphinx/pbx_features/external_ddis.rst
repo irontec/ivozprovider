@@ -1,43 +1,41 @@
 .. _external_ddis:
 
 #############
-DDIs externos
+External DDIs
 #############
 
-En la sección preliminar :ref:`settingup_ddi` se describió con todo detalle la 
-configuración necesaria para configurar un DDI externo directo a un usuario.
+In the previous section :ref:`settingup_ddi` we described in detail the required
+configuration for an external DDI routed to user. This section will go a bit
+further and explain the rest of configurable options of DDIs.
 
-Después de explicar las secciones anteriores, podemos llevar esta configuración 
-un poco más allá:
+********************
+DDI external filters
+********************
 
-*****************
-Filtro de entrada
-*****************
-
-Podemos seleccionar el **Filtro de entrada externo** configurado en :ref:`la 
-sección anterior <external_filters>`.
+We can assign a **external call filter** configured in :ref:`previous section 
+<external_filters>`.
 
 .. image:: img/ddi_edit.png
 
 .. _routing_logics:
 
-************
-Tratamientos
-************
+**********
+DDI routes
+**********
 
-Vemos que tenemos más opciones aparte de enviar la llamada, una vez superado 
-los filtros de horario y calendario (y previa locución de bienvenida), 
-directamente a un usuario:
+Once the call has passed all the checks in the filter (schedules and calendars)
+and after the welcome locution has been played (if there is any configured),
+we can route the call to the following processes:
 
 - :ref:`huntgroups`
 
 .. image:: img/ddi_edit2.png
 
-- :ref:`IVR Genérico <generic_ivrs>`
+- :ref:`Generic IVR <generic_ivrs>`
 
 .. image:: img/ddi_edit3.png
 
-- :ref:`IVR a medida <custom_ivrs>`
+- :ref:`Custom IVR <custom_ivrs>`
 
 .. image:: img/ddi_edit4.png
 
@@ -45,6 +43,5 @@ directamente a un usuario:
 
 .. image:: img/ddi_edit5.png
 
-.. hint:: También podemos apuntar el DDI a un :ref:`fax virtual 
-   <faxing_system>`, pero esto se verá en el siguiente bloque.
-
+.. hint:: We can also route the DDI to a :ref:`Virtual Fax <faxing_system>`, but
+   this is something we will explain in the following block.

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 19:50+0100\n"
+"POT-Creation-Date: 2017-01-31 17:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,1900 +19,2071 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: ../../pbx_features/call_captures.rst:5
-msgid "Capturas de llamada"
-msgstr ""
+msgid "Call pickup"
+msgstr "Capturas de llamada"
 
 #: ../../pbx_features/call_captures.rst:7
 msgid ""
-"Se entiende por captura de llamada **la acción de un usuario que "
+"Call pickup is the process where a user can answer a call that is being "
+"ringing in another terminal. No need to say that, somehow (sound, "
+"flashing lights, notification, etc) the users must know that the call is "
+"ringing elsewhere."
+msgstr "Se entiende por captura de llamada **la acción de un usuario que "
 "escucha** (o se entera de otro modo, vía panel de supervisión, etc.) "
 "**que una extensión está sonando y, desde su terminal, roba dicha "
 "llamada**."
-msgstr ""
 
-#: ../../pbx_features/call_captures.rst:9
-msgid "IvozProvider soporta dos tipos de captura de llamadas:"
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:12
-msgid "Captura de llamadas directa"
-msgstr ""
+#: ../../pbx_features/call_captures.rst:11
+msgid "IvozProvider supports two kind of call pickups:"
+msgstr "IvozProvider soporta dos tipos de captura de llamadas:"
 
 #: ../../pbx_features/call_captures.rst:14
+#: ../../pbx_features/services.rst:25
+msgid "Direct pickup"
+msgstr "Captura de llamadas directa"
+
+#: ../../pbx_features/call_captures.rst:16
 msgid ""
-"En las capturas de llamadas directas el usuario indica un código que "
+"In this type of pickup, the user that is trying to capture the ringing "
+"call must include the extension of the target phone after the service "
+"code. For example, if the direct pickup code is \\*95, the user must dial"
+" \\*95101 to capture a call that is ringing in the extension 101."
+msgstr "En las capturas de llamadas directas el usuario indica un código que "
 "incluye la extensión del teléfono cuya llamada quiere *robar*. Si el "
 "código fuera \\*95, por ejemplo, marcaría \\*95101 para capturar una "
 "llamada que esté sonando en la extensión 101."
-msgstr ""
 
-#: ../../pbx_features/call_captures.rst:15
-msgid "Captura de llamadas indirecta"
-msgstr ""
+#: ../../pbx_features/call_captures.rst:20
+#: ../../pbx_features/services.rst:29
+msgid "Group pickup"
+msgstr "Captura de grupo"
 
-#: ../../pbx_features/call_captures.rst:17
+#: ../../pbx_features/call_captures.rst:22
 msgid ""
-"En las capturas de llamadas indirectas, en cambio, el usuario indica un "
+"In this type of pickup, the user that is trying to capture the ringing "
+"call will just dial the service code. If anyone in any of the pickup "
+"groups of the user has a ringing call, it will be answered by the "
+"capturer."
+msgstr "En las capturas de llamadas indirectas, en cambio, el usuario indica un "
 "código y el sistema busca qué teléfono está sonando dentro de sus grupos "
 "de captura."
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:21
-msgid "Grupos de captura de llamada"
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:23
-msgid ""
-"Para poder realizar **capturas de llamada indirectas**, el usuario que "
-"captura tiene que pertener al mismo grupo de captura que el usuario al "
-"que pretende capturar."
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:25
-msgid ""
-"La sección **Grupos de captura de llamada** nos permite crear estos "
-"grupos y decir qué usuarios pertenecen a ellos:"
-msgstr ""
 
 #: ../../pbx_features/call_captures.rst:29
-msgid ""
-"Como vimos en la sección de :ref:`users`, también se puede editar un "
-"usuario para editar los grupos de captura a los que pertenece."
-msgstr ""
+msgid "Call pickup groups"
+msgstr "Captura de llamadas indirecta"
 
 #: ../../pbx_features/call_captures.rst:31
 msgid ""
-"Un usuario puede pertenecer a más de un grupo de captura, el sistema "
-"tendrá en cuenta todos sus grupos."
-msgstr ""
+"In order to make **call group pickups**, the capturer user must be part "
+"of the same group that the target user that wants to capture."
+msgstr "Para poder realizar **capturas de llamada indirectas**, el usuario que "
+"captura tiene que pertener al mismo grupo de captura que el usuario al "
+"que pretende capturar."
 
 #: ../../pbx_features/call_captures.rst:34
 msgid ""
-"Desde el momento en el que un usuario está en un grupo de captura, puede "
-"empezar a intentar capturar de forma indirecta pero para ello necesita "
-"saber el código de captura."
-msgstr ""
+"The section **Pickup groups** allows the company administrator to "
+"configure what users will be in each group:"
+msgstr "La sección **Grupos de captura de llamada** nos permite crear estos "
+"grupos y decir qué usuarios pertenecen a ellos:"
 
-#: ../../pbx_features/call_captures.rst:38
-msgid "Código de captura de llamada"
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:40
-msgid "IvozProvider permite definir los códigos de captura a 2 niveles:"
-msgstr ""
+#: ../../pbx_features/call_captures.rst:39
+msgid ""
+"As shown in the section :ref:`users`, we can add or edit the groups of a "
+"user in the user's edit screen."
+msgstr "Como vimos en la sección de :ref:`users`, también se puede editar un "
+"usuario para editar los grupos de captura a los que pertenece."
 
 #: ../../pbx_features/call_captures.rst:42
-msgid "A nivel de marca en **Configuración de Marca** > **Servicios**."
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:44
-msgid "A nivel de empresa en **Configuración de Empresa** > **Servicios**."
-msgstr ""
-
-#: ../../pbx_features/call_captures.rst:46
 msgid ""
-"Esto permite que el administrador de marca pueda definir unos códigos "
-"genéricos para todas sus empresas y que, las empresas que deseen utilizar"
-" otros códigos, puedan redefinirlos."
-msgstr ""
+"A user can be part of multiple pickup groups. The system will take all of"
+" them into account when using the group pickup service."
+msgstr "Un usuario puede pertenecer a más de un grupo de captura, el sistema "
+"tendrá en cuenta todos sus grupos."
 
 #: ../../pbx_features/call_captures.rst:48
+msgid "Group pickup service code"
+msgstr "Código de captura de llamada"
+
+#: ../../pbx_features/call_captures.rst:50
 msgid ""
-":ref:`La siguiente sección <services>` explica todo lo relativo a "
+"IvozProvider supports 2 different configuration levels for defining the "
+"service codes for pickup:"
+msgstr "IvozProvider permite definir los códigos de captura a 2 niveles:"
+
+#: ../../pbx_features/call_captures.rst:53
+msgid "At brand level: **Brand configuration** > **Services**."
+msgstr "A nivel de marca en **Configuración de Marca** > **Servicios**."
+
+#: ../../pbx_features/call_captures.rst:55
+msgid "At company level: **Company configuration** > **Services**."
+msgstr "A nivel de empresa en **Configuración de Empresa** > **Servicios**."
+
+#: ../../pbx_features/call_captures.rst:57
+msgid ""
+"The brand administrator can configure generic codes that all the "
+"companies will use. Companies can customize this codes if they are used "
+"to another ones."
+msgstr "Esto permite que el administrador de marca pueda definir unos códigos "
+"genéricos para todas sus empresas y que, las empresas que deseen utilizar"
+" otros códigos, puedan redefinirlos."
+
+#: ../../pbx_features/call_captures.rst:60
+msgid ""
+"The :ref:`following section <services>` explains the services in depth, "
+"with all the additional services that can be accessed by dialing codes "
+"starting with \\*."
+msgstr ":ref:`La siguiente sección <services>` explica todo lo relativo a "
 "servicios, que engloba los códigos de captura y otros servicios "
 "adicionales a los que se accede marcando códigos que comienzan por \\*."
-msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:5
-msgid "Control ACL para llamadas"
-msgstr ""
+msgid "Call ACL Control"
+msgstr "Control ACL para llamadas"
 
 #: ../../pbx_features/call_permissions.rst:7
-msgid ""
-"Los **Permisos de llamada** determinan qué usuarios pueden llamar a qué "
+msgid "The **Call ACLs** determines what users can call to external numbers."
+msgstr "Los **Permisos de llamada** determinan qué usuarios pueden llamar a qué "
 "destinos internos."
-msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:9
 msgid ""
-"Las extensiones internas son accesibles por todos los usuarios, **los "
+"The internal extensions are allowed to all users, the **Call ACLs only "
+"apply to external numbers**"
+msgstr "Las extensiones internas son accesibles por todos los usuarios, **los "
 "permisos de llamada solo aplican a llamadas externas**."
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:11
-msgid "La configuración de **permisos de llamada** tiene 2 partes:"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:12
+msgid "The **Call ACL** setup has two different parts:"
+msgstr "La configuración de **permisos de llamada** tiene 2 partes:"
 
-#: ../../pbx_features/call_permissions.rst:13
-msgid ""
-"Clasificar las llamadas en determinados tipos utilizando **expresiones "
-"regulares** [*]_:"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:14
+msgid "Classify the call in different types based on **regular expressions**:"
+msgstr "Clasificar las llamadas en determinados tipos utilizando **expresiones "
+"regulares**:"
 
-#: ../../pbx_features/call_permissions.rst:15
-msgid ""
-"A nivel de marca: **Configuración de Marca** > **Patrones de permiso "
+#: ../../pbx_features/call_permissions.rst:16
+msgid "Brand level: **Brand Configuration** > **Generic call ACL patterns**"
+msgstr "A nivel de marca: **Configuración de Marca** > **Patrones de permiso "
 "genéricos**."
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:17
-msgid ""
-"A nivel de empresa: **Configuración de Empresa** > **Patrones de permisos"
+#: ../../pbx_features/call_permissions.rst:18
+msgid "Company level: **Company Configuration** > **Call ACL patterns**"
+msgstr "A nivel de empresa: **Configuración de Empresa** > **Patrones de permisos"
 " de llamada**."
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:19
+#: ../../pbx_features/call_permissions.rst:20
 msgid ""
-"Definir políticas para los patrones deseados: **Configuración de "
+"Choose policies for groups of patterns: **Company Configuration** > "
+"**Call ACLs**"
+msgstr "Definir políticas para los patrones deseados: **Configuración de "
 "Empresa** > **Permisos llamada**"
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:23
-msgid "Patrones de permiso"
-msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:25
-msgid ""
-"La clasificación de llamadas se realiza en las secciones indicadas a "
-"nivel de marca o a nivel de empresa."
-msgstr ""
+msgid "Call ACL patterns"
+msgstr "Patrones de permiso"
 
 #: ../../pbx_features/call_permissions.rst:27
 msgid ""
-"Cuando un operador de marca crea una empresa, todos los **Patrones de "
+"The destination number is matched against the **Company ACL patterns** to"
+" determine the destination type."
+msgstr "La clasificación de llamadas se realiza en las secciones indicadas a "
+"nivel de marca o a nivel de empresa."
+
+#: ../../pbx_features/call_permissions.rst:30
+msgid ""
+"When a Brand operator creates a new company, all of the **Generic ACL "
+"patterns** defined in the **Brand configuration** are copied to the "
+"**Company configuration** > **Call ACLs**. This way, the brand operator "
+"can define the most common patterns to speed up the company "
+"configuration."
+msgstr "Cuando un operador de marca crea una empresa, todos los **Patrones "
 "permiso genéricos** definidos en ese momento a nivel de **Configuración "
 "de Marca** se copian a **Configuración de Empresa** > **Patrones de "
 "permisos de llamada**. De esta forma, el operador de marca puede definir "
 "los más habituales y evitar este trabajo a los administradores de "
 "empresa."
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:29
-msgid "La creación de nuevos patrones es muy simple:"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:35
+msgid "The patterns creation process is quite simple:"
+msgstr "La creación de nuevos patrones es muy simple:"
 
-#: ../../pbx_features/call_permissions.rst:34
+#: ../../pbx_features/call_permissions.rst:39
 msgid ""
-"Este nuevo patrón de permisos engloba las llamadas que comiencen por 6 o "
+"This new ACL pattern are grouped the calls starting with the spanish "
+"E.164 prefix followed by 6 or 7 and 8 more digits between 0 and 9. These "
+"is the E.164 format for the spanish mobile numbers."
+msgstr "Este nuevo patrón de permisos engloba las llamadas que comiencen por 6 o "
 "7 y sigan con 8 dígitos del 0 al 9. Es decir, engloba todas las "
 "numeraciones móviles nacionales."
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:36
-msgid "Otros patrones de permisos que pueden resultar interesantes son:"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:43
+msgid "Following this spanish example, other formats will be:"
+msgstr "Otros patrones de permisos que pueden resultar interesantes son:"
 
-#: ../../pbx_features/call_permissions.rst:39
+#: ../../pbx_features/call_permissions.rst:46
 msgid ""
-"Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): "
+"Spanish Landline (including special numbers prefix: 902, etc.): "
+"^34[89][0-9]{8}$"
+msgstr "Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): "
 "^[89][0-9]{8}$"
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:39
-msgid "Un 8 o un 9 seguido de 8 dígitos."
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:46
+msgid "8 or 9 followed by 8 digits"
+msgstr "Un 8 o un 9 seguido de 8 dígitos."
 
-#: ../../pbx_features/call_permissions.rst:42
+#: ../../pbx_features/call_permissions.rst:49
 msgid ""
-"Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): "
+"Spanish Landline (excluding special number prefix: 902, etc.): "
+"^34[89][1-9][0-9]{7}$"
+msgstr "Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): "
 "^[89][1-9][0-9]{7}$"
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:42
-msgid "Un 8 o un 9, seguido de 1 dígito del 1 al 9, seguido de 7 dígitos."
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:45
-msgid "Llamadas internacionales: ^00[0-9]+$"
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:45
-msgid "00 (código internacional) seguido de 1 o más dígitos."
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:48
-msgid "Llamadas a Reino Unido: ^0044[0-9]+$"
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:48
-msgid "00 (código internacional), 44 (código de UK), seguido de 1 o más dígitos."
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:51
-msgid "Formato de los números externos"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:49
+msgid "8 or 9, followed by one dígito between 1 and 9, followed by 7 digits."
+msgstr "Un 8 o un 9, seguido de 1 dígito del 1 al 9, seguido de 7 dígitos."
 
 #: ../../pbx_features/call_permissions.rst:52
-msgid ""
-"Las expresiones regulares de los patrones de permiso tienen que utilizar "
-"el formato que utilice un usuario del mismo país que la compañía a la "
-"hora de llamar."
-msgstr ""
+msgid "United Kingdom Landline: ^44[0-9]+$"
+msgstr "Fijo Reino Unido: ^44[0-9]+$"
 
-#: ../../pbx_features/call_permissions.rst:54
-msgid ""
-"Es decir, un usuario (español, porque tal y como veremos los usuarios "
-"tienen también un código de país) de una empresa de española llamará a "
-"números móviles, por ejemplo, así: 676 676 676."
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:52
+msgid "44 (UK E.164 prefix), followed by more digits"
+msgstr "44 (Prefijo E.164 para Reino Unido), seguido de más dígitos."
+
+#: ../../pbx_features/call_permissions.rst:55
+msgid "External numbers format"
+msgstr "Formato de los números externos"
 
 #: ../../pbx_features/call_permissions.rst:56
 msgid ""
-"No se utiliza código de país ni formato E.164, **se escriben las "
-"expresiones regulares tal y como llamaría un usuario con el mismo código "
-"de país que la empresa en cuestión**."
-msgstr ""
+"The regular expresions of the Call ACL patterns must be in E.164 format. "
+"The main reason for this is that the same pattern will be applied to all "
+"the users of the company no matter what country the user is."
+msgstr "Las expresiones regulares de los patrones de permiso tienen que utilizar "
+"el formato que utilice un usuario del mismo país que la compañía a la "
+"hora de llamar."
 
 #: ../../pbx_features/call_permissions.rst:60
-msgid "Permisos de llamada"
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:62
 msgid ""
-"La definición de un **Permiso de llamada** utiliza una lógica más fácil "
+"For example, a spanish user will call a french number using its "
+"international prefix (00) and France E.164 code (33) followed by the "
+"number, while a french user of the same company will only dial the "
+"number. For both of them the same company ACL pattern will be applied."
+msgstr "Es decir, un usuario (español, porque tal y como veremos los usuarios "
+"tienen también un código de país) de una empresa de española llamará a "
+"números móviles, por ejemplo, así: 676 676 676."
+
+#: ../../pbx_features/call_permissions.rst:67
+#: ../../pbx_features/users.rst:70
+msgid "Call ACL"
+msgstr "Permisos de llamada"
+
+#: ../../pbx_features/call_permissions.rst:69
+msgid "The **Call ACL** configuration is easier to explain with an example:"
+msgstr "La definición de un **Permiso de llamada** utiliza una lógica más fácil "
 "de describir con un ejemplo."
-msgstr ""
 
-#: ../../pbx_features/call_permissions.rst:64
-msgid "Imaginemos que tenemos los siguientes **patrones de permisos**:"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:71
+msgid "Imagine the following **CALL ACL patterns**:"
+msgstr "Imaginemos que tenemos los siguientes **patrones de permisos**:"
 
-#: ../../pbx_features/call_permissions.rst:68
-msgid "Podríamos definir un **Permiso de llamada** como el que sigue:"
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:72
+#: ../../pbx_features/call_permissions.rst:75
 msgid ""
-"La acción por defecto describe lo que hay que hacer con la llamada una "
+"We could create a **Call ACL** that only allow calling to this "
+"destinations:"
+msgstr "Podríamos definir un **Permiso de llamada** como el que sigue:"
+
+#: ../../pbx_features/call_permissions.rst:79
+msgid ""
+"The default action determines what to do with the call when the "
+"destination number **does not match any ACL patterns**."
+msgstr "La acción por defecto describe lo que hay que hacer con la llamada una "
 "vez que se han evaluado todas las reglas (permitir/rechazar)."
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:74
-msgid ""
-"Editamos el **permiso de llamada** que acabamos de crear para añadir las "
-"reglas necesarias:"
-msgstr ""
-
-#: ../../pbx_features/call_permissions.rst:78
-msgid ""
-"La **métrica** determina el orden de evaluación de las reglas y la acción"
-" lo que se hará con la llamada en caso de *matchear* (permitir/rechazar)."
-msgstr ""
 
 #: ../../pbx_features/call_permissions.rst:82
-msgid ""
-"Una vez hecho lo propio para el otro **patrón de permisos**, nuestro "
-"**permiso de llamadas** quedará como sigue:"
-msgstr ""
+msgid "After creating the **Call ACL** we can edit it to add the required rules:"
+msgstr "Editamos el **permiso de llamada** que acabamos de crear para añadir las "
+"reglas necesarias:"
 
 #: ../../pbx_features/call_permissions.rst:87
 msgid ""
-"Ya solo faltaría añadírselo a un usuario concreto en la sección "
-"**Configuración de empresa** > **Usuarios**:"
-msgstr ""
+"The **metric** determines the evaulation order of the rules and the "
+"action that"
+msgstr "La **métrica** determina el orden de evaluación de las reglas y la acción"
+" lo que "
+
+#: ../../pbx_features/call_permissions.rst:87
+msgid "that will be applied if it *matches* the pattern (allow/deny)."
+msgstr "se hará con la llamada en caso de *matchear* (permitir/rechazar)."
 
 #: ../../pbx_features/call_permissions.rst:91
 msgid ""
-"Desde este momento, Alice solo podría llamar a extensiones internas "
-"(siempre están permitidas) y a móviles y fijos nacionales."
-msgstr ""
+"Once we have added our two spanish **Call ACL patterns**, our **Call "
+"ACL** will look like this:"
+msgstr "Una vez hecho lo propio para el otro **patrón de permisos**, nuestro "
+"**permiso de llamadas** quedará como sigue:"
 
-#: ../../pbx_features/call_permissions.rst:93
-msgid "https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular"
-msgstr ""
+#: ../../pbx_features/call_permissions.rst:96
+msgid ""
+"We only have to assign this ACL to the users in the section **Company "
+"configuration** > **Users**:"
+msgstr "Ya solo faltaría añadírselo a un usuario concreto en la sección "
+"**Configuración de empresa** > **Usuarios**:"
+
+#: ../../pbx_features/call_permissions.rst:101
+msgid ""
+"From this moment on, Alice will only be allowed to call internal "
+"extensions (they are always allowed) and spanish numbers."
+msgstr "Desde este momento, Alice solo podría llamar a extensiones internas "
+"(siempre están permitidas) y a móviles y fijos nacionales."
 
 #: ../../pbx_features/call_recording.rst:5
-msgid "Grabación de llamadas"
-msgstr ""
+msgid "Call recording"
+msgstr "Grabación de llamadas"
 
 #: ../../pbx_features/call_recording.rst:7
-msgid ""
-"IvozProvider permite grabar las llamadas que se cursan en 2 modalidades "
+msgid "IvozProvider supports two different ways of recording calls:"
+msgstr "IvozProvider permite grabar las llamadas que se cursan en 2 modalidades "
 "distintas:"
-msgstr ""
 
 #: ../../pbx_features/call_recording.rst:9
 msgid ""
-"**Grabación automática** para llamadas desde/hacia cierto :ref:`DDI "
+"**Automatic recordings** for the incoming/outgoing calls that use a "
+":ref:`External DDI <external_ddis>`."
+msgstr "**Grabación automática** para llamadas desde/hacia cierto :ref:`DDI "
 "externo <external_ddis>`."
-msgstr ""
 
-#: ../../pbx_features/call_recording.rst:11
-msgid ""
-"**Grabación bajo demanda** solicitada por un usuario en medio de una "
+#: ../../pbx_features/call_recording.rst:12
+msgid "**On demand recordings** requested by a user during a call."
+msgstr "**Grabación bajo demanda** solicitada por un usuario en medio de una "
 "conversación."
-msgstr ""
 
-#: ../../pbx_features/call_recording.rst:15
-msgid "Grabación automática por DDI"
-msgstr ""
+#: ../../pbx_features/call_recording.rst:16
+msgid "Automatic DDI recordings"
+msgstr "Grabación automática por DDI"
 
-#: ../../pbx_features/call_recording.rst:17
+#: ../../pbx_features/call_recording.rst:18
 msgid ""
-"En el caso de grabaciones automáticas por DDI, **se graba toda la "
+"In this type of recording, **the whole conversation will be recorded**: "
+"from the start until it finishes."
+msgstr "En el caso de grabaciones automáticas por DDI, **se graba toda la "
 "conversación**: desde el principio hasta el final."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:19
-msgid "Se distinguen 2 casos:"
-msgstr ""
 
 #: ../../pbx_features/call_recording.rst:21
-msgid ""
-"**Llamadas entrantes a un DDI**: la grabación seguirá mientras la parte "
-"externa de la llamada permanezca en la conversación."
-msgstr ""
+msgid "Two different scenarios:"
+msgstr "Se distinguen 2 casos:"
 
 #: ../../pbx_features/call_recording.rst:23
 msgid ""
-"**Llamadas salientes utilizando un DDI** como :ref:`DDI saliente "
+"**Incoming calls to a DDI**: The call will continue until the external "
+"dialer hangups (no matter whom is talking to)."
+msgstr "**Llamadas entrantes a un DDI**: la grabación seguirá mientras la parte "
+"externa de la llamada permanezca en la conversación."
+
+#: ../../pbx_features/call_recording.rst:26
+msgid ""
+"**Outgoing calls using a DDI** as :ref:`Outgoing DDI <external_ddis>`: "
+"the recording will continue as long as the external destination keeps in "
+"the conversation."
+msgstr "**Llamadas salientes utilizando un DDI** como :ref:`DDI saliente "
 "<external_ddis>`: mientras el interlocutor externo permanezca en la "
 "conversación, la grabación sigue."
-msgstr ""
 
-#: ../../pbx_features/call_recording.rst:25
+#: ../../pbx_features/call_recording.rst:30
 msgid ""
-"El hecho de que **mientras el interlocutor permanezca en la llamada la "
+"Take into account that the call will be recorded while the external "
+"entity is present, even it the call is being transfered between multiple "
+"users of the platform."
+msgstr "El hecho de que **mientras el interlocutor permanezca en llamada la "
 "grabación continúe**, hace que no importe cuántes veces se transfiera la "
 "llamada de un usuario a otro, la grabación contendrá toda la conversación"
 " (desde el punto de vista del participante externo)."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:28
-msgid "Grabar todas las llamadas de un DDI"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:29
-msgid "Basta con editar el DDI en cuestión y habilitar las grabaciones:"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:33
-msgid "Existen 4 opciones:"
-msgstr ""
 
 #: ../../pbx_features/call_recording.rst:35
-msgid "Desactivar la grabación"
-msgstr ""
+msgid "Record all the calls of a DDI"
+msgstr " Grabar todas las llamadas de un DDI"
 
 #: ../../pbx_features/call_recording.rst:36
-msgid "Activarla para llamadas entrantes a dicho DDI"
-msgstr ""
+msgid ""
+"To enable this feature, edit the DDI and configure the field under the "
+"section recording data:"
+msgstr "Basta con editar el DDI en cuestión y habilitar las grabaciones:"
 
-#: ../../pbx_features/call_recording.rst:37
-msgid "Activarla para llamadas salientes que presente dicho DDI"
-msgstr ""
+#: ../../pbx_features/call_recording.rst:41
+msgid "There are 4 available options:"
+msgstr "Existen 4 opciones:"
 
-#: ../../pbx_features/call_recording.rst:38
-msgid "Activarla para ambas"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:42
-msgid "Grabación bajo demanda"
-msgstr ""
+#: ../../pbx_features/call_recording.rst:43
+msgid "Disable recordings"
+msgstr "Desactivar la grabación"
 
 #: ../../pbx_features/call_recording.rst:44
+msgid "Enable incoming recordings"
+msgstr "Activarla para llamadas entrantes a dicho DDI"
+
+#: ../../pbx_features/call_recording.rst:45
+msgid "Enable outgoing recordings"
+msgstr "Activarla para llamadas salientes que presente dicho DDI"
+
+#: ../../pbx_features/call_recording.rst:46
+msgid "Enable all call recordings"
+msgstr "Activarla para ambas"
+
+#: ../../pbx_features/call_recording.rst:50
+msgid "On demand recordings"
+msgstr "Grabación bajo demanda"
+
+#: ../../pbx_features/call_recording.rst:52
 msgid ""
-"La grabación bajo demanda u *on-demand* la tiene que activar el *operador"
+"The *on-demand* recordings must be enabled by the *brand administator* "
+"for the companies that request it. This can be done in the companey edit "
+"screen:"
+msgstr "La grabación bajo demanda u *on-demand* la tiene que activar el *operador"
 " de marca* para las empresas que la necesiten, sin más que editar su "
 "empresa y configurar el código deseado:"
-msgstr ""
 
-#: ../../pbx_features/call_recording.rst:48
+#: ../../pbx_features/call_recording.rst:57
 msgid ""
-"A diferencia de los :ref:`Servicios <services>` comentado en la sección "
+"Contrary to the :ref:`Services <services>` mentioned in the previous "
+"section, the on demand record are actived within a conversation."
+msgstr "A diferencia de los :ref:`Servicios <services>` comentado en la sección "
 "anterior, la funcionalidad de grabación bajo demanda se activa en mitad "
 "de una conversación."
-msgstr ""
 
-#: ../../pbx_features/call_recording.rst:51
-msgid "Activación por medio de tecla *Record*"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:53
+#: ../../pbx_features/call_recording.rst:60
 msgid ""
-"Los terminales *Yealink* soportan el envío de mensajes `SIP INFO "
+"Contrary to automatic ones, on demand recording can be stoped using the "
+"same process that started them."
+msgstr "Al contrario que las grabaciones automáticas, las realizadas bajo demanda"
+" pueden detenerse empleando el mismo proceso que las ha iniciado."
+
+#: ../../pbx_features/call_recording.rst:64
+msgid "Activated using the *Record* key"
+msgstr "Activación por medio de tecla *Record*"
+
+#: ../../pbx_features/call_recording.rst:66
+msgid ""
+"Some terminals (for example, *Yealink*) support sending a `SIP INFO "
+"<https://tools.ietf.org/html/rfc6086>`_ message during the conversation "
+"with a special *Record* header (see `reference "
+"<http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_)."
+" This is not a standard for the protocol, but being Yealink one of the "
+"supported manufacturers of the solution, we include this kind of on-"
+"demand recording."
+msgstr "Los terminales *Yealink* soportan el envío de mensajes `SIP INFO "
 "<https://tools.ietf.org/html/rfc6086>`_ con una cabecera *Record* (ver "
 "`referencia "
 "<http://www.yealink.com/Upload/document/UsingCallRecordingFeatureonYealinkPhones/UsingCallRecordingFeatureonYealinkSIPT2XPphonesRev_610-20561729764.pdf>`_)."
 " No es un estándar, pero al ser *Yealink* uno de los modelos soportados, "
 "IvozProvider incluye soporte para la activación de grabación bajo demanda"
 " de esta forma."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:55
-msgid ""
-"El código seleccionado no influye en este caso, pero **la empresa sí que "
-"tiene que tener las grabaciones bajo demanda activadas**."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:57
-msgid ""
-"La activación de las grabaciones es muy simple en este caso, basta con "
-"pulsar la tecla y el sistema inicia la grabación."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:60
-msgid "Activación por medio de transferencia ciega frustrada"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:62
-msgid ""
-"Existe otra forma de acceder a esta funcionalidad para los terminales que"
-" no tengan soporte para el método anterior."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:64
-msgid ""
-"Este método de acceder a la funcionalidad es una forma imaginativa de "
-"hacerla accesible para terminales sin soporte nativo de tecla *Record* "
-"(que es el método recomendado). En función del terminal en cuestión y de "
-"la configuración del mismo, resultará más o menos cómodo utilizar la "
-"funcionalidad (tecla rápida de transferencia ciega, no retener al "
-"interlocutor, etc.)."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:66
-msgid ""
-"Los pasos a seguir en este método alternativo e imaginativo son los "
-"siguientes:"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:68
-msgid "No se activa marcando el código en medio de la conversación."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:70
-msgid "Se activa iniciando una transferencia ciega al código configurado."
-msgstr ""
 
 #: ../../pbx_features/call_recording.rst:72
-msgid "El sistema rechazará la transferencia e iniciará la grabación."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:74
 msgid ""
-"El usuario podrá volver a la conversación que tenía (si es que su "
-"terminal no ha vuelto solo) y seguir hablando."
-msgstr ""
+"For this recording requests, the configured code doesn't matter but the "
+"company still must have on demand records enabled."
+msgstr "El código seleccionado no influye en este caso, pero **la empresa sí que "
+"tiene que tener las grabaciones bajo demanda activadas**."
 
-#: ../../pbx_features/call_recording.rst:77
+#: ../../pbx_features/call_recording.rst:75
 msgid ""
-"¿Por qué esta forma tan *peculiar* de activar la grabación y no por medio"
-" de tonos normales?"
-msgstr ""
+"To start or stop this kind of recordings, just press the Record key in "
+"the terminal and the system will handle the sent message."
+msgstr "La activación de las grabaciones es muy simple en este caso, basta con "
+"pulsar la tecla y el sistema inicia la grabación."
 
-#: ../../pbx_features/call_recording.rst:78
-msgid ""
-"El motivo de activar la grabación por medio de una transferencia ciega "
-"frustrada se debe a la :ref:`architecture` y, más concretamente, al "
-":ref:`flujo de audio RTP <audioflow>`."
-msgstr ""
+#: ../../pbx_features/call_recording.rst:79
+msgid "Activated using *DTMF* codes"
+msgstr "Activación por códigos *DTMF*"
 
-#: ../../pbx_features/call_recording.rst:80
+#: ../../pbx_features/call_recording.rst:81
 msgid ""
-"Lo habitual suele ser activar servicios por medio de pulsaciones en medio"
-" de la llamada (lo que se conoce por `tonos DTMF "
-"<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_). Estos tonos "
-"suelen viajar por el mismo camino del audio (siguiendo el `RFC 4733 "
-"<https://tools.ietf.org/html/rfc4733>`_ o como sonido audible)."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:82
-msgid ""
-"IvozProvider utiliza la transmisión de estos tonos siguiendo el `RFC 4733"
-" <https://tools.ietf.org/html/rfc4733>`_ y, por tanto, dichos paquetes de"
-" audio pasan por los *media-relays*, que se limitan a reenviar el audio "
-"sin analizar su contenido. Al no analizar su contenido, no pueden "
-"detectar las pulsaciones y activar lógicas."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:84
-msgid ""
-"Esta decisión de diseño es la que permite escalar la solución y ser capaz"
-" de gestionar cientos de miles de llamadas concurrentes."
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:86
-msgid ""
-"Al realizar una transferencia ciega, en cambio, se produce señalización "
-"SIP dentro de un diálogo (en concreto, un `REFER "
-"<https://tools.ietf.org/html/rfc3515>`_) y sí que es posible activar "
-"lógicas de este estilo, ya que la señalización sigue `otro camino "
-"<signallingflow>` que incluye a los elementos con lógica (servidores de "
-"aplicación y *proxies*)."
-msgstr ""
+"The more traditional approach for this feature is to press a combination "
+"of keys during the call. Some notification will be played and the "
+"recording will start or stop. This combination is sent to the system "
+"using `DTMF tones "
+"<https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ using the same"
+" audio stream that the conversation (as mentioned in `RFC 4733 "
+"<https://tools.ietf.org/html/rfc4733>`_)."
+msgstr "Comúnmente este tipo de funcionalidades se activan introduciendo una "
+"combinación de teclas durante la llamada. Se inicia el proceso después de"
+" algún tipo de notificación. Esta combinación es enviada empleando `tonos"
+" DTMF <https://es.wikipedia.org/wiki/Marcaci%C3%B3n_por_tonos>`_ "
+"empleando el mismo flujo de audio que la conversación (como se menciona "
+"en el `RFC 4733 <https://tools.ietf.org/html/rfc4733>`_)."
 
 #: ../../pbx_features/call_recording.rst:88
 msgid ""
-"La grabación bajo demanda graba la llamada desde que se activa hasta que "
-"el usuario que la activó desaparece de la misma."
-msgstr ""
+"IvozProvider supports this kind of on demand record activation but with "
+"an important downside. In order to capture this codes, the pbx must "
+"process each audio packet to detect the code, avoiding the direct flow of"
+" media between the final endpoints."
+msgstr "IvozProvider soporta este tipo de activaciones bajo demanda pero con una "
+"importante pega. Para poder capturar estos códigos, la pbx debe procesar "
+"los paquetes de audio de la conversación, evitando así la posible "
+"liberación del flujo entre los agentes finales."
 
-#: ../../pbx_features/call_recording.rst:90
+#: ../../pbx_features/call_recording.rst:93
 msgid ""
-"No existe la funcionalidad de parar la grabación, independientemente del "
-"método elegido para activarla."
-msgstr ""
+"Enabling this record mode highly affects the performance of the platform."
+" Use at your own risk."
+msgstr "Habilitar este modo afecta en gran medida el rendimiento de la "
+"plataforma. Úselo bajo su propio riesgo."
 
-#: ../../pbx_features/call_recording.rst:94
-msgid "Listado de grabaciones"
-msgstr ""
-
-#: ../../pbx_features/call_recording.rst:96
-msgid ""
-"El *administrador de empresa* puede acceder a las grabaciones realizadas "
-"por medio de la sección **Configuración de Empresa** > **Grabaciones**:"
-msgstr ""
+#: ../../pbx_features/call_recording.rst:98
+msgid "Activated using a frustated blind transfer"
+msgstr "Activación por medio de transferencia ciega frustrada"
 
 #: ../../pbx_features/call_recording.rst:100
 msgid ""
-"Haciendo clic en una de ellas, podría escucharla desde la *web* o "
-"descargársela en formato MP3:"
-msgstr ""
+"There is a tricky way to access this feature for terminals that does not "
+"support the INFO message and don't want its audio to be parsed:"
+msgstr "Existe otra forma de acceder a esta funcionalidad para los terminales que"
+" no tengan soporte para el método anterior."
 
-#: ../../pbx_features/call_recording.rst:104
-msgid "En el caso de una grabación bajo demanda, se indica qué usuario la inició:"
-msgstr ""
+#: ../../pbx_features/call_recording.rst:103
+msgid ""
+"This method is a workaround for those terminals that does not support the"
+" native *Record* key activation (recommended). Take into account that not"
+" all terminals will behave the same way while performing the transfer "
+"described in this section."
+msgstr "Este método de acceder a la funcionalidad es una forma imaginativa de "
+"hacerla accesible para terminales sin soporte nativo de tecla *Record* "
+"que es el método recomendado). En función del terminal en cuestión y de "
+"la configuración del mismo, resultará más o menos cómodo utilizar la "
+"funcionalidad (tecla rápida de transferencia ciega, no retener al "
+"interlocutor, etc.)."
+
+#: ../../pbx_features/call_recording.rst:108
+msgid "The keys for this methods are:"
+msgstr "Los pasos a seguir en este método alternativo e imaginativo son los "
+"siguientes:"
+
+#: ../../pbx_features/call_recording.rst:110
+msgid "It's not activated using a code during the conversation."
+msgstr "No se activa marcando el código en medio de la conversación."
+
+#: ../../pbx_features/call_recording.rst:112
+msgid "It's activated making a **blind transfer** to the on demand record code."
+msgstr "Se activa iniciando una transferencia ciega al código configurado."
+
+#: ../../pbx_features/call_recording.rst:114
+msgid ""
+"The system will understand this as a request to record and will reject "
+"the transfer."
+msgstr "El sistema rechazará la transferencia e iniciará la grabación."
+
+#: ../../pbx_features/call_recording.rst:116
+msgid "The user will continue with the existing call and keep talking."
+msgstr "El usuario podrá volver a la conversación que tenía (si es que su "
+"terminal no ha vuelto solo) y seguir hablando."
+
+#: ../../pbx_features/call_recording.rst:119
+msgid "Why this method does even exist?"
+msgstr "¿Por qué esta forma tan *peculiar* de activar la grabación y no por medio"
+" de tonos normales?"
+
+#: ../../pbx_features/call_recording.rst:120
+msgid ""
+"The reason behind this tricky method is based, as explained in the "
+"previous block, on the design of the :ref:`architecture` and the "
+":ref:`RTP audio flow <audioflow>`."
+msgstr "El motivo de activar la grabación por medio de una transferencia ciega "
+"frustrada se debe a la :ref:`architecture` y, más concretamente, al "
+":ref:`flujo de audio RTP <audioflow>`."
+
+#: ../../pbx_features/call_recording.rst:126
+msgid "Recordings list"
+msgstr "Listado de grabaciones"
+
+#: ../../pbx_features/call_recording.rst:128
+msgid ""
+"The *company administrator* can access to all the recordings in the "
+"section **Company configuration** > **Recordings**:"
+msgstr "El *administrador de empresa* puede acceder a las grabaciones realizadas "
+"por medio de la sección **Configuración de Empresa** > **Grabaciones**:"
+
+#: ../../pbx_features/call_recording.rst:133
+msgid "Recordings can be heard from the *web* or downloaded in MP3 format:"
+msgstr "Haciendo clic en una de ellas, podría escucharla desde la *web* o "
+"descargársela en formato MP3:"
+
+#: ../../pbx_features/call_recording.rst:137
+msgid ""
+"If the recording has been started on demand, it will also include the "
+"user that requested it:"
+msgstr "En el caso de una grabación bajo demanda, se indica qué usuario la inició:"
 
 #: ../../pbx_features/conference_rooms.rst:5
-msgid "Salas de audioconferencias"
-msgstr ""
+msgid "Conference rooms"
+msgstr "Salas de audioconferencias"
 
 #: ../../pbx_features/conference_rooms.rst:7
 msgid ""
-"IvozProvider provee la funcionalidad de salas de audiconferencias que se "
+"IvozProvider supports Conference rooms that can be configured in the "
+"section **Company configuration** > **Conference rooms**."
+msgstr "IvozProvider provee la funcionalidad de salas de audiconferencias que se "
 "pueden configurar en la sección **Configuración de empresa** > **Salas de"
 " conferencias**."
-msgstr ""
-
-#: ../../pbx_features/conference_rooms.rst:10
-msgid "Crear una sala de audioconferencias"
-msgstr ""
 
 #: ../../pbx_features/conference_rooms.rst:11
-msgid ""
-"La siguiente imagen ilustra el proceso de creación de una sala de "
+msgid "Create a new audio conference"
+msgstr "Crear una sala de audioconferencias"
+
+#: ../../pbx_features/conference_rooms.rst:12
+msgid "The following image shows the process of creating a new confrence room:"
+msgstr "La siguiente imagen ilustra el proceso de creación de una sala de "
 "audioconferencias:"
-msgstr ""
 
-#: ../../pbx_features/conference_rooms.rst:16
-#: ../../pbx_features/external_filters.rst:62 ../../pbx_features/ivrs.rst:20
-#: ../../pbx_features/terminals.rst:14 ../../pbx_features/users.rst:20
-msgid "Nombre"
-msgstr ""
-
-#: ../../pbx_features/conference_rooms.rst:18
-msgid "Nombre por el que se referenciará la sala en otras secciones"
-msgstr ""
+#: ../../pbx_features/conference_rooms.rst:17
+#: ../../pbx_features/external_filters.rst:74
+#: ../../pbx_features/ivrs.rst:24
+#: ../../pbx_features/terminals.rst:17
+#: ../../pbx_features/users.rst:23
+msgid "Name"
+msgstr "Nombre"
 
 #: ../../pbx_features/conference_rooms.rst:19
-msgid "Límite de participantes"
-msgstr ""
+msgid "Name that will used to identify this conference room in other sections"
+msgstr "Nombre por el que se referenciará la sala en otras secciones"
 
-#: ../../pbx_features/conference_rooms.rst:21
-msgid "Apartir del número especificado, no se admitirán más miembros."
-msgstr ""
+#: ../../pbx_features/conference_rooms.rst:20
+msgid "Max members"
+msgstr "Límite de participantes"
 
 #: ../../pbx_features/conference_rooms.rst:22
-msgid "Protegido con contraseña / Código PIN"
-msgstr ""
+msgid ""
+"Maximum number of participants in the conference. When this limit is "
+"reached, join requests will be rejected."
+msgstr "Apartir del número especificado, no se admitirán más miembros."
 
 #: ../../pbx_features/conference_rooms.rst:24
-msgid ""
-"Se puede forzar al sistema a pedir un PIN para poder entrar. En caso de "
-"activar, se puede introducir un PIN numérico."
-msgstr ""
+msgid "Pin protected"
+msgstr "Protegido con contraseña / Código PIN"
 
 #: ../../pbx_features/conference_rooms.rst:26
-msgid "Para desactivar el límite de participantes, configurar su valor a 0."
-msgstr ""
+msgid ""
+"Conference rooms can be pin protected. The pin will be requested before "
+"entering and must be numeric."
+msgstr "Se puede forzar al sistema a pedir un PIN para poder entrar. En caso de "
+"activar, se puede introducir un PIN numérico."
 
 #: ../../pbx_features/conference_rooms.rst:29
-msgid "Asociar una extensión o un DDI externo"
-msgstr ""
-
-#: ../../pbx_features/conference_rooms.rst:30
-msgid ""
-"De poco sirve una sala de conferencias si no podemos meter a los "
-"participantes a la misma."
-msgstr ""
+msgid "Member limit can be disabled by setting it to 0."
+msgstr "Para desactivar el límite de participantes, configurar su valor a 0."
 
 #: ../../pbx_features/conference_rooms.rst:32
+msgid "Route an extension or DDI to the conference"
+msgstr "Asociar una extensión o un DDI externo"
+
+#: ../../pbx_features/conference_rooms.rst:33
 msgid ""
-"Para poder meter participantes, el primer paso sería asociar una "
+"In order to enter a conference there must be a number that is route to "
+"them:"
+msgstr "Para poder meter participantes, el primer paso sería asociar una "
 "extensión interna a la sala, para poder desvíar a la misma, transferir, "
 "etc.:"
-msgstr ""
 
-#: ../../pbx_features/conference_rooms.rst:36
+#: ../../pbx_features/conference_rooms.rst:37
 msgid ""
-"En la siguiente sección veremos como también se puede apuntar un "
+"In the following section we will see how to configure a :ref:`external "
+"DDI <external_ddis>` to a conference room so it can be used by external "
+"callers."
+msgstr "En la siguiente sección veremos como también se puede apuntar un "
 ":ref:`DDI externo <external_ddis>` a una sala de conferencias, para meter"
 " en la sala a gente externa a la empresa."
-msgstr ""
 
-#: ../../pbx_features/conference_rooms.rst:38
+#: ../../pbx_features/conference_rooms.rst:40
 msgid ""
-"Existen otras formas de meter un participante externo a una sala de "
+"There are other ways to make external callers join a conference room "
+"without using a DDI: it can be assigned to an Extension. This way, any "
+"user can transfer the call to the conference extension, or can be routed,"
+" for exmaple using an IVR entry."
+msgstr "Existen otras formas de meter un participante externo a una sala de "
 "audioconferencias sin dedicar un DDI externo: que alguien de dentro "
 "transfiera la llamada a la extensión de la sala, acceder por medio de un "
 "IVR, etc."
-msgstr ""
 
 #: ../../pbx_features/extensions.rst:3
 msgid "Extensions"
-msgstr ""
+msgstr "Extensiones"
 
 #: ../../pbx_features/extensions.rst:5
 msgid ""
-"La configuración de partida incluía 2 extensiones (101 y 102) que "
+"The base configuration includes 2 extensions (101 and 102) that route "
+"directly to *Alice* and *Bob*, so we had almost nothing to do with the "
+"section **Company configuration** > **Extensions**."
+msgstr "La configuración de partida incluía 2 extensiones (101 y 102) que "
 "apuntaban directamente a *Alice* y *Bob*, por lo que apenas dijimos nada "
 "sobre la sección **Configuración de empresa** > **Extensiones**."
-msgstr ""
 
-#: ../../pbx_features/extensions.rst:7
+#: ../../pbx_features/extensions.rst:9
 msgid ""
-"**Una extensión es**, por definición, **un número interno con una lógica "
+"**An extensions is**, by definition, **an internal number with an "
+"assigned logic**."
+msgstr "**Una extensión es**, por definición, **un número interno con una lógica "
 "asignada**."
-msgstr ""
 
-#: ../../pbx_features/extensions.rst:10
-msgid "Crear una nueva extensión"
-msgstr ""
+#: ../../pbx_features/extensions.rst:13
+msgid "Create a new extension"
+msgstr "Crear una nueva extensión"
 
-#: ../../pbx_features/extensions.rst:11
-msgid "La ventana de creación de una nueva extensión es tal que así:"
-msgstr ""
-
-#: ../../pbx_features/extensions.rst:16
-msgid "Número"
-msgstr ""
-
-#: ../../pbx_features/extensions.rst:18
-msgid ""
-"El número que al ser marcado por un usuario interno activará la lógica "
-"que sigue. Tiene que tener una longitud mínima de 2 y estar compuesto "
-"únicamente por dígitos."
-msgstr ""
+#: ../../pbx_features/extensions.rst:14
+msgid "The new extension window looks like this:"
+msgstr "La ventana de creación de una nueva extensión es tal que así:"
 
 #: ../../pbx_features/extensions.rst:19
-msgid "Enrutar"
-msgstr ""
+msgid "Number"
+msgstr "Número"
 
 #: ../../pbx_features/extensions.rst:21
 msgid ""
-"Este selector nos permite indicar la lógica que seguirá esta numeración "
+"The number that must be dialed by the internal user that will trigger the"
+" configured logic. It must have a minimum length of 2 and must be a "
+"number."
+msgstr "El número que al ser marcado por un usuario interno activará la lógica "
+"que sigue. Tiene que tener una longitud mínima de 2 y estar compuesto "
+"únicamente por dígitos."
+
+#: ../../pbx_features/extensions.rst:24
+msgid "Route"
+msgstr "Enrutar"
+
+#: ../../pbx_features/extensions.rst:26
+msgid ""
+"This select will allow us to choose the logic that will use this "
+"extension when is dialed from an internal user. Depending on the selected"
+" route, and additional select or input will be shown to select the "
+"hungroup, conference room, user, etc."
+msgstr "Este selector nos permite indicar la lógica que seguirá esta numeración "
 "cuando sea marcada por un usuario concreto. Al seleccionar un ítem en "
 "cuestión, se nos mostrará un selector adicional para seleccionar el grupo"
 " de salto, sala de conferencias, etc."
-msgstr ""
 
-#: ../../pbx_features/extensions.rst:23
+#: ../../pbx_features/extensions.rst:31
 msgid ""
-"En el caso de las extensiones que apuntan a usuario, la vinculación con "
-"el usuario concreto tendrá que hacerse desde **Configuración de empresa**"
-" > **Usuarios**."
-msgstr ""
-
-#: ../../pbx_features/extensions.rst:25
-msgid ""
-"Si existe una extensión cuyo número conflicte con un número externo, el "
+"If an extension has a number that conflicts with an external number, this"
+" external number will be masked and, in practice, will be unavailable for"
+" the whole company."
+msgstr "Si existe una extensión cuyo número conflicte con un número externo, el "
 "número externo quedará enmascarado y resultará, en la práctica, "
 "inaccesible para toda la empresa."
-msgstr ""
 
 #: ../../pbx_features/external_ddis.rst:5
-msgid "DDIs externos"
-msgstr ""
+msgid "External DDIs"
+msgstr "DDIs externos"
 
 #: ../../pbx_features/external_ddis.rst:7
 msgid ""
-"En la sección preliminar :ref:`settingup_ddi` se describió con todo "
+"In the previous section :ref:`settingup_ddi` we described in detail the "
+"required configuration for an external DDI routed to user. This section "
+"will go a bit further and explain the rest of configurable options of "
+"DDIs."
+msgstr "En la sección preliminar :ref:`settingup_ddi` se describió con todo "
 "detalle la configuración necesaria para configurar un DDI externo directo"
 " a un usuario."
-msgstr ""
-
-#: ../../pbx_features/external_ddis.rst:9
-msgid ""
-"Después de explicar las secciones anteriores, podemos llevar esta "
-"configuración un poco más allá:"
-msgstr ""
 
 #: ../../pbx_features/external_ddis.rst:13
-msgid "Filtro de entrada"
-msgstr ""
+msgid "DDI external filters"
+msgstr "Filtro de entrada"
 
 #: ../../pbx_features/external_ddis.rst:15
 msgid ""
-"Podemos seleccionar el **Filtro de entrada externo** configurado en "
+"We can assign a **external call filter** configured in :ref:`previous "
+"section <external_filters>`."
+msgstr "Podemos seleccionar el **Filtro de entrada externo** configurado en "
 ":ref:`la sección anterior <external_filters>`."
-msgstr ""
 
-#: ../../pbx_features/external_ddis.rst:23
-msgid "Tratamientos"
-msgstr ""
+#: ../../pbx_features/external_ddis.rst:24
+msgid "DDI routes"
+msgstr "Tratamientos"
 
-#: ../../pbx_features/external_ddis.rst:25
+#: ../../pbx_features/external_ddis.rst:26
 msgid ""
-"Vemos que tenemos más opciones aparte de enviar la llamada, una vez "
+"Once the call has passed all the checks in the filter (schedules and "
+"calendars) and after the welcome locution has been played (if there is "
+"any configured), we can route the call to the following processes:"
+msgstr "Vemos que tenemos más opciones aparte de enviar la llamada, una vez "
 "superado los filtros de horario y calendario (y previa locución de "
 "bienvenida), directamente a un usuario:"
-msgstr ""
 
-#: ../../pbx_features/external_ddis.rst:27
+#: ../../pbx_features/external_ddis.rst:30
 msgid ":ref:`huntgroups`"
-msgstr ""
+msgstr ":ref:`huntgroups`"
 
-#: ../../pbx_features/external_ddis.rst:31
-msgid ":ref:`IVR Genérico <generic_ivrs>`"
-msgstr ""
+#: ../../pbx_features/external_ddis.rst:34
+msgid ":ref:`Generic IVR <generic_ivrs>`"
+msgstr ":ref:`IVR Genérico <generic_ivrs>`"
 
-#: ../../pbx_features/external_ddis.rst:35
-msgid ":ref:`IVR a medida <custom_ivrs>`"
-msgstr ""
+#: ../../pbx_features/external_ddis.rst:38
+msgid ":ref:`Custom IVR <custom_ivrs>`"
+msgstr ":ref:`IVR a medida <custom_ivrs>`"
 
-#: ../../pbx_features/external_ddis.rst:39
+#: ../../pbx_features/external_ddis.rst:42
 msgid ":ref:`conference_rooms`"
-msgstr ""
+msgstr ":ref:`conference_rooms`"
 
-#: ../../pbx_features/external_ddis.rst:43
+#: ../../pbx_features/external_ddis.rst:46
 msgid ""
-"También podemos apuntar el DDI a un :ref:`fax virtual <faxing_system>`, "
+"We can also route the DDI to a :ref:`Virtual Fax <faxing_system>`, but "
+"this is something we will explain in the following block."
+msgstr "También podemos apuntar el DDI a un :ref:`fax virtual <faxing_system>`, "
 "pero esto se verá en el siguiente bloque."
-msgstr ""
 
 #: ../../pbx_features/external_filters.rst:5
-msgid "Filtros de entrada externo"
-msgstr ""
+msgid "External Call filters"
+msgstr "Filtros de entrada externo"
 
 #: ../../pbx_features/external_filters.rst:7
 msgid ""
-"Una de las configuraciones más habituales que todo administrador de "
+"One of the most common task a company's administrator will do is to "
+"configure schedules and calendards to apply to existing "
+":ref:`external_ddis`."
+msgstr "Una de las configuraciones más habituales que todo administrador de "
 "empresa querrá realizar en un momento dado es poner filtros de horario y "
 "de calendario a sus :ref:`external_ddis`."
-msgstr ""
 
-#: ../../pbx_features/external_filters.rst:9
-msgid "Para ello, el primer paso es crear un horario."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:12
-msgid "Crear un horario"
-msgstr ""
+#: ../../pbx_features/external_filters.rst:10
+msgid "The first step is creating a schedule."
+msgstr "Para ello, el primer paso es crear un horario."
 
 #: ../../pbx_features/external_filters.rst:13
+msgid "Create a new schedule"
+msgstr "Crear un horario"
+
+#: ../../pbx_features/external_filters.rst:14
 msgid ""
-"La sección **Configuración de Empresa** > **Horarios** permite definir "
+"The section **Company configuration** > **Schedule** allows to configure "
+"different time gaps when an :ref:`external DDI <external_ddis>` will be "
+"available."
+msgstr "La sección **Configuración de Empresa** > **Horarios** permite definir "
 "los tramos horarios en los que un :ref:`DDI externo <external_ddis>` está"
 " dentro de horario."
-msgstr ""
 
-#: ../../pbx_features/external_filters.rst:15
-msgid ""
-"La interfaz que se le presenta al administrador de empresa cuando añade "
+#: ../../pbx_features/external_filters.rst:17
+msgid "The screen displayed to the company administrator looks like this:"
+msgstr "La interfaz que se le presenta al administrador de empresa cuando añade "
 "un horario es la siguiente:"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:19
-msgid ""
-"Con la configuración anterior, hemos definido el tramo horario de mañana "
-"de una empresa de Lunes a Jueves."
-msgstr ""
 
 #: ../../pbx_features/external_filters.rst:21
 msgid ""
-"Sigamos con el ejemplo y definamos el tramo horario de tarde de Lunes a "
+"With the above configuration, we have defined a morining schedule that "
+"will be applied from Monday to Thursday."
+msgstr "Con la configuración anterior, hemos definido el tramo horario de mañana "
+"de una empresa de Lunes a Jueves."
+
+#: ../../pbx_features/external_filters.rst:24
+msgid "We can also define an afternoon schedule for Monday to Thursday too:"
+msgstr "Sigamos con el ejemplo y definamos el tramo horario de tarde de Lunes a "
 "Jueves:"
-msgstr ""
 
-#: ../../pbx_features/external_filters.rst:25
-msgid "Y el horario reducido de los viernes:"
-msgstr ""
+#: ../../pbx_features/external_filters.rst:28
+msgid "And apply a different time gap for the Fridays:"
+msgstr "Y el horario reducido de los viernes:"
 
-#: ../../pbx_features/external_filters.rst:29
+#: ../../pbx_features/external_filters.rst:32
 msgid ""
-"Ya tenemos los siguientes tramos horarios que, combinados, describen un "
+"We have the following time gaps that combined will determine our company "
+"office schedule."
+msgstr "Ya tenemos los siguientes tramos horarios que, combinados, describen un "
 "horario de oficina tradicional:"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:33
-msgid ""
-"Los horarios definen, una vez sumados, los tramos horarios activos: toda "
-"hora que no caiga dentro de uno de los tramos agrupados será considerada "
-"como llamada fuera de horario."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:36
-msgid "Crear un calendario"
-msgstr ""
 
 #: ../../pbx_features/external_filters.rst:37
 msgid ""
-"Los calendarios definen, una vez sumados, los días que se tienen que "
+"The schedule will be defined by combining the active time gaps: Any time "
+"outside this grouped gaps will be considered out-of-schedule."
+msgstr "Los horarios definen, una vez sumados, los tramos horarios activos: toda "
+"hora que no caiga dentro de uno de los tramos agrupados será considerada "
+"como llamada fuera de horario."
+
+#: ../../pbx_features/external_filters.rst:41
+msgid "Create a new Calendar"
+msgstr "Crear un calendario"
+
+#: ../../pbx_features/external_filters.rst:42
+msgid ""
+"Calenders are used to define what days are considered as holiday. Like "
+"schedules, multiples calendars can be combined."
+msgstr "Los calendarios definen, una vez sumados, los días que se tienen que "
 "considerar festivos."
-msgstr ""
 
-#: ../../pbx_features/external_filters.rst:39
-msgid "Imaginemos que creamos 3 calendarios tal que:"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:43
-msgid ""
-"La creación de calendarios solo requiere dar un nombre al mismo, una vez "
-"creado hay que añadir días festivos a dicho calendario pulsando el botón "
-"de la derecha del lápiz:"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:47
-msgid ""
-"Desde este momento, es calendario tiene marcado el día 1 de Enero de 2016"
-" como día festivo con locución de festivo especial llamada \"Feliz año\"."
-msgstr ""
+#: ../../pbx_features/external_filters.rst:45
+msgid "Let's imagine three calendars with the following configuration:"
+msgstr "Imaginemos que creamos 3 calendarios tal que:"
 
 #: ../../pbx_features/external_filters.rst:49
 msgid ""
-"Los calendarios tienen una lógica contraria a los horarios: si un día "
-"concreto no está definido como festivo en uno de los calendarios, será "
-"considerado como día laborable."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:51
-msgid ""
-"Si un día es festivo en un calendario y no hay locución de festivo "
-"especial, se reproducirá la locución de festivo del filtro de entrada "
-"externo (ver más abajo)."
-msgstr ""
+"Calendar creation process only requires a name. Once created, we can add "
+"what days will be holidays using the buttons in its row:"
+msgstr "La creación de calendarios solo requiere dar un nombre al mismo, una vez "
+"creado hay que añadir días festivos a dicho calendario pulsando el botón "
+"de la derecha del lápiz:"
 
 #: ../../pbx_features/external_filters.rst:54
-msgid "Crear un filtro de entrada externo"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:55
 msgid ""
-"Una vez que tenemos unos horaris y unos calendarios creados, llega el "
-"momento de agruparlos en lo que en IvozProvider se conoce por **Filtro de"
-" entrada externos**."
-msgstr ""
+"From this moment on, the calendar has the 1st of January of 2016 as "
+"holiday date with the louction \"Happy New Year\"."
+msgstr "Desde este momento, es calendario tiene marcado el día 1 de Enero de 2016"
+" como día festivo con locución de festivo especial llamada \"Feliz año\"."
 
 #: ../../pbx_features/external_filters.rst:57
 msgid ""
-"El interfaz que se le presenta al administrador de empresa es el "
+"Calendars logic is opposite to Schedulers: If a day is not defined as "
+"holiday in any of the calendars, it will considered a normal day and no "
+"filtering will be applied."
+msgstr "Los calendarios tienen una lógica contraria a los horarios: si un día "
+"concreto no está definido como festivo en uno de los calendarios, será "
+"considerado como día laborable."
+
+#: ../../pbx_features/external_filters.rst:61
+msgid ""
+"Holidays without special locutions will apply the external call filter "
+"holiday generic locution (see below)."
+msgstr "Si un día es festivo en un calendario y no hay locución de festivo "
+"especial, se reproducirá la locución de festivo del filtro de entrada "
+"externo (ver más abajo)."
+
+#: ../../pbx_features/external_filters.rst:65
+msgid "Create a new External call filter"
+msgstr "Crear un filtro de entrada externo"
+
+#: ../../pbx_features/external_filters.rst:66
+msgid ""
+"Once we have our new created schedules and calendars, it's time to apply "
+"them in what we call **External call filter**."
+msgstr "Una vez que tenemos unos horaris y unos calendarios creados, llega el "
+"momento de agruparlos en lo que en IvozProvider se conoce por **Filtro de"
+" entrada externos**."
+
+#: ../../pbx_features/external_filters.rst:69
+msgid "The company admin can configure them in the following screen:"
+msgstr "El interfaz que se le presenta al administrador de empresa es el "
 "siguiente:"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:64
-msgid "Nombre con el que se referenciará este filtro."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:65 ../../pbx_features/ivrs.rst:26
-msgid "Locución de bienvenida"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:67
-msgid ""
-"Esta locución se reproduce siempre que la llamada no se va a rechazar por"
-" festivo o fuera horario (es decir, en una hora normal de un día normal)."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:68
-msgid "Locución de festivo"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:70
-msgid ""
-"Esta locución se reproducirá cuando el día de hoy esté marcado como "
-"festivo en uno de los calendarios y no se haya definido una locución de "
-"festivo especial en dicho calendario para ese día."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:71
-msgid "Tipo de desvío festivo"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:73
-msgid ""
-"Si una llamada entra un día festivo, aparte de la locución de festivo (si"
-" la hay), se puede realizar un desvío a un buzón de voz, a un número "
-"externo o a una extensión interna. En el ejemplo, la llamada se desviará "
-"los días festivos al móvil 676 676 676."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:74
-msgid "Locución fuera horario"
-msgstr ""
 
 #: ../../pbx_features/external_filters.rst:76
-msgid ""
-"Esta locución se reproducirá cuando, siendo un día no festivo, la hora "
-"actual no esté dentro de ningunos de los horarios vinculados."
-msgstr ""
+msgid "Descriptive name that will reference this filter in DDIs configuration."
+msgstr "Nombre con el que se referenciará este filtro."
 
 #: ../../pbx_features/external_filters.rst:77
-msgid "Tipo de desvío fuera horario"
-msgstr ""
+#: ../../pbx_features/ivrs.rst:30
+msgid "Welcome locution"
+msgstr "Locución de bienvenida"
 
 #: ../../pbx_features/external_filters.rst:79
 msgid ""
-"Lo mismo que en festivo, pero para el caso de fuera horario. En la "
-"imagen, no se ejecutaría ningún desvío."
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:80
-msgid "Calendarios"
-msgstr ""
+"This locution will be played if the call is not going to be forwarded by "
+"out of schedule or holiday filtering (in other words if the normal "
+"routing of the DDI is going to be applied)."
+msgstr "Esta locución se reproduce siempre que la llamada no se va a rechazar por"
+" festivo o fuera horario (es decir, en una hora normal de un día normal)."
 
 #: ../../pbx_features/external_filters.rst:82
-msgid ""
-"Permite seleccionar múltiples calendarios, de forma que el calendario del"
-" filtro es la suma de todos ellos."
-msgstr ""
+msgid "Holiday locution"
+msgstr "Locución de festivo"
 
-#: ../../pbx_features/external_filters.rst:83
-msgid "Horarios"
-msgstr ""
-
-#: ../../pbx_features/external_filters.rst:85
+#: ../../pbx_features/external_filters.rst:84
 msgid ""
-"Permite seleccionar múltiples horarios, de forma que el horario del "
-"filtro es la suma de todos ellos."
-msgstr ""
+"The locution will be  played when the day is maked as holiday in any of "
+"the calendars associated with the filter **if the calendar entry has no "
+"locution** for that day."
+msgstr "Esta locución se reproducirá cuando el día de hoy esté marcado como "
+"festivo en uno de los calendarios y no se haya definido una locución de "
+"festivo especial en dicho calendario para ese día."
 
 #: ../../pbx_features/external_filters.rst:87
-msgid ""
-"El día festivo tiene prevalencia sobre el fuera horario. Primero se "
-"evalúan los calendarios, luego los horarios."
-msgstr ""
+msgid "Holiday forward type"
+msgstr " Tipo de desvío festivo"
 
 #: ../../pbx_features/external_filters.rst:89
 msgid ""
-"En la siguiente sección veremos como este filtro se asigna a los "
+"After playing the above locution (if configured), call can be forwaded to"
+" a voicemail, external number or internal extension. For example, the "
+"filter of the image will redirect calls during holidays to the external "
+"number 676 676 676."
+msgstr "Si una llamada entra un día festivo, aparte de la locución de festivo (si"
+" la hay), se puede realizar un desvío a un buzón de voz, a un número "
+"externo o a una extensión interna. En el ejemplo, la llamada se desviará "
+"los días festivos al móvil 676 676 676."
+
+#: ../../pbx_features/external_filters.rst:93
+msgid "Out of schedule locution"
+msgstr "Locución fuera horario"
+
+#: ../../pbx_features/external_filters.rst:95
+msgid ""
+"The locution will be played when, not being holiday, the current time is "
+"not in any of the time gaps defined in the schedules assigned to the "
+"filter."
+msgstr "Esta locución se reproducirá cuando, siendo un día no festivo, la hora "
+"actual no esté dentro de ningunos de los horarios vinculados."
+
+#: ../../pbx_features/external_filters.rst:98
+msgid "Out of schedule forward type"
+msgstr "Tipo de desvío fuera horario"
+
+#: ../../pbx_features/external_filters.rst:100
+msgid ""
+"Like in the holidays forward, but for out of schedule. The image above "
+"won't apply any forward (and the call will be hanguped)."
+msgstr "Lo mismo que en festivo, pero para el caso de fuera horario. En la "
+"imagen, no se ejecutaría ningún desvío."
+
+#: ../../pbx_features/external_filters.rst:102
+msgid "Calendars"
+msgstr "Calendarios"
+
+#: ../../pbx_features/external_filters.rst:104
+msgid ""
+"One or more calendars can be associated with the filter. The combination "
+"of all the callendars will be applied."
+msgstr "Permite seleccionar múltiples calendarios, de forma que el calendario del"
+" filtro es la suma de todos ellos."
+
+#: ../../pbx_features/external_filters.rst:106
+msgid "Schedules"
+msgstr "Horarios"
+
+#: ../../pbx_features/external_filters.rst:108
+msgid ""
+"One or more schedules can be applied. The combination of all the time "
+"gaps defined in the schedules will be applied."
+msgstr "Permite seleccionar múltiples horarios, de forma que el horario del "
+"filtro es la suma de todos ellos."
+
+#: ../../pbx_features/external_filters.rst:112
+msgid "Holidays are processed **before** out of schedule events."
+msgstr "El día festivo tiene prevalencia sobre el fuera horario. Primero se "
+"evalúan los calendarios, luego los horarios."
+
+#: ../../pbx_features/external_filters.rst:114
+msgid ""
+"In the next section we will use this new created filter with "
+":ref:`external_ddis` so we can configure a welcome locution for normal "
+"days, and especial behaviours for hoildays and out of schedule events."
+msgstr "En la siguiente sección veremos como este filtro se asigna a los "
 ":ref:`external_ddis` que queramos, definiendo así el comportamiento de "
 "los mismos fuera de horario y en días festivos, así como dentro de "
 "horario en el caso de *setear* locución de bienvenida en el filtro."
-msgstr ""
 
 #: ../../pbx_features/huntgroups.rst:5
-msgid "Grupos de salto"
-msgstr ""
+msgid "Hunt gorups"
+msgstr "Grupos de salto"
 
 #: ../../pbx_features/huntgroups.rst:7
 msgid ""
-"Los grupos de salto nos permiten definir lógicas de *ringado* más allá de"
+"The hungroups allows configuring more complex *ringing* process that the "
+"traditional **call to a user**."
+msgstr "Los grupos de salto nos permiten definir lógicas de *ringado* más allá de"
 " la básica **llamada a usuario**."
-msgstr ""
 
-#: ../../pbx_features/huntgroups.rst:9
-msgid "Existen de varios tipos:"
-msgstr ""
+#: ../../pbx_features/huntgroups.rst:10
+msgid "There are multiple types:"
+msgstr "Existen de varios tipos:"
 
-#: ../../pbx_features/huntgroups.rst:12
-msgid "A todos"
-msgstr ""
-
-#: ../../pbx_features/huntgroups.rst:14
-msgid "La llamada suena en varios terminales a la vez durante el tiempo definido."
-msgstr ""
+#: ../../pbx_features/huntgroups.rst:13
+msgid "Ring all"
+msgstr "A todos"
 
 #: ../../pbx_features/huntgroups.rst:15
-msgid "Secuencialmente (una vez)"
-msgstr ""
+msgid ""
+"The call will make all the terminals of the group during a predefined "
+"time."
+msgstr "La llamada suena en varios terminales a la vez durante el tiempo definido."
 
 #: ../../pbx_features/huntgroups.rst:17
+msgid "Secuential (once)"
+msgstr "Secuencialmente (una vez)"
+
+#: ../../pbx_features/huntgroups.rst:19
 msgid ""
-"Suenan los usuarios definidos, en el orden definido y durante el tiempo "
+"The call will *jump* from one user to another in a predefined order "
+"ringing during the configured time. If the call is not answered by any "
+"user of the group, it will be hanguped (or trigger the no answer logic)."
+msgstr "Suenan los usuarios definidos, en el orden definido y durante el tiempo "
 "definido a cada uno de ellos. Al acabar la secuencia, la llamada se "
 "cuelga."
-msgstr ""
 
-#: ../../pbx_features/huntgroups.rst:18
-msgid "Secuencialmente (infito)"
-msgstr ""
+#: ../../pbx_features/huntgroups.rst:22
+msgid "Secuential (infinite)"
+msgstr "Secuencialmente (infito)"
 
-#: ../../pbx_features/huntgroups.rst:20
+#: ../../pbx_features/huntgroups.rst:24
 msgid ""
-"Suenan los usuarios definidos, en el orden definido y durante el tiempo "
+"The call will *jump* from one user to another in a predefined order "
+"ringing during the configured time. If the call is not answered by any "
+"user of the group, the call will *jump* again to the first member of the "
+"group and keep looping."
+msgstr "Suenan los usuarios definidos, en el orden definido y durante el tiempo "
 "definido. Al acabar la secuencia, se vuelve a iniciar la secuencia."
-msgstr ""
 
-#: ../../pbx_features/huntgroups.rst:21
-msgid "Aleatoriamente"
-msgstr ""
+#: ../../pbx_features/huntgroups.rst:28
+msgid "Random"
+msgstr "Aleatoriamente"
 
-#: ../../pbx_features/huntgroups.rst:23
+#: ../../pbx_features/huntgroups.rst:30
 msgid ""
-"Reparte las llamadas entre los usuarios elegidos de forma aleatoria, "
+"The call will *jump* from one user to another in a random order, ringing "
+"during the configured time.  If the call is not answered by any user of "
+"the group, it will be hanguped (or trigger the no answer logic)."
+msgstr "Reparte las llamadas entre los usuarios elegidos de forma aleatoria, "
 "sonando cada uno de ellos el tiempo acordado. Una vez que suenan todos, "
 "la llamada se cuelga."
-msgstr ""
 
-#: ../../pbx_features/huntgroups.rst:26
-msgid "Ejemplo 1: Grupo de salto *ringall*"
-msgstr ""
-
-#: ../../pbx_features/huntgroups.rst:27
-msgid ""
-"Creemos por ejemplo un grupo de salto que llame a la par a nuestros 2 "
-"usuarios durante 30 segundos:"
-msgstr ""
-
-#: ../../pbx_features/huntgroups.rst:31
-msgid ""
-"Pulsando el icono de las personas podemos añadir a Alice y Bob a nuestro "
-"grupo de salto:"
-msgstr ""
+#: ../../pbx_features/huntgroups.rst:35
+msgid "Example 1: *Ringall* hunt group"
+msgstr "Ejemplo 1: Grupo de salto *ringall*"
 
 #: ../../pbx_features/huntgroups.rst:36
-msgid "Ejemplo 2: Grupo de salto secuencial"
-msgstr ""
-
-#: ../../pbx_features/huntgroups.rst:37
 msgid ""
-"Editemos ahora este grupo de salto para que llame 10 segundos a Alice y "
-"después 15 segundos a Bob, reiniciando la secuencia si ninguno de los 2 "
-"contesta:"
-msgstr ""
+"The following example will show how to create a hunt group that will call"
+" our 2 users at the same time during 30 seconds:"
+msgstr "Creemos por ejemplo un grupo de salto que llame a la par a nuestros 2 "
+"usuarios durante 30 segundos:"
 
 #: ../../pbx_features/huntgroups.rst:41
-msgid ""
-"En este caso tenemos que indicar una **prioridad** (los usuarios suenan "
-"de menos a mayor prioridad) y un tiempo de *ringing*:"
-msgstr ""
+msgid "Pressing the proper icon, we can add Alice and Bob to the hunt group:"
+msgstr "Pulsando el icono de las personas podemos añadir a Alice y Bob a nuestro "
+"grupo de salto:"
 
-#: ../../pbx_features/huntgroups.rst:45
-msgid ""
-"Para que ciertas lógicas (desvíos, etc.) alcancen un **Grupo de salto**, "
-"basta con crear una extensión apuntando a dicho grupo de salto y utilizar"
-" esta extensión como destino de la lógica."
-msgstr ""
+#: ../../pbx_features/huntgroups.rst:46
+msgid "Example 2: *Secuential* hunt group"
+msgstr "Ejemplo 2: Grupo de salto secuencial"
 
 #: ../../pbx_features/huntgroups.rst:47
-msgid "Creemos la extensión 200 que apunte a este grupo de salto:"
-msgstr ""
+msgid ""
+"We will edit the hunt group to convert it into secuential: the call will "
+"ring Alice during 10 seconds, then it will ring Bob 15 seconds, repeting "
+"this process until one of them answers."
+msgstr "Editemos ahora este grupo de salto para que llame 10 segundos a Alice y "
+"después 15 segundos a Bob, reiniciando la secuencia si ninguno de los 2 "
+"contesta:"
+
+#: ../../pbx_features/huntgroups.rst:53
+msgid ""
+"For this type of groups we have to configure priority (the call will "
+"*jump* from the users with lower number priority to the ones with higher "
+"number priority) and a *ringing* time for each user."
+msgstr "En este caso tenemos que indicar una **prioridad** (los usuarios suenan "
+"de menos a mayor prioridad) y un tiempo de *ringing*:"
+
+#: ../../pbx_features/huntgroups.rst:59
+msgid ""
+"Hunt groups can be routed from any process of IvozProvider by simply "
+"adding an extension that route to them."
+msgstr "Para que ciertas lógicas (desvíos, etc.) alcancen un **Grupo de salto**, "
+"basta con crear una extensión apuntando a dicho grupo de salto y utilizar"
+" esta extensión como destino de la lógica."
+
+#: ../../pbx_features/huntgroups.rst:62
+msgid "Let's create a new extension that routes to this hunt group:"
+msgstr "Creemos la extensión 200 que apunte a este grupo de salto:"
 
 #: ../../pbx_features/index.rst:3
-msgid "Funcionalidades de PBX"
-msgstr ""
+msgid "PBX Features"
+msgstr "Funcionalidades de PBX"
 
 #: ../../pbx_features/index.rst:5
 msgid ""
-"En el bloque anterior hemos conseguido realizar llamadas internas y "
+"In the previous block we have successfully make internal and external "
+"calls with just a minimum configuration, based on the base data left by "
+"the installer itself and ignoring a lot of the sections and features."
+msgstr "En el bloque anterior hemos conseguido realizar llamadas internas y "
 "externas realizando una configuración mínima, partiendo de la "
 "configuración que deja el propio instalador y dejando de lado múltiples "
 "apartados y funcionalidades."
-msgstr ""
-
-#: ../../pbx_features/index.rst:7
-msgid ""
-"El objetivo de este bloque será describir cada una de estas secciones con"
-" profundidad y ver así las funcionalidades de PBX que IvozProvider "
-"ofrece."
-msgstr ""
 
 #: ../../pbx_features/index.rst:9
-msgid "Para ello, seguiremos el siguiente índice:"
-msgstr ""
+msgid ""
+"The goal of this section will be describe each one of those features that"
+" are also included in IvozProvider."
+msgstr "El objetivo de este bloque será describir cada una de estas secciones con"
+" profundidad y ver así las funcionalidades de PBX que IvozProvider "
+"ofrece."
 
 #: ../../pbx_features/ivrs.rst:3
 msgid "Interactive Voice Response (IVR)"
-msgstr ""
+msgstr "Interactive Voice Response (IVR)"
 
 #: ../../pbx_features/ivrs.rst:5
 msgid ""
-"Un IVR es la forma habitual de realizar **menús telefónicos** en los que "
+"IVRs are the most common way to make **audio menus** where the caller "
+"must choose the destination of the call by **pressing codes** based on "
+"the locutions instructions that will be played."
+msgstr "Un IVR es la forma habitual de realizar **menús telefónicos** en los que "
 "**el llamante puede decidir el destino de su llamada sin más que pulsar "
 "dígitos** en base a las locuciones que se le van reproduciendo."
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:11
-msgid "IVRs genéricos"
-msgstr ""
 
 #: ../../pbx_features/ivrs.rst:13
+msgid "Generic IVRs"
+msgstr "IVRs genéricos"
+
+#: ../../pbx_features/ivrs.rst:15
 msgid ""
-"En los IVR genéricos el llamante marca directamente una extensión interna"
+"In this type of IVRs, the caller will directly press the extension that "
+"must previously know (or the welcome locution suggests) and the system "
+"will automatically connect with that extension:"
+msgstr "En los IVR genéricos el llamante marca directamente una extensión interna"
 " que conoce (o que se le indica en la locución de bienvenida) y el "
 "sistema le pone en contacto con dicha extensión de forma automática:"
-msgstr ""
 
-#: ../../pbx_features/ivrs.rst:17
-msgid "Describamos cada uno de los parámetros de un IVR genérico:"
-msgstr ""
+#: ../../pbx_features/ivrs.rst:21
+msgid "Generic IVRs have the following fields:"
+msgstr "Describamos cada uno de los parámetros de un IVR genérico:"
 
-#: ../../pbx_features/ivrs.rst:22
-msgid "Forma de referenciar el IVR"
-msgstr ""
+#: ../../pbx_features/ivrs.rst:26
+msgid "Descriptive name of the IVR that will be used in other sections."
+msgstr "Forma de referenciar el IVR"
 
-#: ../../pbx_features/ivrs.rst:23
+#: ../../pbx_features/ivrs.rst:27
 msgid "Timeout"
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:25
-msgid ""
-"Tiempo adicional al de la locución de bienvenida que el sistema espera a "
-"que el interlocutor marque los dígitos."
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:28
-msgid ""
-"Locución que se le presenta al llamante invitándole a marcar la extensión"
-" con la que quiera hablar."
-msgstr ""
+msgstr "Timeout"
 
 #: ../../pbx_features/ivrs.rst:29
-msgid "Locución de éxito"
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:31
-msgid ""
-"En caso de que la extensión marcada sea correcta, se reproducirá esta "
-"locución (típicamente dirá algo así como \"Contantando...\")."
-msgstr ""
+msgid "Time that caller has to enter the digits of the target extension."
+msgstr "Tiempo adicional al de la locución de bienvenida que el sistema espera a "
+"que el interlocutor marque los dígitos."
 
 #: ../../pbx_features/ivrs.rst:32
-msgid "Expresión regular lista negra"
-msgstr ""
+msgid "This locution will be played as soon as the caller enters the IVR."
+msgstr "Locución que se le presenta al llamante invitándole a marcar la extensión"
+" con la que quiera hablar."
 
-#: ../../pbx_features/ivrs.rst:34
+#: ../../pbx_features/ivrs.rst:33
+msgid "Success locution"
+msgstr "Locución de éxito"
+
+#: ../../pbx_features/ivrs.rst:35
 msgid ""
-"Si queremos que alguna extensión interna no sea accesible desde el IVR, "
+"In case the dialed extension exists in the company, this locution will be"
+" played (usually something like 'Connecting, please wait...')."
+msgstr "En caso de que la extensión marcada sea correcta, se reproducirá esta  "
+"locución (típicamente dirá algo así como \"Contantando...\")."
+
+#: ../../pbx_features/ivrs.rst:37
+msgid "Blacklist regular expression"
+msgstr "Expresión regular lista negra"
+
+#: ../../pbx_features/ivrs.rst:39
+msgid ""
+"This field can be used to avoid some extensions to be accessed from the "
+"IVR. In the image above, the exntesions 105 and 106 will not be "
+"available, and trying to dialing them will trigger the **error "
+"configuration**."
+msgstr "Si queremos que alguna extensión interna no sea accesible desde el IVR, "
 "basta con añadirla aquí utilizando expresiones regulares. En el ejemplo, "
 "las extensiones 105 y 106 no serían accesibles desde el IVR y marcarlas "
 "provocaría que se activase la **Configuración de Error**."
-msgstr ""
 
-#: ../../pbx_features/ivrs.rst:35
-msgid "Configuración No contesta"
-msgstr ""
+#: ../../pbx_features/ivrs.rst:43
+msgid "No answer process"
+msgstr "Configuración No contesta"
 
-#: ../../pbx_features/ivrs.rst:37
+#: ../../pbx_features/ivrs.rst:45
 msgid ""
-"En caso de que la extensión destino no conteste en el tiempo indicado, se"
-" reproduce la locución indicada y se desvía al número externo, extensión "
-"interna o buzón seleccionado."
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:38
-msgid "Configuración Error"
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:40
-msgid ""
-"Si lo que ha marcado el llamante no es válido (o no ha marcado nada), se "
-"reproduce la locución indicada y se desvía la llamada al número externo, "
-"extensión interna o buzón seleccionado."
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:46
-msgid "IVRs a medida"
-msgstr ""
+"If the dialed extension does not answer in X seconds, the no answer "
+"process will trigger, playing the configured locution and redirecting the"
+" call to another number, extension or voicemail."
+msgstr "En caso de que la extensión destino no conteste en el tiempo indicado, se"
+" reproduce la locución indicada y se desvía al número externo,  extensión"
+" interna o buzón seleccionado."
 
 #: ../../pbx_features/ivrs.rst:48
-msgid ""
-"A diferencia de los IVRs genéricos en donde el llamante solo puede marcar"
-" extensiones internas, los IVRs a medida permiten marcar dígitos que "
-"luego se pueden convertir a lo que el administrador de empresa desee."
-msgstr ""
+msgid "Error process"
+msgstr "Configuración Error"
 
 #: ../../pbx_features/ivrs.rst:50
 msgid ""
-"El caso más típico es el IVR que dice algo así como \"Marque 1 si quiere "
-"hablar con administración, marque 2 si quiere hablar con informática...\""
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:52
-msgid "Los campos que se presentan son prácticamente idénticos al IVR genérico:"
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:56
-msgid ""
-"La única diferencia es que no existe el campo **Expresión regular lista "
-"negra**, que carece de sentido en este tipo de IVRs."
-msgstr ""
+"If the dialed extension is invalid (o nothing has been dialed), the error"
+" process will trigger, playing the configured locution and redirecting "
+"the call to another number, extension or voicemail."
+msgstr "Si lo que ha marcado el llamante no es válido (o no ha marcado nada),  se"
+" reproduce la locución indicada y se desvía la llamada al número externo,"
+" extensión interna o buzón seleccionado."
 
 #: ../../pbx_features/ivrs.rst:58
-msgid ""
-"Pulsando el botón de la siguiente imagen se pueden definir las "
-"equivalencias deseadas:"
-msgstr ""
+msgid "Custom IVRs"
+msgstr "IVRs a medida"
 
-#: ../../pbx_features/ivrs.rst:62
+#: ../../pbx_features/ivrs.rst:60
 msgid ""
-"En este caso se puede marcar 1, 2 y 3 (todo lo demás será considerado "
-"inválido y activará la **Configuración de Error**):"
-msgstr ""
+"Contrary to the generic IVRs where the caller can only dial internal "
+"extensions, the custom IVRS can configure up to 10 options that can be "
+"routed in different ways."
+msgstr "A diferencia de los IVRs genéricos en donde el llamante solo puede marcar"
+" extensiones internas, los IVRs a medida permiten marcar dígitos que "
+"luego se pueden convertir a lo que el administrador de empresa desee."
 
-#: ../../pbx_features/ivrs.rst:66
+#: ../../pbx_features/ivrs.rst:64
 msgid ""
-"1: Llamada a la extensión interna 200, creada :ref:`en la sección "
-"anterior <huntgroups>` y que apunta al grupo de salto *Recepción*."
-msgstr ""
-
-#: ../../pbx_features/ivrs.rst:67
-msgid "2: Llama a la extensión interna 101."
-msgstr ""
+"The most common usage for this IVR is combining them with a welcome "
+"locution that says something like 'Press 1 to contact XXX, Press 2 to "
+"contact YYY, ...\""
+msgstr "El caso más típico es el IVR que dice algo así como \"Marque 1 si quiere "
+"hablar con administración, marque 2 si quiere hablar con informática...\""
 
 #: ../../pbx_features/ivrs.rst:68
-msgid "3: Desvía la llamada al número externo 676 676 676."
-msgstr ""
+msgid "Most of the configurable fields are the same that generic IVR uses:"
+msgstr "Los campos que se presentan son prácticamente idénticos al IVR genérico:"
 
-#: ../../pbx_features/ivrs.rst:70
+#: ../../pbx_features/ivrs.rst:72
 msgid ""
-"Cada una de las opciones del IVR a medida permite la selección de una "
+"The main difference on these screens is that **Blacklist regular "
+"expression** makes no sense in this kind of IVRs."
+msgstr "La única diferencia es que no existe el campo **Expresión regular lista "
+"negra**, que carece de sentido en este tipo de IVRs."
+
+#: ../../pbx_features/ivrs.rst:75
+msgid ""
+"The process of each entry of the IVR can be defined in the following "
+"button:"
+msgstr "Pulsando el botón de la siguiente imagen se pueden definir las "
+"equivalencias deseadas:"
+
+#: ../../pbx_features/ivrs.rst:79
+msgid ""
+"In this example, the caller can dial 1, 2 or 3 (the rest will be "
+"considered as an error and will trigger the **Error process**):"
+msgstr "En este caso se puede marcar 1, 2 y 3 (todo lo demás será considerado "
+"inválido y activará la **Configuración de Error**):"
+
+#: ../../pbx_features/ivrs.rst:84
+msgid ""
+"1: Call to the internal extension 200, created in :ref:`previous section "
+"<huntgroups>` that routes to hunt group *Reception*."
+msgstr "1: Llamada a la extensión interna 200, creada :ref:`en la sección "
+"anterior <huntgroups>` y que apunta al grupo de salto *Recepción*."
+
+#: ../../pbx_features/ivrs.rst:86
+msgid "2: Call to the internal extension 101."
+msgstr "2: Llama a la extensión interna 101."
+
+#: ../../pbx_features/ivrs.rst:87
+msgid "3: Route this call to the external number 676 676 676."
+msgstr "3: Desvía la llamada al número externo 676 676 676."
+
+#: ../../pbx_features/ivrs.rst:89
+msgid ""
+"Each of the Custom IVR entries supports a locution that, if set, will be "
+"played instead of the IVR **success locution**. This way, you can "
+"configure a generic locution (like 'Connecting....') or a custom one for "
+"a given entry (like 'Connecting reception department, please wait...')."
+msgstr "Cada una de las opciones del IVR a medida permite la selección de una "
 "locución que pisa a la **locución de éxito** si está definida. De esta "
 "forma aparte de tener una locución de éxito genérica con \"Contactando\" "
 "podríamos tener otra que dijera \"Contactando con Administración, espere "
 "por favor\"."
-msgstr ""
 
 #: ../../pbx_features/music_on_hold.rst:5
-msgid "Música en espera"
-msgstr ""
+msgid "Music on Hold"
+msgstr "Música en espera"
 
 #: ../../pbx_features/music_on_hold.rst:7
 msgid ""
-"La música en espera suena cuando un usuario retiene la llamada y su "
+"The music on hold will be played when the user holds the call and the "
+"other member waits until the call is resumed."
+msgstr "La música en espera suena cuando un usuario retiene la llamada y su "
 "interlocutor queda a la espera de seguir la conversación."
-msgstr ""
 
-#: ../../pbx_features/music_on_hold.rst:9
-msgid ""
-"IvozProvider permite definir la música que sonará en estos momentos en 2 "
+#: ../../pbx_features/music_on_hold.rst:10
+msgid "IvozProvider can be configured at two levels what music will be played:"
+msgstr "IvozProvider permite definir la música que sonará en estos momentos en 2 "
 "niveles distintos:"
-msgstr ""
 
-#: ../../pbx_features/music_on_hold.rst:11
-msgid ""
-"A nivel de operador de marca: **Configuración de Marca** > **Músicas en "
+#: ../../pbx_features/music_on_hold.rst:12
+msgid "At brand level: **Brand Configuration** > **Generic Music on Hold**"
+msgstr "A nivel de operador de marca: **Configuración de Marca** > **Músicas en "
 "espera genéricas**"
-msgstr ""
 
-#: ../../pbx_features/music_on_hold.rst:13
-msgid ""
-"A nivel de administrador de empresa: **Configuración de Empresa** > "
+#: ../../pbx_features/music_on_hold.rst:14
+msgid "At company level: **Company Configuration** > **Music on Hold**"
+msgstr "A nivel de administrador de empresa: **Configuración de Empresa** > "
 "**Música en espera**"
-msgstr ""
 
-#: ../../pbx_features/music_on_hold.rst:15
+#: ../../pbx_features/music_on_hold.rst:16
 msgid ""
-"Si una empresa define su música en espera, sonará. Si, por el contrario, "
+"If a company has defined a music on hold, it will be played. Otherwise, "
+"the one defined by the brand administrator. If none of this is "
+"configured, a global music will be played."
+msgstr "Si una empresa define su música en espera, sonará. Si, por el contrario, "
 "no define ninguna, sonará la que haya definido el operador de su marca."
-msgstr ""
-
-#: ../../pbx_features/music_on_hold.rst:17
-msgid ""
-"Se pueden definir más de una música en espera y el sistema elegirá de "
-"forma aleatoria la música en espera para cada llamada."
-msgstr ""
 
 #: ../../pbx_features/music_on_hold.rst:20
-msgid "Añadir una nueva música en espera"
-msgstr ""
-
-#: ../../pbx_features/music_on_hold.rst:23
 msgid ""
-"Una vez *encodeada* el campo **Status** muestra que está *ready* y se "
-"utilizará en las próximas llamadas:"
-msgstr ""
+"Multiple files can be added to be played as Music on Hold. The system "
+"will choose them randomly for each call."
+msgstr "Se pueden definir más de una música en espera y el sistema elegirá de "
+"forma aleatoria la música en espera para cada llamada."
+
+#: ../../pbx_features/music_on_hold.rst:24
+msgid "Add a new music on hold"
+msgstr "Añadir una nueva música en espera"
 
 #: ../../pbx_features/music_on_hold.rst:27
 msgid ""
-"IvozProvider reconoce archivos de audio en los formatos más comunes y los"
-" *encodea* a los formatos óptimos para la plataforma."
-msgstr ""
+"Once the music has been *encoded* the **Status** fill will display "
+"*ready* and the music will be used for the next calls."
+msgstr "Una vez *encodeada* el campo **Status** muestra que está *ready* y se "
+"utilizará en las próximas llamadas:"
 
-#: ../../pbx_features/music_on_hold.rst:29
+#: ../../pbx_features/music_on_hold.rst:32
 msgid ""
-"Después de *encodear*, podemos descargar el archivo original y el "
+"IvozProvider supports most of the common audio formats and *encodes* them"
+" to the optimal format for the platform."
+msgstr "IvozProvider reconoce archivos de audio en los formatos más comunes y  "
+"los *encodea* a los formatos óptimos para la plataforma."
+
+#: ../../pbx_features/music_on_hold.rst:35
+msgid ""
+"After the *encoding*, we can download both the original and the converted"
+" version in the edit screen."
+msgstr "Después de *encodear*, podemos descargar el archivo original y el "
 "convertido sin más que editar el ítem:"
-msgstr ""
 
 #: ../../pbx_features/services.rst:5
-msgid "Servicios adicionales"
-msgstr ""
+msgid "Additional services"
+msgstr "Servicios adicionales"
 
 #: ../../pbx_features/services.rst:7
 msgid ""
-"Existen **servicios especiales** a los que se accede **marcando códigos**"
+"There are **special services** that can be accessed by calling to some "
+"codes **from the terminal**."
+msgstr "Existen **servicios especiales** a los que se accede **marcando códigos**"
 " especiales **desde un terminal** de usuario **cuando éste está en "
 "reposo**."
-msgstr ""
 
-#: ../../pbx_features/services.rst:9
+#: ../../pbx_features/services.rst:10
 msgid ""
-"Los servicios que se definen en esta sección **no son accesibles en medio"
+"Services defined in this section **are not accessible during a "
+"conversation**. They are activated by **calling the codes**, not using "
+"DTMF codes while talking."
+msgstr "Los servicios que se definen en esta sección **no son accesibles en medio"
 " de una conversación**. Se activan **llamando** a los códigos que se "
 "mencionarán, no marcándolos en medio de una conversación."
-msgstr ""
 
-#: ../../pbx_features/services.rst:13
-msgid "Listado de códigos a nivel global"
-msgstr ""
+#: ../../pbx_features/services.rst:16
+msgid "Global Services codes"
+msgstr "Listado de códigos a nivel global"
 
-#: ../../pbx_features/services.rst:15
+#: ../../pbx_features/services.rst:18
 msgid ""
-"En el momento de realizar esta documentación, existen los siguientes "
+"There are the folowing **special services** avaialble in the section "
+"**Global configuration** > **Services**:"
+msgstr "En el momento de realizar esta documentación, existen los siguientes "
 "**servicios especiales** visibles en la sección **Gestión general** > "
 "**Servicios**:"
-msgstr ""
 
-#: ../../pbx_features/services.rst:20
-msgid "Captura Directa"
-msgstr ""
-
-#: ../../pbx_features/services.rst:22
+#: ../../pbx_features/services.rst:27
 msgid ""
-"Es el servicio que permite capturar metiendo el código que se asigne "
+"This service allows capturing a ringing call from other terminal by "
+"calling the code followed by the extension from the target user."
+msgstr "Es el servicio que permite capturar metiendo el código que se asigne "
 "seguido de la extensión del teléfono a capturar."
-msgstr ""
 
-#: ../../pbx_features/services.rst:23
-msgid "Captura de Grupo"
-msgstr ""
-
-#: ../../pbx_features/services.rst:25
+#: ../../pbx_features/services.rst:31
 msgid ""
-"Es el servicio que permite capturar el teléfono que esté sonando dentro "
+"This service allows capturing a ringing call for any terminal whose user "
+"is part of one of the capturer pickup groups."
+msgstr "Es el servicio que permite capturar el teléfono que esté sonando dentro "
 "de tu(s) grupo(s) de captura."
-msgstr ""
 
-#: ../../pbx_features/services.rst:26
-msgid "Consultar el buzón de voz"
-msgstr ""
+#: ../../pbx_features/services.rst:33
+msgid "Check voicemail"
+msgstr "Consultar el buzón de voz"
 
-#: ../../pbx_features/services.rst:28
+#: ../../pbx_features/services.rst:35
 msgid ""
-"Este servicio permite acceder a un menú de voz que te presenta los "
+"This service allows checking the user's voicemail using an incteractive "
+"menu from which new voicemails can be listen, deleted, etc. This an "
+"active alternative to receive voicemails via the email."
+msgstr "Este servicio permite acceder a un menú de voz que te presenta los "
 "mensajes de voz nuevos, viejos, etc. Es una alternativa a la recepción de"
 " mensajes de voz vía correo electrónico."
-msgstr ""
 
-#: ../../pbx_features/services.rst:30
+#: ../../pbx_features/services.rst:39
 msgid ""
-"A medida que la solución vaya evolucionando y surjan servicios nuevos, "
+"As soon as new services are implemented into IvozProvider, they will be "
+"listed in this section."
+msgstr "A medida que la solución vaya evolucionando y surjan servicios nuevos, "
 "aparecerán en este listado para que el operador global sepa de su "
 "existencia y lo comunique a sus operadores de marca."
-msgstr ""
-
-#: ../../pbx_features/services.rst:32
-msgid ""
-"Este listado determina los servicios disponibles y los códigos por "
-"defecto de las **nuevas marcas**."
-msgstr ""
-
-#: ../../pbx_features/services.rst:34
-msgid "Cambiar un código solo afecta a las marcas que se creen tras el cambio."
-msgstr ""
-
-#: ../../pbx_features/services.rst:38
-msgid "Definición de servicios y códigos a nivel de marca"
-msgstr ""
-
-#: ../../pbx_features/services.rst:40
-msgid ""
-"La sección **Configuración de Marca ** > **Servicios** permite al "
-"operador de marca:"
-msgstr ""
 
 #: ../../pbx_features/services.rst:42
 msgid ""
-"Redefinir el código de acceso por defecto a dichos servicios para las "
-"empresas que a su vez no lo redefinan."
-msgstr ""
+"This section lists the available services and the default codes when a "
+"**new brand** is created."
+msgstr "Este listado determina los servicios disponibles y los códigos por "
+"defecto de las **nuevas marcas**."
 
-#: ../../pbx_features/services.rst:44
-msgid "Borrar servicios que no quieran que puedan utilizar sus empresas."
-msgstr ""
-
-#: ../../pbx_features/services.rst:46
+#: ../../pbx_features/services.rst:45
 msgid ""
-"Por defecto este listado aparece con todas los servicios y los códigos "
-"configurados a nivel Global:"
-msgstr ""
+"Changing the default code in this section will only affect new created "
+"brands."
+msgstr "Cambiar un código solo afecta a las marcas que se creen tras el cambio."
 
 #: ../../pbx_features/services.rst:50
-msgid ""
-"Este listado determina los servicios disponibles y los códigos por "
-"defecto de las **nuevas empresas**."
-msgstr ""
+msgid "Services and codes for Brands"
+msgstr "Definición de servicios y códigos a nivel de marca"
 
 #: ../../pbx_features/services.rst:52
 msgid ""
-"Cambiar un código solo afecta a las empresas que se creen tras el cambio."
-" Borrar un servicio hace que no esté disponible para ninguna empresa de "
-"la marca."
-msgstr ""
+"The section **Brand configuration** > **Services** allows the brand "
+"operator to:"
+msgstr "La sección **Configuración de Marca ** > **Servicios** permite al "
+"operador de marca:"
 
-#: ../../pbx_features/services.rst:56
-msgid "Definición de códigos a nivel de empresa"
-msgstr ""
-
-#: ../../pbx_features/services.rst:58
+#: ../../pbx_features/services.rst:54
 msgid ""
-"Cada empresa puede *pisar* los valores por defecto asignados por su "
-"*operador de marca* accediendo a **Configuración de Empresa** > "
-"**Servicios** y cambiando el código asignado."
-msgstr ""
+"Change the default service code for all the brand companies (assuming the"
+" company hasn't already customized the code)"
+msgstr "Redefinir el código de acceso por defecto a dichos servicios para las "
+"empresas que a su vez no lo redefinan."
 
-#: ../../pbx_features/services.rst:61
-msgid "Empresa que quiere capturar con \\*\\* en lugar de con \\*95:"
-msgstr ""
+#: ../../pbx_features/services.rst:57
+msgid "Delete services so it won't be available for the companies."
+msgstr "Borrar servicios que no quieran que puedan utilizar sus empresas."
+
+#: ../../pbx_features/services.rst:59
+msgid ""
+"By default this list has all the services and codes from the global "
+"configuration:"
+msgstr "Por defecto este listado aparece con todas los servicios y los códigos "
+"configurados a nivel Global:"
 
 #: ../../pbx_features/services.rst:64
 msgid ""
-"Los servicios que el *administrador de empresa* borre no podrán ser "
+"This section lists the available services and the default codes when a "
+"**new company** is created."
+msgstr "Este listado determina los servicios disponibles y los códigos por "
+"defecto de las **nuevas empresas**."
+
+#: ../../pbx_features/services.rst:67
+msgid ""
+"Changing the default code in this section will only affect new created "
+"companies."
+msgstr "Cambiar un código solo afecta a las empresas que se creen tras el cambio."
+" Borrar un servicio hace que no esté disponible para ninguna empresa de "
+"la marca."
+
+#: ../../pbx_features/services.rst:72
+msgid "Services and codes for Companies"
+msgstr "Definición de códigos a nivel de empresa"
+
+#: ../../pbx_features/services.rst:74
+msgid ""
+"Each company can *customize* the default values assigned by the *brand "
+"operator* using the section **Company configuration** > **Services** and "
+"changing the codes listed there."
+msgstr "Cada empresa puede *pisar* los valores por defecto asignados por su "
+"*operador de marca* accediendo a **Configuración de Empresa** > "
+"**Servicios** y cambiando el código asignado."
+
+#: ../../pbx_features/services.rst:79
+msgid "Company that wants to capture using \\*\\* instead of the default \\*95:"
+msgstr "Empresa que quiere capturar con \\*\\* en lugar de con \\*95:"
+
+#: ../../pbx_features/services.rst:82
+msgid "Services deleted by the *company admin* will not available to users."
+msgstr "Los servicios que el *administrador de empresa* borre no podrán ser "
 "utilizados por sus usuarios."
-msgstr ""
 
 #: ../../pbx_features/sounds.rst:3
-msgid "Locuciones"
-msgstr ""
+msgid "Locutions"
+msgstr "Locuciones"
 
 #: ../../pbx_features/sounds.rst:5
 msgid ""
-"Las locuciones de la plataforma se crean y se suben de forma idéntica a "
+"The locutions of the platform are created and uploaded just like the "
+"files of :ref:`Music on Hold <musiconhold>`."
+msgstr "Las locuciones de la plataforma se crean y se suben de forma idéntica a "
 "cómo lo hacen las :ref:`músicas en espera <musiconhold>`."
-msgstr ""
 
-#: ../../pbx_features/sounds.rst:7
+#: ../../pbx_features/sounds.rst:8
 msgid ""
-"La sección que permite al administrador de empresa subir las locuciones "
+"The section **Company configuration** > **Locutions**  allows the company"
+" admin to choose the sounds that will be played in many configuration "
+"places (IVR, etc) accross the platform."
+msgstr "La sección que permite al administrador de empresa subir las locuciones "
 "que utilizará en diversos puntos de la configuración (IVR, etc.) es "
 "**Configuración de Empresa** > **Locuciones**."
-msgstr ""
 
-#: ../../pbx_features/sounds.rst:11
+#: ../../pbx_features/sounds.rst:14
 msgid ""
-"La única diferencia entre una **locución** y una **música en espera** es "
+"The main difference between a **locution** and **music on hold** is that "
+"the administrator chooses when the first one will be played (out of "
+"schedule, IVRs, and so on) and the second one will be played when a call "
+"is holded by an user."
+msgstr "La única diferencia entre una **locución** y una **música en espera** es "
 "su uso: la primera sonará cuando el administrador de empresa lo indique "
 "(fuera de horario, IVRs, etc.) y la segunda, en cambio, cuando la llamada"
 " sea retenida por un usuario."
-msgstr ""
 
 #: ../../pbx_features/terminals.rst:5
-msgid "Terminales"
-msgstr ""
+msgid "Terminals configuration"
+msgstr "Terminales"
 
 #: ../../pbx_features/terminals.rst:7
 msgid ""
-"La sección **Configuración de empresa** > **Terminales** permite dar de "
+"The section **Company configuration** > **Terminals** allows creating new"
+" SIP credentials that can be used by multiple SIP devices to place and "
+"receive calls from IvozProvider."
+msgstr "La sección **Configuración de empresa** > **Terminales** permite dar de "
 "alta credenciales SIP que podrán ser utilizados por diversos dispositivos"
 " SIP para realizar y recibir llamadas de IvozProvider."
-msgstr ""
 
-#: ../../pbx_features/terminals.rst:9
+#: ../../pbx_features/terminals.rst:11
 msgid ""
-"La mejor forma de entender la sección es crear uno nuevo y ver los campos"
+"The best way to understand this section is creating a new item and see "
+"the fields that must be filled."
+msgstr "La mejor forma de entender la sección es crear uno nuevo y ver los campos"
 " que tenemos que cumplimentar:"
-msgstr ""
-
-#: ../../pbx_features/terminals.rst:16
-msgid ""
-"Usuario que utilizará el terminal para presentarse ante IvozProvider y "
-"para realizar la fase de autenticación SIP."
-msgstr ""
-
-#: ../../pbx_features/terminals.rst:17 ../../pbx_features/users.rst:40
-msgid "Contraseña"
-msgstr ""
 
 #: ../../pbx_features/terminals.rst:19
 msgid ""
-"Contraseña que utilizará el terminal para responder a la fase de "
-"autenticación SIP. Utilizar el generador automático de contraseñas para "
-"cumplir los criterios de seguridad exigidos."
-msgstr ""
+"Username that will use the terminal during the SIP authentication phase "
+"with IvozProvider."
+msgstr "Usuario que utilizará el terminal para presentarse ante IvozProvider y "
+"para realizar la fase de autenticación SIP."
 
-#: ../../pbx_features/terminals.rst:20
-msgid "Codecs rechazados/permitidos"
-msgstr ""
-
-#: ../../pbx_features/terminals.rst:22
-msgid ""
-"Indica las capacidades del terminal en lo que a codecs se refiere. "
-"Primero se descarta los rechazados y posteriormente incluye los "
-"soportados. Se recomienda dejar *alaw* como único soportado."
-msgstr ""
+#: ../../pbx_features/terminals.rst:21
+#: ../../pbx_features/users.rst:46
+msgid "Password"
+msgstr "Contraseña"
 
 #: ../../pbx_features/terminals.rst:23
-msgid "Modo de actualización"
-msgstr ""
-
-#: ../../pbx_features/terminals.rst:25
 msgid ""
-"Indica si el terminal prefiere utilizar reINVITEs o UPDATEs para "
-"actualizar la sesión. La sección de ayuda indica qué terminales suelen "
-"requerir qué método. En caso de duda, utilizar *invite*."
-msgstr ""
+"Password that will use the terminal to answer the SIP authentication "
+"challenge. You can use the automatic password generator to fullfill the "
+"secure password requirements."
+msgstr "Contraseña que utilizará el terminal para responder a la fase de "
+"autenticación SIP. Utilizar el generador automático de contraseñas para "
+"cumplir los criterios de seguridad exigidos."
 
 #: ../../pbx_features/terminals.rst:26
-msgid "Modelo de terminal"
-msgstr ""
+msgid "Allowed/Disallowed codecs"
+msgstr "Codecs rechazados/permitidos"
 
 #: ../../pbx_features/terminals.rst:28
 msgid ""
-"Indica el tipo de provisión que tendrá que recibir este terminal "
-"concreto. En el apartado dedicado a la :ref:`provisión de terminales "
+"Determines what media codecs will be used with the terminal. First the "
+"disallowed codecs will be removed, then the allowed codecs will be added."
+" The default suggested configuration is to only support *alaw* codec."
+msgstr "Indica las capacidades del terminal en lo que a codecs se refiere. "
+"Primero se descarta los rechazados y posteriormente incluye los "
+"soportados. Se recomienda dejar *alaw* como único soportado."
+
+#: ../../pbx_features/terminals.rst:32
+msgid "CallerID update method"
+msgstr "Modo de actualización"
+
+#: ../../pbx_features/terminals.rst:34
+msgid ""
+"Choose the SIP method the terminal prefers to received the session update"
+" information: INVITE or UPDATE. The help hint can be used as guide to "
+"configure different terminal manufacturers. Use *INVITE* in case of "
+"doubt."
+msgstr "Indica si el terminal prefiere utilizar reINVITEs o UPDATEs para "
+"actualizar la sesión. La sección de ayuda indica qué terminales suelen "
+"requerir qué método. En caso de duda, utilizar *invite*."
+
+#: ../../pbx_features/terminals.rst:38
+msgid "Terminal model"
+msgstr "Modelo de terminal"
+
+#: ../../pbx_features/terminals.rst:40
+msgid ""
+"Determines the provisioning type that will receive this terminal. The "
+"section :ref:`terminal provisioning <provisioning>` will explain in depth"
+" the different models for automatic provision. If your device does not "
+"require provisioning, just select *Generic*."
+msgstr "Indica el tipo de provisión que tendrá que recibir este terminal "
+"concreto. En el apartado dedicado a la :ref:`provisión de terminales  "
 "<provisioning>` se verá que existen unos modelos con provisión automática"
 " y se explicará todo en profundidad. En caso de no necesitar provisión, "
 "utilizar *Generic*."
-msgstr ""
 
-#: ../../pbx_features/terminals.rst:29
+#: ../../pbx_features/terminals.rst:44
 msgid "MAC"
-msgstr ""
+msgstr "MAC"
 
-#: ../../pbx_features/terminals.rst:31
+#: ../../pbx_features/terminals.rst:46
 msgid ""
-"Campo necesario para modelos que utilizan el sistema de :ref:`provisión "
+"Optional field that is only required if you plan to use IvozProvider "
+":ref:`terminal provisioning <provisioning>`. This is the `phisical "
+"address <https://wikipedia.org/wiki/MAC_Address>`_ of the network adapter"
+" of the SIP device."
+msgstr "Campo necesario para modelos que utilizan el sistema de :ref:`provisión "
 "de terminales <provisioning>` de IvozProvider. Recoge la `dirección "
-"física <https://es.wikipedia.org/wiki/Direcci%C3%B3n_MAC>`_ del adaptador"
-" de red del dispositivo SIP."
-msgstr ""
+"física <https://es.wikipedia.org/wiki/Direcci%C3%B3n_MAC>`_ del  "
+"adaptador de red del dispositivo SIP."
 
-#: ../../pbx_features/terminals.rst:33
+#: ../../pbx_features/terminals.rst:51
 msgid ""
-"**En la mayoría** de dispositivos, siempre que no requieran provisión, "
+"For **most of devices** that doesn't require provisioning just filling "
+"**username** and **password** will be enough."
+msgstr "**En la mayoría** de dispositivos, siempre que no requieran provisión, "
 "**bastará con rellenar el nombre y contraseña**."
-msgstr ""
 
-#: ../../pbx_features/terminals.rst:35
+#: ../../pbx_features/terminals.rst:54
 msgid ""
-"Una vez dado de alta el Terminal, en la mayoría de dispositivos bastará "
+"Once the terminal has been created, most devices will only require the "
+"name, password and :ref:`Company SIP domain <domain_per_company>` in "
+"order to place calls."
+msgstr "Una vez dado de alta el Terminal, en la mayoría de dispositivos bastará "
 "con configurar nombre, contraseña y :ref:`dominio SIP de la compañía "
 "<domain_per_company>` para poder llamar."
-msgstr ""
 
 #: ../../pbx_features/users.rst:5
-msgid "Usuarios"
-msgstr ""
+msgid "Users configuration"
+msgstr "Usuarios"
 
 #: ../../pbx_features/users.rst:7
 msgid ""
-"El proceso de instalación nos creó a *Alice* y a *Bob*, y esto nos "
+"The installation process creates *Alice* and *Bob* users, allowing us to "
+"test internals calls between them without too much effort."
+msgstr "El proceso de instalación nos creó a *Alice* y a *Bob*, y esto nos "
 "permitió ahorrar mucho tiempo a la hora de conseguir que se llamarán "
 "entre ellos."
-msgstr ""
 
-#: ../../pbx_features/users.rst:9
+#: ../../pbx_features/users.rst:10
 msgid ""
-"También nos permitió pasar un poco de puntillas por la sección de "
+"We also skipped most of the setting in **Users** configuration that we "
+"will define in this section."
+msgstr "También nos permitió pasar un poco de puntillas por la sección de "
 "**Usuarios**, que ahora pasamos a definir en profundidad."
-msgstr ""
 
-#: ../../pbx_features/users.rst:11
+#: ../../pbx_features/users.rst:13
 msgid ""
-"Para ello, nada mejor que editar el usuario *Alice* y describir cada "
+"As usually, the best way is to edit an existing user and describe each of"
+" its fields:"
+msgstr "Para ello, nada mejor que editar el usuario *Alice* y describir cada "
 "campo del mismo, bloque a bloque:"
-msgstr ""
 
-#: ../../pbx_features/users.rst:15
-msgid "Datos personales"
-msgstr ""
-
-#: ../../pbx_features/users.rst:22
-msgid ""
-"Se utilizará para referenciar al usuario en múltiples ámbitos, incluyendo"
-" el nombre que se presenta en llamadas internas."
-msgstr ""
-
-#: ../../pbx_features/users.rst:23
-msgid "Apellidos"
-msgstr ""
+#: ../../pbx_features/users.rst:18
+msgid "Personal data"
+msgstr "Datos personales"
 
 #: ../../pbx_features/users.rst:25
-msgid "Irá junto con el Nombre en casi todos los casos."
-msgstr ""
-
-#: ../../pbx_features/users.rst:26
-msgid "Email"
-msgstr ""
-
-#: ../../pbx_features/users.rst:28
 msgid ""
-"Dirección de correo electrónico del usuario al que se enviarán los "
-"mensajes de voz del buzón."
-msgstr ""
+"Used to identify this user in most of the screens. This is also the name "
+"that will be displayed in internal calls made from this user."
+msgstr "Se utilizará para referenciar al usuario en múltiples ámbitos, incluyendo"
+" el nombre que se presenta en llamadas internas."
+
+#: ../../pbx_features/users.rst:27
+msgid "Lastname"
+msgstr "Apellidos"
+
+#: ../../pbx_features/users.rst:29
+msgid "Most of the times this is used to complete the previous field."
+msgstr "Irá junto con el Nombre en casi todos los casos."
+
+#: ../../pbx_features/users.rst:30
+msgid "Email"
+msgstr "Email"
 
 #: ../../pbx_features/users.rst:32
-msgid "Credenciales portal de usuario"
-msgstr ""
+msgid ""
+"Email used to send the user's received voicemails. This is also used to "
+"identify the user in their portal."
+msgstr "Dirección de correo electrónico del usuario al que se enviarán los "
+"mensajes de voz del buzón."
 
 #: ../../pbx_features/users.rst:37
-msgid "Nombre de usuario"
-msgstr ""
-
-#: ../../pbx_features/users.rst:39
-msgid "Nombre de usuario para acceder al :ref:`portal de usuario <userportal>`."
-msgstr ""
+msgid "Login Info"
+msgstr "Credenciales portal de usuario"
 
 #: ../../pbx_features/users.rst:42
-msgid "Contraseña para acceder al :ref:`portal de usuario <userportal>`."
-msgstr ""
+msgid "Active"
+msgstr "Activo"
 
-#: ../../pbx_features/users.rst:43
-msgid "Activo"
-msgstr ""
-
-#: ../../pbx_features/users.rst:45
+#: ../../pbx_features/users.rst:44
 msgid ""
-"Da posibilidad al administrador de la plataforma de desactivar el acceso "
+"Allows administrators to grant or disable user's acces to the "
+":ref:`user's portal <userportal>`."
+msgstr "Da posibilidad al administrador de la plataforma de desactivar el acceso "
 "al :ref:`portal de usuario <userportal>`."
-msgstr ""
 
-#: ../../pbx_features/users.rst:49
-msgid "Configuración básica"
-msgstr ""
+#: ../../pbx_features/users.rst:48
+msgid "Password used to access the :ref:`user's portal <userportal>`."
+msgstr "Contraseña para acceder al :ref:`portal de usuario <userportal>`."
 
-#: ../../pbx_features/users.rst:54
-msgid "Terminal"
-msgstr ""
-
-#: ../../pbx_features/users.rst:56
-msgid ""
-"Los terminales dados de alta en :ref:`terminals` se listan aquí para "
-"realizar la vinculación usuario-terminal."
-msgstr ""
+#: ../../pbx_features/users.rst:52
+msgid "Basic Configuration"
+msgstr "Configuración básica"
 
 #: ../../pbx_features/users.rst:57
-msgid "Extensión"
-msgstr ""
+msgid "Terminal"
+msgstr "Terminal"
 
 #: ../../pbx_features/users.rst:59
 msgid ""
-"Tal y como se explicaba en :ref:`extensions`, fija la extensión del "
-"usuario para llamadas internas."
-msgstr ""
+"The available terminals created in :ref:`terminals` are listed here for "
+"assignment."
+msgstr "Los terminales dados de alta en :ref:`terminals` se listan aquí para "
+"realizar la vinculación usuario-terminal."
 
-#: ../../pbx_features/users.rst:60
-msgid "DDI de salida"
-msgstr ""
-
-#: ../../pbx_features/users.rst:62
-msgid ""
-"Adelantado en :ref:`external_ddi`, determina el número que presenta el "
-"usuario en llamadas externas salientes."
-msgstr ""
+#: ../../pbx_features/users.rst:61
+msgid "Extension"
+msgstr "Extensión"
 
 #: ../../pbx_features/users.rst:63
-msgid "Permiso de llamada"
-msgstr ""
-
-#: ../../pbx_features/users.rst:65
 msgid ""
-"Asignación de un grupo de permisos explicado en profundidad "
-":ref:`aquí<call_permissions>`."
-msgstr ""
+"One of the available :ref:`extensions` that this user will display when "
+"placing internal calls. While multiple extensions can be routed to the "
+"user, only one of them will be presented when the user calls."
+msgstr "Tal y como se explicaba en :ref:`extensiones`, fija la extensión del "
+"usuario para llamadas internas."
 
 #: ../../pbx_features/users.rst:66
-msgid "No molestar"
-msgstr ""
+msgid "Outgoing DDI"
+msgstr "DDI de salida"
 
 #: ../../pbx_features/users.rst:68
 msgid ""
-"Impide que nadie pueda llamar a este usuario, sin impedirle a él llamar a"
+"As described in :ref:`external_ddi`, determines the number that will "
+"present when placing external outgoing calls."
+msgstr "Adelantado en :ref:`external_ddi`, determina el número que presenta el "
+"usuario en llamadas externas salientes."
+
+#: ../../pbx_features/users.rst:72
+msgid ""
+"One of the created :ref:`Call ACL <call_permissions>` groups, described "
+"it the previous sections."
+msgstr "Asignación de un grupo de permisos explicado en profundidad "
+":ref:`aquí<call_permissions>`."
+
+#: ../../pbx_features/users.rst:74
+msgid "Do not disturb"
+msgstr "No molestar"
+
+#: ../../pbx_features/users.rst:76
+msgid ""
+"When this setting is enabled, the user won't receive any call but can "
+"still place calls."
+msgstr "Impide que nadie pueda llamar a este usuario, sin impedirle a él llamar a"
 " donde desee."
-msgstr ""
 
-#: ../../pbx_features/users.rst:69
-msgid "Llamada en espera"
-msgstr ""
+#: ../../pbx_features/users.rst:78
+msgid "Call waiting"
+msgstr "Llamada en espera"
 
-#: ../../pbx_features/users.rst:71
+#: ../../pbx_features/users.rst:80
 msgid ""
-"Determina si el sistema tendrá que llamar al usuario cuando éste ya esté "
-"en conversación."
-msgstr ""
-
-#: ../../pbx_features/users.rst:75 ../../pbx_features/users.rst:80
-#: ../../pbx_features/users.rst:164
-msgid "Buzón de voz"
-msgstr ""
-
-#: ../../pbx_features/users.rst:82
-msgid ""
-"Activa o desactiva **la existencia** del buzón de voz del usuario. Aparte"
-" de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá que "
-"desviar las llamadas que queramos al buzón."
-msgstr ""
-
-#: ../../pbx_features/users.rst:83
-msgid "Notificar por email"
-msgstr ""
+"When this setting is enabled, the user terminal will receive new calls "
+"even if it already talking."
+msgstr "Determina si el sistema tendrá que llamar al usuario cuando éste ya "
+"esté en conversación."
 
 #: ../../pbx_features/users.rst:85
-msgid ""
-"Mandar a la dirección del usuario un correo notificando del mensaje de "
-"voz."
-msgstr ""
+msgid "Voicemail"
+msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:86
-msgid "Adjuntar audio del mensaje"
-msgstr ""
-
-#: ../../pbx_features/users.rst:88
-msgid "Adjuntar o no en dicho mail el audio del mensaje"
-msgstr ""
+#: ../../pbx_features/users.rst:90
+msgid "VoiceMail enabled"
+msgstr "Buzón de voz"
 
 #: ../../pbx_features/users.rst:92
-msgid "Jefe-Asistente"
-msgstr ""
-
-#: ../../pbx_features/users.rst:96
 msgid ""
-"La funcionalidad jefe-asistente impide que un usuario sea molestado por "
-"nadie que no sea:"
-msgstr ""
+"Enables or disables the **existance** of a users voicemail. This only "
+"makes the voicemail available to be routed as described in the section "
+":ref:`forward to voicemail <fwd_to_vm>`."
+msgstr "Activa o desactiva **la existencia** del buzón de voz del usuario. "
+"Aparte de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá "
+"que desviar las llamadas que queramos al buzón."
 
-#: ../../pbx_features/users.rst:98
-msgid "Su asistente."
-msgstr ""
+#: ../../pbx_features/users.rst:95
+msgid "Email notification"
+msgstr "Notificar por email"
 
-#: ../../pbx_features/users.rst:100
-msgid "Las excepciones que él defina."
-msgstr ""
+#: ../../pbx_features/users.rst:97
+msgid ""
+"Send an email to the configured user address when a new voicemail is "
+"received."
+msgstr "Mandar a la dirección del usuario un correo notificando del mensaje de "
+"voz."
 
-#: ../../pbx_features/users.rst:102
-msgid "Toda llamada con destino a *un jefe* será desviada al asistente."
-msgstr ""
+#: ../../pbx_features/users.rst:99
+msgid "Attach sounds:"
+msgstr "Adjuntar audio del mensaje"
+
+#: ../../pbx_features/users.rst:101
+msgid "Attach the audio message to the sent email."
+msgstr "Adjuntar o no en dicho mail el audio del mensaje"
 
 #: ../../pbx_features/users.rst:105
-msgid "Jefe"
-msgstr ""
+msgid "Boss-Assistant"
+msgstr "Jefe-Asistente"
 
-#: ../../pbx_features/users.rst:107
-msgid "Indica que el usuario en cuestión es jefe o no."
-msgstr ""
-
-#: ../../pbx_features/users.rst:108
-msgid "Asistente"
-msgstr ""
-
-#: ../../pbx_features/users.rst:110
-msgid "Si el usuario es jefe, indica quién es su asistente."
-msgstr ""
+#: ../../pbx_features/users.rst:109
+msgid ""
+"This feature will turn the user into a boss that can only be directly "
+"call by:"
+msgstr "La funcionalidad jefe-asistente impide que un usuario sea molestado por nadie "
+"que no sea:"
 
 #: ../../pbx_features/users.rst:111
-msgid "Whitelist jefe/asistente"
-msgstr ""
+msgid "The selected assistant."
+msgstr "Su asistente."
 
 #: ../../pbx_features/users.rst:113
-msgid "Permite indicar utilizando expresiones regulares las excepciones deseadas."
-msgstr ""
+msgid "Any exception defined in the whitelist regular expression."
+msgstr "Las excepciones que él defina."
 
 #: ../../pbx_features/users.rst:115
-msgid ""
-"Con la configuración de la imagen, toda llamada a *Alice* acabará en "
-"*Bob*, salvo las que haga el propio *Bob* y el número de teléfono 945 945"
-" 945."
-msgstr ""
+msgid "The rest of the calls to *a bos* will be redirected to the assistant."
+msgstr "Toda llamada con destino a *un jefe* será desviada al asistente."
 
-#: ../../pbx_features/users.rst:119
-msgid "Pertenencia a grupos"
-msgstr ""
+#: ../../pbx_features/users.rst:118
+msgid "Is boss"
+msgstr "Jefe"
+
+#: ../../pbx_features/users.rst:120
+msgid "Determines if this user is a boss."
+msgstr "Indica que el usuario en cuestión es jefe o no."
+
+#: ../../pbx_features/users.rst:121
+msgid "Assistant"
+msgstr "Asistente"
 
 #: ../../pbx_features/users.rst:123
+msgid "Who will receive the redirected calls of this boss."
+msgstr "Si el usuario es jefe, indica quién es su asistente."
+
+#: ../../pbx_features/users.rst:124
+msgid "Whitelist regular expression."
+msgstr "Whitelist jefe/asistente"
+
+#: ../../pbx_features/users.rst:126
 msgid ""
-"Tal y como se verá en las secciones :ref:`huntgroups` y "
-":ref:`capture_groups`, un usuario puede pertenecer a uno o a varios "
-"grupos de captura y grupos de salto."
-msgstr ""
+"Regular expresion to match numbers that are allowed to call directly to "
+"the boss."
+msgstr "Permite indicar utilizando expresiones regulares las excepciones "
+"deseadas."
 
-#: ../../pbx_features/users.rst:125
+#: ../../pbx_features/users.rst:129
 msgid ""
-"Aparte de poder configurar dicha pertenencia desde las propias secciones "
-":ref:`huntgroups` y :ref:`capture_groups`, se puede añadir al usuario que"
-" estamos editando a los grupos de captura y grupos de salto deseados que "
-"ya existan."
-msgstr ""
+"With the setup in the image, every call to *Alice* will be redirected to "
+"*Bob*, except the ones placed by *Bob* itself and those coming from the "
+"number 945 945 945."
+msgstr "Con la configuración de la imagen, toda llamada a *Alice* acabará en *Bob*, "
+"salvo las que haga el propio *Bob* y el número de teléfono 945 945 945."
 
-#: ../../pbx_features/users.rst:127
+#: ../../pbx_features/users.rst:135
+msgid "Group Configuration"
+msgstr "Pertenencia a grupos"
+
+#: ../../pbx_features/users.rst:139
 msgid ""
-"En el caso de la pertenencia a **grupos de salto**, también se puede "
-"configurar desde el listado general:"
-msgstr ""
+"As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
+" the user can be part of one or more huntgroups and pickup groups."
+msgstr "Tal y como se verá en las secciones :ref:`huntgroups` y :ref:`capture_groups`, "
+"un usuario puede pertenecer a uno o a varios grupos de captura y grupos de salto."
 
-#: ../../pbx_features/users.rst:134
-msgid "Desvíos de llamada"
-msgstr ""
-
-#: ../../pbx_features/users.rst:136
+#: ../../pbx_features/users.rst:142
 msgid ""
-"Los desvíos de las llamadas de un usuario concreto se configura pulsando "
-"el siguiente botón:"
-msgstr ""
+"Those groups can be configured from the sections :ref:`huntgroups` and "
+":ref:`capture_groups` or the user's screen if the groups already exists."
+msgstr "Aparte de poder configurar dicha pertenencia desde las propias secciones "
+":ref:`huntgroups` y :ref:`capture_groups`, se puede añadir al usuario que "
+"estamos editando a los grupos de captura y grupos de salto deseados que ya "
+"existan."
 
-#: ../../pbx_features/users.rst:143
+#: ../../pbx_features/users.rst:145
 msgid ""
-"Para desviar las llamadas externas que no se contesten en 15 segundos al "
-"buzón de voz que acabamos de configurar, por ejemplo, habría que "
-"configurar un desvío tal que:"
-msgstr ""
-
-#: ../../pbx_features/users.rst:148
-msgid "Estos son los campos y los posibles valores:"
-msgstr ""
-
-#: ../../pbx_features/users.rst:151
-msgid "Tipo de llamada"
-msgstr ""
+"You can also configure the user's **hunt groups** from the icon in each "
+"user line of the users list."
+msgstr "En el caso de la pertenencia a **grupos de salto**, también se puede configurar "
+"desde el listado general:"
 
 #: ../../pbx_features/users.rst:153
+msgid "User Call Forward"
+msgstr "Desvíos de llamada"
+
+#: ../../pbx_features/users.rst:155
+msgid "The user's call forward can be configured in the following button:"
+msgstr "Los desvíos de las llamadas de un usuario concreto se configura pulsando el "
+"siguiente botón:"
+
+#: ../../pbx_features/users.rst:162
 msgid ""
-"Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
-"interna o ambas"
-msgstr ""
-
-#: ../../pbx_features/users.rst:154
-msgid "Tipo de desvío"
-msgstr ""
-
-#: ../../pbx_features/users.rst:160
-msgid "Indica cuándo aplica el desvío:"
-msgstr ""
-
-#: ../../pbx_features/users.rst:157
-msgid "Incondicional: siempre"
-msgstr ""
-
-#: ../../pbx_features/users.rst:158
-msgid "Perdida: cuando no se conteste al de X segundos"
-msgstr ""
-
-#: ../../pbx_features/users.rst:159
-msgid ""
-"Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
-"activo)"
-msgstr ""
-
-#: ../../pbx_features/users.rst:160
-msgid ""
-"No registrado: cuando el usuario tenga su terminal sin conectar con "
-"IvozProvider"
-msgstr ""
-
-#: ../../pbx_features/users.rst:161
-msgid "Tipo de destino"
-msgstr ""
-
-#: ../../pbx_features/users.rst:165
-msgid "Indica a dónde se enviará la llamada cuando el desvío aplique:"
-msgstr ""
-
-#: ../../pbx_features/users.rst:165
-msgid "Número (externo)"
-msgstr ""
-
-#: ../../pbx_features/users.rst:166
-msgid "Extensión (interna)"
-msgstr ""
+"For example, to forward all external calls that are not answered after 15"
+" seconds, we could configure a call forward like this:"
+msgstr "Para desviar las llamadas externas que no se contesten en 15 segundos al buzón"
+" de voz que acabamos de configurar, por ejemplo, habría que configurar un desvío"
+" tal que:"
 
 #: ../../pbx_features/users.rst:168
-msgid ""
-"Si queremos que desviar a un grupo de salto, por ejemplo, bastaría con "
-"crear una extensión que apunte al grupo de salto deseado y seleccionar "
-"*Extensión* en el **Tipo de destino**."
-msgstr ""
+msgid "These are the fields and available values:"
+msgstr "Estos son los campos y los posibles valores:"
 
-#~ msgid "Extensiones"
-#~ msgstr ""
+#: ../../pbx_features/users.rst:171
+msgid "Call Type"
+msgstr "Tipo de llamada"
+
+#: ../../pbx_features/users.rst:173
+msgid ""
+"Determines if the forward must be applied to external, internal or any "
+"type of call."
+msgstr "Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
+"interna o ambas"
+
+#: ../../pbx_features/users.rst:175
+msgid "Forward type"
+msgstr "Tipo de desvío"
+
+#: ../../pbx_features/users.rst:184
+msgid "When this forward must be applied:"
+msgstr "Indica cuándo aplica el desvío:"
+
+#: ../../pbx_features/users.rst:178
+msgid "Inconditional: always"
+msgstr "Incondicional: siempre"
+
+#: ../../pbx_features/users.rst:179
+msgid "No answer: when the call is not answered in X seconds"
+msgstr "Perdida: cuando no se conteste al de X segundos"
+
+#: ../../pbx_features/users.rst:180
+msgid ""
+"Busy: When the user is talking to someone (and call waiting is disabled),"
+" when *Do not disturb* is enabled or when the user rejects an incoming "
+"call."
+msgstr "Ocupado: cuando el usuario esté ocupado (hablando o con el *No "
+"molestar* activo)"
+
+#: ../../pbx_features/users.rst:183
+msgid ""
+"Not registered: when the user SIP terminal is not registered against "
+"IvozProvider."
+msgstr "No registrado: cuando el usuario tenga su terminal sin conectar "
+"con IvozProvider"
+
+#: ../../pbx_features/users.rst:185
+msgid "Target type"
+msgstr "Tipo de destino"
+
+#: ../../pbx_features/users.rst:189
+msgid "What route will use the forwaded call."
+msgstr "Indica a dónde se enviará la llamada cuando el desvío aplique:"
+
+#: ../../pbx_features/users.rst:188
+msgid "VoiceMail"
+msgstr "Buzón de voz"
+
+#: ../../pbx_features/users.rst:189
+msgid "Number (external)"
+msgstr "Número (externo)"
+
+#: ../../pbx_features/users.rst:190
+msgid "Extension (internal)"
+msgstr "Extensión (interna)"
+
+#: ../../pbx_features/users.rst:192
+msgid ""
+"If we want to forward to other process, we can create an extension routed"
+" to that object and use the target type *Extension*."
+msgstr "Si queremos que desviar a un grupo de salto, por ejemplo, bastaría "
+"con crear una extensión que apunte al grupo de salto deseado y seleccionar "
+"*Extensión* en el **Tipo de destino**."
 

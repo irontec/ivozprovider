@@ -1,87 +1,82 @@
 .. _services:
 
-#####################
-Servicios adicionales
-#####################
+###################
+Additional services
+###################
 
-Existen **servicios especiales** a los que se accede **marcando códigos** 
-especiales **desde un terminal** de usuario **cuando éste está en reposo**.
+There are **special services** that can be accessed by calling to some codes
+**from the terminal**.
 
-.. danger:: Los servicios que se definen en esta sección **no son accesibles 
-   en medio de una conversación**. Se activan **llamando** a los códigos que 
-   se mencionarán, no marcándolos en medio de una conversación.
+.. danger:: Services defined in this section **are not accessible during a 
+   conversation**. They are activated by **calling the codes**, not using 
+   DTMF codes while talking.
 
-*********************************
-Listado de códigos a nivel global
-*********************************
+*********************
+Global Services codes
+*********************
 
-En el momento de realizar esta documentación, existen los siguientes 
-**servicios especiales** visibles en la sección **Gestión general** > 
-**Servicios**:
+There are the folowing **special services** avaialble in the section **Global 
+configuration** > **Services**:
+
 
 .. image:: img/services_god.png
 
 .. glossary::
 
-    Captura Directa
-        Es el servicio que permite capturar metiendo el código que se asigne 
-        seguido de la extensión del teléfono a capturar.
+    Direct pickup
+        This service allows capturing a ringing call from other terminal by 
+        calling the code followed by the extension from the target user.
 
-    Captura de Grupo
-        Es el servicio que permite capturar el teléfono que esté sonando 
-        dentro de tu(s) grupo(s) de captura.
+    Group pickup
+        This service allows capturing a ringing call for any terminal whose user 
+        is part of one of the capturer pickup groups.
 
-    Consultar el buzón de voz
-        Este servicio permite acceder a un menú de voz que te presenta los 
-        mensajes de voz nuevos, viejos, etc. Es una alternativa a la recepción 
-        de mensajes de voz vía correo electrónico.
+    Check voicemail
+        This service allows checking the user's voicemail using an incteractive 
+        menu from which new voicemails can be listen, deleted, etc. This an 
+        active alternative to receive voicemails via the email.
 
-A medida que la solución vaya evolucionando y surjan servicios nuevos, 
-aparecerán en este listado para que el operador global sepa de su existencia 
-y lo comunique a sus operadores de marca.
+As soon as new services are implemented into IvozProvider, they will be listed
+in this section.
 
-.. attention:: Este listado determina los servicios disponibles y los códigos 
-   por defecto de las **nuevas marcas**.
+.. attention:: This section lists the available services and the default codes 
+   when a **new brand** is created.
 
-.. hint:: Cambiar un código solo afecta a las marcas que se creen tras el 
-   cambio.
+.. hint:: Changing the default code in this section will only affect new 
+   created brands. 
 
-**************************************************
-Definición de servicios y códigos a nivel de marca
-**************************************************
+*****************************
+Services and codes for Brands
+*****************************
 
-La sección **Configuración de Marca ** > **Servicios** permite al operador 
-de marca:
+The section **Brand configuration** > **Services** allows the brand operator to: 
 
-- Redefinir el código de acceso por defecto a dichos servicios para las 
-  empresas que a su vez no lo redefinan.
+- Change the default service code for all the brand companies (assuming the 
+  company hasn't already customized the code)
 
-- Borrar servicios que no quieran que puedan utilizar sus empresas.
+- Delete services so it won't be available for the companies.
 
-Por defecto este listado aparece con todas los servicios y los códigos 
-configurados a nivel Global:
+By default this list has all the services and codes from the global 
+configuration:
 
 .. image:: img/services_brand_list.png
 
-.. attention:: Este listado determina los servicios disponibles y los códigos 
-   por defecto de las **nuevas empresas**.
+.. attention:: This section lists the available services and the default codes 
+   when a **new company** is created.
+   
+.. hint:: Changing the default code in this section will only affect new 
+   created companies. 
 
-.. hint:: Cambiar un código solo afecta a las empresas que se creen tras el 
-   cambio. Borrar un servicio hace que no esté disponible para ninguna empresa 
-   de la marca.
+********************************
+Services and codes for Companies
+********************************
 
-****************************************
-Definición de códigos a nivel de empresa
-****************************************
+Each company can *customize* the default values assigned by the *brand operator* 
+using the section **Company configuration** > **Services** and changing the codes 
+listed there.
 
-Cada empresa puede *pisar* los valores por defecto asignados por su *operador 
-de marca* accediendo a **Configuración de Empresa** > **Servicios** y 
-cambiando el código asignado.
-
-.. rubric:: Empresa que quiere capturar con \*\* en lugar de con \*95:
+.. rubric:: Company that wants to capture using \*\* instead of the default \*95: 
 
 .. image:: img/services_company_edit.png
 
-.. hint:: Los servicios que el *administrador de empresa* borre no podrán ser 
-   utilizados por sus usuarios.
-
+.. hint:: Services deleted by the *company admin* will not available to users.

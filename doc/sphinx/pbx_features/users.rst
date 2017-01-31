@@ -76,7 +76,7 @@ Basic Configuration
         When this setting is enabled, the user won't receive any call but can 
         still place calls.
 
-    Call saiting
+    Call waiting
         When this setting is enabled, the user terminal will receive new calls 
         even if it already talking.
 

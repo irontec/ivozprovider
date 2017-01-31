@@ -2,96 +2,91 @@
 Interactive Voice Response (IVR)
 ################################
 
-Un IVR es la forma habitual de realizar **menús telefónicos** en los que **el 
-llamante puede decidir el destino de su llamada sin más que pulsar dígitos** en 
-base a las locuciones que se le van reproduciendo.
+IVRs are the most common way to make **audio menus** where the caller must 
+choose the destination of the call by **pressing codes** based on the locutions
+instructions that will be played.
 
 .. _generic_ivrs:
 
-**************
-IVRs genéricos
-**************
+************
+Generic IVRs
+************
 
-En los IVR genéricos el llamante marca directamente una extensión interna que 
-conoce (o que se le indica en la locución de bienvenida) y el sistema le pone 
-en contacto con dicha extensión de forma automática:
+In this type of IVRs, the caller will directly press the extension that must
+previously know (or the welcome locution suggests) and the system will
+automatically connect with that extension: 
 
 .. image:: img/ivr_generic.png
 
-Describamos cada uno de los parámetros de un IVR genérico:
+Generic IVRs have the following fields:
 
 .. glossary::
 
-    Nombre
-        Forma de referenciar el IVR
+    Name
+        Descriptive name of the IVR that will be used in other sections.
 
     Timeout
-        Tiempo adicional al de la locución de bienvenida que el sistema espera 
-        a que el interlocutor marque los dígitos.
+        Time that caller has to enter the digits of the target extension. 
 
-    Locución de bienvenida
-        Locución que se le presenta al llamante invitándole a marcar la 
-        extensión con la que quiera hablar.
+    Welcome locution
+        This locution will be played as soon as the caller enters the IVR.
 
-    Locución de éxito
-        En caso de que la extensión marcada sea correcta, se reproducirá esta 
-        locución (típicamente dirá algo así como "Contantando...").
+    Success locution
+        In case the dialed extension exists in the company, this locution will
+        be played (usually something like 'Connecting, please wait...').
 
-    Expresión regular lista negra
-        Si queremos que alguna extensión interna no sea accesible desde el IVR, 
-        basta con añadirla aquí utilizando expresiones regulares. En el 
-        ejemplo, las extensiones 105 y 106 no serían accesibles desde el IVR y 
-        marcarlas provocaría que se activase la **Configuración de Error**.
+    Blacklist regular expression
+        This field can be used to avoid some extensions to be accessed from the
+        IVR. In the image above, the exntesions 105 and 106 will not be 
+        available, and trying to dialing them will trigger the **error 
+        configuration**.
+        
+    No answer process
+        If the dialed extension does not answer in X seconds, the no answer 
+        process will trigger, playing the configured locution and redirecting 
+        the call to another number, extension or voicemail.
 
-    Configuración No contesta
-        En caso de que la extensión destino no conteste en el tiempo indicado, 
-        se reproduce la locución indicada y se desvía al número externo, 
-        extensión interna o buzón seleccionado.
-
-    Configuración Error
-        Si lo que ha marcado el llamante no es válido (o no ha marcado nada), 
-        se reproduce la locución indicada y se desvía la llamada al número 
-        externo, extensión interna o buzón seleccionado.
+    Error process
+        If the dialed extension is invalid (o nothing has been dialed), the 
+        error process will trigger, playing the configured locution and
+        redirecting the call to another number, extension or voicemail. 
 
 .. _custom_ivrs:
 
-*************
-IVRs a medida
-*************
+***********
+Custom IVRs
+***********
 
-A diferencia de los IVRs genéricos en donde el llamante solo puede marcar 
-extensiones internas, los IVRs a medida permiten marcar dígitos que luego se 
-pueden convertir a lo que el administrador de empresa desee.
+Contrary to the generic IVRs where the caller can only dial internal 
+extensions, the custom IVRS can configure up to 10 options that can be routed
+in different ways.
 
-.. hint:: El caso más típico es el IVR que dice algo así como "Marque 1 si 
-   quiere hablar con administración, marque 2 si quiere hablar con 
-   informática..."
+.. hint:: The most common usage for this IVR is combining them with a welcome
+   locution that says something like 'Press 1 to contact XXX, Press 2 to 
+   contact YYY, ..."
 
-Los campos que se presentan son prácticamente idénticos al IVR genérico:
+Most of the configurable fields are the same that generic IVR uses:   
 
 .. image:: img/ivr_custom.png
 
-La única diferencia es que no existe el campo **Expresión regular lista 
-negra**, que carece de sentido en este tipo de IVRs.
+The main difference on these screens is that **Blacklist regular expression**
+makes no sense in this kind of IVRs.
 
-Pulsando el botón de la siguiente imagen se pueden definir las equivalencias 
-deseadas:
+The process of each entry of the IVR can be defined in the following button:
 
 .. image:: img/ivr_custom2.png
 
-En este caso se puede marcar 1, 2 y 3 (todo lo demás será considerado inválido 
-y activará la **Configuración de Error**):
+In this example, the caller can dial 1, 2 or 3 (the rest will be considered as
+an error and will trigger the **Error process**): 
 
 .. image:: img/ivr_custom3.png
 
-- 1: Llamada a la extensión interna 200, creada :ref:`en la sección anterior 
-  <huntgroups>` y que apunta al grupo de salto *Recepción*.
-- 2: Llama a la extensión interna 101.
-- 3: Desvía la llamada al número externo 676 676 676.
+- 1: Call to the internal extension 200, created in :ref:`previous section 
+  <huntgroups>` that routes to hunt group *Reception*.
+- 2: Call to the internal extension 101.
+- 3: Route this call to the external number 676 676 676.
 
-.. note:: Cada una de las opciones del IVR a medida permite la selección de 
-   una locución que pisa a la **locución de éxito** si está definida. De esta 
-   forma aparte de tener una locución de éxito genérica con "Contactando" 
-   podríamos tener otra que dijera "Contactando con Administración, espere 
-   por favor".
-
+.. note:: Each of the Custom IVR entries supports a locution that, if set, 
+   will be played instead of the IVR **success locution**. This way, you can 
+   configure a generic locution (like 'Connecting....') or a custom one for
+   a given entry (like 'Connecting reception department, please wait...').

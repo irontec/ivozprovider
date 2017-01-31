@@ -28,6 +28,6 @@ The new extension window looks like this:
         route, and additional select or input will be shown to select the
         hungroup, conference room, user, etc.
 
-.. warning:: If an extension have a number that conflicts with an external
+.. warning:: If an extension has a number that conflicts with an external
    number, this external number will be masked and, in practice, will be
    unavailable for the whole company. 
