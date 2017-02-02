@@ -42,7 +42,7 @@
                 var uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                 var lowers = "abcdefghijklmnopqrstuvwxyz";
                 var numbers = "0123456789";
-                var symbols = "!@#$%^&*()-+<>";
+                var symbols = "!@#$%^&*()-+";
 
                 var rand = function (str) {
                     return str[Math.floor (Math.random () * str.length)];
