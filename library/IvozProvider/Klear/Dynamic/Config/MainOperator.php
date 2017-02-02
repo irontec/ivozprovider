@@ -6,7 +6,6 @@ class MainOperator extends Base
 
     protected $_title = '[Main Global Operator]';
     protected $_subTitle = '[master operator session]';
-    protected $_year = '2016';
     
     protected $_sessionName = 'MainOperatorSession';
     protected $_userMapper = 'IvozProvider\Klear\Auth\MainOperators\Mapper';
