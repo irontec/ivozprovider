@@ -1,42 +1,40 @@
 .. _call_registry:
 
-#####################
-Histórico de llamadas
-#####################
+#############
+Call Registry
+#############
 
-Los históricos de llamadas muestran todas las llamadas de la plataforma y se 
-muestran a 3 niveles:
+*Call Registry* section shows the calls of the whole telephony platform and it
+is present in three different levels:
 
-- **Gestión general** > **Histórico de llamadas**
-- **Configuración de Marca** > **Histórico de llamadas**
-- **Configuración de Empresa** > **Histórico de llamadas**
+- **Main management** > **Call Registry**
+- **Brand configuration** > **Call Registry**
+- **Company configuration** > **Call Registry**
 
-En cada uno de los niveles se muestran las llamadas filtradas convenientemente.
+Each section filters calls conveniently.
 
-.. rubric:: A nivel global (god)
+.. rubric:: Main management (god)
 
-Muestra todas las llamadas de la plataforma, indicando la marca y la empresa de 
-cada una de ellas:
+Lists all the calls of the platform, showing which brand and company they belong to:
 
 .. image:: img/call_registry_god.png
 
-.. rubric:: A nivel de marca
+.. rubric:: Brand level
 
-Muestra todas las llamadas de la marca emulada, indicando la empresa de cada 
-una de ellas:
+Lists all the calls of the currently emulated brand, showing which company they
+belong to:
 
 .. image:: img/call_registry_brand.png
 
-.. rubric:: A nivel de empresa
+.. rubric:: Company level
 
-Muestra todas las llamadas de la empresa emulada:
+Lists all the calls of the currently emulated company:
 
 .. image:: img/call_registry_company.png
 
-.. note:: El exportador a `CSV <https://es.wikipedia.org/wiki/CSV>`_ permite 
-   exportar el listado para su posterior almacenamiento o procesado.
+.. note:: `CSV <https://es.wikipedia.org/wiki/CSV>`_ export makes possible to
+   download the list for its later analysis.
 
-.. hint:: Si se accede a una llamada concreta, se muestra información adicional 
-   sobre la misma. Esta información adicional depende del nivel (*god*, marca o 
-   empresa) y provee información sobre desvíos, transferencias, etc.
-
+.. hint:: If you choose one specific call, additional information is shown. This
+   additional information is dependant of the current level (*god*, brand or
+   company) and shows details about call transfers, call forwards, etc.

@@ -1,72 +1,67 @@
 .. _billable_calls:
 
-####################
-Llamadas facturables
-####################
+##############
+Billable calls
+##############
 
-Los listados de llamadas de las secciones **Llamadas facturables** muestran 
-solo las **llamadas que implican coste**.
+**Billable calls** sections only list **calls that imply cost**.
 
-.. important:: La gran diferencia respecto a las llamadas del 
-   :ref:`call_registry` es que todas las que aparecen aquí implican coste (no 
-   aparecen, por tanto, llamadas internas, etc.)
+.. important:: :ref:`call_registry` sections, on the other hand, show all calls,
+   even the ones that do not imply cost, such as internal calls, incoming calls,
+   etc.
 
-Se muestra el coste asociado a las llamadas (una vez calculado) y, dado que las 
-empresas son notificadas de sus llamadas por medio de facturas emitidas por el 
-*operador de marca*, solo se existe a dos niveles:
+These lists therefore include the price of each call (once it is calculated). Since
+companies are notified about its call's price via invoices issued by **brand operator**,
+this section is only available at two levels:
 
-- A nivel global (*god*).
+- Main level (god level)
 
-- A nivel de marca.
+- Brand level
 
-Estos listados muestran la siguiente información:
+Each entry shows this information:
 
 .. glossary::
 
-    Fecha
-        Fecha y hora del establecimiento de la llamada.
+    Date
+        Date and time of the call establishment.
 
-    Marca
-        Solo visible a nivel *god*, indica la marca de la empresa en cuestión.
+    Brand
+        Only visible for *god*, shows the brand of each call.
 
-    Compañía
-        Empresa responsable de la llamada.
+    Company
+        Visible for *god* and *brand operator*, show the company of each call.
 
-    Destino
-        Número externo al que se ha llamado.
+    Destination
+        External number dialed.
 
-    Patrón de destino
-        Indica el :ref:`patrón de precio <price_pattern>` en base al cual se ha 
-        puesto precio a la llamada.
+    Pricing pattern
+        Shows the :ref:`pricing pattern <price_pattern>` used to set the price.
 
-    Duración
-        Indica cuánto ha durado la llamada.
+    Duration
+        Shows how long the call lasted.
 
-    Tarificado (sí/no)
-        Indica si el proceso que pone precio a las llamadas ha calculado el 
-        precio de esta llamada concreta.
+    Metered (yes/no)
+        Shows if the asynchronous task that sets the price of each call has
+        parsed each call.
 
-    Precio
-        Coste calculado para la llamada.
+    Price
+        The cost of the call.
 
-    Plan de precio
-        :ref:`Plan de precio <price_plan>` en base al cual se ha puesto precio 
-        a la llamada.
+    Pricing plan
+        Shows the :ref:`Pricing plan <price_plan>` used to set the price.
 
     Contrato de peering
-        Indica por qué :ref:`Contrato de peering <peering_contracts>` ha salido 
-        la llamada.
+        Shows which :ref:`Peering contract <peering_contracts>` was used for
+        each call.
 
-    Factura
-        Indica si la llamada está incluida en alguna :ref:`factura <invoices>`.
+    Invoice
+        Show if a call is already included in any :ref:`invoice <invoices>`.
 
-    Tipo (entrante/saliente)
-        Dado que ciertas llamadas entrantes pueden implicar coste (ver 
-        :ref:`tarificación de llamadas entrantes <bill_inbound>`), indica si la 
-        llamada es entrante o saliente.
+    Type (inbound/outbound)
+        Since some incoming calls can imply cost (see
+        :ref:`billing of inbound calls <bill_inbound>`), show if the call is an
+        incoming call or an outgoung one.
 
-.. note:: Las llamadas aparecen en este listado en cuanto se cuelgan. Pasados 
-   unos minutos, el proceso que pone precios a las llamadas habrá tarificado la 
-   llamada (*Tarificado* igual a 'Sí') y tendremos disponible el **Precio** 
-   calculado.
-
+.. note:: As soon as the call is hung up, they appear in this list. In some minutes
+   time the asynchronous process will set *Metered* to 'yes' and will assign a
+   **price**.

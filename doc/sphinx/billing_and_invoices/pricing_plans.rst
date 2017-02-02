@@ -1,112 +1,109 @@
-################
-Planes de precio
-################
+#############
+Pricing plans
+#############
 
-En la sección :ref:`noplan_nocall` se hacía una introducción bastante completa 
-sobre el proceso manual de creación de un plan de precios y los conceptos más 
-importantes:
+In :ref:`noplan_nocall` section the process of creating a *pricing plan* was
+described quite thoroughly and main concepts were introduced:
 
-- **Un plan de precios agrupa un listado de patrones de precio (prefijos de 
-  llamada) con sus detalles de precio**:
+- A pricing plan groups some pricing patterns (prefixes) with their cost details:
 
-    - Precio por minuto
-    - Establecimiento de llamada
-    - Facturación por segundos / minutos /etc.
+    - Cost per minute
+    - Call establishment cost
+    - Bill by seconds, by minutes, etc.
 
-- Un plan de precios se asocia a una empresa concreta, indicando el período de 
-  validez de dicho plan.
+- A pricing plan is linked to an specific company with a period of time in which
+  this asociation is valid.
 
-- Una empresa podía tener varios planes de precios en un momento concreto para 
-  una llamada concreta.
+- One company may have more than one valid pricing plan for an specific call in
+  an specific moment.
 
-- En este último caso, el coste de la llamada se calcularía utilizando el plan 
-  de precio de menor métrica.
+- In such cases, the call price will be calculated using the price detail of the
+  matching pricing plan with minor metric.
 
 ***************
-Creación manual
+Manual creation
 ***************
 
-La :ref:`creación manual de un plan de precio <price_plan>` implicaba la 
-creación previa de un :ref:`patrón de precio <price_pattern>`.
+:ref:`Manual creation of a pricing plan <price_plan>` implied the previous
+creation of at least one :ref:`price pattern <price_pattern>`.
 
-En ese momento, es posible que el futuro administrador de marca se haya dado 
-cuenta de la titánica tarea que implicaría crear miles de patrones de precio 
-(254 países por las distintas redes móviles, fijos, numeraciones especiales, 
-etc.) para luego poder agruparlos en un plan de precios.
+At this point, the future brand operator may have noticed that creating thousands
+of pricing patterns would be a really annoying and time consuming task, as there
+are 254 countries, each of them with their mobile networks, landline networks,
+special service numbers, etc.
 
-Es por ello que el proceso de creación de planes y patrones de precio se 
-realiza partiendo de un `CSV <https://es.wikipedia.org/wiki/CSV>`_.
+That's why the creation of pricing patterns and pricing plans is done using a
+`CSV <https://es.wikipedia.org/wiki/CSV>`_ file.
 
-*******************
-Importación vía CSV
-*******************
+********************
+Importing a CSV file
+********************
 
-El primer paso es crear un plan de precios vacío sobre el que importar nuestros 
-precios (sección **Configuración de marca** > **Planes de precio**):
+The first step is creating an empty pricing plan to import the prices in (section
+**Brand configuration** > **Pricing plans**):
 
 .. image:: img/pricing_plans_add.png
 
-Accedemos al listado (vacío) del plan de precio que acabamos de crear:
+We enter the empty pricing plan we have just created:
 
 .. image:: img/pricing_plans_add_price.png
 
-El botón clave para este proceso de importación masiva es el siguiente:
+This is the key button for the massive pricing pattern import process:
 
 .. image:: img/pricing_plan_csv.png
 
-Una vez elegido el archivo a importar, se nos presenta la siguiente ventana:
+Once chosen the CSV file to import, this window turns up:
 
 .. image:: img/pricing_plan_csv3.png
 
-En esta ventana podríamos seleccionar qué contiene cada columna, en caso de no 
-haber creado el `CSV <https://es.wikipedia.org/wiki/CSV>`_ en el formato 
-recomendado. Del mismo modo, se nos ofrece la posibilidad de ignorar la primera 
-línea, en caso de que incluya los nombres de las columnas en lugar de datos.
+We can select which column contains which field, in case we want to import a
+`CSV <https://es.wikipedia.org/wiki/CSV>`_ file in a non-recommended format. We
+can also decide whether to import the first line or discard it as it may have
+titles instead of data.
 
-.. hint:: El proceso de importación se realiza en segundo plano, permitiendo al 
-   administrador de marca seguir configurando otros aspectos de la plataforma 
-   mientras se completa.
+.. hint:: The importing process is done in background, letting the brand operator
+   continue doing other stuff while it is finished.
 
-Formato CSV
-===========
+CSV format
+==========
 
-A pesar de que la ventana anterior nos permite importar archivos `CSV 
-<https://es.wikipedia.org/wiki/CSV>`_ en distintos formatos, lo mejor es 
-importar un archivo en el formato adecuado para simplicar este proceso.
+Although the above window allowed importing non-recommended format `CSV
+<https://es.wikipedia.org/wiki/CSV>`_  files, we encourage you to import a file
+in the proposed format, as it will make this process much easier.
 
-El formato del archivo `CSV <https://es.wikipedia.org/wiki/CSV>`_ está 
-explicado en la propia sección de ayuda contextual, que incluye un enlace para 
-poder descargar un archivo de ejemplo:
+The recommended `CSV <https://es.wikipedia.org/wiki/CSV>`_ format is described
+in the contextual help section, that includes even a link to download an example
+file:
 
 .. image:: img/pricing_plan_csv2.png
 
-El formato, por lo tanto, tiene que ser:
+The order of the columns must be:
 
-- Nombre del patrón de precio
-- Descripción del patrón de precio
-- Prefijo
-- Precio por minuto
-- Precio de establecimiento
-- Período de facturación
+- Pricing pattern name
+- Pricing pattern description
+- Prefix
+- Price per minute
+- Establishment cost
+- Billing period
 
-.. note:: Los números decimales tienen que estar entrecomillados con comillas 
-   dobles y tienen que usar la coma como separador decimal.
+.. note:: Floating number must be quoted with double quotes and use a comma as
+   decimal separator.
 
-.. important:: El sistema de importación creará los patrones de precio que sean 
-   necesarios. Si ya existe un patrón de precios con ese prefijo, no se creará, 
-   simplemente se vinculará.
+.. important:: The importing system will just bind the price to an existing
+   price pattern or, if prefix doesn't match any existing pricing pattern, it will
+   create one.
 
-.. warning:: **El período de facturación determina cada cuántos segundos se 
-   incrementa el precio de la llamada**.
+.. warning:: The price of the call will be increased every billing period unit.
 
-    - Si se pone a 1, implica una tarificación por segundos y cada segundo 
-      implicará un coste que será el *precio por minuto* dividido entre 60.
+.. warning:: El período de facturación determina cada cuántos segundos se
+   incrementa el precio de la llamada.
 
-    - Para facturación por minutos, habrá que poner 60 en este campo y, 
-      cada bloque de 1 minuto se sumará el *precio por minuto* al precio final.
+    - If *billing period* is set to 1, every second the price will be increased
+      *price per minute* divided by 60 (bill by seconds).
 
+    - If *billing period* is set to 60, every minute the price will be increased
+      *price per minute* (bill by minutes).
 
-Una vez completada la importación, solo faltaría asociar el nuevo plan de 
-precios a las empresas que queramos, siguiendo :ref:`el procedimiento explicado 
-en el bloque anterior <pricing_plan_to_company>`.
-
+Once the import process is over, we just have to bind the pricing plan to
+the companies we want following :ref:`the procedure explained in
+the previous block <pricing_plan_to_company>`.

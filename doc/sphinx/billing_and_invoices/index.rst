@@ -1,16 +1,14 @@
-##########################
-Tarificación y facturación
-##########################
+####################
+Billing and Invoices
+####################
 
-En este bloque se tratará un tema de primordial importancia para los 
-administradores de marca:
+This block is essential for brand administrators as we will explain how to:
 
-- Crear planes de precio para poner precio a las llamadas de los usuarios.
+- Create pricing plans to assign a price to calls made by final users.
 
-- Crear facturas que recojan el detalle y el consumo de sus empresas.
+- Create invoices that show call details and global costs of each of their companies.
 
-Pare ello, abordaremos las siguientes cuestiones:
-
+We will cover this topics:
 
 .. toctree::
     :maxdepth: 1
@@ -20,4 +18,3 @@ Pare ello, abordaremos las siguientes cuestiones:
     pricing_plans
     bill_a_call
     invoices
-
