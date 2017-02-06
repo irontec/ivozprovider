@@ -35,7 +35,7 @@ production:
       title: _('Patrón de la url genérica')
       type: text
       trim: both
-      prefix: 'http://{SERVER_URL}/provision'
+      prefix: 'http://{PROVISIONING_URL}/provision/'
       info:
         type: box
         position: left
@@ -66,7 +66,7 @@ production:
       title: _('Patrón de la url específica')
       type: text
       trim: both
-      prefix: 'http://{SERVER_URL}/provision'
+      prefix: 'https://{PROVISIONING_URL}:{PORT_IN_GENERIC_FILE}/provision/'
       info:
         type: box
         position: left
