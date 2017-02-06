@@ -135,6 +135,23 @@ function enable_services()
     /bin/systemctl enable ivozprovider-recordings.timer
 }
 
+function setup_provisioning()
+{
+    PROV_FOLDER=/opt/irontec/ivozprovider/portals/templates/provisioning
+    MYSQL_FOLDER=/var/lib/mysql-files/prov
+
+    if [ -d $MYSQL_FOLDER ]; then
+        rm -rf $MYSQL_FOLDER
+    fi
+
+    mkdir -p $MYSQL_FOLDER
+
+    find $PROV_FOLDER -type f -exec cp {} $MYSQL_FOLDER \;
+
+    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE TerminalModels SET genericTemplate=LOAD_FILE(CONCAT('/var/lib/mysql-files/prov/' , iden, '-generic.cfg'))"
+    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE TerminalModels SET specificTemplate=LOAD_FILE(CONCAT('/var/lib/mysql-files/prov/' , iden, '-specific.cfg'))"
+}
+
 # Run while reconfigure or first install
 if [ "$1" == "configure" ] || [ -z "$2" ]; then
     # Setup local DNS server
@@ -150,6 +167,8 @@ if [ "$1" == "configure" ] || [ -z "$2" ]; then
     setup_rtpengine
     # Setup pbx system
     setup_pbx
+    # Setup provisioning
+    setup_provisioning
     # Setup ssh daemon
     setup_sshd
     # Restart services

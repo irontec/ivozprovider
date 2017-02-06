@@ -2274,7 +2274,7 @@ CREATE TABLE `TerminalManufacturers` (
 
 LOCK TABLES `TerminalManufacturers` WRITE;
 /*!40000 ALTER TABLE `TerminalManufacturers` DISABLE KEYS */;
-INSERT INTO `TerminalManufacturers` VALUES (1,'Generic','Generic SIP Manufacturer','Generic SIP Manufacturer');
+INSERT INTO `TerminalManufacturers` VALUES (1,'Generic','Generic SIP Manufacturer','Generic SIP Manufacturer'),(2,'Yealink','Yealink',''),(3,'Cisco','Cisco','');
 /*!40000 ALTER TABLE `TerminalManufacturers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2308,7 +2308,7 @@ CREATE TABLE `TerminalModels` (
 
 LOCK TABLES `TerminalModels` WRITE;
 /*!40000 ALTER TABLE `TerminalModels` DISABLE KEYS */;
-INSERT INTO `TerminalModels` VALUES (1,'Generic','Generic SIP Model','Generic SIP Model',1,NULL,NULL,NULL,NULL);
+INSERT INTO `TerminalModels` VALUES (1,'Generic','Generic SIP Model','Generic SIP Model',1,NULL,NULL,NULL,NULL),(2,'YealinkT21P_E2','YealinkT21P_E2','',2,NULL,NULL,'y000000000052.cfg','t21E2/{mac}.cfg'),(3,'SPA502G','SPA502G','',3,NULL,NULL,'spa502G.cfg','spa502g/{mac}.cfg'),(4,'YealinkT21P','YealinkT21P','',2,NULL,NULL,'y000000000034.cfg','t21/{mac}.cfg'),(5,'YealinkT27P','YealinkT27P','',2,NULL,NULL,'y000000000045.cfg','t27/{mac}.cfg'),(6,'SPA504G','SPA504G','',3,NULL,NULL,'spa504G.cfg','spa504g/{mac}.cfg'),(7,'SPA509G','SPA509G','',3,NULL,NULL,'spa509G.cfg','spa509g/{mac}.cfg'),(8,'SPA525G2','SPA525G2','',3,NULL,NULL,'spa525G2.cfg','spa525g2/{mac}.cfg'),(9,'SPA514G','SPA514G','',3,NULL,NULL,'spa514G.cfg','spa514g/{mac}.cfg');
 /*!40000 ALTER TABLE `TerminalModels` ENABLE KEYS */;
 UNLOCK TABLES;
 
