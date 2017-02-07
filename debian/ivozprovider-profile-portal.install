@@ -1,2 +1,3 @@
 # ... FIXME ...
 profiles/portal/*          /
+scripts/sync_provisioning_templates    /opt/irontec/ivozprovider/scripts/
