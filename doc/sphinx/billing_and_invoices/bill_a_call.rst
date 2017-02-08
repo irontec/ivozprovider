@@ -13,12 +13,6 @@ As exposed previously, billing calls depends upon an automatic process:
 - When a call is about to be established, IvozProvider verifies that it will be
   able to bill it.
 
-- En el momento en el que una llamada se va a establecer, se verifica que se
-  vaya a poder tarificar.
-
-    - Si no se va a poder tarificar atendiendo a los planes de precios activos
-      para la empresa, la llamada no se cursará.
-
     - If with the current configuration (active and applicable pricing plans for
       a given company and for the specific destination) it won't be possible to
       bill the call, IvozProvider will prevent its establishment.

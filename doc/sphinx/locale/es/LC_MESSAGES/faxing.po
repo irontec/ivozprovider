@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-25 13:31+0200\n"
+"POT-Creation-Date: 2017-02-08 15:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,116 +19,225 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: ../../faxing/index.rst:5
-msgid "Faxing Virtual"
+msgid "Virtual Fax System"
 msgstr ""
 
 #: ../../faxing/index.rst:7
 msgid ""
-"La solución de *faxing* virtual incluida en IvozProvider es muy simple, "
-"pero permite:"
+"IvozProvider includes a simple but efficient *faxing* solution that "
+"allows:"
 msgstr ""
 
 #: ../../faxing/index.rst:9
-msgid "Enviar faxes partiendo de un PDF."
+msgid "Sending PDF files via Fax."
 msgstr ""
 
 #: ../../faxing/index.rst:11
-msgid "Recibir faxes vía correo electrónico y visualización web."
+msgid "Receiving faxes through email or check them through the web portal."
 msgstr ""
 
 #: ../../faxing/index.rst:13
 msgid ""
-"IvozProvider utiliza `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ "
-"para la emisión y recepción de faxes. Es responsabilidad de el "
-"administrador de marca disponer de Contratos de Peering con operadores "
-"que soporten dicho protocolo, así como configurar las rutas de salida "
-"para utilizar dicho operador."
-msgstr ""
-
-#: ../../faxing/index.rst:17
-msgid "Creación de un fax virtual"
+"IvozProvider uses `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ for "
+"both sending and receiving faxes. Brand Operator must use *peering "
+"contracts* that have support for it."
 msgstr ""
 
 #: ../../faxing/index.rst:19
-msgid ""
-"Esta es la interfaz que nos encontramos al crear un nuevo fax en la "
-"sección **Configuración de empresa** > **Faxes Virtuales**:"
+msgid "Creating a virtual fax"
 msgstr ""
 
-#: ../../faxing/index.rst:24
-msgid "Los campos son prácticamente auto-explicativos:"
+#: ../../faxing/index.rst:21
+msgid ""
+"This is the interface that turns up when we create a new fax in section "
+"**Company configuration** > **Virtual Faxes**:"
 msgstr ""
 
 #: ../../faxing/index.rst:27
-msgid "Nombre"
-msgstr ""
-
-#: ../../faxing/index.rst:29
-msgid "Nombre por el que se referenciará el fax en otras secciones"
+msgid "Fields are nearly self-explanatory:"
 msgstr ""
 
 #: ../../faxing/index.rst:30
-msgid "Email"
+msgid "Name"
 msgstr ""
 
 #: ../../faxing/index.rst:32
-msgid ""
-"Email donde se recibirán los mails (en caso de marcar 'Enviar por email' "
-"a 'Sí')"
+msgid "Used by remaining section to reference a fax"
 msgstr ""
 
 #: ../../faxing/index.rst:33
-msgid "DDI de salida"
+msgid "Email"
 msgstr ""
 
 #: ../../faxing/index.rst:35
-msgid "Número que se utilizará como origen en los faxes salientes"
+msgid ""
+"Email address when we want to receive incoming faxes (if we check 'Send "
+"by email')"
 msgstr ""
 
 #: ../../faxing/index.rst:37
-msgid ""
-"Para recibir faxes en dicha numeración, será necesario apuntarla a "
-"nuestro nuevo fax, editando el DDI en la sección **DDIs**:"
+msgid "Outbound DDI"
 msgstr ""
 
-#: ../../faxing/index.rst:42
+#: ../../faxing/index.rst:39
+msgid "DDI used as source number for outgoing faxes"
+msgstr ""
+
+#: ../../faxing/index.rst:41
 msgid ""
-"Para enviar faxes por una ruta concreta (que tenemos probada y sabemos "
-"que es óptima para la emisión de faxes), se puede definir una ruta "
-"exclusiva para faxes:"
+"To receive faxes in this DDI, we need to point it to our new fax in the "
+"section **DDIs**:"
 msgstr ""
 
 #: ../../faxing/index.rst:47
+msgid "Brand Operator can choose one or more *Outgoing Routes* for sending faxes:"
+msgstr ""
+
+#: ../../faxing/index.rst:52
 msgid ""
-"Todos los faxes que envíe esa empresa (para todos los faxes que vaya "
-"creando), se enviará por esta ruta."
+"This route applies to all faxes sent by selected company (or for all "
+"companies)."
 msgstr ""
 
-#: ../../faxing/index.rst:49
+#: ../../faxing/index.rst:54
 msgid ""
-"Si se definieran más rutas de faxing, se utilizarían todas siguiendo las "
-"lógicas de *load-balancing* y *failover* descritas en :ref:`secciones "
-"anteriores <routes_metrics>`."
+"*load-balancing* y *failover* logics described in :ref:`previous sections"
+" <routes_metrics>` apply to faxes too."
 msgstr ""
 
-#: ../../faxing/index.rst:51
+#: ../../faxing/index.rst:57
 msgid ""
-"Si una empresa no dispone de rutas de faxing, saldrá siguiendo las "
-"lógicas de rutado de las llamadas."
+"If no fax-specific route is defined, faxes will be routed using standard "
+"call routes."
 msgstr ""
 
-#: ../../faxing/index.rst:55
-msgid "Emitir un fax"
+#: ../../faxing/index.rst:62
+msgid "Sending a fax"
 msgstr ""
 
-#: ../../faxing/index.rst:65
-msgid "Visualización de faxes entrantes"
-msgstr ""
-
-#: ../../faxing/index.rst:67
+#: ../../faxing/index.rst:64
 msgid ""
-"Los faxes entrantes se pueden recibir vía correo electrónico, pero "
-"también pueden ser visualizados y descargados desde el panel web "
-"pulsando:"
+"Sending a fax is an easy task. First, we upload de PDF file and set the "
+"destination:"
 msgstr ""
+
+#: ../../faxing/index.rst:69
+msgid "The list shows the fax and its status:"
+msgstr ""
+
+#: ../../faxing/index.rst:76
+msgid "Incoming faxes display"
+msgstr ""
+
+#: ../../faxing/index.rst:78
+msgid ""
+"Apart from being received by mail, faxes can be watched and downloaded "
+"within the web portal too:"
+msgstr ""
+
+#~ msgid "Faxing Virtual"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "La solución de *faxing* virtual incluida"
+#~ " en IvozProvider es muy simple, pero"
+#~ " permite:"
+#~ msgstr ""
+
+#~ msgid "Enviar faxes partiendo de un PDF."
+#~ msgstr ""
+
+#~ msgid "Recibir faxes vía correo electrónico y visualización web."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "IvozProvider utiliza `T.38 <http://www.voip-"
+#~ "info.org/wiki/view/T.38>`_ para la emisión y"
+#~ " recepción de faxes. Es responsabilidad "
+#~ "de el administrador de marca disponer"
+#~ " de Contratos de Peering con "
+#~ "operadores que soporten dicho protocolo, "
+#~ "así como configurar las rutas de "
+#~ "salida para utilizar dicho operador."
+#~ msgstr ""
+
+#~ msgid "Creación de un fax virtual"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Esta es la interfaz que nos "
+#~ "encontramos al crear un nuevo fax "
+#~ "en la sección **Configuración de "
+#~ "empresa** > **Faxes Virtuales**:"
+#~ msgstr ""
+
+#~ msgid "Los campos son prácticamente auto-explicativos:"
+#~ msgstr ""
+
+#~ msgid "Nombre"
+#~ msgstr ""
+
+#~ msgid "Nombre por el que se referenciará el fax en otras secciones"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Email donde se recibirán los mails "
+#~ "(en caso de marcar 'Enviar por "
+#~ "email' a 'Sí')"
+#~ msgstr ""
+
+#~ msgid "DDI de salida"
+#~ msgstr ""
+
+#~ msgid "Número que se utilizará como origen en los faxes salientes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Para recibir faxes en dicha numeración,"
+#~ " será necesario apuntarla a nuestro "
+#~ "nuevo fax, editando el DDI en la"
+#~ " sección **DDIs**:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Para enviar faxes por una ruta "
+#~ "concreta (que tenemos probada y sabemos"
+#~ " que es óptima para la emisión "
+#~ "de faxes), se puede definir una "
+#~ "ruta exclusiva para faxes:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Todos los faxes que envíe esa "
+#~ "empresa (para todos los faxes que "
+#~ "vaya creando), se enviará por esta "
+#~ "ruta."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Si se definieran más rutas de "
+#~ "faxing, se utilizarían todas siguiendo "
+#~ "las lógicas de *load-balancing* y "
+#~ "*failover* descritas en :ref:`secciones "
+#~ "anteriores <routes_metrics>`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Si una empresa no dispone de rutas"
+#~ " de faxing, saldrá siguiendo las "
+#~ "lógicas de rutado de las llamadas."
+#~ msgstr ""
+
+#~ msgid "Emitir un fax"
+#~ msgstr ""
+
+#~ msgid "Visualización de faxes entrantes"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Los faxes entrantes se pueden recibir"
+#~ " vía correo electrónico, pero también "
+#~ "pueden ser visualizados y descargados "
+#~ "desde el panel web pulsando:"
+#~ msgstr ""
 

@@ -50,7 +50,7 @@ Each entry shows this information:
     Pricing plan
         Shows the :ref:`Pricing plan <price_plan>` used to set the price.
 
-    Contrato de peering
+    Peering contract
         Shows which :ref:`Peering contract <peering_contracts>` was used for
         each call.
 

@@ -95,9 +95,6 @@ The order of the columns must be:
 
 .. warning:: The price of the call will be increased every billing period unit.
 
-.. warning:: El período de facturación determina cada cuántos segundos se
-   incrementa el precio de la llamada.
-
     - If *billing period* is set to 1, every second the price will be increased
       *price per minute* divided by 60 (bill by seconds).
 
