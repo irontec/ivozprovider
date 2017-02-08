@@ -30,6 +30,10 @@ production:
         icon: help
         text: _("Allowed characters are a-z, A-Z, 0-9 and underscore")
         label: _("Need help?")
+    domain:
+      title: _('Domain')
+      type: text
+      maxLength: 255
     disallow: 
       title: _('Disallowed codecs')
       type: text

@@ -20,9 +20,8 @@ production:
       fields:
         blacklist: 
           password: true
-          mac: true
+          direct_media_method: true
           lastProvisionDate: true
-          domain: true
           disallow: true
         options: 
           title: _("Options")
@@ -33,11 +32,10 @@ production:
           default: terminalsEdit_screen
         order:
           name: true
+          domain: true
           TerminalModelId: true
-          password: true
-          allow: true
-          direct_media_method: true
           mac: true
+          allow: true
           lastProvisionDate: true
       options: 
         title: _("Options")
