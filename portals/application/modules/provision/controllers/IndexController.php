@@ -126,6 +126,11 @@ class Provision_IndexController extends Zend_Controller_Action
         if ( $terminalModel == null ) {
             $terminalModel = $terminalMapper->findOneByField('genericUrlPattern', '/' . $terminalUrl );
         }
+
+        if ( $terminalModel == null ) {
+            $terminalModel = $terminalMapper->findOneByField('genericUrlPattern', preg_replace("/^\//", "", $terminalUrl));
+        }
+
         return $terminalModel;
     }
 
