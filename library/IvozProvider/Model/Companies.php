@@ -74,7 +74,7 @@ class Companies extends Raw\Companies
         // Look for the Service Code in the extension
         $code = substr($exten, 1);
         foreach ($services as $service) {
-            if ($code == $service->getCode()) {
+            if (!strncmp($code, $service->getCode(), strlen($service->getCode()))) {
                 return $service;
             }
         }
