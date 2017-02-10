@@ -1,56 +1,58 @@
 <?php
-class KlearCustomRestoreBackupController extends Zend_Controller_Action
+class KlearCustomRestoreDefaultController extends Zend_Controller_Action
 {
     protected $_mainRouter;
-    
+
     public function init()
     {
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter)) ) {
             throw New Zend_Exception('',Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
-    
+
         $this->_helper->ContextSwitch()
-        ->addActionContext('restore-specific-backup', 'json')
-        ->addActionContext('restore-generic-backup', 'json')
+        ->addActionContext('restore-specific-default', 'json')
+        ->addActionContext('restore-generic-default', 'json')
         ->initContext('json');
-    
+
         $this->_helper->layout->disableLayout();
     }
-    
-    public function restoreGenericBackupAction()
+
+    public function restoreGenericDefaultAction()
     {
-        $this->restoreBackup('generic');
+        $this->restoreDefault('generic');
     }
-    
-    public function restoreSpecificBackupAction(){
-        $this->restoreBackup('specific');
+
+    public function restoreSpecificDefaultAction(){
+        $this->restoreDefault('specific');
     }
-    
-    private function restoreBackup($file){
+
+    private function restoreDefault($file){
+        $tmMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
         $id = $this->_mainRouter->getParam('pk');
-        $path = $this->getPath();
-        $filename = ($path. DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR . $file . '.phtml.back');
-        
+        $terminalModel = $tmMapper->find($id);
+        $iden = $terminalModel->getIden();
+        $filename = "/opt/irontec/ivozprovider/portals/templates/provisioning/$iden/$file.cfg";
+
         if ($this->getRequest()->getParam("backup")) {
             $this->_helper->viewRenderer->setNoRender(true);
             $file = fopen($filename, "r");
             $filecontent = fread($file, filesize($filename));
             $data = array(
-                    'title' => _("Restaurar backup"),
+                    'title' => _("Restore default template"),
                     'message'=>_("Cargando <textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"),
             );
         }
         else{
             $existsBackup = file_exists($filename);
             if($existsBackup){
-                $message = "Restaurar el backup de " . date ("d m Y H:i:s.", filemtime($filename));
+                $message = "Reset default template? ($filename)";
             }
             else {
-                $message = "No existe ningún backup";
-            } 
-                
+                $message = "No default template found ($filename)";
+            }
+
             $data = array(
-                    'title' => _("Restaurar backup"),
+                    'title' => _("Restore default template"),
                     'message'=>_($message),
                     'buttons'=>array(
                             _('Aceptar') => array(
@@ -67,7 +69,7 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
                     )
             );
         }
-        
+
         $jsonResponse = new Klear_Model_DispatchResponse();
         $jsonResponse->setModule('default');
         $jsonResponse->setPlugin('customRestoreBackup');
@@ -76,12 +78,5 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
     }
-    
-    
-    private function getPath(){
-        $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-        $conf = (Object) $bootstrap->getOptions();
-        $path = $conf->Iron['fso']['localStoragePath'];
-        return $path;
-    }
 }
+

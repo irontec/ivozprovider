@@ -4,6 +4,7 @@ production:
     iden: 
       title: ngettext('Iden', 'Idens', 1)
       type: text
+      pattern: '[a-zA-Z0-9_-]+'
       trim: both
       required: true
     name: 
@@ -56,7 +57,8 @@ production:
           uploadFile_dialog: true
           downloadFile_dialog: true
           genericBackup_dialog: true
-          runGenericCode_dialog: true
+          genericDefault_dialog: true
+          runGenericCode_dialog: false
       info:
         type: box
         position: left
@@ -87,7 +89,8 @@ production:
           uploadFile_dialog: true
           downloadFile_dialog: true
           specificBackup_dialog: true
-          runSpecificCode_dialog: true
+          specificDefault_dialog: true
+          runSpecificCode_dialog: false
       info:
         type: box
         position: left

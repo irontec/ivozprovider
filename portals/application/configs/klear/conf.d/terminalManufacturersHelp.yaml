@@ -43,44 +43,44 @@ terminalManufacturersHelp:
             <ul style='margin-left: 30px'>
                 <li>CISCO generic
                      <ul style='margin-left: 30px'>
-                        <li><a href='/templates/provisioning/cisco/SPA502G-generic.cfg' target='_blank' >502G generic</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA504G-generic.cfg' target='_blank' >504G generic</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA509G-generic.cfg' target='_blank' >509G generic</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA514G-generic.cfg' target='_blank' >514G generic</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA525G2-generic.cfg' target='_blank' >525G generic</a></li>
+                        <li><a href='/templates/provisioning/SPA502G/generic.cfg' target='_blank' >502G generic</a></li>
+                        <li><a href='/templates/provisioning/SPA504G/generic.cfg' target='_blank' >504G generic</a></li>
+                        <li><a href='/templates/provisioning/SPA509G/generic.cfg' target='_blank' >509G generic</a></li>
+                        <li><a href='/templates/provisioning/SPA514G/generic.cfg' target='_blank' >514G generic</a></li>
+                        <li><a href='/templates/provisioning/SPA525G2/generic.cfg' target='_blank' >525G generic</a></li>
                      </ul>
                 </li>
                 </br>
                 <li>CISCO specific
                      <ul style='margin-left: 30px'>
-                        <li><a href='/templates/provisioning/cisco/SPA502G-specific.cfg' target='_blank' >502G specific</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA504G-specific.cfg' target='_blank' >504G specific</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA509G-specific.cfg' target='_blank' >509G specific</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA514G-specific.cfg' target='_blank' >514G specific</a></li>
-                        <li><a href='/templates/provisioning/cisco/SPA525G2-specific.cfg' target='_blank' >525G specific</a></li>
+                        <li><a href='/templates/provisioning/SPA502G/specific.cfg' target='_blank' >502G specific</a></li>
+                        <li><a href='/templates/provisioning/SPA504G/specific.cfg' target='_blank' >504G specific</a></li>
+                        <li><a href='/templates/provisioning/SPA509G/specific.cfg' target='_blank' >509G specific</a></li>
+                        <li><a href='/templates/provisioning/SPA514G/specific.cfg' target='_blank' >514G specific</a></li>
+                        <li><a href='/templates/provisioning/SPA525G2/specific.cfg' target='_blank' >525G specific</a></li>
                     </ul>
                 </li>
                 </br>
                 </br>
                 <li>YEALINK generic
                      <ul style='margin-left: 30px'>
-                        <li><a href='/templates/provisioning/yealink/YealinkT21P-generic.cfg' target='_blank' >yealinkt21P generic</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT21P_E2-generic.cfg' target='_blank' >yealinkt21P_E2 generic</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT27P-generic.cfg' target='_blank' >yealinkt27P generic</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT23P-generic.cfg' target='_blank' >yealinkt23P generic</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT46G-generic.cfg' target='_blank' >yealinkt46G generic</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT48G-generic.cfg' target='_blank' >yealinkt48G generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkT21P/generic.cfg' target='_blank' >yealinkt21P generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkT21P_E2/generic.cfg' target='_blank' >yealinkt21P_E2 generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkT27P/generic.cfg' target='_blank' >yealinkt27P generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkT23P/generic.cfg' target='_blank' >yealinkt23P generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkT46G/generic.cfg' target='_blank' >yealinkt46G generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkT48G/generic.cfg' target='_blank' >yealinkt48G generic</a></li>
                      </ul>
                 </li>
                 <p></p>
                 <li>YEALINK specific
                      <ul style='margin-left: 30px'>
-                        <li><a href='/templates/provisioning/yealink/YealinkT21P-specific.cfg' target='_blank' >yealinkt21P specific</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT21P_E2-specific.cfg' target='_blank' >yealinkt21P_E2 specific</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT27P-specific.cfg' target='_blank' >yealinkt27P specific</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT23P-specific.cfg' target='_blank' >yealinkt23P specific</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT46G-specific.cfg' target='_blank' >yealinkt46G specific</a></li>
-                        <li><a href='/templates/provisioning/yealink/YealinkT48G-specific.cfg' target='_blank' >yealinkt48G specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkT21P/specific.cfg' target='_blank' >yealinkt21P specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkT21P_E2/specific.cfg' target='_blank' >yealinkt21P_E2 specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkT27P/specific.cfg' target='_blank' >yealinkt27P specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkT23P/specific.cfg' target='_blank' >yealinkt23P specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkT46G/specific.cfg' target='_blank' >yealinkt46G specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkT48G/specific.cfg' target='_blank' >yealinkt48G specific</a></li>
                     </ul>
                 </li>
 

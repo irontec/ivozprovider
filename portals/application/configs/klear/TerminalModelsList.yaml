@@ -106,6 +106,20 @@ production:
       labelOnEdit: true
       action: restore-specific-backup
       class: ui-silk-arrow-undo
+    genericDefault_dialog: &genericDefault_dialog
+      title: _("Restore default template")
+      module: default
+      controller: klear-custom-restore-default
+      labelOnEdit: true
+      action: restore-generic-default
+      class: ui-silk-page-white-star
+    specificDefault_dialog: &specificDefault_dialog
+      title: _("Restore default template")
+      module: default
+      controller: klear-custom-restore-default
+      labelOnEdit: true
+      action: restore-specific-default
+      class: ui-silk-page-white-star
     runGenericCode_dialog: &runGenericCode_dialog
       title: _("Ejecutar el código")
       module: default
