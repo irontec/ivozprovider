@@ -258,7 +258,10 @@ class UserCallAction extends RouterAction
                 break;
             case 'BUSY':
             case 'CONGESTION':
-                $this->_processCallForward($this->_user, 'busy');
+                if (!$this->_processCallForward($this->_user, 'busy')) {
+                    // No busy handler, send response
+                    $this->agi->busy();
+                }
                 break;
             case 'NOANSWER':
                 $this->_processCallForward($this->_user, 'noAnswer');
@@ -283,9 +286,10 @@ class UserCallAction extends RouterAction
                 $cfwAction
                     ->setCallForward($cfwSetting)
                     ->process();
-                break;
+                return $cfwAction;
             }
         }
+        return null;
     }
 
 }
