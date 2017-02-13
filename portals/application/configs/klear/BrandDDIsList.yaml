@@ -38,6 +38,7 @@ production:
           conferenceRoomId: true
           recordCalls: true
           billInboundCalls: true
+          friendValue: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")

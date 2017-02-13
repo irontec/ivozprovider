@@ -46,6 +46,7 @@ production:
           brandId: true
           recordCalls: true
           billInboundCalls: true
+          peeringContractId: ${auth.isCompanyOperator}
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
