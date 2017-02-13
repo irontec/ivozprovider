@@ -1,24 +1,24 @@
 .. _userportal:
 
-#####################
-[P] Portal de Usuario
-#####################
+###############
+[P] User Portal
+###############
 
-**********************
-Credenciales de acceso
-**********************
+******************
+Access credentials
+******************
 
-**************
-URLs de acceso
-**************
+***********
+Access URLs
+***********
 
-***************
-Funcionalidades
-***************
+********
+Features
+********
 
-Estado del registro SIP
-=======================
+SIP register status
+===================
 
-Configuración básica a nivel de usuario
-=======================================
+Basic configuration at user level
+=================================
 

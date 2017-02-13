@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-25 13:31+0200\n"
+"POT-Creation-Date: 2017-02-13 11:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,26 +19,26 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: ../../userportal/index.rst:5
-msgid "[P] Portal de Usuario"
-msgstr ""
+msgid "[P] User Portal"
+msgstr "[P] Portal de usuario"
 
 #: ../../userportal/index.rst:9
-msgid "Credenciales de acceso"
-msgstr ""
+msgid "Access credentials"
+msgstr "Credenciales de acceso"
 
 #: ../../userportal/index.rst:13
-msgid "URLs de acceso"
-msgstr ""
+msgid "Access URLs"
+msgstr "URLs de acceso"
 
 #: ../../userportal/index.rst:17
-msgid "Funcionalidades"
-msgstr ""
+msgid "Features"
+msgstr "Funcionalidades"
 
 #: ../../userportal/index.rst:20
-msgid "Estado del registro SIP"
-msgstr ""
+msgid "SIP register status"
+msgstr "Estado del registro SIP"
 
 #: ../../userportal/index.rst:23
-msgid "Configuración básica a nivel de usuario"
-msgstr ""
+msgid "Basic configuration at user level"
+msgstr "Configuración básica a nivel de usuario"
 

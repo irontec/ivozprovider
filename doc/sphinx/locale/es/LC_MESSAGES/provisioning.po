@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-25 13:31+0200\n"
+"POT-Creation-Date: 2017-02-13 11:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +19,18 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: ../../provisioning/index.rst:5
-msgid "[P] Provisión de terminales"
-msgstr ""
+msgid "[P] Terminal provisioning"
+msgstr "[P] Provisión de terminales"
 
 #: ../../provisioning/index.rst:9
-msgid "Esquema de provisión"
-msgstr ""
+msgid "Provisioning scheme"
+msgstr "Esquema de provisión"
 
 #: ../../provisioning/index.rst:13
-msgid "Terminales soportados"
-msgstr ""
+msgid "Supported hardphone models"
+msgstr "Modelos soportados"
 
 #: ../../provisioning/index.rst:17
-msgid "Sistema de plantillas"
-msgstr ""
+msgid "Template system"
+msgstr "Sistema de plantillas"
 

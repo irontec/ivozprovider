@@ -1,85 +1,81 @@
 .. _faxing_system:
 
-##############
-Faxing Virtual
-##############
+##################
+Virtual Fax System
+##################
 
-La solución de *faxing* virtual incluida en IvozProvider es muy simple, pero 
-permite:
+IvozProvider includes a simple but efficient *faxing* solution that allows:
 
-- Enviar faxes partiendo de un PDF.
+- Sending PDF files via Fax.
 
-- Recibir faxes vía correo electrónico y visualización web.
+- Receiving faxes through email or check them through the web portal.
 
-.. error:: IvozProvider utiliza 
-   `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ para la emisión y 
-   recepción de faxes. Es responsabilidad de el administrador de marca disponer 
-   de Contratos de Peering con operadores que soporten dicho protocolo, así como 
-   configurar las rutas de salida para utilizar dicho operador.
+.. error:: IvozProvider uses
+   `T.38 <http://www.voip-info.org/wiki/view/T.38>`_ for both sending and receiving
+   faxes. Brand Operator must use *peering contracts* that have support for it.
 
-**************************
-Creación de un fax virtual
-**************************
+**********************
+Creating a virtual fax
+**********************
 
-Esta es la interfaz que nos encontramos al crear un nuevo fax en la sección 
-**Configuración de empresa** > **Faxes Virtuales**:
+This is the interface that turns up when we create a new fax in section
+**Company configuration** > **Virtual Faxes**:
 
 .. image:: img/fax_add.png
     :align: center
 
-Los campos son prácticamente auto-explicativos:
+Fields are nearly self-explanatory:
 
 .. glossary::
 
-    Nombre
-        Nombre por el que se referenciará el fax en otras secciones
+    Name
+        Used by remaining section to reference a fax
 
     Email
-        Email donde se recibirán los mails (en caso de marcar 'Enviar por 
-        email' a 'Sí')
+        Email address when we want to receive incoming faxes (if we check 'Send
+        by email')
 
-    DDI de salida
-        Número que se utilizará como origen en los faxes salientes
+    Outbound DDI
+        DDI used as source number for outgoing faxes
 
-Para recibir faxes en dicha numeración, será necesario apuntarla a nuestro 
-nuevo fax, editando el DDI en la sección **DDIs**:
+To receive faxes in this DDI, we need to point it to our new fax in the section
+**DDIs**:
 
 .. image:: img/fax_ddi.png
     :align: center
 
-Para enviar faxes por una ruta concreta (que tenemos probada y sabemos que es 
-óptima para la emisión de faxes), se puede definir una ruta exclusiva para 
-faxes:
+Brand Operator can choose one or more *Outgoing Routes* for sending faxes:
 
 .. image:: img/fax_routes.png
     :align: center
 
-Todos los faxes que envíe esa empresa (para todos los faxes que vaya creando), 
-se enviará por esta ruta.
+This route applies to all faxes sent by selected company (or for all companies).
 
-.. note:: Si se definieran más rutas de faxing, se utilizarían todas siguiendo 
-   las lógicas de *load-balancing* y *failover* descritas en :ref:`secciones 
-   anteriores <routes_metrics>`.
+.. note:: *load-balancing* y *failover* logics described in :ref:`previous sections <routes_metrics>`
+   apply to faxes too.
 
-.. important:: Si una empresa no dispone de rutas de faxing, saldrá siguiendo 
-   las lógicas de rutado de las llamadas.
+.. important:: If no fax-specific route is defined, faxes will be routed using
+   standard call routes.
 
 *************
-Emitir un fax
+Sending a fax
 *************
 
-.. image:: img/fax_send2.png
-    :align: center
+Sending a fax is an easy task. First, we upload de PDF file and set the destination:
 
 .. image:: img/fax_send.png
     :align: center
 
-********************************
-Visualización de faxes entrantes
-********************************
+The list shows the fax and its status:
 
-Los faxes entrantes se pueden recibir vía correo electrónico, pero también 
-pueden ser visualizados y descargados desde el panel web pulsando:
+.. image:: img/fax_send2.png
+    :align: center
+
+**********************
+Incoming faxes display
+**********************
+
+Apart from being received by mail, faxes can be watched and downloaded within
+the web portal too:
 
 .. image:: img/fax_list.png
-

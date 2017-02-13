@@ -1,5 +1,5 @@
 #####################
-Make an internal call
+Making internal calls
 #####################
 
 The goal of this block will be to configure IvozProvider in order to make

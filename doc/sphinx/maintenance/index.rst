@@ -1,9 +1,9 @@
-################################
-[P] Mantenimiento de la solución
-################################
+###############################
+Maintenance and troubleshooting
+###############################
 
-A continuación se describen las herramientas que incorpora IvozProvider para 
-facilitar el mantenimiento de la solución:
+This section described the tools included in IvozProvider to troubleshot any
+problems you may have:
 
 
 .. toctree::
@@ -11,5 +11,4 @@ facilitar el mantenimiento de la solución:
 
     sip_captures
     log_viewer
-    platform_graphs
 
