@@ -79,9 +79,18 @@ production:
     timeout: 
       title: _('Timeout')
       type: number
+      defaultValue: 6
       required: true
       source: 
-        control: Spinner
+        control: spinner
+        max: 60
+        min: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Time in seconds the IVR will wait after playing the welcome locution or dialing a digit")
+        label: _("Need help?")
     noAnswerTimeout: 
       title: _('No aswer timeout')
       type: number
