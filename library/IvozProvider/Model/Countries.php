@@ -45,7 +45,13 @@ class Countries extends Raw\Countries
             // Get User international code
             $intcode = $this->getIntCode();
             // Remove international Preffix
-            return preg_replace("/^$intcode|^\+/", "", $number);
+            $e164number = preg_replace("/^$intcode|^\+/", "", $number, -1, $count);
+            // If not an international call (no int prefix found)
+            if ($count === 0) {
+                return $this->getCallingCode() . $number;
+            } else {
+                return $e164number;
+            }
         } else {
             // Get E164 if not part of the number
             $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCallingCode();
@@ -70,8 +76,14 @@ class Countries extends Raw\Countries
         // Extract number data
         preg_match($e164Pattern, $e164number, $result);
         if (count($result) == 0) {
-            // Add international preffix
-            $preferred = $this->getIntCode() . $e164number;
+            // if calls starts with the country calling code, just remove it
+            $cclen = strlen($this->getCallingCode());
+            if (substr($e164number, 0, $cclen) == $this->getCallingCode()) {
+                $preferred = substr($e164number, $cclen);
+            } else {
+                // Add international preffix
+                $preferred = $this->getIntCode() . $e164number;
+            }
         } else {
             // Split E164 components
             $cc = (!empty($result['cc'])) ? $result['cc'] : $this->getCallingCode();
