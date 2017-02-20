@@ -66,7 +66,7 @@ production:
             template: '%name%'
           order: name
     targetPatternId: 
-      title: _('Target pattern')
+      title: _('Price pattern')
       type: select
       required: true
       source: 
@@ -90,7 +90,7 @@ production:
       source: 
         control: Spinner
     targetPatternIdGhost:
-      title: _('Target pattern')
+      title: _('Price pattern')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_TargetPattern
