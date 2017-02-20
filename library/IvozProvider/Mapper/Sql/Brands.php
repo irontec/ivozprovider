@@ -31,16 +31,16 @@ class Brands extends Raw\Brands
 
         if ($isNew) {
             // Create sane defaults for hidden fields
-            if (!$model->hasChange('timezoneId')) $model->setNif('12345678-Z');
-            if (!$model->hasChange('timezoneId')) $model->setPostalAddress('Postal address');
-            if (!$model->hasChange('timezoneId')) $model->setPostalCode('ZIP');
-            if (!$model->hasChange('timezoneId')) $model->setTown('Town');
-            if (!$model->hasChange('timezoneId')) $model->setCountry('Country');
-            if (!$model->hasChange('timezoneId')) $model->setProvince('Province');
-            if (!$model->hasChange('timezoneId')) $model->setDefaultTimezoneId(145);
-            if (!$model->hasChange('timezoneId')) $model->setLanguageId(1);
-            if (!$model->hasChange('timezoneId')) $model->setRegistryData('');
-            if (!$model->hasChange('timezoneId')) $model->setDomainTrunks('');
+            if (!$model->hasChange('nif')) $model->setNif('12345678-Z');
+            if (!$model->hasChange('postalAddress')) $model->setPostalAddress('Postal address');
+            if (!$model->hasChange('postalCode')) $model->setPostalCode('ZIP');
+            if (!$model->hasChange('town')) $model->setTown('Town');
+            if (!$model->hasChange('country')) $model->setCountry('Country');
+            if (!$model->hasChange('province')) $model->setProvince('Province');
+            if (!$model->hasChange('defaultTimezoneId')) $model->setDefaultTimezoneId(145);
+            if (!$model->hasChange('languageId')) $model->setLanguageId(1);
+            if (!$model->hasChange('registryData')) $model->setRegistryData('');
+            if (!$model->hasChange('domainTrunks')) $model->setDomainTrunks('');
         }
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);

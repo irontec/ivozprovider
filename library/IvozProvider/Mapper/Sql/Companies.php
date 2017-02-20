@@ -44,7 +44,7 @@ class Companies extends Raw\Companies
             if (!$model->hasChange('town')) $model->setTown('Town');
             if (!$model->hasChange('country')) $model->setCountry('Country');
             if (!$model->hasChange('province')) $model->setProvince('Province');
-            if (!$model->hasChange('timezoneId')) $model->setDefaultTimezoneId($model->getBrand()->getDefaultTimezoneId());
+            if (!$model->hasChange('defaultTimezoneId')) $model->setDefaultTimezoneId($model->getBrand()->getDefaultTimezoneId());
             if (!$model->hasChange('countryId')) $model->setCountryId(70);
             if (!$model->hasChange('languageId')) $model->setLanguageId($model->getBrand()->getLanguageId());
             if (!$model->hasChange('outbound_prefix')) $model->setOutboundPrefix('');
