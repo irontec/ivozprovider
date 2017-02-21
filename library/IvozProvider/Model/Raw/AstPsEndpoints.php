@@ -64,6 +64,13 @@ class AstPsEndpoints extends ModelAbstract
     protected $_sorceryId;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_fromDomain;
+
+    /**
      * Database var type int
      *
      * @var int
@@ -210,6 +217,7 @@ class AstPsEndpoints extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'sorcery_id'=>'sorceryId',
+        'from_domain'=>'fromDomain',
         'terminalId'=>'terminalId',
         'friendId'=>'friendId',
         'aors'=>'aors',
@@ -375,6 +383,40 @@ class AstPsEndpoints extends ModelAbstract
     public function getSorceryId()
     {
         return $this->_sorceryId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setFromDomain($data)
+    {
+
+        if ($this->_fromDomain != $data) {
+            $this->_logChange('fromDomain', $this->_fromDomain, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_fromDomain = $data;
+
+        } else if (!is_null($data)) {
+            $this->_fromDomain = (string) $data;
+
+        } else {
+            $this->_fromDomain = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column from_domain
+     *
+     * @return string
+     */
+    public function getFromDomain()
+    {
+        return $this->_fromDomain;
     }
 
     /**

@@ -50,6 +50,7 @@ class AstPsEndpoints extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'sorcery_id' => $model->getSorceryId(),
+                'from_domain' => $model->getFromDomain(),
                 'terminalId' => $model->getTerminalId(),
                 'friendId' => $model->getFriendId(),
                 'aors' => $model->getAors(),
@@ -572,6 +573,7 @@ class AstPsEndpoints extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setSorceryId($data['sorcery_id'])
+                  ->setFromDomain($data['from_domain'])
                   ->setTerminalId($data['terminalId'])
                   ->setFriendId($data['friendId'])
                   ->setAors($data['aors'])
@@ -592,6 +594,7 @@ class AstPsEndpoints extends MapperAbstract
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setSorceryId($data->{'sorcery_id'})
+                  ->setFromDomain($data->{'from_domain'})
                   ->setTerminalId($data->{'terminalId'})
                   ->setFriendId($data->{'friendId'})
                   ->setAors($data->{'aors'})
@@ -613,6 +616,7 @@ class AstPsEndpoints extends MapperAbstract
         } else if ($data instanceof \IvozProvider\Model\Raw\AstPsEndpoints) {
             $entry->setId($data->getId())
                   ->setSorceryId($data->getSorceryId())
+                  ->setFromDomain($data->getFromDomain())
                   ->setTerminalId($data->getTerminalId())
                   ->setFriendId($data->getFriendId())
                   ->setAors($data->getAors())

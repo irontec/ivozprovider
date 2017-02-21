@@ -49,6 +49,7 @@ class Friends extends Raw\Friends
             // Update/Insert endpoint data
             $endpoint->setFriendId($response)
                 ->setSorceryId($model->getSorcery())
+                ->setFromDomain($model->getCompany()->getDomainUsers())
                 ->setAors($model->getSorcery())
                 ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())

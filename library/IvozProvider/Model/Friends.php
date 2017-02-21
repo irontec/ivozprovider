@@ -31,8 +31,8 @@ class Friends extends Raw\Friends
     public function getContact()
     {
         return sprintf("sip:%s@%s",
-                        $this->getName(),
-                        $this->getCompany()->getDomain());
+            $this->getName(),
+            $this->getDomain());
     }
 
     public function getSorcery()
@@ -143,4 +143,9 @@ class Friends extends Raw\Friends
         return $uri;
     }
 
+    public function getAstPsEndpoint()
+    {
+        $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
+        return $endpointMapper->findOneByField("friendId", $this->getId());
+    }
 }

@@ -7,6 +7,10 @@ production:
       required: true
       maxLength: 40
       default: true
+    from_domain: 
+      title: _('Fromdomain')
+      type: text
+      maxLength: 255
     terminalId: 
       title: _('Terminalid')
       type: select

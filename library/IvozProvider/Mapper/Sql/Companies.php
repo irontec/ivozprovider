@@ -97,6 +97,7 @@ class Companies extends Raw\Companies
             } else {
                 $domain = $domains[0];
                 $this->_updateTerminalsDomain($model, $domain);
+                $this->_updateFriendsDomain($model, $domain);
             }
         }
 
@@ -134,6 +135,21 @@ class Companies extends Raw\Companies
             $aor = $endpoint->getAstPsAor();
 
             $aor->setContact($terminal->getContact())
+                ->save();
+        }
+    }
+
+    protected function _updateFriendsDomain($model, $domain)
+    {
+        $friends = $model->getFriends();
+
+        foreach ($friends as $friend) {
+            $friend->setDomain($domain->getDomain())->save();
+
+            $endpoint = $friend->getAstPsEndpoint();
+            $aor = $endpoint->getAstPsAor();
+
+            $aor->setContact($friend->getContact())
                 ->save();
         }
     }

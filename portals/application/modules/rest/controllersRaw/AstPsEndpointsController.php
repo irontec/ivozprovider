@@ -34,6 +34,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'sorcery_id': '', 
+     *     'from_domain': '', 
      *     'terminalId': '', 
      *     'friendId': '', 
      *     'aors': '', 
@@ -54,6 +55,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * },{
      *     'id': '', 
      *     'sorcery_id': '', 
+     *     'from_domain': '', 
      *     'terminalId': '', 
      *     'friendId': '', 
      *     'aors': '', 
@@ -90,6 +92,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'sorceryId',
+                'fromDomain',
                 'terminalId',
                 'friendId',
                 'aors',
@@ -182,6 +185,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'sorcery_id': '', 
+     *     'from_domain': '', 
      *     'terminalId': '', 
      *     'friendId': '', 
      *     'aors': '', 
@@ -217,6 +221,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'sorceryId',
+                'fromDomain',
                 'terminalId',
                 'friendId',
                 'aors',
@@ -275,6 +280,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
@@ -328,6 +334,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/ast-ps-endpoints/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
@@ -444,6 +451,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'from_domain' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'terminalId' => array(
                     'type' => "int",
                     'required' => false,
@@ -543,6 +555,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'sorcery_id' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'from_domain' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'terminalId' => array(
