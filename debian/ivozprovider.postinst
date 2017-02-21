@@ -84,6 +84,7 @@ function setup_pbx()
 {
     # Set asterisk bind address to localhost
     sed -i "s/bind=0.0.0.0:6060/bind=127.0.0.1:6060/g" /etc/asterisk/pjsip.conf
+    sed -i "s/bindaddr = 0.0.0.0/bindaddr = 127.0.0.1/g" /etc/asterisk/manager.conf
 }
 
 function setup_rtpproxy()
