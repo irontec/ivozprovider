@@ -160,6 +160,10 @@ production:
       title: _('Areacode')
       type: text
       maxLength: 10
+    externallyExtraOpts: 
+      title: _('Externallyextraopt')
+      type: text
+      maxLength: 255
 staging: 
   _extends: production
 testing: 

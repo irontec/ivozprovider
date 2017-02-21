@@ -49,6 +49,7 @@ production:
           ipFilter: true
           onDemandRecord: true
           onDemandRecordCode: true
+          externallyExtraOpts: true
         order:
           name: true
           nif: true
@@ -98,6 +99,7 @@ production:
           areaCode: true
           languageId: true
           defaultTimezoneId: true
+          externallyExtraOpts: true
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -154,7 +156,11 @@ production:
           fields:
             onDemandRecord: 1
             onDemandRecordCode: 1
-          
+        group5:
+          colsPerRow:
+          label: _("Externally rated options")
+          fields:
+            externallyExtraOpts: 1
     #companyAdmins: 
     companyAdminsList_screen: 
       <<: *companyAdminsList_screenLink

@@ -69,6 +69,7 @@ class Companies extends MapperAbstract
                 'onDemandRecord' => $model->getOnDemandRecord(),
                 'onDemandRecordCode' => $model->getOnDemandRecordCode(),
                 'areaCode' => $model->getAreaCode(),
+                'externallyExtraOpts' => $model->getExternallyExtraOpts(),
             );
         } else {
             $result = array();
@@ -992,7 +993,8 @@ class Companies extends MapperAbstract
                   ->setIpFilter($data['ipFilter'])
                   ->setOnDemandRecord($data['onDemandRecord'])
                   ->setOnDemandRecordCode($data['onDemandRecordCode'])
-                  ->setAreaCode($data['areaCode']);
+                  ->setAreaCode($data['areaCode'])
+                  ->setExternallyExtraOpts($data['externallyExtraOpts']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -1014,7 +1016,8 @@ class Companies extends MapperAbstract
                   ->setIpFilter($data->{'ipFilter'})
                   ->setOnDemandRecord($data->{'onDemandRecord'})
                   ->setOnDemandRecordCode($data->{'onDemandRecordCode'})
-                  ->setAreaCode($data->{'areaCode'});
+                  ->setAreaCode($data->{'areaCode'})
+                  ->setExternallyExtraOpts($data->{'externallyExtraOpts'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -1037,7 +1040,8 @@ class Companies extends MapperAbstract
                   ->setIpFilter($data->getIpFilter())
                   ->setOnDemandRecord($data->getOnDemandRecord())
                   ->setOnDemandRecordCode($data->getOnDemandRecordCode())
-                  ->setAreaCode($data->getAreaCode());
+                  ->setAreaCode($data->getAreaCode())
+                  ->setExternallyExtraOpts($data->getExternallyExtraOpts());
 
         }
 

@@ -170,6 +170,13 @@ class Companies extends ModelAbstract
      */
     protected $_areaCode;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_externallyExtraOpts;
+
 
     /**
      * Parent relation Companies_ibfk_10
@@ -468,6 +475,7 @@ class Companies extends ModelAbstract
         'onDemandRecord'=>'onDemandRecord',
         'onDemandRecordCode'=>'onDemandRecordCode',
         'areaCode'=>'areaCode',
+        'externallyExtraOpts'=>'externallyExtraOpts',
     );
 
     /**
@@ -1411,6 +1419,40 @@ class Companies extends ModelAbstract
     public function getAreaCode()
     {
         return $this->_areaCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setExternallyExtraOpts($data)
+    {
+
+        if ($this->_externallyExtraOpts != $data) {
+            $this->_logChange('externallyExtraOpts', $this->_externallyExtraOpts, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_externallyExtraOpts = $data;
+
+        } else if (!is_null($data)) {
+            $this->_externallyExtraOpts = (string) $data;
+
+        } else {
+            $this->_externallyExtraOpts = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column externallyExtraOpts
+     *
+     * @return string
+     */
+    public function getExternallyExtraOpts()
+    {
+        return $this->_externallyExtraOpts;
     }
 
     /**

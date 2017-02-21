@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-20 11:59+0100\n"
-"PO-Revision-Date: 2017-02-20 12:00+0100\n"
+"PO-Revision-Date: 2017-02-21 11:26+0100\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -1821,7 +1821,6 @@ msgid "On-demand call recording"
 msgstr ""
 
 #: CompaniesList.yaml:161
-#, fuzzy
 msgid "Externally rated options"
 msgstr "Tarificación externa"
 
@@ -2976,9 +2975,8 @@ msgid "Using DTMFs (read WARNING)"
 msgstr ""
 
 #: model/Companies.yaml:235
-#, fuzzy
 msgid "Externally rater custom options"
-msgstr "Tarificación externa"
+msgstr "Opciones adicionales tarificación externa"
 
 #: model/ImportFiles.yaml:6
 msgid "File to Import"

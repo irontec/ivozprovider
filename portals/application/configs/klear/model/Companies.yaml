@@ -231,7 +231,10 @@ production:
       maxLength: 3
       prefix: '<span class="asterisc">*</span>'
       pattern: '[0-9*]+'
-
+    externallyExtraOpts: 
+      title: _('Externally rater custom options')
+      type: text
+      maxLength: 255
 staging: 
   _extends: production
 testing: 

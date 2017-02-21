@@ -52,7 +52,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'ipFilter': '', 
      *     'onDemandRecord': '', 
      *     'onDemandRecordCode': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'externallyExtraOpts': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -74,7 +75,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'ipFilter': '', 
      *     'onDemandRecord': '', 
      *     'onDemandRecordCode': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'externallyExtraOpts': ''
      * }]")
      */
     public function indexAction()
@@ -113,6 +115,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'onDemandRecord',
                 'onDemandRecordCode',
                 'areaCode',
+                'externallyExtraOpts',
             );
         }
 
@@ -206,7 +209,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'ipFilter': '', 
      *     'onDemandRecord': '', 
      *     'onDemandRecordCode': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'externallyExtraOpts': ''
      * }")
      */
     public function getAction()
@@ -244,6 +248,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'onDemandRecord',
                 'onDemandRecordCode',
                 'areaCode',
+                'externallyExtraOpts',
             );
         }
 
@@ -304,6 +309,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/companies/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -359,6 +365,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -553,6 +560,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'externallyExtraOpts' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -660,6 +672,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'areaCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'externallyExtraOpts' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
