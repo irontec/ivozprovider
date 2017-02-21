@@ -63,9 +63,9 @@ class Companies extends Raw\Companies
 
         if ($isNew) {
             $this->_propagateServices($model);
+        } else {
+            if ($model->hasChange('domainUsers')) $this->_updateDomains($model);
         }
-
-        $this->_updateDomains($model);
 
         try {
             $this->_sendXmlRcp();
