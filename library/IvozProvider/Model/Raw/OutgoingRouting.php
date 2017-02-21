@@ -137,7 +137,7 @@ class OutgoingRouting extends ModelAbstract
     protected $_LcrRuleTargets;
 
     /**
-     * Dependent relation LcrRules_ibfk_7
+     * Dependent relation LcrRules_ibfk_5
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\LcrRules[]
@@ -197,7 +197,7 @@ class OutgoingRouting extends ModelAbstract
                     'property' => 'LcrRuleTargets',
                     'table_name' => 'LcrRuleTargets',
                 ),
-            'LcrRulesIbfk7' => array(
+            'LcrRulesIbfk5' => array(
                     'property' => 'LcrRules',
                     'table_name' => 'LcrRules',
                 ),
@@ -205,7 +205,7 @@ class OutgoingRouting extends ModelAbstract
 
         $this->setOnDeleteCascadeRelationships(array(
             'LcrRuleTargets_ibfk_4',
-            'LcrRules_ibfk_7'
+            'LcrRules_ibfk_5'
         ));
 
 
@@ -909,7 +909,7 @@ class OutgoingRouting extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRules_ibfk_7
+     * Sets dependent relations LcrRules_ibfk_5
      *
      * @param array $data An array of \IvozProvider\Model\Raw\LcrRules
      * @return \IvozProvider\Model\Raw\OutgoingRouting
@@ -957,7 +957,7 @@ class OutgoingRouting extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations LcrRules_ibfk_7
+     * Sets dependent relations LcrRules_ibfk_5
      *
      * @param \IvozProvider\Model\Raw\LcrRules $data
      * @return \IvozProvider\Model\Raw\OutgoingRouting
@@ -965,12 +965,12 @@ class OutgoingRouting extends ModelAbstract
     public function addLcrRules(\IvozProvider\Model\Raw\LcrRules $data)
     {
         $this->_LcrRules[] = $data;
-        $this->_setLoaded('LcrRulesIbfk7');
+        $this->_setLoaded('LcrRulesIbfk5');
         return $this;
     }
 
     /**
-     * Gets dependent LcrRules_ibfk_7
+     * Gets dependent LcrRules_ibfk_5
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -979,7 +979,7 @@ class OutgoingRouting extends ModelAbstract
      */
     public function getLcrRules($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRulesIbfk7';
+        $fkName = 'LcrRulesIbfk5';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

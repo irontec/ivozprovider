@@ -45,7 +45,7 @@ class LcrRules extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
             'refColumns' => 'id'
         ),
-        'LcrRulesIbfk7' => array(
+        'LcrRulesIbfk5' => array(
             'columns' => 'outgoingRoutingId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
             'refColumns' => 'id'

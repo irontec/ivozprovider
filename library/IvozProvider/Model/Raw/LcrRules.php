@@ -109,7 +109,7 @@ class LcrRules extends ModelAbstract
     protected $_RoutingPattern;
 
     /**
-     * Parent relation LcrRules_ibfk_7
+     * Parent relation LcrRules_ibfk_5
      *
      * @var \IvozProvider\Model\Raw\OutgoingRouting
      */
@@ -156,7 +156,7 @@ class LcrRules extends ModelAbstract
                     'property' => 'RoutingPattern',
                     'table_name' => 'RoutingPatterns',
                 ),
-            'LcrRulesIbfk7'=> array(
+            'LcrRulesIbfk5'=> array(
                     'property' => 'OutgoingRouting',
                     'table_name' => 'OutgoingRouting',
                 ),
@@ -663,7 +663,7 @@ class LcrRules extends ModelAbstract
             $this->setOutgoingRoutingId($primaryKey);
         }
 
-        $this->_setLoaded('LcrRulesIbfk7');
+        $this->_setLoaded('LcrRulesIbfk5');
         return $this;
     }
 
@@ -674,7 +674,7 @@ class LcrRules extends ModelAbstract
      */
     public function getOutgoingRouting($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'LcrRulesIbfk7';
+        $fkName = 'LcrRulesIbfk5';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {

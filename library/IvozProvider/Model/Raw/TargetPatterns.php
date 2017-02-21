@@ -359,6 +359,9 @@ class TargetPatterns extends ModelAbstract
     public function setDescription($data, $language = '')
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         $language = $this->_getCurrentLanguage($language);
 
         $methodName = "setDescription". ucfirst(str_replace('_', '', $language));
@@ -399,6 +402,9 @@ class TargetPatterns extends ModelAbstract
     public function setDescriptionEn($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_descriptionEn != $data) {
             $this->_logChange('descriptionEn', $this->_descriptionEn, $data);
         }
@@ -433,6 +439,9 @@ class TargetPatterns extends ModelAbstract
     public function setDescriptionEs($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_descriptionEs != $data) {
             $this->_logChange('descriptionEs', $this->_descriptionEs, $data);
         }
