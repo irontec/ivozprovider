@@ -91,7 +91,10 @@ class Formatter
         $keysArray = explode(".", $key);
         $value = $variables;
         foreach ($keysArray as $key) {
-            if (isset($value[$key]) && !empty($value[$key])) {
+            if (!isset($value[$key])) {
+                return null;
+            }
+            if (is_numeric($value[$key]) || !empty($value[$key])) {
                 $value = $value[$key];
             } else {
                 return null;
