@@ -143,6 +143,7 @@ class Generator
         $callSumaryTotals = array(
                 "numberOfCalls" => 0,
                 "totalCallsDuration" => 0,
+                "totalCallsDurationFormatted" => $this->_timeFormat(0),
                 "totalPrice" => 0
         );
         $inboundCalls = array();
@@ -182,8 +183,8 @@ class Generator
                 $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
                 $callData["dst"] = $call->getCallee();
                 $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
-                $callData["dst_duration_formatted"] = gmdate("H:i:s", $callData["duration"]);
-                $callData["durationFormatted"] = gmdate("H:i:s", $callData["duration"]);
+                $callData["dst_duration_formatted"] = $this->_timeFormat($callData["duration"]);
+                $callData["durationFormatted"] = $this->_timeFormat($callData["duration"]);
 
                 $callData["targetPattern"] = array();
                 if ($call->getTargetPatternId()) {
@@ -230,17 +231,17 @@ class Generator
                 if ($call->getDirection() == "inbound") {
                     $inboundCalls["summary"]["numberOfCalls"] += 1;
                     $inboundCalls["summary"]["totalCallsDuration"] += $call->getDuration();
-                    $inboundCalls["summary"]["totalCallsDurationFormatted"] = gmdate("H:i:s", $inboundCalls["summary"]["totalCallsDuration"]);
+                    $inboundCalls["summary"]["totalCallsDurationFormatted"] = $this->_timeFormat($inboundCalls["summary"]["totalCallsDuration"]);
                     $inboundCalls["summary"]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
                 } else {
                     $callSumary[$callType]["numberOfCalls"] += 1;
                     $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
-                    $callSumary[$callType]["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumary[$callType]["totalCallsDuration"]);
+                    $callSumary[$callType]["totalCallsDurationFormatted"] = $this->_timeFormat($callSumary[$callType]["totalCallsDuration"]);
                     $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
                 }
                 $callSumaryTotals["numberOfCalls"] += 1;
                 $callSumaryTotals["totalCallsDuration"] += $call->getDuration();
-                $callSumaryTotals["totalCallsDurationFormatted"] = gmdate("H:i:s", $callSumaryTotals["totalCallsDuration"]);
+                $callSumaryTotals["totalCallsDurationFormatted"] = $this->_timeFormat($callSumaryTotals["totalCallsDuration"]);
                 $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
 
                 $call->setInvoice($invoice)->save();
@@ -273,6 +274,14 @@ class Generator
         );
 
         return $finalData;
+    }
+
+    protected function _timeFormat($seconds)
+    {
+        $hours = floor($seconds / 3600);
+        $mins = floor($seconds / 60 % 60);
+        $secs = floor($seconds % 60);
+        return sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
     }
 
     protected function _log($message, $priority)
