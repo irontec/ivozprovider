@@ -123,7 +123,7 @@
                 <td text-align="center" border.type="none" padding="5px"></td>
                 <td text-align="center" border.type="none" padding="5px"></td>
                 <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Total:</td>
-                <td text-align="center" padding="5px">{{fixedCostsTotals}}</td>
+                <td text-align="center" padding="5px">{{fixedCostsTotals}} €</td>
             </tr>
         </table>
         {{/fixedCosts}}
