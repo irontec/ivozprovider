@@ -170,7 +170,6 @@ class HuntGroupAction extends RouterAction
         if ($this->agi->getCallType() == "external") {
             $preferred = $huntGroup->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
             $this->agi->setCallerIdNum($preferred);
-            $this->agi->setCallerIdName("");
         }
 
         // Dial Options

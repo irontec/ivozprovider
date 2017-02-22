@@ -55,6 +55,7 @@ class DDIs extends MapperAbstract
                 'DDIE164' => $model->getDDIE164(),
                 'externalCallFilterId' => $model->getExternalCallFilterId(),
                 'recordCalls' => $model->getRecordCalls(),
+                'displayName' => $model->getDisplayName(),
                 'routeType' => $model->getRouteType(),
                 'userId' => $model->getUserId(),
                 'IVRCommonId' => $model->getIVRCommonId(),
@@ -612,6 +613,7 @@ class DDIs extends MapperAbstract
                   ->setDDIE164($data['DDIE164'])
                   ->setExternalCallFilterId($data['externalCallFilterId'])
                   ->setRecordCalls($data['recordCalls'])
+                  ->setDisplayName($data['displayName'])
                   ->setRouteType($data['routeType'])
                   ->setUserId($data['userId'])
                   ->setIVRCommonId($data['IVRCommonId'])
@@ -631,6 +633,7 @@ class DDIs extends MapperAbstract
                   ->setDDIE164($data->{'DDIE164'})
                   ->setExternalCallFilterId($data->{'externalCallFilterId'})
                   ->setRecordCalls($data->{'recordCalls'})
+                  ->setDisplayName($data->{'displayName'})
                   ->setRouteType($data->{'routeType'})
                   ->setUserId($data->{'userId'})
                   ->setIVRCommonId($data->{'IVRCommonId'})
@@ -651,6 +654,7 @@ class DDIs extends MapperAbstract
                   ->setDDIE164($data->getDDIE164())
                   ->setExternalCallFilterId($data->getExternalCallFilterId())
                   ->setRecordCalls($data->getRecordCalls())
+                  ->setDisplayName($data->getDisplayName())
                   ->setRouteType($data->getRouteType())
                   ->setUserId($data->getUserId())
                   ->setIVRCommonId($data->getIVRCommonId())

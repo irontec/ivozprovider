@@ -75,6 +75,13 @@ class DDIAction extends RouterAction
             $this->agi->playback($externalCallFilter->getWelcomeLocution());
         }
 
+        // Check if this DDI has custom Display Name
+        if (!empty($ddi->getDisplayName())) {
+            $this->agi->setCallerIdName($ddi->getDisplayName());
+        } else {
+            $this->agi->setCallerIdName("");
+        }
+
         // Route to the extension destination
         $this->_routeType       = $ddi->getRouteType();
         $this->_routeUser       = $ddi->getUser();

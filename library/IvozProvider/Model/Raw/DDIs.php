@@ -89,6 +89,13 @@ class DDIs extends ModelAbstract
     protected $_recordCalls;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_displayName;
+
+    /**
      * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]
      * Database var type varchar
      *
@@ -277,6 +284,7 @@ class DDIs extends ModelAbstract
         'DDIE164'=>'DDIE164',
         'externalCallFilterId'=>'externalCallFilterId',
         'recordCalls'=>'recordCalls',
+        'displayName'=>'displayName',
         'routeType'=>'routeType',
         'userId'=>'userId',
         'IVRCommonId'=>'IVRCommonId',
@@ -654,6 +662,40 @@ class DDIs extends ModelAbstract
     public function getRecordCalls()
     {
         return $this->_recordCalls;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setDisplayName($data)
+    {
+
+        if ($this->_displayName != $data) {
+            $this->_logChange('displayName', $this->_displayName, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_displayName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_displayName = (string) $data;
+
+        } else {
+            $this->_displayName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column displayName
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->_displayName;
     }
 
     /**

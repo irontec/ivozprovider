@@ -181,7 +181,6 @@ class UserCallAction extends RouterAction
             // Transfor number to User Preferred
             $preferred = $user->E164ToPreferred($this->agi->getOrigCallerIdNum());
             $this->agi->setCallerIdNum($preferred);
-            $this->agi->setCallerIdName("");
         }
 
         // Call the PSJIP endpoint

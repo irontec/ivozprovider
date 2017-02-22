@@ -49,7 +49,6 @@ class FriendCallAction extends RouterAction
             // Transfor number to User Preferred
             $preferred = $friend->E164ToPreferred($this->agi->getOrigCallerIdNum());
             $this->agi->setCallerIdNum($preferred);
-            $this->agi->setCallerIdName("");
         }
 
         // Check if user is available before placing the call

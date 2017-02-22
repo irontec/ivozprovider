@@ -102,6 +102,16 @@ production:
         icon: error
         text: _("Local legislation may enforce to announce the call recording to both parties, act responsibly")
         label: _("Need help?")
+    displayName: 
+      title: _('Displayname')
+      type: text
+      maxLength: 50
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("This value will be displayed in the called terminals")
+        label: _("Need help?")
     billInboundCalls: 
       title: _('Bill inbound call')
       type: select

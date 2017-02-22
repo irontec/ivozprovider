@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-20 11:59+0100\n"
-"PO-Revision-Date: 2017-02-21 11:26+0100\n"
+"POT-Creation-Date: 2017-02-22 15:43+0100\n"
+"PO-Revision-Date: 2017-02-22 15:44+0100\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -97,7 +97,7 @@ msgstr "Listado de %s  %2s"
 #: RoutingPatternGroupsRelPatternsList.yaml:26 RecordingsList.yaml:36
 #: RecordingsList.yaml:43 CallACLPatternsList.yaml:21
 #: CallACLPatternsList.yaml:28 TimezonesList.yaml:17 TimezonesList.yaml:24
-#: DDIsList.yaml:30 DDIsList.yaml:86 AstMusiconholdList.yaml:19
+#: DDIsList.yaml:30 DDIsList.yaml:88 AstMusiconholdList.yaml:19
 #: AstMusiconholdList.yaml:26 CompanyURLsList.yaml:27 CompanyURLsList.yaml:42
 #: DomainsList.yaml:21 DomainsList.yaml:41 CompanyAdminsList.yaml:19
 #: CompanyAdminsList.yaml:26 FixedCostsRelInvoicesList.yaml:21
@@ -174,7 +174,7 @@ msgstr "Opciones"
 #: MainOperatorsList.yaml:47 RoutingPatternGroupsList.yaml:41
 #: IVRCustomList.yaml:58 LcrRuleTargetsList.yaml:37
 #: RoutingPatternGroupsRelPatternsList.yaml:37 TimezonesList.yaml:35
-#: DDIsList.yaml:103 AstMusiconholdList.yaml:37 CompanyURLsList.yaml:53
+#: DDIsList.yaml:105 AstMusiconholdList.yaml:37 CompanyURLsList.yaml:53
 #: DomainsList.yaml:62 CompanyAdminsList.yaml:37
 #: FixedCostsRelInvoicesList.yaml:39 PeerServersList.yaml:63 UsersList.yaml:87
 #: AstPsEndpointsList.yaml:39 ChangeHistoryList.yaml:37
@@ -217,7 +217,7 @@ msgstr "Añadir %s"
 #: MusicOnHoldList.yaml:71 IVRCustomList.yaml:102 LcrRuleTargetsList.yaml:44
 #: LcrRuleTargetsList.yaml:45 RoutingPatternGroupsRelPatternsList.yaml:44
 #: RoutingPatternGroupsRelPatternsList.yaml:45 CallACLPatternsList.yaml:48
-#: TimezonesList.yaml:42 DDIsList.yaml:121 DDIsList.yaml:138
+#: TimezonesList.yaml:42 DDIsList.yaml:123 DDIsList.yaml:140
 #: AstMusiconholdList.yaml:44 AstMusiconholdList.yaml:45
 #: CompanyURLsList.yaml:78 DomainsList.yaml:83 DomainsList.yaml:84
 #: CompanyAdminsList.yaml:44 CompanyAdminsList.yaml:45
@@ -271,7 +271,7 @@ msgstr "Editar %s %2s"
 #: MainOperatorsList.yaml:84 RoutingPatternGroupsList.yaml:59
 #: MusicOnHoldList.yaml:87 IVRCustomList.yaml:131 LcrRuleTargetsList.yaml:52
 #: RoutingPatternGroupsRelPatternsList.yaml:52 RecordingsList.yaml:78
-#: CallACLPatternsList.yaml:58 TimezonesList.yaml:49 DDIsList.yaml:159
+#: CallACLPatternsList.yaml:58 TimezonesList.yaml:49 DDIsList.yaml:161
 #: AstMusiconholdList.yaml:52 CompanyURLsList.yaml:92 DomainsList.yaml:126
 #: CompanyAdminsList.yaml:52 FixedCostsRelInvoicesList.yaml:70
 #: PeerServersList.yaml:137 UsersList.yaml:238 UsersList.yaml:268
@@ -313,7 +313,7 @@ msgstr "Borrar %s"
 #: MainOperatorsList.yaml:85 RoutingPatternGroupsList.yaml:60
 #: MusicOnHoldList.yaml:88 IVRCustomList.yaml:132 LcrRuleTargetsList.yaml:53
 #: RoutingPatternGroupsRelPatternsList.yaml:53 RecordingsList.yaml:79
-#: CallACLPatternsList.yaml:59 TimezonesList.yaml:50 DDIsList.yaml:160
+#: CallACLPatternsList.yaml:59 TimezonesList.yaml:50 DDIsList.yaml:162
 #: AstMusiconholdList.yaml:53 CompanyURLsList.yaml:93 DomainsList.yaml:127
 #: CompanyAdminsList.yaml:53 FixedCostsRelInvoicesList.yaml:71
 #: PeerServersList.yaml:138 UsersList.yaml:239 UsersList.yaml:269
@@ -355,7 +355,7 @@ msgstr "Do you want to delete this %s?"
 #: MainOperatorsList.yaml:86 RoutingPatternGroupsList.yaml:61
 #: MusicOnHoldList.yaml:89 IVRCustomList.yaml:133 LcrRuleTargetsList.yaml:54
 #: RoutingPatternGroupsRelPatternsList.yaml:54 RecordingsList.yaml:80
-#: CallACLPatternsList.yaml:60 TimezonesList.yaml:51 DDIsList.yaml:161
+#: CallACLPatternsList.yaml:60 TimezonesList.yaml:51 DDIsList.yaml:163
 #: AstMusiconholdList.yaml:54 CompanyURLsList.yaml:94 DomainsList.yaml:128
 #: CompanyAdminsList.yaml:54 FixedCostsRelInvoicesList.yaml:72
 #: PeerServersList.yaml:139 UsersList.yaml:240 UsersList.yaml:270
@@ -571,7 +571,7 @@ msgid_plural "Extensions"
 msgstr[0] "Extensión"
 msgstr[1] "Extensiones"
 
-#: ExtensionsList.yaml:104 DDIsList.yaml:168 UsersList.yaml:247
+#: ExtensionsList.yaml:104 DDIsList.yaml:170 UsersList.yaml:247
 #: TerminalsList.yaml:138 HolidayDatesList.yaml:61 CompaniesList.yaml:247
 #: model/FaxesInOut.yaml:61 model/ImportFiles.yaml:5
 #: model/GenericMusicOnHold.yaml:18 model/GenericMusicOnHold.yaml:46
@@ -580,7 +580,7 @@ msgid_plural "Files"
 msgstr[0] "Fichero"
 msgstr[1] "Ficheros"
 
-#: ExtensionsList.yaml:104 DDIsList.yaml:168 UsersList.yaml:247
+#: ExtensionsList.yaml:104 DDIsList.yaml:170 UsersList.yaml:247
 #: TargetPatternsList.yaml:123 PricingPlansList.yaml:150
 #: PricingPlansRelTargetPatternsList.yaml:114 TerminalsList.yaml:138
 #: HolidayDatesList.yaml:61 CompaniesList.yaml:247
@@ -898,8 +898,8 @@ msgstr[0] "Música en espera genérica"
 msgstr[1] "Músicas en espera genéricas"
 
 #: klear.yaml:133 klear.yaml:135 klear.yaml:203 klear.yaml:205 DDIsList.yaml:14
-#: DDIsList.yaml:103 DDIsList.yaml:121 DDIsList.yaml:138 DDIsList.yaml:159
-#: DDIsList.yaml:160 DDIsList.yaml:161 BrandDDIsList.yaml:14 model/DDIs.yaml:21
+#: DDIsList.yaml:105 DDIsList.yaml:123 DDIsList.yaml:140 DDIsList.yaml:161
+#: DDIsList.yaml:162 DDIsList.yaml:163 BrandDDIsList.yaml:14 model/DDIs.yaml:21
 #: model/KamTrunksUacreg.yaml:22 model/KamTrunksUacreg.yaml:144
 #: model/Recordings.yaml:50
 msgid "DDI"
@@ -1110,23 +1110,23 @@ msgstr ""
 msgid "Vista general de la plataforma"
 msgstr ""
 
-#: DDIsList.yaml:52 BrandDDIsList.yaml:44
+#: DDIsList.yaml:53 BrandDDIsList.yaml:44
 msgid "Number data"
 msgstr "Información número"
 
-#: DDIsList.yaml:59 BrandDDIsList.yaml:51
+#: DDIsList.yaml:61 BrandDDIsList.yaml:51
 msgid "Filters data"
 msgstr "Información filtrado"
 
-#: DDIsList.yaml:64
+#: DDIsList.yaml:66
 msgid "Recording data"
 msgstr "Grabaciones"
 
-#: DDIsList.yaml:69 BrandDDIsList.yaml:56
+#: DDIsList.yaml:71 BrandDDIsList.yaml:56
 msgid "Routing data"
 msgstr "Información enrutado"
 
-#: DDIsList.yaml:81
+#: DDIsList.yaml:83
 msgid "Additional configuration"
 msgstr ""
 
@@ -1930,13 +1930,14 @@ msgstr "Valor numérico"
 #: model/TransformationRulesetGroupsTrunks.yaml:72
 #: model/TransformationRulesetGroupsTrunks.yaml:98
 #: model/TransformationRulesetGroupsTrunks.yaml:110 model/Brands.yaml:127
-#: model/IVRCustom.yaml:90 model/Friends.yaml:33 model/Friends.yaml:59
+#: model/IVRCustom.yaml:93 model/Friends.yaml:33 model/Friends.yaml:59
 #: model/Friends.yaml:92 model/Friends.yaml:129 model/Friends.yaml:139
-#: model/Friends.yaml:159 model/DDIs.yaml:104 model/DDIs.yaml:121
-#: model/RoutingPatterns.yaml:24 model/Services.yaml:35 model/IVRCommon.yaml:94
-#: model/ExternalCallFilters.yaml:238 model/ExternalCallFilters.yaml:246
-#: model/CompanyServices.yaml:45 model/Users.yaml:38 model/Users.yaml:120
-#: model/Users.yaml:286 model/BrandURLs.yaml:29 model/BrandURLs.yaml:118
+#: model/Friends.yaml:159 model/DDIs.yaml:104 model/DDIs.yaml:114
+#: model/DDIs.yaml:131 model/RoutingPatterns.yaml:24 model/Services.yaml:35
+#: model/IVRCommon.yaml:97 model/ExternalCallFilters.yaml:238
+#: model/ExternalCallFilters.yaml:246 model/CompanyServices.yaml:45
+#: model/Users.yaml:38 model/Users.yaml:120 model/Users.yaml:286
+#: model/BrandURLs.yaml:29 model/BrandURLs.yaml:118
 #: conf.d/friendValueHelp.yaml:6 conf.d/updateMethodHelp.yaml:6
 #: conf.d/recordingHelp.yaml:6 conf.d/codecsHelp.yaml:6
 msgid "Need help?"
@@ -2001,23 +2002,23 @@ msgstr "Servidor de media"
 #: model/KamAccCdrsBrand.yaml:139 model/KamAccCdrsBrand.yaml:189
 #: model/KamAccCdrsBrand.yaml:202 model/KamAccCdrsBrand.yaml:227
 #: model/IVRCustom.yaml:50 model/IVRCustom.yaml:64 model/IVRCustom.yaml:78
-#: model/IVRCustom.yaml:104 model/IVRCustom.yaml:141 model/IVRCustom.yaml:157
-#: model/IVRCustom.yaml:165 model/IVRCustom.yaml:202 model/IVRCustom.yaml:218
+#: model/IVRCustom.yaml:107 model/IVRCustom.yaml:144 model/IVRCustom.yaml:160
+#: model/IVRCustom.yaml:168 model/IVRCustom.yaml:205 model/IVRCustom.yaml:221
 #: model/Friends.yaml:153 model/HuntGroups.yaml:68 model/HuntGroups.yaml:99
 #: model/HuntGroups.yaml:119 model/HuntGroups.yaml:135 model/Faxes.yaml:59
 #: model/KamAccCdrsGod.yaml:81 model/KamAccCdrsGod.yaml:94
 #: model/KamAccCdrsGod.yaml:137 model/KamAccCdrsGod.yaml:187
 #: model/KamAccCdrsGod.yaml:200 model/KamAccCdrsGod.yaml:224 model/DDIs.yaml:40
-#: model/DDIs.yaml:48 model/DDIs.yaml:137 model/DDIs.yaml:152
-#: model/DDIs.yaml:167 model/DDIs.yaml:182 model/DDIs.yaml:197
-#: model/DDIs.yaml:212 model/KamTrunksDomain.yaml:28 model/KamAccCdrs.yaml:73
+#: model/DDIs.yaml:48 model/DDIs.yaml:147 model/DDIs.yaml:162
+#: model/DDIs.yaml:177 model/DDIs.yaml:192 model/DDIs.yaml:207
+#: model/DDIs.yaml:222 model/KamTrunksDomain.yaml:28 model/KamAccCdrs.yaml:73
 #: model/KamAccCdrs.yaml:86 model/KamAccCdrs.yaml:175 model/KamAccCdrs.yaml:192
 #: model/KamAccCdrs.yaml:215 model/Timezones.yaml:16
 #: model/KamUsersDomain.yaml:36 model/ParsedCDRsGod.yaml:120
 #: model/ParsedCDRsGod.yaml:133 model/ParsedCDRsGod.yaml:146
 #: model/IVRCommon.yaml:54 model/IVRCommon.yaml:68 model/IVRCommon.yaml:82
-#: model/IVRCommon.yaml:108 model/IVRCommon.yaml:145 model/IVRCommon.yaml:161
-#: model/IVRCommon.yaml:169 model/IVRCommon.yaml:206 model/IVRCommon.yaml:222
+#: model/IVRCommon.yaml:111 model/IVRCommon.yaml:148 model/IVRCommon.yaml:164
+#: model/IVRCommon.yaml:172 model/IVRCommon.yaml:209 model/IVRCommon.yaml:225
 #: model/ExternalCallFilters.yaml:38 model/ExternalCallFilters.yaml:54
 #: model/ExternalCallFilters.yaml:70 model/ExternalCallFilters.yaml:78
 #: model/ExternalCallFilters.yaml:117 model/ExternalCallFilters.yaml:133
@@ -2092,12 +2093,12 @@ msgid "Created on"
 msgstr "Creado"
 
 #: model/HuntGroupsRelUsers.yaml:5 model/Extensions.yaml:116
-#: model/DDIs.yaml:169
+#: model/DDIs.yaml:179
 msgid "Hunt group id"
 msgstr "Grupo de salto"
 
 #: model/HuntGroupsRelUsers.yaml:20 model/CallForwardSettings.yaml:5
-#: model/PickUpRelUsers.yaml:19 model/DDIs.yaml:123 model/AstVoicemail.yaml:185
+#: model/PickUpRelUsers.yaml:19 model/DDIs.yaml:133 model/AstVoicemail.yaml:185
 msgid "User id"
 msgstr "Usuario"
 
@@ -2239,7 +2240,7 @@ msgstr "Importado el"
 msgid "Brand id"
 msgstr "Marca"
 
-#: model/IVRCustomEntries.yaml:5 model/Extensions.yaml:101 model/DDIs.yaml:154
+#: model/IVRCustomEntries.yaml:5 model/Extensions.yaml:101 model/DDIs.yaml:164
 msgid "I v r custom id"
 msgstr "IVR a medida"
 
@@ -2258,23 +2259,23 @@ msgid "Target type"
 msgstr "Tipo de fichero"
 
 #: model/IVRCustomEntries.yaml:49 model/Extensions.yaml:69
-#: model/CallForwardSettings.yaml:59 model/IVRCustom.yaml:108
-#: model/IVRCustom.yaml:169 model/HuntGroups.yaml:72 model/IVRCommon.yaml:112
-#: model/IVRCommon.yaml:173 model/ExternalCallFilters.yaml:82
+#: model/CallForwardSettings.yaml:59 model/IVRCustom.yaml:111
+#: model/IVRCustom.yaml:172 model/HuntGroups.yaml:72 model/IVRCommon.yaml:115
+#: model/IVRCommon.yaml:176 model/ExternalCallFilters.yaml:82
 #: model/ExternalCallFilters.yaml:145
 msgid "number"
 msgstr "Número"
 
 #: model/IVRCustomEntries.yaml:54 model/CallForwardSettings.yaml:64
-#: model/IVRCustom.yaml:113 model/IVRCustom.yaml:174 model/HuntGroups.yaml:77
-#: model/IVRCommon.yaml:117 model/IVRCommon.yaml:178
+#: model/IVRCustom.yaml:116 model/IVRCustom.yaml:177 model/HuntGroups.yaml:77
+#: model/IVRCommon.yaml:120 model/IVRCommon.yaml:181
 #: model/ExternalCallFilters.yaml:87 model/ExternalCallFilters.yaml:150
 msgid "extension"
 msgstr "Extensión"
 
 #: model/IVRCustomEntries.yaml:59 model/CallForwardSettings.yaml:69
-#: model/IVRCustom.yaml:118 model/IVRCustom.yaml:179 model/HuntGroups.yaml:82
-#: model/IVRCommon.yaml:122 model/IVRCommon.yaml:183
+#: model/IVRCustom.yaml:121 model/IVRCustom.yaml:182 model/HuntGroups.yaml:82
+#: model/IVRCommon.yaml:125 model/IVRCommon.yaml:186
 #: model/ExternalCallFilters.yaml:92 model/ExternalCallFilters.yaml:155
 msgid "voicemail"
 msgstr "Buzón de voz"
@@ -2292,7 +2293,7 @@ msgid "Target voice mail user id"
 msgstr "Buzón de voz"
 
 #: model/IVRCustomEntries.yaml:100 model/Extensions.yaml:168
-#: model/DDIs.yaml:220
+#: model/DDIs.yaml:230
 msgid "Target"
 msgstr "Destino"
 
@@ -2361,15 +2362,15 @@ msgstr ""
 msgid "Number value"
 msgstr "Número"
 
-#: model/Extensions.yaml:86 model/DDIs.yaml:139
+#: model/Extensions.yaml:86 model/DDIs.yaml:149
 msgid "I v r common id"
 msgstr "IVR Genérico"
 
-#: model/Extensions.yaml:131 model/DDIs.yaml:199
+#: model/Extensions.yaml:131 model/DDIs.yaml:209
 msgid "Conference room id"
 msgstr ""
 
-#: model/Extensions.yaml:162 model/DDIs.yaml:214
+#: model/Extensions.yaml:162 model/DDIs.yaml:224
 #, fuzzy
 msgid "Friend value"
 msgstr "Número"
@@ -2382,7 +2383,7 @@ msgstr ""
 #: model/Companies.yaml:194 model/TransformationRulesetGroupsTrunks.yaml:58
 #: model/KamAccCdrsBrand.yaml:148 model/KamAccCdrsBrand.yaml:159
 #: model/CompanyAdmins.yaml:43 model/Faxes.yaml:39 model/KamAccCdrsGod.yaml:146
-#: model/KamAccCdrsGod.yaml:157 model/DDIs.yaml:113
+#: model/KamAccCdrsGod.yaml:157 model/DDIs.yaml:123
 #: model/BrandOperators.yaml:41 model/KamAccCdrs.yaml:141
 #: model/KamAccCdrs.yaml:152 model/KamTrunksUacreg.yaml:12
 #: model/MainOperators.yaml:38 model/LcrRules.yaml:47 model/LcrRules.yaml:58
@@ -2396,7 +2397,7 @@ msgstr "No"
 #: model/Companies.yaml:196 model/TransformationRulesetGroupsTrunks.yaml:63
 #: model/KamAccCdrsBrand.yaml:150 model/KamAccCdrsBrand.yaml:161
 #: model/CompanyAdmins.yaml:45 model/Faxes.yaml:43 model/KamAccCdrsGod.yaml:148
-#: model/KamAccCdrsGod.yaml:159 model/DDIs.yaml:115
+#: model/KamAccCdrsGod.yaml:159 model/DDIs.yaml:125
 #: model/BrandOperators.yaml:43 model/KamAccCdrs.yaml:143
 #: model/KamAccCdrs.yaml:154 model/KamTrunksUacreg.yaml:17
 #: model/MainOperators.yaml:40 model/LcrRules.yaml:49 model/LcrRules.yaml:60
@@ -2681,7 +2682,7 @@ msgstr "No registrado"
 msgid "Voice mail user"
 msgstr "Buzón de voz"
 
-#: model/CallForwardSettings.yaml:111 model/IVRCommon.yaml:96
+#: model/CallForwardSettings.yaml:111 model/IVRCommon.yaml:99
 msgid "No answer timeout"
 msgstr "Timeout no contesta"
 
@@ -2766,7 +2767,7 @@ msgstr "Gw id"
 msgid "Calldate"
 msgstr "Fecha"
 
-#: model/FaxesInOut.yaml:13 model/DDIs.yaml:184
+#: model/FaxesInOut.yaml:13 model/DDIs.yaml:194
 msgid "Fax id"
 msgstr "Fax"
 
@@ -3300,7 +3301,7 @@ msgid "Diversion"
 msgstr ""
 
 #: model/KamAccCdrsBrand.yaml:127 model/KamAccCdrsGod.yaml:126
-#: model/DDIs.yaml:226 model/KamTrunksUacreg.yaml:119
+#: model/DDIs.yaml:236 model/KamTrunksUacreg.yaml:119
 #: model/ParsedCDRsGod.yaml:135 model/ParsedCDRs.yaml:136
 msgid "Peering contract id"
 msgstr "Contrato de Peering"
@@ -3375,7 +3376,7 @@ msgstr "Loc. Éxito"
 msgid "Timeout"
 msgstr "Timeout"
 
-#: model/IVRCustom.yaml:89 model/IVRCommon.yaml:93
+#: model/IVRCustom.yaml:92 model/IVRCommon.yaml:96
 msgid ""
 "Time in seconds the IVR will wait after playing the welcome locution or "
 "dialing a digit"
@@ -3383,47 +3384,47 @@ msgstr ""
 "Tiempo en segundos que el IVR esperará tras reproducir la locucion de "
 "bienvenida o presionar un dígito."
 
-#: model/IVRCustom.yaml:92
+#: model/IVRCustom.yaml:95
 msgid "No aswer timeout"
 msgstr "Timeout No contesta"
 
-#: model/IVRCustom.yaml:98 model/HuntGroups.yaml:62 model/IVRCommon.yaml:102
+#: model/IVRCustom.yaml:101 model/HuntGroups.yaml:62 model/IVRCommon.yaml:105
 msgid "Timeout target type"
 msgstr "Enrutado timeout"
 
-#: model/IVRCustom.yaml:123 model/HuntGroups.yaml:101 model/IVRCommon.yaml:127
+#: model/IVRCustom.yaml:126 model/HuntGroups.yaml:101 model/IVRCommon.yaml:130
 msgid "Timeout number value"
 msgstr "Número"
 
-#: model/IVRCustom.yaml:128 model/HuntGroups.yaml:106 model/IVRCommon.yaml:132
+#: model/IVRCustom.yaml:131 model/HuntGroups.yaml:106 model/IVRCommon.yaml:135
 msgid "Timeout extension id"
 msgstr "Extensión"
 
-#: model/IVRCustom.yaml:143 model/HuntGroups.yaml:121 model/IVRCommon.yaml:147
+#: model/IVRCustom.yaml:146 model/HuntGroups.yaml:121 model/IVRCommon.yaml:150
 msgid "Timeout voice mail user id"
 msgstr "Buzón de voz"
 
-#: model/IVRCustom.yaml:159 model/IVRCommon.yaml:163
+#: model/IVRCustom.yaml:162 model/IVRCommon.yaml:166
 msgid "Error target type"
 msgstr "Enrutado error"
 
-#: model/IVRCustom.yaml:184 model/IVRCommon.yaml:188
+#: model/IVRCustom.yaml:187 model/IVRCommon.yaml:191
 msgid "Error number value"
 msgstr "Número"
 
-#: model/IVRCustom.yaml:189 model/IVRCommon.yaml:193
+#: model/IVRCustom.yaml:192 model/IVRCommon.yaml:196
 msgid "Error extension id"
 msgstr "Extensión"
 
-#: model/IVRCustom.yaml:204 model/IVRCommon.yaml:208
+#: model/IVRCustom.yaml:207 model/IVRCommon.yaml:211
 msgid "Error voice mail user id"
 msgstr "Buzón de voz"
 
-#: model/IVRCustom.yaml:220 model/IVRCommon.yaml:224
+#: model/IVRCustom.yaml:223 model/IVRCommon.yaml:227
 msgid "Timeout target"
 msgstr "Destino si timeout"
 
-#: model/IVRCustom.yaml:226 model/IVRCommon.yaml:230
+#: model/IVRCustom.yaml:229 model/IVRCommon.yaml:233
 msgid "Error target"
 msgstr "Destino error"
 
@@ -3736,14 +3737,22 @@ msgstr ""
 "actúa con responsabilidad."
 
 #: model/DDIs.yaml:106
+msgid "Displayname"
+msgstr "Texto en pantalla"
+
+#: model/DDIs.yaml:113
+msgid "This value will be displayed in the called terminals"
+msgstr "Valor que se mostrará en el terminal llamado"
+
+#: model/DDIs.yaml:116
 msgid "Bill inbound call"
 msgstr ""
 
-#: model/DDIs.yaml:120
+#: model/DDIs.yaml:130
 msgid "This setting needs external tarification module"
 msgstr ""
 
-#: model/DDIs.yaml:240 model/Timezones.yaml:5
+#: model/DDIs.yaml:250 model/Timezones.yaml:5
 msgid "Country id"
 msgstr "País"
 

@@ -39,6 +39,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'DDIE164': '', 
      *     'externalCallFilterId': '', 
      *     'recordCalls': '', 
+     *     'displayName': '', 
      *     'routeType': '', 
      *     'userId': '', 
      *     'IVRCommonId': '', 
@@ -58,6 +59,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'DDIE164': '', 
      *     'externalCallFilterId': '', 
      *     'recordCalls': '', 
+     *     'displayName': '', 
      *     'routeType': '', 
      *     'userId': '', 
      *     'IVRCommonId': '', 
@@ -93,6 +95,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'DDIE164',
                 'externalCallFilterId',
                 'recordCalls',
+                'displayName',
                 'routeType',
                 'userId',
                 'IVRCommonId',
@@ -184,6 +187,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'DDIE164': '', 
      *     'externalCallFilterId': '', 
      *     'recordCalls': '', 
+     *     'displayName': '', 
      *     'routeType': '', 
      *     'userId': '', 
      *     'IVRCommonId': '', 
@@ -218,6 +222,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'DDIE164',
                 'externalCallFilterId',
                 'recordCalls',
+                'displayName',
                 'routeType',
                 'userId',
                 'IVRCommonId',
@@ -275,6 +280,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externalCallFilterId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordCalls", nullable=false, type="varchar", sample="", description="[enum:none|all|inbound|outbound]")
+     * @ApiParams(name="displayName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
@@ -327,6 +333,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="DDIE164", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="externalCallFilterId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordCalls", nullable=false, type="varchar", sample="", description="[enum:none|all|inbound|outbound]")
+     * @ApiParams(name="displayName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
@@ -462,6 +469,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[enum:none|all|inbound|outbound]',
                 ),
+                'displayName' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'routeType' => array(
                     'type' => "varchar",
                     'required' => false,
@@ -557,6 +569,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '[enum:none|all|inbound|outbound]',
+                ),
+                'displayName' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
                 ),
                 'routeType' => array(
                     'type' => "varchar",
