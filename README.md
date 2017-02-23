@@ -52,8 +52,8 @@ If you want to test an [standlone](https://irontec.github.io/ivozprovider/en/ins
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|oasis 1.1 (stable) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-i386.iso)|
-|oasis 1.2 (nightly-build) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.2-oasis-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.2-oasis-nightly-i386.iso)|
+|stable (oasis 1.1) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.1-oasis-i386.iso)|
+|bleeding (oasis 1.2) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.2-oasis-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.2-oasis-nightly-i386.iso)|
 
 
 ## Documentation
