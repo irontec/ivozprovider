@@ -29,22 +29,22 @@ class FaxCallAction extends RouterAction
     }
 
 
-	public function getDialStatus()
-	{
-	    return $this->_dialStatus;
-	}
+    public function getDialStatus()
+    {
+        return $this->_dialStatus;
+    }
 
-	public function setFax($fax)
-	{
-	    $this->_fax = $fax;
-	    return $this;
-	}
+    public function setFax($fax)
+    {
+        $this->_fax = $fax;
+        return $this;
+    }
 
-	public function setFaxInOut($faxInOut)
-	{
-	    $this->_faxInOut = $faxInOut;
-	    return $this;
-	}
+    public function setFaxInOut($faxInOut)
+    {
+        $this->_faxInOut = $faxInOut;
+        return $this;
+    }
 
     public function reciveFax()
     {
@@ -56,7 +56,7 @@ class FaxCallAction extends RouterAction
         }
 
         // Local variables to improve readability
-  	    $fax = $this->_fax;
+        $fax = $this->_fax;
 
         // This fax routed from DDI
         $did = $this->agi->getExtension();

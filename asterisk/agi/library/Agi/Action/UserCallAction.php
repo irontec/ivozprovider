@@ -35,57 +35,57 @@ class UserCallAction extends RouterAction
         return $this;
     }
 
-	public function allowForwarding($allow)
-	{
-	    $this->_allowForwarding = $allow;
-	    return $this;
-	}
-
-	public function setProcessDialStatus($process)
-	{
-	    $this->_processDialStatus = $process;
-	    return $this;
-	}
-
-	public function getDialStatus()
-	{
-	    return $this->_dialStatus;
-	}
-
-  	public function call()
+    public function allowForwarding($allow)
     {
-  	    if (empty($this->_user)) {
-  	        $this->agi->error("User is not properly defined. Check configuration.");
-  	        $this->_dialStatus = "INVALIDARGS";
-  	        $this->processDialStatus();
+        $this->_allowForwarding = $allow;
+        return $this;
+    }
+
+    public function setProcessDialStatus($process)
+    {
+        $this->_processDialStatus = $process;
+        return $this;
+    }
+
+    public function getDialStatus()
+    {
+        return $this->_dialStatus;
+    }
+
+    public function call()
+    {
+        if (empty($this->_user)) {
+            $this->agi->error("User is not properly defined. Check configuration.");
+            $this->_dialStatus = "INVALIDARGS";
+            $this->processDialStatus();
             return;
-  	    }
+        }
 
         // Local variables to improve readability
-  	    $user = $this->_user;
+        $user = $this->_user;
 
-  	    // Check if user has extension configured
-  	    $extension = $this->_user->getExtension();
-  	    if (empty($extension)) {
+        // Check if user has extension configured
+        $extension = $this->_user->getExtension();
+        if (empty($extension)) {
             $this->agi->error("User %s [%d] has no extension.", $user->getFullName(), $user->getId());
             $this->_dialStatus = "INVALIDARGS";
             $this->processDialStatus();
             return;
-  	    }
+        }
 
-  	    // Check if user has terminal configured
-  	    $terminal = $this->_user->getTerminal();
-  	    if (empty($terminal)) {
+        // Check if user has terminal configured
+        $terminal = $this->_user->getTerminal();
+        if (empty($terminal)) {
             $this->agi->error("User %s [%d] has no terminal.", $user->getFullName(), $user->getId());
             $this->_dialStatus = "CHANUNAVAIL";
             $this->processDialStatus();
             return;
-  	    }
+        }
 
         // Some verbose dolan pls
         $this->agi->notice("Preparing call to user \e[0;32m%s [user%d]\e[0;93m (%s [terminal%d])",
-                        $user->getFullName(), $user->getId(),
-                        $terminal->getName(), $terminal->getId());
+            $user->getFullName(), $user->getId(),
+            $terminal->getName(), $terminal->getId());
 
         // Check if user has call forwarding enabled
         if ($this->_allowForwarding) {
