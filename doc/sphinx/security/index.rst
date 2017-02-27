@@ -1,84 +1,77 @@
-#####################
-[S] Security elements
-#####################
+#################
+Security elements
+#################
 
-******************
-Firewall con geoIP
-******************
+**************
+GeoIP Firewall
+**************
 
+****************************
+Authorized company IP ranges
+****************************
 
+During the Company creating process, we skipped the security mechanism that
+**limits the IP addresses or ranges that the company terminals can use 
+in their terminals**. 
 
-************************************
-Rangos de IP autorizados por empresa
-************************************
-
-En el proceso de creación de empresas nos saltamos deliberademente un mecanismo 
-de seguridad que **limita las direcciones IP o rangos de red que pueden 
-utilizar las credenciales de los terminales de una empresa concreta**.
-
-Se puede activar en la sección **Configuración de Marca** > **Empresas**:
+This can be activated in the section **Brand configuration** > **Company**:
 
 .. image:: img/authorized_ips2.png
     :align: center
 
-Todo usuario que quiera conectarse desde una red no incluida no podrá, a pesar 
-de disponer de unas credenciales válidas.
+Rest of the users won't be allowed to connect from another network, even if the
+credentials are valid. 
 
-.. error:: Una vez activado el filtrado, **es obligatorio** añadir redes o 
-   direcciones válidas o, por el contrario, todas las llamadas se rechazarán:
+.. warning:: Once the filter has been activated you **MUST** add networks or 
+   valid IP addresses, otherwise, all the calls will be rejected.
 
 .. image:: img/authorized_ips.png
 
-Se pueden añadir direcciones IP y rangos de direcciones, en formato CIDR 
-(IP/mask):
+Both IP addresses or ranges can be used, in CIDR format (IP/mask):
 
 .. image:: img/authorized_ips3.png
 
-.. important:: Este mecanismo limita los orígenes de los usuarios de una 
-   empresa, no filtra en absoluto los orígenes de los **Contratos de Peering**.
+.. important:: This mechanism limits the origin of the users of a company, it 
+   doesn't filter origin from **Contract Peerings**.
 
 *************
 Anti-flooding
 *************
 
-IvozProvider incorpora un mecanismo de *anti-flooding* que evita que un emisor 
-sature nuestra plataforma enviando peticiones. Ambos *proxies* (usuarios y 
-salida) incorporan este mecanismo, que **limita el número de peticiones desde 
-un dirección origen en un tramo concreto de tiempo**.
+IvozProvider comes with an *anti-flooding* mechanism to avoid that a single 
+sender can deny the platform service by sending lots of requests. Both *proxies*
+(users and trunks) use this mechanism, that **limits the number of requests 
+from an origin address in a time lapse**.
 
-.. warning:: Cuando un origen llega al límite, el proxy dejará de contestarle 
-   durante un tiempo dado. Pasado ese tiempo, volverá a contestarle con 
-   normalidad.
+.. warning:: When an origin reaches this limit, the proxy will stop sending
+   responses for a period of time. After this time, the requests will be again
+   handled normally.
 
-Ciertos orígenes que están automáticamente excluidos de este mecanismo de 
-*anti-flooding*:
+Some origins are automatically excluded from this *anti-flooding* mechanism:
 
-- Servidores de aplicación de la plataforma.
+- Application Servers from the platform.
 
-- IPs o rangos autorizados de empresas (ver sección anterior).
+- Company authorized IP addresses or ranges (see previous section).
 
-El operador global puede añadir otras direcciones que queden excluidas de este 
-mecanismo por medio del apartado **Configuración global** > **IPs de 
-confianza**:
+Global operator of the platform can also add exceptions to this mechanism in 
+the section **Global configuration** > **Antiflood trusted IPs**.
 
 .. image:: img/trusted_ips.png
 
-*******************************
-Límite de llamadas concurrentes
-*******************************
+*********************
+Concurrent call limit
+*********************
 
-Otro mecanismo de seguridad que puede evitar que unas credenciales 
-comprometidas sean utilizadas para establecer cientos de llamadas en poco 
-tiempo, es el mecanismo que **limita el número de llamadas externas** de 
-cada empresa.
+Another security mechanism can avoid that compromised credentials are used to
+establish hundreds of calls in little time. This mechanism **limits the number 
+of external calls** of each company. 
 
-.. note:: Este mecanismo tiene en cuenta los canales externos concurrentes, es 
-   decir, cuenta llamadas externas entrantes y llamadas externas salientes.
+.. note:: This mechanism only takes into account the external channels, both
+   incoming or outgoing external calls.
 
-Se puede configurar editando una empresa y fijando el valor del siguiente campo:
+This can be configured in the company edit screen:
 
 .. image:: img/call_limit.png
     :align: center
 
-.. tip:: Para desactivar este mecanismo, basta con fijar el valor a 0.
-
+.. tip:: To disable this mechanism, set its value to 0.
