@@ -1,48 +1,48 @@
-production: 
+production:
   class: \IvozProvider\Model\ApplicationServers
-  fields: 
-    # brandId: 
+  fields:
+    # brandId:
       # title: _('Brand id')
       # type: select
       # required: true
-      # source: 
+      # source:
         # data: mapper
-        # config: 
+        # config:
           # mapperName: \IvozProvider\Mapper\Sql\Brands
-          # fieldName: 
-            # fields: 
+          # fieldName:
+            # fields:
               # - name
             # template: '%name%'
           # order: name
       # default: true
-    name: 
-      title: _('name')
+    name:
+      title: _('Name')
       type: text
       trim: both
-      required: true      
-    ip: 
+      required: true
+    ip:
       title: _('Ip')
       type: text
       trim: both
       required: true
-    transport: 
+    transport:
       title: _('Transport')
       type: text
       trim: both
       defaultValue: udp
-    from_pattern: 
+    from_pattern:
       title: _('From pattern')
       type: text
       trim: both
-    tag: 
+    tag:
       title: _('Tag')
       type: text
       trim: both
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

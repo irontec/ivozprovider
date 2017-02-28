@@ -35,7 +35,7 @@ production:
         position: left
         icon: help
         text: _("Caracter de inicio ':' en lugar de '^', caracter de fin '@' en lugar de '$'")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     stopper: 
       title: _('Stopper')
       type: select
@@ -70,7 +70,7 @@ production:
         position: left
         icon: help
         text: _("Introduzca una etiqueta sin espacios")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       required: true

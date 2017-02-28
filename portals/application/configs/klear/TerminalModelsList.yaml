@@ -93,14 +93,14 @@ production:
       action: download-file
       class: ui-silk-arrow-down
     genericBackup_dialog: &genericBackup_dialog
-      title: _("Restaurar último backup")
+      title: _("Restore last backup")
       module: default
       controller: klear-custom-restore-backup
       labelOnEdit: true
       action: restore-generic-backup
       class: ui-silk-arrow-undo
     specificBackup_dialog: &specificcBackup_dialog
-      title: _("Restaurar último backup")
+      title: _("Restore last backup")
       module: default
       controller: klear-custom-restore-backup
       labelOnEdit: true

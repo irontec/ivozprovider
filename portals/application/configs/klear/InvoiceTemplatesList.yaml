@@ -126,7 +126,7 @@ production:
 #      action: download-file
 #      class: ui-silk-arrow-down
 #    backup_dialog: &genericBackup_dialog
-#      title: _("Restaurar último backup")
+#      title: _("Restore last backup")
 #      module: default
 #      controller: klear-custom-restore-backup
 #      labelOnEdit: true

@@ -12,7 +12,7 @@ production:
       controller: googlecharts
 #      title: Estadísticas
       dashboard:
-        title: _("Vista general de la plataforma")
+        title: _("Main platform view")
 testing:
   _extends: production
 development:

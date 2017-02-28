@@ -1,43 +1,43 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
+production:
   applicationServersBlacklist: &applicationServersBlacklist
     transport: true
     from_pattern: true
     tag: true
 
-  main: 
+  main:
     module: klearMatrix
     defaultScreen: applicationServersList_screen
   screens: &applicationServers_screensLink
-    applicationServersList_screen: &applicationServersList_screenLink 
+    applicationServersList_screen: &applicationServersList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *ApplicationServers
       class: ui-silk-asterisk-yellow
       title: _("List of %s %2s", ngettext('Application server', 'Application servers', 0), "[format| (%parent%)]")
-      fields: 
-        blacklist: 
+      fields:
+        blacklist:
           <<: *applicationServersBlacklist
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             applicationServersEdit_screen: true
-          dialogs: 
+          dialogs:
             applicationServersDel_dialog: true
           default: applicationServersEdit_screen
         order: &applicationServersOrder
             name: true
             ip: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           applicationServersNew_screen: true
-        dialogs: 
+        dialogs:
           applicationServersDel_dialog: true
-    applicationServersNew_screen: &applicationServersNew_screenLink 
+    applicationServersNew_screen: &applicationServersNew_screenLink
       <<: *ApplicationServers
       controller: new
       class: ui-silk-add
@@ -46,23 +46,23 @@ production:
       title: _("Add %s", ngettext('Application server', 'Application servers', 1))
       shortcutOption: N
       fields:
-        blacklist: 
+        blacklist:
           <<: *applicationServersBlacklist
-        order: 
+        order:
           <<: *applicationServersOrder
-    applicationServersEdit_screen: &applicationServersEdit_screenLink 
+    applicationServersEdit_screen: &applicationServersEdit_screenLink
       <<: *ApplicationServers
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Application server', 'Application servers', 1), "[format| (%item%)]")
       fields:
-        blacklist: 
+        blacklist:
           <<: *applicationServersBlacklist
-        order: 
+        order:
           <<: *applicationServersOrder
   dialogs: &applicationServers_dialogsLink
-    applicationServersDel_dialog: &applicationServersDel_dialogLink 
+    applicationServersDel_dialog: &applicationServersDel_dialogLink
       <<: *ApplicationServers
       controller: delete
       class: ui-silk-bin
@@ -72,12 +72,12 @@ production:
       message: _("%s successfully deleted.", ngettext('Application server', 'Application servers', 1))
       multiItem: 1
       labelOnList: 1
-      
-staging: 
+
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

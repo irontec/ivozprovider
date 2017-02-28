@@ -27,19 +27,5 @@ class PickUpGroups extends Raw\PickUpGroups
     public function init()
     {
     }
-/**
- * @param  \IvozProvider\Model\Raw\Users $capturedUser
- */
-    public function isPickUpAble($capturedUser)
-    {
-        $groupPickUpRelUsers = $this->getPickUpRelUsers();
-        foreach($groupPickUpRelUsers as $groupPickUpRelUser) {
-            $isCapturable = $capturedUser->getId()== $groupPickUpRelUser->getUserId();
-            if($isCapturable) {
-                return true;
-            }
-        }
-        return false;
-    }
 
 }

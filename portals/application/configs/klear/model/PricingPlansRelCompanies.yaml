@@ -54,7 +54,7 @@ production:
         position: left
         icon: help
         text: _("In case that two pricing plans were matched plan with lower metric will be applied.")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     brandId: 
       title: _('Brand id')
       type: select

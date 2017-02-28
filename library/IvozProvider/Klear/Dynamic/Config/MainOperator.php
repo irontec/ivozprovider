@@ -4,27 +4,24 @@ namespace IvozProvider\Klear\Dynamic\Config;
 class MainOperator extends Base
 {
 
-    protected $_title = '[Main Global Operator]';
-    protected $_subTitle = '[master operator session]';
-    
+    protected $_title = '[Platform Administration Portal]';
+    protected $_subTitle = '[global operator session]';
+
     protected $_sessionName = 'MainOperatorSession';
     protected $_userMapper = 'IvozProvider\Klear\Auth\MainOperators\Mapper';
-    
-    
+
     public function postInit()
     {
         if ($this->_user) {
-            
+
             $this->_subTitle = "Operator: <strong>". $this->_user->getusername()."</strong>";
-        
+
             if ($this->_user->brandId) {
-                //TODO: translate
-                $this->_subTitle .= '<br />Marca emulada: <strong>' . $this->_user->brandName .'</strong>';
+                $this->_subTitle .= sprintf('<br />Emulated brand: <strong>%s</strong>', $this->_user->brandName);
             }
-            
+
             if ($this->_user->companyId) {
-                //TODO: translate
-                $this->_subTitle .= '<br />Empresa emulada: <strong>' . $this->_user->companyName .'</strong>';
+                $this->_subTitle .= sprintf('<br />Emulated company: <strong>%s</strong>',  $this->_user->companyName);
             }
         }
     }

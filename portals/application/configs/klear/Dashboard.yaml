@@ -9,7 +9,7 @@ production:
     Dashboard_screen: 
       controller: dashboard
       action: index
-      title: _("Vista general de la plataforma")
+      title: _("Main platform view")
       useExplain: false
 testing: 
   _extends: production

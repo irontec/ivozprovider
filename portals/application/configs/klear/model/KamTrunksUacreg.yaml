@@ -29,7 +29,7 @@ production:
         position: left
         icon: help
         text: _("Is sent in the username of Contact header in generated REGISTER.")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
       required: true
     l_username: 
       title: _('L username')
@@ -63,7 +63,7 @@ production:
         position: left
         icon: help
         text: _("Dejar vacío para utilizar el propuesto")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     auth_username: 
       title: _('Auth username')
       type: text
@@ -75,7 +75,7 @@ production:
         position: left
         icon: help
         text: _("Solo en caso de ser distinto del Nombre de Usuario")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     auth_password: 
       title: _('Password')
       type: password
@@ -94,7 +94,7 @@ production:
         position: left
         icon: help
         text: _("Tiene que empezar por sip o sips seguido de dos puntos")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     expires: 
       title: _('Expire')
       type: number

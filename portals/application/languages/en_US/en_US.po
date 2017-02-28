@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: IvozProvider 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-22 16:20+0100\n"
-"PO-Revision-Date: 2017-02-22 16:25+0100\n"
+"POT-Creation-Date: 2017-02-28 19:02+0100\n"
+"PO-Revision-Date: 2017-02-28 19:54+0100\n"
 "Last-Translator: lfgarcia@irontec.com\n"
-"Language-Team: lfgarcia@irontec.com\n"
-"Language: en_ES\n"
+"Language-Team: IvozProvider I18N Team <dev.lists-ivozprovider@irontec.com>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.8.5\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: public/scripts\n"
 
 #: application/controllers/ImportCustomFileController.php:159
 #: application/controllers/ImportFileController.php:116
@@ -42,6 +43,7 @@ msgstr "Parse file and import"
 #: application/controllers/KlearCustomGenerateInvoiceController.php:56
 #: application/controllers/KlearCustomGenerateInvoiceController.php:103
 #: application/controllers/KlearCustomGenerateInvoiceController.php:180
+#: application/controllers/KlearCustomRunCodeController.php:141
 #: application/languages/common-strings.php:134
 msgid "Close"
 msgstr "Close"
@@ -105,34 +107,32 @@ msgid "Update values."
 msgstr "Update values."
 
 #: application/controllers/ImportFileController.php:375
-#, fuzzy
 msgid "File imported"
-msgstr "File size"
+msgstr "File imported"
 
 #: application/controllers/ImportFileController.php:468
 msgid " but following errors ocurred"
 msgstr " but following errors ocurred"
 
 #: application/controllers/KlearCustomDownloadFileController.php:23
-msgid "Descargar a un fichero"
-msgstr ""
+msgid "Download to file"
+msgstr "Download to file"
 
 #: application/controllers/KlearCustomDownloadFileController.php:24
 msgid "<a download=\"template.txt\">Download</a>"
-msgstr ""
+msgstr "<a download=\"template.txt\">Download</a>"
 
 #: application/controllers/KlearCustomDownloadFileController.php:26
-#: application/controllers/KlearCustomForwardFaxController.php:54
-#: application/controllers/KlearCustomRestoreBackupController.php:63
-#: application/controllers/KlearCustomRestoreDefaultController.php:65
-#: application/controllers/KlearCustomUploadFileController.php:26
-msgid "Cancelar"
-msgstr ""
+#: application/controllers/KlearCustomExtraAuthController.php:258
+#: application/controllers/KlearCustomInvoiceTemplateTesterController.php:80
+#: application/languages/common-strings.php:180
+msgid "Cancel"
+msgstr "Cancel"
 
 #: application/controllers/KlearCustomExtraAuthController.php:32
 #: application/controllers/KlearCustomExtraAuthController.php:208
 msgid "Acceso restringido"
-msgstr ""
+msgstr "Acceso restringido"
 
 #: application/controllers/KlearCustomExtraAuthController.php:98
 msgid "Select the brand you want to emulate."
@@ -151,16 +151,8 @@ msgid "Select the company you want to emulate"
 msgstr "Select the company you want to emulate"
 
 #: application/controllers/KlearCustomExtraAuthController.php:120
-#, fuzzy
 msgid "Select Company"
-msgstr ""
-"#-#-#-#-#  39extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  46extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  48extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  49extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  50extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  51extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  52extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+msgstr "Select Company"
 
 #: application/controllers/KlearCustomExtraAuthController.php:145
 msgid "Enter"
@@ -182,12 +174,6 @@ msgstr "Are you sure that you want to emulate the %s \"%2s\"?"
 msgid "Ok"
 msgstr "Ok"
 
-#: application/controllers/KlearCustomExtraAuthController.php:258
-#: application/controllers/KlearCustomInvoiceTemplateTesterController.php:80
-#: application/languages/common-strings.php:180
-msgid "Cancel"
-msgstr "Cancel"
-
 #: application/controllers/KlearCustomExtraAuthController.php:270
 #, php-format
 msgid "%s emulated"
@@ -195,7 +181,7 @@ msgstr "%s emulated"
 
 #: application/controllers/KlearCustomForwardFaxController.php:31
 msgid "Reenviar a"
-msgstr ""
+msgstr "Reenviar a"
 
 #: application/controllers/KlearCustomForwardFaxController.php:32
 #: application/languages/common-strings.php:43
@@ -215,21 +201,28 @@ msgstr "File"
 
 #: application/controllers/KlearCustomForwardFaxController.php:40
 msgid "Fax reenviado"
-msgstr ""
+msgstr "Fax reenviado"
 
 #: application/controllers/KlearCustomForwardFaxController.php:43
-#: application/controllers/KlearCustomRestoreBackupController.php:56
+#: application/controllers/KlearCustomRestoreBackupController.php:54
 #: application/controllers/KlearCustomRestoreDefaultController.php:58
 msgid "Aceptar"
-msgstr ""
+msgstr "Aceptar"
 
 #: application/controllers/KlearCustomForwardFaxController.php:51
 msgid "Reenviar fax"
-msgstr ""
+msgstr "Reenviar fax"
+
+#: application/controllers/KlearCustomForwardFaxController.php:54
+#: application/controllers/KlearCustomRestoreBackupController.php:61
+#: application/controllers/KlearCustomRestoreDefaultController.php:65
+#: application/controllers/KlearCustomUploadFileController.php:26
+msgid "Cancelar"
+msgstr "Cancelar"
 
 #: application/controllers/KlearCustomForwardFaxController.php:58
 msgid "Reenviar"
-msgstr ""
+msgstr "Reenviar"
 
 #: application/controllers/KlearCustomGenerateInvoiceController.php:53
 msgid "Generate invoice"
@@ -256,18 +249,16 @@ msgid "There are unbilled calls before in date."
 msgstr "There are unbilled calls before in date."
 
 #: application/controllers/KlearCustomGenerateInvoiceController.php:173
-#, fuzzy
 msgid "Invoice enqueued"
-msgstr "Phone number"
+msgstr "Invoice enqueued"
 
 #: application/controllers/KlearCustomGenerateInvoiceController.php:174
 msgid "Invoice has been enqueued. It will be generated as soon as posible."
 msgstr "Invoice has been enqueued. It will be generated as soon as posible."
 
 #: application/controllers/KlearCustomGenerateInvoiceController.php:177
-#, fuzzy
 msgid "Invoices enqueued: "
-msgstr "Phone number"
+msgstr "Invoices enqueued: "
 
 #: application/controllers/KlearCustomGenerateInvoiceController.php:178
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
@@ -275,14 +266,13 @@ msgstr ""
 "Invoices have been enqueued. They will be generated as soon as posible."
 
 #: application/controllers/KlearCustomRestoreBackupController.php:39
-#: application/controllers/KlearCustomRestoreBackupController.php:53
-msgid "Restaurar backup"
-msgstr ""
+#: application/controllers/KlearCustomRestoreBackupController.php:51
+msgid "Restore backup"
+msgstr "Restore backup"
 
 #: application/controllers/KlearCustomRestoreBackupController.php:40
-#: application/controllers/KlearCustomRestoreDefaultController.php:42
-msgid "Cargando <textarea style=\"display: none\">"
-msgstr ""
+msgid "Loading <textarea style=\"display: none\">"
+msgstr "Loading <textarea style=\"display: none\">"
 
 #: application/controllers/KlearCustomRestoreDefaultController.php:41
 #: application/controllers/KlearCustomRestoreDefaultController.php:55
@@ -291,27 +281,29 @@ msgstr ""
 msgid "Restore default template"
 msgstr "Restore default template"
 
-#: application/controllers/KlearCustomRunCodeController.php:92
+#: application/controllers/KlearCustomRestoreDefaultController.php:42
+msgid "Cargando <textarea style=\"display: none\">"
+msgstr "Cargando <textarea style=\"display: none\">"
+
+#: application/controllers/KlearCustomRunCodeController.php:89
 msgid ""
-"Se va a probar esta plantilla<br /><textarea name=\"currentCode\" rows=\"8\" "
-"cols=\"80\" readonly></textarea>"
+"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
+"\"8\" cols=\"80\" readonly></textarea>"
 msgstr ""
+"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
+"\"8\" cols=\"80\" readonly></textarea>"
 
-#: application/controllers/KlearCustomRunCodeController.php:94
-msgid "Ejecutar"
-msgstr ""
+#: application/controllers/KlearCustomRunCodeController.php:91
+msgid "Exec"
+msgstr "Exec"
 
-#: application/controllers/KlearCustomRunCodeController.php:104
+#: application/controllers/KlearCustomRunCodeController.php:101
 msgid "The terminal model must be saved before you can test the code"
 msgstr "The terminal model must be saved before you can test the code"
 
-#: application/controllers/KlearCustomRunCodeController.php:145
-msgid "Cerrar"
-msgstr ""
-
-#: application/controllers/KlearCustomRunCodeController.php:150
-msgid "Probar el código"
-msgstr ""
+#: application/controllers/KlearCustomRunCodeController.php:146
+msgid "Test the code"
+msgstr "Test the code"
 
 #: application/controllers/KlearCustomTarificatorController.php:61
 #: application/controllers/KlearCustomTarificatorController.php:116
@@ -362,9 +354,8 @@ msgstr[0] "Test"
 msgstr[1] "Tests"
 
 #: application/controllers/KlearCustomTarificatorController.php:265
-#, fuzzy
 msgid "Please, type a phone number"
-msgstr "Phone number"
+msgstr "Please, type a phone number"
 
 #: application/controllers/KlearCustomTarificatorController.php:270
 msgid "Please, type a duration in seconds"
@@ -385,11 +376,11 @@ msgstr "Please select only uninvoiced calls"
 #: application/controllers/KlearCustomUploadFileController.php:23
 #: application/configs/klear/TerminalModelsList.yaml:82
 msgid "Cargar desde un fichero"
-msgstr ""
+msgstr "Cargar desde un fichero"
 
 #: application/controllers/KlearCustomUploadFileController.php:24
 msgid "Seleccione el fichero que desea cargar </br> <input type=\"file\">"
-msgstr ""
+msgstr "Seleccione el fichero que desea cargar </br> <input type=\"file\">"
 
 #: application/languages/common-strings.php:6
 msgid "Login"
@@ -470,7 +461,7 @@ msgstr[1] "Passwords"
 #: application/configs/klear/HuntGroupsList.yaml:187
 #: application/configs/klear/HuntGroupsList.yaml:194
 #: application/configs/klear/HuntGroupsList.yaml:215
-#: application/configs/klear/UsersList.yaml:20
+#: application/configs/klear/UsersList.yaml:21
 #: application/configs/klear/UsersList.yaml:87
 #: application/configs/klear/UsersList.yaml:139
 #: application/configs/klear/UsersList.yaml:238
@@ -480,15 +471,15 @@ msgstr[1] "Passwords"
 #: application/configs/klear/klear.yaml:189
 #: application/configs/klear/model/ChangeHistory.yaml:5
 #: application/configs/klear/model/Extensions.yaml:146
-#: application/configs/klearRaw/UsersList.yaml:27
-#: application/configs/klearRaw/UsersList.yaml:59
-#: application/configs/klearRaw/UsersList.yaml:69
-#: application/configs/klearRaw/UsersList.yaml:70
-#: application/configs/klearRaw/UsersList.yaml:221
-#: application/configs/klearRaw/UsersList.yaml:222
-#: application/configs/klearRaw/UsersList.yaml:223
-#: application/configs/klearRaw/klear.yaml:319
-#: application/configs/klearRaw/klear.yaml:321
+#: application/configs/klearRaw/UsersList.yaml:26
+#: application/configs/klearRaw/UsersList.yaml:57
+#: application/configs/klearRaw/UsersList.yaml:67
+#: application/configs/klearRaw/UsersList.yaml:68
+#: application/configs/klearRaw/UsersList.yaml:206
+#: application/configs/klearRaw/UsersList.yaml:207
+#: application/configs/klearRaw/UsersList.yaml:208
+#: application/configs/klearRaw/klear.yaml:315
+#: application/configs/klearRaw/klear.yaml:317
 #: application/configs/klearRaw/model/ChangeHistory.yaml:5
 msgid "User"
 msgid_plural "Users"
@@ -1295,8 +1286,6 @@ msgstr "No"
 #: application/configs/klear/model/ConferenceRooms.yaml:36
 #: application/configs/klear/model/DDIs.yaml:125
 #: application/configs/klear/model/Faxes.yaml:43
-#: application/configs/klear/model/KamAccCdrs.yaml:143
-#: application/configs/klear/model/KamAccCdrs.yaml:154
 #: application/configs/klear/model/KamAccCdrsBrand.yaml:150
 #: application/configs/klear/model/KamAccCdrsBrand.yaml:161
 #: application/configs/klear/model/KamAccCdrsGod.yaml:148
@@ -1418,11 +1407,6 @@ msgstr "On"
 #: application/configs/klear/model/Invoices.yaml:123
 #: application/configs/klear/model/Invoices.yaml:136
 #: application/configs/klear/model/Invoices.yaml:151
-#: application/configs/klear/model/KamAccCdrs.yaml:73
-#: application/configs/klear/model/KamAccCdrs.yaml:86
-#: application/configs/klear/model/KamAccCdrs.yaml:175
-#: application/configs/klear/model/KamAccCdrs.yaml:192
-#: application/configs/klear/model/KamAccCdrs.yaml:215
 #: application/configs/klear/model/KamAccCdrsBrand.yaml:82
 #: application/configs/klear/model/KamAccCdrsBrand.yaml:95
 #: application/configs/klear/model/KamAccCdrsBrand.yaml:139
@@ -1451,6 +1435,7 @@ msgstr "On"
 #: application/configs/klear/model/Users.yaml:100
 #: application/configs/klear/model/Users.yaml:114
 #: application/configs/klear/model/Users.yaml:177
+#: application/configs/klear/model/Users.yaml:345
 #: application/configs/klearRaw/model/AstPsEndpoints.yaml:26
 #: application/configs/klearRaw/model/AstPsEndpoints.yaml:39
 #: application/configs/klearRaw/model/AstVoicemail.yaml:196
@@ -1542,6 +1527,7 @@ msgstr "On"
 #: application/configs/klearRaw/model/Users.yaml:135
 #: application/configs/klearRaw/model/Users.yaml:221
 #: application/configs/klearRaw/model/Users.yaml:234
+#: application/configs/klearRaw/model/Users.yaml:251
 msgid "Unassigned"
 msgstr "Unassigned"
 
@@ -1802,7 +1788,6 @@ msgstr[1] "Download files"
 #: application/configs/klearRaw/klear.yaml:369
 #: application/configs/klearRaw/klear.yaml:373
 #: application/configs/klearRaw/klear.yaml:377
-#: application/configs/klearRaw/klear.yaml:381
 #, python-format, php-format
 msgid "List of %s"
 msgstr "List of %s"
@@ -1896,8 +1881,7 @@ msgstr "Edit %s"
 #: application/configs/klear/ParsedCDRsList.yaml:23
 #: application/configs/klear/PeerServersList.yaml:18
 #: application/configs/klear/PeeringContractsList.yaml:19
-#: application/configs/klear/PickUpGroupsList.yaml:15
-#: application/configs/klear/PickUpRelUsersList.yaml:14
+#: application/configs/klear/PickUpGroupsList.yaml:18
 #: application/configs/klear/PricingPlansList.yaml:17
 #: application/configs/klear/PricingPlansList.yaml:103
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:16
@@ -1917,7 +1901,7 @@ msgstr "Edit %s"
 #: application/configs/klear/TerminalsList.yaml:17
 #: application/configs/klear/TimezonesList.yaml:14
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:19
-#: application/configs/klear/UsersList.yaml:20
+#: application/configs/klear/UsersList.yaml:21
 #: application/configs/klear/UsersList.yaml:202
 #: application/configs/klear/XMLRPCLogsList.yaml:16
 #: application/configs/klearRaw/ApplicationServersList.yaml:18
@@ -1986,7 +1970,6 @@ msgstr "Edit %s"
 #: application/configs/klearRaw/PeerServersList.yaml:17
 #: application/configs/klearRaw/PeeringContractsList.yaml:21
 #: application/configs/klearRaw/PickUpGroupsList.yaml:17
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:16
 #: application/configs/klearRaw/PricingPlansList.yaml:19
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:16
 #: application/configs/klearRaw/PricingPlansRelTargetPatternsList.yaml:16
@@ -2004,7 +1987,7 @@ msgstr "Edit %s"
 #: application/configs/klearRaw/TerminalsList.yaml:18
 #: application/configs/klearRaw/TimezonesList.yaml:22
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:18
-#: application/configs/klearRaw/UsersList.yaml:27
+#: application/configs/klearRaw/UsersList.yaml:26
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:16
 #, python-format, php-format
 msgid "List of %s %2s"
@@ -2110,8 +2093,8 @@ msgstr "List of %s %2s"
 #: application/configs/klear/OutgoingRoutingList.yaml:96
 #: application/configs/klear/PeerServersList.yaml:120
 #: application/configs/klear/PeeringContractsList.yaml:63
-#: application/configs/klear/PickUpGroupsList.yaml:47
-#: application/configs/klear/PickUpRelUsersList.yaml:42
+#: application/configs/klear/PickUpGroupsList.yaml:53
+#: application/configs/klear/PickUpGroupsList.yaml:54
 #: application/configs/klear/PricingPlansList.yaml:73
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:70
 #: application/configs/klear/PricingPlansRelTargetPatternsList.yaml:88
@@ -2268,8 +2251,6 @@ msgstr "List of %s %2s"
 #: application/configs/klearRaw/PeeringContractsList.yaml:58
 #: application/configs/klearRaw/PickUpGroupsList.yaml:49
 #: application/configs/klearRaw/PickUpGroupsList.yaml:50
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:47
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:48
 #: application/configs/klearRaw/PricingPlansList.yaml:56
 #: application/configs/klearRaw/PricingPlansList.yaml:57
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:47
@@ -2304,8 +2285,8 @@ msgstr "List of %s %2s"
 #: application/configs/klearRaw/TimezonesList.yaml:60
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:51
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:52
-#: application/configs/klearRaw/UsersList.yaml:69
-#: application/configs/klearRaw/UsersList.yaml:70
+#: application/configs/klearRaw/UsersList.yaml:67
+#: application/configs/klearRaw/UsersList.yaml:68
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:50
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:51
 #, python-format, php-format
@@ -2371,8 +2352,7 @@ msgstr "Edit %s %2s"
 #: application/configs/klear/OutgoingRoutingList.yaml:81
 #: application/configs/klear/PeerServersList.yaml:63
 #: application/configs/klear/PeeringContractsList.yaml:50
-#: application/configs/klear/PickUpGroupsList.yaml:38
-#: application/configs/klear/PickUpRelUsersList.yaml:35
+#: application/configs/klear/PickUpGroupsList.yaml:41
 #: application/configs/klear/PricingPlansList.yaml:55
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:50
 #: application/configs/klear/PricingPlansRelTargetPatternsList.yaml:60
@@ -2455,7 +2435,6 @@ msgstr "Edit %s %2s"
 #: application/configs/klearRaw/PeerServersList.yaml:39
 #: application/configs/klearRaw/PeeringContractsList.yaml:47
 #: application/configs/klearRaw/PickUpGroupsList.yaml:39
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:37
 #: application/configs/klearRaw/PricingPlansList.yaml:43
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:37
 #: application/configs/klearRaw/PricingPlansRelTargetPatternsList.yaml:37
@@ -2473,7 +2452,7 @@ msgstr "Edit %s %2s"
 #: application/configs/klearRaw/TerminalsList.yaml:41
 #: application/configs/klearRaw/TimezonesList.yaml:49
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:41
-#: application/configs/klearRaw/UsersList.yaml:59
+#: application/configs/klearRaw/UsersList.yaml:57
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:37
 #, python-format, php-format
 msgid "Add %s"
@@ -2551,8 +2530,7 @@ msgstr "Add %s"
 #: application/configs/klear/OutgoingRoutingList.yaml:105
 #: application/configs/klear/PeerServersList.yaml:137
 #: application/configs/klear/PeeringContractsList.yaml:115
-#: application/configs/klear/PickUpGroupsList.yaml:56
-#: application/configs/klear/PickUpRelUsersList.yaml:49
+#: application/configs/klear/PickUpGroupsList.yaml:62
 #: application/configs/klear/PricingPlansList.yaml:116
 #: application/configs/klear/PricingPlansRelTargetPatternsList.yaml:105
 #: application/configs/klear/RecordingsList.yaml:78
@@ -2636,7 +2614,6 @@ msgstr "Add %s"
 #: application/configs/klearRaw/PeerServersList.yaml:71
 #: application/configs/klearRaw/PeeringContractsList.yaml:131
 #: application/configs/klearRaw/PickUpGroupsList.yaml:71
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:55
 #: application/configs/klearRaw/PricingPlansList.yaml:107
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:55
 #: application/configs/klearRaw/PricingPlansRelTargetPatternsList.yaml:55
@@ -2654,7 +2631,7 @@ msgstr "Add %s"
 #: application/configs/klearRaw/TerminalsList.yaml:86
 #: application/configs/klearRaw/TimezonesList.yaml:146
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:86
-#: application/configs/klearRaw/UsersList.yaml:221
+#: application/configs/klearRaw/UsersList.yaml:206
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:61
 #, python-format, php-format
 msgid "Delete %s"
@@ -2731,8 +2708,7 @@ msgstr "Delete %s"
 #: application/configs/klear/OutgoingRoutingList.yaml:107
 #: application/configs/klear/PeerServersList.yaml:139
 #: application/configs/klear/PeeringContractsList.yaml:117
-#: application/configs/klear/PickUpGroupsList.yaml:58
-#: application/configs/klear/PickUpRelUsersList.yaml:51
+#: application/configs/klear/PickUpGroupsList.yaml:64
 #: application/configs/klear/PricingPlansList.yaml:118
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:97
 #: application/configs/klear/PricingPlansRelTargetPatternsList.yaml:107
@@ -2817,7 +2793,6 @@ msgstr "Delete %s"
 #: application/configs/klearRaw/PeerServersList.yaml:73
 #: application/configs/klearRaw/PeeringContractsList.yaml:133
 #: application/configs/klearRaw/PickUpGroupsList.yaml:73
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:57
 #: application/configs/klearRaw/PricingPlansList.yaml:109
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:57
 #: application/configs/klearRaw/PricingPlansRelTargetPatternsList.yaml:57
@@ -2835,7 +2810,7 @@ msgstr "Delete %s"
 #: application/configs/klearRaw/TerminalsList.yaml:88
 #: application/configs/klearRaw/TimezonesList.yaml:148
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:88
-#: application/configs/klearRaw/UsersList.yaml:223
+#: application/configs/klearRaw/UsersList.yaml:208
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:63
 #, python-format, php-format
 msgid "%s successfully deleted."
@@ -2912,8 +2887,7 @@ msgstr "%s successfully deleted."
 #: application/configs/klear/OutgoingRoutingList.yaml:106
 #: application/configs/klear/PeerServersList.yaml:138
 #: application/configs/klear/PeeringContractsList.yaml:116
-#: application/configs/klear/PickUpGroupsList.yaml:57
-#: application/configs/klear/PickUpRelUsersList.yaml:50
+#: application/configs/klear/PickUpGroupsList.yaml:63
 #: application/configs/klear/PricingPlansList.yaml:117
 #: application/configs/klear/PricingPlansRelTargetPatternsList.yaml:106
 #: application/configs/klear/RecordingsList.yaml:79
@@ -2997,7 +2971,6 @@ msgstr "%s successfully deleted."
 #: application/configs/klearRaw/PeerServersList.yaml:72
 #: application/configs/klearRaw/PeeringContractsList.yaml:132
 #: application/configs/klearRaw/PickUpGroupsList.yaml:72
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:56
 #: application/configs/klearRaw/PricingPlansList.yaml:108
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:56
 #: application/configs/klearRaw/PricingPlansRelTargetPatternsList.yaml:56
@@ -3015,7 +2988,7 @@ msgstr "%s successfully deleted."
 #: application/configs/klearRaw/TerminalsList.yaml:87
 #: application/configs/klearRaw/TimezonesList.yaml:147
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:87
-#: application/configs/klearRaw/UsersList.yaml:222
+#: application/configs/klearRaw/UsersList.yaml:207
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:62
 #, python-format, php-format
 msgid "Do you want to delete this %s?"
@@ -3042,8 +3015,6 @@ msgstr[0] "Permission"
 msgstr[1] "Permissions"
 
 #: application/languages/common-strings.php:163
-#: application/configs/klear/klear.yaml:50
-#: application/configs/klear/klear.yaml:51
 #: application/configs/klearRaw/klear.yaml:30
 #: application/configs/klearRaw/klear.yaml:31
 msgid "Main management"
@@ -3329,9 +3300,9 @@ msgstr "Brand is not setted"
 #: library/IvozProvider/Model/Raw/Timezones.php:316
 #: library/IvozProvider/Model/Raw/TransformationRulesetGroupsTrunks.php:277
 #: library/IvozProvider/Model/Raw/TransformationRulesetGroupsTrunks.php:314
-#: library/IvozProvider/Model/Raw/Users.php:658
-#: library/IvozProvider/Model/Raw/Users.php:695
-#: library/IvozProvider/Model/Raw/Users.php:732
+#: library/IvozProvider/Model/Raw/Users.php:664
+#: library/IvozProvider/Model/Raw/Users.php:701
+#: library/IvozProvider/Model/Raw/Users.php:738
 #: library/IvozProvider/Model/Raw/XMLRPCLogs.php:195
 #: library/IvozProvider/Model/Raw/XMLRPCLogs.php:232
 #: library/IvozProvider/Model/Raw/XMLRPCLogs.php:269
@@ -3701,10 +3672,8 @@ msgstr[1] "Application servers"
 #: application/configs/klear/PeerServersList.yaml:50
 #: application/configs/klear/PeeringContractsList.yaml:24
 #: application/configs/klear/PeeringContractsList.yaml:39
-#: application/configs/klear/PickUpGroupsList.yaml:20
-#: application/configs/klear/PickUpGroupsList.yaml:27
-#: application/configs/klear/PickUpRelUsersList.yaml:17
-#: application/configs/klear/PickUpRelUsersList.yaml:24
+#: application/configs/klear/PickUpGroupsList.yaml:21
+#: application/configs/klear/PickUpGroupsList.yaml:28
 #: application/configs/klear/PricingPlansList.yaml:22
 #: application/configs/klear/PricingPlansList.yaml:30
 #: application/configs/klear/PricingPlansRelCompaniesList.yaml:24
@@ -3741,7 +3710,7 @@ msgstr[1] "Application servers"
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:152
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:171
 #: application/configs/klear/TransformationRulesetGroupsTrunksList.yaml:190
-#: application/configs/klear/UsersList.yaml:25
+#: application/configs/klear/UsersList.yaml:26
 #: application/configs/klear/UsersList.yaml:75
 #: application/configs/klear/XMLRPCLogsList.yaml:19
 #: application/configs/klear/XMLRPCLogsList.yaml:26
@@ -3879,8 +3848,6 @@ msgstr[1] "Application servers"
 #: application/configs/klearRaw/PeeringContractsList.yaml:36
 #: application/configs/klearRaw/PickUpGroupsList.yaml:20
 #: application/configs/klearRaw/PickUpGroupsList.yaml:28
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:19
-#: application/configs/klearRaw/PickUpRelUsersList.yaml:26
 #: application/configs/klearRaw/PricingPlansList.yaml:22
 #: application/configs/klearRaw/PricingPlansList.yaml:32
 #: application/configs/klearRaw/PricingPlansRelCompaniesList.yaml:19
@@ -3915,8 +3882,8 @@ msgstr[1] "Application servers"
 #: application/configs/klearRaw/TimezonesList.yaml:38
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:21
 #: application/configs/klearRaw/TransformationRulesetGroupsTrunksList.yaml:30
-#: application/configs/klearRaw/UsersList.yaml:30
-#: application/configs/klearRaw/UsersList.yaml:48
+#: application/configs/klearRaw/UsersList.yaml:29
+#: application/configs/klearRaw/UsersList.yaml:46
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:19
 #: application/configs/klearRaw/XMLRPCLogsList.yaml:26
 msgid "Options"

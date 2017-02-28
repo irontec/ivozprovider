@@ -6,8 +6,8 @@ production:
 #      writerParams:
 #        application: app-god-portal
 #        facility: 8 #LOG_USER = 8
-    sitename: "OASIS MAIN KLEAR"
-    sitesubname: "Main website" 
+    sitename: "Main administration portal"
+    sitesubname: "Main website"
     logo: images/irontec.png
     year: 2017
     lang: en
@@ -40,15 +40,15 @@ production:
       description: _("Insert your username")
       session:
         name: MainOperator
-        disableChangeName: false        
+        disableChangeName: false
     timezone: Europe/Madrid
     disableFixed: true
     hideKlearName: true
 
   menu:
     General:
-      title:  _("Main management")
-      description: _("Main management")
+      title:  _("Platform Configuration")
+      description: _("Platform Configuration")
       showOnlyIf: ${auth.canSeeMain}
       submenus:
         BrandsList:
@@ -62,16 +62,16 @@ production:
         ApplicationServersList:
           title: ngettext('Application server', 'Application servers', 0)
           class: ui-silk-asterisk-yellow
-          description: _("List of %s", ngettext('Application server', 'Application servers', 0))  
+          description: _("List of %s", ngettext('Application server', 'Application servers', 0))
         ProxyUsersList:
           title: ngettext('Proxy user', 'Proxy users', 1)
           class: ui-silk-server
-          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))              
+          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))
         ProxyTrunksList:
           title: ngettext('Proxy trunk', 'Proxy trunks', 1)
           class: ui-silk-server
-          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))              
-        MediaRelaySetsList: 
+          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))
+        MediaRelaySetsList:
           title: ngettext('Media relay set', 'Media relay sets', 0)
           class: ui-silk-bell-go
           description: _("List of %s", ngettext('Media relay set', 'Media relay sets', 0))
@@ -86,8 +86,8 @@ production:
         MainOperatorsList:
           title: ngettext('Main operator', 'Main operators', 0)
           class: ui-silk-tux
-          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))       
-        ServicesList: 
+          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))
+        ServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
@@ -125,27 +125,27 @@ production:
           title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
           class: ui-silk-music
           description: _("List of %s", ngettext('Generic music on hold', 'Generic musics on hold', 0))
-        BrandServicesList: 
+        BrandServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
         BrandDDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
-          description: _("List of %s", ngettext('DDI', 'DDIs', 0))             
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))
         GenericCallACLPatternsList:
           title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
           class: ui-silk-lock-go
           description: _("List of %s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0))
-        RoutingPatternsList: 
+        RoutingPatternsList:
           title: ngettext('Routing pattern', 'Routing patterns', 0)
           class: ui-silk-script-go
           description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
-        RoutingPatternGroupsList: 
+        RoutingPatternGroupsList:
           title: ngettext('Routing pattern group', 'Routing pattern groups', 0)
           class: ui-silk-script-link
           description: _("List of %s", ngettext('Routing pattern group', 'Routing pattern groups', 0))
-        OutgoingRoutingList: 
+        OutgoingRoutingList:
           title: ngettext('Outgoing Routing', 'Outgoing Routings', 0)
           class: ui-silk-arrow-divide
           description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routings', 0))
@@ -157,7 +157,7 @@ production:
           title: ngettext('Fixed cost', 'Fixed costs', 0)
           class:  ui-silk-money-add
           description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
-        TargetPatternsList: 
+        TargetPatternsList:
           title: ngettext('Pricing pattern', 'Pricing patterns', 0)
           class: ui-silk-money-yen
           description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
@@ -168,7 +168,7 @@ production:
         InvoicesList:
           title: _('Invoices')
           class: ui-silk-report
-          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))          
+          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
         KamAccCdrsBrandList:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
@@ -194,15 +194,15 @@ production:
         ExtensionsList:
           title: ngettext('Extension', 'Extensions', 0)
           class: ui-silk-book-open
-          description: _("List of %s", ngettext('Extension', 'Extensions', 0))          
-        FriendsList: 
+          description: _("List of %s", ngettext('Extension', 'Extensions', 0))
+        FriendsList:
           title: ngettext('Friend', 'Friends', 0)
           class: ui-silk-heart
           description: _("List of %s", ngettext('Friend', 'Friends', 0))
         DDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
-          description: _("List of %s", ngettext('DDI', 'DDIs', 0))      
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))
         ExternalCallFiltersList:
           title: ngettext('External call filter', 'External call filters', 0)
           class: ui-silk-arrow-branch
@@ -214,7 +214,7 @@ production:
         SchedulesList:
           title: ngettext('Schedule', 'Schedule', 0)
           class: ui-silk-clock
-          description: _("List of %s", ngettext('Schedule', 'Schedule', 0))          
+          description: _("List of %s", ngettext('Schedule', 'Schedule', 0))
         CallACLList:
           title: ngettext('Call ACL', 'Call ACLs', 0)
           class: ui-silk-lock
@@ -222,7 +222,7 @@ production:
         CallACLPatternsList:
           title: ngettext('Call ACL pattern', 'Call ACL patterns', 0)
           class: ui-silk-lock-go
-          description: _("List of %s", ngettext('Call ACL pattern', 'Call ACL patterns', 0))               
+          description: _("List of %s", ngettext('Call ACL pattern', 'Call ACL patterns', 0))
         HuntGroupsList:
           title: ngettext('Hunt group', 'Hunt groups', 0)
           class: ui-silk-group-go
@@ -255,7 +255,7 @@ production:
           title: ngettext('Recording', 'Recordings', 0)
           class: ui-silk-bullet-disk
           description: _("List of %s", ngettext('Recording', 'Recordings', 0))
-        CompanyServicesList: 
+        CompanyServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
@@ -273,9 +273,9 @@ production:
       submenus:
         Dashboard:
           default: true
-          title: _("Panel de control")
+          title: _("Control Panel")
           class: ui-silk-bricks
-          description: _("Vista general de la plataforma")
+          description: _("Main platform view")
 
 testing:
   _extends: production

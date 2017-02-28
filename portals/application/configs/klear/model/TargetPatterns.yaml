@@ -26,7 +26,7 @@ production:
         position: left
         icon: help
         text: _("Prefix must be numeric-only")
-        label: _("¿Necesitas ayuda?")
+        label: _("Need help?")
     brandId: 
       title: _('Brand')
       type: select

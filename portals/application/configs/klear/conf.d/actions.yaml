@@ -54,11 +54,11 @@ actions:
     title: Subir un archivo
     class: qq-uploader
     onNull: show
-    
+
   - &previewCommandAction
     controller: file
     action: preview
-    
+
   - &previewCommand
     type: command
     class: filePreview
@@ -68,6 +68,7 @@ actions:
       height: 200
       crop: true
     onNull: hide
+
   - &previewlistCommand
     type: command
     class: filePreview
