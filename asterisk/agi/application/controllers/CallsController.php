@@ -376,6 +376,38 @@ class CallsController extends BaseController
         }
     }
 
+    /**
+     * @brief Incoming calls to conference
+     */
+    public function conferencesAction()
+    {
+        $conferenceId = $this->agi->getExtension();
+        $conferenceMapper = new Mapper\ConferenceRooms();
+        $conference = $conferenceMapper->find($conferenceId);
+        if (empty($conference)) {
+            $this->agi->error("Conference %d not found in database", $conferenceId);
+            return;
+        }
+
+        // Get company from conference
+        $company = $conference->getCompany();
+
+        // Set desired channel language
+        $this->agi->setVariable("CHANNEL(language)", $this->agi->getSIPHeader("X-Info-Conf-Lang"));
+
+        // Set user language and music
+        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
+
+        // Check if conference requires pin
+        if ($conference->getPinProtected()) {
+           $this->agi->setConferenceSetting('user,pin', $conference->getPinCode());
+        }
+
+        // Check if conference has max members
+        if ($conference->getMaxMembers()) {
+            $this->agi->setConferenceSetting('bridge,max_members', $conference->getMaxMembers());
+        }
+    }
 
     /**
      * @brief Process IVR after call status
@@ -571,6 +603,7 @@ class CallsController extends BaseController
             $terminal = $endpoint->getTerminal();
             if (!empty($terminal)) {
                 $this->agi->setSIPHeader("X-Info-Callee", $terminal->getUser()->getExtensionNumber());
+                $this->agi->setSIPHeader("X-Info-MaxCalls", ($terminal->getUser()->getCallWaiting()) ? 0 : 1);
             }
             $friend = $endpoint->getFriend();
             if (!empty($friend)) {
@@ -613,6 +646,11 @@ class CallsController extends BaseController
             $this->agi->setVariable("CHANNEL(callgroup)", $this->agi->getVariable("CHANNEL(pickupgroup)"));
         }
 
+        // Set conference options
+        if ($this->agi->getVariable("CONFERENCE_ID")) {
+            $this->agi->setSIPHeader("X-Info-Conf", $this->agi->getVariable("CONFERENCE_ID"));
+            $this->agi->setSIPHeader("X-Info-Conf-Lang", $this->agi->getVariable("CONFERENCE_LANG"));
+        }
     }
 
     public function updatelineAction()

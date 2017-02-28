@@ -148,11 +148,6 @@ class Users extends Raw\Users
                 ->save();
         }
 
-        // Reload Hints
-        if ($haschangedExtension || $hasChangedTerminal) {
-            $this->_reloadDialplan();
-        }
-
         return $response;
 
     }
@@ -178,23 +173,12 @@ class Users extends Raw\Users
                 ->save();
         }
 
-        $response = parent::delete($model);
-
-        if (!is_null($extension)) {
-            $this->_reloadDialplan();
-        }
-        return $response;
+        return parent::delete($model);
     }
 
     protected function _salt()
     {
         return substr(md5(mt_rand(), false), 0, 8);
-    }
-
-    protected function _reloadDialplan()
-    {
-        $reloadDialplanJob = new \IvozProvider\Gearmand\Jobs\ReloadDialplan();
-        $reloadDialplanJob->send();
     }
 
 }
