@@ -69,25 +69,6 @@ class ServiceAction extends RouterAction
             return;
         }
 
-        //check if user is in any pickupgroup
-        $pickUpGroups = $caller->getPickUpGroups();
-        if (empty($pickUpGroups)) {
-            $this->agi->verbose("User %s (%s) has no capture groups.", $caller->getFullName(), $caller->getId());
-            return;
-        }
-
-        $isCapturable = false;
-        foreach ($pickUpGroups as $pickUpGroup) {
-            $isCapturable = $pickUpGroup->isPickUpable($capturedUser);
-            if ($isCapturable) {
-                break;
-            }
-        }
-        if (! $isCapturable) {
-            $this->agi->verbose("User %s can not be pickuped.", $capturedUser->getId());
-            return;
-        }
-
         // Get user terminal
         $capturedTerminal = $capturedUser->getTerminal();
         if (empty($capturedTerminal)) {
