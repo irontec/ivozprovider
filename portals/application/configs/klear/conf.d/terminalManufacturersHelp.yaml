@@ -70,6 +70,7 @@ terminalManufacturersHelp:
                         <li><a href='/templates/provisioning/YealinkT23P/generic.cfg' target='_blank' >yealinkt23P generic</a></li>
                         <li><a href='/templates/provisioning/YealinkT46G/generic.cfg' target='_blank' >yealinkt46G generic</a></li>
                         <li><a href='/templates/provisioning/YealinkT48G/generic.cfg' target='_blank' >yealinkt48G generic</a></li>
+                        <li><a href='/templates/provisioning/YealinkW5XP/generic.cfg' target='_blank' >yealinkw5xG generic</a></li>
                      </ul>
                 </li>
                 <p></p>
@@ -81,6 +82,7 @@ terminalManufacturersHelp:
                         <li><a href='/templates/provisioning/YealinkT23P/specific.cfg' target='_blank' >yealinkt23P specific</a></li>
                         <li><a href='/templates/provisioning/YealinkT46G/specific.cfg' target='_blank' >yealinkt46G specific</a></li>
                         <li><a href='/templates/provisioning/YealinkT48G/specific.cfg' target='_blank' >yealinkt48G specific</a></li>
+                        <li><a href='/templates/provisioning/YealinkW5XP/specific.cfg' target='_blank' >yealinkw5xG specific</a></li>
                     </ul>
                 </li>
 
