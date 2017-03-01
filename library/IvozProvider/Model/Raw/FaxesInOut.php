@@ -275,7 +275,13 @@ class FaxesInOut extends ModelAbstract
             'routeMap' => $routeMap
         );
 
-        $view = new \Zend_View();
+        if (\Zend_Controller_Front::getInstance()) {
+            $view = \Zend_Controller_Front::getInstance()
+                ->getParam('bootstrap')
+                ->getResource('view');
+        } else {
+            $view = new \Zend_View();
+        }
         $fsoUrl = $view->serverUrl($view->url($route, 'fso'));
 
         return $fsoUrl;

@@ -56,6 +56,7 @@ class IVRCustom extends MapperAbstract
                 'errorLocutionId' => $model->getErrorLocutionId(),
                 'successLocutionId' => $model->getSuccessLocutionId(),
                 'timeout' => $model->getTimeout(),
+                'maxDigits' => $model->getMaxDigits(),
                 'noAnswerTimeout' => $model->getNoAnswerTimeout(),
                 'timeoutTargetType' => $model->getTimeoutTargetType(),
                 'timeoutNumberValue' => $model->getTimeoutNumberValue(),
@@ -612,6 +613,7 @@ class IVRCustom extends MapperAbstract
                   ->setErrorLocutionId($data['errorLocutionId'])
                   ->setSuccessLocutionId($data['successLocutionId'])
                   ->setTimeout($data['timeout'])
+                  ->setMaxDigits($data['maxDigits'])
                   ->setNoAnswerTimeout($data['noAnswerTimeout'])
                   ->setTimeoutTargetType($data['timeoutTargetType'])
                   ->setTimeoutNumberValue($data['timeoutNumberValue'])
@@ -630,6 +632,7 @@ class IVRCustom extends MapperAbstract
                   ->setErrorLocutionId($data->{'errorLocutionId'})
                   ->setSuccessLocutionId($data->{'successLocutionId'})
                   ->setTimeout($data->{'timeout'})
+                  ->setMaxDigits($data->{'maxDigits'})
                   ->setNoAnswerTimeout($data->{'noAnswerTimeout'})
                   ->setTimeoutTargetType($data->{'timeoutTargetType'})
                   ->setTimeoutNumberValue($data->{'timeoutNumberValue'})
@@ -649,6 +652,7 @@ class IVRCustom extends MapperAbstract
                   ->setErrorLocutionId($data->getErrorLocutionId())
                   ->setSuccessLocutionId($data->getSuccessLocutionId())
                   ->setTimeout($data->getTimeout())
+                  ->setMaxDigits($data->getMaxDigits())
                   ->setNoAnswerTimeout($data->getNoAnswerTimeout())
                   ->setTimeoutTargetType($data->getTimeoutTargetType())
                   ->setTimeoutNumberValue($data->getTimeoutNumberValue())

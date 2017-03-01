@@ -21,7 +21,7 @@ class IVRCommonAction extends IVRAction
         $welcomLocution = $ivr->getWelcomeLocution()->getLocutionPath();
 
         // Play locution and expect user press
-        $userPressed = $this->agi->read($welcomLocution, $ivr->getTimeout());
+        $userPressed = $this->agi->read($welcomLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
         $this->agi->verbose("IVR: User entered: %s", $userPressed);
 
         // User prefer Human interaction

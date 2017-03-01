@@ -41,6 +41,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
      *     'errorLocutionId': '', 
      *     'successLocutionId': '', 
      *     'timeout': '', 
+     *     'maxDigits': '', 
      *     'noAnswerTimeout': '', 
      *     'timeoutTargetType': '', 
      *     'timeoutNumberValue': '', 
@@ -60,6 +61,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
      *     'errorLocutionId': '', 
      *     'successLocutionId': '', 
      *     'timeout': '', 
+     *     'maxDigits': '', 
      *     'noAnswerTimeout': '', 
      *     'timeoutTargetType': '', 
      *     'timeoutNumberValue': '', 
@@ -95,6 +97,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
                 'errorLocutionId',
                 'successLocutionId',
                 'timeout',
+                'maxDigits',
                 'noAnswerTimeout',
                 'timeoutTargetType',
                 'timeoutNumberValue',
@@ -186,6 +189,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
      *     'errorLocutionId': '', 
      *     'successLocutionId': '', 
      *     'timeout': '', 
+     *     'maxDigits': '', 
      *     'noAnswerTimeout': '', 
      *     'timeoutTargetType': '', 
      *     'timeoutNumberValue': '', 
@@ -220,6 +224,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
                 'errorLocutionId',
                 'successLocutionId',
                 'timeout',
+                'maxDigits',
                 'noAnswerTimeout',
                 'timeoutTargetType',
                 'timeoutNumberValue',
@@ -277,6 +282,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="errorLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="successLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="timeout", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="maxDigits", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="noAnswerTimeout", nullable=true, type="mediumint", sample="", description="")
      * @ApiParams(name="timeoutTargetType", nullable=true, type="varchar", sample="", description="[enum:number|extension|voicemail]")
      * @ApiParams(name="timeoutNumberValue", nullable=true, type="varchar", sample="", description="")
@@ -329,6 +335,7 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="errorLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="successLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="timeout", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="maxDigits", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="noAnswerTimeout", nullable=true, type="mediumint", sample="", description="")
      * @ApiParams(name="timeoutTargetType", nullable=true, type="varchar", sample="", description="[enum:number|extension|voicemail]")
      * @ApiParams(name="timeoutNumberValue", nullable=true, type="varchar", sample="", description="")
@@ -472,6 +479,11 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'maxDigits' => array(
+                    'type' => "smallint",
+                    'required' => true,
+                    'comment' => '',
+                ),
                 'noAnswerTimeout' => array(
                     'type' => "mediumint",
                     'required' => false,
@@ -564,6 +576,11 @@ class Rest_IVRCommonController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'timeout' => array(
+                    'type' => "smallint",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'maxDigits' => array(
                     'type' => "smallint",
                     'required' => true,
                     'comment' => '',

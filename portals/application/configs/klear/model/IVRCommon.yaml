@@ -1,86 +1,86 @@
-production: 
+production:
   class: \IvozProvider\Model\IVRCommon
-  fields: 
-    companyId: 
+  fields:
+    companyId:
       title: _('Company id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    name: 
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
       required: true
-    blackListRegExp: 
+    blackListRegExp:
       title: _('Black list reg exp')
       type: text
       trim: both
-    welcomeLocutionId: 
+    welcomeLocutionId:
       title: _('Welcome locution id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    noAnswerLocutionId: 
+    noAnswerLocutionId:
       title: _('No answer locution id')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    errorLocutionId: 
+    errorLocutionId:
       title: _('Error locution id')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    successLocutionId: 
+    successLocutionId:
       title: _('Success locution id')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    timeout: 
+    timeout:
       title: _('Timeout')
       type: number
       required: true
@@ -95,18 +95,32 @@ production:
         icon: help
         text: _("Time in seconds the IVR will wait after playing the welcome locution or dialing a digit")
         label: _("Need help?")
-    noAnswerTimeout: 
+    maxDigits:
+      title: _('Max digits')
+      type: number
+      required: true
+      defaultVlaue: 0
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Max number of digits the caller can enter. Set to 0 to disable.")
+        label: _("Need help?")
+    noAnswerTimeout:
       title: _('No answer timeout')
       type: number
       defaultValue: 10
-      source: 
+      source:
         control: Spinner
-    timeoutTargetType: 
+    timeoutTargetType:
       title: _('Timeout target type')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           '__null__':
             title: _('Unassigned')
             visualFilter:
@@ -126,48 +140,48 @@ production:
             visualFilter:
               show: ["timeoutVoiceMailUserId"]
               hide: ["timeoutExtensionId", "timeoutNumberValue"]
-    timeoutNumberValue: 
+    timeoutNumberValue:
       title: _('Timeout number value')
       type: text
       trim: both
       required: true
-    timeoutExtensionId: 
+    timeoutExtensionId:
       title: _('Timeout extension id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - number
             template: '%number%'
           order: number
         'null': _("Unassigned")
-    timeoutVoiceMailUserId: 
+    timeoutVoiceMailUserId:
       title: _('Timeout voice mail user id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
               - lastname
             template: '%name% %lastname%'
           order: name
         'null': _("Unassigned")
-    errorTargetType: 
+    errorTargetType:
       title: _('Error target type')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           '__null__':
             title: _('Unassigned')
             visualFilter:
@@ -187,37 +201,37 @@ production:
             visualFilter:
               show: ["errorVoiceMailUserId"]
               hide: ["errorExtensionId", "errorNumberValue"]
-    errorNumberValue: 
+    errorNumberValue:
       title: _('Error number value')
       type: text
       trim: both
       required: true
-    errorExtensionId: 
+    errorExtensionId:
       title: _('Error extension id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - number
             template: '%number%'
           order: number
         'null': _("Unassigned")
-    errorVoiceMailUserId: 
+    errorVoiceMailUserId:
       title: _('Error voice mail user id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
               - lastname
             template: '%name% %lastname%'
@@ -235,11 +249,11 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_IVRCommonTarget
         method: getErrorData
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

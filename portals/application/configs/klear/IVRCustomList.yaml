@@ -2,14 +2,14 @@
 #include conf.d/actions.yaml
 #include IVRCustomEntriesList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: iVRCustomList_screen
-  screens: 
-    iVRCustomList_screen: &iVRCustomList_screenLink 
+  screens:
+    iVRCustomList_screen: &iVRCustomList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *IVRCustom
       title: _("List of %s %2s", ngettext('I v r custom', 'I v r custom(s)', 0), "[format| (%parent%)]")
@@ -25,31 +25,32 @@ production:
           errorTargetType: true
           errorTarget: true
         blacklist:
+          maxDigits: true
           welcomeLocutionId: true
           noAnswerLocutionId: true
           errorLocutionId: true
-          successLocutionId: true        
+          successLocutionId: true
           timeoutNumberValue: true
           timeoutExtensionId: true
           timeoutVoiceMailUserId: true
           errorNumberValue: true
           errorExtensionId: true
           errorVoiceMailUserId: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             iVRCustomEdit_screen: true
             iVRCustomEntriesList_screen: true
-          dialogs: 
+          dialogs:
             iVRCustomDel_dialog: true
           default: iVRCustomEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           iVRCustomNew_screen: true
-        dialogs: 
+        dialogs:
           iVRCustomDel_dialog: true
-    iVRCustomNew_screen: &iVRCustomNew_screenLink 
+    iVRCustomNew_screen: &iVRCustomNew_screenLink
       <<: *IVRCustom
       controller: new
       class: ui-silk-add
@@ -67,12 +68,13 @@ production:
       fixedPositions: &IVRCustomFixedPositions_link
         group0:
           label: _("Basic configuration")
-          colsPerRow: 2
+          colsPerRow: 12
           fields:
-            name: 1
-            timeout: 1
-            welcomeLocutionId: 1
-            successLocutionId: 1
+            name: 4
+            timeout: 4
+            maxDigits: 4
+            welcomeLocutionId: 6
+            successLocutionId: 6
         group1:
           label: _("No answer configuration")
           colsPerRow: 3
@@ -94,7 +96,7 @@ production:
             errorExtensionId: 2
             errorUserId: 2
             errorVoiceMailUserId: 2
-    iVRCustomEdit_screen: &iVRCustomEdit_screenLink 
+    iVRCustomEdit_screen: &iVRCustomEdit_screenLink
       <<: *IVRCustom
       controller: edit
       class: ui-silk-pencil
@@ -107,7 +109,7 @@ production:
           noAnswerTarget: true
           errorTarget: true
           timeoutTarget: true
-      fixedPositions: 
+      fixedPositions:
         <<: *IVRCustomFixedPositions_link
     #IVRCustomEntries
     <<: *iVRCustomEntries_screensLink
@@ -122,8 +124,8 @@ production:
     iVRCustomEntriesEdit_screen:
       <<: *iVRCustomEntriesEdit_screenLink
       filterField: IVRCustomId
-  dialogs: 
-    iVRCustomDel_dialog: &iVRCustomDel_dialogLink 
+  dialogs:
+    iVRCustomDel_dialog: &iVRCustomDel_dialogLink
       <<: *IVRCustom
       controller: delete
       class: ui-silk-bin
@@ -135,11 +137,11 @@ production:
       labelOnList: 1
     #IVRCustomEntries
     <<: *iVRCustomEntries_dialogsLink
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

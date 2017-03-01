@@ -159,9 +159,9 @@ class Agi_Wrapper
         return $this->getVariable("PICKUPRESULT");
     }
 
-    public function read($locution, $timeout)
+    public function read($locution, $timeout = 0, $maxdigits = 0)
     {
-        $this->_fastagi->exec('Read', "PRESSED,$locution,0,,,$timeout");
+        $this->_fastagi->exec('Read', "PRESSED,$locution,$maxdigits,,,$timeout");
         if ($this->_fastagi->get_variable("READSTATUS") == "HANGUP") {
             return "HANGUP";
         }

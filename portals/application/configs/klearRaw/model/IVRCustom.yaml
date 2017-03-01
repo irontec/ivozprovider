@@ -78,6 +78,12 @@ production:
       required: true
       source: 
         control: Spinner
+    maxDigits: 
+      title: _('Maxdigit')
+      type: number
+      required: true
+      source: 
+        control: Spinner
     noAnswerTimeout: 
       title: _('Noanswertimeout')
       type: number

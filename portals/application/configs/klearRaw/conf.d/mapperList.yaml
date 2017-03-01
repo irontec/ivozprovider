@@ -91,11 +91,17 @@ mappers:
   - &KamTrunksUacreg {mapper: \IvozProvider\Mapper\Sql\KamTrunksUacreg, modelFile: KamTrunksUacreg}
   - &KamUsers {mapper: \IvozProvider\Mapper\Sql\KamUsers, modelFile: KamUsers}
   - &KamUsersAcc {mapper: \IvozProvider\Mapper\Sql\KamUsersAcc, modelFile: KamUsersAcc}
+  - &KamUsersActiveWatchers {mapper: \IvozProvider\Mapper\Sql\KamUsersActiveWatchers, modelFile: KamUsersActiveWatchers}
   - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
+  - &KamUsersDbaliases {mapper: \IvozProvider\Mapper\Sql\KamUsersDbaliases, modelFile: KamUsersDbaliases}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}
   - &KamUsersHtable {mapper: \IvozProvider\Mapper\Sql\KamUsersHtable, modelFile: KamUsersHtable}
   - &KamUsersLocation {mapper: \IvozProvider\Mapper\Sql\KamUsersLocation, modelFile: KamUsersLocation}
   - &KamUsersLocationAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs, modelFile: KamUsersLocationAttrs}
   - &KamUsersMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamUsersMissedCalls, modelFile: KamUsersMissedCalls}
+  - &KamUsersPresentity {mapper: \IvozProvider\Mapper\Sql\KamUsersPresentity, modelFile: KamUsersPresentity}
+  - &KamUsersPua {mapper: \IvozProvider\Mapper\Sql\KamUsersPua, modelFile: KamUsersPua}
+  - &KamUsersWatchers {mapper: \IvozProvider\Mapper\Sql\KamUsersWatchers, modelFile: KamUsersWatchers}
+  - &KamUsersXcap {mapper: \IvozProvider\Mapper\Sql\KamUsersXcap, modelFile: KamUsersXcap}
   - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}

@@ -27,7 +27,7 @@ class IVRCustomAction extends IVRAction
         }
 
         // Play locution and expect user press
-        $userPressed = $this->agi->read($welcomLocutionFile, $ivr->getTimeout());
+        $userPressed = $this->agi->read($welcomLocutionFile, $ivr->getTimeout(), $ivr->getMaxDigits());
         $this->agi->verbose("IVR: User entered: %s", $userPressed);
 
         // User prefer Human interaction

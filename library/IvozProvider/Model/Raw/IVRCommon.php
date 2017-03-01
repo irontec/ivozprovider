@@ -97,6 +97,13 @@ class IVRCommon extends ModelAbstract
     protected $_timeout;
 
     /**
+     * Database var type smallint
+     *
+     * @var int
+     */
+    protected $_maxDigits;
+
+    /**
      * Database var type mediumint
      *
      * @var int
@@ -252,6 +259,7 @@ class IVRCommon extends ModelAbstract
         'errorLocutionId'=>'errorLocutionId',
         'successLocutionId'=>'successLocutionId',
         'timeout'=>'timeout',
+        'maxDigits'=>'maxDigits',
         'noAnswerTimeout'=>'noAnswerTimeout',
         'timeoutTargetType'=>'timeoutTargetType',
         'timeoutNumberValue'=>'timeoutNumberValue',
@@ -682,6 +690,43 @@ class IVRCommon extends ModelAbstract
     public function getTimeout()
     {
         return $this->_timeout;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\IVRCommon
+     */
+    public function setMaxDigits($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_maxDigits != $data) {
+            $this->_logChange('maxDigits', $this->_maxDigits, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_maxDigits = $data;
+
+        } else if (!is_null($data)) {
+            $this->_maxDigits = (int) $data;
+
+        } else {
+            $this->_maxDigits = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column maxDigits
+     *
+     * @return int
+     */
+    public function getMaxDigits()
+    {
+        return $this->_maxDigits;
     }
 
     /**
