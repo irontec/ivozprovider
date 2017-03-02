@@ -4,12 +4,11 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-31 17:17+0100\n"
+"POT-Creation-Date: 2017-03-02 13:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -275,6 +274,7 @@ msgstr "Es decir, un usuario (español, porque tal y como veremos los usuarios "
 "números móviles, por ejemplo, así: 676 676 676."
 
 #: ../../pbx_features/call_permissions.rst:67
+#: ../../pbx_features/friends.rst:89
 #: ../../pbx_features/users.rst:70
 msgid "Call ACL"
 msgstr "Permisos de llamada"
@@ -638,6 +638,7 @@ msgstr "La siguiente imagen ilustra el proceso de creación de una sala de "
 
 #: ../../pbx_features/conference_rooms.rst:17
 #: ../../pbx_features/external_filters.rst:74
+#: ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:24
 #: ../../pbx_features/terminals.rst:17
 #: ../../pbx_features/users.rst:23
@@ -1065,6 +1066,338 @@ msgstr "En la siguiente sección veremos como este filtro se asigna a los "
 ":ref:`external_ddis` que queramos, definiendo así el comportamiento de "
 "los mismos fuera de horario y en días festivos, así como dentro de "
 "horario en el caso de *setear* locución de bienvenida en el filtro."
+
+#: ../../pbx_features/friends.rst:3
+msgid "Friends"
+msgstr "Friends"
+
+#: ../../pbx_features/friends.rst:5
+msgid ""
+"**Friends** section in the **Company configuration** allows "
+"interconnection of IvozProvider with other SIP PBX systems through a SIP "
+"*trunk*. The most typical use case is when a company have multiple PBX "
+"systems that want to integrate in a single flow."
+msgstr "La sección **Amigos** permite a los **administradores de empresa** "
+"conectar su PBX virtual con otras centralitas SIP por medio de *trunks* "
+"SIP. El caso de uso habitual es el de conectar IvozProvider a otra "
+"centralita SIP de la empresa, otra sede, etc."
+
+#: ../../pbx_features/friends.rst:10
+msgid ""
+"It's important to understand the difference between **Contract peering** "
+"defined by the **brand operator** to connect with the public network and "
+"**Friends**, defined by **company administrators** to connect the system "
+"with other PBXs."
+msgstr "Es importante entender la diferencia entre los **Contratos de peering** "
+"definidos por el **operador de marca** para conectar con la red pública y"
+" los **Amigos**, definidos por el **administrador de empresa** para "
+"conectar su PBX con otras PBXs."
+
+#: ../../pbx_features/friends.rst:16
+msgid "What does this allow?"
+msgstr "¿Qué permite?"
+
+#: ../../pbx_features/friends.rst:18
+msgid ""
+"This sections allows not just communication between users at boths ends "
+"of the SIP *trunk*, but also:"
+msgstr "Esta sección permite comunicar los usuarios de ambos extremos del *trunk*"
+" SIP, pero también permite:"
+
+#: ../../pbx_features/friends.rst:21
+msgid ""
+"Users \"from the other side\" can call to the public network just like "
+"native Ivozprovider :ref:`Users <users>`."
+msgstr "Que los usuarios del \"otro lado\" llamen a la red pública igual que los "
+":ref:`Usuarios <usuarios>` nativos."
+
+#: ../../pbx_features/friends.rst:24
+msgid "Public network calls can be routed to the other SIP *trunk* end."
+msgstr "Que llamadas de la red pública se puedan dirigir a usuarios del otro "
+"extremo del *trunk* SIP"
+
+#: ../../pbx_features/friends.rst:27
+msgid "Types of friends"
+msgstr "Tipos de amigos"
+
+#: ../../pbx_features/friends.rst:29
+msgid "There are 2 main types of SIP PBX that can be integrate with IvozProvider:"
+msgstr "Se pueden unir 2 tipos de centralitas SIP a IvozProvider:"
+
+#: ../../pbx_features/friends.rst:31
+msgid ""
+"**Direct connection PBX**: IvozProvider must be able to talk SIP directly"
+" with this kind of friends by just redirecting the traffic to the proper "
+"port of the public IP address of the PBX."
+msgstr "**Centralitas con conectividad directa**: Esto implica que IvozProvider "
+"tiene la posibilidad de hablar SIP directamente sin más que dirigir su "
+"tráfico a una IP pública a un puerto concreto."
+
+#: ../../pbx_features/friends.rst:35
+msgid ""
+"**PBX behind NAT**: Not directly accesible. This kind of PBX must "
+"register at IvozProvider (just like all the :ref:`Terminals <terminals>` "
+"do)."
+msgstr "**Centralitas tras NAT**, no accesibles directamente. Este tipo de "
+"centralitas tendran que registrarse en IvozProvider (exactamente igual "
+"que lo hacen los :ref:`Terminales <terminals>`)."
+
+#: ../../pbx_features/friends.rst:40
+msgid "What kind of calls can be routed through a *friend*?"
+msgstr "¿Qué llamadas se envían al *friend*?"
+
+#: ../../pbx_features/friends.rst:42
+msgid ""
+"IvozProvider must know what calls must be routed to the different defined"
+" *friends*. For that, **company administrator** will configure regular "
+"expressions that describe the numbers that *can be reached* through the "
+"**friend**."
+msgstr "IvozProvider tiene que saber qué llamadas envía por los distintos "
+"*friends* que se definan. Para ello, el **administrador de empresa** "
+"definirá por medio de tantas expresiones regulares como desee los "
+"destinos que son *alcanzables* por medio del **amigo**."
+
+#: ../../pbx_features/friends.rst:46
+msgid ""
+"Internal :ref:`extensions <extensions>` have priority over any expression"
+" defined in the *friends*."
+msgstr "Las :ref:`extesiones internas <extensiones>` tienen prevalencia sobre las"
+" expresiones regulares de los *friends*."
+
+#: ../../pbx_features/friends.rst:49
+msgid ""
+"To sum up, IvozProvider will route a call received by a :ref:`user "
+"<users>` or a :ref:`friend <friends>` following this logic:"
+msgstr "Es decir, IvozProvider encamina una llamada recibida por un :ref:`usuario"
+" <users>` o por un :ref:`amigo <friends>` aplicando esta lógica:"
+
+#: ../../pbx_features/friends.rst:52
+msgid "Destination matches an existing IvozProvider extension?"
+msgstr "¿Coincide con una extensión definida en la sección Extensiones?"
+
+#: ../../pbx_features/friends.rst:54
+msgid "If not: Destination matches any *friend* regular expression?"
+msgstr "Si no, ¿coincide con alguna expresión regular vinculada a alǵun *friend*?"
+
+#: ../../pbx_features/friends.rst:56
+msgid "If not: This is an external call."
+msgstr "Si no, se considera una llamada externa."
+
+#: ../../pbx_features/friends.rst:59
+msgid "Configuration"
+msgstr "Configuración"
+
+#: ../../pbx_features/friends.rst:61
+msgid ""
+"The **Friend** configuration is a merge between a **User** and a "
+"**Terminal**"
+msgstr "La configuración de un **Amigo** es una fusión de la configuración de un "
+"**Usuario** y un **Terminal**."
+
+#: ../../pbx_features/friends.rst:63
+msgid ""
+"**Friends** are so similar to **Users** that both talk SIP with the "
+":ref:`proxyusers`."
+msgstr "La equivalencia **Amigo** <-> **Usuario** es tal, que los **Amigos** "
+"hablarán SIP con el :ref:`proxyusers`."
+
+#: ../../pbx_features/friends.rst:66
+msgid "This are the configurable settings of *friends*:"
+msgstr "Estos son los parámetros a configurar a la hora de definir un *amigo*:"
+
+#: ../../pbx_features/friends.rst:71
+msgid ""
+"Name of the **friend**, like in **Terminals**. This will also be used in "
+"SIP messanges (sent **From User**)."
+msgstr "Nombre del **Amigo**, equivalente al nombre del **Terminal**. Se utiliza "
+"en los mensajes SIP (**From User** enviado)."
+
+#: ../../pbx_features/friends.rst:73
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../pbx_features/friends.rst:75
+msgid "Optional. Extra information for this **friend**."
+msgstr "No se utiliza más que para describir el **amigo**"
+
+#: ../../pbx_features/friends.rst:76
+msgid "Priority"
+msgstr "Prioridad"
+
+#: ../../pbx_features/friends.rst:78
+msgid ""
+"Used to solve conflicts while routing calls through **friends**. If a "
+"call destination **matches** more than one friend regular expresion the "
+"call will be routed through the friend with **less priority value**."
+msgstr "Sirve para resolver conflictos a la hora de dirigir llamadas hacia un "
+"**amigo** u otro. Si una llamada *matchea* expresiones regulares más de "
+"un *friend*, **se encaminará la llamada al que tenga menor valor de "
+"prioridad**."
+
+#: ../../pbx_features/friends.rst:81
+#: ../../pbx_features/terminals.rst:21
+#: ../../pbx_features/users.rst:46
+msgid "Password"
+msgstr "Contraseña"
+
+#: ../../pbx_features/friends.rst:83
+msgid ""
+"When the *friend* send requests, IvozProvider will authenticate it using "
+"this password. Like in terminals **using password IS A MUST**."
+msgstr "Cuando el *friend* nos envíe peticiones, IvozProvider le autenticará "
+"utilizando esta contraseña. **Es obligatorio el uso de contraseña**."
+
+#: ../../pbx_features/friends.rst:85
+msgid "Direct connection"
+msgstr "Conectividad directa"
+
+#: ../../pbx_features/friends.rst:87
+msgid ""
+"If you choose 'Yes' here, you'll have to fill the protocol, address and "
+"port where this *friend* can be contacted."
+msgstr "En caso de seleccionar 'Sí', se pedirá el protoco, la IP y el puertoen el"
+" que se puede contactar con el *friend*."
+
+#: ../../pbx_features/friends.rst:91
+msgid ""
+"Similar to :ref:`internal users <users>`, friends can place internal "
+"company calls without restriction (including Extension or other Friends)."
+" When calling to external numbers, this ACL will be checked if set."
+msgstr "Un *friend*, al igual que un :ref:`usuario interno <users>`, puede llamar"
+" a usuarios internos (todo lo que esté en Extensiones + Friends). Además,"
+" puede llamar a los destinos externos que permita este parámetro (igual "
+"que los usuarios."
+
+#: ../../pbx_features/friends.rst:94
+#: ../../pbx_features/users.rst:66
+msgid "Outgoing DDI"
+msgstr "DDI de salida"
+
+#: ../../pbx_features/friends.rst:96
+msgid "External calls from this *friend* will be presented with this DDI."
+msgstr "Las llamadas externas de este *friend* presentarán este DDI."
+
+#: ../../pbx_features/friends.rst:97
+msgid "Country and Area code"
+msgstr "Código de país y Area Code"
+
+#: ../../pbx_features/friends.rst:99
+msgid "Used for number transformation from and to this friend."
+msgstr "Las cabeceras de origen/destino se esperarán y enviarán en estos formatos."
+
+#: ../../pbx_features/friends.rst:100
+msgid "Allowed codecs"
+msgstr "Codecs rechazados/permitidos"
+
+#: ../../pbx_features/friends.rst:102
+msgid "Like a terminal, *friends* will talk the selected codec."
+msgstr "Al igual que un Terminal, un *friend* habla el codec seleccionado."
+
+#: ../../pbx_features/friends.rst:103
+msgid "From domain"
+msgstr "From domain"
+
+#: ../../pbx_features/friends.rst:105
+msgid ""
+"Request from IvozProvider to this friend will include this domain in the "
+"From header."
+msgstr "IvozProvider utilizará este valor en el From Domain de las peticiones al "
+"*friend*."
+
+#: ../../pbx_features/friends.rst:109
+msgid ""
+"Calls to *friends* are considered internal. That means that ACLs won't be"
+" checked when calling a friend, no matter if the origin of the call is a "
+"user or another friend."
+msgstr "Las llamadas a los *friends* no atraviesan ACLs. Es decir, se consideran "
+"internas, por lo que todos los usuarios/amigos pueden llamar a todos los "
+"usuarios/amigos."
+
+#: ../../pbx_features/friends.rst:114
+msgid "Asterisk as a friend"
+msgstr "Configuración Asterisk remoto"
+
+#: ../../pbx_features/friends.rst:116
+msgid ""
+"At the other end of a friend can be any kind of SIP entity. This section "
+"takes as example an Asterisk PBX system using SIP channel driver that "
+"wants to connect to IvozProvider."
+msgstr "Al otro lado puede haber entidades SIP muy diversas, pero añadimos la "
+"configuración ejemplo para conectar IvozProvider con una centralita "
+"Asterisk:"
+
+#: ../../pbx_features/friends.rst:121
+msgid "register"
+msgstr "register"
+
+#: ../../pbx_features/friends.rst:123
+msgid ""
+"If the system can not be directly access, Asterisk will have to register "
+"in the platform (like a terminal will do)."
+msgstr "En caso de no estar directamente visible, el Asterisk tendrá que "
+"registrarse en IvozProvider (al igual que hacen los terminales)."
+
+#: ../../pbx_features/friends.rst:126
+msgid "Configuration will be something like this:"
+msgstr "La configuracińo sería tal que:"
+
+#: ../../pbx_features/friends.rst:133
+msgid "peer"
+msgstr "peer"
+
+#: ../../pbx_features/friends.rst:148
+msgid ""
+"*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
+"the *insecure* setting is used here."
+msgstr "El *friend* no puede desafiar a IvozProvider, al igual que un terminal no"
+" desafía a IvozProvider cuando éste le llama. De ahí el *insecure*."
+
+#: ../../pbx_features/friends.rst:152
+msgid "Summary"
+msgstr "Resumen final"
+
+#: ../../pbx_features/friends.rst:154
+msgid ""
+"The key point is understanding that a *friend* has a direct relation with"
+" the extension-user-terminal trio:"
+msgstr "Lo vital para entender esta sección es pensar que un *friend* tiene una "
+"relación directa con el trío extension-usuario-terminal:"
+
+#: ../../pbx_features/friends.rst:157
+msgid "Can place calls to all internal extensions and other friends."
+msgstr "Puede realizar llamadas a todas las extensiones internas y a otros amigos."
+
+#: ../../pbx_features/friends.rst:159
+msgid "Can place external calls that its ACL allows"
+msgstr "Pueden realizar las llamadas que le permita su grupo de permisos."
+
+#: ../../pbx_features/friends.rst:161
+msgid "Display their configured outgoing DDI when calling to external entities"
+msgstr "Presentan el DDI saliente que tengan configurado en sus llamadas "
+"salientes."
+
+#: ../../pbx_features/friends.rst:163
+msgid ""
+"Never challenge IvozProvider requests (don't request authentication on "
+"received requests)"
+msgstr "No desafían a IvozProvider (no hay autenticación SIP en las peticiones "
+"hacia ellos)."
+
+#: ../../pbx_features/friends.rst:165
+msgid ""
+"Answers IvozProvider authentication challenges (All request from them to "
+"IvozProvider must be autheticated for security reasons)"
+msgstr "Responden a los desafíos de IvozProvider (hay autenticación SIP "
+"obligatoria en las peticiones desde ellos)."
+
+#: ../../pbx_features/friends.rst:168
+msgid ""
+"Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
+"traffic from friends are identical to any other user terminal traffic in "
+"format."
+msgstr "Hablan al *Proxy de usuarios*, igual que los terminales. De hecho, el "
+"tráfico SIP de una llamada de un *friend* es indistinguible al tráfico "
+"SIP de una llamada de un terminal."
 
 #: ../../pbx_features/huntgroups.rst:5
 msgid "Hunt gorups"
@@ -1645,11 +1978,6 @@ msgid ""
 msgstr "Usuario que utilizará el terminal para presentarse ante IvozProvider y "
 "para realizar la fase de autenticación SIP."
 
-#: ../../pbx_features/terminals.rst:21
-#: ../../pbx_features/users.rst:46
-msgid "Password"
-msgstr "Contraseña"
-
 #: ../../pbx_features/terminals.rst:23
 msgid ""
 "Password that will use the terminal to answer the SIP authentication "
@@ -1835,10 +2163,6 @@ msgid ""
 msgstr "Tal y como se explicaba en :ref:`extensiones`, fija la extensión del "
 "usuario para llamadas internas."
 
-#: ../../pbx_features/users.rst:66
-msgid "Outgoing DDI"
-msgstr "DDI de salida"
-
 #: ../../pbx_features/users.rst:68
 msgid ""
 "As described in :ref:`external_ddi`, determines the number that will "
@@ -1872,8 +2196,8 @@ msgstr "Llamada en espera"
 msgid ""
 "When this setting is enabled, the user terminal will receive new calls "
 "even if it already talking."
-msgstr "Determina si el sistema tendrá que llamar al usuario cuando éste ya "
-"esté en conversación."
+msgstr "Determina si el sistema tendrá que llamar al usuario cuando éste ya esté "
+"en conversación."
 
 #: ../../pbx_features/users.rst:85
 msgid "Voicemail"
@@ -1888,9 +2212,9 @@ msgid ""
 "Enables or disables the **existance** of a users voicemail. This only "
 "makes the voicemail available to be routed as described in the section "
 ":ref:`forward to voicemail <fwd_to_vm>`."
-msgstr "Activa o desactiva **la existencia** del buzón de voz del usuario. "
-"Aparte de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá "
-"que desviar las llamadas que queramos al buzón."
+msgstr "Activa o desactiva **la existencia** del buzón de voz del usuario. Aparte"
+" de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá que "
+"desviar las llamadas que queramos al buzón."
 
 #: ../../pbx_features/users.rst:95
 msgid "Email notification"
@@ -1919,8 +2243,8 @@ msgstr "Jefe-Asistente"
 msgid ""
 "This feature will turn the user into a boss that can only be directly "
 "call by:"
-msgstr "La funcionalidad jefe-asistente impide que un usuario sea molestado por nadie "
-"que no sea:"
+msgstr "La funcionalidad jefe-asistente impide que un usuario sea molestado por "
+"nadie que no sea:"
 
 #: ../../pbx_features/users.rst:111
 msgid "The selected assistant."
@@ -1958,16 +2282,16 @@ msgstr "Whitelist jefe/asistente"
 msgid ""
 "Regular expresion to match numbers that are allowed to call directly to "
 "the boss."
-msgstr "Permite indicar utilizando expresiones regulares las excepciones "
-"deseadas."
+msgstr "Permite indicar utilizando expresiones regulares las excepciones deseadas."
 
 #: ../../pbx_features/users.rst:129
 msgid ""
 "With the setup in the image, every call to *Alice* will be redirected to "
 "*Bob*, except the ones placed by *Bob* itself and those coming from the "
 "number 945 945 945."
-msgstr "Con la configuración de la imagen, toda llamada a *Alice* acabará en *Bob*, "
-"salvo las que haga el propio *Bob* y el número de teléfono 945 945 945."
+msgstr "Con la configuración de la imagen, toda llamada a *Alice* acabará en "
+"*Bob*, salvo las que haga el propio *Bob* y el número de teléfono 945 945"
+" 945."
 
 #: ../../pbx_features/users.rst:135
 msgid "Group Configuration"
@@ -1977,24 +2301,25 @@ msgstr "Pertenencia a grupos"
 msgid ""
 "As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
 " the user can be part of one or more huntgroups and pickup groups."
-msgstr "Tal y como se verá en las secciones :ref:`huntgroups` y :ref:`capture_groups`, "
-"un usuario puede pertenecer a uno o a varios grupos de captura y grupos de salto."
+msgstr "Tal y como se verá en las secciones :ref:`huntgroups` y "
+":ref:`capture_groups`, un usuario puede pertenecer a uno o a varios "
+"grupos de captura y grupos de salto."
 
 #: ../../pbx_features/users.rst:142
 msgid ""
 "Those groups can be configured from the sections :ref:`huntgroups` and "
 ":ref:`capture_groups` or the user's screen if the groups already exists."
 msgstr "Aparte de poder configurar dicha pertenencia desde las propias secciones "
-":ref:`huntgroups` y :ref:`capture_groups`, se puede añadir al usuario que "
-"estamos editando a los grupos de captura y grupos de salto deseados que ya "
-"existan."
+":ref:`huntgroups` y :ref:`capture_groups`, se puede añadir al usuario que"
+" estamos editando a los grupos de captura y grupos de salto deseados que "
+"ya existan."
 
 #: ../../pbx_features/users.rst:145
 msgid ""
 "You can also configure the user's **hunt groups** from the icon in each "
 "user line of the users list."
-msgstr "En el caso de la pertenencia a **grupos de salto**, también se puede configurar "
-"desde el listado general:"
+msgstr "En el caso de la pertenencia a **grupos de salto**, también se puede "
+"configurar desde el listado general:"
 
 #: ../../pbx_features/users.rst:153
 msgid "User Call Forward"
@@ -2002,16 +2327,16 @@ msgstr "Desvíos de llamada"
 
 #: ../../pbx_features/users.rst:155
 msgid "The user's call forward can be configured in the following button:"
-msgstr "Los desvíos de las llamadas de un usuario concreto se configura pulsando el "
-"siguiente botón:"
+msgstr "Los desvíos de las llamadas de un usuario concreto se configura pulsando "
+"el siguiente botón:"
 
 #: ../../pbx_features/users.rst:162
 msgid ""
 "For example, to forward all external calls that are not answered after 15"
 " seconds, we could configure a call forward like this:"
-msgstr "Para desviar las llamadas externas que no se contesten en 15 segundos al buzón"
-" de voz que acabamos de configurar, por ejemplo, habría que configurar un desvío"
-" tal que:"
+msgstr "Para desviar las llamadas externas que no se contesten en 15 segundos al "
+"buzón de voz que acabamos de configurar, por ejemplo, habría que "
+"configurar un desvío tal que:"
 
 #: ../../pbx_features/users.rst:168
 msgid "These are the fields and available values:"
@@ -2049,15 +2374,15 @@ msgid ""
 "Busy: When the user is talking to someone (and call waiting is disabled),"
 " when *Do not disturb* is enabled or when the user rejects an incoming "
 "call."
-msgstr "Ocupado: cuando el usuario esté ocupado (hablando o con el *No "
-"molestar* activo)"
+msgstr "Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
+"activo)"
 
 #: ../../pbx_features/users.rst:183
 msgid ""
 "Not registered: when the user SIP terminal is not registered against "
 "IvozProvider."
-msgstr "No registrado: cuando el usuario tenga su terminal sin conectar "
-"con IvozProvider"
+msgstr "No registrado: cuando el usuario tenga su terminal sin conectar con "
+"IvozProvider"
 
 #: ../../pbx_features/users.rst:185
 msgid "Target type"
@@ -2083,7 +2408,7 @@ msgstr "Extensión (interna)"
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
-msgstr "Si queremos que desviar a un grupo de salto, por ejemplo, bastaría "
-"con crear una extensión que apunte al grupo de salto deseado y seleccionar "
+msgstr "Si queremos que desviar a un grupo de salto, por ejemplo, bastaría con "
+"crear una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
 
