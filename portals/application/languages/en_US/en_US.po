@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: IvozProvider 1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 12:17+0100\n"
-"PO-Revision-Date: 2017-03-01 12:23+0100\n"
+"PO-Revision-Date: 2017-03-02 19:56+0100\n"
 "Last-Translator: lfgarcia@irontec.com\n"
 "Language-Team: IvozProvider I18N Team <dev.lists-ivozprovider@irontec.com>\n"
 "Language: en_US\n"
@@ -6612,9 +6612,8 @@ msgid "Qualify frequency"
 msgstr "Qualify frequency"
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:11
-#, fuzzy
 msgid "Terminal id"
-msgstr "Terminal id"
+msgstr "Terminal"
 
 #: application/configs/klear/model/AstPsEndpoints.yaml:24
 #, fuzzy
@@ -6895,9 +6894,8 @@ msgstr "Imapflag"
 #: application/configs/klear/model/DDIs.yaml:133
 #: application/configs/klear/model/HuntGroupsRelUsers.yaml:20
 #: application/configs/klear/model/PickUpRelUsers.yaml:19
-#, fuzzy
 msgid "User id"
-msgstr "User id"
+msgstr "User"
 
 #: application/configs/klear/model/BrandServices.yaml:5
 #: application/configs/klear/model/CompanyServices.yaml:5
@@ -7016,9 +7014,8 @@ msgstr "admin"
 #: application/configs/klearRaw/model/BrandURLs.yaml:38
 #: application/configs/klearRaw/model/DDIs.yaml:74
 #: application/configs/klearRaw/model/Extensions.yaml:29
-#, fuzzy
 msgid "user"
-msgstr "user"
+msgstr "User"
 
 #: application/configs/klear/model/BrandURLs.yaml:117
 #: application/configs/klear/model/CompanyURLs.yaml:107
@@ -7248,9 +7245,8 @@ msgstr "Target type"
 #: application/configs/klearRaw/model/IVRCustom.yaml:99
 #: application/configs/klearRaw/model/IVRCustom.yaml:138
 #: application/configs/klearRaw/model/IVRCustomEntries.yaml:44
-#, fuzzy
 msgid "number"
-msgstr "number"
+msgstr "Number"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:64
 #: application/configs/klear/model/ExternalCallFilters.yaml:87
@@ -7270,9 +7266,8 @@ msgstr "number"
 #: application/configs/klearRaw/model/IVRCustom.yaml:100
 #: application/configs/klearRaw/model/IVRCustom.yaml:139
 #: application/configs/klearRaw/model/IVRCustomEntries.yaml:45
-#, fuzzy
 msgid "extension"
-msgstr "extension"
+msgstr "Extension"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:69
 #: application/configs/klear/model/ExternalCallFilters.yaml:92
@@ -7292,9 +7287,8 @@ msgstr "extension"
 #: application/configs/klearRaw/model/IVRCustom.yaml:101
 #: application/configs/klearRaw/model/IVRCustom.yaml:140
 #: application/configs/klearRaw/model/IVRCustomEntries.yaml:46
-#, fuzzy
 msgid "voicemail"
-msgstr "voicemail"
+msgstr "Voicemail"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:74
 #: application/configs/klear/model/Extensions.yaml:79
@@ -7334,7 +7328,6 @@ msgstr "Objid"
 
 #: application/configs/klear/model/ChangeHistory.yaml:30
 #: application/configs/klearRaw/model/ChangeHistory.yaml:35
-#, fuzzy
 msgid "Field"
 msgstr "Field"
 
@@ -7502,9 +7495,8 @@ msgid "Calling code"
 msgstr "Calling code"
 
 #: application/configs/klear/model/DDIs.yaml:28
-#, fuzzy
 msgid "External call filter id"
-msgstr "External call filter id"
+msgstr "External Call Filter"
 
 #: application/configs/klear/model/DDIs.yaml:42
 #: application/configs/klear/model/Extensions.yaml:33
@@ -7516,37 +7508,32 @@ msgstr "Route type"
 #: application/configs/klear/model/Extensions.yaml:49
 #: application/configs/klearRaw/model/DDIs.yaml:75
 #: application/configs/klearRaw/model/Extensions.yaml:31
-#, fuzzy
 msgid "IVRCommon"
-msgstr "IVRCommon"
+msgstr "IVR Common"
 
 #: application/configs/klear/model/DDIs.yaml:63
 #: application/configs/klear/model/Extensions.yaml:54
 #: application/configs/klearRaw/model/DDIs.yaml:76
 #: application/configs/klearRaw/model/Extensions.yaml:32
-#, fuzzy
 msgid "IVRCustom"
-msgstr "IVRCustom"
+msgstr "IVR Custom"
 
 #: application/configs/klear/model/DDIs.yaml:68
 #: application/configs/klear/model/Extensions.yaml:59
 #: application/configs/klearRaw/model/DDIs.yaml:77
 #: application/configs/klearRaw/model/Extensions.yaml:33
-#, fuzzy
 msgid "huntGroup"
-msgstr "huntGroup"
+msgstr "Hunt Group"
 
 #: application/configs/klear/model/DDIs.yaml:73
 #: application/configs/klearRaw/model/DDIs.yaml:78
 #: application/configs/klearRaw/model/OutgoingRouting.yaml:13
-#, fuzzy
 msgid "fax"
-msgstr "fax"
+msgstr "Fax"
 
 #: application/configs/klear/model/DDIs.yaml:78
-#, fuzzy
 msgid "ConferenceRoom"
-msgstr "ConferenceRoom"
+msgstr "Conference Room"
 
 #: application/configs/klear/model/DDIs.yaml:89
 #, fuzzy
@@ -7615,35 +7602,30 @@ msgstr "This setting needs external tarification module"
 
 #: application/configs/klear/model/DDIs.yaml:149
 #: application/configs/klear/model/Extensions.yaml:86
-#, fuzzy
 msgid "I v r common id"
-msgstr "I v r common id"
+msgstr "IVR Common"
 
 #: application/configs/klear/model/DDIs.yaml:164
 #: application/configs/klear/model/Extensions.yaml:101
 #: application/configs/klear/model/IVRCustomEntries.yaml:5
-#, fuzzy
 msgid "I v r custom id"
-msgstr "I v r custom id"
+msgstr "IVR Custom"
 
 #: application/configs/klear/model/DDIs.yaml:179
 #: application/configs/klear/model/Extensions.yaml:116
 #: application/configs/klear/model/HuntGroupsRelUsers.yaml:5
-#, fuzzy
 msgid "Hunt group id"
-msgstr "Hunt group id"
+msgstr "Hunt Group"
 
 #: application/configs/klear/model/DDIs.yaml:194
 #: application/configs/klear/model/FaxesInOut.yaml:13
-#, fuzzy
 msgid "Fax id"
-msgstr "Fax id"
+msgstr "Fax"
 
 #: application/configs/klear/model/DDIs.yaml:209
 #: application/configs/klear/model/Extensions.yaml:131
-#, fuzzy
 msgid "Conference room id"
-msgstr "Conference room id"
+msgstr "Conference Room"
 
 #: application/configs/klear/model/DDIs.yaml:224
 #: application/configs/klear/model/Extensions.yaml:162
@@ -7664,15 +7646,13 @@ msgstr "Target"
 #: application/configs/klear/model/KamTrunksUacreg.yaml:119
 #: application/configs/klear/model/ParsedCDRs.yaml:136
 #: application/configs/klear/model/ParsedCDRsGod.yaml:135
-#, fuzzy
 msgid "Peering contract id"
-msgstr "Peering contract id"
+msgstr "Peering Contract"
 
 #: application/configs/klear/model/DDIs.yaml:250
 #: application/configs/klear/model/Timezones.yaml:5
-#, fuzzy
 msgid "Country id"
-msgstr "Country id"
+msgstr "Country"
 
 #: application/configs/klear/model/Domains.yaml:12
 #: application/configs/klear/model/Domains.yaml:74
@@ -8182,27 +8162,23 @@ msgstr "Strategy"
 
 #: application/configs/klear/model/HuntGroups.yaml:36
 #: application/configs/klearRaw/model/HuntGroups.yaml:35
-#, fuzzy
 msgid "ringAll"
-msgstr "ringAll"
+msgstr "Ring all"
 
 #: application/configs/klear/model/HuntGroups.yaml:41
 #: application/configs/klearRaw/model/HuntGroups.yaml:36
-#, fuzzy
 msgid "linear"
-msgstr "linear"
+msgstr "Linear (once)"
 
 #: application/configs/klear/model/HuntGroups.yaml:46
 #: application/configs/klearRaw/model/HuntGroups.yaml:37
-#, fuzzy
 msgid "roundRobin"
-msgstr "roundRobin"
+msgstr "Round Robin (∞)"
 
 #: application/configs/klear/model/HuntGroups.yaml:51
 #: application/configs/klearRaw/model/HuntGroups.yaml:38
-#, fuzzy
 msgid "random"
-msgstr "random"
+msgstr "Random"
 
 #: application/configs/klear/model/HuntGroups.yaml:56
 #, fuzzy
@@ -8212,9 +8188,8 @@ msgstr "Ring all timeout"
 #: application/configs/klear/model/HuntGroups.yaml:62
 #: application/configs/klear/model/IVRCommon.yaml:118
 #: application/configs/klear/model/IVRCustom.yaml:114
-#, fuzzy
 msgid "Timeout target type"
-msgstr "Timeout target type"
+msgstr "Timeout target"
 
 #: application/configs/klear/model/HuntGroups.yaml:87
 #: application/configs/klear/model/IVRCommon.yaml:42
@@ -8233,16 +8208,14 @@ msgstr "Timeout number value"
 #: application/configs/klear/model/HuntGroups.yaml:106
 #: application/configs/klear/model/IVRCommon.yaml:148
 #: application/configs/klear/model/IVRCustom.yaml:144
-#, fuzzy
 msgid "Timeout extension id"
-msgstr "Timeout extension id"
+msgstr "Timeout Extension"
 
 #: application/configs/klear/model/HuntGroups.yaml:121
 #: application/configs/klear/model/IVRCommon.yaml:163
 #: application/configs/klear/model/IVRCustom.yaml:159
-#, fuzzy
 msgid "Timeout voice mail user id"
-msgstr "Timeout voice mail user id"
+msgstr "Timeout Voicemail User"
 
 #: application/configs/klear/model/HuntGroupsRelUsers.yaml:35
 #, fuzzy
@@ -8258,9 +8231,8 @@ msgstr "Welcome locution id"
 
 #: application/configs/klear/model/IVRCommon.yaml:56
 #: application/configs/klear/model/IVRCustom.yaml:52
-#, fuzzy
 msgid "Error locution id"
-msgstr "Error locution id"
+msgstr "Error Locution"
 
 #: application/configs/klear/model/IVRCommon.yaml:70
 #: application/configs/klear/model/IVRCustom.yaml:66
@@ -8305,15 +8277,13 @@ msgstr "Error target type"
 
 #: application/configs/klear/model/IVRCommon.yaml:204
 #: application/configs/klear/model/IVRCustom.yaml:200
-#, fuzzy
 msgid "Error number value"
-msgstr "Error number value"
+msgstr "Error Number"
 
 #: application/configs/klear/model/IVRCommon.yaml:209
 #: application/configs/klear/model/IVRCustom.yaml:205
-#, fuzzy
 msgid "Error extension id"
-msgstr "Error extension id"
+msgstr "Error Extension"
 
 #: application/configs/klear/model/IVRCommon.yaml:224
 #: application/configs/klear/model/IVRCustom.yaml:220
@@ -8323,7 +8293,6 @@ msgstr "Error voice mail user id"
 
 #: application/configs/klear/model/IVRCommon.yaml:240
 #: application/configs/klear/model/IVRCustom.yaml:236
-#, fuzzy
 msgid "Timeout target"
 msgstr "Timeout target"
 
@@ -9128,7 +9097,6 @@ msgstr "Q"
 
 #: application/configs/klear/model/KamUsersLocation.yaml:50
 #: application/configs/klearRaw/model/KamUsersLocation.yaml:50
-#, fuzzy
 msgid "Cseq"
 msgstr "Cseq"
 
@@ -9147,9 +9115,8 @@ msgstr "Cflag"
 
 #: application/configs/klear/model/KamUsersLocation.yaml:76
 #: application/configs/klearRaw/model/KamUsersLocation.yaml:76
-#, fuzzy
 msgid "Useragent"
-msgstr "Useragent"
+msgstr "User-agent"
 
 #: application/configs/klear/model/KamUsersLocation.yaml:81
 #: application/configs/klearRaw/model/KamUsersLocation.yaml:81
@@ -9731,9 +9698,8 @@ msgstr ""
 "que se encuentra hay que restarle 70 a la línea devuelta en el mensaje."
 
 #: application/configs/klear/model/Terminals.yaml:8
-#, fuzzy
 msgid "Terminal model id"
-msgstr "Terminal model id"
+msgstr "Terminal Model"
 
 #: application/configs/klear/model/Terminals.yaml:100
 #: application/configs/klearRaw/model/Terminals.yaml:65
@@ -11105,9 +11071,8 @@ msgstr "Fromdomain"
 
 #: application/configs/klearRaw/model/AstPsEndpoints.yaml:15
 #: application/configs/klearRaw/model/Users.yaml:50
-#, fuzzy
 msgid "Terminalid"
-msgstr "Terminalid"
+msgstr "Terminal"
 
 #: application/configs/klearRaw/model/AstPsEndpoints.yaml:64
 #, fuzzy
@@ -11159,9 +11124,8 @@ msgstr "Sendastvoicemail"
 #: application/configs/klearRaw/model/Extensions.yaml:89
 #: application/configs/klearRaw/model/HuntGroupsRelUsers.yaml:19
 #: application/configs/klearRaw/model/PickUpRelUsers.yaml:19
-#, fuzzy
 msgid "Userid"
-msgstr "Userid"
+msgstr "User"
 
 #: application/configs/klearRaw/model/BrandOperators.yaml:45
 #: application/configs/klearRaw/model/CompanyAdmins.yaml:45
@@ -11320,9 +11284,8 @@ msgstr "Outboundprefix"
 #: application/configs/klearRaw/model/Timezones.yaml:5
 #: application/configs/klearRaw/model/TransformationRulesetGroupsTrunks.yaml:60
 #: application/configs/klearRaw/model/Users.yaml:210
-#, fuzzy
 msgid "Countryid"
-msgstr "Countryid"
+msgstr "Country"
 
 #: application/configs/klearRaw/model/Companies.yaml:121
 #: application/configs/klearRaw/model/KamRtpproxy.yaml:32
@@ -11408,9 +11371,8 @@ msgstr "Routetype"
 
 #: application/configs/klearRaw/model/DDIs.yaml:79
 #: application/configs/klearRaw/model/Extensions.yaml:34
-#, fuzzy
 msgid "conferenceRoom"
-msgstr "conferenceRoom"
+msgstr "Conference Room"
 
 #: application/configs/klearRaw/model/DDIs.yaml:80
 #: application/configs/klearRaw/model/Extensions.yaml:35
@@ -11420,35 +11382,30 @@ msgstr "friend"
 
 #: application/configs/klearRaw/model/DDIs.yaml:95
 #: application/configs/klearRaw/model/Extensions.yaml:37
-#, fuzzy
 msgid "Ivrcommonid"
-msgstr "Ivrcommonid"
+msgstr "IVR Common"
 
 #: application/configs/klearRaw/model/DDIs.yaml:108
 #: application/configs/klearRaw/model/Extensions.yaml:50
 #: application/configs/klearRaw/model/IVRCustomEntries.yaml:5
-#, fuzzy
 msgid "Ivrcustomid"
-msgstr "Ivrcustomid"
+msgstr "IVR Custom"
 
 #: application/configs/klearRaw/model/DDIs.yaml:121
 #: application/configs/klearRaw/model/Extensions.yaml:63
 #: application/configs/klearRaw/model/HuntGroupsRelUsers.yaml:5
-#, fuzzy
 msgid "Huntgroupid"
-msgstr "Huntgroupid"
+msgstr "Hunt Group"
 
 #: application/configs/klearRaw/model/DDIs.yaml:134
 #: application/configs/klearRaw/model/FaxesInOut.yaml:14
-#, fuzzy
 msgid "Faxid"
-msgstr "Faxid"
+msgstr "Fax"
 
 #: application/configs/klearRaw/model/DDIs.yaml:147
 #: application/configs/klearRaw/model/Extensions.yaml:76
-#, fuzzy
 msgid "Conferenceroomid"
-msgstr "Conferenceroomid"
+msgstr "Conference Room"
 
 #: application/configs/klearRaw/model/DDIs.yaml:186
 #, fuzzy
