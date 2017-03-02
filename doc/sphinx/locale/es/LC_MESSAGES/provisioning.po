@@ -4,12 +4,11 @@
 # package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-13 11:45+0100\n"
+"POT-Creation-Date: 2017-03-02 18:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +18,166 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: ../../provisioning/index.rst:5
-msgid "[P] Terminal provisioning"
-msgstr "[P] Provisión de terminales"
+msgid "Terminal provisioning"
+msgstr "Provisión de terminales"
 
-#: ../../provisioning/index.rst:9
-msgid "Provisioning scheme"
-msgstr "Esquema de provisión"
+#: ../../provisioning/index.rst:7
+msgid ""
+"IvozProvider supports provisioning of terminals via HTTP/HTTPS that "
+"fulfill the following requirements:"
+msgstr ""
+"IvozProvider soporta provisionar terminales vía HTTP/HTTPS que sigan la "
+"forma de provisionarse que se explica a continuación:"
 
-#: ../../provisioning/index.rst:13
-msgid "Supported hardphone models"
-msgstr "Modelos soportados"
+#: ../../provisioning/index.rst:10
+msgid ""
+"Assuming a just unboxed terminal, just plugged and connected to the "
+"network:"
+msgstr "Cuando un terminal sale de la caja, se alimenta y se conecta a la red:"
 
-#: ../../provisioning/index.rst:17
-msgid "Template system"
-msgstr "Sistema de plantillas"
+#: ../../provisioning/index.rst:12
+msgid "Ask IP address via DHCP."
+msgstr "Pide IP por DHCP."
+
+#: ../../provisioning/index.rst:14
+msgid "DCHP has enabled the option 66 that points to the platform portal"
+msgstr ""
+"Se fija en la opción 66 de DHCP que le indica a quién tiene que pedir su "
+"configuración."
+
+#: ../../provisioning/index.rst:16
+msgid ""
+"The first requested provisioning file is a static file (different for "
+"each model) prefixed with the previous step URL."
+msgstr ""
+"Pide un primer archivo añadiendo a la ruta recibida por DHCP un "
+"archivoestático (cada modelo de terminal, uno distinto)."
+
+#: ../../provisioning/index.rst:19
+msgid "The served file can redefine the URL for further requests"
+msgstr "En ese archivo se le puede indicar un siguiente archivo a pedir."
+
+#: ../../provisioning/index.rst:22
+msgid ""
+"Any terminal model that can adapt to this provisioning way can be added "
+"into the section **Platform Configuration > Terminal manufacturers**."
+msgstr ""
+"Todo terminal que sea capaz de adaptarse a este formato podrá "
+"provisionarse utilizando la sección **Configuración general > Fabricantes"
+" de terminales**."
+
+#: ../../provisioning/index.rst:26
+msgid "Example Cisco SPA504G"
+msgstr "Ejemplo Cisco SPA504G"
+
+#: ../../provisioning/index.rst:27
+msgid "Cisco SPA504G is turned on and requests an IP address to DHCP"
+msgstr "Cisco 504G se despierta y pide IP."
+
+#: ../../provisioning/index.rst:29
+msgid "Receives “http://provision.example.com/provision” as DHCP option 66"
+msgstr "Recibe “http://provision.ejemplo.com/provision”"
+
+#: ../../provisioning/index.rst:31
+msgid ""
+"Request HTTP configuration from "
+"http://provision.example.com/provision/spa504g.cfg"
+msgstr ""
+"Pide la configuración vía http a "
+"http://provision.ejemplo.com/provision/spa504g.cfg"
+
+#: ../../provisioning/index.rst:33
+msgid "All 504G request the same file (spa504.cfg), prefixed with the given URL"
+msgstr ""
+"Todos los 504G solicitan el mismo archivo (spa504g.cfg), añadiéndolo a la"
+" ruta que reciban."
+
+#: ../../provisioning/index.rst:35
+msgid ""
+"This file only contain basic configuration settings for the model and the"
+" URL for the next request (p.e. "
+"https://provision.example.com/provision/$MAC.cfg)"
+msgstr ""
+"En ese primer archivo común se especifican los parámetros comunes a todos"
+" los terminales de ese modelo concreto y qué archivo tienen que pedir a "
+"continuación (ejemplo https://provision.example.com/provision/$MAC.cfg)"
+
+#: ../../provisioning/index.rst:38
+msgid ""
+"This way, each terminal (MAC should be unique) request a specific file "
+"(and different) after the generic one has been served."
+msgstr ""
+"De esta forma, hacemos que cada terminal (la MAC es única) pida un "
+"archivo concreto (y distinto) una vez que ha pedido el genérico."
+
+#: ../../provisioning/index.rst:41
+msgid "This file will contain the specific configuration for the terminal:"
+msgstr "En este archivo se le sirve su configuración específica:"
+
+#: ../../provisioning/index.rst:43
+msgid "User"
+msgstr "Usuario"
+
+#: ../../provisioning/index.rst:45
+msgid "Password"
+msgstr "Contraseña"
+
+#: ../../provisioning/index.rst:47
+msgid "SIP Domain"
+msgstr "Dominio SIP"
+
+#: ../../provisioning/index.rst:50
+msgid ""
+"IvozProvider provisioning system, right now, only has one goal: provide "
+"credential and language settings for the terminals."
+msgstr ""
+"El sistema de provisión de IvozProvider, a día de hoy, configura los "
+"terminales con el único objetivo de que se registren y se queden en en el"
+" idioma del usuario."
+
+#: ../../provisioning/index.rst:54
+msgid "Configuration of supported models"
+msgstr "Configuración de modelos soportados"
+
+#: ../../provisioning/index.rst:56
+msgid ""
+"IvozProvider uses a template system that allows global operator (God) to "
+"define new models and configure what files will be served."
+msgstr ""
+"IvozProvider utiliza un sistema de plantillas que permite que el operador"
+" global (God) defina nuevos modelos de terminales y configure los "
+"archivos que se les servirá."
+
+#: ../../provisioning/index.rst:59
+msgid ""
+"The help section of **Terminal manufacturers** has examples for models "
+"supported *out-of-the-box* in IvozProvider:"
+msgstr ""
+"La sección de ayuda de **Fabricantes de Terminales** contiene ejemplos "
+"para los modelos soportados *out-of-the-box* por la solución:"
+
+#: ../../provisioning/index.rst:62
+msgid "Cisco SPA (502, 504, 509, 514 y 525)"
+msgstr "Cisco SPA (502, 504, 509, 514 y 525)"
+
+#: ../../provisioning/index.rst:64
+msgid "Yealink (T21P, T21Pe2, T23P, T27P, T48G, W52P, W56P)"
+msgstr "Yealink (T21P, T21Pe2, T23P, T27P, T48G, W52P, W56P)"
+
+#: ../../provisioning/index.rst:66
+msgid ""
+"These models will be available after the initial installation, but you "
+"must edit them and load the default configuration before you can use the "
+"provisioning system (option **Restore default template**)."
+msgstr ""
+"Estos modelos aparecen en la sección tras la instalación, pero hay que "
+"entrar a cada uno de ellos a cargar la configuración por defecto antes de"
+" poder usarlos (opción **Restore default template**)."
+
+#: ../../provisioning/index.rst:70
+msgid ""
+"Analyzing the suggested templates you can have a basic idea of the "
+"flexibility of the system to configure any existing terminal model in the"
+" market."
+msgstr ""
 

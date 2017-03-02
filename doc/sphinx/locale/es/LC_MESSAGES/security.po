@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-27 15:06+0100\n"
+"POT-Creation-Date: 2017-03-02 13:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,133 +22,209 @@ msgid "Security elements"
 msgstr "Elementos de seguridad"
 
 #: ../../security/index.rst:7
-msgid "GeoIP Firewall"
-msgstr "Firewall con geoIP"
+msgid "Firewall"
+msgstr "Cortafuegos"
+
+#: ../../security/index.rst:9
+msgid "**IvozProvider does not currently include a firewall** but..."
+msgstr "**IvozProvider actualmente no viene con un cortafuegos configurado** "
+"pero..."
 
 #: ../../security/index.rst:11
+msgid ""
+"We **strongly encourage any production installation to implement a "
+"firewall** to protect the platform from the wild Internet."
+msgstr "**Recomendamos encarecidamente que las instalaciones en producción "
+"cuenten con un cortafuegos** que protejan la plataforma del salvaje "
+"Internet."
+
+#: ../../security/index.rst:14
+msgid "The protection method could be:"
+msgstr "Los metodos de protección podrían ser:"
+
+#: ../../security/index.rst:16
+msgid "Local firewall based on `iptables <https://www.netfilter.org/>`_"
+msgstr "Cortafuegos locales basados en `iptables <https://www.netfilter.org/>`_"
+
+#: ../../security/index.rst:18
+msgid "External firewall"
+msgstr "Cortafuegos externos"
+
+#: ../../security/index.rst:20
+msgid "Both"
+msgstr "Ambos"
+
+#: ../../security/index.rst:23
+msgid "Exposed ports/services"
+msgstr "Servicios/Puertos expuestos"
+
+#: ../../security/index.rst:25
+msgid "These are the **ports IvozProvider needs to expose** to work properly:"
+msgstr "Estos son los puertos que **IvozProvider necesita exponer** para "
+"funcionar correctamente:"
+
+#: ../../security/index.rst:27
+msgid "**SIP signalling**:"
+msgstr "**Señalizacion SIP**:"
+
+#: ../../security/index.rst:29
+msgid "Port 5060 (TCP/UDP)"
+msgstr "Puerto 5060 (TCP/UDP)"
+
+#: ../../security/index.rst:31
+msgid "Port 5061 (TCP)"
+msgstr "Puerto 5061 (TCP)"
+
+#: ../../security/index.rst:33
+msgid ""
+"Port 7060 (TCP/UDP) y 7061 TCP (just in case both ProxyUsers and "
+"ProxyTrunks share IP)"
+msgstr "Puerto 7060 (TCP/UDP) y 7061 TCP (para casos en que ambos "
+"proxiescompartan la misma dirección IP)"
+
+#: ../../security/index.rst:35
+msgid "**RTP audioflow**:"
+msgstr "**Flujo de audio RTP**:"
+
+#: ../../security/index.rst:37
+msgid "Port range 13000-19000 UDP"
+msgstr "Rango de puertos 13000-19000 UDP"
+
+#: ../../security/index.rst:39
+msgid "**Web portal and provisioning**:"
+msgstr "**Portal web y provisión**:"
+
+#: ../../security/index.rst:41
+msgid "Ports TCP 443, 1443 y 2443"
+msgstr "Puertos TCP 443, 1443 y 2443"
+
+#: ../../security/index.rst:43
+msgid ""
+"We recommend using **iptables geoIP module** to drop connections from "
+"countries where we don't have any users."
+msgstr "Recomendamos emplear el **módulo GeoIP de iptales** para rechazar tráfico"
+" de paises en los que no se tenga ningun usuario."
+
+#: ../../security/index.rst:49
 msgid "Authorized company IP ranges"
 msgstr "Rangos de IP autorizados por empresa"
 
-#: ../../security/index.rst:13
+#: ../../security/index.rst:51
 msgid ""
 "During the Company creating process, we skipped the security mechanism "
 "that **limits the IP addresses or ranges that the company terminals can "
 "use in their terminals**."
-msgstr "En el proceso de creación de empresas nos saltamos deliberademente un mecanismo "
-"de seguridad que **limita las direcciones IP o rangos de red que pueden "
-"utilizar las credenciales de los terminales de una empresa concreta**."
+msgstr "En el proceso de creación de empresas nos saltamos deliberademente un "
+"mecanismo de seguridad que **limita las direcciones IP o rangos de red "
+"que pueden utilizar las credenciales de los terminales de una empresa "
+"concreta**."
 
-#: ../../security/index.rst:17
+#: ../../security/index.rst:55
 msgid ""
 "This can be activated in the section **Brand configuration** > "
 "**Company**:"
 msgstr "Se puede activar en la sección **Configuración de Marca** > **Empresas**:"
 
-#: ../../security/index.rst:22
+#: ../../security/index.rst:60
 msgid ""
 "Rest of the users won't be allowed to connect from another network, even "
 "if the credentials are valid."
-msgstr "Todo usuario que quiera conectarse desde una red no incluida no podrá, a pesar "
-"de disponer de unas credenciales válidas."
+msgstr "Todo usuario que quiera conectarse desde una red no incluida no podrá, a "
+"pesar de disponer de unas credenciales válidas."
 
-#: ../../security/index.rst:25
+#: ../../security/index.rst:63
 msgid ""
 "Once the filter has been activated you **MUST** add networks or valid IP "
 "addresses, otherwise, all the calls will be rejected."
-msgstr "Una vez activado el filtrado, **es obligatorio** añadir redes o direcciones "
-"válidas o, por el contrario, todas las llamadas se rechazarán:"
+msgstr "Una vez activado el filtrado, **es obligatorio** añadir redes o "
+"direcciones válidas o, por el contrario, todas las llamadas se "
+"rechazarán:"
 
-#: ../../security/index.rst:30
+#: ../../security/index.rst:68
 msgid "Both IP addresses or ranges can be used, in CIDR format (IP/mask):"
 msgstr "Se pueden añadir direcciones IP y rangos de direcciones, en formato CIDR "
 "(IP/mask)"
 
-#: ../../security/index.rst:34
+#: ../../security/index.rst:72
 msgid ""
 "This mechanism limits the origin of the users of a company, it doesn't "
 "filter origin from **Contract Peerings**."
-msgstr "Este mecanismo limita los orígenes de los usuarios de una "
-"empresa, no filtra en absoluto los orígenes de los **Contratos de Peering**."
+msgstr "Este mecanismo limita los orígenes de los usuarios de una empresa, no "
+"filtra en absoluto los orígenes de los **Contratos de Peering**."
 
-#: ../../security/index.rst:39
+#: ../../security/index.rst:77
 msgid "Anti-flooding"
-msgstr ""
+msgstr "Anti-Flooding"
 
-#: ../../security/index.rst:41
+#: ../../security/index.rst:79
 msgid ""
 "IvozProvider comes with an *anti-flooding* mechanism to avoid that a "
 "single sender can deny the platform service by sending lots of requests. "
 "Both *proxies* (users and trunks) use this mechanism, that **limits the "
 "number of requests from an origin address in a time lapse**."
-msgstr ""
-"IvozProvider incorpora un mecanismo de *anti-flooding* que evita que un emisor "
-"sature nuestra plataforma enviando peticiones. Ambos *proxies* (usuarios y "
-"salida) incorporan este mecanismo, que **limita el número de peticiones desde "
-"un dirección origen en un tramo concreto de tiempo**."
+msgstr "IvozProvider incorpora un mecanismo de *anti-flooding* que evita que un "
+"emisor sature nuestra plataforma enviando peticiones. Ambos *proxies* "
+"(usuarios y salida) incorporan este mecanismo, que **limita el número de "
+"peticiones desde un dirección origen en un tramo concreto de tiempo**."
 
-#: ../../security/index.rst:46
+#: ../../security/index.rst:84
 msgid ""
 "When an origin reaches this limit, the proxy will stop sending responses "
 "for a period of time. After this time, the requests will be again handled"
 " normally."
-msgstr ""
-"Cuando un origen llega al límite, el proxy dejará de contestarle "
-"durante un tiempo dado. Pasado ese tiempo, volverá a contestarle con "
-"normalidad.
+msgstr "Cuando un origen llega al límite, el proxy dejará de contestarle durante "
+"un tiempo dado. Pasado ese tiempo, volverá a contestarle con normalidad"
 
-#: ../../security/index.rst:50
+#: ../../security/index.rst:88
 msgid ""
 "Some origins are automatically excluded from this *anti-flooding* "
 "mechanism:"
-msgstr ""
-"Ciertos orígenes que están automáticamente excluidos de este mecanismo de "
-"*anti-flooding*:"
+msgstr "Ciertos orígenes que están automáticamente excluidos de este mecanismo de"
+" *anti-flooding*:"
 
-#: ../../security/index.rst:52
+#: ../../security/index.rst:90
 msgid "Application Servers from the platform."
 msgstr "Servidores de aplicación de la plataforma."
 
-#: ../../security/index.rst:54
+#: ../../security/index.rst:92
 msgid "Company authorized IP addresses or ranges (see previous section)."
 msgstr "IPs o rangos autorizados de empresas (ver sección anterior)."
 
-#: ../../security/index.rst:56
+#: ../../security/index.rst:94
 msgid ""
 "Global operator of the platform can also add exceptions to this mechanism"
 " in the section **Global configuration** > **Antiflood trusted IPs**."
-msgstr ""
-"El operador global puede añadir otras direcciones que queden excluidas de este "
-"mecanismo por medio del apartado **Configuración global** > **IPs de "
-"confianza**:
+msgstr "El operador global puede añadir otras direcciones que queden excluidas de"
+" este mecanismo por medio del apartado **Configuración global** > **IPs "
+"de confianza**"
 
-#: ../../security/index.rst:63
+#: ../../security/index.rst:101
 msgid "Concurrent call limit"
 msgstr "Límite de llamadas concurrentes"
 
-#: ../../security/index.rst:65
+#: ../../security/index.rst:103
 msgid ""
 "Another security mechanism can avoid that compromised credentials are "
 "used to establish hundreds of calls in little time. This mechanism "
 "**limits the number of external calls** of each company."
-msgstr ""
-"Otro mecanismo de seguridad que puede evitar que unas credenciales "
-"comprometidas sean utilizadas para establecer cientos de llamadas en poco "
-"tiempo, es el mecanismo que **limita el número de llamadas externas** de "
-"cada empresa."
+msgstr "Otro mecanismo de seguridad que puede evitar que unas credenciales "
+"comprometidas sean utilizadas para establecer cientos de llamadas en poco"
+" tiempo, es el mecanismo que **limita el número de llamadas externas** de"
+" cada empresa."
 
-#: ../../security/index.rst:69
+#: ../../security/index.rst:107
 msgid ""
 "This mechanism only takes into account the external channels, both "
 "incoming or outgoing external calls."
-msgstr ""
-"Este mecanismo tiene en cuenta los canales externos concurrentes, es "
+msgstr "Este mecanismo tiene en cuenta los canales externos concurrentes, es "
 "decir, cuenta llamadas externas entrantes y llamadas externas salientes."
 
-#: ../../security/index.rst:72
+#: ../../security/index.rst:110
 msgid "This can be configured in the company edit screen:"
-msgstr "Se puede configurar editando una empresa y fijando el valor del siguiente campo:"
+msgstr "Se puede configurar editando una empresa y fijando el valor del siguiente"
+" campo:"
 
-#: ../../security/index.rst:77
+#: ../../security/index.rst:115
 msgid "To disable this mechanism, set its value to 0."
 msgstr "Para desactivar este mecanismo, basta con fijar el valor a 0."
 

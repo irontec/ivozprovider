@@ -17,6 +17,7 @@ are also included in IvozProvider.
     terminals
     call_permissions
     users
+    friends
     music_on_hold
 
 .. toctree::
