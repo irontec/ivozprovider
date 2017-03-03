@@ -43,9 +43,9 @@ class IVRCustomEntries extends ModelAbstract
     protected $_IVRCustomId;
 
     /**
-     * Database var type smallint
+     * Database var type varchar
      *
-     * @var int
+     * @var string
      */
     protected $_entry;
 
@@ -272,7 +272,7 @@ class IVRCustomEntries extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
+     * @param string $data
      * @return \IvozProvider\Model\Raw\IVRCustomEntries
      */
     public function setEntry($data)
@@ -289,7 +289,7 @@ class IVRCustomEntries extends ModelAbstract
             $this->_entry = $data;
 
         } else if (!is_null($data)) {
-            $this->_entry = (int) $data;
+            $this->_entry = (string) $data;
 
         } else {
             $this->_entry = $data;
@@ -300,7 +300,7 @@ class IVRCustomEntries extends ModelAbstract
     /**
      * Gets column entry
      *
-     * @return int
+     * @return string
      */
     public function getEntry()
     {

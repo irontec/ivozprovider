@@ -44,7 +44,7 @@ class IVRCustomAction extends IVRAction
         $entries = $ivr->getIVRCustomEntries();
         foreach ($entries as $entry) {
             // Found a matching entry
-            if ($userPressed == $entry->getEntry()) {
+            if (preg_match('/' . $entry->getEntry() . '/', $userPressed)) {
                 // For extension, use extension routing to apply timeout
                 if ($entry->getTargetType() == 'extension') {
                     $extension = $entry->getTargetExtension();

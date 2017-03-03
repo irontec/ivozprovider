@@ -220,7 +220,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/i-v-r-custom-entries/")
      * @ApiParams(name="IVRCustomId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="entry", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="entry", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="welcomeLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail]")
      * @ApiParams(name="targetNumberValue", nullable=true, type="varchar", sample="", description="")
@@ -262,7 +262,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      * @ApiRoute(name="/rest/i-v-r-custom-entries/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="entry", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="entry", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="welcomeLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail]")
      * @ApiParams(name="targetNumberValue", nullable=true, type="varchar", sample="", description="")
@@ -368,7 +368,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'entry' => array(
-                    'type' => "smallint",
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -414,7 +414,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'entry' => array(
-                    'type' => "smallint",
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),

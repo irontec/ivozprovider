@@ -1,15 +1,15 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: iVRCustomEntriesList_screen
   screens: &iVRCustomEntries_screensLink
-    iVRCustomEntriesList_screen: &iVRCustomEntriesList_screenLink 
+    iVRCustomEntriesList_screen: &iVRCustomEntriesList_screenLink
       controller: list
       class: ui-silk-chart-organisation-add
-      pagination: 
+      pagination:
         items: 25
       <<: *IVRCustomEntries
       title: _("List of %s %2s", ngettext('I v r custom entry', 'I v r custom entries', 0), "[format| (%parent%)]")
@@ -23,20 +23,20 @@ production:
           targetNumberValue: true
           targetExtensionId: true
           targetVoiceMailUserId: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             iVRCustomEntriesEdit_screen: true
-          dialogs: 
+          dialogs:
             iVRCustomEntriesDel_dialog: true
           default: iVRCustomEntriesEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           iVRCustomEntriesNew_screen: true
-        dialogs: 
+        dialogs:
           iVRCustomEntriesDel_dialog: true
-    iVRCustomEntriesNew_screen: &iVRCustomEntriesNew_screenLink 
+    iVRCustomEntriesNew_screen: &iVRCustomEntriesNew_screenLink
       <<: *IVRCustomEntries
       controller: new
       class: ui-silk-add
@@ -47,7 +47,23 @@ production:
       fields:
         blacklist:
           target: true
-    iVRCustomEntriesEdit_screen: &iVRCustomEntriesEdit_screenLink 
+      fixedPositions: &IVRCustomEntriesFixedPositions_link
+        group0:
+          label: _("Entry information")
+          colsPerRow: 8
+          fields:
+            entry: 4
+            welcomeLocutionId: 4
+        group1:
+          label: _("Routing configuration")
+          colsPerRow: 8
+          fields:
+            targetType: 4
+            targetNumberValue: 4
+            targetExtensionId: 4
+            targetVoiceMailUserId: 5
+
+    iVRCustomEntriesEdit_screen: &iVRCustomEntriesEdit_screenLink
       <<: *IVRCustomEntries
       controller: edit
       class: ui-silk-pencil
@@ -56,8 +72,10 @@ production:
       fields:
         blacklist:
           target: true
+      fixedPositions:
+        <<: *IVRCustomEntriesFixedPositions_link
   dialogs: &iVRCustomEntries_dialogsLink
-    iVRCustomEntriesDel_dialog: &iVRCustomEntriesDel_dialogLink 
+    iVRCustomEntriesDel_dialog: &iVRCustomEntriesDel_dialogLink
       <<: *IVRCustomEntries
       controller: delete
       class: ui-silk-bin
@@ -67,11 +85,11 @@ production:
       message: _("%s successfully deleted.", ngettext('I v r custom entry', 'I v r custom entries', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

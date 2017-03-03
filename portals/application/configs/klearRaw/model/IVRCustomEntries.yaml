@@ -17,10 +17,9 @@ production:
       default: true
     entry: 
       title: _('Entry')
-      type: number
+      type: text
       required: true
-      source: 
-        control: Spinner
+      maxLength: 40
     welcomeLocutionId: 
       title: _('Welcomelocutionid')
       type: select
