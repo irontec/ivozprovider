@@ -52,7 +52,13 @@ Multilevel
 The web portal design of IvozProvider allows **multiple actors within the
 same infrastructure**:
 
-.. image:: ../operation_roles/img/operator_levels.png
+.. ifconfig:: language == 'en'
+
+    .. image:: ../operation_roles/img/en/operator_levels.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: ../operation_roles/img/es/operator_levels.png
 
 In :ref:`operation_roles` section, the different roles are deeply
 described, but to sum up:
@@ -170,7 +176,7 @@ Highlights:
 
 - Each company concurrent calls can be limited to a fixed amount.
 
-- IvozProvider soporta la conexión desde terminales tras
+- IvozProvider supports connection from terminals behind
   `NAT <https://es.wikipedia.org/wiki/Traducci%C3%B3n_de_direcciones_de_red>`_.
 
 - IvozProvider keep track of those NAT windows and keep them alive with

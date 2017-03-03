@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-03 18:20+0100\n"
+"POT-Creation-Date: 2017-03-03 13:20+0100\n"
 "PO-Revision-Date: 2016-10-13 19:41+0200\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -354,7 +354,7 @@ msgstr ""
 "El esquema de portales y diseño de IvozProvider permite que **múltiples "
 "actores cohabiten en una misma infraestructura**:"
 
-#: ../../intro/what_is_ivozprovider.rst:57
+#: ../../intro/what_is_ivozprovider.rst:63
 msgid ""
 "In :ref:`operation_roles` section, the different roles are deeply "
 "described, but to sum up:"
@@ -362,7 +362,7 @@ msgstr ""
 "En la sección :ref:`operation_roles` se describen los distintos roles en "
 "profundidad, pero se puede resumir en:"
 
-#: ../../intro/what_is_ivozprovider.rst:60
+#: ../../intro/what_is_ivozprovider.rst:66
 msgid ""
 "**God Admin**: The administrator and maintainer of the solution. Provides"
 " access to multiple brand operators."
@@ -370,7 +370,7 @@ msgstr ""
 "**Nivel God**: instalador y mantenedor de la solución. Da acceso a n "
 "operadores de marca."
 
-#: ../../intro/what_is_ivozprovider.rst:63
+#: ../../intro/what_is_ivozprovider.rst:69
 msgid ""
 "**Brand Operator**: Responsible of giving access, tarificate and bill to "
 "multiple company operators."
@@ -378,7 +378,7 @@ msgstr ""
 "**Nivel Brand Operator**: Responsable de dar acceso, tarificar y facturar"
 " a n operadores de empresa."
 
-#: ../../intro/what_is_ivozprovider.rst:66
+#: ../../intro/what_is_ivozprovider.rst:72
 msgid ""
 "**Company Operator**: Responsible of its own PBX configuration and to "
 "manage the final platform users."
@@ -386,7 +386,7 @@ msgstr ""
 "**Nivel Company Operator**: Responsable de configurar el comportamiento "
 "de su centralita y dar de alta n usuarios finales."
 
-#: ../../intro/what_is_ivozprovider.rst:69
+#: ../../intro/what_is_ivozprovider.rst:75
 msgid ""
 "**Users**: The last link of the chain, has SIP credentials and can access"
 " its own portal for custom configurations."
@@ -394,7 +394,7 @@ msgstr ""
 "**Nivel de Usuario**: Dispone de unas credenciales para sus terminales "
 "SIP y otra para el acceso a su panel web."
 
-#: ../../intro/what_is_ivozprovider.rst:72
+#: ../../intro/what_is_ivozprovider.rst:78
 msgid ""
 "**Each one** of this roles **has its own portal** that allows them to "
 "fullfill their tasks. Each portal can be customized in the following "
@@ -404,23 +404,23 @@ msgstr ""
 "web** que le permite realizar sus funciones. Los acceso web se pueden "
 "personalizar a nivel de:"
 
-#: ../../intro/what_is_ivozprovider.rst:76
+#: ../../intro/what_is_ivozprovider.rst:82
 msgid "Themes and *skins* for corporative colours."
 msgstr "Temas y *skins* con los colores corporativos."
 
-#: ../../intro/what_is_ivozprovider.rst:78
+#: ../../intro/what_is_ivozprovider.rst:84
 msgid "Company Logos."
 msgstr "Logo de la empresa."
 
-#: ../../intro/what_is_ivozprovider.rst:80
+#: ../../intro/what_is_ivozprovider.rst:86
 msgid "Customized URLs with the Brand or Company domain."
 msgstr "URLs personalizadas con el dominio de la marca/empresa."
 
-#: ../../intro/what_is_ivozprovider.rst:85
+#: ../../intro/what_is_ivozprovider.rst:91
 msgid "Provider oriented"
 msgstr "Orientada a operador"
 
-#: ../../intro/what_is_ivozprovider.rst:87
+#: ../../intro/what_is_ivozprovider.rst:93
 msgid ""
 "IvozProvider is a telephony solution **designed with horizontal scaling "
 "in mind**, what allows handling a great amount of **traffic and users** "
@@ -431,13 +431,13 @@ msgstr ""
 " tráfico y de usuarios** sin más que adaptar el número de máquinas y los "
 "recursos de éstas."
 
-#: ../../intro/what_is_ivozprovider.rst:91
+#: ../../intro/what_is_ivozprovider.rst:97
 msgid "This are the main ideas that makes this product provider oriented:"
 msgstr ""
 "Estas son las ideas principales que lo hacen un producto orientado a "
 "operador:"
 
-#: ../../intro/what_is_ivozprovider.rst:93
+#: ../../intro/what_is_ivozprovider.rst:99
 msgid ""
 "Despite the fact that all machine profiles can run in the same host, "
 "whatmakes it easier for the initial testing, each profile of IvozProvider"
@@ -447,7 +447,7 @@ msgstr ""
 "que facilita las pruebas iniciales, cada elemento de IvozProvider se "
 "puede separar del resto y correr en su propio hardware."
 
-#: ../../intro/what_is_ivozprovider.rst:98
+#: ../../intro/what_is_ivozprovider.rst:104
 msgid ""
 "A **distributed installation** allows to distribute the correct amount of"
 " resources to each task, but also:"
@@ -455,7 +455,7 @@ msgstr ""
 "Una **instalación distribuida** permite asignar máquinas con recursos "
 "adecuados a cada tarea, pero también posibilita:"
 
-#: ../../intro/what_is_ivozprovider.rst:101
+#: ../../intro/what_is_ivozprovider.rst:107
 msgid ""
 "Geographic distribution of elements to warranty high availability in "
 "caseof CPD failure."
@@ -463,7 +463,7 @@ msgstr ""
 "Separación geográfica de los elementos para garantizar una disponibilidad"
 " a prueba de fallo de CPD."
 
-#: ../../intro/what_is_ivozprovider.rst:104
+#: ../../intro/what_is_ivozprovider.rst:110
 msgid ""
 "Setup of key elements near the final users, to minimize the communication"
 " latencies."
@@ -471,7 +471,7 @@ msgstr ""
 "Instalación de elementos clave cerca de los usuarios finales, para "
 "minimizar latencias en sus comunicaciones."
 
-#: ../../intro/what_is_ivozprovider.rst:107
+#: ../../intro/what_is_ivozprovider.rst:113
 msgid ""
 "Horizontal scaling of key profiles to handle hundred of thousands "
 "concurrent calls."
@@ -479,7 +479,7 @@ msgstr ""
 "Escalado horizontal de los elementos clave para dar servicios a cientos "
 "de miles de llamadas concurrentes."
 
-#: ../../intro/what_is_ivozprovider.rst:110
+#: ../../intro/what_is_ivozprovider.rst:116
 msgid ""
 "The resource consuming elements that limit the service of VoIP solutions "
 "use to be:"
@@ -487,11 +487,11 @@ msgstr ""
 "Los elementos que limitan la capacidad de servicio de las soluciones "
 "VoIPsuelen ser:"
 
-#: ../../intro/what_is_ivozprovider.rst:113
+#: ../../intro/what_is_ivozprovider.rst:119
 msgid "Already established calls audio management."
 msgstr "Gestión del audio de las llamadas establecidas."
 
-#: ../../intro/what_is_ivozprovider.rst:115
+#: ../../intro/what_is_ivozprovider.rst:121
 msgid ""
 "Managing configuration for each company administrator (IVRs, conference "
 "rooms, external call filters, etc.)"
@@ -499,11 +499,11 @@ msgstr ""
 "Gestión de las lógicas programadas por cada administador de empresa "
 "(IVRs, salas de conferencias, filtros de horario, etc.)"
 
-#: ../../intro/what_is_ivozprovider.rst:118
+#: ../../intro/what_is_ivozprovider.rst:124
 msgid "Databases of configuration and records."
 msgstr "Bases de datos de almacenamiento de configuraciones y registros."
 
-#: ../../intro/what_is_ivozprovider.rst:120
+#: ../../intro/what_is_ivozprovider.rst:126
 msgid ""
 "IvozProvider was designed always keeping in mind the **horizontal "
 "scaling** of each of its elements, so it **can handle hundred of "
@@ -516,7 +516,7 @@ msgstr ""
 "más importante, poder **adaptar los recursos de la plataforma al nivel "
 "deservicio que se espera en cada momento**:"
 
-#: ../../intro/what_is_ivozprovider.rst:125
+#: ../../intro/what_is_ivozprovider.rst:131
 msgid ""
 "**Media-relay** servers handle audio frames for the already established "
 "calls:"
@@ -524,11 +524,11 @@ msgstr ""
 "Los **Media-relays** se encargan de reenviar las tramas de audio de las "
 "sesiones establecidas:"
 
-#: ../../intro/what_is_ivozprovider.rst:128
+#: ../../intro/what_is_ivozprovider.rst:134
 msgid "You can use as many media-relays as you need."
 msgstr "Se pueden poner tantos media-relays como sean necesarios."
 
-#: ../../intro/what_is_ivozprovider.rst:130
+#: ../../intro/what_is_ivozprovider.rst:136
 msgid ""
 "You can join media-relay in groups, and force some companies to use a "
 "group if you want."
@@ -536,7 +536,7 @@ msgstr ""
 "Se pueden crear grupos de media-relays y hacer una asignación estática a "
 "las empresas deseadas."
 
-#: ../../intro/what_is_ivozprovider.rst:133
+#: ../../intro/what_is_ivozprovider.rst:139
 msgid ""
 "You can setup media-relays near the final users, to minimize network "
 "latencies in the calls."
@@ -544,13 +544,13 @@ msgstr ""
 "Se pueden poner los media-relays cerca de los usuarios finales, para "
 "evitar latencias en las llamadas."
 
-#: ../../intro/what_is_ivozprovider.rst:136
+#: ../../intro/what_is_ivozprovider.rst:142
 msgid "**Application servers** are in charge of processing the configurad logics:"
 msgstr ""
 "Los **Servidores de Aplicación** se encargan de la fase previa de toda "
 "llamada: hacer que siga la lógica programada. Este rol:"
 
-#: ../../intro/what_is_ivozprovider.rst:138
+#: ../../intro/what_is_ivozprovider.rst:144
 msgid ""
 "They scale horizontally: new Application Serves can be installed and "
 "added to the pool if you feel the need."
@@ -558,13 +558,13 @@ msgstr ""
 "Se puede escalar horizontalmente: que los Servidores de Aplicación "
 "empiezan a estar saturados, se instalan más y se añaden al pool."
 
-#: ../../intro/what_is_ivozprovider.rst:141
+#: ../../intro/what_is_ivozprovider.rst:147
 msgid "Every call is handled by the least busy Appliction Server"
 msgstr ""
 "Una llamada acaba en el Servidor de Aplicación que menos cargado esté en "
 "cada momento."
 
-#: ../../intro/what_is_ivozprovider.rst:143
+#: ../../intro/what_is_ivozprovider.rst:149
 msgid ""
 "By default, there is no static assigment * between Companies and "
 "Application Servers. This way failure of any Application Server is not "
@@ -576,11 +576,11 @@ msgstr ""
 "modo que la caída de cualquier Servidor de Aplicación no es crítica: el "
 "sistema dejará de contar con él a la hora de distribuir las llamadas."
 
-#: ../../intro/what_is_ivozprovider.rst:151
+#: ../../intro/what_is_ivozprovider.rst:157
 msgid "Exposed to the public network"
 msgstr "Expuesta a la red pública"
 
-#: ../../intro/what_is_ivozprovider.rst:153
+#: ../../intro/what_is_ivozprovider.rst:159
 msgid ""
 "As showed in the installation proces, **IvozProvider is designed to serve"
 " users directly from Internet**. Although it can be used in local "
@@ -594,21 +594,21 @@ msgstr ""
 "disponer de direcciones IPs públicas para dar servicio sin necesidad de "
 "túneles VPN o IPsec que te conecten con la infraestructura."
 
-#: ../../intro/what_is_ivozprovider.rst:159
+#: ../../intro/what_is_ivozprovider.rst:165
 msgid "Highlights:"
 msgstr "Cabe destacar:"
 
-#: ../../intro/what_is_ivozprovider.rst:161
+#: ../../intro/what_is_ivozprovider.rst:167
 msgid "Only the required services will be exposed to Internet."
 msgstr "Solo los elementos imprescindibles están expuestos a Internet."
 
-#: ../../intro/what_is_ivozprovider.rst:163
+#: ../../intro/what_is_ivozprovider.rst:169
 msgid "The unstrusted origins access can be filtered out by integrated firewall"
 msgstr ""
 "Los accesos desde países de dudosa confianza se cortan en el firewall "
 "incorporado."
 
-#: ../../intro/what_is_ivozprovider.rst:165
+#: ../../intro/what_is_ivozprovider.rst:171
 msgid ""
 "Access from IP addresses or networks can be filtered to avoid any kind of"
 " phishing."
@@ -616,7 +616,7 @@ msgstr ""
 "Se puede filtrar el acceso desde IPs/redes autorizadas para evitar "
 "fraudes."
 
-#: ../../intro/what_is_ivozprovider.rst:168
+#: ../../intro/what_is_ivozprovider.rst:174
 msgid ""
 "There is also an anti-flood mechanism to avoid short-life Denial of "
 "Service attacks."
@@ -624,19 +624,19 @@ msgstr ""
 "Existe un mecanismo anti-flood para evitar grandes consumos en poco "
 "tiempo."
 
-#: ../../intro/what_is_ivozprovider.rst:171
+#: ../../intro/what_is_ivozprovider.rst:177
 msgid "Each company concurrent calls can be limited to a fixed amount."
 msgstr "Existe un mecanismo de control de llamadas concurrentes por empresa."
 
-#: ../../intro/what_is_ivozprovider.rst:173
+#: ../../intro/what_is_ivozprovider.rst:179
 msgid ""
-"IvozProvider soporta la conexión desde terminales tras `NAT "
+"IvozProvider supports connection from terminals behind `NAT "
 "<https://es.wikipedia.org/wiki/Traducci%C3%B3n_de_direcciones_de_red>`_."
 msgstr ""
 "IvozProvider soporta la conexión desde terminales tras `NAT "
 "<https://es.wikipedia.org/wiki/Traducci%C3%B3n_de_direcciones_de_red>`_."
 
-#: ../../intro/what_is_ivozprovider.rst:176
+#: ../../intro/what_is_ivozprovider.rst:182
 msgid ""
 "IvozProvider keep track of those NAT windows and keep them alive with "
 "*nat-piercing* mechanisms."
@@ -644,7 +644,7 @@ msgstr ""
 "IvozProvider se encarga de mantener activas dichas ventanas de NAT con "
 "mecanismos de *nat-piercing*."
 
-#: ../../intro/what_is_ivozprovider.rst:179
+#: ../../intro/what_is_ivozprovider.rst:185
 msgid ""
 "The global administrator can assign Application Servers to companies but "
 "this feature is more designed as a temporal debug and troubleshoot "

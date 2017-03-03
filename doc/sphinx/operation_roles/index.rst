@@ -9,7 +9,13 @@ IvozProvider is a multilevel role provider solution.
 The following images shows the different available levels and the
 relation between them:
 
-.. image:: img/operator_levels.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/operator_levels.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/operator_levels.png
 
 This section will explain each of the available roles, describing their
 responsibilities and more important tasks.
