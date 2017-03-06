@@ -41,6 +41,8 @@ production:
           registryData: true
           languageId: true
           defaultTimezoneId: true
+          FromName: true
+          FromAddress: true
         options:
           title: _("Options")
           screens:
@@ -78,6 +80,8 @@ production:
           province: true
           country: true
           registryData: true
+          FromName: true
+          FromAddress: true
         order:
           <<: *brandsOrder_Link
       fixedPositions: &brandsFixedPositions_Link
@@ -110,6 +114,12 @@ production:
             province: 1
             country: 1
             registryData: 2
+        group5:
+          colsPerRow: 12
+          label: _("Mail data")
+          fields:
+            FromName: 6
+            FromAddress: 6
         group4:
           colsPerRow: 1
           label: _("Who knows section")

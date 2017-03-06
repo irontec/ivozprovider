@@ -39,6 +39,10 @@ class VoicemailController extends Zend_Controller_Action
             $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail;
             $vm = $vmMapper->findOneByField("mailbox", $vmdata[self::VM_MAILBOX]);
             $user = $vm->getUser();
+            $fromName = $vm->getUser()->getCompany()->getBrand()->getFromName();
+            if (empty($fromName)) $fromName = '';
+            $fromAddress = $vm->getUser()->getCompany()->getBrand()->getFromAddress();
+            if (empty($fromAddress)) $fromAddress = 'IvozProvider';
             
             $substitution = array(
                 '${VM_CATEGORY}'    => $vmdata[self::VM_CATEGORY],
@@ -65,7 +69,7 @@ class VoicemailController extends Zend_Controller_Action
             $mail = new Zend_Mail('utf8');
             $mail->setBodyText($body);
             $mail->setSubject($subject);
-            $mail->setFrom("IvozProvider");
+            $mail->setFrom($fromAddress, $fromName);
             $mail->addTo($vm->getEmail());
             
             if ($message->countParts() == 2 )

@@ -138,6 +138,27 @@ production:
               - name
             template: '%name%'
           order: name
+    FromName: 
+      title: _('From name')
+      trim: both
+      maxLength: 255
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Name shown as source when sending mails (e.g. IvozProvider Notifications). Leave empty to disable.")
+        label: _("Need help?")
+    FromAddress: 
+      title: _('From address')
+      type: text
+      trim: both
+      maxLength: 255
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Mail address shown as source when sending mails. MTA must allow this value.")
+        label: _("Need help?")
 staging: 
   _extends: production
 testing: 

@@ -63,6 +63,8 @@ class Brands extends MapperAbstract
                 'country' => $model->getCountry(),
                 'registryData' => $model->getRegistryData(),
                 'languageId' => $model->getLanguageId(),
+                'FromName' => $model->getFromName(),
+                'FromAddress' => $model->getFromAddress(),
             );
         } else {
             $result = array();
@@ -924,7 +926,9 @@ class Brands extends MapperAbstract
                   ->setProvince($data['province'])
                   ->setCountry($data['country'])
                   ->setRegistryData($data['registryData'])
-                  ->setLanguageId($data['languageId']);
+                  ->setLanguageId($data['languageId'])
+                  ->setFromName($data['FromName'])
+                  ->setFromAddress($data['FromAddress']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
@@ -940,7 +944,9 @@ class Brands extends MapperAbstract
                   ->setProvince($data->{'province'})
                   ->setCountry($data->{'country'})
                   ->setRegistryData($data->{'registryData'})
-                  ->setLanguageId($data->{'languageId'});
+                  ->setLanguageId($data->{'languageId'})
+                  ->setFromName($data->{'FromName'})
+                  ->setFromAddress($data->{'FromAddress'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Brands) {
             $entry->setId($data->getId())
@@ -957,7 +963,9 @@ class Brands extends MapperAbstract
                   ->setProvince($data->getProvince())
                   ->setCountry($data->getCountry())
                   ->setRegistryData($data->getRegistryData())
-                  ->setLanguageId($data->getLanguageId());
+                  ->setLanguageId($data->getLanguageId())
+                  ->setFromName($data->getFromName())
+                  ->setFromAddress($data->getFromAddress());
 
         }
 

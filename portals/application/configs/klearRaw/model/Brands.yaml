@@ -117,6 +117,14 @@ production:
             template: '%iden%'
           order: iden
         'null': _("Unassigned")
+    FromName: 
+      title: _('Fromname')
+      type: text
+      maxLength: 255
+    FromAddress: 
+      title: _('Fromaddress')
+      type: text
+      maxLength: 255
 staging: 
   _extends: production
 testing: 

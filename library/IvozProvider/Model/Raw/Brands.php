@@ -133,6 +133,20 @@ class Brands extends ModelAbstract
      */
     protected $_languageId;
 
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_FromName;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_FromAddress;
+
 
     /**
      * Parent relation Brands_ibfk_2
@@ -365,6 +379,8 @@ class Brands extends ModelAbstract
         'country'=>'country',
         'registryData'=>'registryData',
         'languageId'=>'languageId',
+        'FromName'=>'FromName',
+        'FromAddress'=>'FromAddress',
     );
 
     /**
@@ -1155,6 +1171,74 @@ class Brands extends ModelAbstract
     public function getLanguageId()
     {
         return $this->_languageId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setFromName($data)
+    {
+
+        if ($this->_FromName != $data) {
+            $this->_logChange('FromName', $this->_FromName, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_FromName = $data;
+
+        } else if (!is_null($data)) {
+            $this->_FromName = (string) $data;
+
+        } else {
+            $this->_FromName = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column FromName
+     *
+     * @return string
+     */
+    public function getFromName()
+    {
+        return $this->_FromName;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setFromAddress($data)
+    {
+
+        if ($this->_FromAddress != $data) {
+            $this->_logChange('FromAddress', $this->_FromAddress, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_FromAddress = $data;
+
+        } else if (!is_null($data)) {
+            $this->_FromAddress = (string) $data;
+
+        } else {
+            $this->_FromAddress = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column FromAddress
+     *
+     * @return string
+     */
+    public function getFromAddress()
+    {
+        return $this->_FromAddress;
     }
 
     /**

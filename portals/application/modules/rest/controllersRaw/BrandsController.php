@@ -44,7 +44,9 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'province': '', 
      *     'country': '', 
      *     'registryData': '', 
-     *     'languageId': ''
+     *     'languageId': '', 
+     *     'FromName': '', 
+     *     'FromAddress': ''
      * },{
      *     'id': '', 
      *     'name': '', 
@@ -58,7 +60,9 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'province': '', 
      *     'country': '', 
      *     'registryData': '', 
-     *     'languageId': ''
+     *     'languageId': '', 
+     *     'FromName': '', 
+     *     'FromAddress': ''
      * }]")
      */
     public function indexAction()
@@ -89,6 +93,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'country',
                 'registryData',
                 'languageId',
+                'FromName',
+                'FromAddress',
             );
         }
 
@@ -174,7 +180,9 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'province': '', 
      *     'country': '', 
      *     'registryData': '', 
-     *     'languageId': ''
+     *     'languageId': '', 
+     *     'FromName': '', 
+     *     'FromAddress': ''
      * }")
      */
     public function getAction()
@@ -204,6 +212,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'country',
                 'registryData',
                 'languageId',
+                'FromName',
+                'FromAddress',
             );
         }
 
@@ -256,6 +266,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="country", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="registryData", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="FromName", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="FromAddress", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/brands/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -308,6 +320,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="country", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="registryData", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="FromName", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="FromAddress", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -467,6 +481,16 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'FromName' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'FromAddress' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -535,6 +559,16 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 ),
                 'languageId' => array(
                     'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'FromName' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'FromAddress' => array(
+                    'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),

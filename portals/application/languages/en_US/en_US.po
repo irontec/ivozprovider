@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-01 12:17+0100\n"
-"PO-Revision-Date: 2017-03-02 19:56+0100\n"
+"POT-Creation-Date: 2017-03-06 17:10+0100\n"
+"PO-Revision-Date: 2017-03-06 17:10+0100\n"
 "Last-Translator: lfgarcia@irontec.com\n"
 "Language-Team: IvozProvider I18N Team <dev.lists-ivozprovider@irontec.com>\n"
 "Language: en_US\n"
@@ -1389,24 +1389,24 @@ msgstr "On"
 #: application/configs/klear/model/IVRCommon.yaml:54
 #: application/configs/klear/model/IVRCommon.yaml:68
 #: application/configs/klear/model/IVRCommon.yaml:82
-#: application/configs/klear/model/IVRCommon.yaml:124
-#: application/configs/klear/model/IVRCommon.yaml:161
-#: application/configs/klear/model/IVRCommon.yaml:177
-#: application/configs/klear/model/IVRCommon.yaml:185
-#: application/configs/klear/model/IVRCommon.yaml:222
-#: application/configs/klear/model/IVRCommon.yaml:238
+#: application/configs/klear/model/IVRCommon.yaml:125
+#: application/configs/klear/model/IVRCommon.yaml:162
+#: application/configs/klear/model/IVRCommon.yaml:178
+#: application/configs/klear/model/IVRCommon.yaml:186
+#: application/configs/klear/model/IVRCommon.yaml:223
+#: application/configs/klear/model/IVRCommon.yaml:239
 #: application/configs/klear/model/IVRCustom.yaml:50
 #: application/configs/klear/model/IVRCustom.yaml:64
 #: application/configs/klear/model/IVRCustom.yaml:78
-#: application/configs/klear/model/IVRCustom.yaml:120
-#: application/configs/klear/model/IVRCustom.yaml:157
-#: application/configs/klear/model/IVRCustom.yaml:173
-#: application/configs/klear/model/IVRCustom.yaml:181
-#: application/configs/klear/model/IVRCustom.yaml:218
-#: application/configs/klear/model/IVRCustom.yaml:234
-#: application/configs/klear/model/IVRCustomEntries.yaml:40
-#: application/configs/klear/model/IVRCustomEntries.yaml:82
-#: application/configs/klear/model/IVRCustomEntries.yaml:98
+#: application/configs/klear/model/IVRCustom.yaml:121
+#: application/configs/klear/model/IVRCustom.yaml:158
+#: application/configs/klear/model/IVRCustom.yaml:174
+#: application/configs/klear/model/IVRCustom.yaml:182
+#: application/configs/klear/model/IVRCustom.yaml:219
+#: application/configs/klear/model/IVRCustom.yaml:235
+#: application/configs/klear/model/IVRCustomEntries.yaml:42
+#: application/configs/klear/model/IVRCustomEntries.yaml:84
+#: application/configs/klear/model/IVRCustomEntries.yaml:100
 #: application/configs/klear/model/Invoices.yaml:123
 #: application/configs/klear/model/Invoices.yaml:136
 #: application/configs/klear/model/Invoices.yaml:151
@@ -1504,9 +1504,9 @@ msgstr "On"
 #: application/configs/klearRaw/model/IVRCustom.yaml:131
 #: application/configs/klearRaw/model/IVRCustom.yaml:157
 #: application/configs/klearRaw/model/IVRCustom.yaml:170
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:36
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:63
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:76
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:35
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:62
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:75
 #: application/configs/klearRaw/model/Invoices.yaml:127
 #: application/configs/klearRaw/model/KamAccCdrs.yaml:73
 #: application/configs/klearRaw/model/KamAccCdrs.yaml:86
@@ -2016,7 +2016,7 @@ msgstr "List of %s %2s"
 #: application/configs/klear/BrandServicesList.yaml:53
 #: application/configs/klear/BrandServicesList.yaml:54
 #: application/configs/klear/BrandURLsList.yaml:67
-#: application/configs/klear/BrandsList.yaml:123
+#: application/configs/klear/BrandsList.yaml:133
 #: application/configs/klear/CalendarsList.yaml:49
 #: application/configs/klear/CallACLList.yaml:55
 #: application/configs/klear/CallACLPatternsList.yaml:48
@@ -2060,7 +2060,7 @@ msgstr "List of %s %2s"
 #: application/configs/klear/HuntGroupsList.yaml:89
 #: application/configs/klear/HuntGroupsRelUsersList.yaml:47
 #: application/configs/klear/IVRCommonList.yaml:102
-#: application/configs/klear/IVRCustomEntriesList.yaml:55
+#: application/configs/klear/IVRCustomEntriesList.yaml:71
 #: application/configs/klear/IVRCustomList.yaml:104
 #: application/configs/klear/InvoiceTemplatesList.yaml:67
 #: application/configs/klear/InvoicesList.yaml:97
@@ -2312,7 +2312,7 @@ msgstr "Edit %s %2s"
 #: application/configs/klear/AstVoicemailList.yaml:37
 #: application/configs/klear/BrandServicesList.yaml:41
 #: application/configs/klear/BrandURLsList.yaml:44
-#: application/configs/klear/BrandsList.yaml:66
+#: application/configs/klear/BrandsList.yaml:68
 #: application/configs/klear/CallACLRelPatternsList.yaml:36
 #: application/configs/klear/ChangeHistoryList.yaml:37
 #: application/configs/klear/CompaniesList.yaml:106
@@ -2480,7 +2480,7 @@ msgstr "Add %s"
 #: application/configs/klear/BrandOperatorsList.yaml:85
 #: application/configs/klear/BrandServicesList.yaml:61
 #: application/configs/klear/BrandURLsList.yaml:79
-#: application/configs/klear/BrandsList.yaml:167
+#: application/configs/klear/BrandsList.yaml:177
 #: application/configs/klear/CalendarsList.yaml:75
 #: application/configs/klear/CallACLList.yaml:96
 #: application/configs/klear/CallACLList.yaml:106
@@ -2514,7 +2514,7 @@ msgstr "Add %s"
 #: application/configs/klear/HuntGroupsList.yaml:215
 #: application/configs/klear/HuntGroupsRelUsersList.yaml:70
 #: application/configs/klear/IVRCommonList.yaml:117
-#: application/configs/klear/IVRCustomEntriesList.yaml:65
+#: application/configs/klear/IVRCustomEntriesList.yaml:83
 #: application/configs/klear/IVRCustomList.yaml:133
 #: application/configs/klear/InvoiceTemplatesList.yaml:93
 #: application/configs/klear/InvoicesList.yaml:139
@@ -2661,7 +2661,7 @@ msgstr "Delete %s"
 #: application/configs/klear/BrandOperatorsList.yaml:87
 #: application/configs/klear/BrandServicesList.yaml:63
 #: application/configs/klear/BrandURLsList.yaml:81
-#: application/configs/klear/BrandsList.yaml:169
+#: application/configs/klear/BrandsList.yaml:179
 #: application/configs/klear/CalendarsList.yaml:77
 #: application/configs/klear/CallACLList.yaml:98
 #: application/configs/klear/CallACLList.yaml:108
@@ -2694,7 +2694,7 @@ msgstr "Delete %s"
 #: application/configs/klear/HuntGroupsList.yaml:208
 #: application/configs/klear/HuntGroupsRelUsersList.yaml:72
 #: application/configs/klear/IVRCommonList.yaml:119
-#: application/configs/klear/IVRCustomEntriesList.yaml:67
+#: application/configs/klear/IVRCustomEntriesList.yaml:85
 #: application/configs/klear/IVRCustomList.yaml:135
 #: application/configs/klear/InvoiceTemplatesList.yaml:95
 #: application/configs/klear/InvoicesList.yaml:141
@@ -2842,7 +2842,7 @@ msgstr "%s successfully deleted."
 #: application/configs/klear/BrandOperatorsList.yaml:86
 #: application/configs/klear/BrandServicesList.yaml:62
 #: application/configs/klear/BrandURLsList.yaml:80
-#: application/configs/klear/BrandsList.yaml:168
+#: application/configs/klear/BrandsList.yaml:178
 #: application/configs/klear/CalendarsList.yaml:76
 #: application/configs/klear/CallACLList.yaml:97
 #: application/configs/klear/CallACLList.yaml:107
@@ -2875,7 +2875,7 @@ msgstr "%s successfully deleted."
 #: application/configs/klear/HuntGroupsList.yaml:207
 #: application/configs/klear/HuntGroupsRelUsersList.yaml:71
 #: application/configs/klear/IVRCommonList.yaml:118
-#: application/configs/klear/IVRCustomEntriesList.yaml:66
+#: application/configs/klear/IVRCustomEntriesList.yaml:84
 #: application/configs/klear/IVRCustomList.yaml:134
 #: application/configs/klear/InvoiceTemplatesList.yaml:94
 #: application/configs/klear/InvoicesList.yaml:140
@@ -3123,13 +3123,13 @@ msgstr "Brand is not setted"
 #: library/IvozProvider/Model/Raw/BrandURLs.php:324
 #: library/IvozProvider/Model/Raw/BrandURLs.php:361
 #: library/IvozProvider/Model/Raw/BrandURLs.php:432
-#: library/IvozProvider/Model/Raw/Brands.php:672
-#: library/IvozProvider/Model/Raw/Brands.php:709
-#: library/IvozProvider/Model/Raw/Brands.php:916
-#: library/IvozProvider/Model/Raw/Brands.php:953
-#: library/IvozProvider/Model/Raw/Brands.php:990
-#: library/IvozProvider/Model/Raw/Brands.php:1027
-#: library/IvozProvider/Model/Raw/Brands.php:1064
+#: library/IvozProvider/Model/Raw/Brands.php:688
+#: library/IvozProvider/Model/Raw/Brands.php:725
+#: library/IvozProvider/Model/Raw/Brands.php:932
+#: library/IvozProvider/Model/Raw/Brands.php:969
+#: library/IvozProvider/Model/Raw/Brands.php:1006
+#: library/IvozProvider/Model/Raw/Brands.php:1043
+#: library/IvozProvider/Model/Raw/Brands.php:1080
 #: library/IvozProvider/Model/Raw/Calendars.php:189
 #: library/IvozProvider/Model/Raw/Calendars.php:226
 #: library/IvozProvider/Model/Raw/CallACL.php:215
@@ -3557,8 +3557,8 @@ msgstr[1] "Application servers"
 #: application/configs/klear/BrandServicesList.yaml:28
 #: application/configs/klear/BrandURLsList.yaml:18
 #: application/configs/klear/BrandURLsList.yaml:33
-#: application/configs/klear/BrandsList.yaml:45
-#: application/configs/klear/BrandsList.yaml:55
+#: application/configs/klear/BrandsList.yaml:47
+#: application/configs/klear/BrandsList.yaml:57
 #: application/configs/klear/CalendarsList.yaml:21
 #: application/configs/klear/CalendarsList.yaml:29
 #: application/configs/klear/CallACLList.yaml:21
@@ -4078,11 +4078,11 @@ msgstr[0] "Brand URL"
 msgstr[1] "Brand URLs"
 
 #: application/configs/klear/BrandsList.yaml:17
-#: application/configs/klear/BrandsList.yaml:66
-#: application/configs/klear/BrandsList.yaml:123
-#: application/configs/klear/BrandsList.yaml:167
-#: application/configs/klear/BrandsList.yaml:168
-#: application/configs/klear/BrandsList.yaml:169
+#: application/configs/klear/BrandsList.yaml:68
+#: application/configs/klear/BrandsList.yaml:133
+#: application/configs/klear/BrandsList.yaml:177
+#: application/configs/klear/BrandsList.yaml:178
+#: application/configs/klear/BrandsList.yaml:179
 #: application/configs/klear/klear.yaml:55
 #: application/configs/klear/klear.yaml:57
 #: application/configs/klear/model/BrandOperators.yaml:5
@@ -4119,31 +4119,36 @@ msgstr[1] ""
 "#-#-#-#-#  46extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  48extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 
-#: application/configs/klear/BrandsList.yaml:85
+#: application/configs/klear/BrandsList.yaml:89
 #: application/configs/klear/ConferenceRoomsList.yaml:49
 #: application/configs/klear/HuntGroupsList.yaml:59
 msgid "Basic data"
 msgstr "Basic data"
 
-#: application/configs/klear/BrandsList.yaml:92
+#: application/configs/klear/BrandsList.yaml:96
 msgid "SIP domains"
 msgstr "SIP domains"
 
-#: application/configs/klear/BrandsList.yaml:98
+#: application/configs/klear/BrandsList.yaml:102
 msgid "Locales"
 msgstr "Locales"
 
-#: application/configs/klear/BrandsList.yaml:105
+#: application/configs/klear/BrandsList.yaml:109
 #: application/configs/klear/CompaniesList.yaml:144
 #, fuzzy
 msgid "Invoice data"
 msgstr "Invoice data"
 
-#: application/configs/klear/BrandsList.yaml:115
+#: application/configs/klear/BrandsList.yaml:119
+#, fuzzy
+msgid "Mail data"
+msgstr "Basic data"
+
+#: application/configs/klear/BrandsList.yaml:125
 msgid "Who knows section"
 msgstr "Who knows section"
 
-#: application/configs/klear/BrandsList.yaml:174
+#: application/configs/klear/BrandsList.yaml:184
 #, python-format
 msgid "Emulate Brand %s"
 msgstr "Emulate Brand %s"
@@ -4905,14 +4910,24 @@ msgstr "Error configuration"
 
 #: application/configs/klear/IVRCustomEntriesList.yaml:15
 #: application/configs/klear/IVRCustomEntriesList.yaml:45
-#: application/configs/klear/IVRCustomEntriesList.yaml:55
-#: application/configs/klear/IVRCustomEntriesList.yaml:65
-#: application/configs/klear/IVRCustomEntriesList.yaml:66
-#: application/configs/klear/IVRCustomEntriesList.yaml:67
+#: application/configs/klear/IVRCustomEntriesList.yaml:71
+#: application/configs/klear/IVRCustomEntriesList.yaml:83
+#: application/configs/klear/IVRCustomEntriesList.yaml:84
+#: application/configs/klear/IVRCustomEntriesList.yaml:85
 msgid "I v r custom entry"
 msgid_plural "I v r custom entries"
 msgstr[0] "I v r custom entry"
 msgstr[1] "I v r custom entries"
+
+#: application/configs/klear/IVRCustomEntriesList.yaml:52
+#, fuzzy
+msgid "Entry information"
+msgstr "Refer information"
+
+#: application/configs/klear/IVRCustomEntriesList.yaml:58
+#, fuzzy
+msgid "Routing configuration"
+msgstr "Outgoing Configuration"
 
 #: application/configs/klear/IVRCustomList.yaml:15
 #: application/configs/klear/IVRCustomList.yaml:59
@@ -6024,6 +6039,8 @@ msgstr[1] ""
 #: application/configs/klear/model/BrandURLs.yaml:29
 #: application/configs/klear/model/BrandURLs.yaml:118
 #: application/configs/klear/model/Brands.yaml:127
+#: application/configs/klear/model/Brands.yaml:150
+#: application/configs/klear/model/Brands.yaml:161
 #: application/configs/klear/model/Companies.yaml:160
 #: application/configs/klear/model/Companies.yaml:202
 #: application/configs/klear/model/CompanyServices.yaml:45
@@ -6042,9 +6059,10 @@ msgstr[1] ""
 #: application/configs/klear/model/Friends.yaml:139
 #: application/configs/klear/model/Friends.yaml:159
 #: application/configs/klear/model/IVRCommon.yaml:97
-#: application/configs/klear/model/IVRCommon.yaml:110
+#: application/configs/klear/model/IVRCommon.yaml:111
 #: application/configs/klear/model/IVRCustom.yaml:93
-#: application/configs/klear/model/IVRCustom.yaml:106
+#: application/configs/klear/model/IVRCustom.yaml:107
+#: application/configs/klear/model/IVRCustomEntries.yaml:28
 #: application/configs/klear/model/KamRtpproxy.yaml:16
 #: application/configs/klear/model/KamRtpproxy.yaml:28
 #: application/configs/klear/model/KamRtpproxy.yaml:48
@@ -7105,6 +7123,25 @@ msgstr ""
 "facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo "
 "XXXX, libro Y, folio ZZZ, hoja AA-BBBB'"
 
+#: application/configs/klear/model/Brands.yaml:142
+msgid "From name"
+msgstr "Display name"
+
+#: application/configs/klear/model/Brands.yaml:149
+msgid ""
+"Name shown as source when sending mails (e.g. IvozProvider Notifications). "
+"Leave empty to disable."
+msgstr ""
+
+#: application/configs/klear/model/Brands.yaml:152
+msgid "From address"
+msgstr "From address"
+
+#: application/configs/klear/model/Brands.yaml:160
+msgid ""
+"Mail address shown as source when sending mails. MTA must allow this value."
+msgstr ""
+
 #: application/configs/klear/model/CallACL.yaml:24
 #, fuzzy
 msgid "Default policy"
@@ -7116,7 +7153,7 @@ msgstr "Default policy"
 #: application/configs/klearRaw/model/CallACLRelPatterns.yaml:44
 #, fuzzy
 msgid "allow"
-msgstr "allow"
+msgstr "Allow"
 
 #: application/configs/klear/model/CallACL.yaml:31
 #: application/configs/klear/model/CallACLRelPatterns.yaml:46
@@ -7220,7 +7257,7 @@ msgid "userNotRegistered"
 msgstr "userNotRegistered"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:52
-#: application/configs/klear/model/IVRCustomEntries.yaml:42
+#: application/configs/klear/model/IVRCustomEntries.yaml:44
 #, fuzzy
 msgid "Target type"
 msgstr "Target type"
@@ -7230,11 +7267,11 @@ msgstr "Target type"
 #: application/configs/klear/model/ExternalCallFilters.yaml:82
 #: application/configs/klear/model/ExternalCallFilters.yaml:145
 #: application/configs/klear/model/HuntGroups.yaml:72
-#: application/configs/klear/model/IVRCommon.yaml:128
-#: application/configs/klear/model/IVRCommon.yaml:189
-#: application/configs/klear/model/IVRCustom.yaml:124
-#: application/configs/klear/model/IVRCustom.yaml:185
-#: application/configs/klear/model/IVRCustomEntries.yaml:49
+#: application/configs/klear/model/IVRCommon.yaml:129
+#: application/configs/klear/model/IVRCommon.yaml:190
+#: application/configs/klear/model/IVRCustom.yaml:125
+#: application/configs/klear/model/IVRCustom.yaml:186
+#: application/configs/klear/model/IVRCustomEntries.yaml:51
 #: application/configs/klearRaw/model/CallForwardSettings.yaml:46
 #: application/configs/klearRaw/model/Extensions.yaml:30
 #: application/configs/klearRaw/model/ExternalCallFilters.yaml:68
@@ -7244,7 +7281,7 @@ msgstr "Target type"
 #: application/configs/klearRaw/model/IVRCommon.yaml:142
 #: application/configs/klearRaw/model/IVRCustom.yaml:99
 #: application/configs/klearRaw/model/IVRCustom.yaml:138
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:44
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:43
 msgid "number"
 msgstr "Number"
 
@@ -7252,11 +7289,11 @@ msgstr "Number"
 #: application/configs/klear/model/ExternalCallFilters.yaml:87
 #: application/configs/klear/model/ExternalCallFilters.yaml:150
 #: application/configs/klear/model/HuntGroups.yaml:77
-#: application/configs/klear/model/IVRCommon.yaml:133
-#: application/configs/klear/model/IVRCommon.yaml:194
-#: application/configs/klear/model/IVRCustom.yaml:129
-#: application/configs/klear/model/IVRCustom.yaml:190
-#: application/configs/klear/model/IVRCustomEntries.yaml:54
+#: application/configs/klear/model/IVRCommon.yaml:134
+#: application/configs/klear/model/IVRCommon.yaml:195
+#: application/configs/klear/model/IVRCustom.yaml:130
+#: application/configs/klear/model/IVRCustom.yaml:191
+#: application/configs/klear/model/IVRCustomEntries.yaml:56
 #: application/configs/klearRaw/model/CallForwardSettings.yaml:47
 #: application/configs/klearRaw/model/ExternalCallFilters.yaml:69
 #: application/configs/klearRaw/model/ExternalCallFilters.yaml:108
@@ -7265,7 +7302,7 @@ msgstr "Number"
 #: application/configs/klearRaw/model/IVRCommon.yaml:143
 #: application/configs/klearRaw/model/IVRCustom.yaml:100
 #: application/configs/klearRaw/model/IVRCustom.yaml:139
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:45
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:44
 msgid "extension"
 msgstr "Extension"
 
@@ -7273,11 +7310,11 @@ msgstr "Extension"
 #: application/configs/klear/model/ExternalCallFilters.yaml:92
 #: application/configs/klear/model/ExternalCallFilters.yaml:155
 #: application/configs/klear/model/HuntGroups.yaml:82
-#: application/configs/klear/model/IVRCommon.yaml:138
-#: application/configs/klear/model/IVRCommon.yaml:199
-#: application/configs/klear/model/IVRCustom.yaml:134
-#: application/configs/klear/model/IVRCustom.yaml:195
-#: application/configs/klear/model/IVRCustomEntries.yaml:59
+#: application/configs/klear/model/IVRCommon.yaml:139
+#: application/configs/klear/model/IVRCommon.yaml:200
+#: application/configs/klear/model/IVRCustom.yaml:135
+#: application/configs/klear/model/IVRCustom.yaml:196
+#: application/configs/klear/model/IVRCustomEntries.yaml:61
 #: application/configs/klearRaw/model/CallForwardSettings.yaml:48
 #: application/configs/klearRaw/model/ExternalCallFilters.yaml:70
 #: application/configs/klearRaw/model/ExternalCallFilters.yaml:109
@@ -7286,7 +7323,7 @@ msgstr "Extension"
 #: application/configs/klearRaw/model/IVRCommon.yaml:144
 #: application/configs/klearRaw/model/IVRCustom.yaml:101
 #: application/configs/klearRaw/model/IVRCustom.yaml:140
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:46
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:45
 msgid "voicemail"
 msgstr "Voicemail"
 
@@ -7302,7 +7339,7 @@ msgid "Voice mail user"
 msgstr "Voice mail user"
 
 #: application/configs/klear/model/CallForwardSettings.yaml:111
-#: application/configs/klear/model/IVRCommon.yaml:112
+#: application/configs/klear/model/IVRCommon.yaml:113
 #, fuzzy
 msgid "No answer timeout"
 msgstr "No answer timeout"
@@ -7635,7 +7672,7 @@ msgstr "Friend value"
 
 #: application/configs/klear/model/DDIs.yaml:230
 #: application/configs/klear/model/Extensions.yaml:168
-#: application/configs/klear/model/IVRCustomEntries.yaml:100
+#: application/configs/klear/model/IVRCustomEntries.yaml:102
 #, fuzzy
 msgid "Target"
 msgstr "Target"
@@ -7917,7 +7954,7 @@ msgstr "Statu"
 #: application/configs/klearRaw/model/MusicOnHold.yaml:124
 #, fuzzy
 msgid "error"
-msgstr "ERROR"
+msgstr "error"
 
 #: application/configs/klear/model/FaxesInOut.yaml:57
 #: application/configs/klearRaw/model/FaxesInOut.yaml:54
@@ -8186,8 +8223,8 @@ msgid "Ring all timeout"
 msgstr "Ring all timeout"
 
 #: application/configs/klear/model/HuntGroups.yaml:62
-#: application/configs/klear/model/IVRCommon.yaml:118
-#: application/configs/klear/model/IVRCustom.yaml:114
+#: application/configs/klear/model/IVRCommon.yaml:119
+#: application/configs/klear/model/IVRCustom.yaml:115
 msgid "Timeout target type"
 msgstr "Timeout target"
 
@@ -8199,21 +8236,21 @@ msgid "No answer locution id"
 msgstr "No answer locution id"
 
 #: application/configs/klear/model/HuntGroups.yaml:101
-#: application/configs/klear/model/IVRCommon.yaml:143
-#: application/configs/klear/model/IVRCustom.yaml:139
+#: application/configs/klear/model/IVRCommon.yaml:144
+#: application/configs/klear/model/IVRCustom.yaml:140
 #, fuzzy
 msgid "Timeout number value"
 msgstr "Timeout number value"
 
 #: application/configs/klear/model/HuntGroups.yaml:106
-#: application/configs/klear/model/IVRCommon.yaml:148
-#: application/configs/klear/model/IVRCustom.yaml:144
+#: application/configs/klear/model/IVRCommon.yaml:149
+#: application/configs/klear/model/IVRCustom.yaml:145
 msgid "Timeout extension id"
 msgstr "Timeout Extension"
 
 #: application/configs/klear/model/HuntGroups.yaml:121
-#: application/configs/klear/model/IVRCommon.yaml:163
-#: application/configs/klear/model/IVRCustom.yaml:159
+#: application/configs/klear/model/IVRCommon.yaml:164
+#: application/configs/klear/model/IVRCustom.yaml:160
 msgid "Timeout voice mail user id"
 msgstr "Timeout Voicemail User"
 
@@ -8224,7 +8261,7 @@ msgstr "Timeout time"
 
 #: application/configs/klear/model/IVRCommon.yaml:28
 #: application/configs/klear/model/IVRCustom.yaml:24
-#: application/configs/klear/model/IVRCustomEntries.yaml:28
+#: application/configs/klear/model/IVRCustomEntries.yaml:30
 #, fuzzy
 msgid "Welcome locution id"
 msgstr "Welcome locution id"
@@ -8264,45 +8301,45 @@ msgstr ""
 msgid "Max digits"
 msgstr "Max digits"
 
-#: application/configs/klear/model/IVRCommon.yaml:109
-#: application/configs/klear/model/IVRCustom.yaml:105
+#: application/configs/klear/model/IVRCommon.yaml:110
+#: application/configs/klear/model/IVRCustom.yaml:106
 msgid "Max number of digits the caller can enter. Set to 0 to disable."
 msgstr "Max number of digits the caller can enter. Set to 0 to disable."
 
-#: application/configs/klear/model/IVRCommon.yaml:179
-#: application/configs/klear/model/IVRCustom.yaml:175
+#: application/configs/klear/model/IVRCommon.yaml:180
+#: application/configs/klear/model/IVRCustom.yaml:176
 #, fuzzy
 msgid "Error target type"
 msgstr "Error target type"
 
-#: application/configs/klear/model/IVRCommon.yaml:204
-#: application/configs/klear/model/IVRCustom.yaml:200
+#: application/configs/klear/model/IVRCommon.yaml:205
+#: application/configs/klear/model/IVRCustom.yaml:201
 msgid "Error number value"
 msgstr "Error Number"
 
-#: application/configs/klear/model/IVRCommon.yaml:209
-#: application/configs/klear/model/IVRCustom.yaml:205
+#: application/configs/klear/model/IVRCommon.yaml:210
+#: application/configs/klear/model/IVRCustom.yaml:206
 msgid "Error extension id"
 msgstr "Error Extension"
 
-#: application/configs/klear/model/IVRCommon.yaml:224
-#: application/configs/klear/model/IVRCustom.yaml:220
+#: application/configs/klear/model/IVRCommon.yaml:225
+#: application/configs/klear/model/IVRCustom.yaml:221
 #, fuzzy
 msgid "Error voice mail user id"
 msgstr "Error voice mail user id"
 
-#: application/configs/klear/model/IVRCommon.yaml:240
-#: application/configs/klear/model/IVRCustom.yaml:236
+#: application/configs/klear/model/IVRCommon.yaml:241
+#: application/configs/klear/model/IVRCustom.yaml:237
 msgid "Timeout target"
 msgstr "Timeout target"
 
-#: application/configs/klear/model/IVRCommon.yaml:246
-#: application/configs/klear/model/IVRCustom.yaml:242
+#: application/configs/klear/model/IVRCommon.yaml:247
+#: application/configs/klear/model/IVRCustom.yaml:243
 #, fuzzy
 msgid "Error target"
 msgstr "Error target"
 
-#: application/configs/klear/model/IVRCustom.yaml:108
+#: application/configs/klear/model/IVRCustom.yaml:109
 #, fuzzy
 msgid "No aswer timeout"
 msgstr "No aswer timeout"
@@ -8313,17 +8350,21 @@ msgstr "No aswer timeout"
 msgid "Entry"
 msgstr "Entry"
 
-#: application/configs/klear/model/IVRCustomEntries.yaml:64
+#: application/configs/klear/model/IVRCustomEntries.yaml:27
+msgid "You can use regular expressions to define values this entry will match."
+msgstr ""
+
+#: application/configs/klear/model/IVRCustomEntries.yaml:66
 #, fuzzy
 msgid "Target number value"
 msgstr "Target number value"
 
-#: application/configs/klear/model/IVRCustomEntries.yaml:69
+#: application/configs/klear/model/IVRCustomEntries.yaml:71
 #, fuzzy
 msgid "Target extension id"
 msgstr "Target extension id"
 
-#: application/configs/klear/model/IVRCustomEntries.yaml:84
+#: application/configs/klear/model/IVRCustomEntries.yaml:86
 #, fuzzy
 msgid "Target voice mail user id"
 msgstr "Target voice mail user id"
@@ -8463,7 +8504,7 @@ msgstr "processing"
 #: application/configs/klearRaw/model/Invoices.yaml:41
 #, fuzzy
 msgid "created"
-msgstr "created"
+msgstr "Created on"
 
 #: application/configs/klear/model/Invoices.yaml:72
 #, fuzzy
@@ -11185,6 +11226,16 @@ msgstr "Registrydata"
 msgid "Languageid"
 msgstr "Languageid"
 
+#: application/configs/klearRaw/model/Brands.yaml:121
+#, fuzzy
+msgid "Fromname"
+msgstr "Firstname"
+
+#: application/configs/klearRaw/model/Brands.yaml:125
+#, fuzzy
+msgid "Fromaddress"
+msgstr "Asaddress"
+
 #: application/configs/klearRaw/model/CallACL.yaml:24
 #, fuzzy
 msgid "Defaultpolicy"
@@ -11213,7 +11264,7 @@ msgid "Callforwardtype"
 msgstr "Callforwardtype"
 
 #: application/configs/klearRaw/model/CallForwardSettings.yaml:40
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:38
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:37
 #, fuzzy
 msgid "Targettype"
 msgstr "Targettype"
@@ -11448,7 +11499,7 @@ msgstr "Scheduleid"
 #: application/configs/klearRaw/model/ExternalCallFilters.yaml:24
 #: application/configs/klearRaw/model/IVRCommon.yaml:28
 #: application/configs/klearRaw/model/IVRCustom.yaml:24
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:25
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:24
 #, fuzzy
 msgid "Welcomelocutionid"
 msgstr "Welcomelocutionid"
@@ -11707,17 +11758,17 @@ msgstr "Errorextensionid"
 msgid "Errorvoicemailuserid"
 msgstr "Errorvoicemailuserid"
 
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:48
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:47
 #, fuzzy
 msgid "Targetnumbervalue"
 msgstr "Targetnumbervalue"
 
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:52
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:51
 #, fuzzy
 msgid "Targetextensionid"
 msgstr "Targetextensionid"
 
-#: application/configs/klearRaw/model/IVRCustomEntries.yaml:65
+#: application/configs/klearRaw/model/IVRCustomEntries.yaml:64
 #, fuzzy
 msgid "Targetvoicemailuserid"
 msgstr "Targetvoicemailuserid"
@@ -12217,65 +12268,41 @@ msgstr "Execdate"
 msgid "Finishdate"
 msgstr "Finishdate"
 
-#: public/doc/en/_static/doctools.js:167
-#: public/doc/ensingle/_static/doctools.js:167
-#: public/doc/enslides/_static/doctools.js:167
-#: public/doc/es/_static/doctools.js:167
-#: public/doc/essingle/_static/doctools.js:167
+#: public/doc/en/_static/doctools.js:167 public/doc/es/_static/doctools.js:167
 #, fuzzy
 msgid "Permalink to this headline"
 msgstr "Permalink to this headline"
 
-#: public/doc/en/_static/doctools.js:173
-#: public/doc/ensingle/_static/doctools.js:173
-#: public/doc/enslides/_static/doctools.js:173
-#: public/doc/es/_static/doctools.js:173
-#: public/doc/essingle/_static/doctools.js:173
+#: public/doc/en/_static/doctools.js:173 public/doc/es/_static/doctools.js:173
 #, fuzzy
 msgid "Permalink to this definition"
 msgstr "Permalink to this definition"
 
-#: public/doc/en/_static/doctools.js:206
-#: public/doc/ensingle/_static/doctools.js:206
-#: public/doc/enslides/_static/doctools.js:206
-#: public/doc/es/_static/doctools.js:206
-#: public/doc/essingle/_static/doctools.js:206
+#: public/doc/en/_static/doctools.js:206 public/doc/es/_static/doctools.js:206
 #, fuzzy
 msgid "Hide Search Matches"
 msgstr "Hide Search Matches"
 
 #: public/doc/en/_static/searchtools.js:300
-#: public/doc/ensingle/_static/searchtools.js:300
-#: public/doc/enslides/_static/searchtools.js:300
 #: public/doc/es/_static/searchtools.js:300
-#: public/doc/essingle/_static/searchtools.js:300
 #, fuzzy
 msgid "Searching"
 msgstr "Searching"
 
 #: public/doc/en/_static/searchtools.js:305
-#: public/doc/ensingle/_static/searchtools.js:305
-#: public/doc/enslides/_static/searchtools.js:305
 #: public/doc/es/_static/searchtools.js:305
-#: public/doc/essingle/_static/searchtools.js:305
 #, fuzzy
 msgid "Preparing search..."
 msgstr "Preparing search..."
 
 #: public/doc/en/_static/searchtools.js:461
-#: public/doc/ensingle/_static/searchtools.js:461
-#: public/doc/enslides/_static/searchtools.js:461
 #: public/doc/es/_static/searchtools.js:461
-#: public/doc/essingle/_static/searchtools.js:461
 #, fuzzy
 msgid "Search Results"
 msgstr "Search Results"
 
 #: public/doc/en/_static/searchtools.js:463
-#: public/doc/ensingle/_static/searchtools.js:463
-#: public/doc/enslides/_static/searchtools.js:463
 #: public/doc/es/_static/searchtools.js:463
-#: public/doc/essingle/_static/searchtools.js:463
 #, fuzzy
 msgid ""
 "Your search did not match any documents. Please make sure that all words are "
@@ -12285,19 +12312,13 @@ msgstr ""
 "spelled correctly and that you've selected enough categories."
 
 #: public/doc/en/_static/searchtools.js:465
-#: public/doc/ensingle/_static/searchtools.js:465
-#: public/doc/enslides/_static/searchtools.js:465
 #: public/doc/es/_static/searchtools.js:465
-#: public/doc/essingle/_static/searchtools.js:465
 #, fuzzy, javascript-format
 msgid "Search finished, found %s page(s) matching the search query."
 msgstr "Search finished, found %s page(s) matching the search query."
 
 #: public/doc/en/_static/searchtools.js:517
-#: public/doc/ensingle/_static/searchtools.js:517
-#: public/doc/enslides/_static/searchtools.js:517
 #: public/doc/es/_static/searchtools.js:517
-#: public/doc/essingle/_static/searchtools.js:517
 msgid ", in "
 msgstr ""
 
