@@ -168,7 +168,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
@@ -229,7 +229,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Users
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
