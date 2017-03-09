@@ -33,13 +33,13 @@ class Formatter
     {
         if (preg_match($pattern, $template, $matches)) {
             $targetArray = $matches[2];
-            $pattern = "/({{#(".$targetArray.") (\w*),(\w*)}})((?:(?!{{#".$targetArray.").)*)({{\/".$targetArray."}})/s";
+            $pattern = "/{{#$targetArray (?P<key>\w+),(?P<value>\w+)}}(?P<string>.*?){{\/$targetArray}}/s";
             preg_match($pattern, $template, $matches);
             $fullMatch = $matches[0];
-            $arrayKey = $matches[2];
-            $idKey = $matches[3];
-            $valueKey = $matches[4];
-            $string = $matches[5];
+            $arrayKey = $targetArray;
+            $idKey = $matches['key'];
+            $valueKey = $matches['value'];
+            $string = $matches['string'];
             $array = self::_getVariableValue($values, $arrayKey);
 
             if (is_null($array)) {
