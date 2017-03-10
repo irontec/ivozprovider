@@ -6,6 +6,7 @@ production:
     id: 
       title: ngettext('Id', 'Ids', 1)
       required: false 
+      readonly: true
     brandId: 
       title: _('Brand')
       type: select

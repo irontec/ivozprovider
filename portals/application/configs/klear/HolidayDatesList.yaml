@@ -1,34 +1,34 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: holidayDatesList_screen
   screens: &holidayDates_screensLink
-    holidayDatesList_screen: &holidayDatesList_screenLink 
+    holidayDatesList_screen: &holidayDatesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *HolidayDates
       class: ui-silk-calendar-view-day
       title: _("List of %s %2s", ngettext('Holiday date', 'Holiday dates', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             holidayDatesEdit_screen: true
-          dialogs: 
+          dialogs:
             holidayDatesDel_dialog: true
           default: holidayDatesEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           holidayDatesNew_screen: true
-        dialogs: 
+        dialogs:
           holidayDatesDel_dialog: true
           importHolidayDates_dialog: true
-    holidayDatesNew_screen: &holidayDatesNew_screenLink 
+    holidayDatesNew_screen: &holidayDatesNew_screenLink
       <<: *HolidayDates
       controller: new
       class: ui-silk-add
@@ -36,14 +36,14 @@ production:
       multiInstance: true
       title: _("Add %s %2s", ngettext('Holiday date', 'Holiday dates', 1), "[format| (%parent%)]")
       shortcutOption: N
-    holidayDatesEdit_screen: &holidayDatesEdit_screenLink 
+    holidayDatesEdit_screen: &holidayDatesEdit_screenLink
       <<: *HolidayDates
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Holiday date', 'Holiday dates', 1), "[format| (%item%)]")
   dialogs: &holidayDates_dialogsLink
-    holidayDatesDel_dialog: &holidayDatesDel_dialogLink 
+    holidayDatesDel_dialog: &holidayDatesDel_dialogLink
       <<: *HolidayDates
       controller: delete
       class: ui-silk-bin
@@ -58,7 +58,7 @@ production:
     importHolidayDates_dialog:
       <<: *HolidayDates
       module: default
-      title: _("Import %s", ngettext('File', 'Files', 1))
+      title: _("Import %s", ngettext('Holiday date', 'Holiday dates', 0))
       label: false
       labelOnEdit: true
       labelOnList: true
@@ -81,11 +81,11 @@ production:
       controller: File
       action: free-upload
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

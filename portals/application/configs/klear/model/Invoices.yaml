@@ -59,7 +59,7 @@ production:
 #          order: iden
 #        'null': _("Unassigned")
     status: 
-      title: _('Statu')
+      title: _('Status')
       type: select
       source: 
         data: inline

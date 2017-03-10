@@ -7,30 +7,30 @@ actions:
     controller: edit
     class: ui-silk-pencil
     label: false
-    
+
   - &delAction
     class: ui-silk-bin
     controller: delete
     labelOption: false
-    
+
   - &newAction
     multiInstance: true
     class: ui-silk-add
     label: true
     controller: new
-    
+
   - &downloadAction
     controller: file
     action: download
-    
+
   - &forceDownloadAction
     controller: file
     action: forcedw
-    
+
   - &uploadAction
     controller: file
     action: upload
-    
+
   - &audioPlayer
     type: command
     title: Subir un archivo

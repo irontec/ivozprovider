@@ -3,25 +3,25 @@
 #include TerminalsList.yaml
 #include conf.d/terminalManufacturersHelp.yaml:
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: terminalModelsList_screen
   screens: &terminalModels_screensLink
-    terminalModelsList_screen: &terminalModelsList_screenLink 
+    terminalModelsList_screen: &terminalModelsList_screenLink
       <<: *terminalManufacturersHelp
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *TerminalModels
       class: ui-silk-telephone-key
       title: _("List of %s %2s", ngettext('Terminal model', 'Terminal models', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             terminalModelsEdit_screen: true
-          dialogs: 
+          dialogs:
             terminalModelsDel_dialog: true
           default: terminalModelsEdit_screen
         order: &terminalModels_orderLink
@@ -36,13 +36,13 @@ production:
         blacklist:
           genericTemplate: true
           specificTemplate: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           terminalModelsNew_screen: true
-        dialogs: 
+        dialogs:
           terminalModelsDel_dialog: true
-    terminalModelsNew_screen: &terminalModelsNew_screenLink 
+    terminalModelsNew_screen: &terminalModelsNew_screenLink
       <<: *terminalManufacturersHelp
       <<: *TerminalModels
       controller: new
@@ -55,7 +55,7 @@ production:
       fields:
         order:
           <<: *terminalModels_orderLink
-    terminalModelsEdit_screen: &terminalModelsEdit_screenLink 
+    terminalModelsEdit_screen: &terminalModelsEdit_screenLink
       <<: *terminalManufacturersHelp
       <<: *TerminalModels
       controller: edit
@@ -67,7 +67,7 @@ production:
         order:
           <<: *terminalModels_orderLink
   dialogs: &terminalModels_dialogsLink
-    terminalModelsDel_dialog: &terminalModelsDel_dialogLink 
+    terminalModelsDel_dialog: &terminalModelsDel_dialogLink
       <<: *TerminalModels
       controller: delete
       class: ui-silk-bin
@@ -77,16 +77,16 @@ production:
       message: _("%s successfully deleted.", ngettext('Terminal model', 'Terminal models', 1))
       multiItem: 1
       labelOnList: 1
-    
-    uploadFile_dialog: &uploadFile_dialogLink 
-      title: _("Cargar desde un fichero")
+
+    uploadFile_dialog: &uploadFile_dialogLink
+      title: _("Load file")
       module: default
       controller: klear-custom-upload-file
       labelOnEdit: true
       action: upload-file
       class: ui-silk-arrow-up
-    downloadFile_dialog: &downloadFile_dialogLink 
-      title: _("Descargar fichero")
+    downloadFile_dialog: &downloadFile_dialogLink
+      title: _("Download file")
       module: default
       controller: klear-custom-download-file
       labelOnEdit: true
@@ -121,24 +121,24 @@ production:
       action: restore-specific-default
       class: ui-silk-page-white-star
     runGenericCode_dialog: &runGenericCode_dialog
-      title: _("Ejecutar el código")
+      title: _("Run template")
       module: default
       controller: klear-custom-run-code
       labelOnEdit: true
       action: run-generic-code
       class: ui-silk-control-play-blue
-    runSpecificCode_dialog: 
-      title: _("Ejecutar el código")
+    runSpecificCode_dialog:
+      title: _("Run template")
       module: default
       controller: klear-custom-run-code
       labelOnEdit: true
       action: run-specific-code
       class: ui-silk-control-play-blue
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

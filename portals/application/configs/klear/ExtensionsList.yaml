@@ -1,14 +1,14 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: extensionsList_screen
   screens: &extensions_screenLink
-    extensionsList_screen: &extensionsList_screenLink 
+    extensionsList_screen: &extensionsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       order:
         field: number
@@ -17,12 +17,12 @@ production:
       class: ui-silk-book-open
       forcedValues:
         <<: *forcedCompany
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             extensionsEdit_screen: true
-          dialogs: 
+          dialogs:
             extensionsDel_dialog: true
           default: extensionsEdit_screen
         blacklist:
@@ -37,14 +37,14 @@ production:
           number: true
           routeType: true
           target: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           extensionsNew_screen: true
-        dialogs: 
+        dialogs:
           extensionsDel_dialog: true
           importExtensions_dialog: true
-    extensionsNew_screen: &extensionsNew_screenLink 
+    extensionsNew_screen: &extensionsNew_screenLink
       <<: *Extensions
       controller: new
       class: ui-silk-add
@@ -73,7 +73,7 @@ production:
             userId: 1
             numberValue: 1
             friendValue: 1
-    extensionsEdit_screen: &extensionsEdit_screenLink 
+    extensionsEdit_screen: &extensionsEdit_screenLink
       <<: *Extensions
       controller: edit
       class: ui-silk-pencil
@@ -84,10 +84,10 @@ production:
       fields:
         blacklist:
           target: true
-      fixedPositions: 
+      fixedPositions:
         <<: *extensionFixedPositions_link
   dialogs: &extensions_dialogsLink
-    extensionsDel_dialog: &extensionsDel_dialogLink 
+    extensionsDel_dialog: &extensionsDel_dialogLink
       <<: *Extensions
       controller: delete
       class: ui-silk-bin
@@ -101,7 +101,7 @@ production:
     importExtensions_dialog:
       <<: *Extensions
       module: default
-      title: _("Import %s", ngettext('File', 'Files', 1))
+      title: _("Import %s", ngettext('Extension', 'Extensions', 0))
       label: false
       labelOnEdit: true
       labelOnList: true
@@ -123,11 +123,11 @@ production:
       controller: File
       action: free-upload
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

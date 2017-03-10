@@ -1,23 +1,23 @@
 #include ../conf.d/codecsHelp.yaml
 #include ../conf.d/updateMethodHelp.yaml
 
-production: 
+production:
   class: \IvozProvider\Model\Terminals
-  fields: 
-    TerminalModelId: 
+  fields:
+    TerminalModelId:
       title: _('Terminal model id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\TerminalModels
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - iden
             template: '%iden%'
           order: iden
-    name: 
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       pattern: "^[a-zA-Z0-9_]+$"
@@ -34,14 +34,14 @@ production:
       title: _('Domain')
       type: text
       maxLength: 255
-    disallow: 
+    disallow:
       title: _('Disallowed codecs')
       type: text
       trim: both
       defaultValue: all
       maxLength: 100
       <<: *codecsHelp
-    allow: 
+    allow:
       title: _('Allowed codecs')
       type: select
       trim: both
@@ -59,17 +59,17 @@ production:
             'g729': 'g729 - G.729A'
             'ilbc': 'ilbc - iLBC'
             'opus': 'opus - Opus codec'
-    direct_media_method: 
+    direct_media_method:
       title: _('CallerID update method')
       type: select
       defaultValue: invite
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           'invite': 'invite'
           'update': 'update'
       <<: *updateMethodHelp
-    password: 
+    password:
       title: ngettext('Password', 'Passwords', 1)
       type: text
       pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[!@#$%^&*()-+])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
@@ -82,31 +82,31 @@ production:
         label: _("Need help?")
       options:
         commands:
-          generatePassword_command: true 
-    companyId: 
+          generatePassword_command: true
+    companyId:
       title: _('Company id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    mac: 
+    mac:
       title: _('Mac')
       type: text
       trim: both
       maxLength: 12
-    lastProvisionDate: 
+    lastProvisionDate:
       title: _('Last provision date')
       type: picker
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
     terminalStatus:
       title: _('Status')
@@ -115,11 +115,11 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_TerminalStatus
         method: getData
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

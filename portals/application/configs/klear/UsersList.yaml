@@ -4,14 +4,14 @@
 #include CallForwardSettingsList.yaml
 #include DDIsList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: usersList_screen
   screens: &users_screensLink
-    usersList_screen: &usersList_screenLink 
+    usersList_screen: &usersList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       order:
         field: name
@@ -20,14 +20,14 @@ production:
       title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             usersEdit_screen: true
             callForwardSettingsList_screen: true
             huntGroupsRelUsersList_screen: true
-          dialogs: 
+          dialogs:
             usersDel_dialog: true
           default: usersEdit_screen
         order: &Users_orderLink
@@ -62,7 +62,7 @@ production:
           PickUpRelUsers: true
           timeout: true
           isBoss: true
-          maxCalls: true 
+          maxCalls: true
           callWaiting: true
           tokenKey: true
           countryId: true
@@ -71,14 +71,14 @@ production:
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           usersNew_screen: true
-        dialogs: 
+        dialogs:
           usersDel_dialog: true
           importUsers_dialog: true
-    usersNew_screen: &usersNew_screenLink 
+    usersNew_screen: &usersNew_screenLink
       <<: *Users
       controller: new
       class: ui-silk-add
@@ -107,7 +107,7 @@ production:
           PickUpRelUsers: true
           timeout: true
           isBoss: true
-          maxCalls: true 
+          maxCalls: true
           callWaiting: true
           tokenKey: true
           countryId: true
@@ -141,7 +141,7 @@ production:
         <<: *forcedCompany
       fields:
         blacklist:
-          maxCalls: true 
+          maxCalls: true
           tokenKey: true
           username: true
         order:
@@ -194,7 +194,7 @@ production:
           fields:
             PickUpRelUsers: 3
             HuntGroupsRelUsers: 3
-        
+
     #HuntGroupsRelUsers
     <<: *huntGroupsRelUsers_screensLink
     huntGroupsRelUsersList_screen:
@@ -211,7 +211,7 @@ production:
       <<: *huntGroupsRelUsersEdit_screenLink
       filterField: userId
       title: _("Edit Join of %s", ngettext('Hunt group', 'Hunt groups', 1))
-        
+
     #CallForwardSettings
     <<: *callForwardSettings_screensLink
     callForwardSettingsList_screen:
@@ -229,8 +229,8 @@ production:
         blacklist:
           targetTypeValue: true
 
-  dialogs: &users_dialogsLink 
-    usersDel_dialog: &usersDel_dialogLink 
+  dialogs: &users_dialogsLink
+    usersDel_dialog: &usersDel_dialogLink
       <<: *Users
       controller: delete
       class: ui-silk-bin
@@ -244,7 +244,7 @@ production:
     importUsers_dialog:
       <<: *Users
       module: default
-      title: _("Import %s", ngettext('File', 'Files', 1))
+      title: _("Import %s", ngettext('User', 'Users', 0))
       label: false
       labelOnEdit: true
       labelOnList: true
@@ -260,7 +260,7 @@ production:
       forcedValues:
         companyId: ${auth.companyId}
 
-      
+
     #HuntGroupsRelUsers
     <<: *huntGroupsRelUsers_dialogsLink
     huntGroupsRelUsersDel_dialog:
@@ -277,11 +277,11 @@ production:
       <<: *Users
       controller: File
       action: free-upload
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

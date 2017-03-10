@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-06 17:10+0100\n"
-"PO-Revision-Date: 2017-03-06 17:10+0100\n"
+"POT-Creation-Date: 2017-03-10 13:37+0100\n"
+"PO-Revision-Date: 2017-03-10 13:46+0100\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: ApplicationServersList.yaml:20 ApplicationServersList.yaml:46
 #: ApplicationServersList.yaml:58 ApplicationServersList.yaml:70
-#: ApplicationServersList.yaml:71 ApplicationServersList.yaml:72 klear.yaml:63
-#: klear.yaml:65
+#: ApplicationServersList.yaml:71 ApplicationServersList.yaml:72 klear.yaml:64
+#: klear.yaml:66
 msgid "Application server"
 msgid_plural "Application servers"
 msgstr[0] "Servidor de Aplicación"
@@ -206,7 +206,7 @@ msgstr "Añadir %s"
 #: BrandsList.yaml:133 CalendarsList.yaml:49 CallACLList.yaml:55
 #: CallACLPatternsList.yaml:48 CallACLRelPatternsList.yaml:43
 #: CallForwardSettingsList.yaml:70 ChangeHistoryList.yaml:47
-#: ChangeHistoryList.yaml:48 CompaniesList.yaml:119 CompanyAdminsList.yaml:44
+#: ChangeHistoryList.yaml:48 CompaniesList.yaml:121 CompanyAdminsList.yaml:44
 #: CompanyAdminsList.yaml:45 CompanyServicesList.yaml:50
 #: CompanyServicesList.yaml:51 CompanyURLsList.yaml:78
 #: ConferenceRoomsList.yaml:66 ConferenceRoomsList.yaml:67
@@ -264,7 +264,7 @@ msgstr "Editar %s %2s"
 #: BrandsList.yaml:177 CalendarsList.yaml:75 CallACLList.yaml:96
 #: CallACLList.yaml:106 CallACLPatternsList.yaml:58
 #: CallACLRelPatternsList.yaml:50 CallForwardSettingsList.yaml:84
-#: ChangeHistoryList.yaml:58 CompaniesList.yaml:224 CompanyAdminsList.yaml:52
+#: ChangeHistoryList.yaml:58 CompaniesList.yaml:226 CompanyAdminsList.yaml:52
 #: CompanyServicesList.yaml:58 CompanyURLsList.yaml:92
 #: ConferenceRoomsList.yaml:78 CountriesList.yaml:113 DDIsList.yaml:161
 #: DomainsList.yaml:126 EtagVersionsList.yaml:52 ExtensionsList.yaml:95
@@ -307,7 +307,7 @@ msgstr "Borrar %s"
 #: BrandsList.yaml:178 CalendarsList.yaml:76 CallACLList.yaml:97
 #: CallACLList.yaml:107 CallACLPatternsList.yaml:59
 #: CallACLRelPatternsList.yaml:51 CallForwardSettingsList.yaml:85
-#: ChangeHistoryList.yaml:59 CompaniesList.yaml:225 CompanyAdminsList.yaml:53
+#: ChangeHistoryList.yaml:59 CompaniesList.yaml:227 CompanyAdminsList.yaml:53
 #: CompanyServicesList.yaml:59 CompanyURLsList.yaml:93
 #: ConferenceRoomsList.yaml:79 CountriesList.yaml:114 DDIsList.yaml:162
 #: DomainsList.yaml:127 EtagVersionsList.yaml:53 ExtensionsList.yaml:96
@@ -349,7 +349,7 @@ msgstr "Do you want to delete this %s?"
 #: BrandsList.yaml:179 CalendarsList.yaml:77 CallACLList.yaml:98
 #: CallACLList.yaml:108 CallACLPatternsList.yaml:60
 #: CallACLRelPatternsList.yaml:52 CallForwardSettingsList.yaml:86
-#: ChangeHistoryList.yaml:60 CompaniesList.yaml:226 CompanyAdminsList.yaml:54
+#: ChangeHistoryList.yaml:60 CompaniesList.yaml:228 CompanyAdminsList.yaml:54
 #: CompanyServicesList.yaml:60 CompanyURLsList.yaml:94
 #: ConferenceRoomsList.yaml:80 CountriesList.yaml:115 DDIsList.yaml:163
 #: DomainsList.yaml:128 EtagVersionsList.yaml:54 ExtensionsList.yaml:97
@@ -422,7 +422,7 @@ msgstr[1] "Ast voicemail(s)"
 
 #: BrandDDIsList.yaml:14 DDIsList.yaml:14 DDIsList.yaml:105 DDIsList.yaml:123
 #: DDIsList.yaml:140 DDIsList.yaml:161 DDIsList.yaml:162 DDIsList.yaml:163
-#: klear.yaml:133 klear.yaml:135 klear.yaml:203 klear.yaml:205
+#: klear.yaml:134 klear.yaml:136 klear.yaml:204 klear.yaml:206
 #: model/DDIs.yaml:21 model/KamTrunksUacreg.yaml:22
 #: model/KamTrunksUacreg.yaml:144 model/Recordings.yaml:50
 msgid "DDI"
@@ -485,8 +485,8 @@ msgstr[0] "Portal"
 msgstr[1] "Portales"
 
 #: BrandsList.yaml:17 BrandsList.yaml:68 BrandsList.yaml:133
-#: BrandsList.yaml:177 BrandsList.yaml:178 BrandsList.yaml:179 klear.yaml:55
-#: klear.yaml:57 model/BrandOperators.yaml:5 model/Companies.yaml:10
+#: BrandsList.yaml:177 BrandsList.yaml:178 BrandsList.yaml:179 klear.yaml:56
+#: klear.yaml:58 model/BrandOperators.yaml:5 model/Companies.yaml:11
 #: model/GenericCallACLPatterns.yaml:5 model/Invoices.yaml:125
 #: model/PeeringContracts.yaml:16 model/PricingPlans.yaml:29
 #: model/TargetPatterns.yaml:31 model/TransformationRulesetGroups.yaml:17
@@ -507,7 +507,7 @@ msgstr "Dominios SIP"
 msgid "Locales"
 msgstr "Localización"
 
-#: BrandsList.yaml:109 CompaniesList.yaml:144
+#: BrandsList.yaml:109 CompaniesList.yaml:146
 msgid "Invoice data"
 msgstr "Datos de facturación"
 
@@ -526,15 +526,15 @@ msgstr "Emular Marca %s"
 
 #: CalendarsList.yaml:16 CalendarsList.yaml:40 CalendarsList.yaml:49
 #: CalendarsList.yaml:75 CalendarsList.yaml:76 CalendarsList.yaml:77
-#: klear.yaml:211 klear.yaml:213 model/HolidayDates.yaml:5
+#: klear.yaml:212 klear.yaml:214 model/HolidayDates.yaml:5
 msgid "Calendar"
 msgid_plural "Calendars"
 msgstr[0] "Calendario"
 msgstr[1] "Calendarios"
 
 #: CallACLList.yaml:16 CallACLList.yaml:41 CallACLList.yaml:55
-#: CallACLList.yaml:96 CallACLList.yaml:97 CallACLList.yaml:98 klear.yaml:219
-#: klear.yaml:221 model/CallACLRelPatterns.yaml:5 model/Friends.yaml:97
+#: CallACLList.yaml:96 CallACLList.yaml:97 CallACLList.yaml:98 klear.yaml:220
+#: klear.yaml:222 model/CallACLRelPatterns.yaml:5 model/Friends.yaml:97
 #: model/Users.yaml:122
 msgid "Call ACL"
 msgid_plural "Call ACLs"
@@ -552,11 +552,10 @@ msgstr "Patrones"
 #: CallACLList.yaml:77 CallACLList.yaml:88 CallACLList.yaml:106
 #: CallACLList.yaml:107 CallACLRelPatternsList.yaml:50
 #: CallACLRelPatternsList.yaml:51
-#, fuzzy
 msgid "Call ACL Rel rel pattern"
 msgid_plural "Call ACL Rel rel pattern"
-msgstr[0] "Call ACL Rel rel pattern"
-msgstr[1] "Call ACL Rel patterns"
+msgstr[0] "Patrón de permisos de llamada"
+msgstr[1] "Patrones de permisos de llamada"
 
 #: CallACLList.yaml:83
 #, python-format
@@ -573,13 +572,13 @@ msgstr "Editar patrón de %s"
 #: CallACLRelPatternsList.yaml:52
 msgid "Call ACL Rel pattern"
 msgid_plural "Call ACL Rel patterns"
-msgstr[0] "Call ACL Rel pattern"
-msgstr[1] "Call ACL Rel patterns"
+msgstr[0] "Patrón ACL"
+msgstr[1] "Patrones ACL"
 
 #: CallACLPatternsList.yaml:16 CallACLPatternsList.yaml:39
 #: CallACLPatternsList.yaml:48 CallACLPatternsList.yaml:58
-#: CallACLPatternsList.yaml:59 CallACLPatternsList.yaml:60 klear.yaml:223
-#: klear.yaml:225 model/CallACLRelPatterns.yaml:19
+#: CallACLPatternsList.yaml:59 CallACLPatternsList.yaml:60 klear.yaml:224
+#: klear.yaml:226 model/CallACLRelPatterns.yaml:19
 msgid "Call ACL pattern"
 msgid_plural "Call ACL patterns"
 msgstr[0] "Patrón permisos llamada"
@@ -603,12 +602,12 @@ msgstr[1] "Opciones de desvío"
 #: ChangeHistoryList.yaml:60
 msgid "Change history"
 msgid_plural "Change history(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Histórico del cambio"
+msgstr[1] "Histórico de cambios"
 
-#: CompaniesList.yaml:20 CompaniesList.yaml:106 CompaniesList.yaml:119
-#: CompaniesList.yaml:224 CompaniesList.yaml:225 CompaniesList.yaml:226
-#: klear.yaml:109 klear.yaml:111 model/Calendars.yaml:5 model/CallACL.yaml:5
+#: CompaniesList.yaml:20 CompaniesList.yaml:106 CompaniesList.yaml:121
+#: CompaniesList.yaml:226 CompaniesList.yaml:227 CompaniesList.yaml:228
+#: klear.yaml:110 klear.yaml:112 model/Calendars.yaml:5 model/CallACL.yaml:5
 #: model/CallACLPatterns.yaml:5 model/ExternalCallFilters.yaml:5
 #: model/Invoices.yaml:110 model/Locutions.yaml:5 model/MusicOnHold.yaml:5
 #: model/OutgoingRouting.yaml:86 model/PricingPlansRelCompanies.yaml:20
@@ -618,25 +617,25 @@ msgid_plural "Companies"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
 
-#: CompaniesList.yaml:132
+#: CompaniesList.yaml:134
 #, fuzzy
 msgid "Server data"
 msgstr "Tipo de fichero"
 
-#: CompaniesList.yaml:155 model/Companies.yaml:204
+#: CompaniesList.yaml:157 model/Companies.yaml:205
 msgid "On-demand call recording"
 msgstr "Grabación bajo demanda"
 
-#: CompaniesList.yaml:161
+#: CompaniesList.yaml:163
 msgid "Externally rated options"
 msgstr "Tarificación externa"
 
-#: CompaniesList.yaml:231
+#: CompaniesList.yaml:233
 #, python-format
 msgid "Emulate Company %s"
 msgstr "Emular Compañía %s"
 
-#: CompaniesList.yaml:247 DDIsList.yaml:170 ExtensionsList.yaml:104
+#: CompaniesList.yaml:249 DDIsList.yaml:170 ExtensionsList.yaml:104
 #: HolidayDatesList.yaml:61 TerminalsList.yaml:138 UsersList.yaml:247
 #: model/FaxesInOut.yaml:61 model/GenericMusicOnHold.yaml:18
 #: model/GenericMusicOnHold.yaml:46 model/ImportFiles.yaml:5
@@ -645,7 +644,7 @@ msgid_plural "Files"
 msgstr[0] "Fichero"
 msgstr[1] "Ficheros"
 
-#: CompaniesList.yaml:247 DDIsList.yaml:170 ExtensionsList.yaml:104
+#: CompaniesList.yaml:249 DDIsList.yaml:170 ExtensionsList.yaml:104
 #: HolidayDatesList.yaml:61 PricingPlansList.yaml:150
 #: PricingPlansRelTargetPatternsList.yaml:114 TargetPatternsList.yaml:123
 #: TerminalsList.yaml:138 UsersList.yaml:247
@@ -682,7 +681,7 @@ msgstr[1] "Empresas"
 #: ConferenceRoomsList.yaml:16 ConferenceRoomsList.yaml:44
 #: ConferenceRoomsList.yaml:66 ConferenceRoomsList.yaml:67
 #: ConferenceRoomsList.yaml:78 ConferenceRoomsList.yaml:79
-#: ConferenceRoomsList.yaml:80 klear.yaml:243 klear.yaml:245
+#: ConferenceRoomsList.yaml:80 klear.yaml:244 klear.yaml:246
 msgid "Conference room"
 msgid_plural "Conference rooms"
 msgstr[0] "Sala de conferencias"
@@ -690,11 +689,11 @@ msgstr[1] "Salas de conferencias"
 
 #: ConferenceRoomsList.yaml:55
 msgid "Authentication data"
-msgstr ""
+msgstr "Datos de autenticación"
 
 #: CountriesList.yaml:20 CountriesList.yaml:45 CountriesList.yaml:52
 #: CountriesList.yaml:53 CountriesList.yaml:113 CountriesList.yaml:114
-#: CountriesList.yaml:115 model/Brands.yaml:112 model/Companies.yaml:111
+#: CountriesList.yaml:115 model/Brands.yaml:112 model/Companies.yaml:112
 msgid "Country"
 msgid_plural "Countries"
 msgstr[0] "País"
@@ -708,15 +707,14 @@ msgstr "Grabaciones"
 msgid "Additional configuration"
 msgstr "Configuración Adicional"
 
-#: Dashboard.yaml:12 DashboardMaps.yaml:15 klear.yaml:278
-#, fuzzy
+#: Dashboard.yaml:12 DashboardMaps.yaml:15 klear.yaml:279
 msgid "Main platform view"
-msgstr "Operador de Plataforma"
+msgstr "Vista general de la plataforma"
 
 #: DomainsList.yaml:18 DomainsList.yaml:62 DomainsList.yaml:83
 #: DomainsList.yaml:84 DomainsList.yaml:89 DomainsList.yaml:90
-#: DomainsList.yaml:126 DomainsList.yaml:127 DomainsList.yaml:128 klear.yaml:59
-#: klear.yaml:61 model/Domains.yaml:5 model/KamTrunksDomain.yaml:5
+#: DomainsList.yaml:126 DomainsList.yaml:127 DomainsList.yaml:128 klear.yaml:60
+#: klear.yaml:62 model/Domains.yaml:5 model/KamTrunksDomain.yaml:5
 #: model/KamTrunksUacreg.yaml:51 model/KamUsersDomain.yaml:5
 #: model/KamUsersLocation.yaml:16 model/Terminals.yaml:34
 msgid "Domain"
@@ -739,12 +737,12 @@ msgstr "Ver %s %2s"
 #: EtagVersionsList.yaml:54
 msgid "Etag version"
 msgid_plural "Etag versions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Etag version"
+msgstr[1] "Etag versions"
 
 #: ExtensionsList.yaml:16 ExtensionsList.yaml:53 ExtensionsList.yaml:83
 #: ExtensionsList.yaml:95 ExtensionsList.yaml:96 ExtensionsList.yaml:97
-#: klear.yaml:195 klear.yaml:197 model/CallForwardSettings.yaml:80
+#: klear.yaml:196 klear.yaml:198 model/CallForwardSettings.yaml:80
 msgid "Extension"
 msgid_plural "Extensions"
 msgstr[0] "Extensión"
@@ -775,7 +773,7 @@ msgstr[1] "External call filter rel schedules"
 #: ExternalCallFiltersList.yaml:16 ExternalCallFiltersList.yaml:62
 #: ExternalCallFiltersList.yaml:110 ExternalCallFiltersList.yaml:127
 #: ExternalCallFiltersList.yaml:128 ExternalCallFiltersList.yaml:129
-#: klear.yaml:207 klear.yaml:209
+#: klear.yaml:208 klear.yaml:210
 msgid "External call filter"
 msgid_plural "External call filters"
 msgstr[0] "Filtro de entrada externo"
@@ -802,7 +800,7 @@ msgid "Send new %s"
 msgstr "Enviar nuevo %s"
 
 #: FaxesList.yaml:19 FaxesList.yaml:47 FaxesList.yaml:72 FaxesList.yaml:176
-#: FaxesList.yaml:177 FaxesList.yaml:178 klear.yaml:263
+#: FaxesList.yaml:177 FaxesList.yaml:178 klear.yaml:264
 #: model/OutgoingRouting.yaml:22
 msgid "Fax"
 msgid_plural "Faxes"
@@ -810,14 +808,12 @@ msgstr[0] "Fax Virtual"
 msgstr[1] "Faxes Virtuales"
 
 #: FaxesList.yaml:56
-#, fuzzy
 msgid "Outbound configuration"
-msgstr "Configuración Error"
+msgstr "Configuración Saliente"
 
 #: FaxesList.yaml:62
-#, fuzzy
 msgid "Inbound configuration"
-msgstr "Configuración Error"
+msgstr "Configuración Entrante"
 
 #: FaxesList.yaml:83
 #, python-format
@@ -844,7 +840,7 @@ msgstr "Destino desvío"
 #: FixedCostsList.yaml:66 FixedCostsRelInvoicesList.yaml:39
 #: FixedCostsRelInvoicesList.yaml:56 FixedCostsRelInvoicesList.yaml:57
 #: FixedCostsRelInvoicesList.yaml:70 FixedCostsRelInvoicesList.yaml:71
-#: FixedCostsRelInvoicesList.yaml:72 klear.yaml:157 klear.yaml:159
+#: FixedCostsRelInvoicesList.yaml:72 klear.yaml:158 klear.yaml:160
 #: model/FixedCostsRelInvoices.yaml:19 model/Invoices.yaml:166
 msgid "Fixed cost"
 msgid_plural "Fixed costs"
@@ -859,48 +855,37 @@ msgstr[1] "Costes fijo para factura"
 
 #: FriendsList.yaml:18 FriendsList.yaml:59 FriendsList.yaml:126
 #: FriendsList.yaml:127 FriendsList.yaml:174 FriendsList.yaml:175
-#: FriendsList.yaml:176 klear.yaml:199 klear.yaml:201 model/DDIs.yaml:83
+#: FriendsList.yaml:176 klear.yaml:200 klear.yaml:202 model/DDIs.yaml:83
 #: model/Extensions.yaml:74
-#, fuzzy
 msgid "Friend"
 msgid_plural "Friends"
-msgstr[0] ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  6extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  10extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-msgstr[1] ""
-"#-#-#-#-#  1extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  5extracted.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+msgstr[0] "Friend"
+msgstr[1] "Friends"
 
 #: FriendsList.yaml:91 UsersList.yaml:128 UsersList.yaml:175
-#, fuzzy
 msgid "Basic Configuration"
-msgstr "Configuración básica"
+msgstr "Basic Configuration"
 
 #: FriendsList.yaml:104
-#, fuzzy
 msgid "Outgoing Configuration"
-msgstr "Configuración Error"
+msgstr "Configuración Saliente"
 
 #: FriendsList.yaml:112
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Configuración de Marca"
+msgstr "Configuración Avanzada"
 
 #: FriendsPatternsList.yaml:16 FriendsPatternsList.yaml:37
 #: FriendsPatternsList.yaml:47 FriendsPatternsList.yaml:48
 #: FriendsPatternsList.yaml:55 FriendsPatternsList.yaml:56
 #: FriendsPatternsList.yaml:57
-#, fuzzy
 msgid "Friendspattern"
 msgid_plural "Friendspatterns"
-msgstr[0] "Patrón de precio"
-msgstr[1] "Patrones de precio"
+msgstr[0] "Patrón de friends"
+msgstr[1] "Patrones de friend"
 
 #: GenericCallACLPatternsList.yaml:15 GenericCallACLPatternsList.yaml:38
 #: GenericCallACLPatternsList.yaml:56 GenericCallACLPatternsList.yaml:57
-#: GenericCallACLPatternsList.yaml:58 klear.yaml:137 klear.yaml:139
+#: GenericCallACLPatternsList.yaml:58 klear.yaml:138 klear.yaml:140
 msgid "Generic call ACL pattern"
 msgid_plural "Generic call ACL patterns"
 msgstr[0] "Patrón de permiso genérico"
@@ -909,13 +894,13 @@ msgstr[1] "Patrones de permiso genéricos"
 #: GenericCallACLPatternsList.yaml:49
 msgid "Generic call a c l pattern"
 msgid_plural "Generic call ACL patterns"
-msgstr[0] "Generic call a c l pattern"
+msgstr[0] "Generic call ACL pattern"
 msgstr[1] "Generic call ACL patterns"
 
 #: GenericMusicOnHoldList.yaml:15 GenericMusicOnHoldList.yaml:44
 #: GenericMusicOnHoldList.yaml:70 GenericMusicOnHoldList.yaml:88
-#: GenericMusicOnHoldList.yaml:89 GenericMusicOnHoldList.yaml:90 klear.yaml:125
-#: klear.yaml:127
+#: GenericMusicOnHoldList.yaml:89 GenericMusicOnHoldList.yaml:90 klear.yaml:126
+#: klear.yaml:128
 #, fuzzy
 msgid "Generic music on hold"
 msgid_plural "Generic music on hold(s)"
@@ -932,7 +917,7 @@ msgstr[1] "Festivos"
 #: HuntGroupsList.yaml:16 HuntGroupsList.yaml:50 HuntGroupsList.yaml:89
 #: HuntGroupsList.yaml:206 HuntGroupsList.yaml:207 HuntGroupsList.yaml:208
 #: UsersList.yaml:202 UsersList.yaml:213 UsersList.yaml:268 UsersList.yaml:269
-#: UsersList.yaml:270 klear.yaml:227 klear.yaml:229 model/Users.yaml:301
+#: UsersList.yaml:270 klear.yaml:228 klear.yaml:230 model/Users.yaml:301
 msgid "Hunt group"
 msgid_plural "Hunt groups"
 msgstr[0] "Grupo de salto"
@@ -952,7 +937,7 @@ msgstr "Configuración No Contesta"
 #: HuntGroupsList.yaml:163 HuntGroupsList.yaml:187 HuntGroupsList.yaml:194
 #: HuntGroupsList.yaml:215 UsersList.yaml:20 UsersList.yaml:87
 #: UsersList.yaml:139 UsersList.yaml:238 UsersList.yaml:239 UsersList.yaml:240
-#: klear.yaml:187 klear.yaml:189 model/ChangeHistory.yaml:5
+#: klear.yaml:188 klear.yaml:190 model/ChangeHistory.yaml:5
 #: model/Extensions.yaml:146
 msgid "User"
 msgid_plural "Users"
@@ -997,14 +982,12 @@ msgstr[0] "IVR a medida"
 msgstr[1] "IVRs a medida"
 
 #: IVRCustomEntriesList.yaml:52
-#, fuzzy
 msgid "Entry information"
-msgstr "Información sobre transferencias"
+msgstr "Información de registro"
 
 #: IVRCustomEntriesList.yaml:58
-#, fuzzy
 msgid "Routing configuration"
-msgstr "Configuración Error"
+msgstr "Configuración de enrutado"
 
 #: IVRCustomList.yaml:15 IVRCustomList.yaml:59 IVRCustomList.yaml:104
 #: IVRCustomList.yaml:133 IVRCustomList.yaml:134 IVRCustomList.yaml:135
@@ -1015,22 +998,21 @@ msgstr[1] "IVRs a medida"
 
 #: InvoiceTemplatesList.yaml:17 InvoiceTemplatesList.yaml:45
 #: InvoiceTemplatesList.yaml:67 InvoiceTemplatesList.yaml:93
-#: InvoiceTemplatesList.yaml:94 InvoiceTemplatesList.yaml:95 klear.yaml:167
+#: InvoiceTemplatesList.yaml:94 InvoiceTemplatesList.yaml:95 klear.yaml:168
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Plantilla de factura"
 msgstr[1] "Plantillas de facturas"
 
 #: InvoiceTemplatesList.yaml:100
-#, fuzzy
 msgid "Template testing"
-msgstr "Plantilla"
+msgstr "Prueba de plantilla"
 
-#: InvoicesList.yaml:17 klear.yaml:169
+#: InvoicesList.yaml:17 klear.yaml:170
 msgid "Invoices"
 msgstr "Facturas"
 
-#: InvoicesList.yaml:57 InvoicesList.yaml:97 klear.yaml:171
+#: InvoicesList.yaml:57 InvoicesList.yaml:97 klear.yaml:172
 #, fuzzy
 msgid "Invoice"
 msgstr "Factura(s)"
@@ -1063,8 +1045,8 @@ msgstr "Tarificar %s"
 
 #: KamAccCdrsGodList.yaml:23 KamAccCdrsGodList.yaml:73
 #: KamAccCdrsGodList.yaml:74 KamAccCdrsList.yaml:23 KamAccCdrsList.yaml:73
-#: KamAccCdrsList.yaml:74 klear.yaml:95 klear.yaml:97 klear.yaml:173
-#: klear.yaml:175
+#: KamAccCdrsList.yaml:74 klear.yaml:96 klear.yaml:98 klear.yaml:174
+#: klear.yaml:176
 msgid "Billable call"
 msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
@@ -1092,7 +1074,7 @@ msgstr[1] "Balanceadores"
 #: KamPikeTrustedList.yaml:16 KamPikeTrustedList.yaml:42
 #: KamPikeTrustedList.yaml:61 KamPikeTrustedList.yaml:62
 #: KamPikeTrustedList.yaml:69 KamPikeTrustedList.yaml:70
-#: KamPikeTrustedList.yaml:71 klear.yaml:81
+#: KamPikeTrustedList.yaml:71 klear.yaml:82
 #, fuzzy
 msgid "Trusted IP address"
 msgid_plural "Trusted IP address(es)"
@@ -1210,7 +1192,7 @@ msgstr[1] "Kam users domain(s)"
 
 #: LanguagesList.yaml:15 LanguagesList.yaml:36 LanguagesList.yaml:43
 #: LanguagesList.yaml:50 LanguagesList.yaml:51 LanguagesList.yaml:52
-#: model/AstVoicemail.yaml:53 model/Brands.yaml:129 model/Companies.yaml:162
+#: model/AstVoicemail.yaml:53 model/Brands.yaml:129 model/Companies.yaml:163
 #: model/Users.yaml:320
 msgid "Language"
 msgid_plural "Languages"
@@ -1247,7 +1229,7 @@ msgstr[1] "Reglas LCR"
 
 #: LocutionsList.yaml:15 LocutionsList.yaml:44 LocutionsList.yaml:69
 #: LocutionsList.yaml:94 LocutionsList.yaml:95 LocutionsList.yaml:96
-#: klear.yaml:247 klear.yaml:249 model/HolidayDates.yaml:33
+#: klear.yaml:248 klear.yaml:250 model/HolidayDates.yaml:33
 msgid "Locution"
 msgid_plural "Locutions"
 msgstr[0] "Locución"
@@ -1255,8 +1237,8 @@ msgstr[1] "Locuciones"
 
 #: MainOperatorsList.yaml:15 MainOperatorsList.yaml:47
 #: MainOperatorsList.yaml:72 MainOperatorsList.yaml:84
-#: MainOperatorsList.yaml:85 MainOperatorsList.yaml:86 klear.yaml:87
-#: klear.yaml:89
+#: MainOperatorsList.yaml:85 MainOperatorsList.yaml:86 klear.yaml:88
+#: klear.yaml:90
 msgid "Main operator"
 msgid_plural "Main operators"
 msgstr[0] "Operador de Plataforma"
@@ -1265,7 +1247,7 @@ msgstr[1] "Operadores de Plataforma"
 #: MediaRelaySetsList.yaml:17 MediaRelaySetsList.yaml:36
 #: MediaRelaySetsList.yaml:45 MediaRelaySetsList.yaml:46
 #: MediaRelaySetsList.yaml:67 MediaRelaySetsList.yaml:68
-#: MediaRelaySetsList.yaml:69 klear.yaml:75 klear.yaml:77
+#: MediaRelaySetsList.yaml:69 klear.yaml:76 klear.yaml:78
 msgid "Media relay set"
 msgid_plural "Media relay sets"
 msgstr[0] "Servidor de Media"
@@ -1273,7 +1255,7 @@ msgstr[1] "Servidores de Media"
 
 #: MusicOnHoldList.yaml:15 MusicOnHoldList.yaml:44 MusicOnHoldList.yaml:71
 #: MusicOnHoldList.yaml:87 MusicOnHoldList.yaml:88 MusicOnHoldList.yaml:89
-#: klear.yaml:251 klear.yaml:253 model/Companies.yaml:54
+#: klear.yaml:252 klear.yaml:254 model/Companies.yaml:55
 msgid "Music on hold"
 msgid_plural "Musics on hold"
 msgstr[0] "Música en espera"
@@ -1366,8 +1348,8 @@ msgstr "Personalización de la cabecera From"
 
 #: PeeringContractsList.yaml:19 PeeringContractsList.yaml:50
 #: PeeringContractsList.yaml:63 PeeringContractsList.yaml:115
-#: PeeringContractsList.yaml:116 PeeringContractsList.yaml:117 klear.yaml:117
-#: klear.yaml:119 model/OutgoingRouting.yaml:55 model/PeerServers.yaml:5
+#: PeeringContractsList.yaml:116 PeeringContractsList.yaml:117 klear.yaml:118
+#: klear.yaml:120 model/OutgoingRouting.yaml:55 model/PeerServers.yaml:5
 msgid "Peering contract"
 msgid_plural "Peering contracts"
 msgstr[0] "Contrato de Peering"
@@ -1380,24 +1362,24 @@ msgstr[0] "Transformación numérica"
 msgstr[1] "Transformaciones numéricas"
 
 #: PeeringContractsList.yaml:103 PricingPlansRelCompaniesList.yaml:79
-#: klear.yaml:57 klear.yaml:61 klear.yaml:65 klear.yaml:69 klear.yaml:73
-#: klear.yaml:77 klear.yaml:81 klear.yaml:85 klear.yaml:89 klear.yaml:93
-#: klear.yaml:97 klear.yaml:101 klear.yaml:111 klear.yaml:115 klear.yaml:119
-#: klear.yaml:123 klear.yaml:127 klear.yaml:131 klear.yaml:135 klear.yaml:139
-#: klear.yaml:143 klear.yaml:147 klear.yaml:151 klear.yaml:155 klear.yaml:159
-#: klear.yaml:163 klear.yaml:167 klear.yaml:171 klear.yaml:175 klear.yaml:179
-#: klear.yaml:189 klear.yaml:193 klear.yaml:197 klear.yaml:201 klear.yaml:205
-#: klear.yaml:209 klear.yaml:213 klear.yaml:217 klear.yaml:221 klear.yaml:225
-#: klear.yaml:229 klear.yaml:233 klear.yaml:237 klear.yaml:241 klear.yaml:245
-#: klear.yaml:249 klear.yaml:253 klear.yaml:257 klear.yaml:261 klear.yaml:265
-#: klear.yaml:269
+#: klear.yaml:58 klear.yaml:62 klear.yaml:66 klear.yaml:70 klear.yaml:74
+#: klear.yaml:78 klear.yaml:82 klear.yaml:86 klear.yaml:90 klear.yaml:94
+#: klear.yaml:98 klear.yaml:102 klear.yaml:112 klear.yaml:116 klear.yaml:120
+#: klear.yaml:124 klear.yaml:128 klear.yaml:132 klear.yaml:136 klear.yaml:140
+#: klear.yaml:144 klear.yaml:148 klear.yaml:152 klear.yaml:156 klear.yaml:160
+#: klear.yaml:164 klear.yaml:168 klear.yaml:172 klear.yaml:176 klear.yaml:180
+#: klear.yaml:190 klear.yaml:194 klear.yaml:198 klear.yaml:202 klear.yaml:206
+#: klear.yaml:210 klear.yaml:214 klear.yaml:218 klear.yaml:222 klear.yaml:226
+#: klear.yaml:230 klear.yaml:234 klear.yaml:238 klear.yaml:242 klear.yaml:246
+#: klear.yaml:250 klear.yaml:254 klear.yaml:258 klear.yaml:262 klear.yaml:266
+#: klear.yaml:270
 #, python-format
 msgid "List of %s"
 msgstr "Listado de %s"
 
 #: PickUpGroupsList.yaml:15 PickUpGroupsList.yaml:38 PickUpGroupsList.yaml:47
 #: PickUpGroupsList.yaml:56 PickUpGroupsList.yaml:57 PickUpGroupsList.yaml:58
-#: klear.yaml:231 klear.yaml:233
+#: klear.yaml:232 klear.yaml:234
 msgid "Pick up group"
 msgid_plural "Pick up groups"
 msgstr[0] "Grupo de captura"
@@ -1417,7 +1399,7 @@ msgstr[1] "Pick up rel users"
 #: PricingPlansRelCompaniesList.yaml:16 PricingPlansRelCompaniesList.yaml:50
 #: PricingPlansRelCompaniesList.yaml:70 PricingPlansRelCompaniesList.yaml:95
 #: PricingPlansRelCompaniesList.yaml:96 PricingPlansRelCompaniesList.yaml:97
-#: TargetPatternsList.yaml:101 klear.yaml:153 model/KamAccCdrsBrand.yaml:235
+#: TargetPatternsList.yaml:101 klear.yaml:154 model/KamAccCdrsBrand.yaml:235
 #: model/KamAccCdrsGod.yaml:232 model/PricingPlansRelCompanies.yaml:5
 #: model/PricingPlansRelTargetPatterns.yaml:56
 msgid "Pricing plan"
@@ -1475,9 +1457,9 @@ msgid "Delete %s de %2s"
 msgstr "Borrar %s"
 
 #: PricingPlansRelCompaniesList.yaml:96
-#, fuzzy, python-format
+#, python-format
 msgid "Do you want to delete this %s from %2s?"
-msgstr "¿Quieres eliminar %s %2s?"
+msgstr "¿Quieres eliminar %s de %2s?"
 
 #: PricingPlansRelCompaniesList.yaml:103
 msgid "Simulate a call"
@@ -1499,7 +1481,7 @@ msgid_plural "Pricing plans rel target patterns"
 msgstr[0] "Pricing plans rel target pattern"
 msgstr[1] "Pricing plans rel target patterns"
 
-#: ProxyTrunksList.yaml:14 ProxyTrunksList.yaml:26 klear.yaml:71 klear.yaml:73
+#: ProxyTrunksList.yaml:14 ProxyTrunksList.yaml:26 klear.yaml:72 klear.yaml:74
 msgid "Proxy trunk"
 msgid_plural "Proxy trunks"
 msgstr[0] "Proxy de Salida"
@@ -1510,7 +1492,7 @@ msgid "Basic Info"
 msgstr "Configuración básica"
 
 #: ProxyUsersList.yaml:16 ProxyUsersList.yaml:29 ProxyUsersList.yaml:36
-#: ProxyUsersList.yaml:37 klear.yaml:67 klear.yaml:69
+#: ProxyUsersList.yaml:37 klear.yaml:68 klear.yaml:70
 msgid "Proxy user"
 msgid_plural "Proxy users"
 msgstr[0] "Proxy de Usuarios"
@@ -1518,7 +1500,7 @@ msgstr[1] "Proxies de Usuarios"
 
 #: RecordingsList.yaml:20 RecordingsList.yaml:51 RecordingsList.yaml:52
 #: RecordingsList.yaml:78 RecordingsList.yaml:79 RecordingsList.yaml:80
-#: klear.yaml:255 klear.yaml:257
+#: klear.yaml:256 klear.yaml:258
 msgid "Recording"
 msgid_plural "Recordings"
 msgstr[0] "Grabación"
@@ -1527,7 +1509,7 @@ msgstr[1] "Grabaciones"
 #: RoutingPatternGroupsList.yaml:16 RoutingPatternGroupsList.yaml:41
 #: RoutingPatternGroupsList.yaml:50 RoutingPatternGroupsList.yaml:51
 #: RoutingPatternGroupsList.yaml:59 RoutingPatternGroupsList.yaml:60
-#: RoutingPatternGroupsList.yaml:61 klear.yaml:145 klear.yaml:147
+#: RoutingPatternGroupsList.yaml:61 klear.yaml:146 klear.yaml:148
 msgid "Routing pattern group"
 msgid_plural "Routing pattern groups"
 msgstr[0] "Grupo de patrones de destino"
@@ -1548,7 +1530,7 @@ msgstr[1] "Patrones de destino"
 #: RoutingPatternsList.yaml:16 RoutingPatternsList.yaml:41
 #: RoutingPatternsList.yaml:50 RoutingPatternsList.yaml:51
 #: RoutingPatternsList.yaml:59 RoutingPatternsList.yaml:60
-#: RoutingPatternsList.yaml:61 klear.yaml:141 klear.yaml:143 klear.yaml:163
+#: RoutingPatternsList.yaml:61 klear.yaml:142 klear.yaml:144 klear.yaml:164
 msgid "Routing pattern"
 msgid_plural "Routing patterns"
 msgstr[0] "Patrón de destino"
@@ -1556,7 +1538,7 @@ msgstr[1] "Patrones de destino"
 
 #: SchedulesList.yaml:15 SchedulesList.yaml:46 SchedulesList.yaml:77
 #: SchedulesList.yaml:88 SchedulesList.yaml:89 SchedulesList.yaml:90
-#: klear.yaml:215 klear.yaml:217
+#: klear.yaml:216 klear.yaml:218
 #, fuzzy
 msgid "Schedule"
 msgid_plural "Schedules"
@@ -1565,8 +1547,8 @@ msgstr[1] "Horarios"
 
 #: ServicesList.yaml:21 ServicesList.yaml:42 ServicesList.yaml:49
 #: ServicesList.yaml:50 ServicesList.yaml:63 ServicesList.yaml:64
-#: ServicesList.yaml:65 klear.yaml:91 klear.yaml:93 klear.yaml:129
-#: klear.yaml:131 klear.yaml:259 klear.yaml:261
+#: ServicesList.yaml:65 klear.yaml:92 klear.yaml:94 klear.yaml:130
+#: klear.yaml:132 klear.yaml:260 klear.yaml:262
 msgid "Service"
 msgid_plural "Services"
 msgstr[0] "Servicio"
@@ -1575,7 +1557,7 @@ msgstr[1] "Servicios"
 #: TargetPatternsList.yaml:17 TargetPatternsList.yaml:55
 #: TargetPatternsList.yaml:74 TargetPatternsList.yaml:114
 #: TargetPatternsList.yaml:115 TargetPatternsList.yaml:116
-#: TargetPatternsList.yaml:123 klear.yaml:161
+#: TargetPatternsList.yaml:123 klear.yaml:162
 msgid "Pricing pattern"
 msgid_plural "Pricing patterns"
 msgstr[0] "Patrón de precio"
@@ -1584,7 +1566,7 @@ msgstr[1] "Patrones de precio"
 #: TerminalManufacturersList.yaml:16 TerminalManufacturersList.yaml:39
 #: TerminalManufacturersList.yaml:47 TerminalManufacturersList.yaml:75
 #: TerminalManufacturersList.yaml:76 TerminalManufacturersList.yaml:77
-#: klear.yaml:83 klear.yaml:85 model/TerminalModels.yaml:22
+#: klear.yaml:84 klear.yaml:86 model/TerminalModels.yaml:22
 msgid "Terminal manufacturer"
 msgid_plural "Terminal manufacturers"
 msgstr[0] "Fabricante de Terminales"
@@ -1599,12 +1581,17 @@ msgstr[0] "Model de Terminales"
 msgstr[1] "Modelos de Terminales"
 
 #: TerminalModelsList.yaml:82
-msgid "Cargar desde un fichero"
-msgstr ""
+#, fuzzy
+msgid "Load file"
+msgstr "Subir fichero"
 
-#: TerminalModelsList.yaml:89
-msgid "Descargar fichero"
-msgstr ""
+#: TerminalModelsList.yaml:89 conf.d/actions.yaml:44 model/BrandURLs.yaml:132
+#: model/Brands.yaml:53 model/CompanyURLs.yaml:122 model/FaxesInOut.yaml:72
+#: model/GenericMusicOnHold.yaml:30 model/GenericMusicOnHold.yaml:57
+#: model/ImportFiles.yaml:17 model/Locutions.yaml:29 model/Locutions.yaml:55
+#: model/MusicOnHold.yaml:29 model/MusicOnHold.yaml:55 model/Recordings.yaml:69
+msgid "Download file"
+msgstr "Descargar fichero"
 
 #: TerminalModelsList.yaml:96 TerminalModelsList.yaml:103
 msgid "Restore last backup"
@@ -1615,12 +1602,13 @@ msgid "Restore default template"
 msgstr "Restaurar plantilla por defecto"
 
 #: TerminalModelsList.yaml:124 TerminalModelsList.yaml:131
-msgid "Ejecutar el código"
-msgstr ""
+#, fuzzy
+msgid "Run template"
+msgstr "Plantilla de factura"
 
 #: TerminalsList.yaml:17 TerminalsList.yaml:53 TerminalsList.yaml:100
 #: TerminalsList.yaml:129 TerminalsList.yaml:130 TerminalsList.yaml:131
-#: klear.yaml:191 klear.yaml:193 model/Users.yaml:74
+#: klear.yaml:192 klear.yaml:194 model/Users.yaml:74
 msgid "Terminal"
 msgid_plural "Terminals"
 msgstr[0] "Terminal"
@@ -1714,19 +1702,11 @@ msgid_plural "X m l r p c logs"
 msgstr[0] "X m l r p c log"
 msgstr[1] "X m l r p c logs"
 
-#: conf.d/actions.yaml:44 model/BrandURLs.yaml:132 model/Brands.yaml:53
-#: model/CompanyURLs.yaml:122 model/FaxesInOut.yaml:72
-#: model/GenericMusicOnHold.yaml:30 model/GenericMusicOnHold.yaml:57
-#: model/ImportFiles.yaml:17 model/Locutions.yaml:29 model/Locutions.yaml:55
-#: model/MusicOnHold.yaml:29 model/MusicOnHold.yaml:55 model/Recordings.yaml:69
-msgid "Download file"
-msgstr "Descargar fichero"
-
 #: conf.d/codecsHelp.yaml:6 conf.d/friendValueHelp.yaml:6
 #: conf.d/recordingHelp.yaml:6 conf.d/updateMethodHelp.yaml:6
 #: model/BrandServices.yaml:45 model/BrandURLs.yaml:29 model/BrandURLs.yaml:118
 #: model/Brands.yaml:127 model/Brands.yaml:150 model/Brands.yaml:161
-#: model/Companies.yaml:160 model/Companies.yaml:202
+#: model/Companies.yaml:161 model/Companies.yaml:203
 #: model/CompanyServices.yaml:45 model/CompanyURLs.yaml:29
 #: model/CompanyURLs.yaml:108 model/DDIs.yaml:104 model/DDIs.yaml:114
 #: model/DDIs.yaml:131 model/Extensions.yaml:31
@@ -1857,7 +1837,7 @@ msgstr ""
 
 #: errors.yaml:22
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
-msgstr ""
+msgstr "Cuando se emplea Proxy de salida, el Proxy SIP no debe incluir puerto."
 
 #: errors.yaml:23
 msgid "Outbound Proxy IP value is not valid."
@@ -1877,110 +1857,108 @@ msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 msgstr ""
 
-#: klear.yaml:39
+#: klear.yaml:40
 msgid "Access denied"
 msgstr "Acceso denegado"
 
-#: klear.yaml:40
+#: klear.yaml:41
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
 
-#: klear.yaml:50 klear.yaml:51
-#, fuzzy
+#: klear.yaml:51 klear.yaml:52
 msgid "Platform Configuration"
-msgstr "Configuración de Filtros"
+msgstr "Configuración de Plataforma"
 
-#: klear.yaml:79
+#: klear.yaml:80
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "IP de confianza"
 msgstr[1] "IPs de confianza"
 
-#: klear.yaml:99 klear.yaml:101 klear.yaml:177 klear.yaml:179 klear.yaml:267
-#: klear.yaml:269
+#: klear.yaml:100 klear.yaml:102 klear.yaml:178 klear.yaml:180 klear.yaml:268
+#: klear.yaml:270
 msgid "Parsed CDR"
 msgid_plural "Parsed CDRs"
 msgstr[0] "Histórico de llamadas"
 msgstr[1] "Histórico de llamadas"
 
-#: klear.yaml:103
+#: klear.yaml:104
 msgid "Brand Configuration"
 msgstr "Configuración de Marca"
 
-#: klear.yaml:105
+#: klear.yaml:106
 msgid "Brands"
 msgstr "Marcas"
 
-#: klear.yaml:113
-#, fuzzy
+#: klear.yaml:114
 msgid "Portal URL"
 msgid_plural "Portal URLs"
-msgstr[0] "Portal"
-msgstr[1] "Portales"
+msgstr[0] "URL Portal"
+msgstr[1] "URL Portales"
 
-#: klear.yaml:115
+#: klear.yaml:116
 #, fuzzy
 msgid "Companyurls"
 msgid_plural "Companyurls"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
 
-#: klear.yaml:121 klear.yaml:123
+#: klear.yaml:122 klear.yaml:124
 msgid "Numeric transformation"
 msgid_plural "Numeric transformations"
 msgstr[0] "Transformación numérica"
 msgstr[1] "Transformaciones numéricas"
 
-#: klear.yaml:149 klear.yaml:151
+#: klear.yaml:150 klear.yaml:152
 msgid "Outgoing Routing"
 msgid_plural "Outgoing Routings"
 msgstr[0] "Ruta saliente"
 msgstr[1] "Rutas salientes"
 
-#: klear.yaml:155
+#: klear.yaml:156
 msgid "Pricing Plan"
 msgid_plural "Pricing Plans"
 msgstr[0] "Plan de precios"
 msgstr[1] "Planes de precios"
 
-#: klear.yaml:165
+#: klear.yaml:166
 msgid "Invoice templates"
 msgstr "Plantillas de facturas"
 
-#: klear.yaml:181
+#: klear.yaml:182
 msgid "Company Configuration"
 msgstr "Configuración de Empresa"
 
-#: klear.yaml:184
+#: klear.yaml:185
 msgid "Admin"
 msgstr "Adminsitrador"
 
-#: klear.yaml:235 klear.yaml:237
+#: klear.yaml:236 klear.yaml:238
 msgid "IVR common"
 msgid_plural "IVR common"
 msgstr[0] "IVR Génerico"
 msgstr[1] "IVR genérico"
 
-#: klear.yaml:239 klear.yaml:241
+#: klear.yaml:240 klear.yaml:242
 msgid "IVR custom"
 msgid_plural "IVR custom"
 msgstr[0] "IVR a medida"
 msgstr[1] "IVR a medida"
 
-#: klear.yaml:265
+#: klear.yaml:266
 msgid "Faxes"
 msgid_plural "Faxes"
 msgstr[0] "Fax"
 msgstr[1] "Faxes"
 
-#: klear.yaml:276
+#: klear.yaml:277
 msgid "Control Panel"
 msgstr "Panel de control"
 
 #: model/ApplicationServers.yaml:19 model/AstMusiconhold.yaml:5
 #: model/BrandOperators.yaml:59 model/BrandURLs.yaml:107 model/Brands.yaml:5
 #: model/Calendars.yaml:18 model/CallACL.yaml:18 model/CallACL.yaml:46
-#: model/CallACLPatterns.yaml:18 model/Companies.yaml:23
+#: model/CallACLPatterns.yaml:18 model/Companies.yaml:24
 #: model/CompanyAdmins.yaml:61 model/CompanyURLs.yaml:97
 #: model/ConferenceRooms.yaml:19 model/Countries.yaml:11
 #: model/ExternalCallFilters.yaml:18 model/Faxes.yaml:19 model/Friends.yaml:22
@@ -1999,7 +1977,6 @@ msgstr "Panel de control"
 #: model/TerminalModels.yaml:11 model/Terminals.yaml:21
 #: model/TransformationRulesetGroups.yaml:5
 #: model/TransformationRulesetGroupsTrunks.yaml:19 model/Users.yaml:19
-#, fuzzy
 msgid "Name"
 msgid_plural "Names"
 msgstr[0] "Nombre"
@@ -2030,9 +2007,8 @@ msgid "Mode"
 msgstr "Modo"
 
 #: model/AstMusiconhold.yaml:16
-#, fuzzy
 msgid "custom"
-msgstr "IVR a medida"
+msgstr "A Medida"
 
 #: model/AstMusiconhold.yaml:17
 #, fuzzy
@@ -2131,9 +2107,8 @@ msgid "no"
 msgstr "Nota"
 
 #: model/AstPsAors.yaml:34
-#, fuzzy
 msgid "Authenticate qualify"
-msgstr "Opciones de Autenticación"
+msgstr "Autenticación calificada"
 
 #: model/AstPsAors.yaml:42
 msgid "Maximum expiration"
@@ -2157,8 +2132,8 @@ msgstr "Terminal"
 
 #: model/AstPsEndpoints.yaml:22 model/AstPsEndpoints.yaml:35
 #: model/AstVoicemail.yaml:196 model/CallForwardSettings.yaml:93
-#: model/CallForwardSettings.yaml:109 model/Companies.yaml:66
-#: model/Companies.yaml:129 model/Companies.yaml:150 model/DDIs.yaml:40
+#: model/CallForwardSettings.yaml:109 model/Companies.yaml:67
+#: model/Companies.yaml:130 model/Companies.yaml:151 model/DDIs.yaml:40
 #: model/DDIs.yaml:48 model/DDIs.yaml:147 model/DDIs.yaml:162
 #: model/DDIs.yaml:177 model/DDIs.yaml:192 model/DDIs.yaml:207
 #: model/DDIs.yaml:222 model/Extensions.yaml:39 model/Extensions.yaml:99
@@ -2199,7 +2174,6 @@ msgid "Unassigned"
 msgstr "Sin asignar"
 
 #: model/AstPsEndpoints.yaml:24
-#, fuzzy
 msgid "Proxy trunk id"
 msgstr "Proxy de Salida"
 
@@ -2208,9 +2182,8 @@ msgid "Aor"
 msgstr "Aor"
 
 #: model/AstPsEndpoints.yaml:41
-#, fuzzy
 msgid "Callerid"
-msgstr "Llamante entrante"
+msgstr "Identificador"
 
 #: model/AstPsEndpoints.yaml:45 model/AstVoicemail.yaml:5
 msgid "Context"
@@ -2301,9 +2274,8 @@ msgstr[0] "Email"
 msgstr[1] "Emails"
 
 #: model/AstVoicemail.yaml:33
-#, fuzzy
 msgid "Pager"
-msgstr "Páginas"
+msgstr "Paginador"
 
 #: model/AstVoicemail.yaml:37
 msgid "Attach"
@@ -2342,9 +2314,8 @@ msgid "Tempgreetwarn"
 msgstr "Tempgreetwarn"
 
 #: model/AstVoicemail.yaml:101
-#, fuzzy
 msgid "Operator"
-msgstr "Operador de Plataforma"
+msgstr "Operador"
 
 #: model/AstVoicemail.yaml:109
 msgid "Envelope"
@@ -2429,7 +2400,7 @@ msgstr "Contraseña"
 msgid "Active"
 msgstr "Activo"
 
-#: model/BrandOperators.yaml:41 model/Companies.yaml:194
+#: model/BrandOperators.yaml:41 model/Companies.yaml:195
 #: model/CompanyAdmins.yaml:43 model/ConferenceRooms.yaml:31
 #: model/DDIs.yaml:123 model/Faxes.yaml:39 model/KamAccCdrs.yaml:141
 #: model/KamAccCdrs.yaml:152 model/KamAccCdrsBrand.yaml:148
@@ -2443,7 +2414,7 @@ msgstr "Activo"
 msgid "No"
 msgstr "No"
 
-#: model/BrandOperators.yaml:43 model/Companies.yaml:196
+#: model/BrandOperators.yaml:43 model/Companies.yaml:197
 #: model/CompanyAdmins.yaml:45 model/ConferenceRooms.yaml:36
 #: model/DDIs.yaml:125 model/Faxes.yaml:43 model/KamAccCdrs.yaml:143
 #: model/KamAccCdrs.yaml:154 model/KamAccCdrsBrand.yaml:150
@@ -2482,7 +2453,7 @@ msgstr "Servicio"
 msgid "Brand id"
 msgstr "Marca"
 
-#: model/BrandServices.yaml:33 model/Companies.yaml:227
+#: model/BrandServices.yaml:33 model/Companies.yaml:228
 #: model/CompanyServices.yaml:33 model/Countries.yaml:5 model/Services.yaml:24
 msgid "Code"
 msgstr "Código"
@@ -2553,7 +2524,7 @@ msgstr "Borrar fichero"
 msgid "Upload file"
 msgstr "Subir fichero"
 
-#: model/Brands.yaml:11 model/Companies.yaml:35
+#: model/Brands.yaml:11 model/Companies.yaml:36
 msgid "Nif"
 msgstr "NIF"
 
@@ -2565,25 +2536,25 @@ msgstr "Expr. regular lista negra"
 msgid "Trunks SIP domain"
 msgstr ""
 
-#: model/Brands.yaml:27 model/Companies.yaml:40
+#: model/Brands.yaml:27 model/Companies.yaml:41
 msgid "Default timezone"
 msgstr "Zona horaria"
 
-#: model/Brands.yaml:88 model/Companies.yaml:87
+#: model/Brands.yaml:88 model/Companies.yaml:88
 msgid "Postal address"
 msgstr "Dirección postal"
 
-#: model/Brands.yaml:94 model/Companies.yaml:93
+#: model/Brands.yaml:94 model/Companies.yaml:94
 msgid "Postal code"
 msgid_plural "Postal codes"
 msgstr[0] "Código postal"
 msgstr[1] "Códigos postales"
 
-#: model/Brands.yaml:100 model/Companies.yaml:99
+#: model/Brands.yaml:100 model/Companies.yaml:100
 msgid "Town"
 msgstr "Ciudad"
 
-#: model/Brands.yaml:106 model/Companies.yaml:105
+#: model/Brands.yaml:106 model/Companies.yaml:106
 msgid "Province"
 msgid_plural "Provinces"
 msgstr[0] "Provincia"
@@ -2620,8 +2591,8 @@ msgstr "Dirección origen"
 msgid ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 msgstr ""
-"Dirección origen mostrada en los correos salientes. El MTA tiene que permitir "
-"este valor."
+"Dirección origen mostrada en los correos salientes. El MTA tiene que "
+"permitir este valor."
 
 #: model/CallACL.yaml:24
 msgid "Default policy"
@@ -2694,9 +2665,8 @@ msgid "userNotRegistered"
 msgstr "No registrado"
 
 #: model/CallForwardSettings.yaml:52 model/IVRCustomEntries.yaml:44
-#, fuzzy
 msgid "Target type"
-msgstr "Enrutado error"
+msgstr "Tipo de ruta"
 
 #: model/CallForwardSettings.yaml:59 model/Extensions.yaml:69
 #: model/ExternalCallFilters.yaml:82 model/ExternalCallFilters.yaml:145
@@ -2752,11 +2722,8 @@ msgid "Objid"
 msgstr ""
 
 #: model/ChangeHistory.yaml:30
-#, fuzzy
 msgid "Field"
-msgstr ""
-"Añadir este campo como prefijo del número destino (después de quitar los "
-"dígitos del campo Strip)"
+msgstr "Campo"
 
 #: model/ChangeHistory.yaml:35
 msgid "Old value"
@@ -2774,71 +2741,70 @@ msgid_plural "Ids"
 msgstr[0] "Identificador"
 msgstr[1] "Identificadores"
 
-#: model/Companies.yaml:29
+#: model/Companies.yaml:30
 msgid "SIP domain"
 msgstr ""
 
-#: model/Companies.yaml:68
+#: model/Companies.yaml:69
 msgid "Application server id"
 msgstr "AS"
 
-#: model/Companies.yaml:79
+#: model/Companies.yaml:80
 msgid "Dispatch to any AS"
 msgstr ""
 
-#: model/Companies.yaml:81
+#: model/Companies.yaml:82
 msgid "External max call"
 msgstr "Lim. llamadas"
 
-#: model/Companies.yaml:117
+#: model/Companies.yaml:118
 msgid "Invoice language"
 msgstr "Lenguaje factura"
 
-#: model/Companies.yaml:131
+#: model/Companies.yaml:132
 msgid "Outbound prefix"
 msgstr "Prefijo de salida"
 
-#: model/Companies.yaml:136 model/Friends.yaml:111
+#: model/Companies.yaml:137 model/Friends.yaml:111
 #: model/TransformationRulesetGroupsTrunks.yaml:74 model/Users.yaml:264
 msgid "Country code"
 msgstr "Código de País"
 
-#: model/Companies.yaml:152 model/Friends.yaml:131 model/Users.yaml:278
+#: model/Companies.yaml:153 model/Friends.yaml:131 model/Users.yaml:278
 msgid "Areacode"
 msgstr ""
 
-#: model/Companies.yaml:159
+#: model/Companies.yaml:160
 msgid "Default Area code for users in this company"
 msgstr ""
 
-#: model/Companies.yaml:175
+#: model/Companies.yaml:176
 msgid "Media relay Set"
 msgstr "Servidores de Media"
 
-#: model/Companies.yaml:187
+#: model/Companies.yaml:188
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
 
-#: model/Companies.yaml:201
+#: model/Companies.yaml:202
 msgid "Add IPs or network if enabled. Otherwise all calls will be rejected."
 msgstr ""
 "Si el filtro esta habilitado, añada IPs o redes, sino todas las llamadas "
 "serán rechazadas."
 
-#: model/Companies.yaml:211
-#, fuzzy
+#: model/Companies.yaml:212
 msgid "Disabled"
-msgstr "Habilitado"
+msgstr "Deshabilitado"
 
-#: model/Companies.yaml:216
+#: model/Companies.yaml:217
 msgid "Using BXFER or INFO"
 msgstr ""
 
-#: model/Companies.yaml:221
+#: model/Companies.yaml:222
 msgid "Using DTMFs (read WARNING)"
 msgstr ""
 
-#: model/Companies.yaml:235
+#: model/Companies.yaml:236
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
 
@@ -3194,8 +3160,9 @@ msgstr "Salida"
 msgid "Page"
 msgstr "Páginas"
 
-#: model/FaxesInOut.yaml:51 model/Invoices.yaml:62
-msgid "Statu"
+#: model/FaxesInOut.yaml:51 model/Invoices.yaml:62 model/Terminals.yaml:112
+#, fuzzy
+msgid "Status"
 msgstr "Estado"
 
 #: model/FaxesInOut.yaml:56 model/Invoices.yaml:70 model/KamAccCdrs.yaml:116
@@ -3225,14 +3192,12 @@ msgid "Invoice id"
 msgstr "Factura"
 
 #: model/FixedCostsRelInvoices.yaml:47 model/Invoices.yaml:173
-#, fuzzy
 msgid "Quantity"
 msgid_plural "Quantities"
 msgstr[0] "Cantidad"
-msgstr[1] "Cantidad"
+msgstr[1] "Cantidades"
 
 #: model/Friends.yaml:8 model/KamAccCdrs.yaml:62
-#, fuzzy
 msgid "Companyid"
 msgstr "Compañia"
 
@@ -3621,9 +3586,8 @@ msgstr "Duración"
 #: model/KamAccCdrs.yaml:46 model/KamAccCdrsBrand.yaml:54
 #: model/KamAccCdrsGod.yaml:54 model/ParsedCDRs.yaml:69
 #: model/ParsedCDRsGod.yaml:69 model/Recordings.yaml:35
-#, fuzzy
 msgid "Caller"
-msgstr "Llamante entrante"
+msgstr "Llamante"
 
 #: model/KamAccCdrs.yaml:50 model/ParsedCDRs.yaml:73
 #: model/ParsedCDRsGod.yaml:73 model/Recordings.yaml:39
@@ -3644,7 +3608,6 @@ msgid "Referrer"
 msgstr ""
 
 #: model/KamAccCdrs.yaml:75
-#, fuzzy
 msgid "Brandid"
 msgstr "Marca"
 
@@ -3664,9 +3627,8 @@ msgid "Callid"
 msgstr ""
 
 #: model/KamAccCdrs.yaml:100
-#, fuzzy
 msgid "Callidhash"
-msgstr "Fecha"
+msgstr "Hash"
 
 #: model/KamAccCdrs.yaml:104 model/KamAccCdrsBrand.yaml:109
 #: model/KamAccCdrsGod.yaml:108
@@ -3685,7 +3647,6 @@ msgid "Diversion"
 msgstr "Enviar Diversion"
 
 #: model/KamAccCdrs.yaml:122
-#, fuzzy
 msgid "Peeringcontractid"
 msgstr "Contrato de Peering"
 
@@ -3714,19 +3675,16 @@ msgid "Pricingplanid"
 msgstr "Plan de precios"
 
 #: model/KamAccCdrs.yaml:177
-#, fuzzy
 msgid "Pricingplanname"
 msgstr "Nombre"
 
 #: model/KamAccCdrs.yaml:181
-#, fuzzy
 msgid "Targetpatternid"
-msgstr "Patrón de precio"
+msgstr "Patrón de destino"
 
 #: model/KamAccCdrs.yaml:194
-#, fuzzy
 msgid "Targetpatternname"
-msgstr "Patron de destino"
+msgstr "Patrón de destino"
 
 #: model/KamAccCdrs.yaml:201
 #, fuzzy
@@ -3770,9 +3728,8 @@ msgid "As iden"
 msgstr ""
 
 #: model/KamAccCdrsBrand.yaml:101 model/KamAccCdrsGod.yaml:100
-#, fuzzy
 msgid "As address"
-msgstr "Dirección postal"
+msgstr "Direccion Servidor de Aplicación"
 
 #: model/KamAccCdrsBrand.yaml:141 model/KamAccCdrsGod.yaml:139
 #: model/PeeringContracts.yaml:46
@@ -3810,7 +3767,6 @@ msgid "Attr"
 msgstr "Descripción"
 
 #: model/KamPikeTrusted.yaml:5
-#, fuzzy
 msgid "IP"
 msgstr "Dirección IP"
 
@@ -3901,9 +3857,8 @@ msgid "Last modified"
 msgstr "Última modificación"
 
 #: model/KamTrunksLcrRule.yaml:5 model/KamTrunksLcrRuleTarget.yaml:5
-#, fuzzy
 msgid "Lcr id"
-msgstr "Usuario"
+msgstr "LCR"
 
 #: model/KamTrunksLcrRule.yaml:19 model/LcrGateways.yaml:61
 #: model/LcrRules.yaml:19 model/PeerServers.yaml:116
@@ -3946,7 +3901,6 @@ msgid "Is sent in the username of Contact header in generated REGISTER."
 msgstr ""
 
 #: model/KamTrunksUacreg.yaml:35
-#, fuzzy
 msgid "L username"
 msgstr "Nombre de usuario"
 
@@ -4019,19 +3973,16 @@ msgid "Cseq"
 msgstr ""
 
 #: model/KamUsersLocation.yaml:56
-#, fuzzy
 msgid "Lastmodified"
 msgstr "Última modificación"
 
 #: model/KamUsersLocation.yaml:70
-#, fuzzy
 msgid "Cflag"
-msgstr "Imapflag"
+msgstr "Cflag"
 
 #: model/KamUsersLocation.yaml:76
-#, fuzzy
 msgid "Useragent"
-msgstr "Nombre de usuario"
+msgstr "Agente"
 
 #: model/KamUsersLocation.yaml:81
 msgid "Socket"
@@ -4055,18 +4006,16 @@ msgid "Serverid"
 msgstr "Servicio"
 
 #: model/KamUsersLocation.yaml:106
-#, fuzzy
 msgid "Connectionid"
-msgstr "Configuración de conexión"
+msgstr "Conexión"
 
 #: model/KamUsersLocation.yaml:112
 msgid "Keepalive"
 msgstr ""
 
 #: model/KamUsersLocation.yaml:118
-#, fuzzy
 msgid "Partition"
-msgstr "Código postal"
+msgstr "Partición"
 
 #: model/Languages.yaml:5 model/Services.yaml:5
 #: model/TerminalManufacturers.yaml:5 model/TerminalModels.yaml:5
@@ -4351,7 +4300,6 @@ msgstr ""
 
 #: model/PricingPlansRelTargetPatterns.yaml:69
 #: model/PricingPlansRelTargetPatterns.yaml:93
-#, fuzzy
 msgid "Price pattern"
 msgstr "Patrón de precio"
 
@@ -4434,46 +4382,51 @@ msgid "Prefix must be numeric-only"
 msgstr "El prefijo debe ser numérico"
 
 #: model/TerminalModels.yaml:36
-msgid "Patrón de la url genérica"
-msgstr ""
+msgid "Generic URL Pattern"
+msgstr "Patrón de URL genérica"
 
 #: model/TerminalModels.yaml:44
 msgid "Url exacta a la que se accede."
 msgstr ""
 
 #: model/TerminalModels.yaml:46
-msgid "Plantilla genérica"
-msgstr ""
+msgid "Generic template"
+msgstr "Plantilla genérica"
 
 #: model/TerminalModels.yaml:66
-msgid ""
+msgid "Use <strong>$this->terminalModel</strong> to access the model data."
+msgstr ""
 "Usar <strong>$this->terminalModel</strong> para acceder a los datos del "
 "modelo. En caso de error, para saber la línea exacta en la que se encuentra "
 "hay que restarle 70 a la línea devuelta en el mensaje."
-msgstr ""
 
 #: model/TerminalModels.yaml:68
-msgid "Patrón de la url específica"
-msgstr ""
+msgid "Specific URL Pattern"
+msgstr "Patrón de URL específica"
 
 #: model/TerminalModels.yaml:76
 #, python-brace-format
 msgid ""
-"La parte variable de la url se pone entre llaves, por ejemplo /t26p/{mac}.cfg"
+"Variable part of the URL is enclosed between braces, p.e. /t26p/{mac}.cfg"
 msgstr ""
+"La parte variable de la url se pone entre llaves, por ejemplo /t26p/{mac}.cfg"
 
 #: model/TerminalModels.yaml:78
-msgid "Plantilla específica"
-msgstr ""
+#, fuzzy
+msgid "Specific Template"
+msgstr "Plantilla genérica"
 
 #: model/TerminalModels.yaml:98
 msgid ""
+"Use <string>$this->terminalModel</strong> to access model data, <strong>"
+"$this->terminal</strong> to access terminal data, <strong>$this->user</"
+"strong> for the user and <strong>$this->company</strong> for the company."
+msgstr ""
 "Usar <strong>$this->terminalModel</strong> para acceder a los datos del "
 "modelo, <strong>$this->terminal</strong> para los datos del terminal, "
 "<strong>$this->user</strong> para el usuario y <strong>$this->company</"
 "strong> para la empresa. En caso e error, para saber la línea exacta en la "
 "que se encuentra hay que restarle 70 a la línea devuelta en el mensaje."
-msgstr ""
 
 #: model/Terminals.yaml:8
 msgid "Terminal model id"
@@ -4486,11 +4439,6 @@ msgstr "MAC"
 #: model/Terminals.yaml:105
 msgid "Last provision date"
 msgstr "Última provisión"
-
-#: model/Terminals.yaml:112
-#, fuzzy
-msgid "Status"
-msgstr "Estado"
 
 #: model/Timezones.yaml:24
 msgid "Comment"
@@ -4521,9 +4469,8 @@ msgid "Callee out"
 msgstr "Llamado saliente"
 
 #: model/TransformationRulesetGroupsTrunks.yaml:51
-#, fuzzy
 msgid "Generate rules?"
-msgstr "Genear %s"
+msgstr "¿Generar reglas?"
 
 #: model/TransformationRulesetGroupsTrunks.yaml:71
 msgid ""
@@ -4532,18 +4479,16 @@ msgid ""
 msgstr ""
 
 #: model/TransformationRulesetGroupsTrunks.yaml:88
-#, fuzzy
 msgid "International Code"
-msgstr "Model de Terminales"
+msgstr "Código de llamada internacional"
 
 #: model/TransformationRulesetGroupsTrunks.yaml:97
 msgid "Code used for internationals calls, usually 00."
 msgstr ""
 
 #: model/TransformationRulesetGroupsTrunks.yaml:100
-#, fuzzy
 msgid "National number length"
-msgstr "Número de teléfono"
+msgstr "Longitud números nacionales"
 
 #: model/TransformationRulesetGroupsTrunks.yaml:109
 msgid "How long are the normal phone numbers called inside this country?"
@@ -4617,9 +4562,8 @@ msgid "Module"
 msgstr "Módulo"
 
 #: model/XMLRPCLogs.yaml:24
-#, fuzzy
 msgid "Mapper name"
-msgstr "Nombre base"
+msgstr "Nombre mapper"
 
 #: model/XMLRPCLogs.yaml:30
 #, fuzzy
@@ -4635,1141 +4579,3 @@ msgstr "Modificado"
 #, fuzzy
 msgid "Finish date"
 msgstr "Modificado"
-
-#, fuzzy
-#~ msgid "Pickupgroup"
-#~ msgid_plural "Pickupgroups"
-#~ msgstr[0] "Grupo de Captura"
-#~ msgstr[1] "Grupo de Captura"
-
-#, fuzzy
-#~ msgid "Pickup Group"
-#~ msgstr "Grupo de Captura"
-
-#~ msgid "Main management"
-#~ msgstr "Gestión general"
-
-#~ msgid "name"
-#~ msgstr "Nombre"
-
-#~ msgid "Call type filter"
-#~ msgstr "Tipo de llamada"
-
-#~ msgid "Extension id"
-#~ msgstr "Extensión"
-
-#~ msgid "Next user position"
-#~ msgstr "Posición del siguiente usuario"
-
-#~ msgid "%s %2s successfully deleted."
-#~ msgstr "%s %2s borrado satisfactoriamente. "
-
-#~ msgid "unassigned"
-#~ msgstr "Sin asignar"
-
-#~ msgid "Period time"
-#~ msgstr "Periodo"
-
-#~ msgid "Per period charge"
-#~ msgstr "Coste por periodo"
-
-#~ msgid "Destination pattern"
-#~ msgid_plural "Destination patterns"
-#~ msgstr[0] "Patrón de destino"
-#~ msgstr[1] "Patrones de destino"
-
-#~ msgid "Antiflood trusted IPs"
-#~ msgid_plural "Antiflood trusted IPs"
-#~ msgstr[0] "IP de confianza"
-#~ msgstr[1] "IPs de confianza"
-
-#~ msgid "Destination group"
-#~ msgid_plural "Destination groups"
-#~ msgstr[0] "Grupo de patrones"
-#~ msgstr[1] "Grupos de patrones"
-
-#~ msgid "Hunt group call forward setting"
-#~ msgid_plural "Hunt group call forward settings"
-#~ msgstr[0] "Desvío grupo salto"
-#~ msgstr[1] "Desvíos grupo salto"
-
-#~ msgid "Call details"
-#~ msgid_plural "Call details"
-#~ msgstr[0] "Detalle llamada"
-#~ msgstr[1] "Detalles llamada"
-
-#~ msgid "Billing information"
-#~ msgstr "Información facturación"
-
-#, fuzzy
-#~ msgid "Log"
-#~ msgstr "Logo"
-
-#, fuzzy
-#~ msgid "Target groups rel pattern"
-#~ msgid_plural "Target groups rel patterns"
-#~ msgstr[0] "Tipo de fichero"
-#~ msgstr[1] "Tipo de fichero"
-
-#~ msgid ""
-#~ "<p><b>Metric:</b> In case that two patterns were matched pattern with "
-#~ "lower metric will be applied.</p>"
-#~ msgstr ""
-#~ "<p><b>Métrica:</b> En caso de que dos patrones coincidan, se empleará el "
-#~ "de menor métrica.</p>"
-
-#~ msgid "Comma separated codec names"
-#~ msgstr "Nombre de codecs separados por coma"
-
-#, fuzzy
-#~ msgid "Target group id"
-#~ msgstr "Grupo de salto"
-
-#~ msgid "Add this params to R-URI (start with ';')"
-#~ msgstr "Parámetros extra para cabecera R-URI"
-
-#~ msgid "Use auth user as from user"
-#~ msgstr "Emplear usuario de autenticación como origen"
-
-#~ msgid "Call duration"
-#~ msgstr "Duración llamada"
-
-#~ msgid "Final destination"
-#~ msgstr "Destino final"
-
-#~ msgid "Dst duration"
-#~ msgstr "Duración destino"
-
-#~ msgid "Call description"
-#~ msgstr "Descripción llamada"
-
-#~ msgid "Forward description"
-#~ msgstr "Descripción desvío"
-
-#, fuzzy
-#~ msgid "External forwarder"
-#~ msgstr "Filtro de entrada externo"
-
-#~ msgid "Forwarder"
-#~ msgstr "Origen desvío"
-
-#~ msgid "Aleg"
-#~ msgstr "Pata A"
-
-#~ msgid "Bleg"
-#~ msgstr "Pata B"
-
-#~ msgid "Destination type"
-#~ msgstr "Tipo destino"
-
-#~ msgid "Price (€)"
-#~ msgid_plural "Prices (€)"
-#~ msgstr[0] "Precio (€)"
-#~ msgstr[1] "Precios (€)"
-
-#~ msgid "Source dialed"
-#~ msgstr "Origen marcado"
-
-#~ msgid "Call Duration"
-#~ msgstr "Duración"
-
-#~ msgid "Unbilled"
-#~ msgstr "No facturado"
-
-#, fuzzy
-#~ msgid "Bill callid"
-#~ msgstr "Permiso de llamada"
-
-#, fuzzy
-#~ msgid "Call target type"
-#~ msgstr "Tipo de fichero"
-
-#, fuzzy
-#~ msgid "Call extension id"
-#~ msgstr "Festivo"
-
-#~ msgid "Call voice mail user id"
-#~ msgstr "Call voice mail user id"
-
-#~ msgid ""
-#~ "CIDR notation (e.g. 10.0.0.0/8) or specific IP address (e.g. 8.8.8.8)"
-#~ msgstr ""
-#~ "Notacion CIDR (p.ej. 10.0.0.0/8) o dirección IP específica (p.ej. 8.8.8.8)"
-
-#~ msgid "Dtmf mode"
-#~ msgstr "DTMF"
-
-#~ msgid "rfc4733"
-#~ msgstr "rfc4733"
-
-#~ msgid "inband"
-#~ msgstr "inband"
-
-#~ msgid "info"
-#~ msgstr "info"
-
-#~ msgid "Users domain"
-#~ msgstr "Dominio usuarios"
-
-#~ msgid "Trunks domain"
-#~ msgstr "Trunks domain"
-
-#~ msgid "Locutions"
-#~ msgstr "Locuciones"
-
-#~ msgid "fixed cost"
-#~ msgid_plural "fixed costs"
-#~ msgstr[0] "Coste fijo"
-#~ msgstr[1] "Costes fijos"
-
-#~ msgid "Kam Trunks Dialplan Caller Out"
-#~ msgstr "Transf. Llamante Salida"
-
-#~ msgid "Kam Trunks Dialplan Callee Out"
-#~ msgstr "Transf. Llamado Salida"
-
-#~ msgid "Send rpid"
-#~ msgstr "Enviar RPID"
-
-#~ msgid "Inbound transformation"
-#~ msgid_plural "Inbound transformations"
-#~ msgstr[0] "Transformación entrantes"
-#~ msgstr[1] "Transformaciones entrantes"
-
-#, fuzzy
-#~ msgid "Company info"
-#~ msgstr "Administrador de empresa"
-
-#~ msgid "Fw"
-#~ msgstr "Desviada"
-
-#~ msgid "Legs"
-#~ msgstr "Patas"
-
-#, fuzzy
-#~ msgid "Call sumary"
-#~ msgstr "Permiso llamada"
-
-#, fuzzy
-#~ msgid "Src duration"
-#~ msgstr "Sección"
-
-#~ msgid "Login"
-#~ msgstr "Nombre de usuario"
-
-#~ msgid "Surname"
-#~ msgid_plural "Surnames"
-#~ msgstr[0] "Apellido"
-#~ msgstr[1] "Apellidos"
-
-#~ msgid "FirstName"
-#~ msgstr "Nombre"
-
-#~ msgid "Firstname"
-#~ msgstr "Nombre"
-
-#~ msgid "LastName"
-#~ msgstr "Apellido"
-
-#~ msgid "Last name"
-#~ msgstr "Apellido"
-
-#~ msgid "PhoneNumber"
-#~ msgid_plural "PhoneNumbers"
-#~ msgstr[0] "Número de teléfono"
-#~ msgstr[1] "Números de teléfono"
-
-#~ msgid "Phonenumber"
-#~ msgid_plural "Phonenumbers"
-#~ msgstr[0] "Número de teléfono"
-#~ msgstr[1] "Números de teléfono"
-
-#~ msgid "Phone number"
-#~ msgid_plural "Phone numbers"
-#~ msgstr[0] "Número de teléfono"
-#~ msgstr[1] "Números de teléfono"
-
-#~ msgid "Street"
-#~ msgid_plural "Streets"
-#~ msgstr[0] "Calle"
-#~ msgstr[1] "Calles"
-
-#~ msgid "PostalCode"
-#~ msgid_plural "PostalCodes"
-#~ msgstr[0] "Código postal"
-#~ msgstr[1] "Códigos postales"
-
-#~ msgid "Postalcode"
-#~ msgid_plural "Postalcodes"
-#~ msgstr[0] "Código postal"
-#~ msgstr[1] "Códigos postales"
-
-#~ msgid "ZipCode"
-#~ msgid_plural "ZipCodes"
-#~ msgstr[0] "Código postal"
-#~ msgstr[1] "Códigos postales"
-
-#~ msgid "Zipcode"
-#~ msgid_plural "Zipcodes"
-#~ msgstr[0] "Código postal"
-#~ msgstr[1] "Códigos postales"
-
-#~ msgid "Zip code"
-#~ msgid_plural "Zip codes"
-#~ msgstr[0] "Código postal"
-#~ msgstr[1] "Códigos postales"
-
-#~ msgid "City"
-#~ msgid_plural "Cities"
-#~ msgstr[0] "Ciudad"
-#~ msgstr[1] "Ciudades"
-
-#~ msgid "State"
-#~ msgid_plural "States"
-#~ msgstr[0] "Estado"
-#~ msgstr[1] "Estados"
-
-#~ msgid "Account"
-#~ msgid_plural "Accounts"
-#~ msgstr[0] "Cuenta"
-#~ msgstr[1] "Cuentas"
-
-#~ msgid "Role"
-#~ msgid_plural "Roles"
-#~ msgstr[0] "Rol"
-#~ msgstr[1] "Roles"
-
-#~ msgid "Size"
-#~ msgid_plural "Sizes"
-#~ msgstr[0] "Tamaño"
-#~ msgstr[1] "Tamaños"
-
-#~ msgid "FileSize"
-#~ msgstr "Tamaño de fichero"
-
-#~ msgid "Filesize"
-#~ msgstr "Tamaño de fichero"
-
-#~ msgid "File size"
-#~ msgstr "Tamaño de fichero"
-
-#~ msgid "FilePath"
-#~ msgstr "Ruta de fichero"
-
-#~ msgid "Filepath"
-#~ msgstr "Ruta de fichero"
-
-#~ msgid "File path"
-#~ msgstr "Ruta de fichero"
-
-#~ msgid "MimeType"
-#~ msgid_plural "MimeTypes"
-#~ msgstr[0] "Tipo de fichero"
-#~ msgstr[1] "Tipos de fichero"
-
-#~ msgid "Mimetype"
-#~ msgid_plural "Mimetypes"
-#~ msgstr[0] "Tipo de fichero"
-#~ msgstr[1] "Tipos de fichero"
-
-#~ msgid "Mime type"
-#~ msgid_plural "Mime types"
-#~ msgstr[0] "Tipo de fichero"
-#~ msgstr[1] "Tipos de fichero"
-
-#~ msgid "BaseName"
-#~ msgstr "Nombre base"
-
-#~ msgid "Base name"
-#~ msgstr "Nombre base"
-
-#~ msgid "Image"
-#~ msgid_plural "Images"
-#~ msgstr[0] "Imagen"
-#~ msgstr[1] "Imágenes"
-
-#~ msgid "ImageSize"
-#~ msgstr "Tamaño de imagen"
-
-#~ msgid "Imagesize"
-#~ msgstr "Tamaño de imagen"
-
-#~ msgid "Image size"
-#~ msgstr "Tamaño de imagen"
-
-#~ msgid "ImagePath"
-#~ msgstr "Ruta de imagen"
-
-#~ msgid "Imagepath"
-#~ msgstr "Ruta de imagen"
-
-#~ msgid "Image path"
-#~ msgstr "Ruta de imagen"
-
-#~ msgid "Picture"
-#~ msgid_plural "Pictures"
-#~ msgstr[0] "Foto"
-#~ msgstr[1] "Fotos"
-
-#~ msgid "PictureSize"
-#~ msgstr "Tamaño de foto"
-
-#~ msgid "Picturesize"
-#~ msgstr "Tamaño de foto"
-
-#~ msgid "Picture size"
-#~ msgstr "Tamaño de foto"
-
-#~ msgid "PicturePath"
-#~ msgstr "Ruta de foto"
-
-#~ msgid "Picturepath"
-#~ msgstr "Ruta de foto"
-
-#~ msgid "Picture path"
-#~ msgstr "Ruta de foto"
-
-#~ msgid "CreatedOn"
-#~ msgstr "Creado"
-
-#~ msgid "Createdon"
-#~ msgstr "Creado"
-
-#~ msgid "UpdatedOn"
-#~ msgstr "Modificado"
-
-#~ msgid "Updatedon"
-#~ msgstr "Modificado"
-
-#~ msgid "Updated on"
-#~ msgstr "Modificado"
-
-#~ msgid "StartTime"
-#~ msgstr "Tiempo de inicio"
-
-#~ msgid "EndTime"
-#~ msgstr "Tiempo de fin"
-
-#~ msgid "Start"
-#~ msgstr "Inicio"
-
-#~ msgid "End"
-#~ msgstr "Fin"
-
-#~ msgid "Time"
-#~ msgid_plural "Times"
-#~ msgstr[0] "Tiempo"
-#~ msgstr[1] "Tiempos"
-
-#~ msgid "Interval"
-#~ msgid_plural "Intervals"
-#~ msgstr[0] "Intervalo"
-#~ msgstr[1] "Intervalos"
-
-#~ msgid "Identifier"
-#~ msgid_plural "Identifiers"
-#~ msgstr[0] "Identificador"
-#~ msgstr[1] "Identificadores"
-
-#~ msgid "Order"
-#~ msgid_plural "Orders"
-#~ msgstr[0] "Orden"
-#~ msgstr[1] "Órdenes"
-
-#~ msgid "Title"
-#~ msgid_plural "Titles"
-#~ msgstr[0] "Título"
-#~ msgstr[1] "Títulos"
-
-#~ msgid "Subtitle"
-#~ msgid_plural "Subtitles"
-#~ msgstr[0] "Subtítulo"
-#~ msgstr[1] "Subtítulos"
-
-#~ msgid "Intro"
-#~ msgid_plural "Intros"
-#~ msgstr[0] "Introducción"
-#~ msgstr[1] "Introducciones"
-
-#~ msgid "Introduction"
-#~ msgid_plural "Introductions"
-#~ msgstr[0] "Introducción"
-#~ msgstr[1] "Introducciones"
-
-#~ msgid "Text"
-#~ msgid_plural "Texts"
-#~ msgstr[0] "Texto"
-#~ msgstr[1] "Textos"
-
-#~ msgid "News"
-#~ msgid_plural "News(s)"
-#~ msgstr[0] "Noticia"
-#~ msgstr[1] "Noticias"
-
-#~ msgid "Subject"
-#~ msgid_plural "Subjects"
-#~ msgstr[0] "Asunto"
-#~ msgstr[1] "Asuntos"
-
-#~ msgid "Message"
-#~ msgid_plural "Messages"
-#~ msgstr[0] "Mensaje"
-#~ msgstr[1] "Mensajes"
-
-#~ msgid "Section"
-#~ msgid_plural "Sections"
-#~ msgstr[0] "Sección"
-#~ msgstr[1] "Secciones"
-
-#~ msgid "Content"
-#~ msgid_plural "Contents"
-#~ msgstr[0] "Contenido"
-#~ msgstr[1] "Contenidos"
-
-#~ msgid "Html"
-#~ msgstr "Html"
-
-#~ msgid "Website"
-#~ msgid_plural "Websites"
-#~ msgstr[0] "Sitio web"
-#~ msgstr[1] "Sitios web"
-
-#~ msgid "Link"
-#~ msgid_plural "Links"
-#~ msgstr[0] "Enlace"
-#~ msgstr[1] "Enlaces"
-
-#~ msgid "Slug"
-#~ msgstr "Slug"
-
-#~ msgid "Other"
-#~ msgid_plural "Others"
-#~ msgstr[0] "Otro"
-#~ msgstr[1] "Otros"
-
-#~ msgid "Category"
-#~ msgid_plural "Categories"
-#~ msgstr[0] "Categoría"
-#~ msgstr[1] "Categorías"
-
-#~ msgid "Theme"
-#~ msgid_plural "Themes"
-#~ msgstr[0] "Tema"
-#~ msgstr[1] "Temas"
-
-#~ msgid "Off"
-#~ msgstr "Apagado"
-
-#~ msgid "On"
-#~ msgstr "Encendido"
-
-#~ msgid "Error"
-#~ msgid_plural "Errors"
-#~ msgstr[0] "Error"
-#~ msgstr[1] "Errores"
-
-#~ msgid "Success"
-#~ msgstr "Éxitoso"
-
-#~ msgid "Fail"
-#~ msgstr "Fallo"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Open"
-#~ msgstr "Abrir"
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
-
-#~ msgid "Deny"
-#~ msgstr "Denegar"
-
-#~ msgid "Public"
-#~ msgid_plural "Publics"
-#~ msgstr[0] "Público"
-#~ msgstr[1] "Públicos"
-
-#~ msgid "Private"
-#~ msgid_plural "Privates"
-#~ msgstr[0] "Privado"
-#~ msgstr[1] "Privados"
-
-#~ msgid "Visibility"
-#~ msgid_plural "Visibilities"
-#~ msgstr[0] "Visibilidad"
-#~ msgstr[1] "Visibilidades"
-
-#~ msgid "Available"
-#~ msgstr "Disponible"
-
-#~ msgid "Unavailable"
-#~ msgstr "No disponible"
-
-#~ msgid "Download"
-#~ msgid_plural "Downloads"
-#~ msgstr[0] "Descarga"
-#~ msgstr[1] "Descargas"
-
-#~ msgid "Option"
-#~ msgid_plural "Options"
-#~ msgstr[0] "Opción"
-#~ msgstr[1] "Opciones"
-
-#~ msgid "Setting"
-#~ msgid_plural "Settings"
-#~ msgstr[0] "Configuración"
-#~ msgstr[1] "Configuraciones"
-
-#~ msgid "Permission"
-#~ msgid_plural "Permissions"
-#~ msgstr[0] "Permiso"
-#~ msgstr[1] "Permisos"
-
-#~ msgid "Test"
-#~ msgid_plural "Tests"
-#~ msgstr[0] "Test"
-#~ msgstr[1] "Tests"
-
-#~ msgid "note"
-#~ msgid_plural "notes"
-#~ msgstr[0] "Nota"
-#~ msgstr[1] "Notas"
-
-#~ msgid "tag"
-#~ msgid_plural "tags"
-#~ msgstr[0] "etiqueta"
-#~ msgstr[1] "etiquetas"
-
-#~ msgid "src-line"
-#~ msgstr "src-line"
-
-#~ msgid "Insert your username or email address"
-#~ msgstr "Introduce tu nombre de usuario o email"
-
-#~ msgid "Dashboard"
-#~ msgstr "Escritorio"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Accept"
-#~ msgstr "Aceptar"
-
-#~ msgid "Device"
-#~ msgid_plural "Devices"
-#~ msgstr[0] "Dispositivo"
-#~ msgstr[1] "Dispositivos"
-
-#, fuzzy
-#~ msgid "Please, type a phone number"
-#~ msgstr "Número de teléfono"
-
-#, fuzzy
-#~ msgid "Cancelar"
-#~ msgstr "cancelar"
-
-#, fuzzy
-#~ msgid "Parse file and import"
-#~ msgstr "Histórico de llamadas"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "continuar"
-
-#, fuzzy
-#~ msgid "Import system"
-#~ msgstr "Subir fichero"
-
-#, fuzzy
-#~ msgid "Yes, continue!"
-#~ msgstr "continuar"
-
-#, fuzzy
-#~ msgid "Acceso restringido"
-#~ msgstr "Acceso denegado"
-
-#, fuzzy
-#~ msgid "Select Company"
-#~ msgstr "Empresa"
-
-#, fuzzy
-#~ msgid "Enter"
-#~ msgstr "Intervalo"
-
-#, fuzzy
-#~ msgid "Emulate %s"
-#~ msgstr "Borrar %s"
-
-#, fuzzy
-#~ msgid "Are you sure that you want to emulate the %s \"%2s\"?"
-#~ msgstr "¿Quieres eliminar %s?"
-
-#, fuzzy
-#~ msgid "%s emulated"
-#~ msgstr "Plantilla"
-
-#~ msgid "Cerrar"
-#~ msgstr "Cerrar"
-
-#, fuzzy
-#~ msgid "Aceptar"
-#~ msgstr "Aceptar"
-
-#, fuzzy
-#~ msgid "Brand u r l"
-#~ msgid_plural "Brand u r ls"
-#~ msgstr[0] "Marca"
-#~ msgstr[1] "Marcas"
-
-#~ msgid "Call a c l rel pattern"
-#~ msgid_plural "Call a c l rel patterns"
-#~ msgstr[0] "Patrón permiso de llamada"
-#~ msgstr[1] "Patrones permiso de llamada"
-
-#~ msgid "D d i"
-#~ msgid_plural "D d is"
-#~ msgstr[0] "DDI"
-#~ msgstr[1] "DDis"
-
-#, fuzzy
-#~ msgid "Kam users address"
-#~ msgid_plural "Kam users address(s)"
-#~ msgstr[0] "Dirección de email"
-#~ msgstr[1] "Direcciones de email"
-
-#~ msgid "Call a c l"
-#~ msgid_plural "Call a c l"
-#~ msgstr[0] "Permiso de llamada"
-#~ msgstr[1] "Permisos de llamada"
-
-#~ msgid "Call a c l pattern"
-#~ msgid_plural "Call a c l patterns"
-#~ msgstr[0] "Patrón permisos de llamada"
-#~ msgstr[1] "Patrones permisos de llamada"
-
-#~ msgid "Parsed c d r"
-#~ msgid_plural "Parsed c d rs"
-#~ msgstr[0] "Histórico de llamadas"
-#~ msgstr[1] "Histórico de llamadas"
-
-#, fuzzy
-#~ msgid "Target group"
-#~ msgid_plural "Target groups"
-#~ msgstr[0] "Tipo de fichero"
-#~ msgstr[1] "Tipo de fichero"
-
-#, fuzzy
-#~ msgid "Encoded file"
-#~ msgstr "Descargar fichero"
-
-#~ msgid "Locution id"
-#~ msgstr "Locución"
-
-#, fuzzy
-#~ msgid "Terminal manufacturer id"
-#~ msgstr "Fabricante de Terminales"
-
-#, fuzzy
-#~ msgid "Generic template"
-#~ msgstr "Patrón de permiso genérico"
-
-#, fuzzy
-#~ msgid "Generic url pattern"
-#~ msgstr "Patrón de permiso genérico"
-
-#, fuzzy
-#~ msgid "Outgoing d d i"
-#~ msgstr "DDI de salida"
-
-#, fuzzy
-#~ msgid "Send p a i"
-#~ msgstr "Enviar por email"
-
-#, fuzzy
-#~ msgid "Voice mail user id"
-#~ msgstr "Buzón de voz"
-
-#, fuzzy
-#~ msgid "Transformation ruleset groups trunks id"
-#~ msgstr "Regla de transf. salientes"
-
-#, fuzzy
-#~ msgid "Holiday locution id"
-#~ msgstr "Festivo"
-
-#, fuzzy
-#~ msgid "Out of schedule locution id"
-#~ msgstr "Loc. No contesta"
-
-#, fuzzy
-#~ msgid "Holiday number value"
-#~ msgstr "Número de teléfono"
-
-#, fuzzy
-#~ msgid "Holiday extension id"
-#~ msgstr "Festivo"
-
-#, fuzzy
-#~ msgid "Holiday voice mail user id"
-#~ msgstr "Buzón de voz"
-
-#, fuzzy
-#~ msgid "Out of schedule number value"
-#~ msgstr "Número"
-
-#, fuzzy
-#~ msgid "Out of schedule extension id"
-#~ msgstr "Extensión"
-
-#, fuzzy
-#~ msgid "Out of schedule voice mail user id"
-#~ msgstr "Buzón de voz"
-
-#, fuzzy
-#~ msgid "Invoice template id"
-#~ msgstr "Periodo facturado"
-
-#~ msgid "Call a c l id"
-#~ msgstr "Permiso de llamada"
-
-#, fuzzy
-#~ msgid "Call a c l pattern id"
-#~ msgstr "Patrón permisos de llamada"
-
-#, fuzzy
-#~ msgid "Outgoing d d i id"
-#~ msgstr "DDI de salida"
-
-#, fuzzy
-#~ msgid "Boss assistant id"
-#~ msgstr "Jefe Asistencia"
-
-#, fuzzy
-#~ msgid "pattern"
-#~ msgstr "Tipo de fichero"
-
-#, fuzzy
-#~ msgid "group"
-#~ msgstr "Grupo de salto"
-
-#, fuzzy
-#~ msgid "R username"
-#~ msgstr "Nombre de usuario"
-
-#, fuzzy
-#~ msgid "Domain user"
-#~ msgstr "Eliminar usuario"
-
-#, fuzzy
-#~ msgid "Default timezone id"
-#~ msgstr "Acción por defecto"
-
-#, fuzzy
-#~ msgid "Domain trunk"
-#~ msgstr "Proxy de Salida"
-
-#~ msgid "NIF / CIF"
-#~ msgstr "NIF / CIF"
-
-#~ msgid "NIF"
-#~ msgstr "NIF"
-
-#~ msgid "Client"
-#~ msgstr "Cliente"
-
-#~ msgid "Number of calls"
-#~ msgstr "Número de llamadas"
-
-#~ msgid "Total price"
-#~ msgstr "Precio total"
-
-#~ msgid "Total price with taxes"
-#~ msgstr "Precio total con impuestos"
-
-#~ msgid "Call sumary by type"
-#~ msgstr "Resumen de llamadas por tipo"
-
-#~ msgid "Totals"
-#~ msgstr "Totales"
-
-#~ msgid "Peering contracts rel lcr rule"
-#~ msgid_plural "Peering contracts rel lcr rules"
-#~ msgstr[0] "Regla LCR Peering"
-#~ msgstr[1] "Reglas LCR Peering"
-
-#~ msgid "Transformation ruleset groups user"
-#~ msgid_plural "Transformation ruleset groups users"
-#~ msgstr[0] "Regla de transf. usuario"
-#~ msgstr[1] "Reglas de transf. usuario"
-
-#, fuzzy
-#~ msgid "External media address"
-#~ msgstr "Dirección de email"
-
-#, fuzzy
-#~ msgid "Identify by"
-#~ msgstr "Identificador"
-
-#, fuzzy
-#~ msgid "username"
-#~ msgstr "Nombre de usuario"
-
-#, fuzzy
-#~ msgid "Timers min se"
-#~ msgstr "Tiempo"
-
-#, fuzzy
-#~ msgid "Timer"
-#~ msgstr "Tiempo"
-
-#, fuzzy
-#~ msgid "allowed"
-#~ msgstr "Permitir"
-
-#, fuzzy
-#~ msgid "unavailable"
-#~ msgstr "No disponible"
-
-#, fuzzy
-#~ msgid "Tone zone"
-#~ msgstr "Tiempo"
-
-#, fuzzy
-#~ msgid "Dtls ca file"
-#~ msgstr "Descargar fichero"
-
-#, fuzzy
-#~ msgid "active"
-#~ msgstr "Activo"
-
-#, fuzzy
-#~ msgid "Message context"
-#~ msgstr "Mensaje"
-
-#, fuzzy
-#~ msgid "Accountcode"
-#~ msgstr "Cuenta"
-
-#, fuzzy
-#~ msgid "Music on hold id"
-#~ msgstr "Música en espera"
-
-#, fuzzy
-#~ msgid "Transformation ruleset groups id"
-#~ msgstr "Regla de transf. usuario"
-
-#~ msgid "Transformation ruleset group user"
-#~ msgid_plural "Transformation ruleset groups users"
-#~ msgstr[0] "Reglas de transf. usuario"
-#~ msgstr[1] "Reglas de transf. usuario"
-
-#~ msgid "Transformation ruleset group trunk"
-#~ msgid_plural "Transformation ruleset groups trunks"
-#~ msgstr[0] "Reglas de transf. peering"
-#~ msgstr[1] "Reglas de transf. peering"
-
-#~ msgid "Transformation ruleset group"
-#~ msgid_plural "Transformation ruleset groups"
-#~ msgstr[0] "Grupo reglas transf."
-#~ msgstr[1] "Grupos reglas transf."
-
-#~ msgid "External call filters"
-#~ msgstr "Filtros de entrada externo"
-
-#~ msgid "Enter Username[:Password]"
-#~ msgstr "Introducir auth_username[:auth_password]"
-
-#, fuzzy
-#~ msgid "Sin asignar"
-#~ msgstr "Sin asignar"
-
-#~ msgid "DID"
-#~ msgstr "DDI"
-
-#, fuzzy
-#~ msgid "callType"
-#~ msgstr "Tipo"
-
-#~ msgid "No answer target type"
-#~ msgstr "Desvío No contesta"
-
-#~ msgid "No answer number value"
-#~ msgstr "Número"
-
-#~ msgid "No answer extension id"
-#~ msgstr "Extensión"
-
-#~ msgid "No answer voice mail user id"
-#~ msgstr "Buzón de voz"
-
-#, fuzzy
-#~ msgid "No answer number"
-#~ msgstr "Número de teléfono"
-
-#, fuzzy
-#~ msgid "No answer target"
-#~ msgstr "Desvío No contesta"
-
-#, fuzzy
-#~ msgid "Entrar"
-#~ msgstr "País"
-
-#~ msgid "D d i out"
-#~ msgstr "DDI saliente"
-
-#~ msgid "Faxname"
-#~ msgstr "Nombre de Fax"
-
-#, fuzzy
-#~ msgid "Access privileges"
-#~ msgstr "Acceso denegado"
-
-#~ msgid "Generic numeric transform rule"
-#~ msgid_plural "Generic numeric transform rules"
-#~ msgstr[0] "Regla de transf. genérica"
-#~ msgstr[1] "Reglas de transf. genérica"
-
-#~ msgid "C d r"
-#~ msgid_plural "C d r"
-#~ msgstr[0] "CDR"
-#~ msgstr[1] "CDRs"
-
-#, fuzzy
-#~ msgid "Access privilege"
-#~ msgstr "Acceso denegado"
-
-#, fuzzy
-#~ msgid "no-access"
-#~ msgstr "Éxitoso"
-
-#, fuzzy
-#~ msgid "Configuración de Marca"
-#~ msgstr "Configuración de IVR: %s"
-
-#, fuzzy
-#~ msgid "Configuración de Empresa"
-#~ msgstr "Configuración de IVR: %s"
-
-#~ msgid "Hello %s"
-#~ msgstr "Hola %s"
-
-#, fuzzy
-#~ msgid "Others"
-#~ msgstr "Otro"
-
-#, fuzzy
-#~ msgid "*User"
-#~ msgid_plural "*Users"
-#~ msgstr[0] "Usuario"
-#~ msgstr[1] "Usuarios"
-
-#, fuzzy
-#~ msgid "Category id"
-#~ msgstr "Categoría"
-
-#, fuzzy
-#~ msgid "Category label"
-#~ msgstr "Categoría"
-
-#~ msgid "notes"
-#~ msgstr "Nota"
-
-#~ msgid "tags"
-#~ msgstr "etiquetas"
-
-#~ msgid "Sections"
-#~ msgstr "Secciones"
-
-#~ msgid "coche"
-#~ msgid_plural "coches"
-#~ msgstr[0] "xCoche"
-#~ msgstr[1] "xCoches"
-
-#~ msgid "Listado de "
-#~ msgstr "Listado Castellano de"
-
-#~ msgid "%s list"
-#~ msgstr "Listado de %s"
-
-#~ msgid "Usuario o contraseña incorrectos."
-#~ msgstr "Usuario o contraseña incorrectos."
-
-#~ msgid "Nombre no disponible"
-#~ msgstr "Nombre no disponible"
-
-#~ msgid "Usuario (fijo)"
-#~ msgstr "Usuario (fijo)"
-
-#~ msgid "Usuario (móvil)"
-#~ msgstr "Usuario (móvil)"
-
-#~ msgid "Buzón de voz (fijo)"
-#~ msgstr "Buzón de voz (fijo)"
-
-#~ msgid "Buzón de voz (móvil)"
-#~ msgstr "Buzón de voz (móvil)"
-
-#~ msgid "Sala de Conferencias"
-#~ msgstr "Sala de Conferencias"
-
-#~ msgid "Grupo de Salto"
-#~ msgstr "Grupo de Salto"
-
-#~ msgid "IVR de acceso a extensiones"
-#~ msgstr "IVR de acceso a extensiones"
-
-#~ msgid "IVR"
-#~ msgstr "IVR"
-
-#~ msgid "Volver al inicio"
-#~ msgstr "Volver al inicio"
-
-#~ msgid "Haz click para modificar o escuchar la locución"
-#~ msgstr "Haz click para modificar o escuchar la locución"
-
-#~ msgid " -- Eliminar"
-#~ msgstr " -- Eliminar"
-
-#~ msgid "Acción no configurada"
-#~ msgstr "Acción no configurada"
-
-#~ msgid "Guardando..."
-#~ msgstr "Guardando..."
-
-#~ msgid "Existe contenido no guardado."
-#~ msgstr "Existe contenido no guardado."
-
-#~ msgid "¿Desea cerrar la pantalla?"
-#~ msgstr "¿Desea cerrar la pantalla?"
-
-#~ msgid "Cuidado!"
-#~ msgstr "Cuidado!"
-
-#~ msgid "Omitir Cambios y Cerrar"
-#~ msgstr "Omitir Cambios y Cerrar"
-
-#~ msgid "-- Sin Locución"
-#~ msgstr "-- Sin Locución"
-
-#~ msgid "En caso de festivo"
-#~ msgstr "En caso de festivo"
-
-#~ msgid "En caso de fuera horario"
-#~ msgstr "En caso de fuera horario"
-
-#~ msgid "En caso de ocupado"
-#~ msgstr "En caso de ocupado"
-
-#~ msgid "En caso de no respuesta"
-#~ msgstr "En caso de no respuesta"
-
-#~ msgid "Guardar"
-#~ msgstr "Guardar"
-
-#~ msgid "Cerrar automáticamente después de guardar"
-#~ msgstr "Cerrar automáticamente después de guardar"
-
-#~ msgid "En caso de fuera de horario"
-#~ msgstr "En caso de fuera de horario"

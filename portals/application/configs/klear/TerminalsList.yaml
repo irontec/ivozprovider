@@ -4,13 +4,13 @@
 
 
 production:
-  main: 
+  main:
     module: klearMatrix
     defaultScreen: terminalsList_screen
   screens: &terminals_screensLink
     terminalsList_screen: &terminalsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *Terminals
       class: ui-silk-telephone
@@ -18,16 +18,16 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
-        blacklist: 
+        blacklist:
           password: true
           direct_media_method: true
           lastProvisionDate: true
           disallow: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             terminalsEdit_screen: true
-          dialogs: 
+          dialogs:
             terminalsDel_dialog: true
           default: terminalsEdit_screen
         order:
@@ -37,14 +37,14 @@ production:
           mac: true
           allow: true
           lastProvisionDate: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           terminalsNew_screen: true
-        dialogs: 
+        dialogs:
           terminalsDel_dialog: true
           importTerminals_dialog: true
-    terminalsNew_screen: &terminalsNew_screenLink 
+    terminalsNew_screen: &terminalsNew_screenLink
       <<: *Terminals
       controller: new
       class: ui-silk-add
@@ -67,7 +67,7 @@ production:
           TerminalModelId: true
           mac: true
           lastProvisionDate: true
-        blacklist: 
+        blacklist:
           disallow: true
           lastProvisionDate: true
           domain: true
@@ -80,7 +80,7 @@ production:
             __empty2: 1
             password: 5
         group1:
-          label: _("Connection Info")     
+          label: _("Connection Info")
           colsPerRow: 12
           fields:
             allow: 6
@@ -92,7 +92,7 @@ production:
             TerminalModelId: 6
             mac: 6
             lastProvisionDate: 6
-    terminalsEdit_screen: &terminalsEdit_screenLink 
+    terminalsEdit_screen: &terminalsEdit_screenLink
       <<: *Terminals
       controller: edit
       class: ui-silk-pencil
@@ -105,7 +105,7 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
-        readOnly: 
+        readOnly:
           lastProvisionDate: true
         blacklist:
           domain: true
@@ -121,7 +121,7 @@ production:
       fixedPositions:
         <<: *TerminalsFixedPositions_link
   dialogs: &terminals_dialogsLink
-    terminalsDel_dialog: &terminalsDel_dialogLink 
+    terminalsDel_dialog: &terminalsDel_dialogLink
       <<: *Terminals
       controller: delete
       class: ui-silk-bin
@@ -135,7 +135,7 @@ production:
     importTerminals_dialog:
       <<: *Terminals
       module: default
-      title: _("Import %s", ngettext('File', 'Files', 1))
+      title: _("Import %s", ngettext('Terminal', 'Terminals', 0))
       label: false
       labelOnEdit: true
       labelOnList: true
@@ -163,11 +163,11 @@ production:
       module: default
       controller: Password
       action: generate
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

@@ -1,39 +1,39 @@
-production: 
+production:
   class: \IvozProvider\Model\TerminalModels
-  fields: 
-    iden: 
+  fields:
+    iden:
       title: ngettext('Iden', 'Idens', 1)
       type: text
       pattern: '[a-zA-Z0-9_-]+'
       trim: both
       required: true
-    name: 
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
       defaultValue:
       default: true
-    description: 
+    description:
       title: ngettext('Description', 'Descriptions', 1)
       type: text
       trim: both
-      defaultValue: 
-    TerminalManufacturerId: 
+      defaultValue:
+    TerminalManufacturerId:
       title: _('Terminal manufacturer')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\TerminalManufacturers
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - iden
               - name
             template: '%name%'
           order: iden
-    genericUrlPattern: 
-      title: _('Patrón de la url genérica')
+    genericUrlPattern:
+      title: _('Generic URL Pattern')
       type: text
       trim: both
       prefix: 'http://{PROVISIONING_URL}/provision/'
@@ -42,8 +42,8 @@ production:
         position: left
         icon: help
         text: _("Url exacta a la que se accede.")
-    genericTemplate: 
-      title: _('Plantilla genérica')
+    genericTemplate:
+      title: _('Generic template')
       type: textarea
       source:
         control: Codemirror
@@ -51,9 +51,9 @@ production:
           mode: php
           lineNumbers: true
           matchBrackets: true
-      options: 
+      options:
         title: _("Options")
-        dialogs: 
+        dialogs:
           uploadFile_dialog: true
           downloadFile_dialog: true
           genericBackup_dialog: true
@@ -63,9 +63,9 @@ production:
         type: box
         position: left
         icon: help
-        text: _('Usar <strong>$this->terminalModel</strong> para acceder a los datos del modelo. En caso de error, para saber la línea exacta en la que se encuentra hay que restarle 70 a la línea devuelta en el mensaje.')
-    specificUrlPattern: 
-      title: _('Patrón de la url específica')
+        text: _('Use <strong>$this->terminalModel</strong> to access the model data.')
+    specificUrlPattern:
+      title: _('Specific URL Pattern')
       type: text
       trim: both
       prefix: 'https://{PROVISIONING_URL}:{PORT_IN_GENERIC_FILE}/provision/'
@@ -73,19 +73,19 @@ production:
         type: box
         position: left
         icon: help
-        text: _("La parte variable de la url se pone entre llaves, por ejemplo /t26p/{mac}.cfg")
-    specificTemplate: 
-      title: _('Plantilla específica')
+        test: _("Variable part of the URL is enclosed between braces, p.e. /t26p/{mac}.cfg")
+    specificTemplate:
+      title: _('Specific Template')
       type: textarea
       source:
         control: Codemirror
-        settings: 
+        settings:
           mode: php
           lineNumbers: true
           matchBrackets: true
-      options: 
+      options:
         title: _("Options")
-        dialogs: 
+        dialogs:
           uploadFile_dialog: true
           downloadFile_dialog: true
           specificBackup_dialog: true
@@ -95,12 +95,12 @@ production:
         type: box
         position: left
         icon: help
-        text: _('Usar <strong>$this->terminalModel</strong> para acceder a los datos del modelo, <strong>$this->terminal</strong> para los datos del terminal, <strong>$this->user</strong> para el usuario y <strong>$this->company</strong> para la empresa. En caso e error, para saber la línea exacta en la que se encuentra hay que restarle 70 a la línea devuelta en el mensaje.')
-staging: 
+        text: _('Use <string>$this->terminalModel</strong> to access model data, <strong>$this->terminal</strong> to access terminal data, <strong>$this->user</strong> for the user and <strong>$this->company</strong> for the company.');
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production
