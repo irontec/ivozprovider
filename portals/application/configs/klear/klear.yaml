@@ -28,6 +28,7 @@ production:
         - "default/css/customMenu.css"
         - "default/css/customFields.css"
         - "default/css/global.css"
+        - "default/css/jquery.ui.spinner.css"
       javascript:
         - "default/js/customMenu.js"
         - "default/js/customTooltip.js"
