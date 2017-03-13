@@ -28,6 +28,9 @@ class MultimediaWorker extends Iron_Gearman_Worker
 
     public function _encode(\GearmanJob $serializedJob)
     {
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
+
         $this->_logger->log($this->_modelName . "-  start encode " , Zend_Log::INFO);
         $job = igbinary_unserialize($serializedJob->workload());
 

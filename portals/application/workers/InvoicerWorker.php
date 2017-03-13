@@ -29,6 +29,8 @@ class InvoicerWorker extends Iron_Gearman_Worker
 
     public function invoice(\GearmanJob $serializedJob)
     {
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
 
         $job = igbinary_unserialize($serializedJob->workload());
         $pk = $job->getPk();

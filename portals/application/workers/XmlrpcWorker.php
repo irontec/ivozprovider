@@ -41,6 +41,9 @@ class XmlrpcWorker extends Iron_Gearman_Worker
 
     public function send(\GearmanJob $job)
     {
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
+
         $jobObject = igbinary_unserialize($job->workload());
 
         $proxyServers = $jobObject->getProxyServers();

@@ -29,6 +29,8 @@ class TarificatorWorker extends Iron_Gearman_Worker
 
     public function tarificateCalls(\GearmanJob $serializedJob = null)
     {
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
 
         $pks = null;
         if (!is_null($serializedJob)) {

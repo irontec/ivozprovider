@@ -75,6 +75,9 @@ class AmiWorker extends Iron_Gearman_Worker
 
     public function sendFax(\GearmanJob $serializedJob)
     {
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
+
         $this->_logger->log("[GEARMAND][FAX] Sending fax...", \Zend_Log::INFO);
         $job = igbinary_unserialize($serializedJob->workload());
         $fax = $job->getFaxInOut();

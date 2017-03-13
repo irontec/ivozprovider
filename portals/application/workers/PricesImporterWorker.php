@@ -55,6 +55,8 @@ class PricesimporterWorker extends Iron_Gearman_Worker
 
     public function importPrices(\GearmanJob $serializedJob)
     {
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
 
         $job = igbinary_unserialize($serializedJob->workload());
         $this->args = $job->getParams();
