@@ -113,7 +113,7 @@ class Users extends Raw\Users
 
         // Update Asterisk Voicemail
         $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
-        $vm = $vmMapper->findOneByField("mailbox", $model->getVoiceMailUser());
+        $vm = $vmMapper->findOneByField("userId", $model->getPrimaryKey());
 
         // If not found create a new one
         if (is_null($vm)) {
@@ -171,13 +171,6 @@ class Users extends Raw\Users
     {
 
         $extension = $model->getExtension();
-
-        // Delete User voicemail
-        $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
-        $vm = $vmMapper->findOneByField("mailbox", $model->getVoiceMailUser());
-        if ($vm) {
-            $vm->delete();
-        }
 
         // Update the endpoint
         $endpoint = $model->getEndpoint();

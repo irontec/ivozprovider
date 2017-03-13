@@ -382,7 +382,6 @@ class AstVoicemail extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'password' => '1234',
         );
 
         $this->_initFileObjects();
