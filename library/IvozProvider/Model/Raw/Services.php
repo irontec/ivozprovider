@@ -88,6 +88,13 @@ class Services extends ModelAbstract
      */
     protected $_defaultCode;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_extraArgs;
+
 
 
     /**
@@ -116,6 +123,7 @@ class Services extends ModelAbstract
         'description_en'=>'descriptionEn',
         'description_es'=>'descriptionEs',
         'defaultCode'=>'defaultCode',
+        'extraArgs'=>'extraArgs',
     );
 
     /**
@@ -164,6 +172,7 @@ class Services extends ModelAbstract
             'description' => '',
             'descriptionEn' => '',
             'descriptionEs' => '',
+            'extraArgs' => '0',
         );
 
         $this->_initFileObjects();
@@ -516,6 +525,40 @@ class Services extends ModelAbstract
     public function getDefaultCode()
     {
         return $this->_defaultCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Services
+     */
+    public function setExtraArgs($data)
+    {
+
+        if ($this->_extraArgs != $data) {
+            $this->_logChange('extraArgs', $this->_extraArgs, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_extraArgs = $data;
+
+        } else if (!is_null($data)) {
+            $this->_extraArgs = (int) $data;
+
+        } else {
+            $this->_extraArgs = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column extraArgs
+     *
+     * @return int
+     */
+    public function getExtraArgs()
+    {
+        return $this->_extraArgs;
     }
 
     /**

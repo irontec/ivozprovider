@@ -4,36 +4,38 @@
 #include CompanyServicesList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: servicesList_screen
-  screens: &services_screensLink 
-    servicesList_screen: &servicesList_screenLink 
+  screens: &services_screensLink
+    servicesList_screen: &servicesList_screenLink
       controller: list
       order:
         field:
           - defaultCode
-      pagination: 
+      pagination:
         items: 25
       <<: *Services
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Service', 'Services', 0), "[format| (%parent%)]")
-      fields: &services_fieldsLink 
-        options: 
+      fields: &services_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             servicesEdit_screen: true
-          dialogs: 
+          dialogs:
             servicesDel_dialog: false
           default: servicesEdit_screen
-      options: 
+        blacklist:
+          extraArgs: true
+      options:
         title: _("Options")
-        screens: 
+        screens:
           servicesNew_screen: false
-        dialogs: 
+        dialogs:
           servicesDel_dialog: false
-    servicesNew_screen: &servicesNew_screenLink 
+    servicesNew_screen: &servicesNew_screenLink
       <<: *Services
       controller: new
       class: ui-silk-add
@@ -41,7 +43,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Service', 'Services', 1), "[format| (%parent%)]")
       shortcutOption: N
-    servicesEdit_screen: &servicesEdit_screenLink 
+    servicesEdit_screen: &servicesEdit_screenLink
       <<: *Services
       controller: edit
       class: ui-silk-pencil
@@ -54,8 +56,8 @@ production:
           description: true
           iden: true
 
-  dialogs: &services_dialogsLink 
-    servicesDel_dialog: &servicesDel_dialogLink 
+  dialogs: &services_dialogsLink
+    servicesDel_dialog: &servicesDel_dialogLink
       <<: *Services
       controller: delete
       class: ui-silk-bin
@@ -65,11 +67,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Service', 'Services', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

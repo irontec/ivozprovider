@@ -1,26 +1,26 @@
-production: 
+production:
   class: \IvozProvider\Model\Services
-  fields: 
-    iden: 
+  fields:
+    iden:
       title: ngettext('Iden', 'Idens', 1)
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
       maxLength: 50
       default: true
-    name: 
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
       maxLength: 50
-    description: 
+    description:
       title: ngettext('Description', 'Descriptions', 1)
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
       maxLength: 255
-    defaultCode: 
+    defaultCode:
       title: _('Code')
       type: text
       required: true
@@ -33,11 +33,23 @@ production:
         icon: help
         text: _("Future brands will have services enabled with this codes by default")
         label: _("Need help?")
-staging: 
+    extraArgs:
+      title: _('Service has extra arguments')
+      type: select
+      readonly: true
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

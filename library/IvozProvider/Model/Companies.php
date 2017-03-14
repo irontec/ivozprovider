@@ -63,20 +63,27 @@ class Companies extends Raw\Companies
 
     public function getService($exten)
     {
-        $services = array();
+        $code = substr($exten, 1);
 
         // Get company services
-        $companyServices = $this->getCompanyServices();
-        foreach ($companyServices as $companyService) {
-            $services[$companyService->getServiceId()] = $companyService;
+        $services = $this->getCompanyServices();
+
+        // Look for an exact match in service name
+        foreach ($services as $service) {
+            if ($service->getService()->getExtraArgs())
+                continue;
+            if (strlen($code) != strlen($service->getCode()))
+                continue;
+            if ($code == $service->getCode())
+                return $service;
         }
 
-        // Look for the Service Code in the extension
-        $code = substr($exten, 1);
+        // Look for a partial service match
         foreach ($services as $service) {
-            if (!strncmp($code, $service->getCode(), strlen($service->getCode()))) {
+            if (!$service->getService()->getExtraArgs())
+                continue;
+            if (!strncmp($code, $service->getCode(), strlen($service->getCode())))
                 return $service;
-            }
         }
 
         // Extension doesn't match any service
