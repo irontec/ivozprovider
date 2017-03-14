@@ -27,6 +27,12 @@ class VoicemailController extends Zend_Controller_Action
     public function sendmailAction ()
     {
         try {
+            // Get defaults mail settings
+            $config = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
+            $mail = $config->getOption('mail');
+            $default_fromname = $mail['fromname'];
+            $default_fromuser = $mail['fromuser'];
+
             // Get Raw mail content
             $handle = fopen("php://stdin", "r");
             // Load Email data
@@ -40,9 +46,9 @@ class VoicemailController extends Zend_Controller_Action
             $vm = $vmMapper->findOneByField("mailbox", $vmdata[self::VM_MAILBOX]);
             $user = $vm->getUser();
             $fromName = $vm->getUser()->getCompany()->getBrand()->getFromName();
-            if (empty($fromName)) $fromName = '';
+            if (empty($fromName)) $fromName = $default_fromname;
             $fromAddress = $vm->getUser()->getCompany()->getBrand()->getFromAddress();
-            if (empty($fromAddress)) $fromAddress = 'IvozProvider';
+            if (empty($fromAddress)) $fromAddress = $default_fromuser;
             
             $substitution = array(
                 '${VM_CATEGORY}'    => $vmdata[self::VM_CATEGORY],
