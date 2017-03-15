@@ -44,4 +44,13 @@ class DDIs extends Raw\DDIs
         return $brand->getDomain();
     }
 
+    public function getLanguageCode()
+    {
+        $language = $this->getLanguage();
+        if (!$language) {
+            return $this->getCompany()->getLanguageCode();
+        }
+        return $language->getIden();
+    }
+
 }

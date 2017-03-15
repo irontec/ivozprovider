@@ -60,7 +60,7 @@ class CallsController extends BaseController
         $company = $ddi->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
-        $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
+        $this->agi->setVariable("CHANNEL(language)", $ddi->getLanguageCode());
 
         // Check company On demand record code
         if ($company->getOnDemandRecord()) {

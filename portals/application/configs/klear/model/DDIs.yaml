@@ -260,6 +260,19 @@ production:
               - calling_code
             template: '%name% (+%calling_code%)'
           order: name_es
+    languageId: 
+      title: _('Language')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Languages
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Company's default")
 staging: 
   _extends: production
 testing: 

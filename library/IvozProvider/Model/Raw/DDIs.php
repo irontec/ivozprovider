@@ -173,6 +173,20 @@ class DDIs extends ModelAbstract
      */
     protected $_friendValue;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_languageId;
+
+
+    /**
+     * Parent relation DDIs_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
     /**
      * Parent relation DDIs_ibfk_1
@@ -296,6 +310,7 @@ class DDIs extends ModelAbstract
         'countryId'=>'countryId',
         'billInboundCalls'=>'billInboundCalls',
         'friendValue'=>'friendValue',
+        'languageId'=>'languageId',
     );
 
     /**
@@ -314,6 +329,10 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'DDIsIbfk12'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
+                ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -1073,6 +1092,91 @@ class DDIs extends ModelAbstract
     public function getFriendValue()
     {
         return $this->_friendValue;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setLanguageId($data)
+    {
+
+        if ($this->_languageId != $data) {
+            $this->_logChange('languageId', $this->_languageId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_languageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_languageId = (int) $data;
+
+        } else {
+            $this->_languageId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column languageId
+     *
+     * @return int
+     */
+    public function getLanguageId()
+    {
+        return $this->_languageId;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**

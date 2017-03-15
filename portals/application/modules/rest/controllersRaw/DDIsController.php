@@ -50,7 +50,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'peeringContractId': '', 
      *     'countryId': '', 
      *     'billInboundCalls': '', 
-     *     'friendValue': ''
+     *     'friendValue': '', 
+     *     'languageId': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -70,7 +71,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'peeringContractId': '', 
      *     'countryId': '', 
      *     'billInboundCalls': '', 
-     *     'friendValue': ''
+     *     'friendValue': '', 
+     *     'languageId': ''
      * }]")
      */
     public function indexAction()
@@ -107,6 +109,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'countryId',
                 'billInboundCalls',
                 'friendValue',
+                'languageId',
             );
         }
 
@@ -198,7 +201,8 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      *     'peeringContractId': '', 
      *     'countryId': '', 
      *     'billInboundCalls': '', 
-     *     'friendValue': ''
+     *     'friendValue': '', 
+     *     'languageId': ''
      * }")
      */
     public function getAction()
@@ -234,6 +238,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 'countryId',
                 'billInboundCalls',
                 'friendValue',
+                'languageId',
             );
         }
 
@@ -292,6 +297,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="billInboundCalls", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/ddis/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -345,6 +351,7 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="billInboundCalls", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -529,6 +536,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'languageId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -627,6 +639,11 @@ class Rest_DDIsController extends Iron_Controller_Rest_BaseController
                 ),
                 'friendValue' => array(
                     'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'languageId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),

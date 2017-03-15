@@ -48,6 +48,7 @@ production:
           displayName: true
           billInboundCalls: true
           peeringContractId: ${auth.isCompanyOperator}
+          languageId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -57,6 +58,7 @@ production:
             DDI: 1
             peeringContractId: 1
             displayName: 2
+            languageId: 1
         group1:
           label: _("Filters data")
           colsPerRow: 2

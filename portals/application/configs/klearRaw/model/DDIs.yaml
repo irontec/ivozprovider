@@ -197,6 +197,19 @@ production:
       title: _('Friendvalue')
       type: text
       maxLength: 25
+    languageId: 
+      title: _('Languageid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Languages
+          fieldName: 
+            fields: 
+              - iden
+            template: '%iden%'
+          order: iden
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

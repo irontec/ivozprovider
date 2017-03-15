@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include BrandsList.yaml
 #include CompaniesList.yaml
+#include DDIsList.yaml
 #include UsersList.yaml
 
 
@@ -24,6 +25,7 @@ production:
             languagesEdit_screen: true
             brandsList_screen: true
             companiesList_screen: true
+            dDIsList_screen: true
             usersList_screen: true
           dialogs: 
             languagesDel_dialog: true
@@ -79,6 +81,19 @@ production:
       <<: *companiesEdit_screenLink
       filterField: languageId
 
+    #dDIs: 
+    dDIsList_screen: 
+      <<: *dDIsList_screenLink
+      filterField: languageId
+      parentOptionCustomizer: 
+        - recordCount
+    dDIsNew_screen: 
+      <<: *dDIsNew_screenLink
+      filterField: languageId
+    dDIsEdit_screen: 
+      <<: *dDIsEdit_screenLink
+      filterField: languageId
+
     #users: 
     usersList_screen: 
       <<: *usersList_screenLink
@@ -107,6 +122,8 @@ production:
     <<: *brands_dialogsLink
   # companies dialogs: 
     <<: *companies_dialogsLink
+  # dDIs dialogs: 
+    <<: *dDIs_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
 staging: 

@@ -476,6 +476,20 @@ class Languages extends MapperAbstract
                     }
                 }
 
+                if ($model->getDDIs(null, null, true) !== null) {
+                    $dDIs = $model->getDDIs();
+
+                    if (!is_array($dDIs)) {
+
+                        $dDIs = array($dDIs);
+                    }
+
+                    foreach ($dDIs as $value) {
+                        $value->setLanguageId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 
