@@ -32,6 +32,8 @@ class VoicemailController extends Zend_Controller_Action
             $mail = $config->getOption('mail');
             $default_fromname = $mail['fromname'];
             $default_fromuser = $mail['fromuser'];
+            $voicemail = $config->getOption('voicemail');
+            $template = $voicemail['template'];
 
             // Get Raw mail content
             $handle = fopen("php://stdin", "r");
@@ -61,9 +63,9 @@ class VoicemailController extends Zend_Controller_Action
                 '${VM_CIDNUM}'      => $vmdata[self::VM_CIDNUM],
                 '${VM_DATE}'        => $vmdata[self::VM_DATE],
             );
-            
-            $templateDir = APPLICATION_PATH . "/../templates/voicemail/" . $user->getLanguageCode() . "/";
-            
+
+            $templateDir = APPLICATION_PATH . "/../templates/voicemail/$template/" . $user->getLanguageCode() . "/";
+
             $body = file_get_contents($templateDir . "body");
             $subject = file_get_contents($templateDir . "subject");
             
