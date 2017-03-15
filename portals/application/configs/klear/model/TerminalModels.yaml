@@ -41,7 +41,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Url exacta a la que se accede.")
+        text: _("Exact URL that will be accessed.")
     genericTemplate:
       title: _('Generic template')
       type: textarea

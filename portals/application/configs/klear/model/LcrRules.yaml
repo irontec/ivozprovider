@@ -1,29 +1,29 @@
-production: 
+production:
   class: \IvozProvider\Model\LcrRules
-  fields: 
-    brandId: 
+  fields:
+    brandId:
       title: _('Brand id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    prefix: 
+    prefix:
       title: _('Prefix')
       type: text
       trim: both
-    from_uri: 
+    from_uri:
       title: _('From uri')
       type: text
       trim: both
-    request_uri: 
+    request_uri:
       title: _('Pattern')
       required: true
       type: text
@@ -34,9 +34,9 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Caracter de inicio ':' en lugar de '^', caracter de fin '@' en lugar de '$'")
+        text: _("For this expression, use ':' instead of '^' and '@' instead of '$'")
         label: _("Need help?")
-    stopper: 
+    stopper:
       title: _('Stopper')
       type: select
       defaultValue: 0
@@ -47,7 +47,7 @@ production:
             title: _("No")
           '1':
             title: _("Yes")
-    enabled: 
+    enabled:
       title: _('Enabled')
       type: select
       defaultValue: 1
@@ -58,7 +58,7 @@ production:
             title: _("No")
           '1':
             title: _("Yes")
-    tag: 
+    tag:
       title: _('Tag')
       type: text
       trim: both
@@ -69,20 +69,20 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Introduzca una etiqueta sin espacios")
+        text: _("Enter a label without spaces")
         label: _("Need help?")
-    description: 
+    description:
       title: ngettext('Description', 'Descriptions', 1)
       required: true
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
       maxLength: 500
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production
