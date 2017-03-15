@@ -329,6 +329,8 @@ production:
               - name
             template: '%name%'
           order: name
+        'null': _("Company's default")
+
 staging:
   _extends: production
 testing:

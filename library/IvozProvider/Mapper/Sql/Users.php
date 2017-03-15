@@ -34,9 +34,6 @@ class Users extends Raw\Users
             if (!$model->hasChange('timezoneId'))
                 $model->setTimezoneId($model->getCompany()->getBrand()->getDefaultTimezoneId());
 
-            if (!$model->hasChange('languageId'))
-                $model->setLanguageId($model->getCompany()->getBrand()->getLanguageId());
-
             if (!$model->hasChange('exceptionBoosAssistantRegExp'))
                 $model->setExceptionBoosAssistantRegExp('');
 
