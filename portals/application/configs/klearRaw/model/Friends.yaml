@@ -160,6 +160,19 @@ production:
         values: 
           'yes': _('yes')
           'no': _('no')
+    languageId: 
+      title: _('Languageid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Languages
+          fieldName: 
+            fields: 
+              - iden
+            template: '%iden%'
+          order: iden
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

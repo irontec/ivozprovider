@@ -330,7 +330,7 @@ class CallsController extends BaseController
         $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set user language and music
-        $this->agi->setVariable("CHANNEL(language)",   $company->getLanguageCode());
+        $this->agi->setVariable("CHANNEL(language)",   $friend->getLanguageCode());
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Set User as the caller

@@ -70,6 +70,7 @@ class Friends extends MapperAbstract
                 'update_callerid' => $model->getUpdateCallerid(),
                 'from_domain' => $model->getFromDomain(),
                 'directConnectivity' => $model->getDirectConnectivity(),
+                'languageId' => $model->getLanguageId(),
             );
         } else {
             $result = array();
@@ -616,7 +617,8 @@ class Friends extends MapperAbstract
                   ->setCalleridUpdateHeader($data['callerid_update_header'])
                   ->setUpdateCallerid($data['update_callerid'])
                   ->setFromDomain($data['from_domain'])
-                  ->setDirectConnectivity($data['directConnectivity']);
+                  ->setDirectConnectivity($data['directConnectivity'])
+                  ->setLanguageId($data['languageId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -639,7 +641,8 @@ class Friends extends MapperAbstract
                   ->setCalleridUpdateHeader($data->{'callerid_update_header'})
                   ->setUpdateCallerid($data->{'update_callerid'})
                   ->setFromDomain($data->{'from_domain'})
-                  ->setDirectConnectivity($data->{'directConnectivity'});
+                  ->setDirectConnectivity($data->{'directConnectivity'})
+                  ->setLanguageId($data->{'languageId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Friends) {
             $entry->setId($data->getId())
@@ -663,7 +666,8 @@ class Friends extends MapperAbstract
                   ->setCalleridUpdateHeader($data->getCalleridUpdateHeader())
                   ->setUpdateCallerid($data->getUpdateCallerid())
                   ->setFromDomain($data->getFromDomain())
-                  ->setDirectConnectivity($data->getDirectConnectivity());
+                  ->setDirectConnectivity($data->getDirectConnectivity())
+                  ->setLanguageId($data->getLanguageId());
 
         }
 

@@ -207,6 +207,20 @@ class Friends extends ModelAbstract
      */
     protected $_directConnectivity;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_languageId;
+
+
+    /**
+     * Parent relation Friends_ibfk_5
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
     /**
      * Parent relation Friends_ibfk_1
@@ -276,6 +290,7 @@ class Friends extends ModelAbstract
         'update_callerid'=>'updateCallerid',
         'from_domain'=>'fromDomain',
         'directConnectivity'=>'directConnectivity',
+        'languageId'=>'languageId',
     );
 
     /**
@@ -297,6 +312,10 @@ class Friends extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'FriendsIbfk5'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
+                ),
             'FriendsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -1145,6 +1164,91 @@ class Friends extends ModelAbstract
     public function getDirectConnectivity()
     {
         return $this->_directConnectivity;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Friends
+     */
+    public function setLanguageId($data)
+    {
+
+        if ($this->_languageId != $data) {
+            $this->_logChange('languageId', $this->_languageId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_languageId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_languageId = (int) $data;
+
+        } else {
+            $this->_languageId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column languageId
+     *
+     * @return int
+     */
+    public function getLanguageId()
+    {
+        return $this->_languageId;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Friends
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('FriendsIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FriendsIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**

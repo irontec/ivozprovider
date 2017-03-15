@@ -53,7 +53,8 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      *     'callerid_update_header': '', 
      *     'update_callerid': '', 
      *     'from_domain': '', 
-     *     'directConnectivity': ''
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -76,7 +77,8 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      *     'callerid_update_header': '', 
      *     'update_callerid': '', 
      *     'from_domain': '', 
-     *     'directConnectivity': ''
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * }]")
      */
     public function indexAction()
@@ -116,6 +118,7 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                 'updateCallerid',
                 'fromDomain',
                 'directConnectivity',
+                'languageId',
             );
         }
 
@@ -210,7 +213,8 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      *     'callerid_update_header': '', 
      *     'update_callerid': '', 
      *     'from_domain': '', 
-     *     'directConnectivity': ''
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * }")
      */
     public function getAction()
@@ -249,6 +253,7 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                 'updateCallerid',
                 'fromDomain',
                 'directConnectivity',
+                'languageId',
             );
         }
 
@@ -310,6 +315,7 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="update_callerid", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
      * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="directConnectivity", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/friends/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -366,6 +372,7 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="update_callerid", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
      * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="directConnectivity", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -565,6 +572,11 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[enum:yes|no]',
                 ),
+                'languageId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -680,6 +692,11 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                     'type' => "enum('yes','no')",
                     'required' => true,
                     'comment' => '[enum:yes|no]',
+                ),
+                'languageId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
                 ),
             )
         );

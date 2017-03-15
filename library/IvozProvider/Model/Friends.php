@@ -148,4 +148,13 @@ class Friends extends Raw\Friends
         $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
         return $endpointMapper->findOneByField("friendId", $this->getId());
     }
+
+    public function getLanguageCode()
+    {
+        $language = $this->getLanguage();
+        if (!$language) {
+            return $this->getCompany()->getLanguageCode();
+        }
+        return $language->getIden();
+    }
 }

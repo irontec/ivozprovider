@@ -35,6 +35,7 @@ production:
           directConnectivity: true
           ip: true
           port: true
+          languageId: true
         options: 
           title: _("Options")
           screens: 
@@ -114,6 +115,7 @@ production:
           fields:
             allow: 2
             from_domain: 2
+            languageId: 2
       shortcutOption: N
       postActionOptions: 
         screens: 
