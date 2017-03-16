@@ -17,22 +17,45 @@ Target patterns
 When a user dials an external phone number, IvozProvider tries to categorize
 this call into a one of the target patterns defined in this section:
 
-.. image:: img/target_patterns_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/target_patterns_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/target_patterns_section.png
+      :align: center
+
 
 Usually, it will we useful to have one target pattern for the 254 countries
 defined in the `ISO 3166
 <https://es.wikipedia.org/wiki/ISO_3166>`_. That's why IvozProvider automatically
 includes all this countries and their prefixes:
 
-.. image:: img/target_patterns_default.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/target_patterns_default.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/target_patterns_default.png
+      :align: center
 
 Within this list we can find Spain's prefix, that will be the prefix of the test
 call we are going to make in this section:
 
-.. image:: img/target_patterns_spain.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/target_patterns_spain.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/target_patterns_spain.png
+      :align: center
+
 
 .. warning:: Brand operator can choose between keeping this target pattern if
    finds them useful or deleting them an creating the ones that meet his needs. In
@@ -54,14 +77,29 @@ so that we can link a whole group to a Peering Contract more easily.
 
 This is the goal of this section:
 
-.. image:: img/target_patterngroups_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/target_patterngroups_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/target_patterngroups_section.png
+      :align: center
+
 
 By default we can see the 254 countries grouped in the continents defined in
 `ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_:
 
-.. image:: img/target_patterngroups_default.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/target_patterngroups_default.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/target_patterngroups_default.png
+      :align: center
 
 .. important:: **To sum up**, when a user dials an external number, IvozProvider
    looks up a matching target pattern to decide which PeeringContract must be used

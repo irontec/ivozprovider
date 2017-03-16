@@ -12,8 +12,15 @@ The brand operator, responsible of this *peering* agreements with VoIP providers
 
 To accomplish this, following section can be used:
 
-.. image:: img/ddis_company_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/ddis_company_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/ddis_company_section.png
+      :align: center
 
 Notice that in order to access this section, the brand operator (or *god*)
 must have emulated the proper company and access the menu section **Company
@@ -27,15 +34,28 @@ Configuration**.
 The section **Brand configuration > DDIs** is a *read-only* display of all the
 DDIs of the brand, associated with the different companies.
 
-.. image:: img/ddis_brand_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/ddis_brand_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/ddis_brand_section.png
+      :align: center
 
 Taking into account this concepts, we create a new DDI and fill the required
 fields:
 
+.. ifconfig:: language == 'en'
 
-.. image:: img/ddis_add.png
-    :align: center
+    .. image:: img/en/ddis_add.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/ddis_add.png
+      :align: center
 
 .. _bill_inbound:
 

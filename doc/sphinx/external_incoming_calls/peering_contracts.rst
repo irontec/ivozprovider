@@ -10,8 +10,15 @@ and a VoIP Provider to make and receive calls.
 IvozProvider is ready to integrate with IP providers created on the secteion
 **Perring contracts**:
 
-.. image:: img/peeringcontract_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/peeringcontract_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/peeringcontract_section.png
+      :align: center
 
 ***************************
 Peering contract Basic data
@@ -19,13 +26,27 @@ Peering contract Basic data
 
 These are the basic information of a Peering contract:
 
-.. image:: img/peeringcontract.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/peeringcontract.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/peeringcontract.png
+      :align: center
 
 If we edit it, well see something like this:
 
-.. image:: img/peeringcontract_edit.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/peeringcontract_edit.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/peeringcontract_edit.png
+      :align: center
 
 .. glossary::
 
@@ -55,13 +76,27 @@ A **Peer Server** is a SIP server associated to an IP Provider.
 In order to add some Peer Servers for the Peer Contract that
 have just created, we only have to use the following section:
 
-.. image:: img/peerservers.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/peerservers.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/peerservers.png
+      :align: center
 
 As displayed by the zero counter, no Peer Serve has been created yet:
 
-.. image:: img/peerservers_add.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/peerservers_add.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/peerservers_add.png
+      :align: center
 
 .. glossary::
 
@@ -138,11 +173,23 @@ to process our outgoing calls through their services.
 For this reason, IvozProvider allows periodic SIP register configuration in the
 following section:
 
-.. image:: img/sip_registers.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/sip_registers.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/sip_registers.png
 
 If we create a new one, the following screen will be displayed:
 
-.. image:: img/sip_registers_add.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/sip_registers_add.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/sip_registers_add.png
 
 .. glossary::
 

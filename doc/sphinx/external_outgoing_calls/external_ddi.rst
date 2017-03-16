@@ -11,7 +11,13 @@ call easily.
 To achieve this goal, we have to configure our DDI as *Alice's* **outbound DDI**,
 because she will be the chosen one to place our first outgoing call:
 
-.. image:: img/ddi_out.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/ddi_out.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/ddi_out.png
 
 We can set this up editing *Alice* in **Company Configuration** > **Users**. If
 this change is made by brand operator or global operator, he must :ref:`emulate

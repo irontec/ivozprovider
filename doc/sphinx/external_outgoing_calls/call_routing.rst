@@ -13,20 +13,41 @@ Outgoing Routing
 
 To make this assignment, we use the section **Outgoing routing**:
 
-.. image:: img/outgoing_routes_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/outgoing_routes_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/outgoing_routes_section.png
+      :align: center
 
 If we choose routing 'Spain' calls only through our *Peering contract*, we will
 make this configuration:
 
-.. image:: img/outgoing_routes_by_pattern.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/outgoing_routes_by_pattern.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/outgoing_routes_by_pattern.png
+      :align: center
 
 On the other hand, if we are more generous and we decide to place calls to all
 european countries, we would make this configuration:
 
-.. image:: img/outgoing_routes_by_patterngroup.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/outgoing_routes_by_patterngroup.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/outgoing_routes_by_patterngroup.png
+      :align: center
 
 .. _routes_metrics:
 
@@ -68,7 +89,7 @@ Call matching theese routes will use route A for %33 of the calls and route B fo
 %66 of the calls.
 
 Failover routes
-================
+===============
 
 Failover route lets us use another route whenever the main route fails.
 

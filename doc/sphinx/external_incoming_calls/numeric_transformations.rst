@@ -19,8 +19,15 @@ format**.
 The section that allows the brand operator to configure all the **numeric
 transformations** is:
 
-.. image:: img/numeric_transformations_section.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/numeric_transformations_section.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/numeric_transformations_section.png
+      :align: center
 
 There are two different transformation scenarios:
 
@@ -57,7 +64,7 @@ The goal of the incoming transformation is that, no matter what numeric system
 the provider uses, the number will end in a general and common format.
 
 .. _e164:
-  
+
 .. important:: This common format is usually called E.164 and shows the numbers
    without internation code, but with country calling code: i.e. 34911234567
 
@@ -86,7 +93,7 @@ For example, for a number with spanish number system:
    <https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular>`_ to describe the
    changes done to the numbers. You can find multiple tutorials on net with the
    basic regular expression format.
-  
+
 ***********************************
 'National provider' transformations
 ***********************************
@@ -96,8 +103,15 @@ with most of the countries.
 
 In order to create a new set of transformations for spanish provider:
 
-.. image:: img/numeric_transformations_auto.png
-    :align: center
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/numeric_transformations_auto.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/numeric_transformations_auto.png
+      :align: center
 
 The rules that has been auto-created will transform the numbers for spanish
 providers that follow this rules:
@@ -107,11 +121,17 @@ providers that follow this rules:
 
 The numeric transformation *sets* must be assigned to **Peering Contracts**, as
 shown in the following section. This *set* can be shared by multiple spanish
-providers. 
+providers.
 
 Let's check this *set* to understand what transformation rule does:
 
-.. image:: img/numeric_transformations.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/numeric_transformations.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/numeric_transformations.png
 
 .. attention:: The automatic rule generation will create 8 common rules based on
    the given parameters. This rules can be edited later to match the provider
@@ -128,10 +148,16 @@ Displayed in blue in the previous image:
 
 The same rules will be applied for the origin and destination:
 
-.. image:: img/numeric_transformations2.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/numeric_transformations2.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/numeric_transformations2.png
 
 - The **metric** field will be used to order the rules (smaller first).
- 
+
     - If a rule doesnt *match*, the next rule is evaluated.
     - If a rule *matches*, no more rules are evaluated.
     - If no rule *matches*, no change is applied.
@@ -159,7 +185,13 @@ The same rules will be applied for the origin and destination:
 Spanish outgoing transformation
 ===============================
 
-.. image:: img/numeric_transformations3.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/numeric_transformations3.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/numeric_transformations3.png
 
 Following the same logic, this 2 rules make the change of the outgoig external
 destination numbers:
