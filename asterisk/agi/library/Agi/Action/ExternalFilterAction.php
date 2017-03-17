@@ -8,6 +8,14 @@ class ExternalFilterAction extends RouterAction
 
     protected $_ddi;
 
+    protected $_eventLocution;
+
+    public function setLocution($locution)
+    {
+        $this->_eventLocution = $locution;
+        return $this;
+    }
+
     public function setFilter($filter)
     {
         $this->_filter = $filter;
@@ -36,7 +44,11 @@ class ExternalFilterAction extends RouterAction
                         $filter->getId(), $ddi->getDDI(), $ddi->getId());
 
         // Play holiday locution
-        $this->agi->playback($filter->getHolidayLocution());
+        if (!empty($this->_eventLocution)) {
+            $this->agi->playback($this->_eventLocution);
+        } else {
+            $this->agi->playback($filter->getHolidayLocution());
+        }
 
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');

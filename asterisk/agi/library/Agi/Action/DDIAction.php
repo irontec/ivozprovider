@@ -56,6 +56,7 @@ class DDIAction extends RouterAction
                     $filterAction
                         ->setDDI($ddi)
                         ->setFilter($externalCallFilter)
+                        ->setLocution($holidayDate->getLocution())
                         ->processHoliday();
                     return;
                 }
