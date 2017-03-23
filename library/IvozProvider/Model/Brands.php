@@ -49,7 +49,7 @@ class Brands extends Raw\Brands
         }
         return $activePricingPlansIds;
     }
-    
+
     public function getLanguageCode()
     {
         $language = $this->getLanguage();
@@ -72,4 +72,27 @@ class Brands extends Raw\Brands
         // This call will be rated using externally rater
         return true;
     }
+
+    /**
+     * Get the size in bytes used by the recordings on this brand
+     *
+     */
+    public function getRecordingsDiskUsage()
+    {
+        // Get the sum of all the companies usages
+        $total = 0;
+        foreach ($this->getCompanies() as $company) {
+            $total += $company->getRecordingsDiskUsage();
+        }
+        return $total;
+    }
+
+    /**
+     * Get the size in bytes for disk usage limit on this brand
+     */
+    public function getRecordingsLimit()
+    {
+        return $this->getRecordingsLimitMB() * 1024 * 1024;
+    }
+
 }

@@ -30,9 +30,7 @@ production:
           province: true
           country: true
           registryData: true
-          extensionBlackListRegExp: true
         blacklist:
-          extensionBlackListRegExp: true
           iden: true
           postalAddress: true
           province: true
@@ -43,6 +41,8 @@ production:
           defaultTimezoneId: true
           FromName: true
           FromAddress: true
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
         options:
           title: _("Options")
           screens:
@@ -82,6 +82,10 @@ production:
           registryData: true
           FromName: true
           FromAddress: true
+          recordingsLimitMB: true
+          recordingsDiskUsage: true
+          recordingsDiskAvailable: true
+          recordingsLimitEmail: true
         order:
           <<: *brandsOrder_Link
       fixedPositions: &brandsFixedPositions_Link
@@ -114,17 +118,19 @@ production:
             province: 1
             country: 1
             registryData: 2
-        group5:
+        group4:
           colsPerRow: 12
           label: _("Mail data")
           fields:
             FromName: 6
             FromAddress: 6
-        group4:
-          colsPerRow: 1
-          label: _("Who knows section")
+        group5:
+          colsPerRow: 12
+          label: _("Recordings")
           fields:
-            extensionBlackListRegExp: 1
+            recordingsLimitMB: 6
+            recordingsDiskUsage: 6
+            recordingsLimitEmail: 6
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands
       controller: edit
@@ -153,18 +159,18 @@ production:
       <<: *brandOperatorsEdit_screenLink
       filterField: brandId
       forcedValues:
-      
+
     # Brand URLs
     <<: *brandURLs_screensLink
-    brandURLsList_screen: 
+    brandURLsList_screen:
       <<: *brandURLsList_screenLink
       filterField: brandId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-    brandURLsNew_screen: 
+    brandURLsNew_screen:
       <<: *brandURLsNew_screenLink
       filterField: brandId
-    brandURLsEdit_screen: 
+    brandURLsEdit_screen:
       <<: *brandURLsEdit_screenLink
       filterField: brandId
 
@@ -196,22 +202,22 @@ production:
 
     # Brand Operators dialogs
     <<: *brandOperators_dialogsLink
-    
+
     # Brand URLs dialogs
     <<: *brandURLs_dialogsLink
-    
-  commands: &brands_commandsLink 
-    brandsLogoDownload_command: &brandsLogoDownload_commandLink 
+
+  commands: &brands_commandsLink
+    brandsLogoDownload_command: &brandsLogoDownload_commandLink
       <<: *Brands
       controller: File
       action: force-download
       mainColumn: logo
-    brandsLogoUpload_command: &brandsLogoUpload_commandLink 
+    brandsLogoUpload_command: &brandsLogoUpload_commandLink
       <<: *Brands
       controller: File
       action: upload
       mainColumn: logo
-    brandsLogoPreview_command: &brandsLogoPreview_commandLink 
+    brandsLogoPreview_command: &brandsLogoPreview_commandLink
       <<: *Brands
       controller: File
       action: preview
@@ -219,7 +225,7 @@ production:
 
     # Brand URLs commands
     <<: *brandURLs_commandsLink
-    
+
 testing:
   _extends: production
 staging:

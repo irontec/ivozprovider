@@ -1,51 +1,46 @@
-production: 
+production:
   class: \IvozProvider\Model\Brands
-  fields: 
-    name: 
+  fields:
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
       required: true
       default: true
-    nif: 
+    nif:
       title: _('Nif')
       type: text
       trim: both
       required: true
       maxLength: 25
-    extensionBlackListRegExp: 
-      title: _('Extension black list reg exp')
-      type: text
-      trim: both
-      defaultValue: 
     domain_trunks:
       title: _('Trunks SIP domain')
       type: text
       trim: both
       maxLength: 255
-    defaultTimezoneId: 
+    defaultTimezoneId:
       title: _('Default timezone')
       type: select
       defaultValue: 145
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Timezones
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - tz
             template: '%tz%'
           order: tz
-    logo: 
+    logo:
       title: _('Logo')
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
         options:
           hiddenName: true
-          download: 
+          download:
             external: true
             type: command
             target: brandsLogoDownload_command
@@ -57,64 +52,64 @@ production:
             icon: ui-silk-bin
             title: _("Delete file")
             onNull: hide
-          upload: 
+          upload:
             type: command
             target: brandsLogoUpload_command
             title: _("Upload file")
             class: qq-uploader
             onNull: show
-          preview: 
+          preview:
             target: brandsLogoPreview_command
             type: command
             class: filePreview
             external: 1
-            props: 
+            props:
               width: 150
               height: 150
               crop: false
             onNull: hide
-          previewList: 
+          previewList:
             target: brandsLogoPreview_command
             type: command
             class: filePreview
             listController: 1
             external: 1
-            props: 
+            props:
               width: 30
               height: 30
               crop: false
             onNull: hide
-    postalAddress: 
+    postalAddress:
       title: _('Postal address')
       type: text
       trim: both
       required: true
       maxLength: 255
-    postalCode: 
+    postalCode:
       title: ngettext('Postal code', 'Postal codes', 1)
       type: text
       trim: both
       required: true
       maxLength: 10
-    town: 
+    town:
       title: _('Town')
       type: text
       trim: both
       required: true
       maxLength: 255
-    province: 
+    province:
       title: ngettext('Province', 'Provinces', 1)
       type: text
       trim: both
       required: true
       maxLength: 255
-    country: 
+    country:
       title: ngettext('Country', 'Countries', 1)
       type: text
       trim: both
       required: true
       maxLength: 255
-    registryData: 
+    registryData:
       title: _('Registry data')
       type: text
       trim: both
@@ -125,20 +120,20 @@ production:
         icon: help
         text: _("Información del registro mercantil de la marca que se incluirá en las facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo XXXX, libro Y, folio ZZZ, hoja AA-BBBB'")
         label: _("Need help?")
-    languageId: 
+    languageId:
       title: _('Language')
       type: select
       defaultValue: 1
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Languages
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    FromName: 
+    FromName:
       title: _('From name')
       trim: both
       maxLength: 255
@@ -148,7 +143,7 @@ production:
         icon: help
         text: _("Name shown as source when sending mails (e.g. IvozProvider Notifications). Leave empty to disable.")
         label: _("Need help?")
-    FromAddress: 
+    FromAddress:
       title: _('From address')
       type: text
       trim: both
@@ -159,11 +154,39 @@ production:
         icon: help
         text: _("Mail address shown as source when sending mails. MTA must allow this value.")
         label: _("Need help?")
-staging: 
+    recordingsLimitMB:
+      title: _("Max disk usage (in MB)")
+      type: number
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Max disk usage in megabytes this brand can use. When limit has been reached, oldest brand's recordings will be removed. Set to zero to allow unlimited disk usage.")
+        label: _("Need help?")
+    recordingsDiskUsage:
+      title: _('Disk usage')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_Recordings
+        method: getBrandDiskUsage
+    recordingsLimitEmail:
+      title: _('Disk usage notification email')
+      type: text
+      maxLength: 250
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Email address that will be notified when 80% of the configured limit has been reached.")
+        label: _("Need help?")
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

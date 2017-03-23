@@ -147,6 +147,20 @@ class Brands extends ModelAbstract
      */
     protected $_FromAddress;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_recordingsLimitMB;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_recordingsLimitEmail;
+
 
     /**
      * Parent relation Brands_ibfk_2
@@ -381,6 +395,8 @@ class Brands extends ModelAbstract
         'languageId'=>'languageId',
         'FromName'=>'FromName',
         'FromAddress'=>'FromAddress',
+        'recordingsLimitMB'=>'recordingsLimitMB',
+        'recordingsLimitEmail'=>'recordingsLimitEmail',
     );
 
     /**
@@ -1239,6 +1255,74 @@ class Brands extends ModelAbstract
     public function getFromAddress()
     {
         return $this->_FromAddress;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setRecordingsLimitMB($data)
+    {
+
+        if ($this->_recordingsLimitMB != $data) {
+            $this->_logChange('recordingsLimitMB', $this->_recordingsLimitMB, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_recordingsLimitMB = $data;
+
+        } else if (!is_null($data)) {
+            $this->_recordingsLimitMB = (int) $data;
+
+        } else {
+            $this->_recordingsLimitMB = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column recordingsLimitMB
+     *
+     * @return int
+     */
+    public function getRecordingsLimitMB()
+    {
+        return $this->_recordingsLimitMB;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setRecordingsLimitEmail($data)
+    {
+
+        if ($this->_recordingsLimitEmail != $data) {
+            $this->_logChange('recordingsLimitEmail', $this->_recordingsLimitEmail, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_recordingsLimitEmail = $data;
+
+        } else if (!is_null($data)) {
+            $this->_recordingsLimitEmail = (string) $data;
+
+        } else {
+            $this->_recordingsLimitEmail = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column recordingsLimitEmail
+     *
+     * @return string
+     */
+    public function getRecordingsLimitEmail()
+    {
+        return $this->_recordingsLimitEmail;
     }
 
     /**

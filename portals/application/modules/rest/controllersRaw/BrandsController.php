@@ -46,7 +46,9 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'registryData': '', 
      *     'languageId': '', 
      *     'FromName': '', 
-     *     'FromAddress': ''
+     *     'FromAddress': '', 
+     *     'recordingsLimitMB': '', 
+     *     'recordingsLimitEmail': ''
      * },{
      *     'id': '', 
      *     'name': '', 
@@ -62,7 +64,9 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'registryData': '', 
      *     'languageId': '', 
      *     'FromName': '', 
-     *     'FromAddress': ''
+     *     'FromAddress': '', 
+     *     'recordingsLimitMB': '', 
+     *     'recordingsLimitEmail': ''
      * }]")
      */
     public function indexAction()
@@ -95,6 +99,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'languageId',
                 'FromName',
                 'FromAddress',
+                'recordingsLimitMB',
+                'recordingsLimitEmail',
             );
         }
 
@@ -182,7 +188,9 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'registryData': '', 
      *     'languageId': '', 
      *     'FromName': '', 
-     *     'FromAddress': ''
+     *     'FromAddress': '', 
+     *     'recordingsLimitMB': '', 
+     *     'recordingsLimitEmail': ''
      * }")
      */
     public function getAction()
@@ -214,6 +222,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'languageId',
                 'FromName',
                 'FromAddress',
+                'recordingsLimitMB',
+                'recordingsLimitEmail',
             );
         }
 
@@ -268,6 +278,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="FromName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="FromAddress", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/brands/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -322,6 +334,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="FromName", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="FromAddress", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -491,6 +505,16 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'recordingsLimitMB' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitEmail' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -568,6 +592,16 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'FromAddress' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitMB' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitEmail' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',

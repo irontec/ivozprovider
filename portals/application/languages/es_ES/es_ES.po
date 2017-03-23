@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-15 17:49+0100\n"
-"PO-Revision-Date: 2017-03-15 18:14+0100\n"
+"POT-Creation-Date: 2017-03-22 15:21+0100\n"
+"PO-Revision-Date: 2017-03-22 17:25+0100\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -167,7 +167,9 @@ msgstr "Empresa"
 #: application/controllers/KlearCustomExtraAuthController.php:145
 #, fuzzy
 msgid "Enter"
-msgstr "interna"
+msgstr ""
+"Número máximo de dígitos que el llamante puede introducir. 0 para "
+"deshabilitar."
 
 #: application/controllers/KlearCustomExtraAuthController.php:241
 #, fuzzy, php-format
@@ -200,7 +202,7 @@ msgstr ""
 #: application/configs/klear/model/GenericMusicOnHold.yaml:46
 #, fuzzy
 msgid "File"
-msgstr "Fichero importado"
+msgstr "Por favor, seleccione un fichero a importar"
 
 #: application/controllers/KlearCustomForwardFaxController.php:40
 #, fuzzy
@@ -601,7 +603,7 @@ msgstr[0] "Código postal"
 msgstr[1] "Códigos postales"
 
 #: application/languages/common-strings.php:28
-#: application/configs/klear/model/Brands.yaml:94
+#: application/configs/klear/model/Brands.yaml:89
 #: application/configs/klear/model/Companies.yaml:94
 msgid "Postal code"
 msgid_plural "Postal codes"
@@ -628,7 +630,7 @@ msgstr[0] "Código postal"
 msgstr[1] "Códigos postales"
 
 #: application/languages/common-strings.php:32
-#: application/configs/klear/model/Brands.yaml:106
+#: application/configs/klear/model/Brands.yaml:101
 #: application/configs/klear/model/Companies.yaml:106
 msgid "Province"
 msgid_plural "Provinces"
@@ -656,7 +658,7 @@ msgstr[1] "Estado"
 #: application/configs/klear/CountriesList.yaml:113
 #: application/configs/klear/CountriesList.yaml:114
 #: application/configs/klear/CountriesList.yaml:115
-#: application/configs/klear/model/Brands.yaml:112
+#: application/configs/klear/model/Brands.yaml:107
 #: application/configs/klear/model/Companies.yaml:112
 msgid "Country"
 msgid_plural "Countries"
@@ -1346,7 +1348,7 @@ msgstr ""
 
 #: application/languages/common-strings.php:148
 #: application/configs/klear/model/BrandURLs.yaml:142
-#: application/configs/klear/model/Brands.yaml:63
+#: application/configs/klear/model/Brands.yaml:58
 #: application/configs/klear/model/CompanyURLs.yaml:132
 #: application/configs/klear/model/FaxesInOut.yaml:77
 #: application/configs/klear/model/GenericMusicOnHold.yaml:42
@@ -1369,7 +1371,7 @@ msgstr[1] "Descargar fichero"
 #: application/configs/klear/TerminalModelsList.yaml:89
 #: application/configs/klear/conf.d/actions.yaml:44
 #: application/configs/klear/model/BrandURLs.yaml:132
-#: application/configs/klear/model/Brands.yaml:53
+#: application/configs/klear/model/Brands.yaml:48
 #: application/configs/klear/model/CompanyURLs.yaml:122
 #: application/configs/klear/model/FaxesInOut.yaml:72
 #: application/configs/klear/model/GenericMusicOnHold.yaml:30
@@ -1482,7 +1484,7 @@ msgstr "Editar %s"
 #: application/configs/klear/FaxesList.yaml:19
 #: application/configs/klear/FixedCostsList.yaml:15
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:16
-#: application/configs/klear/FriendsList.yaml:18
+#: application/configs/klear/FriendsList.yaml:17
 #: application/configs/klear/FriendsPatternsList.yaml:16
 #: application/configs/klear/GenericCallACLPatternsList.yaml:15
 #: application/configs/klear/GenericMusicOnHoldList.yaml:15
@@ -1560,13 +1562,13 @@ msgstr "Listado de %s  %2s"
 #: application/configs/klear/BrandServicesList.yaml:53
 #: application/configs/klear/BrandServicesList.yaml:54
 #: application/configs/klear/BrandURLsList.yaml:67
-#: application/configs/klear/BrandsList.yaml:133
+#: application/configs/klear/BrandsList.yaml:139
 #: application/configs/klear/CalendarsList.yaml:49
 #: application/configs/klear/CallACLList.yaml:55
 #: application/configs/klear/CallACLPatternsList.yaml:48
 #: application/configs/klear/CallACLRelPatternsList.yaml:43
 #: application/configs/klear/CallForwardSettingsList.yaml:70
-#: application/configs/klear/CompaniesList.yaml:121
+#: application/configs/klear/CompaniesList.yaml:130
 #: application/configs/klear/CompanyAdminsList.yaml:44
 #: application/configs/klear/CompanyAdminsList.yaml:45
 #: application/configs/klear/CompanyServicesList.yaml:50
@@ -1592,8 +1594,8 @@ msgstr "Listado de %s  %2s"
 #: application/configs/klear/FixedCostsList.yaml:55
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:56
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:57
-#: application/configs/klear/FriendsList.yaml:128
-#: application/configs/klear/FriendsList.yaml:129
+#: application/configs/klear/FriendsList.yaml:126
+#: application/configs/klear/FriendsList.yaml:127
 #: application/configs/klear/FriendsPatternsList.yaml:47
 #: application/configs/klear/FriendsPatternsList.yaml:48
 #: application/configs/klear/GenericCallACLPatternsList.yaml:49
@@ -1678,7 +1680,7 @@ msgstr "Editar %s %2s"
 #: application/configs/klear/BrandURLsList.yaml:44
 #: application/configs/klear/BrandsList.yaml:68
 #: application/configs/klear/CallACLRelPatternsList.yaml:36
-#: application/configs/klear/CompaniesList.yaml:106
+#: application/configs/klear/CompaniesList.yaml:115
 #: application/configs/klear/CompanyAdminsList.yaml:37
 #: application/configs/klear/CompanyServicesList.yaml:41
 #: application/configs/klear/CompanyURLsList.yaml:53
@@ -1694,7 +1696,7 @@ msgstr "Editar %s %2s"
 #: application/configs/klear/FaxesList.yaml:47
 #: application/configs/klear/FixedCostsList.yaml:38
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:39
-#: application/configs/klear/FriendsList.yaml:60
+#: application/configs/klear/FriendsList.yaml:58
 #: application/configs/klear/FriendsPatternsList.yaml:37
 #: application/configs/klear/HuntGroupsList.yaml:50
 #: application/configs/klear/HuntGroupsRelUsersList.yaml:37
@@ -1752,14 +1754,14 @@ msgstr "Añadir %s"
 #: application/configs/klear/BrandOperatorsList.yaml:85
 #: application/configs/klear/BrandServicesList.yaml:61
 #: application/configs/klear/BrandURLsList.yaml:79
-#: application/configs/klear/BrandsList.yaml:177
+#: application/configs/klear/BrandsList.yaml:183
 #: application/configs/klear/CalendarsList.yaml:75
 #: application/configs/klear/CallACLList.yaml:96
 #: application/configs/klear/CallACLList.yaml:106
 #: application/configs/klear/CallACLPatternsList.yaml:58
 #: application/configs/klear/CallACLRelPatternsList.yaml:50
 #: application/configs/klear/CallForwardSettingsList.yaml:84
-#: application/configs/klear/CompaniesList.yaml:226
+#: application/configs/klear/CompaniesList.yaml:239
 #: application/configs/klear/CompanyAdminsList.yaml:52
 #: application/configs/klear/CompanyServicesList.yaml:58
 #: application/configs/klear/CompanyURLsList.yaml:92
@@ -1776,7 +1778,7 @@ msgstr "Añadir %s"
 #: application/configs/klear/FaxesList.yaml:176
 #: application/configs/klear/FixedCostsList.yaml:64
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:70
-#: application/configs/klear/FriendsList.yaml:176
+#: application/configs/klear/FriendsList.yaml:161
 #: application/configs/klear/FriendsPatternsList.yaml:55
 #: application/configs/klear/GenericCallACLPatternsList.yaml:56
 #: application/configs/klear/GenericMusicOnHoldList.yaml:88
@@ -1841,14 +1843,14 @@ msgstr "Borrar %s"
 #: application/configs/klear/BrandOperatorsList.yaml:87
 #: application/configs/klear/BrandServicesList.yaml:63
 #: application/configs/klear/BrandURLsList.yaml:81
-#: application/configs/klear/BrandsList.yaml:179
+#: application/configs/klear/BrandsList.yaml:185
 #: application/configs/klear/CalendarsList.yaml:77
 #: application/configs/klear/CallACLList.yaml:98
 #: application/configs/klear/CallACLList.yaml:108
 #: application/configs/klear/CallACLPatternsList.yaml:60
 #: application/configs/klear/CallACLRelPatternsList.yaml:52
 #: application/configs/klear/CallForwardSettingsList.yaml:86
-#: application/configs/klear/CompaniesList.yaml:228
+#: application/configs/klear/CompaniesList.yaml:241
 #: application/configs/klear/CompanyAdminsList.yaml:54
 #: application/configs/klear/CompanyServicesList.yaml:60
 #: application/configs/klear/CompanyURLsList.yaml:94
@@ -1865,7 +1867,7 @@ msgstr "Borrar %s"
 #: application/configs/klear/FaxesList.yaml:178
 #: application/configs/klear/FixedCostsList.yaml:66
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:72
-#: application/configs/klear/FriendsList.yaml:178
+#: application/configs/klear/FriendsList.yaml:163
 #: application/configs/klear/FriendsPatternsList.yaml:57
 #: application/configs/klear/GenericCallACLPatternsList.yaml:58
 #: application/configs/klear/GenericMusicOnHoldList.yaml:90
@@ -1930,14 +1932,14 @@ msgstr "%s borrado satisfactoriamente. "
 #: application/configs/klear/BrandOperatorsList.yaml:86
 #: application/configs/klear/BrandServicesList.yaml:62
 #: application/configs/klear/BrandURLsList.yaml:80
-#: application/configs/klear/BrandsList.yaml:178
+#: application/configs/klear/BrandsList.yaml:184
 #: application/configs/klear/CalendarsList.yaml:76
 #: application/configs/klear/CallACLList.yaml:97
 #: application/configs/klear/CallACLList.yaml:107
 #: application/configs/klear/CallACLPatternsList.yaml:59
 #: application/configs/klear/CallACLRelPatternsList.yaml:51
 #: application/configs/klear/CallForwardSettingsList.yaml:85
-#: application/configs/klear/CompaniesList.yaml:227
+#: application/configs/klear/CompaniesList.yaml:240
 #: application/configs/klear/CompanyAdminsList.yaml:53
 #: application/configs/klear/CompanyServicesList.yaml:59
 #: application/configs/klear/CompanyURLsList.yaml:93
@@ -1954,7 +1956,7 @@ msgstr "%s borrado satisfactoriamente. "
 #: application/configs/klear/FaxesList.yaml:177
 #: application/configs/klear/FixedCostsList.yaml:65
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:71
-#: application/configs/klear/FriendsList.yaml:177
+#: application/configs/klear/FriendsList.yaml:162
 #: application/configs/klear/FriendsPatternsList.yaml:56
 #: application/configs/klear/GenericCallACLPatternsList.yaml:57
 #: application/configs/klear/GenericMusicOnHoldList.yaml:89
@@ -2098,6 +2100,19 @@ msgid_plural "Devices"
 msgstr[0] "Servicio"
 msgstr[1] "Servicios"
 
+#: library/IvozProvider/Klear/Ghost/Recordings.php:14
+#: library/IvozProvider/Klear/Ghost/Recordings.php:37
+msgid "unlimited"
+msgstr "ilimitado"
+
+#: library/IvozProvider/Klear/Ghost/Recordings.php:29
+msgid "oversized"
+msgstr "sobrelimitado"
+
+#: library/IvozProvider/Klear/Ghost/Recordings.php:34
+msgid "shared"
+msgstr "compartido"
+
 #: library/IvozProvider/Klear/Ghost/TargetGroupPatterns.php:19
 #: application/configs/klear/model/RoutingPatternGroups.yaml:28
 msgid "Destination patterns"
@@ -2125,13 +2140,13 @@ msgstr "Marca no seleccionada"
 #: library/IvozProvider/Model/Raw/BrandURLs.php:324
 #: library/IvozProvider/Model/Raw/BrandURLs.php:361
 #: library/IvozProvider/Model/Raw/BrandURLs.php:432
-#: library/IvozProvider/Model/Raw/Brands.php:688
-#: library/IvozProvider/Model/Raw/Brands.php:725
-#: library/IvozProvider/Model/Raw/Brands.php:932
-#: library/IvozProvider/Model/Raw/Brands.php:969
-#: library/IvozProvider/Model/Raw/Brands.php:1006
-#: library/IvozProvider/Model/Raw/Brands.php:1043
-#: library/IvozProvider/Model/Raw/Brands.php:1080
+#: library/IvozProvider/Model/Raw/Brands.php:704
+#: library/IvozProvider/Model/Raw/Brands.php:741
+#: library/IvozProvider/Model/Raw/Brands.php:948
+#: library/IvozProvider/Model/Raw/Brands.php:985
+#: library/IvozProvider/Model/Raw/Brands.php:1022
+#: library/IvozProvider/Model/Raw/Brands.php:1059
+#: library/IvozProvider/Model/Raw/Brands.php:1096
 #: library/IvozProvider/Model/Raw/Calendars.php:189
 #: library/IvozProvider/Model/Raw/Calendars.php:226
 #: library/IvozProvider/Model/Raw/CallACL.php:215
@@ -2153,15 +2168,15 @@ msgstr "Marca no seleccionada"
 #: library/IvozProvider/Model/Raw/ChangeHistory.php:333
 #: library/IvozProvider/Model/Raw/ChangeHistory.php:370
 #: library/IvozProvider/Model/Raw/ChangeHistory.php:407
-#: library/IvozProvider/Model/Raw/Companies.php:726
-#: library/IvozProvider/Model/Raw/Companies.php:763
-#: library/IvozProvider/Model/Raw/Companies.php:800
-#: library/IvozProvider/Model/Raw/Companies.php:837
-#: library/IvozProvider/Model/Raw/Companies.php:976
-#: library/IvozProvider/Model/Raw/Companies.php:1013
-#: library/IvozProvider/Model/Raw/Companies.php:1050
-#: library/IvozProvider/Model/Raw/Companies.php:1087
-#: library/IvozProvider/Model/Raw/Companies.php:1124
+#: library/IvozProvider/Model/Raw/Companies.php:742
+#: library/IvozProvider/Model/Raw/Companies.php:779
+#: library/IvozProvider/Model/Raw/Companies.php:816
+#: library/IvozProvider/Model/Raw/Companies.php:853
+#: library/IvozProvider/Model/Raw/Companies.php:992
+#: library/IvozProvider/Model/Raw/Companies.php:1029
+#: library/IvozProvider/Model/Raw/Companies.php:1066
+#: library/IvozProvider/Model/Raw/Companies.php:1103
+#: library/IvozProvider/Model/Raw/Companies.php:1140
 #: library/IvozProvider/Model/Raw/CompanyAdmins.php:227
 #: library/IvozProvider/Model/Raw/CompanyAdmins.php:264
 #: library/IvozProvider/Model/Raw/CompanyAdmins.php:301
@@ -2565,7 +2580,7 @@ msgstr[1] "Servidores de Aplicación"
 #: application/configs/klear/CallForwardSettingsList.yaml:23
 #: application/configs/klear/CallForwardSettingsList.yaml:35
 #: application/configs/klear/CompaniesList.yaml:25
-#: application/configs/klear/CompaniesList.yaml:59
+#: application/configs/klear/CompaniesList.yaml:65
 #: application/configs/klear/CompanyAdminsList.yaml:19
 #: application/configs/klear/CompanyAdminsList.yaml:26
 #: application/configs/klear/CompanyServicesList.yaml:21
@@ -2602,8 +2617,8 @@ msgstr[1] "Servidores de Aplicación"
 #: application/configs/klear/FixedCostsList.yaml:27
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:21
 #: application/configs/klear/FixedCostsRelInvoicesList.yaml:28
-#: application/configs/klear/FriendsList.yaml:40
-#: application/configs/klear/FriendsList.yaml:49
+#: application/configs/klear/FriendsList.yaml:39
+#: application/configs/klear/FriendsList.yaml:47
 #: application/configs/klear/FriendsPatternsList.yaml:19
 #: application/configs/klear/FriendsPatternsList.yaml:26
 #: application/configs/klear/GenericCallACLPatternsList.yaml:20
@@ -2836,10 +2851,10 @@ msgstr[1] "Portales"
 
 #: application/configs/klear/BrandsList.yaml:17
 #: application/configs/klear/BrandsList.yaml:68
-#: application/configs/klear/BrandsList.yaml:133
-#: application/configs/klear/BrandsList.yaml:177
-#: application/configs/klear/BrandsList.yaml:178
-#: application/configs/klear/BrandsList.yaml:179
+#: application/configs/klear/BrandsList.yaml:139
+#: application/configs/klear/BrandsList.yaml:183
+#: application/configs/klear/BrandsList.yaml:184
+#: application/configs/klear/BrandsList.yaml:185
 #: application/configs/klear/klear.yaml:57
 #: application/configs/klear/klear.yaml:59
 #: application/configs/klear/model/BrandOperators.yaml:5
@@ -2855,34 +2870,36 @@ msgid_plural "Brands"
 msgstr[0] "Marca"
 msgstr[1] "Marcas"
 
-#: application/configs/klear/BrandsList.yaml:89
+#: application/configs/klear/BrandsList.yaml:93
 #: application/configs/klear/ConferenceRoomsList.yaml:49
 #: application/configs/klear/HuntGroupsList.yaml:59
 msgid "Basic data"
 msgstr "Configuración básica"
 
-#: application/configs/klear/BrandsList.yaml:96
+#: application/configs/klear/BrandsList.yaml:100
 msgid "SIP domains"
 msgstr "Dominios SIP"
 
-#: application/configs/klear/BrandsList.yaml:102
+#: application/configs/klear/BrandsList.yaml:106
 msgid "Locales"
 msgstr "Localización"
 
-#: application/configs/klear/BrandsList.yaml:109
-#: application/configs/klear/CompaniesList.yaml:146
+#: application/configs/klear/BrandsList.yaml:113
+#: application/configs/klear/CompaniesList.yaml:155
 msgid "Invoice data"
 msgstr "Datos de facturación"
 
-#: application/configs/klear/BrandsList.yaml:119
+#: application/configs/klear/BrandsList.yaml:123
 msgid "Mail data"
 msgstr "Configuración mail"
 
-#: application/configs/klear/BrandsList.yaml:125
-msgid "Who knows section"
-msgstr ""
+#: application/configs/klear/BrandsList.yaml:129
+#: application/configs/klear/CompaniesList.yaml:166
+#, fuzzy
+msgid "Recordings"
+msgstr "Grabación"
 
-#: application/configs/klear/BrandsList.yaml:184
+#: application/configs/klear/BrandsList.yaml:190
 #, python-format
 msgid "Emulate Brand %s"
 msgstr "Emular Marca %s"
@@ -2986,12 +3003,12 @@ msgstr[0] "Opción de desvío"
 msgstr[1] "Opciones de desvío"
 
 #: application/configs/klear/CompaniesList.yaml:20
-#: application/configs/klear/CompaniesList.yaml:106
-#: application/configs/klear/CompaniesList.yaml:121
-#: application/configs/klear/CompaniesList.yaml:226
-#: application/configs/klear/CompaniesList.yaml:227
-#: application/configs/klear/CompaniesList.yaml:228
-#: application/configs/klear/CompaniesList.yaml:249
+#: application/configs/klear/CompaniesList.yaml:115
+#: application/configs/klear/CompaniesList.yaml:130
+#: application/configs/klear/CompaniesList.yaml:239
+#: application/configs/klear/CompaniesList.yaml:240
+#: application/configs/klear/CompaniesList.yaml:241
+#: application/configs/klear/CompaniesList.yaml:262
 #: application/configs/klear/klear.yaml:111
 #: application/configs/klear/klear.yaml:113
 #: application/configs/klear/model/Calendars.yaml:5
@@ -3009,25 +3026,20 @@ msgid_plural "Companies"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
 
-#: application/configs/klear/CompaniesList.yaml:134
+#: application/configs/klear/CompaniesList.yaml:143
 msgid "Server data"
 msgstr "Configuración Servidor"
 
-#: application/configs/klear/CompaniesList.yaml:157
-#: application/configs/klear/model/Companies.yaml:205
-msgid "On-demand call recording"
-msgstr "Grabación bajo demanda"
-
-#: application/configs/klear/CompaniesList.yaml:163
+#: application/configs/klear/CompaniesList.yaml:176
 msgid "Externally rated options"
 msgstr "Tarificación externa"
 
-#: application/configs/klear/CompaniesList.yaml:233
+#: application/configs/klear/CompaniesList.yaml:246
 #, python-format
 msgid "Emulate Company %s"
 msgstr "Emular Compañía %s"
 
-#: application/configs/klear/CompaniesList.yaml:249
+#: application/configs/klear/CompaniesList.yaml:262
 #: application/configs/klear/DDIsList.yaml:172
 #: application/configs/klear/ExtensionsList.yaml:104
 #: application/configs/klear/HolidayDatesList.yaml:61
@@ -3304,13 +3316,13 @@ msgid_plural "Fixed costs rel invoices"
 msgstr[0] "Coste fijo para factura"
 msgstr[1] "Costes fijo para factura"
 
-#: application/configs/klear/FriendsList.yaml:18
-#: application/configs/klear/FriendsList.yaml:60
-#: application/configs/klear/FriendsList.yaml:128
-#: application/configs/klear/FriendsList.yaml:129
-#: application/configs/klear/FriendsList.yaml:176
-#: application/configs/klear/FriendsList.yaml:177
-#: application/configs/klear/FriendsList.yaml:178
+#: application/configs/klear/FriendsList.yaml:17
+#: application/configs/klear/FriendsList.yaml:58
+#: application/configs/klear/FriendsList.yaml:126
+#: application/configs/klear/FriendsList.yaml:127
+#: application/configs/klear/FriendsList.yaml:161
+#: application/configs/klear/FriendsList.yaml:162
+#: application/configs/klear/FriendsList.yaml:163
 #: application/configs/klear/klear.yaml:201
 #: application/configs/klear/klear.yaml:203
 #: application/configs/klear/model/DDIs.yaml:83
@@ -3320,17 +3332,17 @@ msgid_plural "Friends"
 msgstr[0] "Friend"
 msgstr[1] "Friends"
 
-#: application/configs/klear/FriendsList.yaml:92
+#: application/configs/klear/FriendsList.yaml:90
 #: application/configs/klear/UsersList.yaml:128
 #: application/configs/klear/UsersList.yaml:175
 msgid "Basic Configuration"
 msgstr "Basic Configuration"
 
-#: application/configs/klear/FriendsList.yaml:105
+#: application/configs/klear/FriendsList.yaml:103
 msgid "Outgoing Configuration"
 msgstr "Configuración Saliente"
 
-#: application/configs/klear/FriendsList.yaml:113
+#: application/configs/klear/FriendsList.yaml:111
 msgid "Advanced Configuration"
 msgstr "Configuración Avanzada"
 
@@ -3729,7 +3741,7 @@ msgstr[1] "Kam users domain(s)"
 #: application/configs/klear/LanguagesList.yaml:50
 #: application/configs/klear/LanguagesList.yaml:51
 #: application/configs/klear/LanguagesList.yaml:52
-#: application/configs/klear/model/Brands.yaml:129
+#: application/configs/klear/model/Brands.yaml:124
 #: application/configs/klear/model/Companies.yaml:163
 #: application/configs/klear/model/DDIs.yaml:264
 #: application/configs/klear/model/Friends.yaml:249
@@ -4353,11 +4365,15 @@ msgstr[1] "X m l r p c logs"
 #: application/configs/klear/model/BrandServices.yaml:45
 #: application/configs/klear/model/BrandURLs.yaml:29
 #: application/configs/klear/model/BrandURLs.yaml:118
-#: application/configs/klear/model/Brands.yaml:127
-#: application/configs/klear/model/Brands.yaml:150
-#: application/configs/klear/model/Brands.yaml:161
+#: application/configs/klear/model/Brands.yaml:122
+#: application/configs/klear/model/Brands.yaml:145
+#: application/configs/klear/model/Brands.yaml:156
+#: application/configs/klear/model/Brands.yaml:168
+#: application/configs/klear/model/Brands.yaml:184
 #: application/configs/klear/model/Companies.yaml:161
 #: application/configs/klear/model/Companies.yaml:203
+#: application/configs/klear/model/Companies.yaml:250
+#: application/configs/klear/model/Companies.yaml:266
 #: application/configs/klear/model/CompanyServices.yaml:45
 #: application/configs/klear/model/CompanyURLs.yaml:29
 #: application/configs/klear/model/CompanyURLs.yaml:108
@@ -4744,13 +4760,13 @@ msgid "Will be shown on page footer"
 msgstr ""
 
 #: application/configs/klear/model/BrandURLs.yaml:120
-#: application/configs/klear/model/Brands.yaml:41
+#: application/configs/klear/model/Brands.yaml:36
 #: application/configs/klear/model/CompanyURLs.yaml:110
 msgid "Logo"
 msgstr "Logo"
 
 #: application/configs/klear/model/BrandURLs.yaml:137
-#: application/configs/klear/model/Brands.yaml:58
+#: application/configs/klear/model/Brands.yaml:53
 #: application/configs/klear/model/CompanyURLs.yaml:127
 msgid "Delete file"
 msgstr "Borrar fichero"
@@ -4761,44 +4777,40 @@ msgid "Nif"
 msgstr "NIF"
 
 #: application/configs/klear/model/Brands.yaml:17
-msgid "Extension black list reg exp"
-msgstr "Expr. regular lista negra"
-
-#: application/configs/klear/model/Brands.yaml:22
 msgid "Trunks SIP domain"
 msgstr "Dominio SIP"
 
-#: application/configs/klear/model/Brands.yaml:27
+#: application/configs/klear/model/Brands.yaml:22
 #: application/configs/klear/model/Companies.yaml:41
 msgid "Default timezone"
 msgstr "Zona horaria"
 
-#: application/configs/klear/model/Brands.yaml:88
+#: application/configs/klear/model/Brands.yaml:83
 #: application/configs/klear/model/Companies.yaml:88
 msgid "Postal address"
 msgstr "Dirección postal"
 
-#: application/configs/klear/model/Brands.yaml:100
+#: application/configs/klear/model/Brands.yaml:95
 #: application/configs/klear/model/Companies.yaml:100
 msgid "Town"
 msgstr "Ciudad"
 
-#: application/configs/klear/model/Brands.yaml:118
+#: application/configs/klear/model/Brands.yaml:113
 msgid "Registry data"
 msgstr "Información de registro"
 
-#: application/configs/klear/model/Brands.yaml:126
+#: application/configs/klear/model/Brands.yaml:121
 msgid ""
 "Información del registro mercantil de la marca que se incluirá en las "
 "facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo "
 "XXXX, libro Y, folio ZZZ, hoja AA-BBBB'"
 msgstr ""
 
-#: application/configs/klear/model/Brands.yaml:142
+#: application/configs/klear/model/Brands.yaml:137
 msgid "From name"
 msgstr "Nombre a mostrar"
 
-#: application/configs/klear/model/Brands.yaml:149
+#: application/configs/klear/model/Brands.yaml:144
 msgid ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications). "
 "Leave empty to disable."
@@ -4806,16 +4818,51 @@ msgstr ""
 "Nombre mostrado como origen en los correos salientes (e.g. Notificaciones "
 "IvozProvider). "
 
-#: application/configs/klear/model/Brands.yaml:152
+#: application/configs/klear/model/Brands.yaml:147
 msgid "From address"
 msgstr "Dirección origen"
 
-#: application/configs/klear/model/Brands.yaml:160
+#: application/configs/klear/model/Brands.yaml:155
 msgid ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 msgstr ""
 "Dirección origen mostrada en los correos salientes. El MTA tiene que "
 "permitir este valor."
+
+#: application/configs/klear/model/Brands.yaml:158
+#: application/configs/klear/model/Companies.yaml:240
+msgid "Max disk usage (in MB)"
+msgstr "Máximo espacio en disco (en MB)"
+
+#: application/configs/klear/model/Brands.yaml:167
+msgid ""
+"Max disk usage in megabytes this brand can use. When limit has been reached, "
+"oldest brand's recordings will be removed. Set to zero to allow unlimited "
+"disk usage."
+msgstr ""
+"Máximo espacio en megabytes que puede emplear esta marca. Una vez alcanzado "
+"el límite, las grabaciones más antiguas de la marca serán eliminadas. "
+"Introducir cero para permitir uso ilimitado. "
+
+#: application/configs/klear/model/Brands.yaml:170
+#: application/configs/klear/model/Companies.yaml:252
+msgid "Disk usage"
+msgstr "Uso de disco"
+
+#: application/configs/klear/model/Brands.yaml:176
+#: application/configs/klear/model/Companies.yaml:258
+msgid "Disk usage notification email"
+msgstr "Notificaciones de uso de disco"
+
+#: application/configs/klear/model/Brands.yaml:183
+#: application/configs/klear/model/Companies.yaml:265
+#, python-format
+msgid ""
+"Email address that will be notified when 80% of the configured limit has "
+"been reached."
+msgstr ""
+"Dirección email que será notificada cuando se alcance el 80% del límite "
+"configurado."
 
 #: application/configs/klear/model/CallACL.yaml:24
 msgid "Default policy"
@@ -5027,6 +5074,10 @@ msgstr ""
 "Si el filtro esta habilitado, añada IPs o redes, sino todas las llamadas "
 "serán rechazadas."
 
+#: application/configs/klear/model/Companies.yaml:205
+msgid "On-demand call recording"
+msgstr "Grabación bajo demanda"
+
 #: application/configs/klear/model/Companies.yaml:212
 msgid "Disabled"
 msgstr "Deshabilitado"
@@ -5042,6 +5093,16 @@ msgstr "Empleando DTMFs (lea la advertencia)"
 #: application/configs/klear/model/Companies.yaml:236
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
+
+#: application/configs/klear/model/Companies.yaml:249
+msgid ""
+"Max disk usage in megabytes this company can use. When limit has been "
+"reached, oldest recordings will be removed. Leave empty to allow unlimited "
+"disk usage."
+msgstr ""
+"Máximo espacio en megabytes que puede emplear esta compañía. Una vez "
+"alcanzado el límite, las grabaciones más antiguas de la compañía serán "
+"eliminadas. Introducir cero para permitir uso ilimitado. "
 
 #: application/configs/klear/model/CompanyAdmins.yaml:5
 #: application/configs/klear/model/CompanyServices.yaml:20
@@ -6790,8 +6851,9 @@ msgid "Module"
 msgstr "Módulo"
 
 #: application/configs/klear/model/XMLRPCLogs.yaml:18
+#, fuzzy
 msgid "Method"
-msgstr ""
+msgstr "Modo actualización"
 
 #: application/configs/klear/model/XMLRPCLogs.yaml:24
 msgid "Mapper name"
@@ -6855,6 +6917,17 @@ msgstr ""
 #: public/doc/es/_static/searchtools.js:517
 msgid ", in "
 msgstr ""
+
+#~ msgid ""
+#~ "Max disk usage in megabytes this brand can use. Set to zero to allow "
+#~ "unlimited disk usage."
+#~ msgstr ""
+#~ "Máximo espacio en megabytes que puede emplear esta marca.  Una vez "
+#~ "alcanzado el límite, las grabaciones más antiguas de la marca serán "
+#~ "eliminadas. Introducir cero para permitir uso ilimitado."
+
+#~ msgid "Extension black list reg exp"
+#~ msgstr "Expr. regular lista negra"
 
 #~ msgid "Ast musiconhold"
 #~ msgid_plural "Ast musiconhold(s)"

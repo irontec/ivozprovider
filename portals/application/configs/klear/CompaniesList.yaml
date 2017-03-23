@@ -47,14 +47,20 @@ production:
           applicationServerId: true
           mediaRelaySetsId: true
           ipFilter: true
+          languageId: true
+          outbound_prefix: true
           onDemandRecord: true
           onDemandRecordCode: true
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
           externallyExtraOpts: true
         order:
           name: true
           nif: true
           outbound_prefix: true
           countryId: true
+          domain_users: true
+          recordingsDiskUsage: true
       options:
         title: _("Options")
         screens:
@@ -100,6 +106,9 @@ production:
           languageId: true
           defaultTimezoneId: true
           externallyExtraOpts: true
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
+          recordingsDiskUsage: true
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -153,11 +162,15 @@ production:
             country: 1
             registryData: 2
         group4:
-          colsPerRow: 2
-          label: _("On-demand call recording")
+          colsPerRow: 12
+          label: _("Recordings")
           fields:
-            onDemandRecord: 1
-            onDemandRecordCode: 1
+            recordingsLimitMB: 6
+            recordingsDiskUsage: 6
+            recordingsLimitEmail: 6
+            __empty1: 6
+            onDemandRecord: 6
+            onDemandRecordCode: 6
         group5:
           colsPerRow:
           label: _("Externally rated options")

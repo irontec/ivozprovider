@@ -164,6 +164,15 @@ production:
       title: _('Externallyextraopt')
       type: text
       maxLength: 255
+    recordingsLimitMB: 
+      title: _('Recordingslimitmb')
+      type: number
+      source: 
+        control: Spinner
+    recordingsLimitEmail: 
+      title: _('Recordingslimitemail')
+      type: text
+      maxLength: 250
 staging: 
   _extends: production
 testing: 
