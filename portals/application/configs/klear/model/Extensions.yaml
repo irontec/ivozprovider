@@ -1,22 +1,22 @@
 #include ../conf.d/friendValueHelp.yaml
 
-production: 
+production:
   class: \IvozProvider\Model\Extensions
-  fields: 
-    companyId: 
+  fields:
+    companyId:
       title: _('Company id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    number: 
+    number:
       title: _('Number')
       type: text
       trim: both
@@ -29,52 +29,58 @@ production:
         icon: help
         text: _("Minimal length: 2")
         label: _("Need help?")
-    routeType: 
+    routeType:
       title: _('Route type')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
+        filterClass: IvozProvider_Klear_Filter_RouteTypes
+        values:
           '__null__':
             title: _("Unassigned")
             visualFilter:
               show: [ ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId", "friendValue" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
           'user':
             title: _('user')
             visualFilter:
               show: [ "userId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
               show: [ "IVRCommonId" ]
-              hide: [ "numberValue", "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue" ]
+              hide: [ "numberValue", "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
               show: [ "IVRCustomId" ]
-              hide: [ "numberValue", "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId", "friendValue" ]
+              hide: [ "numberValue", "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
               show: [ "huntGroupId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId", "friendValue" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId", "friendValue", "queueId" ]
           'conferenceRoom':
             title: _('Conference Room')
             visualFilter:
               show: [ "conferenceRoomId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue" ]
+              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue", "queueId" ]
           'number':
             title: _('number')
             visualFilter:
               show: [ "numberValue" ]
-              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue" ]
+              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue", "queueId" ]
           'friend':
             title: _('Friend')
             visualFilter:
               show: [ "friendValue" ]
-              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "numberValue" ]
+              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "numberValue", "queueId" ]
+          'queue':
+            title: _('Queue')
+            visualFilter:
+              show: [ "queueId" ]
+              hide: [ "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "numberValue" ]
     numberValue:
       title: _('Number value')
       type: text
@@ -82,47 +88,47 @@ production:
       required: true
       maxLength: 25
       trim: both
-    IVRCommonId: 
+    IVRCommonId:
       title: _('I v r common id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\IVRCommon
-          filterClass: IvozProvider_Klear_Filter_Company           
-          fieldName: 
-            fields: 
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    IVRCustomId: 
+    IVRCustomId:
       title: _('I v r custom id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\IVRCustom
           filterClass: IvozProvider_Klear_Filter_Company
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    huntGroupId: 
+    huntGroupId:
       title: _('Hunt group id')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           filterClass: IvozProvider_Klear_Filter_Company
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
@@ -158,23 +164,38 @@ production:
             template: '%name% %lastname%'
           order: name
         'null': _("Unassigned")
-    friendValue: 
+    friendValue:
       title: _('Friend value')
       type: text
       maxLength: 25
       required: true
       <<: *friendValueHelp
+    queueId:
+      title: _('Queue')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Queues
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
     target:
       title: _('Target')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_DDITarget
         method: getData
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

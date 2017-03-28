@@ -384,6 +384,30 @@ class Users extends ModelAbstract
     protected $_PickUpRelUsers;
 
     /**
+     * Dependent relation QueueMembers_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\QueueMembers[]
+     */
+    protected $_QueueMembers;
+
+    /**
+     * Dependent relation Queues_ibfk_5
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByTimeoutVoiceMailUser;
+
+    /**
+     * Dependent relation Queues_ibfk_8
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByFullVoiceMailUser;
+
+    /**
      * Dependent relation Users_ibfk_11
      * Type: One-to-Many relationship
      *
@@ -538,6 +562,18 @@ class Users extends ModelAbstract
                     'property' => 'PickUpRelUsers',
                     'table_name' => 'PickUpRelUsers',
                 ),
+            'QueueMembersIbfk2' => array(
+                    'property' => 'QueueMembers',
+                    'table_name' => 'QueueMembers',
+                ),
+            'QueuesIbfk5' => array(
+                    'property' => 'QueuesByTimeoutVoiceMailUser',
+                    'table_name' => 'Queues',
+                ),
+            'QueuesIbfk8' => array(
+                    'property' => 'QueuesByFullVoiceMailUser',
+                    'table_name' => 'Queues',
+                ),
             'UsersIbfk11' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
@@ -552,7 +588,8 @@ class Users extends ModelAbstract
             'CallForwardSettings_ibfk_1',
             'CallForwardSettings_ibfk_3',
             'HuntGroupsRelUsers_ibfk_2',
-            'PickUpRelUsers_ibfk_2'
+            'PickUpRelUsers_ibfk_2',
+            'QueueMembers_ibfk_2'
         ));
 
         $this->setOnDeleteSetNullRelationships(array(
@@ -566,6 +603,8 @@ class Users extends ModelAbstract
             'IVRCustom_ibfk_8',
             'IVRCustom_ibfk_9',
             'IVRCustomEntries_ibfk_4',
+            'Queues_ibfk_5',
+            'Queues_ibfk_8',
             'Users_ibfk_11'
         ));
 
@@ -3222,6 +3261,276 @@ class Users extends ModelAbstract
         }
 
         return $this->_PickUpRelUsers;
+    }
+
+    /**
+     * Sets dependent relations QueueMembers_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\QueueMembers
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setQueueMembers(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueueMembers === null) {
+
+                $this->getQueueMembers();
+            }
+
+            $oldRelations = $this->_QueueMembers;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueueMembers = array();
+
+        foreach ($data as $object) {
+            $this->addQueueMembers($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations QueueMembers_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\QueueMembers $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addQueueMembers(\IvozProvider\Model\Raw\QueueMembers $data)
+    {
+        $this->_QueueMembers[] = $data;
+        $this->_setLoaded('QueueMembersIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent QueueMembers_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\QueueMembers
+     */
+    public function getQueueMembers($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueueMembersIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueueMembers = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueueMembers;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_5
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setQueuesByTimeoutVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByTimeoutVoiceMailUser === null) {
+
+                $this->getQueuesByTimeoutVoiceMailUser();
+            }
+
+            $oldRelations = $this->_QueuesByTimeoutVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByTimeoutVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByTimeoutVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_5
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addQueuesByTimeoutVoiceMailUser(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByTimeoutVoiceMailUser[] = $data;
+        $this->_setLoaded('QueuesIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_5
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByTimeoutVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByTimeoutVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByTimeoutVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_8
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setQueuesByFullVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByFullVoiceMailUser === null) {
+
+                $this->getQueuesByFullVoiceMailUser();
+            }
+
+            $oldRelations = $this->_QueuesByFullVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByFullVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByFullVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_8
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addQueuesByFullVoiceMailUser(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByFullVoiceMailUser[] = $data;
+        $this->_setLoaded('QueuesIbfk8');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_8
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByFullVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk8';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByFullVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByFullVoiceMailUser;
     }
 
     /**

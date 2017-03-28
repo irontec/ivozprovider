@@ -11,6 +11,7 @@
 #include ExtensionsList.yaml
 #include ExternalCallFiltersList.yaml
 #include FaxesList.yaml
+#include FeaturesRelCompaniesList.yaml
 #include FriendsList.yaml
 #include HuntGroupsList.yaml
 #include IVRCommonList.yaml
@@ -22,6 +23,7 @@
 #include ParsedCDRsList.yaml
 #include PickUpGroupsList.yaml
 #include PricingPlansRelCompaniesList.yaml
+#include QueuesList.yaml
 #include RecordingsList.yaml
 #include SchedulesList.yaml
 #include TerminalsList.yaml
@@ -59,6 +61,7 @@ production:
             extensionsList_screen: true
             externalCallFiltersList_screen: true
             faxesList_screen: true
+            featuresRelCompaniesList_screen: true
             friendsList_screen: true
             huntGroupsList_screen: true
             iVRCommonList_screen: true
@@ -70,6 +73,7 @@ production:
             parsedCDRsList_screen: true
             pickUpGroupsList_screen: true
             pricingPlansRelCompaniesList_screen: true
+            queuesList_screen: true
             recordingsList_screen: true
             schedulesList_screen: true
             terminalsList_screen: true
@@ -248,6 +252,19 @@ production:
       <<: *faxesEdit_screenLink
       filterField: companyId
 
+    #featuresRelCompanies: 
+    featuresRelCompaniesList_screen: 
+      <<: *featuresRelCompaniesList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    featuresRelCompaniesNew_screen: 
+      <<: *featuresRelCompaniesNew_screenLink
+      filterField: companyId
+    featuresRelCompaniesEdit_screen: 
+      <<: *featuresRelCompaniesEdit_screenLink
+      filterField: companyId
+
     #friends: 
     friendsList_screen: 
       <<: *friendsList_screenLink
@@ -391,6 +408,19 @@ production:
       <<: *pricingPlansRelCompaniesEdit_screenLink
       filterField: companyId
 
+    #queues: 
+    queuesList_screen: 
+      <<: *queuesList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    queuesNew_screen: 
+      <<: *queuesNew_screenLink
+      filterField: companyId
+    queuesEdit_screen: 
+      <<: *queuesEdit_screenLink
+      filterField: companyId
+
     #recordings: 
     recordingsList_screen: 
       <<: *recordingsList_screenLink
@@ -515,6 +545,8 @@ production:
     <<: *externalCallFilters_dialogsLink
   # faxes dialogs: 
     <<: *faxes_dialogsLink
+  # featuresRelCompanies dialogs: 
+    <<: *featuresRelCompanies_dialogsLink
   # friends dialogs: 
     <<: *friends_dialogsLink
   # huntGroups dialogs: 
@@ -537,6 +569,8 @@ production:
     <<: *pickUpGroups_dialogsLink
   # pricingPlansRelCompanies dialogs: 
     <<: *pricingPlansRelCompanies_dialogsLink
+  # queues dialogs: 
+    <<: *queues_dialogsLink
   # recordings dialogs: 
     <<: *recordings_dialogsLink
   # schedules dialogs: 

@@ -666,6 +666,48 @@ class Users extends MapperAbstract
                     }
                 }
 
+                if ($model->getQueueMembers(null, null, true) !== null) {
+                    $queueMembers = $model->getQueueMembers();
+
+                    if (!is_array($queueMembers)) {
+
+                        $queueMembers = array($queueMembers);
+                    }
+
+                    foreach ($queueMembers as $value) {
+                        $value->setUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByTimeoutVoiceMailUser(null, null, true) !== null) {
+                    $queues = $model->getQueuesByTimeoutVoiceMailUser();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setTimeoutVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByFullVoiceMailUser(null, null, true) !== null) {
+                    $queues = $model->getQueuesByFullVoiceMailUser();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setFullVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 

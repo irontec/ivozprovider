@@ -63,6 +63,8 @@ mappers:
   - &PricingPlansRelTargetPatterns {mapper: \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns, modelFile: PricingPlansRelTargetPatterns}
   - &ProxyTrunks {mapper: \IvozProvider\Mapper\Sql\ProxyTrunks, modelFile: ProxyTrunks}
   - &ProxyUsers {mapper: \IvozProvider\Mapper\Sql\ProxyUsers, modelFile: ProxyUsers}
+  - &QueueMembers {mapper: \IvozProvider\Mapper\Sql\QueueMembers, modelFile: QueueMembers}
+  - &Queues {mapper: \IvozProvider\Mapper\Sql\Queues, modelFile: Queues}
   - &Recordings {mapper: \IvozProvider\Mapper\Sql\Recordings, modelFile: Recordings}
   - &RoutingPatternGroups {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroups, modelFile: RoutingPatternGroups}
   - &RoutingPatternGroupsRelPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroupsRelPatterns, modelFile: RoutingPatternGroupsRelPatterns}
@@ -82,6 +84,8 @@ mappers:
   - &AstPsAors {mapper: \IvozProvider\Mapper\Sql\AstPsAors, modelFile: AstPsAors}
   - &AstPsEndpoints {mapper: \IvozProvider\Mapper\Sql\AstPsEndpoints, modelFile: AstPsEndpoints}
   - &AstVoicemail {mapper: \IvozProvider\Mapper\Sql\AstVoicemail, modelFile: AstVoicemail}
+  - &AstQueueMembers {mapper: \IvozProvider\Mapper\Sql\AstQueueMembers, modelFile: AstQueueMembers}
+  - &AstQueues {mapper: \IvozProvider\Mapper\Sql\AstQueues, modelFile: AstQueues}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
   - &KamAccCdrsBrand {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrsBrand}
   - &KamAccCdrsGod {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrsGod}

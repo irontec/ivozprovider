@@ -40,7 +40,10 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
      *     'zone': '', 
      *     'zone_en': '', 
      *     'zone_es': '', 
-     *     'calling_code': ''
+     *     'calling_code': '', 
+     *     'intCode': '', 
+     *     'e164Pattern': '', 
+     *     'nationalCC': ''
      * },{
      *     'id': '', 
      *     'code': '', 
@@ -50,7 +53,10 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
      *     'zone': '', 
      *     'zone_en': '', 
      *     'zone_es': '', 
-     *     'calling_code': ''
+     *     'calling_code': '', 
+     *     'intCode': '', 
+     *     'e164Pattern': '', 
+     *     'nationalCC': ''
      * }]")
      */
     public function indexAction()
@@ -77,6 +83,9 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
                 'zoneEn',
                 'zoneEs',
                 'callingCode',
+                'intCode',
+                'e164Pattern',
+                'nationalCC',
             );
         }
 
@@ -158,7 +167,10 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
      *     'zone': '', 
      *     'zone_en': '', 
      *     'zone_es': '', 
-     *     'calling_code': ''
+     *     'calling_code': '', 
+     *     'intCode': '', 
+     *     'e164Pattern': '', 
+     *     'nationalCC': ''
      * }")
      */
     public function getAction()
@@ -184,6 +196,9 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
                 'zoneEn',
                 'zoneEs',
                 'callingCode',
+                'intCode',
+                'e164Pattern',
+                'nationalCC',
             );
         }
 
@@ -232,6 +247,9 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="zone_en", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="zone_es", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="calling_code", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="intCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="e164Pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="nationalCC", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/countries/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -275,6 +293,9 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="zone_en", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="zone_es", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="calling_code", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="intCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="e164Pattern", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="nationalCC", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -399,6 +420,21 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'intCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'e164Pattern' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'nationalCC' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -438,6 +474,21 @@ class Rest_CountriesController extends Iron_Controller_Rest_BaseController
                 'calling_code' => array(
                     'type' => "int",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'intCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'e164Pattern' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'nationalCC' => array(
+                    'type' => "tinyint",
+                    'required' => true,
                     'comment' => '',
                 ),
             )

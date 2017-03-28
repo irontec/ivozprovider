@@ -35,34 +35,50 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'companyId': '', 
      *     'name': '', 
+     *     'domain': '', 
      *     'description': '', 
      *     'transport': '', 
      *     'ip': '', 
      *     'port': '', 
      *     'auth_needed': '', 
-     *     'auth_user': '', 
-     *     'auth_password': '', 
+     *     'password': '', 
      *     'callACLId': '', 
      *     'countryId': '', 
      *     'areaCode': '', 
      *     'outgoingDDIId': '', 
-     *     'priority': ''
+     *     'priority': '', 
+     *     'disallow': '', 
+     *     'allow': '', 
+     *     'direct_media_method': '', 
+     *     'callerid_update_header': '', 
+     *     'update_callerid': '', 
+     *     'from_domain': '', 
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
      *     'name': '', 
+     *     'domain': '', 
      *     'description': '', 
      *     'transport': '', 
      *     'ip': '', 
      *     'port': '', 
      *     'auth_needed': '', 
-     *     'auth_user': '', 
-     *     'auth_password': '', 
+     *     'password': '', 
      *     'callACLId': '', 
      *     'countryId': '', 
      *     'areaCode': '', 
      *     'outgoingDDIId': '', 
-     *     'priority': ''
+     *     'priority': '', 
+     *     'disallow': '', 
+     *     'allow': '', 
+     *     'direct_media_method': '', 
+     *     'callerid_update_header': '', 
+     *     'update_callerid': '', 
+     *     'from_domain': '', 
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * }]")
      */
     public function indexAction()
@@ -83,18 +99,26 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'companyId',
                 'name',
+                'domain',
                 'description',
                 'transport',
                 'ip',
                 'port',
                 'authNeeded',
-                'authUser',
-                'authPassword',
+                'password',
                 'callACLId',
                 'countryId',
                 'areaCode',
                 'outgoingDDIId',
                 'priority',
+                'disallow',
+                'allow',
+                'directMediaMethod',
+                'calleridUpdateHeader',
+                'updateCallerid',
+                'fromDomain',
+                'directConnectivity',
+                'languageId',
             );
         }
 
@@ -171,18 +195,26 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'companyId': '', 
      *     'name': '', 
+     *     'domain': '', 
      *     'description': '', 
      *     'transport': '', 
      *     'ip': '', 
      *     'port': '', 
      *     'auth_needed': '', 
-     *     'auth_user': '', 
-     *     'auth_password': '', 
+     *     'password': '', 
      *     'callACLId': '', 
      *     'countryId': '', 
      *     'areaCode': '', 
      *     'outgoingDDIId': '', 
-     *     'priority': ''
+     *     'priority': '', 
+     *     'disallow': '', 
+     *     'allow': '', 
+     *     'direct_media_method': '', 
+     *     'callerid_update_header': '', 
+     *     'update_callerid': '', 
+     *     'from_domain': '', 
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * }")
      */
     public function getAction()
@@ -202,18 +234,26 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'companyId',
                 'name',
+                'domain',
                 'description',
                 'transport',
                 'ip',
                 'port',
                 'authNeeded',
-                'authUser',
-                'authPassword',
+                'password',
                 'callACLId',
                 'countryId',
                 'areaCode',
                 'outgoingDDIId',
                 'priority',
+                'disallow',
+                'allow',
+                'directMediaMethod',
+                'calleridUpdateHeader',
+                'updateCallerid',
+                'fromDomain',
+                'directConnectivity',
+                'languageId',
             );
         }
 
@@ -256,18 +296,26 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/friends/")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="transport", nullable=false, type="varchar", sample="", description="[enum:udp|tcp|tls]")
      * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
      * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="password", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callACLId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','update')", sample="", description="[enum:invite|update]")
+     * @ApiParams(name="callerid_update_header", nullable=false, type="enum('pai','rpid')", sample="", description="[enum:pai|rpid]")
+     * @ApiParams(name="update_callerid", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="directConnectivity", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/friends/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -305,18 +353,26 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="transport", nullable=false, type="varchar", sample="", description="[enum:udp|tcp|tls]")
      * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
      * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="auth_user", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="auth_password", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="password", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callACLId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="priority", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','update')", sample="", description="[enum:invite|update]")
+     * @ApiParams(name="callerid_update_header", nullable=false, type="enum('pai','rpid')", sample="", description="[enum:pai|rpid]")
+     * @ApiParams(name="update_callerid", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="directConnectivity", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -421,6 +477,11 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'domain' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'description' => array(
                     'type' => "varchar",
                     'required' => true,
@@ -446,12 +507,7 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'auth_user' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'auth_password' => array(
+                'password' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
@@ -479,6 +535,46 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                 'priority' => array(
                     'type' => "smallint",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'disallow' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'allow' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'direct_media_method' => array(
+                    'type' => "enum('invite','update')",
+                    'required' => true,
+                    'comment' => '[enum:invite|update]',
+                ),
+                'callerid_update_header' => array(
+                    'type' => "enum('pai','rpid')",
+                    'required' => true,
+                    'comment' => '[enum:pai|rpid]',
+                ),
+                'update_callerid' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'from_domain' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'directConnectivity' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'languageId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -502,6 +598,11 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'domain' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'description' => array(
                     'type' => "varchar",
                     'required' => true,
@@ -527,12 +628,7 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'auth_user' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'auth_password' => array(
+                'password' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
@@ -560,6 +656,46 @@ class Rest_FriendsController extends Iron_Controller_Rest_BaseController
                 'priority' => array(
                     'type' => "smallint",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'disallow' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'allow' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'direct_media_method' => array(
+                    'type' => "enum('invite','update')",
+                    'required' => true,
+                    'comment' => '[enum:invite|update]',
+                ),
+                'callerid_update_header' => array(
+                    'type' => "enum('pai','rpid')",
+                    'required' => true,
+                    'comment' => '[enum:pai|rpid]',
+                ),
+                'update_callerid' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'from_domain' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'directConnectivity' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'languageId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
             )

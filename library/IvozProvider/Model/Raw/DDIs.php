@@ -36,6 +36,7 @@ class DDIs extends ModelAbstract
         'fax',
         'conferenceRoom',
         'friend',
+        'queue',
     );
 
     /**
@@ -96,7 +97,7 @@ class DDIs extends ModelAbstract
     protected $_displayName;
 
     /**
-     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend]
+     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue]
      * Database var type varchar
      *
      * @var string
@@ -180,13 +181,20 @@ class DDIs extends ModelAbstract
      */
     protected $_languageId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_queueId;
+
 
     /**
-     * Parent relation DDIs_ibfk_12
+     * Parent relation DDIs_ibfk_13
      *
-     * @var \IvozProvider\Model\Raw\Languages
+     * @var \IvozProvider\Model\Raw\Queues
      */
-    protected $_Language;
+    protected $_Queue;
 
     /**
      * Parent relation DDIs_ibfk_1
@@ -208,6 +216,13 @@ class DDIs extends ModelAbstract
      * @var \IvozProvider\Model\Raw\ConferenceRooms
      */
     protected $_ConferenceRoom;
+
+    /**
+     * Parent relation DDIs_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
     /**
      * Parent relation DDIs_ibfk_2
@@ -311,6 +326,7 @@ class DDIs extends ModelAbstract
         'billInboundCalls'=>'billInboundCalls',
         'friendValue'=>'friendValue',
         'languageId'=>'languageId',
+        'queueId'=>'queueId',
     );
 
     /**
@@ -320,7 +336,7 @@ class DDIs extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'recordCalls'=> array('enum:none|all|inbound|outbound'),
-            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend'),
+            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -329,9 +345,9 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'DDIsIbfk12'=> array(
-                    'property' => 'Language',
-                    'table_name' => 'Languages',
+            'DDIsIbfk13'=> array(
+                    'property' => 'Queue',
+                    'table_name' => 'Queues',
                 ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
@@ -344,6 +360,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk11'=> array(
                     'property' => 'ConferenceRoom',
                     'table_name' => 'ConferenceRooms',
+                ),
+            'DDIsIbfk12'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
                 ),
             'DDIsIbfk2'=> array(
                     'property' => 'ExternalCallFilter',
@@ -1129,14 +1149,48 @@ class DDIs extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Language
-     *
-     * @param \IvozProvider\Model\Raw\Languages $data
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
      * @return \IvozProvider\Model\Raw\DDIs
      */
-    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    public function setQueueId($data)
     {
-        $this->_Language = $data;
+
+        if ($this->_queueId != $data) {
+            $this->_logChange('queueId', $this->_queueId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_queueId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_queueId = (int) $data;
+
+        } else {
+            $this->_queueId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column queueId
+     *
+     * @return int
+     */
+    public function getQueueId()
+    {
+        return $this->_queueId;
+    }
+
+    /**
+     * Sets parent relation Queue
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setQueue(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_Queue = $data;
 
         $primaryKey = $data->getPrimaryKey();
         if (is_array($primaryKey)) {
@@ -1144,21 +1198,21 @@ class DDIs extends ModelAbstract
         }
 
         if (!is_null($primaryKey)) {
-            $this->setLanguageId($primaryKey);
+            $this->setQueueId($primaryKey);
         }
 
-        $this->_setLoaded('DDIsIbfk12');
+        $this->_setLoaded('DDIsIbfk13');
         return $this;
     }
 
     /**
-     * Gets parent Language
+     * Gets parent Queue
      * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Languages
+     * @return \IvozProvider\Model\Raw\Queues
      */
-    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    public function getQueue($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'DDIsIbfk12';
+        $fkName = 'DDIsIbfk13';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -1170,13 +1224,13 @@ class DDIs extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Language = array_shift($related);
+            $this->_Queue = array_shift($related);
             if ($usingDefaultArguments) {
                 $this->_setLoaded($fkName);
             }
         }
 
-        return $this->_Language;
+        return $this->_Queue;
     }
 
     /**
@@ -1330,6 +1384,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_ConferenceRoom;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**

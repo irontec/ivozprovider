@@ -11,6 +11,7 @@ use Agi\Action\FaxCallAction;
 use Agi\Action\FriendCallAction;
 use Agi\Action\ExternalUserCallAction;
 use Agi\Action\ExternalFriendCallAction;
+use Agi\Action\QueueAction;
 
 /**
  * @brief Controller for Incoming and Outgoing calls
@@ -54,7 +55,7 @@ class CallsController extends BaseController
         $this->agi->setCallType("external");
 
         // Set Outgoing Channels X-CID header variable
-        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
+        $this->agi->setVariable("__CALL_ID", $this->agi->getCallId());
 
         // Get company MusicClass: company, Generic or default
         $company = $ddi->getCompany();
@@ -147,7 +148,7 @@ class CallsController extends BaseController
         $this->agi->setCallType("internal");
 
         // Set Outgoing Channels X-CID header variable
-        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
+        $this->agi->setVariable("__CALL_ID", $this->agi->getCallId());
 
         // Set user language and music
         $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
@@ -286,6 +287,69 @@ class CallsController extends BaseController
             ->setCaller($this->getChannelOwner())
             ->setUser($user)
             ->processDialStatus();
+    }
+
+    /**
+     * @brief Outgoing calls from queues
+     */
+    public function queuesAction()
+    {
+        $companyId = $this->agi->getVariable("COMPANYID");
+        $companyMapper = new Mapper\Companies();
+        $company = $companyMapper->find($companyId);
+
+        if (empty($company)) {
+            $this->agi->error("No company found with id %d (BUG?).", $companyId);
+            return;
+        }
+
+        $queueMemberId = $this->agi->getExtension();
+        $queueMembersMapper = new Mapper\QueueMembers();
+        $queueMember = $queueMembersMapper->find($queueMemberId);
+        if (empty($queueMember)) {
+           $this->agi->error("Queue member with id %d does not exists.", $queueMemberId);
+        }
+
+        $user = $queueMember->getUser();
+        if (empty($user)) {
+            $this->agi->error("No user found for queue member %d", $queueMemberId);
+            return;
+        }
+
+        $endpoint = $user->getEndpoint();
+        if (empty($endpoint)) {
+            $this->agi->error("User %d has no endpoint associated", $user->getId());
+            return;
+        }
+
+        $this->agi->setVariable("DIAL_OPTS", "ic");
+        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $endpoint->getSorceryId());
+    }
+
+    /**
+     * @brief After Queue process
+     */
+    public function queuestatusAction()
+    {
+        $queueId = $this->agi->getVariable("QUEUE_ID");
+        $queueMapper = new Mapper\Queues();
+        $queue = $queueMapper->find($queueId);
+
+        // Process Queue Timeout
+        $queueAction = new QueueAction($this);
+        $queueAction
+            ->setCaller($this->getChannelOwner())
+            ->setQueue($queue);
+
+
+        switch($this->agi->getVariable("QUEUESTATUS")) {
+            case 'TIMEOUT':
+                $queueAction->processTimeout();
+                break;
+            case 'FULL':
+                $queueAction->processFull();
+                break;
+        }
     }
 
     /**

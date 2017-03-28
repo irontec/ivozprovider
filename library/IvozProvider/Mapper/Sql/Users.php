@@ -148,6 +148,13 @@ class Users extends Raw\Users
                 ->save();
         }
 
+        // Update all queue member entries for this user
+        if ($haschangedExtension || $hasChangedTerminal) {
+            foreach ($model->getQueueMembers() as $member) {
+                $member->save();
+            }
+        }
+
         return $response;
 
     }

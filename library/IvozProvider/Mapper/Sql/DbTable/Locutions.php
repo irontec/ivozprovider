@@ -60,7 +60,10 @@ class Locutions extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustomEntries'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustomEntries',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues'
     );
     protected $_metadata = array (
 	  'id' => 

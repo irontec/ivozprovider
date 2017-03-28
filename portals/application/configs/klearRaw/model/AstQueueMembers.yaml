@@ -1,0 +1,53 @@
+production: 
+  class: \IvozProvider\Model\AstQueueMembers
+  fields: 
+    queue_name: 
+      title: _('Queuename')
+      type: text
+      required: true
+      maxLength: 80
+      default: true
+    interface: 
+      title: _('Interface')
+      type: text
+      required: true
+      maxLength: 80
+    membername: 
+      title: _('Membername')
+      type: text
+      maxLength: 80
+    state_interface: 
+      title: _('Stateinterface')
+      type: text
+      maxLength: 80
+    penalty: 
+      title: _('Penalty')
+      type: number
+      source: 
+        control: Spinner
+    paused: 
+      title: _('Paused')
+      type: number
+      source: 
+        control: Spinner
+    queueMemberId: 
+      title: _('Queuememberid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\QueueMembers
+          fieldName: 
+            fields: 
+              - id
+            template: '%id%'
+          order: id
+        'null': _("Unassigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

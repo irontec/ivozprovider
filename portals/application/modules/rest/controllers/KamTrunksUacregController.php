@@ -46,7 +46,8 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
      *     'flags': '', 
      *     'reg_delay': '', 
      *     'brandId': '', 
-     *     'peeringContractId': ''
+     *     'peeringContractId': '', 
+     *     'multiDDI': ''
      * },{
      *     'id': '', 
      *     'l_uuid': '', 
@@ -62,7 +63,8 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
      *     'flags': '', 
      *     'reg_delay': '', 
      *     'brandId': '', 
-     *     'peeringContractId': ''
+     *     'peeringContractId': '', 
+     *     'multiDDI': ''
      * }]")
      */
     public function indexAction()
@@ -95,6 +97,7 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
                 'regDelay',
                 'brandId',
                 'peeringContractId',
+                'multiDDI',
             );
         }
 
@@ -182,7 +185,8 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
      *     'flags': '', 
      *     'reg_delay': '', 
      *     'brandId': '', 
-     *     'peeringContractId': ''
+     *     'peeringContractId': '', 
+     *     'multiDDI': ''
      * }")
      */
     public function getAction()
@@ -214,6 +218,7 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
                 'regDelay',
                 'brandId',
                 'peeringContractId',
+                'multiDDI',
             );
         }
 
@@ -268,6 +273,7 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="reg_delay", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="multiDDI", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/kamtrunksuacreg/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -317,6 +323,7 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="reg_delay", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="multiDDI", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -481,6 +488,11 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'multiDDI' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -559,6 +571,11 @@ class Rest_KamTrunksUacregController extends Iron_Controller_Rest_BaseController
                 ),
                 'peeringContractId' => array(
                     'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'multiDDI' => array(
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),

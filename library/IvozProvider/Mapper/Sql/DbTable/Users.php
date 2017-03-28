@@ -101,6 +101,9 @@ class Users extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustomEntries',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpRelUsers',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\QueueMembers',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
         'IvozProvider\\Mapper\\Sql\\DbTable\\AstVoicemail'
     );

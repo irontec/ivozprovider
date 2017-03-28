@@ -25,11 +25,14 @@ class DDIs extends Raw\DDIs
     )
     {
         $nullableFields = array(
-                "user" => "userId",
-                "IVRCommon" => "IVRCommonId",
-                "IVRCustom" => "IVRCustomId",
-                "huntGroup" => "huntGroupId",
-                "fax" => "faxId"
+                "user"          => "userId",
+                "IVRCommon"     => "IVRCommonId",
+                "IVRCustom"     => "IVRCustomId",
+                "huntGroup"     => "huntGroupId",
+                "fax"           => "faxId",
+                "friend"        => "friendValue",
+                "conferenceRoom" => "conferenceRoomId",
+                "queue"         => "queueId",
         );
         $routeType = $model->getRouteType();
         foreach ($nullableFields as $type => $fieldName) {

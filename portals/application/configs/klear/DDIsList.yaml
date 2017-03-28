@@ -49,6 +49,7 @@ production:
           billInboundCalls: true
           peeringContractId: ${auth.isCompanyOperator}
           languageId: true
+          queueId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -81,6 +82,7 @@ production:
             huntGroupId: 1
             conferenceRoomId: 1
             friendValue: 1
+            queueId: 1
         group4:
           label: _("Additional configuration")
           colsPerRow: 12
@@ -112,6 +114,7 @@ production:
           brandId: true
           target: true
           DDIE164: true
+          recordCalls: ${auth.company.recordings.disabled}
       fixedPositions:
         <<: *dDIsFixedPositions_Link
     dDIsEdit_screen: &dDIsEdit_screenLink
@@ -130,6 +133,8 @@ production:
           target: true
           DDIE164: true
           brandId: true
+          recordCalls: ${auth.company.recordings.disabled}
+          billInboundCalls: ${auth.brand.billing.disabled}
       fixedPositions:
         <<: *dDIsFixedPositions_Link
     dDIsEditLimited_screen: &dDIsEdit_screenLink

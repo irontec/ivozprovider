@@ -40,6 +40,11 @@ class Extensions extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'ExtensionsIbfk7' => array(
+            'columns' => 'queueId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
+            'refColumns' => 'id'
+        ),
         'ExtensionsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -81,6 +86,8 @@ class Extensions extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustomEntries',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
@@ -267,6 +274,23 @@ class Extensions extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'queueId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Extensions',
+	    'COLUMN_NAME' => 'queueId',
+	    'COLUMN_POSITION' => 12,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

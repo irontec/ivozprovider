@@ -51,7 +51,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'mediaRelaySetsId': '', 
      *     'ipFilter': '', 
      *     'onDemandRecord': '', 
-     *     'onDemandRecordCode': ''
+     *     'onDemandRecordCode': '', 
+     *     'areaCode': '', 
+     *     'externallyExtraOpts': '', 
+     *     'recordingsLimitMB': '', 
+     *     'recordingsLimitEmail': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -72,7 +76,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'mediaRelaySetsId': '', 
      *     'ipFilter': '', 
      *     'onDemandRecord': '', 
-     *     'onDemandRecordCode': ''
+     *     'onDemandRecordCode': '', 
+     *     'areaCode': '', 
+     *     'externallyExtraOpts': '', 
+     *     'recordingsLimitMB': '', 
+     *     'recordingsLimitEmail': ''
      * }]")
      */
     public function indexAction()
@@ -110,6 +118,10 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'ipFilter',
                 'onDemandRecord',
                 'onDemandRecordCode',
+                'areaCode',
+                'externallyExtraOpts',
+                'recordingsLimitMB',
+                'recordingsLimitEmail',
             );
         }
 
@@ -202,7 +214,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'mediaRelaySetsId': '', 
      *     'ipFilter': '', 
      *     'onDemandRecord': '', 
-     *     'onDemandRecordCode': ''
+     *     'onDemandRecordCode': '', 
+     *     'areaCode': '', 
+     *     'externallyExtraOpts': '', 
+     *     'recordingsLimitMB': '', 
+     *     'recordingsLimitEmail': ''
      * }")
      */
     public function getAction()
@@ -239,6 +255,10 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'ipFilter',
                 'onDemandRecord',
                 'onDemandRecordCode',
+                'areaCode',
+                'externallyExtraOpts',
+                'recordingsLimitMB',
+                'recordingsLimitEmail',
             );
         }
 
@@ -298,6 +318,10 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="ipFilter", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/companies/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -352,6 +376,10 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="ipFilter", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -541,6 +569,26 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'areaCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'externallyExtraOpts' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitMB' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitEmail' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -643,6 +691,26 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'onDemandRecordCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'areaCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'externallyExtraOpts' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitMB' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'recordingsLimitEmail' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',

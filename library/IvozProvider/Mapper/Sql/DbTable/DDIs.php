@@ -40,9 +40,9 @@ class DDIs extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'DDIsIbfk12' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+        'DDIsIbfk13' => array(
+            'columns' => 'queueId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
             'refColumns' => 'id'
         ),
         'DDIsIbfk1' => array(
@@ -58,6 +58,11 @@ class DDIs extends TableAbstract
         'DDIsIbfk11' => array(
             'columns' => 'conferenceRoomId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk12' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         ),
         'DDIsIbfk2' => array(
@@ -436,6 +441,23 @@ class DDIs extends TableAbstract
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'languageId',
 	    'COLUMN_POSITION' => 20,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'queueId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'queueId',
+	    'COLUMN_POSITION' => 21,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

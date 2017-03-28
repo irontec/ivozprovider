@@ -41,7 +41,8 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      *     'enabled': '', 
      *     'tag': '', 
      *     'description': '', 
-     *     'routingPatternId': ''
+     *     'routingPatternId': '', 
+     *     'outgoingRoutingId': ''
      * },{
      *     'id': '', 
      *     'lcr_id': '', 
@@ -52,7 +53,8 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      *     'enabled': '', 
      *     'tag': '', 
      *     'description': '', 
-     *     'routingPatternId': ''
+     *     'routingPatternId': '', 
+     *     'outgoingRoutingId': ''
      * }]")
      */
     public function indexAction()
@@ -80,6 +82,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
                 'tag',
                 'description',
                 'routingPatternId',
+                'outgoingRoutingId',
             );
         }
 
@@ -162,7 +165,8 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      *     'enabled': '', 
      *     'tag': '', 
      *     'description': '', 
-     *     'routingPatternId': ''
+     *     'routingPatternId': '', 
+     *     'outgoingRoutingId': ''
      * }")
      */
     public function getAction()
@@ -189,6 +193,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
                 'tag',
                 'description',
                 'routingPatternId',
+                'outgoingRoutingId',
             );
         }
 
@@ -238,6 +243,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="tag", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="routingPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="outgoingRoutingId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/lcrrules/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -282,6 +288,7 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="tag", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="routingPatternId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="outgoingRoutingId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -421,6 +428,11 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'outgoingRoutingId' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -475,6 +487,11 @@ class Rest_LcrRulesController extends Iron_Controller_Rest_BaseController
                 'routingPatternId' => array(
                     'type' => "int",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'outgoingRoutingId' => array(
+                    'type' => "int",
+                    'required' => true,
                     'comment' => '',
                 ),
             )

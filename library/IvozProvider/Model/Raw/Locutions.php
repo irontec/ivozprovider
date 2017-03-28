@@ -231,6 +231,30 @@ class Locutions extends ModelAbstract
      */
     protected $_IVRCustomEntries;
 
+    /**
+     * Dependent relation Queues_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByPeriodicAnnounceLocution;
+
+    /**
+     * Dependent relation Queues_ibfk_3
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByTimeoutLocution;
+
+    /**
+     * Dependent relation Queues_ibfk_6
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByFullLocution;
+
     protected $_columnsList = array(
         'id'=>'id',
         'companyId'=>'companyId',
@@ -323,6 +347,18 @@ class Locutions extends ModelAbstract
             'IVRCustomEntriesIbfk2' => array(
                     'property' => 'IVRCustomEntries',
                     'table_name' => 'IVRCustomEntries',
+                ),
+            'QueuesIbfk2' => array(
+                    'property' => 'QueuesByPeriodicAnnounceLocution',
+                    'table_name' => 'Queues',
+                ),
+            'QueuesIbfk3' => array(
+                    'property' => 'QueuesByTimeoutLocution',
+                    'table_name' => 'Queues',
+                ),
+            'QueuesIbfk6' => array(
+                    'property' => 'QueuesByFullLocution',
+                    'table_name' => 'Queues',
                 ),
         ));
 
@@ -2217,6 +2253,276 @@ class Locutions extends ModelAbstract
         }
 
         return $this->_IVRCustomEntries;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setQueuesByPeriodicAnnounceLocution(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByPeriodicAnnounceLocution === null) {
+
+                $this->getQueuesByPeriodicAnnounceLocution();
+            }
+
+            $oldRelations = $this->_QueuesByPeriodicAnnounceLocution;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByPeriodicAnnounceLocution = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByPeriodicAnnounceLocution($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function addQueuesByPeriodicAnnounceLocution(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByPeriodicAnnounceLocution[] = $data;
+        $this->_setLoaded('QueuesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByPeriodicAnnounceLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByPeriodicAnnounceLocution = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByPeriodicAnnounceLocution;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_3
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setQueuesByTimeoutLocution(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByTimeoutLocution === null) {
+
+                $this->getQueuesByTimeoutLocution();
+            }
+
+            $oldRelations = $this->_QueuesByTimeoutLocution;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByTimeoutLocution = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByTimeoutLocution($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_3
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function addQueuesByTimeoutLocution(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByTimeoutLocution[] = $data;
+        $this->_setLoaded('QueuesIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_3
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByTimeoutLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByTimeoutLocution = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByTimeoutLocution;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_6
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setQueuesByFullLocution(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByFullLocution === null) {
+
+                $this->getQueuesByFullLocution();
+            }
+
+            $oldRelations = $this->_QueuesByFullLocution;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByFullLocution = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByFullLocution($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_6
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function addQueuesByFullLocution(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByFullLocution[] = $data;
+        $this->_setLoaded('QueuesIbfk6');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_6
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByFullLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk6';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByFullLocution = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByFullLocution;
     }
 
     /**

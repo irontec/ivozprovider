@@ -30,6 +30,7 @@ class Extensions extends ModelAbstract
         'huntGroup',
         'conferenceRoom',
         'friend',
+        'queue',
     );
 
     /**
@@ -54,7 +55,7 @@ class Extensions extends ModelAbstract
     protected $_number;
 
     /**
-     * [enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend]
+     * [enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]
      * Database var type varchar
      *
      * @var string
@@ -110,6 +111,20 @@ class Extensions extends ModelAbstract
      */
     protected $_friendValue;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_queueId;
+
+
+    /**
+     * Parent relation Extensions_ibfk_7
+     *
+     * @var \IvozProvider\Model\Raw\Queues
+     */
+    protected $_Queue;
 
     /**
      * Parent relation Extensions_ibfk_1
@@ -227,6 +242,22 @@ class Extensions extends ModelAbstract
     protected $_IVRCustomEntries;
 
     /**
+     * Dependent relation Queues_ibfk_4
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByTimeoutExtension;
+
+    /**
+     * Dependent relation Queues_ibfk_7
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByFullExtension;
+
+    /**
      * Dependent relation Users_ibfk_7
      * Type: One-to-Many relationship
      *
@@ -246,6 +277,7 @@ class Extensions extends ModelAbstract
         'userId'=>'userId',
         'numberValue'=>'numberValue',
         'friendValue'=>'friendValue',
+        'queueId'=>'queueId',
     );
 
     /**
@@ -254,7 +286,7 @@ class Extensions extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'routeType'=> array('enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend'),
+            'routeType'=> array('enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -263,6 +295,10 @@ class Extensions extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
+            'ExtensionsIbfk7'=> array(
+                    'property' => 'Queue',
+                    'table_name' => 'Queues',
+                ),
             'ExtensionsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -325,6 +361,14 @@ class Extensions extends ModelAbstract
             'IVRCustomEntriesIbfk3' => array(
                     'property' => 'IVRCustomEntries',
                     'table_name' => 'IVRCustomEntries',
+                ),
+            'QueuesIbfk4' => array(
+                    'property' => 'QueuesByTimeoutExtension',
+                    'table_name' => 'Queues',
+                ),
+            'QueuesIbfk7' => array(
+                    'property' => 'QueuesByFullExtension',
+                    'table_name' => 'Queues',
                 ),
             'UsersIbfk7' => array(
                     'property' => 'Users',
@@ -753,6 +797,91 @@ class Extensions extends ModelAbstract
     public function getFriendValue()
     {
         return $this->_friendValue;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setQueueId($data)
+    {
+
+        if ($this->_queueId != $data) {
+            $this->_logChange('queueId', $this->_queueId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_queueId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_queueId = (int) $data;
+
+        } else {
+            $this->_queueId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column queueId
+     *
+     * @return int
+     */
+    public function getQueueId()
+    {
+        return $this->_queueId;
+    }
+
+    /**
+     * Sets parent relation Queue
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setQueue(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_Queue = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setQueueId($primaryKey);
+        }
+
+        $this->_setLoaded('ExtensionsIbfk7');
+        return $this;
+    }
+
+    /**
+     * Gets parent Queue
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueue($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExtensionsIbfk7';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Queue = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Queue;
     }
 
     /**
@@ -1869,6 +1998,186 @@ class Extensions extends ModelAbstract
         }
 
         return $this->_IVRCustomEntries;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_4
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setQueuesByTimeoutExtension(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByTimeoutExtension === null) {
+
+                $this->getQueuesByTimeoutExtension();
+            }
+
+            $oldRelations = $this->_QueuesByTimeoutExtension;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByTimeoutExtension = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByTimeoutExtension($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_4
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function addQueuesByTimeoutExtension(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByTimeoutExtension[] = $data;
+        $this->_setLoaded('QueuesIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByTimeoutExtension($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByTimeoutExtension = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByTimeoutExtension;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_7
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function setQueuesByFullExtension(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByFullExtension === null) {
+
+                $this->getQueuesByFullExtension();
+            }
+
+            $oldRelations = $this->_QueuesByFullExtension;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByFullExtension = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByFullExtension($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_7
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Extensions
+     */
+    public function addQueuesByFullExtension(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByFullExtension[] = $data;
+        $this->_setLoaded('QueuesIbfk7');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_7
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByFullExtension($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk7';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByFullExtension = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByFullExtension;
     }
 
     /**
