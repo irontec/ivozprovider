@@ -31,14 +31,13 @@ Package: ivozprovider-profile-common
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: po-debconf, ntp, vim, ntpdate, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, tree, conntrack
+Pre-Depends: po-debconf, vim, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, tree, conntrack
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Common configuration files
  Files includes in this package are common to all IVOZ Provider systems
  .
  This package is used to:
   - System wide configuration files
-  - NTP Daemon configuration
   - Enviroment configuration requets (testing, production, ..)
  .
 
