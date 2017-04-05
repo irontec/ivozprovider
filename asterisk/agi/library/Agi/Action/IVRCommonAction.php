@@ -18,10 +18,14 @@ class IVRCommonAction extends IVRAction
         // Some feedback for asterisk cli
         $this->agi->notice("Processing IVRCommon %s [ivrcommon%d]", $ivr->getName(), $ivr->getId());
 
-        $welcomLocution = $ivr->getWelcomeLocution()->getLocutionPath();
+        // Play welcome locution if any
+        $welcomeLocution = "";
+        if (!empty($ivr->getWelcomeLocution())) {
+            $welcomeLocution = $ivr->getWelcomeLocution()->getLocutionPath();
+        }
 
         // Play locution and expect user press
-        $userPressed = $this->agi->read($welcomLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
+        $userPressed = $this->agi->read($welcomeLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
         $this->agi->verbose("IVR: User entered: %s", $userPressed);
 
         // User prefer Human interaction
