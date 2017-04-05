@@ -67,3 +67,8 @@ At last, select where the GRUB boot loader will be installed.
 .. image:: img/installcd-grub.png
 
 After the reboot, you are ready to access using the web portals!
+
+.. important:: Any of the 2 Public IP addresses configured during the
+   installation will work to acces the web portal. Default credentials are
+   **admin / changeme**.
+

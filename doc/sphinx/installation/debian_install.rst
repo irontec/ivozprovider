@@ -81,3 +81,6 @@ It's possible to change any of this values anytime by running:
     dpkg-reconfigure ivozprovider
 
 
+.. important:: Any of the 2 Public IP addresses configured during the
+   installation will work to acces the web portal. Default credentials are
+   **admin / changeme**.

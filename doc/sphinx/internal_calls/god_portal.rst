@@ -4,7 +4,7 @@ Main Management
 
 .. important:: Any of the 2 Public IP addresses configured during the
    installation will work to acces the web portal. Default credentials are
-   *admin / changeme*.
+   **admin / changeme**.
 
 In this section will reference global administrator configuration options,
 avaible in the menu (**Main management**) of the web portal (only visible to

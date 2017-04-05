@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-31 15:23+0100\n"
+"POT-Creation-Date: 2017-04-05 13:29+0200\n"
 "PO-Revision-Date: 2016-12-28 14:25+0100\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -122,6 +122,16 @@ msgstr "Por último, seleccione el disco donde se instalará el cargadorde arran
 msgid "After the reboot, you are ready to access using the web portals!"
 msgstr "Una vez reiniciada la máquina podrá entrar y acceder a través delos "
 "portales web!"
+
+#: ../../installation/cd_install.rst:71
+#: ../../installation/debian_install.rst:84
+msgid ""
+"Any of the 2 Public IP addresses configured during the installation will "
+"work to acces the web portal. Default credentials are **admin / "
+"changeme**."
+msgstr "Cualquiera de las 2 IPs públicas configuradas en la instalación servirá "
+"para acceder al panel web. Las credenciales por defecto son **admin / "
+"changeme**."
 
 #: ../../installation/debian_install.rst:3
 msgid "Debian packages install"
@@ -334,8 +344,8 @@ msgid ""
 "basic service, we have designed all this configuration so they can work "
 "in a single machine."
 msgstr "Pero si lo que deseas es tener una plataforma pequeña para realizartus "
-"pruebas o dar un servicio básico, hemos diseñado todas lasconfiguraciones "
-"para que puedan convivir en una sola máquina."
+"pruebas o dar un servicio básico, hemos diseñado todas lasconfiguraciones"
+" para que puedan convivir en una sola máquina."
 
 #: ../../installation/install_types.rst:36
 msgid ""
