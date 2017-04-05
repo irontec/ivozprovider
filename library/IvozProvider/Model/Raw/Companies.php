@@ -324,6 +324,14 @@ class Companies extends ModelAbstract
     protected $_Faxes;
 
     /**
+     * Dependent relation FeaturesRelCompanies_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\FeaturesRelCompanies[]
+     */
+    protected $_FeaturesRelCompanies;
+
+    /**
      * Dependent relation Friends_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -410,6 +418,14 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\PricingPlansRelCompanies[]
      */
     protected $_PricingPlansRelCompanies;
+
+    /**
+     * Dependent relation Queues_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_Queues;
 
     /**
      * Dependent relation Recordings_ibfk_1
@@ -579,6 +595,10 @@ class Companies extends ModelAbstract
                     'property' => 'Faxes',
                     'table_name' => 'Faxes',
                 ),
+            'FeaturesRelCompaniesIbfk1' => array(
+                    'property' => 'FeaturesRelCompanies',
+                    'table_name' => 'FeaturesRelCompanies',
+                ),
             'FriendsIbfk1' => array(
                     'property' => 'Friends',
                     'table_name' => 'Friends',
@@ -622,6 +642,10 @@ class Companies extends ModelAbstract
             'PricingPlansRelCompaniesIbfk2' => array(
                     'property' => 'PricingPlansRelCompanies',
                     'table_name' => 'PricingPlansRelCompanies',
+                ),
+            'QueuesIbfk1' => array(
+                    'property' => 'Queues',
+                    'table_name' => 'Queues',
                 ),
             'RecordingsIbfk1' => array(
                     'property' => 'Recordings',
@@ -2836,6 +2860,96 @@ class Companies extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations FeaturesRelCompanies_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\FeaturesRelCompanies
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setFeaturesRelCompanies(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_FeaturesRelCompanies === null) {
+
+                $this->getFeaturesRelCompanies();
+            }
+
+            $oldRelations = $this->_FeaturesRelCompanies;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_FeaturesRelCompanies = array();
+
+        foreach ($data as $object) {
+            $this->addFeaturesRelCompanies($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations FeaturesRelCompanies_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\FeaturesRelCompanies $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addFeaturesRelCompanies(\IvozProvider\Model\Raw\FeaturesRelCompanies $data)
+    {
+        $this->_FeaturesRelCompanies[] = $data;
+        $this->_setLoaded('FeaturesRelCompaniesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent FeaturesRelCompanies_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\FeaturesRelCompanies
+     */
+    public function getFeaturesRelCompanies($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FeaturesRelCompaniesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_FeaturesRelCompanies = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_FeaturesRelCompanies;
+    }
+
+    /**
      * Sets dependent relations Friends_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Friends
@@ -3823,6 +3937,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_PricingPlansRelCompanies;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setQueues(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Queues === null) {
+
+                $this->getQueues();
+            }
+
+            $oldRelations = $this->_Queues;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Queues = array();
+
+        foreach ($data as $object) {
+            $this->addQueues($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addQueues(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_Queues[] = $data;
+        $this->_setLoaded('QueuesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueues($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Queues = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Queues;
     }
 
     /**

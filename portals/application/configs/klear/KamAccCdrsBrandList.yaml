@@ -2,8 +2,8 @@
 #include conf.d/actions.yaml
 #include KamAccCdrsList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: kamAccCdrsList_screen
   screens:
@@ -20,11 +20,11 @@ production:
           screens:
             kamAccCdrsView_screen: true
           dialogs:
-            tarificateCall_dialog: true
+            tarificateCall_dialog: ${auth.brand.billing.enabled}
           default: kamAccCdrsView_screen
       options:
         dialogs:
-          tarificateCall_dialog: true
+          tarificateCall_dialog: ${auth.brand.billing.enabled}
     kamAccCdrsView_screen:
       <<: *kamAccCdrsView_screenLink
       forcedValues:
@@ -50,17 +50,16 @@ production:
         filterClass: IvozProvider_Klear_Filter_Brand
         fieldName:
           fields:
-            - name_es
-            - name_en
+            - name_${lang}
             - regExp
-          template: '%name_en% (%regExp%)'
+          template: '%name_${lang}% (%regExp%)'
         limit: 8
         order: name
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

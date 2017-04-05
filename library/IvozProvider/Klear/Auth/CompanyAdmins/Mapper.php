@@ -19,6 +19,8 @@ class Mapper extends \IvozProvider\Klear\Auth\Mapper
                 $user = new \IvozProvider\Klear\Auth\User();
                 $this->_poblateUser($user, $companyAdmin);
                 $this->_populateCustomPerms($user, $companyAdmin);
+                $this->_enableFeatures($user, $companyAdmin->getCompany());
+                $this->_enableFeatures($user, $companyAdmin->getCompany()->getBrand());
                 return $user;
             }
         }
@@ -32,9 +34,10 @@ class Mapper extends \IvozProvider\Klear\Auth\Mapper
         $user->canSeeMain = false;
         $user->canSeeBrand = false;
         $user->canSeeCompany = true;
-        
+
         $user->setCompany($operator->getCompany());
-        
+
         return $user;
     }
+
 }

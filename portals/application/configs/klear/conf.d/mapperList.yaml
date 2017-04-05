@@ -26,6 +26,9 @@ mappers:
   - &ExternalCallFilters {mapper: \IvozProvider\Mapper\Sql\ExternalCallFilters, modelFile: ExternalCallFilters}
   - &Faxes {mapper: \IvozProvider\Mapper\Sql\Faxes, modelFile: Faxes}
   - &FaxesInOut {mapper: \IvozProvider\Mapper\Sql\FaxesInOut, modelFile: FaxesInOut}
+  - &Features {mapper: \IvozProvider\Mapper\Sql\Features, modelFile: Features}
+  - &FeaturesRelBrands {mapper: \IvozProvider\Mapper\Sql\FeaturesRelBrands, modelFile: FeaturesRelBrands}
+  - &FeaturesRelCompanies {mapper: \IvozProvider\Mapper\Sql\FeaturesRelCompanies, modelFile: FeaturesRelCompanies}
   - &FixedCosts {mapper: \IvozProvider\Mapper\Sql\FixedCosts, modelFile: FixedCosts}
   - &FixedCostsRelInvoices {mapper: \IvozProvider\Mapper\Sql\FixedCostsRelInvoices, modelFile: FixedCostsRelInvoices}
   - &Friends {mapper: \IvozProvider\Mapper\Sql\Friends, modelFile: Friends}

@@ -95,4 +95,24 @@ class Brands extends Raw\Brands
         return $this->getRecordingsLimitMB() * 1024 * 1024;
     }
 
+    public function hasFeature($featureId) {
+        foreach ($this->getFeatures() as $feature) {
+            if ($feature->getId() == $featureId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getFeatures()
+    {
+        $features = array();
+
+        foreach ($this->getFeaturesRelBrands() as $relFeature) {
+            array_push($features, $relFeature->getFeature());
+        }
+
+        return $features;
+    }
 }

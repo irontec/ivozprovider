@@ -27,7 +27,7 @@ production:
             companiesEdit_screen: true
             kamUsersAddressList_screen: true
             companyAdminsList_screen: true
-            pricingPlansRelCompaniesList_screen: true
+            pricingPlansRelCompaniesList_screen: ${auth.brand.billing.enabled}
             outgoingRoutingList_screen: true
           dialogs:
             companiesDel_dialog: true
@@ -54,6 +54,7 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           externallyExtraOpts: true
+          recordingsDiskUsage: ${auth.brand.recordings.disabled}
         order:
           name: true
           nif: true
@@ -123,6 +124,17 @@ production:
         blacklist:
           applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySetsId: ${auth.isNotMainOperator}
+          recordingsLimitMB: ${auth.brand.recordings.disabled}
+          recordingsLimitEmail: ${auth.brand.recordings.disabled}
+          recordingsDiskUsage: ${auth.brand.recordings.disabled}
+          onDemandRecord: ${auth.brand.recordings.disabled}
+          onDemandRecordCode: ${auth.brand.recordings.disabled}
+          nif: ${auth.brand.invoices.disabled}
+          postalAddress: ${auth.brand.invoices.disabled}
+          postalCode: ${auth.brand.invoices.disabled}
+          town: ${auth.brand.invoices.disabled}
+          province: ${auth.brand.invoices.disabled}
+          country: ${auth.brand.invoices.disabled}
         whitelist:
           id: ${auth.isMainOperator}
       class: ui-silk-pencil

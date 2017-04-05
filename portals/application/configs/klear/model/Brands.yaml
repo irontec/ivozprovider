@@ -182,6 +182,22 @@ production:
         icon: help
         text: _("Email address that will be notified when 80% of the configured limit has been reached.")
         label: _("Need help?")
+    FeaturesRelBrands:
+      title: _('Features')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          extraDataAttributes:
+            featureId: id
+          relationMapper: \IvozProvider\Mapper\Sql\FeaturesRelBrands
+          relatedMapperName: \IvozProvider\Mapper\Sql\Features
+          relationProperty: Feature
+          relatedFieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
 staging:
   _extends: production
 testing:

@@ -622,6 +622,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getFeaturesRelCompanies(null, null, true) !== null) {
+                    $featuresRelCompanies = $model->getFeaturesRelCompanies();
+
+                    if (!is_array($featuresRelCompanies)) {
+
+                        $featuresRelCompanies = array($featuresRelCompanies);
+                    }
+
+                    foreach ($featuresRelCompanies as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getFriends(null, null, true) !== null) {
                     $friends = $model->getFriends();
 
@@ -771,6 +785,20 @@ class Companies extends MapperAbstract
                     }
 
                     foreach ($pricingPlansRelCompanies as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueues(null, null, true) !== null) {
+                    $queues = $model->getQueues();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
                         $value->setCompanyId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }

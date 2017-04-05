@@ -226,6 +226,14 @@ class Brands extends ModelAbstract
     protected $_Domains;
 
     /**
+     * Dependent relation FeaturesRelBrands_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\FeaturesRelBrands[]
+     */
+    protected $_FeaturesRelBrands;
+
+    /**
      * Dependent relation FixedCosts_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -448,6 +456,10 @@ class Brands extends ModelAbstract
             'DomainsIbfk2' => array(
                     'property' => 'Domains',
                     'table_name' => 'Domains',
+                ),
+            'FeaturesRelBrandsIbfk1' => array(
+                    'property' => 'FeaturesRelBrands',
+                    'table_name' => 'FeaturesRelBrands',
                 ),
             'FixedCostsIbfk1' => array(
                     'property' => 'FixedCosts',
@@ -1965,6 +1977,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_Domains;
+    }
+
+    /**
+     * Sets dependent relations FeaturesRelBrands_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\FeaturesRelBrands
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setFeaturesRelBrands(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_FeaturesRelBrands === null) {
+
+                $this->getFeaturesRelBrands();
+            }
+
+            $oldRelations = $this->_FeaturesRelBrands;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_FeaturesRelBrands = array();
+
+        foreach ($data as $object) {
+            $this->addFeaturesRelBrands($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations FeaturesRelBrands_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\FeaturesRelBrands $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addFeaturesRelBrands(\IvozProvider\Model\Raw\FeaturesRelBrands $data)
+    {
+        $this->_FeaturesRelBrands[] = $data;
+        $this->_setLoaded('FeaturesRelBrandsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent FeaturesRelBrands_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\FeaturesRelBrands
+     */
+    public function getFeaturesRelBrands($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'FeaturesRelBrandsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_FeaturesRelBrands = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_FeaturesRelBrands;
     }
 
     /**

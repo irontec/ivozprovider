@@ -38,7 +38,7 @@ production:
               hide: ['nextUserPosition']
               show: ['ringAllTimeout']
           'linear':
-            title: _('linear')
+            title: _('Linear (once)')
             visualFilter:
               hide: ['ringAllTimeout']
               show: ['nextUserPosition']

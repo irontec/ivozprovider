@@ -547,6 +547,20 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getFeaturesRelBrands(null, null, true) !== null) {
+                    $featuresRelBrands = $model->getFeaturesRelBrands();
+
+                    if (!is_array($featuresRelBrands)) {
+
+                        $featuresRelBrands = array($featuresRelBrands);
+                    }
+
+                    foreach ($featuresRelBrands as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getFixedCosts(null, null, true) !== null) {
                     $fixedCosts = $model->getFixedCosts();
 
