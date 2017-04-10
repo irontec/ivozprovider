@@ -71,7 +71,7 @@ class RecordingsController extends Zend_Controller_Action
                 }
 
                 // Check if this file is .rtp
-                if (substr($filename, -4) == ".rtp")
+                if (substr($filename, -6) == ".a.rtp")
                     array_push($files, $filename);
            }
         }
