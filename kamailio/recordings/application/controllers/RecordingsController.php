@@ -125,7 +125,7 @@ class RecordingsController extends Zend_Controller_Action
             // Convert files to .wav
             $extract_rtp = $this->_rawRecordingsDir . $file;
             $extract_wav = $this->_rawRecordingsDir . $callid . '.' . $recordcnt . '.wav';
-            $extract_cmd = "/usr/bin/extractaudio -sd '$extract_rtp' '$extract_wav' >/dev/null";
+            $extract_cmd = "/usr/bin/extractaudio -d '$extract_rtp' '$extract_wav' >/dev/null";
             $this->_logger->log(sprintf("[Recordings][%s] Extracting audio into %s\n", $hashid, basename($extract_wav)), \Zend_Log::INFO);
             exec($extract_cmd, $output, $retval);
             if ($retval != 0) {
