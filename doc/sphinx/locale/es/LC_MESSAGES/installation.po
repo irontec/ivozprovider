@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-05 13:29+0200\n"
+"POT-Creation-Date: 2017-04-11 13:10+0200\n"
 "PO-Revision-Date: 2016-12-28 14:25+0100\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -270,6 +270,54 @@ msgstr "Las contraseñas para acceder a las bases de datos"
 msgid "It's possible to change any of this values anytime by running:"
 msgstr "Es posible cambiar cualquiera de estos valores una vez instalado "
 "IvozProvider volviendo a ejecutar:"
+
+#: ../../installation/extra_components.rst:3
+msgid "Extra components"
+msgstr "Componentes extra"
+
+#: ../../installation/extra_components.rst:7
+msgid "G.729"
+msgstr "G.729"
+
+#: ../../installation/extra_components.rst:9
+msgid ""
+"In some countries, you might have to pay royalty fees in order to use "
+"G.729 codec to their patent holders. We're not legal advisors regarding "
+"active or withdrawn world patents."
+msgstr "En algunos paises, es posible que tenga que pagar derechos a los titulares"
+"de las patentes de G.729. No somos asesores legales al respecto de las "
+"patentes activas o retiradas."
+
+#: ../../installation/extra_components.rst:13
+msgid ""
+"You can use G.729 with IvozProvider, but installation must be done "
+"manually. G.729 codec is optimized for each CPU type and version of "
+"asterisk, so each installation may require a different codec module."
+msgstr "Puede emplear G.729 con IvozProvider, pero la instalación debe ser "
+"realizada manualmente. El codec G.729 esta optimizado para cada tipo "
+"de CPU y version de asterisk, por lo que cada instalación puede requerir "
+"un modulo de codec diferente."
+
+#: ../../installation/extra_components.rst:17
+msgid ""
+"You can download codec from `here <http://asterisk.hosting.lv/>`_ under "
+"the section Asterisk 13."
+msgstr "Puede descargar el codec `aqui <http://asterisk.hosting.lv/>`_ bajo la "
+"sección Asterisk 13."
+
+#: ../../installation/extra_components.rst:20
+msgid ""
+"Once downloaded, move the `.so` file to **/usr/lib/asterisk/modules/** "
+"and rename it to **codec_g729.so**"
+msgstr "Una vez descargado, mueva el fichero `.so` a la ruta **/usr/lib/asterisk/modules/** "
+"y renómbrelo a **codec_g729.so**"
+
+#: ../../installation/extra_components.rst:23
+msgid ""
+"You can check the codec is valid by restarting asterisk and printing the "
+"available codec translations using:"
+msgstr "Puede comprobar si el codec es válido reiniciado asterisk y mostrando la"
+"lista de traducciones de codes disponibles:"
 
 #: ../../installation/index.rst:3
 msgid "Initial Installation"

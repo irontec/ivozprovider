@@ -9,4 +9,5 @@ Initial Installation
     requirements
     debian_install
     cd_install
+    extra_components
 
