@@ -284,7 +284,7 @@ msgid ""
 "In some countries, you might have to pay royalty fees in order to use "
 "G.729 codec to their patent holders. We're not legal advisors regarding "
 "active or withdrawn world patents."
-msgstr "En algunos paises, es posible que tenga que pagar derechos a los titulares"
+msgstr "En algunos paises, es posible que tenga que pagar derechos a los titulares "
 "de las patentes de G.729. No somos asesores legales al respecto de las "
 "patentes activas o retiradas."
 
@@ -295,7 +295,7 @@ msgid ""
 "asterisk, so each installation may require a different codec module."
 msgstr "Puede emplear G.729 con IvozProvider, pero la instalación debe ser "
 "realizada manualmente. El codec G.729 esta optimizado para cada tipo "
-"de CPU y version de asterisk, por lo que cada instalación puede requerir "
+"de CPU y versión de asterisk, por lo que cada instalación puede requerir "
 "un modulo de codec diferente."
 
 #: ../../installation/extra_components.rst:17
@@ -316,7 +316,7 @@ msgstr "Una vez descargado, mueva el fichero `.so` a la ruta **/usr/lib/asterisk
 msgid ""
 "You can check the codec is valid by restarting asterisk and printing the "
 "available codec translations using:"
-msgstr "Puede comprobar si el codec es válido reiniciado asterisk y mostrando la"
+msgstr "Puede comprobar si el codec es válido reiniciado asterisk y mostrando la "
 "lista de traducciones de codes disponibles:"
 
 #: ../../installation/index.rst:3
