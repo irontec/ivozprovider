@@ -342,7 +342,7 @@ msgstr "IvozProvider está diseñado para que la mayor parte del software trabaj
 msgid ""
 "Each profile is in charge of performing one of the platform "
 "functionalities:"
-msgstr "Cada perfil es encargado de realizar una de las funcionesde la plataforma:"
+msgstr "Cada perfil es encargado de realizar una de las funciones de la plataforma:"
 
 #: ../../installation/install_types.rst:14
 msgid "Data storage"
@@ -364,7 +364,7 @@ msgstr "Portal Web"
 msgid ""
 "For each of this profiles, there's a virtual package that will install "
 "all the required dependencies (see :ref:`Installing profile package`)."
-msgstr "Para cada uno de estos perfiles existe un paquete virtual queinstalará "
+msgstr "Para cada uno de estos perfiles existe un paquete virtual que instalará "
 "todas las dependencias necesarias (ver :ref:`Instalar el paquete del "
 "rol`)."
 
@@ -376,10 +376,10 @@ msgid ""
 "software so the systems that have the same profile are syncronized (for "
 "example: database replication or http request balancing)."
 msgstr "Puedes instalar cuantas instancias desees de cada perfil, pero ten "
-"encuenta que, mientras algunos estan pensados para escalar "
-"horizontalmentede manera nativa (por ejemplo: asterisk o media-relays) "
-"otros requeriránsoftware adicional para que las máquinas del mismo perfil"
-" esten coordinadas(por ejemplo: replicación de bases de datos o balanceo "
+"en cuenta que, mientras algunos estan pensados para escalar "
+"horizontalmente de manera nativa (por ejemplo: asterisk o media-relays) "
+"otros requerirán software adicional para que las máquinas del mismo perfil"
+" esten coordinadas (por ejemplo: replicación de bases de datos o balanceo "
 "de peticiones web)."
 
 #: ../../installation/install_types.rst:30
@@ -391,8 +391,8 @@ msgid ""
 "If you want a small installation to make a couple of tests or give a "
 "basic service, we have designed all this configuration so they can work "
 "in a single machine."
-msgstr "Pero si lo que deseas es tener una plataforma pequeña para realizartus "
-"pruebas o dar un servicio básico, hemos diseñado todas lasconfiguraciones"
+msgstr "Pero si lo que deseas es tener una plataforma pequeña para realizar tus "
+"pruebas o dar un servicio básico, hemos diseñado todas las configuraciones"
 " para que puedan convivir en una sola máquina."
 
 #: ../../installation/install_types.rst:36
@@ -417,7 +417,7 @@ msgid ""
 "IvozProvider is designed to be installed using Debian GNU/Linux APT "
 "package system."
 msgstr "IvozProvider está diseñado para funcionar e instalarse a través "
-"delsistema de paquetes APT de Debian GNU/Linux."
+"del sistema de paquetes APT de Debian GNU/Linux."
 
 #: ../../installation/requirements.rst:11
 msgid ""
@@ -425,8 +425,8 @@ msgid ""
 "platform. Many of the installed software may not work properly with other"
 " pre-installed services (like MySQL or DNS servers)."
 msgstr "Es recomendable instalar IvozProvider en una máquina dedicada para "
-"laplataforma. Muchos de los software instalados podrían hacer "
-"malfuncionarotros software pre-instalados (por ejemplo MySQL o servidores"
+"la plataforma. Muchos de los software instalados podrían hacer "
+"malfuncionar otros software pre-instalados (por ejemplo MySQL o servidores"
 " DNS)."
 
 #: ../../installation/requirements.rst:15

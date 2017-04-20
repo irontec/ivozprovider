@@ -471,8 +471,8 @@ msgid ""
 "The **Replace** field will use the capture groups that matched the Search"
 " field (displayed between brackets, \\1 for the first one, \\2 for the "
 "second one, and so on) to determine how the number will end."
-msgstr "El campo **Reemplazar** recoge las capturas del campo buscar (expresadas entre"
-"paréntesis, \1 para la primera, \2 para la segunda, etc.) y expresa cómo tiene"
+msgstr "El campo **Reemplazar** recoge las capturas del campo buscar (expresadas entre "
+"paréntesis, \1 para la primera, \2 para la segunda, etc.) y expresa cómo tiene "
 "que quedar el número:"
 
 #: ../../external_incoming_calls/numeric_transformations.rst:151
@@ -493,7 +493,7 @@ msgstr "Métrica 1: Quitar código internacional (00 o '+') si lo hay."
 
 #: ../../external_incoming_calls/numeric_transformations.rst:157
 msgid "Metric 2: Add 34 to spanish numbers that comes without calling code."
-msgstr "Métrica 2: Añadir 34 a los números españoles mostrados sin prefijo de país"
+msgstr "Métrica 2: Añadir 34 a los números españoles mostrados sin prefijo de país "
 "para que queden en E.164."
 
 #: ../../external_incoming_calls/numeric_transformations.rst:160
@@ -504,14 +504,14 @@ msgstr "Adaptación en salida España"
 msgid ""
 "Following the same logic, this 2 rules make the change of the outgoig "
 "external destination numbers:"
-msgstr "Siguiendo la misma lógica, estas 2 reglas realizan los siguientes cambos sobre"
+msgstr "Siguiendo la misma lógica, estas 2 reglas realizan los siguientes cambios sobre "
 "el destino en llamadas salientes:"
 
 #: ../../external_incoming_calls/numeric_transformations.rst:167
 msgid ""
 "Metric 1: If the number starts with 34 prefix, remove it. This converts "
 "E.164 spanish numbers to national format."
-msgstr "Métrica 1: Si empieza con 34 seguido de más dígitos, quitamos 34. Convierte"
+msgstr "Métrica 1: Si empieza con 34 seguido de más dígitos, quitamos 34. Convierte "
 "números españoles de E.164 a formato nacional."
 
 #: ../../external_incoming_calls/numeric_transformations.rst:169
@@ -527,9 +527,9 @@ msgid ""
 "numbers to E.164 for the platform, and to providers expected formats, "
 "based on regular expresions and metric that can be grouped in *sets* to "
 "be shared between multiple **Peering Contracts**."
-msgstr "**En resumen**: las transformaciones numéricas adaptan orígenes y"
-"destinos, a E.164 en entrada y a los formatos que los operadores esperan en"
-"salida, utilizando reglas con expresiones regulares y métricas agrupadas en"
+msgstr "**En resumen**: las transformaciones numéricas adaptan orígenes y "
+"destinos, a E.164 en entrada y a los formatos que los operadores esperan en "
+"salida, utilizando reglas con expresiones regulares y métricas agrupadas en "
 "*sets* que se asocian a **PeeringContracts**."
 
 #: ../../external_incoming_calls/peering_contracts.rst:5
@@ -540,14 +540,14 @@ msgstr "Configurar Contrato de Peering"
 msgid ""
 "We understand a **Peering contract** the agreeming between a **Brand "
 "Operator** and a VoIP Provider to make and receive calls."
-msgstr "En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre un"
+msgstr "En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre un "
 "**Operador de Marca** y un Operador VoIP para sacar y recibir llamadas."
 
 #: ../../external_incoming_calls/peering_contracts.rst:10
 msgid ""
 "IvozProvider is ready to integrate with IP providers created on the "
 "secteion **Perring contracts**:"
-msgstr "IvozProvider permite integrarse con Operadores IP por medio de la sección"
+msgstr "IvozProvider permite integrarse con Operadores IP por medio de la sección "
 "**Contratos de Peering** que pasamos a describir:"
 
 #: ../../external_incoming_calls/peering_contracts.rst:18
@@ -591,7 +591,7 @@ msgid ""
 "incoming and outgoing numbers that use this Peering contact (see "
 ":ref:`numeric_transformations`)."
 msgstr "Transformaciones que se aplicarán al origen y al destino a las"
-"numeraciones que entren o salgan por este PeeringContract"
+"numeraciones que entren o salgan por este contrato de peering "
 "(ver :ref:`numeric_transformations`)."
 
 #: ../../external_incoming_calls/peering_contracts.rst:42
@@ -600,7 +600,7 @@ msgstr "External tarification"
 
 #: ../../external_incoming_calls/peering_contracts.rst:48
 msgid "Fields marked with a red start are mandatory."
-msgstr "Fields marked with a red start are mandatory."
+msgstr "Los campos marcados con una estrella roja son obligatorios."
 
 #: ../../external_incoming_calls/peering_contracts.rst:52
 msgid "Peer Servers"
@@ -611,13 +611,13 @@ msgid ""
 "A **Peer Server** is a SIP server associated to an IP Provider. In order "
 "to add some Peer Servers for the Peer Contract that have just created, we"
 " only have to use the following section:"
-msgstr "El concepto de **PeerServer** se refiere a los distintos servidores SIP que"
-"puede tener un Operador IP para servir su dominio SIP. Para definir los"
+msgstr "El concepto de **PeerServer** se refiere a los distintos servidores SIP que "
+"puede tener un Operador IP para servir su dominio SIP. Para definir los "
 "PeerServers del OPERADOR que acabamos de definir, hay que pulsar este botón:"
 
 #: ../../external_incoming_calls/peering_contracts.rst:61
 msgid "As displayed by the zero counter, no Peer Serve has been created yet:"
-msgstr "Tal y como indica el 0, no hay ningún PeerServer definido, por lo que añadimos"
+msgstr "Tal y como indica el 0, no hay ningún PeerServer definido, por lo que añadimos "
 "uno:"
 
 #: ../../external_incoming_calls/peering_contracts.rst:69
@@ -663,10 +663,10 @@ msgid ""
 "the SIP messages). It works like a web proxy: instead of sending the SIP "
 "messages to destination **SIP Proxy**, they will be sent to the IP:PORT "
 "of this field."
-msgstr "Normalmente se deja vacío o se pone la IP del dominio indicado en"
-"**SIP Proxy** (para evitar resolución de dominios y hacer que el mensaje"
+msgstr "Normalmente se deja vacío o se pone la IP del dominio indicado en "
+"**SIP Proxy** (para evitar resolución de dominios y hacer que el mensaje "
 "SIP contenga el dominio en lugar de una IP). Funciona como un proxy web:"
-"en lugar de enviar los mensajes SIP al destino de **SIP Proxy**, los"
+"en lugar de enviar los mensajes SIP al destino de **SIP Proxy**, los "
 "envía a la IP:PUERTO de este campo."
 
 #: ../../external_incoming_calls/peering_contracts.rst:90
@@ -678,9 +678,9 @@ msgid ""
 "Some Peering contracts validate our platform by IP, others require each "
 "session that we want to establish. For this last case, this section "
 "allows to configure user and password for this authentication."
-msgstr "Existen contratos de Peering que nos validarán por IP, otros necesitarán"
-"que nos autentiquemos en cada sesión que queramos establecer. En caso de"
-"ser del último grupo, este selector nos permite introducir un usuario y"
+msgstr "Existen contratos de Peering que nos validarán por IP, otros necesitarán "
+"que nos autentiquemos en cada sesión que queramos establecer. En caso de "
+"ser del último grupo, este selector nos permite introducir un usuario y "
 "una contraseña para responder a esa autenticación."
 
 #: ../../external_incoming_calls/peering_contracts.rst:95
@@ -692,8 +692,8 @@ msgid ""
 "Some Providers get origin from SIP From header. Others use the From "
 "header for accounting and need extra headers to identify the origin. In "
 "case of doubt leave **PAI** checked."
-msgstr "Algunos operadores recogen el origen del From. Otros utilizan el From"
-"para validar la cuenta de cliente y necesitan cabeceras adicionales para"
+msgstr "Algunos operadores recogen el origen del From. Otros utilizan el From "
+"para validar la cuenta de cliente y necesitan cabeceras adicionales para "
 "recoger el origen. En caso de duda, marcar **PAI**."
 
 #: ../../external_incoming_calls/peering_contracts.rst:100
@@ -708,8 +708,8 @@ msgid ""
 "begining, add a prefix, or even, add extra parameters to the URI "
 "followinging the given format. In case of doubt, leave empty."
 msgstr "Permiten realizar cambios estáticos al destino de la llamada antes de "
-"aplicar las reglas de transformación numéricas mendionadas en "
-":ref:`numeric_transformations`. Se pueden quitar uno dígitos del "
+"aplicar las reglas de transformación numéricas mencionadas en "
+":ref:`numeric_transformations`. Se pueden quitar unos dígitos del "
 "comienzo, añadir un prefijo después e, incluso, añadir parámetros a la "
 "URI siguiendo el formato indicado. En caso de duda, dejar todo el bloque "
 "en blanco."
@@ -723,9 +723,9 @@ msgid ""
 "For those providers that show origin in other headers (PAI/RPID), it is "
 "possible that request that From User have the account code being used and"
 " from domain their SIP domain. In case of doubt, leave empty."
-msgstr "Los operadores que muestren el origen en otras cabeceras (PAI/RPID), es"
-"posible que nos soliciten que el From User sea el número de cuenta de"
-"cliente y el From Domain (por ejemplo), su dominio SIP. En caso de duda,"
+msgstr "Los operadores que muestren el origen en otras cabeceras (PAI/RPID), es "
+"posible que nos soliciten que el From User sea el número de cuenta de "
+"cliente y el From Domain (por ejemplo), su dominio SIP. En caso de duda, "
 "dejar en blanco."
 
 #: ../../external_incoming_calls/peering_contracts.rst:113
@@ -831,7 +831,7 @@ msgstr "Usuario"
 msgid ""
 "Authentication user. Most of the time it's the same as username, so it's "
 "recommended to leave empty."
-msgstr "Usuario de autenticación, practicamente siempre es igual al \"Nombre de"
+msgstr "Usuario de autenticación, prácticamente siempre es igual al \"Nombre de"
 " usuario\" por lo que se recomienda dejar en blanco."
 
 #: ../../external_incoming_calls/peering_contracts.rst:167
