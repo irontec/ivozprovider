@@ -39,8 +39,8 @@ msgstr "El perfil mas significativo es el de **data** que reune toda la "
 msgid ""
 "Another remarkable task is **asychronous tasks handler**: CDR must be "
 "parsed, calls must be billed, recordings must be encoded, etc."
-msgstr "Otro proceso menos cruciali son **los gestores de tareas asíncronas**: el"
-" CDR ha de ser parseado, la llamdas tarificadas, las grabaciones "
+msgstr "Otro proceso menos crucial son **los gestores de tareas asíncronas**: el"
+" CDR ha de ser parseado, la llamadas tarificadas, las grabaciones "
 "codificadas, etc."
 
 #: ../../architecture/audio_flow.rst:1
@@ -56,7 +56,7 @@ msgid ""
 "send and receive the media itself, usually using UDP as a transport "
 "protocol."
 msgstr "Estos flujos emplean `RTP <https://tools.ietf.org/html/rfc3550>`_ para "
-"enviar y recibir el propio media, generalemnte empleando el protocolo de "
+"enviar y recibir el propio media, generalmente empleando el protocolo de "
 "transporte UDP."
 
 #: ../../architecture/audio_flow.rst:7
@@ -102,8 +102,8 @@ msgstr "Al igual que ocurre con SIP, estos *servidores de media* intercambian RT
 msgid ""
 "**Aux profile** runs software that, even though is not vital for calls "
 "placing, makes IvozProvider mantainer's life much more easier."
-msgstr "El perfil **auxiliar** ejecuta programas, que aun no siendo vitales para "
-"el flujo de las llamdas, facilitan mucho las tareas para los mantenedores"
+msgstr "El perfil **auxiliar** ejecuta programas, que aún no siendo vitales para "
+"el flujo de las llamadas, facilitan mucho las tareas para los mantenedores"
 " de las plataformas IvozProvider."
 
 #: ../../architecture/aux_elements.rst:4

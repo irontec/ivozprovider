@@ -150,7 +150,7 @@ msgstr "Credenciales de acceso"
 msgid ""
 "Access credentials to user portal is configured in **Company "
 "configuration > Users** section."
-msgstr "Las credenciales de acceso al portal de usuario se configuran en la sección"
+msgstr "Las credenciales de acceso al portal de usuario se configuran en la sección "
 "**Configuración de Empresa > Usuarios**."
 
 #: ../../userportal/index.rst:72

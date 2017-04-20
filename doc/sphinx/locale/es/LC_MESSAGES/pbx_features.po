@@ -1862,7 +1862,7 @@ msgstr "Definición de servicios y códigos a nivel de marca"
 msgid ""
 "The section **Brand configuration** > **Services** allows the brand "
 "operator to:"
-msgstr "La sección **Configuración de Marca ** > **Servicios** permite al "
+msgstr "La sección **Configuración de Marca > Servicios** permite al "
 "operador de marca:"
 
 #: ../../pbx_features/services.rst:54
