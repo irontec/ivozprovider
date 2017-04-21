@@ -56,6 +56,7 @@ class Friends extends Raw\Friends
                 ->setDirectmediaMethod($model->getDirectmediaMethod())
                 ->setTrustIdInbound('yes')
                 ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
+                ->setDirectMediaMethod('invite')
                 ->save($forceInsert);
 
             // Replicate Terminal into ast_ps_aors
