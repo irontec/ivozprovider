@@ -21,6 +21,7 @@ namespace IvozProvider\Model;
 
 class Companies extends Raw\Companies
 {
+    const EMPTY_DOMAIN_EXCEPTION = 2001;
 
     /**
      * This method is called just after parent's constructor
@@ -151,6 +152,24 @@ class Companies extends Raw\Companies
         }
 
         return "default";
+    }
+
+    /**
+     * Ensures valid domain value
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDomainUsers($data)
+    {
+        if (is_string($data)) {
+            $data = trim($data);
+        }
+
+        if (empty($data)) {
+            throw new \Exception("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
+        }
+
+        return parent::setDomainUsers($data);
     }
 
     /**

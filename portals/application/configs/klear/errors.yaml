@@ -25,6 +25,7 @@ production:
     90000: _("Inbound Calls cannot be billed as PeeringContract is not externally rated.")
     90001: _("Externally rated cannot be disabled as some DDIs wants to bill inbound calls.")
   adminErrors: 
+    2001: _("SIP Domain can't be empty")
 staging: 
   _extends: production
 testing: 
