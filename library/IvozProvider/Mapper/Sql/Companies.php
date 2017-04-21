@@ -56,15 +56,18 @@ class Companies extends Raw\Companies
         }
 
         // Remove code if on-demand recording is disabled
-        if ($model->getOnDemandRecord() == 0)
+        if ($model->getOnDemandRecord() == 0) {
             $model->setOnDemandRecordCode('');
+        }
 
         $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
 
         if ($isNew) {
             $this->_propagateServices($model);
-        } else {
-            if ($model->hasChange('domainUsers')) $this->_updateDomains($model);
+        }
+
+        if ($model->hasChange('domainUsers')) {
+            $this->_updateDomains($model);
         }
 
         try {
