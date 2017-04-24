@@ -402,7 +402,7 @@ msgstr "El hecho de que **mientras el interlocutor permanezca en llamada la "
 
 #: ../../pbx_features/call_recording.rst:35
 msgid "Record all the calls of a DDI"
-msgstr " Grabar todas las llamadas de un DDI"
+msgstr "Grabar todas las llamadas de un DDI"
 
 #: ../../pbx_features/call_recording.rst:36
 msgid ""
@@ -953,7 +953,7 @@ msgstr "Crear un filtro de entrada externo"
 msgid ""
 "Once we have our new created schedules and calendars, it's time to apply "
 "them in what we call **External call filter**."
-msgstr "Una vez que tenemos unos horaris y unos calendarios creados, llega el "
+msgstr "Una vez que tenemos unos horarios y unos calendarios creados, llega el "
 "momento de agruparlos en lo que en IvozProvider se conoce por **Filtro de"
 " entrada externos**."
 
@@ -994,7 +994,7 @@ msgstr "Esta locución se reproducirá cuando el día de hoy esté marcado como 
 
 #: ../../pbx_features/external_filters.rst:87
 msgid "Holiday forward type"
-msgstr " Tipo de desvío festivo"
+msgstr "Tipo de desvío festivo"
 
 #: ../../pbx_features/external_filters.rst:89
 msgid ""
@@ -1255,8 +1255,8 @@ msgstr "Conectividad directa"
 msgid ""
 "If you choose 'Yes' here, you'll have to fill the protocol, address and "
 "port where this *friend* can be contacted."
-msgstr "En caso de seleccionar 'Sí', se pedirá el protoco, la IP y el puertoen el"
-" que se puede contactar con el *friend*."
+msgstr "En caso de seleccionar 'Sí', se pedirá el protocolo, la IP y el puerto en el "
+"que se puede contactar con el *friend*."
 
 #: ../../pbx_features/friends.rst:91
 msgid ""
@@ -1266,7 +1266,7 @@ msgid ""
 msgstr "Un *friend*, al igual que un :ref:`usuario interno <users>`, puede llamar"
 " a usuarios internos (todo lo que esté en Extensiones + Friends). Además,"
 " puede llamar a los destinos externos que permita este parámetro (igual "
-"que los usuarios."
+"que los usuarios)."
 
 #: ../../pbx_features/friends.rst:94
 #: ../../pbx_features/users.rst:66
@@ -1339,7 +1339,7 @@ msgstr "En caso de no estar directamente visible, el Asterisk tendrá que "
 
 #: ../../pbx_features/friends.rst:126
 msgid "Configuration will be something like this:"
-msgstr "La configuracińo sería tal que:"
+msgstr "La configuración sería tal que:"
 
 #: ../../pbx_features/friends.rst:133
 msgid "peer"
@@ -1591,7 +1591,7 @@ msgid ""
 "In case the dialed extension exists in the company, this locution will be"
 " played (usually something like 'Connecting, please wait...')."
 msgstr "En caso de que la extensión marcada sea correcta, se reproducirá esta  "
-"locución (típicamente dirá algo así como \"Contantando...\")."
+"locución (típicamente dirá algo así como \"Contactando...\")."
 
 #: ../../pbx_features/ivrs.rst:37
 msgid "Blacklist regular expression"
@@ -2196,8 +2196,8 @@ msgstr "Llamada en espera"
 msgid ""
 "When this setting is enabled, the user terminal will receive new calls "
 "even if it already talking."
-msgstr "Determina si el sistema tendrá que llamar al usuario cuando éste ya esté "
-"en conversación."
+msgstr "Determina si el usuario recibirá nuevas llamadas entrantes "
+"aunque ya se encuentre en conversación."
 
 #: ../../pbx_features/users.rst:85
 msgid "Voicemail"
@@ -2408,7 +2408,7 @@ msgstr "Extensión (interna)"
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
-msgstr "Si queremos que desviar a un grupo de salto, por ejemplo, bastaría con "
+msgstr "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con "
 "crear una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
 

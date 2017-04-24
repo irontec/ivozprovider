@@ -87,7 +87,7 @@ fields:
     Tarificate incoming calls
         This setting requires the external tarification module and allows
         tarification on special numbers. This module is not standard so don't
-        hesitate in `contact us <getting_help>` if you are interested.
+        hesitate in :ref:`contact us <getting_help>` if you are interested.
 
 #########################
 Configure incoming routes
