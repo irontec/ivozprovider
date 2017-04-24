@@ -5700,7 +5700,7 @@ msgstr "Locución fuera horario"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:72
 msgid "Holiday target type"
-msgstr "Tipo desvio festivo"
+msgstr "Tipo desvío festivo"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:97
 msgid "Holiday number"
@@ -5716,7 +5716,7 @@ msgstr "Buzón de voz"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:135
 msgid "Out of schedule target type"
-msgstr "Tipo desvio fuera horario"
+msgstr "Tipo desvío fuera horario"
 
 #: application/configs/klear/model/ExternalCallFilters.yaml:160
 msgid "Out of schedule number"

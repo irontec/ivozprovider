@@ -55,8 +55,9 @@ Once the company has been saved, the domain will be also displayed in the list
 
     .. image:: img/es/domain_list.png
 
-.. attention:: It's important to understand this block. Wihout a DNS domain
-   pointing to our users proxy IP address, everything will fail.
+.. attention:: It's important to understand this block. :ref:`Unless we've a
+   single company registered <dnshack>`, wihout a DNS domain pointing to our
+   users proxy IP address, everything will fail.
 
 This is a good sign for the domain we have configured right now, replacing the
 10.10.3.10 with the public address we have used to configure :ref:`proxyusers`.
