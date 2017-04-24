@@ -11,3 +11,5 @@ public/fonts/glyphicons-halflings-regular.woff2
 public/styles/bootswatch/.bower.json
 public/styles/bootswatch/README.md
 public/styles/bootswatch/bower.json
+e2e/node_modules
+e2e/reports
