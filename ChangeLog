@@ -1,3 +1,67 @@
+Fri Apr 7 12:08:18 2017 +0200 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.2 released
+
+    * Standalone Installation:
+        - Fixed a bug with default mysql passwords when repository packages where used
+        - Now both Kamailios (Users/Trunks) can run with the same public IP address
+
+    * Web Portals:
+        - Fix templates encodings to UTF-8
+        - Added MAC address and domain in Terminals lists
+        - Each brand can now configure the email address and name of platform notifications
+        - Fixed all screens spinners arrow position
+        - Users without voicemail are no longer available in voicemail route destinations
+
+    * PBX
+        - New routable option: Friends
+            * Designed to create SIP trunks that allows other PBX to ingretate with the platform
+            * Friends have number patterns to determine what calls will be redirected
+            * Friends share multiple aspects with terminals (codecs/update methods/etc)
+            * Friends share multiple aspects with users (ACL patterns, DDIs, Languages)
+        - Terminals have now only one selectable codec
+        - Extensions can now contain any character after the first mandatory digit
+        - Direct Pickup no longer uses pickup groups to check permissions
+        - DDIs have now a field to force displayed display name
+        - IVR Custom entries can be either numbers or regular expressions
+        - IVR has now max configurable input length
+        - Voicemails email notification templates can now be configured in filesystem
+        - Fixed a bug where voicemails where only assigned to last created extensions
+        - Fixed a bug where holidays events locutions where never played
+        - Fixed a bug with IVR without welcome locution
+
+    * Recordings
+        - Added an option to accept on-demand recordings using in call DTMF codes
+
+    * Proxies
+        - Decreased Kamailio check AS availability interval from 30 to 5 seconds
+        - Disabled redis realtime publishes (requires more testing)
+        - Fixed a bug where in-dialog transaction was started before initial ACK was received
+        - Use round-robin algorithm instead of call-load distribution
+
+    * Provisioning
+        - Included supported terminal models in the default database
+        - Templates screens now have the option to restore or reset templates to default
+        - Added support for Yealink models: W5X, T23, T46 and T48
+
+    * Billing & Invoices
+        - External raters can now set per-company custom settings
+        - Fixed a bug with format of time periods greater that 24 hours
+        - Fixed a bug with euro symbol in templates
+        - Fixed a bug with format of prices with 0 value in invoices
+        - Fixed a bug where invoices with more than 50 patters crashed during generation
+        - Improve main logics and log messages of cdr-parser
+
+    * Documentation
+        - Now all documentation source texts should be in english for all sections
+        - Updated all spanish translations
+        - Started i18n of images from spanish to english
+        - Added default credentials in the installation section
+
+    * Packaging
+        - Removed ntp dependency in favor of systemd-timesyncd
+
+
 Mon Jan 2 17:15:31 2017 +0100 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.1 released
@@ -42,7 +106,7 @@ Mon Jan 2 17:15:31 2017 +0100 IvozProvider Development Team <dev@list-ivozprovid
         - Improved NAT detection mechanism to avoid detecting NAT on LAN installations
         - Refactorized kamailio configuration logics to improve calls concurrency
 
-Mon Nov 14 19:12:30 2016 +0100 IvozProvider Development Team <dev@list-ivozproivder.irontec.com>
+Mon Nov 14 19:12:30 2016 +0100 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.0 released
     * Initial release
