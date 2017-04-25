@@ -188,30 +188,71 @@ class FaxCallAction extends RouterAction
         // TODO Check return value for errors (use exec instead of shell_exec?)
         // Remove received tif file after conversion
         unlink($faxTIF);
+
+        // Store fax pages
+        $faxIn->setPages($this->agi->getVariable("FAXOPT(pages)"));
+
         // Check if this fax is associated with an email address
         if ($fax->getSendByEmail()) {
             $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxIn->getId(), $fax->getEmail());
 
-            // Get faxdata values for mail message body and subject
-            $faxSrc = $faxIn->getSrc();
-            $faxDst = $faxIn->getDst();
+            // Get Fax Company
+            $company = $fax->getCompany();
+
+            // Get defaults mail settings
+            $config = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
+            $mail = $config->getOption('mail');
+            $default_fromname = $mail['fromname'];
+            $default_fromuser = $mail['fromuser'];
+            $voicemail = $config->getOption('faxmail');
+            $template = $voicemail['template'];
 
             // Create attachment for PDF file
+            $pdfname = sprintf("fax-%s-%s.pdf", $faxIn->getSrc(), $faxIn->getDst());
             $attach = new \Zend_Mime_Part(file_get_contents($faxPDF));
             $attach->type = "application/pdf";
             $attach->disposition = \Zend_Mime::DISPOSITION_ATTACHMENT;
             $attach->encoding = \Zend_Mime::ENCODING_BASE64;
-            $attach->filename = "fax-$faxSrc-$faxDst.pdf";
+            $attach->filename = $pdfname;
 
-            // Create an email for destination and send it
-            $this->_faxSendMail($fax->getEmail(),
-                "New fax received in $faxDst from $faxSrc",
-                "New fax received in $faxDst.\nSee attached PDF file.",
-                $attach);
+            $fromName = $company->getBrand()->getFromName();
+            if (empty($fromName)) {
+                $fromName = $default_fromname;
+            }
+            $fromAddress = $company->getBrand()->getFromAddress();
+            if (empty($fromAddress)) {
+                $fromAddress = $default_fromuser;
+            }
+
+            // Get faxdata values for mail message body and subject
+            $substitution = array(
+                    '${FAX_NAME}'       => $fax->getName(),
+                    '${FAX_PDFNAME}'    => $pdfname,
+                    '${FAX_SRC}'        => $faxIn->getSrc(),
+                    '${FAX_DST}'        => $faxIn->getDst(),
+                    '${FAX_DATE}'       => $faxIn->getCalldate(),
+                    '${FAX_PAGES}'      => $faxIn->getPages(),
+            );
+
+            $templateDir = APPLICATION_PATH . "/../templates/faxmail/$template/" . $company->getLanguageCode() . "/";
+
+            $body = file_get_contents($templateDir . "body");
+            $subject = file_get_contents($templateDir . "subject");
+
+            foreach ($substitution as $search => $replace) {
+                $body = str_replace($search, $replace, $body);
+                $subject = str_replace($search, $replace, $subject);
+            }
+
+            $mail = new \Zend_Mail('utf8');
+            $mail->setBodyText($body);
+            $mail->setSubject($subject);
+            $mail->setFrom($fromAddress, $fromName);
+            $mail->addTo($fax->getEmail());
+            $mail->addAttachment($attach);
+            $mail->send();
         }
 
-        // Store fax pages
-        $faxIn->setPages($this->agi->getVariable("FAXOPT(pages)"));
         // Store FSO for this fax
         $faxIn->putFile($faxPDF);
         // Success!!
@@ -235,15 +276,9 @@ class FaxCallAction extends RouterAction
         if ($this->agi->getVariable("DIALSTATUS") != "ANSWER"){
             // Mark as success and save
             $faxOut->setStatus('error')->save();
-            if ($fax->getSendByEmail()) {
-                $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxOut->getId(), $fax->getEmail());
-
-                // Create an email for destination and send it
-                $faxDst = $faxOut->getDst();
-                $this->_faxSendMail($fax->getEmail(), "Fax sent to $faxDst", "Sending Fax to $faxDst FAILED.\n");
-            }
         }
     }
+
     public function processleg1FaxOutStatus()
     {
 
@@ -263,42 +298,12 @@ class FaxCallAction extends RouterAction
             $this->agi->error("Error sending fax: $statusstr ($error)");
             // Mark this fax as error and save
             $faxOut->setStatus('error')->save();
-            if ($fax->getSendByEmail()) {
-                $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxOut->getId(), $fax->getEmail());
-
-                // Create an email for destination and send it
-                $faxDst = $faxOut->getDst();
-                $this->_faxSendMail($fax->getEmail(), "Fax sent to $faxDst", "Sending Fax to $faxDst FAILED.\n");
-            }
             return;
         }
         // Store fax pages
         $faxOut->setPages($this->agi->getVariable("FAXOPT(pages)"));
         // Mark as success and save
         $faxOut->setStatus('completed')->save();
-        // Send mail with status SENT
-        if ($fax->getSendByEmail()) {
-            $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxOut->getId(), $fax->getEmail());
-
-            // Create an email for destination and send it
-            $faxDst = $faxOut->getDst();
-            $this->_faxSendMail($fax->getEmail(), "Fax sent to $faxDst", "Fax Sent to $faxDst.\n");
-
-        }
-
     }
 
-    private function _faxSendMail($toEmail, $subject, $body, $attach = null)
-    {
-        // Create an email for destination and send it
-        $mail = new \Zend_Mail();
-        if (!is_null($attach)){
-            $mail->addAttachment($attach);
-        }
-        $mail->setBodyText($body)
-             ->setFrom("IvozProvider")
-             ->addTo($toEmail)
-             ->setSubject($subject)
-             ->send();
-    }
 }
