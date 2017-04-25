@@ -1,6 +1,7 @@
 <?php
 
 namespace Agi\Action;
+use \IvozProvider\Model\Features;
 
 /**
  * @class ExternalFriendCallAction
@@ -45,6 +46,10 @@ class ExternalFriendCallAction extends ExternalCallAction
         // Check the user has this call allowed in its ACL
         if (!$friend->isAllowedToCall($e164number)) {
             $this->agi->error("User is not allowed to call %s", $e164number);
+            // Play error notification over progress
+            if ($company->hasFeature(Features::PROGRESS)) {
+                $this->agi->progress("ivozprovider/notAllowed");
+            }
             $this->agi->decline();
             return;
         }
@@ -52,6 +57,10 @@ class ExternalFriendCallAction extends ExternalCallAction
         // Check if outgoing call can be tarificated
         if (!$this->checkTarificable($e164number)) {
             $this->agi->error("Destination %s can not be billed.", $e164number);
+            // Play error notification over progress
+            if ($company->hasFeature(Features::PROGRESS)) {
+                $this->agi->progress("ivozprovider/notBillable");
+            }
             $this->agi->decline();
             return;
         }

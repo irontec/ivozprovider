@@ -17,10 +17,22 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
- 
+
 namespace IvozProvider\Model;
 class Features extends Raw\Features
 {
+    /**
+     * Available features Ids
+     */
+    const QUEUES            = 1;
+    const RECORDINGS        = 2;
+    const FAXES             = 3;
+    const FRIENDS           = 4;
+    const CONFERENCES       = 5;
+    const BILLING           = 6;
+    const INVOICES          = 7;
+    const PROGRESS          = 8;
+
     /**
 
      * This method is called just after parent's constructor
