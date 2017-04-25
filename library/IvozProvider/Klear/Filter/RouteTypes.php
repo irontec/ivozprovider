@@ -9,9 +9,12 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
         return true;
     }
 
+    /**
+     * Get route types to be excluded by company features
+     * @return array
+     */
     public function getCondition()
     {
-        $excludedRoutes = array();
         $auth = Zend_Auth::getInstance();
         $user = $auth->getIdentity();
 
@@ -21,6 +24,12 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
         $companyMapper = new Mapper\Companies;
         $company = $companyMapper->find($user->companyId);
 
+        if (is_null($company)) {
+            // No company feature to filter by
+            return [];
+        }
+
+        $excludedRoutes = array();
         foreach ($features as $feature) {
             switch ($feature->getName('en')) {
                 case "Queues":      $routeType = 'queue'; break;
