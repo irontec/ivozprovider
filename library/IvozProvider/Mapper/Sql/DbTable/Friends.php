@@ -40,11 +40,6 @@ class Friends extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'FriendsIbfk5' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
         'FriendsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -63,6 +58,11 @@ class Friends extends TableAbstract
         'FriendsIbfk4' => array(
             'columns' => 'outgoingDDIId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
+            'refColumns' => 'id'
+        ),
+        'FriendsIbfk5' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         )
     );
