@@ -31,6 +31,7 @@ production:
     validFrom: 
       title: _('Validfrom')
       type: picker
+      required: true
       source: 
         control: datetime
         settings: 
@@ -38,6 +39,7 @@ production:
     validTo: 
       title: _('Validto')
       type: picker
+      required: true
       source: 
         control: datetime
         settings: 
