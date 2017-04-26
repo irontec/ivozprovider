@@ -18,14 +18,8 @@ class BrandOperator extends Base
             $this->_subTitle = "Main Operator: <strong>". $this->_user->getusername()."</strong>";
 
             if ($this->_user->companyId) {
-                //TODO: translate
-                $this->_subTitle .= '<br /> Empresa emulada: ' . $this->_user->companyName;
+                $this->_subTitle .= sprintf('<br />Emulated company: <strong>%s</strong>',  $this->_user->companyName);
             }
         }
-
-    }
-    public function processSignature($signature)
-    {
-        return $this->_brandURL->name;
     }
 }

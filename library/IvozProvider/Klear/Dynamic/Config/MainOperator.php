@@ -25,9 +25,4 @@ class MainOperator extends Base
             }
         }
     }
-
-    public function processSignature($signature)
-    {
-        return $this->_brandURL->name;
-    }
 }
