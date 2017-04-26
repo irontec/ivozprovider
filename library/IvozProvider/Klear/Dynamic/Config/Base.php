@@ -77,7 +77,11 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 
     public function processSiteName($sitename)
     {
-        return $this->_title;
+        if (!isset($this->_brandURL)) {
+            return $this->_title;
+        }
+
+        return sprintf('[%s]', $this->_brandURL->name);
     }
 
     public function processSiteSubName($sitesubname)
@@ -142,11 +146,13 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
         return $timezone;
     }
 
-
     public function processSignature($signature)
     {
-        return $signature;
+        if (!isset($this->_brandURL)) {
+            return $signature;
+        }
 
+        return $this->_brandURL->name;
     }
 
     public function processAuthConfig($authConfig)
