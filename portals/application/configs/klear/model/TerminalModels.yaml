@@ -58,7 +58,7 @@ production:
           downloadFile_dialog: true
           genericBackup_dialog: true
           genericDefault_dialog: true
-          runGenericCode_dialog: false
+          runGenericCode_dialog: true
       info:
         type: box
         position: left
