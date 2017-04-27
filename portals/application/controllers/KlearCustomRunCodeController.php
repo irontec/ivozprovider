@@ -82,8 +82,12 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                 exec($command, $output, $resultCode);
                 unlink($route . DIRECTORY_SEPARATOR . $filename);
 
-                $message = implode("<br>", $output); //ojo que aquí hemos quitado la llamada a gettext
+                array_walk($output, function (&$value, $key) {
+                    //Ensure xml's are readable in browser
+                    $value = htmlentities($value);
+                });
 
+                $message = implode("<br>", $output);
             }
             else{
                 $message = _('This template is going to be tested<br /><textarea name="currentCode" rows="8" cols="80" readonly></textarea>' . $inputMac . $error);
@@ -119,8 +123,8 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         }
 
         // There is no SERVER_NAME in console commands, inject it
-        $serverName = '<?php $_SERVER["SERVER_NAME"] = "' . $_SERVER["SERVER_NAME"] . '"; ?>';
-        $currentCode = $serverName . $this->getParam("currentCode");
+        $serverVars = '<?php $_SERVER["SERVER_NAME"] = "' . $_SERVER["SERVER_NAME"] . '"; ?>';
+        $currentCode = $serverVars . $this->getParam("currentCode");
 
         $currentCodePost = " <?php  } }";
         try {

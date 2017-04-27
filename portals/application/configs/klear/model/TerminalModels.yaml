@@ -48,7 +48,11 @@ production:
       source:
         control: Codemirror
         settings:
-          mode: php
+          mode:
+            - application/x-httpd-php
+            - htmlmixed
+            - xml
+            - php
           lineNumbers: true
           matchBrackets: true
       options:
@@ -80,7 +84,11 @@ production:
       source:
         control: Codemirror
         settings:
-          mode: php
+          mode:
+            - application/x-httpd-php
+            - htmlmixed
+            - xml
+            - php
           lineNumbers: true
           matchBrackets: true
       options:
@@ -90,7 +98,7 @@ production:
           downloadFile_dialog: true
           specificBackup_dialog: true
           specificDefault_dialog: true
-          runSpecificCode_dialog: false
+          runSpecificCode_dialog: true
       info:
         type: box
         position: left
