@@ -61,6 +61,7 @@ class TemplateWrapper
 
     public function run()
     {
+        error_reporting( error_reporting() & ~E_NOTICE );
 
         ?>
 
