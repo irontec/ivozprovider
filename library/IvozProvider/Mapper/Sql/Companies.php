@@ -153,7 +153,7 @@ class Companies extends Raw\Companies
     {
         $brand = $this->_model->getBrand();
         if (is_null($brand)) {
-            throw new \Exception(_("Brand is not setted"), 60000);
+            throw new \Exception(_("Brand is not set"), 60000);
         }
         $genericCallACLPatterns = $brand->getGenericCallACLPatterns();
         $callACLPatterns = array();

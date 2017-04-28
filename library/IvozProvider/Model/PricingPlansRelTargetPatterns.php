@@ -35,7 +35,7 @@ class PricingPlansRelTargetPatterns extends Raw\PricingPlansRelTargetPatterns
         $this->_duration = $duration;
 
         if (is_null($this->_duration)) {
-            $this->_logger->log("Duration not setted", \Zend_Log::ERR);
+            $this->_logger->log("Duration not set", \Zend_Log::ERR);
             return null;
         }
 

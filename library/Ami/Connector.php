@@ -192,7 +192,7 @@ class Ami_Connector
      * @param string|array $in[optional]
      * <p>Message to be sent</p>
      * <p>In can be a key => value array or a string</p>
-     * <p>If setted, this will be sent, if not it will check if headers are setted</p>
+     * <p>If set, this will be sent, if not it will check if headers are set</p>
      * @param string $closeSocket[optional]
      * <p>Either you want to close connection after sending (true) or not (false).</p>
      * <p>Default false</p>
