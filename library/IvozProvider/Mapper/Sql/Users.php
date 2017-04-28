@@ -88,7 +88,7 @@ class Users extends Raw\Users
             $bosses = $this->findByField("bossAssistantId", $model->getPrimaryKey());
             foreach ($bosses as $boss) {
                 $boss->setBossAssistantId(null)->save();
-                $logMessage = "User unsetted as Boss Assistant of boss with id = '".$boss->getPrimaryKey()."'";
+                $logMessage = "User unset as Boss Assistant of boss with id = '".$boss->getPrimaryKey()."'";
                 $this->_logger->log($logMessage, \Zend_Log::INFO);
             }
         }

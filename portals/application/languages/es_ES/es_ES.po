@@ -2181,7 +2181,7 @@ msgstr "Patrones de destinos"
 
 #: library/IvozProvider/Mapper/Sql/Companies.php:161
 #: application/configs/klear/errors.yaml:18
-msgid "Brand is not setted"
+msgid "Brand is not set"
 msgstr "Marca no seleccionada"
 
 #: library/IvozProvider/Model/Raw/ApplicationServers.php:178

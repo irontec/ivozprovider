@@ -15,7 +15,7 @@ production:
     50004: _("There are unbilled calls after out date.")
     50005: _("'Out date' must be equal or greater than 'In date'.")
     50006: _("Cannot invoice calls from today in the future.")
-    60000: _("Brand is not setted")
+    60000: _("Brand is not set")
     70000: _("Invalid IP address, discarding value.")
     70001: _("Wrong mask, discarding value.")
     70002: _("Wrong mask, it should be at least /24.")
