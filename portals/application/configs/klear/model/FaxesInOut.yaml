@@ -60,6 +60,7 @@ production:
     file:
       title: ngettext('PDF File', 'PDF Files', 1)
       type: file
+      required: true
       source:
         data: fso
         size_limit: 20M
