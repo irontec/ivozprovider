@@ -45,26 +45,6 @@ class Users extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         ),
-        'UsersIbfk10' => array(
-            'columns' => 'callACLId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk11' => array(
-            'columns' => 'bossAssistantId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk12' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk13' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
         'UsersIbfk3' => array(
             'columns' => 'terminalId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
@@ -83,6 +63,26 @@ class Users extends TableAbstract
         'UsersIbfk9' => array(
             'columns' => 'outgoingDDIId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk10' => array(
+            'columns' => 'callACLId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk11' => array(
+            'columns' => 'bossAssistantId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk12' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk13' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
             'refColumns' => 'id'
         )
     );
