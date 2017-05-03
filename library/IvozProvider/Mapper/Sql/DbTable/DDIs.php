@@ -40,11 +40,6 @@ class DDIs extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'DDIsIbfk13' => array(
-            'columns' => 'queueId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
-            'refColumns' => 'id'
-        ),
         'DDIsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -63,6 +58,11 @@ class DDIs extends TableAbstract
         'DDIsIbfk12' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk13' => array(
+            'columns' => 'queueId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
             'refColumns' => 'id'
         ),
         'DDIsIbfk2' => array(

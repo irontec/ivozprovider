@@ -8,18 +8,18 @@ invoiceTemplateHelp:
       text:
         "<p>Templates are create using PHPPdf library. You can get info in <a href='https://github.com/psliwa/PHPPdf' target='_blank'> here </a></p>
         <p>Template receives an array of data and you can use this data using the notation '{{firstLevelKey.secondLevelKey.thirdLevelKey}}'</p>
-        <p> You can iterate over array using<br />
+        <p style='line-height: 17px;'> You can iterate over array using<br />
         {{#firstLevelKey.secondLevelKey id,value}}<br />
             {{value.type}}<br />
         {{/firstLevelKey.secondLevelKey}}</p>
         <p>You can acces all data from following models</p>
-        <ul style='margin-left: 30px'>
+        <ul style='margin-left: 30px; line-height: 17px;'>
           <li>Invoices: Using key 'invoice'</li>
           <li>Companies: Using key 'company'</li>
           <li>Brands: Using key 'brands'</li>
         </ul>
         <p>You can access to following calculated data using key 'callData' whith following subkeys:</p>
-          <ul style='margin-left: 30px'>
+          <ul style='margin-left: 30px; line-height: 17px;'>
             <li>callSumary: Sumary data of invoiced calls grouped by type. Keys of callSumary are call types
               <ul style='margin-left: 30px'>
                 <li>$callSumary[$callType]['numberOfCalls']</li>
@@ -46,9 +46,10 @@ invoiceTemplateHelp:
             </li>
             </ul>
          <p>You can use following examples as base for your custom Invoice template
-            <ul style='margin-left: 30px'>
+            <ul style='margin-left: 30px; line-height: 20px;'>
                 <li><a href='/templates/invoice.txt' target='_blank' >Basic Invoice template</a></li>
                 <li><a href='/templates/invoiceFixedCosts.txt' target='_blank'>Fixed costs Invoice template</a></li>
+                <li><a href='/templates/invoiceFixedCostsWithDescriptions.txt' target='_blank'>Fixed costs Invoice template with descriptions</a></li>
                 <li><a href='/templates/invoiceInboundCalls.txt' target='_blank'>Inbound calls Invoice template</a></li>
                 <li><a href='/templates/invoiceFixedCostsAndInboundCalls.txt' target='_blank'>Fixed costs and Inbound calls Invoice template</a></li>
             </ul>

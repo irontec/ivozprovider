@@ -25,9 +25,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\FixedCosts
           fieldName: 
             fields: 
-              - description
-            template: '%description%'
-          order: description
+              - name
+            template: '%name%'
+          order: name
     invoiceId: 
       title: _('Invoiceid')
       type: select

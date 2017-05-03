@@ -40,11 +40,6 @@ class Extensions extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'ExtensionsIbfk7' => array(
-            'columns' => 'queueId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
-            'refColumns' => 'id'
-        ),
         'ExtensionsIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
@@ -73,6 +68,11 @@ class Extensions extends TableAbstract
         'ExtensionsIbfk6' => array(
             'columns' => 'userId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
+        ),
+        'ExtensionsIbfk7' => array(
+            'columns' => 'queueId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
             'refColumns' => 'id'
         )
     );

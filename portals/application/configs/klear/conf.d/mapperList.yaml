@@ -108,4 +108,4 @@ mappers:
   - &KamUsersLocation {mapper: \IvozProvider\Mapper\Sql\KamUsersLocation, modelFile: KamUsersLocation}
   - &KamUsersLocationAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs, modelFile: KamUsersLocationAttrs}
   - &KamUsersMissedCalls {mapper: \IvozProvider\Mapper\Sql\KamUsersMissedCalls, modelFile: KamUsersMissedCalls}
-  - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}
+  - &KamVersion {mapper: \IvozProvider\Mapper\Sql\KamVersion, modelFile: KamVersion}

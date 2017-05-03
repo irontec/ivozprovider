@@ -84,11 +84,11 @@ class FixedCosts extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'description' => 
+	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'FixedCosts',
-	    'COLUMN_NAME' => 'description',
+	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
@@ -101,12 +101,29 @@ class FixedCosts extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'description' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'FixedCosts',
+	    'COLUMN_NAME' => 'description',
+	    'COLUMN_POSITION' => 4,
+	    'DATA_TYPE' => 'text',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	  'cost' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'FixedCosts',
 	    'COLUMN_NAME' => 'cost',
-	    'COLUMN_POSITION' => 4,
+	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'decimal',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

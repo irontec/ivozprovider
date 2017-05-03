@@ -106,21 +106,27 @@
                 <td colspan="4" text-align="center" font-size="15" border.type="none">Costes fijos</td>
             </tr>
             <tr background.color="black" color="white" border.color="black" font-style="bold" text-align="center">
-                <td padding="5px" border.color="white">Concepto</td>
+                <td padding="5px" colspan="4" border.color="white">Concepto</td>
                 <td padding="5px" border.color="white">Precio</td>
                 <td padding="5px" border.color="white">Cantidad</td>
                 <td padding="5px" border.color="white">Subtotal</td>
             </tr>
             {{#costs id,fixedCost}}
-            <tr border.color="black" text-align="center">
-                <td padding="5px" >{{fixedCost.name}}</td>
-                <td padding="5px" >{{fixedCost.cost}} €</td>
-                <td padding="5px" >{{fixedCost.quantity}}</td>
-                <td padding="5px" >{{fixedCost.subTotal}} €</td>
-            </tr>
+                <tr border.color="black" text-align="left">
+                    <td padding="5px" colspan="4">
+                        {{fixedCost.name}}
+                        {{#fixedCost.description}}
+                            <br />
+                            {{fixedCost.description}}
+                        {{/fixedCost.description}}
+                    </td>
+                    <td padding="5px" text-align="center">{{fixedCost.cost}} €</td>
+                    <td padding="5px" text-align="center">{{fixedCost.quantity}}</td>
+                    <td padding="5px" text-align="center">{{fixedCost.subTotal}} €</td>
+                </tr>
             {{/costs}}
             <tr font-style="bold">
-                <td text-align="center" border.type="none" padding="5px"></td>
+                <td text-align="center" colspan="4" border.type="none" padding="5px"></td>
                 <td text-align="center" border.type="none" padding="5px"></td>
                 <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Total:</td>
                 <td text-align="center" padding="5px">{{fixedCostsTotals}} €</td>
@@ -138,12 +144,6 @@
                 <td padding="5px" border.color="white">Duración total</td>
                 <td padding="5px" border.color="white">Precio total</td>
             </tr>
-          	<tr>
-                <td padding="2px">Llamadas entrantes</td>
-                <td padding="2px">{{callData.inboundCalls.summary.numberOfCalls}}</td>
-                <td padding="2px">{{callData.inboundCalls.summary.totalCallsDurationFormatted}}</td>
-                <td padding="2px">{{callData.inboundCalls.summary.totalPrice}} €</td>
-            </tr>
             {{#callData.callSumary id,value}}
             <tr>
                 <td padding="2px">{{value.type}}</td>
@@ -159,32 +159,6 @@
                 <td text-align="center" padding="5px">{{callData.callSumaryTotals.totalPrice}} €</td>
             </tr>
         </table>
-
-
-        <table margin-bottom="5px" margin-top="50px">
-            <tr border.type="none" margin-bottom="5px" font-style="bold">
-                <td colspan="6" text-align="center" font-size="15" border.type="none">Llamadas entrantes</td>
-            </tr>
-            <tr background.color="black" color="white" border.color="black" font-style="bold" text-align="center">
-                <td padding="5px" border.color="white">Fecha</td>
-                <td padding="5px" border.color="white">Origen</td>
-                <td padding="5px" border.color="white">Destino</td>
-                <td padding="5px" border.color="white">Duración</td>
-                <td padding="5px" border.color="white">Patrón</td>
-                <td padding="5px" border.color="white">Precio</td>
-            </tr>
-            {{#callData.inboundCalls.calls id,value}}
-            <tr border.color="black" text-align="center">
-                <td padding="5px" >{{value.calldate}}</td>
-                <td padding="5px" >{{value.caller}}</td>
-                <td padding="5px" >{{value.dst}}</td>
-                <td padding="5px" >{{value.durationFormatted}}</td>
-                <td padding="5px" >{{value.targetPattern.name}}</td>
-                <td padding="5px" >{{value.price}} €</td>
-            </tr>
-            {{/callData.inboundCalls.calls}}
-        </table>
-
         {{#callData.callsPerType id,value}}
         <table margin-bottom="5px" margin-top="50px">
             <tr border.type="none" margin-bottom="5px" font-style="bold">

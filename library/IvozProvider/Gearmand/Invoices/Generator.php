@@ -156,6 +156,7 @@ class Generator
             $subTotal = $cost * $quantity;
             $this->_fixedCosts[] = array(
                 "quantity" => $quantity,
+                "name" => $fixedCostsRelInvoice->getFixedCost()->getName(),
                 "description" => $fixedCostsRelInvoice->getFixedCost()->getDescription(),
                 "cost" => number_format(ceil($cost*10000)/10000, 4),
                 "subTotal" => number_format(ceil($subTotal*10000)/10000, 4)
