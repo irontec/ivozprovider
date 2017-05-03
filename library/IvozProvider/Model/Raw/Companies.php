@@ -193,27 +193,6 @@ class Companies extends ModelAbstract
 
 
     /**
-     * Parent relation Companies_ibfk_10
-     *
-     * @var \IvozProvider\Model\Raw\Languages
-     */
-    protected $_Language;
-
-    /**
-     * Parent relation Companies_ibfk_11
-     *
-     * @var \IvozProvider\Model\Raw\MediaRelaySets
-     */
-    protected $_MediaRelaySets;
-
-    /**
-     * Parent relation Companies_ibfk_12
-     *
-     * @var \IvozProvider\Model\Raw\Timezones
-     */
-    protected $_DefaultTimezone;
-
-    /**
      * Parent relation Companies_ibfk_4
      *
      * @var \IvozProvider\Model\Raw\Brands
@@ -233,6 +212,27 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Countries
      */
     protected $_Countries;
+
+    /**
+     * Parent relation Companies_ibfk_10
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
+
+    /**
+     * Parent relation Companies_ibfk_11
+     *
+     * @var \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    protected $_MediaRelaySets;
+
+    /**
+     * Parent relation Companies_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Timezones
+     */
+    protected $_DefaultTimezone;
 
 
     /**
@@ -524,18 +524,6 @@ class Companies extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'CompaniesIbfk10'=> array(
-                    'property' => 'Language',
-                    'table_name' => 'Languages',
-                ),
-            'CompaniesIbfk11'=> array(
-                    'property' => 'MediaRelaySets',
-                    'table_name' => 'MediaRelaySets',
-                ),
-            'CompaniesIbfk12'=> array(
-                    'property' => 'DefaultTimezone',
-                    'table_name' => 'Timezones',
-                ),
             'CompaniesIbfk4'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
@@ -547,6 +535,18 @@ class Companies extends ModelAbstract
             'CompaniesIbfk9'=> array(
                     'property' => 'Countries',
                     'table_name' => 'Countries',
+                ),
+            'CompaniesIbfk10'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
+                ),
+            'CompaniesIbfk11'=> array(
+                    'property' => 'MediaRelaySets',
+                    'table_name' => 'MediaRelaySets',
+                ),
+            'CompaniesIbfk12'=> array(
+                    'property' => 'DefaultTimezone',
+                    'table_name' => 'Timezones',
                 ),
         ));
 
@@ -1564,159 +1564,6 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Language
-     *
-     * @param \IvozProvider\Model\Raw\Languages $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
-    {
-        $this->_Language = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLanguageId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk10');
-        return $this;
-    }
-
-    /**
-     * Gets parent Language
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Languages
-     */
-    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk10';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Language = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Language;
-    }
-
-    /**
-     * Sets parent relation MediaRelaySets
-     *
-     * @param \IvozProvider\Model\Raw\MediaRelaySets $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setMediaRelaySets(\IvozProvider\Model\Raw\MediaRelaySets $data)
-    {
-        $this->_MediaRelaySets = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setMediaRelaySetsId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk11');
-        return $this;
-    }
-
-    /**
-     * Gets parent MediaRelaySets
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\MediaRelaySets
-     */
-    public function getMediaRelaySets($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk11';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_MediaRelaySets = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_MediaRelaySets;
-    }
-
-    /**
-     * Sets parent relation DefaultTimezone
-     *
-     * @param \IvozProvider\Model\Raw\Timezones $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setDefaultTimezone(\IvozProvider\Model\Raw\Timezones $data)
-    {
-        $this->_DefaultTimezone = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setDefaultTimezoneId($primaryKey);
-        }
-
-        $this->_setLoaded('CompaniesIbfk12');
-        return $this;
-    }
-
-    /**
-     * Gets parent DefaultTimezone
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Timezones
-     */
-    public function getDefaultTimezone($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'CompaniesIbfk12';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_DefaultTimezone = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_DefaultTimezone;
-    }
-
-    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -1867,6 +1714,159 @@ class Companies extends ModelAbstract
         }
 
         return $this->_Countries;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk10');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk10';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
+    }
+
+    /**
+     * Sets parent relation MediaRelaySets
+     *
+     * @param \IvozProvider\Model\Raw\MediaRelaySets $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setMediaRelaySets(\IvozProvider\Model\Raw\MediaRelaySets $data)
+    {
+        $this->_MediaRelaySets = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setMediaRelaySetsId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk11');
+        return $this;
+    }
+
+    /**
+     * Gets parent MediaRelaySets
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\MediaRelaySets
+     */
+    public function getMediaRelaySets($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk11';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_MediaRelaySets = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_MediaRelaySets;
+    }
+
+    /**
+     * Sets parent relation DefaultTimezone
+     *
+     * @param \IvozProvider\Model\Raw\Timezones $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDefaultTimezone(\IvozProvider\Model\Raw\Timezones $data)
+    {
+        $this->_DefaultTimezone = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setDefaultTimezoneId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent DefaultTimezone
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Timezones
+     */
+    public function getDefaultTimezone($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_DefaultTimezone = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_DefaultTimezone;
     }
 
     /**

@@ -45,26 +45,6 @@ class DDIs extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         ),
-        'DDIsIbfk10' => array(
-            'columns' => 'brandId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk11' => array(
-            'columns' => 'conferenceRoomId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk12' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk13' => array(
-            'columns' => 'queueId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
-            'refColumns' => 'id'
-        ),
         'DDIsIbfk2' => array(
             'columns' => 'externalCallFilterId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
@@ -103,6 +83,26 @@ class DDIs extends TableAbstract
         'DDIsIbfk9' => array(
             'columns' => 'countryId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk10' => array(
+            'columns' => 'brandId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk11' => array(
+            'columns' => 'conferenceRoomId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk12' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
+        ),
+        'DDIsIbfk13' => array(
+            'columns' => 'queueId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
             'refColumns' => 'id'
         )
     );

@@ -197,34 +197,6 @@ class DDIs extends ModelAbstract
     protected $_Company;
 
     /**
-     * Parent relation DDIs_ibfk_10
-     *
-     * @var \IvozProvider\Model\Raw\Brands
-     */
-    protected $_Brand;
-
-    /**
-     * Parent relation DDIs_ibfk_11
-     *
-     * @var \IvozProvider\Model\Raw\ConferenceRooms
-     */
-    protected $_ConferenceRoom;
-
-    /**
-     * Parent relation DDIs_ibfk_12
-     *
-     * @var \IvozProvider\Model\Raw\Languages
-     */
-    protected $_Language;
-
-    /**
-     * Parent relation DDIs_ibfk_13
-     *
-     * @var \IvozProvider\Model\Raw\Queues
-     */
-    protected $_Queue;
-
-    /**
      * Parent relation DDIs_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\ExternalCallFilters
@@ -279,6 +251,34 @@ class DDIs extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Countries
      */
     protected $_Country;
+
+    /**
+     * Parent relation DDIs_ibfk_10
+     *
+     * @var \IvozProvider\Model\Raw\Brands
+     */
+    protected $_Brand;
+
+    /**
+     * Parent relation DDIs_ibfk_11
+     *
+     * @var \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    protected $_ConferenceRoom;
+
+    /**
+     * Parent relation DDIs_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
+
+    /**
+     * Parent relation DDIs_ibfk_13
+     *
+     * @var \IvozProvider\Model\Raw\Queues
+     */
+    protected $_Queue;
 
 
     /**
@@ -349,22 +349,6 @@ class DDIs extends ModelAbstract
                     'property' => 'Company',
                     'table_name' => 'Companies',
                 ),
-            'DDIsIbfk10'=> array(
-                    'property' => 'Brand',
-                    'table_name' => 'Brands',
-                ),
-            'DDIsIbfk11'=> array(
-                    'property' => 'ConferenceRoom',
-                    'table_name' => 'ConferenceRooms',
-                ),
-            'DDIsIbfk12'=> array(
-                    'property' => 'Language',
-                    'table_name' => 'Languages',
-                ),
-            'DDIsIbfk13'=> array(
-                    'property' => 'Queue',
-                    'table_name' => 'Queues',
-                ),
             'DDIsIbfk2'=> array(
                     'property' => 'ExternalCallFilter',
                     'table_name' => 'ExternalCallFilters',
@@ -396,6 +380,22 @@ class DDIs extends ModelAbstract
             'DDIsIbfk9'=> array(
                     'property' => 'Country',
                     'table_name' => 'Countries',
+                ),
+            'DDIsIbfk10'=> array(
+                    'property' => 'Brand',
+                    'table_name' => 'Brands',
+                ),
+            'DDIsIbfk11'=> array(
+                    'property' => 'ConferenceRoom',
+                    'table_name' => 'ConferenceRooms',
+                ),
+            'DDIsIbfk12'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
+                ),
+            'DDIsIbfk13'=> array(
+                    'property' => 'Queue',
+                    'table_name' => 'Queues',
                 ),
         ));
 
@@ -1234,210 +1234,6 @@ class DDIs extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Brand
-     *
-     * @param \IvozProvider\Model\Raw\Brands $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
-    {
-        $this->_Brand = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setBrandId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk10');
-        return $this;
-    }
-
-    /**
-     * Gets parent Brand
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Brands
-     */
-    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk10';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Brand = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Brand;
-    }
-
-    /**
-     * Sets parent relation ConferenceRoom
-     *
-     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
-    {
-        $this->_ConferenceRoom = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setConferenceRoomId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk11');
-        return $this;
-    }
-
-    /**
-     * Gets parent ConferenceRoom
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\ConferenceRooms
-     */
-    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk11';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_ConferenceRoom = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_ConferenceRoom;
-    }
-
-    /**
-     * Sets parent relation Language
-     *
-     * @param \IvozProvider\Model\Raw\Languages $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
-    {
-        $this->_Language = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLanguageId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk12');
-        return $this;
-    }
-
-    /**
-     * Gets parent Language
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Languages
-     */
-    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk12';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Language = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Language;
-    }
-
-    /**
-     * Sets parent relation Queue
-     *
-     * @param \IvozProvider\Model\Raw\Queues $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setQueue(\IvozProvider\Model\Raw\Queues $data)
-    {
-        $this->_Queue = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setQueueId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk13');
-        return $this;
-    }
-
-    /**
-     * Gets parent Queue
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Queues
-     */
-    public function getQueue($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk13';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Queue = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Queue;
-    }
-
-    /**
      * Sets parent relation ExternalCallFilter
      *
      * @param \IvozProvider\Model\Raw\ExternalCallFilters $data
@@ -1843,6 +1639,210 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Country;
+    }
+
+    /**
+     * Sets parent relation Brand
+     *
+     * @param \IvozProvider\Model\Raw\Brands $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setBrand(\IvozProvider\Model\Raw\Brands $data)
+    {
+        $this->_Brand = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setBrandId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk10');
+        return $this;
+    }
+
+    /**
+     * Gets parent Brand
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function getBrand($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk10';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Brand = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Brand;
+    }
+
+    /**
+     * Sets parent relation ConferenceRoom
+     *
+     * @param \IvozProvider\Model\Raw\ConferenceRooms $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setConferenceRoom(\IvozProvider\Model\Raw\ConferenceRooms $data)
+    {
+        $this->_ConferenceRoom = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setConferenceRoomId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk11');
+        return $this;
+    }
+
+    /**
+     * Gets parent ConferenceRoom
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ConferenceRooms
+     */
+    public function getConferenceRoom($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk11';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ConferenceRoom = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ConferenceRoom;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
+    }
+
+    /**
+     * Sets parent relation Queue
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setQueue(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_Queue = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setQueueId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk13');
+        return $this;
+    }
+
+    /**
+     * Gets parent Queue
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueue($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk13';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Queue = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Queue;
     }
 
     /**
