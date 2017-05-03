@@ -96,7 +96,7 @@ class BrandOperators extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '50',
+	    'LENGTH' => '65',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

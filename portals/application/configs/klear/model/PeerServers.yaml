@@ -191,7 +191,7 @@ production:
     from_domain: 
       title: _('From domain')
       type: text
-      maxLength: 64
+      maxLength: 190
       info:
         type: box
         position: left

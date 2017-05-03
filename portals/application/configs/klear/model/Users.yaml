@@ -184,7 +184,7 @@ production:
       title: _('Username')
       type: text
       trim: both
-      maxLength: 100
+      maxLength: 65
     maxCalls:
       title: _('Max call')
       type: number

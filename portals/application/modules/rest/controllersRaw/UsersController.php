@@ -325,7 +325,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="username", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
-     * @ApiParams(name="maxCalls", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="callWaiting", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
@@ -385,7 +385,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="username", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
-     * @ApiParams(name="maxCalls", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="callWaiting", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
@@ -569,7 +569,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'maxCalls' => array(
-                    'type' => "tinyint",
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -705,7 +705,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'maxCalls' => array(
-                    'type' => "tinyint",
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),

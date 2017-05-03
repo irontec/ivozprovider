@@ -111,4 +111,4 @@ mappers:
   - &KamUsersPua {mapper: \IvozProvider\Mapper\Sql\KamUsersPua, modelFile: KamUsersPua}
   - &KamUsersWatchers {mapper: \IvozProvider\Mapper\Sql\KamUsersWatchers, modelFile: KamUsersWatchers}
   - &KamUsersXcap {mapper: \IvozProvider\Mapper\Sql\KamUsersXcap, modelFile: KamUsersXcap}
-  - &Version {mapper: \IvozProvider\Mapper\Sql\Version, modelFile: Version}
+  - &KamVersion {mapper: \IvozProvider\Mapper\Sql\KamVersion, modelFile: KamVersion}

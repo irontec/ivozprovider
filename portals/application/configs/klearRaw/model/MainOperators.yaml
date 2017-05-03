@@ -5,7 +5,7 @@ production:
       title: _('Username')
       type: text
       required: true
-      maxLength: 50
+      maxLength: 65
       default: true
     pass: 
       title: _('Pass')

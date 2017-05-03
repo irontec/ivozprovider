@@ -19,11 +19,11 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       required: true
-      maxLength: 200
+      maxLength: 65
     domain: 
       title: _('Domain')
       type: text
-      maxLength: 255
+      maxLength: 190
     description: 
       title: ngettext('Description', 'Descriptions', 1)
       type: text
@@ -150,7 +150,7 @@ production:
     from_domain: 
       title: _('Fromdomain')
       type: text
-      maxLength: 64
+      maxLength: 190
     directConnectivity: 
       title: _('Directconnectivity')
       type: select

@@ -68,6 +68,7 @@ production:
     priority:
       title: _('Priority')
       type: number
+      defaultValue: 1
       required: true
       source:
         control: Spinner

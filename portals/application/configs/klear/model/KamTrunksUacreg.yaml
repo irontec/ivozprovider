@@ -41,6 +41,7 @@ production:
       type: text
       trim: both
       defaultValue:
+      maxLength: 190
     r_username:
       title: _('Username')
       type: text

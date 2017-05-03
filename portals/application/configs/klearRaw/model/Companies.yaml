@@ -24,7 +24,7 @@ production:
       title: _('Domainuser')
       type: text
       required: true
-      maxLength: 255
+      maxLength: 190
     nif: 
       title: _('Nif')
       type: text

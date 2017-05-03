@@ -227,7 +227,7 @@ production:
     from_domain:
       title: _('From domain')
       type: text
-      maxLength: 64
+      maxLength: 190
     directConnectivity:
       title: _('Direct connectivity')
       type: select

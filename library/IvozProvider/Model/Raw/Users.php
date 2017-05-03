@@ -144,7 +144,7 @@ class Users extends ModelAbstract
     protected $_active;
 
     /**
-     * Database var type tinyint
+     * Database var type smallint
      *
      * @var int
      */

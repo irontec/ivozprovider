@@ -10,7 +10,7 @@ production:
     from_domain: 
       title: _('Fromdomain')
       type: text
-      maxLength: 255
+      maxLength: 190
     terminalId: 
       title: _('Terminalid')
       type: select
