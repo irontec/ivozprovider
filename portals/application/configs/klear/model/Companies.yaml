@@ -30,7 +30,7 @@ production:
       title: _('SIP domain')
       type: text
       trim: both
-      maxLength: 255
+      maxLength: 190
       required: true
     nif:
       title: _('Nif')

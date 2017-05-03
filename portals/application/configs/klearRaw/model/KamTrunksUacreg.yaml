@@ -16,7 +16,7 @@ production:
       title: _('Ldomain')
       type: text
       defaultValue: unused
-      maxLength: 128
+      maxLength: 190
     r_username: 
       title: _('Rusername')
       type: text
@@ -26,7 +26,7 @@ production:
       title: _('Rdomain')
       type: text
       defaultValue: 
-      maxLength: 128
+      maxLength: 190
     realm: 
       title: _('Realm')
       type: text

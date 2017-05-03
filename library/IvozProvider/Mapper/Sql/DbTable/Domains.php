@@ -79,7 +79,7 @@ class Domains extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '255',
+	    'LENGTH' => '190',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

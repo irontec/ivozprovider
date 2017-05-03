@@ -20,6 +20,7 @@ production:
       trim: both
       required: true
       default: true
+      maxLength: 65
     pass: 
       title: _('Pass')
       type: password

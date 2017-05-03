@@ -19,7 +19,7 @@ production:
       title: _('Username')
       type: text
       required: true
-      maxLength: 50
+      maxLength: 65
     pass: 
       title: _('Pass')
       type: password

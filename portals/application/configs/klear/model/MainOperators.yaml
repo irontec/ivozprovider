@@ -6,6 +6,7 @@ production:
       type: text
       trim: both
       required: true
+      maxLength: 65
       default: true
     pass: 
       title: _('Pass')
