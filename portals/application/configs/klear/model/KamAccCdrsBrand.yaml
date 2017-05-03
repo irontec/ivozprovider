@@ -225,12 +225,6 @@ production:
             template: '%number%'
           order: number
         'null': _("Unassigned")
-    srcIfInbound:
-      title: _('Source')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_KamAccCdrSrc
-        method: getData
     pricingPlan:
       title: _('Pricing plan')
       type: ghost

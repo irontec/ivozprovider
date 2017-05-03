@@ -7,7 +7,7 @@ production:
       maxLength: 64
       default: true
     start_time_utc: 
-      title: _('Starttimeutc')
+      title: _('Calldate')
       type: picker
       defaultValue: 2000-01-01 00:00:00
       source: 
@@ -15,7 +15,7 @@ production:
         settings: 
           disabled: 'false'
     end_time_utc: 
-      title: _('Endtimeutc')
+      title: _('End time utc')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
       source: 
@@ -23,7 +23,7 @@ production:
         settings: 
           disabled: 'false'
     start_time: 
-      title: _('Starttime')
+      title: _('Start time')
       type: picker
       defaultValue: 2000-01-01 00:00:00
       source: 
@@ -31,7 +31,7 @@ production:
         settings: 
           disabled: 'false'
     end_time: 
-      title: _('Endtime')
+      title: _('End time')
       type: picker
       defaultValue: 2000-01-01 00:00:00
       source: 
@@ -42,12 +42,20 @@ production:
       title: _('Duration')
       type: text
       defaultValue: 0.000
+    direction: 
+      title: _('Type')
+      type: select
+      source: 
+        data: inline
+        values: 
+          'inbound': _('inbound')
+          'outbound': _('outbound')
     caller: 
       title: _('Caller')
       type: text
       maxLength: 128
     callee: 
-      title: _('Callee')
+      title: _('Destination')
       type: text
       maxLength: 128
     referee: 
@@ -59,7 +67,7 @@ production:
       type: text
       maxLength: 128
     companyId: 
-      title: _('Companyid')
+      title: _('Company id')
       type: select
       source: 
         data: mapper
@@ -72,7 +80,7 @@ production:
           order: name
         'null': _("Unassigned")
     brandId: 
-      title: _('Brandid')
+      title: _('Brand id')
       type: select
       source: 
         data: mapper
@@ -85,21 +93,17 @@ production:
           order: name
         'null': _("Unassigned")
     asIden: 
-      title: _('Asiden')
+      title: _('As iden')
       type: text
       maxLength: 64
     asAddress: 
-      title: _('Asaddress')
+      title: _('As address')
       type: text
       maxLength: 64
     callid: 
       title: _('Callid')
       type: text
       maxLength: 255
-    callidHash: 
-      title: _('Callidhash')
-      type: text
-      maxLength: 128
     xcallid: 
       title: _('Xcallid')
       type: text
@@ -119,21 +123,22 @@ production:
       type: text
       maxLength: 64
     peeringContractId: 
-      title: _('Peeringcontractid')
-      type: text
-      maxLength: 64
-    bounced: 
-      title: _('Bounced')
+      title: _('Peering contract id')
       type: select
-      defaultValue: no
       source: 
-        data: inline
-        values: 
-          'yes': _('yes')
-          'no': _('no')
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
     externallyRated: 
-      title: _('Externallyrated')
+      title: _('Externally rated')
       type: select
+      defaultValue: 0
       source: 
         data: inline
         values: 
@@ -153,15 +158,22 @@ production:
           '1': 
             title: _("Yes")
     meteringDate: 
-      title: _('Meteringdate')
+      title: _('Metering date')
       type: picker
       defaultValue: 0000-00-00 00:00:00
       source: 
         control: datetime
         settings: 
           disabled: 'false'
+    reMeteringDate:
+      title: _('Re metering date')
+      type: picker
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
     pricingPlanId: 
-      title: _('Pricingplanid')
+      title: _('Pricing plan id')
       type: select
       source: 
         data: mapper
@@ -173,12 +185,8 @@ production:
             template: '%name%'
           order: name_${lang}
         'null': _("Unassigned")
-    pricingPlanName: 
-      title: _('Pricingplanname')
-      type: text
-      maxLength: 55
     targetPatternId: 
-      title: _('Targetpatternid')
+      title: _('Target pattern')
       type: select
       source: 
         data: mapper
@@ -190,18 +198,19 @@ production:
             template: '%name%'
           order: name_${lang}
         'null': _("Unassigned")
-    targetPatternName: 
-      title: _('Targetpatternname')
-      type: text
-      maxLength: 55
+      decorators:
+        autocomplete:
+            command: targetPatternautocomplete_command
     price: 
       title: ngettext('Price', 'Prices', 1)
       type: text
     pricingPlanDetails: 
-      title: _('Pricingplandetail')
+      title: _('Pricing plan detail')
       type: textarea
+      prefix: <p align=left>
+      sufix: </p>
     invoiceId: 
-      title: _('Invoiceid')
+      title: _('Invoice id')
       type: select
       source: 
         data: mapper
@@ -213,21 +222,18 @@ production:
             template: '%number%'
           order: number
         'null': _("Unassigned")
-    direction: 
-      title: _('Direction')
-      type: select
-      source: 
-        data: inline
-        values: 
-          'inbound': _('inbound')
-          'outbound': _('outbound')
-    reMeteringDate: 
-      title: _('Remeteringdate')
-      type: picker
-      source: 
-        control: datetime
-        settings: 
-          disabled: 'false'
+    pricingPlan:
+      title: _('Pricing plan')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrPricingPlan
+        method: getData
+    targetPattern:
+      title: _('Target pattern')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrTargetPattern
+        method: getData
 staging: 
   _extends: production
 testing: 

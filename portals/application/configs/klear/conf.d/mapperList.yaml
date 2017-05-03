@@ -88,7 +88,7 @@ mappers:
   - &AstQueues {mapper: \IvozProvider\Mapper\Sql\AstQueues, modelFile: AstQueues}
   - &Changelog {mapper: \IvozProvider\Mapper\Sql\Changelog, modelFile: Changelog}
   - &KamAccCdrsBrand {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrsBrand}
-  - &KamAccCdrsGod {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrsGod}
+  - &KamAccCdrs {mapper: \IvozProvider\Mapper\Sql\KamAccCdrs, modelFile: KamAccCdrs}
   - &KamDispatcher {mapper: \IvozProvider\Mapper\Sql\KamDispatcher, modelFile: KamDispatcher}
   - &KamPikeTrusted {mapper: \IvozProvider\Mapper\Sql\KamPikeTrusted, modelFile: KamPikeTrusted}
   - &KamRtpproxy {mapper: \IvozProvider\Mapper\Sql\KamRtpproxy, modelFile: KamRtpproxy}
