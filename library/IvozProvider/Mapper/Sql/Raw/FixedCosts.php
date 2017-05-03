@@ -50,6 +50,7 @@ class FixedCosts extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'brandId' => $model->getBrandId(),
+                'name' => $model->getName(),
                 'description' => $model->getDescription(),
                 'cost' => $model->getCost(),
             );
@@ -565,17 +566,20 @@ class FixedCosts extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setBrandId($data['brandId'])
+                  ->setName($data['name'])
                   ->setDescription($data['description'])
                   ->setCost($data['cost']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
+                  ->setName($data->{'name'})
                   ->setDescription($data->{'description'})
                   ->setCost($data->{'cost'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\FixedCosts) {
             $entry->setId($data->getId())
                   ->setBrandId($data->getBrandId())
+                  ->setName($data->getName())
                   ->setDescription($data->getDescription())
                   ->setCost($data->getCost());
 

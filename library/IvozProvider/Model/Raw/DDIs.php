@@ -190,13 +190,6 @@ class DDIs extends ModelAbstract
 
 
     /**
-     * Parent relation DDIs_ibfk_13
-     *
-     * @var \IvozProvider\Model\Raw\Queues
-     */
-    protected $_Queue;
-
-    /**
      * Parent relation DDIs_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
@@ -223,6 +216,13 @@ class DDIs extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Languages
      */
     protected $_Language;
+
+    /**
+     * Parent relation DDIs_ibfk_13
+     *
+     * @var \IvozProvider\Model\Raw\Queues
+     */
+    protected $_Queue;
 
     /**
      * Parent relation DDIs_ibfk_2
@@ -345,10 +345,6 @@ class DDIs extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'DDIsIbfk13'=> array(
-                    'property' => 'Queue',
-                    'table_name' => 'Queues',
-                ),
             'DDIsIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
@@ -364,6 +360,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk12'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
+                ),
+            'DDIsIbfk13'=> array(
+                    'property' => 'Queue',
+                    'table_name' => 'Queues',
                 ),
             'DDIsIbfk2'=> array(
                     'property' => 'ExternalCallFilter',
@@ -1183,57 +1183,6 @@ class DDIs extends ModelAbstract
     }
 
     /**
-     * Sets parent relation Queue
-     *
-     * @param \IvozProvider\Model\Raw\Queues $data
-     * @return \IvozProvider\Model\Raw\DDIs
-     */
-    public function setQueue(\IvozProvider\Model\Raw\Queues $data)
-    {
-        $this->_Queue = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setQueueId($primaryKey);
-        }
-
-        $this->_setLoaded('DDIsIbfk13');
-        return $this;
-    }
-
-    /**
-     * Gets parent Queue
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Queues
-     */
-    public function getQueue($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'DDIsIbfk13';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Queue = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Queue;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -1435,6 +1384,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Language;
+    }
+
+    /**
+     * Sets parent relation Queue
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setQueue(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_Queue = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setQueueId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk13');
+        return $this;
+    }
+
+    /**
+     * Gets parent Queue
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueue($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk13';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Queue = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Queue;
     }
 
     /**

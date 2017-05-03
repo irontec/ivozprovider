@@ -113,7 +113,7 @@
             </tr>
             {{#costs id,fixedCost}}
             <tr border.color="black" text-align="center">
-                <td padding="5px" >{{fixedCost.description}}</td>
+                <td padding="5px" >{{fixedCost.name}}</td>
                 <td padding="5px" >{{fixedCost.cost}} €</td>
                 <td padding="5px" >{{fixedCost.quantity}}</td>
                 <td padding="5px" >{{fixedCost.subTotal}} €</td>
