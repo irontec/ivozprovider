@@ -675,6 +675,13 @@ class CallsController extends BaseController
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
             }
+
+            // Set on-demand recording header (only for proxyusers)
+            if ($company->getOnDemandRecord()) {
+                $this->agi->setSIPHeader("X-Info-RecordCode", $company->getOnDemandRecordCode());
+                $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordCode());
+            }
+
         } else {
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
         }
@@ -692,12 +699,6 @@ class CallsController extends BaseController
         // Set recording header
         if ($this->agi->getVariable("RECORD")) {
             $this->agi->setSIPHeader("X-Info-Record", $this->agi->getVariable("RECORD"));
-        }
-
-        // Set on-demand recording header
-        if ($company->getOnDemandRecord()) {
-            $this->agi->setSIPHeader("X-Info-RecordCode", $company->getOnDemandRecordCode());
-            $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordCode());
         }
 
         // Request intra DDI bounce
