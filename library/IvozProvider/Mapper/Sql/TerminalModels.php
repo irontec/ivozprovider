@@ -20,14 +20,14 @@
 namespace IvozProvider\Mapper\Sql;
 class TerminalModels extends Raw\TerminalModels
 {
-    public function save(\IvozProvider\Model\Raw\TerminalModels $model){
+    public function save(\IvozProvider\Model\Raw\TerminalModels $model, $forceInsert = false){
         $genericMustChange = $model->hasChange("genericTemplate");
         $specificMustChange = $model->hasChange("specificTemplate");
-        
+
         $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
         $conf = (Object) $bootstrap->getOptions();
-        $pk = parent::save($model);
-        
+        $pk = parent::save($model, $forceInsert);
+
         if (!isset($conf->Iron) || !isset($conf->Iron['fso'])) {
             return $pk;
         }
@@ -45,7 +45,7 @@ class TerminalModels extends Raw\TerminalModels
                 throw $e;
             }
         }
-        
+
         if( $specificMustChange ){
             try{
                 $template = $model->getSpecificTemplate();
@@ -57,10 +57,10 @@ class TerminalModels extends Raw\TerminalModels
                 throw $e;
             }
         }
-        
-        return $pk; 
+
+        return $pk;
     }
-    
+
     protected function createFolder($route){
         if (!file_exists($route)) {
             $old = umask(0);
@@ -68,7 +68,7 @@ class TerminalModels extends Raw\TerminalModels
             umask($old);
         }
     }
-    
+
     protected function saveFiles($file, $route, $template){
         $fileRoute = $route . DIRECTORY_SEPARATOR .$file;
         if( file_exists($fileRoute)) {

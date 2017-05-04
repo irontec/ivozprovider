@@ -52,13 +52,13 @@ class Provision_IndexController extends Zend_Controller_Action
            if($data) {
                $terminalModel = $data['terminalModel'];
                $urlVariables = $data['urlVariables'];
-
                $userMapper = new \IvozProvider\Mapper\Sql\Users();
 
-               foreach( $this->_allowedVariables as $key=>$variable){
+               foreach( $this->_allowedVariables as $key => $variable){
                    $mapper = new $variable['mapperName']();
                    $model = $mapper->findOneByField($variable['field'], $urlVariables[$key]);
-                   if($model){
+
+                   if ($model) {
                        if($model instanceof IvozProvider\Model\Terminals){
                            $userModel = $userMapper->findOneByField('terminalId', $model->getId() );
                            $this->view->user = $userModel;
@@ -70,18 +70,14 @@ class Provision_IndexController extends Zend_Controller_Action
                            $this->view->brand = $brandModel;
 
                            $this->view->terminal = $model;
-
-                           $now = \Zend_Date::now()->setTimezone('UTC');
-
-                           $model->setLastProvisionDate($now->toString('dd-MM-yyyy HH:mm:ss'));
-                           $model->save();
                        }
-                       $this->view->$variable['viewName'] = $model;
+
+                       $viewKey = $variable['viewName'];
+                       $this->view->{$viewKey} = $model;
                    }
                    else{
                        $this->logger->log($variable['mapperName'] . $variable['field'] . ' = '. $urlVariables[$key] .' does not exist', Zend_Log::WARN);
                    }
-
                }
 
                $this->_renderPage('specific', $path, $terminalModel);
@@ -104,7 +100,8 @@ class Provision_IndexController extends Zend_Controller_Action
             ->sendResponse();
     }
 
-    protected function _renderPage($template, $path, $terminalModel){
+    protected function _renderPage($template, $path, $terminalModel) {
+
         $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $terminalModel->getId();
         $this->view->setScriptPath($route);
         $this->view->terminalModel = $terminalModel;
@@ -118,6 +115,12 @@ class Provision_IndexController extends Zend_Controller_Action
             $this->logger->debug('Response: ' . $this->view->render($template . '.phtml'));
         }
         $this->render($template, 'page', true);
+
+        if ($terminal instanceof IvozProvider\Model\Terminals) {
+            $now = \Zend_Date::now()->setTimezone('UTC');
+            $terminal->setLastProvisionDate($now->toString('dd-MM-yyyy HH:mm:ss'));
+            $terminal->save();
+        }
     }
 
     protected function _searchGenericPattern(\IvozProvider\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
