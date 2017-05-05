@@ -2,37 +2,12 @@
 namespace Agi\Action;
 
 use IvozProvider\Model as Model;
-use IvozProvider\Mapper\Sql as Mapper;
 
 class FaxCallAction extends RouterAction
 {
-    protected $_timeout;
-
-    protected $_dialStatus = null;
-
-    protected $_dialContext = 'fax-in';
-
     protected $_fax = null;
 
     protected $_faxInOut = null;
-
-    public function setTimeout($timeout)
-    {
-        $this->_timeout = $timeout;
-        return $this;
-    }
-
-    public function setDialContext($context)
-    {
-        $this->_dialContext = $context;
-        return $this;
-    }
-
-
-    public function getDialStatus()
-    {
-        return $this->_dialStatus;
-    }
 
     public function setFax($fax)
     {
@@ -50,7 +25,6 @@ class FaxCallAction extends RouterAction
     {
         if (empty($this->_fax)) {
             $this->agi->error("fax is not properly defined. Check configuration.");
-            $this->_dialStatus = "INVALIDARGS";
             $this->processFaxInStatus();
             return;
         }
@@ -62,17 +36,15 @@ class FaxCallAction extends RouterAction
         $did = $this->agi->getExtension();
 
         // Fax location is lbased on asterisk configuration
-        $spoolDir = $this->agi->getVariable(
-                        "AST_CONFIG(asterisk.conf,directories,astspooldir)");
+        $spoolDir = $this->agi->getVariable("AST_CONFIG(asterisk.conf,directories,astspooldir)");
 
-        // Set destination file an fax options
+        // Set destination file and fax options
         $faxDir = $spoolDir . "/faxes";
         if(!is_dir($faxDir)){
             mkdir($faxDir,0777);
         }
 
-        $this->agi->setVariable("FAXFILE",
-                        $spoolDir . "/faxes/fax-" . $did . "-" . time() . ".tif");
+        $this->agi->setVariable("FAXFILE", $spoolDir . "/faxes/fax-" . $did . "-" . time() . ".tif");
         $this->agi->setVariable("FAXOPT(headerinfo)", $fax->getName());
         $this->agi->setVariable("FAXOPT(localstationid)", $did);
 
@@ -86,77 +58,32 @@ class FaxCallAction extends RouterAction
             ->save();
 
         // Store FaxId for later searchs
-        $this->agi->setVariable("FAXIN_ID", $faxIn->getId());
+        $this->agi->setVariable("FAXFILE_ID", $faxIn->getId());
 
         // Some verbose dolan pls
-        $this->agi->notice("Incoming fax from %d did. Preparing fax to send to %s)",
-                   $did,$fax->getName());
+        $this->agi->notice("Incoming fax for %s [fax%d])", $fax->getName(), $fax->getId());
 
         // Transform number to Company Preferred
-        // This transformation will be overriden if this calls ends in an User
         $preferred = $fax->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
         $this->agi->setCallerIdNum($preferred);
 
         // Set recive fax options
-        $this->agi->setVariable("FAX_OPT","f");
+        $this->agi->setVariable("FAX_OPT","zf");
 
         // Redirect to the calling dialplan context
-        if ($this->_dialContext) {
-            $this->agi->redirect($this->_dialContext, $did);
-        }
+        $this->agi->redirect('fax-receive', $did);
     }
 
-    public function sendFax()
+    public function processStatus()
     {
-        if (empty($this->_fax) || empty($this->_faxInOut)) {
-            $this->agi->error("fax is not properly defined. Check configuration.");
+        if (empty($this->_faxInOut)) {
+            $this->agi->error("No Faxfile found! Check configuration.");
             return;
         }
 
         // Local variables to improve readability
-        $fax = $this->_fax;
-        $faxOut = $this->_faxInOut;
-
-        // Prepare to call destination
-        $DDIOut = $fax->getOutgoingDDI();
-
-        // Fax without assigned DDIout
-        if (! $DDIOut) {
-            $this->agi->error("Fax " . $fax->getId() . " does not have DDIOut");
-            $faxOut->setStatus("error")->save();
-            $this->agi->hangup();
-            return;
-        }
-
-        // Set headers to place the outgoing call
-        $this->agi->setVariable("CALLERID(num)", $DDIOut->getDDIE164());
-        $this->agi->setVariable("CALLERID(name)", $fax->getName());
-
-        $faxOut->setStatus("inprogress")->save();
-
-        // Set recive fax options
-        $this->agi->setVariable("FAX_OPT","f");
-
-        // Normalize called number to E164
-        $number = $fax->getCompany()->preferredToE164($this->agi->getExtension());
-
-        // Call the PSJIP endpoint
-        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
-        $this->agi->setVariable("DIAL_OPTS", "");
-
-    }
-
-    public function processFaxInStatus()
-    {
-
-        if (empty($this->_fax) || empty($this->_faxInOut)) {
-            $this->agi->error("fax is not properly defined. Check configuration.");
-            return;
-        }
-
-        // Local variables to improve readability
-        $fax = $this->_fax;
         $faxIn = $this->_faxInOut;
+        $fax = $faxIn->getFax();
 
         // Check no errors happened during ReceiveFax
         $error = $this->agi->getVariable("FAXOPT(error)");
@@ -182,7 +109,7 @@ class FaxCallAction extends RouterAction
 
         // Some asterisk cli output
         $this->agi->verbose("Converting Fax [faxInOut%d] [fax%d] TIFF to PDF", $faxIn->getId(), $fax->getId());
-        // Convert TIF file to PDF before storing
+        // Convert TIFF file to PDF before storing
         $output = shell_exec("/usr/bin/tiff2pdf -o $faxPDF $faxTIF 2>/dev/null");
 
         // TODO Check return value for errors (use exec instead of shell_exec?)
@@ -194,7 +121,7 @@ class FaxCallAction extends RouterAction
 
         // Check if this fax is associated with an email address
         if ($fax->getSendByEmail()) {
-            $this->agi->verbose("Sending Fax [faxInOut%d] to %s", $faxIn->getId(), $fax->getEmail());
+            $this->agi->notice("Sending Fax [faxInOut%d] to %s", $faxIn->getId(), $fax->getEmail());
 
             // Get Fax Company
             $company = $fax->getCompany();
@@ -259,51 +186,4 @@ class FaxCallAction extends RouterAction
         $faxIn->setStatus('completed')->save();
         $this->agi->verbose("Fax [faxInOut%d] completed (%d pages)", $faxIn->getId(), $faxIn->getPages());
     }
-
-    public function processleg0FaxOutStatus()
-    {
-
-        if (empty($this->_fax) || empty($this->_faxInOut)) {
-            $this->agi->error("fax is not properly defined. Check configuration.");
-            return;
-        }
-        // Local variables to improve readability
-        $fax = $this->_fax;
-        $faxOut = $this->_faxInOut;
-        $this->agi->verbose("Fax leg0 dial status %s", $this->agi->getVariable("DIALSTATUS"));
-
-        // Store fax pages
-        if ($this->agi->getVariable("DIALSTATUS") != "ANSWER"){
-            // Mark as success and save
-            $faxOut->setStatus('error')->save();
-        }
-    }
-
-    public function processleg1FaxOutStatus()
-    {
-
-        if (empty($this->_fax) || empty($this->_faxInOut)) {
-            $this->agi->error("fax is not properly defined. Check configuration.");
-            return;
-        }
-        // Local variables to improve readability
-        $fax = $this->_fax;
-        $faxOut = $this->_faxInOut;
-
-        // Check no errors happened during ReceiveFax
-        $error = $this->agi->getVariable("FAXOPT(error)");
-        $statusstr = $this->agi->getVariable("FAXOPT(statusstr)");
-        if (! empty($error) && $statusstr != "OK") {
-            // Show error message in asterisk CLI
-            $this->agi->error("Error sending fax: $statusstr ($error)");
-            // Mark this fax as error and save
-            $faxOut->setStatus('error')->save();
-            return;
-        }
-        // Store fax pages
-        $faxOut->setPages($this->agi->getVariable("FAXOPT(pages)"));
-        // Mark as success and save
-        $faxOut->setStatus('completed')->save();
-    }
-
 }

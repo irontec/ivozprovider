@@ -7,7 +7,6 @@ use Agi\Action\UserCallAction;
 use Agi\Action\HuntGroupAction;
 use Agi\Action\IVRAction;
 use Agi\Action\ServiceAction;
-use Agi\Action\FaxCallAction;
 use Agi\Action\FriendCallAction;
 use Agi\Action\ExternalUserCallAction;
 use Agi\Action\ExternalFriendCallAction;
@@ -504,110 +503,6 @@ class CallsController extends BaseController
     }
 
     /**
-     * @brief Process fax after call status
-     */
-    public function faxstatusAction ()
-    {
-        // FIXME Process Dialed fax dialstatus FIXME
-        $faxid = $this->agi->getVariable("FAXIN_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
-        if (empty($faxInOut)) {
-            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
-            return;
-        }
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxInOut->getFax())
-            ->setFaxInOut($faxInOut)
-            ->processFaxInStatus();
-
-    }
-
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function faxoutAction ()
-    {
-        $faxOutId = $this->agi->getVariable("FAXOUT_ID");
-        if (! $faxOutId) {
-            $this->agi->error("No FAX_ID found in this channel.");
-            $this->agi->hangup();
-            return;
-        }
-
-
-        // Get Fax file filename
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxOut = $faxInOutMapper->find($faxOutId);
-        if (! $faxOut) {
-            $this->agi->error("There is no Fax with id $faxOutId");
-            $this->agi->hangup();
-            return;
-        }
-
-        $this->agi->setVariable("__COMPANYID", $faxOut->getFax()->getCompanyId());
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxOut->getFax())
-            ->setFaxInOut($faxOut)
-            ->sendFax();
-
-    }
-
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function leg0faxoutstatusAction ()
-    {
-        // FIXME Process Dialed fax dialstatus FIXME
-        $faxid = $this->agi->getVariable("FAXOUT_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
-        if (empty($faxInOut)) {
-            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
-            return;
-        }
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxInOut->getFax())
-            ->setFaxInOut($faxInOut)
-            ->processleg0FaxOutStatus();
-
-    }
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function leg1faxoutstatusAction ()
-    {
-        // FIXME Process Dialed fax dialstatus FIXME
-        $faxid = $this->agi->getVariable("FAXOUT_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
-        if (empty($faxInOut)) {
-            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
-            return;
-        }
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxInOut->getFax())
-            ->setFaxInOut($faxInOut)
-            ->processleg1FaxOutStatus();
-
-    }
-
-    /**
      * @brief Call a user from a Huntgroup
      */
     public  function hgcalluserAction()
@@ -684,11 +579,11 @@ class CallsController extends BaseController
 
         } else {
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
-        }
 
-        // Set special headers for Fax outgoing calls
-        if ($this->agi->getVariable("FAXOUT_ID")) {
-            $this->agi->setSIPHeader("X-Info-Special", "fax");
+            // Set special headers for Fax outgoing calls
+            if ($this->agi->getVariable("FAXFILE_ID")) {
+                $this->agi->setSIPHeader("X-Info-Special", "fax");
+            }
         }
 
         // Set Special header for Forwarding
