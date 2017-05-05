@@ -31,9 +31,8 @@ class FaxesInOut extends Raw\FaxesInOut
         $statusHaschanged = $model->hasChange("status");
 
         if ($isOutgoingFax && $statusHaschanged && $isPending) {
-            $faxSenderJob = new \IvozProvider\Gearmand\Jobs\FaxSender();
-            $faxSenderJob->setFaxInOut($model);
-            $faxSenderJob->send();
+            $ari = new \Asterisk\ARI\Connector();
+            $ari->sendFaxfileRequest($model);
         }
 
         return $result;

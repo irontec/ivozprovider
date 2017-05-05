@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 12:08+0200\n"
-"PO-Revision-Date: 2017-04-28 12:08+0200\n"
+"POT-Creation-Date: 2017-05-08 17:50+0200\n"
+"PO-Revision-Date: 2017-05-08 17:51+0200\n"
 "Last-Translator: lfgarcia@irontec.com\n"
 "Language-Team: IvozProvider I18N Team <dev.lists-ivozprovider@irontec.com>\n"
 "Language: en_US\n"
@@ -4677,6 +4677,10 @@ msgstr ""
 #: application/configs/klear/errors.yaml:28
 msgid "SIP Domain can't be empty"
 msgstr ""
+
+#: application/configs/klear/errors.yaml:30
+msgid "No Application Server available."
+msgstr "No Application Server available."
 
 #: application/configs/klear/klear.yaml:51
 #: application/configs/klear/klear.yaml:52
