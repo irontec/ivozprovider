@@ -134,6 +134,7 @@ function enable_services()
     /bin/systemctl enable asterisk
     /bin/systemctl enable cdrparser.timer
     /bin/systemctl enable ivozprovider-recordings.timer
+    /bin/systemctl enable ivozprovider-tarificator.timer
 }
 
 # Run while reconfigure or first install
