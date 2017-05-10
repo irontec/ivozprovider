@@ -45,7 +45,7 @@ production:
     externallyRated:
       title: _('Externally rated')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source:
         data: inline
         values:
