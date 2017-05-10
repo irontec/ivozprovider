@@ -52,6 +52,7 @@ production:
               title: _("Priority")
             policy:
               title: _("Policy")
+        order: priority
         options:
           dialogs:
             callACLRelPatternsDel_dialog: true
