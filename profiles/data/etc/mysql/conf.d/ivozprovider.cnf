@@ -4,3 +4,6 @@ default-character-set = utf8
 [mysqld]
 default-time-zone = utc
 character-set-server = utf8
+
+# Increase connection max idle timeout
+wait_time=604800
