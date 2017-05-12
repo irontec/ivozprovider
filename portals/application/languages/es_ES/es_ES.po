@@ -233,7 +233,7 @@ msgstr ""
 #: application/controllers/KlearCustomGenerateInvoiceController.php:53
 #, fuzzy
 msgid "Generate invoice"
-msgstr "Genear %s"
+msgstr "Generar factura"
 
 #: application/controllers/KlearCustomGenerateInvoiceController.php:54
 #, fuzzy
@@ -3693,7 +3693,7 @@ msgstr[1] "Facturas"
 #: application/configs/klear/InvoicesList.yaml:147
 #, python-format
 msgid "Generate %s"
-msgstr "Genear %s"
+msgstr "Generar %s"
 
 #: application/configs/klear/KamAccCdrsBrandList.yaml:36
 #: application/configs/klear/KamAccCdrsBrandList.yaml:37
