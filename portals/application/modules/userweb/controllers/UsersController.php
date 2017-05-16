@@ -194,7 +194,7 @@ class Userweb_UsersController extends Iron_Controller_Rest_BaseController
         $model->setTimeZoneId($params['timezoneId']);
 
         $model->setDoNotDisturb($params['doNotDisturb']);
-        $model->setCallWaiting($params['callWaiting']);
+        $model->setMaxCalls($params['maxCalls']);
 
         $bossAssistantId = $params['bossAssistantId'];
         $model->setBossAssistantId($bossAssistantId);

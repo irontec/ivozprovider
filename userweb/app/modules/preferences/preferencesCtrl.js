@@ -40,7 +40,7 @@ angular
                 }
 
                 $scope.user.doNotDisturb = String($scope.user.doNotDisturb);
-                $scope.user.callWaiting = String($scope.user.callWaiting);
+                $scope.user.maxCalls = Number($scope.user.maxCalls);
 
                 $scope.loading = false;
                 ngProgress.complete();

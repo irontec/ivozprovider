@@ -80,18 +80,15 @@
 
                 <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
-                        <label for="callWaiting" class="col-xs-4 control-label" translate="CallWaiting"></label>
+                        <label for="maxCalls" class="col-xs-4 control-label" translate="MaxCalls"></label>
                         <div class="col-xs-8 input-group">
-                            <select
-                                    name="callWaiting"
+                            <input
+                                    type="number"
+                                    name="maxCalls"
+                                    id="maxCalls"
                                     class="form-control"
-                                    id="callWaiting"
-                                    ng-model="user.callWaiting"
-                                    required="required"
-                            >
-                                <option value="1" translate="yes"></option>
-                                <option value="0" translate="no"></option>
-                            </select>
+                                    ng-model="user.maxCalls"
+                            />
                         </div>
                     </div>
                 </div>

@@ -180,22 +180,19 @@ production:
       trim: both
       maxLength: 65
     maxCalls:
-      title: _('Max call')
+      title: _('Max calls')
       type: number
-      defaultValue: 2
+      defaultValue: 1
       source:
         control: Spinner
-    callWaiting:
-      title: _('Call waiting')
-      type: select
-      defaultValue: 0
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-          '1':
-            title: _("Yes")
+        min: 0
+        max: 100
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limits the number of received calls if the user is handling simultaneously (inbound and outbound) more than the number set. Set 0 for unlimited calls.")
+        label: _("Need help?")
     voicemailEnabled:
       title: _('Voicemail enabled')
       type: select

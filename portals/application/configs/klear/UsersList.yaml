@@ -63,7 +63,6 @@ production:
           timeout: true
           isBoss: true
           maxCalls: true
-          callWaiting: true
           tokenKey: true
           countryId: true
           areaCode: true
@@ -93,7 +92,6 @@ production:
           <<: *Users_orderLink
         blacklist:
           HuntGroupsRelUsers: true
-          maxCalls: true
           tokenKey: true
           username: true
           active: true
@@ -108,7 +106,6 @@ production:
           timeout: true
           isBoss: true
           maxCalls: true
-          callWaiting: true
           tokenKey: true
           countryId: true
           areaCode: true
@@ -141,7 +138,6 @@ production:
         <<: *forcedCompany
       fields:
         blacklist:
-          maxCalls: true
           tokenKey: true
           username: true
         order:
@@ -180,7 +176,7 @@ production:
             outgoingDDIId: 2
             callACLId: 2
             doNotDisturb: 2
-            callWaiting: 2
+            maxCalls: 2
         group4:
           label: _("Voicemail")
           colsPerRow: 3
