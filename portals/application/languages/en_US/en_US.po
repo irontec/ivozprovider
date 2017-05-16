@@ -5342,7 +5342,18 @@ msgstr "Area code"
 msgid "Default Area code for users in this company"
 msgstr "Default Area code for users in this company"
 
-#: application/configs/klear/model/Companies.yaml:176
+#: application/configs/klear/model/Companies.yaml:162
+#: application/configs/klear/model/Faxes.yaml:47
+#: application/configs/klear/model/Friends.yaml:141
+#: application/configs/klear/model/Users.yaml:102
+msgid "Outgoing DDI"
+msgstr "Outgoing DDI"
+
+#: application/configs/klear/model/Companies.yaml:179
+msgid "Default outgoing DDI. This can be overriden in caller's edit screen."
+msgstr "Default outgoing DDI. This can be overriden in caller's edit screen."
+
+#: application/configs/klear/model/Companies.yaml:195
 msgid "Media relay Set"
 msgstr "Media relay Set"
 

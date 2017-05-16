@@ -107,6 +107,7 @@ class DDIs extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'

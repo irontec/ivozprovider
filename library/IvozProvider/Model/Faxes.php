@@ -17,7 +17,7 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
- 
+
 namespace IvozProvider\Model;
 class Faxes extends Raw\Faxes
 {
@@ -27,4 +27,19 @@ class Faxes extends Raw\Faxes
     public function init()
     {
     }
+
+    /**
+     * Get Fax outgoingDDI
+     * If no DDI is assigned, retrieve company's default DDI
+     * @return \IvozProvider\Model\Raw\DDIs or NULL
+     */
+    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $ddi = parent::getOutgoingDDI($where, $orderBy, $avoidLoading);
+        if (empty($ddi)) {
+            $ddi = $this->getCompany()->getOutgoingDDI($where, $orderBy, $avoidLoading);
+        }
+        return $ddi;
+    }
+
 }

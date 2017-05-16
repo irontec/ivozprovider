@@ -111,13 +111,7 @@ production:
               - DDIE164
             template: '+%DDIE164%'
           order: DDIE164
-        'null': _("Unassigned")
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("No outgoing calls will be allowed if this field is unassigned")
-        label: _("Need help?")
+        'null': _("Company's default")
     callACLId:
       title: _('Call ACL')
       type: select

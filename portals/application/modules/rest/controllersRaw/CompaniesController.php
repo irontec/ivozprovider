@@ -55,7 +55,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'areaCode': '', 
      *     'externallyExtraOpts': '', 
      *     'recordingsLimitMB': '', 
-     *     'recordingsLimitEmail': ''
+     *     'recordingsLimitEmail': '', 
+     *     'outgoingDDIId': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
@@ -80,7 +81,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'areaCode': '', 
      *     'externallyExtraOpts': '', 
      *     'recordingsLimitMB': '', 
-     *     'recordingsLimitEmail': ''
+     *     'recordingsLimitEmail': '', 
+     *     'outgoingDDIId': ''
      * }]")
      */
     public function indexAction()
@@ -122,6 +124,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'externallyExtraOpts',
                 'recordingsLimitMB',
                 'recordingsLimitEmail',
+                'outgoingDDIId',
             );
         }
 
@@ -218,7 +221,8 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'areaCode': '', 
      *     'externallyExtraOpts': '', 
      *     'recordingsLimitMB': '', 
-     *     'recordingsLimitEmail': ''
+     *     'recordingsLimitEmail': '', 
+     *     'outgoingDDIId': ''
      * }")
      */
     public function getAction()
@@ -259,6 +263,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'externallyExtraOpts',
                 'recordingsLimitMB',
                 'recordingsLimitEmail',
+                'outgoingDDIId',
             );
         }
 
@@ -322,6 +327,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/companies/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -380,6 +386,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -589,6 +596,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'outgoingDDIId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -712,6 +724,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'recordingsLimitEmail' => array(
                     'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'outgoingDDIId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),

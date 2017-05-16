@@ -173,6 +173,19 @@ production:
       title: _('Recordingslimitemail')
       type: text
       maxLength: 250
+    outgoingDDIId: 
+      title: _('Outgoingddiid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          fieldName: 
+            fields: 
+              - DDI
+            template: '%DDI%'
+          order: DDI
+        'null': _("Unassigned")
 staging: 
   _extends: production
 testing: 

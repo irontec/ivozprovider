@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include CompaniesList.yaml
 #include FaxesList.yaml
 #include FriendsList.yaml
 #include UsersList.yaml
@@ -22,6 +23,7 @@ production:
           title: _("Options")
           screens: 
             dDIsEdit_screen: true
+            companiesList_screen: true
             faxesList_screen: true
             friendsList_screen: true
             usersList_screen: true
@@ -52,8 +54,21 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Ddi', 'Ddis', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Ddi', 'Ddis', 1), "[format| (%item%)]")
+    #companies: 
+    <<: *companies_screensLink
+    companiesList_screen: 
+      <<: *companiesList_screenLink
+      filterField: outgoingDDIId
+      parentOptionCustomizer: 
+        - recordCount
+    companiesNew_screen: 
+      <<: *companiesNew_screenLink
+      filterField: outgoingDDIId
+    companiesEdit_screen: 
+      <<: *companiesEdit_screenLink
+      filterField: outgoingDDIId
+
     #faxes: 
-    <<: *faxes_screensLink
     faxesList_screen: 
       <<: *faxesList_screenLink
       filterField: outgoingDDIId
@@ -103,6 +118,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Ddi', 'Ddis', 1))
       multiItem: 1
       labelOnList: 1
+  # companies dialogs: 
+    <<: *companies_dialogsLink
   # faxes dialogs: 
     <<: *faxes_dialogsLink
   # friends dialogs: 

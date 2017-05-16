@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-08 17:24+0200\n"
-"PO-Revision-Date: 2017-05-08 17:50+0200\n"
+"POT-Creation-Date: 2017-05-16 16:13+0200\n"
+"PO-Revision-Date: 2017-05-16 16:19+0200\n"
 "Last-Translator: IvozProvider Translator <vozip@irontec.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -5395,7 +5395,20 @@ msgstr "Código de Area"
 msgid "Default Area code for users in this company"
 msgstr "Código de Area por defecto para los usuarios de esta compañía"
 
-#: application/configs/klear/model/Companies.yaml:176
+#: application/configs/klear/model/Companies.yaml:162
+#: application/configs/klear/model/Faxes.yaml:47
+#: application/configs/klear/model/Friends.yaml:141
+#: application/configs/klear/model/Users.yaml:102
+msgid "Outgoing DDI"
+msgstr "DDI de salida"
+
+#: application/configs/klear/model/Companies.yaml:179
+msgid "Default outgoing DDI. This can be overriden in caller's edit screen."
+msgstr ""
+"DDI saliente por defecto. Esta opción puede ser especificada en la pantalla "
+"de edición de cada llamante."
+
+#: application/configs/klear/model/Companies.yaml:195
 msgid "Media relay Set"
 msgstr "Servidores de Media"
 
@@ -5777,12 +5790,6 @@ msgstr ""
 #: application/configs/klear/model/Faxes.yaml:32
 msgid "Send by email"
 msgstr "Enviar por email"
-
-#: application/configs/klear/model/Faxes.yaml:47
-#: application/configs/klear/model/Friends.yaml:141
-#: application/configs/klear/model/Users.yaml:102
-msgid "Outgoing DDI"
-msgstr "DDI de salida"
 
 #: application/configs/klear/model/FaxesInOut.yaml:5
 #: application/configs/klear/model/KamAccCdrsBrand.yaml:10

@@ -282,6 +282,14 @@ class DDIs extends ModelAbstract
 
 
     /**
+     * Dependent relation Companies_ibfk_13
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Companies[]
+     */
+    protected $_Companies;
+
+    /**
      * Dependent relation Faxes_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -400,6 +408,10 @@ class DDIs extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'CompaniesIbfk13' => array(
+                    'property' => 'Companies',
+                    'table_name' => 'Companies',
+                ),
             'FaxesIbfk2' => array(
                     'property' => 'Faxes',
                     'table_name' => 'Faxes',
@@ -415,6 +427,9 @@ class DDIs extends ModelAbstract
         ));
 
 
+        $this->setOnDeleteSetNullRelationships(array(
+            'Companies_ibfk_13'
+        ));
 
 
         $this->_defaultValues = array(
@@ -1843,6 +1858,96 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Queue;
+    }
+
+    /**
+     * Sets dependent relations Companies_ibfk_13
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Companies
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setCompanies(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Companies === null) {
+
+                $this->getCompanies();
+            }
+
+            $oldRelations = $this->_Companies;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Companies = array();
+
+        foreach ($data as $object) {
+            $this->addCompanies($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Companies_ibfk_13
+     *
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function addCompanies(\IvozProvider\Model\Raw\Companies $data)
+    {
+        $this->_Companies[] = $data;
+        $this->_setLoaded('CompaniesIbfk13');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Companies_ibfk_13
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Companies
+     */
+    public function getCompanies($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk13';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Companies = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Companies;
     }
 
     /**

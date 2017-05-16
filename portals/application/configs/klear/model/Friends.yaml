@@ -150,7 +150,7 @@ production:
               - DDIE164
             template: '+%DDIE164%'
           order: DDIE164
-        'null': _("Unassigned")
+        'null': _("Company's default")
       info:
         type: box
         position: left
