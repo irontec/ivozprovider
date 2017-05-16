@@ -102,8 +102,6 @@ class PeerServers extends Raw\PeerServers
                    ->setParams($model->getParams())
                    ->setUriScheme($model->getUriScheme())
                    ->setTransport($model->getTransport())
-                   ->setStrip($model->getStrip())
-                   ->setPrefix($model->getPrefix())
                    ->setTag($model->getId())
                    ->setFlags($model->getFlags())
                    ->setPeerServerId($model->getId())

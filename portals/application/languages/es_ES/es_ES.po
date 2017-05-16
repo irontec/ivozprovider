@@ -4083,9 +4083,8 @@ msgid "Source number header"
 msgstr "Cabecera de Origen de llamada"
 
 #: application/configs/klear/PeerServersList.yaml:101
-#, fuzzy
 msgid "R-URI customization (after numeric transformations)"
-msgstr "Transformaciones R-URI previas a las transformaciones numéricas"
+msgstr "Transformaciones R-URI posteriores a las transformaciones numéricas"
 
 #: application/configs/klear/PeerServersList.yaml:107
 msgid "From optional customization"
@@ -6648,11 +6647,9 @@ msgid "Strip N digits from the beginning of the callee"
 msgstr "Quitar N dígitos del número destino"
 
 #: application/configs/klear/model/PeerServers.yaml:123
-#, fuzzy
 msgid "Prepend this field to callee"
 msgstr ""
-"Añadir este campo como prefijo del número destino (después de quitar los "
-"dígitos del campo Strip)"
+"Añadir este campo como prefijo del número destino"
 
 #: application/configs/klear/model/PeerServers.yaml:126
 msgid "Send PAI"
