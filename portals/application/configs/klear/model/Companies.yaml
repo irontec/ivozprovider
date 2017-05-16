@@ -132,7 +132,6 @@ production:
       title: _('Outbound prefix')
       type: text
       trim: both
-      maxLength: 255
     countryId:
       title: _('Country code')
       type: select
@@ -158,6 +157,26 @@ production:
         position: left
         icon: help
         text: _("Default Area code for users in this company")
+        label: _("Need help?")
+    outgoingDDIId:
+      title: _('Outgoing DDI')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_OutgoingDDI
+          fieldName:
+            fields:
+              - DDIE164
+            template: '+%DDIE164%'
+          order: DDIE164
+        'null': _("Unassigned")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Default outgoing DDI. This can be overriden in caller's edit screen.")
         label: _("Need help?")
     languageId:
       title: _('Language')

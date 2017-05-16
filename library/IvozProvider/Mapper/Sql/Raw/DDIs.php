@@ -465,6 +465,20 @@ class DDIs extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getCompanies(null, null, true) !== null) {
+                    $companies = $model->getCompanies();
+
+                    if (!is_array($companies)) {
+
+                        $companies = array($companies);
+                    }
+
+                    foreach ($companies as $value) {
+                        $value->setOutgoingDDIId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getFaxes(null, null, true) !== null) {
                     $faxes = $model->getFaxes();
 
