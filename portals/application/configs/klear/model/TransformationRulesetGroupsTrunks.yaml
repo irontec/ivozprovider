@@ -83,7 +83,7 @@ production:
               - name
               - calling_code
             template: '%name% (+%calling_code%)'
-          order: name_es
+          order: name_${lang}
     internationalCode: 
       title: _('International Code')
       type: text
