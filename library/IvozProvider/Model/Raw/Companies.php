@@ -191,6 +191,13 @@ class Companies extends ModelAbstract
      */
     protected $_recordingsLimitEmail;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_outgoingDDIId;
+
 
     /**
      * Parent relation Companies_ibfk_4
@@ -233,6 +240,13 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Timezones
      */
     protected $_DefaultTimezone;
+
+    /**
+     * Parent relation Companies_ibfk_13
+     *
+     * @var \IvozProvider\Model\Raw\DDIs
+     */
+    protected $_OutgoingDDI;
 
 
     /**
@@ -508,6 +522,7 @@ class Companies extends ModelAbstract
         'externallyExtraOpts'=>'externallyExtraOpts',
         'recordingsLimitMB'=>'recordingsLimitMB',
         'recordingsLimitEmail'=>'recordingsLimitEmail',
+        'outgoingDDIId'=>'outgoingDDIId',
     );
 
     /**
@@ -547,6 +562,10 @@ class Companies extends ModelAbstract
             'CompaniesIbfk12'=> array(
                     'property' => 'DefaultTimezone',
                     'table_name' => 'Timezones',
+                ),
+            'CompaniesIbfk13'=> array(
+                    'property' => 'OutgoingDDI',
+                    'table_name' => 'DDIs',
                 ),
         ));
 
@@ -1564,6 +1583,40 @@ class Companies extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOutgoingDDIId($data)
+    {
+
+        if ($this->_outgoingDDIId != $data) {
+            $this->_logChange('outgoingDDIId', $this->_outgoingDDIId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingDDIId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingDDIId = (int) $data;
+
+        } else {
+            $this->_outgoingDDIId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingDDIId
+     *
+     * @return int
+     */
+    public function getOutgoingDDIId()
+    {
+        return $this->_outgoingDDIId;
+    }
+
+    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -1867,6 +1920,57 @@ class Companies extends ModelAbstract
         }
 
         return $this->_DefaultTimezone;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDI
+     *
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOutgoingDDI(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_OutgoingDDI = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk13');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDI
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function getOutgoingDDI($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk13';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDI = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDI;
     }
 
     /**

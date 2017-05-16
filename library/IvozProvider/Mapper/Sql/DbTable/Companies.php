@@ -69,6 +69,11 @@ class Companies extends TableAbstract
             'columns' => 'defaultTimezoneId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
+        ),
+        'CompaniesIbfk13' => array(
+            'columns' => 'outgoingDDIId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -509,6 +514,23 @@ class Companies extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'outgoingDDIId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'outgoingDDIId',
+	    'COLUMN_POSITION' => 25,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
