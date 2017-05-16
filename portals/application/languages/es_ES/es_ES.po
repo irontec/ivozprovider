@@ -5384,7 +5384,7 @@ msgstr "DDI de salida"
 #: application/configs/klear/model/Companies.yaml:179
 msgid "Default outgoing DDI. This can be overriden in caller's edit screen."
 msgstr ""
-"DDI saliente por defecto. Esta opción puede ser especificada en la pantalla "
+"DDI saliente por defecto. Esta opción puede ser sobrescrita en la pantalla "
 "de edición de cada llamante."
 
 #: application/configs/klear/model/Companies.yaml:195
