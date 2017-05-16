@@ -562,13 +562,14 @@ class CallsController extends BaseController
             $terminal = $endpoint->getTerminal();
             if (!empty($terminal)) {
                 $this->agi->setSIPHeader("X-Info-Callee", $terminal->getUser()->getExtensionNumber());
-                $this->agi->setSIPHeader("X-Info-MaxCalls", ($terminal->getUser()->getCallWaiting()) ? 0 : 1);
+                $this->agi->setSIPHeader("X-Info-MaxCalls", $terminal->getUser()->getMaxCalls());
             }
             $friend = $endpoint->getFriend();
             if (!empty($friend)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
+                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
             }
 
             // Set on-demand recording header (only for proxyusers)

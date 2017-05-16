@@ -155,13 +155,6 @@ class Users extends ModelAbstract
      *
      * @var int
      */
-    protected $_callWaiting;
-
-    /**
-     * Database var type tinyint
-     *
-     * @var int
-     */
     protected $_voicemailEnabled;
 
     /**
@@ -442,7 +435,6 @@ class Users extends ModelAbstract
         'username'=>'username',
         'active'=>'active',
         'maxCalls'=>'maxCalls',
-        'callWaiting'=>'callWaiting',
         'voicemailEnabled'=>'voicemailEnabled',
         'voicemailSendMail'=>'voicemailSendMail',
         'voicemailAttachSound'=>'voicemailAttachSound',
@@ -613,8 +605,7 @@ class Users extends ModelAbstract
             'doNotDisturb' => '0',
             'isBoss' => '0',
             'active' => '0',
-            'maxCalls' => '2',
-            'callWaiting' => '0',
+            'maxCalls' => '0',
             'voicemailEnabled' => '1',
             'voicemailSendMail' => '0',
             'voicemailAttachSound' => '1',
@@ -1270,40 +1261,6 @@ class Users extends ModelAbstract
     public function getMaxCalls()
     {
         return $this->_maxCalls;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setCallWaiting($data)
-    {
-
-        if ($this->_callWaiting != $data) {
-            $this->_logChange('callWaiting', $this->_callWaiting, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_callWaiting = $data;
-
-        } else if (!is_null($data)) {
-            $this->_callWaiting = (int) $data;
-
-        } else {
-            $this->_callWaiting = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column callWaiting
-     *
-     * @return int
-     */
-    public function getCallWaiting()
-    {
-        return $this->_callWaiting;
     }
 
     /**
