@@ -120,7 +120,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Prepend this field to callee (after stripping)")
+        text: _("Prepend this field to callee")
         label: _("Need help?")
     sendPAI: 
       title: _('Send PAI')

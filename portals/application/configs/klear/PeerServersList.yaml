@@ -67,11 +67,11 @@ production:
           ip: true
           hostname: true
           port: true
+          strip: true
         order: &peerServersOrder_Link
           name: true
           auth_needed: true
           sendPAI: true
-          strip: true
           ip: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
@@ -98,10 +98,9 @@ production:
             sendPAI: 1
             sendRPID: 1
         group3:
-          label: _("R-URI customization pre-transformations")
+          label: _("R-URI customization (after numeric transformations)")
           colsPerRow: 12
           fields:
-            strip: 6
             prefix: 4 
             params: 6
         group4:
@@ -123,6 +122,7 @@ production:
           ip: true
           hostname: true
           port: true
+          strip: true
         order:
           <<: *peerServersOrder_Link
       fixedPositions:
