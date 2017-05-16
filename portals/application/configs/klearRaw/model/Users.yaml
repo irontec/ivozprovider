@@ -155,20 +155,9 @@ production:
     maxCalls: 
       title: _('Maxcall')
       type: number
-      defaultValue: 2
-      source: 
-        control: Spinner
-    callWaiting: 
-      title: _('Callwaiting')
-      type: select
       defaultValue: 0
       source: 
-        data: inline
-        values: 
-          '0': 
-            title: _("No")
-          '1': 
-            title: _("Yes")
+        control: Spinner
     voicemailEnabled: 
       title: _('Voicemailenabled')
       type: select

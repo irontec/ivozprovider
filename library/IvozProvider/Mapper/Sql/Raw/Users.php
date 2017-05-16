@@ -66,7 +66,6 @@ class Users extends MapperAbstract
                 'username' => $model->getUsername(),
                 'active' => $model->getActive(),
                 'maxCalls' => $model->getMaxCalls(),
-                'callWaiting' => $model->getCallWaiting(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
                 'voicemailSendMail' => $model->getVoicemailSendMail(),
                 'voicemailAttachSound' => $model->getVoicemailAttachSound(),
@@ -855,7 +854,6 @@ class Users extends MapperAbstract
                   ->setUsername($data['username'])
                   ->setActive($data['active'])
                   ->setMaxCalls($data['maxCalls'])
-                  ->setCallWaiting($data['callWaiting'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
                   ->setVoicemailSendMail($data['voicemailSendMail'])
                   ->setVoicemailAttachSound($data['voicemailAttachSound'])
@@ -882,7 +880,6 @@ class Users extends MapperAbstract
                   ->setUsername($data->{'username'})
                   ->setActive($data->{'active'})
                   ->setMaxCalls($data->{'maxCalls'})
-                  ->setCallWaiting($data->{'callWaiting'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
                   ->setVoicemailSendMail($data->{'voicemailSendMail'})
                   ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
@@ -910,7 +907,6 @@ class Users extends MapperAbstract
                   ->setUsername($data->getUsername())
                   ->setActive($data->getActive())
                   ->setMaxCalls($data->getMaxCalls())
-                  ->setCallWaiting($data->getCallWaiting())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
                   ->setVoicemailSendMail($data->getVoicemailSendMail())
                   ->setVoicemailAttachSound($data->getVoicemailAttachSound())
