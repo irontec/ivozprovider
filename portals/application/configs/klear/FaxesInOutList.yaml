@@ -71,6 +71,9 @@ production:
       controller: File
       action: preview
       mainColumn: file
+      arguments:
+        cache:
+          enabled: true
 staging:
   _extends: production
 testing:

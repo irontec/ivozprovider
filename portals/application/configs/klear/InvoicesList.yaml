@@ -177,7 +177,9 @@ production:
       controller: File
       action: preview
       mainColumn: pdfFile
-  
+      arguments:
+        cache:
+          enabled: true
   
 staging: 
   _extends: production

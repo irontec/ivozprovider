@@ -92,17 +92,17 @@ production:
               height: 150
               crop: false
             onNull: hide
-          previewList: 
-            target: invoicesPdfFilePreview_command
-            type: command
-            class: filePreview
-            listController: 1
-            external: 1
-            props: 
-              width: 30
-              height: 30
-              crop: false
-            onNull: hide
+#          previewList:
+#            target: invoicesPdfFilePreview_command
+#            type: command
+#            class: filePreview
+#            listController: 1
+#            external: 1
+#            props:
+#              width: 30
+#              height: 30
+#              crop: false
+#            onNull: hide
       options:
         commands:
           invoicesPdfFileDownload_command: true
