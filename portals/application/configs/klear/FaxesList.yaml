@@ -115,6 +115,7 @@ production:
         options:
           title: _("Options")
           screens:
+            faxesOutView_screen: true
             faxesOutEdit_screen: true
           dialogs:
             forwardFax_dialog: true
@@ -137,6 +138,15 @@ production:
       class: ui-silk-eye
       disableSave: true
 
+    faxesOutView_screen:
+      <<: *faxesInOutEdit_screenLink
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForFax
+      title: _("View Outgoing %s %s", ngettext('Faxfile', 'Faxefiles', 0), "[format| (%item%)]")
+      filterField: faxId
+      class: ui-silk-eye
+      disableSave: true
+
     faxesOutNew_screen:
       <<: *faxesInOutNew_screenLink
       filterField: faxId
@@ -153,6 +163,8 @@ production:
 
     faxesOutEdit_screen:
       <<: *faxesInOutEdit_screenLink
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForFax
       forcedValues:
         type: 'Out'
       filterField: faxId
@@ -166,6 +178,7 @@ production:
           src: true
         readOnly:
           status: true
+          file: true
 
   dialogs: &faxes_dialogsLink
     faxesDel_dialog: &faxesDel_dialogLink

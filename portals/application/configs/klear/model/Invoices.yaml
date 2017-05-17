@@ -44,21 +44,7 @@ production:
       type: text
       trim: both
       sufix: "€"
-#    languageId: 
-#      title: _('Language')
-#      type: select
-#      required: true
-#      source: 
-#        data: mapper
-#        config: 
-#          mapperName: \IvozProvider\Mapper\Sql\Languages
-#          fieldName: 
-#            fields: 
-#              - name
-#            template: '%name%'
-#          order: iden
-#        'null': _("Unassigned")
-    status: 
+    status:
       title: _('Status')
       type: select
       source: 
@@ -75,14 +61,7 @@ production:
         data: fso
         size_limit: 20M
         options: 
-#          download:
-#            external: true
-#            type: command
-#            target: invoicesPdfFileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-          preview: 
+          preview:
             target: invoicesPdfFilePreview_command
             type: command
             class: filePreview
@@ -90,17 +69,6 @@ production:
             props: 
               width: 150
               height: 150
-              crop: false
-            onNull: hide
-          previewList: 
-            target: invoicesPdfFilePreview_command
-            type: command
-            class: filePreview
-            listController: 1
-            external: 1
-            props: 
-              width: 30
-              height: 30
               crop: false
             onNull: hide
       options:
