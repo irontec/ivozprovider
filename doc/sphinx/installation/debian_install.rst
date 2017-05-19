@@ -70,7 +70,7 @@ to work in the same machine with the default values.
 
 This menu allows:
 
-- Configure IP addresses for SIP proxies
+- Configure IP address(es) for SIP proxies
 - Default platform language
 - Administrator MySQL database password
 
@@ -81,6 +81,6 @@ It's possible to change any of this values anytime by running:
     dpkg-reconfigure ivozprovider
 
 
-.. important:: Any of the 2 Public IP addresses configured during the
+.. important:: Any of the public IP addresses configured during the
    installation will work to acces the web portal. Default credentials are
    **admin / changeme**.
