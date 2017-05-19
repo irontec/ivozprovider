@@ -1,3 +1,57 @@
+Fri, 19 May 2017 17:29:03 +0200 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.3 released
+
+    * Web Portals
+        - Improved password generation in Terminals and Friends to avoid problematic symbols
+        - Fixed costs can now have long descriptive text
+        - Fixed provisioning template editor tester
+        - Fixed Company domain not being saved on new created companies
+        - Companies and Brands now have some features that can be toggled in order to hide/show
+          different sections of the web or special behaviours:
+              * Friends
+              * Recordings
+              * Faxes
+              * Conferences
+              * Queues
+              * Invoices
+              * Billing
+              * Voice error notifications
+
+    * PBX
+        - Add support for default Company Outgoing DDI
+        - Friends have directmedia enabled using INVITE method
+        - Friends Diversion headers are removed before placing external calls
+        - Added error notifications over progress:
+            - Enabled via Brand/Companies Features
+            - Plays a fixed locution when configuration does not allow to call (ACL, Princing, etc)
+        - Added Queues support:
+            - Beta Stage: This requires more testing for distributed installations
+            - Enabled via Brand/Companies Features
+            - Very basic queue and members configuration
+
+    * Proxies
+        - Replaced call waiting logics with max calls
+        - Moved endpoints' presence notification from Asterisk to Kamailio using presence modules
+        - Fixed multiples bugs during Gateway failover processing
+        - Avoid marking as disabled the last Application Server in dispatcher list
+        - Fixed numeric transformation in Diversion headers on external outbound calls
+        - Prefixes are now added after numeric transformations, making them useful
+
+    * Faxing
+        - Reworked AGI logics for sending and receiving faxes
+        - Removed fax sender working from gearmand
+        - Replaced AMI request to send faxes by ARI requests
+        - Email notificatations are now sent using Brand's configured address
+
+    * Recordings
+        - Implement Brand/Company recordings rotation based on disk usage
+        - Fixed a bug where only one direction of the stream was being recorded
+
+    * Documentation
+        - Improvements and fixes for Spanish translation
+
+
 Fri Apr 7 12:08:18 2017 +0200 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.2 released
