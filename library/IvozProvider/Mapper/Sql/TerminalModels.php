@@ -33,7 +33,7 @@ class TerminalModels extends Raw\TerminalModels
         }
         $path = $conf->Iron['fso']['localStoragePath'];
         $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $pk;
-//         var_dump($pk);
+
         if( $genericMustChange ){
             try{
                 $template = $model->getGenericTemplate();
