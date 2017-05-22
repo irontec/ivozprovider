@@ -151,7 +151,7 @@ class AstPsAors extends ModelAbstract
         $this->setParentList(array(
             'AstPsAorsIbfk1'=> array(
                     'property' => '',
-                    'table_name' => 'AstPsEndpoints',
+                    'table_name' => 'ast_ps_endpoints',
                 ),
         ));
 

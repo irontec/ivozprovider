@@ -61,13 +61,11 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
-      required: true
       maxLength: 100
     lastname: 
       title: _('Lastname')
       type: text
       trim: both
-      required: true
       maxLength: 100
 staging: 
   _extends: production

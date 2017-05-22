@@ -31,6 +31,22 @@ production:
     companyAdminsNew_screen: &companyAdminsNew_screenLink 
       <<: *CompanyAdmins
       controller: new
+      fixedPositions: &companyAdminsFixedPositions_link
+        group0:
+          label: _("Login info")
+          colsPerRow: 2
+          fields:
+            username: 1
+            pass: 1
+            email: 1
+            active: 1
+            timezoneId: 2
+        group1:
+          label: _("Personal data")
+          colsPerRow: 2
+          fields:
+            name: 1
+            lastname: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -39,6 +55,7 @@ production:
     companyAdminsEdit_screen: &companyAdminsEdit_screenLink 
       <<: *CompanyAdmins
       controller: edit
+      fixedPositions: *companyAdminsFixedPositions_link
       class: ui-silk-pencil
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")

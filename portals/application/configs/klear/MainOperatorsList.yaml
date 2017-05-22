@@ -22,12 +22,12 @@ production:
             mainOperatorsDel_dialog: true
           default: mainOperatorsEdit_screen
         order: &MainOperators_orderLink
-          name: true
-          lastname: true
           email: true
           username: true
           pass: true
           timezoneId: true
+          name: true
+          lastname: true
           active: true
         blacklist:
           pass: true
@@ -51,20 +51,21 @@ production:
           <<: *MainOperators_orderLink
       fixedPositions: &MainOperatorsFixedPositions_link
         group0:
-          label: _("Personal data")
-          colsPerRow: 3
-          fields:
-            name: 1
-            lastname: 1
-            email: 1
-        group1:
           label: _("Login info")
-          colsPerRow: 3
+          colsPerRow: 2
           fields:
             username: 1
             pass: 1
-            active: 1          
-    mainOperatorsEdit_screen: &mainOperatorsEdit_screenLink 
+            email: 1
+            active: 1
+            timezoneId: 2
+        group1:
+          label: _("Personal data")
+          colsPerRow: 2
+          fields:
+            name: 1
+            lastname: 1
+    mainOperatorsEdit_screen: &mainOperatorsEdit_screenLink
       <<: *MainOperators
       controller: edit
       class: ui-silk-pencil

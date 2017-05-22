@@ -23,13 +23,13 @@ production:
           default: brandOperatorsEdit_screen
         order: &BrandOperators_orderLink
           brandId: true
-          name: true
-          lastname: true
           email: true
           username: true
           pass: true
           timezoneId: true
           active: true
+          name: true
+          lastname: true
         blacklist:
           pass: true
           timezoneId: true
@@ -52,19 +52,20 @@ production:
           <<: *BrandOperators_orderLink
       fixedPositions: &BrandOperatorsFixedPositions_link
         group0:
-          label: _("Personal data")
-          colsPerRow: 3
-          fields:
-            name: 1
-            lastname: 1
-            email: 1
-        group1:
           label: _("Login info")
-          colsPerRow: 3
+          colsPerRow: 2
           fields:
             username: 1
             pass: 1
+            email: 1
             active: 1
+            timezoneId: 2
+        group1:
+          label: _("Personal data")
+          colsPerRow: 2
+          fields:
+            name: 1
+            lastname: 1
     brandOperatorsEdit_screen: &brandOperatorsEdit_screenLink 
       <<: *BrandOperators
       controller: edit
