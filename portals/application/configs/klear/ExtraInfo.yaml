@@ -1,4 +1,4 @@
-#Entry point para el JS custom de selector de empresas para Usuario EKTAdmin
+#Entry point para el JS custom de selector de empresas para Usuario
 production:
   main:
     module: klearMatrix

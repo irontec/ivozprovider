@@ -40,7 +40,10 @@ class Builder
             self::_failConfiguration();
         }
 
-        $dynamic->setBrand(self::$_brand);
+        if (self::$_brand) {
+            $dynamic->setBrand(self::$_brand);
+        }
+
         $dynamic->setBrandUrl(self::$_brandURL);
         $dynamic->setLogo(self::_resolveLogo());
 
@@ -85,6 +88,7 @@ class Builder
 
         if (!self::$_brandURL instanceof \IvozProvider\Model\BrandURLs) {
             self::$_brandURL = $brandURLMapper->findOneByField('urlType', 'god');
+            return false;
         }
 
         self::$_brand = self::$_brandURL->getBrand();
@@ -100,6 +104,10 @@ class Builder
         $brandURLLogoBaseName = self::$_brandURL->getLogoBaseName();
         if (!empty($brandURLLogoBaseName)) {
             return "fso/klearBrandUrl/".self::$_brandURL->getPrimaryKey()."-".$brandURLLogoBaseName;
+        }
+
+        if (!self::$_brand) {
+            return null;
         }
 
         $brandLogoBaseName = self::$_brand->getLogoBaseName();

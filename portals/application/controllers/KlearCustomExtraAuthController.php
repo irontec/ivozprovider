@@ -26,20 +26,18 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 ->addActionContext('emulate', 'json')
                 ->initContext('json');
 
-         if (!$this->_mainRouter = $this->getRequest()->getParam("mainRouter")
-             || !is_object($this->_mainRouter)) {
-
-                 throw New Zend_Exception($this->view->translate('Acceso restringido'), Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
-         }
+        if (
+            !$this->_mainRouter = $this->getRequest()->getParam("mainRouter")
+            || !is_object($this->_mainRouter)
+        ) {
+                throw New Zend_Exception(
+                    $this->view->translate('Acceso restringido'),
+                    Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
+                );
+        }
 
         $this->_mainRouter = $this->getRequest()->getParam("mainRouter");
-
         $this->_user = Zend_Auth::getInstance()->getIdentity();
-
-//         if (!$this->_companyId) {
-
-//             throw New Zend_Exception($this->view->translate('Acceso restringido'), Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
-//         }
     }
 
 
@@ -198,9 +196,9 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $result = $storage->write($this->_user);
 
         return array(
-                'result'=>$result,
-                'newIden' => $remoteId
-                );
+            'result' => $result,
+            'newIden' => $remoteId
+        );
     }
 
     protected function _noPermission()

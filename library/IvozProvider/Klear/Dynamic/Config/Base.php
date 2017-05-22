@@ -154,7 +154,9 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
         $config = new \Zend_Config(array(), true);
         $config->merge($authConfig->getRaw());
 
-        $config->brandId = $this->_brand->getId();
+        if ($this->_brand) {
+            $config->brandId = $this->_brand->getId();
+        }
         $config->session->name = $this->_sessionName;
         $config->userMapper = $this->_userMapper;
 
