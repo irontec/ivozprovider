@@ -44,12 +44,10 @@ production:
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
-      required: true
       maxLength: 100
     lastname: 
       title: _('Lastname')
       type: text
-      required: true
       maxLength: 100
 staging: 
   _extends: production

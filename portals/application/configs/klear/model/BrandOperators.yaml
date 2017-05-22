@@ -30,7 +30,8 @@ production:
       title: ngettext('Email', 'Emails', 1)
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
+      maxLength: 100
     active: 
       title: _('Active')
       type: select
@@ -60,12 +61,10 @@ production:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
-      required: true
     lastname: 
       title: _('Lastname')
       type: text
       trim: both
-      required: true
 staging: 
   _extends: production
 testing: 

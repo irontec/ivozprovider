@@ -436,9 +436,6 @@ class BrandOperators extends ModelAbstract
     public function setName($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_name != $data) {
             $this->_logChange('name', $this->_name, $data);
         }
@@ -473,9 +470,6 @@ class BrandOperators extends ModelAbstract
     public function setLastname($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_lastname != $data) {
             $this->_logChange('lastname', $this->_lastname, $data);
         }

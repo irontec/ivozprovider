@@ -84,7 +84,7 @@ abstract class ModelAbstract implements \IteratorAggregate
     /***
      * Save Logs into Database switcher
      */
-    protected $_saveChanges = true;
+    protected $_saveChanges = false;
 
     /***
      * Author name of the model changes
