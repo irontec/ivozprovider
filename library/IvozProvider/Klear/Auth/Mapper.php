@@ -44,9 +44,12 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
             ->setEmail($operator->getEmail())
             ->setPassword($operator->getPass())
             ->setActive($operator->getActive())
-            ->setTimezone($operator->getTimezone()->getTz())
-            ->setBrandId($this->_brand->getId());
-        ;
+            ->setTimezone($operator->getTimezone()->getTz());
+
+        if (isset($this->_brand)) {
+            $user->setBrandId($this->_brand->getId());
+        }
+
         return $this;
     }
 

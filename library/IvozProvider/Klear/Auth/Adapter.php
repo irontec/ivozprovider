@@ -22,22 +22,18 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
 
     public function __construct(\Zend_Controller_Request_Abstract $request, \Klear_Model_ConfigParser $authConfig = null)
     {
-
-        if (!$authConfig->getProperty("brandId")) {
-            throw new \Klear_Exception_Default('brandId not on authConfig');
-        }
-
         $this->_username = $request->getPost('username', '');
         $this->_password = $request->getPost('password', '');
         $brandMapper = new BrandsMapper();
-        $this->_brand = $brandMapper->find($authConfig->getProperty("brandId"));
+        if ($authConfig->getProperty("brandId")) {
+            $this->_brand = $brandMapper->find($authConfig->getProperty("brandId"));
 
-        if (!$this->_brand instanceof Brands) {
-            throw new \Klear_Exception_Default('Not a valid brand instanciated');
+            if (!$this->_brand instanceof Brands) {
+                throw new \Klear_Exception_Default('Not a valid brand instanciated');
+            }
         }
 
         $this->_initUserMapper($authConfig);
-
     }
 
     protected function _initUserMapper(\Klear_Model_ConfigParser $authConfig = null)
@@ -53,7 +49,11 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
         }
 
         $this->_userMapper = new $userMapperName;
-        $this->_userMapper->setBrand($this->_brand);
+
+        if (isset($this->_brand)) {
+            $this->_userMapper->setBrand($this->_brand);
+        }
+
         if (!$this->_userMapper instanceof \Klear_Auth_Adapter_Interfaces_BasicUserMapper) {
             throw new \Klear_Exception_Default('Auth userMapper must implement \Klear_Auth_Adapter_Interfaces_BasicUserMapper');
         }
