@@ -2700,8 +2700,15 @@ msgstr ""
 msgid "Outgoing calls coming from Friend must have this area code format"
 msgstr ""
 
-msgid "No outgoing calls will be allowed if this field is unassigned"
+msgid "Fallback Outgoing DDI"
+msgstr "DDI de salida alternativo"
+
+msgid ""
+"This DDI will be used if friend presented DDI doesn't match any of the "
+"company DDIs"
 msgstr ""
+"Este DDI se empleará si el mostrado por el friend no coincide con ninguno de "
+"la compañía."
 
 msgid "Disallowed codecs"
 msgstr "Codecs rechazados"
