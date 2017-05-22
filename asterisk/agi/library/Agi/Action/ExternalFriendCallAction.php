@@ -70,8 +70,26 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
-        // Outgoing presentation
-        $ddi = $friend->getOutgoingDDI();
+        // Allow identification from any company DDI
+        $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
+        $companyDDIs = $friend->getCompany()->getDDIs();
+        foreach ($companyDDIs as $companyDDI) {
+            if (!strcmp($callerIdNum, $companyDDI->getDDIE164())) {
+                $this->agi->notice("Friend \e[0;36m%s [friend%d]\e[0;93m presented origin matches company DDI %s [ddi%d].",
+                         $friend->getName(), $friend->getId(), $companyDDI->getDDIE164(), $companyDDI->getId());
+                $ddi = $companyDDI;
+                break;
+            }
+        }
+
+        // Use fallback outgoing DDI
+        if (!isset($ddi)) {
+            $ddi = $friend->getOutgoingDDI();
+            if ($ddi) {
+                $this->agi->notice("Using fallback DDI %d [ddi%s] for friend \e[0;36m%s [friend%d]\e[0;93m because %s does not match any DDI.",
+                    $ddi->getDDIE164(), $ddi->getId(), $friend->getname(), $friend->getId(), $callerIdNum);
+            }
+        }
 
         // Update caller displayed number
         if (!$ddi) {

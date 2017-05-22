@@ -138,7 +138,7 @@ production:
         text: _("Outgoing calls coming from Friend must have this area code format")
         label: _("Need help?")
     outgoingDDIId:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: select
       source:
         data: mapper
@@ -155,7 +155,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("No outgoing calls will be allowed if this field is unassigned")
+        text: _("This DDI will be used if friend presented DDI doesn't match any of the company DDIs")
         label: _("Need help?")
     priority:
       title: _('Priority')
