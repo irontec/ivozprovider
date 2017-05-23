@@ -43,6 +43,11 @@ class ExternalDDICallAction extends ExternalCallAction
             return;
         }
 
+        // Set origin for not forwaded calls
+        if ($this->agi->getRedirecting('count') == 0) {
+            $this->agi->setCallerIdNum($ddi->getDDIE164());
+        }
+
         // Update caller displayed number
         $this->updateOriginConnectedLine($e164number);
         // Check if DDI has recordings enabled
