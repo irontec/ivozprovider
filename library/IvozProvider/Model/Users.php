@@ -236,15 +236,32 @@ class Users extends Raw\Users
         return true;
     }
 
-    public function getLanguageCode()
+    /**
+     * Get User language.
+     * If not set, get the company language
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $language = $this->getLanguage();
-        if (!$language) {
-            return $this->getCompany()->getLanguageCode();
+        $language = parent::getLanguage($where, $orderBy, $avoidLoading);
+        if (is_null($language)) {
+            return $this->getCompany()->getLanguage();
         }
-        return $language->getIden();
+        return $language;
     }
 
+    /**
+     * Get User language code.
+     * If not set, get the company language code
+     */
+    public function getLanguageCode()
+    {
+        return $this->getLanguage()->getIden();
+    }
+
+    /**
+     * Get User country
+     * If not set, get the company country
+     */
     public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
     {
         $country = parent::getCountry($where, $orderBy, $avoidLoading);
