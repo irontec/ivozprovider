@@ -24,8 +24,13 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
     {
         $this->_username = $request->getPost('username', '');
         $this->_password = $request->getPost('password', '');
-        $brandMapper = new BrandsMapper();
+
+        if (is_null($authConfig)) {
+            return;
+        }
+
         if ($authConfig->getProperty("brandId")) {
+            $brandMapper = new BrandsMapper();
             $this->_brand = $brandMapper->find($authConfig->getProperty("brandId"));
 
             if (!$this->_brand instanceof Brands) {
@@ -42,7 +47,6 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
         if ($authConfig->exists('userMapper')) {
             $userMapperName = $authConfig->getProperty('userMapper');
         }
-
 
         if (empty($userMapperName)) {
             throw new \Klear_Exception_Default('userMapper not configured', 500);

@@ -201,7 +201,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $result = $storage->write($this->_user);
 
         return array(
-            'result'=>$result,
+            'result' => $result,
             'newIden' => $remoteId
         );
     }
