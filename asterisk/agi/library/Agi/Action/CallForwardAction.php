@@ -92,9 +92,9 @@ class CallForwardAction extends RouterAction
     protected function _routeToExternal()
     {
         // Set as diversion number the user Outgoing DDI
+        $this->agi->setRedirecting('from-tag,i', $this->_caller->getExtensionNumber());
         $this->agi->setRedirecting('from-num,i', $this->_caller->getOutgoingDDINumber());
         $this->agi->setRedirecting('from-name',  $this->_caller->getFullName());
-        $this->agi->setRedirecting('from-tag,i', $this->_caller->getExtensionNumber());
 
 
         $externalAction = new ExternalUserCallAction($this);
