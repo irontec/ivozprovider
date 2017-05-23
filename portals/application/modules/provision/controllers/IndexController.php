@@ -2,8 +2,6 @@
 
 class Provision_IndexController extends Zend_Controller_Action
 {
-    protected $_firstMatch = 1;
-
     public $logger;
 
     public function init()
@@ -31,12 +29,14 @@ class Provision_IndexController extends Zend_Controller_Action
         $terminalModel = $this->_searchGenericPattern($terminalModelMapper, $terminalUrl);
 
         if ($terminalModel) {
+            // Generic Template requests must be served over HTTP
             if ($isHttps) {
                 return $this->_error(403);
             }
             return $this->_renderPage('generic', $path, $terminalModel);
         }
 
+        // Specific Template requests must be served over HTTPS
         if (!$isHttps) {
             return $this->_error(403);
         }
@@ -51,9 +51,7 @@ class Provision_IndexController extends Zend_Controller_Action
             return $this->_error(404, 'TerminalModel not found');
         }
 
-        $userMapper = new \IvozProvider\Mapper\Sql\Users();
-        $userModel = $userMapper->findOneByField('terminalId', $terminal->getId() );
-        $this->view->user = $userModel;
+        $this->view->user = $terminal->getUser();
 
         $companyModel = $terminal->getCompany();
         $this->view->company = $companyModel;
