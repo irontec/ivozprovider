@@ -53,6 +53,7 @@ class ExternalDDICallAction extends ExternalCallAction
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");
+        $this->agi->setVariable("DIAL_TIMEOUT", "");
         $this->agi->redirect('call-world', $e164number);
     }
 }
