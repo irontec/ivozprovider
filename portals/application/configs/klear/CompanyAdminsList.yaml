@@ -31,6 +31,11 @@ production:
     companyAdminsNew_screen: &companyAdminsNew_screenLink 
       <<: *CompanyAdmins
       controller: new
+      fields:
+        blacklist:
+            name: 1
+            lastname: 1
+            email: 1
       fixedPositions: &companyAdminsFixedPositions_link
         group0:
           label: _("Login info")
@@ -38,15 +43,15 @@ production:
           fields:
             username: 1
             pass: 1
-            email: 1
             active: 1
-            timezoneId: 2
+            timezoneId: 1
         group1:
           label: _("Personal data")
-          colsPerRow: 2
+          colsPerRow: 3
           fields:
             name: 1
             lastname: 1
+            email: 1
       class: ui-silk-add
       label: true
       multiInstance: true

@@ -48,6 +48,10 @@ production:
       title: _("Add %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%parent%)]")
       shortcutOption: N
       fields:
+        blacklist:
+            name: 1
+            lastname: 1
+            email: 1
         order:
           <<: *BrandOperators_orderLink
       fixedPositions: &BrandOperatorsFixedPositions_link
@@ -57,15 +61,15 @@ production:
           fields:
             username: 1
             pass: 1
-            email: 1
             active: 1
-            timezoneId: 2
+            timezoneId: 1
         group1:
           label: _("Personal data")
-          colsPerRow: 2
+          colsPerRow: 3
           fields:
             name: 1
             lastname: 1
+            email: 1
     brandOperatorsEdit_screen: &brandOperatorsEdit_screenLink 
       <<: *BrandOperators
       controller: edit
