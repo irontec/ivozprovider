@@ -220,7 +220,7 @@ class Userweb_UsersController extends Iron_Controller_Rest_BaseController
         $mapper = new Mappers\Users();
 
         $auth = new \Iron_Auth_RestHmac();
-        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper);
+        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper, ['user' => 'email']);
 
         return $user;
 

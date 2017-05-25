@@ -63,7 +63,6 @@ class Users extends MapperAbstract
                 'isBoss' => $model->getIsBoss(),
                 'bossAssistantId' => $model->getBossAssistantId(),
                 'exceptionBoosAssistantRegExp' => $model->getExceptionBoosAssistantRegExp(),
-                'username' => $model->getUsername(),
                 'active' => $model->getActive(),
                 'maxCalls' => $model->getMaxCalls(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
@@ -851,7 +850,6 @@ class Users extends MapperAbstract
                   ->setIsBoss($data['isBoss'])
                   ->setBossAssistantId($data['bossAssistantId'])
                   ->setExceptionBoosAssistantRegExp($data['exceptionBoosAssistantRegExp'])
-                  ->setUsername($data['username'])
                   ->setActive($data['active'])
                   ->setMaxCalls($data['maxCalls'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
@@ -877,7 +875,6 @@ class Users extends MapperAbstract
                   ->setIsBoss($data->{'isBoss'})
                   ->setBossAssistantId($data->{'bossAssistantId'})
                   ->setExceptionBoosAssistantRegExp($data->{'exceptionBoosAssistantRegExp'})
-                  ->setUsername($data->{'username'})
                   ->setActive($data->{'active'})
                   ->setMaxCalls($data->{'maxCalls'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
@@ -904,7 +901,6 @@ class Users extends MapperAbstract
                   ->setIsBoss($data->getIsBoss())
                   ->setBossAssistantId($data->getBossAssistantId())
                   ->setExceptionBoosAssistantRegExp($data->getExceptionBoosAssistantRegExp())
-                  ->setUsername($data->getUsername())
                   ->setActive($data->getActive())
                   ->setMaxCalls($data->getMaxCalls())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
