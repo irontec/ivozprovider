@@ -19,8 +19,7 @@ angular.module('Detours', []);
 angular.module('Account', []);
 angular.module('Preferences', []);
 
-angular
-  .module('oasisPortals', [
+var moduleDependencies = [
     'ngAnimate',
     'ngResource',
     'ngSanitize',
@@ -39,70 +38,100 @@ angular
     'Detours',
     'Account',
     'Preferences'
-]).config(function (
-    $stateProvider, 
-    $urlRouterProvider, 
-    RestangularProvider, 
-    $httpProvider, 
-    AuthenticationConfigProvider, 
-    $translateProvider, 
-    appConfig
-) {
-    
-    $httpProvider.interceptors.push('httpRequestInterceptor');
-    $httpProvider.interceptors.push('httpResponseInterceptor');
-    
-    AuthenticationConfigProvider.setAuthType('Hmac');
-    AuthenticationConfigProvider.setAuthUrl(appConfig.urlRest + 'auth');
-    
-    RestangularProvider.setBaseUrl(appConfig.urlRest);
-    RestangularProvider.setFullResponse(true);
-    
-    RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
-        
-        var extractedData;
-        if (operation === "getList") {
-            if (response.status > 400) {
-                extractedData = [data];
+];
+
+angular
+    .module('oasisPortals', moduleDependencies)
+    .config(configureApp)
+    .run(init)
+    .constant('appConfig', retrieveConstants())
+    .provider('configGlobal', function(appConfig) {
+
+        this.$get = function($http, $rootScope) {
+
+            var service = {};
+            service.RunConfig = function() {
+
+                return $http.get(appConfig.urlRest + 'config').success(function(data) {
+                    $rootScope.theme = data.theme;
+                    $rootScope.logo = data.logo;
+                    $rootScope.brandName = data.name;
+                });
+            };
+
+            return service;
+        };
+    });
+
+    function retrieveConstants() {
+        var location = window.location;
+        return {
+            'urlRest': 'https://' + location.hostname + '/userweb/'
+        };
+    }
+
+    function configureApp (
+        $stateProvider,
+        $urlRouterProvider,
+        RestangularProvider,
+        $httpProvider,
+        AuthenticationConfigProvider,
+        $translateProvider,
+        appConfig
+    ) {
+        $httpProvider.interceptors.push('httpRequestInterceptor');
+        $httpProvider.interceptors.push('httpResponseInterceptor');
+
+        AuthenticationConfigProvider.setAuthType('Hmac');
+        AuthenticationConfigProvider.setAuthUrl(appConfig.urlRest + 'auth');
+
+        RestangularProvider.setBaseUrl(appConfig.urlRest);
+        RestangularProvider.setFullResponse(true);
+
+        RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response/*, deferred*/) {
+
+            var extractedData;
+            if (operation === "getList") {
+                if (response.status > 400 && response.status < 500) {
+                    extractedData = [data];
+                } else {
+                    extractedData = data;
+                }
             } else {
                 extractedData = data;
             }
-        } else {
-          extractedData = data;
-        }
-        return extractedData;
-    });
-    
-    
-    $urlRouterProvider.otherwise('/');
-    
-    $stateProvider
-        .state('login', {
-            url: '/login',
-            templateUrl: 'views/login.html',
-            controller: 'LoginCtrl'
-        })
-        .state('app', {
-            abstract: true,
-            views: {
-                'header': {
-                    templateUrl: 'views/commonView/header.html',
-                    controller: 'HeaderCtrl'
-                },
-                'footer': {
-                    templateUrl: 'views/commonView/footer.html',
-                    controller: 'FooterCtrl'
-                },
-                'content': {
-                    template: '<ui-view/>'
+            return extractedData;
+        });
+
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl'
+            })
+            .state('app', {
+                abstract: true,
+                views: {
+                    'header': {
+                        templateUrl: 'views/commonView/header.html',
+                        controller: 'HeaderCtrl'
+                    },
+                    'footer': {
+                        templateUrl: 'views/commonView/footer.html',
+                        controller: 'FooterCtrl'
+                    },
+                    'content': {
+                        template: '<ui-view/>'
+                    }
                 }
-            }
-        })
-        .state('app.index', {
-            url: '/',
-            templateUrl: 'views/index/index.html',
-            controller: 'IndexCtrl'
-        }).state('app.calls', {
+            })
+            .state('app.index', {
+                url: '/',
+                templateUrl: 'views/index/index.html',
+                controller: 'IndexCtrl'
+            }).state('app.calls', {
             url: '/calls',
             templateUrl: 'views/calls/calls.html',
             controller: 'CallsCtrl'
@@ -127,62 +156,31 @@ angular
             templateUrl: 'views/preferences/preferences.html',
             controller: 'PreferencesCtrl'
         });
-    
-    $translateProvider.useStaticFilesLoader({
-        prefix: 'languages/locale-',
-        suffix: '.json'
-    });
-    
-    $translateProvider.preferredLanguage('es');
-    $translateProvider.useSanitizeValueStrategy('escaped');
-})
-.run(function ($rootScope, $location, configGlobal, $state) {
-    
-    $rootScope.showMenu = false;
-    
-    $rootScope.theme = 'default';
-    configGlobal.RunConfig();
-    
-    $rootScope.$on('$locationChangeStart', function () {
-        
-        configGlobal.RunConfig();
-        
-        var type = localStorage.getItem('auth-type');
-        
-        if ($location.path() !== '/login' && localStorage.getItem('token-' + type) === null) {
-            $location.path('/login');
-        }
-        
-        $rootScope.showMenu = true;
-        
-        $rootScope.$state = $state;
-        
-    });
-    
-})
-.constant('appConfig', {
-    'urlRest': '/userweb/'
-})
-.provider('configGlobal', function(appConfig) {
 
-    this.$get = function($http, $rootScope) {
-        
-        var service = {};
-        
-        service.RunConfig = function() {
-            
-            return $http.get(appConfig.urlRest + 'config').success(function(data) {
-                
-                $rootScope.theme = data.theme;
-                $rootScope.logo = data.logo;
-                $rootScope.brandName = data.name;
-                
-            });
-        
-        };
-        
-        return service;
-        
-    };
-    
-});
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'languages/locale-',
+            suffix: '.json'
+        });
+        $translateProvider.preferredLanguage('es');
+        $translateProvider.useSanitizeValueStrategy('escaped');
+    }
+
+    function init($rootScope, $location, configGlobal, $state) {
+        $rootScope.showMenu = false;
+
+        $rootScope.theme = 'default';
+        configGlobal.RunConfig();
+
+        $rootScope.$on('$locationChangeStart', function () {
+
+            configGlobal.RunConfig();
+            var type = localStorage.getItem('auth-type');
+
+            if ($location.path() !== '/login' && localStorage.getItem('token-' + type) === null) {
+                $location.path('/login');
+            }
+
+            $rootScope.showMenu = true;
+            $rootScope.$state = $state;
+        });
+    }

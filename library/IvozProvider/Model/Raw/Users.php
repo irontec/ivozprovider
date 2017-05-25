@@ -130,13 +130,6 @@ class Users extends ModelAbstract
     protected $_exceptionBoosAssistantRegExp;
 
     /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_username;
-
-    /**
      * Database var type tinyint
      *
      * @var int
@@ -432,7 +425,6 @@ class Users extends ModelAbstract
         'isBoss'=>'isBoss',
         'bossAssistantId'=>'bossAssistantId',
         'exceptionBoosAssistantRegExp'=>'exceptionBoosAssistantRegExp',
-        'username'=>'username',
         'active'=>'active',
         'maxCalls'=>'maxCalls',
         'voicemailEnabled'=>'voicemailEnabled',
@@ -1159,40 +1151,6 @@ class Users extends ModelAbstract
     public function getExceptionBoosAssistantRegExp()
     {
         return $this->_exceptionBoosAssistantRegExp;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setUsername($data)
-    {
-
-        if ($this->_username != $data) {
-            $this->_logChange('username', $this->_username, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_username = $data;
-
-        } else if (!is_null($data)) {
-            $this->_username = (string) $data;
-
-        } else {
-            $this->_username = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->_username;
     }
 
     /**

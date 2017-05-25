@@ -8,7 +8,6 @@ use IvozProvider\Mapper\Sql as Mappers;
 
 class Userweb_IndexController extends Iron_Controller_Rest_BaseController
 {
-
     protected $_limitPage = 10;
 
     public function headAction()
@@ -18,19 +17,16 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
 
     public function optionsAction()
     {
-
         $options = array(
             'GET' => array()
         );
 
         $this->_response->setHttpResponseCode(200);
         $this->_helper->json($options);
-
     }
 
     public function indexAction()
     {
-
         $user = $this->_getAuthUser();
 
         $countDetours = $this->_countDetours($user);
@@ -43,7 +39,6 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
 
         $this->addViewData($data);
         $this->status->setCode(200);
-
     }
 
     protected function _countDetours($user)
@@ -56,12 +51,10 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
         $countItems = $mapper->countByQuery($where);
 
         return $countItems;
-
     }
 
     protected function _countCalls($user)
     {
-
         $companyId = $user->getCompanyId();
         $extension = $user->getExtension();
 
@@ -71,7 +64,7 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
 
         $extensionNumber = $extension->getNumber();
 
-        $where = $this->_prepareWhere(
+        $where = $this->_prepareCountCallsWhere(
             $companyId,
             $extensionNumber
         );
@@ -82,9 +75,8 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
         return $countItems;
     }
 
-    protected function _prepareWhere($companyId, $extension)
+    protected function _prepareCountCallsWhere($companyId, $extension)
     {
-
         $prepareWhere = array();
         $prepareWhere[] = 'aParty = "' . $extension . '"';
         $prepareWhere[] = 'bParty = "' . $extension . '"';
@@ -93,7 +85,6 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
         $whereUser = $whereOrs . ' AND companyId = "' . $companyId . '"';
 
         return $whereUser;
-
     }
 
     protected function _getAuthUser()
@@ -107,7 +98,7 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
         $mapper = new Mappers\Users();
 
         $auth = new \Iron_Auth_RestHmac();
-        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper);
+        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper, ['user' => 'email']);
 
         return $user;
 
