@@ -74,7 +74,7 @@ class ExternalFriendCallAction extends ExternalCallAction
         $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
         $companyDDIs = $friend->getCompany()->getDDIs();
         foreach ($companyDDIs as $companyDDI) {
-            if (!strcmp($callerIdNum, $companyDDI->getDDIE164())) {
+            if ($callerIdNum === $companyDDI->getDDIE164()) {
                 $this->agi->notice("Friend \e[0;36m%s [friend%d]\e[0;93m presented origin matches company DDI %s [ddi%d].",
                          $friend->getName(), $friend->getId(), $companyDDI->getDDIE164(), $companyDDI->getId());
                 $ddi = $companyDDI;
