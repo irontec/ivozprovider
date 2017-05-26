@@ -5,6 +5,7 @@ production:
       title: _('Ip')
       type: text
       required: true
+      maxLength: 50
       default: true
     name: 
       title: ngettext('Name', 'Names', 1)

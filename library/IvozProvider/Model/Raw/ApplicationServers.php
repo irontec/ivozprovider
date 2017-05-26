@@ -31,9 +31,9 @@ class ApplicationServers extends ModelAbstract
     protected $_id;
 
     /**
-     * Database var type varbinary(16)
+     * Database var type varchar
      *
-     * @var binary
+     * @var string
      */
     protected $_ip;
 
@@ -168,7 +168,7 @@ class ApplicationServers extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param binary $data
+     * @param string $data
      * @return \IvozProvider\Model\Raw\ApplicationServers
      */
     public function setIp($data)
@@ -181,14 +181,22 @@ class ApplicationServers extends ModelAbstract
             $this->_logChange('ip', $this->_ip, $data);
         }
 
-        $this->_ip = $data;
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_ip = $data;
+
+        } else if (!is_null($data)) {
+            $this->_ip = (string) $data;
+
+        } else {
+            $this->_ip = $data;
+        }
         return $this;
     }
 
     /**
      * Gets column ip
      *
-     * @return binary
+     * @return string
      */
     public function getIp()
     {

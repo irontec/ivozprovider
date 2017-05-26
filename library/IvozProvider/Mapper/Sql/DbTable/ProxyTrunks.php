@@ -85,7 +85,7 @@ class ProxyTrunks extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '100',
+	    'LENGTH' => '50',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,

@@ -137,10 +137,6 @@ production:
       title: _('Exceptionboosassistantregexp')
       type: text
       maxLength: 255
-    username: 
-      title: _('Username')
-      type: text
-      maxLength: 65
     active: 
       title: _('Active')
       type: select
