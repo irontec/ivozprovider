@@ -52,9 +52,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\ApplicationServers
           fieldName: 
             fields: 
-              - name
-            template: '%name%'
-          order: name
+              - ip
+            template: '%ip%'
+          order: ip
         'null': _("Unassigned")
     externalMaxCalls: 
       title: _('Externalmaxcall')
