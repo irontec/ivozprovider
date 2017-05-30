@@ -26,11 +26,11 @@ production:
             template: '%name%'
           order: name
     transformationRulesetGroupsTrunksId:
-      title: _('Transformation ruleset groups trunks')
+      title: _('Numeric transformation')
       type: select
       source:
         data: mapper
-        'null': _("Unassigned")
+        'null': 'E.164'
         config:
           mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks
           filterClass: IvozProvider_Klear_Filter_Brand

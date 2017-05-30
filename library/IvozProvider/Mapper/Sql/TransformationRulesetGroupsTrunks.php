@@ -32,7 +32,6 @@ class TransformationRulesetGroupsTrunks extends Raw\TransformationRulesetGroupsT
 
         if ($isNew && $model->getAutomatic()) {
             $cc = $model->getCountry()->getCallingCode();
-            $length = $model->getNationalNumLength() - 1;
             $intcode = $model->getInternationalCode();
 
             // Calculate next dpid
@@ -56,14 +55,14 @@ class TransformationRulesetGroupsTrunks extends Raw\TransformationRulesetGroupsT
             $dpid++;
 
             // Callee In rules
-            $this->createDialplanRule($model, "^($intcode|\+)([1-9][0-9]+)$", '\2', 1, 'International to E.164', $dpid);
-            $this->createDialplanRule($model, '^([1-9][0-9]{' . $length . '})$', $cc . '\1', 2, 'National to E.164', $dpid);
+            $this->createDialplanRule($model, "^($intcode|\+)([0-9]+)$", '\2', 1, 'International to E.164', $dpid);
+            $this->createDialplanRule($model, '^([0-9]+)$', $cc . '\1', 2, 'National to E.164', $dpid);
             $model->setCalleeIn($dpid);
             $dpid++;
 
             // Caller In rules
-            $this->createDialplanRule($model, "^($intcode|\+)([1-9][0-9]+)$", '\2', 1, 'International to E.164', $dpid);
-            $this->createDialplanRule($model, '^([1-9][0-9]{' . $length . '})$', $cc . '\1', 2, 'National to E.164', $dpid);
+            $this->createDialplanRule($model, "^($intcode|\+)([0-9]+)$", '\2', 1, 'International to E.164', $dpid);
+            $this->createDialplanRule($model, '^([0-9]+)$', $cc . '\1', 2, 'National to E.164', $dpid);
             $model->setCallerIn($dpid);
 
             $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);

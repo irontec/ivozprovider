@@ -58,11 +58,11 @@ production:
             title: _("No")
             visualFilter:
               show: []
-              hide: ["countryId", "internationalCode", "nationalNumLength"]
+              hide: ["countryId", "internationalCode"]
           '1': 
             title: _("Yes")
             visualFilter:
-              show: ["countryId", "internationalCode", "nationalNumLength"]
+              show: ["countryId", "internationalCode"]
               hide: []
       info:
         type: box
@@ -84,6 +84,7 @@ production:
               - calling_code
             template: '%name% (+%calling_code%)'
           order: name_${lang}
+      defaultValue: 70
     internationalCode: 
       title: _('International Code')
       type: text
