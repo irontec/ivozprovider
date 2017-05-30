@@ -38,4 +38,13 @@ class PeerServers extends Raw\PeerServers
         $lcrGateways = $this->getLcrGateways();
         return array_shift($lcrGateways);
     }
+
+    public function getName()
+    {
+        return sprintf("b%dp%ds%d",
+            $this->getBrandId(),
+            $this->getPeeringContractId(),
+            $this->getId());
+    }
+
 }

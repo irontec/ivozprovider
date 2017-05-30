@@ -35,8 +35,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'peeringContractId': '', 
      *     'ip': '', 
-     *     'name': '', 
-     *     'description': '', 
      *     'brandId': '', 
      *     'hostname': '', 
      *     'port': '', 
@@ -58,8 +56,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'peeringContractId': '', 
      *     'ip': '', 
-     *     'name': '', 
-     *     'description': '', 
      *     'brandId': '', 
      *     'hostname': '', 
      *     'port': '', 
@@ -97,8 +93,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'id',
                 'peeringContractId',
                 'ip',
-                'name',
-                'description',
                 'brandId',
                 'hostname',
                 'port',
@@ -192,8 +186,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'peeringContractId': '', 
      *     'ip': '', 
-     *     'name': '', 
-     *     'description': '', 
      *     'brandId': '', 
      *     'hostname': '', 
      *     'port': '', 
@@ -230,8 +222,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'id',
                 'peeringContractId',
                 'ip',
-                'name',
-                'description',
                 'brandId',
                 'hostname',
                 'port',
@@ -291,8 +281,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/peer-servers/")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="hostname", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
@@ -347,8 +335,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="hostname", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
@@ -470,16 +456,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'name' => array(
-                    'type' => "varchar",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'description' => array(
-                    'type' => "varchar",
-                    'required' => true,
-                    'comment' => '',
-                ),
                 'brandId' => array(
                     'type' => "int",
                     'required' => true,
@@ -584,16 +560,6 @@ class Rest_PeerServersController extends Iron_Controller_Rest_BaseController
                 'ip' => array(
                     'type' => "varchar",
                     'required' => false,
-                    'comment' => '',
-                ),
-                'name' => array(
-                    'type' => "varchar",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'description' => array(
-                    'type' => "varchar",
-                    'required' => true,
                     'comment' => '',
                 ),
                 'brandId' => array(

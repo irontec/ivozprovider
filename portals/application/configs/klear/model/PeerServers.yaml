@@ -26,17 +26,6 @@ production:
         icon: help
         text: _("Leave empty to send to Host field")
         label: _("Need help?")
-    name: 
-      title: ngettext('Name', 'Names', 1)
-      type: text
-      trim: both
-      defaultValue: 
-      required: true
-    description: 
-      title: ngettext('Description', 'Descriptions', 1)
-      type: text
-      trim: both
-      defaultValue: 
     brandId: 
       title: _('Brand id')
       type: select

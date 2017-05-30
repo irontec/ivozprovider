@@ -49,20 +49,6 @@ class PeerServers extends ModelAbstract
     protected $_ip;
 
     /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_name;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_description;
-
-    /**
      * Database var type int
      *
      * @var int
@@ -209,8 +195,6 @@ class PeerServers extends ModelAbstract
         'id'=>'id',
         'peeringContractId'=>'peeringContractId',
         'ip'=>'ip',
-        'name'=>'name',
-        'description'=>'description',
         'brandId'=>'brandId',
         'hostname'=>'hostname',
         'port'=>'port',
@@ -268,7 +252,6 @@ class PeerServers extends ModelAbstract
 
 
         $this->_defaultValues = array(
-            'description' => '',
             'authNeeded' => 'no',
         );
 
@@ -406,77 +389,6 @@ class PeerServers extends ModelAbstract
     public function getIp()
     {
         return $this->_ip;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setName($data)
-    {
-
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
-        if ($this->_name != $data) {
-            $this->_logChange('name', $this->_name, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_name = $data;
-
-        } else if (!is_null($data)) {
-            $this->_name = (string) $data;
-
-        } else {
-            $this->_name = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->_name;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\PeerServers
-     */
-    public function setDescription($data)
-    {
-
-        if ($this->_description != $data) {
-            $this->_logChange('description', $this->_description, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_description = $data;
-
-        } else if (!is_null($data)) {
-            $this->_description = (string) $data;
-
-        } else {
-            $this->_description = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->_description;
     }
 
     /**
