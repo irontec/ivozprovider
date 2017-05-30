@@ -42,10 +42,8 @@ production:
           from_user: true
           from_domain: true
         order:
-          name: true
           sip_proxy: true
           outbound_proxy: true
-          description: true
       options: 
         title: _("Options")
         screens: 
@@ -69,21 +67,19 @@ production:
           port: true
           strip: true
         order: &peerServersOrder_Link
-          name: true
+          sip_proxy: true
           auth_needed: true
           sendPAI: true
-          ip: true
+          prefix: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
           label: _("Basic Settings")
           colsPerRow: 12
           fields:
-            name: 6
-            description: 6
-            sip_proxy: 7
-            uri_scheme: 3
+            sip_proxy: 4
+            outbound_proxy: 4
+            uri_scheme: 2
             transport: 2
-            outbound_proxy: 7
         group1:
           label: _("Authentication Settings")
           colsPerRow: 12
