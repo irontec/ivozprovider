@@ -216,8 +216,8 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
      * @ApiRoute(name="/rest/pricing-plans-rel-companies/")
      * @ApiParams(name="pricingPlanId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="validFrom", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="validTo", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="validFrom", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="validTo", nullable=false, type="datetime", sample="", description="")
      * @ApiParams(name="metric", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
@@ -257,8 +257,8 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="pricingPlanId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="validFrom", nullable=true, type="datetime", sample="", description="")
-     * @ApiParams(name="validTo", nullable=true, type="datetime", sample="", description="")
+     * @ApiParams(name="validFrom", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="validTo", nullable=false, type="datetime", sample="", description="")
      * @ApiParams(name="metric", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
@@ -367,12 +367,12 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
                 ),
                 'validFrom' => array(
                     'type' => "datetime",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
                 'validTo' => array(
                     'type' => "datetime",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
                 'metric' => array(
@@ -408,12 +408,12 @@ class Rest_PricingPlansRelCompaniesController extends Iron_Controller_Rest_BaseC
                 ),
                 'validFrom' => array(
                     'type' => "datetime",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
                 'validTo' => array(
                     'type' => "datetime",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
                 'metric' => array(
