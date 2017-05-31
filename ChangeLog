@@ -22,9 +22,10 @@ Fri, 19 May 2017 17:29:03 +0200 IvozProvider Development Team <dev@list-ivozprov
         - Add support for default Company Outgoing DDI
         - Friends have directmedia enabled using INVITE method
         - Friends Diversion headers are removed before placing external calls
+        - Friends can use any company DDI as outgoing DDI for external calls
         - Added error notifications over progress:
             - Enabled via Brand/Companies Features
-            - Plays a fixed locution when configuration does not allow to call (ACL, Princing, etc)
+            - Plays a fixed locution when configuration does not allow to call (ACL, Pricing, etc)
         - Added Queues support:
             - Beta Stage: This requires more testing for distributed installations
             - Enabled via Brand/Companies Features
