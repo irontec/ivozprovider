@@ -129,7 +129,7 @@ class ExternalCallAction extends RouterAction
      * before placing the call to proxytrunks. This will allow to handle it as
      * an incoming call with a new callid.
      *
-     * @parma string $e164number dialed number in E.164 format
+     * @param string $e164number dialed number in E.164 format
      */
     protected function checkDDIBounced($e164number)
     {
@@ -140,4 +140,31 @@ class ExternalCallAction extends RouterAction
             $this->agi->setVariable("_BOUNCEME", "yes");
         }
     }
+
+    /**
+     * @brief Check if the diversion header contains a valid number
+     *
+     * @param Company owner of the diversion number
+     */
+    protected function checkDiversionNumber($company)
+    {
+        if ($this->agi->getRedirecting('count')) {
+            // Check if the Diversion Number is a company extension
+            $diversionNum = $this->agi->getRedirecting('from-num');
+            if (($diversionExt = $company->getExtension($diversionNum))) {
+                $this->agi->notice("Replacing invalid Diversion Detected from Extension %s", $diversionNum);
+                $diversionUsers = $diversionExt->getUsers();
+                $diversionUser = array_shift($diversionUsers);
+                // Replace user extension with user outgoingDDI
+                $this->agi->setRedirecting('from-num,i', $diversionUser->getOutgoingDDI()->getDDIE164());
+
+            // Check if the Diversion Number is a company DDI
+            } else if (!$company->getDDI($diversionNum)) {
+                // Not a Company DDI nor a Company Extension. Remove it.
+                $this->agi->error("Removing invalid diversion header from %s", $diversionNum);
+                $this->agi->setRedirecting('count', 0);
+            }
+        }
+    }
+
 }
