@@ -51,6 +51,13 @@ class Companies extends Raw\Companies
         return array_shift($extensions);
     }
 
+    public function getDDI($ddieE164)
+    {
+        $ddis = $this->getDDIs("DDIE164='" . $ddieE164 . "'");
+        return array_shift($ddis);
+    }
+
+
     public function getFriend($exten)
     {
         $friends = $this->getFriends(null, "priority ASC");
