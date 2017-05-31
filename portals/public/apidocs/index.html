@@ -400,7 +400,10 @@
         
 <tr>
     <td>ip</td>
-    <td>varbinary(16</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
     <td>Yes</td>
     <td></td>
 </tr>
@@ -542,7 +545,10 @@
 
 <tr>
     <td>ip</td>
-    <td>varbinary(16</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
     <td>Yes</td>
     <td></td>
 </tr>
@@ -7638,7 +7644,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -7648,7 +7654,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
     </tbody>
@@ -7873,7 +7879,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -7883,7 +7889,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
     </tbody>
@@ -16342,7 +16348,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -16352,7 +16358,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
     </tbody>
@@ -16577,7 +16583,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -16587,7 +16593,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
     </tbody>
@@ -29398,11 +29404,13 @@
 <pre id="sample_response165">[{
      'id': '', 
      'brandId': '', 
+     'name': '', 
      'description': '', 
      'cost': ''
  },{
      'id': '', 
      'brandId': '', 
+     'name': '', 
      'description': '', 
      'cost': ''
  }]</pre>
@@ -29526,6 +29534,7 @@
 <pre id="sample_response166">{
      'id': '', 
      'brandId': '', 
+     'name': '', 
      'description': '', 
      'cost': ''
  }</pre>
@@ -29593,12 +29602,22 @@
 </tr>
 
 <tr>
-    <td>description</td>
+    <td>name</td>
     <td>varchar 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>description</td>
+    <td>text 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -29643,6 +29662,11 @@
 <div class="form-group">
     <label class="control-label" for="brandId">brandId</label>
     <input type="text" class="form-control input-sm" id="brandId" placeholder=" - Ex: " name="brandId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="name">name</label>
+    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
 </div>
 
 <div class="form-group">
@@ -29753,12 +29777,22 @@
 </tr>
 
 <tr>
-    <td>description</td>
+    <td>name</td>
     <td>varchar 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>description</td>
+    <td>text 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -29808,6 +29842,11 @@
 <div class="form-group">
     <label class="control-label" for="brandId">brandId</label>
     <input type="text" class="form-control input-sm" id="brandId" placeholder=" - Ex: " name="brandId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="name">name</label>
+    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
 </div>
 
 <div class="form-group">
@@ -56289,7 +56328,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -56299,7 +56338,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
     </tbody>
@@ -56509,7 +56548,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -56519,7 +56558,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>Yes</td>
+    <td>No</td>
     <td></td>
 </tr>
     </tbody>
@@ -60714,8 +60753,6 @@
      'id': '', 
      'peeringContractId': '', 
      'ip': '', 
-     'name': '', 
-     'description': '', 
      'brandId': '', 
      'hostname': '', 
      'port': '', 
@@ -60737,8 +60774,6 @@
      'id': '', 
      'peeringContractId': '', 
      'ip': '', 
-     'name': '', 
-     'description': '', 
      'brandId': '', 
      'hostname': '', 
      'port': '', 
@@ -60878,8 +60913,6 @@
      'id': '', 
      'peeringContractId': '', 
      'ip': '', 
-     'name': '', 
-     'description': '', 
      'brandId': '', 
      'hostname': '', 
      'port': '', 
@@ -60968,26 +61001,6 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td></td>
-</tr>
-
-<tr>
-    <td>name</td>
-    <td>varchar 
-<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
-    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
-</a></td>
-    <td>Yes</td>
-    <td></td>
-</tr>
-
-<tr>
-    <td>description</td>
-    <td>varchar 
-<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
-    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
-</a></td>
-    <td>Yes</td>
     <td></td>
 </tr>
 
@@ -61197,16 +61210,6 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="name">name</label>
-    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
-</div>
-
-<div class="form-group">
-    <label class="control-label" for="description">description</label>
-    <input type="text" class="form-control input-sm" id="description" placeholder=" - Ex: " name="description">
-</div>
-
-<div class="form-group">
     <label class="control-label" for="brandId">brandId</label>
     <input type="text" class="form-control input-sm" id="brandId" placeholder=" - Ex: " name="brandId">
 </div>
@@ -61395,26 +61398,6 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td></td>
-</tr>
-
-<tr>
-    <td>name</td>
-    <td>varchar 
-<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
-    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
-</a></td>
-    <td>Yes</td>
-    <td></td>
-</tr>
-
-<tr>
-    <td>description</td>
-    <td>varchar 
-<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
-    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
-</a></td>
-    <td>Yes</td>
     <td></td>
 </tr>
 
@@ -61626,16 +61609,6 @@
 <div class="form-group">
     <label class="control-label" for="ip">ip</label>
     <input type="text" class="form-control input-sm" id="ip" placeholder=" - Ex: " name="ip">
-</div>
-
-<div class="form-group">
-    <label class="control-label" for="name">name</label>
-    <input type="text" class="form-control input-sm" id="name" placeholder=" - Ex: " name="name">
-</div>
-
-<div class="form-group">
-    <label class="control-label" for="description">description</label>
-    <input type="text" class="form-control input-sm" id="description" placeholder=" - Ex: " name="description">
 </div>
 
 <div class="form-group">
@@ -65245,7 +65218,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>No</td>
+    <td>Yes</td>
     <td></td>
 </tr>
 
@@ -65255,7 +65228,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>No</td>
+    <td>Yes</td>
     <td></td>
 </tr>
 
@@ -65450,7 +65423,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>No</td>
+    <td>Yes</td>
     <td></td>
 </tr>
 
@@ -65460,7 +65433,7 @@
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
-    <td>No</td>
+    <td>Yes</td>
     <td></td>
 </tr>
 
@@ -80245,7 +80218,7 @@
      'doNotDisturb': '', 
      'isBoss': '', 
      'bossAssistantId': '', 
-     'exceptionBoosAssistantRegExp': '',
+     'exceptionBoosAssistantRegExp': '', 
      'active': '', 
      'maxCalls': '', 
      'voicemailEnabled': '', 
@@ -80270,7 +80243,7 @@
      'doNotDisturb': '', 
      'isBoss': '', 
      'bossAssistantId': '', 
-     'exceptionBoosAssistantRegExp': '',
+     'exceptionBoosAssistantRegExp': '', 
      'active': '', 
      'maxCalls': '', 
      'voicemailEnabled': '', 
@@ -80413,7 +80386,7 @@
      'doNotDisturb': '', 
      'isBoss': '', 
      'bossAssistantId': '', 
-     'exceptionBoosAssistantRegExp': '',
+     'exceptionBoosAssistantRegExp': '', 
      'active': '', 
      'maxCalls': '', 
      'voicemailEnabled': '', 
@@ -82312,7 +82285,7 @@
 
         <div class="row mt0 footer">
             <div class="col-md-6" align="left">
-                Generated on 2017-05-30, 17:02:02
+                Generated on 2017-05-31, 12:22:23
             </div>
             <div class="col-md-6" align="right">
                 <a href="https://github.com/calinrada/php-apidoc" target="_blank">php-apidoc v 1.3.4</a>

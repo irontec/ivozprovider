@@ -230,8 +230,8 @@ class Rest_BrandOperatorsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="lastname", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="lastname", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/brandoperators/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -273,8 +273,8 @@ class Rest_BrandOperatorsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="lastname", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="lastname", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -401,12 +401,12 @@ class Rest_BrandOperatorsController extends Iron_Controller_Rest_BaseController
                 ),
                 'name' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'lastname' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
             )
@@ -452,12 +452,12 @@ class Rest_BrandOperatorsController extends Iron_Controller_Rest_BaseController
                 ),
                 'name' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'lastname' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
             )

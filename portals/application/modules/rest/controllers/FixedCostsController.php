@@ -34,11 +34,13 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'brandId': '', 
+     *     'name': '', 
      *     'description': '', 
      *     'cost': ''
      * },{
      *     'id': '', 
      *     'brandId': '', 
+     *     'name': '', 
      *     'description': '', 
      *     'cost': ''
      * }]")
@@ -60,6 +62,7 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'brandId',
+                'name',
                 'description',
                 'cost',
             );
@@ -137,6 +140,7 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'brandId': '', 
+     *     'name': '', 
      *     'description': '', 
      *     'cost': ''
      * }")
@@ -157,6 +161,7 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'brandId',
+                'name',
                 'description',
                 'cost',
             );
@@ -200,7 +205,8 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/fixed-costs/")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="cost", nullable=true, type="decimal", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/fixedcosts/{id}")
@@ -238,7 +244,8 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/fixed-costs/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="cost", nullable=true, type="decimal", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -339,9 +346,14 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'description' => array(
+                'name' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'description' => array(
+                    'type' => "text",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'cost' => array(
@@ -365,9 +377,14 @@ class Rest_FixedCostsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'description' => array(
+                'name' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'description' => array(
+                    'type' => "text",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'cost' => array(
