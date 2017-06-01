@@ -173,10 +173,57 @@ solution.
    the domain will be displayed in this list so global administrator can check
    what domains are registered for each company.
 
+Brands
+------
+
+After the initial installation, the platform will have an already created brand
+called DemoBrand. Let's inspect its parameters:
+
+.. glossary::
+
+    Name
+        Sets the name for this brand.
+
+    NIF
+        Number used in this brand's invoices.
+
+    Logo
+        Used as default logo in invoices and in portals (if they don't specify
+        another logo).
+
+    Invoice data
+        Data included in invoices created by this brand.
+
+    Mail data
+        Display name and from address used in external emails for this brand
+        (faxes, voicemail, etc.)
+
+    Recordings
+        Configures a limit for the size of recordings of this brand. A
+        notification is sent to configured address when 80% is reached and
+        older recordings are rotated when configured size is reached.
+
+    Features
+        Introduced in 1.3, lets god operator choose the features of the created
+        brand. An equivalent configuration is available in Companies, to choose
+        between the ones that god operator gave to your Brand. Related sections
+        are hidden consequently.
+
+.. hint:: Some features (currently invoices and billing) are related to brand and
+           cannot be assigned to companies. Remaining features are related to
+           companies and lets the brand operator to assign them to its companies.
+
+.. warning:: Disabling billing hides all related sections and assumes that an
+             external element will set a price for calls (external tarification
+             module is needed, ask for it!).
+
+.. note:: Disabling invoices hides related sections, assuming you will use an
+          external tool to generate them.
+
 Emulate the Demo brand
 ======================
 
-After the initial installation, the platform will have an already created brand
+As mentioned above, the initial installation will have an already created brand
 called DemoBrand, that will be used for our goal: to have 2 telephones registered
 that can call each other.
 
@@ -261,4 +308,3 @@ operator will see using its brand portal.
    able to see some fields in some screens that other admins cann't (i.e. On
    Company edit screen, fields like 'Media relays' or 'Application server' are
    only configurable by the global operator.
-
