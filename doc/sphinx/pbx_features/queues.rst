@@ -61,4 +61,4 @@ penalty is available**.
 
 .. hint:: A call can be sent to a queue selecting it in the "Route type" selectors
           available in multiple sections of IvozProvider (extension to queue, DDI
-          to queue, call forward to call, etc.)
+          to queue, etc.)
