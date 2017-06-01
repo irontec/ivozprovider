@@ -13,10 +13,6 @@ ALTER TABLE kam_users_domain_attrs MODIFY did VARCHAR(190) NOT NULL;
 ALTER TABLE kam_users_location_attrs MODIFY domain VARCHAR(190) DEFAULT NULL;
 ALTER TABLE kam_users_location MODIFY domain VARCHAR(190) DEFAULT NULL;
 
-ALTER TABLE kam_users_xcap MODIFY domain VARCHAR(190) NOT NULL;
-ALTER TABLE kam_users_active_watchers MODIFY to_domain VARCHAR(190) NOT NULL;
-ALTER TABLE kam_users_active_watchers MODIFY from_domain VARCHAR(190) NOT NULL;
-ALTER TABLE kam_users_watchers MODIFY watcher_domain VARCHAR(190) NOT NULL;
 ALTER TABLE kam_trunks_uacreg MODIFY l_domain VARCHAR(190) DEFAULT 'unused' NOT NULL;
 ALTER TABLE kam_trunks_uacreg MODIFY r_domain VARCHAR(190) DEFAULT '' NOT NULL;
 ALTER TABLE kam_users_missed_calls MODIFY from_domain VARCHAR(190) DEFAULT NULL;
@@ -32,5 +28,4 @@ ALTER TABLE Friends MODIFY from_domain VARCHAR(190) DEFAULT NULL;
 ALTER TABLE Friends MODIFY `name` varchar(65) NOT NULL;
 ALTER TABLE Friends MODIFY `domain` varchar(190) DEFAULT NULL;
 ALTER TABLE ast_ps_endpoints MODIFY `from_domain` varchar(190) DEFAULT NULL;
-ALTER TABLE kam_users_presentity MODIFY domain VARCHAR(190) NOT NULL;
 ALTER TABLE MainOperators MODIFY username VARCHAR(65) NOT NULL;
