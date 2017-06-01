@@ -21,7 +21,6 @@ production:
           nif: true
           logo: true
           domain_users: true
-          domain_trunks: true
           defaultTimezoneId: true
           languageId: true
           postalAddress: true
@@ -31,6 +30,7 @@ production:
           country: true
           registryData: true
         blacklist:
+          domain_trunks: true
           iden: true
           postalAddress: true
           province: true
@@ -69,6 +69,7 @@ production:
       shortcutOption: N
       fields:
         blacklist:
+          domain_trunks: true
           nif: true
           logo: true
           domain_trunks: true
@@ -138,6 +139,8 @@ production:
       label: false
       title: _("Edit %s %2s", ngettext('Brand', 'Brands', 1), "[format| (%item%)]")
       fields:
+        blacklist:
+          domain_trunks: true
         order:
           <<: *brandsOrder_Link
       fixedPositions:
