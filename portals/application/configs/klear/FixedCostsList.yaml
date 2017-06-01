@@ -23,6 +23,10 @@ production:
           dialogs: 
             fixedCostsDel_dialog: true
           default: fixedCostsEdit_screen
+        order: &fixedCostsFldOrder
+          - name
+          - cost
+          - description
       options: 
         title: _("Options")
         screens: 
@@ -40,12 +44,10 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
-      fixedPositions:
-        group0:
-          colsPerRow: 12
-          fields:
-            description: 9
-            cost: 3
+      fields:
+          order:
+            <<: *fixedCostsFldOrder
+
     fixedCostsEdit_screen: &fixedCostsEdit_screenLink 
       <<: *FixedCosts
       controller: edit
@@ -55,6 +57,10 @@ production:
       title: _("Edit %s %2s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
+      fields:
+          order:
+            <<: *fixedCostsFldOrder
+
   dialogs: &fixedCosts_dialogsLink 
     fixedCostsDel_dialog: &fixedCostsDel_dialogLink 
       <<: *FixedCosts

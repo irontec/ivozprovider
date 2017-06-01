@@ -45,26 +45,6 @@ class Users extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         ),
-        'UsersIbfk10' => array(
-            'columns' => 'callACLId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk11' => array(
-            'columns' => 'bossAssistantId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk12' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
-            'refColumns' => 'id'
-        ),
-        'UsersIbfk13' => array(
-            'columns' => 'languageId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
         'UsersIbfk3' => array(
             'columns' => 'terminalId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
@@ -84,6 +64,26 @@ class Users extends TableAbstract
             'columns' => 'outgoingDDIId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
             'refColumns' => 'id'
+        ),
+        'UsersIbfk10' => array(
+            'columns' => 'callACLId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\CallACL',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk11' => array(
+            'columns' => 'bossAssistantId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk12' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
+        'UsersIbfk13' => array(
+            'columns' => 'languageId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -101,6 +101,9 @@ class Users extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustomEntries',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpRelUsers',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\QueueMembers',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
         'IvozProvider\\Mapper\\Sql\\DbTable\\AstVoicemail'
     );
@@ -360,48 +363,14 @@ class Users extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'username' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Users',
-	    'COLUMN_NAME' => 'username',
-	    'COLUMN_POSITION' => 16,
-	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => '100',
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
 	  'active' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'active',
-	    'COLUMN_POSITION' => 17,
+	    'COLUMN_POSITION' => 16,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '0',
-	    'NULLABLE' => false,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'maxCalls' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'Users',
-	    'COLUMN_NAME' => 'maxCalls',
-	    'COLUMN_POSITION' => 18,
-	    'DATA_TYPE' => 'tinyint',
-	    'DEFAULT' => '2',
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
@@ -411,13 +380,13 @@ class Users extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'callWaiting' => 
+	  'maxCalls' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
-	    'COLUMN_NAME' => 'callWaiting',
-	    'COLUMN_POSITION' => 19,
-	    'DATA_TYPE' => 'tinyint',
+	    'COLUMN_NAME' => 'maxCalls',
+	    'COLUMN_POSITION' => 17,
+	    'DATA_TYPE' => 'smallint',
 	    'DEFAULT' => '0',
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
@@ -433,7 +402,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'voicemailEnabled',
-	    'COLUMN_POSITION' => 20,
+	    'COLUMN_POSITION' => 18,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '1',
 	    'NULLABLE' => false,
@@ -450,7 +419,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'voicemailSendMail',
-	    'COLUMN_POSITION' => 21,
+	    'COLUMN_POSITION' => 19,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '0',
 	    'NULLABLE' => false,
@@ -467,7 +436,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'voicemailAttachSound',
-	    'COLUMN_POSITION' => 22,
+	    'COLUMN_POSITION' => 20,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '1',
 	    'NULLABLE' => false,
@@ -484,7 +453,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'tokenKey',
-	    'COLUMN_POSITION' => 23,
+	    'COLUMN_POSITION' => 21,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -501,7 +470,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'countryId',
-	    'COLUMN_POSITION' => 24,
+	    'COLUMN_POSITION' => 22,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -518,7 +487,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'languageId',
-	    'COLUMN_POSITION' => 25,
+	    'COLUMN_POSITION' => 23,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -535,7 +504,7 @@ class Users extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
 	    'COLUMN_NAME' => 'areaCode',
-	    'COLUMN_POSITION' => 26,
+	    'COLUMN_POSITION' => 24,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

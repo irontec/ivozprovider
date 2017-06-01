@@ -356,7 +356,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/ast-voicemail/")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="mailbox", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="password", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="fullname", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="alias", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
@@ -425,7 +425,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="uniqueid", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="mailbox", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="password", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="fullname", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="alias", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="email", nullable=true, type="varchar", sample="", description="")
@@ -563,7 +563,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
                 ),
                 'password' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'fullname' => array(
@@ -744,7 +744,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
                 ),
                 'password' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'fullname' => array(

@@ -19,16 +19,6 @@ production:
       title: _('Ip')
       type: text
       maxLength: 50
-    name: 
-      title: ngettext('Name', 'Names', 1)
-      type: text
-      required: true
-      maxLength: 200
-    description: 
-      title: ngettext('Description', 'Descriptions', 1)
-      type: text
-      defaultValue: 
-      maxLength: 500
     brandId: 
       title: _('Brandid')
       type: select
@@ -128,7 +118,7 @@ production:
     from_domain: 
       title: _('Fromdomain')
       type: text
-      maxLength: 64
+      maxLength: 190
 staging: 
   _extends: production
 testing: 

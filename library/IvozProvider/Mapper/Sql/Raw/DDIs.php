@@ -68,6 +68,7 @@ class DDIs extends MapperAbstract
                 'billInboundCalls' => $model->getBillInboundCalls(),
                 'friendValue' => $model->getFriendValue(),
                 'languageId' => $model->getLanguageId(),
+                'queueId' => $model->getQueueId(),
             );
         } else {
             $result = array();
@@ -464,6 +465,20 @@ class DDIs extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getCompanies(null, null, true) !== null) {
+                    $companies = $model->getCompanies();
+
+                    if (!is_array($companies)) {
+
+                        $companies = array($companies);
+                    }
+
+                    foreach ($companies as $value) {
+                        $value->setOutgoingDDIId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getFaxes(null, null, true) !== null) {
                     $faxes = $model->getFaxes();
 
@@ -626,7 +641,8 @@ class DDIs extends MapperAbstract
                   ->setCountryId($data['countryId'])
                   ->setBillInboundCalls($data['billInboundCalls'])
                   ->setFriendValue($data['friendValue'])
-                  ->setLanguageId($data['languageId']);
+                  ->setLanguageId($data['languageId'])
+                  ->setQueueId($data['queueId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -647,7 +663,8 @@ class DDIs extends MapperAbstract
                   ->setCountryId($data->{'countryId'})
                   ->setBillInboundCalls($data->{'billInboundCalls'})
                   ->setFriendValue($data->{'friendValue'})
-                  ->setLanguageId($data->{'languageId'});
+                  ->setLanguageId($data->{'languageId'})
+                  ->setQueueId($data->{'queueId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
             $entry->setId($data->getId())
@@ -669,7 +686,8 @@ class DDIs extends MapperAbstract
                   ->setCountryId($data->getCountryId())
                   ->setBillInboundCalls($data->getBillInboundCalls())
                   ->setFriendValue($data->getFriendValue())
-                  ->setLanguageId($data->getLanguageId());
+                  ->setLanguageId($data->getLanguageId())
+                  ->setQueueId($data->getQueueId());
 
         }
 

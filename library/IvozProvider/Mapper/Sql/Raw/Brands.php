@@ -65,6 +65,8 @@ class Brands extends MapperAbstract
                 'languageId' => $model->getLanguageId(),
                 'FromName' => $model->getFromName(),
                 'FromAddress' => $model->getFromAddress(),
+                'recordingsLimitMB' => $model->getRecordingsLimitMB(),
+                'recordingsLimitEmail' => $model->getRecordingsLimitEmail(),
             );
         } else {
             $result = array();
@@ -545,6 +547,20 @@ class Brands extends MapperAbstract
                     }
                 }
 
+                if ($model->getFeaturesRelBrands(null, null, true) !== null) {
+                    $featuresRelBrands = $model->getFeaturesRelBrands();
+
+                    if (!is_array($featuresRelBrands)) {
+
+                        $featuresRelBrands = array($featuresRelBrands);
+                    }
+
+                    foreach ($featuresRelBrands as $value) {
+                        $value->setBrandId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getFixedCosts(null, null, true) !== null) {
                     $fixedCosts = $model->getFixedCosts();
 
@@ -928,7 +944,9 @@ class Brands extends MapperAbstract
                   ->setRegistryData($data['registryData'])
                   ->setLanguageId($data['languageId'])
                   ->setFromName($data['FromName'])
-                  ->setFromAddress($data['FromAddress']);
+                  ->setFromAddress($data['FromAddress'])
+                  ->setRecordingsLimitMB($data['recordingsLimitMB'])
+                  ->setRecordingsLimitEmail($data['recordingsLimitEmail']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
@@ -946,7 +964,9 @@ class Brands extends MapperAbstract
                   ->setRegistryData($data->{'registryData'})
                   ->setLanguageId($data->{'languageId'})
                   ->setFromName($data->{'FromName'})
-                  ->setFromAddress($data->{'FromAddress'});
+                  ->setFromAddress($data->{'FromAddress'})
+                  ->setRecordingsLimitMB($data->{'recordingsLimitMB'})
+                  ->setRecordingsLimitEmail($data->{'recordingsLimitEmail'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Brands) {
             $entry->setId($data->getId())
@@ -965,7 +985,9 @@ class Brands extends MapperAbstract
                   ->setRegistryData($data->getRegistryData())
                   ->setLanguageId($data->getLanguageId())
                   ->setFromName($data->getFromName())
-                  ->setFromAddress($data->getFromAddress());
+                  ->setFromAddress($data->getFromAddress())
+                  ->setRecordingsLimitMB($data->getRecordingsLimitMB())
+                  ->setRecordingsLimitEmail($data->getRecordingsLimitEmail());
 
         }
 

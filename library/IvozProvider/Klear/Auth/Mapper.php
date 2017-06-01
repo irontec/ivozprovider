@@ -53,6 +53,29 @@ abstract class Mapper implements \Klear_Auth_Adapter_Interfaces_BasicUserMapper
         return $this;
     }
 
+    protected function _enableFeatures($user, $entity)
+    {
+        // Enable/disable features
+        $features = array();
+        $featureMapper = new \IvozProvider\Mapper\Sql\Features;
+        foreach ($featureMapper->fetchList() as $feature) {
+            $featureName = $feature->getIden();
+            $featureId = $feature->getId();
+            $enabled = $entity->hasFeature($featureId);
+            $features[$featureName] = array(
+                "enabled" => $enabled,
+                "disabled" => !$enabled
+            );
+        }
+
+        // Brand or company!
+        if ($entity instanceof \IvozProvider\Model\Raw\Brands) {
+            $user->brand = $features;
+        } else {
+            $user->company = $features;
+        }
+    }
+
     protected abstract function _populateCustomPerms(\IvozProvider\Klear\Auth\User $user, $operator);
 
 }

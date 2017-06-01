@@ -10,7 +10,7 @@ production:
       title: _('Ip')
       type: text
       required: true
-      maxLength: 100
+      maxLength: 50
 staging: 
   _extends: production
 testing: 

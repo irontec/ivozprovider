@@ -23,7 +23,7 @@ msgid ""
 "to the previous role. The general (God) administrator is in charge of "
 "providing an URL with credentials for its brand portal."
 msgstr "El operador de marca utiliza la plataforma con un acceso y una "
-"visibilidad menor que el rol anterior. En concreto, el operador global le"
+"visibilidad menor que el rol anterior. En concreto, el operador global le "
 "facilita una URL y unas credenciales y ese portal web de operador de "
 "Marca es su único interfaz con IvozProvider."
 
@@ -318,7 +318,7 @@ msgstr "Desde el portal de usuario podrán ver sus registros de llamadas y "
 msgid ""
 "On the other hand, the SIP creadentials allow the users to configure "
 "their terminal (or terminals) to place and receive calls."
-msgstr "Por otra parte, las credenciales SIP le permitirán configurar su terminal"
+msgstr "Por otra parte, las credenciales SIP le permitirán configurar su terminal "
 "(o terminales) para poder emitir y recibir llamadas."
 
 #: ../../operation_roles/user.rst:17

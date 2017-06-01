@@ -51,8 +51,6 @@ class PeerServers extends MapperAbstract
                 'id' => $model->getId(),
                 'peeringContractId' => $model->getPeeringContractId(),
                 'ip' => $model->getIp(),
-                'name' => $model->getName(),
-                'description' => $model->getDescription(),
                 'brandId' => $model->getBrandId(),
                 'hostname' => $model->getHostname(),
                 'port' => $model->getPort(),
@@ -584,8 +582,6 @@ class PeerServers extends MapperAbstract
             $entry->setId($data['id'])
                   ->setPeeringContractId($data['peeringContractId'])
                   ->setIp($data['ip'])
-                  ->setName($data['name'])
-                  ->setDescription($data['description'])
                   ->setBrandId($data['brandId'])
                   ->setHostname($data['hostname'])
                   ->setPort($data['port'])
@@ -607,8 +603,6 @@ class PeerServers extends MapperAbstract
             $entry->setId($data->{'id'})
                   ->setPeeringContractId($data->{'peeringContractId'})
                   ->setIp($data->{'ip'})
-                  ->setName($data->{'name'})
-                  ->setDescription($data->{'description'})
                   ->setBrandId($data->{'brandId'})
                   ->setHostname($data->{'hostname'})
                   ->setPort($data->{'port'})
@@ -631,8 +625,6 @@ class PeerServers extends MapperAbstract
             $entry->setId($data->getId())
                   ->setPeeringContractId($data->getPeeringContractId())
                   ->setIp($data->getIp())
-                  ->setName($data->getName())
-                  ->setDescription($data->getDescription())
                   ->setBrandId($data->getBrandId())
                   ->setHostname($data->getHostname())
                   ->setPort($data->getPort())

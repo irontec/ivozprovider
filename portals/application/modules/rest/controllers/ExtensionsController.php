@@ -40,7 +40,10 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
      *     'conferenceRoomId': '', 
-     *     'userId': ''
+     *     'userId': '', 
+     *     'numberValue': '', 
+     *     'friendValue': '', 
+     *     'queueId': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -50,7 +53,10 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
      *     'conferenceRoomId': '', 
-     *     'userId': ''
+     *     'userId': '', 
+     *     'numberValue': '', 
+     *     'friendValue': '', 
+     *     'queueId': ''
      * }]")
      */
     public function indexAction()
@@ -77,6 +83,9 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
                 'huntGroupId',
                 'conferenceRoomId',
                 'userId',
+                'numberValue',
+                'friendValue',
+                'queueId',
             );
         }
 
@@ -158,7 +167,10 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
      *     'conferenceRoomId': '', 
-     *     'userId': ''
+     *     'userId': '', 
+     *     'numberValue': '', 
+     *     'friendValue': '', 
+     *     'queueId': ''
      * }")
      */
     public function getAction()
@@ -184,6 +196,9 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
                 'huntGroupId',
                 'conferenceRoomId',
                 'userId',
+                'numberValue',
+                'friendValue',
+                'queueId',
             );
         }
 
@@ -226,12 +241,15 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/extensions/")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="number", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]")
+     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="numberValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="queueId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/extensions/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -269,12 +287,15 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="number", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]")
+     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="numberValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="queueId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -382,7 +403,7 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
                 'routeType' => array(
                     'type' => "varchar",
                     'required' => false,
-                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]',
+                    'comment' => '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]',
                 ),
                 'IVRCommonId' => array(
                     'type' => "int",
@@ -405,6 +426,21 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'userId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'numberValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'friendValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'queueId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',
@@ -433,7 +469,7 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
                 'routeType' => array(
                     'type' => "varchar",
                     'required' => false,
-                    'comment' => '[enum:user|IVRCommon|IVRCustom|huntGroup|conferenceRoom]',
+                    'comment' => '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]',
                 ),
                 'IVRCommonId' => array(
                     'type' => "int",
@@ -456,6 +492,21 @@ class Rest_ExtensionsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'userId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'numberValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'friendValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'queueId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',

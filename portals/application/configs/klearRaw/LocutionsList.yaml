@@ -6,6 +6,7 @@
 #include IVRCommonList.yaml
 #include IVRCustomList.yaml
 #include IVRCustomEntriesList.yaml
+#include QueuesList.yaml
 
 
 production: 
@@ -31,6 +32,7 @@ production:
             iVRCommonList_screen: true
             iVRCustomList_screen: true
             iVRCustomEntriesList_screen: true
+            queuesList_screen: true
           dialogs: 
             locutionsDel_dialog: true
           default: locutionsEdit_screen
@@ -137,6 +139,19 @@ production:
       <<: *iVRCustomEntriesEdit_screenLink
       filterField: welcomeLocutionId
 
+    #queues: 
+    queuesList_screen: 
+      <<: *queuesList_screenLink
+      filterField: fullLocutionId
+      parentOptionCustomizer: 
+        - recordCount
+    queuesNew_screen: 
+      <<: *queuesNew_screenLink
+      filterField: fullLocutionId
+    queuesEdit_screen: 
+      <<: *queuesEdit_screenLink
+      filterField: fullLocutionId
+
   dialogs: &locutions_dialogsLink 
     locutionsDel_dialog: &locutionsDel_dialogLink 
       <<: *Locutions
@@ -160,6 +175,8 @@ production:
     <<: *iVRCustom_dialogsLink
   # iVRCustomEntries dialogs: 
     <<: *iVRCustomEntries_dialogsLink
+  # queues dialogs: 
+    <<: *queues_dialogsLink
   commands: &locutions_commandsLink 
     locutionsOriginalFileDownload_command: &locutionsOriginalFileDownload_commandLink 
       <<: *Locutions

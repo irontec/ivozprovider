@@ -22,7 +22,9 @@ production:
       source:
         control: Codemirror
         settings:
-          mode: xml
+          mode:
+            - application/xml
+            - xml
           lineNumbers: true
           matchBrackets: true
       <<: *invoiceTemplateHelp

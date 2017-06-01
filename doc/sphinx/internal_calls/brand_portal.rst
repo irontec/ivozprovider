@@ -55,8 +55,9 @@ Once the company has been saved, the domain will be also displayed in the list
 
     .. image:: img/es/domain_list.png
 
-.. attention:: It's important to understand this block. Wihout a DNS domain
-   pointing to our users proxy IP address, everything will fail.
+.. attention:: It's important to understand this block. :ref:`Unless we've a
+   single company registered <dnshack>`, wihout a DNS domain pointing to our
+   users proxy IP address, everything will fail.
 
 This is a good sign for the domain we have configured right now, replacing the
 10.10.3.10 with the public address we have used to configure :ref:`proxyusers`.
@@ -106,6 +107,63 @@ in Domain section:
 .. tip:: It’s important to understand the this trick is only valid for the first
    company of the platform ;)
 
+Remaining parameters
+====================
+
+These are remaining relevant parameters configured in Companies section:
+
+
+.. glossary::
+
+  Name
+      Sets the name for this company.
+
+  NIF
+      Number used in this company's invoices.
+
+  Invoice data
+      Data included in invoices created by this brand.
+
+  Outbound prefix
+      Some companies are used to dial an aditional prefix for outgoing calls.
+
+  Outgoing DDI
+      Introduced in 1.3, this setting selects a DDI for outgoing calls
+      of this company, if it is no overridden in a lower level (e.g. user level)
+
+  Media relay set
+      As mentioned above, media-relay can be grouped in sets to reserve capacities
+      or on a geographical purpose. This section lets you assign them to companies.
+
+  Application Server
+      IvozProvider will distribute calls between all application server, but you
+      can make a static asignment here (e.g. debugging).
+
+  Recordings
+      Configures a limit for the size of recordings of this company. A
+      notification is sent to configured address when 80% is reached and
+      older recordings are rotated when configured size is reached.
+
+  Features
+      Introduced in 1.3, lets brand operator choose the features of the company.
+      Related sections are hidden consequently and the company cannot use them.
+
+.. note:: Most of the features are self-explanatory, but **voice notification**
+          deserves an explanation: if you enable them, when a call fails, the user
+          will listen a locution explaining what ocurred ("you have no permissions
+          to place this call", "the call cannot be billed", etc.)
+
+.. warning:: Recordings rotation happens at two levels: brand and company. This
+              means that **a company's recordings can be rotated even though its limit
+              has not arrived (or even it has no limit) if brand's limit applies first**.
+
+.. error:: Again: recordings rotation happens at two levels: brand and company. This
+              means that **a company's recordings can be rotated even though its limit
+              has not arrived (or even it has no limit) if brand's limit applies first**.
+
+.. hint:: To avoid this, make sure that the sum of all companies does not exceed
+          the size assigned to your brand and make sure that all companies has
+          a size configured (if 0, it has unlimited size).
 
 .. _emulate_company:
 
@@ -148,4 +206,3 @@ show that we are in the right path :)
 
     .. image:. img/es/emular_empresa.png
         :align: center
-

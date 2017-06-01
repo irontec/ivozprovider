@@ -2,17 +2,6 @@
 
 class Provision_IndexController extends Zend_Controller_Action
 {
-
-    protected $_allowedVariables = array(
-            'mac'=>array(
-                    'mapperName' => 'IvozProvider\Mapper\Sql\Terminals',
-                    'field'=>'mac',
-                    'viewName'=>'terminal'
-            )
-         );
-    protected $_firstMatch = 1;
-
-    protected $_logActive;
     public $logger;
 
     public function init()
@@ -33,78 +22,61 @@ class Provision_IndexController extends Zend_Controller_Action
 
     public function templateAction()
     {
+        $isHttps = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']);
+        $terminalUrl = $this->getRequest()->getParam('requested_url');
+        $path = $this->_getFilePath();
+        $terminalModelMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
+        $terminalModel = $this->_searchGenericPattern($terminalModelMapper, $terminalUrl);
 
-       $terminalUrl = $this->getRequest()->getParam('requested_url');
+        if ($terminalModel) {
+            // Generic Template requests must be served over HTTP
+            if ($isHttps) {
+                return $this->_error(403);
+            }
+            return $this->_renderPage('generic', $path, $terminalModel);
+        }
 
-       $path = $this->_getFilePath();
+        // Specific Template requests must be served over HTTPS
+        if (!$isHttps) {
+            return $this->_error(403);
+        }
 
-       $terminalMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
-       $terminalModel = $this->_searchGenericPattern($terminalMapper, $terminalUrl);
+        $terminal = $this->_getTerminalByUrl($terminalUrl);
+        if (!$terminal) {
+            return $this->_error(404, 'Terminal not found');
+        }
 
-       if ( $terminalModel == null ) {
+        $terminalModel = $terminal->getTerminalModel();
+        if (!$terminalModel) {
+            return $this->_error(404, 'TerminalModel not found');
+        }
 
-           if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") {
-               $this->_error('Trying to access using incorrect protocol', 'Forbidden', 403);
-               return;
-           }
+        $this->view->user = $terminal->getUser();
 
-           $data = $this->_searchSpecificPattern($terminalMapper, $terminalUrl);
-           if($data) {
-               $terminalModel = $data['terminalModel'];
-               $urlVariables = $data['urlVariables'];
+        $companyModel = $terminal->getCompany();
+        $this->view->company = $companyModel;
 
-               $userMapper = new \IvozProvider\Mapper\Sql\Users();
+        $brandModel = $companyModel->getBrand();
+        $this->view->brand = $brandModel;
+        $this->view->terminal = $terminal;
 
-               foreach( $this->_allowedVariables as $key=>$variable){
-                   $mapper = new $variable['mapperName']();
-                   $model = $mapper->findOneByField($variable['field'], $urlVariables[$key]);
-                   if($model){
-                       if($model instanceof IvozProvider\Model\Terminals){
-                           $userModel = $userMapper->findOneByField('terminalId', $model->getId() );
-                           $this->view->user = $userModel;
-
-                           $companyModel = $model->getCompany();
-                           $this->view->company = $companyModel;
-
-                           $brandModel = $companyModel->getBrand();
-                           $this->view->brand = $brandModel;
-
-                           $this->view->terminal = $model;
-
-                           $now = \Zend_Date::now()->setTimezone('UTC');
-
-                           $model->setLastProvisionDate($now->toString('dd-MM-yyyy HH:mm:ss'));
-                           $model->save();
-                       }
-                       $this->view->$variable['viewName'] = $model;
-                   }
-                   else{
-                       $this->logger->log($variable['mapperName'] . $variable['field'] . ' = '. $urlVariables[$key] .' does not exist', Zend_Log::WARN);
-                   }
-
-               }
-
-               $this->_renderPage('specific', $path, $terminalModel);
-           }
-           else{
-               $this->_error('TerminalModel not found', 'Not found', 200);
-           }
-       }
-       else{
-           $this->_renderPage('generic', $path, $terminalModel);
-       }
+        $this->_renderPage('specific', $path, $terminalModel);
     }
 
-    protected function _error( $logMessage, $errorMesage, $errorNumber){
-        $this->logger->log($logMessage, Zend_Log::ERR);
+    protected function _error($errorNumber, $logMessage = null)
+    {
+        if ($logMessage) {
+            $this->logger->log($logMessage, Zend_Log::ERR);
+        }
+
         $this->getResponse()
             ->clearHeaders()
             ->setHttpResponseCode($errorNumber)
-            ->appendBody($errorMesage)
             ->sendResponse();
     }
 
-    protected function _renderPage($template, $path, $terminalModel){
+    protected function _renderPage($template, $path, $terminalModel) {
+
         $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $terminalModel->getId();
         $this->view->setScriptPath($route);
         $this->view->terminalModel = $terminalModel;
@@ -118,6 +90,12 @@ class Provision_IndexController extends Zend_Controller_Action
             $this->logger->debug('Response: ' . $this->view->render($template . '.phtml'));
         }
         $this->render($template, 'page', true);
+
+        if ($terminal instanceof IvozProvider\Model\Terminals) {
+            $now = \Zend_Date::now()->setTimezone('UTC');
+            $terminal->setLastProvisionDate($now->toString('dd-MM-yyyy HH:mm:ss'));
+            $terminal->save();
+        }
     }
 
     protected function _searchGenericPattern(\IvozProvider\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
@@ -134,29 +112,34 @@ class Provision_IndexController extends Zend_Controller_Action
         return $terminalModel;
     }
 
-    protected function _searchSpecificPattern(\IvozProvider\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
-        $urlVariables = array();
-        $terminalModels = $terminalMapper->fetchAll();
-        foreach($terminalModels as $terminalModel){
-            $urlPattern = $terminalModel->getSpecificUrlPattern();
-            if( $urlPattern != ''){
-                /* FIXME the only thing that will be replaced in URL is mac. No need to loop over anything!!! */
-                foreach($this->_allowedVariables as $variable=>$attributes){
-                    // Replace '{mac}' in url for a hexadecimal pattern
-                    $urlPattern = str_replace( '{' . $variable . '}', '([[:xdigit:]]+)', $urlPattern, $count);
-                    if( $count > 0 ){
-                        $urlVariables[$variable] = '';
-                    }
-                }
-                $urlPattern = str_replace( '/', '\/', $urlPattern);
-                if (preg_match('/' . $urlPattern . '/', $terminalUrl, $match)){
-                    $urlVariables = $this->_joinKeyValues($urlVariables, $match);
-                    $this->logger->debug('Url params: ' . implode(';', $urlVariables));
-                    return array( 'terminalModel' => $terminalModel, 'urlVariables' => $urlVariables);
-                }
-            }
+    /**
+     * @param string $terminalUrl
+     * @return \IvozProvider\Model\Terminals|null
+     */
+    protected function _getTerminalByUrl($terminalUrl)
+    {
+        $fileName = basename($terminalUrl);
+        $fileExtensionPosition = strrpos($fileName, '.');
+        if ($fileExtensionPosition) {
+            $fileName = substr($fileName, 0, $fileExtensionPosition);
         }
-        return null;
+
+        if (empty($fileName)) {
+            return null;
+        }
+
+        $terminalMapper = new \IvozProvider\Mapper\Sql\Terminals();
+
+        /**
+         * @var IvozProvider\Model\Terminals $terminal
+         */
+        $terminal = $terminalMapper->findOneByField('mac', $fileName);
+
+        if (!$terminal) {
+            return null;
+        }
+
+        return $terminal;
     }
 
     protected function _getFilePath(){
@@ -164,17 +147,6 @@ class Provision_IndexController extends Zend_Controller_Action
         $conf = (Object) $bootstrap->getOptions();
         $path = $conf->Iron['fso']['localStoragePath'];
         return $path;
-    }
-
-    protected function _joinKeyValues($urlVariables, $match){
-        $i = $this->_firstMatch;
-        foreach($urlVariables as $key=>$value){
-            if ( sizeof($match) > $i){
-                $urlVariables[$key] = $match[$i];
-                $i++;
-            }
-        }
-        return $urlVariables;
     }
 
     private function _logRequest()
@@ -197,15 +169,13 @@ class Provision_IndexController extends Zend_Controller_Action
         $requestLog .= " from " . $_SERVER["REMOTE_ADDR"];
 
         $this->logger->debug(
-                "Requesting " . $requestLog
+            "Requesting " . $requestLog
         );
 
         $resquestParams = str_replace("\n", "", $requestParamString);
 
         $this->logger->debug(
-                "Request params: " . $resquestParams
+            "Request params: " . $resquestParams
         );
-
     }
-
 }

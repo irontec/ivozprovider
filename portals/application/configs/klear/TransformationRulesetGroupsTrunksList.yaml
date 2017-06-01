@@ -48,7 +48,6 @@ production:
           automatic: true
           countryId: true
           internationalCode: true
-          nationalNumLength: true
       options: 
         title: _("Options")
         screens: 
@@ -71,6 +70,7 @@ production:
           callee_in: true
           caller_out: true
           callee_out: true
+          nationalNumLength: true
         order:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions: &transformationRulesetGroupsTrunksFixedPositions_Link
@@ -82,12 +82,11 @@ production:
             description: 1
         group1:
           label: _("Automatic creation of rules")
-          colsPerRow: 2
+          colsPerRow: 12
           fields:
-            automatic: 1
-            countryId: 1
-            internationalCode: 1
-            nationalNumLength: 1
+            automatic: 3
+            countryId: 5
+            internationalCode: 4
     transformationRulesetGroupsTrunksEdit_screen: &transformationRulesetGroupsTrunksEdit_screenLink 
       <<: *TransformationRulesetGroupsTrunks
       controller: edit

@@ -21,6 +21,7 @@ production:
     periodTime: 
       title: _('Charge period')
       type: number
+      defaultValue: 1
       required: true
       source: 
         control: Spinner

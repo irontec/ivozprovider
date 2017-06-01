@@ -24,34 +24,14 @@ class ConferenceRoomAction extends RouterAction
         $this->agi->notice("Processing Conference Room %s [conferenceRoom%s]",
                         $room->getName(), $room->getId());
 
-        $conferenceState = $this->agi->getDeviceState($room->getId(), "confbridge:");
-        $this->agi->verbose("Conference Room State = %s", $conferenceState);
+        // Send X-Info-Conf to the proxy
+        $this->agi->setVariable("_CONFERENCE_ID", $room->getId());
+        $this->agi->setVariable("_CONFERENCE_LANG", $this->agi->getVariable("CHANNEL(language)"));
 
-        // Check if conference is already started
-        if ($conferenceState == "INUSE" || $conferenceState == "RINGING") {
-            // Check if conference is in this Application Server
-            $conferenceCount = $this->agi->getConferenceInfo($room->getId(), "members");
-            $this->agi->verbose("Conference Room member count = %d", $conferenceCount);
-            if ($conferenceCount == 0) {
-                // Not here!
-                $this->agi->error("Conference %s [conferenceRooms%s] already started in another AS",
-                                    $room->getName(), $room->getId());
-                $this->agi->hangup(3);
-                return;
-            }
-        }
-
-        // Check if conference requires pin
-        if ($room->getPinProtected()) {
-            $this->agi->setConferenceSetting('user,pin', $room->getPinCode());
-        }
-
-        // Check if conference has max members
-        if ($room->getMaxMembers()) {
-            $this->agi->setConferenceSetting('bridge,max_members', $room->getMaxMembers());
-        }
+        // We're connecting this conference
+        $this->agi->setConnectedLine('name', $room->getName());
 
         // Redirect to Conference context
-        $this->agi->redirect('call-conference', $room->getId());
+        $this->agi->redirect('call-conference', $this->agi->getExtension());
     }
 }

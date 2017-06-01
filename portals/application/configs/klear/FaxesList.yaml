@@ -3,42 +3,42 @@
 #include FaxesInOutList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: faxesList_screen
-  screens: &faxes_screensLink 
-    faxesList_screen: &faxesList_screenLink 
+  screens: &faxes_screensLink
+    faxesList_screen: &faxesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *Faxes
       forcedValues:
         <<: *forcedCompany
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Fax', 'Faxes', 0), "[format| (%parent%)]")
-      fields: &faxes_fieldsLink 
+      fields: &faxes_fieldsLink
         order: &faxes_orderLink
           name: true
           outgoingDDIId: true
           sendByEmail: true
           email: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             faxesEdit_screen: true
             faxesInList_screen: true
             faxesOutList_screen: true
-          dialogs: 
+          dialogs:
             faxesDel_dialog: true
           default: faxesEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           faxesNew_screen: true
-        dialogs: 
+        dialogs:
           faxesDel_dialog: true
-    faxesNew_screen: &faxesNew_screenLink 
+    faxesNew_screen: &faxesNew_screenLink
       <<: *Faxes
       controller: new
       class: ui-silk-add
@@ -64,7 +64,7 @@ production:
           fields:
             sendByEmail: 6
             email: 6
-    faxesEdit_screen: &faxesEdit_screenLink 
+    faxesEdit_screen: &faxesEdit_screenLink
       <<: *Faxes
       controller: edit
       class: ui-silk-pencil
@@ -75,17 +75,17 @@ production:
       fields:
         order:
           <<: *faxes_orderLink
-    #faxesInOut: 
+    #faxesInOut:
     <<: *faxesInOut_screensLink
-    faxesInList_screen: 
+    faxesInList_screen:
       <<: *faxesInOutList_screenLink
       class: ui-silk-arrow-down
-      title: _("List of Incoming %s %s", ngettext('Fax in out', 'Faxes in out', 0), "[format| (%parent%)]")
+      title: _("List of Incoming %s %s", ngettext('Faxfile', 'Faxfiles', 0), "[format| (%parent%)]")
       filterField: faxId
       rawCondition: "type = 'In'"
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-      fields: 
+      fields:
         <<: *faxesInOut_fieldsLink
         options:
           title: _("Options")
@@ -99,22 +99,23 @@ production:
       options:
         title: _("Options")
         screens:
-          faxesInOutNew_screen: false 
+          faxesInOutNew_screen: false
         dialogs:
           faxesInOutDel_dialog: true
     faxesOutList_screen:
       <<: *faxesInOutList_screenLink
       class: ui-silk-arrow-up
-      title: _("List of Outgoing %s %s", ngettext('Fax in out', 'Faxes in out', 0), "[format| (%parent%)]")
+      title: _("List of Outgoing %s %s", ngettext('Faxfile', 'Faxfiles', 0), "[format| (%parent%)]")
       filterField: faxId
       rawCondition: "type = 'Out'"
       parentOptionCustomizer:
         - recordCount
-      fields: 
+      fields:
         <<: *faxesInOut_fieldsLink
         options:
           title: _("Options")
           screens:
+            faxesOutView_screen: true
             faxesOutEdit_screen: true
           dialogs:
             forwardFax_dialog: true
@@ -130,14 +131,23 @@ production:
         dialogs:
           faxesInOutDel_dialog: true
 
-    faxesInView_screen: 
+    faxesInView_screen:
       <<: *faxesInOutEdit_screenLink
-      title: _("View Incoming %s %s", ngettext('Fax in out', 'Faxes in out', 0), "[format| (%item%)]")
+      title: _("View Incoming %s %s", ngettext('Faxfile', 'Faxefiles', 0), "[format| (%item%)]")
       filterField: faxId
       class: ui-silk-eye
       disableSave: true
 
-    faxesOutNew_screen: 
+    faxesOutView_screen:
+      <<: *faxesInOutEdit_screenLink
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForFax
+      title: _("View Outgoing %s %s", ngettext('Faxfile', 'Faxefiles', 0), "[format| (%item%)]")
+      filterField: faxId
+      class: ui-silk-eye
+      disableSave: true
+
+    faxesOutNew_screen:
       <<: *faxesInOutNew_screenLink
       filterField: faxId
       forcedValues:
@@ -151,8 +161,10 @@ production:
           src: true
           status: true
 
-    faxesOutEdit_screen: 
+    faxesOutEdit_screen:
       <<: *faxesInOutEdit_screenLink
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForFax
       forcedValues:
         type: 'Out'
       filterField: faxId
@@ -166,9 +178,10 @@ production:
           src: true
         readOnly:
           status: true
+          file: true
 
-  dialogs: &faxes_dialogsLink 
-    faxesDel_dialog: &faxesDel_dialogLink 
+  dialogs: &faxes_dialogsLink
+    faxesDel_dialog: &faxesDel_dialogLink
       <<: *Faxes
       controller: delete
       class: ui-silk-bin
@@ -196,19 +209,19 @@ production:
   # faxesInOut dialogs:
     <<: *faxesInOut_dialogsLink
   commands:
-    faxesInOutFileDownload_command: 
+    faxesInOutFileDownload_command:
       <<: *faxesInOutFileDownload_commandLink
       class: ui-silk-disk
-    faxesInOutFileUpload_command: 
+    faxesInOutFileUpload_command:
       <<: *faxesInOutFileUpload_commandLink
-    faxesInOutFilePreview_command: 
-      <<: *faxesInOutFilePreview_commandLink 
+    faxesInOutFilePreview_command:
+      <<: *faxesInOutFilePreview_commandLink
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

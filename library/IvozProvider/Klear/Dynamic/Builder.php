@@ -91,6 +91,10 @@ class Builder
             return false;
         }
 
+        if (self::$_brandURL->getUrlType() === 'god') {
+            return false;
+        }
+
         self::$_brand = self::$_brandURL->getBrand();
     }
 

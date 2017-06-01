@@ -41,19 +41,32 @@ class IvozProvider_Klear_Options_OptionsCustomizerFilterForFax implements \Klear
     {
         $show = true;
 
-        if ($this->_option->getName() == 'forwardFax_dialog' && $parentModel->getStatus() != 'error') {
+        $optionName = $this->_option->getName();
+        $status = $parentModel->getStatus();
+        $errorStatus = $status === 'error';
+
+        if ($optionName == 'forwardFax_dialog' && !$errorStatus) {
             $show = false;
         }
 
-        if ($show) {
-            return null;
-        } else {
+        if ($optionName === 'faxesOutView_screen' && $errorStatus) {
+            $show = false;
+        }
+
+        if ($optionName === 'faxesOutEdit_screen' && !$errorStatus) {
+            $show = false;
+        }
+
+        if (!$show) {
             /* Para no mostrarlo iniciamos una respuesta vacía */
             $response = new \KlearMatrix_Model_ParentOptionCustomizer_Response();
-            $response->setParentWrapper($this->_resultWrapper)
-            ->setParentCssClass($this->_cssClass);
+            $response
+                ->setParentWrapper($this->_resultWrapper)
+                ->setParentCssClass($this->_cssClass);
 
             return $response;
         }
+
+        return null;
     }
 }

@@ -63,10 +63,8 @@ class Users extends MapperAbstract
                 'isBoss' => $model->getIsBoss(),
                 'bossAssistantId' => $model->getBossAssistantId(),
                 'exceptionBoosAssistantRegExp' => $model->getExceptionBoosAssistantRegExp(),
-                'username' => $model->getUsername(),
                 'active' => $model->getActive(),
                 'maxCalls' => $model->getMaxCalls(),
-                'callWaiting' => $model->getCallWaiting(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
                 'voicemailSendMail' => $model->getVoicemailSendMail(),
                 'voicemailAttachSound' => $model->getVoicemailAttachSound(),
@@ -666,6 +664,48 @@ class Users extends MapperAbstract
                     }
                 }
 
+                if ($model->getQueueMembers(null, null, true) !== null) {
+                    $queueMembers = $model->getQueueMembers();
+
+                    if (!is_array($queueMembers)) {
+
+                        $queueMembers = array($queueMembers);
+                    }
+
+                    foreach ($queueMembers as $value) {
+                        $value->setUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByTimeoutVoiceMailUser(null, null, true) !== null) {
+                    $queues = $model->getQueuesByTimeoutVoiceMailUser();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setTimeoutVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByFullVoiceMailUser(null, null, true) !== null) {
+                    $queues = $model->getQueuesByFullVoiceMailUser();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setFullVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 
@@ -810,10 +850,8 @@ class Users extends MapperAbstract
                   ->setIsBoss($data['isBoss'])
                   ->setBossAssistantId($data['bossAssistantId'])
                   ->setExceptionBoosAssistantRegExp($data['exceptionBoosAssistantRegExp'])
-                  ->setUsername($data['username'])
                   ->setActive($data['active'])
                   ->setMaxCalls($data['maxCalls'])
-                  ->setCallWaiting($data['callWaiting'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
                   ->setVoicemailSendMail($data['voicemailSendMail'])
                   ->setVoicemailAttachSound($data['voicemailAttachSound'])
@@ -837,10 +875,8 @@ class Users extends MapperAbstract
                   ->setIsBoss($data->{'isBoss'})
                   ->setBossAssistantId($data->{'bossAssistantId'})
                   ->setExceptionBoosAssistantRegExp($data->{'exceptionBoosAssistantRegExp'})
-                  ->setUsername($data->{'username'})
                   ->setActive($data->{'active'})
                   ->setMaxCalls($data->{'maxCalls'})
-                  ->setCallWaiting($data->{'callWaiting'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
                   ->setVoicemailSendMail($data->{'voicemailSendMail'})
                   ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
@@ -865,10 +901,8 @@ class Users extends MapperAbstract
                   ->setIsBoss($data->getIsBoss())
                   ->setBossAssistantId($data->getBossAssistantId())
                   ->setExceptionBoosAssistantRegExp($data->getExceptionBoosAssistantRegExp())
-                  ->setUsername($data->getUsername())
                   ->setActive($data->getActive())
                   ->setMaxCalls($data->getMaxCalls())
-                  ->setCallWaiting($data->getCallWaiting())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
                   ->setVoicemailSendMail($data->getVoicemailSendMail())
                   ->setVoicemailAttachSound($data->getVoicemailAttachSound())

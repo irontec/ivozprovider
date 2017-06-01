@@ -15,7 +15,7 @@ production:
     domain: 
       title: _('Domain')
       type: text
-      maxLength: 64
+      maxLength: 190
     contact: 
       title: _('Contact')
       type: text

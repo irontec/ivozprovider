@@ -7,10 +7,10 @@ use Agi\Action\UserCallAction;
 use Agi\Action\HuntGroupAction;
 use Agi\Action\IVRAction;
 use Agi\Action\ServiceAction;
-use Agi\Action\FaxCallAction;
 use Agi\Action\FriendCallAction;
 use Agi\Action\ExternalUserCallAction;
 use Agi\Action\ExternalFriendCallAction;
+use Agi\Action\QueueAction;
 
 /**
  * @brief Controller for Incoming and Outgoing calls
@@ -54,7 +54,7 @@ class CallsController extends BaseController
         $this->agi->setCallType("external");
 
         // Set Outgoing Channels X-CID header variable
-        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
+        $this->agi->setVariable("__CALL_ID", $this->agi->getCallId());
 
         // Get company MusicClass: company, Generic or default
         $company = $ddi->getCompany();
@@ -147,7 +147,7 @@ class CallsController extends BaseController
         $this->agi->setCallType("internal");
 
         // Set Outgoing Channels X-CID header variable
-        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
+        $this->agi->setVariable("__CALL_ID", $this->agi->getCallId());
 
         // Set user language and music
         $this->agi->setVariable("CHANNEL(language)", $user->getLanguageCode());
@@ -289,6 +289,69 @@ class CallsController extends BaseController
     }
 
     /**
+     * @brief Outgoing calls from queues
+     */
+    public function queuesAction()
+    {
+        $companyId = $this->agi->getVariable("COMPANYID");
+        $companyMapper = new Mapper\Companies();
+        $company = $companyMapper->find($companyId);
+
+        if (empty($company)) {
+            $this->agi->error("No company found with id %d (BUG?).", $companyId);
+            return;
+        }
+
+        $queueMemberId = $this->agi->getExtension();
+        $queueMembersMapper = new Mapper\QueueMembers();
+        $queueMember = $queueMembersMapper->find($queueMemberId);
+        if (empty($queueMember)) {
+           $this->agi->error("Queue member with id %d does not exists.", $queueMemberId);
+        }
+
+        $user = $queueMember->getUser();
+        if (empty($user)) {
+            $this->agi->error("No user found for queue member %d", $queueMemberId);
+            return;
+        }
+
+        $endpoint = $user->getEndpoint();
+        if (empty($endpoint)) {
+            $this->agi->error("User %d has no endpoint associated", $user->getId());
+            return;
+        }
+
+        $this->agi->setVariable("DIAL_OPTS", "ic");
+        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $endpoint->getSorceryId());
+    }
+
+    /**
+     * @brief After Queue process
+     */
+    public function queuestatusAction()
+    {
+        $queueId = $this->agi->getVariable("QUEUE_ID");
+        $queueMapper = new Mapper\Queues();
+        $queue = $queueMapper->find($queueId);
+
+        // Process Queue Timeout
+        $queueAction = new QueueAction($this);
+        $queueAction
+            ->setCaller($this->getChannelOwner())
+            ->setQueue($queue);
+
+
+        switch($this->agi->getVariable("QUEUESTATUS")) {
+            case 'TIMEOUT':
+                $queueAction->processTimeout();
+                break;
+            case 'FULL':
+                $queueAction->processFull();
+                break;
+        }
+    }
+
+    /**
      * @brief Outgoing calls from friends
      */
     public function friendsAction ()
@@ -376,6 +439,38 @@ class CallsController extends BaseController
         }
     }
 
+    /**
+     * @brief Incoming calls to conference
+     */
+    public function conferencesAction()
+    {
+        $conferenceId = $this->agi->getExtension();
+        $conferenceMapper = new Mapper\ConferenceRooms();
+        $conference = $conferenceMapper->find($conferenceId);
+        if (empty($conference)) {
+            $this->agi->error("Conference %d not found in database", $conferenceId);
+            return;
+        }
+
+        // Get company from conference
+        $company = $conference->getCompany();
+
+        // Set desired channel language
+        $this->agi->setVariable("CHANNEL(language)", $this->agi->getSIPHeader("X-Info-Conf-Lang"));
+
+        // Set user language and music
+        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
+
+        // Check if conference requires pin
+        if ($conference->getPinProtected()) {
+           $this->agi->setConferenceSetting('user,pin', $conference->getPinCode());
+        }
+
+        // Check if conference has max members
+        if ($conference->getMaxMembers()) {
+            $this->agi->setConferenceSetting('bridge,max_members', $conference->getMaxMembers());
+        }
+    }
 
     /**
      * @brief Process IVR after call status
@@ -405,110 +500,6 @@ class CallsController extends BaseController
                 ->setIvr($ivr)
                 ->processTimeout();
         }
-    }
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function faxstatusAction ()
-    {
-        // FIXME Process Dialed fax dialstatus FIXME
-        $faxid = $this->agi->getVariable("FAXIN_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
-        if (empty($faxInOut)) {
-            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
-            return;
-        }
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxInOut->getFax())
-            ->setFaxInOut($faxInOut)
-            ->processFaxInStatus();
-
-    }
-
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function faxoutAction ()
-    {
-        $faxOutId = $this->agi->getVariable("FAXOUT_ID");
-        if (! $faxOutId) {
-            $this->agi->error("No FAX_ID found in this channel.");
-            $this->agi->hangup();
-            return;
-        }
-
-
-        // Get Fax file filename
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxOut = $faxInOutMapper->find($faxOutId);
-        if (! $faxOut) {
-            $this->agi->error("There is no Fax with id $faxOutId");
-            $this->agi->hangup();
-            return;
-        }
-
-        $this->agi->setVariable("__COMPANYID", $faxOut->getFax()->getCompanyId());
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxOut->getFax())
-            ->setFaxInOut($faxOut)
-            ->sendFax();
-
-    }
-
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function leg0faxoutstatusAction ()
-    {
-        // FIXME Process Dialed fax dialstatus FIXME
-        $faxid = $this->agi->getVariable("FAXOUT_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
-        if (empty($faxInOut)) {
-            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
-            return;
-        }
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxInOut->getFax())
-            ->setFaxInOut($faxInOut)
-            ->processleg0FaxOutStatus();
-
-    }
-
-    /**
-     * @brief Process fax after call status
-     */
-    public function leg1faxoutstatusAction ()
-    {
-        // FIXME Process Dialed fax dialstatus FIXME
-        $faxid = $this->agi->getVariable("FAXOUT_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
-        if (empty($faxInOut)) {
-            $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
-            return;
-        }
-
-        // ProcessDialStatus
-        $faxAction = new FaxCallAction($this);
-        $faxAction
-            ->setFax($faxInOut->getFax())
-            ->setFaxInOut($faxInOut)
-            ->processleg1FaxOutStatus();
-
     }
 
     /**
@@ -571,20 +562,29 @@ class CallsController extends BaseController
             $terminal = $endpoint->getTerminal();
             if (!empty($terminal)) {
                 $this->agi->setSIPHeader("X-Info-Callee", $terminal->getUser()->getExtensionNumber());
+                $this->agi->setSIPHeader("X-Info-MaxCalls", $terminal->getUser()->getMaxCalls());
             }
             $friend = $endpoint->getFriend();
             if (!empty($friend)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
+                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
             }
+
+            // Set on-demand recording header (only for proxyusers)
+            if ($company->getOnDemandRecord()) {
+                $this->agi->setSIPHeader("X-Info-RecordCode", $company->getOnDemandRecordCode());
+                $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordCode());
+            }
+
         } else {
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
-        }
 
-        // Set special headers for Fax outgoing calls
-        if ($this->agi->getVariable("FAXOUT_ID")) {
-            $this->agi->setSIPHeader("X-Info-Special", "fax");
+            // Set special headers for Fax outgoing calls
+            if ($this->agi->getVariable("FAXFILE_ID")) {
+                $this->agi->setSIPHeader("X-Info-Special", "fax");
+            }
         }
 
         // Set Special header for Forwarding
@@ -597,12 +597,6 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-Record", $this->agi->getVariable("RECORD"));
         }
 
-        // Set on-demand recording header
-        if ($company->getOnDemandRecord()) {
-            $this->agi->setSIPHeader("X-Info-RecordCode", $company->getOnDemandRecordCode());
-            $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordCode());
-        }
-
         // Request intra DDI bounce
         if ($this->agi->getVariable("BOUNCEME")) {
             $this->agi->setSIPHeader("X-Info-BounceMe", $this->agi->getVariable("BOUNCEME"));
@@ -613,6 +607,11 @@ class CallsController extends BaseController
             $this->agi->setVariable("CHANNEL(callgroup)", $this->agi->getVariable("CHANNEL(pickupgroup)"));
         }
 
+        // Set conference options
+        if ($this->agi->getVariable("CONFERENCE_ID")) {
+            $this->agi->setSIPHeader("X-Info-Conf", $this->agi->getVariable("CONFERENCE_ID"));
+            $this->agi->setSIPHeader("X-Info-Conf-Lang", $this->agi->getVariable("CONFERENCE_LANG"));
+        }
     }
 
     public function updatelineAction()

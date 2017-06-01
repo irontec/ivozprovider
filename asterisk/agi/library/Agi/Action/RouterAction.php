@@ -33,6 +33,8 @@ class RouterAction
 
     protected $_routeFriend;
 
+    protected $_routeQueue;
+
     public function __construct($parent)
     {
         // Store parent
@@ -104,6 +106,9 @@ class RouterAction
                 break;
             case 'friend':
                 $this->_routeToFriend();
+                break;
+            case 'queue':
+                $this->_routeToQueue();
                 break;
         }
     }
@@ -204,6 +209,14 @@ class RouterAction
             ->setFriend($friend)
             ->setDestination($this->_routeFriend)
             ->call();
+    }
+
+    protected function _routeToQueue()
+    {
+        $queueAction = new QueueAction($this);
+        $queueAction
+            ->setQueue($this->_routeQueue)
+            ->process();
     }
 
 }

@@ -39,6 +39,7 @@ production:
           recordCalls: true
           billInboundCalls: true
           friendValue: true
+          queueId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")

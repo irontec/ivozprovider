@@ -650,6 +650,48 @@ class Locutions extends MapperAbstract
                     }
                 }
 
+                if ($model->getQueuesByPeriodicAnnounceLocution(null, null, true) !== null) {
+                    $queues = $model->getQueuesByPeriodicAnnounceLocution();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setPeriodicAnnounceLocutionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByTimeoutLocution(null, null, true) !== null) {
+                    $queues = $model->getQueuesByTimeoutLocution();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setTimeoutLocutionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByFullLocution(null, null, true) !== null) {
+                    $queues = $model->getQueuesByFullLocution();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setFullLocutionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {

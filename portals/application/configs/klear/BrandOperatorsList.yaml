@@ -23,16 +23,19 @@ production:
           default: brandOperatorsEdit_screen
         order: &BrandOperators_orderLink
           brandId: true
-          name: true
-          lastname: true
           email: true
           username: true
           pass: true
           timezoneId: true
           active: true
+          name: true
+          lastname: true
         blacklist:
           pass: true
           timezoneId: true
+          email: true
+          name: true
+          lastname: true
       options: 
         title: _("Options")
         screens: 
@@ -48,23 +51,27 @@ production:
       title: _("Add %s %2s", ngettext('Brand operator', 'Brand operators', 1), "[format| (%parent%)]")
       shortcutOption: N
       fields:
+        blacklist:
+            active: true
         order:
           <<: *BrandOperators_orderLink
       fixedPositions: &BrandOperatorsFixedPositions_link
         group0:
-          label: _("Personal data")
-          colsPerRow: 3
-          fields:
-            name: 1
-            lastname: 1
-            email: 1
-        group1:
           label: _("Login info")
-          colsPerRow: 3
+          colsPerRow: 2
           fields:
             username: 1
             pass: 1
             active: 1
+            timezoneId: 1
+        group1:
+          label: _("Personal data")
+          colsPerRow: 3
+          collapsed: true
+          fields:
+            name: 1
+            lastname: 1
+            email: 1
     brandOperatorsEdit_screen: &brandOperatorsEdit_screenLink 
       <<: *BrandOperators
       controller: edit

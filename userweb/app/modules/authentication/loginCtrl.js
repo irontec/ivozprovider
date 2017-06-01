@@ -9,7 +9,7 @@ angular
         Authentication, 
         ngProgress
     ) {
-        
+
         /**
          * Reset login status
          */
@@ -22,19 +22,19 @@ angular
             $('.form-group').removeClass('has-error');
             $scope.error = false;
             
-            Authentication.Login($scope.username, $scope.password, function (response) {
-                
+            Authentication.Login($scope.email, $scope.password, function (response) {
+
                 ngProgress.complete();
                 
                 if (response.success) {
                     Authentication.SetCredentials(
-                        $scope.username,
+                        $scope.email,
                         $scope.password
                     );
-                    
+
                     localStorage.setItem('statusTerminal', response.statusTerminal);
                     localStorage.setItem('companyName', response.companyName);
-                    
+
                     if (response.statusTerminal) {
                         localStorage.setItem('userAgent', response.userAgent);
                         localStorage.setItem('ipRegistered', response.ipRegistered);

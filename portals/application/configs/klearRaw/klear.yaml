@@ -135,6 +135,18 @@ production:
           title: ngettext('Faxesinout', 'Faxesinout', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Faxesinout', 'Faxesinout', 0))
+        FeaturesList: 
+          title: ngettext('Feature', 'Features', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Feature', 'Features', 0))
+        FeaturesRelBrandsList: 
+          title: ngettext('Featuresrelbrand', 'Featuresrelbrands', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Featuresrelbrand', 'Featuresrelbrands', 0))
+        FeaturesRelCompaniesList: 
+          title: ngettext('Featuresrelcompany', 'Featuresrelcompanies', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Featuresrelcompany', 'Featuresrelcompanies', 0))
         FixedCostsList: 
           title: ngettext('Fixedcost', 'Fixedcosts', 0)
           class: ui-silk-text-list-bullets
@@ -267,6 +279,14 @@ production:
           title: ngettext('Proxyuser', 'Proxyusers', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Proxyuser', 'Proxyusers', 0))
+        QueueMembersList: 
+          title: ngettext('Queuemember', 'Queuemembers', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Queuemember', 'Queuemembers', 0))
+        QueuesList: 
+          title: ngettext('Queue', 'Queues', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Queue', 'Queues', 0))
         RecordingsList: 
           title: ngettext('Recording', 'Recordings', 0)
           class: ui-silk-text-list-bullets
@@ -335,6 +355,14 @@ production:
           title: ngettext('Astpsendpoint', 'Astpsendpoints', 0)
           class: ui-silk-text-list-bullets
           description: _("List of %s", ngettext('Astpsendpoint', 'Astpsendpoints', 0))
+        AstQueueMembersList: 
+          title: ngettext('Astqueuemember', 'Astqueuemembers', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Astqueuemember', 'Astqueuemembers', 0))
+        AstQueuesList: 
+          title: ngettext('Astqueue', 'Astqueues', 0)
+          class: ui-silk-text-list-bullets
+          description: _("List of %s", ngettext('Astqueue', 'Astqueues', 0))
         AstVoicemailList: 
           title: ngettext('Astvoicemail', 'Astvoicemail', 0)
           class: ui-silk-text-list-bullets

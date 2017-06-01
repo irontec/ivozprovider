@@ -18,7 +18,7 @@ production:
       rawCondition: "peeringContractId IS NOT NULL AND peeringContractId != ''"
       pagination: 
         items: 25
-      <<: *KamAccCdrsBrand
+      <<: *KamAccCdrs
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
       fields: &kamAccCdrs_fieldsLink 
@@ -31,7 +31,6 @@ production:
           proxy: true
           start_time: true
           end_time: true
-          caller: true
           referee: true
           referrer: true
           diversion: true
@@ -46,26 +45,27 @@ production:
           externallyRated: true
           callidHash: true
           end_time_utc: true
-          srcIfInbound: true
           pricingPlanId: true
           pricingPlanName: true
           targetPatternId: true
           targetPatternName: true
+          targetPattern: true
           bounced: true
+          metered: true
+          pricingPlan: true
+          peeringContractId: true
         order:
           start_time_utc: true
           brandId: true
           companyId: true
+          direction: true
+          caller: true
           callee: true
-          targetPattern: true
           duration: true
-          metered: true
           price: true
-          pricingPlan: true
-          peeringContractId: true
           invoiceId: true
     kamAccCdrsView_screen: &kamAccCdrsView_screenLink 
-      <<: *KamAccCdrsBrand
+      <<: *KamAccCdrs
       controller: edit
       class: ui-silk-eye
       label: false
@@ -77,15 +77,12 @@ production:
           proxy: true
           start_time: true
           end_time: true
-          caller: true
           referee: true
           referrer: true
           diversion: true
           asIden: true
           asAddress: true
           parsed: true
-          callid: true
-          xcallid: true
           meteringDate: true
           reMeteringDate: true
           pricingPlanDetails: true
@@ -97,41 +94,50 @@ production:
           targetPatternName: true
           bounced: true
         order:
-          start_time_utc: 1
           brandId: 1
           companyId: 1
+          caller: 1
           callee: 1
+          start_time_utc: 1
           duration: 1
-          metered: 1
           price: 1
           peeringContractId: 1
-          externallyRated: 1
           pricingPlan: 1
-          targetPattern: 1
           invoiceId: 1
+          metered: 1
+          externallyRated: 1
+          callid: 1
+          xcallid: 1
       fixedPositions:
         group0:
           label: _("Basic information")
           colsPerRow: 12
           fields:
-            brandId: 12
-            companyId: 12
+            brandId: 6
+            companyId: 6
+            caller: 6
+            callee: 6
             start_time_utc: 6
-            metered: 6
-            externallyRated: 6
-            invoiceId: 6
+            duration: 6
         group1:
-          label: _("Details")
+          label: _("Billing")
           colsPerRow: 12
           fields:
-            callee: 6
-            targetPatternId: 6
-            duration: 6
             price: 6
             pricingPlan: 6
             peeringContractId: 6
+            targetPattern: 6
+            pricingPlan: 6
             direction: 6
-            srcIfInbound: 6
+            invoiceId: 6
+        group2:
+          label: _("Troubleshooting details")
+          colsPerRow: 12
+          fields:
+            metered: 6
+            externallyRated: 6
+            callid: 6
+            xcallid: 6
 
   commands: 
     targetPatternautocomplete_command: &targetPatternautocomplete_commandLink

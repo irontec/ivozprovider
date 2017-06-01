@@ -6,6 +6,7 @@
 #include CompaniesList.yaml
 #include DDIsList.yaml
 #include DomainsList.yaml
+#include FeaturesRelBrandsList.yaml
 #include FixedCostsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 #include GenericCallACLPatternsList.yaml
@@ -50,6 +51,7 @@ production:
             companiesList_screen: true
             dDIsList_screen: true
             domainsList_screen: true
+            featuresRelBrandsList_screen: true
             fixedCostsList_screen: true
             fixedCostsRelInvoicesList_screen: true
             genericCallACLPatternsList_screen: true
@@ -173,6 +175,19 @@ production:
       filterField: brandId
     domainsEdit_screen: 
       <<: *domainsEdit_screenLink
+      filterField: brandId
+
+    #featuresRelBrands: 
+    featuresRelBrandsList_screen: 
+      <<: *featuresRelBrandsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    featuresRelBrandsNew_screen: 
+      <<: *featuresRelBrandsNew_screenLink
+      filterField: brandId
+    featuresRelBrandsEdit_screen: 
+      <<: *featuresRelBrandsEdit_screenLink
       filterField: brandId
 
     #fixedCosts: 
@@ -445,6 +460,8 @@ production:
     <<: *dDIs_dialogsLink
   # domains dialogs: 
     <<: *domains_dialogsLink
+  # featuresRelBrands dialogs: 
+    <<: *featuresRelBrands_dialogsLink
   # fixedCosts dialogs: 
     <<: *fixedCosts_dialogsLink
   # fixedCostsRelInvoices dialogs: 

@@ -5,7 +5,7 @@ Friends
 **Friends** section in the **Company configuration** allows interconnection of
 IvozProvider with other SIP PBX systems through a SIP *trunk*. The most typical
 use case is when a company have multiple PBX systems that want to integrate in
-a single flow. 
+a single flow.
 
 .. warning:: It's important to understand the difference between **Contract peering**
              defined by the **brand operator** to connect with the public network
@@ -18,7 +18,7 @@ What does this allow?
 This sections allows not just communication between users at boths ends of the
 SIP *trunk*, but also:
 
-- Users "from the other side" can call to the public network just like native 
+- Users "from the other side" can call to the public network just like native
   Ivozprovider :ref:`Users <users>`.
 
 - Public network calls can be routed to the other SIP *trunk* end.
@@ -29,7 +29,7 @@ Types of friends
 There are 2 main types of SIP PBX that can be integrate with IvozProvider:
 
 - **Direct connection PBX**: IvozProvider must be able to talk SIP directly with
-  this kind of friends by just redirecting the traffic to the proper port of 
+  this kind of friends by just redirecting the traffic to the proper port of
   the public IP address of the PBX.
 
 - **PBX behind NAT**: Not directly accesible. This kind of PBX must register at
@@ -40,13 +40,13 @@ What kind of calls can be routed through a *friend*?
 ====================================================
 
 IvozProvider must know what calls must be routed to the different defined *friends*.
-For that, **company administrator** will configure regular expressions that 
+For that, **company administrator** will configure regular expressions that
 describe the numbers that *can be reached* through the **friend**.
 
 .. note:: Internal :ref:`extensions <extensions>` have priority over any expression
           defined in the *friends*.
 
-To sum up, IvozProvider will route a call received by a :ref:`user <users>` or 
+To sum up, IvozProvider will route a call received by a :ref:`user <users>` or
 a :ref:`friend <friends>` following this logic:
 
 1. Destination matches an existing IvozProvider extension?
@@ -60,7 +60,7 @@ Configuration
 
 The **Friend** configuration is a merge between a **User** and a **Terminal**
 
-.. hint:: **Friends** are so similar to **Users** that both talk SIP with the 
+.. hint:: **Friends** are so similar to **Users** that both talk SIP with the
           :ref:`proxyusers`.
 
 This are the configurable settings of *friends*:
@@ -90,10 +90,11 @@ This are the configurable settings of *friends*:
     Call ACL
         Similar to :ref:`internal users <users>`, friends can place internal
         company calls without restriction (including Extension or other Friends).
-        When calling to external numbers, this ACL will be checked if set. 
+        When calling to external numbers, this ACL will be checked if set.
 
-    Outgoing DDI
-        External calls from this *friend* will be presented with this DDI.
+    Fallback Outgoing DDI
+        External calls from this *friend* will be presented with this DDI, **unless
+        the source presented by friend is a DDI that exists in DDIs section**.
 
     Country and Area code
         Used for number transformation from and to this friend.
@@ -102,7 +103,7 @@ This are the configurable settings of *friends*:
         Like a terminal, *friends* will talk the selected codec.
 
     From domain
-        Request from IvozProvider to this friend will include this domain in 
+        Request from IvozProvider to this friend will include this domain in
         the From header.
 
 
@@ -167,4 +168,3 @@ extension-user-terminal trio:
 
 - Only connects with *Users SIP Proxy*, like terminals. In fact, SIP traffic from
   friends are identical to any other user terminal traffic in format.
-

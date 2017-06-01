@@ -30,8 +30,11 @@ class Extensions extends Raw\Extensions
                 "huntGroup"     => "huntGroupId",
                 "user"          => "userId",
                 "conferenceRoom" => "conferenceRoomId",
-                "number"        => "numberValue"
+                "number"        => "numberValue",
+                "friend"        => "friendValue",
+                "queue"         => "queueId",
         );
+
         $routeType = $model->getRouteType();
         $original = $this->find($model->getPrimaryKey());
         foreach ($nullableFields as $type => $fieldName) {

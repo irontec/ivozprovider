@@ -292,7 +292,7 @@ class PricingPlansRelCompanies extends ModelAbstract
         if ($data == '0000-00-00 00:00:00') {
             $data = null;
         }
-        if ($data === 'CURRENT_TIMESTAMP') {
+        if ($data === 'CURRENT_TIMESTAMP' || is_null($data)) {
             $data = \Zend_Date::now()->setTimezone('UTC');
         }
 
@@ -309,6 +309,9 @@ class PricingPlansRelCompanies extends ModelAbstract
             $data->setTimezone(new \DateTimeZone('UTC'));
         }
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_validFrom != $data) {
             $this->_logChange('validFrom', $this->_validFrom, $data);
         }
@@ -348,7 +351,7 @@ class PricingPlansRelCompanies extends ModelAbstract
         if ($data == '0000-00-00 00:00:00') {
             $data = null;
         }
-        if ($data === 'CURRENT_TIMESTAMP') {
+        if ($data === 'CURRENT_TIMESTAMP' || is_null($data)) {
             $data = \Zend_Date::now()->setTimezone('UTC');
         }
 
@@ -365,6 +368,9 @@ class PricingPlansRelCompanies extends ModelAbstract
             $data->setTimezone(new \DateTimeZone('UTC'));
         }
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_validTo != $data) {
             $this->_logChange('validTo', $this->_validTo, $data);
         }

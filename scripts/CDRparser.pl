@@ -8,7 +8,6 @@ use strict;
 use v5.10;
 use DBI;
 no warnings;
-use Gearman::Client;
 use POSIX;
 
 #########################################
@@ -28,10 +27,6 @@ my $port = 3306;
 my $user = 'kamailio';
 my $pass = 'ironsecret';
 my $dsn = "DBI:mysql:database=$db;host=$host;port=$port";
-
-# Gearmand connection data
-my @gearman_servers = ('jobs.ivozprovider.local:4730');
-my $gearman_job = 'tarificateCalls';
 
 # Connect to DB
 my $dbh = DBI->connect($dsn, $user, $pass)
@@ -180,9 +175,6 @@ sub setCommon {
     $$cdr{xCallee} = $$bleg{callee};
     $$cdr{peeringContractId} = $$bleg{peeringContractId} || $$cdr{peeringContractId}; # If both AB, B is saved
                                                                                       # (entrante-saliente con facturacion de entrantes)
-
-    # If peeringContractId is set, increase tarificable calls counter
-    $execution{tarificableCalls}++ if $$cdr{peeringContractId};
 }
 
 sub updateCaller {
@@ -775,16 +767,6 @@ logger "Stats marked as parsed: $execution{'parsed-yes'}";
 
 # Disconnect from database
 $dbh->disconnect;
-
-# Call tarificator if necessary
-$execution{tarificableCalls} = 0 unless $execution{tarificableCalls};
-logger "Tarificable calls on this run: $execution{tarificableCalls}";
-if ($execution{tarificableCalls}) {
-    # Call Gearmand tarificator Job
-    my $client = Gearman::Client->new;
-    $client->job_servers(@gearman_servers);
-    $client->do_task($gearman_job);
-}
 
 # Report finish time and leave
 logger "Execution ended at " . localtime();

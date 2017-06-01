@@ -37,7 +37,6 @@ class ApplicationServers extends Raw\ApplicationServers
             }
             $kamDispatcher->setSetid('1')
                           ->setDestination('sip:' . $model->getIp() . ":6060")
-                          ->setAttrs('duid=' . $model->getId())
                           ->setDescription($model->getName())
                           ->save();
         }

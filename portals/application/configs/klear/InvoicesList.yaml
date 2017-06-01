@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include KamAccCdrsGodList.yaml
+#include KamAccCdrsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
 production: 
@@ -177,7 +177,9 @@ production:
       controller: File
       action: preview
       mainColumn: pdfFile
-  
+      arguments:
+        cache:
+          enabled: true
   
 staging: 
   _extends: production

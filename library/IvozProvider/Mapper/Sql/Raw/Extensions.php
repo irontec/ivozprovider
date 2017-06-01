@@ -59,6 +59,7 @@ class Extensions extends MapperAbstract
                 'userId' => $model->getUserId(),
                 'numberValue' => $model->getNumberValue(),
                 'friendValue' => $model->getFriendValue(),
+                'queueId' => $model->getQueueId(),
             );
         } else {
             $result = array();
@@ -581,6 +582,34 @@ class Extensions extends MapperAbstract
                     }
                 }
 
+                if ($model->getQueuesByTimeoutExtension(null, null, true) !== null) {
+                    $queues = $model->getQueuesByTimeoutExtension();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setTimeoutExtensionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueuesByFullExtension(null, null, true) !== null) {
+                    $queues = $model->getQueuesByFullExtension();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
+                        $value->setFullExtensionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 
@@ -706,7 +735,8 @@ class Extensions extends MapperAbstract
                   ->setConferenceRoomId($data['conferenceRoomId'])
                   ->setUserId($data['userId'])
                   ->setNumberValue($data['numberValue'])
-                  ->setFriendValue($data['friendValue']);
+                  ->setFriendValue($data['friendValue'])
+                  ->setQueueId($data['queueId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -718,7 +748,8 @@ class Extensions extends MapperAbstract
                   ->setConferenceRoomId($data->{'conferenceRoomId'})
                   ->setUserId($data->{'userId'})
                   ->setNumberValue($data->{'numberValue'})
-                  ->setFriendValue($data->{'friendValue'});
+                  ->setFriendValue($data->{'friendValue'})
+                  ->setQueueId($data->{'queueId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Extensions) {
             $entry->setId($data->getId())
@@ -731,7 +762,8 @@ class Extensions extends MapperAbstract
                   ->setConferenceRoomId($data->getConferenceRoomId())
                   ->setUserId($data->getUserId())
                   ->setNumberValue($data->getNumberValue())
-                  ->setFriendValue($data->getFriendValue());
+                  ->setFriendValue($data->getFriendValue())
+                  ->setQueueId($data->getQueueId());
 
         }
 

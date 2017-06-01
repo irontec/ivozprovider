@@ -26,9 +26,9 @@ production:
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields:
-              - description
+              - name
               - cost
-            template: '%description% - %cost% €'
+            template: '%name% - %cost% €'
           order: description
     invoiceId: 
       title: _('Invoice id')
@@ -46,8 +46,11 @@ production:
     quantity: 
       title: ngettext('Quantity', 'Quantities', 1)
       type: number
+      defaultValue: 0
       source: 
         control: Spinner
+        min: 0
+        max: 100
 staging: 
   _extends: production
 testing: 

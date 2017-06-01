@@ -47,10 +47,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'isBoss': '', 
      *     'bossAssistantId': '', 
      *     'exceptionBoosAssistantRegExp': '', 
-     *     'username': '', 
      *     'active': '', 
      *     'maxCalls': '', 
-     *     'callWaiting': '', 
      *     'voicemailEnabled': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
@@ -74,10 +72,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'isBoss': '', 
      *     'bossAssistantId': '', 
      *     'exceptionBoosAssistantRegExp': '', 
-     *     'username': '', 
      *     'active': '', 
      *     'maxCalls': '', 
-     *     'callWaiting': '', 
      *     'voicemailEnabled': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
@@ -117,10 +113,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'isBoss',
                 'bossAssistantId',
                 'exceptionBoosAssistantRegExp',
-                'username',
                 'active',
                 'maxCalls',
-                'callWaiting',
                 'voicemailEnabled',
                 'voicemailSendMail',
                 'voicemailAttachSound',
@@ -216,10 +210,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'isBoss': '', 
      *     'bossAssistantId': '', 
      *     'exceptionBoosAssistantRegExp': '', 
-     *     'username': '', 
      *     'active': '', 
      *     'maxCalls': '', 
-     *     'callWaiting': '', 
      *     'voicemailEnabled': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
@@ -258,10 +250,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'isBoss',
                 'bossAssistantId',
                 'exceptionBoosAssistantRegExp',
-                'username',
                 'active',
                 'maxCalls',
-                'callWaiting',
                 'voicemailEnabled',
                 'voicemailSendMail',
                 'voicemailAttachSound',
@@ -323,10 +313,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="bossAssistantId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="username", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
-     * @ApiParams(name="maxCalls", nullable=false, type="tinyint", sample="", description="")
-     * @ApiParams(name="callWaiting", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
@@ -383,10 +371,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="bossAssistantId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="username", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
-     * @ApiParams(name="maxCalls", nullable=false, type="tinyint", sample="", description="")
-     * @ApiParams(name="callWaiting", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
@@ -558,23 +544,13 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'username' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'active' => array(
                     'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'maxCalls' => array(
-                    'type' => "tinyint",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'callWaiting' => array(
-                    'type' => "tinyint",
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -694,23 +670,13 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'username' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'active' => array(
                     'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
                 'maxCalls' => array(
-                    'type' => "tinyint",
-                    'required' => true,
-                    'comment' => '',
-                ),
-                'callWaiting' => array(
-                    'type' => "tinyint",
+                    'type' => "smallint",
                     'required' => true,
                     'comment' => '',
                 ),

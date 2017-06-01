@@ -366,7 +366,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callidHash", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','error')", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="bounced", nullable=false, type="enum('yes','no')", sample="", description="")
@@ -434,7 +434,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="callid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callidHash", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="xcallid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','delayed','error')", sample="", description="")
+     * @ApiParams(name="parsed", nullable=true, type="enum('yes','no','error')", sample="", description="")
      * @ApiParams(name="diversion", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="peeringContractId", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="bounced", nullable=false, type="enum('yes','no')", sample="", description="")
@@ -630,7 +630,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'parsed' => array(
-                    'type' => "enum('yes','no','delayed','error')",
+                    'type' => "enum('yes','no','error')",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -806,7 +806,7 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'parsed' => array(
-                    'type' => "enum('yes','no','delayed','error')",
+                    'type' => "enum('yes','no','error')",
                     'required' => false,
                     'comment' => '',
                 ),

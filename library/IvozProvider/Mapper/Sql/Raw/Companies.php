@@ -70,6 +70,9 @@ class Companies extends MapperAbstract
                 'onDemandRecordCode' => $model->getOnDemandRecordCode(),
                 'areaCode' => $model->getAreaCode(),
                 'externallyExtraOpts' => $model->getExternallyExtraOpts(),
+                'recordingsLimitMB' => $model->getRecordingsLimitMB(),
+                'recordingsLimitEmail' => $model->getRecordingsLimitEmail(),
+                'outgoingDDIId' => $model->getOutgoingDDIId(),
             );
         } else {
             $result = array();
@@ -620,6 +623,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getFeaturesRelCompanies(null, null, true) !== null) {
+                    $featuresRelCompanies = $model->getFeaturesRelCompanies();
+
+                    if (!is_array($featuresRelCompanies)) {
+
+                        $featuresRelCompanies = array($featuresRelCompanies);
+                    }
+
+                    foreach ($featuresRelCompanies as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getFriends(null, null, true) !== null) {
                     $friends = $model->getFriends();
 
@@ -769,6 +786,20 @@ class Companies extends MapperAbstract
                     }
 
                     foreach ($pricingPlansRelCompanies as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getQueues(null, null, true) !== null) {
+                    $queues = $model->getQueues();
+
+                    if (!is_array($queues)) {
+
+                        $queues = array($queues);
+                    }
+
+                    foreach ($queues as $value) {
                         $value->setCompanyId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
@@ -994,7 +1025,10 @@ class Companies extends MapperAbstract
                   ->setOnDemandRecord($data['onDemandRecord'])
                   ->setOnDemandRecordCode($data['onDemandRecordCode'])
                   ->setAreaCode($data['areaCode'])
-                  ->setExternallyExtraOpts($data['externallyExtraOpts']);
+                  ->setExternallyExtraOpts($data['externallyExtraOpts'])
+                  ->setRecordingsLimitMB($data['recordingsLimitMB'])
+                  ->setRecordingsLimitEmail($data['recordingsLimitEmail'])
+                  ->setOutgoingDDIId($data['outgoingDDIId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -1017,7 +1051,10 @@ class Companies extends MapperAbstract
                   ->setOnDemandRecord($data->{'onDemandRecord'})
                   ->setOnDemandRecordCode($data->{'onDemandRecordCode'})
                   ->setAreaCode($data->{'areaCode'})
-                  ->setExternallyExtraOpts($data->{'externallyExtraOpts'});
+                  ->setExternallyExtraOpts($data->{'externallyExtraOpts'})
+                  ->setRecordingsLimitMB($data->{'recordingsLimitMB'})
+                  ->setRecordingsLimitEmail($data->{'recordingsLimitEmail'})
+                  ->setOutgoingDDIId($data->{'outgoingDDIId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -1041,7 +1078,10 @@ class Companies extends MapperAbstract
                   ->setOnDemandRecord($data->getOnDemandRecord())
                   ->setOnDemandRecordCode($data->getOnDemandRecordCode())
                   ->setAreaCode($data->getAreaCode())
-                  ->setExternallyExtraOpts($data->getExternallyExtraOpts());
+                  ->setExternallyExtraOpts($data->getExternallyExtraOpts())
+                  ->setRecordingsLimitMB($data->getRecordingsLimitMB())
+                  ->setRecordingsLimitEmail($data->getRecordingsLimitEmail())
+                  ->setOutgoingDDIId($data->getOutgoingDDIId());
 
         }
 

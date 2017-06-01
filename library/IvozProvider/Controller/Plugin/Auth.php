@@ -90,7 +90,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
 
         if ($authType === 'Basic') {
 
-           $mapper = new Mappers\MainOperators();
+            $mapper = new Mappers\MainOperators();
 
             $getData = array(
                 'user' => 'username',
@@ -111,7 +111,7 @@ class IvozProvider_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstrac
             $requestDate = $this->getRequest()->getHeader('Request-Date', false);
 
             $auth = new \Iron_Auth_RestHmac();
-            $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper);
+            $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper, ['user' => 'email']);
 
             if ($user->getActive() !== 1) {
                 $this->_errorAuth();

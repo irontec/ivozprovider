@@ -40,6 +40,21 @@ class Companies extends TableAbstract
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
+        'CompaniesIbfk4' => array(
+            'columns' => 'brandId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
+            'refColumns' => 'id'
+        ),
+        'CompaniesIbfk5' => array(
+            'columns' => 'applicationServerId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ApplicationServers',
+            'refColumns' => 'id'
+        ),
+        'CompaniesIbfk9' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
         'CompaniesIbfk10' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
@@ -55,19 +70,9 @@ class Companies extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
             'refColumns' => 'id'
         ),
-        'CompaniesIbfk4' => array(
-            'columns' => 'brandId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
-            'refColumns' => 'id'
-        ),
-        'CompaniesIbfk5' => array(
-            'columns' => 'applicationServerId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ApplicationServers',
-            'refColumns' => 'id'
-        ),
-        'CompaniesIbfk9' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+        'CompaniesIbfk13' => array(
+            'columns' => 'outgoingDDIId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
             'refColumns' => 'id'
         )
     );
@@ -83,6 +88,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\FeaturesRelCompanies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
         'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',
@@ -94,6 +100,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelCompanies',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Recordings',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Schedules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
@@ -163,7 +170,7 @@ class Companies extends TableAbstract
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '255',
+	    'LENGTH' => '190',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -473,6 +480,57 @@ class Companies extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'recordingsLimitMB' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'recordingsLimitMB',
+	    'COLUMN_POSITION' => 23,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'recordingsLimitEmail' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'recordingsLimitEmail',
+	    'COLUMN_POSITION' => 24,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => '250',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'outgoingDDIId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'outgoingDDIId',
+	    'COLUMN_POSITION' => 25,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

@@ -38,7 +38,7 @@ msgid ""
 " in four blocks:"
 msgstr ""
 "Es el punto de partida para todo aquel interesado en esta solución, "
-"tantodesde el punto de vista técnico como desde el punto de vista de uso "
+"tanto desde el punto de vista técnico como desde el punto de vista de uso "
 "y consta de cuatro bloques:"
 
 #: ../../intro/about.rst:13
@@ -66,7 +66,7 @@ msgid ""
 "that were omitted in the previous block."
 msgstr ""
 "El tercer bloque es el que profundiza en aspectos de :ref:`advanced` "
-"como**tarificación, facturación, funcionalidades de PBX y todos los "
+"como **tarificación, facturación, funcionalidades de PBX y todos los "
 "detalles** que en el bloque anterior se obviaron."
 
 #: ../../intro/about.rst:24

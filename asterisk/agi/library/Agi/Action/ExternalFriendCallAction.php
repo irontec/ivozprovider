@@ -1,6 +1,7 @@
 <?php
 
 namespace Agi\Action;
+use \IvozProvider\Model\Features;
 
 /**
  * @class ExternalFriendCallAction
@@ -39,12 +40,19 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
+        // Check if the diversion header contains a valid number
+        $this->checkDiversionNumber($company);
+
         // Convert to E.164 format
         $e164number = $friend->preferredToE164($number);
 
         // Check the user has this call allowed in its ACL
         if (!$friend->isAllowedToCall($e164number)) {
             $this->agi->error("User is not allowed to call %s", $e164number);
+            // Play error notification over progress
+            if ($company->hasFeature(Features::PROGRESS)) {
+                $this->agi->progress("ivozprovider/notAllowed");
+            }
             $this->agi->decline();
             return;
         }
@@ -52,12 +60,34 @@ class ExternalFriendCallAction extends ExternalCallAction
         // Check if outgoing call can be tarificated
         if (!$this->checkTarificable($e164number)) {
             $this->agi->error("Destination %s can not be billed.", $e164number);
+            // Play error notification over progress
+            if ($company->hasFeature(Features::PROGRESS)) {
+                $this->agi->progress("ivozprovider/notBillable");
+            }
             $this->agi->decline();
             return;
         }
 
-        // Outgoing presentation
-        $ddi = $friend->getOutgoingDDI();
+        // Allow identification from any company DDI
+        $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
+        $companyDDIs = $friend->getCompany()->getDDIs();
+        foreach ($companyDDIs as $companyDDI) {
+            if ($callerIdNum === $companyDDI->getDDIE164()) {
+                $this->agi->notice("Friend \e[0;36m%s [friend%d]\e[0;93m presented origin matches company DDI %s [ddi%d].",
+                         $friend->getName(), $friend->getId(), $companyDDI->getDDIE164(), $companyDDI->getId());
+                $ddi = $companyDDI;
+                break;
+            }
+        }
+
+        // Use fallback outgoing DDI
+        if (!isset($ddi)) {
+            $ddi = $friend->getOutgoingDDI();
+            if ($ddi) {
+                $this->agi->notice("Using fallback DDI %d [ddi%s] for friend \e[0;36m%s [friend%d]\e[0;93m because %s does not match any DDI.",
+                    $ddi->getDDIE164(), $ddi->getId(), $friend->getname(), $friend->getId(), $callerIdNum);
+            }
+        }
 
         // Update caller displayed number
         if (!$ddi) {

@@ -28,8 +28,8 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $this->_runCode('generic', '');
     }
 
-    public function runSpecificCodeAction(){
-
+    public function runSpecificCodeAction()
+    {
         $error = "";
         $inputMac = '<br/> Mac:<input type="text" name="mac" />';
         if ($this->getParam("exec")) {
@@ -60,15 +60,16 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         }
     }
 
-    protected function _runCode($type, $inputMac, $error = false){
+    protected function _runCode($type, $inputMac, $error = false)
+    {
         $buttons = array();
         $id = $this->_mainRouter->getParam('pk', false);
 
-        if( $id ) {
+        if ($id) {
             $terminalModelsMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
             $terminalModelsModel = $terminalModelsMapper->find($id);
 
-            if (($this->getParam("exec"))&&!$error) {
+            if (($this->getParam("exec")) && !$error) {
                 $path = $this->_getFilePath();
                 $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $id;
                 $filename = 'temporal-' . $type .'.php';
@@ -77,13 +78,16 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                 $this->view->terminalModel = $terminalModelsModel;
 
                 $var = base64_encode(serialize($this->view->getVars()));
-                $command = "/usr/bin/php ".$route . DIRECTORY_SEPARATOR .$filename." ".$var." 2>&1"; 
-
+                $command = "/usr/bin/php " . $route . DIRECTORY_SEPARATOR . $filename . " " . $var . " 2>&1";
                 exec($command, $output, $resultCode);
                 unlink($route . DIRECTORY_SEPARATOR . $filename);
 
-                $message = implode("<br>", $output); //ojo que aquí hemos quitado la llamada a gettext
+                array_walk($output, function (&$value, $key) {
+                    //Ensure xml's are readable in browser
+                    $value = htmlentities($value);
+                });
 
+                $message = implode("<br>", $output);
             }
             else{
                 $message = _('This template is going to be tested<br /><textarea name="currentCode" rows="8" cols="80" readonly></textarea>' . $inputMac . $error);
@@ -95,14 +99,11 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                         )
                 );
             }
-        }
-        else
-        {
+        } else {
             $message = _('The terminal model must be saved before you can test the code');
         }
 
         $this->_dispatch( $message, $buttons);
-
     }
 
     protected function _getFilePath(){
@@ -121,31 +122,32 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
             umask($old);
         }
 
-        $currentCode = $this->getParam("currentCode");
+        // There is no SERVER_NAME in console commands, inject it
+        $serverVars = '<?php $_SERVER["SERVER_NAME"] = "' . $_SERVER["SERVER_NAME"] . '"; ?>';
+        $currentCode = $serverVars . $this->getParam("currentCode");
 
         $currentCodePost = " <?php  } }";
-        try{
+        try {
             if ( copy($this->_template, $filename)) {
                 file_put_contents($filename, $currentCode . $currentCodePost, FILE_APPEND);
             } else{
                 $this->_helper->log( "RunCode- error copy(" . $this->_template . ", " . $filename . ")", Zend_Log::ERR);
                 file_put_contents($filename, "Internal error processing the code. Try it again later and if the problem persists, contact an administrator.");
             }
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             $this->_helper->log( "RunCode- " . $e->getMessage(), Zend_Log::WARN);
         }
     }
 
     protected function _dispatch( $message, $buttons = array()){
         $buttons[_('Close')] = array(
-                                    'reloadParent' => false,
-                                    'recall' => false,
-                    );
+            'reloadParent' => false,
+            'recall' => false,
+        );
         $data = array(
-                'title' => _("Test the code"),
-                'message' => $message,
-                'buttons'=>$buttons
+            'title' => _("Test the code"),
+            'message' => $message,
+            'buttons'=>$buttons
         );
 
         $jsonResponse = new Klear_Model_DispatchResponse();
@@ -155,6 +157,5 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $jsonResponse->addJsFile("/js/customRunCode.js");
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
-
     }
 }

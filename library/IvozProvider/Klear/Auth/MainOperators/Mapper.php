@@ -14,11 +14,11 @@ class Mapper extends \IvozProvider\Klear\Auth\Mapper
     protected function _populateCustomPerms(\IvozProvider\Klear\Auth\User $user, $operator)
     {
         $user->isMainOperator = true;
-        
+
         $user->canSeeMain = true;
         $user->canSeeBrand = true;
         $user->canSeeCompany = true;
-        
+
         return $user;
     }
 }

@@ -15,19 +15,16 @@ class Userweb_AuthController extends Iron_Controller_Rest_BaseController
 
     public function optionsAction()
     {
-
         $options = array(
             'POST' => array()
         );
 
         $this->status->setCode(200);
         $this->addViewData($options);
-
     }
 
     public function postAction()
     {
-
         $user = $this->_getAuthUser();
 
         $result = array();
@@ -55,9 +52,7 @@ class Userweb_AuthController extends Iron_Controller_Rest_BaseController
                 $result['statusTerminal'] = true;
                 $result['userAgent'] = $restult['user_agent'];
                 $result['ipRegistered'] = $ip[0];
-
             }
-
         }
 
         $result['success'] = true;
@@ -67,12 +62,10 @@ class Userweb_AuthController extends Iron_Controller_Rest_BaseController
 
         $this->status->setCode(200);
         $this->addViewData($result);
-
     }
 
     protected function _getAuthUser()
     {
-
         $token = $this->getRequest()->getHeader('Authorization', false);
         $requestDate = $this->getRequest()->getHeader('Request-Date', false);
 
@@ -81,10 +74,8 @@ class Userweb_AuthController extends Iron_Controller_Rest_BaseController
         $mapper = new Mappers\Users();
 
         $auth = new \Iron_Auth_RestHmac();
-        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper);
+        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper, ['user' => 'email']);
 
         return $user;
-
     }
-
 }

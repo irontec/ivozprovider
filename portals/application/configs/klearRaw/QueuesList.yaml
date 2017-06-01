@@ -1,0 +1,136 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include DDIsList.yaml
+#include ExtensionsList.yaml
+#include QueueMembersList.yaml
+#include AstQueuesList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: queuesList_screen
+  screens: &queues_screensLink 
+    queuesList_screen: &queuesList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Queues
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Queue', 'Queues', 0), "[format| (%parent%)]")
+      fields: &queues_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            queuesEdit_screen: true
+            dDIsList_screen: true
+            extensionsList_screen: true
+            queueMembersList_screen: true
+            astQueuesList_screen: true
+          dialogs: 
+            queuesDel_dialog: true
+          default: queuesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          queuesNew_screen: true
+        dialogs: 
+          queuesDel_dialog: true
+    queuesNew_screen: &queuesNew_screenLink 
+      <<: *Queues
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Queue', 'Queues', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          queuesEdit_screen: true
+    queuesEdit_screen: &queuesEdit_screenLink 
+      <<: *Queues
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Queue', 'Queues', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Queue', 'Queues', 1), "[format| (%item%)]")
+    #dDIs: 
+    <<: *dDIs_screensLink
+    dDIsList_screen: 
+      <<: *dDIsList_screenLink
+      filterField: queueId
+      parentOptionCustomizer: 
+        - recordCount
+    dDIsNew_screen: 
+      <<: *dDIsNew_screenLink
+      filterField: queueId
+    dDIsEdit_screen: 
+      <<: *dDIsEdit_screenLink
+      filterField: queueId
+
+    #extensions: 
+    extensionsList_screen: 
+      <<: *extensionsList_screenLink
+      filterField: queueId
+      parentOptionCustomizer: 
+        - recordCount
+    extensionsNew_screen: 
+      <<: *extensionsNew_screenLink
+      filterField: queueId
+    extensionsEdit_screen: 
+      <<: *extensionsEdit_screenLink
+      filterField: queueId
+
+    #queueMembers: 
+    queueMembersList_screen: 
+      <<: *queueMembersList_screenLink
+      filterField: queueId
+      parentOptionCustomizer: 
+        - recordCount
+    queueMembersNew_screen: 
+      <<: *queueMembersNew_screenLink
+      filterField: queueId
+    queueMembersEdit_screen: 
+      <<: *queueMembersEdit_screenLink
+      filterField: queueId
+
+    #astQueues: 
+    astQueuesList_screen: 
+      <<: *astQueuesList_screenLink
+      filterField: queueId
+      parentOptionCustomizer: 
+        - recordCount
+    astQueuesNew_screen: 
+      <<: *astQueuesNew_screenLink
+      filterField: queueId
+    astQueuesEdit_screen: 
+      <<: *astQueuesEdit_screenLink
+      filterField: queueId
+
+  dialogs: &queues_dialogsLink 
+    queuesDel_dialog: &queuesDel_dialogLink 
+      <<: *Queues
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Queue', 'Queues', 1))
+      description: _("Do you want to delete this %s?", ngettext('Queue', 'Queues', 1))
+      message: _("%s successfully deleted.", ngettext('Queue', 'Queues', 1))
+      multiItem: 1
+      labelOnList: 1
+  # dDIs dialogs: 
+    <<: *dDIs_dialogsLink
+  # extensions dialogs: 
+    <<: *extensions_dialogsLink
+  # queueMembers dialogs: 
+    <<: *queueMembers_dialogsLink
+  # astQueues dialogs: 
+    <<: *astQueues_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

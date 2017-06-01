@@ -21,6 +21,7 @@ namespace IvozProvider\Model;
 
 class Companies extends Raw\Companies
 {
+    const EMPTY_DOMAIN_EXCEPTION = 2001;
 
     /**
      * This method is called just after parent's constructor
@@ -49,6 +50,13 @@ class Companies extends Raw\Companies
         $extensions = $this->getExtensions("number='" . $exten . "'");
         return array_shift($extensions);
     }
+
+    public function getDDI($ddieE164)
+    {
+        $ddis = $this->getDDIs("DDIE164='" . $ddieE164 . "'");
+        return array_shift($ddis);
+    }
+
 
     public function getFriend($exten)
     {
@@ -151,6 +159,24 @@ class Companies extends Raw\Companies
         }
 
         return "default";
+    }
+
+    /**
+     * Ensures valid domain value
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDomainUsers($data)
+    {
+        if (is_string($data)) {
+            $data = trim($data);
+        }
+
+        if (empty($data)) {
+            throw new \Exception("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
+        }
+
+        return parent::setDomainUsers($data);
     }
 
     /**
@@ -261,4 +287,52 @@ class Companies extends Raw\Companies
 
         return $applicableOutgoingRoutings;
     }
+
+    /**
+     * Get the size in bytes used by the recordings on this company
+     */
+    public function getRecordingsDiskUsage()
+    {
+        $total = 0;
+
+        // Get company recordings
+        $recordings = $this->getRecordings();
+
+        // Sum all recording size
+        foreach ($recordings as $recording) {
+            $total += $recording->getRecordedFileFileSize();
+        }
+        return $total;
+    }
+
+    /**
+     * Get the size in bytes for disk usage limit on this company
+     */
+    public function getRecordingsLimit()
+    {
+        return $this->getRecordingsLimitMB() * 1024 * 1024;
+    }
+
+    public function hasFeature($featureId) {
+        foreach ($this->getFeatures() as $feature) {
+            if ($feature->getId() == $featureId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getFeatures()
+    {
+        $features = array();
+
+        foreach ($this->getFeaturesRelCompanies() as $relFeature) {
+            if ($this->getBrand()->hasFeature($relFeature->getFeatureId())) {
+                array_push($features, $relFeature->getFeature());
+            }
+        }
+
+        return $features;
+    }
+
 }

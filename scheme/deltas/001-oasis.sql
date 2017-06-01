@@ -2846,7 +2846,7 @@ CREATE TABLE `kam_dispatcher` (
 
 LOCK TABLES `kam_dispatcher` WRITE;
 /*!40000 ALTER TABLE `kam_dispatcher` DISABLE KEYS */;
-INSERT INTO `kam_dispatcher` VALUES (1,1,'sip:127.0.0.1:6060',0,0,'duid=1','as001',1);
+INSERT INTO `kam_dispatcher` VALUES (1,1,'sip:127.0.0.1:6060',0,0,'','as001',1);
 /*!40000 ALTER TABLE `kam_dispatcher` ENABLE KEYS */;
 UNLOCK TABLES;
 

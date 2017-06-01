@@ -130,13 +130,6 @@ class Users extends ModelAbstract
     protected $_exceptionBoosAssistantRegExp;
 
     /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_username;
-
-    /**
      * Database var type tinyint
      *
      * @var int
@@ -144,18 +137,11 @@ class Users extends ModelAbstract
     protected $_active;
 
     /**
-     * Database var type tinyint
+     * Database var type smallint
      *
      * @var int
      */
     protected $_maxCalls;
-
-    /**
-     * Database var type tinyint
-     *
-     * @var int
-     */
-    protected $_callWaiting;
 
     /**
      * Database var type tinyint
@@ -215,34 +201,6 @@ class Users extends ModelAbstract
     protected $_Company;
 
     /**
-     * Parent relation Users_ibfk_10
-     *
-     * @var \IvozProvider\Model\Raw\CallACL
-     */
-    protected $_CallACL;
-
-    /**
-     * Parent relation Users_ibfk_11
-     *
-     * @var \IvozProvider\Model\Raw\Users
-     */
-    protected $_BossAssistant;
-
-    /**
-     * Parent relation Users_ibfk_12
-     *
-     * @var \IvozProvider\Model\Raw\Countries
-     */
-    protected $_Country;
-
-    /**
-     * Parent relation Users_ibfk_13
-     *
-     * @var \IvozProvider\Model\Raw\Languages
-     */
-    protected $_Language;
-
-    /**
      * Parent relation Users_ibfk_3
      *
      * @var \IvozProvider\Model\Raw\Terminals
@@ -269,6 +227,34 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\DDIs
      */
     protected $_OutgoingDDI;
+
+    /**
+     * Parent relation Users_ibfk_10
+     *
+     * @var \IvozProvider\Model\Raw\CallACL
+     */
+    protected $_CallACL;
+
+    /**
+     * Parent relation Users_ibfk_11
+     *
+     * @var \IvozProvider\Model\Raw\Users
+     */
+    protected $_BossAssistant;
+
+    /**
+     * Parent relation Users_ibfk_12
+     *
+     * @var \IvozProvider\Model\Raw\Countries
+     */
+    protected $_Country;
+
+    /**
+     * Parent relation Users_ibfk_13
+     *
+     * @var \IvozProvider\Model\Raw\Languages
+     */
+    protected $_Language;
 
 
     /**
@@ -384,6 +370,30 @@ class Users extends ModelAbstract
     protected $_PickUpRelUsers;
 
     /**
+     * Dependent relation QueueMembers_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\QueueMembers[]
+     */
+    protected $_QueueMembers;
+
+    /**
+     * Dependent relation Queues_ibfk_5
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByTimeoutVoiceMailUser;
+
+    /**
+     * Dependent relation Queues_ibfk_8
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Queues[]
+     */
+    protected $_QueuesByFullVoiceMailUser;
+
+    /**
      * Dependent relation Users_ibfk_11
      * Type: One-to-Many relationship
      *
@@ -415,10 +425,8 @@ class Users extends ModelAbstract
         'isBoss'=>'isBoss',
         'bossAssistantId'=>'bossAssistantId',
         'exceptionBoosAssistantRegExp'=>'exceptionBoosAssistantRegExp',
-        'username'=>'username',
         'active'=>'active',
         'maxCalls'=>'maxCalls',
-        'callWaiting'=>'callWaiting',
         'voicemailEnabled'=>'voicemailEnabled',
         'voicemailSendMail'=>'voicemailSendMail',
         'voicemailAttachSound'=>'voicemailAttachSound',
@@ -447,22 +455,6 @@ class Users extends ModelAbstract
                     'property' => 'Company',
                     'table_name' => 'Companies',
                 ),
-            'UsersIbfk10'=> array(
-                    'property' => 'CallACL',
-                    'table_name' => 'CallACL',
-                ),
-            'UsersIbfk11'=> array(
-                    'property' => 'BossAssistant',
-                    'table_name' => 'Users',
-                ),
-            'UsersIbfk12'=> array(
-                    'property' => 'Country',
-                    'table_name' => 'Countries',
-                ),
-            'UsersIbfk13'=> array(
-                    'property' => 'Language',
-                    'table_name' => 'Languages',
-                ),
             'UsersIbfk3'=> array(
                     'property' => 'Terminal',
                     'table_name' => 'Terminals',
@@ -478,6 +470,22 @@ class Users extends ModelAbstract
             'UsersIbfk9'=> array(
                     'property' => 'OutgoingDDI',
                     'table_name' => 'DDIs',
+                ),
+            'UsersIbfk10'=> array(
+                    'property' => 'CallACL',
+                    'table_name' => 'CallACL',
+                ),
+            'UsersIbfk11'=> array(
+                    'property' => 'BossAssistant',
+                    'table_name' => 'Users',
+                ),
+            'UsersIbfk12'=> array(
+                    'property' => 'Country',
+                    'table_name' => 'Countries',
+                ),
+            'UsersIbfk13'=> array(
+                    'property' => 'Language',
+                    'table_name' => 'Languages',
                 ),
         ));
 
@@ -538,6 +546,18 @@ class Users extends ModelAbstract
                     'property' => 'PickUpRelUsers',
                     'table_name' => 'PickUpRelUsers',
                 ),
+            'QueueMembersIbfk2' => array(
+                    'property' => 'QueueMembers',
+                    'table_name' => 'QueueMembers',
+                ),
+            'QueuesIbfk5' => array(
+                    'property' => 'QueuesByTimeoutVoiceMailUser',
+                    'table_name' => 'Queues',
+                ),
+            'QueuesIbfk8' => array(
+                    'property' => 'QueuesByFullVoiceMailUser',
+                    'table_name' => 'Queues',
+                ),
             'UsersIbfk11' => array(
                     'property' => 'Users',
                     'table_name' => 'Users',
@@ -552,7 +572,8 @@ class Users extends ModelAbstract
             'CallForwardSettings_ibfk_1',
             'CallForwardSettings_ibfk_3',
             'HuntGroupsRelUsers_ibfk_2',
-            'PickUpRelUsers_ibfk_2'
+            'PickUpRelUsers_ibfk_2',
+            'QueueMembers_ibfk_2'
         ));
 
         $this->setOnDeleteSetNullRelationships(array(
@@ -566,6 +587,8 @@ class Users extends ModelAbstract
             'IVRCustom_ibfk_8',
             'IVRCustom_ibfk_9',
             'IVRCustomEntries_ibfk_4',
+            'Queues_ibfk_5',
+            'Queues_ibfk_8',
             'Users_ibfk_11'
         ));
 
@@ -574,8 +597,7 @@ class Users extends ModelAbstract
             'doNotDisturb' => '0',
             'isBoss' => '0',
             'active' => '0',
-            'maxCalls' => '2',
-            'callWaiting' => '0',
+            'maxCalls' => '0',
             'voicemailEnabled' => '1',
             'voicemailSendMail' => '0',
             'voicemailAttachSound' => '1',
@@ -1133,40 +1155,6 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setUsername($data)
-    {
-
-        if ($this->_username != $data) {
-            $this->_logChange('username', $this->_username, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_username = $data;
-
-        } else if (!is_null($data)) {
-            $this->_username = (string) $data;
-
-        } else {
-            $this->_username = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->_username;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
      * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
@@ -1231,40 +1219,6 @@ class Users extends ModelAbstract
     public function getMaxCalls()
     {
         return $this->_maxCalls;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param int $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setCallWaiting($data)
-    {
-
-        if ($this->_callWaiting != $data) {
-            $this->_logChange('callWaiting', $this->_callWaiting, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_callWaiting = $data;
-
-        } else if (!is_null($data)) {
-            $this->_callWaiting = (int) $data;
-
-        } else {
-            $this->_callWaiting = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column callWaiting
-     *
-     * @return int
-     */
-    public function getCallWaiting()
-    {
-        return $this->_callWaiting;
     }
 
     /**
@@ -1557,210 +1511,6 @@ class Users extends ModelAbstract
     }
 
     /**
-     * Sets parent relation CallACL
-     *
-     * @param \IvozProvider\Model\Raw\CallACL $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setCallACL(\IvozProvider\Model\Raw\CallACL $data)
-    {
-        $this->_CallACL = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCallACLId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk10');
-        return $this;
-    }
-
-    /**
-     * Gets parent CallACL
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\CallACL
-     */
-    public function getCallACL($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk10';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_CallACL = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_CallACL;
-    }
-
-    /**
-     * Sets parent relation BossAssistant
-     *
-     * @param \IvozProvider\Model\Raw\Users $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setBossAssistant(\IvozProvider\Model\Raw\Users $data)
-    {
-        $this->_BossAssistant = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setBossAssistantId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk11');
-        return $this;
-    }
-
-    /**
-     * Gets parent BossAssistant
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function getBossAssistant($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk11';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_BossAssistant = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_BossAssistant;
-    }
-
-    /**
-     * Sets parent relation Country
-     *
-     * @param \IvozProvider\Model\Raw\Countries $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
-    {
-        $this->_Country = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCountryId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk12');
-        return $this;
-    }
-
-    /**
-     * Gets parent Country
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Countries
-     */
-    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk12';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Country = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Country;
-    }
-
-    /**
-     * Sets parent relation Language
-     *
-     * @param \IvozProvider\Model\Raw\Languages $data
-     * @return \IvozProvider\Model\Raw\Users
-     */
-    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
-    {
-        $this->_Language = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setLanguageId($primaryKey);
-        }
-
-        $this->_setLoaded('UsersIbfk13');
-        return $this;
-    }
-
-    /**
-     * Gets parent Language
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Languages
-     */
-    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'UsersIbfk13';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Language = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Language;
-    }
-
-    /**
      * Sets parent relation Terminal
      *
      * @param \IvozProvider\Model\Raw\Terminals $data
@@ -1962,6 +1712,210 @@ class Users extends ModelAbstract
         }
 
         return $this->_OutgoingDDI;
+    }
+
+    /**
+     * Sets parent relation CallACL
+     *
+     * @param \IvozProvider\Model\Raw\CallACL $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setCallACL(\IvozProvider\Model\Raw\CallACL $data)
+    {
+        $this->_CallACL = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCallACLId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk10');
+        return $this;
+    }
+
+    /**
+     * Gets parent CallACL
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\CallACL
+     */
+    public function getCallACL($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk10';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_CallACL = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_CallACL;
+    }
+
+    /**
+     * Sets parent relation BossAssistant
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setBossAssistant(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_BossAssistant = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setBossAssistantId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk11');
+        return $this;
+    }
+
+    /**
+     * Gets parent BossAssistant
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function getBossAssistant($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk11';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_BossAssistant = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_BossAssistant;
+    }
+
+    /**
+     * Sets parent relation Country
+     *
+     * @param \IvozProvider\Model\Raw\Countries $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setCountry(\IvozProvider\Model\Raw\Countries $data)
+    {
+        $this->_Country = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCountryId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk12');
+        return $this;
+    }
+
+    /**
+     * Gets parent Country
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk12';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Country = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Country;
+    }
+
+    /**
+     * Sets parent relation Language
+     *
+     * @param \IvozProvider\Model\Raw\Languages $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setLanguage(\IvozProvider\Model\Raw\Languages $data)
+    {
+        $this->_Language = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setLanguageId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk13');
+        return $this;
+    }
+
+    /**
+     * Gets parent Language
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Languages
+     */
+    public function getLanguage($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk13';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Language = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Language;
     }
 
     /**
@@ -3222,6 +3176,276 @@ class Users extends ModelAbstract
         }
 
         return $this->_PickUpRelUsers;
+    }
+
+    /**
+     * Sets dependent relations QueueMembers_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\QueueMembers
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setQueueMembers(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueueMembers === null) {
+
+                $this->getQueueMembers();
+            }
+
+            $oldRelations = $this->_QueueMembers;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueueMembers = array();
+
+        foreach ($data as $object) {
+            $this->addQueueMembers($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations QueueMembers_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\QueueMembers $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addQueueMembers(\IvozProvider\Model\Raw\QueueMembers $data)
+    {
+        $this->_QueueMembers[] = $data;
+        $this->_setLoaded('QueueMembersIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent QueueMembers_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\QueueMembers
+     */
+    public function getQueueMembers($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueueMembersIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueueMembers = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueueMembers;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_5
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setQueuesByTimeoutVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByTimeoutVoiceMailUser === null) {
+
+                $this->getQueuesByTimeoutVoiceMailUser();
+            }
+
+            $oldRelations = $this->_QueuesByTimeoutVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByTimeoutVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByTimeoutVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_5
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addQueuesByTimeoutVoiceMailUser(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByTimeoutVoiceMailUser[] = $data;
+        $this->_setLoaded('QueuesIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_5
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByTimeoutVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByTimeoutVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByTimeoutVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_8
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Queues
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setQueuesByFullVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_QueuesByFullVoiceMailUser === null) {
+
+                $this->getQueuesByFullVoiceMailUser();
+            }
+
+            $oldRelations = $this->_QueuesByFullVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_QueuesByFullVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addQueuesByFullVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Queues_ibfk_8
+     *
+     * @param \IvozProvider\Model\Raw\Queues $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addQueuesByFullVoiceMailUser(\IvozProvider\Model\Raw\Queues $data)
+    {
+        $this->_QueuesByFullVoiceMailUser[] = $data;
+        $this->_setLoaded('QueuesIbfk8');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Queues_ibfk_8
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Queues
+     */
+    public function getQueuesByFullVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'QueuesIbfk8';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_QueuesByFullVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_QueuesByFullVoiceMailUser;
     }
 
     /**

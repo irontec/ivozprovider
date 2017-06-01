@@ -51,7 +51,7 @@ msgid ""
 "each model) prefixed with the previous step URL."
 msgstr ""
 "Pide un primer archivo añadiendo a la ruta recibida por DHCP un "
-"archivoestático (cada modelo de terminal, uno distinto)."
+"archivo estático (cada modelo de terminal, uno distinto)."
 
 #: ../../provisioning/index.rst:19
 msgid "The served file can redefine the URL for further requests"
@@ -179,5 +179,6 @@ msgid ""
 "Analyzing the suggested templates you can have a basic idea of the "
 "flexibility of the system to configure any existing terminal model in the"
 " market."
-msgstr ""
-
+msgstr "Analizando las plantillas sugeridas, puede hacerse una idea básica "
+"de la flexibilidad del sistema para configurar cualquier modelo de terminal "
+"en el mercado."

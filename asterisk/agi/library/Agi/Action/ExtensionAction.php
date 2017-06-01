@@ -39,6 +39,7 @@ class ExtensionAction extends RouterAction
         $this->_routeConference = $extension->getConferenceRoom();
         $this->_routeExternal   = $extension->getNumberValue();
         $this->_routeFriend     = $extension->getFriendValue();
+        $this->_routeQueue      = $extension->getQueue();
         $this->route();
     }
 

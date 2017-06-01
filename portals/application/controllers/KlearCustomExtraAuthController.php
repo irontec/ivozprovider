@@ -9,6 +9,7 @@
 
 use IvozProvider\Mapper\Sql\Companies;
 use IvozProvider\Mapper\Sql\Brands;
+use IvozProvider\Model\Features;
 
 
 class KlearCustomExtraAuthController extends Zend_Controller_Action
@@ -170,6 +171,8 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 $brandId = $this->getRequest()->getParam("remoteId");
                 $remoteId = $brandId;
                 $this->_user->setBrandId($brandId);
+                $brandsMapper = new Brands();
+                $this->_enableFeatures($brandsMapper->find($brandId));
                 if ($oldBrandId != $brandId) {
                     $this->_user->unsetCompany();
                 }
@@ -183,6 +186,8 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 $companyId = $this->getRequest()->getParam("remoteId");
                 $remoteId = $companyId;
                 $this->_user->setCompanyId($companyId);
+                $companiesMapper = new Companies();
+                $this->_enableFeatures($companiesMapper->find($companyId));
 
             } else {
                 return $this->_noPermission();
@@ -293,6 +298,29 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $jsonResponse->addJsFile("/js/plugins/jquery.klearmatrix.genericdialog.js");
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
+    }
+
+    protected function _enableFeatures($entity)
+    {
+        // Enable/disable features
+        $features = array();
+        $featureMapper = new \IvozProvider\Mapper\Sql\Features;
+        foreach ($featureMapper->fetchList() as $feature) {
+            $featureName = $feature->getIden();
+            $featureId = $feature->getId();
+            $enabled = $entity->hasFeature($featureId);
+            $features[$featureName] = array(
+                "enabled" => $enabled,
+                "disabled" => !$enabled
+            );
+        }
+
+        // Brand or company!
+        if ($entity instanceof \IvozProvider\Model\Raw\Brands) {
+            $this->_user->brand = $features;
+        } else {
+            $this->_user->company = $features;
+        }
     }
 
 }

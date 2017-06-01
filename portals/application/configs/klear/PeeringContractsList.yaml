@@ -5,28 +5,28 @@
 #include KamTrunksUacregList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: peeringContractsList_screen
   screens: &peeringContracts_screensLink
-    peeringContractsList_screen: &peeringContractsList_screenLink 
+    peeringContractsList_screen: &peeringContractsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PeeringContracts
       class: ui-silk-connect
       title: _("List of %s %2s", ngettext('Peering contract', 'Peering contracts', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             peeringContractsEdit_screen: true
             peerServersList_screen: true
             kamTrunksUacregList_screen: true
-          dialogs: 
+          dialogs:
             peeringContractsDel_dialog: true
           default: peeringContractsEdit_screen
         order: &PeerContractsOrder_Link
@@ -35,13 +35,13 @@ production:
           description: true
         blacklist:
           externallyRated: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           peeringContractsNew_screen: true
-        dialogs: 
+        dialogs:
           peeringContractsDel_dialog: true
-    peeringContractsNew_screen: &peeringContractsNew_screenLink 
+    peeringContractsNew_screen: &peeringContractsNew_screenLink
       <<: *PeeringContracts
       controller: new
       class: ui-silk-add
@@ -51,11 +51,12 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
-
       fields:
         order:
           <<: *PeerContractsOrder_Link
-    peeringContractsEdit_screen: &peeringContractsEdit_screenLink 
+        blacklist:
+          externallyRated: ${auth.brand.billing.disabled}
+    peeringContractsEdit_screen: &peeringContractsEdit_screenLink
       <<: *PeeringContracts
       controller: edit
       class: ui-silk-pencil
@@ -67,7 +68,8 @@ production:
       fields:
         order:
           <<: *PeerContractsOrder_Link
-      
+        blacklist:
+          externallyRated: ${auth.brand.billing.disabled}
     #PeerServers
     <<: *peerServers_screensLink
     peerServersList_screen:
@@ -82,16 +84,16 @@ production:
       <<: *peerServersEdit_screenLink
       filterField: peeringContractId
 
-    #kamTrunksUacreg: 
-    kamTrunksUacregList_screen: 
+    #kamTrunksUacreg:
+    kamTrunksUacregList_screen:
       <<: *kamTrunksUacregList_screenLink
       filterField: peeringContractId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-    kamTrunksUacregNew_screen: 
+    kamTrunksUacregNew_screen:
       <<: *kamTrunksUacregNew_screenLink
       filterField: peeringContractId
-    kamTrunksUacregEdit_screen: 
+    kamTrunksUacregEdit_screen:
       <<: *kamTrunksUacregEdit_screenLink
       filterField: peeringContractId
 
@@ -117,19 +119,19 @@ production:
       message: _("%s successfully deleted.", ngettext('Peering contract', 'Peering contracts', 1))
       multiItem: 1
       labelOnList: 1
-      
+
     #PeerServers
     <<: *peerServers_dialogsLink
     # TransformationRulesetGroupsTrunks
     <<: *transformationRulesetGroupsTrunks_dialogsLink
-    # kamTrunksUacreg dialogs: 
+    # kamTrunksUacreg dialogs:
     <<: *kamTrunksUacreg_dialogsLink
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

@@ -82,13 +82,13 @@ production:
     password:
       title: ngettext('Password', 'Passwords', 1)
       type: text
-      pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[!@#$%^&*()-+])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
+      pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
       required: true
       info:
         type: box
         position: left
         icon: help
-        text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '!@#$%^&*()-+'")
+        text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'")
         label: _("Need help?")
       options:
         commands:
@@ -138,7 +138,7 @@ production:
         text: _("Outgoing calls coming from Friend must have this area code format")
         label: _("Need help?")
     outgoingDDIId:
-      title: _('Outgoing DDI')
+      title: _('Fallback Outgoing DDI')
       type: select
       source:
         data: mapper
@@ -150,12 +150,12 @@ production:
               - DDIE164
             template: '+%DDIE164%'
           order: DDIE164
-        'null': _("Unassigned")
+        'null': _("Company's default")
       info:
         type: box
         position: left
         icon: help
-        text: _("No outgoing calls will be allowed if this field is unassigned")
+        text: _("This DDI will be used if friend presented DDI doesn't match any of the company DDIs")
         label: _("Need help?")
     priority:
       title: _('Priority')
@@ -227,7 +227,7 @@ production:
     from_domain:
       title: _('From domain')
       type: text
-      maxLength: 64
+      maxLength: 190
     directConnectivity:
       title: _('Direct connectivity')
       type: select

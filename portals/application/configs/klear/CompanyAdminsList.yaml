@@ -22,6 +22,12 @@ production:
           dialogs: 
             companyAdminsDel_dialog: true
           default: companyAdminsEdit_screen
+        blacklist:
+          pass: true
+          timezoneId: true
+          email: true
+          name: true
+          lastname: true
       options: 
         title: _("Options")
         screens: 
@@ -31,6 +37,26 @@ production:
     companyAdminsNew_screen: &companyAdminsNew_screenLink 
       <<: *CompanyAdmins
       controller: new
+      fields:
+        blacklist:
+            active: true
+      fixedPositions: &companyAdminsFixedPositions_link
+        group0:
+          label: _("Login info")
+          colsPerRow: 2
+          fields:
+            username: 1
+            pass: 1
+            active: 1
+            timezoneId: 1
+        group1:
+          label: _("Personal data")
+          colsPerRow: 3
+          collapsed: true
+          fields:
+            name: 1
+            lastname: 1
+            email: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -39,6 +65,7 @@ production:
     companyAdminsEdit_screen: &companyAdminsEdit_screenLink 
       <<: *CompanyAdmins
       controller: edit
+      fixedPositions: *companyAdminsFixedPositions_link
       class: ui-silk-pencil
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")

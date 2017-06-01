@@ -42,6 +42,13 @@ class FixedCosts extends ModelAbstract
      *
      * @var string
      */
+    protected $_name;
+
+    /**
+     * Database var type text
+     *
+     * @var text
+     */
     protected $_description;
 
     /**
@@ -71,6 +78,7 @@ class FixedCosts extends ModelAbstract
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
+        'name'=>'name',
         'description'=>'description',
         'cost'=>'cost',
     );
@@ -215,12 +223,46 @@ class FixedCosts extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\FixedCosts
      */
-    public function setDescription($data)
+    public function setName($data)
     {
 
         if (is_null($data)) {
             throw new \InvalidArgumentException(_('Required values cannot be null'));
         }
+        if ($this->_name != $data) {
+            $this->_logChange('name', $this->_name, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_name = $data;
+
+        } else if (!is_null($data)) {
+            $this->_name = (string) $data;
+
+        } else {
+            $this->_name = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->_name;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param text $data
+     * @return \IvozProvider\Model\Raw\FixedCosts
+     */
+    public function setDescription($data)
+    {
+
         if ($this->_description != $data) {
             $this->_logChange('description', $this->_description, $data);
         }
@@ -240,7 +282,7 @@ class FixedCosts extends ModelAbstract
     /**
      * Gets column description
      *
-     * @return string
+     * @return text
      */
     public function getDescription()
     {

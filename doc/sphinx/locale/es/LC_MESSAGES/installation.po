@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-05 13:29+0200\n"
+"POT-Creation-Date: 2017-05-19 16:31+0200\n"
 "PO-Revision-Date: 2016-12-28 14:25+0100\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -26,28 +26,32 @@ msgid ""
 "You can download one of the `IvozProvider Automatic ISO CD images "
 "<https://github.com/irontec/ivozprovider>`_ (generated using `simplecdd "
 "<https://wiki.debian.org/Simple-CDD>`_) in stable or nighly versions:"
-msgstr "Puedes descargar uno de los `CDs automáticos de instalación de "
+msgstr ""
+"Puedes descargar uno de los `CDs automáticos de instalación de "
 "IvozProvider <https://github.com/irontec/ivozprovider>`_ (generados "
 "mediante `simplecdd <https://wiki.debian.org/Simple-CDD>`_) en su versión"
 " estable o en una de las builds nocturnas:"
 
 #: ../../installation/cd_install.rst:10
 msgid "IMPORTANT: Automatic install CDs will format target machine disk!"
-msgstr "IMPORTANTE: Los CDs de instalación formatearán automáticamente el disco "
+msgstr ""
+"IMPORTANTE: Los CDs de instalación formatearán automáticamente el disco "
 "de la máquina."
 
 #: ../../installation/cd_install.rst:12
 msgid ""
 "Configure the target machine to boot from CD. It will display the Debian "
 "GNU/Linux installation menu."
-msgstr "Configure la máquina para iniciar desde CD, mostrará el menún de "
+msgstr ""
+"Configure la máquina para iniciar desde CD, mostrará el menú de "
 "instalación de Debian GNU/Linux."
 
 #: ../../installation/cd_install.rst:15
 msgid ""
 "You can use graphic installation if you prefer, but the following "
 "screenshots show the standard installation."
-msgstr "Si lo desea puede emplear la instalación gráfica del CD, perolos "
+msgstr ""
+"Si lo desea puede emplear la instalación gráfica del CD, pero los "
 "pantallazos a continuación se muestran con la instalaciónestándar."
 
 #: ../../installation/cd_install.rst:20
@@ -66,7 +70,8 @@ msgstr "Seleccione la configuración de hora:"
 msgid ""
 "At this point, a generic network configuration and disk partitioning will"
 " be performed, and also a installation of base system."
-msgstr "En este punto se realizará la configuración automática de red y "
+msgstr ""
+"En este punto se realizará la configuración automática de red y "
 "particionado de disco, así como la instalación del sistema base."
 
 #: ../../installation/cd_install.rst:35
@@ -75,61 +80,72 @@ msgstr "Configure IvozProvider:"
 
 #: ../../installation/cd_install.rst:39
 msgid ""
-"As mentioned in :ref:`Minimum requirements` is required at least two IP "
-"addresses for User and Trunk SIP proxies."
-msgstr "Como hemos mencionado en los :ref:`requisitos mínimos` es necesariodos "
-"direcciones IPs para los proxies SIP de usuarios y proveedores."
+"As mentioned in :ref:`Minimum requirements` is required at least one "
+"public IP address for User and Trunk SIP proxies. Remember that if you "
+"use only one, KamTrunks will use different SIP ports to avoid collision."
+msgstr ""
+"Como se mencionó en :ref:`Requisitos mínimos` se requiere al menos una "
+"dirección IP pública para los proxies de Usuarios y Troncales. Recordar que en "
+"caso de utilizar una única dirección IP, los puertos SIP del proxy de "
+"salida se cambiarán para evitar la colisión entre ambos."
 
-#: ../../installation/cd_install.rst:42
+#: ../../installation/cd_install.rst:43
 msgid ""
 "You can set its addresses right now and configure the interfaces properly"
 " when the system is fully installed. This menu can be displayed anytime "
 "after the installation."
-msgstr "Puede asignar sus valores ahora y configurar sus interfaces mas tarde,o "
+msgstr ""
+"Puede asignar sus valores ahora y configurar sus interfaces mas tarde, o "
 "bien puede mostar el siguiente menu para configurar estos valoresmás "
 "adelante."
 
-#: ../../installation/cd_install.rst:48
+#: ../../installation/cd_install.rst:49
 msgid "You can also configure default root MySQL password right now."
-msgstr "También puede configurar el valor por defecto para acceder a MySQL en "
+msgstr ""
+"También puede configurar el valor por defecto para acceder a MySQL en "
 "este momento."
 
-#: ../../installation/cd_install.rst:50
+#: ../../installation/cd_install.rst:51
 msgid ""
 "If you don't configure MySQL password, default password will be used "
 "(changeme). You can still change it later."
-msgstr "Si no configura contraseña para el administrador de MySQL, seempleará la "
+msgstr ""
+"Si no configura contraseña para el administrador de MySQL, se empleará la "
 "de por defect (changeme). Puede cambiarla más adelantesi lo desea."
 
-#: ../../installation/cd_install.rst:55
+#: ../../installation/cd_install.rst:56
 msgid "And default language for portals:"
 msgstr "Y el idioma por defecto de los portales web:"
 
-#: ../../installation/cd_install.rst:59
+#: ../../installation/cd_install.rst:60
 msgid ""
 "It is not require to configure all settings during initial installation. "
 "In case any setting has been left without configuration a warning dialog "
 "will be displayed."
-msgstr "No es preciso configurar todas estas cosas durante la instalación.En caso"
+msgstr ""
+"No es preciso configurar todas estas cosas durante la instalación.En caso"
 " de que algún dato esté sin configurar se mostará un dialogode aviso:"
 
-#: ../../installation/cd_install.rst:65
+#: ../../installation/cd_install.rst:66
 msgid "At last, select where the GRUB boot loader will be installed."
-msgstr "Por último, seleccione el disco donde se instalará el cargadorde arranque"
+msgstr ""
+"Por último, seleccione el disco donde se instalará el cargador de arranque"
 " GRUB."
 
-#: ../../installation/cd_install.rst:69
+#: ../../installation/cd_install.rst:70
 msgid "After the reboot, you are ready to access using the web portals!"
-msgstr "Una vez reiniciada la máquina podrá entrar y acceder a través delos "
+msgstr ""
+"Una vez reiniciada la máquina podrá entrar y acceder a través de los "
 "portales web!"
 
-#: ../../installation/cd_install.rst:71
+#: ../../installation/cd_install.rst:72
 #: ../../installation/debian_install.rst:84
 msgid ""
-"Any of the 2 Public IP addresses configured during the installation will "
+"Any of the public IP addresses configured during the installation will "
 "work to acces the web portal. Default credentials are **admin / "
 "changeme**."
-msgstr "Cualquiera de las 2 IPs públicas configuradas en la instalación servirá "
+msgstr ""
+"Cualquiera de las IPs públicas configuradas en la instalación servirá "
 "para acceder al panel web. Las credenciales por defecto son **admin / "
 "changeme**."
 
@@ -142,7 +158,8 @@ msgid ""
 "IvozProvider is designed to be installed and updated using Debian "
 "packages. More exactly, the current release is ready to be installed on "
 "`Debian Jessie 8 <https://www.debian.org/releases/jessie>`_."
-msgstr "IvozProvider está diseñado para instalarse y actualizarse mediante "
+msgstr ""
+"IvozProvider está diseñado para instalarse y actualizarse mediante "
 "paquetes Debian. En concreto, la release actual esta pensada para "
 "funcionar sobre `Debian Jessie 8 "
 "<https://www.debian.org/releases/jessie>`_."
@@ -153,7 +170,8 @@ msgid ""
 "<https://www.debian.org/releases/jessie/installmanual>`_ to install the "
 "minimum base system. The rest of required  dependencies will be installed"
 " automatically with IvozProvider meta packages."
-msgstr "Se recomienda emplear las `guias oficiales de instalación "
+msgstr ""
+"Se recomienda emplear las `guias oficiales de instalación "
 "<https://www.debian.org/releases/jessie/installmanual>`_ para obtener un "
 "sistema base mínimo, ya que toda dependencia que necesite posteriormente "
 "será instalada automaticamente."
@@ -163,7 +181,8 @@ msgid ""
 "No matter if you are installing a  :ref:`StandAlone install` or a "
 ":ref:`Distributed install`, it's required to configure Irontec debian "
 "repositories."
-msgstr "Tanto si deseas realizar una :ref:`instalación standalone` o una "
+msgstr ""
+"Tanto si deseas realizar una :ref:`instalación standalone` o una "
 ":ref:`instalación distribuida`, es preciso configurar los repositorios de"
 " paquetes debian de Irontec."
 
@@ -176,7 +195,8 @@ msgid ""
 "Right now, two different repositories are used for the latest "
 "IvozProvider release (called oasis) and it's frontend Klear release "
 "(called chloe)."
-msgstr "Actualmente se emplean dos repositorios diferentes tanto para la última "
+msgstr ""
+"Actualmente se emplean dos repositorios diferentes tanto para la última "
 "release de IvozProvider (oasis) como para la de Klear (chloe)"
 
 #: ../../installation/debian_install.rst:31
@@ -191,7 +211,8 @@ msgstr "Instalar el paquete del rol"
 msgid ""
 "Once the repositories are configured, it will be required to select the "
 "proper metapackage depending on the type of installation."
-msgstr "Una vez configurados los repositorios será preciso seleccionar el paquete"
+msgstr ""
+"Una vez configurados los repositorios será preciso seleccionar el paquete"
 " acorde al perfil que queramos instalar:"
 
 #: ../../installation/debian_install.rst:45
@@ -206,7 +227,8 @@ msgstr "ivozprovider"
 msgid ""
 "For a :ref:`Distributed install`: one of the profile packages depending "
 "on the role the machine will perform."
-msgstr "Para una :ref:`instalación distribuida` uno de los paquetes en función "
+msgstr ""
+"Para una :ref:`instalación distribuida` uno de los paquetes en función "
 "rol se desee que desempeñe la máquina"
 
 #: ../../installation/debian_install.rst:50
@@ -234,7 +256,8 @@ msgid ""
 "Distributed installation require a couple manual configuration based on "
 "the roles that are performing. Check `finishing role configuration "
 "<http://github.com/irontec/ivozprovider>`_ for more information."
-msgstr "Las instalaciones distribuidas requieren multiples configuraciones en "
+msgstr ""
+"Las instalaciones distribuidas requieren multiples configuraciones en "
 "funcion del rol que se haya instalado. Consulte `completar la instalción "
 "de un rol <http://github.com/irontec/ivozprovider>`_ para más "
 "información."
@@ -245,7 +268,8 @@ msgid ""
 "basic services used in IvozProvider. Most of the services are "
 "automatically configured to work in the same machine with the default "
 "values."
-msgstr "Las instalaciones standalone cuentan con un menú que ayuda a configurar "
+msgstr ""
+"Las instalaciones standalone cuentan con un menú que ayuda a configurar "
 "los datos básicos de los servicios empleados en IvozProvider. Puesto que "
 "todos los servicios se ejecutan en la misma máquina, muchos de los "
 "procesos vienen configurados automáticamente con los valores por defecto."
@@ -255,8 +279,8 @@ msgid "This menu allows:"
 msgstr "El menú permite, entre otros:"
 
 #: ../../installation/debian_install.rst:73
-msgid "Configure IP addresses for SIP proxies"
-msgstr "Configurar las IPs públicas de los proxies SIP"
+msgid "Configure IP address(es) for SIP proxies"
+msgstr "Configurar la(s) IP(s) pública(s) de los proxies SIP"
 
 #: ../../installation/debian_install.rst:74
 msgid "Default platform language"
@@ -268,8 +292,62 @@ msgstr "Las contraseñas para acceder a las bases de datos"
 
 #: ../../installation/debian_install.rst:77
 msgid "It's possible to change any of this values anytime by running:"
-msgstr "Es posible cambiar cualquiera de estos valores una vez instalado "
+msgstr ""
+"Es posible cambiar cualquiera de estos valores una vez instalado "
 "IvozProvider volviendo a ejecutar:"
+
+#: ../../installation/extra_components.rst:3
+msgid "Extra components"
+msgstr "Componentes extra"
+
+#: ../../installation/extra_components.rst:7
+msgid "G.729"
+msgstr "G.729"
+
+#: ../../installation/extra_components.rst:9
+msgid ""
+"In some countries, you might have to pay royalty fees in order to use "
+"G.729 codec to their patent holders. We're not legal advisors regarding "
+"active or withdrawn world patents."
+msgstr ""
+"En algunos paises, es posible que tenga que pagar derechos a los "
+"titulares de las patentes de G.729. No somos asesores legales al respecto"
+" de las patentes activas o retiradas."
+
+#: ../../installation/extra_components.rst:13
+msgid ""
+"You can use G.729 with IvozProvider, but installation must be done "
+"manually. G.729 codec is optimized for each CPU type and version of "
+"asterisk, so each installation may require a different codec module."
+msgstr ""
+"Puede emplear G.729 con IvozProvider, pero la instalación debe ser "
+"realizada manualmente. El codec G.729 esta optimizado para cada tipo de "
+"CPU y versión de asterisk, por lo que cada instalación puede requerir un "
+"módulo de codec diferente."
+
+#: ../../installation/extra_components.rst:17
+msgid ""
+"You can download codec from `here <http://asterisk.hosting.lv/>`_ under "
+"the section Asterisk 13."
+msgstr ""
+"Puede descargar el codec `aqui <http://asterisk.hosting.lv/>`_ bajo la "
+"sección Asterisk 13."
+
+#: ../../installation/extra_components.rst:20
+msgid ""
+"Once downloaded, move the `.so` file to **/usr/lib/asterisk/modules/** "
+"and rename it to **codec_g729.so**"
+msgstr ""
+"Una vez descargado, mueva el fichero `.so` a la ruta "
+"**/usr/lib/asterisk/modules/** y renómbrelo a **codec_g729.so**"
+
+#: ../../installation/extra_components.rst:23
+msgid ""
+"You can check the codec is valid by restarting asterisk and printing the "
+"available codec translations using:"
+msgstr ""
+"Puede comprobar si el codec es válido reiniciado asterisk y mostrando la "
+"lista de traducciones de codes disponibles:"
 
 #: ../../installation/index.rst:3
 msgid "Initial Installation"
@@ -287,14 +365,17 @@ msgstr "Instalación distribuida"
 msgid ""
 "IvozProvider software is designed to run distributed between multiple "
 "systems in what we call profiles:"
-msgstr "IvozProvider está diseñado para que la mayor parte del software trabajede"
+msgstr ""
+"IvozProvider está diseñado para que la mayor parte del software trabaje de"
 " manera distribuida en lo que llamamos perfiles."
 
 #: ../../installation/install_types.rst:12
 msgid ""
 "Each profile is in charge of performing one of the platform "
 "functionalities:"
-msgstr "Cada perfil es encargado de realizar una de las funcionesde la plataforma:"
+msgstr ""
+"Cada perfil es encargado de realizar una de las funciones de la "
+"plataforma:"
 
 #: ../../installation/install_types.rst:14
 msgid "Data storage"
@@ -316,7 +397,8 @@ msgstr "Portal Web"
 msgid ""
 "For each of this profiles, there's a virtual package that will install "
 "all the required dependencies (see :ref:`Installing profile package`)."
-msgstr "Para cada uno de estos perfiles existe un paquete virtual queinstalará "
+msgstr ""
+"Para cada uno de estos perfiles existe un paquete virtual que instalará "
 "todas las dependencias necesarias (ver :ref:`Instalar el paquete del "
 "rol`)."
 
@@ -327,12 +409,13 @@ msgid ""
 "(for example: asterisk or media-relays) others will require aditional "
 "software so the systems that have the same profile are syncronized (for "
 "example: database replication or http request balancing)."
-msgstr "Puedes instalar cuantas instancias desees de cada perfil, pero ten "
-"encuenta que, mientras algunos estan pensados para escalar "
-"horizontalmentede manera nativa (por ejemplo: asterisk o media-relays) "
-"otros requeriránsoftware adicional para que las máquinas del mismo perfil"
-" esten coordinadas(por ejemplo: replicación de bases de datos o balanceo "
-"de peticiones web)."
+msgstr ""
+"Puedes instalar cuantas instancias desees de cada perfil, pero ten en "
+"cuenta que, mientras algunos estan pensados para escalar horizontalmente "
+"de manera nativa (por ejemplo: asterisk o media-relays) otros requerirán "
+"software adicional para que las máquinas del mismo perfil esten "
+"coordinadas (por ejemplo: replicación de bases de datos o balanceo de "
+"peticiones web)."
 
 #: ../../installation/install_types.rst:30
 msgid "StandAlone Install"
@@ -343,16 +426,18 @@ msgid ""
 "If you want a small installation to make a couple of tests or give a "
 "basic service, we have designed all this configuration so they can work "
 "in a single machine."
-msgstr "Pero si lo que deseas es tener una plataforma pequeña para realizartus "
-"pruebas o dar un servicio básico, hemos diseñado todas lasconfiguraciones"
-" para que puedan convivir en una sola máquina."
+msgstr ""
+"Pero si lo que deseas es tener una plataforma pequeña para realizar tus "
+"pruebas o dar un servicio básico, hemos diseñado todas las "
+"configuraciones para que puedan convivir en una sola máquina."
 
 #: ../../installation/install_types.rst:36
 msgid ""
 "We have called this kind of installations **StandAlone** and we have also"
 " created :ref:`Automatic ISO CD image` so you can install in a couple of "
 "minutes."
-msgstr "Hemos bautizado este tipo de instalaciones como **StandAlone** y hemos  "
+msgstr ""
+"Hemos bautizado este tipo de instalaciones como **StandAlone** y hemos  "
 "creado :ref:`CDs automáticos de instalación` para que puedas instalarlos "
 "en un par de minutos."
 
@@ -368,18 +453,19 @@ msgstr "Requisitos de sistema"
 msgid ""
 "IvozProvider is designed to be installed using Debian GNU/Linux APT "
 "package system."
-msgstr "IvozProvider está diseñado para funcionar e instalarse a través "
-"delsistema de paquetes APT de Debian GNU/Linux."
+msgstr ""
+"IvozProvider está diseñado para funcionar e instalarse a través del "
+"sistema de paquetes APT de Debian GNU/Linux."
 
 #: ../../installation/requirements.rst:11
 msgid ""
 "It's recommended to install IvozProvider in a dedicated server for the "
 "platform. Many of the installed software may not work properly with other"
 " pre-installed services (like MySQL or DNS servers)."
-msgstr "Es recomendable instalar IvozProvider en una máquina dedicada para "
-"laplataforma. Muchos de los software instalados podrían hacer "
-"malfuncionarotros software pre-instalados (por ejemplo MySQL o servidores"
-" DNS)."
+msgstr ""
+"Es recomendable instalar IvozProvider en una máquina dedicada para la "
+"plataforma. Muchos de los software instalados podrían hacer malfuncionar "
+"otros software pre-instalados (por ejemplo MySQL o servidores DNS)."
 
 #: ../../installation/requirements.rst:15
 msgid "For a StandAlone installation, we recommend at least:"
@@ -398,19 +484,32 @@ msgid "30GB HDD"
 msgstr "30GB Disco Duro"
 
 #: ../../installation/requirements.rst:20
-msgid "2 IP Addresses (preferably public)"
-msgstr "2 Direcciones IP (preferentemente públicas)"
+msgid "1/2 public IP Addresses (read note behind)"
+msgstr "1/2 IPs públicas (leer nota)"
 
 #: ../../installation/requirements.rst:22
+msgid ""
+"Since version 1.2 it is possible to make both KamUsers and KamTrunks "
+"share a unique public IP address. If so, **KamTrunks ports will be "
+"changed from 5060 (TCP/UDP) to 7060 (TCP/UDP) and from 5061 (TCP) to 7061"
+" (TCP)**."
+msgstr ""
+"Desde la versión 1.2 is posible hacer que el proxy de usuarios y el proxy "
+"de salida utilicen la misma direción IP pública. En este caso, **se cambiarán "
+"los puertos del proxy de salida de 5060 (TCP/UDP) a 7060 (TCP/UDP) y de 5061 "
+"(TCP) a 7061 (TCP)**."
+
+#: ../../installation/requirements.rst:27
 msgid "If you're not using a :ref:`Automatic ISO CD image` you will also need:"
-msgstr "Si no está empleando la :ref:`CDs automáticos de instalación` también "
+msgstr ""
+"Si no está empleando la :ref:`CDs automáticos de instalación` también "
 "será necesario:"
 
-#: ../../installation/requirements.rst:24
+#: ../../installation/requirements.rst:29
 msgid "Debian Jessie 8.0 base install"
 msgstr "Instalación base de Debian Jessie 8.0"
 
-#: ../../installation/requirements.rst:25
+#: ../../installation/requirements.rst:30
 msgid "Internet access"
 msgstr "Acceso a Internet"
 

@@ -20,45 +20,55 @@
 namespace IvozProvider\Mapper\Sql;
 class Users extends Raw\Users
 {
-    protected function _save(\IvozProvider\Model\Raw\Users $model,
-        $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
+    protected function _save(
+        \IvozProvider\Model\Raw\Users $model,
+        $recursive = false,
+        $useTransaction = true,
+        $transactionTag = null,
+        $forceInsert = false
     )
     {
         $isNew = !$model->getPrimaryKey();
 
-        // '' is NULL (avoid triggering the UNIQUE KEY)
-        if ($model->getEmail() == '') $model->setEmail(null);
+        if ($model->getEmail() === '') {
+            // '' is NULL (avoid triggering the UNIQUE KEY)
+            $model->setEmail(null);
+        }
 
         if ($isNew) {
             // Sane defaults for hidden fields
-            if (!$model->hasChange('timezoneId'))
-                $model->setTimezoneId($model->getCompany()->getBrand()->getDefaultTimezoneId());
-
-            if (!$model->hasChange('exceptionBoosAssistantRegExp'))
-                $model->setExceptionBoosAssistantRegExp('');
-
-            if (!$model->hasChange('voicemailSendMail')) {
-                if ($model->getEmail()) $model->setVoicemailSendMail(1);
+            if (!$model->getTimezoneId()) {
+                $model->setTimezoneId(
+                    $model->getCompany()->getBrand()->getDefaultTimezoneId()
+                );
             }
 
-            if (!$model->hasChange('username') && $model->getEmail()) {
+            if (is_null($model->getVoicemailSendMail()) && $model->getEmail()) {
+                $model->setVoicemailSendMail(1);
+            }
+
+            if ($model->getEmail()) {
                 $model->setActive(1);
-                $model->setUsername($model->getEmail());
                 $model->setPass("1234");
             }
+
         } else {
-            // Avoid username/pass/active incoherences
-            if ($model->getActive() && $model->getEmail()) {
-                $model->setUsername($model->getEmail());
-                if (!$model->getPass()) $model->setPass("1234");
+
+            $canAccessUserweb = ($model->getActive() && $model->getEmail());
+            if ($canAccessUserweb) {
+                // Avoid username/pass/active incoherences
+                if (!$model->getPass()) {
+                    $model->setPass("1234");
+                }
             } else {
                 $model->setActive(0);
-                $model->setUsername(null);
                 $model->setPass(null);
             }
 
-            // If no mail, no SendMail
-            if (!$model->getEmail()) $model->setVoicemailSendMail(0);
+            if (!$model->getEmail()) {
+                // If no mail, no SendMail
+                $model->setVoicemailSendMail(0);
+            }
         }
 
         // Nice pass for nice users
@@ -75,20 +85,20 @@ class Users extends Raw\Users
                     '$5$rounds=5000$' . $salt . '$'
                 );
                 $model->setPass($ret);
-                $this->_logger->log("Password Setted", \Zend_Log::INFO);
+                $this->_logger->log("Password set", \Zend_Log::INFO);
             }
         }
 
         $isBoss = $model->getIsBoss() == 1;
         $hasChangedIsBoss = $model->hasChange('isBoss');
         $hasChangedTerminal = $model->hasChange('terminalId');
-        $haschangedExtension = $model->hasChange("extensionId");
+        $hasChangedExtension = $model->hasChange("extensionId");
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
             $bosses = $this->findByField("bossAssistantId", $model->getPrimaryKey());
             foreach ($bosses as $boss) {
                 $boss->setBossAssistantId(null)->save();
-                $logMessage = "User unsetted as Boss Assistant of boss with id = '".$boss->getPrimaryKey()."'";
+                $logMessage = "User unset as Boss Assistant of boss with id = '".$boss->getPrimaryKey()."'";
                 $this->_logger->log($logMessage, \Zend_Log::INFO);
             }
         }
@@ -110,27 +120,27 @@ class Users extends Raw\Users
 
         // Update Asterisk Voicemail
         $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
-        $vm = $vmMapper->findOneByField("userId", $model->getPrimaryKey());
+        $voicemail = $vmMapper->findOneByField("userId", $model->getPrimaryKey());
 
         // If not found create a new one
-        if (is_null($vm)) {
-            $vm = new \IvozProvider\Model\AstVoicemail();
+        if (is_null($voicemail)) {
+            $voicemail = new \IvozProvider\Model\AstVoicemail();
         }
 
         if ($model->getVoicemailSendMail()) {
-            $vm->setEmail($model->getEmail());
+            $voicemail->setEmail($model->getEmail());
         } else {
-            $vm->setEmail(null);
+            $voicemail->setEmail(null);
         }
 
         if ($model->getVoicemailAttachSound()) {
-            $vm->setAttach('yes');
+            $voicemail->setAttach('yes');
         } else {
-            $vm->setAttach('no');
+            $voicemail->setAttach('no');
         }
 
         // Update/Insert endpoint data
-        $vm->setUserId($model->getId())
+        $voicemail->setUserId($model->getId())
             ->setContext($model->getVoiceMailContext())
             ->setMailbox($model->getVoiceMailUser())
             ->setFullname($model->getName() . " " . $model->getLastname())
@@ -141,16 +151,18 @@ class Users extends Raw\Users
         $model->updateEndpoint();
 
         // If extension has changed, update extension user
-        if ($haschangedExtension && $model->getExtension()) {
+        if ($hasChangedExtension && $model->getExtension()) {
             $model->getExtension()
                 ->setRouteType('user')
                 ->setUser($model)
                 ->save();
         }
 
-        // Reload Hints
-        if ($haschangedExtension || $hasChangedTerminal) {
-            $this->_reloadDialplan();
+        // Update all queue member entries for this user
+        if ($hasChangedExtension || $hasChangedTerminal) {
+            foreach ($model->getQueueMembers() as $member) {
+                $member->save();
+            }
         }
 
         return $response;
@@ -178,23 +190,12 @@ class Users extends Raw\Users
                 ->save();
         }
 
-        $response = parent::delete($model);
-
-        if (!is_null($extension)) {
-            $this->_reloadDialplan();
-        }
-        return $response;
+        return parent::delete($model);
     }
 
     protected function _salt()
     {
         return substr(md5(mt_rand(), false), 0, 8);
-    }
-
-    protected function _reloadDialplan()
-    {
-        $reloadDialplanJob = new \IvozProvider\Gearmand\Jobs\ReloadDialplan();
-        $reloadDialplanJob->send();
     }
 
 }

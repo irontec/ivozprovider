@@ -1,0 +1,11 @@
+Greetings!
+
+    A new fax has been received at ${FAX_NAME} (see attachment).
+
+    Date: ${FAX_DATE}
+    Name: ${FAX_PDFNAME}
+    Pages: ${FAX_PAGES}
+
+Best Regards,
+IvozProvider Virtual Fax System
+

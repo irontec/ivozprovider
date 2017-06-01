@@ -139,23 +139,6 @@ class UserCallAction extends RouterAction
 
         // Check if user is available before placing the call
         $endpointName = $terminal->getSorcery();
-        $devicestate = $this->agi->getDeviceState($endpointName);
-        $this->agi->verbose("Terminal %s has DeviceState %s", $endpointName, $devicestate);
-
-        // Avoid placing a call for device in this states
-        $unavailableArray = array("UNKNOWN", "INVALID", "UNAVAILABLE");
-        if (in_array($devicestate, $unavailableArray)) {
-            $this->_dialStatus = "CHANUNAVAIL";
-            $this->processDialStatus();
-            return;
-        }
-
-        // Check if the user can have multiple calls at the same time
-        if ($devicestate != "NOT_INUSE" && !$user->getCallWaiting()) {
-            $this->_dialStatus = "BUSY";
-            $this->processDialStatus();
-            return;
-        }
 
         // Configure Dial options
         $timeout = $this->_timeout;

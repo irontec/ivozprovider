@@ -1,0 +1,67 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: astQueuesList_screen
+  screens: &astQueues_screensLink 
+    astQueuesList_screen: &astQueuesList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *AstQueues
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Astqueue', 'Astqueues', 0), "[format| (%parent%)]")
+      fields: &astQueues_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            astQueuesEdit_screen: true
+          dialogs: 
+            astQueuesDel_dialog: true
+          default: astQueuesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          astQueuesNew_screen: true
+        dialogs: 
+          astQueuesDel_dialog: true
+    astQueuesNew_screen: &astQueuesNew_screenLink 
+      <<: *AstQueues
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Astqueue', 'Astqueues', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      postActionOptions: 
+        screens: 
+          astQueuesEdit_screen: true
+    astQueuesEdit_screen: &astQueuesEdit_screenLink 
+      <<: *AstQueues
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Astqueue', 'Astqueues', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Astqueue', 'Astqueues', 1), "[format| (%item%)]")
+  dialogs: &astQueues_dialogsLink 
+    astQueuesDel_dialog: &astQueuesDel_dialogLink 
+      <<: *AstQueues
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Astqueue', 'Astqueues', 1))
+      description: _("Do you want to delete this %s?", ngettext('Astqueue', 'Astqueues', 1))
+      message: _("%s successfully deleted.", ngettext('Astqueue', 'Astqueues', 1))
+      multiItem: 1
+      labelOnList: 1
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

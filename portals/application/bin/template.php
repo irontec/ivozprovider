@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 /**
- *  * Script Para importar las BBDD de labayru
+ *  Provisioning template wrapper
  */
 date_default_timezone_set('UTC');
 
@@ -10,13 +10,9 @@ defined('APPLICATION_ENV')
 || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
 // Define path to application directory
-$route = '';
-if ( APPLICATION_ENV != 'localdev'){
-    $route =  'app-portals/';
-}
+$route = 'portals/';
 defined('APPLICATION_PATH')
 || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../../../' . $route . 'application'));
-
 
 // Ensure library/ is on include_path
 set_include_path(
@@ -47,25 +43,26 @@ $application->bootstrap();
 
 $scriptOptions = $application->getOption('import');
 
-$miClase = new miclase($argv[1]);
-$miClase->run();
+$wrapper = new TemplateWrapper($argv[1]);
+$wrapper->run();
 
 ////////////HASTA AQUI EL TEMPLANTE//////////////////////
 
-class miclase
+class TemplateWrapper
 {
-    
-    public function __construct($datos) 
+
+    public function __construct($datos)
     {
         foreach (unserialize(base64_decode($datos)) as $key => $val) {
-            
+
             $this->$key = $val;
         }
     }
-    
+
     public function run()
     {
-        
+        error_reporting( error_reporting() & ~E_NOTICE );
+
         ?>
-        
-       
+
+

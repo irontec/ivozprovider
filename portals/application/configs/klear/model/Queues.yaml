@@ -1,0 +1,282 @@
+#include ../conf.d/queuesHelp.yaml
+
+production:
+  class: \IvozProvider\Model\Queues
+  fields:
+    companyId:
+      title: _('Companyid')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    name:
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      maxLength: 128
+      required: true
+    maxWaitTime:
+      title: _('Max wait time')
+      type: number
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("If no queue member answers before time this seconds, the timeout queue logic will be activated. Leave empty to disable.")
+        label: _("Need help?")
+    timeoutLocutionId:
+      title: _('Timeout Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    timeoutTargetType:
+      title: _('Timeout route')
+      type: select
+      source:
+        data: inline
+        values:
+          '__null__':
+            title:  _("Unassigned")
+            visualFilter:
+              hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
+          'number':
+            title: _('number')
+            visualFilter:
+              show: ["timeoutNumberValue"]
+              hide: ["timeoutExtensionId", "timeoutVoiceMailUserId" ]
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ["timeoutExtensionId"]
+              hide: ["timeoutNumberValue", "timeoutVoiceMailUserId" ]
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ["timeoutVoiceMailUserId"]
+              hide: ["timeoutExtensionId", "timeoutNumberValue"]
+    timeoutNumberValue:
+      title: _('Timeout number')
+      type: text
+      required: true
+      maxLength: 25
+    timeoutExtensionId:
+      title: _('Timeout Extension')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unassigned")
+    timeoutVoiceMailUserId:
+      title: _('Timeout VoiceMail')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          fitlerClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unassigned")
+    maxlen:
+      title: _('Max queue length')
+      type: number
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Max number of unattended calls that this queue can have. When this value has been reached, full queue logic will be activated on new calls. Leave empty to disable.")
+        label: _("Need help?")
+    fullLocutionId:
+      title: _('Full queue Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    fullTargetType:
+      title: _('Full queue route')
+      type: select
+      source:
+        data: inline
+        values:
+          '__null__':
+            title:  _("Unassigned")
+            visualFilter:
+              hide: ["fullNumberValue", "fullExtensionId", "fullVoiceMailUserId" ]
+          'number':
+            title: _('number')
+            visualFilter:
+              show: ["fullNumberValue"]
+              hide: ["fullExtensionId", "fullVoiceMailUserId" ]
+          'extension':
+            title: _('extension')
+            visualFilter:
+              show: ["fullExtensionId"]
+              hide: ["fullNumberValue", "fullVoiceMailUserId" ]
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: ["fullVoiceMailUserId"]
+              hide: ["fullExtensionId", "fullNumberValue"]
+    fullNumberValue:
+      title: _('Full number')
+      type: text
+      maxLength: 25
+    fullExtensionId:
+      title: _('Full extension')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unassigned")
+    fullVoiceMailUserId:
+      title: _('Full voicemail')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unassigned")
+    periodicAnnounceLocutionId:
+      title: _('Periodic Annouce Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Locution periodically played to calls that are queued")
+        label: _("Need help?")
+    periodicAnnounceFrequency:
+      title: _('Periodic Announce Frequency')
+      type: number
+      source:
+        control: Spinner
+        min: 0
+    memberCallRest:
+      title: _('Member rest seconds')
+      type: number
+      defaultValue: 0
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Time in seconds that member won't be disturbed after attending a queue call")
+        label: _("Need help?")
+    memberCallTimeout:
+      title: _('Member call seconds')
+      type: number
+      defaultValue: 5
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Time in seconds queue calls will ring members")
+        label: _("Need help?")
+    strategy:
+      title: _('Strategy')
+      type: select
+      defaultValue: 'rrmemory'
+      source:
+        data: inline
+        values:
+          'ringall': _('Ring All')
+          'leastrecent': _('Least recent')
+          'fewestcalls': _('Fewest Calls')
+          'random': _('Random')
+          'rrmemory': _('Round Robin')
+          'linear': _('Linear')
+      <<: *strategyHelp
+    weight:
+      title: _('Weight')
+      type: number
+      defaultValue: 5
+      source:
+        control: Spinner
+        min: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("When one member is part of multiples queues, calls from queues with higher weight will be attended first")
+        label: _("Need help?")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

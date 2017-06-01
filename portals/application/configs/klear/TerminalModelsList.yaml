@@ -92,42 +92,42 @@ production:
       labelOnEdit: true
       action: download-file
       class: ui-silk-arrow-down
-    genericBackup_dialog: &genericBackup_dialog
+    genericBackup_dialog: &genericBackup_dialogLink
       title: _("Restore last backup")
       module: default
       controller: klear-custom-restore-backup
       labelOnEdit: true
       action: restore-generic-backup
       class: ui-silk-arrow-undo
-    specificBackup_dialog: &specificcBackup_dialog
+    specificBackup_dialog: &specificcBackup_dialogLink
       title: _("Restore last backup")
       module: default
       controller: klear-custom-restore-backup
       labelOnEdit: true
       action: restore-specific-backup
       class: ui-silk-arrow-undo
-    genericDefault_dialog: &genericDefault_dialog
+    genericDefault_dialog: &genericDefault_dialogLink
       title: _("Restore default template")
       module: default
       controller: klear-custom-restore-default
       labelOnEdit: true
       action: restore-generic-default
       class: ui-silk-page-white-star
-    specificDefault_dialog: &specificDefault_dialog
+    specificDefault_dialog: &specificDefault_dialogLink
       title: _("Restore default template")
       module: default
       controller: klear-custom-restore-default
       labelOnEdit: true
       action: restore-specific-default
       class: ui-silk-page-white-star
-    runGenericCode_dialog: &runGenericCode_dialog
+    runGenericCode_dialog: &runGenericCode_dialogLink
       title: _("Run template")
       module: default
       controller: klear-custom-run-code
       labelOnEdit: true
       action: run-generic-code
       class: ui-silk-control-play-blue
-    runSpecificCode_dialog:
+    runSpecificCode_dialog: &runSpecificCode_dialogLink
       title: _("Run template")
       module: default
       controller: klear-custom-run-code

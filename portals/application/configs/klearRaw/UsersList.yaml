@@ -10,6 +10,8 @@
 #include IVRCustomList.yaml
 #include IVRCustomEntriesList.yaml
 #include PickUpRelUsersList.yaml
+#include QueueMembersList.yaml
+#include QueuesList.yaml
 #include AstVoicemailList.yaml
 
 
@@ -40,6 +42,8 @@ production:
             iVRCustomList_screen: true
             iVRCustomEntriesList_screen: true
             pickUpRelUsersList_screen: true
+            queueMembersList_screen: true
+            queuesList_screen: true
             astVoicemailList_screen: true
           dialogs: 
             usersDel_dialog: true
@@ -199,6 +203,32 @@ production:
       <<: *pickUpRelUsersEdit_screenLink
       filterField: userId
 
+    #queueMembers: 
+    queueMembersList_screen: 
+      <<: *queueMembersList_screenLink
+      filterField: userId
+      parentOptionCustomizer: 
+        - recordCount
+    queueMembersNew_screen: 
+      <<: *queueMembersNew_screenLink
+      filterField: userId
+    queueMembersEdit_screen: 
+      <<: *queueMembersEdit_screenLink
+      filterField: userId
+
+    #queues: 
+    queuesList_screen: 
+      <<: *queuesList_screenLink
+      filterField: fullVoiceMailUserId
+      parentOptionCustomizer: 
+        - recordCount
+    queuesNew_screen: 
+      <<: *queuesNew_screenLink
+      filterField: fullVoiceMailUserId
+    queuesEdit_screen: 
+      <<: *queuesEdit_screenLink
+      filterField: fullVoiceMailUserId
+
     #astVoicemail: 
     astVoicemailList_screen: 
       <<: *astVoicemailList_screenLink
@@ -243,6 +273,10 @@ production:
     <<: *iVRCustomEntries_dialogsLink
   # pickUpRelUsers dialogs: 
     <<: *pickUpRelUsers_dialogsLink
+  # queueMembers dialogs: 
+    <<: *queueMembers_dialogsLink
+  # queues dialogs: 
+    <<: *queues_dialogsLink
   # astVoicemail dialogs: 
     <<: *astVoicemail_dialogsLink
 staging: 

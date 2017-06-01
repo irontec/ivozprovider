@@ -1,6 +1,7 @@
 <?php
 use IvozProvider\Mapper\Sql as Mapper;
 use IvozProvider\Model as Model;
+use IvozProvider\Utils\SizeFormatter;
 
 /**
  *
@@ -17,6 +18,7 @@ class RecordingsController extends Zend_Controller_Action
     protected $_rawRecordingsDir;
 
     protected $_interval;
+
 
     public function init()
     {
@@ -50,6 +52,10 @@ class RecordingsController extends Zend_Controller_Action
             'encoded' => 0,
             'error'   => 0
         );
+
+        // Store handled companies
+        $companies = array();
+        $brands = array();
 
         // Get a list of pending recordings
         $files = array();
@@ -157,6 +163,25 @@ class RecordingsController extends Zend_Controller_Action
                 $type = 'ddi';
             }
 
+
+            // Get company and brand for this recording
+            $company = $kamAccCdr->getCompany();
+            $brand = $company->getBrand();
+
+            // Get current company usage
+            $companyLimit = $company->getRecordingsLimit();
+            if ($companyLimit > 0) {
+                $companyUsed = $company->getRecordingsDiskUsage();
+                $companyUsage = $companyUsed * 100 / $companyLimit;
+            }
+
+            // Get current brand usage
+            $brandLimit = $brand->getRecordingsLimit();
+            if ($brandLimit > 0) {
+                $brandUsed = $brand->getRecordingsDiskUsage();
+                $brandUsage = $brandUsed * 100 / $brandLimit;
+            }
+
             $recording->setCompanyId($kamAccCdr->getCompanyId())
                 ->setCalldate(new Zend_Date($startTime, Zend_Date::TIMESTAMP))
                 ->setType($type)
@@ -172,10 +197,42 @@ class RecordingsController extends Zend_Controller_Action
                             sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recordId),
                             \Zend_Log::INFO);
 
+            // If this company has disk space limit
+            if ($companyLimit > 0) {
+                // Check the new used space
+                $companyNewUsage = ($companyUsed + $recording->getRecordedFileFileSize()) * 100 / $companyLimit;
+                $this->_logger->log(sprintf("[Recordings][company%d] DiskUsage %d%%\n", $company->getId(), $companyNewUsage), \Zend_Log::INFO);
+
+                // Space over available!
+                if ($companyNewUsage >= 100) {
+                    // Rotate old company recordings
+                    $this->rotateCompanyRecordings($company);
+                } else if ($companyUsage < 80 && $companyNewUsage >= 80) {
+                    // Space over 80%, send notification email
+                    $this->sendCompanyMail($company);
+                }
+            }
+
+            // If this brand has disk space limit
+            if ($brandLimit > 0) {
+                // Check the new used space
+                $brandNewUsage = ($brandUsed + $recording->getRecordedFileFileSize()) * 100 / $brandLimit;
+                $this->_logger->log(sprintf("[Recordings][brand%d] DiskUsage %d%%\n", $brand->getId(), $brandNewUsage), \Zend_Log::INFO);
+
+                // Space over available!
+                if ($brandNewUsage >= 100) {
+                    // Rotate old brands recordings
+                    $this->rotateBrandRecordings($brand);
+                } else if ($brandUsage < 80 && $brandNewUsage >= 80) {
+                    // Space over 80%, send notification email
+                    $this->sendBrandMail($brand);
+                }
+            }
+
             // Remove encoded files
             unlink($convert_wav);
             $stats['encoded']++;
-        }
+       }
 
         // Total processed calls
         $total = $stats['encoded'] + $stats['error'] + $stats['deleted'] + $stats['skipped'];
@@ -183,5 +240,137 @@ class RecordingsController extends Zend_Controller_Action
                         $total, $stats['encoded'], $stats['error'], $stats['deleted'], $stats['skipped']);
         $this->_logger->log($summary, \Zend_Log::INFO);
 
+    }
+
+    private function rotateCompanyRecordings($company)
+    {
+        $usage = $company->getRecordingsDiskUsage();
+        $limit = $company->getRecordingsLimit();
+        $recordings = $company->getRecordings();
+
+        while ($usage >= $limit && !empty($recordings)) {
+            $oldest = array_shift($recordings);
+            $summary = sprintf("[Recordings][Company%d] MaxDiskLimit reached (%s/%s): Recording %d has been rotated out.\n",
+                    $company->getId(),
+                    SizeFormatter::sizeToHuman($usage),
+                    SIzeFormatter::sizeToHuman($limit),
+                    $oldest->getId());
+            $this->_logger->log($summary, \Zend_Log::INFO);
+            $usage -= $oldest->getRecordedFileFileSize();
+            $oldest->delete();
+        }
+    }
+
+    private function rotateBrandRecordings($brand)
+    {
+        $usage = $brand->getRecordingsDiskUsage();
+        $limit = $brand->getRecordingsLimit();
+
+        // Get brand companies
+        $companyIds = array();
+        foreach ($brand->getCompanies() as $company) {
+            array_push($companyIds, $company->getId());
+        }
+
+        // Get removable calls
+        $recordingsMapper = new \IvozProvider\Mapper\Sql\Recordings();
+        $recordings = $recordingsMapper->fetchList("companyId IN (".implode(',', $companyIds).")", "calldate ASC", 10);
+
+        while ($usage >= $limit && !empty($recordings)) {
+            $oldest = array_shift($recordings);
+            $summary = sprintf("[Recordings][Brand%d] MaxDiskLimit reached (%s/%s): Recording %d has been rotated out.\n",
+                    $brand->getId(),
+                    SizeFormatter::sizeToHuman($usage),
+                    SIzeFormatter::sizeToHuman($limit),
+                    $oldest->getId());
+            $this->_logger->log($summary, \Zend_Log::INFO);
+            $usage -= $oldest->getRecordedFileFileSize();
+            $oldest->delete();
+        }
+    }
+
+    public function sendBrandMail($brand)
+    {
+        try {
+            // Get defaults mail settings
+            $config = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
+            $mail = $config->getOption('mail');
+            $default_fromname = $mail['fromname'];
+            $default_fromuser = $mail['fromuser'];
+            $voicemail = $config->getOption('voicemail');
+
+            $body = file_get_contents(APPLICATION_PATH . "/../templates/emailBrands_body.tmpl");
+            $subject = file_get_contents(APPLICATION_PATH . "/../templates/emailBrands_subject.tmpl");
+
+            $fromName = $brand->getFromName();
+            if (empty($fromName)) $fromName = $default_fromname;
+            $fromAddress = $brand->getFromAddress();
+            if (empty($fromAddress)) $fromAddress = $default_fromuser;
+
+            $substitution = array(
+                '${BRAND_NAME}'     => $brand->getName(),
+                '${BRAND_ID}'       => $brand->getId(),
+                '${DISK_USAGE}'     => SizeFormatter::sizeToHuman($brand->getRecordingsDiskUsage()),
+                '${DISK_LIMIT}'     => SizeFormatter::sizeToHuman($brand->getRecordingsLimit()),
+            );
+
+            foreach ($substitution as $search => $replace) {
+                $body = str_replace($search, $replace, $body);
+                $subject = str_replace($search, $replace, $subject);
+            }
+
+            $mail = new Zend_Mail('utf8');
+            $mail->setBodyText($body);
+            $mail->setSubject($subject);
+            $mail->setFrom($fromAddress, $fromName);
+            $mail->addTo($brand->getRecordingsLimitEmail());
+            $mail->send();
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function sendCompanyMail($company)
+    {
+        try {
+            // Get defaults mail settings
+            $config = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
+            $mail = $config->getOption('mail');
+            $default_fromname = $mail['fromname'];
+            $default_fromuser = $mail['fromuser'];
+            $voicemail = $config->getOption('voicemail');
+            $brand = $company->getBrand();
+
+            $body = file_get_contents(APPLICATION_PATH . "/../templates/emailCompanies_body.tmpl");
+            $subject = file_get_contents(APPLICATION_PATH . "/../templates/emailCompanies_subject.tmpl");
+
+            $fromName = $brand->getFromName();
+            if (empty($fromName)) $fromName = $default_fromname;
+            $fromAddress = $brand->getFromAddress();
+            if (empty($fromAddress)) $fromAddress = $default_fromuser;
+
+            $substitution = array(
+                '${COMPANY_NAME}'     => $company->getName(),
+                '${COMPANY_ID}'       => $company->getId(),
+                '${DISK_USAGE}'       => SizeFormatter::sizeToHuman($company->getRecordingsDiskUsage()),
+                '${DISK_LIMIT}'       => SizeFormatter::sizeToHuman($company->getRecordingsLimit()),
+            );
+
+            foreach ($substitution as $search => $replace) {
+                $body = str_replace($search, $replace, $body);
+                $subject = str_replace($search, $replace, $subject);
+            }
+
+            $mail = new Zend_Mail('utf8');
+            $mail->setBodyText($body);
+            $mail->setSubject($subject);
+            $mail->setFrom($fromAddress, $fromName);
+            $mail->addTo($company->getRecordingsLimitEmail());
+            $mail->send();
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }

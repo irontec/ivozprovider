@@ -22,15 +22,18 @@ production:
             mainOperatorsDel_dialog: true
           default: mainOperatorsEdit_screen
         order: &MainOperators_orderLink
-          name: true
-          lastname: true
           email: true
           username: true
           pass: true
           timezoneId: true
+          name: true
+          lastname: true
           active: true
         blacklist:
+          email: true
           pass: true
+          name: true
+          lastname: true
           timezoneId: true          
       options: 
         title: _("Options")
@@ -47,24 +50,28 @@ production:
       title: _("Add %s", ngettext('Main operator', 'Main operators', 1))
       shortcutOption: N
       fields:
+        blacklist:
+          active: true
         order:
           <<: *MainOperators_orderLink
       fixedPositions: &MainOperatorsFixedPositions_link
         group0:
+          label: _("Login info")
+          colsPerRow: 2
+          fields:
+            username: 1
+            pass: 1
+            active: 1
+            timezoneId: 1
+        group1:
           label: _("Personal data")
           colsPerRow: 3
+          collapsed: true
           fields:
             name: 1
             lastname: 1
             email: 1
-        group1:
-          label: _("Login info")
-          colsPerRow: 3
-          fields:
-            username: 1
-            pass: 1
-            active: 1          
-    mainOperatorsEdit_screen: &mainOperatorsEdit_screenLink 
+    mainOperatorsEdit_screen: &mainOperatorsEdit_screenLink
       <<: *MainOperators
       controller: edit
       class: ui-silk-pencil

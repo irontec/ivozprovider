@@ -111,13 +111,7 @@ production:
               - DDIE164
             template: '+%DDIE164%'
           order: DDIE164
-        'null': _("Unassigned")
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("No outgoing calls will be allowed if this field is unassigned")
-        label: _("Need help?")
+        'null': _("Company's default")
     callACLId:
       title: _('Call ACL')
       type: select
@@ -184,24 +178,21 @@ production:
       title: _('Username')
       type: text
       trim: both
-      maxLength: 100
+      maxLength: 65
     maxCalls:
-      title: _('Max call')
+      title: _('Max calls')
       type: number
-      defaultValue: 2
-      source:
-        control: Spinner
-    callWaiting:
-      title: _('Call waiting')
-      type: select
       defaultValue: 0
       source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-          '1':
-            title: _("Yes")
+        control: Spinner
+        min: 0
+        max: 100
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limits the number of received calls if the user is handling simultaneously (inbound and outbound) more than the number set. Set 0 for unlimited calls.")
+        label: _("Need help?")
     voicemailEnabled:
       title: _('Voicemail enabled')
       type: select
@@ -272,7 +263,7 @@ production:
               - name
               - calling_code
             template: '%name% (+%calling_code%)'
-          order: code
+          order: name_${lang}
         'null': _("Company's default")
     areaCode:
       title: _('Areacode')

@@ -69,8 +69,8 @@ msgstr "Prioridad"
 msgid ""
 "If a call matches several routes, it will be placed using the outgoing "
 "route with lower priority, as long as it is available."
-msgstr "Si una llamada concreta encaja con rutas de distinta prioridad, la lamada"
-" se sacará por la que menor prioridad tenga siempre y cuando esté "
+msgstr "Si una llamada concreta encaja con rutas de distinta prioridad, la llamada "
+"se sacará por la que menor prioridad tenga siempre y cuando esté "
 "disponible."
 
 #: ../../external_outgoing_calls/call_routing.rst:40
@@ -123,7 +123,7 @@ msgid ""
 "Call matching theese routes will use route A for %50 of the calls and "
 "route B for %50 of the calls."
 msgstr "Las llamadas que encajen en ambas rutas se sacaran el 50% por una ruta y "
-"el 50%por la otra."
+"el 50% por la otra."
 
 #: ../../external_outgoing_calls/call_routing.rst:63
 msgid "Example 2"
@@ -147,7 +147,7 @@ msgstr "Conmutación por error"
 #: ../../external_outgoing_calls/call_routing.rst:73
 msgid "Failover route lets us use another route whenever the main route fails."
 msgstr "Las rutas en caso de fallo o *failover-routes* nos permite disponer de "
-"rutaadicional en caso de que la ruta preferida falle."
+"una ruta adicional en caso de que la ruta preferida falle."
 
 #: ../../external_outgoing_calls/call_routing.rst:76
 msgid "Example"
@@ -184,7 +184,7 @@ msgid ""
 " we are making."
 msgstr "En este punto de la configuración, tenemos que configurar IvozProvider "
 "para que las llamadas a los destinos externos que vayamos a probar salgan"
-" por el Contratode *peering* que hemos configurado en el bloque anterior."
+" por el Contrato de *peering* que hemos configurado en el bloque anterior."
 
 #: ../../external_outgoing_calls/call_types.rst:8
 msgid ""
@@ -202,7 +202,7 @@ msgid ""
 "When a user dials an external phone number, IvozProvider tries to "
 "categorize this call into a one of the target patterns defined in this "
 "section:"
-msgstr "Cuando un usuario marca un número externo, IvozProvider intenta calificar"
+msgstr "Cuando un usuario marca un número externo, IvozProvider intenta calificar "
 " estenúmero en uno de los patrones de destino definidos en esta sección:"
 
 #: ../../external_outgoing_calls/call_types.rst:23
@@ -214,14 +214,14 @@ msgid ""
 msgstr "Lo más normal será que nos interese tener un patrón de destino por cada "
 "uno delos 254 países definidos en la `ISO 3166 "
 "<https://es.wikipedia.org/wiki/ISO_3166>`_. Por ese motivo, IvozProvider "
-"incluyeestos países y sus prefijos de forma automática:"
+"incluye estos países y sus prefijos de forma automática:"
 
 #: ../../external_outgoing_calls/call_types.rst:31
 msgid ""
 "Within this list we can find Spain's prefix, that will be the prefix of "
 "the test call we are going to make in this section:"
 msgstr "Dentro de este listado aparece el prefijo de España, que será el grupo "
-"delnúmero que probemos en este bloque:"
+"del número que probemos en este bloque:"
 
 #: ../../external_outgoing_calls/call_types.rst:37
 msgid ""
@@ -241,7 +241,7 @@ msgid ""
 "phone number to match more than one target pattern. Use with "
 "responsibility."
 msgstr "Crear patrones de destino en base a expresiones regulares puede provocar "
-"que un número encaje en 2 patrones. Usar con responsabilidad"
+"que un número encaje en 2 patrones. Usar con responsabilidad."
 
 #: ../../external_outgoing_calls/call_types.rst:47
 msgid "Target pattern groups"
@@ -318,7 +318,7 @@ msgid ""
 "he must :ref:`emulate the corresponding company <emulate_company>` "
 "previously."
 msgstr "Esta configuración se realiza desde **Configuración de empresa** > "
-"**Usuarios**, editando el usuario de *Alice*. Si ese el operador de marca"
+"**Usuarios**, editando el usuario de *Alice*. Si el operador de marca"
 " o el operador global el que realiza esta edición, tendrá que haber "
 ":ref:`emulado la empresa <emulate_company>` previamente."
 
@@ -350,7 +350,7 @@ msgid ""
 "with our new IvozProvider, we may have even tried to call with current "
 "configuration but..."
 msgstr "Llegados a este punto y estando deseosos como estamos de hacer nuestra "
-"primerallamada, habremos intentando llamar con la configuración actual "
+"primera llamada, habremos intentando llamar con la configuración actual "
 "pero..."
 
 #: ../../external_outgoing_calls/noplan_nocall.rst:8

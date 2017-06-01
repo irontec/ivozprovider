@@ -38,7 +38,12 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      *     'companyId': '', 
      *     'strategy': '', 
      *     'ringAllTimeout': '', 
-     *     'nextUserPosition': ''
+     *     'nextUserPosition': '', 
+     *     'noAnswerLocutionId': '', 
+     *     'noAnswerTargetType': '', 
+     *     'noAnswerNumberValue': '', 
+     *     'noAnswerExtensionId': '', 
+     *     'noAnswerVoiceMailUserId': ''
      * },{
      *     'id': '', 
      *     'name': '', 
@@ -46,7 +51,12 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      *     'companyId': '', 
      *     'strategy': '', 
      *     'ringAllTimeout': '', 
-     *     'nextUserPosition': ''
+     *     'nextUserPosition': '', 
+     *     'noAnswerLocutionId': '', 
+     *     'noAnswerTargetType': '', 
+     *     'noAnswerNumberValue': '', 
+     *     'noAnswerExtensionId': '', 
+     *     'noAnswerVoiceMailUserId': ''
      * }]")
      */
     public function indexAction()
@@ -71,6 +81,11 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                 'strategy',
                 'ringAllTimeout',
                 'nextUserPosition',
+                'noAnswerLocutionId',
+                'noAnswerTargetType',
+                'noAnswerNumberValue',
+                'noAnswerExtensionId',
+                'noAnswerVoiceMailUserId',
             );
         }
 
@@ -150,7 +165,12 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      *     'companyId': '', 
      *     'strategy': '', 
      *     'ringAllTimeout': '', 
-     *     'nextUserPosition': ''
+     *     'nextUserPosition': '', 
+     *     'noAnswerLocutionId': '', 
+     *     'noAnswerTargetType': '', 
+     *     'noAnswerNumberValue': '', 
+     *     'noAnswerExtensionId': '', 
+     *     'noAnswerVoiceMailUserId': ''
      * }")
      */
     public function getAction()
@@ -174,6 +194,11 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                 'strategy',
                 'ringAllTimeout',
                 'nextUserPosition',
+                'noAnswerLocutionId',
+                'noAnswerTargetType',
+                'noAnswerNumberValue',
+                'noAnswerExtensionId',
+                'noAnswerVoiceMailUserId',
             );
         }
 
@@ -220,6 +245,11 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="strategy", nullable=false, type="varchar", sample="", description="[enum:ringAll|linear|roundRobin|random]")
      * @ApiParams(name="ringAllTimeout", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="nextUserPosition", nullable=true, type="smallint", sample="", description="")
+     * @ApiParams(name="noAnswerLocutionId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="noAnswerTargetType", nullable=true, type="varchar", sample="", description="[enum:number|extension|voicemail]")
+     * @ApiParams(name="noAnswerNumberValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="noAnswerExtensionId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="noAnswerVoiceMailUserId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/huntgroups/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -261,6 +291,11 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="strategy", nullable=false, type="varchar", sample="", description="[enum:ringAll|linear|roundRobin|random]")
      * @ApiParams(name="ringAllTimeout", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="nextUserPosition", nullable=true, type="smallint", sample="", description="")
+     * @ApiParams(name="noAnswerLocutionId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="noAnswerTargetType", nullable=true, type="varchar", sample="", description="[enum:number|extension|voicemail]")
+     * @ApiParams(name="noAnswerNumberValue", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="noAnswerExtensionId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="noAnswerVoiceMailUserId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -385,6 +420,31 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'noAnswerLocutionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerTargetType' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '[enum:number|extension|voicemail]',
+                ),
+                'noAnswerNumberValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerExtensionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerVoiceMailUserId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -423,6 +483,31 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                 ),
                 'nextUserPosition' => array(
                     'type' => "smallint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerLocutionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerTargetType' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '[enum:number|extension|voicemail]',
+                ),
+                'noAnswerNumberValue' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerExtensionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'noAnswerVoiceMailUserId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),

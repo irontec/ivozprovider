@@ -51,7 +51,7 @@ class Userweb_CallsController extends Iron_Controller_Rest_BaseController
         $csv = $this->getRequest()->getParam('csv', false);
 
         $order = $this->_prepareOrder($orderParam);
-        $where = $this->_prepareWhere(
+        $where = $this->_prepareCallsWhere(
             $companyId,
             $extensionNumber,
             $searchParams
@@ -135,7 +135,7 @@ class Userweb_CallsController extends Iron_Controller_Rest_BaseController
 
     }
 
-    protected function _prepareWhere($companyId, $extension, $search)
+    protected function _prepareCallsWhere($companyId, $extension, $search)
     {
 
         $prepareWhere = array();
@@ -197,7 +197,7 @@ class Userweb_CallsController extends Iron_Controller_Rest_BaseController
         $mapper = new Mappers\Users();
 
         $auth = new \Iron_Auth_RestHmac();
-        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper);
+        $user = $auth->authenticate($tokenParts[1], $requestDate, $mapper, ['user' => 'email']);
 
         return $user;
 

@@ -194,7 +194,7 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
      * @ApiDescription(section="ApplicationServers", description="Create's a new ApplicationServers")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/application-servers/")
-     * @ApiParams(name="ip", nullable=false, type="varbinary(16)", sample="", description="")
+     * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/applicationservers/{id}")
@@ -231,7 +231,7 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/application-servers/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="ip", nullable=false, type="varbinary(16)", sample="", description="")
+     * @ApiParams(name="ip", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -328,7 +328,7 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
             'description' => '',
             'params' => array(
                 'ip' => array(
-                    'type' => "varbinary(16)",
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -349,7 +349,7 @@ class Rest_ApplicationServersController extends Iron_Controller_Rest_BaseControl
                     'comment' => '[pk]',
                 ),
                 'ip' => array(
-                    'type' => "varbinary(16)",
+                    'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),

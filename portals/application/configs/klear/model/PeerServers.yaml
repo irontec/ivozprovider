@@ -26,17 +26,6 @@ production:
         icon: help
         text: _("Leave empty to send to Host field")
         label: _("Need help?")
-    name: 
-      title: ngettext('Name', 'Names', 1)
-      type: text
-      trim: both
-      defaultValue: 
-      required: true
-    description: 
-      title: ngettext('Description', 'Descriptions', 1)
-      type: text
-      trim: both
-      defaultValue: 
     brandId: 
       title: _('Brand id')
       type: select
@@ -120,7 +109,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Prepend this field to callee (after stripping)")
+        text: _("Prepend this field to callee")
         label: _("Need help?")
     sendPAI: 
       title: _('Send PAI')
@@ -191,7 +180,7 @@ production:
     from_domain: 
       title: _('From domain')
       type: text
-      maxLength: 64
+      maxLength: 190
       info:
         type: box
         position: left

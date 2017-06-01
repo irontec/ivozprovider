@@ -1,0 +1,6 @@
+[Unit]
+Description=IvozProvider Tarificator
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/gearman -h jobs.ivozprovider.local -s -f tarificateCalls

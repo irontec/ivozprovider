@@ -4,6 +4,11 @@
 Call recording
 ##############
 
+.. attention:: Beware that local legislation may enforce to announce that the 
+   call is being recorded (sometimes to both parties). You should include 
+   a recording disclaimer in your welcome locutions for DDIs with automatic 
+   recording enabled.
+
 IvozProvider supports two different ways of recording calls:
 
 - **Automatic recordings** for the incoming/outgoing calls that use a 
