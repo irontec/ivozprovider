@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-02 13:03+0200\n"
+"POT-Creation-Date: 2017-06-01 15:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,52 +348,51 @@ msgid ""
 "being recorded (sometimes to both parties). You should include a "
 "recording disclaimer in your welcome locutions for DDIs with automatic "
 "recording enabled."
-msgstr ""
-"Tenga en cuenta que la legislación local le puede requerir que anuncie que "
-"la llamada esta siendo grabada (en ocasiones a ambos participantes). Debería "
-"incluir un aviso en las locuciones de bienvenida para los DDI que tengan "
-"grabación automática habilitada."
+msgstr "Tenga en cuenta que la legislación local le puede requerir que anuncie "
+"que la llamada esta siendo grabada (en ocasiones a ambos participantes). "
+"Debería incluir un aviso en las locuciones de bienvenida para los DDI que"
+" tengan grabación automática habilitada."
 
 #: ../../pbx_features/call_recording.rst:12
 msgid "IvozProvider supports two different ways of recording calls:"
 msgstr "IvozProvider permite grabar las llamadas que se cursan en 2 modalidades "
 "distintas:"
 
-#: ../../pbx_features/call_recording.rst:9
+#: ../../pbx_features/call_recording.rst:14
 msgid ""
 "**Automatic recordings** for the incoming/outgoing calls that use a "
 ":ref:`External DDI <external_ddis>`."
 msgstr "**Grabación automática** para llamadas desde/hacia cierto :ref:`DDI "
 "externo <external_ddis>`."
 
-#: ../../pbx_features/call_recording.rst:12
+#: ../../pbx_features/call_recording.rst:17
 msgid "**On demand recordings** requested by a user during a call."
 msgstr "**Grabación bajo demanda** solicitada por un usuario en medio de una "
 "conversación."
 
-#: ../../pbx_features/call_recording.rst:16
+#: ../../pbx_features/call_recording.rst:21
 msgid "Automatic DDI recordings"
 msgstr "Grabación automática por DDI"
 
-#: ../../pbx_features/call_recording.rst:18
+#: ../../pbx_features/call_recording.rst:23
 msgid ""
 "In this type of recording, **the whole conversation will be recorded**: "
 "from the start until it finishes."
 msgstr "En el caso de grabaciones automáticas por DDI, **se graba toda la "
 "conversación**: desde el principio hasta el final."
 
-#: ../../pbx_features/call_recording.rst:21
+#: ../../pbx_features/call_recording.rst:26
 msgid "Two different scenarios:"
 msgstr "Se distinguen 2 casos:"
 
-#: ../../pbx_features/call_recording.rst:23
+#: ../../pbx_features/call_recording.rst:28
 msgid ""
 "**Incoming calls to a DDI**: The call will continue until the external "
 "dialer hangups (no matter whom is talking to)."
 msgstr "**Llamadas entrantes a un DDI**: la grabación seguirá mientras la parte "
 "externa de la llamada permanezca en la conversación."
 
-#: ../../pbx_features/call_recording.rst:26
+#: ../../pbx_features/call_recording.rst:31
 msgid ""
 "**Outgoing calls using a DDI** as :ref:`Outgoing DDI <external_ddis>`: "
 "the recording will continue as long as the external destination keeps in "
@@ -402,7 +401,7 @@ msgstr "**Llamadas salientes utilizando un DDI** como :ref:`DDI saliente "
 "<external_ddis>`: mientras el interlocutor externo permanezca en la "
 "conversación, la grabación sigue."
 
-#: ../../pbx_features/call_recording.rst:30
+#: ../../pbx_features/call_recording.rst:35
 msgid ""
 "Take into account that the call will be recorded while the external "
 "entity is present, even it the call is being transfered between multiple "
@@ -412,41 +411,41 @@ msgstr "El hecho de que **mientras el interlocutor permanezca en llamada la "
 "llamada de un usuario a otro, la grabación contendrá toda la conversación"
 " (desde el punto de vista del participante externo)."
 
-#: ../../pbx_features/call_recording.rst:35
+#: ../../pbx_features/call_recording.rst:40
 msgid "Record all the calls of a DDI"
 msgstr "Grabar todas las llamadas de un DDI"
 
-#: ../../pbx_features/call_recording.rst:36
+#: ../../pbx_features/call_recording.rst:41
 msgid ""
 "To enable this feature, edit the DDI and configure the field under the "
 "section recording data:"
 msgstr "Basta con editar el DDI en cuestión y habilitar las grabaciones:"
 
-#: ../../pbx_features/call_recording.rst:41
+#: ../../pbx_features/call_recording.rst:46
 msgid "There are 4 available options:"
 msgstr "Existen 4 opciones:"
 
-#: ../../pbx_features/call_recording.rst:43
+#: ../../pbx_features/call_recording.rst:48
 msgid "Disable recordings"
 msgstr "Desactivar la grabación"
 
-#: ../../pbx_features/call_recording.rst:44
+#: ../../pbx_features/call_recording.rst:49
 msgid "Enable incoming recordings"
 msgstr "Activarla para llamadas entrantes a dicho DDI"
 
-#: ../../pbx_features/call_recording.rst:45
+#: ../../pbx_features/call_recording.rst:50
 msgid "Enable outgoing recordings"
 msgstr "Activarla para llamadas salientes que presente dicho DDI"
 
-#: ../../pbx_features/call_recording.rst:46
+#: ../../pbx_features/call_recording.rst:51
 msgid "Enable all call recordings"
 msgstr "Activarla para ambas"
 
-#: ../../pbx_features/call_recording.rst:50
+#: ../../pbx_features/call_recording.rst:55
 msgid "On demand recordings"
 msgstr "Grabación bajo demanda"
 
-#: ../../pbx_features/call_recording.rst:52
+#: ../../pbx_features/call_recording.rst:57
 msgid ""
 "The *on-demand* recordings must be enabled by the *brand administator* "
 "for the companies that request it. This can be done in the companey edit "
@@ -455,7 +454,7 @@ msgstr "La grabación bajo demanda u *on-demand* la tiene que activar el *operad
 " de marca* para las empresas que la necesiten, sin más que editar su "
 "empresa y configurar el código deseado:"
 
-#: ../../pbx_features/call_recording.rst:57
+#: ../../pbx_features/call_recording.rst:62
 msgid ""
 "Contrary to the :ref:`Services <services>` mentioned in the previous "
 "section, the on demand record are actived within a conversation."
@@ -463,18 +462,18 @@ msgstr "A diferencia de los :ref:`Servicios <services>` comentado en la sección
 "anterior, la funcionalidad de grabación bajo demanda se activa en mitad "
 "de una conversación."
 
-#: ../../pbx_features/call_recording.rst:60
+#: ../../pbx_features/call_recording.rst:65
 msgid ""
 "Contrary to automatic ones, on demand recording can be stoped using the "
 "same process that started them."
 msgstr "Al contrario que las grabaciones automáticas, las realizadas bajo demanda"
 " pueden detenerse empleando el mismo proceso que las ha iniciado."
 
-#: ../../pbx_features/call_recording.rst:64
+#: ../../pbx_features/call_recording.rst:69
 msgid "Activated using the *Record* key"
 msgstr "Activación por medio de tecla *Record*"
 
-#: ../../pbx_features/call_recording.rst:66
+#: ../../pbx_features/call_recording.rst:71
 msgid ""
 "Some terminals (for example, *Yealink*) support sending a `SIP INFO "
 "<https://tools.ietf.org/html/rfc6086>`_ message during the conversation "
@@ -491,25 +490,25 @@ msgstr "Los terminales *Yealink* soportan el envío de mensajes `SIP INFO "
 "IvozProvider incluye soporte para la activación de grabación bajo demanda"
 " de esta forma."
 
-#: ../../pbx_features/call_recording.rst:72
+#: ../../pbx_features/call_recording.rst:77
 msgid ""
 "For this recording requests, the configured code doesn't matter but the "
 "company still must have on demand records enabled."
 msgstr "El código seleccionado no influye en este caso, pero **la empresa sí que "
 "tiene que tener las grabaciones bajo demanda activadas**."
 
-#: ../../pbx_features/call_recording.rst:75
+#: ../../pbx_features/call_recording.rst:80
 msgid ""
 "To start or stop this kind of recordings, just press the Record key in "
 "the terminal and the system will handle the sent message."
 msgstr "La activación de las grabaciones es muy simple en este caso, basta con "
 "pulsar la tecla y el sistema inicia la grabación."
 
-#: ../../pbx_features/call_recording.rst:79
+#: ../../pbx_features/call_recording.rst:84
 msgid "Activated using *DTMF* codes"
 msgstr "Activación por códigos *DTMF*"
 
-#: ../../pbx_features/call_recording.rst:81
+#: ../../pbx_features/call_recording.rst:86
 msgid ""
 "The more traditional approach for this feature is to press a combination "
 "of keys during the call. Some notification will be played and the "
@@ -525,7 +524,7 @@ msgstr "Comúnmente este tipo de funcionalidades se activan introduciendo una "
 "empleando el mismo flujo de audio que la conversación (como se menciona "
 "en el `RFC 4733 <https://tools.ietf.org/html/rfc4733>`_)."
 
-#: ../../pbx_features/call_recording.rst:88
+#: ../../pbx_features/call_recording.rst:93
 msgid ""
 "IvozProvider supports this kind of on demand record activation but with "
 "an important downside. In order to capture this codes, the pbx must "
@@ -536,25 +535,25 @@ msgstr "IvozProvider soporta este tipo de activaciones bajo demanda pero con una
 "los paquetes de audio de la conversación, evitando así la posible "
 "liberación del flujo entre los agentes finales."
 
-#: ../../pbx_features/call_recording.rst:93
+#: ../../pbx_features/call_recording.rst:98
 msgid ""
 "Enabling this record mode highly affects the performance of the platform."
 " Use at your own risk."
 msgstr "Habilitar este modo afecta en gran medida el rendimiento de la "
 "plataforma. Úselo bajo su propio riesgo."
 
-#: ../../pbx_features/call_recording.rst:98
+#: ../../pbx_features/call_recording.rst:103
 msgid "Activated using a frustated blind transfer"
 msgstr "Activación por medio de transferencia ciega frustrada"
 
-#: ../../pbx_features/call_recording.rst:100
+#: ../../pbx_features/call_recording.rst:105
 msgid ""
 "There is a tricky way to access this feature for terminals that does not "
 "support the INFO message and don't want its audio to be parsed:"
 msgstr "Existe otra forma de acceder a esta funcionalidad para los terminales que"
 " no tengan soporte para el método anterior."
 
-#: ../../pbx_features/call_recording.rst:103
+#: ../../pbx_features/call_recording.rst:108
 msgid ""
 "This method is a workaround for those terminals that does not support the"
 " native *Record* key activation (recommended). Take into account that not"
@@ -567,36 +566,36 @@ msgstr "Este método de acceder a la funcionalidad es una forma imaginativa de "
 "funcionalidad (tecla rápida de transferencia ciega, no retener al "
 "interlocutor, etc.)."
 
-#: ../../pbx_features/call_recording.rst:108
+#: ../../pbx_features/call_recording.rst:113
 msgid "The keys for this methods are:"
 msgstr "Los pasos a seguir en este método alternativo e imaginativo son los "
 "siguientes:"
 
-#: ../../pbx_features/call_recording.rst:110
+#: ../../pbx_features/call_recording.rst:115
 msgid "It's not activated using a code during the conversation."
 msgstr "No se activa marcando el código en medio de la conversación."
 
-#: ../../pbx_features/call_recording.rst:112
+#: ../../pbx_features/call_recording.rst:117
 msgid "It's activated making a **blind transfer** to the on demand record code."
 msgstr "Se activa iniciando una transferencia ciega al código configurado."
 
-#: ../../pbx_features/call_recording.rst:114
+#: ../../pbx_features/call_recording.rst:119
 msgid ""
 "The system will understand this as a request to record and will reject "
 "the transfer."
 msgstr "El sistema rechazará la transferencia e iniciará la grabación."
 
-#: ../../pbx_features/call_recording.rst:116
+#: ../../pbx_features/call_recording.rst:121
 msgid "The user will continue with the existing call and keep talking."
 msgstr "El usuario podrá volver a la conversación que tenía (si es que su "
 "terminal no ha vuelto solo) y seguir hablando."
 
-#: ../../pbx_features/call_recording.rst:119
+#: ../../pbx_features/call_recording.rst:124
 msgid "Why this method does even exist?"
 msgstr "¿Por qué esta forma tan *peculiar* de activar la grabación y no por medio"
 " de tonos normales?"
 
-#: ../../pbx_features/call_recording.rst:120
+#: ../../pbx_features/call_recording.rst:125
 msgid ""
 "The reason behind this tricky method is based, as explained in the "
 "previous block, on the design of the :ref:`architecture` and the "
@@ -605,23 +604,23 @@ msgstr "El motivo de activar la grabación por medio de una transferencia ciega 
 "frustrada se debe a la :ref:`architecture` y, más concretamente, al "
 ":ref:`flujo de audio RTP <audioflow>`."
 
-#: ../../pbx_features/call_recording.rst:126
+#: ../../pbx_features/call_recording.rst:131
 msgid "Recordings list"
 msgstr "Listado de grabaciones"
 
-#: ../../pbx_features/call_recording.rst:128
+#: ../../pbx_features/call_recording.rst:133
 msgid ""
 "The *company administrator* can access to all the recordings in the "
 "section **Company configuration** > **Recordings**:"
 msgstr "El *administrador de empresa* puede acceder a las grabaciones realizadas "
 "por medio de la sección **Configuración de Empresa** > **Grabaciones**:"
 
-#: ../../pbx_features/call_recording.rst:133
+#: ../../pbx_features/call_recording.rst:138
 msgid "Recordings can be heard from the *web* or downloaded in MP3 format:"
 msgstr "Haciendo clic en una de ellas, podría escucharla desde la *web* o "
 "descargársela en formato MP3:"
 
-#: ../../pbx_features/call_recording.rst:137
+#: ../../pbx_features/call_recording.rst:142
 msgid ""
 "If the recording has been started on demand, it will also include the "
 "user that requested it:"
@@ -652,6 +651,7 @@ msgstr "La siguiente imagen ilustra el proceso de creación de una sala de "
 #: ../../pbx_features/external_filters.rst:74
 #: ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:24
+#: ../../pbx_features/queues.rst:28
 #: ../../pbx_features/terminals.rst:17
 #: ../../pbx_features/users.rst:23
 msgid "Name"
@@ -1267,8 +1267,8 @@ msgstr "Conectividad directa"
 msgid ""
 "If you choose 'Yes' here, you'll have to fill the protocol, address and "
 "port where this *friend* can be contacted."
-msgstr "En caso de seleccionar 'Sí', se pedirá el protocolo, la IP y el puerto en el "
-"que se puede contactar con el *friend*."
+msgstr "En caso de seleccionar 'Sí', se pedirá el protocolo, la IP y el puerto en"
+" el que se puede contactar con el *friend*."
 
 #: ../../pbx_features/friends.rst:91
 msgid ""
@@ -1281,42 +1281,46 @@ msgstr "Un *friend*, al igual que un :ref:`usuario interno <users>`, puede llama
 "que los usuarios)."
 
 #: ../../pbx_features/friends.rst:94
-#: ../../pbx_features/users.rst:66
-msgid "Outgoing DDI"
-msgstr "DDI de salida"
+msgid "Fallback Outgoing DDI"
+msgstr "DDI de salida alternativo"
 
 #: ../../pbx_features/friends.rst:96
-msgid "External calls from this *friend* will be presented with this DDI."
-msgstr "Las llamadas externas de este *friend* presentarán este DDI."
+msgid ""
+"External calls from this *friend* will be presented with this DDI, "
+"**unless the source presented by friend is a DDI that exists in DDIs "
+"section**."
+msgstr ""
+"Este DDI se empleará si el mostrado por el friend no coincide con "
+"ninguno de la compañía."
 
-#: ../../pbx_features/friends.rst:97
+#: ../../pbx_features/friends.rst:98
 msgid "Country and Area code"
 msgstr "Código de país y Area Code"
 
-#: ../../pbx_features/friends.rst:99
+#: ../../pbx_features/friends.rst:100
 msgid "Used for number transformation from and to this friend."
 msgstr "Las cabeceras de origen/destino se esperarán y enviarán en estos formatos."
 
-#: ../../pbx_features/friends.rst:100
+#: ../../pbx_features/friends.rst:101
 msgid "Allowed codecs"
 msgstr "Codecs rechazados/permitidos"
 
-#: ../../pbx_features/friends.rst:102
+#: ../../pbx_features/friends.rst:103
 msgid "Like a terminal, *friends* will talk the selected codec."
 msgstr "Al igual que un Terminal, un *friend* habla el codec seleccionado."
 
-#: ../../pbx_features/friends.rst:103
+#: ../../pbx_features/friends.rst:104
 msgid "From domain"
 msgstr "From domain"
 
-#: ../../pbx_features/friends.rst:105
+#: ../../pbx_features/friends.rst:106
 msgid ""
 "Request from IvozProvider to this friend will include this domain in the "
 "From header."
 msgstr "IvozProvider utilizará este valor en el From Domain de las peticiones al "
 "*friend*."
 
-#: ../../pbx_features/friends.rst:109
+#: ../../pbx_features/friends.rst:110
 msgid ""
 "Calls to *friends* are considered internal. That means that ACLs won't be"
 " checked when calling a friend, no matter if the origin of the call is a "
@@ -1325,11 +1329,11 @@ msgstr "Las llamadas a los *friends* no atraviesan ACLs. Es decir, se consideran
 "internas, por lo que todos los usuarios/amigos pueden llamar a todos los "
 "usuarios/amigos."
 
-#: ../../pbx_features/friends.rst:114
+#: ../../pbx_features/friends.rst:115
 msgid "Asterisk as a friend"
 msgstr "Configuración Asterisk remoto"
 
-#: ../../pbx_features/friends.rst:116
+#: ../../pbx_features/friends.rst:117
 msgid ""
 "At the other end of a friend can be any kind of SIP entity. This section "
 "takes as example an Asterisk PBX system using SIP channel driver that "
@@ -1338,71 +1342,71 @@ msgstr "Al otro lado puede haber entidades SIP muy diversas, pero añadimos la "
 "configuración ejemplo para conectar IvozProvider con una centralita "
 "Asterisk:"
 
-#: ../../pbx_features/friends.rst:121
+#: ../../pbx_features/friends.rst:122
 msgid "register"
 msgstr "register"
 
-#: ../../pbx_features/friends.rst:123
+#: ../../pbx_features/friends.rst:124
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
 msgstr "En caso de no estar directamente visible, el Asterisk tendrá que "
 "registrarse en IvozProvider (al igual que hacen los terminales)."
 
-#: ../../pbx_features/friends.rst:126
+#: ../../pbx_features/friends.rst:127
 msgid "Configuration will be something like this:"
 msgstr "La configuración sería tal que:"
 
-#: ../../pbx_features/friends.rst:133
+#: ../../pbx_features/friends.rst:134
 msgid "peer"
 msgstr "peer"
 
-#: ../../pbx_features/friends.rst:148
+#: ../../pbx_features/friends.rst:149
 msgid ""
 "*Friends*, like terminals, MUST NOT challenge IvozProvider. That's why "
 "the *insecure* setting is used here."
 msgstr "El *friend* no puede desafiar a IvozProvider, al igual que un terminal no"
 " desafía a IvozProvider cuando éste le llama. De ahí el *insecure*."
 
-#: ../../pbx_features/friends.rst:152
+#: ../../pbx_features/friends.rst:153
 msgid "Summary"
 msgstr "Resumen final"
 
-#: ../../pbx_features/friends.rst:154
+#: ../../pbx_features/friends.rst:155
 msgid ""
 "The key point is understanding that a *friend* has a direct relation with"
 " the extension-user-terminal trio:"
 msgstr "Lo vital para entender esta sección es pensar que un *friend* tiene una "
 "relación directa con el trío extension-usuario-terminal:"
 
-#: ../../pbx_features/friends.rst:157
+#: ../../pbx_features/friends.rst:158
 msgid "Can place calls to all internal extensions and other friends."
 msgstr "Puede realizar llamadas a todas las extensiones internas y a otros amigos."
 
-#: ../../pbx_features/friends.rst:159
+#: ../../pbx_features/friends.rst:160
 msgid "Can place external calls that its ACL allows"
 msgstr "Pueden realizar las llamadas que le permita su grupo de permisos."
 
-#: ../../pbx_features/friends.rst:161
+#: ../../pbx_features/friends.rst:162
 msgid "Display their configured outgoing DDI when calling to external entities"
 msgstr "Presentan el DDI saliente que tengan configurado en sus llamadas "
 "salientes."
 
-#: ../../pbx_features/friends.rst:163
+#: ../../pbx_features/friends.rst:164
 msgid ""
 "Never challenge IvozProvider requests (don't request authentication on "
 "received requests)"
 msgstr "No desafían a IvozProvider (no hay autenticación SIP en las peticiones "
 "hacia ellos)."
 
-#: ../../pbx_features/friends.rst:165
+#: ../../pbx_features/friends.rst:166
 msgid ""
 "Answers IvozProvider authentication challenges (All request from them to "
 "IvozProvider must be autheticated for security reasons)"
 msgstr "Responden a los desafíos de IvozProvider (hay autenticación SIP "
 "obligatoria en las peticiones desde ellos)."
 
-#: ../../pbx_features/friends.rst:168
+#: ../../pbx_features/friends.rst:169
 msgid ""
 "Only connects with *Users SIP Proxy*, like terminals. In fact, SIP "
 "traffic from friends are identical to any other user terminal traffic in "
@@ -1785,6 +1789,162 @@ msgid ""
 msgstr "Después de *encodear*, podemos descargar el archivo original y el "
 "convertido sin más que editar el ítem:"
 
+#: ../../pbx_features/queues.rst:3
+msgid "Queues"
+msgstr "Colas"
+
+#: ../../pbx_features/queues.rst:5
+msgid ""
+"Easy queue behaviour was included in IvozProvider in 1.3 version. It is a"
+" simple approach with **the unique goal to provide the capability to "
+"handle more calls than users attending them**."
+msgstr ""
+"El comportamiento básico de colas está incluido en la version 1.3 de IvozProvider. Es una"
+" aproximación simple con **el único propósito de proveer un mencanismo "
+"para procesar más llamadas que usuarios puedan atenderlas**."
+
+#: ../../pbx_features/queues.rst:9
+msgid ""
+"Queues and callcenter are close terms but different. **IvozProvider is "
+"not a suitable product for callcenters**, as it does not provide advanced"
+" features that are crucial to them (reports, RT visualization, queue "
+"related stat, etc.)."
+msgstr ""
+"Colas y Callcenter son términos cercanos pero diferentes. **IvozProvider no "
+"es un producto adecuado para callcenters**, y no proporciona las funcionalidades"
+" avanzadas cruciales para ellos (como Reportes, visualización realtime, estadísticas "
+"de colas, etc..)."
+
+#: ../../pbx_features/queues.rst:14
+msgid ""
+"This easy approach has a drawback **in distributed installations**: as "
+"Asterisk does not provide yet a way to share queue information between "
+"multiple instances and as we have not found a proper way neither, **a "
+"company that uses queues must have a static assignment to one of the "
+"Application Servers** (in Companies section)."
+msgstr ""
+"Esta implementación sencilla tiene una desventaja en **instalaciones distribuidas**: como "
+"Asterisk no provee todavía de un mecanismo de compartición de informacion de colas "
+"entre múltiples instancias y tampoco hemos encontrado una manera adecuada de hacerlo, **una "
+"compañía que emplee colas deberá tener una asignación estática a uno de los Servidores de Aplicación** "
+"(en su pantalla de edición de Compañía)."
+
+#: ../../pbx_features/queues.rst:19
+msgid ""
+"Brand operators can choose which Companies have queues (see **Features** "
+"in :ref:`Brand Configuration` and :ref:`Company Configuration`)."
+msgstr ""
+"Los operadores de marca pueden elegir que Compañía tiene colas (ver **Features** "
+"en :ref:`Configuración de Marca` y :ref:`Configuración de Compañía`)."
+
+#: ../../pbx_features/queues.rst:23
+msgid "Queue configuration"
+msgstr "Configuración de cola"
+
+#: ../../pbx_features/queues.rst:25
+msgid "This are the settings related to a queue:"
+msgstr "Estas son las configuraciones relacionadas con una cola:"
+
+#: ../../pbx_features/queues.rst:30
+msgid "Use to reference this queue"
+msgstr "Empleado para referenciar esta cola"
+
+#: ../../pbx_features/queues.rst:31
+msgid "Weight"
+msgstr "Peso"
+
+#: ../../pbx_features/queues.rst:33
+msgid ""
+"Priorizes calls to an agent that attends calls in two (or more) calls. "
+"The higher, the more priorized."
+msgstr ""
+"Cuando un miembro está en varias colas, se atenderán primero las "
+"llamadas de las colas con mayor peso."
+
+#: ../../pbx_features/queues.rst:35
+msgid "Strategy"
+msgstr "Estrategia"
+
+#: ../../pbx_features/queues.rst:37
+msgid ""
+"How will the queue deliver the calls? Calling to all agents, calling to a"
+" random one?"
+msgstr ""
+"¿Como se enviarán las llamadadas encoladas? Llamando a todos los miembros, llamando"
+" a uno al azar, etc."
+
+#: ../../pbx_features/queues.rst:39
+msgid "Member call seconds"
+msgstr "Duración llamada a miembro"
+
+#: ../../pbx_features/queues.rst:41
+msgid "Defines how long will a call to an agent last."
+msgstr "Tiempo en segundos que se llamará a cada miembro de la cola"
+
+#: ../../pbx_features/queues.rst:42
+msgid "Member rest seconds"
+msgstr "Descanso miembro"
+
+#: ../../pbx_features/queues.rst:44
+msgid "Seconds between calls for an agent."
+msgstr "Tiempo en segundos que el miembro no será molestado tras atender una llamada de cola."
+
+#: ../../pbx_features/queues.rst:45
+msgid "Announce"
+msgstr "Anuncio"
+
+#: ../../pbx_features/queues.rst:47
+msgid ""
+"Select a locution and its frequency. Caller waiting in the call will "
+"listen to this locution."
+msgstr ""
+"Seleccione la locución y frecuencia. Las llamadas esperando en la cola "
+"escucharán esta locución."
+
+#: ../../pbx_features/queues.rst:49
+msgid "Timeout configuration"
+msgstr "Configuración no contesta"
+
+#: ../../pbx_features/queues.rst:51
+msgid ""
+"Limits the time that a call can wait in a queue and the following "
+"behaviour."
+msgstr ""
+"Limita el tiempo que una llamada esperará en la cola y el tratamiento "
+"a realizar cuando se supere ese tiempo."
+
+#: ../../pbx_features/queues.rst:52
+msgid "Full Queue configuration"
+msgstr "Configuración cola llena"
+
+#: ../../pbx_features/queues.rst:54
+msgid ""
+"Limits the amount of people waiting in a call and the behaviour when this"
+" limit it reached."
+msgstr ""
+"Limita el número de llamadas que podrán esperar en la cola y el comportamiento"
+" a realizar cuando se alcance esa cantidad."
+
+#: ../../pbx_features/queues.rst:57
+msgid ""
+"Apart from creating a queue, you have to assign users to it. This users "
+"will have a **penalty: a user will not be selected to deliver a call if "
+"any user with lower penalty is available**."
+msgstr ""
+"Además de crear una cola, es preciso asignarle usuarios. Estos usuarios "
+"tendrán una **prioridad: Un usuario de prioridad alta no será no será "
+"molestado siempre que exista un usuario de menor prioridad disponible.**"
+
+#: ../../pbx_features/queues.rst:62
+msgid ""
+"A call can be sent to a queue selecting it in the \"Route type\" "
+"selectors available in multiple sections of IvozProvider (extension to "
+"queue, DDI to queue, etc.)"
+msgstr ""
+"Una llamada puede ser enviada a una cola eligiendo la opción cola del "
+"selector \"Enrutar\" disponible en varias seciones de IvozProvider "
+"(extension a cola, DDI a cola, ...)"
+
 #: ../../pbx_features/services.rst:5
 msgid "Additional services"
 msgstr "Servicios adicionales"
@@ -1874,8 +2034,8 @@ msgstr "Definición de servicios y códigos a nivel de marca"
 msgid ""
 "The section **Brand configuration** > **Services** allows the brand "
 "operator to:"
-msgstr "La sección **Configuración de Marca > Servicios** permite al "
-"operador de marca:"
+msgstr "La sección **Configuración de Marca > Servicios** permite al operador de "
+"marca:"
 
 #: ../../pbx_features/services.rst:54
 msgid ""
@@ -2175,6 +2335,10 @@ msgid ""
 msgstr "Tal y como se explicaba en :ref:`extensiones`, fija la extensión del "
 "usuario para llamadas internas."
 
+#: ../../pbx_features/users.rst:66
+msgid "Outgoing DDI"
+msgstr "DDI de salida"
+
 #: ../../pbx_features/users.rst:68
 msgid ""
 "As described in :ref:`external_ddi`, determines the number that will "
@@ -2208,8 +2372,8 @@ msgstr "Llamada en espera"
 msgid ""
 "When this setting is enabled, the user terminal will receive new calls "
 "even if it already talking."
-msgstr "Determina si el usuario recibirá nuevas llamadas entrantes "
-"aunque ya se encuentre en conversación."
+msgstr "Determina si el usuario recibirá nuevas llamadas entrantes aunque ya se "
+"encuentre en conversación."
 
 #: ../../pbx_features/users.rst:85
 msgid "Voicemail"
@@ -2420,7 +2584,7 @@ msgstr "Extensión (interna)"
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
-msgstr "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con "
-"crear una extensión que apunte al grupo de salto deseado y seleccionar "
+msgstr "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con crear "
+"una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
 

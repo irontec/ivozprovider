@@ -137,7 +137,7 @@ These are remaining relevant parameters configured in Companies section:
 
   Application Server
       IvozProvider will distribute calls between all application server, but you
-      can make an static asignment here (e.g. debugging).
+      can make a static asignment here (e.g. debugging).
 
   Recordings
       Configures a limit for the size of recordings of this company. A
