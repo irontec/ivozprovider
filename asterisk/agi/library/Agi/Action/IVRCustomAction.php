@@ -45,6 +45,12 @@ class IVRCustomAction extends IVRAction
         foreach ($entries as $entry) {
             // Found a matching entry
             if (preg_match('/' . $entry->getEntry() . '/', $userPressed)) {
+                // Entered data matched one of the entries, play success (if any)
+                $this->agi->playback($ivr->getSuccessLocution());
+
+                // Play entry success (if any)
+                $this->agi->playback($entry->getWelcomeLocution());
+
                 // For extension, use extension routing to apply timeout
                 if ($entry->getTargetType() == 'extension') {
                     $extension = $entry->getTargetExtension();
