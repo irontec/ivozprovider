@@ -77485,7 +77485,8 @@
      'name': '', 
      'domain': '', 
      'disallow': '', 
-     'allow': '', 
+     'allow_audio': '', 
+     'allow_video': '', 
      'direct_media_method': '', 
      'password': '', 
      'companyId': '', 
@@ -77497,7 +77498,8 @@
      'name': '', 
      'domain': '', 
      'disallow': '', 
-     'allow': '', 
+     'allow_audio': '', 
+     'allow_video': '', 
      'direct_media_method': '', 
      'password': '', 
      'companyId': '', 
@@ -77627,7 +77629,8 @@
      'name': '', 
      'domain': '', 
      'disallow': '', 
-     'allow': '', 
+     'allow_audio': '', 
+     'allow_video': '', 
      'direct_media_method': '', 
      'password': '', 
      'companyId': '', 
@@ -77728,12 +77731,22 @@
 </tr>
 
 <tr>
-    <td>allow</td>
+    <td>allow_audio</td>
     <td>varchar 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>allow_video</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -77833,8 +77846,13 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="allow">allow</label>
-    <input type="text" class="form-control input-sm" id="allow" placeholder=" - Ex: " name="allow">
+    <label class="control-label" for="allow_audio">allow_audio</label>
+    <input type="text" class="form-control input-sm" id="allow_audio" placeholder=" - Ex: " name="allow_audio">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="allow_video">allow_video</label>
+    <input type="text" class="form-control input-sm" id="allow_video" placeholder=" - Ex: " name="allow_video">
 </div>
 
 <div class="form-group">
@@ -77990,12 +78008,22 @@
 </tr>
 
 <tr>
-    <td>allow</td>
+    <td>allow_audio</td>
     <td>varchar 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>Yes</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>allow_video</td>
+    <td>varchar 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
     <td></td>
 </tr>
 
@@ -78100,8 +78128,13 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="allow">allow</label>
-    <input type="text" class="form-control input-sm" id="allow" placeholder=" - Ex: " name="allow">
+    <label class="control-label" for="allow_audio">allow_audio</label>
+    <input type="text" class="form-control input-sm" id="allow_audio" placeholder=" - Ex: " name="allow_audio">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="allow_video">allow_video</label>
+    <input type="text" class="form-control input-sm" id="allow_video" placeholder=" - Ex: " name="allow_video">
 </div>
 
 <div class="form-group">
@@ -82285,7 +82318,7 @@
 
         <div class="row mt0 footer">
             <div class="col-md-6" align="left">
-                Generated on 2017-05-31, 12:22:23
+                Generated on 2017-06-05, 13:51:40
             </div>
             <div class="col-md-6" align="right">
                 <a href="https://github.com/calinrada/php-apidoc" target="_blank">php-apidoc v 1.3.4</a>

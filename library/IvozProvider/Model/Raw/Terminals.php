@@ -68,7 +68,14 @@ class Terminals extends ModelAbstract
      *
      * @var string
      */
-    protected $_allow;
+    protected $_allowAudio;
+
+    /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_allowVideo;
 
     /**
      * [enum:update|invite|reinvite]
@@ -145,7 +152,8 @@ class Terminals extends ModelAbstract
         'name'=>'name',
         'domain'=>'domain',
         'disallow'=>'disallow',
-        'allow'=>'allow',
+        'allow_audio'=>'allowAudio',
+        'allow_video'=>'allowVideo',
         'direct_media_method'=>'directMediaMethod',
         'password'=>'password',
         'companyId'=>'companyId',
@@ -195,7 +203,7 @@ class Terminals extends ModelAbstract
 
         $this->_defaultValues = array(
             'disallow' => 'all',
-            'allow' => 'alaw',
+            'allowAudio' => 'alaw',
             'directMediaMethod' => 'update',
             'password' => '',
         );
@@ -406,33 +414,67 @@ class Terminals extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Terminals
      */
-    public function setAllow($data)
+    public function setAllowAudio($data)
     {
 
-        if ($this->_allow != $data) {
-            $this->_logChange('allow', $this->_allow, $data);
+        if ($this->_allowAudio != $data) {
+            $this->_logChange('allowAudio', $this->_allowAudio, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_allow = $data;
+            $this->_allowAudio = $data;
 
         } else if (!is_null($data)) {
-            $this->_allow = (string) $data;
+            $this->_allowAudio = (string) $data;
 
         } else {
-            $this->_allow = $data;
+            $this->_allowAudio = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column allow
+     * Gets column allow_audio
      *
      * @return string
      */
-    public function getAllow()
+    public function getAllowAudio()
     {
-        return $this->_allow;
+        return $this->_allowAudio;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Terminals
+     */
+    public function setAllowVideo($data)
+    {
+
+        if ($this->_allowVideo != $data) {
+            $this->_logChange('allowVideo', $this->_allowVideo, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_allowVideo = $data;
+
+        } else if (!is_null($data)) {
+            $this->_allowVideo = (string) $data;
+
+        } else {
+            $this->_allowVideo = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column allow_video
+     *
+     * @return string
+     */
+    public function getAllowVideo()
+    {
+        return $this->_allowVideo;
     }
 
     /**

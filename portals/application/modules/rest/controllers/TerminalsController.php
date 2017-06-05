@@ -37,7 +37,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      *     'name': '', 
      *     'domain': '', 
      *     'disallow': '', 
-     *     'allow': '', 
+     *     'allow_audio': '', 
+     *     'allow_video': '', 
      *     'direct_media_method': '', 
      *     'password': '', 
      *     'companyId': '', 
@@ -49,7 +50,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      *     'name': '', 
      *     'domain': '', 
      *     'disallow': '', 
-     *     'allow': '', 
+     *     'allow_audio': '', 
+     *     'allow_video': '', 
      *     'direct_media_method': '', 
      *     'password': '', 
      *     'companyId': '', 
@@ -77,7 +79,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                 'name',
                 'domain',
                 'disallow',
-                'allow',
+                'allowAudio',
+                'allowVideo',
                 'directMediaMethod',
                 'password',
                 'companyId',
@@ -161,7 +164,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      *     'name': '', 
      *     'domain': '', 
      *     'disallow': '', 
-     *     'allow': '', 
+     *     'allow_audio': '', 
+     *     'allow_video': '', 
      *     'direct_media_method': '', 
      *     'password': '', 
      *     'companyId': '', 
@@ -188,7 +192,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                 'name',
                 'domain',
                 'disallow',
-                'allow',
+                'allowAudio',
+                'allowVideo',
                 'directMediaMethod',
                 'password',
                 'companyId',
@@ -238,7 +243,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="allow_audio", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="allow_video", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
@@ -283,7 +289,8 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="allow_audio", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="allow_video", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="password", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
@@ -403,9 +410,14 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'allow' => array(
+                'allow_audio' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'allow_video' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(
@@ -464,9 +476,14 @@ class Rest_TerminalsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'allow' => array(
+                'allow_audio' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'allow_video' => array(
+                    'type' => "varchar",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'direct_media_method' => array(

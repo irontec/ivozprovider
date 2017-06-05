@@ -53,7 +53,8 @@ class Terminals extends MapperAbstract
                 'name' => $model->getName(),
                 'domain' => $model->getDomain(),
                 'disallow' => $model->getDisallow(),
-                'allow' => $model->getAllow(),
+                'allow_audio' => $model->getAllowAudio(),
+                'allow_video' => $model->getAllowVideo(),
                 'direct_media_method' => $model->getDirectMediaMethod(),
                 'password' => $model->getPassword(),
                 'companyId' => $model->getCompanyId(),
@@ -589,7 +590,8 @@ class Terminals extends MapperAbstract
                   ->setName($data['name'])
                   ->setDomain($data['domain'])
                   ->setDisallow($data['disallow'])
-                  ->setAllow($data['allow'])
+                  ->setAllowAudio($data['allow_audio'])
+                  ->setAllowVideo($data['allow_video'])
                   ->setDirectMediaMethod($data['direct_media_method'])
                   ->setPassword($data['password'])
                   ->setCompanyId($data['companyId'])
@@ -601,7 +603,8 @@ class Terminals extends MapperAbstract
                   ->setName($data->{'name'})
                   ->setDomain($data->{'domain'})
                   ->setDisallow($data->{'disallow'})
-                  ->setAllow($data->{'allow'})
+                  ->setAllowAudio($data->{'allow_audio'})
+                  ->setAllowVideo($data->{'allow_video'})
                   ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setPassword($data->{'password'})
                   ->setCompanyId($data->{'companyId'})
@@ -614,7 +617,8 @@ class Terminals extends MapperAbstract
                   ->setName($data->getName())
                   ->setDomain($data->getDomain())
                   ->setDisallow($data->getDisallow())
-                  ->setAllow($data->getAllow())
+                  ->setAllowAudio($data->getAllowAudio())
+                  ->setAllowVideo($data->getAllowVideo())
                   ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setPassword($data->getPassword())
                   ->setCompanyId($data->getCompanyId())

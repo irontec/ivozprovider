@@ -11,7 +11,14 @@ calls from IvozProvider.
 The best way to understand this section is creating a new item and see the 
 fields that must be filled.
 
-.. image:: img/terminals_add.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/terminals_add.png
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/terminals_add.png
+
 
 .. glossary::
 
@@ -25,10 +32,7 @@ fields that must be filled.
         secure password requirements.
 
     Allowed/Disallowed codecs
-        Determines what media codecs will be used with the terminal. First the
-        disallowed codecs will be removed, then the allowed codecs will be 
-        added. The default suggested configuration is to only support *alaw*
-        codec.
+        Determines what audio and video codecs will be used with the terminal.
 
     CallerID update method
         Choose the SIP method the terminal prefers to received the session
