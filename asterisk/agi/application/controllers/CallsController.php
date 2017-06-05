@@ -470,6 +470,9 @@ class CallsController extends BaseController
         if ($conference->getMaxMembers()) {
             $this->agi->setConferenceSetting('bridge,max_members', $conference->getMaxMembers());
         }
+
+        // Enable video support
+        $this->agi->setConferenceSetting('bridge,video_mode', 'follow_talker');
     }
 
     /**
