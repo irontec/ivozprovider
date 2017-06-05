@@ -51,7 +51,7 @@ production:
             brandURLsList_screen: true
           dialogs:
             emulateBrand_dialog: true
-            brandsDel_dialog: true
+            brandsDel_dialog: false
           default: brandsEdit_screen
       options:
         title: _("Options")
@@ -181,6 +181,7 @@ production:
     brandsDel_dialog: &brandsDel_dialogLink
       <<: *Brands
       controller: delete
+      secureDelete: true
       class: ui-silk-bin
       labelOption: false
       title: _("Delete %s", ngettext('Brand', 'Brands', 1))
