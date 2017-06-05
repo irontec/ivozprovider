@@ -10,8 +10,13 @@ class IvozProvider_Klear_Filter_OutgoingDDI implements KlearMatrix_Model_Field_S
         $pk = $routeDispatcher->getParam("pk", false);
 
         // Only display DDIs belonging to edited company
-        $this->_condition[] = "`companyId` = '" . $pk . "'";
+        if (is_array($pk)) {
+            //Avoid multiple choice error on klear
+            $this->_condition[] = "1=2";
+            return true;
+        }
 
+        $this->_condition[] = "`companyId` = '" . $pk . "'";
         return true;
     }
 
