@@ -28,10 +28,14 @@ production:
       type: text
       defaultValue: all
       maxLength: 200
-    allow: 
-      title: _('Allow')
+    allow_audio: 
+      title: _('Allowaudio')
       type: text
       defaultValue: alaw
+      maxLength: 200
+    allow_video: 
+      title: _('Allowvideo')
+      type: text
       maxLength: 200
     direct_media_method: 
       title: _('Directmediamethod')
