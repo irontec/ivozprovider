@@ -94,7 +94,7 @@ production:
           dDIsNew_screen: ${auth.isNotCompanyOperator}
         dialogs:
           dDIsDel_dialog: ${auth.isNotCompanyOperator}
-          importDDIs_dialog: ${auth.isNotCompanyOperator}
+          importDDIs_dialog: false
     dDIsNew_screen: &dDIsNew_screenLink
       <<: *DDIs
       controller: new

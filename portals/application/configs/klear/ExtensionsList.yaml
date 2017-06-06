@@ -44,7 +44,7 @@ production:
           extensionsNew_screen: true
         dialogs:
           extensionsDel_dialog: true
-          importExtensions_dialog: true
+          importExtensions_dialog: false
     extensionsNew_screen: &extensionsNew_screenLink
       <<: *Extensions
       controller: new

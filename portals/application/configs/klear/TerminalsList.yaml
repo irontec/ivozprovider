@@ -44,7 +44,7 @@ production:
           terminalsNew_screen: true
         dialogs:
           terminalsDel_dialog: true
-          importTerminals_dialog: true
+          importTerminals_dialog: false
     terminalsNew_screen: &terminalsNew_screenLink
       <<: *Terminals
       controller: new

@@ -69,9 +69,9 @@ production:
           companiesNew_screen: true
         dialogs:
           companiesDel_dialog: true
-          importCompanies_dialog: true
+          importCompanies_dialog: false
       csv:
-        active: true
+        active: false
         filename: "Companies"
         headers: true
         enclosure: '"'
@@ -169,7 +169,6 @@ production:
           colsPerRow: 2
           label: _("Invoice data")
           fields:
-            invoiceLanguageId: 1
             postalAddress: 2
             postalCode: 1
             town: 1
