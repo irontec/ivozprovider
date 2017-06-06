@@ -228,7 +228,7 @@ class Rest_CompanyAdminsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="username", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="pass", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="active", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="lastname", nullable=true, type="varchar", sample="", description="")
@@ -271,7 +271,7 @@ class Rest_CompanyAdminsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="username", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="pass", nullable=false, type="varchar", sample="", description="[password]")
      * @ApiParams(name="email", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="active", nullable=true, type="tinyint", sample="", description="")
+     * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="timezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="lastname", nullable=true, type="varchar", sample="", description="")
@@ -391,7 +391,7 @@ class Rest_CompanyAdminsController extends Iron_Controller_Rest_BaseController
                 ),
                 'active' => array(
                     'type' => "tinyint",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
                 'timezoneId' => array(
@@ -442,7 +442,7 @@ class Rest_CompanyAdminsController extends Iron_Controller_Rest_BaseController
                 ),
                 'active' => array(
                     'type' => "tinyint",
-                    'required' => false,
+                    'required' => true,
                     'comment' => '',
                 ),
                 'timezoneId' => array(

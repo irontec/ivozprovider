@@ -146,7 +146,7 @@ class CompanyAdmins extends TableAbstract
 	    'COLUMN_POSITION' => 6,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '1',
-	    'NULLABLE' => true,
+	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

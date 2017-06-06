@@ -124,7 +124,7 @@ class MainOperators extends TableAbstract
 	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '1',
-	    'NULLABLE' => true,
+	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,

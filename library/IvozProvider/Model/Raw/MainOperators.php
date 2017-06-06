@@ -129,6 +129,7 @@ class MainOperators extends ModelAbstract
 
         $this->_defaultValues = array(
             'email' => '',
+            'active' => '1',
         );
 
         $this->_initFileObjects();
