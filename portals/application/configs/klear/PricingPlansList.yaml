@@ -35,7 +35,7 @@ production:
           findPlan_dialog: true
           importPlans_dialog: false
       csv:
-        active: true
+        active: false
         filename: "PricingPlans"
         headers: true
         enclosure: '"'

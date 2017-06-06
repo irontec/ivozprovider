@@ -9,7 +9,7 @@ production:
   screens: &parsedCDRs_screensLink 
     parsedCDRsList_screen: &parsedCDRsList_screenLink 
       controller: list
-      csv: true
+      csv: false
       order:
         field:
           - calldate

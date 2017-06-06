@@ -39,7 +39,7 @@ production:
           pricingPlansRelTargetPatternsDel_dialog: true
           importPricingPlansRelPatterns_dialog: true
       csv:
-        active: true
+        active: false
         filename: "Prices"
         headers: true
         enclosure: '"'

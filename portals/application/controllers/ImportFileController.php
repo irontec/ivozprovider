@@ -50,7 +50,7 @@ class ImportFileController extends Zend_Controller_Action
 
         $this->_model = $this->_item->getModelSpec()->getInstance();
         $this->_modelName = $this->_item->getModelSpec()->getClassName();
-         $availableFields = $this->_item->getModelSpec()->getFields();
+        $availableFields = $this->_item->getModelSpec()->getFields();
 
         $this->_multilangFields = $this->_model->getMultiLangColumnsList();
         $this->_availableLangs = $this->_model->getAvailableLangs();
@@ -190,7 +190,7 @@ class ImportFileController extends Zend_Controller_Action
         $help = '<div class="parseHelp">';
         $help.= '<p>'.$this->_helper->translate("Import system").". ".$this->_helper->translate("Set column configuration and continue.").'</p>';
         $help.= '<p>'.$this->_helper->translate("Fields with * are required").'.</p><br/>';
-        $help.= '<ul>';
+        $help.= '<ul style="max-height: 150px; overflow-y: auto;">';
 
         foreach ($this->_availableFields as $key => $fieldInfo) {
             if (isset($this->_forcedValues[$key])) {
@@ -226,11 +226,13 @@ class ImportFileController extends Zend_Controller_Action
                 $selected = 'selected="selected"';
             }
             $tmp.='<option value="ignore" '.$selected.'>' . $this->_helper->translate('ignore') . '</option>';
+            $fields = [];
+
             foreach ($availableFieldsKeys as $idf => $xfield) {
                 if (isset($this->_forcedValues[$xfield])) {
                     continue;
                 }
-                $xfieldLabel = \Klear_Model_Gettext::gettextCheck($this->_availableFields[$xfield]->get('title'));
+                $xfieldLabel = $xfield;
                 $xfieldRequired = "";
                 if (!is_null($this->_availableFields[$xfield]->get('required')) && $this->_availableFields[$xfield]->get('required')) {
                     $xfieldRequired = "*";
@@ -243,11 +245,24 @@ class ImportFileController extends Zend_Controller_Action
                         $selected = 'selected="selected"';
                     }
                 }
-                $tmp .= '<option value="'.$xfield.'" '
+
+                $fields[$xfield] = '<option value="'.$xfield.'" '
                     .$selected.'>'
                     .$xfieldLabel.$xfieldRequired. '</option>';
             }
-            $tmp.= '</select>';
+
+            uasort($fields, function ($str1, $str2) {
+
+                $str1 = strtolower($str1);
+                $str2 = strtolower($str2);
+
+                if ($str1 == $str2) {
+                    return 0;
+                }
+                return ($str1 < $str2) ? -1 : 1;
+            });
+
+            $tmp.= implode($fields) . '</select>';
             $table.="<th class='ui-widget-header multiItem notSortable'>" . $tmp . "</th>";
         }
 

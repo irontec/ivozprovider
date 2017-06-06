@@ -76,7 +76,7 @@ production:
           usersNew_screen: true
         dialogs:
           usersDel_dialog: true
-          importUsers_dialog: true
+          importUsers_dialog: false
     usersNew_screen: &usersNew_screenLink
       <<: *Users
       controller: new

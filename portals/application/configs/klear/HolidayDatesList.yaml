@@ -27,7 +27,7 @@ production:
           holidayDatesNew_screen: true
         dialogs:
           holidayDatesDel_dialog: true
-          importHolidayDates_dialog: true
+          importHolidayDates_dialog: false
     holidayDatesNew_screen: &holidayDatesNew_screenLink
       <<: *HolidayDates
       controller: new
