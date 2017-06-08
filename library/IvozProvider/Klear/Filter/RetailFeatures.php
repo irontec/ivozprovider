@@ -1,8 +1,8 @@
 <?php
 
-use \IvozProvider\Model\Features as Features;
+use \Ivozprovider\Model\Features as Features;
 
-class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Select_Filter_Interface
+class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
 
@@ -17,12 +17,22 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
         $mapper = new \IvozProvider\Mapper\Sql\FeaturesRelBrands();
         $rels = $mapper->fetchList("brandId='" . $currentBrandId . "'");
 
+        $excludedFeatures = array(
+            Features::QUEUES,
+            Features::FRIENDS,
+            Features::CONFERENCES,
+            Features::BILLING,
+            Features::INVOICES,
+            Features::RETAIL,
+        );
+
         $featureIds = [];
         foreach ($rels as $rel) {
             $featureId = $rel->getFeatureId();
-            if ($featureId == Features::BILLING) continue;
-            if ($featureId == Features::INVOICES) continue;
-            if ($featureId == Features::RETAIL) continue;
+            // Ignore features not related with Retail Clients
+            if (in_array($featureId, $excludedFeatures)) {
+                continue;
+            }
             $featureIds[] = $featureId;
         }
 

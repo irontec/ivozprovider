@@ -49,47 +49,83 @@ production:
             title: _("Unassigned")
             visualFilter:
               show: [ ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "conferenceRoomId", "friendValue", "queueId"]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId","faxId",
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+              ]
           'user':
             title: _('user')
             visualFilter:
               show: ["userId" ]
-              hide: ["IVRCommonId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "faxId",
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+              ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
               show: [ "IVRCommonId" ]
-              hide: [ "userId", "IVRCustomId", "huntGroupId", "faxId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "userId", "IVRCustomId", "huntGroupId", "faxId",
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+              ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
               show: [ "IVRCustomId" ]
-              hide: [ "IVRCommonId", "userId", "huntGroupId", "faxId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "IVRCommonId", "userId", "huntGroupId", "faxId",
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+              ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
               show: [ "huntGroupId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "userId", "faxId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "userId", "faxId",
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+              ]
           'fax':
             title: _('fax')
             visualFilter:
               show: [ "faxId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "conferenceRoomId", "recordCalls", "friendValue", "queueId"]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId",
+                "conferenceRoomId", "recordCalls", "friendValue", "queueId",
+                "retailAccountId"
+              ]
           'conferenceRoom':
             title: _('ConferenceRoom')
             visualFilter:
               show: [ "conferenceRoomId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "friendValue", "queueId" ]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
+                "friendValue", "queueId", "retailAccountId"
+              ]
           'friend':
             title: _('Friend')
             visualFilter:
               show: [ "friendValue" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "conferenceRoomId", "queueId" ]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
+                "conferenceRoomId", "queueId", "retailAccountId"
+              ]
           'queue':
             title: _('Queue')
             visualFilter:
               show: [ "queueId" ]
-              hide: [ "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId", "conferenceRoomId", "friendValue" ]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
+                "conferenceRoomId", "friendValue", "retailAccountId"
+              ]
+          'retailAccount':
+            title: _('Retail Account')
+            visualFilter:
+              show: [ "retailAccountId", "recordCalls" ]
+              hide: [
+                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
+                  "conferenceRoomId", "friendValue", "queueId"
+              ]
     recordCalls:
       title: _('Record call')
       type: select
@@ -218,6 +254,20 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    retailAccountId:
+      title: _('Retail Account')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\RetailAccounts
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:

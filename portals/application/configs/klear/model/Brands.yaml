@@ -13,8 +13,8 @@ production:
       trim: both
       required: true
       maxLength: 25
-    domain_trunks:
-      title: _('Trunks SIP domain')
+    domain_users:
+      title: _('SIP domain')
       type: text
       trim: both
       maxLength: 255

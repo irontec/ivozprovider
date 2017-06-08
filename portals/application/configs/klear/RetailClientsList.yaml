@@ -5,36 +5,36 @@
 #include OutgoingRoutingList.yaml
 #include KamUsersAddressList.yaml
 
-
 production:
   main:
     module: klearMatrix
-    defaultScreen: companiesList_screen
-  screens: &companies_screensLink
-    companiesList_screen: &companiesList_screenLink
+    defaultScreen: retailClientsList_screen
+  screens: &retailClients_screensLink
+    retailClientsList_screen: &retailClientsList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *Companies
+      <<: *RetailClients
       class: ui-silk-building
-      title: _("List of %s %2s", ngettext('Company', 'Companies', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Retail Client', 'Retail Clients', 0), "[format| (%parent%)]")
       forcedValues:
-        type: 'vpbx'
+        type: 'retail'
         <<: *forcedBrand
       fields:
         options:
           title: _("Options")
           screens:
-            companiesEdit_screen: true
+            retailClientsEdit_screen: true
             kamUsersAddressList_screen: true
             companyAdminsList_screen: true
             pricingPlansRelCompaniesList_screen: ${auth.brand.billing.enabled}
             outgoingRoutingList_screen: true
           dialogs:
-            companiesDel_dialog: false
+            retailClientsDel_dialog: false
             emulateCompany_dialog: true
-          default: companiesEdit_screen
+          default: retailClientsEdit_screen
         blacklist:
+          domain_users: true
           transformationRulesetGroupsId: true
           postalAddress: true
           postalCode: true
@@ -68,13 +68,13 @@ production:
       options:
         title: _("Options")
         screens:
-          companiesNew_screen: true
+          retailClientsNew_screen: true
         dialogs:
-          companiesDel_dialog: true
-          importCompanies_dialog: false
+          retailClientsDel_dialog: true
+          importCompanies_dialog: true
       csv:
         active: false
-        filename: "Companies"
+        filename: "RetailClients"
         headers: true
         enclosure: '"'
         separator: ";"
@@ -85,11 +85,12 @@ production:
         encoding: "utf-8"
         executionSeconds: ""
 
-    companiesNew_screen: &companiesNew_screenLink
-      <<: *Companies
+    retailClientsNew_screen: &retailClientsNew_screenLink
+      <<: *RetailClients
       controller: new
       fields:
         blacklist:
+          domain_users: true
           musicOnHoldId: true
           transformationRulesetGroupsId: true
           nif: true
@@ -118,17 +119,18 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Company', 'Companies', 1))
+      title: _("Add %s", ngettext('Retail Client', 'Retail Clients', 1))
       shortcutOption: N
       forcedValues:
-        type: "vpbx"
+        type: "retail"
         <<: *forcedBrand
-    companiesEdit_screen: &companiesEdit_screenLink
-      <<: *Companies
+    retailClientsEdit_screen: &retailClientsEdit_screenLink
+      <<: *RetailClients
       controller: edit
       fields:
         blacklist:
           type: true
+          domain_users: true
           applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySetsId: ${auth.isNotMainOperator}
           recordingsLimitMB: ${auth.brand.recordings.disabled}
@@ -146,17 +148,17 @@ production:
           id: ${auth.isMainOperator}
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Company', 'Companies', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
-      fixedPositions: &companiesFixedPositions_Link
+      fixedPositions: &retailClientsFixedPositions_Link
         group0:
-          colsPerRow: 2
+          colsPerRow: 6
           fields:
-            name: 1
-            nif: 1
-            defaultTimezoneId: 1
-            languageId: 1
+            name: 4
+            nif: 2
+            defaultTimezoneId: 3
+            languageId: 3
         group1:
           colsPerRow: 12
           label: _("Server data")
@@ -164,7 +166,6 @@ production:
             outbound_prefix: 3
             outgoingDDIId: 5
             externalMaxCalls: 4
-            domain_users: 12
             countryId: 6
             areaCode: 6
             mediaRelaySetsId: 4
@@ -174,6 +175,7 @@ production:
           colsPerRow: 2
           label: _("Invoice data")
           fields:
+            invoiceLanguageId: 1
             postalAddress: 2
             postalCode: 1
             town: 1
@@ -249,25 +251,25 @@ production:
       <<: *kamUsersAddressEdit_screenLink
       filterField: companyId
 
-  dialogs: &companies_dialogsLink
-    companiesDel_dialog: &companiesDel_dialogLink
-      <<: *Companies
+  dialogs: &retailClients_dialogsLink
+    retailClientsDel_dialog: &retailClientsDel_dialogLink
+      <<: *RetailClients
       controller: delete
-      class: ui-silk-bin
       secureDelete: true
+      class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Company', 'Companies', 1))
-      description: _("Do you want to delete this %s?", ngettext('Company', 'Companies', 1))
-      message: _("%s successfully deleted.", ngettext('Company', 'Companies', 1))
+      title: _("Delete %s", ngettext('Retail Client', 'Retail Clients', 1))
+      description: _("Do you want to delete this %s?", ngettext('Retail Client', 'Retail Clients', 1))
+      message: _("%s successfully deleted.", ngettext('Retail Client', 'Retail Clients', 1))
       multiItem: 1
       labelOnList: 1
 
     emulateCompany_dialog:
-      title: _("Emulate Company %s", "[format| (%item%)]")
+      title: _("Emulate Retail Client %s", "[format| (%item%)]")
       module: default
       controller: klear-custom-extra-auth
       action: emulate
-      class: ui-silk-building-add
+      class: ui-silk-basket-add
       label: false
       labelOnEdit: false
       labelOnList: false
@@ -277,9 +279,9 @@ production:
         - IvozProvider_Klear_Options_OptionsCustomizer
 
     importCompanies_dialog:
-      <<: *Companies
+      <<: *RetailClients
       module: default
-      title: _("Import %s", ngettext('Company', 'Companies', 0))
+      title: _("Import %s", ngettext('Retail Client', 'Retail Clients', 0))
       label: false
       labelOnEdit: true
       labelOnList: true
@@ -306,7 +308,7 @@ production:
 
   commands:
     importCompaniesFreeUpload_command:
-      <<: *Companies
+      <<: *RetailClients
       controller: File
       action: free-upload
     <<: *pricingPlansRelCompanies_commandsLink
