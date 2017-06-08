@@ -35,6 +35,8 @@ class RouterAction
 
     protected $_routeQueue;
 
+    protected $_routeRetail;
+
     public function __construct($parent)
     {
         // Store parent
@@ -110,6 +112,10 @@ class RouterAction
             case 'queue':
                 $this->_routeToQueue();
                 break;
+            case 'retailAccount':
+                $this->_routeToRetailAccount();
+                break;
+
         }
     }
 
@@ -217,6 +223,14 @@ class RouterAction
         $queueAction
             ->setQueue($this->_routeQueue)
             ->process();
+    }
+
+    protected function _routeToRetailAccount()
+    {
+        $retailAction = new RetailCallAction($this);
+        $retailAction
+            ->setRetailAccount($this->_routeRetail)
+            ->call();
     }
 
 }
