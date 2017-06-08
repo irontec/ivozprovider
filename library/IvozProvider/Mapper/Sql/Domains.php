@@ -55,8 +55,7 @@ class Domains extends Raw\Domains
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxyusers' => "domain.reload",
-                'proxytrunks' => "domain.reload",
+                'proxyusers' => "domain.reload"
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);

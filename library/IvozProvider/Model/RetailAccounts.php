@@ -17,9 +17,9 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
-
+ 
 namespace IvozProvider\Model;
-class Friends extends Raw\Friends
+class RetailAccounts extends Raw\RetailAccounts
 {
     /**
      * This method is called just after parent's constructor
@@ -37,40 +37,15 @@ class Friends extends Raw\Friends
 
     public function getSorcery()
     {
-        return sprintf("b%dc%df%d_%s",
+        return sprintf("b%dc%dr%d_%s",
                         $this->getCompany()->getBrandId(),
                         $this->getCompanyId(),
                         $this->getId(),
                         $this->getName());
     }
 
-    public function checkExtension($exten)
-    {
-        $patterns = $this->getFriendsPatterns();
-        foreach ($patterns as $pattern) {
-            $regexp = '/' . $pattern->getRegExp() . '/';
-            if (preg_match($regexp, $exten)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
-     * @param string $exten
-     * @return bool canCall
-     */
-    public function isAllowedToCall($exten)
-    {
-        $callAcl = $this->getCallACL();
-        if (empty($callAcl)) {
-            return true;
-        }
-        return $callAcl->dstIsCallable($exten);
-    }
-
-    /**
-     * @brief Return Friend country or company if null
+     * @brief Return Retail Account country or company if null
      */
     public function getCountry($where = null, $orderBy = null, $avoidLoading = false)
     {
@@ -80,7 +55,6 @@ class Friends extends Raw\Friends
         }
         return $country;
     }
-
 
     /**
      * Convert a user dialed number to E164 form
@@ -114,7 +88,7 @@ class Friends extends Raw\Friends
     }
 
     /**
-     * Obtain content for X-Info-Friend header
+     * Obtain content for X-Info-Retail header
      *
      * @param called $number
      */
@@ -150,7 +124,7 @@ class Friends extends Raw\Friends
     public function getAstPsEndpoint()
     {
         $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
-        return $endpointMapper->findOneByField("friendId", $this->getId());
+        return $endpointMapper->findOneByField("retailAccountId", $this->getId());
     }
 
     public function getLanguageCode()
@@ -163,7 +137,7 @@ class Friends extends Raw\Friends
     }
 
     /**
-     * Get Friend outgoingDDI
+     * Get Retail Account outgoingDDI
      * If no DDI is assigned, retrieve company's default DDI
      * @return \IvozProvider\Model\Raw\DDIs or NULL
      */
@@ -175,5 +149,17 @@ class Friends extends Raw\Friends
         }
         return $ddi;
     }
+
+    /**
+     * Get DDI associated with this retail Account
+     *
+     * @return \IvozProvider\Model\Raw\DDIs or NULL
+     */
+    public function getDDI($ddieE164)
+    {
+        $ddis = $this->getDDIs("DDIE164='" . $ddieE164 . "'");
+        return array_shift($ddis);
+    }
+
 
 }

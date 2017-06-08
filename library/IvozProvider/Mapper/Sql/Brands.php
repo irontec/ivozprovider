@@ -40,12 +40,15 @@ class Brands extends Raw\Brands
             if (!$model->hasChange('defaultTimezoneId')) $model->setDefaultTimezoneId(145);
             if (!$model->hasChange('languageId')) $model->setLanguageId(1);
             if (!$model->hasChange('registryData')) $model->setRegistryData('');
-            if (!$model->hasChange('domainTrunks')) $model->setDomainTrunks('');
         }
 
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
-        $this->_updateDomains($model);
+        if ($model->hasChange('domainUsers')) {
+            $this->_updateDomains($model);
+            $this->_updateRetailDomain($model);
+            $this->_createDomainAttrs($model);
+        }
 
         if ($isNew) {
             $this->_createDefaultRoutes($model);
@@ -60,6 +63,26 @@ class Brands extends Raw\Brands
         }
 
         return $pk;
+    }
+
+    protected function _createDomainAttrs($model)
+    {
+        $domainName = $model->getDomainUsers();
+
+        if (!empty($domainName)) {
+            $domainAttrsMapper = new \IvozProvider\Mapper\Sql\KamUsersDomainAttrs();
+
+            $domainsAttr = $domainAttrsMapper->fetchList("did='$domainName' AND name='brandId'");
+            if (empty($domainsAttr)) {
+                $domainAttr = new \IvozProvider\Model\KamUsersDomainAttrs();
+
+                $domainAttr->setDid($domainName)
+                           ->setName('brandId')
+                           ->setType('0')
+                           ->setValue($model->getPrimaryKey())
+                           ->save();
+            }
+        }
     }
 
     protected function _createDefaultRoutes($model)
@@ -114,11 +137,11 @@ class Brands extends Raw\Brands
     {
         $pk = $model->getPrimaryKey();
 
-        $name = $model->getDomainTrunks();
+        $name = $model->getDomainUsers();
         $name = trim($name);
 
         $domainMapper = new \IvozProvider\Mapper\Sql\Domains();
-        $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='proxytrunks'");
+        $domains = $domainMapper->fetchList("brandId=$pk AND PointsTo='proxyusers'");
 
         // Empty domain field, delete any related domain
         if (!$name) {
@@ -137,10 +160,18 @@ class Brands extends Raw\Brands
 
         $domain->setDomain($name)
                ->setScope('brand')
-               ->setPointsTo('proxytrunks')
+               ->setPointsTo('proxyusers')
                ->setBrandId($pk)
-               ->setDescription($model->getName() . " proxytrunks domain")
+               ->setDescription($model->getName() . " proxyusers domain")
                ->save();
+    }
+
+    protected function _updateRetailDomain($model)
+    {
+        $retails = $model->getRetailAccounts();
+        foreach ($retails as $retail) {
+            $retail->setDomain($model->getDomainUsers())->save();
+        }
     }
 
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
@@ -158,7 +189,7 @@ class Brands extends Raw\Brands
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxytrunks' => array("lcr.reload", "domain.reload"),
+                'proxytrunks' => "lcr.reload",
                 'proxyusers' => "domain.reload",
         );
         $xmlrpcJob = new Xmlrpc();

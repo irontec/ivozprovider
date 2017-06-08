@@ -24,6 +24,12 @@ class Companies extends Raw\Companies
     const EMPTY_DOMAIN_EXCEPTION = 2001;
 
     /**
+     * Available Company Types
+     */
+    const VPBX      = 'vpbx';
+    const RETAIL    = "retail";
+
+    /**
      * This method is called just after parent's constructor
      */
     public function init()
@@ -172,7 +178,7 @@ class Companies extends Raw\Companies
             $data = trim($data);
         }
 
-        if (empty($data)) {
+        if ($this->getType() === Companies::VPBX && empty($data)) {
             throw new \Exception("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
         }
 
@@ -184,12 +190,12 @@ class Companies extends Raw\Companies
      */
     public function getDomain()
     {
-        $domains = $this->getDomains();
-        if (!empty($domains)) {
-            $domain = array_shift($domains);
-            return $domain->getDomain();
+        if ($this->getType() === Companies::RETAIL) {
+            // Retail Companies use Brand's Domain
+            return $this->getBrand()->getDomainUsers();
         } else {
-            return "";
+            // Virtual PBX Companies use Company's Domain
+            return $this->getDomainUsers();
         }
     }
 

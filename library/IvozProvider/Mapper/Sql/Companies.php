@@ -62,12 +62,13 @@ class Companies extends Raw\Companies
 
         $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
 
-        if ($isNew) {
-            $this->_propagateServices($model);
-        }
-
         if ($model->hasChange('domainUsers')) {
             $this->_updateDomains($model);
+        }
+
+        if ($isNew) {
+            $this->_createDomainAttrs($model);
+            $this->_propagateServices($model);
         }
 
         try {
@@ -78,6 +79,17 @@ class Companies extends Raw\Companies
         }
 
         return $pk;
+    }
+
+    protected function _createDomainAttrs($model)
+    {
+        $domainAttr = new \IvozProvider\Model\KamUsersDomainAttrs();
+
+        $domainAttr->setDid($model->getDomainUsers())
+                   ->setName('brandId')
+                   ->setType('0')
+                   ->setValue($model->getBrand()->getPrimaryKey())
+                   ->save();
     }
 
     protected function _updateDomains($model)
@@ -102,22 +114,6 @@ class Companies extends Raw\Companies
                ->setCompanyId($pk)
                ->setDescription($model->getName() . " proxyusers domain")
                ->save();
-
-        // Update domain attributes
-        $domainAttrsMapper = new \IvozProvider\Mapper\Sql\KamUsersDomainAttrs();
-
-        $domainsAttr = $domainAttrsMapper->fetchList("did='$name' AND name='brandId'");
-        if (empty($domainsAttr)) {
-            $domainAttr = new \IvozProvider\Model\KamUsersDomainAttrs();
-        } else {
-            $domainAttr = $domainsAttr[0];
-        }
-
-        $domainAttr->setDid($name)
-                   ->setName('brandId')
-                   ->setType('0')
-                   ->setValue($model->getBrand()->getPrimaryKey())
-                   ->save();
     }
 
     protected function _updateTerminalsDomain($model, $domain)
@@ -199,7 +195,7 @@ class Companies extends Raw\Companies
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxytrunks' => array("lcr.reload", "domain.reload"),
+                'proxytrunks' => "lcr.reload",
                 'proxyusers'  => array("domain.reload", "permissions.addressReload"),
         );
         $xmlrpcJob = new Xmlrpc();
