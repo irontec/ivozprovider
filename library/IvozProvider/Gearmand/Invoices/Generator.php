@@ -11,6 +11,8 @@ class Generator
 
     protected $pricingPlanCache = [];
 
+    const LOGGER_PREFIX = "[Invoices][Generator]";
+
     public function __construct($invoiceId = null, $logger = null)
     {
         if (!is_null($invoiceId)) {
@@ -108,6 +110,7 @@ class Generator
         $template = $templateModel->getTemplate();
         $xml = \IvozProvider\Template\Formatter::format($template, $variables);
 
+        $this->_log("Rendering the PDF", \Zend_Log::DEBUG);
         return $facade->render($xml);
     }
 
@@ -124,21 +127,6 @@ class Generator
         $outDate->addDay(1)->subSecond(1);
 
         $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
-        $limit = 100;
-        $offset = 0;
-        $continue = true;
-        $wheres = array(
-                "brandId = '".$brand->getPrimaryKey()."'",
-                "companyId = '".$company->getPrimaryKey()."'",
-                "metered = 1 ",
-                "peeringContractId IS NOT NULL",
-                "peeringContractId != ''",
-                "start_time_utc >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
-                "start_time_utc <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
-        );
-        $where = implode(" AND ", $wheres);
-        $this->_log("[INVOICE GENERATOR] Where: ".$where, \Zend_Log::DEBUG);
-        $order = "start_time_utc asc";
 
         $callsPerType = array();
         $callSumary = array();
@@ -152,6 +140,7 @@ class Generator
 
         $this->_fixedCostTotal = 0;
         $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
+
         foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
             $quantity = $fixedCostsRelInvoice->getQuantity();
@@ -166,13 +155,26 @@ class Generator
             $this->_fixedCostTotal  += number_format(ceil($subTotal*10000)/10000, 4);
         }
 
-        $dbAdapter = $invoice->getMapper()->getDbTable()->getAdapter();
-        $updateCallsInvoiceIdQuery = 'UPDATE `kam_acc_cdrs` SET `invoiceId` = ' . $invoice->getId();
-        $updateCallsInvoiceIdQuery .= ' WHERE id in (%s)';
+        $wheres = array(
+            "brandId = '".$brand->getPrimaryKey()."'",
+            "companyId = '".$company->getPrimaryKey()."'",
+            "metered = 1 ",
+            "peeringContractId IS NOT NULL",
+            "peeringContractId != ''",
+            "start_time_utc >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
+            "start_time_utc <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
+        );
+
+        $where = implode(" AND ", $wheres);
+        $order = "start_time_utc asc";
+        $limit = 100;
+        $offset = 0;
+        $continue = true;
+
+        $this->_log("Where: ".$where, \Zend_Log::DEBUG);
 
         while ($continue) {
 
-            $callIds = [];
             $calls = $callsMapper->fetchList($where, $order, $limit, $offset);
             if (count($calls) < $limit) {
                 $continue = false;
@@ -180,17 +182,9 @@ class Generator
             if (empty($calls)) {
                 break;
             }
-
             $offset += $limit;
 
-
             foreach ($calls as $call) {
-                if (!$call) {
-                    //WTF
-                    $call = new \IvozProvider\Model\KamAccCdrs();
-                }
-
-                $callIds[] = $call->getId();
 
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
@@ -258,10 +252,12 @@ class Generator
                 $callSumaryTotals["totalCallsDurationFormatted"] = $this->_timeFormat($callSumaryTotals["totalCallsDuration"]);
                 $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
             }
-
-            $updateQuery = sprintf($updateCallsInvoiceIdQuery, implode(',', $callIds));
-            $dbAdapter->query($updateQuery);
         }
+
+        $dbAdapter = $invoice->getMapper()->getDbTable()->getAdapter();
+        $updateCallsInvoiceId = 'UPDATE `kam_acc_cdrs` SET `invoiceId` = ' . $invoice->getId();
+        $updateCallsInvoiceId .= ' WHERE ' . $where;
+        $dbAdapter->query($updateCallsInvoiceId);
 
         $total = $callSumaryTotals["totalPrice"] + $this->_fixedCostTotal;
         $totalTaxex = ceil(($total*$invoice->getTaxRate()/100)*10000)/10000;
@@ -273,13 +269,13 @@ class Generator
             "totalWithTaxes" => $totalWithTaxex
         );
 
-        $this->_log("[Invoices][Generator] Saving TotalPrice and Total price with taxes", \Zend_Log::INFO);
-        $this->_log("[Invoices][Generator] TotalPrice: ".$total, \Zend_Log::INFO);
-        $this->_log("[Invoices][Generator] Total price with taxes: ".$totalWithTaxex, \Zend_Log::INFO);
+        $this->_log("Saving TotalPrice and Total price with taxes", \Zend_Log::INFO);
+        $this->_log("TotalPrice: ".$total, \Zend_Log::INFO);
+        $this->_log("Total price with taxes: ".$totalWithTaxex, \Zend_Log::INFO);
 
         asort($callSumary);
         asort($callsPerType);
-        $finalData= array(
+        $finalData = array(
             "callSumary" => $callSumary,
             "callsPerType" => $callsPerType,
             "callSumaryTotals" => $callSumaryTotals,
@@ -303,7 +299,7 @@ class Generator
             return;
         }
 
-        $this->_logger->log($message, $priority);
+        $this->_logger->log(self::LOGGER_PREFIX . " " . $message, $priority);
     }
 
     /**
