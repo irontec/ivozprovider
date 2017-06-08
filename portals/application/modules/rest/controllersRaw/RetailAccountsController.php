@@ -1,12 +1,12 @@
 <?php
 /**
- * AstPsEndpoints
+ * RetailAccounts
  */
 
 use IvozProvider\Model as Models;
 use IvozProvider\Mapper\Sql as Mappers;
 
-class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
+class Rest_RetailAccountsController extends Iron_Controller_Rest_BaseController
 {
 
     protected $_cache;
@@ -24,57 +24,59 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="AstPsEndpoints", description="GET information about all AstPsEndpoints")
+     * @ApiDescription(section="RetailAccounts", description="GET information about all RetailAccounts")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast-ps-endpoints/")
+     * @ApiRoute(name="/rest/retail-accounts/")
      * @ApiParams(name="page", type="int", nullable=true, description="", sample="")
      * @ApiParams(name="order", type="string", nullable=true, description="", sample="")
      * @ApiParams(name="search", type="json_encode", nullable=true, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'sorcery_id': '', 
-     *     'from_domain': '', 
-     *     'terminalId': '', 
-     *     'friendId': '', 
-     *     'retailAccountId': '', 
-     *     'aors': '', 
-     *     'callerid': '', 
-     *     'context': '', 
+     *     'brandId': '', 
+     *     'companyId': '', 
+     *     'name': '', 
+     *     'domain': '', 
+     *     'description': '', 
+     *     'transport': '', 
+     *     'ip': '', 
+     *     'port': '', 
+     *     'auth_needed': '', 
+     *     'password': '', 
+     *     'countryId': '', 
+     *     'areaCode': '', 
+     *     'outgoingDDIId': '', 
      *     'disallow': '', 
      *     'allow': '', 
-     *     'direct_media': '', 
      *     'direct_media_method': '', 
-     *     'mailboxes': '', 
-     *     'pickup_group': '', 
-     *     'send_diversion': '', 
-     *     'send_pai': '', 
-     *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'outbound_proxy': '', 
-     *     'trust_id_inbound': ''
+     *     'callerid_update_header': '', 
+     *     'update_callerid': '', 
+     *     'from_domain': '', 
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * },{
      *     'id': '', 
-     *     'sorcery_id': '', 
-     *     'from_domain': '', 
-     *     'terminalId': '', 
-     *     'friendId': '', 
-     *     'retailAccountId': '', 
-     *     'aors': '', 
-     *     'callerid': '', 
-     *     'context': '', 
+     *     'brandId': '', 
+     *     'companyId': '', 
+     *     'name': '', 
+     *     'domain': '', 
+     *     'description': '', 
+     *     'transport': '', 
+     *     'ip': '', 
+     *     'port': '', 
+     *     'auth_needed': '', 
+     *     'password': '', 
+     *     'countryId': '', 
+     *     'areaCode': '', 
+     *     'outgoingDDIId': '', 
      *     'disallow': '', 
      *     'allow': '', 
-     *     'direct_media': '', 
      *     'direct_media_method': '', 
-     *     'mailboxes': '', 
-     *     'pickup_group': '', 
-     *     'send_diversion': '', 
-     *     'send_pai': '', 
-     *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'outbound_proxy': '', 
-     *     'trust_id_inbound': ''
+     *     'callerid_update_header': '', 
+     *     'update_callerid': '', 
+     *     'from_domain': '', 
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * }]")
      */
     public function indexAction()
@@ -93,26 +95,27 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'sorceryId',
-                'fromDomain',
-                'terminalId',
-                'friendId',
-                'retailAccountId',
-                'aors',
-                'callerid',
-                'context',
+                'brandId',
+                'companyId',
+                'name',
+                'domain',
+                'description',
+                'transport',
+                'ip',
+                'port',
+                'authNeeded',
+                'password',
+                'countryId',
+                'areaCode',
+                'outgoingDDIId',
                 'disallow',
                 'allow',
-                'directMedia',
                 'directMediaMethod',
-                'mailboxes',
-                'pickupGroup',
-                'sendDiversion',
-                'sendPai',
-                'subscribecontext',
-                '100rel',
-                'outboundProxy',
-                'trustIdInbound',
+                'calleridUpdateHeader',
+                'updateCallerid',
+                'fromDomain',
+                'directConnectivity',
+                'languageId',
             );
         }
 
@@ -131,7 +134,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             )
         );
 
-        $etag = $this->_cache->getEtagVersions('AstPsEndpoints');
+        $etag = $this->_cache->getEtagVersions('RetailAccounts');
 
         $hashEtag = md5(
             serialize(
@@ -147,7 +150,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\AstPsEndpoints();
+        $mapper = new Mappers\RetailAccounts();
 
         $items = $mapper->fetchList(
             $where,
@@ -180,33 +183,34 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="AstPsEndpoints", description="Get information about AstPsEndpoints")
+     * @ApiDescription(section="RetailAccounts", description="Get information about RetailAccounts")
      * @ApiMethod(type="get")
-     * @ApiRoute(name="/rest/ast-ps-endpoints/{id}")
+     * @ApiRoute(name="/rest/retail-accounts/{id}")
      * @ApiParams(name="id", type="int", nullable=false, description="", sample="")
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'sorcery_id': '', 
-     *     'from_domain': '', 
-     *     'terminalId': '', 
-     *     'friendId': '', 
-     *     'retailAccountId': '', 
-     *     'aors': '', 
-     *     'callerid': '', 
-     *     'context': '', 
+     *     'brandId': '', 
+     *     'companyId': '', 
+     *     'name': '', 
+     *     'domain': '', 
+     *     'description': '', 
+     *     'transport': '', 
+     *     'ip': '', 
+     *     'port': '', 
+     *     'auth_needed': '', 
+     *     'password': '', 
+     *     'countryId': '', 
+     *     'areaCode': '', 
+     *     'outgoingDDIId': '', 
      *     'disallow': '', 
      *     'allow': '', 
-     *     'direct_media': '', 
      *     'direct_media_method': '', 
-     *     'mailboxes': '', 
-     *     'pickup_group': '', 
-     *     'send_diversion': '', 
-     *     'send_pai': '', 
-     *     'subscribecontext': '', 
-     *     '100rel': '', 
-     *     'outbound_proxy': '', 
-     *     'trust_id_inbound': ''
+     *     'callerid_update_header': '', 
+     *     'update_callerid': '', 
+     *     'from_domain': '', 
+     *     'directConnectivity': '', 
+     *     'languageId': ''
      * }")
      */
     public function getAction()
@@ -224,30 +228,31 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
         } else {
             $fields = array(
                 'id',
-                'sorceryId',
-                'fromDomain',
-                'terminalId',
-                'friendId',
-                'retailAccountId',
-                'aors',
-                'callerid',
-                'context',
+                'brandId',
+                'companyId',
+                'name',
+                'domain',
+                'description',
+                'transport',
+                'ip',
+                'port',
+                'authNeeded',
+                'password',
+                'countryId',
+                'areaCode',
+                'outgoingDDIId',
                 'disallow',
                 'allow',
-                'directMedia',
                 'directMediaMethod',
-                'mailboxes',
-                'pickupGroup',
-                'sendDiversion',
-                'sendPai',
-                'subscribecontext',
-                '100rel',
-                'outboundProxy',
-                'trustIdInbound',
+                'calleridUpdateHeader',
+                'updateCallerid',
+                'fromDomain',
+                'directConnectivity',
+                'languageId',
             );
         }
 
-        $etag = $this->_cache->getEtagVersions('AstPsEndpoints');
+        $etag = $this->_cache->getEtagVersions('RetailAccounts');
         $hashEtag = md5(
             serialize(
                 array($fields)
@@ -263,7 +268,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             }
         }
 
-        $mapper = new Mappers\AstPsEndpoints();
+        $mapper = new Mappers\RetailAccounts();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -281,31 +286,32 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="AstPsEndpoints", description="Create's a new AstPsEndpoints")
+     * @ApiDescription(section="RetailAccounts", description="Create's a new RetailAccounts")
      * @ApiMethod(type="post")
-     * @ApiRoute(name="/rest/ast-ps-endpoints/")
-     * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
+     * @ApiRoute(name="/rest/retail-accounts/")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="transport", nullable=false, type="varchar", sample="", description="[enum:udp|tcp|tls]")
+     * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="password", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
-     * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','update')", sample="", description="[enum:invite|update]")
+     * @ApiParams(name="callerid_update_header", nullable=false, type="enum('pai','rpid')", sample="", description="[enum:pai|rpid]")
+     * @ApiParams(name="update_callerid", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="directConnectivity", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
-     * @ApiReturnHeaders(sample="Location: /rest/astpsendpoints/{id}")
+     * @ApiReturnHeaders(sample="Location: /rest/retailaccounts/{id}")
      * @ApiReturn(type="object", sample="{}")
      */
     public function postAction()
@@ -313,7 +319,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $model = new Models\AstPsEndpoints();
+        $model = new Models\RetailAccounts();
 
         try {
             $model->populateFromArray($params);
@@ -335,30 +341,31 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="AstPsEndpoints", description="Table AstPsEndpoints")
+     * @ApiDescription(section="RetailAccounts", description="Table RetailAccounts")
      * @ApiMethod(type="put")
-     * @ApiRoute(name="/rest/ast-ps-endpoints/")
+     * @ApiRoute(name="/rest/retail-accounts/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="sorcery_id", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="domain", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="description", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="transport", nullable=false, type="varchar", sample="", description="[enum:udp|tcp|tls]")
+     * @ApiParams(name="ip", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="port", nullable=true, type="smallint", sample="", description="")
+     * @ApiParams(name="auth_needed", nullable=false, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="password", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="disallow", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="allow", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
-     * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
-     * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
+     * @ApiParams(name="direct_media_method", nullable=false, type="enum('invite','update')", sample="", description="[enum:invite|update]")
+     * @ApiParams(name="callerid_update_header", nullable=false, type="enum('pai','rpid')", sample="", description="[enum:pai|rpid]")
+     * @ApiParams(name="update_callerid", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="directConnectivity", nullable=false, type="enum('yes','no')", sample="", description="[enum:yes|no]")
+     * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -374,7 +381,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
 
         $params = $this->getRequest()->getParams();
 
-        $mapper = new Mappers\AstPsEndpoints();
+        $mapper = new Mappers\RetailAccounts();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -398,9 +405,9 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
     }
 
     /**
-     * @ApiDescription(section="AstPsEndpoints", description="Table AstPsEndpoints")
+     * @ApiDescription(section="RetailAccounts", description="Table RetailAccounts")
      * @ApiMethod(type="delete")
-     * @ApiRoute(name="/rest/ast-ps-endpoints/")
+     * @ApiRoute(name="/rest/retail-accounts/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 204")
      * @ApiReturn(type="object", sample="{}")
@@ -415,7 +422,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
             return;
         }
 
-        $mapper = new Mappers\AstPsEndpoints();
+        $mapper = new Mappers\RetailAccounts();
         $model = $mapper->find($primaryKey);
 
         if (empty($model)) {
@@ -453,44 +460,69 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'sorcery_id' => array(
+                'brandId' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'companyId' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'name' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'from_domain' => array(
+                'domain' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
-                'terminalId' => array(
-                    'type' => "int",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'friendId' => array(
-                    'type' => "int",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'retailAccountId' => array(
-                    'type' => "int",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'aors' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'callerid' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'context' => array(
+                'description' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'transport' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '[enum:udp|tcp|tls]',
+                ),
+                'ip' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'port' => array(
+                    'type' => "smallint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'auth_needed' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'password' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'countryId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'areaCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'outgoingDDIId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'disallow' => array(
@@ -503,53 +535,33 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'direct_media' => array(
-                    'type' => "enum('yes','no')",
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'direct_media_method' => array(
-                    'type' => "enum('invite','reinvite','update')",
-                    'required' => false,
-                    'comment' => '[enum:update|invite|reinvite]',
-                ),
-                'mailboxes' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'pickup_group' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'send_diversion' => array(
-                    'type' => "enum('yes','no')",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'send_pai' => array(
-                    'type' => "enum('yes','no')",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'subscribecontext' => array(
-                    'type' => "varchar",
+                    'type' => "enum('invite','update')",
                     'required' => true,
-                    'comment' => '',
+                    'comment' => '[enum:invite|update]',
                 ),
-                '100rel' => array(
-                    'type' => "enum('no','required','yes')",
+                'callerid_update_header' => array(
+                    'type' => "enum('pai','rpid')",
                     'required' => true,
-                    'comment' => '',
+                    'comment' => '[enum:pai|rpid]',
                 ),
-                'outbound_proxy' => array(
+                'update_callerid' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'from_domain' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
-                'trust_id_inbound' => array(
+                'directConnectivity' => array(
                     'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'languageId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -564,44 +576,69 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'sorcery_id' => array(
+                'brandId' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'companyId' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'name' => array(
                     'type' => "varchar",
                     'required' => true,
                     'comment' => '',
                 ),
-                'from_domain' => array(
+                'domain' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
-                'terminalId' => array(
-                    'type' => "int",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'friendId' => array(
-                    'type' => "int",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'retailAccountId' => array(
-                    'type' => "int",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'aors' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'callerid' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'context' => array(
+                'description' => array(
                     'type' => "varchar",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'transport' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '[enum:udp|tcp|tls]',
+                ),
+                'ip' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'port' => array(
+                    'type' => "smallint",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'auth_needed' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'password' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'countryId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'areaCode' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'outgoingDDIId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'disallow' => array(
@@ -614,53 +651,33 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'direct_media' => array(
-                    'type' => "enum('yes','no')",
-                    'required' => false,
-                    'comment' => '',
-                ),
                 'direct_media_method' => array(
-                    'type' => "enum('invite','reinvite','update')",
-                    'required' => false,
-                    'comment' => '[enum:update|invite|reinvite]',
-                ),
-                'mailboxes' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'pickup_group' => array(
-                    'type' => "varchar",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'send_diversion' => array(
-                    'type' => "enum('yes','no')",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'send_pai' => array(
-                    'type' => "enum('yes','no')",
-                    'required' => false,
-                    'comment' => '',
-                ),
-                'subscribecontext' => array(
-                    'type' => "varchar",
+                    'type' => "enum('invite','update')",
                     'required' => true,
-                    'comment' => '',
+                    'comment' => '[enum:invite|update]',
                 ),
-                '100rel' => array(
-                    'type' => "enum('no','required','yes')",
+                'callerid_update_header' => array(
+                    'type' => "enum('pai','rpid')",
                     'required' => true,
-                    'comment' => '',
+                    'comment' => '[enum:pai|rpid]',
                 ),
-                'outbound_proxy' => array(
+                'update_callerid' => array(
+                    'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'from_domain' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
                 ),
-                'trust_id_inbound' => array(
+                'directConnectivity' => array(
                     'type' => "enum('yes','no')",
+                    'required' => true,
+                    'comment' => '[enum:yes|no]',
+                ),
+                'languageId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),

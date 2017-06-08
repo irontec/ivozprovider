@@ -69,7 +69,7 @@ class KamUsersDomainAttrs extends ModelAbstract
     /**
      * Parent relation kam_users_domain_attrs_ibfk_1
      *
-     * @var \IvozProvider\Model\Raw\Companies
+     * @var \IvozProvider\Model\Raw\Domains
      */
     protected $_D;
 
@@ -99,7 +99,7 @@ class KamUsersDomainAttrs extends ModelAbstract
         $this->setParentList(array(
             'KamUsersDomainAttrsIbfk1'=> array(
                     'property' => 'D',
-                    'table_name' => 'Companies',
+                    'table_name' => 'Domains',
                 ),
         ));
 
@@ -385,16 +385,16 @@ class KamUsersDomainAttrs extends ModelAbstract
     /**
      * Sets parent relation D
      *
-     * @param \IvozProvider\Model\Raw\Companies $data
+     * @param \IvozProvider\Model\Raw\Domains $data
      * @return \IvozProvider\Model\Raw\KamUsersDomainAttrs
      */
-    public function setD(\IvozProvider\Model\Raw\Companies $data)
+    public function setD(\IvozProvider\Model\Raw\Domains $data)
     {
         $this->_D = $data;
 
         $primaryKey = $data->getPrimaryKey();
         if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['domain_users'];
+            $primaryKey = $primaryKey['domain'];
         }
 
         if (!is_null($primaryKey)) {
@@ -408,7 +408,7 @@ class KamUsersDomainAttrs extends ModelAbstract
     /**
      * Gets parent D
      * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
+     * @return \IvozProvider\Model\Raw\Domains
      */
     public function getD($where = null, $orderBy = null, $avoidLoading = false)
     {

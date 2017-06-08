@@ -22,6 +22,10 @@ namespace IvozProvider\Model\Raw;
 class Companies extends ModelAbstract
 {
 
+    protected $_typeAcceptedValues = array(
+        'vpbx',
+        'retail',
+    );
 
     /**
      * Database var type int
@@ -36,6 +40,14 @@ class Companies extends ModelAbstract
      * @var int
      */
     protected $_brandId;
+
+    /**
+     * [enum:vpbx|retail]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_type;
 
     /**
      * Database var type varchar
@@ -450,6 +462,14 @@ class Companies extends ModelAbstract
     protected $_Recordings;
 
     /**
+     * Dependent relation RetailAccounts_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts[]
+     */
+    protected $_RetailAccounts;
+
+    /**
      * Dependent relation Schedules_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -489,17 +509,10 @@ class Companies extends ModelAbstract
      */
     protected $_KamUsersAddress;
 
-    /**
-     * Dependent relation kam_users_domain_attrs_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\KamUsersDomainAttrs[]
-     */
-    protected $_KamUsersDomainAttrs;
-
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
+        'type'=>'type',
         'name'=>'name',
         'domain_users'=>'domainUsers',
         'nif'=>'nif',
@@ -531,6 +544,7 @@ class Companies extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'type'=> array('enum:vpbx|retail'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -670,6 +684,10 @@ class Companies extends ModelAbstract
                     'property' => 'Recordings',
                     'table_name' => 'Recordings',
                 ),
+            'RetailAccountsIbfk2' => array(
+                    'property' => 'RetailAccounts',
+                    'table_name' => 'RetailAccounts',
+                ),
             'SchedulesIbfk1' => array(
                     'property' => 'Schedules',
                     'table_name' => 'Schedules',
@@ -690,10 +708,6 @@ class Companies extends ModelAbstract
                     'property' => 'KamUsersAddress',
                     'table_name' => 'kam_users_address',
                 ),
-            'KamUsersDomainAttrsIbfk1' => array(
-                    'property' => 'KamUsersDomainAttrs',
-                    'table_name' => 'kam_users_domain_attrs',
-                ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
@@ -705,6 +719,7 @@ class Companies extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'type' => 'vpbx',
             'externalMaxCalls' => '0',
         );
 
@@ -815,6 +830,43 @@ class Companies extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Companies
      */
+    public function setType($data)
+    {
+
+        if ($this->_type != $data) {
+            $this->_logChange('type', $this->_type, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_type = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_typeAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for type'));
+            }
+            $this->_type = (string) $data;
+
+        } else {
+            $this->_type = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
     public function setName($data)
     {
 
@@ -855,9 +907,6 @@ class Companies extends ModelAbstract
     public function setDomainUsers($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_domainUsers != $data) {
             $this->_logChange('domainUsers', $this->_domainUsers, $data);
         }
@@ -4224,6 +4273,96 @@ class Companies extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations RetailAccounts_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RetailAccounts
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setRetailAccounts(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RetailAccounts === null) {
+
+                $this->getRetailAccounts();
+            }
+
+            $oldRelations = $this->_RetailAccounts;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RetailAccounts = array();
+
+        foreach ($data as $object) {
+            $this->addRetailAccounts($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addRetailAccounts(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccounts[] = $data;
+        $this->_setLoaded('RetailAccountsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent RetailAccounts_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccounts($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RetailAccountsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccounts = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RetailAccounts;
+    }
+
+    /**
      * Sets dependent relations Schedules_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Schedules
@@ -4671,96 +4810,6 @@ class Companies extends ModelAbstract
         }
 
         return $this->_KamUsersAddress;
-    }
-
-    /**
-     * Sets dependent relations kam_users_domain_attrs_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\KamUsersDomainAttrs
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function setKamUsersDomainAttrs(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_KamUsersDomainAttrs === null) {
-
-                $this->getKamUsersDomainAttrs();
-            }
-
-            $oldRelations = $this->_KamUsersDomainAttrs;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_KamUsersDomainAttrs = array();
-
-        foreach ($data as $object) {
-            $this->addKamUsersDomainAttrs($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations kam_users_domain_attrs_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\KamUsersDomainAttrs $data
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function addKamUsersDomainAttrs(\IvozProvider\Model\Raw\KamUsersDomainAttrs $data)
-    {
-        $this->_KamUsersDomainAttrs[] = $data;
-        $this->_setLoaded('KamUsersDomainAttrsIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent kam_users_domain_attrs_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\KamUsersDomainAttrs
-     */
-    public function getKamUsersDomainAttrs($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'KamUsersDomainAttrsIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_KamUsersDomainAttrs = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_KamUsersDomainAttrs;
     }
 
     /**

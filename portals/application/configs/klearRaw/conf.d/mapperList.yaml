@@ -64,6 +64,7 @@ mappers:
   - &QueueMembers {mapper: \IvozProvider\Mapper\Sql\QueueMembers, modelFile: QueueMembers}
   - &Queues {mapper: \IvozProvider\Mapper\Sql\Queues, modelFile: Queues}
   - &Recordings {mapper: \IvozProvider\Mapper\Sql\Recordings, modelFile: Recordings}
+  - &RetailAccounts {mapper: \IvozProvider\Mapper\Sql\RetailAccounts, modelFile: RetailAccounts}
   - &RoutingPatternGroups {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroups, modelFile: RoutingPatternGroups}
   - &RoutingPatternGroupsRelPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroupsRelPatterns, modelFile: RoutingPatternGroupsRelPatterns}
   - &RoutingPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatterns, modelFile: RoutingPatterns}
@@ -101,6 +102,7 @@ mappers:
   - &KamUsersActiveWatchers {mapper: \IvozProvider\Mapper\Sql\KamUsersActiveWatchers, modelFile: KamUsersActiveWatchers}
   - &KamUsersAddress {mapper: \IvozProvider\Mapper\Sql\KamUsersAddress, modelFile: KamUsersAddress}
   - &KamUsersDbaliases {mapper: \IvozProvider\Mapper\Sql\KamUsersDbaliases, modelFile: KamUsersDbaliases}
+  - &KamUsersDialplan {mapper: \IvozProvider\Mapper\Sql\KamUsersDialplan, modelFile: KamUsersDialplan}
   - &KamUsersDomain {mapper: \IvozProvider\Mapper\Sql\KamUsersDomain, modelFile: KamUsersDomain}
   - &KamUsersDomainAttrs {mapper: \IvozProvider\Mapper\Sql\KamUsersDomainAttrs, modelFile: KamUsersDomainAttrs}
   - &KamUsersHtable {mapper: \IvozProvider\Mapper\Sql\KamUsersHtable, modelFile: KamUsersHtable}

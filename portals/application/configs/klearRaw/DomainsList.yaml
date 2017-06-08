@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include KamUsersDomainAttrsList.yaml
 
 
 production: 
@@ -19,6 +20,7 @@ production:
           title: _("Options")
           screens: 
             domainsEdit_screen: true
+            kamUsersDomainAttrsList_screen: true
           dialogs: 
             domainsDel_dialog: true
           default: domainsEdit_screen
@@ -46,6 +48,20 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
+    #kamUsersDomainAttrs: 
+    <<: *kamUsersDomainAttrs_screensLink
+    kamUsersDomainAttrsList_screen: 
+      <<: *kamUsersDomainAttrsList_screenLink
+      filterField: did
+      parentOptionCustomizer: 
+        - recordCount
+    kamUsersDomainAttrsNew_screen: 
+      <<: *kamUsersDomainAttrsNew_screenLink
+      filterField: did
+    kamUsersDomainAttrsEdit_screen: 
+      <<: *kamUsersDomainAttrsEdit_screenLink
+      filterField: did
+
   dialogs: &domains_dialogsLink 
     domainsDel_dialog: &domainsDel_dialogLink 
       <<: *Domains
@@ -57,6 +73,8 @@ production:
       message: _("%s successfully deleted.", ngettext('Domain', 'Domains', 1))
       multiItem: 1
       labelOnList: 1
+  # kamUsersDomainAttrs dialogs: 
+    <<: *kamUsersDomainAttrs_dialogsLink
 staging: 
   _extends: production
 testing: 

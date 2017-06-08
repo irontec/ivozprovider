@@ -25,12 +25,12 @@
 #include PricingPlansRelCompaniesList.yaml
 #include QueuesList.yaml
 #include RecordingsList.yaml
+#include RetailAccountsList.yaml
 #include SchedulesList.yaml
 #include TerminalsList.yaml
 #include UsersList.yaml
 #include KamAccCdrsList.yaml
 #include KamUsersAddressList.yaml
-#include KamUsersDomainAttrsList.yaml
 
 
 production: 
@@ -75,12 +75,12 @@ production:
             pricingPlansRelCompaniesList_screen: true
             queuesList_screen: true
             recordingsList_screen: true
+            retailAccountsList_screen: true
             schedulesList_screen: true
             terminalsList_screen: true
             usersList_screen: true
             kamAccCdrsList_screen: true
             kamUsersAddressList_screen: true
-            kamUsersDomainAttrsList_screen: true
           dialogs: 
             companiesDel_dialog: true
           default: companiesEdit_screen
@@ -434,6 +434,19 @@ production:
       <<: *recordingsEdit_screenLink
       filterField: companyId
 
+    #retailAccounts: 
+    retailAccountsList_screen: 
+      <<: *retailAccountsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer: 
+        - recordCount
+    retailAccountsNew_screen: 
+      <<: *retailAccountsNew_screenLink
+      filterField: companyId
+    retailAccountsEdit_screen: 
+      <<: *retailAccountsEdit_screenLink
+      filterField: companyId
+
     #schedules: 
     schedulesList_screen: 
       <<: *schedulesList_screenLink
@@ -499,19 +512,6 @@ production:
       <<: *kamUsersAddressEdit_screenLink
       filterField: companyId
 
-    #kamUsersDomainAttrs: 
-    kamUsersDomainAttrsList_screen: 
-      <<: *kamUsersDomainAttrsList_screenLink
-      filterField: did
-      parentOptionCustomizer: 
-        - recordCount
-    kamUsersDomainAttrsNew_screen: 
-      <<: *kamUsersDomainAttrsNew_screenLink
-      filterField: did
-    kamUsersDomainAttrsEdit_screen: 
-      <<: *kamUsersDomainAttrsEdit_screenLink
-      filterField: did
-
   dialogs: &companies_dialogsLink 
     companiesDel_dialog: &companiesDel_dialogLink 
       <<: *Companies
@@ -573,6 +573,8 @@ production:
     <<: *queues_dialogsLink
   # recordings dialogs: 
     <<: *recordings_dialogsLink
+  # retailAccounts dialogs: 
+    <<: *retailAccounts_dialogsLink
   # schedules dialogs: 
     <<: *schedules_dialogsLink
   # terminals dialogs: 
@@ -583,8 +585,6 @@ production:
     <<: *kamAccCdrs_dialogsLink
   # kamUsersAddress dialogs: 
     <<: *kamUsersAddress_dialogsLink
-  # kamUsersDomainAttrs dialogs: 
-    <<: *kamUsersDomainAttrs_dialogsLink
 staging: 
   _extends: production
 testing: 

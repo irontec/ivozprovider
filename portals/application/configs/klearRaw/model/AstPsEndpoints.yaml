@@ -37,6 +37,19 @@ production:
             template: '%name%'
           order: name
         'null': _("Unassigned")
+    retailAccountId: 
+      title: _('Retailaccountid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\RetailAccounts
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
     aors: 
       title: _('Aor')
       type: text

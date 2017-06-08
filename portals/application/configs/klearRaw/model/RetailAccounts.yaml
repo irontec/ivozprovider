@@ -1,6 +1,20 @@
 production: 
-  class: \IvozProvider\Model\Friends
+  class: \IvozProvider\Model\RetailAccounts
   fields: 
+    brandId: 
+      title: _('Brandid')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\Brands
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+      default: true
     companyId: 
       title: _('Companyid')
       type: select
@@ -14,7 +28,6 @@ production:
               - type
             template: '%type%'
           order: type
-      default: true
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
@@ -61,19 +74,6 @@ production:
       title: ngettext('Password', 'Passwords', 1)
       type: password
       adapter: Blowfish
-    callACLId: 
-      title: _('Callaclid')
-      type: select
-      source: 
-        data: mapper
-        config: 
-          mapperName: \IvozProvider\Mapper\Sql\CallACL
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unassigned")
     countryId: 
       title: _('Countryid')
       type: select
@@ -104,12 +104,6 @@ production:
             template: '%DDI%'
           order: DDI
         'null': _("Unassigned")
-    priority: 
-      title: _('Priority')
-      type: number
-      defaultValue: 1
-      source: 
-        control: Spinner
     disallow: 
       title: _('Disallow')
       type: text

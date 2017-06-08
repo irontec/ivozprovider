@@ -48,9 +48,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
-              - name
-            template: '%name%'
-          order: name
+              - type
+            template: '%type%'
+          order: type
         'null': _("Unassigned")
     description: 
       title: ngettext('Description', 'Descriptions', 1)

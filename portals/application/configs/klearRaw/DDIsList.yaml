@@ -3,6 +3,7 @@
 #include CompaniesList.yaml
 #include FaxesList.yaml
 #include FriendsList.yaml
+#include RetailAccountsList.yaml
 #include UsersList.yaml
 
 
@@ -26,6 +27,7 @@ production:
             companiesList_screen: true
             faxesList_screen: true
             friendsList_screen: true
+            retailAccountsList_screen: true
             usersList_screen: true
           dialogs: 
             dDIsDel_dialog: true
@@ -94,6 +96,19 @@ production:
       <<: *friendsEdit_screenLink
       filterField: outgoingDDIId
 
+    #retailAccounts: 
+    retailAccountsList_screen: 
+      <<: *retailAccountsList_screenLink
+      filterField: outgoingDDIId
+      parentOptionCustomizer: 
+        - recordCount
+    retailAccountsNew_screen: 
+      <<: *retailAccountsNew_screenLink
+      filterField: outgoingDDIId
+    retailAccountsEdit_screen: 
+      <<: *retailAccountsEdit_screenLink
+      filterField: outgoingDDIId
+
     #users: 
     usersList_screen: 
       <<: *usersList_screenLink
@@ -124,6 +139,8 @@ production:
     <<: *faxes_dialogsLink
   # friends dialogs: 
     <<: *friends_dialogsLink
+  # retailAccounts dialogs: 
+    <<: *retailAccounts_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
 staging: 

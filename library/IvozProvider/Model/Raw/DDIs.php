@@ -37,6 +37,7 @@ class DDIs extends ModelAbstract
         'conferenceRoom',
         'friend',
         'queue',
+        'retailAccount',
     );
 
     /**
@@ -97,7 +98,7 @@ class DDIs extends ModelAbstract
     protected $_displayName;
 
     /**
-     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue]
+     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount]
      * Database var type varchar
      *
      * @var string
@@ -145,6 +146,13 @@ class DDIs extends ModelAbstract
      * @var int
      */
     protected $_conferenceRoomId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_retailAccountId;
 
     /**
      * Database var type int
@@ -280,6 +288,13 @@ class DDIs extends ModelAbstract
      */
     protected $_Queue;
 
+    /**
+     * Parent relation DDIs_ibfk_14
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts
+     */
+    protected $_RetailAccount;
+
 
     /**
      * Dependent relation Companies_ibfk_13
@@ -306,6 +321,14 @@ class DDIs extends ModelAbstract
     protected $_Friends;
 
     /**
+     * Dependent relation RetailAccounts_ibfk_4
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts[]
+     */
+    protected $_RetailAccounts;
+
+    /**
      * Dependent relation Users_ibfk_9
      * Type: One-to-Many relationship
      *
@@ -329,6 +352,7 @@ class DDIs extends ModelAbstract
         'huntGroupId'=>'huntGroupId',
         'faxId'=>'faxId',
         'conferenceRoomId'=>'conferenceRoomId',
+        'retailAccountId'=>'retailAccountId',
         'peeringContractId'=>'peeringContractId',
         'countryId'=>'countryId',
         'billInboundCalls'=>'billInboundCalls',
@@ -344,7 +368,7 @@ class DDIs extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'recordCalls'=> array('enum:none|all|inbound|outbound'),
-            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue'),
+            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -405,6 +429,10 @@ class DDIs extends ModelAbstract
                     'property' => 'Queue',
                     'table_name' => 'Queues',
                 ),
+            'DDIsIbfk14'=> array(
+                    'property' => 'RetailAccount',
+                    'table_name' => 'RetailAccounts',
+                ),
         ));
 
         $this->setDependentList(array(
@@ -419,6 +447,10 @@ class DDIs extends ModelAbstract
             'FriendsIbfk4' => array(
                     'property' => 'Friends',
                     'table_name' => 'Friends',
+                ),
+            'RetailAccountsIbfk4' => array(
+                    'property' => 'RetailAccounts',
+                    'table_name' => 'RetailAccounts',
                 ),
             'UsersIbfk9' => array(
                     'property' => 'Users',
@@ -991,6 +1023,40 @@ class DDIs extends ModelAbstract
     public function getConferenceRoomId()
     {
         return $this->_conferenceRoomId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setRetailAccountId($data)
+    {
+
+        if ($this->_retailAccountId != $data) {
+            $this->_logChange('retailAccountId', $this->_retailAccountId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_retailAccountId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_retailAccountId = (int) $data;
+
+        } else {
+            $this->_retailAccountId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column retailAccountId
+     *
+     * @return int
+     */
+    public function getRetailAccountId()
+    {
+        return $this->_retailAccountId;
     }
 
     /**
@@ -1861,6 +1927,57 @@ class DDIs extends ModelAbstract
     }
 
     /**
+     * Sets parent relation RetailAccount
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setRetailAccount(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccount = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRetailAccountId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk14');
+        return $this;
+    }
+
+    /**
+     * Gets parent RetailAccount
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccount($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk14';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccount = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RetailAccount;
+    }
+
+    /**
      * Sets dependent relations Companies_ibfk_13
      *
      * @param array $data An array of \IvozProvider\Model\Raw\Companies
@@ -2128,6 +2245,96 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Friends;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_4
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RetailAccounts
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setRetailAccounts(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RetailAccounts === null) {
+
+                $this->getRetailAccounts();
+            }
+
+            $oldRelations = $this->_RetailAccounts;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RetailAccounts = array();
+
+        foreach ($data as $object) {
+            $this->addRetailAccounts($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_4
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function addRetailAccounts(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccounts[] = $data;
+        $this->_setLoaded('RetailAccountsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets dependent RetailAccounts_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccounts($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RetailAccountsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccounts = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RetailAccounts;
     }
 
     /**

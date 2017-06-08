@@ -3,6 +3,7 @@
 #include CompaniesList.yaml
 #include DDIsList.yaml
 #include FriendsList.yaml
+#include RetailAccountsList.yaml
 #include TimezonesList.yaml
 #include TransformationRulesetGroupsTrunksList.yaml
 #include UsersList.yaml
@@ -28,6 +29,7 @@ production:
             companiesList_screen: true
             dDIsList_screen: true
             friendsList_screen: true
+            retailAccountsList_screen: true
             timezonesList_screen: true
             transformationRulesetGroupsTrunksList_screen: true
             usersList_screen: true
@@ -98,6 +100,19 @@ production:
       <<: *friendsEdit_screenLink
       filterField: countryId
 
+    #retailAccounts: 
+    retailAccountsList_screen: 
+      <<: *retailAccountsList_screenLink
+      filterField: countryId
+      parentOptionCustomizer: 
+        - recordCount
+    retailAccountsNew_screen: 
+      <<: *retailAccountsNew_screenLink
+      filterField: countryId
+    retailAccountsEdit_screen: 
+      <<: *retailAccountsEdit_screenLink
+      filterField: countryId
+
     #timezones: 
     timezonesList_screen: 
       <<: *timezonesList_screenLink
@@ -154,6 +169,8 @@ production:
     <<: *dDIs_dialogsLink
   # friends dialogs: 
     <<: *friends_dialogsLink
+  # retailAccounts dialogs: 
+    <<: *retailAccounts_dialogsLink
   # timezones dialogs: 
     <<: *timezones_dialogsLink
   # transformationRulesetGroupsTrunks dialogs: 

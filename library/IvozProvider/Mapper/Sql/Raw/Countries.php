@@ -496,6 +496,20 @@ class Countries extends MapperAbstract
                     }
                 }
 
+                if ($model->getRetailAccounts(null, null, true) !== null) {
+                    $retailAccounts = $model->getRetailAccounts();
+
+                    if (!is_array($retailAccounts)) {
+
+                        $retailAccounts = array($retailAccounts);
+                    }
+
+                    foreach ($retailAccounts as $value) {
+                        $value->setCountryId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getTimezones(null, null, true) !== null) {
                     $timezones = $model->getTimezones();
 

@@ -12,8 +12,8 @@ production:
       type: text
       required: true
       maxLength: 25
-    domain_trunks: 
-      title: _('Domaintrunk')
+    domain_users: 
+      title: _('Domainuser')
       type: text
       maxLength: 255
     defaultTimezoneId: 

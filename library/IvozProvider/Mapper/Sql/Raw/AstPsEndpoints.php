@@ -53,6 +53,7 @@ class AstPsEndpoints extends MapperAbstract
                 'from_domain' => $model->getFromDomain(),
                 'terminalId' => $model->getTerminalId(),
                 'friendId' => $model->getFriendId(),
+                'retailAccountId' => $model->getRetailAccountId(),
                 'aors' => $model->getAors(),
                 'callerid' => $model->getCallerid(),
                 'context' => $model->getContext(),
@@ -576,6 +577,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setFromDomain($data['from_domain'])
                   ->setTerminalId($data['terminalId'])
                   ->setFriendId($data['friendId'])
+                  ->setRetailAccountId($data['retailAccountId'])
                   ->setAors($data['aors'])
                   ->setCallerid($data['callerid'])
                   ->setContext($data['context'])
@@ -597,6 +599,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setFromDomain($data->{'from_domain'})
                   ->setTerminalId($data->{'terminalId'})
                   ->setFriendId($data->{'friendId'})
+                  ->setRetailAccountId($data->{'retailAccountId'})
                   ->setAors($data->{'aors'})
                   ->setCallerid($data->{'callerid'})
                   ->setContext($data->{'context'})
@@ -619,6 +622,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setFromDomain($data->getFromDomain())
                   ->setTerminalId($data->getTerminalId())
                   ->setFriendId($data->getFriendId())
+                  ->setRetailAccountId($data->getRetailAccountId())
                   ->setAors($data->getAors())
                   ->setCallerid($data->getCallerid())
                   ->setContext($data->getContext())

@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\Languages
+ * Data Mapper implementation for IvozProvider\Model\RetailAccounts
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class Languages extends MapperAbstract
+class RetailAccounts extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\Languages';
+    protected $_modelName = 'IvozProvider\\Model\\RetailAccounts';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class Languages extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\Languages $model
+     * @param IvozProvider\Model\Raw\RetailAccounts $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\Languages) {
+        if (!$model instanceof \IvozProvider\Model\Raw\RetailAccounts) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\Languages object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\RetailAccounts object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\Languages object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\RetailAccounts object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,9 +49,27 @@ class Languages extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'iden' => $model->getIden(),
-                'name_en' => $model->getNameEn(),
-                'name_es' => $model->getNameEs(),
+                'brandId' => $model->getBrandId(),
+                'companyId' => $model->getCompanyId(),
+                'name' => $model->getName(),
+                'domain' => $model->getDomain(),
+                'description' => $model->getDescription(),
+                'transport' => $model->getTransport(),
+                'ip' => $model->getIp(),
+                'port' => $model->getPort(),
+                'auth_needed' => $model->getAuthNeeded(),
+                'password' => $model->getPassword(),
+                'countryId' => $model->getCountryId(),
+                'areaCode' => $model->getAreaCode(),
+                'outgoingDDIId' => $model->getOutgoingDDIId(),
+                'disallow' => $model->getDisallow(),
+                'allow' => $model->getAllow(),
+                'direct_media_method' => $model->getDirectMediaMethod(),
+                'callerid_update_header' => $model->getCalleridUpdateHeader(),
+                'update_callerid' => $model->getUpdateCallerid(),
+                'from_domain' => $model->getFromDomain(),
+                'directConnectivity' => $model->getDirectConnectivity(),
+                'languageId' => $model->getLanguageId(),
             );
         } else {
             $result = array();
@@ -90,12 +108,12 @@ class Languages extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\Languages
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\Languages');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts');
         }
 
         return $this->_dbTable;
@@ -104,17 +122,17 @@ class Languages extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\Languages $model The model to delete
+     * @param IvozProvider\Model\Raw\RetailAccounts $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\Languages) {
+        if (!$model instanceof \IvozProvider\Model\Raw\RetailAccounts) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\Languages object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\RetailAccounts object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\Languages object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\RetailAccounts object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -164,7 +182,7 @@ class Languages extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Languages', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -212,7 +230,7 @@ class Languages extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\Languages', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -294,7 +312,7 @@ class Languages extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\Languages $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\RetailAccounts $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -302,17 +320,17 @@ class Languages extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\Languages $model
+     * @param \IvozProvider\Model\Raw\RetailAccounts $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\Languages $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\RetailAccounts $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\Languages $model,
+    protected function _save(\IvozProvider\Model\Raw\RetailAccounts $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -448,34 +466,6 @@ class Languages extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getBrands(null, null, true) !== null) {
-                    $brands = $model->getBrands();
-
-                    if (!is_array($brands)) {
-
-                        $brands = array($brands);
-                    }
-
-                    foreach ($brands as $value) {
-                        $value->setLanguageId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getCompanies(null, null, true) !== null) {
-                    $companies = $model->getCompanies();
-
-                    if (!is_array($companies)) {
-
-                        $companies = array($companies);
-                    }
-
-                    foreach ($companies as $value) {
-                        $value->setLanguageId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 
@@ -485,49 +475,21 @@ class Languages extends MapperAbstract
                     }
 
                     foreach ($dDIs as $value) {
-                        $value->setLanguageId($primaryKey)
+                        $value->setRetailAccountId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
 
-                if ($model->getFriends(null, null, true) !== null) {
-                    $friends = $model->getFriends();
+                if ($model->getAstPsEndpoints(null, null, true) !== null) {
+                    $astPsEndpoints = $model->getAstPsEndpoints();
 
-                    if (!is_array($friends)) {
+                    if (!is_array($astPsEndpoints)) {
 
-                        $friends = array($friends);
+                        $astPsEndpoints = array($astPsEndpoints);
                     }
 
-                    foreach ($friends as $value) {
-                        $value->setLanguageId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getRetailAccounts(null, null, true) !== null) {
-                    $retailAccounts = $model->getRetailAccounts();
-
-                    if (!is_array($retailAccounts)) {
-
-                        $retailAccounts = array($retailAccounts);
-                    }
-
-                    foreach ($retailAccounts as $value) {
-                        $value->setLanguageId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getUsers(null, null, true) !== null) {
-                    $users = $model->getUsers();
-
-                    if (!is_array($users)) {
-
-                        $users = array($users);
-                    }
-
-                    foreach ($users as $value) {
-                        $value->setLanguageId($primaryKey)
+                    foreach ($astPsEndpoints as $value) {
+                        $value->setRetailAccountId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -620,13 +582,13 @@ class Languages extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\Languages|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\Languages The model with the data provided
+     * @param IvozProvider\Model\Raw\RetailAccounts|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\RetailAccounts The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\Languages();
+            $entry = new \IvozProvider\Model\RetailAccounts();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -634,20 +596,74 @@ class Languages extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setIden($data['iden'])
-                  ->setNameEn($data['name_en'])
-                  ->setNameEs($data['name_es']);
+                  ->setBrandId($data['brandId'])
+                  ->setCompanyId($data['companyId'])
+                  ->setName($data['name'])
+                  ->setDomain($data['domain'])
+                  ->setDescription($data['description'])
+                  ->setTransport($data['transport'])
+                  ->setIp($data['ip'])
+                  ->setPort($data['port'])
+                  ->setAuthNeeded($data['auth_needed'])
+                  ->setPassword($data['password'])
+                  ->setCountryId($data['countryId'])
+                  ->setAreaCode($data['areaCode'])
+                  ->setOutgoingDDIId($data['outgoingDDIId'])
+                  ->setDisallow($data['disallow'])
+                  ->setAllow($data['allow'])
+                  ->setDirectMediaMethod($data['direct_media_method'])
+                  ->setCalleridUpdateHeader($data['callerid_update_header'])
+                  ->setUpdateCallerid($data['update_callerid'])
+                  ->setFromDomain($data['from_domain'])
+                  ->setDirectConnectivity($data['directConnectivity'])
+                  ->setLanguageId($data['languageId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setIden($data->{'iden'})
-                  ->setNameEn($data->{'name_en'})
-                  ->setNameEs($data->{'name_es'});
+                  ->setBrandId($data->{'brandId'})
+                  ->setCompanyId($data->{'companyId'})
+                  ->setName($data->{'name'})
+                  ->setDomain($data->{'domain'})
+                  ->setDescription($data->{'description'})
+                  ->setTransport($data->{'transport'})
+                  ->setIp($data->{'ip'})
+                  ->setPort($data->{'port'})
+                  ->setAuthNeeded($data->{'auth_needed'})
+                  ->setPassword($data->{'password'})
+                  ->setCountryId($data->{'countryId'})
+                  ->setAreaCode($data->{'areaCode'})
+                  ->setOutgoingDDIId($data->{'outgoingDDIId'})
+                  ->setDisallow($data->{'disallow'})
+                  ->setAllow($data->{'allow'})
+                  ->setDirectMediaMethod($data->{'direct_media_method'})
+                  ->setCalleridUpdateHeader($data->{'callerid_update_header'})
+                  ->setUpdateCallerid($data->{'update_callerid'})
+                  ->setFromDomain($data->{'from_domain'})
+                  ->setDirectConnectivity($data->{'directConnectivity'})
+                  ->setLanguageId($data->{'languageId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\Languages) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\RetailAccounts) {
             $entry->setId($data->getId())
-                  ->setIden($data->getIden())
-                  ->setNameEn($data->getNameEn())
-                  ->setNameEs($data->getNameEs());
+                  ->setBrandId($data->getBrandId())
+                  ->setCompanyId($data->getCompanyId())
+                  ->setName($data->getName())
+                  ->setDomain($data->getDomain())
+                  ->setDescription($data->getDescription())
+                  ->setTransport($data->getTransport())
+                  ->setIp($data->getIp())
+                  ->setPort($data->getPort())
+                  ->setAuthNeeded($data->getAuthNeeded())
+                  ->setPassword($data->getPassword())
+                  ->setCountryId($data->getCountryId())
+                  ->setAreaCode($data->getAreaCode())
+                  ->setOutgoingDDIId($data->getOutgoingDDIId())
+                  ->setDisallow($data->getDisallow())
+                  ->setAllow($data->getAllow())
+                  ->setDirectMediaMethod($data->getDirectMediaMethod())
+                  ->setCalleridUpdateHeader($data->getCalleridUpdateHeader())
+                  ->setUpdateCallerid($data->getUpdateCallerid())
+                  ->setFromDomain($data->getFromDomain())
+                  ->setDirectConnectivity($data->getDirectConnectivity())
+                  ->setLanguageId($data->getLanguageId());
 
         }
 
@@ -664,11 +680,11 @@ class Languages extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'Languages');
+        $etag = $etags->findOneByField('table', 'RetailAccounts');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('Languages');
+            $etag->setTable('RetailAccounts');
         }
 
         $random = substr(

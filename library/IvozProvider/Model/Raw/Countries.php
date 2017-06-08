@@ -136,6 +136,14 @@ class Countries extends ModelAbstract
     protected $_Friends;
 
     /**
+     * Dependent relation RetailAccounts_ibfk_3
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts[]
+     */
+    protected $_RetailAccounts;
+
+    /**
      * Dependent relation Timezones_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -206,6 +214,10 @@ class Countries extends ModelAbstract
             'FriendsIbfk2' => array(
                     'property' => 'Friends',
                     'table_name' => 'Friends',
+                ),
+            'RetailAccountsIbfk3' => array(
+                    'property' => 'RetailAccounts',
+                    'table_name' => 'RetailAccounts',
                 ),
             'TimezonesIbfk2' => array(
                     'property' => 'Timezones',
@@ -953,6 +965,96 @@ class Countries extends ModelAbstract
         }
 
         return $this->_Friends;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_3
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RetailAccounts
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setRetailAccounts(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RetailAccounts === null) {
+
+                $this->getRetailAccounts();
+            }
+
+            $oldRelations = $this->_RetailAccounts;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RetailAccounts = array();
+
+        foreach ($data as $object) {
+            $this->addRetailAccounts($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_3
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function addRetailAccounts(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccounts[] = $data;
+        $this->_setLoaded('RetailAccountsIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets dependent RetailAccounts_ibfk_3
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccounts($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RetailAccountsIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccounts = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RetailAccounts;
     }
 
     /**

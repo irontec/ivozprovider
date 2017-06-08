@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for DDIs
+ * Table definition for RetailAccounts
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -19,14 +19,14 @@
  */
 
 namespace IvozProvider\Mapper\Sql\DbTable;
-class DDIs extends TableAbstract
+class RetailAccounts extends TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'DDIs';
+    protected $_name = 'RetailAccounts';
 
     /**
      * $_id - this is the primary key name
@@ -35,94 +35,46 @@ class DDIs extends TableAbstract
      */
     protected $_id = 'id';
 
-    protected $_rowClass = 'IvozProvider\\Model\\DDIs';
-    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\DDIs';
+    protected $_rowClass = 'IvozProvider\\Model\\RetailAccounts';
+    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\RetailAccounts';
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'DDIsIbfk1' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk2' => array(
-            'columns' => 'externalCallFilterId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk3' => array(
-            'columns' => 'userId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk4' => array(
-            'columns' => 'IVRCommonId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCommon',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk5' => array(
-            'columns' => 'IVRCustomId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk6' => array(
-            'columns' => 'huntGroupId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\HuntGroups',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk7' => array(
-            'columns' => 'faxId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk8' => array(
-            'columns' => 'peeringContractId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\PeeringContracts',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk9' => array(
-            'columns' => 'countryId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk10' => array(
+        'RetailAccountsIbfk1' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
             'refColumns' => 'id'
         ),
-        'DDIsIbfk11' => array(
-            'columns' => 'conferenceRoomId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConferenceRooms',
+        'RetailAccountsIbfk2' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         ),
-        'DDIsIbfk12' => array(
+        'RetailAccountsIbfk3' => array(
+            'columns' => 'countryId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Countries',
+            'refColumns' => 'id'
+        ),
+        'RetailAccountsIbfk4' => array(
+            'columns' => 'outgoingDDIId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
+            'refColumns' => 'id'
+        ),
+        'RetailAccountsIbfk5' => array(
             'columns' => 'languageId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Languages',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk13' => array(
-            'columns' => 'queueId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
-            'refColumns' => 'id'
-        ),
-        'DDIsIbfk14' => array(
-            'columns' => 'retailAccountId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
             'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints'
     );
     protected $_metadata = array (
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
+	    'TABLE_NAME' => 'RetailAccounts',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -139,7 +91,7 @@ class DDIs extends TableAbstract
 	  'brandId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
+	    'TABLE_NAME' => 'RetailAccounts',
 	    'COLUMN_NAME' => 'brandId',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
@@ -156,7 +108,7 @@ class DDIs extends TableAbstract
 	  'companyId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
+	    'TABLE_NAME' => 'RetailAccounts',
 	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'int',
@@ -170,16 +122,16 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'DDI' => 
+	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'DDI',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
-	    'LENGTH' => '25',
+	    'LENGTH' => '65',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -187,16 +139,16 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'DDIE164' => 
+	  'domain' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'DDIE164',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'domain',
 	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '25',
+	    'LENGTH' => '190',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -204,31 +156,31 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'externalCallFilterId' => 
+	  'description' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'externalCallFilterId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'description',
 	    'COLUMN_POSITION' => 6,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => '',
+	    'NULLABLE' => false,
+	    'LENGTH' => '500',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'recordCalls' => 
+	  'transport' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'recordCalls',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'transport',
 	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'varchar',
-	    'DEFAULT' => 'none',
+	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
 	    'LENGTH' => '25',
 	    'SCALE' => NULL,
@@ -238,11 +190,11 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'displayName' => 
+	  'ip' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'displayName',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'ip',
 	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
@@ -255,16 +207,33 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'routeType' => 
+	  'port' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'routeType',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'port',
 	    'COLUMN_POSITION' => 9,
-	    'DATA_TYPE' => 'varchar',
+	    'DATA_TYPE' => 'smallint',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '25',
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'auth_needed' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'auth_needed',
+	    'COLUMN_POSITION' => 10,
+	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
+	    'DEFAULT' => 'yes',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -272,45 +241,28 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'userId' => 
+	  'password' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'userId',
-	    'COLUMN_POSITION' => 10,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'IVRCommonId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'IVRCommonId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'password',
 	    'COLUMN_POSITION' => 11,
-	    'DATA_TYPE' => 'int',
+	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '64',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'IVRCustomId' => 
+	  'countryId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'IVRCustomId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'countryId',
 	    'COLUMN_POSITION' => 12,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
@@ -323,28 +275,28 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'huntGroupId' => 
+	  'areaCode' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'huntGroupId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'areaCode',
 	    'COLUMN_POSITION' => 13,
-	    'DATA_TYPE' => 'int',
+	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'LENGTH' => '10',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'faxId' => 
+	  'outgoingDDIId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'faxId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'outgoingDDIId',
 	    'COLUMN_POSITION' => 14,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
@@ -357,101 +309,118 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'conferenceRoomId' => 
+	  'disallow' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'conferenceRoomId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'disallow',
 	    'COLUMN_POSITION' => 15,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => 'all',
+	    'NULLABLE' => false,
+	    'LENGTH' => '200',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'retailAccountId' => 
+	  'allow' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'retailAccountId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'allow',
 	    'COLUMN_POSITION' => 16,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => 'alaw',
+	    'NULLABLE' => false,
+	    'LENGTH' => '200',
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'peeringContractId' => 
+	  'direct_media_method' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'peeringContractId',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'direct_media_method',
 	    'COLUMN_POSITION' => 17,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'countryId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'countryId',
-	    'COLUMN_POSITION' => 18,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'billInboundCalls' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'billInboundCalls',
-	    'COLUMN_POSITION' => 19,
-	    'DATA_TYPE' => 'tinyint',
-	    'DEFAULT' => '0',
+	    'DATA_TYPE' => 'enum(\'invite\',\'update\')',
+	    'DEFAULT' => 'update',
 	    'NULLABLE' => false,
 	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
+	    'UNSIGNED' => NULL,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'friendValue' => 
+	  'callerid_update_header' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'friendValue',
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'callerid_update_header',
+	    'COLUMN_POSITION' => 18,
+	    'DATA_TYPE' => 'enum(\'pai\',\'rpid\')',
+	    'DEFAULT' => 'pai',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'update_callerid' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'update_callerid',
+	    'COLUMN_POSITION' => 19,
+	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
+	    'DEFAULT' => 'yes',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'from_domain' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'from_domain',
 	    'COLUMN_POSITION' => 20,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '25',
+	    'LENGTH' => '190',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'directConnectivity' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'RetailAccounts',
+	    'COLUMN_NAME' => 'directConnectivity',
+	    'COLUMN_POSITION' => 21,
+	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
+	    'DEFAULT' => 'yes',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
@@ -462,25 +431,8 @@ class DDIs extends TableAbstract
 	  'languageId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
+	    'TABLE_NAME' => 'RetailAccounts',
 	    'COLUMN_NAME' => 'languageId',
-	    'COLUMN_POSITION' => 21,
-	    'DATA_TYPE' => 'int',
-	    'DEFAULT' => NULL,
-	    'NULLABLE' => true,
-	    'LENGTH' => NULL,
-	    'SCALE' => NULL,
-	    'PRECISION' => NULL,
-	    'UNSIGNED' => true,
-	    'PRIMARY' => false,
-	    'PRIMARY_POSITION' => NULL,
-	    'IDENTITY' => false,
-	  ),
-	  'queueId' => 
-	  array (
-	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'DDIs',
-	    'COLUMN_NAME' => 'queueId',
 	    'COLUMN_POSITION' => 22,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,

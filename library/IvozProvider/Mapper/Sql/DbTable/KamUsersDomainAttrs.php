@@ -42,8 +42,8 @@ class KamUsersDomainAttrs extends TableAbstract
     protected $_referenceMap = array(
         'KamUsersDomainAttrsIbfk1' => array(
             'columns' => 'did',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
-            'refColumns' => 'domain_users'
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Domains',
+            'refColumns' => 'domain'
         )
     );
     

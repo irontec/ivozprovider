@@ -35,7 +35,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'name': '', 
      *     'nif': '', 
-     *     'domain_trunks': '', 
+     *     'domain_users': '', 
      *     'defaultTimezoneId': '', 
      *     'logo': '', 
      *     'postalAddress': '', 
@@ -53,7 +53,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'name': '', 
      *     'nif': '', 
-     *     'domain_trunks': '', 
+     *     'domain_users': '', 
      *     'defaultTimezoneId': '', 
      *     'logo': '', 
      *     'postalAddress': '', 
@@ -87,7 +87,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'name',
                 'nif',
-                'domainTrunks',
+                'domainUsers',
                 'defaultTimezoneId',
                 //'logoUrl:@profile', Cambia @profile por el profile del fso.ini
                 'postalAddress',
@@ -177,7 +177,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'id': '', 
      *     'name': '', 
      *     'nif': '', 
-     *     'domain_trunks': '', 
+     *     'domain_users': '', 
      *     'defaultTimezoneId': '', 
      *     'logo': '', 
      *     'postalAddress': '', 
@@ -210,7 +210,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'id',
                 'name',
                 'nif',
-                'domainTrunks',
+                'domainUsers',
                 'defaultTimezoneId',
                 //'logoUrl:@profile', Cambia @profile por el profile del fso.ini
                 'postalAddress',
@@ -266,7 +266,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/brands/")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="domain_trunks", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="logo", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -322,7 +322,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="domain_trunks", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="logo", nullable=true, type="int", sample="", description="[FSO]")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -445,7 +445,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'domain_trunks' => array(
+                'domain_users' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
@@ -536,7 +536,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
-                'domain_trunks' => array(
+                'domain_users' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
