@@ -37,6 +37,9 @@ class ServiceAction extends RouterAction
             case 'GroupPickUp':
                 $this->_processGroupPickUp();
                 break;
+            case 'RecordLocution':
+                $this->_processRecordLocution();
+                break;
         }
     }
 
@@ -145,6 +148,57 @@ class ServiceAction extends RouterAction
             $this->agi->hangup(3);
         }
 
+    }
+
+    protected function _processRecordLocution()
+    {
+        // Local variables to improve readability
+        $service = $this->_service;
+        $caller = $this->_caller;
+
+        /**
+         * Extract locutionId from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      Locution ID
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $locutionId = substr($dialedExten, $serviceCodeLen + 1);
+
+        // Get Locution object
+        $locutionMapper = new \IvozProvider\Mapper\Sql\Locutions;
+        $locution = $locutionMapper->find($locutionId);
+
+        // Check if call can record this locution
+        if ($locution->getCompanyId() !== $caller->getCompanyId()) {
+            return;
+        }
+
+        // Check if the locution already has sound
+        if ($locution->getOriginalFileFileSize()) {
+            $this->agi->playback("ivozprovider/record-existing");
+        } else {
+            $this->agi->playback("ivozprovider/record-new");
+        }
+
+        // Recording instructions
+        $this->agi->playback("ivozprovider/record-intro");
+        $originalFilename = $locution->getId() . ".wav";
+        $originalFile = "/tmp/locution_record_" . $originalFilename;
+
+        // Record file playing a beep before starting
+        $this->agi->record($originalFile, ",,ky");
+
+        // Set upload the original file of the locution
+        $locution->putOriginalFile($originalFile, $originalFilename);
+        $locution->save();
+
+        // Change file permisions on original file
+        chmod($locution->fetchOriginalFile()->getFilePath(), 0777);
     }
 
 }
