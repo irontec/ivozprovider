@@ -69,7 +69,7 @@ class User extends \Klear_Model_UserAdvanced
         $cMapper = new \IvozProvider\Mapper\Sql\Companies();
         $company = $cMapper->find($companyId);
         if (!$company) {
-            throw new Exception("Invalid company");
+            throw new \Exception("Invalid company");
         }
         $this->setCompany($company);
     }
