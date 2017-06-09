@@ -66,6 +66,12 @@ production:
       trim: both
       required: true
       default: true
+    recordingExtension:
+      title: _('Recording extension')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RecordLocution
+        method: getRecordingExtension
 staging: 
   _extends: production
 testing: 
