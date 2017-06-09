@@ -252,9 +252,9 @@ class Agi_Wrapper
         return $this->_fastagi->exec('VoiceMail', "$mailbox,$opts");
     }
 
-    public function checkVoicemail($mailbox)
+    public function checkVoicemail($mailbox, $options = "")
     {
-        return $this->_fastagi->exec('VoiceMailMain', "$mailbox,s");
+        return $this->_fastagi->exec('VoiceMailMain', $mailbox . ',' . $options);
     }
 
     public function setCallType($value)

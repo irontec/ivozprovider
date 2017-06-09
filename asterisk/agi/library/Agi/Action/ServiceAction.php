@@ -44,9 +44,42 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $caller = $this->_caller;
+        $service = $this->_service;
+        $company = $caller->getCompany();
 
-        // Checkvoicemail for this user
-        $this->agi->checkVoicemail($caller->getVoiceMail());
+        /**
+         * Extract optional Voicemail Extension from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      VoicemailExtension (optional)
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $vmExtension = substr($dialedExten, $serviceCodeLen + 1);
+
+        if (!empty($vmExtension)) {
+            $extension = $company->getExtension($vmExtension);
+
+            if (empty($extension)) {
+                $this->agi->error("Extension %s not found for company %s.", $vmExtension, $company->getId());
+                return;
+            }
+
+            if (empty($extension->getUser())) {
+                $this->agi->error("Extension %s does not route to an user.", $vmExtension);
+                return;
+            }
+
+            // Checkvoicemail for exten user
+            $this->agi->verbose("Checking user %s voicemail", $extension->getUser()->getName());
+            $this->agi->checkVoicemail($extension->getUser()->getVoiceMail());
+        } else {
+            // Checkvoicemail for caller user (without requesting password)
+            $this->agi->checkVoicemail($caller->getVoiceMail(), "s");
+        }
     }
 
     protected function _processDirectPickUp()
