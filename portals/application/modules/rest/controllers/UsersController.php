@@ -57,7 +57,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'tokenKey': '', 
      *     'countryId': '', 
      *     'languageId': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'gsQRCode': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -84,7 +85,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'tokenKey': '', 
      *     'countryId': '', 
      *     'languageId': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'gsQRCode': ''
      * }]")
      */
     public function indexAction()
@@ -128,6 +130,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'countryId',
                 'languageId',
                 'areaCode',
+                'gsQRCode',
             );
         }
 
@@ -226,7 +229,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'tokenKey': '', 
      *     'countryId': '', 
      *     'languageId': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'gsQRCode': ''
      * }")
      */
     public function getAction()
@@ -269,6 +273,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'countryId',
                 'languageId',
                 'areaCode',
+                'gsQRCode',
             );
         }
 
@@ -334,6 +339,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="gsQRCode", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/users/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -394,6 +400,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="gsQRCode", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -613,6 +620,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'gsQRCode' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -747,6 +759,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'areaCode' => array(
                     'type' => "varchar",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'gsQRCode' => array(
+                    'type' => "tinyint",
+                    'required' => true,
                     'comment' => '',
                 ),
             )

@@ -555,6 +555,23 @@ class Users extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'gsQRCode' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Users',
+	    'COLUMN_NAME' => 'gsQRCode',
+	    'COLUMN_POSITION' => 26,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 
