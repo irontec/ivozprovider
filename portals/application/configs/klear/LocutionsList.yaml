@@ -27,6 +27,7 @@ production:
           companyId: true
           name: true
           originalFile: true
+          recordingExtension: true
         blacklist:
           encodedFile: true
       options: 
@@ -51,6 +52,7 @@ production:
         blacklist:
           encodedFile: true
           status: true
+          recordingExtension: true
       fixedPositions:
         group0:
           colsPerRow: 2
@@ -80,6 +82,7 @@ production:
           fields:
             companyId: 1
             name: 1
+            recordingExtension: 1
         group1:
           colsPerRow: 1
           fields:

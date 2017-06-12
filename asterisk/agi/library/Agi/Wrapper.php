@@ -172,6 +172,11 @@ class Agi_Wrapper
         return $this->_fastagi->get_variable("PRESSED");
     }
 
+    public function record($file, $options = "")
+    {
+        $this->_fastagi->exec("Record", $file . "," . $options);
+    }
+
     public function getDeviceState($interface, $prefix = "PJSIP/")
     {
         return $this->getVariable("DEVICE_STATE($prefix$interface)");
