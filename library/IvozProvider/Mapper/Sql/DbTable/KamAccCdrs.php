@@ -55,14 +55,14 @@ class KamAccCdrs extends TableAbstract
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Invoices',
             'refColumns' => 'id'
         ),
+        'KamAccCdrsIbfk4' => array(
+            'columns' => 'companyId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
         'KamAccCdrsIbfk5' => array(
             'columns' => 'brandId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Brands',
-            'refColumns' => 'id'
-        ),
-        'KamAccCdrsIbfk6' => array(
-            'columns' => 'companyId',
-            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
             'refColumns' => 'id'
         )
     );

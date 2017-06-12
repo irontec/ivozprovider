@@ -221,14 +221,14 @@ class ParsedCDRs extends ModelAbstract
 
 
     /**
-     * Parent relation parsedCDRs_ibfk_1
+     * Parent relation ParsedCDRs_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
 
     /**
-     * Parent relation parsedCDRs_ibfk_2
+     * Parent relation ParsedCDRs_ibfk_2
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
