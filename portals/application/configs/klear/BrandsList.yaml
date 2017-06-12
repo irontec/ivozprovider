@@ -20,7 +20,6 @@ production:
           name: true
           nif: true
           logo: true
-          domain_users: true
           defaultTimezoneId: true
           languageId: true
           postalAddress: true
@@ -69,10 +68,8 @@ production:
       shortcutOption: N
       fields:
         blacklist:
-          domain_trunks: true
           nif: true
           logo: true
-          domain_trunks: true
           defaultTimezoneId: true
           languageId: true
           postalAddress: true
@@ -101,7 +98,6 @@ production:
           label: _("SIP domains")
           colsPerRow: 12
           fields:
-            domain_users: 7
             domain_trunks: 7
         group2:
           label: _("Locales")
@@ -139,8 +135,6 @@ production:
       label: false
       title: _("Edit %s %2s", ngettext('Brand', 'Brands', 1), "[format| (%item%)]")
       fields:
-        blacklist:
-          domain_trunks: true
         order:
           <<: *brandsOrder_Link
       fixedPositions:

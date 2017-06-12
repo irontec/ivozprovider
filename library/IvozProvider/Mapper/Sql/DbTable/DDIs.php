@@ -104,12 +104,18 @@ class DDIs extends TableAbstract
             'columns' => 'queueId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
             'refColumns' => 'id'
+        ),
+        'DDIsIbfk14' => array(
+            'columns' => 'retailAccountId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
@@ -368,12 +374,29 @@ class DDIs extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'retailAccountId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'retailAccountId',
+	    'COLUMN_POSITION' => 16,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	  'peeringContractId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'peeringContractId',
-	    'COLUMN_POSITION' => 16,
+	    'COLUMN_POSITION' => 17,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -390,7 +413,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'countryId',
-	    'COLUMN_POSITION' => 17,
+	    'COLUMN_POSITION' => 18,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -407,7 +430,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'billInboundCalls',
-	    'COLUMN_POSITION' => 18,
+	    'COLUMN_POSITION' => 19,
 	    'DATA_TYPE' => 'tinyint',
 	    'DEFAULT' => '0',
 	    'NULLABLE' => false,
@@ -424,7 +447,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'friendValue',
-	    'COLUMN_POSITION' => 19,
+	    'COLUMN_POSITION' => 20,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -441,7 +464,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'languageId',
-	    'COLUMN_POSITION' => 20,
+	    'COLUMN_POSITION' => 21,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -458,7 +481,7 @@ class DDIs extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'queueId',
-	    'COLUMN_POSITION' => 21,
+	    'COLUMN_POSITION' => 22,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

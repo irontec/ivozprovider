@@ -40,47 +40,74 @@ production:
             title: _("Unassigned")
             visualFilter:
               show: [ ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "conferenceRoomId", "friendValue", "queueId"
+              ]
           'user':
             title: _('user')
             visualFilter:
               show: [ "userId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId",
+                "conferenceRoomId", "friendValue", "queueId"
+              ]
           'IVRCommon':
             title: _('IVRCommon')
             visualFilter:
               show: [ "IVRCommonId" ]
-              hide: [ "numberValue", "userId", "IVRCustomId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "numberValue", "userId", "IVRCustomId", "huntGroupId",
+                "conferenceRoomId", "friendValue", "queueId"
+              ]
           'IVRCustom':
             title: _('IVRCustom')
             visualFilter:
               show: [ "IVRCustomId" ]
-              hide: [ "numberValue", "IVRCommonId", "userId", "huntGroupId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "userId", "huntGroupId",
+                "conferenceRoomId", "friendValue", "queueId"
+              ]
           'huntGroup':
             title: _('huntGroup')
             visualFilter:
               show: [ "huntGroupId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "conferenceRoomId", "friendValue", "queueId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "conferenceRoomId", "friendValue", "queueId"
+              ]
           'conferenceRoom':
             title: _('Conference Room')
             visualFilter:
               show: [ "conferenceRoomId" ]
-              hide: [ "numberValue", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue", "queueId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "friendValue", "queueId"
+              ]
           'number':
             title: _('number')
             visualFilter:
               show: [ "numberValue" ]
-              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "friendValue", "queueId" ]
+              hide: [
+                "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "friendValue", "queueId"
+              ]
           'friend':
             title: _('Friend')
             visualFilter:
               show: [ "friendValue" ]
-              hide: [ "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "numberValue", "queueId" ]
+              hide: [
+                "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "numberValue", "queueId"
+              ]
           'queue':
             title: _('Queue')
             visualFilter:
               show: [ "queueId" ]
-              hide: [ "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId", "huntGroupId", "numberValue" ]
+              hide: [
+                "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId",
+                "userId", "huntGroupId", "numberValue"
+              ]
     numberValue:
       title: _('Number value')
       type: text

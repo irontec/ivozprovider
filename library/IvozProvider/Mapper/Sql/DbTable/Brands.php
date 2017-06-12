@@ -72,6 +72,7 @@ class Brands extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlans',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelCompanies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PricingPlansRelTargetPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatternGroups',
         'IvozProvider\\Mapper\\Sql\\DbTable\\RoutingPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\TargetPatterns',
@@ -131,11 +132,11 @@ class Brands extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'domain_trunks' => 
+	  'domain_users' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Brands',
-	    'COLUMN_NAME' => 'domain_trunks',
+	    'COLUMN_NAME' => 'domain_users',
 	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,

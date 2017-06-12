@@ -32,6 +32,7 @@ class Features extends Raw\Features
     const BILLING           = 6;
     const INVOICES          = 7;
     const PROGRESS          = 8;
+    const RETAIL            = 9;
 
     /**
 

@@ -1,4 +1,7 @@
 <?php
+
+use \IvozProvider\Model\Features as Features;
+
 class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -14,18 +17,19 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
         $mapper = new \IvozProvider\Mapper\Sql\FeaturesRelBrands();
         $rels = $mapper->fetchList("brandId='" . $currentBrandId . "'");
 
-        $featureIds = array();
+        $featureIds = [];
         foreach ($rels as $rel) {
             $featureId = $rel->getFeatureId();
-            if ($featureId == 6) continue; # Exclude 'billing'
-            if ($featureId == 7) continue; # Exclude 'invoices'
-            array_push($featureIds, $featureId);
+            if ($featureId == Features::BILLING) continue;
+            if ($featureId == Features::INVOICES) continue;
+            if ($featureId == Features::RETAIL) continue;
+            $featureIds[] = $featureId;
         }
 
         if (count($featureIds)) {
             $this->_condition[] = "`id` IN (" . implode(',', $featureIds) .")";
         } else {
-            $this->_condition[] = "`id`=NULL";
+            $this->_condition[] = "`id` = NULL";
         }
 
         return true;

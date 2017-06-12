@@ -11,9 +11,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
-              - name
-            template: '%name%'
-          order: name
+              - type
+            template: '%type%'
+          order: type
       default: true
     username: 
       title: _('Username')

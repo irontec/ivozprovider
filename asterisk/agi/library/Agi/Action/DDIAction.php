@@ -93,6 +93,7 @@ class DDIAction extends RouterAction
         $this->_routeConference = $ddi->getConferenceRoom();
         $this->_routeFriend     = $ddi->getFriendValue();
         $this->_routeQueue      = $ddi->getQueue();
+        $this->_routeRetail     = $ddi->getRetailAccount();
         $this->route();
     }
 }

@@ -1,0 +1,322 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include CompanyAdminsList.yaml
+#include PricingPlansRelCompaniesList.yaml
+#include OutgoingRoutingList.yaml
+#include KamUsersAddressList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: retailClientsList_screen
+  screens: &retailClients_screensLink
+    retailClientsList_screen: &retailClientsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *RetailClients
+      class: ui-silk-building
+      title: _("List of %s %2s", ngettext('Retail Client', 'Retail Clients', 0), "[format| (%parent%)]")
+      forcedValues:
+        type: 'retail'
+        <<: *forcedBrand
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            retailClientsEdit_screen: true
+            kamUsersAddressList_screen: true
+            companyAdminsList_screen: true
+            pricingPlansRelCompaniesList_screen: ${auth.brand.billing.enabled}
+            outgoingRoutingList_screen: true
+          dialogs:
+            retailClientsDel_dialog: false
+            emulateCompany_dialog: true
+          default: retailClientsEdit_screen
+        blacklist:
+          domain_users: true
+          transformationRulesetGroupsId: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          country: true
+          areaCode: true
+          outgoingDDIId: true
+          registryData: true
+          externalMaxCalls: true
+          defaultTimezoneId: true
+          applicationServerId: true
+          mediaRelaySetsId: true
+          ipFilter: true
+          languageId: true
+          outbound_prefix: true
+          onDemandRecord: true
+          onDemandRecordCode: true
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
+          externallyExtraOpts: true
+          type: true
+          recordingsDiskUsage: ${auth.brand.recordings.disabled}
+        order:
+          name: true
+          nif: true
+          outbound_prefix: true
+          countryId: true
+          domain_users: true
+          recordingsDiskUsage: true
+      options:
+        title: _("Options")
+        screens:
+          retailClientsNew_screen: true
+        dialogs:
+          retailClientsDel_dialog: true
+          importCompanies_dialog: true
+      csv:
+        active: false
+        filename: "RetailClients"
+        headers: true
+        enclosure: '"'
+        separator: ";"
+        nameklear: false
+        rawValues: true
+        ignoreBlackList: true
+        newLine: "\r\n"
+        encoding: "utf-8"
+        executionSeconds: ""
+
+    retailClientsNew_screen: &retailClientsNew_screenLink
+      <<: *RetailClients
+      controller: new
+      fields:
+        blacklist:
+          domain_users: true
+          musicOnHoldId: true
+          transformationRulesetGroupsId: true
+          nif: true
+          type: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          country: true
+          onDemandRecord: true
+          onDemandRecordCode: true
+          ipFilter: true
+          mediaRelaySetsId: true
+          outbound_prefix: true
+          applicationServerId: true
+          externalMaxCalls: true
+          countryId: true
+          areaCode: true
+          outgoingDDIId: true
+          languageId: true
+          defaultTimezoneId: true
+          externallyExtraOpts: true
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
+          recordingsDiskUsage: true
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Retail Client', 'Retail Clients', 1))
+      shortcutOption: N
+      forcedValues:
+        type: "retail"
+        <<: *forcedBrand
+    retailClientsEdit_screen: &retailClientsEdit_screenLink
+      <<: *RetailClients
+      controller: edit
+      fields:
+        blacklist:
+          type: true
+          domain_users: true
+          applicationServerId: ${auth.isNotMainOperator}
+          mediaRelaySetsId: ${auth.isNotMainOperator}
+          recordingsLimitMB: ${auth.brand.recordings.disabled}
+          recordingsLimitEmail: ${auth.brand.recordings.disabled}
+          recordingsDiskUsage: ${auth.brand.recordings.disabled}
+          onDemandRecord: ${auth.brand.recordings.disabled}
+          onDemandRecordCode: ${auth.brand.recordings.disabled}
+          nif: ${auth.brand.invoices.disabled}
+          postalAddress: ${auth.brand.invoices.disabled}
+          postalCode: ${auth.brand.invoices.disabled}
+          town: ${auth.brand.invoices.disabled}
+          province: ${auth.brand.invoices.disabled}
+          country: ${auth.brand.invoices.disabled}
+        whitelist:
+          id: ${auth.isMainOperator}
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions: &retailClientsFixedPositions_Link
+        group0:
+          colsPerRow: 6
+          fields:
+            name: 4
+            nif: 2
+            defaultTimezoneId: 3
+            languageId: 3
+        group1:
+          colsPerRow: 12
+          label: _("Server data")
+          fields:
+            outbound_prefix: 3
+            outgoingDDIId: 5
+            externalMaxCalls: 4
+            countryId: 6
+            areaCode: 6
+            mediaRelaySetsId: 4
+            applicationServerId: 4
+            ipFilter: 4
+        group3:
+          colsPerRow: 2
+          label: _("Invoice data")
+          fields:
+            invoiceLanguageId: 1
+            postalAddress: 2
+            postalCode: 1
+            town: 1
+            province: 1
+            country: 1
+            registryData: 2
+        group4:
+          colsPerRow: 12
+          label: _("Recordings")
+          fields:
+            recordingsLimitMB: 6
+            recordingsDiskUsage: 6
+            recordingsLimitEmail: 6
+            __empty1: 6
+            onDemandRecord: 6
+            onDemandRecordCode: 6
+        group5:
+          colsPerRow:
+          label: _("Externally rated options")
+          fields:
+            externallyExtraOpts: 1
+    #companyAdmins:
+    companyAdminsList_screen:
+      <<: *companyAdminsList_screenLink
+      filterField: companyId
+      parentOptionCustomizer:
+        - recordCount
+    companyAdminsNew_screen:
+      <<: *companyAdminsNew_screenLink
+      filterField: companyId
+    companyAdminsEdit_screen:
+      <<: *companyAdminsEdit_screenLink
+      filterField: companyId
+
+    #pricingPlansRelCompanies:
+    <<: *pricingPlansRelCompanies_screensLink
+    pricingPlansRelCompaniesList_screen:
+      <<: *pricingPlansRelCompaniesList_screenLink
+      filterField: companyId
+      parentOptionCustomizer:
+        - recordCount
+    pricingPlansRelCompaniesNew_screen:
+      <<: *pricingPlansRelCompaniesNew_screenLink
+      filterField: companyId
+    pricingPlansRelCompaniesEdit_screen:
+      <<: *pricingPlansRelCompaniesEdit_screenLink
+      filterField: companyId
+
+    # outgoingRouting
+    <<: *outgoingRouting_screensLink
+    outgoingRoutingList_screen:
+      <<: *outgoingRoutingList_screenLink
+      filterField: companyId
+      parentOptionCustomizer:
+        - recordCount
+    outgoingRoutingNew_screen:
+      <<: *outgoingRoutingNew_screenLink
+      filterField: companyId
+    outgoingRoutingEdit_screen:
+      <<: *outgoingRoutingEdit_screenLink
+      filterField: companyId
+
+    #kamUsersAddress:
+    kamUsersAddressList_screen:
+      <<: *kamUsersAddressList_screenLink
+      filterField: companyId
+      parentOptionCustomizer:
+        - recordCount
+    kamUsersAddressNew_screen:
+      <<: *kamUsersAddressNew_screenLink
+      filterField: companyId
+    kamUsersAddressEdit_screen:
+      <<: *kamUsersAddressEdit_screenLink
+      filterField: companyId
+
+  dialogs: &retailClients_dialogsLink
+    retailClientsDel_dialog: &retailClientsDel_dialogLink
+      <<: *RetailClients
+      controller: delete
+      secureDelete: true
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Retail Client', 'Retail Clients', 1))
+      description: _("Do you want to delete this %s?", ngettext('Retail Client', 'Retail Clients', 1))
+      message: _("%s successfully deleted.", ngettext('Retail Client', 'Retail Clients', 1))
+      multiItem: 1
+      labelOnList: 1
+
+    emulateCompany_dialog:
+      title: _("Emulate Retail Client %s", "[format| (%item%)]")
+      module: default
+      controller: klear-custom-extra-auth
+      action: emulate
+      class: ui-silk-basket-add
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
+    importCompanies_dialog:
+      <<: *RetailClients
+      module: default
+      title: _("Import %s", ngettext('Retail Client', 'Retail Clients', 0))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importCompaniesFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        brandId: ${auth.brandId}
+
+    # pricingPlansRelCompanies dialogs:
+    <<: *pricingPlansRelCompanies_dialogsLink
+    # companyAdmins dialogs:
+    <<: *companyAdmins_dialogsLink
+    # outgoingRouting dialogs:
+    <<: *outgoingRouting_dialogsLink
+    # kamUsersAddress dialogs:
+    <<: *kamUsersAddress_dialogsLink
+
+  commands:
+    importCompaniesFreeUpload_command:
+      <<: *RetailClients
+      controller: File
+      action: free-upload
+    <<: *pricingPlansRelCompanies_commandsLink
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

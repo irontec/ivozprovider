@@ -25,9 +25,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
-              - name
-            template: '%name%'
-          order: name
+              - type
+            template: '%type%'
+          order: type
     DDI: 
       title: _('Ddi')
       type: text
@@ -79,6 +79,7 @@ production:
           'conferenceRoom': _('conferenceRoom')
           'friend': _('friend')
           'queue': _('queue')
+          'retailAccount': _('retailAccount')
     userId: 
       title: _('Userid')
       type: select
@@ -151,6 +152,19 @@ production:
         data: mapper
         config: 
           mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    retailAccountId: 
+      title: _('Retailaccountid')
+      type: select
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\RetailAccounts
           fieldName: 
             fields: 
               - name

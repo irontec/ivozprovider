@@ -8,12 +8,12 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\Companies
+          mapperName: \IvozProvider\Mapper\Sql\Domains
           fieldName: 
             fields: 
-              - name
-            template: '%name%'
-          order: name
+              - domain
+            template: '%domain%'
+          order: domain
       default: true
     name: 
       title: ngettext('Name', 'Names', 1)

@@ -20,6 +20,7 @@
 #include PricingPlansList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include PricingPlansRelTargetPatternsList.yaml
+#include RetailAccountsList.yaml
 #include RoutingPatternGroupsList.yaml
 #include RoutingPatternsList.yaml
 #include TargetPatternsList.yaml
@@ -65,6 +66,7 @@ production:
             pricingPlansList_screen: true
             pricingPlansRelCompaniesList_screen: true
             pricingPlansRelTargetPatternsList_screen: true
+            retailAccountsList_screen: true
             routingPatternGroupsList_screen: true
             routingPatternsList_screen: true
             targetPatternsList_screen: true
@@ -359,6 +361,19 @@ production:
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
       filterField: brandId
 
+    #retailAccounts: 
+    retailAccountsList_screen: 
+      <<: *retailAccountsList_screenLink
+      filterField: brandId
+      parentOptionCustomizer: 
+        - recordCount
+    retailAccountsNew_screen: 
+      <<: *retailAccountsNew_screenLink
+      filterField: brandId
+    retailAccountsEdit_screen: 
+      <<: *retailAccountsEdit_screenLink
+      filterField: brandId
+
     #routingPatternGroups: 
     routingPatternGroupsList_screen: 
       <<: *routingPatternGroupsList_screenLink
@@ -488,6 +503,8 @@ production:
     <<: *pricingPlansRelCompanies_dialogsLink
   # pricingPlansRelTargetPatterns dialogs: 
     <<: *pricingPlansRelTargetPatterns_dialogsLink
+  # retailAccounts dialogs: 
+    <<: *retailAccounts_dialogsLink
   # routingPatternGroups dialogs: 
     <<: *routingPatternGroups_dialogsLink
   # routingPatterns dialogs: 

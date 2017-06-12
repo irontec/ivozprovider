@@ -37,6 +37,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'from_domain': '', 
      *     'terminalId': '', 
      *     'friendId': '', 
+     *     'retailAccountId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -58,6 +59,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'from_domain': '', 
      *     'terminalId': '', 
      *     'friendId': '', 
+     *     'retailAccountId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -95,6 +97,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'fromDomain',
                 'terminalId',
                 'friendId',
+                'retailAccountId',
                 'aors',
                 'callerid',
                 'context',
@@ -188,6 +191,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'from_domain': '', 
      *     'terminalId': '', 
      *     'friendId': '', 
+     *     'retailAccountId': '', 
      *     'aors': '', 
      *     'callerid': '', 
      *     'context': '', 
@@ -224,6 +228,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'fromDomain',
                 'terminalId',
                 'friendId',
+                'retailAccountId',
                 'aors',
                 'callerid',
                 'context',
@@ -283,6 +288,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
@@ -337,6 +343,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="from_domain", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="friendId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="aors", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callerid", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="context", nullable=false, type="varchar", sample="", description="")
@@ -466,6 +473,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'retailAccountId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'aors' => array(
                     'type' => "varchar",
                     'required' => false,
@@ -568,6 +580,11 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'friendId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'retailAccountId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',

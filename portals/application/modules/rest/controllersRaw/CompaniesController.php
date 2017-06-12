@@ -34,6 +34,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'brandId': '', 
+     *     'type': '', 
      *     'name': '', 
      *     'domain_users': '', 
      *     'nif': '', 
@@ -60,6 +61,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * },{
      *     'id': '', 
      *     'brandId': '', 
+     *     'type': '', 
      *     'name': '', 
      *     'domain_users': '', 
      *     'nif': '', 
@@ -102,6 +104,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'brandId',
+                'type',
                 'name',
                 'domainUsers',
                 'nif',
@@ -200,6 +203,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'brandId': '', 
+     *     'type': '', 
      *     'name': '', 
      *     'domain_users': '', 
      *     'nif': '', 
@@ -241,6 +245,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
             $fields = array(
                 'id',
                 'brandId',
+                'type',
                 'name',
                 'domainUsers',
                 'nif',
@@ -305,8 +310,9 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/companies/")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="type", nullable=false, type="varchar", sample="", description="[enum:vpbx|retail]")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="domain_users", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
@@ -364,8 +370,9 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiRoute(name="/rest/companies/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="type", nullable=false, type="varchar", sample="", description="[enum:vpbx|retail]")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
-     * @ApiParams(name="domain_users", nullable=false, type="varchar", sample="", description="")
+     * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
@@ -486,6 +493,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'type' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '[enum:vpbx|retail]',
+                ),
                 'name' => array(
                     'type' => "varchar",
                     'required' => true,
@@ -493,7 +505,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'domain_users' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'nif' => array(
@@ -617,6 +629,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'type' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '[enum:vpbx|retail]',
+                ),
                 'name' => array(
                     'type' => "varchar",
                     'required' => true,
@@ -624,7 +641,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 ),
                 'domain_users' => array(
                     'type' => "varchar",
-                    'required' => true,
+                    'required' => false,
                     'comment' => '',
                 ),
                 'nif' => array(

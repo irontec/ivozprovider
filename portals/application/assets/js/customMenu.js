@@ -16,6 +16,7 @@
                 this.isMine = true;
                 this.id = null;
                 this.type = null;
+                this.subtype = null;
                 this.name = null;
                 return this;
             },
@@ -35,6 +36,15 @@
                     }
                 }
                 return configParser.type;
+            },
+            getSubType : function() {
+                if (configParser.subtype === null) {
+                    var result = configParser.raw.match(/type\:([^|]+)/);
+                    if (result) {
+                        configParser.subtype = result[1];
+                    }
+                }
+                return configParser.subtype;
             },
             getName : function() {
                 if (configParser.name=== null) {
@@ -143,8 +153,6 @@
                         });
 
                     });
-                
-                
             },
             buildDialog : function($h2) {
                 
@@ -197,8 +205,8 @@
     };
     
     var decorateSection = function($acItem, config) {
-        
         $acItem.data("type", config.getType());
+        $acItem.data("subtype", config.getSubType());
         $acItem.data("remoteId", config.getId());
         
         if ($acItem.prop("tagName") == "H2") {
@@ -216,8 +224,12 @@
             var icon = 'key-go';
             var entity = 'Entidad';
             if (config.getType() == 'company') {
-               icon = 'building';
-               entity = 'Empresa'
+                entity = 'Empresa';
+                if (config.getSubType() == 'vpbx') {
+                    icon = 'building';
+                } else {
+                    icon = 'basket';
+                }
             } else if (config.getType() == 'brand') {
                icon = 'world';
                entity = 'Marca';

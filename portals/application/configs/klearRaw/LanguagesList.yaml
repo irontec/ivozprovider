@@ -4,6 +4,7 @@
 #include CompaniesList.yaml
 #include DDIsList.yaml
 #include FriendsList.yaml
+#include RetailAccountsList.yaml
 #include UsersList.yaml
 
 
@@ -28,6 +29,7 @@ production:
             companiesList_screen: true
             dDIsList_screen: true
             friendsList_screen: true
+            retailAccountsList_screen: true
             usersList_screen: true
           dialogs: 
             languagesDel_dialog: true
@@ -109,6 +111,19 @@ production:
       <<: *friendsEdit_screenLink
       filterField: languageId
 
+    #retailAccounts: 
+    retailAccountsList_screen: 
+      <<: *retailAccountsList_screenLink
+      filterField: languageId
+      parentOptionCustomizer: 
+        - recordCount
+    retailAccountsNew_screen: 
+      <<: *retailAccountsNew_screenLink
+      filterField: languageId
+    retailAccountsEdit_screen: 
+      <<: *retailAccountsEdit_screenLink
+      filterField: languageId
+
     #users: 
     usersList_screen: 
       <<: *usersList_screenLink
@@ -141,6 +156,8 @@ production:
     <<: *dDIs_dialogsLink
   # friends dialogs: 
     <<: *friends_dialogsLink
+  # retailAccounts dialogs: 
+    <<: *retailAccounts_dialogsLink
   # users dialogs: 
     <<: *users_dialogsLink
 staging: 

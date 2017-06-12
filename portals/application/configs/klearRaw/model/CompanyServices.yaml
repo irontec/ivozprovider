@@ -25,9 +25,9 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           fieldName: 
             fields: 
-              - name
-            template: '%name%'
-          order: name
+              - type
+            template: '%type%'
+          order: type
     code: 
       title: _('Code')
       type: text

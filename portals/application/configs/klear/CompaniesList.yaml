@@ -19,6 +19,7 @@ production:
       class: ui-silk-building
       title: _("List of %s %2s", ngettext('Company', 'Companies', 0), "[format| (%parent%)]")
       forcedValues:
+        type: 'vpbx'
         <<: *forcedBrand
       fields:
         options:
@@ -55,6 +56,7 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           externallyExtraOpts: true
+          type: true
           recordingsDiskUsage: ${auth.brand.recordings.disabled}
         order:
           name: true
@@ -91,6 +93,7 @@ production:
           musicOnHoldId: true
           transformationRulesetGroupsId: true
           nif: true
+          type: true
           postalAddress: true
           postalCode: true
           town: true
@@ -118,12 +121,14 @@ production:
       title: _("Add %s", ngettext('Company', 'Companies', 1))
       shortcutOption: N
       forcedValues:
+        type: "vpbx"
         <<: *forcedBrand
     companiesEdit_screen: &companiesEdit_screenLink
       <<: *Companies
       controller: edit
       fields:
         blacklist:
+          type: true
           applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySetsId: ${auth.isNotMainOperator}
           recordingsLimitMB: ${auth.brand.recordings.disabled}

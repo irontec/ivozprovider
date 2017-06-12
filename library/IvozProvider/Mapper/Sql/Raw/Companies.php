@@ -50,6 +50,7 @@ class Companies extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'brandId' => $model->getBrandId(),
+                'type' => $model->getType(),
                 'name' => $model->getName(),
                 'domain_users' => $model->getDomainUsers(),
                 'nif' => $model->getNif(),
@@ -819,6 +820,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getRetailAccounts(null, null, true) !== null) {
+                    $retailAccounts = $model->getRetailAccounts();
+
+                    if (!is_array($retailAccounts)) {
+
+                        $retailAccounts = array($retailAccounts);
+                    }
+
+                    foreach ($retailAccounts as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getSchedules(null, null, true) !== null) {
                     $schedules = $model->getSchedules();
 
@@ -885,20 +900,6 @@ class Companies extends MapperAbstract
 
                     foreach ($kamUsersAddress as $value) {
                         $value->setCompanyId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getKamUsersDomainAttrs(null, null, true) !== null) {
-                    $kamUsersDomainAttrs = $model->getKamUsersDomainAttrs();
-
-                    if (!is_array($kamUsersDomainAttrs)) {
-
-                        $kamUsersDomainAttrs = array($kamUsersDomainAttrs);
-                    }
-
-                    foreach ($kamUsersDomainAttrs as $value) {
-                        $value->setDid($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -1006,6 +1007,7 @@ class Companies extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setBrandId($data['brandId'])
+                  ->setType($data['type'])
                   ->setName($data['name'])
                   ->setDomainUsers($data['domain_users'])
                   ->setNif($data['nif'])
@@ -1032,6 +1034,7 @@ class Companies extends MapperAbstract
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
+                  ->setType($data->{'type'})
                   ->setName($data->{'name'})
                   ->setDomainUsers($data->{'domain_users'})
                   ->setNif($data->{'nif'})
@@ -1059,6 +1062,7 @@ class Companies extends MapperAbstract
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
                   ->setBrandId($data->getBrandId())
+                  ->setType($data->getType())
                   ->setName($data->getName())
                   ->setDomainUsers($data->getDomainUsers())
                   ->setNif($data->getNif())

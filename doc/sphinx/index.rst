@@ -44,6 +44,7 @@ IvozProvider Official Documentation
     :name: advanced
 
     pbx_features/index
+    retail/index
 
 .. toctree::
     :maxdepth: 1

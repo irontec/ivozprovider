@@ -15,6 +15,15 @@ production:
             template: '%name%'
           order: name
       default: true
+    type: 
+      title: ngettext('Type', 'Types', 1)
+      type: select
+      defaultValue: vpbx
+      source: 
+        data: inline
+        values: 
+          'vpbx': _('vpbx')
+          'retail': _('retail')
     name: 
       title: ngettext('Name', 'Names', 1)
       type: text
@@ -23,7 +32,6 @@ production:
     domain_users: 
       title: _('Domainuser')
       type: text
-      required: true
       maxLength: 190
     nif: 
       title: _('Nif')
