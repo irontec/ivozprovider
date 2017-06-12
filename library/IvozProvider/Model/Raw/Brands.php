@@ -290,7 +290,7 @@ class Brands extends ModelAbstract
     protected $_OutgoingRouting;
 
     /**
-     * Dependent relation parsedCDRs_ibfk_1
+     * Dependent relation ParsedCDRs_ibfk_1
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\ParsedCDRs[]
@@ -2712,7 +2712,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_1
+     * Sets dependent relations ParsedCDRs_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
      * @return \IvozProvider\Model\Raw\Brands
@@ -2760,7 +2760,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_1
+     * Sets dependent relations ParsedCDRs_ibfk_1
      *
      * @param \IvozProvider\Model\Raw\ParsedCDRs $data
      * @return \IvozProvider\Model\Raw\Brands
@@ -2773,7 +2773,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Gets dependent parsedCDRs_ibfk_1
+     * Gets dependent ParsedCDRs_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy

@@ -297,18 +297,18 @@ class KamAccCdrs extends ModelAbstract
     protected $_Invoice;
 
     /**
+     * Parent relation kam_acc_cdrs_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\Companies
+     */
+    protected $_Company;
+
+    /**
      * Parent relation kam_acc_cdrs_ibfk_5
      *
      * @var \IvozProvider\Model\Raw\Brands
      */
     protected $_Brand;
-
-    /**
-     * Parent relation kam_acc_cdrs_ibfk_6
-     *
-     * @var \IvozProvider\Model\Raw\Companies
-     */
-    protected $_Company;
 
 
     protected $_columnsList = array(
@@ -374,13 +374,13 @@ class KamAccCdrs extends ModelAbstract
                     'property' => 'Invoice',
                     'table_name' => 'Invoices',
                 ),
+            'KamAccCdrsIbfk4'=> array(
+                    'property' => 'Company',
+                    'table_name' => 'Companies',
+                ),
             'KamAccCdrsIbfk5'=> array(
                     'property' => 'Brand',
                     'table_name' => 'Brands',
-                ),
-            'KamAccCdrsIbfk6'=> array(
-                    'property' => 'Company',
-                    'table_name' => 'Companies',
                 ),
         ));
 
@@ -1881,6 +1881,57 @@ class KamAccCdrs extends ModelAbstract
     }
 
     /**
+     * Sets parent relation Company
+     *
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\KamAccCdrs
+     */
+    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
+    {
+        $this->_Company = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setCompanyId($primaryKey);
+        }
+
+        $this->_setLoaded('KamAccCdrsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent Company
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'KamAccCdrsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_Company = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_Company;
+    }
+
+    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -1929,57 +1980,6 @@ class KamAccCdrs extends ModelAbstract
         }
 
         return $this->_Brand;
-    }
-
-    /**
-     * Sets parent relation Company
-     *
-     * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\KamAccCdrs
-     */
-    public function setCompany(\IvozProvider\Model\Raw\Companies $data)
-    {
-        $this->_Company = $data;
-
-        $primaryKey = $data->getPrimaryKey();
-        if (is_array($primaryKey)) {
-            $primaryKey = $primaryKey['id'];
-        }
-
-        if (!is_null($primaryKey)) {
-            $this->setCompanyId($primaryKey);
-        }
-
-        $this->_setLoaded('KamAccCdrsIbfk6');
-        return $this;
-    }
-
-    /**
-     * Gets parent Company
-     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
-     * @return \IvozProvider\Model\Raw\Companies
-     */
-    public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'KamAccCdrsIbfk6';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
-            $this->_Company = array_shift($related);
-            if ($usingDefaultArguments) {
-                $this->_setLoaded($fkName);
-            }
-        }
-
-        return $this->_Company;
     }
 
     /**

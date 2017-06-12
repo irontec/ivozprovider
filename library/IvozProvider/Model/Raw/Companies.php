@@ -422,7 +422,7 @@ class Companies extends ModelAbstract
     protected $_OutgoingRouting;
 
     /**
-     * Dependent relation parsedCDRs_ibfk_2
+     * Dependent relation ParsedCDRs_ibfk_2
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\ParsedCDRs[]
@@ -494,7 +494,7 @@ class Companies extends ModelAbstract
     protected $_Users;
 
     /**
-     * Dependent relation kam_acc_cdrs_ibfk_6
+     * Dependent relation kam_acc_cdrs_ibfk_4
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\KamAccCdrs[]
@@ -700,7 +700,7 @@ class Companies extends ModelAbstract
                     'property' => 'Users',
                     'table_name' => 'Users',
                 ),
-            'KamAccCdrsIbfk6' => array(
+            'KamAccCdrsIbfk4' => array(
                     'property' => 'KamAccCdrs',
                     'table_name' => 'kam_acc_cdrs',
                 ),
@@ -3823,7 +3823,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_2
+     * Sets dependent relations ParsedCDRs_ibfk_2
      *
      * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
      * @return \IvozProvider\Model\Raw\Companies
@@ -3871,7 +3871,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_2
+     * Sets dependent relations ParsedCDRs_ibfk_2
      *
      * @param \IvozProvider\Model\Raw\ParsedCDRs $data
      * @return \IvozProvider\Model\Raw\Companies
@@ -3884,7 +3884,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Gets dependent parsedCDRs_ibfk_2
+     * Gets dependent ParsedCDRs_ibfk_2
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -4633,7 +4633,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations kam_acc_cdrs_ibfk_6
+     * Sets dependent relations kam_acc_cdrs_ibfk_4
      *
      * @param array $data An array of \IvozProvider\Model\Raw\KamAccCdrs
      * @return \IvozProvider\Model\Raw\Companies
@@ -4681,7 +4681,7 @@ class Companies extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations kam_acc_cdrs_ibfk_6
+     * Sets dependent relations kam_acc_cdrs_ibfk_4
      *
      * @param \IvozProvider\Model\Raw\KamAccCdrs $data
      * @return \IvozProvider\Model\Raw\Companies
@@ -4689,12 +4689,12 @@ class Companies extends ModelAbstract
     public function addKamAccCdrs(\IvozProvider\Model\Raw\KamAccCdrs $data)
     {
         $this->_KamAccCdrs[] = $data;
-        $this->_setLoaded('KamAccCdrsIbfk6');
+        $this->_setLoaded('KamAccCdrsIbfk4');
         return $this;
     }
 
     /**
-     * Gets dependent kam_acc_cdrs_ibfk_6
+     * Gets dependent kam_acc_cdrs_ibfk_4
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -4703,7 +4703,7 @@ class Companies extends ModelAbstract
      */
     public function getKamAccCdrs($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'KamAccCdrsIbfk6';
+        $fkName = 'KamAccCdrsIbfk4';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
