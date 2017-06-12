@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-05 14:56+0200\n"
+"POT-Creation-Date: 2017-06-12 17:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -703,7 +703,7 @@ msgstr ""
 #: ../../pbx_features/conference_rooms.rst:17
 #: ../../pbx_features/external_filters.rst:74 ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:24 ../../pbx_features/queues.rst:28
-#: ../../pbx_features/terminals.rst:17 ../../pbx_features/users.rst:23
+#: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:23
 msgid "Name"
 msgstr "Nombre"
 
@@ -1345,7 +1345,7 @@ msgstr ""
 "un *friend*, **se encaminará la llamada al que tenga menor valor de "
 "prioridad**."
 
-#: ../../pbx_features/friends.rst:81 ../../pbx_features/terminals.rst:21
+#: ../../pbx_features/friends.rst:81 ../../pbx_features/terminals.rst:28
 #: ../../pbx_features/users.rst:46
 msgid "Password"
 msgstr "Contraseña"
@@ -2283,6 +2283,14 @@ msgstr ""
 
 #: ../../pbx_features/sounds.rst:14
 msgid ""
+"Locutions can be recorded from any terminal by dialing the Recording "
+"extension displayed in their edit screen."
+msgstr ""
+"Las locuciones pueden ser grabadas desde cualquier terminal marcando "
+"la extensión de grabado que se muestra en su pantalla de edición."
+
+#: ../../pbx_features/sounds.rst:17
+msgid ""
 "The main difference between a **locution** and **music on hold** is that "
 "the administrator chooses when the first one will be played (out of "
 "schedule, IVRs, and so on) and the second one will be played when a call "
@@ -2315,7 +2323,7 @@ msgstr ""
 "La mejor forma de entender la sección es crear uno nuevo y ver los campos"
 " que tenemos que cumplimentar:"
 
-#: ../../pbx_features/terminals.rst:19
+#: ../../pbx_features/terminals.rst:26
 msgid ""
 "Username that will use the terminal during the SIP authentication phase "
 "with IvozProvider."
@@ -2323,7 +2331,7 @@ msgstr ""
 "Usuario que utilizará el terminal para presentarse ante IvozProvider y "
 "para realizar la fase de autenticación SIP."
 
-#: ../../pbx_features/terminals.rst:23
+#: ../../pbx_features/terminals.rst:30
 msgid ""
 "Password that will use the terminal to answer the SIP authentication "
 "challenge. You can use the automatic password generator to fullfill the "
@@ -2333,19 +2341,19 @@ msgstr ""
 "autenticación SIP. Utilizar el generador automático de contraseñas para "
 "cumplir los criterios de seguridad exigidos."
 
-#: ../../pbx_features/terminals.rst:26
+#: ../../pbx_features/terminals.rst:33
 msgid "Allowed/Disallowed codecs"
 msgstr "Codecs rechazados/permitidos"
 
-#: ../../pbx_features/terminals.rst:28
+#: ../../pbx_features/terminals.rst:35
 msgid "Determines what audio and video codecs will be used with the terminal."
 msgstr "Determina que codecs de audio y video serán empleados con el terminal."
 
-#: ../../pbx_features/terminals.rst:29
+#: ../../pbx_features/terminals.rst:36
 msgid "CallerID update method"
 msgstr "Modo de actualización"
 
-#: ../../pbx_features/terminals.rst:31
+#: ../../pbx_features/terminals.rst:38
 msgid ""
 "Choose the SIP method the terminal prefers to received the session update"
 " information: INVITE or UPDATE. The help hint can be used as guide to "
@@ -2356,11 +2364,11 @@ msgstr ""
 "actualizar la sesión. La sección de ayuda indica qué terminales suelen "
 "requerir qué método. En caso de duda, utilizar *invite*."
 
-#: ../../pbx_features/terminals.rst:35
+#: ../../pbx_features/terminals.rst:42
 msgid "Terminal model"
 msgstr "Modelo de terminal"
 
-#: ../../pbx_features/terminals.rst:37
+#: ../../pbx_features/terminals.rst:44
 msgid ""
 "Determines the provisioning type that will receive this terminal. The "
 "section :ref:`terminal provisioning <provisioning>` will explain in depth"
@@ -2373,11 +2381,11 @@ msgstr ""
 " y se explicará todo en profundidad. En caso de no necesitar provisión, "
 "utilizar *Generic*."
 
-#: ../../pbx_features/terminals.rst:41
+#: ../../pbx_features/terminals.rst:48
 msgid "MAC"
 msgstr "MAC"
 
-#: ../../pbx_features/terminals.rst:43
+#: ../../pbx_features/terminals.rst:50
 msgid ""
 "Optional field that is only required if you plan to use IvozProvider "
 ":ref:`terminal provisioning <provisioning>`. This is the `phisical "
@@ -2389,7 +2397,7 @@ msgstr ""
 "física <https://es.wikipedia.org/wiki/Direcci%C3%B3n_MAC>`_ del  "
 "adaptador de red del dispositivo SIP."
 
-#: ../../pbx_features/terminals.rst:48
+#: ../../pbx_features/terminals.rst:55
 msgid ""
 "For **most of devices** that doesn't require provisioning just filling "
 "**username** and **password** will be enough."
@@ -2397,7 +2405,7 @@ msgstr ""
 "**En la mayoría** de dispositivos, siempre que no requieran provisión, "
 "**bastará con rellenar el nombre y contraseña**."
 
-#: ../../pbx_features/terminals.rst:51
+#: ../../pbx_features/terminals.rst:58
 msgid ""
 "Once the terminal has been created, most devices will only require the "
 "name, password and :ref:`Company SIP domain <domain_per_company>` in "
