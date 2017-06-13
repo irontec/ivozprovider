@@ -154,6 +154,17 @@ production:
       defaultValue: 0
       source: 
         control: Spinner
+    externalIpCalls: 
+      title: _('Externalipcall')
+      type: select
+      defaultValue: 0
+      source: 
+        data: inline
+        values: 
+          '0': 
+            title: _("No")
+          '1': 
+            title: _("Yes")
     voicemailEnabled: 
       title: _('Voicemailenabled')
       type: select

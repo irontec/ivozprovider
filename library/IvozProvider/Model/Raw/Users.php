@@ -22,6 +22,12 @@ namespace IvozProvider\Model\Raw;
 class Users extends ModelAbstract
 {
 
+    protected $_externalIpCallsAcceptedValues = array(
+        '0',
+        '1',
+        '2',
+        '3',
+    );
 
     /**
      * Database var type int
@@ -142,6 +148,14 @@ class Users extends ModelAbstract
      * @var int
      */
     protected $_maxCalls;
+
+    /**
+     * [enum:0|1|2|3]
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_externalIpCalls;
 
     /**
      * Database var type tinyint
@@ -427,6 +441,7 @@ class Users extends ModelAbstract
         'exceptionBoosAssistantRegExp'=>'exceptionBoosAssistantRegExp',
         'active'=>'active',
         'maxCalls'=>'maxCalls',
+        'externalIpCalls'=>'externalIpCalls',
         'voicemailEnabled'=>'voicemailEnabled',
         'voicemailSendMail'=>'voicemailSendMail',
         'voicemailAttachSound'=>'voicemailAttachSound',
@@ -443,6 +458,7 @@ class Users extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'pass'=> array('password'),
+            'externalIpCalls'=> array('enum:0|1|2|3'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -598,6 +614,7 @@ class Users extends ModelAbstract
             'isBoss' => '0',
             'active' => '0',
             'maxCalls' => '0',
+            'externalIpCalls' => '0',
             'voicemailEnabled' => '1',
             'voicemailSendMail' => '0',
             'voicemailAttachSound' => '1',
@@ -1219,6 +1236,43 @@ class Users extends ModelAbstract
     public function getMaxCalls()
     {
         return $this->_maxCalls;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setExternalIpCalls($data)
+    {
+
+        if ($this->_externalIpCalls != $data) {
+            $this->_logChange('externalIpCalls', $this->_externalIpCalls, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_externalIpCalls = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_externalIpCallsAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for externalIpCalls'));
+            }
+            $this->_externalIpCalls = (int) $data;
+
+        } else {
+            $this->_externalIpCalls = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column externalIpCalls
+     *
+     * @return int
+     */
+    public function getExternalIpCalls()
+    {
+        return $this->_externalIpCalls;
     }
 
     /**
