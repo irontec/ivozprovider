@@ -1,0 +1,53 @@
+# test-attxfer.yaml
+#
+# Simple scenario for testing attended transfer
+# Bob must have the extension 1001 assigned
+# Charlie must have the extension 1002 assigned
+#
+# ----------------------------------------------------------------------------
+
+scenarios:
+  - name: call from alice to bob transfered to charlie
+    timeout: 25
+    sessions:
+
+      # Alice: Call to Bob at 1001
+      - caller_alice:
+          - credentials:
+              <<: *alice_cred
+          - call: 1001
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+
+      # Bob: Receive the call from Alice and transfer to Charlie at 1002
+      - callee_bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - call:
+             name: TO_CHARLIE
+             number: 1002
+          - waitfor:
+             call: TO_CHARLIE
+             name: CONFIRMED
+          - attxfer: TO_CHARLIE
+          - waitfor: TRANSFER_ACCEPTED
+          - waitfor: TRANSFER_OK
+          - waitfor: { call: TO_CHARLIE, name: DISCONNCTD }
+          - hangup
+          - waitfor: DISCONNCTD
+          - unregister
+
+      # Charlie: Answer the call from Bob
+      - callee_charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - answer
+          - waitfor: CONFIRMED
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
+          - unregister

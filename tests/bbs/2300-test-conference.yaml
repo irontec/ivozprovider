@@ -1,0 +1,21 @@
+# test-conference.yaml
+#
+# Simple scenario for testing route to pin protected conference room
+# Extension 500 must point to the conference room
+# Conference must have password 1234
+#
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to conference room
+    timeout: 30
+    sessions:
+      - voicemail_test_uac:
+          - credentials:
+              <<: *alice_cred
+          - call: 500
+          - waitfor: CONFIRMED
+          - wait: 5
+          - dtmf: 1234
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
