@@ -1,0 +1,18 @@
+# test-voicemail.yaml
+#
+# Simple scenario for testing voicemail check extension
+# Voicemail check service mut be *98
+#
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to voicemail
+    timeout: 30
+    sessions:
+      - voicemail_test_uac:
+          - credentials:
+              <<: *alice_cred
+          - call: "*98"
+          - waitfor: CONFIRMED
+          - wait: 20
+          - dtmf: "#"
+          - waitfor: DISCONNCTD

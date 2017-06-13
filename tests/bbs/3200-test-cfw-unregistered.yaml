@@ -1,0 +1,27 @@
+# test-cfw.yaml
+#
+# Simple scenario for testing user call forwards
+# Bob must have the extension 1001 assigned
+# And more things must happen
+#
+# ----------------------------------------------------------------------------
+  - name: call from alice to eve no-registed forwarded to bob
+    timeout: 10
+    sessions:
+      - caller_alice:
+          - credentials:
+              <<: *alice_cred
+          - call: 1003
+          - waitfor: CONFIRMED
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
+      - callee_bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - ringing
+          - answer
+          - waitfor: DISCONNCTD
+
+
