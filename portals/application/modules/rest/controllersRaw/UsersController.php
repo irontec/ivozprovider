@@ -49,6 +49,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'exceptionBoosAssistantRegExp': '', 
      *     'active': '', 
      *     'maxCalls': '', 
+     *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
@@ -74,6 +75,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'exceptionBoosAssistantRegExp': '', 
      *     'active': '', 
      *     'maxCalls': '', 
+     *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
@@ -115,6 +117,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'exceptionBoosAssistantRegExp',
                 'active',
                 'maxCalls',
+                'externalIpCalls',
                 'voicemailEnabled',
                 'voicemailSendMail',
                 'voicemailAttachSound',
@@ -212,6 +215,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'exceptionBoosAssistantRegExp': '', 
      *     'active': '', 
      *     'maxCalls': '', 
+     *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
@@ -252,6 +256,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'exceptionBoosAssistantRegExp',
                 'active',
                 'maxCalls',
+                'externalIpCalls',
                 'voicemailEnabled',
                 'voicemailSendMail',
                 'voicemailAttachSound',
@@ -315,6 +320,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
@@ -373,6 +379,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
@@ -554,6 +561,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'externalIpCalls' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '[enum:0|1|2|3]',
+                ),
                 'voicemailEnabled' => array(
                     'type' => "tinyint",
                     'required' => true,
@@ -679,6 +691,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'type' => "smallint",
                     'required' => true,
                     'comment' => '',
+                ),
+                'externalIpCalls' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '[enum:0|1|2|3]',
                 ),
                 'voicemailEnabled' => array(
                     'type' => "tinyint",

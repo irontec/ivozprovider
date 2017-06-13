@@ -65,6 +65,7 @@ class Users extends MapperAbstract
                 'exceptionBoosAssistantRegExp' => $model->getExceptionBoosAssistantRegExp(),
                 'active' => $model->getActive(),
                 'maxCalls' => $model->getMaxCalls(),
+                'externalIpCalls' => $model->getExternalIpCalls(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
                 'voicemailSendMail' => $model->getVoicemailSendMail(),
                 'voicemailAttachSound' => $model->getVoicemailAttachSound(),
@@ -852,6 +853,7 @@ class Users extends MapperAbstract
                   ->setExceptionBoosAssistantRegExp($data['exceptionBoosAssistantRegExp'])
                   ->setActive($data['active'])
                   ->setMaxCalls($data['maxCalls'])
+                  ->setExternalIpCalls($data['externalIpCalls'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
                   ->setVoicemailSendMail($data['voicemailSendMail'])
                   ->setVoicemailAttachSound($data['voicemailAttachSound'])
@@ -877,6 +879,7 @@ class Users extends MapperAbstract
                   ->setExceptionBoosAssistantRegExp($data->{'exceptionBoosAssistantRegExp'})
                   ->setActive($data->{'active'})
                   ->setMaxCalls($data->{'maxCalls'})
+                  ->setExternalIpCalls($data->{'externalIpCalls'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
                   ->setVoicemailSendMail($data->{'voicemailSendMail'})
                   ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
@@ -903,6 +906,7 @@ class Users extends MapperAbstract
                   ->setExceptionBoosAssistantRegExp($data->getExceptionBoosAssistantRegExp())
                   ->setActive($data->getActive())
                   ->setMaxCalls($data->getMaxCalls())
+                  ->setExternalIpCalls($data->getExternalIpCalls())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
                   ->setVoicemailSendMail($data->getVoicemailSendMail())
                   ->setVoicemailAttachSound($data->getVoicemailAttachSound())
