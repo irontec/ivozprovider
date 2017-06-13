@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-12 17:09+0200\n"
+"POT-Creation-Date: 2017-06-14 10:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "IvozProvider supports two kind of call pickups:"
 msgstr "IvozProvider soporta dos tipos de captura de llamadas:"
 
-#: ../../pbx_features/call_captures.rst:14 ../../pbx_features/services.rst:25
+#: ../../pbx_features/call_captures.rst:14 ../../pbx_features/services.rst:30
 msgid "Direct pickup"
 msgstr "Captura de llamadas directa"
 
@@ -53,7 +53,7 @@ msgstr ""
 "código fuera \\*95, por ejemplo, marcaría \\*95101 para capturar una "
 "llamada que esté sonando en la extensión 101."
 
-#: ../../pbx_features/call_captures.rst:20 ../../pbx_features/services.rst:29
+#: ../../pbx_features/call_captures.rst:20 ../../pbx_features/services.rst:34
 msgid "Group pickup"
 msgstr "Captura de grupo"
 
@@ -1963,7 +1963,6 @@ msgstr ""
 "visualización realtime, estadísticas de colas, etc..)."
 
 #: ../../pbx_features/queues.rst:14
-#, fuzzy
 msgid ""
 "This easy approach has a drawback **in distributed installations**: as "
 "Asterisk does not provide yet a way to share queue information between "
@@ -2133,7 +2132,7 @@ msgstr ""
 "**servicios especiales** visibles en la sección **Gestión general** > "
 "**Servicios**:"
 
-#: ../../pbx_features/services.rst:27
+#: ../../pbx_features/services.rst:32
 msgid ""
 "This service allows capturing a ringing call from other terminal by "
 "calling the code followed by the extension from the target user."
@@ -2141,7 +2140,7 @@ msgstr ""
 "Es el servicio que permite capturar metiendo el código que se asigne "
 "seguido de la extensión del teléfono a capturar."
 
-#: ../../pbx_features/services.rst:31
+#: ../../pbx_features/services.rst:36
 msgid ""
 "This service allows capturing a ringing call for any terminal whose user "
 "is part of one of the capturer pickup groups."
@@ -2149,21 +2148,38 @@ msgstr ""
 "Es el servicio que permite capturar el teléfono que esté sonando dentro "
 "de tu(s) grupo(s) de captura."
 
-#: ../../pbx_features/services.rst:33
+#: ../../pbx_features/services.rst:38
 msgid "Check voicemail"
 msgstr "Consultar el buzón de voz"
 
-#: ../../pbx_features/services.rst:35
+#: ../../pbx_features/services.rst:40
 msgid ""
-"This service allows checking the user's voicemail using an incteractive "
-"menu from which new voicemails can be listen, deleted, etc. This an "
-"active alternative to receive voicemails via the email."
+"This service allows checking the user's voicemail using an interactive "
+"menu from which new voicemails can be listen, deleted, etc. This is an "
+"active alternative to receive voicemails via the email. Since 1.4, this "
+"service allows optional extension after the service code to check another"
+" users voicemails. Users can protect their voicemail using the internal "
+"menu options."
 msgstr ""
-"Este servicio permite acceder a un menú de voz que te presenta los "
+"Este servicio permite acceder a un menú de voz que te presenta los  "
 "mensajes de voz nuevos, viejos, etc. Es una alternativa a la recepción de"
-" mensajes de voz vía correo electrónico."
+" mensajes de voz vía correo electrónico. A partir de 1.4, este servicio "
+"acepta una extensión opcional trás el código de servicio para poder "
+"acceder a los buzones de otros usuarios. Los usuarios pueden proteger su "
+"buzón de voz empleando las opciones del menú de voz interno."
 
-#: ../../pbx_features/services.rst:39
+#: ../../pbx_features/services.rst:46
+msgid "Record locution"
+msgstr "Grabar locución"
+
+#: ../../pbx_features/services.rst:48
+msgid ""
+"This service allows any user to record their company's locutions by "
+"dialing an special code. Voice instructions will be provided in the "
+"user's language."
+msgstr ""
+
+#: ../../pbx_features/services.rst:52
 msgid ""
 "As soon as new services are implemented into IvozProvider, they will be "
 "listed in this section."
@@ -2172,7 +2188,7 @@ msgstr ""
 "aparecerán en este listado para que el operador global sepa de su "
 "existencia y lo comunique a sus operadores de marca."
 
-#: ../../pbx_features/services.rst:42
+#: ../../pbx_features/services.rst:55
 msgid ""
 "This section lists the available services and the default codes when a "
 "**new brand** is created."
@@ -2180,17 +2196,17 @@ msgstr ""
 "Este listado determina los servicios disponibles y los códigos por "
 "defecto de las **nuevas marcas**."
 
-#: ../../pbx_features/services.rst:45
+#: ../../pbx_features/services.rst:58
 msgid ""
 "Changing the default code in this section will only affect new created "
 "brands."
 msgstr "Cambiar un código solo afecta a las marcas que se creen tras el cambio."
 
-#: ../../pbx_features/services.rst:50
+#: ../../pbx_features/services.rst:63
 msgid "Services and codes for Brands"
 msgstr "Definición de servicios y códigos a nivel de marca"
 
-#: ../../pbx_features/services.rst:52
+#: ../../pbx_features/services.rst:65
 msgid ""
 "The section **Brand configuration** > **Services** allows the brand "
 "operator to:"
@@ -2198,7 +2214,7 @@ msgstr ""
 "La sección **Configuración de Marca > Servicios** permite al operador de "
 "marca:"
 
-#: ../../pbx_features/services.rst:54
+#: ../../pbx_features/services.rst:67
 msgid ""
 "Change the default service code for all the brand companies (assuming the"
 " company hasn't already customized the code)"
@@ -2206,11 +2222,11 @@ msgstr ""
 "Redefinir el código de acceso por defecto a dichos servicios para las "
 "empresas que a su vez no lo redefinan."
 
-#: ../../pbx_features/services.rst:57
+#: ../../pbx_features/services.rst:70
 msgid "Delete services so it won't be available for the companies."
 msgstr "Borrar servicios que no quieran que puedan utilizar sus empresas."
 
-#: ../../pbx_features/services.rst:59
+#: ../../pbx_features/services.rst:72
 msgid ""
 "By default this list has all the services and codes from the global "
 "configuration:"
@@ -2218,7 +2234,7 @@ msgstr ""
 "Por defecto este listado aparece con todas los servicios y los códigos "
 "configurados a nivel Global:"
 
-#: ../../pbx_features/services.rst:64
+#: ../../pbx_features/services.rst:75
 msgid ""
 "This section lists the available services and the default codes when a "
 "**new company** is created."
@@ -2226,7 +2242,7 @@ msgstr ""
 "Este listado determina los servicios disponibles y los códigos por "
 "defecto de las **nuevas empresas**."
 
-#: ../../pbx_features/services.rst:67
+#: ../../pbx_features/services.rst:78
 msgid ""
 "Changing the default code in this section will only affect new created "
 "companies."
@@ -2235,11 +2251,11 @@ msgstr ""
 " Borrar un servicio hace que no esté disponible para ninguna empresa de "
 "la marca."
 
-#: ../../pbx_features/services.rst:72
+#: ../../pbx_features/services.rst:83
 msgid "Services and codes for Companies"
 msgstr "Definición de códigos a nivel de empresa"
 
-#: ../../pbx_features/services.rst:74
+#: ../../pbx_features/services.rst:85
 msgid ""
 "Each company can *customize* the default values assigned by the *brand "
 "operator* using the section **Company configuration** > **Services** and "
@@ -2249,11 +2265,11 @@ msgstr ""
 "*operador de marca* accediendo a **Configuración de Empresa** > "
 "**Servicios** y cambiando el código asignado."
 
-#: ../../pbx_features/services.rst:79
+#: ../../pbx_features/services.rst:90
 msgid "Company that wants to capture using \\*\\* instead of the default \\*95:"
 msgstr "Empresa que quiere capturar con \\*\\* en lugar de con \\*95:"
 
-#: ../../pbx_features/services.rst:82
+#: ../../pbx_features/services.rst:99
 msgid "Services deleted by the *company admin* will not available to users."
 msgstr ""
 "Los servicios que el *administrador de empresa* borre no podrán ser "
@@ -2286,8 +2302,8 @@ msgid ""
 "Locutions can be recorded from any terminal by dialing the Recording "
 "extension displayed in their edit screen."
 msgstr ""
-"Las locuciones pueden ser grabadas desde cualquier terminal marcando "
-"la extensión de grabado que se muestra en su pantalla de edición."
+"Las locuciones pueden ser grabadas desde cualquier terminal marcando la "
+"extensión de grabado que se muestra en su pantalla de edición."
 
 #: ../../pbx_features/sounds.rst:17
 msgid ""
