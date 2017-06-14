@@ -36,12 +36,16 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
      *     'name': '', 
      *     'description': '', 
      *     'template': '', 
+     *     'templateHeader': '', 
+     *     'templateFooter': '', 
      *     'brandId': ''
      * },{
      *     'id': '', 
      *     'name': '', 
      *     'description': '', 
      *     'template': '', 
+     *     'templateHeader': '', 
+     *     'templateFooter': '', 
      *     'brandId': ''
      * }]")
      */
@@ -64,6 +68,8 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
                 'name',
                 'description',
                 'template',
+                'templateHeader',
+                'templateFooter',
                 'brandId',
             );
         }
@@ -142,6 +148,8 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
      *     'name': '', 
      *     'description': '', 
      *     'template': '', 
+     *     'templateHeader': '', 
+     *     'templateFooter': '', 
      *     'brandId': ''
      * }")
      */
@@ -163,6 +171,8 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
                 'name',
                 'description',
                 'template',
+                'templateHeader',
+                'templateFooter',
                 'brandId',
             );
         }
@@ -207,6 +217,8 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="template", nullable=false, type="text", sample="", description="")
+     * @ApiParams(name="templateHeader", nullable=true, type="text", sample="", description="")
+     * @ApiParams(name="templateFooter", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/invoicetemplates/{id}")
@@ -246,6 +258,8 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="description", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="template", nullable=false, type="text", sample="", description="")
+     * @ApiParams(name="templateHeader", nullable=true, type="text", sample="", description="")
+     * @ApiParams(name="templateFooter", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="brandId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -356,6 +370,16 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
                     'required' => true,
                     'comment' => '',
                 ),
+                'templateHeader' => array(
+                    'type' => "text",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'templateFooter' => array(
+                    'type' => "text",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'brandId' => array(
                     'type' => "int",
                     'required' => true,
@@ -385,6 +409,16 @@ class Rest_InvoiceTemplatesController extends Iron_Controller_Rest_BaseControlle
                 'template' => array(
                     'type' => "text",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'templateHeader' => array(
+                    'type' => "text",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'templateFooter' => array(
+                    'type' => "text",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'brandId' => array(

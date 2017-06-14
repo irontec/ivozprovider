@@ -100,6 +100,7 @@ class Formatter
                 return null;
             }
         }
+
         return $value;
     }
 

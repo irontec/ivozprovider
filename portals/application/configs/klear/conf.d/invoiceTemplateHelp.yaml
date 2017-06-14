@@ -6,7 +6,7 @@ invoiceTemplateHelp:
       icon: help
       label: _("Templates help")
       text:
-        "<p>Templates are create using PHPPdf library. You can get info in <a href='https://github.com/psliwa/PHPPdf' target='_blank'> here </a></p>
+        "<p>Templates are created using wkhtmltopdf library. You can get info in <a href='https://wkhtmltopdf.org/' target='_blank'> here </a></p>
         <p>Template receives an array of data and you can use this data using the notation '{{firstLevelKey.secondLevelKey.thirdLevelKey}}'</p>
         <p style='line-height: 17px;'> You can iterate over array using<br />
         {{#firstLevelKey.secondLevelKey id,value}}<br />
@@ -28,24 +28,28 @@ invoiceTemplateHelp:
                 <li>$callSumary[$callType]['totalPrice']</li>
               </ul>
             </li>
-            <li>callSumaryTotals: Totals of callSumary.
-                <ul style='margin-left: 30px'>
+            <li>
+              callSumaryTotals: Totals of callSumary.
+              <ul style='margin-left: 30px'>
                 <li>$callSumaryTotals['numberOfCalls']</li>
                 <li>$callSumaryTotals['totalCallsDuration']</li>
                 <li>$callSumaryTotals['totalCallsDurationFormatted']</li>
                 <li>$callSumaryTotals['totalPrice']</li>
-                </ul>
+              </ul>
             </li>
-            <li>callsPerType: list of all calls grouped by type. Keys of callsPerType are call types
+            <li>
+              callsPerType: list of all calls grouped by type. Keys of callsPerType are call types
               <ul style='margin-left: 30px'><li>$callsPerType[$callType][] = $callModel;</li></ul>
             </li>
-            <li>fixedCosts: list of all calls grouped by type. Keys of fixedCosts are autoincrement integers starting from 0
+            <li>
+              fixedCosts: list of all calls grouped by type. Keys of fixedCosts are autoincrement integers starting from 0
               <ul style='margin-left: 30px'><li>$fixedCosts[] = $fixedCostModel;</li></ul>
             </li>
-            <li>fixedCostsTotals: Total price of fixedCosts
+            <li>
+              fixedCostsTotals: Total price of fixedCosts
             </li>
-            </ul>
-         <p>You can use following examples as base for your custom Invoice template
+          </ul>
+          <p>You can use the following examples as a base for your custom Invoice template
             <ul style='margin-left: 30px; line-height: 20px;'>
                 <li><a href='/templates/invoice.txt' target='_blank' >Basic Invoice template</a></li>
                 <li><a href='/templates/invoiceFixedCosts.txt' target='_blank'>Fixed costs Invoice template</a></li>
@@ -53,5 +57,32 @@ invoiceTemplateHelp:
                 <li><a href='/templates/invoiceInboundCalls.txt' target='_blank'>Inbound calls Invoice template</a></li>
                 <li><a href='/templates/invoiceFixedCostsAndInboundCalls.txt' target='_blank'>Fixed costs and Inbound calls Invoice template</a></li>
             </ul>
-            </p>
+          </p>
+        "
+
+invoiceTemplateFooterHeaderHelp:
+  - &invoiceTemplateFooterHeaderHelp
+    info:
+      type: box
+      position: left
+      icon: help
+      label: _("Template headers and footers help")
+      text:
+        "
+        <p>Template headers are called and rendered for every PDF page.</p>
+        <p>
+          In addition to the features described above for template body, header and footer templates have access to
+          some special javascript values such as the current page number.
+        </p>
+        <p>
+          You'll find an available variable list on
+          <a href='https://wkhtmltopdf.org/usage/wkhtmltopdf.txt' target='_blank'>wkhtmltopdf's documentation page</a>
+          under 'Footers And Headers' section.
+        </p>
+        <p>You can use the following examples as a base for your custom template
+            <ul style='margin-left: 30px; line-height: 20px;'>
+                <li><a href='/templates/header.txt' target='_blank' >Header template</a></li>
+                <li><a href='/templates/footer.txt' target='_blank' >Footer template</a></li>
+            </ul>
+        </p>
         "

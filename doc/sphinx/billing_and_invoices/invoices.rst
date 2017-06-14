@@ -17,11 +17,11 @@ creation process uses templates.
 .. hint:: This way, every **brand operator** can adapt which information
           is shown and how this information is shown, add logos, graphs, etc..
 
-These templates use `PHPPdf library <https://github.com/psliwa/PHPPdf>`_.
+These templates use `wkhtmltopdf library <https://wkhtmltopdf.org/>`_.
 
 The helper in the section **Brand configuration** > **Invoice templates** include
-a summarized explanation of the creation of templates. In the `official site of PHPPdf
-<https://github.com/psliwa/PHPPdf>`_ there is plenty additional information.
+a summarized explanation of the creation of templates. In the `official site of wkhtmltopdf
+<https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ there is plenty additional information.
 
 By default, this section provides some basic example templates:
 

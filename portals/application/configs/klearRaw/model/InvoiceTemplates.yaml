@@ -15,6 +15,12 @@ production:
       title: ngettext('Template', 'Templates', 1)
       type: textarea
       required: true
+    templateHeader: 
+      title: _('Templateheader')
+      type: textarea
+    templateFooter: 
+      title: _('Templatefooter')
+      type: textarea
     brandId: 
       title: _('Brandid')
       type: select
