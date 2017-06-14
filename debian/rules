@@ -21,7 +21,6 @@ build_library:
 	cd library ; git config --global http.sslVerify false
 	cd library ; curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
 	cd library ; ./composer --no-interaction install
-	cd library/Composer ; ../composer --no-interaction install
 
 override_dh_auto_build: build_doc build_userweb build_library
 
