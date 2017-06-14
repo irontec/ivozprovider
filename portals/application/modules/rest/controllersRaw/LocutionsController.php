@@ -208,7 +208,7 @@ class Rest_LocutionsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="originalFile", nullable=true, type="int", sample="", description="[FSO:keepExtension]")
-     * @ApiParams(name="encodedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
+     * @ApiParams(name="encodedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension]")
      * @ApiParams(name="status", nullable=true, type="varchar", sample="", description="[enum:pending|encoding|ready|error]")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/locutions/{id}")
@@ -258,7 +258,7 @@ class Rest_LocutionsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="originalFile", nullable=true, type="int", sample="", description="[FSO:keepExtension]")
-     * @ApiParams(name="encodedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
+     * @ApiParams(name="encodedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension]")
      * @ApiParams(name="status", nullable=true, type="varchar", sample="", description="[enum:pending|encoding|ready|error]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -382,7 +382,7 @@ class Rest_LocutionsController extends Iron_Controller_Rest_BaseController
                 'encodedFile' => array(
                     'type' => "int",
                     'required' => false,
-                    'comment' => '[FSO:keepExtension|storeInBaseFolder]',
+                    'comment' => '[FSO:keepExtension]',
                 ),
                 'status' => array(
                     'type' => "varchar",
@@ -418,7 +418,7 @@ class Rest_LocutionsController extends Iron_Controller_Rest_BaseController
                 'encodedFile' => array(
                     'type' => "int",
                     'required' => false,
-                    'comment' => '[FSO:keepExtension|storeInBaseFolder]',
+                    'comment' => '[FSO:keepExtension]',
                 ),
                 'status' => array(
                     'type' => "varchar",

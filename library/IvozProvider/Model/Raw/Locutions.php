@@ -81,7 +81,7 @@ class Locutions extends ModelAbstract
     protected $_originalFileBaseName;
 
     /**
-     * [FSO:keepExtension|storeInBaseFolder]
+     * [FSO:keepExtension]
      * Database var type int
      *
      * @var int
@@ -275,7 +275,7 @@ class Locutions extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'originalFileFileSize'=> array('FSO:keepExtension'),
-            'encodedFileFileSize'=> array('FSO:keepExtension|storeInBaseFolder'),
+            'encodedFileFileSize'=> array('FSO:keepExtension'),
             'status'=> array('enum:pending|encoding|ready|error'),
         ));
 
@@ -403,7 +403,7 @@ class Locutions extends ModelAbstract
         $this->_originalFileFso = new \Iron_Model_Fso($this, $this->getOriginalFileSpecs());
         $this->_originalFileFso->getPathResolver()->setModifiers(array('keepExtension' => true));
         $this->_encodedFileFso = new \Iron_Model_Fso($this, $this->getEncodedFileSpecs());
-        $this->_encodedFileFso->getPathResolver()->setModifiers(array('keepExtension' => true,'storeInBaseFolder' => true));
+        $this->_encodedFileFso->getPathResolver()->setModifiers(array('keepExtension' => true));
 
         return $this;
     }

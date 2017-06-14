@@ -235,7 +235,7 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recorder", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
+     * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension]")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/recordings/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -284,7 +284,7 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recorder", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension|storeInBaseFolder]")
+     * @ApiParams(name="recordedFile", nullable=true, type="int", sample="", description="[FSO:keepExtension]")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -427,7 +427,7 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                 'recordedFile' => array(
                     'type' => "int",
                     'required' => false,
-                    'comment' => '[FSO:keepExtension|storeInBaseFolder]',
+                    'comment' => '[FSO:keepExtension]',
                 ),
             )
         );
@@ -483,7 +483,7 @@ class Rest_RecordingsController extends Iron_Controller_Rest_BaseController
                 'recordedFile' => array(
                     'type' => "int",
                     'required' => false,
-                    'comment' => '[FSO:keepExtension|storeInBaseFolder]',
+                    'comment' => '[FSO:keepExtension]',
                 ),
             )
         );

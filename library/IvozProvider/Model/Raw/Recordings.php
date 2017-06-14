@@ -96,7 +96,7 @@ class Recordings extends ModelAbstract
     protected $_recorder;
 
     /**
-     * [FSO:keepExtension|storeInBaseFolder]
+     * [FSO:keepExtension]
      * Database var type int
      *
      * @var int
@@ -148,7 +148,7 @@ class Recordings extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'type'=> array('enum:ondemand|ddi'),
-            'recordedFileFileSize'=> array('FSO:keepExtension|storeInBaseFolder'),
+            'recordedFileFileSize'=> array('FSO:keepExtension'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -192,7 +192,7 @@ class Recordings extends ModelAbstract
     protected function _initFileObjects()
     {
         $this->_recordedFileFso = new \Iron_Model_Fso($this, $this->getRecordedFileSpecs());
-        $this->_recordedFileFso->getPathResolver()->setModifiers(array('keepExtension' => true,'storeInBaseFolder' => true));
+        $this->_recordedFileFso->getPathResolver()->setModifiers(array('keepExtension' => true));
 
         return $this;
     }

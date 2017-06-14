@@ -1,4 +1,5 @@
 # ... FIXME ...
 profiles/data/*         /
 scripts/CDRparser.pl    /opt/irontec/ivozprovider/scripts/
+scripts/FSObase2index.sh /opt/irontec/ivozprovider/scripts/
 debian/systemd/cdrparser.timer           /lib/systemd/system
