@@ -18,7 +18,7 @@
     );
 
     /** Composer **/
-    require_once __DIR__ . '/../library/Composer/vendor/autoload.php';
+    require_once __DIR__ . '/../library/vendor/autoload.php';
 
     require_once 'Zend/Loader/Autoloader.php';
     $loader = Zend_Loader_Autoloader::getInstance();

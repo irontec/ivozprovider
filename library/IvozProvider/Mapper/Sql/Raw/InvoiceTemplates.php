@@ -52,6 +52,8 @@ class InvoiceTemplates extends MapperAbstract
                 'name' => $model->getName(),
                 'description' => $model->getDescription(),
                 'template' => $model->getTemplate(),
+                'templateHeader' => $model->getTemplateHeader(),
+                'templateFooter' => $model->getTemplateFooter(),
                 'brandId' => $model->getBrandId(),
             );
         } else {
@@ -568,12 +570,16 @@ class InvoiceTemplates extends MapperAbstract
                   ->setName($data['name'])
                   ->setDescription($data['description'])
                   ->setTemplate($data['template'])
+                  ->setTemplateHeader($data['templateHeader'])
+                  ->setTemplateFooter($data['templateFooter'])
                   ->setBrandId($data['brandId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
                   ->setDescription($data->{'description'})
                   ->setTemplate($data->{'template'})
+                  ->setTemplateHeader($data->{'templateHeader'})
+                  ->setTemplateFooter($data->{'templateFooter'})
                   ->setBrandId($data->{'brandId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\InvoiceTemplates) {
@@ -581,6 +587,8 @@ class InvoiceTemplates extends MapperAbstract
                   ->setName($data->getName())
                   ->setDescription($data->getDescription())
                   ->setTemplate($data->getTemplate())
+                  ->setTemplateHeader($data->getTemplateHeader())
+                  ->setTemplateFooter($data->getTemplateFooter())
                   ->setBrandId($data->getBrandId());
 
         }

@@ -52,6 +52,20 @@ class InvoiceTemplates extends ModelAbstract
     protected $_template;
 
     /**
+     * Database var type text
+     *
+     * @var text
+     */
+    protected $_templateHeader;
+
+    /**
+     * Database var type text
+     *
+     * @var text
+     */
+    protected $_templateFooter;
+
+    /**
      * Database var type int
      *
      * @var int
@@ -80,6 +94,8 @@ class InvoiceTemplates extends ModelAbstract
         'name'=>'name',
         'description'=>'description',
         'template'=>'template',
+        'templateHeader'=>'templateHeader',
+        'templateFooter'=>'templateFooter',
         'brandId'=>'brandId',
     );
 
@@ -287,6 +303,74 @@ class InvoiceTemplates extends ModelAbstract
     public function getTemplate()
     {
         return $this->_template;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param text $data
+     * @return \IvozProvider\Model\Raw\InvoiceTemplates
+     */
+    public function setTemplateHeader($data)
+    {
+
+        if ($this->_templateHeader != $data) {
+            $this->_logChange('templateHeader', $this->_templateHeader, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_templateHeader = $data;
+
+        } else if (!is_null($data)) {
+            $this->_templateHeader = (string) $data;
+
+        } else {
+            $this->_templateHeader = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column templateHeader
+     *
+     * @return text
+     */
+    public function getTemplateHeader()
+    {
+        return $this->_templateHeader;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param text $data
+     * @return \IvozProvider\Model\Raw\InvoiceTemplates
+     */
+    public function setTemplateFooter($data)
+    {
+
+        if ($this->_templateFooter != $data) {
+            $this->_logChange('templateFooter', $this->_templateFooter, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_templateFooter = $data;
+
+        } else if (!is_null($data)) {
+            $this->_templateFooter = (string) $data;
+
+        } else {
+            $this->_templateFooter = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column templateFooter
+     *
+     * @return text
+     */
+    public function getTemplateFooter()
+    {
+        return $this->_templateFooter;
     }
 
     /**

@@ -28,8 +28,10 @@ production:
             invoiceTemplatesDel_dialog: true
           default: invoiceTemplatesEdit_screen
         blacklist:
+          templateHeader: true
           template: true
-      options: 
+          templateFooter: true
+      options:
         title: _("Options")
         screens: 
           invoiceTemplatesNew_screen: true
@@ -57,6 +59,8 @@ production:
           colsPerRow: 1
           fields:
             template: 1
+            templateHeader: 1
+            templateFooter: 1
       <<: *invoiceTemplateHelp
     invoiceTemplatesEdit_screen: &invoiceTemplatesEdit_screenLink 
       <<: *InvoiceTemplates

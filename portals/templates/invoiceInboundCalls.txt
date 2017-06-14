@@ -1,175 +1,301 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pdf SYSTEM "%resources%/dtd/doctype.dtd">
-<pdf>
-    <dynamic-page>
-        <placeholders>
-            <header>
-                <div height="60px" border.type="none" margin="0px 0px 20px 0px">
-                    <img src="{{brand.logoPath}}" float="left" height="30px" ignore-error="yes"></img>
-                    <div float="right" text-align="right" width="60%">
-                        <p margin="0px" padding="0px" font-style="bold">{{brand.name}}</p>
-                        <p margin="0px" padding="0px" font-style="bold">{{brand.postalAddress}}, {{brand.postalCode}} {{brand.town}}, {{brand.province}} </p>
-                        <p margin="0px" padding="0px">NIF / CIF: {{brand.nif}}</p>
-                    </div>
-                    <div height="10px" border.color="red" border.type="bottom" border.size="1px" />
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            font-size: 11px;
+            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+        }
+        h2 {
+            font-size: 15px;
+        }
+        div{
+            page-break-inside: avoid;
+        }
+        div.theader {
+            width: 100%;
+            text-align: center;
+            margin: 25px 0 5px;
+            font-weight: bold;
+            font-size: 20px;
+            border: none;
+        }
+        div.table {
+            display: table;
+            margin-bottom: 5px;
+            text-align: center;
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+        div.tbody {
+            display: table-row-group;
+        }
+        div.table div.tr {
+            display: table-row;
+            border: 1px solid black;
+            page-break-inside: avoid;
+        }
+        div.table div.th {
+            display: table-cell;
+            border-right: 1px solid black;
+            background-color: black;
+            border-bottom: 1px solid black;
+            color: white;
+            font-weight: bold;
+            padding: 5px 0 2px;
+        }
+        div.table div.tr:not(:last-child) div.th {
+            border-bottom: 1px solid white;
+        }
+        div.table div.tr div.th:not(:last-child) {
+            border-right: 1px solid white;
+        }
+        div.table div.td {
+            display: table-cell;
+            width: 50%;
+            padding: 5px 0 5px;
+            font-weight: normal;
+            background-color: white;
+            border: 1px solid black;
+            color: black;
+        }
+        .bold {
+            font-weight: bold!important;
+        }
+        .center {
+            text-align: center!important;
+        }
+        .left {
+            float: left!important;
+        }
+        .noBorder {
+            border: none!important;
+        }
+        .clientData {
+            width: 60%;
+            float: left;
+        }
+        .clientData h2 {
+            margin: 0;
+        }
+        .clientData p {
+            margin: 0px 0px 0px 20px;
+            padding: 0;
+        }
+        .invoiceData {
+            width: 30%;
+            float: right;
+            text-align: right;
+        }
+        .invoiceData p {
+            margin: 0;
+            padding: 0;
+        }
+        .clearFloats {
+            clear:both;
+        }
+        #content {
+            margin: 10px 0;
+        }
+        #subheader .left {
+            width: 60%;
+            font-weight: bold;
+        }
+        #subheader .left p {
+            font-size: 32px;
+            margin-top: 0;
+        }
+        #subheader .right {
+            width: 35%;
+            text-align: right;
+            float: right;
+        }
+        #subheader .right p.title {
+            margin: 0px;
+            padding: 0;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        #subheader .right p.date {
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+        }
+        #content > div.table {
+            text-align: center;
+            width: 50%;
+            float: right;
+            border: none;
+            border-collapse: collapse;
+        }
+        #callsPerTypeSummary > div.table {
+            text-align: center;
+            width: 100%;
+        }
+        #content {
+            width: 100%;
+        }
+        #fixedCosts > div.table {
+            clear: both;
+        }
+        #fixedCosts div.table div.td {
+            width: 25%;
+        }
+        #summary {
+            width: 50%;
+            float: right;
+        }
+        #callsPerTypeSummary div.td {
+            width: 25%;
+        }
+        #callsPerType div.td {
+            width: 20%;
+        }
+    </style>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="content">
+    <div id="subheader">
+        <div class="left">
+            <p class="left">Factura</p>
+        </div>
+        <div class="right">
+            <p class="title">Fecha</p>
+            <p class="date">{{invoice.invoiceDate}}</p>
+        </div>
+    </div>
+    <div>
+        <div class="clientData">
+            <h2>Cliente</h2>
+            <p>{{company.name}}</p>
+            <p>{{company.postalAddress}}</p>
+            <p>{{company.postalCode}} {{company.town}}, {{company.province}} </p>
+            <p>NIF / CIF: {{company.nif}}</p>
+        </div>
+        <div class="invoiceData">
+            <p class="bold">Nº de factura</p>
+            <p>{{invoice.number}}</p>
+            <p class="bold">Periodo de facturación</p>
+            <p>{{invoice.inDate}} - {{invoice.outDate}}</p>
+        </div>
+    </div>
+    <br class="clearFloats" />
+    <div id="summary">
+        <div class="theader center">Resumen</div>
+        <div class="table">
+            <div class="tbody">
+                {{#callSumarytotals.totalPrice}}
+                <div class="tr bold center">
+                    <div class="th">Llamadas</div>
+                    <div class="td white bold">{{callData.callSumaryTotals.totalPrice}} €</div>
                 </div>
-            </header>
-            <footer>
-                <div height="40px" text-align="center">
-                    <div border.color="red" border.type="top+bottom" border.size="1px">
-                        <p font-size="5.5">{{brand.registryData}}</p>
-                    </div>
-                    <div text-align="right" padding="7px">
-                        <page-info format="%s/%s" />
-                    </div>
+                {{/callSumarytotals.totalPrice}}
+                <div class="tr bold">
+                    <div class="th">Total:</div>
+                    <div class="td white bold">{{totals.totalPrice}} €</div>
                 </div>
-            </footer>
-        </placeholders>
-        <div>
-            <div width="60%" font-size="25" font-style="bold" float="left">
-                <p>Factura</p>
-            </div>
-            <div width="35%" text-align="right" float="right">
-                <p margin="10px 0px 0px 0px" padding="0px" font-style="bold" font-size="12">Fecha</p>
-                <p margin="0px" padding="0px">{{invoice.invoiceDate}}</p>
+                <div class="tr bold">
+                    <div class="th">IVA aplicable</div>
+                    <div class="td white bold">{{invoice.taxRate}} %</div>
+                </div>
+                <div class="tr bold">
+                    <div class="th">IVA</div>
+                    <div class="td white bold">{{totals.totalTaxes}} €</div>
+                </div>
+                <div class="tr bold">
+                    <div class="th">Total con IVA</div>
+                    <div class="td white bold">{{totals.totalWithTaxes}} €</div>
+                </div>
             </div>
         </div>
-        <div>
-            <div width="60%" float="left">
-                <h2 margin-bottom="0px">Cliente</h2>
-                <p margin="0px 0px 0px 20px" padding="0px">{{company.name}}</p>
-                <p margin="0px 0px 0px 20px"  padding="0px" >{{company.postalAddress}}</p>
-                <p margin="0px 0px 0px 20px"  padding="0px" >{{company.postalCode}} {{company.town}}, {{company.province}} </p>
-                <p margin="0px 0px 0px 20px" padding="0px">NIF / CIF:{{company.nif}}</p>
-            </div>
-            <div width="30%" float="right" text-align="right">
-                <p margin="0px" padding="0px" font-style="bold">Nº de factura</p>
-                <p margin="0px" padding="0px">{{invoice.number}}</p>
-                <p margin="0px" padding="0px" font-style="bold">Periodo de facturación</p>
-                <p margin="0px" padding="0px">{{invoice.inDate}} - {{invoice.outDate}}</p>
+    </div>
+    <br class="clearFloats" />
+    <div id="callsPerTypeSummary">
+        <div class="theader">Resumen de llamadas por tipo</div>
+        <div class="table">
+            <div class="tbody">
+                <div class="tr">
+                    <div class="th">Tipo</div>
+                    <div class="th">Nº llamadas</div>
+                    <div class="th">Duración total</div>
+                    <div class="th">Precio total</div>
+                </div>
+                <div class="tr">
+                    <div class="td">Llamadas entrantes</div>
+                    <div class="td white">{{callData.inboundCalls.summary.numberOfCalls}}</div>
+                    <div class="td white">{{callData.inboundCalls.summary.totalCallsDurationFormatted}}</div>
+                    <div class="td white">{{callData.inboundCalls.summary.totalPrice}} €</div>
+                </div>
+                {{#callData.callSumary id,value}}
+                <div class="tr">
+                    <div class="td white">{{value.type}}</div>
+                    <div class="td white">{{value.numberOfCalls}}</div>
+                    <div class="td white">{{value.totalCallsDurationFormatted}}</div>
+                    <div class="td white">{{value.totalPrice}} €</div>
+                </div>
+                {{/callData.callSumary}}
+                <div class="tr bold">
+                    <div class="th">Totales:</div>
+                    <div class="td white bold">{{callData.callSumaryTotals.numberOfCalls}}</div>
+                    <div class="td white bold">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</div>
+                    <div class="td white bold">{{callData.callSumaryTotals.totalPrice}} €</div>
+                </div>
             </div>
         </div>
+    </div>
+    <div id="inboundCalls">
+        <div class="theader">Llamadas entrantes</div>
+        <div class="table">
+            <div class="tbody">
+                <div class="tr">
+                    <div class="th">Fecha</div>
+                    <div class="th">Origen</div>
+                    <div class="th">Destino</div>
+                    <div class="th">Duración</div>
+                    <div class="th">Patrón</div>
+                    <div class="th">Precio</div>
+                </div>
+                {{#callData.inboundCalls.calls id,value}}
+                <div class="tr">
+                    <div class="td">{{value.calldate}}</div>
+                    <div class="td">{{value.caller}}</div>
+                    <div class="td">{{value.dst}}</div>
+                    <div class="td">{{value.durationFormatted}}</div>
+                    <div class="td">{{value.targetPattern.name}}</div>
+                    <div class="td">{{value.price}} €</div>
+                </div>
+                {{/callData.inboundCalls.calls}}
+            </div>
+        </div>
+    </div>
 
-        <table margin-top="50px" margin-bottom="5px" text-align="center">
-            <tr border.type="none" margin-bottom="5px" font-style="bold">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td colspan="2" text-align="center" font-size="15" border.type="none">Resumen</td>
-            </tr>
-
-            {{#callSumarytotals.totalPrice}}
-                <tr font-style="bold" text-align="center">
-                    <td border.type="none"></td>
-                    <td border.type="none"></td>
-                    <td padding="5px" border.color="white" background.color="black" color="white">Llamadas</td>
-                    <td padding="5px" border.color="black">{{callData.callSumaryTotals.totalPrice}} €</td>
-                </tr>
-            {{/callSumarytotals.totalPrice}}
-            <tr font-style="bold">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Total:</td>
-                <td text-align="center" padding="5px" border.color="black">{{totals.totalPrice}} €</td>
-            </tr>
-            <tr font-style="bold">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td text-align="center" border.color="white" padding="5px" background.color="black" color="white">IVA aplicable</td>
-                <td text-align="center"  border.color="black" padding="5px" >{{invoice.taxRate}} %</td>
-            </tr>
-            <tr font-style="bold">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td text-align="center" border.color="white" padding="5px" background.color="black" color="white">IVA</td>
-                <td text-align="center" border.color="black" padding="5px" >{{totals.totalTaxes}} €</td>
-            </tr>
-            <tr font-style="bold">
-                <td border.type="none"></td>
-                <td border.type="none"></td>
-                <td text-align="center" border.color="white" padding="5px" background.color="black" color="white">Total con IVA</td>
-                <td text-align="center" border.color="black" padding="5px" >{{totals.totalWithTaxes}} €</td>
-            </tr>
-
-        </table>
-
-        <table margin-top="50px" margin-bottom="5px" text-align="center">
-            <tr border.type="none" margin-bottom="5px" font-style="bold">
-                <td colspan="4" text-align="center" font-size="15" border.type="none">Resumen de llamadas por tipo</td>
-            </tr>
-            <tr background.color="black" color="white" border.color="black" font-style="bold" text-align="center">
-                <td padding="5px" border.color="white">Tipo</td>
-                <td padding="5px" border.color="white">Nº llamadas</td>
-                <td padding="5px" border.color="white">Duración total</td>
-                <td padding="5px" border.color="white">Precio total</td>
-            </tr>
-          	<tr>
-                <td padding="2px">Llamadas entrantes</td>
-                <td padding="2px">{{callData.inboundCalls.summary.numberOfCalls}}</td>
-                <td padding="2px">{{callData.inboundCalls.summary.totalCallsDurationFormatted}}</td>
-                <td padding="2px">{{callData.inboundCalls.summary.totalPrice}} €</td>
-            </tr>
-            {{#callData.callSumary id,value}}
-            <tr>
-                <td padding="2px">{{value.type}}</td>
-                <td padding="2px">{{value.numberOfCalls}}</td>
-                <td padding="2px">{{value.totalCallsDurationFormatted}}</td>
-                <td padding="2px">{{value.totalPrice}} €</td>
-            </tr>
-            {{/callData.callSumary}}
-            <tr font-style="bold">
-                <td text-align="center" border.color="white" background.color="black" color="white" padding="5px">Totales:</td>
-                <td text-align="center" padding="5px">{{callData.callSumaryTotals.numberOfCalls}}</td>
-                <td text-align="center" padding="5px">{{callData.callSumaryTotals.totalCallsDurationFormatted}}</td>
-                <td text-align="center" padding="5px">{{callData.callSumaryTotals.totalPrice}} €</td>
-            </tr>
-        </table>
-
-        <table margin-bottom="5px" margin-top="50px">
-            <tr border.type="none" margin-bottom="5px" font-style="bold">
-                <td colspan="6" text-align="center" font-size="15" border.type="none">Llamadas entrantes</td>
-            </tr>
-            <tr background.color="black" color="white" border.color="black" font-style="bold" text-align="center">
-                <td padding="5px" border.color="white">Fecha</td>
-                <td padding="5px" border.color="white">Origen</td>
-                <td padding="5px" border.color="white">Destino</td>
-                <td padding="5px" border.color="white">Duración</td>
-                <td padding="5px" border.color="white">Patrón</td>
-                <td padding="5px" border.color="white">Precio</td>
-            </tr>
-            {{#callData.inboundCalls.calls id,value}}
-            <tr border.color="black" text-align="center">
-                <td padding="5px" >{{value.calldate}}</td>
-                <td padding="5px" >{{value.caller}}</td>
-                <td padding="5px" >{{value.dst}}</td>
-                <td padding="5px" >{{value.durationFormatted}}</td>
-                <td padding="5px" >{{value.targetPattern.name}}</td>
-                <td padding="5px" >{{value.price}} €</td>
-            </tr>
-            {{/callData.inboundCalls.calls}}
-        </table>
-
-        {{#callData.callsPerType id,value}}
-        <table margin-bottom="5px" margin-top="50px">
-            <tr border.type="none" margin-bottom="5px" font-style="bold">
-                <td colspan="5" text-align="center" font-size="15" border.type="none">{{value.0.targetPattern.name}}</td>
-            </tr>
-            <tr background.color="black" color="white" border.color="black" font-style="bold" text-align="center">
-                <td padding="5px" border.color="white">Fecha</td>
-                <td padding="5px" border.color="white">Destino</td>
-                <td padding="5px" border.color="white">Duración</td>
-                <td padding="5px" border.color="white">Plan</td>
-                <td padding="5px" border.color="white">Precio</td>
-            </tr>
-            {{#value id,call}}
-            <tr border.color="black" text-align="center">
-                <td padding="5px" >{{call.calldate}}</td>
-                <td padding="5px" >{{call.dst}}</td>
-                <td padding="5px" >{{call.durationFormatted}}</td>
-                <td padding="5px" >{{call.pricingPlan.name}}</td>
-                <td padding="5px" >{{call.price}} €</td>
-            </tr>
-            {{/value}}
-        </table>
-        {{/callData.callsPerType}}
-    </dynamic-page>
-</pdf>
+    {{#callData.callsPerType id,value}}
+    <div id="callsPerType">
+        <div class="theader" colspan="5">{{value.0.targetPattern.name}}</div>
+        <div class="table">
+            <div class="tbody">
+                <div class="tr">
+                    <div class="th">Fecha</div>
+                    <div class="th">Destino</div>
+                    <div class="th">Duración</div>
+                    <div class="th">Plan</div>
+                    <div class="th">Precio</div>
+                </div>
+                {{#value id,call}}
+                <div class="tr">
+                    <div class="td white">{{call.calldate}}</div>
+                    <div class="td white">{{call.dst}}</div>
+                    <div class="td white">{{call.durationFormatted}}</div>
+                    <div class="td white">{{call.pricingPlan.name}}</div>
+                    <div class="td white">{{call.price}} €</div>
+                </div>
+                {{/value}}
+            </div>
+        </div>
+    </div>
+    {{/callData.callsPerType}}
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            font-size: 11px;
+            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+            padding-top: 45px;
+            border-bottom: 1px solid red;
+            margin: 45px 8px 0;
+        }
+        .bold {
+            font-weight: bold!important;
+        }
+        .center {
+            text-align: center!important;
+        }
+        .left {
+            float: left!important;
+        }
+        #header {
+            text-align: right;
+            height: 50px;
+        }
+        #header img {
+            float: left;
+            height: 30px;
+        }
+        #header p {
+            margin: 0;
+        }
+        #header .redLine {
+            border-color: red;
+            border-width: 0 0 1px 0;
+        }
+    </style>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="header">
+    <div>
+        <img src="{{brand.logoPath}}">
+        <div>
+            <p class="bold">{{brand.name}}</p>
+            <p class="bold">{{brand.postalAddress}}, {{brand.postalCode}} {{brand.town}}, {{brand.province}} </p>
+            <p>NIF / CIF: {{brand.nif}}</p>
+        </div>
+        <div class="redLine">
+        </div>
+    </div>
+</div>
+</body>
+</html>
