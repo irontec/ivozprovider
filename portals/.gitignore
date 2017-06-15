@@ -2,6 +2,7 @@
 application/configs/klear/generator.log
 application/configs/klearRaw/generator.log
 application/views/scripts/portal/
+application/languages/*/*.mo
 public/apple-touch-icon.png
 public/fonts/glyphicons-halflings-regular.eot
 public/fonts/glyphicons-halflings-regular.svg
@@ -11,6 +12,5 @@ public/fonts/glyphicons-halflings-regular.woff2
 public/styles/bootswatch/.bower.json
 public/styles/bootswatch/README.md
 public/styles/bootswatch/bower.json
-public/application/languages/**.mo
 e2e/node_modules
 e2e/reports
