@@ -11,7 +11,8 @@ my $msgmerge_args=" --update --backup none";
 my $msgfmt_bin="/usr/bin/msgfmt";
 my $msgfmt_args="";
 
-my $base_path = "/opt/irontec/ivozprovider/portals/";
+# Assuming is stored at application/bin/
+my $base_path = "./";
 
 # All excluded paths are prefixed with base_path
 my @exclude_path = (
