@@ -191,6 +191,9 @@ msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr ""
 "Invoices have been enqueued. They will be generated as soon as posible."
 
+msgid "Invoice template tester"
+msgstr "Invoice template tester"
+
 msgid "Restore backup"
 msgstr "Restore backup"
 

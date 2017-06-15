@@ -6,19 +6,21 @@ invoiceTemplateHelp:
       icon: help
       label: _("Templates help")
       text:
-        "<p>Templates are created using wkhtmltopdf library. You can get info in <a href='https://wkhtmltopdf.org/' target='_blank'> here </a></p>
+        "<p>Templates are parsed by <a href='https://github.com/XaminProject/handlebars.php' target='_blank'> handlebars </a>
+        and rendered using <a href='https://wkhtmltopdf.org/' target='_blank'> wkhtmltopdf </a> library.</p>
+        <p>You can learn about template expressions <a target='_blank' href='http://handlebarsjs.com/expressions.html'>here</a>.</p>
         <p>Template receives an array of data and you can use this data using the notation '{{firstLevelKey.secondLevelKey.thirdLevelKey}}'</p>
         <p style='line-height: 17px;'> You can iterate over array using<br />
-        {{#firstLevelKey.secondLevelKey id,value}}<br />
-            {{value.type}}<br />
-        {{/firstLevelKey.secondLevelKey}}</p>
-        <p>You can acces all data from following models</p>
+        {{#each firstLevelKey.secondLevelKey}}<br />
+            {{valueInSecondLevelKey}}<br />
+        {{/each}}</p>
+        <p>You can access all data from following models</p>
         <ul style='margin-left: 30px; line-height: 17px;'>
           <li>Invoices: Using key 'invoice'</li>
           <li>Companies: Using key 'company'</li>
           <li>Brands: Using key 'brands'</li>
         </ul>
-        <p>You can access to following calculated data using key 'callData' whith following subkeys:</p>
+        <p>You can access to following calculated data using key 'callData' with the following subkeys:</p>
           <ul style='margin-left: 30px; line-height: 17px;'>
             <li>callSumary: Sumary data of invoiced calls grouped by type. Keys of callSumary are call types
               <ul style='margin-left: 30px'>
@@ -51,11 +53,8 @@ invoiceTemplateHelp:
           </ul>
           <p>You can use the following examples as a base for your custom Invoice template
             <ul style='margin-left: 30px; line-height: 20px;'>
-                <li><a href='/templates/invoice.txt' target='_blank' >Basic Invoice template</a></li>
-                <li><a href='/templates/invoiceFixedCosts.txt' target='_blank'>Fixed costs Invoice template</a></li>
-                <li><a href='/templates/invoiceFixedCostsWithDescriptions.txt' target='_blank'>Fixed costs Invoice template with descriptions</a></li>
-                <li><a href='/templates/invoiceInboundCalls.txt' target='_blank'>Inbound calls Invoice template</a></li>
-                <li><a href='/templates/invoiceFixedCostsAndInboundCalls.txt' target='_blank'>Fixed costs and Inbound calls Invoice template</a></li>
+                <li><a href='/templates/basic.txt' target='_blank' >Basic invoice template</a></li>
+                <li><a href='/templates/detailed.txt' target='_blank'>Detailed invoice template</a></li>
             </ul>
           </p>
         "
@@ -69,7 +68,7 @@ invoiceTemplateFooterHeaderHelp:
       label: _("Template headers and footers help")
       text:
         "
-        <p>Template headers are called and rendered for every PDF page.</p>
+        <p>Template headers and footers are called and rendered for every PDF page.</p>
         <p>
           In addition to the features described above for template body, header and footer templates have access to
           some special javascript values such as the current page number.

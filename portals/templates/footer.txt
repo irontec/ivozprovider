@@ -25,8 +25,8 @@
      </p>
      <div id="footer">
        <p>
-         <span id="page">page</span>
-         / <span id="topage">topage</span>
+         <span id="page"></span>
+         / <span id="topage"></span>
        </p>
      </div>
     <script>

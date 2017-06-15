@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2ea94cebd4ad6d75639587460791bb43",
-    "content-hash": "ef40375e3e77cf6ca8714748924df0f5",
+    "hash": "36fb20546f6bfc3ec792991ba3fd2e79",
+    "content-hash": "37a1c834302f7485e833957bdc47fb1c",
     "packages": [
         {
             "name": "crada/php-apidoc",
@@ -257,6 +257,48 @@
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
             "time": "2017-05-22 12:32:03"
+        },
+        {
+            "name": "xamin/handlebars.php",
+            "version": "v0.10.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/XaminProject/handlebars.php.git",
+                "reference": "b85cee07eae96db0e1eec224ca90f5ce1e4d857a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/b85cee07eae96db0e1eec224ca90f5ce1e4d857a",
+                "reference": "b85cee07eae96db0e1eec224ca90f5ce1e4d857a",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Handlebars": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "fzerorubigd",
+                    "email": "fzerorubigd@gmail.com"
+                },
+                {
+                    "name": "Behrooz Shabani (everplays)",
+                    "email": "everplays@gmail.com"
+                }
+            ],
+            "description": "Handlebars processor for php",
+            "homepage": "https://github.com/XaminProject/handlebars.php",
+            "time": "2016-12-12 13:51:02"
         }
     ],
     "packages-dev": [],

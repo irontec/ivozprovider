@@ -1,8 +1,12 @@
 <?php
 
+use Knp\Snappy\Pdf;
+use Handlebars\Handlebars;
+
 class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
 {
     protected $_mainRouter;
+
     protected $_pk ;
 
     public function init()
@@ -24,7 +28,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         $this->_helper->layout->disableLayout();
     }
 
-    public function    indexAction()
+    public function indexAction()
     {
 
         $this->_pk = $this->getRequest()->getParam("pk");
@@ -40,44 +44,44 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
     protected function _getDefaultData()
     {
 
-        $engine = 'pdf';
-        $facade = \PHPPdf\Core\FacadeBuilder::create()
-        ->setEngineType($engine)
-        ->setEngineOptions(
-                array(
-                        'format' => 'jpg',
-                        'quality' => 70,
-                        'engine' => 'imagick',
-                )
-        )
-        ->build();
         $templateMapper = new \IvozProvider\Mapper\Sql\InvoiceTemplates();
         $templateModel = $templateMapper->find($this->_pk);
-        $template = $templateModel->getTemplate();
 
         $variables = $this->_getSampleData();
-        $xml = \PHPPdf\Core\TemplateFormatter::format($template, $variables);
-        $content = $facade->render($xml);
+        $templateEngine = new Handlebars;
+        $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
+        $body = $templateEngine->render($templateModel->getTemplate(), $variables);
+        $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
 
-        $tempFilePath = APPLICATION_PATH."/../public/temp/template.pdf";
-        $tempFile = file_put_contents($tempFilePath, $content);
+        $architecture = (php_uname("m") === 'x86_64') ? 'amd64' : 'i386';
 
-        $tempFileLink = $this->view->serverUrl()."/temp/template.pdf";
-        $message = "<h2>Click <a href='".$tempFileLink."' target='_blank'> here </a> to view the template.pdf</p>";
+        $snappy = new Pdf(APPLICATION_PATH . '/../../library/vendor/bin/wkhtmltopdf-' . $architecture);
+        $snappy->setOption('header-html', $header);
+        $snappy->setOption('header-spacing', 3);
+        $snappy->setOption('footer-html', $footer);
+        $snappy->setOption('footer-spacing', 3);
+        $content = $snappy->getOutputFromHtml($body);
+        $snappy->removeTemporaryFiles();
+
+        $templateFolder = "/invoice-template-tester/";
+        $targetFolder = APPLICATION_PATH . "/../public" . $templateFolder;
+
+        if (!file_exists($targetFolder)) {
+            mkdir($targetFolder, 0777, true);
+        }
+
+        $tempFilePath = $targetFolder . $this->_pk .".pdf";
+        file_put_contents($tempFilePath, $content);
+
+        $tempFileLink = $this->view->serverUrl() . $templateFolder . $this->_pk . ".pdf";
+        $message = "<h2>Click <a href='".$tempFileLink."' target='_blank'> <span class=\"ui-silk inline ui-silk-page-white-acrobat\"></span>here</a> to view the result</p>";
 
         $data = array(
-            "title" =>"Default Dialog Title",
+            "title" => _("Invoice template tester"),
             "message" => $message,
             "options" => array('width'=>'300px'),
             "buttons" => array(
-                _("Ok") => array(
-                  "recall" => true,
-                  "reloadParent" => false,
-                  "params" => array(
-                      "ok" => true
-                      ),
-                  ),
-              _("Cancel") => array(
+              _("Close") => array(
                   "recall" => false,
                   "reloadParent" => false
               )
@@ -103,8 +107,6 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         return $data;
     }
 
-
-
     protected function _dispatchResponse($data)
     {
         //Inicia los plugins de KlearMatrix
@@ -119,1161 +121,315 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
     protected function _getSampleData()
     {
         return array (
-                'invoice' =>
-                array (
-                        'id' => 34,
-                        'number' => '667',
-                        'inDate' => '1/5/2015',
-                        'outDate' => '16/5/2015',
-                        'total' => 5.5700000000000003,
-                        'taxRate' => 20,
-                        'totalWithTax' => 6.6900000000000004,
-                        'status' => 'created',
-                        'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                        'brandId' => 2,
-                        'pdfFileFileSize' => 43962,
-                        'pdfFileMimeType' => 'application/pdf; charset=binary',
-                        'pdfFileBaseName' => 'invoice.pdf',
-                        'invoiceTemplateId' => '5587e6ce-34c8-4cd1-9d32-5884ac110002',
-                        'invoiceDate' => '24/6/2015',
+            'fixedCosts' => array(
+                array(
+                    "quantity" => 1,
+                    "name" => "Business Plan",
+                    "description" => "plan description",
+                    "cost" => 10.3300,
+                    "subTotal" => 10.3300
                 ),
-                'company' =>
-                array (
-                        'id' => '54ca50c1-469c-462b-8aef-333005c42085',
-                        'brandId' => 2,
-                        'name' => 'IRONTEC Internet y Sistemas sobre GNU/Linux S.L.',
-                        'nif' => 'B-95274890',
-                        'defaultTimezoneId' => 158,
-                        'musicOnHoldId' => NULL,
-                        'applicationServerId' => '54ca52dc-5ff4-424c-8b4c-333705c42085',
-                        'transformationRulesetGroupsId' => '553f8f6b-aa50-4cae-978c-423505c42085',
-                        'externalMaxCalls' => 0,
-                        'postalAddress' => ' Uribitarte 6, 2º',
-                        'postalCode' => '48001',
-                        'town' => 'Bilbao',
-                        'province' => 'Bizkaia',
-                        'country' => 'España',
-                        'invoiceLanguageId' => '54ca816d-5600-4a19-82fe-333405c42085',
-                ),
-                'brand' =>
-                array (
-                        'id' => 2,
-                        'name' => 'IRONTEC Internet y Sistemas sobre GNU/Linux S.L.',
-                        'nif' => 'B-95274890',
-                        'extensionBlackListRegExp' => '',
-                        'domain' => 'oasis-dev.irontec.com',
-                        'defaultTimezoneId' => 145,
-                        'logoFileSize' => 10130,
-                        'logoMimeType' => 'image/png; charset=binary',
-                        'logoBaseName' => 'logo_irontec_2.0.png',
-                        'postalAddress' => ' Uribitarte 6, 2º',
-                        'postalCode' => '48001',
-                        'town' => 'Bilbao',
-                        'province' => 'Bizkaia',
-                        'country' => 'España',
-                        'registryData' => 'IRONTEC Internet y Sistemas sobre GNU/Linux S.L., Uribitarte 6, 2º, 48001 Bilbao, Bizkaia, Inscrita en el Registro Mercantil de Bizkaia, tomo 4324, libro 0, folio 124, hoja BI-37480, C.I.F. B-95274890',
-                        'logoPath' => '/vagrant/www/portals/storage/oasis_model_brands.logo/0//2',
-                ),
-                'callData' =>
-                array (
-                        'callSumary' =>
+            ),
+            'fixedCostsTotals' => 10.3300,
+            'invoice' =>
+            array (
+                'number' => '667',
+                'inDate' => '1/5/2017',
+                'outDate' => '16/5/2017',
+                'total' => 5.5700000000000003,
+                'taxRate' => 20,
+                'totalWithTax' => 6.6900000000000004,
+                'invoiceDate' => '24/6/2017',
+            ),
+            'company' =>
+            array (
+                'name' => 'IRONTEC Internet y Sistemas sobre GNU/Linux S.L.',
+                'nif' => 'B-95274890',
+                'postalAddress' => ' Uribitarte 6, 2º',
+                'postalCode' => '48001',
+                'town' => 'Bilbao',
+                'province' => 'Bizkaia'
+            ),
+            'brand' =>
+            array (
+                'name' => 'Ivoz Provider',
+                'nif' => 'B-95274890',
+                'postalAddress' => ' Uribitarte 6, 2º',
+                'postalCode' => '48001',
+                'town' => 'Bilbao',
+                'province' => 'Bizkaia',
+                'registryData' => 'Multitenant solution for VoIP telephony providers'
+            ),
+            'callData' =>
+            array (
+                    'callSumary' =>
+                    array (
+                            array (
+                                'type' => 'Spain',
+                                'numberOfCalls' => 7,
+                                'totalCallsDuration' => 227,
+                                'totalPrice' => 2.6300000000000003,
+                                'totalCallsDurationFormatted' => '00:03:47',
+                            ),
+                            array (
+                                'type' => 'United Kingdom',
+                                'numberOfCalls' => 13,
+                                'totalCallsDuration' => 81,
+                                'totalPrice' => 2.9399999999999999,
+                                'totalCallsDurationFormatted' => '00:01:21',
+                            ),
+                    ),
+                    'callsPerType' =>
+                    array (
                         array (
-                                'e1a1b0d5876f0193b10cccf0ccb4e4d4' =>
+                            'items' => array(
+                                0 =>
                                 array (
-                                        'type' => 'Fijos Locales',
-                                        'numberOfCalls' => 7,
-                                        'totalCallsDuration' => 227,
-                                        'totalPrice' => 2.6300000000000003,
-                                        'totalCallsDurationFormatted' => '00:03:47',
+                                    'id' => 2418,
+                                    'calldate' => '7/5/2017 18:28:21',
+                                    'dst' => '944048182',
+                                    'price' => '0.05',
+                                    'durationFormatted' => '00:00:03',
+                                    'targetPattern' =>
+                                    array (
+                                        'id' => 8,
+                                        'name_en' => 'Local fixed',
+                                        'name_es' => 'Spain',
+                                        'description_en' => '',
+                                        'description_es' => '',
+                                        'regExp' => '/^0?94[0-9]{7}$/',
+
+                                        'name' => 'Spain',
+                                        'description' => '',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                        'name' => 'Plan estándar 2017',
+                                    ),
                                 ),
-                                '92bc8e2faa7125aa195f2360d542f9aa' =>
+                                1 =>
                                 array (
-                                        'type' => 'Móviles',
-                                        'numberOfCalls' => 13,
-                                        'totalCallsDuration' => 81,
-                                        'totalPrice' => 2.9399999999999999,
-                                        'totalCallsDurationFormatted' => '00:01:21',
+                                    'id' => 2442,
+                                    'calldate' => '8/5/2017 8:21:20',
+                                    'dst' => '944048182',
+                                    'price' => '1.05',
+                                    'durationFormatted' => '00:01:34',
+                                    'targetPattern' =>
+                                    array (
+                                            'id' => 8,
+                                            'name' => 'Spain',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Plan estándar 2017',
+                                    ),
                                 ),
+                                2 =>
+                                array (
+                                    'id' => 2467,
+                                    'calldate' => '11/5/2017 9:34:05',
+                                    'dst' => '944048182',
+                                    'price' => '0.09',
+                                    'durationFormatted' => '00:00:06',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'Spain',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Plan estándar 2017',
+                                    ),
+                                ),
+                                3 =>
+                                array (
+                                    'id' => 2475,
+                                    'calldate' => '11/5/2017 9:37:15',
+                                    'dst' => '944048182',
+                                    'price' => '0.50',
+                                    'durationFormatted' => '00:00:44',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'Spain',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Plan estándar 2017',
+                                    ),
+                                ),
+                                4 =>
+                                array (
+                                    'id' => 2482,
+                                    'calldate' => '11/5/2017 9:39:58',
+                                    'dst' => '944048182',
+                                    'price' => '0.29',
+                                    'durationFormatted' => '00:00:25',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'Spain',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Plan estándar 2017',
+                                    ),
+                                ),
+                                5 =>
+                                array (
+                                    'id' => 2484,
+                                    'calldate' => '11/5/2017 9:40:26',
+                                    'dst' => '944048182',
+                                    'price' => '0.36',
+                                    'durationFormatted' => '00:00:31',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'Spain',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Plan estándar 2017',
+                                    ),
+                                ),
+                            )
                         ),
-                        'callsPerType' =>
                         array (
-                                'e1a1b0d5876f0193b10cccf0ccb4e4d4' =>
+                            'items' => array(
+                                0 =>
                                 array (
-                                        0 =>
-                                        array (
-                                                'id' => 2418,
-                                                'calldate' => '7/5/2015 18:28:21',
-                                                'src' => '1007',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 2,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 3,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '4f317e97-453deeeb@10.10.1.123',
-                                                'bleg' => 'f732713a-3313-40ad-9456-876acd0007b2',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '0.05',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":0.048}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:03',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        1 =>
-                                        array (
-                                                'id' => 2442,
-                                                'calldate' => '8/5/2015 8:21:20',
-                                                'src' => '1006',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 93,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 94,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1771519605@10.10.0.139',
-                                                'bleg' => '0568d83f-4110-4aba-9ae7-6e2273502b34',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '1.05',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":1.049}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:01:34',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        2 =>
-                                        array (
-                                                'id' => 2467,
-                                                'calldate' => '11/5/2015 9:34:05',
-                                                'src' => '1007',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 5,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 6,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => 'b670fc16-8a31c8e2@10.10.1.123',
-                                                'bleg' => '4a180817-81f2-4e20-9845-423d866c796d',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '0.09',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":0.081}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:06',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        3 =>
-                                        array (
-                                                'id' => 2475,
-                                                'calldate' => '11/5/2015 9:37:15',
-                                                'src' => '1006',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 43,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 44,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '710268655@10.10.0.139',
-                                                'bleg' => '90342455-4aea-4b0b-adc3-26052c897ea3',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '0.50',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":0.499}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:44',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        4 =>
-                                        array (
-                                                'id' => 2482,
-                                                'calldate' => '11/5/2015 9:39:58',
-                                                'src' => '1006',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 25,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 25,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1608929639@10.10.0.139',
-                                                'bleg' => 'd84d44b0-f4d8-4f07-81f2-78bce4517ff4',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '0.29',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":0.29}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:25',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        5 =>
-                                        array (
-                                                'id' => 2484,
-                                                'calldate' => '11/5/2015 9:40:26',
-                                                'src' => '1008',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 31,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 31,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '708f1346-17f9de4@10.10.1.228',
-                                                'bleg' => '3999f04c-2390-48f5-a7ad-d62f2d4ec40b',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '0.36',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":0.356}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:31',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        6 =>
-                                        array (
-                                                'id' => 2488,
-                                                'calldate' => '11/5/2015 9:42:01',
-                                                'src' => '1008',
-                                                'src_dialed' => '944048182',
-                                                'src_duration' => 24,
-                                                'dst' => '944048182',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 24,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '81b6e2f9-1b5d818a@10.10.1.228',
-                                                'bleg' => '93f9100f-a14f-4692-b8d3-a0e11768282d',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 8,
-                                                'price' => '0.28',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":49,"connectionCharge":0.015,"periodTime":1,"perPeriodCharge":0.011,"metric":10,"pricingPlanId":14,"targetPatternId":8,"brandId":2},"Pattern":{"id":8,"name_en":"Local fixed","name_es":"Fijos Locales","description_en":"","description_es":"","regExp":"\\/^0?94[0-9]{7}$\\/","brandId":2},"Cost":0.279}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:24',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 8,
-                                                        'name_en' => 'Local fixed',
-                                                        'name_es' => 'Fijos Locales',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?94[0-9]{7}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Fijos Locales',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
+                                    'id' => 2464,
+                                    'calldate' => '11/5/2017 9:33:29',
+                                    'dst' => '44676105642',
+                                    'price' => '0.29',
+                                    'durationFormatted' => '00:00:08',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'United Kingdom',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Europa 2017',
+                                    ),
                                 ),
-                                '92bc8e2faa7125aa195f2360d542f9aa' =>
+                                1 =>
                                 array (
-                                        0 =>
-                                        array (
-                                                'id' => 2464,
-                                                'calldate' => '11/5/2015 9:33:29',
-                                                'src' => '1008',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 8,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 8,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '38618d77-8616e465@10.10.1.228',
-                                                'bleg' => '63974099-4bb1-44c4-a8f8-17997d3e9108',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.29',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.285}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:08',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        1 =>
-                                        array (
-                                                'id' => 2468,
-                                                'calldate' => '11/5/2015 9:34:41',
-                                                'src' => '1006',
-                                                'src_dialed' => '620328664',
-                                                'src_duration' => 2,
-                                                'dst' => '620328664',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 2,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1255041872@10.10.0.139',
-                                                'bleg' => '97ec8dfc-7f35-4fcd-a82f-b849f7149a43',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.08',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.075}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:02',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        2 =>
-                                        array (
-                                                'id' => 2474,
-                                                'calldate' => '11/5/2015 9:36:24',
-                                                'src' => '1006',
-                                                'src_dialed' => '620328664',
-                                                'src_duration' => 21,
-                                                'dst' => '620328664',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 21,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1369873220@10.10.0.139',
-                                                'bleg' => 'edab5e0e-e6b6-48cc-8566-c3d35168606e',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.74',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.74}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:21',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        3 =>
-                                        array (
-                                                'id' => 2476,
-                                                'calldate' => '11/5/2015 9:37:57',
-                                                'src' => '1007',
-                                                'src_dialed' => '620328664',
-                                                'src_duration' => 5,
-                                                'dst' => '620328664',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 5,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1eb37c28-7ce24ed3@10.10.1.123',
-                                                'bleg' => '65acf16b-40a5-4be0-a874-fde90c5da912',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.18',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.18}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:05',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        4 =>
-                                        array (
-                                                'id' => 2479,
-                                                'calldate' => '11/5/2015 9:39:13',
-                                                'src' => '1006',
-                                                'src_dialed' => '620328664',
-                                                'src_duration' => 2,
-                                                'dst' => '620328664',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 2,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1946604386@10.10.0.139',
-                                                'bleg' => 'ecfab91f-ce59-436b-a793-10e7c568d6f0',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.08',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.075}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:02',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        5 =>
-                                        array (
-                                                'id' => 2483,
-                                                'calldate' => '11/5/2015 9:39:44',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 4,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 4,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '3b5ae840-ec983d1d@10.10.1.123',
-                                                'bleg' => 'a2972138-a385-465b-887d-04e6b21ac580',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.15',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.145}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:04',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        6 =>
-                                        array (
-                                                'id' => 2487,
-                                                'calldate' => '11/5/2015 9:41:20',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 4,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 4,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '6a799d22-3c6562b7@10.10.1.123',
-                                                'bleg' => '1bdaf6d0-3351-45cb-8c71-7738ed3118f6',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.15',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.145}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:04',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        7 =>
-                                        array (
-                                                'id' => 2584,
-                                                'calldate' => '13/5/2015 17:55:52',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 2,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 3,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '2b1862bc-857e9568@10.10.1.123',
-                                                'bleg' => 'd237c6a9-2b00-4cb4-854d-e2a6a335db15',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.11',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.11}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:03',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        8 =>
-                                        array (
-                                                'id' => 2585,
-                                                'calldate' => '13/5/2015 18:03:53',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 6,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 6,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => 'c2510b72-4f5cd072@10.10.1.123',
-                                                'bleg' => 'afbcaa62-1b31-45db-92db-a65c773e251d',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.22',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.215}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:06',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        9 =>
-                                        array (
-                                                'id' => 2587,
-                                                'calldate' => '14/5/2015 9:30:07',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 5,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 5,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '2334669e-ccac18eb@10.10.1.123',
-                                                'bleg' => 'a1d18173-21cd-42c2-82e0-0060a4fdd65f',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.18',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.18}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:05',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        10 =>
-                                        array (
-                                                'id' => 2589,
-                                                'calldate' => '14/5/2015 10:44:49',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 12,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 12,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '833361a8-1f7c1ef7@10.10.1.123',
-                                                'bleg' => '228bb0ee-9634-4560-9e08-0a009e554763',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.43',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.425}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:12',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        11 =>
-                                        array (
-                                                'id' => 2590,
-                                                'calldate' => '14/5/2015 10:45:23',
-                                                'src' => '1007',
-                                                'src_dialed' => '676216531',
-                                                'src_duration' => 5,
-                                                'dst' => '676216531',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 6,
-                                                'type' => 'USER-PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA PURA',
-                                                'fw_desc' => '',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => '',
-                                                'forward_to' => '',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '236ed143-24448cfa@10.10.1.123',
-                                                'bleg' => '161e0212-9bf4-42fa-a840-a8ac51c5b92a',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.22',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.215}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:06',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
-                                        12 =>
-                                        array (
-                                                'id' => 2591,
-                                                'calldate' => '15/5/2015 9:15:54',
-                                                'src' => '1006',
-                                                'src_dialed' => '1009',
-                                                'src_duration' => 3,
-                                                'dst' => '620328664',
-                                                'dst_src_cid' => 'anonimo',
-                                                'dst_duration' => 3,
-                                                'type' => 'USER->PSTN',
-                                                'desc' => 'LLAMADA SALIENTE EXTERNA POR DESVIO DE USUARIO',
-                                                'fw_desc' => 'Desvio de Oasis a PSTN',
-                                                'ext_forwarder' => '',
-                                                'int_forwarder' => 'anonimo',
-                                                'forward_to' => 'pstn',
-                                                'companyId' => '54ca50c1-469c-462b-8aef-333005c42085',
-                                                'brandId' => 2,
-                                                'aleg' => '1202869166@10.10.0.139',
-                                                'bleg' => '104f0203-b7a8-417e-82c4-a39592e60e52',
-                                                'metered' => 1,
-                                                'meteringDate' => '2015-06-23 13:47:00',
-                                                'pricingPlanId' => 14,
-                                                'targetPatternId' => 1,
-                                                'price' => '0.11',
-                                                'pricingPlanDetails' => '{"Company":{"id":"54ca50c1-469c-462b-8aef-333005c42085","brandId":2,"name":"IRONTEC Internet y Sistemas sobre GNU\\/Linux S.L.","nif":"B-95274890","defaultTimezoneId":158,"musicOnHoldId":null,"applicationServerId":"54ca52dc-5ff4-424c-8b4c-333705c42085","transformationRulesetGroupsId":"553f8f6b-aa50-4cae-978c-423505c42085","externalMaxCalls":0,"postalAddress":" Uribitarte 6, 2\\u00ba","postalCode":"48001","town":"Bilbao","province":"Bizkaia","country":"Espa\\u00f1a"},"Plan":{"id":14,"name_en":"2015 Standar plan","name_es":"Plan Standar 2015","description_en":"","description_es":"","createdOn":"2015-06-11 16:33:40","brandId":2},"CompanyPlan":{"id":7,"pricingPlanId":14,"companyId":"54ca50c1-469c-462b-8aef-333005c42085","validFrom":"2014-12-31 23:00:00","validTo":"2015-12-31 22:59:59","metric":5,"brandId":2},"Price":{"id":51,"connectionCharge":0.005,"periodTime":1,"perPeriodCharge":0.035,"metric":17,"pricingPlanId":14,"targetPatternId":1,"brandId":2},"Pattern":{"id":1,"name_en":"Mobile","name_es":"M\\u00f3viles","description_en":"","description_es":"","regExp":"\\/^0?[67][0-9]{8}$\\/","brandId":2},"Cost":0.11}',
-                                                'invoiceId' => 34,
-                                                'dst_duration_formatted' => '00:00:03',
-                                                'targetPattern' =>
-                                                array (
-                                                        'id' => 1,
-                                                        'name_en' => 'Mobile',
-                                                        'name_es' => 'Móviles',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'regExp' => '/^0?[67][0-9]{8}$/',
-                                                        'brandId' => 2,
-                                                        'name' => 'Móviles',
-                                                        'description' => '',
-                                                ),
-                                                'pricingPlan' =>
-                                                array (
-                                                        'id' => 14,
-                                                        'name_en' => '2015 Standar plan',
-                                                        'name_es' => 'Plan Standar 2015',
-                                                        'description_en' => '',
-                                                        'description_es' => '',
-                                                        'createdOn' => '2015-06-11 16:33:40',
-                                                        'brandId' => 2,
-                                                        'name' => 'Plan Standar 2015',
-                                                        'description' => '',
-                                                ),
-                                        ),
+                                    'id' => 2468,
+                                    'calldate' => '11/5/2017 9:34:41',
+                                    'dst' => '44620114553',
+                                    'price' => '0.08',
+                                    'durationFormatted' => '00:00:02',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'United Kingdom',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Europa 2017',
+                                    ),
                                 ),
+                                2 =>
+                                array (
+                                    'id' => 2474,
+                                    'calldate' => '11/5/2017 9:36:24',
+                                    'dst' => '44620114553',
+                                    'price' => '0.74',
+                                    'durationFormatted' => '00:00:21',
+                                    'targetPattern' =>
+                                    array (
+                                        'name' => 'United Kingdom',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Europa 2017',
+                                    ),
+                                ),
+                                3 =>
+                                array (
+                                    'id' => 2476,
+                                    'calldate' => '11/5/2017 9:37:57',
+                                    'dst' => '44620114553',
+                                    'price' => '0.18',
+                                    'durationFormatted' => '00:00:05',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'United Kingdom',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Europa 2017',
+                                    ),
+                                ),
+                                4 =>
+                                array (
+                                    'id' => 2479,
+                                    'calldate' => '11/5/2017 9:39:13',
+                                    'dst' => '44620114553',
+                                    'price' => '0.08',
+                                    'durationFormatted' => '00:00:02',
+                                    'targetPattern' =>
+                                    array (
+                                            'id' => 1,
+                                            'name' => 'United Kingdom',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Europa 2017',
+                                    ),
+                                ),
+                                5 =>
+                                array (
+                                    'id' => 2483,
+                                    'calldate' => '11/5/2017 9:39:44',
+                                    'dst' => '44676105642',
+                                    'price' => '0.15',
+                                    'durationFormatted' => '00:00:04',
+                                    'targetPattern' =>
+                                    array (
+                                            'name' => 'United Kingdom',
+                                    ),
+                                    'pricingPlan' =>
+                                    array (
+                                            'name' => 'Europa 2017',
+                                    ),
+                                )
+                            )
                         ),
-                        'callSumaryTotals' =>
-                        array (
-                                'numberOfCalls' => 20,
-                                'totalCallsDuration' => 308,
-                                'totalPrice' => 5.5700000000000003,
-                                'totalCallsDurationFormatted' => '00:05:08',
-                                'totalTaxes' => '1.12',
-                                'totalWithTaxes' => '6.69',
+                    ),
+                    'callSumaryTotals' =>
+                    array (
+                        'numberOfCalls' => 20,
+                        'totalCallsDuration' => 308,
+                        'totalPrice' => 5.5700000000000003,
+                        'totalCallsDurationFormatted' => '00:05:08',
+                        'totalTaxes' => '1.12',
+                        'totalWithTaxes' => '6.69',
+                    ),
+                    'inboundCalls' =>
+                    array(
+                        'summary' => array(
+                            'numberOfCalls' => 1,
+                            'totalCallsDuration' => '4931',
+                            'totalPrice' => '12.1002',
+                            'totalCallsDurationFormatted' => '1:22:11',
                         ),
-                ),
+                        'calls' => array (
+                            0 => array (
+                                'calldate' => '11/5/2017 9:33:29',
+                                'caller' => '49302540070',
+                                'dst' => '1008',
+                                'price' => '0.29',
+                                'durationFormatted' => '00:00:08',
+                                'targetPattern' =>
+                                array (
+                                    'name' => 'Alemania'
+                                )
+                            ),
+                        )
+                    ),
+            ),
+            'totals' =>
+            array (
+                'totalPrice' => 5.5700000000000003,
+                'totalTaxes' => '1.12',
+                'totalWithTaxes' => '6.69'
+            )
         );
     }
 

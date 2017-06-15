@@ -24,7 +24,7 @@ production:
             invoiceTemplatesEdit_screen: true
 #            invoicesList_screen: true
           dialogs: 
-#            invoiceTemplateTest_dialog: true
+            invoiceTemplateTest_dialog: true
             invoiceTemplatesDel_dialog: true
           default: invoiceTemplatesEdit_screen
         blacklist:
@@ -99,7 +99,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Invoice template', 'Invoice templates', 1))
       multiItem: 1
       labelOnList: 1
-          
+
     invoiceTemplateTest_dialog:
       title: _("Template testing")
       module: default
@@ -111,7 +111,7 @@ production:
       labelOnList: false # La opción se dibujará con "label" cuando es una opción general de List
       labelOnEntityPostSave: false # La opción se dibujará con "label" cuando es una opción general de EntityPostSave
       multiItem: false # Al invocarase la opción como general option desde List, el controlador será invocado con pk como un array de Ids.
-      
+
   # invoices dialogs: 
     <<: *invoices_dialogsLink
     
