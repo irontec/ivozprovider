@@ -2,6 +2,7 @@
 namespace IvozProvider\Gearmand\Invoices;
 
 use Knp\Snappy\Pdf;
+use Handlebars\Handlebars;
 
 class Generator
 {
@@ -65,6 +66,7 @@ class Generator
         }
 
         $dateFormat = \Zend_Locale_Format::getDateFormat($invoice->getCompany()->getLanguageCode());
+
         $invoiceTz = $company->getDefaultTimezone()->getTz();
         $invoiceDate = new \Zend_Date();
         $invoiceDate->setTimezone($invoiceTz);
@@ -83,13 +85,13 @@ class Generator
         $brandArray["logoPath"] = $brandLogoPath;
 
         $variables = array(
-                "invoice" => $invoiceArray,
-                "company" => $company->toArray(),
-                "brand" => $brandArray,
-                "callData" => $callData,
-                "fixedCosts" => array($this->_fixedCosts),
-                "fixedCostsTotals" => $this->_fixedCostTotal,
-                "totals" => $this->_totals
+            "invoice" => $invoiceArray,
+            "company" => $company->toArray(),
+            "brand" => $brandArray,
+            "callData" => $callData,
+            "fixedCosts" => $this->_fixedCosts,
+            "fixedCostsTotals" => $this->_fixedCostTotal,
+            "totals" => $this->_totals
         );
 
         /**
@@ -100,9 +102,11 @@ class Generator
             throw new \Exception("No template assigned.");
         }
 
-        $header = \IvozProvider\Template\Formatter::format($templateModel->getTemplateHeader(), $variables);
-        $body = \IvozProvider\Template\Formatter::format($templateModel->getTemplate(), $variables);
-        $footer = \IvozProvider\Template\Formatter::format($templateModel->getTemplateFooter(), $variables);
+        $this->_log("Preparing templates", \Zend_Log::DEBUG);
+        $templateEngine = new Handlebars;;
+        $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
+        $body = $templateEngine->render($templateModel->getTemplate(), $variables);
+        $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
 
         $this->_log("Rendering the PDF", \Zend_Log::DEBUG);
         $architecture = (php_uname("m") === 'x86_64') ? 'amd64' : 'i386';
@@ -135,10 +139,10 @@ class Generator
         $callsPerType = array();
         $callSumary = array();
         $callSumaryTotals = array(
-                "numberOfCalls" => 0,
-                "totalCallsDuration" => 0,
-                "totalCallsDurationFormatted" => $this->_timeFormat(0),
-                "totalPrice" => 0
+            "numberOfCalls" => 0,
+            "totalCallsDuration" => 0,
+            "totalCallsDurationFormatted" => $this->_timeFormat(0),
+            "totalPrice" => 0
         );
         $inboundCalls = array();
 
@@ -241,9 +245,9 @@ class Generator
                     $inboundCalls["calls"][] = $callData;
                 } else {
                     if (!isset($callsPerType[$callType])) {
-                        $callsPerType[$callType] = array();
+                        $callsPerType[$callType] = array('items' => []);
                     }
-                    $callsPerType[$callType][] = $callData;
+                    $callsPerType[$callType]['items'][] = $callData;
                 }
                 if ($call->getDirection() == "inbound") {
                     $inboundCalls["summary"]["numberOfCalls"] += 1;
@@ -289,8 +293,8 @@ class Generator
         asort($callSumary);
         asort($callsPerType);
         $finalData = array(
-            "callSumary" => $callSumary,
-            "callsPerType" => $callsPerType,
+            "callSumary" => array_values($callSumary),
+            "callsPerType" => array_values($callsPerType),
             "callSumaryTotals" => $callSumaryTotals,
             "inboundCalls" => $inboundCalls,
         );

@@ -188,9 +188,8 @@ msgstr "No se pueden crear facturas en el dia actual o futuro."
 msgid "There are unbilled calls before in date."
 msgstr "Hay llamadas no facturadas anteriores a la fecha inicio."
 
-#, fuzzy
 msgid "Invoice enqueued"
-msgstr "Factura"
+msgstr "Factura encolada"
 
 msgid "Invoice has been enqueued. It will be generated as soon as posible."
 msgstr "La factura se ha encolado. Se generará lo antes posible."
@@ -201,7 +200,9 @@ msgstr "Facturas encoladas:"
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr "Las facturas han sido encoladas. Se generarán lo antes posible."
 
-#, fuzzy
+msgid "Invoice template tester"
+msgstr "Tester de plantillas de facturas"
+
 msgid "Restore backup"
 msgstr "Restaurar último backup"
 
@@ -221,9 +222,8 @@ msgstr ""
 "La siguiente plantilla va a ser probada<br /><textarea name=\"currentCode\" "
 "rows=\"8\" cols=\"80\" readonly></textarea>"
 
-#, fuzzy
 msgid "Exec"
-msgstr "Modificado"
+msgstr "Ejecutar"
 
 msgid "The terminal model must be saved before you can test the code"
 msgstr "El modelo de terminal debe ser guardado antes de probar la plantilla"

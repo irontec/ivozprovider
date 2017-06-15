@@ -17,11 +17,13 @@ creation process uses templates.
 .. hint:: This way, every **brand operator** can adapt which information
           is shown and how this information is shown, add logos, graphs, etc..
 
-These templates use `wkhtmltopdf library <https://wkhtmltopdf.org/>`_.
+Templates are parsed by `handlebars <https://github.com/XaminProject/handlebars.php>`_ and rendered
+using `wkhtmltopdf <https://wkhtmltopdf.org/>`_ library.
 
 The helper in the section **Brand configuration** > **Invoice templates** include
 a summarized explanation of the creation of templates. In the `official site of wkhtmltopdf
 <https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ there is plenty additional information.
+You can delve into template expressions `here <http://handlebarsjs.com/expressions.html>`_ as well.
 
 By default, this section provides some basic example templates:
 

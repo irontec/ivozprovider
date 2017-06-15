@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 15:50+0100\n"
+"POT-Creation-Date: 2017-06-19 08:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,8 @@ msgstr "Tarificación de llamadas"
 msgid ""
 "Billing a call is the **action of setting a price** to a call that "
 "implies cost."
-msgstr "Tarificar una llamada es la **acción de poner precio** a una llamada que "
+msgstr ""
+"Tarificar una llamada es la **acción de poner precio** a una llamada que "
 "implica coste."
 
 #: ../../billing_and_invoices/bill_a_call.rst:9
@@ -34,14 +35,16 @@ msgstr "Tarificación automática"
 
 #: ../../billing_and_invoices/bill_a_call.rst:11
 msgid "As exposed previously, billing calls depends upon an automatic process:"
-msgstr "Tal y como se ha explicado con anterioridad, el proceso de tarificación "
+msgstr ""
+"Tal y como se ha explicado con anterioridad, el proceso de tarificación "
 "es automático:"
 
 #: ../../billing_and_invoices/bill_a_call.rst:13
 msgid ""
 "When a call is about to be established, IvozProvider verifies that it "
 "will be able to bill it."
-msgstr "En el momento en el que una llamada se va a establecer, se verifica que "
+msgstr ""
+"En el momento en el que una llamada se va a establecer, se verifica que "
 "se vaya a poder tarificar."
 
 #: ../../billing_and_invoices/bill_a_call.rst:16
@@ -49,21 +52,24 @@ msgid ""
 "If with the current configuration (active and applicable pricing plans "
 "for a given company and for the specific destination) it won't be "
 "possible to bill the call, IvozProvider will prevent its establishment."
-msgstr "Si no se va a poder tarificar atendiendo a los planes de precios activos "
+msgstr ""
+"Si no se va a poder tarificar atendiendo a los planes de precios activos "
 "para la empresa, la llamada no se cursará."
 
 #: ../../billing_and_invoices/bill_a_call.rst:20
 msgid ""
 "Once a call that implies cost is hung up, it is listed in "
 ":ref:`billable_calls`."
-msgstr "En el momento en el que una llamada que implique coste se cuelga, aparece"
+msgstr ""
+"En el momento en el que una llamada que implique coste se cuelga, aparece"
 " en el listado de :ref:`billable_calls`."
 
 #: ../../billing_and_invoices/bill_a_call.rst:22
 msgid ""
 "Some minutes later, the billing task will evaluate each unbilled call and"
 " will update this fields:"
-msgstr "Pasados unos minutos, el proceso tarificador evaluará las llamadas "
+msgstr ""
+"Pasados unos minutos, el proceso tarificador evaluará las llamadas "
 "tarificables sin coste y rellenará los siguientes campos del registro "
 "anterior:"
 
@@ -94,7 +100,8 @@ msgstr "Retarificación manual"
 msgid ""
 "It may happen that the brand operator needs to re-bill an specific call "
 "due to multiple reasons:"
-msgstr "Puede ocurrir que una llamada se tarifique de forma incorrecta, por "
+msgstr ""
+"Puede ocurrir que una llamada se tarifique de forma incorrecta, por "
 "múltiples motivos:"
 
 #: ../../billing_and_invoices/bill_a_call.rst:37
@@ -115,7 +122,8 @@ msgstr "Etc."
 
 #: ../../billing_and_invoices/bill_a_call.rst:45
 msgid "In these cases, the *brand operator* can re-bill wrongly billed calls."
-msgstr "Para estos casos, el *administrador de marca* puede re-tarificar las "
+msgstr ""
+"Para estos casos, el *administrador de marca* puede re-tarificar las "
 "llamadas que considere mal tarificadas."
 
 #: ../../billing_and_invoices/bill_a_call.rst:47
@@ -123,7 +131,8 @@ msgid ""
 "Billing a call again means setting the price as it is made right now. It "
 "uses, therefore, the current configuration of pricing plans not the "
 "configuration of the moment the call was made."
-msgstr "Retarificar una llamada consiste en volver a calcular el precio de la "
+msgstr ""
+"Retarificar una llamada consiste en volver a calcular el precio de la "
 "misma. Lógicamente, la retarificación se calculará en el momento "
 "solicitado, teniendo en cuenta las configuración actual de planes de "
 "precio y no las del momento del establecimiento de la llamada)."
@@ -132,7 +141,8 @@ msgstr "Retarificar una llamada consiste en volver a calcular el precio de la "
 msgid ""
 "In order to re-bill some calls (or just one), select them in **Brand "
 "configuration** > **Billable calls** and press the button **Bill calls**."
-msgstr "Para retarificar, basta con seleccionar las llamadas en **Configuración "
+msgstr ""
+"Para retarificar, basta con seleccionar las llamadas en **Configuración "
 "de Marca** > **Llamada facturables** y presionar el botón **Tarificar "
 "llamadas**:"
 
@@ -143,7 +153,8 @@ msgid ""
 "**Invoice** field, this invoice must be deleted before. The reason behind"
 " this logic is that we don't want and invoice containing calls with a "
 "wrong price."
-msgstr "**No se puede retarificar una llamada que esté incluida en una factura**."
+msgstr ""
+"**No se puede retarificar una llamada que esté incluida en una factura**."
 " Es decir, si la llamada seleccionada tiene el campo **Factura** con "
 "valor, habrá que borrar esta factura previamente. El motivo es estar "
 "seguros que no existen facturas con llamadas mal tarificadas: si "
@@ -155,7 +166,8 @@ msgstr "Llamadas facturables"
 
 #: ../../billing_and_invoices/billable_calls.rst:7
 msgid "**Billable calls** sections only list **calls that imply cost**."
-msgstr "Los listados de llamadas de las secciones **Llamadas facturables** "
+msgstr ""
+"Los listados de llamadas de las secciones **Llamadas facturables** "
 "muestran solo las **llamadas que implican coste**."
 
 #: ../../billing_and_invoices/billable_calls.rst:9
@@ -163,7 +175,8 @@ msgid ""
 ":ref:`call_registry` sections, on the other hand, show all calls, even "
 "the ones that do not imply cost, such as internal calls, incoming calls, "
 "etc."
-msgstr "La gran diferencia respecto a las llamadas del :ref:`call_registry` es "
+msgstr ""
+"La gran diferencia respecto a las llamadas del :ref:`call_registry` es "
 "que todas las que aparecen aquí implican coste (no aparecen, por tanto, "
 "llamadas internas, etc.)"
 
@@ -173,7 +186,8 @@ msgid ""
 "calculated). Since companies are notified about its call's price via "
 "invoices issued by **brand operator**, this section is only available at "
 "two levels:"
-msgstr "Se muestra el coste asociado a las llamadas (una vez calculado) y, dado "
+msgstr ""
+"Se muestra el coste asociado a las llamadas (una vez calculado) y, dado "
 "que las empresas son notificadas de sus llamadas por medio de facturas "
 "emitidas por el *operador de marca*, solo se existe a dos niveles:"
 
@@ -207,7 +221,7 @@ msgid "Only visible for *god*, shows the brand of each call."
 msgstr "Solo visible a nivel *god*, indica la marca de la empresa en cuestión."
 
 #: ../../billing_and_invoices/billable_calls.rst:30
-#: ../../billing_and_invoices/invoices.rst:60
+#: ../../billing_and_invoices/invoices.rst:62
 msgid "Company"
 msgstr "Compañía"
 
@@ -225,7 +239,8 @@ msgstr "Número externo al que se ha llamado."
 
 #: ../../billing_and_invoices/billable_calls.rst:38
 msgid "Shows the :ref:`pricing pattern <price_pattern>` used to set the price."
-msgstr "Indica el :ref:`patrón de precio <price_pattern>` en base al cual se ha "
+msgstr ""
+"Indica el :ref:`patrón de precio <price_pattern>` en base al cual se ha "
 "puesto precio a la llamada."
 
 #: ../../billing_and_invoices/billable_calls.rst:39
@@ -244,7 +259,8 @@ msgstr "Tarificado (sí/no)"
 msgid ""
 "Shows if the asynchronous task that sets the price of each call has "
 "parsed each call."
-msgstr "Indica si el proceso que pone precio a las llamadas ha calculado el "
+msgstr ""
+"Indica si el proceso que pone precio a las llamadas ha calculado el "
 "precio de esta llamada concreta."
 
 #: ../../billing_and_invoices/billable_calls.rst:48
@@ -253,7 +269,8 @@ msgstr "Coste calculado para la llamada."
 
 #: ../../billing_and_invoices/billable_calls.rst:51
 msgid "Shows the :ref:`Pricing plan <price_plan>` used to set the price."
-msgstr ":ref:`Plan de precio <price_plan>` en base al cual se ha puesto precio a "
+msgstr ""
+":ref:`Plan de precio <price_plan>` en base al cual se ha puesto precio a "
 "la llamada."
 
 #: ../../billing_and_invoices/billable_calls.rst:52
@@ -264,7 +281,8 @@ msgstr "Contrato de peering"
 msgid ""
 "Shows which :ref:`Peering contract <peering_contracts>` was used for each"
 " call."
-msgstr "Indica por qué :ref:`Contrato de peering <peering_contracts>` ha salido "
+msgstr ""
+"Indica por qué :ref:`Contrato de peering <peering_contracts>` ha salido "
 "la llamada."
 
 #: ../../billing_and_invoices/billable_calls.rst:56
@@ -284,7 +302,8 @@ msgid ""
 "Since some incoming calls can imply cost (see :ref:`billing of inbound "
 "calls <bill_inbound>`), show if the call is an incoming call or an "
 "outgoung one."
-msgstr "Dado que ciertas llamadas entrantes pueden implicar coste (ver "
+msgstr ""
+"Dado que ciertas llamadas entrantes pueden implicar coste (ver "
 ":ref:`tarificación de llamadas entrantes <bill_inbound>`), indica si la "
 "llamada es entrante o saliente."
 
@@ -293,7 +312,8 @@ msgid ""
 "As soon as the call is hung up, they appear in this list. In some minutes"
 " time the asynchronous process will set *Metered* to 'yes' and will "
 "assign a **price**."
-msgstr "Las llamadas aparecen en este listado en cuanto se cuelgan. Pasados unos "
+msgstr ""
+"Las llamadas aparecen en este listado en cuanto se cuelgan. Pasados unos "
 "minutos, el proceso que pone precios a las llamadas habrá tarificado la "
 "llamada (*Tarificado* igual a 'Sí') y tendremos disponible el **Precio** "
 "calculado."
@@ -306,7 +326,8 @@ msgstr "Histórico de llamadas"
 msgid ""
 "*Call Registry* section shows the calls of the whole telephony platform "
 "and it is present in three different levels:"
-msgstr "Los históricos de llamadas muestran todas las llamadas de la plataforma y"
+msgstr ""
+"Los históricos de llamadas muestran todas las llamadas de la plataforma y"
 " se muestran a 3 niveles:"
 
 #: ../../billing_and_invoices/call_registry.rst:10
@@ -323,7 +344,8 @@ msgstr "**Configuración de Empresa** > **Histórico de llamadas**"
 
 #: ../../billing_and_invoices/call_registry.rst:14
 msgid "Each section filters calls conveniently."
-msgstr "En cada uno de los niveles se muestran las llamadas filtradas "
+msgstr ""
+"En cada uno de los niveles se muestran las llamadas filtradas "
 "convenientemente."
 
 #: ../../billing_and_invoices/call_registry.rst:17
@@ -334,14 +356,16 @@ msgstr "A nivel global (god)"
 msgid ""
 "Lists all the calls of the platform, showing which brand and company they"
 " belong to:"
-msgstr "Muestra todas las llamadas de la plataforma, indicando la marca y la "
+msgstr ""
+"Muestra todas las llamadas de la plataforma, indicando la marca y la "
 "empresa de cada una de ellas:"
 
 #: ../../billing_and_invoices/call_registry.rst:24
 msgid ""
 "Lists all the calls of the currently emulated brand, showing which "
 "company they belong to:"
-msgstr "Muestra todas las llamadas de la marca emulada, indicando la empresa de "
+msgstr ""
+"Muestra todas las llamadas de la marca emulada, indicando la empresa de "
 "cada una de ellas:"
 
 #: ../../billing_and_invoices/call_registry.rst:30
@@ -356,7 +380,8 @@ msgstr "Muestra todas las llamadas de la empresa emulada:"
 msgid ""
 "`CSV <https://es.wikipedia.org/wiki/CSV>`_ export makes possible to "
 "download the list for its later analysis."
-msgstr "El exportador a `CSV <https://es.wikipedia.org/wiki/CSV>`_ permite "
+msgstr ""
+"El exportador a `CSV <https://es.wikipedia.org/wiki/CSV>`_ permite "
 "exportar el listado para su posterior almacenamiento o procesado."
 
 #: ../../billing_and_invoices/call_registry.rst:38
@@ -364,7 +389,8 @@ msgid ""
 "If you choose one specific call, additional information is shown. This "
 "additional information is dependant of the current level (*god*, brand or"
 " company) and shows details about call transfers, call forwards, etc."
-msgstr "Si se accede a una llamada concreta, se muestra información adicional "
+msgstr ""
+"Si se accede a una llamada concreta, se muestra información adicional "
 "sobre la misma. Esta información adicional depende del nivel (*god*, "
 "marca o empresa) y provee información sobre desvíos, transferencias, etc."
 
@@ -376,7 +402,8 @@ msgstr "Tarificación y facturación"
 msgid ""
 "This block is essential for brand administrators as we will explain how "
 "to:"
-msgstr "En este bloque se tratará un tema de primordial importancia para los "
+msgstr ""
+"En este bloque se tratará un tema de primordial importancia para los "
 "administradores de marca:"
 
 #: ../../billing_and_invoices/index.rst:7
@@ -401,7 +428,8 @@ msgstr "Generación de facturas"
 msgid ""
 "The final goal of this section is to generate invoices with the call that"
 " imply cost of a given company."
-msgstr "El objetivo final de todo el proceso de facturación es generar facturas "
+msgstr ""
+"El objetivo final de todo el proceso de facturación es generar facturas "
 "que incluyan las llamadas con coste de una empresa concreta."
 
 #: ../../billing_and_invoices/invoices.rst:12
@@ -412,145 +440,164 @@ msgstr "Plantillas de facturas"
 msgid ""
 "Before generating an example invoice, it is important to understand that "
 "invoice creation process uses templates."
-msgstr "Antes de generar una factura de ejemplo, es importante entender que las "
+msgstr ""
+"Antes de generar una factura de ejemplo, es importante entender que las "
 "facturas generadas utilizan unas plantillas que permiten su modificación."
 
 #: ../../billing_and_invoices/invoices.rst:17
 msgid ""
 "This way, every **brand operator** can adapt which information is shown "
 "and how this information is shown, add logos, graphs, etc.."
-msgstr "De este modo, cada *operador de marca* puede crear plantillas con los "
+msgstr ""
+"De este modo, cada *operador de marca* puede crear plantillas con los "
 "datos deseados, la estética deseada, añadir logos y hasta gráficas de "
 "consumo."
 
 #: ../../billing_and_invoices/invoices.rst:20
-msgid "These templates use `PHPPdf library <https://github.com/psliwa/PHPPdf>`_."
-msgstr "Todo ello se realiza utilizando la librería `PHPPdf "
-"<https://github.com/psliwa/PHPPdf>`_."
+msgid ""
+"Templates are parsed by `handlebars "
+"<https://github.com/XaminProject/handlebars.php>`_ and rendered using "
+"`wkhtmltopdf <https://wkhtmltopdf.org/>`_ library."
+msgstr ""
+"Las plantillas son interpretadas con `handlebars "
+"<https://github.com/XaminProject/handlebars.php>`_ y renderizadas con la "
+"librería `wkhtmltopdf <https://wkhtmltopdf.org/>`_."
 
-#: ../../billing_and_invoices/invoices.rst:22
+#: ../../billing_and_invoices/invoices.rst:23
 msgid ""
 "The helper in the section **Brand configuration** > **Invoice templates**"
 " include a summarized explanation of the creation of templates. In the "
-"`official site of PHPPdf <https://github.com/psliwa/PHPPdf>`_ there is "
-"plenty additional information."
-msgstr "La ayuda contextual de la sección **Configuración de Marca** > "
+"`official site of wkhtmltopdf "
+"<https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ there is plenty "
+"additional information. You can delve into template expressions `here "
+"<http://handlebarsjs.com/expressions.html>`_ as well."
+msgstr ""
+"La ayuda contextual de la sección **Configuración de Marca** > "
 "**Plantillas de facturas** incluye una explicación resumida del proceso "
-"de creación de plantillas. En la `página oficial de PHPPdf "
-"<https://github.com/psliwa/PHPPdf>`_ se puede encontrar más información."
+"de creación de plantillas. En la `página oficial de wkhtmltopdf "
+"<https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ puede encontrar más información. "
+"También puede profundicar en las expresiones disponibles en las "
+"plantillas `aquí <http://handlebarsjs.com/expressions.html>`_."
 
-#: ../../billing_and_invoices/invoices.rst:26
+#: ../../billing_and_invoices/invoices.rst:28
 msgid "By default, this section provides some basic example templates:"
-msgstr "Por defecto, IvozProvider incluye las siguientes plantillas de ejemplo "
+msgstr ""
+"Por defecto, IvozProvider incluye las siguientes plantillas de ejemplo "
 "(en la ayuda contextual se pueden encontrar enlaces a las mismas):"
 
-#: ../../billing_and_invoices/invoices.rst:32
+#: ../../billing_and_invoices/invoices.rst:34
 msgid "Fixed costs"
 msgstr "Costes fijos"
 
-#: ../../billing_and_invoices/invoices.rst:34
+#: ../../billing_and_invoices/invoices.rst:36
 msgid ""
 "Fixed cost are a constant concept that can be added to invoices that use "
 "invoice templates that take into account these fixed costs."
-msgstr "Los costes fijos son un concepto fijo que se pueden añadir a las facturas"
+msgstr ""
+"Los costes fijos son un concepto fijo que se pueden añadir a las facturas"
 " que utilicen plantillas que tengan en cuenta costes fijos."
 
-#: ../../billing_and_invoices/invoices.rst:37
+#: ../../billing_and_invoices/invoices.rst:39
 msgid "Take this image as an example (section **Fixed costs**):"
 msgstr "Sirva la siguiente imagen de ejemplo (sección **Costes Fijos**):"
 
-#: ../../billing_and_invoices/invoices.rst:41
+#: ../../billing_and_invoices/invoices.rst:43
 msgid ""
 "We will explain afterwords how these fixed costs can be added to a "
 "invoice and in what amount."
-msgstr "A la hora de generar una factura, como se verá más adelante, se podrá "
+msgstr ""
+"A la hora de generar una factura, como se verá más adelante, se podrá "
 "indicar cuáles de estos conceptos se incluyen en la factura (y en qué "
 "cantidades)."
 
-#: ../../billing_and_invoices/invoices.rst:46
+#: ../../billing_and_invoices/invoices.rst:48
 msgid "Invoice creation"
 msgstr "Creacion de una factura"
 
-#: ../../billing_and_invoices/invoices.rst:48
+#: ../../billing_and_invoices/invoices.rst:50
 msgid ""
 "**Invoices** section lets **brand operator** to generate invoices to "
 "issue to its clients."
-msgstr "La sección **Facturas** es la que permite al **operador de marca** "
+msgstr ""
+"La sección **Facturas** es la que permite al **operador de marca** "
 "generar facturas para emitir a sus empresas."
 
-#: ../../billing_and_invoices/invoices.rst:51
+#: ../../billing_and_invoices/invoices.rst:53
 msgid "This is the process to add a create a new invoice:"
 msgstr "Añadimos una factura nueva para explicar el proceso:"
 
-#: ../../billing_and_invoices/invoices.rst:57
+#: ../../billing_and_invoices/invoices.rst:59
 msgid "Number"
 msgstr "Número"
 
-#: ../../billing_and_invoices/invoices.rst:59
+#: ../../billing_and_invoices/invoices.rst:61
 msgid "Will be included in the invoice and shows the invoice number"
 msgstr "Será incluído en la factura y representa el número de factura"
 
-#: ../../billing_and_invoices/invoices.rst:62
+#: ../../billing_and_invoices/invoices.rst:64
 msgid "The company whose calls will be invoiced"
 msgstr "Empresa para la cual estamos generando la factura"
 
-#: ../../billing_and_invoices/invoices.rst:63
+#: ../../billing_and_invoices/invoices.rst:65
 msgid "Start/End date"
 msgstr "Fecha inicio/fin"
 
-#: ../../billing_and_invoices/invoices.rst:65
+#: ../../billing_and_invoices/invoices.rst:67
 msgid "The time period of the calls that will be invoiced"
 msgstr "Tramo temporal cuyas llamadas queremos tener en cuenta"
 
-#: ../../billing_and_invoices/invoices.rst:66
+#: ../../billing_and_invoices/invoices.rst:68
 msgid "Taxes"
 msgstr "Impuesto"
 
-#: ../../billing_and_invoices/invoices.rst:68
+#: ../../billing_and_invoices/invoices.rst:70
 msgid "Taxes to add to the final cost (e.g. VAT)"
 msgstr "Impuesto a añadir al coste total calculado"
 
-#: ../../billing_and_invoices/invoices.rst:69
+#: ../../billing_and_invoices/invoices.rst:71
 msgid "Template"
 msgstr "Plantilla"
 
-#: ../../billing_and_invoices/invoices.rst:71
+#: ../../billing_and_invoices/invoices.rst:73
 msgid "Invoice template that will be used"
 msgstr "Plantilla que queremos utilizar para generar esta factura"
 
-#: ../../billing_and_invoices/invoices.rst:73
+#: ../../billing_and_invoices/invoices.rst:75
 msgid "Let's add some fixed costs to this invoice:"
 msgstr "Añadamos ahora unos costes fijos a esta factura concreta pulsando:"
 
-#: ../../billing_and_invoices/invoices.rst:78
+#: ../../billing_and_invoices/invoices.rst:80
 msgid "Select previously defined fixed costs and their amounts:"
 msgstr "Y añadamos los costes fijos que queramos, así como sus cantidades:"
 
-#: ../../billing_and_invoices/invoices.rst:83
+#: ../../billing_and_invoices/invoices.rst:85
 msgid "At this point, we can generate the invoice pressing this button:"
 msgstr "En este punto, podemos generar la factura pulsando:"
 
-#: ../../billing_and_invoices/invoices.rst:88
+#: ../../billing_and_invoices/invoices.rst:90
 msgid ""
 "Pressing this button we can see which calls have been included in the "
 "invoice:"
-msgstr "Pulsando el siguiente botón podemos ver las llamadas que han sido "
+msgstr ""
+"Pulsando el siguiente botón podemos ver las llamadas que han sido "
 "incluidas en la factura:"
 
-#: ../../billing_and_invoices/invoices.rst:93
+#: ../../billing_and_invoices/invoices.rst:95
 msgid "And pressing this one we can download the invoice in PDF format:"
 msgstr "Y pulsando este botón podemos descargar la factura en formato PDF:"
 
-#: ../../billing_and_invoices/invoices.rst:99
+#: ../../billing_and_invoices/invoices.rst:101
 msgid ""
 "End date must be a past date. In other words, it is not allowed to "
 "generate invoices for future dates o dates including today."
-msgstr "La fecha fin tiene que ser una fecha ya pasada. Es decir, no se puede "
+msgstr ""
+"La fecha fin tiene que ser una fecha ya pasada. Es decir, no se puede "
 "sacar facturas de tramos futuros o del día actual."
 
-#: ../../billing_and_invoices/invoices.rst:102
+#: ../../billing_and_invoices/invoices.rst:104
 msgid "All the calls of the selected period must be billed."
-msgstr "Todas las llamadas del tramo escogido tienen que estar facturadas para "
+msgstr ""
+"Todas las llamadas del tramo escogido tienen que estar facturadas para "
 "poder emitir la factura."
 
 #: ../../billing_and_invoices/pricing_plans.rst:3
@@ -561,7 +608,8 @@ msgstr "Planes de precio"
 msgid ""
 "In :ref:`noplan_nocall` section the process of creating a *pricing plan* "
 "was described quite thoroughly and main concepts were introduced:"
-msgstr "En la sección :ref:`noplan_nocall` se hacía una introducción bastante "
+msgstr ""
+"En la sección :ref:`noplan_nocall` se hacía una introducción bastante "
 "completa sobre el proceso manual de creación de un plan de precios y los "
 "conceptos más importantes:"
 
@@ -569,7 +617,8 @@ msgstr "En la sección :ref:`noplan_nocall` se hacía una introducción bastante
 msgid ""
 "A pricing plan groups some pricing patterns (prefixes) with their cost "
 "details:"
-msgstr "**Un plan de precios agrupa un listado de patrones de precio (prefijos de"
+msgstr ""
+"**Un plan de precios agrupa un listado de patrones de precio (prefijos de"
 " llamada) con sus detalles de precio**:"
 
 #: ../../billing_and_invoices/pricing_plans.rst:10
@@ -588,21 +637,24 @@ msgstr "Facturación por segundos / minutos /etc."
 msgid ""
 "A pricing plan is linked to an specific company with a period of time in "
 "which this asociation is valid."
-msgstr "Un plan de precios se asocia a una empresa concreta, indicando el período"
+msgstr ""
+"Un plan de precios se asocia a una empresa concreta, indicando el período"
 " de validez de dicho plan."
 
 #: ../../billing_and_invoices/pricing_plans.rst:17
 msgid ""
 "One company may have more than one valid pricing plan for an specific "
 "call in an specific moment."
-msgstr "Una empresa podía tener varios planes de precios en un momento concreto "
+msgstr ""
+"Una empresa podía tener varios planes de precios en un momento concreto "
 "para una llamada concreta."
 
 #: ../../billing_and_invoices/pricing_plans.rst:20
 msgid ""
 "In such cases, the call price will be calculated using the price detail "
 "of the matching pricing plan with minor metric."
-msgstr "En este último caso, el coste de la llamada se calcularía utilizando el "
+msgstr ""
+"En este último caso, el coste de la llamada se calcularía utilizando el "
 "plan de precio de menor métrica."
 
 #: ../../billing_and_invoices/pricing_plans.rst:25
@@ -613,7 +665,8 @@ msgstr "Creación manual"
 msgid ""
 ":ref:`Manual creation of a pricing plan <price_plan>` implied the "
 "previous creation of at least one :ref:`price pattern <price_pattern>`."
-msgstr "La :ref:`creación manual de un plan de precio <price_plan>` implicaba la "
+msgstr ""
+"La :ref:`creación manual de un plan de precio <price_plan>` implicaba la "
 "creación previa de un :ref:`patrón de precio <price_pattern>`."
 
 #: ../../billing_and_invoices/pricing_plans.rst:30
@@ -622,7 +675,8 @@ msgid ""
 "thousands of pricing patterns would be a really annoying and time "
 "consuming task, as there are 254 countries, each of them with their "
 "mobile networks, landline networks, special service numbers, etc."
-msgstr "En ese momento, es posible que el futuro administrador de marca se haya "
+msgstr ""
+"En ese momento, es posible que el futuro administrador de marca se haya "
 "dado cuenta de la titánica tarea que implicaría crear miles de patrones "
 "de precio (254 países por las distintas redes móviles, fijos, "
 "numeraciones especiales, etc.) para luego poder agruparlos en un plan de "
@@ -632,7 +686,8 @@ msgstr "En ese momento, es posible que el futuro administrador de marca se haya 
 msgid ""
 "That's why the creation of pricing patterns and pricing plans is done "
 "using a `CSV <https://es.wikipedia.org/wiki/CSV>`_ file."
-msgstr "Es por ello que el proceso de creación de planes y patrones de precio se "
+msgstr ""
+"Es por ello que el proceso de creación de planes y patrones de precio se "
 "realiza partiendo de un `CSV <https://es.wikipedia.org/wiki/CSV>`_."
 
 #: ../../billing_and_invoices/pricing_plans.rst:40
@@ -643,7 +698,8 @@ msgstr "Importación vía CSV"
 msgid ""
 "The first step is creating an empty pricing plan to import the prices in "
 "(section **Brand configuration** > **Pricing plans**):"
-msgstr "El primer paso es crear un plan de precios vacío sobre el que importar "
+msgstr ""
+"El primer paso es crear un plan de precios vacío sobre el que importar "
 "nuestros precios (sección **Configuración de marca** > **Planes de "
 "precio**):"
 
@@ -657,7 +713,8 @@ msgstr "El botón clave para este proceso de importación masiva es el siguiente
 
 #: ../../billing_and_invoices/pricing_plans.rst:55
 msgid "Once chosen the CSV file to import, this window turns up:"
-msgstr "Una vez elegido el archivo a importar, se nos presenta la siguiente "
+msgstr ""
+"Una vez elegido el archivo a importar, se nos presenta la siguiente "
 "ventana:"
 
 #: ../../billing_and_invoices/pricing_plans.rst:59
@@ -666,7 +723,8 @@ msgid ""
 "import a `CSV <https://es.wikipedia.org/wiki/CSV>`_ file in a non-"
 "recommended format. We can also decide whether to import the first line "
 "or discard it as it may have titles instead of data."
-msgstr "En esta ventana podríamos seleccionar qué contiene cada columna, en caso "
+msgstr ""
+"En esta ventana podríamos seleccionar qué contiene cada columna, en caso "
 "de no haber creado el `CSV <https://es.wikipedia.org/wiki/CSV>`_ en el "
 "formato recomendado. Del mismo modo, se nos ofrece la posibilidad de "
 "ignorar la primera línea, en caso de que incluya los nombres de las "
@@ -676,7 +734,8 @@ msgstr "En esta ventana podríamos seleccionar qué contiene cada columna, en ca
 msgid ""
 "The importing process is done in background, letting the brand operator "
 "continue doing other stuff while it is finished."
-msgstr "El proceso de importación se realiza en segundo plano, permitiendo al "
+msgstr ""
+"El proceso de importación se realiza en segundo plano, permitiendo al "
 "administrador de marca seguir configurando otros aspectos de la "
 "plataforma mientras se completa."
 
@@ -689,7 +748,8 @@ msgid ""
 "Although the above window allowed importing non-recommended format `CSV "
 "<https://es.wikipedia.org/wiki/CSV>`_  files, we encourage you to import "
 "a file in the proposed format, as it will make this process much easier."
-msgstr "A pesar de que la ventana anterior nos permite importar archivos `CSV "
+msgstr ""
+"A pesar de que la ventana anterior nos permite importar archivos `CSV "
 "<https://es.wikipedia.org/wiki/CSV>`_ en distintos formatos, lo mejor es "
 "importar un archivo en el formato adecuado para simplicar este proceso."
 
@@ -698,7 +758,8 @@ msgid ""
 "The recommended `CSV <https://es.wikipedia.org/wiki/CSV>`_ format is "
 "described in the contextual help section, that includes even a link to "
 "download an example file:"
-msgstr "El formato del archivo `CSV <https://es.wikipedia.org/wiki/CSV>`_ está "
+msgstr ""
+"El formato del archivo `CSV <https://es.wikipedia.org/wiki/CSV>`_ está "
 "explicado en la propia sección de ayuda contextual, que incluye un enlace"
 " para poder descargar un archivo de ejemplo:"
 
@@ -734,7 +795,8 @@ msgstr "Período de facturación"
 msgid ""
 "Floating number must be quoted with double quotes and use a comma as "
 "decimal separator."
-msgstr "Los números decimales tienen que estar entrecomillados con comillas "
+msgstr ""
+"Los números decimales tienen que estar entrecomillados con comillas "
 "dobles y tienen que usar la coma como separador decimal."
 
 #: ../../billing_and_invoices/pricing_plans.rst:92
@@ -742,7 +804,8 @@ msgid ""
 "The importing system will just bind the price to an existing price "
 "pattern or, if prefix doesn't match any existing pricing pattern, it will"
 " create one."
-msgstr "El sistema de importación creará los patrones de precio que sean "
+msgstr ""
+"El sistema de importación creará los patrones de precio que sean "
 "necesarios. Si ya existe un patrón de precios con ese prefijo, no se "
 "creará, simplemente se vinculará."
 
@@ -754,14 +817,16 @@ msgstr "El precio de la llamada sera incrementado cada periodo de facturacion."
 msgid ""
 "If *billing period* is set to 1, every second the price will be increased"
 " *price per minute* divided by 60 (bill by seconds)."
-msgstr "Si se pone a 1, implica una tarificación por segundos y cada segundo "
+msgstr ""
+"Si se pone a 1, implica una tarificación por segundos y cada segundo "
 "implicará un coste que será el *precio por minuto* dividido entre 60."
 
 #: ../../billing_and_invoices/pricing_plans.rst:101
 msgid ""
 "If *billing period* is set to 60, every minute the price will be "
 "increased *price per minute* (bill by minutes)."
-msgstr "Si se pone a 60, implica una tarificación por minutos y cada minuto "
+msgstr ""
+"Si se pone a 60, implica una tarificación por minutos y cada minuto "
 "implicará un coste que será el *precio por minuto*."
 
 #: ../../billing_and_invoices/pricing_plans.rst:104
@@ -769,7 +834,11 @@ msgid ""
 "Once the import process is over, we just have to bind the pricing plan to"
 " the companies we want following :ref:`the procedure explained in the "
 "previous block <pricing_plan_to_company>`."
-msgstr "Una vez completada la importación, solo faltaría asociar el nuevo plan de "
-"precios a las empresas que queramos, siguiendo :ref:`el procedimiento explicado "
-"en el bloque anterior <pricing_plan_to_company>`."
+msgstr ""
+"Una vez completada la importación, solo faltaría asociar el nuevo plan de"
+" precios a las empresas que queramos, siguiendo :ref:`el procedimiento "
+"explicado en el bloque anterior <pricing_plan_to_company>`."
+
+#~ msgid ""
+#~ msgstr ""
 
