@@ -1,8 +1,10 @@
 <?php
 namespace IvozProvider\Klear\Dynamic;
+
 use IvozProvider\Klear\Dynamic\Config\MainOperator;
 use IvozProvider\Klear\Dynamic\Config\BrandOperator;
 use IvozProvider\Klear\Dynamic\Config\CompanyAdmin;
+
 class Builder
 {
     /**
