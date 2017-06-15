@@ -3,7 +3,7 @@ Section: php
 Priority: optional
 Build-Depends: debhelper, dh-systemd,
     nodejs, npm, ruby-compass, git, openssh-client, curl, php5,
-    python, make, python-sphinx-rtd-theme,
+    python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8)
 Standards-Version: 3.9.6
