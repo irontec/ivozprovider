@@ -77,7 +77,7 @@ several valid outgoing routes.
 - Route A: priority 1, metric 1
 - Route B: priority 1, metric 1
 
-Call matching theese routes will use route A for %50 of the calls and route B for
+Call matching these routes will use route A for %50 of the calls and route B for
 %50 of the calls.
 
 .. rubric:: Example 2
@@ -85,7 +85,7 @@ Call matching theese routes will use route A for %50 of the calls and route B fo
 - Route A: priority 1, metric 1
 - Route B: priority 1, metric 2
 
-Call matching theese routes will use route A for %33 of the calls and route B for
+Call matching these routes will use route A for %33 of the calls and route B for
 %66 of the calls.
 
 Failover routes
@@ -98,7 +98,7 @@ Failover route lets us use another route whenever the main route fails.
 - Route A: priority 1, metric 1
 - Route B: priority 2, metric 1
 
-All calls matching theese routes will try to use route A. In case the call fails,
+All calls matching these routes will try to use route A. In case the call fails,
 the call will be placed using route B.
 
 .. tip:: Although given examples use two routes, more routes can be chained and
