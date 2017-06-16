@@ -157,6 +157,16 @@
 			"owner": "628603"
 		},
 		{
+			"id": "cb6e7488-a0c0-2e26-dad8-6bc8e644fcaa",
+			"name": "2230 - Friends",
+			"description": "",
+			"order": [
+				"62b2e2ae-fc05-1bff-9a17-1b42d99ec340",
+				"e8ec7395-0af7-4702-e352-c0154feb08e0"
+			],
+			"owner": "628603"
+		},
+		{
 			"id": "8471b358-5971-5090-5feb-23ff3c6af006",
 			"name": "2250 - DDIs",
 			"description": "",
@@ -168,16 +178,6 @@
 			],
 			"owner": "628603",
 			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
-		},
-		{
-			"id": "cb6e7488-a0c0-2e26-dad8-6bc8e644fcaa",
-			"name": "2250 - Friends",
-			"description": "",
-			"order": [
-				"62b2e2ae-fc05-1bff-9a17-1b42d99ec340",
-				"e8ec7395-0af7-4702-e352-c0154feb08e0"
-			],
-			"owner": "628603"
 		},
 		{
 			"id": "68ff2a4c-343f-d443-f435-bb434fb974d8",
@@ -2274,10 +2274,10 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"userAliceId\");\ntests[\"Expected user id\"] = data.id == id;\ntests[\"Expected user name\"] = data.name === \"Alice\";\n",
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"friendId\");\ntests[\"Expected friend id\"] = data.id == id;\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1497622642198,
+			"time": 1497624753872,
 			"name": "Get Friend",
 			"description": "",
 			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
