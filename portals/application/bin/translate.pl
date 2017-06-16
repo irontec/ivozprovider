@@ -5,7 +5,7 @@ no warnings;
 no strict;
 
 my $xgettext_bin="/usr/bin/xgettext";
-my $xgettext_args="--no-location --force-po ";
+my $xgettext_args="--no-location --force-po --sort-by-file";
 my $msgmerge_bin="/usr/bin/msgmerge";
 my $msgmerge_args=" --update --backup none";
 my $msgfmt_bin="/usr/bin/msgfmt";
@@ -82,6 +82,9 @@ sub update_po_file
     $msgmerge_cmd .= " /tmp/base.pot";
     $msgmerge_cmd .= " 2>/dev/null";
     system($msgmerge_cmd);
+
+    # Remove POT-Creation line
+    system("sed -i -e'/POT-Creation/d' $base_path/application/languages/$locale/$locale.po");
 }
 
 sub update_mo_file
