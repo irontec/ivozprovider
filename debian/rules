@@ -8,8 +8,8 @@ build_doc:
 	cd doc/sphinx ; sphinx-build -D"language=en" -bsinglehtml . ../html/ensingle
 
 build_portals:
-	cd portals ; msgfmt -o application/languages/es_ES.mo application/languages/es_ES.po
-	cd portals ; msgfmt -o application/languages/en_US.mo application/languages/en_US.po
+	cd portals ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
+	cd portals ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
 
 build_userweb:
 	# Build with npm
