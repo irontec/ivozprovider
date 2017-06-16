@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oasis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 12:15+0200\n"
+"POT-Creation-Date: 2017-06-16 18:55+0200\n"
 "PO-Revision-Date: 2017-06-14 13:22+0200\n"
 "Last-Translator: IvozProvider Translator <<vozip@irontec.com>>\n"
 "Language-Team: \n"
@@ -10,88 +10,82 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate;plural:1,2\n"
-"X-Poedit-Basepath: ../../..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.5\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: public/scripts\n"
-"X-Poedit-SearchPathExcluded-1: application/configs/klearRaw\n"
-"X-Poedit-SearchPathExcluded-2: library/vendor\n"
 
 msgid "Searching"
-msgstr ""
+msgstr "Buscando"
 
 msgid "Preparing search..."
-msgstr ""
+msgstr "Preparando búsqueda..."
 
 msgid "Search Results"
-msgstr ""
+msgstr "Resultados de Búsqueda"
 
 msgid ""
 "Your search did not match any documents. Please make sure that all words are "
 "spelled correctly and that you've selected enough categories."
 msgstr ""
+"Su búsqueda no encontró ningún documento. Por favor, asegurese de que los "
+"términos estan correctamente escritos y ha seleccionado suficientes "
+"categorías."
 
 #, javascript-format
 msgid "Search finished, found %s page(s) matching the search query."
-msgstr ""
+msgstr "Búsqueda completada, encontradas %s página(s) coincidentes."
 
 msgid ", in "
-msgstr ""
+msgstr ", en "
 
 msgid "Permalink to this headline"
-msgstr ""
+msgstr "Enlace permante a esta cabecera"
 
 msgid "Permalink to this definition"
-msgstr ""
+msgstr "Enlace permanente a esta definición"
 
 msgid "Hide Search Matches"
-msgstr ""
+msgstr "Ocultar resultados de búsqueda"
 
 msgid "Brand is not set"
 msgstr "Marca no seleccionada"
 
-#, fuzzy
 msgid "Required values cannot be null"
-msgstr "El campo plantilla no puede estar vacio."
+msgstr "Los campos obligatorios no pueden estar vacios."
 
 msgid "Invalid value for targetType"
-msgstr "Invalid value for targetType"
+msgstr "Valor inválido para targetType"
 
 msgid "Invalid value for callTypeFilter"
-msgstr "Invalid value for callTypeFilter"
+msgstr "Valor inválido para callTypeFilter"
 
 msgid "Invalid value for callForwardType"
-msgstr "Invalid value for callForwardType"
+msgstr "Valor inválido para callForwardType"
 
 msgid "Invalid value for transport"
-msgstr "Invalid value for transport"
+msgstr "Valor inválido para transport"
 
 msgid "Invalid value for authNeeded"
-msgstr "Invalid value for authNeeded"
+msgstr "Valor inválido para authNeeded"
 
 msgid "Invalid value for directMediaMethod"
-msgstr "Invalid value for directMediaMethod"
+msgstr "Valor inválido para directMediaMethod"
 
 msgid "Invalid value for calleridUpdateHeader"
-msgstr "Invalid value for calleridUpdateHeader"
+msgstr "Valor inválido para calleridUpdateHeader"
 
 msgid "Invalid value for updateCallerid"
-msgstr "Invalid value for updateCallerid"
+msgstr "Valor inválido para updateCallerid"
 
 msgid "Invalid value for directConnectivity"
-msgstr "Invalid value for directConnectivity"
+msgstr "Valor inválido para directConnectivity"
 
 msgid "Invalid value for parsed"
-msgstr "Invalid value for parsed"
+msgstr "Valor inválido para parsed"
 
 msgid "Invalid value for bounced"
-msgstr "Invalid value for bounced"
+msgstr "Valor inválido para bounced"
 
 msgid "Invalid value for direction"
-msgstr "Invalid value for direction"
+msgstr "Valor inválido para direction"
 
 msgid "Invalid value for autopause"
 msgstr "Valor inválido para autopause"
@@ -100,22 +94,22 @@ msgid "Invalid value for ringinuse"
 msgstr "Valor inválido para ringinuse"
 
 msgid "Invalid value for strategy"
-msgstr "Invalid value for strategy"
+msgstr "Valor inválido para strategy"
 
 msgid "Invalid value for recordCalls"
-msgstr "Invalid value for recordCalls"
+msgstr "Valor inválido para recordCalls"
 
 msgid "Invalid value for routeType"
-msgstr "Invalid value for routeType"
+msgstr "Valor inválido para routeType"
 
 msgid "Invalid value for externalIpCalls"
-msgstr ""
+msgstr "Valor inválido para externalIpCalls"
 
 msgid "Invalid value for timeoutTargetType"
-msgstr "Invalid value for timeoutTargetType"
+msgstr "Valor inválido para timeoutTargetType"
 
 msgid "Invalid value for errorTargetType"
-msgstr "Invalid value for errorTargetType"
+msgstr "Valor inválido para errorTargetType"
 
 msgid "Invalid value for fullTargetType"
 msgstr "Valor invalido para fullTargetType"
@@ -124,90 +118,152 @@ msgid "Invalid value for type"
 msgstr "Valor inválido"
 
 msgid "Invalid value for status"
-msgstr "Invalid value for status"
+msgstr "Valor inválido para status"
 
 msgid "Invalid value for mode"
-msgstr "Invalid value for mode"
+msgstr "Valor inválido para mode"
 
 msgid "Invalid value for directMedia"
-msgstr "Invalid value for directMedia"
+msgstr "Valor inválido para directMedia"
 
 msgid "Invalid value for sendDiversion"
-msgstr "Invalid value for sendDiversion"
+msgstr "Valor inválido para sendDiversion"
 
 msgid "Invalid value for sendPai"
-msgstr "Invalid value for sendPai"
+msgstr "Valor inválido para sendPai"
 
 msgid "Invalid value for 100rel"
-msgstr "Invalid value for 100rel"
+msgstr "Valor inválido para 100rel"
 
 msgid "Invalid value for trustIdInbound"
-msgstr "Invalid value for trustIdInbound"
+msgstr "Valor inválido para trustIdInbound"
 
 msgid "Invalid value for attach"
-msgstr "Invalid value for attach"
+msgstr "Valor inválido para attach"
 
 msgid "Invalid value for deleteastVoicemail"
-msgstr "Invalid value for deleteastVoicemail"
+msgstr "Valor inválido para deleteastVoicemail"
 
 msgid "Invalid value for saycid"
-msgstr "Invalid value for saycid"
+msgstr "Valor inválido para saycid"
 
 msgid "Invalid value for sendastVoicemail"
-msgstr "Invalid value for sendastVoicemail"
+msgstr "Valor inválido para sendastVoicemail"
 
 msgid "Invalid value for review"
-msgstr "Invalid value for review"
+msgstr "Valor inválido para review"
 
 msgid "Invalid value for tempgreetwarn"
-msgstr "Invalid value for tempgreetwarn"
+msgstr "Valor inválido para tempgreetwarn"
 
 msgid "Invalid value for operator"
-msgstr "Invalid value for operator"
+msgstr "Valor inválido para operator"
 
 msgid "Invalid value for envelope"
-msgstr "Invalid value for envelope"
+msgstr "Valor inválido para envelope"
 
 msgid "Invalid value for forcename"
-msgstr "Invalid value for forcename"
+msgstr "Valor inválido para forcename"
 
 msgid "Invalid value for forcegreetings"
-msgstr "Invalid value for forcegreetings"
+msgstr "Valor inválido para forcegreetings"
 
 msgid "Invalid value for urlType"
-msgstr "Invalid value for urlType"
+msgstr "Valor inválido para urlType"
 
-#, fuzzy
 msgid "Invalid value for scope"
-msgstr "Invalid value for scope"
+msgstr "Valor inválido para scope"
 
-#, fuzzy
 msgid "Invalid value for pointsTo"
-msgstr "Invalid value for pointsTo"
+msgstr "Valor inválido para pointsTo"
 
 msgid "Invalid value for noAnswerTargetType"
-msgstr "Invalid value for noAnswerTargetType"
+msgstr "Valor inválido para noAnswerTargetType"
 
 msgid "Invalid value for removeExisting"
-msgstr "Invalid value for removeExisting"
+msgstr "Valor inválido para removeExisting"
 
 msgid "Invalid value for authenticateQualify"
-msgstr "Invalid value for authenticateQualify"
+msgstr "Valor inválido para authenticateQualify"
 
 msgid "Invalid value for supportPath"
-msgstr "Invalid value for supportPath"
+msgstr "Valor inválido para supportPath"
 
 msgid "Invalid value for holidayTargetType"
-msgstr "Invalid value for holidayTargetType"
+msgstr "Valor inválido para holidayTargetType"
 
 msgid "Invalid value for outOfScheduleTargetType"
-msgstr "Invalid value for outOfScheduleTargetType"
+msgstr "Valor inválido para outOfScheduleTargetType"
 
 msgid "Invalid value for policy"
-msgstr "Invalid value for policy"
+msgstr "Valor inválido para policy"
 
 msgid "Invalid value for defaultPolicy"
-msgstr "Invalid value for defaultPolicy"
+msgstr "Valor inválido para defaultPolicy"
+
+msgid "Import system"
+msgstr "Sistmea de importación"
+
+msgid "Set column configuration and continue."
+msgstr "Configurar columna y continuar."
+
+msgid "Fields with * are required"
+msgstr "Los campos con * son obligatorios"
+
+msgid "ignore"
+msgstr "ignorar"
+
+msgid "Ignore first line."
+msgstr "Ignorar primera linea."
+
+msgid "Update values."
+msgstr "Actualizar valores."
+
+msgid "Holiday importer system"
+msgstr "Sistema de importación de festivos"
+
+msgid ""
+"This importer expects values to be within quotation marks and separated by "
+"semicolons."
+msgstr ""
+"El importador espera valores entre símbolos comillas separados por punto y "
+"coma."
+
+msgid "Ensure the preview below is right before you proceed"
+msgstr ""
+"Asegúrese que la previsualización a continuación es correcta antes de "
+"proceder"
+
+msgid "Please, choose a file to import"
+msgstr "Por favor, seleccione un fichero a importar"
+
+msgid "Parse file and import"
+msgstr "Cargar fichero e importar"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Continue"
+msgstr "Continuar"
+
+msgid "Yes, continue!"
+msgstr "Si, ¡continua!"
+
+msgid "is a required field"
+msgstr "es un campo obligatorio"
+
+msgid "File imported"
+msgstr "Fichero importado"
+
+msgid "but following errors ocurred"
+msgstr "pero ocurrieron los siguientes errores."
+
+msgid "An error occurred"
+msgstr "Ha ocurrido un error"
+
+msgid "An error occurred: check files format and content."
+msgstr ""
+"Ha ocurrido un error: compruebe el formato y contenido de los ficheros."
 
 msgid "Destination patterns"
 msgstr "Patrones de destinos"
@@ -232,11 +288,10 @@ msgid_plural "Emails"
 msgstr[0] "Email"
 msgstr[1] "Emails"
 
-#, fuzzy
 msgid "Email address"
 msgid_plural "Email addresses"
-msgstr[0] "Dirección postal"
-msgstr[1] "Dirección postal"
+msgstr[0] "Dirección email"
+msgstr[1] "Dirección email"
 
 msgid "Pass"
 msgstr "Contraseña"
@@ -256,22 +311,19 @@ msgid_plural "Names"
 msgstr[0] "Nombre"
 msgstr[1] "Nombre"
 
-#, fuzzy
 msgid "Surname"
 msgid_plural "Surnames"
-msgstr[0] "Nombre de usuario"
-msgstr[1] "Nombre de usuario"
+msgstr[0] "Apellido"
+msgstr[1] "Apellidos"
 
-#, fuzzy
 msgid "FirstName"
 msgstr "Nombre"
 
 msgid "Firstname"
 msgstr "Nombre"
 
-#, fuzzy
 msgid "First name"
-msgstr "Nombre a mostrar"
+msgstr "Nombre"
 
 msgid "LastName"
 msgstr "Apellido"
@@ -282,29 +334,25 @@ msgstr "Apellido"
 msgid "Last name"
 msgstr "Apellido"
 
-#, fuzzy
 msgid "PhoneNumber"
 msgid_plural "PhoneNumbers"
-msgstr[0] "Número"
-msgstr[1] "Número"
+msgstr[0] "Número teléfono"
+msgstr[1] "Números teléfono"
 
-#, fuzzy
 msgid "Phonenumber"
 msgid_plural "Phonenumbers"
-msgstr[0] "Número"
-msgstr[1] "Número"
+msgstr[0] "Número teléfono"
+msgstr[1] "Números teléfono"
 
-#, fuzzy
 msgid "Phone number"
 msgid_plural "Phone numbers"
-msgstr[0] "Número"
-msgstr[1] "Número"
+msgstr[0] "Número teléfono"
+msgstr[1] "Números teléfono"
 
-#, fuzzy
 msgid "Address"
 msgid_plural "Addresses"
 msgstr[0] "Dirección"
-msgstr[1] "Dirección"
+msgstr[1] "Direcciones"
 
 msgid "Street"
 msgid_plural "Streets"
@@ -326,11 +374,10 @@ msgid_plural "Postal codes"
 msgstr[0] "Código postal"
 msgstr[1] "Códigos postales"
 
-#, fuzzy
 msgid "ZipCode"
 msgid_plural "ZipCodes"
-msgstr[0] "Código"
-msgstr[1] "Código"
+msgstr[0] "Código postal"
+msgstr[1] "Códigos postales"
 
 msgid "Zipcode"
 msgid_plural "Zipcodes"
@@ -352,11 +399,10 @@ msgid_plural "Cities"
 msgstr[0] "Ciudad"
 msgstr[1] "Ciudades"
 
-#, fuzzy
 msgid "State"
 msgid_plural "States"
 msgstr[0] "Estado"
-msgstr[1] "Estado"
+msgstr[1] "Estados"
 
 msgid "Country"
 msgid_plural "Countries"
@@ -373,11 +419,10 @@ msgid_plural "Roles"
 msgstr[0] "Rol"
 msgstr[1] "Roles"
 
-#, fuzzy
 msgid "File"
 msgid_plural "Files"
-msgstr[0] "Fichero importado"
-msgstr[1] "Fichero importado"
+msgstr[0] "Fichero"
+msgstr[1] "Ficheros"
 
 msgid "Path"
 msgid_plural "Paths"
@@ -404,9 +449,8 @@ msgstr "Fichero"
 msgid "Filepath"
 msgstr "Fichero"
 
-#, fuzzy
 msgid "File path"
-msgstr "Fichero convertido"
+msgstr "Ruta del fichero"
 
 msgid "MimeType"
 msgid_plural "MimeTypes"
@@ -434,83 +478,75 @@ msgstr "Nombre de usuario"
 
 msgid "Image"
 msgid_plural "Images"
-msgstr[0] "Imagen"
-msgstr[1] ""
+msgstr[0] "Imágen"
+msgstr[1] "Imágenes"
 
 msgid "ImageSize"
-msgstr ""
+msgstr "Tamaño imágen"
 
 msgid "Imagesize"
-msgstr ""
+msgstr "Tamaño imágen"
 
 msgid "Image size"
-msgstr ""
+msgstr "Tamaño imágen"
 
-#, fuzzy
 msgid "ImagePath"
-msgstr "Ruta"
+msgstr "Ruta imágen"
 
 msgid "Imagepath"
-msgstr ""
+msgstr "Ruta imágen"
 
 msgid "Image path"
-msgstr ""
+msgstr "Ruta imágen"
 
 msgid "Picture"
 msgid_plural "Pictures"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Imágen"
+msgstr[1] "Imágenes"
 
 msgid "PictureSize"
-msgstr ""
+msgstr "Tamaño imágen"
 
 msgid "Picturesize"
-msgstr ""
+msgstr "Tamaño imágen"
 
 msgid "Picture size"
-msgstr ""
+msgstr "Tamaño imágen"
 
 msgid "PicturePath"
-msgstr ""
+msgstr "Ruta imágen"
 
 msgid "Picturepath"
-msgstr ""
+msgstr "Ruta imágen"
 
-#, fuzzy
 msgid "Picture path"
-msgstr "Patrón de precio"
+msgstr "Ruta imágen"
 
 msgid "Active"
 msgstr "Activo"
 
-#, fuzzy
 msgid "Status"
 msgid_plural "Statuses"
 msgstr[0] "Estado"
-msgstr[1] "Estado"
+msgstr[1] "Estados"
 
-#, fuzzy
 msgid "CreatedOn"
 msgstr "Creado"
 
-#, fuzzy
 msgid "Createdon"
 msgstr "Creado"
 
 msgid "Created on"
 msgstr "Creado"
 
-#, fuzzy
 msgid "UpdatedOn"
 msgstr "Modificado"
 
-#, fuzzy
 msgid "Updatedon"
 msgstr "Modificado"
 
-#, fuzzy
 msgid "Updated on"
-msgstr "Fecha de subida"
+msgstr "Modificado"
 
 msgid "StartTime"
 msgstr "StartTime"
@@ -533,7 +569,6 @@ msgstr "Fecha fin"
 msgid "Start"
 msgstr "Start"
 
-#, fuzzy
 msgid "End"
 msgstr "Fecha fin"
 
@@ -694,19 +729,18 @@ msgid "Yes"
 msgstr "Si"
 
 msgid "Off"
-msgstr ""
+msgstr "Off"
 
 msgid "On"
-msgstr ""
+msgstr "On"
 
 msgid "Unassigned"
 msgstr "Sin asignar"
 
-#, fuzzy
 msgid "Error"
 msgid_plural "Errors"
 msgstr[0] "Error"
-msgstr[1] "Error"
+msgstr[1] "Errores"
 
 msgid "Success"
 msgstr ""
@@ -720,54 +754,47 @@ msgstr "OK"
 msgid "Open"
 msgstr ""
 
-msgid "Close"
-msgstr "Cerrar"
-
 msgid "Allow"
 msgstr "Permitir"
 
-#, fuzzy
 msgid "Deny"
 msgstr "Rechazar"
 
 msgid "Public"
 msgid_plural "Publics"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pública"
+msgstr[1] "Públicas"
 
 msgid "Private"
 msgid_plural "Privates"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Privada"
+msgstr[1] "Privadas"
 
 msgid "Visibility"
 msgid_plural "Visibilities"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Visibilidad"
+msgstr[1] "Visibilidades"
 
 msgid "Available"
-msgstr ""
+msgstr "Disponible"
 
 msgid "Unavailable"
-msgstr ""
+msgstr "Ocupada"
 
-#, fuzzy
 msgid "Upload file"
 msgid_plural "Upload files"
 msgstr[0] "Subir fichero"
-msgstr[1] "Subir fichero"
+msgstr[1] "Subir ficheros"
 
-#, fuzzy
 msgid "Download"
 msgid_plural "Downloads"
-msgstr[0] "Descargar fichero"
-msgstr[1] "Descargar fichero"
+msgstr[0] "Descarga"
+msgstr[1] "Descargas"
 
-#, fuzzy
 msgid "Download file"
 msgid_plural "Download files"
 msgstr[0] "Descargar fichero"
-msgstr[1] "Descargar fichero"
+msgstr[1] "Descargar ficheros"
 
 #, python-format, php-format
 msgid "List of %s"
@@ -779,7 +806,7 @@ msgstr "Editar %s"
 
 #, python-format, php-format
 msgid "List of %s %2s"
-msgstr "Listado de %s  %2s"
+msgstr "Listado de %s %2s"
 
 #, python-format, php-format
 msgid "Edit %s %2s"
@@ -941,56 +968,8 @@ msgstr "Restaurar plantilla por defecto"
 msgid "Cargando <textarea style=\"display: none\">"
 msgstr ""
 
-msgid "Please, chose a file to import"
-msgstr "Por favor, seleccione un fichero a importar"
-
-msgid "Parse file and import"
-msgstr "Cargar fichero e importar"
-
-#, fuzzy
-msgid "Continue"
-msgstr "Contexto"
-
-#, fuzzy
-msgid "Import system"
-msgstr "Importar %s"
-
-#, fuzzy
-msgid "Set column configuration and continue."
-msgstr "Configuración Saliente"
-
-msgid "Fields with * are required"
-msgstr "Los campos con * son obligatorios"
-
-msgid "ignore"
-msgstr "ignorar"
-
-msgid "Ignore first line."
-msgstr "Ignorar primera linea."
-
-#, fuzzy
-msgid "Update values."
-msgstr "Número"
-
-msgid "Yes, continue!"
-msgstr "Si, ¡continua!"
-
-msgid "is a required field"
-msgstr "es un campo obligatorio"
-
-#, fuzzy
-msgid "File imported"
-msgstr "Fichero a importar"
-
-msgid " but following errors ocurred"
-msgstr "pero ocurrieron los siguientes errores."
-
-msgid "An error occurred"
-msgstr "Ha ocurrido un error"
-
-msgid "An error occurred: check files format and content."
+msgid "For instance:"
 msgstr ""
-"Ha ocurrido un error: compruebe el formato y contenido de los ficheros."
 
 #, fuzzy
 msgid "Generate invoice"
@@ -1018,6 +997,9 @@ msgstr "Facturas encoladas:"
 
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr "Las facturas han sido encoladas. Se generarán lo antes posible."
+
+msgid "Please, chose a file to import"
+msgstr "Por favor, seleccione un fichero a importar"
 
 msgid "Import process enqueued"
 msgstr "Proceso de importación encolado."
@@ -1478,9 +1460,8 @@ msgid_plural "Calendars"
 msgstr[0] "Calendario"
 msgstr[1] "Calendarios"
 
-#, fuzzy
 msgid "Schedule"
-msgid_plural "Schedule"
+msgid_plural "Schedules"
 msgstr[0] "Horario"
 msgstr[1] "Horarios"
 
@@ -2016,11 +1997,9 @@ msgstr "Buzón de voz"
 msgid "Target"
 msgstr "Destino"
 
-#, fuzzy
 msgid "Scope"
 msgstr "Ámbito"
 
-#, fuzzy
 msgid "global"
 msgstr "Global"
 
@@ -2030,15 +2009,12 @@ msgstr "Empresa"
 msgid "brand"
 msgstr "Marca"
 
-#, fuzzy
 msgid "Points to"
 msgstr "Direcciona a"
 
-#, fuzzy
 msgid "proxyusers"
-msgstr "Proxy de Entrada"
+msgstr "Proxy de Usuarios"
 
-#, fuzzy
 msgid "proxytrunks"
 msgstr "Proxy de Salida"
 
@@ -2049,7 +2025,7 @@ msgid "Number"
 msgstr "Número"
 
 msgid "Minimal length: 2"
-msgstr ""
+msgstr "Longitud mínima: 2"
 
 msgid "Route type"
 msgstr "Enrutar"
@@ -2067,7 +2043,7 @@ msgid "huntGroup"
 msgstr "Grupo de Salto"
 
 msgid "Conference Room"
-msgstr ""
+msgstr "Conferencia"
 
 msgid "Number value"
 msgstr "Número"
@@ -2076,11 +2052,10 @@ msgid "I v r common id"
 msgstr "IVR Genérico"
 
 msgid "Conference room id"
-msgstr ""
+msgstr "Conferencia"
 
-#, fuzzy
 msgid "Friend value"
-msgstr "Número"
+msgstr "Número friend"
 
 msgid "Pin protected"
 msgstr "Con contraseña"
@@ -2187,40 +2162,38 @@ msgstr "Requiere autenticación"
 msgid "yes"
 msgstr "Si"
 
-#, fuzzy
 msgid "no"
-msgstr "Nota"
+msgstr "no"
 
-#, fuzzy
 msgid "Auth user"
-msgstr "Nombre de usuario"
+msgstr "Usuario autenticación"
 
 msgid "Auth password"
 msgstr "Contraseña"
 
 msgid "SIP Proxy"
-msgstr ""
+msgstr "Proxy SIP"
 
 msgid "IP or domain name (port with ':')"
-msgstr ""
+msgstr "IP o dominio (puerto con ':')"
 
 msgid "Outbound Proxy"
-msgstr ""
+msgstr "Proxy saliente"
 
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
-msgstr ""
+msgstr "Se enviará a IP:[PUERTO] en lugar de la dirección del Proxy SIP"
 
 msgid "From user"
-msgstr ""
+msgstr "Usuario From"
 
 msgid "Use this instead in From header username"
-msgstr ""
+msgstr "Se empleará este en lugar del usuario de la cabecera From"
 
 msgid "From domain"
-msgstr ""
+msgstr "Dominio From"
 
 msgid "Use this instead in From header domain"
-msgstr ""
+msgstr "Se empleará este en lugar de dominio de la cabecera From"
 
 msgid "Call type"
 msgstr "Tipo de llamada"
@@ -2256,10 +2229,10 @@ msgid "No answer timeout"
 msgstr "Timeout no contesta"
 
 msgid "Target type value"
-msgstr ""
+msgstr "Tipo destino"
 
 msgid "Grp"
-msgstr ""
+msgstr "Grupo"
 
 msgid "Ip addr"
 msgstr "Dirección IP"
@@ -2276,9 +2249,8 @@ msgstr "Proxy"
 msgid "Module"
 msgstr "Módulo"
 
-#, fuzzy
 msgid "Method"
-msgstr "Modo actualización"
+msgstr "Método"
 
 msgid "Mapper name"
 msgstr "Nombre mapper"
@@ -2286,46 +2258,45 @@ msgstr "Nombre mapper"
 msgid "Start date"
 msgstr "Start date"
 
-#, fuzzy
 msgid "Exec date"
-msgstr "Modificado"
+msgstr "Fecha ejecución"
 
-#, fuzzy
 msgid "Finish date"
-msgstr "Modificado"
+msgstr "Fecha finalización"
 
 msgid "Companyid"
 msgstr "Compañia"
 
 msgid "Allowed characters are a-z, A-Z, 0-9 and underscore"
-msgstr ""
+msgstr "Los carácteres permitidos son a-z, A-Z, 0-9 y guion bajo"
 
 msgid "e.g. 8.8.8.8"
 msgstr "por. ej. 8.8.8.8"
 
-#, fuzzy
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
 "digits and one character in '+*_-'"
 msgstr ""
 "Mínima longitud 10, incluyendo 3 letras en mayúsculas, 3 en minúsculas, 3 "
-"dígitos y un caracter especial '!@#$%^&*()-+'"
+"dígitos y un caracter especial '+*_-'"
 
 msgid "Country code"
 msgstr "Código de País"
 
-#, fuzzy
 msgid "Client's default"
-msgstr "Usar configuración empresa"
+msgstr "Usar configuración cliente"
 
 msgid "Outgoing calls coming from Friend must have this country format"
 msgstr ""
+"Las llamadas salientes desde el Friend deberán tener el formato de este país"
 
 msgid "Areacode"
 msgstr "Código de Area"
 
 msgid "Outgoing calls coming from Friend must have this area code format"
 msgstr ""
+"Las llamadas salientes desde el friend deberán tener el formato de este "
+"código de area"
 
 msgid "Fallback Outgoing DDI"
 msgstr "DDI de salida alternativo"
@@ -2356,9 +2327,8 @@ msgstr "¿Actualización Pantalla?"
 msgid "Direct connectivity"
 msgstr "Conectividad Directa"
 
-#, fuzzy
 msgid "Interface"
-msgstr "Intervalo"
+msgstr "Interfaz"
 
 msgid "Member"
 msgstr "Miembro"
@@ -2417,11 +2387,10 @@ msgstr "Completado"
 msgid "inprogress"
 msgstr "En curso"
 
-#, fuzzy
 msgid "PDF File"
 msgid_plural "PDF Files"
-msgstr[0] "Fichero"
-msgstr[1] "Ficheros"
+msgstr[0] "Fichero PDF"
+msgstr[1] "Ficheros PDF"
 
 msgid "Service id"
 msgstr "Servicio"
@@ -2717,15 +2686,14 @@ msgid "As address"
 msgstr "Direccion Servidor de Aplicación"
 
 msgid "Callid"
-msgstr ""
+msgstr "CallId"
 
 msgid "Xcallid"
-msgstr ""
+msgstr "X-CallId"
 
 msgid "Parsed"
-msgstr ""
+msgstr "Parseada"
 
-#, fuzzy
 msgid "Diversion"
 msgstr "Enviar Diversion"
 
@@ -2739,13 +2707,13 @@ msgid "Metering date"
 msgstr "Fecha de tarificación"
 
 msgid "Re metering date"
-msgstr ""
+msgstr "Fecha de retarificación"
 
 msgid "Pricing plan id"
 msgstr "Plan de precios"
 
 msgid "Pricing plan detail"
-msgstr ""
+msgstr "Detalle Plan de precios"
 
 msgid "Invoice id"
 msgstr "Factura"
@@ -2753,11 +2721,15 @@ msgstr "Factura"
 msgid "Registry data"
 msgstr "Información de registro"
 
+#, fuzzy
 msgid ""
 "Información del registro mercantil de la marca que se incluirá en las "
 "facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo "
 "XXXX, libro Y, folio ZZZ, hoja AA-BBBB'"
 msgstr ""
+"Información del registro mercantil de la marca que se incluirá en las "
+"facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo "
+"XXXX, libro Y, folio ZZZ, hoja AA-BBBB'"
 
 msgid "From name"
 msgstr "Nombre a mostrar"
@@ -2844,7 +2816,6 @@ msgstr "Destino si timeout"
 msgid "Error target"
 msgstr "Destino error"
 
-#, fuzzy
 msgid "Gw name"
 msgstr "Nombre"
 
@@ -2852,14 +2823,13 @@ msgid "Hostname"
 msgstr "Hostname"
 
 msgid "Param"
-msgstr ""
+msgstr "Parámetro"
 
 msgid "Defunct"
 msgstr "Defunct"
 
-#, fuzzy
 msgid "Peer server id"
-msgstr "Servicio genérico"
+msgstr "Servidor peering"
 
 msgid "Outgoing routing id"
 msgstr "Ruta de salida"
@@ -2907,13 +2877,13 @@ msgid "IP"
 msgstr "Dirección IP"
 
 msgid "Proto"
-msgstr ""
+msgstr "Protocolo"
 
 msgid "From pattern"
-msgstr ""
+msgstr "Patrón From"
 
 msgid "Ruri pattern"
-msgstr ""
+msgstr "Patrón R-URI"
 
 msgid "Pick up group id"
 msgstr "Grupo de captura"
@@ -3007,11 +2977,9 @@ msgstr "Menos atendidas"
 msgid "Random"
 msgstr "Aleatoriamente"
 
-#, fuzzy
 msgid "Round Robin"
 msgstr "Secuencialmente (∞)"
 
-#, fuzzy
 msgid "Linear"
 msgstr "Secuencialmente (una vez)"
 
@@ -3035,11 +3003,10 @@ msgid "Record call"
 msgstr "Grabar llamada"
 
 msgid "none"
-msgstr ""
+msgstr "ninguna"
 
-#, fuzzy
 msgid "all"
-msgstr "Permitir todas las llamadas salientes"
+msgstr "todas"
 
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
@@ -3055,10 +3022,10 @@ msgid "This value will be displayed in the called terminals"
 msgstr "Valor que se mostrará en el terminal llamado"
 
 msgid "Bill inbound call"
-msgstr ""
+msgstr "Tarificación llamadas entrantes"
 
 msgid "This setting needs external tarification module"
-msgstr ""
+msgstr "Esta opción requiere un módulo de tarificación externa"
 
 msgid "Country id"
 msgstr "País"
@@ -3081,9 +3048,8 @@ msgstr "El prefijo debe ser numérico"
 msgid "Invoice language"
 msgstr "Lenguaje factura"
 
-#, fuzzy
 msgid "Default Area code for accounts in this company"
-msgstr "Código de Area por defecto para los usuarios de esta compañía"
+msgstr "Código de Area por defecto para las cuentas de esta compañía"
 
 msgid "Default outgoing DDI. This can be overriden in accounts's edit screen."
 msgstr ""
@@ -3091,12 +3057,13 @@ msgstr ""
 "de edición de cuentas."
 
 msgid "Reg exp / Prefix"
-msgstr ""
+msgstr "Expr. Regular / Prefijo"
 
 msgid ""
 "If you want a prefix, use only digits. Otherwise, define your regular "
 "expresion."
 msgstr ""
+"Si desea un prefijo, use solo dígitos. Si no, defina una expresión regular."
 
 msgid "Valid from"
 msgstr "Válido desde"
@@ -3108,20 +3075,22 @@ msgid ""
 "In case that two pricing plans were matched plan with lower metric will be "
 "applied."
 msgstr ""
+"En caso de que dos planes de precio coincidan, se aplicará aquel que tenga "
+"la métrica mas baja."
 
 msgid "Future brands will have services enabled with this codes by default"
 msgstr ""
+"Las marcas creadas tendrán los servicios habilitados con estos códigos por "
+"defecto"
 
 msgid "Service has extra arguments"
-msgstr ""
+msgstr "El servicio emplea argumentos extra"
 
-#, fuzzy
 msgid "Template header"
-msgstr "Ayuda sobre plantillas"
+msgstr "Cabecera de plantilla"
 
-#, fuzzy
 msgid "Template footer"
-msgstr "Prueba de plantilla"
+msgstr "Pie de página de plantilla"
 
 msgid ""
 "Members of lower penalty will be called first. Higher penalty members will "
@@ -3141,10 +3110,10 @@ msgid "Time zone label"
 msgstr "Zona Horaria"
 
 msgid "From uri"
-msgstr ""
+msgstr "From URI"
 
 msgid "Request uri"
-msgstr ""
+msgstr "Rquest URI"
 
 msgid "Stopper"
 msgstr "No continuar"
@@ -3153,91 +3122,91 @@ msgid "Enabled"
 msgstr "Habilitado"
 
 msgid "Multiddi"
-msgstr ""
+msgstr "MultiDDI"
 
 msgid "Is sent in the username of Contact header in generated REGISTER."
-msgstr ""
+msgstr "Enviado como usuario en la cabcera Contact de los REGISTER"
 
 msgid "L username"
 msgstr "Nombre de usuario"
 
 msgid "L domain"
-msgstr ""
+msgstr "Dominio"
 
 msgid "Realm"
 msgstr "Realm"
 
 msgid "Leave empty to use the suggested default"
-msgstr ""
+msgstr "Dejar vacío para emplear la sugerencia por defecto"
 
 msgid "Auth username"
 msgstr "Usuario"
 
 msgid "Only if it's different from the Username"
-msgstr ""
+msgstr "Solo si es diferente a Usuario"
 
 msgid "Registrar Server URI"
 msgstr "URI Servidor de registro"
 
 msgid "Must start with sip or sips followed by colon"
-msgstr ""
+msgstr "Debe comenzar con sip o sips seguido de dos puntos"
 
 msgid "Expire"
-msgstr ""
+msgstr "Expiración"
 
 msgid "Reg delay"
-msgstr ""
+msgstr "Retraso registro"
 
 msgid "Stat id"
-msgstr ""
+msgstr "Stat"
 
 msgid "Xstat id"
-msgstr ""
+msgstr "Xstat"
 
 msgid "Stat type"
-msgstr ""
+msgstr "Tipo"
 
 msgid "Initial leg"
-msgstr ""
+msgstr "Pata inicial"
 
 msgid "Initial leg hash"
-msgstr ""
+msgstr "Hash pata inicial"
 
 msgid "Cid"
-msgstr ""
+msgstr "Call-Id"
 
 msgid "Cid hash"
-msgstr ""
+msgstr "Hash Call-Id"
 
 msgid "Xcid"
-msgstr ""
+msgstr "X-CID"
 
 msgid "Xcid hash"
-msgstr ""
+msgstr "Hash X-CID"
 
 msgid "Subtype"
-msgstr ""
+msgstr "Subtipo"
 
 msgid "Callee"
 msgstr "Llamado"
 
 msgid "Original caller"
-msgstr ""
+msgstr "Llamante original"
 
 msgid "Dialed number"
 msgstr "Número marcado"
 
 msgid "Presented CID"
-msgstr ""
+msgstr "CID presentado"
 
 msgid "Final callee"
-msgstr ""
+msgstr "Llamado final"
 
 msgid "Initial referrer"
-msgstr ""
+msgstr "Transferencia inicial"
 
 msgid "Last forwarder"
-msgstr ""
+msgstr "Último desvío"
 
 msgid "Black list reg exp"
 msgstr "Expresion regular lista negra"
@@ -3246,7 +3215,7 @@ msgid "Brandid"
 msgstr "Marca"
 
 msgid "Featureid"
-msgstr ""
+msgstr "Feature"
 
 msgid "CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)"
 msgstr ""
@@ -3355,7 +3324,7 @@ msgid "Generic URL Pattern"
 msgstr "Patrón de URL genérica"
 
 msgid "Exact URL that will be accessed."
-msgstr ""
+msgstr "URL exacta con la que se accederá."
 
 msgid "Generic template"
 msgstr "Plantilla genérica"
@@ -3378,9 +3347,8 @@ msgstr ""
 "antes de la dirección MAC del terminal. La provisión especifica únicamente "
 "se comprobará el nombre del fichero."
 
-#, fuzzy
 msgid "Specific Template"
-msgstr "Plantilla genérica"
+msgstr "Plantilla específica"
 
 msgid ""
 "Use <string>$this->terminalModel</strong> to access model data, <strong>"
@@ -3397,13 +3365,13 @@ msgid "Pattern"
 msgstr "Patrón"
 
 msgid "For this expression, use ':' instead of '^' and '@' instead of '$'"
-msgstr ""
+msgstr "Para esta expresión, emplea ':' en lugar de '^' y '@' en lugar de '$'"
 
 msgid "Enter a label without spaces"
-msgstr ""
+msgstr "Introduzca una etiqueta sin espacios"
 
 msgid "Used as voicemail reception and user portal credential"
-msgstr ""
+msgstr "Empleado en buzón de voz y acceso al portal de usuario"
 
 msgid "Screen Extension"
 msgstr "Extensión a mostar"
@@ -3443,20 +3411,19 @@ msgid "Pick Up Groups"
 msgstr "Grupos de captura"
 
 msgid "Calling a number within the same Area can omit Area Code"
-msgstr ""
+msgstr "Las llamadas en la misma area pueden omitir este código"
 
 msgid "Hunt groups joined"
-msgstr ""
+msgstr "Grupos de salto"
 
-#, fuzzy
 msgid "Time out time"
-msgstr "Tiempo"
+msgstr "Tiempo máximo"
 
 msgid "Calls from non-granted IPs"
 msgstr "Llamadas desde IPs no autorizadas"
 
 msgid "None"
-msgstr ""
+msgstr "Ninguna"
 
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
@@ -3487,7 +3454,7 @@ msgid "Autopause"
 msgstr "Autopausar"
 
 msgid "Maxlen"
-msgstr ""
+msgstr "Longitud"
 
 msgid "ringall"
 msgstr "A todos"
@@ -3504,7 +3471,6 @@ msgstr "Secuencialmente (memoria)"
 msgid "linear"
 msgstr "Secuencialmente (una vez)"
 
-#, fuzzy
 msgid "wrandom"
 msgstr "Aleatoriamente"
 
@@ -3524,7 +3490,7 @@ msgid "Select destination group"
 msgstr "Grupo patrones destino"
 
 msgid "Apply to all companies"
-msgstr ""
+msgstr "Aplicar a todas las compañías"
 
 msgid "Friendspattern"
 msgid_plural "Friendspatterns"
@@ -3540,9 +3506,8 @@ msgstr "Ayuda sobre plantillas"
 msgid "Prices Help"
 msgstr "Ayuda Precios"
 
-#, fuzzy
 msgid "Template headers and footers help"
-msgstr "El campo plantilla no puede estar vacio."
+msgstr "Ayuda de cabeceras y pie de plantillas"
 
 msgid "I v r custom entry"
 msgid_plural "I v r custom entries"
@@ -3572,7 +3537,7 @@ msgid "Optional Settings"
 msgstr "Configuraciones Opcionales"
 
 msgid "Target data"
-msgstr ""
+msgstr "Información destino"
 
 msgid ""
 "<p><b>Metric:</b> In case that two pricing plans were matched plan with "
@@ -3586,9 +3551,9 @@ msgid_plural "prices"
 msgstr[0] "Precio"
 msgstr[1] "Precios"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Delete %s de %2s"
-msgstr "Borrar %s"
+msgstr "Borrar %s de %2s"
 
 #, python-format
 msgid "Do you want to delete this %s from %2s?"
@@ -3671,8 +3636,8 @@ msgstr "Editar patrón de %s"
 
 msgid "Kam users domain attr"
 msgid_plural "Kam users domain attrs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Attributos de dominio"
+msgstr[1] "Attributos de dominio"
 
 msgid "Pick up rel user"
 msgid_plural "Pick up rel users"
@@ -3686,8 +3651,8 @@ msgstr[1] "Opciones de desvío"
 
 msgid "Kam trunks address"
 msgid_plural "Kam trunks address(s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Direccion Proxy Trunks"
+msgstr[1] "Direcciones Proxy Trunks"
 
 msgid "Kam trunks domain"
 msgid_plural "Kam trunks domain(s)"
@@ -3698,12 +3663,3 @@ msgid "Lcr gateway"
 msgid_plural "Lcr gateways"
 msgstr[0] "Lcr gateway"
 msgstr[1] "Lcr gateways"
-
-#~ msgid "Trunks SIP domain"
-#~ msgstr "Dominio SIP"
-
-#~ msgid "Domain id"
-#~ msgstr "Dominio"
-
-#~ msgid "Hunt groups joinned"
-#~ msgstr "Grupos de salto"

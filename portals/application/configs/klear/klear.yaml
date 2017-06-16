@@ -245,9 +245,9 @@ production:
           description: _("List of %s", ngettext('Calendar', 'Calendars', 0))
           showOnlyIf: ${auth.companyVPBX}
         SchedulesList:
-          title: ngettext('Schedule', 'Schedule', 0)
+          title: ngettext('Schedule', 'Schedules', 0)
           class: ui-silk-clock
-          description: _("List of %s", ngettext('Schedule', 'Schedule', 0))
+          description: _("List of %s", ngettext('Schedule', 'Schedules', 0))
           showOnlyIf: ${auth.companyVPBX}
         CallACLList:
           title: ngettext('Call ACL', 'Call ACLs', 0)
