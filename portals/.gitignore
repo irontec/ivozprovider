@@ -1,6 +1,7 @@
 .project
 application/configs/klear/generator.log
-application/configs/klearRaw/generator.log
+application/configs/klearRaw
+application/modules/rest/controllersRaw
 application/views/scripts/portal/
 application/languages/*/*.mo
 public/apple-touch-icon.png
