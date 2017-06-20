@@ -134,12 +134,12 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
             'invoice' =>
             array (
                 'number' => '667',
-                'inDate' => '1/5/2017',
-                'outDate' => '16/5/2017',
+                'inDate' => '01/05/2017',
+                'outDate' => '16/05/2017',
                 'total' => 5.5700000000000003,
                 'taxRate' => 20,
                 'totalWithTax' => 6.6900000000000004,
-                'invoiceDate' => '24/6/2017',
+                'invoiceDate' => '24/06/2017',
             ),
             'company' =>
             array (
@@ -186,7 +186,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 0 =>
                                 array (
                                     'id' => 2418,
-                                    'calldate' => '7/5/2017 18:28:21',
+                                    'calldate' => '07/05/2017 18:28:21',
                                     'dst' => '944048182',
                                     'price' => '0.05',
                                     'durationFormatted' => '00:00:03',
@@ -210,7 +210,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 1 =>
                                 array (
                                     'id' => 2442,
-                                    'calldate' => '8/5/2017 8:21:20',
+                                    'calldate' => '08/05/2017 8:21:20',
                                     'dst' => '944048182',
                                     'price' => '1.05',
                                     'durationFormatted' => '00:01:34',
@@ -227,7 +227,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 2 =>
                                 array (
                                     'id' => 2467,
-                                    'calldate' => '11/5/2017 9:34:05',
+                                    'calldate' => '11/05/2017 9:34:05',
                                     'dst' => '944048182',
                                     'price' => '0.09',
                                     'durationFormatted' => '00:00:06',
@@ -243,7 +243,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 3 =>
                                 array (
                                     'id' => 2475,
-                                    'calldate' => '11/5/2017 9:37:15',
+                                    'calldate' => '11/05/2017 9:37:15',
                                     'dst' => '944048182',
                                     'price' => '0.50',
                                     'durationFormatted' => '00:00:44',
@@ -259,7 +259,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 4 =>
                                 array (
                                     'id' => 2482,
-                                    'calldate' => '11/5/2017 9:39:58',
+                                    'calldate' => '11/05/2017 9:39:58',
                                     'dst' => '944048182',
                                     'price' => '0.29',
                                     'durationFormatted' => '00:00:25',
@@ -275,7 +275,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 5 =>
                                 array (
                                     'id' => 2484,
-                                    'calldate' => '11/5/2017 9:40:26',
+                                    'calldate' => '11/05/2017 9:40:26',
                                     'dst' => '944048182',
                                     'price' => '0.36',
                                     'durationFormatted' => '00:00:31',
@@ -295,7 +295,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 0 =>
                                 array (
                                     'id' => 2464,
-                                    'calldate' => '11/5/2017 9:33:29',
+                                    'calldate' => '11/05/2017 9:33:29',
                                     'dst' => '44676105642',
                                     'price' => '0.29',
                                     'durationFormatted' => '00:00:08',
@@ -311,7 +311,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 1 =>
                                 array (
                                     'id' => 2468,
-                                    'calldate' => '11/5/2017 9:34:41',
+                                    'calldate' => '11/05/2017 9:34:41',
                                     'dst' => '44620114553',
                                     'price' => '0.08',
                                     'durationFormatted' => '00:00:02',
@@ -327,7 +327,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 2 =>
                                 array (
                                     'id' => 2474,
-                                    'calldate' => '11/5/2017 9:36:24',
+                                    'calldate' => '11/05/2017 9:36:24',
                                     'dst' => '44620114553',
                                     'price' => '0.74',
                                     'durationFormatted' => '00:00:21',
@@ -343,7 +343,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 3 =>
                                 array (
                                     'id' => 2476,
-                                    'calldate' => '11/5/2017 9:37:57',
+                                    'calldate' => '11/05/2017 9:37:57',
                                     'dst' => '44620114553',
                                     'price' => '0.18',
                                     'durationFormatted' => '00:00:05',
@@ -359,7 +359,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 4 =>
                                 array (
                                     'id' => 2479,
-                                    'calldate' => '11/5/2017 9:39:13',
+                                    'calldate' => '11/05/2017 9:39:13',
                                     'dst' => '44620114553',
                                     'price' => '0.08',
                                     'durationFormatted' => '00:00:02',
@@ -376,7 +376,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                                 5 =>
                                 array (
                                     'id' => 2483,
-                                    'calldate' => '11/5/2017 9:39:44',
+                                    'calldate' => '11/05/2017 9:39:44',
                                     'dst' => '44676105642',
                                     'price' => '0.15',
                                     'durationFormatted' => '00:00:04',
@@ -411,7 +411,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
                         ),
                         'calls' => array (
                             0 => array (
-                                'calldate' => '11/5/2017 9:33:29',
+                                'calldate' => '11/05/2017 9:33:29',
                                 'caller' => '49302540070',
                                 'dst' => '1008',
                                 'price' => '0.29',

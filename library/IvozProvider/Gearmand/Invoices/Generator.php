@@ -6,6 +6,10 @@ use Handlebars\Handlebars;
 
 class Generator
 {
+    const DATE_FORMAT = 'dd-MM-yyyy';
+    const DATE_TIME_FORMAT = 'dd-MM-yyyy HH:mm:ss';
+    const MYSQL_DATETIME_FORMAT = 'yyyy-MM-dd HH:mm:ss';
+
     protected $_invoiceId = null;
     protected $_logger = null;
     protected $_fixedCostTotal = 0;
@@ -65,8 +69,6 @@ class Generator
             $brandLogoPath = "images/palmera90.png";
         }
 
-        $dateFormat = \Zend_Locale_Format::getDateFormat($invoice->getCompany()->getLanguageCode());
-
         $invoiceTz = $company->getDefaultTimezone()->getTz();
         $invoiceDate = new \Zend_Date();
         $invoiceDate->setTimezone($invoiceTz);
@@ -78,9 +80,9 @@ class Generator
         $outDate->addDay(1)->subSecond(1);
 
         $invoiceArray = $invoice->toArray();
-        $invoiceArray["invoiceDate"] = $invoiceDate->toString($dateFormat);
-        $invoiceArray["inDate"] = $inDate->toString($dateFormat);
-        $invoiceArray["outDate"] = $outDate->toString($dateFormat);
+        $invoiceArray["invoiceDate"] = $invoiceDate->toString(self::DATE_FORMAT);
+        $invoiceArray["inDate"] = $inDate->toString(self::DATE_FORMAT);
+        $invoiceArray["outDate"] = $outDate->toString(self::DATE_FORMAT);
         $brandArray = $brand->toArray();
         $brandArray["logoPath"] = $brandLogoPath;
 
@@ -169,8 +171,8 @@ class Generator
             "metered = 1 ",
             "peeringContractId IS NOT NULL",
             "peeringContractId != ''",
-            "start_time_utc >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
-            "start_time_utc <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
+            "start_time_utc >= '".$inDate->toString(self::MYSQL_DATETIME_FORMAT)."'",
+            "start_time_utc <= '".$outDate->toString(self::MYSQL_DATETIME_FORMAT)."'"
         );
 
         $where = implode(" AND ", $wheres);
@@ -200,7 +202,7 @@ class Generator
             foreach ($calls as $call) {
 
                 $callData = $call->toArray();
-                $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
+                $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString(self::DATE_TIME_FORMAT);
                 $callData["dst"] = $call->getCallee();
                 $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callData["dst_duration_formatted"] = $this->_timeFormat($callData["duration"]);
