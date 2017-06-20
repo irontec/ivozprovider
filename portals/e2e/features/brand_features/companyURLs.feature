@@ -10,6 +10,8 @@ Background:
   Given I go to the admin page
   And I send valid admin credentials
   Then I am logged in
+  Given I click on brand emulation button
+  And I emulate the brand at position "1"
   Given I click on "CompanyURLs" CTA
   Then I am on "CompanyURLs" list
 
