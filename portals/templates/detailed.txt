@@ -236,7 +236,7 @@
                     {{#each fixedCosts}}
                         <div class="tr">
                             <div class="td">
-                                {{name}} *
+                                {{name}}
                                 {{#if description}}
                                     <br />
                                     {{description}}
