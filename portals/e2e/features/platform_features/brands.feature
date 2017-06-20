@@ -26,9 +26,9 @@ Scenario: I see new brand admin page
   And I click on close button
   Then I am on "Brands" list
 
-Scenario: I can click on delete brand button
-  Given I can see at least one row
-  Then I click on "Brands" first elements delete button
-  Given I can see save confirmation dialog
-  And I click on close dialog button
-  Then I am on "Brands" list
+#Scenario: I can click on delete brand button
+#  Given I can see at least one row
+#  Then I click on "Brands" first elements delete button
+#  Given I can see save confirmation dialog
+#  And I click on close dialog button
+#  Then I am on "Brands" list

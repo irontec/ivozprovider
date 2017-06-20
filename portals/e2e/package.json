@@ -9,9 +9,9 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "chromedriver": "^2.29.0",
-    "cucumber": "^2.0.0-rc.9",
-    "nightwatch": "^0.9.14",
-    "nightwatch-cucumber": "^7.1.2"
+    "chromedriver": "2.29.0",
+    "cucumber": "2.0.0-rc.9",
+    "nightwatch": "0.9.14",
+    "nightwatch-cucumber": "7.1.2"
   }
 }

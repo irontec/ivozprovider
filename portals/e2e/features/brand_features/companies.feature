@@ -29,9 +29,9 @@ Scenario: I see new companie admin page
   And I click on close button
   Then I am on "Companies" list
 
-Scenario: I can click on delete companies button
-  Given I can see at least one row
-  And I click on "Companies" first elements delete button
-  Then I can see save confirmation dialog
-  Given I click on close dialog button
-  Then I am on "Companies" list
+#Scenario: I can click on delete companies button
+#  Given I can see at least one row
+#  And I click on "Companies" first elements delete button
+#  Then I can see save confirmation dialog
+#  Given I click on close dialog button
+#  Then I am on "Companies" list
