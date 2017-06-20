@@ -114,6 +114,7 @@ class Generator
         $architecture = (php_uname("m") === 'x86_64') ? 'amd64' : 'i386';
 
         $snappy = new Pdf(APPLICATION_PATH . '/../../library/vendor/bin/wkhtmltopdf-' . $architecture);
+        $snappy->setTimeout(60 * 10);
         $snappy->setOption('header-html', $header);
         $snappy->setOption('header-spacing', 3);
         $snappy->setOption('footer-html', $footer);
