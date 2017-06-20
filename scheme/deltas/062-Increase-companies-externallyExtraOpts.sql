@@ -1,0 +1,1 @@
+ALTER TABLE `Companies` MODIFY `externallyExtraOpts` TEXT DEFAULT NULL;

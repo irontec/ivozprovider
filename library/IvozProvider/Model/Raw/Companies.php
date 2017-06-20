@@ -183,9 +183,9 @@ class Companies extends ModelAbstract
     protected $_areaCode;
 
     /**
-     * Database var type varchar
+     * Database var type text
      *
-     * @var string
+     * @var text
      */
     protected $_externallyExtraOpts;
 
@@ -1531,7 +1531,7 @@ class Companies extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param text $data
      * @return \IvozProvider\Model\Raw\Companies
      */
     public function setExternallyExtraOpts($data)
@@ -1556,7 +1556,7 @@ class Companies extends ModelAbstract
     /**
      * Gets column externallyExtraOpts
      *
-     * @return string
+     * @return text
      */
     public function getExternallyExtraOpts()
     {

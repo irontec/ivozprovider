@@ -239,8 +239,7 @@ production:
       pattern: '[0-9*]+'
     externallyExtraOpts:
       title: _('Externally rater custom options')
-      type: text
-      maxLength: 255
+      type: textarea
     recordingsLimitMB:
       title: _("Max disk usage (in MB)")
       type: number
