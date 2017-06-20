@@ -25,7 +25,7 @@ class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_
 
         if ($companyLimit) {
             $limit = SizeFormatter::sizeToHuman($companyLimit);
-            if ($companyLimit > $brandLimit) {
+            if ($brandLimit !== 0 && $companyLimit > $brandLimit) {
                 $limit .= " (" . _("oversized") . ")";
             }
         } else {

@@ -152,24 +152,30 @@ production:
       fixedPositions: &companiesFixedPositions_Link
         group0:
           colsPerRow: 2
+          label: _("Basic data")
           fields:
             name: 1
             nif: 1
+            FeaturesRelCompanies: 1
+        group1:
+          colsPerRow: 2
+          label: _("Locales")
+          fields:
             defaultTimezoneId: 1
             languageId: 1
-        group1:
-          colsPerRow: 12
+        group2:
+          colsPerRow: 2
           label: _("Server data")
           fields:
-            outbound_prefix: 3
-            outgoingDDIId: 5
-            externalMaxCalls: 4
-            domain_users: 12
-            countryId: 6
-            areaCode: 6
-            mediaRelaySetsId: 4
-            applicationServerId: 4
-            ipFilter: 4
+            outbound_prefix: 1
+            outgoingDDIId: 1
+            externalMaxCalls: 1
+            domain_users: 1
+            countryId: 1
+            areaCode: 1
+            mediaRelaySetsId: 1
+            applicationServerId: 1
+            ipFilter: 1
         group3:
           colsPerRow: 2
           label: _("Invoice data")
@@ -183,6 +189,7 @@ production:
         group4:
           colsPerRow: 12
           label: _("Recordings")
+          collapsed: true
           fields:
             recordingsLimitMB: 6
             recordingsDiskUsage: 6
@@ -191,7 +198,8 @@ production:
             onDemandRecord: 6
             onDemandRecordCode: 6
         group5:
-          colsPerRow:
+          colsPerRow: 1
+          collapsed: true
           label: _("Externally rated options")
           fields:
             externallyExtraOpts: 1

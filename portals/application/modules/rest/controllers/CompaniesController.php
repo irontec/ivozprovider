@@ -330,7 +330,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyExtraOpts", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
@@ -390,7 +390,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="onDemandRecord", nullable=true, type="tinyint", sample="", description="")
      * @ApiParams(name="onDemandRecordCode", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="externallyExtraOpts", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="externallyExtraOpts", nullable=true, type="text", sample="", description="")
      * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
@@ -594,7 +594,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'externallyExtraOpts' => array(
-                    'type' => "varchar",
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -730,7 +730,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'externallyExtraOpts' => array(
-                    'type' => "varchar",
+                    'type' => "text",
                     'required' => false,
                     'comment' => '',
                 ),
