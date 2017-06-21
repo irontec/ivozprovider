@@ -1,0 +1,303 @@
+#include ../conf.d/recordingHelp.yaml
+
+production:
+  class: \IvozProvider\Model\Companies
+  fields:
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false
+      readonly: true
+    brandId:
+      title: _('Brand')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Brands
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    name:
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      trim: both
+      required: true
+      default: true
+    nif:
+      title: _('Nif')
+      type: text
+      trim: both
+      required: true
+    defaultTimezoneId:
+      title: _('Default timezone')
+      type: select
+      defaultValue: 145
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Timezones
+          fieldName:
+            fields:
+              - tz
+            template: '%tz%'
+          order: tz
+    musicOnHoldId:
+      title: _('Music on hold')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\MusicOnHold
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    applicationServerId:
+      title: _('Application server id')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\ApplicationServers
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Dispatch to any AS")
+    externalMaxCalls:
+      title: _('External max call')
+      type: number
+      defaultValue: 0
+      source:
+        control: Spinner
+    postalAddress:
+      title: _('Postal address')
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    postalCode:
+      title: ngettext('Postal code', 'Postal codes', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 10
+    town:
+      title: _('Town')
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    province:
+      title: ngettext('Province', 'Provinces', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    country:
+      title: ngettext('Country', 'Countries', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    invoiceLanguageId:
+      title: _('Invoice language')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Languages
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: iden
+        'null': _("Unassigned")
+    outbound_prefix:
+      title: _('Outbound prefix')
+      type: text
+      trim: both
+    countryId:
+      title: _('Country code')
+      type: select
+      defaultValue: 70
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Countries
+          fieldName:
+            fields:
+              - name
+              - calling_code
+            template: '%name% (+%calling_code%)'
+          order: code
+        'null': _("Unassigned")
+    areaCode:
+      title: _('Areacode')
+      type: text
+      maxLength: 10
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Default Area code for accounts in this company")
+        label: _("Need help?")
+    outgoingDDIId:
+      title: _('Outgoing DDI')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_OutgoingDDI
+          fieldName:
+            fields:
+              - DDIE164
+            template: '+%DDIE164%'
+          order: DDIE164
+        'null': _("Unassigned")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Default outgoing DDI. This can be overriden in accounts's edit screen.")
+        label: _("Need help?")
+    languageId:
+      title: _('Language')
+      type: select
+      defaultValue: 1
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Languages
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    mediaRelaySetsId:
+      title: _('Media relay Set')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\MediaRelaySets
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    ipFilter:
+      title: _('Filter by IP address')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Add IPs or network if enabled. Otherwise all calls will be rejected.")
+        label: _("Need help?")
+    onDemandRecord:
+      title: _('On-demand call recording')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("Disabled")
+            visualFilter:
+              show: []
+              hide: ["onDemandRecordCode"]
+          '1':
+            title: _("Using BXFER or INFO")
+            visualFilter:
+              show: ["onDemandRecordCode"]
+              hide: []
+          '2':
+            title: _("Using DTMFs (read WARNING)")
+            visualFilter:
+              show: ["onDemandRecordCode"]
+              hide: []
+      <<: *recordingHelp
+    onDemandRecordCode:
+      title: _('Code')
+      type: text
+      trim: both
+      required: true
+      maxLength: 3
+      prefix: '<span class="asterisc">*</span>'
+      pattern: '[0-9*]+'
+    externallyExtraOpts:
+      title: _('Externally rater custom options')
+      type: textarea
+    recordingsLimitMB:
+      title: _("Max disk usage (in MB)")
+      type: number
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Max disk usage in megabytes this company can use. When limit has been reached, oldest recordings will be removed. Leave empty to allow unlimited disk usage.")
+        label: _("Need help?")
+    recordingsDiskUsage:
+      title: _('Disk usage')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_Recordings
+        method: getCompanyDiskUsage
+    recordingsLimitEmail:
+      title: _('Disk usage notification email')
+      type: text
+      maxLength: 250
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Email address that will be notified when 80% of the configured limit has been reached.")
+        label: _("Need help?")
+    FeaturesRelCompanies:
+      title: _('Features')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          extraDataAttributes:
+            featureId: id
+          relationMapper: \IvozProvider\Mapper\Sql\FeaturesRelCompanies
+          relatedMapperName: \IvozProvider\Mapper\Sql\Features
+          relationProperty: Feature
+          filterClass: IvozProvider_Klear_Filter_RetailFeatures
+          relatedFieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -34,7 +34,7 @@ production:
           targetPatternsDel_dialog: true
           importPatterns_dialog: false
       csv:
-        active: true
+        active: false
         filename: "TargetPatterns"
         headers: true
         enclosure: '"'

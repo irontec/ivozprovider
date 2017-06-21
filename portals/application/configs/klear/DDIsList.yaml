@@ -50,6 +50,7 @@ production:
           peeringContractId: ${auth.isCompanyOperator}
           languageId: true
           queueId: true
+          retailAccountId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -83,6 +84,7 @@ production:
             conferenceRoomId: 1
             friendValue: 1
             queueId: 1
+            retailAccountId: 1
         group4:
           label: _("Additional configuration")
           colsPerRow: 12
@@ -94,7 +96,7 @@ production:
           dDIsNew_screen: ${auth.isNotCompanyOperator}
         dialogs:
           dDIsDel_dialog: ${auth.isNotCompanyOperator}
-          importDDIs_dialog: ${auth.isNotCompanyOperator}
+          importDDIs_dialog: false
     dDIsNew_screen: &dDIsNew_screenLink
       <<: *DDIs
       controller: new

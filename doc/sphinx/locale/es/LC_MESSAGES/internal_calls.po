@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 15:54+0200\n"
+"POT-Creation-Date: 2017-06-13 18:52+0200\n"
 "PO-Revision-Date: 2016-10-13 19:41+0200\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -197,7 +197,9 @@ msgstr "Prefijo de salida."
 
 #: ../../internal_calls/brand_portal.rst:128
 msgid "Some companies are used to dial an aditional prefix for outgoing calls."
-msgstr "Algunas compañías emplean un prefijo adicional para las llamadas salientes."
+msgstr ""
+"Algunas compañías emplean un prefijo adicional para las llamadas "
+"salientes."
 
 #: ../../internal_calls/brand_portal.rst:129
 msgid "Outgoing DDI"
@@ -208,9 +210,9 @@ msgid ""
 "Introduced in 1.3, this setting selects a DDI for outgoing calls of this "
 "company, if it is no overridden in a lower level (e.g. user level)"
 msgstr ""
-"Introducido en 1.3, esta opción permite elegir el DDI saliente para las llamadas "
-"de esta compañía, si no son especificadas en un nivel inferior (por ejemplo a "
-"nivel de usuario)"
+"Introducido en 1.3, esta opción permite elegir el DDI saliente para las "
+"llamadas de esta compañía, si no son especificadas en un nivel inferior "
+"(por ejemplo a nivel de usuario)"
 
 #: ../../internal_calls/brand_portal.rst:133
 msgid "Media relay set"
@@ -222,9 +224,9 @@ msgid ""
 "capacities or on a geographical purpose. This section lets you assign "
 "them to companies."
 msgstr ""
-"Como se ha mencionado, los servidores de media pueden ser agrupados para reservar "
-"capacidades o para una distribución geográfica. Esta sección le permite asignarlos "
-"a las compañías."
+"Como se ha mencionado, los servidores de media pueden ser agrupados para "
+"reservar capacidades o para una distribución geográfica. Esta sección le "
+"permite asignarlos a las compañías."
 
 #: ../../internal_calls/brand_portal.rst:137
 msgid "Application Server"
@@ -233,28 +235,31 @@ msgstr "Servidores de aplicación"
 #: ../../internal_calls/brand_portal.rst:139
 msgid ""
 "IvozProvider will distribute calls between all application server, but "
-"you can make an static asignment here (e.g. debugging)."
+"you can make a static asignment here (e.g. debugging)."
 msgstr ""
-"IvozProvider distribuirá las llamadas entre todos los servidores de aplicación, pero "
-"puedes realizar asignaciones estáticas aquí (por ejemplo, para un análisis puntual)."
+"IvozProvider distribuirá las llamadas entre todos los servidores de "
+"aplicación, pero puedes realizar asignaciones estáticas aquí (por "
+"ejemplo, para un análisis puntual)."
 
 #: ../../internal_calls/brand_portal.rst:141
-#: ../../internal_calls/god_portal.rst:200
+#: ../../internal_calls/god_portal.rst:204
 msgid "Recordings"
 msgstr "Grabaciones"
 
 #: ../../internal_calls/brand_portal.rst:143
+#, python-format
 msgid ""
 "Configures a limit for the size of recordings of this company. A "
 "notification is sent to configured address when 80% is reached and older "
 "recordings are rotated when configured size is reached."
 msgstr ""
 "Configure el límite de tamaño de las grabaciones de esta compañía. Se "
-"enviará una notificación a la dirección configurada cuando se alcance el 80% "
-"y se rotarán las grabaciones más antiguas cuando se alcance el límite."
+"enviará una notificación a la dirección configurada cuando se alcance el "
+"80% y se rotarán las grabaciones más antiguas cuando se alcance el "
+"límite."
 
 #: ../../internal_calls/brand_portal.rst:146
-#: ../../internal_calls/god_portal.rst:205
+#: ../../internal_calls/god_portal.rst:209
 msgid "Features"
 msgstr "Features"
 
@@ -264,9 +269,9 @@ msgid ""
 "company. Related sections are hidden consequently and the company cannot "
 "use them."
 msgstr ""
-"Introducido en 1.3, permite a los operadores de marca elegir las features "
-"de la compañía. Esto habilitará o deshabilitará las diferentes secciones "
-"del menú de compañía."
+"Introducido en 1.3, permite a los operadores de marca elegir las features"
+" de la compañía. Esto habilitará o deshabilitará las diferentes secciones"
+" del menú de compañía."
 
 #: ../../internal_calls/brand_portal.rst:151
 msgid ""
@@ -275,10 +280,11 @@ msgid ""
 "will listen a locution explaining what ocurred (\"you have no permissions"
 " to place this call\", \"the call cannot be billed\", etc.)"
 msgstr ""
-"La mayoría de las features son auto-explicativas, pero las **notificaciones de voz** "
-"merecen una explicación: si se habilitan, cuando una llamada falla, el usuario "
-"escuchará una locución explicando lo ocurrido (\"no tiene permisos para realizar "
-"esta llamada\", \"la llamada no puede ser tarificada\", etc.)"
+"La mayoría de las features son auto-explicativas, pero las "
+"**notificaciones de voz** merecen una explicación: si se habilitan, "
+"cuando una llamada falla, el usuario escuchará una locución explicando lo"
+" ocurrido (\"no tiene permisos para realizar esta llamada\", \"la llamada"
+" no puede ser tarificada\", etc.)"
 
 #: ../../internal_calls/brand_portal.rst:156
 msgid ""
@@ -286,10 +292,10 @@ msgid ""
 "that **a company's recordings can be rotated even though its limit has "
 "not arrived (or even it has no limit) if brand's limit applies first**."
 msgstr ""
-"La rotación de grabaciones ocurre en dos niveles: marca y compañía. Esto significa "
-"que **las grabaciones de una compañía puede llegar a ser rotadas incluso si esta "
-"no ha alcanzado su límite (o incluso si no tiene límite) si se ha alcanzado el "
-"límite de espacio de su marca**."
+"La rotación de grabaciones ocurre en dos niveles: marca y compañía. Esto "
+"significa que **las grabaciones de una compañía puede llegar a ser "
+"rotadas incluso si esta no ha alcanzado su límite (o incluso si no tiene "
+"límite) si se ha alcanzado el límite de espacio de su marca**."
 
 #: ../../internal_calls/brand_portal.rst:160
 msgid ""
@@ -298,10 +304,11 @@ msgid ""
 " has not arrived (or even it has no limit) if brand's limit applies "
 "first**."
 msgstr ""
-"De nuevo: La rotación de grabaciones ocurre en dos niveles: marca y compañía. Esto "
-"significa que **las grabaciones de una compañía puede llegar a ser rotadas incluso "
-"si esta no ha alcanzado su límite (o incluso si no tiene límite) si se ha alcanzado "
-"el límite de espacio de su marca**."
+"De nuevo: La rotación de grabaciones ocurre en dos niveles: marca y "
+"compañía. Esto significa que **las grabaciones de una compañía puede "
+"llegar a ser rotadas incluso si esta no ha alcanzado su límite (o incluso"
+" si no tiene límite) si se ha alcanzado el límite de espacio de su "
+"marca**."
 
 #: ../../internal_calls/brand_portal.rst:164
 msgid ""
@@ -309,9 +316,9 @@ msgid ""
 "the size assigned to your brand and make sure that all companies has a "
 "size configured (if 0, it has unlimited size)."
 msgstr ""
-"Para evitar esto, asegurese que la suma de los límites de las companías no exceda "
-"el tamaño asignado a la marca y que todas las compañías tienen un límite de espacio "
-"configurado (si es 0, tendrán ilimitado)."
+"Para evitar esto, asegurese que la suma de los límites de las companías "
+"no exceda el tamaño asignado a la marca y que todas las compañías tienen "
+"un límite de espacio configurado (si es 0, tendrán ilimitado)."
 
 #: ../../internal_calls/brand_portal.rst:171
 msgid "Emulate Demo company"
@@ -765,8 +772,8 @@ msgid ""
 "Used as default logo in invoices and in portals (if they don't specify "
 "another logo)."
 msgstr ""
-"Empleado como logo por defecto en las facturas y portales (si no se especifica "
-"otro logo)."
+"Empleado como logo por defecto en las facturas y portales (si no se "
+"especifica otro logo)."
 
 #: ../../internal_calls/god_portal.rst:196
 msgid "Mail data"
@@ -777,76 +784,91 @@ msgid ""
 "Display name and from address used in external emails for this brand "
 "(faxes, voicemail, etc.)"
 msgstr ""
-"Nombre y dirección origen empleada en los emails de notificación enviados por "
-"esta marca (faxes, voicemail, etc.)"
+"Nombre y dirección origen empleada en los emails de notificación enviados"
+" por esta marca (faxes, voicemail, etc.)"
+
+#: ../../internal_calls/god_portal.rst:200
+msgid "SIP domain"
+msgstr "Dominio SIP"
 
 #: ../../internal_calls/god_portal.rst:202
+msgid ""
+"Introduced in 1.4. Domain pointing to Users SIP proxy used by all the "
+"Retail Accounts of this brand."
+msgstr ""
+"Introducido en 1.4. Configura el dominio que apuntará al proxy SIP de usuarios "
+"empleado por todas las cuentas Retail de esta marca."
+
+#: ../../internal_calls/god_portal.rst:206
+#, python-format
 msgid ""
 "Configures a limit for the size of recordings of this brand. A "
 "notification is sent to configured address when 80% is reached and older "
 "recordings are rotated when configured size is reached."
 msgstr ""
-"Configura el límite de espacio de grabaciones para esta marca. Se enviará "
-"una notificación cuando el espacio ocupado alcance el 80% y las grabaciones "
-"más antiguas serán rotadas cuando se alcance el límte configurado."
+"Configura el límite de espacio de grabaciones para esta marca. Se enviará"
+" una notificación cuando el espacio ocupado alcance el 80% y las "
+"grabaciones más antiguas serán rotadas cuando se alcance el límte "
+"configurado."
 
-#: ../../internal_calls/god_portal.rst:207
+#: ../../internal_calls/god_portal.rst:211
 msgid ""
 "Introduced in 1.3, lets god operator choose the features of the created "
 "brand. An equivalent configuration is available in Companies, to choose "
 "between the ones that god operator gave to your Brand. Related sections "
 "are hidden consequently."
 msgstr ""
-"Introducido en 1.3, permite al administrador global elegir las feature de "
-"la marca recién creada. Existe una configuración similar en Compañías, para "
-"elegir entre las que el administrador global ha habilitado a la marca. "
-"Se habilitarán o deshabilitarán secciones en función de esta configuración."
+"Introducido en 1.3, permite al administrador global elegir las feature de"
+" la marca recién creada. Existe una configuración similar en Compañías, "
+"para elegir entre las que el administrador global ha habilitado a la "
+"marca. Se habilitarán o deshabilitarán secciones en función de esta "
+"configuración."
 
-#: ../../internal_calls/god_portal.rst:212
+#: ../../internal_calls/god_portal.rst:216
 msgid ""
 "Some features (currently invoices and billing) are related to brand and "
 "cannot be assigned to companies. Remaining features are related to "
 "companies and lets the brand operator to assign them to its companies."
 msgstr ""
-"Algunas features (actualmente facturas y tarificación) estan relacionadas con "
-"las marcas y no pueden ser asignadas a compañías. El resto de features estan "
-"relacionadas con compañías y el propio administrador de marca podrá asignarlas "
-" a sus compañías."
+"Algunas features (actualmente facturas y tarificación) estan relacionadas"
+" con las marcas y no pueden ser asignadas a compañías. El resto de "
+"features estan relacionadas con compañías y el propio administrador de "
+"marca podrá asignarlas  a sus compañías."
 
-#: ../../internal_calls/god_portal.rst:216
+#: ../../internal_calls/god_portal.rst:220
 msgid ""
 "Disabling billing hides all related sections and assumes that an external"
 " element will set a price for calls (external tarification module is "
 "needed, ask for it!)."
 msgstr ""
-"Deshabilitar la tarificación ocultará las secciones relacionadas y asumirá "
-"que un elemento externo se encargá de poner precios a cada llamada (requerirá "
-"un módulo de tarificación externa, ¡pídelo!)."
+"Deshabilitar la tarificación ocultará las secciones relacionadas y "
+"asumirá que un elemento externo se encargá de poner precios a cada "
+"llamada (requerirá un módulo de tarificación externa, ¡pídelo!)."
 
-#: ../../internal_calls/god_portal.rst:220
+#: ../../internal_calls/god_portal.rst:224
 msgid ""
 "Disabling invoices hides related sections, assuming you will use an "
 "external tool to generate them."
 msgstr ""
-"Deshabilitar facturas ocultará las secciones relacionadas y asumirá "
-"que un elemento externo se encargará de generar las facturas."
+"Deshabilitar facturas ocultará las secciones relacionadas y asumirá que "
+"un elemento externo se encargará de generar las facturas."
 
-#: ../../internal_calls/god_portal.rst:224
+#: ../../internal_calls/god_portal.rst:228
 msgid "Emulate the Demo brand"
 msgstr "Emular la marca Demo"
 
-#: ../../internal_calls/god_portal.rst:226
+#: ../../internal_calls/god_portal.rst:230
 msgid ""
 "As mentioned above, the initial installation will have an already created"
 " brand called DemoBrand, that will be used for our goal: to have 2 "
 "telephones registered that can call each other."
 msgstr ""
-"Como mencionamos anteriormente, tras la instalación inicial, la plataforma "
-"incluye una marca pre-creada llamada DemoBrand, que es la que utilizaremos "
-"para el fin que nos ocupa: tener 2 teléfonos registrados y que se puedan "
-"llamar entre sí."
+"Como mencionamos anteriormente, tras la instalación inicial, la "
+"plataforma incluye una marca pre-creada llamada DemoBrand, que es la que "
+"utilizaremos para el fin que nos ocupa: tener 2 teléfonos registrados y "
+"que se puedan llamar entre sí."
 
-#: ../../internal_calls/god_portal.rst:230
+#: ../../internal_calls/god_portal.rst:234
 msgid ""
 "Before going to the next section, is quite important to understand how "
 "the **emulation** works."
@@ -854,7 +876,7 @@ msgstr ""
 "Antes de pasar a la siguiente sección, es importante entender el concepto"
 " de **Emular una marca**:"
 
-#: ../../internal_calls/god_portal.rst:233
+#: ../../internal_calls/god_portal.rst:237
 msgid ""
 "As global operator, you have access to the menu **Main management** only "
 "visible to *God* administators."
@@ -862,7 +884,7 @@ msgstr ""
 "Como operador global, tienes acceso al bloque **Gestión general**, que "
 "solo ve *God*."
 
-#: ../../internal_calls/god_portal.rst:236
+#: ../../internal_calls/god_portal.rst:240
 msgid ""
 "Apart from that menu, you will also have access to the **Brand "
 "configuration** and **Company configuration** that will look more or less"
@@ -871,15 +893,15 @@ msgstr ""
 "Aparte de ese bloque, también ves los bloques **Configuración de marca** "
 "y **Configuración de empresa** que tienen este aspecto:"
 
-#: ../../internal_calls/god_portal.rst:249
+#: ../../internal_calls/god_portal.rst:253
 msgid "Check following button"
 msgstr "Atención especial al siguiente botón:"
 
-#: ../../internal_calls/god_portal.rst:261
+#: ../../internal_calls/god_portal.rst:265
 msgid "When pressed, a popup will be displayed:"
 msgstr "Una vez pulsado, muestra una ventana flotante tal que:"
 
-#: ../../internal_calls/god_portal.rst:273
+#: ../../internal_calls/god_portal.rst:277
 msgid ""
 "After selecting the DemoBrand brand, the icon will change and shows the "
 "emulted brand:"
@@ -887,7 +909,7 @@ msgstr ""
 "Al seleccionar la marca DemoBrand, el icono cambia y muestra la marca que"
 " se está emulando:"
 
-#: ../../internal_calls/god_portal.rst:287
+#: ../../internal_calls/god_portal.rst:291
 msgid ""
 "The upper right corner of the portal will also display the brand that is "
 "being emulted:"
@@ -895,11 +917,11 @@ msgstr ""
 "La parte superior derecha de la página también muestra la marca que se "
 "está emulando:"
 
-#: ../../internal_calls/god_portal.rst:301
+#: ../../internal_calls/god_portal.rst:305
 msgid "What emulation means"
 msgstr "¿Qué implica esta emulación?"
 
-#: ../../internal_calls/god_portal.rst:303
+#: ../../internal_calls/god_portal.rst:307
 msgid ""
 "Basically, that **everything in the menu 'Brand configuration' will be "
 "relative to the chosen brand** and is **exactly** the same menu entries "
@@ -909,7 +931,7 @@ msgstr ""
 " a esa marca** y es *exactamente* lo mismo que lo que ve el operador de "
 "marca cuando entra con sus credenciales de acceso."
 
-#: ../../internal_calls/god_portal.rst:307
+#: ../../internal_calls/god_portal.rst:311
 msgid ""
 "Ok, ok. maybe exactly is not totally accurate. The global operator is "
 "able to see some fields in some screens that other admins cann't (i.e. On"

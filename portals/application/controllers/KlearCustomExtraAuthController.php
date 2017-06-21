@@ -134,7 +134,19 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 if ($option->getPrimaryKey() == $id) {
                     $selected = "selected";
                 }
-                $html .= '<option value="'.$option->getPrimaryKey().'" '.$selected.'>'.$option->getName().'</option>';
+                if ($type == 'brand') {
+                    $html .= '<option value="'.$option->getPrimaryKey().'" '.$selected.'>'.$option->getName().'</option>';
+                } else if ($type == 'company') {
+                    if ($option->getType() == 'vpbx') {
+                        $icon = "building";
+                    } else {
+                        $icon = "basket";
+                    }
+                    $html .= '<option data-subtype="'.$option->getType()
+                    .'" data-icon="ui-silk inline ui-silk-'.$icon
+                    .'" value="'.$option->getPrimaryKey()
+                    .'" '.$selected.'>'.$option->getName().'</option>';
+                }
             }
             $html .= "</select>";
             $html .= '</div>';
@@ -221,6 +233,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 $type = "brand";
                 $mapper = new \IvozProvider\Mapper\Sql\Brands();
                 break;
+            case "RetailClientsList":
             case "CompaniesList":
                 $type = "company";
                 $mapper = new \IvozProvider\Mapper\Sql\Companies();

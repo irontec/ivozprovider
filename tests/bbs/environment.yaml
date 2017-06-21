@@ -1,0 +1,15 @@
+users:
+  - alice: &alice_cred
+      username: alice
+      password: 4l1c3p4ssw0rd
+      domain: yoursip.domain.com
+
+  - bob: &bob_cred
+      username: bob
+      password: b0bp4ssw0rd
+      domain: yoursip.domain.com
+
+  - charlie: &charlie_cred
+      username: charlie
+      password: ch4rl13p4ssw0rd
+      domain: yoursip.domain.com

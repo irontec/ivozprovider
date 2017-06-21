@@ -63,6 +63,7 @@ class DDIs extends MapperAbstract
                 'huntGroupId' => $model->getHuntGroupId(),
                 'faxId' => $model->getFaxId(),
                 'conferenceRoomId' => $model->getConferenceRoomId(),
+                'retailAccountId' => $model->getRetailAccountId(),
                 'peeringContractId' => $model->getPeeringContractId(),
                 'countryId' => $model->getCountryId(),
                 'billInboundCalls' => $model->getBillInboundCalls(),
@@ -507,6 +508,20 @@ class DDIs extends MapperAbstract
                     }
                 }
 
+                if ($model->getRetailAccounts(null, null, true) !== null) {
+                    $retailAccounts = $model->getRetailAccounts();
+
+                    if (!is_array($retailAccounts)) {
+
+                        $retailAccounts = array($retailAccounts);
+                    }
+
+                    foreach ($retailAccounts as $value) {
+                        $value->setOutgoingDDIId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 
@@ -637,6 +652,7 @@ class DDIs extends MapperAbstract
                   ->setHuntGroupId($data['huntGroupId'])
                   ->setFaxId($data['faxId'])
                   ->setConferenceRoomId($data['conferenceRoomId'])
+                  ->setRetailAccountId($data['retailAccountId'])
                   ->setPeeringContractId($data['peeringContractId'])
                   ->setCountryId($data['countryId'])
                   ->setBillInboundCalls($data['billInboundCalls'])
@@ -659,6 +675,7 @@ class DDIs extends MapperAbstract
                   ->setHuntGroupId($data->{'huntGroupId'})
                   ->setFaxId($data->{'faxId'})
                   ->setConferenceRoomId($data->{'conferenceRoomId'})
+                  ->setRetailAccountId($data->{'retailAccountId'})
                   ->setPeeringContractId($data->{'peeringContractId'})
                   ->setCountryId($data->{'countryId'})
                   ->setBillInboundCalls($data->{'billInboundCalls'})
@@ -682,6 +699,7 @@ class DDIs extends MapperAbstract
                   ->setHuntGroupId($data->getHuntGroupId())
                   ->setFaxId($data->getFaxId())
                   ->setConferenceRoomId($data->getConferenceRoomId())
+                  ->setRetailAccountId($data->getRetailAccountId())
                   ->setPeeringContractId($data->getPeeringContractId())
                   ->setCountryId($data->getCountryId())
                   ->setBillInboundCalls($data->getBillInboundCalls())

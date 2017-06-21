@@ -110,6 +110,11 @@ production:
           title: ngettext('Company', 'Companies', 0)
           class: ui-silk-building
           description: _("List of %s", ngettext('Company', 'Companies', 0))
+        RetailClientsList:
+          title: ngettext('Retail Client', 'Retail Clients', 0)
+          class: ui-silk-basket
+          description: _("List of %s", ngettext('Retail Client', 'Retail Clients', 0))
+          showOnlyIf: ${auth.brand.retail.enabled}
         CompanyURLsList:
           title: ngettext('Portal URL', 'Portal URLs', 0)
           class: ui-silk-world
@@ -134,6 +139,11 @@ production:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
+        BrandRetailAccountsList:
+          title: ngettext('Retail Account', 'Retail Accounts', 0)
+          class: ui-silk-key
+          description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
+          showOnlyIf: ${auth.brand.retail.enabled}
         GenericCallACLPatternsList:
           title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
           class: ui-silk-lock-go
@@ -186,7 +196,7 @@ production:
           description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
     Admin:
       title: _("Company Configuration")
-      meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|name:${auth.companyName}]"
+      meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
       showOnlyIf: ${auth.canSeeCompany}
       description: _("Admin")
       submenus:
@@ -194,19 +204,27 @@ production:
           title: ngettext('User', 'Users', 0)
           class: ui-silk-user
           description: _("List of %s", ngettext('User', 'Users', 0))
+          showOnlyIf: ${auth.companyVPBX}
         TerminalsList:
           title: ngettext('Terminal', 'Terminals', 0)
           class: ui-silk-telephone
           description: _("List of %s", ngettext('Terminal', 'Terminals', 0))
+          showOnlyIf: ${auth.companyVPBX}
         ExtensionsList:
           title: ngettext('Extension', 'Extensions', 0)
           class: ui-silk-book-open
           description: _("List of %s", ngettext('Extension', 'Extensions', 0))
+          showOnlyIf: ${auth.companyVPBX}
         FriendsList:
           showOnlyIf: ${auth.company.friends.enabled}
           title: ngettext('Friend', 'Friends', 0)
           class: ui-silk-heart
           description: _("List of %s", ngettext('Friend', 'Friends', 0))
+        RetailAccountsList:
+          title: ngettext('Retail Account', 'Retail Accounts', 0)
+          class: ui-silk-key
+          description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
+          showOnlyIf: ${auth.companyRetail}
         DDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
@@ -215,38 +233,52 @@ production:
           title: ngettext('External call filter', 'External call filters', 0)
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        ExternalCallFiltersRetailList:
+          title: ngettext('External call filter', 'External call filters', 0)
+          class: ui-silk-arrow-branch
+          description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+          showOnlyIf: ${auth.companyRetail}
         CalendarsList:
           title: ngettext('Calendar', 'Calendars', 0)
           class: ui-silk-calendar
           description: _("List of %s", ngettext('Calendar', 'Calendars', 0))
+          showOnlyIf: ${auth.companyVPBX}
         SchedulesList:
-          title: ngettext('Schedule', 'Schedule', 0)
+          title: ngettext('Schedule', 'Schedules', 0)
           class: ui-silk-clock
-          description: _("List of %s", ngettext('Schedule', 'Schedule', 0))
+          description: _("List of %s", ngettext('Schedule', 'Schedules', 0))
+          showOnlyIf: ${auth.companyVPBX}
         CallACLList:
           title: ngettext('Call ACL', 'Call ACLs', 0)
           class: ui-silk-lock
           description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
+          showOnlyIf: ${auth.companyVPBX}
         CallACLPatternsList:
           title: ngettext('Call ACL pattern', 'Call ACL patterns', 0)
           class: ui-silk-lock-go
           description: _("List of %s", ngettext('Call ACL pattern', 'Call ACL patterns', 0))
+          showOnlyIf: ${auth.companyVPBX}
         HuntGroupsList:
           title: ngettext('Hunt group', 'Hunt groups', 0)
           class: ui-silk-group-go
           description: _("List of %s", ngettext('Hunt group', 'Hunt groups', 0))
+          showOnlyIf: ${auth.companyVPBX}
         PickUpGroupsList:
           title: ngettext('Pick up group', 'Pick up groups', 0)
           class: ui-silk-group-link
           description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
+          showOnlyIf: ${auth.companyVPBX}
         IVRCommonList:
           title: _('IVR common')
           class: ui-silk-chart-organisation
           description: _("List of %s", ngettext('IVR common', 'IVR common', 0))
+          showOnlyIf: ${auth.companyVPBX}
         IVRCustomList:
           title: _('IVR custom')
           class: ui-silk-chart-organisation
           description: _("List of %s", ngettext('IVR custom', 'IVR custom', 0))
+          showOnlyIf: ${auth.companyVPBX}
         QueuesList:
           title: ngettext('Queue', 'Queues', 0)
           class: ui-silk-status-away
@@ -257,14 +289,17 @@ production:
           title: ngettext('Conference room', 'Conference rooms', 0)
           class: ui-silk-transmit-blue
           description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
+          showOnlyIf: ${auth.companyVPBX}
         LocutionsList:
           title: ngettext('Locution', 'Locutions', 0)
           class: ui-silk-sound
           description: _("List of %s", ngettext('Locution', 'Locutions', 0))
+          showOnlyIf: ${auth.companyVPBX}
         MusicOnHoldList:
           title: ngettext('Music on hold', 'Musics on hold', 0)
           class: ui-silk-music
           description: _("List of %s", _('Music on hold'))
+          showOnlyIf: ${auth.companyVPBX}
         RecordingsList:
           showOnlyIf: ${auth.company.recordings.enabled}
           title: ngettext('Recording', 'Recordings', 0)
@@ -274,6 +309,7 @@ production:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
+          showOnlyIf: ${auth.companyVPBX}
         FaxesList:
           showOnlyIf: ${auth.company.faxes.enabled}
           title: ngettext('Fax', 'Faxes', 0)

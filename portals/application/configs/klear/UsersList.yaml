@@ -70,13 +70,14 @@ production:
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
+          externalIpCalls: true
       options:
         title: _("Options")
         screens:
           usersNew_screen: true
         dialogs:
           usersDel_dialog: true
-          importUsers_dialog: true
+          importUsers_dialog: false
     usersNew_screen: &usersNew_screenLink
       <<: *Users
       controller: new
@@ -113,6 +114,7 @@ production:
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
+          externalIpCalls: true
       fixedPositions: &UsersFixedPositions_link
         group0:
           label: _("Personal data")
@@ -169,14 +171,15 @@ production:
             exceptionBoosAssistantRegExp: 12
         group3:
           label: _("Basic Configuration")
-          colsPerRow: 6
+          colsPerRow: 12
           fields:
-            terminalId: 2
-            extensionId: 2
-            outgoingDDIId: 2
-            callACLId: 2
-            doNotDisturb: 2
-            maxCalls: 2
+            terminalId: 4
+            extensionId: 4
+            outgoingDDIId: 4
+            callACLId: 6
+            doNotDisturb: 6
+            maxCalls: 6
+            externalIpCalls: 6
         group4:
           label: _("Voicemail")
           colsPerRow: 3

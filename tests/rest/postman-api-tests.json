@@ -1,0 +1,2612 @@
+{
+	"id": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+	"name": "IvozProvider",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "1457a2fd-f5ec-f5fe-1687-50b1245f71c7",
+			"name": "1000 - Brand",
+			"description": "",
+			"order": [
+				"f539a3ab-e92f-fa3a-4746-20c764573094",
+				"c200fa75-250a-2888-cc05-74da2a4fcfb5"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "d8ce03be-1b9b-362e-2267-0e464c41c08d",
+			"name": "1100 - Contract Peering",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "e00a1768-6895-67d1-eaf3-0421623b6642",
+			"name": "1300 - Numeric Transformations",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "39cc03c6-8b69-c6e7-8c0d-e5e51995cb88",
+			"name": "1500 - Brand Services",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "74eee618-e63a-aa0a-2456-3c1f242ffe4d",
+			"name": "1550 - Generic ACL Patterns",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "60fd46a6-3a86-ca22-7db4-67ded926921f",
+			"name": "1600 - Target Patterns",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "4ac7aad9-1f9b-5a73-f8a7-4282abb4fa07",
+			"name": "1650 - Target Pattern Groups",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "df2016c7-48d4-3987-664c-11f7f001ee51",
+			"name": "1700 - Outgoing Routes",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "bb881c0e-6761-73f1-bb0d-230238addebd",
+			"name": "1800 - Pricing Plans",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "53afbc50-d7e2-98c9-8731-e31ca1f7b0bf",
+			"name": "1820 - Fixed Costs",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "0fbe4535-b110-ba3a-ad60-3f01c4f47680",
+			"name": "1900 - Invoices",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "6f6fe28e-fea3-61f6-976d-e4077de9c5a4",
+			"name": "2000 - Company",
+			"description": "",
+			"order": [
+				"fb5e2e27-ce97-fb49-186f-3b1d6ed395ad",
+				"1c8e7b59-2f1f-9b8a-4005-6fa8b9112d05"
+			],
+			"owner": "628603",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145"
+		},
+		{
+			"id": "67038cec-3f49-0cea-d4d7-5c0087a9e212",
+			"name": "2100 - Terminals",
+			"description": "",
+			"order": [
+				"8a62d76a-8ec4-e5a6-ed83-4ca74b14762e",
+				"0f46df46-a9d8-2c71-67e4-51af3179c330",
+				"ddef0310-a1d9-5cd3-e536-9884c7561964",
+				"b7afb25f-a54a-7f84-5486-c667056a80f1",
+				"f84edf58-d9fd-5205-957e-2e09d8fe7c08",
+				"a7e229ed-74d9-d001-e270-b5b54637eef7",
+				"5f935679-9f8d-3e66-cc91-ae12cffb084d",
+				"65abf38c-0bfe-00d1-edad-b725c5c17c4a"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "f4cedf09-5de5-25f9-d850-5cbc15f5108b",
+			"name": "2150 - Extensions",
+			"description": "",
+			"order": [
+				"e8f0d0d9-6e31-a6d7-db0f-94208794e203",
+				"fa11cec4-969c-b797-e54e-786ef5092e95",
+				"8b217f38-6e18-1c67-0203-b6b982135d0d",
+				"6e84a15c-95f5-182c-6636-8e00fda5321f",
+				"87c91cbf-a7f3-9a3a-83a1-d837242c1dbc",
+				"a73b7ef9-7952-5b50-5a33-8991f73ce454",
+				"9ac0af05-918f-48e2-5637-7c34cf49865f",
+				"68283164-9623-1252-8286-a18829664ed2"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155",
+			"name": "2200 - Users",
+			"description": "",
+			"order": [
+				"a5a85123-43bd-cb44-1993-92490e420f20",
+				"4bd45247-42c3-8bee-f64c-544a163ff484",
+				"a1409ba8-3128-72d5-e467-946b8cf04493",
+				"5ebbc566-ae80-5ff8-c7a4-ed16787e2c4f",
+				"a29fb5b2-acb7-997b-373c-47ec4c854f34",
+				"0f4aaaad-22b2-bdab-7918-4445fcda8432",
+				"c120ce78-c6d1-b877-6a25-04fd26c1d290"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "7b73c2dd-61a4-ae96-f15a-e328cad7b5ce",
+			"name": "2210 - CallForwardSettings",
+			"description": "",
+			"order": [
+				"6282a3af-01dd-6ed3-94bb-a5a9e417fd8f",
+				"ae54b592-1ded-63ae-dfe7-9cbc6c145543"
+			],
+			"owner": "628603"
+		},
+		{
+			"id": "cb6e7488-a0c0-2e26-dad8-6bc8e644fcaa",
+			"name": "2230 - Friends",
+			"description": "",
+			"order": [
+				"62b2e2ae-fc05-1bff-9a17-1b42d99ec340",
+				"e8ec7395-0af7-4702-e352-c0154feb08e0"
+			],
+			"owner": "628603"
+		},
+		{
+			"id": "8471b358-5971-5090-5feb-23ff3c6af006",
+			"name": "2250 - DDIs",
+			"description": "",
+			"order": [
+				"ac9928fc-e993-d5de-b73e-d11ac3053974",
+				"6afa5832-7629-4a14-cdbb-d7bc5e9e63e8",
+				"3cad6e75-5794-c933-a1a5-e67ca0544c09",
+				"db9c26b3-04e7-a3df-3f5c-1ab1cf6fdf5c"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "68ff2a4c-343f-d443-f435-bb434fb974d8",
+			"name": "2260 - Calendars",
+			"description": "",
+			"order": [
+				"a2777bfa-47d2-4b9a-e2e3-a4d1b2682ced",
+				"5b96d661-aeda-e13f-5de4-aa6e393f40b8",
+				"9152cfa1-3f06-4d31-469e-9eb88af74e4d",
+				"2458e835-9a93-46f1-a014-bf5a85ae100a"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "f16d3198-0905-757b-1a81-6b18d02e56eb",
+			"name": "2270 - Schedules",
+			"description": "",
+			"order": [
+				"5c117f12-1ae8-9cef-8e0c-459a19dd5f2d",
+				"b3b6603a-43e7-003a-c157-582729300e6d",
+				"5946623d-76c8-799b-0d99-5d61fa32f4ca",
+				"32021ab5-01d6-5b4a-91f2-8a35346cfa7e"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "7535cfbe-624a-c548-d153-56239fe758a8",
+			"name": "2280 - ExternalCallFilters",
+			"description": "",
+			"order": [
+				"128a2556-f49a-2d44-4bdf-8c45a72ae140",
+				"7ab501fa-df1c-cbaa-6ceb-85b09d533110",
+				"d3775d1d-f216-29fc-c5bf-00a33529b9d0",
+				"2cdd8216-97e4-84f3-9cbe-6fc70d8c1336",
+				"1cacf19f-b778-0d51-5658-16c984dfe9e2",
+				"985f30fe-e1a6-6aad-5e45-e65122354200"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		},
+		{
+			"id": "4f0bdd53-3bf1-4658-03a8-b777efb16b02",
+			"name": "2300 - ACL Patterns",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "31a7073f-6ab8-cde8-2807-71d935636a5f",
+			"name": "2400 - Generic IVR",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "98f26358-7e28-36dc-e9ea-6426b3aa5066",
+			"name": "2500 - Custom IVR",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "15eb771d-add4-a8f3-441e-e81a35e3d90c",
+			"name": "2600 - Virtual Fax",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "bfa43240-09fb-c052-1b7d-4a8a02d5dda6",
+			"name": "2700 - Hunt Groups",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "0d9a9019-098b-ac02-77b8-bb4fd0f68290",
+			"name": "2800 - Company Services",
+			"description": "",
+			"order": [],
+			"owner": "628603"
+		},
+		{
+			"id": "7dce074e-4ce5-427c-7a31-c59c2f768752",
+			"name": "3000 - Retail Client",
+			"description": "",
+			"order": [
+				"d2930944-8390-7c8d-fda4-f2b6a02b0ff2",
+				"2bc5e3c4-a4d6-c0e8-8a5d-5e8fcf156edd"
+			],
+			"owner": "628603"
+		},
+		{
+			"id": "27a0b748-5aa7-0ad1-5608-109eadfca358",
+			"name": "3100 - Retail Account",
+			"description": "",
+			"order": [
+				"9a523cce-5961-69bc-68d4-2159a4ca85ff",
+				"6dc2bc73-bed2-aa4f-8fc9-999aa8d58e76"
+			],
+			"owner": "628603"
+		},
+		{
+			"id": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db",
+			"name": "6000 - Delete Entities",
+			"description": "",
+			"order": [
+				"e4573893-c19f-4b89-8cd5-24f4223607c5",
+				"fa5c24cf-81d2-ff6e-ba5b-3d4826124a89",
+				"8df4434a-480d-9043-cbff-37bb8a140221",
+				"c8381340-6f6b-c397-279b-960bacc1f793",
+				"ef5948c0-3208-3268-26c1-e5f4d34f1a19",
+				"fe267f4d-fe61-f2cd-53ed-71a1bd25d7d0"
+			],
+			"owner": "628603",
+			"collectionId": "733c0d10-1c94-c330-067c-e6fbe3a25b27"
+		}
+	],
+	"timestamp": 1464081420397,
+	"owner": "628603",
+	"public": false,
+	"requests": [
+		{
+			"id": "0f46df46-a9d8-2c71-67e4-51af3179c330",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/{{terminalAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"terminalAliceId\");\ntests[\"Expected Terminal id\"] = data.id == id;\n\nvar brand_name = postman.getGlobalVariable(\"brand_name\");\ntests[\"Expected Terminal name\"] = data.name === \"alice\";\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720329992,
+			"name": "Get Terminal alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "0f4aaaad-22b2-bdab-7918-4445fcda8432",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Charlie",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lastname",
+					"value": "IvozProvider",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "charlie@company.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "charlie",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pass",
+					"value": "charliepass",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalId",
+					"value": "{{terminalCharlieId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "extensionId",
+					"value": "{{extension1003Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create User Charlie\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"userCharlieId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722630303,
+			"name": "Create User Charlie",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "128a2556-f49a-2d44-4bdf-8c45a72ae140",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/external-call-filters/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Standard Schedule Filter",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Schedule Morning id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"externalCfId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724216195,
+			"name": "Create External Filter",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7535cfbe-624a-c548-d153-56239fe758a8"
+		},
+		{
+			"id": "1c8e7b59-2f1f-9b8a-4005-6fa8b9112d05",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/companies/{{companyId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"companyId\");\ntests[\"Expected Company id\"] = data.id == id;\ntests[\"Expected Company NIF\"] = data.nif === \"09876543210ART\";\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722441566,
+			"name": "Get Company",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "6f6fe28e-fea3-61f6-976d-e4077de9c5a4"
+		},
+		{
+			"id": "1cacf19f-b778-0d51-5658-16c984dfe9e2",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/external-call-filter-rel-schedules/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "filterId",
+					"value": "{{externalCfId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "scheduleId",
+					"value": "{{scheduleAfternoonId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Set External Filter Afternoon Schedule\"] = Location !== null;\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724349412,
+			"name": "Set External Filter Afternoon Schedule",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7535cfbe-624a-c548-d153-56239fe758a8"
+		},
+		{
+			"id": "2458e835-9a93-46f1-a014-bf5a85ae100a",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/holiday-dates/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "calendarId",
+					"value": "{{calendarId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "eventDate",
+					"value": "2016-01-10",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "New year day",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Add New Year to Calendar\"] = Location !== null;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723987586,
+			"name": "Add Holiday2 to Calendar",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "68ff2a4c-343f-d443-f435-bb434fb974d8"
+		},
+		{
+			"id": "2bc5e3c4-a4d6-c0e8-8a5d-5e8fcf156edd",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/companies/{{retailId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"retailId\");\ntests[\"Expected Company id\"] = data.id == id;\ntests[\"Expected Company NIF\"] = data.nif === \"09876543210ART\";\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497621114436,
+			"name": "Get Retail Client",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": []
+		},
+		{
+			"id": "2cdd8216-97e4-84f3-9cbe-6fc70d8c1336",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/external-call-filter-rel-schedules/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "filterId",
+					"value": "{{externalCfId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "scheduleId",
+					"value": "{{scheduleMorningId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Set External Filter Morning Schedule\"] = Location !== null;\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724346228,
+			"name": "Set External Filter Morning Schedule",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7535cfbe-624a-c548-d153-56239fe758a8"
+		},
+		{
+			"id": "32021ab5-01d6-5b4a-91f2-8a35346cfa7e",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/schedules/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "24x7",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timeIn",
+					"value": "00:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timeout",
+					"value": "23:59:59",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "monday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tuesday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "wednesday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "thursday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "friday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "saturday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sunday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create 24x7 Schedule\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"schedule247Id\", id);\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724121459,
+			"name": "Create 24x7 schedule",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f16d3198-0905-757b-1a81-6b18d02e56eb"
+		},
+		{
+			"id": "3cad6e75-5794-c933-a1a5-e67ca0544c09",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "outgoingDDIId",
+					"value": "{{ddi1Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Set OutGoingDDI to Alice\"] = responseCode.code === 200;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723833154,
+			"name": "Set OutGoingDDI to Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8471b358-5971-5090-5feb-23ff3c6af006"
+		},
+		{
+			"id": "4bd45247-42c3-8bee-f64c-544a163ff484",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"userAliceId\");\ntests[\"Expected user id\"] = data.id == id;\ntests[\"Expected user name\"] = data.name === \"Alice\";\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722428288,
+			"name": "Get User Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "5946623d-76c8-799b-0d99-5d61fa32f4ca",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/schedules/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Afternoon",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timeIn",
+					"value": "15:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timeout",
+					"value": "18:30:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "monday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tuesday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "wednesday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "thursday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "friday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Afternoon Schedule\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"scheduleAfternoonId\", id);\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724110052,
+			"name": "Create Afternoon Schedule",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f16d3198-0905-757b-1a81-6b18d02e56eb"
+		},
+		{
+			"id": "5b96d661-aeda-e13f-5de4-aa6e393f40b8",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/calendars/{{calendarId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"calendarId\");\ntests[\"Expected Calendar id\"] = data.id == id;\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723963378,
+			"name": "Get Calendar",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "68ff2a4c-343f-d443-f435-bb434fb974d8"
+		},
+		{
+			"id": "5c117f12-1ae8-9cef-8e0c-459a19dd5f2d",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/schedules/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Morning",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timeIn",
+					"value": "08:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timeout",
+					"value": "14:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "monday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "tuesday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "wednesday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "thursday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "friday",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Schedule Morning id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"scheduleMorningId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724066243,
+			"name": "Create Morning Schedule ",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f16d3198-0905-757b-1a81-6b18d02e56eb"
+		},
+		{
+			"id": "5ebbc566-ae80-5ff8-c7a4-ed16787e2c4f",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "extensionId",
+					"value": "{{extension1001Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Set Extension 1001 to User Alice\"] = responseCode.code === 200;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722511503,
+			"name": "Set Extension to Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "5f935679-9f8d-3e66-cc91-ae12cffb084d",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalModelId",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "eve",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "ROIy44#eq3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Terminal eve\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"terminalEveId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725448376,
+			"name": "Create Terminal eve",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "6282a3af-01dd-6ed3-94bb-a5a9e417fd8f",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/call-forward-settings/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "userId",
+					"value": "{{userEveId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "callTypeFilter",
+					"value": "external",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "callForwardType",
+					"value": "inconditional",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "targetType",
+					"value": "extension",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "extensionId",
+					"value": "{{extension1003Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Object id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"cfwEveId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722967375,
+			"name": "Create Cfw for Eve (extension)",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7b73c2dd-61a4-ae96-f15a-e328cad7b5ce"
+		},
+		{
+			"id": "62b2e2ae-fc05-1bff-9a17-1b42d99ec340",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/friends/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"enabled": true,
+					"key": "companyId",
+					"type": "text",
+					"value": "{{companyId}}"
+				},
+				{
+					"enabled": true,
+					"key": "name",
+					"type": "text",
+					"value": "myfriendlypbx"
+				},
+				{
+					"enabled": true,
+					"key": "description",
+					"type": "text",
+					"value": "Friendly PBX"
+				},
+				{
+					"key": "transport",
+					"value": "udp",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf(\"/\") + 1);\n    tests[\"friend id is valid\"] = id !== 0;\n    postman.setGlobalVariable(\"friendId\", id);\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497622624919,
+			"name": "Create Friend",
+			"description": "POST",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145"
+		},
+		{
+			"id": "65abf38c-0bfe-00d1-edad-b725c5c17c4a",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalModelId",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "frank",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "ROIy44#eq3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Terminal frank\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"terminalFrankId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725444970,
+			"name": "Create Terminal frank",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "68283164-9623-1252-8286-a18829664ed2",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "2001",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Extension 2001\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"extension2001Id\", id);",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720550553,
+			"name": "Create Extension 2001",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "6afa5832-7629-4a14-cdbb-d7bc5e9e63e8",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/d-d-is/{{ddi1Id}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"ddi1Id\");\ntests[\"Expected DDI id\"] = data.id == id;\nvar number = postman.getGlobalVariable(\"ddi_number\");\ntests[\"Expected DDI number\"] = data.dDI == number;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723802914,
+			"name": "Get DDI 1",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8471b358-5971-5090-5feb-23ff3c6af006"
+		},
+		{
+			"id": "6dc2bc73-bed2-aa4f-8fc9-999aa8d58e76",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/retail-accounts/{{accountId}}",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"enabled": true,
+					"key": "id",
+					"type": "text",
+					"value": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "var jsonData = JSON.parse(responseBody);\ntests[\"The response is object\"] = typeof jsonData === \"object\";\ntests[\"StatusCode 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497623109794,
+			"name": "Get Retail Account",
+			"description": "GET",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145"
+		},
+		{
+			"id": "6e84a15c-95f5-182c-6636-8e00fda5321f",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "1003",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Extension 1003\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"extension1003Id\", id);",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720540745,
+			"name": "Create Extension 1003",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "7ab501fa-df1c-cbaa-6ceb-85b09d533110",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/external-call-filters/{{externalCfId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"externalCfId\");\ntests[\"Expected External Call Filter id\"] = data.id == id;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724252392,
+			"name": "Get External Filter",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7535cfbe-624a-c548-d153-56239fe758a8"
+		},
+		{
+			"id": "87c91cbf-a7f3-9a3a-83a1-d837242c1dbc",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "1004",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Extension 1004\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"extension1004Id\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720543545,
+			"name": "Create Extension 1004",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "8a62d76a-8ec4-e5a6-ed83-4ca74b14762e",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalModelId",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "alice",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "ROIy44#eq3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\ntests[\"Object id is valid\"] = id !== 0;\npostman.setGlobalVariable(\"terminalAliceId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725470120,
+			"name": "Create Terminal alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "8b217f38-6e18-1c67-0203-b6b982135d0d",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "1002",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Extension 1002\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"extension1002Id\", id);",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720537113,
+			"name": "Create Extension 1002",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "8df4434a-480d-9043-cbff-37bb8a140221",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "tests[\"Delete User Alice\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720700409,
+			"name": "Delete User Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db"
+		},
+		{
+			"id": "9152cfa1-3f06-4d31-469e-9eb88af74e4d",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/holiday-dates/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "calendarId",
+					"value": "{{calendarId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "eventDate",
+					"value": "2016-04-1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "April's fool",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Add April's Fool to Calendar\"] = Location !== null;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723977922,
+			"name": "Add Holiday1 to Calendar",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "68ff2a4c-343f-d443-f435-bb434fb974d8"
+		},
+		{
+			"id": "985f30fe-e1a6-6aad-5e45-e65122354200",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/d-d-is/{{ddi1Id}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "externalCallFilterId",
+					"value": "{{externalCfId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Set DDI 1 External Filter\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724353284,
+			"name": "Set DDI 1 External Filter",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7535cfbe-624a-c548-d153-56239fe758a8"
+		},
+		{
+			"id": "9a523cce-5961-69bc-68d4-2159a4ca85ff",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/retail-accounts",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"enabled": true,
+					"key": "brandId",
+					"type": "text",
+					"value": "{{brandId}}"
+				},
+				{
+					"enabled": true,
+					"key": "companyId",
+					"type": "text",
+					"value": "{{retailId}}"
+				},
+				{
+					"enabled": true,
+					"key": "name",
+					"type": "text",
+					"value": "2000"
+				},
+				{
+					"enabled": true,
+					"key": "transport",
+					"type": "text",
+					"value": "udp"
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf(\"/\") + 1);\n    tests[\"Retail accounts id is valid\"] = id !== 0;\n    postman.setGlobalVariable(\"accountId\", id);\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497623008131,
+			"name": "Create Retail Account",
+			"description": "POST",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145"
+		},
+		{
+			"id": "9ac0af05-918f-48e2-5637-7c34cf49865f",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "2000",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Extension 2000\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"extension2000Id\", id);",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720588697,
+			"name": "Create Extension 2000",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "a1409ba8-3128-72d5-e467-946b8cf04493",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "languageId",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "countryId",
+					"value": "50",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalId",
+					"value": "{{terminalAliceId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Set Terminal alice to User Alice\"] = responseCode.code === 200;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722484366,
+			"name": "Set Terminal to Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "a2777bfa-47d2-4b9a-e2e3-a4d1b2682ced",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/calendars/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Calendar for 2016",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Calendar id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"calendarId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723924546,
+			"name": "Create Calendar",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "68ff2a4c-343f-d443-f435-bb434fb974d8"
+		},
+		{
+			"id": "a29fb5b2-acb7-997b-373c-47ec4c854f34",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Bob",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lastname",
+					"value": "IvozProvider",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "bob@company.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "bob",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pass",
+					"value": "bobpass",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalId",
+					"value": "{{terminalBobId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "extensionId",
+					"value": "{{extension1002Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create User Bob\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"userBobId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722596606,
+			"name": "Create User Bob",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "a5a85123-43bd-cb44-1993-92490e420f20",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Alice",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lastname",
+					"value": "IvozProvider",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "alice@company.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "alice",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pass",
+					"value": "alicepass",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\ntests[\"Object id is valid\"] = id !== 0;\npostman.setGlobalVariable(\"userAliceId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722346990,
+			"name": "Create User Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "a73b7ef9-7952-5b50-5a33-8991f73ce454",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "1005",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Extension 1005\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"extension1005Id\", id);",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720585562,
+			"name": "Create Extension 1005",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "a7e229ed-74d9-d001-e270-b5b54637eef7",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalModelId",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "dave",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "ROIy44#eq3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Terminal dave\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"terminalDaveId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725451144,
+			"name": "Create Terminal dave",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "ac9928fc-e993-d5de-b73e-d11ac3053974",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/d-d-is/",
+			"preRequestScript": "var random = Math.floor(Math.random() * ((944840000 - 944040000) +1) + 944040000);\npostman.setGlobalVariable(\"ddi_number\", random);",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "brandId",
+					"value": "{{brandId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "countryId",
+					"value": "70",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "DDI",
+					"value": "{{ddi_number}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "userId",
+					"value": "{{userAliceId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Object id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"ddi1Id\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723687347,
+			"name": "Create DDI 1 routed to Alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8471b358-5971-5090-5feb-23ff3c6af006"
+		},
+		{
+			"id": "ae54b592-1ded-63ae-dfe7-9cbc6c145543",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/call-forward-settings/{{cfwEveId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "targetType",
+					"value": "voicemail",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "voiceMailUserId",
+					"value": "{{userEveId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723020943,
+			"name": "Update Cfw for Eve (voicemail)",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7b73c2dd-61a4-ae96-f15a-e328cad7b5ce"
+		},
+		{
+			"id": "b3b6603a-43e7-003a-c157-582729300e6d",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/schedules/{{scheduleMorningId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"scheduleMorningId\");\ntests[\"Expected Schedule id\"] = data.id == id;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724101987,
+			"name": "Get Schedule",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f16d3198-0905-757b-1a81-6b18d02e56eb"
+		},
+		{
+			"id": "b7afb25f-a54a-7f84-5486-c667056a80f1",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalModelId",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "bob",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "ROIy44#eq3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Terminal bob\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"terminalBobId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725457240,
+			"name": "Create Terminal bob",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "c120ce78-c6d1-b877-6a25-04fd26c1d290",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "Eve",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lastname",
+					"value": "IvozProvider",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "eve@company.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "eve",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pass",
+					"value": "evepass",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "timezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalId",
+					"value": "{{terminalEveId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "extensionId",
+					"value": "{{extension1004Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create User Eve\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"userEveId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722658686,
+			"name": "Create User Eve",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8fad4654-2162-d5b1-c0f2-2c38a2fc9155"
+		},
+		{
+			"id": "c200fa75-250a-2888-cc05-74da2a4fcfb5",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/brands/{{brandId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"brandId\");\ntests[\"Expected Brand id\"] = data.id == id;\n\nvar brand_name = postman.getGlobalVariable(\"brand_name\");\ntests[\"Expected Brand name\"] = data.name === brand_name;\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720338583,
+			"name": "Get Brand",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "1457a2fd-f5ec-f5fe-1687-50b1245f71c7"
+		},
+		{
+			"id": "c8381340-6f6b-c397-279b-960bacc1f793",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userBobId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "tests[\"Delete User Bob\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720693498,
+			"name": "Delete User Bob",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db"
+		},
+		{
+			"id": "d2930944-8390-7c8d-fda4-f2b6a02b0ff2",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/companies/",
+			"preRequestScript": "var random = Math.floor(Math.random() * ((6000 - 1000) +1) + 1000);\n\npostman.setGlobalVariable(\"retail_name\", \"Retail created from REST API. (\" + random + \")\");",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "brandId",
+					"value": "{{brandId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "{{retail_name}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nif",
+					"value": "09876543210ART",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "defaultTimezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalAddress",
+					"value": "Retail Client postal address",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "Retail Client postal code",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "town",
+					"value": "Retail Client town",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "province",
+					"value": "Retail Client province",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "country",
+					"value": "Retail Client country",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "retail",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Retail id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"retailId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497621468419,
+			"name": "Create Retail Client",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": []
+		},
+		{
+			"id": "d3775d1d-f216-29fc-c5bf-00a33529b9d0",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/external-call-filter-rel-calendars/",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "filterId",
+					"value": "{{externalCfId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "calendarId",
+					"value": "{{calendarId}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Set External Filter Calendar\"] = Location !== null;\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469724333881,
+			"name": "Set External Filter Calendar",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7535cfbe-624a-c548-d153-56239fe758a8"
+		},
+		{
+			"id": "db9c26b3-04e7-a3df-3f5c-1ab1cf6fdf5c",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/users/{{userEveId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "outgoingDDIId",
+					"value": "{{ddi1Id}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Set OutGoingDDI to Eve\"] = responseCode.code === 200;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469723841889,
+			"name": "Set OutGoingDDI to Eve",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "8471b358-5971-5090-5feb-23ff3c6af006"
+		},
+		{
+			"id": "ddef0310-a1d9-5cd3-e536-9884c7561964",
+			"headers": "Authorization: {{api_auth}}\npassword: ROIy14#eq7\n",
+			"url": "{{api_url}}/terminals/{{terminalAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Update Terminal alice\"] = responseCode.code === 200;\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720189895,
+			"name": "Update Terminal alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "e4573893-c19f-4b89-8cd5-24f4223607c5",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/{{terminalAliceId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Delete Terminal alice\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469720636937,
+			"name": "Delete Terminal alice",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db"
+		},
+		{
+			"id": "e8ec7395-0af7-4702-e352-c0154feb08e0",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/friends/{{friendId}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"friendId\");\ntests[\"Expected friend id\"] = data.id == id;\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497624753872,
+			"name": "Get Friend",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": []
+		},
+		{
+			"id": "e8f0d0d9-6e31-a6d7-db0f-94208794e203",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "routeType",
+					"value": "user",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "number",
+					"value": "1001",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\ntests[\"Object id is valid\"] = id !== 0;\npostman.setGlobalVariable(\"extension1001Id\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722206463,
+			"name": "Create Extension 1001",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "ef5948c0-3208-3268-26c1-e5f4d34f1a19",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/companies/{{companyId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "tests[\"Deleted created Company\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725601848,
+			"name": "Delete  Company",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db"
+		},
+		{
+			"id": "f539a3ab-e92f-fa3a-4746-20c764573094",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/brands/",
+			"preRequestScript": "var random = Math.floor(Math.random() * ((6000 - 1000) +1) + 1000);\n\npostman.setGlobalVariable(\"brand_name\", \"Brand created from REST API. (\" + random + \")\");",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "{{brand_name}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nif",
+					"value": "01234567890AF",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "defaultTimezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalAddress",
+					"value": "Postal address created from REST API",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "48901",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "town",
+					"value": "Rest API town",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "province",
+					"value": "Rest API province",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "country",
+					"value": "Rest API country",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "registryData",
+					"value": "Brand Invoice Footer data",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Brand id is valid\"] = id !== 0;\n\n    // Store ID for further requests\n    postman.setGlobalVariable(\"brandId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469717267151,
+			"name": "Create Brand",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "1457a2fd-f5ec-f5fe-1687-50b1245f71c7"
+		},
+		{
+			"id": "f84edf58-d9fd-5205-957e-2e09d8fe7c08",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/terminals/",
+			"preRequestScript": "",
+			"pathVariables": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "companyId",
+					"value": "{{companyId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "terminalModelId",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "charlie",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "ROIy44#eq3",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var Location = postman.getResponseHeader(\"Location\");\ntests[\"Create Terminal charlie\"] = Location !== null;\n\nvar id = Location.substr(Location.lastIndexOf('/') + 1);\npostman.setGlobalVariable(\"terminalCharlieId\", id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725454680,
+			"name": "Create Terminal charlie",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "67038cec-3f49-0cea-d4d7-5c0087a9e212"
+		},
+		{
+			"id": "fa11cec4-969c-b797-e54e-786ef5092e95",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/{{extension1001Id}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200 OK\"] = responseCode.code === 200;\n\nvar data = JSON.parse(responseBody);\n\nvar id = postman.getGlobalVariable(\"extension1001Id\");\ntests[\"Expected Extension id\"] = data.id == id;\ntests[\"Expected Extension number\"] = data.number === \"1001\";\n",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469722436638,
+			"name": "Get Extension 1001",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "f4cedf09-5de5-25f9-d850-5cbc15f5108b"
+		},
+		{
+			"id": "fa5c24cf-81d2-ff6e-ba5b-3d4826124a89",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/extensions/{{extension1001Id}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Delete Extension 1001\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469718049215,
+			"name": "Delete Extension 1001",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db"
+		},
+		{
+			"id": "fb5e2e27-ce97-fb49-186f-3b1d6ed395ad",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/companies/",
+			"preRequestScript": "var random = Math.floor(Math.random() * ((6000 - 1000) +1) + 1000);\n\npostman.setGlobalVariable(\"company_name\", \"Company created from REST API. (\" + random + \")\");\npostman.setGlobalVariable(\"company_domain\", \"sip.company\" + random + \".com\");",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "brandId",
+					"value": "{{brandId}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "{{company_name}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nif",
+					"value": "09876543210ART",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "defaultTimezoneId",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalAddress",
+					"value": "Company postal address",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "Company postal code",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "town",
+					"value": "Company town",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "province",
+					"value": "Company province",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "country",
+					"value": "Company country",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "domain_users",
+					"value": "{{company_domain}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "vpbx",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 201 Created\"] = responseCode.code === 201;\n\nvar Location = postman.getResponseHeader(\"Location\");\ntests[\"Location header is present\"] = Location !== null;\n\nif (Location !== null) {\n    var id = Location.substr(Location.lastIndexOf('/') + 1);\n    tests[\"Company id is valid\"] = id !== 0;\n    \n    // Store ID for further requests\n    postman.setGlobalVariable(\"companyId\", id);\n}\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497620852139,
+			"name": "Create Company",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": []
+		},
+		{
+			"id": "fe267f4d-fe61-f2cd-53ed-71a1bd25d7d0",
+			"headers": "Authorization: {{api_auth}}\n",
+			"url": "{{api_url}}/brands/{{brandId}}",
+			"preRequestScript": null,
+			"pathVariables": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "tests[\"Deleted created Brand\"] = responseCode.code === 204;",
+			"currentHelper": "normal",
+			"helperAttributes": [],
+			"time": 1469725596683,
+			"name": "Delete Brand",
+			"description": "",
+			"collectionId": "3707df3b-0c8e-c563-e16b-fcbc242f5145",
+			"responses": [],
+			"folder": "7e0c0cc1-de2c-1a9d-2750-0c7cbdd6e8db"
+		}
+	]
+}

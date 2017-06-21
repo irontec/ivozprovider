@@ -15,7 +15,7 @@ production:
       type: text
       trim: both
       maxLength: 300
-    template: 
+    template:
       title: ngettext('Template', 'Templates', 1)
       type: textarea
       required: true
@@ -28,12 +28,30 @@ production:
           lineNumbers: true
           matchBrackets: true
       <<: *invoiceTemplateHelp
-#      options: 
-#        title: _("Options")
-#        dialogs: 
-#          uploadFile_dialog: true
-#          downloadFile_dialog: true
-#          genericBackup_dialog: true
+    templateHeader:
+      title: _('Template header')
+      type: textarea
+      source:
+        control: Codemirror
+        settings:
+          mode:
+            - application/xml
+            - xml
+          lineNumbers: true
+          matchBrackets: true
+      <<: *invoiceTemplateFooterHeaderHelp
+    templateFooter:
+      title: _('Template footer')
+      type: textarea
+      source:
+        control: Codemirror
+        settings:
+          mode:
+            - application/xml
+            - xml
+          lineNumbers: true
+          matchBrackets: true
+      <<: *invoiceTemplateFooterHeaderHelp
     brandId: 
       title: _('Brand id')
       type: select

@@ -119,7 +119,7 @@ production:
               - name
               - calling_code
             template: '%name% (+%calling_code%)'
-          order: code
+          order: name_${lang}
         'null': _("Company's default")
       info:
         type: box

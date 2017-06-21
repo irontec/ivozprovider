@@ -56,6 +56,19 @@ class Terminals extends Raw\Terminals
             $this->getName());
     }
 
+    public function getAllow()
+    {
+        $allow_audio = $this->getAllowAudio();
+        $allow_video = $this->getAllowVideo();
+        if (!empty($allow_video)) {
+            return $allow_audio . "," . $allow_video;
+        } else {
+            return $allow_audio;
+        }
+
+    }
+
+
     public function getAstPsEndpoint()
     {
         $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();

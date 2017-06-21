@@ -1,6 +1,7 @@
 <?php
 
 use \IvozProvider\Mapper\Sql as Mapper;
+use \IvozProvider\Model\Companies as Companies;
 
 class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
@@ -29,7 +30,7 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
             return [];
         }
 
-        $excludedRoutes = array();
+        $excludedRoutes = [];
         foreach ($features as $feature) {
             switch ($feature->getName('en')) {
                 case "Queues":      $routeType = 'queue'; break;
@@ -40,8 +41,17 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
             }
 
             if (!empty($routeType) && !$company->hasFeature($feature->getId())) {
-                array_push($excludedRoutes, $routeType);
+                $excludedRoutes[] = $routeType;
             }
+        }
+
+        if ($company->getType() === Companies::VPBX) {
+            $excludedRoutes[] = "retail";
+        } else {
+            $excludedRoutes[] = "user";
+            $excludedRoutes[] = "IVRCommon";
+            $excludedRoutes[] = "IVRCustom";
+            $excludedRoutes[] = "huntGroup";
         }
 
         return $excludedRoutes;

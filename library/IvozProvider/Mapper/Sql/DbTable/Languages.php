@@ -45,6 +45,7 @@ class Languages extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (

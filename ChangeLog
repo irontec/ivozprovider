@@ -1,3 +1,43 @@
+Wed, 14 Jun 2017 10:52:03 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.4 released
+
+    * Web Portals
+        - Brands and Companies deletion now requires input confirmation
+        - Added Calendar dates CSV Importer
+        - Removed broken data exporters and importers
+
+    * Proxies
+        - Add support for roadwarriors: users without source IP filtering enabled
+        - Fixed Presence notifications for Cisco Phones
+
+    * vPBX
+        - Terminals: Add support for H.264 Video codec for calls between users
+        - IVR: Fixed a bug where welcome locution was not being reproduced
+        - Services: Added a new service to record locutions from terminal
+        - Services: Voicemail service can now check other users' voicemails
+
+    * Retail
+        - Added a new company type for Retail Clients
+        - Like virtual pbx companies, they have
+            * IP Filtering
+            * Pricing Plans
+            * Invoices
+            * Specific outgoing routing
+        - Retail clients can have multiple retail accounts
+            * Provide connectivity between Contract Peerings and the client
+            * DDIs with optional Recordings and Virtual Fax features
+
+    * Invoices
+        - Replaced Invoices PDF generation engine
+            * Drastically performance improvement
+            * Replaced Invoices Format to HTML
+            * WARNING: old invoice templates are no longer valid, see new sample files
+
+    * Tests
+        - Added basic Rest API tests for mappers and models
+        - Added basic SIP tests simulating multiple UAC and Unassigned
+
 Fri, 19 May 2017 17:29:03 +0200 IvozProvider Development Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.3 released

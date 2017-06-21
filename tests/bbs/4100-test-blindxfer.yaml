@@ -1,0 +1,41 @@
+# test-blindxfer.yaml
+#
+# Simple scenario for testing attended transfer
+# Bob must have the extension 1001 assigned
+# Charlie must have the extension 1002 assigned
+#
+# ----------------------------------------------------------------------------
+#
+scenarios:
+  - name: call from alice to bob blind transfered to charlie
+    timeout: 20
+    sessions:
+
+      - caller_alice:
+          - credentials:
+              <<: *alice_cred
+          - call: 1001
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+
+      - callee_bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - blindxfer: 1002
+          - waitfor: TRANSFER_ACCEPTED
+          - waitfor: TRANSFER_OK
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - callee_charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - answer
+          - waitfor: CONFIRMED
+          - wait: 6
+          - hangup
+          - waitfor: DISCONNCTD

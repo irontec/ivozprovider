@@ -1,14 +1,24 @@
 <?php
 namespace IvozProvider\Gearmand\Invoices;
 
+use Knp\Snappy\Pdf;
+use Handlebars\Handlebars;
+
 class Generator
 {
+    const DATE_FORMAT = 'dd-MM-yyyy';
+    const DATE_TIME_FORMAT = 'dd-MM-yyyy HH:mm:ss';
+    const MYSQL_DATETIME_FORMAT = 'yyyy-MM-dd HH:mm:ss';
 
     protected $_invoiceId = null;
     protected $_logger = null;
     protected $_fixedCostTotal = 0;
     protected $_fixedCosts = array();
     protected $_totals = array();
+
+    protected $pricingPlanCache = [];
+
+    const LOGGER_PREFIX = "[Invoices][Generator]";
 
     public function __construct($invoiceId = null, $logger = null)
     {
@@ -40,9 +50,7 @@ class Generator
 
     public function getInvoicePDFContents()
     {
-        $pdfContents = $this->_createInvoice();
-
-        return $pdfContents;
+        return $this->_createInvoice();
     }
 
     protected function _createInvoice()
@@ -61,7 +69,6 @@ class Generator
             $brandLogoPath = "images/palmera90.png";
         }
 
-        $dateFormat = \Zend_Locale_Format::getDateFormat($invoice->getCompany()->getLanguageCode());
         $invoiceTz = $company->getDefaultTimezone()->getTz();
         $invoiceDate = new \Zend_Date();
         $invoiceDate->setTimezone($invoiceTz);
@@ -72,48 +79,57 @@ class Generator
         $outDate->setTimezone($invoiceTz);
         $outDate->addDay(1)->subSecond(1);
 
-        $engine = 'pdf';
-        $facade = \PHPPdf\Core\FacadeBuilder::create()
-        ->setEngineType($engine)
-        ->setEngineOptions(
-            array(
-                'format' => 'jpg',
-                'quality' => 70,
-                'engine' => 'imagick',
-            )
-        )
-        ->build();
-
         $invoiceArray = $invoice->toArray();
-        $invoiceArray["invoiceDate"] = $invoiceDate->toString($dateFormat);
-        $invoiceArray["inDate"] = $inDate->toString($dateFormat);
-        $invoiceArray["outDate"] = $outDate->toString($dateFormat);
+        $invoiceArray["invoiceDate"] = $invoiceDate->toString(self::DATE_FORMAT);
+        $invoiceArray["inDate"] = $inDate->toString(self::DATE_FORMAT);
+        $invoiceArray["outDate"] = $outDate->toString(self::DATE_FORMAT);
         $brandArray = $brand->toArray();
         $brandArray["logoPath"] = $brandLogoPath;
 
         $variables = array(
-                "invoice" => $invoiceArray,
-                "company" => $company->toArray(),
-                "brand" => $brandArray,
-                "callData" => $callData,
-                "fixedCosts" => array($this->_fixedCosts),
-                "fixedCostsTotals" => $this->_fixedCostTotal,
-                "totals" => $this->_totals
+            "invoice" => $invoiceArray,
+            "company" => $company->toArray(),
+            "brand" => $brandArray,
+            "callData" => $callData,
+            "fixedCosts" => $this->_fixedCosts,
+            "fixedCostsTotals" => $this->_fixedCostTotal,
+            "totals" => $this->_totals
         );
+
+        /**
+         * @var $templateModel \IvozProvider\Model\InvoiceTemplates
+         */
         $templateModel = $invoice->getInvoiceTemplate();
         if (!$templateModel) {
             throw new \Exception("No template assigned.");
         }
-        $template = $templateModel->getTemplate();
-        $xml = \IvozProvider\Template\Formatter::format($template, $variables);
-        $content = $facade->render($xml);
+
+        $this->_log("Preparing templates", \Zend_Log::DEBUG);
+        $templateEngine = new Handlebars;;
+        $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
+        $body = $templateEngine->render($templateModel->getTemplate(), $variables);
+        $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
+
+        $this->_log("Rendering the PDF", \Zend_Log::DEBUG);
+        $architecture = (php_uname("m") === 'x86_64') ? 'amd64' : 'i386';
+
+        $snappy = new Pdf(APPLICATION_PATH . '/../../library/vendor/bin/wkhtmltopdf-' . $architecture);
+        $snappy->setTimeout(60 * 10);
+        $snappy->setOption('header-html', $header);
+        $snappy->setOption('header-spacing', 3);
+        $snappy->setOption('footer-html', $footer);
+        $snappy->setOption('footer-spacing', 3);
+        $content = $snappy->getOutputFromHtml($body);
+        $snappy->removeTemporaryFiles();
+
         return $content;
     }
 
     protected function _getCallData(\IvozProvider\Model\Invoices $invoice)
     {
         $brand = $invoice->getBrand();
-        $company =$invoice->getCompany();
+        $company = $invoice->getCompany();
+        $lang = $company->getLanguageCode();
         $invoiceTz = $company->getDefaultTimezone()->getTz();
         $inDate = $invoice->getInDate(true);
         $inDate->setTimezone($invoiceTz);
@@ -122,34 +138,20 @@ class Generator
         $outDate->addDay(1)->subSecond(1);
 
         $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
-        $limit = 50;
-        $offset = 0;
-        $continue = true;
-        $wheres = array(
-                "brandId = '".$brand->getPrimaryKey()."'",
-                "companyId = '".$company->getPrimaryKey()."'",
-                "metered = 1 ",
-                "peeringContractId IS NOT NULL",
-                "peeringContractId != ''",
-                "start_time_utc >= '".$inDate->toString('yyyy-MM-dd HH:mm:ss')."'",
-                "start_time_utc <= '".$outDate->toString('yyyy-MM-dd HH:mm:ss')."'"
-        );
-        $where = implode(" AND ", $wheres);
-        $this->_log("[INVOICE GENERATOR] Where: ".$where, \Zend_Log::DEBUG);
-        $order = "start_time_utc asc";
 
         $callsPerType = array();
         $callSumary = array();
         $callSumaryTotals = array(
-                "numberOfCalls" => 0,
-                "totalCallsDuration" => 0,
-                "totalCallsDurationFormatted" => $this->_timeFormat(0),
-                "totalPrice" => 0
+            "numberOfCalls" => 0,
+            "totalCallsDuration" => 0,
+            "totalCallsDurationFormatted" => $this->_timeFormat(0),
+            "totalPrice" => 0
         );
         $inboundCalls = array();
 
         $this->_fixedCostTotal = 0;
         $fixedCostsRelInvoices = $invoice->getFixedCostsRelInvoices();
+
         foreach ($fixedCostsRelInvoices as $key => $fixedCostsRelInvoice) {
             $cost = $fixedCostsRelInvoice->getFixedCost()->getCost();
             $quantity = $fixedCostsRelInvoice->getQuantity();
@@ -163,7 +165,32 @@ class Generator
             );
             $this->_fixedCostTotal  += number_format(ceil($subTotal*10000)/10000, 4);
         }
+
+        $wheres = array(
+            "brandId = '".$brand->getPrimaryKey()."'",
+            "companyId = '".$company->getPrimaryKey()."'",
+            "metered = 1 ",
+            "peeringContractId IS NOT NULL",
+            "peeringContractId != ''",
+            "start_time_utc >= '".$inDate->toString(self::MYSQL_DATETIME_FORMAT)."'",
+            "start_time_utc <= '".$outDate->toString(self::MYSQL_DATETIME_FORMAT)."'"
+        );
+
+        $where = implode(" AND ", $wheres);
+        $order = "start_time_utc asc";
+        $limit = 100;
+        $offset = 0;
+        $continue = true;
+
+        $this->_log("Where: ".$where, \Zend_Log::DEBUG);
+
+        $dbAdapter = $invoice->getMapper()->getDbTable()->getAdapter();
+        $updateCallsInvoiceId = 'UPDATE `kam_acc_cdrs` SET `invoiceId` = ' . $invoice->getId();
+        $updateCallsInvoiceId .= ' WHERE ' . $where;
+        $dbAdapter->query($updateCallsInvoiceId);
+
         while ($continue) {
+
             $calls = $callsMapper->fetchList($where, $order, $limit, $offset);
             if (count($calls) < $limit) {
                 $continue = false;
@@ -171,17 +198,12 @@ class Generator
             if (empty($calls)) {
                 break;
             }
-
             $offset += $limit;
 
             foreach ($calls as $call) {
-                if (!$call) {
-                    $call = new \IvozProvider\Model\KamAccCdrs();
-                }
 
-                $lang = $invoice->getCompany()->getLanguageCode();
                 $callData = $call->toArray();
-                $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString();
+                $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString(self::DATE_TIME_FORMAT);
                 $callData["dst"] = $call->getCallee();
                 $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
                 $callData["dst_duration_formatted"] = $this->_timeFormat($callData["duration"]);
@@ -196,8 +218,9 @@ class Generator
 
                 $callData["pricingPlan"] = array();
                 if ($call->getPricingPlanId()) {
-                    $callData["pricingPlan"] = $call->getPricingPlan()->toArray();
-                    $callData["pricingPlan"]["description"] = $call->getPricingPlan()->getDescription($lang);
+                    $pricingPlan = $this->getCallPricingPlan($call);
+                    $callData["pricingPlan"] = $pricingPlan->toArray();
+                    $callData["pricingPlan"]["description"] = $pricingPlan->getDescription($lang);
                 }
                 $callData["pricingPlan"]["name"] = $call->getPricingPlanName();
 
@@ -225,28 +248,34 @@ class Generator
                     $inboundCalls["calls"][] = $callData;
                 } else {
                     if (!isset($callsPerType[$callType])) {
-                        $callsPerType[$callType] = array();
+                        $callsPerType[$callType] = array('items' => []);
                     }
-                    $callsPerType[$callType][] = $callData;
+                    $callsPerType[$callType]['items'][] = $callData;
                 }
                 if ($call->getDirection() == "inbound") {
                     $inboundCalls["summary"]["numberOfCalls"] += 1;
                     $inboundCalls["summary"]["totalCallsDuration"] += $call->getDuration();
                     $inboundCalls["summary"]["totalCallsDurationFormatted"] = $this->_timeFormat($inboundCalls["summary"]["totalCallsDuration"]);
-                    $inboundCalls["summary"]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
+                    $inboundCalls["summary"]["totalPrice"] = number_format(
+                        $inboundCalls["summary"]["totalPrice"] + ceil($callData["price"]*10000)/10000,
+                        4
+                    );
                 } else {
                     $callSumary[$callType]["numberOfCalls"] += 1;
                     $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
                     $callSumary[$callType]["totalCallsDurationFormatted"] = $this->_timeFormat($callSumary[$callType]["totalCallsDuration"]);
-                    $callSumary[$callType]["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
+                    $callSumary[$callType]["totalPrice"] = number_format(
+                        $callSumary[$callType]["totalPrice"] + ceil($callData["price"]*10000)/10000,
+                        4
+                    );
                 }
                 $callSumaryTotals["numberOfCalls"] += 1;
                 $callSumaryTotals["totalCallsDuration"] += $call->getDuration();
                 $callSumaryTotals["totalCallsDurationFormatted"] = $this->_timeFormat($callSumaryTotals["totalCallsDuration"]);
-                $callSumaryTotals["totalPrice"] += number_format(ceil($callData["price"]*10000)/10000, 4);
-
-                $call->setInvoice($invoice)->save();
-
+                $callSumaryTotals["totalPrice"] = number_format(
+                    $callSumaryTotals["totalPrice"] + ceil($callData["price"]*10000)/10000,
+                    4
+                );
             }
         }
 
@@ -260,18 +289,17 @@ class Generator
             "totalWithTaxes" => $totalWithTaxex
         );
 
-
-        $this->_log("[Invoices][Generator] Saving TotalPrice and Total price with taxes", \Zend_Log::INFO);
-        $this->_log("[Invoices][Generator] TotalPrice: ".$total, \Zend_Log::INFO);
-        $this->_log("[Invoices][Generator] Total price with taxes: ".$totalWithTaxex, \Zend_Log::INFO);
+        $this->_log("Saving TotalPrice and Total price with taxes", \Zend_Log::INFO);
+        $this->_log("TotalPrice: " . $total, \Zend_Log::INFO);
+        $this->_log("Total price with taxes: " . $totalWithTaxex, \Zend_Log::INFO);
 
         asort($callSumary);
         asort($callsPerType);
-        $finalData= array(
-                "callSumary" => $callSumary,
-                "callsPerType" => $callsPerType,
-                "callSumaryTotals" => $callSumaryTotals,
-                "inboundCalls" => $inboundCalls,
+        $finalData = array(
+            "callSumary" => array_values($callSumary),
+            "callsPerType" => array_values($callsPerType),
+            "callSumaryTotals" => $callSumaryTotals,
+            "inboundCalls" => $inboundCalls,
         );
 
         return $finalData;
@@ -291,6 +319,20 @@ class Generator
             return;
         }
 
-        $this->_logger->log($message, $priority);
+        $this->_logger->log(self::LOGGER_PREFIX . " " . $message, $priority);
+    }
+
+    /**
+     * @param $call
+     * @return mixed
+     */
+    protected function getCallPricingPlan(\IvozProvider\Model\KamAccCdrs $call)
+    {
+        $pricingPlanId = $call->getPricingPlanId();
+        if (!array_key_exists($pricingPlanId, $this->pricingPlanCache)) {
+            $this->pricingPlanCache[$pricingPlanId] = $call->getPricingPlan();
+        }
+
+        return $this->pricingPlanCache[$pricingPlanId];
     }
 }

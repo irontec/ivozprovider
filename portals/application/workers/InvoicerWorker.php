@@ -53,7 +53,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
             }
             $tempPdf = $tempPath."/temp.pdf";
             file_put_contents($tempPdf, $content);
-            $invoice->putPdfFile($tempPdf, "invoice.pdf");
+            $invoice->putPdfFile($tempPdf, "invoice-". $invoice->getNumber() .".pdf");
             $totals = $invoiceGenerator->getTotals();
             $invoice
                 ->setTotal($totals["totalPrice"])

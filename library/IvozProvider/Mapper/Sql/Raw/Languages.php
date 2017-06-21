@@ -504,6 +504,20 @@ class Languages extends MapperAbstract
                     }
                 }
 
+                if ($model->getRetailAccounts(null, null, true) !== null) {
+                    $retailAccounts = $model->getRetailAccounts();
+
+                    if (!is_array($retailAccounts)) {
+
+                        $retailAccounts = array($retailAccounts);
+                    }
+
+                    foreach ($retailAccounts as $value) {
+                        $value->setLanguageId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getUsers(null, null, true) !== null) {
                     $users = $model->getUsers();
 

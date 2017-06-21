@@ -10,6 +10,7 @@ use Agi\Action\ServiceAction;
 use Agi\Action\FriendCallAction;
 use Agi\Action\ExternalUserCallAction;
 use Agi\Action\ExternalFriendCallAction;
+use Agi\Action\ExternalRetailCallAction;
 use Agi\Action\QueueAction;
 
 /**
@@ -440,6 +441,58 @@ class CallsController extends BaseController
     }
 
     /**
+     * @brief Outgoing calls from friends
+     */
+    public function retailAction ()
+    {
+        // Get identified Enpoint name
+        $endpointName = $this->agi->getEndpoint();
+
+        // Do we get who is actually calling?
+        if (empty($endpointName)) {
+            $this->agi->error("Call without valid endpointName. Dropping.");
+            return;
+        }
+
+        // Get caller endpoint model
+        $endpointsMapper = new Mapper\AstPsEndpoints();
+        $endpoint = $endpointsMapper->findOneByField("sorcery_id", $endpointName);
+        if (empty($endpoint)) {
+            $this->agi->error("Endpoint %s not found.", $endpointName);
+            return;
+        }
+
+        $retail = $endpoint->getRetailAccount();
+        if (is_null($retail)) {
+            $this->agi->error("No retail found for endpoint %s.", $endpointName);
+            return;
+        }
+
+        // Set Company/Brand/Generic Music class
+        $company = $retail->getCompany();
+        $this->agi->setVariable("__COMPANYID", $company->getId());
+
+        // Get call destination
+        $exten = $this->agi->getExtension();
+
+        // Set Outgoing Channels X-CID header variable
+        $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
+
+        // Set User as the caller
+        $this->setChannelOwner($retail);
+
+        // Some feedback for asterisk cli
+        $this->agi->notice("Processing outgoing call from Retail account \e[0;36m%s [retail%d]\e[0;93m to number %s",
+                        $retail->getName(), $retail->getId(), $exten);
+        // Otherwise, handle this call as external
+        $externalCallAction = new ExternalRetailCallAction($this);
+        $externalCallAction
+            ->setCaller($retail)
+            ->setDestination($exten)
+            ->process();
+    }
+
+    /**
      * @brief Incoming calls to conference
      */
     public function conferencesAction()
@@ -470,6 +523,9 @@ class CallsController extends BaseController
         if ($conference->getMaxMembers()) {
             $this->agi->setConferenceSetting('bridge,max_members', $conference->getMaxMembers());
         }
+
+        // Enable video support
+        $this->agi->setConferenceSetting('bridge,video_mode', 'follow_talker');
     }
 
     /**
@@ -552,7 +608,6 @@ class CallsController extends BaseController
         $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrandId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
         $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
-        $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain());
         $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySetsId());
 
         // Get Calle data, take if from called endpoint
@@ -560,16 +615,24 @@ class CallsController extends BaseController
         $endpoint = $endpointsMapper->findOneByField("sorcery_id", $this->agi->getEndpoint());
         if (!empty($endpoint)) {
             $terminal = $endpoint->getTerminal();
-            if (!empty($terminal)) {
+            if (!is_null($terminal)) {
                 $this->agi->setSIPHeader("X-Info-Callee", $terminal->getUser()->getExtensionNumber());
                 $this->agi->setSIPHeader("X-Info-MaxCalls", $terminal->getUser()->getMaxCalls());
             }
             $friend = $endpoint->getFriend();
-            if (!empty($friend)) {
+            if (!is_null($friend)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
                 $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
+            }
+            $retail = $endpoint->getRetailAccount();
+            if (!is_null($retail)) {
+                $exten = $this->agi->getExtension();
+                $this->agi->setSIPHeader("X-Info-Callee", $exten);
+                $this->agi->setSIPHeader("X-Info-Retail", $retail->getRequestURI($exten));
+                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
+
             }
 
             // Set on-demand recording header (only for proxyusers)
@@ -579,6 +642,7 @@ class CallsController extends BaseController
             }
 
         } else {
+            $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain());
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
 
             // Set special headers for Fax outgoing calls
@@ -635,6 +699,8 @@ class CallsController extends BaseController
             $this->agi->setVariable("CALLER_TYPE", "DDI");
         if ($owner instanceof \IvozProvider\Model\Raw\Friends)
             $this->agi->setVariable("CALLER_TYPE", "FRIEND");
+        if ($owner instanceof \IvozProvider\Model\Raw\RetailAccounts)
+            $this->agi->setVariable("CALLER_TYPE", "RETAIL");
         $this->agi->setVariable("CALLER_ID", $owner->getId());
     }
 
@@ -649,6 +715,9 @@ class CallsController extends BaseController
                 break;
             case "FRIEND":
                 $mapper = new Mapper\Friends();
+                break;
+            case "RETAIL":
+                $mapper = new Mapper\RetailAccounts();
                 break;
             default: return null;
         }

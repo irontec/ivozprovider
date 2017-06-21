@@ -450,6 +450,23 @@ class Domains extends MapperAbstract
             }
 
 
+            if ($recursive) {
+                if ($model->getKamUsersDomainAttrs(null, null, true) !== null) {
+                    $kamUsersDomainAttrs = $model->getKamUsersDomainAttrs();
+
+                    if (!is_array($kamUsersDomainAttrs)) {
+
+                        $kamUsersDomainAttrs = array($kamUsersDomainAttrs);
+                    }
+
+                    foreach ($kamUsersDomainAttrs as $value) {
+                        $value->setDid($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+            }
+
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {

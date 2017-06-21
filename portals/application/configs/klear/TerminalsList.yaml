@@ -35,7 +35,8 @@ production:
           domain: true
           TerminalModelId: true
           mac: true
-          allow: true
+          allow_audio: true
+          allow_video: true
           lastProvisionDate: true
       options:
         title: _("Options")
@@ -43,7 +44,7 @@ production:
           terminalsNew_screen: true
         dialogs:
           terminalsDel_dialog: true
-          importTerminals_dialog: true
+          importTerminals_dialog: false
     terminalsNew_screen: &terminalsNew_screenLink
       <<: *Terminals
       controller: new
@@ -62,7 +63,8 @@ production:
         order:
           name: true
           password: true
-          allow: true
+          allow_audio: true
+          allow_video: true
           direct_media_method: true
           TerminalModelId: true
           mac: true
@@ -83,8 +85,9 @@ production:
           label: _("Connection Info")
           colsPerRow: 12
           fields:
-            allow: 6
-            direct_media_method: 5
+            allow_audio: 4
+            allow_video: 4
+            direct_media_method: 4
         group2:
           label: _("Provisioning Info")
           colsPerRow: 12
@@ -113,7 +116,8 @@ production:
         order:
           name: true
           password: true
-          allow: true
+          allow_audio: true
+          allow_video: true
           direct_media_method: true
           TerminalModelId: true
           mac: true

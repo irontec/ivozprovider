@@ -7,6 +7,10 @@ build_doc:
 	cd doc/sphinx ; sphinx-build -D"language=es" -bsinglehtml . ../html/essingle
 	cd doc/sphinx ; sphinx-build -D"language=en" -bsinglehtml . ../html/ensingle
 
+build_portals:
+	cd portals ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
+	cd portals ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
+
 build_userweb:
 	# Build with npm
 	cd userweb ; npm install bower grunt-cli karma grunt-karma
@@ -21,9 +25,8 @@ build_library:
 	cd library ; git config --global http.sslVerify false
 	cd library ; curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
 	cd library ; ./composer --no-interaction install
-	cd library/Composer ; ../composer --no-interaction install
 
-override_dh_auto_build: build_doc build_userweb build_library
+override_dh_auto_build: build_doc build_portals build_userweb build_library
 
 # Install systemd unit files
 override_dh_systemd_enable:

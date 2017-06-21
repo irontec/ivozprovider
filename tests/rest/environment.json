@@ -1,0 +1,25 @@
+{
+	"id": "38559945-c925-b610-d236-494af3a1c957",
+	"name": "IvozProvider Testing environment",
+	"values": [
+		{
+			"key": "api_url",
+			"value": "https://mainoperator.portals.ivozprovider.com/rest",
+			"type": "text",
+			"enabled": true,
+			"hovered": false
+		},
+		{
+			"key": "api_auth",
+			"value": "Basic cmVzdGFwaTpteXBhc3N3b3Jk",
+			"type": "text",
+			"enabled": true,
+			"hovered": false
+		}
+	],
+	"timestamp": 1464089549149,
+	"synced": false,
+	"syncedFilename": "",
+	"team": null,
+	"isDeleted": false
+}

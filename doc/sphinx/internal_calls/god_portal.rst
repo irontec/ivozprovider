@@ -198,6 +198,10 @@ called DemoBrand. Let's inspect its parameters:
         Display name and from address used in external emails for this brand
         (faxes, voicemail, etc.)
 
+    SIP domain
+        Introduced in 1.4. Domain pointing to Users SIP proxy used by all the
+        Retail Accounts of this brand.
+
     Recordings
         Configures a limit for the size of recordings of this brand. A
         notification is sent to configured address when 80% is reached and

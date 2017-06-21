@@ -53,7 +53,7 @@ class Brands extends ModelAbstract
      *
      * @var string
      */
-    protected $_domainTrunks;
+    protected $_domainUsers;
 
     /**
      * Database var type int
@@ -290,7 +290,7 @@ class Brands extends ModelAbstract
     protected $_OutgoingRouting;
 
     /**
-     * Dependent relation parsedCDRs_ibfk_1
+     * Dependent relation ParsedCDRs_ibfk_1
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\ParsedCDRs[]
@@ -336,6 +336,14 @@ class Brands extends ModelAbstract
      * @var \IvozProvider\Model\Raw\PricingPlansRelTargetPatterns[]
      */
     protected $_PricingPlansRelTargetPatterns;
+
+    /**
+     * Dependent relation RetailAccounts_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts[]
+     */
+    protected $_RetailAccounts;
 
     /**
      * Dependent relation RoutingPatternGroups_ibfk_1
@@ -389,7 +397,7 @@ class Brands extends ModelAbstract
         'id'=>'id',
         'name'=>'name',
         'nif'=>'nif',
-        'domain_trunks'=>'domainTrunks',
+        'domain_users'=>'domainUsers',
         'defaultTimezoneId'=>'defaultTimezoneId',
         'logoFileSize'=>'logoFileSize',
         'logoMimeType'=>'logoMimeType',
@@ -512,6 +520,10 @@ class Brands extends ModelAbstract
             'PricingPlansRelTargetPatternsIbfk3' => array(
                     'property' => 'PricingPlansRelTargetPatterns',
                     'table_name' => 'PricingPlansRelTargetPatterns',
+                ),
+            'RetailAccountsIbfk1' => array(
+                    'property' => 'RetailAccounts',
+                    'table_name' => 'RetailAccounts',
                 ),
             'RoutingPatternGroupsIbfk1' => array(
                     'property' => 'RoutingPatternGroups',
@@ -783,33 +795,33 @@ class Brands extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\Brands
      */
-    public function setDomainTrunks($data)
+    public function setDomainUsers($data)
     {
 
-        if ($this->_domainTrunks != $data) {
-            $this->_logChange('domainTrunks', $this->_domainTrunks, $data);
+        if ($this->_domainUsers != $data) {
+            $this->_logChange('domainUsers', $this->_domainUsers, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_domainTrunks = $data;
+            $this->_domainUsers = $data;
 
         } else if (!is_null($data)) {
-            $this->_domainTrunks = (string) $data;
+            $this->_domainUsers = (string) $data;
 
         } else {
-            $this->_domainTrunks = $data;
+            $this->_domainUsers = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column domain_trunks
+     * Gets column domain_users
      *
      * @return string
      */
-    public function getDomainTrunks()
+    public function getDomainUsers()
     {
-        return $this->_domainTrunks;
+        return $this->_domainUsers;
     }
 
     /**
@@ -2700,7 +2712,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_1
+     * Sets dependent relations ParsedCDRs_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\ParsedCDRs
      * @return \IvozProvider\Model\Raw\Brands
@@ -2748,7 +2760,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations parsedCDRs_ibfk_1
+     * Sets dependent relations ParsedCDRs_ibfk_1
      *
      * @param \IvozProvider\Model\Raw\ParsedCDRs $data
      * @return \IvozProvider\Model\Raw\Brands
@@ -2761,7 +2773,7 @@ class Brands extends ModelAbstract
     }
 
     /**
-     * Gets dependent parsedCDRs_ibfk_1
+     * Gets dependent ParsedCDRs_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -3237,6 +3249,96 @@ class Brands extends ModelAbstract
         }
 
         return $this->_PricingPlansRelTargetPatterns;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RetailAccounts
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setRetailAccounts(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RetailAccounts === null) {
+
+                $this->getRetailAccounts();
+            }
+
+            $oldRelations = $this->_RetailAccounts;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RetailAccounts = array();
+
+        foreach ($data as $object) {
+            $this->addRetailAccounts($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations RetailAccounts_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function addRetailAccounts(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccounts[] = $data;
+        $this->_setLoaded('RetailAccountsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent RetailAccounts_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccounts($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'RetailAccountsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccounts = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RetailAccounts;
     }
 
     /**

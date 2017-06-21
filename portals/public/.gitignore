@@ -5,4 +5,5 @@ scripts/
 views/
 styles/*.css
 styles/*.scss
+invoice-template-tester/*.pdf
 

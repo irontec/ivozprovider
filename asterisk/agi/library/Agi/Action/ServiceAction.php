@@ -37,6 +37,9 @@ class ServiceAction extends RouterAction
             case 'GroupPickUp':
                 $this->_processGroupPickUp();
                 break;
+            case 'RecordLocution':
+                $this->_processRecordLocution();
+                break;
         }
     }
 
@@ -44,9 +47,42 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $caller = $this->_caller;
+        $service = $this->_service;
+        $company = $caller->getCompany();
 
-        // Checkvoicemail for this user
-        $this->agi->checkVoicemail($caller->getVoiceMail());
+        /**
+         * Extract optional Voicemail Extension from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      VoicemailExtension (optional)
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $vmExtension = substr($dialedExten, $serviceCodeLen + 1);
+
+        if (!empty($vmExtension)) {
+            $extension = $company->getExtension($vmExtension);
+
+            if (empty($extension)) {
+                $this->agi->error("Extension %s not found for company %s.", $vmExtension, $company->getId());
+                return;
+            }
+
+            if (empty($extension->getUser())) {
+                $this->agi->error("Extension %s does not route to an user.", $vmExtension);
+                return;
+            }
+
+            // Checkvoicemail for exten user
+            $this->agi->verbose("Checking user %s voicemail", $extension->getUser()->getName());
+            $this->agi->checkVoicemail($extension->getUser()->getVoiceMail());
+        } else {
+            // Checkvoicemail for caller user (without requesting password)
+            $this->agi->checkVoicemail($caller->getVoiceMail(), "s");
+        }
     }
 
     protected function _processDirectPickUp()
@@ -112,6 +148,57 @@ class ServiceAction extends RouterAction
             $this->agi->hangup(3);
         }
 
+    }
+
+    protected function _processRecordLocution()
+    {
+        // Local variables to improve readability
+        $service = $this->_service;
+        $caller = $this->_caller;
+
+        /**
+         * Extract locutionId from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      Locution ID
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $locutionId = substr($dialedExten, $serviceCodeLen + 1);
+
+        // Get Locution object
+        $locutionMapper = new \IvozProvider\Mapper\Sql\Locutions;
+        $locution = $locutionMapper->find($locutionId);
+
+        // Check if call can record this locution
+        if ($locution->getCompanyId() !== $caller->getCompanyId()) {
+            return;
+        }
+
+        // Check if the locution already has sound
+        if ($locution->getOriginalFileFileSize()) {
+            $this->agi->playback("ivozprovider/record-existing");
+        } else {
+            $this->agi->playback("ivozprovider/record-new");
+        }
+
+        // Recording instructions
+        $this->agi->playback("ivozprovider/record-intro");
+        $originalFilename = $locution->getId() . ".wav";
+        $originalFile = "/tmp/locution_record_" . $originalFilename;
+
+        // Record file playing a beep before starting
+        $this->agi->record($originalFile, ",,ky");
+
+        // Set upload the original file of the locution
+        $locution->putOriginalFile($originalFile, $originalFilename);
+        $locution->save();
+
+        // Change file permisions on original file
+        chmod($locution->fetchOriginalFile()->getFilePath(), 0777);
     }
 
 }

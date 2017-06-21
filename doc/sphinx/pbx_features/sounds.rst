@@ -11,6 +11,9 @@ accross the platform.
 
 .. image:: img/sounds.png
 
+.. attention:: Locutions can be recorded from any terminal by dialing the
+   Recording extension displayed in their edit screen.
+
 .. hint:: The main difference between a **locution** and **music on hold** is 
    that the administrator chooses when the first one will be played (out of 
    schedule, IVRs, and so on) and the second one will be played when a call is

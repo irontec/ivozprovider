@@ -44,7 +44,7 @@ class User extends \Klear_Model_UserAdvanced
         $bMapper = new \IvozProvider\Mapper\Sql\Brands();
         $brand = $bMapper->find($brandId);
         if (!$brand) {
-            throw new Exception("Invalid brand");
+            throw new \Exception("Invalid brand");
         }
         $this->setBrand($brand);
     }
@@ -55,6 +55,9 @@ class User extends \Klear_Model_UserAdvanced
         $this->companyId = $company->getPrimaryKey();
         $this->companyCountryId = $company->getCountryId();
         $this->companyName = $company->getName();
+        $this->companyType = $company->getType();
+        $this->companyVPBX = $company->getType() === Companies::VPBX;
+        $this->companyRetail = $company->getType() === Companies::RETAIL;
     }
 
     public function unsetCompany()
@@ -69,7 +72,7 @@ class User extends \Klear_Model_UserAdvanced
         $cMapper = new \IvozProvider\Mapper\Sql\Companies();
         $company = $cMapper->find($companyId);
         if (!$company) {
-            throw new Exception("Invalid company");
+            throw new \Exception("Invalid company");
         }
         $this->setCompany($company);
     }

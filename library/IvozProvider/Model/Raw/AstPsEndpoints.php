@@ -85,6 +85,13 @@ class AstPsEndpoints extends ModelAbstract
     protected $_friendId;
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_retailAccountId;
+
+    /**
      * Database var type varchar
      *
      * @var string
@@ -205,6 +212,13 @@ class AstPsEndpoints extends ModelAbstract
      */
     protected $_Friend;
 
+    /**
+     * Parent relation ast_ps_endpoints_ibfk_3
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts
+     */
+    protected $_RetailAccount;
+
 
     /**
      * Dependent relation ast_ps_aors_ibfk_1
@@ -220,6 +234,7 @@ class AstPsEndpoints extends ModelAbstract
         'from_domain'=>'fromDomain',
         'terminalId'=>'terminalId',
         'friendId'=>'friendId',
+        'retailAccountId'=>'retailAccountId',
         'aors'=>'aors',
         'callerid'=>'callerid',
         'context'=>'context',
@@ -259,6 +274,10 @@ class AstPsEndpoints extends ModelAbstract
             'AstPsEndpointsIbfk2'=> array(
                     'property' => 'Friend',
                     'table_name' => 'Friends',
+                ),
+            'AstPsEndpointsIbfk3'=> array(
+                    'property' => 'RetailAccount',
+                    'table_name' => 'RetailAccounts',
                 ),
         ));
 
@@ -485,6 +504,40 @@ class AstPsEndpoints extends ModelAbstract
     public function getFriendId()
     {
         return $this->_friendId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setRetailAccountId($data)
+    {
+
+        if ($this->_retailAccountId != $data) {
+            $this->_logChange('retailAccountId', $this->_retailAccountId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_retailAccountId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_retailAccountId = (int) $data;
+
+        } else {
+            $this->_retailAccountId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column retailAccountId
+     *
+     * @return int
+     */
+    public function getRetailAccountId()
+    {
+        return $this->_retailAccountId;
     }
 
     /**
@@ -1115,6 +1168,57 @@ class AstPsEndpoints extends ModelAbstract
         }
 
         return $this->_Friend;
+    }
+
+    /**
+     * Sets parent relation RetailAccount
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\AstPsEndpoints
+     */
+    public function setRetailAccount(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccount = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRetailAccountId($primaryKey);
+        }
+
+        $this->_setLoaded('AstPsEndpointsIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets parent RetailAccount
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccount($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstPsEndpointsIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccount = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RetailAccount;
     }
 
     /**
