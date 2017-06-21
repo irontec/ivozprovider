@@ -65,7 +65,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'IvozProvider'
-copyright = '2016, Irontec'
+copyright = '2016-2017, Irontec'
 author = 'Irontec'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -73,7 +73,7 @@ author = 'Irontec'
 # built documents.
 #
 # The short X.Y version.
-version = '1.4'
+version = '1.5'
 # The full version, including alpha/beta/rc tags.
 release = 'Oasis'
 
@@ -276,7 +276,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'IvozProvider.tex', 'IvozProvider 1.3 Documentation',
+    (master_doc, 'IvozProvider.tex', 'IvozProvider 1.5 Documentation',
      'Irontec', 'manual'),
 ]
 
