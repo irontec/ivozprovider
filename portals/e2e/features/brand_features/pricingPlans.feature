@@ -20,7 +20,7 @@ Scenario: I can save pricing plans
   Given I can see at least one row
   And I click on "PricingPlans" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PricingPlans" list
 
@@ -32,6 +32,6 @@ Scenario: I see new pricing plan admin page
 Scenario: I can click on delete pricing plan button
   Given I can see at least one row
   And I click on "PricingPlans" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PricingPlans" list

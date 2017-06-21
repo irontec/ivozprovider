@@ -15,12 +15,20 @@ defineSupportCode(({Given, Then, When}) => {
     return list.assertNotEmpty();
   });
 
+  Then(/^I select element at position "([^"]*)"$/, (position) => {
+      return list.selectElementAtPosition(position);
+  });
+
   Then(/^I click on "([^"]*)" first elements edit button$/, (entity) => {
     return list.clickOnFirstEditButton(entity);
   });
 
   Then(/^I click on "([^"]*)" first elements delete button$/, (entity) => {
     return list.clickOnFirstDeleteButton(entity);
+  });
+
+  Then(/^I click on "([^"]*)" delete button in the footer$/, (entity) => {
+      return list.clickOnFooterDeleteButton(entity);
   });
 
   Then(/^I click on "([^"]*)" first elements view button$/, (entity) => {

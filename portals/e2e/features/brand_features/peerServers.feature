@@ -21,7 +21,7 @@ Scenario: I can save peer servers
   Given I can see at least one row
   And I click on "peerServers" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PeeringContractsList_peerServers" subscreen list
 
@@ -33,6 +33,6 @@ Scenario: I see new peer servers admin page
 Scenario: I can click on delete peer server button
   Given I can see at least one row
   And I click on "peerServers" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PeeringContractsList_peerServers" subscreen list

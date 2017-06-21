@@ -17,7 +17,7 @@ Scenario: I can save main operators
   Given I can see at least one row
   And I click on "MainOperators" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "MainOperators" list
 
@@ -29,6 +29,6 @@ Scenario: I see new main operator admin page
 Scenario: I can click on delete main operator button
   Given I can see at least one row
   And I click on "MainOperators" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "MainOperators" list

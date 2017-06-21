@@ -19,7 +19,7 @@ Scenario: I can save peering contracts
   Given I can see at least one row
   And I click on "PeeringContracts" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PeeringContracts" list
 
@@ -31,6 +31,6 @@ Scenario: I see new peering contract admin page
 Scenario: I can click on delete peering contract button
   Given I can see at least one row
   And I click on "PeeringContracts" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PeeringContracts" list

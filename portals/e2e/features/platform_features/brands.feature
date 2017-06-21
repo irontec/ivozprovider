@@ -17,7 +17,7 @@ Scenario: I can save brands
   Given I can see at least one row
   And I click on "Brands" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "Brands" list
 
@@ -26,9 +26,10 @@ Scenario: I see new brand admin page
   And I click on close button
   Then I am on "Brands" list
 
-#Scenario: I can click on delete brand button
-#  Given I can see at least one row
-#  Then I click on "Brands" first elements delete button
-#  Given I can see save confirmation dialog
-#  And I click on close dialog button
-#  Then I am on "Brands" list
+Scenario: I can click on delete brand button
+  Given I can see at least one row
+  Then I select element at position "1"
+  And I click on "Brands" delete button in the footer
+  Given I can see confirmation dialog
+  And I click on close dialog button
+  Then I am on "Brands" list

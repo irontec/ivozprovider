@@ -2,8 +2,10 @@
 
 function list () {
 
+  this.selectElementAtPosition = selectElementAtPosition;
   this.clickOnFirstEditButton = clickOnFirstEditButton;
   this.clickOnFirstDeleteButton = clickOnFirstDeleteButton;
+  this.clickOnFooterDeleteButton = clickOnFooterDeleteButton;
   this.clickOnFirstViewButton = clickOnFirstViewButton;
   this.clickOnFirstListButton = clickOnFirstListButton;
   this.clickOnAddButton = clickOnAddButton;
@@ -27,6 +29,21 @@ function list () {
 
   function sanitizeEntityName(entity) {
     return entity[0].toLowerCase() + entity.substring(1);
+  }
+
+  /**
+   * @param int position starting from 1
+   * @returns void
+   */
+  function selectElementAtPosition (position) {
+      position--;
+      var jqSelector = 'td.multiItem:visible input:eq('+ position +')';
+
+      return clickOnOptionButton.call(
+          this,
+          jqSelector,
+          ['mousedown', 'mouseup']
+      );
   }
 
   function clickOnFirstEditButton(entity) {
@@ -60,6 +77,12 @@ function list () {
       jqSelector,
       ['mousedown', 'mouseup']
     );
+  }
+
+  function clickOnFooterDeleteButton(entity) {
+      entity = sanitizeEntityName(entity);
+      var jqSelector = 'div.generalOptionsToolbar a[data-dialog='+ entity +'Del_dialog]:visible:eq(0)';
+      return clickOnOptionButton.call(this, jqSelector);
   }
 
   function clickOnFirstDeleteButton(entity) {

@@ -20,7 +20,7 @@ Scenario: I can save outgoing routing
   Given I can see at least one row
   And I click on "OutgoingRouting" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   And I click on close dialog button
   Then I am on "OutgoingRouting" list
 
@@ -32,6 +32,6 @@ Scenario: I see new outgoing routing admin page
 Scenario: I can click on delete outgoing routing button
   Given I can see at least one row
   And I click on "OutgoingRouting" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "OutgoingRouting" list

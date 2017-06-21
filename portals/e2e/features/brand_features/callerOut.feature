@@ -22,7 +22,7 @@ Scenario: I can save calle out
   Given I can see at least one row
   And I click on "kamTrunksDialplan" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_out" subscreen list
 
@@ -34,6 +34,6 @@ Scenario: I see new calle out admin page
 Scenario: I can click on delete calle out button
   Given I can see at least one row
   And I click on "kamTrunksDialplan" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_out" subscreen list

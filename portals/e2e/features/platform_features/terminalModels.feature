@@ -20,7 +20,7 @@ Scenario: I can save terminal models
   Given I can see at least one row
   And I click on "TerminalModels" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "TerminalManufacturersList_terminalModels" subscreen list
 
@@ -32,6 +32,6 @@ Scenario: I see new terminal model admin page
 Scenario: I can click on delete terminal model button
   Given I can see at least one row
   And I click on "TerminalModels" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "TerminalManufacturersList_terminalModels" subscreen list

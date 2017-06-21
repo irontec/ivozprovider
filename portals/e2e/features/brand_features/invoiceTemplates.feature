@@ -20,7 +20,7 @@ Scenario: I can save invoice templates
   Given I can see at least one row
   And I click on "InvoiceTemplates" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "InvoiceTemplates" list
 
@@ -32,6 +32,6 @@ Scenario: I see new invoice template admin page
 Scenario: I can click on delete invoice template button
   Given I can see at least one row
   And I click on "InvoiceTemplates" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "InvoiceTemplates" list

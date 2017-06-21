@@ -21,7 +21,7 @@ Background:
 #  And I can see at least one row
 #  Then I click on "GenericCallACLPatterns" first elements edit button
 #  And I click on save button
-#  Given I can see save confirmation dialog
+#  Given I can see confirmation dialog
 #  And I click on close dialog button
 #  Then I am on "GenericCallACLPatterns" list
 
@@ -33,6 +33,6 @@ Scenario: I see new generic generic call ACL patterns admin page
 #Scenario: I can click on delete generic call ACL patterns button
 #  And I can see at least one row
 #  Then I click on "GenericCallACLPatterns" first elements delete button
-#  Given I can see save confirmation dialog
+#  Given I can see confirmation dialog
 #  And I click on close dialog button
 #  Then I am on "GenericCallACLPatterns" list
