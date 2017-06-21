@@ -20,7 +20,7 @@ Scenario: I can save media relay
   Given I can see at least one row
   And I click on "kamRtpproxy" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list
 
@@ -32,6 +32,6 @@ Scenario: I see new media relay admin page
 Scenario: I can click on delete media relay button
   Given I can see at least one row
   And I click on "kamRtpproxy" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list

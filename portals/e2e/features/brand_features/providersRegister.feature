@@ -22,7 +22,7 @@ Scenario: I can save providers registers
   Given I can see at least one row
   And I click on "kamTrunksUacreg" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
 
@@ -34,6 +34,6 @@ Scenario: I see new providers register admin page
 Scenario: I can click on delete providers register button
   Given I can see at least one row
   And I click on "kamTrunksUacreg" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list

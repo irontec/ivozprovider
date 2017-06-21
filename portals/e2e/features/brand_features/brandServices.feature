@@ -20,7 +20,7 @@ Scenario: I can save brand service
   Given I can see at least one row
   And I click on "BrandServices" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "BrandServices" list
 
@@ -32,6 +32,6 @@ Scenario: I see new brand services admin page
 Scenario: I can click on delete brand services button
   Given I can see at least one row
   And I click on "BrandServices" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "BrandServices" list

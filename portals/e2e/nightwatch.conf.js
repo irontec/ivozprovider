@@ -45,7 +45,7 @@ module.exports = {
         "acceptSslCerts": true
       },
       "screenshots" : {
-        "enabled" : false,
+        "enabled" : true,
         "on_failure" : true,
         "on_error" : true,
         "path" : "./screenshots/"

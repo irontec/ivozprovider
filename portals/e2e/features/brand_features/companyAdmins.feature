@@ -21,7 +21,7 @@ Scenario: I can save company admins
   Given I can see at least one row
   And I click on "companyAdmins" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "CompaniesList_companyAdmins" subscreen list
 
@@ -33,6 +33,6 @@ Scenario: I see new company admins admin page
 Scenario: I can click on delete company admin button
   Given I can see at least one row
   And I click on "companyAdmins" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "CompaniesList_companyAdmins" subscreen list
