@@ -178,7 +178,7 @@ Package: ivozprovider-portals
 Architecture: all
 Section: php
 Priority: optional
-Depends: klear, ivozprovider-data-library
+Depends: klear, ivozprovider-data-library, libxrender1
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portals - Zendframework application
  Portals using klear and zendframework 1
