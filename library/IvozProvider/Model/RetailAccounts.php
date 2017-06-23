@@ -95,7 +95,7 @@ class RetailAccounts extends Raw\RetailAccounts
     public function getRequestUri($callee)
     {
         if ($this->getDirectConnectivity() == 'yes') {
-            return $this->getRequestDirectUri($calee);
+            return $this->getRequestDirectUri($callee);
         } else {
             // Only Kamailio knows this!
             return 'dynamic';
