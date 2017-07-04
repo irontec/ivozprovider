@@ -25,9 +25,9 @@ fi
 STORAGEPATH=$1
 for FILE in $(find $STORAGEPATH -maxdepth 1 -type f); do
     # Get file ID
-    FILEID=$(basename ${FILE%.???})
+    FILEID=$(basename ${FILE%?.???})
     # Get destination dir -> All digits but the last one
-    DIR=$(echo $FILEID | sed -e 's/\([0-9]\)[0-9]$/\1\//g')
+    DIR=$(echo $FILEID | sed -e 's/\([0-9]\)/\1\//g')
 
     # If id only contains one digit, use directory 0/
     if [ "$FILEID" == "$DIR" ]; then
@@ -41,6 +41,6 @@ for FILE in $(find $STORAGEPATH -maxdepth 1 -type f); do
 done
 
 # Fix storage perms
-chmod 777 $STORAGEPATH
+chmod -R 777 $STORAGEPATH
 exit 0
 
