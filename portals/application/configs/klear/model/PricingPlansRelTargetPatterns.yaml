@@ -7,7 +7,7 @@ production:
     connectionCharge: 
       title: _('Connection charge')
       type: text
-      pattern: "^[0-9]+[.]{0,1}[0-9]*$"
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
       trim: both
       required: true
       default: true
@@ -31,7 +31,7 @@ production:
     perPeriodCharge: 
       title: _('Per minute charge')
       type: text
-      pattern: "^[0-9]+[.]{0,1}[0-9]*$"
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
       trim: both
       required: true
       sufix: "€"
