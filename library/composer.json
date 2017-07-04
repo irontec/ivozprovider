@@ -6,6 +6,7 @@
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
         "h4cc/wkhtmltopdf-i386": "0.12.3",
         "crada/php-apidoc":"@dev",
-        "xamin/handlebars.php": "^0.10.4"
+        "xamin/handlebars.php": "^0.10.4",
+        "debach/zend-mp3": "1.8.*"
     }
 }
