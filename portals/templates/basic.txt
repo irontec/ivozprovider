@@ -268,12 +268,14 @@
                     <div class="th">Duración total</div>
                     <div class="th">Precio total</div>
                 </div>
+                {{#if callData.inboundCalls.summary.numberOfCalls}}
                 <div class="tr">
                     <div class="td white">Llamadas entrantes</div>
                     <div class="td white">{{callData.inboundCalls.summary.numberOfCalls}}</div>
                     <div class="td white">{{callData.inboundCalls.summary.totalCallsDurationFormatted}}</div>
                     <div class="td white">{{callData.inboundCalls.summary.totalPrice}} €</div>
                 </div>
+                {{/if}}
                 {{#each callData.callSumary}}
                 <div class="tr">
                     <div class="td white">{{type}}</div>
