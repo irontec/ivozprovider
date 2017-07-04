@@ -117,11 +117,6 @@ class RecordingsController extends Zend_Controller_Action
                 continue;
             }
 
-            // Get when recording started and duration
-            $startTime = fileatime($this->_rawRecordingsDir . $filename);
-            $endTime = filemtime($this->_rawRecordingsDir . $filename);
-            $duration = $endTime - $startTime;
-
             // Convert files to .wav
             $extract_rtp = $this->_rawRecordingsDir . $file;
             $extract_wav = $this->_rawRecordingsDir . $callid . '.' . $recordcnt . '.wav';
@@ -146,6 +141,10 @@ class RecordingsController extends Zend_Controller_Action
                 continue;
             }
 
+            // Get created mp3 information
+            $mp3info = new \Zend_Media_Mpeg_Abs($convert_mp3);
+            $duration = $mp3info->getLengthEstimate();
+
             // Create an entry in Recordings table with the file
             $recording = new Model\Recordings;
 
@@ -162,7 +161,6 @@ class RecordingsController extends Zend_Controller_Action
             } else {
                 $type = 'ddi';
             }
-
 
             // Get company and brand for this recording
             $company = $kamAccCdr->getCompany();
@@ -183,7 +181,7 @@ class RecordingsController extends Zend_Controller_Action
             }
 
             $recording->setCompanyId($kamAccCdr->getCompanyId())
-                ->setCalldate(new Zend_Date($startTime, Zend_Date::TIMESTAMP))
+                ->setCalldate($kamAccCdr->getStartTimeUtc())
                 ->setType($type)
                 ->setCallid($kamAccCdr->getCallid())
                 ->setDuration($duration)
