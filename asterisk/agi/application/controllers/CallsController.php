@@ -65,7 +65,7 @@ class CallsController extends BaseController
 
         // Check company On demand record code
         if ($company->getOnDemandRecord()) {
-            $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordCode());
+            $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordDTMFs());
         }
 
         // Set DDI as the caller
@@ -638,7 +638,7 @@ class CallsController extends BaseController
             // Set on-demand recording header (only for proxyusers)
             if ($company->getOnDemandRecord()) {
                 $this->agi->setSIPHeader("X-Info-RecordCode", $company->getOnDemandRecordCode());
-                $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordCode());
+                $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordDTMFs());
             }
 
         } else {
