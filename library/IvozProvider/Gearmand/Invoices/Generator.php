@@ -160,10 +160,10 @@ class Generator
                 "quantity" => $quantity,
                 "name" => $fixedCostsRelInvoice->getFixedCost()->getName(),
                 "description" => $fixedCostsRelInvoice->getFixedCost()->getDescription(),
-                "cost" => number_format(ceil($cost*10000)/10000, 4),
-                "subTotal" => number_format(ceil($subTotal*10000)/10000, 4)
+                "cost" => $this->roundAndFormat($cost),
+                "subTotal" => $this->roundAndFormat($subTotal)
             );
-            $this->_fixedCostTotal  += number_format(ceil($subTotal*10000)/10000, 4);
+            $this->_fixedCostTotal += $this->roundAndFormat($subTotal);
         }
 
         $wheres = array(
@@ -205,7 +205,8 @@ class Generator
                 $callData = $call->toArray();
                 $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString(self::DATE_TIME_FORMAT);
                 $callData["dst"] = $call->getCallee();
-                $callData["price"] = number_format(ceil($callData["price"]*10000)/10000, 4);
+                $callData["price"] = $this->roundAndFormat($callData["price"]);
+
                 $callData["dst_duration_formatted"] = $this->_timeFormat($callData["duration"]);
                 $callData["durationFormatted"] = $this->_timeFormat($callData["duration"]);
 
@@ -256,26 +257,19 @@ class Generator
                     $inboundCalls["summary"]["numberOfCalls"] += 1;
                     $inboundCalls["summary"]["totalCallsDuration"] += $call->getDuration();
                     $inboundCalls["summary"]["totalCallsDurationFormatted"] = $this->_timeFormat($inboundCalls["summary"]["totalCallsDuration"]);
-                    $inboundCalls["summary"]["totalPrice"] = number_format(
-                        $inboundCalls["summary"]["totalPrice"] + ceil($callData["price"]*10000)/10000,
-                        4
-                    );
+                    $inboundCalls["summary"]["totalPrice"] = $this->sumAndFormat($inboundCalls["summary"]["totalPrice"], $callData["price"]);
+
                 } else {
                     $callSumary[$callType]["numberOfCalls"] += 1;
                     $callSumary[$callType]["totalCallsDuration"] += $call->getDuration();
                     $callSumary[$callType]["totalCallsDurationFormatted"] = $this->_timeFormat($callSumary[$callType]["totalCallsDuration"]);
-                    $callSumary[$callType]["totalPrice"] = number_format(
-                        $callSumary[$callType]["totalPrice"] + ceil($callData["price"]*10000)/10000,
-                        4
-                    );
+                    $callSumary[$callType]["totalPrice"] = $this->sumAndFormat($callSumary[$callType]["totalPrice"], $callData["price"]);
                 }
+
                 $callSumaryTotals["numberOfCalls"] += 1;
                 $callSumaryTotals["totalCallsDuration"] += $call->getDuration();
                 $callSumaryTotals["totalCallsDurationFormatted"] = $this->_timeFormat($callSumaryTotals["totalCallsDuration"]);
-                $callSumaryTotals["totalPrice"] = number_format(
-                    $callSumaryTotals["totalPrice"] + ceil($callData["price"]*10000)/10000,
-                    4
-                );
+                $callSumaryTotals["totalPrice"] = $this->sumAndFormat($callSumaryTotals["totalPrice"], $callData["price"]);
             }
         }
 
@@ -303,6 +297,74 @@ class Generator
         );
 
         return $finalData;
+    }
+
+    /**
+     * @param string|number $value
+     * @param string|number $value2
+     * @return string
+     */
+    protected function sumAndFormat($value, $value2)
+    {
+        return $this->formatNumber(
+            $this->sumConcepts($value, $value2)
+        );
+    }
+
+    /**
+     * @param string|number $value
+     * @param string|number $value2
+     * @return float
+     */
+    protected function sumConcepts($value, $value2)
+    {
+        if (!is_string($value)) {
+            $value = $this->roundAndFormat($value);
+        }
+
+        if (!is_string($value2)) {
+            $value2 = $this->roundAndFormat($value2);
+        }
+
+        // Sum Stringified floats to avoid issues with decimals
+        return $value + $value2;
+    }
+
+    /**
+     * @param string|number $value
+     * @param int $decimals
+     * @return string
+     */
+    protected function roundAndFormat($value, $decimals = 4)
+    {
+        return $this->formatNumber(
+            $this->roundNumber($value, $decimals)
+        );
+    }
+
+    /**
+     * @param string|number $value
+     * @param int $decimals
+     * @return float
+     */
+    protected function roundNumber($value, $decimals = 4)
+    {
+        $decimals = pow(10, $decimals);
+        return ceil(floatval($value) * $decimals) / $decimals;
+    }
+
+    /**
+     * @param float $number
+     * @return string
+     */
+    protected function formatNumber($number)
+    {
+        return number_format(
+            $number,
+            4,
+            '.',
+            ''
+        );
     }
 
     protected function _timeFormat($seconds)
