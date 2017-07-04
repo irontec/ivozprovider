@@ -328,6 +328,14 @@ class Companies extends Raw\Companies
         return false;
     }
 
+    /**
+     * Get On demand recording code DTMFs
+     */
+    public function getOnDemandRecordDTMFs()
+    {
+        return '*' . $this->getOnDemandRecordCode();
+    }
+
     public function getFeatures()
     {
         $features = array();
