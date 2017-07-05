@@ -58,6 +58,7 @@ class Users extends MapperAbstract
                 'terminalId' => $model->getTerminalId(),
                 'extensionId' => $model->getExtensionId(),
                 'outgoingDDIId' => $model->getOutgoingDDIId(),
+                'outgoingDDIRuleId' => $model->getOutgoingDDIRuleId(),
                 'callACLId' => $model->getCallACLId(),
                 'doNotDisturb' => $model->getDoNotDisturb(),
                 'isBoss' => $model->getIsBoss(),
@@ -846,6 +847,7 @@ class Users extends MapperAbstract
                   ->setTerminalId($data['terminalId'])
                   ->setExtensionId($data['extensionId'])
                   ->setOutgoingDDIId($data['outgoingDDIId'])
+                  ->setOutgoingDDIRuleId($data['outgoingDDIRuleId'])
                   ->setCallACLId($data['callACLId'])
                   ->setDoNotDisturb($data['doNotDisturb'])
                   ->setIsBoss($data['isBoss'])
@@ -872,6 +874,7 @@ class Users extends MapperAbstract
                   ->setTerminalId($data->{'terminalId'})
                   ->setExtensionId($data->{'extensionId'})
                   ->setOutgoingDDIId($data->{'outgoingDDIId'})
+                  ->setOutgoingDDIRuleId($data->{'outgoingDDIRuleId'})
                   ->setCallACLId($data->{'callACLId'})
                   ->setDoNotDisturb($data->{'doNotDisturb'})
                   ->setIsBoss($data->{'isBoss'})
@@ -899,6 +902,7 @@ class Users extends MapperAbstract
                   ->setTerminalId($data->getTerminalId())
                   ->setExtensionId($data->getExtensionId())
                   ->setOutgoingDDIId($data->getOutgoingDDIId())
+                  ->setOutgoingDDIRuleId($data->getOutgoingDDIRuleId())
                   ->setCallACLId($data->getCallACLId())
                   ->setDoNotDisturb($data->getDoNotDisturb())
                   ->setIsBoss($data->getIsBoss())

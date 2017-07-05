@@ -321,6 +321,22 @@ class DDIs extends ModelAbstract
     protected $_Friends;
 
     /**
+     * Dependent relation OutgoingDDIRules_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingDDIRules[]
+     */
+    protected $_OutgoingDDIRules;
+
+    /**
+     * Dependent relation OutgoingDDIRulesPatterns_ibfk_3
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns[]
+     */
+    protected $_OutgoingDDIRulesPatterns;
+
+    /**
      * Dependent relation RetailAccounts_ibfk_4
      * Type: One-to-Many relationship
      *
@@ -447,6 +463,14 @@ class DDIs extends ModelAbstract
             'FriendsIbfk4' => array(
                     'property' => 'Friends',
                     'table_name' => 'Friends',
+                ),
+            'OutgoingDDIRulesIbfk2' => array(
+                    'property' => 'OutgoingDDIRules',
+                    'table_name' => 'OutgoingDDIRules',
+                ),
+            'OutgoingDDIRulesPatternsIbfk3' => array(
+                    'property' => 'OutgoingDDIRulesPatterns',
+                    'table_name' => 'OutgoingDDIRulesPatterns',
                 ),
             'RetailAccountsIbfk4' => array(
                     'property' => 'RetailAccounts',
@@ -2245,6 +2269,186 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_Friends;
+    }
+
+    /**
+     * Sets dependent relations OutgoingDDIRules_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingDDIRules
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setOutgoingDDIRules(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_OutgoingDDIRules === null) {
+
+                $this->getOutgoingDDIRules();
+            }
+
+            $oldRelations = $this->_OutgoingDDIRules;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_OutgoingDDIRules = array();
+
+        foreach ($data as $object) {
+            $this->addOutgoingDDIRules($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations OutgoingDDIRules_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingDDIRules $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function addOutgoingDDIRules(\IvozProvider\Model\Raw\OutgoingDDIRules $data)
+    {
+        $this->_OutgoingDDIRules[] = $data;
+        $this->_setLoaded('OutgoingDDIRulesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent OutgoingDDIRules_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function getOutgoingDDIRules($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingDDIRulesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDIRules = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_OutgoingDDIRules;
+    }
+
+    /**
+     * Sets dependent relations OutgoingDDIRulesPatterns_ibfk_3
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setOutgoingDDIRulesPatterns(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_OutgoingDDIRulesPatterns === null) {
+
+                $this->getOutgoingDDIRulesPatterns();
+            }
+
+            $oldRelations = $this->_OutgoingDDIRulesPatterns;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_OutgoingDDIRulesPatterns = array();
+
+        foreach ($data as $object) {
+            $this->addOutgoingDDIRulesPatterns($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations OutgoingDDIRulesPatterns_ibfk_3
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function addOutgoingDDIRulesPatterns(\IvozProvider\Model\Raw\OutgoingDDIRulesPatterns $data)
+    {
+        $this->_OutgoingDDIRulesPatterns[] = $data;
+        $this->_setLoaded('OutgoingDDIRulesPatternsIbfk3');
+        return $this;
+    }
+
+    /**
+     * Gets dependent OutgoingDDIRulesPatterns_ibfk_3
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns
+     */
+    public function getOutgoingDDIRulesPatterns($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingDDIRulesPatternsIbfk3';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDIRulesPatterns = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_OutgoingDDIRulesPatterns;
     }
 
     /**

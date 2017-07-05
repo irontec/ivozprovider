@@ -489,6 +489,20 @@ class MatchLists extends MapperAbstract
                     }
                 }
 
+                if ($model->getOutgoingDDIRulesPatterns(null, null, true) !== null) {
+                    $outgoingDDIRulesPatterns = $model->getOutgoingDDIRulesPatterns();
+
+                    if (!is_array($outgoingDDIRulesPatterns)) {
+
+                        $outgoingDDIRulesPatterns = array($outgoingDDIRulesPatterns);
+                    }
+
+                    foreach ($outgoingDDIRulesPatterns as $value) {
+                        $value->setMatchListId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {

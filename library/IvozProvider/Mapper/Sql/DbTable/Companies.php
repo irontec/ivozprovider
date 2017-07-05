@@ -74,6 +74,11 @@ class Companies extends TableAbstract
             'columns' => 'outgoingDDIId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
             'refColumns' => 'id'
+        ),
+        'CompaniesIbfk14' => array(
+            'columns' => 'outgoingDDIRuleId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRules',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -97,6 +102,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Locutions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\MusicOnHold',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\PickUpGroups',
@@ -542,6 +548,23 @@ class Companies extends TableAbstract
 	    'TABLE_NAME' => 'Companies',
 	    'COLUMN_NAME' => 'outgoingDDIId',
 	    'COLUMN_POSITION' => 26,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'outgoingDDIRuleId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Companies',
+	    'COLUMN_NAME' => 'outgoingDDIRuleId',
+	    'COLUMN_POSITION' => 27,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

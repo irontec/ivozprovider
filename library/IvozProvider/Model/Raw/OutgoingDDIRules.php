@@ -19,9 +19,13 @@
  */
 
 namespace IvozProvider\Model\Raw;
-class MatchLists extends ModelAbstract
+class OutgoingDDIRules extends ModelAbstract
 {
 
+    protected $_defaultActionAcceptedValues = array(
+        'keep',
+        'force',
+    );
 
     /**
      * Database var type int
@@ -44,51 +48,67 @@ class MatchLists extends ModelAbstract
      */
     protected $_name;
 
+    /**
+     * [enum:keep|force]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_defaultAction;
 
     /**
-     * Parent relation MatchList_ibfk_1
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_forcedDDIId;
+
+
+    /**
+     * Parent relation OutgoingDDIRules_ibfk_1
      *
      * @var \IvozProvider\Model\Raw\Companies
      */
     protected $_Company;
 
+    /**
+     * Parent relation OutgoingDDIRules_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\DDIs
+     */
+    protected $_ForcedDDI;
+
 
     /**
-     * Dependent relation ExternalCallFilterBlackLists_ibfk_2
+     * Dependent relation Companies_ibfk_14
      * Type: One-to-Many relationship
      *
-     * @var \IvozProvider\Model\Raw\ExternalCallFilterBlackLists[]
+     * @var \IvozProvider\Model\Raw\Companies[]
      */
-    protected $_ExternalCallFilterBlackLists;
+    protected $_Companies;
 
     /**
-     * Dependent relation ExternalCallFilterWhiteLists_ibfk_2
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists[]
-     */
-    protected $_ExternalCallFilterWhiteLists;
-
-    /**
-     * Dependent relation MatchListPatterns_ibfk_1
-     * Type: One-to-Many relationship
-     *
-     * @var \IvozProvider\Model\Raw\MatchListPatterns[]
-     */
-    protected $_MatchListPatterns;
-
-    /**
-     * Dependent relation OutgoingDDIRulesPatterns_ibfk_2
+     * Dependent relation OutgoingDDIRulesPatterns_ibfk_1
      * Type: One-to-Many relationship
      *
      * @var \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns[]
      */
     protected $_OutgoingDDIRulesPatterns;
 
+    /**
+     * Dependent relation Users_ibfk_14
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Users[]
+     */
+    protected $_Users;
+
     protected $_columnsList = array(
         'id'=>'id',
         'companyId'=>'companyId',
         'name'=>'name',
+        'defaultAction'=>'defaultAction',
+        'forcedDDIId'=>'forcedDDIId',
     );
 
     /**
@@ -97,6 +117,7 @@ class MatchLists extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
+            'defaultAction'=> array('enum:keep|force'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -105,37 +126,35 @@ class MatchLists extends ModelAbstract
         $this->setAvailableLangs(array('es', 'en'));
 
         $this->setParentList(array(
-            'MatchListIbfk1'=> array(
+            'OutgoingDDIRulesIbfk1'=> array(
                     'property' => 'Company',
                     'table_name' => 'Companies',
+                ),
+            'OutgoingDDIRulesIbfk2'=> array(
+                    'property' => 'ForcedDDI',
+                    'table_name' => 'DDIs',
                 ),
         ));
 
         $this->setDependentList(array(
-            'ExternalCallFilterBlackListsIbfk2' => array(
-                    'property' => 'ExternalCallFilterBlackLists',
-                    'table_name' => 'ExternalCallFilterBlackLists',
+            'CompaniesIbfk14' => array(
+                    'property' => 'Companies',
+                    'table_name' => 'Companies',
                 ),
-            'ExternalCallFilterWhiteListsIbfk2' => array(
-                    'property' => 'ExternalCallFilterWhiteLists',
-                    'table_name' => 'ExternalCallFilterWhiteLists',
-                ),
-            'MatchListPatternsIbfk1' => array(
-                    'property' => 'MatchListPatterns',
-                    'table_name' => 'MatchListPatterns',
-                ),
-            'OutgoingDDIRulesPatternsIbfk2' => array(
+            'OutgoingDDIRulesPatternsIbfk1' => array(
                     'property' => 'OutgoingDDIRulesPatterns',
                     'table_name' => 'OutgoingDDIRulesPatterns',
                 ),
+            'UsersIbfk14' => array(
+                    'property' => 'Users',
+                    'table_name' => 'Users',
+                ),
         ));
 
-        $this->setOnDeleteCascadeRelationships(array(
-            'ExternalCallFilterBlackLists_ibfk_2',
-            'ExternalCallFilterWhiteLists_ibfk_2',
-            'MatchListPatterns_ibfk_1'
-        ));
 
+        $this->setOnDeleteSetNullRelationships(array(
+            'Companies_ibfk_14'
+        ));
 
 
         $this->_defaultValues = array(
@@ -175,7 +194,7 @@ class MatchLists extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     public function setId($data)
     {
@@ -209,7 +228,7 @@ class MatchLists extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param int $data
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     public function setCompanyId($data)
     {
@@ -246,7 +265,7 @@ class MatchLists extends ModelAbstract
     /**
      * Sets column Stored in ISO 8601 format.     *
      * @param string $data
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     public function setName($data)
     {
@@ -281,10 +300,84 @@ class MatchLists extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function setDefaultAction($data)
+    {
+
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
+        if ($this->_defaultAction != $data) {
+            $this->_logChange('defaultAction', $this->_defaultAction, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_defaultAction = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_defaultActionAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(_('Invalid value for defaultAction'));
+            }
+            $this->_defaultAction = (string) $data;
+
+        } else {
+            $this->_defaultAction = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column defaultAction
+     *
+     * @return string
+     */
+    public function getDefaultAction()
+    {
+        return $this->_defaultAction;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function setForcedDDIId($data)
+    {
+
+        if ($this->_forcedDDIId != $data) {
+            $this->_logChange('forcedDDIId', $this->_forcedDDIId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_forcedDDIId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_forcedDDIId = (int) $data;
+
+        } else {
+            $this->_forcedDDIId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column forcedDDIId
+     *
+     * @return int
+     */
+    public function getForcedDDIId()
+    {
+        return $this->_forcedDDIId;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     public function setCompany(\IvozProvider\Model\Raw\Companies $data)
     {
@@ -299,7 +392,7 @@ class MatchLists extends ModelAbstract
             $this->setCompanyId($primaryKey);
         }
 
-        $this->_setLoaded('MatchListIbfk1');
+        $this->_setLoaded('OutgoingDDIRulesIbfk1');
         return $this;
     }
 
@@ -310,7 +403,7 @@ class MatchLists extends ModelAbstract
      */
     public function getCompany($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'MatchListIbfk1';
+        $fkName = 'OutgoingDDIRulesIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -332,21 +425,72 @@ class MatchLists extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations ExternalCallFilterBlackLists_ibfk_2
+     * Sets parent relation ForcedDDI
      *
-     * @param array $data An array of \IvozProvider\Model\Raw\ExternalCallFilterBlackLists
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @param \IvozProvider\Model\Raw\DDIs $data
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
-    public function setExternalCallFilterBlackLists(array $data, $deleteOrphans = false)
+    public function setForcedDDI(\IvozProvider\Model\Raw\DDIs $data)
+    {
+        $this->_ForcedDDI = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setForcedDDIId($primaryKey);
+        }
+
+        $this->_setLoaded('OutgoingDDIRulesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent ForcedDDI
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function getForcedDDI($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingDDIRulesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ForcedDDI = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ForcedDDI;
+    }
+
+    /**
+     * Sets dependent relations Companies_ibfk_14
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Companies
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function setCompanies(array $data, $deleteOrphans = false)
     {
         if ($deleteOrphans === true) {
 
-            if ($this->_ExternalCallFilterBlackLists === null) {
+            if ($this->_Companies === null) {
 
-                $this->getExternalCallFilterBlackLists();
+                $this->getCompanies();
             }
 
-            $oldRelations = $this->_ExternalCallFilterBlackLists;
+            $oldRelations = $this->_Companies;
 
             if (is_array($oldRelations)) {
 
@@ -370,39 +514,39 @@ class MatchLists extends ModelAbstract
             }
         }
 
-        $this->_ExternalCallFilterBlackLists = array();
+        $this->_Companies = array();
 
         foreach ($data as $object) {
-            $this->addExternalCallFilterBlackLists($object);
+            $this->addCompanies($object);
         }
 
         return $this;
     }
 
     /**
-     * Sets dependent relations ExternalCallFilterBlackLists_ibfk_2
+     * Sets dependent relations Companies_ibfk_14
      *
-     * @param \IvozProvider\Model\Raw\ExternalCallFilterBlackLists $data
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @param \IvozProvider\Model\Raw\Companies $data
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
-    public function addExternalCallFilterBlackLists(\IvozProvider\Model\Raw\ExternalCallFilterBlackLists $data)
+    public function addCompanies(\IvozProvider\Model\Raw\Companies $data)
     {
-        $this->_ExternalCallFilterBlackLists[] = $data;
-        $this->_setLoaded('ExternalCallFilterBlackListsIbfk2');
+        $this->_Companies[] = $data;
+        $this->_setLoaded('CompaniesIbfk14');
         return $this;
     }
 
     /**
-     * Gets dependent ExternalCallFilterBlackLists_ibfk_2
+     * Gets dependent Companies_ibfk_14
      *
      * @param string or array $where
      * @param string or array $orderBy
      * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\ExternalCallFilterBlackLists
+     * @return array The array of \IvozProvider\Model\Raw\Companies
      */
-    public function getExternalCallFilterBlackLists($where = null, $orderBy = null, $avoidLoading = false)
+    public function getCompanies($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'ExternalCallFilterBlackListsIbfk2';
+        $fkName = 'CompaniesIbfk14';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -414,198 +558,18 @@ class MatchLists extends ModelAbstract
 
         if ($dontSkipLoading && $notLoadedYet) {
             $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_ExternalCallFilterBlackLists = $related;
+            $this->_Companies = $related;
             $this->_setLoaded($fkName);
         }
 
-        return $this->_ExternalCallFilterBlackLists;
+        return $this->_Companies;
     }
 
     /**
-     * Sets dependent relations ExternalCallFilterWhiteLists_ibfk_2
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists
-     * @return \IvozProvider\Model\Raw\MatchLists
-     */
-    public function setExternalCallFilterWhiteLists(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_ExternalCallFilterWhiteLists === null) {
-
-                $this->getExternalCallFilterWhiteLists();
-            }
-
-            $oldRelations = $this->_ExternalCallFilterWhiteLists;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_ExternalCallFilterWhiteLists = array();
-
-        foreach ($data as $object) {
-            $this->addExternalCallFilterWhiteLists($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations ExternalCallFilterWhiteLists_ibfk_2
-     *
-     * @param \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists $data
-     * @return \IvozProvider\Model\Raw\MatchLists
-     */
-    public function addExternalCallFilterWhiteLists(\IvozProvider\Model\Raw\ExternalCallFilterWhiteLists $data)
-    {
-        $this->_ExternalCallFilterWhiteLists[] = $data;
-        $this->_setLoaded('ExternalCallFilterWhiteListsIbfk2');
-        return $this;
-    }
-
-    /**
-     * Gets dependent ExternalCallFilterWhiteLists_ibfk_2
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists
-     */
-    public function getExternalCallFilterWhiteLists($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'ExternalCallFilterWhiteListsIbfk2';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_ExternalCallFilterWhiteLists = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_ExternalCallFilterWhiteLists;
-    }
-
-    /**
-     * Sets dependent relations MatchListPatterns_ibfk_1
-     *
-     * @param array $data An array of \IvozProvider\Model\Raw\MatchListPatterns
-     * @return \IvozProvider\Model\Raw\MatchLists
-     */
-    public function setMatchListPatterns(array $data, $deleteOrphans = false)
-    {
-        if ($deleteOrphans === true) {
-
-            if ($this->_MatchListPatterns === null) {
-
-                $this->getMatchListPatterns();
-            }
-
-            $oldRelations = $this->_MatchListPatterns;
-
-            if (is_array($oldRelations)) {
-
-                $dataPKs = array();
-
-                foreach ($data as $newItem) {
-
-                    $pk = $newItem->getPrimaryKey();
-                    if (!empty($pk)) {
-                        $dataPKs[] = $pk;
-                    }
-                }
-
-                foreach ($oldRelations as $oldItem) {
-
-                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
-
-                        $this->_orphans[] = $oldItem;
-                    }
-                }
-            }
-        }
-
-        $this->_MatchListPatterns = array();
-
-        foreach ($data as $object) {
-            $this->addMatchListPatterns($object);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Sets dependent relations MatchListPatterns_ibfk_1
-     *
-     * @param \IvozProvider\Model\Raw\MatchListPatterns $data
-     * @return \IvozProvider\Model\Raw\MatchLists
-     */
-    public function addMatchListPatterns(\IvozProvider\Model\Raw\MatchListPatterns $data)
-    {
-        $this->_MatchListPatterns[] = $data;
-        $this->_setLoaded('MatchListPatternsIbfk1');
-        return $this;
-    }
-
-    /**
-     * Gets dependent MatchListPatterns_ibfk_1
-     *
-     * @param string or array $where
-     * @param string or array $orderBy
-     * @param boolean $avoidLoading skip data loading if it is not already
-     * @return array The array of \IvozProvider\Model\Raw\MatchListPatterns
-     */
-    public function getMatchListPatterns($where = null, $orderBy = null, $avoidLoading = false)
-    {
-        $fkName = 'MatchListPatternsIbfk1';
-
-        $usingDefaultArguments = is_null($where) && is_null($orderBy);
-        if (!$usingDefaultArguments) {
-            $this->setNotLoaded($fkName);
-        }
-
-        $dontSkipLoading = !($avoidLoading);
-        $notLoadedYet = !($this->_isLoaded($fkName));
-
-        if ($dontSkipLoading && $notLoadedYet) {
-            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
-            $this->_MatchListPatterns = $related;
-            $this->_setLoaded($fkName);
-        }
-
-        return $this->_MatchListPatterns;
-    }
-
-    /**
-     * Sets dependent relations OutgoingDDIRulesPatterns_ibfk_2
+     * Sets dependent relations OutgoingDDIRulesPatterns_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     public function setOutgoingDDIRulesPatterns(array $data, $deleteOrphans = false)
     {
@@ -650,20 +614,20 @@ class MatchLists extends ModelAbstract
     }
 
     /**
-     * Sets dependent relations OutgoingDDIRulesPatterns_ibfk_2
+     * Sets dependent relations OutgoingDDIRulesPatterns_ibfk_1
      *
      * @param \IvozProvider\Model\Raw\OutgoingDDIRulesPatterns $data
-     * @return \IvozProvider\Model\Raw\MatchLists
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     public function addOutgoingDDIRulesPatterns(\IvozProvider\Model\Raw\OutgoingDDIRulesPatterns $data)
     {
         $this->_OutgoingDDIRulesPatterns[] = $data;
-        $this->_setLoaded('OutgoingDDIRulesPatternsIbfk2');
+        $this->_setLoaded('OutgoingDDIRulesPatternsIbfk1');
         return $this;
     }
 
     /**
-     * Gets dependent OutgoingDDIRulesPatterns_ibfk_2
+     * Gets dependent OutgoingDDIRulesPatterns_ibfk_1
      *
      * @param string or array $where
      * @param string or array $orderBy
@@ -672,7 +636,7 @@ class MatchLists extends ModelAbstract
      */
     public function getOutgoingDDIRulesPatterns($where = null, $orderBy = null, $avoidLoading = false)
     {
-        $fkName = 'OutgoingDDIRulesPatternsIbfk2';
+        $fkName = 'OutgoingDDIRulesPatternsIbfk1';
 
         $usingDefaultArguments = is_null($where) && is_null($orderBy);
         if (!$usingDefaultArguments) {
@@ -692,9 +656,99 @@ class MatchLists extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations Users_ibfk_14
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Users
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function setUsers(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Users === null) {
+
+                $this->getUsers();
+            }
+
+            $oldRelations = $this->_Users;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Users = array();
+
+        foreach ($data as $object) {
+            $this->addUsers($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Users_ibfk_14
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function addUsers(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_Users[] = $data;
+        $this->_setLoaded('UsersIbfk14');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Users_ibfk_14
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Users
+     */
+    public function getUsers($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk14';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Users = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Users;
+    }
+
+    /**
      * Returns the mapper class for this model
      *
-     * @return IvozProvider\Mapper\Sql\MatchLists
+     * @return IvozProvider\Mapper\Sql\OutgoingDDIRules
      */
     public function getMapper()
     {
@@ -702,9 +756,9 @@ class MatchLists extends ModelAbstract
 
             \Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(true);
 
-            if (class_exists('\IvozProvider\Mapper\Sql\MatchLists')) {
+            if (class_exists('\IvozProvider\Mapper\Sql\OutgoingDDIRules')) {
 
-                $this->setMapper(new \IvozProvider\Mapper\Sql\MatchLists);
+                $this->setMapper(new \IvozProvider\Mapper\Sql\OutgoingDDIRules);
 
             } else {
 
@@ -720,15 +774,15 @@ class MatchLists extends ModelAbstract
     /**
      * Returns the validator class for this model
      *
-     * @return null | \IvozProvider\Model\Validator\MatchLists
+     * @return null | \IvozProvider\Model\Validator\OutgoingDDIRules
      */
     public function getValidator()
     {
         if ($this->_validator === null) {
 
-            if (class_exists('\IvozProvider\\Validator\MatchLists')) {
+            if (class_exists('\IvozProvider\\Validator\OutgoingDDIRules')) {
 
-                $this->setValidator(new \IvozProvider\Validator\MatchLists);
+                $this->setValidator(new \IvozProvider\Validator\OutgoingDDIRules);
             }
         }
 
@@ -743,7 +797,7 @@ class MatchLists extends ModelAbstract
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-     * @see \Mapper\Sql\MatchLists::delete
+     * @see \Mapper\Sql\OutgoingDDIRules::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()
