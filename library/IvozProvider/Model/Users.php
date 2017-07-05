@@ -145,6 +145,21 @@ class Users extends Raw\Users
     }
 
     /**
+     * Get User outgoingDDIRule
+     * If no OutgoingDDIRule is assigned, retrieve company's default OutgoingDDIRule
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRule or NULL
+     */
+    public function getOutgoingDDIRule($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $outgoingDDIRule = parent::getOutgoingDDIRule($where, $orderBy, $avoidLoading);
+        if (empty($outgoingDDIRule)) {
+            $outgoingDDIRule = $this->getCompany()->getOutgoingDDIRule($where, $orderBy, $avoidLoading);
+        }
+        return $outgoingDDIRule;
+    }
+
+
+    /**
      * @return string
      */
     public function getExtensionNumber()
