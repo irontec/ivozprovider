@@ -1,0 +1,82 @@
+production:
+  class: \IvozProvider\Model\OutgoingDDIRulesPatterns
+  fields:
+    outgoingDDIRuleId:
+      title: _('Outgoing DDI Rule Pattern')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\OutgoingDDIRules
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    matchListId:
+      title: _('Match List')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\MatchLists
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+    action:
+      title: _('Action')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'keep':
+            title: _("Keep Original DDI")
+            visualFilter:
+              show: []
+              hide: ["forcedDDIId"]
+          'force':
+            title: _("Force DDI")
+            visualFilter:
+              show: ["forcedDDIId"]
+              hide: []
+    forcedDDIId:
+      title: _('Forced DDI')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - DDIE164
+            template: '+%DDIE164%'
+          order: DDIE164
+        'null': _("Company's default")
+    forcedDDI:
+      title: _('Forced DDI')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRule
+        method: getOutgoingRulePatternForcedDDI
+    priority:
+      title: _('Priority')
+      type: number
+      defaultValue: 1
+      source:
+        control: Spinner
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

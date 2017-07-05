@@ -42,6 +42,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'terminalId': '', 
      *     'extensionId': '', 
      *     'outgoingDDIId': '', 
+     *     'outgoingDDIRuleId': '', 
      *     'callACLId': '', 
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
@@ -68,6 +69,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'terminalId': '', 
      *     'extensionId': '', 
      *     'outgoingDDIId': '', 
+     *     'outgoingDDIRuleId': '', 
      *     'callACLId': '', 
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
@@ -110,6 +112,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'terminalId',
                 'extensionId',
                 'outgoingDDIId',
+                'outgoingDDIRuleId',
                 'callACLId',
                 'doNotDisturb',
                 'isBoss',
@@ -208,6 +211,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'terminalId': '', 
      *     'extensionId': '', 
      *     'outgoingDDIId': '', 
+     *     'outgoingDDIRuleId': '', 
      *     'callACLId': '', 
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
@@ -249,6 +253,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'terminalId',
                 'extensionId',
                 'outgoingDDIId',
+                'outgoingDDIRuleId',
                 'callACLId',
                 'doNotDisturb',
                 'isBoss',
@@ -313,6 +318,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="outgoingDDIRuleId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callACLId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="doNotDisturb", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
@@ -372,6 +378,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="outgoingDDIRuleId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callACLId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="doNotDisturb", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
@@ -526,6 +533,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'outgoingDDIRuleId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'callACLId' => array(
                     'type' => "int",
                     'required' => false,
@@ -653,6 +665,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'outgoingDDIId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'outgoingDDIRuleId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',

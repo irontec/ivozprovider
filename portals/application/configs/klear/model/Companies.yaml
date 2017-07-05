@@ -158,6 +158,20 @@ production:
             template: '+%DDIE164%'
           order: DDIE164
         'null': _("Unassigned")
+    outgoingDDIRuleId:
+      title: _('Outgoing DDI Rules')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\OutgoingDDIRules
+          filterClass: IvozProvider_Klear_Filter_OutgoingDDIRules
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
       info:
         type: box
         position: left

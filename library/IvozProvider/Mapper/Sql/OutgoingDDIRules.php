@@ -27,9 +27,9 @@ class OutgoingDDIRules extends Raw\OutgoingDDIRules
         $nullableFields = array(
                 "force"        => "forcedDDIId",
         );
-        $routeType = $model->getDefaultAction();
+        $defaultAction = $model->getDefaultAction();
         foreach ($nullableFields as $type => $fieldName) {
-            if ($routeType == $type) {
+            if ($defaultAction == $type) {
                 continue;
             }
             $setter = "set".ucfirst($fieldName);

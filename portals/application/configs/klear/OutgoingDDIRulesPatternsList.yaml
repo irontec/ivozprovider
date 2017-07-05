@@ -1,0 +1,99 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: outgoingDDIRulesPatternsList_screen
+  screens: &outgoingDDIRulesPatterns_screensLink
+    outgoingDDIRulesPatternsList_screen: &outgoingDDIRulesPatternsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *OutgoingDDIRulesPatterns
+      class: ui-silk-table-lightning
+      title: _("List of %s %2s", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 0), "[format| (%parent%)]")
+      order:
+        field:
+          - priority
+        type: asc
+      fields: &outgoingDDIRulesPatterns_fieldsLink
+        blacklist:
+          forcedDDIId: true
+        order:
+          priority: true
+          matchListId: true
+          action: true
+          forcedDDI: true
+        options:
+          title: _("Options")
+          screens:
+            outgoingDDIRulesPatternsEdit_screen: true
+          dialogs:
+            outgoingDDIRulesPatternsDel_dialog: true
+          default: outgoingDDIRulesPatternsEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          outgoingDDIRulesPatternsNew_screen: true
+        dialogs:
+          outgoingDDIRulesPatternsDel_dialog: true
+
+    outgoingDDIRulesPatternsNew_screen: &outgoingDDIRulesPatternsNew_screenLink
+      <<: *OutgoingDDIRulesPatterns
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      fields:
+        blacklist:
+          forcedDDI: true
+      fixedPositions: &outgoingDDIRulesPatternsPositions_link
+        group0:
+          label: _("Basic data")
+          colsPerRow: 12
+          fields:
+            matchListId: 9
+            priority: 3
+        group1:
+          label: _("Action Configuration")
+          colsPerRow: 12
+          fields:
+            action: 6
+            forcedDDIId: 6
+
+    outgoingDDIRulesPatternsEdit_screen: &outgoingDDIRulesPatternsEdit_screenLink
+      <<: *OutgoingDDIRulesPatterns
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          forcedDDI: true
+      fixedPositions:
+        <<: *outgoingDDIRulesPatternsPositions_link
+
+  dialogs: &outgoingDDIRulesPatterns_dialogsLink
+    outgoingDDIRulesPatternsDel_dialog: &outgoingDDIRulesPatternsDel_dialogLink
+      <<: *OutgoingDDIRulesPatterns
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 1))
+      description: _("Do you want to delete this %s?", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 1))
+      message: _("%s successfully deleted.", ngettext('Outgoing DDI Rule Pattern', 'Outgoing DDI Rule Patterns', 1))
+      multiItem: 1
+      labelOnList: 1
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

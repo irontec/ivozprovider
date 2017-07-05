@@ -11,39 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-msgid "Permalink to this headline"
-msgstr "Enlace permante a esta cabecera"
-
-msgid "Permalink to this definition"
-msgstr "Enlace permanente a esta definición"
-
-msgid "Hide Search Matches"
-msgstr "Ocultar resultados de búsqueda"
-
-msgid "Searching"
-msgstr "Buscando"
-
-msgid "Preparing search..."
-msgstr "Preparando búsqueda..."
-
-msgid "Search Results"
-msgstr "Resultados de Búsqueda"
-
-msgid ""
-"Your search did not match any documents. Please make sure that all words are "
-"spelled correctly and that you've selected enough categories."
-msgstr ""
-"Su búsqueda no encontró ningún documento. Por favor, asegurese de que los "
-"términos estan correctamente escritos y ha seleccionado suficientes "
-"categorías."
-
-#, javascript-format
-msgid "Search finished, found %s page(s) matching the search query."
-msgstr "Búsqueda completada, encontradas %s página(s) coincidentes."
-
-msgid ", in "
-msgstr ", en "
-
 msgid "Please, chose a file to import"
 msgstr "Por favor, seleccione un fichero a importar"
 
@@ -97,7 +64,6 @@ msgstr ""
 msgid "For instance:"
 msgstr ""
 
-#, fuzzy
 msgid "Download to file"
 msgstr "Descargar fichero"
 
@@ -122,19 +88,15 @@ msgstr "Debe emular una marca para poder emular una compañía"
 msgid "Select the company you want to emulate"
 msgstr "Seleccione la compañía que desea emular"
 
-#, fuzzy
 msgid "Select Company"
-msgstr "Seleccione la compañía qu"
+msgstr "Seleccione Compañía"
 
-#, fuzzy
 msgid "Enter"
-msgstr ""
-"Número máximo de dígitos que el llamante puede introducir. 0 para "
-"deshabilitar."
+msgstr "Introducir"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Emulate %s"
-msgstr "Emular Marca %s"
+msgstr "Emular %s"
 
 #, php-format
 msgid "Are you sure that you want to emulate the %s \"%2s\"?"
@@ -143,9 +105,9 @@ msgstr "¿Quieres emular %s de %2s?"
 msgid "Ok"
 msgstr "Ok"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s emulated"
-msgstr "Plantilla"
+msgstr "%s emulada"
 
 msgid "Reenviar a"
 msgstr ""
@@ -171,13 +133,11 @@ msgstr ""
 msgid "Reenviar"
 msgstr ""
 
-#, fuzzy
 msgid "Generate invoice"
 msgstr "Generar factura"
 
-#, fuzzy
 msgid "Are you sure you want to generate the invoice?"
-msgstr "Do you want to delete this %s?"
+msgstr "¿Está seguro que desea generar la factura?"
 
 msgid "OK"
 msgstr "OK"
@@ -237,9 +197,8 @@ msgstr "Resultados"
 msgid "Tarificator Job started"
 msgstr "Lanzada tarea de tarificación."
 
-#, fuzzy
 msgid "ERROR"
-msgstr "Error"
+msgstr "ERROR"
 
 msgid "Tarificate Calls?"
 msgstr "¿Tarificar llamadas?"
@@ -250,24 +209,21 @@ msgstr "Info"
 msgid "No Plan found"
 msgstr "Plan no encontrado"
 
-#, fuzzy
 msgid "Pricing Plans Tester"
-msgstr "Planes de Precio"
+msgstr "Probador Planes de Precio"
 
 msgid "Phone number"
 msgid_plural "Phone numbers"
 msgstr[0] "Número teléfono"
 msgstr[1] "Números teléfono"
 
-#, fuzzy
 msgid "Duration (s)"
 msgstr "Duración"
 
-#, fuzzy
 msgid "Test"
 msgid_plural "Tests"
-msgstr[0] "Probar %s"
-msgstr[1] "Probar %s"
+msgstr[0] "Prueba"
+msgstr[1] "Pruebas"
 
 msgid "Please, type a phone number"
 msgstr "Por favor, introduzca un número de telefono"
@@ -465,19 +421,16 @@ msgid_plural "Mimetypes"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "Mime type"
 msgid_plural "Mime types"
-msgstr[0] "Enrutar"
-msgstr[1] "Enrutar"
+msgstr[0] "Mime type"
+msgstr[1] "Mime types"
 
-#, fuzzy
 msgid "BaseName"
-msgstr "Nombre"
+msgstr "Nombre base"
 
-#, fuzzy
 msgid "Base name"
-msgstr "Nombre de usuario"
+msgstr "Nombre base"
 
 msgid "Image"
 msgid_plural "Images"
@@ -580,11 +533,10 @@ msgid_plural "Dates"
 msgstr[0] "Fecha"
 msgstr[1] "Fechas"
 
-#, fuzzy
 msgid "Time"
 msgid_plural "Times"
-msgstr[0] "Timeout"
-msgstr[1] "Timeout"
+msgstr[0] "Hora"
+msgstr[1] "Horas"
 
 msgid "Interval"
 msgid_plural "Intervals"
@@ -626,11 +578,10 @@ msgid_plural "Intros"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "Introduction"
 msgid_plural "Introductions"
-msgstr[0] "Locución"
-msgstr[1] "Locuciones"
+msgstr[0] "Introducción"
+msgstr[1] "Introducciones"
 
 msgid "Description"
 msgid_plural "Descriptions"
@@ -657,11 +608,10 @@ msgid_plural "Messages"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "Section"
 msgid_plural "Sections"
-msgstr[0] "Directorio"
-msgstr[1] "Directorio"
+msgstr[0] "Sección"
+msgstr[1] "Secciones"
 
 #, fuzzy
 msgid "Content"
@@ -1075,6 +1025,12 @@ msgstr "Valor inválido para bounced"
 
 msgid "Invalid value for direction"
 msgstr "Valor inválido para direction"
+
+msgid "Invalid value for defaultAction"
+msgstr "Valor inválido para acción por defecto"
+
+msgid "Invalid value for action"
+msgstr "Valor inválido para acción"
 
 msgid "Invalid value for fullTargetType"
 msgstr "Valor invalido para fullTargetType"
@@ -1622,6 +1578,19 @@ msgid "Music on hold"
 msgid_plural "Musics on hold"
 msgstr[0] "Música en espera"
 msgstr[1] "Música en espera"
+
+msgid "Outgoing DDI Rule"
+msgid_plural "Outgoing DDI Rules"
+msgstr[0] "Regla DDI de salida"
+msgstr[1] "Reglas DDI de salida"
+
+msgid "Action Configuration"
+msgstr "Configuración acción"
+
+msgid "Outgoing DDI Rule Pattern"
+msgid_plural "Outgoing DDI Rule Patterns"
+msgstr[0] "Patrón de regla DDI de salida"
+msgstr[1] "Patrones de regla DDI de salida"
 
 msgid "Outgoing routing"
 msgid_plural "Outgoing routing(s)"
@@ -3146,11 +3115,23 @@ msgstr ""
 msgid "Regular Expression"
 msgstr "Expresión regular"
 
-msgid "Enter number patterns in E.164 format."
-msgstr "Introduzca patrones númericos en formato E.164."
+msgid "Default Action"
+msgstr "Acción por defecto"
 
-msgid "Match Value"
-msgstr "Coincidencia"
+msgid "Keep Original DDI"
+msgstr "Mantener DDI original"
+
+msgid "Force DDI"
+msgstr "Forzar DDI"
+
+msgid "Forced DDI"
+msgstr "DDI forzado"
+
+msgid "Enter Destination number patterns in E.164 format."
+msgstr "Introduzca patrones de números en formato E.164."
+
+msgid "Action"
+msgstr "Acción"
 
 msgid "Group"
 msgstr "Grupo"
@@ -3613,6 +3594,14 @@ msgstr "Empleado en buzón de voz y acceso al portal de usuario"
 
 msgid "Screen Extension"
 msgstr "Extensión a mostar"
+
+msgid "Outgoing DDI Rules"
+msgstr "Reglas DDI salida"
+
+msgid ""
+"Rules to manipulate outgoingDDI when user directly calls to external numbers."
+msgstr ""
+"Reglas para manipular el DDI de salida cuando el usuario llama directamente a números externos."
 
 msgid "Do not disturb"
 msgstr "No molestar"

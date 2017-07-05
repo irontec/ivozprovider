@@ -27,9 +27,9 @@ class OutgoingDDIRulesPatterns extends Raw\OutgoingDDIRulesPatterns
         $nullableFields = array(
                 "force"        => "forcedDDIId",
         );
-        $routeType = $model->getAction();
+        $action = $model->getAction();
         foreach ($nullableFields as $type => $fieldName) {
-            if ($routeType == $type) {
+            if ($action == $type) {
                 continue;
             }
             $setter = "set".ucfirst($fieldName);
