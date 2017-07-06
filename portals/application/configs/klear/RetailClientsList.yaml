@@ -102,11 +102,11 @@ production:
           country: true
           onDemandRecord: true
           onDemandRecordCode: true
-          ipFilter: true
+          ipFilter: false
           mediaRelaySetsId: true
           outbound_prefix: true
           applicationServerId: true
-          externalMaxCalls: true
+          externalMaxCalls: false
           countryId: true
           areaCode: true
           outgoingDDIId: true
@@ -116,6 +116,28 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
+        order: &retailClientsOrder_Link
+          id: true
+          name: true
+          externalMaxCalls: true
+          defaultTimezoneId: true
+          outbound_prefix: true
+          invoiceLanguageId: true
+          recordingsLimitMB: true
+          externallyExtraOpts: true
+      fixedPositions: &retailClientsFixedPositions_Link
+        group0:
+          colsPerRow: 6
+          label: _("Basic data")
+          fields:
+            name: 3
+            FeaturesRelCompanies: 3
+        group1:
+          colsPerRow: 2
+          label: _("Security")
+          fields:
+            externalMaxCalls: 1
+            ipFilter: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -146,12 +168,9 @@ production:
           country: ${auth.brand.invoices.disabled}
         whitelist:
           id: ${auth.isMainOperator}
-      class: ui-silk-pencil
-      label: false
-      title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")
-      forcedValues:
-        <<: *forcedBrand
-      fixedPositions: &retailClientsFixedPositions_Link
+        order:
+          <<: *retailClientsOrder_Link
+      fixedPositions:
         group0:
           colsPerRow: 6
           label: _("Basic data")
@@ -161,23 +180,27 @@ production:
             FeaturesRelCompanies: 6
         group1:
           colsPerRow: 2
+          label: _("Security")
+          fields:
+            externalMaxCalls: 1
+            ipFilter: 1
+        group2:
+          colsPerRow: 2
           label: _("Locales")
           fields:
             defaultTimezoneId: 1
             languageId: 1
-        group2:
+        group3:
           colsPerRow: 2
           label: _("Server data")
           fields:
             outbound_prefix: 1
             outgoingDDIId: 1
-            externalMaxCalls: 1
             countryId: 1
             areaCode: 1
             mediaRelaySetsId: 1
             applicationServerId: 1
-            ipFilter: 1
-        group3:
+        group4:
           colsPerRow: 2
           label: _("Invoice data")
           fields:
@@ -188,7 +211,7 @@ production:
             province: 1
             country: 1
             registryData: 2
-        group4:
+        group5:
           colsPerRow: 12
           label: _("Recordings")
           collapsed: true
@@ -199,12 +222,17 @@ production:
             __empty1: 6
             onDemandRecord: 6
             onDemandRecordCode: 6
-        group5:
+        group6:
           colsPerRow: 1
           collapsed: true
           label: _("Externally rated options")
           fields:
             externallyExtraOpts: 1
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
     #companyAdmins:
     companyAdminsList_screen:
       <<: *companyAdminsList_screenLink
