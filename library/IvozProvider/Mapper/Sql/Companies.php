@@ -49,7 +49,6 @@ class Companies extends Raw\Companies
             if (!$model->hasChange('languageId')) $model->setLanguageId($model->getBrand()->getLanguageId());
             if (!$model->hasChange('outbound_prefix')) $model->setOutboundPrefix('');
             if (!$model->hasChange('mediaRelaySetsId')) $model->setMediaRelaySetsId(0);
-            if (!$model->hasChange('ipFilter')) $model->setIpFilter(0);
             if (!$model->hasChange('onDemandRecord')) $model->setOnDemandRecord(0);
             if (!$model->hasChange('onDemandRecordCode')) $model->setOnDemandRecordCode('');
             if (!$model->hasChange('areaCode')) $model->setAreaCode('');

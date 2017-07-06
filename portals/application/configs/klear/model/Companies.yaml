@@ -81,9 +81,15 @@ production:
     externalMaxCalls:
       title: _('External max call')
       type: number
-      defaultValue: 0
+      defaultValue: 10
       source:
         control: Spinner
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limits both incoming and outgoing external calls.")
+        label: _("Need help?")
     postalAddress:
       title: _('Postal address')
       type: text
@@ -206,7 +212,7 @@ production:
     ipFilter:
       title: _('Filter by IP address')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source:
         data: inline
         values:
