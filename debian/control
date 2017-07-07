@@ -51,6 +51,8 @@ Depends: ivozprovider-profile-common,
     ivozprovider-asterisk-config,
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
+    php5-igbinary,
+    php5-gearman,
     sngrep,
     ghostscript,
     libtiff-tools
