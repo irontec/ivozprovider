@@ -1603,6 +1603,16 @@ msgid_plural "Main operators"
 msgstr[0] "Operador de Plataforma"
 msgstr[1] "Operadores de Plataforma"
 
+msgid "Match List Pattern"
+msgid_plural "Match List Patterns"
+msgstr[0] "Patrón lista de coincidencia"
+msgstr[1] "Patrones lista de coincidencia"
+
+msgid "Match List"
+msgid_plural "Match Lists"
+msgstr[0] "Lista de coincidencia"
+msgstr[1] "Listas de coincidencia"
+
 msgid "Media relay set"
 msgid_plural "Media relay sets"
 msgstr[0] "Servidor de Media"
@@ -2607,25 +2617,25 @@ msgstr "Destino Festivo"
 msgid "Out of schedule target"
 msgstr "Destino si fuera horario"
 
-msgid "Black list reg exp"
-msgstr "Expresion regular lista negra"
+msgid "White Lists"
+msgstr "Lista blanca"
 
 msgid ""
-"Incoming numbers that match this expression will be always REJECTED without "
+"Incoming numbers that match this lists will be always ACCEPTED without "
 "checking this filter configuration."
 msgstr ""
-"Los orígenes que cumplan la expresión regular se RECHAZARÁN sin verificar la "
-"configuración de este filtro."
+"Los orígenes que cumplan cualquiera de las listas de coincidencia se "
+"ACEPTARÁN sin verificar la configuración de este filtro."
 
-msgid "White list reg exp"
-msgstr "Expresión regular lista blanca"
+msgid "Black Lists"
+msgstr "Lista negra"
 
 msgid ""
-"Incoming numbers that match this expression will be always ACCEPTED without "
+"Incoming numbers that match this lists will be always REJECTED without "
 "checking this filter configuration."
 msgstr ""
-"Los orígenes que cumplan la expresión regular se ACEPTARÁN sin verificar la "
-"configuración de este filtro."
+"Los orígenes que cumplan cualquiera de la listas de conincidencia se "
+"RECHAZARÁN sin verificar la configuración de este filtro."
 
 #, fuzzy
 msgid "External Filter destination"
@@ -2797,6 +2807,9 @@ msgstr "Buzón de voz"
 
 msgid "Timeout time"
 msgstr "Timeout"
+
+msgid "Black list reg exp"
+msgstr "Expresion regular lista negra"
 
 msgid "Welcome locution id"
 msgstr "Loc. Bienvenida"
@@ -3123,6 +3136,15 @@ msgstr[1] "Ficheros convertidos"
 
 msgid "Recording extension"
 msgstr ""
+
+msgid "Regular Expression"
+msgstr "Expresión regular"
+
+msgid "Enter number patterns in E.164 format."
+msgstr "Introduzca patrones númericos en formato E.164."
+
+msgid "Match Value"
+msgstr "Coincidencia"
 
 msgid "Group"
 msgstr "Grupo"

@@ -239,6 +239,11 @@ production:
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
           showOnlyIf: ${auth.companyRetail}
+        MatchListsList:
+          title: ngettext('Match List', 'Match Lists', 0)
+          class: ui-silk-text-list-numbers
+          description: _("List of %s", ngettext('Match List', 'Match Lists', 0))
+          showOnlyIf: ${auth.companyVPBX}
         CalendarsList:
           title: ngettext('Calendar', 'Calendars', 0)
           class: ui-silk-calendar
