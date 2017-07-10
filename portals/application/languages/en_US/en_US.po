@@ -1573,6 +1573,16 @@ msgid_plural "Main operators"
 msgstr[0] "Main operator"
 msgstr[1] "Main operators"
 
+msgid "Match List Pattern"
+msgid_plural "Match List Patterns"
+msgstr[0] "Match List Pattern"
+msgstr[1] "Match List Patterns"
+
+msgid "Match List"
+msgid_plural "Match Lists"
+msgstr[0] "Match List"
+msgstr[1] "Match Lists"
+
 msgid "Media relay set"
 msgid_plural "Media relay sets"
 msgstr[0] "Media relay set"
@@ -2579,24 +2589,24 @@ msgstr "Holiday target"
 msgid "Out of schedule target"
 msgstr "Out of schedule target"
 
-msgid "Black list reg exp"
-msgstr "Black list reg exp"
+msgid "White Lists"
+msgstr "White Lists"
 
 msgid ""
-"Incoming numbers that match this expression will be always REJECTED without "
+"Incoming numbers that match this lists will be always ACCEPTED without "
 "checking this filter configuration."
 msgstr ""
-"Incoming numbers that match this expression will be always REJECTED without "
+"Incoming numbers that match this lists will be always ACCEPTED without "
 "checking this filter configuration."
 
-msgid "White list reg exp"
-msgstr "White list reg exp"
+msgid "Black Lists"
+msgstr "Black Lists"
 
 msgid ""
-"Incoming numbers that match this expression will be always ACCEPTED without "
+"Incoming numbers that match this lists will be always REJECTED without "
 "checking this filter configuration."
 msgstr ""
-"Incoming numbers that match this expression will be always ACCEPTED without "
+"Incoming numbers that match this lists will be always REJECTED without "
 "checking this filter configuration."
 
 msgid "External Filter destination"
@@ -2764,6 +2774,9 @@ msgstr "Timeout Voicemail User"
 
 msgid "Timeout time"
 msgstr "Timeout time"
+
+msgid "Black list reg exp"
+msgstr "Black list reg exp"
 
 msgid "Welcome locution id"
 msgstr "Welcome locution"
@@ -3092,6 +3105,15 @@ msgstr[1] "Files for play"
 #, fuzzy
 msgid "Recording extension"
 msgstr "Recordings"
+
+msgid "Regular Expression"
+msgstr "Regular Expression"
+
+msgid "Enter number patterns in E.164 format."
+msgstr "Enter number patterns in E.164 format."
+
+msgid "Match Value"
+msgstr "Match value"
 
 msgid "Group"
 msgstr "Group"

@@ -1,0 +1,84 @@
+production:
+  class: \IvozProvider\Model\MatchListPatterns
+  fields:
+    matchListId:
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\MatchLists
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+      default: true
+    description:
+      title: ngettext('Description', 'Descriptions', 1)
+      type: text
+      trim: both
+      maxLength: 55
+    type:
+      title: ngettext('Type', 'Types', 1)
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'number':
+            title: _("Number")
+            visualFilter:
+              show: ["numberCountryId", "numberValue"]
+              hide: ["regExp"]
+          'regexp':
+            title: _("Regular Expression")
+            visualFilter:
+              show: ["regExp"]
+              hide: ["numberCountryId", "numberValue"]
+    regExp:
+      title: _('Regular Expression')
+      type: text
+      required: true
+      maxLength: 255
+      trim: both
+      info:
+        ￼type: box
+        ￼position: left
+        ￼icon: help
+        text: _("Enter number patterns in E.164 format.")
+        label: _("Need help?")
+    numberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Countries
+          fieldName:
+            fields:
+              - name
+              - calling_code
+            template: '%name% (+%calling_code%)'
+          order: name_${lang}
+    numberValue:
+      title: _('Number')
+      type: text
+      trim: both
+      required: true
+      maxLength: 25
+    matchValue:
+      title: _('Match Value')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_MatchListPattern
+        method: getMatchValue
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
