@@ -136,6 +136,14 @@ class Countries extends ModelAbstract
     protected $_Friends;
 
     /**
+     * Dependent relation MatchListPatterns_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\MatchListPatterns[]
+     */
+    protected $_MatchListPatterns;
+
+    /**
      * Dependent relation RetailAccounts_ibfk_3
      * Type: One-to-Many relationship
      *
@@ -214,6 +222,10 @@ class Countries extends ModelAbstract
             'FriendsIbfk2' => array(
                     'property' => 'Friends',
                     'table_name' => 'Friends',
+                ),
+            'MatchListPatternsIbfk2' => array(
+                    'property' => 'MatchListPatterns',
+                    'table_name' => 'MatchListPatterns',
                 ),
             'RetailAccountsIbfk3' => array(
                     'property' => 'RetailAccounts',
@@ -965,6 +977,96 @@ class Countries extends ModelAbstract
         }
 
         return $this->_Friends;
+    }
+
+    /**
+     * Sets dependent relations MatchListPatterns_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\MatchListPatterns
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function setMatchListPatterns(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_MatchListPatterns === null) {
+
+                $this->getMatchListPatterns();
+            }
+
+            $oldRelations = $this->_MatchListPatterns;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_MatchListPatterns = array();
+
+        foreach ($data as $object) {
+            $this->addMatchListPatterns($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations MatchListPatterns_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\MatchListPatterns $data
+     * @return \IvozProvider\Model\Raw\Countries
+     */
+    public function addMatchListPatterns(\IvozProvider\Model\Raw\MatchListPatterns $data)
+    {
+        $this->_MatchListPatterns[] = $data;
+        $this->_setLoaded('MatchListPatternsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent MatchListPatterns_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\MatchListPatterns
+     */
+    public function getMatchListPatterns($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'MatchListPatternsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_MatchListPatterns = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_MatchListPatterns;
     }
 
     /**

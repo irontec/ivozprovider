@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\ExternalCallFilters
+ * Data Mapper implementation for IvozProvider\Model\MatchLists
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class ExternalCallFilters extends MapperAbstract
+class MatchLists extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\ExternalCallFilters';
+    protected $_modelName = 'IvozProvider\\Model\\MatchLists';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class ExternalCallFilters extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\ExternalCallFilters $model
+     * @param IvozProvider\Model\Raw\MatchLists $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\ExternalCallFilters) {
+        if (!$model instanceof \IvozProvider\Model\Raw\MatchLists) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\ExternalCallFilters object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\MatchLists object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\ExternalCallFilters object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\MatchLists object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -51,17 +51,6 @@ class ExternalCallFilters extends MapperAbstract
                 'id' => $model->getId(),
                 'companyId' => $model->getCompanyId(),
                 'name' => $model->getName(),
-                'welcomeLocutionId' => $model->getWelcomeLocutionId(),
-                'holidayLocutionId' => $model->getHolidayLocutionId(),
-                'outOfScheduleLocutionId' => $model->getOutOfScheduleLocutionId(),
-                'holidayTargetType' => $model->getHolidayTargetType(),
-                'holidayNumberValue' => $model->getHolidayNumberValue(),
-                'holidayExtensionId' => $model->getHolidayExtensionId(),
-                'holidayVoiceMailUserId' => $model->getHolidayVoiceMailUserId(),
-                'outOfScheduleTargetType' => $model->getOutOfScheduleTargetType(),
-                'outOfScheduleNumberValue' => $model->getOutOfScheduleNumberValue(),
-                'outOfScheduleExtensionId' => $model->getOutOfScheduleExtensionId(),
-                'outOfScheduleVoiceMailUserId' => $model->getOutOfScheduleVoiceMailUserId(),
             );
         } else {
             $result = array();
@@ -100,12 +89,12 @@ class ExternalCallFilters extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists');
         }
 
         return $this->_dbTable;
@@ -114,17 +103,17 @@ class ExternalCallFilters extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\ExternalCallFilters $model The model to delete
+     * @param IvozProvider\Model\Raw\MatchLists $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\ExternalCallFilters) {
+        if (!$model instanceof \IvozProvider\Model\Raw\MatchLists) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\ExternalCallFilters object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\MatchLists object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\ExternalCallFilters object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\MatchLists object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -174,7 +163,7 @@ class ExternalCallFilters extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -222,7 +211,7 @@ class ExternalCallFilters extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -304,7 +293,7 @@ class ExternalCallFilters extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\ExternalCallFilters $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\MatchLists $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -312,17 +301,17 @@ class ExternalCallFilters extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\ExternalCallFilters $model
+     * @param \IvozProvider\Model\Raw\MatchLists $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\ExternalCallFilters $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\MatchLists $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\ExternalCallFilters $model,
+    protected function _save(\IvozProvider\Model\Raw\MatchLists $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -458,20 +447,6 @@ class ExternalCallFilters extends MapperAbstract
 
 
             if ($recursive) {
-                if ($model->getDDIs(null, null, true) !== null) {
-                    $dDIs = $model->getDDIs();
-
-                    if (!is_array($dDIs)) {
-
-                        $dDIs = array($dDIs);
-                    }
-
-                    foreach ($dDIs as $value) {
-                        $value->setExternalCallFilterId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
                 if ($model->getExternalCallFilterBlackLists(null, null, true) !== null) {
                     $externalCallFilterBlackLists = $model->getExternalCallFilterBlackLists();
 
@@ -481,35 +456,7 @@ class ExternalCallFilters extends MapperAbstract
                     }
 
                     foreach ($externalCallFilterBlackLists as $value) {
-                        $value->setFilterId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getExternalCallFilterRelCalendars(null, null, true) !== null) {
-                    $externalCallFilterRelCalendars = $model->getExternalCallFilterRelCalendars();
-
-                    if (!is_array($externalCallFilterRelCalendars)) {
-
-                        $externalCallFilterRelCalendars = array($externalCallFilterRelCalendars);
-                    }
-
-                    foreach ($externalCallFilterRelCalendars as $value) {
-                        $value->setFilterId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getExternalCallFilterRelSchedules(null, null, true) !== null) {
-                    $externalCallFilterRelSchedules = $model->getExternalCallFilterRelSchedules();
-
-                    if (!is_array($externalCallFilterRelSchedules)) {
-
-                        $externalCallFilterRelSchedules = array($externalCallFilterRelSchedules);
-                    }
-
-                    foreach ($externalCallFilterRelSchedules as $value) {
-                        $value->setFilterId($primaryKey)
+                        $value->setMatchListId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -523,7 +470,21 @@ class ExternalCallFilters extends MapperAbstract
                     }
 
                     foreach ($externalCallFilterWhiteLists as $value) {
-                        $value->setFilterId($primaryKey)
+                        $value->setMatchListId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getMatchListPatterns(null, null, true) !== null) {
+                    $matchListPatterns = $model->getMatchListPatterns();
+
+                    if (!is_array($matchListPatterns)) {
+
+                        $matchListPatterns = array($matchListPatterns);
+                    }
+
+                    foreach ($matchListPatterns as $value) {
+                        $value->setMatchListId($primaryKey)
                               ->saveRecursive(false, $transactionTag);
                     }
                 }
@@ -616,13 +577,13 @@ class ExternalCallFilters extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\ExternalCallFilters|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\ExternalCallFilters The model with the data provided
+     * @param IvozProvider\Model\Raw\MatchLists|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\MatchLists The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\ExternalCallFilters();
+            $entry = new \IvozProvider\Model\MatchLists();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -631,49 +592,16 @@ class ExternalCallFilters extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setCompanyId($data['companyId'])
-                  ->setName($data['name'])
-                  ->setWelcomeLocutionId($data['welcomeLocutionId'])
-                  ->setHolidayLocutionId($data['holidayLocutionId'])
-                  ->setOutOfScheduleLocutionId($data['outOfScheduleLocutionId'])
-                  ->setHolidayTargetType($data['holidayTargetType'])
-                  ->setHolidayNumberValue($data['holidayNumberValue'])
-                  ->setHolidayExtensionId($data['holidayExtensionId'])
-                  ->setHolidayVoiceMailUserId($data['holidayVoiceMailUserId'])
-                  ->setOutOfScheduleTargetType($data['outOfScheduleTargetType'])
-                  ->setOutOfScheduleNumberValue($data['outOfScheduleNumberValue'])
-                  ->setOutOfScheduleExtensionId($data['outOfScheduleExtensionId'])
-                  ->setOutOfScheduleVoiceMailUserId($data['outOfScheduleVoiceMailUserId']);
+                  ->setName($data['name']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
-                  ->setName($data->{'name'})
-                  ->setWelcomeLocutionId($data->{'welcomeLocutionId'})
-                  ->setHolidayLocutionId($data->{'holidayLocutionId'})
-                  ->setOutOfScheduleLocutionId($data->{'outOfScheduleLocutionId'})
-                  ->setHolidayTargetType($data->{'holidayTargetType'})
-                  ->setHolidayNumberValue($data->{'holidayNumberValue'})
-                  ->setHolidayExtensionId($data->{'holidayExtensionId'})
-                  ->setHolidayVoiceMailUserId($data->{'holidayVoiceMailUserId'})
-                  ->setOutOfScheduleTargetType($data->{'outOfScheduleTargetType'})
-                  ->setOutOfScheduleNumberValue($data->{'outOfScheduleNumberValue'})
-                  ->setOutOfScheduleExtensionId($data->{'outOfScheduleExtensionId'})
-                  ->setOutOfScheduleVoiceMailUserId($data->{'outOfScheduleVoiceMailUserId'});
+                  ->setName($data->{'name'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\ExternalCallFilters) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\MatchLists) {
             $entry->setId($data->getId())
                   ->setCompanyId($data->getCompanyId())
-                  ->setName($data->getName())
-                  ->setWelcomeLocutionId($data->getWelcomeLocutionId())
-                  ->setHolidayLocutionId($data->getHolidayLocutionId())
-                  ->setOutOfScheduleLocutionId($data->getOutOfScheduleLocutionId())
-                  ->setHolidayTargetType($data->getHolidayTargetType())
-                  ->setHolidayNumberValue($data->getHolidayNumberValue())
-                  ->setHolidayExtensionId($data->getHolidayExtensionId())
-                  ->setHolidayVoiceMailUserId($data->getHolidayVoiceMailUserId())
-                  ->setOutOfScheduleTargetType($data->getOutOfScheduleTargetType())
-                  ->setOutOfScheduleNumberValue($data->getOutOfScheduleNumberValue())
-                  ->setOutOfScheduleExtensionId($data->getOutOfScheduleExtensionId())
-                  ->setOutOfScheduleVoiceMailUserId($data->getOutOfScheduleVoiceMailUserId());
+                  ->setName($data->getName());
 
         }
 
@@ -690,11 +618,11 @@ class ExternalCallFilters extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'ExternalCallFilters');
+        $etag = $etags->findOneByField('table', 'MatchLists');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('ExternalCallFilters');
+            $etag->setTable('MatchLists');
         }
 
         $random = substr(

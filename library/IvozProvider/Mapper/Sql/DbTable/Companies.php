@@ -95,6 +95,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\IVRCustom',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Invoices',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Locutions',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\MusicOnHold',
         'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingRouting',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ParsedCDRs',
