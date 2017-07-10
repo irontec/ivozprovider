@@ -80,3 +80,4 @@ The rest of the folders are exclusively used by portals and there is no backgrou
 
     drwxrwxrwx www-data www-data ivozprovider_model_brands.logo
     drwxrwxrwx www-data www-data ivozprovider_model_brandurls.logo
+    drwxrwxrwx www-data www-data Provision_template
