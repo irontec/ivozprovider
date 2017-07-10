@@ -35,18 +35,18 @@ class DDIAction extends RouterAction
                             $ddi->getDDI(), $ddi->getId(),
                             $externalCallFilter->getName(), $externalCallFilter->getId());
 
-            // Transform origin to company preferred
-            $origin = $ddi->getCompany()->E164ToPreferred($this->agi->getCallerIdNum());
+            // Get Call Origin in E.164 format
+            $origin = $this->agi->getCallerIdNum();
 
             // Users matching BlackList will be always rejected
-            if ($externalCallFilter->matchBlackList($origin)) {
-                $this->agi->notice("%s matches filter's BlackList. Dropping call.", $origin);
+            if ($externalCallFilter->isBlackListed($origin)) {
+                $this->agi->error("%s matches filter's BlackList. Dropping call.", $origin);
                 $this->agi->Hangup(21); // AST_CAUSE_CALL_REJECTED
                 return;
             }
 
             // Users matching WhiteList will skip Holiday/Schedule checks
-            if ($externalCallFilter->matchWhiteList($origin)) {
+            if ($externalCallFilter->isWhitelisted($origin)) {
                 $this->agi->notice("%s matches filter's whitelist. Calendar/Schedules checks will be skipped.", $origin);
             } else {
                 $holidayDate = $externalCallFilter->getHolidayDateForToday();
