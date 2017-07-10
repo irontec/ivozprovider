@@ -722,6 +722,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getMatchLists(null, null, true) !== null) {
+                    $matchLists = $model->getMatchLists();
+
+                    if (!is_array($matchLists)) {
+
+                        $matchLists = array($matchLists);
+                    }
+
+                    foreach ($matchLists as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getMusicOnHold(null, null, true) !== null) {
                     $musicOnHold = $model->getMusicOnHold();
 

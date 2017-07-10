@@ -44,6 +44,7 @@ class Countries extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\MatchListPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Timezones',
         'IvozProvider\\Mapper\\Sql\\DbTable\\TransformationRulesetGroupsTrunks',
