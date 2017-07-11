@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-14 10:46+0200\n"
+"POT-Creation-Date: 2017-07-11 13:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -940,6 +940,7 @@ msgstr ""
 " dentro de horario."
 
 #: ../../pbx_features/external_filters.rst:17
+#: ../../pbx_features/match_lists.rst:29
 msgid "The screen displayed to the company administrator looks like this:"
 msgstr ""
 "La interfaz que se le presenta al administrador de empresa cuando añade "
@@ -1069,10 +1070,40 @@ msgstr ""
 " festivo o fuera horario (es decir, en una hora normal de un día normal)."
 
 #: ../../pbx_features/external_filters.rst:82
+msgid "Black list"
+msgstr "Lista negra"
+
+#: ../../pbx_features/external_filters.rst:84
+msgid ""
+"External origin will be checked against the associated "
+":ref:`match_lists`, if a coincidence is found, the call will be rejected "
+"immediately."
+msgstr ""
+"Los origenes externos serán comprobados contra las :ref:`match_lists` "
+"asociadas, si se encuentra una coincidencia, la llamada será directamente "
+"rechazada."
+
+#: ../../pbx_features/external_filters.rst:86
+msgid "White list"
+msgstr "Lista blanca"
+
+#: ../../pbx_features/external_filters.rst:88
+msgid ""
+"External origin will be checked against the associated "
+":ref:`match_lists`, if a coincidence is found, the call will be directly "
+"routed to the DDI destination, skipping the filter process. Take into "
+"account that black listed are checked before white lists."
+msgstr ""
+"Los origenes externos serán comprobados contra las :ref:`match_lists` "
+"asociadas, si se encuentra una coincidencia, la llamada será directamente "
+"enrutada al destino del DDI, ignorando el proceso del filtro. Tenga en cuenta "
+"que las listas negras son comprobadas antes que las listas blancas."
+
+#: ../../pbx_features/external_filters.rst:92
 msgid "Holiday locution"
 msgstr "Locución de festivo"
 
-#: ../../pbx_features/external_filters.rst:84
+#: ../../pbx_features/external_filters.rst:94
 msgid ""
 "The locution will be  played when the day is maked as holiday in any of "
 "the calendars associated with the filter **if the calendar entry has no "
@@ -1082,11 +1113,11 @@ msgstr ""
 "festivo en uno de los calendarios y no se haya definido una locución de "
 "festivo especial en dicho calendario para ese día."
 
-#: ../../pbx_features/external_filters.rst:87
+#: ../../pbx_features/external_filters.rst:97
 msgid "Holiday forward type"
 msgstr "Tipo de desvío festivo"
 
-#: ../../pbx_features/external_filters.rst:89
+#: ../../pbx_features/external_filters.rst:99
 msgid ""
 "After playing the above locution (if configured), call can be forwaded to"
 " a voicemail, external number or internal extension. For example, the "
@@ -1098,11 +1129,11 @@ msgstr ""
 "externo o a una extensión interna. En el ejemplo, la llamada se desviará "
 "los días festivos al móvil 676 676 676."
 
-#: ../../pbx_features/external_filters.rst:93
+#: ../../pbx_features/external_filters.rst:103
 msgid "Out of schedule locution"
 msgstr "Locución fuera horario"
 
-#: ../../pbx_features/external_filters.rst:95
+#: ../../pbx_features/external_filters.rst:105
 msgid ""
 "The locution will be played when, not being holiday, the current time is "
 "not in any of the time gaps defined in the schedules assigned to the "
@@ -1111,11 +1142,11 @@ msgstr ""
 "Esta locución se reproducirá cuando, siendo un día no festivo, la hora "
 "actual no esté dentro de ningunos de los horarios vinculados."
 
-#: ../../pbx_features/external_filters.rst:98
+#: ../../pbx_features/external_filters.rst:108
 msgid "Out of schedule forward type"
 msgstr "Tipo de desvío fuera horario"
 
-#: ../../pbx_features/external_filters.rst:100
+#: ../../pbx_features/external_filters.rst:110
 msgid ""
 "Like in the holidays forward, but for out of schedule. The image above "
 "won't apply any forward (and the call will be hanguped)."
@@ -1123,11 +1154,11 @@ msgstr ""
 "Lo mismo que en festivo, pero para el caso de fuera horario. En la "
 "imagen, no se ejecutaría ningún desvío."
 
-#: ../../pbx_features/external_filters.rst:102
+#: ../../pbx_features/external_filters.rst:112
 msgid "Calendars"
 msgstr "Calendarios"
 
-#: ../../pbx_features/external_filters.rst:104
+#: ../../pbx_features/external_filters.rst:114
 msgid ""
 "One or more calendars can be associated with the filter. The combination "
 "of all the callendars will be applied."
@@ -1135,11 +1166,11 @@ msgstr ""
 "Permite seleccionar múltiples calendarios, de forma que el calendario del"
 " filtro es la suma de todos ellos."
 
-#: ../../pbx_features/external_filters.rst:106
+#: ../../pbx_features/external_filters.rst:116
 msgid "Schedules"
 msgstr "Horarios"
 
-#: ../../pbx_features/external_filters.rst:108
+#: ../../pbx_features/external_filters.rst:118
 msgid ""
 "One or more schedules can be applied. The combination of all the time "
 "gaps defined in the schedules will be applied."
@@ -1147,13 +1178,13 @@ msgstr ""
 "Permite seleccionar múltiples horarios, de forma que el horario del "
 "filtro es la suma de todos ellos."
 
-#: ../../pbx_features/external_filters.rst:112
+#: ../../pbx_features/external_filters.rst:122
 msgid "Holidays are processed **before** out of schedule events."
 msgstr ""
 "El día festivo tiene prevalencia sobre el fuera horario. Primero se "
 "evalúan los calendarios, luego los horarios."
 
-#: ../../pbx_features/external_filters.rst:114
+#: ../../pbx_features/external_filters.rst:124
 msgid ""
 "In the next section we will use this new created filter with "
 ":ref:`external_ddis` so we can configure a welcome locution for normal "
@@ -1860,6 +1891,81 @@ msgstr ""
 "podríamos tener otra que dijera \"Contactando con Administración, espere "
 "por favor\"."
 
+#: ../../pbx_features/match_lists.rst:5
+msgid "Match Lists"
+msgstr "Listas de coincidencia"
+
+#: ../../pbx_features/match_lists.rst:7
+msgid ""
+"Mach Lists are designed to group well known numbers or patterns in order "
+"to use them in specific treatments."
+msgstr ""
+"Las listas de coincidencia estan diseñadas para agrupar números conocidos o "
+"patrones numéricos para asociarlos a distintos tratamientos."
+
+#: ../../pbx_features/match_lists.rst:10
+msgid ""
+"Depending on the section used, this numbers can be matched with the "
+"origin or the destination of the call, so be sure to use distinctive "
+"names for your match lists."
+msgstr ""
+"En función de la sección en la que se empleen, las listas se emplearán para "
+"comprobar un origen o destino de la llamada, por lo que se recomienda emplear "
+"nombres distintivos para las listas de coincidencia."
+
+#: ../../pbx_features/match_lists.rst:14
+msgid ""
+"For example, like mentioned in the previous section "
+":ref:`external_filters`, white and black lists contain one or more "
+"match lists. In this case, the **origin** of the call will be matched "
+"agains the list entries to determime if the treatment of **skipping** the"
+" filter or **rejecting** the call will be applied."
+msgstr ""
+"Por ejemplo, como se menciona en la seccion anterior "
+":ref:`external_filters`, las listas blancas y negras pueden contener una o más "
+"listas de coincidencia. En este caso, el **origen** de la llamadas será comprobado "
+"contra las entradas de la lista para determinar si se deberá **ignorar** el filtro "
+"o **rechazar** la llamada directamente."
+
+#: ../../pbx_features/match_lists.rst:19
+msgid ""
+"Match lists themselfs have no behaviour associated, they only provide a "
+"common way for all process to determine if a number has a treatment."
+msgstr ""
+"Las listas de coincidencia por si mismas no tiene un comportamiento asociado, "
+"tan solo proveen una manera común de agrupar números y patrones que serán "
+"empleados en otros procesos."
+
+#: ../../pbx_features/match_lists.rst:22
+msgid ""
+"Beware that numbers of a Match list are checked against origins or "
+"destinations depending on the configuration section that use them."
+msgstr ""
+"Tenga en cuenta que en función de donde se emplee la lista, se comprobarán "
+"el origen o el destino de la llamada."
+
+#: ../../pbx_features/match_lists.rst:26
+msgid ""
+"The section **Company configuration** > **Match Lists** allows to "
+"configure different items that will group the numbers and patterns."
+msgstr ""
+"La sección **Configuración de Empresa** > **Listas de coincidencia** permite "
+"definir las diferentes listas que agruparán números y patrones."
+
+#: ../../pbx_features/match_lists.rst:41
+msgid "After creating a new Match list, you can include numbers and patterns."
+msgstr "Tras la creación de la lista, se podrán incluir entradas en esta."
+
+#: ../../pbx_features/match_lists.rst:53
+msgid ""
+"As shown, the match list can contain specific numbers or groups using "
+"`Regular Expressions "
+"<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_"
+msgstr ""
+"Tal como se muestra, la lista puede contener números específicos o grupos "
+"empleando `Expresiones regulares "
+"<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_"
+
 #: ../../pbx_features/music_on_hold.rst:5
 msgid "Music on Hold"
 msgstr "Música en espera"
@@ -2133,8 +2239,9 @@ msgstr ""
 "**Servicios**:"
 
 #: ../../pbx_features/services.rst:32
+#, fuzzy
 msgid ""
-"This service allows capturing a ringing call from other terminal by "
+"This service allows capturing a ringing call from another terminal by "
 "calling the code followed by the extension from the target user."
 msgstr ""
 "Es el servicio que permite capturar metiendo el código que se asigne "

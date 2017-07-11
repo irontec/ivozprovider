@@ -26,6 +26,7 @@ are also included in IvozProvider.
 
     sounds
     external_filters
+    match_lists
     huntgroups
     queues
     ivrs
