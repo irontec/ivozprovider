@@ -75,6 +75,12 @@
         .noBorder {
             border: none!important;
         }
+        .clearFloats {
+            clear:both;
+        }
+        .multiline {
+            white-space: pre-wrap;
+        }
         .clientData {
             width: 60%;
             float: left;
@@ -94,9 +100,6 @@
         .invoiceData p {
             margin: 0;
             padding: 0;
-        }
-        .clearFloats {
-            clear:both;
         }
         #content {
             margin: 10px 0;
@@ -239,7 +242,7 @@
                                 {{name}}
                                 {{#if description}}
                                     <br />
-                                    {{description}}
+                                    <div class="multiline">{{description}}</div>
                                 {{/if}}
                             </div>
                             <div class="td">{{cost}} €</div>
