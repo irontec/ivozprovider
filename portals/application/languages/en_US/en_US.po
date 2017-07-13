@@ -1968,6 +1968,9 @@ msgstr ""
 msgid "SIP Domain can't be empty"
 msgstr "El dominio SIP no puede estar vacío"
 
+msgid "Email already in use"
+msgstr "Email already in use"
+
 msgid "No Application Server available."
 msgstr "No Application Server available."
 
@@ -2294,9 +2297,6 @@ msgstr "User not Registered"
 
 msgid "Target type"
 msgstr "Target type"
-
-msgid "number"
-msgstr "Number"
 
 msgid "extension"
 msgstr "Extension"
