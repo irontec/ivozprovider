@@ -141,7 +141,7 @@ class Userweb_CallsController extends Iron_Controller_Rest_BaseController
         $prepareWhere = array();
         $prepareWhere[] = 'aParty = "' . $extension . '"';
         $prepareWhere[] = 'bParty = "' . $extension . '"';
-        $whereOrs = implode(' OR ', $prepareWhere);
+        $whereOrs = '(' . implode(' OR ', $prepareWhere) . ')';
 
         $whereUser = $whereOrs . ' AND companyId = "' . $companyId . '"';
 
