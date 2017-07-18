@@ -44,7 +44,7 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
     protected function _countDetours($user)
     {
         $where = array(
-                'userId = ?' => $user->getId()
+            'userId = ?' => $user->getId()
         );
 
         $mapper = new Mappers\CallForwardSettings();
@@ -80,7 +80,7 @@ class Userweb_IndexController extends Iron_Controller_Rest_BaseController
         $prepareWhere = array();
         $prepareWhere[] = 'aParty = "' . $extension . '"';
         $prepareWhere[] = 'bParty = "' . $extension . '"';
-        $whereOrs = implode(' OR ', $prepareWhere);
+        $whereOrs = '(' . implode(' OR ', $prepareWhere) .  ')';
 
         $whereUser = $whereOrs . ' AND companyId = "' . $companyId . '"';
 
