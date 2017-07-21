@@ -173,7 +173,8 @@ class HuntGroupAction extends RouterAction
         }
 
         // Dial Options
-        $options = "";
+        // Cancelled calls are marked as 'answered elsewhere'
+        $options = "c";
 
         // For record asterisk builtin feature code (FIXME Dont use both X's)
         if ($user->getCompany()->getOnDemandRecord() == 2) {
