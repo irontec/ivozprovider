@@ -62,3 +62,38 @@ penalty is available**.
 .. hint:: A call can be sent to a queue selecting it in the "Route type" selectors
           available in multiple sections of IvozProvider (extension to queue, DDI
           to queue, etc.)
+
+Queue strategy
+==============
+
+The queue strategy **always applies to current penalty members** starting with
+the smallest penalty value and only going to the next penalty if all members of
+current one are busy or unavailable.
+
+.. glossary::
+
+    Ring all
+        The call will make all the members of the current priority during a
+        predefined time.
+
+    Least recent
+        The call will *jump* from one member to another in a predefined order
+        based on the last time the member attended a call. Members whose latest
+        call is older will be called first.
+
+    Fewer calls
+        The call will *jump* from one member to another in a predefined order
+        based on the number of atteded calls. Members that have attedended less
+        calls will be called first.
+
+    Random
+        The call will *jump* from one member to another in a random order,
+        ringing during the configured time.
+
+    Round Robin memory
+        The call will *jump* from one member to another in a predefined order
+        starting past the last member that attended a call.
+
+    Linear
+        The call will *jump* from one member to another in a predefined order
+        based on the creation time of the member.

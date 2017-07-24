@@ -15,12 +15,12 @@ There are multiple types:
         The call will make all the terminals of the group during a predefined 
         time.
 
-    Secuential (once)
+    Sequential
         The call will *jump* from one user to another in a predefined order
         ringing during the configured time. If the call is not answered by any 
         user of the group, it will be hanguped (or trigger the no answer logic).
 
-    Secuential (infinite)
+    Sequential (infinite)
         The call will *jump* from one user to another in a predefined order 
         ringing during the configured time. If the call is not answered by any
         user of the group, the call will *jump* again to the first member of the 
@@ -42,9 +42,9 @@ Pressing the proper icon, we can add Alice and Bob to the hunt group:
 
 .. image:: img/huntgroup_add2.png
 
-.. rubric:: Example 2: *Secuential* hunt group 
+.. rubric:: Example 2: *Sequential* hunt group 
 
-We will edit the hunt group to convert it into secuential: the call will ring 
+We will edit the hunt group to convert it into sequential: the call will ring 
 Alice during 10 seconds, then it will ring Bob 15 seconds, repeting this process
 until one of them answers.
 
