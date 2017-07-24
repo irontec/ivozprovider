@@ -2053,69 +2053,6 @@ msgstr "From pattern"
 msgid "Tag"
 msgstr "Tag"
 
-msgid "Interface"
-msgstr "Interface"
-
-msgid "Member"
-msgstr "Member"
-
-msgid "Penalty"
-msgstr "Penalty"
-
-msgid "Paused"
-msgstr "Paused"
-
-msgid "Companyid"
-msgstr "Companyid"
-
-msgid "Timeout"
-msgstr "Timeout"
-
-msgid "Autopause"
-msgstr "Autopause"
-
-msgid "yes"
-msgstr "yes"
-
-msgid "no"
-msgstr "no"
-
-msgid "all"
-msgstr "all"
-
-msgid "Maxlen"
-msgstr "Max Length"
-
-msgid "Strategy"
-msgstr "Strategy"
-
-msgid "ringall"
-msgstr "A todos"
-
-msgid "leastrecent"
-msgstr "Least Recent"
-
-msgid "fewestcalls"
-msgstr "Fewest Calls"
-
-msgid "random"
-msgstr "Random"
-
-msgid "rrmemory"
-msgstr "Round Robin"
-
-msgid "linear"
-msgstr "Linear (once)"
-
-msgid "wrandom"
-msgstr "wrandom"
-
-msgid "rrordered"
-msgstr "rrordered"
-
-msgid "Weight"
-msgstr "Weight"
-
 msgid "Service id"
 msgstr "Service"
 
@@ -2294,6 +2231,9 @@ msgstr "User not Registered"
 msgid "Target type"
 msgstr "Target type"
 
+msgid "number"
+msgstr "Number"
+
 msgid "extension"
 msgstr "Extension"
 
@@ -2424,6 +2364,9 @@ msgstr "Record call"
 
 msgid "none"
 msgstr "none"
+
+msgid "all"
+msgstr "all"
 
 msgid "inbound"
 msgstr "inbound"
@@ -2642,6 +2585,9 @@ msgstr "Brand"
 msgid "Featureid"
 msgstr "Feature"
 
+msgid "Companyid"
+msgstr "Companyid"
+
 msgid "Cost"
 msgstr "Cost"
 
@@ -2671,6 +2617,12 @@ msgstr "Port"
 
 msgid "Auth needed"
 msgstr "Auth needed"
+
+msgid "yes"
+msgstr "yes"
+
+msgid "no"
+msgstr "no"
 
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
@@ -2731,14 +2683,23 @@ msgstr "Listen to MoH"
 msgid "Event date"
 msgstr "Event date"
 
-msgid "ringAll"
+msgid "Strategy"
+msgstr "Strategy"
+
+msgid "Ring all"
 msgstr "Ring all"
 
-msgid "Linear (once)"
-msgstr "Linear (once)"
+msgid "Linear"
+msgstr "Linear"
 
-msgid "roundRobin"
-msgstr "Round Robin (∞)"
+msgid "Round Robin"
+msgstr "Round Robin"
+
+msgid "Random"
+msgstr "Random"
+
+msgid "Determines the order users will be called"
+msgstr "Determines the order users will be called"
 
 msgid "Ring all timeout"
 msgstr "Ring all timeout"
@@ -2772,6 +2733,9 @@ msgstr "Error Locution"
 
 msgid "Success locution id"
 msgstr "Success locution"
+
+msgid "Timeout"
+msgstr "Timeout"
 
 msgid ""
 "Time in seconds the IVR will wait after playing the welcome locution or "
@@ -2935,6 +2899,9 @@ msgstr "Numeric value"
 
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "e.g. udp:127.0.0.1:22222"
+
+msgid "Weight"
+msgstr "Weight"
 
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
@@ -3296,6 +3263,9 @@ msgstr ""
 msgid "Price pattern"
 msgstr "Price pattern"
 
+msgid "Penalty"
+msgstr "Penalty"
+
 msgid ""
 "Members of lower penalty will be called first. Higher penalty members will "
 "be contacted if no members of current penalty are available"
@@ -3379,23 +3349,17 @@ msgstr "Member call seconds"
 msgid "Time in seconds queue calls will ring members"
 msgstr "Time in seconds queue calls will ring members"
 
-msgid "Ring All"
-msgstr "Ring All"
-
 msgid "Least recent"
 msgstr "Least recent"
 
-msgid "Fewest Calls"
+msgid "Fewest calls"
 msgstr "Fewest Calls"
 
-msgid "Random"
-msgstr "Random"
+msgid "Round Robin memory"
+msgstr "Round Robin memory"
 
-msgid "Round Robin"
-msgstr "Round Robin"
-
-msgid "Linear"
-msgstr "Linear"
+msgid "Determines the order current priority members will be called"
+msgstr "Determines the order current priority members will be called"
 
 msgid ""
 "When one member is part of multiples queues, calls from queues with higher "
