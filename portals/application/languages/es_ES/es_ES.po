@@ -2064,69 +2064,6 @@ msgstr "Patrón From"
 msgid "Tag"
 msgstr "Tag"
 
-msgid "Interface"
-msgstr "Interfaz"
-
-msgid "Member"
-msgstr "Miembro"
-
-msgid "Penalty"
-msgstr "Prioridad"
-
-msgid "Paused"
-msgstr "Pausado"
-
-msgid "Companyid"
-msgstr "Compañia"
-
-msgid "Timeout"
-msgstr "Timeout"
-
-msgid "Autopause"
-msgstr "Autopausar"
-
-msgid "yes"
-msgstr "Si"
-
-msgid "no"
-msgstr "no"
-
-msgid "all"
-msgstr "todas"
-
-msgid "Maxlen"
-msgstr "Longitud"
-
-msgid "Strategy"
-msgstr "Estrategia"
-
-msgid "ringall"
-msgstr "A todos"
-
-msgid "leastrecent"
-msgstr "Menos reciente"
-
-msgid "fewestcalls"
-msgstr "Menos atendidas"
-
-msgid "random"
-msgstr "Aleatoriamente"
-
-msgid "rrmemory"
-msgstr "Secuencialmente (memoria)"
-
-msgid "linear"
-msgstr "Secuencialmente (una vez)"
-
-msgid "wrandom"
-msgstr "Aleatoriamente"
-
-msgid "rrordered"
-msgstr "Round Robin"
-
-msgid "Weight"
-msgstr "Peso"
-
 msgid "Service id"
 msgstr "Servicio"
 
@@ -2306,6 +2243,9 @@ msgstr "No registrado"
 msgid "Target type"
 msgstr "Tipo de ruta"
 
+msgid "number"
+msgstr "Número"
+
 msgid "extension"
 msgstr "Extensión"
 
@@ -2440,6 +2380,9 @@ msgstr "Grabar llamada"
 
 msgid "none"
 msgstr "ninguna"
+
+msgid "all"
+msgstr "todas"
 
 msgid "inbound"
 msgstr "entrante"
@@ -2654,6 +2597,9 @@ msgstr "Marca"
 msgid "Featureid"
 msgstr "Feature"
 
+msgid "Companyid"
+msgstr "Compañia"
+
 msgid "Cost"
 msgstr "Coste"
 
@@ -2683,6 +2629,12 @@ msgstr "Puerto"
 
 msgid "Auth needed"
 msgstr "Requiere autenticación"
+
+msgid "yes"
+msgstr "Si"
+
+msgid "no"
+msgstr "no"
 
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
@@ -2747,14 +2699,23 @@ msgstr "Escuchar Música"
 msgid "Event date"
 msgstr "Fecha evento"
 
-msgid "ringAll"
+msgid "Strategy"
+msgstr "Estrategia"
+
+msgid "Ring all"
 msgstr "A todos"
 
-msgid "Linear (once)"
-msgstr "Secuencialmente (una vez)"
+msgid "Linear"
+msgstr "Secuencialmente"
 
-msgid "roundRobin"
+msgid "Round Robin"
 msgstr "Secuencialmente (∞)"
+
+msgid "Random"
+msgstr "Aleatoriamente"
+
+msgid "Determines the order users will be called"
+msgstr "Determina el order en el que sonarán los usuarios"
 
 msgid "Ring all timeout"
 msgstr "Tiempo máximo sonando"
@@ -2788,6 +2749,9 @@ msgstr "Loc. Error"
 
 msgid "Success locution id"
 msgstr "Loc. Éxito"
+
+msgid "Timeout"
+msgstr "Timeout"
 
 msgid ""
 "Time in seconds the IVR will wait after playing the welcome locution or "
@@ -2950,6 +2914,9 @@ msgstr "Valor numérico"
 
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "p.ej. udp:127.0.0.1:22222"
+
+msgid "Weight"
+msgstr "Peso"
 
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
@@ -3306,6 +3273,9 @@ msgstr ""
 msgid "Price pattern"
 msgstr "Patrón de precio"
 
+msgid "Penalty"
+msgstr "Prioridad"
+
 msgid ""
 "Members of lower penalty will be called first. Higher penalty members will "
 "be contacted if no members of current penalty are available"
@@ -3391,23 +3361,17 @@ msgstr "Duración llamada a miembro"
 msgid "Time in seconds queue calls will ring members"
 msgstr "Tiempo en segundos que se llamará a cada miembro de la cola"
 
-msgid "Ring All"
-msgstr "A todos"
-
 msgid "Least recent"
 msgstr "Menos reciente"
 
-msgid "Fewest Calls"
+msgid "Fewest calls"
 msgstr "Menos atendidas"
 
-msgid "Random"
-msgstr "Aleatoriamente"
+msgid "Round Robin memory"
+msgstr "Secuencialmente (memoria)"
 
-msgid "Round Robin"
-msgstr "Secuencialmente (∞)"
-
-msgid "Linear"
-msgstr "Secuencialmente (una vez)"
+msgid "Determines the order current priority members will be called"
+msgstr "Determina el order en que los miembros de la prioridad serán llamados"
 
 msgid ""
 "When one member is part of multiples queues, calls from queues with higher "
@@ -3679,3 +3643,4 @@ msgstr "Fecha ejecución"
 
 msgid "Finish date"
 msgstr "Fecha finalización"
+
