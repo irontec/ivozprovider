@@ -105,6 +105,13 @@ class Users extends ModelAbstract
      *
      * @var int
      */
+    protected $_outgoingDDIRuleId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
     protected $_callACLId;
 
     /**
@@ -270,6 +277,13 @@ class Users extends ModelAbstract
      */
     protected $_Language;
 
+    /**
+     * Parent relation Users_ibfk_14
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    protected $_OutgoingDDIRule;
+
 
     /**
      * Dependent relation CallForwardSettings_ibfk_1
@@ -434,6 +448,7 @@ class Users extends ModelAbstract
         'terminalId'=>'terminalId',
         'extensionId'=>'extensionId',
         'outgoingDDIId'=>'outgoingDDIId',
+        'outgoingDDIRuleId'=>'outgoingDDIRuleId',
         'callACLId'=>'callACLId',
         'doNotDisturb'=>'doNotDisturb',
         'isBoss'=>'isBoss',
@@ -502,6 +517,10 @@ class Users extends ModelAbstract
             'UsersIbfk13'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
+                ),
+            'UsersIbfk14'=> array(
+                    'property' => 'OutgoingDDIRule',
+                    'table_name' => 'OutgoingDDIRules',
                 ),
         ));
 
@@ -998,6 +1017,40 @@ class Users extends ModelAbstract
     public function getOutgoingDDIId()
     {
         return $this->_outgoingDDIId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setOutgoingDDIRuleId($data)
+    {
+
+        if ($this->_outgoingDDIRuleId != $data) {
+            $this->_logChange('outgoingDDIRuleId', $this->_outgoingDDIRuleId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingDDIRuleId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingDDIRuleId = (int) $data;
+
+        } else {
+            $this->_outgoingDDIRuleId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingDDIRuleId
+     *
+     * @return int
+     */
+    public function getOutgoingDDIRuleId()
+    {
+        return $this->_outgoingDDIRuleId;
     }
 
     /**
@@ -1970,6 +2023,57 @@ class Users extends ModelAbstract
         }
 
         return $this->_Language;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDIRule
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingDDIRules $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setOutgoingDDIRule(\IvozProvider\Model\Raw\OutgoingDDIRules $data)
+    {
+        $this->_OutgoingDDIRule = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIRuleId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk14');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDIRule
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function getOutgoingDDIRule($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk14';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDIRule = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDIRule;
     }
 
     /**

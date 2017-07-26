@@ -78,7 +78,7 @@ class ExternalCallAction extends RouterAction
      *
      * @param string $e164number Dialed number in E.164 format
      */
-    protected function updateOriginConnectedLine($e164number)
+    protected function updateOriginConnectedLine($e164number, $originDDI)
     {
         // Get caller company
         $company = $this->_caller->getCompany();
@@ -88,11 +88,6 @@ class ExternalCallAction extends RouterAction
         // If origin is a user extension
         if (($extension = $company->getExtension($origin))) {
             $originUser = $extension->getUser();
-            $originDDI = $originUser->getOutgoingDDI();
-            if (empty($originDDI)) {
-                $this->agi->error("User %s has no external DDI", $originUser->getId());
-                return;
-            }
 
             $this->agi->setVariable("USERID", $originUser->getId());
 

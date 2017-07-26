@@ -210,6 +210,13 @@ class Companies extends ModelAbstract
      */
     protected $_outgoingDDIId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_outgoingDDIRuleId;
+
 
     /**
      * Parent relation Companies_ibfk_4
@@ -259,6 +266,13 @@ class Companies extends ModelAbstract
      * @var \IvozProvider\Model\Raw\DDIs
      */
     protected $_OutgoingDDI;
+
+    /**
+     * Parent relation Companies_ibfk_14
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    protected $_OutgoingDDIRule;
 
 
     /**
@@ -422,6 +436,14 @@ class Companies extends ModelAbstract
     protected $_MusicOnHold;
 
     /**
+     * Dependent relation OutgoingDDIRules_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingDDIRules[]
+     */
+    protected $_OutgoingDDIRules;
+
+    /**
      * Dependent relation OutgoingRouting_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -544,6 +566,7 @@ class Companies extends ModelAbstract
         'recordingsLimitMB'=>'recordingsLimitMB',
         'recordingsLimitEmail'=>'recordingsLimitEmail',
         'outgoingDDIId'=>'outgoingDDIId',
+        'outgoingDDIRuleId'=>'outgoingDDIRuleId',
     );
 
     /**
@@ -588,6 +611,10 @@ class Companies extends ModelAbstract
             'CompaniesIbfk13'=> array(
                     'property' => 'OutgoingDDI',
                     'table_name' => 'DDIs',
+                ),
+            'CompaniesIbfk14'=> array(
+                    'property' => 'OutgoingDDIRule',
+                    'table_name' => 'OutgoingDDIRules',
                 ),
         ));
 
@@ -671,6 +698,10 @@ class Companies extends ModelAbstract
             'MusicOnHoldIbfk1' => array(
                     'property' => 'MusicOnHold',
                     'table_name' => 'MusicOnHold',
+                ),
+            'OutgoingDDIRulesIbfk1' => array(
+                    'property' => 'OutgoingDDIRules',
+                    'table_name' => 'OutgoingDDIRules',
                 ),
             'OutgoingRoutingIbfk2' => array(
                     'property' => 'OutgoingRouting',
@@ -1678,6 +1709,40 @@ class Companies extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOutgoingDDIRuleId($data)
+    {
+
+        if ($this->_outgoingDDIRuleId != $data) {
+            $this->_logChange('outgoingDDIRuleId', $this->_outgoingDDIRuleId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingDDIRuleId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingDDIRuleId = (int) $data;
+
+        } else {
+            $this->_outgoingDDIRuleId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingDDIRuleId
+     *
+     * @return int
+     */
+    public function getOutgoingDDIRuleId()
+    {
+        return $this->_outgoingDDIRuleId;
+    }
+
+    /**
      * Sets parent relation Brand
      *
      * @param \IvozProvider\Model\Raw\Brands $data
@@ -2032,6 +2097,57 @@ class Companies extends ModelAbstract
         }
 
         return $this->_OutgoingDDI;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDIRule
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingDDIRules $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOutgoingDDIRule(\IvozProvider\Model\Raw\OutgoingDDIRules $data)
+    {
+        $this->_OutgoingDDIRule = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIRuleId($primaryKey);
+        }
+
+        $this->_setLoaded('CompaniesIbfk14');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDIRule
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function getOutgoingDDIRule($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CompaniesIbfk14';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDIRule = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDIRule;
     }
 
     /**
@@ -3832,6 +3948,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_MusicOnHold;
+    }
+
+    /**
+     * Sets dependent relations OutgoingDDIRules_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\OutgoingDDIRules
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setOutgoingDDIRules(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_OutgoingDDIRules === null) {
+
+                $this->getOutgoingDDIRules();
+            }
+
+            $oldRelations = $this->_OutgoingDDIRules;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_OutgoingDDIRules = array();
+
+        foreach ($data as $object) {
+            $this->addOutgoingDDIRules($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations OutgoingDDIRules_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingDDIRules $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addOutgoingDDIRules(\IvozProvider\Model\Raw\OutgoingDDIRules $data)
+    {
+        $this->_OutgoingDDIRules[] = $data;
+        $this->_setLoaded('OutgoingDDIRulesIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent OutgoingDDIRules_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function getOutgoingDDIRules($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'OutgoingDDIRulesIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDIRules = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_OutgoingDDIRules;
     }
 
     /**

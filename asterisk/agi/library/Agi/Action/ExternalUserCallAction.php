@@ -66,13 +66,26 @@ class ExternalUserCallAction extends ExternalCallAction
             return;
         }
 
-        // Get Ougoing presentation
+        // Get Outgoing presentation
         $ddi = $user->getOutgoingDDI();
+
+        // If user has OutgoingDDI rules, check if we have to override current DDI
+        $outgoingDDIRule = $user->getOutgoingDDIRule();
+        if ($outgoingDDIRule) {
+            $this->agi->verbose("Checking outgoingDDI rules %s for destination %s",
+                            $outgoingDDIRule->getName(), $e164number);
+            $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $e164number);
+            if ($ddi != $user->getOutgoingDDI()) {
+                $this->agi->notice("Rule %s [outgoingddirule%d] updated final DDI to %s [ddi%d]",
+                    $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
+                    $ddi->getDDI(), $ddi->getId());
+            }
+        }
 
         // Check if the diversion header contains a valid number
         $this->checkDiversionNumber($company);
         // Update caller displayed number
-        $this->updateOriginConnectedLine($e164number);
+        $this->updateOriginConnectedLine($e164number, $ddi);
         // Check if DDI has recordings enabled
         $this->checkDDIRecording($ddi);
         // Check if DDI belong to platform

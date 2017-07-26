@@ -71,6 +71,7 @@ production:
           voicemailSendMail: true
           languageId: true
           externalIpCalls: true
+          outgoingDDIRuleId: true
       options:
         title: _("Options")
         screens:
@@ -129,7 +130,8 @@ production:
           fields:
             terminalId: 2
             extensionId: 2
-            outgoingDDIId: 2
+            outgoingDDIId: 3
+            outgoingDDIRuleId: 3
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
       controller: edit
@@ -173,9 +175,10 @@ production:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            terminalId: 4
-            extensionId: 4
-            outgoingDDIId: 4
+            terminalId: 6
+            extensionId: 6
+            outgoingDDIId: 6
+            outgoingDDIRuleId: 6
             callACLId: 6
             doNotDisturb: 6
             maxCalls: 6

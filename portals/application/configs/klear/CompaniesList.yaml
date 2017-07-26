@@ -43,6 +43,7 @@ production:
           country: true
           areaCode: true
           outgoingDDIId: true
+          outgoingDDIRuleId: true
           registryData: true
           externalMaxCalls: true
           defaultTimezoneId: true
@@ -109,6 +110,7 @@ production:
           countryId: true
           areaCode: true
           outgoingDDIId: true
+          outgoingDDIRuleId: true
           languageId: true
           defaultTimezoneId: true
           externallyExtraOpts: true
@@ -164,18 +166,19 @@ production:
             defaultTimezoneId: 1
             languageId: 1
         group2:
-          colsPerRow: 2
+          colsPerRow: 12
           label: _("Server data")
           fields:
-            outbound_prefix: 1
-            outgoingDDIId: 1
-            externalMaxCalls: 1
-            domain_users: 1
-            countryId: 1
-            areaCode: 1
-            mediaRelaySetsId: 1
-            applicationServerId: 1
-            ipFilter: 1
+            outgoingDDIId: 6
+            outgoingDDIRuleId: 6
+            outbound_prefix: 4
+            externalMaxCalls: 6
+            domain_users: 9
+            countryId: 6
+            areaCode: 6
+            mediaRelaySetsId: 6
+            applicationServerId: 6
+            ipFilter: 6
         group3:
           colsPerRow: 2
           label: _("Invoice data")

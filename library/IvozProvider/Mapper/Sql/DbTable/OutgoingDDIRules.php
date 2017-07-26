@@ -11,7 +11,7 @@
  */
 
 /**
- * Table definition for MatchLists
+ * Table definition for OutgoingDDIRules
  *
  * @package IvozProvider\Mapper\Sql\DbTable
  * @subpackage DbTable
@@ -19,14 +19,14 @@
  */
 
 namespace IvozProvider\Mapper\Sql\DbTable;
-class MatchLists extends TableAbstract
+class OutgoingDDIRules extends TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'MatchLists';
+    protected $_name = 'OutgoingDDIRules';
 
     /**
      * $_id - this is the primary key name
@@ -35,28 +35,32 @@ class MatchLists extends TableAbstract
      */
     protected $_id = 'id';
 
-    protected $_rowClass = 'IvozProvider\\Model\\MatchLists';
-    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\MatchLists';
+    protected $_rowClass = 'IvozProvider\\Model\\OutgoingDDIRules';
+    protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\OutgoingDDIRules';
 
     protected $_sequence = true; // int
     protected $_referenceMap = array(
-        'MatchListIbfk1' => array(
+        'OutgoingDDIRulesIbfk1' => array(
             'columns' => 'companyId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+            'refColumns' => 'id'
+        ),
+        'OutgoingDDIRulesIbfk2' => array(
+            'columns' => 'forcedDDIId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
             'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterBlackLists',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterWhiteLists',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\MatchListPatterns',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRulesPatterns'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRulesPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
 	  'id' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'MatchLists',
+	    'TABLE_NAME' => 'OutgoingDDIRules',
 	    'COLUMN_NAME' => 'id',
 	    'COLUMN_POSITION' => 1,
 	    'DATA_TYPE' => 'int',
@@ -73,7 +77,7 @@ class MatchLists extends TableAbstract
 	  'companyId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'MatchLists',
+	    'TABLE_NAME' => 'OutgoingDDIRules',
 	    'COLUMN_NAME' => 'companyId',
 	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'int',
@@ -90,7 +94,7 @@ class MatchLists extends TableAbstract
 	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
-	    'TABLE_NAME' => 'MatchLists',
+	    'TABLE_NAME' => 'OutgoingDDIRules',
 	    'COLUMN_NAME' => 'name',
 	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
@@ -100,6 +104,40 @@ class MatchLists extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'defaultAction' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'OutgoingDDIRules',
+	    'COLUMN_NAME' => 'defaultAction',
+	    'COLUMN_POSITION' => 4,
+	    'DATA_TYPE' => 'varchar',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => '10',
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => NULL,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'forcedDDIId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'OutgoingDDIRules',
+	    'COLUMN_NAME' => 'forcedDDIId',
+	    'COLUMN_POSITION' => 5,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

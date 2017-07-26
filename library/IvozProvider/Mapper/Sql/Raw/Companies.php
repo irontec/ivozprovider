@@ -74,6 +74,7 @@ class Companies extends MapperAbstract
                 'recordingsLimitMB' => $model->getRecordingsLimitMB(),
                 'recordingsLimitEmail' => $model->getRecordingsLimitEmail(),
                 'outgoingDDIId' => $model->getOutgoingDDIId(),
+                'outgoingDDIRuleId' => $model->getOutgoingDDIRuleId(),
             );
         } else {
             $result = array();
@@ -750,6 +751,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getOutgoingDDIRules(null, null, true) !== null) {
+                    $outgoingDDIRules = $model->getOutgoingDDIRules();
+
+                    if (!is_array($outgoingDDIRules)) {
+
+                        $outgoingDDIRules = array($outgoingDDIRules);
+                    }
+
+                    foreach ($outgoingDDIRules as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getOutgoingRouting(null, null, true) !== null) {
                     $outgoingRouting = $model->getOutgoingRouting();
 
@@ -1044,7 +1059,8 @@ class Companies extends MapperAbstract
                   ->setExternallyExtraOpts($data['externallyExtraOpts'])
                   ->setRecordingsLimitMB($data['recordingsLimitMB'])
                   ->setRecordingsLimitEmail($data['recordingsLimitEmail'])
-                  ->setOutgoingDDIId($data['outgoingDDIId']);
+                  ->setOutgoingDDIId($data['outgoingDDIId'])
+                  ->setOutgoingDDIRuleId($data['outgoingDDIRuleId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -1071,7 +1087,8 @@ class Companies extends MapperAbstract
                   ->setExternallyExtraOpts($data->{'externallyExtraOpts'})
                   ->setRecordingsLimitMB($data->{'recordingsLimitMB'})
                   ->setRecordingsLimitEmail($data->{'recordingsLimitEmail'})
-                  ->setOutgoingDDIId($data->{'outgoingDDIId'});
+                  ->setOutgoingDDIId($data->{'outgoingDDIId'})
+                  ->setOutgoingDDIRuleId($data->{'outgoingDDIRuleId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Companies) {
             $entry->setId($data->getId())
@@ -1099,7 +1116,8 @@ class Companies extends MapperAbstract
                   ->setExternallyExtraOpts($data->getExternallyExtraOpts())
                   ->setRecordingsLimitMB($data->getRecordingsLimitMB())
                   ->setRecordingsLimitEmail($data->getRecordingsLimitEmail())
-                  ->setOutgoingDDIId($data->getOutgoingDDIId());
+                  ->setOutgoingDDIId($data->getOutgoingDDIId())
+                  ->setOutgoingDDIRuleId($data->getOutgoingDDIRuleId());
 
         }
 

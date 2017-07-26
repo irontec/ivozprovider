@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-11 13:18+0200\n"
+"POT-Creation-Date: 2017-07-20 17:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1080,8 +1080,8 @@ msgid ""
 "immediately."
 msgstr ""
 "Los origenes externos serán comprobados contra las :ref:`match_lists` "
-"asociadas, si se encuentra una coincidencia, la llamada será directamente "
-"rechazada."
+"asociadas, si se encuentra una coincidencia, la llamada será directamente"
+" rechazada."
 
 #: ../../pbx_features/external_filters.rst:86
 msgid "White list"
@@ -1095,9 +1095,10 @@ msgid ""
 "account that black listed are checked before white lists."
 msgstr ""
 "Los origenes externos serán comprobados contra las :ref:`match_lists` "
-"asociadas, si se encuentra una coincidencia, la llamada será directamente "
-"enrutada al destino del DDI, ignorando el proceso del filtro. Tenga en cuenta "
-"que las listas negras son comprobadas antes que las listas blancas."
+"asociadas, si se encuentra una coincidencia, la llamada será directamente"
+" enrutada al destino del DDI, ignorando el proceso del filtro. Tenga en "
+"cuenta que las listas negras son comprobadas antes que las listas "
+"blancas."
 
 #: ../../pbx_features/external_filters.rst:92
 msgid "Holiday locution"
@@ -1900,8 +1901,8 @@ msgid ""
 "Mach Lists are designed to group well known numbers or patterns in order "
 "to use them in specific treatments."
 msgstr ""
-"Las listas de coincidencia estan diseñadas para agrupar números conocidos o "
-"patrones numéricos para asociarlos a distintos tratamientos."
+"Las listas de coincidencia estan diseñadas para agrupar números conocidos"
+" o patrones numéricos para asociarlos a distintos tratamientos."
 
 #: ../../pbx_features/match_lists.rst:10
 msgid ""
@@ -1909,48 +1910,48 @@ msgid ""
 "origin or the destination of the call, so be sure to use distinctive "
 "names for your match lists."
 msgstr ""
-"En función de la sección en la que se empleen, las listas se emplearán para "
-"comprobar un origen o destino de la llamada, por lo que se recomienda emplear "
-"nombres distintivos para las listas de coincidencia."
+"En función de la sección en la que se empleen, las listas se emplearán "
+"para comprobar un origen o destino de la llamada, por lo que se "
+"recomienda emplear nombres distintivos para las listas de coincidencia."
 
 #: ../../pbx_features/match_lists.rst:14
 msgid ""
 "For example, like mentioned in the previous section "
-":ref:`external_filters`, white and black lists contain one or more "
-"match lists. In this case, the **origin** of the call will be matched "
-"agains the list entries to determime if the treatment of **skipping** the"
-" filter or **rejecting** the call will be applied."
+":ref:`external_filters`, white and black lists contain one or more match "
+"lists. In this case, the **origin** of the call will be matched agains "
+"the list entries to determime if the treatment of **skipping** the filter"
+" or **rejecting** the call will be applied."
 msgstr ""
 "Por ejemplo, como se menciona en la seccion anterior "
-":ref:`external_filters`, las listas blancas y negras pueden contener una o más "
-"listas de coincidencia. En este caso, el **origen** de la llamadas será comprobado "
-"contra las entradas de la lista para determinar si se deberá **ignorar** el filtro "
-"o **rechazar** la llamada directamente."
+":ref:`external_filters`, las listas blancas y negras pueden contener una "
+"o más listas de coincidencia. En este caso, el **origen** de la llamadas "
+"será comprobado contra las entradas de la lista para determinar si se "
+"deberá **ignorar** el filtro o **rechazar** la llamada directamente."
 
 #: ../../pbx_features/match_lists.rst:19
 msgid ""
 "Match lists themselfs have no behaviour associated, they only provide a "
 "common way for all process to determine if a number has a treatment."
 msgstr ""
-"Las listas de coincidencia por si mismas no tiene un comportamiento asociado, "
-"tan solo proveen una manera común de agrupar números y patrones que serán "
-"empleados en otros procesos."
+"Las listas de coincidencia por si mismas no tiene un comportamiento "
+"asociado, tan solo proveen una manera común de agrupar números y patrones"
+" que serán empleados en otros procesos."
 
 #: ../../pbx_features/match_lists.rst:22
 msgid ""
 "Beware that numbers of a Match list are checked against origins or "
 "destinations depending on the configuration section that use them."
 msgstr ""
-"Tenga en cuenta que en función de donde se emplee la lista, se comprobarán "
-"el origen o el destino de la llamada."
+"Tenga en cuenta que en función de donde se emplee la lista, se "
+"comprobarán el origen o el destino de la llamada."
 
 #: ../../pbx_features/match_lists.rst:26
 msgid ""
 "The section **Company configuration** > **Match Lists** allows to "
 "configure different items that will group the numbers and patterns."
 msgstr ""
-"La sección **Configuración de Empresa** > **Listas de coincidencia** permite "
-"definir las diferentes listas que agruparán números y patrones."
+"La sección **Configuración de Empresa** > **Listas de coincidencia** "
+"permite definir las diferentes listas que agruparán números y patrones."
 
 #: ../../pbx_features/match_lists.rst:41
 msgid "After creating a new Match list, you can include numbers and patterns."
@@ -1962,8 +1963,8 @@ msgid ""
 "`Regular Expressions "
 "<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_"
 msgstr ""
-"Tal como se muestra, la lista puede contener números específicos o grupos "
-"empleando `Expresiones regulares "
+"Tal como se muestra, la lista puede contener números específicos o grupos"
+" empleando `Expresiones regulares "
 "<http://php.net/manual/en/reference.pcre.pattern.syntax.php>`_"
 
 #: ../../pbx_features/music_on_hold.rst:5
@@ -2040,6 +2041,107 @@ msgid ""
 msgstr ""
 "Después de *encodear*, podemos descargar el archivo original y el "
 "convertido sin más que editar el ítem:"
+
+#: ../../pbx_features/outgoingddi_rules.rst:5
+msgid "Outgoing DDI Rules"
+msgstr "Reglas DDI de salida"
+
+#: ../../pbx_features/outgoingddi_rules.rst:7
+msgid ""
+"Most calling entities in IvozProvider require an outgoing DDI when "
+"placing calls to external numbers. This includes: Users, Friends, Faxes, "
+"Retail Accounts, and so on.."
+msgstr ""
+"La mayoría de entidades en IvozProvider requiren un DDI saliente para "
+"poder realizar llamadas a números externos. Esto incluye: Usuarios, Friends, "
+"Faxes, Cuentas Retails, etc.."
+
+#: ../../pbx_features/outgoingddi_rules.rst:11
+msgid ""
+"But there are some cases when a single outgoing DDI is not enough, and "
+"the presented DDI depends on the called number. To archive this dynamic "
+"outgoing DDI selection you can use Outgoing DDI rules."
+msgstr ""
+"Pero existen algunos casos en los que un solo DDI de salida no es suficiente, y "
+"el DDI presentado depende del número llamado. Para lograr esta selección dinámica "
+"de DDI saliente se pueden emplear las Reglas DDI de salida."
+
+#: ../../pbx_features/outgoingddi_rules.rst:15
+msgid ""
+"Before creating a new rule, it would be required to frist group the "
+"destination numbers in :ref:`match_lists`."
+msgstr ""
+"Antes de crear una nueva regla, es necesario primero agrupar los números "
+"destino en :ref:`match_lists`."
+
+#: ../../pbx_features/outgoingddi_rules.rst:18
+msgid ""
+"For this example, we will create a match list of corporative mobiles with"
+" all the mobile numbers of our company workers. When we call to those "
+"numbers, we will keep the original outgoing DDI assigned to the user, and"
+" for the rest of the cases we will force the DDI to the main company "
+"outgoing DDI."
+msgstr ""
+"Para este ejemplo, crearemos una lista de los números móviles corporativos"
+" con todos los números de los trabajadores de la compañía. Cuando llamemos a "
+"esos números, mantendremos el DDI de salida original asignado al usuario, y "
+"para el resto de casos, forzaremos el DDI al principal de la compañía."
+
+#: ../../pbx_features/outgoingddi_rules.rst:24
+msgid "Create a new Outgoing DDI Rule"
+msgstr "Crear una nueva Regla DDI de salida"
+
+#: ../../pbx_features/outgoingddi_rules.rst:25
+msgid ""
+"The main creation screen defines the action that will take place when no "
+"rule matches the dialed destination, so we define to force the main "
+"company DDI here."
+msgstr ""
+"La pantalla principal de creación define la acción que se realizará cuando "
+"el destino no coincida con ninguna de las reglas, así que definiremos aquí "
+"la acción de forzar el DDI principal de la compañía."
+
+#: ../../pbx_features/outgoingddi_rules.rst:40
+msgid "Assign rule lists actions"
+msgstr "Asignar acciones a las reglas"
+
+#: ../../pbx_features/outgoingddi_rules.rst:41
+msgid ""
+"Now we add a new rule that will match our mobiles to make the user's "
+"outgoing DDI be kept uptouched."
+msgstr ""
+"Ahora añadiremos una nueva regla que coincidirá con nuestros móviles para "
+"mantener el DDI saliente del usuario sin tocar."
+
+#: ../../pbx_features/outgoingddi_rules.rst:56
+msgid "Assign rule to callers"
+msgstr "Asignar reglas a los llamantes"
+
+#: ../../pbx_features/outgoingddi_rules.rst:57
+msgid ""
+"At last, we have to configure who will use this rule to dynamically "
+"change it's presentation number. We can do this in the **Company's edit "
+"screen** or the **Users's edit screen**."
+msgstr ""
+"Como último paso, tendremos que configurar quien emplea esta regla para cambiar "
+"dinámicamente su número presentado. Esto puede realizarse en la **pantalla de "
+"edición de Compañía** o en la **pantalla de edición de Usuario**."
+
+#: ../../pbx_features/outgoingddi_rules.rst:71
+msgid ""
+"In this case, the User will present 777777777 DDI when calling Coporative"
+" mobiles and 666666666 when calling the rest of the external numbers."
+msgstr ""
+"En este caso, el usuario presentará el DDI 777777777 cuando llame a los móviles "
+"corporativos y 666666666 cuando llame al resto de números externos."
+
+#: ../../pbx_features/outgoingddi_rules.rst:74
+msgid ""
+"Current implementation of Outgoing DDI rules won't work for diverted "
+"calls (out of schedule, holidays or user's call forward settings)."
+msgstr ""
+"La implementación actual de Reglas DDI de salida no funciona para llamadas "
+"desviadas (fuera de horario, festivo o desvíos de usuario)."
 
 #: ../../pbx_features/queues.rst:3
 msgid "Queues"

@@ -11,38 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-msgid "Permalink to this headline"
-msgstr "Permalink to this headline"
-
-msgid "Permalink to this definition"
-msgstr "Permalink to this definition"
-
-msgid "Hide Search Matches"
-msgstr "Hide Search Matches"
-
-msgid "Searching"
-msgstr "Searching"
-
-msgid "Preparing search..."
-msgstr "Preparing search..."
-
-msgid "Search Results"
-msgstr "Search Results"
-
-msgid ""
-"Your search did not match any documents. Please make sure that all words are "
-"spelled correctly and that you've selected enough categories."
-msgstr ""
-"Your search did not match any documents. Please make sure that all words are "
-"spelled correctly and that you've selected enough categories."
-
-#, javascript-format
-msgid "Search finished, found %s page(s) matching the search query."
-msgstr "Search finished, found %s page(s) matching the search query."
-
-msgid ", in "
-msgstr ", in "
-
 msgid "Please, chose a file to import"
 msgstr "Please, chose a file to import"
 
@@ -1049,6 +1017,12 @@ msgstr "Invalid value for bounced"
 msgid "Invalid value for direction"
 msgstr "Invalid value for direction"
 
+msgid "Invalid value for defaultAction"
+msgstr "Invalid value for defaultAction"
+
+msgid "Invalid value for action"
+msgstr "Invalid value for action"
+
 msgid "Invalid value for fullTargetType"
 msgstr "Invalid value for fullTargetType"
 
@@ -1430,11 +1404,10 @@ msgstr "Template testing"
 msgid "Invoices"
 msgstr "Invoices"
 
-#, fuzzy
 msgid "Invoice"
 msgid_plural "Invoices"
 msgstr[0] "Invoice"
-msgstr[1] "Invoice"
+msgstr[1] "Invoices"
 
 msgid "Invoice(s)"
 msgstr "Invoice(s)"
@@ -1592,6 +1565,19 @@ msgid "Music on hold"
 msgid_plural "Musics on hold"
 msgstr[0] "Music on hold"
 msgstr[1] "Musics on hold"
+
+msgid "Outgoing DDI Rule"
+msgid_plural "Outgoing DDI Rules"
+msgstr[0] "Outgoing DDI Rule"
+msgstr[1] "Outgoing DDI Rules"
+
+msgid "Action Configuration"
+msgstr "Action configuration"
+
+msgid "Outgoing DDI Rule Pattern"
+msgid_plural "Outgoing DDI Rule Patterns"
+msgstr[0] "Outgoing DDI Rule Pattern"
+msgstr[1] "Outgoing DDI Rule Patterns"
 
 msgid "Outgoing routing"
 msgid_plural "Outgoing routing(s)"
@@ -3102,9 +3088,26 @@ msgid_plural "Files for play"
 msgstr[0] "File for play"
 msgstr[1] "Files for play"
 
-#, fuzzy
 msgid "Recording extension"
-msgstr "Recordings"
+msgstr "Recording extension"
+
+msgid "Default Action"
+msgstr "Default Action"
+
+msgid "Keep Original DDI"
+msgstr "Keep Original DDI"
+
+msgid "Force DDI"
+msgstr "Force DDI"
+
+msgid "Forced DDI"
+msgstr "Forced DDI"
+
+msgid "Enter Destination number patterns in E.164 format."
+msgstr "Enter Destination number patterns in E.164 format."
+
+msgid "Action"
+msgstr "Action"
 
 msgid ""
 "You can call this extension from any company terminal to record this locution"
@@ -3574,6 +3577,14 @@ msgstr "Used as voicemail reception and user portal credential"
 msgid "Screen Extension"
 msgstr "Screen Extension"
 
+msgid "Outgoing DDI Rules"
+msgstr "Outgoing DDI Rules"
+
+msgid ""
+"Rules to manipulate outgoingDDI when user directly calls to external numbers."
+msgstr ""
+"Rules to manipulate outgoingDDI when user directly calls to external numbers."
+
 msgid "Do not disturb"
 msgstr "Do not disturb"
 
@@ -3652,8 +3663,3 @@ msgstr "Exec date"
 msgid "Finish date"
 msgstr "Finish date"
 
-#~ msgid "Trunks SIP domain"
-#~ msgstr "Trunks SIP domain"
-
-#~ msgid "Domain id"
-#~ msgstr "Domain"
