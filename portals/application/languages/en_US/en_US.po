@@ -3106,6 +3106,11 @@ msgstr[1] "Files for play"
 msgid "Recording extension"
 msgstr "Recordings"
 
+msgid ""
+"You can call this extension from any company terminal to record this locution"
+msgstr ""
+"You can call this extension from any company terminal to record this locution"
+
 msgid "Regular Expression"
 msgstr "Regular Expression"
 
