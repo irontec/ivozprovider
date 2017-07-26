@@ -73,6 +73,7 @@ production:
           disallow: true
           lastProvisionDate: true
           domain: true
+          status: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
           label: _("Login Info")

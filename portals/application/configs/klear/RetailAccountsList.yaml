@@ -34,6 +34,11 @@ production:
           ip: true
           port: true
           languageId: true
+        order:
+          name: true
+          description: true
+          outgoingDDIId: true
+          status: true
         options:
           title: _("Options")
           screens:
@@ -60,7 +65,7 @@ production:
       plugin: passwordgennew
       forcedValues:
         <<: *forcedCompany
-        <<: *forcedBrand        
+        <<: *forcedBrand
       fields:
         blacklist:
           domain: true
@@ -76,6 +81,7 @@ production:
           allow: true
           from_domain: true
           languageId: true
+          status: true
         order: &retailAccounts_orderLink
           name: true
           description: true
@@ -136,11 +142,12 @@ production:
           callerid_update_header: true
           auth_needed: true
           disallow: true
+          status: true
       fixedPositions:
           <<: *retailAccounts_FixedPositionsLink
       forcedValues:
         <<: *forcedCompany
-        <<: *forcedBrand        
+        <<: *forcedBrand
 
   dialogs: &retailAccounts_dialogsLink
     retailAccountsDel_dialog: &retailAccountsDel_dialogLink
