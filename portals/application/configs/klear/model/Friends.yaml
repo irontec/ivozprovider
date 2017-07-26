@@ -258,6 +258,13 @@ production:
             template: '%name%'
           order: name
         'null': _("Company's default")
+    status:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getFriendStatus
 staging:
   _extends: production
 testing:

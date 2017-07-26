@@ -119,13 +119,13 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    terminalStatus:
+    status:
       title: _('Status')
       type: ghost
       dirty: true
       source:
-        class: IvozProvider_Klear_Ghost_TerminalStatus
-        method: getData
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getTerminalStatus
 staging:
   _extends: production
 testing:
