@@ -74,6 +74,7 @@ class Users extends MapperAbstract
                 'countryId' => $model->getCountryId(),
                 'languageId' => $model->getLanguageId(),
                 'areaCode' => $model->getAreaCode(),
+                'gsQRCode' => $model->getGsQRCode(),
             );
         } else {
             $result = array();
@@ -862,7 +863,8 @@ class Users extends MapperAbstract
                   ->setTokenKey($data['tokenKey'])
                   ->setCountryId($data['countryId'])
                   ->setLanguageId($data['languageId'])
-                  ->setAreaCode($data['areaCode']);
+                  ->setAreaCode($data['areaCode'])
+                  ->setGsQRCode($data['gsQRCode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -889,7 +891,8 @@ class Users extends MapperAbstract
                   ->setTokenKey($data->{'tokenKey'})
                   ->setCountryId($data->{'countryId'})
                   ->setLanguageId($data->{'languageId'})
-                  ->setAreaCode($data->{'areaCode'});
+                  ->setAreaCode($data->{'areaCode'})
+                  ->setGsQRCode($data->{'gsQRCode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Users) {
             $entry->setId($data->getId())
@@ -917,7 +920,8 @@ class Users extends MapperAbstract
                   ->setTokenKey($data->getTokenKey())
                   ->setCountryId($data->getCountryId())
                   ->setLanguageId($data->getLanguageId())
-                  ->setAreaCode($data->getAreaCode());
+                  ->setAreaCode($data->getAreaCode())
+                  ->setGsQRCode($data->getGsQRCode());
 
         }
 

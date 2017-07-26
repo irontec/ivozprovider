@@ -46,7 +46,41 @@ angular
             $scope.userAgent = localStorage.getItem('userAgent');
             $scope.ipRegistered = localStorage.getItem('ipRegistered');
         }
-        
+
+        var gsQRCode = localStorage.getItem('gsQRCode');
+
+        if (gsQRCode == 1) {
+
+            var terminalName = localStorage.getItem('terminalName');
+            var terminalPassword = localStorage.getItem('terminalPassword');
+            var extensionNumber = localStorage.getItem('extensionNumber');
+            var companyName = localStorage.getItem('companyName');
+            var companyDomain = localStorage.getItem('companyDomain');
+            var userName = localStorage.getItem('userName');
+            var voiceMail = localStorage.getItem('voiceMail');
+
+            $scope.gsQRCode = true;
+
+
+            $scope.QRCode = '<?xml version="1.0" encoding="utf-8"?>'
+                + '<AccountConfig version="1"><Account>'
+                + '<RegisterServer>' + companyDomain + '</RegisterServer>'
+                + '<UserID>' + terminalName + '</UserID>'
+                + '<AuthID>' + terminalName + '</AuthID>'
+                + '<AuthPass>' + terminalPassword + '</AuthPass>'
+                + '<AccountName>' + extensionNumber + ' ' + companyName + '</AccountName>'
+                + '<DisplayName>' + userName + '</DisplayName>'
+                + '<Voicemail>' + voiceMail + '</Voicemail>'
+                + '</Account>'
+                + '</AccountConfig>';
+
+        } else {
+
+            $scope.gsQRCode = false;
+            $scope.QRCode = '';
+
+        }
+
     };
     
     loadData();

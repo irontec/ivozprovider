@@ -3662,6 +3662,12 @@ msgstr ""
 "número ilimitado de llamadas siempre y cuando se cumpla la política de "
 "restricción de IPs de la empresa."
 
+msgid "QR Code"
+msgstr "Código QR"
+
+msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
+msgstr "Insertar un código QR al potal de usuario para aprovisionar el softphone GS Wave para dispositivos móviles"
+
 msgid "Module"
 msgstr "Módulo"
 

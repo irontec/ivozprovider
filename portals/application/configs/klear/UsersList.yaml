@@ -37,6 +37,7 @@ production:
           email: true
           active: true
           pass: true
+          gsQRCode: true
           doNotDisturb: true
           timezoneId: true
           extensionId: true
@@ -54,6 +55,7 @@ production:
           active: true
           doNotDisturb: true
           pass: true
+          gsQRCode: true
           timezoneId: true
           callACLId: true
           bossAssistantId: true
@@ -99,6 +101,7 @@ production:
           active: true
           doNotDisturb: true
           pass: true
+          gsQRCode: true
           timezoneId: true
           callACLId: true
           bossAssistantId: true
@@ -164,6 +167,7 @@ production:
           fields:
             active: 1
             pass: 1
+            gsQRCode: 1
         group2:
           label: _("Boss-Assistant")
           colsPerRow: 12

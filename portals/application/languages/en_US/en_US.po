@@ -3645,6 +3645,12 @@ msgstr ""
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "
 "calls unlimited as long as company IP policy is fulfilled."
 
+msgid "QR Code"
+msgstr "QR Code"
+
+msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
+msgstr "Add QR Code to user portal to provision GS Wave mobile softphone"
+
 msgid "Module"
 msgstr "Module"
 

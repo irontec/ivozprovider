@@ -213,6 +213,13 @@ class Users extends ModelAbstract
      */
     protected $_areaCode;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_gsQRCode;
+
 
     /**
      * Parent relation Users_ibfk_1
@@ -464,6 +471,7 @@ class Users extends ModelAbstract
         'countryId'=>'countryId',
         'languageId'=>'languageId',
         'areaCode'=>'areaCode',
+        'gsQRCode'=>'gsQRCode',
     );
 
     /**
@@ -637,6 +645,7 @@ class Users extends ModelAbstract
             'voicemailEnabled' => '1',
             'voicemailSendMail' => '0',
             'voicemailAttachSound' => '1',
+            'gsQRCode' => '0',
         );
 
         $this->_initFileObjects();
@@ -1564,6 +1573,40 @@ class Users extends ModelAbstract
     public function getAreaCode()
     {
         return $this->_areaCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setGsQRCode($data)
+    {
+
+        if ($this->_gsQRCode != $data) {
+            $this->_logChange('gsQRCode', $this->_gsQRCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_gsQRCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_gsQRCode = (int) $data;
+
+        } else {
+            $this->_gsQRCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column gsQRCode
+     *
+     * @return int
+     */
+    public function getGsQRCode()
+    {
+        return $this->_gsQRCode;
     }
 
     /**

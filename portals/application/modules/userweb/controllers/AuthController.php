@@ -55,6 +55,30 @@ class Userweb_AuthController extends Iron_Controller_Rest_BaseController
             }
         }
 
+        $gsQRCode = $user->getGsQRCode();
+        $result['gsQRCode'] = $gsQRCode;
+
+        if ($gsQRCode) {
+
+            if (!empty($terminal)) {
+                $terminalPassword = $terminal->getPassword();
+                $result['terminalName'] = $terminalName;
+                $result['terminalPassword'] = $terminalPassword;
+            }
+
+            $extension = $user->getExtension();
+
+            if (!empty($extension)) {
+                $extensionNumber = $extension->getNumber();
+                $result['extensionNumber'] = $extensionNumber;
+            }
+
+            $result['companyDomain'] = $user->getCompany()->getDomain();
+
+            $result['voiceMail'] = '*' . $user->getCompany()->getServiceCode('Voicemail');
+
+        }
+
         $result['success'] = true;
         $result['message'] = 'Login Correcto';
         $result['userName'] = $user->getFullName();

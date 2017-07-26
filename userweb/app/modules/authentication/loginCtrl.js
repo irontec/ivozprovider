@@ -39,9 +39,19 @@ angular
                         localStorage.setItem('userAgent', response.userAgent);
                         localStorage.setItem('ipRegistered', response.ipRegistered);
                     }
-                    
+
                     localStorage.setItem('userName', response.userName);
-                    
+
+                    localStorage.setItem('gsQRCode', response.gsQRCode);
+                    if (response.gsQRCode) {
+                        localStorage.setItem('terminalName', response.terminalName);
+                        localStorage.setItem('terminalPassword', response.terminalPassword);
+                        localStorage.setItem('extensionNumber', response.extensionNumber);
+                        localStorage.setItem('companyDomain', response.companyDomain);
+                    }
+
+                    localStorage.setItem('voiceMail', response.voiceMail);
+
                     $location.path('/');
                     
                 } else {
