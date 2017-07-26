@@ -44,11 +44,6 @@ class KamUsersAddress extends Raw\KamUsersAddress
             }
         }
 
-        // Avoid too big ranges
-        if ($mask < 24) {
-                throw new \Exception("Wrong mask, it should be at least /24", 70002);
-        }
-
         // Save validated values
         $model->setIpAddr($ip);
         $model->setMask($mask);
