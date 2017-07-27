@@ -172,6 +172,13 @@ class Users extends ModelAbstract
     protected $_voicemailEnabled;
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_voicemailLocutionId;
+
+    /**
      * Database var type tinyint
      *
      * @var int
@@ -290,6 +297,13 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\OutgoingDDIRules
      */
     protected $_OutgoingDDIRule;
+
+    /**
+     * Parent relation Users_ibfk_15
+     *
+     * @var \IvozProvider\Model\Raw\Locutions
+     */
+    protected $_VoicemailLocution;
 
 
     /**
@@ -465,6 +479,7 @@ class Users extends ModelAbstract
         'maxCalls'=>'maxCalls',
         'externalIpCalls'=>'externalIpCalls',
         'voicemailEnabled'=>'voicemailEnabled',
+        'voicemailLocutionId'=>'voicemailLocutionId',
         'voicemailSendMail'=>'voicemailSendMail',
         'voicemailAttachSound'=>'voicemailAttachSound',
         'tokenKey'=>'tokenKey',
@@ -529,6 +544,10 @@ class Users extends ModelAbstract
             'UsersIbfk14'=> array(
                     'property' => 'OutgoingDDIRule',
                     'table_name' => 'OutgoingDDIRules',
+                ),
+            'UsersIbfk15'=> array(
+                    'property' => 'VoicemailLocution',
+                    'table_name' => 'Locutions',
                 ),
         ));
 
@@ -1376,6 +1395,40 @@ class Users extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
+    public function setVoicemailLocutionId($data)
+    {
+
+        if ($this->_voicemailLocutionId != $data) {
+            $this->_logChange('voicemailLocutionId', $this->_voicemailLocutionId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_voicemailLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_voicemailLocutionId = (int) $data;
+
+        } else {
+            $this->_voicemailLocutionId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column voicemailLocutionId
+     *
+     * @return int
+     */
+    public function getVoicemailLocutionId()
+    {
+        return $this->_voicemailLocutionId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
     public function setVoicemailSendMail($data)
     {
 
@@ -2117,6 +2170,57 @@ class Users extends ModelAbstract
         }
 
         return $this->_OutgoingDDIRule;
+    }
+
+    /**
+     * Sets parent relation VoicemailLocution
+     *
+     * @param \IvozProvider\Model\Raw\Locutions $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setVoicemailLocution(\IvozProvider\Model\Raw\Locutions $data)
+    {
+        $this->_VoicemailLocution = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setVoicemailLocutionId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk15');
+        return $this;
+    }
+
+    /**
+     * Gets parent VoicemailLocution
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function getVoicemailLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk15';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_VoicemailLocution = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_VoicemailLocution;
     }
 
     /**

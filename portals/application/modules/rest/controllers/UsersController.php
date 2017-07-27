@@ -52,6 +52,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
+     *     'voicemailLocutionId': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
@@ -80,6 +81,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
+     *     'voicemailLocutionId': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
@@ -124,6 +126,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'maxCalls',
                 'externalIpCalls',
                 'voicemailEnabled',
+                'voicemailLocutionId',
                 'voicemailSendMail',
                 'voicemailAttachSound',
                 'tokenKey',
@@ -224,6 +227,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
+     *     'voicemailLocutionId': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
@@ -267,6 +271,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'maxCalls',
                 'externalIpCalls',
                 'voicemailEnabled',
+                'voicemailLocutionId',
                 'voicemailSendMail',
                 'voicemailAttachSound',
                 'tokenKey',
@@ -333,6 +338,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="voicemailLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="tokenKey", nullable=true, type="varchar", sample="", description="")
@@ -394,6 +400,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="voicemailLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="tokenKey", nullable=true, type="varchar", sample="", description="")
@@ -590,6 +597,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'voicemailLocutionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'voicemailSendMail' => array(
                     'type' => "tinyint",
                     'required' => true,
@@ -729,6 +741,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'voicemailEnabled' => array(
                     'type' => "tinyint",
                     'required' => true,
+                    'comment' => '',
+                ),
+                'voicemailLocutionId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'voicemailSendMail' => array(

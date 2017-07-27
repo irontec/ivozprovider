@@ -692,6 +692,20 @@ class Locutions extends MapperAbstract
                     }
                 }
 
+                if ($model->getUsers(null, null, true) !== null) {
+                    $users = $model->getUsers();
+
+                    if (!is_array($users)) {
+
+                        $users = array($users);
+                    }
+
+                    foreach ($users as $value) {
+                        $value->setVoicemailLocutionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {
