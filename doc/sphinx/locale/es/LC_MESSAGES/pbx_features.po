@@ -1559,7 +1559,7 @@ msgstr ""
 "SIP de una llamada de un terminal."
 
 #: ../../pbx_features/huntgroups.rst:5
-msgid "Hunt gorups"
+msgid "Hunt groups"
 msgstr "Grupos de salto"
 
 #: ../../pbx_features/huntgroups.rst:7
@@ -2062,9 +2062,10 @@ msgid ""
 "the presented DDI depends on the called number. To archive this dynamic "
 "outgoing DDI selection you can use Outgoing DDI rules."
 msgstr ""
-"Pero existen algunos casos en los que un solo DDI de salida no es suficiente, y "
-"el DDI presentado depende del número llamado. Para lograr esta selección dinámica "
-"de DDI saliente se pueden emplear las Reglas DDI de salida."
+"Pero existen algunos casos en los que un solo DDI de salida no es "
+"suficiente, y el DDI presentado depende del número llamado. Para lograr "
+"esta selección dinámica de DDI saliente se pueden emplear las Reglas DDI "
+"de salida."
 
 #: ../../pbx_features/outgoingddi_rules.rst:15
 msgid ""
@@ -2082,10 +2083,11 @@ msgid ""
 " for the rest of the cases we will force the DDI to the main company "
 "outgoing DDI."
 msgstr ""
-"Para este ejemplo, crearemos una lista de los números móviles corporativos"
-" con todos los números de los trabajadores de la compañía. Cuando llamemos a "
-"esos números, mantendremos el DDI de salida original asignado al usuario, y "
-"para el resto de casos, forzaremos el DDI al principal de la compañía."
+"Para este ejemplo, crearemos una lista de los números móviles "
+"corporativos con todos los números de los trabajadores de la compañía. "
+"Cuando llamemos a esos números, mantendremos el DDI de salida original "
+"asignado al usuario, y para el resto de casos, forzaremos el DDI al "
+"principal de la compañía."
 
 #: ../../pbx_features/outgoingddi_rules.rst:24
 msgid "Create a new Outgoing DDI Rule"
@@ -2097,9 +2099,9 @@ msgid ""
 "rule matches the dialed destination, so we define to force the main "
 "company DDI here."
 msgstr ""
-"La pantalla principal de creación define la acción que se realizará cuando "
-"el destino no coincida con ninguna de las reglas, así que definiremos aquí "
-"la acción de forzar el DDI principal de la compañía."
+"La pantalla principal de creación define la acción que se realizará "
+"cuando el destino no coincida con ninguna de las reglas, así que "
+"definiremos aquí la acción de forzar el DDI principal de la compañía."
 
 #: ../../pbx_features/outgoingddi_rules.rst:40
 msgid "Assign rule lists actions"
@@ -2110,8 +2112,8 @@ msgid ""
 "Now we add a new rule that will match our mobiles to make the user's "
 "outgoing DDI be kept uptouched."
 msgstr ""
-"Ahora añadiremos una nueva regla que coincidirá con nuestros móviles para "
-"mantener el DDI saliente del usuario sin tocar."
+"Ahora añadiremos una nueva regla que coincidirá con nuestros móviles para"
+" mantener el DDI saliente del usuario sin tocar."
 
 #: ../../pbx_features/outgoingddi_rules.rst:56
 msgid "Assign rule to callers"
@@ -2123,25 +2125,27 @@ msgid ""
 "change it's presentation number. We can do this in the **Company's edit "
 "screen** or the **Users's edit screen**."
 msgstr ""
-"Como último paso, tendremos que configurar quien emplea esta regla para cambiar "
-"dinámicamente su número presentado. Esto puede realizarse en la **pantalla de "
-"edición de Compañía** o en la **pantalla de edición de Usuario**."
+"Como último paso, tendremos que configurar quien emplea esta regla para "
+"cambiar dinámicamente su número presentado. Esto puede realizarse en la "
+"**pantalla de edición de Compañía** o en la **pantalla de edición de "
+"Usuario**."
 
 #: ../../pbx_features/outgoingddi_rules.rst:71
 msgid ""
 "In this case, the User will present 777777777 DDI when calling Coporative"
 " mobiles and 666666666 when calling the rest of the external numbers."
 msgstr ""
-"En este caso, el usuario presentará el DDI 777777777 cuando llame a los móviles "
-"corporativos y 666666666 cuando llame al resto de números externos."
+"En este caso, el usuario presentará el DDI 777777777 cuando llame a los "
+"móviles corporativos y 666666666 cuando llame al resto de números "
+"externos."
 
 #: ../../pbx_features/outgoingddi_rules.rst:74
 msgid ""
 "Current implementation of Outgoing DDI rules won't work for diverted "
 "calls (out of schedule, holidays or user's call forward settings)."
 msgstr ""
-"La implementación actual de Reglas DDI de salida no funciona para llamadas "
-"desviadas (fuera de horario, festivo o desvíos de usuario)."
+"La implementación actual de Reglas DDI de salida no funciona para "
+"llamadas desviadas (fuera de horario, festivo o desvíos de usuario)."
 
 #: ../../pbx_features/queues.rst:3
 msgid "Queues"
@@ -2422,7 +2426,6 @@ msgstr ""
 "**Servicios**:"
 
 #: ../../pbx_features/services.rst:32
-#, fuzzy
 msgid ""
 "This service allows capturing a ringing call from another terminal by "
 "calling the code followed by the extension from the target user."
@@ -2879,11 +2882,11 @@ msgstr ""
 msgid "Voicemail"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:90
+#: ../../pbx_features/users.rst:88
 msgid "VoiceMail enabled"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:92
+#: ../../pbx_features/users.rst:90
 msgid ""
 "Enables or disables the **existance** of a users voicemail. This only "
 "makes the voicemail available to be routed as described in the section "
@@ -2893,11 +2896,26 @@ msgstr ""
 " de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá que "
 "desviar las llamadas que queramos al buzón."
 
+#: ../../pbx_features/users.rst:93
+msgid "Voicemail Locution"
+msgstr "Locución de buzón"
+
 #: ../../pbx_features/users.rst:95
+msgid ""
+"If set, this locution is played as voicemail welcome message when a "
+"voicemail for this user is going to be recorded. This only applies for "
+"call forwardings to voicemail described in the section "
+":ref:`forward to voicemail <fwd_to_vm>`."
+msgstr ""
+"Esta locución se reproduce como locución de bienvenida al buzón de voz "
+"cuando alguien va a dejar un mensaje de voz al usuario. Solo se reproduce "
+"para los desvíos al buzón de voz descritos en :ref:`desvíos a buzón <fwd_to_vm>`."
+
+#: ../../pbx_features/users.rst:98
 msgid "Email notification"
 msgstr "Notificar por email"
 
-#: ../../pbx_features/users.rst:97
+#: ../../pbx_features/users.rst:100
 msgid ""
 "Send an email to the configured user address when a new voicemail is "
 "received."
@@ -2905,19 +2923,29 @@ msgstr ""
 "Mandar a la dirección del usuario un correo notificando del mensaje de "
 "voz."
 
-#: ../../pbx_features/users.rst:99
+#: ../../pbx_features/users.rst:102
 msgid "Attach sounds:"
 msgstr "Adjuntar audio del mensaje"
 
-#: ../../pbx_features/users.rst:101
+#: ../../pbx_features/users.rst:104
 msgid "Attach the audio message to the sent email."
 msgstr "Adjuntar o no en dicho mail el audio del mensaje"
 
-#: ../../pbx_features/users.rst:105
+#: ../../pbx_features/users.rst:106
+msgid ""
+"If voicemail locution is not assigned, default locution will be used as "
+"long as the user has not recorded a custom message through the voicemail "
+"menu (calling to voicemail service code)."
+msgstr ""
+"Si no se configura ninguna locución de buzón, se utilizará la locución "
+"por defecto, siempre y cuando el usuario no haya grabado su locución personal "
+"utilizando el menú de voz (llamando al código de servicio del buzón de voz)."
+
+#: ../../pbx_features/users.rst:112
 msgid "Boss-Assistant"
 msgstr "Jefe-Asistente"
 
-#: ../../pbx_features/users.rst:109
+#: ../../pbx_features/users.rst:116
 msgid ""
 "This feature will turn the user into a boss that can only be directly "
 "call by:"
@@ -2925,45 +2953,45 @@ msgstr ""
 "La funcionalidad jefe-asistente impide que un usuario sea molestado por "
 "nadie que no sea:"
 
-#: ../../pbx_features/users.rst:111
+#: ../../pbx_features/users.rst:118
 msgid "The selected assistant."
 msgstr "Su asistente."
 
-#: ../../pbx_features/users.rst:113
+#: ../../pbx_features/users.rst:120
 msgid "Any exception defined in the whitelist regular expression."
 msgstr "Las excepciones que él defina."
 
-#: ../../pbx_features/users.rst:115
+#: ../../pbx_features/users.rst:122
 msgid "The rest of the calls to *a bos* will be redirected to the assistant."
 msgstr "Toda llamada con destino a *un jefe* será desviada al asistente."
 
-#: ../../pbx_features/users.rst:118
+#: ../../pbx_features/users.rst:125
 msgid "Is boss"
 msgstr "Jefe"
 
-#: ../../pbx_features/users.rst:120
+#: ../../pbx_features/users.rst:127
 msgid "Determines if this user is a boss."
 msgstr "Indica que el usuario en cuestión es jefe o no."
 
-#: ../../pbx_features/users.rst:121
+#: ../../pbx_features/users.rst:128
 msgid "Assistant"
 msgstr "Asistente"
 
-#: ../../pbx_features/users.rst:123
+#: ../../pbx_features/users.rst:130
 msgid "Who will receive the redirected calls of this boss."
 msgstr "Si el usuario es jefe, indica quién es su asistente."
 
-#: ../../pbx_features/users.rst:124
+#: ../../pbx_features/users.rst:131
 msgid "Whitelist regular expression."
 msgstr "Whitelist jefe/asistente"
 
-#: ../../pbx_features/users.rst:126
+#: ../../pbx_features/users.rst:133
 msgid ""
 "Regular expresion to match numbers that are allowed to call directly to "
 "the boss."
 msgstr "Permite indicar utilizando expresiones regulares las excepciones deseadas."
 
-#: ../../pbx_features/users.rst:129
+#: ../../pbx_features/users.rst:136
 msgid ""
 "With the setup in the image, every call to *Alice* will be redirected to "
 "*Bob*, except the ones placed by *Bob* itself and those coming from the "
@@ -2973,11 +3001,11 @@ msgstr ""
 "*Bob*, salvo las que haga el propio *Bob* y el número de teléfono 945 945"
 " 945."
 
-#: ../../pbx_features/users.rst:135
+#: ../../pbx_features/users.rst:142
 msgid "Group Configuration"
 msgstr "Pertenencia a grupos"
 
-#: ../../pbx_features/users.rst:139
+#: ../../pbx_features/users.rst:146
 msgid ""
 "As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
 " the user can be part of one or more huntgroups and pickup groups."
@@ -2986,7 +3014,7 @@ msgstr ""
 ":ref:`capture_groups`, un usuario puede pertenecer a uno o a varios "
 "grupos de captura y grupos de salto."
 
-#: ../../pbx_features/users.rst:142
+#: ../../pbx_features/users.rst:149
 msgid ""
 "Those groups can be configured from the sections :ref:`huntgroups` and "
 ":ref:`capture_groups` or the user's screen if the groups already exists."
@@ -2996,7 +3024,7 @@ msgstr ""
 " estamos editando a los grupos de captura y grupos de salto deseados que "
 "ya existan."
 
-#: ../../pbx_features/users.rst:145
+#: ../../pbx_features/users.rst:152
 msgid ""
 "You can also configure the user's **hunt groups** from the icon in each "
 "user line of the users list."
@@ -3004,17 +3032,17 @@ msgstr ""
 "En el caso de la pertenencia a **grupos de salto**, también se puede "
 "configurar desde el listado general:"
 
-#: ../../pbx_features/users.rst:153
+#: ../../pbx_features/users.rst:160
 msgid "User Call Forward"
 msgstr "Desvíos de llamada"
 
-#: ../../pbx_features/users.rst:155
+#: ../../pbx_features/users.rst:162
 msgid "The user's call forward can be configured in the following button:"
 msgstr ""
 "Los desvíos de las llamadas de un usuario concreto se configura pulsando "
 "el siguiente botón:"
 
-#: ../../pbx_features/users.rst:162
+#: ../../pbx_features/users.rst:169
 msgid ""
 "For example, to forward all external calls that are not answered after 15"
 " seconds, we could configure a call forward like this:"
@@ -3023,15 +3051,15 @@ msgstr ""
 "buzón de voz que acabamos de configurar, por ejemplo, habría que "
 "configurar un desvío tal que:"
 
-#: ../../pbx_features/users.rst:168
+#: ../../pbx_features/users.rst:175
 msgid "These are the fields and available values:"
 msgstr "Estos son los campos y los posibles valores:"
 
-#: ../../pbx_features/users.rst:171
+#: ../../pbx_features/users.rst:178
 msgid "Call Type"
 msgstr "Tipo de llamada"
 
-#: ../../pbx_features/users.rst:173
+#: ../../pbx_features/users.rst:180
 msgid ""
 "Determines if the forward must be applied to external, internal or any "
 "type of call."
@@ -3039,23 +3067,23 @@ msgstr ""
 "Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
 "interna o ambas"
 
-#: ../../pbx_features/users.rst:175
+#: ../../pbx_features/users.rst:182
 msgid "Forward type"
 msgstr "Tipo de desvío"
 
-#: ../../pbx_features/users.rst:184
+#: ../../pbx_features/users.rst:191
 msgid "When this forward must be applied:"
 msgstr "Indica cuándo aplica el desvío:"
 
-#: ../../pbx_features/users.rst:178
+#: ../../pbx_features/users.rst:185
 msgid "Inconditional: always"
 msgstr "Incondicional: siempre"
 
-#: ../../pbx_features/users.rst:179
+#: ../../pbx_features/users.rst:186
 msgid "No answer: when the call is not answered in X seconds"
 msgstr "Perdida: cuando no se conteste al de X segundos"
 
-#: ../../pbx_features/users.rst:180
+#: ../../pbx_features/users.rst:187
 msgid ""
 "Busy: When the user is talking to someone (and call waiting is disabled),"
 " when *Do not disturb* is enabled or when the user rejects an incoming "
@@ -3064,7 +3092,7 @@ msgstr ""
 "Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
 "activo)"
 
-#: ../../pbx_features/users.rst:183
+#: ../../pbx_features/users.rst:190
 msgid ""
 "Not registered: when the user SIP terminal is not registered against "
 "IvozProvider."
@@ -3072,27 +3100,27 @@ msgstr ""
 "No registrado: cuando el usuario tenga su terminal sin conectar con "
 "IvozProvider"
 
-#: ../../pbx_features/users.rst:185
+#: ../../pbx_features/users.rst:192
 msgid "Target type"
 msgstr "Tipo de destino"
 
-#: ../../pbx_features/users.rst:189
+#: ../../pbx_features/users.rst:196
 msgid "What route will use the forwaded call."
 msgstr "Indica a dónde se enviará la llamada cuando el desvío aplique:"
 
-#: ../../pbx_features/users.rst:188
+#: ../../pbx_features/users.rst:195
 msgid "VoiceMail"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:189
+#: ../../pbx_features/users.rst:196
 msgid "Number (external)"
 msgstr "Número (externo)"
 
-#: ../../pbx_features/users.rst:190
+#: ../../pbx_features/users.rst:197
 msgid "Extension (internal)"
 msgstr "Extensión (interna)"
 
-#: ../../pbx_features/users.rst:192
+#: ../../pbx_features/users.rst:199
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
