@@ -69,6 +69,7 @@ production:
           countryId: true
           areaCode: true
           voicemailEnabled: true
+          voicemailLocutionId: true
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
@@ -115,6 +116,7 @@ production:
           countryId: true
           areaCode: true
           voicemailEnabled: true
+          voicemailLocutionId: true
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
@@ -189,9 +191,10 @@ production:
             externalIpCalls: 6
         group4:
           label: _("Voicemail")
-          colsPerRow: 3
+          colsPerRow: 2
           fields:
             voicemailEnabled: 1
+            voicemailLocutionId: 1
             voicemailSendMail: 1
             voicemailAttachSound: 1
         group5:
