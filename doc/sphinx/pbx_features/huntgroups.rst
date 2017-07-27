@@ -1,7 +1,7 @@
 .. _huntgroups:
 
 ###########
-Hunt gorups
+Hunt groups
 ###########
 
 The hungroups allows configuring more complex *ringing* process that the 

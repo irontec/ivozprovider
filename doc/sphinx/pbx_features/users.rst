@@ -84,8 +84,6 @@ Basic Configuration
 Voicemail
 *********
 
-.. image:: img/users_edit_vm.png
-
 .. glossary::
 
     VoiceMail enabled
@@ -93,12 +91,21 @@ Voicemail
         This only makes the voicemail available to be routed as described in the 
         section :ref:`forward to voicemail <fwd_to_vm>`.
 
+    Voicemail Locution
+        If set, this locution is played as voicemail welcome message when a voicemail
+        for this user is going to be recorded. This only applies for call forwardings
+        to voicemail described in the section :ref:`forward to voicemail <fwd_to_vm>`.
+
     Email notification
         Send an email to the configured user address when a new voicemail is 
         received.
 
     Attach sounds:
         Attach the audio message to the sent email.
+
+.. note:: If voicemail locution is not assigned, default locution will be used as long as
+          the user has not recorded a custom message through the voicemail menu (calling to
+          voicemail service code).
 
 **************
 Boss-Assistant
