@@ -43,6 +43,7 @@ production:
           country: true
           areaCode: true
           outgoingDDIId: true
+          outgoingDDIRuleId: true
           registryData: true
           externalMaxCalls: true
           defaultTimezoneId: true
@@ -110,6 +111,7 @@ production:
           countryId: true
           areaCode: true
           outgoingDDIId: true
+          outgoingDDIRuleId: true
           languageId: true
           defaultTimezoneId: true
           externallyExtraOpts: true
@@ -166,6 +168,7 @@ production:
           town: ${auth.brand.invoices.disabled}
           province: ${auth.brand.invoices.disabled}
           country: ${auth.brand.invoices.disabled}
+          outgoingDDIRuleId: true
         whitelist:
           id: ${auth.isMainOperator}
         order:
