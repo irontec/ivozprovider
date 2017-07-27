@@ -20,7 +20,8 @@
 namespace IvozProvider\Mapper\Sql;
 class TerminalModels extends Raw\TerminalModels
 {
-    public function save(\IvozProvider\Model\Raw\TerminalModels $model, $forceInsert = false){
+    public function save(\IvozProvider\Model\Raw\TerminalModels $model, $forceInsert = false)
+    {
         $genericMustChange = $model->hasChange("genericTemplate");
         $specificMustChange = $model->hasChange("specificTemplate");
 
@@ -34,28 +35,23 @@ class TerminalModels extends Raw\TerminalModels
         $path = $conf->Iron['fso']['localStoragePath'];
         $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $pk;
 
-        if( $genericMustChange ){
-            try{
+        if ($genericMustChange) {
+            try {
                 $template = $model->getGenericTemplate();
                 $this->createFolder($route);
                 $file = "generic.phtml";
                 $this->saveFiles($file, $route, $template);
-            }
-            catch (\Exception $e){
+
+            } catch (\Exception $e) {
                 throw $e;
             }
         }
 
-        if( $specificMustChange ){
-            try{
-                $template = $model->getSpecificTemplate();
-                $this->createFolder($route);
-                $file = "specific.phtml";
-                $this->saveFiles($file, $route, $template);
-            }
-            catch (\Exception $e){
-                throw $e;
-            }
+        if ($specificMustChange){
+            $template = $model->getSpecificTemplate();
+            $this->createFolder($route);
+            $file = "specific.phtml";
+            $this->saveFiles($file, $route, $template);
         }
 
         return $pk;

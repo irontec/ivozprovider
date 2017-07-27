@@ -1,0 +1,67 @@
+production:
+  class: \IvozProvider\Model\OutgoingDDIRules
+  fields:
+    companyId:
+      title: _('Companyid')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName:
+            fields:
+              - type
+            template: '%type%'
+          order: type
+      default: true
+    name:
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 50
+    defaultAction:
+      title: _('Default Action')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'keep':
+            title: _("Keep Original DDI")
+            visualFilter:
+              show: []
+              hide: ["forcedDDIId"]
+          'force':
+            title: _("Force DDI")
+            visualFilter:
+              show: ["forcedDDIId"]
+              hide: []
+    forcedDDIId:
+      title: _('Forced DDI')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\DDIs
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - DDIE164
+            template: '+%DDIE164%'
+          order: DDIE164
+        'null': _("Company's default")
+    forcedDDI:
+      title: _('Forced DDI')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRule
+        method: getOutgoingRuleForcedDDI
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

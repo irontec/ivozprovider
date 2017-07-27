@@ -133,20 +133,6 @@ class ExternalCallFilters extends ModelAbstract
      */
     protected $_outOfScheduleVoiceMailUserId;
 
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_blackListRegExp;
-
-    /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_whiteListRegExp;
-
 
     /**
      * Parent relation ExternalCallFilters_ibfk_1
@@ -214,6 +200,14 @@ class ExternalCallFilters extends ModelAbstract
     protected $_DDIs;
 
     /**
+     * Dependent relation ExternalCallFilterBlackLists_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ExternalCallFilterBlackLists[]
+     */
+    protected $_ExternalCallFilterBlackLists;
+
+    /**
      * Dependent relation ExternalCallFilterRelCalendars_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -228,6 +222,14 @@ class ExternalCallFilters extends ModelAbstract
      * @var \IvozProvider\Model\Raw\ExternalCallFilterRelSchedules[]
      */
     protected $_ExternalCallFilterRelSchedules;
+
+    /**
+     * Dependent relation ExternalCallFilterWhiteLists_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists[]
+     */
+    protected $_ExternalCallFilterWhiteLists;
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -244,8 +246,6 @@ class ExternalCallFilters extends ModelAbstract
         'outOfScheduleNumberValue'=>'outOfScheduleNumberValue',
         'outOfScheduleExtensionId'=>'outOfScheduleExtensionId',
         'outOfScheduleVoiceMailUserId'=>'outOfScheduleVoiceMailUserId',
-        'blackListRegExp'=>'blackListRegExp',
-        'whiteListRegExp'=>'whiteListRegExp',
     );
 
     /**
@@ -303,6 +303,10 @@ class ExternalCallFilters extends ModelAbstract
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
                 ),
+            'ExternalCallFilterBlackListsIbfk1' => array(
+                    'property' => 'ExternalCallFilterBlackLists',
+                    'table_name' => 'ExternalCallFilterBlackLists',
+                ),
             'ExternalCallFilterRelCalendarsIbfk1' => array(
                     'property' => 'ExternalCallFilterRelCalendars',
                     'table_name' => 'ExternalCallFilterRelCalendars',
@@ -311,11 +315,17 @@ class ExternalCallFilters extends ModelAbstract
                     'property' => 'ExternalCallFilterRelSchedules',
                     'table_name' => 'ExternalCallFilterRelSchedules',
                 ),
+            'ExternalCallFilterWhiteListsIbfk1' => array(
+                    'property' => 'ExternalCallFilterWhiteLists',
+                    'table_name' => 'ExternalCallFilterWhiteLists',
+                ),
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
+            'ExternalCallFilterBlackLists_ibfk_1',
             'ExternalCallFilterRelCalendars_ibfk_1',
-            'ExternalCallFilterRelSchedules_ibfk_1'
+            'ExternalCallFilterRelSchedules_ibfk_1',
+            'ExternalCallFilterWhiteLists_ibfk_1'
         ));
 
         $this->setOnDeleteSetNullRelationships(array(
@@ -846,74 +856,6 @@ class ExternalCallFilters extends ModelAbstract
     }
 
     /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ExternalCallFilters
-     */
-    public function setBlackListRegExp($data)
-    {
-
-        if ($this->_blackListRegExp != $data) {
-            $this->_logChange('blackListRegExp', $this->_blackListRegExp, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_blackListRegExp = $data;
-
-        } else if (!is_null($data)) {
-            $this->_blackListRegExp = (string) $data;
-
-        } else {
-            $this->_blackListRegExp = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column blackListRegExp
-     *
-     * @return string
-     */
-    public function getBlackListRegExp()
-    {
-        return $this->_blackListRegExp;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\ExternalCallFilters
-     */
-    public function setWhiteListRegExp($data)
-    {
-
-        if ($this->_whiteListRegExp != $data) {
-            $this->_logChange('whiteListRegExp', $this->_whiteListRegExp, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_whiteListRegExp = $data;
-
-        } else if (!is_null($data)) {
-            $this->_whiteListRegExp = (string) $data;
-
-        } else {
-            $this->_whiteListRegExp = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column whiteListRegExp
-     *
-     * @return string
-     */
-    public function getWhiteListRegExp()
-    {
-        return $this->_whiteListRegExp;
-    }
-
-    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -1412,6 +1354,96 @@ class ExternalCallFilters extends ModelAbstract
     }
 
     /**
+     * Sets dependent relations ExternalCallFilterBlackLists_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ExternalCallFilterBlackLists
+     * @return \IvozProvider\Model\Raw\ExternalCallFilters
+     */
+    public function setExternalCallFilterBlackLists(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ExternalCallFilterBlackLists === null) {
+
+                $this->getExternalCallFilterBlackLists();
+            }
+
+            $oldRelations = $this->_ExternalCallFilterBlackLists;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ExternalCallFilterBlackLists = array();
+
+        foreach ($data as $object) {
+            $this->addExternalCallFilterBlackLists($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ExternalCallFilterBlackLists_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\ExternalCallFilterBlackLists $data
+     * @return \IvozProvider\Model\Raw\ExternalCallFilters
+     */
+    public function addExternalCallFilterBlackLists(\IvozProvider\Model\Raw\ExternalCallFilterBlackLists $data)
+    {
+        $this->_ExternalCallFilterBlackLists[] = $data;
+        $this->_setLoaded('ExternalCallFilterBlackListsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ExternalCallFilterBlackLists_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ExternalCallFilterBlackLists
+     */
+    public function getExternalCallFilterBlackLists($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExternalCallFilterBlackListsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ExternalCallFilterBlackLists = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ExternalCallFilterBlackLists;
+    }
+
+    /**
      * Sets dependent relations ExternalCallFilterRelCalendars_ibfk_1
      *
      * @param array $data An array of \IvozProvider\Model\Raw\ExternalCallFilterRelCalendars
@@ -1589,6 +1621,96 @@ class ExternalCallFilters extends ModelAbstract
         }
 
         return $this->_ExternalCallFilterRelSchedules;
+    }
+
+    /**
+     * Sets dependent relations ExternalCallFilterWhiteLists_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists
+     * @return \IvozProvider\Model\Raw\ExternalCallFilters
+     */
+    public function setExternalCallFilterWhiteLists(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ExternalCallFilterWhiteLists === null) {
+
+                $this->getExternalCallFilterWhiteLists();
+            }
+
+            $oldRelations = $this->_ExternalCallFilterWhiteLists;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ExternalCallFilterWhiteLists = array();
+
+        foreach ($data as $object) {
+            $this->addExternalCallFilterWhiteLists($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ExternalCallFilterWhiteLists_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists $data
+     * @return \IvozProvider\Model\Raw\ExternalCallFilters
+     */
+    public function addExternalCallFilterWhiteLists(\IvozProvider\Model\Raw\ExternalCallFilterWhiteLists $data)
+    {
+        $this->_ExternalCallFilterWhiteLists[] = $data;
+        $this->_setLoaded('ExternalCallFilterWhiteListsIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ExternalCallFilterWhiteLists_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ExternalCallFilterWhiteLists
+     */
+    public function getExternalCallFilterWhiteLists($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ExternalCallFilterWhiteListsIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ExternalCallFilterWhiteLists = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ExternalCallFilterWhiteLists;
     }
 
     /**

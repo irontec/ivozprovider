@@ -229,6 +229,11 @@ production:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
+        OutgoingDDIRulesList:
+          title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0)
+          class: ui-silk-script-lightning
+          description: _("List of %s", ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0))
+          showOnlyIf: ${auth.companyVPBX}
         ExternalCallFiltersList:
           title: ngettext('External call filter', 'External call filters', 0)
           class: ui-silk-arrow-branch
@@ -239,6 +244,11 @@ production:
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
           showOnlyIf: ${auth.companyRetail}
+        MatchListsList:
+          title: ngettext('Match List', 'Match Lists', 0)
+          class: ui-silk-text-list-numbers
+          description: _("List of %s", ngettext('Match List', 'Match Lists', 0))
+          showOnlyIf: ${auth.companyVPBX}
         CalendarsList:
           title: ngettext('Calendar', 'Calendars', 0)
           class: ui-silk-calendar

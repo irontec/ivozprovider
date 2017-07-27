@@ -1,4 +1,4 @@
-![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.3-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
+![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.4-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -52,8 +52,8 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/in
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|stable (oasis 1.3) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.3-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.3-oasis-i386.iso)|
-|bleeding (oasis 1.4) | [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.4-bleeding-nightly-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://daily.ivozprovider.irontec.com/files/ivozprovider-1.4-bleeding-nightly-i386.iso)|
+|stable (oasis 1.4) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.4.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.4.0-oasis-i386.iso)|
+|bleeding (oasis 1.5) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.5.0-bleeding-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.5.0-bleeding-i386.iso)|
 
 
 ## Documentation
@@ -62,8 +62,8 @@ You can browse online documentation in different formats:
 
 | Language | HTML | LaTeX | PDF | EPUB |
 |----------|:----:|:-----:|:---:|:----:|
-| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.4-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.4-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.4-oasis-es.epub) |
-| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.4-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.4-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.4-oasis-en.epub) |
+| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.5-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.5-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.5-oasis-es.epub) |
+| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.5-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.5-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.5-oasis-en.epub) |
 
 
 ## Feedback & Questions
@@ -84,16 +84,29 @@ Don't hesitate to [contact us](https://www.irontec.com/contacto) for support if 
     Ivoz Provider - Multitenant solution for VoIP telephony providers
     Copyright (C) 2014-2016 Irontec S.L.
 
-    Licensed under the EUPL, Version 1.1 or - as soon they will be approved by the European
-    Commission - subsequent versions of the EUPL (the "Licence"); You may not use this work
-    except in compliance with the Licence.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-    You may obtain a copy of the Licence at:
-    http://ec.europa.eu/idabc/eupl.html
+    In addition, as a special exception, the copyright holders give
+    permission to link the code of portions of this program with the
+    OpenSSL library under certain conditions as described in each
+    individual source file, and distribute linked combinations
+    including the two.
+    You must obey the GNU General Public License in all respects
+    for all of the code used other than OpenSSL.  If you modify
+    file(s) with this exception, you may extend this exception to your
+    version of the file(s), but you are not obligated to do so.  If you
+    do not wish to do so, delete this exception statement from your
+    version.  If you delete this exception statement from all source
+    files in the program, then also delete it here.
 
-    Unless required by applicable law or agreed to in writing, software distributed under
-    the Licence is distributed on an "AS IS" basis, WITHOUT WARRANTIES OR CONDITIONS OF
-    ANY KIND, either express or implied. See the Licence for the specific language
-    governing permissions and limitations under the Licence.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 

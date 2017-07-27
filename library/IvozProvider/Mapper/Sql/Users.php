@@ -20,6 +20,13 @@
 namespace IvozProvider\Mapper\Sql;
 class Users extends Raw\Users
 {
+    /*
+     * Mysql error code list:
+     * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
+     */
+    const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
+    const UNIQUE_EMAIL_CONSTRAINT_NAME = 'duplicateEmail';
+
     protected function _save(
         \IvozProvider\Model\Raw\Users $model,
         $recursive = false,
@@ -116,7 +123,20 @@ class Users extends Raw\Users
             }
         }
 
-        $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+        try {
+            $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+        } catch (\Exception $e) {
+
+            $isDuplicatedEmailError =
+                $e->getCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
+                && strpos($e->getMessage(), self::UNIQUE_EMAIL_CONSTRAINT_NAME);
+
+            if ($isDuplicatedEmailError) {
+                throw new \Exception('Email already in use', 2201, $e);
+            }
+
+            throw $e;
+        }
 
         // Update Asterisk Voicemail
         $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();

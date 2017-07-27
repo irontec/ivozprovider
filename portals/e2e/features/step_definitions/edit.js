@@ -7,7 +7,7 @@ defineSupportCode(({Given, Then, When}) => {
     return edit.save();
   });
 
-  Then(/^I can see save confirmation dialog$/, () => {
+  Then(/^I can see confirmation dialog$/, () => {
     return edit.assertConfirmationDialog();
   });
 

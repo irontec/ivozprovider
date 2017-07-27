@@ -508,6 +508,34 @@ class DDIs extends MapperAbstract
                     }
                 }
 
+                if ($model->getOutgoingDDIRules(null, null, true) !== null) {
+                    $outgoingDDIRules = $model->getOutgoingDDIRules();
+
+                    if (!is_array($outgoingDDIRules)) {
+
+                        $outgoingDDIRules = array($outgoingDDIRules);
+                    }
+
+                    foreach ($outgoingDDIRules as $value) {
+                        $value->setForcedDDIId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getOutgoingDDIRulesPatterns(null, null, true) !== null) {
+                    $outgoingDDIRulesPatterns = $model->getOutgoingDDIRulesPatterns();
+
+                    if (!is_array($outgoingDDIRulesPatterns)) {
+
+                        $outgoingDDIRulesPatterns = array($outgoingDDIRulesPatterns);
+                    }
+
+                    foreach ($outgoingDDIRulesPatterns as $value) {
+                        $value->setForcedDDIId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getRetailAccounts(null, null, true) !== null) {
                     $retailAccounts = $model->getRetailAccounts();
 

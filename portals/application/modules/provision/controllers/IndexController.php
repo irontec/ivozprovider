@@ -75,8 +75,8 @@ class Provision_IndexController extends Zend_Controller_Action
             ->sendResponse();
     }
 
-    protected function _renderPage($template, $path, $terminalModel) {
-
+    protected function _renderPage($template, $path, $terminalModel)
+    {
         $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $terminalModel->getId();
         $this->view->setScriptPath($route);
         $this->view->terminalModel = $terminalModel;
@@ -118,28 +118,74 @@ class Provision_IndexController extends Zend_Controller_Action
      */
     protected function _getTerminalByUrl($terminalUrl)
     {
-        $fileName = basename($terminalUrl);
-        $fileExtensionPosition = strrpos($fileName, '.');
-        if ($fileExtensionPosition) {
-            $fileName = substr($fileName, 0, $fileExtensionPosition);
-        }
-
+        $fileName = $this->extractFileNameWithoutExtension($terminalUrl);
         if (empty($fileName)) {
             return null;
         }
 
         $terminalMapper = new \IvozProvider\Mapper\Sql\Terminals();
+        $macRegExp = '/(?=(([0-9a-f]{2}[:-]{0,1}){5}([0-9a-f]){2}))/i';
+        preg_match_all($macRegExp, $fileName, $matches);
+        $macCandidates = array_key_exists(1, $matches)
+            ? $matches[1]
+            : null;
 
-        /**
-         * @var IvozProvider\Model\Terminals $terminal
-         */
-        $terminal = $terminalMapper->findOneByField('mac', $fileName);
+        array_walk($macCandidates, function (&$value, $key) {
+            // We only allow a-f0-9 for macs in database
+            // ensure that format in results
+            $value = preg_replace('/[^0-9a-f]/i', '', $value);
+        });
 
-        if (!$terminal) {
+        if (empty($macCandidates)) {
             return null;
         }
 
-        return $terminal;
+        /**
+         * @var IvozProvider\Model\Terminals[] $terminals
+         */
+        $terminals = $terminalMapper->fetchList('mac in ("'. implode('","', $macCandidates) .'")');
+        foreach ($terminals as $candidate) {
+
+            /**
+             * @var IvozProvider\Model\TerminalModels $terminalModel
+             */
+            $terminalModel = $candidate->getTerminalModel();
+            if (!$terminalModel) {
+                continue;
+            }
+
+            $specificUrl = $this->extractFileNameWithoutExtension(
+                $terminalModel->getSpecificUrlPattern()
+            );
+
+            $fixedUrlSegments = explode('{mac}', strtolower($specificUrl), 2);
+            $fixedSpecificUrl = str_ireplace('{mac}', $candidate->getMac(), $specificUrl);
+
+            $fixedFileName = $fileName;
+            if (count($fixedUrlSegments) > 1) {
+
+                $start = strlen($fixedUrlSegments[0]);
+                $end = strlen($fixedUrlSegments[1]) * -1;
+
+                $fileNameMac = $end < 0
+                    ? substr($fileName, $start, $end)
+                    : substr($fileName, $start);
+                $fileNameMac = preg_replace('/[\:\-]/', '', $fileNameMac);
+
+                $fixedFileName = $fixedUrlSegments[0] . $fileNameMac . $fixedUrlSegments[1];
+            }
+
+            if (strtolower($fixedSpecificUrl) === strtolower($fixedFileName)) {
+                return $candidate;
+            }
+        }
+
+        return null;
+    }
+
+    protected function extractFileNameWithoutExtension($route)
+    {
+        return pathinfo($route, PATHINFO_FILENAME);
     }
 
     protected function _getFilePath(){

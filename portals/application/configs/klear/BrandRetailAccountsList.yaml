@@ -37,6 +37,8 @@ production:
           name: true
           description: true
           companyId: true
+          outgoingDDIId: true
+          status: true
 staging:
   _extends: production
 testing:

@@ -99,6 +99,8 @@ class CallsController extends BaseController
         } else if ($forwarder = $this->agi->getRedirecting('from-num')) {
             // 302 Moved here caller. The variable MUST store the last dialed endpoint
             $endpointName = $this->agi->getVariable("DIAL_ENDPOINT");
+            // Restore original number presentation to E.164
+            $this->agi->setCallerIdNum($this->agi->getOrigCallerIdNum());
         } else {
             $endpointName = $this->agi->getEndpoint();
         }

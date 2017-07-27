@@ -37,6 +37,7 @@ production:
           email: true
           active: true
           pass: true
+          gsQRCode: true
           doNotDisturb: true
           timezoneId: true
           extensionId: true
@@ -54,6 +55,7 @@ production:
           active: true
           doNotDisturb: true
           pass: true
+          gsQRCode: true
           timezoneId: true
           callACLId: true
           bossAssistantId: true
@@ -67,10 +69,12 @@ production:
           countryId: true
           areaCode: true
           voicemailEnabled: true
+          voicemailLocutionId: true
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
           externalIpCalls: true
+          outgoingDDIRuleId: true
       options:
         title: _("Options")
         screens:
@@ -98,6 +102,7 @@ production:
           active: true
           doNotDisturb: true
           pass: true
+          gsQRCode: true
           timezoneId: true
           callACLId: true
           bossAssistantId: true
@@ -111,6 +116,7 @@ production:
           countryId: true
           areaCode: true
           voicemailEnabled: true
+          voicemailLocutionId: true
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
@@ -129,7 +135,8 @@ production:
           fields:
             terminalId: 2
             extensionId: 2
-            outgoingDDIId: 2
+            outgoingDDIId: 3
+            outgoingDDIRuleId: 3
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
       controller: edit
@@ -162,6 +169,7 @@ production:
           fields:
             active: 1
             pass: 1
+            gsQRCode: 1
         group2:
           label: _("Boss-Assistant")
           colsPerRow: 12
@@ -173,18 +181,20 @@ production:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            terminalId: 4
-            extensionId: 4
-            outgoingDDIId: 4
+            terminalId: 6
+            extensionId: 6
+            outgoingDDIId: 6
+            outgoingDDIRuleId: 6
             callACLId: 6
             doNotDisturb: 6
             maxCalls: 6
             externalIpCalls: 6
         group4:
           label: _("Voicemail")
-          colsPerRow: 3
+          colsPerRow: 2
           fields:
             voicemailEnabled: 1
+            voicemailLocutionId: 1
             voicemailSendMail: 1
             voicemailAttachSound: 1
         group5:

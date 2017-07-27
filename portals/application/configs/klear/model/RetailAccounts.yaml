@@ -238,6 +238,13 @@ production:
             template: '%name%'
           order: name
         'null': _("Client's default")
+    status:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getRetailAccountStatus
 staging:
   _extends: production
 testing:

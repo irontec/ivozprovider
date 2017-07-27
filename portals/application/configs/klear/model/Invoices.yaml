@@ -134,9 +134,9 @@ production:
               title: _("Fixed cost")
               mapperName: \IvozProvider\Mapper\Sql\FixedCosts
               field:
-                - description
+                - name
                 - cost
-              pattern: "%description% - %cost% €"
+              pattern: "%name% - %cost% €"
             quantity:
               title: _("Quantity")
         options:

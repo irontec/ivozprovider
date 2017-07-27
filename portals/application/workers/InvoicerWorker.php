@@ -51,7 +51,7 @@ class InvoicerWorker extends Iron_Gearman_Worker
             if (!file_exists($tempPath)) {
                 mkdir($tempPath);
             }
-            $tempPdf = $tempPath."/temp.pdf";
+            $tempPdf = $tempPath."/temp". $invoice->getId() .".pdf";
             file_put_contents($tempPdf, $content);
             $invoice->putPdfFile($tempPdf, "invoice-". $invoice->getNumber() .".pdf");
             $totals = $invoiceGenerator->getTotals();

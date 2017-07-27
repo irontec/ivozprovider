@@ -5,9 +5,10 @@ function dashboard () {
   this.openAccordionMenu = openAccordionMenu;
   this.clickOnCta = clickOnCta;
   this.clickOnBrandEmulatorButton = clickOnBrandEmulatorButton;
+  this.clickOnCompanyEmulatorButton = clickOnCompanyEmulatorButton;
   this.assertLoggedIn = assertLoggedIn;
   this.logout = logout;
-  this.selectBrand = selectBrand;
+  this.selectEmulatedEntity = selectEmulatedEntity;
 
   function openAccordionMenu(position) {
     var accordionMenu = this.elements.accordionMenuHeader.selector;
@@ -63,17 +64,33 @@ function dashboard () {
       .waitForElementVisible('@dialogSubmitBtn');
   }
 
-  function selectBrand(position) {
+  function selectEmulatedEntity(position) {
     var nthChild = ':nth-child('+ position +')';
 
     return this
-      .waitForElementVisible('@brandSelectorCombo')
-      .click('@brandSelectorCombo')
-      .click(this.elements.brandSelectorOptions.selector + nthChild)
+      .waitForElementVisible('@emulatorSelectorCombo')
+      .click('@emulatorSelectorCombo')
+      .click(this.elements.emulatorSelectorOptions.selector + nthChild)
       .click('@dialogSubmitBtn')
       .waitForElementVisible('@loadingPanel', 2000)
       .verify.elementNotPresent('@loadingPanel')
       .api.pause(500);
+  }
+
+  function clickOnCompanyEmulatorButton() {
+    return this
+      .waitForElementVisible('@companyEmulatorBtn')
+      .jqueryTrigger(
+        this.elements.companyEmulatorBtn.selector,
+        'click',
+        (success) => {
+          this.assert.ok(
+            success.match,
+            success.selector + ' not found'
+          );
+        }
+      )
+      .waitForElementVisible('@dialogSubmitBtn');
   }
 
   function assertLoggedIn () {
@@ -100,9 +117,9 @@ module.exports = {
     dialogSubmitBtn: { selector: 'div.ui-dialog input[type=submit]' },
     logoutBtn: { selector: '#headerToolsbar span.ui-icon-power' },
     brandEmulatorBtn: { selector: 'fieldset:nth-child(2) legend span' },
-    brandSelectorCombo: { selector: '#entitySelectSelectBoxIt' },
-    brandSelectorOptions: { selector: 'div.ui-dialog ul li' },
     companyEmulatorBtn: { selector: 'fieldset:nth-child(3) legend span' },
+    emulatorSelectorCombo: { selector: '#entitySelectSelectBoxIt' },
+    emulatorSelectorOptions: { selector: 'div.ui-dialog ul li' },
     loadingPanel: { selector: 'div.loadingPanel' }
   }
 };

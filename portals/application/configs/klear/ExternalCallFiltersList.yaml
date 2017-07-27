@@ -38,15 +38,27 @@ production:
           outOfScheduleNumberValue: true
           outOfScheduleExtensionId: true
           outOfScheduleVoiceMailUserId: true
-          blackListRegExp: true
-          whiteListRegExp: true
+          ExternalCallFilterWhiteLists: true
+          ExternalCallFilterBlackLists: true
         order: &externalCallFilters_orderLink
-          companyId: true
           name: true
+          welcomeLocutionId: true
+          ExternalCallFilterWhiteLists: true
+          ExternalCallFilterBlackLists: true
+          holidayLocutionId: true
           holidayTargetType: true
           holidayTarget: true
+          holidayNumberValue: true
+          holidayExtensionId: true
+          holidayVoiceMailUserId: true
+          outOfScheduleLocutionId: true
           outOfScheduleTargetType: true
           outOfScheduleTarget: true
+          outOfScheduleNumberValue: true
+          outOfScheduleExtensionId: true
+          outOfScheduleVoiceMailUserId: true
+          ExternalCallFilterRelCalendars: true
+          ExternalCallFilterRelSchedules: true
       options:
         title: _("Options")
         screens:
@@ -64,11 +76,11 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
-        blacklist: 
+        order:
+          <<: *externalCallFilters_orderLink
+        blacklist:
           holidayTarget: true
           outOfScheduleTarget: true
-          blackListRegExp: true
-          whiteListRegExp: true
       fixedPositions: &externalCallFilters_fixedPositionsLink
         group0:
           colsPerRow: 2
@@ -76,11 +88,11 @@ production:
             companyId: 1
             name: 1
             welcomeLocutionId: 1
-        group2:
+        group1:
           colsPerRow: 12
           fields:
-            blackListRegExp: 9
-            whiteListRegExp: 9
+            ExternalCallFilterWhiteLists: 6
+            ExternalCallFilterBlackLists: 6
         group3:
           colsPerRow: 2
           fields:
@@ -100,7 +112,7 @@ production:
         group5:
           colsPerRow: 2
           fields:
-            ExternalCallFilterRelCalendars: 1          
+            ExternalCallFilterRelCalendars: 1
             ExternalCallFilterRelSchedules: 1
     externalCallFiltersEdit_screen: &externalCallFiltersEdit_screenLink
       <<: *ExternalCallFilters
@@ -111,11 +123,11 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
-        blacklist: 
+        order:
+          <<: *externalCallFilters_orderLink
+        blacklist:
           holidayTarget: true
           outOfScheduleTarget: true
-          blackListRegExp: true
-          whiteListRegExp: true
       fixedPositions:
         <<: *externalCallFilters_fixedPositionsLink
   dialogs: &externalCallFilters_dialogsLink

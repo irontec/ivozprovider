@@ -17,6 +17,9 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
+// Include composer vendor libraries
+require_once realpath(APPLICATION_PATH . '/../../../library/vendor/autoload.php');
+
 require_once 'Zend/Loader/Autoloader.php';
 $loader = Zend_Loader_Autoloader::getInstance();
 

@@ -28,30 +28,35 @@ production:
     strategy: 
       title: _('Strategy')
       type: select
-      required: true
       source: 
         data: inline
         values: 
           'ringAll':
-            title: _('ringAll')
+            title: _('Ring all')
             visualFilter:
               hide: ['nextUserPosition']
               show: ['ringAllTimeout']
           'linear':
-            title: _('Linear (once)')
+            title: _('Linear')
             visualFilter:
               hide: ['ringAllTimeout']
               show: ['nextUserPosition']
           'roundRobin': 
-            title: _('roundRobin')
+            title: _('Round Robin')
             visualFilter:
               hide: ['ringAllTimeout']
               show: ['nextUserPosition']
           'random': 
-            title: _('random')
+            title: _('Random')
             visualFilter:
               hide: ['ringAllTimeout']
               show: ['nextUserPosition']
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("Determines the order users will be called")
     ringAllTimeout: 
       title: _('Ring all timeout')
       type: number

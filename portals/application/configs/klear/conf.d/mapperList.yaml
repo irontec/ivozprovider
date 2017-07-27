@@ -1,4 +1,4 @@
-mappers: 
+mappers:
   - &ApplicationServers {mapper: \IvozProvider\Mapper\Sql\ApplicationServers, modelFile: ApplicationServers}
   - &BillableCalls {mapper: \IvozProvider\Mapper\Sql\BillableCalls, modelFile: BillableCalls}
   - &BrandOperators {mapper: \IvozProvider\Mapper\Sql\BrandOperators, modelFile: BrandOperators}
@@ -50,8 +50,12 @@ mappers:
   - &LcrRules {mapper: \IvozProvider\Mapper\Sql\LcrRules, modelFile: LcrRules}
   - &Locutions {mapper: \IvozProvider\Mapper\Sql\Locutions, modelFile: Locutions}
   - &MainOperators {mapper: \IvozProvider\Mapper\Sql\MainOperators, modelFile: MainOperators}
+  - &MatchListPatterns {mapper: \IvozProvider\Mapper\Sql\MatchListPatterns, modelFile: MatchListPatterns}
+  - &MatchLists {mapper: \IvozProvider\Mapper\Sql\MatchLists, modelFile: MatchLists}
   - &MediaRelaySets {mapper: \IvozProvider\Mapper\Sql\MediaRelaySets, modelFile: MediaRelaySets}
   - &MusicOnHold {mapper: \IvozProvider\Mapper\Sql\MusicOnHold, modelFile: MusicOnHold}
+  - &OutgoingDDIRules {mapper: \IvozProvider\Mapper\Sql\OutgoingDDIRules, modelFile: OutgoingDDIRules}
+  - &OutgoingDDIRulesPatterns {mapper: \IvozProvider\Mapper\Sql\OutgoingDDIRulesPatterns, modelFile: OutgoingDDIRulesPatterns}
   - &OutgoingRouting {mapper: \IvozProvider\Mapper\Sql\OutgoingRouting, modelFile: OutgoingRouting}
   - &ParsedCDRs {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRs}
   - &ParsedCDRsGod {mapper: \IvozProvider\Mapper\Sql\ParsedCDRs, modelFile: ParsedCDRsGod}

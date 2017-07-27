@@ -1,34 +1,34 @@
-production: 
+production:
   class: \IvozProvider\Model\Locutions
-  fields: 
-    companyId: 
+  fields:
+    companyId:
       title: _('Company')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    originalFile: 
+    originalFile:
       title: ngettext('Uploaded file', 'Uploaded files', 1)
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: locutionsOriginalFileDownload_command
             icon: ui-silk-bullet-disk
             title: _("Download file")
             onNull: hide
-          upload: 
+          upload:
             type: command
             target: locutionsOriginalFileUpload_command
             title: _("Upload file")
@@ -40,14 +40,14 @@ production:
             class: jmedia
             onNull: hide
             target: locutionsEncodedFileDownload_command
-    encodedFile: 
+    encodedFile:
       title: ngettext('File for play', 'Files for play', 1)
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: locutionsEncodedFileDownload_command
@@ -60,7 +60,7 @@ production:
             class: jmedia
             onNull: hide
             target: locutionsEncodedFileDownload_command
-    name: 
+    name:
       title: ngettext('Name', 'Names', 1)
       type: text
       trim: both
@@ -72,11 +72,17 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RecordLocution
         method: getRecordingExtension
-staging: 
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("You can call this extension from any company terminal to record this locution")
+        label: _("Need help?")
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

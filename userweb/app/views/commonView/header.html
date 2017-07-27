@@ -8,6 +8,14 @@ $(document).ready(function(){setTimeout(function(){$('[data-toggle="tooltip"]').
     <h3>{{nombre}}</h3>
     <h4>{{brandName}}</h4>
     <div style="width: 100%;">
+        <div class="text-center" id="qrcode" ng-show="{{gsQRCode}}">
+            <qr class="pointer" text="QRCode" size="46" correction-level="L"></qr>
+            <div>
+                <qr text="QRCode" size="200"></qr>
+                <br />{{'scan this QR code' | translate}}
+                <br />{{'to provision GS Wave' | translate}}
+            </div>
+        </div>
         <p class="text-muted text-center" style="margin-bottom: 0;">{{'statusTerminal' | translate}}
             <i class="fa fa-check-circle" style="color: green;" ng-show="statusTerminal" data-toggle="tooltip" data-placement="bottom" title="{{'terminalOk' | translate}}"></i>
             <i class="fa fa-exclamation-circle" style="color: red;" ng-show="!statusTerminal" data-toggle="tooltip" data-placement="bottom" title="{{'terminalFail' | translate}}"></i>

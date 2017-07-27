@@ -75,7 +75,7 @@ production:
     externalMaxCalls:
       title: _('External max call')
       type: number
-      defaultValue: 0
+      defaultValue: 2
       source:
         control: Spinner
     postalAddress:
@@ -200,7 +200,7 @@ production:
     ipFilter:
       title: _('Filter by IP address')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source:
         data: inline
         values:

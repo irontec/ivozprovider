@@ -58,6 +58,7 @@ class Users extends MapperAbstract
                 'terminalId' => $model->getTerminalId(),
                 'extensionId' => $model->getExtensionId(),
                 'outgoingDDIId' => $model->getOutgoingDDIId(),
+                'outgoingDDIRuleId' => $model->getOutgoingDDIRuleId(),
                 'callACLId' => $model->getCallACLId(),
                 'doNotDisturb' => $model->getDoNotDisturb(),
                 'isBoss' => $model->getIsBoss(),
@@ -67,12 +68,14 @@ class Users extends MapperAbstract
                 'maxCalls' => $model->getMaxCalls(),
                 'externalIpCalls' => $model->getExternalIpCalls(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
+                'voicemailLocutionId' => $model->getVoicemailLocutionId(),
                 'voicemailSendMail' => $model->getVoicemailSendMail(),
                 'voicemailAttachSound' => $model->getVoicemailAttachSound(),
                 'tokenKey' => $model->getTokenKey(),
                 'countryId' => $model->getCountryId(),
                 'languageId' => $model->getLanguageId(),
                 'areaCode' => $model->getAreaCode(),
+                'gsQRCode' => $model->getGsQRCode(),
             );
         } else {
             $result = array();
@@ -846,6 +849,7 @@ class Users extends MapperAbstract
                   ->setTerminalId($data['terminalId'])
                   ->setExtensionId($data['extensionId'])
                   ->setOutgoingDDIId($data['outgoingDDIId'])
+                  ->setOutgoingDDIRuleId($data['outgoingDDIRuleId'])
                   ->setCallACLId($data['callACLId'])
                   ->setDoNotDisturb($data['doNotDisturb'])
                   ->setIsBoss($data['isBoss'])
@@ -855,12 +859,14 @@ class Users extends MapperAbstract
                   ->setMaxCalls($data['maxCalls'])
                   ->setExternalIpCalls($data['externalIpCalls'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
+                  ->setVoicemailLocutionId($data['voicemailLocutionId'])
                   ->setVoicemailSendMail($data['voicemailSendMail'])
                   ->setVoicemailAttachSound($data['voicemailAttachSound'])
                   ->setTokenKey($data['tokenKey'])
                   ->setCountryId($data['countryId'])
                   ->setLanguageId($data['languageId'])
-                  ->setAreaCode($data['areaCode']);
+                  ->setAreaCode($data['areaCode'])
+                  ->setGsQRCode($data['gsQRCode']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -872,6 +878,7 @@ class Users extends MapperAbstract
                   ->setTerminalId($data->{'terminalId'})
                   ->setExtensionId($data->{'extensionId'})
                   ->setOutgoingDDIId($data->{'outgoingDDIId'})
+                  ->setOutgoingDDIRuleId($data->{'outgoingDDIRuleId'})
                   ->setCallACLId($data->{'callACLId'})
                   ->setDoNotDisturb($data->{'doNotDisturb'})
                   ->setIsBoss($data->{'isBoss'})
@@ -881,12 +888,14 @@ class Users extends MapperAbstract
                   ->setMaxCalls($data->{'maxCalls'})
                   ->setExternalIpCalls($data->{'externalIpCalls'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
+                  ->setVoicemailLocutionId($data->{'voicemailLocutionId'})
                   ->setVoicemailSendMail($data->{'voicemailSendMail'})
                   ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
                   ->setTokenKey($data->{'tokenKey'})
                   ->setCountryId($data->{'countryId'})
                   ->setLanguageId($data->{'languageId'})
-                  ->setAreaCode($data->{'areaCode'});
+                  ->setAreaCode($data->{'areaCode'})
+                  ->setGsQRCode($data->{'gsQRCode'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Users) {
             $entry->setId($data->getId())
@@ -899,6 +908,7 @@ class Users extends MapperAbstract
                   ->setTerminalId($data->getTerminalId())
                   ->setExtensionId($data->getExtensionId())
                   ->setOutgoingDDIId($data->getOutgoingDDIId())
+                  ->setOutgoingDDIRuleId($data->getOutgoingDDIRuleId())
                   ->setCallACLId($data->getCallACLId())
                   ->setDoNotDisturb($data->getDoNotDisturb())
                   ->setIsBoss($data->getIsBoss())
@@ -908,12 +918,14 @@ class Users extends MapperAbstract
                   ->setMaxCalls($data->getMaxCalls())
                   ->setExternalIpCalls($data->getExternalIpCalls())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
+                  ->setVoicemailLocutionId($data->getVoicemailLocutionId())
                   ->setVoicemailSendMail($data->getVoicemailSendMail())
                   ->setVoicemailAttachSound($data->getVoicemailAttachSound())
                   ->setTokenKey($data->getTokenKey())
                   ->setCountryId($data->getCountryId())
                   ->setLanguageId($data->getLanguageId())
-                  ->setAreaCode($data->getAreaCode());
+                  ->setAreaCode($data->getAreaCode())
+                  ->setGsQRCode($data->getGsQRCode());
 
         }
 

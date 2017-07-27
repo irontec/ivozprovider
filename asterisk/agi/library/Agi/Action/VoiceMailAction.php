@@ -41,7 +41,18 @@ class VoiceMailAction extends RouterAction
 
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail
-            $vmopts = ($this->_playBanner) ? "u" : "s";
+            $vmopts = "";
+            if ($this->_playBanner) {
+                if ($voicemail->getVoiceMailLocution()) {
+                    $this->agi->verbose("Playing custom user Voicemail Locution.");
+                    $this->agi->playback($voicemail->getVoiceMailLocution());
+                    $vmopts .= "s";     // Skip welcome message
+                } else {
+                    $vmopts .= "u";     // Play unavailable message
+                }
+            } else {
+                $vmopts .= "s";         // Skip welcome message
+            }
             $this->agi->voicemail($voicemail->getVoiceMail(), $vmopts);
         } else {
             $this->agi->error("User %s has voicemail disabled.", $voicemail->getFullName());

@@ -1,3 +1,48 @@
+Wed, 26 Jul 2017 15:27:20 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.5 released
+
+    * Administration Portal
+        - Added register status in Terminals, Friends and Accounts lists
+        - Billable calls now display used Peering Contract
+        - Created companies have external calls limited by default (2 in retail, 10 in vPBX)
+        - Match Lists: New section for grouping specific numbers or numeric patterns
+        - Company networks can now have any mask
+        - Allow using a uploaded/recorded locution as voicemail message by user
+        - Outgoing DDI Rules: New section for dynamic assigning presentation DDI
+            based on call destination.
+
+    * User portal
+        - Added QR with Grandstream Wave provision information
+        - Fixed a bug with call history filtering
+
+    * Application Server
+        - Huntgroup Ringall canceled calls are not longer registered as missed
+        - Implemented BlackList and WhiteList in ExternalFilters
+        - Fixed a bug with on demand recording using DTMF
+        - Fixed a bug with presented number when 302 Moved is received
+        - Allow + as international prefix
+
+    * Provisioning
+        - Provisioning Specific URLs paths can now be customized
+
+    * Invoices
+        - Improved invoice templates to support multiline description
+        - Improved invoice templates to hide empty sections
+        - Fixed a bug with thousands separator totals
+
+    * Recordings
+        - Fixed a bug where recording duration was negative
+
+    * Documentation
+        - Added documentation for queue strategies
+        - Added documentation for match lists
+        - Added documentation for outgoing ddi rules
+        - Improved documentation for recording locutions dialing service code
+
+    * Other
+        - Switched software license from EUPLv1.1 to GPLv3
+
 Wed, 14 Jun 2017 10:52:03 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.4 released

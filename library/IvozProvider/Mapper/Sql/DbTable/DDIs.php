@@ -115,6 +115,8 @@ class DDIs extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Companies',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Faxes',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Friends',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRules',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRulesPatterns',
         'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );

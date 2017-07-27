@@ -86,5 +86,7 @@
     "MyPreferences": "Mis Preferencias",
     "MyAccount": "Mi Cuenta",
     "destiny": "Destino",
-    "Logout": "Cerrar Sesión"
+    "Logout": "Cerrar Sesión",
+    "scan this QR code": "escanea este código QR",
+    "to provision GS Wave": "para aprovisionar GS Wave"
 }

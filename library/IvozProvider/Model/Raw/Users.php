@@ -105,6 +105,13 @@ class Users extends ModelAbstract
      *
      * @var int
      */
+    protected $_outgoingDDIRuleId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
     protected $_callACLId;
 
     /**
@@ -165,6 +172,13 @@ class Users extends ModelAbstract
     protected $_voicemailEnabled;
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_voicemailLocutionId;
+
+    /**
      * Database var type tinyint
      *
      * @var int
@@ -205,6 +219,13 @@ class Users extends ModelAbstract
      * @var string
      */
     protected $_areaCode;
+
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_gsQRCode;
 
 
     /**
@@ -269,6 +290,20 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Languages
      */
     protected $_Language;
+
+    /**
+     * Parent relation Users_ibfk_14
+     *
+     * @var \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    protected $_OutgoingDDIRule;
+
+    /**
+     * Parent relation Users_ibfk_15
+     *
+     * @var \IvozProvider\Model\Raw\Locutions
+     */
+    protected $_VoicemailLocution;
 
 
     /**
@@ -434,6 +469,7 @@ class Users extends ModelAbstract
         'terminalId'=>'terminalId',
         'extensionId'=>'extensionId',
         'outgoingDDIId'=>'outgoingDDIId',
+        'outgoingDDIRuleId'=>'outgoingDDIRuleId',
         'callACLId'=>'callACLId',
         'doNotDisturb'=>'doNotDisturb',
         'isBoss'=>'isBoss',
@@ -443,12 +479,14 @@ class Users extends ModelAbstract
         'maxCalls'=>'maxCalls',
         'externalIpCalls'=>'externalIpCalls',
         'voicemailEnabled'=>'voicemailEnabled',
+        'voicemailLocutionId'=>'voicemailLocutionId',
         'voicemailSendMail'=>'voicemailSendMail',
         'voicemailAttachSound'=>'voicemailAttachSound',
         'tokenKey'=>'tokenKey',
         'countryId'=>'countryId',
         'languageId'=>'languageId',
         'areaCode'=>'areaCode',
+        'gsQRCode'=>'gsQRCode',
     );
 
     /**
@@ -502,6 +540,14 @@ class Users extends ModelAbstract
             'UsersIbfk13'=> array(
                     'property' => 'Language',
                     'table_name' => 'Languages',
+                ),
+            'UsersIbfk14'=> array(
+                    'property' => 'OutgoingDDIRule',
+                    'table_name' => 'OutgoingDDIRules',
+                ),
+            'UsersIbfk15'=> array(
+                    'property' => 'VoicemailLocution',
+                    'table_name' => 'Locutions',
                 ),
         ));
 
@@ -618,6 +664,7 @@ class Users extends ModelAbstract
             'voicemailEnabled' => '1',
             'voicemailSendMail' => '0',
             'voicemailAttachSound' => '1',
+            'gsQRCode' => '0',
         );
 
         $this->_initFileObjects();
@@ -1005,6 +1052,40 @@ class Users extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
+    public function setOutgoingDDIRuleId($data)
+    {
+
+        if ($this->_outgoingDDIRuleId != $data) {
+            $this->_logChange('outgoingDDIRuleId', $this->_outgoingDDIRuleId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_outgoingDDIRuleId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_outgoingDDIRuleId = (int) $data;
+
+        } else {
+            $this->_outgoingDDIRuleId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column outgoingDDIRuleId
+     *
+     * @return int
+     */
+    public function getOutgoingDDIRuleId()
+    {
+        return $this->_outgoingDDIRuleId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
     public function setCallACLId($data)
     {
 
@@ -1314,6 +1395,40 @@ class Users extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
+    public function setVoicemailLocutionId($data)
+    {
+
+        if ($this->_voicemailLocutionId != $data) {
+            $this->_logChange('voicemailLocutionId', $this->_voicemailLocutionId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_voicemailLocutionId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_voicemailLocutionId = (int) $data;
+
+        } else {
+            $this->_voicemailLocutionId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column voicemailLocutionId
+     *
+     * @return int
+     */
+    public function getVoicemailLocutionId()
+    {
+        return $this->_voicemailLocutionId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
     public function setVoicemailSendMail($data)
     {
 
@@ -1511,6 +1626,40 @@ class Users extends ModelAbstract
     public function getAreaCode()
     {
         return $this->_areaCode;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setGsQRCode($data)
+    {
+
+        if ($this->_gsQRCode != $data) {
+            $this->_logChange('gsQRCode', $this->_gsQRCode, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_gsQRCode = $data;
+
+        } else if (!is_null($data)) {
+            $this->_gsQRCode = (int) $data;
+
+        } else {
+            $this->_gsQRCode = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column gsQRCode
+     *
+     * @return int
+     */
+    public function getGsQRCode()
+    {
+        return $this->_gsQRCode;
     }
 
     /**
@@ -1970,6 +2119,108 @@ class Users extends ModelAbstract
         }
 
         return $this->_Language;
+    }
+
+    /**
+     * Sets parent relation OutgoingDDIRule
+     *
+     * @param \IvozProvider\Model\Raw\OutgoingDDIRules $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setOutgoingDDIRule(\IvozProvider\Model\Raw\OutgoingDDIRules $data)
+    {
+        $this->_OutgoingDDIRule = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setOutgoingDDIRuleId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk14');
+        return $this;
+    }
+
+    /**
+     * Gets parent OutgoingDDIRule
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\OutgoingDDIRules
+     */
+    public function getOutgoingDDIRule($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk14';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_OutgoingDDIRule = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_OutgoingDDIRule;
+    }
+
+    /**
+     * Sets parent relation VoicemailLocution
+     *
+     * @param \IvozProvider\Model\Raw\Locutions $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setVoicemailLocution(\IvozProvider\Model\Raw\Locutions $data)
+    {
+        $this->_VoicemailLocution = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setVoicemailLocutionId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk15');
+        return $this;
+    }
+
+    /**
+     * Gets parent VoicemailLocution
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function getVoicemailLocution($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk15';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_VoicemailLocution = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_VoicemailLocution;
     }
 
     /**

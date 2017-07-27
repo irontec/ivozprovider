@@ -22,7 +22,7 @@ Scenario: I can save pricing plans - target patterns
   Given I can see at least one row
   And I click on "pricingPlansRelTargetPatterns" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PricingPlansList_pricingPlansRelTargetPatterns" subscreen list
 
@@ -34,6 +34,6 @@ Scenario: I see new pricing plan - target pattern admin page
 Scenario: I can click on delete pricing plan - target pattern button
   Given I can see at least one row
   And I click on "pricingPlansRelTargetPatterns" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "PricingPlansList_pricingPlansRelTargetPatterns" subscreen list

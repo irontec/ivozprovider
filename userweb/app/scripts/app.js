@@ -37,7 +37,8 @@ var moduleDependencies = [
     'Calls',
     'Detours',
     'Account',
-    'Preferences'
+    'Preferences',
+    'ja.qr'
 ];
 
 angular

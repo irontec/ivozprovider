@@ -349,4 +349,17 @@ class Companies extends Raw\Companies
         return $features;
     }
 
+    public function getServiceCode($name)
+    {
+        // Get company services
+        $services = $this->getCompanyServices();
+
+        // Look for an exact match in service name
+        foreach ($services as $service) {
+            if ($service->getService()->getIden() == $name)
+                return $service->getCode();
+        }
+
+        return '';
+    }
 }

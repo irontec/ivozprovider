@@ -20,7 +20,7 @@ Scenario: I can save routing pattern groups
   Given I can see at least one row
   And I click on "RoutingPatternGroups" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "RoutingPatternGroups" list
 
@@ -32,6 +32,6 @@ Scenario: I see new routing pattern group admin page
 Scenario: I can click on delete routing pattern group button
   Given I can see at least one row
   And I click on "RoutingPatternGroups" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "RoutingPatternGroups" list

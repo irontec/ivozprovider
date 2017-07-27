@@ -27,7 +27,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company          
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -43,7 +43,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company          
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -59,7 +59,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
-          filterClass: IvozProvider_Klear_Filter_Company          
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -106,7 +106,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company          
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - number
@@ -169,7 +169,7 @@ production:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Extensions
-          filterClass: IvozProvider_Klear_Filter_Company          
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - number
@@ -228,22 +228,37 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_ExternalCallFiltersTarget
         method: getOutOfScheduleData
-    blackListRegExp: 
-      title: _('Black list reg exp')
-      type: text
-      maxLength: 255
+    ExternalCallFilterWhiteLists:
+      title: _('White Lists')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterWhiteLists
+          relatedMapperName: \IvozProvider\Mapper\Sql\MatchLists
+          relatedFieldName: name
+          relationProperty: MatchList
+          filterClass: IvozProvider_Klear_Filter_Company
       info:
         type: box
-        text: _("Incoming numbers that match this expression will be always REJECTED without checking this filter configuration.")
-        label: _("Need help?")      
-    whiteListRegExp: 
-      title: _('White list reg exp')
-      type: text
-      maxLength: 255
+        text: _("Incoming numbers that match this lists will be always ACCEPTED without checking this filter configuration.")
+        label: _("Need help?")
+    ExternalCallFilterBlackLists:
+      title: _('Black Lists')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \IvozProvider\Mapper\Sql\ExternalCallFilterBlackLists
+          relatedMapperName: \IvozProvider\Mapper\Sql\MatchLists
+          relatedFieldName: name
+          relationProperty: MatchList
+          filterClass: IvozProvider_Klear_Filter_Company
       info:
         type: box
-        text: _("Incoming numbers that match this expression will be always ACCEPTED without checking this filter configuration.")
-        label: _("Need help?")      
+        text: _("Incoming numbers that match this lists will be always REJECTED without checking this filter configuration.")
+        label: _("Need help?")
+
 staging:
   _extends: production
 testing:

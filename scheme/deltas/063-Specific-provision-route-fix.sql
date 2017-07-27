@@ -1,0 +1,1 @@
+UPDATE `TerminalModels` SET `specificUrlPattern` = '{mac}' where `specificUrlPattern` != '{mac}.cfg';

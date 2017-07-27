@@ -11,38 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-msgid "Permalink to this headline"
-msgstr "Permalink to this headline"
-
-msgid "Permalink to this definition"
-msgstr "Permalink to this definition"
-
-msgid "Hide Search Matches"
-msgstr "Hide Search Matches"
-
-msgid "Searching"
-msgstr "Searching"
-
-msgid "Preparing search..."
-msgstr "Preparing search..."
-
-msgid "Search Results"
-msgstr "Search Results"
-
-msgid ""
-"Your search did not match any documents. Please make sure that all words are "
-"spelled correctly and that you've selected enough categories."
-msgstr ""
-"Your search did not match any documents. Please make sure that all words are "
-"spelled correctly and that you've selected enough categories."
-
-#, javascript-format
-msgid "Search finished, found %s page(s) matching the search query."
-msgstr "Search finished, found %s page(s) matching the search query."
-
-msgid ", in "
-msgstr ", in "
-
 msgid "Please, chose a file to import"
 msgstr "Please, chose a file to import"
 
@@ -1049,6 +1017,12 @@ msgstr "Invalid value for bounced"
 msgid "Invalid value for direction"
 msgstr "Invalid value for direction"
 
+msgid "Invalid value for defaultAction"
+msgstr "Invalid value for defaultAction"
+
+msgid "Invalid value for action"
+msgstr "Invalid value for action"
+
 msgid "Invalid value for fullTargetType"
 msgstr "Invalid value for fullTargetType"
 
@@ -1430,11 +1404,10 @@ msgstr "Template testing"
 msgid "Invoices"
 msgstr "Invoices"
 
-#, fuzzy
 msgid "Invoice"
 msgid_plural "Invoices"
 msgstr[0] "Invoice"
-msgstr[1] "Invoice"
+msgstr[1] "Invoices"
 
 msgid "Invoice(s)"
 msgstr "Invoice(s)"
@@ -1573,6 +1546,16 @@ msgid_plural "Main operators"
 msgstr[0] "Main operator"
 msgstr[1] "Main operators"
 
+msgid "Match List Pattern"
+msgid_plural "Match List Patterns"
+msgstr[0] "Match List Pattern"
+msgstr[1] "Match List Patterns"
+
+msgid "Match List"
+msgid_plural "Match Lists"
+msgstr[0] "Match List"
+msgstr[1] "Match Lists"
+
 msgid "Media relay set"
 msgid_plural "Media relay sets"
 msgstr[0] "Media relay set"
@@ -1582,6 +1565,19 @@ msgid "Music on hold"
 msgid_plural "Musics on hold"
 msgstr[0] "Music on hold"
 msgstr[1] "Musics on hold"
+
+msgid "Outgoing DDI Rule"
+msgid_plural "Outgoing DDI Rules"
+msgstr[0] "Outgoing DDI Rule"
+msgstr[1] "Outgoing DDI Rules"
+
+msgid "Action Configuration"
+msgstr "Action configuration"
+
+msgid "Outgoing DDI Rule Pattern"
+msgid_plural "Outgoing DDI Rule Patterns"
+msgstr[0] "Outgoing DDI Rule Pattern"
+msgstr[1] "Outgoing DDI Rule Patterns"
 
 msgid "Outgoing routing"
 msgid_plural "Outgoing routing(s)"
@@ -1968,6 +1964,9 @@ msgstr ""
 msgid "SIP Domain can't be empty"
 msgstr "El dominio SIP no puede estar vacío"
 
+msgid "Email already in use"
+msgstr "Email already in use"
+
 msgid "No Application Server available."
 msgstr "No Application Server available."
 
@@ -2053,69 +2052,6 @@ msgstr "From pattern"
 
 msgid "Tag"
 msgstr "Tag"
-
-msgid "Interface"
-msgstr "Interface"
-
-msgid "Member"
-msgstr "Member"
-
-msgid "Penalty"
-msgstr "Penalty"
-
-msgid "Paused"
-msgstr "Paused"
-
-msgid "Companyid"
-msgstr "Companyid"
-
-msgid "Timeout"
-msgstr "Timeout"
-
-msgid "Autopause"
-msgstr "Autopause"
-
-msgid "yes"
-msgstr "yes"
-
-msgid "no"
-msgstr "no"
-
-msgid "all"
-msgstr "all"
-
-msgid "Maxlen"
-msgstr "Max Length"
-
-msgid "Strategy"
-msgstr "Strategy"
-
-msgid "ringall"
-msgstr "A todos"
-
-msgid "leastrecent"
-msgstr "Least Recent"
-
-msgid "fewestcalls"
-msgstr "Fewest Calls"
-
-msgid "random"
-msgstr "Random"
-
-msgid "rrmemory"
-msgstr "Round Robin"
-
-msgid "linear"
-msgstr "Linear (once)"
-
-msgid "wrandom"
-msgstr "wrandom"
-
-msgid "rrordered"
-msgstr "rrordered"
-
-msgid "Weight"
-msgstr "Weight"
 
 msgid "Service id"
 msgstr "Service"
@@ -2429,6 +2365,9 @@ msgstr "Record call"
 msgid "none"
 msgstr "none"
 
+msgid "all"
+msgstr "all"
+
 msgid "inbound"
 msgstr "inbound"
 
@@ -2579,24 +2518,24 @@ msgstr "Holiday target"
 msgid "Out of schedule target"
 msgstr "Out of schedule target"
 
-msgid "Black list reg exp"
-msgstr "Black list reg exp"
+msgid "White Lists"
+msgstr "White Lists"
 
 msgid ""
-"Incoming numbers that match this expression will be always REJECTED without "
+"Incoming numbers that match this lists will be always ACCEPTED without "
 "checking this filter configuration."
 msgstr ""
-"Incoming numbers that match this expression will be always REJECTED without "
+"Incoming numbers that match this lists will be always ACCEPTED without "
 "checking this filter configuration."
 
-msgid "White list reg exp"
-msgstr "White list reg exp"
+msgid "Black Lists"
+msgstr "Black Lists"
 
 msgid ""
-"Incoming numbers that match this expression will be always ACCEPTED without "
+"Incoming numbers that match this lists will be always REJECTED without "
 "checking this filter configuration."
 msgstr ""
-"Incoming numbers that match this expression will be always ACCEPTED without "
+"Incoming numbers that match this lists will be always REJECTED without "
 "checking this filter configuration."
 
 msgid "External Filter destination"
@@ -2646,6 +2585,9 @@ msgstr "Brand"
 msgid "Featureid"
 msgstr "Feature"
 
+msgid "Companyid"
+msgstr "Companyid"
+
 msgid "Cost"
 msgstr "Cost"
 
@@ -2675,6 +2617,12 @@ msgstr "Port"
 
 msgid "Auth needed"
 msgstr "Auth needed"
+
+msgid "yes"
+msgstr "yes"
+
+msgid "no"
+msgstr "no"
 
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
@@ -2735,14 +2683,23 @@ msgstr "Listen to MoH"
 msgid "Event date"
 msgstr "Event date"
 
-msgid "ringAll"
+msgid "Strategy"
+msgstr "Strategy"
+
+msgid "Ring all"
 msgstr "Ring all"
 
-msgid "Linear (once)"
-msgstr "Linear (once)"
+msgid "Linear"
+msgstr "Linear"
 
-msgid "roundRobin"
-msgstr "Round Robin (∞)"
+msgid "Round Robin"
+msgstr "Round Robin"
+
+msgid "Random"
+msgstr "Random"
+
+msgid "Determines the order users will be called"
+msgstr "Determines the order users will be called"
 
 msgid "Ring all timeout"
 msgstr "Ring all timeout"
@@ -2765,6 +2722,9 @@ msgstr "Timeout Voicemail User"
 msgid "Timeout time"
 msgstr "Timeout time"
 
+msgid "Black list reg exp"
+msgstr "Black list reg exp"
+
 msgid "Welcome locution id"
 msgstr "Welcome locution"
 
@@ -2773,6 +2733,9 @@ msgstr "Error Locution"
 
 msgid "Success locution id"
 msgstr "Success locution"
+
+msgid "Timeout"
+msgstr "Timeout"
 
 msgid ""
 "Time in seconds the IVR will wait after playing the welcome locution or "
@@ -2937,6 +2900,9 @@ msgstr "Numeric value"
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "e.g. udp:127.0.0.1:22222"
 
+msgid "Weight"
+msgstr "Weight"
+
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
 "calls than 1, etc."
@@ -3089,9 +3055,40 @@ msgid_plural "Files for play"
 msgstr[0] "File for play"
 msgstr[1] "Files for play"
 
-#, fuzzy
 msgid "Recording extension"
-msgstr "Recordings"
+msgstr "Recording extension"
+
+msgid "Default Action"
+msgstr "Default Action"
+
+msgid "Keep Original DDI"
+msgstr "Keep Original DDI"
+
+msgid "Force DDI"
+msgstr "Force DDI"
+
+msgid "Forced DDI"
+msgstr "Forced DDI"
+
+msgid "Enter Destination number patterns in E.164 format."
+msgstr "Enter Destination number patterns in E.164 format."
+
+msgid "Action"
+msgstr "Action"
+
+msgid ""
+"You can call this extension from any company terminal to record this locution"
+msgstr ""
+"You can call this extension from any company terminal to record this locution"
+
+msgid "Regular Expression"
+msgstr "Regular Expression"
+
+msgid "Enter number patterns in E.164 format."
+msgstr "Enter number patterns in E.164 format."
+
+msgid "Match Value"
+msgstr "Match value"
 
 msgid "Group"
 msgstr "Group"
@@ -3266,6 +3263,9 @@ msgstr ""
 msgid "Price pattern"
 msgstr "Price pattern"
 
+msgid "Penalty"
+msgstr "Penalty"
+
 msgid ""
 "Members of lower penalty will be called first. Higher penalty members will "
 "be contacted if no members of current penalty are available"
@@ -3349,23 +3349,17 @@ msgstr "Member call seconds"
 msgid "Time in seconds queue calls will ring members"
 msgstr "Time in seconds queue calls will ring members"
 
-msgid "Ring All"
-msgstr "Ring All"
-
 msgid "Least recent"
 msgstr "Least recent"
 
-msgid "Fewest Calls"
+msgid "Fewest calls"
 msgstr "Fewest Calls"
 
-msgid "Random"
-msgstr "Random"
+msgid "Round Robin memory"
+msgstr "Round Robin memory"
 
-msgid "Round Robin"
-msgstr "Round Robin"
-
-msgid "Linear"
-msgstr "Linear"
+msgid "Determines the order current priority members will be called"
+msgstr "Determines the order current priority members will be called"
 
 msgid ""
 "When one member is part of multiples queues, calls from queues with higher "
@@ -3547,6 +3541,14 @@ msgstr "Used as voicemail reception and user portal credential"
 msgid "Screen Extension"
 msgstr "Screen Extension"
 
+msgid "Outgoing DDI Rules"
+msgstr "Outgoing DDI Rules"
+
+msgid ""
+"Rules to manipulate outgoingDDI when user directly calls to external numbers."
+msgstr ""
+"Rules to manipulate outgoingDDI when user directly calls to external numbers."
+
 msgid "Do not disturb"
 msgstr "Do not disturb"
 
@@ -3571,6 +3573,9 @@ msgstr ""
 
 msgid "Voicemail enabled"
 msgstr "Voicemail enabled"
+
+msgid "Voicemail Locution"
+msgstr "Voicemail Locution"
 
 msgid "Voicemail send mail"
 msgstr "Voicemail send mail"
@@ -3607,6 +3612,12 @@ msgstr ""
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "
 "calls unlimited as long as company IP policy is fulfilled."
 
+msgid "QR Code"
+msgstr "QR Code"
+
+msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
+msgstr "Add QR Code to user portal to provision GS Wave mobile softphone"
+
 msgid "Module"
 msgstr "Module"
 
@@ -3625,8 +3636,3 @@ msgstr "Exec date"
 msgid "Finish date"
 msgstr "Finish date"
 
-#~ msgid "Trunks SIP domain"
-#~ msgstr "Trunks SIP domain"
-
-#~ msgid "Domain id"
-#~ msgstr "Domain"

@@ -25,7 +25,9 @@ are also included in IvozProvider.
     :caption: External numbers
 
     sounds
+    outgoingddi_rules
     external_filters
+    match_lists
     huntgroups
     queues
     ivrs

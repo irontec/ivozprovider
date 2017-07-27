@@ -42,6 +42,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'terminalId': '', 
      *     'extensionId': '', 
      *     'outgoingDDIId': '', 
+     *     'outgoingDDIRuleId': '', 
      *     'callACLId': '', 
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
@@ -51,12 +52,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
+     *     'voicemailLocutionId': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
      *     'countryId': '', 
      *     'languageId': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'gsQRCode': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -68,6 +71,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'terminalId': '', 
      *     'extensionId': '', 
      *     'outgoingDDIId': '', 
+     *     'outgoingDDIRuleId': '', 
      *     'callACLId': '', 
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
@@ -77,12 +81,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
+     *     'voicemailLocutionId': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
      *     'countryId': '', 
      *     'languageId': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'gsQRCode': ''
      * }]")
      */
     public function indexAction()
@@ -110,6 +116,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'terminalId',
                 'extensionId',
                 'outgoingDDIId',
+                'outgoingDDIRuleId',
                 'callACLId',
                 'doNotDisturb',
                 'isBoss',
@@ -119,12 +126,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'maxCalls',
                 'externalIpCalls',
                 'voicemailEnabled',
+                'voicemailLocutionId',
                 'voicemailSendMail',
                 'voicemailAttachSound',
                 'tokenKey',
                 'countryId',
                 'languageId',
                 'areaCode',
+                'gsQRCode',
             );
         }
 
@@ -208,6 +217,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'terminalId': '', 
      *     'extensionId': '', 
      *     'outgoingDDIId': '', 
+     *     'outgoingDDIRuleId': '', 
      *     'callACLId': '', 
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
@@ -217,12 +227,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
      *     'voicemailEnabled': '', 
+     *     'voicemailLocutionId': '', 
      *     'voicemailSendMail': '', 
      *     'voicemailAttachSound': '', 
      *     'tokenKey': '', 
      *     'countryId': '', 
      *     'languageId': '', 
-     *     'areaCode': ''
+     *     'areaCode': '', 
+     *     'gsQRCode': ''
      * }")
      */
     public function getAction()
@@ -249,6 +261,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'terminalId',
                 'extensionId',
                 'outgoingDDIId',
+                'outgoingDDIRuleId',
                 'callACLId',
                 'doNotDisturb',
                 'isBoss',
@@ -258,12 +271,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'maxCalls',
                 'externalIpCalls',
                 'voicemailEnabled',
+                'voicemailLocutionId',
                 'voicemailSendMail',
                 'voicemailAttachSound',
                 'tokenKey',
                 'countryId',
                 'languageId',
                 'areaCode',
+                'gsQRCode',
             );
         }
 
@@ -313,6 +328,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="outgoingDDIRuleId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callACLId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="doNotDisturb", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
@@ -322,12 +338,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="voicemailLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="tokenKey", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="gsQRCode", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/users/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -372,6 +390,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="terminalId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="outgoingDDIId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="outgoingDDIRuleId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callACLId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="doNotDisturb", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
@@ -381,12 +400,14 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
      * @ApiParams(name="voicemailEnabled", nullable=false, type="tinyint", sample="", description="")
+     * @ApiParams(name="voicemailLocutionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="voicemailSendMail", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="voicemailAttachSound", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="tokenKey", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="areaCode", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="gsQRCode", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -526,6 +547,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'outgoingDDIRuleId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'callACLId' => array(
                     'type' => "int",
                     'required' => false,
@@ -571,6 +597,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'voicemailLocutionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'voicemailSendMail' => array(
                     'type' => "tinyint",
                     'required' => true,
@@ -599,6 +630,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'areaCode' => array(
                     'type' => "varchar",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'gsQRCode' => array(
+                    'type' => "tinyint",
+                    'required' => true,
                     'comment' => '',
                 ),
             )
@@ -657,6 +693,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'outgoingDDIRuleId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'callACLId' => array(
                     'type' => "int",
                     'required' => false,
@@ -702,6 +743,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => true,
                     'comment' => '',
                 ),
+                'voicemailLocutionId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'voicemailSendMail' => array(
                     'type' => "tinyint",
                     'required' => true,
@@ -730,6 +776,11 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'areaCode' => array(
                     'type' => "varchar",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'gsQRCode' => array(
+                    'type' => "tinyint",
+                    'required' => true,
                     'comment' => '',
                 ),
             )

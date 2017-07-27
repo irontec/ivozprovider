@@ -11,39 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-msgid "Permalink to this headline"
-msgstr "Enlace permante a esta cabecera"
-
-msgid "Permalink to this definition"
-msgstr "Enlace permanente a esta definición"
-
-msgid "Hide Search Matches"
-msgstr "Ocultar resultados de búsqueda"
-
-msgid "Searching"
-msgstr "Buscando"
-
-msgid "Preparing search..."
-msgstr "Preparando búsqueda..."
-
-msgid "Search Results"
-msgstr "Resultados de Búsqueda"
-
-msgid ""
-"Your search did not match any documents. Please make sure that all words are "
-"spelled correctly and that you've selected enough categories."
-msgstr ""
-"Su búsqueda no encontró ningún documento. Por favor, asegurese de que los "
-"términos estan correctamente escritos y ha seleccionado suficientes "
-"categorías."
-
-#, javascript-format
-msgid "Search finished, found %s page(s) matching the search query."
-msgstr "Búsqueda completada, encontradas %s página(s) coincidentes."
-
-msgid ", in "
-msgstr ", en "
-
 msgid "Please, chose a file to import"
 msgstr "Por favor, seleccione un fichero a importar"
 
@@ -97,7 +64,6 @@ msgstr ""
 msgid "For instance:"
 msgstr ""
 
-#, fuzzy
 msgid "Download to file"
 msgstr "Descargar fichero"
 
@@ -122,19 +88,15 @@ msgstr "Debe emular una marca para poder emular una compañía"
 msgid "Select the company you want to emulate"
 msgstr "Seleccione la compañía que desea emular"
 
-#, fuzzy
 msgid "Select Company"
-msgstr "Seleccione la compañía qu"
+msgstr "Seleccione Compañía"
 
-#, fuzzy
 msgid "Enter"
-msgstr ""
-"Número máximo de dígitos que el llamante puede introducir. 0 para "
-"deshabilitar."
+msgstr "Introducir"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Emulate %s"
-msgstr "Emular Marca %s"
+msgstr "Emular %s"
 
 #, php-format
 msgid "Are you sure that you want to emulate the %s \"%2s\"?"
@@ -143,9 +105,9 @@ msgstr "¿Quieres emular %s de %2s?"
 msgid "Ok"
 msgstr "Ok"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s emulated"
-msgstr "Plantilla"
+msgstr "%s emulada"
 
 msgid "Reenviar a"
 msgstr ""
@@ -171,13 +133,11 @@ msgstr ""
 msgid "Reenviar"
 msgstr ""
 
-#, fuzzy
 msgid "Generate invoice"
 msgstr "Generar factura"
 
-#, fuzzy
 msgid "Are you sure you want to generate the invoice?"
-msgstr "Do you want to delete this %s?"
+msgstr "¿Está seguro que desea generar la factura?"
 
 msgid "OK"
 msgstr "OK"
@@ -237,9 +197,8 @@ msgstr "Resultados"
 msgid "Tarificator Job started"
 msgstr "Lanzada tarea de tarificación."
 
-#, fuzzy
 msgid "ERROR"
-msgstr "Error"
+msgstr "ERROR"
 
 msgid "Tarificate Calls?"
 msgstr "¿Tarificar llamadas?"
@@ -250,24 +209,21 @@ msgstr "Info"
 msgid "No Plan found"
 msgstr "Plan no encontrado"
 
-#, fuzzy
 msgid "Pricing Plans Tester"
-msgstr "Planes de Precio"
+msgstr "Probador Planes de Precio"
 
 msgid "Phone number"
 msgid_plural "Phone numbers"
 msgstr[0] "Número teléfono"
 msgstr[1] "Números teléfono"
 
-#, fuzzy
 msgid "Duration (s)"
 msgstr "Duración"
 
-#, fuzzy
 msgid "Test"
 msgid_plural "Tests"
-msgstr[0] "Probar %s"
-msgstr[1] "Probar %s"
+msgstr[0] "Prueba"
+msgstr[1] "Pruebas"
 
 msgid "Please, type a phone number"
 msgstr "Por favor, introduzca un número de telefono"
@@ -465,19 +421,16 @@ msgid_plural "Mimetypes"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "Mime type"
 msgid_plural "Mime types"
-msgstr[0] "Enrutar"
-msgstr[1] "Enrutar"
+msgstr[0] "Mime type"
+msgstr[1] "Mime types"
 
-#, fuzzy
 msgid "BaseName"
-msgstr "Nombre"
+msgstr "Nombre base"
 
-#, fuzzy
 msgid "Base name"
-msgstr "Nombre de usuario"
+msgstr "Nombre base"
 
 msgid "Image"
 msgid_plural "Images"
@@ -580,11 +533,10 @@ msgid_plural "Dates"
 msgstr[0] "Fecha"
 msgstr[1] "Fechas"
 
-#, fuzzy
 msgid "Time"
 msgid_plural "Times"
-msgstr[0] "Timeout"
-msgstr[1] "Timeout"
+msgstr[0] "Hora"
+msgstr[1] "Horas"
 
 msgid "Interval"
 msgid_plural "Intervals"
@@ -626,11 +578,10 @@ msgid_plural "Intros"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "Introduction"
 msgid_plural "Introductions"
-msgstr[0] "Locución"
-msgstr[1] "Locuciones"
+msgstr[0] "Introducción"
+msgstr[1] "Introducciones"
 
 msgid "Description"
 msgid_plural "Descriptions"
@@ -657,11 +608,10 @@ msgid_plural "Messages"
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "Section"
 msgid_plural "Sections"
-msgstr[0] "Directorio"
-msgstr[1] "Directorio"
+msgstr[0] "Sección"
+msgstr[1] "Secciones"
 
 #, fuzzy
 msgid "Content"
@@ -1075,6 +1025,12 @@ msgstr "Valor inválido para bounced"
 
 msgid "Invalid value for direction"
 msgstr "Valor inválido para direction"
+
+msgid "Invalid value for defaultAction"
+msgstr "Valor inválido para acción por defecto"
+
+msgid "Invalid value for action"
+msgstr "Valor inválido para acción"
 
 msgid "Invalid value for fullTargetType"
 msgstr "Valor invalido para fullTargetType"
@@ -1603,6 +1559,16 @@ msgid_plural "Main operators"
 msgstr[0] "Operador de Plataforma"
 msgstr[1] "Operadores de Plataforma"
 
+msgid "Match List Pattern"
+msgid_plural "Match List Patterns"
+msgstr[0] "Patrón lista de coincidencia"
+msgstr[1] "Patrones lista de coincidencia"
+
+msgid "Match List"
+msgid_plural "Match Lists"
+msgstr[0] "Lista de coincidencia"
+msgstr[1] "Listas de coincidencia"
+
 msgid "Media relay set"
 msgid_plural "Media relay sets"
 msgstr[0] "Servidor de Media"
@@ -1612,6 +1578,19 @@ msgid "Music on hold"
 msgid_plural "Musics on hold"
 msgstr[0] "Música en espera"
 msgstr[1] "Música en espera"
+
+msgid "Outgoing DDI Rule"
+msgid_plural "Outgoing DDI Rules"
+msgstr[0] "Regla DDI de salida"
+msgstr[1] "Reglas DDI de salida"
+
+msgid "Action Configuration"
+msgstr "Configuración acción"
+
+msgid "Outgoing DDI Rule Pattern"
+msgid_plural "Outgoing DDI Rule Patterns"
+msgstr[0] "Patrón de regla DDI de salida"
+msgstr[1] "Patrones de regla DDI de salida"
 
 msgid "Outgoing routing"
 msgid_plural "Outgoing routing(s)"
@@ -1995,6 +1974,9 @@ msgstr ""
 msgid "SIP Domain can't be empty"
 msgstr "El dominio SIP no puede estar vacío"
 
+msgid "Email already in use"
+msgstr "Email ya en uso"
+
 msgid "No Application Server available."
 msgstr "Ningún Servidor de Aplicación disponible."
 
@@ -2081,69 +2063,6 @@ msgstr "Patrón From"
 
 msgid "Tag"
 msgstr "Tag"
-
-msgid "Interface"
-msgstr "Interfaz"
-
-msgid "Member"
-msgstr "Miembro"
-
-msgid "Penalty"
-msgstr "Prioridad"
-
-msgid "Paused"
-msgstr "Pausado"
-
-msgid "Companyid"
-msgstr "Compañia"
-
-msgid "Timeout"
-msgstr "Timeout"
-
-msgid "Autopause"
-msgstr "Autopausar"
-
-msgid "yes"
-msgstr "Si"
-
-msgid "no"
-msgstr "no"
-
-msgid "all"
-msgstr "todas"
-
-msgid "Maxlen"
-msgstr "Longitud"
-
-msgid "Strategy"
-msgstr "Estrategia"
-
-msgid "ringall"
-msgstr "A todos"
-
-msgid "leastrecent"
-msgstr "Menos reciente"
-
-msgid "fewestcalls"
-msgstr "Menos atendidas"
-
-msgid "random"
-msgstr "Aleatoriamente"
-
-msgid "rrmemory"
-msgstr "Secuencialmente (memoria)"
-
-msgid "linear"
-msgstr "Secuencialmente (una vez)"
-
-msgid "wrandom"
-msgstr "Aleatoriamente"
-
-msgid "rrordered"
-msgstr "Round Robin"
-
-msgid "Weight"
-msgstr "Peso"
 
 msgid "Service id"
 msgstr "Servicio"
@@ -2462,6 +2381,9 @@ msgstr "Grabar llamada"
 msgid "none"
 msgstr "ninguna"
 
+msgid "all"
+msgstr "todas"
+
 msgid "inbound"
 msgstr "entrante"
 
@@ -2607,25 +2529,25 @@ msgstr "Destino Festivo"
 msgid "Out of schedule target"
 msgstr "Destino si fuera horario"
 
-msgid "Black list reg exp"
-msgstr "Expresion regular lista negra"
+msgid "White Lists"
+msgstr "Lista blanca"
 
 msgid ""
-"Incoming numbers that match this expression will be always REJECTED without "
+"Incoming numbers that match this lists will be always ACCEPTED without "
 "checking this filter configuration."
 msgstr ""
-"Los orígenes que cumplan la expresión regular se RECHAZARÁN sin verificar la "
-"configuración de este filtro."
+"Los orígenes que cumplan cualquiera de las listas de coincidencia se "
+"ACEPTARÁN sin verificar la configuración de este filtro."
 
-msgid "White list reg exp"
-msgstr "Expresión regular lista blanca"
+msgid "Black Lists"
+msgstr "Lista negra"
 
 msgid ""
-"Incoming numbers that match this expression will be always ACCEPTED without "
+"Incoming numbers that match this lists will be always REJECTED without "
 "checking this filter configuration."
 msgstr ""
-"Los orígenes que cumplan la expresión regular se ACEPTARÁN sin verificar la "
-"configuración de este filtro."
+"Los orígenes que cumplan cualquiera de la listas de conincidencia se "
+"RECHAZARÁN sin verificar la configuración de este filtro."
 
 #, fuzzy
 msgid "External Filter destination"
@@ -2675,6 +2597,9 @@ msgstr "Marca"
 msgid "Featureid"
 msgstr "Feature"
 
+msgid "Companyid"
+msgstr "Compañia"
+
 msgid "Cost"
 msgstr "Coste"
 
@@ -2704,6 +2629,12 @@ msgstr "Puerto"
 
 msgid "Auth needed"
 msgstr "Requiere autenticación"
+
+msgid "yes"
+msgstr "Si"
+
+msgid "no"
+msgstr "no"
 
 msgid ""
 "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 "
@@ -2768,14 +2699,23 @@ msgstr "Escuchar Música"
 msgid "Event date"
 msgstr "Fecha evento"
 
-msgid "ringAll"
+msgid "Strategy"
+msgstr "Estrategia"
+
+msgid "Ring all"
 msgstr "A todos"
 
-msgid "Linear (once)"
-msgstr "Secuencialmente (una vez)"
+msgid "Linear"
+msgstr "Secuencialmente"
 
-msgid "roundRobin"
+msgid "Round Robin"
 msgstr "Secuencialmente (∞)"
+
+msgid "Random"
+msgstr "Aleatoriamente"
+
+msgid "Determines the order users will be called"
+msgstr "Determina el order en el que sonarán los usuarios"
 
 msgid "Ring all timeout"
 msgstr "Tiempo máximo sonando"
@@ -2798,6 +2738,9 @@ msgstr "Buzón de voz"
 msgid "Timeout time"
 msgstr "Timeout"
 
+msgid "Black list reg exp"
+msgstr "Expresion regular lista negra"
+
 msgid "Welcome locution id"
 msgstr "Loc. Bienvenida"
 
@@ -2806,6 +2749,9 @@ msgstr "Loc. Error"
 
 msgid "Success locution id"
 msgstr "Loc. Éxito"
+
+msgid "Timeout"
+msgstr "Timeout"
 
 msgid ""
 "Time in seconds the IVR will wait after playing the welcome locution or "
@@ -2969,6 +2915,9 @@ msgstr "Valor numérico"
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "p.ej. udp:127.0.0.1:22222"
 
+msgid "Weight"
+msgstr "Peso"
+
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
 "calls than 1, etc."
@@ -3123,6 +3072,33 @@ msgstr[1] "Ficheros convertidos"
 
 msgid "Recording extension"
 msgstr ""
+
+msgid ""
+"You can call this extension from any company terminal to record this locution"
+msgstr ""
+"Puede llamar a esta extensión para grabar está locución desde cualquier "
+"terminal de la compañía"
+
+msgid "Regular Expression"
+msgstr "Expresión regular"
+
+msgid "Default Action"
+msgstr "Acción por defecto"
+
+msgid "Keep Original DDI"
+msgstr "Mantener DDI original"
+
+msgid "Force DDI"
+msgstr "Forzar DDI"
+
+msgid "Forced DDI"
+msgstr "DDI forzado"
+
+msgid "Enter Destination number patterns in E.164 format."
+msgstr "Introduzca patrones de números en formato E.164."
+
+msgid "Action"
+msgstr "Acción"
 
 msgid "Group"
 msgstr "Grupo"
@@ -3297,6 +3273,9 @@ msgstr ""
 msgid "Price pattern"
 msgstr "Patrón de precio"
 
+msgid "Penalty"
+msgstr "Prioridad"
+
 msgid ""
 "Members of lower penalty will be called first. Higher penalty members will "
 "be contacted if no members of current penalty are available"
@@ -3382,23 +3361,17 @@ msgstr "Duración llamada a miembro"
 msgid "Time in seconds queue calls will ring members"
 msgstr "Tiempo en segundos que se llamará a cada miembro de la cola"
 
-msgid "Ring All"
-msgstr "A todos"
-
 msgid "Least recent"
 msgstr "Menos reciente"
 
-msgid "Fewest Calls"
+msgid "Fewest calls"
 msgstr "Menos atendidas"
 
-msgid "Random"
-msgstr "Aleatoriamente"
+msgid "Round Robin memory"
+msgstr "Secuencialmente (memoria)"
 
-msgid "Round Robin"
-msgstr "Secuencialmente (∞)"
-
-msgid "Linear"
-msgstr "Secuencialmente (una vez)"
+msgid "Determines the order current priority members will be called"
+msgstr "Determina el order en que los miembros de la prioridad serán llamados"
 
 msgid ""
 "When one member is part of multiples queues, calls from queues with higher "
@@ -3586,6 +3559,14 @@ msgstr "Empleado en buzón de voz y acceso al portal de usuario"
 msgid "Screen Extension"
 msgstr "Extensión a mostar"
 
+msgid "Outgoing DDI Rules"
+msgstr "Reglas DDI salida"
+
+msgid ""
+"Rules to manipulate outgoingDDI when user directly calls to external numbers."
+msgstr ""
+"Reglas para manipular el DDI de salida cuando el usuario llama directamente a números externos."
+
 msgid "Do not disturb"
 msgstr "No molestar"
 
@@ -3610,6 +3591,9 @@ msgstr ""
 
 msgid "Voicemail enabled"
 msgstr "Buzón de voz"
+
+msgid "Voicemail Locution"
+msgstr "Locución de buzón"
 
 msgid "Voicemail send mail"
 msgstr "Notificar por email"
@@ -3645,6 +3629,12 @@ msgstr ""
 "número ilimitado de llamadas siempre y cuando se cumpla la política de "
 "restricción de IPs de la empresa."
 
+msgid "QR Code"
+msgstr "Código QR"
+
+msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
+msgstr "Insertar un código QR al potal de usuario para aprovisionar el softphone GS Wave para dispositivos móviles"
+
 msgid "Module"
 msgstr "Módulo"
 
@@ -3662,3 +3652,4 @@ msgstr "Fecha ejecución"
 
 msgid "Finish date"
 msgstr "Fecha finalización"
+

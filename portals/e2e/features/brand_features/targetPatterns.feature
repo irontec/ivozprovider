@@ -20,7 +20,7 @@ Scenario: I can save target patterns
   Given I can see at least one row
   And I click on "TargetPatterns" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "TargetPatterns" list
 
@@ -32,6 +32,6 @@ Scenario: I see new target patterns admin page
 Scenario: I can click on delete target patterns button
   Given I can see at least one row
   And I click on "TargetPatterns" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "TargetPatterns" list

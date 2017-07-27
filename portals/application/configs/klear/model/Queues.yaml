@@ -252,13 +252,18 @@ production:
       source:
         data: inline
         values:
-          'ringall': _('Ring All')
+          'ringall': _('Ring all')
           'leastrecent': _('Least recent')
-          'fewestcalls': _('Fewest Calls')
+          'fewestcalls': _('Fewest calls')
           'random': _('Random')
-          'rrmemory': _('Round Robin')
+          'rrmemory': _('Round Robin memory')
           'linear': _('Linear')
-      <<: *strategyHelp
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("Determines the order current priority members will be called")
     weight:
       title: _('Weight')
       type: number

@@ -20,7 +20,7 @@ Scenario: I can save generic music on hold
   Given I can see at least one row
   And I click on "GenericMusicOnHold" first elements edit button
   And I click on save button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "GenericMusicOnHold" list
 
@@ -32,6 +32,6 @@ Scenario: I see new generic music on hold admin page
 Scenario: I can click on delete generic music on hold button
   Given I can see at least one row
   And I click on "GenericMusicOnHold" first elements delete button
-  Then I can see save confirmation dialog
+  Then I can see confirmation dialog
   Given I click on close dialog button
   Then I am on "GenericMusicOnHold" list
