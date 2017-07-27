@@ -3574,6 +3574,9 @@ msgstr ""
 msgid "Voicemail enabled"
 msgstr "Voicemail enabled"
 
+msgid "Voicemail Locution"
+msgstr "Voicemail Locution"
+
 msgid "Voicemail send mail"
 msgstr "Voicemail send mail"
 

@@ -68,6 +68,7 @@ class Users extends MapperAbstract
                 'maxCalls' => $model->getMaxCalls(),
                 'externalIpCalls' => $model->getExternalIpCalls(),
                 'voicemailEnabled' => $model->getVoicemailEnabled(),
+                'voicemailLocutionId' => $model->getVoicemailLocutionId(),
                 'voicemailSendMail' => $model->getVoicemailSendMail(),
                 'voicemailAttachSound' => $model->getVoicemailAttachSound(),
                 'tokenKey' => $model->getTokenKey(),
@@ -858,6 +859,7 @@ class Users extends MapperAbstract
                   ->setMaxCalls($data['maxCalls'])
                   ->setExternalIpCalls($data['externalIpCalls'])
                   ->setVoicemailEnabled($data['voicemailEnabled'])
+                  ->setVoicemailLocutionId($data['voicemailLocutionId'])
                   ->setVoicemailSendMail($data['voicemailSendMail'])
                   ->setVoicemailAttachSound($data['voicemailAttachSound'])
                   ->setTokenKey($data['tokenKey'])
@@ -886,6 +888,7 @@ class Users extends MapperAbstract
                   ->setMaxCalls($data->{'maxCalls'})
                   ->setExternalIpCalls($data->{'externalIpCalls'})
                   ->setVoicemailEnabled($data->{'voicemailEnabled'})
+                  ->setVoicemailLocutionId($data->{'voicemailLocutionId'})
                   ->setVoicemailSendMail($data->{'voicemailSendMail'})
                   ->setVoicemailAttachSound($data->{'voicemailAttachSound'})
                   ->setTokenKey($data->{'tokenKey'})
@@ -915,6 +918,7 @@ class Users extends MapperAbstract
                   ->setMaxCalls($data->getMaxCalls())
                   ->setExternalIpCalls($data->getExternalIpCalls())
                   ->setVoicemailEnabled($data->getVoicemailEnabled())
+                  ->setVoicemailLocutionId($data->getVoicemailLocutionId())
                   ->setVoicemailSendMail($data->getVoicemailSendMail())
                   ->setVoicemailAttachSound($data->getVoicemailAttachSound())
                   ->setTokenKey($data->getTokenKey())

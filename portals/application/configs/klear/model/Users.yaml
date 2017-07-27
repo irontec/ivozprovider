@@ -223,13 +223,27 @@ production:
           '0':
             title: _("No")
             visualFilter:
-              hide: ["voicemailSendMail", "voicemailAttachSound"]
               show: []
+              hide: ["voicemailSendMail", "voicemailAttachSound", "voicemailLocutionId"]
           '1':
             title: _("Yes")
             visualFilter:
-              show: ["voicemailSendMail", "voicemailAttachSound"]
+              show: ["voicemailSendMail", "voicemailAttachSound", "voicemailLocutionId"]
               hide: []
+    voicemailLocutionId:
+      title: _('Voicemail Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
     voicemailSendMail:
       title: _('Voicemail send mail')
       type: select

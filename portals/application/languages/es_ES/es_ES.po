@@ -3592,6 +3592,9 @@ msgstr ""
 msgid "Voicemail enabled"
 msgstr "Buzón de voz"
 
+msgid "Voicemail Locution"
+msgstr "Locución de buzón"
+
 msgid "Voicemail send mail"
 msgstr "Notificar por email"
 

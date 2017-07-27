@@ -255,6 +255,14 @@ class Locutions extends ModelAbstract
      */
     protected $_QueuesByFullLocution;
 
+    /**
+     * Dependent relation Users_ibfk_15
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\Users[]
+     */
+    protected $_Users;
+
     protected $_columnsList = array(
         'id'=>'id',
         'companyId'=>'companyId',
@@ -359,6 +367,10 @@ class Locutions extends ModelAbstract
             'QueuesIbfk6' => array(
                     'property' => 'QueuesByFullLocution',
                     'table_name' => 'Queues',
+                ),
+            'UsersIbfk15' => array(
+                    'property' => 'Users',
+                    'table_name' => 'Users',
                 ),
         ));
 
@@ -2523,6 +2535,96 @@ class Locutions extends ModelAbstract
         }
 
         return $this->_QueuesByFullLocution;
+    }
+
+    /**
+     * Sets dependent relations Users_ibfk_15
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\Users
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function setUsers(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_Users === null) {
+
+                $this->getUsers();
+            }
+
+            $oldRelations = $this->_Users;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_Users = array();
+
+        foreach ($data as $object) {
+            $this->addUsers($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations Users_ibfk_15
+     *
+     * @param \IvozProvider\Model\Raw\Users $data
+     * @return \IvozProvider\Model\Raw\Locutions
+     */
+    public function addUsers(\IvozProvider\Model\Raw\Users $data)
+    {
+        $this->_Users[] = $data;
+        $this->_setLoaded('UsersIbfk15');
+        return $this;
+    }
+
+    /**
+     * Gets dependent Users_ibfk_15
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\Users
+     */
+    public function getUsers($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk15';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_Users = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_Users;
     }
 
     /**
