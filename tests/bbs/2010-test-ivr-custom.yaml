@@ -5,6 +5,7 @@
 # Bob must have the extension 1001 assigned
 #
 # ----------------------------------------------------------------------------
+scenarios:
   - name: call from bob to alice using IVR custom
     type: simple
     timeout: 20

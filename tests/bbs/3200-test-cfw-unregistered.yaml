@@ -5,6 +5,7 @@
 # And more things must happen
 #
 # ----------------------------------------------------------------------------
+scenarios:
   - name: call from alice to eve no-registed forwarded to bob
     timeout: 10
     sessions:

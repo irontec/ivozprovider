@@ -5,6 +5,7 @@
 # And more things must happen
 #
 # ----------------------------------------------------------------------------
+scenarios:
   - name: call from alice to charlie no-answer forwarded to bob
     timeout: 20
     sessions:

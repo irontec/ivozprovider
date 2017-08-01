@@ -14,8 +14,8 @@ scenarios:
               <<: *alice_cred
           - call: 500
           - waitfor: CONFIRMED
-          - wait: 5
-          - dtmf: 1234
+          - wait: 8
+          - dtmf: 1234#
           - wait: 5
           - hangup
           - waitfor: DISCONNCTD
