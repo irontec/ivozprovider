@@ -61,6 +61,7 @@ class IVRCustomAction extends IVRAction
                     $this->_routeIVRCustom  = $extension->getIVRCustom();
                     $this->_routeHuntGroup  = $extension->getHuntGroup();
                     $this->_routeConference = $extension->getConferenceRoom();
+                    $this->_routeFriend     = $extension->getFriendValue();
                 } else {
                     // Route to destination
                     $this->_routeType       = $entry->getTargetType();
