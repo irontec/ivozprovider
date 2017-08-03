@@ -22,9 +22,15 @@ function edit () {
       );
   }
 
-  function assertConfirmationDialog() {
+  function assertConfirmationDialog(timeoutSeconds) {
+
+    var timeoutMilliseconds;
+    if (timeoutSeconds) {
+        timeoutMilliseconds = timeoutSeconds * 1000;
+    }
+
     return this
-      .waitForElementVisible('@dialog');
+      .waitForElementVisible('@dialog', timeoutMilliseconds);
   }
 
   function closeDialog() {

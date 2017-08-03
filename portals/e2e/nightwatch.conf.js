@@ -16,8 +16,8 @@ module.exports = {
   "custom_commands_path" : "commands",
 	"custom_assertions_path" : "",
   "selenium" : {
-    "start_process" : false,
-    "server_path" : "",
+    "start_process" : true,
+    "server_path" : "/opt/selenium/selenium-server-standalone-2.53.1.jar",
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
@@ -30,8 +30,8 @@ module.exports = {
       "globals" : {
         'user': 'admin',
         'password': 'changeme',
-        'waitForConditionTimeout': 10000,
-        'retryAssertionTimeout': 10000
+        'waitForConditionTimeout': 20000,
+        'retryAssertionTimeout': 20000
       },
       "selenium_port"  : 9515,
       "selenium_host"  : "localhost",

@@ -11,6 +11,10 @@ defineSupportCode(({Given, Then, When}) => {
     return edit.assertConfirmationDialog();
   });
 
+  Then(/^I can see confirmation dialog within "([^"]*)" seconds or lower$/, (timeoutSeconds) => {
+    return edit.assertConfirmationDialog(timeoutSeconds);
+  });
+
   Then(/^I click on close dialog button$/, () => {
     return edit.closeDialog();
   });

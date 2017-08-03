@@ -20,7 +20,7 @@ Scenario: I can save outgoing routing
   Given I can see at least one row
   And I click on "OutgoingRouting" first elements edit button
   And I click on save button
-  Then I can see confirmation dialog
+  Then I can see confirmation dialog within "40" seconds or lower
   And I click on close dialog button
   Then I am on "OutgoingRouting" list
 
