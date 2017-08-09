@@ -48,10 +48,12 @@ class FaxesController extends CallsController
             $faxOut->setStatus("inprogress")->save();
         }
 
+        // Set the virtual fax as caller
+        $this->agi->setChannelCaller($faxOut->getFax());
+
         // ProcessDialStatus
         $faxExternalAction = new ExternalFaxCallAction($this);
         $faxExternalAction
-            ->setCaller($faxOut->getFax())
             ->setFaxFile($faxOut)
             ->setDestination($faxOut->getDst())
             ->process();

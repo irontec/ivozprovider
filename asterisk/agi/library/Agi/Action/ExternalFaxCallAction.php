@@ -31,7 +31,7 @@ class ExternalFaxCallAction extends ExternalCallAction
     public function process()
     {
         // Local variables
-        $fax = $this->_caller;
+        $fax = $this->agi->getChannelCaller();
         $faxfile = $this->_faxfile;
         $number = $this->_number;
 
