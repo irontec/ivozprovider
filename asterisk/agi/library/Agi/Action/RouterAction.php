@@ -9,8 +9,6 @@ class RouterAction
 
     protected $agi;
 
-    protected $_caller;
-
     protected $_routeType;
 
     protected $_routeUser;
@@ -48,21 +46,12 @@ class RouterAction
         // Get action history so far
         if ($parent instanceOf \Agi\Action\RouterAction) {
             $this->_actionHistory = $parent->_actionHistory;
-
-            // Inherit the caller
-            $this->_caller = $parent->_caller;
         } else {
             $this->_actionHistory = array();
         }
 
         // Add current Action to history
         array_push($this->_actionHistory, $this);
-    }
-
-    public function setCaller($caller)
-    {
-        $this->_caller = $caller;
-        return $this;
     }
 
     public function route()
@@ -139,17 +128,33 @@ class RouterAction
 
     protected function _routeToExternal()
     {
-        // FIXME Should the company have a default Outgoing DDI ?
-        if ($this->_caller instanceof \IvozProvider\Model\Raw\Users)
-            $this->_caller = $this->_caller->getOutgoingDDI();
+        // FIXME One external route to rule them all
+        // External Route depends on who is calling
+        $caller = $this->agi->getChannelCaller();
 
-        if ($this->_caller instanceof \IvozProvider\Model\Raw\Friends)
-            $this->_caller = $this->_caller->getOutgoingDDI();
+        if ($caller instanceof \IvozProvider\Model\Users) {
+            // Handle external call route for users
+            $externalAction = new ExternalUserCallAction($this);
+            $externalAction
+                ->setCheckACL(false)
+                ->setDestination($this->_routeExternal)
+                ->process();
+        } else if ($caller instanceof \IvozProvider\Model\Friends) {
+            // Handle external call route for users
+            $externalAction = new ExternalFriendCallAction($this);
+            $externalAction
+                ->setCheckACL(false)
+                ->setDestination($this->_routeExternal)
+                ->process();
+        } else {
+            // Handle external call route
+            $externalAction = new ExternalDDICallAction($this);
+            $externalAction
+                ->setDestination($this->_routeExternal)
+                ->process();
+        }
 
-        $externalAction = new ExternalDDICallAction($this);
-        $externalAction
-            ->setDestination($this->_routeExternal)
-            ->process();
+
     }
 
     protected function _routeToIVRCommon()
@@ -207,7 +212,8 @@ class RouterAction
     protected function _routeToFriend()
     {
         // Look for the friend that handles this destination
-        $company = $this->_caller->getCompany();
+        $caller = $this->agi->getChannelCaller();
+        $company = $caller->getCompany();
         $friend = $company->getFriend($this->_routeFriend);
 
         $friendAction = new FriendCallAction($this);

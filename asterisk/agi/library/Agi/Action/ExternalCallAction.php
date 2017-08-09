@@ -25,7 +25,8 @@ class ExternalCallAction extends RouterAction
     protected function checkCompanyOutboundPrefix($number)
     {
         // Get company Data
-        $company = $this->_caller->getCompany();
+        $caller = $this->agi->getChannelCaller();
+        $company = $caller->getCompany();
         $outboundPrefix = $company->getOutboundPrefix();
 
         // If Company has Outbound no prefix, number is always ok
@@ -50,7 +51,8 @@ class ExternalCallAction extends RouterAction
     protected function checkTarificable($e164number)
     {
         // Get Dialer company
-        $company = $this->_caller->getCompany();
+        $caller = $this->agi->getChannelCaller();
+        $company = $caller->getCompany();
 
         // Can the company pay this call??
         if ($company->getBrand()->willUseExternallyRating($company, $e164number)) {
@@ -81,21 +83,12 @@ class ExternalCallAction extends RouterAction
     protected function updateOriginConnectedLine($e164number, $originDDI)
     {
         // Get caller company
-        $company = $this->_caller->getCompany();
-        // Get origin extension
-        $origin = $this->agi->getCallerIdNum();
+        $caller = $this->agi->getChannelCaller();
 
         // If origin is a user extension
-        if (($extension = $company->getExtension($origin))) {
-            $originUser = $extension->getUser();
-
-            $this->agi->setVariable("USERID", $originUser->getId());
-
+        if ($caller instanceof \IvozProvider\Model\Users) {
             // Setup the update callid for the calling user
             $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$e164number,1");
-
-            // Set as Display number users Outgoing DDI
-            $this->agi->setVariable("CALLERID(num)", $originDDI->getDDIE164());
         }
     }
 
@@ -140,26 +133,107 @@ class ExternalCallAction extends RouterAction
      * @brief Check if the diversion header contains a valid number
      *
      * @param Company owner of the diversion number
+     * @param number in E.164 format
      */
-    protected function checkDiversionNumber($company)
+    protected function checkDiversionNumber($company, $number)
     {
         if ($this->agi->getRedirecting('count')) {
-            // Check if the Diversion Number is a company extension
-            $diversionNum = $this->agi->getRedirecting('from-num');
+
+            // Replace Diversion extensions with outgoing DDIs
+            $diversionNum = $this->agi->getRedirecting('from-tag');
             if (($diversionExt = $company->getExtension($diversionNum))) {
                 $this->agi->notice("Replacing invalid Diversion Detected from Extension %s", $diversionNum);
                 $diversionUsers = $diversionExt->getUsers();
                 $diversionUser = array_shift($diversionUsers);
-                // Replace user extension with user outgoingDDI
-                $this->agi->setRedirecting('from-num,i', $diversionUser->getOutgoingDDI()->getDDIE164());
+                $diversionDDI = $diversionUser->getOutgoingDDI();
+
+                // If user has OutgoingDDI rules, check if we have to override current DDI
+                $outgoingDDIRule = $diversionUser->getOutgoingDDIRule();
+                if ($outgoingDDIRule) {
+                    $this->agi->verbose("Checking %s [user%d] Diversion outgoingDDI rules %d for destination %s",
+                                    $diversionUser->getFullName(), $diversionUser->getId(),
+                                    $outgoingDDIRule->getId(), $number);
+                    $diversionDDI = $outgoingDDIRule->getOutgoingDDI($diversionDDI, $number);
+                    if ($diversionDDI && $diversionDDI != $diversionUser->getOutgoingDDI()) {
+                        $this->agi->notice("Rule %s [outgoingddirule%d] presented DDI to %s [ddi%d]",
+                            $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
+                            $diversionDDI->getDDIE164(), $diversionDDI->getId());
+                        $this->agi->setRedirecting('from-num,i', $diversionDDI->getDDIE164());
+                    }
+                } else {
+                    // Replace user extension with user outgoingDDI
+                    $this->agi->setRedirecting('from-num,i', $diversionDDI->getDDIE164());
+                }
+            }
 
             // Check if the Diversion Number is a company DDI
-            } else if (!$company->getDDI($diversionNum)) {
-                // Not a Company DDI nor a Company Extension. Remove it.
-                $this->agi->error("Removing invalid diversion header from %s", $diversionNum);
-                $this->agi->setRedirecting('count', 0);
+            $diversionNum = $this->agi->getRedirecting('from-num');
+            if(!$company->getDDI($diversionNum)) {
+                // Check if the Diversion Number is a company DDI in E.164
+                $diversionNum = $company->preferredToE164($diversionNum);
+                if(!($ddi = $company->getDDI($diversionNum))) {
+                    // Not a Company DDI nor a Company Extension. Remove it.
+                    $this->agi->error("Removing invalid diversion header from %s", $diversionNum);
+                    $this->agi->setRedirecting('count', 0);
+                } else {
+                    $this->agi->setRedirecting('from-num', $ddi->getDDIE164());
+                }
             }
         }
     }
 
+    protected function checkValidOrigin($number)
+    {
+        // Get call origin
+        $origin = $this->agi->getChannelOrigin();
+
+        if ($origin instanceof \IvozProvider\Model\Users) {
+            // Get default user outgoing DDI
+            $ddi = $origin->getOutgoingDDI();
+            // If user has OutgoingDDI rules, check if we have to override current DDI
+            $outgoingDDIRule = $origin->getOutgoingDDIRule();
+            if ($outgoingDDIRule) {
+                $this->agi->verbose("Checking ORIGIN %s [user%d] outgoingDDI rules %d for destination %s",
+                                $origin->getFullName(), $origin->getId(),
+                                $outgoingDDIRule->getId(), $number);
+                $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $number);
+                if ($ddi && $ddi != $origin->getOutgoingDDI()) {
+                    $this->agi->notice("Rule %s [outgoingddirule%d] presented DDI to %s [ddi%d]",
+                        $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
+                        $ddi->getDDIE164(), $ddi->getId());
+                }
+            }
+        } else if ($origin instanceof \IvozProvider\Model\Friends) {
+            // Allow identification from any company DDI
+            $callerIdNum = $this->agi->getCallerIdNum();
+            $companyDDIs = $origin->getCompany()->getDDIs();
+            foreach ($companyDDIs as $companyDDI) {
+                if ($callerIdNum === $companyDDI->getDDIE164()) {
+                    $this->agi->notice("Friend \e[0;36m%s [friend%d]\e[0;93m presented origin matches company DDI %s [ddi%d].",
+                            $origin->getName(), $origin->getId(), $origin->getDDIE164(), $origin->getId());
+                    $ddi = $companyDDI;
+                    break;
+                }
+            }
+
+            // Use fallback outgoing DDI
+            if (!isset($ddi)) {
+                $ddi = $origin->getOutgoingDDI();
+                if ($ddi) {
+                    $this->agi->notice("Using fallback DDI %d [ddi%s] for friend \e[0;36m%s [friend%d]\e[0;93m because %s does not match any DDI.",
+                        $ddi->getDDIE164(), $ddi->getId(), $origin->getname(), $origin->getId(), $callerIdNum);
+                }
+            }
+        } else {
+            return true;
+        }
+
+        // Updated presented number
+        if ($ddi) {
+            $this->agi->setCallerIdNum($ddi->getDDIE164());
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

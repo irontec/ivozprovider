@@ -14,16 +14,25 @@ class ExternalUserCallAction extends ExternalCallAction
 {
     protected $_number;
 
+    protected $_checkACL = true;
+
     public function setDestination($number)
     {
         $this->_number = $number;
         return $this;
     }
 
+    public function setCheckACL($checkACL)
+    {
+        $this->_checkACL = $checkACL;
+        return $this;
+    }
+
     public function process()
     {
         // Local variables
-        $user = $this->_caller;
+        $user = $this->agi->getChannelCaller();
+        $origin = $this->agi->getChannelOrigin();
         $number = $this->_number;
 
         // Get company from the caller
@@ -45,8 +54,10 @@ class ExternalUserCallAction extends ExternalCallAction
         $e164number = $user->preferredToE164($number);
 
         // Check the user has this call allowed in its ACL
-        if (!$user->isAllowedToCall($e164number)) {
-            $this->agi->error("User is not allowed to call %s", $e164number);
+        if ($this->_checkACL == false) {
+            $this->agi->verbose("Skipping ACL checks for this call.");
+        } else if (!$user->isAllowedToCall($number)) {
+            $this->agi->error("User is not allowed to call %s", $number);
             // Play error notification over progress
             if ($company->hasFeature(Features::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notAllowed");
@@ -66,24 +77,25 @@ class ExternalUserCallAction extends ExternalCallAction
             return;
         }
 
-        // Get Outgoing presentation
-        $ddi = $user->getOutgoingDDI();
+        // Check Caller DDI
+        $ddi = $this->getCallerOutgoingDDI($e164number);
+        if (!$ddi) {
+            $this->agi->error("User %s [user%d] has not OutgoingDDI configured",
+                $user->getName(), $user->getId());
+            $this->agi->decline();
+            return;
+        }
 
-        // If user has OutgoingDDI rules, check if we have to override current DDI
-        $outgoingDDIRule = $user->getOutgoingDDIRule();
-        if ($outgoingDDIRule) {
-            $this->agi->verbose("Checking outgoingDDI rules %s for destination %s",
-                            $outgoingDDIRule->getName(), $e164number);
-            $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $e164number);
-            if ($ddi != $user->getOutgoingDDI()) {
-                $this->agi->notice("Rule %s [outgoingddirule%d] updated final DDI to %s [ddi%d]",
-                    $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
-                    $ddi->getDDI(), $ddi->getId());
-            }
+        // Update Origin persentation
+        if (!$this->checkValidOrigin($e164number)) {
+            $this->agi->error("Origin %s [%d] has no outgoingDDI number assigned.",
+                    $origin->getName(), $origin->getId());
+            $this->agi->decline();
+            return;
         }
 
         // Check if the diversion header contains a valid number
-        $this->checkDiversionNumber($company);
+        $this->checkDiversionNumber($company, $e164number);
         // Update caller displayed number
         $this->updateOriginConnectedLine($e164number, $ddi);
         // Check if DDI has recordings enabled
@@ -111,5 +123,31 @@ class ExternalUserCallAction extends ExternalCallAction
         $this->agi->setVariable("DIAL_OPTS", $options);
         $this->agi->setVariable("DIAL_TIMEOUT", "");
         $this->agi->redirect('call-world', $e164number);
+    }
+
+    public function getCallerOutgoingDDI($number)
+    {
+        // User making this call
+        $caller = $this->agi->getChannelCaller();
+
+        // Get default user outgoing DDI
+        $ddi = $caller->getOutgoingDDI();
+
+        // If user has OutgoingDDI rules, check if we have to override current DDI
+        $outgoingDDIRule = $caller->getOutgoingDDIRule();
+        if ($outgoingDDIRule) {
+            $this->agi->verbose("Checking CALLER %s [user%d] outgoingDDI rules %d for destination %s",
+                            $caller->getFullName(), $caller->getId(),
+                            $outgoingDDIRule->getId(), $number);
+
+            $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $number);
+            if ($ddi && $ddi != $caller->getOutgoingDDI()) {
+                $this->agi->notice("Rule %s [outgoingddirule%d] presented DDI to %d [ddi%d]",
+                    $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
+                    $ddi->getDDIE164(), $ddi->getId());
+            }
+        }
+
+        return $ddi;
     }
 }

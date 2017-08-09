@@ -328,5 +328,74 @@ class Agi_Wrapper
         return "";
     }
 
+
+    public function setChannelOrigin($origin)
+    {
+        $this->setChannelData("ORIGIN", $origin);
+    }
+
+    public function setChannelCaller($caller)
+    {
+        $this->setChannelData("CALLER", $caller);
+    }
+
+    public function setChannelData($datatype, $data)
+    {
+        $id = $data->getId();
+
+        if ($data instanceof \IvozProvider\Model\Users) {
+            $type = "USER";
+        } else if ($data instanceof \IvozProvider\Model\DDIs) {
+            $type = "DDI";
+        } else if ($data instanceof \IvozProvider\Model\Friends) {
+            $type = "FRIEND";
+        } else if ($data instanceof \IvozProvider\Model\RetailAccounts) {
+            $type = "RETAIL";
+        } else if ($data instanceof \IvozProvider\Model\Faxes) {
+            $type = "FAX";
+        }
+
+        $this->setVariable("${datatype}_TYPE", $type);
+        $this->setVariable("${datatype}_ID", $id);
+    }
+
+    public function getChannelCaller()
+    {
+        return $this->getChannelData("CALLER");
+    }
+
+    public function getChannelOrigin()
+    {
+        return $this->getChannelData("ORIGIN");
+    }
+
+    public function getChannelData($datatype)
+    {
+        $type = $this->getVariable("${datatype}_TYPE");
+        $id = $this->getVariable("${datatype}_ID");
+
+        switch ($type) {
+            case "USER":
+                $mapper = new \IvozProvider\Mapper\Sql\Users;
+                break;
+            case "DDI":
+                $mapper = new \IvozProvider\Mapper\Sql\DDIs;
+                break;
+            case "FRIEND":
+                $mapper = new \IvozProvider\Mapper\Sql\Friends;
+                break;
+            case "RETAIL":
+                $mapper = new \IvozProvider\Mapper\Sql\RetailAccounts;
+                break;
+            case "FAX":
+                $mapper = new \IvozProvider\Mapper\Sql\Faxes;
+                break;
+            default:
+                return null;
+        }
+
+        return $mapper->find($id);
+    }
+
 }
 

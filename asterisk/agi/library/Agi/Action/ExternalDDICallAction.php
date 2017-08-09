@@ -15,7 +15,7 @@ class ExternalDDICallAction extends ExternalCallAction
     public function process()
     {
         // Local variables
-        $ddi = $this->_caller;
+        $ddi = $this->agi->getChannelCaller();
         $number = $this->_number;
 
         // Get company from the caller
@@ -64,7 +64,7 @@ class ExternalDDICallAction extends ExternalCallAction
         }
 
         // Check if the diversion header contains a valid number
-        $this->checkDiversionNumber($company);
+        $this->checkDiversionNumber($company, $e164number);
         // Update caller displayed number
         $this->updateOriginConnectedLine($e164number, $ddi);
         // Check if DDI has recordings enabled
