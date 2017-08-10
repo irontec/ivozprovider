@@ -40,6 +40,7 @@ class ExtensionAction extends RouterAction
         $this->_routeExternal   = $extension->getNumberValue();
         $this->_routeFriend     = $extension->getFriendValue();
         $this->_routeQueue      = $extension->getQueue();
+        $this->_routeConditionalRoute = $extension->getConditionalRoute();
         $this->route();
     }
 

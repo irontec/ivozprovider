@@ -94,6 +94,7 @@ class DDIAction extends RouterAction
         $this->_routeFriend     = $ddi->getFriendValue();
         $this->_routeQueue      = $ddi->getQueue();
         $this->_routeRetail     = $ddi->getRetailAccount();
+        $this->_routeConditionalRoute = $ddi->getConditionalRoute();
         $this->route();
     }
 }
