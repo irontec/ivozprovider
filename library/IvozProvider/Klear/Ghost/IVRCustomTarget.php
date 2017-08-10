@@ -56,6 +56,8 @@ class IvozProvider_Klear_Ghost_IVRCustomTarget extends KlearMatrix_Model_Field_G
                              $voicemail->getLastName();
                 }
                 break;
+            case 'conditional':
+                return $model->getTargetConditionalRoute()->getName();
         }
 
         // No noanswer handler assigned

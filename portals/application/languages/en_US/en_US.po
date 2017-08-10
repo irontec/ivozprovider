@@ -963,11 +963,11 @@ msgstr "Invalid value for targetType"
 msgid "Invalid value for type"
 msgstr "Invalid value for type"
 
-msgid "Invalid value for recordCalls"
-msgstr "Invalid value for recordCalls"
-
 msgid "Invalid value for routeType"
 msgstr "Invalid value for routeType"
+
+msgid "Invalid value for recordCalls"
+msgstr "Invalid value for recordCalls"
 
 msgid "Invalid value for scope"
 msgstr "Invalid value for scope"
@@ -1036,16 +1036,6 @@ msgstr[1] "Application servers"
 
 msgid "Options"
 msgstr "Options"
-
-msgid "Queue member"
-msgid_plural "Queue members"
-msgstr[0] "Queue member"
-msgstr[1] "Queue members"
-
-msgid "Queue"
-msgid_plural "Queues"
-msgstr[0] "Cola"
-msgstr[1] "Colas"
 
 msgid "DDI"
 msgid_plural "DDIs"
@@ -1171,6 +1161,9 @@ msgid_plural "Companies"
 msgstr[0] "Company"
 msgstr[1] "Companies"
 
+msgid "Security"
+msgstr "Security"
+
 msgid "Server data"
 msgstr "Server data"
 
@@ -1199,6 +1192,31 @@ msgid "Company URL"
 msgid_plural "Company URLs"
 msgstr[0] "Company URL"
 msgstr[1] "Company URLs"
+
+msgid "Condition"
+msgid_plural "Conditions"
+msgstr[0] "Condition"
+msgstr[1] "Condition"
+
+msgid "Matching priority"
+msgstr "Prioridad"
+
+msgid "Matching type"
+msgstr "Matching type"
+
+msgid "Matching handler"
+msgstr "Matching handler"
+
+msgid "Conditional Route"
+msgid_plural "Conditional Routes"
+msgstr[0] "Conditional Route"
+msgstr[1] "Conditional Routes"
+
+msgid "Basic Data"
+msgstr "Basic Data"
+
+msgid "No matching condition handler"
+msgstr "No matching condition handler"
 
 msgid "Conference room"
 msgid_plural "Conference rooms"
@@ -1724,6 +1742,11 @@ msgid "Queuemember"
 msgid_plural "Queuemembers"
 msgstr[0] "Queue Member"
 msgstr[1] "Queue Members"
+
+msgid "Queue"
+msgid_plural "Queues"
+msgstr[0] "Queue"
+msgstr[1] "Queues"
 
 msgid "Announce"
 msgstr "Announce"
@@ -2266,6 +2289,9 @@ msgstr "Dispatch to any AS"
 msgid "External max call"
 msgstr "External max call"
 
+msgid "Limits both incoming and outgoing external calls."
+msgstr "Limits both incoming and outgoing external calls."
+
 msgid "Outbound prefix"
 msgstr "Outbound prefix"
 
@@ -2280,6 +2306,9 @@ msgstr "Default Area code for users in this company"
 
 msgid "Outgoing DDI"
 msgstr "Outgoing DDI"
+
+msgid "Outgoing DDI Rules"
+msgstr "Outgoing DDI Rules"
 
 msgid "Default outgoing DDI. This can be overriden in caller's edit screen."
 msgstr "Default outgoing DDI. This can be overriden in caller's edit screen."
@@ -2323,6 +2352,51 @@ msgstr "Company"
 msgid "Timezone id"
 msgstr "Timezone"
 
+msgid "Route type"
+msgstr "Route type"
+
+msgid "IVRCommon"
+msgstr "IVR Common"
+
+msgid "IVRCustom"
+msgstr "IVR Custom"
+
+msgid "huntGroup"
+msgstr "Hunt Group"
+
+msgid "Conference Room"
+msgstr "Conference Room"
+
+msgid "IVR Common"
+msgstr "IVR Common"
+
+msgid "IVR Custom"
+msgstr "IVR Custom"
+
+msgid "Hunt Group"
+msgstr "Hunt Group"
+
+msgid "Number"
+msgstr "Number"
+
+msgid "Friend value"
+msgstr "Friend value"
+
+msgid "Target"
+msgstr "Target"
+
+msgid "Condition Origin"
+msgstr "Condition Origin"
+
+msgid "Condition Schedules"
+msgstr "Condition Schedules"
+
+msgid "Condition Calendars"
+msgstr "Condition Calendars"
+
+msgid "Match"
+msgstr "Match"
+
 msgid "Pin protected"
 msgstr "Pin protected"
 
@@ -2340,18 +2414,6 @@ msgstr "Calling code"
 
 msgid "External call filter id"
 msgstr "External Call Filter"
-
-msgid "Route type"
-msgstr "Route type"
-
-msgid "IVRCommon"
-msgstr "IVR Common"
-
-msgid "IVRCustom"
-msgstr "IVR Custom"
-
-msgid "huntGroup"
-msgstr "Hunt Group"
 
 msgid "fax"
 msgstr "Fax"
@@ -2408,12 +2470,6 @@ msgstr "Fax"
 msgid "Conference room id"
 msgstr "Conference Room"
 
-msgid "Friend value"
-msgstr "Friend value"
-
-msgid "Target"
-msgstr "Target"
-
 msgid "Peering contract id"
 msgstr "Peering Contract"
 
@@ -2455,14 +2511,8 @@ msgstr "Etag"
 msgid "Last change"
 msgstr "Last change"
 
-msgid "Number"
-msgstr "Number"
-
 msgid "Minimal length: 2"
 msgstr "Minimal length: 2"
-
-msgid "Conference Room"
-msgstr "Conference Room"
 
 msgid "Filter id"
 msgstr "Filter id"
@@ -2784,6 +2834,9 @@ msgstr "Target extension"
 msgid "Target voice mail user id"
 msgstr "Target voice mail"
 
+msgid "Target Conditional route"
+msgstr "Conditional Route"
+
 #, fuzzy
 msgid "Template header"
 msgstr "Templates help"
@@ -3058,24 +3111,6 @@ msgstr[1] "Files for play"
 msgid "Recording extension"
 msgstr "Recording extension"
 
-msgid "Default Action"
-msgstr "Default Action"
-
-msgid "Keep Original DDI"
-msgstr "Keep Original DDI"
-
-msgid "Force DDI"
-msgstr "Force DDI"
-
-msgid "Forced DDI"
-msgstr "Forced DDI"
-
-msgid "Enter Destination number patterns in E.164 format."
-msgstr "Enter Destination number patterns in E.164 format."
-
-msgid "Action"
-msgstr "Action"
-
 msgid ""
 "You can call this extension from any company terminal to record this locution"
 msgstr ""
@@ -3089,6 +3124,21 @@ msgstr "Enter number patterns in E.164 format."
 
 msgid "Match Value"
 msgstr "Match value"
+
+msgid "Default Action"
+msgstr "Default Action"
+
+msgid "Keep Original DDI"
+msgstr "Keep Original DDI"
+
+msgid "Force DDI"
+msgstr "Force DDI"
+
+msgid "Forced DDI"
+msgstr "Forced DDI"
+
+msgid "Action"
+msgstr "Action"
 
 msgid "Group"
 msgstr "Group"
@@ -3541,9 +3591,6 @@ msgstr "Used as voicemail reception and user portal credential"
 msgid "Screen Extension"
 msgstr "Screen Extension"
 
-msgid "Outgoing DDI Rules"
-msgstr "Outgoing DDI Rules"
-
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
 msgstr ""
@@ -3635,4 +3682,3 @@ msgstr "Exec date"
 
 msgid "Finish date"
 msgstr "Finish date"
-

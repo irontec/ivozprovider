@@ -34,6 +34,7 @@ production:
           numberValue: true
           friendValue: true
           queueId: true
+          conditionalRouteId: true
         order:
           number: true
           routeType: true
@@ -75,6 +76,7 @@ production:
             numberValue: 1
             friendValue: 1
             queueId: 1
+            conditionalRouteId: 1
     extensionsEdit_screen: &extensionsEdit_screenLink
       <<: *Extensions
       controller: edit

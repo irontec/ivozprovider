@@ -972,11 +972,11 @@ msgstr "Valor inválido para targetType"
 msgid "Invalid value for type"
 msgstr "Valor inválido"
 
-msgid "Invalid value for recordCalls"
-msgstr "Valor inválido para recordCalls"
-
 msgid "Invalid value for routeType"
 msgstr "Valor inválido para routeType"
+
+msgid "Invalid value for recordCalls"
+msgstr "Valor inválido para recordCalls"
 
 msgid "Invalid value for scope"
 msgstr "Valor inválido para scope"
@@ -1045,16 +1045,6 @@ msgstr[1] "Servidores de Aplicación"
 
 msgid "Options"
 msgstr "Opciones"
-
-msgid "Queue member"
-msgid_plural "Queue members"
-msgstr[0] "Miembro de cola"
-msgstr[1] "Miembros de cola"
-
-msgid "Queue"
-msgid_plural "Queues"
-msgstr[0] "Cola"
-msgstr[1] "Colas"
 
 msgid "DDI"
 msgid_plural "DDIs"
@@ -1180,6 +1170,9 @@ msgid_plural "Companies"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
 
+msgid "Security"
+msgstr "Seguridad"
+
 msgid "Server data"
 msgstr "Configuración Servidor"
 
@@ -1209,6 +1202,31 @@ msgid "Company URL"
 msgid_plural "Company URLs"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
+
+msgid "Condition"
+msgid_plural "Conditions"
+msgstr[0] "Condición"
+msgstr[1] "Condiciones"
+
+msgid "Matching priority"
+msgstr "Prioridad"
+
+msgid "Matching type"
+msgstr "Tipo coincidencia"
+
+msgid "Matching handler"
+msgstr "Tratamiento coincidencia"
+
+msgid "Conditional Route"
+msgid_plural "Conditional Routes"
+msgstr[0] "Ruta condicional"
+msgstr[1] "Rutas condicionales"
+
+msgid "Basic Data"
+msgstr "Configuración básica"
+
+msgid "No matching condition handler"
+msgstr "Tratamiento sin coincidencia"
 
 msgid "Conference room"
 msgid_plural "Conference rooms"
@@ -1737,6 +1755,11 @@ msgid "Queuemember"
 msgid_plural "Queuemembers"
 msgstr[0] "Miembro de cola"
 msgstr[1] "Miembros de cola"
+
+msgid "Queue"
+msgid_plural "Queues"
+msgstr[0] "Cola"
+msgstr[1] "Colas"
 
 msgid "Announce"
 msgstr "Anuncio"
@@ -2278,6 +2301,9 @@ msgstr "Enrutar a cualquier AS"
 msgid "External max call"
 msgstr "Lim. llamadas"
 
+msgid "Limits both incoming and outgoing external calls."
+msgstr "Limita llamadas externas tanto entrantes como salientes."
+
 msgid "Outbound prefix"
 msgstr "Prefijo de salida"
 
@@ -2292,6 +2318,9 @@ msgstr "Código de Area por defecto para los usuarios de esta compañía"
 
 msgid "Outgoing DDI"
 msgstr "DDI de salida"
+
+msgid "Outgoing DDI Rules"
+msgstr "Reglas DDI salida"
 
 msgid "Default outgoing DDI. This can be overriden in caller's edit screen."
 msgstr ""
@@ -2339,6 +2368,51 @@ msgstr "Compañia"
 msgid "Timezone id"
 msgstr "Zona horaria"
 
+msgid "Route type"
+msgstr "Enrutar"
+
+msgid "IVRCommon"
+msgstr "IVR Genérico"
+
+msgid "IVRCustom"
+msgstr "IVR a medida"
+
+msgid "huntGroup"
+msgstr "Grupo de Salto"
+
+msgid "Conference Room"
+msgstr "Conferencia"
+
+msgid "IVR Common"
+msgstr "IVR Genérico"
+
+msgid "IVR Custom"
+msgstr "IVR a medida"
+
+msgid "Hunt Group"
+msgstr "Grupo de salto"
+
+msgid "Number"
+msgstr "Número"
+
+msgid "Friend value"
+msgstr "Número friend"
+
+msgid "Target"
+msgstr "Destino"
+
+msgid "Condition Origin"
+msgstr "Condición Origen"
+
+msgid "Condition Schedules"
+msgstr "Condición Horario"
+
+msgid "Condition Calendars"
+msgstr "Condición Calendario"
+
+msgid "Match"
+msgstr "Coincidencia"
+
 msgid "Pin protected"
 msgstr "Con contraseña"
 
@@ -2356,18 +2430,6 @@ msgstr "Código postal"
 
 msgid "External call filter id"
 msgstr "Filtro de entrada"
-
-msgid "Route type"
-msgstr "Enrutar"
-
-msgid "IVRCommon"
-msgstr "IVR Genérico"
-
-msgid "IVRCustom"
-msgstr "IVR a medida"
-
-msgid "huntGroup"
-msgstr "Grupo de Salto"
 
 msgid "fax"
 msgstr "Fax"
@@ -2424,12 +2486,6 @@ msgstr "Fax"
 msgid "Conference room id"
 msgstr "Conferencia"
 
-msgid "Friend value"
-msgstr "Número friend"
-
-msgid "Target"
-msgstr "Destino"
-
 msgid "Peering contract id"
 msgstr "Contrato de Peering"
 
@@ -2466,14 +2522,8 @@ msgstr ""
 msgid "Last change"
 msgstr ""
 
-msgid "Number"
-msgstr "Número"
-
 msgid "Minimal length: 2"
 msgstr "Longitud mínima: 2"
-
-msgid "Conference Room"
-msgstr "Conferencia"
 
 msgid "Filter id"
 msgstr "Filtro"
@@ -2801,6 +2851,9 @@ msgstr "Extensión"
 msgid "Target voice mail user id"
 msgstr "Buzón de voz"
 
+msgid "Target Conditional route"
+msgstr "Ruta condicional"
+
 msgid "Template header"
 msgstr "Cabecera de plantilla"
 
@@ -3082,6 +3135,12 @@ msgstr ""
 msgid "Regular Expression"
 msgstr "Expresión regular"
 
+msgid "Enter number patterns in E.164 format."
+msgstr "Introduzca patrones de números en formato E.164."
+
+msgid "Match Value"
+msgstr "Coincidencia"
+
 msgid "Default Action"
 msgstr "Acción por defecto"
 
@@ -3093,9 +3152,6 @@ msgstr "Forzar DDI"
 
 msgid "Forced DDI"
 msgstr "DDI forzado"
-
-msgid "Enter Destination number patterns in E.164 format."
-msgstr "Introduzca patrones de números en formato E.164."
 
 msgid "Action"
 msgstr "Acción"
@@ -3559,13 +3615,11 @@ msgstr "Empleado en buzón de voz y acceso al portal de usuario"
 msgid "Screen Extension"
 msgstr "Extensión a mostar"
 
-msgid "Outgoing DDI Rules"
-msgstr "Reglas DDI salida"
-
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
 msgstr ""
-"Reglas para manipular el DDI de salida cuando el usuario llama directamente a números externos."
+"Reglas para manipular el DDI de salida cuando el usuario llama directamente "
+"a números externos."
 
 msgid "Do not disturb"
 msgstr "No molestar"
@@ -3633,7 +3687,9 @@ msgid "QR Code"
 msgstr "Código QR"
 
 msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
-msgstr "Insertar un código QR al potal de usuario para aprovisionar el softphone GS Wave para dispositivos móviles"
+msgstr ""
+"Insertar un código QR al potal de usuario para aprovisionar el softphone GS "
+"Wave para dispositivos móviles"
 
 msgid "Module"
 msgstr "Módulo"
@@ -3652,4 +3708,3 @@ msgstr "Fecha ejecución"
 
 msgid "Finish date"
 msgstr "Fecha finalización"
-
