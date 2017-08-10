@@ -500,6 +500,62 @@ class Users extends MapperAbstract
                     }
                 }
 
+                if ($model->getConditionalRoutesByVoiceMailUser(null, null, true) !== null) {
+                    $conditionalRoutes = $model->getConditionalRoutesByVoiceMailUser();
+
+                    if (!is_array($conditionalRoutes)) {
+
+                        $conditionalRoutes = array($conditionalRoutes);
+                    }
+
+                    foreach ($conditionalRoutes as $value) {
+                        $value->setVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getConditionalRoutesByUser(null, null, true) !== null) {
+                    $conditionalRoutes = $model->getConditionalRoutesByUser();
+
+                    if (!is_array($conditionalRoutes)) {
+
+                        $conditionalRoutes = array($conditionalRoutes);
+                    }
+
+                    foreach ($conditionalRoutes as $value) {
+                        $value->setUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getConditionalRoutesConditionsByVoiceMailUser(null, null, true) !== null) {
+                    $conditionalRoutesConditions = $model->getConditionalRoutesConditionsByVoiceMailUser();
+
+                    if (!is_array($conditionalRoutesConditions)) {
+
+                        $conditionalRoutesConditions = array($conditionalRoutesConditions);
+                    }
+
+                    foreach ($conditionalRoutesConditions as $value) {
+                        $value->setVoiceMailUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getConditionalRoutesConditionsByUser(null, null, true) !== null) {
+                    $conditionalRoutesConditions = $model->getConditionalRoutesConditionsByUser();
+
+                    if (!is_array($conditionalRoutesConditions)) {
+
+                        $conditionalRoutesConditions = array($conditionalRoutesConditions);
+                    }
+
+                    foreach ($conditionalRoutesConditions as $value) {
+                        $value->setUserId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 

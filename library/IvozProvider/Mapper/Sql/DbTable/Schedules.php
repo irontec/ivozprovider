@@ -47,6 +47,7 @@ class Schedules extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelSchedules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterRelSchedules'
     );
     protected $_metadata = array (

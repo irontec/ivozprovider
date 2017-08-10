@@ -70,6 +70,7 @@ class DDIs extends MapperAbstract
                 'friendValue' => $model->getFriendValue(),
                 'languageId' => $model->getLanguageId(),
                 'queueId' => $model->getQueueId(),
+                'conditionalRouteId' => $model->getConditionalRouteId(),
             );
         } else {
             $result = array();
@@ -686,7 +687,8 @@ class DDIs extends MapperAbstract
                   ->setBillInboundCalls($data['billInboundCalls'])
                   ->setFriendValue($data['friendValue'])
                   ->setLanguageId($data['languageId'])
-                  ->setQueueId($data['queueId']);
+                  ->setQueueId($data['queueId'])
+                  ->setConditionalRouteId($data['conditionalRouteId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setBrandId($data->{'brandId'})
@@ -709,7 +711,8 @@ class DDIs extends MapperAbstract
                   ->setBillInboundCalls($data->{'billInboundCalls'})
                   ->setFriendValue($data->{'friendValue'})
                   ->setLanguageId($data->{'languageId'})
-                  ->setQueueId($data->{'queueId'});
+                  ->setQueueId($data->{'queueId'})
+                  ->setConditionalRouteId($data->{'conditionalRouteId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\DDIs) {
             $entry->setId($data->getId())
@@ -733,7 +736,8 @@ class DDIs extends MapperAbstract
                   ->setBillInboundCalls($data->getBillInboundCalls())
                   ->setFriendValue($data->getFriendValue())
                   ->setLanguageId($data->getLanguageId())
-                  ->setQueueId($data->getQueueId());
+                  ->setQueueId($data->getQueueId())
+                  ->setConditionalRouteId($data->getConditionalRouteId());
 
         }
 

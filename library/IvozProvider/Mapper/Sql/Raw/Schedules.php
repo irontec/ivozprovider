@@ -456,6 +456,20 @@ class Schedules extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getConditionalRoutesConditionsRelSchedules(null, null, true) !== null) {
+                    $conditionalRoutesConditionsRelSchedules = $model->getConditionalRoutesConditionsRelSchedules();
+
+                    if (!is_array($conditionalRoutesConditionsRelSchedules)) {
+
+                        $conditionalRoutesConditionsRelSchedules = array($conditionalRoutesConditionsRelSchedules);
+                    }
+
+                    foreach ($conditionalRoutesConditionsRelSchedules as $value) {
+                        $value->setScheduleId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getExternalCallFilterRelSchedules(null, null, true) !== null) {
                     $externalCallFilterRelSchedules = $model->getExternalCallFilterRelSchedules();
 

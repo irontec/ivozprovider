@@ -47,6 +47,7 @@ class Calendars extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelCalendars',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterRelCalendars',
         'IvozProvider\\Mapper\\Sql\\DbTable\\HolidayDates'
     );

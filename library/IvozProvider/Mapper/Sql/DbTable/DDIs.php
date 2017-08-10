@@ -109,6 +109,11 @@ class DDIs extends TableAbstract
             'columns' => 'retailAccountId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
             'refColumns' => 'id'
+        ),
+        'DDIsIbfk15' => array(
+            'columns' => 'conditionalRouteId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutes',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -484,6 +489,23 @@ class DDIs extends TableAbstract
 	    'TABLE_NAME' => 'DDIs',
 	    'COLUMN_NAME' => 'queueId',
 	    'COLUMN_POSITION' => 22,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'conditionalRouteId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'DDIs',
+	    'COLUMN_NAME' => 'conditionalRouteId',
+	    'COLUMN_POSITION' => 23,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

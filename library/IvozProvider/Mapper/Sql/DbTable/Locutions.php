@@ -47,6 +47,8 @@ class Locutions extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutes',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilters',

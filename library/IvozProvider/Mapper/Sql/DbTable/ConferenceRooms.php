@@ -47,6 +47,8 @@ class ConferenceRooms extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutes',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditions',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Extensions'
     );

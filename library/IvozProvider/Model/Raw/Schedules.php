@@ -117,6 +117,14 @@ class Schedules extends ModelAbstract
 
 
     /**
+     * Dependent relation ConditionalRoutesConditionsRelSchedules_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelSchedules[]
+     */
+    protected $_ConditionalRoutesConditionsRelSchedules;
+
+    /**
      * Dependent relation ExternalCallFilterRelSchedules_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -160,6 +168,10 @@ class Schedules extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'ConditionalRoutesConditionsRelSchedulesIbfk2' => array(
+                    'property' => 'ConditionalRoutesConditionsRelSchedules',
+                    'table_name' => 'ConditionalRoutesConditionsRelSchedules',
+                ),
             'ExternalCallFilterRelSchedulesIbfk2' => array(
                     'property' => 'ExternalCallFilterRelSchedules',
                     'table_name' => 'ExternalCallFilterRelSchedules',
@@ -167,6 +179,7 @@ class Schedules extends ModelAbstract
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
+            'ConditionalRoutesConditionsRelSchedules_ibfk_2',
             'ExternalCallFilterRelSchedules_ibfk_2'
         ));
 
@@ -705,6 +718,96 @@ class Schedules extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditionsRelSchedules_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelSchedules
+     * @return \IvozProvider\Model\Raw\Schedules
+     */
+    public function setConditionalRoutesConditionsRelSchedules(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConditionalRoutesConditionsRelSchedules === null) {
+
+                $this->getConditionalRoutesConditionsRelSchedules();
+            }
+
+            $oldRelations = $this->_ConditionalRoutesConditionsRelSchedules;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConditionalRoutesConditionsRelSchedules = array();
+
+        foreach ($data as $object) {
+            $this->addConditionalRoutesConditionsRelSchedules($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditionsRelSchedules_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelSchedules $data
+     * @return \IvozProvider\Model\Raw\Schedules
+     */
+    public function addConditionalRoutesConditionsRelSchedules(\IvozProvider\Model\Raw\ConditionalRoutesConditionsRelSchedules $data)
+    {
+        $this->_ConditionalRoutesConditionsRelSchedules[] = $data;
+        $this->_setLoaded('ConditionalRoutesConditionsRelSchedulesIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutesConditionsRelSchedules_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelSchedules
+     */
+    public function getConditionalRoutesConditionsRelSchedules($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesConditionsRelSchedulesIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoutesConditionsRelSchedules = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConditionalRoutesConditionsRelSchedules;
     }
 
     /**
