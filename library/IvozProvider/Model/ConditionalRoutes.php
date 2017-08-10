@@ -11,22 +11,20 @@
  */
 
 /**
- * [entity]
+ * [entity][rest]
  *
  * @package IvozProvider\Model
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
-
+ 
 namespace IvozProvider\Model;
-class Calendars extends Raw\Calendars
+class ConditionalRoutes extends Raw\ConditionalRoutes
 {
-    public function isHolidayDate($date)
+    /**
+     * This method is called just after parent's constructor
+     */
+    public function init()
     {
-        $holidayDates = $calendar->getHolidayDates("eventDate='" . $date . "'");
-        if (!empty($holidayDates)) {
-            return true;
-        }
-        return false;
     }
 }

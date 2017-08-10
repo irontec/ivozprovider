@@ -11,31 +11,32 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\DDIs
+ * Data Mapper implementation for IvozProvider\Model\ConditionalRoutesConditions
  *
  * @package Mapper
  * @subpackage Sql
  * @author Luis Felipe Garcia
  */
 namespace IvozProvider\Mapper\Sql;
-class DDIs extends Raw\DDIs
+class ConditionalRoutesConditions extends Raw\ConditionalRoutesConditions
 {
-    protected function _save(\IvozProvider\Model\Raw\DDIs $model,
+    protected function _save(\IvozProvider\Model\Raw\ConditionalRoutesConditions $model,
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
         $nullableFields = array(
-                "user"          => "userId",
                 "IVRCommon"     => "IVRCommonId",
                 "IVRCustom"     => "IVRCustomId",
                 "huntGroup"     => "huntGroupId",
-                "fax"           => "faxId",
+                "voicemail"     => "voiceMailUserId",
+                "user"          => "userId",
+                "number"        => "numberValue",
                 "friend"        => "friendValue",
-                "conferenceRoom" => "conferenceRoomId",
                 "queue"         => "queueId",
-                "retailAccount" => "retailAccountId",
-                "conditional"   => "conditionalRouteId",
+                "conferenceRoom" => "conferenceRoomId",
+                "extension"     => "extensionId",
         );
+
         $routeType = $model->getRouteType();
         foreach ($nullableFields as $type => $fieldName) {
             if ($routeType == $type) {
@@ -45,17 +46,6 @@ class DDIs extends Raw\DDIs
             $model->{$setter}(null);
         }
 
-        // Set standarized E164 number
-        // FIXME Country IS MANDATODY
-        $country = $model->getCountry();
-        $model->setDDIE164($country->getCallingCode() . $model->getDDI());
-
-        // If billInboundCalls is set, peeringContract must have externallyRated to 1
-        if ($model->getBillInboundCalls() && !$model->getPeeringContract()->getExternallyRated() ) {
-            throw new \Exception('Inbound Calls cannot be billed as PeeringContract is not externally rated', 90000);
-        }
-
         return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
     }
-
 }
