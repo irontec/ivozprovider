@@ -77,7 +77,7 @@ file:
 
 .. image:: img/pricing_plan_csv2.png
 
-The order of the columns must be:
+The order of the columns should be:
 
 - Pricing pattern name
 - Pricing pattern description
@@ -86,8 +86,14 @@ The order of the columns must be:
 - Establishment cost
 - Billing period
 
-.. note:: Floating number must be quoted with double quotes and use a comma as
-   decimal separator.
+.. note:: It is recommended to double quote alphanumeric entries, though
+   it is not compulsory for single word entries (or entries without odd symbols).
+   **If they contain any comma, they MUST be quoted**.
+
+.. error:: Floating numbers **MUST use point as decimal separator**.
+
+.. note:: Numeric entries can be quoted with double quotes, but it is
+   not mandatory.
 
 .. important:: The importing system will just bind the price to an existing
    price pattern or, if prefix doesn't match any existing pricing pattern, it will
