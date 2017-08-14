@@ -88,32 +88,6 @@ production:
       disableSave: true
       labelOnPostAction: _("View %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
       title: _("View %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
-    #kamTrunksDomain: 
-    <<: *kamTrunksDomain_screensLink
-    kamTrunksDomainList_screen: 
-      <<: *kamTrunksDomainList_screenLink
-      filterField: domainId
-      parentOptionCustomizer: 
-        - recordCount
-    kamTrunksDomainNew_screen: 
-      <<: *kamTrunksDomainNew_screenLink
-      filterField: domainId
-    kamTrunksDomainEdit_screen: 
-      <<: *kamTrunksDomainEdit_screenLink
-      filterField: domainId
-
-    #kamUsersDomain: 
-    kamUsersDomainList_screen: 
-      <<: *kamUsersDomainList_screenLink
-      filterField: domainId
-      parentOptionCustomizer: 
-        - recordCount
-    kamUsersDomainNew_screen: 
-      <<: *kamUsersDomainNew_screenLink
-      filterField: domainId
-    kamUsersDomainEdit_screen: 
-      <<: *kamUsersDomainEdit_screenLink
-      filterField: domainId
 
   dialogs: &domains_dialogsLink 
     domainsDel_dialog: &domainsDel_dialogLink 
@@ -128,10 +102,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Domain', 'Domains', 1))
       multiItem: 1
       labelOnList: 1
-  # kamTrunksDomain dialogs: 
-    <<: *kamTrunksDomain_dialogsLink
-  # kamUsersDomain dialogs: 
-    <<: *kamUsersDomain_dialogsLink
+
 staging: 
   _extends: production
 testing: 

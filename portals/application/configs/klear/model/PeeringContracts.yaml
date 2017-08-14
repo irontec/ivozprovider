@@ -2,18 +2,18 @@ production:
   class: \IvozProvider\Model\PeeringContracts
   fields:
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
       default: true
     description:
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       defaultValue:
     brandId:
-      title: _('Brand')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source:

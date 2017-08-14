@@ -4,7 +4,7 @@ production:
   class: \IvozProvider\Model\Extensions
   fields:
     companyId:
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -46,7 +46,7 @@ production:
                 "conditionalRouteId"
               ]
           'user':
-            title: _('user')
+            title: ngettext('User', 'Users', 1)
             visualFilter:
               show: [ "userId" ]
               hide: [
@@ -54,7 +54,7 @@ production:
                 "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'IVRCommon':
-            title: _('IVRCommon')
+            title: ngettext('IVR Common', 'IVRs Common', 1)
             visualFilter:
               show: [ "IVRCommonId" ]
               hide: [
@@ -62,7 +62,7 @@ production:
                 "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'IVRCustom':
-            title: _('IVRCustom')
+            title: ngettext('IVR Custom', 'IVRs Custom', 1)
             visualFilter:
               show: [ "IVRCustomId" ]
               hide: [
@@ -70,7 +70,7 @@ production:
                 "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'huntGroup':
-            title: _('huntGroup')
+            title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
               show: [ "huntGroupId" ]
               hide: [
@@ -78,7 +78,7 @@ production:
                 "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'conferenceRoom':
-            title: _('Conference Room')
+            title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
               show: [ "conferenceRoomId" ]
               hide: [
@@ -86,7 +86,7 @@ production:
                 "huntGroupId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: [ "numberValue" ]
               hide: [
@@ -94,7 +94,7 @@ production:
                 "huntGroupId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'friend':
-            title: _('Friend')
+            title: ngettext('Friend', 'Friends', 1)
             visualFilter:
               show: [ "friendValue" ]
               hide: [
@@ -102,7 +102,7 @@ production:
                 "huntGroupId", "numberValue", "queueId", "conditionalRouteId"
               ]
           'queue':
-            title: _('Queue')
+            title: ngettext('Queue', 'Queues', 1)
             visualFilter:
               show: [ "queueId" ]
               hide: [
@@ -118,14 +118,14 @@ production:
                 "userId", "huntGroupId", "numberValue", "queueId"
               ]
     numberValue:
-      title: _('Number value')
+      title: _('Number')
       type: text
       pattern: "^\\+?[0-9]+$"
       required: true
       maxLength: 25
       trim: both
     IVRCommonId:
-      title: _('I v r common id')
+      title: ngettext('IVR Common', 'IVRs Common', 1)
       type: select
       required: true
       source:
@@ -140,7 +140,7 @@ production:
           order: name
         'null': _("Unassigned")
     IVRCustomId:
-      title: _('I v r custom id')
+      title: ngettext('IVR Custom', 'IVRs Custom', 1)
       type: select
       required: true
       source:
@@ -155,7 +155,7 @@ production:
           order: name
         'null': _("Unassigned")
     huntGroupId:
-      title: _('Hunt group id')
+      title: ngettext('Hunt Group', 'Hunt Groups', 1)
       type: select
       required: true
       source:
@@ -170,7 +170,7 @@ production:
           order: name
         'null': _("Unassigned")
     conferenceRoomId:
-      title: _('Conference room id')
+      title: ngettext('Conference room', 'Conference rooms', 1)
       type: select
       required: true
       source:
@@ -207,7 +207,7 @@ production:
       required: true
       <<: *friendValueHelp
     queueId:
-      title: _('Queue')
+      title: ngettext('Queue', 'Queues', 1)
       type: select
       required: true
       source:

@@ -50,10 +50,10 @@ production:
       source: 
         data: inline
         values: 
-          'waiting': _('waiting')
-          'processing': _('processing')
-          'created': _('created')
-          'error': _('error')
+          'waiting': _('Waiting')
+          'processing': _('Processing')
+          'created': _('Created')
+          'error': _('Error')
     pdfFile: 
       title: _('Pdf file')
       type: file
@@ -75,7 +75,7 @@ production:
         commands:
           invoicesPdfFileDownload_command: true
     companyId: 
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 
@@ -90,7 +90,7 @@ production:
           order: name
         'null': _("Unassigned")
     brandId: 
-      title: _('Brand')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       source: 
         data: mapper
@@ -118,7 +118,7 @@ production:
           order: name
         'null': _("Unassigned")
     FixedCostsRelInvoices:
-      title: _('Fixed costs')
+      title: ngettext('Fixed cost', 'Fixed costs', 1)
       searchable: false
       type: ghost
       source:

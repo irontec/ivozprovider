@@ -88,18 +88,13 @@ production:
           <<: *brandsOrder_Link
       fixedPositions: &brandsFixedPositions_Link
         group0:
-          label: _("Basic data")
+          label: _("Basic Configuration")
           colsPerRow: 2
           fields:
             name: 1
             nif: 1
             logo: 1
             FeaturesRelBrands: 1
-        group1:
-          label: _("SIP domains")
-          colsPerRow: 12
-          fields:
-            domain_trunks: 7
         group2:
           label: _("Locales")
           colsPerRow: 2
@@ -118,6 +113,7 @@ production:
             registryData: 2
         group4:
           colsPerRow: 4
+          label: _("SIP domain")
           fields:
             domain_users: 2
         group5:
@@ -129,7 +125,7 @@ production:
             FromAddress: 6
         group6:
           colsPerRow: 12
-          label: _("Recordings")
+          label: ngettext('Recording', 'Recordings', 0)
           collapsed: true
           fields:
             recordingsLimitMB: 6

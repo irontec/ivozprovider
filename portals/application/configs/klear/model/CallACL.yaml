@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CallACL
   fields:
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order: name
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _("Name")
       type: text
       trim: both
       required: true
@@ -30,7 +30,7 @@ production:
           'allow': _('allow')
           'deny': _('deny')
     CallACLRelPatterns:
-      title: _('Call ACL Patterns')
+      title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
       searchable: false
       type: ghost
       source:
@@ -58,7 +58,7 @@ production:
             callACLRelPatternsDel_dialog: true
           screens:
             callACLRelPatternsEdit_screen: true
-          default: 
+          default:
       options:
         screens:
           callACLRelPatternsNew_screen: true

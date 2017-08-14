@@ -73,7 +73,7 @@ production:
           fields:
             recordCalls: 8
         group3:
-          label: _("Routing data")
+          label: _("Routing configuration")
           colsPerRow: 3
           fields:
             routeType: 1

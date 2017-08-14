@@ -15,7 +15,7 @@ production:
       type: text
       maxLength: 64
     ruri_pattern: 
-      title: _('Ruri pattern')
+      title: _('R-URI pattern')
       type: text
       maxLength: 64
     tag: 

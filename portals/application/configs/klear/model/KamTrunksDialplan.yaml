@@ -9,7 +9,7 @@ production:
         control: Spinner
       default: true
     pr: 
-      title: _('Pr')
+      title: _('Priority')
       type: number
       required: true
       source: 

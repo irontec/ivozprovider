@@ -2,13 +2,13 @@ production:
   class: \IvozProvider\Model\PickUpGroups
   fields: 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
       default: true
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 0)
       type: select
       required: true
       source: 
@@ -21,7 +21,7 @@ production:
             template: '%name%'
           order: name
     PickUpRelUsers:
-      title: _('Users')
+      title: ngettext('User', 'Users', 1)
       type: multiselect
       source:
         data: mapper

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\BrandURLs
   fields:
     brandId:
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source:
@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order: name
     url:
-      title: ngettext('Url', 'Urls', 1)
+      title: ngettext('URL', 'URLs', 1)
       type: text
       pattern: "^https://.*$"
       trim: both
@@ -28,13 +28,13 @@ production:
         text: _("'https://' URLs valid only")
         label: _("Need help?")
     klearTheme:
-      title: ngettext('Klear theme', 'Klear themes', 1)
+      title: ngettext('Theme', 'Themes', 1)
       type: select
       defaultValue: redmond
       source:
         data: themes
     userTheme:
-      title: ngettext('User theme', 'User themes', 1)
+      title: ngettext('Theme', 'Themes', 1)
       type: select
       defaultValue: redmond
       source:
@@ -77,24 +77,24 @@ production:
           yeti:
             title: Yeti
     urlType:
-      title: _('Url type')
+      title: _('URL type')
       type: select
       required: true
       source:
         data: inline
         values:
           'admin':
-            title: _('admin')
+            title: ngettext('Company', 'Companies', 1)
             visualFilter:
               show: ["klearTheme"]
               hide: ["userTheme"]
           'user':
-            title: _('user')
+            title: ngettext('User', 'Users', 1)
             visualFilter:
               show: ["userTheme"]
               hide: ["klearTheme"]
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       default: true

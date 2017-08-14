@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ProxyTrunks
   fields: 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       maxLength: 100

@@ -114,28 +114,7 @@ production:
 
   # invoices dialogs: 
     <<: *invoices_dialogsLink
-    
-#    uploadFile_dialog: &uploadFile_dialogLink 
-#      title: _("Cargar desde un fichero")
-#      module: default
-#      controller: klear-custom-upload-file
-#      labelOnEdit: true
-#      action: upload-file
-#      class: ui-silk-arrow-up
-#    downloadFile_dialog: &downloadFile_dialogLink 
-#      title: _("Descargar fichero")
-#      module: default
-#      controller: klear-custom-download-file
-#      labelOnEdit: true
-#      action: download-file
-#      class: ui-silk-arrow-down
-#    backup_dialog: &genericBackup_dialog
-#      title: _("Restore last backup")
-#      module: default
-#      controller: klear-custom-restore-backup
-#      labelOnEdit: true
-#      action: restore-generic-backup
-#      class: ui-silk-arrow-undo
+
 staging: 
   _extends: production
 testing: 

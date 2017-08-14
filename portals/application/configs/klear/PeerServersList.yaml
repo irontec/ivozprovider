@@ -73,7 +73,7 @@ production:
           prefix: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
-          label: _("Basic Settings")
+          label: _("Basic Configuration")
           colsPerRow: 12
           fields:
             sip_proxy: 4

@@ -46,7 +46,7 @@ production:
       label: false
       forcedValues:
         <<: *forcedBrand
-      title: _("Edit %s %2s", ngettext('Generic call a c l pattern', 'Generic call ACL patterns', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 1), "[format| (%item%)]")
   dialogs: &genericCallACLPatterns_dialogsLink
     genericCallACLPatternsDel_dialog: &genericCallACLPatternsDel_dialogLink
       <<: *GenericCallACLPatterns

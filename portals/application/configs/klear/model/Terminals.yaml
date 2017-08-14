@@ -5,7 +5,7 @@ production:
   class: \IvozProvider\Model\Terminals
   fields:
     TerminalModelId:
-      title: _('Terminal model id')
+      title: ngettext('Terminal model', 'Terminal models', 1)
       type: select
       required: true
       source:
@@ -18,7 +18,7 @@ production:
             template: '%iden%'
           order: iden
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       pattern: "^[a-zA-Z0-9_]+$"
       trim: both
@@ -35,7 +35,7 @@ production:
       type: text
       maxLength: 255
     disallow:
-      title: _('Disallowed codecs')
+      title: _('Disallowed audio codecs')
       type: text
       trim: both
       defaultValue: all
@@ -80,7 +80,7 @@ production:
           'update': 'update'
       <<: *updateMethodHelp
     password:
-      title: ngettext('Password', 'Passwords', 1)
+      title: _('Password')
       type: text
       pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
 
@@ -95,7 +95,7 @@ production:
         commands:
           generatePassword_command: true
     companyId:
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -108,7 +108,7 @@ production:
             template: '%name%'
           order: name
     mac:
-      title: _('Mac')
+      title: _('MAC')
       type: text
       trim: both
       maxLength: 12

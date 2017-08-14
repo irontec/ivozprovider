@@ -37,7 +37,7 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
             $filecontent = fread($file, filesize($filename));
             $data = array(
                     'title' => _("Restore backup"),
-                    'message'=>_("Loading <textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"),
+                    'message'=>_("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"),
             );
         } else{
             $existsBackup = file_exists($filename);
@@ -51,14 +51,14 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
                     'title' => _("Restore backup"),
                     'message'=>_($message),
                     'buttons'=>array(
-                            _('Aceptar') => array(
+                            _('Accept') => array(
                                     'reloadParent' => false,
                                     'recall' => $existsBackup,
                                     'params'=>array(
                                             "backup" => true
                                     )
                             ),
-                            _('Cancelar') => array(
+                            _('Cancel') => array(
                                     'reloadParent' => false,
                                     'recall' => false,
                             )

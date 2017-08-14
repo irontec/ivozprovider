@@ -54,7 +54,7 @@ production:
           fields:
             externalCallFilterId: 2
         group2:
-          label: _("Routing data")
+          label: _("Routing configuration")
           colsPerRow: 3
           fields:
             routeType: 1 

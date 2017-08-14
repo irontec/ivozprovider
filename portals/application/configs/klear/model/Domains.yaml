@@ -21,12 +21,12 @@ production:
               show: []
               hide: ["brandId","companyId"]
           'company': 
-            title: _("company")
+            title: ngettext('Company', 'Companies', 1)
             visualFilter:
               show: ["companyId"]
               hide: ["brandId","pointsTo"]
           'brand': 
-            title: _("brand")
+            title: ngettext('Brand', 'Brands', 1)
             visualFilter:
               hide: ["companyId"]
               show: ["brandId", "pointsTo"]
@@ -37,10 +37,10 @@ production:
       source: 
         data: inline
         values: 
-          'proxyusers': _('proxyusers')
-          'proxytrunks': _('proxytrunks')
+          'proxyusers': ngettext('Proxy Users', 'Proxies Users', 1)
+          'proxytrunks': ngettext('Proxy Trunks', 'Proxies Trunks', 1)
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 
@@ -53,7 +53,7 @@ production:
             template: '%name%'
           order: name
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 

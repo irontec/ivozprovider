@@ -27,7 +27,7 @@ production:
         text: _("Leave empty to send to Host field")
         label: _("Need help?")
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 
@@ -67,16 +67,16 @@ production:
         text: _("Add this params to R-URI (must start with ';')")
         label: _("Need help?")
     uri_scheme: 
-      title: _('Uri scheme')
+      title: _('URI scheme')
       type: select
       defaultValue: 1
       source:
         data: inline
         values: 
           '1':
-            title: _("sip")
+            title: _('sip')
           '2':
-            title: _("sips")
+            title: _('sips')
     transport: 
       title: _('Transport')
       type: select
@@ -85,11 +85,11 @@ production:
         data: inline
         values: 
           '1':
-            title: _("udp")
+            title: _('UDP')
           '2':
-            title: _("tcp")
+            title: _('TCP')
           '3':
-            title: _("tls")
+            title: _('TLS')
     strip: 
       title: _('Strip')
       type: number
@@ -125,15 +125,15 @@ production:
         data: inline
         values:
           'yes':
-            title: _("yes")
+            title: _('Yes')
             visualFilter:
               show: ["auth_user", "auth_password"]
               hide: []
           'no':
-            title: _("no")
+            title: _('No')
             visualFilter:
-              hide: ["auth_user", "auth_password"]
               show: []
+              hide: ["auth_user", "auth_password"]
     auth_user:
       title: _('Auth user')
       type: text

@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Faxes
   fields: 
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true

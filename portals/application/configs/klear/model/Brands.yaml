@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Brands
   fields:
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
@@ -118,7 +118,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Información del registro mercantil de la marca que se incluirá en las facturas emitidas: e.g. 'Inscrita en el Registro Mercantil de Bizkaia, tomo XXXX, libro Y, folio ZZZ, hoja AA-BBBB'")
+        text: _("Trademark registration information of the mark that is included in the invoices issued: eg 'registered in the commercial register of bizkaia, tome xxxx, book and, folio zzz, sheet aa-bbbb'")
         label: _("Need help?")
     languageId:
       title: _('Language')

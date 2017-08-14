@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\KamTrunksUacreg
   fields:
     multiDDI:
-      title: _('Multiddi')
+      title: _('Multi DDI')
       type: select
       defaultValue: 0
       source:
@@ -32,12 +32,10 @@ production:
         label: _("Need help?")
       required: true
     l_username:
-      title: _('L username')
       type: text
       trim: both
       defaultValue:
     l_domain:
-      title: _('L domain')
       type: text
       trim: both
       defaultValue:
@@ -104,7 +102,7 @@ production:
         control: Spinner
       required: true
     brandId:
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source:

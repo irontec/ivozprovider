@@ -5,7 +5,7 @@ production:
   class: \IvozProvider\Model\Friends
   fields:
     companyId:
-      title: _('Companyid')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -19,7 +19,7 @@ production:
           order: name
       default: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       pattern: "^[a-zA-Z0-9_]+$"
       trim: both
@@ -32,7 +32,7 @@ production:
         text: _("Allowed characters are a-z, A-Z, 0-9 and underscore")
         label: _("Need help?")
     description:
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       defaultValue:
       maxLength: 500
@@ -43,9 +43,9 @@ production:
       source:
         data: inline
         values:
-          'udp': _('udp')
-          'tcp': _('tcp')
-          'tls': _('tls')
+          'udp': _('UDP')
+          'tcp': _('TCP')
+          'tls': _('TLS')
     ip:
       title: _('Destination IP address')
       type: text
@@ -70,17 +70,17 @@ production:
         data: inline
         values:
           'yes':
-            title: _("yes")
+            title: _('Yes')
             visualFilter:
               show: ["password"]
               hide: []
           'no':
-            title: _("no")
+            title: _('No')
             visualFilter:
               hide: ["password"]
               show: []
     password:
-      title: ngettext('Password', 'Passwords', 1)
+      title: _('Password')
       type: text
       pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
       required: true
@@ -128,7 +128,7 @@ production:
         text: _("Outgoing calls coming from Friend must have this country format")
         label: _("Need help?")
     areaCode:
-      title: _('Areacode')
+      title: _('Area code')
       type: text
       maxLength: 10
       info:
@@ -164,14 +164,14 @@ production:
       source:
         control: Spinner
     disallow:
-      title: _('Disallowed codecs')
+      title: _('Disallowed audio codecs')
       type: text
       trim: both
       defaultValue: all
       maxLength: 100
       <<: *codecsHelp
     allow:
-      title: _('Allowed codecs')
+      title: _('Allowed audio codecs')
       type: select
       trim: both
       defaultValue: alaw
@@ -215,12 +215,12 @@ production:
         data: inline
         values:
           'yes':
-            title: _("yes")
+            title: _('Yes')
             visualFilter:
               show: ["direct_media_method", "callerid_update_header"]
               hide: []
           'no':
-            title: _("no")
+            title: _('No')
             visualFilter:
               hide: ["direct_media_method", "callerid_update_header"]
               show: []
@@ -236,12 +236,12 @@ production:
         data: inline
         values:
           'yes':
-            title: _("yes")
+            title: _('Yes')
             visualFilter:
               show: ["ip", "port", "transport", "auth_needed"]
               hide: []
           'no':
-            title: _("no")
+            title: _('No')
             visualFilter:
               hide: ["ip", "port", "transport", "auth_needed"]
               show: ["password"]

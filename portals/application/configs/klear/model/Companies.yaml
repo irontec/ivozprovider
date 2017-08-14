@@ -8,7 +8,7 @@ production:
       required: false
       readonly: true
     brandId:
-      title: _('Brand')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source:
@@ -21,7 +21,7 @@ production:
             template: '%name%'
           order: name
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _("Name")
       type: text
       trim: both
       required: true
@@ -51,22 +51,8 @@ production:
               - tz
             template: '%tz%'
           order: tz
-    musicOnHoldId:
-      title: _('Music on hold')
-      type: select
-      source:
-        data: mapper
-        config:
-          mapperName: \IvozProvider\Mapper\Sql\MusicOnHold
-          filterClass: IvozProvider_Klear_Filter_Company
-          fieldName:
-            fields:
-              - name
-            template: '%name%'
-          order: name
-        'null': _("Unassigned")
     applicationServerId:
-      title: _('Application server id')
+      title: ngettext('Application Server', 'Application Servers', 1)
       type: select
       source:
         data: mapper
@@ -141,7 +127,7 @@ production:
           order: code
         'null': _("Unassigned")
     areaCode:
-      title: _('Areacode')
+      title: _('Area code')
       type: text
       maxLength: 10
       info:
@@ -165,7 +151,7 @@ production:
           order: DDIE164
         'null': _("Unassigned")
     outgoingDDIRuleId:
-      title: _('Outgoing DDI Rules')
+      title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 1)
       type: select
       source:
         data: mapper

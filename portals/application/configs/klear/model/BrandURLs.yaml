@@ -1,21 +1,21 @@
-production: 
+production:
   class: \IvozProvider\Model\BrandURLs
-  fields: 
-    brandId: 
-      title: _('Brand id')
+  fields:
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    url: 
-      title: ngettext('Url', 'Urls', 1)
+    url:
+      title: ngettext('URL', 'URLs', 1)
       type: text
       pattern: "^https://.*$"
       trim: both
@@ -27,21 +27,21 @@ production:
         icon: help
         text: _("'https://' URLs valid only")
         label: _("Need help?")
-    klearTheme: 
-      title: ngettext('Klear theme', 'Klear themes', 1)   
+    klearTheme:
+      title: ngettext('Theme', 'Themes', 1)
       type: select
       defaultValue: redmond
       source:
         data: themes
-    userTheme: 
-      title: ngettext('User theme', 'User themes', 1)
+    userTheme:
+      title: ngettext('Theme', 'Themes', 1)
       type: select
       defaultValue: redmond
       source:
         data: inline
         values:
           default:
-            title: Default 
+            title: Default
           cerulean:
             title: Cerulean
           cosmo:
@@ -76,39 +76,39 @@ production:
             title: United
           yeti:
             title: Yeti
-    urlType: 
-      title: _('Url type')
+    urlType:
+      title: _('URL type')
       type: select
       required: true
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           'god':
-            title: _('god')
+            title: _('God')
             visualFilter:
               show: ["klearTheme"]
               hide: ["userTheme"]
           'brand':
-            title: _('brand')
+            title: ngettext('Brand', 'Brands', 1)
             visualFilter:
               show: ["klearTheme"]
               hide: ["userTheme"]
           'admin':
-            title: _('admin')
+            title: ngettext('Company', 'Companies', 1)
             visualFilter:
               show: ["klearTheme"]
               hide: ["userTheme"]
-          'user': 
-            title: _('user')
+          'user':
+            title: ngettext('User', 'Users', 1)
             visualFilter:
               show: ["userTheme"]
               hide: ["klearTheme"]
-    name: 
-      title: ngettext('Name', 'Names', 1)
+    name:
+      title: _('Name')
       type: text
       trim: both
       default: true
-      defaultValue: 
+      defaultValue:
       maxLength: 200
       info:
         type: box
@@ -116,15 +116,15 @@ production:
         icon: help
         text: _("Will be shown on page footer")
         label: _("Need help?")
-    logo: 
+    logo:
       title: _('Logo')
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
         options:
-          hiddenName: true        
-          download: 
+          hiddenName: true
+          download:
             external: true
             type: command
             target: brandURLsLogoDownload_command
@@ -136,38 +136,38 @@ production:
             icon: ui-silk-bin
             title: _("Delete file")
             onNull: hide
-          upload: 
+          upload:
             type: command
             target: brandURLsLogoUpload_command
             title: _("Upload file")
             class: qq-uploader
             onNull: show
-          preview: 
+          preview:
             target: brandURLsLogoPreview_command
             type: command
             class: filePreview
             external: 1
-            props: 
+            props:
               width: 150
               height: 150
               crop: false
             onNull: hide
-          previewList: 
+          previewList:
             target: brandURLsLogoPreview_command
             type: command
             class: filePreview
             listController: 1
             external: 1
-            props: 
+            props:
               width: 30
               height: 30
               crop: false
             onNull: hide
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

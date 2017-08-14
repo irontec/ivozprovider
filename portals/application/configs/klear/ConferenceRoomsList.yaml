@@ -46,13 +46,13 @@ production:
         <<: *forcedCompany
       fixedPositions: &ConferenceRoomsFixedPositions_link
         group0:
-          label: _("Basic data")
+          label: _("Basic Configuration")
           colsPerRow: 3
           fields:
             name: 2
             maxMembers: 1
         group1:
-          label: _("Authentication data")
+          label: _("Authentication Settings")
           colsPerRow: 3
           fields:
              pinProtected: 1

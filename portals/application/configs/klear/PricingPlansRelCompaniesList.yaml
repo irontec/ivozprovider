@@ -76,7 +76,7 @@ production:
     #pricingPlansRelTargetPatterns: 
     pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsListEdit_screenLink 
       <<: *pricingPlansRelTargetPatternsList_screenLink
-      title: _("List of %s", ngettext('price', 'prices', 0))
+      title: _("List of %s", ngettext('Price', 'Prices', 0))
       filterClass: IvozProvider_Klear_Filter_CompanyPricingPlansPrices
       parentOptionCustomizer: 
         - recordCount

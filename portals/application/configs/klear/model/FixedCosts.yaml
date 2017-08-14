@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\FixedCosts
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 
@@ -16,12 +16,12 @@ production:
           order: name
       default: true
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       maxLength: 255
       required: true
     description:
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: textarea
     cost: 
       title: _('Cost')

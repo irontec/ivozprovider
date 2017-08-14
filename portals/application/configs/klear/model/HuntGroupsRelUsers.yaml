@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\HuntGroupsRelUsers
   fields: 
     huntGroupId: 
-      title: _('Hunt group id')
+      title: ngettext('Hunt Group', 'Hunt Groups', 1)
       type: select
       required: true
       source: 
@@ -17,7 +17,7 @@ production:
           order: name
       default: true
     userId: 
-      title: _('User id')
+      title: ngettext('User', 'Users', 1)
       type: select
       required: true
       source: 

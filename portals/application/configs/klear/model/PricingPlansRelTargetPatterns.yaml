@@ -16,7 +16,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Use period as decimal delimiter - e.g. 0.02")
+        text: _("Use point as decimal delimiter - e.g. 0.02")
         label: _("Need help?")
     periodTime: 
       title: _('Charge period')
@@ -39,7 +39,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Use as period decimal delimiter - e.g. 0.02")
+        text: _("Use point as decimal delimiter - e.g. 0.02")
         label: _("Need help?")
     metric: 
       title: _('Metric')
@@ -85,7 +85,7 @@ production:
         autocomplete:
             command: targetPatternautocomplete_command
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: number
       required: true
       source: 

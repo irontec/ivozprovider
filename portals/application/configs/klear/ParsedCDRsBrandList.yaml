@@ -105,7 +105,7 @@ production:
           peeringContractId: 1
       fixedPositions:
         group0:
-          label: _("Basic information")
+          label: _("Basic Configuration")
           colsPerRow: 12
           fields:
             calldate: 8

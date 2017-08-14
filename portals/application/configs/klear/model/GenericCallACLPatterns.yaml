@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\GenericCallACLPatterns
   fields: 
     brandId: 
-      title: _('Brand')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 
@@ -16,12 +16,12 @@ production:
           order: name
       default: true
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
     regExp: 
-      title: _('Reg exp')
+      title: _('Regular Expression')
       type: text
       trim: both
       required: true

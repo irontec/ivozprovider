@@ -12,7 +12,7 @@ production:
         items: 25
       <<: *GenericMusicOnHold
       class: ui-silk-music
-      title: _("List of %s %2s", ngettext('Generic music on hold', 'Generic music on hold(s)', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields: 
@@ -41,7 +41,7 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s %2s", ngettext('Generic music on hold', 'Generic music on hold(s)', 1), "[format| (%parent%)]")
+      title: _("Add %s %2s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 1), "[format| (%parent%)]")
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
@@ -67,7 +67,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Generic music on hold', 'Generic music on hold(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
@@ -85,9 +85,9 @@ production:
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Generic music on hold', 'Generic music on hold(s)', 1))
-      description: _("Do you want to delete this %s?", ngettext('Generic music on hold', 'Generic music on hold(s)', 1))
-      message: _("%s successfully deleted.", ngettext('Generic music on hold', 'Generic music on hold(s)', 1))
+      title: _("Delete %s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 1))
+      description: _("Do you want to delete this %s?", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 1))
+      message: _("%s successfully deleted.", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 1))
       multiItem: 1
       labelOnList: 1
       fields:

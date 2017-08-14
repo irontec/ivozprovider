@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CallACLRelPatterns
   fields:
     CallACLId:
-      title: _('Call ACL')
+      title: ngettext('Call ACL', 'Call ACLs', 1)
       type: select
       required: true
       source:
@@ -16,14 +16,14 @@ production:
           order: name
       default: true
     CallACLPatternId:
-      title: _('Call ACL pattern')
+      title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
-          filterClass: IvozProvider_Klear_Filter_Company           
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name

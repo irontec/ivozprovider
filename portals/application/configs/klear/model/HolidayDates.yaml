@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order: name
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true

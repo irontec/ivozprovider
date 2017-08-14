@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CompanyAdmins
   fields: 
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 
@@ -22,7 +22,7 @@ production:
       required: true
       maxLength: 65
     pass: 
-      title: _('Pass')
+      title: _('Password')
       type: password
       required: true
       adapter: Blowfish
@@ -44,7 +44,7 @@ production:
           '1': 
             title: _("Yes")
     timezoneId: 
-      title: _('Timezone id')
+      title: _('Timezone')
       type: select
       required: true
       defaultValue: 145
@@ -58,7 +58,7 @@ production:
             template: '%tz%'
           order: tz
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
     lastname: 

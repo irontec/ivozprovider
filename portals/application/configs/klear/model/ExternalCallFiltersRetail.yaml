@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ExternalCallFilters
   fields:
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order: name
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
@@ -29,11 +29,11 @@ production:
           '__null__':
             title: _('Unassigned')
           'number':
-            title: _('number')
+            title: _('Number')
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
     outOfScheduleNumberValue:
       title: _('External Filter destination')
       type: text

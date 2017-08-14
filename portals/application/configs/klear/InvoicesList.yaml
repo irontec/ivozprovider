@@ -14,7 +14,7 @@ production:
         items: 25
       <<: *Invoices
       class: ui-silk-report
-      title: _("List of %s %2s", _('Invoices'), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Invoice', 'Invoices', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields: &invoices_fieldsLink 
@@ -54,7 +54,7 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", _('Invoice'), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Invoice', 'Invoices', 1), "[format| (%parent%)]")
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
@@ -94,7 +94,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", _('Invoice'), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Invoice', 'Invoices', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
@@ -136,15 +136,15 @@ production:
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", _('Invoice(s)'))
-      description: _("Do you want to delete this %s?", _('Invoice(s)'))
-      message: _("%s successfully deleted.", _('Invoice(s)'))
+      title: _("Delete %s",  ngettext('Invoice', 'Invoices', 1))
+      description: _("Do you want to delete this %s?",  ngettext('Invoice', 'Invoices', 1))
+      message: _("%s successfully deleted.",  ngettext('Invoice', 'Invoices', 1))
       multiItem: 1
       labelOnList: 1
     generateInvoice_dialog:
       <<: *Invoices
       module: default
-      title: _("Generate %s", ngettext('invoice', 'invoices', 1))
+      title: _("Generate %s",  ngettext('Invoice', 'Invoices', 1))
       label: false
       labelOnEdit: true
       labelOnList: true

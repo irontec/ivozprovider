@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ParsedCDRs
   fields: 
     statId: 
-      title: _('Stat id')
+      title: _('Stat')
       type: number
       source: 
         control: Spinner
@@ -45,7 +45,7 @@ production:
       type: text
       maxLength: 32
     type: 
-      title: ngettext('Type', 'Types', 1)
+      title: _('Type')
       type: text
       maxLength: 32
     subtype: 
@@ -106,7 +106,7 @@ production:
       type: text
       maxLength: 32
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       source: 
         data: mapper
@@ -119,7 +119,7 @@ production:
           order: name
         'null': _("Unassigned")
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       source: 
         data: mapper

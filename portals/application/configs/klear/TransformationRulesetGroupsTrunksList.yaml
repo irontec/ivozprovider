@@ -75,7 +75,7 @@ production:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions: &transformationRulesetGroupsTrunksFixedPositions_Link
         group0:
-          label: _("Basic configuration")
+          label: _("Basic Configuration")
           colsPerRow: 2
           fields:
             name: 1

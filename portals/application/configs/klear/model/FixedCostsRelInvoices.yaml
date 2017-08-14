@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\FixedCostsRelInvoices
   fields: 
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 
@@ -31,7 +31,7 @@ production:
             template: '%name% - %cost% €'
           order: description
     invoiceId: 
-      title: _('Invoice id')
+      title: ngettext('Invoice', 'Invoices', 1)
       type: select
       required: true
       source: 

@@ -9,12 +9,12 @@ production:
       maxLength: 65
       default: true
     pass: 
-      title: _('Pass')
+      title: _('Password')
       type: password
       required: true
       adapter: Blowfish
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
     lastname: 

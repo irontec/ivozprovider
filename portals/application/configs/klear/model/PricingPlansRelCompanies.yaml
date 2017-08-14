@@ -17,7 +17,7 @@ production:
           order: name
       default: true
     companyId: 
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 
@@ -58,7 +58,7 @@ production:
         text: _("In case that two pricing plans were matched plan with lower metric will be applied.")
         label: _("Need help?")
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 

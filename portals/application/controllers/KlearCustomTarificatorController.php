@@ -82,10 +82,10 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 $tarificatorJob->setPks($pks);
                 $tarificatorJob->send();
                 $message = "<p>".$this->_helper->translate("Tarificator Job started")."</p>";
-                $title = $this->_helper->translate("OK");
+                $title = $this->_helper->translate("Ok");
             } else {
                 $message = "<p>".$retarificable["message"]."</p>";
-                $title = $this->_helper->translate("ERROR");
+                $title = $this->_helper->translate("Error");
             }
 
             $this->_showDialog($title, $message, false, "Ok", false, "300", "100");
@@ -236,7 +236,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $message .=             $this->_helper->translate("Phone number");
         $message .=         "</th>";
         $message .=         "<th class='ui-widget-header multiItem notSortable'>";
-        $message .=             $this->_helper->translate("Duration (s)");
+        $message .=             $this->_helper->translate("Duration");
         $message .=         "</th>";
         $message .=     "</tr>";
         $message .=     "<tr>";

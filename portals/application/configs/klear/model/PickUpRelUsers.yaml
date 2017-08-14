@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     userId: 
-      title: _('User id')
+      title: ngettext('User', 'Users', 1)
       type: select
       required: true
       source: 

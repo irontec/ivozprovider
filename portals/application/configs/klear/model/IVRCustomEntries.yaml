@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\IVRCustomEntries
   fields:
     IVRCustomId:
-      title: _('I v r custom id')
+      title: ngettext('IVR Custom', 'IVRs Custom', 1)
       type: select
       required: true
       source:
@@ -27,7 +27,7 @@ production:
         text: _("You can use regular expressions to define values this entry will match.")
         label: _("Need help?")
     welcomeLocutionId:
-      title: _('Welcome locution id')
+      title: _('Welcome locution')
       type: select
       source:
         data: mapper
@@ -48,17 +48,17 @@ production:
         data: inline
         values:
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ["targetNumberValue"]
               hide: ["targetExtensionId", "targetVoiceMailUserId", "targetConditionalRouteId"]
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ["targetExtensionId"]
               hide: ["targetNumberValue", "targetVoiceMailUserId", "targetConditionalRouteId"]
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ["targetVoiceMailUserId"]
               hide: ["targetExtensionId", "targetNumberValue", "targetConditionalRouteId"]
@@ -68,12 +68,12 @@ production:
               show: ["targetConditionalRouteId"]
               hide: ["targetExtensionId", "targetVoiceMailUserId", "targetNumberValue"]
     targetNumberValue:
-      title: _('Target number value')
+      title: _('Number')
       type: text
       trim: both
       required: true
     targetExtensionId:
-      title: _('Target extension id')
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:
@@ -88,7 +88,7 @@ production:
           order: number
         'null': _("Unassigned")
     targetVoiceMailUserId:
-      title: _('Target voice mail user id')
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
@@ -104,7 +104,7 @@ production:
           order: name
         'null': _("Unassigned")
     targetConditionalRouteId:
-      title: _('Target Conditional route')
+      title: ngettext('Conditional Route', 'Conditional Routes', 1)
       type: select
       required: true
       source:

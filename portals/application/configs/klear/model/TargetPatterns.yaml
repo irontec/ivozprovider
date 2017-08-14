@@ -5,14 +5,14 @@ production:
       title: ngettext('Id', 'Ids', 1)
       required: false 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
       maxLength: 55
       default: true
     description: 
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       maxLength: 300
@@ -28,7 +28,7 @@ production:
         text: _("Prefix must be numeric-only")
         label: _("Need help?")
     brandId: 
-      title: _('Brand')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 

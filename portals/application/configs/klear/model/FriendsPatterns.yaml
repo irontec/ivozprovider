@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\FriendsPatterns
   fields: 
     friendId: 
-      title: _('Friendid')
+      title: ngettext('Friend', 'Friends', 1)
       type: select
       required: true
       source: 
@@ -16,12 +16,12 @@ production:
           order: name
       default: true
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       required: true
       maxLength: 50
     regExp: 
-      title: _('Regexp')
+      title: _('Regular Expression')
       type: text
       required: true
       maxLength: 255

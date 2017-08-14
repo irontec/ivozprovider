@@ -91,7 +91,6 @@ production:
       controller: new
       fields:
         blacklist:
-          musicOnHoldId: true
           transformationRulesetGroupsId: true
           nif: true
           type: true
@@ -127,7 +126,7 @@ production:
       fixedPositions:
         group0:
           colsPerRow: 12
-          label: _("Basic data")
+          label: _("Basic Configuration")
           fields:
             name: 4
             domain_users: 5
@@ -177,7 +176,7 @@ production:
       fixedPositions: &companiesFixedPositions_Link
         group0:
           colsPerRow: 12
-          label: _("Basic data")
+          label: _("Basic Configuration")
           fields:
             name: 4
             nif: 4
@@ -219,7 +218,7 @@ production:
             registryData: 2
         group5:
           colsPerRow: 12
-          label: _("Recordings")
+          label: ngettext('Recording', 'Recordings', 0)
           collapsed: true
           fields:
             recordingsLimitMB: 6

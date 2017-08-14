@@ -2,17 +2,17 @@ production:
   class: \IvozProvider\Model\RoutingPatternGroups
   fields: 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       required: true
       maxLength: 55
       default: true
     description: 
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       maxLength: 55
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 

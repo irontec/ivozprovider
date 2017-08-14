@@ -65,7 +65,7 @@ production:
           target: true
       fixedPositions: &conditionalRoutesPositions_link
         group0:
-          label: _("Basic Data")
+          label: _("Basic Configuration")
           colsPerRow: 3
           fields:
             name: 2

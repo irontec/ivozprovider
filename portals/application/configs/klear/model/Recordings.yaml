@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Recordings
   fields: 
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 
@@ -40,7 +40,7 @@ production:
       type: text
       maxLength: 128
     type: 
-      title: ngettext('Type', 'Types', 1)
+      title: _('Type')
       type: select
       defaultValue: ddi
       source: 
@@ -49,7 +49,7 @@ production:
           'ondemand': _('On-demand')
           'ddi': _('DDI')
     typeGhost:
-      title: ngettext('Type', 'Types', 1)
+      title: _('Type')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_RecordingsType

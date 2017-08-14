@@ -18,7 +18,6 @@ production:
     60000: _("Brand is not set")
     70000: _("Invalid IP address, discarding value.")
     70001: _("Wrong mask, discarding value.")
-    70002: _("Wrong mask, it should be at least /24.")
     70003: _("When Outbound Proxy is used, SIP Proxy must not include a port.")
     70004: _("Outbound Proxy IP value is not valid.")
     80000: _("Template field can not be null.")

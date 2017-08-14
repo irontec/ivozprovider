@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Locutions
   fields:
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -61,7 +61,7 @@ production:
             onNull: hide
             target: locutionsEncodedFileDownload_command
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true

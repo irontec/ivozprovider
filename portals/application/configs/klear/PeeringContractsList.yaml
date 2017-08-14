@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include PeerServersList.yaml
-#include TransformationRulesetGroupsTrunksList.yaml
 #include KamTrunksUacregList.yaml
 
 
@@ -97,17 +96,6 @@ production:
       <<: *kamTrunksUacregEdit_screenLink
       filterField: peeringContractId
 
-    # TransformationRulesetGroupsTrunks
-    <<: *transformationRulesetGroupsTrunks_screensLink
-    transformationRulesetGroupsTrunksList_screen:
-      <<: *transformationRulesetGroupsTrunksList_screenLink
-      class: ui-silk-pencil
-      title: _("List of %s", ngettext('Transformation ruleset groups trunk', 'Transformation ruleset groups trunks', 0), "[format]")
-    transformationRulesetGroupsTrunksNew_screen:
-      <<: *transformationRulesetGroupsTrunksNew_screenLink
-    transformationRulesetGroupsTrunksEdit_screen:
-      <<: *transformationRulesetGroupsTrunksEdit_screenLink
-
   dialogs: &peeringContracts_dialosgLink
     peeringContractsDel_dialog: &peeringContractsDel_dialogLink
       <<: *PeeringContracts
@@ -122,8 +110,6 @@ production:
 
     #PeerServers
     <<: *peerServers_dialogsLink
-    # TransformationRulesetGroupsTrunks
-    <<: *transformationRulesetGroupsTrunks_dialogsLink
     # kamTrunksUacreg dialogs:
     <<: *kamTrunksUacreg_dialogsLink
 

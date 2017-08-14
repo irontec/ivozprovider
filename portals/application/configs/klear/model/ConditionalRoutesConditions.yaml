@@ -24,7 +24,7 @@ production:
       source:
         control: Spinner
     ConditionalRoutesConditionsRelMatchLists:
-      title: _('Condition Origin')
+      title: _('Origin')
       type: multiselect
       source:
         data: mapper
@@ -35,7 +35,7 @@ production:
           relationProperty: MatchList
           filterClass: IvozProvider_Klear_Filter_Company
     ConditionalRoutesConditionsRelSchedules:
-      title: _('Condition Schedules')
+      title: ngettext('Schedule', 'Schedules', 0)
       type: multiselect
       source:
         data: mapper
@@ -46,7 +46,7 @@ production:
           relationProperty: Schedule
           filterClass: IvozProvider_Klear_Filter_Company
     ConditionalRoutesConditionsRelCalendars:
-      title: _('Condition Calendars')
+      title: ngettext('Calendar', 'Calendars', 0)
       type: multiselect
       source:
         data: mapper
@@ -63,7 +63,7 @@ production:
         class: IvozProvider_Klear_Ghost_ConditionalRoutes
         method: getMatchData
     locutionId:
-      title: _('Locution')
+      title: ngettext('Locution', 'Locutions', 1)
       type: select
       source:
         data: mapper
@@ -93,7 +93,7 @@ production:
                 "conferenceRoomId", "extensionId",
               ]
           'user':
-            title: _('user')
+            title: ngettext('User', 'Users', 1)
             visualFilter:
               show: [ "userId" ]
               hide: [
@@ -102,7 +102,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'IVRCommon':
-            title: _('IVRCommon')
+            title: ngettext('IVR Common', 'IVRs Common', 1)
             visualFilter:
               show: [ "IVRCommonId" ]
               hide: [
@@ -111,7 +111,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'IVRCustom':
-            title: _('IVRCustom')
+            title: ngettext('IVR Custom', 'IVRs Custom', 1)
             visualFilter:
               show: [ "IVRCustomId" ]
               hide: [
@@ -120,7 +120,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'huntGroup':
-            title: _('huntGroup')
+            title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
               show: [ "huntGroupId" ]
               hide: [
@@ -129,8 +129,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'voicemail':
-            title: _('voicemail')
-
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: [ "voiceMailUserId" ]
               hide: [
@@ -139,7 +138,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: [ "numberValue" ]
               hide: [
@@ -148,7 +147,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'friend':
-            title: _('Friend')
+            title: ngettext('Friend', 'Friends', 1)
             visualFilter:
               show: [ "friendValue" ]
               hide: [
@@ -157,7 +156,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'queue':
-            title: _('Queue')
+            title: ngettext('Queue', 'Queues', 1)
             visualFilter:
               show: [ "queueId" ]
               hide: [
@@ -166,7 +165,7 @@ production:
                 "conferenceRoomId", "extensionId"
               ]
           'conferenceRoom':
-            title: _('Conference Room')
+            title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
               show: [ "conferenceRoomId" ]
               hide: [
@@ -184,7 +183,7 @@ production:
                 "queueId", "conferenceRoomId"
               ]
     IVRCommonId:
-      title: _('IVR Common')
+      title: ngettext('IVR Common', 'IVRs Common', 1)
       type: select
       required: true
       source:
@@ -199,7 +198,7 @@ production:
           order: name
         'null': _("Unassigned")
     IVRCustomId:
-      title: _('IVR Custom')
+      title: ngettext('IVR Custom', 'IVRs Custom', 1)
       type: select
       required: true
       source:
@@ -214,7 +213,7 @@ production:
           order: name
         'null': _("Unassigned")
     huntGroupId:
-      title: _('Hunt Group')
+      title: ngettext('Hunt Group', 'Hunt Groups', 1)
       type: select
       required: true
       source:
@@ -229,7 +228,7 @@ production:
           order: name
         'null': _("Unassigned")
     voiceMailUserId:
-      title: _('voicemail')
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
@@ -267,7 +266,7 @@ production:
       required: true
       maxLength: 25
     queueId:
-      title: _('Queue')
+      title: ngettext('Queue', 'Queues', 1)
       type: select
       required: true
       source:
@@ -282,7 +281,7 @@ production:
           order: name
         'null': _("Unassigned")
     conferenceRoomId:
-      title: _('Conference Room')
+      title: ngettext('Conference room', 'Conference rooms', 1)
       type: select
       required: true
       source:

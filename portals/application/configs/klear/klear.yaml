@@ -1,11 +1,6 @@
 production:
   main:
     dynamicConfigClass: IvozProvider\Klear\Dynamic\Builder
-#    log:
-#      writerName: syslog
-#      writerParams:
-#        application: app-god-portal
-#        facility: 8 #LOG_USER = 8
     sitename: "Main administration portal"
     sitesubname: "Main website"
     logo: images/irontec.png
@@ -61,17 +56,17 @@ production:
           class: ui-silk-link
           description: _("List of %s", ngettext('Domain', 'Domains', 0))
         ApplicationServersList:
-          title: ngettext('Application server', 'Application servers', 0)
+          title: ngettext('Application Server', 'Application Servers', 0)
           class: ui-silk-asterisk-yellow
-          description: _("List of %s", ngettext('Application server', 'Application servers', 0))
+          description: _("List of %s", ngettext('Application Server', 'Application Servers', 0))
         ProxyUsersList:
-          title: ngettext('Proxy user', 'Proxy users', 1)
+          title: ngettext('Proxy Users', 'Proxies Users', 1)
           class: ui-silk-server
-          description: _("List of %s", ngettext('Proxy user', 'Proxy users', 0))
+          description: _("List of %s", ngettext('Proxy Users', 'Proxies Users', 0))
         ProxyTrunksList:
-          title: ngettext('Proxy trunk', 'Proxy trunks', 1)
+          title: ngettext('Proxy Trunks', 'Proxies Trunks', 1)
           class: ui-silk-server
-          description: _("List of %s", ngettext('Proxy trunk', 'Proxy trunks', 0))
+          description: _("List of %s", ngettext('Proxy Trunks', 'Proxies Trunks', 0))
         MediaRelaySetsList:
           title: ngettext('Media relay set', 'Media relay sets', 0)
           class: ui-silk-bell-go
@@ -103,7 +98,7 @@ production:
     Brands:
       title: _("Brand Configuration")
       meta: "[mine:${auth.isBrandOperator}|brand:${auth.brandId}|name:${auth.brandName}]"
-      description: _("Brands")
+      description: ngettext('Brand', 'Brands', 0)
       showOnlyIf: ${auth.canSeeBrand}
       submenus:
         CompaniesList:
@@ -118,7 +113,7 @@ production:
         CompanyURLsList:
           title: ngettext('Portal URL', 'Portal URLs', 0)
           class: ui-silk-world
-          description: _("List of %s", ngettext('Companyurls', 'Companyurls', 0))
+          description: _("List of %s", ngettext('Portal URL', 'Portal URLs', 0))
         PeeringContractsList:
           title: ngettext('Peering contract', 'Peering contracts', 0)
           class: ui-silk-connect
@@ -128,9 +123,9 @@ production:
           class: ui-silk-application-side-expand
           description: _("List of %s", ngettext('Numeric transformation', 'Numeric transformations', 0))
         GenericMusicOnHoldList:
-          title: ngettext('Generic music on hold', 'Generic musics on hold', 0)
+          title: ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0)
           class: ui-silk-music
-          description: _("List of %s", ngettext('Generic music on hold', 'Generic musics on hold', 0))
+          description: _("List of %s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0))
         BrandServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
@@ -162,8 +157,8 @@ production:
           description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routings', 0))
         PricingPlansList:
           title: ngettext('Pricing plan', 'Pricing plans', 0)
-          class:  ui-silk-money
-          description: _("List of %s", ngettext('Pricing Plan', 'Pricing Plans', 0))
+          class: ui-silk-money
+          description: _("List of %s", ngettext('Pricing plan', 'Pricing plans', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         TargetPatternsList:
           title: ngettext('Pricing pattern', 'Pricing patterns', 0)
@@ -171,7 +166,7 @@ production:
           description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         InvoiceTemplatesList:
-          title: _('Invoice templates')
+          title: ngettext('Invoice template', 'Invoice templates', 0)
           class: ui-silk-report-key
           description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
           showOnlyIf: ${auth.brand.invoices.enabled}
@@ -181,7 +176,7 @@ production:
           description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
           showOnlyIf: ${auth.brand.invoices.enabled}
         InvoicesList:
-          title: _('Invoices')
+          title: ngettext('Invoice', 'Invoices', 0)
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
           showOnlyIf: ${auth.brand.invoices.enabled}
@@ -270,14 +265,14 @@ production:
           description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
           showOnlyIf: ${auth.companyVPBX}
         CallACLPatternsList:
-          title: ngettext('Call ACL pattern', 'Call ACL patterns', 0)
+          title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
           class: ui-silk-lock-go
-          description: _("List of %s", ngettext('Call ACL pattern', 'Call ACL patterns', 0))
+          description: _("List of %s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0))
           showOnlyIf: ${auth.companyVPBX}
         HuntGroupsList:
-          title: ngettext('Hunt group', 'Hunt groups', 0)
+          title: ngettext('Hunt Group', 'Hunt Groups', 0)
           class: ui-silk-group-go
-          description: _("List of %s", ngettext('Hunt group', 'Hunt groups', 0))
+          description: _("List of %s", ngettext('Hunt Group', 'Hunt Groups', 0))
           showOnlyIf: ${auth.companyVPBX}
         PickUpGroupsList:
           title: ngettext('Pick up group', 'Pick up groups', 0)
@@ -285,14 +280,14 @@ production:
           description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
           showOnlyIf: ${auth.companyVPBX}
         IVRCommonList:
-          title: _('IVR common')
+          title: ngettext('IVR Common', 'IVRs Common', 0)
           class: ui-silk-chart-organisation
-          description: _("List of %s", ngettext('IVR common', 'IVR common', 0))
+          description: _("List of %s", ngettext('IVR Common', 'IVR Common', 0))
           showOnlyIf: ${auth.companyVPBX}
         IVRCustomList:
-          title: _('IVR custom')
+          title: ngettext('IVR Custom', 'IVR Custom', 0)
           class: ui-silk-chart-organisation
-          description: _("List of %s", ngettext('IVR custom', 'IVR custom', 0))
+          description: _("List of %s", ngettext('IVR Custom', 'IVR Custom', 0))
           showOnlyIf: ${auth.companyVPBX}
         QueuesList:
           title: ngettext('Queue', 'Queues', 0)
@@ -311,9 +306,9 @@ production:
           description: _("List of %s", ngettext('Locution', 'Locutions', 0))
           showOnlyIf: ${auth.companyVPBX}
         MusicOnHoldList:
-          title: ngettext('Music on hold', 'Musics on hold', 0)
+          title: ngettext('Music on Hold', 'Musics on Hold', 0)
           class: ui-silk-music
-          description: _("List of %s", _('Music on hold'))
+          description: _("List of %s", ngettext('Music on Hold', 'Musics on Hold', 0))
           showOnlyIf: ${auth.companyVPBX}
         RecordingsList:
           showOnlyIf: ${auth.company.recordings.enabled}
@@ -329,7 +324,7 @@ production:
           showOnlyIf: ${auth.company.faxes.enabled}
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-printer
-          description: _("List of %s", ngettext('Faxes', 'Faxes', 0))
+          description: _("List of %s", ngettext('Fax', 'Faxes', 0))
         ParsedCDRsCompanyList:
           title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
           class: ui-silk-application-view-list

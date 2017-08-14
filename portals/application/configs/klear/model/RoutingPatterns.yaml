@@ -2,13 +2,13 @@ production:
   class: \IvozProvider\Model\RoutingPatterns
   fields: 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       required: true
       maxLength: 55
       default: true
     description: 
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       maxLength: 55
     regExp: 
@@ -23,7 +23,7 @@ production:
         text: _("If you want a prefix, use only digits. Otherwise, define your regular expresion.")
         label: _("Need help?")
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 

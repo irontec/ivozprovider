@@ -42,7 +42,7 @@ production:
             active: true
       fixedPositions: &companyAdminsFixedPositions_link
         group0:
-          label: _("Login info")
+          label: _("Login Info")
           colsPerRow: 2
           fields:
             username: 1

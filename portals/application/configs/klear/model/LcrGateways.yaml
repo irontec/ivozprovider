@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\LcrGateways
   fields: 
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 
@@ -43,7 +43,7 @@ production:
       trim: both
       maxLength: 64
     uri_scheme: 
-      title: _('Uri scheme')
+      title: _('URI scheme')
       type: number
       source: 
         control: Spinner
@@ -79,7 +79,7 @@ production:
       source: 
         control: Spinner
     peerServerId: 
-      title: _('Peer server id')
+      title: ngettext('Peer server', 'Peer servers', 1)
       type: select
       required: true
       source: 
@@ -92,7 +92,7 @@ production:
             template: '%ip%'
           order: ip
     outgoingRoutingId: 
-      title: _('Outgoing routing id')
+      title: ngettext('Outgoing routing', 'Outgoing routings', 1)
       type: select
       required: true
       source: 

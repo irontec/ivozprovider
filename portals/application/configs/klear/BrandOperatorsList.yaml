@@ -57,7 +57,7 @@ production:
           <<: *BrandOperators_orderLink
       fixedPositions: &BrandOperatorsFixedPositions_link
         group0:
-          label: _("Login info")
+          label: _("Login Info")
           colsPerRow: 2
           fields:
             username: 1

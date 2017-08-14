@@ -10,7 +10,7 @@ production:
         settings:
           disabled: 'false'
     faxId:
-      title: _('Fax id')
+      title: ngettext('Fax', 'Faxes', 1)
       type: select
       required: true
       source:
@@ -34,7 +34,7 @@ production:
       trim: both
       maxLength: 128
     type:
-      title: ngettext('Type', 'Types', 1)
+      title: _('Type')
       type: select
       defaultValue: Out
       source:
@@ -53,10 +53,10 @@ production:
       source:
         data: inline
         values:
-          'error': _('error')
-          'pending': _('pending')
-          'completed': _('completed')
-          'inprogress': _('inprogress')
+          'error': _('Error')
+          'pending': _('Pending')
+          'completed': _('Completed')
+          'inprogress': _('In Progress')
     file:
       title: ngettext('PDF File', 'PDF Files', 1)
       type: file

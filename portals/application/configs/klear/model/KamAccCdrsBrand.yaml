@@ -48,8 +48,8 @@ production:
       source: 
         data: inline
         values: 
-          'inbound': _('inbound')
-          'outbound': _('outbound')
+          'inbound': _('Inbound')
+          'outbound': _('Outbound')
     caller: 
       title: _('Caller')
       type: text
@@ -67,7 +67,7 @@ production:
       type: text
       maxLength: 128
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       source: 
         data: mapper
@@ -81,7 +81,7 @@ production:
           order: name
         'null': _("Unassigned")
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       source: 
         data: mapper
@@ -116,9 +116,9 @@ production:
       source: 
         data: inline
         values: 
-          'yes': _('yes')
-          'no': _('no')
-          'error': _('error')
+          'yes': _('Yes')
+          'no': _('No')
+          'error': _('Error')
     diversion: 
       title: _('Diversion')
       type: text
@@ -175,7 +175,7 @@ production:
         settings:
           disabled: 'false'
     pricingPlanId: 
-      title: _('Pricing plan id')
+      title: ngettext('Pricing plan', 'Pricing plans', 1)
       type: select
       source: 
         data: mapper
@@ -212,7 +212,7 @@ production:
       prefix: <p align=left>
       sufix: </p>
     invoiceId: 
-      title: _('Invoice id')
+      title: ngettext('Invoice', 'Invoices', 1)
       type: select
       source: 
         data: mapper

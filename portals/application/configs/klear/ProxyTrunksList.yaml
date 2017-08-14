@@ -11,7 +11,7 @@ production:
       pagination: 
         items: 25
       <<: *ProxyTrunks
-      title: _("List of %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 0), "[format| (%parent%)]")
       fields: 
         options: 
           title: _("Options")
@@ -23,10 +23,10 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Proxy trunk', 'Proxy trunks', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 1), "[format| (%item%)]")
       fixedPositions:
         group0:
-          label: _("Basic Info")
+          label: _("Basic Configuration")
           colsPerRow: 3
           fields:
             name: 1

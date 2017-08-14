@@ -13,7 +13,7 @@ production:
         items: 25
       <<: *PricingPlansRelTargetPatterns
       class: ui-silk-money-euro
-      title: _("List of %s %2s", ngettext('price', 'prices', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Price', 'Prices', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields: &pricingPlansRelTargetPatterns_fieldsLink 
@@ -103,15 +103,15 @@ production:
       class: ui-silk-bin
       labelOption: false
       title: _("Delete %s", ngettext('Price', 'Prices', 1))
-      description: _("Do you want to delete this %s?", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 1))
-      message: _("%s successfully deleted.", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 1))
+      description: _("Do you want to delete this %s?", ngettext('Price', 'Prices', 1))
+      message: _("%s successfully deleted.", ngettext('Price', 'Prices', 1))
       multiItem: 1
       labelOnList: 1
       
     importPricingPlansRelPatterns_dialog:
       <<: *PricingPlansRelTargetPatterns
       module: default
-      title: _("Import %s", ngettext('price', 'prices', 0))
+      title: _("Import %s", ngettext('Price', 'Prices', 0))
       label: false
       labelOnEdit: true   
       labelOnList: true

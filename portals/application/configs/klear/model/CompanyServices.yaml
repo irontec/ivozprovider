@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CompanyServices
   fields: 
     serviceId: 
-      title: _('Service id')
+      title: ngettext('Service', 'Services', 1)
       type: select
       required: true
       source: 
@@ -17,7 +17,7 @@ production:
           order: name
       default: true
     companyId: 
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source: 

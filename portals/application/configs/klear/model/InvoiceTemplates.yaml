@@ -4,14 +4,14 @@ production:
   class: \IvozProvider\Model\InvoiceTemplates
   fields: 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
       maxLength: 55
       default: true
     description: 
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       maxLength: 300
@@ -53,7 +53,7 @@ production:
           matchBrackets: true
       <<: *invoiceTemplateFooterHeaderHelp
     brandId: 
-      title: _('Brand id')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 

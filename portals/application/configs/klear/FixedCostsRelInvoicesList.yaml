@@ -13,7 +13,7 @@ production:
       pagination: 
         items: 25
       <<: *FixedCostsRelInvoices
-      title: _("List of %s %2s", ngettext('Fixed costs rel invoice', 'Fixed costs rel invoices', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Fixed cost', 'Fixed costs', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields: &fixedCostsRelInvoices_fieldsLink 

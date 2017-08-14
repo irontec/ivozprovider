@@ -1,35 +1,35 @@
-production: 
+production:
   class: \IvozProvider\Model\BrandServices
-  fields: 
-    serviceId: 
-      title: _('Service id')
+  fields:
+    serviceId:
+      title: ngettext('Service', 'Services', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Services
           filterClass: IvozProvider_Klear_Filter_BrandServices
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    brandId: 
-      title: _('Brand id')
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    code: 
+    code:
       title: _('Code')
       type: text
       trim: both
@@ -43,11 +43,11 @@ production:
         icon: help
         text: _("Allowed characters are 0-9, * and #")
         label: _("Need help?")
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

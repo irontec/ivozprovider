@@ -2,19 +2,19 @@ production:
   class: \IvozProvider\Model\TransformationRulesetGroups
   fields: 
     name: 
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
       maxLength: 100
     description: 
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       defaultValue: 
       maxLength: 500
     brandId: 
-      title: _('Brand')
+      title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
       source: 
