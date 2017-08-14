@@ -96,7 +96,7 @@ The company admin can configure them in the following screen:
         no locution** for that day.
 
     Holiday forward type
-        After playing the above locution (if configured), call can be forwaded
+        After playing the above locution (if configured), call can be forwarded
         to a voicemail, external number or internal extension. For example, the
         filter of the image will redirect calls during holidays to the external
         number 676 676 676.

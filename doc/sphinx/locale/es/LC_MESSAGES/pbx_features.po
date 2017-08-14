@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 18:36+0200\n"
+"POT-Creation-Date: 2017-08-14 12:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,7 +294,7 @@ msgstr ""
 "números móviles, por ejemplo, así: 676 676 676."
 
 #: ../../pbx_features/call_permissions.rst:67 ../../pbx_features/friends.rst:89
-#: ../../pbx_features/users.rst:70
+#: ../../pbx_features/users.rst:86
 msgid "Call ACL"
 msgstr "Permisos de llamada"
 
@@ -703,7 +703,7 @@ msgstr ""
 #: ../../pbx_features/conference_rooms.rst:17
 #: ../../pbx_features/external_filters.rst:74 ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:24 ../../pbx_features/queues.rst:28
-#: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:23
+#: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:20
 msgid "Name"
 msgstr "Nombre"
 
@@ -1120,8 +1120,8 @@ msgstr "Tipo de desvío festivo"
 
 #: ../../pbx_features/external_filters.rst:99
 msgid ""
-"After playing the above locution (if configured), call can be forwaded to"
-" a voicemail, external number or internal extension. For example, the "
+"After playing the above locution (if configured), call can be forwarded "
+"to a voicemail, external number or internal extension. For example, the "
 "filter of the image will redirect calls during holidays to the external "
 "number 676 676 676."
 msgstr ""
@@ -1378,7 +1378,7 @@ msgstr ""
 "prioridad**."
 
 #: ../../pbx_features/friends.rst:81 ../../pbx_features/terminals.rst:28
-#: ../../pbx_features/users.rst:46
+#: ../../pbx_features/users.rst:54
 msgid "Password"
 msgstr "Contraseña"
 
@@ -2042,7 +2042,7 @@ msgstr ""
 "Después de *encodear*, podemos descargar el archivo original y el "
 "convertido sin más que editar el ítem:"
 
-#: ../../pbx_features/outgoingddi_rules.rst:5
+#: ../../pbx_features/outgoingddi_rules.rst:5 ../../pbx_features/users.rst:82
 msgid "Outgoing DDI Rules"
 msgstr "Reglas DDI de salida"
 
@@ -2053,8 +2053,8 @@ msgid ""
 "Retail Accounts, and so on.."
 msgstr ""
 "La mayoría de entidades en IvozProvider requiren un DDI saliente para "
-"poder realizar llamadas a números externos. Esto incluye: Usuarios, Friends, "
-"Faxes, Cuentas Retails, etc.."
+"poder realizar llamadas a números externos. Esto incluye: Usuarios, "
+"Friends, Faxes, Cuentas Retails, etc.."
 
 #: ../../pbx_features/outgoingddi_rules.rst:11
 msgid ""
@@ -2739,25 +2739,17 @@ msgstr ""
 
 #: ../../pbx_features/users.rst:10
 msgid ""
-"We also skipped most of the setting in **Users** configuration that we "
-"will define in this section."
+"We skipped most of the settings in **Users** configuration that we will "
+"described in this section."
 msgstr ""
 "También nos permitió pasar un poco de puntillas por la sección de "
 "**Usuarios**, que ahora pasamos a definir en profundidad."
 
-#: ../../pbx_features/users.rst:13
-msgid ""
-"As usually, the best way is to edit an existing user and describe each of"
-" its fields:"
-msgstr ""
-"Para ello, nada mejor que editar el usuario *Alice* y describir cada "
-"campo del mismo, bloque a bloque:"
-
-#: ../../pbx_features/users.rst:18
+#: ../../pbx_features/users.rst:15
 msgid "Personal data"
 msgstr "Datos personales"
 
-#: ../../pbx_features/users.rst:25
+#: ../../pbx_features/users.rst:22
 msgid ""
 "Used to identify this user in most of the screens. This is also the name "
 "that will be displayed in internal calls made from this user."
@@ -2765,19 +2757,19 @@ msgstr ""
 "Se utilizará para referenciar al usuario en múltiples ámbitos, incluyendo"
 " el nombre que se presenta en llamadas internas."
 
-#: ../../pbx_features/users.rst:27
+#: ../../pbx_features/users.rst:24
 msgid "Lastname"
 msgstr "Apellidos"
 
-#: ../../pbx_features/users.rst:29
+#: ../../pbx_features/users.rst:26
 msgid "Most of the times this is used to complete the previous field."
 msgstr "Irá junto con el Nombre en casi todos los casos."
 
-#: ../../pbx_features/users.rst:30
+#: ../../pbx_features/users.rst:27
 msgid "Email"
 msgstr "Email"
 
-#: ../../pbx_features/users.rst:32
+#: ../../pbx_features/users.rst:29
 msgid ""
 "Email used to send the user's received voicemails. This is also used to "
 "identify the user in their portal."
@@ -2785,15 +2777,46 @@ msgstr ""
 "Dirección de correo electrónico del usuario al que se enviarán los "
 "mensajes de voz del buzón."
 
+#: ../../pbx_features/users.rst:31
+msgid "Country code / Area code"
+msgstr "Código de país / Area Code"
+
+#: ../../pbx_features/users.rst:33
+msgid ""
+"Defines the way the user calls and the way the numbers are presented to "
+"this user."
+msgstr ""
+"Define cómo llama el usuario y qué formato tendrán los números externos "
+"que se le presenten."
+
+#: ../../pbx_features/users.rst:35
+msgid "Language"
+msgstr "Idioma"
+
 #: ../../pbx_features/users.rst:37
+msgid "When a locution is played to this user, this language is used."
+msgstr ""
+"Cuando una locución se le reproduzca a este usuario, se usará este idioma."
+
+#: ../../pbx_features/users.rst:38
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#: ../../pbx_features/users.rst:40
+msgid "User portal call list times will use this timezone."
+msgstr ""
+"Las llamadas listadas en el portal de usuario mostrarán las horas en esta "
+"zona horaria."
+
+#: ../../pbx_features/users.rst:45
 msgid "Login Info"
 msgstr "Credenciales portal de usuario"
 
-#: ../../pbx_features/users.rst:42
+#: ../../pbx_features/users.rst:50
 msgid "Active"
 msgstr "Activo"
 
-#: ../../pbx_features/users.rst:44
+#: ../../pbx_features/users.rst:52
 msgid ""
 "Allows administrators to grant or disable user's acces to the "
 ":ref:`user's portal <userportal>`."
@@ -2801,19 +2824,31 @@ msgstr ""
 "Da posibilidad al administrador de la plataforma de desactivar el acceso "
 "al :ref:`portal de usuario <userportal>`."
 
-#: ../../pbx_features/users.rst:48
+#: ../../pbx_features/users.rst:56
 msgid "Password used to access the :ref:`user's portal <userportal>`."
 msgstr "Contraseña para acceder al :ref:`portal de usuario <userportal>`."
 
-#: ../../pbx_features/users.rst:52
+#: ../../pbx_features/users.rst:57
+msgid "QR Code"
+msgstr "Código QR"
+
+#: ../../pbx_features/users.rst:59
+msgid ""
+"If enabled, a QR code for Grandstream Wave softphone configuration will "
+"be shown."
+msgstr ""
+"Si está activo, mostrará un código QR en el portal de usuario que permitirá "
+"configurar los softphones Grandstream Wave."
+
+#: ../../pbx_features/users.rst:64
 msgid "Basic Configuration"
 msgstr "Configuración básica"
 
-#: ../../pbx_features/users.rst:57
+#: ../../pbx_features/users.rst:69
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../../pbx_features/users.rst:59
+#: ../../pbx_features/users.rst:71
 msgid ""
 "The available terminals created in :ref:`terminals` are listed here for "
 "assignment."
@@ -2821,11 +2856,11 @@ msgstr ""
 "Los terminales dados de alta en :ref:`terminals` se listan aquí para "
 "realizar la vinculación usuario-terminal."
 
-#: ../../pbx_features/users.rst:61
-msgid "Extension"
-msgstr "Extensión"
+#: ../../pbx_features/users.rst:73
+msgid "Screen Extension"
+msgstr "Extensión a mostrar"
 
-#: ../../pbx_features/users.rst:63
+#: ../../pbx_features/users.rst:75
 msgid ""
 "One of the available :ref:`extensions` that this user will display when "
 "placing internal calls. While multiple extensions can be routed to the "
@@ -2834,11 +2869,11 @@ msgstr ""
 "Tal y como se explicaba en :ref:`extensiones`, fija la extensión del "
 "usuario para llamadas internas."
 
-#: ../../pbx_features/users.rst:66
+#: ../../pbx_features/users.rst:78
 msgid "Outgoing DDI"
 msgstr "DDI de salida"
 
-#: ../../pbx_features/users.rst:68
+#: ../../pbx_features/users.rst:80
 msgid ""
 "As described in :ref:`external_ddi`, determines the number that will "
 "present when placing external outgoing calls."
@@ -2846,7 +2881,15 @@ msgstr ""
 "Adelantado en :ref:`external_ddi`, determina el número que presenta el "
 "usuario en llamadas externas salientes."
 
-#: ../../pbx_features/users.rst:72
+#: ../../pbx_features/users.rst:84
+msgid ""
+"Manages exceptions to previous setting. Read :ref:`outgoingddi_rules` for"
+" further reference."
+msgstr ""
+"Gestiona excepciones al parámetro anterior. Leer :ref:`outgoingddi_rules` "
+"para más referencia."
+
+#: ../../pbx_features/users.rst:88
 msgid ""
 "One of the created :ref:`Call ACL <call_permissions>` groups, described "
 "it the previous sections."
@@ -2854,11 +2897,11 @@ msgstr ""
 "Asignación de un grupo de permisos explicado en profundidad "
 ":ref:`aquí<call_permissions>`."
 
-#: ../../pbx_features/users.rst:74
+#: ../../pbx_features/users.rst:90
 msgid "Do not disturb"
 msgstr "No molestar"
 
-#: ../../pbx_features/users.rst:76
+#: ../../pbx_features/users.rst:92
 msgid ""
 "When this setting is enabled, the user won't receive any call but can "
 "still place calls."
@@ -2866,27 +2909,44 @@ msgstr ""
 "Impide que nadie pueda llamar a este usuario, sin impedirle a él llamar a"
 " donde desee."
 
-#: ../../pbx_features/users.rst:78
-msgid "Call waiting"
-msgstr "Llamada en espera"
+#: ../../pbx_features/users.rst:94
+msgid "Max Calls"
+msgstr "Límite de llamadas"
 
-#: ../../pbx_features/users.rst:80
+#: ../../pbx_features/users.rst:96
 msgid ""
-"When this setting is enabled, the user terminal will receive new calls "
-"even if it already talking."
+"Limits the number of received calls if the user is handling "
+"simultaneously (inbound and outbound) more than the number set. Set 0 for"
+" unlimited calls."
 msgstr ""
-"Determina si el usuario recibirá nuevas llamadas entrantes aunque ya se "
-"encuentre en conversación."
+"Limita el número de llamadas recibidas si el usuario está gestionando un "
+"número igual o superior a este límite. El valor 0 desactiva el límite."
 
-#: ../../pbx_features/users.rst:85
+#: ../../pbx_features/users.rst:99
+msgid "Calls from non-granted IPs:"
+msgstr "Llamadas desde IPs no autorizadas:"
+
+#: ../../pbx_features/users.rst:101
+msgid ""
+"Enable calling from non-granted IP addresses for this user. It limits the"
+" number of outgoing calls to avoid toll-fraud. 'None' value makes "
+"outgoing calls unlimited as long as company IP policy is fulfilled. Read "
+":ref:`roadwarrior_users` for further reference."
+msgstr ""
+"Permitir a este usuario llamar desde IPs no autorizadas. Se limita el número "
+"de llamadas salientes para evitar fraude. Seleccionar 'Ninguna' permite un "
+"número ilimitado de llamadas siempre y cuando se cumpla la política de "
+"restricción de IPs de la empresa. Leer :ref:`roadwarrior_users` para más información."
+
+#: ../../pbx_features/users.rst:108
 msgid "Voicemail"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:88
+#: ../../pbx_features/users.rst:113
 msgid "VoiceMail enabled"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:90
+#: ../../pbx_features/users.rst:115
 msgid ""
 "Enables or disables the **existance** of a users voicemail. This only "
 "makes the voicemail available to be routed as described in the section "
@@ -2896,26 +2956,27 @@ msgstr ""
 " de existir, como veremos :ref:`más adelante <fwd_to_vm>`, habrá que "
 "desviar las llamadas que queramos al buzón."
 
-#: ../../pbx_features/users.rst:93
+#: ../../pbx_features/users.rst:118
 msgid "Voicemail Locution"
 msgstr "Locución de buzón"
 
-#: ../../pbx_features/users.rst:95
+#: ../../pbx_features/users.rst:120
 msgid ""
 "If set, this locution is played as voicemail welcome message when a "
 "voicemail for this user is going to be recorded. This only applies for "
-"call forwardings to voicemail described in the section "
-":ref:`forward to voicemail <fwd_to_vm>`."
+"call forwardings to voicemail described in the section :ref:`forward to "
+"voicemail <fwd_to_vm>`."
 msgstr ""
 "Esta locución se reproduce como locución de bienvenida al buzón de voz "
-"cuando alguien va a dejar un mensaje de voz al usuario. Solo se reproduce "
-"para los desvíos al buzón de voz descritos en :ref:`desvíos a buzón <fwd_to_vm>`."
+"cuando alguien va a dejar un mensaje de voz al usuario. Solo se reproduce"
+" para los desvíos al buzón de voz descritos en :ref:`desvíos a buzón "
+"<fwd_to_vm>`."
 
-#: ../../pbx_features/users.rst:98
+#: ../../pbx_features/users.rst:123
 msgid "Email notification"
 msgstr "Notificar por email"
 
-#: ../../pbx_features/users.rst:100
+#: ../../pbx_features/users.rst:125
 msgid ""
 "Send an email to the configured user address when a new voicemail is "
 "received."
@@ -2923,29 +2984,30 @@ msgstr ""
 "Mandar a la dirección del usuario un correo notificando del mensaje de "
 "voz."
 
-#: ../../pbx_features/users.rst:102
+#: ../../pbx_features/users.rst:127
 msgid "Attach sounds:"
 msgstr "Adjuntar audio del mensaje"
 
-#: ../../pbx_features/users.rst:104
+#: ../../pbx_features/users.rst:129
 msgid "Attach the audio message to the sent email."
 msgstr "Adjuntar o no en dicho mail el audio del mensaje"
 
-#: ../../pbx_features/users.rst:106
+#: ../../pbx_features/users.rst:131
 msgid ""
 "If voicemail locution is not assigned, default locution will be used as "
 "long as the user has not recorded a custom message through the voicemail "
 "menu (calling to voicemail service code)."
 msgstr ""
 "Si no se configura ninguna locución de buzón, se utilizará la locución "
-"por defecto, siempre y cuando el usuario no haya grabado su locución personal "
-"utilizando el menú de voz (llamando al código de servicio del buzón de voz)."
+"por defecto, siempre y cuando el usuario no haya grabado su locución "
+"personal utilizando el menú de voz (llamando al código de servicio del "
+"buzón de voz)."
 
-#: ../../pbx_features/users.rst:112
+#: ../../pbx_features/users.rst:137
 msgid "Boss-Assistant"
 msgstr "Jefe-Asistente"
 
-#: ../../pbx_features/users.rst:116
+#: ../../pbx_features/users.rst:141
 msgid ""
 "This feature will turn the user into a boss that can only be directly "
 "call by:"
@@ -2953,45 +3015,45 @@ msgstr ""
 "La funcionalidad jefe-asistente impide que un usuario sea molestado por "
 "nadie que no sea:"
 
-#: ../../pbx_features/users.rst:118
+#: ../../pbx_features/users.rst:143
 msgid "The selected assistant."
 msgstr "Su asistente."
 
-#: ../../pbx_features/users.rst:120
+#: ../../pbx_features/users.rst:145
 msgid "Any exception defined in the whitelist regular expression."
 msgstr "Las excepciones que él defina."
 
-#: ../../pbx_features/users.rst:122
+#: ../../pbx_features/users.rst:147
 msgid "The rest of the calls to *a bos* will be redirected to the assistant."
 msgstr "Toda llamada con destino a *un jefe* será desviada al asistente."
 
-#: ../../pbx_features/users.rst:125
+#: ../../pbx_features/users.rst:150
 msgid "Is boss"
 msgstr "Jefe"
 
-#: ../../pbx_features/users.rst:127
+#: ../../pbx_features/users.rst:152
 msgid "Determines if this user is a boss."
 msgstr "Indica que el usuario en cuestión es jefe o no."
 
-#: ../../pbx_features/users.rst:128
+#: ../../pbx_features/users.rst:153
 msgid "Assistant"
 msgstr "Asistente"
 
-#: ../../pbx_features/users.rst:130
+#: ../../pbx_features/users.rst:155
 msgid "Who will receive the redirected calls of this boss."
 msgstr "Si el usuario es jefe, indica quién es su asistente."
 
-#: ../../pbx_features/users.rst:131
+#: ../../pbx_features/users.rst:156
 msgid "Whitelist regular expression."
 msgstr "Whitelist jefe/asistente"
 
-#: ../../pbx_features/users.rst:133
+#: ../../pbx_features/users.rst:158
 msgid ""
 "Regular expresion to match numbers that are allowed to call directly to "
 "the boss."
 msgstr "Permite indicar utilizando expresiones regulares las excepciones deseadas."
 
-#: ../../pbx_features/users.rst:136
+#: ../../pbx_features/users.rst:161
 msgid ""
 "With the setup in the image, every call to *Alice* will be redirected to "
 "*Bob*, except the ones placed by *Bob* itself and those coming from the "
@@ -3001,11 +3063,11 @@ msgstr ""
 "*Bob*, salvo las que haga el propio *Bob* y el número de teléfono 945 945"
 " 945."
 
-#: ../../pbx_features/users.rst:142
+#: ../../pbx_features/users.rst:167
 msgid "Group Configuration"
 msgstr "Pertenencia a grupos"
 
-#: ../../pbx_features/users.rst:146
+#: ../../pbx_features/users.rst:171
 msgid ""
 "As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
 " the user can be part of one or more huntgroups and pickup groups."
@@ -3014,7 +3076,7 @@ msgstr ""
 ":ref:`capture_groups`, un usuario puede pertenecer a uno o a varios "
 "grupos de captura y grupos de salto."
 
-#: ../../pbx_features/users.rst:149
+#: ../../pbx_features/users.rst:174
 msgid ""
 "Those groups can be configured from the sections :ref:`huntgroups` and "
 ":ref:`capture_groups` or the user's screen if the groups already exists."
@@ -3024,7 +3086,7 @@ msgstr ""
 " estamos editando a los grupos de captura y grupos de salto deseados que "
 "ya existan."
 
-#: ../../pbx_features/users.rst:152
+#: ../../pbx_features/users.rst:177
 msgid ""
 "You can also configure the user's **hunt groups** from the icon in each "
 "user line of the users list."
@@ -3032,17 +3094,17 @@ msgstr ""
 "En el caso de la pertenencia a **grupos de salto**, también se puede "
 "configurar desde el listado general:"
 
-#: ../../pbx_features/users.rst:160
+#: ../../pbx_features/users.rst:185
 msgid "User Call Forward"
 msgstr "Desvíos de llamada"
 
-#: ../../pbx_features/users.rst:162
+#: ../../pbx_features/users.rst:187
 msgid "The user's call forward can be configured in the following button:"
 msgstr ""
 "Los desvíos de las llamadas de un usuario concreto se configura pulsando "
 "el siguiente botón:"
 
-#: ../../pbx_features/users.rst:169
+#: ../../pbx_features/users.rst:194
 msgid ""
 "For example, to forward all external calls that are not answered after 15"
 " seconds, we could configure a call forward like this:"
@@ -3051,15 +3113,15 @@ msgstr ""
 "buzón de voz que acabamos de configurar, por ejemplo, habría que "
 "configurar un desvío tal que:"
 
-#: ../../pbx_features/users.rst:175
+#: ../../pbx_features/users.rst:200
 msgid "These are the fields and available values:"
 msgstr "Estos son los campos y los posibles valores:"
 
-#: ../../pbx_features/users.rst:178
+#: ../../pbx_features/users.rst:203
 msgid "Call Type"
 msgstr "Tipo de llamada"
 
-#: ../../pbx_features/users.rst:180
+#: ../../pbx_features/users.rst:205
 msgid ""
 "Determines if the forward must be applied to external, internal or any "
 "type of call."
@@ -3067,23 +3129,23 @@ msgstr ""
 "Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
 "interna o ambas"
 
-#: ../../pbx_features/users.rst:182
+#: ../../pbx_features/users.rst:207
 msgid "Forward type"
 msgstr "Tipo de desvío"
 
-#: ../../pbx_features/users.rst:191
+#: ../../pbx_features/users.rst:216
 msgid "When this forward must be applied:"
 msgstr "Indica cuándo aplica el desvío:"
 
-#: ../../pbx_features/users.rst:185
+#: ../../pbx_features/users.rst:210
 msgid "Inconditional: always"
 msgstr "Incondicional: siempre"
 
-#: ../../pbx_features/users.rst:186
+#: ../../pbx_features/users.rst:211
 msgid "No answer: when the call is not answered in X seconds"
 msgstr "Perdida: cuando no se conteste al de X segundos"
 
-#: ../../pbx_features/users.rst:187
+#: ../../pbx_features/users.rst:212
 msgid ""
 "Busy: When the user is talking to someone (and call waiting is disabled),"
 " when *Do not disturb* is enabled or when the user rejects an incoming "
@@ -3092,7 +3154,7 @@ msgstr ""
 "Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
 "activo)"
 
-#: ../../pbx_features/users.rst:190
+#: ../../pbx_features/users.rst:215
 msgid ""
 "Not registered: when the user SIP terminal is not registered against "
 "IvozProvider."
@@ -3100,27 +3162,27 @@ msgstr ""
 "No registrado: cuando el usuario tenga su terminal sin conectar con "
 "IvozProvider"
 
-#: ../../pbx_features/users.rst:192
+#: ../../pbx_features/users.rst:217
 msgid "Target type"
 msgstr "Tipo de destino"
 
-#: ../../pbx_features/users.rst:196
-msgid "What route will use the forwaded call."
+#: ../../pbx_features/users.rst:221
+msgid "What route will use the forwarded call."
 msgstr "Indica a dónde se enviará la llamada cuando el desvío aplique:"
 
-#: ../../pbx_features/users.rst:195
+#: ../../pbx_features/users.rst:220
 msgid "VoiceMail"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:196
+#: ../../pbx_features/users.rst:221
 msgid "Number (external)"
 msgstr "Número (externo)"
 
-#: ../../pbx_features/users.rst:197
+#: ../../pbx_features/users.rst:222
 msgid "Extension (internal)"
 msgstr "Extensión (interna)"
 
-#: ../../pbx_features/users.rst:199
+#: ../../pbx_features/users.rst:224
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
@@ -3128,7 +3190,4 @@ msgstr ""
 "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con crear "
 "una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
-
-#~ msgid "Sequential"
-#~ msgstr "Secuencialmente"
 
