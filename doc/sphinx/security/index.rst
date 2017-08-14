@@ -72,6 +72,8 @@ Both IP addresses or ranges can be used, in CIDR format (IP/mask):
 .. important:: This mechanism limits the origin of the users of a company, it 
    doesn't filter origin from **Contract Peerings**.
 
+.. _roadwarrior_users:
+
 Roadwarrior users
 -----------------
 
