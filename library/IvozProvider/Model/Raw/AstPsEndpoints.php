@@ -170,13 +170,6 @@ class AstPsEndpoints extends ModelAbstract
     protected $_sendPai;
 
     /**
-     * Database var type varchar
-     *
-     * @var string
-     */
-    protected $_subscribecontext;
-
-    /**
      * Database var type enum('no','required','yes')
      *
      * @var string
@@ -246,7 +239,6 @@ class AstPsEndpoints extends ModelAbstract
         'pickup_group'=>'pickupGroup',
         'send_diversion'=>'sendDiversion',
         'send_pai'=>'sendPai',
-        'subscribecontext'=>'subscribecontext',
         '100rel'=>'100rel',
         'outbound_proxy'=>'outboundProxy',
         'trust_id_inbound'=>'trustIdInbound',
@@ -298,7 +290,6 @@ class AstPsEndpoints extends ModelAbstract
             'context' => 'users',
             'disallow' => 'all',
             'allow' => 'all',
-            'subscribecontext' => 'default',
             '100rel' => 'no',
         );
 
@@ -924,40 +915,6 @@ class AstPsEndpoints extends ModelAbstract
     public function getSendPai()
     {
         return $this->_sendPai;
-    }
-
-    /**
-     * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
-     * @return \IvozProvider\Model\Raw\AstPsEndpoints
-     */
-    public function setSubscribecontext($data)
-    {
-
-        if ($this->_subscribecontext != $data) {
-            $this->_logChange('subscribecontext', $this->_subscribecontext, $data);
-        }
-
-        if ($data instanceof \Zend_Db_Expr) {
-            $this->_subscribecontext = $data;
-
-        } else if (!is_null($data)) {
-            $this->_subscribecontext = (string) $data;
-
-        } else {
-            $this->_subscribecontext = $data;
-        }
-        return $this;
-    }
-
-    /**
-     * Gets column subscribecontext
-     *
-     * @return string
-     */
-    public function getSubscribecontext()
-    {
-        return $this->_subscribecontext;
     }
 
     /**

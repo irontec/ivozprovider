@@ -65,7 +65,6 @@ class AstPsEndpoints extends MapperAbstract
                 'pickup_group' => $model->getPickupGroup(),
                 'send_diversion' => $model->getSendDiversion(),
                 'send_pai' => $model->getSendPai(),
-                'subscribecontext' => $model->getSubscribecontext(),
                 '100rel' => $model->get100rel(),
                 'outbound_proxy' => $model->getOutboundProxy(),
                 'trust_id_inbound' => $model->getTrustIdInbound(),
@@ -589,7 +588,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setPickupGroup($data['pickup_group'])
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
-                  ->setSubscribecontext($data['subscribecontext'])
                   ->set100rel($data['100rel'])
                   ->setOutboundProxy($data['outbound_proxy'])
                   ->setTrustIdInbound($data['trust_id_inbound']);
@@ -611,7 +609,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setPickupGroup($data->{'pickup_group'})
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
-                  ->setSubscribecontext($data->{'subscribecontext'})
                   ->set100rel($data->{'100rel'})
                   ->setOutboundProxy($data->{'outbound_proxy'})
                   ->setTrustIdInbound($data->{'trust_id_inbound'});
@@ -634,7 +631,6 @@ class AstPsEndpoints extends MapperAbstract
                   ->setPickupGroup($data->getPickupGroup())
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())
-                  ->setSubscribecontext($data->getSubscribecontext())
                   ->set100rel($data->get100rel())
                   ->setOutboundProxy($data->getOutboundProxy())
                   ->setTrustIdInbound($data->getTrustIdInbound());
