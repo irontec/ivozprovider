@@ -1,26 +1,26 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: locutionsList_screen
   screens: &locutions_screensLink
-    locutionsList_screen: &locutionsList_screenLink 
+    locutionsList_screen: &locutionsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *Locutions
       class: ui-silk-sound
       title: _("List of %s %2s", ngettext('Locution', 'Locutions', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             locutionsEdit_screen: true
-          dialogs: 
+          dialogs:
             locutionsDel_dialog: true
           default: locutionsEdit_screen
         order: &locutions_orderLink
@@ -30,13 +30,13 @@ production:
           recordingExtension: true
         blacklist:
           encodedFile: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           locutionsNew_screen: true
-        dialogs: 
+        dialogs:
           locutionsDel_dialog: true
-    locutionsNew_screen: &locutionsNew_screenLink 
+    locutionsNew_screen: &locutionsNew_screenLink
       <<: *Locutions
       controller: new
       class: ui-silk-add
@@ -63,7 +63,7 @@ production:
           colsPerRow: 1
           fields:
             originalFile: 1
-    locutionsEdit_screen: &locutionsEdit_screenLink 
+    locutionsEdit_screen: &locutionsEdit_screenLink
       <<: *Locutions
       controller: edit
       class: ui-silk-pencil
@@ -74,8 +74,8 @@ production:
       fields:
         order:
           <<: *locutions_orderLink
-        readOnly: 
-          status: true        
+        readOnly:
+          status: true
       fixedPositions:
         group0:
           colsPerRow: 2
@@ -86,10 +86,10 @@ production:
         group1:
           colsPerRow: 1
           fields:
-            originalFile: 1  
-            encodedFile: 1        
+            originalFile: 1
+            encodedFile: 1
   dialogs: &locutions_dialogsLink
-    locutionsDel_dialog: &locutionsDel_dialogLink 
+    locutionsDel_dialog: &locutionsDel_dialogLink
       <<: *Locutions
       controller: delete
       class: ui-silk-bin
@@ -99,37 +99,37 @@ production:
       message: _("%s successfully deleted.", ngettext('Locution', 'Locutions', 1))
       multiItem: 1
       labelOnList: 1
-  commands: &locutions_commandsLink 
-    locutionsOriginalFileDownload_command: &locutionsOriginalFileDownload_commandLink 
+  commands: &locutions_commandsLink
+    locutionsOriginalFileDownload_command: &locutionsOriginalFileDownload_commandLink
       <<: *Locutions
       controller: File
       action: force-download
       mainColumn: originalFile
-    locutionsOriginalFileUpload_command: &locutionsOriginalFileUpload_commandLink 
+    locutionsOriginalFileUpload_command: &locutionsOriginalFileUpload_commandLink
       <<: *Locutions
       controller: File
       action: upload
       mainColumn: originalFile
-    locutionsOriginalFilePreview_command: &locutionsOriginalFilePreview_commandLink 
+    locutionsOriginalFilePreview_command: &locutionsOriginalFilePreview_commandLink
       <<: *Locutions
       controller: File
       action: preview
       mainColumn: originalFile
-    locutionsEncodedFileDownload_command: &locutionsEncodedFileDownload_commandLink 
+    locutionsEncodedFileDownload_command: &locutionsEncodedFileDownload_commandLink
       <<: *Locutions
       controller: File
       action: force-download
       mainColumn: encodedFile
-    locutionsEncodedFilePreview_command: &locutionsEncodedFilePreview_commandLink 
+    locutionsEncodedFilePreview_command: &locutionsEncodedFilePreview_commandLink
       <<: *Locutions
       controller: File
       action: preview
       mainColumn: encodedFile
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

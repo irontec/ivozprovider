@@ -1,47 +1,47 @@
-production: 
+production:
   class: \IvozProvider\Model\PricingPlans
-  fields: 
-    id: 
+  fields:
+    id:
       title: ngettext('Id', 'Ids', 1)
       required: false
-    name: 
+    name:
       title: _('Name')
       type: text
       trim: both
       required: true
       maxLength: 55
       default: true
-    description: 
+    description:
       title: _('Description')
       type: text
       trim: both
       maxLength: 300
-    createdOn: 
+    createdOn:
       title: _('Created on')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    brandId: 
+    brandId:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

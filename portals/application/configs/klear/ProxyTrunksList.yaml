@@ -1,24 +1,24 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: proxyTrunksList_screen
-  screens: 
-    proxyTrunksList_screen: &proxyTrunksList_screenLink 
+  screens:
+    proxyTrunksList_screen: &proxyTrunksList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *ProxyTrunks
       title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             proxyTrunksEdit_screen: true
           default: proxyTrunksEdit_screen
-    proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink 
+    proxyTrunksEdit_screen: &proxyTrunksEdit_screenLink
       <<: *ProxyTrunks
       controller: edit
       class: ui-silk-pencil
@@ -34,11 +34,11 @@ production:
       fields:
         readOnly:
           name: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

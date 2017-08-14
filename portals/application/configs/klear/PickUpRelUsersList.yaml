@@ -1,32 +1,32 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: pickUpRelUsersList_screen
-  screens: 
-    pickUpRelUsersList_screen: &pickUpRelUsersList_screenLink 
+  screens:
+    pickUpRelUsersList_screen: &pickUpRelUsersList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PickUpRelUsers
       title: _("List of %s %2s", ngettext('Pick up rel user', 'Pick up rel users', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             pickUpRelUsersEdit_screen: true
-          dialogs: 
+          dialogs:
             pickUpRelUsersDel_dialog: true
           default: pickUpRelUsersEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           pickUpRelUsersNew_screen: true
-        dialogs: 
+        dialogs:
           pickUpRelUsersDel_dialog: true
-    pickUpRelUsersNew_screen: &pickUpRelUsersNew_screenLink 
+    pickUpRelUsersNew_screen: &pickUpRelUsersNew_screenLink
       <<: *PickUpRelUsers
       controller: new
       class: ui-silk-add
@@ -34,14 +34,14 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Pick up rel user', 'Pick up rel users', 1))
       shortcutOption: N
-    pickUpRelUsersEdit_screen: &pickUpRelUsersEdit_screenLink 
+    pickUpRelUsersEdit_screen: &pickUpRelUsersEdit_screenLink
       <<: *PickUpRelUsers
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Pick up rel user', 'Pick up rel users', 1), "[format| (%item%)]")
-  dialogs: 
-    pickUpRelUsersDel_dialog: &pickUpRelUsersDel_dialogLink 
+  dialogs:
+    pickUpRelUsersDel_dialog: &pickUpRelUsersDel_dialogLink
       <<: *PickUpRelUsers
       controller: delete
       class: ui-silk-bin
@@ -51,11 +51,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Pick up rel user', 'Pick up rel users', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

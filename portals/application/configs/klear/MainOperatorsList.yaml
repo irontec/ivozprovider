@@ -1,24 +1,24 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: mainOperatorsList_screen
-  screens: 
-    mainOperatorsList_screen: &mainOperatorsList_screenLink 
+  screens:
+    mainOperatorsList_screen: &mainOperatorsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *MainOperators
       class: fa fa-users red
       title: _("List of %s %2s", ngettext('Main operator', 'Main operators', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             mainOperatorsEdit_screen: true
-          dialogs: 
+          dialogs:
             mainOperatorsDel_dialog: true
           default: mainOperatorsEdit_screen
         order: &MainOperators_orderLink
@@ -34,14 +34,14 @@ production:
           pass: true
           name: true
           lastname: true
-          timezoneId: true          
-      options: 
+          timezoneId: true
+      options:
         title: _("Options")
-        screens: 
+        screens:
           mainOperatorsNew_screen: true
-        dialogs: 
+        dialogs:
           mainOperatorsDel_dialog: true
-    mainOperatorsNew_screen: &mainOperatorsNew_screenLink 
+    mainOperatorsNew_screen: &mainOperatorsNew_screenLink
       <<: *MainOperators
       controller: new
       class: ui-silk-add
@@ -82,8 +82,8 @@ production:
           <<: *MainOperators_orderLink
       fixedPositions:
         <<: *MainOperatorsFixedPositions_link
-  dialogs: 
-    mainOperatorsDel_dialog: &mainOperatorsDel_dialogLink 
+  dialogs:
+    mainOperatorsDel_dialog: &mainOperatorsDel_dialogLink
       <<: *MainOperators
       controller: delete
       class: ui-silk-bin
@@ -93,11 +93,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Main operator', 'Main operators', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

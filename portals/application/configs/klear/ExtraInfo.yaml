@@ -3,7 +3,7 @@ production:
   main:
     module: klearMatrix
     defaultCommand: initialData_command
-    
+
   commands:
     searchEntity_command:
       module: default
@@ -14,18 +14,18 @@ production:
       module: default
       controller: klear-custom-extra-auth
       action: initial-data
-      
+
     setData_command:
       module: default
       controller: klear-custom-extra-auth
       action: set-data
 
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

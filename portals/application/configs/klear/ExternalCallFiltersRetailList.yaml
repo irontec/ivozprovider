@@ -67,7 +67,7 @@ production:
         outOfScheduleTargetType: number
         <<: *forcedCompany
       fields:
-        blacklist: 
+        blacklist:
           <<: *externalCallFiltersRetail_blacklistLink
     externalCallFiltersRetailEdit_screen: &externalCallFiltersRetailEdit_screenLink
       <<: *ExternalCallFiltersRetail
@@ -78,7 +78,7 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
-        blacklist: 
+        blacklist:
           <<: *externalCallFiltersRetail_blacklistLink
   dialogs: &externalCallFiltersRetail_dialogsLink
     externalCallFiltersRetailDel_dialog: &externalCallFiltersRetailDel_dialogLink

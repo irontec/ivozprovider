@@ -50,7 +50,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      forcedValues: 
+      forcedValues:
         <<: *forcedCompany
       title: _("Edit %s %2s", ngettext('Call ACL', 'Call ACLs', 1), "[format| (%item%)]")
       fields:

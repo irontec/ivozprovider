@@ -1,171 +1,171 @@
-production: 
+production:
   class: \IvozProvider\Model\KamAccCdrs
-  fields: 
-    proxy: 
+  fields:
+    proxy:
       title: _('Proxy')
       type: text
       maxLength: 64
       default: true
-    start_time_utc: 
+    start_time_utc:
       title: _('Calldate')
       type: picker
       defaultValue: 2000-01-01 00:00:00
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    end_time_utc: 
+    end_time_utc:
       title: _('End time utc')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    start_time: 
+    start_time:
       title: _('Start time')
       type: picker
       defaultValue: 2000-01-01 00:00:00
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    end_time: 
+    end_time:
       title: _('End time')
       type: picker
       defaultValue: 2000-01-01 00:00:00
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    duration: 
+    duration:
       title: _('Duration')
       type: text
       defaultValue: 0.000
-    direction: 
+    direction:
       title: _('Type')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           'inbound': _('Inbound')
           'outbound': _('Outbound')
-    caller: 
+    caller:
       title: _('Caller')
       type: text
       maxLength: 128
-    callee: 
+    callee:
       title: _('Destination')
       type: text
       maxLength: 128
-    referee: 
+    referee:
       title: _('Referee')
       type: text
       maxLength: 128
-    referrer: 
+    referrer:
       title: _('Referrer')
       type: text
       maxLength: 128
-    companyId: 
+    companyId:
       title: ngettext('Company', 'Companies', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    brandId: 
+    brandId:
       title: ngettext('Brand', 'Brands', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    asIden: 
+    asIden:
       title: _('As iden')
       type: text
       maxLength: 64
-    asAddress: 
+    asAddress:
       title: _('As address')
       type: text
       maxLength: 64
-    callid: 
+    callid:
       title: _('Callid')
       type: text
       maxLength: 255
-    xcallid: 
+    xcallid:
       title: _('Xcallid')
       type: text
       maxLength: 255
-    parsed: 
+    parsed:
       title: _('Parsed')
       type: select
       defaultValue: no
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           'yes': _('Yes')
           'no': _('No')
           'error': _('Error')
-    diversion: 
+    diversion:
       title: _('Diversion')
       type: text
       maxLength: 64
-    peeringContractId: 
+    peeringContractId:
       title: _('Peering contract id')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    externallyRated: 
+    externallyRated:
       title: _('Externally rated')
       type: select
       defaultValue: 0
-      source: 
+      source:
         data: inline
-        values: 
-          '0': 
+        values:
+          '0':
             title: _("No")
-          '1': 
+          '1':
             title: _("Yes")
-    metered: 
+    metered:
       title: _('Metered')
       type: select
       defaultValue: 0
-      source: 
+      source:
         data: inline
-        values: 
-          '0': 
+        values:
+          '0':
             title: _("No")
-          '1': 
+          '1':
             title: _("Yes")
-    meteringDate: 
+    meteringDate:
       title: _('Metering date')
       type: picker
       defaultValue: 0000-00-00 00:00:00
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
     reMeteringDate:
       title: _('Re metering date')
@@ -174,28 +174,28 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    pricingPlanId: 
+    pricingPlanId:
       title: ngettext('Pricing plan', 'Pricing plans', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\PricingPlans
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name_${lang}
         'null': _("Unassigned")
-    targetPatternId: 
+    targetPatternId:
       title: _('Target pattern')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name_${lang}
@@ -203,24 +203,24 @@ production:
       decorators:
         autocomplete:
             command: targetPatternautocomplete_command
-    price: 
+    price:
       title: ngettext('Price', 'Prices', 1)
       type: text
-    pricingPlanDetails: 
+    pricingPlanDetails:
       title: _('Pricing plan detail')
       type: textarea
       prefix: <p align=left>
       sufix: </p>
-    invoiceId: 
+    invoiceId:
       title: ngettext('Invoice', 'Invoices', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Invoices
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - number
             template: '%number%'
           order: number
@@ -237,11 +237,11 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_KamAccCdrTargetPattern
         method: getData
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

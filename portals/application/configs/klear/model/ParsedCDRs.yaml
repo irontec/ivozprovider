@@ -1,155 +1,155 @@
-production: 
+production:
   class: \IvozProvider\Model\ParsedCDRs
-  fields: 
-    statId: 
+  fields:
+    statId:
       title: _('Stat')
       type: number
-      source: 
+      source:
         control: Spinner
       default: true
-    xstatId: 
+    xstatId:
       title: _('Xstat id')
       type: number
-      source: 
+      source:
         control: Spinner
-    statType: 
+    statType:
       title: _('Stat type')
       type: text
       maxLength: 256
-    initialLeg: 
+    initialLeg:
       title: _('Initial leg')
       type: text
       maxLength: 128
-    initialLegHash: 
+    initialLegHash:
       title: _('Initial leg hash')
       type: text
       maxLength: 128
-    cid: 
+    cid:
       title: _('Cid')
       type: text
       maxLength: 128
-    cidHash: 
+    cidHash:
       title: _('Cid hash')
       type: text
       maxLength: 128
-    xcid: 
+    xcid:
       title: _('Xcid')
       type: text
       maxLength: 128
-    xcidHash: 
+    xcidHash:
       title: _('Xcid hash')
       type: text
       maxLength: 128
-    proxies: 
+    proxies:
       title: _('Proxy')
       type: text
       maxLength: 32
-    type: 
+    type:
       title: _('Type')
       type: text
       maxLength: 32
-    subtype: 
+    subtype:
       title: _('Subtype')
       type: text
       maxLength: 64
-    calldate: 
+    calldate:
       title: _('Calldate')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    duration: 
+    duration:
       title: _('Duration')
       type: number
-      source: 
+      source:
         control: Spinner
-    aParty: 
+    aParty:
       title: _('Caller')
       type: text
       maxLength: 128
-    bParty: 
+    bParty:
       title: _('Callee')
       type: text
       maxLength: 128
-    caller: 
+    caller:
       title: _('Original caller')
       type: text
       maxLength: 128
-    callee: 
+    callee:
       title: _('Dialed number')
       type: text
       maxLength: 128
-    xCaller: 
+    xCaller:
       title: _('Presented CID')
       type: text
       maxLength: 128
-    xCallee: 
+    xCallee:
       title: _('Final callee')
       type: text
       maxLength: 128
-    initialReferrer: 
+    initialReferrer:
       title: _('Initial referrer')
       type: text
       maxLength: 128
-    referrer: 
+    referrer:
       title: _('Referrer')
       type: text
       maxLength: 128
-    referee: 
+    referee:
       title: _('Referee')
       type: text
       maxLength: 128
-    lastForwarder: 
+    lastForwarder:
       title: _('Last forwarder')
       type: text
       maxLength: 32
-    brandId: 
+    brandId:
       title: ngettext('Brand', 'Brands', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    companyId: 
+    companyId:
       title: ngettext('Company', 'Companies', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    peeringContractId: 
+    peeringContractId:
       title: _('Peering contract id')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - description
             template: '%description%'
           order: description
         'null': _("Unassigned")
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

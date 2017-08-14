@@ -2,29 +2,29 @@
 #include conf.d/actions.yaml
 #include HuntGroupsRelUsersList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: huntGroupsList_screen
   screens: &huntGroups_screensLink
-    huntGroupsList_screen: &huntGroupsList_screenLink 
+    huntGroupsList_screen: &huntGroupsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *HuntGroups
       class: ui-silk-group-go
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             huntGroupsEdit_screen: true
             huntGroupsRelUsersList_screen: true
             huntGroupsRelUsersFilterRingAllList_screen: true
             huntGroupsRelUsersFilterRandomList_screen: true
-          dialogs: 
+          dialogs:
             huntGroupsDel_dialog: true
           default: huntGroupsEdit_screen
         blacklist:
@@ -35,13 +35,13 @@ production:
           noAnswerNumberValue: true
           noAnswerExtensionId: true
           noAnswerVoiceMailUserId: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           huntGroupsNew_screen: true
-        dialogs: 
+        dialogs:
           huntGroupsDel_dialog: true
-    huntGroupsNew_screen: &huntGroupsNew_screenLink 
+    huntGroupsNew_screen: &huntGroupsNew_screenLink
       <<: *HuntGroups
       controller: new
       class: ui-silk-add
@@ -81,7 +81,7 @@ production:
             noAnswerNumberValue: 1
             noAnswerExtensionId: 1
             noAnswerVoiceMailUserId: 1
-    huntGroupsEdit_screen: &huntGroupsEdit_screenLink 
+    huntGroupsEdit_screen: &huntGroupsEdit_screenLink
       <<: *HuntGroups
       controller: edit
       class: ui-silk-pencil
@@ -197,8 +197,8 @@ production:
         blacklist:
           priority: true
 
-  dialogs: &huntGroups_dialogsLink 
-    huntGroupsDel_dialog: &huntGroupsDel_dialogLink 
+  dialogs: &huntGroups_dialogsLink
+    huntGroupsDel_dialog: &huntGroupsDel_dialogLink
       <<: *HuntGroups
       controller: delete
       class: ui-silk-bin
@@ -208,17 +208,17 @@ production:
       message: _("%s successfully deleted.", ngettext('Hunt Group', 'Hunt Groups', 1))
       multiItem: 1
       labelOnList: 1
-      
+
     <<: *huntGroupsRelUsers_dialogsLink
     huntGroupsRelUsersDel_dialog:
       <<: *huntGroupsRelUsersDel_dialogLink
       title: _("Delete %s", ngettext('User', 'Users', 1))
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

@@ -1,26 +1,26 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: genericMusicOnHoldList_screen
   screens: &genericMusicOnHold_screensLink
-    genericMusicOnHoldList_screen: &genericMusicOnHoldList_screenLink 
+    genericMusicOnHoldList_screen: &genericMusicOnHoldList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *GenericMusicOnHold
       class: ui-silk-music
       title: _("List of %s %2s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             genericMusicOnHoldEdit_screen: true
-          dialogs: 
+          dialogs:
             genericMusicOnHoldDel_dialog: true
           default: genericMusicOnHoldEdit_screen
         order: &genericMusicOnHold_orderLink
@@ -29,11 +29,11 @@ production:
           originalFile: true
         blacklist:
           encodedFile: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           genericMusicOnHoldNew_screen: true
-        dialogs: 
+        dialogs:
           genericMusicOnHoldDel_dialog: true
     genericMusicOnHoldNew_screen: &genericMusicOnHoldNew_screenLink
       <<: *GenericMusicOnHold
@@ -80,7 +80,7 @@ production:
       fixedPositions:
         <<: *musicOnHold_fixedPosLink
   dialogs: &genericMusicOnHold_dialogsLink
-    genericMusicOnHoldDel_dialog: &genericMusicOnHoldDel_dialogLink 
+    genericMusicOnHoldDel_dialog: &genericMusicOnHoldDel_dialogLink
       <<: *GenericMusicOnHold
       controller: delete
       class: ui-silk-bin
@@ -94,26 +94,26 @@ production:
         order:
           <<: *genericMusicOnHold_orderLink
   commands: &genericMusicOnHold_commandsLink
-    genericMusicOnHold_FileDownload_command: 
+    genericMusicOnHold_FileDownload_command:
       <<: *GenericMusicOnHold
       controller: File
       action: force-download
       mainColumn: originalFile
-    genericMusicOnHold_FileUpload_command: 
+    genericMusicOnHold_FileUpload_command:
       <<: *GenericMusicOnHold
       controller: File
       action: upload
       mainColumn: originalFile
-    genericMusicOnHold_FilePreview_command: 
+    genericMusicOnHold_FilePreview_command:
       <<: *GenericMusicOnHold
       controller: File
       action: preview
       mainColumn: originalFile
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

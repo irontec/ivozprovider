@@ -1,114 +1,114 @@
-production: 
+production:
   class: \IvozProvider\Model\LcrGateways
-  fields: 
-    companyId: 
+  fields:
+    companyId:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    gw_name: 
+    gw_name:
       title: _('Gw name')
       type: text
       trim: both
       required: true
       maxLength: 200
-    ip: 
+    ip:
       title: _('Ip')
       type: text
       trim: both
       required: true
       maxLength: 50
-    hostname: 
+    hostname:
       title: _('Hostname')
       type: text
       trim: both
       maxLength: 64
-    port: 
+    port:
       title: _('Port')
       type: number
-      source: 
+      source:
         control: Spinner
-    params: 
+    params:
       title: _('Param')
       type: text
       trim: both
       maxLength: 64
-    uri_scheme: 
+    uri_scheme:
       title: _('URI scheme')
       type: number
-      source: 
+      source:
         control: Spinner
-    transport: 
+    transport:
       title: _('Transport')
       type: number
-      source: 
+      source:
         control: Spinner
-    strip: 
+    strip:
       title: _('Strip')
       type: number
-      source: 
+      source:
         control: Spinner
-    prefix: 
+    prefix:
       title: _('Prefix')
       type: text
       trim: both
       maxLength: 16
-    tag: 
+    tag:
       title: _('Tag')
       type: text
       trim: both
       maxLength: 64
-    flags: 
+    flags:
       title: _('Flag')
       type: number
       defaultValue: 0
-      source: 
+      source:
         control: Spinner
-    defunct: 
+    defunct:
       title: _('Defunct')
       type: number
-      source: 
+      source:
         control: Spinner
-    peerServerId: 
+    peerServerId:
       title: ngettext('Peer server', 'Peer servers', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\PeerServers
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - ip
             template: '%ip%'
           order: ip
-    outgoingRoutingId: 
+    outgoingRoutingId:
       title: ngettext('Outgoing routing', 'Outgoing routings', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - id
             template: '%id%'
           order: id
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

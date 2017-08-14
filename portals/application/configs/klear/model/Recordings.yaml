@@ -1,51 +1,51 @@
-production: 
+production:
   class: \IvozProvider\Model\Recordings
-  fields: 
-    companyId: 
+  fields:
+    companyId:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    callid: 
+    callid:
       title: _('Callid')
       type: text
       maxLength: 255
-    calldate: 
+    calldate:
       title: _('Calldate')
       type: picker
       defaultValue: CURRENT_TIMESTAMP
-      source: 
+      source:
         control: datetime
-        settings: 
+        settings:
           disabled: 'false'
-    duration: 
+    duration:
       title: _('Duration')
       type: text
       defaultValue: 0.000
-    caller: 
+    caller:
       title: _('Caller')
       type: text
       maxLength: 128
-    callee: 
+    callee:
       title: _('Callee')
       type: text
       maxLength: 128
-    type: 
+    type:
       title: _('Type')
       type: select
       defaultValue: ddi
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           'ondemand': _('On-demand')
           'ddi': _('DDI')
     typeGhost:
@@ -54,14 +54,14 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RecordingsType
         method: getData
-    recordedFile: 
+    recordedFile:
       title: _('Recorded file')
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: recordingsRecordedFileDownload_command
@@ -74,11 +74,11 @@ production:
             class: jmedia
             onNull: hide
             target: recordingsRecordedFileDownload_command
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

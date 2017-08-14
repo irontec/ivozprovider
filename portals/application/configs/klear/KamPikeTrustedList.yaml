@@ -2,24 +2,24 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: kamPikeTrustedList_screen
-  screens: &kamPikeTrusted_screensLink 
-    kamPikeTrustedList_screen: &kamPikeTrustedList_screenLink 
+  screens: &kamPikeTrusted_screensLink
+    kamPikeTrustedList_screen: &kamPikeTrustedList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *KamPikeTrusted
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 0), "[format| (%parent%)]")
-      fields: &kamPikeTrusted_fieldsLink 
-        options: 
+      fields: &kamPikeTrusted_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             kamPikeTrustedEdit_screen: true
-          dialogs: 
+          dialogs:
             kamPikeTrustedDel_dialog: true
           default: kamPikeTrustedEdit_screen
         blacklist:
@@ -27,13 +27,13 @@ production:
           from_pattern: true
           ruri_pattern: true
           priority: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamPikeTrustedNew_screen: true
-        dialogs: 
+        dialogs:
           kamPikeTrustedDel_dialog: true
-    kamPikeTrustedNew_screen: &kamPikeTrustedNew_screenLink 
+    kamPikeTrustedNew_screen: &kamPikeTrustedNew_screenLink
       <<: *KamPikeTrusted
       controller: new
       class: ui-silk-add
@@ -60,8 +60,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 1), "[format| (%item%)]")
-  dialogs: &kamPikeTrusted_dialogsLink 
-    kamPikeTrustedDel_dialog: &kamPikeTrustedDel_dialogLink 
+  dialogs: &kamPikeTrusted_dialogsLink
+    kamPikeTrustedDel_dialog: &kamPikeTrustedDel_dialogLink
       <<: *KamPikeTrusted
       controller: delete
       class: ui-silk-bin
@@ -71,11 +71,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Trusted IP address', 'Trusted IP address(es)', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

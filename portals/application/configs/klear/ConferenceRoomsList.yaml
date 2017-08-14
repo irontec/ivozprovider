@@ -2,40 +2,40 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: conferenceRoomsList_screen
-  screens: &conferenceRooms_screensLink 
-    conferenceRoomsList_screen: &conferenceRoomsList_screenLink 
+  screens: &conferenceRooms_screensLink
+    conferenceRoomsList_screen: &conferenceRoomsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *ConferenceRooms
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Conference room', 'Conference rooms', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
-      fields: &conferenceRooms_fieldsLink 
+      fields: &conferenceRooms_fieldsLink
         order:
           name: true
           maxMembers: true
           pinProtected: true
           pinCode: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             conferenceRoomsEdit_screen: true
-          dialogs: 
+          dialogs:
             conferenceRoomsDel_dialog: true
           default: conferenceRoomsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           conferenceRoomsNew_screen: true
-        dialogs: 
+        dialogs:
           conferenceRoomsDel_dialog: true
-    conferenceRoomsNew_screen: &conferenceRoomsNew_screenLink 
+    conferenceRoomsNew_screen: &conferenceRoomsNew_screenLink
       <<: *ConferenceRooms
       controller: new
       class: ui-silk-add
@@ -58,7 +58,7 @@ production:
              pinProtected: 1
              pinCode: 1
       shortcutOption: N
-    conferenceRoomsEdit_screen: &conferenceRoomsEdit_screenLink 
+    conferenceRoomsEdit_screen: &conferenceRoomsEdit_screenLink
       <<: *ConferenceRooms
       controller: edit
       class: ui-silk-pencil
@@ -69,8 +69,8 @@ production:
         <<: *forcedCompany
       fixedPositions:
         <<: *ConferenceRoomsFixedPositions_link
-  dialogs: &conferenceRooms_dialogsLink 
-    conferenceRoomsDel_dialog: &conferenceRoomsDel_dialogLink 
+  dialogs: &conferenceRooms_dialogsLink
+    conferenceRoomsDel_dialog: &conferenceRoomsDel_dialogLink
       <<: *ConferenceRooms
       controller: delete
       class: ui-silk-bin
@@ -80,11 +80,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Conference room', 'Conference rooms', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

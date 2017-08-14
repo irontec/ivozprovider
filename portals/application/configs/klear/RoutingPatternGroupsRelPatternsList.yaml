@@ -2,33 +2,33 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: routingPatternGroupsRelPatternsList_screen
-  screens: &routingPatternGroupsRelPatterns_screensLink 
-    routingPatternGroupsRelPatternsList_screen: &routingPatternGroupsRelPatternsList_screenLink 
+  screens: &routingPatternGroupsRelPatterns_screensLink
+    routingPatternGroupsRelPatternsList_screen: &routingPatternGroupsRelPatternsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *RoutingPatternGroupsRelPatterns
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 0), "[format| (%parent%)]")
-      fields: &routingPatternGroupsRelPatterns_fieldsLink 
-        options: 
+      fields: &routingPatternGroupsRelPatterns_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             routingPatternGroupsRelPatternsEdit_screen: true
-          dialogs: 
+          dialogs:
             routingPatternGroupsRelPatternsDel_dialog: true
           default: routingPatternGroupsRelPatternsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           routingPatternGroupsRelPatternsNew_screen: true
-        dialogs: 
+        dialogs:
           routingPatternGroupsRelPatternsDel_dialog: true
-    routingPatternGroupsRelPatternsNew_screen: &routingPatternGroupsRelPatternsNew_screenLink 
+    routingPatternGroupsRelPatternsNew_screen: &routingPatternGroupsRelPatternsNew_screenLink
       <<: *RoutingPatternGroupsRelPatterns
       controller: new
       class: ui-silk-add
@@ -43,8 +43,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 1), "[format| (%item%)]")
-  dialogs: &routingPatternGroupsRelPatterns_dialogsLink 
-    routingPatternGroupsRelPatternsDel_dialog: &routingPatternGroupsRelPatternsDel_dialogLink 
+  dialogs: &routingPatternGroupsRelPatterns_dialogsLink
+    routingPatternGroupsRelPatternsDel_dialog: &routingPatternGroupsRelPatternsDel_dialogLink
       <<: *RoutingPatternGroupsRelPatterns
       controller: delete
       class: ui-silk-bin
@@ -54,11 +54,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

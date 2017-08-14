@@ -1,22 +1,22 @@
-production: 
+production:
   class: \IvozProvider\Model\PickUpGroups
-  fields: 
-    name: 
+  fields:
+    name:
       title: _('Name')
       type: text
       trim: both
       required: true
       default: true
-    companyId: 
+    companyId:
       title: ngettext('Company', 'Companies', 0)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
@@ -32,17 +32,17 @@ production:
           relatedMapperName: \IvozProvider\Mapper\Sql\Users
           filterClass: IvozProvider_Klear_Filter_Users
           relationProperty: User
-          relatedFieldName: 
-            fields: 
+          relatedFieldName:
+            fields:
               - name
               - lastname
             template: '%name% %lastname%'
-          order: name          
-staging: 
+          order: name
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

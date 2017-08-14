@@ -2,33 +2,33 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: huntGroupsRelUsersList_screen
   screens: &huntGroupsRelUsers_screensLink
-    huntGroupsRelUsersList_screen: &huntGroupsRelUsersList_screenLink 
+    huntGroupsRelUsersList_screen: &huntGroupsRelUsersList_screenLink
       controller: list
       class: ui-silk-group-go
-      pagination: 
+      pagination:
         items: 25
       <<: *HuntGroupsRelUsers
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             huntGroupsRelUsersEdit_screen: true
-          dialogs: 
+          dialogs:
             huntGroupsRelUsersDel_dialog: true
           default: huntGroupsRelUsersEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           huntGroupsRelUsersNew_screen: true
-        dialogs: 
+        dialogs:
           huntGroupsRelUsersDel_dialog: true
-    huntGroupsRelUsersNew_screen: &huntGroupsRelUsersNew_screenLink 
+    huntGroupsRelUsersNew_screen: &huntGroupsRelUsersNew_screenLink
       <<: *HuntGroupsRelUsers
       controller: new
       class: ui-silk-add
@@ -51,7 +51,7 @@ production:
         readOnly:
           huntGroupId: true
           userId: true
-      
+
     #HuntGroups
 #    <<: *huntGroups_screensLink
 #    huntGroupsEdit_screen:
@@ -60,7 +60,7 @@ production:
 #      calculatedPk:
 #        class: IvozProvider_Klear_Calculated_Primarykeys
 #        method: huntGroupPk
-    
+
   dialogs: &huntGroupsRelUsers_dialogsLink
     huntGroupsRelUsersDel_dialog: &huntGroupsRelUsersDel_dialogLink
       <<: *HuntGroupsRelUsers
@@ -72,14 +72,14 @@ production:
       message: _("%s successfully deleted.", ngettext('Hunt Group', 'Hunt Groups', 1))
       multiItem: 1
       labelOnList: 1
-      
+
     #HuntGroups
 #    <<: *huntGroups_dialogsLink
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

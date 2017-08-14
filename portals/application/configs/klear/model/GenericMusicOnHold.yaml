@@ -1,28 +1,28 @@
-production: 
+production:
   class: \IvozProvider\Model\GenericMusicOnHold
-  fields: 
-    brandId: 
+  fields:
+    brandId:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    originalFile: 
+    originalFile:
       title: ngettext('File', 'Files', 1)
       type: file
       required: true
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: genericMusicOnHold_FileDownload_command
@@ -35,8 +35,8 @@ production:
             class: jmedia
             onNull: hide
             target: genericMusicOnHold_FileDownload_command
-            
-          upload: 
+
+          upload:
             type: command
             target: genericMusicOnHold_FileUpload_command
             title: _("Upload file")
@@ -45,11 +45,11 @@ production:
     encodedFile:
       title: ngettext('File', 'Files', 1)
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: genericMusicOnHold_FileDownload_command
@@ -67,11 +67,11 @@ production:
       type: text
       trim: both
       required: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

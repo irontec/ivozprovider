@@ -4,14 +4,14 @@
 #include KamTrunksDialplanList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: transformationRulesetGroupsTrunksList_screen
-  screens: &transformationRulesetGroupsTrunks_screensLink 
-    transformationRulesetGroupsTrunksList_screen: &transformationRulesetGroupsTrunksList_screenLink 
+  screens: &transformationRulesetGroupsTrunks_screensLink
+    transformationRulesetGroupsTrunksList_screen: &transformationRulesetGroupsTrunksList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       class: ui-silk-shape-rotate-anticlockwise
       <<: *TransformationRulesetGroupsTrunks
@@ -19,17 +19,17 @@ production:
       title: _("List of %s %2s", ngettext('Numeric transformation group', 'Numeric transformation groups', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &transformationRulesetGroupsTrunks_fieldsLink 
-        options: 
+      fields: &transformationRulesetGroupsTrunks_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             transformationRulesetGroupsTrunksEdit_screen: true
             kamTrunksDialplan_callee_inList_screen: true
             kamTrunksDialplan_caller_inList_screen: true
             kamTrunksDialplan_callee_outList_screen: true
             kamTrunksDialplan_caller_outList_screen: true
             peerServersList_screen: false
-          dialogs: 
+          dialogs:
             transformationRulesetGroupsTrunksDel_dialog: true
           default: transformationRulesetGroupsTrunksEdit_screen
         blacklist: &transformationRulesetGroupsTrunks_blacklistLink
@@ -48,13 +48,13 @@ production:
           automatic: true
           countryId: true
           internationalCode: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           transformationRulesetGroupsTrunksNew_screen: true
-        dialogs: 
+        dialogs:
           transformationRulesetGroupsTrunksDel_dialog: true
-    transformationRulesetGroupsTrunksNew_screen: &transformationRulesetGroupsTrunksNew_screenLink 
+    transformationRulesetGroupsTrunksNew_screen: &transformationRulesetGroupsTrunksNew_screenLink
       <<: *TransformationRulesetGroupsTrunks
       controller: new
       class: ui-silk-add
@@ -87,7 +87,7 @@ production:
             automatic: 3
             countryId: 5
             internationalCode: 4
-    transformationRulesetGroupsTrunksEdit_screen: &transformationRulesetGroupsTrunksEdit_screenLink 
+    transformationRulesetGroupsTrunksEdit_screen: &transformationRulesetGroupsTrunksEdit_screenLink
       <<: *TransformationRulesetGroupsTrunks
       controller: edit
       class: ui-silk-pencil
@@ -96,29 +96,29 @@ production:
       forcedValues:
         <<: *forcedBrand
       fields:
-        blacklist: 
+        blacklist:
           <<: *transformationRulesetGroupsTrunks_blacklistLink
         order:
           <<: *transformationRulesetGroupsTrunks_orderLink
       fixedPositions:
         <<: *transformationRulesetGroupsTrunksFixedPositions_Link
-    #peerServers: 
+    #peerServers:
     <<: *peerServers_screensLink
-    peerServersList_screen: 
+    peerServersList_screen:
       <<: *peerServersList_screenLink
       filterField: transformationRulesetGroupsTrunksId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-    peerServersNew_screen: 
+    peerServersNew_screen:
       <<: *peerServersNew_screenLink
       filterField: transformationRulesetGroupsTrunksId
-    peerServersEdit_screen: 
+    peerServersEdit_screen:
       <<: *peerServersEdit_screenLink
       filterField: transformationRulesetGroupsTrunksId
 
     #KamTrunksDialplan
     <<: *kamTrunksDialplan_screensLink
-    
+
     kamTrunksDialplan_caller_inList_screen:
       <<: *kamTrunksDialplanList_screenLink
       title: _("Caller In transformations")
@@ -129,11 +129,11 @@ production:
       filterClass: IvozProvider_Klear_Filter_KamDialplanCallerIn
       parentOptionCustomizer:
         - recordCount
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamTrunksDialplan_caller_inNew_screen: true
-        dialogs: 
+        dialogs:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_caller_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
@@ -147,15 +147,15 @@ production:
       filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeIn
       parentOptionCustomizer:
         - recordCount
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamTrunksDialplan_callee_inNew_screen: true
-        dialogs: 
+        dialogs:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_callee_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
-      
+
     kamTrunksDialplan_caller_outList_screen:
       <<: *kamTrunksDialplanList_screenLink
       title: _("Caller Out transformations")
@@ -166,15 +166,15 @@ production:
       filterClass: IvozProvider_Klear_Filter_KamDialplanCallerOut
       parentOptionCustomizer:
         - recordCount
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamTrunksDialplan_caller_outNew_screen: true
-        dialogs: 
+        dialogs:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_caller_outNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
-      
+
     kamTrunksDialplan_callee_outList_screen:
       <<: *kamTrunksDialplanList_screenLink
       title: _("Callee Out transformations")
@@ -185,17 +185,17 @@ production:
       filterClass: IvozProvider_Klear_Filter_KamDialplanCalleeOut
       parentOptionCustomizer:
         - recordCount
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamTrunksDialplan_callee_outNew_screen: true
-        dialogs: 
+        dialogs:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_callee_outNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
 
-  dialogs: &transformationRulesetGroupsTrunks_dialogsLink 
-    transformationRulesetGroupsTrunksDel_dialog: &transformationRulesetGroupsTrunksDel_dialogLink 
+  dialogs: &transformationRulesetGroupsTrunks_dialogsLink
+    transformationRulesetGroupsTrunksDel_dialog: &transformationRulesetGroupsTrunksDel_dialogLink
       <<: *TransformationRulesetGroupsTrunks
       controller: delete
       class: ui-silk-bin
@@ -205,18 +205,18 @@ production:
       message: _("%s successfully deleted.", ngettext('Numeric transformation group', 'Numeric transformation groups', 1))
       multiItem: 1
       labelOnList: 1
-      
-  # peerServers dialogs: 
+
+  # peerServers dialogs:
     <<: *peerServers_dialogsLink
-    
-    
+
+
   #KamTrunksDialplan
     <<: *kamTrunksDialplan_dialogsLink
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

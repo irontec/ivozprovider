@@ -2,11 +2,11 @@
 #include conf.d/actions.yaml
 
 production:
-  main: 
+  main:
     module: klearMatrix
     defaultScreen: kamAccCdrsList_screen
-  screens: &kamAccCdrs_screensLink 
-    kamAccCdrsList_screen: &kamAccCdrsList_screenLink 
+  screens: &kamAccCdrs_screensLink
+    kamAccCdrsList_screen: &kamAccCdrsList_screenLink
       controller: list
       csv: true
       order:
@@ -16,15 +16,15 @@ production:
           - companyId
         type: desc
       rawCondition: "peeringContractId IS NOT NULL AND peeringContractId != ''"
-      pagination: 
+      pagination:
         items: 25
       <<: *KamAccCdrs
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
-      fields: &kamAccCdrs_fieldsLink 
-        options: 
+      fields: &kamAccCdrs_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             kamAccCdrsView_screen: true
           default: kamAccCdrsView_screen
         blacklist:
@@ -64,7 +64,7 @@ production:
           price: true
           peeringContractId: true
           invoiceId: true
-    kamAccCdrsView_screen: &kamAccCdrsView_screenLink 
+    kamAccCdrsView_screen: &kamAccCdrsView_screenLink
       <<: *KamAccCdrs
       controller: edit
       class: ui-silk-eye
@@ -72,7 +72,7 @@ production:
       disableSave: true
       labelOnPostAction: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
       title: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
-      fields: 
+      fields:
         blacklist:
           proxy: true
           start_time: true
@@ -139,7 +139,7 @@ production:
             callid: 6
             xcallid: 6
 
-  commands: 
+  commands:
     targetPatternautocomplete_command: &targetPatternautocomplete_commandLink
       <<: *PricingPlansRelTargetPatterns
       controller: field-decorator
@@ -155,11 +155,11 @@ production:
           template: '%name_en% (%regExp%)'
         limit: 8
         order: name
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

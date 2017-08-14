@@ -1,14 +1,14 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: callForwardSettingsList_screen
   screens: &callForwardSettings_screensLink
-    callForwardSettingsList_screen: &callForwardSettingsList_screenLink 
+    callForwardSettingsList_screen: &callForwardSettingsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *CallForwardSettings
       class: ui-silk-telephone-go
@@ -18,12 +18,12 @@ production:
           callTypeFilter: true
           callForwardType: true
           targetType: true
-          targetTypeValue: true 
-        options: 
+          targetTypeValue: true
+        options:
           title: _("Options")
-          screens: 
+          screens:
             callForwardSettingsEdit_screen: true
-          dialogs: 
+          dialogs:
             callForwardSettingsDel_dialog: true
           default: callForwardSettingsEdit_screen
         blacklist:
@@ -31,11 +31,11 @@ production:
           extensionId: true
           voiceMailUserId: true
           noAnswerTimeout: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           callForwardSettingsNew_screen: true
-        dialogs: 
+        dialogs:
           callForwardSettingsDel_dialog: true
     callForwardSettingsNew_screen: &callForwardSettingsNew_screenLink
       <<: *CallForwardSettings
@@ -62,7 +62,7 @@ production:
             numberValue: 1
             extensionId: 1
             voiceMailUserId: 1
-    callForwardSettingsEdit_screen: &callForwardSettingsEdit_screenLink 
+    callForwardSettingsEdit_screen: &callForwardSettingsEdit_screenLink
       <<: *CallForwardSettings
       controller: edit
       class: ui-silk-pencil
@@ -74,9 +74,9 @@ production:
           targetTypeValue: true
       fixedPositions:
         <<: *callForwardSettingsFixedPositions_Link
-      
+
   dialogs: &callForwardSettings_dialogsLink
-    callForwardSettingsDel_dialog: &callForwardSettingsDel_dialogLink 
+    callForwardSettingsDel_dialog: &callForwardSettingsDel_dialogLink
       <<: *CallForwardSettings
       controller: delete
       class: ui-silk-bin
@@ -86,11 +86,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Call forward setting', 'Call forward settings', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

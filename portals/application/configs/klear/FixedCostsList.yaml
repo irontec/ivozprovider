@@ -1,39 +1,39 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: fixedCostsList_screen
-  screens: &fixedCosts_screensLink 
-    fixedCostsList_screen: &fixedCostsList_screenLink 
+  screens: &fixedCosts_screensLink
+    fixedCostsList_screen: &fixedCostsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *FixedCosts
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Fixed cost', 'Fixed costs', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &fixedCosts_fieldsLink 
-        options: 
+      fields: &fixedCosts_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             fixedCostsEdit_screen: true
-          dialogs: 
+          dialogs:
             fixedCostsDel_dialog: true
           default: fixedCostsEdit_screen
         order: &fixedCostsFldOrder
           - name
           - cost
           - description
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           fixedCostsNew_screen: true
-        dialogs: 
+        dialogs:
           fixedCostsDel_dialog: true
-    fixedCostsNew_screen: &fixedCostsNew_screenLink 
+    fixedCostsNew_screen: &fixedCostsNew_screenLink
       <<: *FixedCosts
       controller: new
       class: ui-silk-add
@@ -48,7 +48,7 @@ production:
           order:
             <<: *fixedCostsFldOrder
 
-    fixedCostsEdit_screen: &fixedCostsEdit_screenLink 
+    fixedCostsEdit_screen: &fixedCostsEdit_screenLink
       <<: *FixedCosts
       controller: edit
       class: ui-silk-pencil
@@ -61,8 +61,8 @@ production:
           order:
             <<: *fixedCostsFldOrder
 
-  dialogs: &fixedCosts_dialogsLink 
-    fixedCostsDel_dialog: &fixedCostsDel_dialogLink 
+  dialogs: &fixedCosts_dialogsLink
+    fixedCostsDel_dialog: &fixedCostsDel_dialogLink
       <<: *FixedCosts
       controller: delete
       class: ui-silk-bin
@@ -72,11 +72,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Fixed cost', 'Fixed costs', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

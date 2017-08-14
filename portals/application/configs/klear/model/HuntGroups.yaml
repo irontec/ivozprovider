@@ -1,36 +1,36 @@
-production: 
+production:
   class: \IvozProvider\Model\HuntGroups
-  fields: 
-    name: 
+  fields:
+    name:
       title: _('Name')
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
       default: true
-    description: 
+    description:
       title: _('Description')
       type: text
       trim: both
-      defaultValue: 
-    companyId: 
+      defaultValue:
+    companyId:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    strategy: 
+    strategy:
       title: _('Strategy')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           'ringAll':
             title: _('Ring all')
             visualFilter:
@@ -41,12 +41,12 @@ production:
             visualFilter:
               hide: ['ringAllTimeout']
               show: ['nextUserPosition']
-          'roundRobin': 
+          'roundRobin':
             title: _('Round Robin')
             visualFilter:
               hide: ['ringAllTimeout']
               show: ['nextUserPosition']
-          'random': 
+          'random':
             title: _('Random')
             visualFilter:
               hide: ['ringAllTimeout']
@@ -57,18 +57,18 @@ production:
         icon: help
         label: _("Need help?")
         text: _("Determines the order users will be called")
-    ringAllTimeout: 
+    ringAllTimeout:
       title: _('Ring all timeout')
       type: number
       required: true
-      source: 
+      source:
         control: Spinner
-    noAnswerTargetType: 
+    noAnswerTargetType:
       title: _('Timeout target type')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
+        values:
           '__null__':
             title:  _("Unassigned")
             visualFilter:
@@ -88,61 +88,61 @@ production:
             visualFilter:
               show: ["noAnswerVoiceMailUserId"]
               hide: ["noAnswerExtensionId", "noAnswerNumberValue"]
-    noAnswerLocutionId: 
+    noAnswerLocutionId:
       title: _('No answer locution')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           filterClass: IvozProvider_Klear_Filter_Company
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    noAnswerNumberValue: 
+    noAnswerNumberValue:
       title: _('Number')
       type: text
       required: true
       maxLength: 25
-    noAnswerExtensionId: 
+    noAnswerExtensionId:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Extensions
           filterClass: IvozProvider_Klear_Filter_Company
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - number
             template: '%number%'
           order: number
         'null': _("Unassigned")
-    noAnswerVoiceMailUserId: 
+    noAnswerVoiceMailUserId:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Users
           filterClass: IvozProvider_Klear_Filter_Voicemail
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
               - lastname
             template: '%name% %lastname%'
           order: name
         'null': _("Unassigned")
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

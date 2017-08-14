@@ -3,31 +3,31 @@
 #include KamRtpproxyList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: mediaRelaySetsList_screen
-  screens: &mediaRelaySets_screensLink 
-    mediaRelaySetsList_screen: &mediaRelaySetsList_screenLink 
+  screens: &mediaRelaySets_screensLink
+    mediaRelaySetsList_screen: &mediaRelaySetsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *MediaRelaySets
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Media relay set', 'Media relay sets', 0), "[format| (%parent%)]")
-      fields: &mediaRelaySets_fieldsLink 
-        options: 
+      fields: &mediaRelaySets_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             mediaRelaySetsEdit_screen: true
             kamRtpproxyList_screen: true
-          dialogs: 
+          dialogs:
             mediaRelaySetsDel_dialog: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           mediaRelaySetsNew_screen: true
-    mediaRelaySetsNew_screen: &mediaRelaySetsNew_screenLink 
+    mediaRelaySetsNew_screen: &mediaRelaySetsNew_screenLink
       <<: *MediaRelaySets
       controller: new
       class: ui-silk-add
@@ -35,7 +35,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%parent%)]")
       shortcutOption: N
-    mediaRelaySetsEdit_screen: &mediaRelaySetsEdit_screenLink 
+    mediaRelaySetsEdit_screen: &mediaRelaySetsEdit_screenLink
       <<: *MediaRelaySets
       controller: edit
       class: ui-silk-pencil
@@ -44,20 +44,20 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%item%)]")
-    #kamRtpproxy: 
+    #kamRtpproxy:
     <<: *kamRtpproxy_screensLink
-    kamRtpproxyList_screen: 
+    kamRtpproxyList_screen:
       <<: *kamRtpproxyList_screenLink
       filterField: mediaRelaySetsId
-    kamRtpproxyNew_screen: 
+    kamRtpproxyNew_screen:
       <<: *kamRtpproxyNew_screenLink
       filterField: mediaRelaySetsId
-    kamRtpproxyEdit_screen: 
+    kamRtpproxyEdit_screen:
       <<: *kamRtpproxyEdit_screenLink
       filterField: mediaRelaySetsId
 
-  dialogs: &mediaRelaySets_dialogsLink 
-    mediaRelaySetsDel_dialog: &mediaRelaySetsDel_dialogLink 
+  dialogs: &mediaRelaySets_dialogsLink
+    mediaRelaySetsDel_dialog: &mediaRelaySetsDel_dialogLink
       <<: *MediaRelaySets
       controller: delete
       class: ui-silk-bin
@@ -69,13 +69,13 @@ production:
       message: _("%s successfully deleted.", ngettext('Media relay set', 'Media relay sets', 1))
       multiItem: 1
       labelOnList: 1
-  # kamRtpproxy dialogs: 
+  # kamRtpproxy dialogs:
     <<: *kamRtpproxy_dialogsLink
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

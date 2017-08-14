@@ -1,35 +1,35 @@
-production: 
+production:
   class: \IvozProvider\Model\GenericCallACLPatterns
-  fields: 
-    brandId: 
+  fields:
+    brandId:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    name: 
+    name:
       title: _('Name')
       type: text
       trim: both
       required: true
-    regExp: 
+    regExp:
       title: _('Regular Expression')
       type: text
       trim: both
       required: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

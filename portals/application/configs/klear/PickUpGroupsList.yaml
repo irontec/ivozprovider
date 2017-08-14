@@ -1,35 +1,35 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: pickUpGroupsList_screen
-  screens: 
-    pickUpGroupsList_screen: &pickUpGroupsList_screenLink 
+  screens:
+    pickUpGroupsList_screen: &pickUpGroupsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PickUpGroups
       class: fa fa-phone orange
       title: _("List of %s %2s", ngettext('Pick up group', 'Pick up groups', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             pickUpGroupsEdit_screen: true
-          dialogs: 
+          dialogs:
             pickUpGroupsDel_dialog: true
           default: pickUpGroupsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           pickUpGroupsNew_screen: true
-        dialogs: 
+        dialogs:
           pickUpGroupsDel_dialog: true
-    pickUpGroupsNew_screen: &pickUpGroupsNew_screenLink 
+    pickUpGroupsNew_screen: &pickUpGroupsNew_screenLink
       <<: *PickUpGroups
       controller: new
       class: ui-silk-add
@@ -39,7 +39,7 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedCompany
-    pickUpGroupsEdit_screen: &pickUpGroupsEdit_screenLink 
+    pickUpGroupsEdit_screen: &pickUpGroupsEdit_screenLink
       <<: *PickUpGroups
       controller: edit
       class: ui-silk-pencil
@@ -47,8 +47,8 @@ production:
       title: _("Edit %s %2s", ngettext('Pick up group', 'Pick up groups', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
-  dialogs: 
-    pickUpGroupsDel_dialog: &pickUpGroupsDel_dialogLink 
+  dialogs:
+    pickUpGroupsDel_dialog: &pickUpGroupsDel_dialogLink
       <<: *PickUpGroups
       controller: delete
       class: ui-silk-bin
@@ -58,11 +58,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Pick up group', 'Pick up groups', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

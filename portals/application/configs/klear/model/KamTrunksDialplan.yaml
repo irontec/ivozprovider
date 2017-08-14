@@ -1,60 +1,60 @@
-production: 
+production:
   class: \IvozProvider\Model\KamTrunksDialplan
-  fields: 
-    dpid: 
+  fields:
+    dpid:
       title: _('Dpid')
       type: number
       required: true
-      source: 
+      source:
         control: Spinner
       default: true
-    pr: 
+    pr:
       title: _('Priority')
       type: number
       required: true
-      source: 
+      source:
         control: Spinner
-    match_op: 
+    match_op:
       title: _('Match op')
       type: number
       required: true
-      source: 
+      source:
         control: Spinner
-    match_exp: 
+    match_exp:
       title: _('Match exp')
       type: text
       trim: both
       required: true
       maxLength: 64
-    match_len: 
+    match_len:
       title: _('Match len')
       type: number
       required: true
-      source: 
+      source:
         control: Spinner
-    subst_exp: 
+    subst_exp:
       title: _('Subst exp')
       type: text
       trim: both
       required: true
       maxLength: 64
-    repl_exp: 
+    repl_exp:
       title: _('Repl exp')
       type: text
       trim: both
       required: true
       maxLength: 64
-    attrs: 
+    attrs:
       title: _('Attr')
       type: text
       trim: both
       required: true
       maxLength: 64
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

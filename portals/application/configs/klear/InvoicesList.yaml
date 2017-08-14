@@ -3,24 +3,24 @@
 #include KamAccCdrsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: invoicesList_screen
-  screens: &invoices_screensLink 
-    invoicesList_screen: &invoicesList_screenLink 
+  screens: &invoices_screensLink
+    invoicesList_screen: &invoicesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *Invoices
       class: ui-silk-report
       title: _("List of %s %2s", ngettext('Invoice', 'Invoices', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &invoices_fieldsLink 
-        options: 
+      fields: &invoices_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             invoicesEdit_screen: true
             fixedCostsRelInvoicesList_screen: true
             kamAccCdrsList_screen: true
@@ -41,14 +41,14 @@ production:
           pdfFile: true
         blacklist:
           FixedCostsRelInvoices: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           invoicesNew_screen: true
         dialogs:
           invoicesDel_dialog: true
           generateInvoice_dialog: true
-    invoicesNew_screen: &invoicesNew_screenLink 
+    invoicesNew_screen: &invoicesNew_screenLink
       <<: *Invoices
       controller: new
       class: ui-silk-add
@@ -89,7 +89,7 @@ production:
           fields:
             status: 1
             pdfFile: 1
-    invoicesEdit_screen: &invoicesEdit_screenLink 
+    invoicesEdit_screen: &invoicesEdit_screenLink
       <<: *Invoices
       controller: edit
       class: ui-silk-pencil
@@ -106,7 +106,7 @@ production:
           status: true
       fixedPositions:
         <<: *invoicesFixedPositions_Link
-        
+
     <<: *fixedCostsRelInvoices_screensLink
     fixedCostsRelInvoicesList_screen:
       <<: *fixedCostsRelInvoicesList_screenLink
@@ -115,23 +115,23 @@ production:
         - recordCount
 #    kamAccCdrs:
     <<: *kamAccCdrs_screensLink
-    kamAccCdrsList_screen: 
+    kamAccCdrsList_screen:
       <<: *kamAccCdrsList_screenLink
       class: ui-silk-application-view-list
       filterField: invoiceId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-#        
-#    kamAccCdrsNew_screen: 
+#
+#    kamAccCdrsNew_screen:
 #      <<: *kamAccCdrsNew_screenLink
 #      filterField: invoiceId
-#    kamAccCdrsEdit_screen: 
+#    kamAccCdrsEdit_screen:
 #      <<: *kamAccCdrsEdit_screenLink
 #      filterField: invoiceId
 
 
-  dialogs: &invoices_dialogsLink 
-    invoicesDel_dialog: &invoicesDel_dialogLink 
+  dialogs: &invoices_dialogsLink
+    invoicesDel_dialog: &invoicesDel_dialogLink
       <<: *Invoices
       controller: delete
       class: ui-silk-bin
@@ -157,22 +157,22 @@ production:
 
 
 
-#  # kamAccCdrs dialogs: 
+#  # kamAccCdrs dialogs:
 #    <<: *kamAccCdrs_dialogsLink
     <<: *fixedCostsRelInvoices_dialogsLink
-  commands: &invoices_commandsLink 
-    invoicesPdfFileDownload_command: &invoicesPdfFileDownload_commandLink 
+  commands: &invoices_commandsLink
+    invoicesPdfFileDownload_command: &invoicesPdfFileDownload_commandLink
       <<: *Invoices
       controller: File
       action: force-download
       mainColumn: pdfFile
       class: ui-silk-bullet-disk
-    invoicesPdfFileUpload_command: &invoicesPdfFileUpload_commandLink 
+    invoicesPdfFileUpload_command: &invoicesPdfFileUpload_commandLink
       <<: *Invoices
       controller: File
       action: upload
       mainColumn: pdfFile
-    invoicesPdfFilePreview_command: &invoicesPdfFilePreview_commandLink 
+    invoicesPdfFilePreview_command: &invoicesPdfFilePreview_commandLink
       <<: *Invoices
       controller: File
       action: preview
@@ -180,12 +180,12 @@ production:
       arguments:
         cache:
           enabled: true
-  
-staging: 
+
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

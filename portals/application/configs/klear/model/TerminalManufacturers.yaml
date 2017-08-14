@@ -1,27 +1,27 @@
-production: 
+production:
   class: \IvozProvider\Model\TerminalManufacturers
-  fields: 
-    iden: 
+  fields:
+    iden:
       title: ngettext('Iden', 'Idens', 1)
       type: text
       trim: both
       required: true
-    name: 
+    name:
       title: _('Name')
       type: text
       trim: both
-      defaultValue: 
+      defaultValue:
       default: true
-    description: 
+    description:
       title: _('Description')
       type: text
       trim: both
-      defaultValue: 
-staging: 
+      defaultValue:
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

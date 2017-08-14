@@ -4,25 +4,25 @@
 #include KamUsersDomainList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: domainsList_screen
-  screens: &domains_screensLink 
-    domainsList_screen: &domainsList_screenLink 
+  screens: &domains_screensLink
+    domainsList_screen: &domainsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *Domains
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Domain', 'Domains', 0), "[format| (%parent%)]")
       fields:
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             domainsEdit_screen: false
             domainsView_screen: true
-          dialogs: 
+          dialogs:
             domainsDel_dialog: false
           default: domainsView_screen
         order: &domains_orderLink
@@ -37,15 +37,15 @@ production:
           scope: true
           brandId: true
           companyId: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           domainsNew_screen: false
-    domainsNew_screen: &domainsNew_screenLink 
+    domainsNew_screen: &domainsNew_screenLink
       <<: *Domains
       controller: new
       class: ui-silk-add
-      fields: &domains_fieldsLink 
+      fields: &domains_fieldsLink
         order:
           scope: true
           pointsTo: true
@@ -61,7 +61,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Domain', 'Domains', 1), "[format| (%parent%)]")
       shortcutOption: N
-    domainsEdit_screen: &domainsEdit_screenLink 
+    domainsEdit_screen: &domainsEdit_screenLink
       <<: *Domains
       controller: edit
       class: ui-silk-pencil
@@ -83,14 +83,14 @@ production:
       labelOnPostAction: _("Edit %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
     domainsView_screen:
-      <<: *domainsEdit_screenLink 
+      <<: *domainsEdit_screenLink
       class: ui-silk-eye
       disableSave: true
       labelOnPostAction: _("View %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
       title: _("View %s %2s", ngettext('Domain', 'Domains', 1), "[format| (%item%)]")
 
-  dialogs: &domains_dialogsLink 
-    domainsDel_dialog: &domainsDel_dialogLink 
+  dialogs: &domains_dialogsLink
+    domainsDel_dialog: &domainsDel_dialogLink
       <<: *Domains
       controller: delete
       class: ui-silk-bin
@@ -103,11 +103,11 @@ production:
       multiItem: 1
       labelOnList: 1
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

@@ -1,22 +1,22 @@
-production: 
+production:
   class: \IvozProvider\Model\ProxyUsers
-  fields: 
-    name: 
+  fields:
+    name:
       title: _('Name')
       type: text
       trim: both
       maxLength: 100
       default: true
-    ip: 
+    ip:
       title: _('Ip')
       type: text
       trim: both
       maxLength: 100
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

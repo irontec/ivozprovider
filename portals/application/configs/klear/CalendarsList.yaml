@@ -2,36 +2,36 @@
 #include conf.d/actions.yaml
 #include HolidayDatesList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: calendarsList_screen
   screens: &calendars_screensLink
-    calendarsList_screen: &calendarsList_screenLink 
+    calendarsList_screen: &calendarsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *Calendars
       class: ui-silk-calendar
       title: _("List of %s %2s", ngettext('Calendar', 'Calendars', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             calendarsEdit_screen: true
             holidayDatesList_screen: true
-          dialogs: 
+          dialogs:
             calendarsDel_dialog: true
           default: calendarsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           calendarsNew_screen: true
-        dialogs: 
+        dialogs:
           calendarsDel_dialog: true
-    calendarsNew_screen: &calendarsNew_screenLink 
+    calendarsNew_screen: &calendarsNew_screenLink
       <<: *Calendars
       controller: new
       class: ui-silk-add
@@ -41,7 +41,7 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedCompany
-    calendarsEdit_screen: &calendarsEdit_screenLink 
+    calendarsEdit_screen: &calendarsEdit_screenLink
       <<: *Calendars
       controller: edit
       class: ui-silk-pencil
@@ -65,9 +65,9 @@ production:
       fields:
         readOnly:
           calendarId: true
-    
+
   dialogs: &calendars_dialogsLink
-    calendarsDel_dialog: &calendarsDel_dialogLink 
+    calendarsDel_dialog: &calendarsDel_dialogLink
       <<: *Calendars
       controller: delete
       class: ui-silk-bin
@@ -77,17 +77,17 @@ production:
       message: _("%s successfully deleted.", ngettext('Calendar', 'Calendars', 1))
       multiItem: 1
       labelOnList: 1
-  
+
     #HolidayDates
     <<: *holidayDates_dialogsLink
   commands:
     <<: *holidayDates_commandsLink
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production
