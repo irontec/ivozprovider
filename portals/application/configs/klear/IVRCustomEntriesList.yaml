@@ -23,6 +23,7 @@ production:
           targetNumberValue: true
           targetExtensionId: true
           targetVoiceMailUserId: true
+          targetConditionalRouteId: true
         options:
           title: _("Options")
           screens:
@@ -62,6 +63,7 @@ production:
             targetNumberValue: 4
             targetExtensionId: 4
             targetVoiceMailUserId: 5
+            targetConditionalRouteId: 5
 
     iVRCustomEntriesEdit_screen: &iVRCustomEntriesEdit_screenLink
       <<: *IVRCustomEntries

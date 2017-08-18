@@ -59,6 +59,11 @@ class IVRCustomEntries extends TableAbstract
             'columns' => 'targetVoiceMailUserId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
             'refColumns' => 'id'
+        ),
+        'IVRCustomEntriesIbfk5' => array(
+            'columns' => 'targetConditionalRouteId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutes',
+            'refColumns' => 'id'
         )
     );
     
@@ -188,6 +193,23 @@ class IVRCustomEntries extends TableAbstract
 	    'TABLE_NAME' => 'IVRCustomEntries',
 	    'COLUMN_NAME' => 'targetVoiceMailUserId',
 	    'COLUMN_POSITION' => 8,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'targetConditionalRouteId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'IVRCustomEntries',
+	    'COLUMN_NAME' => 'targetConditionalRouteId',
+	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

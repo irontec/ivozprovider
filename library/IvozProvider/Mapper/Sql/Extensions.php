@@ -33,6 +33,7 @@ class Extensions extends Raw\Extensions
                 "number"        => "numberValue",
                 "friend"        => "friendValue",
                 "queue"         => "queueId",
+                "conditional"   => "conditionalRouteId",
         );
 
         $routeType = $model->getRouteType();

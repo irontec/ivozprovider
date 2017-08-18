@@ -15,6 +15,10 @@ mappers:
   - &CompanyAdmins {mapper: \IvozProvider\Mapper\Sql\CompanyAdmins, modelFile: CompanyAdmins}
   - &CompanyServices {mapper: \IvozProvider\Mapper\Sql\CompanyServices, modelFile: CompanyServices}
   - &CompanyURLs {mapper: \IvozProvider\Mapper\Sql\BrandURLs, modelFile: CompanyURLs}
+  - &ConditionalRoutes {mapper: \IvozProvider\Mapper\Sql\ConditionalRoutes, modelFile: ConditionalRoutes}
+  - &ConditionalRoutesConditions {mapper: \IvozProvider\Mapper\Sql\ConditionalRoutesConditions, modelFile: ConditionalRoutesConditions}
+  - &ConditionalRoutesConditionsRelMatchLists {mapper: \IvozProvider\Mapper\Sql\ConditionalRoutesConditionsRelMatchLists, modelFile: ConditionalRoutesConditionsRelMatchLists}
+  - &ConditionalRoutesConditionsRelSchedules {mapper: \IvozProvider\Mapper\Sql\ConditionalRoutesConditionsRelSchedules, modelFile: ConditionalRoutesConditionsRelSchedules}
   - &ConferenceRooms {mapper: \IvozProvider\Mapper\Sql\ConferenceRooms, modelFile: ConferenceRooms}
   - &Countries {mapper: \IvozProvider\Mapper\Sql\Countries, modelFile: Countries}
   - &DDIs {mapper: \IvozProvider\Mapper\Sql\DDIs, modelFile: DDIs}

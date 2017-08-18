@@ -35,6 +35,8 @@ class RouterAction
 
     protected $_routeRetail;
 
+    protected $_routeConditionalRoute;
+
     public function __construct($parent)
     {
         // Store parent
@@ -104,7 +106,9 @@ class RouterAction
             case 'retailAccount':
                 $this->_routeToRetailAccount();
                 break;
-
+            case 'conditional':
+                $this->_routeToConditionalRoute();
+                break;
         }
     }
 
@@ -237,6 +241,14 @@ class RouterAction
         $retailAction
             ->setRetailAccount($this->_routeRetail)
             ->call();
+    }
+
+    protected function _routeToConditionalRoute()
+    {
+        $conditionalRouteAction = new ConditionalRouteAction($this);
+        $conditionalRouteAction
+            ->setConditionalRoute($this->_routeConditionalRoute)
+            ->process();
     }
 
 }

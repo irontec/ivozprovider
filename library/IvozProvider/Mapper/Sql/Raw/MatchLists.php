@@ -447,6 +447,20 @@ class MatchLists extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getConditionalRoutesConditionsRelMatchLists(null, null, true) !== null) {
+                    $conditionalRoutesConditionsRelMatchLists = $model->getConditionalRoutesConditionsRelMatchLists();
+
+                    if (!is_array($conditionalRoutesConditionsRelMatchLists)) {
+
+                        $conditionalRoutesConditionsRelMatchLists = array($conditionalRoutesConditionsRelMatchLists);
+                    }
+
+                    foreach ($conditionalRoutesConditionsRelMatchLists as $value) {
+                        $value->setMatchListId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getExternalCallFilterBlackLists(null, null, true) !== null) {
                     $externalCallFilterBlackLists = $model->getExternalCallFilterBlackLists();
 

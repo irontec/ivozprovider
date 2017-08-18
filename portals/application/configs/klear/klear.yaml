@@ -244,6 +244,11 @@ production:
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
           showOnlyIf: ${auth.companyRetail}
+        ConditionalRoutesList:
+          title: ngettext('Conditional Route', 'Conditional Routes', 0)
+          class: ui-silk-arrow-divide
+          description: _("List of %s", ngettext('Conditional Route', 'Conditional Routes', 0))
+          showOnlyIf: ${auth.companyVPBX}
         MatchListsList:
           title: ngettext('Match List', 'Match Lists', 0)
           class: ui-silk-text-list-numbers

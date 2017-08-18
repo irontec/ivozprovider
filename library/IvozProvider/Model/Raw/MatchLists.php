@@ -54,6 +54,14 @@ class MatchLists extends ModelAbstract
 
 
     /**
+     * Dependent relation ConditionalRoutesConditionsRelMatchLists_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelMatchLists[]
+     */
+    protected $_ConditionalRoutesConditionsRelMatchLists;
+
+    /**
      * Dependent relation ExternalCallFilterBlackLists_ibfk_2
      * Type: One-to-Many relationship
      *
@@ -112,6 +120,10 @@ class MatchLists extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'ConditionalRoutesConditionsRelMatchListsIbfk2' => array(
+                    'property' => 'ConditionalRoutesConditionsRelMatchLists',
+                    'table_name' => 'ConditionalRoutesConditionsRelMatchLists',
+                ),
             'ExternalCallFilterBlackListsIbfk2' => array(
                     'property' => 'ExternalCallFilterBlackLists',
                     'table_name' => 'ExternalCallFilterBlackLists',
@@ -131,6 +143,7 @@ class MatchLists extends ModelAbstract
         ));
 
         $this->setOnDeleteCascadeRelationships(array(
+            'ConditionalRoutesConditionsRelMatchLists_ibfk_2',
             'ExternalCallFilterBlackLists_ibfk_2',
             'ExternalCallFilterWhiteLists_ibfk_2',
             'MatchListPatterns_ibfk_1'
@@ -329,6 +342,96 @@ class MatchLists extends ModelAbstract
         }
 
         return $this->_Company;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditionsRelMatchLists_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelMatchLists
+     * @return \IvozProvider\Model\Raw\MatchLists
+     */
+    public function setConditionalRoutesConditionsRelMatchLists(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConditionalRoutesConditionsRelMatchLists === null) {
+
+                $this->getConditionalRoutesConditionsRelMatchLists();
+            }
+
+            $oldRelations = $this->_ConditionalRoutesConditionsRelMatchLists;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConditionalRoutesConditionsRelMatchLists = array();
+
+        foreach ($data as $object) {
+            $this->addConditionalRoutesConditionsRelMatchLists($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditionsRelMatchLists_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelMatchLists $data
+     * @return \IvozProvider\Model\Raw\MatchLists
+     */
+    public function addConditionalRoutesConditionsRelMatchLists(\IvozProvider\Model\Raw\ConditionalRoutesConditionsRelMatchLists $data)
+    {
+        $this->_ConditionalRoutesConditionsRelMatchLists[] = $data;
+        $this->_setLoaded('ConditionalRoutesConditionsRelMatchListsIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutesConditionsRelMatchLists_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelMatchLists
+     */
+    public function getConditionalRoutesConditionsRelMatchLists($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesConditionsRelMatchListsIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoutesConditionsRelMatchLists = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConditionalRoutesConditionsRelMatchLists;
     }
 
     /**

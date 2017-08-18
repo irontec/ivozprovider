@@ -56,6 +56,7 @@ class IVRCustomEntries extends MapperAbstract
                 'targetNumberValue' => $model->getTargetNumberValue(),
                 'targetExtensionId' => $model->getTargetExtensionId(),
                 'targetVoiceMailUserId' => $model->getTargetVoiceMailUserId(),
+                'targetConditionalRouteId' => $model->getTargetConditionalRouteId(),
             );
         } else {
             $result = array();
@@ -557,7 +558,8 @@ class IVRCustomEntries extends MapperAbstract
                   ->setTargetType($data['targetType'])
                   ->setTargetNumberValue($data['targetNumberValue'])
                   ->setTargetExtensionId($data['targetExtensionId'])
-                  ->setTargetVoiceMailUserId($data['targetVoiceMailUserId']);
+                  ->setTargetVoiceMailUserId($data['targetVoiceMailUserId'])
+                  ->setTargetConditionalRouteId($data['targetConditionalRouteId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setIVRCustomId($data->{'IVRCustomId'})
@@ -566,7 +568,8 @@ class IVRCustomEntries extends MapperAbstract
                   ->setTargetType($data->{'targetType'})
                   ->setTargetNumberValue($data->{'targetNumberValue'})
                   ->setTargetExtensionId($data->{'targetExtensionId'})
-                  ->setTargetVoiceMailUserId($data->{'targetVoiceMailUserId'});
+                  ->setTargetVoiceMailUserId($data->{'targetVoiceMailUserId'})
+                  ->setTargetConditionalRouteId($data->{'targetConditionalRouteId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\IVRCustomEntries) {
             $entry->setId($data->getId())
@@ -576,7 +579,8 @@ class IVRCustomEntries extends MapperAbstract
                   ->setTargetType($data->getTargetType())
                   ->setTargetNumberValue($data->getTargetNumberValue())
                   ->setTargetExtensionId($data->getTargetExtensionId())
-                  ->setTargetVoiceMailUserId($data->getTargetVoiceMailUserId());
+                  ->setTargetVoiceMailUserId($data->getTargetVoiceMailUserId())
+                  ->setTargetConditionalRouteId($data->getTargetConditionalRouteId());
 
         }
 

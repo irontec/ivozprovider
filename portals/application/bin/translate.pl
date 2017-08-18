@@ -16,9 +16,10 @@ my $base_path = "./";
 
 # All excluded paths are prefixed with base_path
 my @exclude_path = (
-    "public/scripts",
+    "public",
+    "e2e",
     "application/configs/klearRaw",
-    "library/vendor"
+    "library/vendor",
 );
 
 my @keywords = (

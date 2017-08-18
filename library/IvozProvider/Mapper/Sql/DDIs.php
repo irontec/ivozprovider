@@ -33,6 +33,8 @@ class DDIs extends Raw\DDIs
                 "friend"        => "friendValue",
                 "conferenceRoom" => "conferenceRoomId",
                 "queue"         => "queueId",
+                "retailAccount" => "retailAccountId",
+                "conditional"   => "conditionalRouteId",
         );
         $routeType = $model->getRouteType();
         foreach ($nullableFields as $type => $fieldName) {

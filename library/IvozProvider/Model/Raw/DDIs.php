@@ -38,6 +38,7 @@ class DDIs extends ModelAbstract
         'friend',
         'queue',
         'retailAccount',
+        'conditional',
     );
 
     /**
@@ -98,7 +99,7 @@ class DDIs extends ModelAbstract
     protected $_displayName;
 
     /**
-     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount]
+     * [enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]
      * Database var type varchar
      *
      * @var string
@@ -195,6 +196,13 @@ class DDIs extends ModelAbstract
      * @var int
      */
     protected $_queueId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_conditionalRouteId;
 
 
     /**
@@ -295,6 +303,13 @@ class DDIs extends ModelAbstract
      */
     protected $_RetailAccount;
 
+    /**
+     * Parent relation DDIs_ibfk_15
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutes
+     */
+    protected $_ConditionalRoute;
+
 
     /**
      * Dependent relation Companies_ibfk_13
@@ -375,6 +390,7 @@ class DDIs extends ModelAbstract
         'friendValue'=>'friendValue',
         'languageId'=>'languageId',
         'queueId'=>'queueId',
+        'conditionalRouteId'=>'conditionalRouteId',
     );
 
     /**
@@ -384,7 +400,7 @@ class DDIs extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'recordCalls'=> array('enum:none|all|inbound|outbound'),
-            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount'),
+            'routeType'=> array('enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -448,6 +464,10 @@ class DDIs extends ModelAbstract
             'DDIsIbfk14'=> array(
                     'property' => 'RetailAccount',
                     'table_name' => 'RetailAccounts',
+                ),
+            'DDIsIbfk15'=> array(
+                    'property' => 'ConditionalRoute',
+                    'table_name' => 'ConditionalRoutes',
                 ),
         ));
 
@@ -1288,6 +1308,40 @@ class DDIs extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setConditionalRouteId($data)
+    {
+
+        if ($this->_conditionalRouteId != $data) {
+            $this->_logChange('conditionalRouteId', $this->_conditionalRouteId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_conditionalRouteId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_conditionalRouteId = (int) $data;
+
+        } else {
+            $this->_conditionalRouteId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column conditionalRouteId
+     *
+     * @return int
+     */
+    public function getConditionalRouteId()
+    {
+        return $this->_conditionalRouteId;
+    }
+
+    /**
      * Sets parent relation Company
      *
      * @param \IvozProvider\Model\Raw\Companies $data
@@ -1999,6 +2053,57 @@ class DDIs extends ModelAbstract
         }
 
         return $this->_RetailAccount;
+    }
+
+    /**
+     * Sets parent relation ConditionalRoute
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutes $data
+     * @return \IvozProvider\Model\Raw\DDIs
+     */
+    public function setConditionalRoute(\IvozProvider\Model\Raw\ConditionalRoutes $data)
+    {
+        $this->_ConditionalRoute = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setConditionalRouteId($primaryKey);
+        }
+
+        $this->_setLoaded('DDIsIbfk15');
+        return $this;
+    }
+
+    /**
+     * Gets parent ConditionalRoute
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ConditionalRoutes
+     */
+    public function getConditionalRoute($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'DDIsIbfk15';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoute = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_ConditionalRoute;
     }
 
     /**

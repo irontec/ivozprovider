@@ -447,6 +447,20 @@ class Calendars extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getConditionalRoutesConditionsRelCalendars(null, null, true) !== null) {
+                    $conditionalRoutesConditionsRelCalendars = $model->getConditionalRoutesConditionsRelCalendars();
+
+                    if (!is_array($conditionalRoutesConditionsRelCalendars)) {
+
+                        $conditionalRoutesConditionsRelCalendars = array($conditionalRoutesConditionsRelCalendars);
+                    }
+
+                    foreach ($conditionalRoutesConditionsRelCalendars as $value) {
+                        $value->setCalendarId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getExternalCallFilterRelCalendars(null, null, true) !== null) {
                     $externalCallFilterRelCalendars = $model->getExternalCallFilterRelCalendars();
 

@@ -17,14 +17,16 @@
  * @subpackage Model
  * @author Luis Felipe Garcia
  */
- 
+
 namespace IvozProvider\Model;
 class Calendars extends Raw\Calendars
 {
-    /**
-     * This method is called just after parent's constructor
-     */
-    public function init()
+    public function isHolidayDate($date)
     {
+        $holidayDates = $calendar->getHolidayDates("eventDate='" . $date . "'");
+        if (!empty($holidayDates)) {
+            return true;
+        }
+        return false;
     }
 }

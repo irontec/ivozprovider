@@ -51,6 +51,7 @@ production:
           languageId: true
           queueId: true
           retailAccountId: true
+          conditionalRouteId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -85,6 +86,7 @@ production:
             friendValue: 1
             queueId: 1
             retailAccountId: 1
+            conditionalRouteId: 1
         group4:
           label: _("Additional configuration")
           colsPerRow: 12

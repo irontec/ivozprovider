@@ -51,17 +51,22 @@ production:
             title: _('number')
             visualFilter:
               show: ["targetNumberValue"]
-              hide: ["targetExtensionId", "targetVoiceMailUserId"]
+              hide: ["targetExtensionId", "targetVoiceMailUserId", "targetConditionalRouteId"]
           'extension':
             title: _('extension')
             visualFilter:
               show: ["targetExtensionId"]
-              hide: ["targetNumberValue", "targetVoiceMailUserId"]
+              hide: ["targetNumberValue", "targetVoiceMailUserId", "targetConditionalRouteId"]
           'voicemail':
             title: _('voicemail')
             visualFilter:
               show: ["targetVoiceMailUserId"]
-              hide: ["targetExtensionId", "targetNumberValue"]
+              hide: ["targetExtensionId", "targetNumberValue", "targetConditionalRouteId"]
+          'conditional':
+            title: _('Conditional Route')
+            visualFilter:
+              show: ["targetConditionalRouteId"]
+              hide: ["targetExtensionId", "targetVoiceMailUserId", "targetNumberValue"]
     targetNumberValue:
       title: _('Target number value')
       type: text
@@ -96,6 +101,20 @@ production:
               - name
               - lastname
             template: '%name% %lastname%'
+          order: name
+        'null': _("Unassigned")
+    targetConditionalRouteId:
+      title: _('Target Conditional route')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\ConditionalRoutes
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields: [ name ]
+            template: '%name%'
           order: name
         'null': _("Unassigned")
     target:

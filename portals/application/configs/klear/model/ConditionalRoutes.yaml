@@ -1,0 +1,284 @@
+production:
+  class: \IvozProvider\Model\ConditionalRoutes
+  fields:
+    companyId:
+      title: _('Company')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName:
+            fields:
+              - type
+            template: '%type%'
+          order: type
+      default: true
+    name:
+      title: ngettext('Name', 'Names', 1)
+      type: text
+      required: true
+      maxLength: 100
+    locutionId:
+      title: _('Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    routeType:
+      title: _('Route type')
+      type: select
+      source:
+        data: inline
+        filterClass: IvozProvider_Klear_Filter_RouteTypes
+        values:
+          '__null__':
+            title: _("Unassigned")
+            visualFilter:
+              show: [ ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'user':
+            title: _('user')
+            visualFilter:
+              show: [ "userId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'IVRCommon':
+            title: _('IVRCommon')
+            visualFilter:
+              show: [ "IVRCommonId" ]
+              hide: [
+                "numberValue", "userId", "IVRCustomId", "huntGroupId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'IVRCustom':
+            title: _('IVRCustom')
+            visualFilter:
+              show: [ "IVRCustomId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "userId", "huntGroupId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'huntGroup':
+            title: _('huntGroup')
+            visualFilter:
+              show: [ "huntGroupId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'voicemail':
+            title: _('voicemail')
+            visualFilter:
+              show: [ "voiceMailUserId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'number':
+            title: _('number')
+            visualFilter:
+              show: [ "numberValue" ]
+              hide: [
+                "voiceMailUserId", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'friend':
+            title: _('Friend')
+            visualFilter:
+              show: [ "friendValue" ]
+              hide: [
+                "voiceMailUserId", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "numberValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'queue':
+            title: _('Queue')
+            visualFilter:
+              show: [ "queueId" ]
+              hide: [
+                "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
+                "userId", "huntGroupId", "numberValue",
+                "conferenceRoomId", "extensionId"
+              ]
+          'conferenceRoom':
+            title: _('Conference Room')
+            visualFilter:
+              show: [ "conferenceRoomId" ]
+              hide: [
+              "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
+              "userId", "huntGroupId", "numberValue",
+              "queueId", "extensionId"
+            ]
+          'extension':
+            title: _('Extension')
+            visualFilter:
+              show: [ "extensionId" ]
+              hide: [
+              "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
+              "userId", "huntGroupId", "numberValue",
+              "queueId", "conferenceRoomId"
+            ]
+    IVRCommonId:
+      title: _('IVR Common')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    IVRCustomId:
+      title: _('IVR Custom')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    huntGroupId:
+      title: _('Hunt Group')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    voiceMailUserId:
+      title: _('voicemail')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields: [ name, lastname ]
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unassigned")
+    userId:
+      title: _('User')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Users
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields: [ name, lastname ]
+            template: '%name% %lastname%'
+          order: name
+        'null': _("Unassigned")
+    numberValue:
+      title: _('Number')
+      type: text
+      required: true
+      maxLength: 25
+    friendValue:
+      title: _('Friend value')
+      type: text
+      required: true
+      maxLength: 25
+    queueId:
+      title: _('Queue')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Queues
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    conferenceRoomId:
+      title: _('Conference Room')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    extensionId:
+      title: _('Extension')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order: number
+        'null': _("Unassigned")
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getData
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
