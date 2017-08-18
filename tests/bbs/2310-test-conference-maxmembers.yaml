@@ -1,0 +1,35 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to conference room
+    timeout: 30
+    sessions:
+      - conference_alice:
+          - credentials:
+              <<: *alice_cred
+          - call: 500
+          - waitfor: CONFIRMED
+          - wait: 2
+          - dtmf: "1234#"
+          - wait: 15
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - conference_bob:
+          - credentials:
+              <<: *bob_cred
+          - call: 500
+          - waitfor: CONFIRMED
+          - wait: 2
+          - dtmf: "1234#"
+          - wait: 15
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - conference_charlie:
+          - wait: 5
+          - credentials:
+              <<: *charlie_cred
+          - call: 500
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+

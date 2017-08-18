@@ -1,0 +1,5157 @@
+{
+	"variables": [],
+	"info": {
+		"name": "IvozProvider - BBS Dataset",
+		"_postman_id": "9dec0fd9-8dbf-e4a8-0e2e-3dacc9292fbf",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0000 - Brand Data",
+			"description": "",
+			"item": [
+				{
+					"name": "Create BBS Brand",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Brand id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"brandId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BBS - Brand for Black Box SIP tests",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "nif",
+									"value": "01234567890AF",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "defaultTimezoneId",
+									"value": "70",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "postalAddress",
+									"value": "Postal address created from REST API",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "postalCode",
+									"value": "48901",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "town",
+									"value": "Rest API town",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "province",
+									"value": "Rest API province",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "country",
+									"value": "Rest API country",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "registryData",
+									"value": "Brand Invoice Footer data",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "domain_users",
+									"value": "retail-bbs.ivozprovider.local",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Queues",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Recordings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "2"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Faxes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "3"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Friends",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "4"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Conferences",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "5"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Billing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "6"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Invoices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "7"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Progress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "8"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Retail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-brands/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "9"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Number Transformation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Pering Contract id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"transformationRulesetId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/transformation-ruleset-groups-trunks/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name",
+									"type": "text",
+									"value": "Spanish Operator"
+								},
+								{
+									"description": "",
+									"key": "automatic",
+									"type": "text",
+									"value": "1"
+								},
+								{
+									"key": "internationalCode",
+									"value": "00",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "nationalNumLength",
+									"value": "9",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "countryId",
+									"value": "70",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Peering Contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Pering Contract id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"peeringContractId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/peering-contracts//",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name",
+									"type": "text",
+									"value": "BBS Peering Contract"
+								},
+								{
+									"key": "externallyRated",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "transformationRulesetGroupsTrunksId",
+									"value": "{{transformationRulesetId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Peer Server",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"peerServerId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/peer-servers/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
+								},
+								{
+									"key": "sip_proxy",
+									"value": "127.0.0.1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Routing pattern ES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Routing pattern id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"routingPatternESId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/routing-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name_es",
+									"type": "text",
+									"value": "BBS - España"
+								},
+								{
+									"description": "",
+									"key": "name_en",
+									"type": "text",
+									"value": "BBS - Spain"
+								},
+								{
+									"description": "",
+									"key": "regExp",
+									"type": "text",
+									"value": "34"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Outgoing Routing ES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Routing pattern id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"outgoingRouteESId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/outgoing-routing/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "routingPatternId",
+									"type": "text",
+									"value": "{{routingPatternESId}}"
+								},
+								{
+									"description": "",
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
+								},
+								{
+									"description": "",
+									"key": "type",
+									"type": "text",
+									"value": "pattern"
+								},
+								{
+									"description": "",
+									"key": "priority",
+									"type": "text",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Routing pattern US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Routing pattern id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"routingPatternUSId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/routing-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"description": "",
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name_es",
+									"type": "text",
+									"value": "BBS - EEUU"
+								},
+								{
+									"description": "",
+									"key": "name_en",
+									"type": "text",
+									"value": "BBS - USA"
+								},
+								{
+									"description": "",
+									"key": "regExp",
+									"type": "text",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Outgoing Routing US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Routing pattern id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"outgoingRouteUSId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/outgoing-routing/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "routingPatternId",
+									"type": "text",
+									"value": "{{routingPatternUSId}}"
+								},
+								{
+									"description": "",
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
+								},
+								{
+									"description": "",
+									"key": "type",
+									"type": "text",
+									"value": "pattern"
+								},
+								{
+									"description": "",
+									"key": "priority",
+									"type": "text",
+									"value": "2"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "0010 - Company Data",
+			"description": "",
+			"item": [
+				{
+					"name": "Create BBS Company",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Company id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"companyId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "BBS - Company for Black Box SIP tests",
+									"type": "text"
+								},
+								{
+									"key": "nif",
+									"value": "09876543210ART",
+									"type": "text"
+								},
+								{
+									"key": "defaultTimezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "postalAddress",
+									"value": "Company postal address",
+									"type": "text"
+								},
+								{
+									"key": "postalCode",
+									"value": "Company postal code",
+									"type": "text"
+								},
+								{
+									"key": "town",
+									"value": "Company town",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "Company province",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Company country",
+									"type": "text"
+								},
+								{
+									"key": "domain_users",
+									"value": "bbs.ivozprovider.local",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "vpbx",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Feature: Queues",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Feature: Recordings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "2"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Feature: Faxes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "3"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Feature: Friends",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "4"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Feature: Conferences",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "5"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Feature: Progress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "8"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Alice Terminal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"aliceTerminalId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/terminals/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "terminalModelId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "alice",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "4l1c3p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "direct_media_method",
+									"value": "invite",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Alice User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"aliceUserId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Alice",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Allison",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alice@bbs.ivozprovider.local",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "alice",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "4l1c3p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "timezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "terminalId",
+									"value": "{{aliceTerminalId}}",
+									"type": "text"
+								},
+								{
+									"key": "countryId",
+									"value": "70",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Alice Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"aliceExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "1001",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{aliceUserId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Alice DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"aliceDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "70"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999661001"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{aliceUserId}}"
+								},
+								{
+									"key": "peeringContractId",
+									"value": "{{peeringContractId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bob Terminal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"bobTerminalId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/terminals/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "terminalModelId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "bob",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "b0bp4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "direct_media_method",
+									"value": "invite",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bob User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"bobUserId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Bob",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Bobson",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bob@bbs.ivozprovider.local",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "bob",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "b0bp4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "timezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "terminalId",
+									"value": "{{bobTerminalId}}",
+									"type": "text"
+								},
+								{
+									"key": "countryId",
+									"value": "70",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bob Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"bobExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "1002",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{bobUserId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bob DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"bobDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "70"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999661002"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{bobUserId}}"
+								},
+								{
+									"key": "peeringContractId",
+									"value": "{{peeringContractId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Charlie Terminal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"charlieTerminalId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/terminals/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "terminalModelId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "charlie",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ch4rl13p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "direct_media_method",
+									"value": "invite",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Charlie User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"charlieUserId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Charlie",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Charlison",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "charly@bbs.ivozprovider.local",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "charlie",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "ch4rl13p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "timezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "terminalId",
+									"value": "{{charlieTerminalId}}",
+									"type": "text"
+								},
+								{
+									"key": "countryId",
+									"value": "70",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Charlie Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"charlieExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "1003",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{charlieUserId}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Charlie DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"charlieDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "70"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999661003"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{charlieUserId}}"
+								},
+								{
+									"key": "peeringContractId",
+									"value": "{{peeringContractId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Dave Terminal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"daveTerminalId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/terminals/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "terminalModelId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "dave",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "d4v3p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "direct_media_method",
+									"value": "invite",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Dave User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"daveUserId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Dave",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Daveson",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dave@bbs.ivozprovider.local",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "dave",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "d4v3p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "timezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "terminalId",
+									"value": "{{daveTerminalId}}",
+									"type": "text"
+								},
+								{
+									"key": "countryId",
+									"value": "235",
+									"type": "text"
+								},
+								{
+									"key": "area_code",
+									"value": "999",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Dave Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"daveExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "1004",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{daveUserId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Dave DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"daveDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "235"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999661004"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{daveUserId}}"
+								},
+								{
+									"key": "peeringContractId",
+									"value": "{{peeringContractId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Eve Terminal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"eveTerminalId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/terminals/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "terminalModelId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "eve",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "3v3p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "direct_media_method",
+									"value": "invite",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Eve User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"eveUserId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Eve",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Eveson",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "eve@bbs.ivozprovider.local",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "eve",
+									"type": "text"
+								},
+								{
+									"key": "pass",
+									"value": "3v3p4ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "timezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "terminalId",
+									"value": "{{eveTerminalId}}",
+									"type": "text"
+								},
+								{
+									"key": "countryId",
+									"value": "235",
+									"type": "text"
+								},
+								{
+									"key": "area_code",
+									"value": "999",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Eve Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"eveExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "1005",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{eveUserId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Eve DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"eveDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "235"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999661005"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{eveUserId}}"
+								},
+								{
+									"key": "peeringContractId",
+									"value": "{{peeringContractId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Set Default Company DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/companies/{{companyId}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "outgoingDDIId",
+									"value": "{{aliceDDIId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Friend",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"friendId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/friends/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "friend"
+								},
+								{
+									"key": "domain",
+									"type": "text",
+									"value": "bbs.ivozprovider.local"
+								},
+								{
+									"key": "directConnectivity",
+									"type": "text",
+									"value": "no"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "70"
+								},
+								{
+									"key": "password",
+									"type": "text",
+									"value": "fr13ndp4ssw0rd"
+								},
+								{
+									"key": "transport",
+									"type": "text",
+									"value": "udp"
+								},
+								{
+									"key": "priority",
+									"type": "text",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Friend Pattern",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"friendId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/friends-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "friendId",
+									"type": "text",
+									"value": "{{friendId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "2XXX Extensions"
+								},
+								{
+									"key": "regExp",
+									"type": "text",
+									"value": "^2[0-9]{3}$"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Friend Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"friendExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "friend"
+								},
+								{
+									"key": "number",
+									"value": "2001"
+								},
+								{
+									"key": "friendValue",
+									"type": "text",
+									"value": "2001"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "0020 - Retail Data",
+			"description": "",
+			"item": [
+				{
+					"name": "Create BBS Retail Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Retail id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"retailId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "BBS - Retail for Black Box SIP tests",
+									"type": "text"
+								},
+								{
+									"key": "nif",
+									"value": "09876543210ART",
+									"type": "text"
+								},
+								{
+									"key": "defaultTimezoneId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "postalAddress",
+									"value": "Retail postal address",
+									"type": "text"
+								},
+								{
+									"key": "postalCode",
+									"value": "Retail postal code",
+									"type": "text"
+								},
+								{
+									"key": "town",
+									"value": "Retail town",
+									"type": "text"
+								},
+								{
+									"key": "province",
+									"value": "Retail province",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Retail country",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "retail",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Retail Feature: Recordings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{retailId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "2"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Retail Feature: Faxes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{retailId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "3"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Retail Feature: Progress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/features-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{retailId}}"
+								},
+								{
+									"description": "",
+									"key": "featureId",
+									"type": "text",
+									"value": "8"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Retail Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Retail account id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"retailAccountId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/retail-accounts/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{retailId}}"
+								},
+								{
+									"description": "",
+									"key": "name",
+									"type": "text",
+									"value": "20000"
+								},
+								{
+									"description": "",
+									"key": "password",
+									"type": "text",
+									"value": "r3t41lp4ssw0rd"
+								},
+								{
+									"description": "",
+									"key": "transport",
+									"type": "text",
+									"value": "udp"
+								},
+								{
+									"description": "",
+									"key": "directConnectivity",
+									"type": "text",
+									"value": "no"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Retail DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"retailDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{retailId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "235"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999920000"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "retailAccount"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{retailAccountId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Set Default Retail Client DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/companies/{{retailId}}",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "outgoingDDIId",
+									"value": "{{retailDDIId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2000 - IVR",
+			"description": "",
+			"item": [
+				{
+					"name": "Create IVR Generic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"ivrCommonId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/i-v-r-common",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "BBS Generic IVR"
+								},
+								{
+									"key": "timeout",
+									"type": "text",
+									"value": "5"
+								},
+								{
+									"description": "",
+									"key": "noAnswerTimeout",
+									"type": "text",
+									"value": "5"
+								},
+								{
+									"key": "maxDigits",
+									"type": "text",
+									"value": "4"
+								},
+								{
+									"description": "",
+									"key": "timeoutTargetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"description": "",
+									"key": "timeoutExtensionId",
+									"type": "text",
+									"value": "{{daveExtensionId}}"
+								},
+								{
+									"description": "",
+									"key": "errorTargetType",
+									"type": "text",
+									"value": "number"
+								},
+								{
+									"description": "",
+									"key": "errorNumberValue",
+									"type": "text",
+									"value": "0034999661003"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create IVR Generic Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "IVRCommon"
+								},
+								{
+									"key": "number",
+									"type": "text",
+									"value": "600"
+								},
+								{
+									"key": "IVRCommonId",
+									"type": "text",
+									"value": "{{ivrCommonId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create IVR Custom",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"ivrCustomId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/i-v-r-custom",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "name",
+									"type": "text",
+									"value": "BBS Custom IVR"
+								},
+								{
+									"description": "",
+									"key": "timeout",
+									"type": "text",
+									"value": "5"
+								},
+								{
+									"description": "",
+									"key": "maxDigits",
+									"type": "text",
+									"value": "1"
+								},
+								{
+									"description": "",
+									"key": "noAnswerTimeout",
+									"type": "text",
+									"value": "5"
+								},
+								{
+									"description": "",
+									"key": "timeoutTargetType",
+									"type": "text",
+									"value": "voicemail"
+								},
+								{
+									"description": "",
+									"key": "timeoutExtensionId",
+									"type": "text",
+									"value": "{{daveUserId}}"
+								},
+								{
+									"description": "",
+									"key": "errorTargetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"description": "",
+									"key": "errorNumberValue",
+									"type": "text",
+									"value": "{{daveExtensionId}}"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create IVR Custom Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "IVRCustom",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "601",
+									"type": "text"
+								},
+								{
+									"key": "IVRCustomId",
+									"value": "{{ivrCustomId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create IVR Custom Entry 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}//i-v-r-custom-entries",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "IVRCustomId",
+									"value": "{{ivrCustomId}}",
+									"type": "text"
+								},
+								{
+									"key": "entry",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "601",
+									"type": "text"
+								},
+								{
+									"key": "targetType",
+									"value": "extension",
+									"type": "text"
+								},
+								{
+									"key": "targetExtensionId",
+									"value": "{{aliceExtensionId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2200 - Pickup",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Pickup Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"pickupGroupId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pick-up-groups",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "BBS Pickup Group",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Alice to Pickup Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pick-up-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pickUpGroupId",
+									"value": "{{pickupGroupId}}",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{aliceUserId}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Bob to Pickup Group copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pick-up-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pickUpGroupId",
+									"value": "{{pickupGroupId}}",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{bobUserId}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Charlie to Pickup Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pick-up-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pickUpGroupId",
+									"value": "{{pickupGroupId}}",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{charlieUserId}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2300 - Conference",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Conference Room",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"conferenceRoomId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/conference-rooms",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "BBS Conference Room",
+									"type": "text"
+								},
+								{
+									"key": "pinProtected",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pinCode",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "maxMembers",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Conference Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"value": "{{companyId}}",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "routeType",
+									"value": "conferenceRoom",
+									"type": "text"
+								},
+								{
+									"key": "conferenceRoomId",
+									"value": "{{conferenceRoomId}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2400 - HuntGroup",
+			"description": "",
+			"item": [
+				{
+					"name": "Create HungGroup RingAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"huntGroupRingAllId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "BBS RingAll HuntGroup"
+								},
+								{
+									"description": "",
+									"key": "strategy",
+									"type": "text",
+									"value": "ringAll"
+								},
+								{
+									"key": "ringAllTimeout",
+									"type": "text",
+									"value": "10"
+								},
+								{
+									"key": "noAnswerTargetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"description": "",
+									"key": "noAnswerExtensionId",
+									"type": "text",
+									"value": "{{eveExtensionId}}"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create HungGroup RingAll Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "number",
+									"type": "text",
+									"value": "700"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "huntGroup"
+								},
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRingAllId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RingAll User Bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRingAllId}}"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{bobUserId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RingAll User Charlie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRingAllId}}"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{charlieUserId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RingAll User Dave",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRingAllId}}"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{daveUserId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create HungGroup RR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"huntGroupRRId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "BBS RR HuntGroup"
+								},
+								{
+									"description": "",
+									"key": "strategy",
+									"type": "text",
+									"value": "roundRobin"
+								},
+								{
+									"key": "noAnswerTargetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"description": "",
+									"key": "noAnswerExtensionId",
+									"type": "text",
+									"value": "{{eveExtensionId}}"
+								},
+								{
+									"key": "ringAllTimeout",
+									"value": "0",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create HungGroup RR Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "number",
+									"type": "text",
+									"value": "701"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "huntGroup"
+								},
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRRId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RR User Bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRRId}}"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{bobUserId}}"
+								},
+								{
+									"key": "timeoutTime",
+									"value": "3",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "priority",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RR User Charlie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRRId}}"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{charlieUserId}}"
+								},
+								{
+									"description": "",
+									"key": "timeoutTime",
+									"type": "text",
+									"value": "3"
+								},
+								{
+									"description": "",
+									"key": "priority",
+									"type": "text",
+									"value": "2"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add HungGroup RR User Dave",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/hunt-groups-rel-users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "huntGroupId",
+									"type": "text",
+									"value": "{{huntGroupRRId}}"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{daveUserId}}"
+								},
+								{
+									"description": "",
+									"key": "timeoutTime",
+									"type": "text",
+									"value": "3"
+								},
+								{
+									"description": "",
+									"key": "priority",
+									"type": "text",
+									"value": "3"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3000 - Call Forward Settings",
+			"description": "",
+			"item": [
+				{
+					"name": "Call Forward Eve Busy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/call-forward-settings",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{eveUserId}}"
+								},
+								{
+									"key": "callTypeFilter",
+									"type": "text",
+									"value": "internal"
+								},
+								{
+									"key": "callForwardType",
+									"type": "text",
+									"value": "busy"
+								},
+								{
+									"key": "targetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"key": "extensionId",
+									"type": "text",
+									"value": "{{charlieExtensionId}}"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Call Forward Eve NoAnswer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/call-forward-settings",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{eveUserId}}"
+								},
+								{
+									"key": "callTypeFilter",
+									"type": "text",
+									"value": "internal"
+								},
+								{
+									"key": "callForwardType",
+									"type": "text",
+									"value": "noAnswer"
+								},
+								{
+									"key": "targetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"key": "extensionId",
+									"type": "text",
+									"value": "{{bobExtensionId}}"
+								},
+								{
+									"key": "noAnswerTimeout",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Call Forward Eve Unregistered",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/call-forward-settings",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{eveUserId}}"
+								},
+								{
+									"key": "callTypeFilter",
+									"type": "text",
+									"value": "internal"
+								},
+								{
+									"key": "callForwardType",
+									"type": "text",
+									"value": "userNotRegistered"
+								},
+								{
+									"key": "targetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"key": "extensionId",
+									"type": "text",
+									"value": "{{daveExtensionId}}"
+								}
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

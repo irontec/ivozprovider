@@ -1,34 +1,34 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to bob blind transfered to charlie
+  - name: call from alice to huntgroup ring all
+    type: simple
     timeout: 20
     sessions:
-
-      - caller_alice:
+      - alice:
           - credentials:
               <<: *alice_cred
-          - call: 1002
+          - call: 700             # Hunt group extension
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
-
-      - callee_bob:
+      - bob:
           - register:
               <<: *bob_cred
           - waitfor: INCOMING
-          - answer
-          - wait
-          - blindxfer: 1003
-          - waitfor: TRANSFER_ACCEPTED
-          - waitfor: TRANSFER_OK
-          - hangup
+          - ringing
           - waitfor: DISCONNCTD
-
-      - callee_charlie:
+      - charlie:
           - register:
               <<: *charlie_cred
           - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD
+      - dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait: 3
           - answer
-          - waitfor: CONFIRMED
-          - wait: 6
+          - wait: 3
           - hangup
           - waitfor: DISCONNCTD

@@ -1,9 +1,3 @@
-# test-conference.yaml
-#
-# Simple scenario for testing route to pin protected conference room
-# Extension 500 must point to the conference room
-# Conference must have password 1234
-#
 # ----------------------------------------------------------------------------
 scenarios:
   - name: call from alice to conference room
@@ -14,8 +8,8 @@ scenarios:
               <<: *alice_cred
           - call: 500
           - waitfor: CONFIRMED
-          - wait: 8
-          - dtmf: 1234#
+          - wait: 5
+          - dtmf: "1234#"
           - wait: 5
           - hangup
           - waitfor: DISCONNCTD

@@ -1,27 +1,24 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to eve busy forwarded to charlie
+  - name: call from alice to bob ddi
     timeout: 20
     sessions:
-      - alice:
+
+      - call_uac_alice:
           - credentials:
               <<: *alice_cred
-          - call: 1005
+          - wait
+          - call: 001999661004
           - waitfor: CONFIRMED
-          - wait: 5
+          - wait: 2
           - hangup
           - waitfor: DISCONNCTD
-      - eve:
+
+      - call_uas_dave:
           - register:
-              <<: *eve_cred
+              <<: *dave_cred
           - waitfor: INCOMING
-          - busy
-          - waitfor: DISCONNCTD
-      - charlie:
-          - register:
-              <<: *charlie_cred
-          - waitfor: INCOMING
-          - ringing
-          - wait
+          - callid: 01134999661001
           - answer
           - waitfor: DISCONNCTD
+          - unregister

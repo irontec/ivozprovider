@@ -1,17 +1,11 @@
-# test-ddi.yaml
-#
-# Simple scenario for testing a call between alice and bob
-# Bob must have the extension 1001 assigned
-#
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to bob at 1001
+  - name: call from friend to alice extension
     timeout: 20
     sessions:
-
-      - call_uac_alice:
+      - friend:
           - credentials:
-              <<: *alice_cred
+              <<: *friend_cred
           - wait
           - call: 1001
           - waitfor: CONFIRMED
@@ -19,9 +13,9 @@ scenarios:
           - hangup
           - waitfor: DISCONNCTD
 
-      - call_uas_bob:
+      - alice:
           - register:
-              <<: *bob_cred
+              <<: *alice_cred
           - waitfor: INCOMING
           - answer
           - waitfor: DISCONNCTD

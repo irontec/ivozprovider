@@ -1,11 +1,6 @@
-# test-extension.yaml
-#
-# Simple scenario for testing a call between alice and bob
-# Bob must have the extension 946946946 routed to him
-#
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to bob at 946946946
+  - name: call from alice to bob ddi
     timeout: 20
     sessions:
 
@@ -13,7 +8,7 @@ scenarios:
           - credentials:
               <<: *alice_cred
           - wait
-          - call: 946946946
+          - call: 999661002
           - waitfor: CONFIRMED
           - wait: 2
           - hangup
@@ -23,6 +18,7 @@ scenarios:
           - register:
               <<: *bob_cred
           - waitfor: INCOMING
+          - callid: 999661001
           - answer
           - waitfor: DISCONNCTD
           - unregister

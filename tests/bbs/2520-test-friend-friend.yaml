@@ -1,22 +1,22 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to eve no-registed forwarded to dave
-    timeout: 10
+  - name: call from friend to alice ddi
+    timeout: 20
     sessions:
-      - alice:
+      - friend_caller:
+          - wait
           - credentials:
-              <<: *alice_cred
-          - call: 1005
+              <<: *friend_cred
+          - call: 2001
           - waitfor: CONFIRMED
-          - wait: 5
+          - wait: 2
           - hangup
           - waitfor: DISCONNCTD
-      - dave:
+
+      - friend_callee:
           - register:
-              <<: *dave_cred
+              <<: *friend_cred
           - waitfor: INCOMING
-          - ringing
           - answer
           - waitfor: DISCONNCTD
-
-
+          - unregister

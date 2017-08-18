@@ -1,28 +1,26 @@
-# test-ivr.yaml
-#
-# Simple scenario for testing a call from bob to alice through a IVR
-# IVR must have the extension 600 assigned
-#
 # ----------------------------------------------------------------------------
+
 scenarios:
-  - name: call from bob to alice using IVR custom
-    type: simple
-    timeout: 20
+  - name: call from retail account to Alice DDI
+    timeout: 25
     sessions:
-      - ivr_uac_bob:
+
+      # Retail: Call to Alice DDI
+      - retail:
+          - wait
           - credentials:
-              <<: *bob_cred
-          - call: 601             # IVR custom extension
+              <<: *retail_cred
+          - call: 999661001
           - waitfor: CONFIRMED
-          - wait: 3
-          - dtmf: 1
           - waitfor: DISCONNCTD
-      - ivr_uas_alice:
+
+      # Alice: Wait for call from retail
+      - alice:
           - register:
               <<: *alice_cred
           - waitfor: INCOMING
           - ringing
-          - wait
+          - wait: 5
           - answer
           - waitfor: CONFIRMED
           - wait

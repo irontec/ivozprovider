@@ -1,22 +1,24 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to eve no-registed forwarded to dave
-    timeout: 10
+  - name: call from world to bob ddi
+    timeout: 20
     sessions:
-      - alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 1005
+
+      - external:
+          - wait
+          - call:
+              uri: "sip:001999661004@trunks.ivozprovider.local"
+              callidnum: 999663333
           - waitfor: CONFIRMED
-          - wait: 5
+          - wait: 2
           - hangup
           - waitfor: DISCONNCTD
+
       - dave:
           - register:
               <<: *dave_cred
           - waitfor: INCOMING
-          - ringing
+          - callid: 01134999663333
           - answer
           - waitfor: DISCONNCTD
-
-
+          - unregister

@@ -1,57 +1,44 @@
-# test-attxfer.yaml
-#
-# Simple scenario for testing attended transfer
-# Alice must have extension 1000 assigned
-# Bob must have extension 1001 assigned
-# Charlie must have extension 1002 assigned
-#
 # ----------------------------------------------------------------------------
 
-scenarios:
-  - name: call from alice to charlie early transfered to bob
-    timeout: 25
+#scenarios:
+  - name: call from alice to bob early transfered to charlie
+    timeout: 30
     sessions:
+        # Alice: Call from Alice to Charlie at 1003
+        - alice:
+            - wait
+            - credentials:
+                <<: *alice_cred
+            - call: 1002
+            - waitfor: CONFIRMED
+            - waitfor: DISCONNCTD
 
-      # Alice: Call from Alice to Charlie at 1002
-      - callee_alice:
-          - wait
-          - credentials:
-              <<: *alice_cred
-          - call: 1002
-          - waitfor: CONFIRMED
-          - waitfor: DISCONNCTD
+        # Bob: Receive the call from Alice and transfer to Charlie
+        - bob:
+            - register:
+                <<: *bob_cred
+            - waitfor: INCOMING
+            - answer
+            - wait: 5
+            - call: { name: TO_CHARLIE, number: 1003 }
+            - waitfor: { call: TO_CHARLIE, name: EARLY }
+            - wait
+            - attxfer: TO_CHARLIE
+            - waitfor: { call: TO_CHARLIE, name: DISCONNCTD }
+            - wait
+            - hangup
+            - waitfor: DISCONNCTD
 
-      # Charlie: Receive the call from Alice and transfer to Bob at 1001
-      - callee_charlie:
-          - register:
-              <<: *charlie_cred
-          - waitfor: INCOMING
-          - answer
-          - wait
-          - call:
-             name: TO_BOB
-             number: 1001
-          - waitfor:
-             call: TO_BOB
-             name: EARLY
-          - attxfer: TO_BOB
-          - waitfor: TRANSFER_ACCEPTED
-          - waitfor: { call: TO_BOB, name: DISCONNCTD }
-          - waitfor: TRANSFER_OK
-          - hangup
-          - waitfor: DISCONNCTD
-          - unregister
-
-      # Charlie: Answer the call from Bob
-      - callee_bob:
-          - register:
-              <<: *bob_cred
-          - waitfor: INCOMING
-          - ringing
-          - wait: 5
-          - answer
-          - waitfor: CONFIRMED
-          - wait
-          - hangup
-          - waitfor: DISCONNCTD
+        # Charlie: Answer the call from Bob
+        - charlie:
+            - register:
+                <<: *charlie_cred
+            - waitfor: INCOMING
+            - ringing
+            - wait: 5   # Time in ringing where xfer occurs
+            - answer
+            - waitfor: CONFIRMED
+            - wait: 5   # Conversation time with Alice
+            - hangup
+            - waitfor: DISCONNCTD
 

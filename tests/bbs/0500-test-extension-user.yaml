@@ -1,27 +1,23 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to eve busy forwarded to charlie
+  - name: call from alice to bob extension
     timeout: 20
     sessions:
       - alice:
           - credentials:
               <<: *alice_cred
-          - call: 1005
+          - wait
+          - call: 1002
           - waitfor: CONFIRMED
-          - wait: 5
+          - wait: 2
           - hangup
           - waitfor: DISCONNCTD
-      - eve:
+
+      - bob:
           - register:
-              <<: *eve_cred
+              <<: *bob_cred
           - waitfor: INCOMING
-          - busy
-          - waitfor: DISCONNCTD
-      - charlie:
-          - register:
-              <<: *charlie_cred
-          - waitfor: INCOMING
-          - ringing
-          - wait
+          - callid: 1001
           - answer
           - waitfor: DISCONNCTD
+          - unregister

@@ -1,28 +1,27 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from alice to eve no-answer forwarded to bob
-    timeout: 20
+  - name: call to IVR common not answered routed to extension
+    type: simple
+    timeout: 30
     sessions:
       - alice:
           - credentials:
               <<: *alice_cred
-          - call: 1005
+          - call: 600             # IVR common extension
           - waitfor: CONFIRMED
-          - wait: 10
+          - dtmf: 1003            # Press Charlie Extension
+          - waitfor: DISCONNCTD
+      - charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD  # Wait until call is cancelled
+      - dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - answer
+          - wait: 5
           - hangup
           - waitfor: DISCONNCTD
-      - eve:
-          - register:
-              <<: *eve_cred
-          - waitfor: INCOMING
-          - ringing
-          - waitfor: DISCONNCTD
-      - bob:
-          - register:
-              <<: *bob_cred
-          - waitfor: INCOMING
-          - ringing
-          - wait
-          - answer
-          - waitfor: DISCONNCTD
-

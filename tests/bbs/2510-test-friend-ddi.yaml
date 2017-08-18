@@ -1,25 +1,22 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from bob to alice using IVR common
-    type: simple
+  - name: call from friend to alice ddi
     timeout: 20
     sessions:
-      - bob:
+      - friend:
           - credentials:
-              <<: *bob_cred
-          - call: 600             # IVR common extension
+              <<: *friend_cred
+          - wait
+          - call: 999661001
           - waitfor: CONFIRMED
-          - wait: 3
-          - dtmf: 1001
+          - wait: 2
+          - hangup
           - waitfor: DISCONNCTD
+
       - alice:
           - register:
               <<: *alice_cred
           - waitfor: INCOMING
-          - ringing
-          - wait
           - answer
-          - waitfor: CONFIRMED
-          - wait
-          - hangup
           - waitfor: DISCONNCTD
+          - unregister
