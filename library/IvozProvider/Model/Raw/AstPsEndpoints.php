@@ -718,7 +718,7 @@ class AstPsEndpoints extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_directMediaAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMedia'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'directMedia'));
             }
             $this->_directMedia = (string) $data;
 
@@ -755,7 +755,7 @@ class AstPsEndpoints extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'directMediaMethod'));
             }
             $this->_directMediaMethod = (string) $data;
 
@@ -860,7 +860,7 @@ class AstPsEndpoints extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_sendDiversionAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for sendDiversion'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'sendDiversion'));
             }
             $this->_sendDiversion = (string) $data;
 
@@ -897,7 +897,7 @@ class AstPsEndpoints extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_sendPaiAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for sendPai'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'sendPai'));
             }
             $this->_sendPai = (string) $data;
 
@@ -934,7 +934,7 @@ class AstPsEndpoints extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_100relAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for 100rel'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), '100rel'));
             }
             $this->_100rel = (string) $data;
 
@@ -1005,7 +1005,7 @@ class AstPsEndpoints extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_trustIdInboundAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for trustIdInbound'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'trustIdInbound'));
             }
             $this->_trustIdInbound = (string) $data;
 

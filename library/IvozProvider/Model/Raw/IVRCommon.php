@@ -806,7 +806,7 @@ class IVRCommon extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_timeoutTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for timeoutTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'timeoutTargetType'));
             }
             $this->_timeoutTargetType = (string) $data;
 
@@ -945,7 +945,7 @@ class IVRCommon extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_errorTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for errorTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'errorTargetType'));
             }
             $this->_errorTargetType = (string) $data;
 

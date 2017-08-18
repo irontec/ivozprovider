@@ -303,7 +303,7 @@ class CallForwardSettings extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_callTypeFilterAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for callTypeFilter'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'callTypeFilter'));
             }
             $this->_callTypeFilter = (string) $data;
 
@@ -343,7 +343,7 @@ class CallForwardSettings extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_callForwardTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for callForwardType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'callForwardType'));
             }
             $this->_callForwardType = (string) $data;
 
@@ -383,7 +383,7 @@ class CallForwardSettings extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_targetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for targetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'targetType'));
             }
             $this->_targetType = (string) $data;
 

@@ -33,11 +33,11 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'conditionalRouteConditionId': '', 
+     *     'conditionId': '', 
      *     'scheduleId': ''
      * },{
      *     'id': '', 
-     *     'conditionalRouteConditionId': '', 
+     *     'conditionId': '', 
      *     'scheduleId': ''
      * }]")
      */
@@ -57,7 +57,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
         } else {
             $fields = array(
                 'id',
-                'conditionalRouteConditionId',
+                'conditionId',
                 'scheduleId',
             );
         }
@@ -133,7 +133,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'conditionalRouteConditionId': '', 
+     *     'conditionId': '', 
      *     'scheduleId': ''
      * }")
      */
@@ -152,7 +152,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
         } else {
             $fields = array(
                 'id',
-                'conditionalRouteConditionId',
+                'conditionId',
                 'scheduleId',
             );
         }
@@ -194,7 +194,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
      * @ApiDescription(section="ConditionalRoutesConditionsRelSchedules", description="Create's a new ConditionalRoutesConditionsRelSchedules")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/conditional-routes-conditions-rel-schedules/")
-     * @ApiParams(name="conditionalRouteConditionId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="conditionId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="scheduleId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/conditionalroutesconditionsrelschedules/{id}")
@@ -231,7 +231,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/conditional-routes-conditions-rel-schedules/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="conditionalRouteConditionId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="conditionId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="scheduleId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -327,7 +327,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'conditionalRouteConditionId' => array(
+                'conditionId' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -348,7 +348,7 @@ class Rest_ConditionalRoutesConditionsRelSchedulesController extends Iron_Contro
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'conditionalRouteConditionId' => array(
+                'conditionId' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',

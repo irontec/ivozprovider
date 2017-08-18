@@ -590,7 +590,7 @@ class Extensions extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_routeTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for routeType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'routeType'));
             }
             $this->_routeType = (string) $data;
 

@@ -40,11 +40,13 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
      *     'IVRCommonId': '', 
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
-     *     'conferenceRoomId': '', 
+     *     'voiceMailUserId': '', 
      *     'userId': '', 
      *     'numberValue': '', 
      *     'friendValue': '', 
-     *     'queueId': ''
+     *     'queueId': '', 
+     *     'conferenceRoomId': '', 
+     *     'extensionId': ''
      * },{
      *     'id': '', 
      *     'companyId': '', 
@@ -54,11 +56,13 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
      *     'IVRCommonId': '', 
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
-     *     'conferenceRoomId': '', 
+     *     'voiceMailUserId': '', 
      *     'userId': '', 
      *     'numberValue': '', 
      *     'friendValue': '', 
-     *     'queueId': ''
+     *     'queueId': '', 
+     *     'conferenceRoomId': '', 
+     *     'extensionId': ''
      * }]")
      */
     public function indexAction()
@@ -84,11 +88,13 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                 'IVRCommonId',
                 'IVRCustomId',
                 'huntGroupId',
-                'conferenceRoomId',
+                'voiceMailUserId',
                 'userId',
                 'numberValue',
                 'friendValue',
                 'queueId',
+                'conferenceRoomId',
+                'extensionId',
             );
         }
 
@@ -170,11 +176,13 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
      *     'IVRCommonId': '', 
      *     'IVRCustomId': '', 
      *     'huntGroupId': '', 
-     *     'conferenceRoomId': '', 
+     *     'voiceMailUserId': '', 
      *     'userId': '', 
      *     'numberValue': '', 
      *     'friendValue': '', 
-     *     'queueId': ''
+     *     'queueId': '', 
+     *     'conferenceRoomId': '', 
+     *     'extensionId': ''
      * }")
      */
     public function getAction()
@@ -199,11 +207,13 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                 'IVRCommonId',
                 'IVRCustomId',
                 'huntGroupId',
-                'conferenceRoomId',
+                'voiceMailUserId',
                 'userId',
                 'numberValue',
                 'friendValue',
                 'queueId',
+                'conferenceRoomId',
+                'extensionId',
             );
         }
 
@@ -247,15 +257,17 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="locutionId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]")
+     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="voiceMailUserId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="numberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="queueId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/conditionalroutes/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -294,15 +306,17 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
      * @ApiParams(name="companyId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="name", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="locutionId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]")
+     * @ApiParams(name="routeType", nullable=true, type="varchar", sample="", description="[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]")
      * @ApiParams(name="IVRCommonId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="IVRCustomId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="huntGroupId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="voiceMailUserId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="numberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="friendValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="queueId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="conferenceRoomId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -415,7 +429,7 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                 'routeType' => array(
                     'type' => "varchar",
                     'required' => false,
-                    'comment' => '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]',
+                    'comment' => '[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]',
                 ),
                 'IVRCommonId' => array(
                     'type' => "int",
@@ -432,7 +446,7 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                     'required' => false,
                     'comment' => '',
                 ),
-                'conferenceRoomId' => array(
+                'voiceMailUserId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',
@@ -453,6 +467,16 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                     'comment' => '',
                 ),
                 'queueId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'conferenceRoomId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'extensionId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',
@@ -486,7 +510,7 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                 'routeType' => array(
                     'type' => "varchar",
                     'required' => false,
-                    'comment' => '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]',
+                    'comment' => '[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]',
                 ),
                 'IVRCommonId' => array(
                     'type' => "int",
@@ -503,7 +527,7 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                     'required' => false,
                     'comment' => '',
                 ),
-                'conferenceRoomId' => array(
+                'voiceMailUserId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',
@@ -524,6 +548,16 @@ class Rest_ConditionalRoutesController extends Iron_Controller_Rest_BaseControll
                     'comment' => '',
                 ),
                 'queueId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'conferenceRoomId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'extensionId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',

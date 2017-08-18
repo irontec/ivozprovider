@@ -39,7 +39,8 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      *     'targetType': '', 
      *     'targetNumberValue': '', 
      *     'targetExtensionId': '', 
-     *     'targetVoiceMailUserId': ''
+     *     'targetVoiceMailUserId': '', 
+     *     'targetConditionalRouteId': ''
      * },{
      *     'id': '', 
      *     'IVRCustomId': '', 
@@ -48,7 +49,8 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      *     'targetType': '', 
      *     'targetNumberValue': '', 
      *     'targetExtensionId': '', 
-     *     'targetVoiceMailUserId': ''
+     *     'targetVoiceMailUserId': '', 
+     *     'targetConditionalRouteId': ''
      * }]")
      */
     public function indexAction()
@@ -74,6 +76,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                 'targetNumberValue',
                 'targetExtensionId',
                 'targetVoiceMailUserId',
+                'targetConditionalRouteId',
             );
         }
 
@@ -154,7 +157,8 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      *     'targetType': '', 
      *     'targetNumberValue': '', 
      *     'targetExtensionId': '', 
-     *     'targetVoiceMailUserId': ''
+     *     'targetVoiceMailUserId': '', 
+     *     'targetConditionalRouteId': ''
      * }")
      */
     public function getAction()
@@ -179,6 +183,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                 'targetNumberValue',
                 'targetExtensionId',
                 'targetVoiceMailUserId',
+                'targetConditionalRouteId',
             );
         }
 
@@ -222,10 +227,11 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="IVRCustomId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="entry", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="welcomeLocutionId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail]")
+     * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail|conditional]")
      * @ApiParams(name="targetNumberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="targetExtensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="targetVoiceMailUserId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="targetConditionalRouteId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/ivrcustomentries/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -264,10 +270,11 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
      * @ApiParams(name="IVRCustomId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="entry", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="welcomeLocutionId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail]")
+     * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail|conditional]")
      * @ApiParams(name="targetNumberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="targetExtensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="targetVoiceMailUserId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="targetConditionalRouteId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -380,7 +387,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                 'targetType' => array(
                     'type' => "varchar",
                     'required' => true,
-                    'comment' => '[enum:number|extension|voicemail]',
+                    'comment' => '[enum:number|extension|voicemail|conditional]',
                 ),
                 'targetNumberValue' => array(
                     'type' => "varchar",
@@ -393,6 +400,11 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'targetVoiceMailUserId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'targetConditionalRouteId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',
@@ -426,7 +438,7 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                 'targetType' => array(
                     'type' => "varchar",
                     'required' => true,
-                    'comment' => '[enum:number|extension|voicemail]',
+                    'comment' => '[enum:number|extension|voicemail|conditional]',
                 ),
                 'targetNumberValue' => array(
                     'type' => "varchar",
@@ -439,6 +451,11 @@ class Rest_IVRCustomEntriesController extends Iron_Controller_Rest_BaseControlle
                     'comment' => '',
                 ),
                 'targetVoiceMailUserId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'targetConditionalRouteId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',

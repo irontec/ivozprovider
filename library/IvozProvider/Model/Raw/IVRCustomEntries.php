@@ -381,7 +381,7 @@ class IVRCustomEntries extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_targetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for targetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'targetType'));
             }
             $this->_targetType = (string) $data;
 

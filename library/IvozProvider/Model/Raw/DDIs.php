@@ -774,7 +774,7 @@ class DDIs extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_recordCallsAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for recordCalls'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'recordCalls'));
             }
             $this->_recordCalls = (string) $data;
 
@@ -845,7 +845,7 @@ class DDIs extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_routeTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for routeType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'routeType'));
             }
             $this->_routeType = (string) $data;
 

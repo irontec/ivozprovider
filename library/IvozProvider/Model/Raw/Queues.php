@@ -635,7 +635,7 @@ class Queues extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_timeoutTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for timeoutTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'timeoutTargetType'));
             }
             $this->_timeoutTargetType = (string) $data;
 
@@ -842,7 +842,7 @@ class Queues extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_fullTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for fullTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'fullTargetType'));
             }
             $this->_fullTargetType = (string) $data;
 
@@ -1117,7 +1117,7 @@ class Queues extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_strategyAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for strategy'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'strategy'));
             }
             $this->_strategy = (string) $data;
 

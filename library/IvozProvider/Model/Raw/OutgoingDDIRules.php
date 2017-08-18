@@ -319,7 +319,7 @@ class OutgoingDDIRules extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_defaultActionAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for defaultAction'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'defaultAction'));
             }
             $this->_defaultAction = (string) $data;
 

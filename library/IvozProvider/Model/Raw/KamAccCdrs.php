@@ -1147,7 +1147,7 @@ class KamAccCdrs extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_parsedAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for parsed'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'parsed'));
             }
             $this->_parsed = (string) $data;
 
@@ -1252,7 +1252,7 @@ class KamAccCdrs extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_bouncedAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for bounced'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'bounced'));
             }
             $this->_bounced = (string) $data;
 
@@ -1651,7 +1651,7 @@ class KamAccCdrs extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_directionAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for direction'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'direction'));
             }
             $this->_direction = (string) $data;
 

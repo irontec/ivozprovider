@@ -33,11 +33,11 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
-     *     'conditionalRouteConditionId': '', 
+     *     'conditionId': '', 
      *     'matchListId': ''
      * },{
      *     'id': '', 
-     *     'conditionalRouteConditionId': '', 
+     *     'conditionId': '', 
      *     'matchListId': ''
      * }]")
      */
@@ -57,7 +57,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
         } else {
             $fields = array(
                 'id',
-                'conditionalRouteConditionId',
+                'conditionId',
                 'matchListId',
             );
         }
@@ -133,7 +133,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
      * @ApiReturnHeaders(sample="HTTP 200 OK")
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
-     *     'conditionalRouteConditionId': '', 
+     *     'conditionId': '', 
      *     'matchListId': ''
      * }")
      */
@@ -152,7 +152,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
         } else {
             $fields = array(
                 'id',
-                'conditionalRouteConditionId',
+                'conditionId',
                 'matchListId',
             );
         }
@@ -194,7 +194,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
      * @ApiDescription(section="ConditionalRoutesConditionsRelMatchLists", description="Create's a new ConditionalRoutesConditionsRelMatchLists")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/conditional-routes-conditions-rel-match-lists/")
-     * @ApiParams(name="conditionalRouteConditionId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="conditionId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="matchListId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/conditionalroutesconditionsrelmatchlists/{id}")
@@ -231,7 +231,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/conditional-routes-conditions-rel-match-lists/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="conditionalRouteConditionId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="conditionId", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="matchListId", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
@@ -327,7 +327,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
         $this->view->POST = array(
             'description' => '',
             'params' => array(
-                'conditionalRouteConditionId' => array(
+                'conditionId' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -348,7 +348,7 @@ class Rest_ConditionalRoutesConditionsRelMatchListsController extends Iron_Contr
                     'required' => true,
                     'comment' => '[pk]',
                 ),
-                'conditionalRouteConditionId' => array(
+                'conditionId' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',

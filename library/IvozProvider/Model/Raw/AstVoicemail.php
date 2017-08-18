@@ -710,7 +710,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_attachAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for attach'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'attach'));
             }
             $this->_attach = (string) $data;
 
@@ -883,7 +883,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_deleteastVoicemailAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for deleteastVoicemail'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'deleteastVoicemail'));
             }
             $this->_deleteastVoicemail = (string) $data;
 
@@ -920,7 +920,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_saycidAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for saycid'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'saycid'));
             }
             $this->_saycid = (string) $data;
 
@@ -957,7 +957,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_sendastVoicemailAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for sendastVoicemail'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'sendastVoicemail'));
             }
             $this->_sendastVoicemail = (string) $data;
 
@@ -994,7 +994,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_reviewAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for review'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'review'));
             }
             $this->_review = (string) $data;
 
@@ -1031,7 +1031,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_tempgreetwarnAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for tempgreetwarn'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'tempgreetwarn'));
             }
             $this->_tempgreetwarn = (string) $data;
 
@@ -1068,7 +1068,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_operatorAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for operator'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'operator'));
             }
             $this->_operator = (string) $data;
 
@@ -1105,7 +1105,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_envelopeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for envelope'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'envelope'));
             }
             $this->_envelope = (string) $data;
 
@@ -1176,7 +1176,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_forcenameAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for forcename'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'forcename'));
             }
             $this->_forcename = (string) $data;
 
@@ -1213,7 +1213,7 @@ class AstVoicemail extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_forcegreetingsAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for forcegreetings'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'forcegreetings'));
             }
             $this->_forcegreetings = (string) $data;
 

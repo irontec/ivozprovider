@@ -273,7 +273,7 @@ class Domains extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_scopeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for scope'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'scope'));
             }
             $this->_scope = (string) $data;
 
@@ -310,7 +310,7 @@ class Domains extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_pointsToAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for pointsTo'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'pointsTo'));
             }
             $this->_pointsTo = (string) $data;
 

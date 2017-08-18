@@ -466,7 +466,7 @@ class HuntGroups extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_strategyAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for strategy'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'strategy'));
             }
             $this->_strategy = (string) $data;
 
@@ -608,7 +608,7 @@ class HuntGroups extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_noAnswerTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for noAnswerTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'noAnswerTargetType'));
             }
             $this->_noAnswerTargetType = (string) $data;
 

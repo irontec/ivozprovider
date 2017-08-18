@@ -300,7 +300,7 @@ class OutgoingDDIRulesPatterns extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_actionAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for action'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'action'));
             }
             $this->_action = (string) $data;
 

@@ -1388,7 +1388,7 @@ class Users extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_externalIpCallsAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for externalIpCalls'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'externalIpCalls'));
             }
             $this->_externalIpCalls = (int) $data;
 

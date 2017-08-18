@@ -357,7 +357,7 @@ class AstQueues extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_autopauseAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for autopause'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'autopause'));
             }
             $this->_autopause = (string) $data;
 
@@ -394,7 +394,7 @@ class AstQueues extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_ringinuseAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for ringinuse'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'ringinuse'));
             }
             $this->_ringinuse = (string) $data;
 
@@ -499,7 +499,7 @@ class AstQueues extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_strategyAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for strategy'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'strategy'));
             }
             $this->_strategy = (string) $data;
 
