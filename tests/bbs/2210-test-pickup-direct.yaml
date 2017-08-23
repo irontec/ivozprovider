@@ -1,5 +1,6 @@
 # ----------------------------------------------------------------------------
   # Direct pickup
+scenarios:
   - name: call from alice to bob direct picked up by charlie
     timeout: 20
     sessions:

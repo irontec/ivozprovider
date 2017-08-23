@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------------
 
-#scenarios:
+scenarios:
   - name: call from alice to bob transfered to charlie
     timeout: 25
     sessions:
