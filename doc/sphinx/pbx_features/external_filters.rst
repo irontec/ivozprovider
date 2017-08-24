@@ -9,7 +9,8 @@ configure schedules and calendards to apply to existing :ref:`external_ddis`.
 
 The first step is creating a schedule.
 
-.. rubric:: Create a new schedule
+Schedules
+=========
 
 The section **Company configuration** > **Schedule** allows to configure
 different time gaps when an :ref:`external DDI <external_ddis>` will be available.
@@ -37,7 +38,8 @@ office schedule.
 .. warning:: The schedule will be defined by combining the active time gaps:
    Any time outside this grouped gaps will be considered out-of-schedule.
 
-.. rubric:: Create a new Calendar
+Calendars
+=========
 
 Calenders are used to define what days are considered as holiday. Like
 schedules, multiples calendars can be combined.
@@ -52,7 +54,7 @@ days will be holidays using the buttons in its row:
 .. image:: img/calendars_add_day.png
 
 From this moment on, the calendar has the 1st of January of 2016 as holiday
-date with the louction "Happy New Year".
+date with the locution "Happy New Year".
 
 .. warning:: Calendars logic is opposite to Schedulers: If a day is not defined
    as holiday in any of the calendars, it will considered a normal day and no

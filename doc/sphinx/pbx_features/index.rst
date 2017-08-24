@@ -28,6 +28,7 @@ are also included in IvozProvider.
     outgoingddi_rules
     external_filters
     match_lists
+    conditional_routes
     huntgroups
     queues
     ivrs
