@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 12:21+0200\n"
+"POT-Creation-Date: 2017-08-25 11:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -694,6 +694,193 @@ msgid ""
 "user that requested it:"
 msgstr "En el caso de una grabación bajo demanda, se indica qué usuario la inició:"
 
+#: ../../pbx_features/conditional_routes.rst:5
+msgid "Conditional routes"
+msgstr "Rutas condicionales"
+
+#: ../../pbx_features/conditional_routes.rst:7
+msgid "Conditional routes allows changing a call logic depending on:"
+msgstr ""
+"Las rutas condicionales permiten alterar la lógica de llamadas bajo los "
+"siguientes criterios:"
+
+#: ../../pbx_features/conditional_routes.rst:9
+msgid "Who is calling."
+msgstr "Quién está llamando."
+
+#: ../../pbx_features/conditional_routes.rst:10
+msgid "What time is calling."
+msgstr "A qué hora está llamando."
+
+#: ../../pbx_features/conditional_routes.rst:11
+msgid "What day is calling."
+msgstr "Qué día está llamando."
+
+#: ../../pbx_features/conditional_routes.rst:13
+msgid "These routes are electable in three sections:"
+msgstr "Las rutas condicionales se pueden elegir en tres secciones:"
+
+#: ../../pbx_features/conditional_routes.rst:15
+msgid "DDIs"
+msgstr "DDIs"
+
+#: ../../pbx_features/conditional_routes.rst:17
+#: ../../pbx_features/extensions.rst:3
+msgid "Extensions"
+msgstr "Extensiones"
+
+#: ../../pbx_features/conditional_routes.rst:19
+msgid "IVR custom options"
+msgstr "Opciones de IVR a medida"
+
+#: ../../pbx_features/conditional_routes.rst:21
+msgid ""
+"Remaining sections could use conditional routes creating an extension "
+"that point to a conditional route first, and routing to this extension."
+msgstr ""
+"El resto de secciones pueden utilizar rutas condicionales por medio de "
+"una extensión que apunte a una ruta condicional."
+
+#: ../../pbx_features/conditional_routes.rst:25
+msgid "Creating a conditional route"
+msgstr "Crear un ruta condicional"
+
+#: ../../pbx_features/conditional_routes.rst:27
+msgid ""
+"First of all we create a conditional route in **Conditional routes** "
+"section:"
+msgstr "El primer paso es crear una ruta condicioal en **Rutas condicionales**:"
+
+#: ../../pbx_features/conditional_routes.rst:31
+msgid ""
+"On creation we define what should be done with a call that does not "
+"satisfy any of the rules described below."
+msgstr ""
+"En la creación definimos cuál será el comportamiento por defecto en caso "
+"de que ninguna regla aplique."
+
+#: ../../pbx_features/conditional_routes.rst:35
+msgid "Adding rules"
+msgstr "Añadir reglas"
+
+#: ../../pbx_features/conditional_routes.rst:37
+msgid "Once created, we need to add rules, for example:"
+msgstr "Una vez creada, necesitamos añadir reglas, por ejemplo:"
+
+#: ../../pbx_features/conditional_routes.rst:40
+msgid "Calls from Japan and Germany received in the morning to an specific user"
+msgstr "Llamadas desde Japón y Alemania recibidas por la mañana, a un usuario concreto"
+
+#: ../../pbx_features/conditional_routes.rst:44
+msgid "Calls from Japan and Germany received in the afternoon to another user"
+msgstr "Llamadas desde Japón y Alemania recibidas por la tarde, a otro usuario"
+
+#: ../../pbx_features/conditional_routes.rst:48
+msgid "Override the reception IVR for summer days"
+msgstr "Utilizar un IVR distinto para los días de verano"
+
+#: ../../pbx_features/conditional_routes.rst:51
+msgid ""
+"With this example rules, our example conditional route will look like "
+"this:"
+msgstr ""
+"Con estas reglas de ejemplo, nuestra ruta condicional tendrá este aspecto"
+
+#: ../../pbx_features/conditional_routes.rst:55
+msgid "Some notes about this example:"
+msgstr "Notas sobre este ejemplo"
+
+#: ../../pbx_features/conditional_routes.rst:57
+msgid ""
+"Rules are evaluated following the metric parameter. Once a rule matches, "
+"its logic is applied."
+msgstr ""
+"Las reglas se aplican en orden de métrica, de menor a mayor. Una vez que una, "
+"regla se cumple, se aplica su lógica."
+
+#: ../../pbx_features/conditional_routes.rst:60
+msgid "Rules may have from 1 to 3 criteria:"
+msgstr "Las reglas pueden tener desde 1 hasta 3 criterios:"
+
+#: ../../pbx_features/conditional_routes.rst:62
+msgid "None, one or more matchlist (pre-created, see :ref:`match_lists`)"
+msgstr "Ninguno, uno o más listas de coincidencia (pre-creadas, ver :ref:`match_lists`"
+
+#: ../../pbx_features/conditional_routes.rst:64
+msgid "None, one or more schedules (pre-created, see :ref:`schedules`)"
+msgstr "Ninguno, uno o más listas de horarios (pre-creadas, ver :ref:`schedules`"
+
+#: ../../pbx_features/conditional_routes.rst:66
+msgid "None, one or more calendar (pre-created, see :ref:`calendars`)"
+msgstr "Ninguno, uno o más listas de calendarios (pre-creadas, ver :ref:`calendars`"
+
+#: ../../pbx_features/conditional_routes.rst:68
+msgid "These 3 criteria are combined (applying an AND logic)."
+msgstr "Estos 3 criterios se combinan (con una lógica AND)."
+
+#: ../../pbx_features/conditional_routes.rst:71
+msgid "Using a conditional route"
+msgstr "Utilizar una ruta condicional"
+
+#: ../../pbx_features/conditional_routes.rst:73
+msgid ""
+"The behaviour when an IVR option or an extension is routed to a "
+"conditional route is easy to understand, but using conditional routes "
+"with DDIs need an additional explanation."
+msgstr ""
+"El comportamiento cuando la opción de un IVR o una extensión se enruta a "
+"una ruta condicional es fácil de entender, pero su utilización con DDIs"
+"merece una explicación adicional."
+
+#: ../../pbx_features/conditional_routes.rst:77
+msgid "Imagine this scenario:"
+msgstr "Imagina este escenario:"
+
+#: ../../pbx_features/conditional_routes.rst:81
+msgid ""
+"DDI has an external call filter and is routed to the new conditional "
+"route."
+msgstr ""
+"El DDI tiene un filtro de entrada externo y se enruta a nuestra nueva ruta "
+"condicional"
+
+#: ../../pbx_features/conditional_routes.rst:83
+msgid "When a call is received:"
+msgstr "Cuando se recibe una llamada:"
+
+#: ../../pbx_features/conditional_routes.rst:85
+msgid "External call filter is evaluated:"
+msgstr "Se evalúa el filtro de entrada externo:"
+
+#: ../../pbx_features/conditional_routes.rst:87
+msgid "If current day is marked in any calendar, the holiday logic applies."
+msgstr ""
+"Si el día actual está marcado en alguno de sus calendarios, se aplica la "
+"lógica de festivo."
+
+#: ../../pbx_features/conditional_routes.rst:89
+msgid "If current time is not inside any time-gap, out-of-schedule logic applies."
+msgstr ""
+"Si la hora actual no está incluida en ninguno de los horarios seleccionados, "
+" se aplica la lógica de fuera horario."
+
+
+#: ../../pbx_features/conditional_routes.rst:91
+msgid ""
+"If external call filter logics have not applied, conditional route is "
+"evaluated."
+msgstr ""
+"Si ninguna de las anteriores lógicas del filtro de entrada externo aplica, "
+" se evalua la ruta condicional."
+
+#: ../../pbx_features/conditional_routes.rst:93
+msgid ""
+"Conditional route is not intented as an external call filter replacement."
+" Filter is evaluated first, conditional route afterwards."
+msgstr ""
+"Las rutas condicionales no son un reemplazo para los filtros de entrada "
+"externos. El filtro se evalúa en primer lugar, la ruta condicional después."
+
 #: ../../pbx_features/conference_rooms.rst:5
 msgid "Conference rooms"
 msgstr "Salas de audioconferencias"
@@ -718,7 +905,7 @@ msgstr ""
 "audioconferencias:"
 
 #: ../../pbx_features/conference_rooms.rst:17
-#: ../../pbx_features/external_filters.rst:74 ../../pbx_features/friends.rst:69
+#: ../../pbx_features/external_filters.rst:76 ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:24 ../../pbx_features/queues.rst:28
 #: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:20
 msgid "Name"
@@ -788,10 +975,6 @@ msgstr ""
 "audioconferencias sin dedicar un DDI externo: que alguien de dentro "
 "transfiera la llamada a la extensión de la sala, acceder por medio de un "
 "IVR, etc."
-
-#: ../../pbx_features/extensions.rst:3
-msgid "Extensions"
-msgstr "Extensiones"
 
 #: ../../pbx_features/extensions.rst:5
 msgid ""
@@ -943,10 +1126,11 @@ msgid "The first step is creating a schedule."
 msgstr "Para ello, el primer paso es crear un horario."
 
 #: ../../pbx_features/external_filters.rst:13
-msgid "Create a new schedule"
-msgstr "Crear un horario"
+#: ../../pbx_features/external_filters.rst:118
+msgid "Schedules"
+msgstr "Horarios"
 
-#: ../../pbx_features/external_filters.rst:14
+#: ../../pbx_features/external_filters.rst:15
 msgid ""
 "The section **Company configuration** > **Schedule** allows to configure "
 "different time gaps when an :ref:`external DDI <external_ddis>` will be "
@@ -956,14 +1140,14 @@ msgstr ""
 "los tramos horarios en los que un :ref:`DDI externo <external_ddis>` está"
 " dentro de horario."
 
-#: ../../pbx_features/external_filters.rst:17
+#: ../../pbx_features/external_filters.rst:18
 #: ../../pbx_features/match_lists.rst:29
 msgid "The screen displayed to the company administrator looks like this:"
 msgstr ""
 "La interfaz que se le presenta al administrador de empresa cuando añade "
 "un horario es la siguiente:"
 
-#: ../../pbx_features/external_filters.rst:21
+#: ../../pbx_features/external_filters.rst:22
 msgid ""
 "With the above configuration, we have defined a morining schedule that "
 "will be applied from Monday to Thursday."
@@ -971,17 +1155,17 @@ msgstr ""
 "Con la configuración anterior, hemos definido el tramo horario de mañana "
 "de una empresa de Lunes a Jueves."
 
-#: ../../pbx_features/external_filters.rst:24
+#: ../../pbx_features/external_filters.rst:25
 msgid "We can also define an afternoon schedule for Monday to Thursday too:"
 msgstr ""
 "Sigamos con el ejemplo y definamos el tramo horario de tarde de Lunes a "
 "Jueves:"
 
-#: ../../pbx_features/external_filters.rst:28
+#: ../../pbx_features/external_filters.rst:29
 msgid "And apply a different time gap for the Fridays:"
 msgstr "Y el horario reducido de los viernes:"
 
-#: ../../pbx_features/external_filters.rst:32
+#: ../../pbx_features/external_filters.rst:33
 msgid ""
 "We have the following time gaps that combined will determine our company "
 "office schedule."
@@ -989,7 +1173,7 @@ msgstr ""
 "Ya tenemos los siguientes tramos horarios que, combinados, describen un "
 "horario de oficina tradicional:"
 
-#: ../../pbx_features/external_filters.rst:37
+#: ../../pbx_features/external_filters.rst:38
 msgid ""
 "The schedule will be defined by combining the active time gaps: Any time "
 "outside this grouped gaps will be considered out-of-schedule."
@@ -998,11 +1182,12 @@ msgstr ""
 "hora que no caiga dentro de uno de los tramos agrupados será considerada "
 "como llamada fuera de horario."
 
-#: ../../pbx_features/external_filters.rst:41
-msgid "Create a new Calendar"
-msgstr "Crear un calendario"
-
 #: ../../pbx_features/external_filters.rst:42
+#: ../../pbx_features/external_filters.rst:114
+msgid "Calendars"
+msgstr "Calendarios"
+
+#: ../../pbx_features/external_filters.rst:44
 msgid ""
 "Calenders are used to define what days are considered as holiday. Like "
 "schedules, multiples calendars can be combined."
@@ -1010,11 +1195,11 @@ msgstr ""
 "Los calendarios definen, una vez sumados, los días que se tienen que "
 "considerar festivos."
 
-#: ../../pbx_features/external_filters.rst:45
+#: ../../pbx_features/external_filters.rst:47
 msgid "Let's imagine three calendars with the following configuration:"
 msgstr "Imaginemos que creamos 3 calendarios tal que:"
 
-#: ../../pbx_features/external_filters.rst:49
+#: ../../pbx_features/external_filters.rst:51
 msgid ""
 "Calendar creation process only requires a name. Once created, we can add "
 "what days will be holidays using the buttons in its row:"
@@ -1023,15 +1208,15 @@ msgstr ""
 "creado hay que añadir días festivos a dicho calendario pulsando el botón "
 "de la derecha del lápiz:"
 
-#: ../../pbx_features/external_filters.rst:54
+#: ../../pbx_features/external_filters.rst:56
 msgid ""
 "From this moment on, the calendar has the 1st of January of 2016 as "
-"holiday date with the louction \"Happy New Year\"."
+"holiday date with the locution \"Happy New Year\"."
 msgstr ""
-"Desde este momento, es calendario tiene marcado el día 1 de Enero de 2016"
+"Desde este momento, ese calendario tiene marcado el día 1 de Enero de 2016"
 " como día festivo con locución de festivo especial llamada \"Feliz año\"."
 
-#: ../../pbx_features/external_filters.rst:57
+#: ../../pbx_features/external_filters.rst:59
 msgid ""
 "Calendars logic is opposite to Schedulers: If a day is not defined as "
 "holiday in any of the calendars, it will considered a normal day and no "
@@ -1041,7 +1226,7 @@ msgstr ""
 "concreto no está definido como festivo en uno de los calendarios, será "
 "considerado como día laborable."
 
-#: ../../pbx_features/external_filters.rst:61
+#: ../../pbx_features/external_filters.rst:63
 msgid ""
 "Holidays without special locutions will apply the external call filter "
 "holiday generic locution (see below)."
@@ -1050,11 +1235,11 @@ msgstr ""
 "especial, se reproducirá la locución de festivo del filtro de entrada "
 "externo (ver más abajo)."
 
-#: ../../pbx_features/external_filters.rst:65
+#: ../../pbx_features/external_filters.rst:67
 msgid "Create a new External call filter"
 msgstr "Crear un filtro de entrada externo"
 
-#: ../../pbx_features/external_filters.rst:66
+#: ../../pbx_features/external_filters.rst:68
 msgid ""
 "Once we have our new created schedules and calendars, it's time to apply "
 "them in what we call **External call filter**."
@@ -1063,21 +1248,21 @@ msgstr ""
 "momento de agruparlos en lo que en IvozProvider se conoce por **Filtro de"
 " entrada externos**."
 
-#: ../../pbx_features/external_filters.rst:69
+#: ../../pbx_features/external_filters.rst:71
 msgid "The company admin can configure them in the following screen:"
 msgstr ""
 "El interfaz que se le presenta al administrador de empresa es el "
 "siguiente:"
 
-#: ../../pbx_features/external_filters.rst:76
+#: ../../pbx_features/external_filters.rst:78
 msgid "Descriptive name that will reference this filter in DDIs configuration."
 msgstr "Nombre con el que se referenciará este filtro."
 
-#: ../../pbx_features/external_filters.rst:77 ../../pbx_features/ivrs.rst:30
+#: ../../pbx_features/external_filters.rst:79 ../../pbx_features/ivrs.rst:30
 msgid "Welcome locution"
 msgstr "Locución de bienvenida"
 
-#: ../../pbx_features/external_filters.rst:79
+#: ../../pbx_features/external_filters.rst:81
 msgid ""
 "This locution will be played if the call is not going to be forwarded by "
 "out of schedule or holiday filtering (in other words if the normal "
@@ -1086,11 +1271,11 @@ msgstr ""
 "Esta locución se reproduce siempre que la llamada no se va a rechazar por"
 " festivo o fuera horario (es decir, en una hora normal de un día normal)."
 
-#: ../../pbx_features/external_filters.rst:82
+#: ../../pbx_features/external_filters.rst:84
 msgid "Black list"
 msgstr "Lista negra"
 
-#: ../../pbx_features/external_filters.rst:84
+#: ../../pbx_features/external_filters.rst:86
 msgid ""
 "External origin will be checked against the associated "
 ":ref:`match_lists`, if a coincidence is found, the call will be rejected "
@@ -1100,11 +1285,11 @@ msgstr ""
 "asociadas, si se encuentra una coincidencia, la llamada será directamente"
 " rechazada."
 
-#: ../../pbx_features/external_filters.rst:86
+#: ../../pbx_features/external_filters.rst:88
 msgid "White list"
 msgstr "Lista blanca"
 
-#: ../../pbx_features/external_filters.rst:88
+#: ../../pbx_features/external_filters.rst:90
 msgid ""
 "External origin will be checked against the associated "
 ":ref:`match_lists`, if a coincidence is found, the call will be directly "
@@ -1117,11 +1302,11 @@ msgstr ""
 "cuenta que las listas negras son comprobadas antes que las listas "
 "blancas."
 
-#: ../../pbx_features/external_filters.rst:92
+#: ../../pbx_features/external_filters.rst:94
 msgid "Holiday locution"
 msgstr "Locución de festivo"
 
-#: ../../pbx_features/external_filters.rst:94
+#: ../../pbx_features/external_filters.rst:96
 msgid ""
 "The locution will be  played when the day is maked as holiday in any of "
 "the calendars associated with the filter **if the calendar entry has no "
@@ -1131,11 +1316,11 @@ msgstr ""
 "festivo en uno de los calendarios y no se haya definido una locución de "
 "festivo especial en dicho calendario para ese día."
 
-#: ../../pbx_features/external_filters.rst:97
+#: ../../pbx_features/external_filters.rst:99
 msgid "Holiday forward type"
 msgstr "Tipo de desvío festivo"
 
-#: ../../pbx_features/external_filters.rst:99
+#: ../../pbx_features/external_filters.rst:101
 msgid ""
 "After playing the above locution (if configured), call can be forwarded "
 "to a voicemail, external number or internal extension. For example, the "
@@ -1147,11 +1332,11 @@ msgstr ""
 "externo o a una extensión interna. En el ejemplo, la llamada se desviará "
 "los días festivos al móvil 676 676 676."
 
-#: ../../pbx_features/external_filters.rst:103
+#: ../../pbx_features/external_filters.rst:105
 msgid "Out of schedule locution"
 msgstr "Locución fuera horario"
 
-#: ../../pbx_features/external_filters.rst:105
+#: ../../pbx_features/external_filters.rst:107
 msgid ""
 "The locution will be played when, not being holiday, the current time is "
 "not in any of the time gaps defined in the schedules assigned to the "
@@ -1160,11 +1345,11 @@ msgstr ""
 "Esta locución se reproducirá cuando, siendo un día no festivo, la hora "
 "actual no esté dentro de ningunos de los horarios vinculados."
 
-#: ../../pbx_features/external_filters.rst:108
+#: ../../pbx_features/external_filters.rst:110
 msgid "Out of schedule forward type"
 msgstr "Tipo de desvío fuera horario"
 
-#: ../../pbx_features/external_filters.rst:110
+#: ../../pbx_features/external_filters.rst:112
 msgid ""
 "Like in the holidays forward, but for out of schedule. The image above "
 "won't apply any forward (and the call will be hanguped)."
@@ -1172,11 +1357,7 @@ msgstr ""
 "Lo mismo que en festivo, pero para el caso de fuera horario. En la "
 "imagen, no se ejecutaría ningún desvío."
 
-#: ../../pbx_features/external_filters.rst:112
-msgid "Calendars"
-msgstr "Calendarios"
-
-#: ../../pbx_features/external_filters.rst:114
+#: ../../pbx_features/external_filters.rst:116
 msgid ""
 "One or more calendars can be associated with the filter. The combination "
 "of all the callendars will be applied."
@@ -1184,11 +1365,7 @@ msgstr ""
 "Permite seleccionar múltiples calendarios, de forma que el calendario del"
 " filtro es la suma de todos ellos."
 
-#: ../../pbx_features/external_filters.rst:116
-msgid "Schedules"
-msgstr "Horarios"
-
-#: ../../pbx_features/external_filters.rst:118
+#: ../../pbx_features/external_filters.rst:120
 msgid ""
 "One or more schedules can be applied. The combination of all the time "
 "gaps defined in the schedules will be applied."
@@ -1196,13 +1373,13 @@ msgstr ""
 "Permite seleccionar múltiples horarios, de forma que el horario del "
 "filtro es la suma de todos ellos."
 
-#: ../../pbx_features/external_filters.rst:122
+#: ../../pbx_features/external_filters.rst:124
 msgid "Holidays are processed **before** out of schedule events."
 msgstr ""
 "El día festivo tiene prevalencia sobre el fuera horario. Primero se "
 "evalúan los calendarios, luego los horarios."
 
-#: ../../pbx_features/external_filters.rst:124
+#: ../../pbx_features/external_filters.rst:126
 msgid ""
 "In the next section we will use this new created filter with "
 ":ref:`external_ddis` so we can configure a welcome locution for normal "
@@ -2812,8 +2989,7 @@ msgstr "Idioma"
 
 #: ../../pbx_features/users.rst:37
 msgid "When a locution is played to this user, this language is used."
-msgstr ""
-"Cuando una locución se le reproduzca a este usuario, se usará este idioma."
+msgstr "Cuando una locución se le reproduzca a este usuario, se usará este idioma."
 
 #: ../../pbx_features/users.rst:38
 msgid "Timezone"
@@ -2822,8 +2998,8 @@ msgstr "Zona horaria"
 #: ../../pbx_features/users.rst:40
 msgid "User portal call list times will use this timezone."
 msgstr ""
-"Las llamadas listadas en el portal de usuario mostrarán las horas en esta "
-"zona horaria."
+"Las llamadas listadas en el portal de usuario mostrarán las horas en esta"
+" zona horaria."
 
 #: ../../pbx_features/users.rst:45
 msgid "Login Info"
@@ -2854,8 +3030,8 @@ msgid ""
 "If enabled, a QR code for Grandstream Wave softphone configuration will "
 "be shown."
 msgstr ""
-"Si está activo, mostrará un código QR en el portal de usuario que permitirá "
-"configurar los softphones Grandstream Wave."
+"Si está activo, mostrará un código QR en el portal de usuario que "
+"permitirá configurar los softphones Grandstream Wave."
 
 #: ../../pbx_features/users.rst:64
 msgid "Basic Configuration"
@@ -2903,8 +3079,8 @@ msgid ""
 "Manages exceptions to previous setting. Read :ref:`outgoingddi_rules` for"
 " further reference."
 msgstr ""
-"Gestiona excepciones al parámetro anterior. Leer :ref:`outgoingddi_rules` "
-"para más referencia."
+"Gestiona excepciones al parámetro anterior. Leer :ref:`outgoingddi_rules`"
+" para más referencia."
 
 #: ../../pbx_features/users.rst:88
 msgid ""
@@ -2950,10 +3126,11 @@ msgid ""
 "outgoing calls unlimited as long as company IP policy is fulfilled. Read "
 ":ref:`roadwarrior_users` for further reference."
 msgstr ""
-"Permitir a este usuario llamar desde IPs no autorizadas. Se limita el número "
-"de llamadas salientes para evitar fraude. Seleccionar 'Ninguna' permite un "
-"número ilimitado de llamadas siempre y cuando se cumpla la política de "
-"restricción de IPs de la empresa. Leer :ref:`roadwarrior_users` para más información."
+"Permitir a este usuario llamar desde IPs no autorizadas. Se limita el "
+"número de llamadas salientes para evitar fraude. Seleccionar 'Ninguna' "
+"permite un número ilimitado de llamadas siempre y cuando se cumpla la "
+"política de restricción de IPs de la empresa. Leer "
+":ref:`roadwarrior_users` para más información."
 
 #: ../../pbx_features/users.rst:108
 msgid "Voicemail"
