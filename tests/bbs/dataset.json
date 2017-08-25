@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "IvozProvider - BBS Dataset",
-		"_postman_id": "9dec0fd9-8dbf-e4a8-0e2e-3dacc9292fbf",
+		"_postman_id": "3cdf5f7b-5497-0dfb-a895-18718b253652",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -51,7 +51,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "BBS - Brand for Black Box SIP tests",
+									"value": "ZZZ - BBS - Brand for Black Box SIP tests",
 									"type": "text",
 									"description": ""
 								},
@@ -679,7 +679,7 @@
 								},
 								{
 									"key": "externallyRated",
-									"value": "1",
+									"value": "0",
 									"description": "",
 									"type": "text"
 								},
@@ -1040,6 +1040,394 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Create Pricing pattern ES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Target pattern id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"targetPatternESId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/target-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name_es",
+									"type": "text",
+									"value": "BBS - España"
+								},
+								{
+									"description": "",
+									"key": "name_en",
+									"type": "text",
+									"value": "BBS - Spain"
+								},
+								{
+									"key": "description_es",
+									"value": "BBS - España",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description_en",
+									"value": "BBS - Spain",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"description": "",
+									"key": "regExp",
+									"type": "text",
+									"value": "34"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pricing pattern US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Target pattern id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"targetPatternUSId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/target-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name_es",
+									"type": "text",
+									"value": "BBS - EEUU"
+								},
+								{
+									"description": "",
+									"key": "name_en",
+									"type": "text",
+									"value": "BBS - USA"
+								},
+								{
+									"key": "description_es",
+									"value": "BBS - EEUU",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description_en",
+									"value": "BBS - USA",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"description": "",
+									"key": "regExp",
+									"type": "text",
+									"value": "1"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pricing Plan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"pricingPlanId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pricing-plans/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "name_es",
+									"type": "text",
+									"value": "BBS - Pruebas"
+								},
+								{
+									"description": "",
+									"key": "name_en",
+									"type": "text",
+									"value": "BBS - Tests"
+								},
+								{
+									"key": "description_es",
+									"value": "BBS - Pruebas",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description_en",
+									"value": "BBS - Tests",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add ES pattern to PricingPlan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pricing-plans-rel-target-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "pricingPlanId",
+									"type": "text",
+									"value": "{{pricingPlanId}}"
+								},
+								{
+									"description": "",
+									"key": "targetPatternId",
+									"type": "text",
+									"value": "{{targetPatternESId}}"
+								},
+								{
+									"key": "connectionCharge",
+									"value": "0.15",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "periodTime",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "perPeriodCharge",
+									"value": "0.20",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add US pattern to PricingPlan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pricing-plans-rel-target-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "pricingPlanId",
+									"type": "text",
+									"value": "{{pricingPlanId}}"
+								},
+								{
+									"description": "",
+									"key": "targetPatternId",
+									"type": "text",
+									"value": "{{targetPatternUSId}}"
+								},
+								{
+									"key": "connectionCharge",
+									"value": "0.20",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "periodTime",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "perPeriodCharge",
+									"value": "0.25",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -1138,6 +1526,89 @@
 								{
 									"key": "type",
 									"value": "vpbx",
+									"type": "text"
+								},
+								{
+									"key": "externalMaxCalls",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add PricingPlan to company",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pricing-plans-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "pricingPlanId",
+									"type": "text",
+									"value": "{{pricingPlanId}}"
+								},
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "validFrom",
+									"value": "2000-01-01",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "validTo",
+									"value": "2099-12-31",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "metric",
+									"value": "1",
+									"description": "",
 									"type": "text"
 								}
 							]
@@ -3229,6 +3700,83 @@
 								{
 									"key": "type",
 									"value": "retail",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add PricingPlan to retail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/pricing-plans-rel-companies/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"description": "",
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"description": "",
+									"key": "pricingPlanId",
+									"type": "text",
+									"value": "{{pricingPlanId}}"
+								},
+								{
+									"description": "",
+									"key": "companyId",
+									"type": "text",
+									"value": "{{retailId}}"
+								},
+								{
+									"key": "validFrom",
+									"value": "2000-01-01",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "validTo",
+									"value": "2099-12-31",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "metric",
+									"value": "1",
+									"description": "",
 									"type": "text"
 								}
 							]
