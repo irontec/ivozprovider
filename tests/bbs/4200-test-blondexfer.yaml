@@ -20,7 +20,7 @@ scenarios:
             - waitfor: INCOMING
             - answer
             - wait: 5
-            - call: { name: TO_CHARLIE, number: 1003 }
+            - call: { name: TO_CHARLIE, dest: 1003 }
             - waitfor: { call: TO_CHARLIE, name: EARLY }
             - wait
             - attxfer: TO_CHARLIE

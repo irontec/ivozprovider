@@ -7,8 +7,8 @@ scenarios:
       - external:
           - wait
           - call:
-              uri: "sip:001999661004@trunks.ivozprovider.local"
-              callidnum: 999663333
+              dest: "sip:001999661004@trunks.ivozprovider.local"
+              caller: 999663333
           - waitfor: CONFIRMED
           - wait: 2
           - hangup

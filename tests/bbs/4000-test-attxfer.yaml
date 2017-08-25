@@ -22,7 +22,7 @@ scenarios:
           - wait
           - call:
              name: TO_CHARLIE
-             number: 1003
+             dest: 1003
           - waitfor:
              call: TO_CHARLIE
              name: CONFIRMED
