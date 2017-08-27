@@ -5,9 +5,10 @@ scenarios:
     timeout: 20
     sessions:
       - bob:
-          - credentials:
-              <<: *bob_cred
-          - call: 600             # IVR common extension
+          - call:
+              dest: 600             # IVR common extension
+              credentials:
+                <<: *bob_cred
           - waitfor: CONFIRMED
           - wait: 15              # Don't press any digits
           - waitfor: DISCONNCTD

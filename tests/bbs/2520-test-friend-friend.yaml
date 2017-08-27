@@ -1,13 +1,14 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from friend to alice ddi
+  - name: call from friend to friend
     timeout: 20
     sessions:
       - friend_caller:
           - wait
-          - credentials:
-              <<: *friend_cred
-          - call: 2001
+          - call:
+              dest: 2001
+              credentials:
+                <<: *friend_cred
           - waitfor: CONFIRMED
           - wait: 2
           - hangup

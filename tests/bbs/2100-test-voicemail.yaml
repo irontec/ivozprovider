@@ -4,9 +4,10 @@ scenarios:
     timeout: 30
     sessions:
       - alice:
-          - credentials:
-              <<: *alice_cred
-          - call: "*93"
+          - call:
+              dest: "*93"
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 20
           - dtmf: "#"

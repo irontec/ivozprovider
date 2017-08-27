@@ -5,9 +5,10 @@ scenarios:
     sessions:
 
       - caller_alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 1002
+          - call:
+              dest: 1002
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 

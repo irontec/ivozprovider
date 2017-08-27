@@ -4,10 +4,11 @@ scenarios:
     timeout: 20
     sessions:
       - friend:
-          - credentials:
-              <<: *friend_cred
           - wait
-          - call: 999661001
+          - call:
+              dest: 999661001
+              credentials:
+                <<: *friend_cred
           - waitfor: CONFIRMED
           - wait: 2
           - hangup

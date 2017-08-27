@@ -8,9 +8,10 @@ scenarios:
       # Retail: Call to Alice DDI
       - retail:
           - wait
-          - credentials:
-              <<: *retail_cred
-          - call: 999661001
+          - call:
+              dest: 999661001
+              credentials:
+                <<: *retail_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 

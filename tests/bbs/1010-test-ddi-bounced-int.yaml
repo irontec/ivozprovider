@@ -5,10 +5,11 @@ scenarios:
     sessions:
 
       - call_uac_alice:
-          - credentials:
-              <<: *alice_cred
           - wait
-          - call: 001999661004
+          - call:
+              dest: 001999661004
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 2
           - hangup

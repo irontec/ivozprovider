@@ -5,9 +5,10 @@ scenarios:
     timeout: 30
     sessions:
       - alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 701             # Hunt group extension
+          - call:
+              dest: 701             # Hunt group extension
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
       - bob:

@@ -4,9 +4,10 @@ scenarios:
     timeout: 30
     sessions:
       - voicemail_test_uac:
-          - credentials:
-              <<: *alice_cred
-          - call: 500
+          - call:
+              dest: 500
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 5
           - dtmf: "1234#"

@@ -4,10 +4,11 @@ scenarios:
     timeout: 20
     sessions:
       - alice:
-          - credentials:
-              <<: *alice_cred
           - wait
-          - call: 2001
+          - call:
+              dest: 2001
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 2
           - hangup

@@ -5,9 +5,10 @@ scenarios:
     timeout: 20
     sessions:
       - alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 1002
+          - call:
+              dest: 1002
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 3
           - hangup
@@ -19,10 +20,11 @@ scenarios:
           - ringing
           - waitfor: DISCONNCTD
       - charlie:
-          - credentials:
-              <<: *charlie_cred
           - wait: 5
-          - call: '*941002'
+          - call:
+              dest: '*941002'
+              credentials:
+                <<: *charlie_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 

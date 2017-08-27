@@ -6,10 +6,11 @@ scenarios:
     sessions:
         # Alice: Call from Alice to Charlie at 1003
         - alice:
-            - wait
-            - credentials:
-                <<: *alice_cred
-            - call: 1002
+            - wait: 2
+            - call:
+                dest: 1002
+                credentials:
+                  <<: *alice_cred
             - waitfor: CONFIRMED
             - waitfor: DISCONNCTD
 
@@ -20,7 +21,11 @@ scenarios:
             - waitfor: INCOMING
             - answer
             - wait: 5
-            - call: { name: TO_CHARLIE, dest: 1003 }
+            - call:
+                name: TO_CHARLIE
+                dest: 1003
+                credentials:
+                  <<: *bob_cred
             - waitfor: { call: TO_CHARLIE, name: EARLY }
             - wait
             - attxfer: TO_CHARLIE

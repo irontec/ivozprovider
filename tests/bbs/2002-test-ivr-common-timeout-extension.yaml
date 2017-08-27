@@ -5,9 +5,10 @@ scenarios:
     timeout: 30
     sessions:
       - alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 600             # IVR common extension
+          - call:
+              dest: 600             # IVR common extension
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - dtmf: 1003            # Press Charlie Extension
           - waitfor: DISCONNCTD

@@ -4,10 +4,11 @@ scenarios:
     timeout: 20
     sessions:
       - alice:
-          - credentials:
-              <<: *alice_cred
           - wait
-          - call: 1002
+          - call:
+              dest: sip:1002@bbs.ivozprovider.local
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 2
           - hangup

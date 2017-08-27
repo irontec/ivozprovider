@@ -10,9 +10,10 @@ scenarios:
     timeout: 20
     sessions:
       - ivr_uac_bob:
-          - credentials:
-              <<: *bob_cred
-          - call: 601             # IVR custom extension
+          - call:
+              dest: 601             # IVR custom extension
+              credentials:
+                <<: *bob_cred
           - waitfor: CONFIRMED
           - wait: 3
           - dtmf: 1

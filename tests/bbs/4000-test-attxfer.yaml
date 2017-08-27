@@ -7,9 +7,10 @@ scenarios:
 
       # Alice: Call to Bob at 1002
       - caller_alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 1002
+          - call:
+              dest: 1002
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 
@@ -23,6 +24,8 @@ scenarios:
           - call:
              name: TO_CHARLIE
              dest: 1003
+             credentials:
+               <<: *bob_cred
           - waitfor:
              call: TO_CHARLIE
              name: CONFIRMED
