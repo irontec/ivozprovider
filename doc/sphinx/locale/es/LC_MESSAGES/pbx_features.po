@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-14 12:57+0200\n"
+"POT-Creation-Date: 2017-08-24 12:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,13 +224,13 @@ msgstr "La creación de nuevos patrones es muy simple:"
 
 #: ../../pbx_features/call_permissions.rst:39
 msgid ""
-"This new ACL pattern are grouped the calls starting with the spanish "
-"E.164 prefix followed by 6 or 7 and 8 more digits between 0 and 9. These "
-"is the E.164 format for the spanish mobile numbers."
+"This new ACL pattern includes the calls starting with the spanish country"
+" prefix followed by 6 or 7 and 8 more digits between 0 and 9. This is the"
+" E.164 format for the spanish mobile numbers."
 msgstr ""
-"Este nuevo patrón de permisos engloba las llamadas que comiencen por 6 o "
-"7 y sigan con 8 dígitos del 0 al 9. Es decir, engloba todas las "
-"numeraciones móviles nacionales."
+"Este nuevo patrón de permisos engloba las llamadas que comiencen el "
+"prefijo de país español seguido por 6 o 7 y sigan con 8 dígitos del 0 al "
+"9. Es decir, engloba todas las numeraciones móviles nacionales."
 
 #: ../../pbx_features/call_permissions.rst:43
 msgid "Following this spanish example, other formats will be:"
@@ -242,11 +242,11 @@ msgid ""
 "^34[89][0-9]{8}$"
 msgstr ""
 "Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): "
-"^[89][0-9]{8}$"
+"^34[89][0-9]{8}$"
 
 #: ../../pbx_features/call_permissions.rst:46
-msgid "8 or 9 followed by 8 digits"
-msgstr "Un 8 o un 9 seguido de 8 dígitos."
+msgid "34 (Spain country prefix), 8 or 9 followed by 8 digits"
+msgstr "34 (prefijo de país español), un 8 o un 9 seguido de 8 dígitos."
 
 #: ../../pbx_features/call_permissions.rst:49
 msgid ""
@@ -254,67 +254,84 @@ msgid ""
 "^34[89][1-9][0-9]{7}$"
 msgstr ""
 "Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): "
-"^[89][1-9][0-9]{7}$"
+"^34[89][1-9][0-9]{7}$"
 
 #: ../../pbx_features/call_permissions.rst:49
-msgid "8 or 9, followed by one dígito between 1 and 9, followed by 7 digits."
-msgstr "Un 8 o un 9, seguido de 1 dígito del 1 al 9, seguido de 7 dígitos."
+msgid ""
+"34 (Spain country prefix), 8 or 9, followed by one digit between 1 and 9,"
+" followed by 7 digits."
+msgstr ""
+"34 (prefijo de país español), un 8 o un 9, seguido de 1 dígito del 1 al "
+"9, seguido de 7 dígitos."
 
 #: ../../pbx_features/call_permissions.rst:52
 msgid "United Kingdom Landline: ^44[0-9]+$"
 msgstr "Fijo Reino Unido: ^44[0-9]+$"
 
 #: ../../pbx_features/call_permissions.rst:52
-msgid "44 (UK E.164 prefix), followed by more digits"
-msgstr "44 (Prefijo E.164 para Reino Unido), seguido de más dígitos."
+msgid "44 (UK country prefix), followed by more digits"
+msgstr "44 (prefijo del Reino Unido), seguido de más dígitos."
 
 #: ../../pbx_features/call_permissions.rst:55
 msgid "External numbers format"
 msgstr "Formato de los números externos"
 
 #: ../../pbx_features/call_permissions.rst:56
-msgid ""
-"The regular expresions of the Call ACL patterns must be in E.164 format. "
-"The main reason for this is that the same pattern will be applied to all "
-"the users of the company no matter what country the user is."
+msgid "**Regular expressions of Call ACL patterns must be in E.164 format**."
 msgstr ""
-"Las expresiones regulares de los patrones de permiso tienen que utilizar "
-"el formato que utilice un usuario del mismo país que la compañía a la "
-"hora de llamar."
+"**Las expresiones regulares de los patrones de permiso tienen que estar en "
+"formato E.164**"
+
+#: ../../pbx_features/call_permissions.rst:58
+msgid "There are two main reasons for this decision:"
+msgstr "Existen dos razones principales para esta decisión:"
 
 #: ../../pbx_features/call_permissions.rst:60
 msgid ""
-"For example, a spanish user will call a french number using its "
-"international prefix (00) and France E.164 code (33) followed by the "
-"number, while a french user of the same company will only dial the "
-"number. For both of them the same company ACL pattern will be applied."
+"The same pattern will apply to all the users of the company,  no matter "
+"what country the user is."
 msgstr ""
-"Es decir, un usuario (español, porque tal y como veremos los usuarios "
-"tienen también un código de país) de una empresa de española llamará a "
-"números móviles, por ejemplo, así: 676 676 676."
+"El mismo patrón aplicará para todos los usuarios de la "
+"compañía, independientemente del país del usuario."
 
-#: ../../pbx_features/call_permissions.rst:67 ../../pbx_features/friends.rst:89
+#: ../../pbx_features/call_permissions.rst:63
+msgid ""
+"Brand-level ACL patterns will be inherited by all new companies. The only"
+" way this inheritance could be useful was using an standard format, valid"
+" for all the companies countries."
+msgstr ""
+"Los patrones a nivel de marca se heredarán en la creación de nuevas "
+"empresas. La única forma de que esto resulte útil es utilizar un formato "
+"estándar."
+
+#: ../../pbx_features/call_permissions.rst:67
+msgid "Besides, this way it is really easy to avoid (or allow) call to a country."
+msgstr ""
+"Además, con este formato es realmente fácil impedir (o permitir) llamadas"
+" a todo un país."
+
+#: ../../pbx_features/call_permissions.rst:71 ../../pbx_features/friends.rst:89
 #: ../../pbx_features/users.rst:86
 msgid "Call ACL"
 msgstr "Permisos de llamada"
 
-#: ../../pbx_features/call_permissions.rst:69
+#: ../../pbx_features/call_permissions.rst:73
 msgid "The **Call ACL** configuration is easier to explain with an example:"
 msgstr ""
 "La definición de un **Permiso de llamada** utiliza una lógica más fácil "
 "de describir con un ejemplo."
 
-#: ../../pbx_features/call_permissions.rst:71
+#: ../../pbx_features/call_permissions.rst:75
 msgid "Imagine the following **CALL ACL patterns**:"
 msgstr "Imaginemos que tenemos los siguientes **patrones de permisos**:"
 
-#: ../../pbx_features/call_permissions.rst:75
+#: ../../pbx_features/call_permissions.rst:79
 msgid ""
 "We could create a **Call ACL** that only allow calling to this "
 "destinations:"
 msgstr "Podríamos definir un **Permiso de llamada** como el que sigue:"
 
-#: ../../pbx_features/call_permissions.rst:79
+#: ../../pbx_features/call_permissions.rst:83
 msgid ""
 "The default action determines what to do with the call when the "
 "destination number **does not match any ACL patterns**."
@@ -322,13 +339,13 @@ msgstr ""
 "La acción por defecto describe lo que hay que hacer con la llamada una "
 "vez que se han evaluado todas las reglas (permitir/rechazar)."
 
-#: ../../pbx_features/call_permissions.rst:82
+#: ../../pbx_features/call_permissions.rst:86
 msgid "After creating the **Call ACL** we can edit it to add the required rules:"
 msgstr ""
 "Editamos el **permiso de llamada** que acabamos de crear para añadir las "
 "reglas necesarias:"
 
-#: ../../pbx_features/call_permissions.rst:87
+#: ../../pbx_features/call_permissions.rst:91
 msgid ""
 "The **metric** determines the evaulation order of the rules and the "
 "action that"
@@ -336,11 +353,11 @@ msgstr ""
 "La **métrica** determina el orden de evaluación de las reglas y la acción"
 " lo que "
 
-#: ../../pbx_features/call_permissions.rst:87
+#: ../../pbx_features/call_permissions.rst:91
 msgid "that will be applied if it *matches* the pattern (allow/deny)."
 msgstr "se hará con la llamada en caso de *matchear* (permitir/rechazar)."
 
-#: ../../pbx_features/call_permissions.rst:91
+#: ../../pbx_features/call_permissions.rst:95
 msgid ""
 "Once we have added our two spanish **Call ACL patterns**, our **Call "
 "ACL** will look like this:"
@@ -348,7 +365,7 @@ msgstr ""
 "Una vez hecho lo propio para el otro **patrón de permisos**, nuestro "
 "**permiso de llamadas** quedará como sigue:"
 
-#: ../../pbx_features/call_permissions.rst:96
+#: ../../pbx_features/call_permissions.rst:100
 msgid ""
 "We only have to assign this ACL to the users in the section **Company "
 "configuration** > **Users**:"
@@ -356,7 +373,7 @@ msgstr ""
 "Ya solo faltaría añadírselo a un usuario concreto en la sección "
 "**Configuración de empresa** > **Usuarios**:"
 
-#: ../../pbx_features/call_permissions.rst:101
+#: ../../pbx_features/call_permissions.rst:105
 msgid ""
 "From this moment on, Alice will only be allowed to call internal "
 "extensions (they are always allowed) and spanish numbers."
@@ -2779,7 +2796,7 @@ msgstr ""
 
 #: ../../pbx_features/users.rst:31
 msgid "Country code / Area code"
-msgstr "Código de país / Area Code"
+msgstr "Código de país / Código de área"
 
 #: ../../pbx_features/users.rst:33
 msgid ""
@@ -2858,7 +2875,7 @@ msgstr ""
 
 #: ../../pbx_features/users.rst:73
 msgid "Screen Extension"
-msgstr "Extensión a mostrar"
+msgstr "Extensión principal"
 
 #: ../../pbx_features/users.rst:75
 msgid ""

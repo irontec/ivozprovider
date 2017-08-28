@@ -36,31 +36,35 @@ The patterns creation process is quite simple:
 
 .. image:: img/permissions_patterns.png
 
-This new ACL pattern are grouped the calls starting with the spanish E.164 
-prefix followed by 6 or 7 and 8 more digits between 0 and 9. These is the E.164 
+This new ACL pattern includes the calls starting with the spanish country
+prefix followed by 6 or 7 and 8 more digits between 0 and 9. This is the E.164 
 format for the spanish mobile numbers. 
 
 Following this spanish example, other formats will be:
 
 - Spanish Landline (including special numbers prefix: 902, etc.): ^34[89][0-9]{8}$
-    - 8 or 9 followed by 8 digits 
+    - 34 (Spain country prefix), 8 or 9 followed by 8 digits 
 
 - Spanish Landline (excluding special number prefix: 902, etc.): ^34[89][1-9][0-9]{7}$
-    - 8 or 9, followed by one dígito between 1 and 9, followed by 7 digits.
+    - 34 (Spain country prefix), 8 or 9, followed by one digit between 1 and 9, followed by 7 digits.
 
 - United Kingdom Landline: ^44[0-9]+$
-    - 44 (UK E.164 prefix), followed by more digits
+    - 44 (UK country prefix), followed by more digits
 
 .. rubric:: External numbers format
 
-The regular expresions of the Call ACL patterns must be in E.164 format. The 
-main reason for this is that the same pattern will be applied to all the users 
-of the company no matter what country the user is.
+.. attention:: **Regular expressions of Call ACL patterns must be in E.164 format**.
 
-For example, a spanish user will call a french number using its international 
-prefix (00) and France E.164 code (33) followed by the number, while a french 
-user of the same company will only dial the number. For both of them the same 
-company ACL pattern will be applied. 
+There are two main reasons for this decision:
+
+- The same pattern will apply to all the users of the company,  no matter
+  what country the user is.
+
+- Brand-level ACL patterns will be inherited by all new companies. The only way
+  this inheritance could be useful was using an standard format, valid for all the
+  companies countries.
+
+Besides, this way it is really easy to avoid (or allow) call to a country.
 
 ********
 Call ACL
