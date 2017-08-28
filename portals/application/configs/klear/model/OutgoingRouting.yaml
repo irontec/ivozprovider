@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\OutgoingRouting
   fields:
     type:
-      title: ngettext('Type', 'Types', 1)
+      title: _('Type')
       type: select
       defaultValue: pattern
       source:
@@ -84,7 +84,7 @@ production:
         min: 1
         max: 254
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       source:
         data: mapper

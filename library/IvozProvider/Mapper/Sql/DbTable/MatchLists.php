@@ -47,6 +47,7 @@ class MatchLists extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelMatchLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterBlackLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterWhiteLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\MatchListPatterns',

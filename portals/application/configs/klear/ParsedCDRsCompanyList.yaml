@@ -2,27 +2,27 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: parsedCDRsList_screen
-  screens: &parsedCDRs_screensLink 
-    parsedCDRsList_screen: &parsedCDRsList_screenLink 
+  screens: &parsedCDRs_screensLink
+    parsedCDRsList_screen: &parsedCDRsList_screenLink
       controller: list
       csv: false
       order:
         field:
           - calldate
         type: desc
-      pagination: 
+      pagination:
         items: 50
       <<: *ParsedCDRs
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 0), "[format| (%parent%)]")
-      fields: &parsedCDRs_fieldsLink 
-        options: 
+      fields: &parsedCDRs_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             parsedCDRsView_screen: true
           default: parsedCDRsView_screen
         blacklist: &parsedCDRs_blacklistLink
@@ -56,7 +56,7 @@ production:
           duration: 1
       forcedValues:
         <<: *forcedCompany
-    parsedCDRsView_screen: &parsedCDRsView_screenLink 
+    parsedCDRsView_screen: &parsedCDRsView_screenLink
       <<: *ParsedCDRs
       controller: edit
       class: ui-silk-eye
@@ -64,8 +64,8 @@ production:
       disableSave: true
       labelOnPostAction: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
       title: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
-      fields: 
-        blacklist: 
+      fields:
+        blacklist:
           brandId: true
           initialLeg: true
           initialLegHash: true
@@ -79,7 +79,7 @@ production:
           xstatId: true
           companyId: true
           peeringContractId: true
-        order: 
+        order:
           calldate: 1
           duration: 1
           statId: 1
@@ -105,7 +105,7 @@ production:
           xcidHash: 1
       fixedPositions:
         group0:
-          label: _("Basic information")
+          label: _("Basic Configuration")
           colsPerRow: 12
           fields:
             calldate: 8
@@ -138,11 +138,11 @@ production:
           colsPerRow: 1
           fields:
             lastForwarder: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

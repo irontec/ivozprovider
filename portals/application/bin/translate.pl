@@ -7,7 +7,7 @@ no strict;
 my $xgettext_bin="/usr/bin/xgettext";
 my $xgettext_args="--no-location --force-po --sort-by-file";
 my $msgmerge_bin="/usr/bin/msgmerge";
-my $msgmerge_args=" --update --backup none";
+my $msgmerge_args=" --update --backup none --sort-output";
 my $msgfmt_bin="/usr/bin/msgfmt";
 my $msgfmt_args="";
 
@@ -16,9 +16,10 @@ my $base_path = "./";
 
 # All excluded paths are prefixed with base_path
 my @exclude_path = (
-    "public/scripts",
+    "public",
+    "e2e",
     "application/configs/klearRaw",
-    "library/vendor"
+    "library/vendor",
 );
 
 my @keywords = (

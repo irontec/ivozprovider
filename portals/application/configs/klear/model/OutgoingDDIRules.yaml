@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\OutgoingDDIRules
   fields:
     companyId:
-      title: _('Companyid')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -16,7 +16,7 @@ production:
           order: type
       default: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       required: true
       maxLength: 50

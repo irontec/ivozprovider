@@ -1,0 +1,23 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from friend to alice ddi
+    timeout: 20
+    sessions:
+      - friend:
+          - wait
+          - call:
+              dest: 999661001
+              credentials:
+                <<: *friend_cred
+          - waitfor: CONFIRMED
+          - wait: 2
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - alice:
+          - register:
+              <<: *alice_cred
+          - waitfor: INCOMING
+          - answer
+          - waitfor: DISCONNCTD
+          - unregister

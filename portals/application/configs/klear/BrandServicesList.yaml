@@ -2,35 +2,35 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: brandServicesList_screen
-  screens: &brandServices_screensLink 
-    brandServicesList_screen: &brandServicesList_screenLink 
+  screens: &brandServices_screensLink
+    brandServicesList_screen: &brandServicesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *BrandServices
       forcedValues:
         <<: *forcedBrand
       class: ui-silk-page-white-wrench
       title: _("List of %s %2s", ngettext('Brand service', 'Brand services', 0), "[format| (%parent%)]")
-      fields: &brandServices_fieldsLink 
-        options: 
+      fields: &brandServices_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             brandServicesEdit_screen: true
-          dialogs: 
+          dialogs:
             brandServicesDel_dialog: true
           default: brandServicesEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           brandServicesNew_screen: true
-        dialogs: 
+        dialogs:
           brandServicesDel_dialog: true
-    brandServicesNew_screen: &brandServicesNew_screenLink 
+    brandServicesNew_screen: &brandServicesNew_screenLink
       <<: *BrandServices
       forcedValues:
         <<: *forcedBrand
@@ -40,7 +40,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Brand service', 'Brand services', 1), "[format| (%parent%)]")
       shortcutOption: N
-    brandServicesEdit_screen: &brandServicesEdit_screenLink 
+    brandServicesEdit_screen: &brandServicesEdit_screenLink
       <<: *BrandServices
       forcedValues:
         <<: *forcedBrand
@@ -52,8 +52,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Brand service', 'Brand services', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Brand service', 'Brand services', 1), "[format| (%item%)]")
-  dialogs: &brandServices_dialogsLink 
-    brandServicesDel_dialog: &brandServicesDel_dialogLink 
+  dialogs: &brandServices_dialogsLink
+    brandServicesDel_dialog: &brandServicesDel_dialogLink
       <<: *BrandServices
       controller: delete
       class: ui-silk-bin
@@ -63,11 +63,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Brand service', 'Brand services', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

@@ -7,11 +7,8 @@ Users configuration
 The installation process creates *Alice* and *Bob* users, allowing us
 to test internals calls between them without too much effort.
 
-We also skipped most of the setting in **Users** configuration that we will 
-define in this section.
-
-As usually, the best way is to edit an existing user and describe each of its 
-fields:
+We skipped most of the settings in **Users** configuration that we will described
+in this section.
 
 *************
 Personal data
@@ -32,6 +29,17 @@ Personal data
         Email used to send the user's received voicemails. This is also used to 
         identify the user in their portal.
 
+    Country code / Area code
+        Defines the way the user calls and the way the numbers are presented to 
+        this user.
+
+    Language
+        When a locution is played to this user, this language is used.
+
+    Timezone
+        User portal call list times will use this timezone.
+
+
 **********
 Login Info
 **********
@@ -47,6 +55,10 @@ Login Info
     Password
         Password used to access the :ref:`user's portal <userportal>`.
 
+    QR Code
+        If enabled, a QR code for Grandstream Wave softphone configuration 
+        will be shown.
+
 *******************
 Basic Configuration
 *******************
@@ -59,7 +71,7 @@ Basic Configuration
         The available terminals created in :ref:`terminals` are listed here 
         for assignment.
 
-    Extension
+    Screen Extension
         One of the available :ref:`extensions` that this user will display when 
         placing internal calls. While multiple extensions can be routed to the 
         user, only one of them will be presented when the user calls. 
@@ -67,6 +79,10 @@ Basic Configuration
     Outgoing DDI
         As described in :ref:`external_ddi`, determines the number that will 
         present when placing external outgoing calls. 
+
+    Outgoing DDI Rules
+        Manages exceptions to previous setting. Read :ref:`outgoingddi_rules` 
+        for further reference.
 
     Call ACL
         One of the created :ref:`Call ACL <call_permissions>` groups, described 
@@ -76,13 +92,22 @@ Basic Configuration
         When this setting is enabled, the user won't receive any call but can 
         still place calls.
 
-    Call waiting
-        When this setting is enabled, the user terminal will receive new calls 
-        even if it already talking.
+    Max Calls
+        Limits the number of received calls if the user is handling 
+        simultaneously (inbound and outbound) more than the number set. 
+        Set 0 for unlimited calls.
+
+    Calls from non-granted IPs:
+        Enable calling from non-granted IP addresses for this user. 
+        It limits the number of outgoing calls to avoid toll-fraud. 
+        'None' value makes outgoing calls unlimited as long as company IP 
+        policy is fulfilled. Read :ref:`roadwarrior_users` for further reference.
 
 *********
 Voicemail
 *********
+
+.. image:: img/users_voicemail.png
 
 .. glossary::
 
@@ -191,7 +216,7 @@ These are the fields and available values:
               against IvozProvider.
 
     Target type
-        What route will use the forwaded call.
+        What route will use the forwarded call.
             - VoiceMail
             - Number (external)
             - Extension (internal)

@@ -2,35 +2,35 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: routingPatternsList_screen
-  screens: &routingPatterns_screensLink 
-    routingPatternsList_screen: &routingPatternsList_screenLink 
+  screens: &routingPatterns_screensLink
+    routingPatternsList_screen: &routingPatternsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *RoutingPatterns
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Routing pattern', 'Routing patterns', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &routingPatterns_fieldsLink 
-        options: 
+      fields: &routingPatterns_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             routingPatternsEdit_screen: true
-          dialogs: 
+          dialogs:
             routingPatternsDel_dialog: true
           default: routingPatternsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           routingPatternsNew_screen: true
-        dialogs: 
+        dialogs:
           routingPatternsDel_dialog: true
-    routingPatternsNew_screen: &routingPatternsNew_screenLink 
+    routingPatternsNew_screen: &routingPatternsNew_screenLink
       <<: *RoutingPatterns
       controller: new
       class: ui-silk-add
@@ -50,8 +50,8 @@ production:
       labelOnPostAction: _("Edit %s %2s", ngettext('Routing pattern', 'Routing patterns', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Routing pattern', 'Routing patterns', 1), "[format| (%item%)]")
 
-  dialogs: &routingPatterns_dialogsLink 
-    routingPatternsDel_dialog: &routingPatternsDel_dialogLink 
+  dialogs: &routingPatterns_dialogsLink
+    routingPatternsDel_dialog: &routingPatternsDel_dialogLink
       <<: *RoutingPatterns
       controller: delete
       class: ui-silk-bin
@@ -61,11 +61,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Routing pattern', 'Routing patterns', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

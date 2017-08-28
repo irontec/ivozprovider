@@ -1,0 +1,24 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from world to bob ddi
+    timeout: 20
+    sessions:
+
+      - external:
+          - wait
+          - call:
+              dest: "sip:999661002@trunks.ivozprovider.local"
+              caller: 999663333
+          - waitfor: CONFIRMED
+          - wait: 2
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - callid: 999663333
+          - answer
+          - waitfor: DISCONNCTD
+          - unregister

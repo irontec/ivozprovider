@@ -505,7 +505,7 @@ class FaxesInOut extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_typeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for type'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'type'));
             }
             $this->_type = (string) $data;
 
@@ -576,7 +576,7 @@ class FaxesInOut extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_statusAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for status'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'status'));
             }
             $this->_status = (string) $data;
 

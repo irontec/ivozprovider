@@ -587,7 +587,7 @@ class Friends extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_transportAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for transport'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'transport'));
             }
             $this->_transport = (string) $data;
 
@@ -692,7 +692,7 @@ class Friends extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_authNeededAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for authNeeded'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'authNeeded'));
             }
             $this->_authNeeded = (string) $data;
 
@@ -1001,7 +1001,7 @@ class Friends extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'directMediaMethod'));
             }
             $this->_directMediaMethod = (string) $data;
 
@@ -1038,7 +1038,7 @@ class Friends extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_calleridUpdateHeaderAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for calleridUpdateHeader'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'calleridUpdateHeader'));
             }
             $this->_calleridUpdateHeader = (string) $data;
 
@@ -1075,7 +1075,7 @@ class Friends extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_updateCalleridAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for updateCallerid'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'updateCallerid'));
             }
             $this->_updateCallerid = (string) $data;
 
@@ -1146,7 +1146,7 @@ class Friends extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_directConnectivityAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directConnectivity'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'directConnectivity'));
             }
             $this->_directConnectivity = (string) $data;
 

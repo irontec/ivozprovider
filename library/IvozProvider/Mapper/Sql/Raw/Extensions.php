@@ -60,6 +60,7 @@ class Extensions extends MapperAbstract
                 'numberValue' => $model->getNumberValue(),
                 'friendValue' => $model->getFriendValue(),
                 'queueId' => $model->getQueueId(),
+                'conditionalRouteId' => $model->getConditionalRouteId(),
             );
         } else {
             $result = array();
@@ -470,6 +471,34 @@ class Extensions extends MapperAbstract
                     }
                 }
 
+                if ($model->getConditionalRoutes(null, null, true) !== null) {
+                    $conditionalRoutes = $model->getConditionalRoutes();
+
+                    if (!is_array($conditionalRoutes)) {
+
+                        $conditionalRoutes = array($conditionalRoutes);
+                    }
+
+                    foreach ($conditionalRoutes as $value) {
+                        $value->setExtensionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getConditionalRoutesConditions(null, null, true) !== null) {
+                    $conditionalRoutesConditions = $model->getConditionalRoutesConditions();
+
+                    if (!is_array($conditionalRoutesConditions)) {
+
+                        $conditionalRoutesConditions = array($conditionalRoutesConditions);
+                    }
+
+                    foreach ($conditionalRoutesConditions as $value) {
+                        $value->setExtensionId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getExternalCallFiltersByHolidayExtension(null, null, true) !== null) {
                     $externalCallFilters = $model->getExternalCallFiltersByHolidayExtension();
 
@@ -736,7 +765,8 @@ class Extensions extends MapperAbstract
                   ->setUserId($data['userId'])
                   ->setNumberValue($data['numberValue'])
                   ->setFriendValue($data['friendValue'])
-                  ->setQueueId($data['queueId']);
+                  ->setQueueId($data['queueId'])
+                  ->setConditionalRouteId($data['conditionalRouteId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setCompanyId($data->{'companyId'})
@@ -749,7 +779,8 @@ class Extensions extends MapperAbstract
                   ->setUserId($data->{'userId'})
                   ->setNumberValue($data->{'numberValue'})
                   ->setFriendValue($data->{'friendValue'})
-                  ->setQueueId($data->{'queueId'});
+                  ->setQueueId($data->{'queueId'})
+                  ->setConditionalRouteId($data->{'conditionalRouteId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Extensions) {
             $entry->setId($data->getId())
@@ -763,7 +794,8 @@ class Extensions extends MapperAbstract
                   ->setUserId($data->getUserId())
                   ->setNumberValue($data->getNumberValue())
                   ->setFriendValue($data->getFriendValue())
-                  ->setQueueId($data->getQueueId());
+                  ->setQueueId($data->getQueueId())
+                  ->setConditionalRouteId($data->getConditionalRouteId());
 
         }
 

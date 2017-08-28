@@ -32,7 +32,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             || !is_object($this->_mainRouter)
         ) {
                 throw New Zend_Exception(
-                    $this->view->translate('Acceso restringido'),
+                    $this->view->translate('Access denied'),
                     Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
                 );
         }
@@ -220,7 +220,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
 
     protected function _noPermission()
     {
-        throw new Zend_Exception($this->view->translate('Acceso restringido'), Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
+        throw new Zend_Exception($this->view->translate('Access denied'), Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
     }
 
 

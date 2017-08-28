@@ -1,3 +1,30 @@
+Wed, 28 Aug 2017 13:57:21 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.6 relesed
+
+    * Administration Portal
+        - Reviewed english and spanish translations
+        - Removed multiple unused configuration files
+        - Removed outgoingDDIRules field from Retail client screens
+
+    * Application Server
+        - Upgraded asterisk version to 13.17.0 (see UPGRADE-1.6.md)
+
+    * Proxy Users
+        - Improved presence changes notification
+        - Upgraded kamailio version to 4.4.6
+
+    * vPBX
+        - Added new route type: conditional
+            * Available in DDIs, Extensions and IVRCustom entries
+            * Allows dynamic routing based on origin, schedule and calendars
+        - OutgoingDDI Rules now applies to all call routes
+        - IVRCustom: Fixed a bug where extensions to friends were not being routed
+
+    * Other
+        - Added multiple SIP bbs tests
+        - Minor documentation improvements
+
 Wed, 26 Jul 2017 15:27:20 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.5 released

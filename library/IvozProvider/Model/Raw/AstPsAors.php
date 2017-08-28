@@ -385,7 +385,7 @@ class AstPsAors extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_removeExistingAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for removeExisting'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'removeExisting'));
             }
             $this->_removeExisting = (string) $data;
 
@@ -422,7 +422,7 @@ class AstPsAors extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_authenticateQualifyAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for authenticateQualify'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'authenticateQualify'));
             }
             $this->_authenticateQualify = (string) $data;
 
@@ -493,7 +493,7 @@ class AstPsAors extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_supportPathAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for supportPath'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'supportPath'));
             }
             $this->_supportPath = (string) $data;
 

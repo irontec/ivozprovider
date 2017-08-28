@@ -60,6 +60,7 @@ function setup_proxies()
     # Update database tables
     /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
     /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
+    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ApplicationServers SET ip = '$USERS_ADDRESS'"
 
     # Update DemoCompany domain to USERS_ADDRESS
     /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE Companies SET domain_users = '$USERS_ADDRESS' WHERE INET_ATON(domain_users) IS NOT NULL"
@@ -82,9 +83,12 @@ function setup_proxies()
 
 function setup_pbx()
 {
+    db_get ivozprovider/users_address       || true
+    USERS_ADDRESS=$RET
+
     # Set asterisk bind address to localhost
-    sed -i "s/bind=0.0.0.0:6060/bind=127.0.0.1:6060/g" /etc/asterisk/pjsip.conf
-    sed -i "s/bindaddr = 0.0.0.0/bindaddr = 127.0.0.1/g" /etc/asterisk/manager.conf
+    sed -i -r "s/(bind *= *).*/\1$RET:6060/" /etc/asterisk/pjsip.conf
+    sed -i -r "s/(bindaddr *= *).*/\1$RET/" /etc/asterisk/manager.conf
 }
 
 function setup_rtpproxy()

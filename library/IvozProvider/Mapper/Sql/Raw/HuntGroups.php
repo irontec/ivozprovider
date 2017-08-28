@@ -456,6 +456,34 @@ class HuntGroups extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getConditionalRoutes(null, null, true) !== null) {
+                    $conditionalRoutes = $model->getConditionalRoutes();
+
+                    if (!is_array($conditionalRoutes)) {
+
+                        $conditionalRoutes = array($conditionalRoutes);
+                    }
+
+                    foreach ($conditionalRoutes as $value) {
+                        $value->setHuntGroupId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
+                if ($model->getConditionalRoutesConditions(null, null, true) !== null) {
+                    $conditionalRoutesConditions = $model->getConditionalRoutesConditions();
+
+                    if (!is_array($conditionalRoutesConditions)) {
+
+                        $conditionalRoutesConditions = array($conditionalRoutesConditions);
+                    }
+
+                    foreach ($conditionalRoutesConditions as $value) {
+                        $value->setHuntGroupId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 

@@ -9,13 +9,13 @@ production:
       maxLength: 50
       default: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       defaultValue:
       maxLength: 50
     description:
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       defaultValue:

@@ -20,8 +20,7 @@ class IVRCustomAction extends IVRAction
         // Get IVR all Locutions
         $welcomLocution = $ivr->getWelcomeLocution();
         if (empty($welcomLocution)) {
-            // FIXME ??
-            $welcomLocutionFile = '/var/lib/asterisk/sounds/en/if-u-know-ext-dial';
+            $welcomLocutionFile = "";
         } else {
             $welcomLocutionFile = $welcomLocution->getLocutionPath();
         }

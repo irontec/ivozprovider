@@ -323,6 +323,38 @@ class Users extends ModelAbstract
     protected $_CallForwardSettingsByVoiceMailUser;
 
     /**
+     * Dependent relation ConditionalRoutes_ibfk_5
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutes[]
+     */
+    protected $_ConditionalRoutesByVoiceMailUser;
+
+    /**
+     * Dependent relation ConditionalRoutes_ibfk_6
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutes[]
+     */
+    protected $_ConditionalRoutesByUser;
+
+    /**
+     * Dependent relation ConditionalRoutesConditions_ibfk_5
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutesConditions[]
+     */
+    protected $_ConditionalRoutesConditionsByVoiceMailUser;
+
+    /**
+     * Dependent relation ConditionalRoutesConditions_ibfk_6
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutesConditions[]
+     */
+    protected $_ConditionalRoutesConditionsByUser;
+
+    /**
      * Dependent relation DDIs_ibfk_3
      * Type: One-to-Many relationship
      *
@@ -560,6 +592,22 @@ class Users extends ModelAbstract
                     'property' => 'CallForwardSettingsByVoiceMailUser',
                     'table_name' => 'CallForwardSettings',
                 ),
+            'ConditionalRoutesIbfk5' => array(
+                    'property' => 'ConditionalRoutesByVoiceMailUser',
+                    'table_name' => 'ConditionalRoutes',
+                ),
+            'ConditionalRoutesIbfk6' => array(
+                    'property' => 'ConditionalRoutesByUser',
+                    'table_name' => 'ConditionalRoutes',
+                ),
+            'ConditionalRoutesConditionsIbfk5' => array(
+                    'property' => 'ConditionalRoutesConditionsByVoiceMailUser',
+                    'table_name' => 'ConditionalRoutesConditions',
+                ),
+            'ConditionalRoutesConditionsIbfk6' => array(
+                    'property' => 'ConditionalRoutesConditionsByUser',
+                    'table_name' => 'ConditionalRoutesConditions',
+                ),
             'DDIsIbfk3' => array(
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
@@ -639,6 +687,10 @@ class Users extends ModelAbstract
         ));
 
         $this->setOnDeleteSetNullRelationships(array(
+            'ConditionalRoutes_ibfk_5',
+            'ConditionalRoutes_ibfk_6',
+            'ConditionalRoutesConditions_ibfk_5',
+            'ConditionalRoutesConditions_ibfk_6',
             'DDIs_ibfk_3',
             'Extensions_ibfk_6',
             'ExternalCallFilters_ibfk_7',
@@ -1336,7 +1388,7 @@ class Users extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_externalIpCallsAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for externalIpCalls'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'externalIpCalls'));
             }
             $this->_externalIpCalls = (int) $data;
 
@@ -2401,6 +2453,366 @@ class Users extends ModelAbstract
         }
 
         return $this->_CallForwardSettingsByVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutes_ibfk_5
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConditionalRoutes
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setConditionalRoutesByVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConditionalRoutesByVoiceMailUser === null) {
+
+                $this->getConditionalRoutesByVoiceMailUser();
+            }
+
+            $oldRelations = $this->_ConditionalRoutesByVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConditionalRoutesByVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addConditionalRoutesByVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutes_ibfk_5
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutes $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addConditionalRoutesByVoiceMailUser(\IvozProvider\Model\Raw\ConditionalRoutes $data)
+    {
+        $this->_ConditionalRoutesByVoiceMailUser[] = $data;
+        $this->_setLoaded('ConditionalRoutesIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutes_ibfk_5
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConditionalRoutes
+     */
+    public function getConditionalRoutesByVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoutesByVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConditionalRoutesByVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutes_ibfk_6
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConditionalRoutes
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setConditionalRoutesByUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConditionalRoutesByUser === null) {
+
+                $this->getConditionalRoutesByUser();
+            }
+
+            $oldRelations = $this->_ConditionalRoutesByUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConditionalRoutesByUser = array();
+
+        foreach ($data as $object) {
+            $this->addConditionalRoutesByUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutes_ibfk_6
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutes $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addConditionalRoutesByUser(\IvozProvider\Model\Raw\ConditionalRoutes $data)
+    {
+        $this->_ConditionalRoutesByUser[] = $data;
+        $this->_setLoaded('ConditionalRoutesIbfk6');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutes_ibfk_6
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConditionalRoutes
+     */
+    public function getConditionalRoutesByUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesIbfk6';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoutesByUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConditionalRoutesByUser;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditions_ibfk_5
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConditionalRoutesConditions
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setConditionalRoutesConditionsByVoiceMailUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConditionalRoutesConditionsByVoiceMailUser === null) {
+
+                $this->getConditionalRoutesConditionsByVoiceMailUser();
+            }
+
+            $oldRelations = $this->_ConditionalRoutesConditionsByVoiceMailUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConditionalRoutesConditionsByVoiceMailUser = array();
+
+        foreach ($data as $object) {
+            $this->addConditionalRoutesConditionsByVoiceMailUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditions_ibfk_5
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutesConditions $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addConditionalRoutesConditionsByVoiceMailUser(\IvozProvider\Model\Raw\ConditionalRoutesConditions $data)
+    {
+        $this->_ConditionalRoutesConditionsByVoiceMailUser[] = $data;
+        $this->_setLoaded('ConditionalRoutesConditionsIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutesConditions_ibfk_5
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConditionalRoutesConditions
+     */
+    public function getConditionalRoutesConditionsByVoiceMailUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesConditionsIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoutesConditionsByVoiceMailUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConditionalRoutesConditionsByVoiceMailUser;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditions_ibfk_6
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\ConditionalRoutesConditions
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setConditionalRoutesConditionsByUser(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_ConditionalRoutesConditionsByUser === null) {
+
+                $this->getConditionalRoutesConditionsByUser();
+            }
+
+            $oldRelations = $this->_ConditionalRoutesConditionsByUser;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_ConditionalRoutesConditionsByUser = array();
+
+        foreach ($data as $object) {
+            $this->addConditionalRoutesConditionsByUser($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesConditions_ibfk_6
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutesConditions $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function addConditionalRoutesConditionsByUser(\IvozProvider\Model\Raw\ConditionalRoutesConditions $data)
+    {
+        $this->_ConditionalRoutesConditionsByUser[] = $data;
+        $this->_setLoaded('ConditionalRoutesConditionsIbfk6');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutesConditions_ibfk_6
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\ConditionalRoutesConditions
+     */
+    public function getConditionalRoutesConditionsByUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesConditionsIbfk6';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_ConditionalRoutesConditionsByUser = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_ConditionalRoutesConditionsByUser;
     }
 
     /**

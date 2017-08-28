@@ -4,7 +4,7 @@ production:
   class: \IvozProvider\Model\Queues
   fields:
     companyId:
-      title: _('Companyid')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -18,7 +18,7 @@ production:
           order: name
       default: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       maxLength: 128
       required: true
@@ -35,7 +35,7 @@ production:
         text: _("If no queue member answers before time this seconds, the timeout queue logic will be activated. Leave empty to disable.")
         label: _("Need help?")
     timeoutLocutionId:
-      title: _('Timeout Locution')
+      title: ngettext('Locution', 'Locutions', 1)
       type: select
       source:
         data: mapper
@@ -59,27 +59,27 @@ production:
             visualFilter:
               hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ["timeoutNumberValue"]
               hide: ["timeoutExtensionId", "timeoutVoiceMailUserId" ]
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ["timeoutExtensionId"]
               hide: ["timeoutNumberValue", "timeoutVoiceMailUserId" ]
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ["timeoutVoiceMailUserId"]
               hide: ["timeoutExtensionId", "timeoutNumberValue"]
     timeoutNumberValue:
-      title: _('Timeout number')
+      title: _('Number')
       type: text
       required: true
       maxLength: 25
     timeoutExtensionId:
-      title: _('Timeout Extension')
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:
@@ -94,7 +94,7 @@ production:
           order: number
         'null': _("Unassigned")
     timeoutVoiceMailUserId:
-      title: _('Timeout VoiceMail')
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
@@ -146,26 +146,26 @@ production:
             visualFilter:
               hide: ["fullNumberValue", "fullExtensionId", "fullVoiceMailUserId" ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ["fullNumberValue"]
               hide: ["fullExtensionId", "fullVoiceMailUserId" ]
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ["fullExtensionId"]
               hide: ["fullNumberValue", "fullVoiceMailUserId" ]
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ["fullVoiceMailUserId"]
               hide: ["fullExtensionId", "fullNumberValue"]
     fullNumberValue:
-      title: _('Full number')
+      title: _('Number')
       type: text
       maxLength: 25
     fullExtensionId:
-      title: _('Full extension')
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       source:
         data: mapper
@@ -179,7 +179,7 @@ production:
           order: number
         'null': _("Unassigned")
     fullVoiceMailUserId:
-      title: _('Full voicemail')
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       source:
         data: mapper

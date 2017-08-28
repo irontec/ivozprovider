@@ -251,7 +251,7 @@ class AstMusiconhold extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_modeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for mode'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'mode'));
             }
             $this->_mode = (string) $data;
 

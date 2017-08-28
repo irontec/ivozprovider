@@ -50,7 +50,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      forcedValues: 
+      forcedValues:
         <<: *forcedCompany
       title: _("Edit %s %2s", ngettext('Call ACL', 'Call ACLs', 1), "[format| (%item%)]")
       fields:
@@ -66,7 +66,7 @@ production:
             name: 2
             defaultPolicy: 1
         group1:
-          label: _("Patterns")
+          label: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
           colsPerRow: 3
           fields:
             CallACLRelPatterns: 3
@@ -74,7 +74,7 @@ production:
     <<: *callACLRelPatterns_screensLink
     callACLRelPatternsList_screen:
       <<: *callACLRelPatternsList_screenLink
-      title: _("List of %s %2s", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel rel pattern', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Call ACL Pattern', 'Call ACL Pattern', 0), "[format| (%parent%)]")
       filterField: CallACLId
       parentOptionCustomizer:
         - recordCount
@@ -85,7 +85,7 @@ production:
     callACLRelPatternsEdit_screen:
       <<: *callACLRelPatternsEdit_screenLink
       filterField: CallACLId
-      title: _("Edit pattern of %s", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel rel pattern', 1))
+      title: _("Edit pattern of %s", ngettext('Call ACL Pattern', 'Call ACL Pattern', 1))
 
   dialogs: &callACL_dialogsLink
     callACLDel_dialog: &callACLDel_dialogLink
@@ -103,9 +103,9 @@ production:
     <<: *callACLRelPatterns_dialogsLink
     callACLRelPatternsDel_dialog:
       <<: *callACLRelPatternsDel_dialogLink
-      title: _("Delete %s", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel patterns', 1))
-      description: _("Do you want to delete this %s?", ngettext('Call ACL Rel rel pattern', 'Call ACL Rel rel patterns', 1))
-      message: _("%s successfully deleted.", ngettext('Call ACL Rel pattern', 'Call ACL Rel patterns', 1))
+      title: _("Delete %s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 1))
+      description: _("Do you want to delete this %s?", ngettext('Call ACL Pattern', 'Call ACL Patterns', 1))
+      message: _("%s successfully deleted.", ngettext('Call ACL Pattern', 'Call ACL Patterns', 1))
 
 staging:
   _extends: production

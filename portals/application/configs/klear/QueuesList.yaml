@@ -69,7 +69,7 @@ production:
           <<: *Queues_orderLink
       fixedPositions: &QueuesFixedPositions_Link
         group0:
-          label: _('Basic Info')
+          label: _("Basic Configuration")
           colsPerRow: 12
           fields:
             name: 7

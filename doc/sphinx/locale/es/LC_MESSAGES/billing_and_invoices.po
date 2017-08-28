@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 08:55+0200\n"
+"POT-Creation-Date: 2017-08-11 13:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -475,9 +475,9 @@ msgstr ""
 "La ayuda contextual de la sección **Configuración de Marca** > "
 "**Plantillas de facturas** incluye una explicación resumida del proceso "
 "de creación de plantillas. En la `página oficial de wkhtmltopdf "
-"<https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ puede encontrar más información. "
-"También puede profundicar en las expresiones disponibles en las "
-"plantillas `aquí <http://handlebarsjs.com/expressions.html>`_."
+"<https://wkhtmltopdf.org/usage/wkhtmltopdf.txt>`_ puede encontrar más "
+"información. También puede profundicar en las expresiones disponibles en "
+"las plantillas `aquí <http://handlebarsjs.com/expressions.html>`_."
 
 #: ../../billing_and_invoices/invoices.rst:28
 msgid "By default, this section provides some basic example templates:"
@@ -764,8 +764,8 @@ msgstr ""
 " para poder descargar un archivo de ejemplo:"
 
 #: ../../billing_and_invoices/pricing_plans.rst:80
-msgid "The order of the columns must be:"
-msgstr "El formato, por lo tanto, tiene que ser:"
+msgid "The order of the columns should be:"
+msgstr "El orden de las columnas debería de ser:"
 
 #: ../../billing_and_invoices/pricing_plans.rst:82
 msgid "Pricing pattern name"
@@ -793,13 +793,28 @@ msgstr "Período de facturación"
 
 #: ../../billing_and_invoices/pricing_plans.rst:89
 msgid ""
-"Floating number must be quoted with double quotes and use a comma as "
-"decimal separator."
+"It is recommended to double quote alphanumeric entries, though it is not "
+"compulsory for single word entries (or entries without odd symbols). **If"
+" they contain any comma, they MUST be quoted**."
 msgstr ""
-"Los números decimales tienen que estar entrecomillados con comillas "
-"dobles y tienen que usar la coma como separador decimal."
+"Se recomienda entrecomillar con comillas dobles las entradas "
+"alfanuméricas, aunque no es necesario para entradas con una única palabra"
+" (o entradas sin símbolos raros). **Si contienen coma, es OBLIGATORIO "
+"entrecomillarlos**."
 
-#: ../../billing_and_invoices/pricing_plans.rst:92
+#: ../../billing_and_invoices/pricing_plans.rst:93
+msgid "Floating numbers **MUST use point as decimal separator**."
+msgstr ""
+"Los **números decimales** tienen que usar el **punto como separador "
+"decimal**."
+
+#: ../../billing_and_invoices/pricing_plans.rst:95
+msgid "Numeric entries can be quoted with double quotes, but it is not mandatory."
+msgstr ""
+"Las entradas numéricas se pueden entrecomillar con comillas dobles, pero "
+"no es obligatorio."
+
+#: ../../billing_and_invoices/pricing_plans.rst:98
 msgid ""
 "The importing system will just bind the price to an existing price "
 "pattern or, if prefix doesn't match any existing pricing pattern, it will"
@@ -809,11 +824,11 @@ msgstr ""
 "necesarios. Si ya existe un patrón de precios con ese prefijo, no se "
 "creará, simplemente se vinculará."
 
-#: ../../billing_and_invoices/pricing_plans.rst:96
+#: ../../billing_and_invoices/pricing_plans.rst:102
 msgid "The price of the call will be increased every billing period unit."
 msgstr "El precio de la llamada sera incrementado cada periodo de facturacion."
 
-#: ../../billing_and_invoices/pricing_plans.rst:98
+#: ../../billing_and_invoices/pricing_plans.rst:104
 msgid ""
 "If *billing period* is set to 1, every second the price will be increased"
 " *price per minute* divided by 60 (bill by seconds)."
@@ -821,7 +836,7 @@ msgstr ""
 "Si se pone a 1, implica una tarificación por segundos y cada segundo "
 "implicará un coste que será el *precio por minuto* dividido entre 60."
 
-#: ../../billing_and_invoices/pricing_plans.rst:101
+#: ../../billing_and_invoices/pricing_plans.rst:107
 msgid ""
 "If *billing period* is set to 60, every minute the price will be "
 "increased *price per minute* (bill by minutes)."
@@ -829,7 +844,7 @@ msgstr ""
 "Si se pone a 60, implica una tarificación por minutos y cada minuto "
 "implicará un coste que será el *precio por minuto*."
 
-#: ../../billing_and_invoices/pricing_plans.rst:104
+#: ../../billing_and_invoices/pricing_plans.rst:110
 msgid ""
 "Once the import process is over, we just have to bind the pricing plan to"
 " the companies we want following :ref:`the procedure explained in the "

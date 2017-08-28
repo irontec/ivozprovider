@@ -49,7 +49,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
-     *     'subscribecontext': '', 
      *     '100rel': '', 
      *     'outbound_proxy': '', 
      *     'trust_id_inbound': ''
@@ -71,7 +70,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
-     *     'subscribecontext': '', 
      *     '100rel': '', 
      *     'outbound_proxy': '', 
      *     'trust_id_inbound': ''
@@ -109,7 +107,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'pickupGroup',
                 'sendDiversion',
                 'sendPai',
-                'subscribecontext',
                 '100rel',
                 'outboundProxy',
                 'trustIdInbound',
@@ -203,7 +200,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
-     *     'subscribecontext': '', 
      *     '100rel': '', 
      *     'outbound_proxy': '', 
      *     'trust_id_inbound': ''
@@ -240,7 +236,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'pickupGroup',
                 'sendDiversion',
                 'sendPai',
-                'subscribecontext',
                 '100rel',
                 'outboundProxy',
                 'trustIdInbound',
@@ -300,7 +295,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
@@ -355,7 +349,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
-     * @ApiParams(name="subscribecontext", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
      * @ApiParams(name="outbound_proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="trust_id_inbound", nullable=true, type="enum('yes','no')", sample="", description="")
@@ -533,11 +526,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'subscribecontext' => array(
-                    'type' => "varchar",
-                    'required' => true,
-                    'comment' => '',
-                ),
                 '100rel' => array(
                     'type' => "enum('no','required','yes')",
                     'required' => true,
@@ -642,11 +630,6 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'send_pai' => array(
                     'type' => "enum('yes','no')",
                     'required' => false,
-                    'comment' => '',
-                ),
-                'subscribecontext' => array(
-                    'type' => "varchar",
-                    'required' => true,
                     'comment' => '',
                 ),
                 '100rel' => array(

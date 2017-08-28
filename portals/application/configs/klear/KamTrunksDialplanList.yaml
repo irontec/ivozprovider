@@ -2,25 +2,25 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: kamTrunksDialplanList_screen
-  screens: &kamTrunksDialplan_screensLink 
-    kamTrunksDialplanList_screen: &kamTrunksDialplanList_screenLink 
+  screens: &kamTrunksDialplan_screensLink
+    kamTrunksDialplanList_screen: &kamTrunksDialplanList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *KamTrunksDialplan
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Kam trunks dialplan', 'Kam trunks dialplan(s)', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Transformation', 'Transformations', 0), "[format| (%parent%)]")
       filterField: transformationRulesetGroupsTrunksId
-      fields: &kamTrunksDialplan_fieldsLink 
-        options: 
+      fields: &kamTrunksDialplan_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             kamTrunksDialplanEdit_screen: true
-          dialogs: 
+          dialogs:
             kamTrunksDialplanDel_dialog: true
           default: kamTrunksDialplanEdit_screen
         blacklist: &kamTrunksDialplanBlacklist_Link
@@ -28,19 +28,19 @@ production:
           match_op: true
           match_len: true
           subst_exp: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamTrunksDialplanNew_screen: true
-        dialogs: 
+        dialogs:
           kamTrunksDialplanDel_dialog: true
-    kamTrunksDialplanNew_screen: &kamTrunksDialplanNew_screenLink 
+    kamTrunksDialplanNew_screen: &kamTrunksDialplanNew_screenLink
       <<: *KamTrunksDialplan
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Transformation', 'Transformation(s)', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Transformation', 'Transformations', 1), "[format| (%parent%)]")
       filterField: transformationRulesetGroupsTrunksId
       shortcutOption: N
       forcedValues:
@@ -57,34 +57,34 @@ production:
             attrs: 1
             match_exp: 1
             repl_exp: 1
-    kamTrunksDialplanEdit_screen: &kamTrunksDialplanEdit_screenLink 
+    kamTrunksDialplanEdit_screen: &kamTrunksDialplanEdit_screenLink
       <<: *KamTrunksDialplan
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Transformation', 'Transformation(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Transformation', 'Transformations', 1), "[format| (%item%)]")
       filterField: transformationRulesetGroupsTrunksId
       fields:
         blacklist:
           <<: *kamTrunksDialplanBlacklist_Link
       fixedPositions:
         <<: *kamTrunksDialplanFixedPositions_screenLink
-  dialogs: &kamTrunksDialplan_dialogsLink 
-    kamTrunksDialplanDel_dialog: &kamTrunksDialplanDel_dialogLink 
+  dialogs: &kamTrunksDialplan_dialogsLink
+    kamTrunksDialplanDel_dialog: &kamTrunksDialplanDel_dialogLink
       <<: *KamTrunksDialplan
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Transformation', 'Transformation(s)', 1))
-      description: _("Do you want to delete this %s?", ngettext('Transformation', 'Transformation(s)', 1))
-      message: _("%s successfully deleted.", ngettext('Transformation', 'Transformation(s)', 1))
+      title: _("Delete %s", ngettext('Transformation', 'Transformations', 1))
+      description: _("Do you want to delete this %s?", ngettext('Transformation', 'Transformations', 1))
+      message: _("%s successfully deleted.", ngettext('Transformation', 'Transformations', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

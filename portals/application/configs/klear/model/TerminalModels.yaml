@@ -8,13 +8,13 @@ production:
       trim: both
       required: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       defaultValue:
       default: true
     description:
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       defaultValue:

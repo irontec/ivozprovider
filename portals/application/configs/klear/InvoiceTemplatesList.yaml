@@ -3,27 +3,27 @@
 #include InvoicesList.yaml
 #include conf.d/invoiceTemplateHelp.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: invoiceTemplatesList_screen
-  screens: &invoiceTemplates_screensLink 
-    invoiceTemplatesList_screen: &invoiceTemplatesList_screenLink 
+  screens: &invoiceTemplates_screensLink
+    invoiceTemplatesList_screen: &invoiceTemplatesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *InvoiceTemplates
       class: ui-silk-report-key
       title: _("List of %s %2s", ngettext('Invoice template', 'Invoice templates', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &invoiceTemplates_fieldsLink 
-        options: 
+      fields: &invoiceTemplates_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             invoiceTemplatesEdit_screen: true
 #            invoicesList_screen: true
-          dialogs: 
+          dialogs:
             invoiceTemplateTest_dialog: true
             invoiceTemplatesDel_dialog: true
           default: invoiceTemplatesEdit_screen
@@ -33,12 +33,12 @@ production:
           templateFooter: true
       options:
         title: _("Options")
-        screens: 
+        screens:
           invoiceTemplatesNew_screen: true
-        dialogs: 
+        dialogs:
           invoiceTemplatesDel_dialog: true
       <<: *invoiceTemplateHelp
-    invoiceTemplatesNew_screen: &invoiceTemplatesNew_screenLink 
+    invoiceTemplatesNew_screen: &invoiceTemplatesNew_screenLink
       <<: *InvoiceTemplates
       controller: new
       class: ui-silk-add
@@ -62,7 +62,7 @@ production:
             templateHeader: 1
             templateFooter: 1
       <<: *invoiceTemplateHelp
-    invoiceTemplatesEdit_screen: &invoiceTemplatesEdit_screenLink 
+    invoiceTemplatesEdit_screen: &invoiceTemplatesEdit_screenLink
       <<: *InvoiceTemplates
       controller: edit
       class: ui-silk-pencil
@@ -74,22 +74,22 @@ production:
       fixedPositions:
         <<: *invoiceTemplatesFixedPositions_Link
       <<: *invoiceTemplateHelp
-    #invoices: 
+    #invoices:
     <<: *invoices_screensLink
-    invoicesList_screen: 
+    invoicesList_screen:
       <<: *invoicesList_screenLink
       filterField: invoiceTemplateId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-    invoicesNew_screen: 
+    invoicesNew_screen:
       <<: *invoicesNew_screenLink
       filterField: invoiceTemplateId
-    invoicesEdit_screen: 
+    invoicesEdit_screen:
       <<: *invoicesEdit_screenLink
       filterField: invoiceTemplateId
 
-  dialogs: &invoiceTemplates_dialogsLink 
-    invoiceTemplatesDel_dialog: &invoiceTemplatesDel_dialogLink 
+  dialogs: &invoiceTemplates_dialogsLink
+    invoiceTemplatesDel_dialog: &invoiceTemplatesDel_dialogLink
       <<: *InvoiceTemplates
       controller: delete
       class: ui-silk-bin
@@ -112,35 +112,14 @@ production:
       labelOnEntityPostSave: false # La opción se dibujará con "label" cuando es una opción general de EntityPostSave
       multiItem: false # Al invocarase la opción como general option desde List, el controlador será invocado con pk como un array de Ids.
 
-  # invoices dialogs: 
+  # invoices dialogs:
     <<: *invoices_dialogsLink
-    
-#    uploadFile_dialog: &uploadFile_dialogLink 
-#      title: _("Cargar desde un fichero")
-#      module: default
-#      controller: klear-custom-upload-file
-#      labelOnEdit: true
-#      action: upload-file
-#      class: ui-silk-arrow-up
-#    downloadFile_dialog: &downloadFile_dialogLink 
-#      title: _("Descargar fichero")
-#      module: default
-#      controller: klear-custom-download-file
-#      labelOnEdit: true
-#      action: download-file
-#      class: ui-silk-arrow-down
-#    backup_dialog: &genericBackup_dialog
-#      title: _("Restore last backup")
-#      module: default
-#      controller: klear-custom-restore-backup
-#      labelOnEdit: true
-#      action: restore-generic-backup
-#      class: ui-silk-arrow-undo
-staging: 
+
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

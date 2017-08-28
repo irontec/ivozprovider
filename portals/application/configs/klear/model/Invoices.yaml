@@ -1,45 +1,45 @@
-production: 
+production:
   class: \IvozProvider\Model\Invoices
-  fields: 
-    number: 
+  fields:
+    number:
       title: _('Number')
       type: text
       trim: both
       required: true
       maxLength: 30
       default: true
-    inDate: 
+    inDate:
       title: _('In date')
       type: picker
       required: true
-      source: 
+      source:
         control: date
-        settings: 
+        settings:
           disabled: 'false'
           dateFormate: 'dd-mm-yy'
 #          timeFormat: '00:00:00'
-    outDate: 
+    outDate:
       title: _('Out date')
       type: picker
       required: true
-      source: 
+      source:
         control: date
-        settings: 
+        settings:
           disabled: 'false'
           dateFormate: 'dd-mm-yy'
 #          timeFormat: '23:59:59'
-    total: 
+    total:
       title: _('Total')
       type: text
       trim: both
       sufix: "€"
-    taxRate: 
+    taxRate:
       title: _('Tax rate')
       type: text
       trim: both
       required: true
       sufix: "%"
-    totalWithTax: 
+    totalWithTax:
       title: _('Total with tax')
       type: text
       trim: both
@@ -47,26 +47,26 @@ production:
     status:
       title: _('Status')
       type: select
-      source: 
+      source:
         data: inline
-        values: 
-          'waiting': _('waiting')
-          'processing': _('processing')
-          'created': _('created')
-          'error': _('error')
-    pdfFile: 
+        values:
+          'waiting': _('Waiting')
+          'processing': _('Processing')
+          'created': _('Created')
+          'error': _('Error')
+    pdfFile:
       title: _('Pdf file')
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
+        options:
           preview:
             target: invoicesPdfFilePreview_command
             type: command
             class: filePreview
             external: 1
-            props: 
+            props:
               width: 150
               height: 150
               crop: false
@@ -74,51 +74,51 @@ production:
       options:
         commands:
           invoicesPdfFileDownload_command: true
-    companyId: 
-      title: _('Company')
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    brandId: 
-      title: _('Brand')
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Brands
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    invoiceTemplateId: 
+    invoiceTemplateId:
       title: _('Template')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\InvoiceTemplates
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
         'null': _("Unassigned")
     FixedCostsRelInvoices:
-      title: _('Fixed costs')
+      title: ngettext('Fixed cost', 'Fixed costs', 1)
       searchable: false
       type: ghost
       source:
@@ -148,11 +148,11 @@ production:
       options:
         screens:
           fixedCostsRelInvoicesNew_screen: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

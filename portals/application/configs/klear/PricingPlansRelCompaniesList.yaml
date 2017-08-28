@@ -2,14 +2,14 @@
 #include conf.d/actions.yaml
 #include PricingPlansRelTargetPatternsList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: pricingPlansRelCompaniesList_screen
-  screens: &pricingPlansRelCompanies_screensLink 
-    pricingPlansRelCompaniesList_screen: &pricingPlansRelCompaniesList_screenLink 
+  screens: &pricingPlansRelCompanies_screensLink
+    pricingPlansRelCompaniesList_screen: &pricingPlansRelCompaniesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PricingPlansRelCompanies
       class: ui-silk-money
@@ -19,20 +19,20 @@ production:
       order:
         field:
           - metric asc
-      fields: &pricingPlansRelCompanies_fieldsLink 
-        options: 
+      fields: &pricingPlansRelCompanies_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             pricingPlansRelCompaniesEdit_screen: true
             pricingPlansRelTargetPatternsList_screen: true
-          dialogs: 
+          dialogs:
             pricingPlansRelCompaniesDel_dialog: true
           default: pricingPlansRelCompaniesEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           pricingPlansRelCompaniesNew_screen: true
-        dialogs: 
+        dialogs:
           comparePlans_dialog: true
           pricingPlansRelCompaniesDel_dialog: true
       info:
@@ -41,7 +41,7 @@ production:
         icon: help
         text: _("<p><b>Metric:</b> In case that two pricing plans were matched plan with lower metric will be applied.</p>")
         label: _("Help")
-    pricingPlansRelCompaniesNew_screen: &pricingPlansRelCompaniesNew_screenLink 
+    pricingPlansRelCompaniesNew_screen: &pricingPlansRelCompaniesNew_screenLink
       <<: *PricingPlansRelCompanies
       controller: new
       class: ui-silk-add
@@ -62,7 +62,7 @@ production:
           fields:
             validFrom: 1
             validTo: 1
-    pricingPlansRelCompaniesEdit_screen: &pricingPlansRelCompaniesEdit_screenLink 
+    pricingPlansRelCompaniesEdit_screen: &pricingPlansRelCompaniesEdit_screenLink
       <<: *PricingPlansRelCompanies
       controller: edit
       class: ui-silk-pencil
@@ -72,22 +72,22 @@ production:
         <<: *forcedBrand
       fixedPositions:
         <<: *pricingPlansRelCompaniesFixedPositions_Link
-        
-    #pricingPlansRelTargetPatterns: 
-    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsListEdit_screenLink 
+
+    #pricingPlansRelTargetPatterns:
+    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsListEdit_screenLink
       <<: *pricingPlansRelTargetPatternsList_screenLink
-      title: _("List of %s", ngettext('price', 'prices', 0))
+      title: _("List of %s", ngettext('Price', 'Prices', 0))
       filterClass: IvozProvider_Klear_Filter_CompanyPricingPlansPrices
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
       fields:
         order:
           targetPatternId: true
         blacklist:
           pricingPlanId: true
-      options: 
-  dialogs: &pricingPlansRelCompanies_dialogsLink 
-    pricingPlansRelCompaniesDel_dialog: &pricingPlansRelCompaniesDel_dialogLink 
+      options:
+  dialogs: &pricingPlansRelCompanies_dialogsLink
+    pricingPlansRelCompaniesDel_dialog: &pricingPlansRelCompaniesDel_dialogLink
       <<: *PricingPlansRelCompanies
       controller: delete
       class: ui-silk-bin
@@ -97,12 +97,12 @@ production:
       message: _("%s successfully deleted.", ngettext('Pricing plan', 'Pricing plans', 1))
       multiItem: 1
       labelOnList: 1
-    comparePlans_dialog: 
+    comparePlans_dialog:
       <<: *PricingPlans
       module: default
       title: _("Simulate a call")
       label: false
-      labelOnEdit: false   
+      labelOnEdit: false
       labelOnList: true
       labelOption: false
       labelOnEntityPostSave: false
@@ -112,11 +112,11 @@ production:
   commands: &pricingPlansRelCompanies_commandsLink
     <<: *pricingPlansRelTargetPatterns_commandsLink
 
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

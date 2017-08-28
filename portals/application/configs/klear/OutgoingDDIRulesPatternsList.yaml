@@ -53,7 +53,7 @@ production:
           forcedDDI: true
       fixedPositions: &outgoingDDIRulesPatternsPositions_link
         group0:
-          label: _("Basic data")
+          label: _("Basic Configuration")
           colsPerRow: 12
           fields:
             matchListId: 9

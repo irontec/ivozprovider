@@ -1,0 +1,24 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to bob extension
+    timeout: 20
+    sessions:
+      - alice:
+          - wait
+          - call:
+              dest: sip:1002@bbs.ivozprovider.local
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - wait: 2
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - callid: 1001
+          - answer
+          - waitfor: DISCONNCTD
+          - unregister

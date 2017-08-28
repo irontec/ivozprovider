@@ -1,35 +1,35 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: genericCallACLPatternsList_screen
   screens: &genericCallACLPatterns_screensLink
-    genericCallACLPatternsList_screen: &genericCallACLPatternsList_screenLink 
+    genericCallACLPatternsList_screen: &genericCallACLPatternsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *GenericCallACLPatterns
       class: ui-silk-lock-go
       title: _("List of %s %2s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             genericCallACLPatternsEdit_screen: true
-          dialogs: 
+          dialogs:
             genericCallACLPatternsDel_dialog: true
           default: genericCallACLPatternsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           genericCallACLPatternsNew_screen: true
-        dialogs: 
+        dialogs:
           genericCallACLPatternsDel_dialog: true
-    genericCallACLPatternsNew_screen: &genericCallACLPatternsNew_screenLink 
+    genericCallACLPatternsNew_screen: &genericCallACLPatternsNew_screenLink
       <<: *GenericCallACLPatterns
       controller: new
       class: ui-silk-add
@@ -39,14 +39,14 @@ production:
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
-    genericCallACLPatternsEdit_screen: &genericCallACLPatternsEdit_screenLink 
+    genericCallACLPatternsEdit_screen: &genericCallACLPatternsEdit_screenLink
       <<: *GenericCallACLPatterns
       controller: edit
       class: ui-silk-pencil
       label: false
       forcedValues:
         <<: *forcedBrand
-      title: _("Edit %s %2s", ngettext('Generic call a c l pattern', 'Generic call ACL patterns', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 1), "[format| (%item%)]")
   dialogs: &genericCallACLPatterns_dialogsLink
     genericCallACLPatternsDel_dialog: &genericCallACLPatternsDel_dialogLink
       <<: *GenericCallACLPatterns
@@ -58,11 +58,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

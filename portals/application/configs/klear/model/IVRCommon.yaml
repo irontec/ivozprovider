@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\IVRCommon
   fields:
     companyId:
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -16,7 +16,7 @@ production:
           order: name
       default: true
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
@@ -25,7 +25,7 @@ production:
       type: text
       trim: both
     welcomeLocutionId:
-      title: _('Welcome locution id')
+      title: _('Welcome locution')
       type: select
       required: true
       source:
@@ -39,7 +39,7 @@ production:
             template: '%name%'
           order: name
     noAnswerLocutionId:
-      title: _('No answer locution id')
+      title: _('No answer locution')
       type: select
       source:
         data: mapper
@@ -53,7 +53,7 @@ production:
           order: name
         'null': _("Unassigned")
     errorLocutionId:
-      title: _('Error locution id')
+      title: ngettext('Locution', 'Locutions', 1)
       type: select
       source:
         data: mapper
@@ -67,7 +67,7 @@ production:
           order: name
         'null': _("Unassigned")
     successLocutionId:
-      title: _('Success locution id')
+      title: _('Success locution')
       type: select
       source:
         data: mapper
@@ -126,27 +126,27 @@ production:
             visualFilter:
               hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ["timeoutNumberValue"]
               hide: ["timeoutExtensionId", "timeoutVoiceMailUserId" ]
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ["timeoutExtensionId"]
               hide: ["timeoutNumberValue", "timeoutVoiceMailUserId" ]
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ["timeoutVoiceMailUserId"]
               hide: ["timeoutExtensionId", "timeoutNumberValue"]
     timeoutNumberValue:
-      title: _('Timeout number value')
+      title: _('Number')
       type: text
       trim: both
       required: true
     timeoutExtensionId:
-      title: _('Timeout extension id')
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:
@@ -161,7 +161,7 @@ production:
           order: number
         'null': _("Unassigned")
     timeoutVoiceMailUserId:
-      title: _('Timeout voice mail user id')
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
@@ -187,27 +187,27 @@ production:
             visualFilter:
               hide: ["errorNumberValue", "errorExtensionId", "errorVoiceMailUserId" ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ["errorNumberValue"]
               hide: ["errorExtensionId", "errorVoiceMailUserId" ]
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ["errorExtensionId"]
               hide: ["errorNumberValue", "errorVoiceMailUserId" ]
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ["errorVoiceMailUserId"]
               hide: ["errorExtensionId", "errorNumberValue"]
     errorNumberValue:
-      title: _('Error number value')
+      title: _('Number')
       type: text
       trim: both
       required: true
     errorExtensionId:
-      title: _('Error extension id')
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
       source:
@@ -222,7 +222,7 @@ production:
           order: number
         'null': _("Unassigned")
     errorVoiceMailUserId:
-      title: _('Error voice mail user id')
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:

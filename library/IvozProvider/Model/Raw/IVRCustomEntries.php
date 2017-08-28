@@ -26,6 +26,7 @@ class IVRCustomEntries extends ModelAbstract
         'number',
         'extension',
         'voicemail',
+        'conditional',
     );
 
     /**
@@ -57,7 +58,7 @@ class IVRCustomEntries extends ModelAbstract
     protected $_welcomeLocutionId;
 
     /**
-     * [enum:number|extension|voicemail]
+     * [enum:number|extension|voicemail|conditional]
      * Database var type varchar
      *
      * @var string
@@ -84,6 +85,13 @@ class IVRCustomEntries extends ModelAbstract
      * @var int
      */
     protected $_targetVoiceMailUserId;
+
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_targetConditionalRouteId;
 
 
     /**
@@ -114,6 +122,13 @@ class IVRCustomEntries extends ModelAbstract
      */
     protected $_TargetVoiceMailUser;
 
+    /**
+     * Parent relation IVRCustomEntries_ibfk_5
+     *
+     * @var \IvozProvider\Model\Raw\ConditionalRoutes
+     */
+    protected $_TargetConditionalRoute;
+
 
     protected $_columnsList = array(
         'id'=>'id',
@@ -124,6 +139,7 @@ class IVRCustomEntries extends ModelAbstract
         'targetNumberValue'=>'targetNumberValue',
         'targetExtensionId'=>'targetExtensionId',
         'targetVoiceMailUserId'=>'targetVoiceMailUserId',
+        'targetConditionalRouteId'=>'targetConditionalRouteId',
     );
 
     /**
@@ -132,7 +148,7 @@ class IVRCustomEntries extends ModelAbstract
     public function __construct()
     {
         $this->setColumnsMeta(array(
-            'targetType'=> array('enum:number|extension|voicemail'),
+            'targetType'=> array('enum:number|extension|voicemail|conditional'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -156,6 +172,10 @@ class IVRCustomEntries extends ModelAbstract
             'IVRCustomEntriesIbfk4'=> array(
                     'property' => 'TargetVoiceMailUser',
                     'table_name' => 'Users',
+                ),
+            'IVRCustomEntriesIbfk5'=> array(
+                    'property' => 'TargetConditionalRoute',
+                    'table_name' => 'ConditionalRoutes',
                 ),
         ));
 
@@ -361,7 +381,7 @@ class IVRCustomEntries extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_targetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for targetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'targetType'));
             }
             $this->_targetType = (string) $data;
 
@@ -481,6 +501,40 @@ class IVRCustomEntries extends ModelAbstract
     public function getTargetVoiceMailUserId()
     {
         return $this->_targetVoiceMailUserId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\IVRCustomEntries
+     */
+    public function setTargetConditionalRouteId($data)
+    {
+
+        if ($this->_targetConditionalRouteId != $data) {
+            $this->_logChange('targetConditionalRouteId', $this->_targetConditionalRouteId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_targetConditionalRouteId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_targetConditionalRouteId = (int) $data;
+
+        } else {
+            $this->_targetConditionalRouteId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column targetConditionalRouteId
+     *
+     * @return int
+     */
+    public function getTargetConditionalRouteId()
+    {
+        return $this->_targetConditionalRouteId;
     }
 
     /**
@@ -685,6 +739,57 @@ class IVRCustomEntries extends ModelAbstract
         }
 
         return $this->_TargetVoiceMailUser;
+    }
+
+    /**
+     * Sets parent relation TargetConditionalRoute
+     *
+     * @param \IvozProvider\Model\Raw\ConditionalRoutes $data
+     * @return \IvozProvider\Model\Raw\IVRCustomEntries
+     */
+    public function setTargetConditionalRoute(\IvozProvider\Model\Raw\ConditionalRoutes $data)
+    {
+        $this->_TargetConditionalRoute = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setTargetConditionalRouteId($primaryKey);
+        }
+
+        $this->_setLoaded('IVRCustomEntriesIbfk5');
+        return $this;
+    }
+
+    /**
+     * Gets parent TargetConditionalRoute
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\ConditionalRoutes
+     */
+    public function getTargetConditionalRoute($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'IVRCustomEntriesIbfk5';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_TargetConditionalRoute = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_TargetConditionalRoute;
     }
 
     /**

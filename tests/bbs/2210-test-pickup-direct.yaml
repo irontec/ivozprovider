@@ -1,34 +1,30 @@
-# test-pickup.yaml
-#
-# Simple scenario for testing a call pickup
-# Bob must have the extension 1001 assigned
-# Group Pickup service must be configured with *7
-# Direct Pickup service must be configured with *95
-#
 # ----------------------------------------------------------------------------
   # Direct pickup
+scenarios:
   - name: call from alice to bob direct picked up by charlie
     timeout: 20
     sessions:
-      - caller_alice:
-          - credentials:
-              <<: *alice_cred
-          - call: 1001
+      - alice:
+          - call:
+              dest: 1002
+              credentials:
+                <<: *alice_cred
           - waitfor: CONFIRMED
           - wait: 3
           - hangup
           - waitfor: DISCONNCTD
-      - callee_bob:
+      - bob:
           - register:
               <<: *bob_cred
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD
-      - pickuper_charlie:
-          - credentials:
-              <<: *charlie_cred
+      - charlie:
           - wait: 5
-          - call: '*951001'
+          - call:
+              dest: '*941002'
+              credentials:
+                <<: *charlie_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 

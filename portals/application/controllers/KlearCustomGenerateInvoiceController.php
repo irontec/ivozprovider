@@ -52,7 +52,7 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
         } else {
             $title = $this->_helper->translate("Generate invoice");
             $message = $this->_helper->translate("Are you sure you want to generate the invoice?");
-            $okButton = $this->_helper->translate("OK");
+            $okButton = $this->_helper->translate("Ok");
             $closeButton = $this->_helper->translate("Close");
 
             $data = array(
@@ -170,11 +170,11 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
         }
 
         if (count($pks) == 1) {
-            $title = $this->_helper->translate("Invoice enqueued");
+            $title = $this->_helper->translate("Invoice(s) enqueued");
             $message = $this->_helper->translate("Invoice has been enqueued. It will be generated as soon as posible.");
         } else {
             $n = count($pks);
-            $title = $this->_helper->translate("Invoices enqueued: ").$n;
+            $title = $this->_helper->translate("Invoice(s) enqueued") . ": " . $n;
             $message = $this->_helper->translate("Invoices have been enqueued. They will be generated as soon as posible.");
         }
         $closeButton = $this->_helper->translate("Close");

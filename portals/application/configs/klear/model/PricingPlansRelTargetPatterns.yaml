@@ -1,10 +1,10 @@
-production: 
+production:
   class: \IvozProvider\Model\PricingPlansRelTargetPatterns
-  fields:  
-    id: 
+  fields:
+    id:
       title: ngettext('Id', 'Ids', 1)
       required: false
-    connectionCharge: 
+    connectionCharge:
       title: _('Connection charge')
       type: text
       pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
@@ -16,19 +16,19 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Use period as decimal delimiter - e.g. 0.02")
+        text: _("Use point as decimal delimiter - e.g. 0.02")
         label: _("Need help?")
-    periodTime: 
+    periodTime:
       title: _('Charge period')
       type: number
       defaultValue: 1
       required: true
-      source: 
+      source:
         control: Spinner
         min: 1
         step: 1
       sufix: "s"
-    perPeriodCharge: 
+    perPeriodCharge:
       title: _('Per minute charge')
       type: text
       pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
@@ -39,13 +39,13 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Use as period decimal delimiter - e.g. 0.02")
+        text: _("Use point as decimal delimiter - e.g. 0.02")
         label: _("Need help?")
-    metric: 
+    metric:
       title: _('Metric')
       type: number
       defaultValue: 10
-      source: 
+      source:
         control: Spinner
       info:
         type: box
@@ -53,29 +53,29 @@ production:
         icon: help
         text: _("In case that two patterns were matched pattern with lower metric will be applied.")
         label: _("Need help?")
-    pricingPlanId: 
+    pricingPlanId:
       title: _('Pricing plan')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\PricingPlans
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    targetPatternId: 
+    targetPatternId:
       title: _('Price pattern')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
+          fieldName:
             fields:
               - name
               - regExp
@@ -84,11 +84,11 @@ production:
       decorators:
         autocomplete:
             command: targetPatternautocomplete_command
-    brandId: 
-      title: _('Brand id')
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
       type: number
       required: true
-      source: 
+      source:
         control: Spinner
     targetPatternIdGhost:
       title: _('Price pattern')
@@ -99,9 +99,9 @@ production:
         searchMethod: getSearchConditionsForItem
 staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

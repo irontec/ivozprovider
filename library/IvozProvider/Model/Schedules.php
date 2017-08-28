@@ -39,4 +39,21 @@ class Schedules extends Raw\Schedules
         return $isInTimeRange;
     }
 
+    public function isOnSchedule($time)
+    {
+        // Check if Day of The Week is enabled in the schedule
+        $dayOfTheWeek = $time->format("l");
+        if(!call_user_func(array($this, "get" . $dayOfTheWeek))) {
+            return false;
+        }
+
+        // Check if time is between begining and end
+        $timezone = $time->getTimezone();
+        $timeIn = new \DateTime($this->getTimeIn(), $timezone);
+        $timeOut = new \DateTime($this->getTimeOut(), $timezone);
+
+        $isOnSchedule = ($time >= $timeIn && $time < $timeOut);
+        return $isOnSchedule;
+    }
+
 }

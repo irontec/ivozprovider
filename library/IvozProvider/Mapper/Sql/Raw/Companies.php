@@ -541,6 +541,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getConditionalRoutes(null, null, true) !== null) {
+                    $conditionalRoutes = $model->getConditionalRoutes();
+
+                    if (!is_array($conditionalRoutes)) {
+
+                        $conditionalRoutes = array($conditionalRoutes);
+                    }
+
+                    foreach ($conditionalRoutes as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getConferenceRooms(null, null, true) !== null) {
                     $conferenceRooms = $model->getConferenceRooms();
 

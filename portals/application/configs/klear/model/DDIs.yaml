@@ -4,7 +4,7 @@ production:
   class: \IvozProvider\Model\DDIs
   fields:
     companyId:
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -25,7 +25,7 @@ production:
       required: true
       default: true
     externalCallFilterId:
-      title: _('External call filter id')
+      title: ngettext('External call filter', 'External call filters', 1)
       type: select
       source:
         data: mapper
@@ -51,72 +51,80 @@ production:
               show: [ ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "userId","faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'user':
-            title: _('user')
+            title: ngettext('User', 'Users', 1)
             visualFilter:
               show: ["userId" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'IVRCommon':
-            title: _('IVRCommon')
+            title: ngettext('IVR Common', 'IVRs Common', 1)
             visualFilter:
               show: [ "IVRCommonId" ]
               hide: [
                 "userId", "IVRCustomId", "huntGroupId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'IVRCustom':
-            title: _('IVRCustom')
+            title: ngettext('IVR Custom', 'IVR Custom', 1)
             visualFilter:
               show: [ "IVRCustomId" ]
               hide: [
                 "IVRCommonId", "userId", "huntGroupId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'huntGroup':
-            title: _('huntGroup')
+            title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
               show: [ "huntGroupId" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "userId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId"
+                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'fax':
-            title: _('fax')
+            title: ngettext('Fax', 'Faxes', 1)
             visualFilter:
               show: [ "faxId" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "userId",
                 "conferenceRoomId", "recordCalls", "friendValue", "queueId",
-                "retailAccountId"
+                "retailAccountId", "conditionalRouteId"
               ]
           'conferenceRoom':
-            title: _('ConferenceRoom')
+            title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
               show: [ "conferenceRoomId" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                "friendValue", "queueId", "retailAccountId"
+                "friendValue", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'friend':
-            title: _('Friend')
+            title: ngettext('Friend', 'Friends', 1)
             visualFilter:
               show: [ "friendValue" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                "conferenceRoomId", "queueId", "retailAccountId"
+                "conferenceRoomId", "queueId", "retailAccountId",
+                "conditionalRouteId"
               ]
           'queue':
-            title: _('Queue')
+            title: ngettext('Queue', 'Queues', 1)
             visualFilter:
               show: [ "queueId" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                "conferenceRoomId", "friendValue", "retailAccountId"
+                "conferenceRoomId", "friendValue", "retailAccountId",
+                "conditionalRouteId"
               ]
           'retailAccount':
             title: _('Retail Account')
@@ -124,7 +132,17 @@ production:
               show: [ "retailAccountId", "recordCalls" ]
               hide: [
                 "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                  "conferenceRoomId", "friendValue", "queueId"
+                  "conferenceRoomId", "friendValue", "queueId",
+                  "conditionalRouteId"
+              ]
+          'conditional':
+            title: _('Conditional Route')
+            visualFilter:
+              show: [ "conditionalRouteId" ]
+              hide: [
+                "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId",
+                "userId", "huntGroupId", "numberValue", "queueId", "faxId",
+                "retailAccountId"
               ]
     recordCalls:
       title: _('Record call')
@@ -133,10 +151,10 @@ production:
       source:
         data: inline
         values:
-          'none': _('none')
-          'all': _('all')
-          'inbound': _('inbound')
-          'outbound': _('outbound')
+          'none': _('None')
+          'all': _('All')
+          'inbound': _('Inbound')
+          'outbound': _('Outbound')
       info:
         type: box
         position: left
@@ -144,7 +162,7 @@ production:
         text: _("Local legislation may enforce to announce the call recording to both parties, act responsibly")
         label: _("Need help?")
     displayName:
-      title: _('Displayname')
+      title: _('Display name')
       type: text
       maxLength: 50
       info:
@@ -171,7 +189,7 @@ production:
         text: _("This setting needs external tarification module")
         label: _("Need help?")
     userId:
-      title: _('User id')
+      title: ngettext('User', 'Users', 1)
       type: select
       required: true
       source:
@@ -187,7 +205,7 @@ production:
           order: name
         'null': _("Unassigned")
     IVRCommonId:
-      title: _('I v r common id')
+      title: ngettext('IVR Common', 'IVRs Common', 1)
       type: select
       required: true
       source:
@@ -202,7 +220,7 @@ production:
           order: name
         'null': _("Unassigned")
     IVRCustomId:
-      title: _('I v r custom id')
+      title: ngettext('IVR Custom', 'IVRs Custom', 1)
       type: select
       required: true
       source:
@@ -217,7 +235,7 @@ production:
           order: name
         'null': _("Unassigned")
     huntGroupId:
-      title: _('Hunt group id')
+      title: ngettext('Hunt Group', 'Hunt Groups', 1)
       type: select
       required: true
       source:
@@ -232,7 +250,7 @@ production:
           order: name
         'null': _("Unassigned")
     faxId:
-      title: _('Fax id')
+      title: ngettext('Fax', 'Faxes', 1)
       type: select
       required: true
       source:
@@ -247,7 +265,7 @@ production:
           order: name
         'null': _("Unassigned")
     conferenceRoomId:
-      title: _('Conference room id')
+      title: ngettext('Conference room', 'Conference rooms', 1)
       type: select
       required: true
       source:
@@ -302,7 +320,7 @@ production:
             template: '%name%'
           order: description
     countryId:
-      title: _('Country id')
+      title: _('Country')
       type: select
       required: true
       source:
@@ -329,13 +347,28 @@ production:
           order: name
         'null': _("Company's default")
     queueId:
-      title: _('Queue')
+      title: ngettext('Queue', 'Queues', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Queues
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    conditionalRouteId:
+      title: _('Conditional Route')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\ConditionalRoutes
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:

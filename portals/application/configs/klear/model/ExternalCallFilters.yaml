@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\ExternalCallFilters
   fields:
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order: name
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
@@ -79,17 +79,17 @@ production:
             visualFilter:
               hide: ['holidayNumberValue', 'holidayExtensionId', 'holidayVoiceMailUserId']
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ['holidayNumberValue']
               hide: ['holidayExtensionId', 'holidayVoiceMailUserId']
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ['holidayExtensionId']
               hide: ['holidayNumberValue', 'holidayVoiceMailUserId']
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ['holidayVoiceMailUserId']
               hide: ['holidayNumberValue', 'holidayExtensionId']
@@ -142,17 +142,17 @@ production:
             visualFilter:
               hide: ['outOfScheduleNumberValue', 'outOfScheduleExtensionId', 'outOfScheduleVoiceMailUserId']
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: ['outOfScheduleNumberValue']
               hide: ['outOfScheduleExtensionId', 'outOfScheduleVoiceMailUserId']
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ['outOfScheduleExtensionId']
               hide: ['outOfScheduleNumberValue', 'outOfScheduleVoiceMailUserId']
           'voicemail':
-            title: _('voicemail')
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ['outOfScheduleVoiceMailUserId']
               hide: ['outOfScheduleNumberValue', 'outOfScheduleExtensionId']
@@ -195,7 +195,7 @@ production:
           order: name
         'null': _("Unassigned")
     ExternalCallFilterRelSchedules:
-      title: _('Schedules')
+      title: ngettext('Schedule', 'Schedules', 0)
       type: multiselect
       source:
         data: mapper
@@ -206,7 +206,7 @@ production:
           relationProperty: Schedule
           filterClass: IvozProvider_Klear_Filter_Company
     ExternalCallFilterRelCalendars:
-      title: _('Caledars')
+      title: ngettext('Calendar', 'Calendars', 0)
       type: multiselect
       source:
         data: mapper

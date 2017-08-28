@@ -15,7 +15,7 @@ class ServiceAction extends RouterAction
 
     public function process()
     {
-        if (empty($this->_service) || empty($this->_caller)) {
+        if (empty($this->_service)) {
              $this->agi->error("Service is not properly defined. Check configuration.");
             return;
         }
@@ -46,7 +46,7 @@ class ServiceAction extends RouterAction
     protected function _processVoiceMail()
     {
         // Local variables to improve readability
-        $caller = $this->_caller;
+        $caller = $this->agi->getChannelCaller();
         $service = $this->_service;
         $company = $caller->getCompany();
 
@@ -88,7 +88,7 @@ class ServiceAction extends RouterAction
     protected function _processDirectPickUp()
     {
         // Local variables to improve readability
-        $caller = $this->_caller;
+        $caller = $this->agi->getChannelCaller();
         $service = $this->_service;
         $company = $caller->getCompany();
 
@@ -130,7 +130,7 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $service = $this->_service;
-        $caller = $this->_caller;
+        $caller = $this->agi->getChannelCaller();
 
         //check if user is in any pickupgroup
         $pickUpGroups = $caller->getPickUpGroups();
@@ -154,7 +154,7 @@ class ServiceAction extends RouterAction
     {
         // Local variables to improve readability
         $service = $this->_service;
-        $caller = $this->_caller;
+        $caller = $this->agi->getChannelCaller();
 
         /**
          * Extract locutionId from dialed number

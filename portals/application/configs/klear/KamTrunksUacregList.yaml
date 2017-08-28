@@ -1,27 +1,27 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: kamTrunksUacregList_screen
-  screens: 
-    kamTrunksUacregList_screen: &kamTrunksUacregList_screenLink 
+  screens:
+    kamTrunksUacregList_screen: &kamTrunksUacregList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *KamTrunksUacreg
       class: ui-silk-server-link
-      title: _("List of %s %2s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg(s)', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Provider register', 'Provider registers', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
         blacklist:
-          l_uuid: true 
-          l_username: true 
-          l_domain: true 
-          realm: true 
-          expires: true 
+          l_uuid: true
+          l_username: true
+          l_domain: true
+          realm: true
+          expires: true
           auth_username: true
           auth_password: true
           auth_proxy: true
@@ -32,11 +32,11 @@ production:
           targetDDI: true
           r_username: true
           r_domain: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             kamTrunksUacregEdit_screen: true
-          dialogs: 
+          dialogs:
             kamTrunksUacregDel_dialog: true
           default: kamTrunksUacregEdit_screen
       fixedPositions: &kamTrunksUacregFixedPositions_link
@@ -57,27 +57,27 @@ production:
             auth_proxy: 5
             realm: 6
             expires: 6
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           kamTrunksUacregNew_screen: true
-        dialogs: 
+        dialogs:
           kamTrunksUacregDel_dialog: true
-    kamTrunksUacregNew_screen: &kamTrunksUacregNew_screenLink 
+    kamTrunksUacregNew_screen: &kamTrunksUacregNew_screenLink
       <<: *KamTrunksUacreg
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg(s)', 1))
+      title: _("Add %s", ngettext('Provider register', 'Provider registers', 1))
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
       fields:
         blacklist:
           targetDDI: true
-          l_username: true 
-          l_domain: true 
+          l_username: true
+          l_domain: true
           flags: true
           reg_delay: true
         order:
@@ -87,23 +87,23 @@ production:
           auth_password: true
           auth_username: true
           auth_proxy: true
-          realm: true 
-          expires: true 
+          realm: true
+          expires: true
       fixedPositions:
         <<: *kamTrunksUacregFixedPositions_link
-    kamTrunksUacregEdit_screen: &kamTrunksUacregEdit_screenLink 
+    kamTrunksUacregEdit_screen: &kamTrunksUacregEdit_screenLink
       <<: *KamTrunksUacreg
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg(s)', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Provider register', 'Provider registers', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
         blacklist:
           targetDDI: true
-          l_username: true 
-          l_domain: true 
+          l_username: true
+          l_domain: true
           flags: true
           reg_delay: true
         order:
@@ -114,26 +114,26 @@ production:
           auth_password: true
           auth_username: true
           auth_proxy: true
-          realm: true 
-          expires: true 
+          realm: true
+          expires: true
       fixedPositions:
         <<: *kamTrunksUacregFixedPositions_link
-  dialogs: &kamTrunksUacreg_dialogsLink 
-    kamTrunksUacregDel_dialog: &kamTrunksUacregDel_dialogLink 
+  dialogs: &kamTrunksUacreg_dialogsLink
+    kamTrunksUacregDel_dialog: &kamTrunksUacregDel_dialogLink
       <<: *KamTrunksUacreg
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Kam trunks uacreg', 'Kam trunks uacreg(s)', 1))
-      description: _("Do you want to delete this %s?", ngettext('Kam trunks uacreg', 'Kam trunks uacreg(s)', 1))
-      message: _("%s successfully deleted.", ngettext('Kam trunks uacreg', 'Kam trunks uacreg(s)', 1))
+      title: _("Delete %s", ngettext('Provider register', 'Provider registers', 1))
+      description: _("Do you want to delete this %s?", ngettext('Provider register', 'Provider registers', 1))
+      message: _("%s successfully deleted.", ngettext('Provider register', 'Provider registers', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

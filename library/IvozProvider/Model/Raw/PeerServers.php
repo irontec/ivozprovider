@@ -751,7 +751,7 @@ class PeerServers extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_authNeededAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for authNeeded'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'authNeeded'));
             }
             $this->_authNeeded = (string) $data;
 

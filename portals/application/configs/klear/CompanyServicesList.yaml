@@ -2,55 +2,55 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: companyServicesList_screen
-  screens: &companyServices_screensLink 
-    companyServicesList_screen: &companyServicesList_screenLink 
+  screens: &companyServices_screensLink
+    companyServicesList_screen: &companyServicesList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *CompanyServices
       forcedValues:
-        <<: *forcedCompany      
+        <<: *forcedCompany
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Company service', 'Company services', 0), "[format| (%parent%)]")
-      fields: &companyServices_fieldsLink 
-        options: 
+      fields: &companyServices_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             companyServicesEdit_screen: true
-          dialogs: 
+          dialogs:
             companyServicesDel_dialog: true
           default: companyServicesEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           companyServicesNew_screen: true
-        dialogs: 
+        dialogs:
           companyServicesDel_dialog: true
-    companyServicesNew_screen: &companyServicesNew_screenLink 
+    companyServicesNew_screen: &companyServicesNew_screenLink
       <<: *CompanyServices
       forcedValues:
-        <<: *forcedCompany      
+        <<: *forcedCompany
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Company service', 'Company services', 1), "[format| (%parent%)]")
       shortcutOption: N
-    companyServicesEdit_screen: &companyServicesEdit_screenLink 
+    companyServicesEdit_screen: &companyServicesEdit_screenLink
       <<: *CompanyServices
       forcedValues:
-        <<: *forcedCompany      
+        <<: *forcedCompany
       controller: edit
       class: ui-silk-pencil
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Company service', 'Company services', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Company service', 'Company services', 1), "[format| (%item%)]")
-  dialogs: &companyServices_dialogsLink 
-    companyServicesDel_dialog: &companyServicesDel_dialogLink 
+  dialogs: &companyServices_dialogsLink
+    companyServicesDel_dialog: &companyServicesDel_dialogLink
       <<: *CompanyServices
       controller: delete
       class: ui-silk-bin
@@ -60,11 +60,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Company service', 'Company services', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

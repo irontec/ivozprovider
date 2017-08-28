@@ -494,7 +494,7 @@ class Terminals extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_directMediaMethodAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for directMediaMethod'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'directMediaMethod'));
             }
             $this->_directMediaMethod = (string) $data;
 

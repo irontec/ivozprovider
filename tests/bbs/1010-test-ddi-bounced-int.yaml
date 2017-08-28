@@ -1,0 +1,25 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to bob ddi
+    timeout: 20
+    sessions:
+
+      - call_uac_alice:
+          - wait
+          - call:
+              dest: 001999661004
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - wait: 2
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - call_uas_dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - callid: 01134999661001
+          - answer
+          - waitfor: DISCONNCTD
+          - unregister

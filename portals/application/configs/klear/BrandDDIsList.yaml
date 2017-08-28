@@ -1,14 +1,14 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: dDIsList_screen
   screens: &dDIs_screenLink
-    dDIsList_screen: &dDIsList_screenLink 
+    dDIsList_screen: &dDIsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *DDIs
       title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
@@ -54,20 +54,20 @@ production:
           fields:
             externalCallFilterId: 2
         group2:
-          label: _("Routing data")
+          label: _("Routing configuration")
           colsPerRow: 3
           fields:
-            routeType: 1 
+            routeType: 1
             userId: 1
             faxId: 1
             IVRCommonId: 1
             IVRCustomId: 1
             huntGroupId: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

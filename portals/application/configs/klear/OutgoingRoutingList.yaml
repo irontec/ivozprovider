@@ -2,19 +2,19 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: outgoingRoutingList_screen
-  screens: &outgoingRouting_screensLink 
-    outgoingRoutingList_screen: &outgoingRoutingList_screenLink 
+  screens: &outgoingRouting_screensLink
+    outgoingRoutingList_screen: &outgoingRoutingList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *OutgoingRouting
       class: ui-silk-arrow-divide
-      title: _("List of %s %2s", ngettext('Outgoing routing', 'Outgoing routing(s)', 0), "[format| (%parent%)]")
-      fields: &outgoingRouting_fieldsLink 
+      title: _("List of %s %2s", ngettext('Outgoing routing', 'Outgoing routings', 0), "[format| (%parent%)]")
+      fields: &outgoingRouting_fieldsLink
         order: &outgoingRouting_fieldsOrder
           companyId: true
           type: true
@@ -27,31 +27,31 @@ production:
         blacklist:
           routingPatternId: true
           routingPatternGroupId: true
-        options: 
+        options:
           title: _("Options")
-          screens: 
+          screens:
             outgoingRoutingEdit_screen: true
-          dialogs: 
+          dialogs:
             outgoingRoutingDel_dialog: true
           default: outgoingRoutingEdit_screen
       forcedValues:
         <<: *forcedBrand
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           outgoingRoutingNew_screen: true
-        dialogs: 
+        dialogs:
           outgoingRoutingDel_dialog: true
-    outgoingRoutingNew_screen: &outgoingRoutingNew_screenLink 
+    outgoingRoutingNew_screen: &outgoingRoutingNew_screenLink
       <<: *OutgoingRouting
       forcedValues:
         <<: *forcedBrand
       controller: new
       fields:
-        blacklist: 
+        blacklist:
           target: true
         order:
-          <<: *outgoingRouting_fieldsOrder 
+          <<: *outgoingRouting_fieldsOrder
       fixedPositions: &outgoingRoutingFixedPositions_Link
         group0:
           colsPerRow: 12
@@ -78,40 +78,40 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Outgoing routing', 'Outgoing routings', 1), "[format| (%parent%)]")
       shortcutOption: N
-    outgoingRoutingEdit_screen: &outgoingRoutingEdit_screenLink 
+    outgoingRoutingEdit_screen: &outgoingRoutingEdit_screenLink
       <<: *OutgoingRouting
       forcedValues:
         <<: *forcedBrand
       fields:
         order:
           <<: *outgoingRouting_fieldsOrder
-        blacklist: 
+        blacklist:
           target: true
       controller: edit
       class: ui-silk-pencil
       label: false
-      labelOnPostAction: _("Edit %s %2s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1), "[format| (%item%)]")
-      title: _("Edit %s %2s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1), "[format| (%item%)]")
-      fixedPositions: 
+      labelOnPostAction: _("Edit %s %2s", ngettext('Outgoing routing', 'Outgoing routings', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Outgoing routing', 'Outgoing routings', 1), "[format| (%item%)]")
+      fixedPositions:
           <<: *outgoingRoutingFixedPositions_Link
-  dialogs: &outgoingRouting_dialogsLink 
-    outgoingRoutingDel_dialog: &outgoingRoutingDel_dialogLink 
+  dialogs: &outgoingRouting_dialogsLink
+    outgoingRoutingDel_dialog: &outgoingRoutingDel_dialogLink
       <<: *OutgoingRouting
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Outgoing routing', 'Outgoing routing(s)', 1))
-      description: _("Do you want to delete this %s?", ngettext('Outgoing routing', 'Outgoing routing(s)', 1))
-      message: _("%s successfully deleted.", ngettext('Outgoing routing', 'Outgoing routing(s)', 1))
+      title: _("Delete %s", ngettext('Outgoing routing', 'Outgoing routings', 1))
+      description: _("Do you want to delete this %s?", ngettext('Outgoing routing', 'Outgoing routings', 1))
+      message: _("%s successfully deleted.", ngettext('Outgoing routing', 'Outgoing routings', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

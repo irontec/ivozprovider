@@ -2,26 +2,26 @@
 #include conf.d/actions.yaml
 #include conf.d/importPricesHelp.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: pricingPlansRelTargetPatternsList_screen
-  screens: &pricingPlansRelTargetPatterns_screensLink 
-    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsList_screenLink 
+  screens: &pricingPlansRelTargetPatterns_screensLink
+    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PricingPlansRelTargetPatterns
       class: ui-silk-money-euro
-      title: _("List of %s %2s", ngettext('price', 'prices', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Price', 'Prices', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &pricingPlansRelTargetPatterns_fieldsLink 
-        options: 
+      fields: &pricingPlansRelTargetPatterns_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             pricingPlansRelTargetPatternsEdit_screen: true
-          dialogs: 
+          dialogs:
             pricingPlansRelTargetPatternsDel_dialog: true
           default: pricingPlansRelTargetPatternsEdit_screen
         order:
@@ -31,11 +31,11 @@ production:
       #order:
       #  field:
       #    - metric asc
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           pricingPlansRelTargetPatternsNew_screen: true
-        dialogs: 
+        dialogs:
           pricingPlansRelTargetPatternsDel_dialog: true
           importPricingPlansRelPatterns_dialog: true
       csv:
@@ -51,13 +51,13 @@ production:
         encoding: "utf-8"
         executionSeconds: ""
       <<: *importPricesHelp
-    pricingPlansRelTargetPatternsNew_screen: &pricingPlansRelTargetPatternsNew_screenLink 
+    pricingPlansRelTargetPatternsNew_screen: &pricingPlansRelTargetPatternsNew_screenLink
       <<: *PricingPlansRelTargetPatterns
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Price', 'Prices', 1), "[format| (%parent%)]")  
+      title: _("Add %s", ngettext('Price', 'Prices', 1), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
@@ -73,47 +73,47 @@ production:
             connectionCharge: 1
             periodTime: 1
             perPeriodCharge: 1
-      fields: 
+      fields:
         order: &pricingPlansRelTargetPatternsOrder_Link
           pricingPlanId: true
           targetPatternId: true
         blacklist:
           metric: true
           targetPatternIdGhost: true
-    pricingPlansRelTargetPatternsEdit_screen: &pricingPlansRelTargetPatternsEdit_screenLink 
+    pricingPlansRelTargetPatternsEdit_screen: &pricingPlansRelTargetPatternsEdit_screenLink
       <<: *PricingPlansRelTargetPatterns
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Price', 'Prices', 1), "[format| (%item%)]")  
+      title: _("Edit %s %2s", ngettext('Price', 'Prices', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fixedPositions:
         <<: *pricingPlansRelTargetPatternsFixedPos_Link
-      fields: 
+      fields:
         order:
           <<: *pricingPlansRelTargetPatternsOrder_Link
         blacklist:
           targetPatternIdGhost: true
-        
-  dialogs: &pricingPlansRelTargetPatterns_dialogsLink 
+
+  dialogs: &pricingPlansRelTargetPatterns_dialogsLink
     pricingPlansRelTargetPatternsDel_dialog: &pricingPlansRelTargetPatternsDel_dialogLink
       <<: *PricingPlansRelTargetPatterns
       controller: delete
       class: ui-silk-bin
       labelOption: false
       title: _("Delete %s", ngettext('Price', 'Prices', 1))
-      description: _("Do you want to delete this %s?", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 1))
-      message: _("%s successfully deleted.", ngettext('Pricing plans rel target pattern', 'Pricing plans rel target patterns', 1))
+      description: _("Do you want to delete this %s?", ngettext('Price', 'Prices', 1))
+      message: _("%s successfully deleted.", ngettext('Price', 'Prices', 1))
       multiItem: 1
       labelOnList: 1
-      
+
     importPricingPlansRelPatterns_dialog:
       <<: *PricingPlansRelTargetPatterns
       module: default
-      title: _("Import %s", ngettext('price', 'prices', 0))
+      title: _("Import %s", ngettext('Price', 'Prices', 0))
       label: false
-      labelOnEdit: true   
+      labelOnEdit: true
       labelOnList: true
       labelOnOption: true
       labelOnEntityPostSave: true
@@ -126,7 +126,7 @@ production:
       escape: "\\"
       forcedValues:
         brandId: ${auth.brandId}
-      
+
   commands: &pricingPlansRelTargetPatterns_commandsLink
     importPricingPlansRelPatternsFreeUpload_command:
       <<: *PricingPlansRelTargetPatterns
@@ -148,11 +148,11 @@ production:
         limit: 8
         order: name
         ignoreWhereDefault: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

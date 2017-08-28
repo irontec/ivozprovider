@@ -440,7 +440,7 @@ class BrandURLs extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_urlTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for urlType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'urlType'));
             }
             $this->_urlType = (string) $data;
 

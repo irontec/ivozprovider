@@ -661,7 +661,7 @@ class Invoices extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_statusAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for status'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'status'));
             }
             $this->_status = (string) $data;
 

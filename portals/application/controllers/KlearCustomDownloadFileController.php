@@ -20,8 +20,8 @@ class KlearCustomDownloadFileController extends Zend_Controller_Action
     {
 
         $data = array(
-                'title' => _("Download to file"),
-                'message'=> _("<a download=\"template.txt\">Download</a>"),
+                'title' => _("Download file"),
+                'message'=> "<a download=\"template.txt\">" . _("Download") . "</a>",
                 'buttons'=> array(
                         _('Cancel') => array(
                                 'reloadParent' => false,

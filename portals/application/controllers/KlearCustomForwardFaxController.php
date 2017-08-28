@@ -28,7 +28,7 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
         }
 
         $bodyMsg = '
-                <p><strong>'._("Reenviar a").':</strong> '.$modelFax->getDst().'</p>
+                <p><strong>'._("Resend to").':</strong> '.$modelFax->getDst().'</p>
                 <p><strong>'._("File").':</strong> '.$modelFax->getFileBaseName().'</p>
         ';
 
@@ -37,10 +37,10 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
             $modelFax->save();
 
             $data = array(
-                'title' => _("Fax reenviado"),
+                'title' => _("Fax resent"),
                 'message'=> $bodyMsg,
                 'buttons'=>array(
-                    _('Aceptar') => array(
+                    _('Accept') => array(
                         'reloadParent' => true,
                         'recall' => false,
                     )
@@ -48,14 +48,14 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
             );
         } else {
             $data = array(
-                'title' => _("Reenviar fax"),
+                'title' => _("Resend fax"),
                 'message'=> $bodyMsg,
                 'buttons'=>array(
-                    _('Cancelar') => array(
+                    _('Cancel') => array(
                         'reloadParent' => false,
                         'recall' => false,
                     ),
-                    _('Reenviar') => array(
+                    _('Resend') => array(
                         "recall" => true,
                         "reloadParent" => false,
                         "params" => array(

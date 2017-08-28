@@ -1,34 +1,34 @@
-production: 
+production:
   class: \IvozProvider\Model\MusicOnHold
-  fields: 
-    companyId: 
-      title: _('Company')
+  fields:
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    originalFile: 
+    originalFile:
       title: ngettext('Uploaded file', 'Uploaded files', 1)
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: musicOnHold_FileDownload_command
             icon: ui-silk-bullet-disk
             title: _("Download file")
             onNull: hide
-          upload: 
+          upload:
             type: command
             target: musicOnHold_FileUpload_command
             title: _("Upload file")
@@ -40,14 +40,14 @@ production:
             class: jmedia
             onNull: hide
             target: musicOnHold_FileDownload_command
-    encodedFile: 
+    encodedFile:
       title: ngettext('File for play', 'Files for play', 1)
       type: file
-      source: 
+      source:
         data: fso
         size_limit: 20M
-        options: 
-          download: 
+        options:
+          download:
             external: true
             type: command
             target: musicOnHold_FileDownload_command
@@ -60,17 +60,17 @@ production:
             class: jmedia
             onNull: hide
             target: musicOnHold_FileDownload_command
-    name: 
-      title: ngettext('Name', 'Names', 1)
+    name:
+      title: _('Name')
       type: text
       trim: both
       required: true
       default: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

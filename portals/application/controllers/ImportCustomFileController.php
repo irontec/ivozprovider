@@ -156,10 +156,10 @@ class ImportCustomFileController extends Zend_Controller_Action
     protected function _loadFile()
     {
 
-        $message = "<p>".$this->_helper->translate("Please, chose a file to import")."</p>";
+        $message = "<p>".$this->_helper->translate("Select file to import")."</p>";
         $message .= "<input type='file' name='importFile' data-upload-command='".$this->_freeUploadCommand."'>";
         $data = array(
-                'title' => $this->_helper->translate("Parse file and import"),
+                'title' => $this->_helper->translate("Import file"),
                 'message' => $message,
                 'buttons' => array(
                         $this->_helper->translate('Close') => array(
@@ -268,7 +268,7 @@ class ImportCustomFileController extends Zend_Controller_Action
             if ($optionValue == "ignore") {
                 $selected = 'selected="selected"';
             }
-            $tmp.='<option value="ignore" '.$selected.'>' . $this->_helper->translate('ignore') . '</option>';
+            $tmp.='<option value="ignore" '.$selected.'>' . $this->_helper->translate('Ignore') . '</option>';
             foreach ($availableFieldsKeys as $idf => $xfield) {
                 if (isset($this->_forcedValues[$xfield])) {
                     continue;
@@ -334,7 +334,7 @@ class ImportCustomFileController extends Zend_Controller_Action
 
         $form = $this->_buildForm($lines);
         $data = array(
-                'title' => $this->_helper->translate("Parse file and import"),
+                'title' => $this->_helper->translate("Import file"),
                 'message' => $message."<br>".$form,
                 'buttons' => array(
                         $this->_helper->translate('Close') => array(
@@ -379,7 +379,7 @@ class ImportCustomFileController extends Zend_Controller_Action
         //$message = sprintf($mess, $jobToken);
 
         $data = array (
-            'title' => $this->_helper->translate("Parse file and import"),
+            'title' => $this->_helper->translate("Import file"),
             'message' => $mess,
             'buttons' => array(
                 $this->_helper->translate('Close') => array(

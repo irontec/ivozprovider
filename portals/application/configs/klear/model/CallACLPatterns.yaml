@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\CallACLPatterns
   fields:
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -15,13 +15,13 @@ production:
             template: '%name%'
           order: name
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _("Name")
       type: text
       trim: both
       required: true
       default: true
     regExp:
-      title: _('Reg exp')
+      title: _('Regular Expression')
       type: text
       trim: both
       required: true

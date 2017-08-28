@@ -594,7 +594,7 @@ class ExternalCallFilters extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_holidayTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for holidayTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'holidayTargetType'));
             }
             $this->_holidayTargetType = (string) $data;
 
@@ -733,7 +733,7 @@ class ExternalCallFilters extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_outOfScheduleTargetTypeAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for outOfScheduleTargetType'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'outOfScheduleTargetType'));
             }
             $this->_outOfScheduleTargetType = (string) $data;
 

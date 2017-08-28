@@ -59,7 +59,6 @@ class Terminals extends Raw\Terminals
                 ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())
                 ->setDirectmediaMethod($model->getDirectmediaMethod())
-                ->setSubscribecontext('company' . $model->getCompanyId())
                 ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
                 ->save($forceInsert);
 

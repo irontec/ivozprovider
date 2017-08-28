@@ -1,0 +1,28 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call to IVR common not answered routed to extension
+    type: simple
+    timeout: 30
+    sessions:
+      - alice:
+          - call:
+              dest: 600             # IVR common extension
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - dtmf: 1003            # Press Charlie Extension
+          - waitfor: DISCONNCTD
+      - charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD  # Wait until call is cancelled
+      - dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - answer
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD

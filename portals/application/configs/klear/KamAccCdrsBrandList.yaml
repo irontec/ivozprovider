@@ -11,6 +11,8 @@ production:
     kamAccCdrsList_screen:
       <<: *kamAccCdrsList_screenLink
       csv: true
+      mapper: \IvozProvider\Mapper\Sql\KamAccCdrs
+      modelFile: KamAccCdrsBrand
       forcedValues:
         <<: *forcedBrand
       fields:

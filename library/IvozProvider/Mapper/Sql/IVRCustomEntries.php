@@ -30,18 +30,26 @@ class IVRCustomEntries extends Raw\IVRCustomEntries
                 case "number":
                     $model->setTargetExtensionId(null);
                     $model->setTargetVoiceMailUserId(null);
+                    $model->setTargetConditionalRouteId(null);
                     break;
                 case "extension":
                     $model->setTargetNumberValue(null);
                     $model->setTargetVoiceMailUserId(null);
+                    $model->setTargetConditionalRouteId(null);
                     break;
                 case "voicemail":
                     $model->setTargetNumberValue(null);
                     $model->setTargetExtensionId(null);
+                    $model->setTargetConditionalRouteId(null);
+                    break;
+                case "conditional":
+                    $model->setTargetNumberValue(null);
+                    $model->setTargetExtensionId(null);
+                    $model->setTargetVoiceMailUserId(null);
                     break;
             }
         }
-    
+
         return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
     }
 }

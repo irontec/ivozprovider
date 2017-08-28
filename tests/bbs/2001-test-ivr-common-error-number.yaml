@@ -1,0 +1,25 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from bob to alice using IVR common (error handler)
+    type: simple
+    timeout: 20
+    sessions:
+      - bob:
+          - call:
+              dest: 600             # IVR common extension
+              credentials:
+                <<: *bob_cred
+          - waitfor: CONFIRMED
+          - wait: 15              # Don't press any digits
+          - waitfor: DISCONNCTD
+      - charlie:
+          - register:
+              <<: *charlie_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait
+          - answer
+          - waitfor: CONFIRMED
+          - wait
+          - hangup
+          - waitfor: DISCONNCTD

@@ -5,15 +5,15 @@ production:
   main:
     module: klearMatrix
     defaultScreen: Dashboard_screen
-  screens: 
-    Dashboard_screen: 
+  screens:
+    Dashboard_screen:
       controller: dashboard
       action: index
       title: _("Main platform view")
       useExplain: false
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

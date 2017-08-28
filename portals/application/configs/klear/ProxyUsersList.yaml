@@ -2,47 +2,47 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: proxyUsersList_screen
-  screens: &proxyUsers_screensLink 
-    proxyUsersList_screen: &proxyUsersList_screenLink 
+  screens: &proxyUsers_screensLink
+    proxyUsersList_screen: &proxyUsersList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *ProxyUsers
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Proxy user', 'Proxy users', 0), "[format| (%parent%)]")
-      fields: &proxyUsers_fieldsLink 
-        options: 
+      title: _("List of %s %2s", ngettext('Proxy Users', 'Proxies Users', 0), "[format| (%parent%)]")
+      fields: &proxyUsers_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             proxyUsersEdit_screen: true
           default: proxyUsersEdit_screen
-    proxyUsersNew_screen: &proxyUsersNew_screenLink 
+    proxyUsersNew_screen: &proxyUsersNew_screenLink
       <<: *ProxyUsers
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Proxy user', 'Proxy users', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Proxy Users', 'Proxies Users', 1), "[format| (%parent%)]")
       shortcutOption: N
-    proxyUsersEdit_screen: &proxyUsersEdit_screenLink 
+    proxyUsersEdit_screen: &proxyUsersEdit_screenLink
       <<: *ProxyUsers
       controller: edit
       class: ui-silk-pencil
       label: false
-      labelOnPostAction: _("Edit %s %2s", ngettext('Proxy user', 'Proxy users', 1), "[format| (%item%)]")
-      title: _("Edit %s %2s", ngettext('Proxy user', 'Proxy users', 1), "[format| (%item%)]")
+      labelOnPostAction: _("Edit %s %2s", ngettext('Proxy Users', 'Proxies Users', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Proxy Users', 'Proxies Users', 1), "[format| (%item%)]")
       fields:
         readOnly:
           name: true
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

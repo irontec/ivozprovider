@@ -2,17 +2,18 @@
 #
 # Simple scenario for testing a call from bob to alice through a IVR
 # IVR must have the extension 600 assigned
-# Bob must have the extension 1001 assigned
 #
 # ----------------------------------------------------------------------------
+scenarios:
   - name: call from bob to alice using IVR custom
     type: simple
     timeout: 20
     sessions:
       - ivr_uac_bob:
-          - credentials:
-              <<: *bob_cred
-          - call: 601             # IVR custom extension
+          - call:
+              dest: 601             # IVR custom extension
+              credentials:
+                <<: *bob_cred
           - waitfor: CONFIRMED
           - wait: 3
           - dtmf: 1

@@ -3,34 +3,34 @@
 #include PricingPlansRelTargetPatternsList.yaml
 #include PricingPlansList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: targetPatternsList_screen
-  screens: &targetPatterns_screensLink 
-    targetPatternsList_screen: &targetPatternsList_screenLink 
+  screens: &targetPatterns_screensLink
+    targetPatternsList_screen: &targetPatternsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *TargetPatterns
       class: ui-silk-page-find
-      title: _("List of %s %2s", ngettext('Pricing pattern', 'Pricing patterns', 0), "[format| (%parent%)]")  
+      title: _("List of %s %2s", ngettext('Pricing pattern', 'Pricing patterns', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &targetPatterns_fieldsLink 
-        options: 
+      fields: &targetPatterns_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
 #            pricingPlansRelTargetPatternsList_screen: true
             targetPatternsEdit_screen: true
-          dialogs: 
+          dialogs:
             targetPatternsDel_dialog: true
           default: targetPatternsEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           targetPatternsNew_screen: true
-        dialogs: 
+        dialogs:
           targetPatternsDel_dialog: true
           importPatterns_dialog: false
       csv:
@@ -45,14 +45,14 @@ production:
         newLine: "\r\n"
         encoding: "utf-8"
         executionSeconds: ""
-        
-    targetPatternsNew_screen: &targetPatternsNew_screenLink 
+
+    targetPatternsNew_screen: &targetPatternsNew_screenLink
       <<: *TargetPatterns
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Pricing pattern', 'Pricing patterns', 1), "[format| (%parent%)]")  
+      title: _("Add %s", ngettext('Pricing pattern', 'Pricing patterns', 1), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
@@ -66,47 +66,47 @@ production:
           colsPerRow: 1
           fields:
             regexp: 1
-    targetPatternsEdit_screen: &targetPatternsEdit_screenLink 
+    targetPatternsEdit_screen: &targetPatternsEdit_screenLink
       <<: *TargetPatterns
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Pricing pattern', 'Pricing patterns', 1), "[format| (%item%)]")  
+      title: _("Edit %s %2s", ngettext('Pricing pattern', 'Pricing patterns', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fixedPositions:
         <<: *ptargetPatternsFixedPositions_Link
 
-    #pricingPlansRelTargetPatterns: 
+    #pricingPlansRelTargetPatterns:
     <<: *pricingPlansRelTargetPatterns_screensLink
-    pricingPlansRelTargetPatternsList_screen: 
+    pricingPlansRelTargetPatternsList_screen:
       <<: *pricingPlansRelTargetPatternsList_screenLink
       filterField: targetPatternId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
-    pricingPlansRelTargetPatternsNew_screen: 
+    pricingPlansRelTargetPatternsNew_screen:
       <<: *pricingPlansRelTargetPatternsNew_screenLink
       filterField: targetPatternId
-    pricingPlansRelTargetPatternsEdit_screen: 
+    pricingPlansRelTargetPatternsEdit_screen:
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
       filterField: targetPatternId
-      
-    #PricingPlans: 
+
+    #PricingPlans:
     pricingPlansList_screen:
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PricingPlans
       class: ui-silk-money
       title: _("List of %s %2s", ngettext('Pricing plan', 'Pricing plans', 0), "[format| (%parent%)]")
-      filterClass: IvozProvider_Klear_Filter_TargetPatternPricingPlans  
+      filterClass: IvozProvider_Klear_Filter_TargetPatternPricingPlans
       forcedValues:
         <<: *forcedBrand
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
 
-  dialogs: &targetPatterns_dialogsLink 
-    targetPatternsDel_dialog: &targetPatternsDel_dialogLink 
+  dialogs: &targetPatterns_dialogsLink
+    targetPatternsDel_dialog: &targetPatternsDel_dialogLink
       <<: *TargetPatterns
       controller: delete
       class: ui-silk-bin
@@ -117,12 +117,12 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    importPatterns_dialog: 
+    importPatterns_dialog:
       <<: *TargetPatterns
       module: default
       title: _("Import %s", ngettext('Pricing pattern', 'Pricing patterns', 0))
       label: false
-      labelOnEdit: true   
+      labelOnEdit: true
       labelOnList: true
       labelOnOption: true
       labelOnEntityPostSave: true
@@ -135,24 +135,24 @@ production:
       escape: "\\"
       forcedValues:
         brandId: ${auth.brandId}
-      
+
   #PricingPlans:
-    <<: *pricingPlans_dialogsLink 
-      
-  # pricingPlansRelTargetPatterns dialogs: 
+    <<: *pricingPlans_dialogsLink
+
+  # pricingPlansRelTargetPatterns dialogs:
     <<: *pricingPlansRelTargetPatterns_dialogsLink
-    
+
 
   commands:
-    importPatternsFreeUpload_command: 
+    importPatternsFreeUpload_command:
       <<: *TargetPatterns
       controller: File
       action: free-upload
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

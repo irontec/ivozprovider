@@ -3,34 +3,34 @@
 #include PricingPlansRelTargetPatternsList.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: pricingPlansList_screen
-  screens: &pricingPlans_screensLink 
-    pricingPlansList_screen: &pricingPlansList_screenLink 
+  screens: &pricingPlans_screensLink
+    pricingPlansList_screen: &pricingPlansList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PricingPlans
       class: ui-silk-money
-      title: _("List of %s %2s", ngettext('Pricing plan', 'Pricing plans', 0), "[format| (%parent%)]")  
+      title: _("List of %s %2s", ngettext('Pricing plan', 'Pricing plans', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: &pricingPlans_fieldsLink 
-        options: 
+      fields: &pricingPlans_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             pricingPlansRelTargetPatternsList_screen: true
             pricingPlansEdit_screen: true
-          dialogs: 
+          dialogs:
             pricingPlansDel_dialog: true
           default: pricingPlansEdit_screen
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           pricingPlansNew_screen: true
-        dialogs: 
+        dialogs:
           pricingPlansDel_dialog: true
           findPlan_dialog: true
           importPlans_dialog: false
@@ -46,18 +46,18 @@ production:
         newLine: "\r\n"
         encoding: "utf-8"
         executionSeconds: ""
-    pricingPlansNew_screen: &pricingPlansNew_screenLink 
+    pricingPlansNew_screen: &pricingPlansNew_screenLink
       <<: *PricingPlans
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%parent%)]")  
+      title: _("Add %s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
-      fields: 
-        blacklist: 
+      fields:
+        blacklist:
           createdOn: true
       fixedPositions: &pricingPlansFixedPositions_Link
         group1:
@@ -65,50 +65,50 @@ production:
           fields:
             name: 1
             description: 1
-    pricingPlansEdit_screen: &pricingPlansEdit_screenLink 
+    pricingPlansEdit_screen: &pricingPlansEdit_screenLink
       <<: *PricingPlans
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%item%)]")  
+      title: _("Edit %s %2s", ngettext('Pricing plan', 'Pricing plans', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
-      fields: 
-        blacklist: 
+      fields:
+        blacklist:
           createdOn: true
       fixedPositions:
         <<: *pricingPlansFixedPositions_Link
 
-    #pricingPlansRelTargetPatterns: 
-    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsListEdit_screenLink 
+    #pricingPlansRelTargetPatterns:
+    pricingPlansRelTargetPatternsList_screen: &pricingPlansRelTargetPatternsListEdit_screenLink
       <<: *pricingPlansRelTargetPatternsList_screenLink
       filterField: pricingPlanId
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
 #        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
-    pricingPlansRelTargetPatternsNew_screen: 
+    pricingPlansRelTargetPatternsNew_screen:
       <<: *pricingPlansRelTargetPatternsNew_screenLink
       filterField: pricingPlanId
-    pricingPlansRelTargetPatternsEdit_screen: 
+    pricingPlansRelTargetPatternsEdit_screen:
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
       filterField: pricingPlanId
 
-    #TargetPatterns: 
+    #TargetPatterns:
     targetPatternsList_screen:
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *TargetPatterns
       class: ui-silk-page-find
-      title: _("List of %s %2s", ngettext('Target pattern', 'Target patterns', 0), "[format| (%parent%)]")  
+      title: _("List of %s %2s", ngettext('Target pattern', 'Target patterns', 0), "[format| (%parent%)]")
       filterClass: IvozProvider_Klear_Filter_PricingPlanTargetPatterns
       forcedValues:
         <<: *forcedBrand
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
 
-  dialogs: &pricingPlans_dialogsLink 
-    pricingPlansDel_dialog: &pricingPlansDel_dialogLink 
+  dialogs: &pricingPlans_dialogsLink
+    pricingPlansDel_dialog: &pricingPlansDel_dialogLink
       <<: *PricingPlans
       controller: delete
       class: ui-silk-bin
@@ -119,24 +119,24 @@ production:
       multiItem: true
       labelOnList: 1
 
-    findPlan_dialog: 
+    findPlan_dialog:
       <<: *PricingPlans
       module: default
       title: _("Find a %s", ngettext('Plan', 'Plans', 1))
       label: false
-      labelOnEdit: false   
+      labelOnEdit: false
       labelOnList: true
       labelOption: false
       labelOnEntityPostSave: false
       controller: klear-custom-tarificator
       action: find-plan
-      class:  ui-silk-find 
+      class:  ui-silk-find
 
     testPlan_dialog:
       module: default
       title: _("Test %s", ngettext('Plan', 'Plans', 1))
       label: false
-      labelOnEdit: false   
+      labelOnEdit: false
       labelOnList: false
       labelOption: false
       labelOnEntityPostSave: false
@@ -149,7 +149,7 @@ production:
       module: default
       title: _("Import %s", ngettext('Pricing plan', 'Pricing plans', 0))
       label: false
-      labelOnEdit: true   
+      labelOnEdit: true
       labelOnList: true
       labelOnOption: true
       labelOnEntityPostSave: true
@@ -163,22 +163,22 @@ production:
       forcedValues:
         brandId: ${auth.brandId}
 
-  # pricingPlansRelTargetPatterns dialogs: 
+  # pricingPlansRelTargetPatterns dialogs:
     <<: *pricingPlansRelTargetPatterns_dialogsLink
-    
+
 
   commands:
     importPlansFreeUpload_command:
       <<: *PricingPlans
       controller: File
       action: free-upload
-      
+
     <<: *pricingPlansRelTargetPatterns_commandsLink
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

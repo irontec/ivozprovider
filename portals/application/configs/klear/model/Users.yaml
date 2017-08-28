@@ -2,7 +2,7 @@ production:
   class: \IvozProvider\Model\Users
   fields:
     companyId:
-      title: _('Company')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -16,7 +16,7 @@ production:
           order: name
         'null': _("Unassigned")
     name:
-      title: ngettext('Name', 'Names', 1)
+      title: _('Name')
       type: text
       trim: both
       required: true
@@ -37,7 +37,7 @@ production:
         text: _("Used as voicemail reception and user portal credential")
         label: _("Need help?")
     pass:
-      title: ngettext('Password', 'Passwords', 1)
+      title: _('Password')
       type: password
       adapter: PlainText
     active:
@@ -113,7 +113,7 @@ production:
           order: DDIE164
         'null': _("Company's default")
     outgoingDDIRuleId:
-      title: _('Outgoing DDI Rules')
+      title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 1)
       type: select
       source:
         data: mapper
@@ -133,7 +133,7 @@ production:
         text: _("Rules to manipulate outgoingDDI when user directly calls to external numbers.")
         label: _("Need help?")
     callACLId:
-      title: _('Call ACL')
+      title: ngettext('Call ACL', 'Call ACLs', 1)
       type: select
       source:
         data: mapper
@@ -300,7 +300,7 @@ production:
           order: name_${lang}
         'null': _("Company's default")
     areaCode:
-      title: _('Areacode')
+      title: _('Area code')
       type: text
       maxLength: 10
       info:
@@ -310,7 +310,7 @@ production:
         text: _("Calling a number within the same Area can omit Area Code")
         label: _("Need help?")
     HuntGroupsRelUsers:
-      title: _('Hunt groups joined')
+      title: ngettext('Hunt Group', 'Hunt Groups', 0)
       searchable: false
       type: ghost
       source:
@@ -323,13 +323,13 @@ production:
         fieldName:
           fields:
             huntGroupId:
-              title: _("Hunt group")
+              title: ngettext('Hunt Group', 'Hunt Groups', 1)
               mapperName: \IvozProvider\Mapper\Sql\HuntGroups
               field:
                 - name
               pattern: "%name%"
             timeoutTime:
-              title: _("Time out time")
+              title: _("Timeout")
             priority:
               title: _("Priority")
         options:

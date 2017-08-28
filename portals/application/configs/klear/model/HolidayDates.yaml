@@ -1,53 +1,53 @@
-production: 
+production:
   class: \IvozProvider\Model\HolidayDates
-  fields: 
-    calendarId: 
+  fields:
+    calendarId:
       title: _('Calendar')
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Calendars
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
-    name: 
-      title: ngettext('Name', 'Names', 1)
+    name:
+      title: _('Name')
       type: text
       trim: both
       required: true
       default: true
-    eventDate: 
+    eventDate:
       title: _('Event date')
       type: picker
       required: true
-      source: 
+      source:
         control: date
-        settings: 
+        settings:
           disabled: 'false'
 #          dateFormat: dd-mm
-    locutionId: 
+    locutionId:
       title: _('Locution')
       type: select
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           filterClass: IvozProvider_Klear_Filter_HolidayDateSelectLocution
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: encodedFileMimeType
         'null': _("Unassigned")
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

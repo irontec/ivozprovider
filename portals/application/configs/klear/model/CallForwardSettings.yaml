@@ -1,132 +1,131 @@
-production: 
+production:
   class: \IvozProvider\Model\CallForwardSettings
-  fields: 
-    userId: 
-      title: _('User id')
+  fields:
+    userId:
+      title: ngettext('User', 'Users', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Users
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    callTypeFilter: 
+    callTypeFilter:
       title: _('Call type')
       type: select
       required: true
-      source: 
+      source:
         data: inline
-        values: 
-          'internal': _('internal')
-          'external': _('external')
-          'both': _('both')
-    callForwardType: 
+        values:
+          'internal': _('Internal')
+          'external': _('External')
+          'both': _('Both')
+    callForwardType:
       title: _('Call forward type')
       type: select
       required: true
-      source: 
+      source:
         data: inline
-        values: 
-          'inconditional': 
-            title: _('inconditional')
+        values:
+          'inconditional':
+            title: _('Inconditional')
             visualFilter:
               hide: ["noAnswerTimeout"]
-          'noAnswer': 
-            title: _('noAnswer')
+          'noAnswer':
+            title: _('No Answer')
             visualFilter:
               show: ["noAnswerTimeout"]
-          'busy': 
-            title: _('busy')
+          'busy':
+            title: _('Busy')
             visualFilter:
               hide: ["noAnswerTimeout"]
-          'userNotRegistered': 
-            title: _('userNotRegistered')
+          'userNotRegistered':
+            title: _('Not Registered')
             visualFilter:
               hide: ["noAnswerTimeout"]
-    targetType: 
+    targetType:
       title: _('Target type')
       type: select
       required: true
-      source: 
+      source:
         data: inline
-        values: 
-          'number': 
-            title: _('number')
+        values:
+          'number':
+            title: _('Number')
             visualFilter:
               show: ["numberValue"]
               hide: ["extensionId", "voiceMailUserId"]
           'extension':
-            title: _('extension')
+            title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: ["extensionId"]
               hide: ["numberValue", "voiceMailUserId"]
-          'voicemail': 
-            title: _('voicemail')
+          'voicemail':
+            title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
               show: ["voiceMailUserId"]
               hide: ["extensionId", "numberValue"]
-    numberValue: 
-      title: _('Number value')
+    numberValue:
+      title: _('Number')
       pattern: "^[0-9]+$"
       type: text
       trim: both
       required: true
-    extensionId: 
-      title: _('Extension')
+    extensionId:
+      title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Extensions
           filterClass: IvozProvider_Klear_Filter_ForwardExtension
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - number
             template: '%number%'
           order: number
         'null': _("Unassigned")
-    voiceMailUserId: 
-      title: _('Voice mail user')
+    voiceMailUserId:
+      title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Users
           filterClass: IvozProvider_Klear_Filter_Voicemail
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
               - lastname
             template: '%name% %lastname%'
           order: name
         'null': _("Unassigned")
-    noAnswerTimeout: 
+    noAnswerTimeout:
       title: _('No answer timeout')
       type: number
       defaultValue: 10
       required: true
-      source: 
+      source:
         control: Spinner
-        
     targetTypeValue:
       title: _('Target type value')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_CallForwardTargetTypeValue
         method: getValue
-        
-staging: 
+
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

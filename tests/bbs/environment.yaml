@@ -1,15 +1,34 @@
 users:
   - alice: &alice_cred
-      username: alice
-      password: 4l1c3p4ssw0rd
-      domain: yoursip.domain.com
+        username: alice
+        password: 4l1c3p4ssw0rd
+        domain: bbs.ivozprovider.local
 
   - bob: &bob_cred
-      username: bob
-      password: b0bp4ssw0rd
-      domain: yoursip.domain.com
+        username: bob
+        password: b0bp4ssw0rd
+        domain: bbs.ivozprovider.local
 
   - charlie: &charlie_cred
-      username: charlie
-      password: ch4rl13p4ssw0rd
-      domain: yoursip.domain.com
+        username: charlie
+        password: ch4rl13p4ssw0rd
+        domain: bbs.ivozprovider.local
+  - dave: &dave_cred
+        username: dave
+        password: d4v3p4ssw0rd
+        domain: bbs.ivozprovider.local
+
+  - eve: &eve_cred
+        username: eve
+        password: 3v3p4ssw0rd
+        domain: bbs.ivozprovider.local
+
+  - friend: &friend_cred
+        username: friend
+        password: fr13ndp4ssw0rd
+        domain: bbs.ivozprovider.local
+
+  - retail: &retail_cred
+        username: "20000"
+        password: r3t41lp4ssw0rd
+        domain: retail-bbs.ivozprovider.local

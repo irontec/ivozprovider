@@ -22,7 +22,7 @@ class ExternalRetailCallAction extends ExternalCallAction
     public function process()
     {
         // Local variables
-        $retail = $this->_caller;
+        $retail = $this->agi->getChannelCaller();
         $number = $this->_number;
 
         // Get company from the caller

@@ -317,7 +317,7 @@ class CallACLRelPatterns extends ModelAbstract
 
         } else if (!is_null($data)) {
             if (!in_array($data, $this->_policyAcceptedValues) && !empty($data)) {
-                throw new \InvalidArgumentException(_('Invalid value for policy'));
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'policy'));
             }
             $this->_policy = (string) $data;
 

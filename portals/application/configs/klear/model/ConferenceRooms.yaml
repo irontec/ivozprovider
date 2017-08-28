@@ -1,56 +1,56 @@
-production: 
+production:
   class: \IvozProvider\Model\ConferenceRooms
-  fields: 
-    companyId: 
-      title: _('Company id')
+  fields:
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
-      source: 
+      source:
         data: mapper
-        config: 
+        config:
           mapperName: \IvozProvider\Mapper\Sql\Companies
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order: name
       default: true
-    name: 
-      title: ngettext('Name', 'Names', 1)
+    name:
+      title: _('Name')
       type: text
       required: true
       maxLength: 50
-    pinProtected: 
+    pinProtected:
       title: _('Pin protected')
       type: select
       defaultValue: 0
-      source: 
+      source:
         data: inline
-        values: 
-          '0': 
+        values:
+          '0':
             title: _("No")
             visualFilter:
               hide: [ "pinCode" ]
-                
-          '1': 
+
+          '1':
             title: _("Yes")
             visualFilter:
               show: [ "pinCode" ]
-    pinCode: 
+    pinCode:
       title: _('Pin code')
       type: text
       maxLength: 6
-    maxMembers: 
+    maxMembers:
       title: _('Max member')
       type: number
       defaultValue: 0
-      source: 
+      source:
         control: Spinner
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

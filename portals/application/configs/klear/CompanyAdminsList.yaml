@@ -2,24 +2,24 @@
 #include conf.d/actions.yaml
 
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: companyAdminsList_screen
-  screens: &companyAdmins_screensLink 
-    companyAdminsList_screen: &companyAdminsList_screenLink 
+  screens: &companyAdmins_screensLink
+    companyAdminsList_screen: &companyAdminsList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *CompanyAdmins
       class: ui-silk-user-gray
       title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
-      fields: &companyAdmins_fieldsLink 
-        options: 
+      fields: &companyAdmins_fieldsLink
+        options:
           title: _("Options")
-          screens: 
+          screens:
             companyAdminsEdit_screen: true
-          dialogs: 
+          dialogs:
             companyAdminsDel_dialog: true
           default: companyAdminsEdit_screen
         blacklist:
@@ -28,13 +28,13 @@ production:
           email: true
           name: true
           lastname: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           companyAdminsNew_screen: true
-        dialogs: 
+        dialogs:
           companyAdminsDel_dialog: true
-    companyAdminsNew_screen: &companyAdminsNew_screenLink 
+    companyAdminsNew_screen: &companyAdminsNew_screenLink
       <<: *CompanyAdmins
       controller: new
       fields:
@@ -42,7 +42,7 @@ production:
             active: true
       fixedPositions: &companyAdminsFixedPositions_link
         group0:
-          label: _("Login info")
+          label: _("Login Info")
           colsPerRow: 2
           fields:
             username: 1
@@ -62,7 +62,7 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
       shortcutOption: N
-    companyAdminsEdit_screen: &companyAdminsEdit_screenLink 
+    companyAdminsEdit_screen: &companyAdminsEdit_screenLink
       <<: *CompanyAdmins
       controller: edit
       fixedPositions: *companyAdminsFixedPositions_link
@@ -70,8 +70,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
-  dialogs: &companyAdmins_dialogsLink 
-    companyAdminsDel_dialog: &companyAdminsDel_dialogLink 
+  dialogs: &companyAdmins_dialogsLink
+    companyAdminsDel_dialog: &companyAdminsDel_dialogLink
       <<: *CompanyAdmins
       controller: delete
       class: ui-silk-bin
@@ -81,11 +81,11 @@ production:
       message: _("%s successfully deleted.", ngettext('Company admin', 'Company admins', 1))
       multiItem: 1
       labelOnList: 1
-staging: 
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

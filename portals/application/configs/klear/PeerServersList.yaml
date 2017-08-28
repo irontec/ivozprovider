@@ -2,26 +2,26 @@
 #include conf.d/actions.yaml
 #include PeerServesRelNumericTransformRulesList.yaml
 
-production: 
-  main: 
+production:
+  main:
     module: klearMatrix
     defaultScreen: peerServersList_screen
   screens: &peerServers_screensLink
-    peerServersList_screen: &peerServersList_screenLink 
+    peerServersList_screen: &peerServersList_screenLink
       controller: list
-      pagination: 
+      pagination:
         items: 25
       <<: *PeerServers
       class: ui-silk-server
       forcedValues:
         <<: *forcedBrand
       title: _("List of %s %2s", ngettext('Peer server', 'Peer servers', 0), "[format| (%parent%)]")
-      fields: 
-        options: 
+      fields:
+        options:
           title: _("Options")
-          screens: 
+          screens:
             peerServersEdit_screen: true
-          dialogs: 
+          dialogs:
             peerServersDel_dialog: true
           default: peerServersEdit_screen
         blacklist:
@@ -44,13 +44,13 @@ production:
         order:
           sip_proxy: true
           outbound_proxy: true
-      options: 
+      options:
         title: _("Options")
-        screens: 
+        screens:
           peerServersNew_screen: true
-        dialogs: 
+        dialogs:
           peerServersDel_dialog: true
-    peerServersNew_screen: &peerServersNew_screenLink 
+    peerServersNew_screen: &peerServersNew_screenLink
       <<: *PeerServers
       forcedValues:
         <<: *forcedBrand
@@ -73,7 +73,7 @@ production:
           prefix: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
-          label: _("Basic Settings")
+          label: _("Basic Configuration")
           colsPerRow: 12
           fields:
             sip_proxy: 4
@@ -97,7 +97,7 @@ production:
           label: _("R-URI customization (after numeric transformations)")
           colsPerRow: 12
           fields:
-            prefix: 4 
+            prefix: 4
             params: 6
         group4:
           label: _("From optional customization")
@@ -123,9 +123,9 @@ production:
           <<: *peerServersOrder_Link
       fixedPositions:
         <<: *peerServersFixedPositions_Link
-      
+
   dialogs: &peerServers_dialogsLink
-    peerServersDel_dialog: &peerServersDel_dialogLink 
+    peerServersDel_dialog: &peerServersDel_dialogLink
       <<: *PeerServers
       controller: delete
       class: ui-silk-bin
@@ -135,12 +135,12 @@ production:
       message: _("%s successfully deleted.", ngettext('Peer server', 'Peer servers', 1))
       multiItem: 1
       labelOnList: 1
-      
-staging: 
+
+staging:
   _extends: production
-testing: 
+testing:
   _extends: production
-development: 
+development:
   _extends: production
-localdev: 
+localdev:
   _extends: production

@@ -4,7 +4,7 @@ production:
   class: \IvozProvider\Model\Extensions
   fields:
     companyId:
-      title: _('Company id')
+      title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
       source:
@@ -42,81 +42,90 @@ production:
               show: [ ]
               hide: [
                 "numberValue", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "conferenceRoomId", "friendValue", "queueId"
+                "huntGroupId", "conferenceRoomId", "friendValue", "queueId",
+                "conditionalRouteId"
               ]
           'user':
-            title: _('user')
+            title: ngettext('User', 'Users', 1)
             visualFilter:
               show: [ "userId" ]
               hide: [
                 "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId",
-                "conferenceRoomId", "friendValue", "queueId"
+                "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'IVRCommon':
-            title: _('IVRCommon')
+            title: ngettext('IVR Common', 'IVRs Common', 1)
             visualFilter:
               show: [ "IVRCommonId" ]
               hide: [
                 "numberValue", "userId", "IVRCustomId", "huntGroupId",
-                "conferenceRoomId", "friendValue", "queueId"
+                "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'IVRCustom':
-            title: _('IVRCustom')
+            title: ngettext('IVR Custom', 'IVRs Custom', 1)
             visualFilter:
               show: [ "IVRCustomId" ]
               hide: [
                 "numberValue", "IVRCommonId", "userId", "huntGroupId",
-                "conferenceRoomId", "friendValue", "queueId"
+                "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'huntGroup':
-            title: _('huntGroup')
+            title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
               show: [ "huntGroupId" ]
               hide: [
                 "numberValue", "IVRCommonId", "IVRCustomId", "userId",
-                "conferenceRoomId", "friendValue", "queueId"
+                "conferenceRoomId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'conferenceRoom':
-            title: _('Conference Room')
+            title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
               show: [ "conferenceRoomId" ]
               hide: [
                 "numberValue", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "friendValue", "queueId"
+                "huntGroupId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'number':
-            title: _('number')
+            title: _('Number')
             visualFilter:
               show: [ "numberValue" ]
               hide: [
                 "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "friendValue", "queueId"
+                "huntGroupId", "friendValue", "queueId", "conditionalRouteId"
               ]
           'friend':
-            title: _('Friend')
+            title: ngettext('Friend', 'Friends', 1)
             visualFilter:
               show: [ "friendValue" ]
               hide: [
                 "conferenceRoomId", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "numberValue", "queueId"
+                "huntGroupId", "numberValue", "queueId", "conditionalRouteId"
               ]
           'queue':
-            title: _('Queue')
+            title: ngettext('Queue', 'Queues', 1)
             visualFilter:
               show: [ "queueId" ]
               hide: [
                 "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId",
-                "userId", "huntGroupId", "numberValue"
+                "userId", "huntGroupId", "numberValue", "conditionalRouteId"
+              ]
+          'conditional':
+            title: _('Conditional Route')
+            visualFilter:
+              show: [ "conditionalRouteId" ]
+              hide: [
+                "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId",
+                "userId", "huntGroupId", "numberValue", "queueId"
               ]
     numberValue:
-      title: _('Number value')
+      title: _('Number')
       type: text
       pattern: "^\\+?[0-9]+$"
       required: true
       maxLength: 25
       trim: both
     IVRCommonId:
-      title: _('I v r common id')
+      title: ngettext('IVR Common', 'IVRs Common', 1)
       type: select
       required: true
       source:
@@ -131,7 +140,7 @@ production:
           order: name
         'null': _("Unassigned")
     IVRCustomId:
-      title: _('I v r custom id')
+      title: ngettext('IVR Custom', 'IVRs Custom', 1)
       type: select
       required: true
       source:
@@ -146,7 +155,7 @@ production:
           order: name
         'null': _("Unassigned")
     huntGroupId:
-      title: _('Hunt group id')
+      title: ngettext('Hunt Group', 'Hunt Groups', 1)
       type: select
       required: true
       source:
@@ -161,7 +170,7 @@ production:
           order: name
         'null': _("Unassigned")
     conferenceRoomId:
-      title: _('Conference room id')
+      title: ngettext('Conference room', 'Conference rooms', 1)
       type: select
       required: true
       source:
@@ -198,13 +207,28 @@ production:
       required: true
       <<: *friendValueHelp
     queueId:
-      title: _('Queue')
+      title: ngettext('Queue', 'Queues', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
           mapperName: \IvozProvider\Mapper\Sql\Queues
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+    conditionalRouteId:
+      title: _('Conditional Route')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\ConditionalRoutes
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:

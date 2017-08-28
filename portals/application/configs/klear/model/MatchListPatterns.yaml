@@ -15,12 +15,12 @@ production:
           order: name
       default: true
     description:
-      title: ngettext('Description', 'Descriptions', 1)
+      title: _('Description')
       type: text
       trim: both
       maxLength: 55
     type:
-      title: ngettext('Type', 'Types', 1)
+      title: _('Type')
       type: select
       required: true
       source:

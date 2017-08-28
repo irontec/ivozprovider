@@ -13,16 +13,24 @@ class ExternalFriendCallAction extends ExternalCallAction
 {
     protected $_number;
 
+    protected $_checkACL;
+
     public function setDestination($number)
     {
         $this->_number = $number;
         return $this;
     }
 
+    public function setCheckACL($acl)
+    {
+        $this->_checkACL = $acl;
+        return $this;
+    }
+
     public function process()
     {
         // Local variables
-        $friend = $this->_caller;
+        $friend = $this->agi->getChannelCaller();
         $number = $this->_number;
 
         // Get company from the caller
@@ -40,14 +48,14 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
-        // Check if the diversion header contains a valid number
-        $this->checkDiversionNumber($company);
-
         // Convert to E.164 format
         $e164number = $friend->preferredToE164($number);
 
+        // Check if the diversion header contains a valid number
+        $this->checkDiversionNumber($company, $e164number);
+
         // Check the user has this call allowed in its ACL
-        if (!$friend->isAllowedToCall($e164number)) {
+        if ($this->_checkACL && !$friend->isAllowedToCall($e164number)) {
             $this->agi->error("User is not allowed to call %s", $e164number);
             // Play error notification over progress
             if ($company->hasFeature(Features::PROGRESS)) {
@@ -68,24 +76,39 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
-        // Allow identification from any company DDI
-        $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
-        $companyDDIs = $friend->getCompany()->getDDIs();
-        foreach ($companyDDIs as $companyDDI) {
-            if ($callerIdNum === $companyDDI->getDDIE164()) {
-                $this->agi->notice("Friend \e[0;36m%s [friend%d]\e[0;93m presented origin matches company DDI %s [ddi%d].",
-                         $friend->getName(), $friend->getId(), $companyDDI->getDDIE164(), $companyDDI->getId());
-                $ddi = $companyDDI;
-                break;
+        // Check if DDI has valid redirecting number
+        if ($this->agi->getRedirecting('count')) {
+            $diversionNum = $this->agi->getRedirecting('from-num');
+            if(($diversionDDI = $company->getDDI($diversionNum))) {
+                $ddi = $diversionDDI;
+                // Diversion DDI is valid, convert Presented number format
+                $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
+                $this->agi->setCallerIdNum($callerIdNum);
+            }
+        }
+
+        if (!isset($ddi)) {
+            // Allow identification from any company DDI
+            $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
+            $companyDDIs = $friend->getCompany()->getDDIs();
+            foreach ($companyDDIs as $companyDDI) {
+                if ($callerIdNum === $companyDDI->getDDIE164()) {
+                    $this->agi->notice("Friend \e[0;36m%s [friend%d]\e[0;93m presented origin matches company DDI %s [ddi%d].",
+                             $friend->getName(), $friend->getId(), $companyDDI->getDDIE164(), $companyDDI->getId());
+                    $ddi = $companyDDI;
+                    $this->agi->setCallerIdNum($ddi->getDDIE164());
+                    break;
+                }
             }
         }
 
         // Use fallback outgoing DDI
-        if (!isset($ddi)) {
+        if (!isset($ddi) || !$ddi) {
             $ddi = $friend->getOutgoingDDI();
             if ($ddi) {
                 $this->agi->notice("Using fallback DDI %d [ddi%s] for friend \e[0;36m%s [friend%d]\e[0;93m because %s does not match any DDI.",
                     $ddi->getDDIE164(), $ddi->getId(), $friend->getname(), $friend->getId(), $callerIdNum);
+                $this->agi->setCallerIdNum($ddi->getDDIE164());
             }
         }
 
@@ -94,8 +117,6 @@ class ExternalFriendCallAction extends ExternalCallAction
             $this->agi->error("Friend %s [friend%d] has not OutgoingDDI configured",  $friend->getName(), $friend->getId());
             $this->agi->decline();
             return;
-        } else {
-            $this->agi->setCallerIdNum($ddi->getDDIE164());
         }
 
         // Check if DDI has recordings enabled
