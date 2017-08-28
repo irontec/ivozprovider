@@ -1,4 +1,4 @@
-![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.5-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
+![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.6-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -52,7 +52,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/in
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|stable (oasis 1.5) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.5.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.5.0-oasis-i386.iso)|
+|stable (oasis 1.6) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-oasis-i386.iso)|
 |bleeding (oasis 1.6) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-bleeding-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-bleeding-i386.iso)|
 
 
