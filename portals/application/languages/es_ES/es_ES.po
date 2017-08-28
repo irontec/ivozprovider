@@ -112,8 +112,8 @@ msgstr "Codecs audio permitidos"
 msgid "Allowed characters are 0-9, * and #"
 msgstr "Los carácteres permitidos son 0-9,* y #"
 
-msgid "Allowed characters are a-z, A-Z, 0-9 and underscore"
-msgstr "Los carácteres permitidos son a-z, A-Z, 0-9 y guión bajo"
+msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '*'"
+msgstr "Los carácteres permitidos son a-z, A-Z, 0-9, guión bajo y '*'"
 
 msgid "Allowed video codecs"
 msgstr "Codecs video permitidos"
@@ -1533,6 +1533,9 @@ msgstr "Páginas"
 msgid "Param"
 msgstr "Parámetro"
 
+msgid "Parse file and import"
+msgstr "Analizar archivo e importar"
+
 msgid "Parsed"
 msgstr "Parseada"
 
@@ -1616,6 +1619,9 @@ msgstr "Configuración de Plataforma"
 
 msgid "Please select only uninvoiced calls"
 msgstr "Por favor seleccione solo llamadas no facturadas"
+
+msgid "Please, choose a file to import"
+msgstr "Por favor, seleccione un fichero a importar"
 
 msgid "Please, type a duration in seconds"
 msgstr "Por favor, introduzca una duración en segundos"
@@ -2472,6 +2478,9 @@ msgstr "p.ej. udp:127.0.0.1:22222"
 msgid "global"
 msgstr "Global"
 
+msgid "ignore"
+msgstr "ignorar"
+
 msgid "is a required field"
 msgstr "es un campo obligatorio"
 
@@ -2492,4 +2501,3 @@ msgstr "sips"
 
 msgid "unlimited"
 msgstr "ilimitado"
-
