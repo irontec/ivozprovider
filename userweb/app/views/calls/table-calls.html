@@ -2,9 +2,9 @@
     <thead>
         <tr class="pointer">
            <th translate="calldate" ng-click="callsOrder('calldate')"></th>
-           <th translate="src" ng-click="callsOrder('src')"></th>
-           <th translate="dst" ng-click="callsOrder('dst')"></th>
-           <th translate="dst_duration" ng-click="callsOrder('dst_duration')"></th>
+           <th translate="src" ng-click="callsOrder('aParty')"></th>
+           <th translate="dst" ng-click="callsOrder('bParty')"></th>
+           <th translate="duration" ng-click="callsOrder('duration')"></th>
            <th translate="type" ng-click="callsOrder('type')"></th>
            <th translate="subtype" ng-click="callsOrder('subtype')"></th>
         </tr>
@@ -15,7 +15,7 @@
             <td data-th="{{'calldate' | translate}}">{{getFormatDate(call.calldate)}}</td>
             <td data-th="{{'src' | translate}}">{{call.aParty}}</td>
             <td data-th="{{'dst' | translate}}">{{call.bParty}}</td>
-            <td data-th="{{'dst_duration' | translate}}">{{getDuration(call.duration)}}</td>
+            <td data-th="{{'duration' | translate}}">{{getDuration(call.duration)}}</td>
             <td data-th="{{'type' | translate}}">{{call.type}}</td>
             <td data-th="{{'subtype' | translate}}">{{call.subtype}}</td>
         </tr>
