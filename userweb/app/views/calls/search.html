@@ -20,45 +20,29 @@
         <div class="form-group col-md-4">
             <input type="text" name="type" class="form-control empty" ng-model="formData.type" placeholder="{{'type' | translate}}" />
         </div>
-        
+
         <div class="form-group col-md-4">
-            <input type="text" name="desc" class="form-control empty" ng-model="formData.desc" placeholder="{{'desc' | translate}}" />
+            <input type="text" name="subtype" class="form-control empty" ng-model="formData.subtype" placeholder="{{'subtype' | translate}}" />
         </div>
-    
+
     </div>
     
     <div class="col-md-12">
         
         <div class="form-group col-md-4">
-            <input type="text" name="src" class="form-control empty" ng-model="formData.src" placeholder="{{'src' | translate}}" />
+            <input type="text" name="aParty" class="form-control empty" ng-model="formData.aParty" placeholder="{{'src' | translate}}" />
+        </div>
+
+        <div class="form-group col-md-4">
+            <input type="text" name="bParty" class="form-control empty" ng-model="formData.bParty" placeholder="{{'dst' | translate}}" />
         </div>
         
         <div class="form-group col-md-4">
-            <input type="text" name="src_dialed" class="form-control empty" ng-model="formData.src_dialed" placeholder="{{'src_dialed' | translate}}" />
-        </div>
-        
-        <div class="form-group col-md-4">
-            <input type="number" name="src_duration" class="form-control empty" ng-model="formData.src_duration" placeholder="{{'src_duration' | translate}}" />
+            <input type="number" name="duration" class="form-control empty" ng-model="formData.duration" placeholder="{{'duration' | translate}}" />
         </div>
         
     </div>
-    
-    <div class="col-md-12">
-        
-        <div class="form-group col-md-4">
-            <input type="text" name="dst" class="form-control empty" ng-model="formData.dst" placeholder="{{'dst' | translate}}" />
-        </div>
-        
-        <div class="form-group col-md-4">
-            <input type="text" name="dst_src_cid" class="form-control empty" ng-model="formData.dst_src_cid" placeholder="{{'dst_src_cid' | translate}}" />
-        </div>
-        
-        <div class="form-group col-md-4">
-            <input type="number" name="dst_duration" class="form-control empty" ng-model="formData.dst_duration" placeholder="{{'dst_duration' | translate}}" />
-        </div>
-        
-    </div>
-    
+
     <div class="form-actions text-right">
     
         <button type="submit" class="btn btn-info">
