@@ -61,7 +61,7 @@ The help section of **Terminal manufacturers** has examples for models supported
 
 - Cisco SPA (502, 504, 509, 514 y 525)
 
-- Yealink (T21P, T21Pe2, T23P, T27P, T48G, W52P, W56P)
+- Yealink (T21P, T21Pe2, T23P, T27P, T46G, T48G, W52P, W56P)
 
 .. hint:: These models will be available after the initial installation, but
           you must edit them and load the default configuration before
