@@ -9,7 +9,8 @@ angular
         $translate, 
         ngProgress,
         $http, 
-        appConfig
+        appConfig,
+        $q
     ) {
     
     $scope.formData = {};
@@ -61,7 +62,7 @@ angular
     
     loadCalls();
     
-$scope.callsOrder = function(newOrder) {
+    $scope.callsOrder = function(newOrder) {
         
         if (newOrder + ' DESC' === $scope.callsParams.order) {
             
@@ -73,11 +74,11 @@ $scope.callsOrder = function(newOrder) {
         
         loadCalls();
     };
-    
+
     $scope.DoCtrlPagingAct = function(text, page) {
         loadCalls(page);
     };
-    
+
     $scope.clickToOpen = function(item) {
         $scope.ngDialogData = item;
         ngDialog.open({
@@ -85,17 +86,43 @@ $scope.callsOrder = function(newOrder) {
             scope: $scope
         });
     };
-    
+
     $scope.getCallsToCsv = function() {
         var paramsCsv = $scope.callsParams;
         paramsCsv.csv = true;
+
+        var defered = $q.defer();
+        var promise = defered.promise;
+
+        $http
+            .get(appConfig.urlRest + 'calls', {params: paramsCsv})
+            .then(function (data) {
+                data.data = filterCsvData(data.data);
+                defered.resolve(data);
+            });
+
         return {
             //content: [{a: 1, b: 2}, {c:3, d:4}],
-            promise: $http.get(appConfig.urlRest + 'calls', {params: paramsCsv}),
+            promise: promise,
             title: 'llamadas.csv'
         };
-        
     };
+
+    function filterCsvData(data) {
+
+        for(var idx in data) {
+            data[idx] = {
+                date: data[idx].calldate,
+                src: data[idx].aParty,
+                dst: data[idx].bParty,
+                duration: data[idx].duration,
+                type: data[idx].type,
+                subtype: data[idx].subtype
+            }
+        }
+
+        return data;
+    }
     
     $scope.dateNow = moment().format('YYYY/MM/DD');
     

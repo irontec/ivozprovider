@@ -54,7 +54,7 @@
     "ext_forwarder": "Desviador externo",
     "in_forwarder": "Desviador interno",
     "forward_to": "Destino desvío",
-    "exportToCsv": "Exportal a .CSV",
+    "exportToCsv": "Exportar a .CSV",
     "clear": "Limpiar",
     "search": "Buscar",
     "NuevoDesvio": "Nuevo Desvio",
