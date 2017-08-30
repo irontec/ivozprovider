@@ -62,7 +62,7 @@ class AstPsEndpoints extends MapperAbstract
                 'direct_media' => $model->getDirectMedia(),
                 'direct_media_method' => $model->getDirectMediaMethod(),
                 'mailboxes' => $model->getMailboxes(),
-                'pickup_group' => $model->getPickupGroup(),
+                'named_pickup_group' => $model->getNamedPickupGroup(),
                 'send_diversion' => $model->getSendDiversion(),
                 'send_pai' => $model->getSendPai(),
                 '100rel' => $model->get100rel(),
@@ -585,7 +585,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setDirectMedia($data['direct_media'])
                   ->setDirectMediaMethod($data['direct_media_method'])
                   ->setMailboxes($data['mailboxes'])
-                  ->setPickupGroup($data['pickup_group'])
+                  ->setNamedPickupGroup($data['named_pickup_group'])
                   ->setSendDiversion($data['send_diversion'])
                   ->setSendPai($data['send_pai'])
                   ->set100rel($data['100rel'])
@@ -606,7 +606,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setDirectMedia($data->{'direct_media'})
                   ->setDirectMediaMethod($data->{'direct_media_method'})
                   ->setMailboxes($data->{'mailboxes'})
-                  ->setPickupGroup($data->{'pickup_group'})
+                  ->setNamedPickupGroup($data->{'named_pickup_group'})
                   ->setSendDiversion($data->{'send_diversion'})
                   ->setSendPai($data->{'send_pai'})
                   ->set100rel($data->{'100rel'})
@@ -628,7 +628,7 @@ class AstPsEndpoints extends MapperAbstract
                   ->setDirectMedia($data->getDirectMedia())
                   ->setDirectMediaMethod($data->getDirectMediaMethod())
                   ->setMailboxes($data->getMailboxes())
-                  ->setPickupGroup($data->getPickupGroup())
+                  ->setNamedPickupGroup($data->getNamedPickupGroup())
                   ->setSendDiversion($data->getSendDiversion())
                   ->setSendPai($data->getSendPai())
                   ->set100rel($data->get100rel())

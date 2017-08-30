@@ -153,7 +153,7 @@ class AstPsEndpoints extends ModelAbstract
      *
      * @var string
      */
-    protected $_pickupGroup;
+    protected $_namedPickupGroup;
 
     /**
      * Database var type enum('yes','no')
@@ -236,7 +236,7 @@ class AstPsEndpoints extends ModelAbstract
         'direct_media'=>'directMedia',
         'direct_media_method'=>'directMediaMethod',
         'mailboxes'=>'mailboxes',
-        'pickup_group'=>'pickupGroup',
+        'named_pickup_group'=>'namedPickupGroup',
         'send_diversion'=>'sendDiversion',
         'send_pai'=>'sendPai',
         '100rel'=>'100rel',
@@ -814,33 +814,33 @@ class AstPsEndpoints extends ModelAbstract
      * @param string $data
      * @return \IvozProvider\Model\Raw\AstPsEndpoints
      */
-    public function setPickupGroup($data)
+    public function setNamedPickupGroup($data)
     {
 
-        if ($this->_pickupGroup != $data) {
-            $this->_logChange('pickupGroup', $this->_pickupGroup, $data);
+        if ($this->_namedPickupGroup != $data) {
+            $this->_logChange('namedPickupGroup', $this->_namedPickupGroup, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_pickupGroup = $data;
+            $this->_namedPickupGroup = $data;
 
         } else if (!is_null($data)) {
-            $this->_pickupGroup = (string) $data;
+            $this->_namedPickupGroup = (string) $data;
 
         } else {
-            $this->_pickupGroup = $data;
+            $this->_namedPickupGroup = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column pickup_group
+     * Gets column named_pickup_group
      *
      * @return string
      */
-    public function getPickupGroup()
+    public function getNamedPickupGroup()
     {
-        return $this->_pickupGroup;
+        return $this->_namedPickupGroup;
     }
 
     /**

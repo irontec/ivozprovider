@@ -77,7 +77,7 @@ class Users extends Raw\Users
         // Update the endpoint
         $endpoint = $this->getEndpoint();
         if ($endpoint) {
-            $endpoint->setPickupGroup($this->getPickUpGroupsIds())
+            $endpoint->setNamedPickupGroup($this->getPickUpGroupsIds())
                 ->setCallerid(sprintf("%s <%s>", $this->getFullName(), $this->getExtensionNumber()))
                 ->setMailboxes($this->getVoiceMail())
                 ->save();

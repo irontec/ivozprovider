@@ -599,8 +599,8 @@ class CallsController extends BaseController
         }
 
         // Set pickups group on outgoing channels
-        if ($this->agi->getVariable("CHANNEL(pickupgroup)")) {
-            $this->agi->setVariable("CHANNEL(callgroup)", $this->agi->getVariable("CHANNEL(pickupgroup)"));
+        if ($this->agi->getVariable("CHANNEL(namedpickupgroup)")) {
+            $this->agi->setVariable("CHANNEL(namedcallgroup)", $this->agi->getVariable("CHANNEL(namedpickupgroup)"));
         }
 
         // Set conference options

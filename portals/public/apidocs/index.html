@@ -2704,7 +2704,7 @@
      'direct_media': '', 
      'direct_media_method': '', 
      'mailboxes': '', 
-     'pickup_group': '', 
+     'named_pickup_group': '', 
      'send_diversion': '', 
      'send_pai': '', 
      '100rel': '', 
@@ -2725,7 +2725,7 @@
      'direct_media': '', 
      'direct_media_method': '', 
      'mailboxes': '', 
-     'pickup_group': '', 
+     'named_pickup_group': '', 
      'send_diversion': '', 
      'send_pai': '', 
      '100rel': '', 
@@ -2864,7 +2864,7 @@
      'direct_media': '', 
      'direct_media_method': '', 
      'mailboxes': '', 
-     'pickup_group': '', 
+     'named_pickup_group': '', 
      'send_diversion': '', 
      'send_pai': '', 
      '100rel': '', 
@@ -3049,7 +3049,7 @@
 </tr>
 
 <tr>
-    <td>pickup_group</td>
+    <td>named_pickup_group</td>
     <td>varchar 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -3190,8 +3190,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="pickup_group">pickup_group</label>
-    <input type="text" class="form-control input-sm" id="pickup_group" placeholder=" - Ex: " name="pickup_group">
+    <label class="control-label" for="named_pickup_group">named_pickup_group</label>
+    <input type="text" class="form-control input-sm" id="named_pickup_group" placeholder=" - Ex: " name="named_pickup_group">
 </div>
 
 <div class="form-group">
@@ -3431,7 +3431,7 @@
 </tr>
 
 <tr>
-    <td>pickup_group</td>
+    <td>named_pickup_group</td>
     <td>varchar 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -3577,8 +3577,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="pickup_group">pickup_group</label>
-    <input type="text" class="form-control input-sm" id="pickup_group" placeholder=" - Ex: " name="pickup_group">
+    <label class="control-label" for="named_pickup_group">named_pickup_group</label>
+    <input type="text" class="form-control input-sm" id="named_pickup_group" placeholder=" - Ex: " name="named_pickup_group">
 </div>
 
 <div class="form-group">
@@ -17739,32 +17739,34 @@
      'id': '', 
      'conditionalRouteId': '', 
      'priority': '', 
-     'type': '', 
      'locutionId': '', 
      'routeType': '', 
      'IVRCommonId': '', 
      'IVRCustomId': '', 
      'huntGroupId': '', 
-     'conferenceRoomId': '', 
+     'voiceMailUserId': '', 
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conferenceRoomId': '', 
+     'extensionId': ''
  },{
      'id': '', 
      'conditionalRouteId': '', 
      'priority': '', 
-     'type': '', 
      'locutionId': '', 
      'routeType': '', 
      'IVRCommonId': '', 
      'IVRCustomId': '', 
      'huntGroupId': '', 
-     'conferenceRoomId': '', 
+     'voiceMailUserId': '', 
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conferenceRoomId': '', 
+     'extensionId': ''
  }]</pre>
                         </div>
                     </div>
@@ -17887,17 +17889,18 @@
      'id': '', 
      'conditionalRouteId': '', 
      'priority': '', 
-     'type': '', 
      'locutionId': '', 
      'routeType': '', 
      'IVRCommonId': '', 
      'IVRCustomId': '', 
      'huntGroupId': '', 
-     'conferenceRoomId': '', 
+     'voiceMailUserId': '', 
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conferenceRoomId': '', 
+     'extensionId': ''
  }</pre>
                         </div>
                     </div>
@@ -17973,16 +17976,6 @@
 </tr>
 
 <tr>
-    <td>type</td>
-    <td>varchar 
-<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
-    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
-</a></td>
-    <td>No</td>
-    <td>[enum:origin|schedule]</td>
-</tr>
-
-<tr>
     <td>locutionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
@@ -17999,7 +17992,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]</td>
+    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]</td>
 </tr>
 
 <tr>
@@ -18033,7 +18026,7 @@
 </tr>
 
 <tr>
-    <td>conferenceRoomId</td>
+    <td>voiceMailUserId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -18081,6 +18074,26 @@
     <td>No</td>
     <td></td>
 </tr>
+
+<tr>
+    <td>conferenceRoomId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>extensionId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
     </tbody>
 </table>
                       </div>
@@ -18121,18 +18134,13 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="type">type</label>
-    <input type="text" class="form-control input-sm" id="type" placeholder="[enum:origin|schedule] - Ex: " name="type">
-</div>
-
-<div class="form-group">
     <label class="control-label" for="locutionId">locutionId</label>
     <input type="text" class="form-control input-sm" id="locutionId" placeholder=" - Ex: " name="locutionId">
 </div>
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -18151,8 +18159,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
-    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+    <label class="control-label" for="voiceMailUserId">voiceMailUserId</label>
+    <input type="text" class="form-control input-sm" id="voiceMailUserId" placeholder=" - Ex: " name="voiceMailUserId">
 </div>
 
 <div class="form-group">
@@ -18173,6 +18181,16 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
+    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="extensionId">extensionId</label>
+    <input type="text" class="form-control input-sm" id="extensionId" placeholder=" - Ex: " name="extensionId">
 </div>
     <button type="submit" class="btn btn-success send" rel="97">Send</button>
 </form></div>
@@ -18283,16 +18301,6 @@
 </tr>
 
 <tr>
-    <td>type</td>
-    <td>varchar 
-<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
-    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
-</a></td>
-    <td>No</td>
-    <td>[enum:origin|schedule]</td>
-</tr>
-
-<tr>
     <td>locutionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
@@ -18309,7 +18317,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]</td>
+    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]</td>
 </tr>
 
 <tr>
@@ -18343,7 +18351,7 @@
 </tr>
 
 <tr>
-    <td>conferenceRoomId</td>
+    <td>voiceMailUserId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -18384,6 +18392,26 @@
 
 <tr>
     <td>queueId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>conferenceRoomId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>extensionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -18436,18 +18464,13 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="type">type</label>
-    <input type="text" class="form-control input-sm" id="type" placeholder="[enum:origin|schedule] - Ex: " name="type">
-</div>
-
-<div class="form-group">
     <label class="control-label" for="locutionId">locutionId</label>
     <input type="text" class="form-control input-sm" id="locutionId" placeholder=" - Ex: " name="locutionId">
 </div>
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -18466,8 +18489,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
-    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+    <label class="control-label" for="voiceMailUserId">voiceMailUserId</label>
+    <input type="text" class="form-control input-sm" id="voiceMailUserId" placeholder=" - Ex: " name="voiceMailUserId">
 </div>
 
 <div class="form-group">
@@ -18488,6 +18511,16 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
+    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="extensionId">extensionId</label>
+    <input type="text" class="form-control input-sm" id="extensionId" placeholder=" - Ex: " name="extensionId">
 </div>
     <button type="submit" class="btn btn-success send" rel="98">Send</button>
 </form></div>
@@ -19458,11 +19491,11 @@
 <hr>
 <pre id="sample_response105">[{
      'id': '', 
-     'conditionalRouteConditionId': '', 
+     'conditionId': '', 
      'matchListId': ''
  },{
      'id': '', 
-     'conditionalRouteConditionId': '', 
+     'conditionId': '', 
      'matchListId': ''
  }]</pre>
                         </div>
@@ -19584,7 +19617,7 @@
 <hr>
 <pre id="sample_response106">{
      'id': '', 
-     'conditionalRouteConditionId': '', 
+     'conditionId': '', 
      'matchListId': ''
  }</pre>
                         </div>
@@ -19641,7 +19674,7 @@
     <tbody>
         
 <tr>
-    <td>conditionalRouteConditionId</td>
+    <td>conditionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -19689,8 +19722,8 @@
     <hr/>
     
 <div class="form-group">
-    <label class="control-label" for="conditionalRouteConditionId">conditionalRouteConditionId</label>
-    <input type="text" class="form-control input-sm" id="conditionalRouteConditionId" placeholder=" - Ex: " name="conditionalRouteConditionId">
+    <label class="control-label" for="conditionId">conditionId</label>
+    <input type="text" class="form-control input-sm" id="conditionId" placeholder=" - Ex: " name="conditionId">
 </div>
 
 <div class="form-group">
@@ -19786,7 +19819,7 @@
 </tr>
 
 <tr>
-    <td>conditionalRouteConditionId</td>
+    <td>conditionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -19839,8 +19872,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="conditionalRouteConditionId">conditionalRouteConditionId</label>
-    <input type="text" class="form-control input-sm" id="conditionalRouteConditionId" placeholder=" - Ex: " name="conditionalRouteConditionId">
+    <label class="control-label" for="conditionId">conditionId</label>
+    <input type="text" class="form-control input-sm" id="conditionId" placeholder=" - Ex: " name="conditionId">
 </div>
 
 <div class="form-group">
@@ -20137,11 +20170,11 @@
 <hr>
 <pre id="sample_response110">[{
      'id': '', 
-     'conditionalRouteConditionId': '', 
+     'conditionId': '', 
      'scheduleId': ''
  },{
      'id': '', 
-     'conditionalRouteConditionId': '', 
+     'conditionId': '', 
      'scheduleId': ''
  }]</pre>
                         </div>
@@ -20263,7 +20296,7 @@
 <hr>
 <pre id="sample_response111">{
      'id': '', 
-     'conditionalRouteConditionId': '', 
+     'conditionId': '', 
      'scheduleId': ''
  }</pre>
                         </div>
@@ -20320,7 +20353,7 @@
     <tbody>
         
 <tr>
-    <td>conditionalRouteConditionId</td>
+    <td>conditionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -20368,8 +20401,8 @@
     <hr/>
     
 <div class="form-group">
-    <label class="control-label" for="conditionalRouteConditionId">conditionalRouteConditionId</label>
-    <input type="text" class="form-control input-sm" id="conditionalRouteConditionId" placeholder=" - Ex: " name="conditionalRouteConditionId">
+    <label class="control-label" for="conditionId">conditionId</label>
+    <input type="text" class="form-control input-sm" id="conditionId" placeholder=" - Ex: " name="conditionId">
 </div>
 
 <div class="form-group">
@@ -20465,7 +20498,7 @@
 </tr>
 
 <tr>
-    <td>conditionalRouteConditionId</td>
+    <td>conditionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -20518,8 +20551,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="conditionalRouteConditionId">conditionalRouteConditionId</label>
-    <input type="text" class="form-control input-sm" id="conditionalRouteConditionId" placeholder=" - Ex: " name="conditionalRouteConditionId">
+    <label class="control-label" for="conditionId">conditionId</label>
+    <input type="text" class="form-control input-sm" id="conditionId" placeholder=" - Ex: " name="conditionId">
 </div>
 
 <div class="form-group">
@@ -20823,11 +20856,13 @@
      'IVRCommonId': '', 
      'IVRCustomId': '', 
      'huntGroupId': '', 
-     'conferenceRoomId': '', 
+     'voiceMailUserId': '', 
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conferenceRoomId': '', 
+     'extensionId': ''
  },{
      'id': '', 
      'companyId': '', 
@@ -20837,11 +20872,13 @@
      'IVRCommonId': '', 
      'IVRCustomId': '', 
      'huntGroupId': '', 
-     'conferenceRoomId': '', 
+     'voiceMailUserId': '', 
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conferenceRoomId': '', 
+     'extensionId': ''
  }]</pre>
                         </div>
                     </div>
@@ -20969,11 +21006,13 @@
      'IVRCommonId': '', 
      'IVRCustomId': '', 
      'huntGroupId': '', 
-     'conferenceRoomId': '', 
+     'voiceMailUserId': '', 
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conferenceRoomId': '', 
+     'extensionId': ''
  }</pre>
                         </div>
                     </div>
@@ -21065,7 +21104,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]</td>
+    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]</td>
 </tr>
 
 <tr>
@@ -21099,7 +21138,7 @@
 </tr>
 
 <tr>
-    <td>conferenceRoomId</td>
+    <td>voiceMailUserId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -21140,6 +21179,26 @@
 
 <tr>
     <td>queueId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>conferenceRoomId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>extensionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -21193,7 +21252,7 @@
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -21212,8 +21271,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
-    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+    <label class="control-label" for="voiceMailUserId">voiceMailUserId</label>
+    <input type="text" class="form-control input-sm" id="voiceMailUserId" placeholder=" - Ex: " name="voiceMailUserId">
 </div>
 
 <div class="form-group">
@@ -21234,6 +21293,16 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
+    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="extensionId">extensionId</label>
+    <input type="text" class="form-control input-sm" id="extensionId" placeholder=" - Ex: " name="extensionId">
 </div>
     <button type="submit" class="btn btn-success send" rel="117">Send</button>
 </form></div>
@@ -21360,7 +21429,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]</td>
+    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]</td>
 </tr>
 
 <tr>
@@ -21394,7 +21463,7 @@
 </tr>
 
 <tr>
-    <td>conferenceRoomId</td>
+    <td>voiceMailUserId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -21435,6 +21504,26 @@
 
 <tr>
     <td>queueId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>conferenceRoomId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>extensionId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -21493,7 +21582,7 @@
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -21512,8 +21601,8 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
-    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+    <label class="control-label" for="voiceMailUserId">voiceMailUserId</label>
+    <input type="text" class="form-control input-sm" id="voiceMailUserId" placeholder=" - Ex: " name="voiceMailUserId">
 </div>
 
 <div class="form-group">
@@ -21534,6 +21623,16 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conferenceRoomId">conferenceRoomId</label>
+    <input type="text" class="form-control input-sm" id="conferenceRoomId" placeholder=" - Ex: " name="conferenceRoomId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="extensionId">extensionId</label>
+    <input type="text" class="form-control input-sm" id="extensionId" placeholder=" - Ex: " name="extensionId">
 </div>
     <button type="submit" class="btn btn-success send" rel="118">Send</button>
 </form></div>
@@ -23599,7 +23698,8 @@
      'billInboundCalls': '', 
      'friendValue': '', 
      'languageId': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conditionalRouteId': ''
  },{
      'id': '', 
      'brandId': '', 
@@ -23622,7 +23722,8 @@
      'billInboundCalls': '', 
      'friendValue': '', 
      'languageId': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conditionalRouteId': ''
  }]</pre>
                         </div>
                     </div>
@@ -23763,7 +23864,8 @@
      'billInboundCalls': '', 
      'friendValue': '', 
      'languageId': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conditionalRouteId': ''
  }</pre>
                         </div>
                     </div>
@@ -23895,7 +23997,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount]</td>
+    <td>[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]</td>
 </tr>
 
 <tr>
@@ -24027,6 +24129,16 @@
     <td>No</td>
     <td></td>
 </tr>
+
+<tr>
+    <td>conditionalRouteId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
     </tbody>
 </table>
                       </div>
@@ -24093,7 +24205,7 @@
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -24159,6 +24271,11 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conditionalRouteId">conditionalRouteId</label>
+    <input type="text" class="form-control input-sm" id="conditionalRouteId" placeholder=" - Ex: " name="conditionalRouteId">
 </div>
     <button type="submit" class="btn btn-success send" rel="132">Send</button>
 </form></div>
@@ -24325,7 +24442,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount]</td>
+    <td>[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]</td>
 </tr>
 
 <tr>
@@ -24457,6 +24574,16 @@
     <td>No</td>
     <td></td>
 </tr>
+
+<tr>
+    <td>conditionalRouteId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
     </tbody>
 </table>
                       </div>
@@ -24528,7 +24655,7 @@
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -24594,6 +24721,11 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conditionalRouteId">conditionalRouteId</label>
+    <input type="text" class="form-control input-sm" id="conditionalRouteId" placeholder=" - Ex: " name="conditionalRouteId">
 </div>
     <button type="submit" class="btn btn-success send" rel="133">Send</button>
 </form></div>
@@ -26406,7 +26538,8 @@
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conditionalRouteId': ''
  },{
      'id': '', 
      'companyId': '', 
@@ -26419,7 +26552,8 @@
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conditionalRouteId': ''
  }]</pre>
                         </div>
                     </div>
@@ -26550,7 +26684,8 @@
      'userId': '', 
      'numberValue': '', 
      'friendValue': '', 
-     'queueId': ''
+     'queueId': '', 
+     'conditionalRouteId': ''
  }</pre>
                         </div>
                     </div>
@@ -26632,7 +26767,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]</td>
+    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional]</td>
 </tr>
 
 <tr>
@@ -26714,6 +26849,16 @@
     <td>No</td>
     <td></td>
 </tr>
+
+<tr>
+    <td>conditionalRouteId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
     </tbody>
 </table>
                       </div>
@@ -26755,7 +26900,7 @@
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -26796,6 +26941,11 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conditionalRouteId">conditionalRouteId</label>
+    <input type="text" class="form-control input-sm" id="conditionalRouteId" placeholder=" - Ex: " name="conditionalRouteId">
 </div>
     <button type="submit" class="btn btn-success send" rel="147">Send</button>
 </form></div>
@@ -26912,7 +27062,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>No</td>
-    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue]</td>
+    <td>[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional]</td>
 </tr>
 
 <tr>
@@ -26994,6 +27144,16 @@
     <td>No</td>
     <td></td>
 </tr>
+
+<tr>
+    <td>conditionalRouteId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
     </tbody>
 </table>
                       </div>
@@ -27040,7 +27200,7 @@
 
 <div class="form-group">
     <label class="control-label" for="routeType">routeType</label>
-    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue] - Ex: " name="routeType">
+    <input type="text" class="form-control input-sm" id="routeType" placeholder="[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional] - Ex: " name="routeType">
 </div>
 
 <div class="form-group">
@@ -27081,6 +27241,11 @@
 <div class="form-group">
     <label class="control-label" for="queueId">queueId</label>
     <input type="text" class="form-control input-sm" id="queueId" placeholder=" - Ex: " name="queueId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="conditionalRouteId">conditionalRouteId</label>
+    <input type="text" class="form-control input-sm" id="conditionalRouteId" placeholder=" - Ex: " name="conditionalRouteId">
 </div>
     <button type="submit" class="btn btn-success send" rel="148">Send</button>
 </form></div>
@@ -44736,7 +44901,8 @@
      'targetType': '', 
      'targetNumberValue': '', 
      'targetExtensionId': '', 
-     'targetVoiceMailUserId': ''
+     'targetVoiceMailUserId': '', 
+     'targetConditionalRouteId': ''
  },{
      'id': '', 
      'IVRCustomId': '', 
@@ -44745,7 +44911,8 @@
      'targetType': '', 
      'targetNumberValue': '', 
      'targetExtensionId': '', 
-     'targetVoiceMailUserId': ''
+     'targetVoiceMailUserId': '', 
+     'targetConditionalRouteId': ''
  }]</pre>
                         </div>
                     </div>
@@ -44872,7 +45039,8 @@
      'targetType': '', 
      'targetNumberValue': '', 
      'targetExtensionId': '', 
-     'targetVoiceMailUserId': ''
+     'targetVoiceMailUserId': '', 
+     'targetConditionalRouteId': ''
  }</pre>
                         </div>
                     </div>
@@ -44964,7 +45132,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>Yes</td>
-    <td>[enum:number|extension|voicemail]</td>
+    <td>[enum:number|extension|voicemail|conditional]</td>
 </tr>
 
 <tr>
@@ -44989,6 +45157,16 @@
 
 <tr>
     <td>targetVoiceMailUserId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>targetConditionalRouteId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -45042,7 +45220,7 @@
 
 <div class="form-group">
     <label class="control-label" for="targetType">targetType</label>
-    <input type="text" class="form-control input-sm" id="targetType" placeholder="[enum:number|extension|voicemail] - Ex: " name="targetType">
+    <input type="text" class="form-control input-sm" id="targetType" placeholder="[enum:number|extension|voicemail|conditional] - Ex: " name="targetType">
 </div>
 
 <div class="form-group">
@@ -45058,6 +45236,11 @@
 <div class="form-group">
     <label class="control-label" for="targetVoiceMailUserId">targetVoiceMailUserId</label>
     <input type="text" class="form-control input-sm" id="targetVoiceMailUserId" placeholder=" - Ex: " name="targetVoiceMailUserId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="targetConditionalRouteId">targetConditionalRouteId</label>
+    <input type="text" class="form-control input-sm" id="targetConditionalRouteId" placeholder=" - Ex: " name="targetConditionalRouteId">
 </div>
     <button type="submit" class="btn btn-success send" rel="257">Send</button>
 </form></div>
@@ -45184,7 +45367,7 @@
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
 </a></td>
     <td>Yes</td>
-    <td>[enum:number|extension|voicemail]</td>
+    <td>[enum:number|extension|voicemail|conditional]</td>
 </tr>
 
 <tr>
@@ -45209,6 +45392,16 @@
 
 <tr>
     <td>targetVoiceMailUserId</td>
+    <td>int 
+<a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
+    <i class="btn glyphicon glyphicon-exclamation-sign"></i>
+</a></td>
+    <td>No</td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>targetConditionalRouteId</td>
     <td>int 
 <a href="javascript:void(0);" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="Sample" data-content="">
     <i class="btn glyphicon glyphicon-exclamation-sign"></i>
@@ -45267,7 +45460,7 @@
 
 <div class="form-group">
     <label class="control-label" for="targetType">targetType</label>
-    <input type="text" class="form-control input-sm" id="targetType" placeholder="[enum:number|extension|voicemail] - Ex: " name="targetType">
+    <input type="text" class="form-control input-sm" id="targetType" placeholder="[enum:number|extension|voicemail|conditional] - Ex: " name="targetType">
 </div>
 
 <div class="form-group">
@@ -45283,6 +45476,11 @@
 <div class="form-group">
     <label class="control-label" for="targetVoiceMailUserId">targetVoiceMailUserId</label>
     <input type="text" class="form-control input-sm" id="targetVoiceMailUserId" placeholder=" - Ex: " name="targetVoiceMailUserId">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="targetConditionalRouteId">targetConditionalRouteId</label>
+    <input type="text" class="form-control input-sm" id="targetConditionalRouteId" placeholder=" - Ex: " name="targetConditionalRouteId">
 </div>
     <button type="submit" class="btn btn-success send" rel="258">Send</button>
 </form></div>
@@ -92284,7 +92482,7 @@
 
         <div class="row mt0 footer">
             <div class="col-md-6" align="left">
-                Generated on 2017-08-11, 12:15:10
+                Generated on 2017-08-30, 16:19:26
             </div>
             <div class="col-md-6" align="right">
                 <a href="https://github.com/calinrada/php-apidoc" target="_blank">php-apidoc v 1.3.4</a>

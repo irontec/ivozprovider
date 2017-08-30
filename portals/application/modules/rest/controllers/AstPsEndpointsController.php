@@ -46,7 +46,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'direct_media': '', 
      *     'direct_media_method': '', 
      *     'mailboxes': '', 
-     *     'pickup_group': '', 
+     *     'named_pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     '100rel': '', 
@@ -67,7 +67,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'direct_media': '', 
      *     'direct_media_method': '', 
      *     'mailboxes': '', 
-     *     'pickup_group': '', 
+     *     'named_pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     '100rel': '', 
@@ -104,7 +104,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'directMedia',
                 'directMediaMethod',
                 'mailboxes',
-                'pickupGroup',
+                'namedPickupGroup',
                 'sendDiversion',
                 'sendPai',
                 '100rel',
@@ -197,7 +197,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      *     'direct_media': '', 
      *     'direct_media_method': '', 
      *     'mailboxes': '', 
-     *     'pickup_group': '', 
+     *     'named_pickup_group': '', 
      *     'send_diversion': '', 
      *     'send_pai': '', 
      *     '100rel': '', 
@@ -233,7 +233,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                 'directMedia',
                 'directMediaMethod',
                 'mailboxes',
-                'pickupGroup',
+                'namedPickupGroup',
                 'sendDiversion',
                 'sendPai',
                 '100rel',
@@ -292,7 +292,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="named_pickup_group", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
@@ -346,7 +346,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="direct_media", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="direct_media_method", nullable=true, type="enum('invite','reinvite','update')", sample="", description="[enum:update|invite|reinvite]")
      * @ApiParams(name="mailboxes", nullable=true, type="varchar", sample="", description="")
-     * @ApiParams(name="pickup_group", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="named_pickup_group", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="send_diversion", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="send_pai", nullable=true, type="enum('yes','no')", sample="", description="")
      * @ApiParams(name="100rel", nullable=false, type="enum('no','required','yes')", sample="", description="")
@@ -511,7 +511,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'pickup_group' => array(
+                'named_pickup_group' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
@@ -617,7 +617,7 @@ class Rest_AstPsEndpointsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'pickup_group' => array(
+                'named_pickup_group' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
