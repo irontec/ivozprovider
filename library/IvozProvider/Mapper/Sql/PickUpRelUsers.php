@@ -54,7 +54,7 @@ class PickUpRelUsers extends Raw\PickUpRelUsers
         $endpoint = $user->getEndpoint();
         if ($endpoint) {
             $endpoint
-            ->setPickupGroup($user->getPickUpGroupsIds())
+            ->setNamedPickupGroup($user->getPickUpGroupsIds())
             ->save();
         }
     }

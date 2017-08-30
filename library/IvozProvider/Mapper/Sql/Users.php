@@ -116,7 +116,7 @@ class Users extends Raw\Users
             // Update previous terminal
             if ($endpoint = $original->getEndpoint()) {
                 $endpoint
-                    ->setPickupGroup(null)
+                    ->setNamedPickupGroup(null)
                     ->setCallerid(null)
                     ->setMailboxes(null)
                     ->save();

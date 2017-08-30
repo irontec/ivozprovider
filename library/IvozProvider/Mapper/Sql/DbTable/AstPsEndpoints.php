@@ -298,11 +298,11 @@ class AstPsEndpoints extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'pickup_group' => 
+	  'named_pickup_group' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_ps_endpoints',
-	    'COLUMN_NAME' => 'pickup_group',
+	    'COLUMN_NAME' => 'named_pickup_group',
 	    'COLUMN_POSITION' => 15,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
