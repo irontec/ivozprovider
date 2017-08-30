@@ -33,7 +33,6 @@ scenarios:
           - attxfer: TO_CHARLIE
           - waitfor: TRANSFER_ACCEPTED
           - waitfor: TRANSFER_OK
-          - waitfor: DISCONNCTD
           - waitfor: { call: TO_CHARLIE, name: DISCONNCTD }
 
       # Charlie: Answer the call from Bob
@@ -43,6 +42,6 @@ scenarios:
           - waitfor: INCOMING
           - answer
           - waitfor: CONFIRMED
-          - wait: 20
+          - wait: 10
           - hangup
           - waitfor: DISCONNCTD
