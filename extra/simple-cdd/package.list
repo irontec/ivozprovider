@@ -8,7 +8,6 @@ ivozprovider-doc
 ivozprovider-kamailio:#ARCH#
 ivozprovider-kamailio-json-modules:#ARCH#
 ivozprovider-kamailio-mysql-modules:#ARCH#
-ivozprovider-kamailio-redis-modules:#ARCH#
 ivozprovider-kamailio-tls-modules:#ARCH#
 ivozprovider-kamailio-trunks
 ivozprovider-kamailio-users
