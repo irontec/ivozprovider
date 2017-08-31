@@ -23,6 +23,9 @@ class Provision_IndexController extends Zend_Controller_Action
     public function templateAction()
     {
         $isHttps = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']);
+        if ($isHttps && $_SERVER['SERVER_PORT'] == 443) {
+            return $this->_error(403, "No provisioning over 443");
+        }
         $terminalUrl = $this->getRequest()->getParam('requested_url');
         $path = $this->_getFilePath();
         $terminalModelMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
