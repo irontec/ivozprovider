@@ -2,7 +2,7 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper, dh-systemd,
-    nodejs, npm, ruby-compass, git, openssh-client, curl, php5,
+    nodejs, ruby-compass, git, openssh-client, curl, php7.0,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8)
@@ -51,8 +51,8 @@ Depends: ivozprovider-profile-common,
     ivozprovider-asterisk-config,
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
-    php5-igbinary,
-    php5-gearman,
+    php7.0-igbinary,
+    php-gearman,
     sngrep,
     ghostscript,
     libtiff-tools
@@ -81,14 +81,15 @@ Priority: optional
 Depends: ivozprovider-profile-common,
     ivozprovider-doc,
     apache2,
-    php5,
-    php5-igbinary,
-    php5-mysql,
-    php5-imagick,
-    php5-curl,
-    php5-yaml,
-    php5-gearman,
-    php5-gd,
+    php-gearman,
+    php7.0,
+    php7.0-igbinary,
+    php7.0-mysql,
+    php7.0-imagick,
+    php7.0-mbstring,
+    php7.0-curl,
+    php7.0-yaml,
+    php7.0-gd,
     ivozprovider-portals,
     ivozprovider-userweb,
     gearman-job-server,
@@ -199,7 +200,7 @@ Description: IVOZ Provider - User Webapp - Zendframework application
 Package: ivozprovider-data-library
 Architecture: all
 Section: php
-Depends: zendframework, php5-cli, php5-mysql, klear-library
+Depends: zendframework, php7.0-cli, php7.0-mysql, klear-library
 Priority: optional
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Mappers and Models for Zend applications
