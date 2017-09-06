@@ -16,8 +16,6 @@ In this type of IVRs, the caller will directly press the extension that must
 previously know (or the welcome locution suggests) and the system will
 automatically connect with that extension: 
 
-.. image:: img/ivr_generic.png
-
 Generic IVRs have the following fields:
 
 .. glossary::
@@ -35,21 +33,19 @@ Generic IVRs have the following fields:
         In case the dialed extension exists in the company, this locution will
         be played (usually something like 'Connecting, please wait...').
 
-    Blacklist regular expression
-        This field can be used to avoid some extensions to be accessed from the
-        IVR. In the image above, the exntesions 105 and 106 will not be 
-        available, and trying to dialing them will trigger the **error 
-        configuration**.
-        
     No answer process
-        If the dialed extension does not answer in X seconds, the no answer 
-        process will trigger, playing the configured locution and redirecting 
-        the call to another number, extension or voicemail.
+        If the dialed extension points to a user and does not answer in X seconds,
+        the no answer process will trigger, playing the configured locution and 
+        redirecting the call to another number, extension or voicemail.
 
     Error process
         If the dialed extension is invalid (o nothing has been dialed), the 
         error process will trigger, playing the configured locution and
         redirecting the call to another number, extension or voicemail. 
+
+.. warning:: No answer processing only applies for extensions pointing to 
+               users. Extensions that point to other entities (such as external
+               number, huntgroup, etc.) won't use this logic.
 
 .. _custom_ivrs:
 
@@ -58,19 +54,14 @@ Custom IVRs
 ***********
 
 Contrary to the generic IVRs where the caller can only dial internal 
-extensions, the custom IVRS can configure up to 10 options that can be routed
+extensions, the custom IVRS can configure options that can be routed
 in different ways.
 
 .. hint:: The most common usage for this IVR is combining them with a welcome
    locution that says something like 'Press 1 to contact XXX, Press 2 to 
    contact YYY, ..."
 
-Most of the configurable fields are the same that generic IVR uses:   
-
-.. image:: img/ivr_custom.png
-
-The main difference on these screens is that **Blacklist regular expression**
-makes no sense in this kind of IVRs.
+Most of the configurable fields are the same that generic IVR uses:
 
 The process of each entry of the IVR can be defined in the following button:
 
@@ -90,3 +81,20 @@ an error and will trigger the **Error process**):
    will be played instead of the IVR **success locution**. This way, you can 
    configure a generic locution (like 'Connecting....') or a custom one for
    a given entry (like 'Connecting reception department, please wait...').
+
+.. warning:: No answer processing only applies for options that point to extensions
+               that point to users. Options that point to extensions that point
+               to other entities (such as external number, huntgroup, etc.)
+               won't use this logic.
+
+.. rubric:: Entries are regular expressions
+
+Although on the most typical usage of this IVRs options will be digits from 1
+to 9, **entries are interpreted as regular expressions**. This way, you could
+add an entry like "^2[0-9]{2}$" to group the behaviour of all numbers from 200
+to 299. With this usage, **Max digits** parameter is important too.
+
+.. error:: To avoid undesired behaviour, **if you use options out of 0-9, use
+           regular expression notation** ('^1$' instead of '1', '^10$' instead
+           of '10' and so on).
+
