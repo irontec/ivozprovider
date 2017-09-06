@@ -1,10 +1,5 @@
 <?php
 
-if (isset($_SERVER['REMOTE_ADDR'])) {
-
-	die('Command Line Only!');
-}
-
 defined('__DIR__') || define('__DIR__', dirname(__FILE__));
 
 defined('APPLICATION_PATH') ||
