@@ -473,16 +473,16 @@ class CallsController extends BaseController
         // Noone picked up
         if ($dialStatus == "NOANSWER") {
             $ivrId = $this->agi->getVariable("IVRID");
+            $ivrType = $this->agi->getVariable("IVRTYPE");
 
-            // Get IVRCommon..
-            $ivrCommonMapper = new Mapper\IVRCommon();
-            $ivr = $ivrCommonMapper->find($ivrId);
-
-            // Or IVRcustom...
-            if (empty($ivr)) {
-                $ivrCustomMapper = new Mapper\IVRCustom();
-                $ivr = $ivrCustomMapper->find($ivrId);
+            if ($ivrType == 'COMMON') {
+                $ivrMapper = new Mapper\IVRCommon();
+            } else {
+                $ivrMapper = new Mapper\IVRCustom();
             }
+
+            // Get IVR data
+            $ivr = $ivrMapper->find($ivrId);
 
             // Process NoAnswer handler
             $ivrAction = new IVRAction($this);
