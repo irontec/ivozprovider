@@ -39,6 +39,10 @@ class IVRCustomAction extends IVRAction
             return $this->processError();
         }
 
+        // Store current IVR data
+        $this->agi->setVariable("IVRID", $ivr->getId());
+        $this->agi->setVariable("IVRTYPE", 'CUSTOM');
+
         // Check if the pressed input matches one of the configured extensions
         $entries = $ivr->getIVRCustomEntries();
         foreach ($entries as $entry) {

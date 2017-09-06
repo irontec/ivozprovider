@@ -52,6 +52,10 @@ class IVRCommonAction extends IVRAction
             return $this->processError();
         }
 
+        // Store current IVR data
+        $this->agi->setVariable("IVRID", $ivr->getId());
+        $this->agi->setVariable("IVRTYPE", 'COMMON');
+
         // Success!! Place call to given extension
         $this->agi->playback($ivr->getSuccessLocution());
 
