@@ -49,9 +49,6 @@ class IVRAction extends RouterAction
      */
     protected function _routeToUser()
     {
-        // Set id variable for postprocessing
-        $this->agi->setVariable("IVRID", $this->_ivr->getId());
-
         // Handle Call user route
         $userAction = new UserCallAction($this);
         $userAction
