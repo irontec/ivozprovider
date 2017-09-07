@@ -121,7 +121,9 @@ class Provision_IndexController extends Zend_Controller_Action
      */
     protected function _getTerminalByUrl($terminalUrl)
     {
-        $fileName = $this->extractFileNameWithoutExtension($terminalUrl);
+        $fileName = $this->extractFileName($terminalUrl);
+        $fileExtension = $this->extractFileExtension($terminalUrl);
+
         if (empty($fileName)) {
             return null;
         }
@@ -157,7 +159,11 @@ class Provision_IndexController extends Zend_Controller_Action
                 continue;
             }
 
-            $specificUrl = $this->extractFileNameWithoutExtension(
+            $specificUrl = $this->extractFileName(
+                $terminalModel->getSpecificUrlPattern()
+            );
+
+            $specificUrlExtension = $this->extractFileExtension(
                 $terminalModel->getSpecificUrlPattern()
             );
 
@@ -179,6 +185,11 @@ class Provision_IndexController extends Zend_Controller_Action
             }
 
             if (strtolower($fixedSpecificUrl) === strtolower($fixedFileName)) {
+                $extensionMismatch = ($fileExtension !== $specificUrlExtension);
+                if (!empty($specificUrlExtension) && $extensionMismatch) {
+                    continue;
+                }
+
                 return $candidate;
             }
         }
@@ -186,9 +197,14 @@ class Provision_IndexController extends Zend_Controller_Action
         return null;
     }
 
-    protected function extractFileNameWithoutExtension($route)
+    protected function extractFileName($route)
     {
         return pathinfo($route, PATHINFO_FILENAME);
+    }
+
+    protected function extractFileExtension($route)
+    {
+        return pathinfo($route, PATHINFO_EXTENSION);
     }
 
     protected function _getFilePath(){
