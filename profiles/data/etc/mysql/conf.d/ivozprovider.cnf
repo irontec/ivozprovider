@@ -6,4 +6,4 @@ default-time-zone = utc
 character-set-server = utf8
 
 # Increase connection max idle timeout
-wait_time=604800
+wait_timeout=604800
