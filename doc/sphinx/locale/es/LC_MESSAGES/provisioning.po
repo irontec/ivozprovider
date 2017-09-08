@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 11:25+0200\n"
+"POT-Creation-Date: 2017-09-08 13:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,11 @@ msgstr ""
 msgid "Terminal provisioning"
 msgstr "Provisión de terminales"
 
-#: ../../provisioning/index.rst:7
+#: ../../provisioning/index.rst:8
+msgid "Overview"
+msgstr "Introducción"
+
+#: ../../provisioning/index.rst:10
 msgid ""
 "IvozProvider supports provisioning of terminals via HTTP/HTTPS that "
 "fulfill the following requirements:"
@@ -29,23 +33,23 @@ msgstr ""
 "IvozProvider soporta provisionar terminales vía HTTP/HTTPS que sigan la "
 "forma de provisionarse que se explica a continuación:"
 
-#: ../../provisioning/index.rst:10
+#: ../../provisioning/index.rst:13
 msgid ""
 "Assuming a just unboxed terminal, just plugged and connected to the "
 "network:"
 msgstr "Cuando un terminal sale de la caja, se alimenta y se conecta a la red:"
 
-#: ../../provisioning/index.rst:12
+#: ../../provisioning/index.rst:15
 msgid "Ask IP address via DHCP."
 msgstr "Pide IP por DHCP."
 
-#: ../../provisioning/index.rst:14
+#: ../../provisioning/index.rst:17
 msgid "DCHP has enabled the option 66 that points to the platform portal"
 msgstr ""
 "Se fija en la opción 66 de DHCP que le indica a quién tiene que pedir su "
 "configuración."
 
-#: ../../provisioning/index.rst:16
+#: ../../provisioning/index.rst:19
 msgid ""
 "The first requested provisioning file is a static file (different for "
 "each model) prefixed with the previous step URL."
@@ -53,11 +57,11 @@ msgstr ""
 "Pide un primer archivo añadiendo a la ruta recibida por DHCP un archivo "
 "estático (cada modelo de terminal, uno distinto)."
 
-#: ../../provisioning/index.rst:19
+#: ../../provisioning/index.rst:22
 msgid "The served file can redefine the URL for further requests"
 msgstr "En ese archivo se le puede indicar un siguiente archivo a pedir."
 
-#: ../../provisioning/index.rst:22
+#: ../../provisioning/index.rst:25
 msgid ""
 "Any terminal model that can adapt to this provisioning way can be added "
 "into the section **Platform Configuration > Terminal manufacturers**."
@@ -66,19 +70,19 @@ msgstr ""
 "provisionarse utilizando la sección **Configuración general > Fabricantes"
 " de terminales**."
 
-#: ../../provisioning/index.rst:26
+#: ../../provisioning/index.rst:29
 msgid "Example Cisco SPA504G"
 msgstr "Ejemplo Cisco SPA504G"
 
-#: ../../provisioning/index.rst:27
+#: ../../provisioning/index.rst:30
 msgid "Cisco SPA504G is turned on and requests an IP address to DHCP"
 msgstr "Cisco 504G se despierta y pide IP."
 
-#: ../../provisioning/index.rst:29
+#: ../../provisioning/index.rst:32
 msgid "Receives “http://provision.example.com/provision” as DHCP option 66"
 msgstr "Recibe “http://provision.ejemplo.com/provision”"
 
-#: ../../provisioning/index.rst:31
+#: ../../provisioning/index.rst:34
 msgid ""
 "Request HTTP configuration from "
 "http://provision.example.com/provision/spa504g.cfg"
@@ -86,13 +90,13 @@ msgstr ""
 "Pide la configuración vía http a "
 "http://provision.ejemplo.com/provision/spa504g.cfg"
 
-#: ../../provisioning/index.rst:33
+#: ../../provisioning/index.rst:36
 msgid "All 504G request the same file (spa504.cfg), prefixed with the given URL"
 msgstr ""
 "Todos los 504G solicitan el mismo archivo (spa504g.cfg), añadiéndolo a la"
 " ruta que reciban."
 
-#: ../../provisioning/index.rst:35
+#: ../../provisioning/index.rst:38
 msgid ""
 "This file only contain basic configuration settings for the model and the"
 " URL for the next request (p.e. "
@@ -102,7 +106,7 @@ msgstr ""
 " los terminales de ese modelo concreto y qué archivo tienen que pedir a "
 "continuación (ejemplo https://provision.example.com/provision/$MAC.cfg)"
 
-#: ../../provisioning/index.rst:38
+#: ../../provisioning/index.rst:41
 msgid ""
 "This way, each terminal (MAC should be unique) request a specific file "
 "(and different) after the generic one has been served."
@@ -110,36 +114,36 @@ msgstr ""
 "De esta forma, hacemos que cada terminal (la MAC es única) pida un "
 "archivo concreto (y distinto) una vez que ha pedido el genérico."
 
-#: ../../provisioning/index.rst:41
+#: ../../provisioning/index.rst:44
 msgid "This file will contain the specific configuration for the terminal:"
 msgstr "En este archivo se le sirve su configuración específica:"
 
-#: ../../provisioning/index.rst:43
+#: ../../provisioning/index.rst:46
 msgid "User"
 msgstr "Usuario"
 
-#: ../../provisioning/index.rst:45
+#: ../../provisioning/index.rst:48
 msgid "Password"
 msgstr "Contraseña"
 
-#: ../../provisioning/index.rst:47
+#: ../../provisioning/index.rst:50
 msgid "SIP Domain"
 msgstr "Dominio SIP"
 
-#: ../../provisioning/index.rst:50
+#: ../../provisioning/index.rst:53
 msgid ""
 "IvozProvider provisioning system, right now, only has one goal: provide "
-"credential and language settings for the terminals."
+"credentials and language settings for the terminals."
 msgstr ""
 "El sistema de provisión de IvozProvider, a día de hoy, configura los "
-"terminales con el único objetivo de que se registren y se queden en en el"
-" idioma del usuario."
+"terminales con el único objetivo de que se registren y se queden en el "
+"idioma del usuario."
 
-#: ../../provisioning/index.rst:54
+#: ../../provisioning/index.rst:57
 msgid "Configuration of supported models"
 msgstr "Configuración de modelos soportados"
 
-#: ../../provisioning/index.rst:56
+#: ../../provisioning/index.rst:59
 msgid ""
 "IvozProvider uses a template system that allows global operator (God) to "
 "define new models and configure what files will be served."
@@ -148,23 +152,17 @@ msgstr ""
 " global (God) defina nuevos modelos de terminales y configure los "
 "archivos que se les servirá."
 
-#: ../../provisioning/index.rst:59
+#: ../../provisioning/index.rst:62
 msgid ""
-"The help section of **Terminal manufacturers** has examples for models "
-"supported *out-of-the-box* in IvozProvider:"
+"The help section of **Terminal manufacturers** has examples for some "
+"models that work (in the moment of writting this) with IvozProvider "
+"provisioning system."
 msgstr ""
 "La sección de ayuda de **Fabricantes de Terminales** contiene ejemplos "
-"para los modelos soportados *out-of-the-box* por la solución:"
+"que funcionan (en el momento de escribir esta documentación) con el "
+"sistema de provisión de IvozProvider."
 
-#: ../../provisioning/index.rst:62
-msgid "Cisco SPA (502, 504, 509, 514 y 525)"
-msgstr "Cisco SPA (502, 504, 509, 514 y 525)"
-
-#: ../../provisioning/index.rst:64
-msgid "Yealink (T21P, T21Pe2, T23P, T27P, T46G, T48G, W52P, W56P)"
-msgstr "Yealink (T21P, T21Pe2, T23P, T27P, T46G, T48G, W52P, W56P)"
-
-#: ../../provisioning/index.rst:66
+#: ../../provisioning/index.rst:65
 msgid ""
 "These models will be available after the initial installation, but you "
 "must edit them and load the default configuration before you can use the "
@@ -174,13 +172,176 @@ msgstr ""
 "entrar a cada uno de ellos a cargar la configuración por defecto antes de"
 " poder usarlos (opción **Restore default template**)."
 
-#: ../../provisioning/index.rst:70
+#: ../../provisioning/index.rst:69
+msgid ""
+"UACs firmware changes may cause that given examples stop working. We will"
+" try to keep templates updated, but we can't guarantee this point."
+msgstr ""
+"Cambios en el firmware de los terminales pueden provocar que los ejemplos"
+" proporcionados dejen de funcionar. Se intentará mantenerlos "
+"actualizados, pero no podemos garantizar que siempre lo estén."
+
+#: ../../provisioning/index.rst:72
 msgid ""
 "Analyzing the suggested templates you can have a basic idea of the "
 "flexibility of the system to configure any existing terminal model in the"
-" market."
+" market and to adapt them to eventual changes in given examples."
 msgstr ""
 "Analizando las plantillas sugeridas, puede hacerse una idea básica de la "
 "flexibilidad del sistema para configurar cualquier modelo de terminal en "
-"el mercado."
+"el mercado y para adaptarse de posibles cambios en los ejemplos dados."
+
+#: ../../provisioning/index.rst:77
+msgid "Getting technical"
+msgstr "Detalles técnicos"
+
+#: ../../provisioning/index.rst:79
+msgid "Imagine an environment with this configuration:"
+msgstr "Imaginemos un escenario con esta configuración:"
+
+#: ../../provisioning/index.rst:81
+msgid "Provisioning URLs:"
+msgstr "URLs de provisión:"
+
+#: ../../provisioning/index.rst:83
+msgid "Generic file: http://PROV_IP/provision"
+msgstr "Archivo genérico: http://PROV_IP/provision"
+
+#: ../../provisioning/index.rst:85
+msgid "Specific file: https://PROV_IP:PROV_PORT/provision"
+msgstr "Archivo específico: https://PROV_IP:PROV_PORT/provision"
+
+#: ../../provisioning/index.rst:87
+msgid "TerminalModels.genericUrlPattern: y000000000044.cfg"
+msgstr "TerminalModels.genericUrlPattern: y000000000044.cfg"
+
+#: ../../provisioning/index.rst:89
+msgid "Which requested URLs will be valid?"
+msgstr "¿Qué URLs de petición serán correctas?"
+
+#: ../../provisioning/index.rst:91
+msgid "For generic file, just one: http://PROV_IP/provision/y000000000044.cfg"
+msgstr ""
+"Para el archivo genérico, solo una: "
+"http://PROV_IP/provision/y000000000044.cfg"
+
+#: ../../provisioning/index.rst:93
+msgid "For specific file, requests are right as long as this rules are fulfilled:"
+msgstr ""
+"Para el archivo específico, la petición tiene que satisfacer las "
+"siguientes reglas"
+
+#: ../../provisioning/index.rst:95
+msgid "All HTTP requests are wrong."
+msgstr "Todas las peticiones HTTP son erróneas."
+
+#: ../../provisioning/index.rst:97
+msgid "HTTPS requests to 443 are wrong (PROV_PORT must be used)."
+msgstr ""
+"Las peticiones HTTPS al puerto 443 son erróneas (se tiene que usar "
+"PROV_PORT)"
+
+#: ../../provisioning/index.rst:99
+msgid ""
+"Subpaths after provisioning URL are ignored, both in request and in "
+"specificUrlPattern."
+msgstr ""
+"Las subrutas después de la URL de provisión son ignoradas, tanto en la "
+"petición como en el campo specificUrlPattern."
+
+#: ../../provisioning/index.rst:102
+msgid ""
+"On specific file request, extension must match as long as extension is "
+"used in specificUrlPattern."
+msgstr ""
+"La extensión de la petición tiene que ser la misma que la extensión del "
+"campo specificUrlPattern (en caso de que la tenga). Si no, la extensión "
+"es ignorada."
+
+#: ../../provisioning/index.rst:105
+msgid ""
+"On specific file request, the filename must match exactly once {mac} is "
+"replaced."
+msgstr ""
+"El nombre del archivo solicitado tiene que coincidir exactamente con el "
+"nombre especificado en specificUrlPattern, una vez que {mac} se sustituya"
+" por el valor adecuado."
+
+#: ../../provisioning/index.rst:107
+msgid "MAC address is case insensitive and can contain colons or not (':')."
+msgstr ""
+"La dirección MAC no distingue mayúsculas/minúsculas y puede contener dos "
+"puntos o no."
+
+#: ../../provisioning/index.rst:109
+msgid "Let's analyze the examples below to understand this rules better:"
+msgstr "Analicemos los siguientes ejemplos para entender estas reglas mejor:"
+
+#: ../../provisioning/index.rst:112
+msgid "Example 1 - TerminalModels.specificUrlPattern: {mac}.cfg"
+msgstr "Ejemplo 1 - TerminalModels.specificUrlPattern: {mac}.cfg"
+
+#: ../../provisioning/index.rst:113 ../../provisioning/index.rst:147
+msgid "Working requests:"
+msgstr "Peticiones correctas:"
+
+#: ../../provisioning/index.rst:125 ../../provisioning/index.rst:153
+#: ../../provisioning/index.rst:171
+msgid "Wrong requests:"
+msgstr "Peticiones erróneas:"
+
+#: ../../provisioning/index.rst:132
+msgid "This example is identical to 't23/{mac}.cfg', as subpaths are ignored."
+msgstr ""
+"Este ejemplo es idéntico a 't23/{mac}.cfg', ya que las subrutas se "
+"ignoran."
+
+#: ../../provisioning/index.rst:135
+msgid "Example 2 - TerminalModels.specificUrlPattern: {mac}"
+msgstr "Ejemplo 2 - TerminalModels.specificUrlPattern: {mac}"
+
+#: ../../provisioning/index.rst:136
+msgid ""
+"All previous examples are ok, as extension is ignored if no extension is "
+"found in specificUrlPattern."
+msgstr ""
+"Todos los ejemplos anteriores son correctos, ya que la extensión de la "
+"petición se ignora al no haber especificado extensión alguna en "
+"specificUrlPattern."
+
+#: ../../provisioning/index.rst:139
+msgid "This example is identical to 't23/{mac}', as subpaths are ignored."
+msgstr "Este ejemplo es idéntico a 't23/{mac}', ya que las subrutas se ignoran."
+
+#: ../../provisioning/index.rst:143
+msgid "Example 3 - TerminalModels.specificUrlPattern: yea-{mac}.cfg"
+msgstr "Ejemplo 3 - TerminalModels.specificUrlPattern: yea-{mac}.cfg"
+
+#: ../../provisioning/index.rst:144
+msgid ""
+"All previous examples are wrong, as no 'yea-' is found ('yea' match is "
+"case sensitive)."
+msgstr ""
+"Todos los ejemplos anteriores son incorrectos, ya que ninguno contiene "
+"'yea-' (en minúsculas)."
+
+#: ../../provisioning/index.rst:160
+msgid "This example is identical to 't23/yea-{mac}.cfg', as subpaths are ignored."
+msgstr ""
+"Este ejemplo es idéntico a 't23/yea-{mac}.cfg', ya que las subrutas se "
+"ignoran."
+
+#: ../../provisioning/index.rst:163
+msgid "Example 4 - TerminalModels.specificUrlPattern: yea-{mac}"
+msgstr "Ejemplo 4 - TerminalModels.specificUrlPattern: yea-{mac}"
+
+#: ../../provisioning/index.rst:164
+msgid "As no extension is given:"
+msgstr "Como no se especifica ninguna extensión:"
+
+#: ../../provisioning/index.rst:177
+msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
+msgstr ""
+"Este ejemplo es idéntico a 't23/yea-{mac}', ya que las subrutas se "
+"ignoran."
 
