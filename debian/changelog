@@ -1,8 +1,14 @@
-ivozprovider (1.6.0) UNRELEASED; urgency=medium
+ivozprovider (1.6.1) UNRELEASED; urgency=medium
+
+  * Version bump to 1.6.1
+
+ -- Irontec Package Team <packages@irontec.com>  Fri, 08 Sep 2017 13:27:03 +0200
+
+ivozprovider (1.6.0) stable; urgency=medium
 
   * Version bump to 1.6.0
 
- -- Irontec Package Team <packages@irontec.com>  Fri, 08 Sep 2017 13:15:19 +0200
+ -- Irontec Package Team <packages@irontec.com>  Fri, 08 Sep 2017 13:26:50 +0200
 
 ivozprovider (1.5.0) stable; urgency=medium
 
