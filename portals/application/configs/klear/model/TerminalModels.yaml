@@ -77,7 +77,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("You can optionally prepend the terminal model or any other subpath to the url before the MAC address for verbosity/debugging purposes. Only the filename is checked in specific provisioning.")
+        text: _("You can optionally prepend the terminal model or any other subpath to the url before the MAC address for verbosity/debugging purposes. If a extension is given (e.g. {mac}.cfg), requested file must have that extension too. Otherwise, only requested filename will be checked.")
     specificTemplate:
       title: _('Specific Template')
       type: textarea

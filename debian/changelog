@@ -2,40 +2,40 @@ ivozprovider (1.6.0) UNRELEASED; urgency=medium
 
   * Version bump to 1.6.0
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com> Thu, 27 Jul 2017 17:27:20 +0200
+ -- Irontec Package Team <packages@irontec.com>  Fri, 08 Sep 2017 13:15:19 +0200
 
 ivozprovider (1.5.0) stable; urgency=medium
 
   * Version bump to 1.5.0
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com> Wed, 21 Jun 2017 10:57:10 +0200
+ -- Irontec Package Team <packages@irontec.com>  Wed, 21 Jun 2017 10:57:10 +0200
 
 ivozprovider (1.4.0) stable; urgency=medium
 
   * Version bump to 1.4.0
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com> Thu, 01 Jun 2017 19:16:10 +0200
+ -- Irontec Package Team <packages@irontec.com>  Thu, 01 Jun 2017 19:16:10 +0200
 
 ivozprovider (1.3.0) stable; urgency=medium
 
   * Version bump to 1.3.0
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com>  Fri, 07 Apr 2017 15:45:02 +0200
+ -- Irontec Package Team <packages@irontec.com>  Fri, 07 Apr 2017 15:45:02 +0200
 
 ivozprovider (1.2.0) stable; urgency=medium
 
   * Version bump to 1.2.0
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com>  Fri, 07 Apr 2017 12:07:53 +0200
+ -- Irontec Package Team <packages@irontec.com>  Fri, 07 Apr 2017 12:07:53 +0200
 
 ivozprovider (1.1.0) stable; urgency=medium
 
   * Version bump to 1.1.0
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com>  Mon, 14 Nov 2016 19:12:30 +0100
+ -- Irontec Package Team <packages@irontec.com>  Mon, 14 Nov 2016 19:12:30 +0100
 
 ivozprovider (1.0.0) stable; urgency=medium
 
   * Initial release.
 
- -- Irontec IvozProvider Team <dev@lists-ivozprovider.irontec.com>  Mon, 11 Apr 2016 13:40:59 +0100
+ -- Irontec Package Team <packages@irontec.com>  Mon, 11 Apr 2016 13:40:59 +0100
