@@ -576,26 +576,17 @@ sub fixPreviousWrongDecisions {
     $sth->finish();
 }
 
-sub is_leg_canceled {
-    my ($stat, $callid) = @_;
+sub sweepOldEntries {
+    my $sql = "UPDATE kam_acc_cdrs SET parsed='error' WHERE parsed='no' AND end_time < NOW() - INTERVAL 24 HOUR";
 
-    my @tables = qw/kam_users_acc kam_trunks_acc/;
+    # Execute query
+    my $sth = $dbh->prepare($sql)
+          or die "Couldn't prepare statement: $sql";
+    $sth->execute()
+          or die "Couldn't execute statement: $sql";
+    $sth->finish();
 
-    for my $table (@tables) {
-        # Fetch already parsed related CDRs, if any
-        my $cancelTransactions = "SELECT * FROM $table WHERE callid='$callid' AND method='CANCEL'";
-
-        my $sth = $dbh->prepare($cancelTransactions)
-          or die "Couldn't prepare statement: $cancelTransactions";
-        $sth->execute()
-          or die "Couldn't execute statement: $cancelTransactions";
-
-        return $table if $sth->rows;
-
-        $sth->finish();
-    }
-
-    return 0;
+    logger "Stats marked as error: " . $sth->rows;
 }
 
 #########################################
@@ -625,24 +616,27 @@ logger "Pending stats: $execution{pendingLegs}";
 
 # Get pending stats
 my $alegs = [];
+my $blegs = [];
 
 for (my $i=1; my $leg = $sth->fetchrow_hashref; $i++) {
     $cids{$i} = $leg;
     $$leg{key} = $i;
     if ($$leg{xcallid}) {
-        fixPreviousWrongDecisions $leg;
-        my $cancel_table = is_leg_canceled $$leg{id}, $$leg{callid};
-        logger "$$leg{direction} bleg $$leg{id} seems to involve a fast cancelation situation in its callid '$$leg{callid}' ($cancel_table, duration: $$leg{duration})" if $cancel_table;
-        $cancel_table = is_leg_canceled $$leg{id}, $$leg{xcallid};
-        logger "$$leg{direction} bleg $$leg{id} seems to involve a fast cancelation situation in its xcallid '$$leg{xcallid}' ($cancel_table, duration: $$leg{duration})" if $cancel_table;
+        push @$blegs, $leg;
     } else {
         push @$alegs, $leg;
-        my $cancel_table = is_leg_canceled $$leg{id}, $$leg{callid};
-        logger "$$leg{direction} aleg $$leg{id} seems to involve a fast cancelation situation in its callid '$$leg{callid}' ($cancel_table, duration: $$leg{duration})" if $cancel_table;
     }
 }
 
 $sth->finish();
+
+if ($ARGV[0] eq '--fix') {
+    for my $leg (@$blegs) {
+        fixPreviousWrongDecisions $leg;
+    }
+    logger "Fix execution ended at " . localtime();
+    exit;
+}
 
 # Log oldest stat
 logger sprintf("Oldest stat: '%s' (id: %d)",
@@ -764,6 +758,9 @@ insertCDR($_) for @$cdrs;
 
 # Log final stats
 logger "Stats marked as parsed: $execution{'parsed-yes'}";
+
+# Mark as 'error' entries not parsed older than 24 hours
+sweepOldEntries;
 
 # Disconnect from database
 $dbh->disconnect;
