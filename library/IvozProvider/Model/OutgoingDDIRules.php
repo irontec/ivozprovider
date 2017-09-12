@@ -60,6 +60,8 @@ class OutgoingDDIRules extends Raw\OutgoingDDIRules
             if ($list->numberMatches($e164destination)) {
                 if ($rulePattern->getAction() == 'force')  {
                     $finalDDI = $rulePattern->getForcedDDI();
+                } else if ($rulePattern->getAction() == 'keep') {
+                    $finalDDI = $originalDDI;
                 }
                 break;
             }
