@@ -3,4 +3,6 @@ export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\H\[\033[00m\]:\
 
 # Some useful aliases
 alias ast='asterisk -rvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv'
+alias calls='asterisk -rx "core show calls"'
+alias channels='asterisk -rx "core show channels verbose"'
 
