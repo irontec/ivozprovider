@@ -71,6 +71,7 @@ class IVRCustomAction extends IVRAction
                     $this->_routeExtension  = $entry->getTargetExtension();
                     $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
                     $this->_routeExternal   = $entry->getTargetNumberValue();
+                    $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
                 }
                 // Routed! :)
                 return $this->route();

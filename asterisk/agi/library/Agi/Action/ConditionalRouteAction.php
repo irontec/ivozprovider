@@ -6,7 +6,7 @@ class ConditionalRouteAction extends RouterAction
 {
     protected $conditionalRoute;
 
-    public function setconditionalRoute($conditionalRoute)
+    public function setConditionalRoute($conditionalRoute)
     {
         $this->conditionalRoute = $conditionalRoute;
         return $this;
