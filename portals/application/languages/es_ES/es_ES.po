@@ -1393,6 +1393,18 @@ msgstr "Loc. No contesta"
 msgid "No answer timeout"
 msgstr "Timeout no contesta"
 
+msgid "No input configuration"
+msgstr "Configuración sin entrada"
+
+msgid "No input locution"
+msgstr "Loc. sin entrada"
+
+msgid "No input target"
+msgstr "Destino sin entrada"
+
+msgid "No input target type"
+msgstr "Enrutado sin entrada"
+
 msgid "No matching condition handler"
 msgstr "Tratamiento sin coincidencia"
 
@@ -2212,9 +2224,6 @@ msgstr "Configuración no contesta"
 msgid "Timeout route"
 msgstr "Enrutar no contesta"
 
-msgid "Timeout target"
-msgstr "Destino si timeout"
-
 msgid "Timeout target type"
 msgstr "Enrutado timeout"
 
@@ -2436,6 +2445,7 @@ msgstr ""
 "Puede llamar a esta extensión para grabar está locución desde cualquier "
 "terminal de la compañía"
 
+#, python-brace-format
 msgid ""
 "You can optionally prepend the terminal model or any other subpath to the "
 "url before the MAC address for verbosity/debugging purposes. If a extension "
