@@ -36,7 +36,7 @@ class IVRCustomAction extends IVRAction
 
         // User hasn't pressed anything
         if (empty($userPressed)) {
-            return $this->processError();
+            return $this->processTimeout();
         }
 
         // Store current IVR data
@@ -54,30 +54,13 @@ class IVRCustomAction extends IVRAction
                 // Play entry success (if any)
                 $this->agi->playback($entry->getWelcomeLocution());
 
-                // For extension, use extension routing to apply timeout
-                if ($entry->getTargetType() == 'extension') {
-                    $extension = $entry->getTargetExtension();
-                    // FIXME Routing to extension should be the same as routing to
-                    // any other option...
-                    // !! Route this IVR using th extension parmaters !!
-                    $this->_routeType       = $extension->getRouteType();
-                    $this->_routeUser       = $extension->getUser();
-                    $this->_routeIVRCommon  = $extension->getIVRCommon();
-                    $this->_routeIVRCustom  = $extension->getIVRCustom();
-                    $this->_routeHuntGroup  = $extension->getHuntGroup();
-                    $this->_routeConference = $extension->getConferenceRoom();
-                    $this->_routeExternal   = $extension->getNumberValue();
-                    $this->_routeFriend     = $extension->getFriendValue();
-                    $this->_routeQueue      = $extension->getQueue();
-                    $this->_routeConditionalRoute = $extension->getConditionalRoute();
-                } else {
-                    // Route to destination
-                    $this->_routeType       = $entry->getTargetType();
-                    $this->_routeExtension  = $entry->getTargetExtension();
-                    $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
-                    $this->_routeExternal   = $entry->getTargetNumberValue();
-                    $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
-                }
+                // Route to destination
+                $this->_routeType       = $entry->getTargetType();
+                $this->_routeExtension  = $entry->getTargetExtension();
+                $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
+                $this->_routeExternal   = $entry->getTargetNumberValue();
+                $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
+
                 // Routed! :)
                 return $this->route();
             }
