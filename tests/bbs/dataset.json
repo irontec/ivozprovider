@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "IvozProvider - BBS Dataset",
-		"_postman_id": "3cdf5f7b-5497-0dfb-a895-18718b253652",
+		"_postman_id": "7ab9ba82-ab4f-069c-9ae9-d83dbad7cad1",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -41,73 +41,73 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
+									"description": "",
 									"key": "name",
-									"value": "ZZZ - BBS - Brand for Black Box SIP tests",
 									"type": "text",
-									"description": ""
+									"value": "ZZZ - BBS - Brand for Black Box SIP tests"
 								},
 								{
+									"description": "",
 									"key": "nif",
-									"value": "01234567890AF",
 									"type": "text",
-									"description": ""
+									"value": "01234567890AF"
 								},
 								{
+									"description": "",
 									"key": "defaultTimezoneId",
-									"value": "70",
 									"type": "text",
-									"description": ""
+									"value": "70"
 								},
 								{
+									"description": "",
 									"key": "postalAddress",
-									"value": "Postal address created from REST API",
 									"type": "text",
-									"description": ""
+									"value": "Postal address created from REST API"
 								},
 								{
+									"description": "",
 									"key": "postalCode",
-									"value": "48901",
 									"type": "text",
-									"description": ""
+									"value": "48901"
 								},
 								{
+									"description": "",
 									"key": "town",
-									"value": "Rest API town",
 									"type": "text",
-									"description": ""
+									"value": "Rest API town"
 								},
 								{
+									"description": "",
 									"key": "province",
-									"value": "Rest API province",
 									"type": "text",
-									"description": ""
+									"value": "Rest API province"
 								},
 								{
+									"description": "",
 									"key": "country",
-									"value": "Rest API country",
 									"type": "text",
-									"description": ""
+									"value": "Rest API country"
 								},
 								{
+									"description": "",
 									"key": "registryData",
-									"value": "Brand Invoice Footer data",
 									"type": "text",
-									"description": ""
+									"value": "Brand Invoice Footer data"
 								},
 								{
+									"description": "",
 									"key": "domain_users",
-									"value": "retail-bbs.ivozprovider.local",
 									"type": "text",
-									"description": ""
+									"value": "retail-bbs.ivozprovider.local"
 								}
 							]
 						},
@@ -137,9 +137,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -185,9 +185,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -233,9 +233,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -281,9 +281,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -329,9 +329,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -377,9 +377,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -425,9 +425,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -473,9 +473,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -521,9 +521,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -577,9 +577,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -604,22 +604,22 @@
 									"value": "1"
 								},
 								{
+									"description": "",
 									"key": "internationalCode",
-									"value": "00",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "00"
 								},
 								{
+									"description": "",
 									"key": "nationalNumLength",
-									"value": "9",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "9"
 								},
 								{
-									"key": "countryId",
-									"value": "70",
 									"description": "",
-									"type": "text"
+									"key": "countryId",
+									"type": "text",
+									"value": "70"
 								}
 							]
 						},
@@ -657,9 +657,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -678,16 +678,16 @@
 									"value": "BBS Peering Contract"
 								},
 								{
-									"key": "externallyRated",
-									"value": "0",
 									"description": "",
-									"type": "text"
+									"key": "externallyRated",
+									"type": "text",
+									"value": "0"
 								},
 								{
-									"key": "transformationRulesetGroupsTrunksId",
-									"value": "{{transformationRulesetId}}",
 									"description": "",
-									"type": "text"
+									"key": "transformationRulesetGroupsTrunksId",
+									"type": "text",
+									"value": "{{transformationRulesetId}}"
 								}
 							]
 						},
@@ -725,9 +725,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -746,10 +746,10 @@
 									"value": "{{peeringContractId}}"
 								},
 								{
-									"key": "sip_proxy",
-									"value": "127.0.0.1",
 									"description": "",
-									"type": "text"
+									"key": "sip_proxy",
+									"type": "text",
+									"value": "127.0.0.1"
 								}
 							]
 						},
@@ -787,9 +787,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -855,9 +855,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -997,9 +997,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1071,9 +1071,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1098,16 +1098,16 @@
 									"value": "BBS - Spain"
 								},
 								{
-									"key": "description_es",
-									"value": "BBS - España",
 									"description": "",
-									"type": "text"
+									"key": "description_es",
+									"type": "text",
+									"value": "BBS - España"
 								},
 								{
-									"key": "description_en",
-									"value": "BBS - Spain",
 									"description": "",
-									"type": "text"
+									"key": "description_en",
+									"type": "text",
+									"value": "BBS - Spain"
 								},
 								{
 									"description": "",
@@ -1151,9 +1151,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1178,16 +1178,16 @@
 									"value": "BBS - USA"
 								},
 								{
-									"key": "description_es",
-									"value": "BBS - EEUU",
 									"description": "",
-									"type": "text"
+									"key": "description_es",
+									"type": "text",
+									"value": "BBS - EEUU"
 								},
 								{
-									"key": "description_en",
-									"value": "BBS - USA",
 									"description": "",
-									"type": "text"
+									"key": "description_en",
+									"type": "text",
+									"value": "BBS - USA"
 								},
 								{
 									"description": "",
@@ -1231,9 +1231,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1258,16 +1258,16 @@
 									"value": "BBS - Tests"
 								},
 								{
-									"key": "description_es",
-									"value": "BBS - Pruebas",
 									"description": "",
-									"type": "text"
+									"key": "description_es",
+									"type": "text",
+									"value": "BBS - Pruebas"
 								},
 								{
-									"key": "description_en",
-									"value": "BBS - Tests",
 									"description": "",
-									"type": "text"
+									"key": "description_en",
+									"type": "text",
+									"value": "BBS - Tests"
 								}
 							]
 						},
@@ -1302,9 +1302,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1329,22 +1329,22 @@
 									"value": "{{targetPatternESId}}"
 								},
 								{
+									"description": "",
 									"key": "connectionCharge",
-									"value": "0.15",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "0.15"
 								},
 								{
+									"description": "",
 									"key": "periodTime",
-									"value": "1",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
-									"key": "perPeriodCharge",
-									"value": "0.20",
 									"description": "",
-									"type": "text"
+									"key": "perPeriodCharge",
+									"type": "text",
+									"value": "0.20"
 								}
 							]
 						},
@@ -1379,9 +1379,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1406,22 +1406,22 @@
 									"value": "{{targetPatternUSId}}"
 								},
 								{
+									"description": "",
 									"key": "connectionCharge",
-									"value": "0.20",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "0.20"
 								},
 								{
+									"description": "",
 									"key": "periodTime",
-									"value": "1",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
-									"key": "perPeriodCharge",
-									"value": "0.25",
 									"description": "",
-									"type": "text"
+									"key": "perPeriodCharge",
+									"type": "text",
+									"value": "0.25"
 								}
 							]
 						},
@@ -1465,9 +1465,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1475,64 +1475,64 @@
 							"formdata": [
 								{
 									"key": "brandId",
-									"value": "{{brandId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{brandId}}"
 								},
 								{
 									"key": "name",
-									"value": "BBS - Company for Black Box SIP tests",
-									"type": "text"
+									"type": "text",
+									"value": "BBS - Company for Black Box SIP tests"
 								},
 								{
 									"key": "nif",
-									"value": "09876543210ART",
-									"type": "text"
+									"type": "text",
+									"value": "09876543210ART"
 								},
 								{
 									"key": "defaultTimezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "postalAddress",
-									"value": "Company postal address",
-									"type": "text"
+									"type": "text",
+									"value": "Company postal address"
 								},
 								{
 									"key": "postalCode",
-									"value": "Company postal code",
-									"type": "text"
+									"type": "text",
+									"value": "Company postal code"
 								},
 								{
 									"key": "town",
-									"value": "Company town",
-									"type": "text"
+									"type": "text",
+									"value": "Company town"
 								},
 								{
 									"key": "province",
-									"value": "Company province",
-									"type": "text"
+									"type": "text",
+									"value": "Company province"
 								},
 								{
 									"key": "country",
-									"value": "Company country",
-									"type": "text"
+									"type": "text",
+									"value": "Company country"
 								},
 								{
 									"key": "domain_users",
-									"value": "bbs.ivozprovider.local",
-									"type": "text"
+									"type": "text",
+									"value": "bbs.ivozprovider.local"
 								},
 								{
 									"key": "type",
-									"value": "vpbx",
-									"type": "text"
+									"type": "text",
+									"value": "vpbx"
 								},
 								{
-									"key": "externalMaxCalls",
-									"value": "2",
 									"description": "",
-									"type": "text"
+									"key": "externalMaxCalls",
+									"type": "text",
+									"value": "2"
 								}
 							]
 						},
@@ -1567,9 +1567,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1594,22 +1594,22 @@
 									"value": "{{companyId}}"
 								},
 								{
+									"description": "",
 									"key": "validFrom",
-									"value": "2000-01-01",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "2000-01-01"
 								},
 								{
+									"description": "",
 									"key": "validTo",
-									"value": "2099-12-31",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "2099-12-31"
 								},
 								{
-									"key": "metric",
-									"value": "1",
 									"description": "",
-									"type": "text"
+									"key": "metric",
+									"type": "text",
+									"value": "1"
 								}
 							]
 						},
@@ -1639,9 +1639,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1687,9 +1687,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1735,9 +1735,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1783,9 +1783,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1831,9 +1831,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1879,9 +1879,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1931,9 +1931,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -1941,28 +1941,28 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "terminalModelId",
-									"value": "5",
-									"type": "text"
+									"type": "text",
+									"value": "5"
 								},
 								{
 									"key": "name",
-									"value": "alice",
-									"type": "text"
+									"type": "text",
+									"value": "alice"
 								},
 								{
 									"key": "password",
-									"value": "4l1c3p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "4l1c3p4ssw0rd"
 								},
 								{
 									"key": "direct_media_method",
-									"value": "invite",
-									"type": "text"
+									"type": "text",
+									"value": "invite"
 								}
 							]
 						},
@@ -1996,9 +1996,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2006,53 +2006,53 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "Alice",
-									"type": "text"
+									"type": "text",
+									"value": "Alice"
 								},
 								{
 									"key": "lastname",
-									"value": "Allison",
-									"type": "text"
+									"type": "text",
+									"value": "Allison"
 								},
 								{
 									"key": "email",
-									"value": "alice@bbs.ivozprovider.local",
-									"type": "text"
+									"type": "text",
+									"value": "alice@bbs.ivozprovider.local"
 								},
 								{
 									"key": "username",
-									"value": "alice",
-									"type": "text"
+									"type": "text",
+									"value": "alice"
 								},
 								{
 									"key": "pass",
-									"value": "4l1c3p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "4l1c3p4ssw0rd"
 								},
 								{
 									"key": "timezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "terminalId",
-									"value": "{{aliceTerminalId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{aliceTerminalId}}"
 								},
 								{
 									"key": "countryId",
-									"value": "70",
-									"type": "text"
+									"type": "text",
+									"value": "70"
 								},
 								{
 									"key": "",
-									"value": "",
-									"type": "text"
+									"type": "text",
+									"value": ""
 								}
 							]
 						},
@@ -2086,9 +2086,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2096,23 +2096,23 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "routeType",
-									"value": "user",
-									"type": "text"
+									"type": "text",
+									"value": "user"
 								},
 								{
 									"key": "number",
-									"value": "1001",
-									"type": "text"
+									"type": "text",
+									"value": "1001"
 								},
 								{
 									"key": "userId",
-									"value": "{{aliceUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{aliceUserId}}"
 								}
 							]
 						},
@@ -2150,9 +2150,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2189,10 +2189,10 @@
 									"value": "{{aliceUserId}}"
 								},
 								{
-									"key": "peeringContractId",
-									"value": "{{peeringContractId}}",
 									"description": "",
-									"type": "text"
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
 								}
 							]
 						},
@@ -2226,9 +2226,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2236,28 +2236,28 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "terminalModelId",
-									"value": "5",
-									"type": "text"
+									"type": "text",
+									"value": "5"
 								},
 								{
 									"key": "name",
-									"value": "bob",
-									"type": "text"
+									"type": "text",
+									"value": "bob"
 								},
 								{
 									"key": "password",
-									"value": "b0bp4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "b0bp4ssw0rd"
 								},
 								{
 									"key": "direct_media_method",
-									"value": "invite",
-									"type": "text"
+									"type": "text",
+									"value": "invite"
 								}
 							]
 						},
@@ -2291,9 +2291,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2301,48 +2301,48 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "Bob",
-									"type": "text"
+									"type": "text",
+									"value": "Bob"
 								},
 								{
 									"key": "lastname",
-									"value": "Bobson",
-									"type": "text"
+									"type": "text",
+									"value": "Bobson"
 								},
 								{
 									"key": "email",
-									"value": "bob@bbs.ivozprovider.local",
-									"type": "text"
+									"type": "text",
+									"value": "bob@bbs.ivozprovider.local"
 								},
 								{
 									"key": "username",
-									"value": "bob",
-									"type": "text"
+									"type": "text",
+									"value": "bob"
 								},
 								{
 									"key": "pass",
-									"value": "b0bp4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "b0bp4ssw0rd"
 								},
 								{
 									"key": "timezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "terminalId",
-									"value": "{{bobTerminalId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{bobTerminalId}}"
 								},
 								{
 									"key": "countryId",
-									"value": "70",
-									"type": "text"
+									"type": "text",
+									"value": "70"
 								}
 							]
 						},
@@ -2376,9 +2376,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2386,23 +2386,23 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "routeType",
-									"value": "user",
-									"type": "text"
+									"type": "text",
+									"value": "user"
 								},
 								{
 									"key": "number",
-									"value": "1002",
-									"type": "text"
+									"type": "text",
+									"value": "1002"
 								},
 								{
 									"key": "userId",
-									"value": "{{bobUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{bobUserId}}"
 								}
 							]
 						},
@@ -2440,9 +2440,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2479,10 +2479,10 @@
 									"value": "{{bobUserId}}"
 								},
 								{
-									"key": "peeringContractId",
-									"value": "{{peeringContractId}}",
 									"description": "",
-									"type": "text"
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
 								}
 							]
 						},
@@ -2516,9 +2516,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2526,28 +2526,28 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "terminalModelId",
-									"value": "5",
-									"type": "text"
+									"type": "text",
+									"value": "5"
 								},
 								{
 									"key": "name",
-									"value": "charlie",
-									"type": "text"
+									"type": "text",
+									"value": "charlie"
 								},
 								{
 									"key": "password",
-									"value": "ch4rl13p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "ch4rl13p4ssw0rd"
 								},
 								{
 									"key": "direct_media_method",
-									"value": "invite",
-									"type": "text"
+									"type": "text",
+									"value": "invite"
 								}
 							]
 						},
@@ -2581,9 +2581,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2591,48 +2591,48 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "Charlie",
-									"type": "text"
+									"type": "text",
+									"value": "Charlie"
 								},
 								{
 									"key": "lastname",
-									"value": "Charlison",
-									"type": "text"
+									"type": "text",
+									"value": "Charlison"
 								},
 								{
 									"key": "email",
-									"value": "charly@bbs.ivozprovider.local",
-									"type": "text"
+									"type": "text",
+									"value": "charly@bbs.ivozprovider.local"
 								},
 								{
 									"key": "username",
-									"value": "charlie",
-									"type": "text"
+									"type": "text",
+									"value": "charlie"
 								},
 								{
 									"key": "pass",
-									"value": "ch4rl13p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "ch4rl13p4ssw0rd"
 								},
 								{
 									"key": "timezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "terminalId",
-									"value": "{{charlieTerminalId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{charlieTerminalId}}"
 								},
 								{
 									"key": "countryId",
-									"value": "70",
-									"type": "text"
+									"type": "text",
+									"value": "70"
 								}
 							]
 						},
@@ -2666,9 +2666,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2676,28 +2676,28 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "routeType",
-									"value": "user",
-									"type": "text"
+									"type": "text",
+									"value": "user"
 								},
 								{
 									"key": "number",
-									"value": "1003",
-									"type": "text"
+									"type": "text",
+									"value": "1003"
 								},
 								{
 									"key": "userId",
-									"value": "{{charlieUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{charlieUserId}}"
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -2736,9 +2736,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2775,10 +2775,10 @@
 									"value": "{{charlieUserId}}"
 								},
 								{
-									"key": "peeringContractId",
-									"value": "{{peeringContractId}}",
 									"description": "",
-									"type": "text"
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
 								}
 							]
 						},
@@ -2812,9 +2812,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2822,28 +2822,28 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "terminalModelId",
-									"value": "5",
-									"type": "text"
+									"type": "text",
+									"value": "5"
 								},
 								{
 									"key": "name",
-									"value": "dave",
-									"type": "text"
+									"type": "text",
+									"value": "dave"
 								},
 								{
 									"key": "password",
-									"value": "d4v3p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "d4v3p4ssw0rd"
 								},
 								{
 									"key": "direct_media_method",
-									"value": "invite",
-									"type": "text"
+									"type": "text",
+									"value": "invite"
 								}
 							]
 						},
@@ -2877,9 +2877,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2887,53 +2887,53 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "Dave",
-									"type": "text"
+									"type": "text",
+									"value": "Dave"
 								},
 								{
 									"key": "lastname",
-									"value": "Daveson",
-									"type": "text"
+									"type": "text",
+									"value": "Daveson"
 								},
 								{
 									"key": "email",
-									"value": "dave@bbs.ivozprovider.local",
-									"type": "text"
+									"type": "text",
+									"value": "dave@bbs.ivozprovider.local"
 								},
 								{
 									"key": "username",
-									"value": "dave",
-									"type": "text"
+									"type": "text",
+									"value": "dave"
 								},
 								{
 									"key": "pass",
-									"value": "d4v3p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "d4v3p4ssw0rd"
 								},
 								{
 									"key": "timezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "terminalId",
-									"value": "{{daveTerminalId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{daveTerminalId}}"
 								},
 								{
 									"key": "countryId",
-									"value": "235",
-									"type": "text"
+									"type": "text",
+									"value": "235"
 								},
 								{
 									"key": "area_code",
-									"value": "999",
-									"type": "text"
+									"type": "text",
+									"value": "999"
 								}
 							]
 						},
@@ -2967,9 +2967,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -2977,23 +2977,23 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "routeType",
-									"value": "user",
-									"type": "text"
+									"type": "text",
+									"value": "user"
 								},
 								{
 									"key": "number",
-									"value": "1004",
-									"type": "text"
+									"type": "text",
+									"value": "1004"
 								},
 								{
 									"key": "userId",
-									"value": "{{daveUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{daveUserId}}"
 								}
 							]
 						},
@@ -3031,9 +3031,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3070,10 +3070,10 @@
 									"value": "{{daveUserId}}"
 								},
 								{
-									"key": "peeringContractId",
-									"value": "{{peeringContractId}}",
 									"description": "",
-									"type": "text"
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
 								}
 							]
 						},
@@ -3107,9 +3107,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3117,28 +3117,28 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "terminalModelId",
-									"value": "5",
-									"type": "text"
+									"type": "text",
+									"value": "5"
 								},
 								{
 									"key": "name",
-									"value": "eve",
-									"type": "text"
+									"type": "text",
+									"value": "eve"
 								},
 								{
 									"key": "password",
-									"value": "3v3p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "3v3p4ssw0rd"
 								},
 								{
 									"key": "direct_media_method",
-									"value": "invite",
-									"type": "text"
+									"type": "text",
+									"value": "invite"
 								}
 							]
 						},
@@ -3172,9 +3172,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3182,53 +3182,53 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "Eve",
-									"type": "text"
+									"type": "text",
+									"value": "Eve"
 								},
 								{
 									"key": "lastname",
-									"value": "Eveson",
-									"type": "text"
+									"type": "text",
+									"value": "Eveson"
 								},
 								{
 									"key": "email",
-									"value": "eve@bbs.ivozprovider.local",
-									"type": "text"
+									"type": "text",
+									"value": "eve@bbs.ivozprovider.local"
 								},
 								{
 									"key": "username",
-									"value": "eve",
-									"type": "text"
+									"type": "text",
+									"value": "eve"
 								},
 								{
 									"key": "pass",
-									"value": "3v3p4ssw0rd",
-									"type": "text"
+									"type": "text",
+									"value": "3v3p4ssw0rd"
 								},
 								{
 									"key": "timezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "terminalId",
-									"value": "{{eveTerminalId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{eveTerminalId}}"
 								},
 								{
 									"key": "countryId",
-									"value": "235",
-									"type": "text"
+									"type": "text",
+									"value": "235"
 								},
 								{
 									"key": "area_code",
-									"value": "999",
-									"type": "text"
+									"type": "text",
+									"value": "999"
 								}
 							]
 						},
@@ -3262,9 +3262,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3272,23 +3272,23 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "routeType",
-									"value": "user",
-									"type": "text"
+									"type": "text",
+									"value": "user"
 								},
 								{
 									"key": "number",
-									"value": "1005",
-									"type": "text"
+									"type": "text",
+									"value": "1005"
 								},
 								{
 									"key": "userId",
-									"value": "{{eveUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{eveUserId}}"
 								}
 							]
 						},
@@ -3326,9 +3326,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3365,10 +3365,10 @@
 									"value": "{{eveUserId}}"
 								},
 								{
-									"key": "peeringContractId",
-									"value": "{{peeringContractId}}",
 									"description": "",
-									"type": "text"
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
 								}
 							]
 						},
@@ -3395,9 +3395,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3405,8 +3405,8 @@
 							"formdata": [
 								{
 									"key": "outgoingDDIId",
-									"value": "{{aliceDDIId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{aliceDDIId}}"
 								}
 							]
 						},
@@ -3440,9 +3440,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3520,9 +3520,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3575,9 +3575,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3644,9 +3644,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3654,53 +3654,53 @@
 							"formdata": [
 								{
 									"key": "brandId",
-									"value": "{{brandId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{brandId}}"
 								},
 								{
 									"key": "name",
-									"value": "BBS - Retail for Black Box SIP tests",
-									"type": "text"
+									"type": "text",
+									"value": "BBS - Retail for Black Box SIP tests"
 								},
 								{
 									"key": "nif",
-									"value": "09876543210ART",
-									"type": "text"
+									"type": "text",
+									"value": "09876543210ART"
 								},
 								{
 									"key": "defaultTimezoneId",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "postalAddress",
-									"value": "Retail postal address",
-									"type": "text"
+									"type": "text",
+									"value": "Retail postal address"
 								},
 								{
 									"key": "postalCode",
-									"value": "Retail postal code",
-									"type": "text"
+									"type": "text",
+									"value": "Retail postal code"
 								},
 								{
 									"key": "town",
-									"value": "Retail town",
-									"type": "text"
+									"type": "text",
+									"value": "Retail town"
 								},
 								{
 									"key": "province",
-									"value": "Retail province",
-									"type": "text"
+									"type": "text",
+									"value": "Retail province"
 								},
 								{
 									"key": "country",
-									"value": "Retail country",
-									"type": "text"
+									"type": "text",
+									"value": "Retail country"
 								},
 								{
 									"key": "type",
-									"value": "retail",
-									"type": "text"
+									"type": "text",
+									"value": "retail"
 								}
 							]
 						},
@@ -3735,9 +3735,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3762,22 +3762,22 @@
 									"value": "{{retailId}}"
 								},
 								{
+									"description": "",
 									"key": "validFrom",
-									"value": "2000-01-01",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "2000-01-01"
 								},
 								{
+									"description": "",
 									"key": "validTo",
-									"value": "2099-12-31",
-									"description": "",
-									"type": "text"
+									"type": "text",
+									"value": "2099-12-31"
 								},
 								{
-									"key": "metric",
-									"value": "1",
 									"description": "",
-									"type": "text"
+									"key": "metric",
+									"type": "text",
+									"value": "1"
 								}
 							]
 						},
@@ -3807,9 +3807,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3855,9 +3855,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3903,9 +3903,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3959,9 +3959,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4039,9 +4039,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4102,9 +4102,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4112,8 +4112,8 @@
 							"formdata": [
 								{
 									"key": "outgoingDDIId",
-									"value": "{{retailDDIId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{retailDDIId}}"
 								}
 							]
 						},
@@ -4181,12 +4181,6 @@
 									"value": "5"
 								},
 								{
-									"description": "",
-									"key": "noAnswerTimeout",
-									"type": "text",
-									"value": "5"
-								},
-								{
 									"key": "maxDigits",
 									"type": "text",
 									"value": "4"
@@ -4247,9 +4241,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4345,21 +4339,15 @@
 								},
 								{
 									"description": "",
-									"key": "noAnswerTimeout",
-									"type": "text",
-									"value": "5"
-								},
-								{
-									"description": "",
 									"key": "timeoutTargetType",
 									"type": "text",
-									"value": "voicemail"
+									"value": "extension"
 								},
 								{
 									"description": "",
 									"key": "timeoutExtensionId",
 									"type": "text",
-									"value": "{{daveUserId}}"
+									"value": "{{daveExtensionId}}"
 								},
 								{
 									"description": "",
@@ -4369,9 +4357,9 @@
 								},
 								{
 									"description": "",
-									"key": "errorNumberValue",
+									"key": "errorExtensionId",
 									"type": "text",
-									"value": "{{daveExtensionId}}"
+									"value": "{{eveExtensionId}}"
 								}
 							]
 						},
@@ -4394,7 +4382,7 @@
 									"",
 									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
 									"tests[\"Object id is valid\"] = id !== 0;",
-									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
+									"postman.setGlobalVariable(\"ivrCustomExtensionId\", id);",
 									""
 								]
 							}
@@ -4415,23 +4403,23 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "routeType",
-									"value": "IVRCustom",
-									"type": "text"
+									"type": "text",
+									"value": "IVRCustom"
 								},
 								{
 									"key": "number",
-									"value": "601",
-									"type": "text"
+									"type": "text",
+									"value": "601"
 								},
 								{
 									"key": "IVRCustomId",
-									"value": "{{ivrCustomId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{ivrCustomId}}"
 								}
 							]
 						},
@@ -4454,7 +4442,6 @@
 									"",
 									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
 									"tests[\"Object id is valid\"] = id !== 0;",
-									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
 									""
 								]
 							}
@@ -4475,28 +4462,82 @@
 							"formdata": [
 								{
 									"key": "IVRCustomId",
-									"value": "{{ivrCustomId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{ivrCustomId}}"
 								},
 								{
 									"key": "entry",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "number",
-									"value": "601",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "targetType",
-									"value": "extension",
-									"type": "text"
+									"type": "text",
+									"value": "extension"
 								},
 								{
 									"key": "targetExtensionId",
-									"value": "{{aliceExtensionId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{aliceExtensionId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create IVR Custom Entry 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}//i-v-r-custom-entries",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "IVRCustomId",
+									"type": "text",
+									"value": "{{ivrCustomId}}"
+								},
+								{
+									"key": "entry",
+									"type": "text",
+									"value": "5"
+								},
+								{
+									"key": "targetType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"key": "targetExtensionId",
+									"type": "text",
+									"value": "{{eveExtensionId}}"
 								}
 							]
 						},
@@ -4540,9 +4581,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4550,24 +4591,24 @@
 							"urlencoded": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "BBS Pickup Group",
-									"type": "text"
+									"type": "text",
+									"value": "BBS Pickup Group"
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -4603,9 +4644,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4613,24 +4654,24 @@
 							"urlencoded": [
 								{
 									"key": "pickUpGroupId",
-									"value": "{{pickupGroupId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{pickupGroupId}}"
 								},
 								{
 									"key": "userId",
-									"value": "{{aliceUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{aliceUserId}}"
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -4666,9 +4707,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4676,24 +4717,24 @@
 							"urlencoded": [
 								{
 									"key": "pickUpGroupId",
-									"value": "{{pickupGroupId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{pickupGroupId}}"
 								},
 								{
 									"key": "userId",
-									"value": "{{bobUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{bobUserId}}"
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -4729,9 +4770,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4739,24 +4780,24 @@
 							"urlencoded": [
 								{
 									"key": "pickUpGroupId",
-									"value": "{{pickupGroupId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{pickupGroupId}}"
 								},
 								{
 									"key": "userId",
-									"value": "{{charlieUserId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{charlieUserId}}"
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "",
-									"value": "",
 									"type": "text",
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -4801,9 +4842,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4811,28 +4852,28 @@
 							"urlencoded": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "name",
-									"value": "BBS Conference Room",
-									"type": "text"
+									"type": "text",
+									"value": "BBS Conference Room"
 								},
 								{
 									"key": "pinProtected",
-									"value": "1",
-									"type": "text"
+									"type": "text",
+									"value": "1"
 								},
 								{
 									"key": "pinCode",
-									"value": "1234",
-									"type": "text"
+									"type": "text",
+									"value": "1234"
 								},
 								{
 									"key": "maxMembers",
-									"value": "2",
-									"type": "text"
+									"type": "text",
+									"value": "2"
 								}
 							]
 						},
@@ -4866,9 +4907,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4876,23 +4917,23 @@
 							"formdata": [
 								{
 									"key": "companyId",
-									"value": "{{companyId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{companyId}}"
 								},
 								{
 									"key": "number",
-									"value": "500",
-									"type": "text"
+									"type": "text",
+									"value": "500"
 								},
 								{
 									"key": "routeType",
-									"value": "conferenceRoom",
-									"type": "text"
+									"type": "text",
+									"value": "conferenceRoom"
 								},
 								{
 									"key": "conferenceRoomId",
-									"value": "{{conferenceRoomId}}",
-									"type": "text"
+									"type": "text",
+									"value": "{{conferenceRoomId}}"
 								}
 							]
 						},
@@ -4936,9 +4977,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5007,9 +5048,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5063,9 +5104,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5109,9 +5150,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5155,9 +5196,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5209,9 +5250,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5245,10 +5286,10 @@
 									"value": "{{eveExtensionId}}"
 								},
 								{
-									"key": "ringAllTimeout",
-									"value": "0",
 									"description": "",
-									"type": "text"
+									"key": "ringAllTimeout",
+									"type": "text",
+									"value": "0"
 								}
 							]
 						},
@@ -5282,9 +5323,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5338,9 +5379,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5357,16 +5398,16 @@
 									"value": "{{bobUserId}}"
 								},
 								{
-									"key": "timeoutTime",
-									"value": "3",
 									"description": "",
-									"type": "text"
+									"key": "timeoutTime",
+									"type": "text",
+									"value": "3"
 								},
 								{
-									"key": "priority",
-									"value": "1",
 									"description": "",
-									"type": "text"
+									"key": "priority",
+									"type": "text",
+									"value": "1"
 								}
 							]
 						},
@@ -5396,9 +5437,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5454,9 +5495,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5523,9 +5564,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5589,9 +5630,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5624,8 +5665,8 @@
 								},
 								{
 									"key": "noAnswerTimeout",
-									"value": "5",
-									"type": "text"
+									"type": "text",
+									"value": "5"
 								}
 							]
 						},
@@ -5660,9 +5701,9 @@
 						"method": "POST",
 						"header": [
 							{
+								"description": "",
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
