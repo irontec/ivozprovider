@@ -15,7 +15,7 @@ class IVRAction extends RouterAction
     public function processTimeout()
     {
         $ivr = $this->_ivr;
-        $this->agi->verbose("Processing IVR timeout handler.");
+        $this->agi->verbose("Processing IVR no input handler.");
 
         // Play Timoeut Locution
         $this->agi->playback($ivr->getNoAnswerLocution());
@@ -42,20 +42,5 @@ class IVRAction extends RouterAction
         $this->_routeVoiceMail  = $ivr->getErrorVoiceMailUser();
         $this->_routeExternal   = $ivr->getErrorNumberValue();
         $this->route();
-    }
-
-    /**
-     * Overload routeToUser action to send the call to special context
-     */
-    protected function _routeToUser()
-    {
-        // Handle Call user route
-        $userAction = new UserCallAction($this);
-        $userAction
-            ->setDialContext('call-ivr')
-            ->setTimeout($this->_ivr->getNoAnswerTimeout())
-            ->setUser($this->_routeUser)
-            ->setProcessDialStatus(true)
-            ->call();
     }
 }

@@ -28,6 +28,7 @@ production:
           maxDigits: true
           welcomeLocutionId: true
           noAnswerLocutionId: true
+          noAnswerTimeout: true
           errorLocutionId: true
           successLocutionId: true
           timeoutNumberValue: true
@@ -64,6 +65,7 @@ production:
         blacklist:
           timeoutTarget: true
           errorTarget: true
+          noAnswerTimeout: true
       fixedPositions: &IVRCommonFixedPositions_link
         group0:
           label: _("Basic Configuration")
@@ -76,11 +78,11 @@ production:
             successLocutionId: 6
             blackListRegExp: 8
         group1:
-          label: _("No answer configuration")
+          label: _("No input configuration")
           colsPerRow: 3
           fields:
             noAnswerLocutionId: 2
-            noAnswerTimeout: 1
+            __empty1: 1
             timeoutTargetType: 1
             timeoutNumberValue: 1
             timeoutExtensionId: 1
@@ -106,6 +108,7 @@ production:
         blacklist:
           timeoutTarget: true
           errorTarget: true
+          noAnswerTimeout: true
       fixedPositions:
         <<: *IVRCommonFixedPositions_link
   dialogs:

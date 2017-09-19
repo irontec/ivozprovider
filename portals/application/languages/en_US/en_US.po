@@ -1375,6 +1375,18 @@ msgstr "No answer locution"
 msgid "No answer timeout"
 msgstr "No answer timeout"
 
+msgid "No input configuration"
+msgstr "No input configuration"
+
+msgid "No input locution"
+msgstr "No input locution"
+
+msgid "No input target"
+msgstr "No input target"
+
+msgid "No input target type"
+msgstr "No input target"
+
 msgid "No matching condition handler"
 msgstr "No matching condition handler"
 
@@ -2189,9 +2201,6 @@ msgstr "Timeout configuration"
 msgid "Timeout route"
 msgstr "Timeout route"
 
-msgid "Timeout target"
-msgstr "Timeout target"
-
 msgid "Timeout target type"
 msgstr "Timeout target"
 
@@ -2412,6 +2421,7 @@ msgid ""
 msgstr ""
 "You can call this extension from any company terminal to record this locution"
 
+#, python-brace-format
 msgid ""
 "You can optionally prepend the terminal model or any other subpath to the "
 "url before the MAC address for verbosity/debugging purposes. If a extension "
