@@ -24,6 +24,7 @@ production:
       trim: both
       maxLength: 100
       required: true
+      default: true
       info:
         type: box
         position: left

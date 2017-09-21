@@ -20,6 +20,7 @@ production:
       type: text
       trim: both
       required: true
+      default: true
     lastname:
       title: _('Lastname')
       type: text
