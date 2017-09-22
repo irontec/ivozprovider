@@ -17,7 +17,6 @@ production:
               - name
             template: '%name%'
           order: name
-      default: true
     name:
       title: _('Name')
       type: text
@@ -31,6 +30,7 @@ production:
         icon: help
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
+      default: true
     description:
       title: _('Description')
       type: text
