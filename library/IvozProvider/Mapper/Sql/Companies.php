@@ -22,6 +22,14 @@ use IvozProvider\Gearmand\Jobs\Xmlrpc;
 
 class Companies extends Raw\Companies
 {
+
+    /*
+     * Mysql error code list:
+     * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
+     */
+    const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
+    const UNIQUE_NAME_CONSTRAINT = 'nameBrand';
+
     protected $_model;
     protected $_recursive;
     protected function _save(\IvozProvider\Model\Raw\Companies $model,
@@ -59,7 +67,17 @@ class Companies extends Raw\Companies
             $model->setOnDemandRecordCode('');
         }
 
-        $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
+        try {
+          $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
+        } catch (\Exception $e) {
+            $isDuplicatedNameError =
+                $e->getCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
+                && strpos($e->getMessage(), self::UNIQUE_NAME_CONSTRAINT);
+            if ($isDuplicatedNameError) {
+                throw new \Exception('Name already in use', 2203, $e);
+            }
+            throw $e;
+        }
 
         if ($model->hasChange('domainUsers')) {
             $this->_updateDomains($model);
