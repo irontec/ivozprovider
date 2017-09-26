@@ -1,0 +1,87 @@
+Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldAbstract:
+  type: mappedSuperclass
+  indexes:
+    companyId:
+      columns:
+        - companyId
+  uniqueConstraints:
+    nameCompany:
+      columns:
+        - name
+        - companyId
+  embedded:
+    originalFile:
+      class: OriginalFile
+      columnPrefix: false
+    encodedFile:
+      class: EncodedFile
+      columnPrefix: false
+  fields:
+    name:
+      type: string
+      nullable: false
+      length: 50
+      options:
+        fixed: false
+#    originalFileFileSize:
+#      type: integer
+#      nullable: true
+#      options:
+#        unsigned: true
+#        comment: '[FSO:keepExtension]'
+#      column: originalFileFileSize
+#    originalFileMimeType:
+#      type: string
+#      nullable: true
+#      length: 80
+#      options:
+#        fixed: false
+#      column: originalFileMimeType
+#    originalFileBaseName:
+#      type: string
+#      nullable: true
+#      length: 255
+#      options:
+#        fixed: false
+#      column: originalFileBaseName
+#    encodedFileFileSize:
+#      type: integer
+#      nullable: true
+#      options:
+#        unsigned: true
+#        comment: '[FSO:keepExtension|storeInBaseFolder]'
+#      column: encodedFileFileSize
+#    encodedFileMimeType:
+#      type: string
+#      nullable: true
+#      length: 80
+#      options:
+#        fixed: false
+#      column: encodedFileMimeType
+#    encodedFileBaseName:
+#      type: string
+#      nullable: true
+#      length: 255
+#      options:
+#        fixed: false
+#      column: encodedFileBaseName
+    status:
+      type: string
+      nullable: true
+      length: 20
+      options:
+        fixed: false
+        comment: '[enum:pending|encoding|ready|error]'
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: musicsOnHold
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

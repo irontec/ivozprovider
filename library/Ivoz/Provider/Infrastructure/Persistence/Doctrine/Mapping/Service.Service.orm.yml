@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Service\Service:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ServiceDoctrineRepository
+  type: entity
+  table: Services
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

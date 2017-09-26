@@ -1,0 +1,204 @@
+Ivoz\Provider\Domain\Model\ParsedCdr\ParsedCdrAbstract:
+  type: mappedSuperclass
+  indexes:
+    brandId:
+      columns:
+        - brandId
+    companyId:
+      columns:
+        - companyId
+    peeringContractId:
+      columns:
+        - peeringContractId
+  uniqueConstraints:
+    cid:
+      columns:
+        - cid
+  fields:
+    statId:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+      column: statId
+    xstatId:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+      column: xstatId
+    statType:
+      type: string
+      nullable: true
+      length: 256
+      options:
+        fixed: false
+      column: statType
+    initialLeg:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+      column: initialLeg
+    initialLegHash:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: initialLegHash
+    cid:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    cidHash:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: cidHash
+    xcid:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    xcidHash:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: xcidHash
+    proxies:
+      type: string
+      nullable: true
+      length: 32
+      options:
+        fixed: false
+    type:
+      type: string
+      nullable: true
+      length: 32
+      options:
+        fixed: false
+    subtype:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    calldate:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+    duration:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+    aParty:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: aParty
+    bParty:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: bParty
+    caller:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    callee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    xCaller:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: xCaller
+    xCallee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: xCallee
+    initialReferrer:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: initialReferrer
+    referrer:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    referee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    lastForwarder:
+      type: string
+      nullable: true
+      length: 32
+      options:
+        fixed: false
+      column: lastForwarder
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    peeringContract:
+      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        peeringContractId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

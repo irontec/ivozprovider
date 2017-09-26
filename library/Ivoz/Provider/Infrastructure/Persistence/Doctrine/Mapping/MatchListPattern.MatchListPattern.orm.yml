@@ -1,0 +1,15 @@
+Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
+  type: entity
+  table: MatchListPatterns
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

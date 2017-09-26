@@ -1,0 +1,89 @@
+Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutAbstract:
+  type: mappedSuperclass
+  indexes:
+    faxId:
+      columns:
+        - faxId
+  embedded:
+    file:
+      class: File
+      columnPrefix: false
+  fields:
+    calldate:
+      column: calldate
+      type: datetime
+      nullable: false
+      options:
+        comment: 'Hora de recepcion del fax'
+        default: '0000-00-00 00:00:00'
+    src:
+      column: src
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    dst:
+      column: dst
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    type:
+      column: type
+      type: string
+      nullable: true
+      length: 20
+      options:
+        fixed: false
+        comment: '[enum:In|Out]'
+        default: Out
+    pages:
+      column: pages
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    status:
+      column: status
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+#    fileFileSize:
+#      type: integer
+#      nullable: true
+#      options:
+#        unsigned: true
+#        comment: '[FSO]'
+#      column: fileFileSize
+#    fileMimeType:
+#      type: string
+#      nullable: true
+#      length: 80
+#      options:
+#        fixed: false
+#      column: fileMimeType
+#    fileBaseName:
+#      type: string
+#      nullable: true
+#      length: 255
+#      options:
+#        fixed: false
+#      column: fileBaseName
+  manyToOne:
+    fax:
+      targetEntity: \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        faxId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

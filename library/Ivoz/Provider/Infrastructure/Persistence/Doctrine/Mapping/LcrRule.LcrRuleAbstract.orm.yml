@@ -1,0 +1,89 @@
+Ivoz\Provider\Domain\Model\LcrRule\LcrRuleAbstract:
+  type: mappedSuperclass
+  indexes:
+    routingPatternId:
+      columns:
+        - routingPatternId
+    lcr_id:
+      columns:
+        - lcr_id
+    outgoingRoutingId:
+      columns:
+        - outgoingRoutingId
+  fields:
+    lcrId:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+        default: '1'
+      column: lcr_id
+    prefix:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+    fromUri:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+      column: from_uri
+    requestUri:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: request_uri
+    stopper:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+        default: '0'
+    enabled:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+        default: '1'
+    tag:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+    description:
+      type: string
+      nullable: false
+      length: 500
+      options:
+        fixed: false
+        default: ''
+  manyToOne:
+    routingPattern:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: lcrRules
+      joinColumns:
+        routingPatternId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    outgoingRouting:
+      targetEntity: \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: lcrRules
+      joinColumns:
+        outgoingRoutingId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

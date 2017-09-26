@@ -1,0 +1,55 @@
+Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserAbstract:
+  type: mappedSuperclass
+  indexes:
+    huntGroupId:
+      columns:
+        - huntGroupId
+    userId:
+      columns:
+        - userId
+  uniqueConstraints:
+    userHuntgroup:
+      columns:
+        - userId
+        - huntGroupId
+    prioHuntgroup:
+      columns:
+        - priority
+        - huntGroupId
+  fields:
+    timeoutTime:
+      type: smallint
+      nullable: true
+      options:
+        unsigned: false
+      column: timeoutTime
+    priority:
+      type: smallint
+      nullable: true
+      options:
+        unsigned: false
+  manyToOne:
+    huntGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: huntGroupsRelUsers
+      joinColumns:
+        huntGroupId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    user:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

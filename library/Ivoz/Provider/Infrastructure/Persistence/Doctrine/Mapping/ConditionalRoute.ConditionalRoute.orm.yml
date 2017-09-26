@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ConditionalRouteDoctrineRepository
+  type: entity
+  table: ConditionalRoutes
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

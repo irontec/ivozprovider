@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    ip:
+      columns:
+        - ip
+    name:
+      columns:
+        - name
+  fields:
+    ip:
+      type: string
+      length: 50
+      nullable: false
+    name:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false

@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingDdiRuleDoctrineRepository
+  type: entity
+  table: OutgoingDDIRules
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    patterns:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface
+      mappedBy: outgoingDdiRule
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHold:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\GenericMusicOnHoldDoctrineRepository
+  type: entity
+  table: GenericMusicOnHold
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

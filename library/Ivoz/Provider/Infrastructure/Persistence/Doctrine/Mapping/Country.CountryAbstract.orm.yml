@@ -1,0 +1,47 @@
+Ivoz\Provider\Domain\Model\Country\CountryAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    languageCode:
+      columns:
+        - code
+  embedded:
+    name:
+      class: Name
+      columnPrefix: false
+    zone:
+      class: Zone
+      columnPrefix: false
+  fields:
+    code:
+      type: string
+      nullable: false
+      length: 100
+      options:
+        fixed: false
+        default: ''
+    callingCode:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+      column: calling_code
+    intCode:
+      type: string
+      nullable: true
+      length: 5
+      options:
+        fixed: false
+      column: intCode
+    e164Pattern:
+      type: string
+      nullable: true
+      length: 250
+      options:
+        fixed: false
+      column: e164Pattern
+    nationalCC:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+      column: nationalCC

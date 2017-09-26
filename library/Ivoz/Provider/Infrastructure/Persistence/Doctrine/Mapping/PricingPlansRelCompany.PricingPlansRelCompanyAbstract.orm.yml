@@ -1,0 +1,73 @@
+Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyAbstract:
+  type: mappedSuperclass
+  indexes:
+    brandId:
+      columns:
+        - brandId
+    IDX_78F195D2EDF37044:
+      columns:
+        - pricingPlanId
+    IDX_78F195D22480E723:
+      columns:
+        - companyId
+  uniqueConstraints:
+    pricingPlanIdCompanyId:
+      columns:
+        - pricingPlanId
+        - companyId
+    metricCompanyId:
+      columns:
+        - companyId
+        - metric
+  fields:
+    validFrom:
+      type: datetime
+      nullable: false
+      column: validFrom
+    validTo:
+      type: datetime
+      nullable: false
+      column: validTo
+    metric:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+        default: '10'
+  manyToOne:
+    pricingPlan:
+      targetEntity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        pricingPlanId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: relPricingPlans
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

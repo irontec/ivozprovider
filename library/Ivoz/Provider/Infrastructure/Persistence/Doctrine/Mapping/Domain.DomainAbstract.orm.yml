@@ -1,0 +1,75 @@
+Ivoz\Provider\Domain\Model\Domain\DomainAbstract:
+  type: mappedSuperclass
+  indexes:
+    brandId:
+      columns:
+        - brandId
+    companyId:
+      columns:
+        - companyId
+  uniqueConstraints:
+    domain:
+      columns:
+        - domain
+    one_domain_per_brand:
+      columns:
+        - pointsTo
+        - brandId
+    one_domain_per_company:
+      columns:
+        - pointsTo
+        - companyId
+  fields:
+    domain:
+      column: domain
+      type: string
+      nullable: false
+      length: 190
+      options:
+        fixed: false
+    scope:
+      column: scope
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        default: global
+    pointsTo:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        default: proxyusers
+      column: pointsTo
+    description:
+      column: description
+      type: string
+      nullable: true
+      length: 500
+      options:
+        fixed: false
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: domains
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: domains
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

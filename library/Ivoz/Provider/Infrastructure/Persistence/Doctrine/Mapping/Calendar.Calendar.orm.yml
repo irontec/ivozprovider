@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\Calendar\Calendar:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CalendarDoctrineRepository
+  type: entity
+  table: Calendars
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    holidayDates:
+      targetEntity: Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface
+      mappedBy: calendar
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

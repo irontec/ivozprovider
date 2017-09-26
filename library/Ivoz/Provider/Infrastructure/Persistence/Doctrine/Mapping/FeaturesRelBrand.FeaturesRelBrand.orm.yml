@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FeaturesRelBrandDoctrineRepository
+  type: entity
+  table: FeaturesRelBrands
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

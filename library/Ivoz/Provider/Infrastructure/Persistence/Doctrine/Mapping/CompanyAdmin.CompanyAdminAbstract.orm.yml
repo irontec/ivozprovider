@@ -1,0 +1,71 @@
+Ivoz\Provider\Domain\Model\CompanyAdmin\CompanyAdminAbstract:
+  type: mappedSuperclass
+  indexes:
+    companyId:
+      columns:
+        - companyId
+    timezoneId:
+      columns:
+        - timezoneId
+  fields:
+    username:
+      type: string
+      nullable: false
+      length: 65
+      options:
+        fixed: false
+    pass:
+      type: string
+      nullable: false
+      length: 80
+      options:
+        fixed: false
+        comment: '[password]'
+    email:
+      type: string
+      nullable: false
+      length: 100
+      options:
+        fixed: false
+        default: ''
+    active:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+    name:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+    lastname:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    timezone:
+      targetEntity: \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        timezoneId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

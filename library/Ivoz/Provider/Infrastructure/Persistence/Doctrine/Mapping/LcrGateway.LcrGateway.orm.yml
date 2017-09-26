@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\LcrGatewayDoctrineRepository
+  type: entity
+  table: LcrGateways
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

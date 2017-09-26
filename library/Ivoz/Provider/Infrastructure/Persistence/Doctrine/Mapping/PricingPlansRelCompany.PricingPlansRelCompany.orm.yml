@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompany:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\PricingPlansRelCompanyDoctrineRepository
+  type: entity
+  table: PricingPlansRelCompanies
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+      postLoad:
+        - initChangelog

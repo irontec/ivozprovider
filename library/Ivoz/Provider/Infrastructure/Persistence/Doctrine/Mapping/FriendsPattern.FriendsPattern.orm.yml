@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FriendsPatternDoctrineRepository
+  type: entity
+  table: FriendsPatterns
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

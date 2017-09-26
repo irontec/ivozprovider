@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\PeerServer\PeerServer:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\PeerServerDoctrineRepository
+  type: entity
+  table: PeerServers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    lcrGateways:
+      targetEntity: Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+      mappedBy: peerServer
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

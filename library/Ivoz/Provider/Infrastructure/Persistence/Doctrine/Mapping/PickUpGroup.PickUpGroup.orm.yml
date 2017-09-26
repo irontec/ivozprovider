@@ -1,0 +1,22 @@
+Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\PickUpGroupDoctrineRepository
+  type: entity
+  table: PickUpGroups
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    relUsers:
+      targetEntity: Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser
+      mappedBy: pickUpGroup
+      cascade: ['persist']
+      orphanRemoval: true
+  lifecycleCallbacks:
+      postLoad:
+        - initChangelog

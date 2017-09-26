@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\PickUpRelUserDoctrineRepository
+  type: entity
+  table: PickUpRelUsers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog
