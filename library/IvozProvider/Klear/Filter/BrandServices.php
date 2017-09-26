@@ -51,7 +51,7 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
         return;
     }

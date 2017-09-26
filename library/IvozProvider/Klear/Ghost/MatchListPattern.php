@@ -1,18 +1,29 @@
 <?php
 
+use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern;
+
 class IvozProvider_Klear_Ghost_MatchListPattern extends KlearMatrix_Model_Field_Ghost_Abstract
 {
 
     /**
      *
-     * @param $model MatchListPattern model
+     * @param Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternDTO $model
      * @return match value based on pattern type
      */
     public function getMatchValue($model)
     {
         switch($model->getType()) {
             case 'number':
-                return $model->getNumberE164('+');
+
+                $dataGateway = \Zend_Registry::get('data_gateway');
+                return
+                    $dataGateway->remoteProcedureCall(
+                        MatchListPattern::class,
+                        $model->getId(),
+                        'getNumberE164',
+                        ['+']
+                    );
+
             case 'regexp':
                 return $model->getRegExp();
             default:

@@ -4,7 +4,7 @@ class IvozProvider_Klear_Ghost_KamAccCdrTargetPattern extends KlearMatrix_Model_
 {
     /**
      *
-     * @param $model KamAccCdrs
+     * @param $model \Kam\Domain\Model\AccCdr\AccCdrDTO
      *            model
      * @return source number if inbound call
      */

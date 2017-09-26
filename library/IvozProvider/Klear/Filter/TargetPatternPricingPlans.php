@@ -9,6 +9,8 @@ class IvozProvider_Klear_Filter_TargetPatternPricingPlans implements KlearMatrix
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        throw new \Exception('Not implemented yet');
+
         //La acción actual
         $currentAction = $routeDispatcher->getActionName();
 
@@ -59,8 +61,8 @@ class IvozProvider_Klear_Filter_TargetPatternPricingPlans implements KlearMatrix
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return;
+        return null;
     }
 }

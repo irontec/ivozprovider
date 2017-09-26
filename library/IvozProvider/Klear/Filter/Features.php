@@ -8,6 +8,7 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        throw new \Exception('Not implemented yet');
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             throw new Klear_Exception_Default("No company/brand emulated");
@@ -38,7 +39,7 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
         return;
     }

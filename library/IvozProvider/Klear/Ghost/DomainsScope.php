@@ -4,8 +4,7 @@ class IvozProvider_Klear_Ghost_DomainsScope extends KlearMatrix_Model_Field_Ghos
 {
     /**
      *
-     * @param $model Domains
-     *            model
+     * @param $model Domains model
      * @return name of target based on domain scope
      */
     public function getData ($model)
@@ -14,11 +13,24 @@ class IvozProvider_Klear_Ghost_DomainsScope extends KlearMatrix_Model_Field_Ghos
 
         if ($domainScope == 'global') {
             return 'Global';
-        } elseif ($domainScope == 'company') {
-            return $model->getCompany()->getName() . ' (company)';
+        } else if ($domainScope == 'company') {
+
+            $dataGateway = \Zend_Registry::get('data_gateway');
+            $company = $dataGateway->find('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $model->getCompanyId());
+            $companyName = $company->getName() . ' (company)';
+
+            return $companyName;
+
         } elseif ($domainScope == 'brand') {
-            return $model->getBrand()->getName() . ' (brand)';
+
+            $dataGateway = \Zend_Registry::get('data_gateway');
+            $brand = $dataGateway->find('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $model->getBrandId());
+            $brandName = $brand->getName() . ' (company)';
+
+            return $brandName;
+
         } else {
+
             // Outgoing Route with unexpected Type
             return null;
         }

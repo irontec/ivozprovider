@@ -126,7 +126,7 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
 
         $propperty = $type."Id";
         $currentModelId = $loggedUser->{$propperty};
-        $parentModelId = $this->_parentModel->getPrimaryKey();
+        $parentModelId = $this->_parentModel->getId();
 
         return $currentModelId != $parentModelId;
     }

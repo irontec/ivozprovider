@@ -1,9 +1,37 @@
 <?php
+
+use \Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPatternDTO;
+
 class IvozProvider_Klear_Ghost_TargetPattern extends KlearMatrix_Model_Field_Ghost_Abstract {
-    
-    public function getTargetPattern(\IvozProvider\Model\Raw\PricingPlansRelTargetPatterns $model) {
-        if ($model->getTargetPattern() && $model->getTargetPattern()->getName()) {
-            return $model->getTargetPattern()->getName().' ('.$model->getTargetPattern()->getRegExp().')';
+
+    public function getTargetPattern($model)
+    {
+        if (!$model instanceof PricingPlansRelTargetPatternDTO) {
+            Throw new \Exception('model must be an instance of PricingPlansRelTargetPatternDTO');
+        }
+
+        if ($model->getTargetPatternId()) {
+            $dataGateway = \Zend_Registry::get('data_gateway');
+            $pattern = $dataGateway->find(
+                'Ivoz\\Provider\\Domain\Model\\TargetPattern\\TargetPattern',
+                $model->getTargetPatternId()
+            );
+        }
+
+        if (isset($pattern)) {
+
+            $klearBootstrap = Zend_Controller_Front::getInstance()
+                ->getParam("bootstrap")
+                ->getResource('modules')
+                ->offsetGet('klear');
+            $siteLanguage = $klearBootstrap
+                ->getOption('siteConfig')
+                ->getLang();
+            $currentLanguage = $siteLanguage->getLanguage();
+
+//            Zend_Locale::getEnvironment($currentLanguage)
+            $nameGetter = 'getName' . ucfirst($currentLanguage);
+            return $pattern->{$nameGetter}().' ('.$pattern->getRegExp().')';
         }
 
         return '';
@@ -16,27 +44,31 @@ class IvozProvider_Klear_Ghost_TargetPattern extends KlearMatrix_Model_Field_Gho
         return "FIELD(campo,".implode(',',valoresOrdenados).")";
     }
 
-    public function getSearchConditionsForItem($values, $searchOps,\IvozProvider\Model\Raw\PricingPlansRelTargetPatterns $model) {
+    public function getSearchConditionsForItem($values, $searchOps, $model) {
+
+        if (!$model instanceof PricingPlansRelTargetPatternDTO) {
+            Throw new \Exception('model must be an instance of PricingPlansRelTargetPatternDTO');
+        }
+
         $conditions = array();
         $condition = array();
 
         foreach ($values as $term) {
             if (is_numeric($term)) {
-                $condition[] = "`regExp` LIKE '%".$term."%'";
+                $condition[] = "regExp LIKE '%".$term."%'";
             } elseif (substr($term, 0, 1) == '(') {
                 $term = str_replace("(","",$term);
-                $condition[] = "`regExp` LIKE '".$term."%'";
+                $condition[] = "regExp LIKE '".$term."%'";
             } else {
-                $condition[] = "`name_en` LIKE '%".str_replace(' ','%',$term)."%'";
-                $condition[] = "`name_es` LIKE '%".str_replace(' ','%',$term)."%'";
+                $condition[] = "name.en LIKE '%".str_replace(' ','%',$term)."%'";
+                $condition[] = "name.es LIKE '%".str_replace(' ','%',$term)."%'";
             }
 
             $conditions[] = '('.implode(' OR ',$condition).')';
         }
 
-        $mapperTargetPattern = new \IvozProvider\Mapper\Sql\TargetPatterns();
-
-        $targetPatterns = $mapperTargetPattern->fetchList(implode(' AND ',$conditions));
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        $targetPatterns = $dataGateway->findBy('Core\\Model\\TargetPattern\\TargetPattern', $conditions);
 
         $targetPatternsIds = array();
 
@@ -54,12 +86,12 @@ class IvozProvider_Klear_Ghost_TargetPattern extends KlearMatrix_Model_Field_Gho
 
     protected function _filterAutocompletePrincingPlans($term) {
         if (is_numeric($term)) {
-            $condition[] = "`regExp` like '%".$term."%'";
+            $condition[] = "regExp like '%" . $term . "%'";
         } elseif (substr($term, 0, 1) == '(') {
             $term = str_replace("(","",$term);
-            $condition[] = "`regExp` like '".$term."%'";
+            $condition[] = "regExp like '".$term."%'";
         } else {
-            $condition[] = "(`name_en` LIKE '%".str_replace(' ','%',$term)."%' OR `name_es` LIKE '%".str_replace(' ','%',$term)."%')";
+            $condition[] = "(name.en LIKE '%".str_replace(' ','%',$term)."%' OR name.es LIKE '%".str_replace(' ','%',$term)."%')";
         }
     }
 }

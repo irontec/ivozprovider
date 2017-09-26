@@ -6,6 +6,7 @@ class IvozProvider_Klear_Filter_ForwardExtension extends IvozProvider_Klear_Filt
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        throw new \Exception('Not implemented yet');
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
 
@@ -27,7 +28,7 @@ class IvozProvider_Klear_Filter_ForwardExtension extends IvozProvider_Klear_Filt
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
         return;
     }

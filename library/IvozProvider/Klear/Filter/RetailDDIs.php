@@ -7,7 +7,7 @@ class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Se
     {
         // Get current pk
         $pk = $routeDispatcher->getParam("pk", false);
-        $this->_condition[] = "`retailAccountId` = '" . $pk . "'";
+        $this->_condition[] = "retailAccount = '" . $pk . "'";
 
         return true;
     }
@@ -15,8 +15,8 @@ class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Se
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return;
+        return null;
     }
 }
