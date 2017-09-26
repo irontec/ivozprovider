@@ -1,0 +1,61 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkLifecycleServiceCollection:
+    public: true
+
+  provider.transformation_ruleset_groups_trunk.service_collection:
+    '@Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Kam\Domain\Service\TrunksDialplan\AssignDpid:
+    tags:
+      - { name: provider.transformation_ruleset_groups_trunk.pre_persist, priority: 10 }
+    arguments:
+      $trunksDialplanRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksDialplan\\TrunksDialplan")'
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCalleeOutRules:
+    tags:
+      - { name: provider.transformation_ruleset_groups_trunk.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCallerOutRules:
+    tags:
+      - { name: provider.transformation_ruleset_groups_trunk.post_persist, priority: 20 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCalleeInRules:
+    tags:
+      - { name: provider.transformation_ruleset_groups_trunk.post_persist, priority: 30 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCallerInRules:
+    tags:
+      - { name: provider.transformation_ruleset_groups_trunk.post_persist, priority: 40 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  ##################################
+  ## post_remove
+  ##################################
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRulesetGroupsTrunk\RemovedXmlRpc:
+    tags:
+      - { name: provider.peer_server.post_remove, priority: 10 }

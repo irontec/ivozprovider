@@ -1,0 +1,46 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/application_server.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/brand.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/brand_service.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/call_forward_setting.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/company.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/company_admin.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/conference_room.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ddi.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/domain.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/extension.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/external_call_filter.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/fax.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/faxes_in_out.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/friend.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/generic_music_on_hold.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/hunt_group.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/invoice.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/invoice_template.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_common.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_custom.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_custom_entry.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/locution.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/matchList_pattern.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/music_on_hold.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/outgoing_ddi_rule.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/outgoing_ddi_rules_pattern.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/outgoing_routing.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/peer_server.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/pick_up_rel_user.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/queue_member.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/queue.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/routing_pattern_group.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/routing_pattern.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/terminal_model.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/terminal.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/transformation_ruleset_groups_trunk.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/user.yml" }
+
+
+
+
+services:
+  _defaults:
+    autowire: true
+    public: false

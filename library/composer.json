@@ -1,12 +1,68 @@
 {
-    "name": "ivozprovider",
-    "description": "IvozProvider",
+    "name": "irontec/ivozprovider/shared-dependencies",
+    "description": "Multitenant solution for VoIP telephony providers (Shared dependencies)",
+    "authors": [
+        {
+            "name": "Carlos Cruz",
+            "email": "carlos@irontec.com"
+        },
+        {
+            "name": "Gaizka Elexpe",
+            "email": "gaizka@irontec.com"
+        },
+        {
+            "name": "Gorka Gorrotxategi",
+            "email": "gorka.g@irontec.com"
+        },
+        {
+            "name": "Ivan Alonso",
+            "email": "kaian@irontec.com"
+        },
+        {
+            "name": "Luis Felipe García",
+            "email": "lfgarcia@irontec.com"
+        },
+        {
+            "name": "Mikel Madariaga",
+            "email": "mikel@irontec.com"
+        },
+        {
+            "name": "Victor Vargas",
+            "email": "victor@irontec.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "spec\\": "spec/",
+            "Ivoz\\": "Ivoz",
+            "CoreBundle\\": "CoreBundle"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "git"
+        },
+        "platform": {
+            "php": "7.0.19"
+        }
+    },
     "require": {
-        "knplabs/knp-snappy": "0.4.3",
-        "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "h4cc/wkhtmltopdf-i386": "0.12.3",
-        "crada/php-apidoc":"@dev",
-        "xamin/handlebars.php": "^0.10.4",
-        "debach/zend-mp3": "1.8.*"
+        "php": ">=7.0.19",
+        "symfony/symfony": "3.3.*",
+        "sensio/distribution-bundle": "^5.0",
+        "symfony/monolog-bundle": "^3.0.2",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-cache-bundle": "^1.2",
+        "doctrine/doctrine-migrations-bundle": "^1.2",
+        "doctrine/orm": "^2.5",
+        "incenteev/composer-parameter-handler": "^2.0",
+        "beberlei/assert": "2.7.*"
+    },
+    "require-dev": {
+        "leanphp/phpspec-code-coverage": "^3.1",
+        "phpspec/phpspec": "3.4.*",
+        "sensio/generator-bundle": "^3.0",
+        "symfony/phpunit-bridge": "^3.0"
     }
 }

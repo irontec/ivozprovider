@@ -1,0 +1,34 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Kam\Domain\Service\PikeTrusted\PikeTrustedLifecycleServiceCollection:
+    public: true
+
+  kam.lifecycle.pike_trusted.service_collection:
+    '@Ivoz\Kam\Domain\Service\PikeTrusted\PikeTrustedLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Kam\Domain\Service\PikeTrusted\CheckValidity:
+    tags:
+      - { name: kam.lifecycle.pike_trusted.pre_persist, priority: 10}
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Kam\Infrastructure\Domain\Service\PikeTrusted\PersistedXmlRpc:
+    tags:
+      - { name: kam.lifecycle.pike_trusted.post_persist, priority: 10 }
+
+  ##################################
+  ## post_remove
+  ##################################
+  Ivoz\Kam\Domain\Service\PikeTrusted\RemovedXmlRpc:
+    tags:
+      - { name: kam.lifecycle.pike_trusted.post_remove, priority: 10 }

@@ -1,0 +1,78 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection:
+    public: true
+
+  provider.user.service_collection:
+    '@Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection'
+
+  ##################################
+  ## error_handler
+  ##################################
+  Ivoz\Provider\Domain\Service\User\PersistErrorHandler:
+    tags:
+      - { name: provider.user.error_handler, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\User\SanitizeValues:
+    tags:
+      - { name: provider.user.pre_persist, priority: 10 }
+    arguments: ~
+
+  Ivoz\Provider\Domain\Service\User\CryptPass:
+    tags:
+      - { name: provider.user.pre_persist, priority: 20 }
+    arguments: ~
+
+  Ivoz\Provider\Domain\Service\User\UnsetBossAssistant:
+    tags:
+      - { name: provider.user.pre_persist, priority: 30 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\User\UpdateUserEndpoint:
+    tags:
+      - { name: provider.user.pre_persist, priority: 40 }
+    arguments: ~
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Ast\Domain\Service\Voicemail\UpdateByUser:
+    tags:
+      - { name: provider.user.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $voicemailRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\Voicemail\\Voicemail")'
+
+  Ivoz\Provider\Domain\Service\Extension\UpdateByUser:
+    tags:
+      - { name: provider.user.post_persist, priority: 20 }
+    arguments: ~
+
+  Ivoz\Ast\Domain\Service\QueueMember\UpdateByUser:
+    tags:
+      - { name: provider.user.post_persist, priority: 30 }
+    arguments:
+      $updateByIvozQueueMember:
+        '@Ivoz\Ast\Domain\Service\QueueMember\UpdateByIvozQueueMember'
+
+  ##################################
+  ## post_remove
+  ##################################
+  Ivoz\Provider\Domain\Service\User\UpdateUserEndpoint:
+    tags:
+      - { name: provider.user.pre_remove, priority: 40 }
+    arguments: ~

@@ -1,0 +1,44 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection:
+    public: true
+
+  provider.retail_account.service_collection:
+    '@Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\RetailAccount\SanitizeValues:
+    tags:
+      - { name: provider.retail_account.pre_persist, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount:
+    tags:
+      - { name: provider.retail_account.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $psEndpointRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint")'
+
+  Ivoz\Ast\Domain\Service\PsAor\UpdateByRetailAccount:
+    tags:
+      - { name: provider.retail_account.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $psAorRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsAor\\PsAor")'
+      $psEndpointRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint")'

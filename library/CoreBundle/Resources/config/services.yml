@@ -1,0 +1,45 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/legacy.yml" }
+  - { resource: "@CoreBundle/Resources/config/asterisk.yml" }
+  - { resource: "@CoreBundle/Resources/config/doctrine.yml" }
+  - { resource: "@CoreBundle/Resources/config/domain_services.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer:
+    arguments:
+      - "@doctrine.orm.entity_manager"
+
+  core.doctrine_foreign_key_transformer:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
+
+  Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer:
+    arguments:
+      - "@doctrine.orm.entity_manager"
+
+  core.doctrine_collection_transformer:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
+
+  Ivoz\Core\Application\Command\CreateEntityFromDTO:
+    arguments:
+      - "@core.doctrine_foreign_key_transformer"
+      - "@core.doctrine_collection_transformer"
+
+  core.create_entity_from_dto:
+    class: Ivoz\Core\Application\Command\CreateEntityFromDTO
+
+  Ivoz\Core\Application\Command\UpdateEntityFromDTO:
+    arguments:
+      - "@core.doctrine_foreign_key_transformer"
+      - "@core.doctrine_collection_transformer"
+
+  core.update_entity_from_dto:
+    class: Ivoz\Core\Application\Command\UpdateEntityFromDTO
+
+  Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
+    public: true
