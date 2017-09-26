@@ -1,0 +1,73 @@
+Ivoz\Ast\Domain\Model\Queue\QueueAbstract:
+  type: mappedSuperclass
+  indexes:
+    queueId:
+      columns:
+        - queueId
+  fields:
+    periodicAnnounce:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: periodic_announce
+    periodicAnnounceFrequency:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+      column: periodic_announce_frequency
+    timeout:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+    autopause:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        default: 'no'
+    ringinuse:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        default: 'no'
+    wrapuptime:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+    maxlen:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+    strategy:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    weight:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+  manyToOne:
+    queue:
+      targetEntity: \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        queueId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

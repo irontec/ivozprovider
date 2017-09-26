@@ -1,0 +1,18 @@
+Ivoz\Ast\Domain\Model\PsAor\PsAor:
+  repositoryClass: Ivoz\Ast\Infrastructure\Persistence\Doctrine\PsAorDoctrineRepository
+  type: entity
+  table: ast_ps_aors
+  id:
+    id:
+      type: string
+      nullable: false
+      length: 40
+      options:
+        fixed: false
+      column: sorcery_id
+      id: true
+      generator:
+        strategy: NONE
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog
