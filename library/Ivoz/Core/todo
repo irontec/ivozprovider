@@ -1,0 +1,13 @@
+@@ MODELS @@
+
+PeerServers
+PricingPlans
+PricingPlansRelTargetPatterns
+Queues
+RoutingPatternGroups
+RoutingPatternGroupsRelPatterns
+RoutingPatterns
+Schedules
+TargetGroups
+Terminals
+Users
