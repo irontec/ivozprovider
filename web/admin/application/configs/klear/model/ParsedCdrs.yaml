@@ -1,0 +1,162 @@
+production:
+  class: \IvozProvider\Model\ParsedCDRs
+  entity: Ivoz\Provider\Domain\Model\ParsedCdr\ParsedCdr
+  fields: 
+    statId:
+      title: _('Stat')
+      type: number
+      source:
+        control: Spinner
+      default: true
+    xstatId:
+      title: _('Xstat id')
+      type: number
+      source:
+        control: Spinner
+    statType:
+      title: _('Stat type')
+      type: text
+      maxLength: 256
+    initialLeg:
+      title: _('Initial leg')
+      type: text
+      maxLength: 128
+    initialLegHash:
+      title: _('Initial leg hash')
+      type: text
+      maxLength: 128
+    cid:
+      title: _('Cid')
+      type: text
+      maxLength: 128
+    cidHash:
+      title: _('Cid hash')
+      type: text
+      maxLength: 128
+    xcid:
+      title: _('Xcid')
+      type: text
+      maxLength: 128
+    xcidHash:
+      title: _('Xcid hash')
+      type: text
+      maxLength: 128
+    proxies:
+      title: _('Proxy')
+      type: text
+      maxLength: 32
+    type:
+      title: _('Type')
+      type: text
+      maxLength: 32
+    subtype:
+      title: _('Subtype')
+      type: text
+      maxLength: 64
+    calldate:
+      title: _('Calldate')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    duration:
+      title: _('Duration')
+      type: number
+      source:
+        control: Spinner
+    aParty:
+      title: _('Caller')
+      type: text
+      maxLength: 128
+    bParty:
+      title: _('Callee')
+      type: text
+      maxLength: 128
+    caller:
+      title: _('Original caller')
+      type: text
+      maxLength: 128
+    callee:
+      title: _('Dialed number')
+      type: text
+      maxLength: 128
+    xCaller:
+      title: _('Presented CID')
+      type: text
+      maxLength: 128
+    xCallee:
+      title: _('Final callee')
+      type: text
+      maxLength: 128
+    initialReferrer:
+      title: _('Initial referrer')
+      type: text
+      maxLength: 128
+    referrer:
+      title: _('Referrer')
+      type: text
+      maxLength: 128
+    referee:
+      title: _('Referee')
+      type: text
+      maxLength: 128
+    lastForwarder:
+      title: _('Last forwarder')
+      type: text
+      maxLength: 32
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Brands
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+        'null': _("Unassigned")
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterclass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+        'null': _("Unassigned")
+    peeringContractId:
+      title: _('Peering contract id')
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          fieldName: 
+            fields: 
+              - description
+            template: '%description%'
+          order:
+            PeeringContract.description: asc
+        'null': _("Unassigned")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -1,0 +1,260 @@
+production:
+  class: \IvozProvider\Model\AccCdrs
+  entity: \Ivoz\Kam\Domain\Model\AccCdr\AccCdr
+  fields: 
+    proxy:
+      title: _('Proxy')
+      type: text
+      maxLength: 64
+      default: true
+    startTimeUtc:
+      title: _('Calldate')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    endTimeUtc:
+      title: _('End time utc')
+      type: picker
+      defaultValue: CURRENT_TIMESTAMP
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    startTime:
+      title: _('Start time')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    endTime:
+      title: _('End time')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    duration:
+      title: _('Duration')
+      type: text
+      defaultValue: 0.000
+    direction:
+      title: _('Type')
+      type: select
+      source:
+        data: inline
+        values:
+          'inbound': _('Inbound')
+          'outbound': _('Outbound')
+    caller:
+      title: _('Caller')
+      type: text
+      maxLength: 128
+    callee:
+      title: _('Destination')
+      type: text
+      maxLength: 128
+    referee:
+      title: _('Referee')
+      type: text
+      maxLength: 128
+    referrer:
+      title: _('Referrer')
+      type: text
+      maxLength: 128
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterclass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+        'null': _("Unassigned")
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Brands
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+        'null': _("Unassigned")
+    asIden:
+      title: _('As iden')
+      type: text
+      maxLength: 64
+    asAddress:
+      title: _('As address')
+      type: text
+      maxLength: 64
+    callid:
+      title: _('Callid')
+      type: text
+      maxLength: 255
+    xcallid:
+      title: _('Xcallid')
+      type: text
+      maxLength: 255
+    parsed:
+      title: _('Parsed')
+      type: select
+      defaultValue: no
+      source:
+        data: inline
+        values:
+          'yes': _('Yes')
+          'no': _('No')
+          'error': _('Error')
+    diversion:
+      title: _('Diversion')
+      type: text
+      maxLength: 64
+    peeringContractId:
+      title: _('Peering contract id')
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
+          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          filterclass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            PeeringContract.name: asc
+        'null': _("Unassigned")
+    externallyRated:
+      title: _('Externally rated')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    metered:
+      title: _('Metered')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    meteringDate:
+      title: _('Metering date')
+      type: picker
+      defaultValue: 0000-00-00 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    reMeteringDate:
+      title: _('Re metering date')
+      type: picker
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    pricingPlan:
+      title: ngettext('Pricing plan', 'Pricing plans', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
+          entity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            PricingPlan.name.${lang}: asc
+        'null': _("Unassigned")
+    targetPatternId:
+      title: _('Target pattern')
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+          entity: \Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            TargetPattern.name.${ang}: asc
+        'null': _("Unassigned")
+      decorators:
+        autocomplete:
+            command: targetPatternautocomplete_command
+    price:
+      title: ngettext('Price', 'Prices', 1)
+      type: text
+    pricingPlanDetails:
+      title: _('Pricing plan detail')
+      type: textarea
+      prefix: <p align=left>
+      sufix: </p>
+    invoice:
+      title: ngettext('Invoice', 'Invoices', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Invoices
+          entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
+          filterclass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - number
+            template: '%number%'
+          order:
+            Invoice.number: asc
+        'null': _("Unassigned")
+    pricingPlan:
+      title: _('Pricing plan')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrPricingPlan
+        method: getData
+    targetPattern:
+      title: _('Target pattern')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_KamAccCdrTargetPattern
+        method: getData
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

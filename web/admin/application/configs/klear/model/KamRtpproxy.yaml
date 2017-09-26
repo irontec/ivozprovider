@@ -1,0 +1,77 @@
+production:
+  class: \IvozProvider\Model\KamRtpproxy
+  entity: Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy
+  fields: 
+    id:
+      title: _('Setid')
+      type: text
+      trim: both
+      pattern: "^[0-9]{1,3}$"
+      defaultValue: 0
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Numeric value")
+        label: _("Need help?")
+    url:
+      title: ngettext('URL', 'URLs', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 128
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("e.g. udp:127.0.0.1:22222")
+        label: _("Need help?")
+    flags:
+      title: _('Flag')
+      type: number
+      defaultValue: 0
+      source:
+        control: Spinner
+    weight:
+      title: _('Weight')
+      type: number
+      defaultValue: 1
+      source:
+        control: Spinner
+        min: 0
+        max: 254
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("0 disables if more available, 2 gets double calls than 1, 3 gets triple calls than 1, etc.")
+        label: _("Need help?")
+    description:
+      title: _('Description')
+      type: text
+      trim: both
+      maxLength: 200
+    mediaRelaySetId:
+      title: ngettext('Media relay set', 'Media relay sets', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\MediaRelaySets
+          entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            MediaRelaySet.name: asc
+        'null': _("Unassigned")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

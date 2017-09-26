@@ -1,0 +1,61 @@
+production:
+  class: \IvozProvider\Model\TrunksDialplan
+  entity: Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplan
+  fields: 
+    dpid:
+      title: _('Dpid')
+      type: number
+      required: true
+      source:
+        control: Spinner
+      default: true
+    pr:
+      title: _('Priority')
+      type: number
+      required: true
+      source:
+        control: Spinner
+    matchOp:
+      title: _('Match op')
+      type: number
+      required: true
+      source:
+        control: Spinner
+    matchExp:
+      title: _('Match exp')
+      type: text
+      trim: both
+      required: true
+      maxLength: 64
+    matchLen:
+      title: _('Match len')
+      type: number
+      required: true
+      source:
+        control: Spinner
+    substExp:
+      title: _('Subst exp')
+      type: text
+      trim: both
+      required: true
+      maxLength: 64
+    replExp:
+      title: _('Repl exp')
+      type: text
+      trim: both
+      required: true
+      maxLength: 64
+    attrs:
+      title: _('Attr')
+      type: text
+      trim: both
+      required: true
+      maxLength: 64
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

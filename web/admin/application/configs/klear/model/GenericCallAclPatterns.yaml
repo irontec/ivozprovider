@@ -1,0 +1,38 @@
+production:
+  class: \IvozProvider\Model\GenericCallACLPatterns
+  entity: Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPattern
+  fields: 
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Brands
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+      default: true
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+    regExp:
+      title: _('Regular Expression')
+      type: text
+      trim: both
+      required: true
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

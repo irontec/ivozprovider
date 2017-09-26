@@ -1,0 +1,141 @@
+#include ../conf.d/codecsHelp.yaml
+#include ../conf.d/updateMethodHelp.yaml
+
+production:
+  class: \IvozProvider\Model\Terminals
+  entity: Ivoz\Provider\Domain\Model\Terminal\Terminal
+  fields:
+    terminalModelId:
+      title: ngettext('Terminal model', 'Terminal models', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\TerminalModels
+          entity: \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel
+          fieldName:
+            fields:
+              - iden
+            template: '%iden%'
+          order:
+            TerminalModel.iden: asc
+    name:
+      title: _('Name')
+      type: text
+      pattern: "^[a-zA-Z0-9_*]+$"
+      trim: both
+      maxLength: 100
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
+        label: _("Need help?")
+    domain:
+      title: _('Domain')
+      type: text
+      maxLength: 255
+    disallow:
+      title: _('Disallowed audio codecs')
+      type: text
+      trim: both
+      defaultValue: all
+      maxLength: 100
+      <<: *codecsHelp
+    allowAudio:
+      title: _('Allowed audio codecs')
+      type: select
+      trim: both
+      defaultValue: alaw
+      maxLength: 100
+      source:
+        data: inline
+        values:
+            'alaw': 'alaw - G.711 a-law'
+            'ulaw': 'ulaw - G.711 u-law'
+            'gsm': 'gsm - GSM'
+            'speex': 'speex - SpeeX 32khz'
+            'g722': 'g722 - G.722'
+            'g726': 'g726 - G.726 RFC3551'
+            'g729': 'g729 - G.729A'
+            'ilbc': 'ilbc - iLBC'
+            'opus': 'opus - Opus codec'
+    allowVideo:
+      title: _('Allowed video codecs')
+      type: select
+      trim: both
+      maxLength: 100
+      source:
+        data: inline
+        values:
+            'h264': 'h264 - H.264'
+        'null': _("Disabled")
+    directMediaMethod:
+      title: _('CallerID update method')
+      type: select
+      defaultValue: invite
+      source:
+        data: inline
+        values:
+          'invite': 'invite'
+          'update': 'update'
+      <<: *updateMethodHelp
+    password:
+      title: _('Password')
+      type: text
+      pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
+
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'")
+        label: _("Need help?")
+      options:
+        commands:
+          generatePassword_command: true
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    mac:
+      title: _('MAC')
+      type: text
+      trim: both
+      maxLength: 12
+    lastProvisionDate:
+      title: _('Last provision date')
+      type: picker
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    status:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getTerminalStatus
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

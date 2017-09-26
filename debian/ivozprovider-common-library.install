@@ -1,0 +1,4 @@
+library/CoreBundle		/opt/irontec/ivozprovider/library
+library/Ivoz			/opt/irontec/ivozprovider/library
+library/IvozProvider    /opt/irontec/ivozprovider/library
+library/vendor          /opt/irontec/ivozprovider/library

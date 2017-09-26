@@ -1,2 +1,0 @@
-#!/bin/bash
-phing -f build_prod.xml $1 -De=$APPLICATION_ENV

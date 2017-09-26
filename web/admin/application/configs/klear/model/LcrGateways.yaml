@@ -1,0 +1,121 @@
+production:
+  class: \IvozProvider\Model\LcrGateways
+  entity: Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway
+  fields: 
+    company:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+      default: true
+    gwName:
+      title: _('Gw name')
+      type: text
+      trim: both
+      required: true
+      maxLength: 200
+    ip:
+      title: _('Ip')
+      type: text
+      trim: both
+      required: true
+      maxLength: 50
+    hostname:
+      title: _('Hostname')
+      type: text
+      trim: both
+      maxLength: 64
+    port:
+      title: _('Port')
+      type: number
+      source:
+        control: Spinner
+    params:
+      title: _('Param')
+      type: text
+      trim: both
+      maxLength: 64
+    uriScheme:
+      title: _('URI scheme')
+      type: number
+      source:
+        control: Spinner
+    transport:
+      title: _('Transport')
+      type: number
+      source:
+        control: Spinner
+    strip:
+      title: _('Strip')
+      type: number
+      source:
+        control: Spinner
+    prefix:
+      title: _('Prefix')
+      type: text
+      trim: both
+      maxLength: 16
+    tag:
+      title: _('Tag')
+      type: text
+      trim: both
+      maxLength: 64
+    flags:
+      title: _('Flag')
+      type: number
+      defaultValue: 0
+      source:
+        control: Spinner
+    defunct:
+      title: _('Defunct')
+      type: number
+      source:
+        control: Spinner
+    peerServer:
+      title: ngettext('Peer server', 'Peer servers', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\PeerServers
+          entity: \Ivoz\Provider\Domain\Model\PeerServer\PeerServer
+          fieldName: 
+            fields: 
+              - ip
+            template: '%ip%'
+          order:
+            PeerServer.ip: asc
+    outgoingRouting:
+      title: ngettext('Outgoing routing', 'Outgoing routings', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
+          entity: \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+          fieldName: 
+            fields: 
+              - id
+            template: '%id%'
+          order:
+            OutgoingRouting.id: asc
+staging: 
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

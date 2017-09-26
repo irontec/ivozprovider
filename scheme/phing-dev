@@ -1,2 +1,0 @@
-#!/bin/bash
-phing -f build_dev.xml $1 -De=localdev -Dk=/opt/klear-development -Da=/opt/irontec/ivozprovider/portals/application

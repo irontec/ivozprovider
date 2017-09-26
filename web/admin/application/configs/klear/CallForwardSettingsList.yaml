@@ -1,0 +1,96 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: callForwardSettingsList_screen
+  screens: &callForwardSettings_screensLink
+    callForwardSettingsList_screen: &callForwardSettingsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *CallForwardSettings
+      class: ui-silk-telephone-go
+      title: _("List of %s %2s", ngettext('Call forward setting', 'Call forward settings', 0), "[format| (%parent%)]")
+      fields:
+        order:
+          callTypeFilter: true
+          callForwardType: true
+          targetType: true
+          targetTypeValue: true
+        options:
+          title: _("Options")
+          screens:
+            callForwardSettingsEdit_screen: true
+          dialogs:
+            callForwardSettingsDel_dialog: true
+          default: callForwardSettingsEdit_screen
+        blacklist:
+          numberValue: true
+          extensionId: true
+          voiceMailUserId: true
+          noAnswerTimeout: true
+      options:
+        title: _("Options")
+        screens:
+          callForwardSettingsNew_screen: true
+        dialogs:
+          callForwardSettingsDel_dialog: true
+    callForwardSettingsNew_screen: &callForwardSettingsNew_screenLink
+      <<: *CallForwardSettings
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      fields:
+        blacklist:
+          targetTypeValue: true
+      fixedPositions: &callForwardSettingsFixedPositions_Link
+        group0:
+          colsPerRow: 3
+          fields:
+            callTypeFilter: 1
+            callForwardType: 1
+            noAnswerTimeout: 1
+        group1:
+          colsPerRow: 2
+          fields:
+            targetType: 1
+            numberValue: 1
+            extensionId: 1
+            voiceMailUserId: 1
+    callForwardSettingsEdit_screen: &callForwardSettingsEdit_screenLink 
+      <<: *CallForwardSettings
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          extensionId: true
+          targetTypeValue: true
+      fixedPositions:
+        <<: *callForwardSettingsFixedPositions_Link
+
+  dialogs: &callForwardSettings_dialogsLink
+    callForwardSettingsDel_dialog: &callForwardSettingsDel_dialogLink
+      <<: *CallForwardSettings
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Call forward setting', 'Call forward settings', 1))
+      description: _("Do you want to delete this %s?", ngettext('Call forward setting', 'Call forward settings', 1))
+      message: _("%s successfully deleted.", ngettext('Call forward setting', 'Call forward settings', 1))
+      multiItem: 1
+      labelOnList: 1
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
