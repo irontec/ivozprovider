@@ -1,0 +1,16 @@
+Ivoz\Kam\Domain\Model\AccCdr\AccCdr:
+  repositoryClass: Ivoz\Kam\Infrastructure\Persistence\Doctrine\AccCdrDoctrineRepository
+  type: entity
+  table: kam_acc_cdrs
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog
