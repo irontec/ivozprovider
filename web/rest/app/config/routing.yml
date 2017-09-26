@@ -1,0 +1,4 @@
+zf:
+    resource: "@ZfBundle/Resources/config/routing.yml"
+    prefix:   /
+
