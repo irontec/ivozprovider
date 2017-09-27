@@ -29,6 +29,7 @@ class Companies extends Raw\Companies
      */
     const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
     const UNIQUE_NAME_CONSTRAINT = 'nameBrand';
+    const UNIQUE_DOMAIN_CONSTRAINT = 'domain_unique';
 
     protected $_model;
     protected $_recursive;
@@ -73,8 +74,14 @@ class Companies extends Raw\Companies
             $isDuplicatedNameError =
                 $e->getCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
                 && strpos($e->getMessage(), self::UNIQUE_NAME_CONSTRAINT);
+            $isDuplicatedDomainError =
+                $e->getCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
+                && strpos($e->getMessage(), self::UNIQUE_DOMAIN_CONSTRAINT);
             if ($isDuplicatedNameError) {
                 throw new \Exception('Name already in use', 2203, $e);
+            }
+            if ($isDuplicatedDomainError) {
+                throw new \Exception('SIP domain already in use', 2202, $e);
             }
             throw $e;
         }
