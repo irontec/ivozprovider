@@ -26,6 +26,7 @@ production:
   adminErrors:
     2001: _("SIP Domain can't be empty")
     2201: _("Email already in use")
+    2202: _("SIP Domain already in use")
     2203: _("Name already in use")
   connectorErrors:
     9001: _("No Application Server available.")
