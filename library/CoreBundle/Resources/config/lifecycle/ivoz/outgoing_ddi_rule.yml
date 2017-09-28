@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\OutgoingDdiRule\OutgoingDdiRuleLifecycleServiceCollection:
     public: true
 
-  provider.outgoing_ddi_rule.service_collection:
+  provider.lifecycle.outgoing_ddi_rule.service_collection:
     '@Ivoz\Provider\Domain\Service\OutgoingDdiRule\OutgoingDdiRuleLifecycleServiceCollection'
 
   ##################################
@@ -17,5 +17,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\OutgoingDdiRule\SanitizeValues:
     tags:
-      - { name: provider.outgoing_ddi_rule.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.outgoing_ddi_rule.pre_persist, priority: 10 }
     arguments: ~

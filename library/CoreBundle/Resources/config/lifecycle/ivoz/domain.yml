@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Domain\DomainLifecycleServiceCollection:
     public: true
 
-  provider.domain.service_collection:
+  provider.lifecycle.domain.service_collection:
     '@Ivoz\Provider\Domain\Service\Domain\DomainLifecycleServiceCollection'
 
   ##################################
@@ -18,7 +18,7 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\Domain\PersistedXmlRpc:
     tags:
-      - { name: provider.domain.post_persist, priority: 10 }
+      - { name: provider.lifecycle.domain.post_persist, priority: 10 }
 
   ##################################
   ## post_remove
@@ -26,4 +26,4 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\Domain\RemovedXmlRpc:
     tags:
-      - { name: provider.domain.post_remove, priority: 10 }
+      - { name: provider.lifecycle.domain.post_remove, priority: 10 }

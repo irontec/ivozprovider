@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection:
     public: true
 
-  provider.extension.service_collection:
+  provider.lifecycle.extension.service_collection:
     '@Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Extension\SanitizeValues:
     tags:
-      - { name: provider.extension.pre_persist, priority: 10}
+      - { name: provider.lifecycle.extension.pre_persist, priority: 10}
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -27,7 +27,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\User\UpdateByExtension:
     tags:
-      - { name: provider.extension.post_persist, priority: 10}
+      - { name: provider.lifecycle.extension.post_persist, priority: 10}
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

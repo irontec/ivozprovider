@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection:
     public: true
 
-  provider.user.service_collection:
+  provider.lifecycle.user.service_collection:
     '@Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\User\PersistErrorHandler:
     tags:
-      - { name: provider.user.error_handler, priority: 10 }
+      - { name: provider.lifecycle.user.error_handler, priority: 10 }
     arguments: ~
 
   ##################################
@@ -25,24 +25,24 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\User\SanitizeValues:
     tags:
-      - { name: provider.user.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.user.pre_persist, priority: 10 }
     arguments: ~
 
   Ivoz\Provider\Domain\Service\User\CryptPass:
     tags:
-      - { name: provider.user.pre_persist, priority: 20 }
+      - { name: provider.lifecycle.user.pre_persist, priority: 20 }
     arguments: ~
 
   Ivoz\Provider\Domain\Service\User\UnsetBossAssistant:
     tags:
-      - { name: provider.user.pre_persist, priority: 30 }
+      - { name: provider.lifecycle.user.pre_persist, priority: 30 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   Ivoz\Provider\Domain\Service\User\UpdateUserEndpoint:
     tags:
-      - { name: provider.user.pre_persist, priority: 40 }
+      - { name: provider.lifecycle.user.pre_persist, priority: 40 }
     arguments: ~
 
   ##################################
@@ -50,7 +50,7 @@ services:
   ##################################
   Ivoz\Ast\Domain\Service\Voicemail\UpdateByUser:
     tags:
-      - { name: provider.user.post_persist, priority: 10 }
+      - { name: provider.lifecycle.user.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -59,12 +59,12 @@ services:
 
   Ivoz\Provider\Domain\Service\Extension\UpdateByUser:
     tags:
-      - { name: provider.user.post_persist, priority: 20 }
+      - { name: provider.lifecycle.user.post_persist, priority: 20 }
     arguments: ~
 
   Ivoz\Ast\Domain\Service\QueueMember\UpdateByUser:
     tags:
-      - { name: provider.user.post_persist, priority: 30 }
+      - { name: provider.lifecycle.user.post_persist, priority: 30 }
     arguments:
       $updateByIvozQueueMember:
         '@Ivoz\Ast\Domain\Service\QueueMember\UpdateByIvozQueueMember'
@@ -74,5 +74,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\User\UpdateUserEndpoint:
     tags:
-      - { name: provider.user.pre_remove, priority: 40 }
+      - { name: provider.lifecycle.user.pre_remove, priority: 40 }
     arguments: ~

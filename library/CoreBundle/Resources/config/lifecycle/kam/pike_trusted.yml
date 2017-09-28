@@ -29,6 +29,6 @@ services:
   ##################################
   ## post_remove
   ##################################
-  Ivoz\Kam\Domain\Service\PikeTrusted\RemovedXmlRpc:
+  Ivoz\Kam\Infrastructure\Domain\Service\PikeTrusted\RemovedXmlRpc:
     tags:
       - { name: kam.lifecycle.pike_trusted.post_remove, priority: 10 }

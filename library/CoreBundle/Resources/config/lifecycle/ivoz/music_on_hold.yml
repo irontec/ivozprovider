@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\MusicOnHold\MusicOnHoldLifecycleServiceCollection:
     public: true
 
-  provider.music_on_hold.service_collection:
+  provider.lifecycle.music_on_hold.service_collection:
     '@Ivoz\Provider\Domain\Service\MusicOnHold\MusicOnHoldLifecycleServiceCollection'
 
   ##################################
@@ -17,5 +17,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\MusicOnHold\SanitizeValues:
     tags:
-      - { name: provider.music_on_hold.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.music_on_hold.pre_persist, priority: 10 }
     arguments: ~

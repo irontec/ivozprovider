@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection:
     public: true
 
-  provider.retail_account.service_collection:
+  provider.lifecycle.retail_account.service_collection:
     '@Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\RetailAccount\SanitizeValues:
     tags:
-      - { name: provider.retail_account.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.retail_account.pre_persist, priority: 10 }
     arguments: ~
 
   ##################################
@@ -25,7 +25,7 @@ services:
   ##################################
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount:
     tags:
-      - { name: provider.retail_account.post_persist, priority: 10 }
+      - { name: provider.lifecycle.retail_account.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -34,7 +34,7 @@ services:
 
   Ivoz\Ast\Domain\Service\PsAor\UpdateByRetailAccount:
     tags:
-      - { name: provider.retail_account.post_persist, priority: 10 }
+      - { name: provider.lifecycle.retail_account.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

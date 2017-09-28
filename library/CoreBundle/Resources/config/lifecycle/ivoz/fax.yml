@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Fax\FaxLifecycleServiceCollection:
     public: true
 
-  provider.fax.service_collection:
+  provider.lifecycle.fax.service_collection:
     '@Ivoz\Provider\Domain\Service\Fax\FaxLifecycleServiceCollection'
 
   ##################################
@@ -17,4 +17,4 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Fax\SanitizeValues:
     tags:
-      - { name: provider.fax.pre_persist, priority: 10}
+      - { name: provider.lifecycle.fax.pre_persist, priority: 10}

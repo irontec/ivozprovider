@@ -183,7 +183,7 @@ CREATE TABLE `BrandURLs` (
 
 LOCK TABLES `BrandURLs` WRITE;
 /*!40000 ALTER TABLE `BrandURLs` DISABLE KEYS */;
-INSERT INTO `BrandURLs` VALUES (1,1,'http://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
+INSERT INTO `BrandURLs` VALUES (1,1,'https://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
 /*!40000 ALTER TABLE `BrandURLs` ENABLE KEYS */;
 UNLOCK TABLES;
 

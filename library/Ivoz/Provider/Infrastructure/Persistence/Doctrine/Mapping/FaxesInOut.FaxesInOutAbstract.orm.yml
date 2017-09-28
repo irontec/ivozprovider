@@ -15,7 +15,6 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutAbstract:
       nullable: false
       options:
         comment: 'Hora de recepcion del fax'
-        default: '0000-00-00 00:00:00'
     src:
       column: src
       type: string

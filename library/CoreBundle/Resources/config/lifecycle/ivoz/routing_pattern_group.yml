@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection:
     public: true
 
-  provider.routing_pattern_group.service_collection:
+  provider.lifecycle.routing_pattern_group.service_collection:
     '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
 
   ##################################
@@ -17,12 +17,12 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateLcrEntities:
     tags:
-      - { name: provider.routing_pattern_group.post_persist, priority: 10}
+      - { name: provider.lifecycle.routing_pattern_group.post_persist, priority: 10}
     arguments: ~
 
   Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\PersistedXmlRpc:
     tags:
-      - { name: provider.routing_pattern_group.post_persist, priority: 20 }
+      - { name: provider.lifecycle.routing_pattern_group.post_persist, priority: 20 }
 
   ##################################
   ## post_remove
@@ -30,4 +30,4 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\RemovedXmlRpc:
     tags:
-      - { name: provider.routing_pattern_group.post_remove, priority: 10 }
+      - { name: provider.lifecycle.routing_pattern_group.post_remove, priority: 10 }

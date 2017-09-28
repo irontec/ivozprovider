@@ -9,21 +9,21 @@ services:
   Ivoz\Provider\Domain\Service\Brand\BrandLifecycleServiceCollection:
     public: true
 
-  provider.brand.service_collection: '@Ivoz\Provider\Domain\Service\Brand\BrandLifecycleServiceCollection'
+  provider.lifecycle.brand.service_collection: '@Ivoz\Provider\Domain\Service\Brand\BrandLifecycleServiceCollection'
 
   ##################################
   ## pre_persist  
   ##################################
   Ivoz\Provider\Domain\Service\Brand\SanitizeEmptyValues:
     tags:
-      - { name: provider.brand.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.brand.pre_persist, priority: 10 }
 
   ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\Domain\UpdateByBrand:
     tags:
-      - { name: provider.brand.post_persist, priority: 10 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -32,14 +32,14 @@ services:
 
   Ivoz\Provider\Domain\Service\RetailAccount\UpdateByBrand:
     tags:
-      - { name: provider.brand.post_persist, priority: 20 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 20 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   Ivoz\Kam\Domain\Service\UsersDomainAttr\UpdateByBrand:
     tags:
-      - { name: provider.brand.post_persist, priority: 30 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 30 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -48,7 +48,7 @@ services:
 
   Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByBrand:
     tags:
-      - { name: provider.brand.post_persist, priority: 40 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 40 }
     arguments:
       $routingPatternGroupRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup")'
@@ -57,11 +57,11 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\Brand\PersistedXmlRpc:
     tags:
-      - { name: provider.brand.post_persist, priority: 50 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 50 }
 
   ##################################
   ## post_remove
   ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\Brand\RemovedXmlRpc:
     tags:
-      - { name: provider.brand.post_remove, priority: 10 }
+      - { name: provider.lifecycle.brand.post_remove, priority: 10 }

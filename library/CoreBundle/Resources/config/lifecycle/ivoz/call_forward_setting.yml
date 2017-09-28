@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection:
     public: true
 
-  provider.call_forward_setting.service_collection:
+  provider.lifecycle.call_forward_setting.service_collection:
     '@Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness:
     tags:
-      - { name: provider.call_forward_setting.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.call_forward_setting.pre_persist, priority: 10 }
     arguments:
       $callForwardSettingRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting")'

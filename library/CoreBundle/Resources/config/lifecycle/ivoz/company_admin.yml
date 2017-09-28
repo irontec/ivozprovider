@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\CompanyAdmin\CompanyAdminLifecycleServiceCollection:
     public: true
 
-  provider.company_admin.service_collection:
+  provider.lifecycle.company_admin.service_collection:
     '@Ivoz\Provider\Domain\Service\CompanyAdmin\CompanyAdminLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\CompanyAdmin\CheckValidity:
     tags:
-      - { name: provider.company_admin.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.company_admin.pre_persist, priority: 10 }
     arguments:
       $companyAdminRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CompanyAdmin\\CompanyAdmin")'

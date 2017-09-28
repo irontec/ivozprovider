@@ -15,7 +15,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
     psEndpoints:
       targetEntity: Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
       mappedBy: retailAccount
-    Ddis:
+    ddis:
       targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
       mappedBy: retailAccount
   lifecycleCallbacks:

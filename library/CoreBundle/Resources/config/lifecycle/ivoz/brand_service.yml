@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleServiceCollection:
     public: true
 
-  provider.brand_service.service_collection:
+  provider.lifecycle.brand_service.service_collection:
     '@Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\CompanyService\RemoveByBrandService:
     tags:
-      - { name: provider.brand_service.post_remove, priority: 10 }
+      - { name: provider.lifecycle.brand_service.post_remove, priority: 10 }
     arguments:
       $companyRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")'

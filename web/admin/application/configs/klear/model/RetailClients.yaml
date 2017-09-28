@@ -279,7 +279,7 @@ production:
         icon: help
         text: _("Email address that will be notified when 80% of the configured limit has been reached.")
         label: _("Need help?")
-    FeaturesRelCompany:
+    relFeatures:
       title: _('Features')
       type: multiselect
       source:

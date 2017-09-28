@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection:
     public: true
 
-  provider.invoice.service_collection:
+  provider.lifecycle.invoice.service_collection:
     '@Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Invoice\CheckValidity:
     tags:
-      - { name: provider.invoice.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.invoice.pre_persist, priority: 10 }
     arguments:
       $accCdrRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\AccCdr\\AccCdr")'
@@ -26,5 +26,5 @@ services:
 
   Ivoz\Provider\Domain\Service\Invoice\SanitizeValues:
     tags:
-      - { name: provider.invoice.pre_persist, priority: 20 }
+      - { name: provider.lifecycle.invoice.pre_persist, priority: 20 }
     arguments: ~

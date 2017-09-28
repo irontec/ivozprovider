@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\IvrCustom\IvrCustomLifecycleServiceCollection:
     public: true
 
-  provider.ivr_custom.service_collection:
+  provider.lifecycle.ivr_custom.service_collection:
     '@Ivoz\Provider\Domain\Service\IvrCustom\IvrCustomLifecycleServiceCollection'
 
   ##################################
@@ -17,5 +17,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\IvrCustom\SanitizeValues:
     tags:
-      - { name: provider.ivr_custom.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.ivr_custom.pre_persist, priority: 10 }
     arguments: ~

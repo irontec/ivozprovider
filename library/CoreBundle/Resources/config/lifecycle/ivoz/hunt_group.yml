@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\HuntGroup\HuntGroupLifecycleServiceCollection:
     public: true
 
-  provider.hunt_group.service_collection:
+  provider.lifecycle.hunt_group.service_collection:
     '@Ivoz\Provider\Domain\Service\HuntGroup\HuntGroupLifecycleServiceCollection'
 
   ##################################
@@ -17,4 +17,4 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\HuntGroup\SanitizeValues:
     tags:
-      - { name: provider.hunt_group.pre_persist, priority: 20}
+      - { name: provider.lifecycle.hunt_group.pre_persist, priority: 20}

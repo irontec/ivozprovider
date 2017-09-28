@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection:
     public: true
 
-  provider.peer_server.service_collection:
+  provider.lifecycle.peer_server.service_collection:
     '@Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection'
 
   ##################################
@@ -17,12 +17,12 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\PeerServer\SanitizeValues:
     tags:
-      - { name: provider.peer_server.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.peer_server.pre_persist, priority: 10 }
     arguments: ~
 
   Ivoz\Provider\Domain\Service\PeerServer\SetProxyLogic:
     tags:
-      - { name: provider.peer_server.pre_persist, priority: 20 }
+      - { name: provider.lifecycle.peer_server.pre_persist, priority: 20 }
     arguments: ~
 
   ##################################
@@ -30,25 +30,25 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\LcrGateway\UpdateByPeerServer:
     tags:
-      - { name: provider.peer_server.post_persist, priority: 10 }
+      - { name: provider.lifecycle.peer_server.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   Ivoz\Provider\Domain\Service\PeerServer\UpdateLcrEntities:
     tags:
-      - { name: provider.peer_server.post_persist, priority: 20 }
+      - { name: provider.lifecycle.peer_server.post_persist, priority: 20 }
     arguments:
       $updateLcrEntitiesByOutgoingRouting:
         '@Ivoz\Provider\Domain\Service\OutgoingRouting\UpdateLcrEntities'
 
   Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\PersistedXmlRpc:
     tags:
-      - { name: provider.peer_server.post_persist, priority: 30 }
+      - { name: provider.lifecycle.peer_server.post_persist, priority: 30 }
 
   ##################################
   ## post_remove
   ##################################
   Ivoz\Provider\Infrastructure\PeerServer\Service\PeerServer\RemovedXmlRpc:
     tags:
-      - { name: provider.peer_server.post_remove, priority: 10 }
+      - { name: provider.lifecycle.peer_server.post_remove, priority: 10 }

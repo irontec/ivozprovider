@@ -9,7 +9,8 @@
 
 use IvozProvider\Mapper\Sql\Companies;
 use IvozProvider\Mapper\Sql\Brands;
-use IvozProvider\Model\Features;
+use \Ivoz\Provider\Domain\Model\Brand\Brand;
+use \Ivoz\Provider\Domain\Model\Company\Company;
 
 
 class KlearCustomExtraAuthController extends Zend_Controller_Action
@@ -92,12 +93,18 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
 
         $options = array();
         $id = null;
+        $dataGateway = \Zend_Registry::get('data_gateway');
         if ($type == 'brand') {
             if ($this->_user->canSeeMain) {
                 $html .= '<p>' . $this->view->translate('Select the brand you want to emulate.') . '</p></div>';
                 $title = $this->view->translate('Select Brand');
-                $brandMapper = new Brands();
-                $options = $brandMapper->fetchList(null, "name asc");
+
+                $options = $dataGateway->findBy(
+                    Brand::class,
+                    null,
+                    ['Brand.name' => 'ASC']
+                );
+
                 if (!is_null($this->_user->brandId)) {
                     $id = $this->_user->brandId;
                 }
@@ -110,8 +117,11 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                     $html .= '<p>' . $this->view->translate('You have to emulate a brand to be able to emulate a company') . '</p></div>';
                 } else {
                     $html .= '<p>' . $this->view->translate('Select the company you want to emulate') . '</p></div>';
-                    $companiesMapper = new Companies();
-                    $options = $companiesMapper->fetchList("brandId = '".$this->_user->brandId."'", "name asc");
+                    $options = $dataGateway->findBy(
+                        Company::class,
+                        ['Company.brand = ' . $this->_user->brandId],
+                        ['Company.name' => 'ASC']
+                    );
                     if (!is_null($this->_user->companyId)) {
                         $id = $this->_user->companyId;
                     }
@@ -131,11 +141,11 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             $html .= '<select id="entitySelect" name="'.$type.'" data-type="'.$type.'" class="" data-size="4">';
             foreach ($options as $option) {
                 $selected = "";
-                if ($option->getPrimaryKey() == $id) {
+                if ($option->getId() == $id) {
                     $selected = "selected";
                 }
                 if ($type == 'brand') {
-                    $html .= '<option value="'.$option->getPrimaryKey().'" '.$selected.'>'.$option->getName().'</option>';
+                    $html .= '<option value="'.$option->getId().'" '.$selected.'>'.$option->getName().'</option>';
                 } else if ($type == 'company') {
                     if ($option->getType() == 'vpbx') {
                         $icon = "building";
@@ -144,7 +154,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                     }
                     $html .= '<option data-subtype="'.$option->getType()
                     .'" data-icon="ui-silk inline ui-silk-'.$icon
-                    .'" value="'.$option->getPrimaryKey()
+                    .'" value="'.$option->getId()
                     .'" '.$selected.'>'.$option->getName().'</option>';
                 }
             }

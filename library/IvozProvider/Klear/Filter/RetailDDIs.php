@@ -7,7 +7,7 @@ class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Se
     {
         // Get current pk
         $pk = $routeDispatcher->getParam("pk", false);
-        $this->_condition[] = "retailAccount = '" . $pk . "'";
+        $this->_condition[] = "self::retailAccount = '" . $pk . "'";
 
         return true;
     }

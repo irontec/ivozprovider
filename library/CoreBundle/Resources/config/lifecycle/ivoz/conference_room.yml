@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\ConferenceRoom\ConferenceRoomLifecycleServiceCollection:
     public: true
 
-  provider.conference_room.service_collection:
+  provider.lifecycle.conference_room.service_collection:
     '@Ivoz\Provider\Domain\Service\ConferenceRoom\ConferenceRoomLifecycleServiceCollection'
 
   ##################################
@@ -17,4 +17,4 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\ConferenceRoom\SanitizeValues:
     tags:
-      - { name: provider.conference_room.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.conference_room.pre_persist, priority: 10 }

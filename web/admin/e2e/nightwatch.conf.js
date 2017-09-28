@@ -1,22 +1,24 @@
 'use strict';
 
 require('nightwatch-cucumber')({
+  nightwatchOutput: false,
   cucumberArgs: [
     '--require', 'hooks/eventHandlers.js',
-    '--require', 'features/step_definitions',
+    '--require', 'tests/steps',
+    '--format', 'node_modules/cucumber-pretty',
     '--format', 'json:reports/cucumber.json',
-    'features'
+    'tests/features'
   ]
 });
 
 module.exports = {
   "output_folder" : "",
   "globals_path": "hooks/chromedriver.js",
-  "page_objects_path": ["features/pages"],
+  "page_objects_path": ["tests/pages"],
   "custom_commands_path" : "commands",
   "custom_assertions_path" : "",
   "selenium" : {
-    "start_process" : true,
+    "start_process" : false,
     "server_path" : "/opt/selenium/selenium-server-standalone-3.5.3.jar",
     "log_path" : "",
     "port" : 4444,
@@ -24,12 +26,16 @@ module.exports = {
       "webdriver.chrome.driver" : "./node_modules/.bin/chromedriver"
     }
   },
+  "test_workers" : {
+    "enabled" : false,
+    "workers" : 2
+  },
   "test_settings" : {
     "default" : {
-      "launch_url" : "https://127.0.0.1",
+      "launch_url" : "https://127.0.0.1/e2e.php",
       "globals" : {
         'user': 'admin',
-        'password': 'changeme',
+        'password': 'farsa',
         'waitForConditionTimeout': 20000,
         'retryAssertionTimeout': 20000
       },

@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\MatchListPattern\MatchListPatternLifecycleServiceCollection:
     public: true
 
-  provider.matchList_pattern.service_collection:
+  provider.lifecycle.matchList_pattern.service_collection:
     '@Ivoz\Provider\Domain\Service\MatchListPattern\MatchListPatternLifecycleServiceCollection'
 
   ##################################
@@ -17,5 +17,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\MatchListPattern\SanitizeValues:
     tags:
-      - { name: provider.matchList_pattern.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.matchList_pattern.pre_persist, priority: 10 }
     arguments: ~

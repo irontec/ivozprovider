@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\QueueMember\QueueMemberLifecycleServiceCollection:
     public: true
 
-  provider.queue_member.service_collection:
+  provider.lifecycle.queue_member.service_collection:
     '@Ivoz\Provider\Domain\Service\QueueMember\QueueMemberLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Ast\Domain\Service\QueueMember\UpdateByIvozQueueMember:
     tags:
-      - { name: provider.queue_member.post_persist, priority: 10 }
+      - { name: provider.lifecycle.queue_member.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Ddi\DdiLifecycleServiceCollection:
     public: true
 
-  provider.ddi.service_collection:
+  provider.lifecycle.ddi.service_collection:
     '@Ivoz\Provider\Domain\Service\Ddi\DdiLifecycleServiceCollection'
 
   ##################################
@@ -17,4 +17,4 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Ddi\SanitizeValues:
     tags:
-      - { name: provider.ddi.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.ddi.pre_persist, priority: 10 }

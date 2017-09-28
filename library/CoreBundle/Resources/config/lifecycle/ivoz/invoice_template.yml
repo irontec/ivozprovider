@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\InvoiceTemplate\InvoiceTemplateLifecycleServiceCollection:
     public: true
 
-  provider.invoice_template.service_collection:
+  provider.lifecycle.invoice_template.service_collection:
     '@Ivoz\Provider\Domain\Service\InvoiceTemplate\InvoiceTemplateLifecycleServiceCollection'
 
   ##################################
@@ -17,4 +17,4 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\InvoiceTemplate\CheckValidity:
     tags:
-      - { name: provider.invoice_template.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.invoice_template.pre_persist, priority: 10 }

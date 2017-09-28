@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection:
     public: true
 
-  provider.queue.service_collection:
+  provider.lifecycle.queue.service_collection:
     '@Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Queue\SanitizeValues:
     tags:
-      - { name: provider.queue.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.queue.pre_persist, priority: 10 }
     arguments: ~
 
   ##################################
@@ -25,7 +25,7 @@ services:
   ##################################
   Ivoz\Ast\Domain\Service\Queue\UpdateByIvozQueue:
     tags:
-      - { name: provider.queue.post_persist, priority: 10 }
+      - { name: provider.lifecycle.queue.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

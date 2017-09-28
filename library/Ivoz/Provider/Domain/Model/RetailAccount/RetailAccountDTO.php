@@ -154,7 +154,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @var array|null
      */
-    private $Ddis = null;
+    private $ddis = null;
 
     /**
      * @return array
@@ -745,7 +745,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
      */
     public function setDdis($ddis)
     {
-        $this->Ddis = $ddis;
+        $this->ddis = $ddis;
 
         return $this;
     }
@@ -755,7 +755,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
      */
     public function getDdis()
     {
-        return $this->Ddis;
+        return $this->ddis;
     }
 }
 

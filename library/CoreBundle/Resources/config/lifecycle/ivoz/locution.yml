@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection:
     public: true
 
-  provider.locution.service_collection:
+  provider.lifecycle.locution.service_collection:
     '@Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection'
 
   ##################################
@@ -17,5 +17,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Locution\SanitizeValues:
     tags:
-      - { name: provider.locution.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.locution.pre_persist, priority: 10 }
     arguments: ~

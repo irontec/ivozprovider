@@ -26,7 +26,7 @@ trait RetailAccountTrait
     /**
      * @var Collection
      */
-    protected $Ddis;
+    protected $ddis;
 
 
     /**
@@ -36,7 +36,7 @@ trait RetailAccountTrait
     {
         parent::__construct(...func_get_args());
         $this->psEndpoints = new ArrayCollection();
-        $this->Ddis = new ArrayCollection();
+        $this->ddis = new ArrayCollection();
     }
 
     /**
@@ -194,7 +194,7 @@ trait RetailAccountTrait
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
     {
-        $this->Ddis->add($ddi);
+        $this->ddis->add($ddi);
 
         return $this;
     }
@@ -206,7 +206,7 @@ trait RetailAccountTrait
      */
     public function removeDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
     {
-        $this->Ddis->removeElement($ddi);
+        $this->ddis->removeElement($ddi);
     }
 
     /**
@@ -226,12 +226,12 @@ trait RetailAccountTrait
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->Ddis as $key => $entity) {
+        foreach ($this->ddis as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->Ddis->set($key, $updatedEntities[$identity]);
+                $this->ddis->set($key, $updatedEntities[$identity]);
             } else {
-                $this->Ddis->remove($key);
+                $this->ddis->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
@@ -251,10 +251,10 @@ trait RetailAccountTrait
     public function getDdis(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->Ddis->matching($criteria)->toArray();
+            return $this->ddis->matching($criteria)->toArray();
         }
 
-        return $this->Ddis->toArray();
+        return $this->ddis->toArray();
     }
 
 

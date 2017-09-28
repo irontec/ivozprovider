@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection:
     public: true
 
-  provider.pick_up_rel_user.service_collection:
+  provider.lifecycle.pick_up_rel_user.service_collection:
     '@Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection'
 
   ##################################
@@ -17,8 +17,8 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\PickUpRelUser\UpdateEndpointGroups:
     tags:
-      - { name: provider.pick_up_rel_user.post_persist, priority: 10 }
-      - { name: provider.pick_up_rel_user.post_remove, priority: 10 }
+      - { name: provider.lifecycle.pick_up_rel_user.post_persist, priority: 10 }
+      - { name: provider.lifecycle.pick_up_rel_user.post_remove, priority: 10 }
     arguments:
       $updatePickupGroupByUser:
         '@Ivoz\Ast\Domain\Service\PsEndpoint\UpdatePickupGroupByUser'

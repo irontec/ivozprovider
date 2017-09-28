@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\TerminalModel\TerminalModelLifecycleServiceCollection:
     public: true
 
-  provider.terminal_model.service_collection:
+  provider.lifecycle.terminal_model.service_collection:
     '@Ivoz\Provider\Domain\Service\TerminalModel\TerminalModelLifecycleServiceCollection'
 
   ##################################
@@ -17,5 +17,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\TerminalModel\PersistTemplates:
     tags:
-      - { name: provider.terminal_model.post_persist, priority: 10 }
+      - { name: provider.lifecycle.terminal_model.post_persist, priority: 10 }
     arguments: ~

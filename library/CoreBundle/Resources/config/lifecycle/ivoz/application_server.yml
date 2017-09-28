@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection:
     public: true
 
-  provider.application_server.service_collection:
+  provider.lifecycle.application_server.service_collection:
     '@Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer:
     tags:
-      - { name: provider.application_server.post_persist, priority: 10}
+      - { name: provider.lifecycle.application_server.post_persist, priority: 10}
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -26,7 +26,7 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\PersistedXmlRpc:
     tags:
-      - { name: provider.application_server.post_persist, priority: 20 }
+      - { name: provider.lifecycle.application_server.post_persist, priority: 20 }
 
   ##################################
   ## post_remove
@@ -34,4 +34,4 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\RemovedXmlRpc:
     tags:
-      - { name: provider.application_server.post_remove, priority: 10 }
+      - { name: provider.lifecycle.application_server.post_remove, priority: 10 }

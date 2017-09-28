@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection:
     public: true
 
-  provider.terminal.service_collection:
+  provider.lifecycle.terminal.service_collection:
     '@Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection'
 
   ##################################
@@ -17,7 +17,7 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Terminal\SanitizeValues:
     tags:
-      - { name: provider.terminal.pre_persist, priority: 10 }
+      - { name: provider.lifecycle.terminal.pre_persist, priority: 10 }
     arguments: ~
 
   ##################################
@@ -25,7 +25,7 @@ services:
   ##################################
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByTerminal:
     tags:
-      - { name: provider.terminal.post_persist, priority: 10 }
+      - { name: provider.lifecycle.terminal.post_persist, priority: 10 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -34,7 +34,7 @@ services:
 
   Ivoz\Ast\Domain\Service\PsAor\UpdateByTerminal:
     tags:
-      - { name: provider.terminal.post_persist, priority: 20 }
+      - { name: provider.lifecycle.terminal.post_persist, priority: 20 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

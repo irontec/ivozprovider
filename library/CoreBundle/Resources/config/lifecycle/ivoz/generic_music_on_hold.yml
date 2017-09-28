@@ -9,7 +9,7 @@ services:
   Ivoz\Provider\Domain\Service\GenericMusicOnHold\GenericMusicOnHoldLifecycleServiceCollection:
     public: true
 
-  provider.generic_music_on_hold.service_collection:
+  provider.lifecycle.generic_music_on_hold.service_collection:
     '@Ivoz\Provider\Domain\Service\GenericMusicOnHold\GenericMusicOnHoldLifecycleServiceCollection'
 
   ##################################
@@ -17,11 +17,11 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\GenericMusicOnHold\SanitizeValues:
     tags:
-      - { name: provider.generic_music_on_hold.pre_persist, priority: 10}
+      - { name: provider.lifecycle.generic_music_on_hold.pre_persist, priority: 10}
 
   ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\GenericMusicOnHold\Recoder:
     tags:
-      - { name: provider.generic_music_on_hold.post_persist, priority: 10}
+      - { name: provider.lifecycle.generic_music_on_hold.post_persist, priority: 10}

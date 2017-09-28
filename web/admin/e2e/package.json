@@ -3,20 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "xvfbStart" : "Xvfb :1 -screen 0 1280x720x24 &",
-    "test": "node ./node_modules/nightwatch/bin/nightwatch",
-    "headless": "npm run xvfbStart; DISPLAY=:1 npm test; npm run reports2junit; npm run xvfbStop",
+    "headless": "npm run xvfbStart; npm run prepareDatabase && DISPLAY=:1 npm test; npm run reports2junit; npm run xvfbStop",
+    "xvfbStart": "Xvfb :1 -screen 0 1280x720x24 &",
+    "prepareDatabase": "npm run dropDbSchema && npm run loadDbSchema && npm run updateDbSchema",
+    "test": "node ./node_modules/nightwatch/bin/nightwatch --tag platform",
     "reports2junit": "cat reports/cucumber.json | node node_modules/.bin/cucumber-junit > reports/junit.xml",
-    "xvfbStop" : "pkill Xvfb"
+    "xvfbStop": "pkill Xvfb",
+    "dropDbSchema": "../../../scheme/bin/console doctrine:schema:drop --force -e test_e2e",
+    "loadDbSchema": "../../../scheme/bin/console doctrine:database:import ../../../scheme/initial.sql -e test_e2e",
+    "updateDbSchema": "../../../scheme/bin/console doctrine:migrations:migrate --quiet -e test_e2e"
   },
   "author": "Mikel Madariaga",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "chromedriver": "2.29.2",
-    "cucumber": "2.3.1",
-    "nightwatch": "0.9.16",
-    "nightwatch-cucumber": "7.1.9",
-    "cucumber-junit": "1.7.0"
+    "cucumber": "3.0.*",
+    "cucumber-junit": "1.7.*",
+    "cucumber-pretty": "git+https://github.com/mmadariaga/cucumber-pretty.git",
+    "nightwatch": "0.9.*",
+    "nightwatch-cucumber": "8.2.*"
   }
 }
