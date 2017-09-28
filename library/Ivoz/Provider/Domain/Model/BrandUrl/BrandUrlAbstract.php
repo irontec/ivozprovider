@@ -62,6 +62,8 @@ abstract class BrandUrlAbstract
         $this->setUrl($url);
         $this->setUrlType($urlType);
         $this->setLogo($logo);
+
+        $this->initChangelog();
     }
 
     /**
@@ -71,7 +73,15 @@ abstract class BrandUrlAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

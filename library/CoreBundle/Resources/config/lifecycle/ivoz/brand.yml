@@ -46,14 +46,14 @@ services:
       $usersDomainAttrRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersDomainAttr\\UsersDomainAttr")'
 
-  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByBrand:
+  Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand:
     tags:
       - { name: provider.lifecycle.brand.post_persist, priority: 40 }
     arguments:
-      $routingPatternGroupRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup")'
       $countryRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Country\\Country")'
+      $routingPatternGroupByRoutingPatternAndCountry:
+        '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry'
 
   Ivoz\Provider\Infrastructure\Domain\Service\Brand\PersistedXmlRpc:
     tags:

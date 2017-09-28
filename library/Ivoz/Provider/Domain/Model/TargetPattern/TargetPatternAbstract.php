@@ -49,6 +49,8 @@ abstract class TargetPatternAbstract
         $this->setRegExp($regExp);
         $this->setName($name);
         $this->setDescription($description);
+
+        $this->initChangelog();
     }
 
     /**
@@ -58,7 +60,15 @@ abstract class TargetPatternAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

@@ -35,7 +35,7 @@ module.exports = {
       "launch_url" : "https://127.0.0.1/e2e.php",
       "globals" : {
         'user': 'admin',
-        'password': 'farsa',
+        'password': 'changeme',
         'waitForConditionTimeout': 20000,
         'retryAssertionTimeout': 20000
       },

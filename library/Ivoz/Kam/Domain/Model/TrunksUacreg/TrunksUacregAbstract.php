@@ -133,6 +133,8 @@ abstract class TrunksUacregAbstract
         $this->setFlags($flags);
         $this->setRegDelay($regDelay);
         $this->setMultiddi($multiddi);
+
+        $this->initChangelog();
     }
 
     /**
@@ -142,7 +144,15 @@ abstract class TrunksUacregAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

@@ -55,6 +55,8 @@ abstract class MusicOnHoldAbstract
         $this->setName($name);
         $this->setOriginalFile($originalFile);
         $this->setEncodedFile($encodedFile);
+
+        $this->initChangelog();
     }
 
     /**
@@ -64,7 +66,15 @@ abstract class MusicOnHoldAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

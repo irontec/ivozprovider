@@ -45,6 +45,8 @@ abstract class HolidayDateAbstract
     {
         $this->setName($name);
         $this->setEventDate($eventDate);
+
+        $this->initChangelog();
     }
 
     /**
@@ -54,7 +56,15 @@ abstract class HolidayDateAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

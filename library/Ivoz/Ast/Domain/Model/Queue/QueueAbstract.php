@@ -77,6 +77,8 @@ abstract class QueueAbstract
     {
         $this->setAutopause($autopause);
         $this->setRinginuse($ringinuse);
+
+        $this->initChangelog();
     }
 
     /**
@@ -86,7 +88,15 @@ abstract class QueueAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

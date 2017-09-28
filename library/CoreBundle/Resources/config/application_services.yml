@@ -1,0 +1,18 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $routingPatternGroupRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup")'
+      $createAndPersistRoutingPatternGroupsRelPattern:
+        '@Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist'

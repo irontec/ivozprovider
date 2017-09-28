@@ -3,6 +3,7 @@ imports:
   - { resource: "@CoreBundle/Resources/config/asterisk.yml" }
   - { resource: "@CoreBundle/Resources/config/doctrine.yml" }
   - { resource: "@CoreBundle/Resources/config/domain_services.yml" }
+  - { resource: "@CoreBundle/Resources/config/application_services.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle.yml" }
 
 services:

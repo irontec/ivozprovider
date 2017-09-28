@@ -67,6 +67,8 @@ abstract class FaxesInOutAbstract
     {
         $this->setCalldate($calldate);
         $this->setFile($file);
+
+        $this->initChangelog();
     }
 
     /**
@@ -76,7 +78,15 @@ abstract class FaxesInOutAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**
@@ -227,7 +237,7 @@ abstract class FaxesInOutAbstract
         Assertion::notNull($calldate);
         $calldate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $calldate,
-            '0000-00-00 00:00:00'
+            null
         );
 
         $this->calldate = $calldate;

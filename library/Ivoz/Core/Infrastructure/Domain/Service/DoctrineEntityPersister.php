@@ -65,6 +65,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
     /**
      * @param EntityInterface $entity
+     *
+     * @param boolean $dispatchImmediately
      * @return void
      */
     public function persist(EntityInterface $entity = null, $dispatchImmediately = false)

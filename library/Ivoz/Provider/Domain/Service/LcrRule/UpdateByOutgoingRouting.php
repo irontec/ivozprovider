@@ -6,12 +6,13 @@ use Ivoz\Provider\Domain\Model\LcrRule\LcrRule;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
 
 /**
  * Class UpdateByOutgoingRouting
  * @package Ivoz\Provider\Domain\Service\LcrRule
  */
-class UpdateByOutgoingRouting
+class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
 {
     /**
      * @var EntityPersisterInterface

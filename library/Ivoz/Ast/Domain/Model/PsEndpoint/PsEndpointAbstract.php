@@ -139,6 +139,8 @@ abstract class PsEndpointAbstract
         $this->setDisallow($disallow);
         $this->setAllow($allow);
         $this->setOneHundredRel($oneHundredRel);
+
+        $this->initChangelog();
     }
 
     /**
@@ -148,7 +150,15 @@ abstract class PsEndpointAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

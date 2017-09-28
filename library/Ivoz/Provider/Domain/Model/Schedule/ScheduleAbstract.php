@@ -81,6 +81,8 @@ abstract class ScheduleAbstract
         $this->setName($name);
         $this->setTimeIn($timeIn);
         $this->setTimeout($timeout);
+
+        $this->initChangelog();
     }
 
     /**
@@ -90,7 +92,15 @@ abstract class ScheduleAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

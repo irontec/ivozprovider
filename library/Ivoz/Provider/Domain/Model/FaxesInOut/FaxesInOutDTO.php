@@ -14,7 +14,7 @@ class FaxesInOutDTO implements DataTransferObjectInterface
     /**
      * @var \DateTime
      */
-    private $calldate = '0000-00-00 00:00:00';
+    private $calldate;
 
     /**
      * @var string

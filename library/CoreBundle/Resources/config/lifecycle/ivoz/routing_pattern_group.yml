@@ -15,11 +15,6 @@ services:
   ##################################
   ## post_persist
   ##################################
-  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateLcrEntities:
-    tags:
-      - { name: provider.lifecycle.routing_pattern_group.post_persist, priority: 10}
-    arguments: ~
-
   Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\PersistedXmlRpc:
     tags:
       - { name: provider.lifecycle.routing_pattern_group.post_persist, priority: 20 }

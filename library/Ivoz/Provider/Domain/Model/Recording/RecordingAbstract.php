@@ -77,6 +77,8 @@ abstract class RecordingAbstract
         $this->setType($type);
         $this->setDuration($duration);
         $this->setRecordedFile($recordedFile);
+
+        $this->initChangelog();
     }
 
     /**
@@ -86,7 +88,15 @@ abstract class RecordingAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

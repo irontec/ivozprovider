@@ -68,8 +68,8 @@ public static function fromDTO(DataTransferObjectInterface $dto)
 <fromDTO>
     if ($dto->getId()) {
         $self->id = $dto->getId();
+        $self->initChangelog();
     }
-    $self->initChangelog();
 
     return $self;
 }

@@ -67,6 +67,8 @@ abstract class CountryAbstract
         $this->setNationalCC($nationalCC);
         $this->setName($name);
         $this->setZone($zone);
+
+        $this->initChangelog();
     }
 
     /**
@@ -76,7 +78,15 @@ abstract class CountryAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

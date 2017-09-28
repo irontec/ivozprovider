@@ -47,6 +47,6 @@ class SanitizeEmptyValues implements BrandLifecycleEventHandlerInterface
             $dto->setLanguageId(1);
         }
 
-        $this->entityPersister->persistDto($dto, $entity);
+        $this->entityPersister->persistDto($dto, $entity, false);
     }
 }

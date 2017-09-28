@@ -6,12 +6,13 @@ use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
+use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
 
 /**
  * Class CreateByOutgoingRouting
  * @package Ivoz\Provider\Domain\Service\LcrGateway
  */
-class CreateByOutgoingRouting
+class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
 {
     /**
      * @var EntityPersisterInterface

@@ -62,6 +62,8 @@ abstract class TrunksHtableAbstract
         $this->setValueType($valueType);
         $this->setKeyValue($keyValue);
         $this->setExpires($expires);
+
+        $this->initChangelog();
     }
 
     /**
@@ -71,7 +73,15 @@ abstract class TrunksHtableAbstract
      */
     public function initChangelog()
     {
-        $this->_initialValues = $this->__toArray();
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
     }
 
     /**

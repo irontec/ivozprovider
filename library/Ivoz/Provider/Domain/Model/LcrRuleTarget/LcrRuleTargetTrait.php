@@ -47,8 +47,8 @@ trait LcrRuleTargetTrait
 
         if ($dto->getId()) {
             $self->id = $dto->getId();
+            $self->initChangelog();
         }
-        $self->initChangelog();
 
         return $self;
     }
