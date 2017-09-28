@@ -61,11 +61,8 @@ class IVRCommonAction extends IVRAction
         $this->agi->playback($ivr->getSuccessLocution());
 
         // !! Route this IVR using the extension paramaters !!
-        $this->_routeType       = $extension->getRouteType();
-        $this->_routeUser       = $extension->getUser();
-        $this->_routeIVRCommon  = $extension->getIVRCommon();
-        $this->_routeIVRCustom  = $extension->getIVRCustom();
-        $this->_routeHuntGroup  = $extension->getHuntGroup();
+        $this->_routeType       = 'extension';
+        $this->_routeExtension  = $extension;
         $this->route();
     }
 }
