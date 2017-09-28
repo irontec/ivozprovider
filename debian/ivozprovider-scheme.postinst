@@ -5,12 +5,6 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
-# Get actual environment
-export $(systemctl show-environment)
-
-# Assume production if not specified
-[ -z "$APPLICATION_ENV" ] && APPLICATION_ENV="production"
-
 # Setup mysql connection
 db_get ivozprovider/mysql_password || true
 MYSQL_PASSWORD=$RET
