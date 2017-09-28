@@ -1,0 +1,47 @@
+production: 
+  class: \IvozProvider\Model\UsersDomain
+  entity: Ivoz\Kam\Domain\Model\UsersDomain\UsersDomain
+  fields: 
+    domain:
+      title: _('Domain')
+      type: text
+      trim: both
+      required: true
+      maxLength: 64
+      default: true
+    d:
+      title: _('Did')
+      type: text
+      trim: both
+      maxLength: 64
+    lastModified:
+      title: _('Last modified')
+      type: picker
+      defaultValue: 1900-01-01 00:00:01
+      source: 
+        control: datetime
+        settings: 
+          disabled: 'false'
+    domainId:
+      title: _('Domain id')
+      type: select
+      source: 
+        data: mapper
+        config: 
+#          mapperName: \IvozProvider\Mapper\Sql\Domains
+          entity: \Ivoz\Provider\Domain\Model\Domain\Domain
+          fieldName: 
+            fields: 
+              - domain
+            template: '%domain%'
+          order:
+            Domain.domain: asc
+        'null': _("Unassigned")
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

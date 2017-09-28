@@ -1,0 +1,85 @@
+production: 
+  class: \IvozProvider\Model\LcrRuleTargets
+  entity: Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget
+  fields: 
+    companyId:
+      title: _('Company id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+      default: true
+    ruleId:
+      title: _('Rule id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+          mapperName: \IvozProvider\Mapper\Sql\LcrRules
+          entity: \Ivoz\Provider\Domain\Model\LcrRule\LcrRule
+          fieldName: 
+            fields: 
+              - prefix
+            template: '%prefix%'
+          order:
+            LcrRule.prefix: asc
+    gwId:
+      title: _('Gw id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+#          mapperName: \IvozProvider\Mapper\Sql\LcrGateways
+          entity: \Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway
+          fieldName: 
+            fields: 
+              - gw_name
+            template: '%gw_name%'
+          order:
+            LcrGateway.gw_name: asc
+    priority:
+      title: _('Priority')
+      type: number
+      required: true
+      source: 
+        control: Spinner
+    weight:
+      title: _('Weight')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+    outgoingRoutingId:
+      title: _('Outgoing routing id')
+      type: select
+      required: true
+      source: 
+        data: mapper
+        config: 
+#          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
+          entity: \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+          fieldName: 
+            fields: 
+              - id
+            template: '%id%'
+          order:
+            OutgoingRouting.id: asc
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ProxyUserDoctrineRepository
+  type: entity
+  table: ProxyUsers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

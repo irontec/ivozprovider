@@ -90,8 +90,8 @@ Depends: ivozprovider-profile-common,
     php7.0-curl,
     php7.0-yaml,
     php7.0-gd,
-    ivozprovider-portals,
-    ivozprovider-userweb,
+    ivozprovider-web-admin,
+    ivozprovider-web-user,
     gearman-job-server,
     gearman,
     supervisor,
@@ -163,7 +163,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-data-library
+Depends: ivozprovider-common-library
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
@@ -172,35 +172,46 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Depends: phing, php7.0-mysql, php7.0-xml, mysql-server
+Depends: ivozprovider-common-library, php7.0-mysql, php7.0-xml, mysql-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
 
-Package: ivozprovider-portals
+Package: ivozprovider-web-admin
 Architecture: all
 Section: php
 Priority: optional
-Depends: klear, ivozprovider-data-library, libxrender1
+Depends: klear, ivozprovider-common-library, ivozprovider-web-rest, zendframework, libxrender1
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - Portals - Zendframework application
+Description: IVOZ Provider - Admin Web - Klear based web interface
  Portals using klear and zendframework 1
  .
 
-Package: ivozprovider-userweb
+Package: ivozprovider-web-user
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-portals
+Depends: ivozprovider-web-admin
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - User Webapp - Zendframework application
- User webapp using klear and zendframework 1
+Description: IVOZ Provider - User Web - Angular based user web interface
+ User webapp using Angular and Bootstrap
  .
 
-Package: ivozprovider-data-library
+Package: ivozprovider-web-rest
 Architecture: all
 Section: php
-Depends: zendframework, php7.0-cli, php7.0-mysql, klear-library
+Priority: optional
+Depends: ivozprovider-common-library
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Rest API files
+ .
+
+Package: ivozprovider-common-library
+Architecture: all
+Section: php
+Depends: php7.0-cli, php7.0-mysql, klear-library
+Provides: ivozprovider-data-library
+Conflicts: ivozprovider-data-library
 Priority: optional
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Mappers and Models for Zend applications
@@ -209,7 +220,7 @@ Description: IVOZ Provider - Mappers and Models for Zend applications
 Package: ivozprovider-recordings
 Architecture: all
 Priority: optional
-Depends: ivozprovider-data-library, 
+Depends: ivozprovider-common-library,
     libav-tools
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Recordings - Zendframework application

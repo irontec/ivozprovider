@@ -1,0 +1,29 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\Domain\DomainLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.domain.service_collection:
+    '@Ivoz\Provider\Domain\Service\Domain\DomainLifecycleServiceCollection'
+
+  ##################################
+  ## post_persist
+  ##################################
+
+  Ivoz\Provider\Infrastructure\Domain\Service\Domain\PersistedXmlRpc:
+    tags:
+      - { name: provider.lifecycle.domain.post_persist, priority: 10 }
+
+  ##################################
+  ## post_remove
+  ##################################
+
+  Ivoz\Provider\Infrastructure\Domain\Service\Domain\RemovedXmlRpc:
+    tags:
+      - { name: provider.lifecycle.domain.post_remove, priority: 10 }

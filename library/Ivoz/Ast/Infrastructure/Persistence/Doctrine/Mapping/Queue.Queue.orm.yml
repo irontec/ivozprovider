@@ -1,0 +1,18 @@
+Ivoz\Ast\Domain\Model\Queue\Queue:
+  repositoryClass: Ivoz\Ast\Infrastructure\Persistence\Doctrine\QueueDoctrineRepository
+  type: entity
+  table: ast_queues
+  id:
+    id:
+      type: string
+      column: name
+      nullable: false
+      length: 128
+      options:
+        fixed: false
+      id: true
+      generator:
+        strategy: NONE
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

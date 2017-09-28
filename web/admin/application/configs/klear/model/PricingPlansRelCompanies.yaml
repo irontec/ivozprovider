@@ -1,0 +1,87 @@
+production:
+  class: \IvozProvider\Model\PricingPlansRelCompanies
+  entity: Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompany
+  fields: 
+    pricingPlanId:
+      title: _('Pricing plan')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
+          entity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan
+          filterclass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            PricingPlan.name.${lang}: asc
+      default: true
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    validFrom:
+      title: _('Valid from')
+      type: picker
+      required: true
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    validTo:
+      title: _('Valid to')
+      type: picker
+      required: true
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    metric:
+      title: _('Metric')
+      type: number
+      defaultValue: 10
+      source:
+        control: Spinner
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("In case that two pricing plans were matched plan with lower metric will be applied.")
+        label: _("Need help?")
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Brands
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+staging: 
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

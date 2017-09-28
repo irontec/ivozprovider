@@ -1,0 +1,52 @@
+Ivoz\Ast\Domain\Model\Musiconhold\MusiconholdAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    name:
+      columns:
+        - name
+  fields:
+    name:
+      type: string
+      nullable: false
+      length: 80
+      options:
+        fixed: false
+    mode:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    directory:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    application:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    digit:
+      type: string
+      nullable: true
+      length: 1
+      options:
+        fixed: false
+    sort:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
+    format:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
+    stamp:
+      type: datetime
+      nullable: true

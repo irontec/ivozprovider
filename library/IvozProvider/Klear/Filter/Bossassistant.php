@@ -10,11 +10,6 @@ class IvozProvider_Klear_Filter_Bossassistant extends IvozProvider_Klear_Filter_
     	// Add parent filters
     	parent::setRouteDispatcher($routeDispatcher);
 
-        // Get dispatcher data
-        $currentAction      = $routeDispatcher->getActionName();
-        $currentController  = $routeDispatcher->getControllerName();
-        $currentItemName    = $routeDispatcher->getCurrentItemName();
-
         $pk = $routeDispatcher->getParam("pk", false);
 
         if (!is_array($pk)) {

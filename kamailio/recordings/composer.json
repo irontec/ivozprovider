@@ -1,0 +1,46 @@
+{
+    "name": "irontec/ivozprovider/portals",
+    "description": "Multitenant solution for VoIP telephony providers (Recordings)",
+    "authors": [
+        {
+            "name": "Luis Felipe García",
+            "email": "lfgarcia@irontec.com"
+        },
+        {
+            "name": "Mikel Madariaga",
+            "email": "mikel@irontec.com"
+        },
+        {
+            "name": "Victor Vargas",
+            "email": "victor@irontec.com"
+        }
+    ],
+    "autoload": {
+    },
+    "autoload-dev": {
+
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "git"
+        },
+        "platform": {
+            "php": "7.0"
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../library/vendor/*/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "require": {
+        "php": ">=5.6.29",
+        "debach/zend-mp3": "1.8.*"
+    }
+    "scripts": {}
+}

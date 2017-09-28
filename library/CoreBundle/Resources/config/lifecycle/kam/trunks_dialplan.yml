@@ -1,0 +1,42 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Kam\Domain\Service\TrunksDialplan\TrunksDialplanLifecycleServiceCollection:
+    public: true
+
+  kam.lifecycle.trunks_dialplan.service_collection:
+    '@Ivoz\Kam\Domain\Service\TrunksDialplan\TrunksDialplanLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Kam\Domain\Service\TrunksDialplan\SanitizeValues:
+    tags:
+      - { name: kam.lifecycle.trunks_dialplan.pre_persist, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksDialplan\PersistedXmlRpc:
+    tags:
+      - { name: kam.lifecycle.trunks_dialplan.post_persist, priority: 10 }
+
+  ##################################
+  ## post_remove
+  ##################################
+  Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk\CleanUpByRemovedTrunksDialplan:
+    tags:
+      - { name: kam.lifecycle.trunks_dialplan.post_persist, priority: 10 }
+    arguments:
+      $transformationRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\TransformationRulesetGroupsTrunk\\TransformationRulesetGroupsTrunk")'
+
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksDialplan\RemovedXmlRpc:
+    tags:
+      - { name: kam.lifecycle.trunks_dialplan.post_remove, priority: 20 }

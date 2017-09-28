@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ConditionalRoutesConditionsRelMatchlistDoctrineRepository
+  type: entity
+  table: ConditionalRoutesConditionsRelMatchLists
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

@@ -1,0 +1,97 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: IvrCustomEntriesList_screen
+  screens: &IvrCustomEntries_screensLink
+    IvrCustomEntriesList_screen: &IvrCustomEntriesList_screenLink
+      controller: list
+      class: ui-silk-chart-organisation-add
+      pagination:
+        items: 25
+      <<: *IvrCustomEntries
+      title: _("List of %s %2s", ngettext('IVR Custom entry', 'IVR Custom entries', 0), "[format| (%parent%)]")
+      fields:
+        order:
+          entry: true
+          welcomeLocution: true
+          targetType: true
+          target: true
+        blacklist:
+          targetNumberValue: true
+          targetExtension: true
+          targetVoiceMailUser: true
+          targetConditionalRoute: true
+        options:
+          title: _("Options")
+          screens:
+            IvrCustomEntriesEdit_screen: true
+          dialogs:
+            IvrCustomEntriesDel_dialog: true
+          default: IvrCustomEntriesEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          IvrCustomEntriesNew_screen: true
+        dialogs:
+          IvrCustomEntriesDel_dialog: true
+    IvrCustomEntriesNew_screen: &IvrCustomEntriesNew_screenLink
+      <<: *IvrCustomEntries
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('IVR Custom entry', 'IVR Custom entries', 1))
+      shortcutOption: N
+      fields:
+        blacklist:
+          target: true
+      fixedPositions: &IvrCustomEntriesFixedPositions_link
+        group0:
+          label: _("Entry information")
+          colsPerRow: 8
+          fields:
+            entry: 4
+            welcomeLocution: 4
+        group1:
+          label: _("Routing configuration")
+          colsPerRow: 8
+          fields:
+            targetType: 4
+            targetNumberValue: 4
+            targetExtension: 4
+            targetVoiceMailUser: 5
+            targetConditionalRoute: 5
+
+    IvrCustomEntriesEdit_screen: &IvrCustomEntriesEdit_screenLink
+      <<: *IvrCustomEntries
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('IVR Custom entry', 'IVR Custom entries', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          target: true
+      fixedPositions:
+        <<: *IvrCustomEntriesFixedPositions_link
+  dialogs: &IvrCustomEntries_dialogsLink
+    IvrCustomEntriesDel_dialog: &IvrCustomEntriesDel_dialogLink
+      <<: *IvrCustomEntries
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('IVR Custom entry', 'IVR Custom entries', 1))
+      description: _("Do you want to delete this %s?", ngettext('IVR Custom entry', 'IVR Custom entries', 1))
+      message: _("%s successfully deleted.", ngettext('IVR Custom entry', 'IVR Custom entries', 1))
+      multiItem: 1
+      labelOnList: 1
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

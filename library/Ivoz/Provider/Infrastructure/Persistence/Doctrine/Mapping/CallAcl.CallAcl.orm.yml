@@ -1,0 +1,22 @@
+Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallAclDoctrineRepository
+  type: entity
+  table: CallACL
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    relPatterns:
+      targetEntity: Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface
+      mappedBy: callAcl
+      cascade: ['persist']
+      orphanRemoval: true
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

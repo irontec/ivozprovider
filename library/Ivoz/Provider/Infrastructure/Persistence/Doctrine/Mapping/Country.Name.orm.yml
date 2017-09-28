@@ -1,0 +1,24 @@
+Ivoz\Provider\Domain\Model\Country\Name:
+  type: embeddable
+  fields:
+#    name:
+#      type: string
+#      nullable: true
+#      length: 100
+#      options:
+#        fixed: false
+#        comment: '[ml]'
+    en:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: name_en
+    es:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: name_es

@@ -1,7 +1,8 @@
 <?php
 
-use \IvozProvider\Mapper\Sql as Mapper;
 use \IvozProvider\Model\Companies as Companies;
+use \Ivoz\Provider\Domain\Model\Feature\Feature;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
@@ -19,40 +20,72 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
         $auth = Zend_Auth::getInstance();
         $user = $auth->getIdentity();
 
-        $featureMapper = new Mapper\Features;
-        $features = $featureMapper->fetchList();
+        /**
+         * @var \ZfBundle\Services\DataGateway $dataGateway
+         */
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-        $companyMapper = new Mapper\Companies;
-        $company = $companyMapper->find($user->companyId);
+        /**
+         * @var \Ivoz\Provider\Domain\Model\Company\CompanyDTO $companyDTO
+         */
+        $companyDTO = $dataGateway->find(
+            Company::class,
+            $user->companyId
+        );
 
-        if (is_null($company)) {
+        if (is_null($companyDTO)) {
             // No company feature to filter by
             return [];
         }
 
+        /***
+         * @var \Ivoz\Provider\Domain\Model\Feature\FeatureDTO[] $features
+         */
+        $features = $dataGateway->findAll(Feature::class);
+
         $excludedRoutes = [];
-        foreach ($features as $feature) {
-            switch ($feature->getName('en')) {
-                case "Queues":      $routeType = 'queue'; break;
-                case "Friends":     $routeType = 'friend'; break;
-                case "Faxes":       $routeType = 'fax'; break;
-                case "Conferences": $routeType = 'conferenceRoom'; break;
-                default: $routeType = "";
+        foreach ($features as $featureDTO) {
+            switch ($featureDTO->getNameEn()) {
+                case 'Queues':
+                    $routeType = 'queue';
+                    break;
+                case 'Friends':
+                    $routeType = 'friend';
+                    break;
+                case 'Faxes':
+                    $routeType = 'fax';
+                    break;
+                case 'Conferences':
+                    $routeType = 'conferenceRoom';
+                    break;
+                default:
+                    $routeType = '';
             }
 
-            if (!empty($routeType) && !$company->hasFeature($feature->getId())) {
+            if (empty($routeType)) {
+                continue;
+            }
+
+            $hasFeature = $dataGateway->remoteProcedureCall(
+                Company::class,
+                $companyDTO->getId(),
+                'hasFeature',
+                [$featureDTO->getId()]
+            );
+
+            if (!$hasFeature) {
                 $excludedRoutes[] = $routeType;
             }
         }
 
-        if ($company->getType() === Companies::VPBX) {
-            $excludedRoutes[] = "retailAccount";
+        if ($companyDTO->getType() === Companies::VPBX) {
+            $excludedRoutes[] = 'retailAccount';
         } else {
-            $excludedRoutes[] = "user";
-            $excludedRoutes[] = "IVRCommon";
-            $excludedRoutes[] = "IVRCustom";
-            $excludedRoutes[] = "huntGroup";
-            $excludedRoutes[] = "conditional";
+            $excludedRoutes[] = 'user';
+            $excludedRoutes[] = 'IVRCommon';
+            $excludedRoutes[] = 'IVRCustom';
+            $excludedRoutes[] = 'huntGroup';
+            $excludedRoutes[] = 'conditional';
         }
 
         return $excludedRoutes;

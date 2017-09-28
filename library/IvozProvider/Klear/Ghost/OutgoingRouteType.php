@@ -5,20 +5,41 @@ class IvozProvider_Klear_Ghost_OutgoingRouteType extends KlearMatrix_Model_Field
     /**
      *
      * @param $model OutgoingRoute
-     *            model
      * @return name of target based on outgoing route type
      */
     public function getData ($model)
     {
         $outgoingRouteType = $model->getType();
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
         if ($outgoingRouteType == 'group') {
-            return $model->getRoutingPatternGroup()->getName();
+
+            /**
+             * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup $routingPatternGroup
+             */
+            $routingPatternGroup = $dataGateway->find(
+                'Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup',
+                $model->getRoutingPatternGroupId()
+            );
+
+            return $routingPatternGroup->getName();
+
         } elseif ($outgoingRouteType == 'pattern') {
-            return $model->getRoutingPattern()->getName();
-        } else {
-            // Outgoing Route with unexpected Type
-            return null;
+
+            /**
+             * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDTO $routingPattern
+             */
+            $routingPattern = $dataGateway->find(
+                'Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern',
+                $model->getRoutingPatternId()
+            );
+
+            $currentLanguage = Zend_Registry::get('defaultLang');
+            $nameGetter = 'getName' . $currentLanguage;
+
+            return $routingPattern->{$nameGetter}();
         }
+
+        return null;
     }
 }

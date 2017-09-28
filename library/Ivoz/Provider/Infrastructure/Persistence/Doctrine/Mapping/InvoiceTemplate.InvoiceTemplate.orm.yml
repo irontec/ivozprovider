@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\InvoiceTemplateDoctrineRepository
+  type: entity
+  table: InvoiceTemplates
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+      postLoad:
+        - initChangelog

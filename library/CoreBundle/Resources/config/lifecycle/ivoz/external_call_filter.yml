@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\ExternalCallFilter\ExternalCallFilterLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.external_call_filter.service_collection:
+    '@Ivoz\Provider\Domain\Service\ExternalCallFilter\ExternalCallFilterLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\ExternalCallFilter\SanitizeValues:
+    tags:
+      - { name: provider.lifecycle.external_call_filter.pre_persist, priority: 10}
+#    arguments: ~

@@ -11,17 +11,17 @@ class IvozProvider_Klear_Ghost_ConditionalRoutes extends KlearMatrix_Model_Field
     {
         $matchData = [];
 
-        $matchListRels = $model->getConditionalRoutesConditionsRelMatchLists();
+        $matchListRels = $model->getMatchLists() ?? [];
         foreach ($matchListRels as $matchListRel) {
             $matchData[] = $matchListRel->getMatchList()->getName();
         }
 
-        $scheduleRels = $model->getConditionalRoutesConditionsRelSchedules();
+        $scheduleRels = $model->getSchedules() ?? [];
         foreach ($scheduleRels as $scheduleRel) {
             $matchData[] = $scheduleRel->getSchedule()->getName();
         }
 
-        $calendarRels = $model->getConditionalRoutesConditionsRelCalendars();
+        $calendarRels = $model->getCalendars() ?? [];
         foreach ($calendarRels as $calendarRel) {
             $matchData[] = $calendarRel->getCalendar()->getName();
         }

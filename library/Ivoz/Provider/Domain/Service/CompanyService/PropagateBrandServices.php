@@ -1,0 +1,64 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Service\CompanyService;
+
+use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
+
+/**
+ * Class PropagateBrandServices
+ * @lifecycle post_persist
+ */
+class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
+{
+    /**
+     * @var EntityPersisterInterface
+     */
+    protected $entityPersister;
+
+    /**
+     * @var BrandServiceRepository
+     */
+    protected $brandServiceRepository;
+
+    public function __construct(
+        EntityPersisterInterface $entityPersister,
+        BrandServiceRepository $brandServiceRepository
+    ) {
+        $this->entityPersister = $entityPersister;
+        $this->brandServiceRepository = $brandServiceRepository;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function execute(CompanyInterface $entity, $isNew)
+    {
+        if (!$isNew) {
+            return;
+        }
+
+        $services = $this->brandServiceRepository->findBy([
+            'brand' => $entity->getBrand()->getId()
+        ]);
+
+        /**
+         * @var BrandService $service
+         */
+        foreach ($services as $service) {
+            $companyServiceDto = CompanyService::createDTO();
+
+            $serviceId = $service->getService()->getId();
+            $companyServiceDto
+                ->setServiceId($serviceId)
+                ->setCode($service->getCode())
+                ->setCompanyId($entity->getId());
+
+            $this->entityPersister->persistDto($companyServiceDto);
+        }
+    }
+}

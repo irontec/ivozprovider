@@ -1,0 +1,260 @@
+Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
+  type: mappedSuperclass
+  indexes:
+    start_time_idx:
+      columns:
+        - start_time
+    calldate_idx:
+      columns:
+        - end_time_utc
+    callid_idx:
+      columns:
+        - callid
+    xcallid_idx:
+      columns:
+        - xcallid
+    peeringContractId_idx:
+      columns:
+        - peeringContractId
+    pricingPlanId:
+      columns:
+        - pricingPlanId
+    targetPatternId:
+      columns:
+        - targetPatternId
+    invoiceId:
+      columns:
+        - invoiceId
+    brandId:
+      columns:
+        - brandId
+    companyId:
+      columns:
+        - companyId
+  fields:
+    proxy:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    startTimeUtc:
+      type: datetime
+      nullable: false
+      options:
+        default: '2000-01-01 00:00:00'
+      column: start_time_utc
+    endTimeUtc:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: end_time_utc
+    startTime:
+      type: datetime
+      nullable: false
+      options:
+        default: '2000-01-01 00:00:00'
+      column: start_time
+    endTime:
+      type: datetime
+      nullable: false
+      options:
+        default: '2000-01-01 00:00:00'
+      column: end_time
+    duration:
+      type: float
+      nullable: false
+      precision: 10
+      scale: 3
+      options:
+        default: '0.000'
+    caller:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    callee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    referee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    referrer:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    asiden:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: asIden
+    asaddress:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: asAddress
+    callid:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    callidHash:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: callidHash
+    xcallid:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    parsed:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        default: 'no'
+    diversion:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    peeringContractId:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: peeringContractId
+    bounced:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        default: 'no'
+    externallyRated:
+      type: boolean
+      nullable: true
+      column: externallyRated
+    metered:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
+    meteringDate:
+      type: datetime
+      nullable: true
+      column: meteringDate
+    pricingPlanName:
+      type: string
+      nullable: true
+      length: 55
+      options:
+        fixed: false
+      column: pricingPlanName
+    targetPatternName:
+      type: string
+      nullable: true
+      length: 55
+      options:
+        fixed: false
+      column: targetPatternName
+    price:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 4
+    pricingPlanDetails:
+      type: text
+      nullable: true
+      length: 65535
+      options:
+        fixed: false
+      column: pricingPlanDetails
+    direction:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    reMeteringDate:
+      type: datetime
+      nullable: true
+      column: reMeteringDate
+  manyToOne:
+    pricingPlan:
+      targetEntity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        pricingPlanId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    targetPattern:
+      targetEntity: \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        targetPatternId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    invoice:
+      targetEntity: \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

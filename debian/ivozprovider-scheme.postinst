@@ -18,8 +18,9 @@ MYSQL_USER=root
 db_stop
 
 # Replace settings in properties
-sed -i "s/db.user=.*/db.user=$MYSQL_USER/"     /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
-sed -i "s/db.pass=.*/db.pass=$MYSQL_PASSWORD/" /opt/irontec/ivozprovider/scheme/build.properties.$APPLICATION_ENV
+
+sed -i "s/database_user=.*/s/database_user=$MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
+sed -i "s/database_password=.*/s/database_password=$MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 
 # Setup password and user in first install (allow changing it later)
 if [ -z "$2" ]; then
@@ -29,18 +30,16 @@ if [ -z "$2" ]; then
     # Load Timezones
     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
 
-    # Create database if it doesn't exist
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS ivozprovider"
-
-    # Fist time, run phing on scheme dir
-    pushd /opt/irontec/ivozprovider/scheme
-    /usr/bin/phing -f build_prod.xml init -De=$APPLICATION_ENV
+    # During first time, create database and import initial dump
+    pushd /opt/irontec/ivozprovider/scheme &>/dev/null
+		bin/console doctrine:database:create
+		bin/console doctrine:database:import initial.sql
     popd
 fi
 
 # Always migrate database
 pushd /opt/irontec/ivozprovider/scheme &>/dev/null
-/usr/bin/phing -f build_prod.xml migrate -De=$APPLICATION_ENV
+bin/console doctrine:migrations:migrate --no-interaction
 RET=$?
 popd &>/dev/null
 

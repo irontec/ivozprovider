@@ -1,0 +1,89 @@
+Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldAbstract:
+  type: mappedSuperclass
+  indexes:
+    fGenericMusicOnHold_ibfk_1:
+      columns:
+        - brandId
+  uniqueConstraints:
+    nameBrand:
+      columns:
+        - name
+        - brandId
+  embedded:
+    originalFile:
+      class: OriginalFile
+      columnPrefix: false
+    encodedFile:
+      class: EncodedFile
+      columnPrefix: false
+  fields:
+    name:
+      column: name
+      type: string
+      nullable: false
+      length: 80
+      options:
+        fixed: false
+#    originalFileFileSize:
+#      type: integer
+#      nullable: true
+#      options:
+#        unsigned: true
+#        comment: '[FSO:keepExtension]'
+#      column: originalFileFileSize
+#    originalFileMimeType:
+#      type: string
+#      nullable: true
+#      length: 80
+#      options:
+#        fixed: false
+#      column: originalFileMimeType
+#    originalFileBaseName:
+#      type: string
+#      nullable: true
+#      length: 255
+#      options:
+#        fixed: false
+#      column: originalFileBaseName
+#    encodedFileFileSize:
+#      type: integer
+#      nullable: true
+#      options:
+#        unsigned: true
+#        comment: '[FSO:keepExtension|storeInBaseFolder]'
+#      column: encodedFileFileSize
+#    encodedFileMimeType:
+#      type: string
+#      nullable: true
+#      length: 80
+#      options:
+#        fixed: false
+#      column: encodedFileMimeType
+#    encodedFileBaseName:
+#      type: string
+#      nullable: true
+#      length: 255
+#      options:
+#        fixed: false
+#      column: encodedFileBaseName
+    status:
+      column: status
+      type: string
+      nullable: true
+      length: 20
+      options:
+        fixed: false
+        comment: '[enum:pending|encoding|ready|error]'
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: genericMusicsOnHold
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

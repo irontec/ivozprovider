@@ -1,0 +1,303 @@
+production:
+  class: \IvozProvider\Model\ConditionalRoutes
+  entity: \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute
+  fields:
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\Companies
+          fieldName:
+            fields:
+              - type
+            template: '%type%'
+          order: type
+      default: true
+    name:
+      title: _('Name')
+      type: text
+      required: true
+      maxLength: 100
+    locutionId:
+      title: _('Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Locutions
+          entity:  \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Locution.name: asc
+        'null': _("Unassigned")
+    routeType:
+      title: _('Route type')
+      type: select
+      source:
+        data: inline
+        filterClass: IvozProvider_Klear_Filter_RouteTypes
+        values:
+          '__null__':
+            title: _("Unassigned")
+            visualFilter:
+              show: [ ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'user':
+            title: ngettext('User', 'Users', 1)
+            visualFilter:
+              show: [ "userId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'IVRCommon':
+            title: ngettext('IVR Common', 'IVRs Common', 1)
+            visualFilter:
+              show: [ "IVRCommonId" ]
+              hide: [
+                "numberValue", "userId", "IVRCustomId", "huntGroupId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'IVRCustom':
+            title: ngettext('IVR Custom', 'IVRs Custom', 1)
+            visualFilter:
+              show: [ "IVRCustomId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "userId", "huntGroupId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'huntGroup':
+            title: ngettext('Hunt Group', 'Hunt Groups', 1)
+            visualFilter:
+              show: [ "huntGroupId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "voiceMailUserId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'voicemail':
+            title: ngettext('Voicemail', 'Voicemails', 1)
+            visualFilter:
+              show: [ "voiceMailUserId" ]
+              hide: [
+                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'number':
+            title: _('Number')
+            visualFilter:
+              show: [ "numberValue" ]
+              hide: [
+                "voiceMailUserId", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "friendValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'friend':
+            title: ngettext('Friend', 'Friends', 1)
+            visualFilter:
+              show: [ "friendValue" ]
+              hide: [
+                "voiceMailUserId", "IVRCommonId", "IVRCustomId", "userId",
+                "huntGroupId", "numberValue", "queueId",
+                "conferenceRoomId", "extensionId"
+              ]
+          'queue':
+            title: ngettext('Queue', 'Queues', 1)
+            visualFilter:
+              show: [ "queueId" ]
+              hide: [
+                "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
+                "userId", "huntGroupId", "numberValue",
+                "conferenceRoomId", "extensionId"
+              ]
+          'conferenceRoom':
+            title: ngettext('Conference room', 'Conference rooms', 1)
+            visualFilter:
+              show: [ "conferenceRoomId" ]
+              hide: [
+              "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
+              "userId", "huntGroupId", "numberValue",
+              "queueId", "extensionId"
+            ]
+          'extension':
+            title: _('Extension')
+            visualFilter:
+              show: [ "extensionId" ]
+              hide: [
+              "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
+              "userId", "huntGroupId", "numberValue",
+              "queueId", "conferenceRoomId"
+            ]
+    IVRCommonId:
+      title: ngettext('IVR Common', 'IVRs Common', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
+          entity:  \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            IvrCommon.name: asc
+        'null': _("Unassigned")
+    IVRCustomId:
+      title: ngettext('IVR Custom', 'IVRs Custom', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
+          entity:  \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            IvrCommon.name: asc
+        'null': _("Unassigned")
+    huntGroupId:
+      title: ngettext('Hunt Group', 'Hunt Groups', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
+          entity:  \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            HuntGroup.name: asc
+        'null': _("Unassigned")
+    voiceMailUserId:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Users
+          entity:  \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields: [ name, lastname ]
+            template: '%name% %lastname%'
+          order:
+            User.name: asc
+        'null': _("Unassigned")
+    userId:
+      title: _('User')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Users
+          entity:  \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields: [ name, lastname ]
+            template: '%name% %lastname%'
+          order:
+            User.name: asc
+        'null': _("Unassigned")
+    numberValue:
+      title: _('Number')
+      type: text
+      required: true
+      maxLength: 25
+    friendValue:
+      title: _('Friend value')
+      type: text
+      required: true
+      maxLength: 25
+    queueId:
+      title: ngettext('Queue', 'Queues', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Queues
+          entity:  \Ivoz\Provider\Domain\Model\Queue\Queue
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Queue.name: asc
+        'null': _("Unassigned")
+    conferenceRoomId:
+      title: ngettext('Conference room', 'Conference rooms', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
+          entity:  \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            ConferenceRoom.name: asc
+        'null': _("Unassigned")
+    extensionId:
+      title: _('Extension')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Extensions
+          entity:  \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Extension.number: asc
+        'null': _("Unassigned")
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getData
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

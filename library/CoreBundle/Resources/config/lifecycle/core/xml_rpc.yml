@@ -1,0 +1,49 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyTrunksDialplanReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyTrunksDispatcherReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyTrunksLcrReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyTrunksPermissionsTrustedReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyTrunksUacRegReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyUsersDispatcherReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyUsersDomainReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyUsersPermissionsAddressReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\RequestProxyUsersPermissionsTrustedReload:
+    arguments:
+      $xmlrpc:
+        '@IvozProvider\Gearmand\Jobs\Xmlrpc'

@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.invoice.service_collection:
+    '@Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\Invoice\CheckValidity:
+    tags:
+      - { name: provider.lifecycle.invoice.pre_persist, priority: 10 }
+    arguments:
+      $accCdrRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\AccCdr\\AccCdr")'
+      $invoiveRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\Invoice\\Invoice")'
+
+  Ivoz\Provider\Domain\Service\Invoice\SanitizeValues:
+    tags:
+      - { name: provider.lifecycle.invoice.pre_persist, priority: 20 }
+    arguments: ~

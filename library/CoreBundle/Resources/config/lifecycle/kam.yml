@@ -1,0 +1,6 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/acc_cdr.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/pike_trusted.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/rtpproxy.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/trunks_dialplan.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/trunks_uacreg.yml" }

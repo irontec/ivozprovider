@@ -1,0 +1,191 @@
+Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomAbstract:
+  type: mappedSuperclass
+  indexes:
+    companyId:
+      columns:
+        - companyId
+    welcomeLocutionId:
+      columns:
+        - welcomeLocutionId
+    noAnswerLocutionId:
+      columns:
+        - noAnswerLocutionId
+    errorLocutionId:
+      columns:
+        - errorLocutionId
+    successLocutionId:
+      columns:
+        - successLocutionId
+    noAnswerExtensionId:
+      columns:
+        - timeoutExtensionId
+    errorExtensionId:
+      columns:
+        - errorExtensionId
+    noAnswerVoiceMailUserId:
+      columns:
+        - timeoutVoiceMailUserId
+    errorVoiceMailUserId:
+      columns:
+        - errorVoiceMailUserId
+  uniqueConstraints:
+    nameCompany:
+      columns:
+        - name
+        - companyId
+  fields:
+    name:
+      type: string
+      nullable: false
+      length: 50
+      options:
+        fixed: false
+    timeout:
+      type: smallint
+      nullable: false
+      options:
+        unsigned: true
+    maxDigits:
+      type: smallint
+      nullable: false
+      options:
+        unsigned: true
+      column: maxDigits
+    noAnswerTimeout:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+        default: '10'
+      column: noAnswerTimeout
+    timeoutTargetType:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:number|extension|voicemail]'
+      column: timeoutTargetType
+    timeoutNumberValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: timeoutNumberValue
+    errorTargetType:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:number|extension|voicemail]'
+      column: errorTargetType
+    errorNumberValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: errorNumberValue
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    welcomeLocution:
+      targetEntity: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        welcomeLocutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    noAnswerLocution:
+      targetEntity: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        noAnswerLocutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    errorLocution:
+      targetEntity: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        errorLocutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    successLocution:
+      targetEntity: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        successLocutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    timeoutExtension:
+      targetEntity: \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        timeoutExtensionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    errorExtension:
+      targetEntity: \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        errorExtensionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    timeoutVoiceMailUser:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        timeoutVoiceMailUserId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    errorVoiceMailUser:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        errorVoiceMailUserId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

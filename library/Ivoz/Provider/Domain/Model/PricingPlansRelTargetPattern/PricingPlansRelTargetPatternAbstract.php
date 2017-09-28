@@ -1,0 +1,342 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern;
+
+use Assert\Assertion;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+
+/**
+ * PricingPlansRelTargetPatternAbstract
+ * @codeCoverageIgnore
+ */
+abstract class PricingPlansRelTargetPatternAbstract
+{
+    /**
+     * @var string
+     */
+    protected $connectionCharge;
+
+    /**
+     * @var integer
+     */
+    protected $periodTime;
+
+    /**
+     * @var string
+     */
+    protected $perPeriodCharge;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
+     */
+    protected $pricingPlan;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
+     */
+    protected $targetPattern;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    protected $brand;
+
+
+    /**
+     * Changelog tracking purpose
+     * @var array
+     */
+    protected $_initialValues = [];
+
+    /**
+     * Constructor
+     */
+    public function __construct(
+        $connectionCharge,
+        $periodTime,
+        $perPeriodCharge
+    ) {
+        $this->setConnectionCharge($connectionCharge);
+        $this->setPeriodTime($periodTime);
+        $this->setPerPeriodCharge($perPeriodCharge);
+    }
+
+    /**
+     * @param string $fieldName
+     * @return mixed
+     * @throws \Exception
+     */
+    public function initChangelog()
+    {
+        $this->_initialValues = $this->__toArray();
+    }
+
+    /**
+     * @param string $fieldName
+     * @return mixed
+     * @throws \Exception
+     */
+    public function hasChanged($fieldName)
+    {
+        if (!array_key_exists($fieldName, $this->_initialValues)) {
+            throw new \Exception($fieldName . ' field was not found');
+        }
+        $currentValues = $this->__toArray();
+
+        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+    }
+
+    public function getInitialValue($fieldName)
+    {
+        if (!array_key_exists($fieldName, $this->_initialValues)) {
+            throw new \Exception($fieldName . ' field was not found');
+        }
+
+        return $this->_initialValues[$fieldName];
+    }
+
+    /**
+     * @return PricingPlansRelTargetPatternDTO
+     */
+    public static function createDTO()
+    {
+        return new PricingPlansRelTargetPatternDTO();
+    }
+
+    /**
+     * Factory method
+     * @param DataTransferObjectInterface $dto
+     * @return self
+     */
+    public static function fromDTO(DataTransferObjectInterface $dto)
+    {
+        /**
+         * @var $dto PricingPlansRelTargetPatternDTO
+         */
+        Assertion::isInstanceOf($dto, PricingPlansRelTargetPatternDTO::class);
+
+        $self = new static(
+            $dto->getConnectionCharge(),
+            $dto->getPeriodTime(),
+            $dto->getPerPeriodCharge());
+
+        return $self
+            ->setPricingPlan($dto->getPricingPlan())
+            ->setTargetPattern($dto->getTargetPattern())
+            ->setBrand($dto->getBrand())
+        ;
+    }
+
+    /**
+     * @param DataTransferObjectInterface $dto
+     * @return self
+     */
+    public function updateFromDTO(DataTransferObjectInterface $dto)
+    {
+        /**
+         * @var $dto PricingPlansRelTargetPatternDTO
+         */
+        Assertion::isInstanceOf($dto, PricingPlansRelTargetPatternDTO::class);
+
+        $this
+            ->setConnectionCharge($dto->getConnectionCharge())
+            ->setPeriodTime($dto->getPeriodTime())
+            ->setPerPeriodCharge($dto->getPerPeriodCharge())
+            ->setPricingPlan($dto->getPricingPlan())
+            ->setTargetPattern($dto->getTargetPattern())
+            ->setBrand($dto->getBrand());
+
+
+        return $this;
+    }
+
+    /**
+     * @return PricingPlansRelTargetPatternDTO
+     */
+    public function toDTO()
+    {
+        return self::createDTO()
+            ->setConnectionCharge($this->getConnectionCharge())
+            ->setPeriodTime($this->getPeriodTime())
+            ->setPerPeriodCharge($this->getPerPeriodCharge())
+            ->setPricingPlanId($this->getPricingPlan() ? $this->getPricingPlan()->getId() : null)
+            ->setTargetPatternId($this->getTargetPattern() ? $this->getTargetPattern()->getId() : null)
+            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null);
+    }
+
+    /**
+     * @return array
+     */
+    protected function __toArray()
+    {
+        return [
+            'connectionCharge' => $this->getConnectionCharge(),
+            'periodTime' => $this->getPeriodTime(),
+            'perPeriodCharge' => $this->getPerPeriodCharge(),
+            'pricingPlanId' => $this->getPricingPlan() ? $this->getPricingPlan()->getId() : null,
+            'targetPatternId' => $this->getTargetPattern() ? $this->getTargetPattern()->getId() : null,
+            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+        ];
+    }
+
+
+    // @codeCoverageIgnoreStart
+
+    /**
+     * Set connectionCharge
+     *
+     * @param string $connectionCharge
+     *
+     * @return self
+     */
+    public function setConnectionCharge($connectionCharge)
+    {
+        Assertion::notNull($connectionCharge);
+        Assertion::numeric($connectionCharge);
+
+        $this->connectionCharge = $connectionCharge;
+
+        return $this;
+    }
+
+    /**
+     * Get connectionCharge
+     *
+     * @return string
+     */
+    public function getConnectionCharge()
+    {
+        return $this->connectionCharge;
+    }
+
+    /**
+     * Set periodTime
+     *
+     * @param integer $periodTime
+     *
+     * @return self
+     */
+    public function setPeriodTime($periodTime)
+    {
+        Assertion::notNull($periodTime);
+        Assertion::integerish($periodTime);
+
+        $this->periodTime = $periodTime;
+
+        return $this;
+    }
+
+    /**
+     * Get periodTime
+     *
+     * @return integer
+     */
+    public function getPeriodTime()
+    {
+        return $this->periodTime;
+    }
+
+    /**
+     * Set perPeriodCharge
+     *
+     * @param string $perPeriodCharge
+     *
+     * @return self
+     */
+    public function setPerPeriodCharge($perPeriodCharge)
+    {
+        Assertion::notNull($perPeriodCharge);
+        Assertion::numeric($perPeriodCharge);
+
+        $this->perPeriodCharge = $perPeriodCharge;
+
+        return $this;
+    }
+
+    /**
+     * Get perPeriodCharge
+     *
+     * @return string
+     */
+    public function getPerPeriodCharge()
+    {
+        return $this->perPeriodCharge;
+    }
+
+    /**
+     * Set pricingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface $pricingPlan
+     *
+     * @return self
+     */
+    public function setPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface $pricingPlan)
+    {
+        $this->pricingPlan = $pricingPlan;
+
+        return $this;
+    }
+
+    /**
+     * Get pricingPlan
+     *
+     * @return \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
+     */
+    public function getPricingPlan()
+    {
+        return $this->pricingPlan;
+    }
+
+    /**
+     * Set targetPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface $targetPattern
+     *
+     * @return self
+     */
+    public function setTargetPattern(\Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface $targetPattern)
+    {
+        $this->targetPattern = $targetPattern;
+
+        return $this;
+    }
+
+    /**
+     * Get targetPattern
+     *
+     * @return \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
+     */
+    public function getTargetPattern()
+    {
+        return $this->targetPattern;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+
+
+    // @codeCoverageIgnoreEnd
+}
+

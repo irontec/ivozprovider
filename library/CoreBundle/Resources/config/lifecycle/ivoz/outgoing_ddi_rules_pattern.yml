@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.outgoing_ddi_rules_pattern.service_collection:
+    '@Ivoz\Provider\Domain\Service\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\OutgoingDdiRulesPattern\SanitizeValues:
+    tags:
+      - { name: provider.lifecycle.outgoing_ddi_rules_pattern.pre_persist, priority: 10 }
+    arguments: ~

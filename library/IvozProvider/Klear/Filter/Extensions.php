@@ -10,10 +10,8 @@ class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Com
         //Get ModelName and your Controller
         $currentScreen = $routeDispatcher->getCurrentItemName();
         $pk = $routeDispatcher->getParam("pk", false);
-        //Screen de la que partimos
-        $parentId = $routeDispatcher->getParam("parentId", false);
-        $parentScreen = $routeDispatcher->getParam("parentScreen", false);
 
+        //Screen de la que partimos
         $isUserListScreen = ($currentScreen == "usersList_screen");
         if ($isUserListScreen) {
             return true;

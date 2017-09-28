@@ -1,0 +1,23 @@
+production:
+  class: \IvozProvider\Model\MediaRelaySets
+  entity: Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+  fields: 
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      maxLength: 32
+      required: true
+    description:
+      title: _('Description')
+      type: text
+      trim: both
+      maxLength: 200
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

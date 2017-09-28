@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Recording\Recording:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RecordingDoctrineRepository
+  type: entity
+  table: Recordings
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

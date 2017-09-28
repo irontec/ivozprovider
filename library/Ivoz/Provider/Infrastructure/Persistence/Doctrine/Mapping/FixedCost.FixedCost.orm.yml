@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FixedCostDoctrineRepository
+  type: entity
+  table: FixedCosts
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

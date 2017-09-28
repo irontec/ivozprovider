@@ -1,0 +1,182 @@
+Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionAbstract:
+  type: mappedSuperclass
+  indexes:
+    locutionId:
+      columns:
+        - locutionId
+    IVRCommonId:
+      columns:
+        - IVRCommonId
+    IVRCustomId:
+      columns:
+        - IVRCustomId
+    huntGroupId:
+      columns:
+        - huntGroupId
+    voiceMailUserId:
+      columns:
+        - voiceMailUserId
+    userId:
+      columns:
+        - userId
+    queueId:
+      columns:
+        - queueId
+    conferenceRoomId:
+      columns:
+        - conferenceRoomId
+    extensionId:
+      columns:
+        - extensionId
+    IDX_425473C99E2CE667:
+      columns:
+        - conditionalRouteId
+  uniqueConstraints:
+    conditionalRouteId:
+      columns:
+        - conditionalRouteId
+        - priority
+  fields:
+    priority:
+      type: smallint
+      nullable: false
+      options:
+        unsigned: false
+        default: '1'
+    routeType:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]'
+      column: routeType
+    numberValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: numberValue
+    friendValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: friendValue
+  manyToOne:
+    conditionalRoute:
+      targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        conditionalRouteId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    ivrCommon:
+      targetEntity: Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        IVRCommonId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    ivrCustom:
+      targetEntity: Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        IVRCustomId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    huntGroup:
+      targetEntity: Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        huntGroupId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    voicemailUser:
+      targetEntity: Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        voiceMailUserId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    user:
+      targetEntity: Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    queue:
+      targetEntity: Ivoz\Provider\Domain\Model\Queue\QueueInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        queueId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    locution:
+      targetEntity: Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        locutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    conferenceRoom:
+      targetEntity: Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        conferenceRoomId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    extension:
+      targetEntity: Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        extensionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

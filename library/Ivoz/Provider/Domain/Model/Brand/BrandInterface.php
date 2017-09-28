@@ -1,0 +1,576 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Model\Brand;
+
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Doctrine\Common\Collections\Collection;
+
+interface BrandInterface extends EntityInterface
+{
+    public function getActivePricingPlans($date = null);
+
+    public function getActivePrincingPlansIds($date = null);
+
+    public function getLanguageCode();
+
+    public function willUseExternallyRating(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company, $destination = null);
+
+    /**
+     * Get the size in bytes used by the recordings on this brand
+     *
+     */
+    public function getRecordingsDiskUsage();
+
+    /**
+     * Get the size in bytes for disk usage limit on this brand
+     */
+    public function getRecordingsLimit();
+
+    /**
+     * @return FeatureInterface[]
+     */
+    public function getFeatures();
+
+    /**
+     * @param $featureId
+     * @return bool
+     */
+    public function hasFeature($featureId);
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName($name);
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * Set nif
+     *
+     * @param string $nif
+     *
+     * @return self
+     */
+    public function setNif($nif);
+
+    /**
+     * Get nif
+     *
+     * @return string
+     */
+    public function getNif();
+
+    /**
+     * Set domainUsers
+     *
+     * @param string $domainUsers
+     *
+     * @return self
+     */
+    public function setDomainUsers($domainUsers = null);
+
+    /**
+     * Get domainUsers
+     *
+     * @return string
+     */
+    public function getDomainUsers();
+
+    /**
+     * Set postalAddress
+     *
+     * @param string $postalAddress
+     *
+     * @return self
+     */
+    public function setPostalAddress($postalAddress);
+
+    /**
+     * Get postalAddress
+     *
+     * @return string
+     */
+    public function getPostalAddress();
+
+    /**
+     * Set postalCode
+     *
+     * @param string $postalCode
+     *
+     * @return self
+     */
+    public function setPostalCode($postalCode);
+
+    /**
+     * Get postalCode
+     *
+     * @return string
+     */
+    public function getPostalCode();
+
+    /**
+     * Set town
+     *
+     * @param string $town
+     *
+     * @return self
+     */
+    public function setTown($town);
+
+    /**
+     * Get town
+     *
+     * @return string
+     */
+    public function getTown();
+
+    /**
+     * Set province
+     *
+     * @param string $province
+     *
+     * @return self
+     */
+    public function setProvince($province);
+
+    /**
+     * Get province
+     *
+     * @return string
+     */
+    public function getProvince();
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return self
+     */
+    public function setCountry($country);
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry();
+
+    /**
+     * Set registryData
+     *
+     * @param string $registryData
+     *
+     * @return self
+     */
+    public function setRegistryData($registryData = null);
+
+    /**
+     * Get registryData
+     *
+     * @return string
+     */
+    public function getRegistryData();
+
+    /**
+     * Set fromName
+     *
+     * @param string $fromName
+     *
+     * @return self
+     */
+    public function setFromName($fromName = null);
+
+    /**
+     * Get fromName
+     *
+     * @return string
+     */
+    public function getFromName();
+
+    /**
+     * Set fromAddress
+     *
+     * @param string $fromAddress
+     *
+     * @return self
+     */
+    public function setFromAddress($fromAddress = null);
+
+    /**
+     * Get fromAddress
+     *
+     * @return string
+     */
+    public function getFromAddress();
+
+    /**
+     * Set recordingsLimitMB
+     *
+     * @param integer $recordingsLimitMB
+     *
+     * @return self
+     */
+    public function setRecordingsLimitMB($recordingsLimitMB = null);
+
+    /**
+     * Get recordingsLimitMB
+     *
+     * @return integer
+     */
+    public function getRecordingsLimitMB();
+
+    /**
+     * Set recordingslimitemail
+     *
+     * @param string $recordingslimitemail
+     *
+     * @return self
+     */
+    public function setRecordingslimitemail($recordingslimitemail = null);
+
+    /**
+     * Get recordingslimitemail
+     *
+     * @return string
+     */
+    public function getRecordingslimitemail();
+
+    /**
+     * Set language
+     *
+     * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
+     *
+     * @return self
+     */
+    public function setLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language = null);
+
+    /**
+     * Get language
+     *
+     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+     */
+    public function getLanguage();
+
+    /**
+     * Set defaultTimezone
+     *
+     * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone
+     *
+     * @return self
+     */
+    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null);
+
+    /**
+     * Get defaultTimezone
+     *
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getDefaultTimezone();
+
+    /**
+     * Set logo
+     *
+     * @param Logo $logo
+     *
+     * @return self
+     */
+    public function setLogo(\Ivoz\Provider\Domain\Model\Brand\Logo $logo);
+
+    /**
+     * Get logo
+     *
+     * @return Logo
+     */
+    public function getLogo();
+
+    /**
+     * Add company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return BrandTrait
+     */
+    public function addCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+
+    /**
+     * Remove company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     */
+    public function removeCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+
+    /**
+     * Replace companies
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface[] $companies
+     * @return self
+     */
+    public function replaceCompanies(Collection $companies);
+
+    /**
+     * Get companies
+     *
+     * @return array
+     */
+    public function getCompanies(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add operator
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator
+     *
+     * @return BrandTrait
+     */
+    public function addOperator(\Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator);
+
+    /**
+     * Remove operator
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator
+     */
+    public function removeOperator(\Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator);
+
+    /**
+     * Replace operators
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface[] $operators
+     * @return self
+     */
+    public function replaceOperators(Collection $operators);
+
+    /**
+     * Get operators
+     *
+     * @return array
+     */
+    public function getOperators(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add service
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service
+     *
+     * @return BrandTrait
+     */
+    public function addService(\Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service);
+
+    /**
+     * Remove service
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service
+     */
+    public function removeService(\Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service);
+
+    /**
+     * Replace services
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $services
+     * @return self
+     */
+    public function replaceServices(Collection $services);
+
+    /**
+     * Get services
+     *
+     * @return array
+     */
+    public function getServices(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add url
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url
+     *
+     * @return BrandTrait
+     */
+    public function addUrl(\Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url);
+
+    /**
+     * Remove url
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url
+     */
+    public function removeUrl(\Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface $url);
+
+    /**
+     * Replace urls
+     *
+     * @param \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[] $urls
+     * @return self
+     */
+    public function replaceUrls(Collection $urls);
+
+    /**
+     * Get urls
+     *
+     * @return array
+     */
+    public function getUrls(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relFeature
+     *
+     * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature
+     *
+     * @return BrandTrait
+     */
+    public function addRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature);
+
+    /**
+     * Remove relFeature
+     *
+     * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature
+     */
+    public function removeRelFeature(\Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface $relFeature);
+
+    /**
+     * Replace relFeatures
+     *
+     * @param \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[] $relFeatures
+     * @return self
+     */
+    public function replaceRelFeatures(Collection $relFeatures);
+
+    /**
+     * Get relFeatures
+     *
+     * @return array
+     */
+    public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return BrandTrait
+     */
+    public function addDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
+
+    /**
+     * Remove domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     */
+    public function removeDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
+
+    /**
+     * Replace domains
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface[] $domains
+     * @return self
+     */
+    public function replaceDomains(Collection $domains);
+
+    /**
+     * Get domains
+     *
+     * @return array
+     */
+    public function getDomains(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return BrandTrait
+     */
+    public function addRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount);
+
+    /**
+     * Remove retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     */
+    public function removeRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount);
+
+    /**
+     * Replace retailAccounts
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[] $retailAccounts
+     * @return self
+     */
+    public function replaceRetailAccounts(Collection $retailAccounts);
+
+    /**
+     * Get retailAccounts
+     *
+     * @return array
+     */
+    public function getRetailAccounts(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add genericMusicsOnHold
+     *
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold
+     *
+     * @return BrandTrait
+     */
+    public function addGenericMusicsOnHold(\Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold);
+
+    /**
+     * Remove genericMusicsOnHold
+     *
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold
+     */
+    public function removeGenericMusicsOnHold(\Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold);
+
+    /**
+     * Replace genericMusicsOnHold
+     *
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface[] $genericMusicsOnHold
+     * @return self
+     */
+    public function replaceGenericMusicsOnHold(Collection $genericMusicsOnHold);
+
+    /**
+     * Get genericMusicsOnHold
+     *
+     * @return array
+     */
+    public function getGenericMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add genericCallAclPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern
+     *
+     * @return BrandTrait
+     */
+    public function addGenericCallAclPattern(\Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern);
+
+    /**
+     * Remove genericCallAclPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern
+     */
+    public function removeGenericCallAclPattern(\Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern);
+
+    /**
+     * Replace genericCallAclPatterns
+     *
+     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface[] $genericCallAclPatterns
+     * @return self
+     */
+    public function replaceGenericCallAclPatterns(Collection $genericCallAclPatterns);
+
+    /**
+     * Get genericCallAclPatterns
+     *
+     * @return array
+     */
+    public function getGenericCallAclPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+}
+

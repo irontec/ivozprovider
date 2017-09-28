@@ -1,0 +1,270 @@
+Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
+  type: mappedSuperclass
+  indexes:
+    companyId:
+      columns:
+        - companyId
+    externalCallFilterId:
+      columns:
+        - externalCallFilterId
+    userId:
+      columns:
+        - userId
+    IVRCommonId:
+      columns:
+        - IVRCommonId
+    IvrCustomId:
+      columns:
+        - IVRCustomId
+    huntGroupId:
+      columns:
+        - huntGroupId
+    faxId:
+      columns:
+        - faxId
+    peeringContractId:
+      columns:
+        - peeringContractId
+    countryId:
+      columns:
+        - countryId
+    brandId:
+      columns:
+        - brandId
+    conferenceRoomId:
+      columns:
+        - conferenceRoomId
+    retailAccountId:
+      columns:
+        - retailAccountId
+    languageId:
+      columns:
+        - languageId
+    queueId:
+      columns:
+        - queueId
+  uniqueConstraints:
+    Ddicountry:
+      columns:
+        - Ddi
+        - countryId
+  fields:
+    ddi:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+      column: Ddi
+    ddie164:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: DdiE164
+    recordCalls:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:none|all|inbound|outbound]'
+        default: none
+      column: recordCalls
+    displayName:
+      type: string
+      nullable: true
+      length: 50
+      options:
+        fixed: false
+      column: displayName
+    routeType:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]'
+      column: routeType
+    billInboundCalls:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+        unsigned: true
+      column: billInboundCalls
+    friendValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: friendValue
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      inversedBy: ddis
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    conferenceRoom:
+      targetEntity: \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        conferenceRoomId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    language:
+      targetEntity: \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        languageId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    queue:
+      targetEntity: \Ivoz\Provider\Domain\Model\Queue\QueueInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        queueId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    externalCallFilter:
+      targetEntity: \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        externalCallFilterId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    user:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    IvrCommon:
+      targetEntity: \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        IVRCommonId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    IvrCustom:
+      targetEntity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        IvrCustomId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    huntGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        huntGroupId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    fax:
+      targetEntity: \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        faxId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    peeringContract:
+      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        peeringContractId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    country:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        countryId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    retailAccount:
+      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: Ddis
+      joinColumns:
+        retailAccountId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    conditionalRoute:
+      targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        conditionalRouteId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

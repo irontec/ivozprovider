@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\HuntGroup\HuntGroupLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.hunt_group.service_collection:
+    '@Ivoz\Provider\Domain\Service\HuntGroup\HuntGroupLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\HuntGroup\SanitizeValues:
+    tags:
+      - { name: provider.lifecycle.hunt_group.pre_persist, priority: 20}

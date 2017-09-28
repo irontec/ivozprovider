@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\BrandService\BrandService:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BrandServiceDoctrineRepository
+  type: entity
+  table: BrandServices
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

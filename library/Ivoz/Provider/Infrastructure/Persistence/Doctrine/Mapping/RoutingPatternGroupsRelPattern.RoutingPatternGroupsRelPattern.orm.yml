@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RoutingPatternGroupsRelPatternDoctrineRepository
+  type: entity
+  table: RoutingPatternGroupsRelPatterns
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

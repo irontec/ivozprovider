@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\LcrRuleTargetDoctrineRepository
+  type: entity
+  table: LcrRuleTargets
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

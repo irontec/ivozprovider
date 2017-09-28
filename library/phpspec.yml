@@ -1,0 +1,9 @@
+suites:
+extensions:
+  LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
+    blacklist:
+      - src/EntityGeneratorBundle
+    blacklist_files:
+      - src/CoreBundle/CoreBundle.php
+    output:
+      html: spec/coverage

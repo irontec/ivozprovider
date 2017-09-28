@@ -1,0 +1,142 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include ConditionalRoutesConditionsList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: conditionalRoutesList_screen
+
+  screens: &conditionalRoutes_screensLink
+    conditionalRoutesList_screen: &conditionalRoutesList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *ConditionalRoutes
+      class: ui-silk-arrow-divide
+      title: _("List of %s %2s", ngettext('Conditional Route', 'Conditional Routes', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields: &conditionalRoutes_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            conditionalRoutesEdit_screen: true
+            conditionalRoutesConditionsList_screen: true
+          dialogs:
+            conditionalRoutesDel_dialog: true
+          default: conditionalRoutesEdit_screen
+        blacklist:
+          IVRCommonId: true
+          IVRCustomId: true
+          huntGroupId: true
+          conferenceRoomId: true
+          userId: true
+          voiceMailUserId: true
+          numberValue: true
+          friendValue: true
+          queueId: true
+          conferenceRoomId: true
+          extensionId: true
+        order:
+          name: true
+          locutionId: true
+          routeType: true
+          target: true
+      options:
+        title: _("Options")
+        screens:
+          conditionalRoutesNew_screen: true
+        dialogs:
+          conditionalRoutesDel_dialog: true
+
+    conditionalRoutesNew_screen: &conditionalRoutesNew_screenLink
+      <<: *ConditionalRoutes
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Conditional Route', 'Conditional Routes', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedCompany
+      shortcutOption: N
+      fields:
+        blacklist: &conditionalRoutesBlacklist_link
+          target: true
+      fixedPositions: &conditionalRoutesPositions_link
+        group0:
+          label: _("Basic Configuration")
+          colsPerRow: 3
+          fields:
+            name: 2
+        group1:
+          label: _("No matching condition handler")
+          colsPerRow: 6
+          fields:
+            locutionId: 6
+            routeType: 3
+            IVRCommonId: 3
+            IVRCustomId: 3
+            huntGroupId: 3
+            voiceMailUserId: 3
+            userId: 3
+            numberValue: 3
+            friendValue: 3
+            queueId: 3
+            conferenceRoomId: 3
+            extensionId: 3
+
+    conditionalRoutesEdit_screen: &conditionalRoutesEdit_screenLink
+      <<: *ConditionalRoutes
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Conditional Route', 'Conditional Routes', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Conditional Route', 'Conditional Routes', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          <<: *conditionalRoutesBlacklist_link
+      fixedPositions:
+        <<: *conditionalRoutesPositions_link
+
+    #conditionalRoutesConditions:
+    <<: *conditionalRoutesConditions_screensLink
+    conditionalRoutesConditionsList_screen:
+      <<: *conditionalRoutesConditionsList_screenLink
+      filterField: conditionalRoute
+      parentOptionCustomizer:
+        - recordCount
+
+    conditionalRoutesConditionsNew_screen:
+      <<: *conditionalRoutesConditionsNew_screenLink
+      filterField: conditionalRoute
+
+    conditionalRoutesConditionsEdit_screen:
+      <<: *conditionalRoutesConditionsEdit_screenLink
+      filterField: conditionalRoute
+
+  dialogs: &conditionalRoutes_dialogsLink
+    conditionalRoutesDel_dialog: &conditionalRoutesDel_dialogLink
+      <<: *ConditionalRoutes
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Conditional Route', 'Conditional Routes', 1))
+      description: _("Do you want to delete this %s?", ngettext('Conditional Route', 'Conditional Routes', 1))
+      message: _("%s successfully deleted.", ngettext('Conditional Route', 'Conditional Routes', 1))
+      multiItem: 1
+      labelOnList: 1
+
+   # conditionalRoutesConditions dialogs:
+    <<: *conditionalRoutesConditions_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\HolidayDateDoctrineRepository
+  type: entity
+  table: HolidayDates
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

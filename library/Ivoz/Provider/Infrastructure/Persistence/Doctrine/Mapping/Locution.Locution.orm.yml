@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Locution\Locution:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\LocutionDoctrineRepository
+  type: entity
+  table: Locutions
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

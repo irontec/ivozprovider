@@ -9,7 +9,6 @@ class IvozProvider_Klear_Ghost_RouteTarget extends KlearMatrix_Model_Field_Ghost
      */
     public function getData ($model)
     {
-
         // Get DDI Route Type
         $routeType = $model->getRouteType();
 
@@ -35,7 +34,7 @@ class IvozProvider_Klear_Ghost_RouteTarget extends KlearMatrix_Model_Field_Ghost
 
                 // If Target is assigned, get its name
                 if ($target) {
-                    if ($target instanceof \IvozProvider\Model\Raw\Users)
+                    if ($target instanceof \Ivoz\Provider\Domain\Model\User\UserDTO)
                         return $target->getName() . ' ' . $target->getLastname();
                     else
                         return $target->getName();

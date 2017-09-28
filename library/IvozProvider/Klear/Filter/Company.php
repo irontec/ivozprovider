@@ -12,7 +12,7 @@ class IvozProvider_Klear_Filter_Company implements KlearMatrix_Model_Field_Selec
         $loggedUser = $auth->getIdentity();
         $currentCompanyId = $loggedUser->companyId;
 
-        $this->_condition[] = "`companyId` = '".$currentCompanyId."'";
+        $this->_condition = ["self::company = '" . $currentCompanyId . "'"];
 
         return true;
     }
@@ -20,8 +20,8 @@ class IvozProvider_Klear_Filter_Company implements KlearMatrix_Model_Field_Selec
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return;
+        return null;
     }
 }

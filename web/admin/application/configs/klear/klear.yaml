@@ -1,0 +1,349 @@
+production:
+  main:
+    dynamicConfigClass: IvozProvider\Klear\Dynamic\Builder
+    sitename: "Main administration portal"
+    sitesubname: "Main website"
+    logo: images/irontec.png
+    year: 2017
+    lang: en
+    langs:
+      es:
+        title: Español
+        language: es
+        locale: es_ES
+      en:
+        title: English
+        language: en
+        locale: en_US
+    jqueryUI:
+      theme: redmond
+    raw:
+      css:
+        - "css/klear.css"
+        - "default/css/customMenu.css"
+        - "default/css/customFields.css"
+        - "default/css/global.css"
+        - "default/css/jquery.ui.spinner.css"
+      javascript:
+        - "default/js/customMenu.js"
+        - "default/js/customTooltip.js"
+        - "default/js/customSpinner.js"
+    actionHelpers:
+    auth:
+      adapter: IvozProvider\Klear\Auth\Adapter
+      userMapper: IvozProvider\Klear\Auth\MainOperators\Mapper
+      title: _("Access denied")
+      description: _("Insert your username")
+      session:
+        name: MainOperator
+        disableChangeName: false
+    timezone: Europe/Madrid
+    disableFixed: true
+    hideKlearName: true
+
+  menu:
+    General:
+      title:  _("Platform Configuration")
+      description: _("Platform Configuration")
+      showOnlyIf: ${auth.canSeeMain}
+      submenus:
+        BrandsList:
+          title: ngettext('Brand', 'Brands', 0)
+          class: ui-silk-world
+          description: _("List of %s", ngettext('Brand', 'Brands', 0))
+        DomainsList:
+          title: ngettext('Domain', 'Domains', 0)
+          class: ui-silk-link
+          description: _("List of %s", ngettext('Domain', 'Domains', 0))
+        ApplicationServersList:
+          title: ngettext('Application Server', 'Application Servers', 0)
+          class: ui-silk-asterisk-yellow
+          description: _("List of %s", ngettext('Application Server', 'Application Servers', 0))
+        ProxyUsersList:
+          title: ngettext('Proxy Users', 'Proxies Users', 1)
+          class: ui-silk-server
+          description: _("List of %s", ngettext('Proxy Users', 'Proxies Users', 0))
+        ProxyTrunksList:
+          title: ngettext('Proxy Trunks', 'Proxies Trunks', 1)
+          class: ui-silk-server
+          description: _("List of %s", ngettext('Proxy Trunks', 'Proxies Trunks', 0))
+        MediaRelaySetsList:
+          title: ngettext('Media relay set', 'Media relay sets', 0)
+          class: ui-silk-bell-go
+          description: _("List of %s", ngettext('Media relay set', 'Media relay sets', 0))
+        KamPikeTrustedList:
+          title: ngettext('Antiflood trusted IP', 'Antiflood trusted IPs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Trusted IP address', 'Trusted IP addresses', 0))
+        TerminalManufacturersList:
+          title: ngettext('Terminal manufacturer', 'Terminal manufacturers', 0)
+          class: ui-silk-telephone-link
+          description: _("List of %s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0))
+        MainOperatorsList:
+          title: ngettext('Main operator', 'Main operators', 0)
+          class: ui-silk-tux
+          description: _("List of %s", ngettext('Main operator', 'Main operators', 0))
+        ServicesList:
+          title: ngettext('Service', 'Services', 0)
+          class: ui-silk-page-white-wrench
+          description: _("List of %s", ngettext('Service', 'Services', 0))
+        KamAccCdrsList:
+          title: ngettext('Billable call', 'Billable calls', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+        ParsedCDRsList:
+          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
+    Brands:
+      title: _("Brand Configuration")
+      meta: "[mine:${auth.isBrandOperator}|brand:${auth.brandId}|name:${auth.brandName}]"
+      description: ngettext('Brand', 'Brands', 0)
+      showOnlyIf: ${auth.canSeeBrand}
+      submenus:
+        CompaniesList:
+          title: ngettext('Company', 'Companies', 0)
+          class: ui-silk-building
+          description: _("List of %s", ngettext('Company', 'Companies', 0))
+        RetailClientsList:
+          title: ngettext('Retail Client', 'Retail Clients', 0)
+          class: ui-silk-basket
+          description: _("List of %s", ngettext('Retail Client', 'Retail Clients', 0))
+          showOnlyIf: ${auth.brand.retail.enabled}
+        CompanyURLsList:
+          title: ngettext('Portal URL', 'Portal URLs', 0)
+          class: ui-silk-world
+          description: _("List of %s", ngettext('Portal URL', 'Portal URLs', 0))
+        PeeringContractsList:
+          title: ngettext('Peering contract', 'Peering contracts', 0)
+          class: ui-silk-connect
+          description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
+        TransformationRulesetGroupsTrunksList:
+          title: ngettext('Numeric transformation', 'Numeric transformations', 0)
+          class: ui-silk-application-side-expand
+          description: _("List of %s", ngettext('Numeric transformation', 'Numeric transformations', 0))
+        GenericMusicOnHoldList:
+          title: ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0)
+          class: ui-silk-music
+          description: _("List of %s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0))
+        BrandServicesList:
+          title: ngettext('Service', 'Services', 0)
+          class: ui-silk-page-white-wrench
+          description: _("List of %s", ngettext('Service', 'Services', 0))
+        BrandDDIsList:
+          title: ngettext('DDI', 'DDIs', 0)
+          class: ui-silk-lightning-go
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))
+        BrandRetailAccountsList:
+          title: ngettext('Retail Account', 'Retail Accounts', 0)
+          class: ui-silk-key
+          description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
+          showOnlyIf: ${auth.brand.retail.enabled}
+        GenericCallACLPatternsList:
+          title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
+          class: ui-silk-lock-go
+          description: _("List of %s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0))
+        RoutingPatternsList:
+          title: ngettext('Routing pattern', 'Routing patterns', 0)
+          class: ui-silk-script-go
+          description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
+        RoutingPatternGroupsList:
+          title: ngettext('Routing pattern group', 'Routing pattern groups', 0)
+          class: ui-silk-script-link
+          description: _("List of %s", ngettext('Routing pattern group', 'Routing pattern groups', 0))
+        OutgoingRoutingList:
+          title: ngettext('Outgoing Routing', 'Outgoing Routings', 0)
+          class: ui-silk-arrow-divide
+          description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routings', 0))
+        PricingPlansList:
+          title: ngettext('Pricing plan', 'Pricing plans', 0)
+          class: ui-silk-money
+          description: _("List of %s", ngettext('Pricing plan', 'Pricing plans', 0))
+          showOnlyIf: ${auth.brand.billing.enabled}
+        TargetPatternsList:
+          title: ngettext('Pricing pattern', 'Pricing patterns', 0)
+          class: ui-silk-money-yen
+          description: _("List of %s", ngettext('Routing pattern', 'Routing patterns', 0))
+          showOnlyIf: ${auth.brand.billing.enabled}
+        InvoiceTemplatesList:
+          title: ngettext('Invoice template', 'Invoice templates', 0)
+          class: ui-silk-report-key
+          description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
+          showOnlyIf: ${auth.brand.invoices.enabled}
+        FixedCostsList:
+          title: ngettext('Fixed cost', 'Fixed costs', 0)
+          class:  ui-silk-money-add
+          description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
+          showOnlyIf: ${auth.brand.invoices.enabled}
+        InvoicesList:
+          title: ngettext('Invoice', 'Invoices', 0)
+          class: ui-silk-report
+          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
+          showOnlyIf: ${auth.brand.invoices.enabled}
+        KamAccCdrsBrandList:
+          title: ngettext('Billable call', 'Billable calls', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+          showOnlyIf: ${auth.brand.billing.enabled}
+        ParsedCDRsBrandList:
+          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
+    Admin:
+      title: _("Company Configuration")
+      meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
+      showOnlyIf: ${auth.canSeeCompany}
+      description: _("Admin")
+      submenus:
+        UsersList:
+          title: ngettext('User', 'Users', 0)
+          class: ui-silk-user
+          description: _("List of %s", ngettext('User', 'Users', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        TerminalsList:
+          title: ngettext('Terminal', 'Terminals', 0)
+          class: ui-silk-telephone
+          description: _("List of %s", ngettext('Terminal', 'Terminals', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        ExtensionsList:
+          title: ngettext('Extension', 'Extensions', 0)
+          class: ui-silk-book-open
+          description: _("List of %s", ngettext('Extension', 'Extensions', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        FriendsList:
+          showOnlyIf: ${auth.company.friends.enabled}
+          title: ngettext('Friend', 'Friends', 0)
+          class: ui-silk-heart
+          description: _("List of %s", ngettext('Friend', 'Friends', 0))
+        RetailAccountsList:
+          title: ngettext('Retail Account', 'Retail Accounts', 0)
+          class: ui-silk-key
+          description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
+          showOnlyIf: ${auth.companyRetail}
+        DDIsList:
+          title: ngettext('DDI', 'DDIs', 0)
+          class: ui-silk-lightning-go
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))
+        OutgoingDDIRulesList:
+          title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0)
+          class: ui-silk-script-lightning
+          description: _("List of %s", ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        ExternalCallFiltersList:
+          title: ngettext('External call filter', 'External call filters', 0)
+          class: ui-silk-arrow-branch
+          description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        ExternalCallFiltersRetailList:
+          title: ngettext('External call filter', 'External call filters', 0)
+          class: ui-silk-arrow-branch
+          description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
+          showOnlyIf: ${auth.companyRetail}
+        ConditionalRoutesList:
+          title: ngettext('Conditional Route', 'Conditional Routes', 0)
+          class: ui-silk-arrow-divide
+          description: _("List of %s", ngettext('Conditional Route', 'Conditional Routes', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        MatchListsList:
+          title: ngettext('Match List', 'Match Lists', 0)
+          class: ui-silk-text-list-numbers
+          description: _("List of %s", ngettext('Match List', 'Match Lists', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        CalendarsList:
+          title: ngettext('Calendar', 'Calendars', 0)
+          class: ui-silk-calendar
+          description: _("List of %s", ngettext('Calendar', 'Calendars', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        SchedulesList:
+          title: ngettext('Schedule', 'Schedules', 0)
+          class: ui-silk-clock
+          description: _("List of %s", ngettext('Schedule', 'Schedules', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        CallACLList:
+          title: ngettext('Call ACL', 'Call ACLs', 0)
+          class: ui-silk-lock
+          description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        CallACLPatternsList:
+          title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
+          class: ui-silk-lock-go
+          description: _("List of %s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        HuntGroupsList:
+          title: ngettext('Hunt Group', 'Hunt Groups', 0)
+          class: ui-silk-group-go
+          description: _("List of %s", ngettext('Hunt Group', 'Hunt Groups', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        PickUpGroupsList:
+          title: ngettext('Pick up group', 'Pick up groups', 0)
+          class: ui-silk-group-link
+          description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        IvrCommonList:
+          title: ngettext('IVR Common', 'IVRs Common', 0)
+          class: ui-silk-chart-organisation
+          description: _("List of %s", ngettext('IVR Common', 'IVR Common', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        IvrCustomList:
+          title: ngettext('IVR Custom', 'IVR Custom', 0)
+          class: ui-silk-chart-organisation
+          description: _("List of %s", ngettext('IVR Custom', 'IVR Custom', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        QueuesList:
+          title: ngettext('Queue', 'Queues', 0)
+          class: ui-silk-status-away
+          description: _("List of %s", ngettext('Queue', 'Queues', 0))
+          showOnlyIf: ${auth.company.queues.enabled}
+        ConferenceRoomsList:
+          showOnlyIf: ${auth.company.conferences.enabled}
+          title: ngettext('Conference room', 'Conference rooms', 0)
+          class: ui-silk-transmit-blue
+          description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        LocutionsList:
+          title: ngettext('Locution', 'Locutions', 0)
+          class: ui-silk-sound
+          description: _("List of %s", ngettext('Locution', 'Locutions', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        MusicOnHoldList:
+          title: ngettext('Music on Hold', 'Musics on Hold', 0)
+          class: ui-silk-music
+          description: _("List of %s", ngettext('Music on Hold', 'Musics on Hold', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        RecordingsList:
+          showOnlyIf: ${auth.company.recordings.enabled}
+          title: ngettext('Recording', 'Recordings', 0)
+          class: ui-silk-bullet-disk
+          description: _("List of %s", ngettext('Recording', 'Recordings', 0))
+        CompanyServicesList:
+          title: ngettext('Service', 'Services', 0)
+          class: ui-silk-page-white-wrench
+          description: _("List of %s", ngettext('Service', 'Services', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        FaxesList:
+          showOnlyIf: ${auth.company.faxes.enabled}
+          title: ngettext('Fax', 'Faxes', 0)
+          class: ui-silk-printer
+          description: _("List of %s", ngettext('Fax', 'Faxes', 0))
+        ParsedCDRsCompanyList:
+          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
+  footerMenu:
+    footer:
+      title: ''
+      submenus:
+        Dashboard:
+          default: true
+          title: _("Control Panel")
+          class: ui-silk-bricks
+          description: _("Main platform view")
+
+testing:
+  _extends: production
+staging:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

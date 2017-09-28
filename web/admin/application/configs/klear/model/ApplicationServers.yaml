@@ -1,0 +1,35 @@
+production:
+  class: \IvozProvider\Model\ApplicationServers
+  entity: \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
+  fields:
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+    ip:
+      title: _('Ip')
+      type: text
+      trim: both
+      required: true
+    transport:
+      title: _('Transport')
+      type: text
+      trim: both
+      defaultValue: udp
+    from_pattern:
+      title: _('From pattern')
+      type: text
+      trim: both
+    tag:
+      title: _('Tag')
+      type: text
+      trim: both
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -1,0 +1,92 @@
+Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
+  type: mappedSuperclass
+  indexes:
+    userId:
+      columns:
+        - userId
+    extensionId:
+      columns:
+        - extensionId
+    voiceMailUserId:
+      columns:
+        - voiceMailUserId
+  uniqueConstraints:
+    callFwTypeUser:
+      columns:
+        - callForwardType
+        - userId
+        - callTypeFilter
+  fields:
+    callTypeFilter:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:internal|external|both]'
+      column: callTypeFilter
+    callForwardType:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:inconditional|noAnswer|busy|userNotRegistered]'
+      column: callForwardType
+    targetType:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:number|extension|voicemail]'
+      column: targetType
+    numberValue:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: numberValue
+    noAnswerTimeout:
+      type: smallint
+      nullable: false
+      options:
+        unsigned: false
+        default: '10'
+      column: noAnswerTimeout
+  manyToOne:
+    user:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    extension:
+      targetEntity: \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        extensionId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    voiceMailUser:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        voiceMailUserId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

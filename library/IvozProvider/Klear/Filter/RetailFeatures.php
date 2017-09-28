@@ -1,10 +1,13 @@
 <?php
 
-use \Ivozprovider\Model\Features as Features;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
+use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDTO;
 
 class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
+    protected $_arguments = array();
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
@@ -14,21 +17,32 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
         }
         $currentBrandId = $auth->getIdentity()->brandId;
 
-        $mapper = new \IvozProvider\Mapper\Sql\FeaturesRelBrands();
-        $rels = $mapper->fetchList("brandId='" . $currentBrandId . "'");
+        /**
+         * @var \ZfBundle\Services\DataGateway $dataGateway
+         */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /**
+         * @var FeaturesRelBrandDTO[] $rels
+         */
+        $rels = $dataGateway->findBy(
+            FeaturesRelBrand::class,
+            ['FeaturesRelBrand.brand = ' . $currentBrandId]
+        );
 
         $excludedFeatures = array(
-            Features::QUEUES,
-            Features::FRIENDS,
-            Features::CONFERENCES,
-            Features::BILLING,
-            Features::INVOICES,
-            Features::RETAIL,
+            Feature::QUEUES,
+            Feature::FRIENDS,
+            Feature::CONFERENCES,
+            Feature::BILLING,
+            Feature::INVOICES,
+            Feature::RETAIL,
         );
 
         $featureIds = [];
         foreach ($rels as $rel) {
             $featureId = $rel->getFeatureId();
+
             // Ignore features not related with Retail Clients
             if (in_array($featureId, $excludedFeatures)) {
                 continue;
@@ -37,9 +51,10 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
         }
 
         if (count($featureIds)) {
-            $this->_condition[] = "`id` IN (" . implode(',', $featureIds) .")";
+            $this->_condition[] = 'self::id IN (:featureIds)';
+            $this->_arguments = ['featureIds' => $featureIds];
         } else {
-            $this->_condition[] = "`id` = NULL";
+            $this->_condition[] = 'self::id is NULL';
         }
 
         return true;
@@ -47,9 +62,9 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
 
     public function getCondition()
     {
-        if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
-        }
-        return;
+        return [
+            '(' . implode(" AND ", $this->_condition) . ')',
+            $this->_arguments
+        ];
     }
 }

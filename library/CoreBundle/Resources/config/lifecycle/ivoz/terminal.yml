@@ -1,0 +1,42 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.terminal.service_collection:
+    '@Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\Terminal\SanitizeValues:
+    tags:
+      - { name: provider.lifecycle.terminal.pre_persist, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByTerminal:
+    tags:
+      - { name: provider.lifecycle.terminal.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $psEndpointRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint")'
+
+  Ivoz\Ast\Domain\Service\PsAor\UpdateByTerminal:
+    tags:
+      - { name: provider.lifecycle.terminal.post_persist, priority: 20 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $psAorRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsAor\\PsAor")'

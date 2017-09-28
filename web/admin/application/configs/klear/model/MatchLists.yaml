@@ -1,0 +1,33 @@
+production:
+  class: \IvozProvider\Model\MatchLists
+  entity: Ivoz\Provider\Domain\Model\MatchList\MatchList
+  fields:
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+#          mapperName: \IvozProvider\Mapper\Sql\Companies
+          entity: Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - type
+            template: '%type%'
+          order: type
+      default: true
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      maxLength: 50
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

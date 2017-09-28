@@ -1,0 +1,39 @@
+production: 
+  class: \IvozProvider\Model\TrunksAddress
+  entity: Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddress
+  fields: 
+    grp:
+      title: _('Grp')
+      type: number
+      defaultValue: 1
+      source: 
+        control: Spinner
+      default: true
+    ipAddr:
+      title: _('Ip addr')
+      type: text
+      maxLength: 50
+    mask:
+      title: _('Mask')
+      type: number
+      defaultValue: 32
+      source: 
+        control: Spinner
+    port:
+      title: _('Port')
+      type: number
+      defaultValue: 0
+      source: 
+        control: Spinner
+    tag:
+      title: _('Tag')
+      type: text
+      maxLength: 64
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

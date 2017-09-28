@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RoutingPatternDoctrineRepository
+  type: entity
+  table: RoutingPatterns
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    lcrRules:
+      targetEntity: Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface
+      mappedBy: routingPattern
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

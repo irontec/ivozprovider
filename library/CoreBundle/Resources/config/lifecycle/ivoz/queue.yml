@@ -1,0 +1,33 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.queue.service_collection:
+    '@Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\Queue\SanitizeValues:
+    tags:
+      - { name: provider.lifecycle.queue.pre_persist, priority: 10 }
+    arguments: ~
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Ast\Domain\Service\Queue\UpdateByIvozQueue:
+    tags:
+      - { name: provider.lifecycle.queue.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $astQueueRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\Queue\\Queue")'

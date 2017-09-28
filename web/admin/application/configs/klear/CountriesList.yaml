@@ -1,0 +1,133 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include CompaniesList.yaml
+#include DDIsList.yaml
+#include TimezonesList.yaml
+#include UsersList.yaml
+
+
+production: 
+  main: 
+    module: klearMatrix
+    defaultScreen: countriesList_screen
+  screens: &countries_screensLink 
+    countriesList_screen: &countriesList_screenLink 
+      controller: list
+      pagination: 
+        items: 25
+      <<: *Countries
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Country', 'Countries', 0), "[format| (%parent%)]")
+      fields: &countries_fieldsLink 
+        options: 
+          title: _("Options")
+          screens: 
+            countriesEdit_screen: true
+            companiesList_screen: true
+            dDIsList_screen: true
+            timezonesList_screen: true
+            usersList_screen: true
+          dialogs: 
+            countriesDel_dialog: true
+          default: countriesEdit_screen
+      options: 
+        title: _("Options")
+        screens: 
+          countriesNew_screen: true
+        dialogs: 
+          countriesDel_dialog: true
+    countriesNew_screen: &countriesNew_screenLink 
+      <<: *Countries
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Country', 'Countries', 1), "[format| (%parent%)]")
+      shortcutOption: N
+    countriesEdit_screen: &countriesEdit_screenLink
+      <<: *Countries
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      labelOnPostAction: _("Edit %s %2s", ngettext('Country', 'Countries', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Country', 'Countries', 1), "[format| (%item%)]")
+    #companies: 
+    <<: *companies_screensLink
+    companiesList_screen: 
+      <<: *companiesList_screenLink
+      filterField: Country
+      parentOptionCustomizer: 
+        - recordCount
+    companiesNew_screen: 
+      <<: *companiesNew_screenLink
+      filterField: Country
+    companiesEdit_screen: 
+      <<: *companiesEdit_screenLink
+      filterField: Country
+
+    #dDIs: 
+    dDIsList_screen: 
+      <<: *dDIsList_screenLink
+      filterField: Country
+      parentOptionCustomizer: 
+        - recordCount
+    dDIsNew_screen: 
+      <<: *dDIsNew_screenLink
+      filterField: Country
+    dDIsEdit_screen: 
+      <<: *dDIsEdit_screenLink
+      filterField: Country
+
+    #timezones: 
+    timezonesList_screen: 
+      <<: *timezonesList_screenLink
+      filterField: Country
+      parentOptionCustomizer: 
+        - recordCount
+    timezonesNew_screen: 
+      <<: *timezonesNew_screenLink
+      filterField: Country
+    timezonesEdit_screen: 
+      <<: *timezonesEdit_screenLink
+      filterField: Country
+
+    #users: 
+    usersList_screen: 
+      <<: *usersList_screenLink
+      filterField: Country
+      parentOptionCustomizer: 
+        - recordCount
+    usersNew_screen: 
+      <<: *usersNew_screenLink
+      filterField: Country
+    usersEdit_screen: 
+      <<: *usersEdit_screenLink
+      filterField: Country
+
+  dialogs: &countries_dialogsLink 
+    countriesDel_dialog: &countriesDel_dialogLink 
+      <<: *Countries
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Country', 'Countries', 1))
+      description: _("Do you want to delete this %s?", ngettext('Country', 'Countries', 1))
+      message: _("%s successfully deleted.", ngettext('Country', 'Countries', 1))
+      multiItem: 1
+      labelOnList: 1
+  # companies dialogs: 
+    <<: *companies_dialogsLink
+  # dDIs dialogs: 
+    <<: *dDIs_dialogsLink
+  # timezones dialogs: 
+    <<: *timezones_dialogsLink
+  # users dialogs: 
+    <<: *users_dialogsLink
+staging: 
+  _extends: production
+testing: 
+  _extends: production
+development: 
+  _extends: production
+localdev: 
+  _extends: production

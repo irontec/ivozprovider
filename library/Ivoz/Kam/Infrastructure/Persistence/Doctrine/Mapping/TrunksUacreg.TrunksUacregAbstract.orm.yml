@@ -1,0 +1,136 @@
+Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
+  type: mappedSuperclass
+  indexes:
+    brandId:
+      columns:
+        - brandId
+    peeringContractId:
+      columns:
+        - peeringContractId
+  uniqueConstraints:
+    l_uuid_idx:
+      columns:
+        - l_uuid
+  fields:
+    lUuid:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: ''
+      column: l_uuid
+    lUsername:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: unused
+      column: l_username
+    lDomain:
+      type: string
+      nullable: false
+      length: 190
+      options:
+        fixed: false
+        default: unused
+      column: l_domain
+    rUsername:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: ''
+      column: r_username
+    rDomain:
+      type: string
+      nullable: false
+      length: 190
+      options:
+        fixed: false
+        default: ''
+      column: r_domain
+    realm:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: ''
+    authUsername:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: ''
+      column: auth_username
+    authPassword:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: ''
+      column: auth_password
+    authProxy:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: ''
+      column: auth_proxy
+    expires:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+        default: '0'
+    flags:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+        default: '0'
+    regDelay:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+        default: '0'
+      column: reg_delay
+    multiddi:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+        unsigned: true
+      column: multiDdi
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    peeringContract:
+      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        peeringContractId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

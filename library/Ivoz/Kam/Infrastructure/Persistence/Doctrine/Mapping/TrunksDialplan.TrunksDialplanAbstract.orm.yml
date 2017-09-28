@@ -1,0 +1,69 @@
+Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplanAbstract:
+  type: mappedSuperclass
+  indexes:
+    kam_trunks_dialplan_ibfk_2:
+      columns:
+        - transformationRulesetGroupsTrunksId
+  fields:
+    dpid:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+    pr:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+    matchOp:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      column: match_op
+    matchExp:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+      column: match_exp
+    matchLen:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      column: match_len
+    substExp:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+      column: subst_exp
+    replExp:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+      column: repl_exp
+    attrs:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+  manyToOne:
+    transformationRulesetGroupsTrunk:
+      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        transformationRulesetGroupsTrunksId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

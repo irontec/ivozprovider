@@ -1,0 +1,64 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\Company\CompanyLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.company.service_collection:
+    '@Ivoz\Provider\Domain\Service\Company\CompanyLifecycleServiceCollection'
+
+  ##################################
+  ## pre_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues:
+    tags:
+      - { name: provider.lifecycle.company.pre_persist, priority: 10 }
+
+  Ivoz\Provider\Domain\Service\CallAclPattern\PropagateBrandGenericCallAclPatterns:
+    tags:
+      - { name: provider.lifecycle.company.pre_persist, priority: 20 }
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\Domain\UpdateByCompany:
+    tags:
+      - { name: provider.lifecycle.company.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $domainRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Domain\\Domain")'
+
+  Ivoz\Kam\Domain\Service\UsersDomainAttr\CreateByCompany:
+    tags:
+      - { name: provider.lifecycle.company.post_persist, priority: 20 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices:
+    tags:
+      - { name: provider.lifecycle.company.post_persist, priority: 30 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $brandServiceRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService")'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\Company\PersistedXmlRpc:
+    tags:
+      - { name: provider.lifecycle.company.post_persist, priority: 40 }
+
+  ##################################
+  ## post_remove
+  ##################################
+
+  Ivoz\Provider\Infrastructure\Domain\Service\Company\RemovedXmlRpc:
+    tags:
+      - { name: provider.lifecycle.company.post_remove, priority: 10 }

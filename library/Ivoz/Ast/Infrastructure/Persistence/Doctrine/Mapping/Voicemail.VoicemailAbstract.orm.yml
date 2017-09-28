@@ -1,0 +1,226 @@
+Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract:
+  type: mappedSuperclass
+  indexes:
+    ast_voicemail_mailbox:
+      columns:
+        - mailbox
+    ast_voicemail_context:
+      columns:
+        - context
+    ast_voicemail_mailbox_context:
+      columns:
+        - mailbox
+        - context
+    ast_voicemail_imapuser:
+      columns:
+        - imapuser
+    userId:
+      columns:
+        - userId
+  fields:
+    context:
+      type: string
+      nullable: false
+      length: 80
+      options:
+        fixed: false
+    mailbox:
+      type: string
+      nullable: false
+      length: 80
+      options:
+        fixed: false
+    password:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    fullname:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    alias:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    email:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    pager:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    attach:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    attachfmt:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
+    serveremail:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    language:
+      type: string
+      nullable: true
+      length: 20
+      options:
+        fixed: false
+    tz:
+      type: string
+      nullable: true
+      length: 30
+      options:
+        fixed: false
+    deleteVoicemail:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+      column: deleteast_voicemail
+    saycid:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    sendVoicemail:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+      column: sendast_voicemail
+    review:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    tempgreetwarn:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    operator:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    envelope:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    sayduration:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+    forcename:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    forcegreetings:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+    callback:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    dialout:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    exitcontext:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    maxmsg:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+    volgain:
+      type: decimal
+      nullable: true
+      precision: 5
+      scale: 2
+    imapuser:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    imappassword:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    imapserver:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    imapport:
+      type: string
+      nullable: true
+      length: 8
+      options:
+        fixed: false
+    imapflags:
+      type: string
+      nullable: true
+      length: 80
+      options:
+        fixed: false
+    stamp:
+      type: datetime
+      nullable: true
+  manyToOne:
+    user:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

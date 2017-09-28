@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FixedCostsRelInvoiceDoctrineRepository
+  type: entity
+  table: FixedCostsRelInvoices
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

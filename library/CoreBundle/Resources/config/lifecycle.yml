@@ -1,0 +1,22 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/lifecycle/core/xml_rpc.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber:
+      arguments:
+        - "@service_container"
+      tags:
+        - { name: doctrine.event_subscriber }
+
+  Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection:
+    public: true
+
+  Ivoz\Core\Domain\Service\LifecycleEventListener:
+    public: true
+

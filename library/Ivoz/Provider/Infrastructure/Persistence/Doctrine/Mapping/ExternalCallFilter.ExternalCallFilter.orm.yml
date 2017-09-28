@@ -1,0 +1,33 @@
+Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ExternalCallFilterDoctrineRepository
+  type: entity
+  table: ExternalCallFilters
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    blackLists:
+      targetEntity: Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface
+      mappedBy: filter
+    whiteLists:
+      targetEntity: Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface
+      mappedBy: filter
+      cascade: ['persist']
+      orphanRemoval: true
+    schedules:
+      targetEntity: Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface
+      mappedBy: filter
+      cascade: ['persist']
+      orphanRemoval: true
+    calendars:
+      targetEntity: Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar
+      mappedBy: filter
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

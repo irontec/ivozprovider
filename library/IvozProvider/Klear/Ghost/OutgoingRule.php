@@ -1,5 +1,7 @@
 <?php
 
+use Ivoz\Provider\Domain\Model\OutgoingDDIRule\OutgoingDDIRule;
+
 class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     protected $nullDDIValue = "Company's default";
@@ -7,15 +9,17 @@ class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghos
 
     /**
      *
-     * @param $model OutgoingRules
+     * @param OutgoingDDIRule $model
      * @return name Forced DDI text based on action
      */
     public function getOutgoingRuleForcedDDI ($model)
     {
         switch($model->getDefaultAction()) {
             case 'force':
-                if ($model->getForcedDDIId()) {
-                    return $model->getForcedDDI()->getDDIE164();
+                if ($model->getForcedDdi()) {
+                    return $model->getForcedDdi()
+                        ? $model->getForcedDdi()->getDdiE164()
+                        : '';
                 } else {
                     return Klear_Model_Gettext::gettextCheck('_("' . $this->nullDDIValue . '")');
                 }

@@ -1,5 +1,7 @@
 <?php
 
+use Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk;
+
 class IvozProvider_Klear_Filter_KamDialplanCalleeOut implements KlearMatrix_Model_Interfaces_FilterList
 {
     protected $_condition = array();
@@ -19,22 +21,25 @@ class IvozProvider_Klear_Filter_KamDialplanCalleeOut implements KlearMatrix_Mode
         switch ($currentItemName) {
             case "transformationRulesetGroupsTrunksList_screen":
             case "kamTrunksDialplan_callee_outList_screen":
-                $mapper = new \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks();
+                $entity = TransformationRulesetGroupsTrunk::class;
                 break;
-            case "transformationRulesetGroupsUsersList_screen":
-            case "kamUsersDialplan_callee_outList_screen":
-                $mapper = new \IvozProvider\Mapper\Sql\TransformationRulesetGroupsUsers();
-                break;
+//            case "transformationRulesetGroupsUsersList_screen":
+//            case "kamUsersDialplan_callee_outList_screen":
+//                $mapper = new \IvozProvider\Mapper\Sql\TransformationRulesetGroupsUsers();
+//                break;
             default:
                 throw new Klear_Exception_Default("List screen not valid");
                 break;
         }
 
-        $transformationRulesetGroupModel = $mapper->find($routeDispatcher->getParam("pk"));
+        $pk = $routeDispatcher->getParam("pk");
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        $transformationRulesetGroupModel = $dataGateway->find($entity, $pk);
+
         $filterValue = $transformationRulesetGroupModel->getCalleeOut();
-        $condition = "dpid = ".$filterValue;
+        $condition = "self::dpid = " . $filterValue;
         if (is_null($filterValue)) {
-            $condition = "dpid is null";
+            $condition = "self::dpid is null";
         }
 
         $this->_condition[] = $condition;
@@ -45,9 +50,9 @@ class IvozProvider_Klear_Filter_KamDialplanCalleeOut implements KlearMatrix_Mode
     public function getCondition()
     {
         if (count($this->_condition) > 0) {
-            return '(' . implode(" AND ", $this->_condition) . ')';
+            return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return ;
+        return null;
     }
 
 }
