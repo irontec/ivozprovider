@@ -5,7 +5,8 @@ Build-Depends: debhelper, dh-systemd,
     nodejs, ruby-compass, git, openssh-client, curl, php7.0,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
-    libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8)
+    libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8),
+    php7.0-mbstring, php7.0-xml
 Standards-Version: 3.9.6
 Maintainer: Irontec Package Team <packages@irontec.com>
 
@@ -209,7 +210,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, klear-library
+Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, klear-library
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
