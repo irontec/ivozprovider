@@ -287,6 +287,13 @@ class CallsController extends BaseController
             return;
         }
 
+        // For external calls, transform the number to user preferred format
+        if ($this->agi->getCallType() == "external") {
+            // Transfor number to User Preferred
+            $preferred = $user->E164ToPreferred($this->agi->getOrigCallerIdNum());
+            $this->agi->setCallerIdNum($preferred);
+        }
+
         $this->agi->setVariable("DIAL_OPTS", "ic");
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $endpoint->getSorceryId());
     }
