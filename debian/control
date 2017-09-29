@@ -15,12 +15,12 @@ Architecture: all
 Section: admin
 Priority: optional
 Depends: debconf, po-debconf,
-    ivozprovider-profile-as,
-    ivozprovider-profile-data,
-    ivozprovider-profile-proxy,
-    ivozprovider-profile-portal,
-    ivozprovider-kamailio-users,
-    ivozprovider-kamailio-trunks,
+    ivozprovider-profile-as (=${binary:Version}),
+    ivozprovider-profile-data (=${binary:Version}),
+    ivozprovider-profile-proxy (=${binary:Version}),
+    ivozprovider-profile-portal (=${binary:Version}),
+    ivozprovider-kamailio-users (=${binary:Version}),
+    ivozprovider-kamailio-trunks (=${binary:Version}),
     ivozprovider-rtpproxy,
     ivozprovider-rtpengine,
     ivozprovider-recordings
@@ -47,9 +47,9 @@ Architecture: all
 Section: admin
 Priority: optional
 Pre-Depends: libmyodbc, unixodbc
-Depends: ivozprovider-profile-common,
-    ivozprovider-asterisk-agi,
-    ivozprovider-asterisk-config,
+Depends: ivozprovider-profile-common (=${binary:Version}),
+    ivozprovider-asterisk-agi (=${binary:Version}),
+    ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
     php7.0-igbinary,
@@ -65,9 +65,9 @@ Package: ivozprovider-profile-data
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: ivozprovider-profile-common,
+Pre-Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
-    ivozprovider-scheme,
+    ivozprovider-scheme (=${binary:Version}),
     bind9,
     libstring-crc32-perl,
     libgearman-client-perl
@@ -79,8 +79,8 @@ Package: ivozprovider-profile-portal
 Architecture: all
 Section: admin
 Priority: optional
-Depends: ivozprovider-profile-common,
-    ivozprovider-doc,
+Depends: ivozprovider-profile-common (=${binary:Version}),
+    ivozprovider-doc (=${binary:Version}),
     apache2,
     php-gearman,
     php7.0,
@@ -91,8 +91,8 @@ Depends: ivozprovider-profile-common,
     php7.0-curl,
     php7.0-yaml,
     php7.0-gd,
-    ivozprovider-web-admin,
-    ivozprovider-web-user,
+    ivozprovider-web-admin (=${binary:Version}),
+    ivozprovider-web-user (=${binary:Version}),
     gearman-job-server,
     gearman,
     supervisor,
@@ -121,8 +121,8 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-websocket-modules,
         ivozprovider-kamailio-redis-modules,
         ivozprovider-kamailio-presence-modules,
-        ivozprovider-kamailio-trunks,
-        ivozprovider-kamailio-users
+        ivozprovider-kamailio-trunks (=${binary:Version}),
+        ivozprovider-kamailio-users (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
  .
@@ -164,7 +164,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library
+Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
@@ -173,7 +173,7 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Pre-Depends: ivozprovider-common-library
+Pre-Depends: ivozprovider-common-library (=${binary:Version})
 Depends: php7.0-mysql, php7.0-xml, mysql-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
@@ -183,7 +183,7 @@ Package: ivozprovider-web-admin
 Architecture: all
 Section: php
 Priority: optional
-Depends: klear, ivozprovider-common-library, ivozprovider-web-rest, zendframework, libxrender1
+Depends: klear, ivozprovider-common-library (=${binary:Version}), ivozprovider-web-rest (=${binary:Version}), zendframework, libxrender1
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Admin Web - Klear based web interface
  Portals using klear and zendframework 1
@@ -193,7 +193,7 @@ Package: ivozprovider-web-user
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-web-admin
+Depends: ivozprovider-web-admin (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - User Web - Angular based user web interface
  User webapp using Angular and Bootstrap
@@ -203,7 +203,7 @@ Package: ivozprovider-web-rest
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library
+Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rest API files
  .
@@ -222,7 +222,7 @@ Description: IVOZ Provider - Mappers and Models for Zend applications
 Package: ivozprovider-recordings
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library,
+Depends: ivozprovider-common-library (=${binary:Version}),
     libav-tools
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Recordings - Zendframework application
