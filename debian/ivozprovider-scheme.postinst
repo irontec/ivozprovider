@@ -13,8 +13,8 @@ db_stop
 
 # Replace settings in properties
 
-sed -i "s/database_user=.*/s/database_user=$MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
-sed -i "s/database_password=.*/s/database_password=$MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
+sed -i "s/database_user:.*/database_user: $MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
+sed -i "s/database_password:.*/database_password: $MYSQL_PASSWORD/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 
 # Setup password and user in first install (allow changing it later)
 if [ -z "$2" ]; then
