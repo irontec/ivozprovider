@@ -20,6 +20,14 @@
 namespace IvozProvider\Mapper\Sql;
 class RetailAccounts extends Raw\RetailAccounts
 {
+
+    /*
+     * Mysql error code list:
+     * https://dev.mysql.com/doc/refman/5.5/en/error-messages-server.html
+     */
+    const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
+    const UNIQUE_NAME_CONSTRAINT = 'nameBrand';
+
     /**
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
@@ -30,7 +38,18 @@ class RetailAccounts extends Raw\RetailAccounts
         // Set account domain to its brand domain
         $model->setDomain($model->getCompany()->getBrand()->getDomainUsers());
 
-        $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+        try {
+            $response = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+        } catch (\Exception $e) {
+            $isDuplicatedNameError =
+                $e->getCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
+                && strpos($e->getMessage(), self::UNIQUE_NAME_CONSTRAINT);
+            if ($isDuplicatedNameError) {
+                throw new \Exception('Name already in use', 2203, $e);
+            }
+            throw $e;
+        }
+
         if ($response) {
             // Replicate Account into ast_ps_endpoint
             $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
