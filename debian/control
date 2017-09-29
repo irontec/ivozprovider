@@ -194,6 +194,7 @@ Package: ivozprovider-web-user
 Architecture: all
 Section: php
 Priority: optional
+Conflicts: ivozprovider-userweb
 Depends: ivozprovider-web-admin (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - User Web - Angular based user web interface
