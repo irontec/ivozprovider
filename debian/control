@@ -183,6 +183,7 @@ Package: ivozprovider-web-admin
 Architecture: all
 Section: php
 Priority: optional
+Conflicts: ivozprovider-portals
 Depends: klear, ivozprovider-common-library (=${binary:Version}), ivozprovider-web-rest (=${binary:Version}), zendframework, libxrender1
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Admin Web - Klear based web interface
