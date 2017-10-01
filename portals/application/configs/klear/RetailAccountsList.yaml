@@ -18,7 +18,6 @@ production:
         <<: *forcedBrand
       fields:
         blacklist: &retailAccounts_blacklistLink
-          domain: true
           transport: true
           auth_needed: true
           password: true
@@ -36,6 +35,7 @@ production:
           languageId: true
         order:
           name: true
+          domain: true
           description: true
           outgoingDDIId: true
           status: true
