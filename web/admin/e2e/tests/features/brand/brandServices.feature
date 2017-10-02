@@ -16,7 +16,7 @@ Background:
   And I click on "BrandServices" CTA
   Then I am on "BrandServices" list
 
-Scenario: I can save brand service
+Scenario: I can edit brand service
   Given I can see at least one row
   And I click on "BrandServices" first elements edit button
   And I click on save button

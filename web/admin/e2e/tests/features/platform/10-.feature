@@ -13,7 +13,7 @@ Background:
    When I click on "Services" CTA
    Then I am on "Services" list
 
-Scenario: I can save services
+Scenario: I can edit services
   Given I can see at least one row
    When I click on "Services" first elements edit button
     And I click on save button

@@ -16,7 +16,7 @@ Background:
   And I click on "GenericMusicOnHold" CTA
   Then I am on "GenericMusicOnHold" list
 
-Scenario: I can save generic music on hold
+Scenario: I can edit generic music on hold
   Given I can see at least one row
   And I click on "GenericMusicOnHold" first elements edit button
   And I click on save button

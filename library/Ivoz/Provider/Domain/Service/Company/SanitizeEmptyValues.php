@@ -70,6 +70,6 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
             $dto->setAreaCode('');
         }
 
-        $this->entityPersister->persistDto($dto, $entity);
+        $this->entityPersister->persistDto($dto, $entity, false);
     }
 }

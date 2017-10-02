@@ -18,7 +18,7 @@ Background:
   Given I click on "TransformationRulesetGroupsTrunks" first elements "kamTrunksDialplan_callee_out" button
   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_callee_out" subscreen list
 
-Scenario: I can save calle out
+Scenario: I can edit calle out
   Given I can see at least one row
   And I click on "kamTrunksDialplan" first elements edit button
   And I click on save button

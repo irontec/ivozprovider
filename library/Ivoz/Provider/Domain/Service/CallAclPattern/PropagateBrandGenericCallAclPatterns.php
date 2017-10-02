@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\CallAclPattern;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;

@@ -81,107 +81,12 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
 
         $this
             ->entityPersister
-            ->persist($this->dto, $this->entity)
+            ->persistDto($this->dto, $this->entity)
             ->shouldBeCalled();
 
         $this->execute($this->entity, true);
     }
 
-    function it_sets_nif_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setNif(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getNif()) {
-            throw new FailureException(
-                'Empty nif found'
-            );
-        }
-    }
-
-    function it_sets_postal_address_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setPostalAddress(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getPostalAddress()) {
-            throw new FailureException(
-                'Empty postal address found'
-            );
-        }
-    }
-
-    function it_sets_postal_code_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setPostalCode(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getPostalCode()) {
-            throw new FailureException(
-                'Empty postal code found'
-            );
-        }
-    }
-
-    function it_sets_town_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setTown(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getTown()) {
-            throw new FailureException(
-                'Empty town found'
-            );
-        }
-    }
-
-    function it_sets_country_name_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setCountryName(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getCountryName()) {
-            throw new FailureException(
-                'Empty country name found'
-            );
-        }
-    }
-
-    function it_sets_province_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setProvince(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getProvince()) {
-            throw new FailureException(
-                'Empty province name found'
-            );
-        }
-    }
 
     function it_sets_timezone_when_empty(
         BrandInterface $brand,

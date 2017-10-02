@@ -24,7 +24,7 @@ Scenario: I see new brand operator admin page
   When I click on close dialog button
   Then I am on "BrandsList_brandOperators" subscreen list
 
-Scenario: I can save brand operators
+Scenario: I can edit brand operators
   Given I can see at least one row
    When I click on "BrandOperators" first elements edit button
     And I click on save button

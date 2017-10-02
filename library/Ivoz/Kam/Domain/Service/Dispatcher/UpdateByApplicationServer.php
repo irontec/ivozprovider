@@ -43,8 +43,6 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
             'applicationServer' => $entity->getId()
         ]);
 
-        $isNew = is_null($kamDispatcher);
-
         $kamDispatcherDto = $isNew
             ? KamDispatcher::createDTO()
             : $kamDispatcher->toDTO();

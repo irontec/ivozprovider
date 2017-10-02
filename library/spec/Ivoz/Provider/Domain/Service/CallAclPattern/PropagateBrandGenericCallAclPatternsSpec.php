@@ -1,17 +1,17 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\CallACLPattern;
+namespace spec\Ivoz\Provider\Domain\Service\CallAclPattern;
 
 use Ivoz\Provider\Domain\Model\Brand\Brand;
-use Ivoz\Provider\Domain\Model\CallACLPattern\CallACLPattern;
-use Ivoz\Provider\Domain\Service\CallACLPattern\PropagateBrandGenericCallACLPatterns;
+use Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern;
+use Ivoz\Provider\Domain\Service\CallAclPattern\PropagateBrandGenericCallAclPatterns;
 use PhpSpec\ObjectBehavior;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
 use spec\SpecHelperTrait;
 
-class PropagateBrandGenericCallACLPatternsSpec extends ObjectBehavior
+class PropagateBrandGenericCallAclPatternsSpec extends ObjectBehavior
 {
     protected $entityPersister;
     protected $entity;
@@ -39,7 +39,7 @@ class PropagateBrandGenericCallACLPatternsSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(PropagateBrandGenericCallACLPatterns::class);
+        $this->shouldHaveType(PropagateBrandGenericCallAclPatterns::class);
     }
 
     function it_checks_whether_the_entity_is_new()
@@ -69,7 +69,7 @@ class PropagateBrandGenericCallACLPatternsSpec extends ObjectBehavior
             ->willReturn($brand);
 
         $brand
-            ->getGenericCallACLPatterns()
+            ->getGenericCallAclPatterns()
             ->willReturn([]);
 
         $this->execute($this->entity, true);
@@ -78,7 +78,7 @@ class PropagateBrandGenericCallACLPatternsSpec extends ObjectBehavior
 
     function it_sets_call_acl_patterns(
         Brand $brand,
-        CallACLPattern $callACLPattern
+        CallAclPattern $callAclPattern
     ) {
         $this
             ->entity
@@ -87,27 +87,27 @@ class PropagateBrandGenericCallACLPatternsSpec extends ObjectBehavior
             ->willReturn($brand);
 
         $brand
-            ->getGenericCallACLPatterns()
-            ->willReturn([$callACLPattern]);
+            ->getGenericCallAclPatterns()
+            ->willReturn([$callAclPattern]);
 
-        $callACLPattern
+        $callAclPattern
             ->getName()
             ->shouldBeCalled()
             ->willReturn('Name');
 
-        $callACLPattern
+        $callAclPattern
             ->getRegExp()
             ->shouldBeCalled()
             ->willReturn('RegExp');
 
         $this
             ->entityPersister
-            ->persist($this->dto, $this->entity)
+            ->persistDto($this->dto, $this->entity)
             ->shouldBeCalled();
 
         $this->execute($this->entity, true);
 
-        $aclPattern = $this->dto->getCallACLPatterns();
+        $aclPattern = $this->dto->getCallAclPatterns();
         if ($aclPattern[0]->getName() !== 'Name') {
             throw new FailureException(
                 'Unexpected call acl pattern name '

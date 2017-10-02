@@ -9,24 +9,24 @@ Feature: Outgoing routing admin page
 
 Background:
   Given I go to the admin page
-  And I send valid admin credentials
-  Then I am logged in
-  Given I click on brand emulation button
-  And I emulate the brand at position "1"
-  And I click on "OutgoingRouting" CTA
+   When I send valid admin credentials
+   Then I am logged in
+   When I click on brand emulation button
+    And I emulate the brand at position "1"
+    And I click on "OutgoingRouting" CTA
+   Then I am on "OutgoingRouting" list
+
+Scenario: I can create new outgoing routings
+  Given I click on add button
+  And I click on close button
   Then I am on "OutgoingRouting" list
 
-Scenario: I can save outgoing routing
+Scenario: I can edit outgoing routing
   Given I can see at least one row
   And I click on "OutgoingRouting" first elements edit button
   And I click on save button
   Then I can see confirmation dialog within "40" seconds or lower
   And I click on close dialog button
-  Then I am on "OutgoingRouting" list
-
-Scenario: I see new outgoing routing admin page
-  Given I click on add button
-  And I click on close button
   Then I am on "OutgoingRouting" list
 
 Scenario: I can click on delete outgoing routing button

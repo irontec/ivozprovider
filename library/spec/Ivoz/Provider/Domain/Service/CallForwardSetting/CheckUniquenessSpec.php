@@ -5,11 +5,12 @@ namespace spec\Ivoz\Provider\Domain\Service\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallForwardSettingDoctrineRepository;
-use Ivoz\Provider\Domain\Service\CallForwardSetting\CheckValidity;
+use Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness;
+use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class CheckValiditySpec extends ObjectBehavior
+class CheckUniquenessSpec extends ObjectBehavior
 {
     protected $callForwardSettingRepository;
     protected $entity;
@@ -69,7 +70,7 @@ class CheckValiditySpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(CheckValidity::class);
+        $this->shouldHaveType(CheckUniqueness::class);
     }
 
     function it_throws_exception_on_already_existing_inconditional_call_forward()
@@ -79,7 +80,7 @@ class CheckValiditySpec extends ObjectBehavior
             ->matching(
                 $this->getCriteriaArgument('inconditional')
             )
-            ->willReturn(['Something']);
+            ->willReturn(new ArrayCollection(['Something']));
 
         $message = "There is an inconditional call forward with that call type. You can't add call forwards";
         $exception = new \Exception($message, 30000);
@@ -101,14 +102,14 @@ class CheckValiditySpec extends ObjectBehavior
             ->matching(
                 $this->getCriteriaArgument('inconditional')
             )
-            ->willReturn([]);
+            ->willReturn(new ArrayCollection());
 
         $this
             ->callForwardSettingRepository
             ->matching(
                 $this->getCriteriaArgument('busy')
             )
-            ->willReturn(['Something']);
+            ->willReturn(new ArrayCollection(['Something']));
 
         $message = "There is already a busy call forward with that call type.";
         $exception = new \Exception($message, 30002);
@@ -130,14 +131,14 @@ class CheckValiditySpec extends ObjectBehavior
             ->matching(
                 $this->getCriteriaArgument('inconditional')
             )
-            ->willReturn([]);
+            ->willReturn(new ArrayCollection());
 
         $this
             ->callForwardSettingRepository
             ->matching(
                 $this->getCriteriaArgument('noAnswer')
             )
-            ->willReturn(['Something']);
+            ->willReturn(new ArrayCollection(['Something']));
 
         $message = "There is already a noAnswer call forward with that call type.";
         $exception = new \Exception($message, 30003);
@@ -159,21 +160,21 @@ class CheckValiditySpec extends ObjectBehavior
             ->matching(
                 $this->getCriteriaArgument('inconditional')
             )
-            ->willReturn([]);
+            ->willReturn(new ArrayCollection());
 
         $this
             ->callForwardSettingRepository
             ->matching(
                 $this->getCriteriaArgument('noAnswer')
             )
-            ->willReturn([]);
+            ->willReturn(new ArrayCollection());
 
         $this
             ->callForwardSettingRepository
             ->matching(
                 $this->getCriteriaArgument('userNotRegistered')
             )
-            ->willReturn(['Something']);
+            ->willReturn(new ArrayCollection(['Something']));
 
         $message = "There is already a userNotRegistered call forward with that call type.";
         $exception = new \Exception($message, 30004);

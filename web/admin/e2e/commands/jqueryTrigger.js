@@ -1,14 +1,14 @@
 exports.command = function(selector, events, callback) {
-    var client = this;
+    let client = this;
 
     this.execute(trigger, [selector, events], execCallback);
 
     function trigger(selector, events) {
-        var element = $(selector);
+        let element = $(selector);
         if( typeof events === 'string' ) {
             events = [events];
         }
-        for (var idx in events) {
+        for (let idx in events) {
             element.trigger(events[idx]);
         }
 

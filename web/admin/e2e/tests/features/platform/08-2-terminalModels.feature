@@ -24,7 +24,7 @@ Scenario: I see new terminal model admin page
   When I click on close dialog button
   Then I am on "TerminalManufacturersList_terminalModels" subscreen list
 
-Scenario: I can save terminal models
+Scenario: I can edit terminal models
   Given I can see at least one row
    When I click on "TerminalModels" first elements edit button
     And I click on save button

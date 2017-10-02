@@ -36,9 +36,20 @@ function edit () {
       let formData = JSON.parse(
           fs.readFileSync(filePath, 'utf8')
       );
+
       return this
-        .waitForElementVisible('@save', 5000)
-        .jqueryFillOutForm(formData);
+        .waitForElementVisible('@save', 20000)
+        .waitForElementVisible('@close', 5000)
+        .jqueryFillOutForm(
+            formData,
+            (response) => {
+                this.assert.deepEqual(
+                    response.missingFields,
+                    [],
+                    'Unexpected response ' + JSON.stringify(response)
+                );
+            }
+        );
   }
 
   function assertConfirmationDialog(timeoutSeconds) {
