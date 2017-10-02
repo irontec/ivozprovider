@@ -17,7 +17,7 @@ production:
       title: _('SIP domain')
       type: text
       trim: both
-      maxLength: 255
+      maxLength: 190
     defaultTimezoneId:
       title: _('Default timezone')
       type: select
