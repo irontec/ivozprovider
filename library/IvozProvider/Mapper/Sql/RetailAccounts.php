@@ -35,6 +35,11 @@ class RetailAccounts extends Raw\RetailAccounts
     protected function _save(\IvozProvider\Model\Raw\RetailAccounts $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     ) {
+        // Check if brand domain is empty
+        if ($model->getCompany()->getBrand()->getDomainUsers() === '') {
+            throw new \Exception('Brand must have a SIP domain', 2204, $e);
+        }
+
         // Set account domain to its brand domain
         $model->setDomain($model->getCompany()->getBrand()->getDomainUsers());
 

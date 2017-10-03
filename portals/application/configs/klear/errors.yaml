@@ -28,6 +28,7 @@ production:
     2201: _("Email already in use")
     2202: _("SIP Domain already in use")
     2203: _("Name already in use")
+    2204: _("Brand must have a SIP domain")
   connectorErrors:
     9001: _("No Application Server available.")
 staging:
