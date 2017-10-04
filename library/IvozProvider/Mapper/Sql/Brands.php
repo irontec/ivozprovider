@@ -42,6 +42,11 @@ class Brands extends Raw\Brands
             if (!$model->hasChange('registryData')) $model->setRegistryData('');
         }
 
+        $hasRetailFeature = $model->hasFeatureByFeatureIden('retail');
+        if ($hasRetailFeature && !$model->getDomainUsers()) {
+            throw new \Exception('Brands with retail feature must have a SIP domain', 2204);
+        }
+
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
         if ($model->hasChange('domainUsers')) {
