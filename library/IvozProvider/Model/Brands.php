@@ -105,6 +105,17 @@ class Brands extends Raw\Brands
         return false;
     }
 
+    public function hasFeatureByFeatureIden($featureiden)
+    {
+        foreach ($this->getFeatures() as $feature) {
+            if ($feature->getIden() == $featureiden) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function getFeatures()
     {
         $features = array();

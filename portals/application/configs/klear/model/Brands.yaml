@@ -17,6 +17,7 @@ production:
       title: _('SIP domain')
       type: text
       trim: both
+      required: true
       maxLength: 190
     defaultTimezoneId:
       title: _('Default timezone')
@@ -197,6 +198,24 @@ production:
             fields:
               - name
             template: '%name%'
+          visualFilter:
+            iden:
+              retail:
+                toggle:
+                  - domain_users
+              recordings:
+                toggle:
+                  - recordingsLimitMB
+                  - recordingsDiskUsage
+                  - recordingsLimitEmail
+              billing:
+                toggle:
+                  - postalAddress
+                  - postalCode
+                  - town
+                  - province
+                  - country
+                  - registryData
           order: name
 staging:
   _extends: production
