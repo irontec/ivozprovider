@@ -225,6 +225,8 @@ class ExternalCallAction extends RouterAction
                 }
             }
         } else {
+            // Origin is external number, restore incoming number to E.164
+            $this->agi->setCallerIdNum($this->agi->getOrigCallerIdNum());
             return true;
         }
 
