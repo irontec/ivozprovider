@@ -111,6 +111,9 @@ msgstr "Allowed characters are 0-9, * and #"
 msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '*'"
 msgstr "Allowed characters: a-z, A-Z, 0-9, underscore and '*'"
 
+msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '-'"
+msgstr "Allowed characters: a-z, A-Z, 0-9, underscore and '-'"
+
 msgid "Allowed video codecs"
 msgstr "Allowed video codecs"
 
@@ -1338,6 +1341,9 @@ msgstr "Must start with sip or sips followed by colon"
 msgid "Name"
 msgstr "Name"
 
+msgid "Name already in use"
+msgstr "Name already in use"
+
 msgid ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications). "
 "Leave empty to disable."
@@ -1876,6 +1882,9 @@ msgstr ""
 
 msgid "Run template"
 msgstr "Run template"
+
+msgid "SIP Domain already in use"
+msgstr "SIP Domain already in use"
 
 msgid "SIP Domain can't be empty"
 msgstr "SIP Domain can't be empty"

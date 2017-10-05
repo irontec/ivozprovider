@@ -30,7 +30,6 @@ production:
       required: true
       source:
         data: mapper
-
         config:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
           filterClass: IvozProvider_Klear_Filter_Company

@@ -115,6 +115,9 @@ msgstr "Los carácteres permitidos son 0-9,* y #"
 msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '*'"
 msgstr "Los carácteres permitidos son a-z, A-Z, 0-9, guión bajo y '*'"
 
+msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '-'"
+msgstr "Los carácteres permitidos son a-z, A-Z, 0-9, guión bajo y '-'"
+
 msgid "Allowed video codecs"
 msgstr "Codecs video permitidos"
 
@@ -1356,6 +1359,9 @@ msgstr "Debe comenzar con sip o sips seguido de dos puntos"
 msgid "Name"
 msgstr "Nombre"
 
+msgid "Name already in use"
+msgstr "Nombre ya en uso"
+
 msgid ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications). "
 "Leave empty to disable."
@@ -1898,6 +1904,9 @@ msgstr ""
 
 msgid "Run template"
 msgstr "Ejecutar plantilla"
+
+msgid "SIP Domain already in use"
+msgstr "Dominio SIP ya en uso"
 
 msgid "SIP Domain can't be empty"
 msgstr "El dominio SIP no puede estar vacío"

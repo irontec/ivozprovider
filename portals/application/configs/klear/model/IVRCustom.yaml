@@ -35,7 +35,7 @@ production:
             template: '%name%'
           order: name
     noAnswerLocutionId:
-      title: _('No answer locution')
+      title: _('No input locution')
       type: select
       source:
         data: mapper
