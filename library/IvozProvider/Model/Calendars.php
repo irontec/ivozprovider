@@ -23,7 +23,7 @@ class Calendars extends Raw\Calendars
 {
     public function isHolidayDate($date)
     {
-        $holidayDates = $calendar->getHolidayDates("eventDate='" . $date . "'");
+        $holidayDates = $this->getHolidayDates("eventDate='" . $date . "'");
         if (!empty($holidayDates)) {
             return true;
         }
