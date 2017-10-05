@@ -523,6 +523,7 @@ sub groupIsCompleted {
 
 sub insertCDR {
     my $cdr = shift;
+    my $parsedValue = 'yes';
 
     # Prepare INSERT query
     my $fields = join ',', map {"`$_`"} @CDRFIELDS;
@@ -539,18 +540,20 @@ sub insertCDR {
     # Insert new row to ParsedCDRs
     my $sth = $dbh->prepare($insertStat)
           or die "Couldn't prepare statement: $insertStat";
-    $sth->execute()
-          or die "Couldn't execute statement: $insertStat";
+    if (!$sth->execute()) {
+        warn "Couldn't execute statement: $insertStat";
+        $parsedValue = 'error';
+    }
     $sth->finish();
 
     # Print values and set parsed value
     if ($$cdr{xcidHash}) {
         logger "[$$cdr{initialLegHash}][$$cdr{cidHash}][$$cdr{xcidHash}] $_ => $$cdr{$_}" for @CDRFIELDS;
-        setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'yes';
-        setParsedValue $$cdr{xstatId}, $$cdr{xcidHash}, 'yes' if $$cdr{xcidHash};
+        setParsedValue $$cdr{statId}, $$cdr{cidHash}, $parsedValue;
+        setParsedValue $$cdr{xstatId}, $$cdr{xcidHash}, $parsedValue;
     } else {
         logger "[$$cdr{initialLegHash}][$$cdr{cidHash}] $_ => $$cdr{$_}" for @CDRFIELDS;
-        setParsedValue $$cdr{statId}, $$cdr{cidHash}, 'yes';
+        setParsedValue $$cdr{statId}, $$cdr{cidHash}, $parsedValue;
     }
 }
 
