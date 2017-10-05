@@ -6,16 +6,12 @@ REST_APPDIR=/opt/irontec/ivozprovider/web/rest
 
 pushd ${REST_APPDIR} || exit 1
 
-	# Remove previous cache data
-	/bin/rm -rf var/cache/*
-	/bin/rm -rf var/logs/*
-
 	# Set proper var permissions	
 	setfacl -dR -m u:www-data:rwX -m u:root:rwX var
 	setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
 	# Create project cache
-	bin/console cache:warmup -e prod
+	bin/console cache:clear --no-warmup -e prod -q -n
 
 popd
 
