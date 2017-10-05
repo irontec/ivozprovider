@@ -104,7 +104,7 @@ class ConditionalRoutesConditions extends Raw\ConditionalRoutesConditions
 
         // Current time in company timezone
         $timezone = $company->getDefaultTimezone();
-        $datetime = new \DateTimeZone($timezone->getTz());
+        $datetime = new \DateTime("now", new \DateTimeZone($timezone->getTz()));
         $date = $datetime->format('Y-m-d');
 
         foreach ($calendars as $calendar) {
