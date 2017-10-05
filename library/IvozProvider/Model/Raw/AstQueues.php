@@ -43,6 +43,13 @@ class AstQueues extends ModelAbstract
     );
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_id;
+
+    /**
      * Database var type varchar
      *
      * @var string
@@ -129,6 +136,7 @@ class AstQueues extends ModelAbstract
 
 
     protected $_columnsList = array(
+        'id'=>'id',
         'name'=>'name',
         'periodic_announce'=>'periodicAnnounce',
         'periodic_announce_frequency'=>'periodicAnnounceFrequency',
@@ -206,12 +214,49 @@ class AstQueues extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstQueues
+     */
+    public function setId($data)
+    {
+
+        if ($this->_id != $data) {
+            $this->_logChange('id', $this->_id, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_id = $data;
+
+        } else if (!is_null($data)) {
+            $this->_id = (int) $data;
+
+        } else {
+            $this->_id = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
      * @param string $data
      * @return \IvozProvider\Model\Raw\AstQueues
      */
     public function setName($data)
     {
 
+        if (is_null($data)) {
+            throw new \InvalidArgumentException(_('Required values cannot be null'));
+        }
         if ($this->_name != $data) {
             $this->_logChange('name', $this->_name, $data);
         }
@@ -698,14 +743,14 @@ class AstQueues extends ModelAbstract
      */
     public function deleteRowByPrimaryKey()
     {
-        if ($this->getName() === null) {
-            $this->_logger->log('The value for Name cannot be null in deleteRowByPrimaryKey for ' . get_class($this), \Zend_Log::ERR);
+        if ($this->getId() === null) {
+            $this->_logger->log('The value for Id cannot be null in deleteRowByPrimaryKey for ' . get_class($this), \Zend_Log::ERR);
             throw new \Exception('Primary Key does not contain a value');
         }
 
         return $this->getMapper()->getDbTable()->delete(
-            'name = ' .
-             $this->getMapper()->getDbTable()->getAdapter()->quote($this->getName())
+            'id = ' .
+             $this->getMapper()->getDbTable()->getAdapter()->quote($this->getId())
         );
     }
 

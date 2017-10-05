@@ -48,6 +48,7 @@ class AstQueues extends MapperAbstract
 
         if (empty($fields)) {
             $result = array(
+                'id' => $model->getId(),
                 'name' => $model->getName(),
                 'periodic_announce' => $model->getPeriodicAnnounce(),
                 'periodic_announce_frequency' => $model->getPeriodicAnnounceFrequency(),
@@ -245,7 +246,7 @@ class AstQueues extends MapperAbstract
                 }//end foreach ($deleteSetNull as $fk)
             } //end if
 
-            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('name') . ' = ?', $model->getName());
+            $where = $dbAdapter->quoteInto($dbAdapter->quoteIdentifier('id') . ' = ?', $model->getId());
             $result = $dbTable->delete($where);
 
             if ($this->_cache) {
@@ -364,7 +365,7 @@ class AstQueues extends MapperAbstract
 
         $data = $model->sanitize()->toArray($fieldsChanged);
 
-        $primaryKey = $model->getName();
+        $primaryKey = $model->getId();
         $success = true;
 
         if ($useTransaction) {
@@ -388,7 +389,7 @@ class AstQueues extends MapperAbstract
         }
 
         if (!$forceInsert) {
-            unset($data['name']);
+            unset($data['id']);
         }
 
         try {
@@ -398,7 +399,7 @@ class AstQueues extends MapperAbstract
                 $primaryKey = $this->getDbTable()->insert($data);
 
                 if ($primaryKey) {
-                    $model->setName($primaryKey);
+                    $model->setId($primaryKey);
                 } else {
                     throw new \Exception("Insert sentence did not return a valid primary key", 9000);
                 }
@@ -437,7 +438,7 @@ class AstQueues extends MapperAbstract
                      ->update(
                          $data,
                          array(
-                             $this->getDbTable()->getAdapter()->quoteIdentifier('name') . ' = ?' => $primaryKey
+                             $this->getDbTable()->getAdapter()->quoteIdentifier('id') . ' = ?' => $primaryKey
                          )
                      );
             }
@@ -553,7 +554,8 @@ class AstQueues extends MapperAbstract
         $entry->stopChangeLog();
 
         if (is_array($data)) {
-            $entry->setName($data['name'])
+            $entry->setId($data['id'])
+                  ->setName($data['name'])
                   ->setPeriodicAnnounce($data['periodic_announce'])
                   ->setPeriodicAnnounceFrequency($data['periodic_announce_frequency'])
                   ->setTimeout($data['timeout'])
@@ -565,7 +567,8 @@ class AstQueues extends MapperAbstract
                   ->setWeight($data['weight'])
                   ->setQueueId($data['queueId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
-            $entry->setName($data->{'name'})
+            $entry->setId($data->{'id'})
+                  ->setName($data->{'name'})
                   ->setPeriodicAnnounce($data->{'periodic_announce'})
                   ->setPeriodicAnnounceFrequency($data->{'periodic_announce_frequency'})
                   ->setTimeout($data->{'timeout'})
@@ -578,7 +581,8 @@ class AstQueues extends MapperAbstract
                   ->setQueueId($data->{'queueId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstQueues) {
-            $entry->setName($data->getName())
+            $entry->setId($data->getId())
+                  ->setName($data->getName())
                   ->setPeriodicAnnounce($data->getPeriodicAnnounce())
                   ->setPeriodicAnnounceFrequency($data->getPeriodicAnnounceFrequency())
                   ->setTimeout($data->getTimeout())

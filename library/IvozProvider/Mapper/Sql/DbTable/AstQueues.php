@@ -31,14 +31,14 @@ class AstQueues extends TableAbstract
     /**
      * $_id - this is the primary key name
      *
-     * @var string
+     * @var int
      */
-    protected $_id = 'name';
+    protected $_id = 'id';
 
     protected $_rowClass = 'IvozProvider\\Model\\AstQueues';
     protected $_rowMapperClass = 'IvozProvider\\Mapper\\Sql\\AstQueues';
 
-    protected $_sequence = true; // string
+    protected $_sequence = true; // int
     protected $_referenceMap = array(
         'AstQueuesIbfk1' => array(
             'columns' => 'queueId',
@@ -48,12 +48,29 @@ class AstQueues extends TableAbstract
     );
     
     protected $_metadata = array (
+	  'id' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_queues',
+	    'COLUMN_NAME' => 'id',
+	    'COLUMN_POSITION' => 1,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => true,
+	    'PRIMARY_POSITION' => 1,
+	    'IDENTITY' => true,
+	  ),
 	  'name' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'name',
-	    'COLUMN_POSITION' => 1,
+	    'COLUMN_POSITION' => 2,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
@@ -61,8 +78,8 @@ class AstQueues extends TableAbstract
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
 	    'UNSIGNED' => NULL,
-	    'PRIMARY' => true,
-	    'PRIMARY_POSITION' => 1,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
 	  'periodic_announce' => 
@@ -70,7 +87,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'periodic_announce',
-	    'COLUMN_POSITION' => 2,
+	    'COLUMN_POSITION' => 3,
 	    'DATA_TYPE' => 'varchar',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -87,7 +104,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'periodic_announce_frequency',
-	    'COLUMN_POSITION' => 3,
+	    'COLUMN_POSITION' => 4,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -104,7 +121,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'timeout',
-	    'COLUMN_POSITION' => 4,
+	    'COLUMN_POSITION' => 5,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -121,7 +138,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'autopause',
-	    'COLUMN_POSITION' => 5,
+	    'COLUMN_POSITION' => 6,
 	    'DATA_TYPE' => 'enum(\'yes\',\'no\',\'all\')',
 	    'DEFAULT' => 'no',
 	    'NULLABLE' => false,
@@ -138,7 +155,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'ringinuse',
-	    'COLUMN_POSITION' => 6,
+	    'COLUMN_POSITION' => 7,
 	    'DATA_TYPE' => 'enum(\'yes\',\'no\')',
 	    'DEFAULT' => 'no',
 	    'NULLABLE' => false,
@@ -155,7 +172,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'wrapuptime',
-	    'COLUMN_POSITION' => 7,
+	    'COLUMN_POSITION' => 8,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -172,7 +189,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'maxlen',
-	    'COLUMN_POSITION' => 8,
+	    'COLUMN_POSITION' => 9,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -189,7 +206,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'strategy',
-	    'COLUMN_POSITION' => 9,
+	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'enum(\'ringall\',\'leastrecent\',\'fewestcalls\',\'random\',\'rrmemory\',\'linear\',\'wrandom\',\'rrordered\')',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -206,7 +223,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'weight',
-	    'COLUMN_POSITION' => 10,
+	    'COLUMN_POSITION' => 11,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
@@ -223,7 +240,7 @@ class AstQueues extends TableAbstract
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'ast_queues',
 	    'COLUMN_NAME' => 'queueId',
-	    'COLUMN_POSITION' => 11,
+	    'COLUMN_POSITION' => 12,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => false,
