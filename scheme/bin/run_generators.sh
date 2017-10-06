@@ -2,6 +2,7 @@
 
 for target in "$@"
 do
+    php ./bin/console provider:clear:interfaces Ivoz/$target &&
     php ./bin/console provider:generate:entities:abstract Ivoz/$target && \
     php ./bin/console provider:generate:traits Ivoz/$target && \
     php ./bin/console provider:generate:entities Ivoz/$target && \

@@ -17,10 +17,10 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       columns:
       - languageId
   uniqueConstraints:
-    name_domain:
+    nameBrand:
       columns:
       - name
-      - domain
+      - brandId
   fields:
     name:
       type: string

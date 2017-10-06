@@ -1,10 +1,10 @@
 imports:
-  - { resource: "@CoreBundle/Resources/config/legacy.yml" }
-  - { resource: "@CoreBundle/Resources/config/asterisk.yml" }
-  - { resource: "@CoreBundle/Resources/config/doctrine.yml" }
-  - { resource: "@CoreBundle/Resources/config/domain_services.yml" }
-  - { resource: "@CoreBundle/Resources/config/application_services.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle.yml" }
+  - { resource: '@CoreBundle/Resources/config/services/legacy.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/asterisk.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/doctrine.yml' }
+  - { resource: "@CoreBundle/Resources/config/services/assemblers.yml" }
+  - { resource: "@CoreBundle/Resources/config/services/domain.yml" }
+  - { resource: '@CoreBundle/Resources/config/lifecycle.yml' }
 
 services:
   _defaults:
@@ -14,33 +14,35 @@ services:
 
   Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer:
     arguments:
-      - "@doctrine.orm.entity_manager"
+      - '@doctrine.orm.entity_manager'
 
   core.doctrine_foreign_key_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
 
   Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer:
     arguments:
-      - "@doctrine.orm.entity_manager"
+      - '@doctrine.orm.entity_manager'
 
   core.doctrine_collection_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
 
-  Ivoz\Core\Application\Command\CreateEntityFromDTO:
+  Ivoz\Core\Application\Service\CreateEntityFromDTO:
     arguments:
-      - "@core.doctrine_foreign_key_transformer"
-      - "@core.doctrine_collection_transformer"
+      - '@core.doctrine_foreign_key_transformer'
+      - '@core.doctrine_collection_transformer'
+      - '@Ivoz\Core\Application\Service\EntityAssembler'
 
   core.create_entity_from_dto:
-    class: Ivoz\Core\Application\Command\CreateEntityFromDTO
+    class: Ivoz\Core\Application\Service\CreateEntityFromDTO
 
-  Ivoz\Core\Application\Command\UpdateEntityFromDTO:
+  Ivoz\Core\Application\Service\UpdateEntityFromDTO:
     arguments:
-      - "@core.doctrine_foreign_key_transformer"
-      - "@core.doctrine_collection_transformer"
+      - '@core.doctrine_foreign_key_transformer'
+      - '@core.doctrine_collection_transformer'
+      - '@Ivoz\Core\Application\Service\EntityAssembler'
 
   core.update_entity_from_dto:
-    class: Ivoz\Core\Application\Command\UpdateEntityFromDTO
+    class: Ivoz\Core\Application\Service\UpdateEntityFromDTO
 
   Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
     public: true

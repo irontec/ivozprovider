@@ -2,7 +2,9 @@
 
 namespace Ivoz\Core\Domain\Service;
 
-class PersistErrorHandlerServiceCollection
+use Ivoz\Core\Domain\Model\EntityInterface;
+
+class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
@@ -22,7 +24,7 @@ class PersistErrorHandlerServiceCollection
         }
     }
 
-    protected function addService(PersistErrorHandlerInterface $service)
+    protected function addService(LifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
     }
@@ -30,10 +32,10 @@ class PersistErrorHandlerServiceCollection
     /**
      * @param EntityInterface $entity
      */
-    public function execute(\Exception $exception)
+    public function execute(EntityInterface $entity, $isNew)
     {
         foreach ($this->services as $service) {
-            $service->handle($exception);
+            $service->handle($entity, $isNew);
         }
     }
 }

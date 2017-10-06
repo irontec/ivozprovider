@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Application\Command;
+namespace Ivoz\Core\Application\Service;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -19,12 +19,19 @@ class UpdateEntityFromDTO
      */
     private $collectionTransformer;
 
+    /**
+     * @var EntityAssembler
+     */
+    private $entityAssembler;
+
     public function __construct(
         ForeignKeyTransformerInterface $fkTransformer,
-        CollectionTransformerInterface $collectionTransformer
+        CollectionTransformerInterface $collectionTransformer,
+        EntityAssembler $entityAssembler
     ) {
         $this->fkTransformer = $fkTransformer;
         $this->collectionTransformer = $collectionTransformer;
+        $this->entityAssembler = $entityAssembler;
     }
 
     public function execute(EntityInterface $entity, DataTransferObjectInterface $dto)
@@ -34,6 +41,9 @@ class UpdateEntityFromDTO
         $dto->transformForeignKeys($this->fkTransformer);
         $dto->transformCollections($this->collectionTransformer);
 
-        $entity->updateFromDTO($dto);
+        $this->entityAssembler->updateFromDTO(
+            $dto,
+            $entity
+        );
     }
 }

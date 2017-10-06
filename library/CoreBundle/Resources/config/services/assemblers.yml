@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    public: true
+
+  Ivoz\Core\Application\Service\DtoAssembler:
+    arguments:
+      $serviceContainer: '@service_container'
+
+  Ivoz\Core\Application\Service\EntityAssembler:
+    arguments:
+      $serviceContainer: '@service_container'
+
+  Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+
+  Ivoz\Provider\Application\Service\Brand\BrandAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_brands.logo'
+
+

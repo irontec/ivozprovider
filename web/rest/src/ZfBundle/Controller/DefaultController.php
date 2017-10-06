@@ -16,7 +16,7 @@ class DefaultController extends Controller
         require_once 'Zend/Registry.php';
 
        // pass Dependency Injection Container
-        \Zend_Registry::set('data_gateway', $this->container->get('zf.data_gateway'));
+        \Zend_Registry::set('data_gateway', $this->container->get('ZfBundle\Services\DataGateway'));
         $rootDir = $this->get('kernel')->getRootDir();
 
         // capture content from legacy application

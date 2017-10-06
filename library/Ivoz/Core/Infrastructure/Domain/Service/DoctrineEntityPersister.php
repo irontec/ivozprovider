@@ -2,8 +2,8 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
-use Ivoz\Core\Application\Command\CreateEntityFromDTO;
-use Ivoz\Core\Application\Command\UpdateEntityFromDTO;
+use Ivoz\Core\Application\Service\CreateEntityFromDTO;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;

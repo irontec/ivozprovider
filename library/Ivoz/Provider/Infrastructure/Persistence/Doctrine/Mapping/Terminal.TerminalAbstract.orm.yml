@@ -26,7 +26,7 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
     domain:
       type: string
       nullable: true
-      length: 255
+      length: 190
       options:
         fixed: false
     disallow:

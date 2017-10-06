@@ -35,53 +35,53 @@ production:
             template: '%tz%'
           order:
             Timezone.tz: asc
-#    logo:
-#      title: _('Logo')
-#      type: file
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          hiddenName: true
-#          download:
-#            external: true
-#            type: command
-#            target: brandsLogoDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          delete:
-#            type: setNullFso
-#            icon: ui-silk-bin
-#            title: _("Delete file")
-#            onNull: hide
-#          upload:
-#            type: command
-#            target: brandsLogoUpload_command
-#            title: _("Upload file")
-#            class: qq-uploader
-#            onNull: show
-#          preview:
-#            target: brandsLogoPreview_command
-#            type: command
-#            class: filePreview
-#            external: 1
-#            props:
-#              width: 150
-#              height: 150
-#              crop: false
-#            onNull: hide
-#          previewList:
-#            target: brandsLogoPreview_command
-#            type: command
-#            class: filePreview
-#            listController: 1
-#            external: 1
-#            props:
-#              width: 30
-#              height: 30
-#              crop: false
-#            onNull: hide
+    logo:
+      title: _('Logo')
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          hiddenName: true
+          download:
+            external: true
+            type: command
+            target: brandsLogoDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          delete:
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+          upload:
+            type: command
+            target: brandsLogoUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview:
+            target: brandsLogoPreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props:
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList:
+            target: brandsLogoPreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props:
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
     postalAddress:
       title: _('Postal address')
       type: text

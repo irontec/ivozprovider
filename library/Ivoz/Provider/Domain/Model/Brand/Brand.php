@@ -2,14 +2,27 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
+use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
  * Brand
  */
-class Brand extends BrandAbstract implements BrandInterface
+class Brand extends BrandAbstract implements BrandInterface, FileContainerInterface
 {
     use BrandTrait;
+    use TempFileContainnerTrait;
+
+    /**
+     * @return array
+     */
+    public function getFileObjects()
+    {
+        return [
+            'Logo'
+        ];
+    }
 
     /**
      * Get id
@@ -123,7 +136,8 @@ class Brand extends BrandAbstract implements BrandInterface
      * @param $featureId
      * @return bool
      */
-    public function hasFeature($featureId) {
+    public function hasFeature($featureId)
+    {
         foreach ($this->getFeatures() as $feature) {
             if ($feature->getId() == $featureId) {
 

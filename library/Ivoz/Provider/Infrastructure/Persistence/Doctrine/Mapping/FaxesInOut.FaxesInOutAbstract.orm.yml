@@ -52,27 +52,6 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutAbstract:
       length: null
       options:
         fixed: false
-#    fileFileSize:
-#      type: integer
-#      nullable: true
-#      options:
-#        unsigned: true
-#        comment: '[FSO]'
-#      column: fileFileSize
-#    fileMimeType:
-#      type: string
-#      nullable: true
-#      length: 80
-#      options:
-#        fixed: false
-#      column: fileMimeType
-#    fileBaseName:
-#      type: string
-#      nullable: true
-#      length: 255
-#      options:
-#        fixed: false
-#      column: fileBaseName
   manyToOne:
     fax:
       targetEntity: \Ivoz\Provider\Domain\Model\Fax\FaxInterface

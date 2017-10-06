@@ -13,6 +13,13 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
  */
 class InterfaceGenerator extends ParentGenerator
 {
+    protected $emptyContent = false;
+
+    public function createEmptyInterfaces()
+    {
+        $this->emptyContent = true;
+    }
+
 
     protected $codeCoverageIgnoreBlock = false;
 
@@ -88,7 +95,6 @@ class InterfaceGenerator extends ParentGenerator
         return $class;
     }
 
-
     /**
      * @param ClassMetadataInfo $metadata
      *
@@ -96,6 +102,10 @@ class InterfaceGenerator extends ParentGenerator
      */
     protected function generateEntityBody(ClassMetadataInfo $metadata)
     {
+        if ($this->emptyContent) {
+            return '';
+        }
+
         $stubMethods = $this->generateEntityStubMethods ? $this->generateEntityStubMethods($metadata) : null;
         $code = array();
 

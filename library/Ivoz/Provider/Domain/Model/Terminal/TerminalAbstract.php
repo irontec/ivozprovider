@@ -282,7 +282,7 @@ abstract class TerminalAbstract
     public function setDomain($domain = null)
     {
         if (!is_null($domain)) {
-            Assertion::maxLength($domain, 255);
+            Assertion::maxLength($domain, 190);
         }
 
         $this->domain = $domain;

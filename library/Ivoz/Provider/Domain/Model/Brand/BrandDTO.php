@@ -11,6 +11,8 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class BrandDTO implements DataTransferObjectInterface
 {
+    use BrandDTOTrait;
+
     /**
      * @var string
      */

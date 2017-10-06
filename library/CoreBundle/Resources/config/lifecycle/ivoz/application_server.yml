@@ -31,7 +31,6 @@ services:
   ##################################
   ## post_remove
   ##################################
-
   Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\RemovedXmlRpc:
     tags:
       - { name: provider.lifecycle.application_server.post_remove, priority: 10 }

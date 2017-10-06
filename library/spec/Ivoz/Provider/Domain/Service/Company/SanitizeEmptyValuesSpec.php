@@ -81,7 +81,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
 
         $this
             ->entityPersister
-            ->persistDto($this->dto, $this->entity)
+            ->persistDto($this->dto, $this->entity, false)
             ->shouldBeCalled();
 
         $this->execute($this->entity, true);

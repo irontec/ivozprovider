@@ -1,14 +1,22 @@
 services:
+  _defaults:
+    autowire: true
+    public: true
 
-    zf.query_builder_factory:
-      class: ZfBundle\Services\QueryBuilderFactory
-      arguments:
-            - "@doctrine.orm.entity_manager"
+  zf.query_builder_factory:
+    class: ZfBundle\Services\QueryBuilderFactory
+    arguments:
+      - "@doctrine.orm.entity_manager"
 
-    zf.data_gateway:
-        class: ZfBundle\Services\DataGateway
-        arguments:
-            - "@doctrine.orm.entity_manager"
-            - "@zf.query_builder_factory"
-            - "@core.create_entity_from_dto"
-            - "@core.update_entity_from_dto"
+  ZfBundle\Services\DataGateway:
+    arguments:
+      $entityManager:
+        "@doctrine.orm.entity_manager"
+      $queryBuilderFactory:
+        "@zf.query_builder_factory"
+      $createEntityFromDTO:
+        "@core.create_entity_from_dto"
+      $entityUpdater:
+        "@core.update_entity_from_dto"
+      $dtoAssembler:
+        '@Ivoz\Core\Application\Service\DtoAssembler'

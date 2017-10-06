@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
+use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
@@ -72,7 +73,40 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->run('post_remove', $args);
     }
 
-    protected function run($eventName, LifecycleEventArgs $args, $isNew = false)
+    protected function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
+    {
+        $this->runSharedServices($eventName, $args, $isNew);
+        $this->runEntityServices($eventName, $args, $isNew);
+
+        $scheduledEntityInsertions = count(
+            $this->em->getUnitOfWork()->getScheduledEntityInsertions()
+        );
+        $isTheEndOfTheEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
+
+        if ($scheduledEntityInsertions > 0 && $isTheEndOfTheEntityLifecycle) {
+            $this->em->flush();
+        }
+    }
+
+    private function runSharedServices($eventName, LifecycleEventArgs $args, bool $isNew)
+    {
+        $serviceName = 'lifecycle.' . $eventName . '.common';
+
+        if (!$this->serviceContainer->has($serviceName)) {
+            return;
+        }
+
+        $entity = $args->getObject();
+
+        /**
+         * @var CommonLifecycleServiceCollection $service
+         */
+        $service = $this->serviceContainer->get($serviceName);
+        $service->execute($entity, $isNew);
+
+    }
+
+    private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
         $entityClass = get_class($entity);
@@ -98,15 +132,6 @@ class DoctrineEventSubscriber implements EventSubscriber
 
             $errorHandler = $this->serviceContainer->get($errorHandlerName);
             $errorHandler->execute($exception);
-        }
-
-        $scheduledEntityInsertions = count(
-            $this->em->getUnitOfWork()->getScheduledEntityInsertions()
-        );
-        $isTheEndOfTheEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
-
-        if ($scheduledEntityInsertions > 0 && $isTheEndOfTheEntityLifecycle) {
-            $this->em->flush();
         }
     }
 }

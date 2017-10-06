@@ -37,9 +37,6 @@ imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/transformation_ruleset_groups_trunk.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/user.yml" }
 
-
-
-
 services:
   _defaults:
     autowire: true

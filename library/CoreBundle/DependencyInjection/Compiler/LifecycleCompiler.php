@@ -72,7 +72,7 @@ class LifecycleCompiler implements CompilerPassInterface
 
             $tags = array_filter($definition->getTags(), function ($key) {
 
-                if (strpos($key, '.lifecycle.') === false) {
+                if (strpos($key, 'lifecycle.') === false) {
                     return false;
                 }
 

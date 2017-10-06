@@ -4,8 +4,11 @@ namespace ZfBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Command\CreateEntityFromDTO;
-use Ivoz\Core\Application\Command\UpdateEntityFromDTO;
+use Ivoz\Core\Application\Service\CreateEntityFromDTO;
+use Ivoz\Core\Application\Service\DtoAssembler;
+use Ivoz\Core\Application\Service\DtoAssemblerFactory;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * persistence data gateway for zend framework applications
@@ -35,22 +38,36 @@ class DataGateway
     private $entityFactory;
 
     /**
+     * @var DtoAssembler
+     */
+    private $dtoAssembler;
+
+    /**
+     * @var array
+     */
+    private $assemblers;
+
+    /**
      * DataGateway constructor.
      * @param EntityManager $entityManager
-     * @param \ZfBundle\Services\QueryBuilderFactory $QueryBuilderFactory
+     * @param \ZfBundle\Services\QueryBuilderFactory $queryBuilderFactory
      * @param CreateEntityFromDTO $createEntityFromDTO
      * @param UpdateEntityFromDTO $entityUpdater
      */
     public function __construct(
         EntityManager $entityManager,
-        QueryBuilderFactory $QueryBuilderFactory,
+        QueryBuilderFactory $queryBuilderFactory,
         CreateEntityFromDTO $createEntityFromDTO,
-        UpdateEntityFromDTO $entityUpdater
+        UpdateEntityFromDTO $entityUpdater,
+        DtoAssembler $dtoAssembler
     ) {
         $this->em = $entityManager;
-        $this->queryBuilderFactory = $QueryBuilderFactory;
+        $this->queryBuilderFactory = $queryBuilderFactory;
         $this->entityFactory = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
+        $this->dtoAssembler = $dtoAssembler;
+
+        $this->assemblers = [];
     }
 
     /**
@@ -75,7 +92,7 @@ class DataGateway
         $results = $repository->findAll();
 
         foreach ($results as $key => $result) {
-            $results[$key] = $result->toDTO();
+            $results[$key] = $this->dtoAssembler->toDTO($result);
         }
 
         return $results;
@@ -92,26 +109,10 @@ class DataGateway
         $result = $repository->find($id);
 
         if (!is_null($result)) {
-            return $result->toDTO();
+            return $this->dtoAssembler->toDTO($result);
         }
 
         return null;
-    }
-
-    /**
-     * @param string $entityName
-     * @param mixed $id
-     * @return DataTransferObjectInterface|null
-     * @throws \Exception
-     */
-    public function findOrFail($entityName, $id)
-    {
-        $response = $this->find($entityName, $id);
-        if ($response) {
-            return $response;
-        }
-
-        throw new \Exception('Entity #'. (string) $id .' not found', $id);
     }
 
     /**
@@ -124,41 +125,18 @@ class DataGateway
      */
     public function findBy($entityName, array $criteria = null, array $orderBy = null, $limit = null, $offset = null)
     {
-        try {
-            $query = $this
-                ->queryBuilderFactory
-                ->createFromArguments($entityName, $criteria, $orderBy, $limit, $offset)
-                ->getQuery();
-            $results = $query->getResult();
-        } catch (\Exception $e) {
-            dump($e);
-            dump(func_get_args());
-            die;
-        }
+        $query = $this
+            ->queryBuilderFactory
+            ->createFromArguments($entityName, $criteria, $orderBy, $limit, $offset)
+            ->getQuery();
+        $results = $query->getResult();
 
         $response = [];
         foreach ($results as $entity) {
-            $response[] = $entity->toDTO();
+            $response[] = $this->dtoAssembler->toDTO($entity);
         }
 
         return $response;
-    }
-
-    /**
-     * @param string $entityName
-     * @param array|null $criteria
-     * @return DataTransferObjectInterface
-     */
-    public function findOneBy($entityName, array $criteria = null)
-    {
-        $response = $this->findBy(
-            $entityName,
-            $criteria
-        );
-
-        return array_shift(
-            $response
-        );
     }
 
     /**
@@ -178,28 +156,19 @@ class DataGateway
         $query = $queryBuilder
             ->getQuery();
 
-        try {
-            $response = $query->getSingleScalarResult();
-        } catch (\Exception $e) {
-            dump($e);
-            dump(func_get_args());
-            die;
-        }
-
-        return $response;
+        return $query->getSingleScalarResult();
     }
 
     public function persist($entityName, DataTransferObjectInterface $dto)
     {
-        try {
-            $entity = $this->entityFactory->execute($entityName, $dto);
-            $this->em->persist($entity);
-            $this->em->flush();
-        } catch (\Exception $e) {
-            dump($e);
-            dump(func_get_args());
-            die;
-        }
+        $entity = $this
+            ->entityFactory
+            ->execute(
+                $entityName, $dto
+            );
+
+        $this->em->persist($entity);
+        $this->em->flush();
 
         $dto->setId($entity->getId());
     }
@@ -214,14 +183,8 @@ class DataGateway
         }
         $this->entityUpdater->execute($entity, $dto);
 
-        try {
-            $this->em->persist($entity);
-            $this->em->flush();
-        } catch (\Exception $e) {
-            dump($e);
-            dump(func_get_args());
-            die;
-        }
+        $this->em->persist($entity);
+        $this->em->flush();
     }
 
     /**
@@ -230,22 +193,16 @@ class DataGateway
      */
     public function remove($entityName, array $ids)
     {
-       try {
-            $repository = $this->getRepository($entityName);
-            foreach ($ids as $id) {
-                $entity = $repository->find($id);
-                if (is_null($entity)) {
-                    throw new \Exception('Entity #'. (string) $id .' not found', $id);
-                }
-
-                $this->em->remove($entity);
+        $repository = $this->getRepository($entityName);
+        foreach ($ids as $id) {
+            $entity = $repository->find($id);
+            if (is_null($entity)) {
+                throw new \Exception('Entity #'. (string) $id .' not found', $id);
             }
-            $this->em->flush();
-        } catch (\Exception $e) {
-            dump($e);
-            dump(func_get_args());
-            die;
+
+            $this->em->remove($entity);
         }
+        $this->em->flush();
     }
 
     public function remoteProcedureCall($entityName, $id, $method, array $arguments)

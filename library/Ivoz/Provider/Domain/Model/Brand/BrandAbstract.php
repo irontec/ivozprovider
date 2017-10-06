@@ -374,7 +374,7 @@ abstract class BrandAbstract
     public function setDomainUsers($domainUsers = null)
     {
         if (!is_null($domainUsers)) {
-            Assertion::maxLength($domainUsers, 255);
+            Assertion::maxLength($domainUsers, 190);
         }
 
         $this->domainUsers = $domainUsers;

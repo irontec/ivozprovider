@@ -7,6 +7,11 @@ use Doctrine\Common\Collections\Collection;
 
 interface BrandInterface extends EntityInterface
 {
+    /**
+     * @return array
+     */
+    public function getFileObjects();
+
     public function getActivePricingPlans($date = null);
 
     public function getActivePrincingPlansIds($date = null);
@@ -571,6 +576,13 @@ interface BrandInterface extends EntityInterface
      * @return array
      */
     public function getGenericCallAclPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    public function addTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
 
 }
 
