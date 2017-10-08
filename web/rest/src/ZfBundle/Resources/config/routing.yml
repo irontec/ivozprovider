@@ -1,5 +1,0 @@
-zf1_page:
-    path: /{url}
-    defaults: { _controller: ZfBundle:Default:index, url: "index" }
-    requirements:
-        url: ".+"
