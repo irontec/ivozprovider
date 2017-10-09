@@ -24,6 +24,10 @@ trait FileContainerAssemblerEntityTrait
         }
         $entity->updateFromDTO($dto);
 
+        if (!$dto->getLogoPath()) {
+            return;
+        }
+
         $entity->addTmpFile(
             new TempFile(
                 $dto->getLogoPath(),
@@ -44,8 +48,28 @@ trait FileContainerAssemblerEntityTrait
         $sizeSetter = 'set'. $fieldName .'FileSize';
         $mimeSetter = 'set'. $fieldName .'MimeType';
 
-
         $filePath = $dto->{$pathGetter}();
+        $fileSize = null;
+        $mimeType = null;
+
+        if (file_exists($filePath)) {
+            $fileSize = filesize($filePath);
+            $finfo = new \finfo(FILEINFO_MIME);
+            if ($finfo) {
+                $mimeType = $finfo->file($filePath);
+            }
+        }
+
+        $dto->{$sizeSetter}(
+            $fileSize
+        );
+        $dto->{$mimeSetter}(
+            $mimeType
+        );
+
+        if (!$id) {
+            return true;
+        }
 
         if (!$this->hasChanged($id, $filePath)) {
             return false;
@@ -54,10 +78,6 @@ trait FileContainerAssemblerEntityTrait
         if (empty($filePath) or !file_exists($filePath)) {
             throw new \Exception('File not found: ' . $filePath);
         }
-
-        $dto->{$sizeSetter}(
-            filesize($filePath)
-        );
 
         return true;
     }

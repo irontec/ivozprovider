@@ -33,10 +33,11 @@ class EntityAssembler
     public function updateFromDTO(DataTransferObjectInterface $dto, EntityInterface $targetEntity)
     {
         $assembler = $this->getAssembler($dto);
-
-        return $assembler
+        $assembler
             ? $assembler->fromDTO($dto, $targetEntity)
             : $targetEntity->updateFromDTO($dto);
+
+        return $targetEntity;
     }
 
     /**
@@ -48,10 +49,11 @@ class EntityAssembler
     {
         $assembler = $this->getAssembler($dto);
         $targetEntity = $entityName::fromDTO($dto);
-
-        return $assembler
+        $assembler
             ? $assembler->fromDTO($dto, $targetEntity)
             : $targetEntity;
+
+        return $targetEntity;
     }
 
     /**

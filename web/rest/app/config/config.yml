@@ -9,7 +9,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    zf1wrapper_bootstrap_path: ../../portals/public/zf.php
+#    zf1wrapper_bootstrap_path: ../../portals/public/zf.php
 
 framework:
     #esi: ~
