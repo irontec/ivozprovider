@@ -102,7 +102,7 @@ class RouterAction
     {
         // Validate route type
         if (empty($this->_routeType)) {
-            $this->agi->error("No configured routeType. This can not be routed.");
+            $this->agi->notice("No configured routeType.");
             return;
         }
 
