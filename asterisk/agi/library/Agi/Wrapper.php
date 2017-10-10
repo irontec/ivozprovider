@@ -313,7 +313,7 @@ class Agi_Wrapper
 
     public function extractURI($uri, $variable)
     {
-        if (preg_match("/([^<]*)(sip:([^@>;]+)@?([^>;]+)?)/", $uri, $matches)) {
+        if (preg_match("/([^<]*)(sip:([^@>;]+)@?([^>;:]+)?)/", $uri, $matches)) {
             switch ($variable) {
                 case 'name':
                     return $matches[1];
