@@ -215,16 +215,16 @@ abstract class PsAorAbstract
     protected function __toArray()
     {
         return [
-            'defaultExpiration' => $this->getDefaultExpiration(),
-            'maxContacts' => $this->getMaxContacts(),
-            'minimumExpiration' => $this->getMinimumExpiration(),
-            'removeExisting' => $this->getRemoveExisting(),
-            'authenticateQualify' => $this->getAuthenticateQualify(),
-            'maximumExpiration' => $this->getMaximumExpiration(),
-            'supportPath' => $this->getSupportPath(),
-            'contact' => $this->getContact(),
-            'qualifyFrequency' => $this->getQualifyFrequency(),
-            'psEndpointId' => $this->getPsEndpoint() ? $this->getPsEndpoint()->getId() : null
+            'defaultExpiration' => self::getDefaultExpiration(),
+            'maxContacts' => self::getMaxContacts(),
+            'minimumExpiration' => self::getMinimumExpiration(),
+            'removeExisting' => self::getRemoveExisting(),
+            'authenticateQualify' => self::getAuthenticateQualify(),
+            'maximumExpiration' => self::getMaximumExpiration(),
+            'supportPath' => self::getSupportPath(),
+            'contact' => self::getContact(),
+            'qualifyFrequency' => self::getQualifyFrequency(),
+            'psEndpointId' => self::getPsEndpoint() ? self::getPsEndpoint()->getId() : null
         ];
     }
 

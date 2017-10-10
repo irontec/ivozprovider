@@ -143,8 +143,8 @@ abstract class PickUpRelUserAbstract
     protected function __toArray()
     {
         return [
-            'pickUpGroupId' => $this->getPickUpGroup() ? $this->getPickUpGroup()->getId() : null,
-            'userId' => $this->getUser() ? $this->getUser()->getId() : null
+            'pickUpGroupId' => self::getPickUpGroup() ? self::getPickUpGroup()->getId() : null,
+            'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
 

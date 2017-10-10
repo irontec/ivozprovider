@@ -202,15 +202,15 @@ abstract class GenericMusicOnHoldAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'status' => $this->getStatus(),
+            'name' => self::getName(),
+            'status' => self::getStatus(),
             'fileSize' => $this->getOriginalFile()->getFileSize(),
             'mimeType' => $this->getOriginalFile()->getMimeType(),
             'baseName' => $this->getOriginalFile()->getBaseName(),
             'fileSize' => $this->getEncodedFile()->getFileSize(),
             'mimeType' => $this->getEncodedFile()->getMimeType(),
             'baseName' => $this->getEncodedFile()->getBaseName(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

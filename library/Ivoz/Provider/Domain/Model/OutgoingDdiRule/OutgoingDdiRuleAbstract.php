@@ -161,10 +161,10 @@ abstract class OutgoingDdiRuleAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'defaultAction' => $this->getDefaultAction(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'forcedDdiId' => $this->getForcedDdi() ? $this->getForcedDdi()->getId() : null
+            'name' => self::getName(),
+            'defaultAction' => self::getDefaultAction(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
     }
 

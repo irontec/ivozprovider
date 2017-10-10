@@ -191,14 +191,14 @@ abstract class MusiconholdAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'mode' => $this->getMode(),
-            'directory' => $this->getDirectory(),
-            'application' => $this->getApplication(),
-            'digit' => $this->getDigit(),
-            'sort' => $this->getSort(),
-            'format' => $this->getFormat(),
-            'stamp' => $this->getStamp()
+            'name' => self::getName(),
+            'mode' => self::getMode(),
+            'directory' => self::getDirectory(),
+            'application' => self::getApplication(),
+            'digit' => self::getDigit(),
+            'sort' => self::getSort(),
+            'format' => self::getFormat(),
+            'stamp' => self::getStamp()
         ];
     }
 

@@ -193,14 +193,14 @@ abstract class IvrCustomEntryAbstract
     protected function __toArray()
     {
         return [
-            'entry' => $this->getEntry(),
-            'targetType' => $this->getTargetType(),
-            'targetNumberValue' => $this->getTargetNumberValue(),
-            'ivrCustomId' => $this->getIvrCustom() ? $this->getIvrCustom()->getId() : null,
-            'welcomeLocutionId' => $this->getWelcomeLocution() ? $this->getWelcomeLocution()->getId() : null,
-            'targetExtensionId' => $this->getTargetExtension() ? $this->getTargetExtension()->getId() : null,
-            'targetVoiceMailUserId' => $this->getTargetVoiceMailUser() ? $this->getTargetVoiceMailUser()->getId() : null,
-            'targetConditionalRouteId' => $this->getTargetConditionalRoute() ? $this->getTargetConditionalRoute()->getId() : null
+            'entry' => self::getEntry(),
+            'targetType' => self::getTargetType(),
+            'targetNumberValue' => self::getTargetNumberValue(),
+            'ivrCustomId' => self::getIvrCustom() ? self::getIvrCustom()->getId() : null,
+            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
+            'targetExtensionId' => self::getTargetExtension() ? self::getTargetExtension()->getId() : null,
+            'targetVoiceMailUserId' => self::getTargetVoiceMailUser() ? self::getTargetVoiceMailUser()->getId() : null,
+            'targetConditionalRouteId' => self::getTargetConditionalRoute() ? self::getTargetConditionalRoute()->getId() : null
         ];
     }
 

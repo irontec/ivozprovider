@@ -177,12 +177,12 @@ abstract class PricingPlansRelCompanyAbstract
     protected function __toArray()
     {
         return [
-            'validFrom' => $this->getValidFrom(),
-            'validTo' => $this->getValidTo(),
-            'metric' => $this->getMetric(),
-            'pricingPlanId' => $this->getPricingPlan() ? $this->getPricingPlan()->getId() : null,
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'validFrom' => self::getValidFrom(),
+            'validTo' => self::getValidTo(),
+            'metric' => self::getMetric(),
+            'pricingPlanId' => self::getPricingPlan() ? self::getPricingPlan()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

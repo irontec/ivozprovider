@@ -207,14 +207,14 @@ abstract class UsersXcapAbstract
     protected function __toArray()
     {
         return [
-            'username' => $this->getUsername(),
-            'domain' => $this->getDomain(),
-            'doc' => $this->getDoc(),
-            'docType' => $this->getDocType(),
-            'etag' => $this->getEtag(),
-            'source' => $this->getSource(),
-            'docUri' => $this->getDocUri(),
-            'port' => $this->getPort()
+            'username' => self::getUsername(),
+            'domain' => self::getDomain(),
+            'doc' => self::getDoc(),
+            'docType' => self::getDocType(),
+            'etag' => self::getEtag(),
+            'source' => self::getSource(),
+            'docUri' => self::getDocUri(),
+            'port' => self::getPort()
         ];
     }
 

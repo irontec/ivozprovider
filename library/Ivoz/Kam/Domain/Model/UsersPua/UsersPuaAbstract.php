@@ -313,24 +313,24 @@ abstract class UsersPuaAbstract
     protected function __toArray()
     {
         return [
-            'presUri' => $this->getPresUri(),
-            'presId' => $this->getPresId(),
-            'event' => $this->getEvent(),
-            'expires' => $this->getExpires(),
-            'desiredExpires' => $this->getDesiredExpires(),
-            'flag' => $this->getFlag(),
-            'etag' => $this->getEtag(),
-            'tupleId' => $this->getTupleId(),
-            'watcherUri' => $this->getWatcherUri(),
-            'callId' => $this->getCallId(),
-            'toTag' => $this->getToTag(),
-            'fromTag' => $this->getFromTag(),
-            'cseq' => $this->getCseq(),
-            'recordRoute' => $this->getRecordRoute(),
-            'contact' => $this->getContact(),
-            'remoteContact' => $this->getRemoteContact(),
-            'version' => $this->getVersion(),
-            'extraHeaders' => $this->getExtraHeaders()
+            'presUri' => self::getPresUri(),
+            'presId' => self::getPresId(),
+            'event' => self::getEvent(),
+            'expires' => self::getExpires(),
+            'desiredExpires' => self::getDesiredExpires(),
+            'flag' => self::getFlag(),
+            'etag' => self::getEtag(),
+            'tupleId' => self::getTupleId(),
+            'watcherUri' => self::getWatcherUri(),
+            'callId' => self::getCallId(),
+            'toTag' => self::getToTag(),
+            'fromTag' => self::getFromTag(),
+            'cseq' => self::getCseq(),
+            'recordRoute' => self::getRecordRoute(),
+            'contact' => self::getContact(),
+            'remoteContact' => self::getRemoteContact(),
+            'version' => self::getVersion(),
+            'extraHeaders' => self::getExtraHeaders()
         ];
     }
 

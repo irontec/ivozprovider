@@ -187,13 +187,13 @@ abstract class UsersAddressAbstract
     protected function __toArray()
     {
         return [
-            'sourceAddress' => $this->getSourceAddress(),
-            'ipAddr' => $this->getIpAddr(),
-            'mask' => $this->getMask(),
-            'port' => $this->getPort(),
-            'tag' => $this->getTag(),
-            'description' => $this->getDescription(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'sourceAddress' => self::getSourceAddress(),
+            'ipAddr' => self::getIpAddr(),
+            'mask' => self::getMask(),
+            'port' => self::getPort(),
+            'tag' => self::getTag(),
+            'description' => self::getDescription(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

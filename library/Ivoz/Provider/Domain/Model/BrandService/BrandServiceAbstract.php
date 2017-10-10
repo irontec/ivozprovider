@@ -151,9 +151,9 @@ abstract class BrandServiceAbstract
     protected function __toArray()
     {
         return [
-            'code' => $this->getCode(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'serviceId' => $this->getService() ? $this->getService()->getId() : null
+            'code' => self::getCode(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'serviceId' => self::getService() ? self::getService()->getId() : null
         ];
     }
 

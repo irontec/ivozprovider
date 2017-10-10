@@ -752,7 +752,7 @@ public function <methodName>(<criteriaArgument>)
             } else if (!strpos($fieldName, '.') || $metadata->isMappedSuperclass) {
 
                 if (!isset($field->declared)) {
-                    $toArray[]  = '\''. $attribute .'\' => $this->get' . Inflector::classify($fieldName) . '()';
+                    $toArray[]  = '\''. $attribute .'\' => self::get' . Inflector::classify($fieldName) . '()';
                     $getters[$attribute] = 'set' . Inflector::classify($fieldName)
                         . '($this->get' . Inflector::classify($fieldName) . '())';
                 }
@@ -928,9 +928,9 @@ public function <methodName>(<criteriaArgument>)
 
         $response[]  =
             '\'' . $attribute .'Id\' => '
-            . '$this->get' . Inflector::classify($fieldName) . '()'
+            . 'self::get' . Inflector::classify($fieldName) . '()'
             . ' ? '
-            . '$this->get' . Inflector::classify($fieldName) . '()->getId()'
+            . 'self::get' . Inflector::classify($fieldName) . '()->getId()'
             . ' : null';
 
         $response[] =

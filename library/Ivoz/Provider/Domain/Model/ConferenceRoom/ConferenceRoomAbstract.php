@@ -169,11 +169,11 @@ abstract class ConferenceRoomAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'pinProtected' => $this->getPinProtected(),
-            'pinCode' => $this->getPinCode(),
-            'maxMembers' => $this->getMaxMembers(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'name' => self::getName(),
+            'pinProtected' => self::getPinProtected(),
+            'pinCode' => self::getPinCode(),
+            'maxMembers' => self::getMaxMembers(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

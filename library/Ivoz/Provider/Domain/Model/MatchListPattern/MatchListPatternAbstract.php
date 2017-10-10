@@ -176,12 +176,12 @@ abstract class MatchListPatternAbstract
     protected function __toArray()
     {
         return [
-            'description' => $this->getDescription(),
-            'type' => $this->getType(),
-            'regexp' => $this->getRegexp(),
-            'numbervalue' => $this->getNumbervalue(),
-            'matchListId' => $this->getMatchList() ? $this->getMatchList()->getId() : null,
-            'numberCountryId' => $this->getNumberCountry() ? $this->getNumberCountry()->getId() : null
+            'description' => self::getDescription(),
+            'type' => self::getType(),
+            'regexp' => self::getRegexp(),
+            'numbervalue' => self::getNumbervalue(),
+            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
+            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
 

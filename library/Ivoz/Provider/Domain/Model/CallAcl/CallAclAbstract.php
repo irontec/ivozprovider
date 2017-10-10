@@ -153,9 +153,9 @@ abstract class CallAclAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'defaultPolicy' => $this->getDefaultPolicy(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'name' => self::getName(),
+            'defaultPolicy' => self::getDefaultPolicy(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

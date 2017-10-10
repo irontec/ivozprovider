@@ -201,14 +201,14 @@ abstract class CallForwardSettingAbstract
     protected function __toArray()
     {
         return [
-            'callTypeFilter' => $this->getCallTypeFilter(),
-            'callForwardType' => $this->getCallForwardType(),
-            'targetType' => $this->getTargetType(),
-            'numberValue' => $this->getNumberValue(),
-            'noAnswerTimeout' => $this->getNoAnswerTimeout(),
-            'userId' => $this->getUser() ? $this->getUser()->getId() : null,
-            'extensionId' => $this->getExtension() ? $this->getExtension()->getId() : null,
-            'voiceMailUserId' => $this->getVoiceMailUser() ? $this->getVoiceMailUser()->getId() : null
+            'callTypeFilter' => self::getCallTypeFilter(),
+            'callForwardType' => self::getCallForwardType(),
+            'targetType' => self::getTargetType(),
+            'numberValue' => self::getNumberValue(),
+            'noAnswerTimeout' => self::getNoAnswerTimeout(),
+            'userId' => self::getUser() ? self::getUser()->getId() : null,
+            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
+            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null
         ];
     }
 

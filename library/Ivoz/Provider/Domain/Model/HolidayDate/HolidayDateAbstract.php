@@ -160,10 +160,10 @@ abstract class HolidayDateAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'eventDate' => $this->getEventDate(),
-            'calendarId' => $this->getCalendar() ? $this->getCalendar()->getId() : null,
-            'locutionId' => $this->getLocution() ? $this->getLocution()->getId() : null
+            'name' => self::getName(),
+            'eventDate' => self::getEventDate(),
+            'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null,
+            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null
         ];
     }
 

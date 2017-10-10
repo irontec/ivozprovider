@@ -221,17 +221,17 @@ abstract class TransformationRulesetGroupsTrunkAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'callerIn' => $this->getCallerIn(),
-            'calleeIn' => $this->getCalleeIn(),
-            'callerOut' => $this->getCallerOut(),
-            'calleeOut' => $this->getCalleeOut(),
-            'description' => $this->getDescription(),
-            'automatic' => $this->getAutomatic(),
-            'internationalCode' => $this->getInternationalCode(),
-            'nationalNumLength' => $this->getNationalNumLength(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'countryId' => $this->getCountry() ? $this->getCountry()->getId() : null
+            'name' => self::getName(),
+            'callerIn' => self::getCallerIn(),
+            'calleeIn' => self::getCalleeIn(),
+            'callerOut' => self::getCallerOut(),
+            'calleeOut' => self::getCalleeOut(),
+            'description' => self::getDescription(),
+            'automatic' => self::getAutomatic(),
+            'internationalCode' => self::getInternationalCode(),
+            'nationalNumLength' => self::getNationalNumLength(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
 

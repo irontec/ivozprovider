@@ -178,12 +178,12 @@ abstract class LcrRuleTargetAbstract
     protected function __toArray()
     {
         return [
-            'lcrId' => $this->getLcrId(),
-            'priority' => $this->getPriority(),
-            'weight' => $this->getWeight(),
-            'ruleId' => $this->getRule() ? $this->getRule()->getId() : null,
-            'gwId' => $this->getGw() ? $this->getGw()->getId() : null,
-            'outgoingRoutingId' => $this->getOutgoingRouting() ? $this->getOutgoingRouting()->getId() : null
+            'lcrId' => self::getLcrId(),
+            'priority' => self::getPriority(),
+            'weight' => self::getWeight(),
+            'ruleId' => self::getRule() ? self::getRule()->getId() : null,
+            'gwId' => self::getGw() ? self::getGw()->getId() : null,
+            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
 

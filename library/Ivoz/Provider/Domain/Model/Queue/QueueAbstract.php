@@ -289,26 +289,26 @@ abstract class QueueAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'maxWaitTime' => $this->getMaxWaitTime(),
-            'timeoutTargetType' => $this->getTimeoutTargetType(),
-            'timeoutNumberValue' => $this->getTimeoutNumberValue(),
-            'maxlen' => $this->getMaxlen(),
-            'fullTargetType' => $this->getFullTargetType(),
-            'fullNumberValue' => $this->getFullNumberValue(),
-            'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
-            'memberCallRest' => $this->getMemberCallRest(),
-            'memberCallTimeout' => $this->getMemberCallTimeout(),
-            'strategy' => $this->getStrategy(),
-            'weight' => $this->getWeight(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'periodicAnnounceLocutionId' => $this->getPeriodicAnnounceLocution() ? $this->getPeriodicAnnounceLocution()->getId() : null,
-            'timeoutLocutionId' => $this->getTimeoutLocution() ? $this->getTimeoutLocution()->getId() : null,
-            'timeoutExtensionId' => $this->getTimeoutExtension() ? $this->getTimeoutExtension()->getId() : null,
-            'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUser() ? $this->getTimeoutVoiceMailUser()->getId() : null,
-            'fullLocutionId' => $this->getFullLocution() ? $this->getFullLocution()->getId() : null,
-            'fullExtensionId' => $this->getFullExtension() ? $this->getFullExtension()->getId() : null,
-            'fullVoiceMailUserId' => $this->getFullVoiceMailUser() ? $this->getFullVoiceMailUser()->getId() : null
+            'name' => self::getName(),
+            'maxWaitTime' => self::getMaxWaitTime(),
+            'timeoutTargetType' => self::getTimeoutTargetType(),
+            'timeoutNumberValue' => self::getTimeoutNumberValue(),
+            'maxlen' => self::getMaxlen(),
+            'fullTargetType' => self::getFullTargetType(),
+            'fullNumberValue' => self::getFullNumberValue(),
+            'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
+            'memberCallRest' => self::getMemberCallRest(),
+            'memberCallTimeout' => self::getMemberCallTimeout(),
+            'strategy' => self::getStrategy(),
+            'weight' => self::getWeight(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution() ? self::getPeriodicAnnounceLocution()->getId() : null,
+            'timeoutLocutionId' => self::getTimeoutLocution() ? self::getTimeoutLocution()->getId() : null,
+            'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
+            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser() ? self::getTimeoutVoiceMailUser()->getId() : null,
+            'fullLocutionId' => self::getFullLocution() ? self::getFullLocution()->getId() : null,
+            'fullExtensionId' => self::getFullExtension() ? self::getFullExtension()->getId() : null,
+            'fullVoiceMailUserId' => self::getFullVoiceMailUser() ? self::getFullVoiceMailUser()->getId() : null
         ];
     }
 

@@ -170,11 +170,11 @@ abstract class TrunksAddresAbstract
     protected function __toArray()
     {
         return [
-            'grp' => $this->getGrp(),
-            'ipAddr' => $this->getIpAddr(),
-            'mask' => $this->getMask(),
-            'port' => $this->getPort(),
-            'tag' => $this->getTag()
+            'grp' => self::getGrp(),
+            'ipAddr' => self::getIpAddr(),
+            'mask' => self::getMask(),
+            'port' => self::getPort(),
+            'tag' => self::getTag()
         ];
     }
 

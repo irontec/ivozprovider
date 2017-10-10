@@ -176,11 +176,11 @@ abstract class UsersDomainAttrAbstract
     protected function __toArray()
     {
         return [
-            'did' => $this->getDid(),
-            'name' => $this->getName(),
-            'type' => $this->getType(),
-            'value' => $this->getValue(),
-            'lastModified' => $this->getLastModified()
+            'did' => self::getDid(),
+            'name' => self::getName(),
+            'type' => self::getType(),
+            'value' => self::getValue(),
+            'lastModified' => self::getLastModified()
         ];
     }
 

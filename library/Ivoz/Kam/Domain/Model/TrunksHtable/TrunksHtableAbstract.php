@@ -179,11 +179,11 @@ abstract class TrunksHtableAbstract
     protected function __toArray()
     {
         return [
-            'keyName' => $this->getKeyName(),
-            'keyType' => $this->getKeyType(),
-            'valueType' => $this->getValueType(),
-            'keyValue' => $this->getKeyValue(),
-            'expires' => $this->getExpires()
+            'keyName' => self::getKeyName(),
+            'keyType' => self::getKeyType(),
+            'valueType' => self::getValueType(),
+            'keyValue' => self::getKeyValue(),
+            'expires' => self::getExpires()
         ];
     }
 

@@ -168,11 +168,11 @@ abstract class PeeringContractAbstract
     protected function __toArray()
     {
         return [
-            'description' => $this->getDescription(),
-            'name' => $this->getName(),
-            'externallyRated' => $this->getExternallyRated(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'transformationRulesetGroupsTrunkId' => $this->getTransformationRulesetGroupsTrunk() ? $this->getTransformationRulesetGroupsTrunk()->getId() : null
+            'description' => self::getDescription(),
+            'name' => self::getName(),
+            'externallyRated' => self::getExternallyRated(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'transformationRulesetGroupsTrunkId' => self::getTransformationRulesetGroupsTrunk() ? self::getTransformationRulesetGroupsTrunk()->getId() : null
         ];
     }
 

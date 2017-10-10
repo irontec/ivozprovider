@@ -216,15 +216,15 @@ abstract class UsersPresentityAbstract
     protected function __toArray()
     {
         return [
-            'username' => $this->getUsername(),
-            'domain' => $this->getDomain(),
-            'event' => $this->getEvent(),
-            'etag' => $this->getEtag(),
-            'expires' => $this->getExpires(),
-            'receivedTime' => $this->getReceivedTime(),
-            'body' => $this->getBody(),
-            'sender' => $this->getSender(),
-            'priority' => $this->getPriority()
+            'username' => self::getUsername(),
+            'domain' => self::getDomain(),
+            'event' => self::getEvent(),
+            'etag' => self::getEtag(),
+            'expires' => self::getExpires(),
+            'receivedTime' => self::getReceivedTime(),
+            'body' => self::getBody(),
+            'sender' => self::getSender(),
+            'priority' => self::getPriority()
         ];
     }
 

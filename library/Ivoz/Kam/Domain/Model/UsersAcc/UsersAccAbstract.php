@@ -261,20 +261,20 @@ abstract class UsersAccAbstract
     protected function __toArray()
     {
         return [
-            'method' => $this->getMethod(),
-            'fromTag' => $this->getFromTag(),
-            'toTag' => $this->getToTag(),
-            'callid' => $this->getCallid(),
-            'sipCode' => $this->getSipCode(),
-            'sipReason' => $this->getSipReason(),
-            'srcIp' => $this->getSrcIp(),
-            'fromUser' => $this->getFromUser(),
-            'fromDomain' => $this->getFromDomain(),
-            'ruriUser' => $this->getRuriUser(),
-            'ruriDomain' => $this->getRuriDomain(),
-            'cseq' => $this->getCseq(),
-            'localtime' => $this->getLocaltime(),
-            'utctime' => $this->getUtctime()
+            'method' => self::getMethod(),
+            'fromTag' => self::getFromTag(),
+            'toTag' => self::getToTag(),
+            'callid' => self::getCallid(),
+            'sipCode' => self::getSipCode(),
+            'sipReason' => self::getSipReason(),
+            'srcIp' => self::getSrcIp(),
+            'fromUser' => self::getFromUser(),
+            'fromDomain' => self::getFromDomain(),
+            'ruriUser' => self::getRuriUser(),
+            'ruriDomain' => self::getRuriDomain(),
+            'cseq' => self::getCseq(),
+            'localtime' => self::getLocaltime(),
+            'utctime' => self::getUtctime()
         ];
     }
 

@@ -240,20 +240,20 @@ abstract class ConditionalRouteAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'routetype' => $this->getRoutetype(),
-            'numbervalue' => $this->getNumbervalue(),
-            'friendvalue' => $this->getFriendvalue(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'ivrCommonId' => $this->getIvrCommon() ? $this->getIvrCommon()->getId() : null,
-            'ivrCustomId' => $this->getIvrCustom() ? $this->getIvrCustom()->getId() : null,
-            'huntGroupId' => $this->getHuntGroup() ? $this->getHuntGroup()->getId() : null,
-            'voicemailUserId' => $this->getVoicemailUser() ? $this->getVoicemailUser()->getId() : null,
-            'userId' => $this->getUser() ? $this->getUser()->getId() : null,
-            'queueId' => $this->getQueue() ? $this->getQueue()->getId() : null,
-            'locutionId' => $this->getLocution() ? $this->getLocution()->getId() : null,
-            'conferenceRoomId' => $this->getConferenceRoom() ? $this->getConferenceRoom()->getId() : null,
-            'extensionId' => $this->getExtension() ? $this->getExtension()->getId() : null
+            'name' => self::getName(),
+            'routetype' => self::getRoutetype(),
+            'numbervalue' => self::getNumbervalue(),
+            'friendvalue' => self::getFriendvalue(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'ivrCommonId' => self::getIvrCommon() ? self::getIvrCommon()->getId() : null,
+            'ivrCustomId' => self::getIvrCustom() ? self::getIvrCustom()->getId() : null,
+            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
+            'voicemailUserId' => self::getVoicemailUser() ? self::getVoicemailUser()->getId() : null,
+            'userId' => self::getUser() ? self::getUser()->getId() : null,
+            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
+            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
+            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
+            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null
         ];
     }
 

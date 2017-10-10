@@ -192,14 +192,14 @@ abstract class OutgoingRoutingAbstract
     protected function __toArray()
     {
         return [
-            'type' => $this->getType(),
-            'priority' => $this->getPriority(),
-            'weight' => $this->getWeight(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'peeringContractId' => $this->getPeeringContract() ? $this->getPeeringContract()->getId() : null,
-            'routingPatternId' => $this->getRoutingPattern() ? $this->getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => $this->getRoutingPatternGroup() ? $this->getRoutingPatternGroup()->getId() : null
+            'type' => self::getType(),
+            'priority' => self::getPriority(),
+            'weight' => self::getWeight(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
+            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
         ];
     }
 

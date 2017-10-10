@@ -219,15 +219,15 @@ abstract class TrunksDialplanAbstract
     protected function __toArray()
     {
         return [
-            'dpid' => $this->getDpid(),
-            'pr' => $this->getPr(),
-            'matchOp' => $this->getMatchOp(),
-            'matchExp' => $this->getMatchExp(),
-            'matchLen' => $this->getMatchLen(),
-            'substExp' => $this->getSubstExp(),
-            'replExp' => $this->getReplExp(),
-            'attrs' => $this->getAttrs(),
-            'transformationRulesetGroupsTrunkId' => $this->getTransformationRulesetGroupsTrunk() ? $this->getTransformationRulesetGroupsTrunk()->getId() : null
+            'dpid' => self::getDpid(),
+            'pr' => self::getPr(),
+            'matchOp' => self::getMatchOp(),
+            'matchExp' => self::getMatchExp(),
+            'matchLen' => self::getMatchLen(),
+            'substExp' => self::getSubstExp(),
+            'replExp' => self::getReplExp(),
+            'attrs' => self::getAttrs(),
+            'transformationRulesetGroupsTrunkId' => self::getTransformationRulesetGroupsTrunk() ? self::getTransformationRulesetGroupsTrunk()->getId() : null
         ];
     }
 

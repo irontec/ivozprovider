@@ -159,10 +159,10 @@ abstract class HuntGroupsRelUserAbstract
     protected function __toArray()
     {
         return [
-            'timeoutTime' => $this->getTimeoutTime(),
-            'priority' => $this->getPriority(),
-            'huntGroupId' => $this->getHuntGroup() ? $this->getHuntGroup()->getId() : null,
-            'userId' => $this->getUser() ? $this->getUser()->getId() : null
+            'timeoutTime' => self::getTimeoutTime(),
+            'priority' => self::getPriority(),
+            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
+            'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
 

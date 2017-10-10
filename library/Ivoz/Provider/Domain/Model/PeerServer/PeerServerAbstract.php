@@ -287,25 +287,25 @@ abstract class PeerServerAbstract
     protected function __toArray()
     {
         return [
-            'ip' => $this->getIp(),
-            'hostname' => $this->getHostname(),
-            'port' => $this->getPort(),
-            'params' => $this->getParams(),
-            'uriScheme' => $this->getUriScheme(),
-            'transport' => $this->getTransport(),
-            'strip' => $this->getStrip(),
-            'prefix' => $this->getPrefix(),
-            'sendPAI' => $this->getSendPAI(),
-            'sendRPID' => $this->getSendRPID(),
-            'authNeeded' => $this->getAuthNeeded(),
-            'authUser' => $this->getAuthUser(),
-            'authPassword' => $this->getAuthPassword(),
-            'sipProxy' => $this->getSipProxy(),
-            'outboundProxy' => $this->getOutboundProxy(),
-            'fromUser' => $this->getFromUser(),
-            'fromDomain' => $this->getFromDomain(),
-            'peeringContractId' => $this->getPeeringContract() ? $this->getPeeringContract()->getId() : null,
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'ip' => self::getIp(),
+            'hostname' => self::getHostname(),
+            'port' => self::getPort(),
+            'params' => self::getParams(),
+            'uriScheme' => self::getUriScheme(),
+            'transport' => self::getTransport(),
+            'strip' => self::getStrip(),
+            'prefix' => self::getPrefix(),
+            'sendPAI' => self::getSendPAI(),
+            'sendRPID' => self::getSendRPID(),
+            'authNeeded' => self::getAuthNeeded(),
+            'authUser' => self::getAuthUser(),
+            'authPassword' => self::getAuthPassword(),
+            'sipProxy' => self::getSipProxy(),
+            'outboundProxy' => self::getOutboundProxy(),
+            'fromUser' => self::getFromUser(),
+            'fromDomain' => self::getFromDomain(),
+            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

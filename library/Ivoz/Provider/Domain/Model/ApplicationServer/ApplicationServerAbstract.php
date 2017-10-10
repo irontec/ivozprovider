@@ -143,8 +143,8 @@ abstract class ApplicationServerAbstract
     protected function __toArray()
     {
         return [
-            'ip' => $this->getIp(),
-            'name' => $this->getName()
+            'ip' => self::getIp(),
+            'name' => self::getName()
         ];
     }
 

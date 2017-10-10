@@ -57,7 +57,7 @@ Una vez realizadas la modificaciones oportunas, ejecute el siguiente comando par
 
 Una vez generado, es perfectamente posible realizar modificaciones manuales sobre él.
 
-## Consultar el esto de los delta
+## Consultar el estado de los delta
 
     $ bin/console doctrine:migrations:status
 

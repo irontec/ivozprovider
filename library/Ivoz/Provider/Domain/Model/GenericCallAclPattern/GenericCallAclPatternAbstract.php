@@ -152,9 +152,9 @@ abstract class GenericCallAclPatternAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'regExp' => $this->getRegExp(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'name' => self::getName(),
+            'regExp' => self::getRegExp(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

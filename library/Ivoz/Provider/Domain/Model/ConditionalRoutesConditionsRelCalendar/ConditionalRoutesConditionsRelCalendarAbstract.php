@@ -143,8 +143,8 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     protected function __toArray()
     {
         return [
-            'conditionId' => $this->getCondition() ? $this->getCondition()->getId() : null,
-            'calendarId' => $this->getCalendar() ? $this->getCalendar()->getId() : null
+            'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
+            'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
         ];
     }
 

@@ -299,25 +299,25 @@ abstract class PsEndpointAbstract
     protected function __toArray()
     {
         return [
-            'sorceryId' => $this->getSorceryId(),
-            'fromDomain' => $this->getFromDomain(),
-            'aors' => $this->getAors(),
-            'callerid' => $this->getCallerid(),
-            'context' => $this->getContext(),
-            'disallow' => $this->getDisallow(),
-            'allow' => $this->getAllow(),
-            'directMedia' => $this->getDirectMedia(),
-            'directMediaMethod' => $this->getDirectMediaMethod(),
-            'mailboxes' => $this->getMailboxes(),
-            'pickupGroup' => $this->getPickupGroup(),
-            'sendDiversion' => $this->getSendDiversion(),
-            'sendPai' => $this->getSendPai(),
-            'oneHundredRel' => $this->getOneHundredRel(),
-            'outboundProxy' => $this->getOutboundProxy(),
-            'trustIdInbound' => $this->getTrustIdInbound(),
-            'terminalId' => $this->getTerminal() ? $this->getTerminal()->getId() : null,
-            'friendId' => $this->getFriend() ? $this->getFriend()->getId() : null,
-            'retailAccountId' => $this->getRetailAccount() ? $this->getRetailAccount()->getId() : null
+            'sorceryId' => self::getSorceryId(),
+            'fromDomain' => self::getFromDomain(),
+            'aors' => self::getAors(),
+            'callerid' => self::getCallerid(),
+            'context' => self::getContext(),
+            'disallow' => self::getDisallow(),
+            'allow' => self::getAllow(),
+            'directMedia' => self::getDirectMedia(),
+            'directMediaMethod' => self::getDirectMediaMethod(),
+            'mailboxes' => self::getMailboxes(),
+            'pickupGroup' => self::getPickupGroup(),
+            'sendDiversion' => self::getSendDiversion(),
+            'sendPai' => self::getSendPai(),
+            'oneHundredRel' => self::getOneHundredRel(),
+            'outboundProxy' => self::getOutboundProxy(),
+            'trustIdInbound' => self::getTrustIdInbound(),
+            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
+            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
 

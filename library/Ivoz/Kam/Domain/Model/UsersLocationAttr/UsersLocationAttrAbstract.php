@@ -195,13 +195,13 @@ abstract class UsersLocationAttrAbstract
     protected function __toArray()
     {
         return [
-            'ruid' => $this->getRuid(),
-            'username' => $this->getUsername(),
-            'domain' => $this->getDomain(),
-            'aname' => $this->getAname(),
-            'atype' => $this->getAtype(),
-            'avalue' => $this->getAvalue(),
-            'lastModified' => $this->getLastModified()
+            'ruid' => self::getRuid(),
+            'username' => self::getUsername(),
+            'domain' => self::getDomain(),
+            'aname' => self::getAname(),
+            'atype' => self::getAtype(),
+            'avalue' => self::getAvalue(),
+            'lastModified' => self::getLastModified()
         ];
     }
 

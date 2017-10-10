@@ -151,9 +151,9 @@ abstract class CompanyServiceAbstract
     protected function __toArray()
     {
         return [
-            'code' => $this->getCode(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'serviceId' => $this->getService() ? $this->getService()->getId() : null
+            'code' => self::getCode(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'serviceId' => self::getService() ? self::getService()->getId() : null
         ];
     }
 

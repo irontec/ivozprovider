@@ -286,24 +286,24 @@ abstract class BrandAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'nif' => $this->getNif(),
-            'domainUsers' => $this->getDomainUsers(),
-            'postalAddress' => $this->getPostalAddress(),
-            'postalCode' => $this->getPostalCode(),
-            'town' => $this->getTown(),
-            'province' => $this->getProvince(),
-            'country' => $this->getCountry(),
-            'registryData' => $this->getRegistryData(),
-            'fromName' => $this->getFromName(),
-            'fromAddress' => $this->getFromAddress(),
-            'recordingsLimitMB' => $this->getRecordingsLimitMB(),
-            'recordingslimitemail' => $this->getRecordingslimitemail(),
+            'name' => self::getName(),
+            'nif' => self::getNif(),
+            'domainUsers' => self::getDomainUsers(),
+            'postalAddress' => self::getPostalAddress(),
+            'postalCode' => self::getPostalCode(),
+            'town' => self::getTown(),
+            'province' => self::getProvince(),
+            'country' => self::getCountry(),
+            'registryData' => self::getRegistryData(),
+            'fromName' => self::getFromName(),
+            'fromAddress' => self::getFromAddress(),
+            'recordingsLimitMB' => self::getRecordingsLimitMB(),
+            'recordingslimitemail' => self::getRecordingslimitemail(),
             'fileSize' => $this->getLogo()->getFileSize(),
             'mimeType' => $this->getLogo()->getMimeType(),
             'baseName' => $this->getLogo()->getBaseName(),
-            'languageId' => $this->getLanguage() ? $this->getLanguage()->getId() : null,
-            'defaultTimezoneId' => $this->getDefaultTimezone() ? $this->getDefaultTimezone()->getId() : null
+            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
+            'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
         ];
     }
 

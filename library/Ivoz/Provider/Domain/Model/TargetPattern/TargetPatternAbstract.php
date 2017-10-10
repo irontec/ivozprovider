@@ -187,12 +187,12 @@ abstract class TargetPatternAbstract
     protected function __toArray()
     {
         return [
-            'regExp' => $this->getRegExp(),
+            'regExp' => self::getRegExp(),
             'en' => $this->getName()->getEn(),
             'es' => $this->getName()->getEs(),
             'en' => $this->getDescription()->getEn(),
             'es' => $this->getDescription()->getEs(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

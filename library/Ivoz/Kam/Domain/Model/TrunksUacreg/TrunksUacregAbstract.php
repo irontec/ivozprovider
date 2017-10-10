@@ -281,21 +281,21 @@ abstract class TrunksUacregAbstract
     protected function __toArray()
     {
         return [
-            'lUuid' => $this->getLUuid(),
-            'lUsername' => $this->getLUsername(),
-            'lDomain' => $this->getLDomain(),
-            'rUsername' => $this->getRUsername(),
-            'rDomain' => $this->getRDomain(),
-            'realm' => $this->getRealm(),
-            'authUsername' => $this->getAuthUsername(),
-            'authPassword' => $this->getAuthPassword(),
-            'authProxy' => $this->getAuthProxy(),
-            'expires' => $this->getExpires(),
-            'flags' => $this->getFlags(),
-            'regDelay' => $this->getRegDelay(),
-            'multiddi' => $this->getMultiddi(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'peeringContractId' => $this->getPeeringContract() ? $this->getPeeringContract()->getId() : null
+            'lUuid' => self::getLUuid(),
+            'lUsername' => self::getLUsername(),
+            'lDomain' => self::getLDomain(),
+            'rUsername' => self::getRUsername(),
+            'rDomain' => self::getRDomain(),
+            'realm' => self::getRealm(),
+            'authUsername' => self::getAuthUsername(),
+            'authPassword' => self::getAuthPassword(),
+            'authProxy' => self::getAuthProxy(),
+            'expires' => self::getExpires(),
+            'flags' => self::getFlags(),
+            'regDelay' => self::getRegDelay(),
+            'multiddi' => self::getMultiddi(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null
         ];
     }
 

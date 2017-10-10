@@ -267,23 +267,23 @@ abstract class IvrCustomAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'timeout' => $this->getTimeout(),
-            'maxDigits' => $this->getMaxDigits(),
-            'noAnswerTimeout' => $this->getNoAnswerTimeout(),
-            'timeoutTargetType' => $this->getTimeoutTargetType(),
-            'timeoutNumberValue' => $this->getTimeoutNumberValue(),
-            'errorTargetType' => $this->getErrorTargetType(),
-            'errorNumberValue' => $this->getErrorNumberValue(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'welcomeLocutionId' => $this->getWelcomeLocution() ? $this->getWelcomeLocution()->getId() : null,
-            'noAnswerLocutionId' => $this->getNoAnswerLocution() ? $this->getNoAnswerLocution()->getId() : null,
-            'errorLocutionId' => $this->getErrorLocution() ? $this->getErrorLocution()->getId() : null,
-            'successLocutionId' => $this->getSuccessLocution() ? $this->getSuccessLocution()->getId() : null,
-            'timeoutExtensionId' => $this->getTimeoutExtension() ? $this->getTimeoutExtension()->getId() : null,
-            'errorExtensionId' => $this->getErrorExtension() ? $this->getErrorExtension()->getId() : null,
-            'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUser() ? $this->getTimeoutVoiceMailUser()->getId() : null,
-            'errorVoiceMailUserId' => $this->getErrorVoiceMailUser() ? $this->getErrorVoiceMailUser()->getId() : null
+            'name' => self::getName(),
+            'timeout' => self::getTimeout(),
+            'maxDigits' => self::getMaxDigits(),
+            'noAnswerTimeout' => self::getNoAnswerTimeout(),
+            'timeoutTargetType' => self::getTimeoutTargetType(),
+            'timeoutNumberValue' => self::getTimeoutNumberValue(),
+            'errorTargetType' => self::getErrorTargetType(),
+            'errorNumberValue' => self::getErrorNumberValue(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
+            'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
+            'errorLocutionId' => self::getErrorLocution() ? self::getErrorLocution()->getId() : null,
+            'successLocutionId' => self::getSuccessLocution() ? self::getSuccessLocution()->getId() : null,
+            'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
+            'errorExtensionId' => self::getErrorExtension() ? self::getErrorExtension()->getId() : null,
+            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser() ? self::getTimeoutVoiceMailUser()->getId() : null,
+            'errorVoiceMailUserId' => self::getErrorVoiceMailUser() ? self::getErrorVoiceMailUser()->getId() : null
         ];
     }
 

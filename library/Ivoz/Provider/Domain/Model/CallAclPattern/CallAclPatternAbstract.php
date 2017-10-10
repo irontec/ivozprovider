@@ -152,9 +152,9 @@ abstract class CallAclPatternAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'regExp' => $this->getRegExp(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'name' => self::getName(),
+            'regExp' => self::getRegExp(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

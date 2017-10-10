@@ -195,14 +195,14 @@ abstract class BrandOperatorAbstract
     protected function __toArray()
     {
         return [
-            'username' => $this->getUsername(),
-            'pass' => $this->getPass(),
-            'email' => $this->getEmail(),
-            'active' => $this->getActive(),
-            'name' => $this->getName(),
-            'lastname' => $this->getLastname(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'timezoneId' => $this->getTimezone() ? $this->getTimezone()->getId() : null
+            'username' => self::getUsername(),
+            'pass' => self::getPass(),
+            'email' => self::getEmail(),
+            'active' => self::getActive(),
+            'name' => self::getName(),
+            'lastname' => self::getLastname(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
 

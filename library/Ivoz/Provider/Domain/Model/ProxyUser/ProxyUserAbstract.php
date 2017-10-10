@@ -143,8 +143,8 @@ abstract class ProxyUserAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'ip' => $this->getIp()
+            'name' => self::getName(),
+            'ip' => self::getIp()
         ];
     }
 

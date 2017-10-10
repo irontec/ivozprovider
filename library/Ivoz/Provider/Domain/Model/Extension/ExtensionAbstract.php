@@ -224,18 +224,18 @@ abstract class ExtensionAbstract
     protected function __toArray()
     {
         return [
-            'number' => $this->getNumber(),
-            'routeType' => $this->getRouteType(),
-            'numberValue' => $this->getNumberValue(),
-            'friendValue' => $this->getFriendValue(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'ivrCommonId' => $this->getIvrCommon() ? $this->getIvrCommon()->getId() : null,
-            'ivrCustomId' => $this->getIvrCustom() ? $this->getIvrCustom()->getId() : null,
-            'huntGroupId' => $this->getHuntGroup() ? $this->getHuntGroup()->getId() : null,
-            'conferenceRoomId' => $this->getConferenceRoom() ? $this->getConferenceRoom()->getId() : null,
-            'userId' => $this->getUser() ? $this->getUser()->getId() : null,
-            'queueId' => $this->getQueue() ? $this->getQueue()->getId() : null,
-            'conditionalRouteId' => $this->getConditionalRoute() ? $this->getConditionalRoute()->getId() : null
+            'number' => self::getNumber(),
+            'routeType' => self::getRouteType(),
+            'numberValue' => self::getNumberValue(),
+            'friendValue' => self::getFriendValue(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'ivrCommonId' => self::getIvrCommon() ? self::getIvrCommon()->getId() : null,
+            'ivrCustomId' => self::getIvrCustom() ? self::getIvrCustom()->getId() : null,
+            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
+            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
+            'userId' => self::getUser() ? self::getUser()->getId() : null,
+            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
+            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null
         ];
     }
 

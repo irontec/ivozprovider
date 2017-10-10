@@ -143,8 +143,8 @@ abstract class FeaturesRelBrandAbstract
     protected function __toArray()
     {
         return [
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'featureId' => $this->getFeature() ? $this->getFeature()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'featureId' => self::getFeature() ? self::getFeature()->getId() : null
         ];
     }
 

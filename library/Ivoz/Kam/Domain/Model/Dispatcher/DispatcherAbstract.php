@@ -194,13 +194,13 @@ abstract class DispatcherAbstract
     protected function __toArray()
     {
         return [
-            'setid' => $this->getSetid(),
-            'destination' => $this->getDestination(),
-            'flags' => $this->getFlags(),
-            'priority' => $this->getPriority(),
-            'attrs' => $this->getAttrs(),
-            'description' => $this->getDescription(),
-            'applicationServerId' => $this->getApplicationServer() ? $this->getApplicationServer()->getId() : null
+            'setid' => self::getSetid(),
+            'destination' => self::getDestination(),
+            'flags' => self::getFlags(),
+            'priority' => self::getPriority(),
+            'attrs' => self::getAttrs(),
+            'description' => self::getDescription(),
+            'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null
         ];
     }
 

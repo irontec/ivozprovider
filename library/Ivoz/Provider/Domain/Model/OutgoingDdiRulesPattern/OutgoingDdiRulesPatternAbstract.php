@@ -169,11 +169,11 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected function __toArray()
     {
         return [
-            'action' => $this->getAction(),
-            'priority' => $this->getPriority(),
-            'outgoingDdiRuleId' => $this->getOutgoingDdiRule() ? $this->getOutgoingDdiRule()->getId() : null,
-            'matchListId' => $this->getMatchList() ? $this->getMatchList()->getId() : null,
-            'forcedDdiId' => $this->getForcedDdi() ? $this->getForcedDdi()->getId() : null
+            'action' => self::getAction(),
+            'priority' => self::getPriority(),
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
+            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
+            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
     }
 

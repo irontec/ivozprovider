@@ -151,9 +151,9 @@ abstract class EtagVersionAbstract
     protected function __toArray()
     {
         return [
-            'table' => $this->getTable(),
-            'etag' => $this->getEtag(),
-            'lastChange' => $this->getLastChange()
+            'table' => self::getTable(),
+            'etag' => self::getEtag(),
+            'lastChange' => self::getLastChange()
         ];
     }
 

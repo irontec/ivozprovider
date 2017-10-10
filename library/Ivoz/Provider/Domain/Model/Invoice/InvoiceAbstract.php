@@ -232,19 +232,19 @@ abstract class InvoiceAbstract
     protected function __toArray()
     {
         return [
-            'number' => $this->getNumber(),
-            'inDate' => $this->getInDate(),
-            'outDate' => $this->getOutDate(),
-            'total' => $this->getTotal(),
-            'taxRate' => $this->getTaxRate(),
-            'totalWithTax' => $this->getTotalWithTax(),
-            'status' => $this->getStatus(),
+            'number' => self::getNumber(),
+            'inDate' => self::getInDate(),
+            'outDate' => self::getOutDate(),
+            'total' => self::getTotal(),
+            'taxRate' => self::getTaxRate(),
+            'totalWithTax' => self::getTotalWithTax(),
+            'status' => self::getStatus(),
             'fileSize' => $this->getPdf()->getFileSize(),
             'mimeType' => $this->getPdf()->getMimeType(),
             'baseName' => $this->getPdf()->getBaseName(),
-            'invoiceTemplateId' => $this->getInvoiceTemplate() ? $this->getInvoiceTemplate()->getId() : null,
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

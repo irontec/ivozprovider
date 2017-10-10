@@ -222,17 +222,17 @@ abstract class RecordingAbstract
     protected function __toArray()
     {
         return [
-            'callid' => $this->getCallid(),
-            'calldate' => $this->getCalldate(),
-            'type' => $this->getType(),
-            'duration' => $this->getDuration(),
-            'caller' => $this->getCaller(),
-            'callee' => $this->getCallee(),
-            'recorder' => $this->getRecorder(),
+            'callid' => self::getCallid(),
+            'calldate' => self::getCalldate(),
+            'type' => self::getType(),
+            'duration' => self::getDuration(),
+            'caller' => self::getCaller(),
+            'callee' => self::getCallee(),
+            'recorder' => self::getRecorder(),
             'fileSize' => $this->getRecordedFile()->getFileSize(),
             'mimeType' => $this->getRecordedFile()->getMimeType(),
             'baseName' => $this->getRecordedFile()->getBaseName(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

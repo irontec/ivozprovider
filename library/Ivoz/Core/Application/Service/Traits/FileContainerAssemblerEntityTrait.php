@@ -24,7 +24,18 @@ trait FileContainerAssemblerEntityTrait
         }
         $entity->updateFromDTO($dto);
 
+        if (!$dto->getLogoPath() && !$updated) {
+            return;
+        }
+
         if (!$dto->getLogoPath()) {
+
+            $entity->addTmpFile(
+                new TempFile(
+                    $dto->getLogoPath(),
+                    $this->logoPathResolver
+                )
+            );
             return;
         }
 
@@ -75,7 +86,7 @@ trait FileContainerAssemblerEntityTrait
             return false;
         }
 
-        if (empty($filePath) or !file_exists($filePath)) {
+        if ($filePath && !file_exists($filePath)) {
             throw new \Exception('File not found: ' . $filePath);
         }
 

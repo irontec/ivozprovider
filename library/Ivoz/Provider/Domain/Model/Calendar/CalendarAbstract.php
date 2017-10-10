@@ -143,8 +143,8 @@ abstract class CalendarAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'name' => self::getName(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

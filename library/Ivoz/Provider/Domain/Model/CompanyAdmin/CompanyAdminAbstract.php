@@ -195,14 +195,14 @@ abstract class CompanyAdminAbstract
     protected function __toArray()
     {
         return [
-            'username' => $this->getUsername(),
-            'pass' => $this->getPass(),
-            'email' => $this->getEmail(),
-            'active' => $this->getActive(),
-            'name' => $this->getName(),
-            'lastname' => $this->getLastname(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'timezoneId' => $this->getTimezone() ? $this->getTimezone()->getId() : null
+            'username' => self::getUsername(),
+            'pass' => self::getPass(),
+            'email' => self::getEmail(),
+            'active' => self::getActive(),
+            'name' => self::getName(),
+            'lastname' => self::getLastname(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
 

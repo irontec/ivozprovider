@@ -233,19 +233,19 @@ abstract class ExternalCallFilterAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'holidayTargetType' => $this->getHolidayTargetType(),
-            'holidayNumberValue' => $this->getHolidayNumberValue(),
-            'outOfScheduleTargetType' => $this->getOutOfScheduleTargetType(),
-            'outOfScheduleNumberValue' => $this->getOutOfScheduleNumberValue(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'welcomeLocutionId' => $this->getWelcomeLocution() ? $this->getWelcomeLocution()->getId() : null,
-            'holidayLocutionId' => $this->getHolidayLocution() ? $this->getHolidayLocution()->getId() : null,
-            'outOfScheduleLocutionId' => $this->getOutOfScheduleLocution() ? $this->getOutOfScheduleLocution()->getId() : null,
-            'holidayExtensionId' => $this->getHolidayExtension() ? $this->getHolidayExtension()->getId() : null,
-            'outOfScheduleExtensionId' => $this->getOutOfScheduleExtension() ? $this->getOutOfScheduleExtension()->getId() : null,
-            'holidayVoiceMailUserId' => $this->getHolidayVoiceMailUser() ? $this->getHolidayVoiceMailUser()->getId() : null,
-            'outOfScheduleVoiceMailUserId' => $this->getOutOfScheduleVoiceMailUser() ? $this->getOutOfScheduleVoiceMailUser()->getId() : null
+            'name' => self::getName(),
+            'holidayTargetType' => self::getHolidayTargetType(),
+            'holidayNumberValue' => self::getHolidayNumberValue(),
+            'outOfScheduleTargetType' => self::getOutOfScheduleTargetType(),
+            'outOfScheduleNumberValue' => self::getOutOfScheduleNumberValue(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
+            'holidayLocutionId' => self::getHolidayLocution() ? self::getHolidayLocution()->getId() : null,
+            'outOfScheduleLocutionId' => self::getOutOfScheduleLocution() ? self::getOutOfScheduleLocution()->getId() : null,
+            'holidayExtensionId' => self::getHolidayExtension() ? self::getHolidayExtension()->getId() : null,
+            'outOfScheduleExtensionId' => self::getOutOfScheduleExtension() ? self::getOutOfScheduleExtension()->getId() : null,
+            'holidayVoiceMailUserId' => self::getHolidayVoiceMailUser() ? self::getHolidayVoiceMailUser()->getId() : null,
+            'outOfScheduleVoiceMailUserId' => self::getOutOfScheduleVoiceMailUser() ? self::getOutOfScheduleVoiceMailUser()->getId() : null
         ];
     }
 

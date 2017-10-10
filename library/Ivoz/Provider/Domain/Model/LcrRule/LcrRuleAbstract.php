@@ -219,16 +219,16 @@ abstract class LcrRuleAbstract
     protected function __toArray()
     {
         return [
-            'lcrId' => $this->getLcrId(),
-            'prefix' => $this->getPrefix(),
-            'fromUri' => $this->getFromUri(),
-            'requestUri' => $this->getRequestUri(),
-            'stopper' => $this->getStopper(),
-            'enabled' => $this->getEnabled(),
-            'tag' => $this->getTag(),
-            'description' => $this->getDescription(),
-            'routingPatternId' => $this->getRoutingPattern() ? $this->getRoutingPattern()->getId() : null,
-            'outgoingRoutingId' => $this->getOutgoingRouting() ? $this->getOutgoingRouting()->getId() : null
+            'lcrId' => self::getLcrId(),
+            'prefix' => self::getPrefix(),
+            'fromUri' => self::getFromUri(),
+            'requestUri' => self::getRequestUri(),
+            'stopper' => self::getStopper(),
+            'enabled' => self::getEnabled(),
+            'tag' => self::getTag(),
+            'description' => self::getDescription(),
+            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
+            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
 

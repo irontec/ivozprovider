@@ -1,8 +1,8 @@
-# Regeneradores
+# Generadores
 
 Tal y como pasaba en la versión anterior de Ivoz Provider, existe un conjunto de generadores diseñados
-para evitar la creación/actualización de código automatizable a partir del esquema de base de datos (ficheros de mapeo
-a base de datos a partir de ahora). Consulté la sección migrations antes de continuar si no lo ha hecho aún.
+para evitar la creación/actualización manual de código automatizable a partir del esquema de base de datos (ficheros de 
+mapeo a base de datos a partir de ahora). Consulté la sección migrations antes de continuar si no lo ha hecho aún.
 
 Estos son los comandos disponibles actualmente:
 

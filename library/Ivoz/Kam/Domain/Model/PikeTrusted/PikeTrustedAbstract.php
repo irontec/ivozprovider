@@ -178,12 +178,12 @@ abstract class PikeTrustedAbstract
     protected function __toArray()
     {
         return [
-            'srcIp' => $this->getSrcIp(),
-            'proto' => $this->getProto(),
-            'fromPattern' => $this->getFromPattern(),
-            'ruriPattern' => $this->getRuriPattern(),
-            'tag' => $this->getTag(),
-            'priority' => $this->getPriority()
+            'srcIp' => self::getSrcIp(),
+            'proto' => self::getProto(),
+            'fromPattern' => self::getFromPattern(),
+            'ruriPattern' => self::getRuriPattern(),
+            'tag' => self::getTag(),
+            'priority' => self::getPriority()
         ];
     }
 

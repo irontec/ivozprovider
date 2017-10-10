@@ -210,16 +210,16 @@ abstract class QueueAbstract
     protected function __toArray()
     {
         return [
-            'periodicAnnounce' => $this->getPeriodicAnnounce(),
-            'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
-            'timeout' => $this->getTimeout(),
-            'autopause' => $this->getAutopause(),
-            'ringinuse' => $this->getRinginuse(),
-            'wrapuptime' => $this->getWrapuptime(),
-            'maxlen' => $this->getMaxlen(),
-            'strategy' => $this->getStrategy(),
-            'weight' => $this->getWeight(),
-            'queueId' => $this->getQueue() ? $this->getQueue()->getId() : null
+            'periodicAnnounce' => self::getPeriodicAnnounce(),
+            'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
+            'timeout' => self::getTimeout(),
+            'autopause' => self::getAutopause(),
+            'ringinuse' => self::getRinginuse(),
+            'wrapuptime' => self::getWrapuptime(),
+            'maxlen' => self::getMaxlen(),
+            'strategy' => self::getStrategy(),
+            'weight' => self::getWeight(),
+            'queueId' => self::getQueue() ? self::getQueue()->getId() : null
         ];
     }
 

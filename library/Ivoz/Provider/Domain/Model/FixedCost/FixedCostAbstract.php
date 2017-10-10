@@ -159,10 +159,10 @@ abstract class FixedCostAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'cost' => $this->getCost(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'name' => self::getName(),
+            'description' => self::getDescription(),
+            'cost' => self::getCost(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

@@ -227,17 +227,17 @@ abstract class TerminalAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'domain' => $this->getDomain(),
-            'disallow' => $this->getDisallow(),
-            'allowAudio' => $this->getAllowAudio(),
-            'allowVideo' => $this->getAllowVideo(),
-            'directMediaMethod' => $this->getDirectMediaMethod(),
-            'password' => $this->getPassword(),
-            'mac' => $this->getMac(),
-            'lastProvisionDate' => $this->getLastProvisionDate(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'terminalModelId' => $this->getTerminalModel() ? $this->getTerminalModel()->getId() : null
+            'name' => self::getName(),
+            'domain' => self::getDomain(),
+            'disallow' => self::getDisallow(),
+            'allowAudio' => self::getAllowAudio(),
+            'allowVideo' => self::getAllowVideo(),
+            'directMediaMethod' => self::getDirectMediaMethod(),
+            'password' => self::getPassword(),
+            'mac' => self::getMac(),
+            'lastProvisionDate' => self::getLastProvisionDate(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
     }
 

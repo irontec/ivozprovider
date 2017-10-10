@@ -224,17 +224,17 @@ abstract class HuntGroupAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'strategy' => $this->getStrategy(),
-            'ringAllTimeout' => $this->getRingAllTimeout(),
-            'nextUserPosition' => $this->getNextUserPosition(),
-            'noAnswerTargetType' => $this->getNoAnswerTargetType(),
-            'noAnswerNumberValue' => $this->getNoAnswerNumberValue(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'noAnswerLocutionId' => $this->getNoAnswerLocution() ? $this->getNoAnswerLocution()->getId() : null,
-            'noAnswerExtensionId' => $this->getNoAnswerExtension() ? $this->getNoAnswerExtension()->getId() : null,
-            'noAnswerVoiceMailUserId' => $this->getNoAnswerVoiceMailUser() ? $this->getNoAnswerVoiceMailUser()->getId() : null
+            'name' => self::getName(),
+            'description' => self::getDescription(),
+            'strategy' => self::getStrategy(),
+            'ringAllTimeout' => self::getRingAllTimeout(),
+            'nextUserPosition' => self::getNextUserPosition(),
+            'noAnswerTargetType' => self::getNoAnswerTargetType(),
+            'noAnswerNumberValue' => self::getNoAnswerNumberValue(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
+            'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
+            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null
         ];
     }
 

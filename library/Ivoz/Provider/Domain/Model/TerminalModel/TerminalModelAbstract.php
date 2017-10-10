@@ -193,14 +193,14 @@ abstract class TerminalModelAbstract
     protected function __toArray()
     {
         return [
-            'iden' => $this->getIden(),
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'genericTemplate' => $this->getGenericTemplate(),
-            'specificTemplate' => $this->getSpecificTemplate(),
-            'genericUrlPattern' => $this->getGenericUrlPattern(),
-            'specificUrlPattern' => $this->getSpecificUrlPattern(),
-            'terminalManufacturerId' => $this->getTerminalManufacturer() ? $this->getTerminalManufacturer()->getId() : null
+            'iden' => self::getIden(),
+            'name' => self::getName(),
+            'description' => self::getDescription(),
+            'genericTemplate' => self::getGenericTemplate(),
+            'specificTemplate' => self::getSpecificTemplate(),
+            'genericUrlPattern' => self::getGenericUrlPattern(),
+            'specificUrlPattern' => self::getSpecificUrlPattern(),
+            'terminalManufacturerId' => self::getTerminalManufacturer() ? self::getTerminalManufacturer()->getId() : null
         ];
     }
 

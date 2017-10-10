@@ -324,27 +324,27 @@ abstract class RetailAccountAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'domain' => $this->getDomain(),
-            'description' => $this->getDescription(),
-            'transport' => $this->getTransport(),
-            'ip' => $this->getIp(),
-            'port' => $this->getPort(),
-            'authNeeded' => $this->getAuthNeeded(),
-            'password' => $this->getPassword(),
-            'areaCode' => $this->getAreaCode(),
-            'disallow' => $this->getDisallow(),
-            'allow' => $this->getAllow(),
-            'directMediaMethod' => $this->getDirectMediaMethod(),
-            'calleridUpdateHeader' => $this->getCalleridUpdateHeader(),
-            'updateCallerid' => $this->getUpdateCallerid(),
-            'fromDomain' => $this->getFromDomain(),
-            'directConnectivity' => $this->getDirectConnectivity(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'countryId' => $this->getCountry() ? $this->getCountry()->getId() : null,
-            'outgoingDdiId' => $this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null,
-            'languageId' => $this->getLanguage() ? $this->getLanguage()->getId() : null
+            'name' => self::getName(),
+            'domain' => self::getDomain(),
+            'description' => self::getDescription(),
+            'transport' => self::getTransport(),
+            'ip' => self::getIp(),
+            'port' => self::getPort(),
+            'authNeeded' => self::getAuthNeeded(),
+            'password' => self::getPassword(),
+            'areaCode' => self::getAreaCode(),
+            'disallow' => self::getDisallow(),
+            'allow' => self::getAllow(),
+            'directMediaMethod' => self::getDirectMediaMethod(),
+            'calleridUpdateHeader' => self::getCalleridUpdateHeader(),
+            'updateCallerid' => self::getUpdateCallerid(),
+            'fromDomain' => self::getFromDomain(),
+            'directConnectivity' => self::getDirectConnectivity(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
+            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
 

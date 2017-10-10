@@ -15,6 +15,10 @@ class Commit implements LifecycleEventHandlerInterface
         }
 
         foreach ($entity->getTempFiles() as $tmpFile) {
+            if (is_null($tmpFile->getTmpPath())) {
+                $tmpFile->remove($entity);
+                return;
+            }
             $tmpFile->commit($entity);
         }
     }

@@ -180,12 +180,12 @@ abstract class PricingPlansRelTargetPatternAbstract
     protected function __toArray()
     {
         return [
-            'connectionCharge' => $this->getConnectionCharge(),
-            'periodTime' => $this->getPeriodTime(),
-            'perPeriodCharge' => $this->getPerPeriodCharge(),
-            'pricingPlanId' => $this->getPricingPlan() ? $this->getPricingPlan()->getId() : null,
-            'targetPatternId' => $this->getTargetPattern() ? $this->getTargetPattern()->getId() : null,
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'connectionCharge' => self::getConnectionCharge(),
+            'periodTime' => self::getPeriodTime(),
+            'perPeriodCharge' => self::getPerPeriodCharge(),
+            'pricingPlanId' => self::getPricingPlan() ? self::getPricingPlan()->getId() : null,
+            'targetPatternId' => self::getTargetPattern() ? self::getTargetPattern()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

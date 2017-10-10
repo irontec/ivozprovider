@@ -244,20 +244,20 @@ abstract class LcrGatewayAbstract
     protected function __toArray()
     {
         return [
-            'lcrId' => $this->getLcrId(),
-            'gwName' => $this->getGwName(),
-            'ip' => $this->getIp(),
-            'hostname' => $this->getHostname(),
-            'port' => $this->getPort(),
-            'params' => $this->getParams(),
-            'uriScheme' => $this->getUriScheme(),
-            'transport' => $this->getTransport(),
-            'strip' => $this->getStrip(),
-            'prefix' => $this->getPrefix(),
-            'tag' => $this->getTag(),
-            'flags' => $this->getFlags(),
-            'defunct' => $this->getDefunct(),
-            'peerServerId' => $this->getPeerServer() ? $this->getPeerServer()->getId() : null
+            'lcrId' => self::getLcrId(),
+            'gwName' => self::getGwName(),
+            'ip' => self::getIp(),
+            'hostname' => self::getHostname(),
+            'port' => self::getPort(),
+            'params' => self::getParams(),
+            'uriScheme' => self::getUriScheme(),
+            'transport' => self::getTransport(),
+            'strip' => self::getStrip(),
+            'prefix' => self::getPrefix(),
+            'tag' => self::getTag(),
+            'flags' => self::getFlags(),
+            'defunct' => self::getDefunct(),
+            'peerServerId' => self::getPeerServer() ? self::getPeerServer()->getId() : null
         ];
     }
 

@@ -198,9 +198,9 @@ abstract class ServiceAbstract
     protected function __toArray()
     {
         return [
-            'iden' => $this->getIden(),
-            'defaultCode' => $this->getDefaultCode(),
-            'extraArgs' => $this->getExtraArgs(),
+            'iden' => self::getIden(),
+            'defaultCode' => self::getDefaultCode(),
+            'extraArgs' => self::getExtraArgs(),
             'en' => $this->getName()->getEn(),
             'es' => $this->getName()->getEs(),
             'en' => $this->getDescription()->getEn(),

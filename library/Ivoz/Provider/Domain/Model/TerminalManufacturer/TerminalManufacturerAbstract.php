@@ -152,9 +152,9 @@ abstract class TerminalManufacturerAbstract
     protected function __toArray()
     {
         return [
-            'iden' => $this->getIden(),
-            'name' => $this->getName(),
-            'description' => $this->getDescription()
+            'iden' => self::getIden(),
+            'name' => self::getName(),
+            'description' => self::getDescription()
         ];
     }
 

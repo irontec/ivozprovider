@@ -161,10 +161,10 @@ abstract class CallAclRelPatternAbstract
     protected function __toArray()
     {
         return [
-            'priority' => $this->getPriority(),
-            'policy' => $this->getPolicy(),
-            'callAclId' => $this->getCallAcl() ? $this->getCallAcl()->getId() : null,
-            'callAclPatternId' => $this->getCallAclPattern() ? $this->getCallAclPattern()->getId() : null
+            'priority' => self::getPriority(),
+            'policy' => self::getPolicy(),
+            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
+            'callAclPatternId' => self::getCallAclPattern() ? self::getCallAclPattern()->getId() : null
         ];
     }
 

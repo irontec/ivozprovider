@@ -178,12 +178,12 @@ abstract class RtpproxyAbstract
     protected function __toArray()
     {
         return [
-            'setid' => $this->getSetid(),
-            'url' => $this->getUrl(),
-            'flags' => $this->getFlags(),
-            'weight' => $this->getWeight(),
-            'description' => $this->getDescription(),
-            'mediaRelaySetId' => $this->getMediaRelaySet() ? $this->getMediaRelaySet()->getId() : null
+            'setid' => self::getSetid(),
+            'url' => self::getUrl(),
+            'flags' => self::getFlags(),
+            'weight' => self::getWeight(),
+            'description' => self::getDescription(),
+            'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
         ];
     }
 

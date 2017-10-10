@@ -159,10 +159,10 @@ abstract class FixedCostsRelInvoiceAbstract
     protected function __toArray()
     {
         return [
-            'quantity' => $this->getQuantity(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null,
-            'fixedCostId' => $this->getFixedCost() ? $this->getFixedCost()->getId() : null,
-            'invoiceId' => $this->getInvoice() ? $this->getInvoice()->getId() : null
+            'quantity' => self::getQuantity(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'fixedCostId' => self::getFixedCost() ? self::getFixedCost()->getId() : null,
+            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
         ];
     }
 

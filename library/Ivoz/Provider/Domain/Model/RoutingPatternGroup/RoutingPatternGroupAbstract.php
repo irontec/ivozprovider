@@ -151,9 +151,9 @@ abstract class RoutingPatternGroupAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'name' => self::getName(),
+            'description' => self::getDescription(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

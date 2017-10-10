@@ -24,6 +24,11 @@ class TempFile
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    public function getTmpPath()
+    {
+        return $this->tmpPath;
+    }
+
     public function commit(EntityInterface $entity)
     {
         if (!$entity->getId()) {

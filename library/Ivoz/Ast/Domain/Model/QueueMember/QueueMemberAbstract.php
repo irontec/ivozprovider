@@ -186,13 +186,13 @@ abstract class QueueMemberAbstract
     protected function __toArray()
     {
         return [
-            'queueName' => $this->getQueueName(),
-            'interface' => $this->getInterface(),
-            'membername' => $this->getMembername(),
-            'stateInterface' => $this->getStateInterface(),
-            'penalty' => $this->getPenalty(),
-            'paused' => $this->getPaused(),
-            'queueMemberId' => $this->getQueueMember() ? $this->getQueueMember()->getId() : null
+            'queueName' => self::getQueueName(),
+            'interface' => self::getInterface(),
+            'membername' => self::getMembername(),
+            'stateInterface' => self::getStateInterface(),
+            'penalty' => self::getPenalty(),
+            'paused' => self::getPaused(),
+            'queueMemberId' => self::getQueueMember() ? self::getQueueMember()->getId() : null
         ];
     }
 

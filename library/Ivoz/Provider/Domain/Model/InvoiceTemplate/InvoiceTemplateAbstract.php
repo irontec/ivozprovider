@@ -176,12 +176,12 @@ abstract class InvoiceTemplateAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'template' => $this->getTemplate(),
-            'templateHeader' => $this->getTemplateHeader(),
-            'templateFooter' => $this->getTemplateFooter(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'name' => self::getName(),
+            'description' => self::getDescription(),
+            'template' => self::getTemplate(),
+            'templateHeader' => self::getTemplateHeader(),
+            'templateFooter' => self::getTemplateFooter(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

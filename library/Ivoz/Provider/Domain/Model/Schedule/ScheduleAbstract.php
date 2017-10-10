@@ -217,17 +217,17 @@ abstract class ScheduleAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'timeIn' => $this->getTimeIn(),
-            'timeout' => $this->getTimeout(),
-            'monday' => $this->getMonday(),
-            'tuesday' => $this->getTuesday(),
-            'wednesday' => $this->getWednesday(),
-            'thursday' => $this->getThursday(),
-            'friday' => $this->getFriday(),
-            'saturday' => $this->getSaturday(),
-            'sunday' => $this->getSunday(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'name' => self::getName(),
+            'timeIn' => self::getTimeIn(),
+            'timeout' => self::getTimeout(),
+            'monday' => self::getMonday(),
+            'tuesday' => self::getTuesday(),
+            'wednesday' => self::getWednesday(),
+            'thursday' => self::getThursday(),
+            'friday' => self::getFriday(),
+            'saturday' => self::getSaturday(),
+            'sunday' => self::getSunday(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 

@@ -152,9 +152,9 @@ abstract class FriendsPatternAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'regExp' => $this->getRegExp(),
-            'friendId' => $this->getFriend() ? $this->getFriend()->getId() : null
+            'name' => self::getName(),
+            'regExp' => self::getRegExp(),
+            'friendId' => self::getFriend() ? self::getFriend()->getId() : null
         ];
     }
 

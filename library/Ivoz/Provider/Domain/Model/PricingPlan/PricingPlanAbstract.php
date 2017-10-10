@@ -187,12 +187,12 @@ abstract class PricingPlanAbstract
     protected function __toArray()
     {
         return [
-            'createdOn' => $this->getCreatedOn(),
+            'createdOn' => self::getCreatedOn(),
             'en' => $this->getName()->getEn(),
             'es' => $this->getName()->getEs(),
             'en' => $this->getDescription()->getEn(),
             'es' => $this->getDescription()->getEs(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

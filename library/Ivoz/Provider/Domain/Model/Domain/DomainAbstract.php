@@ -177,12 +177,12 @@ abstract class DomainAbstract
     protected function __toArray()
     {
         return [
-            'domain' => $this->getDomain(),
-            'scope' => $this->getScope(),
-            'pointsTo' => $this->getPointsTo(),
-            'description' => $this->getDescription(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'domain' => self::getDomain(),
+            'scope' => self::getScope(),
+            'pointsTo' => self::getPointsTo(),
+            'description' => self::getDescription(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

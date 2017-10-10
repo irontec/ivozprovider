@@ -172,11 +172,11 @@ abstract class TimezoneAbstract
     protected function __toArray()
     {
         return [
-            'tz' => $this->getTz(),
-            'comment' => $this->getComment(),
+            'tz' => self::getTz(),
+            'comment' => self::getComment(),
             'en' => $this->getLabel()->getEn(),
             'es' => $this->getLabel()->getEs(),
-            'countryId' => $this->getCountry() ? $this->getCountry()->getId() : null
+            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
 

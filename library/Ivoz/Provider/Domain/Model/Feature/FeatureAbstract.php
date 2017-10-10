@@ -155,7 +155,7 @@ abstract class FeatureAbstract
     protected function __toArray()
     {
         return [
-            'iden' => $this->getIden(),
+            'iden' => self::getIden(),
             'en' => $this->getName()->getEn(),
             'es' => $this->getName()->getEs()
         ];

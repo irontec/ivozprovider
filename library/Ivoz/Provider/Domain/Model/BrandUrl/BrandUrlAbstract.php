@@ -201,15 +201,15 @@ abstract class BrandUrlAbstract
     protected function __toArray()
     {
         return [
-            'url' => $this->getUrl(),
-            'klearTheme' => $this->getKlearTheme(),
-            'urlType' => $this->getUrlType(),
-            'name' => $this->getName(),
-            'userTheme' => $this->getUserTheme(),
+            'url' => self::getUrl(),
+            'klearTheme' => self::getKlearTheme(),
+            'urlType' => self::getUrlType(),
+            'name' => self::getName(),
+            'userTheme' => self::getUserTheme(),
             'fileSize' => $this->getLogo()->getFileSize(),
             'mimeType' => $this->getLogo()->getMimeType(),
             'baseName' => $this->getLogo()->getBaseName(),
-            'brandId' => $this->getBrand() ? $this->getBrand()->getId() : null
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 

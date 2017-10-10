@@ -151,9 +151,9 @@ abstract class QueueMemberAbstract
     protected function __toArray()
     {
         return [
-            'penalty' => $this->getPenalty(),
-            'queueId' => $this->getQueue() ? $this->getQueue()->getId() : null,
-            'userId' => $this->getUser() ? $this->getUser()->getId() : null
+            'penalty' => self::getPenalty(),
+            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
+            'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
 

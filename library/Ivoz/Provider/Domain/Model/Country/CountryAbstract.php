@@ -214,11 +214,11 @@ abstract class CountryAbstract
     protected function __toArray()
     {
         return [
-            'code' => $this->getCode(),
-            'callingCode' => $this->getCallingCode(),
-            'intCode' => $this->getIntCode(),
-            'e164Pattern' => $this->getE164Pattern(),
-            'nationalCC' => $this->getNationalCC(),
+            'code' => self::getCode(),
+            'callingCode' => self::getCallingCode(),
+            'intCode' => self::getIntCode(),
+            'e164Pattern' => self::getE164Pattern(),
+            'nationalCC' => self::getNationalCC(),
             'en' => $this->getName()->getEn(),
             'es' => $this->getName()->getEs(),
             'en' => $this->getZone()->getEn(),

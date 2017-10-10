@@ -187,13 +187,13 @@ abstract class MainOperatorAbstract
     protected function __toArray()
     {
         return [
-            'username' => $this->getUsername(),
-            'pass' => $this->getPass(),
-            'email' => $this->getEmail(),
-            'active' => $this->getActive(),
-            'name' => $this->getName(),
-            'lastname' => $this->getLastname(),
-            'timezoneId' => $this->getTimezone() ? $this->getTimezone()->getId() : null
+            'username' => self::getUsername(),
+            'pass' => self::getPass(),
+            'email' => self::getEmail(),
+            'active' => self::getActive(),
+            'name' => self::getName(),
+            'lastname' => self::getLastname(),
+            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
 

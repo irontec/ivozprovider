@@ -143,8 +143,8 @@ abstract class ExternalCallFilterRelScheduleAbstract
     protected function __toArray()
     {
         return [
-            'filterId' => $this->getFilter() ? $this->getFilter()->getId() : null,
-            'scheduleId' => $this->getSchedule() ? $this->getSchedule()->getId() : null
+            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'scheduleId' => self::getSchedule() ? self::getSchedule()->getId() : null
         ];
     }
 

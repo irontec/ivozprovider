@@ -192,13 +192,13 @@ abstract class XMLRPCLogAbstract
     protected function __toArray()
     {
         return [
-            'proxy' => $this->getProxy(),
-            'module' => $this->getModule(),
-            'method' => $this->getMethod(),
-            'mapperName' => $this->getMapperName(),
-            'startDate' => $this->getStartDate(),
-            'execDate' => $this->getExecDate(),
-            'finishDate' => $this->getFinishDate()
+            'proxy' => self::getProxy(),
+            'module' => self::getModule(),
+            'method' => self::getMethod(),
+            'mapperName' => self::getMapperName(),
+            'startDate' => self::getStartDate(),
+            'execDate' => self::getExecDate(),
+            'finishDate' => self::getFinishDate()
         ];
     }
 

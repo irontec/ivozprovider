@@ -143,8 +143,8 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     protected function __toArray()
     {
         return [
-            'conditionId' => $this->getCondition() ? $this->getCondition()->getId() : null,
-            'matchlistId' => $this->getMatchlist() ? $this->getMatchlist()->getId() : null
+            'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
+            'matchlistId' => self::getMatchlist() ? self::getMatchlist()->getId() : null
         ];
     }
 

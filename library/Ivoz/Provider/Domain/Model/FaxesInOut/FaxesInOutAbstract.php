@@ -209,16 +209,16 @@ abstract class FaxesInOutAbstract
     protected function __toArray()
     {
         return [
-            'calldate' => $this->getCalldate(),
-            'src' => $this->getSrc(),
-            'dst' => $this->getDst(),
-            'type' => $this->getType(),
-            'pages' => $this->getPages(),
-            'status' => $this->getStatus(),
+            'calldate' => self::getCalldate(),
+            'src' => self::getSrc(),
+            'dst' => self::getDst(),
+            'type' => self::getType(),
+            'pages' => self::getPages(),
+            'status' => self::getStatus(),
             'fileSize' => $this->getFile()->getFileSize(),
             'mimeType' => $this->getFile()->getMimeType(),
             'baseName' => $this->getFile()->getBaseName(),
-            'faxId' => $this->getFax() ? $this->getFax()->getId() : null
+            'faxId' => self::getFax() ? self::getFax()->getId() : null
         ];
     }
 

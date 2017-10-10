@@ -198,13 +198,13 @@ abstract class UsersWatcherAbstract
     protected function __toArray()
     {
         return [
-            'presentityUri' => $this->getPresentityUri(),
-            'watcherUsername' => $this->getWatcherUsername(),
-            'watcherDomain' => $this->getWatcherDomain(),
-            'event' => $this->getEvent(),
-            'status' => $this->getStatus(),
-            'reason' => $this->getReason(),
-            'insertedTime' => $this->getInsertedTime()
+            'presentityUri' => self::getPresentityUri(),
+            'watcherUsername' => self::getWatcherUsername(),
+            'watcherDomain' => self::getWatcherDomain(),
+            'event' => self::getEvent(),
+            'status' => self::getStatus(),
+            'reason' => self::getReason(),
+            'insertedTime' => self::getInsertedTime()
         ];
     }
 

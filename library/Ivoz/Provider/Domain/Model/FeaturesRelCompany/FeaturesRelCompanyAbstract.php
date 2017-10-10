@@ -143,8 +143,8 @@ abstract class FeaturesRelCompanyAbstract
     protected function __toArray()
     {
         return [
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'featureId' => $this->getFeature() ? $this->getFeature()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'featureId' => self::getFeature() ? self::getFeature()->getId() : null
         ];
     }
 

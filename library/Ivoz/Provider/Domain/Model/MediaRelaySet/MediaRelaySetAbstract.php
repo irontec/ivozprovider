@@ -143,8 +143,8 @@ abstract class MediaRelaySetAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription()
+            'name' => self::getName(),
+            'description' => self::getDescription()
         ];
     }
 

@@ -143,8 +143,8 @@ abstract class ExternalCallFilterWhiteListAbstract
     protected function __toArray()
     {
         return [
-            'filterId' => $this->getFilter() ? $this->getFilter()->getId() : null,
-            'matchlistId' => $this->getMatchlist() ? $this->getMatchlist()->getId() : null
+            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'matchlistId' => self::getMatchlist() ? self::getMatchlist()->getId() : null
         ];
     }
 

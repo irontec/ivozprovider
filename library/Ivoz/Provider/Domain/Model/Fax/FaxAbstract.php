@@ -168,11 +168,11 @@ abstract class FaxAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'email' => $this->getEmail(),
-            'sendByEmail' => $this->getSendByEmail(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null,
-            'outgoingDdiId' => $this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null
+            'name' => self::getName(),
+            'email' => self::getEmail(),
+            'sendByEmail' => self::getSendByEmail(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
 

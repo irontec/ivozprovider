@@ -204,14 +204,14 @@ abstract class ChangeHistoryAbstract
     protected function __toArray()
     {
         return [
-            'user' => $this->getUser(),
-            'date' => $this->getDate(),
-            'action' => $this->getAction(),
-            'table' => $this->getTable(),
-            'objid' => $this->getObjid(),
-            'field' => $this->getField(),
-            'oldValue' => $this->getOldValue(),
-            'newValue' => $this->getNewValue()
+            'user' => self::getUser(),
+            'date' => self::getDate(),
+            'action' => self::getAction(),
+            'table' => self::getTable(),
+            'objid' => self::getObjid(),
+            'field' => self::getField(),
+            'oldValue' => self::getOldValue(),
+            'newValue' => self::getNewValue()
         ];
     }
 

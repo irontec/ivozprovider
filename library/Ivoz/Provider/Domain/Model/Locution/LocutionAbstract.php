@@ -202,15 +202,15 @@ abstract class LocutionAbstract
     protected function __toArray()
     {
         return [
-            'name' => $this->getName(),
-            'status' => $this->getStatus(),
+            'name' => self::getName(),
+            'status' => self::getStatus(),
             'fileSize' => $this->getEncodedFile()->getFileSize(),
             'mimeType' => $this->getEncodedFile()->getMimeType(),
             'baseName' => $this->getEncodedFile()->getBaseName(),
             'fileSize' => $this->getOriginalFile()->getFileSize(),
             'mimeType' => $this->getOriginalFile()->getMimeType(),
             'baseName' => $this->getOriginalFile()->getBaseName(),
-            'companyId' => $this->getCompany() ? $this->getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 
