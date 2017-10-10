@@ -259,6 +259,7 @@ production:
       defaultValue: 'rrmemory'
       source:
         data: inline
+        filterClass: IvozProvider_Klear_Filter_QueueStrategies
         values:
           'ringall': _('Ring all')
           'leastrecent': _('Least recent')
