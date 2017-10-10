@@ -54,6 +54,11 @@ class CallsController extends BaseController
         // Mark this call as external
         $this->agi->setCallType("external");
 
+        // Remove any Diversion header from external calls
+        if ($this->agi->getRedirecting('count')) {
+            $this->agi->setRedirecting('count', 0);
+        }
+
         // Set Outgoing Channels X-CID header variable
         $this->agi->setVariable("__CALL_ID", $this->agi->getCallId());
 
