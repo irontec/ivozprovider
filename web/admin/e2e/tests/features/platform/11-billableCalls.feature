@@ -1,4 +1,4 @@
-@platform
+#platform
 @kamAccCdrs
 
 Feature: Billable calls admin page

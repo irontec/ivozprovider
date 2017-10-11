@@ -136,6 +136,11 @@ production:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_caller_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
+      forcedValues:
+        "self::matchOp": 1
+        "self::matchLen": 0
+        parentReferenceField: "CallerIn"
+
     kamTrunksDialplan_callee_inList_screen:
       <<: *kamTrunksDialplanList_screenLink
       title: _("Callee In transformations")
@@ -154,6 +159,10 @@ production:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_callee_inNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
+      forcedValues:
+        "self::matchOp": 1
+        "self::matchLen": 0
+        parentReferenceField: "CalleeIn"
 
     kamTrunksDialplan_caller_outList_screen:
       <<: *kamTrunksDialplanList_screenLink
@@ -173,6 +182,10 @@ production:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_caller_outNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
+      forcedValues:
+        "self::matchOp": 1
+        "self::matchLen": 0
+        parentReferenceField: "CallerOut"
 
     kamTrunksDialplan_callee_outList_screen:
       <<: *kamTrunksDialplanList_screenLink
@@ -192,6 +205,10 @@ production:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplan_callee_outNew_screen:
       <<: *kamTrunksDialplanNew_screenLink
+      forcedValues:
+        "self::matchOp": 1
+        "self::matchLen": 0
+        parentReferenceField: "CalleeOut"
 
   dialogs: &transformationRulesetGroupsTrunks_dialogsLink
     transformationRulesetGroupsTrunksDel_dialog: &transformationRulesetGroupsTrunksDel_dialogLink

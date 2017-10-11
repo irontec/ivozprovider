@@ -62,7 +62,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         $this->execute($this->entity, true);
     }
 
-    function it_sets_default_timezone_whem_empty()
+    function it_sets_default_timezone_when_empty()
     {
         $this
             ->dto
@@ -76,7 +76,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         }
     }
 
-    function it_sets_default_language_whem_empty()
+    function it_sets_default_language_when_empty()
     {
         $this->dto->setLanguageId(null);
         $this->execute($this->entity, true);

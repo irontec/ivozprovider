@@ -35,8 +35,7 @@ production:
           kamTrunksDialplanDel_dialog: true
     kamTrunksDialplanNew_screen: &kamTrunksDialplanNew_screenLink
       <<: *TrunksDialplan
-      module: default
-      controller: klear-custom-kam-trunks-dialplan-new
+      controller: new
       class: ui-silk-add
       label: true
       multiInstance: true

@@ -1,21 +1,21 @@
 <?php
 namespace Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk;
 
-use Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkRepository;
+use Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplanRepository;
 use Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplanInterface;
 use Ivoz\Kam\Domain\Service\TrunksDialplan\TrunksDialplanLifecycleEventHandlerInterface;
 
 class CleanUpByRemovedTrunksDialplan implements TrunksDialplanLifecycleEventHandlerInterface
 {
     /**
-     * @var TransformationRulesetGroupsTrunkRepository
+     * @var TrunksDialplanRepository
      */
-    protected $transformationRepository;
+    protected $trunksDialplanRepository;
 
     public function __construct(
-        TransformationRulesetGroupsTrunkRepository $transformationRepository
+        TrunksDialplanRepository $trunksDialplanRepository
     ) {
-        $this->transformationRepository = $transformationRepository;
+        $this->trunksDialplanRepository = $trunksDialplanRepository;
     }
 
     public function execute(TrunksDialplanInterface $entity)
@@ -30,7 +30,10 @@ class CleanUpByRemovedTrunksDialplan implements TrunksDialplanLifecycleEventHand
             'transformationRulesetGroupsTrunk' => $transformationRulesetGroupsTrunksId
         ];
 
-        $nRemaining = $this->transformationRepository->countByCriteria($criteria);
+        $nRemaining = $this
+            ->trunksDialplanRepository
+            ->countByCriteria($criteria);
+
         if ($nRemaining != 0) {
             return;
         }

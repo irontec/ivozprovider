@@ -28,7 +28,7 @@ Scenario: I can create new authorized sources
 
 Scenario: I can edit authorized sources
   Given I can see at least one row
-   When I click on "CompaniesList_kamUsersAddress" first elements edit button
+   When I click on "kamUsersAddress" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
@@ -37,8 +37,8 @@ Scenario: I can edit authorized sources
 Scenario: I can click on delete companies button
   Given I can see at least one row
    When I select element at position "1"
-    And I click on "CompaniesList_kamUsersAddress" delete button in the footer
+    And I click on "kamUsersAddress" delete button in the footer
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "Companies" list
+   Then I am on "CompaniesList_kamUsersAddress" subscreen list
 

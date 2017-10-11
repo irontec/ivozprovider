@@ -18,7 +18,7 @@ class TempFile
      */
     protected $storagePathResolver;
 
-    public function __construct(string $tmpPath,  StoragePathResolverInterface $storagePathResolver)
+    public function __construct(StoragePathResolverInterface $storagePathResolver, string $tmpPath = null)
     {
         $this->tmpPath = $tmpPath;
         $this->storagePathResolver = $storagePathResolver;

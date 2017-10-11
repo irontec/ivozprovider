@@ -13,4 +13,22 @@ use Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplanRepository;
  */
 class TrunksDialplanDoctrineRepository extends EntityRepository implements TrunksDialplanRepository
 {
+    public function countByCriteria(array $criteria)
+    {
+        $alias = 'TrunksDialplan';
+        $qb = $this->createQueryBuilder($alias);
+        $qb->select('count('. $alias .')');
+
+        foreach ($criteria as $field => $value) {
+
+            $normalizedField = $alias . '.' . $field;
+            $qb->andWhere(
+                $qb->expr()->eq($normalizedField, $value)
+            );
+        }
+
+        return $qb
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

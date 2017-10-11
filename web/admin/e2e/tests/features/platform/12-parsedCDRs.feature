@@ -1,4 +1,4 @@
-@platform
+#platform
 @parsedCDRs
 @parsedCDRsPlatform
 @todo

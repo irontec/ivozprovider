@@ -32,8 +32,8 @@ trait FileContainerAssemblerEntityTrait
 
             $entity->addTmpFile(
                 new TempFile(
-                    $dto->getLogoPath(),
-                    $this->logoPathResolver
+                    $this->logoPathResolver,
+                    $dto->getLogoPath()
                 )
             );
             return;
@@ -41,8 +41,8 @@ trait FileContainerAssemblerEntityTrait
 
         $entity->addTmpFile(
             new TempFile(
-                $dto->getLogoPath(),
-                $this->logoPathResolver
+                $this->logoPathResolver,
+                $dto->getLogoPath()
             )
         );
     }

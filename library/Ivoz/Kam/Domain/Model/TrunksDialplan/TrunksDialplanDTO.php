@@ -11,6 +11,8 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class TrunksDialplanDTO implements DataTransferObjectInterface
 {
+    use TrunksDialplanDTOTrait;
+
     /**
      * @var integer
      */

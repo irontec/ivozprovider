@@ -3,17 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "headless": "npm run xvfbStart; npm run prepareDatabase && DISPLAY=:1 npm test; npm run reports2junit; npm run xvfbStop",
+    "headless": "npm run xvfbStart; npm run clearEnv; npm run prepareDatabase && DISPLAY=:1 npm test; npm run reports2junit; npm run xvfbStop",
     "xvfbStart": "Xvfb :1 -screen 0 1280x720x24 &",
     "prepareDatabase": "npm run reCreateDb && npm run loadDbSchema && npm run updateDbSchema",
-    "test": "node ./node_modules/nightwatch/bin/nightwatch --tag login",
+    "test": "node ./node_modules/nightwatch/bin/nightwatch --tag current",
     "reports2junit": "cat reports/cucumber.json | node node_modules/.bin/cucumber-junit > reports/junit.xml",
     "xvfbStop": "pkill Xvfb",
     "reCreateDb": "npm run dropDb; npm run createDb",
     "dropDb": "../../../scheme/bin/console doctrine:database:drop --force -e test_e2e",
     "createDb": "../../../scheme/bin/console doctrine:database:create -e test_e2e",
     "loadDbSchema": "../../../scheme/bin/console doctrine:database:import ../../../scheme/initial.sql -e test_e2e",
-    "updateDbSchema": "../../../scheme/bin/console doctrine:migrations:migrate --quiet -e test_e2e"
+    "updateDbSchema": "../../../scheme/bin/console doctrine:migrations:migrate --quiet -e test_e2e",
+    "clearEnv": "npm run clearScreenshots; npm run cacheClear",
+    "clearScreenshots": "rm -fr screenshots/*",
+    "cacheClear": "../../../web/rest/bin/console cache:clear -e test_e2e"
   },
   "author": "Mikel Madariaga",
   "license": "MIT",

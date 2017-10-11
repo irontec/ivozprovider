@@ -2,7 +2,7 @@
 @companyOutgoingRouting
 @outgoingRouting
 
-Feature: ComOutgoing routing admin page
+Feature: Company outgoing routing admin page
   As a main operator
   I want to be able to access outgoing routing admin page
   In order to check and manage them

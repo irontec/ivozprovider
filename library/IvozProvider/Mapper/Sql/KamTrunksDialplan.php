@@ -47,6 +47,7 @@ class KamTrunksDialplan extends Raw\KamTrunksDialplan
                 $parentField = null;
                 break;
         }
+
         if (!is_null($parentField)) {
             $getter =  "get".$parentField;
             $parentModel = $model->getTransformationRulesetGroupsTrunks();
@@ -126,7 +127,7 @@ class KamTrunksDialplan extends Raw\KamTrunksDialplan
     protected function _sendXmlRcp()
     {
         $proxyServers = array(
-                'proxytrunks' => "dialplan.reload"
+            'proxytrunks' => "dialplan.reload"
         );
         $xmlrpcJob = new Xmlrpc();
         $xmlrpcJob->setProxyServers($proxyServers);

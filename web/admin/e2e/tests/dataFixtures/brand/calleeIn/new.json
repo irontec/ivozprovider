@@ -1,0 +1,6 @@
+{
+  "pr": "1",
+  "attrs": "International to E.164",
+  "matchExp": "^(00|\\+)([0-9]+)$",
+  "replExp": "\\2"
+}

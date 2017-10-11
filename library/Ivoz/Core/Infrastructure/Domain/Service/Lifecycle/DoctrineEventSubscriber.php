@@ -78,12 +78,16 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->runSharedServices($eventName, $args, $isNew);
         $this->runEntityServices($eventName, $args, $isNew);
 
+        $isTheEndOfTheEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
+        if (!$isTheEndOfTheEntityLifecycle) {
+            return;
+        }
+
         $scheduledEntityInsertions = count(
             $this->em->getUnitOfWork()->getScheduledEntityInsertions()
         );
-        $isTheEndOfTheEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
 
-        if ($scheduledEntityInsertions > 0 && $isTheEndOfTheEntityLifecycle) {
+        if ($scheduledEntityInsertions > 0) {
             $this->em->flush();
         }
     }

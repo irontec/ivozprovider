@@ -43,6 +43,11 @@ function edit () {
         .jqueryFillOutForm(
             formData,
             (response) => {
+
+                if (!response) {
+                    throw 'Unexpected response';
+                }
+
                 this.assert.deepEqual(
                     response.missingFields,
                     [],

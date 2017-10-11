@@ -2,19 +2,15 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksDialplan;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
-use Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplan;
+use Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplanInterface;
 use Ivoz\Kam\Domain\Model\TrunksDialplan\TrunksDialplanRepository;
-use Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface;
-use Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkLifecycleEventHandlerInterface;
 
 /**
  * Class AssignDpid
  * @package Ivoz\Kam\Domain\Service\TrunksDialplan
  * @lifecycle pre_persist
  */
-class AssignDpid implements TransformationRulesetGroupsTrunkLifecycleEventHandlerInterface
+class AssignDpid implements TrunksDialplanLifecycleEventHandlerInterface
 {
     use CreateDialplanRuleDtoTrait;
 
@@ -29,30 +25,38 @@ class AssignDpid implements TransformationRulesetGroupsTrunkLifecycleEventHandle
         $this->trunksDialplanRepository = $trunksDialplanRepository;
     }
 
-    public function execute(TransformationRulesetGroupsTrunkInterface $entity, $isNew)
+    /**
+     * @param TrunksDialplanInterface $entity
+     */
+    public function execute(TrunksDialplanInterface $entity)
     {
-        if (!$isNew || !$entity->getAutomatic()) {
+        $parentField = $entity->getParentReferenceField();
+
+        if (is_null($parentField)) {
             return;
         }
 
-        /**
-         * @var TrunksDialplan[] $maxDpiTrunksDialplans
-         */
-        $maxDpiTrunksDialplans = $this->trunksDialplanRepository->findBy(
-            [],
-            ['dpid' => 'DESC'],
-            1
-        );
+        $getter =  "get".$parentField;
+        $parentModel = $entity->getTransformationRulesetGroupsTrunk();
+        $dpid = $parentModel->{$getter}();
 
-        $dpid = 1;
-        if (!empty($maxDpiTrunksDialplans)) {
-            $maxDpiTrunksDialplan = $maxDpiTrunksDialplans[0];
-            $dpid = $maxDpiTrunksDialplan->getDpid() + 1;
+        if (is_null($dpid)) {
+
+            $maxDpiModels = $this->trunksDialplanRepository->findBy(
+                [],
+                ['dpid' => 'DESC'],
+                1
+            );
+
+            /** @var TrunksDialplanInterface $maxDpiModel */
+            $maxDpiModel = array_shift($maxDpiModels);
+
+            $dpid = 1;
+            if (!is_null($maxDpiModel)) {
+                $dpid = $maxDpiModel->getDpid() + 1;
+            }
         }
 
-        $entity->setCalleeOut($dpid);
-        $entity->setCallerOut(++$dpid);
-        $entity->setCalleeIn(++$dpid);
-        $entity->setCallerIn(++$dpid);
+        $entity->setDpid($dpid);
     }
 }

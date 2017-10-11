@@ -15,7 +15,7 @@ services:
   ##################################
   ## pre_persist
   ##################################
-  Ivoz\Kam\Domain\Service\TrunksDialplan\AssignDpid:
+  Ivoz\Kam\Domain\Service\TrunksDialplan\AssignDpidByTransformationRulesetGroupsTrunk:
     tags:
       - { name: provider.lifecycle.transformation_ruleset_groups_trunk.pre_persist, priority: 10 }
     arguments:

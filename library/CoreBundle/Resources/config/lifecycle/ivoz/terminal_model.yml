@@ -18,4 +18,5 @@ services:
   Ivoz\Provider\Domain\Service\TerminalModel\PersistTemplates:
     tags:
       - { name: provider.lifecycle.terminal_model.post_persist, priority: 10 }
-    arguments: ~
+    arguments:
+      $localStoragePath: '%local_storage_path%'

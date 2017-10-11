@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
 use Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkRepository;
 
@@ -13,15 +14,19 @@ use Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRu
  */
 class TransformationRulesetGroupsTrunkDoctrineRepository extends EntityRepository implements TransformationRulesetGroupsTrunkRepository
 {
-
     public function countByCriteria(array $criteria)
     {
-        /**
-         * @todo ensure that criteria arguments are handled properly
-         */
-        $qb = $this->createQueryBuilder('TransformationRulesetGroupsTrunk');
-        $qb->select('count(TransformationRulesetGroupsTrunk)')
-            ->addCriteria(new Criteria($criteria));
+        $alias = 'TransformationRulesetGroupsTrunk';
+        $qb = $this->createQueryBuilder($alias);
+        $qb->select('count('. $alias .')');
+
+        foreach ($criteria as $field => $value) {
+
+            $normalizedField = $alias . '.' . $field;
+            $qb->andWhere(
+                $qb->expr()->eq($normalizedField, $value)
+            );
+        }
 
         return $qb
             ->getQuery()

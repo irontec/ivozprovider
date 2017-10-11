@@ -1,8 +1,7 @@
 {
   "name": "Irontec Test Company",
   "domainUsers": "test.irontec.com",
-  "relFeatures": [
-    "",
+  "relFeatures[]": [
     "1",
     "2",
     "3",

@@ -142,6 +142,23 @@ class DataGateway
     /**
      * @param string $entityName
      * @param array|null $criteria
+     * @return DataTransferObjectInterface
+     */
+    public function findOneBy($entityName, array $criteria = null)
+    {
+        $response = $this->findBy(
+            $entityName,
+            $criteria
+        );
+
+        return array_shift(
+            $response
+        );
+    }
+
+    /**
+     * @param string $entityName
+     * @param array|null $criteria
      * @return array
      */
     public function countBy($entityName, array $criteria = null)

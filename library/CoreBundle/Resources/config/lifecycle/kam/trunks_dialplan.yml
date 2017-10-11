@@ -15,27 +15,36 @@ services:
   ##################################
   ## pre_persist
   ##################################
-  Ivoz\Kam\Domain\Service\TrunksDialplan\SanitizeValues:
+  Ivoz\Kam\Domain\Service\TrunksDialplan\AssignDpid:
     tags:
       - { name: kam.lifecycle.trunks_dialplan.pre_persist, priority: 10 }
-    arguments: ~
+    arguments:
+      $trunksDialplanRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksDialplan\\TrunksDialplan")'
 
   ##################################
   ## post_persist
   ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\TrunksDialplan\PersistedXmlRpc:
+  Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk\UpdateByTrunksDialplan:
     tags:
       - { name: kam.lifecycle.trunks_dialplan.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksDialplan\PersistedXmlRpc:
+    tags:
+      - { name: kam.lifecycle.trunks_dialplan.post_persist, priority: 20 }
 
   ##################################
   ## post_remove
   ##################################
   Ivoz\Provider\Domain\Service\TransformationRulesetGroupsTrunk\CleanUpByRemovedTrunksDialplan:
     tags:
-      - { name: kam.lifecycle.trunks_dialplan.post_persist, priority: 10 }
+      - { name: kam.lifecycle.trunks_dialplan.post_remove, priority: 10 }
     arguments:
-      $transformationRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\TransformationRulesetGroupsTrunk\\TransformationRulesetGroupsTrunk")'
+      $trunksDialplanRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksDialplan\\TrunksDialplan")'
 
   Ivoz\Kam\Infrastructure\Domain\Service\TrunksDialplan\RemovedXmlRpc:
     tags:
