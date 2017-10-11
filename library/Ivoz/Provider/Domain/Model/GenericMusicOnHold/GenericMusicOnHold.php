@@ -2,12 +2,30 @@
 
 namespace Ivoz\Provider\Domain\Model\GenericMusicOnHold;
 
+use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
+
 /**
  * GenericMusicOnHold
  */
-class GenericMusicOnHold extends GenericMusicOnHoldAbstract implements GenericMusicOnHoldInterface
+class GenericMusicOnHold
+    extends GenericMusicOnHoldAbstract
+    implements GenericMusicOnHoldInterface, FileContainerInterface
 {
     use GenericMusicOnHoldTrait;
+    use TempFileContainnerTrait;
+
+    /**
+     * @return array
+     */
+    public function getFileObjects()
+    {
+        return [
+            'encodedFile',
+            'originalFile'
+        ];
+    }
+
     /**
      * Get id
      *
@@ -18,7 +36,8 @@ class GenericMusicOnHold extends GenericMusicOnHoldAbstract implements GenericMu
         return $this->id;
     }
 
-    public function getOwner(){
+    public function getOwner()
+    {
         return
             'brand'
             . $this->getBrand()->getId();

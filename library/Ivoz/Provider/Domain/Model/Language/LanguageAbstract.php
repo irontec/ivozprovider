@@ -156,8 +156,8 @@ abstract class LanguageAbstract
     {
         return [
             'iden' => self::getIden(),
-            'en' => $this->getName()->getEn(),
-            'es' => $this->getName()->getEs()
+            'nameEn' => self::getName()->getEn(),
+            'nameEs' => self::getName()->getEs()
         ];
     }
 

@@ -174,8 +174,8 @@ abstract class TimezoneAbstract
         return [
             'tz' => self::getTz(),
             'comment' => self::getComment(),
-            'en' => $this->getLabel()->getEn(),
-            'es' => $this->getLabel()->getEs(),
+            'labelEn' => self::getLabel()->getEn(),
+            'labelEs' => self::getLabel()->getEs(),
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }

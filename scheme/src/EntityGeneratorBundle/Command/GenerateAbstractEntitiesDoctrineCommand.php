@@ -14,6 +14,8 @@ use Symfony\Component\Console\Input\InputOption;
  */
 class GenerateAbstractEntitiesDoctrineCommand extends ParentCommand
 {
+    const OUTCOME = 'abstract entities';
+
     use ExecuteGeneratorTrait;
 
     public function __construct($name = null)
@@ -44,13 +46,6 @@ class GenerateAbstractEntitiesDoctrineCommand extends ParentCommand
                 InputOption::VALUE_REQUIRED,
                 'The path where to generate entities when it cannot be guessed',
                 'src'
-            )
-            ->addOption(
-                'no-backup',
-                null,
-                InputOption::VALUE_REQUIRED,
-                'Do not backup existing entities files.',
-                true
             );
     }
 
@@ -62,7 +57,7 @@ class GenerateAbstractEntitiesDoctrineCommand extends ParentCommand
     protected function getEntityGenerator()
     {
         $entityGenerator = new AbstractEntityGenerator();
-        $entityGenerator->setGenerateAnnotations(false);
+        $entityGenerator->setBackupExisting(false);
         $entityGenerator->setGenerateStubMethods(true);
         $entityGenerator->setRegenerateEntityIfExists(true);
         $entityGenerator->setUpdateEntityIfExists(true);

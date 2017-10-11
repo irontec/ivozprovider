@@ -299,9 +299,9 @@ abstract class BrandAbstract
             'fromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingslimitemail' => self::getRecordingslimitemail(),
-            'fileSize' => $this->getLogo()->getFileSize(),
-            'mimeType' => $this->getLogo()->getMimeType(),
-            'baseName' => $this->getLogo()->getBaseName(),
+            'logoFileSize' => self::getLogo()->getFileSize(),
+            'logoMimeType' => self::getLogo()->getMimeType(),
+            'logoBaseName' => self::getLogo()->getBaseName(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
         ];

@@ -229,9 +229,9 @@ abstract class RecordingAbstract
             'caller' => self::getCaller(),
             'callee' => self::getCallee(),
             'recorder' => self::getRecorder(),
-            'fileSize' => $this->getRecordedFile()->getFileSize(),
-            'mimeType' => $this->getRecordedFile()->getMimeType(),
-            'baseName' => $this->getRecordedFile()->getBaseName(),
+            'recordedFileFileSize' => self::getRecordedFile()->getFileSize(),
+            'recordedFileMimeType' => self::getRecordedFile()->getMimeType(),
+            'recordedFileBaseName' => self::getRecordedFile()->getBaseName(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }

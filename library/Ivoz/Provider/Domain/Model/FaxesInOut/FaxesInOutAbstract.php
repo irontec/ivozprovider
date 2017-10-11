@@ -215,9 +215,9 @@ abstract class FaxesInOutAbstract
             'type' => self::getType(),
             'pages' => self::getPages(),
             'status' => self::getStatus(),
-            'fileSize' => $this->getFile()->getFileSize(),
-            'mimeType' => $this->getFile()->getMimeType(),
-            'baseName' => $this->getFile()->getBaseName(),
+            'fileFileSize' => self::getFile()->getFileSize(),
+            'fileMimeType' => self::getFile()->getMimeType(),
+            'fileBaseName' => self::getFile()->getBaseName(),
             'faxId' => self::getFax() ? self::getFax()->getId() : null
         ];
     }

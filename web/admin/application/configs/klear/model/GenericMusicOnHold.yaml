@@ -17,54 +17,54 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-#    originalFile:
-#      title: ngettext('File', 'Files', 1)
-#      type: file
-#      required: true
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          download:
-#            external: true
-#            type: command
-#            target: genericMusicOnHold_FileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          mediaembed:
-#            type: command
-#            title: _("Listen to MoH")
-#            class: jmedia
-#            onNull: hide
-#            target: genericMusicOnHold_FileDownload_command
-#
-#          upload:
-#            type: command
-#            target: genericMusicOnHold_FileUpload_command
-#            title: _("Upload file")
-#            class: qq-uploader
-#            onNull: show
-#    encodedFile:
-#      title: ngettext('File', 'Files', 1)
-#      type: file
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          download:
-#            external: true
-#            type: command
-#            target: genericMusicOnHold_FileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          mediaembed:
-#            type: command
-#            title: _("Listen to MoH")
-#            class: jmedia
-#            onNull: hide
-#            target: genericMusicOnHold_FileDownload_command
+    originalFile:
+      title: ngettext('File', 'Files', 1)
+      type: file
+      required: true
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          download:
+            external: true
+            type: command
+            target: genericMusicOnHold_FileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: genericMusicOnHold_FileDownload_command
+
+          upload:
+            type: command
+            target: genericMusicOnHold_FileUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+    encodedFile:
+      title: ngettext('File', 'Files', 1)
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          download:
+            external: true
+            type: command
+            target: genericMusicOnHold_FileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: genericMusicOnHold_FileDownload_command
     name:
       title: _('Name')
       type: text

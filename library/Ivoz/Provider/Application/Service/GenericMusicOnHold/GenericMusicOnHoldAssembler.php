@@ -1,31 +1,44 @@
 <?php
 
-namespace Ivoz\Provider\Application\Service\Brand;
+namespace Ivoz\Provider\Application\Service\GenericMusicOnHold;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\StoragePathResolver;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\EntityAssemblerInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Assert\Assertion;
 use Ivoz\Core\Application\Service\Traits\FileContainerAssemblerEntityTrait;
+use Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface;
 
-class BrandAssembler implements EntityAssemblerInterface
+class GenericMusicOnHoldAssembler implements EntityAssemblerInterface
 {
     use FileContainerAssemblerEntityTrait;
 
     public function __construct(
         string $localStoragePath,
-        string $basePath
+        string $originalBasePath,
+        string $encodedBasePath
     ) {
-        $logoPathResolver = new StoragePathResolver(
+        $originalFilePathResolver = new StoragePathResolver(
             $localStoragePath,
-            $basePath
+            $originalBasePath,
+            true
         );
 
         $this->setPathResolver(
-            'Logo',
-            $logoPathResolver
+            'originalFile',
+            $originalFilePathResolver
+        );
+
+        $encodedFilePathResolver = new StoragePathResolver(
+            $localStoragePath,
+            $encodedBasePath,
+            true
+        );
+
+        $this->setPathResolver(
+            'encodedFile',
+            $encodedFilePathResolver
         );
     }
 
@@ -35,7 +48,7 @@ class BrandAssembler implements EntityAssemblerInterface
      */
     public function fromDTO(DataTransferObjectInterface $dto, EntityInterface $entity)
     {
-        Assertion::isInstanceOf($entity, BrandInterface::class);
+        Assertion::isInstanceOf($entity, GenericMusicOnHoldInterface::class);
         $entity->updateFromDTO($dto);
         $this->handleEntityFiles($entity, $dto);
     }

@@ -188,10 +188,10 @@ abstract class TargetPatternAbstract
     {
         return [
             'regExp' => self::getRegExp(),
-            'en' => $this->getName()->getEn(),
-            'es' => $this->getName()->getEs(),
-            'en' => $this->getDescription()->getEn(),
-            'es' => $this->getDescription()->getEs(),
+            'nameEn' => self::getName()->getEn(),
+            'nameEs' => self::getName()->getEs(),
+            'descriptionEn' => self::getDescription()->getEn(),
+            'descriptionEs' => self::getDescription()->getEs(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }

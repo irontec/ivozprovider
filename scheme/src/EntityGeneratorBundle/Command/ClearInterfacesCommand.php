@@ -14,6 +14,8 @@ use EntityGeneratorBundle\Tools\InterfaceGenerator;
  */
 class ClearInterfacesCommand extends GenerateInterfacesCommand
 {
+    const OUTCOME = 'empty interfaces';
+
     /**
      * {@inheritDoc}
      */
@@ -34,13 +36,6 @@ class ClearInterfacesCommand extends GenerateInterfacesCommand
                 InputOption::VALUE_REQUIRED,
                 'The path where to generate entities when it cannot be guessed',
                 'src'
-            )
-            ->addOption(
-                'no-backup',
-                null,
-                InputOption::VALUE_REQUIRED,
-                'Do not backup existing entities files.',
-                true
             );
     }
 

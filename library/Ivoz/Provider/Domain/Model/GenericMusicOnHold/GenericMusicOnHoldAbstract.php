@@ -204,12 +204,12 @@ abstract class GenericMusicOnHoldAbstract
         return [
             'name' => self::getName(),
             'status' => self::getStatus(),
-            'fileSize' => $this->getOriginalFile()->getFileSize(),
-            'mimeType' => $this->getOriginalFile()->getMimeType(),
-            'baseName' => $this->getOriginalFile()->getBaseName(),
-            'fileSize' => $this->getEncodedFile()->getFileSize(),
-            'mimeType' => $this->getEncodedFile()->getMimeType(),
-            'baseName' => $this->getEncodedFile()->getBaseName(),
+            'originalFileFileSize' => self::getOriginalFile()->getFileSize(),
+            'originalFileMimeType' => self::getOriginalFile()->getMimeType(),
+            'originalFileBaseName' => self::getOriginalFile()->getBaseName(),
+            'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
+            'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
+            'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }

@@ -15,6 +15,8 @@ use EntityGeneratorBundle\Tools\DTOGenerator;
  */
 class GenerateDTOCommand extends ParentCommand
 {
+    const OUTCOME = 'DTOs';
+
     use ExecuteGeneratorTrait;
 
     public function __construct($name = null)
@@ -44,12 +46,6 @@ class GenerateDTOCommand extends ParentCommand
                 InputOption::VALUE_REQUIRED,
                 'The path where to generate entities when it cannot be guessed',
                 'src'
-            )
-            ->addOption(
-                'no-backup',
-                null,
-                InputOption::VALUE_NONE,
-                'Do not backup existing entities files.'
             );
     }
 

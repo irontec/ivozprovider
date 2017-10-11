@@ -201,10 +201,10 @@ abstract class ServiceAbstract
             'iden' => self::getIden(),
             'defaultCode' => self::getDefaultCode(),
             'extraArgs' => self::getExtraArgs(),
-            'en' => $this->getName()->getEn(),
-            'es' => $this->getName()->getEs(),
-            'en' => $this->getDescription()->getEn(),
-            'es' => $this->getDescription()->getEs()
+            'nameEn' => self::getName()->getEn(),
+            'nameEs' => self::getName()->getEs(),
+            'descriptionEn' => self::getDescription()->getEn(),
+            'descriptionEs' => self::getDescription()->getEs()
         ];
     }
 

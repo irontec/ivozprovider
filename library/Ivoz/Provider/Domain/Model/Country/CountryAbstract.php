@@ -219,10 +219,10 @@ abstract class CountryAbstract
             'intCode' => self::getIntCode(),
             'e164Pattern' => self::getE164Pattern(),
             'nationalCC' => self::getNationalCC(),
-            'en' => $this->getName()->getEn(),
-            'es' => $this->getName()->getEs(),
-            'en' => $this->getZone()->getEn(),
-            'es' => $this->getZone()->getEs()
+            'nameEn' => self::getName()->getEn(),
+            'nameEs' => self::getName()->getEs(),
+            'zoneEn' => self::getZone()->getEn(),
+            'zoneEs' => self::getZone()->getEs()
         ];
     }
 

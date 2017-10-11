@@ -6,14 +6,19 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TrunksDialplanInterface extends EntityInterface
 {
+    public function getParentReferenceField();
+
     /**
      * Set dpid
+     *
+     * Dpid value es resolved on entity lifecycle events
+     * let this be null until then
      *
      * @param integer $dpid
      *
      * @return self
      */
-    public function setDpid($dpid);
+    public function setDpid($dpid = null);
 
     /**
      * Get dpid

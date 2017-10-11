@@ -15,6 +15,8 @@ use Symfony\Component\Console\Input\InputOption;
  */
 class GenerateTraitsCommand extends ParentCommand
 {
+    const OUTCOME = 'entity traits';
+
     use ExecuteGeneratorTrait;
 
     public function __construct($name = null)
@@ -42,12 +44,6 @@ class GenerateTraitsCommand extends ParentCommand
                 InputOption::VALUE_REQUIRED,
                 'The path where to generate entities when it cannot be guessed',
                 'src'
-            )
-            ->addOption(
-                'no-backup',
-                null,
-                InputOption::VALUE_NONE,
-                'Do not backup existing entities files.'
             );
     }
 

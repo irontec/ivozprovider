@@ -829,8 +829,9 @@ public function <methodName>(<criteriaArgument>)
     {
         return
             '\''
-            . $segments[1]
-            . '\' => $this->get'
+            . $segments[0]
+            . ucFirst($segments[1])
+            . '\' => self::get'
             . Inflector::classify($segments[0])
             . '()->get' . Inflector::classify($segments[1])
             . '()';

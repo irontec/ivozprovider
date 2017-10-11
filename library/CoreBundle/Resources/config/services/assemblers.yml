@@ -11,13 +11,24 @@ services:
     arguments:
       $serviceContainer: '@service_container'
 
-  Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler:
-    arguments:
-      $localStoragePath: '%local_storage_path%'
-
   Ivoz\Provider\Application\Service\Brand\BrandAssembler:
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_brands.logo'
 
+  Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+
+  Ivoz\Provider\Application\Service\GenericMusicOnHold\GenericMusicOnHoldAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $originalBasePath: 'ivozprovider_model_genericmusiconhold.originalfile'
+      $encodedBasePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
+
+  Ivoz\Provider\Application\Service\GenericMusicOnHold\GenericMusicOnHoldDtoAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $originalBasePath: 'ivozprovider_model_genericmusiconhold.originalfile'
+      $encodedBasePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
 

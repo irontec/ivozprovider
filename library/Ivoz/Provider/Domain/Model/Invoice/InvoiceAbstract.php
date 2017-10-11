@@ -239,9 +239,9 @@ abstract class InvoiceAbstract
             'taxRate' => self::getTaxRate(),
             'totalWithTax' => self::getTotalWithTax(),
             'status' => self::getStatus(),
-            'fileSize' => $this->getPdf()->getFileSize(),
-            'mimeType' => $this->getPdf()->getMimeType(),
-            'baseName' => $this->getPdf()->getBaseName(),
+            'pdfFileSize' => self::getPdf()->getFileSize(),
+            'pdfMimeType' => self::getPdf()->getMimeType(),
+            'pdfBaseName' => self::getPdf()->getBaseName(),
             'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null

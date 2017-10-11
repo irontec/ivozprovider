@@ -25,16 +25,23 @@ class Recoder implements GenericMusicOnHoldLifecycleEventHandlerInterface
 
     public function execute(GenericMusicOnHoldInterface $entity)
     {
+        $mustRecode = false;
+
         /**
          * @todo
-         */
-        throw new \Exception('Not implemented yet');
 
-        $mustRecode = false;
+            $fso = $model->fetchOriginalFile(false);
+
+            if ($fso instanceof \Iron_Model_Fso && $fso->mustFlush()) {
+                $mustRecode = true;
+                $model->setStatus('pending');
+            }
+
+         */
 
         if ($mustRecode) {
             $recoderJob = new Recoder();
-            $this
+            $recoderJob
                 ->recoder
                 ->setId($entity->getId())
                 ->setModelName("GenericMusicOnHold")

@@ -3,11 +3,37 @@
 namespace Ivoz\Core\Application\Service\Traits;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\Service\StoragePathResolverInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
 trait FileContainerAssemblerEntityTrait
 {
+    protected $pathResolvers = [];
+
+    protected function setPathResolver($objName, StoragePathResolverInterface $storagePathResolver)
+    {
+        $this->pathResolvers[$objName] = $storagePathResolver;
+    }
+
+    protected function getPathResolver($objName)
+    {
+        if (!array_key_exists($objName, $this->pathResolvers)) {
+            throw new \Exception('No path resolver found for ' . $objName);
+        }
+
+        return $this->pathResolvers[$objName];
+    }
+
+    protected function handleEntityFiles(
+        EntityInterface $entity,
+        DataTransferObjectInterface $dto
+    ) {
+        foreach ($entity->getFileObjects() as $objName) {
+            $this->handleFile($dto, $entity, $objName);
+        }
+    }
+
     /**
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface $entity
@@ -24,16 +50,16 @@ trait FileContainerAssemblerEntityTrait
         }
         $entity->updateFromDTO($dto);
 
-        if (!$dto->getLogoPath() && !$updated) {
+        $pathGetter = 'get' . ucFirst($objName) . 'Path';
+        if (!$dto->{$pathGetter}() && !$updated) {
             return;
         }
 
-        if (!$dto->getLogoPath()) {
-
+        if (!$dto->{$pathGetter}()) {
             $entity->addTmpFile(
                 new TempFile(
-                    $this->logoPathResolver,
-                    $dto->getLogoPath()
+                    $this->getPathResolver($objName),
+                    $dto->{$pathGetter}()
                 )
             );
             return;
@@ -41,8 +67,8 @@ trait FileContainerAssemblerEntityTrait
 
         $entity->addTmpFile(
             new TempFile(
-                $this->logoPathResolver,
-                $dto->getLogoPath()
+                $this->getPathResolver($objName),
+                $dto->{$pathGetter}()
             )
         );
     }

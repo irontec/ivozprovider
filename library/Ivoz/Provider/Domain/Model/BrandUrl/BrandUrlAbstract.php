@@ -206,9 +206,9 @@ abstract class BrandUrlAbstract
             'urlType' => self::getUrlType(),
             'name' => self::getName(),
             'userTheme' => self::getUserTheme(),
-            'fileSize' => $this->getLogo()->getFileSize(),
-            'mimeType' => $this->getLogo()->getMimeType(),
-            'baseName' => $this->getLogo()->getBaseName(),
+            'logoFileSize' => self::getLogo()->getFileSize(),
+            'logoMimeType' => self::getLogo()->getMimeType(),
+            'logoBaseName' => self::getLogo()->getBaseName(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }

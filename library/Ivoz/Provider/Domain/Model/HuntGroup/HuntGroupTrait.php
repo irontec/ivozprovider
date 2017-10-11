@@ -95,7 +95,7 @@ trait HuntGroupTrait
     protected function __toArray()
     {
         return parent::__toArray() + [
-            'id' => $this->getId()
+            'id' => self::getId()
         ];
     }
 

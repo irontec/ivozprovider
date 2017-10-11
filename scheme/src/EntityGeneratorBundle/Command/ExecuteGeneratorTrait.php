@@ -47,14 +47,14 @@ trait ExecuteGeneratorTrait
                 $output->writeln(sprintf('Generating entity "<info>%s</info>"', $name));
                 $metadata = $manager->getClassMetadata($name, $input->getOption('path'));
             } else {
-                $output->writeln(sprintf('Generating entities for namespace "<info>%s</info>"', $name));
+                $output->writeln(sprintf('Generating '. self::OUTCOME .' for namespace "<info>%s</info>"', $name));
                 $metadata = $manager->getNamespaceMetadata($name, $input->getOption('path'));
             }
         }
 
         $generator = $this->getEntityGenerator();
 
-        $backupExisting = !$input->getOption('no-backup');
+        $backupExisting = false;
         $generator->setBackupExisting($backupExisting);
         $repoGenerator = new EntityRepositoryGenerator();
 

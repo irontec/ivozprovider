@@ -15,6 +15,8 @@ use EntityGeneratorBundle\Tools\InterfaceGenerator;
  */
 class GenerateInterfacesCommand extends ParentCommand
 {
+    const OUTCOME = 'interfaces';
+
     use ExecuteGeneratorTrait;
 
     public function __construct($name = null)
@@ -45,13 +47,6 @@ class GenerateInterfacesCommand extends ParentCommand
                 InputOption::VALUE_REQUIRED,
                 'The path where to generate entities when it cannot be guessed',
                 'src'
-            )
-            ->addOption(
-                'no-backup',
-                null,
-                InputOption::VALUE_REQUIRED,
-                'Do not backup existing entities files.',
-                true
             );
     }
 

@@ -15,7 +15,11 @@ class SanitizeValues implements GenericMusicOnHoldLifecycleEventHandlerInterface
 
     public function execute(GenericMusicOnHoldInterface $entity)
     {
-        throw new \Exception('Not implemented yet');
+        /**
+         * @todo
+         */
+
+//        throw new \Exception('Not implemented yet');
 
 //        $mustRecode = false;
 //
