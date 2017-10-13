@@ -18,6 +18,8 @@ class TempFile
      */
     protected $storagePathResolver;
 
+    protected $mkdirMode = 0755;
+
     public function __construct(StoragePathResolverInterface $storagePathResolver, string $tmpPath = null)
     {
         $this->tmpPath = $tmpPath;
@@ -38,8 +40,12 @@ class TempFile
         $targetPath = $this
             ->storagePathResolver
             ->getFilePath(
-                $entity->getId()
+                $entity
             );
+
+        $this->ensureFolder(
+            dirname($targetPath)
+        );
 
         $copySucceed = copy(
             $this->tmpPath,
@@ -62,11 +68,39 @@ class TempFile
         $filePath = $this
             ->storagePathResolver
             ->getFilePath(
-                $entity->getId()
+                $entity
             );
 
         if (file_exists($filePath)) {
             unlink($filePath);
         }
     }
+
+    private function ensureFolder(string $folder)
+    {
+        if (file_exists($folder)) {
+            return;
+        }
+
+        $this->buildDirectoryTree($folder);
+    }
+
+    private function buildDirectoryTree(string $targetDir)
+    {
+        $filePathParts = explode(DIRECTORY_SEPARATOR, $targetDir);
+        $currentDir = "";
+        foreach ($filePathParts as $dir) {
+            $currentDir = $currentDir. DIRECTORY_SEPARATOR. $dir;
+            if (!file_exists($currentDir)) {
+                if (!@mkdir($currentDir, $this->mkdirMode, true)) {
+                    if (!file_exists($currentDir)) {
+                        throw new Exception('Could not create dir ' . $currentDir);
+                    }
+                } else {
+                    chmod($currentDir, $this->mkdirMode);
+                }
+            }
+        }
+    }
+
 }

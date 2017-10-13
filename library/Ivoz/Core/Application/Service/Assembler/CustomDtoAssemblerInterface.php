@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Core\Application\Service;
+namespace Ivoz\Core\Application\Service\Assembler;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface DtoAssemblerInterface
+interface CustomDtoAssemblerInterface
 {
     public function toDTO(EntityInterface $entity);
 }

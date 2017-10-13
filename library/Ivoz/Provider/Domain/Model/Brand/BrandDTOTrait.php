@@ -9,7 +9,7 @@ trait BrandDTOTrait
     /**
      * @return self
      */
-    public function setLogoPath(string $path)
+    public function setLogoPath(string $path = null)
     {
         $this->logoPath = $path;
 

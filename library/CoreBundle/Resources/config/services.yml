@@ -30,7 +30,7 @@ services:
     arguments:
       - '@core.doctrine_foreign_key_transformer'
       - '@core.doctrine_collection_transformer'
-      - '@Ivoz\Core\Application\Service\EntityAssembler'
+      - '@Ivoz\Core\Application\Service\Assembler\EntityAssembler'
 
   core.create_entity_from_dto:
     class: Ivoz\Core\Application\Service\CreateEntityFromDTO
@@ -39,7 +39,7 @@ services:
     arguments:
       - '@core.doctrine_foreign_key_transformer'
       - '@core.doctrine_collection_transformer'
-      - '@Ivoz\Core\Application\Service\EntityAssembler'
+      - '@Ivoz\Core\Application\Service\Assembler\EntityAssembler'
 
   core.update_entity_from_dto:
     class: Ivoz\Core\Application\Service\UpdateEntityFromDTO

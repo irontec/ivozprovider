@@ -11,6 +11,9 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
     logo:
       class: Logo
       columnPrefix: false
+    invoice:
+      class: Invoice
+      columnPrefix: false
   uniqueConstraints:
     name:
       columns:
@@ -22,12 +25,6 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       length: 75
       options:
         fixed: false
-    nif:
-      type: string
-      nullable: false
-      length: 25
-      options:
-        fixed: false
     domainUsers:
       type: string
       nullable: true
@@ -35,45 +32,6 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       options:
         fixed: false
       column: domain_users
-    postalAddress:
-      type: string
-      nullable: false
-      length: 255
-      options:
-        fixed: false
-      column: postalAddress
-    postalCode:
-      type: string
-      nullable: false
-      length: 10
-      options:
-        fixed: false
-      column: postalCode
-    town:
-      type: string
-      nullable: false
-      length: 255
-      options:
-        fixed: false
-    province:
-      type: string
-      nullable: false
-      length: 255
-      options:
-        fixed: false
-    country:
-      type: string
-      nullable: false
-      length: 255
-      options:
-        fixed: false
-    registryData:
-      type: string
-      nullable: true
-      length: 1024
-      options:
-        fixed: false
-      column: registryData
     fromName:
       type: string
       nullable: true

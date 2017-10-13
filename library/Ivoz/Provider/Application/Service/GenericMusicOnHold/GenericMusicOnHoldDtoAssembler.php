@@ -2,14 +2,13 @@
 
 namespace Ivoz\Provider\Application\Service\GenericMusicOnHold;
 
-use Ivoz\Core\Application\Service\StoragePathResolver;
+use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\DtoAssemblerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface;
 
-class GenericMusicOnHoldDtoAssembler implements DtoAssemblerInterface
+class GenericMusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
 {
     protected $originalFilePathResolver;
     protected $encodedFilePathResolver;
@@ -22,16 +21,22 @@ class GenericMusicOnHoldDtoAssembler implements DtoAssemblerInterface
         $this->originalFilePathResolver = new StoragePathResolver(
             $localStoragePath,
             $originalBasePath,
+            true,
             true
         );
 
         $this->encodedFilePathResolver = new StoragePathResolver(
             $localStoragePath,
             $encodedBasePath,
+            true,
             true
         );
     }
 
+    /**
+     * @param GenericMusicOnHoldInterface $entity
+     * @return BrandDTO
+     */
     public function toDTO(EntityInterface $entity)
     {
         Assertion::isInstanceOf($entity, GenericMusicOnHoldInterface::class);
@@ -44,12 +49,20 @@ class GenericMusicOnHoldDtoAssembler implements DtoAssemblerInterface
             return $dto;
         }
 
+        /* OriginalFile */
+        $this->originalFilePathResolver->setOriginalFileName(
+            $entity->getOriginalFile()->getBaseName()
+        );
         $dto->setOriginalFilePath(
-            $this->originalFilePathResolver->getFilePath($id)
+            $this->originalFilePathResolver->getFilePath($entity)
         );
 
+        /* EncodedFile */
+        $this->encodedFilePathResolver->setOriginalFileName(
+            $entity->getEncodedFile()->getBaseName()
+        );
         $dto->setEncodedFilePath(
-            $this->encodedFilePathResolver->getFilePath($id)
+            $this->encodedFilePathResolver->getFilePath($entity)
         );
 
         return $dto;

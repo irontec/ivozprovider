@@ -8,7 +8,7 @@ production:
       trim: both
       required: true
       default: true
-    nif:
+    invoiceNif:
       title: _('Nif')
       type: text
       trim: both
@@ -82,37 +82,37 @@ production:
               height: 30
               crop: false
             onNull: hide
-    postalAddress:
+    invoicePostalAddress:
       title: _('Postal address')
       type: text
       trim: both
       required: true
       maxLength: 255
-    postalCode:
+    invoicePostalCode:
       title: ngettext('Postal code', 'Postal codes', 1)
       type: text
       trim: both
       required: true
       maxLength: 10
-    town:
+    invoiceTown:
       title: _('Town')
       type: text
       trim: both
       required: true
       maxLength: 255
-    province:
+    invoiceProvince:
       title: ngettext('Province', 'Provinces', 1)
       type: text
       trim: both
       required: true
       maxLength: 255
-    country:
+    invoiceCountry:
       title: ngettext('Country', 'Countries', 1)
       type: text
       trim: both
       required: true
       maxLength: 255
-    registryData:
+    invoiceRegistryData:
       title: _('Registry data')
       type: text
       trim: both

@@ -5,8 +5,7 @@ namespace ZfBundle\Services;
 use Doctrine\ORM\EntityManager;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
-use Ivoz\Core\Application\Service\DtoAssembler;
-use Ivoz\Core\Application\Service\DtoAssemblerFactory;
+use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Domain\Model\EntityInterface;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Application\Service;
+namespace Ivoz\Core\Application\Service\Assembler;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -15,13 +15,13 @@ class DtoAssembler
     /**
      * @var array
      */
-    protected $assemblers;
+    protected $customAssemblers;
 
     public function __construct(
         ContainerInterface $serviceContainer
     ) {
         $this->serviceContainer = $serviceContainer;
-        $this->assemblers = [];
+        $this->customAssemblers = [];
     }
 
     public function toDTO(EntityInterface $targetEntity)
@@ -38,11 +38,11 @@ class DtoAssembler
         $assembler = null;
         $entityClass = get_class($entity);
 
-        if (array_key_exists($entityClass, $this->assemblers)) {
-            $assembler = $this->assemblers[$entityClass];
+        if (array_key_exists($entityClass, $this->customAssemblers)) {
+            $assembler = $this->customAssemblers[$entityClass];
         } else {
             $assembler = $this->create($entity);
-            $this->assemblers[$entityClass] = $assembler;
+            $this->customAssemblers[$entityClass] = $assembler;
         }
 
         return $assembler;

@@ -17,45 +17,10 @@ abstract class BrandAbstract
     protected $name;
 
     /**
-     * @var string
-     */
-    protected $nif;
-
-    /**
      * @column domain_users
      * @var string
      */
     protected $domainUsers;
-
-    /**
-     * @var string
-     */
-    protected $postalAddress;
-
-    /**
-     * @var string
-     */
-    protected $postalCode;
-
-    /**
-     * @var string
-     */
-    protected $town;
-
-    /**
-     * @var string
-     */
-    protected $province;
-
-    /**
-     * @var string
-     */
-    protected $country;
-
-    /**
-     * @var string
-     */
-    protected $registryData;
 
     /**
      * @var string
@@ -83,6 +48,11 @@ abstract class BrandAbstract
     protected $logo;
 
     /**
+     * @var Invoice
+     */
+    protected $invoice;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     protected $language;
@@ -102,24 +72,11 @@ abstract class BrandAbstract
     /**
      * Constructor
      */
-    public function __construct(
-        $name,
-        $nif,
-        $postalAddress,
-        $postalCode,
-        $town,
-        $province,
-        $country,
-        Logo $logo
-    ) {
+    public function __construct($name, Logo $logo, Invoice $invoice)
+    {
         $this->setName($name);
-        $this->setNif($nif);
-        $this->setPostalAddress($postalAddress);
-        $this->setPostalCode($postalCode);
-        $this->setTown($town);
-        $this->setProvince($province);
-        $this->setCountry($country);
         $this->setLogo($logo);
+        $this->setInvoice($invoice);
 
         $this->initChangelog();
     }
@@ -192,20 +149,24 @@ abstract class BrandAbstract
             $dto->getLogoBaseName()
         );
 
+        $invoice = new Invoice(
+            $dto->getInvoiceNif(),
+            $dto->getInvoicePostalAddress(),
+            $dto->getInvoicePostalCode(),
+            $dto->getInvoiceTown(),
+            $dto->getInvoiceProvince(),
+            $dto->getInvoiceCountry(),
+            $dto->getInvoiceRegistryData()
+        );
+
         $self = new static(
             $dto->getName(),
-            $dto->getNif(),
-            $dto->getPostalAddress(),
-            $dto->getPostalCode(),
-            $dto->getTown(),
-            $dto->getProvince(),
-            $dto->getCountry(),
-            $logo
+            $logo,
+            $invoice
         );
 
         return $self
             ->setDomainUsers($dto->getDomainUsers())
-            ->setRegistryData($dto->getRegistryData())
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
@@ -232,21 +193,25 @@ abstract class BrandAbstract
             $dto->getLogoBaseName()
         );
 
+        $invoice = new Invoice(
+            $dto->getInvoiceNif(),
+            $dto->getInvoicePostalAddress(),
+            $dto->getInvoicePostalCode(),
+            $dto->getInvoiceTown(),
+            $dto->getInvoiceProvince(),
+            $dto->getInvoiceCountry(),
+            $dto->getInvoiceRegistryData()
+        );
+
         $this
             ->setName($dto->getName())
-            ->setNif($dto->getNif())
             ->setDomainUsers($dto->getDomainUsers())
-            ->setPostalAddress($dto->getPostalAddress())
-            ->setPostalCode($dto->getPostalCode())
-            ->setTown($dto->getTown())
-            ->setProvince($dto->getProvince())
-            ->setCountry($dto->getCountry())
-            ->setRegistryData($dto->getRegistryData())
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingslimitemail($dto->getRecordingslimitemail())
             ->setLogo($logo)
+            ->setInvoice($invoice)
             ->setLanguage($dto->getLanguage())
             ->setDefaultTimezone($dto->getDefaultTimezone());
 
@@ -261,14 +226,7 @@ abstract class BrandAbstract
     {
         return self::createDTO()
             ->setName($this->getName())
-            ->setNif($this->getNif())
             ->setDomainUsers($this->getDomainUsers())
-            ->setPostalAddress($this->getPostalAddress())
-            ->setPostalCode($this->getPostalCode())
-            ->setTown($this->getTown())
-            ->setProvince($this->getProvince())
-            ->setCountry($this->getCountry())
-            ->setRegistryData($this->getRegistryData())
             ->setFromName($this->getFromName())
             ->setFromAddress($this->getFromAddress())
             ->setRecordingsLimitMB($this->getRecordingsLimitMB())
@@ -276,6 +234,13 @@ abstract class BrandAbstract
             ->setLogoFileSize($this->getLogo()->getFileSize())
             ->setLogoMimeType($this->getLogo()->getMimeType())
             ->setLogoBaseName($this->getLogo()->getBaseName())
+            ->setInvoiceNif($this->getInvoice()->getNif())
+            ->setInvoicePostalAddress($this->getInvoice()->getPostalAddress())
+            ->setInvoicePostalCode($this->getInvoice()->getPostalCode())
+            ->setInvoiceTown($this->getInvoice()->getTown())
+            ->setInvoiceProvince($this->getInvoice()->getProvince())
+            ->setInvoiceCountry($this->getInvoice()->getCountry())
+            ->setInvoiceRegistryData($this->getInvoice()->getRegistryData())
             ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null)
             ->setDefaultTimezoneId($this->getDefaultTimezone() ? $this->getDefaultTimezone()->getId() : null);
     }
@@ -287,14 +252,7 @@ abstract class BrandAbstract
     {
         return [
             'name' => self::getName(),
-            'nif' => self::getNif(),
             'domainUsers' => self::getDomainUsers(),
-            'postalAddress' => self::getPostalAddress(),
-            'postalCode' => self::getPostalCode(),
-            'town' => self::getTown(),
-            'province' => self::getProvince(),
-            'country' => self::getCountry(),
-            'registryData' => self::getRegistryData(),
             'fromName' => self::getFromName(),
             'fromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
@@ -302,6 +260,13 @@ abstract class BrandAbstract
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
+            'invoiceNif' => self::getInvoice()->getNif(),
+            'invoicePostalAddress' => self::getInvoice()->getPostalAddress(),
+            'invoicePostalCode' => self::getInvoice()->getPostalCode(),
+            'invoiceTown' => self::getInvoice()->getTown(),
+            'invoiceProvince' => self::getInvoice()->getProvince(),
+            'invoiceCountry' => self::getInvoice()->getCountry(),
+            'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
         ];
@@ -338,33 +303,6 @@ abstract class BrandAbstract
     }
 
     /**
-     * Set nif
-     *
-     * @param string $nif
-     *
-     * @return self
-     */
-    public function setNif($nif)
-    {
-        Assertion::notNull($nif);
-        Assertion::maxLength($nif, 25);
-
-        $this->nif = $nif;
-
-        return $this;
-    }
-
-    /**
-     * Get nif
-     *
-     * @return string
-     */
-    public function getNif()
-    {
-        return $this->nif;
-    }
-
-    /**
      * Set domainUsers
      *
      * @param string $domainUsers
@@ -390,169 +328,6 @@ abstract class BrandAbstract
     public function getDomainUsers()
     {
         return $this->domainUsers;
-    }
-
-    /**
-     * Set postalAddress
-     *
-     * @param string $postalAddress
-     *
-     * @return self
-     */
-    public function setPostalAddress($postalAddress)
-    {
-        Assertion::notNull($postalAddress);
-        Assertion::maxLength($postalAddress, 255);
-
-        $this->postalAddress = $postalAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get postalAddress
-     *
-     * @return string
-     */
-    public function getPostalAddress()
-    {
-        return $this->postalAddress;
-    }
-
-    /**
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return self
-     */
-    public function setPostalCode($postalCode)
-    {
-        Assertion::notNull($postalCode);
-        Assertion::maxLength($postalCode, 10);
-
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    /**
-     * Get postalCode
-     *
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * Set town
-     *
-     * @param string $town
-     *
-     * @return self
-     */
-    public function setTown($town)
-    {
-        Assertion::notNull($town);
-        Assertion::maxLength($town, 255);
-
-        $this->town = $town;
-
-        return $this;
-    }
-
-    /**
-     * Get town
-     *
-     * @return string
-     */
-    public function getTown()
-    {
-        return $this->town;
-    }
-
-    /**
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return self
-     */
-    public function setProvince($province)
-    {
-        Assertion::notNull($province);
-        Assertion::maxLength($province, 255);
-
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * Get province
-     *
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        Assertion::notNull($country);
-        Assertion::maxLength($country, 255);
-
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * Set registryData
-     *
-     * @param string $registryData
-     *
-     * @return self
-     */
-    public function setRegistryData($registryData = null)
-    {
-        if (!is_null($registryData)) {
-            Assertion::maxLength($registryData, 1024);
-        }
-
-        $this->registryData = $registryData;
-
-        return $this;
-    }
-
-    /**
-     * Get registryData
-     *
-     * @return string
-     */
-    public function getRegistryData()
-    {
-        return $this->registryData;
     }
 
     /**
@@ -739,6 +514,30 @@ abstract class BrandAbstract
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Set invoice
+     *
+     * @param Invoice $invoice
+     *
+     * @return self
+     */
+    public function setInvoice(Invoice $invoice)
+    {
+        $this->invoice = $invoice;
+
+        return $this;
+    }
+
+    /**
+     * Get invoice
+     *
+     * @return Invoice
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
     }
 
     // @codeCoverageIgnoreEnd

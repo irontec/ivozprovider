@@ -21,42 +21,7 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $nif;
-
-    /**
-     * @var string
-     */
     private $domainUsers;
-
-    /**
-     * @var string
-     */
-    private $postalAddress;
-
-    /**
-     * @var string
-     */
-    private $postalCode;
-
-    /**
-     * @var string
-     */
-    private $town;
-
-    /**
-     * @var string
-     */
-    private $province;
-
-    /**
-     * @var string
-     */
-    private $country;
-
-    /**
-     * @var string
-     */
-    private $registryData;
 
     /**
      * @var string
@@ -97,6 +62,41 @@ class BrandDTO implements DataTransferObjectInterface
      * @var string
      */
     private $logoBaseName;
+
+    /**
+     * @var string
+     */
+    private $invoiceNif;
+
+    /**
+     * @var string
+     */
+    private $invoicePostalAddress;
+
+    /**
+     * @var string
+     */
+    private $invoicePostalCode;
+
+    /**
+     * @var string
+     */
+    private $invoiceTown;
+
+    /**
+     * @var string
+     */
+    private $invoiceProvince;
+
+    /**
+     * @var string
+     */
+    private $invoiceCountry;
+
+    /**
+     * @var string
+     */
+    private $invoiceRegistryData;
 
     /**
      * @var mixed
@@ -175,14 +175,7 @@ class BrandDTO implements DataTransferObjectInterface
     {
         return [
             'name' => $this->getName(),
-            'nif' => $this->getNif(),
             'domainUsers' => $this->getDomainUsers(),
-            'postalAddress' => $this->getPostalAddress(),
-            'postalCode' => $this->getPostalCode(),
-            'town' => $this->getTown(),
-            'province' => $this->getProvince(),
-            'country' => $this->getCountry(),
-            'registryData' => $this->getRegistryData(),
             'fromName' => $this->getFromName(),
             'fromAddress' => $this->getFromAddress(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
@@ -191,6 +184,13 @@ class BrandDTO implements DataTransferObjectInterface
             'logoFileSize' => $this->getLogoFileSize(),
             'logoMimeType' => $this->getLogoMimeType(),
             'logoBaseName' => $this->getLogoBaseName(),
+            'invoiceNif' => $this->getInvoiceNif(),
+            'invoicePostalAddress' => $this->getInvoicePostalAddress(),
+            'invoicePostalCode' => $this->getInvoicePostalCode(),
+            'invoiceTown' => $this->getInvoiceTown(),
+            'invoiceProvince' => $this->getInvoiceProvince(),
+            'invoiceCountry' => $this->getInvoiceCountry(),
+            'invoiceRegistryData' => $this->getInvoiceRegistryData(),
             'languageId' => $this->getLanguageId(),
             'defaultTimezoneId' => $this->getDefaultTimezoneId(),
             'companiesId' => $this->getCompaniesId(),
@@ -393,26 +393,6 @@ class BrandDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $nif
-     *
-     * @return BrandDTO
-     */
-    public function setNif($nif)
-    {
-        $this->nif = $nif;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNif()
-    {
-        return $this->nif;
-    }
-
-    /**
      * @param string $domainUsers
      *
      * @return BrandDTO
@@ -430,126 +410,6 @@ class BrandDTO implements DataTransferObjectInterface
     public function getDomainUsers()
     {
         return $this->domainUsers;
-    }
-
-    /**
-     * @param string $postalAddress
-     *
-     * @return BrandDTO
-     */
-    public function setPostalAddress($postalAddress)
-    {
-        $this->postalAddress = $postalAddress;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostalAddress()
-    {
-        return $this->postalAddress;
-    }
-
-    /**
-     * @param string $postalCode
-     *
-     * @return BrandDTO
-     */
-    public function setPostalCode($postalCode)
-    {
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * @param string $town
-     *
-     * @return BrandDTO
-     */
-    public function setTown($town)
-    {
-        $this->town = $town;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTown()
-    {
-        return $this->town;
-    }
-
-    /**
-     * @param string $province
-     *
-     * @return BrandDTO
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
-     * @param string $country
-     *
-     * @return BrandDTO
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param string $registryData
-     *
-     * @return BrandDTO
-     */
-    public function setRegistryData($registryData = null)
-    {
-        $this->registryData = $registryData;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRegistryData()
-    {
-        return $this->registryData;
     }
 
     /**
@@ -710,6 +570,146 @@ class BrandDTO implements DataTransferObjectInterface
     public function getLogoBaseName()
     {
         return $this->logoBaseName;
+    }
+
+    /**
+     * @param string $invoiceNif
+     *
+     * @return BrandDTO
+     */
+    public function setInvoiceNif($invoiceNif)
+    {
+        $this->invoiceNif = $invoiceNif;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceNif()
+    {
+        return $this->invoiceNif;
+    }
+
+    /**
+     * @param string $invoicePostalAddress
+     *
+     * @return BrandDTO
+     */
+    public function setInvoicePostalAddress($invoicePostalAddress)
+    {
+        $this->invoicePostalAddress = $invoicePostalAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoicePostalAddress()
+    {
+        return $this->invoicePostalAddress;
+    }
+
+    /**
+     * @param string $invoicePostalCode
+     *
+     * @return BrandDTO
+     */
+    public function setInvoicePostalCode($invoicePostalCode)
+    {
+        $this->invoicePostalCode = $invoicePostalCode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoicePostalCode()
+    {
+        return $this->invoicePostalCode;
+    }
+
+    /**
+     * @param string $invoiceTown
+     *
+     * @return BrandDTO
+     */
+    public function setInvoiceTown($invoiceTown)
+    {
+        $this->invoiceTown = $invoiceTown;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceTown()
+    {
+        return $this->invoiceTown;
+    }
+
+    /**
+     * @param string $invoiceProvince
+     *
+     * @return BrandDTO
+     */
+    public function setInvoiceProvince($invoiceProvince)
+    {
+        $this->invoiceProvince = $invoiceProvince;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceProvince()
+    {
+        return $this->invoiceProvince;
+    }
+
+    /**
+     * @param string $invoiceCountry
+     *
+     * @return BrandDTO
+     */
+    public function setInvoiceCountry($invoiceCountry)
+    {
+        $this->invoiceCountry = $invoiceCountry;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceCountry()
+    {
+        return $this->invoiceCountry;
+    }
+
+    /**
+     * @param string $invoiceRegistryData
+     *
+     * @return BrandDTO
+     */
+    public function setInvoiceRegistryData($invoiceRegistryData)
+    {
+        $this->invoiceRegistryData = $invoiceRegistryData;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoiceRegistryData()
+    {
+        return $this->invoiceRegistryData;
     }
 
     /**

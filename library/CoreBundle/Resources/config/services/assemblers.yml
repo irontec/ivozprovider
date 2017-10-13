@@ -3,11 +3,11 @@ services:
     autowire: true
     public: true
 
-  Ivoz\Core\Application\Service\DtoAssembler:
+  Ivoz\Core\Application\Service\Assembler\DtoAssembler:
     arguments:
       $serviceContainer: '@service_container'
 
-  Ivoz\Core\Application\Service\EntityAssembler:
+  Ivoz\Core\Application\Service\Assembler\EntityAssembler:
     arguments:
       $serviceContainer: '@service_container'
 

@@ -2,21 +2,21 @@
 
 namespace Ivoz\Provider\Application\Service\Brand;
 
-use Ivoz\Core\Application\Service\StoragePathResolver;
+use Ivoz\Core\Application\Service\CommonStoragePathResolver;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\DtoAssemblerInterface;
+use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Assert\Assertion;
 
-class BrandDtoAssembler implements DtoAssemblerInterface
+class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
     protected $logoPathResolver;
 
     public function __construct(
         string $localStoragePath
     ) {
-        $this->logoPathResolver = new StoragePathResolver(
+        $this->logoPathResolver = new CommonStoragePathResolver(
             $localStoragePath,
             'ivozprovider_model_brands.logo'
         );
@@ -26,9 +26,7 @@ class BrandDtoAssembler implements DtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, BrandInterface::class);
 
-        /**
-         * @var BrandDTO $dto
-         */
+        /** @var BrandDTO $dto */
         $dto = $entity->toDTO();
         $id = $entity->getId();
 
@@ -37,7 +35,7 @@ class BrandDtoAssembler implements DtoAssemblerInterface
         }
 
         $dto->setLogoPath(
-            $this->logoPathResolver->getFilePath($id)
+            $this->logoPathResolver->getFilePath($entity)
         );
 
         return $dto;

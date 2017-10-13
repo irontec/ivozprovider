@@ -3,16 +3,15 @@
 namespace Ivoz\Provider\Application\Service\GenericMusicOnHold;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\StoragePathResolver;
+use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\Service\EntityAssemblerInterface;
 use Assert\Assertion;
-use Ivoz\Core\Application\Service\Traits\FileContainerAssemblerEntityTrait;
+use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 use Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface;
 
-class GenericMusicOnHoldAssembler implements EntityAssemblerInterface
+class GenericMusicOnHoldAssembler implements CustomEntityAssemblerInterface
 {
-    use FileContainerAssemblerEntityTrait;
+    use FileContainerEntityAssemblerTrait;
 
     public function __construct(
         string $localStoragePath,
@@ -21,8 +20,7 @@ class GenericMusicOnHoldAssembler implements EntityAssemblerInterface
     ) {
         $originalFilePathResolver = new StoragePathResolver(
             $localStoragePath,
-            $originalBasePath,
-            true
+            $originalBasePath
         );
 
         $this->setPathResolver(
@@ -32,8 +30,7 @@ class GenericMusicOnHoldAssembler implements EntityAssemblerInterface
 
         $encodedFilePathResolver = new StoragePathResolver(
             $localStoragePath,
-            $encodedBasePath,
-            true
+            $encodedBasePath
         );
 
         $this->setPathResolver(

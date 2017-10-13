@@ -59,22 +59,6 @@ interface BrandInterface extends EntityInterface
     public function getName();
 
     /**
-     * Set nif
-     *
-     * @param string $nif
-     *
-     * @return self
-     */
-    public function setNif($nif);
-
-    /**
-     * Get nif
-     *
-     * @return string
-     */
-    public function getNif();
-
-    /**
      * Set domainUsers
      *
      * @param string $domainUsers
@@ -89,102 +73,6 @@ interface BrandInterface extends EntityInterface
      * @return string
      */
     public function getDomainUsers();
-
-    /**
-     * Set postalAddress
-     *
-     * @param string $postalAddress
-     *
-     * @return self
-     */
-    public function setPostalAddress($postalAddress);
-
-    /**
-     * Get postalAddress
-     *
-     * @return string
-     */
-    public function getPostalAddress();
-
-    /**
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return self
-     */
-    public function setPostalCode($postalCode);
-
-    /**
-     * Get postalCode
-     *
-     * @return string
-     */
-    public function getPostalCode();
-
-    /**
-     * Set town
-     *
-     * @param string $town
-     *
-     * @return self
-     */
-    public function setTown($town);
-
-    /**
-     * Get town
-     *
-     * @return string
-     */
-    public function getTown();
-
-    /**
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return self
-     */
-    public function setProvince($province);
-
-    /**
-     * Get province
-     *
-     * @return string
-     */
-    public function getProvince();
-
-    /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return self
-     */
-    public function setCountry($country);
-
-    /**
-     * Get country
-     *
-     * @return string
-     */
-    public function getCountry();
-
-    /**
-     * Set registryData
-     *
-     * @param string $registryData
-     *
-     * @return self
-     */
-    public function setRegistryData($registryData = null);
-
-    /**
-     * Get registryData
-     *
-     * @return string
-     */
-    public function getRegistryData();
 
     /**
      * Set fromName
@@ -297,6 +185,22 @@ interface BrandInterface extends EntityInterface
      * @return Logo
      */
     public function getLogo();
+
+    /**
+     * Set invoice
+     *
+     * @param Invoice $invoice
+     *
+     * @return self
+     */
+    public function setInvoice(\Ivoz\Provider\Domain\Model\Brand\Invoice $invoice);
+
+    /**
+     * Get invoice
+     *
+     * @return Invoice
+     */
+    public function getInvoice();
 
     /**
      * Add company

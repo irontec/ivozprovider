@@ -19,4 +19,4 @@ services:
       $entityUpdater:
         "@core.update_entity_from_dto"
       $dtoAssembler:
-        '@Ivoz\Core\Application\Service\DtoAssembler'
+        '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'

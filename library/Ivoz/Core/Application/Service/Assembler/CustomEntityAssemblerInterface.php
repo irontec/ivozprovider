@@ -1,11 +1,11 @@
 <?php
 
-namespace Ivoz\Core\Application\Service;
+namespace Ivoz\Core\Application\Service\Assembler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface EntityAssemblerInterface
+interface CustomEntityAssemblerInterface
 {
     public function fromDTO(DataTransferObjectInterface $dto, EntityInterface $entity);
 }
