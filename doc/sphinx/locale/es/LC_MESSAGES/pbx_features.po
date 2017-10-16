@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-18 19:15+0200\n"
+"POT-Creation-Date: 2017-10-16 18:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -911,7 +911,7 @@ msgstr ""
 
 #: ../../pbx_features/conference_rooms.rst:17
 #: ../../pbx_features/external_filters.rst:76 ../../pbx_features/friends.rst:69
-#: ../../pbx_features/ivrs.rst:22 ../../pbx_features/queues.rst:28
+#: ../../pbx_features/ivrs.rst:22 ../../pbx_features/queues.rst:26
 #: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:20
 msgid "Name"
 msgstr "Nombre"
@@ -1774,7 +1774,7 @@ msgstr ""
 msgid "There are multiple types:"
 msgstr "Existen de varios tipos:"
 
-#: ../../pbx_features/huntgroups.rst:13 ../../pbx_features/queues.rst:74
+#: ../../pbx_features/huntgroups.rst:13 ../../pbx_features/queues.rst:72
 msgid "Ring all"
 msgstr "A todos"
 
@@ -1812,7 +1812,7 @@ msgstr ""
 "Suenan los usuarios definidos, en el orden definido y durante el tiempo "
 "definido. Al acabar la secuencia, se vuelve a iniciar la secuencia."
 
-#: ../../pbx_features/huntgroups.rst:28 ../../pbx_features/queues.rst:88
+#: ../../pbx_features/huntgroups.rst:28 ../../pbx_features/queues.rst:86
 msgid "Random"
 msgstr "Aleatoriamente"
 
@@ -2380,20 +2380,15 @@ msgstr ""
 
 #: ../../pbx_features/queues.rst:14
 msgid ""
-"This easy approach has a drawback **in distributed installations**: as "
-"Asterisk does not provide yet a way to share queue information between "
-"multiple instances and as we have not found a proper way neither, **a "
-"company that uses queues must have an static assignment to one of the "
-"Application Servers** (in Companies section)."
+"**In distributed installations** using Queues is only compatible with an "
+"static assignment or 'hash based' distribution (see **Distribute method**"
+" :ref:`here <Remaining Parameters>`)."
 msgstr ""
-"Esta implementación sencilla tiene una desventaja en **instalaciones "
-"distribuidas**: como Asterisk no provee todavía de un mecanismo de "
-"compartición de informacion de colas entre múltiples instancias y tampoco"
-" hemos encontrado una manera adecuada de hacerlo, **una compañía que "
-"emplee colas deberá tener una asignación estática a uno de los Servidores"
-" de Aplicación** (en su pantalla de edición de Compañía)."
+"En **Instalaciones distribuidas** el uso de colas solo es compatible "
+"con una asignación estática o 'basada en hash' (ver **Método de distribución** "
+":ref:`aquí <Parámetros restantes>`)."
 
-#: ../../pbx_features/queues.rst:19
+#: ../../pbx_features/queues.rst:17
 msgid ""
 "Brand operators can choose which Companies have queues (see **Features** "
 "in :ref:`Brand Configuration` and :ref:`Company Configuration`)."
@@ -2402,23 +2397,23 @@ msgstr ""
 "**Features** en :ref:`Configuración de Marca` y :ref:`Configuración de "
 "Compañía`)."
 
-#: ../../pbx_features/queues.rst:23
+#: ../../pbx_features/queues.rst:21
 msgid "Queue configuration"
 msgstr "Configuración de cola"
 
-#: ../../pbx_features/queues.rst:25
+#: ../../pbx_features/queues.rst:23
 msgid "This are the settings related to a queue:"
 msgstr "Estas son las configuraciones relacionadas con una cola:"
 
-#: ../../pbx_features/queues.rst:30
+#: ../../pbx_features/queues.rst:28
 msgid "Use to reference this queue"
 msgstr "Empleado para referenciar esta cola"
 
-#: ../../pbx_features/queues.rst:31
+#: ../../pbx_features/queues.rst:29
 msgid "Weight"
 msgstr "Peso"
 
-#: ../../pbx_features/queues.rst:33
+#: ../../pbx_features/queues.rst:31
 msgid ""
 "Priorizes calls to an agent that attends calls in two (or more) calls. "
 "The higher, the more priorized."
@@ -2426,11 +2421,11 @@ msgstr ""
 "Cuando un miembro está en varias colas, se atenderán primero las llamadas"
 " de las colas con mayor peso."
 
-#: ../../pbx_features/queues.rst:35
+#: ../../pbx_features/queues.rst:33
 msgid "Strategy"
 msgstr "Estrategia"
 
-#: ../../pbx_features/queues.rst:37
+#: ../../pbx_features/queues.rst:35
 msgid ""
 "How will the queue deliver the calls? Calling to all agents, calling to a"
 " random one?"
@@ -2438,29 +2433,29 @@ msgstr ""
 "¿Como se enviarán las llamadadas encoladas? Llamando a todos los "
 "miembros, llamando a uno al azar, etc."
 
-#: ../../pbx_features/queues.rst:39
+#: ../../pbx_features/queues.rst:37
 msgid "Member call seconds"
 msgstr "Duración llamada a miembro"
 
-#: ../../pbx_features/queues.rst:41
+#: ../../pbx_features/queues.rst:39
 msgid "Defines how long will a call to an agent last."
 msgstr "Tiempo en segundos que se llamará a cada miembro de la cola"
 
-#: ../../pbx_features/queues.rst:42
+#: ../../pbx_features/queues.rst:40
 msgid "Member rest seconds"
 msgstr "Descanso miembro"
 
-#: ../../pbx_features/queues.rst:44
+#: ../../pbx_features/queues.rst:42
 msgid "Seconds between calls for an agent."
 msgstr ""
 "Tiempo en segundos que el miembro no será molestado tras atender una "
 "llamada de cola."
 
-#: ../../pbx_features/queues.rst:45
+#: ../../pbx_features/queues.rst:43
 msgid "Announce"
 msgstr "Anuncio"
 
-#: ../../pbx_features/queues.rst:47
+#: ../../pbx_features/queues.rst:45
 msgid ""
 "Select a locution and its frequency. Caller waiting in the call will "
 "listen to this locution."
@@ -2468,11 +2463,11 @@ msgstr ""
 "Seleccione la locución y frecuencia. Las llamadas esperando en la cola "
 "escucharán esta locución."
 
-#: ../../pbx_features/queues.rst:49
+#: ../../pbx_features/queues.rst:47
 msgid "Timeout configuration"
 msgstr "Configuración no contesta"
 
-#: ../../pbx_features/queues.rst:51
+#: ../../pbx_features/queues.rst:49
 msgid ""
 "Limits the time that a call can wait in a queue and the following "
 "behaviour."
@@ -2480,11 +2475,11 @@ msgstr ""
 "Limita el tiempo que una llamada esperará en la cola y el tratamiento a "
 "realizar cuando se supere ese tiempo."
 
-#: ../../pbx_features/queues.rst:52
+#: ../../pbx_features/queues.rst:50
 msgid "Full Queue configuration"
 msgstr "Configuración cola llena"
 
-#: ../../pbx_features/queues.rst:54
+#: ../../pbx_features/queues.rst:52
 msgid ""
 "Limits the amount of people waiting in a call and the behaviour when this"
 " limit it reached."
@@ -2492,7 +2487,7 @@ msgstr ""
 "Limita el número de llamadas que podrán esperar en la cola y el "
 "comportamiento a realizar cuando se alcance esa cantidad."
 
-#: ../../pbx_features/queues.rst:57
+#: ../../pbx_features/queues.rst:55
 msgid ""
 "Apart from creating a queue, you have to assign users to it. This users "
 "will have a **penalty: a user will not be selected to deliver a call if "
@@ -2502,7 +2497,7 @@ msgstr ""
 "tendrán una **prioridad: Un usuario de prioridad alta no será no será "
 "molestado siempre que exista un usuario de menor prioridad disponible.**"
 
-#: ../../pbx_features/queues.rst:62
+#: ../../pbx_features/queues.rst:60
 msgid ""
 "A call can be sent to a queue selecting it in the \"Route type\" "
 "selectors available in multiple sections of IvozProvider (extension to "
@@ -2512,11 +2507,11 @@ msgstr ""
 "selector \"Enrutar\" disponible en varias seciones de IvozProvider "
 "(extension a cola, DDI a cola, ...)"
 
-#: ../../pbx_features/queues.rst:67
+#: ../../pbx_features/queues.rst:65
 msgid "Queue strategy"
 msgstr "Estrategia de cola"
 
-#: ../../pbx_features/queues.rst:69
+#: ../../pbx_features/queues.rst:67
 msgid ""
 "The queue strategy **always applies to current penalty members** starting"
 " with the smallest penalty value and only going to the next penalty if "
@@ -2527,7 +2522,7 @@ msgstr ""
 "siguiente prioridad solo cuando todos los miembros de la actual estén "
 "ocupados o no disponibles."
 
-#: ../../pbx_features/queues.rst:76
+#: ../../pbx_features/queues.rst:74
 msgid ""
 "The call will make all the members of the current priority during a "
 "predefined time."
@@ -2535,11 +2530,11 @@ msgstr ""
 "La llamada hará sonar todos los miembros de la prioridad actual al mismo "
 "tiempo durante un tiempo predefinido."
 
-#: ../../pbx_features/queues.rst:78
+#: ../../pbx_features/queues.rst:76
 msgid "Least recent"
 msgstr "Menos reciente"
 
-#: ../../pbx_features/queues.rst:80
+#: ../../pbx_features/queues.rst:78
 msgid ""
 "The call will *jump* from one member to another in a predefined order "
 "based on the last time the member attended a call. Members whose latest "
@@ -2549,11 +2544,11 @@ msgstr ""
 " a la última vez que los miembros atendieron a llamadas. Miembros cuya "
 "llamada atendida sea mas antigua serán llamados primero."
 
-#: ../../pbx_features/queues.rst:83
+#: ../../pbx_features/queues.rst:81
 msgid "Fewer calls"
 msgstr "Menos atendidas"
 
-#: ../../pbx_features/queues.rst:85
+#: ../../pbx_features/queues.rst:83
 msgid ""
 "The call will *jump* from one member to another in a predefined order "
 "based on the number of atteded calls. Members that have attedended less "
@@ -2563,17 +2558,17 @@ msgstr ""
 " al número de llamadas atendidas. Miembros con menos llamadas antendidas "
 "serán llamados primero."
 
-#: ../../pbx_features/queues.rst:90
+#: ../../pbx_features/queues.rst:88
 msgid ""
 "The call will *jump* from one member to another in a random order, "
 "ringing during the configured time."
 msgstr "La llamada *saltará* de un miembro a otro en un orden aleatorio."
 
-#: ../../pbx_features/queues.rst:92
+#: ../../pbx_features/queues.rst:90
 msgid "Round Robin memory"
 msgstr "Secuencialmente (memoria)"
 
-#: ../../pbx_features/queues.rst:94
+#: ../../pbx_features/queues.rst:92
 msgid ""
 "The call will *jump* from one member to another in a predefined order "
 "starting past the last member that attended a call."
@@ -2581,11 +2576,11 @@ msgstr ""
 "La llamada *saltará* de un miembro a otro en un orden predefinido "
 "empezando a partir del último miembro que atendió una llamada."
 
-#: ../../pbx_features/queues.rst:96
+#: ../../pbx_features/queues.rst:94
 msgid "Linear"
 msgstr "Secuencialmente (∞)"
 
-#: ../../pbx_features/queues.rst:98
+#: ../../pbx_features/queues.rst:96
 msgid ""
 "The call will *jump* from one member to another in a predefined order "
 "based on the creation time of the member."

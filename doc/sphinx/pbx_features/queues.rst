@@ -11,10 +11,8 @@ than users attending them**.
              advanced features that are crucial to them (reports, RT visualization,
              queue related stat, etc.).
 
-This easy approach has a drawback **in distributed installations**: as Asterisk does
-not provide yet a way to share queue information between multiple instances and
-as we have not found a proper way neither, **a company that uses queues must have
-an static assignment to one of the Application Servers** (in Companies section).
+**In distributed installations** using Queues is only compatible with an static
+assignment or 'hash based' distribution (see **Distribute method** :ref:`here <Remaining Parameters>`).
 
 .. hint:: Brand operators can choose which Companies have queues (see **Features**
           in :ref:`Brand Configuration` and :ref:`Company Configuration`).

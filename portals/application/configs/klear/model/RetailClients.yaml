@@ -45,9 +45,32 @@ production:
               - tz
             template: '%tz%'
           order: tz
+    distributeMethod:
+      title: _('Distribute method')
+      type: select
+      defaultValue: hash
+      source:
+        data: inline
+        values:
+          'static':
+            title: _("Static")
+            visualFilter:
+              show: ["applicationServerId"]
+              hide: []
+          'rr':
+            title: _("Round robin")
+            visualFilter:
+              show: []
+              hide: ["applicationServerId"]
+          'hash':
+            title: _("Hash based")
+            visualFilter:
+              show: []
+              hide: ["applicationServerId"]
     applicationServerId:
       title: ngettext('Application Server', 'Application Servers', 1)
       type: select
+      required: true
       source:
         data: mapper
         config:
@@ -57,7 +80,7 @@ production:
               - name
             template: '%name%'
           order: name
-        'null': _("Dispatch to any AS")
+        'null': _("Unassigned")
     externalMaxCalls:
       title: _('External max call')
       type: number
