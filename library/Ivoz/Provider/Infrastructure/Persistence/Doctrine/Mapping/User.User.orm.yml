@@ -20,6 +20,9 @@ Ivoz\Provider\Domain\Model\User\User:
     queueMembers:
       targetEntity: Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
       mappedBy: user
+    callForwardSettings:
+      targetEntity: Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+      mappedBy: user
   lifecycleCallbacks:
     postLoad:
       - initChangelog

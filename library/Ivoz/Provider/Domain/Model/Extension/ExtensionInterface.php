@@ -3,10 +3,18 @@
 namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface ExtensionInterface extends EntityInterface
 {
     public function toArrayPortal();
+
+    /**
+     * Get User using this Extension as ScreenExtension
+     *
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface|null
+     */
+    public function getScreenUser();
 
     /**
      * Set number
@@ -199,6 +207,37 @@ interface ExtensionInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
      */
     public function getConditionalRoute();
+
+    /**
+     * Add user
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     *
+     * @return ExtensionTrait
+     */
+    public function addUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
+
+    /**
+     * Remove user
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user
+     */
+    public function removeUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
+
+    /**
+     * Replace users
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface[] $users
+     * @return self
+     */
+    public function replaceUsers(Collection $users);
+
+    /**
+     * Get users
+     *
+     * @return array
+     */
+    public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

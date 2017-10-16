@@ -42,7 +42,7 @@ interface UserInterface extends EntityInterface
     /**
      * @return string
      */
-    public function getOutgoingDdiNumber($valueIfEmpty = 'anonimo');
+    public function getOutgoingDdiNumber();
 
     /**
      * Get User outgoingDdi
@@ -608,6 +608,37 @@ interface UserInterface extends EntityInterface
      * @return array
      */
     public function getQueueMembers(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     *
+     * @return UserTrait
+     */
+    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+
+    /**
+     * Remove callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     */
+    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+
+    /**
+     * Replace callForwardSettings
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[] $callForwardSettings
+     * @return self
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings);
+
+    /**
+     * Get callForwardSettings
+     *
+     * @return array
+     */
+    public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

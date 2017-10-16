@@ -61,7 +61,7 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: callForwardSettings
       joinColumns:
         userId:
           referencedColumnName: id

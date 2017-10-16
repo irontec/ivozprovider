@@ -374,7 +374,7 @@ abstract class CallForwardSettingAbstract
      *
      * @return self
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user)
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null)
     {
         $this->user = $user;
 

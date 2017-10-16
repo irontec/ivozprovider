@@ -107,7 +107,7 @@ class User extends UserAbstract implements UserInterface
     /**
      * @return string
      */
-    public function getOutgoingDdiNumber($valueIfEmpty = 'anonimo')
+    public function getOutgoingDdiNumber()
     {
         $Ddi = $this->getOutgoingDdi();
         if ($Ddi) {
@@ -115,7 +115,7 @@ class User extends UserAbstract implements UserInterface
             return $Ddi->getDdiE164();
         }
 
-        return $valueIfEmpty;
+        return null;
     }
 
 
@@ -332,7 +332,7 @@ class User extends UserAbstract implements UserInterface
     public function getCountry()
     {
         $country = parent::getCountry();
-        if (is_null($country)) {
+        if (!is_null($country)) {
 
             return $country;
         }
@@ -409,5 +409,6 @@ class User extends UserAbstract implements UserInterface
             ->getCompany()
             ->getAreaCodeValue();
     }
+
 }
 

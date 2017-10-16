@@ -27,5 +27,18 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
         ];
     }
 
+    /**
+     * Get User using this Extension as ScreenExtension
+     *
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface|null
+     */
+    public function getScreenUser()
+    {
+        /** @var \Ivoz\Provider\Domain\Model\User\UserInterface[] $users */
+        $users = $this->getUsers();
+
+        return array_shift($users);
+    }
+
 }
 

@@ -95,7 +95,7 @@ interface CallForwardSettingInterface extends EntityInterface
      *
      * @return self
      */
-    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
 
     /**
      * Get user

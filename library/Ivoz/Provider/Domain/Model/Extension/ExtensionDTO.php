@@ -117,6 +117,11 @@ class ExtensionDTO implements DataTransferObjectInterface
     private $conditionalRoute;
 
     /**
+     * @var array|null
+     */
+    private $users = null;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -134,7 +139,8 @@ class ExtensionDTO implements DataTransferObjectInterface
             'conferenceRoomId' => $this->getConferenceRoomId(),
             'userId' => $this->getUserId(),
             'queueId' => $this->getQueueId(),
-            'conditionalRouteId' => $this->getConditionalRouteId()
+            'conditionalRouteId' => $this->getConditionalRouteId(),
+            'usersId' => $this->getUsersId()
         ];
     }
 
@@ -151,6 +157,17 @@ class ExtensionDTO implements DataTransferObjectInterface
         $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
         $this->queue = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Queue\\Queue', $this->getQueueId());
         $this->conditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getConditionalRouteId());
+        if (!is_null($this->users)) {
+            $items = $this->getUsers();
+            $this->users = [];
+            foreach ($items as $item) {
+                $this->users[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\User\\User',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -158,7 +175,10 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->users = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\User\\User',
+            $this->users
+        );
     }
 
     /**
@@ -483,6 +503,26 @@ class ExtensionDTO implements DataTransferObjectInterface
     public function getConditionalRoute()
     {
         return $this->conditionalRoute;
+    }
+
+    /**
+     * @param array $users
+     *
+     * @return ExtensionDTO
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
 

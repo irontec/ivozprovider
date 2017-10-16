@@ -217,6 +217,11 @@ class UserDTO implements DataTransferObjectInterface
     private $queueMembers = null;
 
     /**
+     * @var array|null
+     */
+    private $callForwardSettings = null;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -251,7 +256,8 @@ class UserDTO implements DataTransferObjectInterface
             'outgoingDdiRuleId' => $this->getOutgoingDdiRuleId(),
             'voicemailLocutionId' => $this->getVoicemailLocutionId(),
             'pickUpRelUsersId' => $this->getPickUpRelUsersId(),
-            'queueMembersId' => $this->getQueueMembersId()
+            'queueMembersId' => $this->getQueueMembersId(),
+            'callForwardSettingsId' => $this->getCallForwardSettingsId()
         ];
     }
 
@@ -293,6 +299,17 @@ class UserDTO implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->callForwardSettings)) {
+            $items = $this->getCallForwardSettings();
+            $this->callForwardSettings = [];
+            foreach ($items as $item) {
+                $this->callForwardSettings[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -307,6 +324,10 @@ class UserDTO implements DataTransferObjectInterface
         $this->queueMembers = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\QueueMember\\QueueMember',
             $this->queueMembers
+        );
+        $this->callForwardSettings = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
+            $this->callForwardSettings
         );
     }
 
@@ -996,6 +1017,26 @@ class UserDTO implements DataTransferObjectInterface
     public function getQueueMembers()
     {
         return $this->queueMembers;
+    }
+
+    /**
+     * @param array $callForwardSettings
+     *
+     * @return UserDTO
+     */
+    public function setCallForwardSettings($callForwardSettings)
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCallForwardSettings()
+    {
+        return $this->callForwardSettings;
     }
 }
 

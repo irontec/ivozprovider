@@ -11,6 +11,10 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    users:
+      targetEntity: Ivoz\Provider\Domain\Model\User\UserInterface
+      mappedBy: extension
   lifecycleCallbacks:
     postLoad:
       - initChangelog
