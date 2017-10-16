@@ -91,7 +91,7 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       length: 40
       options:
         fixed: false
-      column: pickup_group
+      column: named_pickup_group
     sendDiversion:
       type: string
       nullable: true

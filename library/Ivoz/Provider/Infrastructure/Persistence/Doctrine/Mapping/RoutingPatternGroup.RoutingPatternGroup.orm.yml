@@ -15,7 +15,6 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
     relPatterns:
       targetEntity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
       mappedBy: routingPatternGroup
-      orphanRemoval: true
       cascade: ['persist']
       orphanRemoval: true
     outgoingRoutings:

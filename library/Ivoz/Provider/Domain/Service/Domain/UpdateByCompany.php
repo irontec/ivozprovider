@@ -122,7 +122,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             /**
              * @var PsAor $aor
              */
-            $aor = $endpoint->getAstPsAor();
+            $aor = $endpoint->getPsAor();
             $aor->setContact(
                 /**
                  * @todo ensure this method exists
