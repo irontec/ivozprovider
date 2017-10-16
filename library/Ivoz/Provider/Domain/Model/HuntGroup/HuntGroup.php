@@ -30,7 +30,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
     {
         $huntGroupUsersArray = array();
         $huntGroupRelUsers = $this->getHuntGroupsRelUsers(
-            Criteria::create()->orderBy('priority', Criteria::ASC)
+            Criteria::create()->orderBy(['priority' => Criteria::ASC])
         );
 
         foreach($huntGroupRelUsers as $huntGroupRelUser) {
