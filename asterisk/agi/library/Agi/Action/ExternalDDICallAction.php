@@ -4,6 +4,9 @@ namespace Agi\Action;
 
 class ExternalDDICallAction extends ExternalCallAction
 {
+    /**
+     * @var integer
+     */
     protected $_number;
 
     public function setDestination($number)

@@ -2,9 +2,16 @@
 
 namespace Agi\Action;
 
+use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Locution\LocutionRepository;
+use Assert\Assertion;
+
+
 class ServiceAction extends RouterAction
 {
-
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface
+     */
     protected  $_service;
 
     public function setService($service)
@@ -15,16 +22,16 @@ class ServiceAction extends RouterAction
 
     public function process()
     {
-        if (empty($this->_service)) {
-             $this->agi->error("Service is not properly defined. Check configuration.");
-            return;
-        }
         // Local variables to improve readability
         $service = $this->_service;
+        Assertion::notNull(
+            $service,
+            "Service is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing Service %s [service%d]",
-                        $service->getService()->getName(), $service->getId());
+                        $service->getService()->getName()->getEs(), $service->getId());
 
         // Process this service
         switch ($service->getService()->getIden()) {
@@ -169,9 +176,14 @@ class ServiceAction extends RouterAction
         $serviceCodeLen = strlen($service->getCode());
         $locutionId = substr($dialedExten, $serviceCodeLen + 1);
 
-        // Get Locution object
-        $locutionMapper = new \IvozProvider\Mapper\Sql\Locutions;
-        $locution = $locutionMapper->find($locutionId);
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = \Zend_Registry::get("em");
+
+        /** @var LocutionRepository $locutionRepository */
+        $locutionRepository = $em->getRepository('\Ivoz\Provider\Domain\Model\Locution\Locution');
+
+        /** @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution */
+        $locution = $locutionRepository->find($locutionId);
 
         // Check if call can record this locution
         if ($locution->getCompanyId() !== $caller->getCompanyId()) {

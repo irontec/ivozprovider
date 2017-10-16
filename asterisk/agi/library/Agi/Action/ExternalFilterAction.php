@@ -4,10 +4,19 @@ namespace Agi\Action;
 
 class ExternalFilterAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface
+     */
     protected $_filter;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     */
     protected $_ddi;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+     */
     protected $_eventLocution;
 
     public function setLocution($locution)

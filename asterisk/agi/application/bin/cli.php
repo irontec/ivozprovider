@@ -1,4 +1,17 @@
 <?php
+require_once 'Zend/Registry.php';
+
+/** @var \Composer\Autoload\ClassLoader $loader */
+$loader = require __DIR__.'/../../../../web/rest/app/autoload.php';
+include_once __DIR__.'/../../../../web/rest/var/bootstrap.php.cache';
+
+$kernel = new AppKernel('prod', false);
+$kernel->boot();
+
+\Zend_Registry::set(
+    'em',
+    $kernel->getContainer()->get('doctrine.orm.entity_manager')
+);
 
 defined('__DIR__') || define('__DIR__', dirname(__FILE__));
 

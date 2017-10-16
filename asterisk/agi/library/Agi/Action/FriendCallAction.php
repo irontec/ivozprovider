@@ -2,8 +2,14 @@
 
 namespace Agi\Action;
 
+use Assert\Assertion;
+
+
 class FriendCallAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     */
     protected $_friend;
 
     protected $_number;
@@ -31,14 +37,14 @@ class FriendCallAction extends RouterAction
 
     public function call()
     {
-        if (empty($this->_friend)) {
-            $this->agi->error("Friend is not properly defined. Check configuration.");
-            return;
-        }
-
         // Local variables to improve readability
         $friend = $this->_friend;
         $number = $this->_number;
+
+        Assertion::notNull(
+            $friend,
+            "Friend is not properly defined. Check configuration."
+        );
 
         // Some verbose dolan pls
         $this->agi->notice("Preparing call to %s through friend \e[0;36m%s [friend%d])\e[0m",

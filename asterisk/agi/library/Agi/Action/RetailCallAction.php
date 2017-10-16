@@ -1,9 +1,14 @@
 <?php
 
 namespace Agi\Action;
+use Assert\Assertion;
+
 
 class RetailCallAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
     protected $_retailAccount;
 
     protected $_dialStatus = null;
@@ -20,13 +25,12 @@ class RetailCallAction extends RouterAction
 
     public function call()
     {
-        if (empty($this->_retailAccount)) {
-            $this->agi->error("Retail account is not properly defined. Check configuration.");
-            return;
-        }
-
         // Local variables to improve readability
         $retailAccount = $this->_retailAccount;
+        Assertion::notNull(
+            $retailAccount,
+            "Retail Account is not properly defined. Check configuration."
+        );
 
         // Transform destination to retail preferred format
         $number =  $retailAccount->E164ToPreferred($this->agi->getExtension());

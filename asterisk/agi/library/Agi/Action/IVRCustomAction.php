@@ -1,6 +1,8 @@
 <?php
 
 namespace Agi\Action;
+use Assert\Assertion;
+
 
 class IVRCustomAction extends IVRAction
 {
@@ -8,11 +10,10 @@ class IVRCustomAction extends IVRAction
     public function process()
     {
         $ivr = $this->_ivr;
-
-        if (empty($ivr)) {
-            $this->agi->error("IVRCustom is not properly defined. Check configuration.");
-            return;
-        }
+        Assertion::notNull(
+            $ivr,
+            "IVRCustom is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing IVRCustom %s [ivrcustom%d]", $ivr->getName(), $ivr->getId());

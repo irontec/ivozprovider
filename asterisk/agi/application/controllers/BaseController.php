@@ -1,5 +1,4 @@
 <?php
-use IvozProvider\Mapper\Sql as Mapper;
 
 /**
  *
@@ -16,6 +15,10 @@ use IvozProvider\Mapper\Sql as Mapper;
  */
 class BaseController extends Zend_Controller_Action
 {
+    /**
+     * @var \Agi_Wrapper
+     */
+    public $agi;
 
     public function init()
     {
@@ -27,6 +30,7 @@ class BaseController extends Zend_Controller_Action
     {
         $errors = $this->_getParam('error_handler');
         $error = $errors->exception->getTrace();
+
         if(!empty($error)){
             $error = $error[0];
         }

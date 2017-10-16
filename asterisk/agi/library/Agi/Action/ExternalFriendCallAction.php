@@ -1,7 +1,7 @@
 <?php
 
 namespace Agi\Action;
-use \IvozProvider\Model\Features;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 /**
  * @class ExternalFriendCallAction
@@ -11,8 +11,14 @@ use \IvozProvider\Model\Features;
  */
 class ExternalFriendCallAction extends ExternalCallAction
 {
+    /**
+     * @var integer
+     */
     protected $_number;
 
+    /**
+     * @var boolean
+     */
     protected $_checkACL;
 
     public function setDestination($number)
@@ -29,7 +35,7 @@ class ExternalFriendCallAction extends ExternalCallAction
 
     public function process()
     {
-        // Local variables
+        /** @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend */
         $friend = $this->agi->getChannelCaller();
         $number = $this->_number;
 
@@ -58,7 +64,7 @@ class ExternalFriendCallAction extends ExternalCallAction
         if ($this->_checkACL && !$friend->isAllowedToCall($e164number)) {
             $this->agi->error("User is not allowed to call %s", $e164number);
             // Play error notification over progress
-            if ($company->hasFeature(Features::PROGRESS)) {
+            if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notAllowed");
             }
             $this->agi->decline();
@@ -69,7 +75,7 @@ class ExternalFriendCallAction extends ExternalCallAction
         if (!$this->checkTarificable($e164number)) {
             $this->agi->error("Destination %s can not be billed.", $e164number);
             // Play error notification over progress
-            if ($company->hasFeature(Features::PROGRESS)) {
+            if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notBillable");
             }
             $this->agi->decline();

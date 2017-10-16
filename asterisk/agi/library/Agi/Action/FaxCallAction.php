@@ -1,12 +1,22 @@
 <?php
 namespace Agi\Action;
 
-use IvozProvider\Model as Model;
+use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
+use Assert\Assertion;
+
 
 class FaxCallAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+     */
     protected $_fax = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface
+     */
     protected $_faxInOut = null;
 
     public function setFax($fax)
@@ -23,14 +33,13 @@ class FaxCallAction extends RouterAction
 
     public function reciveFax()
     {
-        if (empty($this->_fax)) {
-            $this->agi->error("fax is not properly defined. Check configuration.");
-            $this->processFaxInStatus();
-            return;
-        }
-
-        // Local variables to improve readability
+        /** @var \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax */
         $fax = $this->_fax;
+
+        Assertion::notNull(
+            $fax,
+            "Fax is not properly defined. Check configuration."
+        );
 
         // This fax routed from DDI
         $did = $this->agi->getExtension();
@@ -49,13 +58,19 @@ class FaxCallAction extends RouterAction
         $this->agi->setVariable("FAXOPT(localstationid)", $did);
 
         // Create a new items for received fax data
-        $faxIn = new Model\FaxesInOut();
-        $faxIn->setFaxId($fax->getId())
+        $faxInDTO = new FaxesInOutDTO();
+        $faxInDTO
+            ->setFaxId($fax->getId())
             ->setSrc($this->agi->getVariable("CALLERID(number)"))
             ->setDst($did)
             ->setType("In")
-            ->setStatus("inprogress")
-            ->save();
+            ->setStatus("inprogress");
+
+        $faxIn = FaxesInOut::fromDTO($faxInDTO);
+
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = \Zend_Registry::get("em");
+        $em->flush($faxIn);
 
         // Store FaxId for later searchs
         $this->agi->setVariable("FAXFILE_ID", $faxIn->getId());
@@ -76,14 +91,18 @@ class FaxCallAction extends RouterAction
 
     public function processStatus()
     {
-        if (empty($this->_faxInOut)) {
-            $this->agi->error("No Faxfile found! Check configuration.");
-            return;
-        }
-
         // Local variables to improve readability
         $faxIn = $this->_faxInOut;
+        Assertion::notNull(
+            $faxIn,
+            "No Faxfile found! Check configuration."
+        );
+
         $fax = $faxIn->getFax();
+        Assertion::notNull(
+            $fax,
+            "Faxfile has no Fax associated! Check configuration."
+        );
 
         // Check no errors happened during ReceiveFax
         $error = $this->agi->getVariable("FAXOPT(error)");

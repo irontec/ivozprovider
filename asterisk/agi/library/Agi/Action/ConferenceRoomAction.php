@@ -2,8 +2,14 @@
 
 namespace Agi\Action;
 
+use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
+use Assert\Assertion;
+
 class ConferenceRoomAction extends RouterAction
 {
+    /**
+     * @var ConferenceRoomInterface
+     */
     protected $_room;
 
     public function setConferenceRoom($room)
@@ -14,13 +20,13 @@ class ConferenceRoomAction extends RouterAction
 
     public function process()
     {
-        if (empty($this->_room)) {
-            $this->agi->error("Conference is not properly defined. Check configuration.");
-            return;
-        }
-
         // Local variables to improve readability
         $room = $this->_room;
+        Assertion::notNull(
+            $room,
+            "Conference is not properly defined. Check configuration."
+        );
+
         $this->agi->notice("Processing Conference Room %s [conferenceRoom%s]",
                         $room->getName(), $room->getId());
 

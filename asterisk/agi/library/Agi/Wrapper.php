@@ -143,7 +143,7 @@ class Agi_Wrapper
             return;
         }
 
-        if ($file instanceof \IvozProvider\Model\Raw\Locutions) {
+        if ($file instanceof \Ivoz\Provider\Domain\Model\Locution\LocutionInterface) {
             $file = $file->getLocutionPath();
         }
 
@@ -343,15 +343,15 @@ class Agi_Wrapper
     {
         $id = $data->getId();
 
-        if ($data instanceof \IvozProvider\Model\Users) {
+        if ($data instanceof \Ivoz\Provider\Domain\Model\User\UserInterface) {
             $type = "USER";
-        } else if ($data instanceof \IvozProvider\Model\DDIs) {
+        } else if ($data instanceof \Ivoz\Provider\Domain\Model\Ddi\DdiInterface) {
             $type = "DDI";
-        } else if ($data instanceof \IvozProvider\Model\Friends) {
+        } else if ($data instanceof \Ivoz\Provider\Domain\Model\Friend\FriendInterface) {
             $type = "FRIEND";
-        } else if ($data instanceof \IvozProvider\Model\RetailAccounts) {
+        } else if ($data instanceof \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface) {
             $type = "RETAIL";
-        } else if ($data instanceof \IvozProvider\Model\Faxes) {
+        } else if ($data instanceof \Ivoz\Provider\Domain\Model\Fax\FaxInterface) {
             $type = "FAX";
         }
 
@@ -371,30 +371,36 @@ class Agi_Wrapper
 
     public function getChannelData($datatype)
     {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = \Zend_Registry::get("em");
+
+        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository $endpointRepository */
+        $endpointRepository = $em->getRepository('Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint');
+
         $type = $this->getVariable("${datatype}_TYPE");
         $id = $this->getVariable("${datatype}_ID");
 
         switch ($type) {
             case "USER":
-                $mapper = new \IvozProvider\Mapper\Sql\Users;
+                $repository = $em->getRepository('Ivoz\Provider\Domain\Model\User\User');
                 break;
             case "DDI":
-                $mapper = new \IvozProvider\Mapper\Sql\DDIs;
+                $repository = $em->getRepository('Ivoz\Provider\Domain\Model\Ddi\Ddi');
                 break;
             case "FRIEND":
-                $mapper = new \IvozProvider\Mapper\Sql\Friends;
+                $repository = $em->getRepository('Ivoz\Provider\Domain\Model\Friend\Friend');
                 break;
             case "RETAIL":
-                $mapper = new \IvozProvider\Mapper\Sql\RetailAccounts;
+                $repository = $em->getRepository('Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount');
                 break;
             case "FAX":
-                $mapper = new \IvozProvider\Mapper\Sql\Faxes;
+                $repository = $em->getRepository('Ivoz\Provider\Domain\Model\Fax\Fax');
                 break;
             default:
                 return null;
         }
 
-        return $mapper->find($id);
+        return $repository->find($id);
     }
 
 }

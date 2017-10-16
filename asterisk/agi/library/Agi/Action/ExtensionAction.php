@@ -2,8 +2,13 @@
 
 namespace Agi\Action;
 
+use Assert\Assertion;
+
 class ExtensionAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     */
     protected $_extension;
 
     public function setExtension($extension)
@@ -21,10 +26,10 @@ class ExtensionAction extends RouterAction
     {
         // Check extension is defined
         $extension = $this->_extension;
-        if (empty($extension)) {
-            $this->agi->error("Extension is not properly defined. Check configuration.");
-            return;
-        }
+        Assertion::notNull(
+            $extension,
+            "Extension is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing Extension with number \e[0;37m%s [extension%d]\e[0;93m",

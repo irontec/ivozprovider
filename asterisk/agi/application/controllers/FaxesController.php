@@ -1,8 +1,8 @@
 <?php
 require_once("CallsController.php");
-use IvozProvider\Mapper\Sql as Mapper;
 use Agi\Action\FaxCallAction;
 use Agi\Action\ExternalFaxCallAction;
+use Assert\Assertion;
 
 /**
  * @brief Controller for Incoming and Outgoing faxes
@@ -154,13 +154,25 @@ class FaxesController extends CallsController
     private function getFaxFile()
     {
         $faxid = $this->agi->getVariable("FAXFILE_ID");
-        $faxInOutMapper = new Mapper\FaxesInOut();
-        $faxInOut = $faxInOutMapper->find($faxid);
+
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = \Zend_Registry::get("em");
+
+        /** @var \Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutRepository $faxInOutRepository */
+        $faxInOutRepository = $em->getRepository('\Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut');
+
+        /** @var \Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface $faxInOut */
+        $faxInOut = $faxInOutRepository->find($faxid);
 
         if (empty($faxInOut)) {
             $this->agi->hangup();
             $this->agi->error("Fax %s not found in database. (BUG?)", $faxid);
         }
+        // No voicemail, this should not happen
+        Assertion::notNull(
+            $faxInOut,
+            sprintf("Faxfile %d not found in database.", $faxid)
+        );
 
         return $faxInOut;
     }

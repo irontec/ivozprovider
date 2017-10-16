@@ -1,7 +1,7 @@
 <?php
 
 namespace Agi\Action;
-use \IvozProvider\Model\Features;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
 
 /**
  * @class ExternalRetailCallAction
@@ -21,7 +21,7 @@ class ExternalRetailCallAction extends ExternalCallAction
 
     public function process()
     {
-        // Local variables
+        /** @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retail */
         $retail = $this->agi->getChannelCaller();
         $number = $this->_number;
 
@@ -71,7 +71,7 @@ class ExternalRetailCallAction extends ExternalCallAction
         if (!$this->checkTarificable($e164number)) {
             $this->agi->error("Destination %s can not be billed.", $e164number);
             // Play error notification over progress
-            if ($company->hasFeature(Features::PROGRESS)) {
+            if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notBillable");
             }
             $this->agi->decline();

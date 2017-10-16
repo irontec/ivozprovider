@@ -2,6 +2,11 @@
 
 namespace Agi\Action;
 
+use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+use Assert\Assertion;
+
+
 class UserCallAction extends RouterAction
 {
     protected $_user;
@@ -89,8 +94,20 @@ class UserCallAction extends RouterAction
 
         // Check if user has call forwarding enabled
         if ($this->_allowForwarding) {
+
             // Process inconditional Call Forwards
-            $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='inconditional'");
+            $criteria = new Criteria();
+            $criteria->where(
+                Criteria::expr()->eq(
+                    'callForwardType',
+                    'inconditional'
+                )
+            );
+
+            /**
+             * @var CallForwardSettingInterface[] $cfwSettings
+             */
+            $cfwSettings = $user->getCallForwardSettings($criteria);
             foreach ($cfwSettings as $cfwSetting) {
                 $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
@@ -126,7 +143,20 @@ class UserCallAction extends RouterAction
         // If there's no timeout
         if (empty($this->_timeout)) {
             // Get the timeout from the call forward
-            $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='noAnswer'");
+            // Process inconditional Call Forwards
+            $criteria = new Criteria();
+            $criteria->where(
+                Criteria::expr()->eq(
+                    'callForwardType',
+                    'noAnswer'
+                )
+            );
+
+            /**
+             * @var CallForwardSettingInterface[] $cfwSettings
+             */
+            $cfwSettings = $user->getCallForwardSettings($criteria);
+
             foreach ($cfwSettings as $cfwSetting) {
                 $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
@@ -259,8 +289,21 @@ class UserCallAction extends RouterAction
 
     private function _processCallForward($user, $type)
     {
+        // Process inconditional Call Forwards
+        $criteria = new Criteria();
+        $criteria->where(
+            Criteria::expr()->eq(
+                'callForwardType',
+                $type
+            )
+        );
+
+        /**
+         * @var CallForwardSettingInterface[] $cfwSettings
+         */
+        $cfwSettings = $user->getCallForwardSettings($criteria);
+
         // Process busy Call Forwards
-        $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='$type'");
         foreach ($cfwSettings as $cfwSetting) {
             $cfwType = $cfwSetting->getCallTypeFilter();
             if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {

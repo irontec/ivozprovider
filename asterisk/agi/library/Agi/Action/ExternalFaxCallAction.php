@@ -1,7 +1,6 @@
 <?php
 
 namespace Agi\Action;
-use \IvozProvider\Model\Features;
 
 /**
  * @class ExternalFaxCallAction

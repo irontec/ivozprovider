@@ -1,10 +1,21 @@
 <?php
 namespace Agi\Action;
 
+use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
+
 class CallForwardAction extends RouterAction
 {
+    /**
+     * Max allowed Call forwards from a channel
+     *
+     * @var int
+     */
     protected $_maxRedirections = 5;
 
+    /**
+     * @var CallForwardSettingInterface
+     */
     protected $_cfw;
 
     public function setCallForward($cfw)
@@ -15,13 +26,13 @@ class CallForwardAction extends RouterAction
 
     public function process()
     {
-        if (empty($this->_cfw)) {
-            $this->agi->error("CallForward is not properly defined. Check configuration.");
-            return;
-        }
+        $cfw = $this->_cfw;
+        Assertion::notNull(
+            $cfw,
+            "CallForward is not properly defined. Check configuration."
+        );
 
         // Some CLI information
-        $cfw = $this->_cfw;
         $this->agi->notice("Processing %s call forward", $cfw->getCallForwardType());
 
         /**

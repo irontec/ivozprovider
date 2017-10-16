@@ -2,6 +2,9 @@
 
 namespace Agi\Action;
 
+use Assert\Assertion;
+
+
 class QueueAction extends RouterAction
 {
     protected $_queue;
@@ -14,13 +17,12 @@ class QueueAction extends RouterAction
 
     public function process()
     {
-        if (empty($this->_queue)) {
-            $this->agi->error("Queue is not properly defined. Check configuration.");
-            return;
-        }
-
         // Local variables to improve readability
         $queue = $this->_queue;
+        Assertion::notNull(
+            $queue,
+            "Queue is not properly defined. Check configuration."
+        );
 
         // Set queue options
         $this->agi->setVariable("QUEUE", $queue->getAstQueueName());
@@ -37,15 +39,14 @@ class QueueAction extends RouterAction
 
     public function processTimeout()
     {
-        if (empty($this->_queue)) {
-            $this->agi->error("Queue is not properly defined. Check configuration.");
-            return;
-        }
-
-        $this->agi->notice("Processing Timeout queue handler");
-
         // Local variables to improve readability
         $queue = $this->_queue;
+        Assertion::notNull(
+            $queue,
+            "Queue is not properly defined. Check configuration."
+        );
+
+        $this->agi->notice("Processing Timeout queue handler");
 
         // Play timeout locution
         $this->agi->playback($queue->getTimeoutLocution());
@@ -60,15 +61,14 @@ class QueueAction extends RouterAction
 
     public function processFull()
     {
-        if (empty($this->_queue)) {
-            $this->agi->error("Queue is not properly defined. Check configuration.");
-            return;
-        }
-
-        $this->agi->notice("Processing Full queue handler");
-
         // Local variables to improve readability
         $queue = $this->_queue;
+        Assertion::notNull(
+            $queue,
+            "Queue is not properly defined. Check configuration."
+        );
+
+        $this->agi->notice("Processing Full queue handler");
 
         // Play timeout locution
         $this->agi->playback($queue->getFullLocution());

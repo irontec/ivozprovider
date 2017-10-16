@@ -7,34 +7,76 @@ class RouterAction
 
     private $_parent;
 
+    /**
+     * @var \Agi_Wrapper $agi
+     */
     protected $agi;
 
     protected $_routeType;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     */
     protected $_routeUser;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     */
     protected $_routeExtension;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     */
     protected $_routeIVRCommon;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
+     */
     protected $_routeIVRCustom;
 
+    /**
+     * @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface
+     */
     protected $_routeVoiceMail;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     */
     protected $_routeHuntGroup;
 
+    /**
+     * @var integer
+     */
     protected $_routeExternal;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Fax\FaxInterface
+     */
     protected $_routeFax;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface
+     */
     protected $_routeConference;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+     */
     protected $_routeFriend;
 
+    /**
+     * @var \Ivoz\Ast\Domain\Model\Queue\QueueInterface
+     */
     protected $_routeQueue;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
     protected $_routeRetail;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
+     */
     protected $_routeConditionalRoute;
 
     public function __construct($parent)
@@ -136,14 +178,14 @@ class RouterAction
         // External Route depends on who is calling
         $caller = $this->agi->getChannelCaller();
 
-        if ($caller instanceof \IvozProvider\Model\Users) {
+        if ($caller instanceof \Ivoz\Provider\Domain\Model\User\UserInterface) {
             // Handle external call route for users
             $externalAction = new ExternalUserCallAction($this);
             $externalAction
                 ->setCheckACL(false)
                 ->setDestination($this->_routeExternal)
                 ->process();
-        } else if ($caller instanceof \IvozProvider\Model\Friends) {
+        } else if ($caller instanceof \Ivoz\Provider\Domain\Model\Friend\FriendInterface) {
             // Handle external call route for users
             $externalAction = new ExternalFriendCallAction($this);
             $externalAction
@@ -157,8 +199,6 @@ class RouterAction
                 ->setDestination($this->_routeExternal)
                 ->process();
         }
-
-
     }
 
     protected function _routeToIVRCommon()

@@ -1,5 +1,7 @@
 <?php
 
+use Assert\Assertion;
+
 /**
  * @brief Dynamic VoiceMail notifications
  *
@@ -45,28 +47,34 @@ class VoicemailController extends Zend_Controller_Action
             // Get Voicemail data from body content
             $vmdata = explode(PHP_EOL, $message->getPart(1)->getContent());
 
-            // Get Voicemail model
-            $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail;
-            $whereCond = array(
-                "mailbox = '" . $vmdata[self::VM_MAILBOX] . "'",
-                "context = '" . $vmdata[self::VM_CONTEXT] . "'"
-            );
+            /** @var \Doctrine\ORM\EntityManager $em */
+            $em = \Zend_Registry::get("em");
 
-            // Search the destination user of this Voicemail
-            $vm = $vmMapper->fetchOne(implode(' AND ', $whereCond));
+            /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository $vmRepository */
+            $vmRepository = $em->getRepository('\Ivoz\Ast\Domain\Model\Voicemail\Voicemail');
+
+            /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $vm */
+            $vm = $vmRepository->findOneBy([
+                "mailbox" => $vmdata[self::VM_MAILBOX],
+                "context" => $vmdata[self::VM_CONTEXT]
+            ]);
 
             // No voicemail, this should not happen
-            if (empty($vm)) {
-                die("FATAL: Unable to find voicemail for " .
-                     $vmdata[self::VM_MAILBOX] . '@' . $vmdata[self::VM_CONTEXT]);
-            }
+            Assertion::notNull(
+                $vm,
+                sprintf("Unable to find voicemail for %s@%s",
+                    $vmdata[self::VM_MAILBOX],
+                    $vmdata[self::VM_CONTEXT])
+            );
 
-            // Get Voicemail User
+            /** @var \Ivoz\Provider\Domain\Model\User\UserInterface $user */
             $user = $vm->getUser();
-            if (empty($user)) {
-                die("FATAL: Unable to find user for voicemail " .
-                     $vmdata[self::VM_MAILBOX] . '@' . $vmdata[self::VM_CONTEXT]);
-            }
+            Assertion::notNull(
+                $user,
+                sprintf("Unable to find user for voicemail %s@%s",
+                    $vmdata[self::VM_MAILBOX],
+                    $vmdata[self::VM_CONTEXT])
+            );
 
             // Assume user has company and brand
             $company = $user->getCompany();

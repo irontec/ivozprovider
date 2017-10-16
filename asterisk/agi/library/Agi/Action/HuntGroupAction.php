@@ -1,9 +1,13 @@
 <?php
 
 namespace Agi\Action;
+use Assert\Assertion;
 
 class HuntGroupAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
+     */
     protected $_huntgroup;
 
     public function setHuntGroup($huntgroup)
@@ -14,17 +18,18 @@ class HuntGroupAction extends RouterAction
 
     public function process()
     {
-        // Validate Action
-        if (empty($this->_huntgroup)) {
-            $this->agi->error("HuntGroup is not properly defined. Check configuration.");
-            return;
-        }
-
         // Process different huntGroups types
         $huntgroup = $this->_huntgroup;
+        Assertion::notNull(
+            $huntgroup,
+            "HuntGroup is not properly defined. Check configuration."
+        );
+
+
         $type = $huntgroup->getStrategy();
         $this->agi->notice("Processing %s HuntGroup %s [huntgroup%d].",
                         $type, $huntgroup->getName(), $huntgroup->getId());
+
         switch ($type) {
             case 'ringAll':
                 $this->_processRingAll();

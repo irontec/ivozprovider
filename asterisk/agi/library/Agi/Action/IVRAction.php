@@ -4,6 +4,9 @@ namespace Agi\Action;
 
 class IVRAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     */
     protected $_ivr;
 
     public function setIVR($ivr)

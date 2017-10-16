@@ -2,9 +2,14 @@
 
 namespace Agi\Action;
 use Agi\Action\ExternalFilterAction;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Assert\Assertion;
 
 class DDIAction extends RouterAction
 {
+    /**
+     * @var DdiInterface
+     */
     protected $_ddi;
 
     public function setDDI($ddi)
@@ -17,12 +22,10 @@ class DDIAction extends RouterAction
     {
         // Local variables to improve readability
         $ddi = $this->_ddi;
-
-        // Validate Action
-        if (empty($this->_ddi)) {
-            $this->agi->error("DDI is not properly defined. Check configuration.");
-            return;
-        }
+        Assertion::notNull(
+            $ddi,
+            "DDI is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing DDI with number %s [ddi%d]", $ddi->getDDI(), $ddi->getId());

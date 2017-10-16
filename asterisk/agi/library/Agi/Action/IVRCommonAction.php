@@ -2,18 +2,19 @@
 
 namespace Agi\Action;
 
+use Assert\Assertion;
+
 class IVRCommonAction extends IVRAction
 {
 
     public function process()
     {
-        if (empty($this->_ivr)) {
-            $this->agi->error("IVRCommon is not properly defined. Check configuration.");
-            return;
-        }
-
         // Get IVR welcome locution path
         $ivr = $this->_ivr;
+        Assertion::notNull(
+            $ivr,
+            "IVRCommon is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing IVRCommon %s [ivrcommon%d]", $ivr->getName(), $ivr->getId());

@@ -1,7 +1,8 @@
 <?php
 
 namespace Agi\Action;
-use \IvozProvider\Model\Features;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * @class ExternalUserCallAction
@@ -31,6 +32,7 @@ class ExternalUserCallAction extends ExternalCallAction
     public function process()
     {
         // Local variables
+        /** @var UserInterface $user */
         $user = $this->agi->getChannelCaller();
         $origin = $this->agi->getChannelOrigin();
         $number = $this->_number;
@@ -59,7 +61,7 @@ class ExternalUserCallAction extends ExternalCallAction
         } else if (!$user->isAllowedToCall($number)) {
             $this->agi->error("User is not allowed to call %s", $number);
             // Play error notification over progress
-            if ($company->hasFeature(Features::PROGRESS)) {
+            if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notAllowed");
             }
             $this->agi->decline();
@@ -70,7 +72,7 @@ class ExternalUserCallAction extends ExternalCallAction
         if (!$this->checkTarificable($e164number)) {
             $this->agi->error("Destination %s can not be billed.", $e164number);
             // Play error notification over progress
-            if ($company->hasFeature(Features::PROGRESS)) {
+            if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notBillable");
             }
             $this->agi->decline();

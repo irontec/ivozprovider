@@ -2,7 +2,8 @@
 
 namespace Agi\Action;
 
-use IvozProvider\Mapper\Sql as Mapper;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * @class ExternalCallAction
@@ -52,6 +53,7 @@ class ExternalCallAction extends RouterAction
     {
         // Get Dialer company
         $caller = $this->agi->getChannelCaller();
+        /** @var CompanyInterface $company */
         $company = $caller->getCompany();
 
         // Can the company pay this call??
@@ -86,7 +88,7 @@ class ExternalCallAction extends RouterAction
         $caller = $this->agi->getChannelCaller();
 
         // If origin is a user extension
-        if ($caller instanceof \IvozProvider\Model\Users) {
+        if ($caller instanceof UserInterface) {
             // Setup the update callid for the calling user
             $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$e164number,1");
         }
@@ -99,7 +101,7 @@ class ExternalCallAction extends RouterAction
      * This function will mark the outgoing channel to add a recording header for
      * proxytrunks.
      *
-     * @param \IvozProvider\Model\DDI $ddi Outgoing DDI
+     * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi Outgoing DDI
      */
     protected function checkDDIRecording($ddi)
     {
@@ -121,8 +123,17 @@ class ExternalCallAction extends RouterAction
      */
     protected function checkDDIBounced($e164number)
     {
-        $DDIMapper = new Mapper\DDIs();
-        $internalDDI = $DDIMapper->findOneByField("DDIE164", $e164number);
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = \Zend_Registry::get("em");
+
+        /** @var  \Ivoz\Provider\Domain\Model\Ddi\DdiRepository $ddiRepository */
+        $ddiRepository = $em->getRepository('Ivoz\Provider\Domain\Model\DDi\Ddi');
+
+        /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $internalDDI */
+        $internalDDI = $ddiRepository->findOneBy([
+            "ddie164" => $e164number
+        ]);
+
         if (!empty($internalDDI)) {
             $this->agi->notice("DDI $e164number belongs to us, request bounce back this call");
             $this->agi->setVariable("_BOUNCEME", "yes");
@@ -132,8 +143,8 @@ class ExternalCallAction extends RouterAction
     /**
      * @brief Check if the diversion header contains a valid number
      *
-     * @param Company owner of the diversion number
-     * @param number in E.164 format
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param integer $number in E.164 format
      */
     protected function checkDiversionNumber($company, $number)
     {
@@ -143,8 +154,9 @@ class ExternalCallAction extends RouterAction
             $diversionNum = $this->agi->getRedirecting('from-tag');
             if (($diversionExt = $company->getExtension($diversionNum))) {
                 $this->agi->notice("Replacing invalid Diversion Detected from Extension %s", $diversionNum);
-                $diversionUsers = $diversionExt->getUsers();
-                $diversionUser = array_shift($diversionUsers);
+
+                // Get user using this extension as screenextension
+                $diversionUser = $diversionExt->getScreenUser();
                 $diversionDDI = $diversionUser->getOutgoingDDI();
 
                 // If user has OutgoingDDI rules, check if we have to override current DDI
@@ -187,7 +199,7 @@ class ExternalCallAction extends RouterAction
         // Get call origin
         $origin = $this->agi->getChannelOrigin();
 
-        if ($origin instanceof \IvozProvider\Model\Users) {
+        if ($origin instanceof \Ivoz\Provider\Domain\Model\User\UserInterface) {
             // Get default user outgoing DDI
             $ddi = $origin->getOutgoingDDI();
             // If user has OutgoingDDI rules, check if we have to override current DDI
@@ -203,7 +215,7 @@ class ExternalCallAction extends RouterAction
                         $ddi->getDDIE164(), $ddi->getId());
                 }
             }
-        } else if ($origin instanceof \IvozProvider\Model\Friends) {
+        } else if ($origin instanceof \Ivoz\Provider\Domain\Model\Friend\FriendInterface) {
             // Allow identification from any company DDI
             $callerIdNum = $this->agi->getCallerIdNum();
             $companyDDIs = $origin->getCompany()->getDDIs();

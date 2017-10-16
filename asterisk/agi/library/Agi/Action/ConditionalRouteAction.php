@@ -2,8 +2,16 @@
 
 namespace Agi\Action;
 
+use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
+use Assert\Assertion;
+
+
 class ConditionalRouteAction extends RouterAction
 {
+    /**
+     * @var ConditionalRouteInterface
+     */
     protected $conditionalRoute;
 
     public function setconditionalRoute($conditionalRoute)
@@ -16,10 +24,10 @@ class ConditionalRouteAction extends RouterAction
     {
         // Check route is defined
         $route = $this->conditionalRoute;
-        if (empty($route)) {
-            $this->agi->error("Conditional Route is not properly defined. Check configuration.");
-            return;
-        }
+        Assertion::notNull(
+            $route,
+            "Conditional Route is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing conditional route \e[0;37m%s [conditionalRoute%d]\e[0;93m",
@@ -40,19 +48,24 @@ class ConditionalRouteAction extends RouterAction
         $this->_routeExtension  = $route->getExtension();
 
         // Check route conditions
+        // TODO implement reverse getter
+        /** @var ConditionalRoutesConditionInterface[] $conditions */
         $conditions = $route->getConditionalRoutesConditions(null, 'priority ASC');
         foreach ($conditions as $condition) {
 
+            // TODO Implement complex matches
             // Check origin matches route condition
             if (!$condition->matchesOrigin($this->agi->getOrigCallerIdNum())) {
                 continue;
             }
 
+            // TODO Implement complex matches
             // Check schedule matches route condition
             if (!$condition->matchesSchedule()) {
                 continue;
             }
 
+            // TODO Implement complex matches
             // Check current day matches route condition
             if (!$condition->matchesCalendar()) {
                 continue;
@@ -80,6 +93,7 @@ class ConditionalRouteAction extends RouterAction
 
         // Play locution if requested
         $this->agi->playback($locution);
+
         // Route this!
         $this->route();
     }

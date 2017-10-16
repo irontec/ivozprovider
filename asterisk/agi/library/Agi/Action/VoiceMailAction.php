@@ -2,10 +2,18 @@
 
 namespace Agi\Action;
 
+use Assert\Assertion;
+
 class VoiceMailAction extends RouterAction
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\User\UserInterface
+     */
     protected $_voicemail;
 
+    /**
+     * @var bool
+     */
     protected $_playBanner = false;
 
     public function setPlayBanner($playBanner)
@@ -24,10 +32,10 @@ class VoiceMailAction extends RouterAction
     {
         // Check extension is defined
         $voicemail = $this->_voicemail;
-        if (empty($voicemail)) {
-            $this->agi->error("Voicemail is not properly defined. Check configuration.");
-            return;
-        }
+        Assertion::notNull(
+            $voicemail,
+            "Voicemail is not properly defined. Check configuration."
+        );
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing Voicemail of %s [user%d]",
