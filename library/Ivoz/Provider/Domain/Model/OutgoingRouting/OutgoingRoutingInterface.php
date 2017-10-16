@@ -62,7 +62,7 @@ interface OutgoingRoutingInterface extends EntityInterface
      *
      * @return self
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
 
     /**
      * Get brand

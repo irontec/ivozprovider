@@ -577,6 +577,37 @@ interface BrandInterface extends EntityInterface
      */
     public function getGenericCallAclPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * Add outgoingRouting
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return BrandTrait
+     */
+    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
+     * Remove outgoingRouting
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     */
+    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
+     * Replace outgoingRoutings
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @return self
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings);
+
+    /**
+     * Get outgoingRoutings
+     *
+     * @return array
+     */
+    public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+
     public function addTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**

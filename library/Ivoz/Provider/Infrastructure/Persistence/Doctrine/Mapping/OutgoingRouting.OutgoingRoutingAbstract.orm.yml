@@ -41,7 +41,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: outgoingRoutings
       joinColumns:
         brandId:
           referencedColumnName: id

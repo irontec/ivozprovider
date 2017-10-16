@@ -164,6 +164,11 @@ class BrandDTO implements DataTransferObjectInterface
     private $genericCallAclPatterns = null;
 
     /**
+     * @var array|null
+     */
+    private $outgoingRoutings = null;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -196,7 +201,8 @@ class BrandDTO implements DataTransferObjectInterface
             'domainsId' => $this->getDomainsId(),
             'retailAccountsId' => $this->getRetailAccountsId(),
             'genericMusicsOnHoldId' => $this->getGenericMusicsOnHoldId(),
-            'genericCallAclPatternsId' => $this->getGenericCallAclPatternsId()
+            'genericCallAclPatternsId' => $this->getGenericCallAclPatternsId(),
+            'outgoingRoutingsId' => $this->getOutgoingRoutingsId()
         ];
     }
 
@@ -306,6 +312,17 @@ class BrandDTO implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->outgoingRoutings)) {
+            $items = $this->getOutgoingRoutings();
+            $this->outgoingRoutings = [];
+            foreach ($items as $item) {
+                $this->outgoingRoutings[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -348,6 +365,10 @@ class BrandDTO implements DataTransferObjectInterface
         $this->genericCallAclPatterns = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\GenericCallAclPattern\\GenericCallAclPattern',
             $this->genericCallAclPatterns
+        );
+        $this->outgoingRoutings = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
+            $this->outgoingRoutings
         );
     }
 
@@ -925,6 +946,26 @@ class BrandDTO implements DataTransferObjectInterface
     public function getGenericCallAclPatterns()
     {
         return $this->genericCallAclPatterns;
+    }
+
+    /**
+     * @param array $outgoingRoutings
+     *
+     * @return BrandDTO
+     */
+    public function setOutgoingRoutings($outgoingRoutings)
+    {
+        $this->outgoingRoutings = $outgoingRoutings;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOutgoingRoutings()
+    {
+        return $this->outgoingRoutings;
     }
 }
 

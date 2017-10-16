@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
+use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 
 /**
@@ -53,6 +54,10 @@ class Company extends CompanyAbstract implements CompanyInterface
         return "shared-" . $extension->getRouteType();
     }
 
+    /**
+     * @param interger $exten
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     */
     public function getExtension($exten)
     {
         /**
@@ -74,7 +79,7 @@ class Company extends CompanyAbstract implements CompanyInterface
          */
         $criteria = Criteria::create();
         $criteria->where(
-            Criteria::expr()->eq('DdiE164', $ddieE164)
+            Criteria::expr()->eq('ddie164', $ddieE164)
         );
         $ddis = $this->getDdis($criteria);
 
@@ -88,7 +93,7 @@ class Company extends CompanyAbstract implements CompanyInterface
          * @var Company $this
          */
         $criteria = Criteria::create();
-        $criteria->orderBy('priority', Criteria::ASC);
+        $criteria->orderBy(['priority' => Criteria::ASC]);
         $friends = $this->getFriends($criteria);
         /**
          * @var Friend $friend
@@ -383,12 +388,12 @@ class Company extends CompanyAbstract implements CompanyInterface
         /**
          * @var Company $this
          */
-        $outgoingRoutings = $this->getBrand()->getOutgoingRouting();
+        $outgoingRoutings = $this->getBrand()->getOutgoingRoutings();
         $applicableOutgoingRoutings = array();
 
         foreach ($outgoingRoutings as $outgoingRouting) {
-            $isForMyCompany = ($outgoingRouting->getCompany()->getId() == $this->getId());
-            $isForAllCompanies = is_null($outgoingRouting->getCompany()->getId());
+            $isForAllCompanies = is_null($outgoingRouting->getCompany());
+            $isForMyCompany = !$isForAllCompanies && ($outgoingRouting->getCompany()->getId() == $this->getId());
 
             if ($isForMyCompany or $isForAllCompanies) {
                 array_push($applicableOutgoingRoutings, $outgoingRouting);
