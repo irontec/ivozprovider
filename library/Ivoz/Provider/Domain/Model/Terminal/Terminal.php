@@ -23,8 +23,9 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     public function getUser()
     {
+        $users = $this->getUsers();
         return array_shift(
-            $this->getUsers()
+            $users
         );
     }
 
