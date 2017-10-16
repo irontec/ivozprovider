@@ -66,5 +66,35 @@ class Ddi extends DdiAbstract implements DdiInterface
 
         return $language->getIden();
     }
+
+    public function setRouteType($routeType = null)
+    {
+        parent::setRouteType($routeType);
+
+        /**
+         * @todo review this
+         */
+        $nullableFields = array(
+            'user'          => 'user',
+            'IvrCommon'     => 'IvrCommon',
+            'IvrCustom'     => 'IvrCustom',
+            'huntGroup'     => 'huntGroup',
+            'fax'           => 'fax',
+            'friend'        => 'friendValue',
+            'conferenceRoom' => 'conferenceRoom',
+            'queue'         => 'queue',
+        );
+
+        foreach ($nullableFields as $type => $fieldName) {
+            if ($routeType == $type) {
+                continue;
+            }
+
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+
+        return $this;
+    }
 }
 

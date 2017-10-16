@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleEventHandlerI
 
 /**
  * Class RemoveByBrandService
- * @lifecycle post_persist
+ * @lifecycle post_remove
  */
 class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
 {
@@ -50,6 +50,9 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
 
     public function execute(BrandServiceInterface $entity, $isNew)
     {
+        /**
+         * @todo consider performance issues here
+         */
         $companies = $this->companyRepository->findBy([
             'brand' => $entity->getBrand()->getId()
         ]);
@@ -60,6 +63,9 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
          */
         foreach ($companies as $company) {
 
+            /**
+             * @todo Remove just by service id, it should be enough
+             */
             $companyService = $this->companyServiceRepository->findOneBy([
                 'company' => $company->getId(),
                 'service' => $entity->getService()->getId()

@@ -51,6 +51,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
         $id = $entity->getId();
         $name = $entity->getDomainUsers();
+
+        /**
+         * @todo trim value on setter
+         */
         $name = trim($name);
 
         /**
@@ -71,7 +75,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         if (is_null($domain)) {
             $domainDto = Domain::createDTO();
         } else {
-            $domainDto = $domain->toDto();
+            $domainDto = $domain->toDTO();
         }
 
         /**

@@ -18,20 +18,20 @@ Background:
 
 Scenario: I can create new outgoing routings
   Given I click on add button
-  And I click on close button
-  Then I am on "OutgoingRouting" list
+   When I click on close button
+   Then I am on "OutgoingRouting" list
 
 Scenario: I can edit outgoing routing
   Given I can see at least one row
-  And I click on "OutgoingRouting" first elements edit button
-  And I click on save button
-  Then I can see confirmation dialog within "40" seconds or lower
-  And I click on close dialog button
-  Then I am on "OutgoingRouting" list
+   When I click on "OutgoingRouting" first elements edit button
+    And I click on save button
+   Then I can see confirmation dialog within "40" seconds or lower
+   When I click on close dialog button
+   Then I am on "OutgoingRouting" list
 
 Scenario: I can click on delete outgoing routing button
   Given I can see at least one row
-  And I click on "OutgoingRouting" first elements delete button
-  Then I can see confirmation dialog
-  Given I click on close dialog button
-  Then I am on "OutgoingRouting" list
+   When I click on "OutgoingRouting" first elements delete button
+   Then I can see confirmation dialog
+   When I click on close dialog button
+   Then I am on "OutgoingRouting" list

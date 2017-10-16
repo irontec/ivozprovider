@@ -9,20 +9,20 @@ Feature: Target patterns admin page
 
 Background:
   Given I go to the admin page
-  And I send valid admin credentials
-  Then I am logged in
-  Given I click on brand emulation button
-  And I emulate the brand at position "1"
-  And I click on "TargetPatterns" CTA
-  Then I am on "TargetPatterns" list
+   When I send valid admin credentials
+   Then I am logged in
+   When I click on brand emulation button
+    And I emulate the brand at position "1"
+    And I click on "TargetPatterns" CTA
+   Then I am on "TargetPatterns" list
 
 Scenario: I can save target patterns
   Given I can see at least one row
-  And I click on "TargetPatterns" first elements edit button
-  And I click on save button
-  Then I can see confirmation dialog
-  Given I click on close dialog button
-  Then I am on "TargetPatterns" list
+   When I click on "TargetPatterns" first elements edit button
+    And I click on save button
+   Then I can see confirmation dialog
+   When I click on close dialog button
+   Then I am on "TargetPatterns" list
 
 Scenario: I see new target patterns admin page
   Given I click on add button
@@ -31,7 +31,7 @@ Scenario: I see new target patterns admin page
 
 Scenario: I can click on delete target patterns button
   Given I can see at least one row
-  And I click on "TargetPatterns" first elements delete button
-  Then I can see confirmation dialog
-  Given I click on close dialog button
-  Then I am on "TargetPatterns" list
+   When I click on "TargetPatterns" first elements delete button
+   Then I can see confirmation dialog
+   When I click on close dialog button
+   Then I am on "TargetPatterns" list

@@ -10,12 +10,12 @@ Feature: Generic call ACL patterns admin page
 
 Background:
   Given I go to the admin page
-  And I send valid admin credentials
-  Then I am logged in
-  Given I click on brand emulation button
-  And I emulate the brand at position "1"
-  And I click on "GenericCallACLPatterns" CTA
-  Then I am on "GenericCallACLPatterns" list
+   When I send valid admin credentials
+   Then I am logged in
+   When I click on brand emulation button
+    And I emulate the brand at position "1"
+    And I click on "GenericCallACLPatterns" CTA
+   Then I am on "GenericCallACLPatterns" list
 
 #Scenario: I can save generic call ACL patterns
 #  And I can see at least one row
