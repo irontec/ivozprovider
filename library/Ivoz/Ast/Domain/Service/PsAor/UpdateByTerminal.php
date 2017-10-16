@@ -38,7 +38,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
          * @var PsAorInterface $aor
          */
         $aor = $this->psAorRepository->find(
-            $endpoint->getId()
+            $endpoint->getSorceryId()
         );
 
         // If not found create a new one
