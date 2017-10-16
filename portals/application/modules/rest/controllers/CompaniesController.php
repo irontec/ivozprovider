@@ -39,6 +39,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'domain_users': '', 
      *     'nif': '', 
      *     'defaultTimezoneId': '', 
+     *     'distributeMethod': '', 
      *     'applicationServerId': '', 
      *     'externalMaxCalls': '', 
      *     'postalAddress': '', 
@@ -67,6 +68,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'domain_users': '', 
      *     'nif': '', 
      *     'defaultTimezoneId': '', 
+     *     'distributeMethod': '', 
      *     'applicationServerId': '', 
      *     'externalMaxCalls': '', 
      *     'postalAddress': '', 
@@ -111,6 +113,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'domainUsers',
                 'nif',
                 'defaultTimezoneId',
+                'distributeMethod',
                 'applicationServerId',
                 'externalMaxCalls',
                 'postalAddress',
@@ -211,6 +214,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'domain_users': '', 
      *     'nif': '', 
      *     'defaultTimezoneId': '', 
+     *     'distributeMethod': '', 
      *     'applicationServerId': '', 
      *     'externalMaxCalls': '', 
      *     'postalAddress': '', 
@@ -254,6 +258,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'domainUsers',
                 'nif',
                 'defaultTimezoneId',
+                'distributeMethod',
                 'applicationServerId',
                 'externalMaxCalls',
                 'postalAddress',
@@ -320,6 +325,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="distributeMethod", nullable=false, type="varchar", sample="", description="[enum:static|rr|hash]")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="externalMaxCalls", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -381,6 +387,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="domain_users", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="nif", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="distributeMethod", nullable=false, type="varchar", sample="", description="[enum:static|rr|hash]")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="externalMaxCalls", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
@@ -525,6 +532,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'distributeMethod' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '[enum:static|rr|hash]',
+                ),
                 'applicationServerId' => array(
                     'type' => "int",
                     'required' => false,
@@ -665,6 +677,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'type' => "int",
                     'required' => false,
                     'comment' => '',
+                ),
+                'distributeMethod' => array(
+                    'type' => "varchar",
+                    'required' => true,
+                    'comment' => '[enum:static|rr|hash]',
                 ),
                 'applicationServerId' => array(
                     'type' => "int",

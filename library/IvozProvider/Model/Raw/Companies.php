@@ -26,6 +26,11 @@ class Companies extends ModelAbstract
         'vpbx',
         'retail',
     );
+    protected $_distributeMethodAcceptedValues = array(
+        'static',
+        'rr',
+        'hash',
+    );
 
     /**
      * Database var type int
@@ -76,6 +81,14 @@ class Companies extends ModelAbstract
      * @var int
      */
     protected $_defaultTimezoneId;
+
+    /**
+     * [enum:static|rr|hash]
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_distributeMethod;
 
     /**
      * Database var type int
@@ -555,6 +568,7 @@ class Companies extends ModelAbstract
         'domain_users'=>'domainUsers',
         'nif'=>'nif',
         'defaultTimezoneId'=>'defaultTimezoneId',
+        'distributeMethod'=>'distributeMethod',
         'applicationServerId'=>'applicationServerId',
         'externalMaxCalls'=>'externalMaxCalls',
         'postalAddress'=>'postalAddress',
@@ -584,6 +598,7 @@ class Companies extends ModelAbstract
     {
         $this->setColumnsMeta(array(
             'type'=> array('enum:vpbx|retail'),
+            'distributeMethod'=> array('enum:static|rr|hash'),
         ));
 
         $this->setMultiLangColumnsList(array(
@@ -775,6 +790,7 @@ class Companies extends ModelAbstract
 
         $this->_defaultValues = array(
             'type' => 'vpbx',
+            'distributeMethod' => 'hash',
             'externalMaxCalls' => '0',
         );
 
@@ -1057,6 +1073,43 @@ class Companies extends ModelAbstract
     public function getDefaultTimezoneId()
     {
         return $this->_defaultTimezoneId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setDistributeMethod($data)
+    {
+
+        if ($this->_distributeMethod != $data) {
+            $this->_logChange('distributeMethod', $this->_distributeMethod, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_distributeMethod = $data;
+
+        } else if (!is_null($data)) {
+            if (!in_array($data, $this->_distributeMethodAcceptedValues) && !empty($data)) {
+                throw new \InvalidArgumentException(sprintf(_('Invalid value for %s'), 'distributeMethod'));
+            }
+            $this->_distributeMethod = (string) $data;
+
+        } else {
+            $this->_distributeMethod = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column distributeMethod
+     *
+     * @return string
+     */
+    public function getDistributeMethod()
+    {
+        return $this->_distributeMethod;
     }
 
     /**

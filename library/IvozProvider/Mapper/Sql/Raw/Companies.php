@@ -55,6 +55,7 @@ class Companies extends MapperAbstract
                 'domain_users' => $model->getDomainUsers(),
                 'nif' => $model->getNif(),
                 'defaultTimezoneId' => $model->getDefaultTimezoneId(),
+                'distributeMethod' => $model->getDistributeMethod(),
                 'applicationServerId' => $model->getApplicationServerId(),
                 'externalMaxCalls' => $model->getExternalMaxCalls(),
                 'postalAddress' => $model->getPostalAddress(),
@@ -1055,6 +1056,7 @@ class Companies extends MapperAbstract
                   ->setDomainUsers($data['domain_users'])
                   ->setNif($data['nif'])
                   ->setDefaultTimezoneId($data['defaultTimezoneId'])
+                  ->setDistributeMethod($data['distributeMethod'])
                   ->setApplicationServerId($data['applicationServerId'])
                   ->setExternalMaxCalls($data['externalMaxCalls'])
                   ->setPostalAddress($data['postalAddress'])
@@ -1083,6 +1085,7 @@ class Companies extends MapperAbstract
                   ->setDomainUsers($data->{'domain_users'})
                   ->setNif($data->{'nif'})
                   ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
+                  ->setDistributeMethod($data->{'distributeMethod'})
                   ->setApplicationServerId($data->{'applicationServerId'})
                   ->setExternalMaxCalls($data->{'externalMaxCalls'})
                   ->setPostalAddress($data->{'postalAddress'})
@@ -1112,6 +1115,7 @@ class Companies extends MapperAbstract
                   ->setDomainUsers($data->getDomainUsers())
                   ->setNif($data->getNif())
                   ->setDefaultTimezoneId($data->getDefaultTimezoneId())
+                  ->setDistributeMethod($data->getDistributeMethod())
                   ->setApplicationServerId($data->getApplicationServerId())
                   ->setExternalMaxCalls($data->getExternalMaxCalls())
                   ->setPostalAddress($data->getPostalAddress())

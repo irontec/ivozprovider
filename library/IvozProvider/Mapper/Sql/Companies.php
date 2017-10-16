@@ -68,6 +68,11 @@ class Companies extends Raw\Companies
             $model->setOnDemandRecordCode('');
         }
 
+        // Unset AS if distribute method not static
+        if ($model->getDistributeMethod() != 'static') {
+            $model->setApplicationServerId(null);
+        }
+
         try {
           $pk = parent::_save($this->_model, $this->_recursive, $useTransaction, $transactionTag, $forceInsert);
         } catch (\Exception $e) {
