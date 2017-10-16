@@ -105,7 +105,7 @@ production:
       label: true
       multiInstance: true
       defaultValues:
-        country: ${auth.companyCountryId}
+        countryId: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedBrand
         <<: *forcedCompany
