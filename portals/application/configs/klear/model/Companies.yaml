@@ -290,6 +290,15 @@ production:
             fields:
               - name
             template: '%name%'
+          visualFilter:
+            iden:
+              recordings:
+                toggle:
+                  - recordingsLimitMB
+                  - recordingsDiskUsage
+                  - recordingsLimitEmail
+                  - onDemandRecord
+                  - onDemandRecordCode
           order: name
 staging:
   _extends: production
