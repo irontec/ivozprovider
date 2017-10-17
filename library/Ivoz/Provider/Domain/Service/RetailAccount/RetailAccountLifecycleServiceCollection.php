@@ -9,7 +9,7 @@ class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollect
 {
     use LifecycleServiceCollectionTrait;
 
-    protected function addService(RoutingPatternGroupLifecycleEventHandlerInterface $service)
+    protected function addService(RetailAccountLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
     }

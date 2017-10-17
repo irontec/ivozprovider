@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Service\RetailAccount;
 
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 
 /**
@@ -10,7 +9,7 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
  * @package Ivoz\Provider\Domain\Service\RetailAccount
  * @lifecycle pre_persist
  */
-class SanitizeValues implements RoutingPatternGroupLifecycleEventHandlerInterface
+class SanitizeValues implements RetailAccountLifecycleEventHandlerInterface
 {
     public function __construct() {}
 

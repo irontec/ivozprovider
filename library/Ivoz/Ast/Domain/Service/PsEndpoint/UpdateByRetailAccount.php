@@ -5,11 +5,11 @@ namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Ivoz\Provider\Domain\Service\RetailAccount\RoutingPatternGroupLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleEventHandlerInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 
-class UpdateByRoutingPatternGroup implements RoutingPatternGroupLifecycleEventHandlerInterface
+class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterface
 {
     /**
      * @var EntityPersisterInterface
@@ -50,7 +50,7 @@ class UpdateByRoutingPatternGroup implements RoutingPatternGroupLifecycleEventHa
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
-            $endpointDTO  = $entity->toDTO();
+            $endpointDTO  = $endpoint->toDTO();
         }
 
         // Update/Insert endpoint data

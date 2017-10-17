@@ -2,17 +2,16 @@
 
 namespace Ivoz\Ast\Domain\Service\PsAor;
 
+use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Ast\Domain\Model\PsAor\PsAorRepository;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Service\RetailAccount\RoutingPatternGroupLifecycleEventHandlerInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Ast\Domain\Model\PsAor\PsAor;
 use Ivoz\Ast\Domain\Model\PsAor\PsAorInterface;
-use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleEventHandlerInterface;
 
-class UpdateByRoutingPatternGroup implements RoutingPatternLifecycleEventHandlerInterface
+class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterface
 {
     /**
      * @var EntityPersisterInterface
@@ -42,18 +41,8 @@ class UpdateByRoutingPatternGroup implements RoutingPatternLifecycleEventHandler
     /**
      * @param RetailAccountInterface $entity
      */
-    public function execute(RoutingPatternInterface $entity, $isNew)
+    public function execute(RetailAccountInterface $entity, $isNew)
     {
-        /**
-         * @var PsAorInterface $aor
-         */
-        $aor = $this->psAorRepository->findOneBy([
-            'id' => $entity->getId()
-        ]);
-
-        $aorDTO = is_null($aor)
-            ? PsAor::createDTO()
-            : $aor->toDTO();
 
         /**
          * @var PsEndpointInterface $endpoint
@@ -62,8 +51,19 @@ class UpdateByRoutingPatternGroup implements RoutingPatternLifecycleEventHandler
             'retailAccount' => $entity->getId()
         ]);
 
+        /**
+         * @var PsAorInterface $aor
+         */
+        $aor = $this->psAorRepository->find(
+            $endpoint->getSorceryId()
+        );
+
+        $aorDTO = is_null($aor)
+            ? PsAor::createDTO()
+            : $aor->toDTO();
+
         $aorDTO
-            ->setId($entity->getSorcery())
+            ->setId($endpoint->getSorceryId())
             ->setPsEndpointId($endpoint->getId())
             ->setContact($entity->getContact())
             ->setMaxContacts(1)
