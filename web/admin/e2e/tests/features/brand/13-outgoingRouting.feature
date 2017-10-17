@@ -1,5 +1,6 @@
 @brand
 @outgoingRouting
+@13
 
 Feature: Outgoing routing admin page
   As a main operator
@@ -17,15 +18,18 @@ Background:
    Then I am on "OutgoingRouting" list
 
 Scenario: I can create new outgoing routings
-  Given I click on add button
-   When I click on close button
+   When I click on add button
+    And I fill out the form with "brand/outgoingRouting/new" data fixture
+    And I click on save button
+   Then I can see confirmation dialog
+   When I click on close dialog button
    Then I am on "OutgoingRouting" list
 
 Scenario: I can edit outgoing routing
   Given I can see at least one row
    When I click on "OutgoingRouting" first elements edit button
     And I click on save button
-   Then I can see confirmation dialog within "40" seconds or lower
+   Then I can see confirmation dialog within "50" seconds or lower
    When I click on close dialog button
    Then I am on "OutgoingRouting" list
 

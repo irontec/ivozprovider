@@ -1,8 +1,9 @@
 @brand
-@brandDDIs
+@BrandRetailAccounts
+@09
 @todo
 
 Feature: Authorized sources admin page
   As a main operator
-  I want to be able to access DDIs admin page
+  I want to be able to access retails accounts admin page
   In order to check and manage them

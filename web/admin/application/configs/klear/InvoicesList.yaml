@@ -48,6 +48,7 @@ production:
         dialogs:
           invoicesDel_dialog: true
           generateInvoice_dialog: true
+
     invoicesNew_screen: &invoicesNew_screenLink
       <<: *Invoices
       controller: new
@@ -89,6 +90,7 @@ production:
           fields:
             status: 1
             pdfFile: 1
+
     invoicesEdit_screen: &invoicesEdit_screenLink
       <<: *Invoices
       controller: edit

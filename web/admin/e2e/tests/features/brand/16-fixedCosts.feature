@@ -1,5 +1,6 @@
 @brand
 @fixedCosts
+@16
 
 Feature: Fixed costs admin page
   As a main operator
@@ -16,6 +17,14 @@ Background:
     And I click on "FixedCosts" CTA
    Then I am on "FixedCosts" list
 
+Scenario: I can create fixed cost admin page
+  When I click on add button
+   And I fill out the form with "brand/fixedCosts/new" data fixture
+   And I click on save button
+  Then I can see confirmation dialog
+  When I click on close dialog button
+  Then I am on "FixedCosts" list
+
 Scenario: I can save fixed costs
   Given I can see at least one row
    When I click on "FixedCosts" first elements edit button
@@ -23,11 +32,6 @@ Scenario: I can save fixed costs
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "FixedCosts" list
-
-Scenario: I see new fixed cost admin page
-  Given I click on add button
-  And I click on close button
-  Then I am on "FixedCosts" list
 
 Scenario: I can click on delete fixed cost button
   Given I can see at least one row

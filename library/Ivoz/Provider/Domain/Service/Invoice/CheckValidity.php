@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
@@ -16,6 +15,13 @@ use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
  */
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
+    const UNMETERED_CALLS = 50001;
+//    const UNBILLED_CALLS_BEFORE_IN_DATE = 50002;
+    const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
+    const UNBILLED_CALLS_AFTER_OUT_DATE = 50004;
+    const SENSELESS_IN_OUT_DATE = 50005;
+//    const INVOICES_IN_FUTURE_DATES_FOUND = 50006;
+
     /**
      * @var EntityManagerInterface
      */
@@ -51,6 +57,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             ->getDefaultTimezone()
             ->getTz();
         $invoiceTz = new \DateTimeZone($tz);
+
         /**
          * @var \Datetime $inDate
          */
@@ -61,74 +68,62 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
          * @var \Datetime $outDate
          */
         $outDate = $entity->getOutDate();
+        $oneSecAgo = new \DateInterval('PT1S');
+        $oneSecAgo->invert = 1;
+
         $outDate
             ->setTimezone($invoiceTz)
             ->add(new \DateInterval('P1D'))
-            ->sub(new \DateInterval('-PT1S'));
+            ->sub($oneSecAgo);
 
         /**
          * @todo double check this
          */
         if ($inDate >= $outDate) {
-            throw new \Excepion('', 50005);
+            throw new \Excepion('', self::SENSELESS_IN_OUT_DATE);
         }
 
-//        $now = new \Zend_Date();
-//        $now->setTimezone($invoiceTz);
-//        $inDateIsInFuture = $invoice->getInDate(true)->getDate()->compare($now->getDate()) >= 0;
-//        $outDateIsInFuture = $invoice->getOutDate(true)->getDate()->compare($now->getDate()) >= 0;
-//
-//
-////        if ($inDateIsInFuture || $outDateIsInFuture) {
-////            return 50006;
-////        }
+        $untarificattedCallNum = $this->accCdrRepository->fetchUntarificattedCallNumber(
+            $entity->getCompany()->getId(),
+            $entity->getBrand()->getId(),
+            $outDate->format('Y-m-d H:i:s'),
+            '0'
+        );
 
-        $where = [
-            "company" => $entity->getCompany()->getId(),
-            "brand" => $entity->getBrand()->getId(),
-            Criteria::expr()->lte('start_time_utc', $outDate->format('Y-m-d H:i:s')),
-            "metered" => '0'
-        ];
-
-        $untarificattedCalls = $this->accCdrRepository->fetchTarificableList($where);
-        if (!empty($untarificattedCalls)) {
-            throw new \Excepion('', 50001);
+        if ($untarificattedCallNum) {
+            throw new \Exception('', self::UNMETERED_CALLS);
         }
 
-        $utcTimezone = new \DateTimeZone('UTC');
         $utcOutDate = $outDate
             ->setTimezone($invoiceTz)
             ->format('Y-m-d H:i:s');
-
-        $where = array(
-            "company" => $entity->getCompany()->getId(),
-            "brand" => $entity->getBrand()->getId(),
-            Criteria::expr()->gt('outDate', $utcOutDate),
-            Criteria::expr()->neq('id', $entity->getId())
-        );
 
         /**
          * @var Invoice[] $invoices
          */
         $invoices = $this
             ->invoiveRepository
-            ->findBy($where, ['inDate' => 'ASC']);
+            ->getInvoices(
+                $entity->getCompany()->getId(),
+                $entity->getBrand()->getId(),
+                $utcOutDate,
+                $entity->getId()
+            );
 
         if (!empty($invoices)) {
 
             $invoice = $invoices[0];
             $nextInvoiceInDate = $invoice->getInDate();
 
-            $where = array(
-                "company" => $invoice->getCompany()->getId(),
-                "brand" => $invoice->getBrand->getId(),
-                Criteria::expr()->gt('startTimeUtc', $outDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s')),
-                Criteria::expr()->lt('startTimeUtc', $nextInvoiceInDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s'))
+            $calls = $this->accCdrRepository->fetchTarificableList(
+                $entity->getCompany()->getId(),
+                $entity->getBrand->getId(),
+                $outDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s'),
+                $nextInvoiceInDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s')
             );
 
-            $calls = $this->accCdrRepository->fetchTarificableList($where);
             if (!empty($calls)) {
-                throw new \Excepion('', 50004);
+                throw new \Excepion('', self::UNBILLED_CALLS_AFTER_OUT_DATE);
             }
         }
 
@@ -136,18 +131,16 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             ->setTimezone($invoiceTz)
             ->format('Y-m-d H:i:s');
 
-        $where = array(
-            "company" => $invoice->getCompany()->getId(),
-            "brand" => $invoice->getBrand->getId(),
-            Criteria::expr()->gte('inDate', $utcInDate),
-            Criteria::expr()->lte('outDate', $utcOutDate),
-            Criteria::expr()->neq('id', $invoice->getId())
+        $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
+            $entity->getCompany()->getId(),
+            $entity->getBrand()->getId(),
+            $utcInDate,
+            $utcOutDate,
+            $entity->getId()
         );
 
-        $invoices = $this->invoiveRepository->findBy($where);
-        if (!empty($invoices)) {
-            throw new \Excepion('', 50003);
+        if ($invoiceCount) {
+            throw new \Excepion('', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
         }
-
     }
 }

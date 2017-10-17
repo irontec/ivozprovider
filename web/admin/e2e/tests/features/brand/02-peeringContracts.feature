@@ -1,5 +1,6 @@
 @brand
 @peeringContracts
+@02
 
 Feature: Peering contracts admin page
   As a main operator

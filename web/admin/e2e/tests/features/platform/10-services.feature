@@ -1,5 +1,6 @@
 @platform
 @services
+@10
 
 Feature: Services admin page
   As a main operator

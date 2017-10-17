@@ -1,5 +1,6 @@
 @platform
 @mediaRelaySets
+@06-1
 
 Feature: Media relay sets admin page
   As a main operator

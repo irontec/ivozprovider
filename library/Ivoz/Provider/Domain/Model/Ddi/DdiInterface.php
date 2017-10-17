@@ -13,6 +13,8 @@ interface DdiInterface extends EntityInterface
 
     public function getLanguageCode();
 
+    public function setRouteType($routeType = null);
+
     /**
      * Set ddi
      *
@@ -76,15 +78,6 @@ interface DdiInterface extends EntityInterface
      * @return string
      */
     public function getDisplayName();
-
-    /**
-     * Set routeType
-     *
-     * @param string $routeType
-     *
-     * @return self
-     */
-    public function setRouteType($routeType = null);
 
     /**
      * Get routeType

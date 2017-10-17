@@ -1,5 +1,6 @@
 @brand
 @pricingPlans
+@01
 
 Feature: Pricing plans admin page
   As a main operator

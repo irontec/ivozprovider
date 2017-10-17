@@ -1,5 +1,7 @@
 @brand
 @invoiceTemplates
+@15-1
+@current
 
 Feature: Invoice templates admin page
   As a main operator
@@ -16,6 +18,14 @@ Background:
     And I click on "InvoiceTemplates" CTA
    Then I am on "InvoiceTemplates" list
 
+Scenario: I can create invoice templates
+  When I click on add button
+   And I fill out the form with "brand/invoiceTemplates/new" data fixture
+   And I click on save button
+  Then I can see confirmation dialog
+  When I click on close dialog button
+  Then I am on "InvoiceTemplates" list
+
 Scenario: I can save invoice templates
   Given I can see at least one row
    When I click on "InvoiceTemplates" first elements edit button
@@ -23,11 +33,6 @@ Scenario: I can save invoice templates
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "InvoiceTemplates" list
-
-Scenario: I see new invoice template admin page
-  Given I click on add button
-  And I click on close button
-  Then I am on "InvoiceTemplates" list
 
 Scenario: I can click on delete invoice template button
   Given I can see at least one row

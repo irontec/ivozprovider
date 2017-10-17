@@ -37,6 +37,8 @@ function edit () {
           fs.readFileSync(filePath, 'utf8')
       );
 
+      uploadAndCleanFilesIfAny.apply(this, [formData]);
+
       return this
         .waitForElementVisible('@save', 20000)
         .waitForElementVisible('@close', 5000)
@@ -55,6 +57,29 @@ function edit () {
                 );
             }
         );
+  }
+
+  function uploadAndCleanFilesIfAny(dataFixture)
+  {
+      this
+          .waitForElementVisible('@save', 20000)
+          .waitForElementVisible('@close', 5000);
+
+      let keyWord = 'file:';
+      for (var fieldName in dataFixture) {
+
+          let value = dataFixture[fieldName];
+
+          if (value.substring(0, keyWord.length) === keyWord) {
+
+              value = value.substring(keyWord.length, value.length);
+
+              this.setValue('@uploadButton', value);
+
+              this.api.pause(400)
+              delete dataFixture[fieldName];
+          }
+      }
   }
 
   function assertConfirmationDialog(timeoutSeconds) {
@@ -118,6 +143,9 @@ module.exports = {
     },
     save: {
       selector: currentTab + 'div.generalOptionsToolbar a.action'
+    },
+    uploadButton: {
+        selector: currentTab + 'input[type="file"]'
     }
   }
 };

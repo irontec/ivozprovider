@@ -1,6 +1,7 @@
 #platform
 @parsedCDRs
 @parsedCDRsPlatform
+@12
 @todo
 
 Feature: Parsed CDRs admin page

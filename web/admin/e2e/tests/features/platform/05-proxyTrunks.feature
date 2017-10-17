@@ -1,5 +1,6 @@
 @platform
 @proxyTrunks
+@05
 
 Feature: Proxy Trunks admin page
   As a main operator

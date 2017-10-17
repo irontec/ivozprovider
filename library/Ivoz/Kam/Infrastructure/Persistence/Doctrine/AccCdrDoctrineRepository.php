@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Kam\Domain\Model\AccCdr\AccCdrInterface;
 use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
 
 /**
@@ -14,26 +15,92 @@ use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
  */
 class AccCdrDoctrineRepository extends EntityRepository implements AccCdrRepository
 {
+    const ENTITY_ALIAS = 'accCdr';
 
-    public function fetchTarificableList(array $criteria, array $orderBy = null, $limit = null, $offset = null)
-    {
-        $criteria += $this->getEmptyPeeringContractFilterCriteria();
+    /**
+     * @inheritDoc
+     */
+    public function fetchUntarificattedCallNumber(
+        int $companyId,
+        int $brandId,
+        string $startTimeUtc,
+        int $metered
+    ) {
+        $querySegments = [
+            self::ENTITY_ALIAS . '.company = :companyId',
+            self::ENTITY_ALIAS . '.brand = :brandId',
+            self::ENTITY_ALIAS . '.startTimeUtc <= :startTimeUtc',
+            self::ENTITY_ALIAS . '.metered = :metered'
+        ];
 
-        /**
-         * @todo ensure that criteria arguments are handled properly
-         */
-        return $this->findBy($criteria, $orderBy, $limit, $offset);
+        $querySegments += $this->getEmptyPeeringContractFilterQueryArguments(self::ENTITY_ALIAS);
+        $query = implode(' AND ', $querySegments);
+        $queryArguments = [
+            'companyId' => $companyId,
+            'brandId' => $brandId,
+            'startTimeUtc' => $startTimeUtc,
+            'metered' => $metered
+        ];
+
+        $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
+        $qb->select('count(' . self::ENTITY_ALIAS  . ')')
+           ->where($query)
+           ->setParameters($queryArguments);
+
+        return $qb
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function fetchTarificableList(
+        int $companyId,
+        int $brandId,
+        string $startTimeUtc,
+        string $utcNextInvoiceInDate
+    ) {
+        $querySegments = [
+            self::ENTITY_ALIAS . '.company = :companyId',
+            self::ENTITY_ALIAS . '.brand = :brandId',
+            self::ENTITY_ALIAS . '.startTimeUtc > :startTimeUtc',
+            self::ENTITY_ALIAS . '.startTimeUtc < :utcNextInvoiceInDate'
+        ];
+
+        $querySegments += $this->getEmptyPeeringContractFilterQueryArguments(self::ENTITY_ALIAS);
+        $query = implode(' AND ', $querySegments);
+        $queryArguments = [
+            'companyId' => $companyId,
+            'brandId' => $brandId,
+            'startTimeUtc' => $startTimeUtc,
+            'utcNextInvoiceInDate' => $utcNextInvoiceInDate
+        ];
+
+        $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
+        $qb->select(self::ENTITY_ALIAS)
+            ->where($query)
+            ->setParameters($queryArguments);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    /**
+     * @inheritDoc
+     */
     public function countTarificableByQuery(array $criteria)
     {
-        $criteria += $this->getEmptyPeeringContractFilterCriteria();
+        throw new \Exception('TODO');
+        $criteria += $this->getEmptyPeeringContractFilterQueryArguments();
 
         /**
          * @todo ensure that criteria arguments are handled properly
          */
-        $qb = $this->createQueryBuilder('accCdr');
-        $qb->select('count(accCdr)')
+        $qb = $this->createQueryBuilder(self::ENTITY_ALIAS );
+        $qb->select('count(' . self::ENTITY_ALIAS  . ')')
             ->addCriteria(new Criteria($criteria));
 
         return $qb
@@ -44,11 +111,11 @@ class AccCdrDoctrineRepository extends EntityRepository implements AccCdrReposit
     /**
      * @return array
      */
-    public function getEmptyPeeringContractFilterCriteria()
+    public function getEmptyPeeringContractFilterQueryArguments($alias)
     {
         return [
-            Criteria::expr()->neq('peeringContract', null),
-            Criteria::expr()->neq('peeringContract', '')
+            $alias . '.peeringContract != NULL',
+            $alias . '.peeringContract != ""'
         ];
     }
 }

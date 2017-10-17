@@ -1,6 +1,7 @@
 @brand
 @numericTransformation
 @transformationRulesetGroupsTrunks
+@05-1
 
 Feature: Numeric transformations admin page
   As a main operator

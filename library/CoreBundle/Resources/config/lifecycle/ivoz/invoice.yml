@@ -22,7 +22,7 @@ services:
       $accCdrRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\AccCdr\\AccCdr")'
       $invoiveRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\Invoice\\Invoice")'
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice")'
 
   Ivoz\Provider\Domain\Service\Invoice\SanitizeValues:
     tags:

@@ -1,5 +1,6 @@
 @platform
 @mainOperators
+@09
 
 Feature: Main operators admin page
   As a main operator

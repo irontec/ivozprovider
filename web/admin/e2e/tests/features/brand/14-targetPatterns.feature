@@ -1,5 +1,6 @@
 @brand
 @targetPatterns
+@14
 
 Feature: Target patterns admin page
   As a main operator
@@ -16,6 +17,14 @@ Background:
     And I click on "TargetPatterns" CTA
    Then I am on "TargetPatterns" list
 
+Scenario: I can create target patterns
+   When I click on add button
+    And I fill out the form with "brand/targetPatterns/new" data fixture
+    And I click on save button
+   Then I can see confirmation dialog
+   When I click on close dialog button
+   Then I am on "TargetPatterns" list
+
 Scenario: I can save target patterns
   Given I can see at least one row
    When I click on "TargetPatterns" first elements edit button
@@ -23,11 +32,6 @@ Scenario: I can save target patterns
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "TargetPatterns" list
-
-Scenario: I see new target patterns admin page
-  Given I click on add button
-  And I click on close button
-  Then I am on "TargetPatterns" list
 
 Scenario: I can click on delete target patterns button
   Given I can see at least one row

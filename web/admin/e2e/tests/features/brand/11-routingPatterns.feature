@@ -1,5 +1,6 @@
 @brand
 @routingPatterns
+@11
 
 Feature: Routing patterns admin page
   As a main operator
@@ -16,6 +17,14 @@ Background:
     And I click on "RoutingPatterns" CTA
    Then I am on "RoutingPatterns" list
 
+Scenario: I create new routing patterns
+   When I click on add button
+    And I fill out the form with "brand/routingPatterns/new" data fixture
+    And I click on save button
+   Then I can see confirmation dialog
+   When I click on close dialog button
+   Then I am on "RoutingPatterns" list
+
 Scenario: I can save routing patterns
   Given I can see at least one row
    When I click on "RoutingPatterns" first elements edit button
@@ -23,11 +32,6 @@ Scenario: I can save routing patterns
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "RoutingPatterns" list
-
-Scenario: I see new routing pattern admin page
-  Given I click on add button
-  And I click on close button
-  Then I am on "RoutingPatterns" list
 
 Scenario: I can click on delete routing pattern button
   Given I can see at least one row

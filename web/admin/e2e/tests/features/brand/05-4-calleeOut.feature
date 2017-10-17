@@ -1,6 +1,7 @@
 @brand
 @calleeOut
 @kamTrunksDialplanCalleeOut
+@05-4
 
 Feature: Callee out admin page
   As a main operator

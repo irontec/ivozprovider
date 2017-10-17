@@ -1,5 +1,6 @@
 @platform
 @brandOperators
+@01-2
 
 Feature: Brand operator admin page
   As a main operator

@@ -26,17 +26,17 @@ production:
           defaultTimezoneId: true
           languageId: true
           invoicePostalAddress: true
-          postalCode: true
+          invoicePostalCode: true
           invoiceTown: true
           invoiceProvince: true
-          country: true
+          invoiceCountry: true
           invoiceRegistryData: true
         blacklist:
           domain_trunks: true
           iden: true
           invoicePostalAddress: true
           invoiceProvince: true
-          country: true
+          invoiceCountry: true
           invoiceTown: true
           invoiceRegistryData: true
           languageId: true
@@ -72,9 +72,9 @@ production:
       forcedValues:
         invoiceNif: '12345678-Z'
         invoicePostalAddress: 'Postal address'
-        postalCode: 'ZIP'
+        invoicePostalCode: 'ZIP'
         invoiceTown: 'town'
-        country: 'country'
+        invoiceCountry: 'country'
         invoiceProvince: 'province'
         invoiceRegistryData: 'registryData'
       fields:

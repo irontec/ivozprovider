@@ -1,5 +1,6 @@
 @brand
 @companyURLs
+@04
 
 Feature: Company URLs admin page
   As a main operator
