@@ -33,6 +33,8 @@ class Queues extends Raw\Queues
             $model->setMaxlen(null);
         }
 
+        $updateQueuename = $model->getPrimaryKey() && $model->hasChange('name');
+
         $pk = parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
 
 
@@ -62,6 +64,15 @@ class Queues extends Raw\Queues
             ->setWeight($model->getWeight())
             ->setMaxlen($model->getMaxlen())
             ->save($forceInsert);
+
+        if ($updateQueuename) {
+            // Update ast_queue_members.queue_name triggering QueueMembers logic
+            $queueMembersMapper = new \IvozProvider\Mapper\Sql\QueueMembers();
+            $queueMembers = $queueMembersMapper->findByField('queueId', $model->getId());
+            foreach ($queueMembers as $queueMember) {
+                $queueMember->save();
+            }
+        }
 
         return $pk;
     }
