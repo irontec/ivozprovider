@@ -30,16 +30,9 @@ services:
       $domainRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Domain\\Domain")'
 
-  Ivoz\Provider\Domain\Service\RetailAccount\UpdateByBrand:
-    tags:
-      - { name: provider.lifecycle.brand.post_persist, priority: 20 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
   Ivoz\Kam\Domain\Service\UsersDomainAttr\UpdateByBrand:
     tags:
-      - { name: provider.lifecycle.brand.post_persist, priority: 30 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 20 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
@@ -48,7 +41,7 @@ services:
 
   Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand:
     tags:
-      - { name: provider.lifecycle.brand.post_persist, priority: 40 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 30 }
     arguments:
       $countryRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Country\\Country")'
@@ -57,7 +50,7 @@ services:
 
   Ivoz\Provider\Infrastructure\Domain\Service\Brand\PersistedXmlRpc:
     tags:
-      - { name: provider.lifecycle.brand.post_persist, priority: 50 }
+      - { name: provider.lifecycle.brand.post_persist, priority: 40 }
 
   ##################################
   ## post_remove

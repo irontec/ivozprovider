@@ -34,6 +34,14 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
         return $this->id;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function setDomainUsers($domainUsers = null)
+    {
+        return parent::setDomainUsers(trim($domainUsers));
+    }
+
     public function getActivePricingPlans($date = null)
     {
         $activePricingPlans = array();

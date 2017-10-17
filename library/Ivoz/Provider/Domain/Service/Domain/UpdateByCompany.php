@@ -45,6 +45,17 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
     public function execute(CompanyInterface $entity, $isNew)
     {
         $id = $entity->getId();
+        $name = $entity->getDomainUsers();
+
+        /**
+         * @todo trim value on setter
+         */
+        $name = trim($name);
+
+        // Empty domain field, do nothing
+        if (empty($name)) {
+            return;
+        }
 
         /**
          * @var DomainInterface $domain
@@ -54,13 +65,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             'pointsTo' => 'proxyusers'
         ]);
 
-        // If domain field is filled, look for brand domains or create a new one
-        if ($domain) {
-            $this->updateTerminalsDomain($entity, $domain);
-            $this->updateFriendsDomain($entity, $domain);
-        }
-
-        // If domain field is filled, look for brand domains or create a new one
+        // If domain field is filled, look for Domain entity or create a new one
         $domainDto = is_null($domain)
             ? Domain::createDTO()
             : $domain->toDto();
@@ -80,55 +85,4 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         $this->entityPersister->persistDto($domainDto, $domain);
     }
 
-    private function updateTerminalsDomain(Company $company, Domain $domain)
-    {
-        $terminals = $company->getTerminals();
-
-        /**
-         * @var Terminal $terminal
-         */
-        foreach ($terminals as $terminal) {
-
-            $terminal->setDomain($domain->getDomain());
-            $endpoint = $terminal->getAstPsEndpoint();
-            $aor = $endpoint->getPsAor();
-
-            /**
-             * @todo Can we take for granted that aor exists?
-             */
-            $aor->setContact(
-                $terminal->getContact()
-            );
-        }
-    }
-
-    private function updateFriendsDomain(Company $company, Domain $domain)
-    {
-        $friends = $company->getFriends();
-
-        /**
-         * @var Friend $friend
-         */
-        foreach ($friends as $friend) {
-
-            $friend->setDomain($domain->getDomain());
-
-            /**
-             * @todo ensure this method exists
-             * @var PsEndpoint $endpoint
-             */
-            $endpoint = $friend->getAstPsEndpoint();
-
-            /**
-             * @var PsAor $aor
-             */
-            $aor = $endpoint->getPsAor();
-            $aor->setContact(
-                /**
-                 * @todo ensure this method exists
-                 */
-                $friend->getContact()
-            );
-        }
-    }
 }

@@ -53,11 +53,6 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         $name = $entity->getDomainUsers();
 
         /**
-         * @todo trim value on setter
-         */
-        $name = trim($name);
-
-        /**
          * @var DomainInterface $domain
          */
         $domain = $this->domainRepository->findOneBy([
@@ -66,8 +61,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ]);
 
         // Empty domain field, delete any related domain
-        if (!$name && $domain) {
-            $this->em->remove($domain);
+        if (!$name) {
+            if ($domain) {
+                $this->em->remove($domain);
+            }
             return;
         }
 
