@@ -1,6 +1,7 @@
 @brand
 @targetPatterns
-@14
+@brand15
+@brand15-1
 
 Feature: Target patterns admin page
   As a main operator

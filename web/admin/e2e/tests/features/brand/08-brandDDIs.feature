@@ -1,6 +1,6 @@
 @brand
 @brandDDIs
-@08
+@brand08
 @todo
 
 Feature: Authorized sources admin page

@@ -1,7 +1,8 @@
 @brand
 @authorizedSources
 @kamUsersAddress
-@03-2
+@brand03
+@brand03-2
 
 Feature: Authorized sources admin page
   As a main operator

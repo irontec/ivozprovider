@@ -20,7 +20,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName:
             fields:
@@ -35,7 +34,6 @@ production:
         data: mapper
         'null': 'E.164'
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks
           entity: \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk
           filterclass: IvozProvider_Klear_Filter_Brand
           fieldName:

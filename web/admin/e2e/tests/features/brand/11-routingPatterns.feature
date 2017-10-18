@@ -1,6 +1,6 @@
 @brand
 @routingPatterns
-@11
+@brand11
 
 Feature: Routing patterns admin page
   As a main operator

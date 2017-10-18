@@ -1,7 +1,8 @@
 @brand
 @callerIn
 @kamTrunksDialplanCallerIn
-@05-3
+@brand05
+@brand05-3
 
 Feature: Caller in admin page
   As a main operator

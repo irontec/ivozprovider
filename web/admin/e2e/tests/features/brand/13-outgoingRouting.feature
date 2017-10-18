@@ -1,6 +1,6 @@
 @brand
 @outgoingRouting
-@13
+@brand13
 
 Feature: Outgoing routing admin page
   As a main operator

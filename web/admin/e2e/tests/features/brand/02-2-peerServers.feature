@@ -1,6 +1,7 @@
 @brand
 @peerServers
-@todo
+@brand02
+@brand02-2
 
 Feature: Peer servers admin page
   As a main operator
@@ -18,18 +19,21 @@ Background:
    When I click on "PeeringContracts" first elements "peerServers" button
    Then I am on "PeeringContractsList_peerServers" subscreen list
 
-Scenario: I can save peer servers
-  Given I can see at least one row
-   When I click on "peerServers" first elements edit button
-    And I click on save button
-   Then I can see confirmation dialog
-   When I click on close dialog button
-   Then I am on "PeeringContractsList_peerServers" subscreen list
-
-Scenario: I see new peer servers admin page
-  Given I click on add button
-  And I click on close button
+Scenario: I see create peer servers
+  When I click on add button
+   And I fill out the form with "brand/peerServers/new" data fixture
+   And I click on save button
+  Then I can see confirmation dialog
+  When I click on close dialog button
   Then I am on "PeeringContractsList_peerServers" subscreen list
+
+  Scenario: I can save peer servers
+    Given I can see at least one row
+    When I click on "peerServers" first elements edit button
+    And I click on save button
+    Then I can see confirmation dialog
+    When I click on close dialog button
+    Then I am on "PeeringContractsList_peerServers" subscreen list
 
 Scenario: I can click on delete peer server button
   Given I can see at least one row

@@ -1,6 +1,6 @@
 @brand
 @routingPatternGroups
-@12
+@brand12
 
 Feature: Routing pattern groups admin page
   As a main operator

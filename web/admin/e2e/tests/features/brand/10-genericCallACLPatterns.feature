@@ -1,6 +1,6 @@
 @brand
 @genericCallACLPatterns
-@10
+@brand10
 
 Feature: Generic call ACL patterns admin page
   As a main operator

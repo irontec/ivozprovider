@@ -1,6 +1,6 @@
 @brand
 @genericMusicOnHold
-@06
+@brand06
 
 Feature: Generic music on hold admin page
   As a main operator

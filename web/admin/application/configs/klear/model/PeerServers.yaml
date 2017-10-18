@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
           fieldName: 
             fields: 
@@ -36,7 +35,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName: 
             fields: 
@@ -132,13 +130,13 @@ production:
           'yes':
             title: _('Yes')
             visualFilter:
-              show: ["auth_user", "auth_password"]
+              show: ["authUser", "authPassword"]
               hide: []
           'no':
             title: _('No')
             visualFilter:
               show: []
-              hide: ["auth_user", "auth_password"]
+              hide: ["authUser", "authPassword"]
     authUser:
       title: _('Auth user')
       type: text

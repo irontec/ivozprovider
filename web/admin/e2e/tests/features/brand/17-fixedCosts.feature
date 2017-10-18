@@ -1,6 +1,6 @@
 @brand
 @fixedCosts
-@16
+@brand17
 
 Feature: Fixed costs admin page
   As a main operator

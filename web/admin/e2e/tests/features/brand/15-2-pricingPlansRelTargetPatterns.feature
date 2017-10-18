@@ -1,5 +1,7 @@
-@brand
+#@brand
 @pricingPlansRelTargetPatterns
+@brand15
+@brand15-2
 @todo
 
 Feature: Pricing plans - Target patterns admin page
@@ -19,6 +21,11 @@ Background:
    When I click on "PricingPlans" first elements "pricingPlansRelTargetPatterns" button
    Then I am on "PricingPlansList_pricingPlansRelTargetPatterns" subscreen list
 
+Scenario: I see new pricing plan - target pattern admin page
+  Given I click on add button
+  And I click on close button
+  Then I am on "PricingPlansList_pricingPlansRelTargetPatterns" subscreen list
+
 Scenario: I can save pricing plans - target patterns
   Given I can see at least one row
    When I click on "pricingPlansRelTargetPatterns" first elements edit button
@@ -26,11 +33,6 @@ Scenario: I can save pricing plans - target patterns
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "PricingPlansList_pricingPlansRelTargetPatterns" subscreen list
-
-Scenario: I see new pricing plan - target pattern admin page
-  Given I click on add button
-  And I click on close button
-  Then I am on "PricingPlansList_pricingPlansRelTargetPatterns" subscreen list
 
 Scenario: I can click on delete pricing plan - target pattern button
   Given I can see at least one row

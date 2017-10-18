@@ -1,6 +1,6 @@
 @brand
 @brandServices
-@07
+@brand07
 
 Feature: Generic brand services admin page
   As a main operator

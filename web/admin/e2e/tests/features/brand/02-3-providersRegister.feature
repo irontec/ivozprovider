@@ -1,6 +1,8 @@
-@brand
+#@brand
 @providersRegister
 @kamTrunksUacreg
+@brand02
+@brand02-3
 @todo
 
 Feature: Peer servers admin page
@@ -19,6 +21,11 @@ Background:
    When I click on "PeeringContracts" first elements "kamTrunksUacreg" button
    Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
 
+Scenario: I see new providers register admin page
+  Given I click on add button
+  And I click on close button
+  Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
+
 Scenario: I can save providers registers
   Given I can see at least one row
    When I click on "kamTrunksUacreg" first elements edit button
@@ -26,11 +33,6 @@ Scenario: I can save providers registers
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
-
-Scenario: I see new providers register admin page
-  Given I click on add button
-  And I click on close button
-  Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
 
 Scenario: I can click on delete providers register button
   Given I can see at least one row

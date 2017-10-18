@@ -1,6 +1,7 @@
 @brand
 @pricingPlansRelCompanies
-@03-5
+@brand03
+@brand03-5
 
 Feature: Pricing plans admin page
   As a main operator

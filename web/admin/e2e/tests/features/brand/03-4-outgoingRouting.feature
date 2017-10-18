@@ -1,7 +1,8 @@
 @brand
 @companyOutgoingRouting
 @outgoingRouting
-@03-4
+@brand03
+@brand03-4
 
 Feature: Company outgoing routing admin page
   As a main operator

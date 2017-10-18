@@ -1,7 +1,8 @@
 @brand
 @calleeIn
 @kamTrunksDialplanCalleeIn
-@05-2
+@brand05
+@brand05-2
 
 Feature: Callee in admin page
   As a main operator

@@ -1,6 +1,7 @@
 @brand
 @companies
-@03-1
+@brand03
+@brand03-1
 
 Feature: Companies admin page
   As a main operator
