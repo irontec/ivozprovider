@@ -1,0 +1,30 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call to IVR common to eve not answering redirected to bob
+    type: simple
+    timeout: 30
+    sessions:
+      - alice:
+          - call:
+              dest: 600             # IVR common extension
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - dtmf: 1005
+          - waitfor: DISCONNCTD
+      - eve:
+          - register:
+              <<: *eve_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD
+      - bob:
+          - register:
+              <<: *bob_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait
+          - answer
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
