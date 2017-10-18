@@ -117,7 +117,7 @@ production:
         text: _("Max number of digits the caller can enter. Set to 0 to disable.")
         label: _("Need help?")
     noAnswerTimeout:
-      title: _('No answer timeout')
+      title: _('No input timeout')
       type: number
       defaultValue: 10
       source:
