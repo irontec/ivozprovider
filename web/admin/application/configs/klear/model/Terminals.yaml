@@ -36,7 +36,7 @@ production:
     domain:
       title: _('Domain')
       type: text
-      maxLength: 255
+      maxLength: 190
     disallow:
       title: _('Disallowed audio codecs')
       type: text
