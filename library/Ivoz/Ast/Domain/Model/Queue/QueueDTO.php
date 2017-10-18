@@ -14,6 +14,11 @@ class QueueDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $name;
+
+    /**
+     * @var string
+     */
     private $periodicAnnounce;
 
     /**
@@ -57,7 +62,7 @@ class QueueDTO implements DataTransferObjectInterface
     private $weight;
 
     /**
-     * @var string
+     * @var integer
      */
     private $id;
 
@@ -77,6 +82,7 @@ class QueueDTO implements DataTransferObjectInterface
     public function __toArray()
     {
         return [
+            'name' => $this->getName(),
             'periodicAnnounce' => $this->getPeriodicAnnounce(),
             'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
             'timeout' => $this->getTimeout(),
@@ -105,6 +111,26 @@ class QueueDTO implements DataTransferObjectInterface
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
 
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return QueueDTO
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -288,7 +314,7 @@ class QueueDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $id
+     * @param integer $id
      *
      * @return QueueDTO
      */
@@ -300,7 +326,7 @@ class QueueDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return integer
      */
     public function getId()
     {
