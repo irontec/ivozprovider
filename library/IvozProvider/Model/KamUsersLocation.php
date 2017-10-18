@@ -27,4 +27,17 @@ class KamUsersLocation extends Raw\KamUsersLocation
     public function init()
     {
     }
+
+    public function getContactSrc()
+    {
+        $src = explode('@', $this->getContact());
+        return array_pop($src);
+    }
+
+    public function getReceivedSrc()
+    {
+        $src = explode('sip:', $this->getReceived());
+        return array_pop($src);
+    }
+
 }
