@@ -229,7 +229,6 @@ production:
             recordingsLimitMB: 6
             recordingsDiskUsage: 6
             recordingsLimitEmail: 6
-            __empty1: 6
             onDemandRecord: 6
             onDemandRecordCode: 6
         group6:
