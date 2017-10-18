@@ -120,6 +120,13 @@ production:
         control: datetime
         settings:
           disabled: 'false'
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getTerminalStatusIcon
     status:
       title: _('Status')
       type: ghost
