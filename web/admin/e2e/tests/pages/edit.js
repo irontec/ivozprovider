@@ -70,6 +70,10 @@ function edit () {
 
           let value = dataFixture[fieldName];
 
+          if (typeof value != 'string') {
+              continue;
+          }
+
           if (value.substring(0, keyWord.length) === keyWord) {
 
               value = value.substring(keyWord.length, value.length);

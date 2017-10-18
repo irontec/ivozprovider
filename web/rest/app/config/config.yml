@@ -38,6 +38,17 @@ framework:
         log: true
 
 # Doctrine Configuration
+doctrine_cache:
+  providers:
+    fs_metadata_cache:
+      aliases: [doctrine.orm.fs_metadata_cache]
+      file_system:
+        directory: "%kernel.cache_dir%/doctrine/cache/metadata"
+    fs_dql_cache:
+      aliases: [doctrine.orm.fs_dql_cache]
+      file_system:
+        directory: "%kernel.cache_dir%/doctrine/cache/dql"
+
 doctrine:
     dbal:
         driver:   pdo_mysql
@@ -64,7 +75,10 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: yes
-        #quote_strategy: doctrine.orm.quote_strategy.ansi
+        query_cache_driver:
+          cache_provider: fs_dql_cache
+        metadata_cache_driver:
+            cache_provider: fs_metadata_cache
         mappings:
             Provider:
                 type: yml
@@ -81,6 +95,7 @@ doctrine:
                 is_bundle: false
                 dir: '%kernel.root_dir%/../../../library/Ivoz/Kam/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: Ivoz\Kam\Domain\Model
+
 
 # Swiftmailer Configuration
 #swiftmailer:

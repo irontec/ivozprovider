@@ -14,6 +14,10 @@ interface CompanyInterface extends EntityInterface
      */
     public function getTypeCall($exten);
 
+    /**
+     * @param interger $exten
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+     */
     public function getExtension($exten);
 
     public function getDdi($ddieE164);

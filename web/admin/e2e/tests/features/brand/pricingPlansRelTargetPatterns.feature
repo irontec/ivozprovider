@@ -1,5 +1,6 @@
 @brand
 @pricingPlansRelTargetPatterns
+@todo
 
 Feature: Pricing plans - Target patterns admin page
   As a main operator

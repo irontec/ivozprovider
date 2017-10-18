@@ -1,6 +1,7 @@
 @brand
 @providersRegister
 @kamTrunksUacreg
+@todo
 
 Feature: Peer servers admin page
   As a main operator
