@@ -13,8 +13,6 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutAbstract:
       column: calldate
       type: datetime
       nullable: false
-      options:
-        comment: 'Hora de recepcion del fax'
     src:
       column: src
       type: string

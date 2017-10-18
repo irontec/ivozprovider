@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.57, for debian-linux-gnu (x86_64)
 --
--- Host: data.ivozprovider.local    Database: ivozprovider
+-- Host: localhost    Database: ivozprovider
 -- ------------------------------------------------------
--- Server version	5.7.19
+-- Server version	5.5.57-0+deb8u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -50,41 +50,42 @@ DROP TABLE IF EXISTS `BillableCalls`;
 /*!50001 DROP VIEW IF EXISTS `BillableCalls`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `BillableCalls` AS SELECT 
- 1 AS `id`,
- 1 AS `proxy`,
- 1 AS `start_time_utc`,
- 1 AS `end_time_utc`,
- 1 AS `start_time`,
- 1 AS `end_time`,
- 1 AS `duration`,
- 1 AS `caller`,
- 1 AS `callee`,
- 1 AS `referee`,
- 1 AS `referrer`,
- 1 AS `companyId`,
- 1 AS `brandId`,
- 1 AS `asIden`,
- 1 AS `asAddress`,
- 1 AS `callid`,
- 1 AS `callidHash`,
- 1 AS `xcallid`,
- 1 AS `parsed`,
- 1 AS `diversion`,
- 1 AS `peeringContractId`,
- 1 AS `bounced`,
- 1 AS `externallyRated`,
- 1 AS `metered`,
- 1 AS `meteringDate`,
- 1 AS `pricingPlanId`,
- 1 AS `pricingPlanName`,
- 1 AS `targetPatternId`,
- 1 AS `targetPatternName`,
- 1 AS `price`,
- 1 AS `pricingPlanDetails`,
- 1 AS `invoiceId`,
- 1 AS `direction`,
- 1 AS `reMeteringDate`*/;
+/*!50001 CREATE TABLE `BillableCalls` (
+  `id` tinyint NOT NULL,
+  `proxy` tinyint NOT NULL,
+  `start_time_utc` tinyint NOT NULL,
+  `end_time_utc` tinyint NOT NULL,
+  `start_time` tinyint NOT NULL,
+  `end_time` tinyint NOT NULL,
+  `duration` tinyint NOT NULL,
+  `caller` tinyint NOT NULL,
+  `callee` tinyint NOT NULL,
+  `referee` tinyint NOT NULL,
+  `referrer` tinyint NOT NULL,
+  `companyId` tinyint NOT NULL,
+  `brandId` tinyint NOT NULL,
+  `asIden` tinyint NOT NULL,
+  `asAddress` tinyint NOT NULL,
+  `callid` tinyint NOT NULL,
+  `callidHash` tinyint NOT NULL,
+  `xcallid` tinyint NOT NULL,
+  `parsed` tinyint NOT NULL,
+  `diversion` tinyint NOT NULL,
+  `peeringContractId` tinyint NOT NULL,
+  `bounced` tinyint NOT NULL,
+  `externallyRated` tinyint NOT NULL,
+  `metered` tinyint NOT NULL,
+  `meteringDate` tinyint NOT NULL,
+  `pricingPlanId` tinyint NOT NULL,
+  `pricingPlanName` tinyint NOT NULL,
+  `targetPatternId` tinyint NOT NULL,
+  `targetPatternName` tinyint NOT NULL,
+  `price` tinyint NOT NULL,
+  `pricingPlanDetails` tinyint NOT NULL,
+  `invoiceId` tinyint NOT NULL,
+  `direction` tinyint NOT NULL,
+  `reMeteringDate` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -183,7 +184,7 @@ CREATE TABLE `BrandURLs` (
 
 LOCK TABLES `BrandURLs` WRITE;
 /*!40000 ALTER TABLE `BrandURLs` DISABLE KEYS */;
-INSERT INTO `BrandURLs` VALUES (1,1,'https://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
+INSERT INTO `BrandURLs` VALUES (1,1,'http://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
 /*!40000 ALTER TABLE `BrandURLs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +403,7 @@ CREATE TABLE `ChangeHistory` (
   `old_value` varchar(250) DEFAULT NULL,
   `new_value` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -429,6 +430,7 @@ CREATE TABLE `Companies` (
   `domain_users` varchar(190) DEFAULT NULL,
   `nif` varchar(25) NOT NULL,
   `defaultTimezoneId` int(10) unsigned DEFAULT NULL,
+  `distributeMethod` varchar(25) NOT NULL DEFAULT 'hash' COMMENT '[enum:static|rr|hash]',
   `applicationServerId` int(10) unsigned DEFAULT NULL,
   `externalMaxCalls` int(10) unsigned NOT NULL DEFAULT '0',
   `postalAddress` varchar(255) NOT NULL,
@@ -477,7 +479,7 @@ CREATE TABLE `Companies` (
 
 LOCK TABLES `Companies` WRITE;
 /*!40000 ALTER TABLE `Companies` DISABLE KEYS */;
-INSERT INTO `Companies` VALUES (1,1,'vpbx','DemoCompany','127.0.0.1','12345678A',145,NULL,0,'Company Address','54321','Company Town','Company Province','Company Country','',70,1,0,0,0,'',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `Companies` VALUES (1,1,'vpbx','DemoCompany','127.0.0.1','12345678A',145,'hash',NULL,0,'Company Address','54321','Company Town','Company Province','Company Country','',70,1,0,0,0,'',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Companies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1278,7 +1280,7 @@ CREATE TABLE `FeaturesRelBrands` (
 
 LOCK TABLES `FeaturesRelBrands` WRITE;
 /*!40000 ALTER TABLE `FeaturesRelBrands` DISABLE KEYS */;
-INSERT INTO `FeaturesRelBrands` VALUES (1,1,6),(2,1,5),(3,1,3),(4,1,4),(5,1,7),(6,1,1),(7,1,2);
+INSERT INTO `FeaturesRelBrands` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,1,7);
 /*!40000 ALTER TABLE `FeaturesRelBrands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1298,7 +1300,7 @@ CREATE TABLE `FeaturesRelCompanies` (
   KEY `featureId` (`featureId`),
   CONSTRAINT `FeaturesRelCompanies_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FeaturesRelCompanies_ibfk_2` FOREIGN KEY (`featureId`) REFERENCES `Features` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1307,7 +1309,7 @@ CREATE TABLE `FeaturesRelCompanies` (
 
 LOCK TABLES `FeaturesRelCompanies` WRITE;
 /*!40000 ALTER TABLE `FeaturesRelCompanies` DISABLE KEYS */;
-INSERT INTO `FeaturesRelCompanies` VALUES (1,1,5),(2,1,3),(3,1,4),(4,1,1),(5,1,2);
+INSERT INTO `FeaturesRelCompanies` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5);
 /*!40000 ALTER TABLE `FeaturesRelCompanies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2777,7 +2779,7 @@ CREATE TABLE `RetailAccounts` (
   `directConnectivity` enum('yes','no') NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   `languageId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name_domain` (`name`,`domain`),
+  UNIQUE KEY `nameBrand` (`name`,`brandId`),
   KEY `brandId` (`brandId`),
   KEY `companyId` (`companyId`),
   KEY `countryId` (`countryId`),
@@ -3150,7 +3152,7 @@ CREATE TABLE `TransformationRulesetGroupsTrunks` (
   KEY `countryId` (`countryId`),
   CONSTRAINT `TransformationRulesetGroupsTrunks_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `TransformationRulesetGroupsTrunks_ibfk_2` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3272,10 +3274,11 @@ DROP TABLE IF EXISTS `ast_hints`;
 /*!50001 DROP VIEW IF EXISTS `ast_hints`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `ast_hints` AS SELECT 
- 1 AS `exten`,
- 1 AS `context`,
- 1 AS `device`*/;
+/*!50001 CREATE TABLE `ast_hints` (
+  `exten` tinyint NOT NULL,
+  `context` tinyint NOT NULL,
+  `device` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -3435,6 +3438,7 @@ DROP TABLE IF EXISTS `ast_queues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ast_queues` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   `periodic_announce` varchar(128) DEFAULT NULL,
   `periodic_announce_frequency` int(11) DEFAULT NULL,
@@ -3446,7 +3450,7 @@ CREATE TABLE `ast_queues` (
   `strategy` enum('ringall','leastrecent','fewestcalls','random','rrmemory','linear','wrandom','rrordered') DEFAULT NULL,
   `weight` int(11) DEFAULT NULL,
   `queueId` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`name`),
+  PRIMARY KEY (`id`),
   KEY `queueId` (`queueId`),
   CONSTRAINT `ast_queues_ibfk_1` FOREIGN KEY (`queueId`) REFERENCES `Queues` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
@@ -3548,7 +3552,7 @@ CREATE TABLE `changelog` (
 
 LOCK TABLES `changelog` WRITE;
 /*!40000 ALTER TABLE `changelog` DISABLE KEYS */;
-INSERT INTO `changelog` VALUES (1,'Main','2017-09-18 13:37:43','2017-09-18 13:37:43','dbdeploy','001-oasis.sql'),(2,'Main','2017-09-18 13:37:43','2017-09-18 13:37:43','dbdeploy','002-lcr-rules-key.sql'),(3,'Main','2017-09-18 13:37:43','2017-09-18 13:37:43','dbdeploy','003-e164-detection.sql'),(4,'Main','2017-09-18 13:37:43','2017-09-18 13:37:43','dbdeploy','004-extension-route-number.sql'),(5,'Main','2017-09-18 13:37:43','2017-09-18 13:37:43','dbdeploy','005-chile-calling-format.sql'),(6,'Main','2017-09-18 13:37:44','2017-09-18 13:37:44','dbdeploy','006-users-defaults.sql'),(7,'Main','2017-09-18 13:37:44','2017-09-18 13:37:44','dbdeploy','007-hints-user-extensions.sql'),(8,'Main','2017-09-18 13:37:44','2017-09-18 13:37:44','dbdeploy','008-huntgroup-noanswer-handler.sql'),(9,'Main','2017-09-18 13:37:44','2017-09-18 13:37:44','dbdeploy','009-sane-defaults.sql'),(10,'Main','2017-09-18 13:37:44','2017-09-18 13:37:44','dbdeploy','010-call-fw-unique.sql'),(11,'Main','2017-09-18 13:37:44','2017-09-18 13:37:44','dbdeploy','011-kam_users_location-models.sql'),(12,'Main','2017-09-18 13:37:45','2017-09-18 13:37:45','dbdeploy','012-friends-table.sql'),(13,'Main','2017-09-18 13:37:45','2017-09-18 13:37:45','dbdeploy','013-endpoints-default-context.sql'),(14,'Main','2017-09-18 13:37:45','2017-09-18 13:37:45','dbdeploy','014-username-is-email.sql'),(15,'Main','2017-09-18 13:37:45','2017-09-18 13:37:45','dbdeploy','015-multiddi-support.sql'),(16,'Main','2017-09-18 13:37:45','2017-09-18 13:37:45','dbdeploy','016-merge-terminals-n-friends.sql'),(17,'Main','2017-09-18 13:37:45','2017-09-18 13:37:45','dbdeploy','017-company-admin-unique.sql'),(18,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','018-user-email-unique.sql'),(19,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','019-optimize-index.sql'),(20,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','020-parsed-cdrs.sql'),(21,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','021-external-rater-extra-opts.sql'),(22,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','022-from_domain-astpsendpoints.sql'),(23,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','023-ddi-screen-name.sql'),(24,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','024-add-presence-modules.sql'),(25,'Main','2017-09-18 13:37:46','2017-09-18 13:37:46','dbdeploy','025-ivr-max-digits.sql'),(26,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','026-ivr-entry-regexp.sql'),(27,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','027-mail-from-Brands.sql'),(28,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','028-disable-voicemail-password.sql'),(29,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','029-services-same-code.sql'),(30,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','030-add-language-ddi.sql'),(31,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','031-add-language-friends.sql'),(32,'Main','2017-09-18 13:37:47','2017-09-18 13:37:47','dbdeploy','032-language-users-null.sql'),(33,'Main','2017-09-18 13:37:48','2017-09-18 13:37:48','dbdeploy','033-recordings-disk-limit.sql'),(34,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','034-basic-queue-support.sql'),(35,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','035-features-by-brand.sql'),(36,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','036-friend-use-reinvite.sql'),(37,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','037-pricing-plan-rel-company-required-fields.sql'),(38,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','038-voice-error-notifications.sql'),(39,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','039-duid-not-used.sql'),(40,'Main','2017-09-18 13:37:49','2017-09-18 13:37:49','dbdeploy','040-kamailio-version.sql'),(41,'Main','2017-09-18 13:37:51','2017-09-18 13:37:51','dbdeploy','041-general-review.sql'),(42,'Main','2017-09-18 13:37:51','2017-09-18 13:37:51','dbdeploy','042-add-description-fixedCosts.sql'),(43,'Main','2017-09-18 13:37:51','2017-09-18 13:37:51','dbdeploy','043-company-outgoing-ddi.sql'),(44,'Main','2017-09-18 13:37:51','2017-09-18 13:37:51','dbdeploy','044-disable-lcr-strip-n-prefix.sql'),(45,'Main','2017-09-18 13:37:51','2017-09-18 13:37:51','dbdeploy','045-callwaiting-to-maxcalls.sql'),(46,'Main','2017-09-18 13:37:51','2017-09-18 13:37:51','dbdeploy','046-operators-required-fields.sql'),(47,'Main','2017-09-18 13:37:52','2017-09-18 13:37:52','dbdeploy','047-users-drop-username.sql'),(48,'Main','2017-09-18 13:37:52','2017-09-18 13:37:52','dbdeploy','048-ip-lengths.sql'),(49,'Main','2017-09-18 13:37:52','2017-09-18 13:37:52','dbdeploy','049-peerserver-name.sql'),(50,'Main','2017-09-18 13:37:52','2017-09-18 13:37:52','dbdeploy','050-add-presence-modules.sql'),(51,'Main','2017-09-18 13:37:53','2017-09-18 13:37:53','dbdeploy','051-fix-missing-delta-041.sql'),(52,'Main','2017-09-18 13:37:53','2017-09-18 13:37:53','dbdeploy','052-terminals-video-support.sql'),(53,'Main','2017-09-18 13:37:53','2017-09-18 13:37:53','dbdeploy','053-active-operators.sql'),(54,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','054-retail-customers.sql'),(55,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','055-record-locution-service.sql'),(56,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','056-delete-stats-on-delete.sql'),(57,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','057-fix-notify-uri.sql'),(58,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','058-Invoice-templates-footer-and-header.sql'),(59,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','059-simplify-kam_users-view.sql'),(60,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','060-skip-ip-check-roadwarriors.sql'),(61,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','061-fix-recordings-storage-path.sql'),(62,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','062-Increase-companies-externallyExtraOpts.sql'),(63,'Main','2017-09-18 13:37:54','2017-09-18 13:37:54','dbdeploy','063-Specific-provision-route-fix.sql'),(64,'Main','2017-09-18 13:37:55','2017-09-18 13:37:55','dbdeploy','064-external-whiteblack-lists.sql'),(65,'Main','2017-09-18 13:37:55','2017-09-18 13:37:55','dbdeploy','065-outgoing-ddi-rules.sql'),(66,'Main','2017-09-18 13:37:55','2017-09-18 13:37:55','dbdeploy','066-users-add-gsQRCode.sql'),(67,'Main','2017-09-18 13:37:56','2017-09-18 13:37:56','dbdeploy','067-voicemail-locution.sql'),(68,'Main','2017-09-18 13:37:56','2017-09-18 13:37:56','dbdeploy','068-asterisk-subscribecontext.sql'),(69,'Main','2017-09-18 13:37:57','2017-09-18 13:37:57','dbdeploy','069-conditional-routes.sql'),(70,'Main','2017-09-18 13:37:57','2017-09-18 13:37:57','dbdeploy','070-asterisk-named-pickup.sql');
+INSERT INTO `changelog` VALUES (1,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','001-oasis.sql'),(2,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','002-lcr-rules-key.sql'),(3,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','003-e164-detection.sql'),(4,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','004-extension-route-number.sql'),(5,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','005-chile-calling-format.sql'),(6,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','006-users-defaults.sql'),(7,'Main','2017-10-17 16:19:05','2017-10-17 16:19:05','dbdeploy','007-hints-user-extensions.sql'),(8,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','008-huntgroup-noanswer-handler.sql'),(9,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','009-sane-defaults.sql'),(10,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','010-call-fw-unique.sql'),(11,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','011-kam_users_location-models.sql'),(12,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','012-friends-table.sql'),(13,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','013-endpoints-default-context.sql'),(14,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','014-username-is-email.sql'),(15,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','015-multiddi-support.sql'),(16,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','016-merge-terminals-n-friends.sql'),(17,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','017-company-admin-unique.sql'),(18,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','018-user-email-unique.sql'),(19,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','019-optimize-index.sql'),(20,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','020-parsed-cdrs.sql'),(21,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','021-external-rater-extra-opts.sql'),(22,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','022-from_domain-astpsendpoints.sql'),(23,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','023-ddi-screen-name.sql'),(24,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','024-add-presence-modules.sql'),(25,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','025-ivr-max-digits.sql'),(26,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','026-ivr-entry-regexp.sql'),(27,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','027-mail-from-Brands.sql'),(28,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','028-disable-voicemail-password.sql'),(29,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','029-services-same-code.sql'),(30,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','030-add-language-ddi.sql'),(31,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','031-add-language-friends.sql'),(32,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','032-language-users-null.sql'),(33,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','033-recordings-disk-limit.sql'),(34,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','034-basic-queue-support.sql'),(35,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','035-features-by-brand.sql'),(36,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','036-friend-use-reinvite.sql'),(37,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','037-pricing-plan-rel-company-required-fields.sql'),(38,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','038-voice-error-notifications.sql'),(39,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','039-duid-not-used.sql'),(40,'Main','2017-10-17 16:19:06','2017-10-17 16:19:06','dbdeploy','040-kamailio-version.sql'),(41,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','041-general-review.sql'),(42,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','042-add-description-fixedCosts.sql'),(43,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','043-company-outgoing-ddi.sql'),(44,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','044-disable-lcr-strip-n-prefix.sql'),(45,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','045-callwaiting-to-maxcalls.sql'),(46,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','046-operators-required-fields.sql'),(47,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','047-users-drop-username.sql'),(48,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','048-ip-lengths.sql'),(49,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','049-peerserver-name.sql'),(50,'Main','2017-10-17 16:19:07','2017-10-17 16:19:07','dbdeploy','050-add-presence-modules.sql'),(51,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','051-fix-missing-delta-041.sql'),(52,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','052-terminals-video-support.sql'),(53,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','053-active-operators.sql'),(54,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','054-retail-customers.sql'),(55,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','055-record-locution-service.sql'),(56,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','056-delete-stats-on-delete.sql'),(57,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','057-fix-notify-uri.sql'),(58,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','058-Invoice-templates-footer-and-header.sql'),(59,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','059-simplify-kam_users-view.sql'),(60,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','060-skip-ip-check-roadwarriors.sql'),(61,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','061-fix-recordings-storage-path.sql'),(62,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','062-Increase-companies-externallyExtraOpts.sql'),(63,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','063-Specific-provision-route-fix.sql'),(64,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','064-external-whiteblack-lists.sql'),(65,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','065-outgoing-ddi-rules.sql'),(66,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','066-users-add-gsQRCode.sql'),(67,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','067-voicemail-locution.sql'),(68,'Main','2017-10-17 16:19:08','2017-10-17 16:19:08','dbdeploy','068-asterisk-subscribecontext.sql'),(69,'Main','2017-10-17 16:19:09','2017-10-17 16:19:09','dbdeploy','069-conditional-routes.sql'),(70,'Main','2017-10-17 16:19:09','2017-10-17 16:19:09','dbdeploy','070-asterisk-named-pickup.sql'),(71,'Main','2017-10-17 16:36:54','2017-10-17 16:36:54','dbdeploy','071-retailaccounts-name-constraint.sql'),(72,'Main','2017-10-17 16:36:54','2017-10-17 16:36:54','dbdeploy','072-domain-length-fix.sql'),(73,'Main','2017-10-17 16:36:54','2017-10-17 16:36:54','dbdeploy','073-ast_queues-id-primary-key.sql'),(74,'Main','2017-10-17 16:36:54','2017-10-17 16:36:54','dbdeploy','074-distribute-calls.sql');
 /*!40000 ALTER TABLE `changelog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3584,7 +3588,7 @@ CREATE TABLE `kam_acc_cdrs` (
   `bounced` enum('yes','no') NOT NULL DEFAULT 'no',
   `externallyRated` tinyint(1) DEFAULT NULL,
   `metered` tinyint(1) DEFAULT '0',
-  `meteringDate` datetime DEFAULT NULL,
+  `meteringDate` datetime DEFAULT '0000-00-00 00:00:00',
   `pricingPlanId` int(10) unsigned DEFAULT NULL,
   `pricingPlanName` varchar(55) DEFAULT NULL,
   `targetPatternId` int(10) unsigned DEFAULT NULL,
@@ -3612,6 +3616,33 @@ CREATE TABLE `kam_acc_cdrs` (
   CONSTRAINT `kam_acc_cdrs_ibfk_5` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kam_acc_cdrs`
+--
+
+LOCK TABLES `kam_acc_cdrs` WRITE;
+/*!40000 ALTER TABLE `kam_acc_cdrs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `kam_acc_cdrs` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER start_time_trigger
+BEFORE INSERT ON kam_acc_cdrs
+FOR EACH ROW
+SET new.start_time_utc = FROM_UNIXTIME( UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(new.end_time) + UNIX_TIMESTAMP(new.start_time) ) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `kam_dispatcher`
@@ -3757,7 +3788,7 @@ CREATE TABLE `kam_trunks_address` (
   `tag` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `grp` (`grp`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3790,7 +3821,7 @@ CREATE TABLE `kam_trunks_dialplan` (
   PRIMARY KEY (`id`),
   KEY `kam_trunks_dialplan_ibfk_2` (`transformationRulesetGroupsTrunksId`),
   CONSTRAINT `kam_trunks_dialplan_ibfk_2` FOREIGN KEY (`transformationRulesetGroupsTrunksId`) REFERENCES `TransformationRulesetGroupsTrunks` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3810,9 +3841,10 @@ DROP TABLE IF EXISTS `kam_trunks_domain`;
 /*!50001 DROP VIEW IF EXISTS `kam_trunks_domain`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `kam_trunks_domain` AS SELECT 
- 1 AS `domain`,
- 1 AS `did`*/;
+/*!50001 CREATE TABLE `kam_trunks_domain` (
+  `domain` tinyint NOT NULL,
+  `did` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -3920,12 +3952,13 @@ DROP TABLE IF EXISTS `kam_users`;
 /*!50001 DROP VIEW IF EXISTS `kam_users`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `kam_users` AS SELECT 
- 1 AS `type`,
- 1 AS `name`,
- 1 AS `domain`,
- 1 AS `password`,
- 1 AS `companyId`*/;
+/*!50001 CREATE TABLE `kam_users` (
+  `type` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `domain` tinyint NOT NULL,
+  `password` tinyint NOT NULL,
+  `companyId` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4057,9 +4090,10 @@ DROP TABLE IF EXISTS `kam_users_domain`;
 /*!50001 DROP VIEW IF EXISTS `kam_users_domain`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `kam_users_domain` AS SELECT 
- 1 AS `domain`,
- 1 AS `did`*/;
+/*!50001 CREATE TABLE `kam_users_domain` (
+  `domain` tinyint NOT NULL,
+  `did` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4100,11 +4134,12 @@ DROP TABLE IF EXISTS `kam_users_exten`;
 /*!50001 DROP VIEW IF EXISTS `kam_users_exten`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `kam_users_exten` AS SELECT 
- 1 AS `name`,
- 1 AS `domain`,
- 1 AS `extension`,
- 1 AS `externalIpCalls`*/;
+/*!50001 CREATE TABLE `kam_users_exten` (
+  `name` tinyint NOT NULL,
+  `domain` tinyint NOT NULL,
+  `extension` tinyint NOT NULL,
+  `externalIpCalls` tinyint NOT NULL
+) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -4420,6 +4455,7 @@ UNLOCK TABLES;
 -- Final view structure for view `BillableCalls`
 --
 
+/*!50001 DROP TABLE IF EXISTS `BillableCalls`*/;
 /*!50001 DROP VIEW IF EXISTS `BillableCalls`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -4438,6 +4474,7 @@ UNLOCK TABLES;
 -- Final view structure for view `ast_hints`
 --
 
+/*!50001 DROP TABLE IF EXISTS `ast_hints`*/;
 /*!50001 DROP VIEW IF EXISTS `ast_hints`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -4456,6 +4493,7 @@ UNLOCK TABLES;
 -- Final view structure for view `kam_trunks_domain`
 --
 
+/*!50001 DROP TABLE IF EXISTS `kam_trunks_domain`*/;
 /*!50001 DROP VIEW IF EXISTS `kam_trunks_domain`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -4474,6 +4512,7 @@ UNLOCK TABLES;
 -- Final view structure for view `kam_users`
 --
 
+/*!50001 DROP TABLE IF EXISTS `kam_users`*/;
 /*!50001 DROP VIEW IF EXISTS `kam_users`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -4492,6 +4531,7 @@ UNLOCK TABLES;
 -- Final view structure for view `kam_users_domain`
 --
 
+/*!50001 DROP TABLE IF EXISTS `kam_users_domain`*/;
 /*!50001 DROP VIEW IF EXISTS `kam_users_domain`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -4510,6 +4550,7 @@ UNLOCK TABLES;
 -- Final view structure for view `kam_users_exten`
 --
 
+/*!50001 DROP TABLE IF EXISTS `kam_users_exten`*/;
 /*!50001 DROP VIEW IF EXISTS `kam_users_exten`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
@@ -4533,4 +4574,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-18 15:42:26
+-- Dump completed on 2017-10-17 18:49:50
