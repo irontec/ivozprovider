@@ -111,6 +111,9 @@ msgstr "Allowed characters are 0-9, * and #"
 msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '*'"
 msgstr "Allowed characters: a-z, A-Z, 0-9, underscore and '*'"
 
+msgid "Allowed characters: a-z, A-Z, 0-9, underscore and '-'"
+msgstr "Allowed characters: a-z, A-Z, 0-9, underscore and '-'"
+
 msgid "Allowed video codecs"
 msgstr "Allowed video codecs"
 
@@ -1338,6 +1341,9 @@ msgstr "Must start with sip or sips followed by colon"
 msgid "Name"
 msgstr "Name"
 
+msgid "Name already in use"
+msgstr "Name already in use"
+
 msgid ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications). "
 "Leave empty to disable."
@@ -1374,6 +1380,18 @@ msgstr "No answer locution"
 
 msgid "No answer timeout"
 msgstr "No answer timeout"
+
+msgid "No input configuration"
+msgstr "No input configuration"
+
+msgid "No input locution"
+msgstr "No input locution"
+
+msgid "No input target"
+msgstr "No input target"
+
+msgid "No input target type"
+msgstr "No input target"
 
 msgid "No matching condition handler"
 msgstr "No matching condition handler"
@@ -1865,6 +1883,9 @@ msgstr ""
 msgid "Run template"
 msgstr "Run template"
 
+msgid "SIP Domain already in use"
+msgstr "SIP Domain already in use"
+
 msgid "SIP Domain can't be empty"
 msgstr "SIP Domain can't be empty"
 
@@ -2189,9 +2210,6 @@ msgstr "Timeout configuration"
 msgid "Timeout route"
 msgstr "Timeout route"
 
-msgid "Timeout target"
-msgstr "Timeout target"
-
 msgid "Timeout target type"
 msgstr "Timeout target"
 
@@ -2412,6 +2430,7 @@ msgid ""
 msgstr ""
 "You can call this extension from any company terminal to record this locution"
 
+#, python-brace-format
 msgid ""
 "You can optionally prepend the terminal model or any other subpath to the "
 "url before the MAC address for verbosity/debugging purposes. If a extension "
