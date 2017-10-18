@@ -52,7 +52,8 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/in
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|stable (oasis 1.6.1) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.1-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.1-oasis-i386.iso)|
+|stable (oasis 1.6.2) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.2-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.2-oasis-i386.iso)|
+|experimental (bleeding 2.0.0) | |
 
 
 ## Documentation

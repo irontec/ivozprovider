@@ -8,6 +8,14 @@ Tue, 19 Sep 2017 12:40:05 +0200 IvozProvider Team <dev@list-ivozprovider.irontec
     * Asterisk: fixed a noaudio issue with asymmetric coded negociations
     * Asterisk: fixed hanguped calls with direct media with UPDATEs
     * Asterisk: fixed CBAnn conference channels being stuck
+    * Kamailio: Added new call distribute method (hash based)
+    * Portals: Improve delete popup information in multiple screens
+    * Portals: Avoid changing Queue strategy to Linear after creation
+    * Portals: Added domain in Retail account lists
+    * Portals: Toggle Company/Brands fields based on active Features
+    * Portals: Improved Register Status displayed information
+    * Mappers: Added Retail/Companies constraints handlers
+
 
 Fri, 08 Sep 2017 13:27:03 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
