@@ -175,20 +175,20 @@ interface PsEndpointInterface extends EntityInterface
     public function getMailboxes();
 
     /**
-     * Set pickupGroup
+     * Set namedPickupGroup
      *
-     * @param string $pickupGroup
+     * @param string $namedPickupGroup
      *
      * @return self
      */
-    public function setPickupGroup($pickupGroup = null);
+    public function setNamedPickupGroup($namedPickupGroup = null);
 
     /**
-     * Get pickupGroup
+     * Get namedPickupGroup
      *
      * @return string
      */
-    public function getPickupGroup();
+    public function getNamedPickupGroup();
 
     /**
      * Set sendDiversion

@@ -3,11 +3,6 @@ services:
     autowire: true
     public: false
 
-  Ivoz\Ast\Domain\Service\PsEndpoint\UpdatePickupGroupByUser:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
   Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting:
     arguments:
       $entityPersister:

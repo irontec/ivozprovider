@@ -77,23 +77,5 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
                 $user->setExtension($entity);
             }
         }
-
-        /**
-         * @todo thmove this to it's own service
-         */
-        // If this extension was pointing to a user and number has changed
-        $changedNumber = $entity->hasChanged('number');
-        if ($routeType == 'user' && $changedNumber) {
-            // Check if this extension belongs to a user
-            /**
-             * @var User $user
-             */
-            $user = $entity->getUser();
-            if ($user) {
-                // Update endpoint data
-                // @todo ensure this exists
-                $user->updateEndpoint();
-            }
-        }
     }
 }

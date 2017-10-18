@@ -50,28 +50,6 @@ class User extends UserAbstract implements UserInterface
     }
 
     /**
-     * Update this user endpoint with current model data
-     */
-    public function updateEndpoint()
-    {
-        $endpoint = $this->getEndpoint();
-        if (!$endpoint) {
-            return;
-        }
-
-        $callerId = sprintf(
-            '%s <%s>',
-            $this->getFullName(),
-            $this->getExtensionNumber()
-        );
-
-        $endpoint
-            ->setPickupGroup($this->getPickUpGroupsIds())
-            ->setCallerid($callerId)
-            ->setMailboxes($this->getVoiceMail());
-    }
-
-    /**
      * @return string with the voicemail
      */
     public function getVoiceMail()

@@ -67,10 +67,10 @@ abstract class PsEndpointAbstract
     protected $mailboxes;
 
     /**
-     * @column pickup_group
+     * @column named_pickup_group
      * @var string
      */
-    protected $pickupGroup;
+    protected $namedPickupGroup;
 
     /**
      * @column send_diversion
@@ -219,7 +219,7 @@ abstract class PsEndpointAbstract
             ->setDirectMedia($dto->getDirectMedia())
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
-            ->setPickupGroup($dto->getPickupGroup())
+            ->setNamedPickupGroup($dto->getNamedPickupGroup())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
             ->setOutboundProxy($dto->getOutboundProxy())
@@ -252,7 +252,7 @@ abstract class PsEndpointAbstract
             ->setDirectMedia($dto->getDirectMedia())
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
-            ->setPickupGroup($dto->getPickupGroup())
+            ->setNamedPickupGroup($dto->getNamedPickupGroup())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
             ->setOneHundredRel($dto->getOneHundredRel())
@@ -282,7 +282,7 @@ abstract class PsEndpointAbstract
             ->setDirectMedia($this->getDirectMedia())
             ->setDirectMediaMethod($this->getDirectMediaMethod())
             ->setMailboxes($this->getMailboxes())
-            ->setPickupGroup($this->getPickupGroup())
+            ->setNamedPickupGroup($this->getNamedPickupGroup())
             ->setSendDiversion($this->getSendDiversion())
             ->setSendPai($this->getSendPai())
             ->setOneHundredRel($this->getOneHundredRel())
@@ -309,7 +309,7 @@ abstract class PsEndpointAbstract
             'directMedia' => self::getDirectMedia(),
             'directMediaMethod' => self::getDirectMediaMethod(),
             'mailboxes' => self::getMailboxes(),
-            'pickupGroup' => self::getPickupGroup(),
+            'namedPickupGroup' => self::getNamedPickupGroup(),
             'sendDiversion' => self::getSendDiversion(),
             'sendPai' => self::getSendPai(),
             'oneHundredRel' => self::getOneHundredRel(),
@@ -604,31 +604,31 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * Set pickupGroup
+     * Set namedPickupGroup
      *
-     * @param string $pickupGroup
+     * @param string $namedPickupGroup
      *
      * @return self
      */
-    public function setPickupGroup($pickupGroup = null)
+    public function setNamedPickupGroup($namedPickupGroup = null)
     {
-        if (!is_null($pickupGroup)) {
-            Assertion::maxLength($pickupGroup, 40);
+        if (!is_null($namedPickupGroup)) {
+            Assertion::maxLength($namedPickupGroup, 40);
         }
 
-        $this->pickupGroup = $pickupGroup;
+        $this->namedPickupGroup = $namedPickupGroup;
 
         return $this;
     }
 
     /**
-     * Get pickupGroup
+     * Get namedPickupGroup
      *
      * @return string
      */
-    public function getPickupGroup()
+    public function getNamedPickupGroup()
     {
-        return $this->pickupGroup;
+        return $this->namedPickupGroup;
     }
 
     /**

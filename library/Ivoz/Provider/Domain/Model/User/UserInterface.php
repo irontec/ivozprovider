@@ -20,11 +20,6 @@ interface UserInterface extends EntityInterface
     public function getUserTerminalInterface();
 
     /**
-     * Update this user endpoint with current model data
-     */
-    public function updateEndpoint();
-
-    /**
      * @return string with the voicemail
      */
     public function getVoiceMail();
