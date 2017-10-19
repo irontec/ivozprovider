@@ -72,9 +72,12 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
             $user = $entity->getUser();
             $userExtension = $user->getExtension();
 
-            if ($user && $userExtension && is_null($userExtension->getId())) {
+            if ($user && !$userExtension) {
                 // Set this as its screen extension
                 $user->setExtension($entity);
+                $this
+                    ->entityPersister
+                    ->persist($user);
             }
         }
     }
