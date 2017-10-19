@@ -51,7 +51,7 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
 
         $astQueueDTO
             ->setQueueId($entity->getId())
-            ->setId($astQueueName)
+            ->setName($astQueueName)
             ->setPeriodicAnnounce($periodicAnnounceLocution)
             ->setPeriodicAnnounceFrequency($entity->getPeriodicAnnounceFrequency())
             ->setStrategy($entity->getStrategy())
