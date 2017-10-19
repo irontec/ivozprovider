@@ -82,7 +82,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
@@ -98,7 +97,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName: 
             fields: 
@@ -114,7 +112,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\InvoiceTemplates
           entity: \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
@@ -132,7 +129,6 @@ production:
         predefined: list
       data: mapper
       config:
-#        mapperName: \IvozProvider\Mapper\Sql\FixedCostsRelInvoices
         entity: \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
         entityClass: Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
         filterField: FixedCostsRelInvoice.invoice
@@ -141,7 +137,6 @@ production:
           fields:
             fixedCost:
               title: _("Fixed cost")
-#              mapperName: \IvozProvider\Mapper\Sql\FixedCosts
               entity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCost
               entityClass: Ivoz\Provider\Domain\Model\FixedCost\FixedCost
               field:

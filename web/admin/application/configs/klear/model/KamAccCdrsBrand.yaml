@@ -73,7 +73,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
@@ -89,7 +88,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName: 
             fields: 
@@ -134,7 +132,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
@@ -187,7 +184,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\PricingPlans
           entity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan
           fieldName: 
             fields: 
@@ -202,7 +198,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
           entity: \Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern
           fieldName:
             fields:
@@ -228,7 +223,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Invoices
           entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 

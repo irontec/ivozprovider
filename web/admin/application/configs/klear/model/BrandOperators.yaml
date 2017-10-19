@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName:
             fields: 
@@ -54,7 +53,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Timezones
           entity: \Ivoz\Provider\Domain\Model\Timezone\Timezone
           fieldName:
             fields: 

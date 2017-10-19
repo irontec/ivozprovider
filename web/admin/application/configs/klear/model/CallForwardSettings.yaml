@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           fieldName: 
             fields: 
@@ -86,7 +85,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
           filterClass: IvozProvider_Klear_Filter_ForwardExtension
           fieldName:
@@ -103,7 +101,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName: 

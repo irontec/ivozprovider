@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Services
           entity: \Ivoz\Provider\Domain\Model\Service\Service
           filterClass: IvozProvider_Klear_Filter_BrandServices
           fieldName: 
@@ -26,7 +25,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName: 
             fields: 

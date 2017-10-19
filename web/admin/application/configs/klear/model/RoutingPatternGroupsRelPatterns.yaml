@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\RoutingPatterns
           entity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern
           fieldName: 
             fields: 
@@ -25,7 +24,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\RoutingPatternGroups
           entity: \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup
           fieldName: 
             fields: 

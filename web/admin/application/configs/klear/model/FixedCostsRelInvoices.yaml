@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName: 
             fields: 
@@ -25,7 +24,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\FixedCosts
           entity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCost
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
@@ -42,7 +40,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Invoices
           entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
           fieldName: 
             fields: 

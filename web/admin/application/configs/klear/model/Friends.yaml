@@ -12,7 +12,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName:
             fields:
@@ -102,7 +101,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\CallACL
           entity: \Ivoz\Provider\Domain\Model\CallAcl\CallAcl
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -118,7 +116,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Countries
           entity: \Ivoz\Provider\Domain\Model\Country\Country
           fieldName:
             fields:
@@ -150,7 +147,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\DDIs
           entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -260,7 +256,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Languages
           entity: \Ivoz\Provider\Domain\Model\Language\Language
           fieldName:
             fields:

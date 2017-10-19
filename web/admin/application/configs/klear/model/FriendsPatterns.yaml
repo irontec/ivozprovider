@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-          mapperName: \IvozProvider\Mapper\Sql\Friends
           fieldName:
             fields:
               - name

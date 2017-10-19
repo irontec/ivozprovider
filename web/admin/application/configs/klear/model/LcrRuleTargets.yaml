@@ -9,7 +9,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName: 
             fields: 
@@ -25,7 +24,6 @@ production:
       source: 
         data: mapper
         config: 
-          mapperName: \IvozProvider\Mapper\Sql\LcrRules
           entity: \Ivoz\Provider\Domain\Model\LcrRule\LcrRule
           fieldName: 
             fields: 
@@ -40,7 +38,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\LcrGateways
           entity: \Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway
           fieldName: 
             fields: 
@@ -67,7 +64,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
           entity: \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
           fieldName: 
             fields: 

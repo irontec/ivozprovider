@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\CallACL
           entity: \Ivoz\Provider\Domain\Model\CallAcl\CallAcl
           fieldName:
             fields:
@@ -25,7 +24,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
           entity: \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:

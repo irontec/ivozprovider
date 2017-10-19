@@ -8,7 +8,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\Countries
           entity: \Ivoz\Provider\Domain\Model\Country\Country
           fieldName: 
             fields: 

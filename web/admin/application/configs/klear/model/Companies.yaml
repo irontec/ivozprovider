@@ -15,7 +15,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName:
             fields:
@@ -48,7 +47,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Timezones
           entity: \Ivoz\Provider\Domain\Model\Timezone\Timezone
           fieldName:
             fields:
@@ -147,7 +145,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Countries
           entity: \Ivoz\Provider\Domain\Model\Country\Country
           fieldName:
             fields:
@@ -173,7 +170,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\DDIs
           entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
           filterClass: IvozProvider_Klear_Filter_OutgoingDDI
           fieldName:
@@ -188,7 +184,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\OutgoingDDIRules
           entity: \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule
           filterClass: IvozProvider_Klear_Filter_OutgoingDDIRules
           fieldName:
@@ -211,7 +206,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Languages
           entity: \Ivoz\Provider\Domain\Model\Language\Language
           fieldName:
             fields:
@@ -225,7 +219,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\MediaRelaySets
           entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
           fieldName:
             fields:

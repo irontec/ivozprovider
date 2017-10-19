@@ -28,7 +28,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\Domains
           entity: \Ivoz\Provider\Domain\Model\Domain\Domain
           fieldName: 
             fields: 

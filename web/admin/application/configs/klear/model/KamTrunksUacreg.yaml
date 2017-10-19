@@ -109,7 +109,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Brands
           entity: \Ivoz\Provider\Domain\Model\Brand\Brand
           fieldName:
             fields:
@@ -124,7 +123,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
           fieldName:
             fields:

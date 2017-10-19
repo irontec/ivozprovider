@@ -8,7 +8,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Queues
           entity: \Ivoz\Provider\Domain\Model\Queue\Queue
           fieldName:
             fields:
@@ -25,7 +24,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:

@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName: 
             fields: 
@@ -88,7 +87,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\PeerServers
           entity: \Ivoz\Provider\Domain\Model\PeerServer\PeerServer
           fieldName: 
             fields: 
@@ -103,7 +101,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\OutgoingRouting
           entity: \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
           fieldName: 
             fields: 

@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\ConditionalRoutes
           entity:  \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute
           fieldName:
             fields:
@@ -74,7 +73,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity:  \Ivoz\Provider\Domain\Model\Locution\Locution
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -197,7 +195,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
           entity:  \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -214,7 +211,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
           entity:  \Ivoz\Provider\Domain\Model\IVRCustom\IVRCustom
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -231,7 +227,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           entity:  \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -248,7 +243,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity:  \Ivoz\Provider\Domain\Model\User\User
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -264,7 +258,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity:  \Ivoz\Provider\Domain\Model\User\User
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -290,7 +283,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Queues
           entity:  \Ivoz\Provider\Domain\Model\Queue\Queue
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -307,7 +299,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
           entity:  \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -324,7 +315,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity:  \Ivoz\Provider\Domain\Model\Extension\Extension
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:

@@ -28,7 +28,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Timezones
           entity: \Ivoz\Provider\Domain\Model\Timezone\Timezone
           fieldName:
             fields:
@@ -131,7 +130,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Languages
           entity: \Ivoz\Provider\Domain\Model\Language\Language
           fieldName:
             fields:

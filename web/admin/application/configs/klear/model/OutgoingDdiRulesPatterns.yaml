@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\OutgoingDDIRules
           entity: \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule
           fieldName:
             fields:
@@ -24,7 +23,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\MatchLists
           entity: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -56,7 +54,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\DDIs
           entity:  \Ivoz\Provider\Domain\Model\Ddi\Ddi
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:

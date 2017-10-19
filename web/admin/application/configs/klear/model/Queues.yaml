@@ -11,7 +11,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName:
             fields:
@@ -51,7 +50,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -98,7 +96,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -115,7 +112,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           fitlerclass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
@@ -144,7 +140,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -189,7 +184,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -205,7 +199,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
@@ -222,7 +215,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:

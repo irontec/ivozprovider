@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Calendars
           entity: \Ivoz\Provider\Domain\Model\Calendar\Calendar
           fieldName: 
             fields: 
@@ -38,7 +37,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
           filterClass: IvozProvider_Klear_Filter_HolidayDateSelectLocution
           fieldName: 

@@ -17,7 +17,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Faxes
           entity: \Ivoz\Provider\Domain\Model\Fax\Fax
           fieldName:
             fields:

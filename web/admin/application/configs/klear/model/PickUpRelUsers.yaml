@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\PickUpGroups
           entity: \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
           fieldName: 
             fields: 
@@ -25,7 +24,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           fieldName: 
             fields: 

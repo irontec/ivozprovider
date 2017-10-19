@@ -26,7 +26,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\TerminalManufacturers
           entity: \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer
           fieldName:
             fields:

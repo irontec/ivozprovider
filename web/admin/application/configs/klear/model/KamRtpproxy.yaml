@@ -58,7 +58,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\MediaRelaySets
           entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
           fieldName: 
             fields: 

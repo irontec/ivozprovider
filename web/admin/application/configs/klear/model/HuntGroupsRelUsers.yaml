@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           entity: \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
@@ -26,7 +25,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName: 

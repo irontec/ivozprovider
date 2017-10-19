@@ -9,7 +9,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName: 
             fields: 
@@ -25,7 +24,6 @@ production:
       source: 
         data: mapper
         config: 
-#          mapperName: \IvozProvider\Mapper\Sql\Features
           entity: \Ivoz\Provider\Domain\Model\Terminal\Feature\Feature
           fieldName: 
             fields: 

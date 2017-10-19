@@ -9,7 +9,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName:
             fields:
@@ -40,7 +39,6 @@ production:
         predefined: list
       data: mapper
       config:
-#        mapperName: \IvozProvider\Mapper\Sql\CallACLRelPatterns
         entity: \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPattern
         filterField: CallACLRelPattern.callACL
         showAsTable: true
@@ -49,7 +47,6 @@ production:
             CallACLPattern:
               title: _("Name")
               isMultilang: false
-#              mapperName: \IvozProvider\Mapper\Sql\CallACLPatterns
               entity: \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern
               field:
                 - name
