@@ -18,7 +18,7 @@ production:
       forcedValues:
         <<: *forcedCompany
       fields:
-        blacklist: &friends_blacklistLink
+        blacklist:
           domain: true
           transport: true
           authNeeded: true
@@ -35,13 +35,14 @@ production:
           ip: true
           port: true
           languageId: true
+          status: true
         order:
           name: true
           description: true
           callACLId: true
           outgoingDDIId: true
           priority: true
-          status: true
+          statusIcon: true
         options:
           title: _("Options")
           screens:
@@ -78,6 +79,7 @@ production:
           authNeeded: true
           disallow: true
           status: true
+          statusIcon: true
         order: &friends_orderLink
           name: true
           description: true
@@ -141,7 +143,13 @@ production:
         order:
           <<: *friends_orderLink
         blacklist:
-          <<: *friends_blacklistLink
+          domain: true
+          directMediaMethod: true
+          updateCallerid: true
+          calleridUpdateHeader: true
+          authNeeded: true
+          disallow: true
+          statusIcon: true
       fixedPositions:
           <<: *friends_FixedPositionsLink
       forcedValues:
