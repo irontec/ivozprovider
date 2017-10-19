@@ -88,7 +88,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
-          filterclass: IvozProvider_Klear_Filter_ForwardExtension
+          filterClass: IvozProvider_Klear_Filter_ForwardExtension
           fieldName:
             fields: 
               - number
@@ -105,7 +105,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Voicemail
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName: 
             fields: 
               - name

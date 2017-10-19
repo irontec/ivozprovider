@@ -12,6 +12,11 @@ interface BrandInterface extends EntityInterface
      */
     public function getFileObjects();
 
+    /**
+     * @inheritdoc
+     */
+    public function setDomainUsers($domainUsers = null);
+
     public function getActivePricingPlans($date = null);
 
     public function getActivePrincingPlansIds($date = null);
@@ -57,15 +62,6 @@ interface BrandInterface extends EntityInterface
      * @return string
      */
     public function getName();
-
-    /**
-     * Set domainUsers
-     *
-     * @param string $domainUsers
-     *
-     * @return self
-     */
-    public function setDomainUsers($domainUsers = null);
 
     /**
      * Get domainUsers

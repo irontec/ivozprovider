@@ -1,7 +1,8 @@
-#@brand
+@brand
 @invoices
-@brand16
-@brand16-2
+@brand15
+@brand15-2
+@todo
 
 Feature: Invoices admin page
   As a main operator

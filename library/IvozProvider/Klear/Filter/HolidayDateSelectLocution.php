@@ -16,24 +16,37 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
         //Get ModelName and your Controller
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
-
         $pk = $routeDispatcher->getParam("pk", false);
         $parentId = $routeDispatcher->getParam("parentId", false);
+
+        $dataGateway = \Zend_Registry::get('data_gateway');
         switch ($currentItemName) {
             case "holidayDatesNew_screen":
                 if ($parentId) {
-                    $calendarMapper = new \IvozProvider\Mapper\Sql\Calendars();
-                    $calendarModel = $calendarMapper->find($parentId);
-                    $this->_condition[] = "`companyId` = '".$calendarModel->getCompanyId()."'";
+
+                    /**
+                     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendarModel
+                     */
+                    $calendarModel = $dataGateway->find(
+                        '\Ivoz\Provider\Domain\Model\Calendar\Calendar',
+                        $parentId
+                    );
+                    $this->_condition[] = "self::company = '" . $calendarModel->getCompany()->getId() . "'";
                 }
                 break;
             case "holidayDatesEdit_screen":
                 if ($pk) {
-                    $holidayMapper = new \IvozProvider\Mapper\Sql\HolidayDates();
-                    $holidayModel = $holidayMapper->find($pk);
+                    /**
+                     * @var \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayModel
+                     */
+                    $holidayModel = $dataGateway->find(
+                        '\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate',
+                        $pk
+                    );
+
                     $calendarModel = $holidayModel->getCalendar();
-                    $companyId = $calendarModel->getCompanyId();
-                    $this->_condition[] = "`companyId` = '".$companyId."'";
+                    $companyId = $calendarModel->getCompany()->getId();
+                    $this->_condition[] = "self::company = '".$companyId."'";
                 }
                 break;
         }

@@ -32,7 +32,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -47,7 +47,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -63,7 +63,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -79,7 +79,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -161,7 +161,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - number
@@ -178,7 +178,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Voicemail
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
@@ -226,7 +226,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - number
@@ -243,7 +243,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Voicemail
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name

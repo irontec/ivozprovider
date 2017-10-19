@@ -77,7 +77,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
          */
         $domainDto
             ->setDomain($name)
-            ->setScope('brand')
+            ->setScope('company')
             ->setPointsTo('proxyusers')
             ->setCompanyId($id)
             ->setDescription($entity->getName() . " proxyusers domain");

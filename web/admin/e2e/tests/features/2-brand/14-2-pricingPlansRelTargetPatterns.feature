@@ -1,4 +1,4 @@
-#@brand
+@brand
 @pricingPlansRelTargetPatterns
 @brand15
 @brand15-2

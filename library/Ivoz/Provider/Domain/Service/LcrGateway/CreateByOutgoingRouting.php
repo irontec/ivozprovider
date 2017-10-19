@@ -22,7 +22,7 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
     public function __construct(
         EntityPersisterInterface $entityPersister
     ) {
-        $this->entityPersister = $this->entityPersister;
+        $this->entityPersister = $entityPersister;
     }
 
     public function execute(OutgoingRoutingInterface $outgoingRouting)

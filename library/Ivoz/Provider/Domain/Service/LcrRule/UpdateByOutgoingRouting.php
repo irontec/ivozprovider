@@ -1,6 +1,7 @@
 <?php
 namespace Ivoz\Provider\Domain\Service\LcrRule;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRule;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
@@ -31,12 +32,13 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         $lcrRules = $outgoingRouting->getLcrRules();
         foreach ($lcrRules as $lcrRule) {
             $this->entityPersister->remove($lcrRule);
+            $outgoingRouting->removeLcrRule($lcrRule);
         }
 
         /**
          * @var LcrRuleInterface[] $lcrRules
          */
-        $lcrRules = array();
+        $lcrRules = new ArrayCollection();
         // Create LcrRule for each RoutingPattern
         if ($outgoingRouting->getType() === 'group') {
             $patterns = $outgoingRouting->getRoutingPatternGroup()->getRoutingPatterns();
@@ -45,23 +47,24 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
                     $outgoingRouting,
                     $pattern
                 );
-                array_push($lcrRules, $lcrRule);
+                $lcrRules->add($lcrRule);
             }
         } elseif ($outgoingRouting->getType() === 'pattern') {
             $lcrRule = $this->addLcrRulePerPattern(
                 $outgoingRouting,
                 $outgoingRouting->getRoutingPattern()
             );
-            array_push($lcrRules, $lcrRule);
+            $lcrRules->add($lcrRule);
         } elseif ($outgoingRouting->getType() === 'fax') {
             $lcrRule = $this->addLcrRulePerPattern(
                 $outgoingRouting
             );
-            array_push($lcrRules, $lcrRule);
+            $lcrRules->add($lcrRule);
         } else {
-
             throw new \Exception('Incorrect Outgoing Routing Type');
         }
+
+        $outgoingRouting->replaceLcrRules($lcrRules);
     }
 
     /**
@@ -101,9 +104,11 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         // Setting Outgoing Routing also sets from_uri (see model)
         $lcrRule->setOutgoingRouting($entity);
 
-        return $this
+        $this
             ->entityPersister
-            ->persist($lcrRule);
+            ->persist($lcrRule, true);
+
+        return $lcrRule;
     }
 
 }

@@ -40,7 +40,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_HolidayDateSelectLocution
+          filterClass: IvozProvider_Klear_Filter_HolidayDateSelectLocution
           fieldName: 
             fields: 
               - name

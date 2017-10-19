@@ -303,7 +303,7 @@ production:
           relationProperty: company
           relatedProperty: feature
           related: \Ivoz\Provider\Domain\Model\Feature\Feature
-          filterclass: IvozProvider_Klear_Filter_Features
+          filterClass: IvozProvider_Klear_Filter_Features
           relatedFieldName:
             fields:
               - name${lang}

@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
   type: mappedSuperclass
   indexes:
-    TerminalModelId:
+    terminalModelId:
       columns:
         - TerminalModelId
     Terminals_CompanyId_ibfk_2:
@@ -91,7 +91,7 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    TerminalModel:
+    terminalModel:
       targetEntity: \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
       cascade: {  }
       fetch: LAZY

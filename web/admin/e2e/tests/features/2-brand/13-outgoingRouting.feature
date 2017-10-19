@@ -19,7 +19,7 @@ Background:
 
 Scenario: I can create new outgoing routings
    When I click on add button
-    And I fill out the form with "brand/outgoingRouting/new" data fixture
+    And I fill out the form with "brand/outgoingRouting/new2" data fixture
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button

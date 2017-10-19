@@ -32,7 +32,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\RoutingPatterns
           entity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name${lang}
@@ -49,7 +49,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\RoutingPatternGroups
           entity: \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
@@ -65,7 +65,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
@@ -98,7 +98,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name

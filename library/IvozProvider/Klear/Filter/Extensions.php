@@ -21,11 +21,11 @@ class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Com
         $isUserNewScreen = ($currentScreen == "usersNew_screen");
 
         if ($isUserNewScreen) {
-            $this->_condition[] = " routeType IS NULL";
+            $this->_condition[] = " self::routeType IS NULL";
         }
 
         if ($isUserEditScreen) {
-            $this->_condition[] = " (userId = $pk OR routeType IS NULL) ";
+            $this->_condition[] = " (IDENTITY(self::user) = $pk OR self::routeType IS NULL) ";
         }
         return true;
     }
@@ -38,6 +38,8 @@ class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Com
 
     protected function _getUserByPk($pk)
     {
+        throw new \Extension('Todo');
+
         $userMapper = new IvozProvider\Mapper\Sql\Users;
         $user = $userMapper->find($pk);
 

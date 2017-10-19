@@ -13,17 +13,24 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
         $loggedUser = $auth->getIdentity();
         $currentBrandyId = $loggedUser->brandId;
 
-        $brandServiceMapper = new \IvozProvider\Mapper\Sql\BrandServices();
-        $brandServices = $brandServiceMapper->fetchList("`brandId` = " . $currentBrandyId);
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        /**
+         * @var \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $brandServices
+         */
+        $brandServices = $dataGateway->findBy(
+            'Ivoz\Provider\Domain\Model\BrandService\BrandService',
+            ["BrandService.brand = " . $currentBrandyId]
+        );
 
         $servicesIds = array();
         foreach ($brandServices as $brandService) {
             array_push($servicesIds, $brandService->getServiceId());
         }
+
         if (count($servicesIds)) {
-            $this->_condition[] = "`id` IN (" . implode(',', $servicesIds) . ")";
+            $this->_condition[] = "self::id IN (" . implode(',', $servicesIds) . ")";
         } else {
-            $this->_condition[] = "`id` IS NULL";  // Hackish
+            $this->_condition[] = "self::id IS NULL";  // Hackish
         }
 
         return true;

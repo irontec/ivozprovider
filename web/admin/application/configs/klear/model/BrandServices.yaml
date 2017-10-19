@@ -11,7 +11,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Services
           entity: \Ivoz\Provider\Domain\Model\Service\Service
-          filterclass: IvozProvider_Klear_Filter_BrandServices
+          filterClass: IvozProvider_Klear_Filter_BrandServices
           fieldName: 
             fields: 
               - name${lang}

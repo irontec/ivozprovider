@@ -5,12 +5,10 @@ class IvozProvider_Klear_Filter_Voicemail extends IvozProvider_Klear_Filter_Comp
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-        throw new \Exception('Not implemented yet');
-
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
         // Only show users with voicemail enabled
-        $this->_condition[] = "`voicemailEnabled` = 1";
+        $this->_condition[] = "self::voicemailEnabled = 1";
         return true;
     }
 }

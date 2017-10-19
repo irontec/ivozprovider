@@ -35,7 +35,7 @@ production:
         'null': 'E.164'
         config:
           entity: \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name

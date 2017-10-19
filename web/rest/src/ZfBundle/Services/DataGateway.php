@@ -76,16 +76,30 @@ class DataGateway
      *
      * @return \Doctrine\ORM\EntityRepository The repository class.
      */
-    private function getRepository($entityName)
+    private function getRepository(string $entityName)
     {
         return $this->em->getRepository($entityName);
     }
 
     /**
      * @param string $entityName
+     * @param string $method
+     * @return mixed
+     */
+    public function runNamedQuery(string $entityName, string $method, array $arguments)
+    {
+        $repository = $this->getRepository($entityName);
+
+        return $repository
+            ->{$method}(...$arguments);
+    }
+
+
+    /**
+     * @param string $entityName
      * @return DataTransferObjectInterface[]
      */
-    public function findAll($entityName)
+    public function findAll(string $entityName)
     {
         $repository = $this->getRepository($entityName);
         $results = $repository->findAll();
@@ -102,7 +116,7 @@ class DataGateway
      * @param mixed $id
      * @return DataTransferObjectInterface|null
      */
-    public function find($entityName, $id)
+    public function find(string $entityName, $id)
     {
         $repository = $this->getRepository($entityName);
         $result = $repository->find($id);
@@ -122,12 +136,13 @@ class DataGateway
      * @param integer|null $offset
      * @return DataTransferObjectInterface[]
      */
-    public function findBy($entityName, array $criteria = null, array $orderBy = null, $limit = null, $offset = null)
+    public function findBy(string $entityName, array $criteria = null, array $orderBy = null, $limit = null, $offset = null)
     {
         $query = $this
             ->queryBuilderFactory
             ->createFromArguments($entityName, $criteria, $orderBy, $limit, $offset)
             ->getQuery();
+
         $results = $query->getResult();
 
         $response = [];
@@ -143,7 +158,7 @@ class DataGateway
      * @param array|null $criteria
      * @return DataTransferObjectInterface
      */
-    public function findOneBy($entityName, array $criteria = null)
+    public function findOneBy(string $entityName, array $criteria = null)
     {
         $response = $this->findBy(
             $entityName,
@@ -160,7 +175,7 @@ class DataGateway
      * @param array|null $criteria
      * @return array
      */
-    public function countBy($entityName, array $criteria = null)
+    public function countBy(string $entityName, array $criteria = null)
     {
         $queryBuilder = $this
             ->queryBuilderFactory
@@ -175,7 +190,7 @@ class DataGateway
         return $query->getSingleScalarResult();
     }
 
-    public function persist($entityName, DataTransferObjectInterface $dto)
+    public function persist(string $entityName, DataTransferObjectInterface $dto)
     {
         $entity = $this
             ->entityFactory
@@ -189,7 +204,7 @@ class DataGateway
         $dto->setId($entity->getId());
     }
 
-    public function update($entityName, DataTransferObjectInterface $dto)
+    public function update(string $entityName, DataTransferObjectInterface $dto)
     {
         $repository = $this->getRepository($entityName);
         $entity = $repository->find($dto->getId());
@@ -207,7 +222,7 @@ class DataGateway
      * @param string $entityName
      * @param array $ids
      */
-    public function remove($entityName, array $ids)
+    public function remove(string $entityName, array $ids)
     {
         $repository = $this->getRepository($entityName);
         foreach ($ids as $id) {
@@ -221,7 +236,7 @@ class DataGateway
         $this->em->flush();
     }
 
-    public function remoteProcedureCall($entityName, $id, $method, array $arguments)
+    public function remoteProcedureCall(string $entityName, $id, $method, array $arguments)
     {
         $entity = $this
             ->em

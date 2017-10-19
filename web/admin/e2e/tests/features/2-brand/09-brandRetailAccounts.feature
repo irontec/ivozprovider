@@ -1,4 +1,4 @@
-#@brand
+@brand
 @BrandRetailAccounts
 @brand09
 @todo

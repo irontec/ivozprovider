@@ -129,7 +129,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name

@@ -1,4 +1,4 @@
-#@brand
+@brand
 @providersRegister
 @kamTrunksUacreg
 @brand02

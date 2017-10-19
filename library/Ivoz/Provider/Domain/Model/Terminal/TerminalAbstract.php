@@ -69,7 +69,7 @@ abstract class TerminalAbstract
     /**
      * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
      */
-    protected $TerminalModel;
+    protected $terminalModel;
 
 
     /**
@@ -532,7 +532,7 @@ abstract class TerminalAbstract
      */
     public function setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface $terminalModel = null)
     {
-        $this->TerminalModel = $terminalModel;
+        $this->terminalModel = $terminalModel;
 
         return $this;
     }
@@ -544,7 +544,7 @@ abstract class TerminalAbstract
      */
     public function getTerminalModel()
     {
-        return $this->TerminalModel;
+        return $this->terminalModel;
     }
 
 

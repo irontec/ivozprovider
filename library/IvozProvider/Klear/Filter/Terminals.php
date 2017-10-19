@@ -6,7 +6,6 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-        throw new \Exception('Not implemented yet');
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
 
@@ -20,7 +19,8 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
         $unfilteredScreens = array(
-            "usersList_screen"
+            'Ivoz\Provider\Domain\Model\User\User',
+            []
         );
 
         if (in_array($currentItemName, $unfilteredScreens)) {
@@ -29,7 +29,18 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
 
         $pk = $routeDispatcher->getParam("pk", false);
         if (!is_array($pk)) {
-            $this->_condition = ["`id` NOT IN (SELECT `terminalId` FROM `Users` WHERE terminalId IS NOT NULL AND `id` != '" . $pk . "')"];
+
+            $dataGateway = \Zend_Registry::get('data_gateway');
+            $ids = $dataGateway->runNamedQuery(
+                'Ivoz\Provider\Domain\Model\User\User',
+                'getAssignedTerminalIds',
+                []
+            );
+
+            $this->_condition = ["self::id != '". $pk ."'"];
+            if (!empty($ids)) {
+                $this->_condition[] = 'self::id NOT IN ('. implode(',', $ids) .')';
+            }
         }
 
         return true;

@@ -31,7 +31,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -49,7 +49,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -68,7 +68,7 @@ production:
           mapperName: \IvozProvider\Mapper\Sql\Locutions
 #          mapperName: \IvozProvider\Mapper\Sql\Locutions
           entity: \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -117,7 +117,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - number
@@ -136,7 +136,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Voicemail
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
@@ -184,7 +184,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Extensions
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - number
@@ -203,7 +203,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Voicemail
+          filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
@@ -222,7 +222,7 @@ production:
           relationProperty: schedule
           relatedProperty: schedule
           related: \Ivoz\Provider\Domain\Model\Schedule\Schedule
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           relatedFieldName: name
     calendars:
       title: ngettext('Calendar', 'Calendars', 0)
@@ -235,7 +235,7 @@ production:
           relatedProperty: calendar
           related: \Ivoz\Provider\Domain\Model\Calendar\Calendar
           relatedFieldName: name
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
     holidayTarget:
       title: _('Holiday target')
       type: ghost

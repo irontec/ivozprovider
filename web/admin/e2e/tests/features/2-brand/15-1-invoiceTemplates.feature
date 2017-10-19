@@ -1,7 +1,7 @@
 @brand
 @invoiceTemplates
-@brand16
-@brand16-1
+@brand15
+@brand15-1
 
 Feature: Invoice templates admin page
   As a main operator

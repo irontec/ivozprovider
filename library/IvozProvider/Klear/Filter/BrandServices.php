@@ -32,9 +32,15 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
 
         $loggedUser = $auth->getIdentity();
         $currentBrandyId = $loggedUser->brandId;
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-        $brandServiceMapper = new \IvozProvider\Mapper\Sql\BrandServices();
-        $brandServices = $brandServiceMapper->fetchList("`brandId` = " . $currentBrandyId);
+        /**
+         * @var \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $brandServices
+         */
+        $brandServices = $dataGateway->findBy(
+            'Ivoz\Provider\Domain\Model\BrandService\BrandService',
+            ["BrandService.brand = " . $currentBrandyId]
+        );
 
         $servicesIds = array();
         foreach ($brandServices as $brandService) {
@@ -42,7 +48,7 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
         }
 
         if (count($servicesIds)) {
-            $this->_condition[] = "`id` NOT IN (" . implode(',', $servicesIds) . ")";
+            $this->_condition[] = "self::id NOT IN (" . implode(',', $servicesIds) . ")";
         }
 
         return true;

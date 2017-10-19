@@ -27,7 +27,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name

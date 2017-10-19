@@ -104,7 +104,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\CallACL
           entity: \Ivoz\Provider\Domain\Model\CallAcl\CallAcl
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -152,7 +152,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\DDIs
           entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - ddie164

@@ -75,7 +75,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - name
@@ -136,7 +136,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
@@ -230,7 +230,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Invoices
           entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields: 
               - number

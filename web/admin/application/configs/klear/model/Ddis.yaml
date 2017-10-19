@@ -13,7 +13,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
@@ -35,7 +35,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\ExternalCallFilters
           entity: \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -48,7 +48,7 @@ production:
       type: select
       source:
         data: inline
-        filterclass: IvozProvider_Klear_Filter_RouteTypes
+        filterClass: IvozProvider_Klear_Filter_RouteTypes
         values:
           '__null__':
             title: _("Unassigned")
@@ -202,7 +202,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Users
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -220,7 +220,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\IVRCommon
           entity: \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -237,7 +237,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\IVRCustom
           entity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -254,7 +254,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\HuntGroups
           entity: \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -271,7 +271,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Faxes
           entity: \Ivoz\Provider\Domain\Model\Fax\Fax
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -288,7 +288,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\ConferenceRooms
           entity: \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
@@ -333,7 +333,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\PeeringContracts
           entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
@@ -380,7 +380,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\Queues
           entity: \Ivoz\Provider\Domain\Model\Queue\Queue
-          filterclass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name

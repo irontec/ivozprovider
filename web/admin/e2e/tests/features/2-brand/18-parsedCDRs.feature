@@ -1,6 +1,7 @@
-#@brand
+@brand
 @parsedCDRs
 @parsedCDRsBrand
+@18
 @todo
 
 Feature: Billable calls admin page

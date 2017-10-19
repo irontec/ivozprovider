@@ -69,7 +69,7 @@ class TerminalDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $TerminalModelId;
+    private $terminalModelId;
 
     /**
      * @var mixed
@@ -79,7 +79,7 @@ class TerminalDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $TerminalModel;
+    private $terminalModel;
 
     /**
      * @var array|null
@@ -395,7 +395,7 @@ class TerminalDTO implements DataTransferObjectInterface
      */
     public function setTerminalModelId($terminalModelId)
     {
-        $this->TerminalModelId = $terminalModelId;
+        $this->terminalModelId = $terminalModelId;
 
         return $this;
     }
@@ -405,7 +405,7 @@ class TerminalDTO implements DataTransferObjectInterface
      */
     public function getTerminalModelId()
     {
-        return $this->TerminalModelId;
+        return $this->terminalModelId;
     }
 
     /**
@@ -413,7 +413,7 @@ class TerminalDTO implements DataTransferObjectInterface
      */
     public function getTerminalModel()
     {
-        return $this->TerminalModel;
+        return $this->terminalModel;
     }
 
     /**

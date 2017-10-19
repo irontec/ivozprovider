@@ -35,7 +35,7 @@ production:
           relationProperty: pickUpGroup
           relatedProperty: user
           related: \Ivoz\Provider\Domain\Model\User\User
-          filterclass: IvozProvider_Klear_Filter_Users
+          filterClass: IvozProvider_Klear_Filter_Users
           relatedFieldName:
             fields: 
               - name

@@ -78,7 +78,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
           entity: \Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields:
               - name${lang}

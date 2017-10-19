@@ -15,13 +15,20 @@ class IvozProvider_Klear_Filter_ForwardExtension extends IvozProvider_Klear_Filt
 
         // Get Original User Id
         $pk = $routeDispatcher->getParam("parentId", false);
-        $userMapper = new \IvozProvider\Mapper\Sql\Users;
-        $user = $userMapper->find($pk);
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        /**
+         * @var \Ivoz\Provider\Domain\Model\User\UserInterface $user
+         */
+        $user = $dataGateway->find(
+            '\Ivoz\Provider\Domain\Model\User\User',
+            $pk
+        );
 
         // If user has extension, filter it out
-        if ($user && $user->getExtensionId()) {
-            $this->_condition[] = "`id` != " . $user->getExtensionId();
+        if ($user && $user->getExtension() && $user->getExtension()->getId()) {
+            $this->_condition[] = "self::id != " . $user->getExtension()->getId();
         }
+
         return true;
     }
 

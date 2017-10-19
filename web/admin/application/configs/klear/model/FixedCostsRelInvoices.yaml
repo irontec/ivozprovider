@@ -27,7 +27,7 @@ production:
         config:
 #          mapperName: \IvozProvider\Mapper\Sql\FixedCosts
           entity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCost
-          filterclass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_Brand
           fieldName: 
             fields:
               - name

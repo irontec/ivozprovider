@@ -12,7 +12,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\TerminalModels
           entity: \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel
           fieldName:
             fields:
@@ -104,7 +103,6 @@ production:
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\Companies
           entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName:
             fields:
