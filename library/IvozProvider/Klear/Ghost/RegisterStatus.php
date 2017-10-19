@@ -100,17 +100,28 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     private function getLocationStatusIcon($model)
     {
         $where = array(
-            "username = '" . $model->getName() . "'",
-            "domain = '" . $model->getDomain() . "'"
+            "UsersLocation.username = '" . $model->getName() . "'",
+            "UsersLocation.domain = '" . $model->getDomain() . "'"
         );
 
-        // Try to find registry entry
-        $locationMapper = new \IvozProvider\Mapper\Sql\KamUsersLocation;
-        $location = $locationMapper->fetchOne(implode(' AND ', $where), "expires DESC");
+        /** @var \ZfBundle\Services\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO $location */
+        $location = $dataGateway->findOneBy(
+            \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation::class,
+            [
+                implode(' AND ', $where),
+            ],
+            [
+                "UsersLocation.expires" => "DESC"
+            ]
+        );
 
         // Draw a green tick if found
         if (!is_null($location)) {
-            return '<span class="ui-silk inline ui-silk-tick" title="Registered until ' . $location->getExpires() . '"></span>';
+            return '<span class="ui-silk inline ui-silk-tick" title="Registered until ' .
+                $location->getExpires()->format("Y-m-d H:i:s") . '"></span>';
         }
 
         // Draw a red cross if not found
@@ -125,28 +136,46 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     private function getLocationStatus($model)
     {
         $where = array(
-            "username = '" . $model->getName() . "'",
-            "domain = '" . $model->getDomain() . "'"
+            "UsersLocation.username = '" . $model->getName() . "'",
+            "UsersLocation.domain = '" . $model->getDomain() . "'"
         );
 
-        // Find registry entries
-        $locationMapper = new \IvozProvider\Mapper\Sql\KamUsersLocation;
-        $locations = $locationMapper->fetchList(implode(' AND ', $where), "expires DESC");
+        /** @var \ZfBundle\Services\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO[] $location */
+        $locations = $dataGateway->findBy(
+            \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation::class,
+            [
+                implode(' AND ', $where),
+            ],
+            [
+                "UsersLocation.expires" => "DESC"
+            ]
+        );
 
         if (!empty($locations)) {
             $registerStatus = '<table width="100%" >';
 
+
+
             foreach ($locations as $location) {
+                $contact = explode('@', $location->getContact());
+                $contactSrc = array_pop($contact);
+
+                $received = explode('sip:', $location->getReceived());
+                $receivedSrc = array_pop($received);
+
                 $registerStatus .= sprintf('
                             <tr>
                                 <td><span class="ui-silk inline ui-silk-tick" title="Registered until %s"/> %s </td>
                                 <td><span class="ui-silk inline ui-silk-telephone" title="Contact Address" /> %s</td>
                                 <td><span class="ui-silk inline ui-silk-world" title="Received Address" /> %s</td>
                             </tr>',
-                        $location->getExpires(),
+                        $location->getExpires()->format("Y-m-d H:i:s"),
                         $location->getUserAgent(),
-                        $location->getContactSrc(),
-                        $location->getReceivedSrc()
+                        $contactSrc,
+                        $receivedSrc
                 );
             }
 

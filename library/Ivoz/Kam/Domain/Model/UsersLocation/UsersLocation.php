@@ -19,16 +19,5 @@ class UsersLocation extends UsersLocationAbstract implements UsersLocationInterf
         return $this->id;
     }
 
-    public function getContactSrc()
-    {
-        $src = explode('@', $this->getContact());
-        return array_pop($src);
-    }
-
-    public function getReceivedSrc()
-    {
-        $src = explode('sip:', $this->getReceived());
-        return array_pop($src);
-    }
 }
 

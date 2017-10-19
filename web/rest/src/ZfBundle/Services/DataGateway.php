@@ -158,11 +158,14 @@ class DataGateway
      * @param array|null $criteria
      * @return DataTransferObjectInterface
      */
-    public function findOneBy(string $entityName, array $criteria = null)
+    public function findOneBy(string $entityName, array $criteria = null, array $orderBy = null, $limit = null, $offset = null)
     {
         $response = $this->findBy(
             $entityName,
-            $criteria
+            $criteria,
+            $orderBy,
+            $limit,
+            $offset
         );
 
         return array_shift(
