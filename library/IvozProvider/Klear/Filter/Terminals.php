@@ -19,7 +19,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
         $unfilteredScreens = array(
-            'Ivoz\Provider\Domain\Model\User\User',
+            \Ivoz\Provider\Domain\Model\User\User::class,
             []
         );
 
@@ -31,13 +31,24 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         if (!is_array($pk)) {
 
             $dataGateway = \Zend_Registry::get('data_gateway');
+
+            /** @var \Ivoz\Provider\Domain\Model\User\UserDTO $user */
+            $user = $dataGateway->find(
+                \Ivoz\Provider\Domain\Model\User\User::class,
+                $pk
+            );
+
             $ids = $dataGateway->runNamedQuery(
-                'Ivoz\Provider\Domain\Model\User\User',
+                \Ivoz\Provider\Domain\Model\User\User::class,
                 'getAssignedTerminalIds',
                 []
             );
 
-            $this->_condition = ["self::id != '". $pk ."'"];
+            // Do not remove current user terminal
+            if ($user->getTerminalId()) {
+                $ids = array_diff($ids, array($user->getTerminalId()));
+            }
+
             if (!empty($ids)) {
                 $this->_condition[] = 'self::id NOT IN ('. implode(',', $ids) .')';
             }
