@@ -12,7 +12,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class FaxesInOutAbstract
 {
     /**
-     * @comment ora de recepcion del fa
      * @var \DateTime
      */
     protected $calldate;

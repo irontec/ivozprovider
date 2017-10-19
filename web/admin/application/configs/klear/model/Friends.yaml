@@ -20,7 +20,6 @@ production:
             template: '%name%'
           order:
             Company.name: asc
-      default: true
     name:
       title: _('Name')
       type: text
@@ -34,6 +33,7 @@ production:
         icon: help
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
+      default: true
     description:
       title: _('Description')
       type: text
@@ -269,6 +269,13 @@ production:
           order:
             Language.name.${lang}: asc
         'null': _("Company's default")
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getFriendStatusIcon
     status:
       title: _('Status')
       type: ghost

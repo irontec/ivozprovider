@@ -12,14 +12,14 @@ interface EntityPersisterInterface
      * @param EntityInterface|null $entity
      * @return EntityInterface
      */
-    public function persistDto(DataTransferObjectInterface $dto, EntityInterface $entity = null, $dispatchImmediately = false);
+    public function persistDto(DataTransferObjectInterface $dto, EntityInterface $entity = null, $dispatchImmediately = true);
 
     /**
      * @param EntityInterface $entity
      * @param boolean $dispatchImmediately
      * @return void
      */
-    public function persist(EntityInterface $entity = null, $dispatchImmediately = false);
+    public function persist(EntityInterface $entity = null, $dispatchImmediately = true);
 
     /**
      * @param EntityInterface $entity

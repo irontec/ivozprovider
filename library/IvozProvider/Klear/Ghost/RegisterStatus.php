@@ -4,20 +4,44 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 {
     /**
      * Get Register Status for Terminals
-     * @param $model Terminal
-     * @return HTML code to display SIP registrer status
+     * @param Terminal $model
+     * @return string HTML code to display SIP register status icon
      */
-    public function getTerminalStatus ($model)
+    public function getTerminalStatusIcon($model)
+    {
+        return $this->getLocationStatusIcon($model);
+    }
+
+    /**
+     * Get Register Status for Terminals
+     * @param Terminal $model
+     * @return string HTML code to display SIP register status
+     */
+    public function getTerminalStatus($model)
     {
         return $this->getLocationStatus($model);
     }
 
     /**
      * Get Register Status for Friends
-     * @param $model Friend
-     * @return HTML code to display SIP registrer status
+     * @param Friend $model
+     * @return string HTML code to display SIP register status icon
      */
-    public function getFriendStatus ($model)
+    public function getFriendStatusIcon($model)
+    {
+        $registerStatus = $this->getDirectConnectivityStatus($model);
+        if (empty($registerStatus)) {
+            $registerStatus = $this->getLocationStatusIcon($model);
+        }
+        return $registerStatus;
+    }
+
+    /**
+     * Get Register Status for Friends
+     * @param Friend $model
+     * @return string HTML code to display SIP register status
+     */
+    public function getFriendStatus($model)
     {
         $registerStatus = $this->getDirectConnectivityStatus($model);
         if (empty($registerStatus)) {
@@ -28,10 +52,24 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status for Retail Accounts
-     * @param $model RetailAccount
-     * @return HTML code to display SIP registrer status
+     * @param RetailAccount $model
+     * @return string HTML code to display SIP register status icon
      */
-    public function getRetailAccountStatus ($model)
+    public function getRetailAccountStatusIcon($model)
+    {
+        $registerStatus = $this->getDirectConnectivityStatus($model);
+        if (empty($registerStatus)) {
+            $registerStatus = $this->getLocationStatusIcon($model);
+        }
+        return $registerStatus;
+    }
+
+    /**
+     * Get Register Status for Retail Accounts
+     * @param RetailAccount $model
+     * @return string HTML code to display SIP register status
+     */
+    public function getRetailAccountStatus($model)
     {
         $registerStatus = $this->getDirectConnectivityStatus($model);
         if (empty($registerStatus)) {
@@ -42,8 +80,8 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Check if entity has direct connectivity enabled
-     * @param $model Friend or Retail Account
-     * @return HTML code to display SIP registrer status or empty string
+     * @param Friend/RetailAccount $model
+     * @return string HTML code to display SIP register status or empty string
      */
     private function getDirectConnectivityStatus($model)
     {
@@ -56,10 +94,10 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status from UsersLocation Table
-     * @param $model Terminal, Friend or Retail Account
-     * @return HTML code to display SIP registrer status
+     * @param Terminal/Friend/RetailAccount $model
+     * @return string HTML code to display SIP register status icon
      */
-    private function getLocationStatus ($model)
+    private function getLocationStatusIcon($model)
     {
         $where = array(
             "username = '" . $model->getName() . "'",
@@ -77,5 +115,47 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
         // Draw a red cross if not found
         return '<span class="ui-silk inline ui-silk-exclamation"></span>';
+    }
+
+    /**
+     * Get Register Status from UsersLocation Table
+     * @param Terminal/Friend/RetailAccount $model
+     * @return string HTML code to display SIP register status
+     */
+    private function getLocationStatus($model)
+    {
+        $where = array(
+            "username = '" . $model->getName() . "'",
+            "domain = '" . $model->getDomain() . "'"
+        );
+
+        // Find registry entries
+        $locationMapper = new \IvozProvider\Mapper\Sql\KamUsersLocation;
+        $locations = $locationMapper->fetchList(implode(' AND ', $where), "expires DESC");
+
+        if (!empty($locations)) {
+            $registerStatus = '<table width="100%" >';
+
+            foreach ($locations as $location) {
+                $registerStatus .= sprintf('
+                            <tr>
+                                <td><span class="ui-silk inline ui-silk-tick" title="Registered until %s"/> %s </td>
+                                <td><span class="ui-silk inline ui-silk-telephone" title="Contact Address" /> %s</td>
+                                <td><span class="ui-silk inline ui-silk-world" title="Received Address" /> %s</td>
+                            </tr>',
+                        $location->getExpires(),
+                        $location->getUserAgent(),
+                        $location->getContactSrc(),
+                        $location->getReceivedSrc()
+                );
+            }
+
+            $registerStatus .= '</table>';
+        } else {
+            // Draw a red cross if not active registries found
+            $registerStatus = '<span class="ui-silk inline ui-silk-exclamation" /> Not Registered';
+        }
+
+        return $registerStatus;
     }
 }

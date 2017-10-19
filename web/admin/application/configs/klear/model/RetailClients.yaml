@@ -50,13 +50,35 @@ production:
             template: '%tz%'
           order:
             Timezone.tz: asc
+    distributeMethod:
+      title: _('Distribute method')
+      type: select
+      defaultValue: hash
+      source:
+        data: inline
+        values:
+          'static':
+            title: _("Static")
+            visualFilter:
+              show: ["applicationServerId"]
+              hide: []
+          'rr':
+            title: _("Round robin")
+            visualFilter:
+              show: []
+              hide: ["applicationServerId"]
+          'hash':
+            title: _("Hash based")
+            visualFilter:
+              show: []
+              hide: ["applicationServerId"]
     applicationServerId:
       title: ngettext('Application Server', 'Application Servers', 1)
       type: select
+      required: true
       source:
         data: mapper
         config:
-#          mapperName: \IvozProvider\Mapper\Sql\ApplicationServers
           entity: \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
           fieldName:
             fields:
@@ -64,7 +86,7 @@ production:
             template: '%name%'
           order:
             ApplicationServer.name: asc
-        'null': _("Dispatch to any AS")
+        'null': _("Unassigned")
     externalMaxCalls:
       title: _('External max call')
       type: number
@@ -296,6 +318,15 @@ production:
             fields:
               - name${lang}
             template: '%name${lang}%'
+          visualFilter:
+            iden:
+              recordings:
+                toggle:
+                  - recordingsLimitMB
+                  - recordingsDiskUsage
+                  - recordingsLimitEmail
+                  - onDemandRecord
+                  - onDemandRecordCode
           order: name
 staging:
   _extends: production

@@ -313,7 +313,7 @@ class Agi_Wrapper
 
     public function extractURI($uri, $variable)
     {
-        if (preg_match("/([^<]*)(sip:([^@>;]+)@?([^>;]+)?)/", $uri, $matches)) {
+        if (preg_match("/([^<]*)(sip:([^@>;]+)@?([^>;:]+)?)/", $uri, $matches)) {
             switch ($variable) {
                 case 'name':
                     return $matches[1];
@@ -355,8 +355,8 @@ class Agi_Wrapper
             $type = "FAX";
         }
 
-        $this->setVariable("${datatype}_TYPE", $type);
-        $this->setVariable("${datatype}_ID", $id);
+        $this->setVariable("_${datatype}_TYPE", $type);
+        $this->setVariable("_${datatype}_ID", $id);
     }
 
     public function getChannelCaller()

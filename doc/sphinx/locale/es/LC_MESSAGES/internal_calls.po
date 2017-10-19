@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 18:52+0200\n"
+"POT-Creation-Date: 2017-10-16 18:26+0200\n"
 "PO-Revision-Date: 2016-10-13 19:41+0200\n"
 "Last-Translator: Ivan Alonso <kaian@irontec.com>\n"
 "Language-Team: Irontec VoIP Team <vozip@irontec.com>\n"
@@ -229,24 +229,35 @@ msgstr ""
 "permite asignarlos a las compañías."
 
 #: ../../internal_calls/brand_portal.rst:137
-msgid "Application Server"
-msgstr "Servidores de aplicación"
+msgid "Distribute Method"
+msgstr "Método de distribución"
 
 #: ../../internal_calls/brand_portal.rst:139
 msgid ""
-"IvozProvider will distribute calls between all application server, but "
-"you can make a static asignment here (e.g. debugging)."
+"'Hash based' distributes calls hashing a parameter that is unique per "
+"company/retail, 'Round robin' distributes calls equally between AS-es and"
+" 'static' is used for debugging purposes."
 msgstr ""
-"IvozProvider distribuirá las llamadas entre todos los servidores de "
-"aplicación, pero puedes realizar asignaciones estáticas aquí (por "
-"ejemplo, para un análisis puntual)."
+"'Basado en hash' distribuye las llamadas en base a un parámetro único por "
+"empresa/cliente retail, 'Round robin' distribuye las llamadas uniformemente "
+"entre todos los AS-es y 'estático' se utiliza solo para *testing*."
 
-#: ../../internal_calls/brand_portal.rst:141
+#: ../../internal_calls/brand_portal.rst:142
+msgid "Application Server"
+msgstr "Servidores de aplicación"
+
+#: ../../internal_calls/brand_portal.rst:144
+msgid ""
+"If 'static' *distribute method* is used, select an application server "
+"here."
+msgstr "Si se utiliza 'estático', selecciona un AS aquí."
+
+#: ../../internal_calls/brand_portal.rst:145
 #: ../../internal_calls/god_portal.rst:204
 msgid "Recordings"
 msgstr "Grabaciones"
 
-#: ../../internal_calls/brand_portal.rst:143
+#: ../../internal_calls/brand_portal.rst:147
 #, python-format
 msgid ""
 "Configures a limit for the size of recordings of this company. A "
@@ -258,12 +269,12 @@ msgstr ""
 "80% y se rotarán las grabaciones más antiguas cuando se alcance el "
 "límite."
 
-#: ../../internal_calls/brand_portal.rst:146
+#: ../../internal_calls/brand_portal.rst:150
 #: ../../internal_calls/god_portal.rst:209
 msgid "Features"
 msgstr "Features"
 
-#: ../../internal_calls/brand_portal.rst:148
+#: ../../internal_calls/brand_portal.rst:152
 msgid ""
 "Introduced in 1.3, lets brand operator choose the features of the "
 "company. Related sections are hidden consequently and the company cannot "
@@ -273,7 +284,7 @@ msgstr ""
 " de la compañía. Esto habilitará o deshabilitará las diferentes secciones"
 " del menú de compañía."
 
-#: ../../internal_calls/brand_portal.rst:151
+#: ../../internal_calls/brand_portal.rst:155
 msgid ""
 "Most of the features are self-explanatory, but **voice notification** "
 "deserves an explanation: if you enable them, when a call fails, the user "
@@ -286,7 +297,7 @@ msgstr ""
 " ocurrido (\"no tiene permisos para realizar esta llamada\", \"la llamada"
 " no puede ser tarificada\", etc.)"
 
-#: ../../internal_calls/brand_portal.rst:156
+#: ../../internal_calls/brand_portal.rst:160
 msgid ""
 "Recordings rotation happens at two levels: brand and company. This means "
 "that **a company's recordings can be rotated even though its limit has "
@@ -297,7 +308,7 @@ msgstr ""
 "rotadas incluso si esta no ha alcanzado su límite (o incluso si no tiene "
 "límite) si se ha alcanzado el límite de espacio de su marca**."
 
-#: ../../internal_calls/brand_portal.rst:160
+#: ../../internal_calls/brand_portal.rst:164
 msgid ""
 "Again: recordings rotation happens at two levels: brand and company. This"
 " means that **a company's recordings can be rotated even though its limit"
@@ -310,7 +321,7 @@ msgstr ""
 " si no tiene límite) si se ha alcanzado el límite de espacio de su "
 "marca**."
 
-#: ../../internal_calls/brand_portal.rst:164
+#: ../../internal_calls/brand_portal.rst:168
 msgid ""
 "To avoid this, make sure that the sum of all companies does not exceed "
 "the size assigned to your brand and make sure that all companies has a "
@@ -320,11 +331,28 @@ msgstr ""
 "no exceda el tamaño asignado a la marca y que todas las compañías tienen "
 "un límite de espacio configurado (si es 0, tendrán ilimitado)."
 
-#: ../../internal_calls/brand_portal.rst:171
+#: ../../internal_calls/brand_portal.rst:172
+msgid ""
+"Both **Distribute method** and **Application Server** are only visible "
+"for God Administrator."
+msgstr ""
+"Tanto **Método de distibución** como **Servidor de aplicación** solo son "
+"visibles para el operador global (*god*)."
+
+#: ../../internal_calls/brand_portal.rst:175
+msgid ""
+"'Round-robin' distribute method is reserved for huge companies/retails "
+"whose calls cannot be handled in a single AS. **Use 'Hash based' for "
+"remaining ones**."
+msgstr ""
+"El método de distribución 'Round-robin' está reservado para compañías enormes "
+"cuyas llamadas no *entren* en un AS. **Utilizar 'Basado en hash' para el resto**."
+
+#: ../../internal_calls/brand_portal.rst:182
 msgid "Emulate Demo company"
 msgstr "Emular la empresa Demo"
 
-#: ../../internal_calls/brand_portal.rst:173
+#: ../../internal_calls/brand_portal.rst:184
 msgid ""
 "The company emulation process is the same as the brand emulation, with "
 "the difference that it filters the block ‘Company Configuration’ insted "
@@ -334,7 +362,7 @@ msgstr ""
 "conla diferencia de que filtra el bloque 'Configuración de Empresa' en "
 "lugar delbloque 'Configuración de Marca'."
 
-#: ../../internal_calls/brand_portal.rst:197
+#: ../../internal_calls/brand_portal.rst:208
 msgid ""
 "Once the company has been emulated, the top right corner of the portal "
 "will show that we are in the right path :)"
@@ -796,8 +824,8 @@ msgid ""
 "Introduced in 1.4. Domain pointing to Users SIP proxy used by all the "
 "Retail Accounts of this brand."
 msgstr ""
-"Introducido en 1.4. Configura el dominio que apuntará al proxy SIP de usuarios "
-"empleado por todas las cuentas Retail de esta marca."
+"Introducido en 1.4. Configura el dominio que apuntará al proxy SIP de "
+"usuarios empleado por todas las cuentas Retail de esta marca."
 
 #: ../../internal_calls/god_portal.rst:206
 #, python-format

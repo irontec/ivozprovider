@@ -18,7 +18,6 @@ production:
         <<: *forcedBrand
       fields:
         blacklist: &retailAccounts_blacklistLink
-          domain: true
           transport: true
           auth_needed: true
           password: true
@@ -34,11 +33,13 @@ production:
           ip: true
           port: true
           languageId: true
+          status: true
         order:
           name: true
+          domain: true
           description: true
           outgoingDDIId: true
-          status: true
+          statusIcon: true
         options:
           title: _("Options")
           screens:
@@ -82,6 +83,7 @@ production:
           from_domain: true
           languageId: true
           status: true
+          statusIcon: true
         order: &retailAccounts_orderLink
           name: true
           description: true
@@ -91,6 +93,15 @@ production:
           transport: true
           ip: true
           port: true
+          callACLId: true
+          outgoingDDIId: true
+          countryId: true
+          areaCode: true
+          allow: true
+          from_domain: true
+          languageId: true
+          statusIcon: true
+          status: true
       fixedPositions: &retailAccounts_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -120,6 +131,13 @@ production:
             allow: 2
             from_domain: 2
             languageId: 2
+        group3:
+          label: _("Status information")
+          colsPerRow: 6
+          fields:
+            statusIcon: 6
+            status: 6
+
       shortcutOption: N
     retailAccountsEdit_screen: &retailAccountsEdit_screenLink
       <<: *RetailAccounts
@@ -142,7 +160,7 @@ production:
           callerid_update_header: true
           auth_needed: true
           disallow: true
-          status: true
+          statusIcon: true
       fixedPositions:
           <<: *retailAccounts_FixedPositionsLink
       forcedValues:

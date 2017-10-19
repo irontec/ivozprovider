@@ -22,9 +22,17 @@ production:
       default: true
     name:
       title: _('Name')
+      pattern: "^[a-zA-Z0-9_-]+$"
       type: text
+      trim: both
       maxLength: 128
       required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '-'")
+        label: _("Need help?")
     maxWaitTime:
       title: _('Max wait time')
       type: number
@@ -268,6 +276,7 @@ production:
       defaultValue: 'rrmemory'
       source:
         data: inline
+        filterClass: IvozProvider_Klear_Filter_QueueStrategies
         values:
           'ringall': _('Ring all')
           'leastrecent': _('Least recent')

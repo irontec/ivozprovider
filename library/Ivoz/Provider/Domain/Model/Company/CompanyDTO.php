@@ -32,6 +32,11 @@ class CompanyDTO implements DataTransferObjectInterface
     private $nif;
 
     /**
+     * @var string
+     */
+    private $distributeMethod = 'hash';
+
+    /**
      * @var integer
      */
     private $externalMaxCalls = '0';
@@ -251,6 +256,7 @@ class CompanyDTO implements DataTransferObjectInterface
             'name' => $this->getName(),
             'domainUsers' => $this->getDomainUsers(),
             'nif' => $this->getNif(),
+            'distributeMethod' => $this->getDistributeMethod(),
             'externalMaxCalls' => $this->getExternalMaxCalls(),
             'postalAddress' => $this->getPostalAddress(),
             'postalCode' => $this->getPostalCode(),
@@ -553,6 +559,26 @@ class CompanyDTO implements DataTransferObjectInterface
     public function getNif()
     {
         return $this->nif;
+    }
+
+    /**
+     * @param string $distributeMethod
+     *
+     * @return CompanyDTO
+     */
+    public function setDistributeMethod($distributeMethod)
+    {
+        $this->distributeMethod = $distributeMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDistributeMethod()
+    {
+        return $this->distributeMethod;
     }
 
     /**

@@ -18,7 +18,8 @@ production:
       title: _('SIP domain')
       type: text
       trim: both
-      maxLength: 255
+      maxLength: 190 
+      required: true
     defaultTimezoneId:
       title: _('Default timezone')
       type: select
@@ -204,6 +205,24 @@ production:
             fields:
               - name${lang}
             template: '%name${lang}%'
+          visualFilter:
+            iden:
+              retail:
+                toggle:
+                  - domain_users
+              recordings:
+                toggle:
+                  - recordingsLimitMB
+                  - recordingsDiskUsage
+                  - recordingsLimitEmail
+              billing:
+                toggle:
+                  - postalAddress
+                  - postalCode
+                  - town
+                  - province
+                  - country
+                  - registryData
           order:
             Feature.name: asc
 staging:

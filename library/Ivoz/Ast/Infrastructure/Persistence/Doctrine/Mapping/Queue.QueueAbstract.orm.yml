@@ -5,6 +5,13 @@ Ivoz\Ast\Domain\Model\Queue\QueueAbstract:
       columns:
         - queueId
   fields:
+    name:
+      type: string
+      column: name
+      nullable: false
+      length: 128
+      options:
+        fixed: false
     periodicAnnounce:
       type: string
       nullable: true

@@ -40,7 +40,7 @@ production:
           order:
             Locution.name: asc
     noAnswerLocutionId:
-      title: _('No answer locution')
+      title: _('No input locution')
       type: select
       source:
         data: mapper
@@ -117,13 +117,13 @@ production:
         text: _("Max number of digits the caller can enter. Set to 0 to disable.")
         label: _("Need help?")
     noAnswerTimeout:
-      title: _('No answer timeout')
+      title: _('No input timeout')
       type: number
       defaultValue: 10
       source:
         control: Spinner
     timeoutTargetType:
-      title: _('Timeout target type')
+      title: _('No input target type')
       type: select
       source:
         data: inline
@@ -253,7 +253,7 @@ production:
             User.name: asc
         'null': _("Unassigned")
     timeoutTarget:
-      title: _('Timeout target')
+      title: _('No input target')
       type: ghost
       source:
         class: IvozProvider_Klear_Ghost_IVRCustomTarget

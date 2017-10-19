@@ -11,8 +11,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 trait QueueTrait
 {
     /**
-     * @column name
-     * @var string
+     * @var integer
      */
     protected $id;
 

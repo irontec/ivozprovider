@@ -40,9 +40,10 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE ConditionalRoutesConditions ADD CONSTRAINT FK_425473C9AF230FFD FOREIGN KEY (voiceMailUserId) REFERENCES Users (id) ON DELETE SET NULL');
         $this->addSql('ALTER TABLE Companies DROP FOREIGN KEY Companies_ibfk_11');
         $this->addSql('ALTER TABLE Companies ADD CONSTRAINT FK_B52899C8555117 FOREIGN KEY (mediaRelaySetsId) REFERENCES MediaRelaySets (id) ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE Companies RENAME INDEX outgoingddiruleid TO IDX_B52899CAA0E202');
+        $this->addSql('ALTER TABLE Companies RENAME INDEX outgoingddiruleid TO IDX_B52899FC6BB9C8');
         $this->addSql('ALTER TABLE ConditionalRoutes DROP FOREIGN KEY ConditionalRoutes_ibfk_5');
         $this->addSql('ALTER TABLE ConditionalRoutes ADD CONSTRAINT FK_AFB65F0DAF230FFD FOREIGN KEY (voiceMailUserId) REFERENCES Users (id) ON DELETE SET NULL');
+        $this->addSql('ALTER TABLE ConferenceRooms CHANGE maxMembers maxMembers SMALLINT UNSIGNED DEFAULT 0 NOT NULL');
         $this->addSql('ALTER TABLE Extensions DROP FOREIGN KEY Extensions_ibfk_5');
         $this->addSql('ALTER TABLE Extensions ADD CONSTRAINT FK_9AAD9F7923E42D0D FOREIGN KEY (conferenceRoomId) REFERENCES ConferenceRooms (id) ON DELETE SET NULL');
         $this->addSql('ALTER TABLE Extensions RENAME INDEX conditionalrouteid TO IDX_9AAD9F799E2CE667');
@@ -66,7 +67,7 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE PricingPlansRelCompanies ADD CONSTRAINT FK_78F195D2EDF37044 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE PricingPlansRelCompanies ADD CONSTRAINT FK_78F195D22480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE Users CHANGE maxCalls maxCalls INT UNSIGNED DEFAULT 0 NOT NULL');
-        $this->addSql('ALTER TABLE Users RENAME INDEX outgoingddiruleid TO IDX_D5428AEDCAA0E202');
+        $this->addSql('ALTER TABLE Users RENAME INDEX outgoingddiruleid TO IDX_D5428AEDFC6BB9C8');
         $this->addSql('ALTER TABLE Users RENAME INDEX voicemaillocutionid TO IDX_D5428AEDF32B4B65');
         $this->addSql('ALTER TABLE Features DROP name');
         $this->addSql('ALTER TABLE Domains DROP FOREIGN KEY Domains_ibfk_1');
@@ -76,21 +77,12 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE MatchListPatterns RENAME INDEX matchlistpatterns_ibfk_2 TO MatchListPatternId');
         $this->addSql('ALTER TABLE Countries DROP name, DROP zone');
         $this->addSql('ALTER TABLE Services DROP name, DROP description');
-        $this->addSql('ALTER TABLE ast_ps_endpoints CHANGE named_pickup_group pickup_group VARCHAR(40) DEFAULT NULL');
         $this->addSql('ALTER TABLE ast_ps_endpoints RENAME INDEX retailaccountid TO IDX_800B60515EA9D64D');
-//        $this->addSql('ALTER TABLE ast_ps_aors DROP FOREIGN KEY ast_ps_aors_ibfk_1');
-//        $this->addSql('DROP INDEX id ON ast_ps_aors');
-//        $this->addSql('ALTER TABLE ast_ps_aors DROP PRIMARY KEY');
-//        $this->addSql('ALTER TABLE ast_ps_aors CHANGE id psEndpoint INT UNSIGNED NOT NULL');
-//        $this->addSql('ALTER TABLE ast_ps_aors ADD CONSTRAINT FK_96365EB84FBA0BA FOREIGN KEY (psEndpoint) REFERENCES ast_ps_endpoints (id) ON DELETE CASCADE');
-//        $this->addSql('CREATE INDEX IDX_96365EB84FBA0BA ON ast_ps_aors (psEndpoint)');
-//        $this->addSql('ALTER TABLE ast_ps_aors ADD PRIMARY KEY (sorcery_id)');
         $this->addSql('ALTER TABLE kam_users_address DROP FOREIGN KEY kam_users_address_ibfk_1');
         $this->addSql('ALTER TABLE kam_users_address ADD CONSTRAINT FK_A53CBBF22480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_rtpproxy DROP FOREIGN KEY kam_rtpproxy_ibfk_1');
         $this->addSql('ALTER TABLE kam_rtpproxy ADD CONSTRAINT FK_729D1741C8555117 FOREIGN KEY (mediaRelaySetsId) REFERENCES MediaRelaySets (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_users_domain_attrs DROP FOREIGN KEY kam_users_domain_attrs_ibfk_1');
-//        $this->addSql('DROP INDEX IDX_F444738D4E7FCF41 ON kam_users_domain_attrs');
         $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_1');
         $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_2');
         $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_3');
@@ -116,11 +108,12 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE BrandURLs ADD CONSTRAINT BrandURLs_ibfk_1 FOREIGN KEY (brandId) REFERENCES Brands (id) ON UPDATE CASCADE ON DELETE CASCADE');
         $this->addSql('ALTER TABLE Companies DROP FOREIGN KEY FK_B52899C8555117');
         $this->addSql('ALTER TABLE Companies ADD CONSTRAINT Companies_ibfk_11 FOREIGN KEY (mediaRelaySetsId) REFERENCES MediaRelaySets (id) ON UPDATE CASCADE ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE Companies RENAME INDEX idx_b52899caa0e202 TO outgoingDDIRuleId');
+        $this->addSql('ALTER TABLE Companies RENAME INDEX IDX_B52899FC6BB9C8 TO outgoingDDIRuleId');
         $this->addSql('ALTER TABLE ConditionalRoutes DROP FOREIGN KEY FK_AFB65F0DAF230FFD');
         $this->addSql('ALTER TABLE ConditionalRoutes ADD CONSTRAINT ConditionalRoutes_ibfk_5 FOREIGN KEY (voiceMailUserId) REFERENCES Users (id) ON UPDATE CASCADE ON DELETE SET NULL');
         $this->addSql('ALTER TABLE ConditionalRoutesConditions DROP FOREIGN KEY FK_425473C9AF230FFD');
         $this->addSql('ALTER TABLE ConditionalRoutesConditions ADD CONSTRAINT ConditionalRoutesConditions_ibfk_5 FOREIGN KEY (voiceMailUserId) REFERENCES Users (id) ON UPDATE CASCADE ON DELETE SET NULL');
+        $this->addSql('ALTER TABLE ConferenceRooms CHANGE maxMembers maxMembers TINYINT(3) UNSIGNED DEFAULT 0 NOT NULL');
         $this->addSql('ALTER TABLE Countries ADD name VARCHAR(100) DEFAULT NULL COLLATE utf8_general_ci COMMENT \'[ml]\', ADD zone VARCHAR(55) DEFAULT NULL COLLATE utf8_general_ci COMMENT \'[ml]\'');
         $this->addSql('ALTER TABLE DDIs DROP FOREIGN KEY FK_AA16E1A023E42D0D');
         $this->addSql('ALTER TABLE DDIs DROP FOREIGN KEY FK_AA16E1A0FBA2A6B4');
@@ -168,16 +161,8 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE Timezones ADD timeZoneLabel VARCHAR(20) DEFAULT \'\' NOT NULL COLLATE utf8_general_ci COMMENT \'[ml]\'');
         $this->addSql('ALTER TABLE Timezones ADD CONSTRAINT Timezones_ibfk_2 FOREIGN KEY (countryId) REFERENCES Countries (id) ON UPDATE CASCADE ON DELETE SET NULL');
         $this->addSql('ALTER TABLE Users CHANGE maxCalls maxCalls SMALLINT UNSIGNED DEFAULT 0 NOT NULL');
-        $this->addSql('ALTER TABLE Users RENAME INDEX idx_d5428aedcaa0e202 TO outgoingDDIRuleId');
+        $this->addSql('ALTER TABLE Users RENAME INDEX IDX_D5428AEDFC6BB9C8 TO outgoingDDIRuleId');
         $this->addSql('ALTER TABLE Users RENAME INDEX idx_d5428aedf32b4b65 TO voicemailLocutionId');
-//        $this->addSql('ALTER TABLE ast_ps_aors DROP FOREIGN KEY FK_96365EB84FBA0BA');
-//        $this->addSql('DROP INDEX IDX_96365EB84FBA0BA ON ast_ps_aors');
-//        $this->addSql('ALTER TABLE ast_ps_aors DROP PRIMARY KEY');
-//        $this->addSql('ALTER TABLE ast_ps_aors CHANGE psendpoint id INT UNSIGNED NOT NULL');
-//        $this->addSql('ALTER TABLE ast_ps_aors ADD CONSTRAINT ast_ps_aors_ibfk_1 FOREIGN KEY (id) REFERENCES ast_ps_endpoints (id) ON DELETE CASCADE');
-//        $this->addSql('CREATE UNIQUE INDEX id ON ast_ps_aors (id)');
-//        $this->addSql('ALTER TABLE ast_ps_aors ADD PRIMARY KEY (id)');
-        $this->addSql('ALTER TABLE ast_ps_endpoints CHANGE pickup_group named_pickup_group VARCHAR(40) DEFAULT NULL COLLATE utf8_general_ci');
         $this->addSql('ALTER TABLE ast_ps_endpoints RENAME INDEX idx_800b60515ea9d64d TO retailAccountId');
         $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A6EDF37044');
         $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A64D2CFC16');
@@ -195,6 +180,5 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE kam_users_address DROP FOREIGN KEY FK_A53CBBF22480E723');
         $this->addSql('ALTER TABLE kam_users_address ADD CONSTRAINT kam_users_address_ibfk_1 FOREIGN KEY (companyId) REFERENCES Companies (id) ON UPDATE CASCADE ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_users_domain_attrs ADD CONSTRAINT kam_users_domain_attrs_ibfk_1 FOREIGN KEY (did) REFERENCES Domains (domain) ON UPDATE CASCADE ON DELETE CASCADE');
-//        $this->addSql('CREATE INDEX IDX_F444738D4E7FCF41 ON kam_users_domain_attrs (did)');
     }
 }

@@ -64,7 +64,7 @@ class PsEndpointDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $pickupGroup;
+    private $namedPickupGroup;
 
     /**
      * @var string
@@ -147,7 +147,7 @@ class PsEndpointDTO implements DataTransferObjectInterface
             'directMedia' => $this->getDirectMedia(),
             'directMediaMethod' => $this->getDirectMediaMethod(),
             'mailboxes' => $this->getMailboxes(),
-            'pickupGroup' => $this->getPickupGroup(),
+            'namedPickupGroup' => $this->getNamedPickupGroup(),
             'sendDiversion' => $this->getSendDiversion(),
             'sendPai' => $this->getSendPai(),
             'oneHundredRel' => $this->getOneHundredRel(),
@@ -394,13 +394,13 @@ class PsEndpointDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $pickupGroup
+     * @param string $namedPickupGroup
      *
      * @return PsEndpointDTO
      */
-    public function setPickupGroup($pickupGroup = null)
+    public function setNamedPickupGroup($namedPickupGroup = null)
     {
-        $this->pickupGroup = $pickupGroup;
+        $this->namedPickupGroup = $namedPickupGroup;
 
         return $this;
     }
@@ -408,9 +408,9 @@ class PsEndpointDTO implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getPickupGroup()
+    public function getNamedPickupGroup()
     {
-        return $this->pickupGroup;
+        return $this->namedPickupGroup;
     }
 
     /**

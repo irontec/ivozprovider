@@ -247,6 +247,13 @@ production:
           order:
             Language.name.${lang}: asc
         'null': _("Client's default")
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getRetailAccountStatusIcon
     status:
       title: _('Status')
       type: ghost

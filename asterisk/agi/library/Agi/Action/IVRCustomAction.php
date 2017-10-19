@@ -58,6 +58,8 @@ class IVRCustomAction extends IVRAction
                 // For extension, use extension routing to apply timeout
                 if ($entry->getTargetType() == 'extension') {
                     $extension = $entry->getTargetExtension();
+                    // FIXME Routing to extension should be the same as routing to
+                    // any other option...
                     // !! Route this IVR using th extension parmaters !!
                     $this->_routeType       = $extension->getRouteType();
                     $this->_routeUser       = $extension->getUser();
@@ -65,13 +67,17 @@ class IVRCustomAction extends IVRAction
                     $this->_routeIVRCustom  = $extension->getIVRCustom();
                     $this->_routeHuntGroup  = $extension->getHuntGroup();
                     $this->_routeConference = $extension->getConferenceRoom();
+                    $this->_routeExternal   = $extension->getNumberValue();
                     $this->_routeFriend     = $extension->getFriendValue();
+                    $this->_routeQueue      = $extension->getQueue();
+                    $this->_routeConditionalRoute = $extension->getConditionalRoute();
                 } else {
                     // Route to destination
                     $this->_routeType       = $entry->getTargetType();
                     $this->_routeExtension  = $entry->getTargetExtension();
                     $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
                     $this->_routeExternal   = $entry->getTargetNumberValue();
+                    $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
                 }
                 // Routed! :)
                 return $this->route();

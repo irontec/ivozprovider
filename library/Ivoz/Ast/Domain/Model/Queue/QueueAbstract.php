@@ -12,6 +12,11 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class QueueAbstract
 {
     /**
+     * @var string
+     */
+    protected $name;
+
+    /**
      * @column periodic_announce
      * @var string
      */
@@ -73,8 +78,9 @@ abstract class QueueAbstract
     /**
      * Constructor
      */
-    public function __construct($autopause, $ringinuse)
+    public function __construct($name, $autopause, $ringinuse)
     {
+        $this->setName($name);
         $this->setAutopause($autopause);
         $this->setRinginuse($ringinuse);
 
@@ -144,6 +150,7 @@ abstract class QueueAbstract
         Assertion::isInstanceOf($dto, QueueDTO::class);
 
         $self = new static(
+            $dto->getName(),
             $dto->getAutopause(),
             $dto->getRinginuse());
 
@@ -171,6 +178,7 @@ abstract class QueueAbstract
         Assertion::isInstanceOf($dto, QueueDTO::class);
 
         $this
+            ->setName($dto->getName())
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
@@ -192,6 +200,7 @@ abstract class QueueAbstract
     public function toDTO()
     {
         return self::createDTO()
+            ->setName($this->getName())
             ->setPeriodicAnnounce($this->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($this->getPeriodicAnnounceFrequency())
             ->setTimeout($this->getTimeout())
@@ -210,6 +219,7 @@ abstract class QueueAbstract
     protected function __toArray()
     {
         return [
+            'name' => self::getName(),
             'periodicAnnounce' => self::getPeriodicAnnounce(),
             'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
             'timeout' => self::getTimeout(),
@@ -225,6 +235,33 @@ abstract class QueueAbstract
 
 
     // @codeCoverageIgnoreStart
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        Assertion::notNull($name);
+        Assertion::maxLength($name, 128);
+
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
      * Set periodicAnnounce

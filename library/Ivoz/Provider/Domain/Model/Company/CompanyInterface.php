@@ -172,6 +172,22 @@ interface CompanyInterface extends EntityInterface
     public function getNif();
 
     /**
+     * Set distributeMethod
+     *
+     * @param string $distributeMethod
+     *
+     * @return self
+     */
+    public function setDistributeMethod($distributeMethod);
+
+    /**
+     * Get distributeMethod
+     *
+     * @return string
+     */
+    public function getDistributeMethod();
+
+    /**
      * Set externalMaxCalls
      *
      * @param integer $externalMaxCalls

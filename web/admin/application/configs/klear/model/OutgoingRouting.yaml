@@ -23,7 +23,6 @@ production:
             title: _('Fax')
             visualFilter:
               hide: ["routingPatternId","routingPatternGroupId"]
-      default: true
     routingPatternId:
       title: _('Select destination pattern')
       type: select
@@ -106,6 +105,7 @@ production:
           order:
             Company.name: asc
         'null': _("Apply to all companies")
+      default: true
     target:
       title: _('Destination')
       type: ghost

@@ -85,7 +85,7 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       length: 100
       options:
         fixed: false
-    pickupGroup:
+    namedPickupGroup:
       type: string
       nullable: true
       length: 40

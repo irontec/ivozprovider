@@ -34,6 +34,12 @@ abstract class CompanyAbstract
     protected $nif;
 
     /**
+     * @comment enum:static|rr|hash
+     * @var string
+     */
+    protected $distributeMethod = 'hash';
+
+    /**
      * @var integer
      */
     protected $externalMaxCalls = '0';
@@ -159,6 +165,7 @@ abstract class CompanyAbstract
         $type,
         $name,
         $nif,
+        $distributeMethod,
         $externalMaxCalls,
         $postalAddress,
         $postalCode,
@@ -169,6 +176,7 @@ abstract class CompanyAbstract
         $this->setType($type);
         $this->setName($name);
         $this->setNif($nif);
+        $this->setDistributeMethod($distributeMethod);
         $this->setExternalMaxCalls($externalMaxCalls);
         $this->setPostalAddress($postalAddress);
         $this->setPostalCode($postalCode);
@@ -245,6 +253,7 @@ abstract class CompanyAbstract
             $dto->getType(),
             $dto->getName(),
             $dto->getNif(),
+            $dto->getDistributeMethod(),
             $dto->getExternalMaxCalls(),
             $dto->getPostalAddress(),
             $dto->getPostalCode(),
@@ -289,6 +298,7 @@ abstract class CompanyAbstract
             ->setName($dto->getName())
             ->setDomainUsers($dto->getDomainUsers())
             ->setNif($dto->getNif())
+            ->setDistributeMethod($dto->getDistributeMethod())
             ->setExternalMaxCalls($dto->getExternalMaxCalls())
             ->setPostalAddress($dto->getPostalAddress())
             ->setPostalCode($dto->getPostalCode())
@@ -326,6 +336,7 @@ abstract class CompanyAbstract
             ->setName($this->getName())
             ->setDomainUsers($this->getDomainUsers())
             ->setNif($this->getNif())
+            ->setDistributeMethod($this->getDistributeMethod())
             ->setExternalMaxCalls($this->getExternalMaxCalls())
             ->setPostalAddress($this->getPostalAddress())
             ->setPostalCode($this->getPostalCode())
@@ -360,6 +371,7 @@ abstract class CompanyAbstract
             'name' => self::getName(),
             'domainUsers' => self::getDomainUsers(),
             'nif' => self::getNif(),
+            'distributeMethod' => self::getDistributeMethod(),
             'externalMaxCalls' => self::getExternalMaxCalls(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
@@ -499,6 +511,38 @@ abstract class CompanyAbstract
     public function getNif()
     {
         return $this->nif;
+    }
+
+    /**
+     * Set distributeMethod
+     *
+     * @param string $distributeMethod
+     *
+     * @return self
+     */
+    public function setDistributeMethod($distributeMethod)
+    {
+        Assertion::notNull($distributeMethod);
+        Assertion::maxLength($distributeMethod, 25);
+        Assertion::choice($distributeMethod, array (
+          0 => 'static',
+          1 => 'rr',
+          2 => 'hash',
+        ));
+
+        $this->distributeMethod = $distributeMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get distributeMethod
+     *
+     * @return string
+     */
+    public function getDistributeMethod()
+    {
+        return $this->distributeMethod;
     }
 
     /**

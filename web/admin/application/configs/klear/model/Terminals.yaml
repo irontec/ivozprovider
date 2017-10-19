@@ -26,6 +26,7 @@ production:
       trim: both
       maxLength: 100
       required: true
+      default: true
       info:
         type: box
         position: left
@@ -35,7 +36,7 @@ production:
     domain:
       title: _('Domain')
       type: text
-      maxLength: 255
+      maxLength: 190
     disallow:
       title: _('Disallowed audio codecs')
       type: text
@@ -122,6 +123,13 @@ production:
         control: datetime
         settings:
           disabled: 'false'
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getTerminalStatusIcon
     status:
       title: _('Status')
       type: ghost

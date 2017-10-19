@@ -47,6 +47,7 @@ production:
           registryData: true
           externalMaxCalls: true
           defaultTimezoneId: true
+          distributeMethod: true
           applicationServerId: true
           mediaRelaySetsId: true
           ipFilter: true
@@ -105,6 +106,7 @@ production:
           ipFilter: false
           mediaRelaySetsId: true
           outboundPrefix: true
+          distributeMethod: true
           applicationServerId: true
           externalMaxCalls: false
           countryId: true
@@ -160,6 +162,7 @@ production:
         blacklist:
           type: true
           domainUsers: true
+          distributeMethod: ${auth.isNotMainOperator}
           applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySetsId: ${auth.isNotMainOperator}
           recordingsLimitMB: ${auth.brand.recordings.disabled}
@@ -199,15 +202,16 @@ production:
             defaultTimezoneId: 1
             languageId: 1
         group3:
-          colsPerRow: 2
+          colsPerRow: 12
           label: _("Server data")
           fields:
-            outboundPrefix: 1
-            outgoingDDIId: 1
-            countryId: 1
-            areaCode: 1
-            mediaRelaySetsId: 1
-            applicationServerId: 1
+            outbound_prefix: 6
+            outgoingDDIId: 6
+            countryId: 6
+            areaCode: 6
+            mediaRelaySetsId: 4
+            distributeMethod: 4
+            applicationServerId: 4
         group4:
           colsPerRow: 2
           label: _("Invoice data")
@@ -227,7 +231,6 @@ production:
             recordingsLimitMB: 6
             recordingsDiskUsage: 6
             recordingsLimitEmail: 6
-            __empty1: 6
             onDemandRecord: 6
             onDemandRecordCode: 6
         group6:

@@ -23,6 +23,7 @@ production:
           directMediaMethod: true
           lastProvisionDate: true
           disallow: true
+          status: true
         options:
           title: _("Options")
           screens:
@@ -73,6 +74,7 @@ production:
           disallow: true
           lastProvisionDate: true
           domain: true
+          statusIcon: true
           status: true
       fixedPositions: &TerminalsFixedPositions_link
         group0:
@@ -114,6 +116,7 @@ production:
         blacklist:
           domain: true
           disallow: true
+          statusIcon: true
         order:
           name: true
           password: true

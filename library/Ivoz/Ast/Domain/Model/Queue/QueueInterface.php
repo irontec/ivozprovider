@@ -7,6 +7,22 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface QueueInterface extends EntityInterface
 {
     /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName($name);
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
      * Set periodicAnnounce
      *
      * @param string $periodicAnnounce

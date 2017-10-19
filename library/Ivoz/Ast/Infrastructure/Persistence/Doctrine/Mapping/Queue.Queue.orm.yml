@@ -4,15 +4,13 @@ Ivoz\Ast\Domain\Model\Queue\Queue:
   table: ast_queues
   id:
     id:
-      type: string
-      column: name
+      type: integer
       nullable: false
-      length: 128
       options:
-        fixed: false
+        unsigned: true
       id: true
       generator:
-        strategy: NONE
+        strategy: IDENTITY
   lifecycleCallbacks:
     postLoad:
       - initChangelog
