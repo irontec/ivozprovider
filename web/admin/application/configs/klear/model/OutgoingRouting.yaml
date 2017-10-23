@@ -23,6 +23,7 @@ production:
             title: _('Fax')
             visualFilter:
               hide: ["routingPatternId","routingPatternGroupId"]
+              show: []
     routingPatternId:
       title: _('Select destination pattern')
       type: select

@@ -15,7 +15,7 @@ production:
               - type
             template: '%type%'
           order:
-            type: asc
+            Company.type: ASC
       default: true
     name:
       title: _('Name')

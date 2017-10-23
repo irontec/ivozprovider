@@ -2,6 +2,8 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
+use Doctrine\ORM\Event\PostFlushEventArgs;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleSubscriber;
@@ -22,6 +24,10 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     protected $serviceContainer;
 
+    protected $cycleInProgress = false;
+
+    protected $entityQueue = [];
+
     public function __construct(
         ContainerInterface $serviceContainer,
         EntityManagerInterface $em
@@ -39,7 +45,7 @@ class DoctrineEventSubscriber implements EventSubscriber
             'postUpdate',
 
             'preRemove',
-            'postRemove',
+            'postRemove'
         );
     }
 
@@ -75,21 +81,45 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     protected function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
-        $this->runSharedServices($eventName, $args, $isNew);
-        $this->runEntityServices($eventName, $args, $isNew);
+        $entity = $args->getObject();
+        $entityClassName = get_class($entity);
 
-        $isTheEndOfTheEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
-        if (!$isTheEndOfTheEntityLifecycle) {
+        $isTheEndOfCurrentEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
+        if (!$isTheEndOfCurrentEntityLifecycle) {
+            $this->cycleInProgress = true;
+            array_unshift($this->entityQueue, $entityClassName);
+            $this->runServices($eventName, $args, $isNew);
             return;
         }
 
-        $scheduledEntityInsertions = count(
-            $this->em->getUnitOfWork()->getScheduledEntityInsertions()
-        );
-
-        if ($scheduledEntityInsertions > 0) {
-            $this->em->flush();
+        $this->runServices($eventName, $args, $isNew);
+        $key = array_search($entityClassName, $this->entityQueue);
+        if ($key !== false) {
+            unset($this->entityQueue[$key]);
         }
+
+        $isEndOfCycle = count($this->entityQueue) === 0;
+        if (!$isEndOfCycle) {
+            return;
+        }
+
+        /**
+         * Unit of work is recalculated every time flush is called,
+         * so calling it again seems to be the only way to ensure that
+         * there are no pending enqueued queries generated during any lifecycle
+         */
+        $this->em->flush();
+    }
+
+    /**
+     * @param $eventName
+     * @param LifecycleEventArgs $args
+     * @param bool $isNew
+     */
+    protected function runServices($eventName, LifecycleEventArgs $args, bool $isNew)
+    {
+        $this->runSharedServices($eventName, $args, $isNew);
+        $this->runEntityServices($eventName, $args, $isNew);
     }
 
     private function runSharedServices($eventName, LifecycleEventArgs $args, bool $isNew)
@@ -107,7 +137,6 @@ class DoctrineEventSubscriber implements EventSubscriber
          */
         $service = $this->serviceContainer->get($serviceName);
         $service->execute($entity, $isNew);
-
     }
 
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)

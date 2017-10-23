@@ -71,7 +71,8 @@ class UpdateByRoutingPatternAndCountry
 
             $routingPatternGroup = $this->entityPersister->persistDto(
                 $routingPatternGroupDto,
-                null
+                null,
+                true
             );
         }
 

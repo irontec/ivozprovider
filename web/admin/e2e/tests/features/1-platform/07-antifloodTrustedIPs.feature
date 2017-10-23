@@ -1,7 +1,7 @@
 @platform
 @antifloodTrustedIPs
 @kamPikeTrusted
-@07
+@platform07
 
 Feature: Antiflood Trusted IPs admin page
   As a main operator

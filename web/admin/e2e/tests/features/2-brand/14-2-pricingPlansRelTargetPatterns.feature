@@ -2,7 +2,7 @@
 @pricingPlansRelTargetPatterns
 @brand15
 @brand15-2
-@todo
+@skip
 
 Feature: Pricing plans - Target patterns admin page
   As a main operator

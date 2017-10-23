@@ -1,7 +1,7 @@
 @brand
 @brandDDIs
 @brand08
-@todo
+@skip
 
 Feature: Authorized sources admin page
   As a main operator

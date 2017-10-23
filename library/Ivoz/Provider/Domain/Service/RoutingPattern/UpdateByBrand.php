@@ -69,7 +69,8 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
             $routingPattern = $this->entityPersister->persistDto(
                 $routingPatternDto,
-                null
+                null,
+                true
             );
 
             $this->routingPatternGroupByRoutingPatternAndCountry->execute(

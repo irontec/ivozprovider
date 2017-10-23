@@ -1,0 +1,4 @@
+{
+  "name": "testCallACLPattern",
+  "regExp": "[^0-9]"
+}

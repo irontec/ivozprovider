@@ -1,6 +1,7 @@
 @platform
 @mediaRelays
-@06-2
+@platform06
+@platform06-2
 
 Feature: Media relays admin page
   As a main operator

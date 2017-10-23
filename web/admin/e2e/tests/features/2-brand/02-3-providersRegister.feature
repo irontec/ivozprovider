@@ -3,7 +3,7 @@
 @kamTrunksUacreg
 @brand02
 @brand02-3
-@todo
+@skip
 
 Feature: Peer servers admin page
   As a main operator

@@ -2,6 +2,7 @@
 @peerServers
 @brand02
 @brand02-2
+@brand03
 
 Feature: Peer servers admin page
   As a main operator

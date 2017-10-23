@@ -1,6 +1,6 @@
 @platform
 @applicationServers
-@03
+@platform03
 
 Feature: Application Server admin page
   As a main operator

@@ -1,6 +1,6 @@
 @platform
 @proxyUsers
-@04
+@platform04
 
 Feature: Proxy Users admin page
   As a main operator

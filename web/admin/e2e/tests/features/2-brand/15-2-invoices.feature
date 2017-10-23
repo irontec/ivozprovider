@@ -2,7 +2,7 @@
 @invoices
 @brand15
 @brand15-2
-@todo
+@skip
 
 Feature: Invoices admin page
   As a main operator

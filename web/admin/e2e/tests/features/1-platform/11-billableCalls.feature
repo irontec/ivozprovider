@@ -1,7 +1,7 @@
 #platform
 @kamAccCdrs
-@11
-@todo
+@platform11
+@skip
 
 Feature: Billable calls admin page
   As a main operator

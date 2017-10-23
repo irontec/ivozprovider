@@ -1,8 +1,8 @@
 #platform
 @parsedCDRs
 @parsedCDRsPlatform
-@12
-@todo
+@platform12
+@skip
 
 Feature: Parsed CDRs admin page
   As a main operator

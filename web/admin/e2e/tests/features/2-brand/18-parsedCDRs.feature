@@ -2,7 +2,7 @@
 @parsedCDRs
 @parsedCDRsBrand
 @18
-@todo
+@skip
 
 Feature: Billable calls admin page
   As a main operator

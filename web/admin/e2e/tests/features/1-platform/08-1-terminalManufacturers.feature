@@ -1,6 +1,7 @@
 @platform
 @terminalManufacturers
-@08-1
+@platform08
+@platform08-1
 
 Feature: Terminal manufacturers admin page
   As a main operator

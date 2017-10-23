@@ -35,9 +35,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Queue Member', 'Queue Members', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions:
-        screens:
-          queueMembersEdit_screen: true
     queueMembersEdit_screen: &queueMembersEdit_screenLink
       <<: *QueueMembers
       controller: edit

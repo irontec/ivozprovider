@@ -15,14 +15,24 @@ class UserDoctrineRepository extends EntityRepository implements UserRepository
 {
     const ENTITY_ALIAS = 'user';
 
-    public function getAssignedTerminalIds()
+    public function getAssignedTerminalIds(array $userIdsToExclude)
     {
         $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
         $where = $qb->expr()->isNotNull(self::ENTITY_ALIAS . '.terminal');
-        $qb->select('IDENTITY(user.terminal)')
+        $qb
+           ->select('IDENTITY(user.terminal)')
            ->where(
                $where
            );
+
+        foreach ($userIdsToExclude as $id) {
+            $qb->andWhere(
+                $qb->expr()->neq(
+                    self::ENTITY_ALIAS . '.id',
+                    $id
+                )
+            );
+        }
 
         $results = $qb
             ->getQuery()

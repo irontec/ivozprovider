@@ -125,9 +125,6 @@ production:
             fromDomain: 2
             languageId: 2
       shortcutOption: N
-      postActionOptions:
-        screens:
-          friendsEdit_screen: true
     friendsEdit_screen: &friendsEdit_screenLink
       <<: *Friends
       controller: edit

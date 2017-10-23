@@ -42,8 +42,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      * @param EntityInterface|null $entity
      * @return EntityInterface|mixed
      */
-    public function persistDto(DataTransferObjectInterface $dto, EntityInterface $entity = null, $dispatchImmediately = true)
-    {
+    public function persistDto(
+        DataTransferObjectInterface $dto,
+        EntityInterface $entity = null,
+        $dispatchImmediately = false
+    ) {
         if (is_null($entity)) {
             $entityClass = substr(get_class($dto), 0, -3);
             $entity = $this
@@ -69,7 +72,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      * @param boolean $dispatchImmediately
      * @return void
      */
-    public function persist(EntityInterface $entity = null, $dispatchImmediately = true)
+    public function persist(EntityInterface $entity = null, $dispatchImmediately = false)
     {
         $this->em->persist($entity);
         if ($dispatchImmediately) {

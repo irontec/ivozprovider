@@ -36,9 +36,6 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Friend Pattern', 'Friend Patterns', 1), "[format| (%parent%)]")
       shortcutOption: N
-      postActionOptions:
-        screens:
-          friendsPatternsEdit_screen: true
     friendsPatternsEdit_screen: &friendsPatternsEdit_screenLink
       <<: *FriendsPatterns
       controller: edit

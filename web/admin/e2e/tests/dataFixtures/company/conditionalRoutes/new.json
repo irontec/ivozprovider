@@ -1,0 +1,15 @@
+{
+  "name": "testConditional",
+  "locutionId": "__NULL__",
+  "routeType": "user",
+  "IVRCommonId": "__NULL__",
+  "IVRCustomId": "__NULL__",
+  "huntGroupId": "__NULL__",
+  "voiceMailUserId": "__NULL__",
+  "userId": "1",
+  "numberValue": "",
+  "friendValue": "",
+  "queueId": "__NULL__",
+  "conferenceRoomId": "__NULL__",
+  "extensionId": "__NULL__"
+}

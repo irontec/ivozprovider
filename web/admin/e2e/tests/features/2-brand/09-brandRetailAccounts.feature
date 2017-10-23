@@ -1,7 +1,7 @@
 @brand
 @BrandRetailAccounts
 @brand09
-@todo
+@skip
 
 Feature: Authorized sources admin page
   As a main operator

@@ -7,6 +7,6 @@ use Doctrine\Common\Collections\Selectable;
 
 interface UserRepository extends ObjectRepository, Selectable
 {
-    public function getAssignedTerminalIds();
+    public function getAssignedTerminalIds(array $userIdsToExclude);
 }
 

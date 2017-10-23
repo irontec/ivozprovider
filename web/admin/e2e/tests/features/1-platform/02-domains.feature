@@ -1,6 +1,6 @@
 @platform
 @domains
-@02
+@platform02
 
 Feature: Domain admin page
   As a main operator

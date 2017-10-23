@@ -1,6 +1,7 @@
 @platform
 @terminalModels
-@08-2
+@platform08
+@platform08-2
 
 Feature: Terminal models operator admin page
   As a main operator

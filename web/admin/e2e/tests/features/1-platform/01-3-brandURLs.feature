@@ -1,6 +1,7 @@
 @platform
 @brandURLs
-@01-3
+@platform01
+@platform01-3
 
 Feature: Brand url admin page
   As a main operator

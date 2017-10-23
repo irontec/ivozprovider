@@ -9,11 +9,13 @@ production:
       source:
         data: mapper
         config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
           fieldName:
             fields:
               - type
             template: '%type%'
-          order: type
+          order:
+            Company.type: ASC
       default: true
     name:
       title: _('Name')
