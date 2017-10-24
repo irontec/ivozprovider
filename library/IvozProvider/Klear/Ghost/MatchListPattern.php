@@ -21,7 +21,7 @@ class IvozProvider_Klear_Ghost_MatchListPattern extends KlearMatrix_Model_Field_
                         MatchListPattern::class,
                         $model->getId(),
                         'getNumberE164',
-                        ['+']
+                        []
                     );
 
             case 'regexp':

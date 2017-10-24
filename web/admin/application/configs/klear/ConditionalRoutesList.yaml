@@ -33,6 +33,7 @@ production:
           conferenceRoomId: true
           userId: true
           voiceMailUserId: true
+          numberCountryId: true
           numberValue: true
           friendValue: true
           queueId: true
@@ -60,6 +61,8 @@ production:
       forcedValues:
         <<: *forcedCompany
       shortcutOption: N
+      defaultValues:
+        numberCountryId: ${auth.companyCountryId}
       fields:
         blacklist: &conditionalRoutesBlacklist_link
           target: true
@@ -74,13 +77,14 @@ production:
           colsPerRow: 6
           fields:
             locutionId: 6
-            routeType: 3
+            routeType: 2
             IVRCommonId: 3
             IVRCustomId: 3
             huntGroupId: 3
             voiceMailUserId: 3
             userId: 3
-            numberValue: 3
+            numberCountryId: 2
+            numberValue: 2
             friendValue: 3
             queueId: 3
             conferenceRoomId: 3

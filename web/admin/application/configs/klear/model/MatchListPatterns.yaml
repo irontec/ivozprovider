@@ -62,7 +62,7 @@ production:
             fields:
               - name${lang}
               - callingCode
-            template: '%name${lang}% (+%callingCode%)'
+            template: '%name${lang}% (%callingCode%)'
           order:
             Country.name.${lang}: asc
     numberValue:

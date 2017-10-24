@@ -16,14 +16,15 @@ production:
       fields:
         order:
           entry: true
-          welcomeLocution: true
+          welcomeLocutionId: true
           targetType: true
           target: true
         blacklist:
+          targetNumberCountryId: true
           targetNumberValue: true
-          targetExtension: true
-          targetVoiceMailUser: true
-          targetConditionalRoute: true
+          targetExtensionId: true
+          targetVoiceMailUserId: true
+          targetConditionalRouteId: true
         options:
           title: _("Options")
           screens:
@@ -45,6 +46,8 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('IVR Custom entry', 'IVR Custom entries', 1))
       shortcutOption: N
+      defaultValues:
+        targetNumberCountryId: ${auth.companyCountryId}
       fields:
         blacklist:
           target: true
@@ -54,16 +57,17 @@ production:
           colsPerRow: 8
           fields:
             entry: 4
-            welcomeLocution: 4
+            welcomeLocutionId: 4
         group1:
           label: _("Routing configuration")
-          colsPerRow: 8
+          colsPerRow: 12
           fields:
             targetType: 4
+            targetNumberCountryId: 4
             targetNumberValue: 4
-            targetExtension: 4
-            targetVoiceMailUser: 5
-            targetConditionalRoute: 5
+            targetExtensionId: 4
+            targetVoiceMailUserId: 5
+            targetConditionalRouteId: 5
 
     ivrCustomEntriesEdit_screen: &IvrCustomEntriesEdit_screenLink
       <<: *IvrCustomEntries
@@ -76,6 +80,7 @@ production:
           target: true
       fixedPositions:
         <<: *IvrCustomEntriesFixedPositions_link
+
   dialogs: &IvrCustomEntries_dialogsLink
     ivrCustomEntriesDel_dialog: &IvrCustomEntriesDel_dialogLink
       <<: *IvrCustomEntries

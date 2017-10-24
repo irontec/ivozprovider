@@ -48,101 +48,78 @@ production:
             title: _("Unassigned")
             visualFilter:
               show: [ ]
-              hide: [
-                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "voiceMailUserId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              hide: &routableFields
+                - numberCountryId
+                - numberValue
+                - IVRCommonId
+                - IVRCustomId
+                - userId
+                - huntGroupId
+                - voiceMailUserId
+                - friendValue
+                - queueId
+                - conferenceRoomId
+                - extensionId
           'user':
             title: ngettext('User', 'Users', 1)
             visualFilter:
-              show: [ "userId" ]
-              hide: [
-                "numberValue", "IVRCommonId", "IVRCustomId", "huntGroupId",
-                "voiceMailUserId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ userId ]
+              hide:
+                <<: *routableFields
           'IVRCommon':
             title: ngettext('IVR Common', 'IVRs Common', 1)
             visualFilter:
-              show: [ "IVRCommonId" ]
-              hide: [
-                "numberValue", "userId", "IVRCustomId", "huntGroupId",
-                "voiceMailUserId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ IVRCommonId ]
+              hide:
+                <<: *routableFields
           'IVRCustom':
             title: ngettext('IVR Custom', 'IVRs Custom', 1)
             visualFilter:
-              show: [ "IVRCustomId" ]
-              hide: [
-                "numberValue", "IVRCommonId", "userId", "huntGroupId",
-                "voiceMailUserId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ IVRCustomId ]
+              hide:
+                <<: *routableFields
           'huntGroup':
             title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
-              show: [ "huntGroupId" ]
-              hide: [
-                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
-                "voiceMailUserId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ huntGroupId ]
+              hide:
+                <<: *routableFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ "voiceMailUserId" ]
-              hide: [
-                "numberValue", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ voiceMailUserId ]
+              hide:
+                <<: *routableFields
           'number':
             title: _('Number')
             visualFilter:
-              show: [ "numberValue" ]
-              hide: [
-                "voiceMailUserId", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "friendValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ numberCountryId, numberValue ]
+              hide:
+                <<: *routableFields
           'friend':
             title: ngettext('Friend', 'Friends', 1)
             visualFilter:
-              show: [ "friendValue" ]
-              hide: [
-                "voiceMailUserId", "IVRCommonId", "IVRCustomId", "userId",
-                "huntGroupId", "numberValue", "queueId",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ friendValue ]
+              hide:
+                <<: *routableFields
           'queue':
             title: ngettext('Queue', 'Queues', 1)
             visualFilter:
-              show: [ "queueId" ]
-              hide: [
-                "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
-                "userId", "huntGroupId", "numberValue",
-                "conferenceRoomId", "extensionId"
-              ]
+              show: [ queueId ]
+              hide:
+                <<: *routableFields
           'conferenceRoom':
             title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
-              show: [ "conferenceRoomId" ]
-              hide: [
-              "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
-              "userId", "huntGroupId", "numberValue",
-              "queueId", "extensionId"
-            ]
+              show: [ conferenceRoomId ]
+              hide:
+                <<: *routableFields
           'extension':
             title: _('Extension')
             visualFilter:
-              show: [ "extensionId" ]
-              hide: [
-              "friendValue", "voiceMailUserId", "IVRCommonId", "IVRCustomId",
-              "userId", "huntGroupId", "numberValue",
-              "queueId", "conferenceRoomId"
-            ]
+              show: [ extensionId ]
+              hide:
+                <<: *routableFields
     IVRCommonId:
       title: ngettext('IVR Common', 'IVRs Common', 1)
       type: select
@@ -221,6 +198,21 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
+    numberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - callingCode
+            template: '%name${lang}% (%callingCode%)'
+          order:
+            Country.name.${lang}: asc
     numberValue:
       title: _('Number')
       type: text
@@ -283,7 +275,7 @@ production:
       title: _('Target')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_RouteTarget
+        class: IvozProvider_Klear_Ghost_DDITarget
         method: getData
 staging:
   _extends: production

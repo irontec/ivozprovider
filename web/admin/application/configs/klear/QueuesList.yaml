@@ -40,10 +40,12 @@ production:
           timeoutTargetType: true
           timeoutVoiceMailUserId: true
           timeoutExtensionId: true
+          timeoutNumberCountryId: true
           timeoutNumberValue: true
           fullLocutionId: true
           fullTargetType: true
           fullExtensionId: true
+          fullNumberCountryId: true
           fullNumberValue: true
           fullVoiceMailUserId: true
           periodicAnnounceLocutionId: true
@@ -54,6 +56,7 @@ production:
           queuesNew_screen: true
         dialogs:
           queuesDel_dialog: true
+
     queuesNew_screen: &queuesNew_screenLink
       <<: *Queues
       controller: new
@@ -62,6 +65,9 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Queue', 'Queues', 1), "[format| (%parent%)]")
       shortcutOption: N
+      defaultValues:
+        timeoutNumberCountryId: ${auth.companyCountryId}
+        fullNumberCountryId: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -93,20 +99,22 @@ production:
           fields:
             maxWaitTime: 6
             timeoutLocutionId: 6
-            timeoutTargetType: 6
+            timeoutTargetType: 4
             timeoutExtensionId: 6
             timeoutVoiceMailUserId: 6
-            timeoutNumberValue: 6
+            timeoutNumberCountryId: 4
+            timeoutNumberValue: 4
         group5:
           label: _('Full Queue configuration')
           colsPerRow: 12
           fields:
             maxlen: 6
             fullLocutionId: 6
-            fullTargetType: 6
+            fullTargetType: 4
             fullExtensionId: 6
             fullVoiceMailUserId: 6
-            fullNumberValue: 6
+            fullNumberCountryId: 4
+            fullNumberValue: 4
     queuesEdit_screen: &queuesEdit_screenLink
       <<: *Queues
       controller: edit

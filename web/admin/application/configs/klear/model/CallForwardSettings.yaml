@@ -37,19 +37,19 @@ production:
           'inconditional':
             title: _('Inconditional')
             visualFilter:
-              hide: ["noAnswerTimeout"]
+              hide: [ noAnswerTimeout ]
           'noAnswer':
             title: _('No Answer')
             visualFilter:
-              show: ["noAnswerTimeout"]
+              show: [ noAnswerTimeout ]
           'busy':
             title: _('Busy')
             visualFilter:
-              hide: ["noAnswerTimeout"]
+              hide: [ noAnswerTimeout]
           'userNotRegistered':
             title: _('Not Registered')
             visualFilter:
-              hide: ["noAnswerTimeout"]
+              hide: [ noAnswerTimeout ]
     targetType:
       title: _('Target type')
       type: select
@@ -60,18 +60,33 @@ production:
           'number':
             title: _('Number')
             visualFilter:
-              show: ["numberValue"]
-              hide: ["extensionId", "voiceMailUserId"]
+              show: [ numberCountryId, numberValue ]
+              hide: [ extensionId, voiceMailUserId ]
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["extensionId"]
-              hide: ["numberValue", "voiceMailUserId"]
+              show: [ extensionId ]
+              hide: [ numberCountryId, numberValue, voiceMailUserId ]
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["voiceMailUserId"]
-              hide: ["extensionId", "numberValue"]
+              show: [ voiceMailUserId ]
+              hide: [ extensionId, numberCountryId, numberValue ]
+    numberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - callingCode
+            template: '%name${lang}% (%callingCode%)'
+          order:
+            Country.name.${lang}: asc
     numberValue:
       title: _('Number')
       pattern: "^[0-9]+$"
@@ -86,7 +101,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\Extension\Extension
-          filterClass: IvozProvider_Klear_Filter_ForwardExtension
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields: 
               - number

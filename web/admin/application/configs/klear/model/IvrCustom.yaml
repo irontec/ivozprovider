@@ -124,24 +124,46 @@ production:
         data: inline
         values:
           '__null__':
-            title:  _("Unassigned")
+            title: _('Unassigned')
             visualFilter:
-              hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
+              hide: &timeoutFields
+                - timeoutNumberCountryId
+                - timeoutNumberValue
+                - timeoutExtensionId
+                - timeoutVoiceMailUserId
           'number':
             title: _('Number')
             visualFilter:
-              show: ["timeoutNumberValue"]
-              hide: ["timeoutExtensionId", "timeoutVoiceMailUserId" ]
+              show: [ timeoutNumberValue, timeoutNumberCountryId ]
+              hide:
+                <<: *timeoutFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["timeoutExtensionId"]
-              hide: ["timeoutNumberValue", "timeoutVoiceMailUserId" ]
+              show: [ timeoutExtensionId ]
+              hide:
+                <<: *timeoutFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["timeoutVoiceMailUserId"]
-              hide: ["timeoutExtensionId", "timeoutNumberValue"]
+              show: [ timeoutVoiceMailUserId ]
+              hide:
+                <<: *timeoutFields
+    timeoutNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - callingCode
+            template: '%name${lang}% (%callingCode%)'
+          order:
+            Country.name.${lang}: asc
     timeoutNumberValue:
       title: _('Number')
       type: text
@@ -187,24 +209,46 @@ production:
         data: inline
         values:
           '__null__':
-            title:  _("Unassigned")
+            title: _('Unassigned')
             visualFilter:
-              hide: ["errorNumberValue", "errorExtensionId", "errorVoiceMailUserId"]
+              hide: &errorFields
+                - errorNumberCountryId
+                - errorNumberValue
+                - errorExtensionId
+                - errorVoiceMailUserId
           'number':
             title: _('Number')
             visualFilter:
-              show: ["errorNumberValue"]
-              hide: ["errorExtensionId", "errorVoiceMailUserId" ]
+              show: [ errorNumberValue, errorNumberCountryId ]
+              hide:
+                <<: *errorFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["errorExtensionId"]
-              hide: ["errorNumberValue", "errorVoiceMailUserId" ]
+              show: [ errorExtensionId ]
+              hide:
+                <<: *errorFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["errorVoiceMailUserId"]
-              hide: ["errorExtensionId", "errorNumberValue"]
+              show: [ errorVoiceMailUserId ]
+              hide:
+                <<: *errorFields
+    errorNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - callingCode
+            template: '%name${lang}% (%callingCode%)'
+          order:
+            Country.name.${lang}: asc
     errorNumberValue:
       title: _('Number')
       type: text

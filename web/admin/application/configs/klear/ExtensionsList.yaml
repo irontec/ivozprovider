@@ -31,6 +31,7 @@ production:
           huntGroupId: true
           userId: true
           conferenceRoomId: true
+          numberCountryId: true
           numberValue: true
           friendValue: true
           queueId: true
@@ -46,6 +47,7 @@ production:
         dialogs:
           extensionsDel_dialog: true
           importExtensions_dialog: false
+
     extensionsNew_screen: &extensionsNew_screenLink
       <<: *Extensions
       controller: new
@@ -56,6 +58,8 @@ production:
       forcedValues:
         <<: *forcedCompany
       shortcutOption: N
+      defaultValues:
+        numberCountryId: ${auth.companyCountryId}
       fields:
         blacklist:
           target: true
@@ -65,18 +69,20 @@ production:
           fields:
             number: 1
         group1:
-          colsPerRow: 3
+          colsPerRow: 6
           fields:
             routeType: 2
-            IvrCommonId: 1
-            IvrCustomId: 1
-            huntGroupId: 1
-            conferenceRoomId: 1
-            userId: 1
-            numberValue: 1
-            friendValue: 1
-            queueId: 1
-            conditionalRouteId: 1
+            IvrCommonId: 3
+            IvrCustomId: 3
+            huntGroupId: 3
+            conferenceRoomId: 3
+            userId: 3
+            numberCountryId: 2
+            numberValue: 2
+            friendValue: 3
+            queueId: 3
+            conditionalRouteId: 3
+
     extensionsEdit_screen: &extensionsEdit_screenLink
       <<: *Extensions
       controller: edit

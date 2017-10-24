@@ -31,40 +31,45 @@ production:
           holidayLocutionId: true
           outOfScheduleLocutionId: true
           holidayTargetType: false
+          holidayNumberCountryId: true
           holidayNumberValue: true
           holidayExtensionId: true
           holidayVoiceMailUserId: true
           outOfScheduleTargetType: false
+          outOfScheduleNumberCountryId: true
           outOfScheduleNumberValue: true
           outOfScheduleExtensionId: true
           outOfScheduleVoiceMailUserId: true
-          ExternalCallFilterWhiteLists: true
-          ExternalCallFilterBlackLists: true
+          whiteLists: true
+          blackLists: true
         order: &externalCallFilters_orderLink
           name: true
           welcomeLocutionId: true
-          ExternalCallFilterWhiteLists: true
-          ExternalCallFilterBlackLists: true
+          whiteLists: true
+          blackLists: true
           holidayLocutionId: true
           holidayTargetType: true
           holidayTarget: true
+          holidayNumberCountryId: true
           holidayNumberValue: true
           holidayExtensionId: true
           holidayVoiceMailUserId: true
           outOfScheduleLocutionId: true
           outOfScheduleTargetType: true
           outOfScheduleTarget: true
+          outOfScheduleNumberCountryId: true
           outOfScheduleNumberValue: true
           outOfScheduleExtensionId: true
           outOfScheduleVoiceMailUserId: true
-          ExternalCallFilterRelCalendars: true
-          ExternalCallFilterRelSchedules: true
+          calendars: true
+          schedules: true
       options:
         title: _("Options")
         screens:
           externalCallFiltersNew_screen: true
         dialogs:
           externalCallFiltersDel_dialog: true
+
     externalCallFiltersNew_screen: &externalCallFiltersNew_screenLink
       <<: *ExternalCallFilters
       controller: new
@@ -73,6 +78,9 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('External call filter', 'External call filters', 1))
       shortcutOption: N
+      defaultValues:
+        holidayNumberCountryId: ${auth.companyCountryId}
+        outOfScheduleNumberCountryId: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -83,37 +91,41 @@ production:
           outOfScheduleTarget: true
       fixedPositions: &externalCallFilters_fixedPositionsLink
         group0:
+          label: _("Basic Info")
           colsPerRow: 2
           fields:
             companyId: 1
             name: 1
             welcomeLocutionId: 1
         group1:
+          label: _("Filtering info")
           colsPerRow: 12
           fields:
-            ExternalCallFilterWhiteLists: 6
-            ExternalCallFilterBlackLists: 6
+            whiteLists: 6
+            blackLists: 6
         group3:
-          colsPerRow: 2
+          colsPerRow: 7
+          label: _("Holidays configuration")
           fields:
-            holidayLocutionId: 2
-            holidayTargetType: 1
-            holidayNumberValue: 1
-            holidayExtensionId: 1
-            holidayVoiceMailUserId: 1
+            calendars: 3
+            holidayLocutionId: 3
+            holidayTargetType: 2
+            holidayNumberCountryId: 2
+            holidayNumberValue: 2
+            holidayExtensionId: 3
+            holidayVoiceMailUserId: 3
         group4:
-          colsPerRow: 2
+          colsPerRow: 6
+          label: _("Out of schedule configuration")
           fields:
-            outOfScheduleLocutionId: 2
-            outOfScheduleTargetType: 1
-            outOfScheduleNumberValue: 1
-            outOfScheduleExtensionId: 1
-            outOfScheduleVoiceMailUserId: 1
-        group5:
-          colsPerRow: 2
-          fields:
-            ExternalCallFilterRelCalendars: 1
-            ExternalCallFilterRelSchedules: 1
+            schedules: 3
+            outOfScheduleLocutionId: 3
+            outOfScheduleTargetType: 2
+            outOfScheduleNumberCountryId: 2
+            outOfScheduleNumberValue: 2
+            outOfScheduleExtensionId: 3
+            outOfScheduleVoiceMailUserId: 3
+
     externalCallFiltersEdit_screen: &externalCallFiltersEdit_screenLink
       <<: *ExternalCallFilters
       controller: edit
@@ -130,6 +142,7 @@ production:
           outOfScheduleTarget: true
       fixedPositions:
         <<: *externalCallFilters_fixedPositionsLink
+
   dialogs: &externalCallFilters_dialogsLink
     externalCallFiltersDel_dialog: &externalCallFiltersDel_dialogLink
       <<: *ExternalCallFilters

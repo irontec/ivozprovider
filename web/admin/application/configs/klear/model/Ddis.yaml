@@ -52,101 +52,77 @@ production:
             title: _("Unassigned")
             visualFilter:
               show: [ ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId","faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              hide: &routableFields
+                - IVRCommonId
+                - IVRCustomId
+                - huntGroupId
+                - userId
+                - faxId
+                - conferenceRoomId
+                - friendValue
+                - queueId
+                - retailAccountId
+                - conditionalRouteId
           'user':
             title: ngettext('User', 'Users', 1)
             visualFilter:
-              show: ["userId" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ userId ]
+              hide:
+                <<: *routableFields
           'IVRCommon':
             title: ngettext('IVR Common', 'IVRs Common', 1)
             visualFilter:
-              show: [ "IVRCommonId" ]
-              hide: [
-                "userId", "IVRCustomId", "huntGroupId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ IVRCommonId ]
+              hide:
+                <<: *routableFields
           'IVRCustom':
             title: ngettext('IVR Custom', 'IVR Custom', 1)
             visualFilter:
-              show: [ "IVRCustomId" ]
-              hide: [
-                "IVRCommonId", "userId", "huntGroupId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ IVRCustomId ]
+              hide:
+                <<: *routableFields
           'huntGroup':
             title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
-              show: [ "huntGroupId" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "userId", "faxId",
-                "conferenceRoomId", "friendValue", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ huntGroupId ]
+              hide:
+                <<: *routableFields
           'fax':
             title: ngettext('Fax', 'Faxes', 1)
             visualFilter:
-              show: [ "faxId" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId",
-                "conferenceRoomId", "recordCalls", "friendValue", "queueId",
-                "retailAccountId", "conditionalRouteId"
-              ]
+              show: [ faxId ]
+              hide:
+                <<: *routableFields
           'conferenceRoom':
             title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
-              show: [ "conferenceRoomId" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                "friendValue", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ conferenceRoomId ]
+              hide:
+                <<: *routableFields
           'friend':
             title: ngettext('Friend', 'Friends', 1)
             visualFilter:
-              show: [ "friendValue" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                "conferenceRoomId", "queueId", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ friendValue ]
+              hide:
+                <<: *routableFields
           'queue':
             title: ngettext('Queue', 'Queues', 1)
             visualFilter:
-              show: [ "queueId" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                "conferenceRoomId", "friendValue", "retailAccountId",
-                "conditionalRouteId"
-              ]
+              show: [ queueId ]
+              hide:
+                <<: *routableFields
           'retailAccount':
             title: _('Retail Account')
             visualFilter:
-              show: [ "retailAccountId", "recordCalls" ]
-              hide: [
-                "IVRCommonId", "IVRCustomId", "huntGroupId", "userId", "faxId",
-                  "conferenceRoomId", "friendValue", "queueId",
-                  "conditionalRouteId"
-              ]
+              show: [ retailAccountId, recordCalls ]
+              hide:
+                <<: *routableFields
           'conditional':
             title: _('Conditional Route')
             visualFilter:
-              show: [ "conditionalRouteId" ]
-              hide: [
-                "friendValue", "conferenceRoomId", "IVRCommonId", "IVRCustomId",
-                "userId", "huntGroupId", "numberValue", "queueId", "faxId",
-                "retailAccountId"
-              ]
+              show: [ conditionalRouteId ]
+              hide:
+                <<: *routableFields
     recordCalls:
       title: _('Record call')
       type: select
@@ -342,7 +318,7 @@ production:
             fields:
               - name${lang}
               - callingCode
-            template: '%name${lang}% (+%callingCode%)'
+            template: '%name${lang}% (%callingCode%)'
           order:
             Country.name.${lang}: asc
     languageId:
