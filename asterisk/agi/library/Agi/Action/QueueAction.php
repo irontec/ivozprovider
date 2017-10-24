@@ -55,7 +55,7 @@ class QueueAction extends RouterAction
         $this->_routeType       = $queue->getTimeoutTargetType();
         $this->_routeExtension  = $queue->getTimeoutExtension();
         $this->_routeVoiceMail  = $queue->getTimeoutVoiceMailUser();
-        $this->_routeExternal   = $queue->getTimeoutNumberValue();
+        $this->_routeExternal   = $queue->getTimeoutNumberValueE164();
         $this->route();
     }
 
@@ -77,7 +77,7 @@ class QueueAction extends RouterAction
         $this->_routeType       = $queue->getFullTargetType();
         $this->_routeExtension  = $queue->getFullExtension();
         $this->_routeVoiceMail  = $queue->getFullVoiceMailUser();
-        $this->_routeExternal   = $queue->getFullNumberValue();
+        $this->_routeExternal   = $queue->getFullNumberValueE164();
         $this->route();
     }
 }

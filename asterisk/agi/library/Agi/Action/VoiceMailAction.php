@@ -41,12 +41,6 @@ class VoiceMailAction extends RouterAction
         $this->agi->notice("Processing Voicemail of %s [user%d]",
                         $voicemail->getFullName(), $voicemail->getId());
 
-        // Transfor number to User Preferred
-        if ($this->agi->getCallType() == "external") {
-            $preferred = $voicemail->E164ToPreferred($this->agi->getOrigCallerIdNum());
-            $this->agi->setCallerIdNum($preferred);
-        }
-
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail
             $vmopts = "";

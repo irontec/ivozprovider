@@ -33,15 +33,11 @@ class RetailCallAction extends RouterAction
         );
 
         // Transform destination to retail preferred format
-        $number =  $retailAccount->E164ToPreferred($this->agi->getExtension());
+        $number =  $this->agi->getExtension();
 
         // Some verbose dolan pls
         $this->agi->notice("Preparing call to %s through retail account \e[0;36m%s [retailAccount%d])\e[0m",
                         $number, $retailAccount->getName(), $retailAccount->getId());
-
-        // Transfor number to account Preferred
-        $preferred = $retailAccount->E164ToPreferred($this->agi->getOrigCallerIdNum());
-        $this->agi->setCallerIdNum($preferred);
 
         // Get retail account endpoint
         $endpointName = $retailAccount->getSorcery();

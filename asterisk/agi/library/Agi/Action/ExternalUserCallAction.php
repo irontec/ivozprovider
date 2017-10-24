@@ -44,17 +44,6 @@ class ExternalUserCallAction extends ExternalCallAction
         $this->agi->notice("Processing External call from \e[0;32m%s [user%d]\e[0;93m to %s",
             $user->getFullName(), $user->getId(), $number);
 
-        // Check if dialed number has company's outbound prefix
-        if (!$this->checkCompanyOutboundPrefix($number)) {
-            $this->agi->error("Destination number %s without [company%d] outbound prefix",
-                            $number, $company->getId());
-            $this->agi->decline();
-            return;
-        }
-
-        // Convert to E.164 format
-        $e164number = $user->preferredToE164($number);
-
         // Check the user has this call allowed in its ACL
         if ($this->_checkACL == false) {
             $this->agi->verbose("Skipping ACL checks for this call.");
@@ -69,8 +58,8 @@ class ExternalUserCallAction extends ExternalCallAction
         }
 
         // Check if outgoing call can be tarificated
-        if (!$this->checkTarificable($e164number)) {
-            $this->agi->error("Destination %s can not be billed.", $e164number);
+        if (!$this->checkTarificable($number)) {
+            $this->agi->error("Destination %s can not be billed.", $number);
             // Play error notification over progress
             if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notBillable");
@@ -80,7 +69,7 @@ class ExternalUserCallAction extends ExternalCallAction
         }
 
         // Check Caller DDI
-        $ddi = $this->getCallerOutgoingDDI($e164number);
+        $ddi = $this->getCallerOutgoingDDI($number);
         if (!$ddi) {
             $this->agi->error("User %s [user%d] has not OutgoingDDI configured",
                 $user->getName(), $user->getId());
@@ -89,7 +78,7 @@ class ExternalUserCallAction extends ExternalCallAction
         }
 
         // Update Origin persentation
-        if (!$this->checkValidOrigin($e164number)) {
+        if (!$this->checkValidOrigin($number)) {
             $this->agi->error("Origin %s [%d] has no outgoingDDI number assigned.",
                     $origin->getName(), $origin->getId());
             $this->agi->decline();
@@ -97,13 +86,11 @@ class ExternalUserCallAction extends ExternalCallAction
         }
 
         // Check if the diversion header contains a valid number
-        $this->checkDiversionNumber($company, $e164number);
-        // Update caller displayed number
-        $this->updateOriginConnectedLine($e164number, $ddi);
+        $this->checkDiversionNumber($company, $number);
         // Check if DDI has recordings enabled
         $this->checkDDIRecording($ddi);
         // Check if DDI belong to platform
-        $this->checkDDIBounced($e164number);
+        $this->checkDDIBounced($number);
 
         // We need Outgoing DDI for external call presentation
         if (!$ddi) {
@@ -121,10 +108,10 @@ class ExternalUserCallAction extends ExternalCallAction
         }
 
         // Call the PSJIP endpoint
-        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
+        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", $options);
         $this->agi->setVariable("DIAL_TIMEOUT", "");
-        $this->agi->redirect('call-world', $e164number);
+        $this->agi->redirect('call-world', $number);
     }
 
     public function getCallerOutgoingDDI($number)

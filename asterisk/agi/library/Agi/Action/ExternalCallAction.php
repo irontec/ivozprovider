@@ -13,32 +13,6 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 class ExternalCallAction extends RouterAction
 {
     /**
-     * @brief Check if the dialed number starts with Company outbound prefix
-     *
-     * Company can configure outbound prefix that MUST be present in all outgoing
-     * external calls. This prefix only exists for compatibility with old pbx
-     * behaviours where the prefix was needed to make difference between external
-     * and internal calls.
-     *
-     * @param string $number Outgoing Dialed number
-     * @return true if prefix is present or company has no prefix, false otherwise
-     */
-    protected function checkCompanyOutboundPrefix($number)
-    {
-        // Get company Data
-        $caller = $this->agi->getChannelCaller();
-        $company = $caller->getCompany();
-        $outboundPrefix = $company->getOutboundPrefix();
-
-        // If Company has Outbound no prefix, number is always ok
-        if (strlen($outboundPrefix) == 0)
-            return true;
-
-        // Check if the first number matches the prefix
-        return (strpos($number, $outboundPrefix) === 0);
-    }
-
-    /**
      * @brief Determine if the call can be tarificable
      *
      * Only calls that can be tarificated are allowed to be placed. There is an
@@ -46,10 +20,10 @@ class ExternalCallAction extends RouterAction
      * tarification is done by a third party module), all calls are considered
      * tarificable.
      *
-     * @param string $e164number Dialed number in E.164 format
+     * @param string $number Dialed number in E.164 format
      * @return true if call can be tarificated, false otherwise
      */
-    protected function checkTarificable($e164number)
+    protected function checkTarificable($number)
     {
         // Get Dialer company
         $caller = $this->agi->getChannelCaller();
@@ -57,10 +31,10 @@ class ExternalCallAction extends RouterAction
         $company = $caller->getCompany();
 
         // Can the company pay this call??
-        if ($company->getBrand()->willUseExternallyRating($company, $e164number)) {
+        if ($company->getBrand()->willUseExternallyRating($company, $number)) {
             $this->agi->verbose("Skipping tarificate checking as Externally Rating will be used");
         } else {
-            $pricingPlan = $company->isDstTarificable($e164number);
+            $pricingPlan = $company->isDstTarificable($number);
             if (!$pricingPlan) {
                 return false;
             }
@@ -69,29 +43,6 @@ class ExternalCallAction extends RouterAction
                             $pricingPlan->getName(), $pricingPlan->getId());
         }
         return true;
-    }
-
-    /**
-     * @brief Update origin connected line with destination
-     *
-     * If the origin is a well know terminal, update its connected line to reflect
-     * the new external dialed number.
-     *
-     * TODO This may have undesired behaviours, like changing the dialed number
-     *   by an user.
-     *
-     * @param string $e164number Dialed number in E.164 format
-     */
-    protected function updateOriginConnectedLine($e164number, $originDDI)
-    {
-        // Get caller company
-        $caller = $this->agi->getChannelCaller();
-
-        // If origin is a user extension
-        if ($caller instanceof UserInterface) {
-            // Setup the update callid for the calling user
-            $this->agi->setVariable("CONNECTED_LINE_SEND_SUB", "update-line,$e164number,1");
-        }
     }
 
     /**
@@ -119,9 +70,9 @@ class ExternalCallAction extends RouterAction
      * before placing the call to proxytrunks. This will allow to handle it as
      * an incoming call with a new callid.
      *
-     * @param string $e164number dialed number in E.164 format
+     * @param string $number dialed number in E.164 format
      */
-    protected function checkDDIBounced($e164number)
+    protected function checkDDIBounced($number)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = \Zend_Registry::get("em");
@@ -131,11 +82,11 @@ class ExternalCallAction extends RouterAction
 
         /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $internalDDI */
         $internalDDI = $ddiRepository->findOneBy([
-            "ddie164" => $e164number
+            "ddie164" => $number
         ]);
 
         if (!empty($internalDDI)) {
-            $this->agi->notice("DDI $e164number belongs to us, request bounce back this call");
+            $this->agi->notice("DDI $number belongs to us, request bounce back this call");
             $this->agi->setVariable("_BOUNCEME", "yes");
         }
     }
@@ -180,16 +131,13 @@ class ExternalCallAction extends RouterAction
 
             // Check if the Diversion Number is a company DDI
             $diversionNum = $this->agi->getRedirecting('from-num');
-            if(!$company->getDDI($diversionNum)) {
-                // Check if the Diversion Number is a company DDI in E.164
-                $diversionNum = $company->preferredToE164($diversionNum);
-                if(!($ddi = $company->getDDI($diversionNum))) {
-                    // Not a Company DDI nor a Company Extension. Remove it.
-                    $this->agi->error("Removing invalid diversion header from %s", $diversionNum);
-                    $this->agi->setRedirecting('count', 0);
-                } else {
-                    $this->agi->setRedirecting('from-num', $ddi->getDDIE164());
-                }
+            // Check if the Diversion Number is a company DDI in E.164
+            if(!($ddi = $company->getDDI($diversionNum))) {
+                // Not a Company DDI nor a Company Extension. Remove it.
+                $this->agi->error("Removing invalid diversion header from %s", $diversionNum);
+                $this->agi->setRedirecting('count', 0);
+            } else {
+                $this->agi->setRedirecting('from-num', $ddi->getDDIE164());
             }
         }
     }

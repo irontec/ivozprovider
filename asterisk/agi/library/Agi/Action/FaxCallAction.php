@@ -78,10 +78,6 @@ class FaxCallAction extends RouterAction
         // Some verbose dolan pls
         $this->agi->notice("Incoming fax for %s [fax%d])", $fax->getName(), $fax->getId());
 
-        // Transform number to Company Preferred
-        $preferred = $fax->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
-        $this->agi->setCallerIdNum($preferred);
-
         // Set recive fax options
         $this->agi->setVariable("FAX_OPT","zf");
 

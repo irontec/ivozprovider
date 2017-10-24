@@ -67,7 +67,7 @@ class IVRCustomAction extends IVRAction
                     $this->_routeIVRCustom  = $extension->getIVRCustom();
                     $this->_routeHuntGroup  = $extension->getHuntGroup();
                     $this->_routeConference = $extension->getConferenceRoom();
-                    $this->_routeExternal   = $extension->getNumberValue();
+                    $this->_routeExternal   = $extension->getNumberValueE164();
                     $this->_routeFriend     = $extension->getFriendValue();
                     $this->_routeQueue      = $extension->getQueue();
                     $this->_routeConditionalRoute = $extension->getConditionalRoute();
@@ -76,7 +76,7 @@ class IVRCustomAction extends IVRAction
                     $this->_routeType       = $entry->getTargetType();
                     $this->_routeExtension  = $entry->getTargetExtension();
                     $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
-                    $this->_routeExternal   = $entry->getTargetNumberValue();
+                    $this->_routeExternal   = $entry->getTargetNumberValueE164();
                     $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
                 }
                 // Routed! :)

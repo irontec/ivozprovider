@@ -55,7 +55,7 @@ class FaxesController extends CallsController
         $faxExternalAction = new ExternalFaxCallAction($this);
         $faxExternalAction
             ->setFaxFile($faxOut)
-            ->setDestination($faxOut->getDst())
+            ->setDestination($faxOut->getDstE164())
             ->process();
     }
 

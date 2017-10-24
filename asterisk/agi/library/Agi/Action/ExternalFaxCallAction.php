@@ -41,12 +41,9 @@ class ExternalFaxCallAction extends ExternalCallAction
         $this->agi->notice("Processing External call from fax \e[0;32m%s [fax%d]\e[0;93m to %s",
             $fax->getName(), $fax->getId(), $number);
 
-        // Convert to E.164 format
-        $e164number = $company->preferredToE164($number);
-
         // Check if outgoing call can be tarificated
-        if (!$this->checkTarificable($e164number)) {
-            $this->agi->error("Destination %s can not be billed.", $e164number);
+        if (!$this->checkTarificable($number)) {
+            $this->agi->error("Destination %s can not be billed.", $number);
             $this->agi->decline();
             $faxfile->setStatus('error')->save();
             return;
@@ -64,14 +61,14 @@ class ExternalFaxCallAction extends ExternalCallAction
         }
 
         // Check if DDI belong to platform
-        $this->checkDDIBounced($e164number);
+        $this->checkDDIBounced($number);
 
         // Set Caller name
         $this->agi->setCallerIDNum($ddi->getDDIE164());
 
         // Call the PSJIP endpoint
-        $this->agi->setVariable("__DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
+        $this->agi->setVariable("__DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("__DIAL_OPTS", "");
-        $this->agi->redirect('faxes-call-world', $e164number);
+        $this->agi->redirect('faxes-call-world', $number);
     }
 }

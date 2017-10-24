@@ -28,23 +28,12 @@ class ExternalDDICallAction extends ExternalCallAction
         $this->agi->notice("Processing External call from DDI %s to %s",
                 $ddi->getDDI(), $number);
 
-        // Check if dialed number has company's outbound prefix
-        if (!$this->checkCompanyOutboundPrefix($number)) {
-            $this->agi->error("Destination number %s without [company%d] outbound prefix",
-                            $number, $company->getId());
-            $this->agi->decline();
-            return;
-        }
-
-        // Convert to E.164 format
-        $e164number = $company->preferredToE164($number);
-
         // If compnay has OutgoingDDI rules, check if we have to override current DDI
         $outgoingDDIRule = $company->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
             $this->agi->verbose("Checking outgoingDDI rules %s for destination %s",
-                            $outgoingDDIRule->getName(), $e164number);
-            $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $e164number);
+                            $outgoingDDIRule->getName(), $number);
+            $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $number);
             if ($ddi != $company->getOutgoingDDI()) {
                 $this->agi->notice("Rule %s [outgoingddirule%d] updated final DDI to %s [ddi%d]",
                     $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
@@ -53,8 +42,8 @@ class ExternalDDICallAction extends ExternalCallAction
         }
 
         // Check if outgoing call can be tarificated
-        if (!$this->checkTarificable($e164number)) {
-            $this->agi->error("Destination %s can not be billed.", $e164number);
+        if (!$this->checkTarificable($number)) {
+            $this->agi->error("Destination %s can not be billed.", $number);
             $this->agi->decline();
             return;
         }
@@ -62,23 +51,19 @@ class ExternalDDICallAction extends ExternalCallAction
         // Set origin for not forwarded calls
         if ($this->agi->getRedirecting('count') == 0) {
             $this->agi->setCallerIdNum($ddi->getDDIE164());
-        } else {
-            $this->agi->setCallerIdNum($this->agi->getOrigCallerIdNum());
         }
 
         // Check if the diversion header contains a valid number
-        $this->checkDiversionNumber($company, $e164number);
-        // Update caller displayed number
-        $this->updateOriginConnectedLine($e164number, $ddi);
+        $this->checkDiversionNumber($company, $number);
         // Check if DDI has recordings enabled
         $this->checkDDIRecording($ddi);
         // Check if DDI belong to platform
-        $this->checkDDIBounced($e164number);
+        $this->checkDDIBounced($number);
 
         // Call the PSJIP endpoint
-        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
+        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");
         $this->agi->setVariable("DIAL_TIMEOUT", "");
-        $this->agi->redirect('call-world', $e164number);
+        $this->agi->redirect('call-world', $number);
     }
 }

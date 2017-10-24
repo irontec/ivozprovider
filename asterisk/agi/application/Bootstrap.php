@@ -5,16 +5,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	protected function _initLang()
 	{
-		Zend_Registry::set('defaultLang', 'es');
 	}
 
 	protected function _initControllerHelpers()
 	{
-		Zend_Controller_Action_HelperBroker::addPrefix('Iron_Controller_Helper');
-
-        Zend_Controller_Action_HelperBroker::addHelper(
-            new Iron_Controller_Helper_Logger()
-        );
 	}
 
 	protected function _initErrorHandler ()

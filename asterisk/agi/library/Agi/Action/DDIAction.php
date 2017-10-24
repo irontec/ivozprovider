@@ -64,7 +64,7 @@ class DDIAction extends RouterAction
                     return;
                 }
 
-                if (! $externalCallFilter->isOutOfSchedule()) {
+                if ($externalCallFilter->isOutOfSchedule()) {
                     $this->agi->verbose("DDI %s [ddi%d] is on Out of schedule.", $ddi->getDDI(), $ddi->getId());
                     $filterAction = new ExternalFilterAction($this);
                     $filterAction
